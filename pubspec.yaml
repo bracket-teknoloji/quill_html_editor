@@ -30,6 +30,7 @@ environment:
 dependencies:
   build_runner: ^2.3.3
   cupertino_icons: ^1.0.2
+  dio: ^5.0.2
   flutter:
     sdk: flutter
   flutter_mobx: ^2.0.6+5
@@ -38,6 +39,8 @@ dependencies:
   kartal: ^2.8.0
   mobx: ^2.1.4
   mobx_codegen: ^2.1.1
+  provider: ^6.0.5
+  shared_preferences: ^2.0.18
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -46,7 +49,7 @@ dev_dependencies:
     sdk: flutter
 
 flutter_native_splash:
-  color: "#FFFFFF"
+  color: "#000000"
   image: "assets/splash/picker_logo.png"
   android: true
   ios: true
