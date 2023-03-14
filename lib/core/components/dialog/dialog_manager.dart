@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class DialogManager {
   static Future<dynamic> exitDialog(BuildContext context) {
@@ -16,8 +17,7 @@ class DialogManager {
                   child: const Text("Hayır")),
               ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(context);
-                    Navigator.pop(context);
+                    SystemNavigator.pop();
                   },
                   child: const Text("Evet")),
             ],
