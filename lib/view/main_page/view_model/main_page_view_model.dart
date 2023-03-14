@@ -1,5 +1,5 @@
 import 'package:mobx/mobx.dart';
-part 'main_page.g.dart';
+part 'main_page_view_model.g.dart';
 
 class MainPageViewModel = _MainPageViewModelBase with _$MainPageViewModel;
 

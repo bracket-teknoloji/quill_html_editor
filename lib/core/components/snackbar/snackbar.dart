@@ -1,12 +1,9 @@
-
 import 'package:flutter/material.dart';
 
 class SnackBarManager {
-  static void errorSnackBar(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text("Hata Oluştu"),
-      ),
-    );
-  }
+  static const errorSnackBar =
+      SnackBar(content: Text("Kullanıcı adı veya şifre hatalı"));
+  static const errorSnackBarMissingvalue = SnackBar(
+    content: Text("Lütfen tüm alanları doldurunuz"),
+  );
 }
