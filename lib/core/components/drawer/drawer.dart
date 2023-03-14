@@ -10,8 +10,9 @@ class FavoriteDrawer extends StatefulWidget {
 class _FavoriteDrawerState extends State<FavoriteDrawer> {
   @override
   Widget build(BuildContext context) {
-    return const Drawer(
-
-    );
+    return Drawer(child: Column(children: [
+      
+    ]));
   }
+
 }

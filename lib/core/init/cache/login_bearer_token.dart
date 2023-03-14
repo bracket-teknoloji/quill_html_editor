@@ -10,7 +10,7 @@ class CacheManager {
 
   static Future<String> getToken() async {
     final prefs = await SharedPreferences.getInstance();
-    String result = await prefs.getString('token')!;
+    String result = prefs.getString('token')!;
     return result;
   }
 }

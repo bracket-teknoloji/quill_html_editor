@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import '../../cache/login_bearer_token.dart';
-import 'api_urls.dart';
 
 import '../../../../view/auth/model/login_model.dart';
+import '../../cache/login_bearer_token.dart';
+import 'api_urls.dart';
 
 class LoginManager {
   static const String _grantType = "password";

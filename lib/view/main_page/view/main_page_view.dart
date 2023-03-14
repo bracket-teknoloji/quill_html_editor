@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:picker/core/components/grid_tile/grid_tile.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get/get.dart';
+
 import '../../../core/base/view/base_view.dart';
+import '../../../core/components/drawer/drawer.dart';
+import '../../../core/components/drawer/state_drawer.dart';
+import '../../../core/components/grid_tile/grid_tile.dart';
+import '../../../core/constants/grid_constants.dart';
 import '../../../core/init/cache/login_bearer_token.dart';
 
 class MainPageView extends StatelessWidget {
@@ -10,9 +14,10 @@ class MainPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(AddItemToDrawer());
     GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
     return BaseView(
-      builder: (context, value) => buildScaffold(scaffoldKey),
+      builder: (context, value) => buildScaffold(scaffoldKey, controller),
       title: "Picker",
       leading: IconButton(
         icon: const Icon(Icons.menu_open_outlined),
@@ -28,36 +33,42 @@ class MainPageView extends StatelessWidget {
   }
 }
 
-Widget buildScaffold(Key key) {
+Widget buildScaffold(Key key, AddItemToDrawer controller) {
   return Scaffold(
       key: key,
-      drawer: drawer(),
+      drawer: const FavoriteDrawer(),
       body: AnimationLimiter(
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
+            crossAxisCount: 4,
+            childAspectRatio: 0.9,
             crossAxisSpacing: 4,
             mainAxisSpacing: 4,
           ),
-          itemCount: 30,
+          itemCount: GridThemeManager.gridTileColors.length,
           itemBuilder: (context, index) {
             return AnimationConfiguration.staggeredList(
               position: index,
+              delay: const Duration(milliseconds: 10),
               duration: const Duration(milliseconds: 300),
               child: SlideAnimation(
-                verticalOffset: 50.0,
+                verticalOffset: 5.0,
                 child: FadeInAnimation(
                   child: CustomGridTile(
                     header: IconButton(
                         onPressed: () {
-                          debugPrint("tıklandı");
-                          debugPrint(CacheManager.getToken().then((value) {
-                            debugPrint(value);
-                          }).toString());
+                          controller.drawerItems.add(
+                            DrawerItem(
+                              title: "Item ${controller.drawerItems.length}",
+                              icon: Icons.star,
+                              onTap: () {},
+                            ),
+                          );
                         },
                         icon: const Icon(Icons.star)),
                     footer: Text("${CacheManager.getToken()}"),
-                    child: Container(color: Colors.blue),
+                    child: Container(
+                        color: GridThemeManager.gridTileColors[index]),
                   ),
                 ),
               ),

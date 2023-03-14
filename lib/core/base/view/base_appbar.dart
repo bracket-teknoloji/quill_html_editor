@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:picker/core/components/dialog/dialog_manager.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const MainAppBar({super.key, this.title, this.leading, this.actions, this.onPressed});
-  final void Function()? onPressed;
+  const MainAppBar({
+    super.key,
+    this.title,
+    this.leading,
+    this.actions,
+  });
   final String? title;
   final Widget? leading;
   final List<Widget>? actions;
@@ -15,7 +21,11 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
         leading: leading,
         actions: [
           ...?actions,
-          IconButton(onPressed: onPressed, icon: const Icon(Icons.logout_outlined)),
+          IconButton(
+              onPressed: () {
+                DialogManager.exitDialog(context);
+              },
+              icon: const Icon(Icons.logout_outlined)),
         ],
       ),
     );
