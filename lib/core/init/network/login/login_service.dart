@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import '../../cache/login_bearer_token.dart';
 import 'api_urls.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../view/auth/model/login_model.dart';
 

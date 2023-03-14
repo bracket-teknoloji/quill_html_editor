@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:picker/core/base/view/base_scaffold.dart';
 import 'base_appbar.dart';
 
 class BaseView<T> extends StatefulWidget {
@@ -41,13 +42,13 @@ class _BaseViewState extends State<BaseView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MainAppBar(
-          title: widget.title,
-          leading: widget.leading,
-          actions: widget.actions),
-      body: WillPopScope(
-          child: widget.builder(context, widget.viewModel),
-          onWillPop: () async => false),
-    );
+        appBar: MainAppBar(
+            title: widget.title,
+            leading: widget.leading,
+            actions: widget.actions),
+        body: BaseScaffold(
+          builder: widget.builder,
+          viewModel: widget.viewModel,
+        ));
   }
 }

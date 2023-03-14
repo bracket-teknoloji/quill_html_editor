@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:picker/core/components/grid_tile/grid_tile.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/base/view/base_view.dart';
-
-import '../view_model/main_page_view_model.dart';
+import '../../../core/init/cache/login_bearer_token.dart';
 
 class MainPageView extends StatelessWidget {
   const MainPageView({super.key});
@@ -10,7 +11,6 @@ class MainPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
-    final _viewModel = MainPageViewModel();
     return BaseView(
       builder: (context, value) => buildScaffold(scaffoldKey),
       title: "Picker",
@@ -31,42 +31,15 @@ class MainPageView extends StatelessWidget {
 Widget buildScaffold(Key key) {
   return Scaffold(
       key: key,
-      drawer: Drawer(
-        child: ListView(
-          children: const <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text(
-                'Drawer Header',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.message),
-              title: Text('Messages'),
-            ),
-            ListTile(
-              leading: Icon(Icons.account_circle),
-              title: Text('Profile'),
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
-            ),
-          ],
-        ),
-      ),
+      drawer: drawer(),
       body: AnimationLimiter(
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4,
+            crossAxisCount: 3,
+            crossAxisSpacing: 4,
+            mainAxisSpacing: 4,
           ),
-          itemCount: 50,
+          itemCount: 30,
           itemBuilder: (context, index) {
             return AnimationConfiguration.staggeredList(
               position: index,
@@ -74,10 +47,17 @@ Widget buildScaffold(Key key) {
               child: SlideAnimation(
                 verticalOffset: 50.0,
                 child: FadeInAnimation(
-                  child: Card(
-                    child: Center(
-                      child: Text("Item $index"),
-                    ),
+                  child: CustomGridTile(
+                    header: IconButton(
+                        onPressed: () {
+                          debugPrint("tıklandı");
+                          debugPrint(CacheManager.getToken().then((value) {
+                            debugPrint(value);
+                          }).toString());
+                        },
+                        icon: const Icon(Icons.star)),
+                    footer: Text("${CacheManager.getToken()}"),
+                    child: Container(color: Colors.blue),
                   ),
                 ),
               ),
@@ -85,4 +65,37 @@ Widget buildScaffold(Key key) {
           },
         ),
       ));
+}
+
+Drawer drawer() {
+  return Drawer(
+    child: ListView(
+      children: const <Widget>[
+        DrawerHeader(
+          decoration: BoxDecoration(
+            color: Colors.blue,
+          ),
+          child: Text(
+            'Drawer Header',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 24,
+            ),
+          ),
+        ),
+        ListTile(
+          leading: Icon(Icons.message),
+          title: Text('Messages'),
+        ),
+        ListTile(
+          leading: Icon(Icons.account_circle),
+          title: Text('Profile'),
+        ),
+        ListTile(
+          leading: Icon(Icons.settings),
+          title: Text('Settings'),
+        ),
+      ],
+    ),
+  );
 }
