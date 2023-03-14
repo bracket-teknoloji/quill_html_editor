@@ -5,4 +5,5 @@ class MainPageViewModel = _MainPageViewModelBase with _$MainPageViewModel;
 
 abstract class _MainPageViewModelBase with Store {
   
+
 }

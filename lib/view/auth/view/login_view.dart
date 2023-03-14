@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:picker/core/components/snackbar/snackbar.dart';
-import 'package:picker/core/constants/image/image_enums.dart';
+import '../../../core/components/snackbar/snackbar.dart';
+import '../../../core/constants/image/image_enums.dart';
 import 'package:kartal/kartal.dart';
-import 'package:picker/core/constants/routes/routes.dart';
-import 'package:picker/core/init/network/login/login_service.dart';
-import 'package:picker/view/auth/login_state.dart';
-import 'package:picker/view/main_page/view/main_page_view.dart';
+import '../../../core/init/network/login/login_service.dart';
+import '../login_state.dart';
 import '../../../core/constants/login_page_constants.dart';
 
 class LoginView extends StatefulWidget {

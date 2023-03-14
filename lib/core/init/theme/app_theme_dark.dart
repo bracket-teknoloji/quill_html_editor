@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:picker/core/init/theme/app_theme.dart';
+
+import 'app_theme.dart';
 
 class AppThemeDark extends AppTheme {
   static AppThemeDark? _instance;
