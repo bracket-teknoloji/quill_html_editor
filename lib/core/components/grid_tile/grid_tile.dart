@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:picker/core/components/snackbar/snackbar.dart';
+import 'package:picker/core/constants/ui_helper/radius_ui_helper.dart';
 
 class CustomGridTile extends StatefulWidget {
   final Column child;
@@ -17,14 +18,16 @@ class CustomGridTileState extends State<CustomGridTile> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: const BorderRadius.all(Radius.circular(5)),
+      borderRadius: BorderRadiusHelper.radiusAllMid,
+      splashColor: Colors.amber,
       onTap: () {
+        ScaffoldMessenger.of(context).hideCurrentSnackBar();
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBarManager.snackBarOnClick);
       },
       child: Card(
         shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(5))),
+            borderRadius: BorderRadiusHelper.radiusAllSmall),
         color: widget.color,
         child: GridTile(
             header: Row(
