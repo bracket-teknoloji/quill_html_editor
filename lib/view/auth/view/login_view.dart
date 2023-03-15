@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:kartal/kartal.dart';
+
 import '../../../core/components/snackbar/snackbar.dart';
 import '../../../core/constants/image/image_enums.dart';
-import 'package:kartal/kartal.dart';
-import '../../../core/init/network/login/login_service.dart';
-import '../login_state.dart';
 import '../../../core/constants/login_page_constants.dart';
+import '../../../core/init/network/login/login_service.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -18,7 +17,6 @@ class _LoginViewState extends State<LoginView> {
   bool isObscure = true;
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(LoginState());
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
     return Stack(
@@ -38,10 +36,12 @@ class _LoginViewState extends State<LoginView> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Flexible(
+                    AnimatedContainer(
+                      duration: const Duration(seconds: 10),
                       child: Padding(
                         padding: context.paddingMedium,
-                        child: Image.asset(ImageEnum.pickerLogo.path),
+                        child: Image.asset(ImageEnum.pickerLogo.path,
+                            height: context.isKeyBoardOpen ? 50 : 100),
                       ),
                     ),
                     Column(

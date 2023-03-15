@@ -43,6 +43,7 @@ dependencies:
   mobx_codegen: ^2.1.1
   provider: ^6.0.5
   shared_preferences: ^2.0.18
+  sqflite: ^2.2.6
   toast: ^0.3.0
 
 dev_dependencies:
@@ -56,7 +57,7 @@ flutter_native_splash:
   image: "assets/splash/picker_logo.png"
   color_dark: "#000000"
   image_dark: "assets/splash/picker_logo.png"
-  
+
   android: true
   ios: true
   web: true

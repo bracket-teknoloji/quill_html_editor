@@ -10,25 +10,8 @@ import '../../../core/components/drawer/state_drawer.dart';
 import '../../../core/components/grid_tile/grid_tile.dart';
 import '../../../core/constants/grid_constants.dart';
 
-class MainPageView extends StatefulWidget {
+class MainPageView extends StatelessWidget {
   const MainPageView({super.key});
-
-  @override
-  State<MainPageView> createState() => _MainPageViewState();
-}
-
-class _MainPageViewState extends State<MainPageView> {
-  late List<CustomGridTile> items;
-  @override
-  void initState() {
-    super.initState();
-    items = [];
-  }
-
-  @override
-  void didUpdateWidget(covariant MainPageView oldWidget) {
-    super.didUpdateWidget(oldWidget);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,19 +68,7 @@ Widget buildScaffold(Key key, AddItemToDrawer controller) {
                   child: FadeInAnimation(
                     child: CustomGridTile(
                       name: GridThemeManager.gridNames[index],
-
                       color: GridThemeManager.gridTileColors[index],
-                      // header: IconButton(
-                      //     onPressed: () {
-                      //       controller.drawerItems.add(
-                      //         DrawerItem(
-                      //           title: "Item ${controller.drawerItems.length}",
-                      //           icon: Icons.star,
-                      //           onTap: () {},
-                      //         ),
-                      //       );
-                      //     },
-                      //     icon: const Icon(Icons.star)),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.stretch,

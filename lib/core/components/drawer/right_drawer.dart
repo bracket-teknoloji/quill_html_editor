@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kartal/kartal.dart';
 import 'package:picker/core/components/dialog/dialog_manager.dart';
 
 class EndDrawer extends StatelessWidget {
@@ -20,7 +21,7 @@ class EndDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.logout_outlined),
-            title: const Text("Çıkış Yap"),
+            title: Text("Çıkış Yap ${context.isIOSDevice}"),
             onTap: () => DialogManager.exitDialog(context),
           )
         ]));

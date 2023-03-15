@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../components/dialog/dialog_manager.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MainAppBar({

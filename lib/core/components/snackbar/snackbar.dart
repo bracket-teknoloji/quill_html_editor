@@ -7,6 +7,7 @@ class SnackBarManager {
     content: Text("Lütfen tüm alanları doldurunuz"),
   );
   static SnackBar snackBarOnClick(String name) => SnackBar(
-    content: Text("$name Tıklandı"),
-  );
+        content: Text("$name Tıklandı"),
+        showCloseIcon: true,
+      );
 }
