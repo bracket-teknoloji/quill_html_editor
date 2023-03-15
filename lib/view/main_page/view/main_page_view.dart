@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+import 'package:kartal/kartal.dart';
 
 import '../../../core/base/view/base_view.dart';
 import '../../../core/components/drawer/drawer.dart';
@@ -42,37 +43,57 @@ Widget buildScaffold(Key key, AddItemToDrawer controller) {
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 4,
             childAspectRatio: 0.9,
-            crossAxisSpacing: 4,
-            mainAxisSpacing: 4,
           ),
           itemCount: GridThemeManager.gridTileColors.length,
           itemBuilder: (context, index) {
             return AnimationConfiguration.staggeredList(
-              position: index,
-              delay: const Duration(milliseconds: 10),
-              duration: const Duration(milliseconds: 300),
-              child: SlideAnimation(
-                verticalOffset: 5.0,
-                child: FadeInAnimation(
-                  child: CustomGridTile(
-                    header: IconButton(
-                        onPressed: () {
-                          controller.drawerItems.add(
-                            DrawerItem(
-                              title: "Item ${controller.drawerItems.length}",
-                              icon: Icons.star,
-                              onTap: () {},
+                position: index,
+                delay: const Duration(milliseconds: 10),
+                duration: const Duration(milliseconds: 300),
+                child: SlideAnimation(
+                  verticalOffset: 5.0,
+                  child: FadeInAnimation(
+                    child: CustomGridTile(
+                      color: GridThemeManager.gridTileColors[index],
+                      // header: IconButton(
+                      //     onPressed: () {
+                      //       controller.drawerItems.add(
+                      //         DrawerItem(
+                      //           title: "Item ${controller.drawerItems.length}",
+                      //           icon: Icons.star,
+                      //           onTap: () {},
+                      //         ),
+                      //       );
+                      //     },
+                      //     icon: const Icon(Icons.star)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Flexible(
+                              flex: 3,
+                              child: Icon(GridThemeManager.gridIcons[index])),
+                          Expanded(
+                            flex: 3,
+                            child: Container(
+                              padding: context.paddingLow,
+                              width: 150,
+                              child: Text(
+                                GridThemeManager.gridNames[index],
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
                             ),
-                          );
-                        },
-                        icon: const Icon(Icons.star)),
-                    footer: Text("${CacheManager.getToken()}"),
-                    child: Container(
-                        color: GridThemeManager.gridTileColors[index]),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            );
+                ));
           },
         ),
       ));

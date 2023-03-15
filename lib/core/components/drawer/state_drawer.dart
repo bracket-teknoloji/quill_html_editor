@@ -22,7 +22,7 @@ class AddItemToDrawer extends GetxController {
 
 class DrawerItem {
   final String title;
-  final IconData icon;
+  final IconData? icon;
   final Function()? onTap;
-  const DrawerItem({required this.title, required this.icon, this.onTap});
+  const DrawerItem({required this.title, this.icon, this.onTap});
 }

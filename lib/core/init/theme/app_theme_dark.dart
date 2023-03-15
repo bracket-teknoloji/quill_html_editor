@@ -27,6 +27,7 @@ class AppThemeDark extends AppTheme {
           color: Colors.white,
         ),
       )),
+      iconTheme: const IconThemeData(color: Colors.white, size: 30),
       dialogTheme: DialogTheme(
         backgroundColor: Colors.white,
         surfaceTintColor: Colors.black12,
@@ -43,7 +44,7 @@ class AppThemeDark extends AppTheme {
         iconColor: Colors.black,
       ),
       cardTheme: CardTheme(
-        color: Colors.white12,
+        color: Colors.red,
         shadowColor: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(2),

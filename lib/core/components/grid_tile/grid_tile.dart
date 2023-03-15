@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:kartal/kartal.dart';
+import 'package:picker/core/components/snackbar/snackbar.dart';
 
 class CustomGridTile extends StatefulWidget {
-  final Widget child;
+  final Column child;
   final Widget? header;
   final Widget? footer;
+  final Color? color;
   const CustomGridTile(
-      {super.key, required this.child, this.header, this.footer});
+      {super.key, required this.child, this.header, this.footer, this.color});
 
   @override
   State<CustomGridTile> createState() => CustomGridTileState();
@@ -15,28 +16,30 @@ class CustomGridTile extends StatefulWidget {
 class CustomGridTileState extends State<CustomGridTile> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: context.colorScheme.surface,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-                color: context.colorScheme.onSurface.withOpacity(0.1),
-                blurRadius: 10,
-                offset: const Offset(0, 5))
-          ]),
-      child: GridTile(
-          header: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Spacer(
-                flex: 3,
-              ),
-              Flexible(child: widget.header ?? Container(), flex: 2),
-            ],
-          ),
-          child: Center(child: widget.child)),
+    return InkWell(
+      borderRadius: const BorderRadius.all(Radius.circular(5)),
+      onTap: () {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBarManager.snackBarOnClick);
+      },
+      child: Card(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5))),
+        color: widget.color,
+        child: GridTile(
+            header: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                const Spacer(
+                  flex: 4,
+                ),
+                Flexible(flex: 2, child: widget.header ?? const Text("")),
+              ],
+            ),
+            footer: Center(child: widget.footer),
+            child: widget.child),
+      ),
     );
   }
 }

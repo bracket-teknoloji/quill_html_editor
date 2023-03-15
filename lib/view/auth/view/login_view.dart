@@ -104,12 +104,12 @@ class _LoginViewState extends State<LoginView> {
                 );
               } else {
                 ScaffoldMessenger.of(context)
-                    .showSnackBar(SnackBarManager.errorSnackBar);
+                    .showSnackBar(SnackBarManager.snackBarError);
               }
             });
           } else {
             ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBarManager.errorSnackBarMissingvalue);
+                .showSnackBar(SnackBarManager.snackBarErrorMissingValue);
           }
         },
         child: const Text(
