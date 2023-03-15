@@ -2,16 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/components/drawer/left_drawer.dart';
 
 import '../../../core/base/view/base_view.dart';
-import '../../../core/components/drawer/drawer.dart';
+import '../../../core/components/drawer/right_drawer.dart';
 import '../../../core/components/drawer/state_drawer.dart';
 import '../../../core/components/grid_tile/grid_tile.dart';
 import '../../../core/constants/grid_constants.dart';
-import '../../../core/init/cache/login_bearer_token.dart';
 
-class MainPageView extends StatelessWidget {
+class MainPageView extends StatefulWidget {
   const MainPageView({super.key});
+
+  @override
+  State<MainPageView> createState() => _MainPageViewState();
+}
+
+class _MainPageViewState extends State<MainPageView> {
+  late List<CustomGridTile> items;
+  @override
+  void initState() {
+    super.initState();
+    items = [];
+  }
+
+  @override
+  void didUpdateWidget(covariant MainPageView oldWidget) {
+    super.didUpdateWidget(oldWidget);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +38,7 @@ class MainPageView extends StatelessWidget {
       builder: (context, value) => buildScaffold(scaffoldKey, controller),
       title: "Picker",
       leading: IconButton(
-        icon: const Icon(Icons.menu_open_outlined),
+        icon: const Icon(Icons.star_border_outlined),
         onPressed: () {
           if (scaffoldKey.currentState!.isDrawerOpen) {
             Navigator.pop(context);
@@ -30,6 +47,18 @@ class MainPageView extends StatelessWidget {
           }
         },
       ),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.person_outline),
+          onPressed: () {
+            if (scaffoldKey.currentState!.isEndDrawerOpen) {
+              Navigator.pop(context);
+            } else {
+              scaffoldKey.currentState!.openEndDrawer();
+            }
+          },
+        ),
+      ],
     );
   }
 }
@@ -37,7 +66,8 @@ class MainPageView extends StatelessWidget {
 Widget buildScaffold(Key key, AddItemToDrawer controller) {
   return Scaffold(
       key: key,
-      drawer: const FavoriteDrawer(),
+      drawer: const LeftDrawer(),
+      endDrawer: const EndDrawer(),
       body: AnimationLimiter(
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -54,6 +84,8 @@ Widget buildScaffold(Key key, AddItemToDrawer controller) {
                   verticalOffset: 5.0,
                   child: FadeInAnimation(
                     child: CustomGridTile(
+                      name: GridThemeManager.gridNames[index],
+
                       color: GridThemeManager.gridTileColors[index],
                       // header: IconButton(
                       //     onPressed: () {
@@ -97,37 +129,4 @@ Widget buildScaffold(Key key, AddItemToDrawer controller) {
           },
         ),
       ));
-}
-
-Drawer drawer() {
-  return Drawer(
-    child: ListView(
-      children: const <Widget>[
-        DrawerHeader(
-          decoration: BoxDecoration(
-            color: Colors.blue,
-          ),
-          child: Text(
-            'Drawer Header',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-            ),
-          ),
-        ),
-        ListTile(
-          leading: Icon(Icons.message),
-          title: Text('Messages'),
-        ),
-        ListTile(
-          leading: Icon(Icons.account_circle),
-          title: Text('Profile'),
-        ),
-        ListTile(
-          leading: Icon(Icons.settings),
-          title: Text('Settings'),
-        ),
-      ],
-    ),
-  );
 }

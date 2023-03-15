@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'base_scaffold.dart';
+
 import 'base_appbar.dart';
+import 'base_scaffold.dart';
 
 class BaseView<T> extends StatefulWidget {
   const BaseView(

@@ -7,11 +7,4 @@ class LoginState extends GetxController{
   void togglePasswordVisibility(){
     isPasswordVisible.value = !isPasswordVisible.value;
   }
-  Widget getIcon (){
-    if(isPasswordVisible.value){
-      return const Icon(Icons.visibility);
-    }else{
-      return const Icon(Icons.visibility_off);
-    }
-  }
 }

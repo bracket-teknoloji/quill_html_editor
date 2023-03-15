@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../core/components/dialog/dialog_manager.dart';
 
 class BaseScaffold extends StatefulWidget {

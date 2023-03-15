@@ -6,7 +6,7 @@ class SnackBarManager {
   static const snackBarErrorMissingValue = SnackBar(
     content: Text("Lütfen tüm alanları doldurunuz"),
   );
-  static const snackBarOnClick = SnackBar(
-    content: Text("Tıklandı"),
+  static SnackBar snackBarOnClick(String name) => SnackBar(
+    content: Text("$name Tıklandı"),
   );
 }

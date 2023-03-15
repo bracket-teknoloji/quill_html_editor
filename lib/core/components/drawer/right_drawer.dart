@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:picker/core/components/dialog/dialog_manager.dart';
 
-class FavoriteDrawer extends StatefulWidget {
-  const FavoriteDrawer({super.key});
+class EndDrawer extends StatelessWidget {
+  const EndDrawer({super.key});
 
-  @override
-  State<FavoriteDrawer> createState() => _FavoriteDrawerState();
-}
-
-class _FavoriteDrawerState extends State<FavoriteDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: const [
-          DrawerHeader(
-            curve: Curves.easeInQuint,
+            children: [
+          const DrawerHeader(
             decoration: BoxDecoration(color: Colors.red),
             margin: EdgeInsets.all(10),
             padding: EdgeInsets.all(10),
             duration: Duration(seconds: 10),
             child: Text("Favorite"),
           ),
+          ListTile(
+            leading: const Icon(Icons.logout_outlined),
+            title: const Text("Çıkış Yap"),
+            onTap: () => DialogManager.exitDialog(context),
+          )
         ]));
   }
 }

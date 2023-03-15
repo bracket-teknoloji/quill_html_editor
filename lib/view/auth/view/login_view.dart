@@ -15,6 +15,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
+  bool isObscure = true;
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(LoginState());
@@ -28,6 +29,7 @@ class _LoginViewState extends State<LoginView> {
           ),
         ),
         Scaffold(
+            primary: false,
             extendBodyBehindAppBar: true,
             backgroundColor: Colors.transparent,
             body: Padding(
@@ -42,49 +44,78 @@ class _LoginViewState extends State<LoginView> {
                         child: Image.asset(ImageEnum.pickerLogo.path),
                       ),
                     ),
-                    loginMembers(emailController, controller,
-                        passwordController, context)
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Wrap(
+                          children: [
+                            const Text("Email"),
+                            TextFormField(
+                              controller: emailController,
+                            ),
+                          ],
+                        ),
+                        Wrap(
+                          children: [
+                            const Text("Password"),
+                            TextField(
+                              obscureText: isObscure,
+                              decoration: InputDecoration(
+                                  suffixIcon: IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          isObscure = !isObscure;
+                                        });
+                                      },
+                                      icon: isObscure
+                                          ? const Icon(Icons.visibility)
+                                          : const Icon(Icons.visibility_off))),
+                              controller: passwordController,
+                            )
+                          ],
+                        ),
+                        elevatedButton(
+                            emailController, passwordController, context),
+                      ],
+                    )
                   ]),
             )),
       ],
     );
   }
 
-  Form loginMembers(
-      TextEditingController emailController,
-      LoginState controller,
-      TextEditingController passwordController,
-      BuildContext context) {
-    return Form(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Wrap(
-            children: [
-              const Text("Email"),
-              TextFormField(
-                controller: emailController,
-              ),
-            ],
-          ),
-          Wrap(
-            children: [
-              const Text("Password"),
-              Obx(() => TextFormField(
-                    obscureText: controller.isPasswordVisible.value,
-                    decoration: InputDecoration(
-                        suffixIcon: IconButton(
-                            onPressed: () {
-                              controller.togglePasswordVisibility();
-                            },
-                            icon: controller.getIcon())),
-                    controller: passwordController,
-                  ))
-            ],
-          ),
-          elevatedButton(emailController, passwordController, context),
-        ],
-      ),
+  Column loginMembers(TextEditingController emailController, bool isObscure,
+      TextEditingController passwordController, BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Wrap(
+          children: [
+            const Text("Email"),
+            TextFormField(
+              controller: emailController,
+            ),
+          ],
+        ),
+        Wrap(
+          children: [
+            const Text("Password"),
+            TextField(
+              obscureText: isObscure,
+              decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          isObscure = !isObscure;
+                        });
+                      },
+                      icon: getIcon(isObscure))),
+              controller: passwordController,
+            )
+          ],
+        ),
+        elevatedButton(emailController, passwordController, context),
+      ],
     );
   }
 
@@ -116,5 +147,13 @@ class _LoginViewState extends State<LoginView> {
           "Giriş",
           style: TextStyle(color: Colors.red),
         ));
+  }
+}
+
+Widget getIcon(bool isObscure) {
+  if (isObscure) {
+    return const Icon(Icons.visibility);
+  } else {
+    return const Icon(Icons.visibility_off);
   }
 }

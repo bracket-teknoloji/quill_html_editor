@@ -52,8 +52,11 @@ dev_dependencies:
     sdk: flutter
 
 flutter_native_splash:
-  color: "#000000"
+  color: "#FFFFFF"
   image: "assets/splash/picker_logo.png"
+  color_dark: "#000000"
+  image_dark: "assets/splash/picker_logo.png"
+  
   android: true
   ios: true
   web: true
