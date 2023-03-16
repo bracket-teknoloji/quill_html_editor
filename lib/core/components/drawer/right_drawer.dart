@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:picker/core/components/dialog/dialog_manager.dart';
+import '../dialog/dialog_manager.dart';
 
 class EndDrawer extends StatelessWidget {
   const EndDrawer({super.key});

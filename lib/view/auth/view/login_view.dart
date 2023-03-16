@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import '../../../core/base/state/base_state.dart';
 
 import '../../../core/components/snackbar/snackbar.dart';
 import '../../../core/constants/image/image_enums.dart';
@@ -13,7 +14,7 @@ class LoginView extends StatefulWidget {
   State<LoginView> createState() => _LoginViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _LoginViewState extends BaseState<LoginView> {
   bool isObscure = true;
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,6 @@ class _LoginViewState extends State<LoginView> {
           ),
         ),
         Scaffold(
-            primary: false,
             extendBodyBehindAppBar: true,
             backgroundColor: Colors.transparent,
             body: Padding(
@@ -92,9 +92,7 @@ class _LoginViewState extends State<LoginView> {
         Wrap(
           children: [
             const Text("Email"),
-            TextFormField(
-              controller: emailController,
-            ),
+            TextFormField(controller: emailController),
           ],
         ),
         Wrap(
@@ -134,11 +132,13 @@ class _LoginViewState extends State<LoginView> {
                   "/mainPage",
                 );
               } else {
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
                 ScaffoldMessenger.of(context)
                     .showSnackBar(SnackBarManager.snackBarError);
               }
             });
           } else {
+            ScaffoldMessenger.of(context).hideCurrentSnackBar();
             ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBarManager.snackBarErrorMissingValue);
           }

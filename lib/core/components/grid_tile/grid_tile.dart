@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import '../snackbar/snackbar.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
 import '../../constants/ui_helper/radius_ui_helper.dart';
+import '../snackbar/snackbar.dart';
 
 class CustomGridTile extends StatefulWidget {
   final Column child;
@@ -9,7 +11,12 @@ class CustomGridTile extends StatefulWidget {
   final Color? color;
   final String? name;
   const CustomGridTile(
-      {super.key, required this.child, this.header, this.footer, this.color, this.name});
+      {super.key,
+      required this.child,
+      this.header,
+      this.footer,
+      this.color,
+      this.name});
 
   @override
   State<CustomGridTile> createState() => CustomGridTileState();
@@ -22,6 +29,8 @@ class CustomGridTileState extends State<CustomGridTile> {
       borderRadius: BorderRadiusHelper.radiusAllMid,
       splashColor: Colors.amber,
       onTap: () {
+        var box = Hive.box("login");
+        debugPrint(box.get("user").toString());
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBarManager.snackBarOnClick(widget.name ?? ""));

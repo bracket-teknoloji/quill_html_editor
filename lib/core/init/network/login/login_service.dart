@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../../../../view/auth/model/login_model.dart';
-import '../../cache/login_bearer_token.dart';
+import '../../cache/hive_cache.dart';
 import 'api_urls.dart';
 
 class LoginManager {
@@ -29,7 +29,7 @@ class LoginManager {
     });
     if (response.statusCode == 200) {
       LoginAuth loginAuth = LoginAuth.fromJson(response.data);
-      CacheManager.saveToken(loginAuth.accessToken!);
+      CacheManager.saveUserData(loginAuth);
       return true;
     } else {
       return false;

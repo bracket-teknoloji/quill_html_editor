@@ -28,27 +28,40 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  animate_icons: ^2.0.0
-  build_runner: ^2.3.3
-  cupertino_icons: ^1.0.2
-  dio: ^5.0.2
   flutter:
     sdk: flutter
-  flutter_mobx: ^2.0.6+5
-  flutter_staggered_animations: ^1.1.1
-  get: ^4.6.5
+
+  #UI Dependencies
+  animate_icons: ^2.0.0
+  cupertino_icons: ^1.0.2
   google_fonts: ^4.0.3
-  kartal: ^2.8.0
+  toast: ^0.3.0
+  flutter_staggered_animations: ^1.1.1
+
+  #State Management Dependencies
+  flutter_mobx: ^2.0.6+5
+  get: ^4.6.5
   mobx: ^2.1.4
   mobx_codegen: ^2.1.1
   provider: ^6.0.5
-  shared_preferences: ^2.0.18
-  sqflite: ^2.2.6
-  toast: ^0.3.0
+
+  #Network Dependencies
+  dio: ^5.0.2
+
+  #Utils Dependencies
+  kartal: ^2.8.0
+
+
+  #Hive Caching Dependencies
+  hive: ^2.0.4
+  hive_flutter: ^1.0.0
+
 
 dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_native_splash: ^2.2.19
+  build_runner: ^2.1.7
+  hive_generator: ^2.0.0
   flutter_test:
     sdk: flutter
 

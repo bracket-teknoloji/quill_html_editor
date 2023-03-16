@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:picker/core/components/drawer/left_drawer.dart';
+import '../../../core/components/drawer/left_drawer.dart';
 
 import '../../../core/base/view/base_view.dart';
 import '../../../core/components/drawer/right_drawer.dart';

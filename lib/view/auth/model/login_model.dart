@@ -1,9 +1,20 @@
+import 'package:hive_flutter/hive_flutter.dart';
+
+part 'login_model.g.dart';
+
+@HiveType(typeId: 0)
 class LoginAuth {
+  @HiveField(0)
   String? accessToken;
+  @HiveField(1)
   String? tokenType;
+  @HiveField(2)
   int? expiresIn;
+  @HiveField(3)
   String? userJson;
+  @HiveField(4)
   String? issued;
+  @HiveField(5)
   String? expires;
 
   LoginAuth(
@@ -32,5 +43,16 @@ class LoginAuth {
     data['.issued'] = issued;
     data['.expires'] = expires;
     return data;
+  }
+
+  @override
+  String toString() {
+    return """
+LoginAuth{accessToken: $accessToken,
+tokenType: $tokenType,
+expiresIn: $expiresIn,
+userJson: $userJson,
+issued: $issued,
+expires: $expires}""";
   }
 }
