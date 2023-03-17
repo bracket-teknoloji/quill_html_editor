@@ -14,6 +14,8 @@ class AppThemeDark extends AppTheme {
 
   @override
   ThemeData get theme => ThemeData.dark().copyWith(
+      applyElevationOverlayColor: true,
+      dialogBackgroundColor: Colors.blueGrey,
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(

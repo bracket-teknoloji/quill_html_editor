@@ -20,7 +20,7 @@ class LoginAuthAdapter extends TypeAdapter<LoginAuth> {
       accessToken: fields[0] as String?,
       tokenType: fields[1] as String?,
       expiresIn: fields[2] as int?,
-      userJson: fields[3] as String?,
+      userJson: (fields[3] as Map?)?.cast<String, dynamic>(),
       issued: fields[4] as String?,
       expires: fields[5] as String?,
     );

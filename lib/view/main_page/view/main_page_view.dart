@@ -55,7 +55,6 @@ Widget buildScaffold(Key key, AddItemToDrawer controller) {
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 4,
-            childAspectRatio: 0.9,
           ),
           itemCount: GridThemeManager.gridTileColors.length,
           itemBuilder: (context, index) {

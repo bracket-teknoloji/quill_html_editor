@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import '../../base/state/base_state.dart';
 import '../../constants/ui_helper/radius_ui_helper.dart';
 import '../snackbar/snackbar.dart';
 
@@ -9,20 +10,20 @@ class CustomGridTile extends StatefulWidget {
   final Widget? header;
   final Widget? footer;
   final Color? color;
-  final String? name;
+  final String name;
   const CustomGridTile(
       {super.key,
       required this.child,
       this.header,
       this.footer,
       this.color,
-      this.name});
+      required this.name});
 
   @override
   State<CustomGridTile> createState() => CustomGridTileState();
 }
 
-class CustomGridTileState extends State<CustomGridTile> {
+class CustomGridTileState extends BaseState<CustomGridTile> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -31,9 +32,8 @@ class CustomGridTileState extends State<CustomGridTile> {
       onTap: () {
         var box = Hive.box("login");
         debugPrint(box.get("user").toString());
-        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBarManager.snackBarOnClick(widget.name ?? ""));
+        hideSnackBar();
+        showSnackBar(SnackBarManager.snackBarOnClick(widget.name));
       },
       child: Card(
         shape: const RoundedRectangleBorder(
