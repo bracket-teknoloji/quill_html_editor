@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import '../../../core/components/drawer/left_drawer.dart';
 
 import '../../../core/base/view/base_view.dart';
+import '../../../core/components/drawer/left_drawer.dart';
 import '../../../core/components/drawer/right_drawer.dart';
-import '../../../core/components/drawer/state_drawer.dart';
 import '../../../core/components/grid_tile/grid_tile.dart';
 import '../../../core/constants/grid_constants.dart';
 
@@ -15,10 +13,9 @@ class MainPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(AddItemToDrawer());
     GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
     return BaseView(
-      builder: (context, value) => buildScaffold(scaffoldKey, controller),
+      builder: (context, value) => buildScaffold(scaffoldKey),
       title: "Picker",
       leading: IconButton(
         icon: const Icon(Icons.star_border_outlined),
@@ -46,7 +43,7 @@ class MainPageView extends StatelessWidget {
   }
 }
 
-Widget buildScaffold(Key key, AddItemToDrawer controller) {
+Widget buildScaffold(Key key) {
   return Scaffold(
       key: key,
       drawer: const LeftDrawer(),

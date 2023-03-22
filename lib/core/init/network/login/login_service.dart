@@ -9,36 +9,36 @@ import 'api_urls.dart';
 
 class LoginManager {
   static const String _grantType = "password";
-  static final dio = Dio();
+  static final dio = Dio(
+    BaseOptions(
+        baseUrl: ApiUrls.token.url,
+        headers: {"Platform": "netfect", "Content-Type": _contentType},
+        responseType: ResponseType.json),
+  );
   static const String _contentType = "application/x-www-form-urlencoded";
 
   static Future<bool> login(
       {String company = "netfect",
       required String username,
       required String password}) async {
-    dio.options.headers["Content-Type"] = _contentType;
-    final response = await dio
-        .get(ApiUrls.token,
-            data: {
-              "grant_type": _grantType,
-              "username": username,
-              "password": password
-            },
-            options: Options(headers: {
-              "Platform": company,
-            }, contentType: _contentType, responseType: ResponseType.json))
-        .catchError((e) {
-      Response response = e.response;
-      return response;
-    });
-    if (HttpStatus.ok == response.statusCode) {
-      LoginAuth loginAuth = LoginAuth.fromJson(response.data);
-      CacheManager.saveUserData(loginAuth);
-      log(loginAuth.userJson.toString());
-      return true;
-    } else {
+    try {
+      final response = await dio.get(ApiUrls.token.url, data: {
+        "grant_type": _grantType,
+        "username": username,
+        "password": password
+      });
+
+      if (HttpStatus.ok == response.statusCode) {
+        LoginAuth loginAuth = LoginAuth()..accessToken = response.data["access_token"];
+        CacheManager.saveUserData(loginAuth);
+        log(loginAuth.userJson.toString());
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      log(e.toString());
       return false;
     }
   }
-  
 }

@@ -1,23 +1,28 @@
+import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:picker/core/base/model/base_network_model.dart';
 
 class NetworkManager {
-  static late final NetworkManager _instance;
-  static NetworkManager get instance {
-    return _instance;
-  }
+  static final Dio _dio = Dio(BaseOptions(
+    baseUrl: "http://ofis.bracket.com.tr:7575/pickerBracket/",
+  ));
 
-  NetworkManager._init();
+  static Future<T> dioResponse<T extends NetworkManagerMixin>(
+      {required String path,
+      required T bodyModel,
+      required String method,
+      Map<String, dynamic>? headers,
+      dynamic data,
+      Map<String, dynamic>? queryParameters}) async {
+      final response = await _dio.request(path,
+          queryParameters: queryParameters,
+          options: Options(
+              headers: headers,
+              method: method,
+              responseType: ResponseType.json),
+          data: data);
+        return bodyModel.fromJson(response.data);
 
-  final Dio _dio = Dio();
-
-  Future<Response> get(String path, {required Map<String, dynamic> queryParameters}) async {
-    final response = await _dio.get(path, queryParameters: queryParameters);
-    return response;
-  }
-
-  Future<Response> post(String path, {required Map<String, dynamic> queryParameters, dynamic data}) async {
-    final response = await _dio.post(path, queryParameters: queryParameters, data: data);
-    return response;
   }
 }

@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../dialog/dialog_manager.dart';
+import '../../base/state/base_state.dart';
 
-class EndDrawer extends StatelessWidget {
+
+class EndDrawer extends StatefulWidget {
   const EndDrawer({super.key});
 
+  @override
+  State<EndDrawer> createState() => _EndDrawerState();
+}
+
+class _EndDrawerState extends BaseState<EndDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -12,17 +18,19 @@ class EndDrawer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(color: Colors.red),
-            margin: EdgeInsets.all(10),
-            padding: EdgeInsets.all(10),
-            duration: Duration(seconds: 10),
-            child: Text("Favorite"),
+          DrawerHeader(
+            decoration: BoxDecoration(color: theme.canvasColor),
+            margin: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
+            duration: const Duration(seconds: 10),
+            child: const Text("Favorite"),
           ),
           ListTile(
             leading: const Icon(Icons.logout_outlined),
             title: const Text("Çıkış Yap"),
-            onTap: () => DialogManager.exitDialog(context),
+            onTap: () {
+              dialogManager.showExitDialog();
+            },
           )
         ]));
   }

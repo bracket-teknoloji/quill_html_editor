@@ -1,9 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:kartal/kartal.dart';
+import 'package:get/get.dart';
+
+import '../../../view/auth/model/companies.dart';
 
 class DialogManager {
-  static Future<void> exitDialog(BuildContext context) {
-    return showDialog(
+  late final BuildContext context;
+
+  DialogManager() {
+    context = Get.context!;
+  }
+
+  ///
+  /// [Dialog Controllers] dialogların kontrolü için kullanılır.
+  ///
+  void showSnackBar(String message) => ScaffoldMessenger.of(context)
+      .showSnackBar(snackBarError(message))
+      .closed
+      .then((value) => ScaffoldMessenger.of(context).clearSnackBars());
+
+  void showAlertDialog(String message) => showDialog(
+        context: context,
+        builder: (context) => warningAlertDialog(message),
+      );
+
+  void showLoadingDialog() => showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) => loadingDialog(),
+      );
+
+  void showExitDialog() => showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
@@ -17,67 +43,74 @@ class DialogManager {
                   child: const Text("Hayır")),
               ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, "/");
+                    Get.offAllNamed("/");
                   },
                   child: const Text("Evet")),
             ],
           );
-        });
+        },
+      );
+
+  void get hideSnackBar => ScaffoldMessenger.of(context).clearSnackBars();
+
+  void get hideAlertDialog => Get.back();
+
+  AlertDialog warningAlertDialog(String message) {
+    return AlertDialog(
+      title: const Text("Uyarı"),
+      content: Text(message),
+      actions: [
+        ElevatedButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: const Text("Tamam")),
+      ],
+    );
   }
 
-  static void loadingDialog(BuildContext context) {
-    showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (context) {
-          return const AlertDialog(
-            title: Text("Loading..."),
-            content: SizedBox(
-                height: 10,
-                width: 50,
-                child: LinearProgressIndicator(
-                  color: Colors.red,
-                )),
-          );
-        });
+  AlertDialog loadingDialog() {
+    return const AlertDialog(
+      title: Text("Yükleniyor..."),
+      content: SizedBox(
+          height: 10,
+          width: 50,
+          child: LinearProgressIndicator(
+            color: Colors.red,
+          )),
+    );
   }
 
-  static Future<String> listTileDialog(
-      {required BuildContext context, required String title}) async {
-    String? data;
-    List tileNames = List.generate(4, (index) => "netfect");
-    await showDialog<String>(
-        barrierDismissible: false,
-        context: context,
-        builder: (context) {
-          var children2 = [
-            ...List.generate(
-              4,
-              (index) => RadioListTile(
-                groupValue: 1,
-                value: "$index",
-                title: Text("netfect $index",
-                    style: TextStyle(color: context.colorScheme.error)),
-                onChanged: (dynamic value) {
-                  data = tileNames[index];
-                  Navigator.of(context).pop();
-                },
-              ),
-            ),
-          ];
-          return AlertDialog(
-            title: Text(title),
-            content:
-                Column(mainAxisSize: MainAxisSize.min, children: children2),
-            actions: [
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text("İptal")),
-            ],
-          );
-        });
-    return data ?? "Veri gelmedi";
+  AlertDialog listTileDialog(
+      {required String title, required List<Companies> list}) {
+    return AlertDialog(
+      title: Text(title),
+      content: Column(mainAxisSize: MainAxisSize.min, children: [
+        ...List.generate(
+          list.length,
+          (index) => RadioListTile(
+            groupValue: 1,
+            value: "netfect",
+            title: Text(list[index].email,
+                style: const TextStyle(color: Colors.red)),
+            onChanged: (dynamic value) {
+              Get.back(result: value);
+            },
+          ),
+        ),
+      ]),
+      actions: [ElevatedButton(onPressed: (){}, child: const Text("Firmaları Düzenle")),
+        ElevatedButton(
+            onPressed: () {
+              dynamic result = "";
+              Get.back(result: result);
+            },
+            child: const Text("İptal")),
+      ],
+    );
   }
+
+  SnackBar snackBarError(String message) => SnackBar(
+        content: Text(message),
+      );
 }

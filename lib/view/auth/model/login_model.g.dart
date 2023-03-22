@@ -8,7 +8,7 @@ part of 'login_model.dart';
 
 class LoginAuthAdapter extends TypeAdapter<LoginAuth> {
   @override
-  final int typeId = 0;
+  final int typeId = 99;
 
   @override
   LoginAuth read(BinaryReader reader) {
@@ -16,20 +16,21 @@ class LoginAuthAdapter extends TypeAdapter<LoginAuth> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return LoginAuth(
-      accessToken: fields[0] as String?,
-      tokenType: fields[1] as String?,
-      expiresIn: fields[2] as int?,
-      userJson: (fields[3] as Map?)?.cast<String, dynamic>(),
-      issued: fields[4] as String?,
-      expires: fields[5] as String?,
-    );
+    return LoginAuth()
+      ..accessToken = fields[0] as String?
+      ..tokenType = fields[1] as String?
+      ..expiresIn = fields[2] as int?
+      ..userJson = fields[3] as UserJson?
+      ..issued = fields[4] as String?
+      ..expires = fields[5] as String?
+      ..error = fields[6] as String?
+      ..errorDescription = fields[7] as String?;
   }
 
   @override
   void write(BinaryWriter writer, LoginAuth obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.accessToken)
       ..writeByte(1)
@@ -41,7 +42,11 @@ class LoginAuthAdapter extends TypeAdapter<LoginAuth> {
       ..writeByte(4)
       ..write(obj.issued)
       ..writeByte(5)
-      ..write(obj.expires);
+      ..write(obj.expires)
+      ..writeByte(6)
+      ..write(obj.error)
+      ..writeByte(7)
+      ..write(obj.errorDescription);
   }
 
   @override
@@ -54,3 +59,43 @@ class LoginAuthAdapter extends TypeAdapter<LoginAuth> {
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+LoginAuth _$LoginAuthFromJson(Map<String, dynamic> json) {
+  $checkKeys(
+    json,
+    allowedKeys: const [
+      'access_token',
+      'token_type',
+      'expires_in',
+      'USER_JSON',
+      '.issued',
+      '.expires',
+      'error',
+      'error_description'
+    ],
+  );
+  return LoginAuth()
+    ..accessToken = json['access_token'] as String?
+    ..tokenType = json['token_type'] as String?
+    ..expiresIn = json['expires_in'] as int?
+    ..userJson = UserJson.fromJson(json['USER_JSON'] as String)
+    ..issued = json['.issued'] as String?
+    ..expires = json['.expires'] as String?
+    ..error = json['error'] as String?
+    ..errorDescription = json['error_description'] as String?;
+}
+
+Map<String, dynamic> _$LoginAuthToJson(LoginAuth instance) => <String, dynamic>{
+      'access_token': instance.accessToken,
+      'token_type': instance.tokenType,
+      'expires_in': instance.expiresIn,
+      'USER_JSON': instance.userJson,
+      '.issued': instance.issued,
+      '.expires': instance.expires,
+      'error': instance.error,
+      'error_description': instance.errorDescription,
+    };

@@ -3,7 +3,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../base/state/base_state.dart';
 import '../../constants/ui_helper/radius_ui_helper.dart';
-import '../snackbar/snackbar.dart';
 
 class CustomGridTile extends StatefulWidget {
   final Column child;
@@ -31,9 +30,8 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
       splashColor: Colors.amber,
       onTap: () {
         var box = Hive.box("login");
-        debugPrint(box.get("user").toString());
-        hideSnackBar();
-        showSnackBar(SnackBarManager.snackBarOnClick(widget.name));
+        debugPrint(box.get("burak").toString());
+        dialogManager.showSnackBar("${widget.name} tıklandı");
       },
       child: Card(
         shape: const RoundedRectangleBorder(

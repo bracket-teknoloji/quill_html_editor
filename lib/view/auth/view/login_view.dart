@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/constants/enum/dio_enum.dart';
+import 'package:picker/core/init/network/login/api_urls.dart';
+import 'package:picker/core/init/network/network_manager.dart';
+import 'package:picker/view/auth/model/companies.dart';
+import 'package:picker/view/auth/model/login_model.dart';
 
 import '../../../core/base/state/base_state.dart';
-import '../../../core/components/dialog/dialog_manager.dart';
-import '../../../core/components/snackbar/snackbar.dart';
 import '../../../core/constants/image/image_enums.dart';
 import '../../../core/constants/login_page_constants.dart';
 import '../../../core/init/network/login/login_service.dart';
@@ -29,8 +32,10 @@ class _LoginViewState extends BaseState<LoginView> {
   void initState() {
     super.initState();
     emailController = TextEditingController();
+    emailController.text = Hive.box("preferences").get("email") ?? "";
     companyController = TextEditingController();
     passwordController = TextEditingController();
+    passwordController.text = Hive.box("preferences").get("password") ?? "";
   }
 
   @override
@@ -68,77 +73,91 @@ class _LoginViewState extends BaseState<LoginView> {
               primary: false,
               extendBodyBehindAppBar: true,
               backgroundColor: Colors.transparent,
-              body: Padding(
-                padding: context.horizontalPaddingHigh,
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      AnimatedContainer(
-                        duration: const Duration(seconds: 10),
-                        child: Padding(
-                          padding: context.paddingMedium,
-                          child: Image.asset(ImageEnum.pickerLogo.path,
-                              height: context.isKeyBoardOpen ? 50 : 100),
+              body: SingleChildScrollView(
+                child: Padding(
+                  padding: context.horizontalPaddingHigh,
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        AnimatedContainer(
+                          duration: const Duration(seconds: 10),
+                          child: Padding(
+                            padding: context.paddingMedium,
+                            child: Image.asset(ImageEnum.pickerLogo.path,
+                                height: context.isKeyBoardOpen ? 50 : 100),
+                          ),
                         ),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Wrap(
-                            children: [
-                              const Text("Firma"),
-                              TextFormField(
-                                readOnly: true,
-                                onTap: () async {
-                                  company = await DialogManager.listTileDialog(
-                                          title: "Firma Seçiniz",
-                                          context: context);
-                                  setState(() {});
-                                },
-                                decoration: const InputDecoration(
-                                    suffixIcon: Icon(Icons.arrow_drop_down)),
-                                controller:
-                                    TextEditingController(text: company),
-                                textInputAction: TextInputAction.next,
-                              ),
-                            ],
-                          ),
-                          Wrap(
-                            children: [
-                              const Text("Email"),
-                              TextFormField(
-                                controller: emailController,
-                                textInputAction: TextInputAction.next,
-                              ),
-                            ],
-                          ),
-                          Wrap(
-                            children: [
-                              const Text("Password"),
-                              TextField(
-                                textInputAction: TextInputAction.go,
-                                obscureText: isObscure,
-                                decoration: InputDecoration(
-                                    suffixIcon: IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            isObscure = !isObscure;
-                                          });
-                                        },
-                                        icon: isObscure
-                                            ? const Icon(Icons.visibility)
-                                            : const Icon(
-                                                Icons.visibility_off))),
-                                controller: passwordController,
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                      elevatedButton(
-                          emailController, passwordController, context),
-                    ]),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Wrap(
+                              children: [
+                                const Text("Firma"),
+                                TextFormField(
+                                  readOnly: true,
+                                  onTap: () async {
+                                    company = await showAlertDialog(
+                                        dialogManager.listTileDialog(
+                                            title: "Firma Seçiniz",
+                                            list: [
+                                          Companies(
+                                              email: "sdl",
+                                              password: "lskdjflksdf"),
+                                          Companies(
+                                              email: "sdl",
+                                              password: "lskdjflksdf"),
+                                          Companies(
+                                              email: "sdl",
+                                              password: "lskdjflksdf"),
+                                        ]));
+
+                                    setState(() {});
+                                  },
+                                  decoration: const InputDecoration(
+                                      suffixIcon: Icon(Icons.arrow_drop_down)),
+                                  controller:
+                                      TextEditingController(text: company),
+                                  textInputAction: TextInputAction.next,
+                                ),
+                              ],
+                            ),
+                            Wrap(
+                              children: [
+                                const Text("Email"),
+                                TextFormField(
+                                  controller: emailController,
+                                  textInputAction: TextInputAction.next,
+                                ),
+                              ],
+                            ),
+                            Wrap(
+                              children: [
+                                const Text("Password"),
+                                TextField(
+                                  textInputAction: TextInputAction.go,
+                                  obscureText: isObscure,
+                                  decoration: InputDecoration(
+                                      suffixIcon: IconButton(
+                                          onPressed: () {
+                                            setState(() {
+                                              isObscure = !isObscure;
+                                            });
+                                          },
+                                          icon: isObscure
+                                              ? const Icon(Icons.visibility)
+                                              : const Icon(
+                                                  Icons.visibility_off))),
+                                  controller: passwordController,
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                        elevatedButton(
+                            emailController, passwordController, context),
+                      ]),
+                ),
               )),
         ],
       ),
@@ -149,28 +168,45 @@ class _LoginViewState extends BaseState<LoginView> {
       TextEditingController passwordController, BuildContext context) {
     return ElevatedButton(
         onPressed: () async {
-          DialogManager.loadingDialog(context);
+          dialogManager.showLoadingDialog();
+
           if (emailController.text.isNotEmpty &&
               passwordController.text.isNotEmpty) {
-            await LoginManager.login(
-                    company: company,
-                    username: emailController.text,
-                    password: passwordController.text)
-                .then((value) {
-              Navigator.of(context, rootNavigator: true).pop();
-              if (value == true) {
-                Navigator.restorablePopAndPushNamed(
-                  context,
-                  "/mainPage",
-                );
-              } else {
-                hideSnackBar();
-                showSnackBar(SnackBarManager.snackBarError);
+            {
+              try {
+                await NetworkManager.dioResponse<LoginAuth>(
+                    path: ApiUrls.token.url,
+                    bodyModel: LoginAuth(),
+                    method: HttpTypes.GET.rawValue,
+                    headers: {
+                      "Platform": "netfect",
+                      "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    data: {
+                      "grant_type": "password",
+                      "username": emailController.text,
+                      "password": passwordController.text,
+                    }).then((value) {
+                  Hive.box("preferences").put("email", emailController.text);
+                  debugPrint("${Hive.box("preferences").get("email")}");
+                  Hive.box("preferences")
+                      .put("password", passwordController.text);
+                  debugPrint("${Hive.box("preferences").get("password")}");
+                  Navigator.restorablePopAndPushNamed(
+                    context,
+                    "/mainPage",
+                  );
+                });
+              } catch (e) {
+                Navigator.of(context, rootNavigator: true).pop();
+                dialogManager.hideSnackBar;
+                dialogManager.showSnackBar("Hatalı giriş yaptınız.");
               }
-            });
+            }
           } else {
-            hideSnackBar();
-            showSnackBar(SnackBarManager.snackBarErrorMissingValue);
+            Navigator.of(context, rootNavigator: true).pop();
+            dialogManager.hideSnackBar;
+            dialogManager.showSnackBar("Lütfen boş alan bırakmayınız.");
           }
         },
         child: const Text(

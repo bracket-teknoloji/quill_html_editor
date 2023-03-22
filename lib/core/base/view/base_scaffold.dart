@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/components/dialog/dialog_manager.dart';
+import '../state/base_state.dart';
 
 class BaseScaffold extends StatefulWidget {
   final Widget Function(BuildContext context, dynamic value) builder;
@@ -11,7 +11,7 @@ class BaseScaffold extends StatefulWidget {
   State<BaseScaffold> createState() => _BaseScaffoldState();
 }
 
-class _BaseScaffoldState extends State<BaseScaffold> {
+class _BaseScaffoldState extends BaseState<BaseScaffold> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -19,7 +19,7 @@ class _BaseScaffoldState extends State<BaseScaffold> {
           body: widget.builder(context, widget.viewModel),
         ),
         onWillPop: () async {
-          DialogManager.exitDialog(context);
+          dialogManager.showExitDialog();
           return false;
         });
   }
