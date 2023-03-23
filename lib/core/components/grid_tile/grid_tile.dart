@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:picker/core/constants/enum/dio_enum.dart';
+import 'package:picker/core/init/network/login/api_urls.dart';
+import 'package:picker/view/auth/model/companies.dart';
 
 import '../../base/state/base_state.dart';
 import '../../constants/ui_helper/radius_ui_helper.dart';
 
 class CustomGridTile extends StatefulWidget {
-  final Column child;
-  final Widget? header;
-  final Widget? footer;
   final Color? color;
+  final Column child;
   final String name;
+  final Widget? footer;
+  final Widget? header;
   const CustomGridTile(
       {super.key,
       required this.child,
@@ -28,10 +30,15 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
     return InkWell(
       borderRadius: BorderRadiusHelper.radiusAllMid,
       splashColor: Colors.amber,
-      onTap: () {
-        var box = Hive.box("login");
-        debugPrint(box.get("burak").toString());
-        dialogManager.showSnackBar("${widget.name} tıklandı");
+      onTap: () async {
+        dialogManager.showLoadingDialog();
+        dialogManager.hideAlertDialog;
+        final response = await networkManager.dioResponse<Companies>(
+          path: ApiUrls.veriTabanlari,
+          bodyModel: Companies(),
+          method: HttpTypes.GET,
+        );
+        dialogManager.showAlertDialog("${response.data![0].toJson()}");
       },
       child: Card(
         shape: const RoundedRectangleBorder(

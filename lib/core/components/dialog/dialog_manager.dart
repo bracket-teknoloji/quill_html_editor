@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../view/auth/model/companies.dart';
-
 class DialogManager {
   late final BuildContext context;
 
@@ -19,6 +17,8 @@ class DialogManager {
       .then((value) => ScaffoldMessenger.of(context).clearSnackBars());
 
   void showAlertDialog(String message) => showDialog(
+        barrierDismissible: false,
+        useRootNavigator: false,
         context: context,
         builder: (context) => warningAlertDialog(message),
       );
@@ -81,8 +81,7 @@ class DialogManager {
     );
   }
 
-  AlertDialog listTileDialog(
-      {required String title, required List<Companies> list}) {
+  AlertDialog listTileDialog({required String title, required List list}) {
     return AlertDialog(
       title: Text(title),
       content: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -91,15 +90,16 @@ class DialogManager {
           (index) => RadioListTile(
             groupValue: 1,
             value: "netfect",
-            title: Text(list[index].email,
-                style: const TextStyle(color: Colors.red)),
+            title: Text(list[index], style: const TextStyle(color: Colors.red)),
             onChanged: (dynamic value) {
               Get.back(result: value);
             },
           ),
         ),
       ]),
-      actions: [ElevatedButton(onPressed: (){}, child: const Text("Firmaları Düzenle")),
+      actions: [
+        ElevatedButton(
+            onPressed: () {}, child: const Text("Firmaları Düzenle")),
         ElevatedButton(
             onPressed: () {
               dynamic result = "";

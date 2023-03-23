@@ -6,17 +6,17 @@ part of 'login_model.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class LoginAuthAdapter extends TypeAdapter<LoginAuth> {
+class TokenModelAdapter extends TypeAdapter<TokenModel> {
   @override
   final int typeId = 99;
 
   @override
-  LoginAuth read(BinaryReader reader) {
+  TokenModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return LoginAuth()
+    return TokenModel()
       ..accessToken = fields[0] as String?
       ..tokenType = fields[1] as String?
       ..expiresIn = fields[2] as int?
@@ -28,7 +28,7 @@ class LoginAuthAdapter extends TypeAdapter<LoginAuth> {
   }
 
   @override
-  void write(BinaryWriter writer, LoginAuth obj) {
+  void write(BinaryWriter writer, TokenModel obj) {
     writer
       ..writeByte(8)
       ..writeByte(0)
@@ -55,7 +55,7 @@ class LoginAuthAdapter extends TypeAdapter<LoginAuth> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is LoginAuthAdapter &&
+      other is TokenModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -64,7 +64,7 @@ class LoginAuthAdapter extends TypeAdapter<LoginAuth> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-LoginAuth _$LoginAuthFromJson(Map<String, dynamic> json) {
+TokenModel _$TokenModelFromJson(Map<String, dynamic> json) {
   $checkKeys(
     json,
     allowedKeys: const [
@@ -78,7 +78,7 @@ LoginAuth _$LoginAuthFromJson(Map<String, dynamic> json) {
       'error_description'
     ],
   );
-  return LoginAuth()
+  return TokenModel()
     ..accessToken = json['access_token'] as String?
     ..tokenType = json['token_type'] as String?
     ..expiresIn = json['expires_in'] as int?
@@ -89,7 +89,8 @@ LoginAuth _$LoginAuthFromJson(Map<String, dynamic> json) {
     ..errorDescription = json['error_description'] as String?;
 }
 
-Map<String, dynamic> _$LoginAuthToJson(LoginAuth instance) => <String, dynamic>{
+Map<String, dynamic> _$TokenModelToJson(TokenModel instance) =>
+    <String, dynamic>{
       'access_token': instance.accessToken,
       'token_type': instance.tokenType,
       'expires_in': instance.expiresIn,

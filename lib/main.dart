@@ -3,10 +3,10 @@ import "package:get/get_navigation/src/root/get_material_app.dart";
 import "package:get/get_navigation/src/routes/get_route.dart";
 import "package:get/get_navigation/src/routes/transitions_type.dart";
 import "package:hive_flutter/hive_flutter.dart";
-import "package:picker/core/init/device_info/device_info.dart";
-import "core/init/theme/app_theme_dark.dart";
-import "view/auth/view/login_view.dart";
-import "view/main_page/view/main_page_view.dart";
+import "package:picker/core/init/theme/app_theme_dark.dart";
+import "package:picker/view/add_company/view/add_company_view.dart";
+import "package:picker/view/auth/view/login_view.dart";
+import "package:picker/view/main_page/view/main_page_view.dart";
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,13 +15,8 @@ Future<void> main() async {
   await Hive.openBox("DeviceInfo");
   await Hive.openBox("preferences");
   await Hive.openBox("companies");
+  await Hive.openBox("token");
   WidgetsFlutterBinding.ensureInitialized();
-  await DeviceInfoModel().deviceData.then((value) {
-    value.forEach((key, value) {
-      debugPrint("{key: $key,value: $value}");
-      Hive.box("DeviceInfo").put(key, value);
-    });
-  });
   runApp(const MyApp());
 }
 
@@ -32,17 +27,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: "Picker",
+      home: const LoginView(),
       getPages: [
         GetPage(
-            name: "/",
-            page: () => const LoginView(),
-            transition: Transition.native,
-            transitionDuration: const Duration(milliseconds: 500)),
+          name: "/mainPage",
+          page: () => const MainPageView(),
+          transition: Transition.cupertino,
+        ),
         GetPage(
-            name: "/mainPage",
-            page: () => const MainPageView(),
-            transition: Transition.native,
-            transitionDuration: const Duration(milliseconds: 500)),
+          name: "/addCompany",
+          page: () => const AddCompanyView(),
+          transition: Transition.native,
+        ),
       ],
       debugShowCheckedModeBanner: false,
       theme: AppThemeDark.instance!.theme,

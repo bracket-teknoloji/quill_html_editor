@@ -28,57 +28,59 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  flutter:
-    sdk: flutter
 
   #UI Dependencies
   animate_icons: ^2.0.0
   cupertino_icons: ^1.0.2
-  google_fonts: ^4.0.3
-  toast: ^0.3.0
-  flutter_staggered_animations: ^1.1.1
 
-  #State Management Dependencies
-  flutter_mobx: ^2.0.6+5
-  get: ^4.6.5
-  mobx: ^2.1.4
-  mobx_codegen: ^2.1.1
+  #Info Dependencies
+  device_info_plus: ^8.1.0
 
   #Network Dependencies
   dio: ^5.0.2
+  equatable: ^2.0.5
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.2
 
-  #Utils Dependencies
-  kartal: ^2.8.0
-
+  #State Management Dependencies
+  flutter_mobx: ^2.0.6+5
+  flutter_staggered_animations: ^1.1.1
+  get: ^4.6.5
+  google_fonts: ^4.0.3
 
   #Hive Caching Dependencies
   hive: ^2.0.4
   hive_flutter: ^1.0.0
+  http: ^0.13.5
 
   #Json Serialization Dependencies
   json_serializable: ^6.6.1
   json_annotation: ^4.8.0
 
-  #Info Dependencies
-  device_info_plus: ^8.1.0
+  #Utils Dependencies
+  kartal: ^2.8.0
+  mobx: ^2.1.4
+  mobx_codegen: ^2.1.1
   package_info_plus: ^3.0.3
-
+  toast: ^0.3.0
 
 dev_dependencies:
+  build_runner: any
+  chopper_generator: ^6.0.0
   flutter_lints: ^2.0.0
   flutter_native_splash: ^2.2.19
-  build_runner: any
-  hive_generator: ^2.0.0
   flutter_test:
     sdk: flutter
+  hive_generator: ^2.0.0
   retrofit_generator: ^6.0.0+1
-  chopper_generator: ^6.0.0
 
 flutter_native_splash:
   color: "#FFFFFF"
   image: "assets/splash/picker_logo.png"
   color_dark: "#000000"
   image_dark: "assets/splash/picker_logo.png"
+  fill: false
 
   android: true
   ios: true

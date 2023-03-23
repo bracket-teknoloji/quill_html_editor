@@ -1,13 +1,14 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:picker/core/base/model/base_network_model.dart';
+import 'package:picker/core/base/model/base_network_mixin.dart';
+
 import 'user_json_model.dart';
 
 part 'login_model.g.dart';
 
 @HiveType(typeId: 99)
 @JsonSerializable(disallowUnrecognizedKeys: true)
-class LoginAuth with NetworkManagerMixin {
+class TokenModel with NetworkManagerMixin {
   @HiveField(0)
   @JsonKey(
     name: "access_token",
@@ -38,20 +39,22 @@ class LoginAuth with NetworkManagerMixin {
   @JsonKey(name: "error_description")
   String? errorDescription;
 
-  LoginAuth();
+  TokenModel();
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$LoginAuthToJson(this);
+  toString() {
+    return error == null
+        ? "TokenModel {\n accessToken: $accessToken,\n tokenType: $tokenType,\n expiresIn: $expiresIn,\n userJson: $userJson,\n issued: $issued,\n expires: $expires \n}"
+        : "TokenModel {\n error: $error,\n errorDescription: $errorDescription \n}";
   }
 
   @override
   fromJson(Map<String, dynamic> json) {
-    return _$LoginAuthFromJson(json);
+    return _$TokenModelFromJson(json);
   }
 
   @override
-  toString() {
-    return error ==null ?"LoginAuth {\n accessToken: $accessToken,\n tokenType: $tokenType,\n expiresIn: $expiresIn,\n userJson: $userJson,\n issued: $issued,\n expires: $expires \n}" : "LoginAuth {\n error: $error,\n errorDescription: $errorDescription \n}";
+  Map<String, dynamic> toJson() {
+    return _$TokenModelToJson(this);
   }
 }

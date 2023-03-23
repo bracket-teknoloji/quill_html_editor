@@ -1,18 +1,10 @@
-// ignore: constant_identifier_names
-enum HttpTypes { GET, POST, CONNECT }
 
-extension HttpTypesExtension on HttpTypes {
-  String get rawValue {
-    switch (this) {
-      case HttpTypes.GET:
-        return "GET";
-      case HttpTypes.POST:
-        return "POST";
-      case HttpTypes.CONNECT:
-        return "CONNECT";
+// ignore_for_file: constant_identifier_names
 
-      default:
-        throw "Error";
-    }
-  }
+class HttpTypes {
+  static const String GET = "GET";
+  static const String POST = "POST";
+  static const String PUT = "PUT";
+  static const String DELETE = "DELETE";
+  static const String PATCH = "PATCH";
 }
