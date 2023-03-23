@@ -1,8 +1,11 @@
+import "dart:developer";
+
 import "package:flutter/material.dart";
 import "package:get/get_navigation/src/root/get_material_app.dart";
 import "package:get/get_navigation/src/routes/get_route.dart";
 import "package:get/get_navigation/src/routes/transitions_type.dart";
 import "package:hive_flutter/hive_flutter.dart";
+import "package:picker/core/init/app_info/app_info.dart";
 import "package:picker/core/init/theme/app_theme_dark.dart";
 import "package:picker/view/add_company/view/add_company_view.dart";
 import "package:picker/view/auth/view/login_view.dart";
@@ -26,18 +29,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      checkerboardOffscreenLayers: false,
       title: "Picker",
       home: const LoginView(),
       getPages: [
         GetPage(
           name: "/mainPage",
           page: () => const MainPageView(),
-          transition: Transition.cupertino,
         ),
         GetPage(
           name: "/addCompany",
           page: () => const AddCompanyView(),
-          transition: Transition.native,
         ),
       ],
       debugShowCheckedModeBanner: false,

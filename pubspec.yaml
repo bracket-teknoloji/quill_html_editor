@@ -64,8 +64,13 @@ dependencies:
   mobx_codegen: ^2.1.1
   package_info_plus: ^3.0.3
   toast: ^0.3.0
+flutter_icons:
+  image_path: "assets/app_icon/app_icon.png"
+  android: true
+    
 
 dev_dependencies:
+  flutter_launcher_icons: "^0.12.0"
   build_runner: any
   chopper_generator: ^6.0.0
   flutter_lints: ^2.0.0
@@ -84,7 +89,7 @@ flutter_native_splash:
 
   android: true
   ios: true
-  web: true
+  web: false
   macos: false
   windows: true
   linux: false

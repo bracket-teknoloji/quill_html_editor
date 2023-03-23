@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:picker/core/base/model/base_network_mixin.dart';
@@ -17,7 +16,7 @@ class AppInfoModel with NetworkManagerMixin {
 
   void getAppFile() async {
     var appData = await AppInfoModel().getAppData;
-    log(appData.toString());
+    print(appData.toString());
   }
 
   @override

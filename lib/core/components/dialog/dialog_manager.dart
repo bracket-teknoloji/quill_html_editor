@@ -89,8 +89,8 @@ class DialogManager {
           list.length,
           (index) => RadioListTile(
             groupValue: 1,
-            value: "netfect",
             title: Text(list[index], style: const TextStyle(color: Colors.red)),
+            value: "netfect",
             onChanged: (dynamic value) {
               Get.back(result: value);
             },
@@ -99,7 +99,10 @@ class DialogManager {
       ]),
       actions: [
         ElevatedButton(
-            onPressed: () {}, child: const Text("Firmaları Düzenle")),
+            onPressed: () {
+              Get.toNamed("/addCompany");
+            },
+            child: const Text("Firmaları Düzenle")),
         ElevatedButton(
             onPressed: () {
               dynamic result = "";

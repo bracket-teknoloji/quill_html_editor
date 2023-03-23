@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:kartal/kartal.dart';
 import 'package:picker/core/init/network/login/api_urls.dart';
@@ -20,7 +19,7 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends BaseState<LoginView> {
   bool isObscure = true;
   bool isRemember = true;
-  Key key = Key("Login");
+
   String company = "";
 
   late final TextEditingController emailController;
@@ -34,7 +33,6 @@ class _LoginViewState extends BaseState<LoginView> {
     companyController = TextEditingController();
     passwordController = TextEditingController();
     passwordController.text = Hive.box("preferences").get("password") ?? "";
-    _login(emailController, passwordController, context);
   }
 
   @override
@@ -96,8 +94,16 @@ class _LoginViewState extends BaseState<LoginView> {
                               const Text("Firma"),
                               TextFormField(
                                 readOnly: true,
-                                onTap: () {
-                                  Get.offAllNamed("/addCompany");
+                                onTap: () async {
+                                  company = await showAlertDialog(dialogManager
+                                      .listTileDialog(
+                                          title: "Firma Seçiniz",
+                                          list: [
+                                        "Firma 1",
+                                        "Firma 2",
+                                        "Firma 3",
+                                      ]));
+                                  setState(() {});
                                 },
                                 decoration: const InputDecoration(
                                     suffixIcon: Icon(Icons.arrow_drop_down)),
@@ -156,48 +162,47 @@ class _LoginViewState extends BaseState<LoginView> {
   ElevatedButton elevatedButton(TextEditingController emailController,
       TextEditingController passwordController, BuildContext context) {
     return ElevatedButton(
-        key: key,
         onPressed: () async {
           dialogManager.showLoadingDialog();
 
-          await _login(emailController, passwordController, context);
+          if (emailController.text.isNotEmpty &&
+              passwordController.text.isNotEmpty) {
+            {
+              try {
+                await NetworkManager.getToken(
+                    path: ApiUrls.token,
+                    bodyModel: TokenModel(),
+                    data: {
+                      "grant_type": "password",
+                      "username": emailController.text,
+                      "password": passwordController.text,
+                    }).then((value) {
+                  Hive.box("preferences").put("email", emailController.text);
+                  debugPrint("${Hive.box("preferences").get("email")}");
+                  Hive.box("preferences")
+                      .put("password", passwordController.text);
+                  Hive.box("token").put("token", value.accessToken);
+                  debugPrint("${Hive.box("preferences").get("password")}");
+                  Navigator.restorablePopAndPushNamed(
+                    context,
+                    "/mainPage",
+                  );
+                });
+              } catch (e) {
+                Navigator.of(context, rootNavigator: true).pop();
+                dialogManager.hideSnackBar;
+                dialogManager.showSnackBar("Hatalı giriş yaptınız.");
+              }
+            }
+          } else {
+            Navigator.of(context, rootNavigator: true).pop();
+            dialogManager.hideSnackBar;
+            dialogManager.showSnackBar("Lütfen boş alan bırakmayınız.");
+          }
         },
         child: const Text(
           "Giriş",
           style: TextStyle(color: Colors.red),
         ));
-  }
-
-  Future<void> _login(TextEditingController emailController,
-      TextEditingController passwordController, BuildContext context) async {
-    if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-      {
-        try {
-          await NetworkManager.getToken(
-              path: ApiUrls.token,
-              bodyModel: TokenModel(),
-              data: {
-                "grant_type": "password",
-                "username": emailController.text,
-                "password": passwordController.text,
-              }).then((value) {
-            Hive.box("preferences").put("email", emailController.text);
-            debugPrint("${Hive.box("preferences").get("email")}");
-            Hive.box("preferences").put("password", passwordController.text);
-            Hive.box("token").put("token", value.accessToken);
-            debugPrint("${Hive.box("preferences").get("password")}");
-            Get.offAllNamed("/mainPage");
-          });
-        } catch (e) {
-          Navigator.of(context, rootNavigator: true).pop();
-          dialogManager.hideSnackBar;
-          dialogManager.showSnackBar("Hatalı giriş yaptınız.");
-        }
-      }
-    } else {
-      Navigator.of(context, rootNavigator: true).pop();
-      dialogManager.hideSnackBar;
-      dialogManager.showSnackBar("Lütfen boş alan bırakmayınız.");
-    }
   }
 }

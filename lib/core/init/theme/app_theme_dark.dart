@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'app_theme.dart';
@@ -14,8 +15,24 @@ class AppThemeDark extends AppTheme {
 
   @override
   ThemeData get theme => ThemeData.dark().copyWith(
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: Colors.black,
+        foregroundColor: Colors.white,
+        shape: CircleBorder(
+          side: BorderSide(color: Colors.white),
+        ),
+      ),
       applyElevationOverlayColor: true,
       dialogBackgroundColor: Colors.blueGrey,
+      bottomSheetTheme: const BottomSheetThemeData(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(2),
+          ),
+        ),
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
@@ -46,7 +63,7 @@ class AppThemeDark extends AppTheme {
         iconColor: Colors.black,
       ),
       cardTheme: CardTheme(
-        color: Colors.red,
+        color: Colors.white,
         shadowColor: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(2),
@@ -57,6 +74,9 @@ class AppThemeDark extends AppTheme {
         tileColor: Colors.white12,
         selectedColor: Colors.blue,
         selectedTileColor: Colors.red,
+        textColor: Colors.black,
+        iconColor: Colors.black,
+        dense: true,
       ),
       drawerTheme: const DrawerThemeData(
           surfaceTintColor: Colors.transparent,
@@ -90,6 +110,11 @@ class AppThemeDark extends AppTheme {
       scaffoldBackgroundColor: Colors.transparent,
       appBarTheme: AppBarTheme(
           titleSpacing: 10,
+          systemOverlayStyle: const SystemUiOverlayStyle(
+            statusBarColor: Colors.transparent,
+            statusBarIconBrightness: Brightness.dark,
+            statusBarBrightness: Brightness.dark,
+          ),
           centerTitle: true,
           titleTextStyle: TextStyle(
             fontFamily: GoogleFonts.roboto().fontFamily,
