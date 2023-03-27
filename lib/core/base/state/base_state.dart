@@ -18,6 +18,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   ThemeData get theme => Theme.of(context);
   Future showAlertDialog(AlertDialog alertDialog) => showDialog(
         barrierDismissible: false,
+        
         context: context,
         builder: (context) => alertDialog,
       );

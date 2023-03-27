@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:picker/core/constants/enum/dio_enum.dart';
-import 'package:picker/core/init/network/login/api_urls.dart';
-import 'package:picker/view/auth/model/companies.dart';
+import '../../constants/enum/dio_enum.dart';
+import '../../init/network/login/api_urls.dart';
+import '../../../view/auth/model/companies.dart';
 
 import '../../base/state/base_state.dart';
 import '../../constants/ui_helper/radius_ui_helper.dart';
@@ -32,13 +32,14 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
       splashColor: Colors.amber,
       onTap: () async {
         dialogManager.showLoadingDialog();
-        dialogManager.hideAlertDialog;
-        final response = await networkManager.dioResponse<Companies>(
+        final response = await networkManager.dioResponse<Company>(
           path: ApiUrls.veriTabanlari,
-          bodyModel: Companies(),
+          bodyModel: Company(),
           method: HttpTypes.GET,
         );
-        dialogManager.showAlertDialog("${response.data![0].toJson()}");
+
+        dialogManager.hideAlertDialog;
+        dialogManager.showAlertDialog(response.toString());
       },
       child: Card(
         shape: const RoundedRectangleBorder(

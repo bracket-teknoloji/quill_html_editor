@@ -1,6 +1,7 @@
-
+import 'package:flutter/material.dart' show debugPrint;
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:picker/core/base/model/base_network_mixin.dart';
+
+import '../../base/model/base_network_mixin.dart';
 
 class AppInfoModel with NetworkManagerMixin {
   static late final PackageInfo _packageInfo;
@@ -16,14 +17,15 @@ class AppInfoModel with NetworkManagerMixin {
 
   void getAppFile() async {
     var appData = await AppInfoModel().getAppData;
-    print(appData.toString());
+    debugPrint(appData.toString());
   }
 
   @override
-  fromJson(Map<String, dynamic> json) {}
+  fromJson(dynamic json) {}
 
   @override
   Map<String, dynamic> toJson() {
     return {};
   }
+
 }

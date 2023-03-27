@@ -31,6 +31,7 @@ class DialogManager {
 
   void showExitDialog() => showDialog(
         context: context,
+        useRootNavigator: false,
         builder: (context) {
           return AlertDialog(
             title: const Text("Çıkış"),
@@ -62,7 +63,7 @@ class DialogManager {
       actions: [
         ElevatedButton(
             onPressed: () {
-              Get.back();
+              Navigator.pop(context);
             },
             child: const Text("Tamam")),
       ],
@@ -98,17 +99,31 @@ class DialogManager {
         ),
       ]),
       actions: [
-        ElevatedButton(
-            onPressed: () {
-              Get.toNamed("/addCompany");
-            },
-            child: const Text("Firmaları Düzenle")),
-        ElevatedButton(
-            onPressed: () {
-              dynamic result = "";
-              Get.back(result: result);
-            },
-            child: const Text("İptal")),
+        Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: ElevatedButton(
+                  onPressed: () {
+                    Get.toNamed("/addCompany");
+                  },
+                  child: const Text("Firmaları Düzenle")),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              flex: 1,
+              child: ElevatedButton(
+                  onPressed: () {
+                    dynamic result = "";
+                    Get.back(result: result);
+                  },
+                  child: const Text(
+                    "İptal",
+                    textAlign: TextAlign.justify,
+                  )),
+            ),
+          ],
+        ),
       ],
     );
   }

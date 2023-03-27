@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:picker/core/base/state/base_state.dart';
+
+import '../../../core/base/state/base_state.dart';
 
 class AddCompanyView extends StatefulWidget {
   const AddCompanyView({super.key});
@@ -10,38 +13,36 @@ class AddCompanyView extends StatefulWidget {
 }
 
 class _AddCompanyViewState extends BaseState<AddCompanyView> {
-  PageController controller = PageController();
+  final PageController controller = PageController();
+  final TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller2 = TextEditingController();
+  bool isMenu = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            if (controller.page == 0) {
-              controller.animateToPage(1,
-                  duration: const Duration(milliseconds: 500),
-                  curve: Curves.easeInOut);
-            } else {
-              controller.animateToPage(0,
-                  duration: const Duration(milliseconds: 500),
-                  curve: Curves.easeInOut);
-            }
-          },
-          child: const Icon(Icons.add),
-        ),
+            onPressed: () {
+              isMenu = !isMenu;
+              setState(() {});
+              if (controller.page == 0) {
+                controller.animateToPage(1,
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.easeInOut);
+              } else {
+                controller.animateToPage(0,
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.easeInOut);
+              }
+            },
+            child: AnimatedRotation(
+              turns: isMenu ? (1 / 8) : 0,
+              duration: const Duration(milliseconds: 200),
+              child: const Icon(Icons.add),
+            )),
         appBar: AppBar(
           title: const Text("Firmalar"),
           centerTitle: false,
-          actions: [
-            controller.initialPage == 0
-                ? IconButton(
-                    onPressed: () {
-                      controller.animateToPage(0,
-                          duration: const Duration(milliseconds: 500),
-                          curve: Curves.easeInOut);
-                    },
-                    icon: const Icon(Icons.arrow_back))
-                : const SizedBox()
-          ],
         ),
         body: PageView(
           physics: const NeverScrollableScrollPhysics(),
@@ -50,7 +51,7 @@ class _AddCompanyViewState extends BaseState<AddCompanyView> {
             ListView(
               children: [
                 Card(
-                  margin: const EdgeInsets.all(8),
+                  margin: context.paddingNormal,
                   child: ListTile(
                     onTap: () {
                       showModalBottomSheet(
@@ -75,13 +76,15 @@ class _AddCompanyViewState extends BaseState<AddCompanyView> {
             Scaffold(
                 backgroundColor: Colors.grey,
                 body: Padding(
-                  padding: context.paddingMedium,
+                  padding: context.paddingNormal,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Wrap(
                         children: [
                           const Text("Firma E-Posta Adresi"),
                           TextFormField(
+                            controller: _controller,
                             decoration: const InputDecoration(
                                 suffixIcon: Icon(Icons.arrow_drop_down)),
                           ),
@@ -91,22 +94,40 @@ class _AddCompanyViewState extends BaseState<AddCompanyView> {
                         children: [
                           const Text("Şifre"),
                           TextFormField(
+                            controller: _controller2,
                             decoration: const InputDecoration(
                                 suffixIcon: Icon(Icons.arrow_drop_down)),
                           ),
                         ],
                       ),
                       Wrap(
+                        direction: Axis.horizontal,
                         children: const [
                           Icon(Icons.question_mark_rounded),
                           Text(
-                              "Bilgileri girerken büyük-küçük uyumuna dikkat ediniz.")
+                            "Bilgileri girerken büyük-küçük uyumuna dikkat ediniz.",
+                            softWrap: true,
+                          )
                         ],
                       ),
+                      ElevatedButton(
+                          onPressed: () {
+                            _getQR(context);
+                          },
+                          child: const Text("QR Kodu Okut"))
                     ],
                   ),
                 ))
           ],
         ));
+  }
+
+  Future<void> _getQR(BuildContext context) async {
+    final qr = await Navigator.of(context).pushNamed("/qr");
+    var map = jsonDecode(qr.toString());
+    if (map is Map) {
+      _controller.text = map["user"];
+      _controller2.text = map["password"];
+    }
   }
 }

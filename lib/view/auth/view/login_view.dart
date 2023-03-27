@@ -1,9 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:kartal/kartal.dart';
-import 'package:picker/core/init/network/login/api_urls.dart';
-import 'package:picker/core/init/network/network_manager.dart';
-import 'package:picker/view/auth/model/login_model.dart';
+import '../../../core/init/network/login/api_urls.dart';
+import '../../../core/init/network/network_manager.dart';
+import '../model/login_model.dart';
 
 import '../../../core/base/state/base_state.dart';
 import '../../../core/constants/image/image_enums.dart';
@@ -79,7 +80,7 @@ class _LoginViewState extends BaseState<LoginView> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       AnimatedContainer(
-                        duration: const Duration(seconds: 10),
+                        duration: const Duration(seconds: 1),
                         child: Padding(
                           padding: context.paddingMedium,
                           child: Image.asset(ImageEnum.pickerLogo.path,
@@ -115,7 +116,7 @@ class _LoginViewState extends BaseState<LoginView> {
                           ),
                           Wrap(
                             children: [
-                              const Text("Email"),
+                              const Text("Netfect Kullanıcı Adı"),
                               TextFormField(
                                 controller: emailController,
                                 textInputAction: TextInputAction.next,
@@ -124,7 +125,7 @@ class _LoginViewState extends BaseState<LoginView> {
                           ),
                           Wrap(
                             children: [
-                              const Text("Password"),
+                              Text("Şifre", style: context.textTheme.bodySmall),
                               TextField(
                                 controller: passwordController,
                                 textInputAction: TextInputAction.go,
@@ -169,29 +170,31 @@ class _LoginViewState extends BaseState<LoginView> {
               passwordController.text.isNotEmpty) {
             {
               try {
-                await NetworkManager.getToken(
+                final response = await NetworkManager.getToken(
                     path: ApiUrls.token,
                     bodyModel: TokenModel(),
                     data: {
                       "grant_type": "password",
                       "username": emailController.text,
                       "password": passwordController.text,
-                    }).then((value) {
-                  Hive.box("preferences").put("email", emailController.text);
-                  debugPrint("${Hive.box("preferences").get("email")}");
-                  Hive.box("preferences")
-                      .put("password", passwordController.text);
-                  Hive.box("token").put("token", value.accessToken);
-                  debugPrint("${Hive.box("preferences").get("password")}");
-                  Navigator.restorablePopAndPushNamed(
+                    });
+
+                Hive.box("preferences").put("email", emailController.text);
+                debugPrint("${Hive.box("preferences").get("email")}");
+                Hive.box("preferences")
+                    .put("password", passwordController.text);
+                Hive.box("token").put("token", response.accessToken);
+                debugPrint("${Hive.box("preferences").get("password")}");
+                if (context.mounted) {
+                  Navigator.popAndPushNamed(
                     context,
                     "/mainPage",
                   );
-                });
-              } catch (e) {
-                Navigator.of(context, rootNavigator: true).pop();
-                dialogManager.hideSnackBar;
-                dialogManager.showSnackBar("Hatalı giriş yaptınız.");
+                }
+              } on DioError catch (e) {
+                dialogManager.hideAlertDialog;
+                dialogManager.showAlertDialog(
+                    "${e.response!.data["error_description"]}");
               }
             }
           } else {

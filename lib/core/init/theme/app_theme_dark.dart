@@ -42,7 +42,7 @@ class AppThemeDark extends AppTheme {
         backgroundColor: Colors.white,
         textStyle: TextStyle(
           fontFamily: GoogleFonts.roboto().fontFamily,
-          fontSize: 20,
+          fontSize: 15,
           color: Colors.white,
         ),
       )),

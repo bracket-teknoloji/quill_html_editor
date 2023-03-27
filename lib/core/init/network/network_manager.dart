@@ -1,7 +1,5 @@
 // ignore_for_file: avoid_print
 
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:picker/core/base/model/base_network_mixin.dart';
@@ -21,7 +19,6 @@ class NetworkManager {
           return handler.next(options);
         },
         onError: (e, handler) {
-          log("${e.message}", name: "NetworkManager");
           return handler.next(e);
         },
       ),
@@ -34,14 +31,16 @@ class NetworkManager {
       Map<String, dynamic>? headers,
       dynamic data,
       Map<String, dynamic>? queryParameters}) async {
-    final response = await _dio.request(path,
-        queryParameters: queryParameters,
-        options: Options(headers: {
-          "Platform": "netfect",
-          "Content-Type": "application/x-www-form-urlencoded",
-        }, method: HttpTypes.GET, responseType: ResponseType.json),
-        data: data);
-    return bodyModel.fromJson(response.data);
+    final response = await _dio
+        .request(path,
+            queryParameters: queryParameters,
+            options: Options(headers: {
+              "Platform": "netfect",
+              "Content-Type": "application/x-www-form-urlencoded",
+            }, method: HttpTypes.GET, responseType: ResponseType.json),
+            data: data)
+        .then((value) => value.data);
+    return bodyModel.fromJson(response);
   }
 
   Future<GenericResponseModel> dioResponse<T extends NetworkManagerMixin>(
@@ -50,17 +49,21 @@ class NetworkManager {
       required String method,
       Map<String, String>? headers,
       dynamic data,
-      Map<String, dynamic>? queryParameters,
+      Map<String, String>? queryParameters,
+      bool addQuery = true,
       bool addTokenKey = true}) async {
     Map<String, String> head = getStandardHeader(addTokenKey);
     if (headers != null) head.addEntries(headers.entries);
+    Map<String, String> queries = getStandardQueryParameters();
+    if (queryParameters != null) queries.addEntries(queryParameters.entries);
     final response = await _dio.request(path,
-        queryParameters: queryParameters,
+        queryParameters: queries,
         data: data,
         options: Options(
             headers: head, method: method, responseType: ResponseType.json));
-    log("${response.data["Data"][0]}", name: "NetworkManager");
-    return GenericResponseModel<T>.fromJson(response.data, model: bodyModel);
+    GenericResponseModel<T> responseModel =
+        GenericResponseModel<T>.fromJson(response.data, bodyModel);
+    return responseModel;
   }
 
   Map<String, String> getStandardHeader(bool addTokenKey) {
@@ -70,5 +73,10 @@ class NetworkManager {
       header.addAll({"Authorization": "Bearer $token"});
     }
     return header;
+  }
+
+  Map<String, String> getStandardQueryParameters() {
+    Map<String, String> query = {};
+    return query;
   }
 }
