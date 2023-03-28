@@ -48,6 +48,9 @@ class AppThemeDark extends AppTheme {
       )),
       iconTheme: const IconThemeData(color: Colors.white, size: 30),
       dialogTheme: DialogTheme(
+        shape: BeveledRectangleBorder(
+          borderRadius: BorderRadius.circular(2),
+        ),
         backgroundColor: Colors.white,
         surfaceTintColor: Colors.black12,
         titleTextStyle: TextStyle(

@@ -21,12 +21,12 @@ class _AddCompanyViewState extends BaseState<AddCompanyView> {
         floatingActionButton: FloatingActionButton(
             onPressed: () {
               if (controller.page == 0) {
-                isMenu = !isMenu;
+                isMenu = true;
                 controller.animateToPage(1,
                     duration: const Duration(milliseconds: 500),
                     curve: Curves.easeInOut);
               } else {
-                isMenu = !isMenu;
+                isMenu = false;
                 controller.animateToPage(0,
                     duration: const Duration(milliseconds: 500),
                     curve: Curves.easeInOut);
@@ -40,7 +40,7 @@ class _AddCompanyViewState extends BaseState<AddCompanyView> {
             )),
         appBar: AppBar(
           title: Column(
-            children: [const Text("Firmalar")],
+            children: const [Text("Firmalar")],
           ),
           centerTitle: false,
           actions: [

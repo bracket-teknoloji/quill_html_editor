@@ -84,6 +84,8 @@ class DialogManager {
 
   AlertDialog listTileDialog({required String title, required Map data}) {
     return AlertDialog(
+      contentPadding: const EdgeInsets.all(0),
+      actionsOverflowButtonSpacing: 0,
       title: Text(title),
       content: Column(mainAxisSize: MainAxisSize.min, children: [
         ...List.generate(
@@ -101,6 +103,7 @@ class DialogManager {
       ]),
       actions: [
         Row(
+          mainAxisSize: MainAxisSize.max,
           children: [
             Expanded(
               flex: 1,

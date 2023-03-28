@@ -19,21 +19,27 @@ class _AccountsViewState extends State<AccountsView> {
           child: ListTile(
             onTap: () {
               showModalBottomSheet(
+                  isDismissible: true,
                   useSafeArea: true,
                   backgroundColor: LoginConstants.linearGradient.colors[1],
                   context: context,
                   builder: (context) =>
                       Column(mainAxisSize: MainAxisSize.min, children: const [
                         ListTile(
-                          title: Text("Firma Adı"),
-                          subtitle: Text("Bracket Teknoloji"),
+                          trailing: Icon(Icons.edit_outlined),
+                          title: Text("Düzelt"),
                         ),
                         ListTile(
-                            title: Text("Firma E-Posta Adresi"),
-                            subtitle: Text(""))
+                          trailing: Icon(Icons.delete_outline),
+                          title: Text("Sil"),
+                        ),
+                        ListTile(
+                          trailing: Icon(Icons.workspaces_outlined),
+                          title: Text("Sunucu Tercihi"),
+                        )
                       ]));
             },
-            title: const Text("Add Company"),
+            title: const Text("Merhaba"),
             subtitle: const Text("Bracket Teknoloji"),
           ),
         ),
