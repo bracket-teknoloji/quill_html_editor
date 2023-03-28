@@ -32,10 +32,9 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
       splashColor: Colors.amber,
       onTap: () async {
         dialogManager.showLoadingDialog();
-        final response = await networkManager.dioResponse<Company>(
+        final response = await networkManager.dioGet<Company>(
           path: ApiUrls.veriTabanlari,
           bodyModel: Company(),
-          method: HttpTypes.GET,
         );
 
         dialogManager.hideAlertDialog;

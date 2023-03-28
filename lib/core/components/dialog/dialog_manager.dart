@@ -91,7 +91,7 @@ class DialogManager {
           (index) => RadioListTile(
             groupValue: 1,
             title: Text(data.keys.toList()[index],
-                style: const TextStyle(color: Colors.black)),
+                style: const TextStyle(color: Colors.red)),
             value: data,
             onChanged: (dynamic value) {
               Get.back(result: value);

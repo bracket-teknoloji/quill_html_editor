@@ -18,8 +18,10 @@ class _AccountsViewState extends State<AccountsView> {
           child: ListTile(
             onTap: () {
               showModalBottomSheet(
+                  useSafeArea: true,
                   context: context,
-                  builder: (context) => Column(children: const [
+                  builder: (context) =>
+                      Column(mainAxisSize: MainAxisSize.min, children: const [
                         ListTile(
                           title: Text("Firma Adı"),
                           subtitle: Text("Bracket Teknoloji"),
@@ -30,7 +32,6 @@ class _AccountsViewState extends State<AccountsView> {
                       ]));
             },
             title: const Text("Add Company"),
-            trailing: const Icon(Icons.chevron_right_outlined),
             subtitle: const Text("Bracket Teknoloji"),
           ),
         ),

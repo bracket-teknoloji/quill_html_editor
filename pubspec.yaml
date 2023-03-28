@@ -32,6 +32,7 @@ dependencies:
   #UI Dependencies
   animate_icons: ^2.0.0
   cupertino_icons: ^1.0.2
+  google_fonts: ^4.0.3
 
   #Info Dependencies
   device_info_plus: ^8.1.0
@@ -47,7 +48,6 @@ dependencies:
   flutter_mobx: ^2.0.6+5
   flutter_staggered_animations: ^1.1.1
   get: ^4.6.5
-  google_fonts: ^4.0.3
   mobx: ^2.1.4
   mobx_codegen: ^2.1.1
 
@@ -67,6 +67,9 @@ dependencies:
   qr_code_scanner: ^1.0.1
   qr_flutter: ^4.0.0
   permission_handler: ^10.2.0
+  app_install_date: ^0.1.2
+  timezone: ^0.9.1
+  flutter_native_timezone: ^2.0.0
 
   
 flutter_icons:

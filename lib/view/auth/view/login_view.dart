@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/init/app_info/app_info.dart';
 import '../../../core/init/network/login/api_urls.dart';
 import '../../../core/init/network/network_manager.dart';
 import '../model/login_model.dart';
@@ -31,6 +32,9 @@ class _LoginViewState extends BaseState<LoginView> {
   @override
   void initState() {
     super.initState();
+
+    final locales = WidgetsBinding.instance.focusManager;
+    log(locales.toString());
     emailController = TextEditingController();
     emailController.text = Hive.box("preferences").get("email") ?? "";
     companyController = TextEditingController();
@@ -106,7 +110,7 @@ class _LoginViewState extends BaseState<LoginView> {
                                         .copyWith(
                                             fontSize: 15,
                                             fontWeight: FontWeight.w300)),
-                                const Text("V0.1")
+                                Text("V${AppInfoModel.version}")
                               ],
                             ),
                           ),

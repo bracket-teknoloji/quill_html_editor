@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../page_view/company_page.dart';
-import "../page_view/add_account_view.dart";
+import 'package:picker/view/add_company/page_view/company_page.dart';
+import "package:picker/view/add_company/page_view/add_account_view.dart";
+
 import '../../../core/base/state/base_state.dart';
 
 class AddCompanyView extends StatefulWidget {
-  AddCompanyView({super.key});
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  const AddCompanyView({super.key});
 
   @override
   State<AddCompanyView> createState() => _AddCompanyViewState();
@@ -23,12 +23,12 @@ class _AddCompanyViewState extends BaseState<AddCompanyView> {
               if (controller.page == 0) {
                 isMenu = !isMenu;
                 controller.animateToPage(1,
-                    duration: const Duration(milliseconds: 200),
+                    duration: const Duration(milliseconds: 500),
                     curve: Curves.easeInOut);
               } else {
                 isMenu = !isMenu;
                 controller.animateToPage(0,
-                    duration: const Duration(milliseconds: 200),
+                    duration: const Duration(milliseconds: 500),
                     curve: Curves.easeInOut);
               }
               setState(() {});
@@ -39,7 +39,9 @@ class _AddCompanyViewState extends BaseState<AddCompanyView> {
               child: const Icon(Icons.add),
             )),
         appBar: AppBar(
-          title: const Text("Firmalar"),
+          title: Column(
+            children: [const Text("Firmalar")],
+          ),
           centerTitle: false,
           actions: [
             isMenu

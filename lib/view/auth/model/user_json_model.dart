@@ -6,6 +6,7 @@ part 'user_json_model.g.dart';
 
 @JsonSerializable(createToJson: true)
 class UserJson {
+  @JsonKey(name: "ID")
   int? id;
   @JsonKey(name: "KULADI")
   String? kullaniciAdi;

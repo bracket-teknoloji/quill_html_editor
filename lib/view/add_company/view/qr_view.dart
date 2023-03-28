@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -84,10 +86,9 @@ class _QRScannerState extends BaseState<QRScannerView> {
       setState(() {
         barcode = scanData;
         if (barcode?.code != null) {
-          Navigator.pop(
-            context,
-            barcode?.code,
-          );
+          qrViewController?.pauseCamera();
+          log(barcode?.code.toString() ?? "null");
+          Navigator.pop(context, barcode?.code);
         }
       });
     });

@@ -43,10 +43,9 @@ class NetworkManager {
     return bodyModel.fromJson(response);
   }
 
-  Future<GenericResponseModel> dioResponse<T extends NetworkManagerMixin>(
+  Future<GenericResponseModel> dioGet<T extends NetworkManagerMixin>(
       {required String path,
       required bodyModel,
-      required String method,
       Map<String, String>? headers,
       dynamic data,
       Map<String, String>? queryParameters,
@@ -56,11 +55,34 @@ class NetworkManager {
     if (headers != null) head.addEntries(headers.entries);
     Map<String, String> queries = getStandardQueryParameters();
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
-    final response = await _dio.request(path,
-        queryParameters: queries,
-        data: data,
-        options: Options(
-            headers: head, method: method, responseType: ResponseType.json));
+    final response = await _dio.get(
+      path,
+      queryParameters: queries,
+      options: Options(headers: head, responseType: ResponseType.json),
+    );
+    GenericResponseModel<T> responseModel =
+        GenericResponseModel<T>.fromJson(response.data, bodyModel);
+    return responseModel;
+  }
+
+  Future<GenericResponseModel> dioPost<T extends NetworkManagerMixin>(
+      {required String path,
+      required bodyModel,
+      Map<String, String>? headers,
+      dynamic data,
+      Map<String, String>? queryParameters,
+      bool addQuery = true,
+      bool addTokenKey = true}) async {
+    Map<String, String> head = getStandardHeader(addTokenKey);
+    if (headers != null) head.addEntries(headers.entries);
+    Map<String, String> queries = getStandardQueryParameters();
+    if (queryParameters != null) queries.addEntries(queryParameters.entries);
+    final response = await _dio.post(
+      path,
+      queryParameters: queries,
+      options: Options(headers: head, responseType: ResponseType.json),
+      data: data,
+    );
     GenericResponseModel<T> responseModel =
         GenericResponseModel<T>.fromJson(response.data, bodyModel);
     return responseModel;
