@@ -60,6 +60,7 @@ class AccountModel with NetworkManagerMixin {
   String? kuruluHesaplar;
   @JsonKey(name: "LOCAL_IP")
   String? localIp;
+  // TODOözel cihaz kimliği ?
   @JsonKey(name: "OZEL_CIHAZ_KIMLIGI")
   String? ozelCihazKimligi;
   @JsonKey(name: "OFFLINE")
@@ -95,12 +96,19 @@ class AccountModel with NetworkManagerMixin {
   String? wifidenBagli;
 
   Future<void> init() async {
+    NetworkInterface.list().then((value) {
+      localIp = value.first.addresses.first.address;
+    });
     cihazDili = Platform.localeName;
     cihazTimeZoneDakika = DateTime.now().timeZoneOffset.inMinutes;
+
+    //* Uygulama Bilgileri
     final packageInfo = await PackageInfo.fromPlatform();
     paketAdi = packageInfo.packageName;
     uygulamaSurumu = packageInfo.version;
     uygulamaSurumKodu = int.parse(packageInfo.buildNumber);
+
+    //* Cihaz ve Sim Bilgileri
     final deviceInfo = DeviceInfoPlugin();
     if (Platform.isAndroid) {
       platform = Platform.operatingSystem;

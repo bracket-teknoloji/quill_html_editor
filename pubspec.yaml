@@ -70,6 +70,7 @@ dependencies:
   app_install_date: ^0.1.2
   timezone: ^0.9.1
   flutter_native_timezone: ^2.0.0
+  carrier_info: ^2.0.8
 
   
 flutter_icons:

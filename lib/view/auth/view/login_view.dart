@@ -22,7 +22,7 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends BaseState<LoginView> {
   bool isObscure = true;
-  bool isRemember = true;
+  String? version;
 
   Map company = {};
 
@@ -32,6 +32,11 @@ class _LoginViewState extends BaseState<LoginView> {
   @override
   void initState() {
     super.initState();
+    AppInfoModel().init().then((value) {
+      setState(() {
+        version = AppInfoModel.version;
+      });
+    });
     emailController = TextEditingController();
     emailController.text = Hive.box("preferences").get("email") ?? "";
     companyController = TextEditingController();
@@ -45,16 +50,6 @@ class _LoginViewState extends BaseState<LoginView> {
     companyController.dispose();
     passwordController.dispose();
     super.dispose();
-  }
-
-  Future<bool> createRememberBox() async {
-    var box = await Hive.openBox("remember");
-    box.put("remember", isRemember);
-    if (box.get("remember") == true) {
-      return true;
-    } else {
-      return false;
-    }
   }
 
   @override
@@ -107,7 +102,7 @@ class _LoginViewState extends BaseState<LoginView> {
                                         .copyWith(
                                             fontSize: 15,
                                             fontWeight: FontWeight.w300)),
-                                Text("V${AppInfoModel.version}")
+                                Text("V$version")
                               ],
                             ),
                           ),
@@ -115,19 +110,19 @@ class _LoginViewState extends BaseState<LoginView> {
                             children: [
                               const Text("Firma"),
                               TextFormField(
-                                expands: false,
                                 readOnly: true,
                                 onTap: () async {
                                   company = await showAlertDialog(dialogManager
-                                      .listTileDialog(
-                                          title: "Firma Seçiniz",
-                                          data: {
-                                        "user": "demo",
-                                        "password": "demo"
-                                      }));
+                                          .listTileDialog(
+                                              title: "Firma Seçiniz",
+                                              data: {
+                                            "user": "demo",
+                                            "password": "demo"
+                                          })) ??
+                                      {};
                                   emailController.text = company["user"] ?? "";
                                   passwordController.text =
-                                      company["password"] ?? {};
+                                      company["password"].toString();
                                   setState(() {});
                                 },
                                 decoration: const InputDecoration(

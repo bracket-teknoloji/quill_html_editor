@@ -106,7 +106,10 @@ class DialogManager {
               flex: 1,
               child: ElevatedButton(
                   onPressed: () {
-                    Get.toNamed("/addCompany");
+                    Get.offNamed(
+                      "/addCompany",
+                      arguments: data,
+                    );
                   },
                   child: const Text("Firmaları Düzenle")),
             ),
