@@ -32,9 +32,6 @@ class _LoginViewState extends BaseState<LoginView> {
   @override
   void initState() {
     super.initState();
-
-    final locales = WidgetsBinding.instance.focusManager;
-    log(locales.toString());
     emailController = TextEditingController();
     emailController.text = Hive.box("preferences").get("email") ?? "";
     companyController = TextEditingController();
@@ -130,7 +127,7 @@ class _LoginViewState extends BaseState<LoginView> {
                                       }));
                                   emailController.text = company["user"] ?? "";
                                   passwordController.text =
-                                      company["password"] ?? "";
+                                      company["password"] ?? {};
                                   setState(() {});
                                 },
                                 decoration: const InputDecoration(

@@ -13,7 +13,7 @@ UserJson _$UserJsonFromJson(Map<String, dynamic> json) => $checkedCreate(
       json,
       ($checkedConvert) {
         final val = UserJson();
-        $checkedConvert('id', (v) => val.id = v as int?);
+        $checkedConvert('ID', (v) => val.id = v as int?);
         $checkedConvert('KULADI', (v) => val.kullaniciAdi = v as String?);
         $checkedConvert('PAROLA', (v) => val.parola = v as String?);
         $checkedConvert('ADI', (v) => val.ad = v as String?);
@@ -26,6 +26,7 @@ UserJson _$UserJsonFromJson(Map<String, dynamic> json) => $checkedCreate(
         return val;
       },
       fieldKeyMap: const {
+        'id': 'ID',
         'kullaniciAdi': 'KULADI',
         'parola': 'PAROLA',
         'ad': 'ADI',
@@ -37,7 +38,7 @@ UserJson _$UserJsonFromJson(Map<String, dynamic> json) => $checkedCreate(
     );
 
 Map<String, dynamic> _$UserJsonToJson(UserJson instance) => <String, dynamic>{
-      'id': instance.id,
+      'ID': instance.id,
       'KULADI': instance.kullaniciAdi,
       'PAROLA': instance.parola,
       'ADI': instance.ad,
