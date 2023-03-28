@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -21,7 +23,7 @@ class _LoginViewState extends BaseState<LoginView> {
   bool isObscure = true;
   bool isRemember = true;
 
-  String company = "";
+  Map company = {};
 
   late final TextEditingController emailController;
   late final TextEditingController companyController;
@@ -68,9 +70,8 @@ class _LoginViewState extends BaseState<LoginView> {
             ),
           ),
           Scaffold(
-            primary: false,
+            primary: true,
             extendBodyBehindAppBar: true,
-            backgroundColor: Colors.transparent,
             body: Center(
               child: SingleChildScrollView(
                 child: Padding(
@@ -82,7 +83,7 @@ class _LoginViewState extends BaseState<LoginView> {
                       AnimatedContainer(
                         duration: const Duration(seconds: 1),
                         child: Padding(
-                          padding: context.paddingMedium,
+                          padding: context.paddingLow,
                           child: Image.asset(ImageEnum.pickerLogo.path,
                               height: context.isKeyBoardOpen ? 50 : 100),
                         ),
@@ -90,60 +91,89 @@ class _LoginViewState extends BaseState<LoginView> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
+                          Padding(
+                            padding: context.verticalPaddingMedium,
+                            child: Wrap(
+                              alignment: WrapAlignment.center,
+                              children: [
+                                Text(
+                                  "Picker",
+                                  style: context.textTheme.headlineSmall!
+                                      .copyWith(fontWeight: FontWeight.w500),
+                                ),
+                                Text("Mobil Veri Toplama Çözümleri",
+                                    style: context.textTheme.titleLarge!
+                                        .copyWith(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w300)),
+                                const Text("V0.1")
+                              ],
+                            ),
+                          ),
                           Wrap(
                             children: [
                               const Text("Firma"),
                               TextFormField(
+                                expands: false,
                                 readOnly: true,
                                 onTap: () async {
                                   company = await showAlertDialog(dialogManager
                                       .listTileDialog(
                                           title: "Firma Seçiniz",
-                                          list: [
-                                        "Firma 1",
-                                        "Firma 2",
-                                        "Firma 3",
-                                      ]));
+                                          data: {
+                                        "user": "demo",
+                                        "password": "demo"
+                                      }));
+                                  emailController.text = company["user"] ?? "";
+                                  passwordController.text =
+                                      company["password"] ?? "";
                                   setState(() {});
                                 },
                                 decoration: const InputDecoration(
-                                    suffixIcon: Icon(Icons.arrow_drop_down)),
-                                controller:
-                                    TextEditingController(text: company),
+                                    suffixIcon: Icon(Icons.more_horiz)),
+                                controller: TextEditingController(
+                                    text: company["user"] ?? ""),
                                 textInputAction: TextInputAction.next,
                               ),
                             ],
                           ),
-                          Wrap(
-                            children: [
-                              const Text("Netfect Kullanıcı Adı"),
-                              TextFormField(
-                                controller: emailController,
-                                textInputAction: TextInputAction.next,
-                              ),
-                            ],
-                          ),
-                          Wrap(
-                            children: [
-                              Text("Şifre", style: context.textTheme.bodySmall),
-                              TextField(
-                                controller: passwordController,
-                                textInputAction: TextInputAction.go,
-                                obscureText: isObscure,
-                                decoration: InputDecoration(
-                                  suffixIcon: IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        isObscure = !isObscure;
-                                      });
-                                    },
-                                    icon: isObscure
-                                        ? const Icon(Icons.visibility)
-                                        : const Icon(Icons.visibility_off),
-                                  ),
+                          Padding(
+                            padding: context.onlyTopPaddingLow,
+                            child: Wrap(
+                              children: [
+                                const Text("Netfect Kullanıcı Adı"),
+                                TextFormField(
+                                  controller: emailController,
+                                  textInputAction: TextInputAction.next,
                                 ),
-                              )
-                            ],
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: context.verticalPaddingLow,
+                            child: Wrap(
+                              children: [
+                                Text("Şifre",
+                                    style: context.textTheme.bodySmall),
+                                TextField(
+                                  controller: passwordController,
+                                  textInputAction: TextInputAction.go,
+                                  obscureText: isObscure,
+                                  decoration: InputDecoration(
+                                    suffixIcon: IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          isObscure = !isObscure;
+                                        });
+                                      },
+                                      icon: isObscure
+                                          ? const Icon(Icons.visibility)
+                                          : const Icon(Icons.visibility_off),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -185,6 +215,7 @@ class _LoginViewState extends BaseState<LoginView> {
                     .put("password", passwordController.text);
                 Hive.box("token").put("token", response.accessToken);
                 debugPrint("${Hive.box("preferences").get("password")}");
+                log(response.userJson.toString());
                 if (context.mounted) {
                   Navigator.popAndPushNamed(
                     context,

@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'base_network_mixin.dart';
+
 part 'generic_response_model.g.dart';
 
 @JsonSerializable(
@@ -30,6 +31,7 @@ class GenericResponseModel<T extends NetworkManagerMixin> {
     success = json['Success'];
     exceptionName = json['ExceptionName'];
     errorDetails = json['ErrorDetails'];
+    
     if (json['Data'] is List) {
       data = json['Data'].map((e) => model!.fromJson(e)).toList();
     } else if (json['Data'] is Map<String, dynamic>) {

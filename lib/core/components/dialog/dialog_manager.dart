@@ -82,16 +82,17 @@ class DialogManager {
     );
   }
 
-  AlertDialog listTileDialog({required String title, required List list}) {
+  AlertDialog listTileDialog({required String title, required Map data}) {
     return AlertDialog(
       title: Text(title),
       content: Column(mainAxisSize: MainAxisSize.min, children: [
         ...List.generate(
-          list.length,
+          data.length - 1,
           (index) => RadioListTile(
             groupValue: 1,
-            title: Text(list[index], style: const TextStyle(color: Colors.red)),
-            value: "netfect",
+            title: Text(data.keys.toList()[index],
+                style: const TextStyle(color: Colors.black)),
+            value: data,
             onChanged: (dynamic value) {
               Get.back(result: value);
             },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../components/dialog/dialog_manager.dart';
 import '../../init/app_info/app_info.dart';
 import '../../init/network/network_manager.dart';

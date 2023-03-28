@@ -96,6 +96,7 @@ class AppThemeDark extends AppTheme {
         ),
       ),
       inputDecorationTheme: const InputDecorationTheme(
+        contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         fillColor: Colors.white,
         labelStyle: TextStyle(color: Colors.white),
         border: OutlineInputBorder(

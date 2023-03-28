@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../constants/enum/dio_enum.dart';
-import '../../init/network/login/api_urls.dart';
-import '../../../view/auth/model/companies.dart';
 
+import '../../../view/auth/model/companies.dart';
 import '../../base/state/base_state.dart';
+import '../../constants/enum/dio_enum.dart';
 import '../../constants/ui_helper/radius_ui_helper.dart';
+import '../../init/network/login/api_urls.dart';
 
 class CustomGridTile extends StatefulWidget {
   final Color? color;

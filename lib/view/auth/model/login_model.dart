@@ -1,6 +1,6 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:picker/core/base/model/base_network_mixin.dart';
+import '../../../core/base/model/base_network_mixin.dart';
 
 import 'user_json_model.dart';
 
@@ -44,7 +44,7 @@ class TokenModel with NetworkManagerMixin {
   @override
   toString() {
     return error == null
-        ? "TokenModel {\n accessToken: $accessToken,\n tokenType: $tokenType,\n expiresIn: $expiresIn,\n userJson: $userJson,\n issued: $issued,\n expires: $expires \n}"
+        ? "TokenModel {\n accessToken: $accessToken,\n tokenType: $tokenType,\n expiresIn: $expiresIn,\n       userJson: ${userJson?.toString()},\n issued: $issued,\n expires: $expires \n}"
         : "TokenModel {\n error: $error,\n errorDescription: $errorDescription \n}";
   }
 
