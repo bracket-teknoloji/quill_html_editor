@@ -74,7 +74,7 @@ class AppThemeDark extends AppTheme {
       ),
       listTileTheme: const ListTileThemeData(
         style: ListTileStyle.list,
-        tileColor: Colors.white12,
+        tileColor: Colors.white,
         selectedColor: Colors.blue,
         selectedTileColor: Colors.red,
         textColor: Colors.black,

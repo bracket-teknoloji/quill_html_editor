@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:kartal/kartal.dart';
 import 'package:picker/core/init/app_info/app_info.dart';
-import '../../../core/init/network/login/api_urls.dart';
-import '../../../core/init/network/network_manager.dart';
-import '../model/login_model.dart';
 
 import '../../../core/base/state/base_state.dart';
 import '../../../core/constants/image/image_enums.dart';
 import '../../../core/constants/login_page_constants.dart';
+import '../../../core/init/network/login/api_urls.dart';
+import '../../../core/init/network/network_manager.dart';
+import '../model/login_model.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -112,13 +112,10 @@ class _LoginViewState extends BaseState<LoginView> {
                               TextFormField(
                                 readOnly: true,
                                 onTap: () async {
-                                  company = await showAlertDialog(dialogManager
-                                          .listTileDialog(
-                                              title: "Firma Seçiniz",
-                                              data: {
-                                            "user": "demo",
-                                            "password": "demo"
-                                          })) ??
+                                  company = await showAlertDialog(
+                                          dialogManager.listTileDialog(
+                                        title: "Firma Seçiniz",
+                                      )) ??
                                       {};
                                   emailController.text = company["user"] ?? "";
                                   passwordController.text =

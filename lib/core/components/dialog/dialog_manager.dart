@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class DialogManager {
   late final BuildContext context;
@@ -82,23 +85,26 @@ class DialogManager {
     );
   }
 
-  AlertDialog listTileDialog({required String title, required Map data}) {
+  AlertDialog listTileDialog({required String title}) {
+    Box box = Hive.box("accounts");
     return AlertDialog(
       contentPadding: const EdgeInsets.all(0),
       actionsOverflowButtonSpacing: 0,
       title: Text(title),
       content: Column(mainAxisSize: MainAxisSize.min, children: [
+        ListTile(
+            title: const Text("DEMO"),
+            onTap: () {
+              Get.back(result: {"firma": "DEMO"});
+            }),
         ...List.generate(
-          data.length - 1,
-          (index) => RadioListTile(
-            groupValue: 1,
-            title: Text(data.keys.toList()[index],
-                style: const TextStyle(color: Colors.red)),
-            value: data,
-            onChanged: (dynamic value) {
-              Get.back(result: value);
-            },
-          ),
+          box.length,
+          (index) {
+            log(box.getAt(index).toString());
+            return ListTile(
+              title: Text(box.getAt(index).firma.toString()),
+            );
+          },
         ),
       ]),
       actions: [
@@ -111,7 +117,6 @@ class DialogManager {
                   onPressed: () {
                     Get.offNamed(
                       "/addCompany",
-                      arguments: data,
                     );
                   },
                   child: const Text("Firmaları Düzenle")),
@@ -121,7 +126,7 @@ class DialogManager {
               flex: 1,
               child: ElevatedButton(
                   onPressed: () {
-                    dynamic result = "";
+                    dynamic result = {};
                     Get.back(result: result);
                   },
                   child: const Text(

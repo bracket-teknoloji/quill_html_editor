@@ -22,7 +22,14 @@ class GenericResponseModel<T extends NetworkManagerMixin> {
   String? exceptionName;
   @JsonKey(name: "ErrorDetails")
   String? errorDetails;
-
+  @JsonKey(name: "ExceptionStackTrace")
+  String? exceptionStackTrace;
+  @JsonKey(name: "ParamData")
+  Map<String, dynamic>? paramData;
+  @JsonKey(name: "ServiceVersion")
+  String? serviceVersion;
+  @JsonKey(name: "errorCode")
+  int? errorCode;
   GenericResponseModel();
 
   GenericResponseModel.fromJson(Map<String, dynamic> json, this.model) {
@@ -31,7 +38,11 @@ class GenericResponseModel<T extends NetworkManagerMixin> {
     success = json['Success'];
     exceptionName = json['ExceptionName'];
     errorDetails = json['ErrorDetails'];
-    
+    exceptionStackTrace = json['ExceptionStackTrace'];
+    paramData = json['ParamData'];
+    serviceVersion = json['ServiceVersion'];
+    errorCode = json['errorCode'];
+
     if (json['Data'] is List) {
       data = json['Data'].map((e) => model!.fromJson(e)).toList();
     } else if (json['Data'] is Map<String, dynamic>) {
@@ -42,6 +53,6 @@ class GenericResponseModel<T extends NetworkManagerMixin> {
   }
   @override
   toString() {
-    return "\nmessage: $message,\nmessageDetail: $messageDetail,\nsuccess: $success,\nexceptionName: $exceptionName,\nerrorDetails: $errorDetails,\n ${data != null ? "data: $data" : ""}";
+    return "\nmessage: $message,\nmessageDetail: $messageDetail,\nsuccess: $success,\nexceptionName: $exceptionName,\nerrorDetails: $errorDetails,\n data: $data,\nexceptionStackTrace: $exceptionStackTrace,\nparamData: $paramData,\nserviceVersion: $serviceVersion\n errorCode: $errorCode";
   }
 }

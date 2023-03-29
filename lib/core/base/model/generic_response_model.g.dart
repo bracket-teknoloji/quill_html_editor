@@ -23,6 +23,13 @@ GenericResponseModel<T> _$GenericResponseModelFromJson<
         $checkedConvert(
             'ExceptionName', (v) => val.exceptionName = v as String?);
         $checkedConvert('ErrorDetails', (v) => val.errorDetails = v as String?);
+        $checkedConvert('ExceptionStackTrace',
+            (v) => val.exceptionStackTrace = v as String?);
+        $checkedConvert(
+            'ParamData', (v) => val.paramData = v as Map<String, dynamic>?);
+        $checkedConvert(
+            'ServiceVersion', (v) => val.serviceVersion = v as String?);
+        $checkedConvert('errorCode', (v) => val.errorCode = v as int?);
         return val;
       },
       fieldKeyMap: const {
@@ -31,6 +38,9 @@ GenericResponseModel<T> _$GenericResponseModelFromJson<
         'success': 'Success',
         'data': 'Data',
         'exceptionName': 'ExceptionName',
-        'errorDetails': 'ErrorDetails'
+        'errorDetails': 'ErrorDetails',
+        'exceptionStackTrace': 'ExceptionStackTrace',
+        'paramData': 'ParamData',
+        'serviceVersion': 'ServiceVersion'
       },
     );

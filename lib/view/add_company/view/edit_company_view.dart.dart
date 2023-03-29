@@ -38,17 +38,6 @@ class _AddCompanyViewState extends BaseState<AddCompanyView> {
               duration: const Duration(milliseconds: 200),
               child: const Icon(Icons.add),
             )),
-        appBar: AppBar(
-          title: Column(
-            children: const [Text("Firmalar")],
-          ),
-          centerTitle: false,
-          actions: [
-            isMenu
-                ? IconButton(onPressed: () {}, icon: const Icon(Icons.save))
-                : const SizedBox()
-          ],
-        ),
         body: PageView(
           physics: const NeverScrollableScrollPhysics(),
           controller: controller,

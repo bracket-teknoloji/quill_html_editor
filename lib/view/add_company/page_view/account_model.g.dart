@@ -2,7 +2,7 @@
 
 // ignore_for_file: implicit_dynamic_parameter
 
-part of 'add_account_model.dart';
+part of 'account_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -43,6 +43,7 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) =>
             (v) => val.cihazTimeZoneDakika = v as int?);
         $checkedConvert('FCM_TOKEN', (v) => val.fcmToken = v as String?);
         $checkedConvert('UYE_EMAIL', (v) => val.uyeEmail = v as String?);
+        $checkedConvert('UYE_SIFRE', (v) => val.uyeSifre = v as String?);
         $checkedConvert(
             'KONUM_DATE',
             (v) =>
@@ -100,6 +101,7 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) =>
         'cihazTimeZoneDakika': 'CIHAZ_TIME_ZONE_DAKIKA',
         'fcmToken': 'FCM_TOKEN',
         'uyeEmail': 'UYE_EMAIL',
+        'uyeSifre': 'UYE_SIFRE',
         'konumDate': 'KONUM_DATE',
         'konumTarihi': 'KONUM_TARIHI',
         'gKa': 'G_KA',
@@ -146,6 +148,7 @@ Map<String, dynamic> _$AccountModelToJson(AccountModel instance) =>
       'CIHAZ_TIME_ZONE_DAKIKA': instance.cihazTimeZoneDakika,
       'FCM_TOKEN': instance.fcmToken,
       'UYE_EMAIL': instance.uyeEmail,
+      'UYE_SIFRE': instance.uyeSifre,
       'KONUM_DATE': instance.konumDate?.toIso8601String(),
       'KONUM_TARIHI': instance.konumTarihi,
       'G_KA': instance.gKa,
@@ -171,3 +174,14 @@ Map<String, dynamic> _$AccountModelToJson(AccountModel instance) =>
       'UZAK_ERISIM': instance.uzakErisim,
       'WIFIDEN_BAGLI': instance.wifidenBagli,
     };
+
+ParamMap _$ParamMapFromJson(Map<String, dynamic> json) => $checkedCreate(
+      'ParamMap',
+      json,
+      ($checkedConvert) {
+        final val = ParamMap();
+        return val;
+      },
+    );
+
+Map<String, dynamic> _$ParamMapToJson(ParamMap instance) => <String, dynamic>{};

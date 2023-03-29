@@ -71,6 +71,8 @@ dependencies:
   timezone: ^0.9.1
   flutter_native_timezone: ^2.0.0
   carrier_info: ^2.0.8
+  connectivity_plus: ^3.0.3
+  crypto: ^3.0.2
 
   
 flutter_icons:

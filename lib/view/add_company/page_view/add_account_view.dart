@@ -1,9 +1,14 @@
 import 'dart:convert';
 
+import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kartal/kartal.dart';
 import 'package:picker/core/base/state/base_state.dart';
+import 'package:picker/core/init/network/login/api_urls.dart';
+import 'package:picker/view/add_company/page_view/account_model.dart';
+import 'package:picker/view/add_company/page_view/account_response_model.dart';
 
 class AddAccountView extends StatefulWidget {
   const AddAccountView({super.key});
@@ -18,6 +23,49 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: Column(
+            children: const [Text("Firmalar")],
+          ),
+          centerTitle: false,
+          actions: [
+            IconButton(
+                onPressed: () async {
+                  dialogManager.loadingDialog();
+                  // ignore: await_only_futures
+                  var model = await AccountModel.instance
+                    ..uyeEmail = _controller.text
+                    ..uyeSifre = md5.convert(utf8.encode(_controller2.text)).toString();
+                  var data = model.toJson();
+                  final response =
+                      await networkManager.dioPost<AccountResponseModel>(
+                    bodyModel: AccountResponseModel(),
+                    data: data,
+                    path: ApiUrls.getUyeBilgileri,
+                  );
+                  if (response.data != null) {
+                    if (response.success ?? false) {
+                      Box box = Hive.box("accounts");
+                      for (AccountResponseModel item in response.data!) {
+                        if (!box.containsKey(item.firmaKisaAdi)) {
+                          box.put(item.firmaKisaAdi, item);
+                          dialogManager.showSnackBar("Başarılı");
+                        } else {
+                          dialogManager.showSnackBar(
+                              "${item.firmaKisaAdi} zaten kayıtlı");
+                        }
+                      }
+                    } else {
+                      dialogManager
+                          .showAlertDialog(response.errorDetails.toString());
+                    }
+                  } else {
+                    dialogManager.showAlertDialog(response.message.toString());
+                  }
+                },
+                icon: const Icon(Icons.save))
+          ],
+        ),
         backgroundColor: Colors.black,
         body: Padding(
           padding: context.paddingNormal,

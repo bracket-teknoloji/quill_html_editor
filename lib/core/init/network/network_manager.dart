@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:picker/core/base/model/base_network_mixin.dart';
@@ -83,6 +85,7 @@ class NetworkManager {
       options: Options(headers: head, responseType: ResponseType.json),
       data: data,
     );
+    log(response.data.toString());
     GenericResponseModel<T> responseModel =
         GenericResponseModel<T>.fromJson(response.data, bodyModel);
     return responseModel;

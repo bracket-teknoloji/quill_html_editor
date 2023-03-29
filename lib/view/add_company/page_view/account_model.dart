@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
@@ -5,10 +6,21 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:picker/core/base/model/base_network_mixin.dart';
 
-part 'add_account_model.g.dart';
+part 'account_model.g.dart';
 
 @JsonSerializable(createToJson: true)
 class AccountModel with NetworkManagerMixin {
+  // make this a lazy singleton class
+  AccountModel._init() {
+    init();
+  }
+  static AccountModel? _instance;
+  static AccountModel get instance {
+    _instance ??= AccountModel._init();
+    return _instance!;
+  }
+
+  AccountModel();
   @JsonKey(name: "ADI")
   String? isim;
   @JsonKey(name: "ADMIN")
@@ -19,7 +31,6 @@ class AccountModel with NetworkManagerMixin {
   int? aktifSubeKodu;
   @JsonKey(name: "AKTIF_VERITABANI")
   String? aktifVeritabani;
-  //* TODO  Cihaz Sistem Versiyonu ?
   @JsonKey(name: "CIHAZ_SISTEM_VERSIYONU")
   String? cihazSistemVersiyonu;
   @JsonKey(name: "APK_DERLEME_TARIHI")
@@ -44,6 +55,8 @@ class AccountModel with NetworkManagerMixin {
   String? fcmToken;
   @JsonKey(name: "UYE_EMAIL")
   String? uyeEmail;
+  @JsonKey(name: "UYE_SIFRE")
+  String? uyeSifre;
   @JsonKey(name: "KONUM_DATE")
   DateTime? konumDate;
   @JsonKey(name: "KONUM_TARIHI")
@@ -60,7 +73,7 @@ class AccountModel with NetworkManagerMixin {
   String? kuruluHesaplar;
   @JsonKey(name: "LOCAL_IP")
   String? localIp;
-  // TODOözel cihaz kimliği ?
+  // TODO özel cihaz kimliği ?
   @JsonKey(name: "OZEL_CIHAZ_KIMLIGI")
   String? ozelCihazKimligi;
   @JsonKey(name: "OFFLINE")
@@ -70,7 +83,6 @@ class AccountModel with NetworkManagerMixin {
   @JsonKey(name: "PAKET_ADI")
   String? paketAdi;
   @JsonKey(name: "PARAM_MAP")
-  // TODO Bunu değiştirmeyi unutma. Bu Kısıma aşağıdaki ParamMapModel'i ekleyeceksin.
   String? paramMap;
   @JsonKey(name: "PLATFORM")
   String? platform;
@@ -105,17 +117,19 @@ class AccountModel with NetworkManagerMixin {
     //* Uygulama Bilgileri
     final packageInfo = await PackageInfo.fromPlatform();
     paketAdi = packageInfo.packageName;
-    uygulamaSurumu = packageInfo.version;
-    uygulamaSurumKodu = int.parse(packageInfo.buildNumber);
+    //uygulamaSurumu = packageInfo.version;
+    uygulamaSurumu = "225";
+    uygulamaSurumKodu = 225;
+    requestVersion = 2;
 
     //* Cihaz ve Sim Bilgileri
     final deviceInfo = DeviceInfoPlugin();
     if (Platform.isAndroid) {
       platform = Platform.operatingSystem;
       final androidInfo = await deviceInfo.androidInfo;
+      cihazSistemVersiyonu = androidInfo.version.sdkInt.toString();
       cihazMarkasi = androidInfo.brand;
       cihazModeli = androidInfo.model;
-      cihazSistemVersiyonu = androidInfo.version.release;
       ozelCihazKimligi = androidInfo.id;
     } else if (Platform.isIOS) {
       final iosInfo = await deviceInfo.iosInfo;
@@ -124,6 +138,9 @@ class AccountModel with NetworkManagerMixin {
       cihazSistemVersiyonu = iosInfo.systemVersion;
       ozelCihazKimligi = iosInfo.identifierForVendor;
     }
+    // TODO Network Bilgileri (Connectivity Plus)
+
+    log(toJson().toString(), name: runtimeType.toString());
   }
 
   @override
@@ -137,6 +154,17 @@ class AccountModel with NetworkManagerMixin {
   }
 }
 
-class ParamMap {
+@JsonSerializable(createToJson: true)
+class ParamMap with NetworkManagerMixin {
   ParamMap();
+
+  @override
+  fromJson(Map<String, dynamic> json) {
+    return _$ParamMapFromJson(json);
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ParamMapToJson(this);
+  }
 }
