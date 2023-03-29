@@ -19,7 +19,6 @@ Future<void> main() async {
   await Hive.openBox("token");
   Hive.registerAdapter(AccountResponseModelAdapter());
   await Hive.openBox("accounts");
-  await Hive.box("accounts").clear();
   runApp(const MyApp());
 }
 
