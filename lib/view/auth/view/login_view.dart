@@ -25,6 +25,7 @@ class _LoginViewState extends BaseState<LoginView> {
   String? version;
 
   Map company = {};
+  var box = Hive.box('preferences');
 
   late final TextEditingController emailController;
   late final TextEditingController companyController;
@@ -38,10 +39,8 @@ class _LoginViewState extends BaseState<LoginView> {
       });
     });
     emailController = TextEditingController();
-    emailController.text = Hive.box("preferences").get("email") ?? "";
     companyController = TextEditingController();
     passwordController = TextEditingController();
-    passwordController.text = Hive.box("preferences").get("password") ?? "";
   }
 
   @override
@@ -201,13 +200,11 @@ class _LoginViewState extends BaseState<LoginView> {
                       "username": emailController.text,
                       "password": passwordController.text,
                     });
-
-                Hive.box("preferences").put("email", emailController.text);
-                debugPrint("${Hive.box("preferences").get("email")}");
-                Hive.box("preferences")
-                    .put("password", passwordController.text);
-                Hive.box("token").put("token", response.accessToken);
-                debugPrint("${Hive.box("preferences").get("password")}");
+                Hive.box("preferences").put(companyController.text, [
+                  company["user"],
+                  emailController.text,
+                  passwordController.text,
+                ]);
                 log(response.userJson.toString());
                 if (context.mounted) {
                   Navigator.popAndPushNamed(

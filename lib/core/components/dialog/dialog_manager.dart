@@ -32,13 +32,13 @@ class DialogManager {
         builder: (context) => loadingDialog(),
       );
 
-  void showExitDialog() => showDialog(
+  void showExitDialog({String? action}) => showDialog(
         context: context,
         useRootNavigator: false,
         builder: (context) {
           return AlertDialog(
-            title: const Text("Çıkış"),
-            content: const Text("Çıkmak istediğinize emin misiniz?"),
+            title: Text(action ?? "Çıkış"),
+            content: Text("${action ?? "çıkmak"} istediğinize emin misiniz?"),
             actions: [
               ElevatedButton(
                   onPressed: () {
@@ -87,6 +87,7 @@ class DialogManager {
 
   AlertDialog listTileDialog({required String title}) {
     Box box = Hive.box("accounts");
+    Box preferences = Hive.box("preferences");
     return AlertDialog(
       contentPadding: const EdgeInsets.all(0),
       actionsOverflowButtonSpacing: 0,
@@ -95,15 +96,21 @@ class DialogManager {
         ListTile(
             title: const Text("DEMO"),
             onTap: () {
-              Get.back(result: {"firma": "DEMO"});
+              Get.back(result: {"user": "demo", "password": "demo"});
             }),
         ...List.generate(
           box.length,
           (index) {
             log(box.getAt(index).toString());
             return ListTile(
-              title: Text(box.getAt(index).firma.toString()),
-            );
+                title: Text(box.getAt(index).firma.toString()),
+                onTap: () {
+                  Get.back(result: {
+                    "company": box.getAt(index).firma.toString(),
+                    "user": box.getAt(index).firma.toString(),
+                    "password": box.getAt(index).firmaKisaAdi.toString()
+                  }, closeOverlays: true);
+                });
           },
         ),
       ]),

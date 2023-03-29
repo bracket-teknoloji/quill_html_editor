@@ -17,42 +17,54 @@ int getListLength() {
 class _AccountsViewState extends BaseState<AccountsView> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: getListLength(),
-        itemBuilder: getListLength() == 0
-            ? (context, index) => const Center(
-                  child: Text("Hesap Bulunamadı"),
-                )
-            : (context, index) {
-                AccountResponseModel account =
-                    Hive.box("accounts").getAt(index);
-                return ListTile(
-                  onTap: () {
-                    bottomSheet(context);
-                  },
-                  title: Text(account.firma.toString()),
-                  subtitle: Text(account.email.toString()),
-                );
-              });
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Hesaplar"),
+      ),
+      body: ListView.builder(
+          itemCount: getListLength() == 0 ? 1 : getListLength(),
+          itemBuilder: getListLength() == 0
+              ? (context, index) => const Center(
+                    child: Text("Hesap Bulunamadı"),
+                  )
+              : (context, index) {
+                  AccountResponseModel account =
+                      Hive.box("accounts").getAt(index);
+                  return ListTile(
+                    onTap: () {
+                      bottomSheet(context,
+                          kisaAd: account.firmaKisaAdi.toString());
+                    },
+                    title: Text(account.firma.toString()),
+                    subtitle: Text(account.email.toString()),
+                  );
+                }),
+    );
   }
 
-  Future<dynamic> bottomSheet(BuildContext context) {
+  Future<dynamic> bottomSheet(BuildContext context, {required String kisaAd}) {
     return showModalBottomSheet(
         isDismissible: true,
         useSafeArea: true,
         backgroundColor: Colors.white,
         context: context,
-        builder: (context) =>
-            Column(mainAxisSize: MainAxisSize.min, children: const [
+        builder: (context) => Column(mainAxisSize: MainAxisSize.min, children: [
               ListTile(
-                trailing: Icon(Icons.edit_outlined),
-                title: Text("Düzelt"),
+                trailing: const Icon(Icons.edit_outlined),
+                title: const Text("Düzelt"),
+                onTap: () {},
               ),
               ListTile(
-                trailing: Icon(Icons.delete_outline),
-                title: Text("Sil"),
+                trailing: const Icon(Icons.delete_outline),
+                title: const Text("Sil"),
+                onTap: () {
+                  Hive.box("accounts").delete(kisaAd);
+                  setState(() {});
+                  //close bottom sheet
+                  Navigator.pop(context);
+                },
               ),
-              ListTile(
+              const ListTile(
                 trailing: Icon(Icons.workspaces_outlined),
                 title: Text("Sunucu Tercihi"),
               )
