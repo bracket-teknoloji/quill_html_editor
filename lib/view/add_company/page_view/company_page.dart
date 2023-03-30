@@ -52,7 +52,10 @@ class _AccountsViewState extends BaseState<AccountsView> {
               ListTile(
                 trailing: const Icon(Icons.edit_outlined),
                 title: const Text("Düzelt"),
-                onTap: () {},
+                onTap: () {
+                  //animate to other page
+                  
+                },
               ),
               ListTile(
                 trailing: const Icon(Icons.delete_outline),

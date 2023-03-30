@@ -50,6 +50,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
                         if (!box.containsKey(item.firmaKisaAdi)) {
                           box.put(item.firmaKisaAdi, item);
                           dialogManager.showSnackBar("Başarılı");
+                          Get.back();
                         } else {
                           dialogManager.showSnackBar(
                               "${item.firmaKisaAdi} zaten kayıtlı");

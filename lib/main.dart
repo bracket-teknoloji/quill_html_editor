@@ -13,11 +13,11 @@ import "package:picker/view/main_page/view/main_page_view.dart";
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+  Hive.registerAdapter(AccountResponseModelAdapter());
   await Hive.openBox<TokenModel>("login");
   await Hive.openBox("preferences");
   await Hive.openBox("companies");
   await Hive.openBox("token");
-  Hive.registerAdapter(AccountResponseModelAdapter());
   await Hive.openBox("accounts");
   runApp(const MyApp());
 }

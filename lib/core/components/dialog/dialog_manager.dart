@@ -96,19 +96,24 @@ class DialogManager {
         ListTile(
             title: const Text("DEMO"),
             onTap: () {
-              Get.back(result: {"user": "demo", "password": "demo"});
+              Get.back(result: {
+                "company": "DEMO",
+                "user": "demo",
+                "password": "demo"
+              });
             }),
         ...List.generate(
           box.length,
           (index) {
+            var title = box.getAt(index).firma.toString();
             log(box.getAt(index).toString());
             return ListTile(
-                title: Text(box.getAt(index).firma.toString()),
+                title: Text(title),
                 onTap: () {
                   Get.back(result: {
-                    "company": box.getAt(index).firma.toString(),
-                    "user": box.getAt(index).firma.toString(),
-                    "password": box.getAt(index).firmaKisaAdi.toString()
+                    "company": title,
+                    "user": preferences.get(title)?[1] ?? "",
+                    "password": preferences.get(title)?[2] ?? "",
                   }, closeOverlays: true);
                 });
           },

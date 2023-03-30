@@ -116,6 +116,7 @@ class _LoginViewState extends BaseState<LoginView> {
                                         title: "Firma Seçiniz",
                                       )) ??
                                       {};
+                                  companyController.text = company["company"] ?? "";
                                   emailController.text = company["user"] ?? "";
                                   passwordController.text =
                                       company["password"].toString();
@@ -123,8 +124,7 @@ class _LoginViewState extends BaseState<LoginView> {
                                 },
                                 decoration: const InputDecoration(
                                     suffixIcon: Icon(Icons.more_horiz)),
-                                controller: TextEditingController(
-                                    text: company["user"] ?? ""),
+                                controller: companyController,
                                 textInputAction: TextInputAction.next,
                               ),
                             ],
