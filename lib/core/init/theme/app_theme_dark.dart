@@ -100,10 +100,10 @@ class AppThemeDark extends AppTheme {
       ),
       inputDecorationTheme: const InputDecorationTheme(
         contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        fillColor: Colors.white,
-        labelStyle: TextStyle(color: Colors.white),
+        isCollapsed: true,
+        labelStyle: TextStyle(color: Colors.black),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(2)),
+          borderRadius: BorderRadius.all(Radius.circular(1)),
           borderSide: BorderSide(color: Colors.white),
         ),
         focusedBorder: OutlineInputBorder(

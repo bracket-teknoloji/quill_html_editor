@@ -54,17 +54,17 @@ class _AccountsViewState extends BaseState<AccountsView> {
                 title: const Text("Düzelt"),
                 onTap: () {
                   //animate to other page
-                  
                 },
               ),
               ListTile(
                 trailing: const Icon(Icons.delete_outline),
                 title: const Text("Sil"),
                 onTap: () {
-                  Hive.box("accounts").delete(kisaAd);
-                  setState(() {});
-                  //close bottom sheet
                   Navigator.pop(context);
+                  dialogManager.showAreYouSureDialog(() {
+                    Hive.box("accounts").delete(kisaAd);
+                    setState(() {});
+                  });
                 },
               ),
               const ListTile(

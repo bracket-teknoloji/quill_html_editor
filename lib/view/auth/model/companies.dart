@@ -5,25 +5,25 @@ import '../../../core/base/model/base_network_mixin.dart';
 part 'companies.g.dart';
 
 @JsonSerializable(createToJson: true)
-class Company with NetworkManagerMixin {
+class CompanyModel with NetworkManagerMixin {
   @JsonKey(name: "SIRKET")
-  String? company;
+  String? companyModel;
   @JsonKey(name: "YIL")
   int? year;
 
-  Company({this.company, this.year});
+  CompanyModel({this.companyModel, this.year});
   @override
   fromJson(dynamic json) {
-    return _$CompanyFromJson(json);
+    return _$CompanyModelFromJson(json);
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$CompanyToJson(this);
+    return _$CompanyModelToJson(this);
   }
 
   @override
   toString() {
-    return "company: $company,\n year: $year";
+    return "companyModel: $companyModel,\n year: $year";
   }
 }

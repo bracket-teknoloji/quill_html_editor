@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:kartal/kartal.dart';
 import 'package:picker/core/init/app_info/app_info.dart';
@@ -24,7 +25,7 @@ class _LoginViewState extends BaseState<LoginView> {
   bool isObscure = true;
   String? version;
 
-  Map company = {};
+  Map textFieldData = {};
   var box = Hive.box('preferences');
 
   late final TextEditingController emailController;
@@ -93,11 +94,11 @@ class _LoginViewState extends BaseState<LoginView> {
                               children: [
                                 Text(
                                   "Picker",
-                                  style: context.textTheme.headlineSmall!
+                                  style: context.theme.textTheme.headlineSmall!
                                       .copyWith(fontWeight: FontWeight.w500),
                                 ),
                                 Text("Mobil Veri Toplama Çözümleri",
-                                    style: context.textTheme.titleLarge!
+                                    style: context.theme.textTheme.titleLarge!
                                         .copyWith(
                                             fontSize: 15,
                                             fontWeight: FontWeight.w300)),
@@ -111,15 +112,17 @@ class _LoginViewState extends BaseState<LoginView> {
                               TextFormField(
                                 readOnly: true,
                                 onTap: () async {
-                                  company = await showAlertDialog(
+                                  textFieldData = await showAlertDialog(
                                           dialogManager.listTileDialog(
                                         title: "Firma Seçiniz",
                                       )) ??
                                       {};
-                                  companyController.text = company["company"] ?? "";
-                                  emailController.text = company["user"] ?? "";
+                                  companyController.text =
+                                      textFieldData["company"] ?? "";
+                                  emailController.text =
+                                      textFieldData["user"] ?? "";
                                   passwordController.text =
-                                      company["password"].toString();
+                                      textFieldData["password"] ?? "";
                                   setState(() {});
                                 },
                                 decoration: const InputDecoration(
@@ -146,7 +149,7 @@ class _LoginViewState extends BaseState<LoginView> {
                             child: Wrap(
                               children: [
                                 Text("Şifre",
-                                    style: context.textTheme.bodySmall),
+                                    style: context.theme.textTheme.titleSmall),
                                 TextField(
                                   controller: passwordController,
                                   textInputAction: TextInputAction.go,
@@ -201,16 +204,13 @@ class _LoginViewState extends BaseState<LoginView> {
                       "password": passwordController.text,
                     });
                 Hive.box("preferences").put(companyController.text, [
-                  company["user"],
+                  textFieldData["user"],
                   emailController.text,
                   passwordController.text,
                 ]);
                 log(response.userJson.toString());
                 if (context.mounted) {
-                  Navigator.popAndPushNamed(
-                    context,
-                    "/mainPage",
-                  );
+                  Navigator.popAndPushNamed(context, "/entryCompany");
                 }
               } on DioError catch (e) {
                 dialogManager.hideAlertDialog;

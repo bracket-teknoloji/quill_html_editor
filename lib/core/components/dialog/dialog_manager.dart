@@ -31,14 +31,19 @@ class DialogManager {
         context: context,
         builder: (context) => loadingDialog(),
       );
+  void showAreYouSureDialog(void Function() onYes) => showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) => areYouSureDialog(onYes),
+      );
 
-  void showExitDialog({String? action}) => showDialog(
+  void showExitDialog() => showDialog(
         context: context,
         useRootNavigator: false,
         builder: (context) {
           return AlertDialog(
-            title: Text(action ?? "Çıkış"),
-            content: Text("${action ?? "çıkmak"} istediğinize emin misiniz?"),
+            title: const Text("Çıkış"),
+            content: const Text("Çıkmak istediğinize emin misiniz?"),
             actions: [
               ElevatedButton(
                   onPressed: () {
@@ -155,4 +160,24 @@ class DialogManager {
   SnackBar snackBarError(String message) => SnackBar(
         content: Text(message),
       );
+
+  AlertDialog areYouSureDialog(void Function() onYes) {
+    return AlertDialog(
+        title: const Text("Uyarı"),
+        content:
+            const Text("Bu işlemi gerçekleştirmek istediğinize emin misiniz?"),
+        actions: [
+          ElevatedButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: const Text("Hayır")),
+          ElevatedButton(
+              onPressed: () {
+                onYes();
+                Get.back();
+              },
+              child: const Text("Evet")),
+        ]);
+  }
 }

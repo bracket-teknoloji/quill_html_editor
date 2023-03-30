@@ -8,20 +8,22 @@ part of 'companies.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Company _$CompanyFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'Company',
+CompanyModel _$CompanyModelFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      'CompanyModel',
       json,
       ($checkedConvert) {
-        final val = Company(
-          company: $checkedConvert('SIRKET', (v) => v as String?),
+        final val = CompanyModel(
+          companyModel: $checkedConvert('SIRKET', (v) => v as String?),
           year: $checkedConvert('YIL', (v) => v as int?),
         );
         return val;
       },
-      fieldKeyMap: const {'company': 'SIRKET', 'year': 'YIL'},
+      fieldKeyMap: const {'companyModel': 'SIRKET', 'year': 'YIL'},
     );
 
-Map<String, dynamic> _$CompanyToJson(Company instance) => <String, dynamic>{
-      'SIRKET': instance.company,
+Map<String, dynamic> _$CompanyModelToJson(CompanyModel instance) =>
+    <String, dynamic>{
+      'SIRKET': instance.companyModel,
       'YIL': instance.year,
     };

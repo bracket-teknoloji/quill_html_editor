@@ -8,6 +8,7 @@ import 'package:picker/view/add_company/view/edit_company_view.dart.dart';
 import "package:picker/view/add_company/view/qr_view.dart";
 import "package:picker/view/auth/model/login_model.dart";
 import "package:picker/view/auth/view/login_view.dart";
+import "package:picker/view/entry_company_view.dart";
 import "package:picker/view/main_page/view/main_page_view.dart";
 
 Future<void> main() async {
@@ -32,6 +33,10 @@ class MyApp extends StatelessWidget {
       title: "Picker",
       home: const LoginView(),
       getPages: [
+        GetPage(
+          name: "/entryCompany",
+          page: () => const EntryCompanyView(),
+        ),
         GetPage(
           name: "/mainPage",
           page: () => const MainPageView(),
