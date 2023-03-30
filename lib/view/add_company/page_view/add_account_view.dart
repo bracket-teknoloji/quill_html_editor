@@ -35,7 +35,8 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
                   // ignore: await_only_futures
                   var model = await AccountModel.instance
                     ..uyeEmail = _controller.text
-                    ..uyeSifre = md5.convert(utf8.encode(_controller2.text)).toString();
+                    ..uyeSifre =
+                        md5.convert(utf8.encode(_controller2.text)).toString();
                   var data = model.toJson();
                   final response =
                       await networkManager.dioPost<AccountResponseModel>(
@@ -50,6 +51,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
                         if (!box.containsKey(item.firmaKisaAdi)) {
                           box.put(item.firmaKisaAdi, item);
                           dialogManager.showSnackBar("Başarılı");
+                          Get.back();
                         } else {
                           dialogManager.showSnackBar(
                               "${item.firmaKisaAdi} zaten kayıtlı");
