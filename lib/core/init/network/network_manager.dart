@@ -1,12 +1,10 @@
 // ignore_for_file: avoid_print
 
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:picker/core/base/model/base_network_mixin.dart';
 import 'package:picker/core/base/model/generic_response_model.dart';
 import 'package:picker/core/constants/enum/dio_enum.dart';
+import 'package:picker/core/init/cache/cache_manager.dart';
 import 'package:picker/view/auth/model/login_model.dart';
 
 class NetworkManager {
@@ -62,21 +60,22 @@ class NetworkManager {
       queryParameters: queries,
       options: Options(headers: head, responseType: ResponseType.json),
     );
-    GenericResponseModel<T> responseModel =
-        GenericResponseModel<T>.fromJson(response.data, bodyModel);
+    GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
     return responseModel;
   }
 
   Future<GenericResponseModel> dioPost<T extends NetworkManagerMixin>(
       {required String path,
-      required bodyModel,
+      required T? bodyModel,
       Map<String, String>? headers,
       dynamic data,
       Map<String, String>? queryParameters,
       bool addQuery = true,
       bool addTokenKey = true}) async {
     Map<String, String> head = getStandardHeader(addTokenKey);
-    if (headers != null) head.addEntries(headers.entries);
+    if (headers != null) {
+      head.addEntries(headers.entries);
+    }
     Map<String, String> queries = getStandardQueryParameters();
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
     final response = await _dio.post(
@@ -85,16 +84,14 @@ class NetworkManager {
       options: Options(headers: head, responseType: ResponseType.json),
       data: data,
     );
-    log(response.data.toString());
-    GenericResponseModel<T> responseModel =
-        GenericResponseModel<T>.fromJson(response.data, bodyModel);
+    GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
     return responseModel;
   }
 
   Map<String, String> getStandardHeader(bool addTokenKey) {
     Map<String, String> header = {};
     if (addTokenKey) {
-      String token = Hive.box("token").get("token");
+      String token = CacheManager.getToken("token");
       header.addAll({"Authorization": "Bearer $token"});
     }
     return header;

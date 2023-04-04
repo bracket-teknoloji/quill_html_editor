@@ -15,6 +15,39 @@ class AppThemeDark extends AppTheme {
 
   @override
   ThemeData get theme => ThemeData.dark().copyWith(
+    
+      progressIndicatorTheme: const ProgressIndicatorThemeData(
+        color: Colors.white,
+        circularTrackColor: Colors.red,
+        linearMinHeight: 2,
+      ),
+      dropdownMenuTheme: DropdownMenuThemeData(
+          inputDecorationTheme: InputDecorationTheme(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(2),
+        ),
+        errorStyle: TextStyle(
+          fontFamily: GoogleFonts.roboto().fontFamily,
+          fontSize: 12,
+          color: Colors.red,
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(2),
+          borderSide: const BorderSide(color: Colors.red),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(2),
+          borderSide: const BorderSide(color: Colors.red),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(2),
+          borderSide: const BorderSide(color: Colors.white),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(2),
+          borderSide: const BorderSide(color: Colors.white),
+        ),
+      )),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,

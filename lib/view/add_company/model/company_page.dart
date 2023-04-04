@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:picker/core/base/state/base_state.dart';
-import 'package:picker/view/add_company/page_view/account_response_model.dart';
+
+import '../../../core/base/state/base_state.dart';
+import 'account_response_model.dart';
 
 class AccountsView extends StatefulWidget {
   const AccountsView({super.key});

@@ -32,6 +32,8 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) =>
         $checkedConvert('G_CID', (v) => val.gCid = v as String?);
         $checkedConvert(
             'CIHAZ_MARKASI', (v) => val.cihazMarkasi = v as String?);
+        $checkedConvert(
+            'CIHAZ_KIMLIGI', (v) => val.cihazKimligi = v as String?);
         $checkedConvert('CIHAZ_MODELI', (v) => val.cihazModeli = v as String?);
         $checkedConvert('G_DSN', (v) => val.gDsn = v as String?);
         $checkedConvert('CIHAZ_TARIHI', (v) => val.cihazTarihi = v as String?);
@@ -81,6 +83,7 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) =>
         $checkedConvert('UZAK_ERISIM', (v) => val.uzakErisim = v as String?);
         $checkedConvert(
             'WIFIDEN_BAGLI', (v) => val.wifidenBagli = v as String?);
+        $checkedConvert('QR_DATA', (v) => val.qrData = v as String?);
         return val;
       },
       fieldKeyMap: const {
@@ -94,6 +97,7 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) =>
         'cihazDili': 'CIHAZ_DILI',
         'gCid': 'G_CID',
         'cihazMarkasi': 'CIHAZ_MARKASI',
+        'cihazKimligi': 'CIHAZ_KIMLIGI',
         'cihazModeli': 'CIHAZ_MODELI',
         'gDsn': 'G_DSN',
         'cihazTarihi': 'CIHAZ_TARIHI',
@@ -125,7 +129,8 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) =>
         'uygulamaSurumu': 'UYGULAMA_SURUMU',
         'uygulamaSurumKodu': 'UYGULAMA_SURUM_KODU',
         'uzakErisim': 'UZAK_ERISIM',
-        'wifidenBagli': 'WIFIDEN_BAGLI'
+        'wifidenBagli': 'WIFIDEN_BAGLI',
+        'qrData': 'QR_DATA'
       },
     );
 
@@ -141,6 +146,7 @@ Map<String, dynamic> _$AccountModelToJson(AccountModel instance) =>
       'CIHAZ_DILI': instance.cihazDili,
       'G_CID': instance.gCid,
       'CIHAZ_MARKASI': instance.cihazMarkasi,
+      'CIHAZ_KIMLIGI': instance.cihazKimligi,
       'CIHAZ_MODELI': instance.cihazModeli,
       'G_DSN': instance.gDsn,
       'CIHAZ_TARIHI': instance.cihazTarihi,
@@ -173,6 +179,7 @@ Map<String, dynamic> _$AccountModelToJson(AccountModel instance) =>
       'UYGULAMA_SURUM_KODU': instance.uygulamaSurumKodu,
       'UZAK_ERISIM': instance.uzakErisim,
       'WIFIDEN_BAGLI': instance.wifidenBagli,
+      'QR_DATA': instance.qrData,
     };
 
 ParamMap _$ParamMapFromJson(Map<String, dynamic> json) => $checkedCreate(

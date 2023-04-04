@@ -7,11 +7,11 @@ part 'companies.g.dart';
 @JsonSerializable(createToJson: true)
 class CompanyModel with NetworkManagerMixin {
   @JsonKey(name: "SIRKET")
-  String? companyModel;
+  String? company;
   @JsonKey(name: "YIL")
   int? year;
 
-  CompanyModel({this.companyModel, this.year});
+  CompanyModel();
   @override
   fromJson(dynamic json) {
     return _$CompanyModelFromJson(json);
@@ -24,6 +24,6 @@ class CompanyModel with NetworkManagerMixin {
 
   @override
   toString() {
-    return "companyModel: $companyModel,\n year: $year";
+    return "company: $company,\n year: $year";
   }
 }

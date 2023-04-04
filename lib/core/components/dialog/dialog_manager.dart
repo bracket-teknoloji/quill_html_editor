@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -36,6 +37,46 @@ class DialogManager {
         context: context,
         builder: (context) => areYouSureDialog(onYes),
       );
+  void showCupertinoDialog(String message) => showDialog(
+      context: context,
+      builder: (context) {
+        return CupertinoAlertDialog(
+          title: const Text("Uyarı"),
+          content: SelectableText(message),
+          actions: [
+            CupertinoDialogAction(
+                isDestructiveAction: true,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text("Hayır")),
+            CupertinoDialogAction(isDefaultAction: true, onPressed: () {}, child: const Text("Evet")),
+          ],
+        );
+      });
+
+  void showListDialog({required List list}) => showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Şirket Seçiniz"),
+          content: SizedBox(
+            height: 200,
+            child: ListView.builder(
+              itemCount: list.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(list[index].toString()),
+                  onTap: () {
+                    Get.back(result: list[index]);
+                  },
+                );
+              },
+            ),
+          ),
+        );
+      });
 
   void showExitDialog() => showDialog(
         context: context,
@@ -79,10 +120,10 @@ class DialogManager {
   }
 
   AlertDialog loadingDialog() {
-    return const AlertDialog(
-      title: Text("Yükleniyor..."),
-      content: SizedBox(
-          height: 10,
+    return AlertDialog(
+      title: Text("Yükleniyor...", style: context.theme.textTheme.titleMedium?.copyWith(color: Colors.black)),
+      content: const SizedBox(
+          height: 5,
           width: 50,
           child: LinearProgressIndicator(
             color: Colors.red,
@@ -101,11 +142,7 @@ class DialogManager {
         ListTile(
             title: const Text("DEMO"),
             onTap: () {
-              Get.back(result: {
-                "company": "DEMO",
-                "user": "demo",
-                "password": "demo"
-              });
+              Get.back(result: {"company": "DEMO", "user": "demo", "password": "demo"});
             }),
         ...List.generate(
           box.length,
@@ -164,8 +201,7 @@ class DialogManager {
   AlertDialog areYouSureDialog(void Function() onYes) {
     return AlertDialog(
         title: const Text("Uyarı"),
-        content:
-            const Text("Bu işlemi gerçekleştirmek istediğinize emin misiniz?"),
+        content: const Text("Bu işlemi gerçekleştirmek istediğinize emin misiniz?"),
         actions: [
           ElevatedButton(
               onPressed: () {

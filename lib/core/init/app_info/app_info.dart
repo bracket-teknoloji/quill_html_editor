@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart' show debugPrint;
 import 'package:package_info_plus/package_info_plus.dart';
 
 class AppInfoModel {
@@ -13,6 +12,5 @@ class AppInfoModel {
     packageName = packageInfo.packageName;
     version = packageInfo.version;
     buildNumber = packageInfo.buildNumber;
-    debugPrint('AppInfoModel: $appName, $packageName, $version, $buildNumber');
   }
 }
