@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "luanpotter.dart-import"
+        "luanpotter.dart-import",
+        "vinicioslc.adb-interface-vscode"
     ]
 }

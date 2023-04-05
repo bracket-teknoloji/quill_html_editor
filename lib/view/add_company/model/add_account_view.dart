@@ -22,17 +22,14 @@ class AddAccountView extends StatefulWidget {
 class _AddAccountViewState extends BaseState<AddAccountView> {
   final TextEditingController _controller = TextEditingController();
   final TextEditingController _controller2 = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: const Text("Firmalar"),
           centerTitle: false,
-          actions: [
-            IconButton(
-                onPressed: loginMethod,
-                icon: const Icon(Icons.save))
-          ],
+          actions: [IconButton(onPressed: loginMethod, icon: const Icon(Icons.save))],
         ),
         backgroundColor: Colors.black,
         body: Padding(
@@ -85,44 +82,35 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
   }
 
   Future<void> loginMethod() async {
-    {
-      dialogManager.loadingDialog();
-      // ignore: await_only_futures
-      var model = await AccountModel.create()
-        ..uyeEmail = _controller.text
-        ..uyeSifre = md5.convert(utf8.encode(_controller2.text)).toString();
-      var data = model.toJson();
-      final response = await networkManager.dioPost<AccountResponseModel>(
-        bodyModel: AccountResponseModel(),
-        data: data,
-        addTokenKey: false,
-        path: ApiUrls.getUyeBilgileri,
-      );
-      if (response.data != null) {
-        if (response.success!) {
+    Future<String> encodedPassword = passwordDecoder(_controller2.text);
+    dialogManager.loadingDialog();
+    var model = AccountModel.instance
+      ..uyeEmail = _controller.text
+      ..uyeSifre = await encodedPassword;
+    var data = model.toJson();
+    final response = await networkManager.dioPost<AccountResponseModel>(
+        bodyModel: AccountResponseModel(), data: data, addTokenKey: false, path: ApiUrls.getUyeBilgileri);
+    if (response.success!) {
+      Box box = Hive.box("accounts");
+      for (AccountResponseModel item in response.data!) {
+        if (!box.containsKey(item.firma)) {
           Get.offAndToNamed("/addCompany");
-          Box box = Hive.box("accounts");
-          for (AccountResponseModel item in response.data!) {
-            if (!box.containsKey(item.firmaKisaAdi)) {
-              box.put(item.firmaKisaAdi, item);
-              dialogManager.showSnackBar("Başarılı");
-            } else {
-              dialogManager.showSnackBar("${item.firmaKisaAdi} zaten kayıtlı");
-            }
-          }
+          box.put(item.firma, item);
+          dialogManager.showSnackBar("Başarılı");
         } else {
-          dialogManager.showAlertDialog(response.errorDetails.toString());
+          dialogManager.showSnackBar("${item.firmaKisaAdi} zaten kayıtlı");
         }
-      } else {
-        dialogManager.showAlertDialog(response.message.toString());
       }
+    } else {
+      dialogManager.showAlertDialog(response.message.toString());
     }
   }
 
   Future<void> _getQR(BuildContext context) async {
     String barcode = await Get.toNamed("/qr");
-    var model = AccountModel.create()..qrData = barcode;
+    var model = AccountModel.instance..qrData = barcode;
     var data = model.toJson();
+
     final response = await networkManager.dioPost<AccountResponseModel>(
       bodyModel: AccountResponseModel(),
       addTokenKey: false,
@@ -131,11 +119,16 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
     );
     if (response.data != null) {
       if (response.success ?? false) {
+        var anaHesapBox = Hive.box("anaHesap");
+        anaHesapBox.put("anaHesap", [response.data![0].uyeEmail, response.data![0].uyeSifre]);
+        AccountModel.instance
+          ..uyeEmail = response.data![0].uyeEmail
+          ..uyeSifre = response.data![0].uyeSifre;
         Box box = Hive.box("accounts");
         for (AccountResponseModel item in response.data!) {
-          Get.offAndToNamed("/addCompany");
-          if (!box.containsKey(item.firmaKisaAdi)) {
-            box.put(item.firmaKisaAdi, item);
+          if (!box.containsKey(item.firma)) {
+            Get.offAndToNamed("/addCompany");
+            box.put(item.firma, item);
             log("item: ${item.toJson()}");
             dialogManager.showSnackBar("Başarılı");
           } else {
@@ -145,8 +138,12 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
       } else {
         dialogManager.showAlertDialog(response.errorDetails.toString());
       }
-    } else {
-      dialogManager.showAlertDialog(response.message.toString());
-    }
+    } else {}
+  }
+
+  Future<String> passwordDecoder(String password) async {
+    // ignore: await_only_futures
+    String password = await md5.convert(utf8.encode(_controller2.text)).toString();
+    return password;
   }
 }

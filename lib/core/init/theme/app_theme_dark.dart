@@ -15,7 +15,6 @@ class AppThemeDark extends AppTheme {
 
   @override
   ThemeData get theme => ThemeData.dark().copyWith(
-    
       progressIndicatorTheme: const ProgressIndicatorThemeData(
         color: Colors.white,
         circularTrackColor: Colors.red,
@@ -59,10 +58,10 @@ class AppThemeDark extends AppTheme {
       dialogBackgroundColor: Colors.blueGrey,
       bottomSheetTheme: const BottomSheetThemeData(
         backgroundColor: Colors.white,
-        elevation: 0,
+        elevation: 1,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
-            top: Radius.circular(2),
+            top: Radius.circular(4),
           ),
         ),
       ),
@@ -81,6 +80,7 @@ class AppThemeDark extends AppTheme {
       )),
       iconTheme: const IconThemeData(color: Colors.white, size: 30),
       dialogTheme: DialogTheme(
+        actionsPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
         shape: BeveledRectangleBorder(
           borderRadius: BorderRadius.circular(2),
         ),

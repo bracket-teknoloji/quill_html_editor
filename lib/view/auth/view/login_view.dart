@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,7 +14,7 @@ import '../../../core/init/cache/cache_manager.dart';
 import '../../../core/init/network/login/api_urls.dart';
 import '../../../core/init/network/network_manager.dart';
 import '../../add_company/model/account_model.dart';
-import '../model/login_model.dart';
+import '../../add_company/model/account_response_model.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -73,7 +75,7 @@ class _LoginViewState extends BaseState<LoginView> {
                 child: Padding(
                   padding: context.horizontalPaddingHigh,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       AnimatedContainer(
@@ -81,10 +83,11 @@ class _LoginViewState extends BaseState<LoginView> {
                         child: Padding(
                           padding: context.paddingLow,
                           child: Image.asset(ImageEnum.pickerLogo.path, height: context.isKeyBoardOpen ? 50 : 100),
+                          //child: Lottie.network("https://assets2.lottiefiles.com/private_files/lf30_fup2uejx.json"),
                         ),
                       ),
                       Padding(
-                        padding: context.verticalPaddingMedium,
+                        padding: context.verticalPaddingLow,
                         child: Wrap(
                           alignment: WrapAlignment.center,
                           children: [
@@ -136,10 +139,10 @@ class _LoginViewState extends BaseState<LoginView> {
                         padding: context.verticalPaddingLow,
                         child: Wrap(
                           children: [
-                            Text("Şifre", style: context.theme.textTheme.titleSmall),
+                            const Text("Şifre"),
                             TextField(
                               controller: passwordController,
-                              textInputAction: TextInputAction.go,
+                              textInputAction: TextInputAction.done,
                               obscureText: isObscure,
                               decoration: InputDecoration(
                                 suffixIcon: IconButton(
@@ -176,12 +179,16 @@ class _LoginViewState extends BaseState<LoginView> {
           if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
             {
               try {
-                final response = await NetworkManager.getToken(path: ApiUrls.token, bodyModel: TokenModel(), data: {
+                final response = await NetworkManager.getToken(path: ApiUrls.token, data: {
                   "grant_type": "password",
                   "username": emailController.text,
                   "password": passwordController.text,
                 });
-                AccountModel.create().kullaniciAdi = emailController.text;
+                AccountResponseModel? accountCache = CacheManager.getAccounts(companyController.text);
+                AccountModel.instance
+                  ..kullaniciAdi = emailController.text
+                  ..uyeEmail = accountCache!.email
+                  ..uyeSifre = accountCache.parola;
                 Hive.box("preferences").put(companyController.text, [
                   textFieldData["user"],
                   emailController.text,
@@ -189,6 +196,7 @@ class _LoginViewState extends BaseState<LoginView> {
                 ]);
                 if (context.mounted) {
                   CacheManager.setToken(response.accessToken.toString());
+                  log(response.userJson?.erpKullanici.toString() ?? "null");
 
                   Navigator.popAndPushNamed(context, "/entryCompany");
                 }

@@ -43,6 +43,8 @@ class DialogManager {
         return CupertinoAlertDialog(
           title: const Text("Uyarı"),
           content: SelectableText(message),
+          insetAnimationCurve: Curves.easeInOutCubicEmphasized,
+          insetAnimationDuration: const Duration(seconds: 1),
           actions: [
             CupertinoDialogAction(
                 isDestructiveAction: true,
@@ -83,6 +85,7 @@ class DialogManager {
         useRootNavigator: false,
         builder: (context) {
           return AlertDialog(
+            actionsAlignment: MainAxisAlignment.center,
             title: const Text("Çıkış"),
             content: const Text("Çıkmak istediğinize emin misiniz?"),
             actions: [

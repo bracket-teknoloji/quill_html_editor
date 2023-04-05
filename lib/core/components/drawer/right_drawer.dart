@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../base/state/base_state.dart';
-
 
 class EndDrawer extends StatefulWidget {
   const EndDrawer({super.key});
@@ -19,11 +19,9 @@ class _EndDrawerState extends BaseState<EndDrawer> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
           DrawerHeader(
-            decoration: BoxDecoration(color: theme.canvasColor),
-            margin: const EdgeInsets.all(10),
-            padding: const EdgeInsets.all(10),
             duration: const Duration(seconds: 10),
-            child: const Text("Favorite"),
+            margin: const EdgeInsets.all(0),
+            child: LottieBuilder.network("https://assets5.lottiefiles.com/packages/lf20_l4fgppor.json"),
           ),
           ListTile(
             leading: const Icon(Icons.logout_outlined),

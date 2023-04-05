@@ -22,28 +22,24 @@ class _AccountsViewState extends BaseState<AccountsView> {
       appBar: AppBar(
         title: const Text("Hesaplar"),
       ),
-      body: ListView.builder(
-          itemCount: getListLength() == 0 ? 1 : getListLength(),
-          itemBuilder: getListLength() == 0
-              ? (context, index) => const Center(
-                    child: Text("Hesap Bulunamadı"),
-                  )
-              : (context, index) {
-                  AccountResponseModel account =
-                      Hive.box("accounts").getAt(index);
-                  return ListTile(
-                    onTap: () {
-                      bottomSheet(context,
-                          kisaAd: account.firmaKisaAdi.toString());
-                    },
-                    title: Text(account.firma.toString()),
-                    subtitle: Text(account.email.toString()),
-                  );
-                }),
+      body: getListLength() == 0
+          ? const Center(child: Text("Hesap Bulunamadı"))
+          : ListView.builder(
+              itemCount: getListLength() == 0 ? 1 : getListLength(),
+              itemBuilder: (context, index) {
+                AccountResponseModel account = Hive.box("accounts").getAt(index);
+                return ListTile(
+                  onTap: () {
+                    bottomSheet(context, firma: account.firma.toString());
+                  },
+                  title: Text(account.firma.toString()),
+                  subtitle: Text(account.email.toString()),
+                );
+              }),
     );
   }
 
-  Future<dynamic> bottomSheet(BuildContext context, {required String kisaAd}) {
+  Future<dynamic> bottomSheet(BuildContext context, {required String firma}) {
     return showModalBottomSheet(
         isDismissible: true,
         useSafeArea: true,
@@ -54,7 +50,7 @@ class _AccountsViewState extends BaseState<AccountsView> {
                 trailing: const Icon(Icons.edit_outlined),
                 title: const Text("Düzelt"),
                 onTap: () {
-                  //animate to other page
+                  //TODO Düzenleme Sayfasına Yönlendir
                 },
               ),
               ListTile(
@@ -63,7 +59,7 @@ class _AccountsViewState extends BaseState<AccountsView> {
                 onTap: () {
                   Navigator.pop(context);
                   dialogManager.showAreYouSureDialog(() {
-                    Hive.box("accounts").delete(kisaAd);
+                    Hive.box("accounts").delete(firma);
                     setState(() {});
                   });
                 },

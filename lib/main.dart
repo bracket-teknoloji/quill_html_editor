@@ -4,6 +4,7 @@ import "package:get/get_navigation/src/routes/get_route.dart";
 
 import "core/init/cache/cache_manager.dart";
 import "core/init/theme/app_theme_dark.dart";
+import "view/add_company/model/account_model.dart";
 import 'view/add_company/view/edit_company_view.dart.dart';
 import "view/add_company/view/qr_view.dart";
 import "view/auth/view/login_view.dart";
@@ -11,8 +12,8 @@ import "view/entry_company_view.dart";
 import "view/main_page/view/main_page_view.dart";
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   await CacheManager.init().initHiveBoxes();
+  AccountModel.instance.init();
   runApp(const MyApp());
 }
 

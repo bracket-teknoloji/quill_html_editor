@@ -57,39 +57,30 @@ Widget buildScaffold(Key key) {
           itemBuilder: (context, index) {
             return AnimationConfiguration.staggeredList(
                 position: index,
-                delay: const Duration(milliseconds: 10),
+                delay: const Duration(milliseconds: 50),
                 duration: const Duration(milliseconds: 300),
-                child: SlideAnimation(
-                  verticalOffset: 5.0,
-                  child: FadeInAnimation(
-                    child: CustomGridTile(
-                      name: GridThemeManager.gridNames[index],
-                      color: GridThemeManager.gridTileColors[index],
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Flexible(
-                              flex: 3,
-                              child: Icon(GridThemeManager.gridIcons[index])),
-                          Expanded(
-                            flex: 3,
-                            child: Container(
-                              padding: context.paddingLow,
-                              width: 150,
-                              child: Text(
-                                GridThemeManager.gridNames[index],
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                ),
-                              ),
+                child: FadeInAnimation(
+                  child: CustomGridTile(
+                    name: GridThemeManager.gridNames[index],
+                    color: GridThemeManager.gridTileColors[index],
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Flexible(flex: 3, child: Icon(GridThemeManager.gridIcons[index])),
+                        Expanded(
+                          flex: 4,
+                          child: Container(
+                            padding: context.paddingLow,
+                            child: Text(
+                              GridThemeManager.gridNames[index],
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                              textAlign: TextAlign.center,
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ));

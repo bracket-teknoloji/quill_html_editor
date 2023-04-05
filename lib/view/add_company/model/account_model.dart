@@ -11,13 +11,11 @@ part 'account_model.g.dart';
 
 @JsonSerializable(createToJson: true)
 class AccountModel with NetworkManagerMixin {
-  // make this a lazy singleton class
-  
-  AccountModel._create();
-  static final AccountModel _instance = AccountModel._create();
-  factory AccountModel.create() {
-    return _instance;
+  AccountModel.getValue() {
+    init();
   }
+  static final AccountModel instance = AccountModel.getValue();
+
   AccountModel();
   @JsonKey(name: "ADI")
   String? isim;
@@ -134,10 +132,11 @@ class AccountModel with NetworkManagerMixin {
 
     //* Uygulama Bilgileri
     uygulamaSurumu = "225";
+    ///  [uygulamaSurumu = packageInfo.version;]
+    ///* olarak değiştirilecek fakat API bu uygulamanın sürümünü kabul etmediği için manuel verdim.
     uygulamaSurumKodu = 225;
     requestVersion = 2;
     await PackageInfo.fromPlatform().then((value) => paketAdi = value.packageName);
-    //uygulamaSurumu = packageInfo.version;
 
     // TODO Network Bilgileri (Connectivity Plus)
 
