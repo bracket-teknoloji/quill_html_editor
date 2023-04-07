@@ -111,7 +111,7 @@ class DialogManager {
   AlertDialog warningAlertDialog(String message) {
     return AlertDialog(
       title: const Text("Uyarı"),
-      content: Text(message),
+      content: SingleChildScrollView(child: Text(message)),
       actions: [
         ElevatedButton(
             onPressed: () {

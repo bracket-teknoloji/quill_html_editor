@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:flutter/services.dart";
 import "package:get/get_navigation/src/root/get_material_app.dart";
 import "package:get/get_navigation/src/routes/get_route.dart";
 
@@ -12,9 +13,15 @@ import "view/entry_company_view.dart";
 import "view/main_page/view/main_page_view.dart";
 
 Future<void> main() async {
-  await CacheManager.init().initHiveBoxes();
+  await CacheManager.instance.initHiveBoxes();
   AccountModel.instance.init();
-  runApp(const MyApp());
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.landscapeRight,
+    DeviceOrientation.landscapeLeft,
+  ]).then((_) {
+    runApp(const MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {

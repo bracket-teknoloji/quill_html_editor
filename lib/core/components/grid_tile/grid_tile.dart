@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
 
-import '../../../view/auth/model/companies.dart';
+import '../../../view/main_page/view/grid_items.dart';
 import '../../base/state/base_state.dart';
 import '../../constants/ui_helper/radius_ui_helper.dart';
-import '../../init/network/login/api_urls.dart';
 
 class CustomGridTile extends StatefulWidget {
+  final String? name;
+  final String? title;
+  final String? icon;
   final Color? color;
-  final Column child;
-  final String name;
-  final Widget? footer;
-  final Widget? header;
-  const CustomGridTile(
-      {super.key,
-      required this.child,
-      this.header,
-      this.footer,
-      this.color,
-      required this.name});
+  final List<GridItems>? altMenuler;
+  final Function()? onTap;
+
+  const CustomGridTile({super.key, this.name, this.title, this.icon, this.color, this.onTap, this.altMenuler});
 
   @override
-  State<CustomGridTile> createState() => CustomGridTileState();
+  CustomGridTileState createState() => CustomGridTileState();
 }
 
 class CustomGridTileState extends BaseState<CustomGridTile> {
@@ -29,19 +24,9 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
     return InkWell(
       borderRadius: BorderRadiusHelper.radiusAllMid,
       splashColor: Colors.amber,
-      onTap: () async {
-        dialogManager.showLoadingDialog();
-        final response = await networkManager.dioGet<CompanyModel>(
-          path: ApiUrls.veriTabanlari,
-          bodyModel: CompanyModel(),
-        );
-
-        dialogManager.hideAlertDialog;
-        dialogManager.showAlertDialog(response.toString());
-      },
+      onTap: widget.onTap,
       child: Card(
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadiusHelper.radiusAllSmall),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadiusHelper.radiusAllSmall),
         color: widget.color,
         child: GridTile(
             header: Row(
@@ -51,11 +36,10 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                 const Spacer(
                   flex: 4,
                 ),
-                Flexible(flex: 2, child: widget.header ?? const Text("")),
+                Flexible(flex: 2, child: Text(widget.title ?? "")),
               ],
             ),
-            footer: Center(child: widget.footer),
-            child: widget.child),
+            child: const Icon(Icons.sentiment_very_satisfied, size: 50)),
       ),
     );
   }

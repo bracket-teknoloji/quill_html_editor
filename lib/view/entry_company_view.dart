@@ -5,6 +5,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 
 import "../core/base/state/base_state.dart";
+import "../core/init/cache/cache_manager.dart";
 import "../core/init/network/login/api_urls.dart";
 import "add_company/model/account_model.dart";
 import "auth/model/companies.dart";
@@ -191,11 +192,15 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                 "SUBE_KODU": selected["Şube"].toString(),
                                 "content-type": "application/json"
                               });
-                          log(response.toString());
                           dialogManager.hideAlertDialog;
                           if (response.data != null) {
+                            MainPageModel model = response.data[0];
+                            CacheManager.setanaVeri(model);
+                            // log (model[0].userModel!.profilYetki.toString());
+                            var b = CacheManager.getAnaVeri();
+                            log(b?.sirketModel.toString() ?? "null", name: "cache");
                             Get.toNamed("mainPage");
-                            dialogManager.showCupertinoDialog(response.toString());
+                            dialogManager.showCupertinoDialog(model.userModel!.profilYetki.toString());
                           } else {
                             dialogManager.showCupertinoDialog(response.message.toString());
                           }

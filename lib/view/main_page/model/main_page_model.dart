@@ -1,38 +1,44 @@
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../../core/base/model/base_network_mixin.dart';
 import 'lang_model.dart';
 import 'param_model.dart';
 import 'sirket_model.dart';
-import 'user_model.dart';
+import 'user_model/user_model.dart';
 
 part 'main_page_model.g.dart';
 
 @JsonSerializable(createToJson: true)
+@HiveType(typeId: 100)
 class MainPageModel with NetworkManagerMixin {
-
-  @JsonKey(name: "UserModel",
-  )
-  late final UserModel? userModel;
+  @JsonKey(name: "UserModel")
+  @HiveField(0)
+  UserModel? userModel;
   @JsonKey(name: "ServiceVersion")
-  late final String? serviceVersion;
+  @HiveField(1)
+  String? serviceVersion;
   @JsonKey(name: "LangVersion")
-  late final String? langVersion;
+  @HiveField(2)
+  String? langVersion;
   @JsonKey(name: "SirketModel", fromJson: SirketModel.fromJson)
-  late final SirketModel? sirketModel;
+  @HiveField(3)
+  SirketModel? sirketModel;
   @JsonKey(name: "LangModel", fromJson: LangModel.fromJson)
-  late final LangModel? langModel;
+  LangModel? langModel;
   @JsonKey(name: "MenuList")
-  late final List<String>? menuList;
+  @HiveField(5)
+  List<String>? menuList;
   @JsonKey(name: "ParamModel", fromJson: ParamModel.fromJson)
-  late final ParamModel? paramModel;
+  ParamModel? paramModel;
   MainPageModel();
 
   @override
   fromJson(Map<String, dynamic> json) {
     return _$MainPageModelFromJson(json);
   }
-  @override 
+
+  @override
   Map<String, dynamic> toJson() {
     return _$MainPageModelToJson(this);
   }

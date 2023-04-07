@@ -5,6 +5,88 @@
 part of 'user_model.dart';
 
 // **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class UserModelAdapter extends TypeAdapter<UserModel> {
+  @override
+  final int typeId = 101;
+
+  @override
+  UserModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return UserModel()
+      ..id = fields[0] as int?
+      ..kuladi = fields[1] as String?
+      ..parola = fields[2] as String?
+      ..adi = fields[3] as String?
+      ..soyadi = fields[4] as String?
+      ..erpKullanici = fields[5] as String?
+      ..erpParola = fields[6] as String?
+      ..profilKodu = fields[7] as int?
+      ..profilAdi = fields[8] as String?
+      ..kullaniciYetki = fields[10] as String?
+      ..pickerYetkili = fields[11] as String?
+      ..yetkiliSubelerJson = fields[12] as String?
+      ..konumEnlem = fields[13] as double?
+      ..konumBoylam = fields[14] as double?
+      ..langModel = fields[15] as LangModel?
+      ..adSoyad = fields[16] as String?;
+  }
+
+  @override
+  void write(BinaryWriter writer, UserModel obj) {
+    writer
+      ..writeByte(16)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.kuladi)
+      ..writeByte(2)
+      ..write(obj.parola)
+      ..writeByte(3)
+      ..write(obj.adi)
+      ..writeByte(4)
+      ..write(obj.soyadi)
+      ..writeByte(5)
+      ..write(obj.erpKullanici)
+      ..writeByte(6)
+      ..write(obj.erpParola)
+      ..writeByte(7)
+      ..write(obj.profilKodu)
+      ..writeByte(8)
+      ..write(obj.profilAdi)
+      ..writeByte(10)
+      ..write(obj.kullaniciYetki)
+      ..writeByte(11)
+      ..write(obj.pickerYetkili)
+      ..writeByte(12)
+      ..write(obj.yetkiliSubelerJson)
+      ..writeByte(13)
+      ..write(obj.konumEnlem)
+      ..writeByte(14)
+      ..write(obj.konumBoylam)
+      ..writeByte(15)
+      ..write(obj.langModel)
+      ..writeByte(16)
+      ..write(obj.adSoyad);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UserModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
@@ -23,7 +105,10 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => $checkedCreate(
         $checkedConvert('ERP_PAROLA', (v) => val.erpParola = v as String?);
         $checkedConvert('PROFIL_KODU', (v) => val.profilKodu = v as int?);
         $checkedConvert('PROFIL_ADI', (v) => val.profilAdi = v as String?);
-        $checkedConvert('PROFIL_YETKI', (v) => val.profilYetki = v as String?);
+        $checkedConvert(
+            'PROFIL_YETKI',
+            (v) => val.profilYetki =
+                v == null ? null : ProfilYetkiModel.fromJson(v as String));
         $checkedConvert(
             'KULLANICI_YETKI', (v) => val.kullaniciYetki = v as String?);
         $checkedConvert(
@@ -73,7 +158,7 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'ERP_PAROLA': instance.erpParola,
       'PROFIL_KODU': instance.profilKodu,
       'PROFIL_ADI': instance.profilAdi,
-      'PROFIL_YETKI': instance.profilYetki,
+      'PROFIL_YETKI': instance.profilYetki?.toJson(),
       'KULLANICI_YETKI': instance.kullaniciYetki,
       'PICKER_YETKILI': instance.pickerYetkili,
       'YETKILI_SUBE_JSON': instance.yetkiliSubelerJson,

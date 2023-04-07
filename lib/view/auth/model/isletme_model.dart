@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+
 import '../../../core/base/model/base_network_mixin.dart';
 
 part 'isletme_model.g.dart';

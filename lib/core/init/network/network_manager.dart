@@ -5,7 +5,6 @@ import 'package:picker/core/base/model/base_network_mixin.dart';
 import 'package:picker/core/base/model/generic_response_model.dart';
 import 'package:picker/core/init/cache/cache_manager.dart';
 import 'package:picker/view/auth/model/login_model.dart';
-import 'package:retry/retry.dart';
 
 import '../../constants/enum/dio_enum.dart';
 
@@ -32,14 +31,14 @@ class NetworkManager {
       Map<String, dynamic>? headers,
       dynamic data,
       Map<String, dynamic>? queryParameters}) async {
-    final response = await retry(() => _dio.request(path,
+    final response = await _dio.request(path,
         queryParameters: queryParameters,
         cancelToken: CancelToken(),
         options: Options(headers: {
           "Platform": "netfect",
           "Content-Type": "application/x-www-form-urlencoded",
         }, method: HttpTypes.GET, responseType: ResponseType.json),
-        data: data));
+        data: data);
     var a = response.data;
     return TokenModel().fromJson(a);
   }
@@ -57,8 +56,8 @@ class NetworkManager {
     if (headers != null) head.addEntries(headers.entries);
     Map<String, String> queries = getStandardQueryParameters();
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
-    final response = await retry(
-        () => _dio.get(path, queryParameters: queries, options: Options(headers: head), cancelToken: cancelToken));
+    final response =
+        await _dio.get(path, queryParameters: queries, options: Options(headers: head), cancelToken: cancelToken);
     GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
     return responseModel;
   }
@@ -77,8 +76,8 @@ class NetworkManager {
     }
     Map<String, String> queries = getStandardQueryParameters();
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
-    final response = await retry(() => _dio.post(path,
-        queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data));
+    final response = await _dio.post(path,
+        queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
     GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
     return responseModel;
   }

@@ -120,7 +120,9 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
     if (response.data != null) {
       if (response.success ?? false) {
         var anaHesapBox = Hive.box("anaHesap");
-        anaHesapBox.put("anaHesap", [response.data![0].uyeEmail, response.data![0].uyeSifre]);
+        response.data.forEach((element) {
+          anaHesapBox.put("anaHesap", [element.uyeEmail, element.uyeSifre]);
+        });
         AccountModel.instance
           ..uyeEmail = response.data![0].uyeEmail
           ..uyeSifre = response.data![0].uyeSifre;

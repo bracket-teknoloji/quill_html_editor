@@ -2,33 +2,55 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../view/add_company/model/account_response_model.dart';
+import '../../../view/main_page/model/main_page_model.dart';
+import '../../../view/main_page/model/sirket_model.dart';
+import '../../../view/main_page/model/user_model/user_model.dart';
 
 class CacheManager {
-  CacheManager.init() {
+  static late Box _tokenBox;
+  static late Box _preferencesBox;
+  static late Box _companiesBox;
+  static late Box _accountsBox;
+  static late Box _anaVeriBox;
+  static late Box _anaHesapBox;
+  //Lazy Singleton
+  static final CacheManager _instance = CacheManager._init();
+  static CacheManager get instance => _instance;
+  CacheManager._init() {
     WidgetsFlutterBinding.ensureInitialized();
+    Hive.registerAdapter(MainPageModelAdapter());
+    Hive.registerAdapter(UserModelAdapter());
+    Hive.registerAdapter(SirketModelAdapter());
     Hive.registerAdapter(AccountResponseModelAdapter());
     initHiveBoxes();
   }
 
   Future<void> initHiveBoxes() async {
     await Hive.initFlutter();
-    await Hive.openBox("preferences");
-    await Hive.openBox("companies");
-    await Hive.openBox("token");
-    await Hive.openBox("accounts");
-    await Hive.openBox("AnaHesap");
+    _preferencesBox= await Hive.openBox("preferences");
+    _companiesBox = await Hive.openBox("companies");
+    _tokenBox = await Hive.openBox("token");
+    _accountsBox = await Hive.openBox("accounts");
+    _anaHesapBox =await  Hive.openBox("AnaHesap");
+    _anaVeriBox = await Hive.openBox<MainPageModel>("anaVeri");
   }
 
-  //*  Getters and Setters
-
+//*  Getters and Setters
   //* Getters
-  static String getToken(String query) => Hive.box("token").get(query);
-  static String getPref(String query) => Hive.box("preferences").get(query);
-  static String getCompanies(String query) => Hive.box("companies").get(query);
-  static AccountResponseModel? getAccounts(String query) => Hive.box("accounts").get(query);
+  static String getToken(String query) => _tokenBox.get(query);
+  static String getPref(String query) => _preferencesBox.get(query);
+  static String getCompanies(String query) => _companiesBox.get(query);
+  static MainPageModel? getAnaVeri() => _anaVeriBox.get("data");
+  static AccountResponseModel? getAccounts(String query) => _accountsBox.get(query);
 
   //* Setters
-  static void setToken(String token) => Hive.box("token").put("token", token);
+  static void setToken(String token) => _tokenBox.put("token", token);
+  static void setPref(String key, String value) => _preferencesBox.put(key, value);
+  static void setCompanies(String key, String value) => _companiesBox.put(key, value);
+  static void setanaVeri(MainPageModel value) => _anaVeriBox.put("data", value);
+
+  //* Clear Boxes
+  static void clearBox(String boxName) => Hive.box(boxName).clear();
 }
 
 class CacheHelper {

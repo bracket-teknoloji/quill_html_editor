@@ -5,6 +5,55 @@
 part of 'main_page_model.dart';
 
 // **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class MainPageModelAdapter extends TypeAdapter<MainPageModel> {
+  @override
+  final int typeId = 100;
+
+  @override
+  MainPageModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MainPageModel()
+      ..userModel = fields[0] as UserModel?
+      ..serviceVersion = fields[1] as String?
+      ..langVersion = fields[2] as String?
+      ..sirketModel = fields[3] as SirketModel?
+      ..menuList = (fields[5] as List?)?.cast<String>();
+  }
+
+  @override
+  void write(BinaryWriter writer, MainPageModel obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.userModel)
+      ..writeByte(1)
+      ..write(obj.serviceVersion)
+      ..writeByte(2)
+      ..write(obj.langVersion)
+      ..writeByte(3)
+      ..write(obj.sirketModel)
+      ..writeByte(5)
+      ..write(obj.menuList);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MainPageModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 

@@ -161,22 +161,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.2"
-  chopper:
-    dependency: transitive
-    description:
-      name: chopper
-      sha256: b2645618fa760df06d7609c96b092d7b3e7a8f23639d34269f62f45a5edabc7d
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.1.1"
-  chopper_generator:
-    dependency: "direct dev"
-    description:
-      name: chopper_generator
-      sha256: "62360a1a3536645aaee030dd7719089838a478682867d46dbcf30a3c0e5305b4"
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.0.0"
   cli_util:
     dependency: transitive
     description:
@@ -358,14 +342,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
-  flutter_mobx:
-    dependency: "direct main"
-    description:
-      name: flutter_mobx
-      sha256: "0da4add0016387a7bf309a0d0c41d36c6b3ae25ed7a176409267f166509e723e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.6+5"
   flutter_native_splash:
     dependency: "direct dev"
     description:
@@ -416,6 +392,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.6.5"
+  get_it:
+    dependency: "direct main"
+    description:
+      name: get_it
+      sha256: "290fde3a86072e4b37dbb03c07bec6126f0ecc28dad403c12ffe2e5a2d751ab7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.2.0"
   glob:
     dependency: transitive
     description:
@@ -564,10 +548,10 @@ packages:
     dependency: "direct main"
     description:
       name: lottie
-      sha256: "14b489bf93af84727a07c87c73580a9413f9cbffa4ea2342f3f71447a674a3fb"
+      sha256: "23522951540d20a57a60202ed7022e6376bed206a4eee1c347a91f58bd57eb9f"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.1"
+    version: "2.3.2"
   mask_text_input_formatter:
     dependency: transitive
     description:
@@ -608,22 +592,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
-  mobx:
-    dependency: "direct main"
-    description:
-      name: mobx
-      sha256: "6738620307a424d2c9ad8b873f4dce391c44e9135eb4e75668ac8202fec7a9b8"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.4"
-  mobx_codegen:
-    dependency: "direct main"
-    description:
-      name: mobx_codegen
-      sha256: "86122e410d8ea24dda0c69adb5c2a6ccadd5ce02ad46e144764e0d0184a06181"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.1"
   nested:
     dependency: transitive
     description:
@@ -848,22 +816,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.0"
-  retrofit:
-    dependency: transitive
-    description:
-      name: retrofit
-      sha256: "5eedbd8f73697f190dabc88520e0bcf2d3b2d9b9ad5c837f1dbb3ee6172d7709"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.0.1"
-  retrofit_generator:
-    dependency: "direct dev"
-    description:
-      name: retrofit_generator
-      sha256: "8f7edc6c8d6cbb5ad6064110a29ad8ce063b7177a39b373861e830349bae8ed2"
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.0.0+1"
   retry:
     dependency: "direct main"
     description:
@@ -1013,14 +965,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.3.0"
-  tuple:
-    dependency: transitive
-    description:
-      name: tuple
-      sha256: "0ea99cd2f9352b2586583ab2ce6489d1f95a5f6de6fb9492faaf97ae2060f0aa"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.1"
   typed_data:
     dependency: transitive
     description:
