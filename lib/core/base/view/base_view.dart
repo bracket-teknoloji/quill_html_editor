@@ -4,7 +4,7 @@ import 'base_appbar.dart';
 import 'base_scaffold.dart';
 
 class BaseView<T> extends StatefulWidget {
-  const BaseView(
+   BaseView(
       {super.key,
       this.viewModel,
       this.onModelReady,
@@ -19,7 +19,7 @@ class BaseView<T> extends StatefulWidget {
   final VoidCallback? onDispose;
 
   /// [AppBar]
-  final String? title;
+   String? title;
   final Widget? leading;
   final List<Widget>? actions;
 
@@ -38,6 +38,11 @@ class _BaseViewState extends State<BaseView> {
   void dispose() {
     super.dispose();
     widget.onDispose;
+  }
+  set setTitle (String title) {
+    setState(() {
+      widget.title = title;
+    });
   }
 
   @override

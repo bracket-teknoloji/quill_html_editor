@@ -12,7 +12,7 @@ class CacheManager {
   static late Box _companiesBox;
   static late Box _accountsBox;
   static late Box _anaVeriBox;
-  static late Box _anaHesapBox;
+  static late Box _verifiedUsersBox;
   //Lazy Singleton
   static final CacheManager _instance = CacheManager._init();
   static CacheManager get instance => _instance;
@@ -27,12 +27,12 @@ class CacheManager {
 
   Future<void> initHiveBoxes() async {
     await Hive.initFlutter();
-    _preferencesBox= await Hive.openBox("preferences");
+    _preferencesBox = await Hive.openBox("preferences");
     _companiesBox = await Hive.openBox("companies");
     _tokenBox = await Hive.openBox("token");
     _accountsBox = await Hive.openBox("accounts");
-    _anaHesapBox =await  Hive.openBox("AnaHesap");
     _anaVeriBox = await Hive.openBox<MainPageModel>("anaVeri");
+    _verifiedUsersBox = await Hive.openBox("verifiedUsers");
   }
 
 //*  Getters and Setters
@@ -42,14 +42,17 @@ class CacheManager {
   static String getCompanies(String query) => _companiesBox.get(query);
   static MainPageModel? getAnaVeri() => _anaVeriBox.get("data");
   static AccountResponseModel? getAccounts(String query) => _accountsBox.get(query);
+  static Map? getVerifiedUser() => _verifiedUsersBox.get("verifiedUser");
 
   //* Setters
   static void setToken(String token) => _tokenBox.put("token", token);
   static void setPref(String key, String value) => _preferencesBox.put(key, value);
   static void setCompanies(String key, String value) => _companiesBox.put(key, value);
   static void setanaVeri(MainPageModel value) => _anaVeriBox.put("data", value);
+  static void setAccounts(String key, AccountResponseModel value) => _accountsBox.put(key, value);
+  static void setVerifiedUser(Map value) => _verifiedUsersBox.put("verifiedUser", value);
 
-  //* Clear Boxes
+//* Clear Boxes
   static void clearBox(String boxName) => Hive.box(boxName).clear();
 }
 

@@ -26,11 +26,7 @@ class NetworkManager {
     );
   }
 
-  static Future<TokenModel> getToken(
-      {required String path,
-      Map<String, dynamic>? headers,
-      dynamic data,
-      Map<String, dynamic>? queryParameters}) async {
+  static Future<TokenModel> getToken({required String path, Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
     final response = await _dio.request(path,
         queryParameters: queryParameters,
         cancelToken: CancelToken(),
@@ -56,8 +52,7 @@ class NetworkManager {
     if (headers != null) head.addEntries(headers.entries);
     Map<String, String> queries = getStandardQueryParameters();
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
-    final response =
-        await _dio.get(path, queryParameters: queries, options: Options(headers: head), cancelToken: cancelToken);
+    final response = await _dio.get(path, queryParameters: queries, options: Options(headers: head), cancelToken: cancelToken);
     GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
     return responseModel;
   }
@@ -76,8 +71,7 @@ class NetworkManager {
     }
     Map<String, String> queries = getStandardQueryParameters();
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
-    final response = await _dio.post(path,
-        queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
+    final response = await _dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
     GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
     return responseModel;
   }

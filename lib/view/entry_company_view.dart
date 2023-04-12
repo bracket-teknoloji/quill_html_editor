@@ -5,6 +5,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 
 import "../core/base/state/base_state.dart";
+import "../core/components/textfield/custom_textfield.dart";
 import "../core/init/cache/cache_manager.dart";
 import "../core/init/network/login/api_urls.dart";
 import "add_company/model/account_model.dart";
@@ -20,7 +21,7 @@ class EntryCompanyView extends StatefulWidget {
 }
 
 class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
-  Map selected = {"Şirket": "", "İşletme": -1, "Şube": -1};
+  Map selected = {"Şirket": null, "İşletme": null, "Şube": null};
   List<String>? sirket;
   List? isletme;
   List? sube;
@@ -31,14 +32,19 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     await dioGetData();
   }
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
   dioGetData() async {
     sirket = await getSirket();
-    isletme = await getIsletme(selected["Şirket"].toString()).onError((error, stackTrace) => []);
-    sube = await getSube();
+    sube = await getSube(selected["Şirket"].toString()).onError((error, stackTrace) => []);
+    isletme = await getIsletme();
   }
 
   Future<List<String>?> getSirket({String? name}) async {
-    List<String> list = [];
+    List<String> list = [""];
     final response = await networkManager.dioGet<CompanyModel>(
       path: ApiUrls.veriTabanlari,
       bodyModel: CompanyModel(),
@@ -48,13 +54,14 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     for (CompanyModel element in data) {
       list.add(element.company.toString());
     }
-    if (selected["Şirket"] == "") {
-      selected["Şirket"] = data[0].company;
+    if (selected["Şirket"] == null) {
+      selected["Şirket"] = "";
+      setState(() {});
     }
     return list;
   }
 
-  Future<List> getIsletme(String sirket) async {
+  Future<List> getSube(String sirket) async {
     List list = [];
     final response = await networkManager.dioGet<IsletmeModel>(
       path: ApiUrls.isletmelerSubeler,
@@ -64,21 +71,22 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
       queryParameters: {"Veritabani": sirket},
     );
     final data = response.data;
-    for (IsletmeModel element in data) {
-      list.add(element);
+    if (data != null) {
+      for (IsletmeModel element in data) {
+        list.add(element);
+      }
     }
     return list;
   }
 
-  Future<List> getSube() async {
+  Future<List> getIsletme() async {
     List data = [];
-    for (var element in isletme!) {
-      if (sube?.contains(element) == false) {
-        data.add(element.isletmeAdi);
+    for (var element in sube!) {
+      if (isletme?.contains(element) == false) {
+        data.add(element);
       }
     }
-    var data2 = data.toSet().toList();
-    return data2;
+    return data;
   }
 
   final formKey = GlobalKey<FormState>();
@@ -106,53 +114,63 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            DropdownButtonFormField(
-                              value: selected["Şirket"].toString(),
-                              decoration: const InputDecoration(
-                                labelText: "Şirket",
-                                border: OutlineInputBorder(),
-                              ),
-                              items: sirket
-                                  ?.map((e) => DropdownMenuItem(
-                                        value: e,
-                                        child: Text(e.toString()),
-                                      ))
-                                  .toList(),
-                              onChanged: (value) {
-                                setState(() {
-                                  selected["Şirket"] = value;
-                                });
-                                log(selected.toString(), name: "Şirket");
-                              },
+                            CustomTextField(
+                              text: "Şirket",
+                              children: [
+                                DropdownButtonFormField(
+                                  isExpanded: true,
+                                  validator: validator,
+                                  value: sirket?.length == 1 ? sirket![0] : selected["Şirket"],
+                                  items: sirket
+                                      ?.map((e) => DropdownMenuItem(
+                                            value: e,
+                                            child: Text(e.toString()),
+                                          ))
+                                      .toList(),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      selected["Şirket"] = value;
+                                      selected["İşletme"] = null;
+                                      selected["Şube"] = null;
+                                    });
+                                    log(selected.toString(), name: "Şirket");
+                                  },
+                                )
+                              ],
                             ),
-                            DropdownButtonFormField(
-                              decoration: const InputDecoration(
-                                labelText: "İşletmeler",
-                                border: OutlineInputBorder(),
-                              ),
-                              items: isletme
-                                  ?.map((e) => DropdownMenuItem(value: e, child: Text(e.subeAdi.toString())))
-                                  .toList(),
-                              onChanged: (value) {
-                                selected["İşletme"] = isletme?.indexOf(value);
-                                log(selected.toString(), name: "İşletme");
-                              },
+                            CustomTextField(
+                              text: "İşletme Kodu",
+                              children: [
+                                DropdownButtonFormField(
+                                  isExpanded: true,
+                                  validator: validator,
+                                  //items: isletme değişkenindeki unique değerler
+                                  items: isletme!.map((e) => e).toSet().map((e) => DropdownMenuItem(value: e, child: Text("${e.isletmeAdi} ${e.isletmeKodu ?? 0}"))).toList(),
+                                  onChanged: (value) async {
+                                    if (value is IsletmeModel) {
+                                      selected["İşletme"] = value.isletmeKodu;
+                                      log(selected.toString(), name: "İşletmeler");
+                                      log(value.hashCode.toString(), name: "İşletmeler");
+                                    }
+                                  },
+                                )
+                              ],
                             ),
-                            DropdownButtonFormField(
-                              decoration: const InputDecoration(
-                                labelText: "Şubeler",
-                                border: OutlineInputBorder(),
-                              ),
-                              items: sube
-                                  ?.map((e) => DropdownMenuItem(
-                                        value: e ?? "",
-                                        child: Text(e.toString()),
-                                      ))
-                                  .toList(),
-                              onChanged: (value) async {
-                                selected["Şube"] = sube?.indexOf(value);
-                                log(selected.toString(), name: "Şube");
-                              },
+                            CustomTextField(
+                              text: "Şube Kodu ",
+                              children: [
+                                DropdownButtonFormField(
+                                  isExpanded: true,
+                                  validator: validator,
+                                  items: sube?.map((e) => DropdownMenuItem(value: e, child: Text("${e.subeAdi} ${e.subeKodu ?? 0}"))).toList(),
+                                  onChanged: (value) {
+                                    if (value is IsletmeModel) {
+                                      selected["Şube"] = value.isletmeKodu;
+                                      log(selected.toString(), name: "Şube");
+                                    }
+                                  },
+                                )
+                              ],
                             ),
                           ]
                               .map((widget) => Padding(
@@ -164,8 +182,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                     context.emptySizedHeightBoxLow,
                     ElevatedButton(
                       onPressed: () async {
-                        if (formKey.currentState!.validate()) {
-                          formKey.currentState!.save();
+                        if (!selected.values.contains(null)) {
                           //TODO  : AccountModel ile değiştirilecek
 
                           /// var [model] = {
@@ -192,18 +209,19 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                 "SUBE_KODU": selected["Şube"].toString(),
                                 "content-type": "application/json"
                               });
-                          dialogManager.hideAlertDialog;
                           if (response.data != null) {
                             MainPageModel model = response.data[0];
                             CacheManager.setanaVeri(model);
-                            // log (model[0].userModel!.profilYetki.toString());
                             var b = CacheManager.getAnaVeri();
                             log(b?.sirketModel.toString() ?? "null", name: "cache");
                             Get.toNamed("mainPage");
-                            dialogManager.showCupertinoDialog(model.userModel!.profilYetki.toString());
+                            response.message.isNotNullOrNoEmpty ? dialogManager.showAlertDialog(response.message.toString()) : null;
                           } else {
-                            dialogManager.showCupertinoDialog(response.message.toString());
+                            dialogManager.hideAlertDialog;
+                            dialogManager.showAlertDialog(response.message.toString());
                           }
+                        } else {
+                          dialogManager.showSnackBar("Boş bırakmayınız.");
                         }
                       },
                       child: const Text("Giriş"),
@@ -211,11 +229,17 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                   ],
                 ));
           } else {
-            return const Center(
-                child: CircularProgressIndicator.adaptive(valueColor: AlwaysStoppedAnimation<Color>(Colors.black)));
+            return const Center(child: CircularProgressIndicator.adaptive(valueColor: AlwaysStoppedAnimation<Color>(Colors.black)));
           }
         },
       ),
     );
+  }
+
+  String? validator(value) {
+    if (value == null) {
+      return "";
+    }
+    return null;
   }
 }

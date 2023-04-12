@@ -12,14 +12,10 @@ import "view/auth/view/login_view.dart";
 import "view/entry_company_view.dart";
 import "view/main_page/view/main_page_view.dart";
 
-Future<void> main() async {
+void main() async {
   await CacheManager.instance.initHiveBoxes();
   AccountModel.instance.init();
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.landscapeRight,
-    DeviceOrientation.landscapeLeft,
-  ]).then((_) {
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]).then((_) {
     runApp(const MyApp());
   });
 }
@@ -51,6 +47,8 @@ class MyApp extends StatelessWidget {
         ),
       ],
       debugShowCheckedModeBanner: false,
+      opaqueRoute: true,
+      color: Colors.white,
       theme: AppThemeDark.instance!.theme,
     );
   }

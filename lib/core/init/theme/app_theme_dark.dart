@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../constants/ui_helper/ui_helper.dart';
 import 'app_theme.dart';
 
 class AppThemeDark extends AppTheme {
@@ -14,39 +15,58 @@ class AppThemeDark extends AppTheme {
   AppThemeDark._init();
 
   @override
-  ThemeData get theme => ThemeData.dark().copyWith(
-      progressIndicatorTheme: const ProgressIndicatorThemeData(
+  ThemeData get theme => ThemeData.from(useMaterial3: true, textTheme: Typography.whiteRedmond, colorScheme: const ColorScheme.dark()).copyWith(
+      brightness: Brightness.light,
+      tooltipTheme: const TooltipThemeData(
+        decoration: BoxDecoration(
+          color: Colors.black,
+          borderRadius: BorderRadius.all(Radius.circular(50)),
+        ),
+        textStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 12,
+        ),
+      ),
+      dividerTheme: DividerThemeData(
+        color: UIHelper.primaryColor.withOpacity(0.2),
+        space: 0,
+        thickness: 1,
+      ),
+      progressIndicatorTheme: ProgressIndicatorThemeData(
         color: Colors.white,
-        circularTrackColor: Colors.red,
+        circularTrackColor: UIHelper.primaryColor,
         linearMinHeight: 2,
       ),
       dropdownMenuTheme: DropdownMenuThemeData(
+          menuStyle: MenuStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.red),
+          ),
           inputDecorationTheme: InputDecorationTheme(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(2),
-        ),
-        errorStyle: TextStyle(
-          fontFamily: GoogleFonts.roboto().fontFamily,
-          fontSize: 12,
-          color: Colors.red,
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(2),
-          borderSide: const BorderSide(color: Colors.red),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(2),
-          borderSide: const BorderSide(color: Colors.red),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(2),
-          borderSide: const BorderSide(color: Colors.white),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(2),
-          borderSide: const BorderSide(color: Colors.white),
-        ),
-      )),
+            border: OutlineInputBorder(
+              borderRadius: UIHelper.highBorderRadius,
+            ),
+            errorStyle: TextStyle(
+              fontFamily: GoogleFonts.roboto().fontFamily,
+              fontSize: 0,
+              color: Colors.red,
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: UIHelper.highBorderRadius,
+              borderSide: const BorderSide(color: Colors.red),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: UIHelper.highBorderRadius,
+              borderSide: const BorderSide(color: Colors.red),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: UIHelper.highBorderRadius,
+              borderSide: const BorderSide(color: Colors.white),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: UIHelper.highBorderRadius,
+              borderSide: const BorderSide(color: Colors.white),
+            ),
+          )),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
@@ -55,22 +75,22 @@ class AppThemeDark extends AppTheme {
         ),
       ),
       applyElevationOverlayColor: true,
-      dialogBackgroundColor: Colors.blueGrey,
       bottomSheetTheme: const BottomSheetThemeData(
         backgroundColor: Colors.white,
         elevation: 1,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
-            top: Radius.circular(4),
+            top: Radius.circular(15),
           ),
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
+        splashFactory: InkRipple.splashFactory,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(2),
+          borderRadius: UIHelper.highBorderRadius,
         ),
-        foregroundColor: Colors.black,
+        foregroundColor: UIHelper.primaryColor,
         backgroundColor: Colors.white,
         textStyle: TextStyle(
           fontFamily: GoogleFonts.roboto().fontFamily,
@@ -80,45 +100,41 @@ class AppThemeDark extends AppTheme {
       )),
       iconTheme: const IconThemeData(color: Colors.white, size: 30),
       dialogTheme: DialogTheme(
-        actionsPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-        shape: BeveledRectangleBorder(
-          borderRadius: BorderRadius.circular(2),
+        shape: RoundedRectangleBorder(
+          borderRadius: UIHelper.highBorderRadius,
         ),
+        actionsPadding: EdgeInsets.zero,
+        alignment: Alignment.center,
         backgroundColor: Colors.white,
-        surfaceTintColor: Colors.black12,
-        titleTextStyle: TextStyle(
-            fontFamily: GoogleFonts.roboto().fontFamily,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-            fontSize: 24),
+        surfaceTintColor: Colors.white,
+        titleTextStyle: TextStyle(fontFamily: GoogleFonts.roboto().fontFamily, color: Colors.black, fontSize: 24),
         contentTextStyle: TextStyle(
           fontFamily: GoogleFonts.roboto().fontFamily,
           fontSize: 16,
           color: Colors.black87,
         ),
-        iconColor: Colors.black,
+        elevation: 0,
+        shadowColor: Colors.transparent,
       ),
       cardTheme: CardTheme(
         color: Colors.white,
         shadowColor: Colors.transparent,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(2),
+          borderRadius: UIHelper.highBorderRadius,
         ),
       ),
-      listTileTheme: const ListTileThemeData(
+      listTileTheme: ListTileThemeData(
         style: ListTileStyle.list,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(15)),
+        ),
         tileColor: Colors.white,
-        selectedColor: Colors.blue,
         selectedTileColor: Colors.red,
         textColor: Colors.black,
-        iconColor: Colors.black,
+        iconColor: UIHelper.primaryColor,
         dense: true,
       ),
-      drawerTheme: const DrawerThemeData(
-          surfaceTintColor: Colors.transparent,
-          elevation: 0,
-          shadowColor: Colors.transparent,
-          backgroundColor: Colors.grey),
+      drawerTheme: const DrawerThemeData(surfaceTintColor: Colors.transparent, elevation: 0, shadowColor: Colors.transparent, backgroundColor: Colors.grey),
       textSelectionTheme: const TextSelectionThemeData(
         cursorColor: Colors.red,
         selectionColor: Colors.red,
@@ -127,21 +143,29 @@ class AppThemeDark extends AppTheme {
       useMaterial3: true,
       primaryColor: Colors.blue,
       textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(
-          foregroundColor: Colors.white,
-        ),
-      ),
+          style: ButtonStyle(
+        splashFactory: InkRipple.splashFactory,
+        overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.2)),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        foregroundColor: MaterialStateProperty.all(UIHelper.primaryColor),
+        backgroundColor: MaterialStateProperty.all(Colors.white),
+        textStyle: MaterialStateProperty.all(TextStyle(
+          fontFamily: GoogleFonts.roboto().fontFamily,
+          fontSize: 15,
+          color: Colors.white,
+        )),
+      )),
       inputDecorationTheme: const InputDecorationTheme(
         contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         isCollapsed: true,
         labelStyle: TextStyle(color: Colors.black),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(1)),
+          borderRadius: BorderRadius.all(Radius.circular(15)),
           borderSide: BorderSide(color: Colors.white),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(2)),
-          borderSide: BorderSide(color: Colors.white),
+          borderRadius: BorderRadius.all(Radius.circular(15)),
+          borderSide: BorderSide(color: Colors.red),
         ),
       ),
       scaffoldBackgroundColor: Colors.transparent,

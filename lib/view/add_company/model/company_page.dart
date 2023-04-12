@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../core/base/state/base_state.dart';
+import '../../../core/constants/ui_helper/ui_helper.dart';
 import 'account_response_model.dart';
 
 class AccountsView extends StatefulWidget {
@@ -16,26 +18,37 @@ int getListLength() {
 }
 
 class _AccountsViewState extends BaseState<AccountsView> {
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Get.toNamed("/");
+          },
+          icon: const Icon(Icons.arrow_back_ios),
+        ),
         title: const Text("Hesaplar"),
       ),
       body: getListLength() == 0
           ? const Center(child: Text("Hesap Bulunamadı"))
-          : ListView.builder(
-              itemCount: getListLength() == 0 ? 1 : getListLength(),
-              itemBuilder: (context, index) {
-                AccountResponseModel account = Hive.box("accounts").getAt(index);
-                return ListTile(
-                  onTap: () {
-                    bottomSheet(context, firma: account.firma.toString());
-                  },
-                  title: Text(account.firma.toString()),
-                  subtitle: Text(account.email.toString()),
-                );
-              }),
+          : Padding(
+              padding: UIHelper.midPadding,
+              child: ListView.builder(
+                  itemCount: getListLength() == 0 ? 1 : getListLength(),
+                  itemBuilder: (context, index) {
+                    AccountResponseModel account = Hive.box("accounts").getAt(index);
+                    return ListTile(
+                      onTap: () {
+                        bottomSheet(context, firma: account.firma.toString());
+                      },
+                      title: Text(account.firma.toString()),
+                      subtitle: Text(account.email.toString()),
+                    );
+                  }),
+            ),
     );
   }
 

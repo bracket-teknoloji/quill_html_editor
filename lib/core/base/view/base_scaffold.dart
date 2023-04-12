@@ -14,13 +14,8 @@ class BaseScaffold extends StatefulWidget {
 class _BaseScaffoldState extends BaseState<BaseScaffold> {
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-        child: Scaffold(
-          body: widget.builder(context, widget.viewModel),
-        ),
-        onWillPop: () async {
-          dialogManager.showExitDialog();
-          return false;
-        });
+    return Scaffold(
+      body: widget.builder(context, widget.viewModel),
+    );
   }
 }

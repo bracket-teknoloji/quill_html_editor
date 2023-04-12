@@ -1,14 +1,15 @@
 import 'dart:developer';
 
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:kartal/kartal.dart';
 
 import '../../../core/base/state/base_state.dart';
+import '../../../core/components/textfield/custom_textfield.dart';
 import '../../../core/constants/image/image_enums.dart';
 import '../../../core/constants/login_page_constants.dart';
+import '../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../core/init/app_info/app_info.dart';
 import '../../../core/init/cache/cache_manager.dart';
 import '../../../core/init/network/login/api_urls.dart';
@@ -27,7 +28,7 @@ class _LoginViewState extends BaseState<LoginView> {
   bool isObscure = true;
   String? version;
 
-  Map textFieldData = {};
+  Map textFieldData = {"company": "demo", "user": "demo", "password": "demo"};
   var box = Hive.box('preferences');
 
   late final TextEditingController emailController;
@@ -36,9 +37,16 @@ class _LoginViewState extends BaseState<LoginView> {
   @override
   void initState() {
     super.initState();
+    var box = CacheManager.getVerifiedUser();
+    if (box != null) {
+      textFieldData = box;
+    }
     emailController = TextEditingController();
     companyController = TextEditingController();
     passwordController = TextEditingController();
+    companyController.text = textFieldData["company"];
+    emailController.text = textFieldData["user"];
+    passwordController.text = textFieldData["password"];
     AppInfoModel().init().then((value) {
       setState(() {
         version = AppInfoModel.version;
@@ -63,7 +71,7 @@ class _LoginViewState extends BaseState<LoginView> {
       child: Stack(
         children: [
           Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               gradient: LoginConstants.linearGradient,
             ),
           ),
@@ -74,44 +82,41 @@ class _LoginViewState extends BaseState<LoginView> {
               child: SingleChildScrollView(
                 child: Padding(
                   padding: context.horizontalPaddingHigh,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      AnimatedContainer(
-                        duration: const Duration(seconds: 1),
-                        child: Padding(
-                          padding: context.paddingLow,
-                          child: Image.asset(ImageEnum.pickerLogo.path, height: context.isKeyBoardOpen ? 50 : 100),
-                          //child: Lottie.network("https://assets2.lottiefiles.com/private_files/lf30_fup2uejx.json"),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 500),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        AnimatedContainer(
+                          duration: const Duration(seconds: 1),
+                          child: Padding(
+                            padding: context.paddingLow,
+                            child: Image.asset(ImageEnum.pickerLogo.path, height: context.isKeyBoardOpen ? 50 : 100),
+                            //child: Lottie.network("https://assets2.lottiefiles.com/private_files/lf30_fup2uejx.json"),
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: context.verticalPaddingLow,
-                        child: Wrap(
-                          alignment: WrapAlignment.center,
-                          children: [
-                            Text(
-                              "Picker",
-                              style: context.theme.textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w500),
-                            ),
-                            Text("Mobil Veri Toplama Çözümleri",
-                                style: context.theme.textTheme.titleLarge!
-                                    .copyWith(fontSize: 15, fontWeight: FontWeight.w300)),
-                            Text("V$version")
-                          ],
+                        Padding(
+                          padding: UIHelper.midPaddingVertical,
+                          child: Column(
+                            children: [
+                              Text(
+                                "Picker",
+                                style: context.theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w500),
+                              ),
+                              Text("Mobil Veri Toplama Çözümleri", style: context.theme.textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w300)),
+                              Text("V $version")
+                            ],
+                          ),
                         ),
-                      ),
-                      Wrap(
-                        children: [
-                          const Text("Firma"),
+                        CustomTextField(text: "Firma", children: [
                           TextFormField(
                             readOnly: true,
                             onTap: () async {
-                              textFieldData = await showAlertDialog(dialogManager.listTileDialog(
-                                    title: "Firma Seçiniz",
-                                  )) ??
-                                  {};
+                              var a = await dialogManager.selectCompanyDialog();
+                              if (a != null) {
+                                textFieldData = a;
+                              }
                               companyController.text = textFieldData["company"] ?? "";
                               emailController.text = textFieldData["user"] ?? "";
                               passwordController.text = textFieldData["password"] ?? "";
@@ -120,46 +125,49 @@ class _LoginViewState extends BaseState<LoginView> {
                             decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz)),
                             controller: companyController,
                             textInputAction: TextInputAction.next,
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: context.onlyTopPaddingLow,
-                        child: Wrap(
-                          children: [
-                            const Text("Netfect Kullanıcı Adı"),
-                            TextFormField(
-                              controller: emailController,
-                              textInputAction: TextInputAction.next,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: context.verticalPaddingLow,
-                        child: Wrap(
-                          children: [
-                            const Text("Şifre"),
-                            TextField(
-                              controller: passwordController,
-                              textInputAction: TextInputAction.done,
-                              obscureText: isObscure,
-                              decoration: InputDecoration(
-                                suffixIcon: IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      isObscure = !isObscure;
-                                    });
-                                  },
-                                  icon: isObscure ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
-                                ),
+                          )
+                        ]),
+                        Padding(
+                          padding: UIHelper.midPaddingOnlyTop,
+                          child: CustomTextField(
+                            text: "Netfect Kullanıcı Adı",
+                            children: [
+                              TextFormField(
+                                controller: emailController,
+                                textInputAction: TextInputAction.next,
                               ),
-                            )
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      elevatedButton(emailController, passwordController, context),
-                    ],
+                        Padding(
+                          padding: UIHelper.midPaddingVertical,
+                          child: CustomTextField(
+                            text: "Şifre",
+                            children: [
+                              TextField(
+                                controller: passwordController,
+                                textInputAction: TextInputAction.done,
+                                obscureText: isObscure,
+                                decoration: InputDecoration(
+                                  suffixIcon: IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        isObscure = !isObscure;
+                                      });
+                                    },
+                                    icon: isObscure ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: elevatedButton(emailController, passwordController, context),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -170,9 +178,9 @@ class _LoginViewState extends BaseState<LoginView> {
     );
   }
 
-  ElevatedButton elevatedButton(
-      TextEditingController emailController, TextEditingController passwordController, BuildContext context) {
+  ElevatedButton elevatedButton(TextEditingController emailController, TextEditingController passwordController, BuildContext context) {
     return ElevatedButton(
+        key: const Key("loginButton"),
         onPressed: () async {
           dialogManager.showLoadingDialog();
 
@@ -184,25 +192,27 @@ class _LoginViewState extends BaseState<LoginView> {
                   "username": emailController.text,
                   "password": passwordController.text,
                 });
+                dialogManager.hideAlertDialog;
                 AccountResponseModel? accountCache = CacheManager.getAccounts(companyController.text);
                 AccountModel.instance
                   ..kullaniciAdi = emailController.text
-                  ..uyeEmail = accountCache!.email
-                  ..uyeSifre = accountCache.parola;
+                  ..uyeEmail = accountCache?.email ?? "demo@netfect.com"
+                  ..uyeSifre = accountCache?.parola;
                 Hive.box("preferences").put(companyController.text, [
                   textFieldData["user"],
                   emailController.text,
                   passwordController.text,
                 ]);
+                CacheManager.setVerifiedUser(textFieldData);
                 if (context.mounted) {
                   CacheManager.setToken(response.accessToken.toString());
                   log(response.userJson?.erpKullanici.toString() ?? "null");
 
-                  Navigator.popAndPushNamed(context, "/entryCompany");
+                  Get.toNamed("/entryCompany", preventDuplicates: false);
                 }
-              } on DioError catch (e) {
+              } catch (e) {
                 dialogManager.hideAlertDialog;
-                dialogManager.showAlertDialog("${e.response?.data["error_description"]}");
+                dialogManager.showAlertDialog(e.toString());
               }
             }
           } else {

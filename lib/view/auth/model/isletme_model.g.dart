@@ -16,6 +16,7 @@ IsletmeModel _$IsletmeModelFromJson(Map<String, dynamic> json) =>
         final val = IsletmeModel();
         $checkedConvert('SIRKET', (v) => val.sirket = v as String?);
         $checkedConvert('ISLETME_KODU', (v) => val.isletmeKodu = v as int?);
+        $checkedConvert('SUBE_KODU', (v) => val.subeKodu = v as int?);
         $checkedConvert('SUBE_ADI', (v) => val.subeAdi = v as String?);
         $checkedConvert('ISLETME_ADI', (v) => val.isletmeAdi = v as String?);
         $checkedConvert(
@@ -36,6 +37,7 @@ IsletmeModel _$IsletmeModelFromJson(Map<String, dynamic> json) =>
       fieldKeyMap: const {
         'sirket': 'SIRKET',
         'isletmeKodu': 'ISLETME_KODU',
+        'subeKodu': 'SUBE_KODU',
         'subeAdi': 'SUBE_ADI',
         'isletmeAdi': 'ISLETME_ADI',
         'lokalDepoAktif': 'LOKAL_DEPO_AKTIF',
@@ -55,6 +57,7 @@ Map<String, dynamic> _$IsletmeModelToJson(IsletmeModel instance) =>
     <String, dynamic>{
       'SIRKET': instance.sirket,
       'ISLETME_KODU': instance.isletmeKodu,
+      'SUBE_KODU': instance.subeKodu,
       'SUBE_ADI': instance.subeAdi,
       'ISLETME_ADI': instance.isletmeAdi,
       'LOKAL_DEPO_AKTIF': instance.lokalDepoAktif,

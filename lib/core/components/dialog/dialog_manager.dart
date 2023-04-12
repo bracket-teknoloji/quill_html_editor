@@ -1,9 +1,11 @@
 import 'dart:developer';
 
-import 'package:flutter/cupertino.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
+import '../../constants/ui_helper/ui_helper.dart';
 
 class DialogManager {
   late final BuildContext context;
@@ -15,94 +17,31 @@ class DialogManager {
   ///
   /// [Dialog Controllers] dialogların kontrolü için kullanılır.
   ///
-  void showSnackBar(String message) => ScaffoldMessenger.of(context)
-      .showSnackBar(snackBarError(message))
-      .closed
-      .then((value) => ScaffoldMessenger.of(context).clearSnackBars());
+  void showSnackBar(String message) => ScaffoldMessenger.of(context).showSnackBar(snackBarError(message)).closed.then((value) => ScaffoldMessenger.of(context).clearSnackBars());
 
-  void showAlertDialog(String message) => showDialog(
-        barrierDismissible: false,
-        useRootNavigator: false,
-        context: context,
-        builder: (context) => warningAlertDialog(message),
-      );
+  void showAlertDialog(String message) => _baseDialog(
+        title: "Uyarı",
+        desc: message,
+        dialogType: DialogType.error,
+        btnOkText: "Tamam",
+        // onOk is rootNavigator true without Get
+        onOk: () {},
+      ).show();
 
-  void showLoadingDialog() => showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (context) => loadingDialog(),
-      );
-  void showAreYouSureDialog(void Function() onYes) => showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (context) => areYouSureDialog(onYes),
-      );
-  void showCupertinoDialog(String message) => showDialog(
-      context: context,
-      builder: (context) {
-        return CupertinoAlertDialog(
-          title: const Text("Uyarı"),
-          content: SelectableText(message),
-          insetAnimationCurve: Curves.easeInOutCubicEmphasized,
-          insetAnimationDuration: const Duration(seconds: 1),
-          actions: [
-            CupertinoDialogAction(
-                isDestructiveAction: true,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text("Hayır")),
-            CupertinoDialogAction(isDefaultAction: true, onPressed: () {}, child: const Text("Evet")),
-          ],
-        );
-      });
+  void showLoadingDialog() => _baseDialog(
+        body: const Center(child: CircularProgressIndicator()),
+      ).show();
+  void showAreYouSureDialog(void Function() onYes) => areYouSureDialog(onYes).show();
 
-  void showListDialog({required List list}) => showDialog(
-      barrierDismissible: false,
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text("Şirket Seçiniz"),
-          content: SizedBox(
-            height: 200,
-            child: ListView.builder(
-              itemCount: list.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(list[index].toString()),
-                  onTap: () {
-                    Get.back(result: list[index]);
-                  },
-                );
-              },
-            ),
-          ),
-        );
-      });
-
-  void showExitDialog() => showDialog(
-        context: context,
-        useRootNavigator: false,
-        builder: (context) {
-          return AlertDialog(
-            actionsAlignment: MainAxisAlignment.center,
-            title: const Text("Çıkış"),
-            content: const Text("Çıkmak istediğinize emin misiniz?"),
-            actions: [
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text("Hayır")),
-              ElevatedButton(
-                  onPressed: () {
-                    Get.offAllNamed("/");
-                  },
-                  child: const Text("Evet")),
-            ],
-          );
-        },
-      );
+  void showExitDialog() => _baseDialog(
+        title: "Uyarı",
+        desc: "Çıkmak istediğinize emin misiniz?",
+        dialogType: DialogType.question,
+        onOk: () => Get.offAllNamed("/"),
+        btnOkText: "Evet",
+        onCancel: () {},
+        btnCancelText: "Hayır",
+      ).show();
 
   void get hideSnackBar => ScaffoldMessenger.of(context).clearSnackBars();
 
@@ -110,10 +49,12 @@ class DialogManager {
 
   AlertDialog warningAlertDialog(String message) {
     return AlertDialog(
+      icon: const Icon(Icons.account_circle_outlined),
+      iconColor: Colors.red,
       title: const Text("Uyarı"),
       content: SingleChildScrollView(child: Text(message)),
       actions: [
-        ElevatedButton(
+        TextButton(
             onPressed: () {
               Navigator.pop(context);
             },
@@ -140,10 +81,16 @@ class DialogManager {
     return AlertDialog(
       contentPadding: const EdgeInsets.all(0),
       actionsOverflowButtonSpacing: 0,
+      elevation: 0,
+      icon: const Icon(
+        Icons.account_circle_outlined,
+      ),
+      iconColor: Colors.black,
       title: Text(title),
       content: Column(mainAxisSize: MainAxisSize.min, children: [
         ListTile(
             title: const Text("DEMO"),
+            leading: const Icon(Icons.account_circle_outlined),
             onTap: () {
               Get.back(result: {"company": "DEMO", "user": "demo", "password": "demo"});
             }),
@@ -154,6 +101,7 @@ class DialogManager {
             log(box.getAt(index).toString());
             return ListTile(
                 title: Text(title),
+                leading: const Icon(Icons.account_circle_outlined),
                 onTap: () {
                   Get.back(result: {
                     "company": title,
@@ -165,58 +113,141 @@ class DialogManager {
         ),
       ]),
       actions: [
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Expanded(
-              flex: 1,
-              child: ElevatedButton(
-                  onPressed: () {
-                    Get.offNamed(
-                      "/addCompany",
-                    );
-                  },
-                  child: const Text("Firmaları Düzenle")),
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              flex: 1,
-              child: ElevatedButton(
-                  onPressed: () {
-                    dynamic result = {};
-                    Get.back(result: result);
-                  },
-                  child: const Text(
-                    "İptal",
-                    textAlign: TextAlign.justify,
-                  )),
-            ),
-          ],
+        Divider(
+          color: UIHelper.primaryColor.withOpacity(0.3),
+          thickness: 1,
         ),
+        Padding(
+          padding: UIHelper.lowPaddingVertical,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: TextButton(
+                    onPressed: () {
+                      Get.toNamed(
+                        "/addCompany",
+                      );
+                    },
+                    child: const Text("Firmaları Düzenle")),
+              ),
+              Expanded(
+                child: TextButton(
+                    onPressed: () {
+                      dynamic result = {};
+                      Get.back(result: result);
+                    },
+                    child: const Text(
+                      "İptal",
+                      textAlign: TextAlign.justify,
+                    )),
+              ),
+            ],
+          ),
+        )
       ],
     );
   }
 
   SnackBar snackBarError(String message) => SnackBar(
-        content: Text(message),
+        backgroundColor: Colors.black,
+        showCloseIcon: true,
+        content: Text(message, style: context.theme.textTheme.bodySmall?.copyWith(color: Colors.white)),
       );
 
-  AlertDialog areYouSureDialog(void Function() onYes) {
-    return AlertDialog(
-        title: const Text("Uyarı"),
-        content: const Text("Bu işlemi gerçekleştirmek istediğinize emin misiniz?"),
-        actions: [
-          ElevatedButton(
-              onPressed: () {
-                Get.back();
-              },
-              child: const Text("Hayır")),
-          ElevatedButton(
-              onPressed: () {
-                onYes();
-                Get.back();
-              },
-              child: const Text("Evet")),
-        ]);
+  AwesomeDialog areYouSureDialog(void Function() onYes) {
+    return _baseDialog(
+      title: "Uyarı",
+      desc: "Çıkmak istediğinize emin misiniz?",
+      dialogType: DialogType.question,
+      onOk: onYes,
+      btnOkText: "Evet",
+      onCancel: () {},
+      btnCancelText: "Hayır",
+    );
+  }
+
+  Future selectCompanyDialog() {
+    Box box = Hive.box("accounts");
+    Box preferences = Hive.box("preferences");
+    return _baseDialog(
+        btnOkText: "Firmaları Düzenle",
+        btnCancelText: "Vazgeç",
+        onOk: () {
+          Get.offNamed(
+            "/addCompany",
+          );
+        },
+        onCancel: () {},
+        body: Column(mainAxisSize: MainAxisSize.min, children: [
+          const Text("Şirket Seçiniz", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black)),
+          ListTile(
+              title: const Text("DEMO"),
+              leading: const Icon(Icons.account_circle_outlined),
+              onTap: () {
+                Get.back(result: {"company": "demo", "user": "demo", "password": "demo"});
+              }),
+          ...List.generate(
+            box.length,
+            (index) {
+              var title = box.getAt(index).firma.toString();
+              log(box.getAt(index).toString());
+              return ListTile(
+                  title: Text(title),
+                  leading: const Icon(Icons.account_circle_outlined),
+                  onTap: () {
+                    Get.back(result: {
+                      "company": title,
+                      "user": preferences.get(title)?[1] ?? "",
+                      "password": preferences.get(title)?[2] ?? "",
+                    }, closeOverlays: true);
+                  });
+            },
+          ),
+        ])).show();
+  }
+
+  AwesomeDialog _baseDialog(
+      {String? title,
+      String? desc,
+      DialogType? dialogType,
+      IconData? btnOkIcon,
+      IconData? btnCancelIcon,
+      String? btnOkText,
+      String? btnCancelText,
+      void Function()? onOk,
+      void Function()? onCancel,
+      Color? btnOkColor,
+      Color? btnCancelColor,
+
+      ///! Eğer Body Girersen Title ve Desc Kullanılmaz
+      Widget? body}) {
+    return AwesomeDialog(
+        context: context,
+        reverseBtnOrder: true,
+        barrierColor: Colors.black.withOpacity(0.7),
+        dialogBorderRadius: UIHelper.highBorderRadius,
+        useRootNavigator: true,
+        headerAnimationLoop: false,
+        padding: UIHelper.midPaddingVertical,
+        buttonsBorderRadius: UIHelper.highBorderRadius,
+        animType: AnimType.topSlide,
+        btnOkIcon: btnOkIcon,
+        btnCancelIcon: btnCancelIcon,
+        dialogBackgroundColor: Colors.white,
+        descTextStyle: const TextStyle(fontWeight: FontWeight.w300, fontSize: 15, color: Colors.black),
+        titleTextStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),
+        title: title,
+        desc: desc,
+        btnOkOnPress: onOk,
+        btnCancelOnPress: onCancel,
+        btnOkText: btnOkText,
+        dialogType: dialogType ?? DialogType.noHeader,
+        btnCancelText: btnCancelText,
+        btnOkColor: btnOkColor ?? UIHelper.primaryColor,
+        btnCancelColor: btnCancelColor ?? Colors.grey,
+        dismissOnBackKeyPress: false,
+        dismissOnTouchOutside: false,
+        body: body);
   }
 }

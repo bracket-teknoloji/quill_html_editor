@@ -8,6 +8,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kartal/kartal.dart';
 
 import '../../../core/base/state/base_state.dart';
+import '../../../core/components/textfield/custom_textfield.dart';
 import '../../../core/init/network/login/api_urls.dart';
 import 'account_model.dart';
 import 'account_response_model.dart';
@@ -27,6 +28,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: const Text("Firmalar"),
           centerTitle: false,
           actions: [IconButton(onPressed: loginMethod, icon: const Icon(Icons.save))],
@@ -37,23 +39,18 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Wrap(
+              CustomTextField(
+                text: "Firma E-Posta Adresi",
                 children: [
-                  const Text("Firma E-Posta Adresi"),
-                  TextFormField(
-                    controller: _controller,
-                  ),
+                  TextFormField(controller: _controller),
                 ],
               ),
               Padding(
                 padding: context.verticalPaddingLow,
-                child: Wrap(
+                child: CustomTextField(
+                  text: "Şifre",
                   children: [
-                    const Text("Şifre"),
-                    TextFormField(
-                      obscureText: true,
-                      controller: _controller2,
-                    ),
+                    TextFormField(obscureText: true, controller: _controller2),
                   ],
                 ),
               ),
@@ -82,14 +79,13 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
   }
 
   Future<void> loginMethod() async {
-    Future<String> encodedPassword = passwordDecoder(_controller2.text);
+    String encodedPassword = passwordDecoder(_controller2.text);
     dialogManager.loadingDialog();
     var model = AccountModel.instance
       ..uyeEmail = _controller.text
-      ..uyeSifre = await encodedPassword;
+      ..uyeSifre = encodedPassword;
     var data = model.toJson();
-    final response = await networkManager.dioPost<AccountResponseModel>(
-        bodyModel: AccountResponseModel(), data: data, addTokenKey: false, path: ApiUrls.getUyeBilgileri);
+    final response = await networkManager.dioPost<AccountResponseModel>(bodyModel: AccountResponseModel(), data: data, addTokenKey: false, path: ApiUrls.getUyeBilgileri);
     if (response.success!) {
       Box box = Hive.box("accounts");
       for (AccountResponseModel item in response.data!) {
@@ -107,7 +103,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
   }
 
   Future<void> _getQR(BuildContext context) async {
-    String barcode = await Get.toNamed("/qr");
+    dynamic barcode = await Get.toNamed("/qr");
     var model = AccountModel.instance..qrData = barcode;
     var data = model.toJson();
 
@@ -143,9 +139,8 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
     } else {}
   }
 
-  Future<String> passwordDecoder(String password) async {
-    // ignore: await_only_futures
-    String password = await md5.convert(utf8.encode(_controller2.text)).toString();
+  String passwordDecoder(String password) {
+    String password = md5.convert(utf8.encode(_controller2.text)).toString();
     return password;
   }
 }

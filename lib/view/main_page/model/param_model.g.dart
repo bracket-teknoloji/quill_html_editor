@@ -407,11 +407,11 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => $checkedCreate(
         $checkedConvert(
             'ArrEFatSeri',
             (v) => val.arrEFatSeri =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
+                (v as List<dynamic>?)?.map((e) => e as String?).toList());
         $checkedConvert(
             'ArrEArSeri',
             (v) => val.arrEArSeri =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
+                (v as List<dynamic>?)?.map((e) => e as String?).toList());
         $checkedConvert('Seri_EArsiv', (v) => val.seriEArsiv = v as String?);
         $checkedConvert(
             'UretimEkAlanKullan', (v) => val.uretimEkAlanKullan = v as bool?);

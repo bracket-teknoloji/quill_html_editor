@@ -10,6 +10,8 @@ class IsletmeModel with NetworkManagerMixin {
   String? sirket;
   @JsonKey(name: "ISLETME_KODU")
   int? isletmeKodu;
+  @JsonKey(name: "SUBE_KODU")
+  int? subeKodu;
   @JsonKey(name: "SUBE_ADI")
   String? subeAdi;
   @JsonKey(name: "ISLETME_ADI")

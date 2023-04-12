@@ -34,6 +34,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^4.0.3
   flutter_staggered_animations: ^1.1.1
+  lottie: ^2.3.1
+  awesome_dialog: ^3.0.2
 
   #Info Dependencies
   device_info_plus: ^8.1.0
@@ -69,11 +71,10 @@ dependencies:
   timezone: ^0.9.1
   flutter_native_timezone: ^2.0.0
   carrier_info: ^2.0.8
+  crypto: ^3.0.2
   
   #connectivity_plus: ^3.0.3
-  crypto: ^3.0.2
-  lottie: ^2.3.1
-  retry: ^3.1.1
+
 
   
 flutter_icons:
@@ -82,7 +83,7 @@ flutter_icons:
     
 
 dev_dependencies:
-  flutter_launcher_icons: "^0.12.0"
+  flutter_launcher_icons: ^0.13.0
   build_runner: any
   flutter_lints: ^2.0.0
   flutter_native_splash: ^2.2.19
@@ -93,7 +94,7 @@ dev_dependencies:
 flutter_native_splash:
   color: "#FFFFFF"
   image: "assets/splash/picker_logo.png"
-  color_dark: "#000000"
+  color_dark: "#BA3C16"
   image_dark: "assets/splash/picker_logo.png"
   fill: false
 
