@@ -37,7 +37,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
         color: widget.color,
         semanticContainer: true,
         child: GridTile(
-            footer: widget.menuTipi != "S" ? const SizedBox() : const Icon(Icons.arrow_downward, size: 15),
+            footer: (widget.menuTipi == "S" && widget.altMenuler!.length > 1) ? const Icon(Icons.expand_more, size: 15) : const SizedBox(),
             child: widget.menuTipi == "I"
                 ? Center(child: Text(widget.title ?? "", textAlign: TextAlign.center))
                 : Column(
@@ -45,7 +45,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       AnimatedContainer(duration: const Duration(milliseconds: 500), child: const Icon(Icons.factory_outlined, size: 50)),
-                      Text(widget.menuTipi != "I" ? widget.title.toString() : "", textAlign: TextAlign.center)
+                      Text(widget.menuTipi != "I" ? widget.title.toString() : "", textAlign: TextAlign.center),
                     ],
                   )),
       ),

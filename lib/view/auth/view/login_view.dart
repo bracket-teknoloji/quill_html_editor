@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -37,7 +35,7 @@ class _LoginViewState extends BaseState<LoginView> {
   @override
   void initState() {
     super.initState();
-    var box = CacheManager.getVerifiedUser();
+    var box = CacheManager.getVerifiedUser;
     if (box != null) {
       textFieldData = box;
     }
@@ -182,7 +180,7 @@ class _LoginViewState extends BaseState<LoginView> {
     return ElevatedButton(
         key: const Key("loginButton"),
         onPressed: () async {
-          dialogManager.showLoadingDialog();
+          dialogManager.showLoadingDialog("Giriş Yapılıyor.");
 
           if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
             {
@@ -203,10 +201,15 @@ class _LoginViewState extends BaseState<LoginView> {
                   emailController.text,
                   passwordController.text,
                 ]);
-                CacheManager.setVerifiedUser(textFieldData);
                 if (context.mounted) {
+                  // TODO: Hata: VerifiedUser'ı kontrol et.
+                  CacheManager.setVerifiedUser({
+                    "user": emailController.text,
+                    "password": passwordController.text,
+                    "company": companyController.text,
+                    "email": accountCache?.email ?? ""
+                  });
                   CacheManager.setToken(response.accessToken.toString());
-                  log(response.userJson?.erpKullanici.toString() ?? "null");
 
                   Get.toNamed("/entryCompany", preventDuplicates: false);
                 }

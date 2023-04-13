@@ -5,6 +5,7 @@ class UIHelper {
   static BorderRadius get highBorderRadius => BorderRadius.circular(15);
   static BorderRadius get midBorderRadius => BorderRadius.circular(10);
   static BorderRadius get lowBorderRadius => BorderRadius.circular(5);
+  static BorderRadius get zeroBorderRadius => BorderRadius.circular(0);
 
   //* Padding
   static EdgeInsets get highPadding => const EdgeInsets.all(15);

@@ -34,13 +34,15 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       ..konumEnlem = fields[13] as double?
       ..konumBoylam = fields[14] as double?
       ..langModel = fields[15] as LangModel?
-      ..adSoyad = fields[16] as String?;
+      ..adSoyad = fields[16] as String?
+      ..admin = fields[17] as String?
+      ..adminMi = fields[18] as bool?;
   }
 
   @override
   void write(BinaryWriter writer, UserModel obj) {
     writer
-      ..writeByte(16)
+      ..writeByte(18)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -72,7 +74,11 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       ..writeByte(15)
       ..write(obj.langModel)
       ..writeByte(16)
-      ..write(obj.adSoyad);
+      ..write(obj.adSoyad)
+      ..writeByte(17)
+      ..write(obj.admin)
+      ..writeByte(18)
+      ..write(obj.adminMi);
   }
 
   @override
@@ -125,6 +131,8 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => $checkedCreate(
                 ? null
                 : LangModel.fromJson(v as Map<String, dynamic>));
         $checkedConvert('AD_SOYAD', (v) => val.adSoyad = v as String?);
+        $checkedConvert('ADMIN', (v) => val.admin = v as String?);
+        $checkedConvert('ADMIN_MI', (v) => val.adminMi = v as bool?);
         return val;
       },
       fieldKeyMap: const {
@@ -144,7 +152,9 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => $checkedCreate(
         'konumEnlem': 'KONUM_ENLEM',
         'konumBoylam': 'KONUM_BOYLAM',
         'langModel': 'LANG_MODEL',
-        'adSoyad': 'AD_SOYAD'
+        'adSoyad': 'AD_SOYAD',
+        'admin': 'ADMIN',
+        'adminMi': 'ADMIN_MI'
       },
     );
 
@@ -166,4 +176,6 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'KONUM_BOYLAM': instance.konumBoylam,
       'LANG_MODEL': instance.langModel?.toJson(),
       'AD_SOYAD': instance.adSoyad,
+      'ADMIN': instance.admin,
+      'ADMIN_MI': instance.adminMi,
     };

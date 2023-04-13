@@ -5,7 +5,7 @@ class MenuItemConstants {
   final List<GridItems> _gridItems = [
     //*Cari
     //*
-    GridItems.anamenu(name: "CARI", title: "Cari", icon: "", color: GridThemeManager.tallow, altMenuler: [
+    GridItems.anamenu(name: "CARI", title: "Cari", icon: "", color: GridThemeManager.cari, altMenuler: [
       GridItems.item(name: "cari_CariListesi", title: "Cari Listesi", icon: ""),
       GridItems.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları", icon: ""),
       GridItems.altmenu(name: "cari_Raporlar", title: "Raporlar", icon: "", altMenuler: [
@@ -18,21 +18,28 @@ class MenuItemConstants {
         GridItems.item(name: "cari_Rap_StokSatisOzeti", title: "Cari Stok Satış Özeti", icon: ""),
       ])
     ]),
-
-    //*Sevk
+    //*E-Belge
     //*
-    GridItems.anamenu(name: "SEVK", title: "Finans", icon: "", color: GridThemeManager.persianRed, altMenuler: []),
+    GridItems.anamenu(name: "EBEL", title: "E-Belge", icon: "", color: GridThemeManager.eBelge, altMenuler: [
+      GridItems.item(name: "ebelge_EIrsaliyeGelenKutusu", title: "Gelen Kutusu", icon: ""),
+      GridItems.item(name: "ebelge_EIrsaliyeGidenKutusu", title: "Giden Kutusu", icon: ""),
+      GridItems.item(name: "ebelge_EFatCariGuncelle", title: "E-Fatura Carilerini Güncelle ", icon: "")
+    ]),
+    //*Finans
+    //*
+    GridItems.anamenu(name: "SEVK", title: "Finans", icon: "", color: GridThemeManager.finans, altMenuler: []),
 
     //* Genel
-    GridItems.anamenu(name: "GNEL_BEKO", title: "Genel", icon: "", color: GridThemeManager.tacao, altMenuler: []),
+    //*
+    GridItems.anamenu(name: "GNEL_BEKO", title: "Genel", icon: "", color: GridThemeManager.genel, altMenuler: []),
 
     //* Hücre Takibi
     //*
-    GridItems.anamenu(name: "HTAK", title: "Hücre Takibi", icon: "", color: GridThemeManager.skyBlue, altMenuler: []),
+    GridItems.anamenu(name: "HTAK", title: "Hücre Takibi", icon: "", color: GridThemeManager.hucreTakibi, altMenuler: []),
 
     //* Mal Kabul
     //*
-    GridItems.anamenu(name: "MKBL", title: "Mal Kabul", icon: "", color: GridThemeManager.himalaya, altMenuler: [
+    GridItems.anamenu(name: "MKBL", title: "Mal Kabul", icon: "", color: GridThemeManager.malKabul, altMenuler: [
       GridItems.item(name: "malKabul_AlisFaturasi", title: "Alış Faturası", icon: ""),
       GridItems.item(name: "mkbl_MalKabul", title: "Alış İrsaliyesi", icon: ""),
       GridItems.item(name: "malKabul_Mustahsil", title: "Müstahsil Makbuzu", icon: ""),
@@ -44,19 +51,19 @@ class MenuItemConstants {
 
     //* Sayım
     //*
-    GridItems.anamenu(name: "SYIM", title: "Sayım", icon: "", color: GridThemeManager.dodgerBlue, altMenuler: []),
+    GridItems.anamenu(name: "SYIM", title: "Sayım", icon: "", color: GridThemeManager.sayim, altMenuler: []),
 
     //* Sevkiyat
     //*
-    GridItems.anamenu(name: "SEVK", title: "Sevkiyat", icon: "", color: GridThemeManager.bouquet, altMenuler: []),
+    GridItems.anamenu(name: "SEVK", title: "Sevkiyat", icon: "", color: GridThemeManager.sevkiyat, altMenuler: []),
 
     //* Sipariş
     //*
-    GridItems.anamenu(name: "SIPA", title: "Sipariş", icon: "", color: GridThemeManager.pictonBlue, altMenuler: []),
+    GridItems.anamenu(name: "SIPA", title: "Sipariş", icon: "", color: GridThemeManager.siparis, altMenuler: []),
 
     //* Stok
     //*
-    GridItems.anamenu(name: "STOK", title: "Stok", icon: "", color: GridThemeManager.greenHaze, altMenuler: [
+    GridItems.anamenu(name: "STOK", title: "Stok", icon: "", color: GridThemeManager.stok, altMenuler: [
       GridItems.item(name: "stok_StokListesi", title: "Stok Listesi", icon: ""),
       GridItems.item(name: "stok_BarkodTanimlama", title: "Barkod Tanımla", icon: ""),
       GridItems.item(name: "stok_FiyatGorEkrani", title: "Fiyat Gör", icon: ""),
@@ -78,27 +85,34 @@ class MenuItemConstants {
 
     //* Tahsilat & Ödeme
     //*
-    GridItems.anamenu(name: "TAHS", title: "Tahsilat & Ödeme", icon: "", color: GridThemeManager.mountainMeadow, altMenuler: []),
+    GridItems.anamenu(name: "TAHS", title: "Tahsilat & Ödeme", icon: "", color: GridThemeManager.tahsilatOdeme, altMenuler: [
+      //TODO [taltek_STEK] sonradan kaldır 
+      GridItems.item(name: "taltek_STEK", title: "Satış Teklifi", icon: ""),
+    ]),
 
     //* Talep & Teklif
     //*
-    GridItems.anamenu(name: "TEKL", title: "Talep & Teklif", icon: "", color: GridThemeManager.mediumVioletRed, altMenuler: [
+    GridItems.anamenu(name: "TEKL", title: "Talep & Teklif", icon: "", color: GridThemeManager.talepTeklif, altMenuler: [
       GridItems.item(name: "taltek_STEK", title: "Satış Teklifi", icon: ""),
       GridItems.item(name: "taltek_STAL", title: "Satın Alma Talebi", icon: ""),
       // TODO [name] Değiştir
       GridItems.item(name: "taltek_STAL", title: "Satış Talebi", icon: ""),
     ]),
 
+    //* Temsilci
+    //*
+    GridItems.anamenu(name: "TEMS", title: "Temsilci", icon: "", color: GridThemeManager.temsilci, altMenuler: []),
+
     //* Transfer
     //*
-    GridItems.anamenu(name: "TRNS", title: "Transfer", icon: "", color: GridThemeManager.gray, altMenuler: [
+    GridItems.anamenu(name: "TRNS", title: "Transfer", icon: "", color: GridThemeManager.transfer, altMenuler: [
       // GridItems.item(name: "", title: "Depo Transferi", icon: ""),
       // GridItems.item(name: "", title: "Stok Transfer Raporu", icon: ""),
     ]),
 
     //* Üretim
     //*
-    GridItems.anamenu(name: "URET", title: "Üretim", icon: "", color: GridThemeManager.mineShaft, altMenuler: []),
+    GridItems.anamenu(name: "URET", title: "Üretim", icon: "", color: GridThemeManager.uretim, altMenuler: []),
   ];
   List<GridItems> getList() {
     // grid items içindeki yetkiKontrol true olanları döndür

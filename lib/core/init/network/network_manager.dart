@@ -79,7 +79,7 @@ class NetworkManager {
   Map<String, String> getStandardHeader(bool addTokenKey) {
     Map<String, String> header = {};
     if (addTokenKey) {
-      String token = CacheManager.getToken("token");
+      String token = CacheManager.getToken();
       header.addAll({"Authorization": "Bearer $token"});
     }
     return header;

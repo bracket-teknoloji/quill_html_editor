@@ -17,6 +17,13 @@ class AppThemeDark extends AppTheme {
   @override
   ThemeData get theme => ThemeData.from(useMaterial3: true, textTheme: Typography.whiteRedmond, colorScheme: const ColorScheme.dark()).copyWith(
       brightness: Brightness.light,
+      primaryColorLight: UIHelper.primaryColor,
+      primaryColorDark: UIHelper.primaryColor,
+      bottomAppBarTheme: const BottomAppBarTheme(
+        color: Colors.black,
+        elevation: 0,
+        surfaceTintColor: Colors.black,
+      ),
       tooltipTheme: const TooltipThemeData(
         decoration: BoxDecoration(
           color: Colors.black,
@@ -28,13 +35,16 @@ class AppThemeDark extends AppTheme {
         ),
       ),
       dividerTheme: DividerThemeData(
-        color: UIHelper.primaryColor.withOpacity(0.2),
+        color: Colors.black.withOpacity(0.2),
         space: 0,
-        thickness: 1,
+        thickness: 0,
+        endIndent: UIHelper.midSize,
+        indent: UIHelper.midSize,
       ),
       progressIndicatorTheme: ProgressIndicatorThemeData(
-        color: Colors.white,
-        circularTrackColor: UIHelper.primaryColor,
+        color: UIHelper.primaryColor,
+        linearTrackColor: Colors.transparent,
+        circularTrackColor: Colors.transparent,
         linearMinHeight: 2,
       ),
       dropdownMenuTheme: DropdownMenuThemeData(
@@ -42,6 +52,7 @@ class AppThemeDark extends AppTheme {
             backgroundColor: MaterialStateProperty.all(Colors.red),
           ),
           inputDecorationTheme: InputDecorationTheme(
+            iconColor: Colors.white,
             border: OutlineInputBorder(
               borderRadius: UIHelper.highBorderRadius,
             ),
@@ -125,16 +136,28 @@ class AppThemeDark extends AppTheme {
       ),
       listTileTheme: ListTileThemeData(
         style: ListTileStyle.list,
+        visualDensity: const VisualDensity(vertical: -4),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(15)),
         ),
+
         tileColor: Colors.white,
         selectedTileColor: Colors.red,
         textColor: Colors.black,
         iconColor: UIHelper.primaryColor,
         dense: true,
       ),
-      drawerTheme: const DrawerThemeData(surfaceTintColor: Colors.transparent, elevation: 0, shadowColor: Colors.transparent, backgroundColor: Colors.grey),
+      drawerTheme: DrawerThemeData(
+          endShape: RoundedRectangleBorder(
+            borderRadius: UIHelper.zeroBorderRadius,
+          ),
+          surfaceTintColor: Colors.transparent,
+          elevation: 0,
+          shadowColor: Colors.transparent,
+          backgroundColor: Colors.white,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(0)),
+          )),
       textSelectionTheme: const TextSelectionThemeData(
         cursorColor: Colors.red,
         selectionColor: Colors.red,
@@ -147,8 +170,8 @@ class AppThemeDark extends AppTheme {
         splashFactory: InkRipple.splashFactory,
         overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.2)),
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        foregroundColor: MaterialStateProperty.all(UIHelper.primaryColor),
-        backgroundColor: MaterialStateProperty.all(Colors.white),
+        foregroundColor: MaterialStateProperty.all(Colors.white),
+        backgroundColor: MaterialStateProperty.all(Colors.transparent),
         textStyle: MaterialStateProperty.all(TextStyle(
           fontFamily: GoogleFonts.roboto().fontFamily,
           fontSize: 15,

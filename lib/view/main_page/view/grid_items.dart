@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kartal/kartal.dart';
 
 import '../../../core/components/dialog/dialog_manager.dart';
-import '../../../core/constants/grid_constants.dart';
 import '../../../core/init/cache/cache_manager.dart';
 import '../model/user_model/user_model.dart';
 
@@ -31,17 +31,21 @@ class GridItems {
     };
   }
 
-  Color get getColor {
-    if (colors.containsKey(name.substring(0, 4).toLowerCase())) {
-      return color = colors[name.substring(0, 4).toLowerCase()];
-    } else {
-      return Colors.black;
-    }
-  }
-
   bool get yetkiKontrol {
-    if (menuTipi == "A") {
-      return menuList!.contains(name);
+    if (cacheManager!.adminMi != null && cacheManager!.adminMi!) {
+      return true;
+    } else if (menuTipi == "A" && altMenuVarMi) {
+      int sayac = 0;
+      for (var element in altMenuler!) {
+        if (element.yetkiKontrol) {
+          sayac++;
+        }
+      }
+      return sayac != 0 ? menuList!.contains(name) : false;
+    } else if (menuTipi == "S") {
+      int sayac = altMenuler!.length;
+      var result = sayac != 0 ? cacheManager?.profilYetki?.toJson()[name] : false;
+      return result;
     } else {
       var result = cacheManager?.profilYetki?.toJson()[name] ?? false;
       return result;
@@ -50,13 +54,9 @@ class GridItems {
 
   bool get altMenuVarMi {
     if (menuTipi == "A" || menuTipi == "S") {
-      return altMenuler!.isNotEmpty; //&& altMenuler!.any((element) => element.altMenuler?.isNotEmpty ?? false);
+      return altMenuler!.isNotNullOrEmpty; //&& altMenuler!.any((element) => element.altMenuler?.isNotEmpty ?? false);
     } else {
       return false;
     }
   }
-
-  Map colors = {
-    "cari": GridThemeManager.tallow,
-  };
 }

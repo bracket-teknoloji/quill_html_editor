@@ -26,4 +26,14 @@ class CompanyModel with NetworkManagerMixin {
   toString() {
     return "company: $company,\n year: $year";
   }
+  //operator == and hashCode
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is CompanyModel && other.company == company && other.year == year;
+  }
+
+  @override
+  int get hashCode => company.hashCode ^ year.hashCode;
 }

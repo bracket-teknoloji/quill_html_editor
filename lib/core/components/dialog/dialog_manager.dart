@@ -4,6 +4,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:kartal/kartal.dart';
 
 import '../../constants/ui_helper/ui_helper.dart';
 
@@ -28,8 +29,12 @@ class DialogManager {
         onOk: () {},
       ).show();
 
-  void showLoadingDialog() => _baseDialog(
-        body: const Center(child: CircularProgressIndicator()),
+  void showLoadingDialog(String loadText) => _baseDialog(
+        body: Center(
+          child: Column(
+            children: [const CircularProgressIndicator(), context.emptySizedHeightBoxLow, Text(loadText, style: context.theme.textTheme.labelSmall?.copyWith(color: Colors.black))],
+          ),
+        ),
       ).show();
   void showAreYouSureDialog(void Function() onYes) => areYouSureDialog(onYes).show();
 
@@ -46,22 +51,6 @@ class DialogManager {
   void get hideSnackBar => ScaffoldMessenger.of(context).clearSnackBars();
 
   void get hideAlertDialog => Get.back();
-
-  AlertDialog warningAlertDialog(String message) {
-    return AlertDialog(
-      icon: const Icon(Icons.account_circle_outlined),
-      iconColor: Colors.red,
-      title: const Text("Uyarı"),
-      content: SingleChildScrollView(child: Text(message)),
-      actions: [
-        TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: const Text("Tamam")),
-      ],
-    );
-  }
 
   AlertDialog loadingDialog() {
     return AlertDialog(
@@ -207,6 +196,7 @@ class DialogManager {
         ])).show();
   }
 
+  ///* Eğer Body eklersen Title ve Desc Kullanılmaz
   AwesomeDialog _baseDialog(
       {String? title,
       String? desc,
@@ -219,8 +209,6 @@ class DialogManager {
       void Function()? onCancel,
       Color? btnOkColor,
       Color? btnCancelColor,
-
-      ///! Eğer Body Girersen Title ve Desc Kullanılmaz
       Widget? body}) {
     return AwesomeDialog(
         context: context,
@@ -231,7 +219,7 @@ class DialogManager {
         headerAnimationLoop: false,
         padding: UIHelper.midPaddingVertical,
         buttonsBorderRadius: UIHelper.highBorderRadius,
-        animType: AnimType.topSlide,
+        animType: AnimType.bottomSlide,
         btnOkIcon: btnOkIcon,
         btnCancelIcon: btnCancelIcon,
         dialogBackgroundColor: Colors.white,

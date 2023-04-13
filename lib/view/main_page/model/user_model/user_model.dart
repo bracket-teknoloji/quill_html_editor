@@ -61,6 +61,12 @@ class UserModel {
   @JsonKey(name: "AD_SOYAD")
   @HiveField(16)
   String? adSoyad;
+  @JsonKey(name: "ADMIN")
+  @HiveField(17)
+  String? admin;
+  @JsonKey(name: "ADMIN_MI")
+  @HiveField(18)
+  bool? adminMi;
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return _$UserModelFromJson(json);

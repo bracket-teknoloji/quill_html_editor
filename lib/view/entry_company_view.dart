@@ -21,8 +21,10 @@ class EntryCompanyView extends StatefulWidget {
 }
 
 class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
-  Map selected = {"Şirket": null, "İşletme": null, "Şube": null};
-  List<String>? sirket;
+  Map<String, dynamic> selected = {"Şirket": null, "İşletme": null, "Şube": null};
+  Map<String, dynamic> selected2 = {"Şirket": "", "İşletme": null, "Şube": null};
+  Map<String, dynamic> userData = {"Şirket": "", "İşletme": null, "Şube": null};
+  List<CompanyModel>? sirket;
   List? isletme;
   List? sube;
 
@@ -39,12 +41,24 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
 
   dioGetData() async {
     sirket = await getSirket();
-    sube = await getSube(selected["Şirket"].toString()).onError((error, stackTrace) => []);
-    isletme = await getIsletme();
+    if (sirket.isNotNullOrEmpty) {
+      sube = await getSube(selected2["Şirket"].toString()).onError((error, stackTrace) => []);
+      if (sube!.length == 1) {
+        selected["Şube"] = sube![0];
+        selected2["Şube"] = sube![0].subeKodu;
+        userData["Şube"] = sube![0].subeAdi;
+      }
+      isletme = await getIsletme();
+      if (isletme!.length == 1) {
+        selected["İşletme"] = isletme![0];
+        selected2["İşletme"] = isletme![0].isletmeKodu;
+        userData["İşletme"] = isletme![0].isletmeAdi;
+      }
+    }
   }
 
-  Future<List<String>?> getSirket({String? name}) async {
-    List<String> list = [""];
+  Future<List<CompanyModel>?> getSirket({String? name}) async {
+    List<CompanyModel> list = [];
     final response = await networkManager.dioGet<CompanyModel>(
       path: ApiUrls.veriTabanlari,
       bodyModel: CompanyModel(),
@@ -52,13 +66,26 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     );
     final data = response.data;
     for (CompanyModel element in data) {
-      list.add(element.company.toString());
+      list.add(element);
     }
-    if (selected["Şirket"] == null) {
-      selected["Şirket"] = "";
-      setState(() {});
+    if (list.length == 1) {
+      selected["Şirket"] = list[0];
+      selected2["Şirket"] = list[0].company;
+      userData["Şirket"] = list[0].company;
     }
     return list;
+  }
+
+  Future<List> getIsletme() async {
+    List data = [];
+    for (var element in sube!) {
+      if (data.any((element) => element.isletmeKodu == element.isletmeKodu)) {
+        continue;
+      } else {
+        data.add(element);
+      }
+    }
+    return data;
   }
 
   Future<List> getSube(String sirket) async {
@@ -79,21 +106,11 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     return list;
   }
 
-  Future<List> getIsletme() async {
-    List data = [];
-    for (var element in sube!) {
-      if (isletme?.contains(element) == false) {
-        data.add(element);
-      }
-    }
-    return data;
-  }
-
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.white24,
       appBar: AppBar(
         backgroundColor: Colors.black,
         centerTitle: false,
@@ -120,20 +137,21 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                 DropdownButtonFormField(
                                   isExpanded: true,
                                   validator: validator,
-                                  value: sirket?.length == 1 ? sirket![0] : selected["Şirket"],
-                                  items: sirket
-                                      ?.map((e) => DropdownMenuItem(
-                                            value: e,
-                                            child: Text(e.toString()),
-                                          ))
-                                      .toList(),
+                                  value: selected["Şirket"],
+                                  items: sirket?.toSet().map((e) => DropdownMenuItem(value: e, child: Text(e.company!.toString()))).toList(),
                                   onChanged: (value) {
-                                    setState(() {
-                                      selected["Şirket"] = value;
-                                      selected["İşletme"] = null;
-                                      selected["Şube"] = null;
-                                    });
-                                    log(selected.toString(), name: "Şirket");
+                                    if (value is CompanyModel) {
+                                      setState(() {
+                                        selected["Şirket"] = value;
+                                        selected2["Şirket"] = value.company;
+                                        userData["Şirket"] = value.company;
+                                        selected["İşletme"] = null;
+                                        selected2["İşletme"] = null;
+                                        selected["Şube"] = null;
+                                        selected2["Şube"] = null;
+                                      });
+                                    }
+                                    log(selected2.toString(), name: "Şirket");
                                   },
                                 )
                               ],
@@ -144,13 +162,15 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                 DropdownButtonFormField(
                                   isExpanded: true,
                                   validator: validator,
+                                  value: selected["İşletme"],
                                   //items: isletme değişkenindeki unique değerler
-                                  items: isletme!.map((e) => e).toSet().map((e) => DropdownMenuItem(value: e, child: Text("${e.isletmeAdi} ${e.isletmeKodu ?? 0}"))).toList(),
-                                  onChanged: (value) async {
+                                  items: isletme!.toSet().map((e) => DropdownMenuItem(value: e, child: Text("${e.isletmeAdi} ${e.isletmeKodu ?? 0}"))).toList(),
+                                  onChanged: (value) {
                                     if (value is IsletmeModel) {
-                                      selected["İşletme"] = value.isletmeKodu;
-                                      log(selected.toString(), name: "İşletmeler");
-                                      log(value.hashCode.toString(), name: "İşletmeler");
+                                      selected["İşletme"] = value;
+                                      selected2["İşletme"] = value.isletmeKodu;
+                                      userData["İşletme"] = value.isletmeAdi;
+                                      log(userData.toString(), name: "İşletmeler");
                                     }
                                   },
                                 )
@@ -162,11 +182,16 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                 DropdownButtonFormField(
                                   isExpanded: true,
                                   validator: validator,
+                                  value: selected["Şube"],
                                   items: sube?.map((e) => DropdownMenuItem(value: e, child: Text("${e.subeAdi} ${e.subeKodu ?? 0}"))).toList(),
                                   onChanged: (value) {
                                     if (value is IsletmeModel) {
-                                      selected["Şube"] = value.isletmeKodu;
-                                      log(selected.toString(), name: "Şube");
+                                      selected["Şube"] = value;
+                                      selected2["Şube"] = value.subeKodu ?? 0;
+                                      userData["Şube"] = value.subeAdi;
+                                      log(selected2.toString(), name: "Şube");
+                                      log(value.toString(), name: "Şube");
+                                      log(sube!.length.toString(), name: "Şube");
                                     }
                                   },
                                 )
@@ -183,38 +208,37 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                     ElevatedButton(
                       onPressed: () async {
                         if (!selected.values.contains(null)) {
-                          //TODO  : AccountModel ile değiştirilecek
-
                           /// var [model] = {
-                          ///   "AKTIF_ISLETME_KODU": selected["İşletme"].toString(),
-                          ///  "AKTIF_VERITABANI": selected["Şirket"].toString(),
-                          //   "G_CID": "/Y5TBF72qY7bnZl3+NOYvUtln/g5FJPl4jQ9i59td5M=",
-                          //   "UYE_EMAIL": "destek@netfect.com",
-                          //   "OZEL_CIHAZ_KIMLIGI": "4b0f40f3caabceaa7e6a60d5ba133d3323741f0644c2dbb6b74b40152f9aeaf7",
-                          // };
+                          ///   "AKTIF_ISLETME_KODU": selected2["İşletme"].toString(),
+                          ///  "AKTIF_VERITABANI": selected2["Şirket"].toString(),
+                          ///   "G_CID": "/Y5TBF72qY7bnZl3+NOYvUtln/g5FJPl4jQ9i59td5M=",
+                          ///   "UYE_EMAIL": "destek@netfect.com",
+                          ///   "OZEL_CIHAZ_KIMLIGI": "4b0f40f3caabceaa7e6a60d5ba133d3323741f0644c2dbb6b74b40152f9aeaf7",
+                          /// };
                           final model = AccountModel.instance
-                            ..aktifVeritabani = selected["Şirket"]
-                            ..aktifIsletmeKodu = selected["İşletme"]
-                            ..aktifSubeKodu = selected["Şube"]
+                            ..aktifVeritabani = selected2["Şirket"]
+                            ..aktifIsletmeKodu = selected2["İşletme"]
+                            ..aktifSubeKodu = selected2["Şube"]
                             ..gCid = "/Y5TBF72qY7bnZl3+NOYvUtln/g5FJPl4jQ9i59td5M=";
-                          dialogManager.showLoadingDialog();
+                          log(selected2.toString(), name: "SONUNDA");
+                          dialogManager.showLoadingDialog("${selected2["Şirket"]} şirketine giriş yapılıyor.");
                           final response = await networkManager.dioPost<MainPageModel>(
                               path: ApiUrls.createSession,
                               bodyModel: MainPageModel(),
                               addTokenKey: true,
                               data: model,
                               headers: {
-                                "VERITABANI": selected["Şirket"].toString(),
-                                "ISLETME_KODU": selected["İşletme"].toString(),
-                                "SUBE_KODU": selected["Şube"].toString(),
+                                "VERITABANI": selected2["Şirket"].toString(),
+                                "ISLETME_KODU": selected2["İşletme"].toString(),
+                                "SUBE_KODU": selected2["Şube"].toString(),
                                 "content-type": "application/json"
                               });
                           if (response.data != null) {
                             MainPageModel model = response.data[0];
-                            CacheManager.setanaVeri(model);
-                            var b = CacheManager.getAnaVeri();
-                            log(b?.sirketModel.toString() ?? "null", name: "cache");
-                            Get.toNamed("mainPage");
+                            CacheManager.setAnaVeri(model);
+                            CacheManager.setVeriTabani(selected2);
+                            CacheManager.setIsletmeSube(userData);
+                            Get.offAndToNamed("/mainPage");
                             response.message.isNotNullOrNoEmpty ? dialogManager.showAlertDialog(response.message.toString()) : null;
                           } else {
                             dialogManager.hideAlertDialog;
@@ -229,7 +253,16 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                   ],
                 ));
           } else {
-            return const Center(child: CircularProgressIndicator.adaptive(valueColor: AlwaysStoppedAnimation<Color>(Colors.black)));
+            return Center(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const CircularProgressIndicator.adaptive(),
+                context.emptySizedHeightBoxLow,
+                Text("Şirketler yükleniyor.", style: context.theme.textTheme.labelSmall?.copyWith(color: Colors.black)),
+              ],
+            ));
           }
         },
       ),
