@@ -33,7 +33,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
           centerTitle: false,
           actions: [IconButton(onPressed: loginMethod, icon: const Icon(Icons.save))],
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white12,
         body: Padding(
           padding: context.paddingNormal,
           child: Column(

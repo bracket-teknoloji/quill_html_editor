@@ -1,11 +1,12 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:kartal/kartal.dart';
 
 import '../../../core/base/state/base_state.dart';
 import '../../../core/components/textfield/custom_textfield.dart';
-import '../../../core/constants/image/image_enums.dart';
 import '../../../core/constants/login_page_constants.dart';
 import '../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../core/init/app_info/app_info.dart';
@@ -87,13 +88,10 @@ class _LoginViewState extends BaseState<LoginView> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         AnimatedContainer(
-                          duration: const Duration(seconds: 1),
-                          child: Padding(
-                            padding: context.paddingLow,
-                            child: Image.asset(ImageEnum.pickerLogo.path, height: context.isKeyBoardOpen ? 50 : 100),
-                            //child: Lottie.network("https://assets2.lottiefiles.com/private_files/lf30_fup2uejx.json"),
-                          ),
-                        ),
+                          duration: const Duration(milliseconds: 200),
+                          height: context.isKeyBoardOpen ? context.dynamicHeight(0.06) : context.dynamicHeight(0.12),
+                          child: SvgPicture.asset("assets/splash/PickerLogoTuruncu.svg"),
+                        ).paddingOnly(bottom: context.dynamicHeight(0.02), top: context.dynamicHeight(0.04)),
                         Padding(
                           padding: UIHelper.midPaddingVertical,
                           child: Column(
@@ -180,43 +178,40 @@ class _LoginViewState extends BaseState<LoginView> {
     return ElevatedButton(
         key: const Key("loginButton"),
         onPressed: () async {
-          dialogManager.showLoadingDialog("Giriş Yapılıyor.");
+          dialogManager.showLoadingDialog("Giriş Yapılıyor");
 
           if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-            {
-              try {
-                final response = await NetworkManager.getToken(path: ApiUrls.token, data: {
-                  "grant_type": "password",
-                  "username": emailController.text,
-                  "password": passwordController.text,
-                });
-                dialogManager.hideAlertDialog;
-                AccountResponseModel? accountCache = CacheManager.getAccounts(companyController.text);
-                AccountModel.instance
-                  ..kullaniciAdi = emailController.text
-                  ..uyeEmail = accountCache?.email ?? "demo@netfect.com"
-                  ..uyeSifre = accountCache?.parola;
-                Hive.box("preferences").put(companyController.text, [
-                  textFieldData["user"],
-                  emailController.text,
-                  passwordController.text,
-                ]);
-                if (context.mounted) {
-                  // TODO: Hata: VerifiedUser'ı kontrol et.
-                  CacheManager.setVerifiedUser({
-                    "user": emailController.text,
-                    "password": passwordController.text,
-                    "company": companyController.text,
-                    "email": accountCache?.email ?? ""
-                  });
-                  CacheManager.setToken(response.accessToken.toString());
+            try {
+              final response = await NetworkManager.getToken(path: ApiUrls.token, data: {
+                "grant_type": "password",
+                "username": emailController.text,
+                "password": passwordController.text,
+              });
+              dialogManager.hideAlertDialog;
+              AccountResponseModel? accountCache = CacheManager.getAccounts(companyController.text);
+              AccountModel.instance
+                ..kullaniciAdi = emailController.text
+                ..uyeEmail = accountCache?.email ?? "demo@netfect.com"
+                ..uyeSifre = accountCache?.parola;
+              Hive.box("preferences").put(companyController.text, [
+                textFieldData["user"],
+                emailController.text,
+                passwordController.text,
+              ]);
+              if (context.mounted) {
+                // TODO: Hata: VerifiedUser'ı kontrol et.
+                CacheManager.setVerifiedUser(
+                    {"user": emailController.text, "password": passwordController.text, "company": companyController.text, "email": accountCache?.email ?? ""});
+                CacheManager.setToken(response.accessToken.toString());
 
-                  Get.toNamed("/entryCompany", preventDuplicates: false);
-                }
-              } catch (e) {
-                dialogManager.hideAlertDialog;
-                dialogManager.showAlertDialog(e.toString());
+                Get.toNamed("/entryCompany", preventDuplicates: false);
               }
+            } on DioError catch (e) {
+              dialogManager.hideAlertDialog;
+              dialogManager.showAlertDialog(e.response?.data["error_description"] ?? "Hata :$e");
+            } on Exception catch (e) {
+              dialogManager.hideAlertDialog;
+              dialogManager.showAlertDialog(" HATA : $e");
             }
           } else {
             Navigator.of(context, rootNavigator: true).pop();

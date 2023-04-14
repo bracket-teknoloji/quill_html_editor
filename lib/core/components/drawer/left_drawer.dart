@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 
 import '../../constants/ui_helper/icon_helper.dart';
@@ -19,12 +20,7 @@ class _LeftDrawerState extends State<LeftDrawer> {
         child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       ListTile(
         title: const Text("Favoriler"),
-        trailing: IconButton(
-            onPressed: () {},
-            icon: IconHelper.getIcon(
-              IconHelper.smallIconBlack,
-              Icons.mode_edit_rounded,
-            )),
+        trailing: IconButton(onPressed: () {}, icon: IconHelper.smallIcon("Duzenle")),
       ),
       const Divider(),
       list.isNullOrEmpty
@@ -32,11 +28,7 @@ class _LeftDrawerState extends State<LeftDrawer> {
               flex: 2,
               child: Column(
                 children: [
-                  const Icon(
-                    Icons.star_border_outlined,
-                    color: Colors.black12,
-                    size: 100,
-                  ),
+                  IconHelper.bigIcon("Yildiz", color: Colors.black.withOpacity(0.5)).marginSymmetric(vertical: 20),
                   const Text(
                     "Favori menü yok.",
                     style: TextStyle(
@@ -62,7 +54,7 @@ class _LeftDrawerState extends State<LeftDrawer> {
             )
           : Expanded(
               child: ListView.builder(
-                  itemBuilder: (context, index) => ListTile(title: Text(list[index]), leading: const Icon(Icons.account_circle_outlined), onTap: () {}), itemCount: list.length)),
+                  itemBuilder: (context, index) => ListTile(title: Text(list[index]), leading: IconHelper.smallIcon("User-Account"), onTap: () {}), itemCount: list.length)),
     ]));
   }
 }

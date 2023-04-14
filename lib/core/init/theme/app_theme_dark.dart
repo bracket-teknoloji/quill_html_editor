@@ -15,8 +15,10 @@ class AppThemeDark extends AppTheme {
   AppThemeDark._init();
 
   @override
-  ThemeData get theme => ThemeData.from(useMaterial3: true, textTheme: Typography.whiteRedmond, colorScheme: const ColorScheme.dark()).copyWith(
+  ThemeData get theme => ThemeData.dark(useMaterial3: true).copyWith(
+      textTheme: GoogleFonts.dmSansTextTheme().apply(bodyColor: Colors.white),
       brightness: Brightness.light,
+      splashFactory: InkRipple.splashFactory,
       primaryColorLight: UIHelper.primaryColor,
       primaryColorDark: UIHelper.primaryColor,
       bottomAppBarTheme: const BottomAppBarTheme(
@@ -52,12 +54,12 @@ class AppThemeDark extends AppTheme {
             backgroundColor: MaterialStateProperty.all(Colors.red),
           ),
           inputDecorationTheme: InputDecorationTheme(
-            iconColor: Colors.white,
+            iconColor: Colors.red,
             border: OutlineInputBorder(
               borderRadius: UIHelper.highBorderRadius,
+              borderSide: const BorderSide(color: Colors.green),
             ),
-            errorStyle: TextStyle(
-              fontFamily: GoogleFonts.roboto().fontFamily,
+            errorStyle: const TextStyle(
               fontSize: 0,
               color: Colors.red,
             ),
@@ -79,7 +81,7 @@ class AppThemeDark extends AppTheme {
             ),
           )),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white24,
         foregroundColor: Colors.white,
         shape: CircleBorder(
           side: BorderSide(color: Colors.white),
@@ -104,7 +106,7 @@ class AppThemeDark extends AppTheme {
         foregroundColor: UIHelper.primaryColor,
         backgroundColor: Colors.white,
         textStyle: TextStyle(
-          fontFamily: GoogleFonts.roboto().fontFamily,
+          fontFamily: GoogleFonts.dmSans().fontFamily,
           fontSize: 15,
           color: Colors.white,
         ),
@@ -118,9 +120,9 @@ class AppThemeDark extends AppTheme {
         alignment: Alignment.center,
         backgroundColor: Colors.white,
         surfaceTintColor: Colors.white,
-        titleTextStyle: TextStyle(fontFamily: GoogleFonts.roboto().fontFamily, color: Colors.black, fontSize: 24),
+        titleTextStyle: TextStyle(fontFamily: GoogleFonts.dmSans().fontFamily, color: Colors.black, fontSize: 24),
         contentTextStyle: TextStyle(
-          fontFamily: GoogleFonts.roboto().fontFamily,
+          fontFamily: GoogleFonts.dmSans().fontFamily,
           fontSize: 16,
           color: Colors.black87,
         ),
@@ -140,7 +142,6 @@ class AppThemeDark extends AppTheme {
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(15)),
         ),
-
         tileColor: Colors.white,
         selectedTileColor: Colors.red,
         textColor: Colors.black,
@@ -173,22 +174,27 @@ class AppThemeDark extends AppTheme {
         foregroundColor: MaterialStateProperty.all(Colors.white),
         backgroundColor: MaterialStateProperty.all(Colors.transparent),
         textStyle: MaterialStateProperty.all(TextStyle(
-          fontFamily: GoogleFonts.roboto().fontFamily,
+          fontFamily: GoogleFonts.dmSans().fontFamily,
           fontSize: 15,
           color: Colors.white,
         )),
       )),
-      inputDecorationTheme: const InputDecorationTheme(
-        contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      
+      inputDecorationTheme: InputDecorationTheme(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         isCollapsed: true,
-        labelStyle: TextStyle(color: Colors.black),
-        border: OutlineInputBorder(
+        labelStyle: const TextStyle(color: Colors.black),
+        enabledBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(15)),
           borderSide: BorderSide(color: Colors.white),
         ),
-        focusedBorder: OutlineInputBorder(
+        border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(15)),
-          borderSide: BorderSide(color: Colors.red),
+          borderSide: BorderSide(color: Colors.green),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(Radius.circular(15)),
+          borderSide: BorderSide(color: UIHelper.primaryColor),
         ),
       ),
       scaffoldBackgroundColor: Colors.transparent,
@@ -201,7 +207,7 @@ class AppThemeDark extends AppTheme {
           ),
           centerTitle: true,
           titleTextStyle: TextStyle(
-            fontFamily: GoogleFonts.roboto().fontFamily,
+            fontFamily: GoogleFonts.dmSans().fontFamily,
             fontSize: 24,
           ),
           backgroundColor: Colors.transparent,

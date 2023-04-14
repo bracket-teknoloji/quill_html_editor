@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 import '../../../view/main_page/view/grid_items.dart';
 import '../../base/state/base_state.dart';
+import '../../constants/ui_helper/icon_helper.dart';
 import '../../constants/ui_helper/ui_helper.dart';
 
 class CustomGridTile extends StatefulWidget {
@@ -44,7 +46,11 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      AnimatedContainer(duration: const Duration(milliseconds: 500), child: const Icon(Icons.factory_outlined, size: 50)),
+                      AnimatedContainer(
+                          duration: const Duration(milliseconds: 500),
+                          child: IconHelper.bigMenuIcon(
+                            widget.icon ?? "",
+                          )).marginOnly(bottom: 5),
                       Text(widget.menuTipi != "I" ? widget.title.toString() : "", textAlign: TextAlign.center),
                     ],
                   )),

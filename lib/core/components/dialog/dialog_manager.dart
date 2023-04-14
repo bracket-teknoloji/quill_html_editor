@@ -6,6 +6,8 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kartal/kartal.dart';
 
+import '../../constants/ui_helper/icon_helper.dart';
+import '../../constants/ui_helper/text_style_helper.dart';
 import '../../constants/ui_helper/ui_helper.dart';
 
 class DialogManager {
@@ -25,6 +27,19 @@ class DialogManager {
         desc: message,
         dialogType: DialogType.error,
         btnOkText: "Tamam",
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(bottom: 10),
+              child: Text("Uyarı", style: TextStyleHelper.titleBlack),
+            ),
+            Padding(
+              padding: UIHelper.midPaddingHorizontal,
+              child: Text(message, style: TextStyleHelper.subtitleBlack, textAlign: TextAlign.center),
+            ),
+          ],
+        ),
         // onOk is rootNavigator true without Get
         onOk: () {},
       ).show();
@@ -79,7 +94,7 @@ class DialogManager {
       content: Column(mainAxisSize: MainAxisSize.min, children: [
         ListTile(
             title: const Text("DEMO"),
-            leading: const Icon(Icons.account_circle_outlined),
+            leading: IconHelper.smallIcon("User-Account"),
             onTap: () {
               Get.back(result: {"company": "DEMO", "user": "demo", "password": "demo"});
             }),
@@ -90,7 +105,7 @@ class DialogManager {
             log(box.getAt(index).toString());
             return ListTile(
                 title: Text(title),
-                leading: const Icon(Icons.account_circle_outlined),
+                leading: IconHelper.smallIcon("User-Account"),
                 onTap: () {
                   Get.back(result: {
                     "company": title,
@@ -172,7 +187,7 @@ class DialogManager {
           const Text("Şirket Seçiniz", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black)),
           ListTile(
               title: const Text("DEMO"),
-              leading: const Icon(Icons.account_circle_outlined),
+              leading: IconHelper.smallIcon("User-Account"),
               onTap: () {
                 Get.back(result: {"company": "demo", "user": "demo", "password": "demo"});
               }),
@@ -183,7 +198,7 @@ class DialogManager {
               log(box.getAt(index).toString());
               return ListTile(
                   title: Text(title),
-                  leading: const Icon(Icons.account_circle_outlined),
+                  leading: IconHelper.smallIcon("User-Account"),
                   onTap: () {
                     Get.back(result: {
                       "company": title,
@@ -212,10 +227,11 @@ class DialogManager {
       Widget? body}) {
     return AwesomeDialog(
         context: context,
+        alignment: Alignment.center,
         reverseBtnOrder: true,
         barrierColor: Colors.black.withOpacity(0.7),
         dialogBorderRadius: UIHelper.highBorderRadius,
-        useRootNavigator: true,
+        useRootNavigator: false,
         headerAnimationLoop: false,
         padding: UIHelper.midPaddingVertical,
         buttonsBorderRadius: UIHelper.highBorderRadius,
@@ -223,8 +239,8 @@ class DialogManager {
         btnOkIcon: btnOkIcon,
         btnCancelIcon: btnCancelIcon,
         dialogBackgroundColor: Colors.white,
-        descTextStyle: const TextStyle(fontWeight: FontWeight.w300, fontSize: 15, color: Colors.black),
-        titleTextStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),
+        descTextStyle: TextStyleHelper.captionBlack,
+        titleTextStyle: TextStyleHelper.titleBlack,
         title: title,
         desc: desc,
         btnOkOnPress: onOk,

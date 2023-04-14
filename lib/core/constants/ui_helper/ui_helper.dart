@@ -33,5 +33,5 @@ class UIHelper {
   static double get lowSize => 5;
 
   //* color
-  static Color get primaryColor => const Color.fromRGBO(186, 60, 22, 1);
+  static Color get primaryColor => const Color.fromRGBO(189, 61, 23, 1);
 }

@@ -46,7 +46,7 @@ class CacheManager {
   static String getCompanies(String query) => _companiesBox.get(query);
   static MainPageModel? getAnaVeri() => _anaVeriBox.get("data");
   static AccountResponseModel? getAccounts(String query) => _accountsBox.get(query);
-  static Map? get getVerifiedUser => _verifiedUsersBox.get("logged");
+  static Map? get getVerifiedUser => _verifiedUsersBox.get("data");
   static Map getVeriTabani() => _veriTabaniBox.get("value");
   static Map getIsletmeSube() => _isletmeSubeBox.get("value");
 
@@ -56,7 +56,8 @@ class CacheManager {
   static void setCompanies(String key, String value) => _companiesBox.put(key, value);
   static void setAnaVeri(MainPageModel value) => _anaVeriBox.put("data", value);
   static void setAccounts(String key, AccountResponseModel value) => _accountsBox.put(key, value);
-  static void setVerifiedUser(Map value) => _verifiedUsersBox.putAt(0, value);
+  //TODO DÜZELT
+  static void setVerifiedUser(Map value) => _verifiedUsersBox.put("data", value);
   static void setVeriTabani(Map value) => _veriTabaniBox.put("value", value);
   static void setIsletmeSube(Map value) => _isletmeSubeBox.put("value", value);
 

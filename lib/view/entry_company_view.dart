@@ -6,6 +6,7 @@ import "package:kartal/kartal.dart";
 
 import "../core/base/state/base_state.dart";
 import "../core/components/textfield/custom_textfield.dart";
+import "../core/constants/ui_helper/text_style_helper.dart";
 import "../core/init/cache/cache_manager.dart";
 import "../core/init/network/login/api_urls.dart";
 import "add_company/model/account_model.dart";
@@ -135,6 +136,9 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                               text: "Şirket",
                               children: [
                                 DropdownButtonFormField(
+                                  decoration: const InputDecoration(
+                                    hoverColor: Colors.transparent,
+                                  ),
                                   isExpanded: true,
                                   validator: validator,
                                   value: selected["Şirket"],
@@ -260,7 +264,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
               children: [
                 const CircularProgressIndicator.adaptive(),
                 context.emptySizedHeightBoxLow,
-                Text("Şirketler yükleniyor.", style: context.theme.textTheme.labelSmall?.copyWith(color: Colors.black)),
+                const Text("Şirketler yükleniyor.", style: TextStyleHelper.subtitleWhite),
               ],
             ));
           }

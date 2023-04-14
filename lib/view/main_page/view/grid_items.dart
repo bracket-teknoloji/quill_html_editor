@@ -12,6 +12,7 @@ class GridItems {
   String name;
   String title;
   String? icon;
+  bool? isFavorite;
   Color? color;
   List<GridItems>? altMenuler;
   Function()? onTap;

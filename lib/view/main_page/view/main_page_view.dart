@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../../core/base/state/base_state.dart';
@@ -7,7 +8,6 @@ import '../../../core/base/view/base_view.dart';
 import '../../../core/components/drawer/left_drawer.dart';
 import '../../../core/components/drawer/right_drawer/right_drawer.dart';
 import '../../../core/components/grid_tile/grid_tile.dart';
-import '../../../core/constants/ui_helper/icon_helper.dart';
 import '../../../core/constants/ui_helper/text_style_helper.dart';
 import '../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../core/init/cache/cache_manager.dart';
@@ -71,8 +71,8 @@ class _MainPageViewState extends BaseState<MainPageView> {
                         child: GridView.builder(
                           physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: MediaQuery.of(context).size.width ~/ 80,
-                            childAspectRatio: 0.8,
+                            crossAxisCount: MediaQuery.of(context).size.width ~/ 85,
+                            childAspectRatio: 0.9,
                           ),
                           itemCount: items.length,
                           itemBuilder: (context, index) {
@@ -126,7 +126,10 @@ class _MainPageViewState extends BaseState<MainPageView> {
                             },
                             child: Row(
                               children: [
-                                IconHelper.getIcon(IconHelper.smallIconWhite, Icons.star),
+                                (CacheManager.getAnaVeri()!.userModel!.admin == "E"
+                                        ? SvgPicture.asset("assets/icons/PickerSvgIcon/Guvenlik.svg", height: 20, color: Colors.white)
+                                        : SvgPicture.asset("assets/icons/PickerSvgIcon/User-Account.svg", height: 20, color: Colors.white))
+                                    .marginOnly(right: 5),
                                 Text(CacheManager.getAnaVeri()!.userModel!.kuladi.toString(), style: TextStyleHelper.subtitleWhite),
                               ],
                             ),
@@ -137,7 +140,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
                             },
                             child: Row(
                               children: [
-                                IconHelper.getIcon(IconHelper.smallIconWhite, Icons.storage_rounded),
+                                SvgPicture.asset("assets/icons/PickerSvgIcon/Database.svg", height: 20, color: Colors.white).marginOnly(right: 5),
                                 Text("${CacheManager.getVeriTabani()["Şirket"]} (${CacheManager.getVeriTabani()["Şube"]})", style: TextStyleHelper.subtitleWhite),
                               ],
                             ),
@@ -163,7 +166,11 @@ class _MainPageViewState extends BaseState<MainPageView> {
               },
             )
           : IconButton(
-              icon: const Icon(Icons.star_border_outlined),
+              icon: SvgPicture.asset(
+                "assets/icons/PickerSvgIcon/Yildiz.svg",
+                height: 25,
+                color: Colors.white,
+              ),
               onPressed: () async {
                 if (scaffoldKey.currentState!.isDrawerOpen) {
                   Navigator.pop(context);
@@ -174,7 +181,11 @@ class _MainPageViewState extends BaseState<MainPageView> {
             ),
       actions: [
         IconButton(
-          icon: const Icon(Icons.person_outline),
+          icon: SvgPicture.asset(
+            "assets/icons/PickerSvgIcon/User-Account.svg",
+            height: 25,
+            color: Colors.white,
+          ),
           onPressed: () {
             if (scaffoldKey.currentState!.isEndDrawerOpen) {
               Navigator.pop(context);

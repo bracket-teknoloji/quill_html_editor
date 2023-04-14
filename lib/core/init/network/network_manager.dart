@@ -11,6 +11,8 @@ import '../../constants/enum/dio_enum.dart';
 class NetworkManager {
   static final Dio _dio = Dio(BaseOptions(
     baseUrl: "http://ofis.bracket.com.tr:7575/pickerBracket/",
+    connectTimeout: const Duration(seconds: 20),
+
   ));
 
   NetworkManager() {
@@ -20,6 +22,7 @@ class NetworkManager {
           return handler.next(options);
         },
         onError: (e, handler) {
+          // throw e;
           return handler.next(e);
         },
       ),

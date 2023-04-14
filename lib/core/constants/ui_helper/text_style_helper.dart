@@ -12,7 +12,7 @@ class TextStyleHelper {
   //* Subtitle
   //*
   static final TextStyle subtitle = TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: UIHelper.primaryColor);
-  static const TextStyle subtitleBlack = TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black);
+  static final TextStyle subtitleBlack = TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black.withOpacity(0.8));
   static const TextStyle subtitleWhite = TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.white);
 
   //* Body

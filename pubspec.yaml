@@ -73,6 +73,7 @@ dependencies:
   carrier_info: ^2.0.8
   crypto: ^3.0.2
   flutter_animate: ^4.1.1+1
+  flutter_svg: ^2.0.5
   
   #connectivity_plus: ^3.0.3
 
@@ -113,3 +114,5 @@ flutter:
   uses-material-design: true
   assets:
     - assets/splash/
+    - assets/icons/PickerSvgIcon/
+    - assets/icons/PickerSvgIcon/AnaMenu/

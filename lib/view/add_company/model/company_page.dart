@@ -23,6 +23,7 @@ class _AccountsViewState extends BaseState<AccountsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white12,
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {

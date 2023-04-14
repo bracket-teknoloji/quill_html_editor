@@ -1,25 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'ui_helper.dart';
 
 class IconHelper {
-  //* Big Icon
+  //* Menu Items
   //*
-  static const IconThemeData bigIconBlack = IconThemeData(color: Colors.black, size: 24);
-  static const IconThemeData bigIconWhite = IconThemeData(color: Colors.white, size: 24);
-  static final IconThemeData bigIconPrimary = IconThemeData(color: UIHelper.primaryColor, size: 24);
+  static SvgPicture bigMenuIcon(String path, {Color? color}) =>
+      SvgPicture.asset(_getMenuIconPath(path), height: 30, colorFilter: ColorFilter.mode(color ?? Colors.white, BlendMode.srcIn));
+
+  //*Big Icon
+  //*
+
+  static SvgPicture bigIcon(String path, {Color? color}) =>
+      SvgPicture.asset(_getIconPath(path), height: 100, colorFilter: ColorFilter.mode(color ?? Colors.white, BlendMode.srcIn));
 
   //* Medium Icon
   //*
-  static const IconThemeData mediumIconBlack = IconThemeData(color: Colors.black38, size: 20);
-  static const IconThemeData mediumIconWhite = IconThemeData(color: Colors.white38, size: 20);
-  static final IconThemeData mediumIconPrimary = IconThemeData(color: UIHelper.primaryColor, size: 20);
+  static SvgPicture mediumIcon(String path, {Color? color}) =>
+      SvgPicture.asset(_getIconPath(path), height: 24, colorFilter: ColorFilter.mode(color ?? UIHelper.primaryColor, BlendMode.srcIn));
+  static SvgPicture mediumIconWhite(String path, {Color? color}) =>
+      SvgPicture.asset(_getIconPath(path), height: 24, colorFilter: ColorFilter.mode(color ?? Colors.white, BlendMode.srcIn));
+  static SvgPicture mediumIconBlack(String path, {Color? color}) =>
+      SvgPicture.asset(_getIconPath(path), height: 24, colorFilter: ColorFilter.mode(color ?? Colors.black, BlendMode.srcIn));
 
   //* Small Icon
   //*
-  static const IconThemeData smallIconBlack = IconThemeData(color: Colors.black, size: 16);
-  static const IconThemeData smallIconWhite = IconThemeData(color: Colors.white, size: 16);
-  static final IconThemeData smallIconPrimary = IconThemeData(color: UIHelper.primaryColor, size: 16);
+  static SvgPicture smallIcon(String path, {Color? color}) =>
+      SvgPicture.asset(_getIconPath(path), height: 20, colorFilter: ColorFilter.mode(color ?? UIHelper.primaryColor, BlendMode.srcIn));
+  static SvgPicture smallIconWhite(String path, {Color? color}) =>
+      SvgPicture.asset(_getIconPath(path), height: 20, colorFilter: ColorFilter.mode(color ?? Colors.white, BlendMode.srcIn));
+  static SvgPicture smallIconBlack(String path, {Color? color}) =>
+      SvgPicture.asset(_getIconPath(path), height: 20, colorFilter: ColorFilter.mode(color ?? Colors.black, BlendMode.srcIn));
 
-  static Icon getIcon(IconThemeData iconThemeData, IconData iconData) => Icon(iconData, color: iconThemeData.color, size: iconThemeData.size);
+  static String _getMenuIconPath(String path) => "assets/icons/PickerSvgIcon/AnaMenu/$path.svg";
+  static String _getIconPath(String path) => "assets/icons/PickerSvgIcon/$path.svg";
 }
