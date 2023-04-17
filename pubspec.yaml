@@ -30,31 +30,31 @@ environment:
 dependencies:
 
   #UI Dependencies
-  animate_icons: ^2.0.0
   cupertino_icons: ^1.0.2
   google_fonts: ^4.0.3
   flutter_staggered_animations: ^1.1.1
   lottie: ^2.3.1
   awesome_dialog: ^3.0.2
+  flutter_animate: ^4.1.1+1
+  flutter_svg: ^2.0.5
 
   #Info Dependencies
   device_info_plus: ^8.1.0
 
   #Network Dependencies
   dio: ^5.1.1
-  equatable: ^2.0.5
+  # equatable: ^2.0.5
   flutter:
     sdk: flutter
 
   #State Management Dependencies
   get: ^4.6.5
-  get_it: ^7.2.0
-  flutter_bloc: ^8.1.2
+  # get_it: ^7.2.0
+  # flutter_bloc: ^8.1.2
 
   #Hive Caching Dependencies
   hive: ^2.0.4
   hive_flutter: ^1.0.0
-  http: ^0.13.5
 
   #Json Serialization Dependencies
   json_serializable: ^6.6.1
@@ -72,10 +72,7 @@ dependencies:
   flutter_native_timezone: ^2.0.0
   carrier_info: ^2.0.8
   crypto: ^3.0.2
-  flutter_animate: ^4.1.1+1
-  flutter_svg: ^2.0.5
-  
-  #connectivity_plus: ^3.0.3
+  connectivity_plus: ^3.0.3
 
 
   

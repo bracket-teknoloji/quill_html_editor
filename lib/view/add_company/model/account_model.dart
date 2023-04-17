@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -109,12 +110,16 @@ class AccountModel with NetworkManagerMixin {
   String? qrData;
 
   void init() async {
-    cihazDili = Platform.localeName;
+    if (kIsWeb) {
+    } else {
+      cihazDili = Platform.localeName;
+    }
     cihazTimeZoneDakika = DateTime.now().timeZoneOffset.inMinutes;
 
     //* Cihaz ve Sim Bilgileri
     final deviceInfo = DeviceInfoPlugin();
-    if (Platform.isAndroid) {
+    if (kIsWeb) {
+    } else if (Platform.isAndroid) {
       platform = Platform.operatingSystem;
       final androidInfo = await deviceInfo.androidInfo;
       cihazSistemVersiyonu = androidInfo.version.sdkInt.toString();
@@ -132,6 +137,7 @@ class AccountModel with NetworkManagerMixin {
 
     //* Uygulama Bilgileri
     uygulamaSurumu = "225";
+
     ///  [uygulamaSurumu = packageInfo.version;]
     ///* olarak değiştirilecek fakat API bu uygulamanın sürümünü kabul etmediği için manuel verdim.
     uygulamaSurumKodu = 225;

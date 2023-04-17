@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/dialog/dialog_manager.dart';
@@ -8,7 +11,11 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   late final DialogManager dialogManager;
   late final AppInfoModel appInfoModel;
   late final NetworkManager networkManager;
+  ConnectivityResult connectivityResult = ConnectivityResult.none;
+  Connectivity connectivity = Connectivity();
   BaseState() {
+    internetChecker();
+    log("BaseState initState");
     networkManager = NetworkManager();
     dialogManager = DialogManager();
     appInfoModel = AppInfoModel();
@@ -19,8 +26,24 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   ThemeData get theme => Theme.of(context);
   Future showAlertDialog(AlertDialog alertDialog) => showDialog(
         barrierDismissible: false,
-        
         context: context,
         builder: (context) => alertDialog,
       );
+  void internetChecker() {
+    connectivity.checkConnectivity().then((value) {
+      connectivityResult = value;
+      if (connectivityResult == ConnectivityResult.none) {
+        dialogManager.internetConnectionDialog();
+      }
+    });
+    connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
+      connectivityResult = result;
+      print(connectivityResult);
+      if (connectivityResult == ConnectivityResult.none) {
+        dialogManager.internetConnectionDialog();
+      } else {
+        dialogManager.hideAlertDialog;
+      }
+    });
+  }
 }

@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,10 @@ class DialogManager {
   ///
   /// [Dialog Controllers] dialogların kontrolü için kullanılır.
   ///
-  void showSnackBar(String message) => ScaffoldMessenger.of(context).showSnackBar(snackBarError(message)).closed.then((value) => ScaffoldMessenger.of(context).clearSnackBars());
+  void showSnackBar(String message) {
+    hideSnackBar;
+    ScaffoldMessenger.of(context).showSnackBar(snackBarError(message));
+  }
 
   void showAlertDialog(String message) => _baseDialog(
         title: "Uyarı",
@@ -44,6 +48,23 @@ class DialogManager {
         onOk: () {},
       ).show();
 
+  void internetConnectionDialog() => _baseDialog(
+        customHeader: const CircularProgressIndicator.adaptive(),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(bottom: 10),
+              child: Text("Uyarı", style: TextStyleHelper.titleBlack),
+            ),
+            Padding(
+              padding: UIHelper.midPaddingHorizontal,
+              child: Text("İnternet bağlantınızı kontrol edin.", style: TextStyleHelper.subtitleBlack, textAlign: TextAlign.center),
+            ),
+          ],
+        ),
+      ).show();
+
   void showLoadingDialog(String loadText) => _baseDialog(
         body: Center(
           child: Column(
@@ -65,7 +86,7 @@ class DialogManager {
 
   void get hideSnackBar => ScaffoldMessenger.of(context).clearSnackBars();
 
-  void get hideAlertDialog => Get.back();
+  void get hideAlertDialog => Get.back(canPop: true);
 
   AlertDialog loadingDialog() {
     return AlertDialog(
@@ -154,8 +175,6 @@ class DialogManager {
   }
 
   SnackBar snackBarError(String message) => SnackBar(
-        backgroundColor: Colors.black,
-        showCloseIcon: true,
         content: Text(message, style: context.theme.textTheme.bodySmall?.copyWith(color: Colors.white)),
       );
 
@@ -224,12 +243,15 @@ class DialogManager {
       void Function()? onCancel,
       Color? btnOkColor,
       Color? btnCancelColor,
+      Widget? customHeader,
       Widget? body}) {
     return AwesomeDialog(
         context: context,
+        width: Platform.isLinux || Platform.isWindows || Platform.isMacOS ? MediaQuery.of(context).size.width * 0.4 : null,
+        customHeader: customHeader,
         alignment: Alignment.center,
         reverseBtnOrder: true,
-        barrierColor: Colors.black.withOpacity(0.7),
+        barrierColor: Colors.black.withOpacity(0.4),
         dialogBorderRadius: UIHelper.highBorderRadius,
         useRootNavigator: false,
         headerAnimationLoop: false,

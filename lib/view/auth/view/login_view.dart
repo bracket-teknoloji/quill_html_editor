@@ -26,23 +26,22 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends BaseState<LoginView> {
   bool isObscure = true;
   String? version;
-
   Map textFieldData = {"company": "demo", "user": "demo", "password": "demo"};
-  var box = Hive.box('preferences');
-
   late final TextEditingController emailController;
   late final TextEditingController companyController;
   late final TextEditingController passwordController;
+  GlobalKey<FormState> buttonKey = GlobalKey<FormState>();
+
   @override
   void initState() {
     super.initState();
+    emailController = TextEditingController();
+    companyController = TextEditingController();
+    passwordController = TextEditingController();
     var box = CacheManager.getVerifiedUser;
     if (box != null) {
       textFieldData = box;
     }
-    emailController = TextEditingController();
-    companyController = TextEditingController();
-    passwordController = TextEditingController();
     companyController.text = textFieldData["company"];
     emailController.text = textFieldData["user"];
     passwordController.text = textFieldData["password"];
@@ -160,7 +159,7 @@ class _LoginViewState extends BaseState<LoginView> {
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
-                          child: elevatedButton(emailController, passwordController, context),
+                          child: elevatedButton,
                         ),
                       ],
                     ),
@@ -174,9 +173,9 @@ class _LoginViewState extends BaseState<LoginView> {
     );
   }
 
-  ElevatedButton elevatedButton(TextEditingController emailController, TextEditingController passwordController, BuildContext context) {
+  ElevatedButton get elevatedButton {
     return ElevatedButton(
-        key: const Key("loginButton"),
+        key: buttonKey,
         onPressed: () async {
           dialogManager.showLoadingDialog("Giriş Yapılıyor");
 
@@ -204,14 +203,11 @@ class _LoginViewState extends BaseState<LoginView> {
                     {"user": emailController.text, "password": passwordController.text, "company": companyController.text, "email": accountCache?.email ?? ""});
                 CacheManager.setToken(response.accessToken.toString());
 
-                Get.toNamed("/entryCompany", preventDuplicates: false);
+                Get.toNamed("/entryCompany");
+                print("object");
               }
             } on DioError catch (e) {
-              dialogManager.hideAlertDialog;
               dialogManager.showAlertDialog(e.response?.data["error_description"] ?? "Hata :$e");
-            } on Exception catch (e) {
-              dialogManager.hideAlertDialog;
-              dialogManager.showAlertDialog(" HATA : $e");
             }
           } else {
             Navigator.of(context, rootNavigator: true).pop();

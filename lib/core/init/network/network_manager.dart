@@ -1,19 +1,22 @@
 // ignore_for_file: avoid_print
 
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:picker/core/base/model/base_network_mixin.dart';
 import 'package:picker/core/base/model/generic_response_model.dart';
 import 'package:picker/core/init/cache/cache_manager.dart';
 import 'package:picker/view/auth/model/login_model.dart';
 
+import '../../components/dialog/dialog_manager.dart';
 import '../../constants/enum/dio_enum.dart';
 
 class NetworkManager {
   static final Dio _dio = Dio(BaseOptions(
     baseUrl: "http://ofis.bracket.com.tr:7575/pickerBracket/",
     connectTimeout: const Duration(seconds: 20),
-
   ));
+  static final _dialogManager = DialogManager();
 
   NetworkManager() {
     _dio.interceptors.add(
@@ -22,8 +25,23 @@ class NetworkManager {
           return handler.next(options);
         },
         onError: (e, handler) {
-          // throw e;
-          return handler.next(e);
+          print(e.error.runtimeType);
+            if (e.response != null) {
+              if (e.response!.statusCode == 401) {
+                _dialogManager.showAlertDialog("Hata Kullanıcı adı veya şifre hatalı");
+              } else if (e.response!.statusCode == 500) {
+                _dialogManager.showAlertDialog("Hata Sunucu hatası");
+              } else {
+                _dialogManager.showAlertDialog("Hata Beklenmedik bir hata oluştu1");
+              }
+            } else {
+              if (e.error.runtimeType == SocketException) {
+                _dialogManager.showAlertDialog("Hata İnternet bağlantınızı kontrol ediniz");
+              } else {
+                _dialogManager.showAlertDialog("Hata Beklenmedik bir hata oluştu");
+              }
+            }
+          
         },
       ),
     );
@@ -55,6 +73,7 @@ class NetworkManager {
     if (headers != null) head.addEntries(headers.entries);
     Map<String, String> queries = getStandardQueryParameters();
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
+
     final response = await _dio.get(path, queryParameters: queries, options: Options(headers: head), cancelToken: cancelToken);
     GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
     return responseModel;

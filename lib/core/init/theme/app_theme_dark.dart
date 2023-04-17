@@ -139,8 +139,8 @@ class AppThemeDark extends AppTheme {
       listTileTheme: ListTileThemeData(
         style: ListTileStyle.list,
         visualDensity: const VisualDensity(vertical: -4),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(15)),
+        shape: RoundedRectangleBorder(
+          borderRadius: UIHelper.highBorderRadius,
         ),
         tileColor: Colors.white,
         selectedTileColor: Colors.red,
@@ -156,8 +156,8 @@ class AppThemeDark extends AppTheme {
           elevation: 0,
           shadowColor: Colors.transparent,
           backgroundColor: Colors.white,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(0)),
+          shape: RoundedRectangleBorder(
+            borderRadius: UIHelper.zeroBorderRadius,
           )),
       textSelectionTheme: const TextSelectionThemeData(
         cursorColor: Colors.red,
@@ -179,21 +179,31 @@ class AppThemeDark extends AppTheme {
           color: Colors.white,
         )),
       )),
-      
+      snackBarTheme: SnackBarThemeData(
+        showCloseIcon: true,
+        closeIconColor: UIHelper.primaryColor,
+        backgroundColor: UIHelper.primaryColor,
+        insetPadding: UIHelper.lowPadding,
+        shape: RoundedRectangleBorder(
+          borderRadius: UIHelper.lowBorderRadius,
+        ),
+        behavior: SnackBarBehavior.floating,
+        actionTextColor: UIHelper.primaryColor,
+      ),
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         isCollapsed: true,
         labelStyle: const TextStyle(color: Colors.black),
-        enabledBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(15)),
-          borderSide: BorderSide(color: Colors.white),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: UIHelper.highBorderRadius,
+          borderSide: const BorderSide(color: Colors.white),
         ),
-        border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(15)),
-          borderSide: BorderSide(color: Colors.green),
+        border: OutlineInputBorder(
+          borderRadius: UIHelper.highBorderRadius,
+          borderSide: const BorderSide(color: Colors.green),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: const BorderRadius.all(Radius.circular(15)),
+          borderRadius: UIHelper.highBorderRadius,
           borderSide: BorderSide(color: UIHelper.primaryColor),
         ),
       ),

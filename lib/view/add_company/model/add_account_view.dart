@@ -31,7 +31,17 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
           automaticallyImplyLeading: false,
           title: const Text("Firmalar"),
           centerTitle: false,
-          actions: [IconButton(onPressed: loginMethod, icon: const Icon(Icons.save))],
+          actions: [
+            IconButton(
+                onPressed: () {
+                  if (_controller.text.isNotEmpty && _controller2.text.isNotEmpty) {
+                    loginMethod();
+                  } else {
+                    dialogManager.showAlertDialog("Lütfen bilgileri giriniz");
+                  }
+                },
+                icon: const Icon(Icons.save))
+          ],
         ),
         backgroundColor: Colors.white12,
         body: Padding(
@@ -65,14 +75,17 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
                   )
                 ],
               ),
-              Padding(
-                padding: context.verticalPaddingLow,
-                child: ElevatedButton(
-                    onPressed: () {
-                      _getQR(context);
-                    },
-                    child: const Text("BİLGİLERİ QR KOD'DAN AL")),
-              )
+              //context.isAndroidDevice || context.isIOSDevice
+              false == true
+                  ? Padding(
+                      padding: context.verticalPaddingLow,
+                      child: ElevatedButton(
+                          onPressed: () {
+                            _getQR(context);
+                          },
+                          child: const Text("BİLGİLERİ QR KOD'DAN AL")),
+                    )
+                  : const SizedBox()
             ],
           ),
         ));
@@ -103,7 +116,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
   }
 
   Future<void> _getQR(BuildContext context) async {
-    dynamic barcode = await Get.toNamed("/qr");
+    String? barcode = await Get.toNamed("/qr");
     var model = AccountModel.instance..qrData = barcode;
     var data = model.toJson();
 
