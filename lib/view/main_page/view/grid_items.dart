@@ -12,20 +12,21 @@ class GridItems {
   String name;
   String title;
   String? icon;
+  IconData? iconWidget;
   bool? isFavorite;
   Color? color;
   List<GridItems>? altMenuler;
   Function()? onTap;
   late final String menuTipi;
 
-  GridItems.anamenu({required this.name, required this.title, required this.icon, required this.color, required this.altMenuler}) {
+  GridItems.anamenu({required this.name, required this.title, required this.icon, required this.color, required this.altMenuler, this.iconWidget}) {
     menuTipi = "A";
   }
 
-  GridItems.altmenu({required this.name, required this.title, required this.icon, required this.altMenuler}) {
+  GridItems.altmenu({required this.name, required this.title, required this.icon, required this.altMenuler, this.iconWidget}) {
     menuTipi = "S";
   }
-  GridItems.item({required this.name, required this.title, required this.icon, this.onTap}) {
+  GridItems.item({required this.name, required this.title, this.icon, this.onTap}) {
     menuTipi = "I";
     onTap = () {
       DialogManager().showSnackBar(title);

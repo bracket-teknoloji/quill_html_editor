@@ -15,14 +15,17 @@ class AppThemeDark extends AppTheme {
   AppThemeDark._init();
 
   @override
-  ThemeData get theme => ThemeData.dark(useMaterial3: true).copyWith(
-      textTheme: GoogleFonts.dmSansTextTheme().apply(bodyColor: Colors.white),
-      brightness: Brightness.light,
+  ThemeData get theme => ThemeData(
+      useMaterial3: true,
+      colorSchemeSeed: UIHelper.primaryColor,
+      brightness: Brightness.dark,
+      textTheme: GoogleFonts.dmSansTextTheme().apply(bodyColor: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark).onPrimaryContainer).copyWith(
+              bodySmall: TextStyle(
+            fontSize: 12,
+            color: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark).onPrimaryContainer,
+          )),
       splashFactory: InkRipple.splashFactory,
-      primaryColorLight: UIHelper.primaryColor,
-      primaryColorDark: UIHelper.primaryColor,
       bottomAppBarTheme: const BottomAppBarTheme(
-        color: Colors.black,
         elevation: 0,
         surfaceTintColor: Colors.black,
       ),
@@ -37,11 +40,10 @@ class AppThemeDark extends AppTheme {
         ),
       ),
       dividerTheme: DividerThemeData(
-        color: Colors.black.withOpacity(0.2),
         space: 0,
         thickness: 0,
-        endIndent: UIHelper.midSize,
-        indent: UIHelper.midSize,
+        endIndent: UIHelper.highSize,
+        indent: UIHelper.highSize,
       ),
       progressIndicatorTheme: ProgressIndicatorThemeData(
         color: UIHelper.primaryColor,
@@ -56,7 +58,7 @@ class AppThemeDark extends AppTheme {
           inputDecorationTheme: InputDecorationTheme(
             iconColor: Colors.red,
             border: OutlineInputBorder(
-              borderRadius: UIHelper.highBorderRadius,
+              borderRadius: UIHelper.lowBorderRadius,
               borderSide: const BorderSide(color: Colors.green),
             ),
             errorStyle: const TextStyle(
@@ -64,32 +66,24 @@ class AppThemeDark extends AppTheme {
               color: Colors.red,
             ),
             errorBorder: OutlineInputBorder(
-              borderRadius: UIHelper.highBorderRadius,
+              borderRadius: UIHelper.lowBorderRadius,
               borderSide: const BorderSide(color: Colors.red),
             ),
             focusedErrorBorder: OutlineInputBorder(
-              borderRadius: UIHelper.highBorderRadius,
+              borderRadius: UIHelper.lowBorderRadius,
               borderSide: const BorderSide(color: Colors.red),
             ),
             enabledBorder: OutlineInputBorder(
-              borderRadius: UIHelper.highBorderRadius,
+              borderRadius: UIHelper.lowBorderRadius,
               borderSide: const BorderSide(color: Colors.white),
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: UIHelper.highBorderRadius,
+              borderRadius: UIHelper.lowBorderRadius,
               borderSide: const BorderSide(color: Colors.white),
             ),
           )),
-      floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        backgroundColor: Colors.white24,
-        foregroundColor: Colors.white,
-        shape: CircleBorder(
-          side: BorderSide(color: Colors.white),
-        ),
-      ),
       applyElevationOverlayColor: true,
       bottomSheetTheme: const BottomSheetThemeData(
-        backgroundColor: Colors.white,
         elevation: 1,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
@@ -100,129 +94,306 @@ class AppThemeDark extends AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
         splashFactory: InkRipple.splashFactory,
+        backgroundColor: UIHelper.primaryColor,
         shape: RoundedRectangleBorder(
-          borderRadius: UIHelper.highBorderRadius,
+          borderRadius: UIHelper.lowBorderRadius,
         ),
-        foregroundColor: UIHelper.primaryColor,
-        backgroundColor: Colors.white,
-        textStyle: TextStyle(
-          fontFamily: GoogleFonts.dmSans().fontFamily,
-          fontSize: 15,
-          color: Colors.white,
-        ),
+        textStyle: TextStyle(fontFamily: GoogleFonts.dmSans().fontFamily, fontSize: 15, color: Colors.white),
       )),
       iconTheme: const IconThemeData(color: Colors.white, size: 30),
       dialogTheme: DialogTheme(
         shape: RoundedRectangleBorder(
-          borderRadius: UIHelper.highBorderRadius,
+          borderRadius: UIHelper.lowBorderRadius,
         ),
         actionsPadding: EdgeInsets.zero,
         alignment: Alignment.center,
-        backgroundColor: Colors.white,
-        surfaceTintColor: Colors.white,
-        titleTextStyle: TextStyle(fontFamily: GoogleFonts.dmSans().fontFamily, color: Colors.black, fontSize: 24),
-        contentTextStyle: TextStyle(
-          fontFamily: GoogleFonts.dmSans().fontFamily,
+        contentTextStyle: const TextStyle(
           fontSize: 16,
-          color: Colors.black87,
         ),
         elevation: 0,
-        shadowColor: Colors.transparent,
       ),
       cardTheme: CardTheme(
-        color: Colors.white,
-        shadowColor: Colors.transparent,
         shape: RoundedRectangleBorder(
-          borderRadius: UIHelper.highBorderRadius,
+          borderRadius: UIHelper.lowBorderRadius,
         ),
       ),
       listTileTheme: ListTileThemeData(
         style: ListTileStyle.list,
-        visualDensity: const VisualDensity(vertical: -4),
+        visualDensity: const VisualDensity(vertical: -2),
         shape: RoundedRectangleBorder(
-          borderRadius: UIHelper.highBorderRadius,
+          borderRadius: UIHelper.lowBorderRadius,
         ),
-        tileColor: Colors.white,
-        selectedTileColor: Colors.red,
-        textColor: Colors.black,
-        iconColor: UIHelper.primaryColor,
         dense: true,
       ),
       drawerTheme: DrawerThemeData(
           endShape: RoundedRectangleBorder(
             borderRadius: UIHelper.zeroBorderRadius,
           ),
-          surfaceTintColor: Colors.transparent,
           elevation: 0,
-          shadowColor: Colors.transparent,
-          backgroundColor: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: UIHelper.zeroBorderRadius,
           )),
-      textSelectionTheme: const TextSelectionThemeData(
-        cursorColor: Colors.red,
-        selectionColor: Colors.red,
-        selectionHandleColor: Colors.red,
-      ),
-      useMaterial3: true,
-      primaryColor: Colors.blue,
       textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
         splashFactory: InkRipple.splashFactory,
-        overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.2)),
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        foregroundColor: MaterialStateProperty.all(Colors.white),
-        backgroundColor: MaterialStateProperty.all(Colors.transparent),
         textStyle: MaterialStateProperty.all(TextStyle(
           fontFamily: GoogleFonts.dmSans().fontFamily,
           fontSize: 15,
-          color: Colors.white,
         )),
       )),
       snackBarTheme: SnackBarThemeData(
         showCloseIcon: true,
-        closeIconColor: UIHelper.primaryColor,
+        closeIconColor: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark).onPrimaryContainer,
         backgroundColor: UIHelper.primaryColor,
+        contentTextStyle: TextStyle(color: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark).onPrimaryContainer),
         insetPadding: UIHelper.lowPadding,
         shape: RoundedRectangleBorder(
           borderRadius: UIHelper.lowBorderRadius,
         ),
         behavior: SnackBarBehavior.floating,
-        actionTextColor: UIHelper.primaryColor,
       ),
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         isCollapsed: true,
-        labelStyle: const TextStyle(color: Colors.black),
         enabledBorder: OutlineInputBorder(
-          borderRadius: UIHelper.highBorderRadius,
-          borderSide: const BorderSide(color: Colors.white),
+          borderRadius: UIHelper.lowBorderRadius,
+          borderSide: const BorderSide(color: Colors.white30),
         ),
         border: OutlineInputBorder(
-          borderRadius: UIHelper.highBorderRadius,
-          borderSide: const BorderSide(color: Colors.green),
+          borderRadius: UIHelper.lowBorderRadius,
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: UIHelper.highBorderRadius,
+          borderRadius: UIHelper.lowBorderRadius,
           borderSide: BorderSide(color: UIHelper.primaryColor),
         ),
       ),
-      scaffoldBackgroundColor: Colors.transparent,
       appBarTheme: AppBarTheme(
           titleSpacing: 10,
           systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarColor: Colors.transparent,
-            statusBarIconBrightness: Brightness.dark,
+            statusBarIconBrightness: Brightness.light,
+            systemNavigationBarIconBrightness: Brightness.light,
             statusBarBrightness: Brightness.dark,
+            statusBarColor: Colors.transparent,
+            systemNavigationBarColor: Colors.black,
+            systemStatusBarContrastEnforced: true,
           ),
           centerTitle: true,
           titleTextStyle: TextStyle(
             fontFamily: GoogleFonts.dmSans().fontFamily,
             fontSize: 24,
           ),
-          backgroundColor: Colors.transparent,
-          shadowColor: Colors.transparent,
-          foregroundColor: Colors.white,
           scrolledUnderElevation: 0,
           elevation: 0));
 }
+// //!
+//   ThemeData get theme2 => ThemeData.dark(useMaterial3: true).copyWith(
+//       textTheme: GoogleFonts.dmSansTextTheme().apply(bodyColor: Colors.white),
+//       brightness: Brightness.light,
+//       splashFactory: InkRipple.splashFactory,
+//       primaryColorLight: UIHelper.primaryColor,
+//       primaryColorDark: UIHelper.primaryColor,
+//       bottomAppBarTheme: const BottomAppBarTheme(
+//         color: Colors.black,
+//         elevation: 0,
+//         surfaceTintColor: Colors.black,
+//       ),
+//       tooltipTheme: const TooltipThemeData(
+//         decoration: BoxDecoration(
+//           color: Colors.black,
+//           borderRadius: BorderRadius.all(Radius.circular(50)),
+//         ),
+//         textStyle: TextStyle(
+//           color: Colors.white,
+//           fontSize: 12,
+//         ),
+//       ),
+//       dividerTheme: DividerThemeData(
+//         color: Colors.black.withOpacity(0.2),
+//         space: 0,
+//         thickness: 0,
+//         endIndent: UIHelper.midSize,
+//         indent: UIHelper.midSize,
+//       ),
+//       progressIndicatorTheme: ProgressIndicatorThemeData(
+//         color: UIHelper.primaryColor,
+//         linearTrackColor: Colors.transparent,
+//         circularTrackColor: Colors.transparent,
+//         linearMinHeight: 2,
+//       ),
+//       dropdownMenuTheme: DropdownMenuThemeData(
+//           menuStyle: MenuStyle(
+//             backgroundColor: MaterialStateProperty.all(Colors.red),
+//           ),
+//           inputDecorationTheme: InputDecorationTheme(
+//             iconColor: Colors.red,
+//             border: OutlineInputBorder(
+//               borderRadius: UIHelper.lowBorderRadius,
+//               borderSide: const BorderSide(color: Colors.green),
+//             ),
+//             errorStyle: const TextStyle(
+//               fontSize: 0,
+//               color: Colors.red,
+//             ),
+//             errorBorder: OutlineInputBorder(
+//               borderRadius: UIHelper.lowBorderRadius,
+//               borderSide: const BorderSide(color: Colors.red),
+//             ),
+//             focusedErrorBorder: OutlineInputBorder(
+//               borderRadius: UIHelper.lowBorderRadius,
+//               borderSide: const BorderSide(color: Colors.red),
+//             ),
+//             enabledBorder: OutlineInputBorder(
+//               borderRadius: UIHelper.lowBorderRadius,
+//               borderSide: const BorderSide(color: Colors.white),
+//             ),
+//             focusedBorder: OutlineInputBorder(
+//               borderRadius: UIHelper.lowBorderRadius,
+//               borderSide: const BorderSide(color: Colors.white),
+//             ),
+//           )),
+//       floatingActionButtonTheme: const FloatingActionButtonThemeData(
+//         backgroundColor: Colors.white24,
+//         foregroundColor: Colors.white,
+//         shape: CircleBorder(
+//           side: BorderSide(color: Colors.white),
+//         ),
+//       ),
+//       applyElevationOverlayColor: true,
+//       bottomSheetTheme: const BottomSheetThemeData(
+//         backgroundColor: Colors.white,
+//         elevation: 1,
+//         shape: RoundedRectangleBorder(
+//           borderRadius: BorderRadius.vertical(
+//             top: Radius.circular(15),
+//           ),
+//         ),
+//       ),
+//       elevatedButtonTheme: ElevatedButtonThemeData(
+//           style: ElevatedButton.styleFrom(
+//         splashFactory: InkRipple.splashFactory,
+//         shape: RoundedRectangleBorder(
+//           borderRadius: UIHelper.lowBorderRadius,
+//         ),
+//         foregroundColor: UIHelper.primaryColor,
+//         backgroundColor: Colors.white,
+//         textStyle: TextStyle(
+//           fontFamily: GoogleFonts.dmSans().fontFamily,
+//           fontSize: 15,
+//           color: Colors.white,
+//         ),
+//       )),
+//       iconTheme: const IconThemeData(color: Colors.white, size: 30),
+//       dialogTheme: DialogTheme(
+//         shape: RoundedRectangleBorder(
+//           borderRadius: UIHelper.lowBorderRadius,
+//         ),
+//         actionsPadding: EdgeInsets.zero,
+//         alignment: Alignment.center,
+//         backgroundColor: Colors.white,
+//         surfaceTintColor: Colors.white,
+//         titleTextStyle: TextStyle(fontFamily: GoogleFonts.dmSans().fontFamily, color: Colors.black, fontSize: 24),
+//         contentTextStyle: TextStyle(
+//           fontFamily: GoogleFonts.dmSans().fontFamily,
+//           fontSize: 16,
+//           color: Colors.black87,
+//         ),
+//         elevation: 0,
+//         shadowColor: Colors.transparent,
+//       ),
+//       cardTheme: CardTheme(
+//         color: Colors.white,
+//         shadowColor: Colors.transparent,
+//         shape: RoundedRectangleBorder(
+//           borderRadius: UIHelper.lowBorderRadius,
+//         ),
+//       ),
+//       listTileTheme: ListTileThemeData(
+//         style: ListTileStyle.list,
+//         shape: RoundedRectangleBorder(
+//           borderRadius: UIHelper.lowBorderRadius,
+//         ),
+//         tileColor: Colors.white,
+//         selectedTileColor: Colors.red,
+//         textColor: Colors.black,
+//         iconColor: UIHelper.primaryColor,
+//         dense: true,
+//       ),
+//       drawerTheme: DrawerThemeData(
+//           endShape: RoundedRectangleBorder(
+//             borderRadius: UIHelper.zeroBorderRadius,
+//           ),
+//           surfaceTintColor: Colors.transparent,
+//           elevation: 0,
+//           shadowColor: Colors.transparent,
+//           backgroundColor: Colors.white,
+//           shape: RoundedRectangleBorder(
+//             borderRadius: UIHelper.zeroBorderRadius,
+//           )),
+//       textSelectionTheme: const TextSelectionThemeData(
+//         cursorColor: Colors.red,
+//         selectionColor: Colors.red,
+//         selectionHandleColor: Colors.red,
+//       ),
+//       useMaterial3: true,
+//       primaryColor: Colors.blue,
+//       textButtonTheme: TextButtonThemeData(
+//           style: ButtonStyle(
+//         splashFactory: InkRipple.splashFactory,
+//         overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.2)),
+//         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+//         foregroundColor: MaterialStateProperty.all(Colors.white),
+//         backgroundColor: MaterialStateProperty.all(Colors.transparent),
+//         textStyle: MaterialStateProperty.all(TextStyle(
+//           fontFamily: GoogleFonts.dmSans().fontFamily,
+//           fontSize: 15,
+//           color: Colors.white,
+//         )),
+//       )),
+//       snackBarTheme: SnackBarThemeData(
+//         showCloseIcon: true,
+//         closeIconColor: UIHelper.primaryColor,
+//         backgroundColor: UIHelper.primaryColor,
+//         insetPadding: UIHelper.lowPadding,
+//         shape: RoundedRectangleBorder(
+//           borderRadius: UIHelper.lowBorderRadius,
+//         ),
+//         behavior: SnackBarBehavior.floating,
+//         actionTextColor: UIHelper.primaryColor,
+//       ),
+//       inputDecorationTheme: InputDecorationTheme(
+//         contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+//         isCollapsed: true,
+//         labelStyle: const TextStyle(color: Colors.black),
+//         enabledBorder: OutlineInputBorder(
+//           borderRadius: UIHelper.lowBorderRadius,
+//           borderSide: const BorderSide(color: Colors.white),
+//         ),
+//         border: OutlineInputBorder(
+//           borderRadius: UIHelper.lowBorderRadius,
+//           borderSide: const BorderSide(color: Colors.green),
+//         ),
+//         focusedBorder: OutlineInputBorder(
+//           borderRadius: UIHelper.lowBorderRadius,
+//           borderSide: BorderSide(color: UIHelper.primaryColor),
+//         ),
+//       ),
+//       appBarTheme: AppBarTheme(
+//           titleSpacing: 10,
+//           systemOverlayStyle: SystemUiOverlayStyle(
+//             statusBarColor: theme.scaffoldBackgroundColor,
+//             statusBarIconBrightness: Brightness.light,
+//             systemNavigationBarIconBrightness: Brightness.dark,
+//             statusBarBrightness: Brightness.dark,
+//           ),
+//           centerTitle: true,
+//           titleTextStyle: TextStyle(
+//             fontFamily: GoogleFonts.dmSans().fontFamily,
+//             fontSize: 24,
+//           ),
+//           backgroundColor: Colors.transparent,
+//           shadowColor: Colors.transparent,
+//           foregroundColor: Colors.white,
+//           scrolledUnderElevation: 0,
+//           elevation: 0));
+// }

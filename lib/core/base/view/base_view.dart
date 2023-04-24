@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'base_appbar.dart';
 import 'base_scaffold.dart';
 
+// ignore: must_be_immutable
 class BaseView<T> extends StatefulWidget {
    BaseView(
       {super.key,

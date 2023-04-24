@@ -6,7 +6,6 @@ import "package:kartal/kartal.dart";
 
 import "../core/base/state/base_state.dart";
 import "../core/components/textfield/custom_textfield.dart";
-import "../core/constants/ui_helper/text_style_helper.dart";
 import "../core/init/cache/cache_manager.dart";
 import "../core/init/network/login/api_urls.dart";
 import "add_company/model/account_model.dart";
@@ -115,9 +114,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white24,
       appBar: AppBar(
-        backgroundColor: Colors.black,
         centerTitle: false,
         title: const Text("Şirkete Giriş"),
       ),
@@ -273,7 +270,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
               children: [
                 const CircularProgressIndicator.adaptive(),
                 context.emptySizedHeightBoxLow,
-                const Text("Şirketler yükleniyor.", style: TextStyleHelper.subtitleWhite),
+                Text("Şirketler yükleniyor.", style: theme.textTheme.bodySmall),
               ],
             ));
           }

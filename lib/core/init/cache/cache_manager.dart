@@ -5,6 +5,7 @@ import '../../../view/add_company/model/account_response_model.dart';
 import '../../../view/main_page/model/main_page_model.dart';
 import '../../../view/main_page/model/sirket_model.dart';
 import '../../../view/main_page/model/user_model/user_model.dart';
+import 'favorites_model.dart';
 
 class CacheManager {
   static late Box _tokenBox;
@@ -15,15 +16,18 @@ class CacheManager {
   static late Box _verifiedUsersBox;
   static late Box _veriTabaniBox;
   static late Box _isletmeSubeBox;
+  static late Box _favorilerBox;
+  static late Box _favorilerSiraBox;
   //Lazy Singleton
   static final CacheManager _instance = CacheManager._init();
   static CacheManager get instance => _instance;
   CacheManager._init() {
     WidgetsFlutterBinding.ensureInitialized();
-    Hive.registerAdapter(MainPageModelAdapter());
     Hive.registerAdapter(UserModelAdapter());
     Hive.registerAdapter(SirketModelAdapter());
     Hive.registerAdapter(AccountResponseModelAdapter());
+    Hive.registerAdapter(MainPageModelAdapter());
+    Hive.registerAdapter(FavoritesModelAdapter());
     initHiveBoxes();
   }
 
@@ -37,6 +41,8 @@ class CacheManager {
     _verifiedUsersBox = await Hive.openBox("logged");
     _veriTabaniBox = await Hive.openBox("veriTabani");
     _isletmeSubeBox = await Hive.openBox("isletmeSube");
+    _favorilerBox = await Hive.openBox("favoriler");
+    _favorilerSiraBox = await Hive.openBox("favorilerSira");
   }
 
 //*  Getters and Setters
@@ -49,6 +55,8 @@ class CacheManager {
   static Map? get getVerifiedUser => _verifiedUsersBox.get("data");
   static Map getVeriTabani() => _veriTabaniBox.get("value");
   static Map getIsletmeSube() => _isletmeSubeBox.get("value");
+  static Map getFavoriler() => _favorilerBox.toMap();
+  static Map getFavorilerSira() => _favorilerSiraBox.toMap();
 
   //* Setters
   static void setToken(String token) => _tokenBox.put("token", token);
@@ -56,13 +64,17 @@ class CacheManager {
   static void setCompanies(String key, String value) => _companiesBox.put(key, value);
   static void setAnaVeri(MainPageModel value) => _anaVeriBox.put("data", value);
   static void setAccounts(String key, AccountResponseModel value) => _accountsBox.put(key, value);
-  //TODO DÜZELT
+
+  ///? `[TODO DÜZELT]`
   static void setVerifiedUser(Map value) => _verifiedUsersBox.put("data", value);
   static void setVeriTabani(Map value) => _veriTabaniBox.put("value", value);
   static void setIsletmeSube(Map value) => _isletmeSubeBox.put("value", value);
+  static void setFavoriler(FavoritesModel value) => _favorilerBox.put(value.name, value);
+  static void setFavorilerSira(Map value) => _favorilerSiraBox.putAll(value);
 
-//* Clear Boxes
+//* Clear and Remove
   static void clearBox(String boxName) => Hive.box(boxName).clear();
+  static void removeFavoriler(String key) => _favorilerBox.delete(key);
 }
 
 class CacheHelper {

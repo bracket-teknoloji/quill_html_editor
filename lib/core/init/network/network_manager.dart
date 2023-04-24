@@ -1,14 +1,11 @@
 // ignore_for_file: avoid_print
 
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:picker/core/base/model/base_network_mixin.dart';
 import 'package:picker/core/base/model/generic_response_model.dart';
 import 'package:picker/core/init/cache/cache_manager.dart';
 import 'package:picker/view/auth/model/login_model.dart';
 
-import '../../components/dialog/dialog_manager.dart';
 import '../../constants/enum/dio_enum.dart';
 
 class NetworkManager {
@@ -16,8 +13,6 @@ class NetworkManager {
     baseUrl: "http://ofis.bracket.com.tr:7575/pickerBracket/",
     connectTimeout: const Duration(seconds: 20),
   ));
-  static final _dialogManager = DialogManager();
-
   NetworkManager() {
     _dio.interceptors.add(
       InterceptorsWrapper(
@@ -25,23 +20,11 @@ class NetworkManager {
           return handler.next(options);
         },
         onError: (e, handler) {
-          print(e.error.runtimeType);
-            if (e.response != null) {
-              if (e.response!.statusCode == 401) {
-                _dialogManager.showAlertDialog("Hata Kullanıcı adı veya şifre hatalı");
-              } else if (e.response!.statusCode == 500) {
-                _dialogManager.showAlertDialog("Hata Sunucu hatası");
-              } else {
-                _dialogManager.showAlertDialog("Hata Beklenmedik bir hata oluştu1");
-              }
-            } else {
-              if (e.error.runtimeType == SocketException) {
-                _dialogManager.showAlertDialog("Hata İnternet bağlantınızı kontrol ediniz");
-              } else {
-                _dialogManager.showAlertDialog("Hata Beklenmedik bir hata oluştu");
-              }
-            }
-          
+          if (e.type == DioErrorType.connectionTimeout) {
+            return handler.next(DioError(requestOptions: RequestOptions(), message: "Bağlantı zaman aşımına uğradı."));
+          } else {
+            return handler.next(e);
+          }
         },
       ),
     );

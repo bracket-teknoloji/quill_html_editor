@@ -73,11 +73,12 @@ dependencies:
   carrier_info: ^2.0.8
   crypto: ^3.0.2
   connectivity_plus: ^3.0.3
+  wave: ^0.2.2
 
 
   
 flutter_icons:
-  image_path: "assets/app_icon/app_icon.png"
+  image_path: "assets/splash/pickerLogoTuruncu.png"
   android: true
     
 
@@ -91,11 +92,10 @@ dev_dependencies:
   hive_generator: ^2.0.0
 
 flutter_native_splash:
-  color: "#FFFFFF"
-  image: "assets/splash/picker_logo.png"
-  color_dark: "#BA3C16"
-  image_dark: "assets/splash/picker_logo.png"
+  color: "#201A19"
+  image: "assets/splash/pickerLogoTuruncu_512.png"
   fill: false
+  android12: 
 
   android: true
   ios: true

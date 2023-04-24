@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +13,6 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   Connectivity connectivity = Connectivity();
   BaseState() {
     internetChecker();
-    log("BaseState initState");
     networkManager = NetworkManager();
     dialogManager = DialogManager();
     appInfoModel = AppInfoModel();

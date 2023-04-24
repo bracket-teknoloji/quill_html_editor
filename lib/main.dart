@@ -2,11 +2,14 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get_navigation/src/root/get_material_app.dart";
 import "package:get/get_navigation/src/routes/get_route.dart";
+import "package:get/get_navigation/src/routes/transitions_type.dart";
 
 import "core/init/cache/cache_manager.dart";
 import "core/init/theme/app_theme_dark.dart";
 import "view/add_company/model/account_model.dart";
-import 'view/add_company/view/edit_company_view.dart.dart';
+import "view/add_company/view/add_account_view.dart";
+import "view/add_company/view/company_page.dart";
+// import 'view/add_company/view/edit_company_view.dart.dart';
 import "view/add_company/view/qr_view.dart";
 import "view/auth/view/login_view.dart";
 import "view/entry_company_view.dart";
@@ -15,6 +18,7 @@ import "view/main_page/view/main_page_view.dart";
 void main() async {
   await CacheManager.instance.initHiveBoxes();
   AccountModel.instance.init();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: [SystemUiOverlay.top, SystemUiOverlay.bottom]);
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]).then((_) {
     runApp(const MyApp());
   });
@@ -26,6 +30,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      defaultTransition: Transition.rightToLeft,
+      popGesture: true,
+      debugShowCheckedModeBanner: false,
+      opaqueRoute: false,
+      darkTheme: AppThemeDark.instance!.theme,
+      themeMode: ThemeMode.dark,
       title: "Picker",
       home: const LoginView(),
       getPages: [
@@ -39,17 +49,17 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: "/addCompany",
-          page: () => const AddCompanyView(),
+          page: () => const AccountsView(),
+        ),
+        GetPage(
+          name: "/addAccount",
+          page: () => const AddAccountView(),
         ),
         GetPage(
           name: "/qr",
           page: () => const QRScannerView(),
         ),
       ],
-      debugShowCheckedModeBanner: false,
-      opaqueRoute: true,
-      color: Colors.white,
-      theme: AppThemeDark.instance!.theme,
     );
   }
 }

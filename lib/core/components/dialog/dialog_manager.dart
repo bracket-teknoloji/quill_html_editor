@@ -8,7 +8,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kartal/kartal.dart';
 
 import '../../constants/ui_helper/icon_helper.dart';
-import '../../constants/ui_helper/text_style_helper.dart';
 import '../../constants/ui_helper/ui_helper.dart';
 
 class DialogManager {
@@ -36,11 +35,11 @@ class DialogManager {
           children: [
             const Padding(
               padding: EdgeInsets.only(bottom: 10),
-              child: Text("Uyarı", style: TextStyleHelper.titleBlack),
+              child: Text("Uyarı"),
             ),
             Padding(
               padding: UIHelper.midPaddingHorizontal,
-              child: Text(message, style: TextStyleHelper.subtitleBlack, textAlign: TextAlign.center),
+              child: Text(message, textAlign: TextAlign.center),
             ),
           ],
         ),
@@ -55,11 +54,11 @@ class DialogManager {
           children: [
             const Padding(
               padding: EdgeInsets.only(bottom: 10),
-              child: Text("Uyarı", style: TextStyleHelper.titleBlack),
+              child: Text("Uyarı"),
             ),
             Padding(
               padding: UIHelper.midPaddingHorizontal,
-              child: Text("İnternet bağlantınızı kontrol edin.", style: TextStyleHelper.subtitleBlack, textAlign: TextAlign.center),
+              child: const Text("İnternet bağlantınızı kontrol edin.", textAlign: TextAlign.center),
             ),
           ],
         ),
@@ -68,7 +67,7 @@ class DialogManager {
   void showLoadingDialog(String loadText) => _baseDialog(
         body: Center(
           child: Column(
-            children: [const CircularProgressIndicator(), context.emptySizedHeightBoxLow, Text(loadText, style: context.theme.textTheme.labelSmall?.copyWith(color: Colors.black))],
+            children: [const CircularProgressIndicator(), context.emptySizedHeightBoxLow, Text(loadText, style: context.theme.textTheme.labelSmall)],
           ),
         ),
       ).show();
@@ -78,7 +77,9 @@ class DialogManager {
         title: "Uyarı",
         desc: "Çıkmak istediğinize emin misiniz?",
         dialogType: DialogType.question,
-        onOk: () => Get.offAllNamed("/"),
+        onOk: () {
+          Get.offAndToNamed("/");
+        },
         btnOkText: "Evet",
         onCancel: () {},
         btnCancelText: "Hayır",
@@ -90,7 +91,7 @@ class DialogManager {
 
   AlertDialog loadingDialog() {
     return AlertDialog(
-      title: Text("Yükleniyor...", style: context.theme.textTheme.titleMedium?.copyWith(color: Colors.black)),
+      title: Text("Yükleniyor...", style: context.theme.textTheme.titleMedium),
       content: const SizedBox(
           height: 5,
           width: 50,
@@ -175,13 +176,13 @@ class DialogManager {
   }
 
   SnackBar snackBarError(String message) => SnackBar(
-        content: Text(message, style: context.theme.textTheme.bodySmall?.copyWith(color: Colors.white)),
+        content: Text(message),
       );
 
   AwesomeDialog areYouSureDialog(void Function() onYes) {
     return _baseDialog(
       title: "Uyarı",
-      desc: "Çıkmak istediğinize emin misiniz?",
+      desc: "Bu işlemi yapmak istediğinizden emin misiniz?",
       dialogType: DialogType.question,
       onOk: onYes,
       btnOkText: "Evet",
@@ -197,13 +198,13 @@ class DialogManager {
         btnOkText: "Firmaları Düzenle",
         btnCancelText: "Vazgeç",
         onOk: () {
-          Get.offNamed(
+          Get.toNamed(
             "/addCompany",
           );
         },
         onCancel: () {},
         body: Column(mainAxisSize: MainAxisSize.min, children: [
-          const Text("Şirket Seçiniz", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black)),
+          Text("Şirket Seçiniz", style: Theme.of(context).textTheme.titleLarge),
           ListTile(
               title: const Text("DEMO"),
               leading: IconHelper.smallIcon("User-Account"),
@@ -250,19 +251,20 @@ class DialogManager {
         width: Platform.isLinux || Platform.isWindows || Platform.isMacOS ? MediaQuery.of(context).size.width * 0.4 : null,
         customHeader: customHeader,
         alignment: Alignment.center,
-        reverseBtnOrder: true,
-        barrierColor: Colors.black.withOpacity(0.4),
-        dialogBorderRadius: UIHelper.highBorderRadius,
+        reverseBtnOrder: false,
+        barrierColor: Colors.black.withOpacity(0.9),
+        dialogBorderRadius: UIHelper.lowBorderRadius,
         useRootNavigator: false,
         headerAnimationLoop: false,
         padding: UIHelper.midPaddingVertical,
-        buttonsBorderRadius: UIHelper.highBorderRadius,
+        buttonsBorderRadius: UIHelper.lowBorderRadius,
         animType: AnimType.bottomSlide,
         btnOkIcon: btnOkIcon,
         btnCancelIcon: btnCancelIcon,
-        dialogBackgroundColor: Colors.white,
-        descTextStyle: TextStyleHelper.captionBlack,
-        titleTextStyle: TextStyleHelper.titleBlack,
+        dialogBackgroundColor: Theme.of(context).colorScheme.onInverseSurface,
+        descTextStyle: Theme.of(context).textTheme.bodySmall,
+        titleTextStyle: Theme.of(context).textTheme.bodyLarge,
+        buttonsTextStyle: Theme.of(context).textTheme.bodySmall,
         title: title,
         desc: desc,
         btnOkOnPress: onOk,

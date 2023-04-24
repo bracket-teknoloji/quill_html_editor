@@ -4,10 +4,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:kartal/kartal.dart';
+import 'package:wave/config.dart';
+import 'package:wave/wave.dart';
 
 import '../../../core/base/state/base_state.dart';
+import '../../../core/components/dialog/bottom_sheet_dialog_manager.dart';
 import '../../../core/components/textfield/custom_textfield.dart';
-import '../../../core/constants/login_page_constants.dart';
 import '../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../core/init/app_info/app_info.dart';
 import '../../../core/init/cache/cache_manager.dart';
@@ -30,7 +32,6 @@ class _LoginViewState extends BaseState<LoginView> {
   late final TextEditingController emailController;
   late final TextEditingController companyController;
   late final TextEditingController passwordController;
-  GlobalKey<FormState> buttonKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -68,13 +69,19 @@ class _LoginViewState extends BaseState<LoginView> {
       },
       child: Stack(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              gradient: LoginConstants.linearGradient,
-            ),
-          ),
+          WaveWidget(
+              config: CustomConfig(durations: [8000, 10000], heightPercentages: [0.78, 0.8], colors: [const Color.fromRGBO(70, 59, 57, 26), Colors.black.withOpacity(0.3)]),
+              size: const Size(double.infinity, double.infinity),
+              waveAmplitude: 2,
+              wavePhase: 0,
+              duration: 200,
+              backgroundColor: theme.scaffoldBackgroundColor),
           Scaffold(
+            appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent, automaticallyImplyLeading: false),
+            floatingActionButton: !context.isKeyBoardOpen ? Text("V $version").paddingOnly(bottom: 20) : null,
+            floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerDocked,
             primary: true,
+            backgroundColor: Colors.transparent,
             extendBodyBehindAppBar: true,
             body: Center(
               child: SingleChildScrollView(
@@ -100,7 +107,6 @@ class _LoginViewState extends BaseState<LoginView> {
                                 style: context.theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w500),
                               ),
                               Text("Mobil Veri Toplama Çözümleri", style: context.theme.textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w300)),
-                              Text("V $version")
                             ],
                           ),
                         ),
@@ -146,6 +152,7 @@ class _LoginViewState extends BaseState<LoginView> {
                                 decoration: InputDecoration(
                                   suffixIcon: IconButton(
                                     onPressed: () {
+                                      BottomSheetDialogManager.showBottomSheetDialog(context, title: "Merhaba", body: Text("Merhaba \n" * 20));
                                       setState(() {
                                         isObscure = !isObscure;
                                       });
@@ -175,7 +182,6 @@ class _LoginViewState extends BaseState<LoginView> {
 
   ElevatedButton get elevatedButton {
     return ElevatedButton(
-        key: buttonKey,
         onPressed: () async {
           dialogManager.showLoadingDialog("Giriş Yapılıyor");
 
@@ -207,7 +213,10 @@ class _LoginViewState extends BaseState<LoginView> {
                 print("object");
               }
             } on DioError catch (e) {
-              dialogManager.showAlertDialog(e.response?.data["error_description"] ?? "Hata :$e");
+              dialogManager.hideAlertDialog;
+              dialogManager.showAlertDialog(e.response?.data["error_description"] ?? "Hata :${e.message}");
+            } on Exception catch (e) {
+              dialogManager.showAlertDialog(e.toString());
             }
           } else {
             Navigator.of(context, rootNavigator: true).pop();
@@ -217,7 +226,6 @@ class _LoginViewState extends BaseState<LoginView> {
         },
         child: const Text(
           "Giriş",
-          style: TextStyle(color: Colors.red),
         ));
   }
 }

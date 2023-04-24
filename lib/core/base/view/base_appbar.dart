@@ -17,6 +17,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: AppBar(
         title: Text(title ?? ""),
         leading: leading,
+        
         actions: [
           ...?actions,
         ],

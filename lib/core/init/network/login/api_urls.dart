@@ -5,4 +5,5 @@ class ApiUrls {
   static const String isletmelerSubeler = "${_baseUrl}api/General/GetIsletmelerSubeler";
   static const String createSession = "${_baseUrl}api/General/CreateSessionV3";
   static const String getUyeBilgileri = "https://storews.netfect.com/api/Picker/GetUyeBilgileri";
+  static const String getCariler = "https://storews.netfect.com/api/Cari/GetCariler";
 }
