@@ -1,3 +1,5 @@
+import "dart:convert";
+
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get_navigation/src/root/get_material_app.dart";
@@ -13,11 +15,15 @@ import "view/add_company/view/company_page.dart";
 import "view/add_company/view/qr_view.dart";
 import "view/auth/view/login_view.dart";
 import "view/entry_company_view.dart";
+import "view/main_page/alt_sayfalar/cari/cari_listesi/view/cari_listesi_view.dart";
 import "view/main_page/view/main_page_view.dart";
 
 void main() async {
   await CacheManager.instance.initHiveBoxes();
   AccountModel.instance.init();
+  AccountModel.instance.cihazKimligi =
+      base64Encode(utf8.encode("${AccountModel.instance.cihazMarkasi}:${AccountModel.instance.cihazModeli}:${AccountModel.instance.cihazSistemVersiyonu}"));
+
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: [SystemUiOverlay.top, SystemUiOverlay.bottom]);
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]).then((_) {
     runApp(const MyApp());
@@ -46,6 +52,20 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: "/mainPage",
           page: () => const MainPageView(),
+          children: [
+            GetPage(
+              name: "/cari/cariListesi",
+              page: () => const CariListesiView(),
+            ),
+            GetPage(
+              name: "/addAccount",
+              page: () => const AddAccountView(),
+            ),
+            GetPage(
+              name: "/qr",
+              page: () => const QRScannerView(),
+            ),
+          ],
         ),
         GetPage(
           name: "/addCompany",

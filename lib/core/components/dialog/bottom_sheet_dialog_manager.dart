@@ -11,7 +11,9 @@ class BottomSheetDialogManager {
         context: context,
         isDismissible: true,
         barrierColor: Colors.black.withOpacity(0.9),
-        enableDrag: true,
+        enableDrag: false,
+        useSafeArea: true,
+        isScrollControlled: true,
         builder: (context) {
           return Wrap(
             children: [
@@ -26,31 +28,43 @@ class BottomSheetDialogManager {
                 indent: 0,
               ),
               body == null
-                  ? Wrap(
-                      children: [
-                        ...List.generate(
-                          children!.length,
-                          (index) => Wrap(
-                            children: [
-                              ListTile(
-                                  onTap: children[index].onTap,
-                                  title: Text(children[index].title),
-                                  leading: SizedBox(
-                                    width: 20,
-                                    height: 20,
-                                    child: children[index].iconWidget != null
-                                        ? Icon(children[index].iconWidget, size: 25, color: UIHelper.primaryColor)
-                                        : IconHelper.smallIcon(children[index].icon),
-                                  )),
-                              Padding(
-                                padding: UIHelper.lowPaddingVertical,
-                                child: const Divider(),
-                              )
-                            ],
+                  ? SizedBox(
+                      // if children are not fit to screen, it will be scrollable
+                      height: children!.length * 50,
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: SingleChildScrollView(
+                              child: Wrap(
+                                children: [
+                                  ...List.generate(
+                                    children.length,
+                                    (index) => Wrap(
+                                      children: [
+                                        ListTile(
+                                            onTap: children[index].onTap,
+                                            title: Text(children[index].title),
+                                            leading: SizedBox(
+                                              width: 20,
+                                              height: 20,
+                                              child: children[index].iconWidget != null
+                                                  ? Icon(children[index].iconWidget, size: 25, color: UIHelper.primaryColor)
+                                                  : IconHelper.smallIcon(children[index].icon!),
+                                            )),
+                                        Padding(
+                                          padding: UIHelper.lowPaddingVertical,
+                                          child: const Divider(),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ).paddingOnly(bottom: 10),
+                            ),
                           ),
-                        ),
-                      ],
-                    ).paddingOnly(bottom: 10)
+                        ],
+                      ),
+                    )
                   : SingleChildScrollView(child: body),
             ],
           );

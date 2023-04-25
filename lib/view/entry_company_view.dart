@@ -5,6 +5,8 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 
 import "../core/base/state/base_state.dart";
+import "../core/components/dialog/bottom_sheet_dialog_manager.dart";
+import "../core/components/dialog/bottom_sheet_model.dart";
 import "../core/components/textfield/custom_textfield.dart";
 import "../core/init/cache/cache_manager.dart";
 import "../core/init/network/login/api_urls.dart";
@@ -28,6 +30,9 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   List? isletme;
   List? sube;
   FocusNode? focusNode;
+  TextEditingController? controller1;
+  TextEditingController? controller2;
+  TextEditingController? controller3;
 
   @override
   Future<void> didChangeDependencies() async {
@@ -39,6 +44,18 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   void initState() {
     super.initState();
     focusNode = FocusNode();
+    controller1 = TextEditingController();
+    controller2 = TextEditingController();
+    controller3 = TextEditingController();
+  }
+
+  @override
+  dispose() {
+    focusNode!.dispose();
+    controller1!.dispose();
+    controller2!.dispose();
+    controller3!.dispose();
+    super.dispose();
   }
 
   dioGetData() async {
@@ -46,6 +63,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     if (sirket.isNotNullOrEmpty) {
       sube = await getSube(selected2["Şirket"].toString()).onError((error, stackTrace) => []);
       if (sube!.length == 1) {
+        controller3!.text = sube![0].subeAdi!;
         selected["Şube"] = sube![0];
         selected2["Şube"] = sube![0].subeKodu;
         userData["Şube"] = sube![0].subeAdi;
@@ -53,6 +71,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
       }
       isletme = await getIsletme();
       if (isletme!.length == 1) {
+        controller2!.text = isletme![0].isletmeAdi!;
         selected["İşletme"] = isletme![0];
         selected2["İşletme"] = isletme![0].isletmeKodu;
         userData["İşletme"] = isletme![0].isletmeAdi;
@@ -131,83 +150,195 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          CustomTextField(
-                            text: "Şirket",
-                            children: [
-                              DropdownButtonFormField(
-                                autofocus: true,
-                                decoration: const InputDecoration(
-                                  hoverColor: Colors.transparent,
-                                ),
-                                isExpanded: true,
-                                validator: validator,
-                                focusNode: focusNode,
-                                value: selected["Şirket"],
-                                items: sirket?.toSet().map((e) => DropdownMenuItem(value: e, child: Text(e.company!.toString()))).toList(),
-                                onChanged: (value) {
-                                  if (value is CompanyModel) {
-                                    setState(() {
-                                      selected["Şirket"] = value;
-                                      selected2["Şirket"] = value.company;
-                                      userData["Şirket"] = value.company;
-                                      selected["İşletme"] = null;
-                                      selected2["İşletme"] = null;
-                                      selected["Şube"] = null;
-                                      selected2["Şube"] = null;
-                                      focusNode!.requestFocus();
-                                    });
-                                  }
-                                  log(selected2.toString(), name: "Şirket");
-                                },
-                              )
-                            ],
-                          ),
+                          CustomTextField(text: "Şirket", children: [
+                            TextFormField(
+                              decoration: const InputDecoration(
+                                suffixIcon: Icon(Icons.more_horiz_outlined),
+                              ),
+                              controller: controller1,
+                              readOnly: true,
+                              autofocus: true,
+                              focusNode: focusNode,
+                              textInputAction: TextInputAction.next,
+                              onTap: () {
+                                BottomSheetDialogManager.showBottomSheetDialog(context,
+                                    title: "Şirket Seçiniz",
+                                    children: List.generate(
+                                      sirket!.length,
+                                      (index) {
+                                        return BottomSheetModel(
+                                          icon: "Saat",
+                                          iconWidget: Icons.storage_outlined,
+                                          title: sirket![index].company!,
+                                          onTap: () {
+                                            setState(() {
+                                              controller1!.text = sirket![index].company!;
+                                              selected["Şirket"] = sirket![index];
+                                              selected2["Şirket"] = sirket![index].company;
+                                              userData["Şirket"] = sirket![index].company;
+                                              selected["İşletme"] = null;
+                                              selected2["İşletme"] = null;
+                                              selected["Şube"] = null;
+                                              selected2["Şube"] = null;
+                                              dioGetData();
+                                            });
+                                            Get.back();
+                                          },
+                                        );
+                                      },
+                                    ));
+                              },
+                            ),
+                          ]),
                           CustomTextField(
                             text: "İşletme Kodu",
                             children: [
-                              DropdownButtonFormField(
-                                isExpanded: true,
-                                validator: validator,
-                                focusNode: focusNode,
-                                value: selected["İşletme"],
-                                //items: isletme değişkenindeki unique değerler
-                                items: isletme!.toSet().map((e) => DropdownMenuItem(value: e, child: Text("${e.isletmeAdi} ${e.isletmeKodu ?? 0}"))).toList(),
-                                onChanged: (value) {
-                                  if (value is IsletmeModel) {
-                                    selected["İşletme"] = value;
-                                    selected2["İşletme"] = value.isletmeKodu;
-                                    userData["İşletme"] = value.isletmeAdi;
-                                    log(userData.toString(), name: "İşletmeler");
-                                    focusNode?.requestFocus();
-                                  }
+                              TextFormField(
+                                controller: controller2,
+                                enabled: isletme!.isNotEmpty,
+                                readOnly: true,
+                                onTap: () {
+                                  BottomSheetDialogManager.showBottomSheetDialog(context,
+                                      title: "İşletme Seçiniz",
+                                      children: List.generate(
+                                        isletme!.length,
+                                        (index) {
+                                          return BottomSheetModel(
+                                            icon: "Saat",
+                                            iconWidget: Icons.data_array_outlined,
+                                            title: isletme![index].isletmeAdi!,
+                                            onTap: () {
+                                              setState(() {
+                                                controller2!.text = "${isletme![index].isletmeAdi} ${isletme![index].isletmeKodu ?? 0}";
+                                                selected["İşletme"] = isletme![index];
+                                                selected2["İşletme"] = isletme![index].isletmeKodu;
+                                                userData["İşletme"] = isletme![index].isletmeAdi;
+                                                selected["Şube"] = null;
+                                                selected2["Şube"] = null;
+                                                dioGetData();
+                                              });
+                                              Get.back();
+                                            },
+                                          );
+                                        },
+                                      ));
                                 },
+                                decoration: const InputDecoration(
+                                  suffixIcon: Icon(Icons.more_horiz_outlined),
+                                ),
                               )
                             ],
                           ),
-                          CustomTextField(
-                            text: "Şube Kodu ",
-                            children: [
-                              DropdownButtonFormField(
-                                isExpanded: true,
-                                validator: validator,
-                                key: formKey,
-                                value: selected["Şube"],
-                                focusNode: focusNode,
-                                items: sube?.map((e) => DropdownMenuItem(value: e, child: Text("${e.subeAdi} ${e.subeKodu ?? 0}"))).toList(),
-                                onChanged: (value) {
-                                  if (value is IsletmeModel) {
-                                    selected["Şube"] = value;
-                                    selected2["Şube"] = value.subeKodu ?? 0;
-                                    userData["Şube"] = value.subeAdi;
-                                    log(selected2.toString(), name: "Şube");
-                                    log(value.toString(), name: "Şube");
-                                    log(sube!.length.toString(), name: "Şube");
-                                    focusNode?.unfocus();
-                                  }
-                                },
-                              )
-                            ],
-                          ),
+                          CustomTextField(text: "Şube Kodu", children: [
+                            TextFormField(
+                              controller: controller3,
+                              enabled: sube!.isNotEmpty,
+                              readOnly: true,
+                              onTap: () {
+                                BottomSheetDialogManager.showBottomSheetDialog(context,
+                                    title: "Şube Seçiniz",
+                                    children: List.generate(
+                                      sube!.length,
+                                      (index) {
+                                        return BottomSheetModel(
+                                          icon: "Saat",
+                                          title: sube![index].subeAdi!,
+                                          onTap: () {
+                                            setState(() {
+                                              controller3!.text = "${sube![index].subeAdi} ${sube![index].subeKodu ?? 0}";
+                                              selected["Şube"] = sube![index];
+                                              selected2["Şube"] = sube![index].subeKodu;
+                                              userData["Şube"] = sube![index].subeAdi;
+                                              dioGetData();
+                                            });
+                                            Get.back();
+                                          },
+                                        );
+                                      },
+                                    ));
+                              },
+                              decoration: const InputDecoration(
+                                suffixIcon: Icon(Icons.more_horiz_outlined),
+                              ),
+                            )
+                          ]),
+                          // CustomTextField(
+                          //   text: "Şirket",
+                          //   children: [
+                          //     DropdownButtonFormField(
+                          //       autofocus: true,
+                          //       decoration: const InputDecoration(
+                          //         hoverColor: Colors.transparent,
+                          //       ),
+                          //       isExpanded: true,
+                          //       validator: validator,
+                          //       focusNode: focusNode,
+                          //       value: selected["Şirket"],
+                          //       items: sirket?.toSet().map((e) => DropdownMenuItem(value: e, child: Text(e.company!.toString()))).toList(),
+                          //       onChanged: (value) {
+                          //         if (value is CompanyModel) {
+                          //           setState(() {
+                          //             selected["Şirket"] = value;
+                          //             selected2["Şirket"] = value.company;
+                          //             userData["Şirket"] = value.company;
+                          //             selected["İşletme"] = null;
+                          //             selected2["İşletme"] = null;
+                          //             selected["Şube"] = null;
+                          //             selected2["Şube"] = null;
+                          //             focusNode!.requestFocus();
+                          //           });
+                          //         }
+                          //         log(selected2.toString(), name: "Şirket");
+                          //       },
+                          //     )
+                          //   ],
+                          // ),
+                          // CustomTextField(
+                          //   text: "İşletme Kodu",
+                          //   children: [
+                          //     DropdownButtonFormField(
+                          //       isExpanded: true,
+                          //       validator: validator,
+                          //       focusNode: focusNode,
+                          //       value: selected["İşletme"],
+                          //       //items: isletme değişkenindeki unique değerler
+                          //       items: isletme!.toSet().map((e) => DropdownMenuItem(value: e, child: Text("${e.isletmeAdi} ${e.isletmeKodu ?? 0}"))).toList(),
+                          //       onChanged: (value) {
+                          //         if (value is IsletmeModel) {
+                          //           selected["İşletme"] = value;
+                          //           selected2["İşletme"] = value.isletmeKodu;
+                          //           userData["İşletme"] = value.isletmeAdi;
+                          //           log(userData.toString(), name: "İşletmeler");
+                          //           focusNode?.requestFocus();
+                          //         }
+                          //       },
+                          //     )
+                          //   ],
+                          // ),
+                          // CustomTextField(
+                          //   text: "Şube Kodu ",
+                          //   children: [
+                          //     DropdownButtonFormField(
+                          //       isExpanded: true,
+                          //       validator: validator,
+                          //       key: formKey,
+                          //       value: selected["Şube"],
+                          //       focusNode: focusNode,
+                          //       items: sube?.map((e) => DropdownMenuItem(value: e, child: Text("${e.subeAdi} ${e.subeKodu ?? 0}"))).toList(),
+                          //       onChanged: (value) {
+                          //         if (value is IsletmeModel) {
+                          //           selected["Şube"] = value;
+                          //           selected2["Şube"] = value.subeKodu ?? 0;
+                          //           userData["Şube"] = value.subeAdi;
+                          //           log(selected2.toString(), name: "Şube");
+                          //           log(value.toString(), name: "Şube");
+                          //           log(sube!.length.toString(), name: "Şube");
+                          //           focusNode?.unfocus();
+                          //         }
+                          //       },
+                          //     )
+                          //   ],
+                          // ),
                         ]
                             .map((widget) => Padding(
                                   padding: context.onlyBottomPaddingNormal,
@@ -217,6 +348,8 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                     context.emptySizedHeightBoxLow,
                     ElevatedButton(
                       onPressed: () async {
+                        AccountModel.getValue();
+
                         if (!selected.values.contains(null)) {
                           /// var [model] = {
                           ///   "AKTIF_ISLETME_KODU": selected2["İşletme"].toString(),
@@ -226,7 +359,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                           ///   "OZEL_CIHAZ_KIMLIGI": "4b0f40f3caabceaa7e6a60d5ba133d3323741f0644c2dbb6b74b40152f9aeaf7",
                           /// };
                           final model = AccountModel.instance
-                            ..aktifVeritabani = selected2["Şirket"]
+                            .aktifVeritabani = selected2["Şirket"]
                             ..aktifIsletmeKodu = selected2["İşletme"]
                             ..aktifSubeKodu = selected2["Şube"]
                             ..gCid = "/Y5TBF72qY7bnZl3+NOYvUtln/g5FJPl4jQ9i59td5M=";

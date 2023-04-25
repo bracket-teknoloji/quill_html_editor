@@ -23,13 +23,13 @@ class GridItems {
     menuTipi = "A";
   }
 
-  GridItems.altmenu({required this.name, required this.title, required this.icon, required this.altMenuler, this.iconWidget}) {
+  GridItems.altmenu({required this.name, required this.title, this.icon, required this.altMenuler, this.iconWidget}) {
     menuTipi = "S";
   }
   GridItems.item({required this.name, required this.title, this.icon, this.onTap}) {
     menuTipi = "I";
-    onTap = () {
-      DialogManager().showSnackBar(title);
+    onTap ??= () {
+      DialogManager().showSnackBar("Yapım Aşamasında");
     };
   }
 

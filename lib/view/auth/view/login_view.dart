@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,7 +10,6 @@ import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
 import '../../../core/base/state/base_state.dart';
-import '../../../core/components/dialog/bottom_sheet_dialog_manager.dart';
 import '../../../core/components/textfield/custom_textfield.dart';
 import '../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../core/init/app_info/app_info.dart';
@@ -152,7 +153,6 @@ class _LoginViewState extends BaseState<LoginView> {
                                 decoration: InputDecoration(
                                   suffixIcon: IconButton(
                                     onPressed: () {
-                                      BottomSheetDialogManager.showBottomSheetDialog(context, title: "Merhaba", body: Text("Merhaba \n" * 20));
                                       setState(() {
                                         isObscure = !isObscure;
                                       });
@@ -194,7 +194,10 @@ class _LoginViewState extends BaseState<LoginView> {
               });
               dialogManager.hideAlertDialog;
               AccountResponseModel? accountCache = CacheManager.getAccounts(companyController.text);
+              var based =
+                  base64Encode(utf8.encode("${AccountModel.instance.cihazMarkasi}:${AccountModel.instance.cihazModeli}:${AccountModel.instance.cihazSistemVersiyonu}"));
               AccountModel.instance
+                ..cihazKimligi = based
                 ..kullaniciAdi = emailController.text
                 ..uyeEmail = accountCache?.email ?? "demo@netfect.com"
                 ..uyeSifre = accountCache?.parola;

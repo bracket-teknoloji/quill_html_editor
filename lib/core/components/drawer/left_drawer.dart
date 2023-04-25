@@ -38,8 +38,11 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
         child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       ListTile(
         title: Text("Favoriler", style: theme.textTheme.titleMedium),
+        trailing: IconButton(
+          icon: IconButton(onPressed: () {}, icon: IconHelper.smallIcon("Duzenle")),
+          onPressed: () => Get.back(),
+        ),
         contentPadding: const EdgeInsets.only(left: 12, top: 10, bottom: 10),
-        trailing: IconButton(onPressed: () {}, icon: IconHelper.smallIcon("Duzenle")),
       ),
       const Divider(),
       liste.isNullOrEmpty
@@ -81,7 +84,6 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                           value.title.toString(),
                         ),
                         leading: IconHelper.smallMenuIcon(value.icon.toString(), color: Color(value.color!)),
-                        trailing: const Icon(Icons.drag_handle),
                         onTap: () => DialogManager().showSnackBar(value.onTap.toString()),
                       );
                     } else {

@@ -114,6 +114,7 @@ class AccountModel with NetworkManagerMixin {
     } else {
       cihazDili = Platform.localeName;
     }
+    uygulamaDili = Platform.localeName;
     cihazTimeZoneDakika = DateTime.now().timeZoneOffset.inMinutes;
 
     //* Cihaz ve Sim Bilgileri
@@ -173,4 +174,5 @@ class ParamMap with NetworkManagerMixin {
   Map<String, dynamic> toJson() {
     return _$ParamMapToJson(this);
   }
+  
 }

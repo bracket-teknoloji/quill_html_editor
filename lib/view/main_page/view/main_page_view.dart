@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+import 'package:kartal/kartal.dart';
 
 import '../../../core/base/state/base_state.dart';
 import '../../../core/components/drawer/left_drawer.dart';
@@ -100,6 +101,9 @@ class _MainPageViewState extends BaseState<MainPageView> {
                                                       title2.add(item.title.toString());
                                                       items = item.altMenuler!.where((element) {
                                                         element.color = item.color;
+                                                        if (element.icon.isNullOrEmpty) {
+                                                          element.icon = item.icon;
+                                                        }
                                                         return element.yetkiKontrol;
                                                       }).toList();
                                                     });
