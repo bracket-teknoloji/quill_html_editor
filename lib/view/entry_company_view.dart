@@ -35,12 +35,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   TextEditingController? controller3;
 
   @override
-  Future<void> didChangeDependencies() async {
-    super.didChangeDependencies();
-    await dioGetData();
-  }
-
-  @override
   void initState() {
     super.initState();
     focusNode = FocusNode();
@@ -52,17 +46,17 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   @override
   dispose() {
     focusNode!.dispose();
-    controller1!.dispose();
-    controller2!.dispose();
-    controller3!.dispose();
+    // controller1!.dispose();
+    // controller2!.dispose();
+    // controller3!.dispose();
     super.dispose();
   }
 
   dioGetData() async {
     sirket = await getSirket();
-    if (sirket.isNotNullOrEmpty) {
-      sube = await getSube(selected2["Şirket"].toString()).onError((error, stackTrace) => []);
-      if (sube!.length == 1) {
+    if (selected2["Şirket"] != "" || selected2["Şirket"] != null) {
+      sube = await getSube(selected2["Şirket"]);
+      if (sube!.length == 1 && controller1?.text != "") {
         controller3!.text = sube![0].subeAdi!;
         selected["Şube"] = sube![0];
         selected2["Şube"] = sube![0].subeKodu;
@@ -111,7 +105,8 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     return data;
   }
 
-  Future<List> getSube(String sirket) async {
+  Future<List> getSube(String? sirket) async {
+    if (sirket == null || sirket == "") return [];
     List list = [];
     final response = await networkManager.dioGet<IsletmeModel>(
       path: ApiUrls.isletmelerSubeler,
@@ -180,7 +175,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                               selected2["İşletme"] = null;
                                               selected["Şube"] = null;
                                               selected2["Şube"] = null;
-                                              dioGetData();
                                             });
                                             Get.back();
                                           },
@@ -211,11 +205,10 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                               setState(() {
                                                 controller2!.text = "${isletme![index].isletmeAdi} ${isletme![index].isletmeKodu ?? 0}";
                                                 selected["İşletme"] = isletme![index];
-                                                selected2["İşletme"] = isletme![index].isletmeKodu;
+                                                selected2["İşletme"] = isletme![index].isletmeKodu ?? 0;
                                                 userData["İşletme"] = isletme![index].isletmeAdi;
                                                 selected["Şube"] = null;
                                                 selected2["Şube"] = null;
-                                                dioGetData();
                                               });
                                               Get.back();
                                             },
@@ -247,9 +240,8 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                             setState(() {
                                               controller3!.text = "${sube![index].subeAdi} ${sube![index].subeKodu ?? 0}";
                                               selected["Şube"] = sube![index];
-                                              selected2["Şube"] = sube![index].subeKodu;
+                                              selected2["Şube"] = sube![index].subeKodu ?? 0;
                                               userData["Şube"] = sube![index].subeAdi;
-                                              dioGetData();
                                             });
                                             Get.back();
                                           },
@@ -348,8 +340,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                     context.emptySizedHeightBoxLow,
                     ElevatedButton(
                       onPressed: () async {
-                        AccountModel.getValue();
-
                         if (!selected.values.contains(null)) {
                           /// var [model] = {
                           ///   "AKTIF_ISLETME_KODU": selected2["İşletme"].toString(),
@@ -359,12 +349,17 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                           ///   "OZEL_CIHAZ_KIMLIGI": "4b0f40f3caabceaa7e6a60d5ba133d3323741f0644c2dbb6b74b40152f9aeaf7",
                           /// };
                           final model = AccountModel.instance
-                            .aktifVeritabani = selected2["Şirket"]
+                            ..admin = CacheManager.getAnaVeri()?.userModel?.admin
+                            ..aktifVeritabani = selected2["Şirket"]
                             ..aktifIsletmeKodu = selected2["İşletme"]
-                            ..aktifSubeKodu = selected2["Şube"]
-                            ..gCid = "/Y5TBF72qY7bnZl3+NOYvUtln/g5FJPl4jQ9i59td5M=";
+                            ..aktifSubeKodu = selected2["Şube"];
+
+                          ///!!!!!!!!!!!!!!!!!!!! --> TODO BUNU EKLE
+                          // ..gCid = "/Y5TBF72qY7bnZl3+NOYvUtln/g5FJPl4jQ9i59td5M=";
                           log(selected2.toString(), name: "SONUNDA");
                           dialogManager.showLoadingDialog("${selected2["Şirket"]} şirketine giriş yapılıyor.");
+                          log(CacheManager.getHesapBilgileri().toJson().toString(), name: "dflkgjsşldkfjsşd");
+
                           final response = await networkManager.dioPost<MainPageModel>(
                               path: ApiUrls.createSession,
                               bodyModel: MainPageModel(),

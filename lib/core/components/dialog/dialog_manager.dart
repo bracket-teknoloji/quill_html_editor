@@ -7,8 +7,12 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kartal/kartal.dart';
 
+import '../../../view/add_company/model/account_model.dart';
 import '../../constants/ui_helper/icon_helper.dart';
 import '../../constants/ui_helper/ui_helper.dart';
+import '../../init/network/login/api_urls.dart';
+import '../../init/network/network_manager.dart';
+import 'logout_model.dart';
 
 class DialogManager {
   late final BuildContext context;
@@ -77,8 +81,15 @@ class DialogManager {
         title: "Uyarı",
         desc: "Çıkmak istediğinize emin misiniz?",
         dialogType: DialogType.question,
-        onOk: () {
-          Get.offAndToNamed("/");
+        onOk: () async {
+          final response = await NetworkManager().dioPost<LogoutModel>(path: ApiUrls.logoutUser, bodyModel: LogoutModel(), data: AccountModel.instance.toJson());
+          if (response.success ?? false) {
+            showLoadingDialog("Çıkış yapılıyor...");
+            log("Çıkış yapılıyor...");
+            log(AccountModel.instance.toJson().toString());
+            showAlertDialog(response.message ?? "Çıkış yapıldı.");
+            Get.offAndToNamed("/");
+          }
         },
         btnOkText: "Evet",
         onCancel: () {},
@@ -87,7 +98,7 @@ class DialogManager {
 
   void get hideSnackBar => ScaffoldMessenger.of(context).clearSnackBars();
 
-  void get hideAlertDialog => Get.back(canPop: true);
+  void get hideAlertDialog => Get.back(canPop: true, closeOverlays: true);
 
   AlertDialog loadingDialog() {
     return AlertDialog(

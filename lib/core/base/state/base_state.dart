@@ -1,12 +1,16 @@
+import 'dart:developer';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 
+import '../../components/dialog/bottom_sheet_dialog_manager.dart';
 import '../../components/dialog/dialog_manager.dart';
 import '../../init/app_info/app_info.dart';
 import '../../init/network/network_manager.dart';
 
 abstract class BaseState<T extends StatefulWidget> extends State<T> {
   late final DialogManager dialogManager;
+  late final BottomSheetDialogManager bottomSheetDialogManager;
   late final AppInfoModel appInfoModel;
   late final NetworkManager networkManager;
   ConnectivityResult connectivityResult = ConnectivityResult.none;
@@ -27,15 +31,15 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
         builder: (context) => alertDialog,
       );
   void internetChecker() {
-    connectivity.checkConnectivity().then((value) {
-      connectivityResult = value;
-      if (connectivityResult == ConnectivityResult.none) {
-        dialogManager.internetConnectionDialog();
-      }
-    });
+    // connectivity.checkConnectivity().then((value) {
+    //   connectivityResult = value;
+    //   if (connectivityResult == ConnectivityResult.none) {
+    //     dialogManager.internetConnectionDialog();
+    //   }
+    // });
     connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
       connectivityResult = result;
-      print(connectivityResult);
+      log(connectivityResult.toString());
       if (connectivityResult == ConnectivityResult.none) {
         dialogManager.internetConnectionDialog();
       } else {

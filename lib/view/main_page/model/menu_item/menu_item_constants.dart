@@ -9,7 +9,7 @@ class MenuItemConstants {
     //*Cari
     //*
     GridItems.anamenu(name: "CARI", title: "Cari", icon: "supervisor", color: GridThemeManager.cari, altMenuler: [
-      GridItems.item(name: "cari_CariListesi", title: "Cari Listesi", onTap: () => Get.to(const CariListesiView())),
+      GridItems.item(name: "cari_CariListesi", title: "Cari Listesi", onTap: () => Get.to(() => const CariListesiView())),
       GridItems.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları"),
       GridItems.altmenu(name: "cari_Raporlar", title: "Raporlar", icon: "monitoring", altMenuler: [
         GridItems.item(name: "cari_Rap_Ekstre", title: "Cari Ekstre"),

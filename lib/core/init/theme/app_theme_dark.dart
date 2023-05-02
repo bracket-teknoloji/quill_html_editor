@@ -13,16 +13,38 @@ class AppThemeDark extends AppTheme {
   }
 
   AppThemeDark._init();
-
+  var colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark);
   @override
   ThemeData get theme => ThemeData(
       useMaterial3: true,
       colorSchemeSeed: UIHelper.primaryColor,
+      segmentedButtonTheme: SegmentedButtonThemeData(
+          style: ButtonStyle(
+        textStyle: MaterialStateProperty.all(
+          const TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        backgroundColor: MaterialStateProperty.all(Colors.transparent),
+        foregroundColor: MaterialStateProperty.all(UIHelper.primaryColor),
+        overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.1)),
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(
+            borderRadius: UIHelper.lowBorderRadius,
+          ),
+        ),
+      )),
+      toggleButtonsTheme: ToggleButtonsThemeData(
+          borderRadius: UIHelper.lowBorderRadius,
+          textStyle: const TextStyle(
+            fontSize: 12,
+          )),
       brightness: Brightness.dark,
       textTheme: GoogleFonts.dmSansTextTheme().apply(bodyColor: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark).onPrimaryContainer).copyWith(
               bodySmall: TextStyle(
             fontSize: 12,
-            color: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark).onPrimaryContainer,
+            color: colorManager.onPrimaryContainer,
           )),
       splashFactory: InkRipple.splashFactory,
       bottomAppBarTheme: const BottomAppBarTheme(
@@ -41,7 +63,7 @@ class AppThemeDark extends AppTheme {
       ),
       dividerTheme: DividerThemeData(
         space: 0,
-        thickness: 0,
+        thickness: 1,
         endIndent: UIHelper.highSize,
         indent: UIHelper.highSize,
       ),
@@ -98,7 +120,6 @@ class AppThemeDark extends AppTheme {
         shape: RoundedRectangleBorder(
           borderRadius: UIHelper.lowBorderRadius,
         ),
-        textStyle: TextStyle(fontFamily: GoogleFonts.dmSans().fontFamily, fontSize: 15, color: Colors.white),
       )),
       iconTheme: const IconThemeData(color: Colors.white, size: 30),
       dialogTheme: DialogTheme(
@@ -144,9 +165,9 @@ class AppThemeDark extends AppTheme {
       )),
       snackBarTheme: SnackBarThemeData(
         showCloseIcon: true,
-        closeIconColor: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark).onPrimaryContainer,
+        closeIconColor: colorManager.onPrimaryContainer,
         backgroundColor: UIHelper.primaryColor,
-        contentTextStyle: TextStyle(color: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark).onPrimaryContainer),
+        contentTextStyle: TextStyle(color: colorManager.onPrimaryContainer),
         insetPadding: UIHelper.lowPadding,
         shape: RoundedRectangleBorder(
           borderRadius: UIHelper.lowBorderRadius,
@@ -168,21 +189,20 @@ class AppThemeDark extends AppTheme {
           borderSide: BorderSide(color: UIHelper.primaryColor),
         ),
       ),
+      buttonBarTheme: const ButtonBarThemeData(alignment: MainAxisAlignment.spaceBetween, mainAxisSize: MainAxisSize.max, buttonHeight: 10),
       appBarTheme: AppBarTheme(
           titleSpacing: 10,
-          systemOverlayStyle: const SystemUiOverlayStyle(
+          systemOverlayStyle: SystemUiOverlayStyle(
             statusBarIconBrightness: Brightness.light,
             systemNavigationBarIconBrightness: Brightness.light,
             statusBarBrightness: Brightness.dark,
-            statusBarColor: Colors.transparent,
+            statusBarColor: colorManager.background,
             systemNavigationBarColor: Colors.black,
             systemStatusBarContrastEnforced: true,
           ),
           centerTitle: true,
-          titleTextStyle: TextStyle(
-            fontFamily: GoogleFonts.dmSans().fontFamily,
-            fontSize: 24,
-          ),
+          iconTheme: IconThemeData(color: colorManager.primary),
+          titleTextStyle: TextStyle(color: colorManager.primary, fontSize: 20),
           scrolledUnderElevation: 0,
           elevation: 0));
 }

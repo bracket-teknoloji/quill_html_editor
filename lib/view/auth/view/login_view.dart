@@ -1,10 +1,11 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:hive_flutter/adapters.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kartal/kartal.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
@@ -183,29 +184,37 @@ class _LoginViewState extends BaseState<LoginView> {
   ElevatedButton get elevatedButton {
     return ElevatedButton(
         onPressed: () async {
+          AccountResponseModel? accountCache = CacheManager.getAccounts(companyController.text);
+          AccountModel instance = AccountModel.instance;
+          var a = instance
+            ..kullaniciAdi = emailController.text
+            ..uyeEmail = accountCache?.email ?? "demo@netfect.com";
+          a.uyeSifre = accountCache?.parola;
+
           dialogManager.showLoadingDialog("Giriş Yapılıyor");
 
           if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+            AccountResponseModel? accountCache = CacheManager.getAccounts(companyController.text);
             try {
-              final response = await NetworkManager.getToken(path: ApiUrls.token, data: {
+              CacheManager.setHesapBilgileri(a);
+
+              log(jsonEncode(a.toJson()), name: "sea");
+              final response = await NetworkManager.getToken(path: ApiUrls.token, queryParameters: {
+                "deviceInfos": jsonEncode(a.toJson())
+              }, data: {
                 "grant_type": "password",
                 "username": emailController.text,
                 "password": passwordController.text,
               });
               dialogManager.hideAlertDialog;
-              AccountResponseModel? accountCache = CacheManager.getAccounts(companyController.text);
-              var based =
-                  base64Encode(utf8.encode("${AccountModel.instance.cihazMarkasi}:${AccountModel.instance.cihazModeli}:${AccountModel.instance.cihazSistemVersiyonu}"));
-              AccountModel.instance
-                ..cihazKimligi = based
-                ..kullaniciAdi = emailController.text
-                ..uyeEmail = accountCache?.email ?? "demo@netfect.com"
-                ..uyeSifre = accountCache?.parola;
+
               Hive.box("preferences").put(companyController.text, [
                 textFieldData["user"],
                 emailController.text,
                 passwordController.text,
               ]);
+              log(CacheManager.getHesapBilgileri().toJson().toString(), name: "sea2");
+
               if (context.mounted) {
                 // TODO: Hata: VerifiedUser'ı kontrol et.
                 CacheManager.setVerifiedUser(
@@ -213,7 +222,6 @@ class _LoginViewState extends BaseState<LoginView> {
                 CacheManager.setToken(response.accessToken.toString());
 
                 Get.toNamed("/entryCompany");
-                print("object");
               }
             } on DioError catch (e) {
               dialogManager.hideAlertDialog;

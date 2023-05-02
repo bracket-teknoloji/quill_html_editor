@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/get_utils.dart';
+import 'package:get/get.dart';
+import 'package:kartal/kartal.dart';
 
+import '../../constants/extensions/widget_extensions.dart';
 import '../../constants/ui_helper/icon_helper.dart';
 import '../../constants/ui_helper/ui_helper.dart';
+import '../button/toggle_buttons/toggle_button.dart';
+import '../textfield/custom_textfield.dart';
 import 'bottom_sheet_model.dart';
 
 class BottomSheetDialogManager {
@@ -44,13 +48,15 @@ class BottomSheetDialogManager {
                                         ListTile(
                                             onTap: children[index].onTap,
                                             title: Text(children[index].title),
-                                            leading: SizedBox(
-                                              width: 20,
-                                              height: 20,
-                                              child: children[index].iconWidget != null
-                                                  ? Icon(children[index].iconWidget, size: 25, color: UIHelper.primaryColor)
-                                                  : IconHelper.smallIcon(children[index].icon!),
-                                            )),
+                                            leading: children[index].icon == ""
+                                                ? SizedBox(
+                                                    width: 20,
+                                                    height: 20,
+                                                    child: children[index].iconWidget != null
+                                                        ? Icon(children[index].iconWidget, size: 25, color: UIHelper.primaryColor)
+                                                        : IconHelper.smallIcon(children[index].icon!),
+                                                  )
+                                                : null),
                                         Padding(
                                           padding: UIHelper.lowPaddingVertical,
                                           child: const Divider(),
@@ -69,5 +75,71 @@ class BottomSheetDialogManager {
             ],
           );
         });
+  }
+
+  static showFilterBottomSheetDialog(BuildContext context, {Function(int)? onTap}) {
+    return showBottomSheetDialog(context,
+        title: "Filtrele",
+        body: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const CustomTextField(
+                  text: "Bakiye Durumu",
+                  children: [ToggleButton()],
+                ),
+                Wrap(
+                  runAlignment: WrapAlignment.center,
+                  alignment: WrapAlignment.center,
+                  children: const [
+                    CustomTextField(
+                      text: "Plasiyer",
+                      children: [TextField(decoration: InputDecoration(suffixIcon: Icon(Icons.more_horiz_outlined)))],
+                    ),
+                    CustomTextField(
+                      text: "Şehir",
+                      children: [TextField(decoration: InputDecoration(suffixIcon: Icon(Icons.more_horiz_outlined)))],
+                    ),
+                    CustomTextField(
+                      text: "İlçe",
+                      children: [TextField(decoration: InputDecoration(suffixIcon: Icon(Icons.more_horiz_outlined)))],
+                    ),
+                    CustomTextField(
+                      text: "Tipi",
+                      children: [TextField(decoration: InputDecoration(suffixIcon: Icon(Icons.more_horiz_outlined)))],
+                    ),
+                    CustomTextField(
+                      text: "Kod 5",
+                      children: [TextField(decoration: InputDecoration(suffixIcon: Icon(Icons.more_horiz_outlined)))],
+                    ),
+                  ].map((e) => e.withSizedBox.paddingAll(5)).toList(),
+                ),
+                ElevatedButton(
+                        onPressed: () {
+                          String? selectedValue = ToggleButton.selected;
+                          Get.back(result: selectedValue);
+                        },
+                        child: const Text("Uygula"))
+                    .paddingSymmetric(vertical: 10),
+                const ResponsiveBox(),
+              ],
+            ),
+          ),
+        ).paddingAll(UIHelper.midSize));
+  }
+}
+
+class ResponsiveBox extends StatefulWidget {
+  const ResponsiveBox({super.key});
+
+  @override
+  State<ResponsiveBox> createState() => _ResponsiveBoxState();
+}
+
+class _ResponsiveBoxState extends State<ResponsiveBox> {
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedContainer(duration: const Duration(milliseconds: 300), height: context.isKeyBoardOpen ? context.dynamicHeight(0.3) : 0);
   }
 }

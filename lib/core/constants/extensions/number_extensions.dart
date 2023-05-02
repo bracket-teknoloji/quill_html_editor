@@ -1,0 +1,15 @@
+// an extension on int to separate the digits with commas 
+extension NumExtension on num {
+  String get commaSeparated {
+    return toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]}.');
+  }
+}
+
+// an extension on num to seperate the digits with commas and after fixed number of digits
+extension NumExtensionWithFixedDigits on num {
+  String get commaSeparatedWithFixedDigits {
+    return toStringAsFixed(2).replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},');
+  }
+}
+
+// an extension on num to seperate the digits with turkish region rules

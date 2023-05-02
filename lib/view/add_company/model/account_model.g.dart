@@ -5,6 +5,172 @@
 part of 'account_model.dart';
 
 // **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class AccountModelAdapter extends TypeAdapter<AccountModel> {
+  @override
+  final int typeId = 73;
+
+  @override
+  AccountModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return AccountModel()
+      ..isim = fields[0] as String?
+      ..admin = fields[1] as String?
+      ..aktifIsletmeKodu = fields[2] as int?
+      ..aktifSubeKodu = fields[3] as int?
+      ..aktifVeritabani = fields[4] as String?
+      ..cihazSistemVersiyonu = fields[5] as String?
+      ..apkDerlemeTarihi = fields[6] as DateTime?
+      ..cihazDili = fields[7] as String?
+      ..gCid = fields[8] as String?
+      ..cihazMarkasi = fields[9] as String?
+      ..cihazKimligi = fields[10] as String?
+      ..cihazModeli = fields[11] as String?
+      ..gDsn = fields[12] as String?
+      ..cihazTarihi = fields[13] as String?
+      ..cihazTarihiUtc = fields[14] as DateTime?
+      ..cihazTimeZoneDakika = fields[15] as int?
+      ..fcmToken = fields[16] as String?
+      ..uyeEmail = fields[17] as String?
+      ..uyeSifre = fields[18] as String?
+      ..konumDate = fields[19] as DateTime?
+      ..konumTarihi = fields[20] as String?
+      ..gKa = fields[21] as String?
+      ..gBo = fields[22] as String?
+      ..gEn = fields[23] as String?
+      ..kullaniciAdi = fields[24] as String?
+      ..kuruluHesaplar = fields[25] as String?
+      ..localIp = fields[26] as String?
+      ..ozelCihazKimligi = fields[27] as String?
+      ..offline = fields[28] as String?
+      ..simOperator = fields[29] as String?
+      ..paketAdi = fields[30] as String?
+      ..paramMap = fields[31] as String?
+      ..platform = fields[32] as String?
+      ..requestVersion = fields[33] as int?
+      ..soyadi = fields[34] as String?
+      ..serviceVersion = fields[35] as String?
+      ..tzInfo = fields[36] as String?
+      ..uygulamaDili = fields[37] as String?
+      ..uygulamaGuncellemeTarihi = fields[38] as String?
+      ..uygulamaSurumu = fields[39] as String?
+      ..uygulamaSurumKodu = fields[40] as int?
+      ..uzakErisim = fields[41] as String?
+      ..wifidenBagli = fields[42] as String?
+      ..qrData = fields[43] as String?;
+  }
+
+  @override
+  void write(BinaryWriter writer, AccountModel obj) {
+    writer
+      ..writeByte(44)
+      ..writeByte(0)
+      ..write(obj.isim)
+      ..writeByte(1)
+      ..write(obj.admin)
+      ..writeByte(2)
+      ..write(obj.aktifIsletmeKodu)
+      ..writeByte(3)
+      ..write(obj.aktifSubeKodu)
+      ..writeByte(4)
+      ..write(obj.aktifVeritabani)
+      ..writeByte(5)
+      ..write(obj.cihazSistemVersiyonu)
+      ..writeByte(6)
+      ..write(obj.apkDerlemeTarihi)
+      ..writeByte(7)
+      ..write(obj.cihazDili)
+      ..writeByte(8)
+      ..write(obj.gCid)
+      ..writeByte(9)
+      ..write(obj.cihazMarkasi)
+      ..writeByte(10)
+      ..write(obj.cihazKimligi)
+      ..writeByte(11)
+      ..write(obj.cihazModeli)
+      ..writeByte(12)
+      ..write(obj.gDsn)
+      ..writeByte(13)
+      ..write(obj.cihazTarihi)
+      ..writeByte(14)
+      ..write(obj.cihazTarihiUtc)
+      ..writeByte(15)
+      ..write(obj.cihazTimeZoneDakika)
+      ..writeByte(16)
+      ..write(obj.fcmToken)
+      ..writeByte(17)
+      ..write(obj.uyeEmail)
+      ..writeByte(18)
+      ..write(obj.uyeSifre)
+      ..writeByte(19)
+      ..write(obj.konumDate)
+      ..writeByte(20)
+      ..write(obj.konumTarihi)
+      ..writeByte(21)
+      ..write(obj.gKa)
+      ..writeByte(22)
+      ..write(obj.gBo)
+      ..writeByte(23)
+      ..write(obj.gEn)
+      ..writeByte(24)
+      ..write(obj.kullaniciAdi)
+      ..writeByte(25)
+      ..write(obj.kuruluHesaplar)
+      ..writeByte(26)
+      ..write(obj.localIp)
+      ..writeByte(27)
+      ..write(obj.ozelCihazKimligi)
+      ..writeByte(28)
+      ..write(obj.offline)
+      ..writeByte(29)
+      ..write(obj.simOperator)
+      ..writeByte(30)
+      ..write(obj.paketAdi)
+      ..writeByte(31)
+      ..write(obj.paramMap)
+      ..writeByte(32)
+      ..write(obj.platform)
+      ..writeByte(33)
+      ..write(obj.requestVersion)
+      ..writeByte(34)
+      ..write(obj.soyadi)
+      ..writeByte(35)
+      ..write(obj.serviceVersion)
+      ..writeByte(36)
+      ..write(obj.tzInfo)
+      ..writeByte(37)
+      ..write(obj.uygulamaDili)
+      ..writeByte(38)
+      ..write(obj.uygulamaGuncellemeTarihi)
+      ..writeByte(39)
+      ..write(obj.uygulamaSurumu)
+      ..writeByte(40)
+      ..write(obj.uygulamaSurumKodu)
+      ..writeByte(41)
+      ..write(obj.uzakErisim)
+      ..writeByte(42)
+      ..write(obj.wifidenBagli)
+      ..writeByte(43)
+      ..write(obj.qrData);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AccountModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
