@@ -159,6 +159,9 @@ class AccountModel with NetworkManagerMixin {
   String? qrData;
 
   void init() async {
+    // aktifIsletmeKodu = CacheManager.getVeriTabani()["İşletme"];
+    // aktifSubeKodu = CacheManager.getVeriTabani()["Şube"];
+    // aktifVeritabani = CacheManager.getVeriTabani()["Şirket"];
     //* Network Bilgileri (Connectivity Plus)
     offline = "H";
     var list = await NetworkInterface.list(includeLoopback: true, type: InternetAddressType.IPv4);
@@ -209,6 +212,18 @@ class AccountModel with NetworkManagerMixin {
       cihazModeli = iosInfo.model;
       cihazSistemVersiyonu = iosInfo.systemVersion;
       ozelCihazKimligi = iosInfo.identifierForVendor;
+    } else if (Platform.isMacOS || Platform.isLinux || Platform.isWindows) {
+      platform = Platform.operatingSystem;
+      final desktopInfo = await deviceInfo.windowsInfo;
+      cihazSistemVersiyonu = Platform.operatingSystemVersion;
+      cihazMarkasi = desktopInfo.productName;
+      cihazModeli = desktopInfo.productId;
+      if (ozelCihazKimligi.isNotNullOrNoEmpty) {
+        cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
+        log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");
+      } else {
+        cihazKimligi = base64Encode(utf8.encode("$cihazMarkasi:$cihazModeli:${desktopInfo.releaseId}:"));
+      }
     }
     //* Uygulama Bilgileri
     uygulamaSurumu = "225";

@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:get/get_navigation/src/root/get_material_app.dart";
-import "package:get/get_navigation/src/routes/get_route.dart";
-import "package:get/get_navigation/src/routes/transitions_type.dart";
+import "package:get/get.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/view/cari_aktivite_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/view/cari_hareketleri_view.dart";
 
 import "core/init/cache/cache_manager.dart";
 import "core/init/theme/app_theme_dark.dart";
@@ -49,16 +49,16 @@ class MyApp extends StatelessWidget {
           page: () => const MainPageView(),
           children: [
             GetPage(
-              name: "/cari/cariListesi",
+              name: "/cariHareketleri",
+              page: () => CariHareketleriView(cari: Get.arguments),
+            ),
+            GetPage(
+              name: "/cariListesi",
               page: () => const CariListesiView(),
             ),
             GetPage(
-              name: "/addAccount",
-              page: () => const AddAccountView(),
-            ),
-            GetPage(
-              name: "/qr",
-              page: () => const QRScannerView(),
+              name: "/cariAktivite",
+              page: () => const CariAktiviteView(),
             ),
           ],
         ),

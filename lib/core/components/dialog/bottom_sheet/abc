@@ -1,0 +1,83 @@
+  static showCheckBoxBottomSheetDialog(BuildContext context, {List<BottomSheetModel>? children, required String title}) {
+    List<dynamic>? list;
+    if (_viewModel.isSelectedListMap?[title] == null) {
+      _viewModel.changeIsSelectedListMap(title, List.generate(children!.length, (index) => false));
+    } else {
+      if (children!.length != _viewModel.isSelectedListMap?[title]!.length) {
+        _viewModel.changeIsSelectedListMap(title, List.generate(children.length, (index) => false));
+      }
+    }
+    return showModalBottomSheet(
+      context: context,
+      isDismissible: true,
+      barrierColor: Colors.black.withOpacity(0.9),
+      enableDrag: false,
+      useSafeArea: true,
+      isScrollControlled: true,
+      builder: (context) {
+        return Wrap(
+          children: [
+            ListTile(
+              title: Text(title, style: context.theme.textTheme.titleMedium),
+              trailing: IconButton(icon: const Icon(Icons.close), onPressed: () => Get.back()),
+              splashColor: Colors.transparent,
+            ).paddingSymmetric(vertical: 10),
+            const Divider(
+              thickness: 2,
+              endIndent: 0,
+              indent: 0,
+            ),
+            SizedBox(
+              // if children are not fit to screen, it will be scrollable
+              height: children.length * 50,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Wrap(
+                        children: [
+                          ...List.generate(
+                            children.length,
+                            (index) => Wrap(
+                              children: List.generate(children.length, (index) {
+                                return Wrap(
+                                  children: [
+                                    Observer(builder: (_) {
+                                      return CheckboxListTile(
+                                        controlAffinity: ListTileControlAffinity.leading,
+                                        value: _viewModel.isSelectedListMap?[title]![index],
+                                        title: Text(children[index].title),
+                                        onChanged: (value) {
+                                          _viewModel.changeIndexIsSelectedListMap(title, index, value!);
+                                          // _viewModel.isSelectedListMap![title]![index] = value!;
+                                          list = selectedChecker(children, title);
+                                          // if (!value) {
+                                          //   list!.remove(children[index].title);
+                                          // }
+                                        },
+                                      );
+                                    }),
+                                    const Divider()
+                                  ],
+                                );
+                              }),
+                            ),
+                          ),
+                        ],
+                      ).paddingOnly(bottom: 10),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Get.back(result: list);
+                    },
+                    child: Text("Seç"),
+                  )
+                ],
+              ),
+            )
+          ],
+        );
+      },
+    );
+  }

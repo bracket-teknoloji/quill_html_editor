@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 
 import '../../../../core/constants/grid_constants.dart';
-import '../../alt_sayfalar/cari/cari_listesi/view/cari_listesi_view.dart';
 import '../../view/grid_items.dart';
 
 class MenuItemConstants {
@@ -9,8 +8,8 @@ class MenuItemConstants {
     //*Cari
     //*
     GridItems.anamenu(name: "CARI", title: "Cari", icon: "supervisor", color: GridThemeManager.cari, altMenuler: [
-      GridItems.item(name: "cari_CariListesi", title: "Cari Listesi", onTap: () => Get.to(() => const CariListesiView())),
-      GridItems.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları"),
+      GridItems.item(name: "cari_CariListesi", title: "Cari Listesi", onTap: () => Get.toNamed("/mainPage/cariListesi")),
+      GridItems.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları",),// onTap: () => Get.toNamed("/mainPage/cariAktivite")),
       GridItems.altmenu(name: "cari_Raporlar", title: "Raporlar", icon: "monitoring", altMenuler: [
         GridItems.item(name: "cari_Rap_Ekstre", title: "Cari Ekstre"),
         GridItems.item(name: "cari_Rap_DovizliEkstre", title: "Cari Dövizli Ekstre"),

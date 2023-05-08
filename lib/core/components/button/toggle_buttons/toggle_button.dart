@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../constants/ui_helper/ui_helper.dart';
 
@@ -24,13 +23,17 @@ class _ToggleButtonState extends State<ToggleButton> {
         isSelected2[i] = true;
       }
     }
+    if (ToggleButton.selected == "" || ToggleButton.selected == "Tümü") {
+      setState(() {
+        isSelected2 = [true, false, false, false, false];
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return ToggleButtons(
       direction: Axis.horizontal,
-      constraints: BoxConstraints(minHeight: 30, minWidth: 30, maxHeight: Get.height * 0.05, maxWidth: Get.width * 0.3),
       isSelected: isSelected2,
       children: List.generate(title.length, (index) {
         return Padding(

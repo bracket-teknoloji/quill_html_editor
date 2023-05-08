@@ -5,8 +5,8 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 
 import "../core/base/state/base_state.dart";
-import "../core/components/dialog/bottom_sheet_dialog_manager.dart";
-import "../core/components/dialog/bottom_sheet_model.dart";
+import '../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart';
+import '../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import "../core/components/textfield/custom_textfield.dart";
 import "../core/init/cache/cache_manager.dart";
 import "../core/init/network/login/api_urls.dart";
@@ -23,9 +23,9 @@ class EntryCompanyView extends StatefulWidget {
 }
 
 class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
-  Map<String, dynamic> selected = {"Şirket": null, "İşletme": null, "Şube": null};
-  Map<String, dynamic> selected2 = {"Şirket": "", "İşletme": null, "Şube": null};
-  Map<String, dynamic> userData = {"Şirket": "", "İşletme": null, "Şube": null};
+  Map selected = {"Şirket": "", "İşletme": null, "Şube": null};
+  // Map<String, dynamic> selected = {"Şirket": "", "İşletme": null, "Şube": null};
+  Map userData = {"Şirket": "", "İşletme": null, "Şube": null};
   List<CompanyModel>? sirket;
   List? isletme;
   List? sube;
@@ -37,10 +37,15 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   @override
   void initState() {
     super.initState();
-    focusNode = FocusNode();
     controller1 = TextEditingController();
     controller2 = TextEditingController();
     controller3 = TextEditingController();
+    selected = CacheManager.getVeriTabani();
+    // controller1?.text = CacheManager.getVeriTabani()?["Şirket"] ?? "";
+    // controller2?.text = CacheManager.getIsletmeSube()?["İşletme"] ?? "";
+    // controller3?.text = "${CacheManager.getIsletmeSube()?["Şube"] ?? ""} ${CacheManager.getVeriTabani()?["Şube"] ?? ""}";
+    userData = CacheManager.getIsletmeSube();
+    focusNode = FocusNode();
   }
 
   @override
@@ -54,22 +59,30 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
 
   dioGetData() async {
     sirket = await getSirket();
-    if (selected2["Şirket"] != "" || selected2["Şirket"] != null) {
-      sube = await getSube(selected2["Şirket"]);
-      if (sube!.length == 1 && controller1?.text != "") {
-        controller3!.text = sube![0].subeAdi!;
-        selected["Şube"] = sube![0];
-        selected2["Şube"] = sube![0].subeKodu;
-        userData["Şube"] = sube![0].subeAdi;
-        focusNode!.requestFocus();
-      }
+
+    if (sirket!.length == 1 && mounted) {
+      controller1!.text = sirket![0].company!;
+    } else if (sirket!.length != 1 && controller1?.text == "") {
+      await sirketDialog(context);
+    }
+    if (selected["Şirket"] != "" || selected["Şirket"] != null) {
+      sube = await getSube(selected["Şirket"]);
       isletme = await getIsletme();
-      if (isletme!.length == 1) {
+      if (isletme!.length == 1 && controller1?.text != "") {
         controller2!.text = isletme![0].isletmeAdi!;
-        selected["İşletme"] = isletme![0];
-        selected2["İşletme"] = isletme![0].isletmeKodu;
+        selected["İşletme"] = isletme![0].isletmeKodu;
         userData["İşletme"] = isletme![0].isletmeAdi;
         focusNode!.requestFocus();
+      } else if (controller2?.text == "" && controller1?.text != "") {
+        await isletmeDialog(context);
+      }
+      if (sube!.length == 1 && controller2?.text != "") {
+        controller3!.text = sube![0].subeAdi!;
+        selected["Şube"] = sube![0].subeKodu;
+        userData["Şube"] = sube![0].subeAdi;
+        focusNode!.requestFocus();
+      } else if (controller3?.text == "" && controller1?.text != "") {
+        await subeDialog(context);
       }
     }
   }
@@ -86,10 +99,10 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
       list.add(element);
     }
     if (list.length == 1) {
-      selected["Şirket"] = list[0];
-      selected2["Şirket"] = list[0].company;
+      selected["Şirket"] = list[0].company;
       userData["Şirket"] = list[0].company;
     }
+    focusNode!.requestFocus();
     return list;
   }
 
@@ -123,8 +136,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     }
     return list;
   }
-
-  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -156,31 +167,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                               focusNode: focusNode,
                               textInputAction: TextInputAction.next,
                               onTap: () {
-                                BottomSheetDialogManager.showBottomSheetDialog(context,
-                                    title: "Şirket Seçiniz",
-                                    children: List.generate(
-                                      sirket!.length,
-                                      (index) {
-                                        return BottomSheetModel(
-                                          icon: "Saat",
-                                          iconWidget: Icons.storage_outlined,
-                                          title: sirket![index].company!,
-                                          onTap: () {
-                                            setState(() {
-                                              controller1!.text = sirket![index].company!;
-                                              selected["Şirket"] = sirket![index];
-                                              selected2["Şirket"] = sirket![index].company;
-                                              userData["Şirket"] = sirket![index].company;
-                                              selected["İşletme"] = null;
-                                              selected2["İşletme"] = null;
-                                              selected["Şube"] = null;
-                                              selected2["Şube"] = null;
-                                            });
-                                            Get.back();
-                                          },
-                                        );
-                                      },
-                                    ));
+                                sirketDialog(context);
                               },
                             ),
                           ]),
@@ -192,29 +179,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                 enabled: isletme!.isNotEmpty,
                                 readOnly: true,
                                 onTap: () {
-                                  BottomSheetDialogManager.showBottomSheetDialog(context,
-                                      title: "İşletme Seçiniz",
-                                      children: List.generate(
-                                        isletme!.length,
-                                        (index) {
-                                          return BottomSheetModel(
-                                            icon: "Saat",
-                                            iconWidget: Icons.data_array_outlined,
-                                            title: isletme![index].isletmeAdi!,
-                                            onTap: () {
-                                              setState(() {
-                                                controller2!.text = "${isletme![index].isletmeAdi} ${isletme![index].isletmeKodu ?? 0}";
-                                                selected["İşletme"] = isletme![index];
-                                                selected2["İşletme"] = isletme![index].isletmeKodu ?? 0;
-                                                userData["İşletme"] = isletme![index].isletmeAdi;
-                                                selected["Şube"] = null;
-                                                selected2["Şube"] = null;
-                                              });
-                                              Get.back();
-                                            },
-                                          );
-                                        },
-                                      ));
+                                  isletmeDialog(context);
                                 },
                                 decoration: const InputDecoration(
                                   suffixIcon: Icon(Icons.more_horiz_outlined),
@@ -228,26 +193,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                               enabled: sube!.isNotEmpty,
                               readOnly: true,
                               onTap: () {
-                                BottomSheetDialogManager.showBottomSheetDialog(context,
-                                    title: "Şube Seçiniz",
-                                    children: List.generate(
-                                      sube!.length,
-                                      (index) {
-                                        return BottomSheetModel(
-                                          icon: "Saat",
-                                          title: sube![index].subeAdi!,
-                                          onTap: () {
-                                            setState(() {
-                                              controller3!.text = "${sube![index].subeAdi} ${sube![index].subeKodu ?? 0}";
-                                              selected["Şube"] = sube![index];
-                                              selected2["Şube"] = sube![index].subeKodu ?? 0;
-                                              userData["Şube"] = sube![index].subeAdi;
-                                            });
-                                            Get.back();
-                                          },
-                                        );
-                                      },
-                                    ));
+                                subeDialog(context);
                               },
                               decoration: const InputDecoration(
                                 suffixIcon: Icon(Icons.more_horiz_outlined),
@@ -265,22 +211,18 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                           //       isExpanded: true,
                           //       validator: validator,
                           //       focusNode: focusNode,
-                          //       value: selected["Şirket"],
                           //       items: sirket?.toSet().map((e) => DropdownMenuItem(value: e, child: Text(e.company!.toString()))).toList(),
                           //       onChanged: (value) {
                           //         if (value is CompanyModel) {
                           //           setState(() {
-                          //             selected["Şirket"] = value;
-                          //             selected2["Şirket"] = value.company;
+                          //             selected["Şirket"] = value.company;
                           //             userData["Şirket"] = value.company;
                           //             selected["İşletme"] = null;
-                          //             selected2["İşletme"] = null;
                           //             selected["Şube"] = null;
-                          //             selected2["Şube"] = null;
                           //             focusNode!.requestFocus();
                           //           });
                           //         }
-                          //         log(selected2.toString(), name: "Şirket");
+                          //         log(selected.toString(), name: "Şirket");
                           //       },
                           //     )
                           //   ],
@@ -292,13 +234,11 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                           //       isExpanded: true,
                           //       validator: validator,
                           //       focusNode: focusNode,
-                          //       value: selected["İşletme"],
                           //       //items: isletme değişkenindeki unique değerler
                           //       items: isletme!.toSet().map((e) => DropdownMenuItem(value: e, child: Text("${e.isletmeAdi} ${e.isletmeKodu ?? 0}"))).toList(),
                           //       onChanged: (value) {
                           //         if (value is IsletmeModel) {
-                          //           selected["İşletme"] = value;
-                          //           selected2["İşletme"] = value.isletmeKodu;
+                          //           selected["İşletme"] = value.isletmeKodu;
                           //           userData["İşletme"] = value.isletmeAdi;
                           //           log(userData.toString(), name: "İşletmeler");
                           //           focusNode?.requestFocus();
@@ -314,15 +254,13 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                           //       isExpanded: true,
                           //       validator: validator,
                           //       key: formKey,
-                          //       value: selected["Şube"],
                           //       focusNode: focusNode,
                           //       items: sube?.map((e) => DropdownMenuItem(value: e, child: Text("${e.subeAdi} ${e.subeKodu ?? 0}"))).toList(),
                           //       onChanged: (value) {
                           //         if (value is IsletmeModel) {
-                          //           selected["Şube"] = value;
-                          //           selected2["Şube"] = value.subeKodu ?? 0;
+                          //           selected["Şube"] = value.subeKodu ?? 0;
                           //           userData["Şube"] = value.subeAdi;
-                          //           log(selected2.toString(), name: "Şube");
+                          //           log(selected.toString(), name: "Şube");
                           //           log(value.toString(), name: "Şube");
                           //           log(sube!.length.toString(), name: "Şube");
                           //           focusNode?.unfocus();
@@ -342,22 +280,22 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                       onPressed: () async {
                         if (!selected.values.contains(null)) {
                           /// var [model] = {
-                          ///   "AKTIF_ISLETME_KODU": selected2["İşletme"].toString(),
-                          ///  "AKTIF_VERITABANI": selected2["Şirket"].toString(),
+                          ///   "AKTIF_ISLETME_KODU": selected["İşletme"].toString(),
+                          ///  "AKTIF_VERITABANI": selected["Şirket"].toString(),
                           ///   "G_CID": "/Y5TBF72qY7bnZl3+NOYvUtln/g5FJPl4jQ9i59td5M=",
                           ///   "UYE_EMAIL": "destek@netfect.com",
                           ///   "OZEL_CIHAZ_KIMLIGI": "4b0f40f3caabceaa7e6a60d5ba133d3323741f0644c2dbb6b74b40152f9aeaf7",
                           /// };
                           final model = AccountModel.instance
-                            ..admin = CacheManager.getAnaVeri()?.userModel?.admin
-                            ..aktifVeritabani = selected2["Şirket"]
-                            ..aktifIsletmeKodu = selected2["İşletme"]
-                            ..aktifSubeKodu = selected2["Şube"];
+                            // ..admin = CacheManager.getAnaVeri()?.userModel?.admin
+                            ..aktifVeritabani = selected["Şirket"]
+                            ..aktifIsletmeKodu = selected["İşletme"]
+                            ..aktifSubeKodu = selected["Şube"];
 
                           ///!!!!!!!!!!!!!!!!!!!! --> TODO BUNU EKLE
                           // ..gCid = "/Y5TBF72qY7bnZl3+NOYvUtln/g5FJPl4jQ9i59td5M=";
-                          log(selected2.toString(), name: "SONUNDA");
-                          dialogManager.showLoadingDialog("${selected2["Şirket"]} şirketine giriş yapılıyor.");
+                          log(selected.toString(), name: "SONUNDA");
+                          dialogManager.showLoadingDialog("${selected["Şirket"]} şirketine giriş yapılıyor.");
                           log(CacheManager.getHesapBilgileri().toJson().toString(), name: "dflkgjsşldkfjsşd");
 
                           final response = await networkManager.dioPost<MainPageModel>(
@@ -366,17 +304,19 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                               addTokenKey: true,
                               data: model,
                               headers: {
-                                "VERITABANI": selected2["Şirket"].toString(),
-                                "ISLETME_KODU": selected2["İşletme"].toString(),
-                                "SUBE_KODU": selected2["Şube"].toString(),
+                                "VERITABANI": selected["Şirket"].toString(),
+                                "ISLETME_KODU": selected["İşletme"].toString(),
+                                "SUBE_KODU": selected["Şube"].toString(),
                                 "content-type": "application/json"
                               });
                           if (response.data != null) {
                             MainPageModel model = response.data[0];
                             CacheManager.setAnaVeri(model);
-                            CacheManager.setVeriTabani(selected2);
+                            CacheManager.setVeriTabani(selected);
                             CacheManager.setIsletmeSube(userData);
+                            CacheManager.setLogout(true);
                             Get.offAndToNamed("/mainPage");
+                            // Get.toNamed("/mainPage");
                             response.message.isNotNullOrNoEmpty ? dialogManager.showAlertDialog(response.message.toString()) : null;
                           } else {
                             dialogManager.hideAlertDialog;
@@ -405,6 +345,80 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
         },
       ),
     );
+  }
+
+  subeDialog(BuildContext context) {
+    controller3!.text = "";
+    BottomSheetDialogManager().showBottomSheetDialog(context,
+        title: "Şube Seçiniz",
+        children: List.generate(
+          sube!.length,
+          (index) {
+            return BottomSheetModel(
+              icon: "Saat",
+              title: sube![index].subeAdi!,
+              onTap: () {
+                setState(() {
+                  controller3!.text = "${sube![index].subeAdi} ${sube![index].subeKodu ?? 0}";
+                  selected["Şube"] = sube![index].subeKodu ?? 0;
+                  userData["Şube"] = sube![index].subeAdi;
+                });
+                Get.back();
+              },
+            );
+          },
+        ));
+  }
+
+  sirketDialog(BuildContext context) {
+    controller2!.text = "";
+
+    BottomSheetDialogManager().showBottomSheetDialog(context,
+        title: "Şirket Seçiniz",
+        children: List.generate(
+          sirket!.length,
+          (index) {
+            return BottomSheetModel(
+              icon: "Saat",
+              iconWidget: Icons.storage_outlined,
+              title: sirket![index].company!,
+              onTap: () {
+                setState(() {
+                  controller1!.text = sirket![index].company!;
+                  selected["Şirket"] = sirket![index].company;
+                  userData["Şirket"] = sirket![index].company;
+                  selected["İşletme"] = null;
+                  selected["Şube"] = null;
+                });
+                Get.back();
+              },
+            );
+          },
+        ));
+  }
+
+  isletmeDialog(BuildContext context) {
+    BottomSheetDialogManager().showBottomSheetDialog(context,
+        title: "İşletme Seçiniz",
+        children: List.generate(
+          isletme!.length,
+          (index) {
+            return BottomSheetModel(
+              icon: "Saat",
+              iconWidget: Icons.data_array_outlined,
+              title: isletme![index].isletmeAdi!,
+              onTap: () {
+                setState(() {
+                  controller2!.text = "${isletme![index].isletmeAdi} ${isletme![index].isletmeKodu ?? 0}";
+                  selected["İşletme"] = isletme![index].isletmeKodu ?? 0;
+                  userData["İşletme"] = isletme![index].isletmeAdi;
+                  selected["Şube"] = null;
+                });
+                Get.back();
+              },
+            );
+          },
+        ));
   }
 
   String? validator(value) {

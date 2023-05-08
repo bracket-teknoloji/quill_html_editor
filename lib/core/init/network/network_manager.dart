@@ -11,6 +11,7 @@ import '../../constants/enum/dio_enum.dart';
 class NetworkManager {
   static final Dio _dio = Dio(BaseOptions(
     baseUrl: "http://ofis.bracket.com.tr:7575/pickerBracket/",
+    // baseUrl: "http:localhost/picker/",
     connectTimeout: const Duration(seconds: 20),
   ));
   NetworkManager() {
@@ -35,7 +36,7 @@ class NetworkManager {
         queryParameters: queryParameters,
         cancelToken: CancelToken(),
         options: Options(headers: {
-          "Platform": "netfect",
+          "Platform": "android",
           "Content-Type": "application/x-www-form-urlencoded",
         }, method: HttpTypes.GET, responseType: ResponseType.json),
         data: data);
@@ -50,9 +51,10 @@ class NetworkManager {
       dynamic data,
       Map<String, String>? queryParameters,
       bool addQuery = true,
+      bool addSirketBilgileri = false,
       bool addTokenKey = true}) async {
     CancelToken cancelToken = CancelToken();
-    Map<String, String> head = getStandardHeader(addTokenKey);
+    Map<String, String> head = getStandardHeader(addTokenKey, addSirketBilgileri);
     if (headers != null) head.addEntries(headers.entries);
     Map<String, String> queries = getStandardQueryParameters();
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
@@ -81,11 +83,20 @@ class NetworkManager {
     return responseModel;
   }
 
-  Map<String, String> getStandardHeader(bool addTokenKey) {
+  Map<String, String> getStandardHeader(bool addTokenKey, [bool headerSirketBilgileri = false]) {
     Map<String, String> header = {};
     if (addTokenKey) {
       String token = CacheManager.getToken();
       header.addAll({"Authorization": "Bearer $token"});
+    }
+    if (headerSirketBilgileri) {
+      var a = CacheManager.getVeriTabani();
+      Map<String, String> sirketBilgileri = {
+        "VERITABANI": a["Şirket"].toString(),
+        "ISLETME_KODU": a["İşletme"].toString(),
+        "SUBE_KODU": a["Şube"].toString(),
+      };
+      header.addEntries(sirketBilgileri.entries);
     }
     return header;
   }

@@ -36,6 +36,9 @@ class AppThemeDark extends AppTheme {
         ),
       )),
       toggleButtonsTheme: ToggleButtonsThemeData(
+          color: colorManager.onPrimaryContainer,
+          splashColor: Colors.transparent,
+          fillColor: UIHelper.primaryColor,
           borderRadius: UIHelper.lowBorderRadius,
           textStyle: const TextStyle(
             fontSize: 12,

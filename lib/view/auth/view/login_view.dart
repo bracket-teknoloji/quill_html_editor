@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -48,6 +49,7 @@ class _LoginViewState extends BaseState<LoginView> {
     companyController.text = textFieldData["company"];
     emailController.text = textFieldData["user"];
     passwordController.text = textFieldData["password"];
+    // autoLogin();
     AppInfoModel().init().then((value) {
       setState(() {
         version = AppInfoModel.version;
@@ -65,6 +67,7 @@ class _LoginViewState extends BaseState<LoginView> {
 
   @override
   Widget build(BuildContext context) {
+    // autoLogin();
     return WillPopScope(
       onWillPop: () async {
         return false;
@@ -181,62 +184,73 @@ class _LoginViewState extends BaseState<LoginView> {
     );
   }
 
+  void autoLogin() async {
+    if (AccountModel.instance.ozelCihazKimligi.isNotNullOrNoEmpty) {
+      SchedulerBinding.instance.addPostFrameCallback((_) async {
+        var a = CacheManager.getLogout;
+        if (a != null && a) {
+          login();
+        }
+      });
+    }
+  }
+
   ElevatedButton get elevatedButton {
     return ElevatedButton(
-        onPressed: () async {
-          AccountResponseModel? accountCache = CacheManager.getAccounts(companyController.text);
-          AccountModel instance = AccountModel.instance;
-          var a = instance
-            ..kullaniciAdi = emailController.text
-            ..uyeEmail = accountCache?.email ?? "demo@netfect.com";
-          a.uyeSifre = accountCache?.parola;
-
-          dialogManager.showLoadingDialog("Giriş Yapılıyor");
-
-          if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-            AccountResponseModel? accountCache = CacheManager.getAccounts(companyController.text);
-            try {
-              CacheManager.setHesapBilgileri(a);
-
-              log(jsonEncode(a.toJson()), name: "sea");
-              final response = await NetworkManager.getToken(path: ApiUrls.token, queryParameters: {
-                "deviceInfos": jsonEncode(a.toJson())
-              }, data: {
-                "grant_type": "password",
-                "username": emailController.text,
-                "password": passwordController.text,
-              });
-              dialogManager.hideAlertDialog;
-
-              Hive.box("preferences").put(companyController.text, [
-                textFieldData["user"],
-                emailController.text,
-                passwordController.text,
-              ]);
-              log(CacheManager.getHesapBilgileri().toJson().toString(), name: "sea2");
-
-              if (context.mounted) {
-                // TODO: Hata: VerifiedUser'ı kontrol et.
-                CacheManager.setVerifiedUser(
-                    {"user": emailController.text, "password": passwordController.text, "company": companyController.text, "email": accountCache?.email ?? ""});
-                CacheManager.setToken(response.accessToken.toString());
-
-                Get.toNamed("/entryCompany");
-              }
-            } on DioError catch (e) {
-              dialogManager.hideAlertDialog;
-              dialogManager.showAlertDialog(e.response?.data["error_description"] ?? "Hata :${e.message}");
-            } on Exception catch (e) {
-              dialogManager.showAlertDialog(e.toString());
-            }
-          } else {
-            Navigator.of(context, rootNavigator: true).pop();
-            dialogManager.hideSnackBar;
-            dialogManager.showSnackBar("Lütfen boş alan bırakmayınız.");
-          }
-        },
+        onPressed: login,
         child: const Text(
           "Giriş",
         ));
+  }
+
+  void login() async {
+    AccountResponseModel? accountCache = CacheManager.getAccounts(companyController.text);
+    AccountModel instance = AccountModel.instance;
+    var a = instance
+      ..kullaniciAdi = emailController.text
+      ..uyeEmail = accountCache?.email ?? "demo@netfect.com";
+    a.uyeSifre = accountCache?.parola;
+
+    dialogManager.showLoadingDialog("Giriş Yapılıyor");
+
+    if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+      AccountResponseModel? accountCache = CacheManager.getAccounts(companyController.text);
+      try {
+        CacheManager.setHesapBilgileri(a);
+
+        log(jsonEncode(a.toJson()), name: "sea");
+        final response = await NetworkManager.getToken(path: ApiUrls.token, queryParameters: {
+          "deviceInfos": jsonEncode(a.toJson())
+        }, data: {
+          "grant_type": "password",
+          "username": emailController.text,
+          "password": passwordController.text,
+        });
+        dialogManager.hideAlertDialog;
+
+        Hive.box("preferences").put(companyController.text, [
+          textFieldData["user"],
+          emailController.text,
+          passwordController.text,
+        ]);
+        log(CacheManager.getHesapBilgileri().toJson().toString(), name: "sea2");
+
+        if (context.mounted) {
+          // TODO: Hata: VerifiedUser'ı kontrol et.
+          CacheManager.setVerifiedUser({"user": emailController.text, "password": passwordController.text, "company": companyController.text, "email": accountCache?.email ?? ""});
+          CacheManager.setToken(response.accessToken.toString());
+          Get.toNamed("/entryCompany");
+        }
+      } on DioError catch (e) {
+        dialogManager.hideAlertDialog;
+        dialogManager.showAlertDialog(e.response?.data["error_description"] ?? "Hata :${e.message}");
+      } on Exception catch (e) {
+        dialogManager.showAlertDialog(e.toString());
+      }
+    } else {
+      Navigator.of(context, rootNavigator: true).pop();
+      dialogManager.hideSnackBar;
+      dialogManager.showSnackBar("Lütfen boş alan bırakmayınız.");
+    }
   }
 }

@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../core/base/state/base_state.dart';
-import '../../../core/components/dialog/bottom_sheet_dialog_manager.dart';
-import '../../../core/components/dialog/bottom_sheet_model.dart';
+import '../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart';
+import '../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import '../../../core/constants/ui_helper/ui_helper.dart';
 import '../model/account_response_model.dart';
 
@@ -54,7 +54,7 @@ class _AccountsViewState extends BaseState<AccountsView> {
                     return Card(
                       child: ListTile(
                         onTap: () {
-                          BottomSheetDialogManager.showBottomSheetDialog(context, title: account.firma.toString(), children: [
+                          BottomSheetDialogManager().showBottomSheetDialog(context, title: account.firma.toString(), children: [
                             BottomSheetModel(
                                 icon: "CopKovasi",
                                 iconWidget: Icons.delete_outline,

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/init/cache/cache_manager.dart';
 
 import '../../../view/add_company/model/account_model.dart';
 import '../../constants/ui_helper/icon_helper.dart';
@@ -86,8 +87,7 @@ class DialogManager {
           if (response.success ?? false) {
             showLoadingDialog("Çıkış yapılıyor...");
             log("Çıkış yapılıyor...");
-            log(AccountModel.instance.toJson().toString());
-            showAlertDialog(response.message ?? "Çıkış yapıldı.");
+            CacheManager.setLogout(false);
             Get.offAndToNamed("/");
           }
         },

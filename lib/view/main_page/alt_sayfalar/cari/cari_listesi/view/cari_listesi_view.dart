@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 import 'dart:math' hide log;
 
 import 'package:flutter/material.dart';
@@ -10,16 +11,23 @@ import 'package:intl/intl.dart';
 import 'package:kartal/kartal.dart';
 import 'package:scroll_app_bar/scroll_app_bar.dart';
 
+import '../../../../../../core/base/model/base_network_mixin.dart';
+import '../../../../../../core/base/model/generic_response_model.dart';
 import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
-import '../../../../../../core/components/dialog/bottom_sheet_dialog_manager.dart';
-import '../../../../../../core/components/dialog/bottom_sheet_model.dart';
+import '../../../../../../core/components/button/toggle_buttons/toggle_button.dart';
+import '../../../../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart';
+import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
+import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_response_model.dart';
+import '../../../../../../core/components/dialog/bottom_sheet/view_model/bottom_sheet_state_manager.dart';
 import '../../../../../../core/constants/extensions/mobx_extensions.dart';
 import '../../../../../../core/constants/extensions/number_extensions.dart';
 import '../../../../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../../../../core/init/network/login/api_urls.dart';
 import '../../../../../add_company/model/account_model.dart';
+import '../model/cari_listesi_grup_kodu_model.dart';
 import '../model/cari_listesi_model.dart';
+import '../model/cari_sehirler_model.dart';
 import '../view_model/cari_listesi_view_model.dart';
 
 class CariListesiView extends StatefulWidget {
@@ -32,16 +40,12 @@ class CariListesiView extends StatefulWidget {
 class _CariListesiViewState extends BaseState<CariListesiView> {
   CariListesiViewModel viewModel = CariListesiViewModel();
   final ScrollController _scrollController = ScrollController();
+  BottomSheetResponseModel? bottomSheetResponseModel;
   var formatter = NumberFormat("#,##0.00", "tr_TR");
-  String filterBakiye = "";
-  // int sayfa = 1;
   bool isLoading = false;
-  // String arama = "";
+  Map? filterData;
   Map<String, dynamic> paramData = {};
   String sort = "AZ";
-  // bool isScrolledDown = false;
-  // bool searchBar = false;
-  // bool dahaVarMi = true;
   @override
   void initState() {
     super.initState();
@@ -49,6 +53,9 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   }
 
   void init() {
+    ToggleButton.selected = "";
+    BottomSheetResponseModel.instance.clear();
+    BottomSheetStateManager().deleteIsSelectedListMap();
     viewModel.sayfa == 1
         ? getData(sayfa: viewModel.sayfa).then((value) {
             if (!viewModel.searchBar) {
@@ -66,11 +73,11 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
         //   }
         //   cariListesi!.addAll(value);
         // });
-        List a = await getData(sayfa: viewModel.sayfa + 1);
-        if (a.length == 25) {
+        List? a = await getData(sayfa: viewModel.sayfa + 1);
+        if (a?.length == 25) {
           viewModel.increaseSayfa();
         }
-        viewModel.addCariListesi(a);
+        viewModel.addCariListesi(a!);
         // cariListesi!.addAll(a);
       }
       // when scroll down change isScrolledDown to true
@@ -91,13 +98,21 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   @override
   Widget build(BuildContext context) {
     log(paramData.toString());
-    return Scaffold(
-      resizeToAvoidBottomInset: true,
-      floatingActionButton: fab(),
-      bottomNavigationBar: bottomButtonBar(),
-      appBar: appBar(context),
-      body: body(),
-    );
+    return Observer(builder: (_) {
+      return WillPopScope(
+        onWillPop: () async {
+          BottomSheetResponseModel.instance.clear();
+          return true;
+        },
+        child: Scaffold(
+          resizeToAvoidBottomInset: true,
+          floatingActionButton: fab(),
+          bottomNavigationBar: bottomButtonBar(),
+          appBar: appBar(context),
+          body: body(),
+        ),
+      );
+    });
   }
 
   RefreshIndicator body() {
@@ -122,6 +137,20 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                       CariListesiModel object = viewModel.cariListesi?[index];
                       return Card(
                         child: ListTile(
+                          onTap: () {
+                            BottomSheetDialogManager().showBottomSheetDialog(context, title: "${object.cariKodu}\n${object.cariAdi}", children: [
+                              BottomSheetModel(title: "Görüntüle", iconWidget: Icons.search_outlined),
+                              BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit_outlined),
+                              BottomSheetModel(title: "Sil", iconWidget: Icons.delete_outline_outlined),
+                              BottomSheetModel(
+                                  title: "Hareketler",
+                                  iconWidget: Icons.list_alt_outlined,
+                                  onTap: () => Get.toNamed("/mainPage/cariHareketleri", arguments: object)),
+                              BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
+                              BottomSheetModel(title: "Raporlar", iconWidget: Icons.list_alt_outlined),
+                              BottomSheetModel(title: "Serbest Raporlar", iconWidget: Icons.list_alt_outlined),
+                            ]);
+                          },
                           isThreeLine: true,
                           contentPadding: UIHelper.midPadding,
                           leading: CircleAvatar(backgroundColor: getLeadingColor(object.bakiye ?? 0.0), child: Text(object.cariAdi!.substring(0, 1))),
@@ -203,6 +232,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   }
 
   ScrollAppBar appBar(BuildContext context) {
+    Platform.isLinux || Platform.isWindows || Platform.isMacOS ? _scrollController.appBar.setPinState(true) : _scrollController.appBar.setPinState(false);
     return ScrollAppBar(
       controller: _scrollController,
       title: Observer(
@@ -232,7 +262,18 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                 onFieldSubmitted(viewModel.arama);
               },
               icon: const Icon(Icons.arrow_back))
-          : null,
+          : Observer(builder: (_) {
+              return IconButton(
+                  onPressed: () {
+                    BottomSheetDialogManager.viewModel.deleteIsSelectedListMap();
+                    BottomSheetDialogManager.viewModel.deleteKodControllerText();
+                    BottomSheetDialogManager.viewModel.ilce = "";
+                    BottomSheetDialogManager.viewModel.sehir = "";
+                    BottomSheetDialogManager.viewModel.plasiyer = "";
+                    Get.back();
+                  },
+                  icon: const Icon(Icons.arrow_back));
+            }),
       centerTitle: false,
       bottom: PreferredSize(
         preferredSize: Size.fromHeight(height * 0.07),
@@ -245,18 +286,54 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
             children: [
               AppBarButton(
                 onPressed: () async {
-                  var a = await BottomSheetDialogManager.showFilterBottomSheetDialog(context);
-                  if (a != null) {
-                    filterBakiye = a.toString();
+                  if (filterData == null) {
+                    dialogManager.showLoadingDialog("Filtreler yükleniyor");
+                    var responseSehir = await getFilterData();
+                    var responseKod = await getKod();
+                    filterData = {"sehir": responseSehir.data, "kod": responseKod.data};
+                    dialogManager.hideAlertDialog;
+                  }
+                  // ignore: use_build_context_synchronously
+                  var a = await BottomSheetDialogManager().showFilterBottomSheetDialog(context, request: filterData);
+                  if (a != null && a is BottomSheetResponseModel) {
+                    bottomSheetResponseModel = a;
                     viewModel.changeCariListesi(null);
-                    List data = await getData(sayfa: 1);
-                    viewModel.changeCariListesi(data);
-                    log(filterBakiye.toString());
+                    List? data = await getData(sayfa: 1);
+                    if (data.isNotNullOrEmpty) {
+                      viewModel.changeCariListesi(data);
+                    } else {
+                      viewModel.changeCariListesi([]);
+                    }
                   }
                 },
                 child: const Text("Filtrele"),
               ),
-              siralaButton(context),
+              AppBarButton(
+                onPressed: () async {
+                  var a = await BottomSheetDialogManager().showBottomSheetDialog(context, title: "Sıralama türünü seçiniz", children: [
+                    BottomSheetModel(title: "Cari Adı (A-Z)", onTap: () => Get.back(result: "AZ")),
+                    BottomSheetModel(title: "Cari Adı (Z-A)", onTap: () => Get.back(result: "ZA")),
+                    BottomSheetModel(title: "Bakiye (0-9)", onTap: () => Get.back(result: "BAKIYE_AZ")),
+                    BottomSheetModel(title: "Bakiye (9-0)", onTap: () => Get.back(result: "BAKIYE_ZA")),
+                    BottomSheetModel(title: "Döviz Bakiye (0-9)", onTap: () => Get.back(result: "DOV_BAKIYE_AZ")),
+                    BottomSheetModel(title: "Döviz Bakiye (9-0)", onTap: () => Get.back(result: "DOV_BAKIYE_ZA")),
+                    BottomSheetModel(title: "Cari Kodu (A-Z)", onTap: () => Get.back(result: "CARI_KODU_AZ")),
+                    BottomSheetModel(title: "Cari Kodu (Z-A))", onTap: () => Get.back(result: "CARI_KODU_ZA")),
+                    BottomSheetModel(title: "Kayıt Tarihi (Artan)", onTap: () => Get.back(result: "KAYITTAR_ASC")),
+                    BottomSheetModel(title: "Kayıt Tarihi (Azalan)", onTap: () => Get.back(result: "KAYITTAR_DESC")),
+                    BottomSheetModel(title: "Konum(En yakın)", onTap: () => Get.back(result: "KONUM_AZ")),
+                    BottomSheetModel(title: "Konum (En uzak)", onTap: () => Get.back(result: "KONUM_ZA")),
+                  ]);
+                  if (a.toString() != sort && a != null) {
+                    sort = a;
+                    viewModel.changeCariListesi(null);
+                    getData(sayfa: 1).then((value) {
+                      viewModel.changeCariListesi(value);
+                    });
+                  }
+                },
+                child: const Text("Sırala"),
+              ),
               AppBarButton(
                 onPressed: () {},
                 child: const Icon(Icons.more_horiz_outlined),
@@ -285,7 +362,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   AppBarButton siralaButton(BuildContext context) {
     return AppBarButton(
       onPressed: () async {
-        var a = await BottomSheetDialogManager.showBottomSheetDialog(context, title: "Sıralama türünü seçiniz", children: [
+        var a = await BottomSheetDialogManager().showBottomSheetDialog(context, title: "Sıralama türünü seçiniz", children: [
           BottomSheetModel(title: "Cari Adı (A-Z)", onTap: () => Get.back(result: "AZ")),
           BottomSheetModel(title: "Cari Adı (Z-A)", onTap: () => Get.back(result: "ZA")),
           BottomSheetModel(title: "Bakiye (0-9)", onTap: () => Get.back(result: "BAKIYE_AZ")),
@@ -339,23 +416,78 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
     );
   }
 
+  Future<GenericResponseModel<NetworkManagerMixin>> getFilterData() async {
+    GenericResponseModel<NetworkManagerMixin> responseSehirler;
+    responseSehirler = await networkManager.dioGet<CariSehirlerModel>(path: ApiUrls.getCariKayitliSehirler, bodyModel: CariSehirlerModel(), addTokenKey: true, headers: {
+      "VERITABANI": AccountModel.instance.aktifVeritabani.toString(),
+      "ISLETME_KODU": AccountModel.instance.aktifIsletmeKodu.toString(),
+      "SUBE_KODU": AccountModel.instance.aktifSubeKodu.toString(),
+      "Modul": "CARI",
+      "GrupNo": "-1",
+      "Kullanimda": "E"
+    });
+
+    return responseSehirler;
+  }
+
+  Future<GenericResponseModel<NetworkManagerMixin>> getKod() async {
+    var baseEncoded = base64Encode(utf8.encode(
+        // "GUID": "955a8d4b-e597-4425-b933-cb3f35d83f0d"
+        '{"TZ_MINUTES" :$s,"ZAMAN": "${DateTime.now().day}.0${DateTime.now().month}.${DateTime.now().year} ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}"}'));
+    var responseKod = await networkManager.dioGet<CariGrupKoduModel>(
+        path: ApiUrls.getGrupKodlari,
+        bodyModel: CariGrupKoduModel(),
+        addTokenKey: true,
+        headers: {
+          "veritabani": AccountModel.instance.aktifVeritabani.toString(),
+          "isletme_kodu": AccountModel.instance.aktifIsletmeKodu.toString(),
+          "sube_kodu": AccountModel.instance.aktifSubeKodu.toString(),
+          "Modul": "CARI",
+          "GrupNo": "1",
+          "CKEY": baseEncoded
+        },
+        addQuery: true,
+        queryParameters: {"Modul": "CARI", "GrupNo": "-1"});
+    print(responseKod.errorDetails);
+    print(responseKod.data.first.toJson());
+    print(responseKod.errorDetails);
+    return responseKod;
+  }
+
   static final s = DateTime.now().timeZoneOffset.inMinutes;
   // List? cariListesi;
-  var baseEncoded = base64Encode(utf8.encode(
-      // "GUID": "955a8d4b-e597-4425-b933-cb3f35d83f0d"
-      '{"TZ_MINUTES" :$s,"ZAMAN": "${DateTime.now().day}.0${DateTime.now().month}.${DateTime.now().year} ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}"}'));
-  Future<List> getData({required int sayfa, String? sort1}) async {
+  Future<List?> getData({required int sayfa, String? sort1}) async {
+    var baseEncoded = base64Encode(utf8.encode(
+        // "GUID": "955a8d4b-e597-4425-b933-cb3f35d83f0d"
+        '{"TZ_MINUTES" :$s,"ZAMAN": "${DateTime.now().day}.0${DateTime.now().month}.${DateTime.now().year} ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}"}'));
+    var queryParameters2 = {
+      "EFaturaGoster": "true",
+      "SIRALAMA": sort1 ?? sort,
+      "Sayfa": "$sayfa",
+      "MenuKodu": "CARI_CARI",
+      "FilterText": viewModel.arama,
+      "Kod": "",
+    };
+    if (bottomSheetResponseModel != null) {
+      nullChecker("arrPlasiyer", queryParameters2);
+      nullChecker("arrSehir", queryParameters2);
+      nullChecker("arrGrupKodu", queryParameters2);
+      nullChecker("arrKod1", queryParameters2);
+      nullChecker("arrKod2", queryParameters2);
+      nullChecker("arrKod3", queryParameters2);
+      nullChecker("arrKod4", queryParameters2);
+      nullChecker("arrKod5", queryParameters2);
+      nullChecker("ilce", queryParameters2);
+      nullChecker("cariTipi", queryParameters2);
+      if (bottomSheetResponseModel!.filterBakiye!.isNotNullOrNoEmpty) {
+        String a = bottomSheetResponseModel!.filterBakiye ?? "";
+        String b = a == "Tümü" ? "" : a[0];
+        queryParameters2["FILTER_BAKIYE"] = b;
+      }
+    }
     final response = await networkManager.dioGet<CariListesiModel>(
         path: ApiUrls.getCariler,
-        queryParameters: {
-          "EFaturaGoster": "true",
-          "SIRALAMA": sort1 ?? sort,
-          "Sayfa": sayfa.toString(),
-          "MenuKodu": "CARI_CARI",
-          "FilterText": viewModel.arama,
-          "Kod": "",
-          "FILTER_BAKIYE": filterBakiye != "" && filterBakiye != "Tümü" ? filterBakiye.substring(0, 1) : "",
-        },
+        queryParameters: queryParameters2,
         headers: {
           "Host": "95.70.216.35:7575",
           "VERITABANI": AccountModel.instance.aktifVeritabani.toString(),
@@ -387,6 +519,20 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
     setState(() {});
 
     return response.data;
+  }
+
+  void nullChecker(String parametre, Map<String, String> map, {String? isim}) {
+    dynamic selected = bottomSheetResponseModel!.toJson()[parametre];
+    String parametreIsim = isim ?? parametre[0].toUpperCase() + parametre.substring(1);
+    print(parametre);
+    if (selected != null) {
+      if (selected.isEmpty) return;
+      if (selected is List) {
+        map[parametreIsim] = jsonEncode(selected);
+      } else {
+        map[parametreIsim] = selected;
+      }
+    }
   }
 
   String getPaymentInfo(double bakiye) {
