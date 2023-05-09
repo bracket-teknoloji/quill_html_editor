@@ -138,15 +138,18 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                       return Card(
                         child: ListTile(
                           onTap: () async {
-                            await BottomSheetDialogManager().showBottomSheetDialog(context, title: "${object.cariKodu}\n${object.cariAdi}", children: [
+                            String? pageName = await BottomSheetDialogManager().showBottomSheetDialog(context, title: "${object.cariKodu}\n${object.cariAdi}", children: [
                               BottomSheetModel(title: "Görüntüle", iconWidget: Icons.search_outlined),
                               BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit_outlined),
                               BottomSheetModel(title: "Sil", iconWidget: Icons.delete_outline_outlined),
-                              BottomSheetModel(title: "Hareketler", iconWidget: Icons.list_alt_outlined, onTap: () => Get.toNamed("/mainPage/cariHareketleri", arguments: object)),
+                              BottomSheetModel(title: "Hareketler", iconWidget: Icons.list_alt_outlined, onTap: () => Get.back(result: "/mainPage/cariHareketleri")),
                               BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
                               BottomSheetModel(title: "Raporlar", iconWidget: Icons.list_alt_outlined),
                               BottomSheetModel(title: "Serbest Raporlar", iconWidget: Icons.list_alt_outlined),
                             ]);
+                            if (pageName != null) {
+                              Get.toNamed(pageName, arguments: object);
+                            }
                           },
                           isThreeLine: true,
                           contentPadding: UIHelper.midPadding,
@@ -340,7 +343,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       ),
       actions: [
         IconButton(
-          onPressed: () async {
+          onPressed: () {
             viewModel.changeSearchBar();
             viewModel.changeArama("");
             if (!viewModel.searchBar) {

@@ -52,7 +52,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                 CustomTextField(isVertical: true, isTitleSmall: true, text: "Vade Tarihi", children: [Text(widget.cariHareketleriModel.vadeTarihi?.toDateString() ?? "")]),
                 CustomTextField(isVertical: true, isTitleSmall: true, text: "Plasiyer", children: [Text(widget.cariHareketleriModel.plasiyerAciklama ?? "")]),
                 CustomTextField(isVertical: true, isTitleSmall: true, text: "Şube", children: [Text("${widget.cariHareketleriModel.subeKodu ?? 0}")])
-              ].map((e) => SizedBox(width: width * 0.33, child: e).paddingAll(UIHelper.lowSize)).toList(),
+              ].map((e) => SizedBox(width: width * 0.33, child: e).paddingOnly(right: UIHelper.lowSize, bottom: UIHelper.lowSize)).toList(),
             ),
           ),
           const Divider(),

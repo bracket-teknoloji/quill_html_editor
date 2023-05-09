@@ -28,24 +28,30 @@ abstract class _CariHareketleriViewModelBase with Store {
   }
 
   @observable
-  double? alacaklar = 0.0;
+  bool isSearchBarOpened = false;
 
   @action
-  void addAlacaklar(double value) {
-    alacaklar = alacaklar! + value;
+  void changeSearchBar() {
+    isSearchBarOpened = !isSearchBarOpened;
   }
 
-  @observable
-  double? borclar = 0.0;
-
-  @action
-  void addBorclar(double value) {
-    borclar = borclar! + value;
+  @computed
+  double get borclarToplami {
+    var data = cariHareketleriList?.where((element) => element.borc != null);
+    if (data?.isNotEmpty ?? false) {
+      return data!.map((e) => e.borc!).reduce((value, element) => value + element);
+    } else {
+      return 0.0;
+    }
   }
 
-  @action
-  void resetAlacaklarBorclar() {
-    alacaklar = 0.0;
-    borclar = 0.0;
+  @computed
+  double get alacaklarToplami {
+    var data = cariHareketleriList?.where((element) => element.alacak != null);
+    if (data?.isNotEmpty ?? false) {
+      return data!.map((e) => e.alacak!).reduce((value, element) => value + element);
+    } else {
+      return 0.0;
+    }
   }
 }

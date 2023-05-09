@@ -28,10 +28,12 @@ class CariHareketleriView extends StatefulWidget {
 class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
   CariHareketleriViewModel viewModel = CariHareketleriViewModel();
   ScrollController? scrollController;
+  TextEditingController? searchController;
   @override
   void initState() {
     super.initState();
     scrollController = ScrollController();
+    searchController = TextEditingController();
     init();
   }
 
@@ -39,6 +41,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
   void dispose() {
     super.dispose();
     scrollController?.dispose();
+    searchController?.dispose();
   }
 
   void init() async {
@@ -47,10 +50,9 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
 
   @override
   Widget build(BuildContext context) {
-    viewModel.resetAlacaklarBorclar();
     return Scaffold(
         appBar: appBar(context),
-        floatingActionButton: fab(),
+        floatingActionButton: Observer(builder: (_) => fab()),
         bottomNavigationBar: bottomButtonBar(),
         body: Observer(
           builder: (_) => (viewModel.cariHareketleriList.isNullOrEmpty
@@ -59,6 +61,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                   : const Center(child: CircularProgressIndicator())
               : Observer(builder: (_) {
                   return ListView.builder(
+                    primary: false,
                     controller: scrollController,
                     itemCount: viewModel.cariHareketleriList != null ? viewModel.cariHareketleriList!.length : 0,
                     itemBuilder: (context, index) {
@@ -87,6 +90,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
   }
 
   FloatingActionButton fab() {
+    // scrollController?.appBar.setPinState(false);
     return FloatingActionButton(
       onPressed: () {},
       child: ValueListenableBuilder<bool>(
@@ -105,18 +109,46 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
     return ScrollAppBar(
       controller: scrollController!,
       centerTitle: false,
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Observer(builder: (_) => Text("Cari Hareketleri ${viewModel.cariHareketleriList?.isNotEmpty ?? false ? '(${viewModel.cariHareketleriList!.length})' : ''}")),
-          Text(
-            widget.cari?.cariAdi.toString() ?? "",
-            style: const TextStyle(fontSize: 14),
-          )
-        ],
+      title: Observer(
+        builder: (_) => viewModel.isSearchBarOpened
+            ? SizedBox(
+                height: kToolbarHeight * 0.9,
+                child: TextFormField(
+                  autofocus: true,
+                  decoration: const InputDecoration(
+                    hintText: "Daha eklemedim :)",
+                  ),
+                ).marginAll(5),
+              )
+            : Wrap(
+                direction: Axis.vertical,
+                children: [
+                  Text("Cari Hareketleri ${viewModel.cariHareketleriList?.isNotEmpty ?? false ? '(${viewModel.cariHareketleriList!.length})' : ''}"),
+                  SizedBox(
+                    width: width * 0.5,
+                    child: Text(
+                      widget.cari?.cariAdi.toString() ?? "",
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(fontSize: 14),
+                    ),
+                  )
+                ],
+              ),
       ),
-      actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search_outlined))],
+      leading: viewModel.isSearchBarOpened
+          ? IconButton(
+              onPressed: () {
+                viewModel.changeSearchBar();
+              },
+              icon: const Icon(Icons.arrow_back))
+          : null,
+      actions: [
+        IconButton(onPressed: () {
+          viewModel.changeSearchBar();
+        }, icon: Observer(builder: (_) {
+          return Icon(viewModel.isSearchBarOpened ? Icons.search_off_outlined : Icons.search_outlined);
+        }))
+      ],
       bottom: PreferredSize(
         preferredSize: Size.fromHeight(height * 0.07),
         child: SizedBox(
@@ -137,14 +169,14 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                       if (siralama != viewModel.siralama && siralama != null) {
                         viewModel.setSiralama(siralama!);
                         viewModel.setCariHareketleri(null);
-                        getData().then((value) => viewModel.setCariHareketleri(value));
+                        return getData().then((value) => viewModel.setCariHareketleri(value));
                       }
                     }),
                 AppBarButton(
                     child: const Text("Yenile"),
-                    onPressed: () async {
+                    onPressed: () {
                       viewModel.setCariHareketleri(null);
-                      getData().then((value) => viewModel.setCariHareketleri(value));
+                      return getData().then((value) => viewModel.setCariHareketleri(value));
                     }),
               ].map((e) => e.paddingAll(UIHelper.lowSize)).toList()),
         ),
@@ -156,26 +188,40 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
     return SafeArea(
       child: SizedBox(
         height: context.isPortrait ? (height * 0.06) : height * 0.15,
-        child: Row(
-          children: [
-            Expanded(child: FooterButton(children: [const Text("borç"), Text("${viewModel.borclar?.dotSeparatedWithFixedDigits} TL")])),
-            Expanded(child: FooterButton(children: [const Text("Alacak"), Text("${viewModel.alacaklar?.dotSeparatedWithFixedDigits} TL")])),
-            Expanded(
-                child: FooterButton(children: [
-              const Text("Tahsil Edilecek"),
-              Text(
-                "${(viewModel.borclar! - viewModel.alacaklar!).dotSeparatedWithFixedDigits} TL",
-                style: TextStyle(color: (viewModel.borclar! - viewModel.alacaklar!) < 0 ? Colors.red : Colors.green),
-              )
-            ]))
-          ],
-        ),
+        child: Observer(builder: (_) {
+          return Row(
+            children: [
+              Expanded(
+                  child: FooterButton(children: [
+                const Text("Borç"),
+                Observer(builder: (_) {
+                  return Text("${viewModel.borclarToplami.dotSeparatedWithFixedDigits} TL");
+                })
+              ])),
+              Expanded(child: FooterButton(children: [const Text("Alacak"), Text("${viewModel.alacaklarToplami.dotSeparatedWithFixedDigits} TL")])),
+              Expanded(
+                  child: FooterButton(children: [
+                const Text("Tahsil Edilecek"),
+                Text(
+                  "${(viewModel.borclarToplami - viewModel.alacaklarToplami).dotSeparatedWithFixedDigits} TL",
+                  style: TextStyle(color: (viewModel.borclarToplami - viewModel.alacaklarToplami) < 0 ? Colors.red : Colors.green),
+                )
+              ]))
+            ],
+          );
+        }),
       ),
     );
   }
 
+  bool getFilter(CariHareketleriModel model, String filter) {
+    return model.belgeNo!.toLowerCase().contains(filter.toLowerCase()) ||
+        model.hareketAciklama!.toLowerCase().contains(filter.toLowerCase()) ||
+        model.aciklama!.toLowerCase().contains(filter.toLowerCase());
+    // ("${"("})").toLowerCase().contains(filter.toLowerCase());
+  }
+
   Future<List<CariHareketleriModel>> getData() async {
-    viewModel.resetAlacaklarBorclar();
     var response = await networkManager.dioGet<CariHareketleriModel>(
       path: ApiUrls.getCariHareketleri,
       bodyModel: CariHareketleriModel(),
@@ -183,14 +229,6 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
       queryParameters: {"SIRALAMA": viewModel.siralama, "EkranTipi": "L", "CariKodu": widget.cari?.cariKodu ?? ""},
       addSirketBilgileri: true,
     );
-    double toplamBorc = 0.0;
-    double toplamAlacak = 0.0;
-    response.data?.forEach((element) {
-      toplamAlacak += element.alacak ?? 0.0;
-      toplamBorc += element.borc ?? 0.0;
-    });
-    viewModel.addAlacaklar(toplamAlacak);
-    viewModel.addBorclar(toplamBorc);
     setState(() {});
     return (response.data).map((e) => e as CariHareketleriModel).toList().cast<CariHareketleriModel>();
   }
