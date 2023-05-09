@@ -18,6 +18,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   Connectivity connectivity = Connectivity();
   BaseState() {
     networkManager = NetworkManager();
+    bottomSheetDialogManager = BottomSheetDialogManager();
     dialogManager = DialogManager();
     appInfoModel = AppInfoModel();
     internetChecker();

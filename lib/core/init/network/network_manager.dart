@@ -90,11 +90,11 @@ class NetworkManager {
       header.addAll({"Authorization": "Bearer $token"});
     }
     if (headerSirketBilgileri) {
-      var a = CacheManager.getVeriTabani();
+      var veriTabani = CacheManager.getVeriTabani();
       Map<String, String> sirketBilgileri = {
-        "VERITABANI": a["Şirket"].toString(),
-        "ISLETME_KODU": a["İşletme"].toString(),
-        "SUBE_KODU": a["Şube"].toString(),
+        "VERITABANI": veriTabani["Şirket"].toString(),
+        "ISLETME_KODU": veriTabani["İşletme"].toString(),
+        "SUBE_KODU": veriTabani["Şube"].toString(),
       };
       header.addEntries(sirketBilgileri.entries);
     }

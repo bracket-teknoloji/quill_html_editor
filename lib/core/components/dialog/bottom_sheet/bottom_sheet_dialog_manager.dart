@@ -53,7 +53,7 @@ class BottomSheetDialogManager {
                                         ListTile(
                                             onTap: children[index].onTap,
                                             title: Text(children[index].title),
-                                            leading: children[index].icon == null
+                                            leading: children[index].icon != null || children[index].iconWidget != null
                                                 ? SizedBox(
                                                     width: 20,
                                                     height: 20,

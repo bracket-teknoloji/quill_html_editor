@@ -137,15 +137,12 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                       CariListesiModel object = viewModel.cariListesi?[index];
                       return Card(
                         child: ListTile(
-                          onTap: () {
-                            BottomSheetDialogManager().showBottomSheetDialog(context, title: "${object.cariKodu}\n${object.cariAdi}", children: [
+                          onTap: () async {
+                            await BottomSheetDialogManager().showBottomSheetDialog(context, title: "${object.cariKodu}\n${object.cariAdi}", children: [
                               BottomSheetModel(title: "Görüntüle", iconWidget: Icons.search_outlined),
                               BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit_outlined),
                               BottomSheetModel(title: "Sil", iconWidget: Icons.delete_outline_outlined),
-                              BottomSheetModel(
-                                  title: "Hareketler",
-                                  iconWidget: Icons.list_alt_outlined,
-                                  onTap: () => Get.toNamed("/mainPage/cariHareketleri", arguments: object)),
+                              BottomSheetModel(title: "Hareketler", iconWidget: Icons.list_alt_outlined, onTap: () => Get.toNamed("/mainPage/cariHareketleri", arguments: object)),
                               BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
                               BottomSheetModel(title: "Raporlar", iconWidget: Icons.list_alt_outlined),
                               BottomSheetModel(title: "Serbest Raporlar", iconWidget: Icons.list_alt_outlined),
@@ -297,7 +294,6 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                   var a = await BottomSheetDialogManager().showFilterBottomSheetDialog(context, request: filterData);
                   if (a != null && a is BottomSheetResponseModel) {
                     bottomSheetResponseModel = a;
-                    viewModel.changeCariListesi(null);
                     List? data = await getData(sayfa: 1);
                     if (data.isNotNullOrEmpty) {
                       viewModel.changeCariListesi(data);

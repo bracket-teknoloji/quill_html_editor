@@ -128,6 +128,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
       addQuery: true,
       queryParameters: {"Veritabani": sirket},
     );
+    log("message");
     final data = response.data;
     if (data != null) {
       for (IsletmeModel element in data) {
@@ -136,6 +137,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     }
     return list;
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

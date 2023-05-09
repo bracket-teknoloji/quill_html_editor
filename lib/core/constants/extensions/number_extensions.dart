@@ -12,4 +12,9 @@ extension NumExtensionWithFixedDigits on num {
   }
 }
 
-// an extension on num to seperate the digits with turkish region rules
+// an extension on num to seperate the digits with dots and after fixed number of digits with comma
+extension NumExtensionWithFixedDigitsAndComma on num {
+  String get dotSeparatedWithFixedDigits {
+    return toStringAsFixed(2).replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]}.');
+  }
+}
