@@ -1,0 +1,43 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:picker/core/base/helpers/helper.dart';
+
+class CustomTextField extends StatefulWidget {
+  final TextEditingController? controller;
+  final String? labelText;
+  final String? valueText;
+  final bool? isMust;
+  final bool? readOnly;
+  final bool? enabled;
+  final Widget? suffix;
+  final FocusNode? focusNode;
+  const CustomTextField({super.key, this.controller, this.labelText, this.valueText, this.isMust, this.readOnly, this.suffix, this.enabled, this.focusNode});
+
+  @override
+  State<CustomTextField> createState() => _CustomTextFieldState();
+}
+
+class _CustomTextFieldState extends State<CustomTextField> {
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      focusNode: widget.focusNode,
+      onFieldSubmitted: (value) => widget.focusNode?.nextFocus(),
+      onTapOutside: (value) => widget.focusNode?.unfocus(),
+      validator: (value) => (widget.isMust ?? false) && (value?.isEmpty ?? false) ? "Bu alan boş bırakılamaz" : null,
+      controller: widget.controller,
+      readOnly: widget.readOnly ?? false,
+      decoration: InputDecoration(
+          enabled: widget.enabled ?? true,
+          suffix: widget.suffix,
+          label: Text.rich(TextSpan(children: [
+            TextSpan(
+                text: widget.labelText ?? "",
+                style: (widget.isMust ?? false)
+                    ? TextStyle(color: UIHelper.primaryColor)
+                    : ((widget.controller?.text == "") ? TextStyle(color: Colors.grey.withOpacity(0.6)) : TextStyle(color: Colors.grey.withOpacity(0.8)))),
+            TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: Colors.grey.withOpacity(0.3), fontSize: 12))
+          ]))),
+    ).paddingAll(UIHelper.lowSize);
+  }
+}

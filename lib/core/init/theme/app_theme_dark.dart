@@ -203,7 +203,7 @@ class AppThemeDark extends AppTheme {
             systemNavigationBarColor: Colors.black,
             systemStatusBarContrastEnforced: true,
           ),
-          centerTitle: true,
+          centerTitle: false,
           iconTheme: IconThemeData(color: colorManager.primary),
           titleTextStyle: TextStyle(color: colorManager.primary, fontSize: 20),
           scrolledUnderElevation: 0,

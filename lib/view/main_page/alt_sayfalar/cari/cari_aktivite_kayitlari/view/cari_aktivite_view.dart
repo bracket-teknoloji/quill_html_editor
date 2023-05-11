@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:picker/core/base/helpers/helper.dart';
 import 'package:picker/core/components/button/elevated_buttons/bottom_appbar_button.dart';
-import 'package:picker/core/components/textfield/custom_textfield.dart';
+import 'package:picker/core/components/textfield/custom_label_widget.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_appbar_model.dart';
 
 import '../../../../../../core/base/state/base_state.dart';
@@ -24,7 +24,7 @@ class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
           actions: [IconButton(onPressed: () => CariAktiviteFiltreDialogManager.showAktiviteDialog(context), icon: const Icon(Icons.filter_alt_outlined))],
           bottom: PreferredSize(
               preferredSize: Size.fromHeight(height * 0.1),
-              child: const CustomTextField(
+              child: const CustomWidgetWithLabel(
                 text: "Ara",
                 children: [
                   TextField(

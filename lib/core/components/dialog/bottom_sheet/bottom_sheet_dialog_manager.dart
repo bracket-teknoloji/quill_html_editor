@@ -8,7 +8,7 @@ import '../../../constants/ui_helper/icon_helper.dart';
 import '../../../constants/ui_helper/ui_helper.dart';
 import '../../../init/cache/cache_manager.dart';
 import '../../button/toggle_buttons/toggle_button.dart';
-import '../../textfield/custom_textfield.dart';
+import '../../textfield/custom_label_widget.dart';
 import 'model/bottom_sheet_model.dart';
 import 'model/bottom_sheet_response_model.dart';
 import 'view_model/bottom_sheet_state_manager.dart';
@@ -62,10 +62,12 @@ class BottomSheetDialogManager {
                                                         : IconHelper.smallIcon(children[index].icon!),
                                                   )
                                                 : null),
-                                        Padding(
-                                          padding: UIHelper.lowPaddingVertical,
-                                          child: const Divider(),
-                                        )
+                                        index != children.length - 1
+                                            ? Padding(
+                                                padding: UIHelper.lowPaddingVertical,
+                                                child: const Divider(),
+                                              )
+                                            : Container()
                                       ],
                                     ),
                                   ),
@@ -160,15 +162,11 @@ class BottomSheetDialogManager {
   }
 
   showCheckBoxBottomSheetDialog(BuildContext context, {List<BottomSheetModel>? children, required String title}) {
-    print(children!.length * 50);
-    for (var element in children) {
-      print(element.title);
-    }
     List<dynamic>? list;
     if (viewModel.isSelectedListMap?[title] == null) {
-      viewModel.changeIsSelectedListMap(title, List.generate(children.length, (index) => false));
+      viewModel.changeIsSelectedListMap(title, List.generate(children!.length, (index) => false));
     } else {
-      if (children.length != viewModel.isSelectedListMap?[title]!.length) {
+      if (children!.length != viewModel.isSelectedListMap?[title]!.length) {
         viewModel.changeIsSelectedListMap(title, List.generate(children.length, (index) => false));
       }
     }
@@ -246,9 +244,7 @@ class BottomSheetDialogManager {
     List list = [];
     for (var i = 0; i < viewModel.isSelectedListMap![title]!.length; i++) {
       if (viewModel.isSelectedListMap![title]![i]) {
-        print(children![i].title);
-        list.add(children[i].title);
-        print(list);
+        list.add(children![i].title);
       }
     }
     return list;
@@ -267,7 +263,6 @@ class BottomSheetDialogManager {
       });
       items.add(liste);
     }
-    print(items);
     if (viewModel.kodControllerText.isNullOrEmpty || viewModel.getKodControllerText?.length != onayliGrupNo.length) {
       viewModel.changeKodControllerTextList(List.generate(onayliGrupNo.length, (index) => ""));
     }
@@ -281,10 +276,10 @@ class BottomSheetDialogManager {
         body: Center(
           child: SingleChildScrollView(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const CustomTextField(
+                const CustomWidgetWithLabel(
                   text: "Bakiye Durumu",
                   children: [ToggleButton()],
                 ),
@@ -293,7 +288,7 @@ class BottomSheetDialogManager {
                     runAlignment: WrapAlignment.spaceAround,
                     alignment: WrapAlignment.start,
                     children: [
-                      CustomTextField(
+                      CustomWidgetWithLabel(
                         text: "Plasiyer",
                         children: [
                           Observer(builder: (_) {
@@ -320,7 +315,7 @@ class BottomSheetDialogManager {
                           })
                         ],
                       ),
-                      CustomTextField(
+                      CustomWidgetWithLabel(
                         text: "Şehir",
                         children: [
                           Observer(builder: (_) {
@@ -329,7 +324,6 @@ class BottomSheetDialogManager {
                               controller: sehirController,
                               decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz_outlined)),
                               onTap: () async {
-                                print("${request["sehir"].length} asdklşfşasl");
                                 var result = await showCheckBoxBottomSheetDialog(context,
                                     title: "Şehir seç", children: List.generate(request["sehir"].length, (index) => BottomSheetModel(title: request["sehir"][index].sehirAdi)));
                                 if (result != null) {
@@ -342,7 +336,7 @@ class BottomSheetDialogManager {
                           })
                         ],
                       ),
-                      CustomTextField(
+                      CustomWidgetWithLabel(
                         text: "İlçe",
                         children: [
                           TextField(
@@ -353,7 +347,7 @@ class BottomSheetDialogManager {
                           )
                         ],
                       ),
-                      CustomTextField(
+                      CustomWidgetWithLabel(
                         text: "Tipi",
                         children: [
                           Observer(builder: (_) {
@@ -387,7 +381,7 @@ class BottomSheetDialogManager {
                           String title = onayliGrupNo[index] != 0 ? "Kod ${onayliGrupNo[index]}" : "Grup Kodu";
                           List data = items[index];
 
-                          return CustomTextField(
+                          return CustomWidgetWithLabel(
                             text: title,
                             children: [
                               Observer(builder: (_) {

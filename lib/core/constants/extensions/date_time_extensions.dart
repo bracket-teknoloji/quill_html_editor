@@ -5,3 +5,8 @@ extension DateTimeExtension on DateTime {
     return DateFormat('dd.MM.yyyy').format(this);
   }
 }
+extension DateTimeExtensionWithTime on DateTime {
+  String toDateTimeString() {
+    return DateFormat('dd.MM.yyyy HH:mm:ss').format(this);
+  }
+}

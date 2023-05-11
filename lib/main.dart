@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/view/cari_aktivite_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/view/cari_hareketleri_view.dart";
 
+import "core/base/view/base_cari_edit/view/base_cari_edit_view.dart";
 import "core/init/cache/cache_manager.dart";
 import "core/init/theme/app_theme_dark.dart";
 import "view/add_company/model/account_model.dart";
@@ -18,7 +18,7 @@ import "view/main_page/view/main_page_view.dart";
 
 void main() async {
   await CacheManager.instance.initHiveBoxes();
-  AccountModel.instance.init();
+  await AccountModel.instance.init();
   // SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: [SystemUiOverlay.top, SystemUiOverlay.bottom]);
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]).then((_) {
     runApp(const MyApp());
@@ -49,16 +49,16 @@ class MyApp extends StatelessWidget {
           page: () => const MainPageView(),
           children: [
             GetPage(
-              name: "/cariHareketleri",
-              page: () => CariHareketleriView(cari: Get.arguments),
+              name: "/cariDuzenle",
+              page: () => BaseCariEditingView(cariListesiModel: Get.arguments),
             ),
             GetPage(
               name: "/cariListesi",
               page: () => const CariListesiView(),
             ),
             GetPage(
-              name: "/cariAktivite",
-              page: () => const CariAktiviteView(),
+              name: "/cariHareketleri",
+              page: () => CariHareketleriView(cari: Get.arguments),
             ),
           ],
         ),

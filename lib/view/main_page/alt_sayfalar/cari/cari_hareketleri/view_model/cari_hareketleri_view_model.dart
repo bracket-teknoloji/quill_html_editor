@@ -8,6 +8,14 @@ class CariHareketleriViewModel = _CariHareketleriViewModelBase with _$CariHareke
 
 abstract class _CariHareketleriViewModelBase with Store {
   @observable
+  bool isScrollDown = false;
+
+  @action
+  void changeScrollDown(bool value) {
+    isScrollDown = value;
+  }
+
+  @observable
   ObservableList<CariHareketleriModel>? cariHareketleriList;
 
   @action

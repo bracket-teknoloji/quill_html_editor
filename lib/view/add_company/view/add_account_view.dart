@@ -11,7 +11,7 @@ import 'package:kartal/kartal.dart';
 import '../../../core/base/model/base_network_mixin.dart';
 import '../../../core/base/model/generic_response_model.dart';
 import '../../../core/base/state/base_state.dart';
-import '../../../core/components/textfield/custom_textfield.dart';
+import '../../../core/components/textfield/custom_label_widget.dart';
 import '../../../core/init/network/login/api_urls.dart';
 import '../model/account_model.dart';
 import '../model/account_response_model.dart';
@@ -40,7 +40,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                CustomTextField(
+                CustomWidgetWithLabel(
                   text: "Firma E-Posta Adresi",
                   children: [
                     TextFormField(
@@ -54,7 +54,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
                 ),
                 Padding(
                   padding: context.verticalPaddingLow,
-                  child: CustomTextField(
+                  child: CustomWidgetWithLabel(
                     text: "Şifre",
                     children: [
                       TextFormField(obscureText: true, controller: _controller2),

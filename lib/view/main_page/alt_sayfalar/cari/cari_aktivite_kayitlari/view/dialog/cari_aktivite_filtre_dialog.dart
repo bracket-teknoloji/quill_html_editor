@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:picker/core/base/helpers/helper.dart';
 import 'package:picker/core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart';
-import 'package:picker/core/components/textfield/custom_textfield.dart';
+import 'package:picker/core/components/textfield/custom_label_widget.dart';
 
 class CariAktiviteFiltreDialogManager {
   static final BottomSheetDialogManager _bottomSheetDialogManager = BottomSheetDialogManager();
   static void showAktiviteDialog(BuildContext context) => _bottomSheetDialogManager.showBottomSheetDialog(context,
       title: "title",
       body: Column(crossAxisAlignment: CrossAxisAlignment.stretch, mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        const CustomTextField(
+        const CustomWidgetWithLabel(
           text: "Cari",
           children: [TextField()],
         ),
-        const CustomTextField(
+        const CustomWidgetWithLabel(
           text: "Kullanıcı",
           children: [TextField()],
         ),

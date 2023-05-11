@@ -1,8 +1,11 @@
 // ignore_for_file: avoid_print
 
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:picker/core/base/model/base_network_mixin.dart';
 import 'package:picker/core/base/model/generic_response_model.dart';
+import 'package:picker/core/constants/extensions/date_time_extensions.dart';
 import 'package:picker/core/init/cache/cache_manager.dart';
 import 'package:picker/view/auth/model/login_model.dart';
 
@@ -21,7 +24,9 @@ class NetworkManager {
           return handler.next(options);
         },
         onError: (e, handler) {
-          if (e.type == DioErrorType.connectionTimeout) {
+          if (e.type == DioErrorType.connectionError) {
+            return handler.next(DioError(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error}"));
+          } else if (e.type == DioErrorType.connectionTimeout) {
             return handler.next(DioError(requestOptions: RequestOptions(), message: "Bağlantı zaman aşımına uğradı."));
           } else {
             return handler.next(e);
@@ -52,9 +57,10 @@ class NetworkManager {
       Map<String, String>? queryParameters,
       bool addQuery = true,
       bool addSirketBilgileri = false,
+      bool addCKey = false,
       bool addTokenKey = true}) async {
     CancelToken cancelToken = CancelToken();
-    Map<String, String> head = getStandardHeader(addTokenKey, addSirketBilgileri);
+    Map<String, String> head = getStandardHeader(addTokenKey, addSirketBilgileri, addCKey);
     if (headers != null) head.addEntries(headers.entries);
     Map<String, String> queries = getStandardQueryParameters();
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
@@ -83,7 +89,7 @@ class NetworkManager {
     return responseModel;
   }
 
-  Map<String, String> getStandardHeader(bool addTokenKey, [bool headerSirketBilgileri = false]) {
+  Map<String, String> getStandardHeader(bool addTokenKey, [bool headerSirketBilgileri = false, bool headerCKey = false]) {
     Map<String, String> header = {};
     if (addTokenKey) {
       String token = CacheManager.getToken();
@@ -97,6 +103,12 @@ class NetworkManager {
         "SUBE_KODU": veriTabani["Şube"].toString(),
       };
       header.addEntries(sirketBilgileri.entries);
+    }
+    if (headerCKey) {
+      final timeZoneMinutes = DateTime.now().timeZoneOffset.inMinutes;
+      String baseEncoded = base64Encode(utf8.encode('{"TZ_MINUTES" :$timeZoneMinutes,"ZAMAN": "${DateTime.now().toDateTimeString()}"}'));
+      print(baseEncoded);
+      header.addAll({"CKey": baseEncoded});
     }
     return header;
   }

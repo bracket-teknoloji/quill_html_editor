@@ -12,7 +12,7 @@ import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
 import '../../../core/base/state/base_state.dart';
-import '../../../core/components/textfield/custom_textfield.dart';
+import '../../../core/components/textfield/custom_label_widget.dart';
 import '../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../core/init/app_info/app_info.dart';
 import '../../../core/init/cache/cache_manager.dart';
@@ -49,7 +49,7 @@ class _LoginViewState extends BaseState<LoginView> {
     companyController.text = textFieldData["company"];
     emailController.text = textFieldData["user"];
     passwordController.text = textFieldData["password"];
-    // autoLogin();
+    autoLogin();
     AppInfoModel().init().then((value) {
       setState(() {
         version = AppInfoModel.version;
@@ -67,7 +67,6 @@ class _LoginViewState extends BaseState<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    // autoLogin();
     return WillPopScope(
       onWillPop: () async {
         return false;
@@ -115,7 +114,7 @@ class _LoginViewState extends BaseState<LoginView> {
                             ],
                           ),
                         ),
-                        CustomTextField(text: "Firma", children: [
+                        CustomWidgetWithLabel(text: "Firma", children: [
                           TextFormField(
                             readOnly: true,
                             onTap: () async {
@@ -135,7 +134,7 @@ class _LoginViewState extends BaseState<LoginView> {
                         ]),
                         Padding(
                           padding: UIHelper.midPaddingOnlyTop,
-                          child: CustomTextField(
+                          child: CustomWidgetWithLabel(
                             text: "Netfect Kullanıcı Adı",
                             children: [
                               TextFormField(
@@ -147,7 +146,7 @@ class _LoginViewState extends BaseState<LoginView> {
                         ),
                         Padding(
                           padding: UIHelper.midPaddingVertical,
-                          child: CustomTextField(
+                          child: CustomWidgetWithLabel(
                             text: "Şifre",
                             children: [
                               TextField(
@@ -185,14 +184,14 @@ class _LoginViewState extends BaseState<LoginView> {
   }
 
   void autoLogin() async {
-    if (AccountModel.instance.ozelCihazKimligi.isNotNullOrNoEmpty) {
-      SchedulerBinding.instance.addPostFrameCallback((_) async {
-        var a = CacheManager.getLogout;
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      if (AccountModel.instance.ozelCihazKimligi.isNotNullOrNoEmpty) {
+        bool? a = CacheManager.getLogout;
         if (a != null && a) {
           login();
         }
-      });
-    }
+      }
+    });
   }
 
   ElevatedButton get elevatedButton {

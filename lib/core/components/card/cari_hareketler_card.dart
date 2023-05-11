@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:picker/core/base/helpers/helper.dart';
-import 'package:picker/core/components/textfield/custom_textfield.dart';
-import 'package:picker/core/constants/extensions/data_time_extensions.dart';
+import 'package:picker/core/components/textfield/custom_label_widget.dart';
+import 'package:picker/core/constants/extensions/date_time_extensions.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart';
 
 import '../../base/state/base_state.dart';
@@ -48,10 +48,10 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
             subtitle: Wrap(
               runAlignment: WrapAlignment.spaceBetween,
               children: [
-                CustomTextField(isVertical: true, isTitleSmall: true, text: "Belge No", children: [Text(widget.cariHareketleriModel.belgeNo ?? "")]),
-                CustomTextField(isVertical: true, isTitleSmall: true, text: "Vade Tarihi", children: [Text(widget.cariHareketleriModel.vadeTarihi?.toDateString() ?? "")]),
-                CustomTextField(isVertical: true, isTitleSmall: true, text: "Plasiyer", children: [Text(widget.cariHareketleriModel.plasiyerAciklama ?? "")]),
-                CustomTextField(isVertical: true, isTitleSmall: true, text: "Şube", children: [Text("${widget.cariHareketleriModel.subeKodu ?? 0}")])
+                CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Belge No", children: [Text(widget.cariHareketleriModel.belgeNo ?? "")]),
+                CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Vade Tarihi", children: [Text(widget.cariHareketleriModel.vadeTarihi?.toDateString() ?? "")]),
+                CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Plasiyer", children: [Text(widget.cariHareketleriModel.plasiyerAciklama ?? "")]),
+                CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Şube", children: [Text("${widget.cariHareketleriModel.subeKodu ?? 0}")])
               ].map((e) => SizedBox(width: width * 0.33, child: e).paddingOnly(right: UIHelper.lowSize, bottom: UIHelper.lowSize)).toList(),
             ),
           ),

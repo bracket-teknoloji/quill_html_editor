@@ -26,6 +26,22 @@ mixin _$CariHareketleriViewModel on _CariHareketleriViewModelBase, Store {
               name: '_CariHareketleriViewModelBase.alacaklarToplami'))
       .value;
 
+  late final _$isScrollDownAtom = Atom(
+      name: '_CariHareketleriViewModelBase.isScrollDown', context: context);
+
+  @override
+  bool get isScrollDown {
+    _$isScrollDownAtom.reportRead();
+    return super.isScrollDown;
+  }
+
+  @override
+  set isScrollDown(bool value) {
+    _$isScrollDownAtom.reportWrite(value, super.isScrollDown, () {
+      super.isScrollDown = value;
+    });
+  }
+
   late final _$cariHareketleriListAtom = Atom(
       name: '_CariHareketleriViewModelBase.cariHareketleriList',
       context: context);
@@ -80,6 +96,17 @@ mixin _$CariHareketleriViewModel on _CariHareketleriViewModelBase, Store {
       ActionController(name: '_CariHareketleriViewModelBase', context: context);
 
   @override
+  void changeScrollDown(bool value) {
+    final _$actionInfo = _$_CariHareketleriViewModelBaseActionController
+        .startAction(name: '_CariHareketleriViewModelBase.changeScrollDown');
+    try {
+      return super.changeScrollDown(value);
+    } finally {
+      _$_CariHareketleriViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setCariHareketleri(List<CariHareketleriModel>? value) {
     final _$actionInfo = _$_CariHareketleriViewModelBaseActionController
         .startAction(name: '_CariHareketleriViewModelBase.setCariHareketleri');
@@ -115,6 +142,7 @@ mixin _$CariHareketleriViewModel on _CariHareketleriViewModelBase, Store {
   @override
   String toString() {
     return '''
+isScrollDown: ${isScrollDown},
 cariHareketleriList: ${cariHareketleriList},
 siralama: ${siralama},
 isSearchBarOpened: ${isSearchBarOpened},

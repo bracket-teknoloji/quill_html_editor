@@ -7,7 +7,7 @@ import "package:kartal/kartal.dart";
 import "../core/base/state/base_state.dart";
 import '../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart';
 import '../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import "../core/components/textfield/custom_textfield.dart";
+import '../core/components/textfield/custom_label_widget.dart';
 import "../core/init/cache/cache_manager.dart";
 import "../core/init/network/login/api_urls.dart";
 import "add_company/model/account_model.dart";
@@ -67,6 +67,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     }
     if (selected["Şirket"] != "" || selected["Şirket"] != null) {
       sube = await getSube(selected["Şirket"]);
+      if (!mounted) return;
       isletme = await getIsletme();
       if (isletme!.length == 1 && controller1?.text != "") {
         controller2!.text = isletme![0].isletmeAdi!;
@@ -74,6 +75,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
         userData["İşletme"] = isletme![0].isletmeAdi;
         focusNode!.requestFocus();
       } else if (controller2?.text == "" && controller1?.text != "") {
+        if (!mounted) return;
         await isletmeDialog(context);
       }
       if (sube!.length == 1 && controller2?.text != "") {
@@ -82,6 +84,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
         userData["Şube"] = sube![0].subeAdi;
         focusNode!.requestFocus();
       } else if (controller3?.text == "" && controller1?.text != "") {
+        if (!mounted) return;
         await subeDialog(context);
       }
     }
@@ -158,7 +161,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          CustomTextField(text: "Şirket", children: [
+                          CustomWidgetWithLabel(text: "Şirket", children: [
                             TextFormField(
                               decoration: const InputDecoration(
                                 suffixIcon: Icon(Icons.more_horiz_outlined),
@@ -173,7 +176,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                               },
                             ),
                           ]),
-                          CustomTextField(
+                          CustomWidgetWithLabel(
                             text: "İşletme Kodu",
                             children: [
                               TextFormField(
@@ -189,7 +192,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                               )
                             ],
                           ),
-                          CustomTextField(text: "Şube Kodu", children: [
+                          CustomWidgetWithLabel(text: "Şube Kodu", children: [
                             TextFormField(
                               controller: controller3,
                               enabled: sube!.isNotEmpty,
@@ -202,7 +205,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                               ),
                             )
                           ]),
-                          // CustomTextField(
+                          // CustomWidgetWithLabel(
                           //   text: "Şirket",
                           //   children: [
                           //     DropdownButtonFormField(
@@ -229,7 +232,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                           //     )
                           //   ],
                           // ),
-                          // CustomTextField(
+                          // CustomWidgetWithLabel(
                           //   text: "İşletme Kodu",
                           //   children: [
                           //     DropdownButtonFormField(
@@ -249,7 +252,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                           //     )
                           //   ],
                           // ),
-                          // CustomTextField(
+                          // CustomWidgetWithLabel(
                           //   text: "Şube Kodu ",
                           //   children: [
                           //     DropdownButtonFormField(

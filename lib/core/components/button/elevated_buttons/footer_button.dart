@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class FooterButton extends StatelessWidget {
   final Color? color;
   final List<Widget> children;
-  const FooterButton({super.key, this.color, required this.children});
+  final dynamic Function()? onPressed;
+  const FooterButton({super.key, this.color, required this.children, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class FooterButton extends StatelessWidget {
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
         ),
       ),
-      onPressed: () {},
+      onPressed: onPressed,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

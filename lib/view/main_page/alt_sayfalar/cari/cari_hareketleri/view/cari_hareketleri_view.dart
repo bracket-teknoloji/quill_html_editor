@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
@@ -10,6 +10,7 @@ import 'package:picker/core/components/button/elevated_buttons/bottom_appbar_but
 import 'package:picker/core/components/button/elevated_buttons/footer_button.dart';
 import 'package:picker/core/components/card/cari_hareketler_card.dart';
 import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
+import 'package:picker/core/components/wrap/appbar_title.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/view_model/cari_hareketleri_view_model.dart';
 import 'package:scroll_app_bar/scroll_app_bar.dart';
@@ -46,42 +47,59 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
 
   void init() async {
     viewModel.setCariHareketleri(await getData());
+    scrollController?.addListener(() {
+      if (scrollController!.position.userScrollDirection == ScrollDirection.forward) {
+        viewModel.changeScrollDown(true);
+      }
+      if (scrollController!.position.userScrollDirection == ScrollDirection.reverse) {
+        viewModel.changeScrollDown(false);
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: appBar(context),
-        floatingActionButton: Observer(builder: (_) => fab()),
+        floatingActionButton: fab(),
         bottomNavigationBar: bottomButtonBar(),
-        body: Observer(
-          builder: (_) => (viewModel.cariHareketleriList.isNullOrEmpty
-              ? (viewModel.cariHareketleriList?.isEmpty ?? false)
-                  ? const Center(child: Text("Cari Bulunamadı"))
-                  : const Center(child: CircularProgressIndicator())
-              : Observer(builder: (_) {
-                  return ListView.builder(
-                    primary: false,
-                    controller: scrollController,
-                    itemCount: viewModel.cariHareketleriList != null ? viewModel.cariHareketleriList!.length : 0,
-                    itemBuilder: (context, index) {
-                      return CariHareketlerCard(
-                        cariHareketleriModel: viewModel.cariHareketleriList![index],
-                        onTap: () {
-                          var children2 = [
-                            BottomSheetModel(iconWidget: Icons.view_comfy_outlined, title: "Görüntüle", onTap: () {}),
-                            BottomSheetModel(iconWidget: Icons.display_settings_outlined, title: "İşlemler", onTap: () {}),
-                            BottomSheetModel(iconWidget: Icons.picture_as_pdf_outlined, title: "PDF Görüntüle", onTap: () {}),
-                          ];
-                          if (viewModel.cariHareketleriList![index].dovizBorc == null && viewModel.cariHareketleriList![index].dovizAlacak == null) {
-                            children2.add(BottomSheetModel(iconWidget: Icons.picture_as_pdf_outlined, title: "Tahsilat Makbuzu", onTap: () {}));
-                          }
-                          bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: children2);
+        body: Snap(
+          controller: scrollController!.appBar,
+          child: RefreshIndicator(
+            onRefresh: () async {
+              viewModel.setCariHareketleri(null);
+              return getData().then((value) => viewModel.setCariHareketleri(value));
+            },
+            child: Observer(
+              builder: (_) => (viewModel.cariHareketleriList.isNullOrEmpty
+                  ? (viewModel.cariHareketleriList?.isEmpty ?? false)
+                      ? const Center(child: Text("Cari Bulunamadı"))
+                      : const Center(child: CircularProgressIndicator())
+                  : Observer(builder: (_) {
+                      return ListView.builder(
+                        primary: false,
+                        controller: scrollController,
+                        itemCount: viewModel.cariHareketleriList != null ? viewModel.cariHareketleriList!.length : 0,
+                        itemBuilder: (context, index) {
+                          return CariHareketlerCard(
+                            cariHareketleriModel: viewModel.cariHareketleriList![index],
+                            onTap: () {
+                              var children2 = [
+                                BottomSheetModel(iconWidget: Icons.view_comfy_outlined, title: "Görüntüle", onTap: () {}),
+                                BottomSheetModel(iconWidget: Icons.display_settings_outlined, title: "İşlemler", onTap: () {}),
+                                BottomSheetModel(iconWidget: Icons.picture_as_pdf_outlined, title: "PDF Görüntüle", onTap: () {}),
+                              ];
+                              if (viewModel.cariHareketleriList![index].dovizBorc == null && viewModel.cariHareketleriList![index].dovizAlacak == null) {
+                                children2.add(BottomSheetModel(iconWidget: Icons.picture_as_pdf_outlined, title: "Tahsilat Makbuzu", onTap: () {}));
+                              }
+                              bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: children2);
+                            },
+                          );
                         },
                       );
-                    },
-                  );
-                })),
+                    })),
+            ),
+          ),
         )
         // : Observer(builder: (_) {
         // var list = viewModel.cariHareketleriList;
@@ -89,52 +107,34 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
         );
   }
 
-  FloatingActionButton fab() {
+  Widget fab() {
     // scrollController?.appBar.setPinState(false);
-    return FloatingActionButton(
-      onPressed: () {},
-      child: ValueListenableBuilder<bool>(
-        valueListenable: scrollController!.appBar.pinNotifier,
-        child: const Icon(Icons.add),
-        builder: (context, value, child) {
-          if (!value) return child!;
-          return Transform.rotate(angle: pi / 2, child: child);
-        },
-      ),
-    );
+    return Observer(builder: (_) {
+      return Visibility(visible: viewModel.isScrollDown, child: FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add_outlined)));
+    });
   }
 
   ScrollAppBar appBar(BuildContext context) {
     Platform.isLinux || Platform.isWindows || Platform.isMacOS ? scrollController?.appBar.setPinState(true) : scrollController?.appBar.setPinState(false);
     return ScrollAppBar(
+      materialType: MaterialType.transparency,
+      backgroundColor: Colors.transparent,
       controller: scrollController!,
-      centerTitle: false,
       title: Observer(
-        builder: (_) => viewModel.isSearchBarOpened
-            ? SizedBox(
-                height: kToolbarHeight * 0.9,
-                child: TextFormField(
-                  autofocus: true,
-                  decoration: const InputDecoration(
-                    hintText: "Daha eklemedim :)",
-                  ),
-                ).marginAll(5),
-              )
-            : Wrap(
-                direction: Axis.vertical,
-                children: [
-                  Text("Cari Hareketleri ${viewModel.cariHareketleriList?.isNotEmpty ?? false ? '(${viewModel.cariHareketleriList!.length})' : ''}"),
-                  SizedBox(
-                    width: width * 0.5,
-                    child: Text(
-                      widget.cari?.cariAdi.toString() ?? "",
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 14),
+          builder: (_) => viewModel.isSearchBarOpened
+              ? SizedBox(
+                  height: kToolbarHeight * 0.9,
+                  child: TextFormField(
+                    autofocus: true,
+                    decoration: const InputDecoration(
+                      hintText: "Daha eklemedim :)",
                     ),
-                  )
-                ],
-              ),
-      ),
+                  ).marginAll(5),
+                )
+              : AppBarTitle(
+                  title: "Cari Hareketleri ${viewModel.cariHareketleriList?.isNotEmpty ?? false ? '(${viewModel.cariHareketleriList!.length})' : ''}",
+                  subtitle: widget.cari?.cariAdi.toString() ?? "",
+                )),
       leading: viewModel.isSearchBarOpened
           ? IconButton(
               onPressed: () {
@@ -158,9 +158,9 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
               itemExtent: width * 0.33,
               scrollDirection: Axis.horizontal,
               children: [
-                AppBarButton(child: const Text("Cari İşlemleri"), onPressed: () {}),
+                AppBarButton(onPressed: () {}, icon: Icons.tune_outlined, child: const Text("Cari İşlemleri")),
                 AppBarButton(
-                    child: const Text("Sırala"),
+                    icon: Icons.sort_by_alpha_outlined,
                     onPressed: () async {
                       var siralama = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Sıralama seçiniz", children: [
                         BottomSheetModel(title: "Tarih (Eskiden-Yeniye)", onTap: () => Get.back(result: "TARIH_AZ")),
@@ -171,8 +171,10 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                         viewModel.setCariHareketleri(null);
                         return getData().then((value) => viewModel.setCariHareketleri(value));
                       }
-                    }),
+                    },
+                    child: const Text("Sırala")),
                 AppBarButton(
+                    icon: Icons.refresh_outlined,
                     child: const Text("Yenile"),
                     onPressed: () {
                       viewModel.setCariHareketleri(null);
@@ -198,7 +200,9 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                   return Text("${viewModel.borclarToplami.dotSeparatedWithFixedDigits} TL");
                 })
               ])),
+              const VerticalDivider(thickness: 1, width: 1),
               Expanded(child: FooterButton(children: [const Text("Alacak"), Text("${viewModel.alacaklarToplami.dotSeparatedWithFixedDigits} TL")])),
+              const VerticalDivider(thickness: 1, width: 1),
               Expanded(
                   child: FooterButton(children: [
                 const Text("Tahsil Edilecek"),
@@ -229,7 +233,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
       queryParameters: {"SIRALAMA": viewModel.siralama, "EkranTipi": "L", "CariKodu": widget.cari?.cariKodu ?? ""},
       addSirketBilgileri: true,
     );
-    setState(() {});
+    // setState(() {});
     return (response.data).map((e) => e as CariHareketleriModel).toList().cast<CariHareketleriModel>();
   }
 }

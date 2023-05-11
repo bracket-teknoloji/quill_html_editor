@@ -158,7 +158,7 @@ class AccountModel with NetworkManagerMixin {
   @JsonKey(name: "QR_DATA")
   String? qrData;
 
-  void init() async {
+  Future<void> init() async {
     // aktifIsletmeKodu = CacheManager.getVeriTabani()["İşletme"];
     // aktifSubeKodu = CacheManager.getVeriTabani()["Şube"];
     // aktifVeritabani = CacheManager.getVeriTabani()["Şirket"];
@@ -191,8 +191,10 @@ class AccountModel with NetworkManagerMixin {
     cihazDili = "tr";
     cihazTarihiUtc = DateTime.now().toUtc();
     final deviceInfo = DeviceInfoPlugin();
+    //!WEB
     if (kIsWeb) {
-    } else if (Platform.isAndroid) {
+    } //! ANDROID
+    else if (Platform.isAndroid) {
       platform = Platform.operatingSystem;
       final androidInfo = await deviceInfo.androidInfo;
       cihazSistemVersiyonu = androidInfo.version.sdkInt.toString();
@@ -205,14 +207,18 @@ class AccountModel with NetworkManagerMixin {
       } else {
         cihazKimligi = base64Encode(utf8.encode("$cihazMarkasi:$cihazModeli:${androidInfo.serialNumber}:"));
       }
-      androidInfo.serialNumber;
-    } else if (Platform.isIOS) {
+      // androidInfo.serialNumber;
+    }
+    //! IOS
+    else if (Platform.isIOS) {
       final iosInfo = await deviceInfo.iosInfo;
       cihazMarkasi = iosInfo.name;
       cihazModeli = iosInfo.model;
       cihazSistemVersiyonu = iosInfo.systemVersion;
       ozelCihazKimligi = iosInfo.identifierForVendor;
-    } else if (Platform.isMacOS || Platform.isLinux || Platform.isWindows) {
+    }
+    //!DESKTOP
+    else if (Platform.isWindows) {
       platform = Platform.operatingSystem;
       final desktopInfo = await deviceInfo.windowsInfo;
       cihazSistemVersiyonu = Platform.operatingSystemVersion;
@@ -222,6 +228,7 @@ class AccountModel with NetworkManagerMixin {
         cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
         log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");
       } else {
+        ozelCihazKimligi = base64Encode(utf8.encode("$cihazMarkasi:$cihazModeli:${desktopInfo.releaseId}:"));
         cihazKimligi = base64Encode(utf8.encode("$cihazMarkasi:$cihazModeli:${desktopInfo.releaseId}:"));
       }
     }
