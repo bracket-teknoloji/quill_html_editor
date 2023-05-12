@@ -18,3 +18,10 @@ extension NumExtensionWithFixedDigitsAndComma on num {
     return toStringAsFixed(2).replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]}.');
   }
 }
+
+//an extension on num to string if null return empty string
+extension NumExtensionToString on num? {
+  String get toStringIfNull {
+    return toString() == "null" ? "" : toString();
+  }
+}

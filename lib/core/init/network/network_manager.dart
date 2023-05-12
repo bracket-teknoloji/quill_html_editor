@@ -41,7 +41,7 @@ class NetworkManager {
         queryParameters: queryParameters,
         cancelToken: CancelToken(),
         options: Options(headers: {
-          "Platform": "android",
+          "Platform": "netfect",
           "Content-Type": "application/x-www-form-urlencoded",
         }, method: HttpTypes.GET, responseType: ResponseType.json),
         data: data);
@@ -77,12 +77,13 @@ class NetworkManager {
       dynamic data,
       Map<String, String>? queryParameters,
       bool addQuery = true,
+      bool addSirketBilgileri = false,
+      bool addCKey = false,
       bool addTokenKey = true}) async {
-    Map<String, String> head = getStandardHeader(addTokenKey);
-    if (headers != null) {
-      head.addEntries(headers.entries);
-    }
+    Map<String, String> head = getStandardHeader(addTokenKey, addSirketBilgileri, addCKey);
+    if (headers != null) head.addEntries(headers.entries);
     Map<String, String> queries = getStandardQueryParameters();
+    if (queryParameters != null) queries.addEntries(queryParameters.entries);
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
     final response = await _dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
     GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);

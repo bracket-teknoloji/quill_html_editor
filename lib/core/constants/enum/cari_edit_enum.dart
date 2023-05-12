@@ -1,12 +1,12 @@
 enum CariEditEnum { ekle, duzenle, goruntule }
 
 extension ToString on CariEditEnum {
-  String get name => getName(this);
+  String? get name => getName(this);
 
-  String getName(CariEditEnum cariEditEnum) {
+  String? getName(CariEditEnum cariEditEnum) {
     switch (cariEditEnum) {
       case CariEditEnum.ekle:
-        return "Ekle";
+        return "Yeni Kayıt";
       case CariEditEnum.duzenle:
         return "Düzenle";
       case CariEditEnum.goruntule:

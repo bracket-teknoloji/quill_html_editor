@@ -9,14 +9,13 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:kartal/kartal.dart';
-import 'package:picker/core/base/view/base_cari_edit/view/base_cari_edit_view.dart';
 import 'package:picker/core/constants/enum/cari_edit_enum.dart';
+import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_secenekler_model.dart';
+import 'package:picker/view/main_page/alt_sayfalar/cari/cari_network_manager.dart';
 import 'package:scroll_app_bar/scroll_app_bar.dart';
 
-import '../../../../../../core/base/model/base_network_mixin.dart';
-import '../../../../../../core/base/model/generic_response_model.dart';
 import '../../../../../../core/base/state/base_state.dart';
-import '../../../../../../core/base/view/base_cari_edit/view/base_edit_genel/model/base_cari_edit_model.dart';
+import '../../../../../../core/base/view/base_cari_edit/view/base_cari_edit_genel/model/base_cari_edit_model.dart';
 import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
 import '../../../../../../core/components/button/elevated_buttons/footer_button.dart';
 import '../../../../../../core/components/button/toggle_buttons/toggle_button.dart';
@@ -28,9 +27,7 @@ import '../../../../../../core/constants/extensions/number_extensions.dart';
 import '../../../../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../../../../core/init/network/login/api_urls.dart';
 import '../../../../../add_company/model/account_model.dart';
-import '../model/cari_listesi_grup_kodu_model.dart';
 import '../model/cari_listesi_model.dart';
-import '../model/cari_sehirler_model.dart';
 import '../view_model/cari_listesi_view_model.dart';
 
 class CariListesiView extends StatefulWidget {
@@ -141,10 +138,13 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                       return Card(
                         child: ListTile(
                           onTap: () async {
-                            String? pageName = await BottomSheetDialogManager().showBottomSheetDialog(context, title: "${object.cariKodu}\n${object.cariAdi}", children: [
-                              // BottomSheetModel(title: "Görüntüle", iconWidget: Icons.search_outlined),
-                              BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit_outlined, onTap: () => Get.back(result: "/mainPage/cariDuzenle")),
-                              // BottomSheetModel(title: "Sil", iconWidget: Icons.delete_outline_outlined),
+                            var pageName = await BottomSheetDialogManager().showBottomSheetDialog(context, title: "${object.cariKodu}\n${object.cariAdi}", children: [
+                              BottomSheetModel(
+                                  title: "Görüntüle",
+                                  iconWidget: Icons.search_outlined,
+                                  onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", cariEditEnum: CariEditEnum.goruntule))),
+                              BottomSheetModel(
+                                  title: "Düzelt", iconWidget: Icons.edit_outlined, onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", cariEditEnum: CariEditEnum.duzenle))),
                               BottomSheetModel(title: "Hareketler", iconWidget: Icons.list_alt_outlined, onTap: () => Get.back(result: "/mainPage/cariHareketleri")),
                               // BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
                               // BottomSheetModel(title: "Raporlar", iconWidget: Icons.list_alt_outlined),
@@ -152,32 +152,31 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                             ]);
                             if (pageName != null) {
                               CariEditEnum? cariEditEnum;
-                              if (pageName == "/mainPage/cariDuzenle") {
-                                cariEditEnum = CariEditEnum.duzenle;
-                              } else if (pageName == "/mainPage/cariGoruntule") {
-                                cariEditEnum = CariEditEnum.goruntule;
+                              if (pageName is CariSeceneklerModel) {
+                                cariEditEnum = pageName.cariEditEnum;
+                                pageName = pageName.path;
+                                BaseCariEditModel editModel = BaseCariEditModel(cariEditEnum: cariEditEnum, model: object);
+                                Get.toNamed(pageName, arguments: editModel);
+                              } else {
+                                Get.toNamed(pageName, arguments: object);
                               }
-                              BaseCariEditModel editModel = BaseCariEditModel(cariEditEnum: cariEditEnum, model: object);
-                              Get.toNamed(pageName, arguments: editModel);
                             }
                           },
                           isThreeLine: true,
                           contentPadding: UIHelper.midPadding,
-                          leading: CircleAvatar(backgroundColor: getLeadingColor(object.bakiye ?? 0.0), child: Text(object.cariAdi!.substring(0, 1))),
+                          leading: CircleAvatar(backgroundColor: UIHelper.getColorWithValue(object.bakiye ?? 0.0), child: Text(object.cariAdi!.substring(0, 1))),
                           title: Text(object.cariAdi ?? ""),
                           subtitle: Wrap(
                             direction: Axis.vertical,
                             alignment: WrapAlignment.spaceBetween,
                             children: [
                               Text("${object.cariKodu}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))),
-                              object.cariIl != null
-                                  ? Text("${object.cariIl}/${object.cariIlce}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5)))
-                                  : const SizedBox(),
+                              object.cariIl != null ? Text("${object.cariIl}/${object.cariIlce}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))) : const SizedBox(),
                             ],
                           ),
                           trailing: Wrap(children: [
                             Text((object.bakiye == null ? '0.00 TL' : '${formatter.format(object.bakiye)} TL' "\n").toString(),
-                                style: TextStyle(color: getLeadingColor(object.bakiye ?? 0.0)))
+                                style: TextStyle(color: UIHelper.getColorWithValue(object.bakiye ?? 0.0)))
                           ]),
                         ),
                       );
@@ -230,11 +229,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                 duration: const Duration(milliseconds: 500),
                 child: FloatingActionButton(
                   onPressed: () {
-                    Get.to(() => const BaseCariEditingView(
-                          appBarTitle: "Cari Kartı",
-                          appBarSubtitle: "Yeni Kayıt",
-                          actions: [Icon(Icons.safety_check)],
-                        ));
+                    Get.toNamed("/mainPage/cariEdit", arguments: BaseCariEditModel(cariEditEnum: CariEditEnum.ekle, model: CariListesiModel()));
                   },
                   child: ValueListenableBuilder<bool>(
                     valueListenable: _scrollController.appBar.pinNotifier,
@@ -306,8 +301,8 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                 onPressed: () async {
                   if (filterData == null) {
                     dialogManager.showLoadingDialog("Filtreler yükleniyor");
-                    var responseSehir = await getFilterData();
-                    var responseKod = await getKod();
+                    var responseSehir = await CariNetworkManager.getFilterData();
+                    var responseKod = await CariNetworkManager.getKod();
                     filterData = {"sehir": responseSehir.data, "kod": responseKod.data};
                     dialogManager.hideAlertDialog;
                   }
@@ -434,31 +429,31 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   //   );
   // }
 
-  Future<GenericResponseModel<NetworkManagerMixin>> getFilterData() async {
-    GenericResponseModel<NetworkManagerMixin> responseSehirler;
-    responseSehirler = await networkManager.dioGet<CariSehirlerModel>(path: ApiUrls.getCariKayitliSehirler, bodyModel: CariSehirlerModel(), addTokenKey: true, headers: {
-      "VERITABANI": AccountModel.instance.aktifVeritabani.toString(),
-      "ISLETME_KODU": AccountModel.instance.aktifIsletmeKodu.toString(),
-      "SUBE_KODU": AccountModel.instance.aktifSubeKodu.toString(),
-      "Modul": "CARI",
-      "GrupNo": "-1",
-      "Kullanimda": "E"
-    });
+  // Future<GenericResponseModel<NetworkManagerMixin>> getFilterData() async {
+  //   GenericResponseModel<NetworkManagerMixin> responseSehirler;
+  //   responseSehirler = await networkManager.dioGet<CariSehirlerModel>(path: ApiUrls.getCariKayitliSehirler, bodyModel: CariSehirlerModel(), addTokenKey: true, headers: {
+  //     "VERITABANI": AccountModel.instance.aktifVeritabani.toString(),
+  //     "ISLETME_KODU": AccountModel.instance.aktifIsletmeKodu.toString(),
+  //     "SUBE_KODU": AccountModel.instance.aktifSubeKodu.toString(),
+  //     "Modul": "CARI",
+  //     "GrupNo": "-1",
+  //     "Kullanimda": "E"
+  //   });
 
-    return responseSehirler;
-  }
+  //   return responseSehirler;
+  // }
 
-  Future<GenericResponseModel<NetworkManagerMixin>> getKod() async {
-    var responseKod = await networkManager.dioGet<CariGrupKoduModel>(
-        path: ApiUrls.getGrupKodlari,
-        bodyModel: CariGrupKoduModel(),
-        addCKey: true,
-        headers: {"Modul": "CARI", "GrupNo": "1"},
-        addQuery: true,
-        addSirketBilgileri: true,
-        queryParameters: {"Modul": "CARI", "GrupNo": "-1"});
-    return responseKod;
-  }
+  // Future<GenericResponseModel<NetworkManagerMixin>> getKod() async {
+  //   var responseKod = await networkManager.dioGet<CariGrupKoduModel>(
+  //       path: ApiUrls.getGrupKodlari,
+  //       bodyModel: CariGrupKoduModel(),
+  //       addCKey: true,
+  //       headers: {"Modul": "CARI", "GrupNo": "1"},
+  //       addQuery: true,
+  //       addSirketBilgileri: true,
+  //       queryParameters: {"Modul": "CARI", "GrupNo": "-1"});
+  //   return responseKod;
+  // }
 
   Future<List?> getData({required int sayfa, String? sort1}) async {
     var queryParameters2 = {
@@ -545,13 +540,13 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
     }
   }
 
-  Color getLeadingColor(double bakiye) {
-    if (bakiye > 0) {
-      return Colors.green;
-    } else if (bakiye < 0) {
-      return Colors.red;
-    } else {
-      return Colors.grey;
-    }
-  }
+  // Color getLeadingColor(double bakiye) {
+  //   if (bakiye > 0) {
+  //     return Colors.green;
+  //   } else if (bakiye < 0) {
+  //     return Colors.red;
+  //   } else {
+  //     return Colors.grey;
+  //   }
+  // }
 }

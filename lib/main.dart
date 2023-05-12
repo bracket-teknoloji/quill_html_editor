@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
           page: () => const MainPageView(),
           children: [
             GetPage(
-              name: "/cariDuzenle",
+              name: "/cariEdit",
               page: () => BaseCariEditingView(cariListesiModel: Get.arguments),
             ),
             GetPage(

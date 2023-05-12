@@ -11,4 +11,7 @@ class ApiUrls {
   static const String getGrupKodlari = "api/General/GetGrupKodlari";
   static const String getAktiviteler = "api/Cari/GetAktiviteler";
   static const String getCariHareketleri = "api/Cari/GetCariHareketleri";
+  static const String getUlkeler = "api/General/GetUlkeler";
+  static const String saveCari = "api/Cari/SaveCari";
+  static const String getKosullar = "api/General/GetKosullar";
 }

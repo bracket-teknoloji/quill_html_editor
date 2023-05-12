@@ -181,7 +181,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                             children: [
                               TextFormField(
                                 controller: controller2,
-                                enabled: isletme!.isNotEmpty,
+                                enabled: isletme?.isNotNullOrEmpty,
                                 readOnly: true,
                                 onTap: () {
                                   isletmeDialog(context);
@@ -195,7 +195,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                           CustomWidgetWithLabel(text: "Şube Kodu", children: [
                             TextFormField(
                               controller: controller3,
-                              enabled: sube!.isNotEmpty,
+                              enabled: sube?.isNotNullOrEmpty,
                               readOnly: true,
                               onTap: () {
                                 subeDialog(context);
@@ -357,7 +357,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     BottomSheetDialogManager().showBottomSheetDialog(context,
         title: "Şube Seçiniz",
         children: List.generate(
-          sube!.length,
+          sube?.length ?? 0,
           (index) {
             return BottomSheetModel(
               icon: "Saat",
@@ -381,7 +381,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     BottomSheetDialogManager().showBottomSheetDialog(context,
         title: "Şirket Seçiniz",
         children: List.generate(
-          sirket!.length,
+          sirket?.length ?? 0,
           (index) {
             return BottomSheetModel(
               icon: "Saat",
@@ -406,7 +406,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     BottomSheetDialogManager().showBottomSheetDialog(context,
         title: "İşletme Seçiniz",
         children: List.generate(
-          isletme!.length,
+          isletme?.length ?? 0,
           (index) {
             return BottomSheetModel(
               icon: "Saat",

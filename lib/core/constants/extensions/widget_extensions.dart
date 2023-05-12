@@ -20,4 +20,12 @@ extension WidgetExtension2 on Widget {
     );
   }
 }
-// an extension on a widget to wrap a sizedbox and width will be 0.5 of the parent widget
+
+// an extension on a row widget to wrap all children with expanded
+extension RowExtension on Row {
+  Row get withExpanded {
+    return Row(
+      children: children.map((e) => Expanded(child: e)).toList(),
+    );
+  }
+}

@@ -34,4 +34,13 @@ class UIHelper {
 
   //* color
   static Color get primaryColor => const Color.fromRGBO(189, 61, 23, 1);
+  static Color getColorWithValue(double bakiye) {
+    if (bakiye > 0) {
+      return Colors.green;
+    } else if (bakiye < 0) {
+      return Colors.red;
+    } else {
+      return Colors.grey;
+    }
+  }
 }

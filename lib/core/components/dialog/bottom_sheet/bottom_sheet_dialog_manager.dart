@@ -39,44 +39,32 @@ class BottomSheetDialogManager {
               body == null
                   ? SizedBox(
                       // if children are not fit to screen, it will be scrollable
-                      height: children!.length * 50,
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: SingleChildScrollView(
-                              child: Wrap(
-                                children: [
-                                  ...List.generate(
-                                    children.length,
-                                    (index) => Wrap(
-                                      children: [
-                                        ListTile(
-                                            onTap: children[index].onTap,
-                                            title: Text(children[index].title),
-                                            leading: children[index].icon != null || children[index].iconWidget != null
-                                                ? SizedBox(
-                                                    width: 20,
-                                                    height: 20,
-                                                    child: children[index].iconWidget != null
-                                                        ? Icon(children[index].iconWidget, size: 25, color: UIHelper.primaryColor)
-                                                        : IconHelper.smallIcon(children[index].icon!),
-                                                  )
-                                                : null),
-                                        index != children.length - 1
-                                            ? Padding(
-                                                padding: UIHelper.lowPaddingVertical,
-                                                child: const Divider(),
-                                              )
-                                            : Container()
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ).paddingOnly(bottom: 10),
-                            ),
-                          ),
-                        ],
-                      ),
+                      height: children!.length * 50 < Get.height * 0.9 ? children.length * 50 : Get.height * 0.9,
+                      child: ListView.builder(
+                        itemCount: children.length,
+                        itemBuilder: (context, index) => Column(
+                          children: [
+                            ListTile(
+                                onTap: children[index].onTap,
+                                title: Text(children[index].title),
+                                subtitle: children[index].description != null ? Text(children[index].description ?? '') : null,
+                                leading: children[index].icon != null || children[index].iconWidget != null
+                                    ? SizedBox(
+                                        width: 20,
+                                        height: 20,
+                                        child:
+                                            children[index].iconWidget != null ? Icon(children[index].iconWidget, size: 25, color: UIHelper.primaryColor) : IconHelper.smallIcon(children[index].icon!),
+                                      )
+                                    : null),
+                            index != children.length - 1
+                                ? Padding(
+                                    padding: UIHelper.lowPaddingVertical,
+                                    child: const Divider(),
+                                  )
+                                : Container()
+                          ],
+                        ),
+                      ).paddingOnly(bottom: 10),
                     )
                   : WillPopScope(
                       child: SingleChildScrollView(child: body),
@@ -301,11 +289,10 @@ class BottomSheetDialogManager {
 
                                 var result = await showCheckBoxBottomSheetDialog(context,
                                     title: "Plasiyer seç",
-                                    children: List.generate(data?.paramModel?.plasiyerList?.length ?? 0,
-                                        (index) => BottomSheetModel(title: data?.paramModel?.plasiyerList![index].plasiyerAciklama ?? "")));
+                                    children:
+                                        List.generate(data?.paramModel?.plasiyerList?.length ?? 0, (index) => BottomSheetModel(title: data?.paramModel?.plasiyerList![index].plasiyerAciklama ?? "")));
                                 if (result != null) {
-                                  var plasiyerKoduList =
-                                      data?.paramModel?.plasiyerList?.where((element) => result.contains(element.plasiyerAciklama)).map((e) => e.plasiyerKodu).toList();
+                                  var plasiyerKoduList = data?.paramModel?.plasiyerList?.where((element) => result.contains(element.plasiyerAciklama)).map((e) => e.plasiyerKodu).toList();
                                   bottomSheetResponseModel.arrPlasiyer = plasiyerKoduList;
                                   plasiyerController.text = result.join(", ");
                                   viewModel.changePlasiyer(result.join(", "));
@@ -355,8 +342,7 @@ class BottomSheetDialogManager {
                                 controller: TextEditingController(text: viewModel.cariTipi),
                                 decoration: InputDecoration(
                                     suffixIcon: IconButton(
-                                        onPressed: () => viewModel.cariTipi != "" ? viewModel.cariTipi = "" : null,
-                                        icon: Icon(viewModel.cariTipi == "" ? Icons.more_horiz_outlined : Icons.close))),
+                                        onPressed: () => viewModel.cariTipi != "" ? viewModel.cariTipi = "" : null, icon: Icon(viewModel.cariTipi == "" ? Icons.more_horiz_outlined : Icons.close))),
                                 readOnly: true,
                                 onTap: () async {
                                   var a = await showRadioBottomSheetDialog(context, title: "Tipi seç", children: [

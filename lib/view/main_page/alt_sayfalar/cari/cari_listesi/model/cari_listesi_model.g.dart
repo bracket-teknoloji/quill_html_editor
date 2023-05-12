@@ -51,12 +51,21 @@ CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
             'VERGI_NUMARASI', (v) => val.vergiNumarasi = v as String?);
         $checkedConvert('GRUP_KODU', (v) => val.grupKodu = v as String?);
         $checkedConvert('GRUP_TANIMI', (v) => val.grupTanimi = v as String?);
+        $checkedConvert('BILGI', (v) => val.bilgi = v as String?);
+        $checkedConvert('ACIKLAMA1', (v) => val.aciklama1 = v as String?);
+        $checkedConvert('ACIKLAMA2', (v) => val.aciklama2 = v as String?);
+        $checkedConvert('ACIKLAMA3', (v) => val.aciklama3 = v as String?);
+        $checkedConvert('KODU', (v) => val.kodu = v as String?);
         $checkedConvert('KOD1', (v) => val.kod1 = v as String?);
         $checkedConvert('KOD1_TANIMI', (v) => val.kod1Tanimi = v as String?);
         $checkedConvert('KOD2', (v) => val.kod2 = v as String?);
         $checkedConvert('KOD2_TANIMI', (v) => val.kod2Tanimi = v as String?);
         $checkedConvert('KOD3', (v) => val.kod3 = v as String?);
         $checkedConvert('KOD3_TANIMI', (v) => val.kod3Tanimi = v as String?);
+        $checkedConvert('KOD4', (v) => val.kod4 = v as String?);
+        $checkedConvert('KOD4_TANIMI', (v) => val.kod4Tanimi = v as String?);
+        $checkedConvert('KOD5', (v) => val.kod5 = v as String?);
+        $checkedConvert('KOD5_TANIMI', (v) => val.kod5Tanimi = v as String?);
         $checkedConvert(
             'KAYITYAPANKUL', (v) => val.kayityapankul = v as String?);
         $checkedConvert('KAYITTARIHI', (v) => val.kayittarihi = v as String?);
@@ -75,22 +84,22 @@ CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
         $checkedConvert('BAKIYE', (v) => val.bakiye = (v as num?)?.toDouble());
         $checkedConvert('ENLEM', (v) => val.enlem = (v as num?)?.toDouble());
         $checkedConvert('BOYLAM', (v) => val.boylam = (v as num?)?.toDouble());
-        $checkedConvert('KULL1_S', (v) => val.kull1S = v as String?);
-        $checkedConvert('KULL2_S', (v) => val.kull2S = v as String?);
-        $checkedConvert('KULL3_S', (v) => val.kull3S = v as String?);
-        $checkedConvert('KULL4_S', (v) => val.kull4S = v as String?);
-        $checkedConvert('KULL5_S', (v) => val.kull5S = v as String?);
-        $checkedConvert('KULL6_S', (v) => val.kull6S = v as String?);
-        $checkedConvert('KULL7_S', (v) => val.kull7S = v as String?);
-        $checkedConvert('KULL8_S', (v) => val.kull8S = v as String?);
-        $checkedConvert('KULL1_N', (v) => val.kull1N = v as int?);
-        $checkedConvert('KULL2_N', (v) => val.kull2N = v as int?);
-        $checkedConvert('KULL3_N', (v) => val.kull3N = v as int?);
-        $checkedConvert('KULL4_N', (v) => val.kull4N = v as int?);
-        $checkedConvert('KULL5_N', (v) => val.kull5N = v as int?);
-        $checkedConvert('KULL6_N', (v) => val.kull6N = v as int?);
-        $checkedConvert('KULL7_N', (v) => val.kull7N = v as int?);
-        $checkedConvert('KULL8_N', (v) => val.kull8N = v as int?);
+        $checkedConvert('KULL1S', (v) => val.kull1s = v as String?);
+        $checkedConvert('KULL2S', (v) => val.kull2s = v as String?);
+        $checkedConvert('KULL3S', (v) => val.kull3s = v as String?);
+        $checkedConvert('KULL4S', (v) => val.kull4s = v as String?);
+        $checkedConvert('KULL5S', (v) => val.kull5s = v as String?);
+        $checkedConvert('KULL6S', (v) => val.kull6s = v as String?);
+        $checkedConvert('KULL7S', (v) => val.kull7s = v as String?);
+        $checkedConvert('KULL8S', (v) => val.kull8s = v as String?);
+        $checkedConvert('KULL1N', (v) => val.kull1n = (v as num?)?.toDouble());
+        $checkedConvert('KULL2N', (v) => val.kull2n = (v as num?)?.toDouble());
+        $checkedConvert('KULL3N', (v) => val.kull3n = (v as num?)?.toDouble());
+        $checkedConvert('KULL4N', (v) => val.kull4n = (v as num?)?.toDouble());
+        $checkedConvert('KULL5N', (v) => val.kull5n = (v as num?)?.toDouble());
+        $checkedConvert('KULL6N', (v) => val.kull6n = (v as num?)?.toDouble());
+        $checkedConvert('KULL7N', (v) => val.kull7n = (v as num?)?.toDouble());
+        $checkedConvert('KULL8N', (v) => val.kull8n = (v as num?)?.toDouble());
         $checkedConvert('FAX', (v) => val.fax = v as String?);
         $checkedConvert(
             'SAHIS_FIRMASI_MI', (v) => val.sahisFirmasiMi = v as bool?);
@@ -131,12 +140,21 @@ CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
         'vergiNumarasi': 'VERGI_NUMARASI',
         'grupKodu': 'GRUP_KODU',
         'grupTanimi': 'GRUP_TANIMI',
+        'bilgi': 'BILGI',
+        'aciklama1': 'ACIKLAMA1',
+        'aciklama2': 'ACIKLAMA2',
+        'aciklama3': 'ACIKLAMA3',
+        'kodu': 'KODU',
         'kod1': 'KOD1',
         'kod1Tanimi': 'KOD1_TANIMI',
         'kod2': 'KOD2',
         'kod2Tanimi': 'KOD2_TANIMI',
         'kod3': 'KOD3',
         'kod3Tanimi': 'KOD3_TANIMI',
+        'kod4': 'KOD4',
+        'kod4Tanimi': 'KOD4_TANIMI',
+        'kod5': 'KOD5',
+        'kod5Tanimi': 'KOD5_TANIMI',
         'kayityapankul': 'KAYITYAPANKUL',
         'kayittarihi': 'KAYITTARIHI',
         'duzeltmeyapankul': 'DUZELTMEYAPANKUL',
@@ -150,22 +168,22 @@ CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
         'bakiye': 'BAKIYE',
         'enlem': 'ENLEM',
         'boylam': 'BOYLAM',
-        'kull1S': 'KULL1_S',
-        'kull2S': 'KULL2_S',
-        'kull3S': 'KULL3_S',
-        'kull4S': 'KULL4_S',
-        'kull5S': 'KULL5_S',
-        'kull6S': 'KULL6_S',
-        'kull7S': 'KULL7_S',
-        'kull8S': 'KULL8_S',
-        'kull1N': 'KULL1_N',
-        'kull2N': 'KULL2_N',
-        'kull3N': 'KULL3_N',
-        'kull4N': 'KULL4_N',
-        'kull5N': 'KULL5_N',
-        'kull6N': 'KULL6_N',
-        'kull7N': 'KULL7_N',
-        'kull8N': 'KULL8_N',
+        'kull1s': 'KULL1S',
+        'kull2s': 'KULL2S',
+        'kull3s': 'KULL3S',
+        'kull4s': 'KULL4S',
+        'kull5s': 'KULL5S',
+        'kull6s': 'KULL6S',
+        'kull7s': 'KULL7S',
+        'kull8s': 'KULL8S',
+        'kull1n': 'KULL1N',
+        'kull2n': 'KULL2N',
+        'kull3n': 'KULL3N',
+        'kull4n': 'KULL4N',
+        'kull5n': 'KULL5N',
+        'kull6n': 'KULL6N',
+        'kull7n': 'KULL7N',
+        'kull8n': 'KULL8N',
         'fax': 'FAX',
         'sahisFirmasiMi': 'SAHIS_FIRMASI_MI',
         'dovizli': 'DOVIZLI',
@@ -207,12 +225,21 @@ Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) =>
       'VERGI_NUMARASI': instance.vergiNumarasi,
       'GRUP_KODU': instance.grupKodu,
       'GRUP_TANIMI': instance.grupTanimi,
+      'BILGI': instance.bilgi,
+      'ACIKLAMA1': instance.aciklama1,
+      'ACIKLAMA2': instance.aciklama2,
+      'ACIKLAMA3': instance.aciklama3,
+      'KODU': instance.kodu,
       'KOD1': instance.kod1,
       'KOD1_TANIMI': instance.kod1Tanimi,
       'KOD2': instance.kod2,
       'KOD2_TANIMI': instance.kod2Tanimi,
       'KOD3': instance.kod3,
       'KOD3_TANIMI': instance.kod3Tanimi,
+      'KOD4': instance.kod4,
+      'KOD4_TANIMI': instance.kod4Tanimi,
+      'KOD5': instance.kod5,
+      'KOD5_TANIMI': instance.kod5Tanimi,
       'KAYITYAPANKUL': instance.kayityapankul,
       'KAYITTARIHI': instance.kayittarihi,
       'DUZELTMEYAPANKUL': instance.duzeltmeyapankul,
@@ -226,22 +253,22 @@ Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) =>
       'BAKIYE': instance.bakiye,
       'ENLEM': instance.enlem,
       'BOYLAM': instance.boylam,
-      'KULL1_S': instance.kull1S,
-      'KULL2_S': instance.kull2S,
-      'KULL3_S': instance.kull3S,
-      'KULL4_S': instance.kull4S,
-      'KULL5_S': instance.kull5S,
-      'KULL6_S': instance.kull6S,
-      'KULL7_S': instance.kull7S,
-      'KULL8_S': instance.kull8S,
-      'KULL1_N': instance.kull1N,
-      'KULL2_N': instance.kull2N,
-      'KULL3_N': instance.kull3N,
-      'KULL4_N': instance.kull4N,
-      'KULL5_N': instance.kull5N,
-      'KULL6_N': instance.kull6N,
-      'KULL7_N': instance.kull7N,
-      'KULL8_N': instance.kull8N,
+      'KULL1S': instance.kull1s,
+      'KULL2S': instance.kull2s,
+      'KULL3S': instance.kull3s,
+      'KULL4S': instance.kull4s,
+      'KULL5S': instance.kull5s,
+      'KULL6S': instance.kull6s,
+      'KULL7S': instance.kull7s,
+      'KULL8S': instance.kull8s,
+      'KULL1N': instance.kull1n,
+      'KULL2N': instance.kull2n,
+      'KULL3N': instance.kull3n,
+      'KULL4N': instance.kull4n,
+      'KULL5N': instance.kull5n,
+      'KULL6N': instance.kull6n,
+      'KULL7N': instance.kull7n,
+      'KULL8N': instance.kull8n,
       'FAX': instance.fax,
       'SAHIS_FIRMASI_MI': instance.sahisFirmasiMi,
       'DOVIZLI': instance.dovizli,

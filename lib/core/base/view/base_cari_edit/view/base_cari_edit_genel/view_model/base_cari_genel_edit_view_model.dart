@@ -1,5 +1,7 @@
 import 'package:mobx/mobx.dart';
 
+import '../../../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
+
 part 'base_cari_genel_edit_view_model.g.dart';
 
 class BaseCariGenelEditViewModel = _BaseCariGenelEditViewModelBase with _$BaseCariGenelEditViewModel;
@@ -19,4 +21,12 @@ abstract class _BaseCariGenelEditViewModelBase with Store {
   void changeIsDovizli(bool value) {
     isDovizli = value;
   }
+  @observable
+  CariListesiModel? model;
+
+  @action
+  void changeModel(CariListesiModel? value) {
+    model = value;
+  }
+  
 }

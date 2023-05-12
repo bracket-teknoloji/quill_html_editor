@@ -18,6 +18,17 @@ class AppThemeDark extends AppTheme {
   ThemeData get theme => ThemeData(
       useMaterial3: true,
       colorSchemeSeed: UIHelper.primaryColor,
+      tabBarTheme: TabBarTheme(
+        labelPadding: UIHelper.lowPadding,
+        labelStyle: const TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w600,
+        ),
+        unselectedLabelStyle: const TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+        ),
+      ),
       segmentedButtonTheme: SegmentedButtonThemeData(
           style: ButtonStyle(
         textStyle: MaterialStateProperty.all(

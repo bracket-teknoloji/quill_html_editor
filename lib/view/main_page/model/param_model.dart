@@ -532,6 +532,8 @@ class DovizList {
   factory DovizList.fromJson(Map<String, dynamic> json) {
     return _$DovizListFromJson(json);
   }
+
+  get dovizAciklama => null;
   Map<String, dynamic> toJson() {
     return _$DovizListToJson(this);
   }
