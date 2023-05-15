@@ -25,3 +25,14 @@ extension NumExtensionToString on num? {
     return toString() == "null" ? "" : toString();
   }
 }
+
+// eğer tam sayı ise double'ları int'e çeviren tam sayı değilse kendisini döndüren extension
+extension NumExtensionToInt on num {
+  num get toIntIfDouble {
+    if (this % 1 == 0) {
+      return toInt();
+    } else {
+      return this;
+    }
+  }
+}

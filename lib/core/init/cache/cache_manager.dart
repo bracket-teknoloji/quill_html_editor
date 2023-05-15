@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../view/add_company/model/account_model.dart';
 import '../../../view/add_company/model/account_response_model.dart';
+import '../../../view/auth/model/isletme_model.dart';
 import '../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_sehirler_model.dart';
 import '../../../view/main_page/model/main_page_model.dart';
 import '../../../view/main_page/model/sirket_model.dart';
@@ -22,6 +23,7 @@ class CacheManager {
   static late Box _favorilerSiraBox;
   static late Box _hesapBilgileriBox;
   static late Box _cariSehirBox;
+  static late Box _subeListesiBox;
   //Lazy Singleton
   static final CacheManager _instance = CacheManager._init();
   static CacheManager get instance => _instance;
@@ -34,6 +36,8 @@ class CacheManager {
     Hive.registerAdapter(FavoritesModelAdapter());
     Hive.registerAdapter(AccountModelAdapter());
     Hive.registerAdapter(CariSehirlerModelAdapter());
+    Hive.registerAdapter(IsletmeModelAdapter());
+
     initHiveBoxes();
   }
 
@@ -51,6 +55,7 @@ class CacheManager {
     _favorilerSiraBox = await Hive.openBox("favorilerSira");
     _hesapBilgileriBox = await Hive.openBox("hesapBilgileri");
     _cariSehirBox = await Hive.openBox("cariSehir");
+    _subeListesiBox = await Hive.openBox<List>("cariListesi");
   }
 
 //*  Getters and Setters
@@ -68,6 +73,7 @@ class CacheManager {
   static Map getFavorilerSira() => _favorilerSiraBox.toMap();
   static AccountModel getHesapBilgileri() => _hesapBilgileriBox.get("value");
   static CariSehirlerModel getCariSehirler() => _cariSehirBox.get("value");
+  static List getSubeListesi() => _subeListesiBox.get("value") ?? [];
 
   //* Setters
   static void setLogout(bool value) => _preferencesBox.put("logout", value);
@@ -85,6 +91,7 @@ class CacheManager {
   static void setFavoriler(FavoritesModel value) => _favorilerBox.put(value.name, value);
   static void setFavorilerSira(Map value) => _favorilerSiraBox.putAll(value);
   static void setCariSehirler(CariSehirlerModel value) => _cariSehirBox.put("value", value);
+  static void setSubeListesi(List value) => _subeListesiBox.put("value", value);
 
 //* Clear and Remove
   static void clearBox(String boxName) => Hive.box(boxName).clear();

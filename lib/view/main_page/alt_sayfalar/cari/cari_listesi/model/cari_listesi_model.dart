@@ -33,6 +33,8 @@ class CariListesiModel with NetworkManagerMixin {
   String? plasiyerKodu;
   String? plasiyerAciklama;
   double? borcToplami;
+  @JsonKey(name: 'BakiyeList', includeFromJson: false)
+  List? bakiyeList;
   double? alacakToplami;
   int? genisk1Orani;
   String? ulkeKodu;
@@ -102,11 +104,30 @@ class CariListesiModel with NetworkManagerMixin {
   String? fiyatGrubu;
   @override
   fromJson(Map<String, dynamic> json) {
+    // bakiyeList = json['BAKIYE_LIST'] != null ? (json['BAKIYE_LIST'] as List).map((i) => BakiyeModel.fromJson(i)).toList() : null;
     return _$CariListesiModelFromJson(json);
   }
 
   @override
   Map<String, dynamic> toJson() {
     return _$CariListesiModelToJson(this);
+  }
+}
+
+@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.screamingSnake, createToJson: true)
+class BakiyeModel {
+  String? cariKodu;
+  int? dovizTipi;
+  double? borcToplami;
+  int? alacakToplami;
+  double? bakiye;
+  String? dovizAdi;
+
+  static fromJson(Map<String, dynamic> json) {
+    return _$BakiyeModelFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() {
+    return _$BakiyeModelToJson(this);
   }
 }

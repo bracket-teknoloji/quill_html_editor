@@ -14,4 +14,5 @@ class ApiUrls {
   static const String getUlkeler = "api/General/GetUlkeler";
   static const String saveCari = "api/Cari/SaveCari";
   static const String getKosullar = "api/General/GetKosullar";
+  static const String getCariDetay = "api/Cari/GetCariDetay";
 }

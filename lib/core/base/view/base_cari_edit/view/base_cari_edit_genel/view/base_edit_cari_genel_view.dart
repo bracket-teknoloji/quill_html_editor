@@ -7,6 +7,7 @@ import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_mo
 import 'package:picker/core/components/textfield/custom_label_widget.dart';
 import 'package:picker/core/components/textfield/custom_text_field.dart';
 import 'package:picker/core/init/cache/cache_manager.dart';
+import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_detay_model.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
 
 import '../../../../../../../view/main_page/model/main_page_model.dart';
@@ -31,13 +32,20 @@ class _BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
   List? ulkeler;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   FocusNode focusNode = FocusNode();
+  List<CariDetayModel>? cariDetayListesi;
 
   @override
   void initState() {
     super.initState();
+    getCariDetay(model?.cariKodu ?? "");
     viewModel?.changeModel(model);
     viewModel?.changeIsSahisFirmasi(model?.sahisFirmasiMi ?? false);
     viewModel?.changeIsDovizli(model?.dovizli ?? false);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -125,7 +133,7 @@ class _BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                 onTap: () async {
                   ulkeler ??= await getUlkeData();
                   if (mounted) {
-                    BaseBottomSheetResponseModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                    BaseBottomSheetResponseModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
                         title: "Ülkeler",
                         children: List.generate(
                             ulkeler!.length,
@@ -271,5 +279,20 @@ class _BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
     var response = await networkManager.dioGet<UlkeModel>(path: ApiUrls.getUlkeler, bodyModel: UlkeModel(), addCKey: true, addSirketBilgileri: true, addTokenKey: true);
     // cast all items to UlkeModel and return
     return response.data?.map((e) => e as UlkeModel).toList().cast<UlkeModel>();
+  }
+
+  Future<void> getCariDetay(String query) async {
+    var result = await networkManager.dioGet<CariDetayModel>(
+      path: ApiUrls.getCariDetay,
+      bodyModel: CariDetayModel(),
+      addSirketBilgileri: true,
+      addCKey: true,
+      addTokenKey: true,
+      // addQuery: true,
+      queryParameters: {"CariKodu": query},
+    );
+    print(result.toString());
+    CariDetayModel.setInstance(result.data[0]);
+    cariDetayListesi = result.data.map((e) => e as CariDetayModel).toList().cast<CariDetayModel>();
   }
 }

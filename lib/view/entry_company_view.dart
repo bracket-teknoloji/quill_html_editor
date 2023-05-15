@@ -137,6 +137,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
       for (IsletmeModel element in data) {
         list.add(element);
       }
+      CacheManager.setSubeListesi(data);
     }
     return list;
   }
@@ -303,17 +304,12 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                           dialogManager.showLoadingDialog("${selected["Şirket"]} şirketine giriş yapılıyor.");
                           log(CacheManager.getHesapBilgileri().toJson().toString(), name: "dflkgjsşldkfjsşd");
 
-                          final response = await networkManager.dioPost<MainPageModel>(
-                              path: ApiUrls.createSession,
-                              bodyModel: MainPageModel(),
-                              addTokenKey: true,
-                              data: model,
-                              headers: {
-                                "VERITABANI": selected["Şirket"].toString(),
-                                "ISLETME_KODU": selected["İşletme"].toString(),
-                                "SUBE_KODU": selected["Şube"].toString(),
-                                "content-type": "application/json"
-                              });
+                          final response = await networkManager.dioPost<MainPageModel>(path: ApiUrls.createSession, bodyModel: MainPageModel(), addTokenKey: true, data: model, headers: {
+                            "VERITABANI": selected["Şirket"].toString(),
+                            "ISLETME_KODU": selected["İşletme"].toString(),
+                            "SUBE_KODU": selected["Şube"].toString(),
+                            "content-type": "application/json"
+                          });
                           if (response.data != null) {
                             MainPageModel model = response.data[0];
                             CacheManager.setAnaVeri(model);
@@ -354,7 +350,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
 
   subeDialog(BuildContext context) {
     controller3!.text = "";
-    BottomSheetDialogManager().showBottomSheetDialog(context,
+    BottomSheetDialogManager().showRadioBottomSheetDialog(context,
         title: "Şube Seçiniz",
         children: List.generate(
           sube?.length ?? 0,
@@ -378,7 +374,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   sirketDialog(BuildContext context) {
     controller2!.text = "";
 
-    BottomSheetDialogManager().showBottomSheetDialog(context,
+    BottomSheetDialogManager().showRadioBottomSheetDialog(context,
         title: "Şirket Seçiniz",
         children: List.generate(
           sirket?.length ?? 0,
@@ -403,7 +399,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   }
 
   isletmeDialog(BuildContext context) {
-    BottomSheetDialogManager().showBottomSheetDialog(context,
+    BottomSheetDialogManager().showRadioBottomSheetDialog(context,
         title: "İşletme Seçiniz",
         children: List.generate(
           isletme?.length ?? 0,

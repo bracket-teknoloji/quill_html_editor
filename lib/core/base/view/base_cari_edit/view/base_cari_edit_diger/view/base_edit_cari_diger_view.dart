@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 import 'package:picker/core/base/helpers/helper.dart';
+import 'package:picker/core/base/model/base_bottom_sheet_response_model.dart';
 import 'package:picker/core/base/model/generic_response_model.dart';
 import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import 'package:picker/core/components/textfield/custom_label_widget.dart';
@@ -11,8 +12,10 @@ import 'package:picker/core/constants/extensions/widget_extensions.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_grup_kodu_model.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_network_manager.dart';
 
+import '../../../../../../../view/auth/model/isletme_model.dart';
 import '../../../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_kosullar_model.dart';
 import '../../../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
+import '../../../../../../init/cache/cache_manager.dart';
 import '../../../../../state/base_state.dart';
 import '../../base_cari_edit_genel/model/base_cari_edit_model.dart';
 
@@ -27,6 +30,8 @@ class CariEditDigerView extends StatefulWidget {
 class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
   final formKey = GlobalKey<FormState>();
   List<CariGrupKoduModel>? list = [];
+  List<IsletmeModel> subeList = [];
+  List<CariKosullarModel> kosullarList = [];
   CariListesiModel model = CariListesiModel.instance;
   TextEditingController grupKoduController = TextEditingController(text: CariListesiModel.instance.grupKodu);
   TextEditingController kod1Controller = TextEditingController(text: CariListesiModel.instance.kod1Tanimi);
@@ -234,7 +239,28 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                 ],
               ).withExpanded,
               CustomTextField(enabled: enabled, labelText: "Bilgi", controller: bilgiController),
-              CustomTextField(enabled: enabled, readOnly: true, suffix: iconSwitcher(subeController), isMust: true, labelText: "Şube", controller: subeController),
+              CustomTextField(
+                  enabled: enabled,
+                  readOnly: true,
+                  suffix: iconSwitcher(subeController),
+                  isMust: true,
+                  labelText: "Şube",
+                  valueText: model.subeKodu.toString(),
+                  controller: subeController,
+                  onTap: () async {
+                    subeChecker();
+                    BottomSheetModel ortakSube = BottomSheetModel(title: "Şubelerde Ortak", onTap: () => Get.back(result: IsletmeModel(subeKodu: -1, subeAdi: "Şubelerde Ortak")));
+                    IsletmeModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Şube", children: [
+                      ortakSube,
+                      ...List.generate(subeList.length,
+                          (index) => BottomSheetModel(title: subeList[index].subeAdi ?? "", description: subeList[index].subeAdi ?? "", onTap: () => Get.back(result: subeList[index])))
+                    ]);
+                    if (result != null) {
+                      subeController.text = result.subeAdi ?? "";
+                      model.subeKodu = result.subeKodu ?? 0;
+                      setState(() {});
+                    }
+                  }),
               CustomTextField(enabled: enabled, readOnly: true, suffix: iconSwitcher(konumController), labelText: "Konum", controller: konumController),
               CustomTextField(
                 enabled: enabled,
@@ -242,14 +268,19 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                 suffix: iconSwitcher(kilitController),
                 isMust: true,
                 labelText: "Kilit",
+                valueText: model.kilit ?? "",
                 controller: kilitController,
                 onTap: () async {
-                  var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                      title: "Kilit",
-                      children: List.generate(
-                          2,
-                          (index) => BottomSheetModel(
-                              title: index == 0 ? "Kilitli" : "Kilitsiz", description: index == 0 ? "Kilitli" : "Kilitsiz", onTap: () => Get.back(result: index == 0 ? "K" : "A"))));
+                  BaseBottomSheetResponseModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Kilit", children: [
+                    BottomSheetModel(title: "Kilitli Değil", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Kilitli Değil", value: "H"))),
+                    BottomSheetModel(title: "Kilitli (Fatura)", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Kilitli (Fatura)", value: "F"))),
+                    BottomSheetModel(title: "Kilitli (Tüm İşlemler)", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Kilitli (Tüm İşlemler)", value: "T"))),
+                  ]);
+                  if (result != null) {
+                    kilitController.text = result.title ?? "";
+                    model.kilit = result.value ?? "";
+                    setState(() {});
+                  }
                 },
               ),
               CustomTextField(enabled: enabled, readOnly: true, suffix: iconSwitcher(bagliCariController), labelText: "Bağlı Cari", controller: bagliCariController),
@@ -258,22 +289,28 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                 readOnly: true,
                 suffix: iconSwitcher(kosulKoduController),
                 labelText: "Koşul Kodu",
+                valueText: model.kosulKodu ?? "",
                 controller: kosulKoduController,
                 onTap: () async {
-                  GenericResponseModel data = await CariNetworkManager.getkosullar();
+                  if (kosullarList.isNullOrEmpty) {
+                    GenericResponseModel data = await CariNetworkManager.getkosullar();
+                    kosullarList = data.data.map((e) => e as CariKosullarModel).toList().cast<CariKosullarModel>();
+                  }
                   // ignore: use_build_context_synchronously
-                  CariKosullarModel result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                  CariKosullarModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                       title: "Koşul Kodu",
                       children: List.generate(
-                          data.data.length,
+                          kosullarList.length,
                           (index) => BottomSheetModel(
-                              title: "${data.data[index].kosulKodu ?? ""} - ${data.data[index].kosulSabitAdi ?? ""}",
-                              description: data.data[index].genelKosulAdi,
-                              value: data.data[index].kosulKodu,
-                              onTap: () => Get.back(result: data.data[index]))));
-                  kosulKoduController.text = result.genelKosulAdi ?? "";
-                  model.kosulKodu = result.kosulKodu;
-                  setState(() {});
+                              title: "${kosullarList[index].kosulKodu ?? " "} - ${kosullarList[index].kosulSabitAdi ?? " "}",
+                              description: kosullarList[index].genelKosulAdi,
+                              value: kosullarList[index].kosulKodu,
+                              onTap: () => Get.back(result: kosullarList[index]))));
+                  if (result != null) {
+                    kosulKoduController.text = "${result.kosulKodu ?? ""} - ${result.kosulSabitAdi ?? ""}";
+                    model.kosulKodu = result.kosulKodu ?? "";
+                    setState(() {});
+                  }
                 },
               ),
               CustomTextField(enabled: enabled, labelText: "Açıklama 1", controller: aciklama1Controller),
@@ -343,6 +380,11 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
       list = data.data.map((e) => e as CariGrupKoduModel).toList().cast<CariGrupKoduModel>();
       debugPrint(data.toString());
     }
+  }
+
+  void subeChecker() {
+    List result = CacheManager.getSubeListesi();
+    subeList = result.map((e) => e as IsletmeModel).toList().cast<IsletmeModel>();
   }
 
   Widget iconSwitcher(TextEditingController? value) {

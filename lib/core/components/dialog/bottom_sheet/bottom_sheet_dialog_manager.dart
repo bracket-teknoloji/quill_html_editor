@@ -102,7 +102,7 @@ class BottomSheetDialogManager {
               body == null
                   ? SizedBox(
                       // if children are not fit to screen, it will be scrollable
-                      height: children!.length * 50,
+                      height: children!.length * 50 < Get.height * 0.9 ? children.length * 50 : Get.height * 0.9,
                       child: Column(
                         children: [
                           Expanded(

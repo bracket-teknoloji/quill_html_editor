@@ -73,7 +73,12 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
             child: Observer(
               builder: (_) => (viewModel.cariHareketleriList.isNullOrEmpty
                   ? (viewModel.cariHareketleriList?.isEmpty ?? false)
-                      ? const Center(child: Text("Cari Bulunamadı"))
+                      ? Center(
+                          child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [Icon(Icons.crisis_alert_outlined, color: theme.colorScheme.primary), const Text("Cari Hareket Detayı Bulunamadı")],
+                        ))
                       : const Center(child: CircularProgressIndicator())
                   : Observer(builder: (_) {
                       return ListView.builder(

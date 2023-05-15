@@ -278,3 +278,37 @@ Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) =>
       'KOSUL_KODU': instance.kosulKodu,
       'FIYAT_GRUBU': instance.fiyatGrubu,
     };
+
+BakiyeModel _$BakiyeModelFromJson(Map<String, dynamic> json) => $checkedCreate(
+      'BakiyeModel',
+      json,
+      ($checkedConvert) {
+        final val = BakiyeModel();
+        $checkedConvert('CARI_KODU', (v) => val.cariKodu = v as String?);
+        $checkedConvert('DOVIZ_TIPI', (v) => val.dovizTipi = v as int?);
+        $checkedConvert(
+            'BORC_TOPLAMI', (v) => val.borcToplami = (v as num?)?.toDouble());
+        $checkedConvert('ALACAK_TOPLAMI', (v) => val.alacakToplami = v as int?);
+        $checkedConvert('BAKIYE', (v) => val.bakiye = (v as num?)?.toDouble());
+        $checkedConvert('DOVIZ_ADI', (v) => val.dovizAdi = v as String?);
+        return val;
+      },
+      fieldKeyMap: const {
+        'cariKodu': 'CARI_KODU',
+        'dovizTipi': 'DOVIZ_TIPI',
+        'borcToplami': 'BORC_TOPLAMI',
+        'alacakToplami': 'ALACAK_TOPLAMI',
+        'bakiye': 'BAKIYE',
+        'dovizAdi': 'DOVIZ_ADI'
+      },
+    );
+
+Map<String, dynamic> _$BakiyeModelToJson(BakiyeModel instance) =>
+    <String, dynamic>{
+      'CARI_KODU': instance.cariKodu,
+      'DOVIZ_TIPI': instance.dovizTipi,
+      'BORC_TOPLAMI': instance.borcToplami,
+      'ALACAK_TOPLAMI': instance.alacakToplami,
+      'BAKIYE': instance.bakiye,
+      'DOVIZ_ADI': instance.dovizAdi,
+    };
