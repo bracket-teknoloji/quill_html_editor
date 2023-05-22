@@ -168,13 +168,25 @@ class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
   String getBakiye(String paraBirimi) {
     if (bakiyeList.isNotNullOrEmpty) {
       if (paraBirimi == "TL") {
-        return bakiyeList?.where((element) => element.dovizTipi == 0).first.bakiye?.commaSeparatedWithFixedDigits ?? "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.bakiye?.commaSeparatedWithFixedDigits ?? "";
+        } else {
+          return "0";
+        }
       } else if (paraBirimi == "Dolar") {
-        return bakiyeList?.where((element) => element.dovizTipi == 1).first.bakiye?.commaSeparatedWithFixedDigits ?? "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 1) != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 1)?.bakiye?.commaSeparatedWithFixedDigits ?? "";
+        } else {
+          return "0";
+        }
       } else if (paraBirimi == "Euro") {
-        return bakiyeList?.where((element) => element.dovizTipi == 2).first.bakiye?.commaSeparatedWithFixedDigits ?? "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 2) != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 2)?.bakiye?.commaSeparatedWithFixedDigits ?? "";
+        } else {
+          return "0";
+        }
       } else {
-        return "0";
+        return "";
       }
     } else {
       return "";
@@ -184,11 +196,23 @@ class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
   String getAlacak(String paraBirimi) {
     if (bakiyeList.isNotNullOrEmpty) {
       if (paraBirimi == "TL") {
-        return bakiyeList?.where((element) => element.dovizTipi == 0).first.alacakToplami?.commaSeparatedWithFixedDigits ?? "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.alacakToplami?.commaSeparatedWithFixedDigits ?? "";
+        } else {
+          return "0";
+        }
       } else if (paraBirimi == "Dolar") {
-        return bakiyeList?.where((element) => element.dovizTipi == 1).first.alacakToplami?.commaSeparatedWithFixedDigits ?? "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$") != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$")?.alacakToplami?.commaSeparatedWithFixedDigits ?? "";
+        } else {
+          return "0";
+        }
       } else if (paraBirimi == "Euro") {
-        return bakiyeList?.where((element) => element.dovizTipi == 2).first.alacakToplami?.commaSeparatedWithFixedDigits ?? "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€") != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€")?.alacakToplami?.commaSeparatedWithFixedDigits ?? "";
+        } else {
+          return "0";
+        }
       } else {
         return "0";
       }
@@ -200,11 +224,23 @@ class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
   String getBorc(String paraBirimi) {
     if (bakiyeList.isNotNullOrEmpty) {
       if (paraBirimi == "TL") {
-        return bakiyeList?.where((element) => element.dovizTipi == 0).first.borcToplami?.commaSeparatedWithFixedDigits ?? "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.borcToplami?.commaSeparatedWithFixedDigits ?? "";
+        } else {
+          return "";
+        }
       } else if (paraBirimi == "Dolar") {
-        return bakiyeList?.where((element) => element.dovizTipi == 1).first.borcToplami?.commaSeparatedWithFixedDigits ?? "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$") != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$")?.borcToplami?.commaSeparatedWithFixedDigits ?? "";
+        } else {
+          return "";
+        }
       } else if (paraBirimi == "Euro") {
-        return bakiyeList?.where((element) => element.dovizTipi == 2).first.borcToplami?.commaSeparatedWithFixedDigits ?? "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€") != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€")?.borcToplami?.commaSeparatedWithFixedDigits ?? "";
+        } else {
+          return "";
+        }
       } else {
         return "";
       }

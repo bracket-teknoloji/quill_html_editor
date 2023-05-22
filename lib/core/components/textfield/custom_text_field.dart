@@ -12,8 +12,23 @@ class CustomTextField extends StatefulWidget {
   final Widget? suffix;
   final TextInputType? keyboardType;
   final FocusNode? focusNode;
+   String? controllerText;
   final Function()? onTap;
-  const CustomTextField({super.key, this.controller, this.labelText, this.valueText, this.isMust, this.readOnly, this.suffix, this.enabled, this.focusNode, this.onTap, this.keyboardType});
+  final Function(String)? onChanged;
+   CustomTextField(
+      {super.key,
+      this.controller,
+      this.labelText,
+      this.valueText,
+      this.isMust,
+      this.readOnly,
+      this.suffix,
+      this.enabled,
+      this.focusNode,
+      this.onTap,
+      this.keyboardType,
+      this.onChanged,
+      this.controllerText});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -27,10 +42,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
       keyboardType: widget.keyboardType,
       focusNode: widget.focusNode,
       onTap: widget.onTap,
-      onFieldSubmitted: (value) => widget.focusNode?.nextFocus(),
-      onTapOutside: (value) => widget.focusNode?.unfocus(),
-      validator: (value) => (widget.isMust ?? false) && (value?.isEmpty ?? false) ? "Bu alan boş bırakılamaz" : null,
-      controller: widget.controller,
+      onChanged: widget.onChanged,
+      onTapOutside: (value) {
+        widget.onChanged;
+      },
+      controller: widget.controller ?? TextEditingController(text: widget.controllerText ?? ""),
       readOnly: widget.readOnly ?? false,
       decoration: InputDecoration(
           enabled: widget.enabled ?? true,

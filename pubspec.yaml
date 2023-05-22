@@ -79,7 +79,6 @@ dependencies:
   carrier_info: ^2.0.8
   crypto: ^3.0.2
   connectivity_plus: ^3.0.3
-  location: ^4.4.0
   intl: ^0.18.1
   scroll_app_bar: ^2.0.0
 

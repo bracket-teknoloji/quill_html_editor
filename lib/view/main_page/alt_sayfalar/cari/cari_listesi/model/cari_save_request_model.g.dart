@@ -18,7 +18,7 @@ CariSaveRequestModel _$CariSaveRequestModelFromJson(
         $checkedConvert(
             'REQUEST_VERSION', (v) => val.requestVersion = v as int?);
         $checkedConvert('ISLEM_KODU', (v) => val.islemKodu = v as int?);
-        $checkedConvert('YENI_KAYIT', (v) => val.yeniKayit = v as bool?);
+        $checkedConvert('_YeniKayit', (v) => val.yeniKayit = v as bool?);
         $checkedConvert('SAHIS_FIRMASI', (v) => val.sahisFirmasi = v as bool?);
         $checkedConvert('SUBE_KODU', (v) => val.subeKodu = v as int?);
         $checkedConvert('KODU', (v) => val.kodu = v as String?);
@@ -57,7 +57,7 @@ CariSaveRequestModel _$CariSaveRequestModelFromJson(
             'KURFARKIBORC_KODU', (v) => val.kurfarkiborcKodu = v as String?);
         $checkedConvert('KURFARKIALACAK_KODU',
             (v) => val.kurfarkialacakKodu = v as String?);
-        $checkedConvert('VADE_GUNU', (v) => val.vadeGunu = v as String?);
+        $checkedConvert('VADE_GUNU', (v) => val.vadeGunu = v as int?);
         $checkedConvert('ODEME_TIPI', (v) => val.odemeTipi = v as String?);
         $checkedConvert('MUHTELIF_CARI', (v) => val.muhtelifCari = v as bool?);
         $checkedConvert(
@@ -90,7 +90,7 @@ CariSaveRequestModel _$CariSaveRequestModelFromJson(
       fieldKeyMap: const {
         'requestVersion': 'REQUEST_VERSION',
         'islemKodu': 'ISLEM_KODU',
-        'yeniKayit': 'YENI_KAYIT',
+        'yeniKayit': '_YeniKayit',
         'sahisFirmasi': 'SAHIS_FIRMASI',
         'subeKodu': 'SUBE_KODU',
         'kodu': 'KODU',
@@ -157,7 +157,7 @@ Map<String, dynamic> _$CariSaveRequestModelToJson(
     <String, dynamic>{
       'REQUEST_VERSION': instance.requestVersion,
       'ISLEM_KODU': instance.islemKodu,
-      'YENI_KAYIT': instance.yeniKayit,
+      '_YeniKayit': instance.yeniKayit,
       'SAHIS_FIRMASI': instance.sahisFirmasi,
       'SUBE_KODU': instance.subeKodu,
       'KODU': instance.kodu,

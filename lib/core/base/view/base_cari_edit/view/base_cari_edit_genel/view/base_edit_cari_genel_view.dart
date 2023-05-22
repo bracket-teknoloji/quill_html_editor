@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
@@ -10,6 +12,7 @@ import 'package:picker/core/init/cache/cache_manager.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_detay_model.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
 
+import '../../../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_save_request_model.dart';
 import '../../../../../../../view/main_page/model/main_page_model.dart';
 import '../../../../../../constants/enum/cari_edit_enum.dart';
 import '../../../../../state/base_state.dart';
@@ -22,15 +25,17 @@ class BaseEditCariGenelView extends StatefulWidget {
   const BaseEditCariGenelView({super.key, this.model});
 
   @override
-  State<BaseEditCariGenelView> createState() => _BaseEditCariGenelViewState();
+  State<BaseEditCariGenelView> createState() => BaseEditCariGenelViewState();
 }
 
-class _BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
-  BaseCariGenelEditViewModel? viewModel = BaseCariGenelEditViewModel();
+class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
+  static BaseCariGenelEditViewModel viewModel = BaseCariGenelEditViewModel();
   MainPageModel? anaVeri = CacheManager.getAnaVeri();
+  String? siradakiKod = "";
   CariListesiModel? get model => widget.model?.model;
   List? ulkeler;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  CariSaveRequestModel requestModel = CariSaveRequestModel.instance;
   FocusNode focusNode = FocusNode();
   List<CariDetayModel>? cariDetayListesi;
 
@@ -38,9 +43,9 @@ class _BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
   void initState() {
     super.initState();
     getCariDetay(model?.cariKodu ?? "");
-    viewModel?.changeModel(model);
-    viewModel?.changeIsSahisFirmasi(model?.sahisFirmasiMi ?? false);
-    viewModel?.changeIsDovizli(model?.dovizli ?? false);
+    viewModel.changeModel(model);
+    viewModel.changeIsSahisFirmasi(model?.sahisFirmasiMi ?? false);
+    viewModel.changeIsDovizli(model?.dovizli ?? false);
   }
 
   @override
@@ -50,28 +55,43 @@ class _BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
 
   @override
   Widget build(BuildContext context) {
-    CariListesiModel.setInstance(model);
+    siradakiKod = widget.model?.siradakiKod;
+    if (model?.cariKodu == null || model?.cariKodu == "") {
+      model?.cariKodu = siradakiKod;
+      viewModel.changeModel(model?..cariKodu = siradakiKod);
+      setState(() {});
+    }
     bool enabled = widget.model?.cariEditEnum != CariEditEnum.goruntule;
-    TextEditingController kodController = TextEditingController(text: viewModel?.model?.cariKodu);
-    TextEditingController cariTipiController = TextEditingController(text: viewModel?.model?.cariTipAciklama);
-    TextEditingController adController = TextEditingController(text: viewModel?.model?.cariAdi);
-    TextEditingController ulkeController = TextEditingController(text: viewModel?.model?.ulkeAdi);
-    TextEditingController ilController = TextEditingController(text: viewModel?.model?.cariIl);
-    TextEditingController ilceCOntroller = TextEditingController(text: viewModel?.model?.cariIlce);
-    TextEditingController postaKoduController = TextEditingController(text: viewModel?.model?.postakodu);
-    TextEditingController adresController = TextEditingController(text: viewModel?.model?.cariAdres);
-    TextEditingController telefonController = TextEditingController(text: viewModel?.model?.cariTel);
-    TextEditingController ePostaController = TextEditingController(text: viewModel?.model?.email);
-    TextEditingController webController = TextEditingController(text: viewModel?.model?.web);
-    TextEditingController vergiDairesiController = TextEditingController(text: viewModel?.model?.vergiDairesi);
-    TextEditingController vergiNoController = TextEditingController(text: viewModel?.model?.vergiNumarasi);
-    TextEditingController dovizController = TextEditingController(text: viewModel?.model?.dovizAdi);
-    TextEditingController plasiyerController = TextEditingController(text: viewModel?.model?.plasiyerAciklama);
-    TextEditingController vadeGunuController = TextEditingController(text: viewModel?.model?.vadeGunu?.toStringIfNull ?? "");
+    TextEditingController kodController = TextEditingController(text: viewModel.model?.cariKodu ?? siradakiKod);
+    TextEditingController cariTipiController = TextEditingController(text: viewModel.model?.cariTipAciklama);
+    TextEditingController adController = TextEditingController(text: viewModel.model?.cariAdi);
+    TextEditingController ulkeController = TextEditingController(text: viewModel.model?.ulkeAdi);
+    TextEditingController ilController = TextEditingController(text: viewModel.model?.cariIl);
+    TextEditingController ilceCOntroller = TextEditingController(text: viewModel.model?.cariIlce);
+    TextEditingController postaKoduController = TextEditingController(text: viewModel.model?.postakodu);
+    TextEditingController adresController = TextEditingController(text: viewModel.model?.cariAdres);
+    TextEditingController telefonController = TextEditingController(text: viewModel.model?.cariTel);
+    TextEditingController ePostaController = TextEditingController(text: viewModel.model?.email);
+    TextEditingController webController = TextEditingController(text: viewModel.model?.web);
+    TextEditingController vergiDairesiController = TextEditingController(text: viewModel.model?.vergiDairesi);
+    TextEditingController vergiNoController = TextEditingController(text: viewModel.model?.vergiNumarasi);
+    TextEditingController dovizController = TextEditingController(text: viewModel.model?.dovizAdi);
+    TextEditingController plasiyerController = TextEditingController(text: viewModel.model?.plasiyerAciklama);
+    TextEditingController vadeGunuController = TextEditingController(text: viewModel.model?.vadeGunu?.toStringIfNull ?? "");
     //! Hangi parametreyi alacak diye sor
-    TextEditingController odemeGunController = TextEditingController(text: viewModel?.model?.odemeTipi ?? "");
+    TextEditingController odemeGunController = TextEditingController(
+        text: viewModel.model?.odemeTipi == "0"
+            ? "Peşin"
+            : viewModel.model?.odemeTipi == "1"
+                ? "Vade"
+                : viewModel.model?.odemeTipi == "2"
+                    ? "Çek"
+                    : viewModel.model?.odemeTipi == "3"
+                        ? "Senet"
+                        : "");
     return SingleChildScrollView(
       child: Form(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         key: formKey,
         child: Column(
           children: [
@@ -83,138 +103,263 @@ class _BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                 children: [
                   Observer(
                       builder: (_) => Switch.adaptive(
-                          value: viewModel?.isSahisFirmasi ?? false,
+                          value: viewModel.isSahisFirmasi,
                           onChanged: enabled
                               ? (value) {
-                                  viewModel!.changeIsSahisFirmasi(value);
+                                  viewModel.changeIsSahisFirmasi(value);
+                                  model?.sahisFirmasiMi = value;
+                                  viewModel.changeModel(model);
                                 }
                               : null)),
                 ],
               ),
             ),
-            Row(children: [
-              Expanded(child: CustomTextField(enabled: enabled, isMust: true, labelText: "Kodu", controller: kodController)),
-              Expanded(
-                  child: CustomTextField(
-                enabled: enabled,
-                isMust: true,
-                labelText: "Cari Tipi",
-                valueText: viewModel?.model?.cariTip,
-                readOnly: true,
-                controller: cariTipiController,
-                onTap: () async {
-                  var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Cari Tipi", children: [
-                    BottomSheetModel(title: "Alıcı", value: "A", description: "A", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Alıcı", value: "A"))),
-                    BottomSheetModel(title: "Satıcı", value: "S", description: "S", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Satıcı", value: "S"))),
-                    BottomSheetModel(title: "Toptancı", value: "T", description: "T", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Toptancı", value: "T"))),
-                    BottomSheetModel(title: "Kefil", value: "K", description: "K", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Kefil", value: "K"))),
-                    BottomSheetModel(title: "Müstahsil", value: "M", description: "M", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Müstahsil", value: "M"))),
-                    BottomSheetModel(title: "Diğer", value: "D", description: "D", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Diğer", value: "D"))),
-                    BottomSheetModel(title: "Komisyoncu", value: "I", description: "I", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Komisyoncu", value: "I"))),
-                  ]);
-                  if (result != null) {
-                    setState(() {
-                      viewModel?.changeModel(model
-                        ?..cariTip = result.value
-                        ..cariTipAciklama = result.title);
-                    });
-                  }
-                },
-                suffix: const Icon(Icons.more_horiz_outlined),
-              ))
-            ]),
-            CustomTextField(enabled: enabled, labelText: "Adı", controller: adController, isMust: true),
-            CustomTextField(
-                enabled: enabled,
-                labelText: "Ülke",
-                readOnly: true,
-                valueText: model?.ulkeKodu,
-                controller: ulkeController,
-                onTap: () async {
-                  ulkeler ??= await getUlkeData();
-                  if (mounted) {
-                    BaseBottomSheetResponseModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
-                        title: "Ülkeler",
-                        children: List.generate(
-                            ulkeler!.length,
-                            (index) => BottomSheetModel(
-                                title: ulkeler?[index].ulkeAdi!,
-                                value: ulkeler?[index].ulkeKodu,
-                                description: ulkeler?[index].ulkeKodu,
-                                onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: ulkeler?[index].ulkeAdi, value: ulkeler?[index].ulkeKodu)))));
-                    setState(() {
-                      viewModel?.changeModel(model
-                        ?..ulkeAdi = result?.title
-                        ..ulkeKodu = result?.value);
-                    });
-                  }
-                },
-                suffix: Observer(
-                  builder: (_) => viewModel?.model?.ulkeAdi == null
-                      ? const Icon(Icons.more_horiz_outlined)
-                      : IconButton(
-                          icon: const Icon(Icons.clear_outlined),
-                          onPressed: () => setState(() => viewModel?.changeModel(model
-                            ?..ulkeAdi = null
-                            ..ulkeKodu = null))),
+            Observer(builder: (_) {
+              return Row(children: [
+                Expanded(
+                    child: CustomTextField(
+                  enabled: enabled && widget.model?.cariEditEnum == CariEditEnum.ekle,
+                  readOnly: widget.model?.cariEditEnum != CariEditEnum.ekle,
+                  isMust: true,
+                  labelText: "Kodu",
+                  controller: kodController,
+                  suffix: Wrap(
+                    children: [
+                      IconButton(
+                          onPressed: () async {
+                            var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                            if (result != null && result is CariListesiModel) {
+                              kodController.text = result.cariKodu ?? "";
+                              model?.cariKodu = result.cariKodu ?? "";
+                              viewModel.changeModel(model);
+                            }
+                            log(result.toString());
+                          },
+                          icon: const Icon(Icons.spatial_audio_off_outlined)),
+                      IconButton(
+                          onPressed: () {
+                            String kod = model?.cariKodu ?? "";
+                            String newCariKodu = kod.substring(0, kod.length - 1) + (int.parse(kod.substring(kod.length - 1)) + 1).toString();
+                            kodController.text = newCariKodu;
+                            model?.cariKodu = newCariKodu;
+                            viewModel.changeModel(model);
+                          },
+                          icon: const Icon(Icons.format_list_numbered_rtl_outlined))
+                    ].map((e) => SizedBox(width: 35, child: e)).toList(),
+                  ),
                 )),
-            Row(children: [
-              Expanded(child: CustomTextField(enabled: enabled, labelText: "İl", controller: ilController)),
-              Expanded(child: CustomTextField(enabled: enabled, labelText: "İlçe", controller: ilceCOntroller)),
-            ]),
-            CustomTextField(enabled: enabled, labelText: "Posta Kodu", controller: postaKoduController),
-            CustomTextField(enabled: enabled, labelText: "Adres", controller: adresController),
-            CustomTextField(enabled: enabled, labelText: "Telefon", controller: telefonController),
-            CustomTextField(enabled: enabled, labelText: "E-Posta", controller: ePostaController),
-            CustomTextField(enabled: enabled, labelText: "Web", controller: webController),
-            Row(children: [
-              Expanded(child: CustomTextField(enabled: enabled, labelText: "Vergi Dairesi", controller: vergiDairesiController)),
-              Expanded(child: CustomTextField(enabled: enabled, labelText: "Vergi No", controller: vergiNoController))
-            ]),
+                Expanded(child: Observer(builder: (_) {
+                  return CustomTextField(
+                    enabled: enabled,
+                    isMust: true,
+                    labelText: "Cari Tipi",
+                    valueText: viewModel.model?.cariTip,
+                    readOnly: true,
+                    controller: cariTipiController,
+                    onTap: () async {
+                      var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Cari Tipi", children: [
+                        BottomSheetModel(title: "Alıcı", value: "A", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Alıcı", value: "A"))),
+                        BottomSheetModel(title: "Satıcı", value: "S", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Satıcı", value: "S"))),
+                        BottomSheetModel(title: "Toptancı", value: "T", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Toptancı", value: "T"))),
+                        BottomSheetModel(title: "Kefil", value: "K", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Kefil", value: "K"))),
+                        BottomSheetModel(title: "Müstahsil", value: "M", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Müstahsil", value: "M"))),
+                        BottomSheetModel(title: "Diğer", value: "D", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Diğer", value: "D"))),
+                        BottomSheetModel(title: "Komisyoncu", value: "I", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Komisyoncu", value: "I"))),
+                      ]);
+                      if (result != null) {
+                        cariTipiController.text = result.title;
+                        model?.cariTip = result.value;
+                        model?.cariTipAciklama = result.title;
+                        viewModel.changeModel(model
+                          ?..cariTip = result.value
+                          ..cariTipAciklama = result.title);
+                        setState(() {});
+                      }
+                    },
+                    suffix: const Icon(Icons.more_horiz_outlined),
+                  );
+                }))
+              ]);
+            }),
+            CustomTextField(
+              enabled: enabled,
+              labelText: "Adı",
+              controller: adController,
+              isMust: true,
+              onChanged: (p0) {
+                viewModel.changeModel(model?..cariAdi = p0);
+              },
+            ),
+            Observer(builder: (_) {
+              return CustomTextField(
+                  enabled: enabled,
+                  labelText: "Ülke",
+                  readOnly: true,
+                  valueText: model?.ulkeKodu,
+                  controller: ulkeController,
+                  onTap: () async {
+                    ulkeler ??= await getUlkeData();
+                    if (mounted) {
+                      BaseBottomSheetResponseModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
+                          title: "Ülkeler",
+                          children: List.generate(
+                              ulkeler!.length,
+                              (index) => BottomSheetModel(
+                                  title: ulkeler?[index].ulkeAdi!,
+                                  value: ulkeler?[index].ulkeKodu,
+                                  description: ulkeler?[index].ulkeKodu,
+                                  onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: ulkeler?[index].ulkeAdi, value: ulkeler?[index].ulkeKodu)))));
+                      if (result != null) {
+                        viewModel.changeModel(model
+                          ?..ulkeAdi = result.title
+                          ..ulkeKodu = result.value);
+                        ulkeController.text = result.title ?? "";
+                        setState(() {});
+                      }
+                    }
+                  },
+                  suffix: Observer(
+                    builder: (_) => viewModel.model?.ulkeAdi == null
+                        ? const Icon(Icons.more_horiz_outlined)
+                        : IconButton(
+                            icon: const Icon(Icons.clear_outlined),
+                            onPressed: () {
+                              viewModel.changeModel(model
+                                ?..ulkeAdi = null
+                                ..ulkeKodu = null);
+                            }),
+                  ));
+            }),
             Row(children: [
               Expanded(
                   child: CustomTextField(
                 enabled: enabled,
-                labelText: "Plasiyer",
-                readOnly: true,
-                valueText: model?.plasiyerKodu,
-                controller: plasiyerController,
-                onTap: () {
-                  bottomSheetDialogManager.showBottomSheetDialog(context,
-                      title: "PLasiyer",
-                      children: List.generate(
-                          anaVeri?.paramModel?.plasiyerList?.length ?? 0,
-                          (index) => BottomSheetModel(
-                              title: anaVeri?.paramModel?.plasiyerList?[index].plasiyerAciklama ?? "",
-                              value: anaVeri?.paramModel?.plasiyerList?[index].plasiyerKodu ?? "",
-                              onTap: () {
-                                setState(() {
-                                  viewModel?.changeModel(model
-                                    ?..plasiyerKodu = anaVeri?.paramModel?.plasiyerList?[index].plasiyerKodu
-                                    ..plasiyerAciklama = anaVeri?.paramModel?.plasiyerList?[index].plasiyerAciklama);
-                                });
-                                Get.back();
-                              })));
+                labelText: "İl",
+                controller: ilController,
+                onChanged: (p0) {
+                  viewModel.changeModel(model?..cariIl = p0);
                 },
-                suffix: Observer(
-                  builder: (_) => viewModel?.model?.plasiyerAciklama == null
-                      ? const Icon(Icons.more_horiz_outlined)
-                      : IconButton(
-                          icon: const Icon(Icons.clear_outlined),
-                          onPressed: () => setState(() => viewModel?.changeModel(model
-                            ?..plasiyerAciklama = null
-                            ..plasiyerKodu = null))),
-                ),
               )),
               Expanded(
-                  child: CustomWidgetWithLabel(
-                      isVertical: true,
-                      text: "Dövizli",
-                      children: [Observer(builder: (_) => Switch.adaptive(value: viewModel?.isDovizli ?? false, onChanged: enabled ? (value) => viewModel!.changeIsDovizli(value) : null))]))
+                  child: CustomTextField(
+                enabled: enabled,
+                labelText: "İlçe",
+                controller: ilceCOntroller,
+                onChanged: (p0) {
+                  viewModel.changeModel(model?..cariIlce = p0);
+                },
+              )),
+            ]),
+            CustomTextField(
+              enabled: enabled,
+              labelText: "Posta Kodu",
+              controller: postaKoduController,
+              onChanged: (p0) {
+                viewModel.changeModel(model?..postakodu = p0);
+              },
+            ),
+            CustomTextField(
+              enabled: enabled,
+              labelText: "Adres",
+              controller: adresController,
+              onChanged: (p0) {
+                viewModel.changeModel(model?..cariAdres = p0);
+              },
+            ),
+            CustomTextField(
+              enabled: enabled,
+              labelText: "Telefon",
+              controller: telefonController,
+              onChanged: (p0) {
+                viewModel.changeModel(model?..cariTel = p0);
+              },
+            ),
+            CustomTextField(
+              enabled: enabled,
+              labelText: "E-Posta",
+              controller: ePostaController,
+              onChanged: (p0) {
+                viewModel.changeModel(model?..email = p0);
+              },
+            ),
+            CustomTextField(
+              enabled: enabled,
+              labelText: "Web",
+              controller: webController,
+              onChanged: (p0) {
+                viewModel.changeModel(model?..web = p0);
+              },
+            ),
+            Row(children: [
+              Expanded(
+                  child: CustomTextField(
+                enabled: enabled,
+                labelText: "Vergi Dairesi",
+                controller: vergiDairesiController,
+                onChanged: (p0) {
+                  viewModel.changeModel(model?..vergiDairesi = p0);
+                },
+              )),
+              Expanded(
+                  child: CustomTextField(
+                enabled: enabled,
+                labelText: "Vergi No",
+                controller: vergiNoController,
+                onChanged: (p0) {
+                  viewModel.changeModel(model?..vergiNumarasi = p0);
+                },
+              ))
+            ]),
+            Row(children: [
+              Expanded(
+                  child: CustomTextField(
+                      enabled: enabled,
+                      labelText: "Plasiyer",
+                      readOnly: true,
+                      valueText: model?.plasiyerKodu,
+                      controller: plasiyerController,
+                      onTap: () {
+                        bottomSheetDialogManager.showBottomSheetDialog(context,
+                            title: "PLasiyer",
+                            children: List.generate(
+                                anaVeri?.paramModel?.plasiyerList?.length ?? 0,
+                                (index) => BottomSheetModel(
+                                    title: anaVeri?.paramModel?.plasiyerList?[index].plasiyerAciklama ?? "",
+                                    value: anaVeri?.paramModel?.plasiyerList?[index].plasiyerKodu ?? "",
+                                    onTap: () {
+                                      viewModel.changeModel(model
+                                        ?..plasiyerKodu = anaVeri?.paramModel?.plasiyerList?[index].plasiyerKodu
+                                        ..plasiyerAciklama = anaVeri?.paramModel?.plasiyerList?[index].plasiyerAciklama);
+                                      setState(() {});
+                                      Get.back();
+                                    })));
+                        setState(() {});
+                      },
+                      suffix: Observer(
+                          builder: (_) => viewModel.model?.plasiyerAciklama == null
+                              ? const Icon(Icons.more_horiz_outlined)
+                              : IconButton(
+                                  icon: const Icon(Icons.clear_outlined),
+                                  onPressed: () => viewModel.changeModel(model
+                                    ?..plasiyerAciklama = null
+                                    ..plasiyerKodu = null))))),
+              Expanded(
+                  child: CustomWidgetWithLabel(isVertical: true, text: "Dövizli", children: [
+                Observer(
+                    builder: (_) => Switch.adaptive(
+                        value: viewModel.isDovizli,
+                        onChanged: enabled
+                            ? (value) {
+                                viewModel.changeIsDovizli(value);
+                                model?.dovizli = value;
+                                viewModel.changeModel(model);
+                              }
+                            : null))
+              ]))
             ]),
             Observer(
                 builder: (_) => Visibility(
-                    visible: viewModel!.isDovizli,
+                    visible: viewModel.isDovizli,
                     child: CustomTextField(
                       enabled: enabled,
                       labelText: "Döviz Tipi",
@@ -232,11 +377,10 @@ class _BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                                         title: dovizList[index].isim!,
                                         value: dovizList[index].dovizKodu.toString(),
                                         onTap: () {
-                                          setState(() {
-                                            viewModel?.changeModel(model
-                                              ?..dovizAdi = anaVeri?.paramModel?.dovizList?[index].isim.toString()
-                                              ..dovizKodu = anaVeri?.paramModel?.dovizList?[index].dovizKodu);
-                                          });
+                                          dovizController.text = dovizList[index].isim!;
+                                          model?.dovizAdi = dovizList[index].isim;
+                                          model?.dovizKodu = dovizList[index].dovizKodu;
+                                          viewModel.changeModel(model);
                                           Get.back();
                                         })));
                           },
@@ -244,29 +388,46 @@ class _BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                     ))),
             Row(
               children: [
-                Expanded(child: CustomTextField(enabled: enabled, labelText: "Vade Günü", valueText: model?.dovizKodu?.toStringIfNull, controller: vadeGunuController)),
+                Expanded(
+                    child: CustomTextField(
+                  enabled: enabled,
+                  labelText: "Vade Günü",
+                  valueText: model?.dovizKodu?.toStringIfNull,
+                  controller: vadeGunuController,
+                  onChanged: (p0) {
+                    vadeGunuController.text = p0;
+                    model?.vadeGunu = int.tryParse(p0);
+                    viewModel.changeModel(model);
+                  },
+                )),
                 Expanded(
                     child: CustomTextField(
                         enabled: enabled,
                         readOnly: true,
-                        labelText: "Ödeme Günü",
+                        labelText: "Ödeme Tipi",
                         controller: odemeGunController,
+                        valueText: model?.odemeTipi,
                         onTap: () async {
-                          BaseBottomSheetResponseModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Ödeme Günü", children: [
+                          BaseBottomSheetResponseModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Ödeme Tipi", children: [
                             BottomSheetModel(title: "Nakit", value: "0", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Nakit", value: "0"))),
                             BottomSheetModel(title: "Havale", value: "1", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Havale", value: "1"))),
                             BottomSheetModel(title: "Çek", value: "2", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Çek", value: "2"))),
                           ]);
                           if (result != null) {
-                            setState(() {
-                              viewModel?.changeModel(model?..odemeTipi = result.title);
-                            });
+                            odemeGunController.text = result.title!;
+                            model?.odemeTipi = result.value;
+                            viewModel.changeModel(model);
+                            setState(() {});
                           }
                         },
                         suffix: Observer(
-                            builder: (_) => viewModel?.model?.odemeTipi == null
+                            builder: (_) => viewModel.model?.odemeTipi == null
                                 ? const Icon(Icons.more_horiz_outlined)
-                                : IconButton(icon: const Icon(Icons.clear_outlined), onPressed: () => setState(() => viewModel?.changeModel(model?..odemeTipi = null))))))
+                                : IconButton(
+                                    icon: const Icon(Icons.clear_outlined),
+                                    onPressed: () {
+                                      viewModel.changeModel(model?..odemeTipi = null);
+                                    }))))
               ],
             ),
           ],
@@ -276,8 +437,10 @@ class _BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
   }
 
   Future<List<UlkeModel>?> getUlkeData() async {
+    dialogManager.showLoadingDialog("Yükleniyor");
     var response = await networkManager.dioGet<UlkeModel>(path: ApiUrls.getUlkeler, bodyModel: UlkeModel(), addCKey: true, addSirketBilgileri: true, addTokenKey: true);
     // cast all items to UlkeModel and return
+    dialogManager.hideAlertDialog;
     return response.data?.map((e) => e as UlkeModel).toList().cast<UlkeModel>();
   }
 
@@ -291,8 +454,9 @@ class _BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
       // addQuery: true,
       queryParameters: {"CariKodu": query},
     );
-    print(result.toString());
-    CariDetayModel.setInstance(result.data[0]);
-    cariDetayListesi = result.data.map((e) => e as CariDetayModel).toList().cast<CariDetayModel>();
+    if (result.data != null && result.data!.isNotEmpty) {
+      CariDetayModel.setInstance(result.data[0]);
+      cariDetayListesi = result.data.map((e) => e as CariDetayModel).toList().cast<CariDetayModel>();
+    }
   }
 }

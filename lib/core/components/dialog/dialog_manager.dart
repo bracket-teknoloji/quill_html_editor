@@ -76,7 +76,7 @@ class DialogManager {
           ),
         ),
       ).show();
-  void showAreYouSureDialog(void Function() onYes) => areYouSureDialog(onYes).show();
+  void showAreYouSureDialog(void Function() onYes) => _areYouSureDialog(onYes).show();
 
   void showExitDialog() => _baseDialog(
         title: "Uyarı",
@@ -190,7 +190,7 @@ class DialogManager {
         content: Text(message),
       );
 
-  AwesomeDialog areYouSureDialog(void Function() onYes) {
+  AwesomeDialog _areYouSureDialog(void Function() onYes) {
     return _baseDialog(
       title: "Uyarı",
       desc: "Bu işlemi yapmak istediğinizden emin misiniz?",

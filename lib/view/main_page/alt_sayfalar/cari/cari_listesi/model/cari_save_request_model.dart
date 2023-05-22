@@ -5,8 +5,21 @@ part 'cari_save_request_model.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.screamingSnake, createToJson: true)
 class CariSaveRequestModel with NetworkManagerMixin {
+  //singleton
+  static CariSaveRequestModel? _instance;
+  static CariSaveRequestModel get instance {
+    _instance ??= CariSaveRequestModel._init();
+    return _instance!;
+  }
+
+  //setter for singleton
+  static void setInstance(CariSaveRequestModel? instance) => _instance = instance;
+
+  CariSaveRequestModel._init();
+  CariSaveRequestModel();
   int? requestVersion;
   int? islemKodu;
+  @JsonKey(name: "_YeniKayit")
   bool? yeniKayit;
   bool? sahisFirmasi;
   int? subeKodu;
@@ -41,7 +54,7 @@ class CariSaveRequestModel with NetworkManagerMixin {
   String? muhasebeKodu;
   String? kurfarkiborcKodu;
   String? kurfarkialacakKodu;
-  String? vadeGunu;
+  int? vadeGunu;
   String? odemeTipi;
   bool? muhtelifCari;
   String? muhtelifBelgeTipi;

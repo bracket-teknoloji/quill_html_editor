@@ -69,8 +69,9 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
               Container(
                   alignment: Alignment.topRight,
                   width: width * 0.4,
-                  child: Text("Bakiye : ${widget.cariHareketleriModel.yuruyenBakiye?.dotSeparatedWithFixedDigits} TL",
-                      style: theme.textTheme.bodySmall?.copyWith(color: (widget.cariHareketleriModel.yuruyenBakiye ?? 0) > 0 ? Colors.green : Colors.red))),
+                  child: Text(
+                      "Bakiye : ${widget.cariHareketleriModel.yuruyenBakiye?.dotSeparatedWithFixedDigits != "null" ? widget.cariHareketleriModel.yuruyenBakiye?.dotSeparatedWithFixedDigits : ""} TL",
+                      style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(widget.cariHareketleriModel.yuruyenBakiye ?? 0)))),
             ].map((e) => e.paddingAll(UIHelper.lowSize)).toList(),
           )
         ],

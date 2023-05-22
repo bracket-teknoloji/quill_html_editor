@@ -51,9 +51,9 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   @override
   dispose() {
     focusNode!.dispose();
-    // controller1!.dispose();
-    // controller2!.dispose();
-    // controller3!.dispose();
+    controller1!.dispose();
+    controller2!.dispose();
+    controller3!.dispose();
     super.dispose();
   }
 
@@ -135,7 +135,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     final data = response.data;
     if (data != null) {
       for (IsletmeModel element in data) {
-        list.add(element);
+        element.subeKodu == null ? list.add(element..subeKodu = 0) : list.add(element);
       }
       CacheManager.setSubeListesi(data);
     }

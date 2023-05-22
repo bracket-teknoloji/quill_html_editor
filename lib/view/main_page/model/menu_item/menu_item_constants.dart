@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart';
 import '../../../../core/constants/grid_constants.dart';
 import '../../view/grid_items.dart';
 
@@ -8,7 +9,7 @@ class MenuItemConstants {
     //*Cari
     //*
     GridItems.anamenu(name: "CARI", title: "Cari", icon: "supervisor", color: GridThemeManager.cari, altMenuler: [
-      GridItems.item(name: "cari_CariListesi", title: "Cari Listesi", onTap: () => Get.toNamed("/mainPage/cariListesi")),
+      GridItems.item(name: "cari_CariListesi", title: "Cari Listesi", onTap: () => Get.toNamed("/mainPage/cariListesi", arguments: false)),
       GridItems.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları", onTap: () => Get.toNamed("/mainPage/cariAktivite")),
       GridItems.altmenu(name: "cari_Raporlar", title: "Raporlar", icon: "monitoring", altMenuler: [
         GridItems.item(name: "cari_Rap_Ekstre", title: "Cari Ekstre"),
@@ -23,7 +24,8 @@ class MenuItemConstants {
     //*E-Belge
     //*
     GridItems.anamenu(name: "EBEL", title: "E-Belge", icon: "e_belge", color: GridThemeManager.eBelge, altMenuler: [
-      GridItems.item(name: "ebelge_EIrsaliyeGelenKutusu", title: "Gelen Kutusu"),
+      //! UNUTMA BUNU AÇMAYI
+      GridItems.item(name: "ebelge_EIrsaliyeGelenKutusu", title: "Gelen Kutusu"),// onTap: () => Get.to(PDFViewerView())),
       GridItems.item(name: "ebelge_EIrsaliyeGidenKutusu", title: "Giden Kutusu"),
       GridItems.item(name: "ebelge_EFatCariGuncelle", title: "E-Fatura Carilerini Güncelle ")
     ]),
@@ -66,7 +68,7 @@ class MenuItemConstants {
     //* Stok
     //*
     GridItems.anamenu(name: "STOK", title: "Stok", icon: "inventory", color: GridThemeManager.stok, altMenuler: [
-      GridItems.item(name: "stok_StokListesi", title: "Stok Listesi"),
+      GridItems.item(name: "stok_StokListesi", title: "Stok Listesi", onTap: () => Get.toNamed("/mainPage/stokListesi")),
       GridItems.item(name: "stok_BarkodTanimlama", title: "Barkod Tanımla"),
       GridItems.item(name: "stok_FiyatGorEkrani", title: "Fiyat Gör"),
       GridItems.item(name: "stok_FiyatGecmisi", title: "Fiyat Geçmişi"),

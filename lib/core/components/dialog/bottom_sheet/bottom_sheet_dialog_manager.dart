@@ -15,7 +15,8 @@ import 'view_model/bottom_sheet_state_manager.dart';
 
 class BottomSheetDialogManager {
   static final BottomSheetStateManager viewModel = BottomSheetStateManager();
-  showBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel>? children}) {
+  showBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel>? children, bool aramaVarMi = false}) {
+    List<BottomSheetModel>? children2 = children;
     return showModalBottomSheet(
         context: context,
         isDismissible: true,
@@ -36,36 +37,49 @@ class BottomSheetDialogManager {
                 endIndent: 0,
                 indent: 0,
               ),
+              body == null && ((children?.length ?? 0) > 20)
+                  ? TextField(
+                      decoration: const InputDecoration(hintText: "Aramak istediğiniz metni yazınız."),
+                      onSubmitted: (value) {
+                        if (value == "") {
+                          children = children2;
+                        }
+                        children = children!.where((element) => element.title.toLowerCase().contains(value.toLowerCase())).toList();
+                      }).paddingAll(UIHelper.midSize)
+                  : const SizedBox(),
               body == null
-                  ? SizedBox(
-                      // if children are not fit to screen, it will be scrollable
-                      height: children!.length * 50 < Get.height * 0.9 ? children.length * 50 : Get.height * 0.9,
-                      child: ListView.builder(
-                        itemCount: children.length,
-                        itemBuilder: (context, index) => Column(
-                          children: [
-                            ListTile(
-                                onTap: children[index].onTap,
-                                title: Text(children[index].title),
-                                subtitle: children[index].description != null ? Text(children[index].description ?? '') : null,
-                                leading: children[index].icon != null || children[index].iconWidget != null
-                                    ? SizedBox(
-                                        width: 20,
-                                        height: 20,
-                                        child:
-                                            children[index].iconWidget != null ? Icon(children[index].iconWidget, size: 25, color: UIHelper.primaryColor) : IconHelper.smallIcon(children[index].icon!),
+                  ? children.isNotNullOrEmpty
+                      ? SizedBox(
+                          // if children are not fit to screen, it will be scrollable
+                          height: children!.length * 52 < Get.height * 0.9 ? children!.length * 52 : Get.height * 0.9,
+                          child: ListView.builder(
+                            itemCount: children?.length,
+                            itemBuilder: (context, index) => Column(
+                              children: [
+                                ListTile(
+                                    onTap: children?[index].onTap,
+                                    title: Text(children![index].title),
+                                    subtitle: children![index].description != null ? Text(children![index].description ?? '') : null,
+                                    leading: children![index].icon != null || children![index].iconWidget != null
+                                        ? SizedBox(
+                                            width: 20,
+                                            height: 20,
+                                            child: children![index].iconWidget != null
+                                                ? Icon(children![index].iconWidget, size: 25, color: UIHelper.primaryColor)
+                                                : IconHelper.smallIcon(children![index].icon!),
+                                          )
+                                        : null),
+                                index != children!.length - 1
+                                    ? Padding(
+                                        padding: UIHelper.lowPaddingVertical,
+                                        child: const Divider(),
                                       )
-                                    : null),
-                            index != children.length - 1
-                                ? Padding(
-                                    padding: UIHelper.lowPaddingVertical,
-                                    child: const Divider(),
-                                  )
-                                : Container()
-                          ],
-                        ),
-                      ).paddingOnly(bottom: 10),
-                    )
+                                    : Container()
+                              ],
+                            ),
+                          ).paddingOnly(bottom: 10),
+                        )
+                      : Center(child: Text('Veri bulunamadı.', style: context.theme.textTheme.titleMedium))
                   : WillPopScope(
                       child: SingleChildScrollView(child: body),
                       onWillPop: () async {
@@ -123,10 +137,12 @@ class BottomSheetDialogManager {
                                           groupValue: viewModel.radioGroupValue,
                                           title: Text(children[index].title),
                                         ),
-                                        Padding(
-                                          padding: UIHelper.lowPaddingVertical,
-                                          child: const Divider(),
-                                        )
+                                        index != children.length - 1
+                                            ? Padding(
+                                                padding: UIHelper.lowPaddingVertical,
+                                                child: const Divider(),
+                                              )
+                                            : Container()
                                       ],
                                     ),
                                   ),
@@ -180,7 +196,7 @@ class BottomSheetDialogManager {
             ),
             SizedBox(
               // if children are not fit to screen, it will be scrollable
-              height: (children.length + 1) * 50,
+              height: (children.length + 1) * 50 < Get.height * 0.8 ? (children.length + 1) * 50 : Get.height * 0.8,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -196,6 +212,9 @@ class BottomSheetDialogManager {
                                   value: viewModel.isSelectedListMap?[title]![index],
                                   title: Text(children[index].title),
                                   onChanged: (value) {
+                                    if (children[index].onTap != null) {
+                                      children[index].onTap!();
+                                    }
                                     viewModel.changeIndexIsSelectedListMap(title, index, value!);
                                     // viewModel.isSelectedListMap![title]![index] = value!;
                                     list = selectedChecker(children, title);
@@ -205,7 +224,12 @@ class BottomSheetDialogManager {
                                   },
                                 );
                               }),
-                              const Divider()
+                              index != children.length - 1
+                                  ? Padding(
+                                      padding: UIHelper.lowPaddingVertical,
+                                      child: const Divider(),
+                                    )
+                                  : Container()
                             ],
                           ).paddingOnly(bottom: 10);
                         }),
@@ -354,9 +378,11 @@ class BottomSheetDialogManager {
                                     BottomSheetModel(title: "Diğer", onTap: () => Get.back(result: "Diğer")),
                                     BottomSheetModel(title: "Komisyoncu", onTap: () => Get.back(result: "Komisyoncu")),
                                   ]);
-                                  var result = a != "Komisyoncu" ? a[0] : "I";
-                                  viewModel.cariTipi = a;
-                                  bottomSheetResponseModel.cariTipi = result;
+                                  if (a != null) {
+                                    var result = a != "Komisyoncu" ? a[0] : "I";
+                                    viewModel.cariTipi = a;
+                                    bottomSheetResponseModel.cariTipi = result;
+                                  }
                                 });
                           })
                         ],

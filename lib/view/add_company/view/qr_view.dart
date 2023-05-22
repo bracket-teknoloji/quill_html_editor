@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:picker/core/base/helpers/helper.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 import '../../../core/base/state/base_state.dart';
@@ -62,12 +63,7 @@ class _QRScannerState extends BaseState<QRScannerView> {
   }
 
   Widget buildQrView(BuildContext context) => QRView(
-        overlay: QrScannerOverlayShape(
-            borderColor: Colors.green,
-            borderRadius: 10,
-            borderWidth: 20,
-            cutOutSize: width * 0.7,
-            overlayColor: Colors.black.withOpacity(0.7)),
+        overlay: QrScannerOverlayShape(borderColor: UIHelper.primaryColor, borderRadius: 10, borderWidth: 20, cutOutSize: width * 0.7, overlayColor: Colors.black.withOpacity(0.7)),
         key: qrKey,
         onQRViewCreated: _onQRViewCreated,
         cameraFacing: CameraFacing.back,
@@ -97,8 +93,7 @@ class _QRScannerState extends BaseState<QRScannerView> {
         alignment: Alignment.bottomCenter,
         padding: context.horizontalPaddingHigh,
         margin: context.verticalPaddingHigh,
-        child: Text(barcode?.code ?? 'QR Kodu Okutunuz 👆🏼',
-            style: context.appTheme.textTheme.titleLarge!.copyWith(color: Colors.white)),
+        child: Text(barcode?.code ?? 'QR Kodu Okutunuz', style: context.appTheme.textTheme.titleLarge!.copyWith(color: Colors.white)),
       ),
     );
   }

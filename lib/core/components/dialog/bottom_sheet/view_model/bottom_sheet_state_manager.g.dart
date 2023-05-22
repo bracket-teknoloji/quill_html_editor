@@ -196,6 +196,22 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
     });
   }
 
+  late final _$aramaListAtom =
+      Atom(name: '_BottomSheetStateManagerBase.aramaList', context: context);
+
+  @override
+  List<dynamic>? get aramaList {
+    _$aramaListAtom.reportRead();
+    return super.aramaList;
+  }
+
+  @override
+  set aramaList(List<dynamic>? value) {
+    _$aramaListAtom.reportWrite(value, super.aramaList, () {
+      super.aramaList = value;
+    });
+  }
+
   late final _$isSelectedListMapAtom = Atom(
       name: '_BottomSheetStateManagerBase.isSelectedListMap', context: context);
 
@@ -354,6 +370,17 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
   }
 
   @override
+  void changeAramaList(List<dynamic> value) {
+    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController
+        .startAction(name: '_BottomSheetStateManagerBase.changeAramaList');
+    try {
+      return super.changeAramaList(value);
+    } finally {
+      _$_BottomSheetStateManagerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void changeIsSelectedListMap(String key, List<bool>? value) {
     final _$actionInfo =
         _$_BottomSheetStateManagerBaseActionController.startAction(
@@ -439,6 +466,7 @@ kod2: ${kod2},
 kod3: ${kod3},
 kod4: ${kod4},
 kod5: ${kod5},
+aramaList: ${aramaList},
 isSelectedListMap: ${isSelectedListMap},
 kodControllerText: ${kodControllerText},
 getKodControllerText: ${getKodControllerText}

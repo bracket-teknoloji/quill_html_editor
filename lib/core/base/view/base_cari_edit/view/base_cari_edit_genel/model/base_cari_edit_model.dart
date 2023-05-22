@@ -5,6 +5,7 @@ import '../../../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model
 class BaseCariEditModel {
   CariListesiModel? model;
   CariEditEnum? cariEditEnum;
+  String? siradakiKod;
 
-  BaseCariEditModel({this.model, this.cariEditEnum});
+  BaseCariEditModel({this.model, this.cariEditEnum, this.siradakiKod});
 }

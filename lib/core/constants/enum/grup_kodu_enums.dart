@@ -1,0 +1,3 @@
+
+enum GrupKoduEnum {CARI, STOK}
+

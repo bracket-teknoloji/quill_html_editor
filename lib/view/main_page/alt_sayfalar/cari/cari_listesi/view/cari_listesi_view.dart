@@ -31,7 +31,8 @@ import '../model/cari_listesi_model.dart';
 import '../view_model/cari_listesi_view_model.dart';
 
 class CariListesiView extends StatefulWidget {
-  const CariListesiView({super.key});
+  final bool? isGetData;
+  const CariListesiView({super.key, this.isGetData});
 
   @override
   State<CariListesiView> createState() => _CariListesiViewState();
@@ -124,7 +125,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
           });
         },
         child: Observer(
-          builder: (context) => (viewModel.cariListesi.isNullOrEmpty
+          builder: (_) => (viewModel.cariListesi.isNullOrEmpty
               ? (viewModel.cariListesi?.isEmpty ?? false)
                   ? const Center(child: Text("Cari Bulunamadı"))
                   : const Center(child: CircularProgressIndicator())
@@ -137,34 +138,63 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                       CariListesiModel object = viewModel.cariListesi?[index];
                       return Card(
                         child: ListTile(
-                          onTap: () async {
-                            var pageName = await BottomSheetDialogManager().showBottomSheetDialog(context, title: "${object.cariKodu}\n${object.cariAdi}", children: [
-                              BottomSheetModel(
-                                  title: "Görüntüle",
-                                  iconWidget: Icons.search_outlined,
-                                  onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", cariEditEnum: CariEditEnum.goruntule))),
-                              BottomSheetModel(
-                                  title: "Düzelt", iconWidget: Icons.edit_outlined, onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", cariEditEnum: CariEditEnum.duzenle))),
-                              BottomSheetModel(title: "Hareketler", iconWidget: Icons.list_alt_outlined, onTap: () => Get.back(result: "/mainPage/cariHareketleri")),
-                              // BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
-                              // BottomSheetModel(title: "Raporlar", iconWidget: Icons.list_alt_outlined),
-                              // BottomSheetModel(title: "Serbest Raporlar", iconWidget: Icons.list_alt_outlined),
-                            ]);
-                            if (pageName != null) {
-                              CariEditEnum? cariEditEnum;
-                              if (pageName is CariSeceneklerModel) {
-                                cariEditEnum = pageName.cariEditEnum;
-                                pageName = pageName.path;
-                                BaseCariEditModel editModel = BaseCariEditModel(cariEditEnum: cariEditEnum, model: object);
-                                Get.toNamed(pageName, arguments: editModel);
-                              } else {
-                                Get.toNamed(pageName, arguments: object);
-                              }
-                            }
-                          },
+                          onTap: !(widget.isGetData ?? true)
+                              ? () async {
+                                  var pageName = await BottomSheetDialogManager().showBottomSheetDialog(context, title: "${object.cariKodu}\n${object.cariAdi}", children: [
+                                    BottomSheetModel(
+                                        title: "Görüntüle",
+                                        iconWidget: Icons.search_outlined,
+                                        onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", cariEditEnum: CariEditEnum.goruntule))),
+                                    BottomSheetModel(
+                                        title: "Düzelt",
+                                        iconWidget: Icons.edit_outlined,
+                                        onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", cariEditEnum: CariEditEnum.duzenle))),
+                                    BottomSheetModel(
+                                      title: "Sil",
+                                      iconWidget: Icons.delete_outline,
+                                      onTap: () async {
+                                        var result = dialogManager.showAreYouSureDialog(() async {
+                                          var result = await networkManager.dioPost<CariListesiModel>(
+                                            path: ApiUrls.deleteCari,
+                                            bodyModel: CariListesiModel(),
+                                            addCKey: true,
+                                            addSirketBilgileri: true,
+                                            addTokenKey: true,
+                                            queryParameters: {"CariKodu": object.cariKodu ?? ""},
+                                          );
+                                          if (result.success ?? false) {
+                                            Get.back();
+                                            dialogManager.showSnackBar("${object.cariAdi} adlı cari silindi");
+                                            getData(sayfa: 1).then((value) {
+                                              viewModel.changeCariListesi(value);
+                                            });
+                                          }
+                                        });
+                                      },
+                                    ),
+                                    BottomSheetModel(title: "Hareketler", iconWidget: Icons.list_alt_outlined, onTap: () => Get.back(result: "/mainPage/cariHareketleri")),
+                                    // BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
+                                    // BottomSheetModel(title: "Raporlar", iconWidget: Icons.list_alt_outlined),
+                                    // BottomSheetModel(title: "Serbest Raporlar", iconWidget: Icons.list_alt_outlined),
+                                  ]);
+                                  if (pageName != null) {
+                                    CariEditEnum? cariEditEnum;
+                                    if (pageName is CariSeceneklerModel) {
+                                      cariEditEnum = pageName.cariEditEnum;
+                                      pageName = pageName.path;
+                                      BaseCariEditModel editModel = BaseCariEditModel(cariEditEnum: cariEditEnum, model: object);
+                                      Get.toNamed(pageName, arguments: editModel);
+                                    } else {
+                                      Get.toNamed(pageName, arguments: object);
+                                    }
+                                  }
+                                }
+                              : () {
+                                  Get.back(result: object);
+                                },
                           isThreeLine: true,
                           contentPadding: UIHelper.midPadding,
-                          leading: CircleAvatar(backgroundColor: UIHelper.getColorWithValue(object.bakiye ?? 0.0), child: Text(object.cariAdi!.substring(0, 1))),
+                          leading: CircleAvatar(backgroundColor: UIHelper.getColorWithValue(object.bakiye ?? 0.0), child: Text(object.cariAdi?.substring(0, 1) ?? "")),
                           title: Text(object.cariAdi ?? ""),
                           subtitle: Wrap(
                             direction: Axis.vertical,
@@ -228,8 +258,9 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 500),
                 child: FloatingActionButton(
-                  onPressed: () {
-                    Get.toNamed("/mainPage/cariEdit", arguments: BaseCariEditModel(cariEditEnum: CariEditEnum.ekle, model: CariListesiModel()));
+                  onPressed: () async {
+                    String siradakiKod = await CariNetworkManager.getSiradakiKod();
+                    Get.toNamed("/mainPage/cariEdit", arguments: BaseCariEditModel(cariEditEnum: CariEditEnum.ekle, model: CariListesiModel(), siradakiKod: siradakiKod));
                   },
                   child: ValueListenableBuilder<bool>(
                     valueListenable: _scrollController.appBar.pinNotifier,

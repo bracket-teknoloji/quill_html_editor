@@ -92,22 +92,9 @@ class AppThemeDark extends AppTheme {
             backgroundColor: MaterialStateProperty.all(Colors.red),
           ),
           inputDecorationTheme: InputDecorationTheme(
-            iconColor: Colors.red,
             border: OutlineInputBorder(
               borderRadius: UIHelper.lowBorderRadius,
               borderSide: const BorderSide(color: Colors.green),
-            ),
-            errorStyle: const TextStyle(
-              fontSize: 0,
-              color: Colors.red,
-            ),
-            errorBorder: OutlineInputBorder(
-              borderRadius: UIHelper.lowBorderRadius,
-              borderSide: const BorderSide(color: Colors.red),
-            ),
-            focusedErrorBorder: OutlineInputBorder(
-              borderRadius: UIHelper.lowBorderRadius,
-              borderSide: const BorderSide(color: Colors.red),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: UIHelper.lowBorderRadius,

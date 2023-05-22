@@ -1,0 +1,138 @@
+import 'package:mobx/mobx.dart';
+
+import '../../../cari/cari_listesi/model/cari_listesi_grup_kodu_model.dart';
+import '../model/stok_bottom_sheet_model.dart';
+import '../model/stok_listesi_model.dart';
+
+part 'stok_listesi_view_model.g.dart';
+
+class StokListesiViewModel = _StokListesiViewModelBase with _$StokListesiViewModel;
+
+abstract class _StokListesiViewModelBase with Store {
+  @observable
+  bool searchBar = false;
+
+  @action
+  void setSearchBar() {
+    searchBar = !searchBar;
+  }
+  @observable
+  String searchValue = "";
+
+  @action
+  void setSearchValue(String value) => searchValue = value;
+  @observable
+  StokBottomSheetModel bottomSheetModel = StokBottomSheetModel.instance;
+
+  @action
+  void resetBottomSheetModel() => bottomSheetModel.setSingleton(StokBottomSheetModel());
+
+  @action
+  void setBottomSheetModel(StokBottomSheetModel value) {
+    bottomSheetModel.grupKodu = [];
+    bottomSheetModel.kod1 = [];
+    bottomSheetModel.kod2 = [];
+    bottomSheetModel.kod3 = [];
+    bottomSheetModel.kod4 = [];
+    bottomSheetModel.kod5 = [];
+  }
+
+  @computed
+  String get grupKodu => bottomSheetModel.grupKodu?.map((e) => e.grupAdi).toList().join(", ") ?? "";
+
+  @computed
+  String get kod1 => bottomSheetModel.kod1?.map((e) => e.grupAdi).toList().join(", ") ?? "";
+
+  @computed
+  String get kod2 => bottomSheetModel.kod2?.map((e) => e.grupAdi).toList().join(", ") ?? "";
+
+  @computed
+  String get kod3 => bottomSheetModel.kod3?.map((e) => e.grupAdi).toList().join(", ") ?? "";
+
+  @computed
+  String get kod4 => bottomSheetModel.kod4?.map((e) => e.grupAdi).toList().join(", ") ?? "";
+
+  @computed
+  String get kod5 => bottomSheetModel.kod5?.map((e) => e.grupAdi).toList().join(", ") ?? "";
+
+  @observable
+  String resimleriGoster = "H";
+
+  @action
+  void setResimleriGoster() {
+    if (resimleriGoster == "H") {
+      resimleriGoster = "E";
+    } else {
+      resimleriGoster = "H";
+    }
+  }
+
+  @observable
+  ObservableList<CariGrupKoduModel> grupKodlari = <CariGrupKoduModel>[].asObservable();
+
+  @action
+  void setGrupKodlari(List<CariGrupKoduModel> value) => grupKodlari = value.asObservable();
+
+  @observable
+  List<StokListesiModel>? stokListesi;
+
+  @action
+  void setStokListesi(List<StokListesiModel>? value) => stokListesi = value;
+
+  @action
+  void addStokListesi(List<StokListesiModel> value) {
+    stokListesi?.addAll(value);
+  }
+
+  @observable
+  bool isScrolledDown = false;
+
+  @action
+  void changeIsScrolledDown(bool value) => isScrolledDown = value;
+
+  @observable
+  int sayfa = 0;
+
+  @action
+  void increaseSayfa() => sayfa++;
+
+  @action
+  void resetSayfa() => sayfa = 0;
+
+  @observable
+  bool dahaVarMi = true;
+
+  @action
+  void setDahaVarMi(bool value) => dahaVarMi = value;
+
+  @observable
+  String siralama = "AZ";
+
+  @action
+  void setSiralama(String value) => siralama = value;
+
+  @observable
+  ObservableList<bool> selected = [true, false, false, false, false].asObservable();
+
+  @action
+  void setSelectedWithIndex(int index, bool value) {
+    selected = [false, false, false, false, false].asObservable();
+    selected[index] = value;
+  }
+
+  @action
+  void resetSelected() => selected = [true, false, false, false, false].asObservable();
+
+  @observable
+  ObservableList selectedList = ["Tümü", "Artı", "Eksi", "Sıfır", "Bakiyeli"].asObservable();
+
+  @computed
+  String? get bakiye {
+    for (int i = 0; i < selected.length; i++) {
+      if (selected[i]) {
+        return (selectedList[i] as String).substring(0, 1);
+      }
+    }
+    return null;
+  }
+}

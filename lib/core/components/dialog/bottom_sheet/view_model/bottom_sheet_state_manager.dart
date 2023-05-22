@@ -12,13 +12,14 @@ abstract class _BottomSheetStateManagerBase with Store {
   void changeRadioGroupValue(String value) {
     radioGroupValue = value;
   }
-@observable
-String? cariTipi = "";
 
-@action
-void changeCariTipi(String value) {
-  cariTipi = value;
-}
+  @observable
+  String? cariTipi = "";
+
+  @action
+  void changeCariTipi(String value) {
+    cariTipi = value;
+  }
 
   @observable
   String? sehir = "";
@@ -90,6 +91,14 @@ void changeCariTipi(String value) {
   void changeKod5(String value) {
     kodControllerText?[5] = value;
     kod5 = value;
+  }
+
+  @observable
+  List? aramaList = [];
+
+  @action
+  void changeAramaList(List value) {
+    aramaList = value;
   }
 
   @observable

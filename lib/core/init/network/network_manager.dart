@@ -3,6 +3,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/services.dart';
 import 'package:picker/core/base/model/base_network_mixin.dart';
 import 'package:picker/core/base/model/generic_response_model.dart';
 import 'package:picker/core/constants/extensions/date_time_extensions.dart';
@@ -88,6 +89,17 @@ class NetworkManager {
     final response = await _dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
     GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
     return responseModel;
+  }
+
+  Future<Uint8List> getImage(String path) async {
+    final response = await _dio.get(
+      path,
+      options: Options(responseType: ResponseType.bytes),
+    );
+    // convert response to bytes
+    Uint8List bytes = response.data as Uint8List;
+    print(bytes);
+    return bytes;
   }
 
   Map<String, String> getStandardHeader(bool addTokenKey, [bool headerSirketBilgileri = false, bool headerCKey = false]) {
