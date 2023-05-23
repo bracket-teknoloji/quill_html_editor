@@ -1,9 +1,10 @@
 // ignore_for_file: avoid_print
 
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
 import 'package:picker/core/base/model/base_network_mixin.dart';
 import 'package:picker/core/base/model/generic_response_model.dart';
 import 'package:picker/core/constants/extensions/date_time_extensions.dart';
@@ -91,15 +92,13 @@ class NetworkManager {
     return responseModel;
   }
 
-  Future<Uint8List> getImage(String path) async {
-    final response = await _dio.get(
-      path,
-      options: Options(responseType: ResponseType.bytes),
-    );
+  Future<MemoryImage> getImage(String path) async {
+    Map<String, String> head = getStandardHeader(true, true, true);
+    final response = await _dio.get(path, options: Options(headers: head, responseType: ResponseType.bytes));
     // convert response to bytes
-    Uint8List bytes = response.data as Uint8List;
-    print(bytes);
-    return bytes;
+    log(response.data.toString());
+    // response is a png file
+    return MemoryImage(response.data);
   }
 
   Map<String, String> getStandardHeader(bool addTokenKey, [bool headerSirketBilgileri = false, bool headerCKey = false]) {

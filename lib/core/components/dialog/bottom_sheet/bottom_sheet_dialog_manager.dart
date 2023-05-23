@@ -486,6 +486,12 @@ class BottomSheetDialogManager {
         "";
     }
   }
+  void clearSelectedData(){
+    viewModel.deleteIsSelectedListMap();
+  }
+  void showSubeBottomSheetDialog(){
+    
+  }
 
   //  Future<GenericResponseModel<NetworkManagerMixin>> getData() async {
   //   GenericResponseModel<NetworkManagerMixin> response;

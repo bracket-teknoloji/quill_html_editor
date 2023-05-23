@@ -81,6 +81,7 @@ dependencies:
   connectivity_plus: ^3.0.3
   intl: ^0.18.1
   scroll_app_bar: ^2.0.0
+  image_picker: ^0.8.7+5
 
 
   

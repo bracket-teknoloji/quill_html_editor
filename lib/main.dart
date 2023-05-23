@@ -5,6 +5,7 @@ import "package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/view/ca
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/view/stok_listesi_view.dart";
 
 import "core/base/view/base_cari_edit/view/base_cari_edit_view.dart";
+import "core/base/view/base_stok_edit/view/base_stok_edit_view.dart";
 import "core/init/cache/cache_manager.dart";
 import "core/init/theme/app_theme_dark.dart";
 import "view/add_company/model/account_model.dart";
@@ -50,7 +51,7 @@ class MyApp extends StatelessWidget {
           children: [
             GetPage(
               name: "/cariEdit",
-              page: () => BaseCariEditingView(cariListesiModel: Get.arguments),
+              page: () => BaseCariEditingView(model: Get.arguments),
             ),
             GetPage(
               name: "/cariListesi",
@@ -63,6 +64,10 @@ class MyApp extends StatelessWidget {
             GetPage(
               name: "/stokListesi",
               page: () => const StokListesiView(),
+            ),
+            GetPage(
+              name: "/stokEdit",
+              page: () => BaseStokEditingView(model: Get.arguments),
             ),
           ],
         ),

@@ -14,14 +14,14 @@ import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_
 
 import '../../../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_save_request_model.dart';
 import '../../../../../../../view/main_page/model/main_page_model.dart';
-import '../../../../../../constants/enum/cari_edit_enum.dart';
+import '../../../../../../constants/enum/base_edit_enum.dart';
+import '../../../../../model/base_edit_model.dart';
 import '../../../../../state/base_state.dart';
-import '../model/base_cari_edit_model.dart';
 import '../model/ulke_model.dart';
 import '../view_model/base_cari_genel_edit_view_model.dart';
 
 class BaseEditCariGenelView extends StatefulWidget {
-  final BaseCariEditModel? model;
+  final BaseEditModel? model;
   const BaseEditCariGenelView({super.key, this.model});
 
   @override
@@ -61,7 +61,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
       viewModel.changeModel(model?..cariKodu = siradakiKod);
       setState(() {});
     }
-    bool enabled = widget.model?.cariEditEnum != CariEditEnum.goruntule;
+    bool enabled = widget.model?.baseEditEnum != BaseEditEnum.goruntule;
     TextEditingController kodController = TextEditingController(text: viewModel.model?.cariKodu ?? siradakiKod);
     TextEditingController cariTipiController = TextEditingController(text: viewModel.model?.cariTipAciklama);
     TextEditingController adController = TextEditingController(text: viewModel.model?.cariAdi);
@@ -118,8 +118,8 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
               return Row(children: [
                 Expanded(
                     child: CustomTextField(
-                  enabled: enabled && widget.model?.cariEditEnum == CariEditEnum.ekle,
-                  readOnly: widget.model?.cariEditEnum != CariEditEnum.ekle,
+                  enabled: enabled && widget.model?.baseEditEnum == BaseEditEnum.ekle,
+                  readOnly: widget.model?.baseEditEnum != BaseEditEnum.ekle,
                   isMust: true,
                   labelText: "Kodu",
                   controller: kodController,

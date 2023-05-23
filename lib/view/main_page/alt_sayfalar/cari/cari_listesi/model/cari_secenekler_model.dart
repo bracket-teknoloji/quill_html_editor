@@ -1,9 +1,8 @@
-
-import '../../../../../../core/constants/enum/cari_edit_enum.dart';
+import '../../../../../../core/constants/enum/base_edit_enum.dart';
 
 class CariSeceneklerModel {
   String? path;
-  CariEditEnum? cariEditEnum;
+  BaseEditEnum? baseEditEnum;
 
-  CariSeceneklerModel({this.path, this.cariEditEnum});
+  CariSeceneklerModel({this.path, this.baseEditEnum});
 }

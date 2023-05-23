@@ -4,7 +4,6 @@ part 'param_model.g.dart';
 
 @JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
 class ParamModel {
-  @override
   ParamModel();
   @JsonKey(name: "ParamYuklendi")
   bool? paramYuklendi;

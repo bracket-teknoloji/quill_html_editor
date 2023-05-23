@@ -115,9 +115,7 @@ abstract class _BottomSheetStateManagerBase with Store {
   }
 
   @action
-  void deleteIsSelectedListMap() {
-    isSelectedListMap = {};
-  }
+  void deleteIsSelectedListMap() => isSelectedListMap = {};
 
   @observable
   ObservableList<String>? kodControllerText = <String>[].asObservable();

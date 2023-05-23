@@ -3,10 +3,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:picker/core/base/helpers/helper.dart';
+import 'package:picker/core/base/model/base_edit_model.dart';
 import 'package:picker/core/base/model/generic_response_model.dart';
 import 'package:picker/core/components/button/elevated_buttons/bottom_appbar_button.dart';
 import 'package:picker/core/components/textfield/custom_label_widget.dart';
@@ -18,6 +18,7 @@ import 'package:scroll_app_bar/scroll_app_bar.dart';
 
 import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
+import '../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../core/constants/enum/grup_kodu_enums.dart';
 import '../model/stok_bottom_sheet_model.dart';
 import '../model/stok_listesi_model.dart';
@@ -72,14 +73,10 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
 
   @override
   Widget build(BuildContext context) {
-    grupKoduController.text = viewModel.grupKodu;
-    kod1Controller.text = viewModel.kod1;
-    kod2Controller.text = viewModel.kod2;
-    kod3Controller.text = viewModel.kod3;
-    kod4Controller.text = viewModel.kod4;
     kod5Controller.text = viewModel.kod5;
     return WillPopScope(
       onWillPop: () async {
+        bottomSheetDialogManager.clearSelectedData();
         viewModel.setBottomSheetModel(StokBottomSheetModel());
         return true;
       },
@@ -105,6 +102,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
       title: Observer(
           builder: (_) => viewModel.searchBar
               ? TextField(
+                  autofocus: true,
                   onSubmitted: (value) {
                     viewModel.setSearchValue(value);
                     viewModel.setStokListesi(null);
@@ -135,6 +133,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                     title: "Resimleri Göster",
                     onTap: () {
                       viewModel.setResimleriGoster();
+                      viewModel.setStokListesi(null);
+                      viewModel.resetSayfa();
                       log(viewModel.resimleriGoster);
                       getData();
                       Get.back();
@@ -202,7 +202,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                                       } else {
                                                         viewModel.bottomSheetModel.grupKodu?.add(e);
                                                       }
-                                                      print(viewModel.grupKodu);
+                                                      debugPrint(viewModel.grupKodu);
                                                     },
                                                   ))
                                               .toList(),
@@ -361,10 +361,17 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                 Expanded(
                                     child: ElevatedButton(
                                         onPressed: () {
+                                          grupKoduController.text = "";
+                                          kod1Controller.text = "";
+                                          kod2Controller.text = "";
+                                          kod3Controller.text = "";
+                                          kod4Controller.text = "";
+                                          kod5Controller.text = "";
                                           viewModel.setBottomSheetModel(StokBottomSheetModel());
                                           viewModel.resetSayfa();
                                           viewModel.setStokListesi(null);
                                           viewModel.resetSelected();
+                                          bottomSheetDialogManager.clearSelectedData();
                                           getData();
                                           Get.back();
                                         },
@@ -374,13 +381,6 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                 Expanded(
                                     child: ElevatedButton(
                                         onPressed: () {
-                                          grupKoduController.text = "";
-                                          print(grupKoduController.text);
-                                          kod1Controller.text = "";
-                                          kod2Controller.text = "";
-                                          kod3Controller.text = "";
-                                          kod4Controller.text = "";
-                                          kod5Controller.text = "";
                                           viewModel.resetSayfa();
                                           viewModel.setStokListesi(null);
                                           getData();
@@ -450,7 +450,10 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                     child: ListTile(
                       contentPadding: UIHelper.lowPadding,
                       // leading: stok.resimUrlKucuk !=null ? Image.memory(networkManager.getImage(stok.resimUrlKucuk))
-                      leading: CircleAvatar(child: Text(stok.stokAdi!.substring(0, 1))),
+                      leading: CircleAvatar(
+                        foregroundImage: stok.resimUrlKucuk != null ? viewModel.imageMap[stok.stokKodu] : null,
+                        child: Text((stok.stokAdi ?? "  ").substring(0, 1)),
+                      ),
                       trailing: Text("${stok.bakiye ?? 0} ${stok.olcuBirimi ?? ""}", style: context.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(stok.bakiye ?? 0))),
                       title: Text.rich(
                         TextSpan(
@@ -460,22 +463,35 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                           ],
                         ),
                       ),
-                      onTap: () {
-                        bottomSheetDialogManager.showBottomSheetDialog(context, title: stok.stokAdi ?? "", children: [
-                          BottomSheetModel(title: "Görüntüle", iconWidget: Icons.visibility),
-                          BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit),
+                      onTap: () async{
+                        BaseEditModel? result =await bottomSheetDialogManager.showBottomSheetDialog(context, title: stok.stokAdi ?? "", children: [
+                          BottomSheetModel(
+                              title: "Görüntüle", iconWidget: Icons.visibility, onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.goruntule, model: stok))),
+                          BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit, onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.duzenle, model: stok))),
                           BottomSheetModel(title: "Sil", iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? "")),
                           BottomSheetModel(title: "Hareketler", iconWidget: Icons.list_alt),
                           BottomSheetModel(title: "Depo Bakiye Durumu", iconWidget: Icons.list_alt),
                           BottomSheetModel(
                             title: "Yazdır",
                             iconWidget: Icons.print,
-                            onTap: () {
-                              // getImage(stok.resimUrlKucuk ?? "");
+                            onTap: () async {
+                              MemoryImage result = await getImage(stok.resimUrl ?? "");
+                              // ignore: use_build_context_synchronously
+                              await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                  title: "fdsfg",
+                                  body: Image(
+                                    image: result,
+                                    errorBuilder: (context, error, stackTrace) {
+                                      return const Icon(Icons.image_not_supported_outlined);
+                                    },
+                                  ));
                             },
                           ),
                           BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt),
                         ]);
+                        if(result != null){
+                          Get.toNamed("/mainPage/stokEdit", arguments: result);
+                        }
                       },
                     ).paddingAll(10),
                   );
@@ -548,12 +564,13 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
       addSirketBilgileri: true,
     );
     if (response.success ?? false) {
+      Map<String, MemoryImage> imageMap = {};
       List<StokListesiModel>? liste = response.data.map((e) => e as StokListesiModel).toList().cast<StokListesiModel>();
       if ((liste?.length ?? 0) < 25) {
         if (viewModel.bottomSheetModel != StokBottomSheetModel()) {
           viewModel.setDahaVarMi(false);
           viewModel.increaseSayfa();
-        } else {
+        } else if ((liste?.length ?? 0) == 0) {
           viewModel.setDahaVarMi(false);
         }
       } else {
@@ -561,19 +578,29 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
         viewModel.setDahaVarMi(true);
       }
       if (viewModel.sayfa == 1) {
+        for (var stokKaydi in liste ?? <StokListesiModel>[]) {
+          if (stokKaydi.resimUrlKucuk != null) {
+            imageMap[stokKaydi.stokKodu ?? ""] = await getImage(stokKaydi.resimUrlKucuk ?? "");
+          }
+        }
         viewModel.setStokListesi(liste);
       } else {
+        for (var stokKaydi in liste ?? <StokListesiModel>[]) {
+          if (stokKaydi.resimUrlKucuk != null) {
+            imageMap[stokKaydi.stokKodu ?? ""] = await getImage(stokKaydi.resimUrlKucuk ?? "");
+          }
+        }
         viewModel.addStokListesi(liste ?? <StokListesiModel>[]);
       }
+      viewModel.setImageMap(imageMap);
     } else {
       viewModel.setStokListesi(<StokListesiModel>[]);
     }
     setState(() {});
   }
 
-  void getImage(String path) async {
-    Uint8List result = await networkManager.getImage(path);
-    bottomSheetDialogManager.showBottomSheetDialog(context, title: "title", body: SizedBox(height: 100, width: 100, child: Image.memory(result)));
+  Future<MemoryImage> getImage(String path) async {
+    return await networkManager.getImage(path);
   }
 
   void deleteStok(String stokKodu) {

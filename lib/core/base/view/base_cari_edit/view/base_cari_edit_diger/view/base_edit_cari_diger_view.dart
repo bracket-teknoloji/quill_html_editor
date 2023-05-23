@@ -10,7 +10,7 @@ import 'package:picker/core/base/model/generic_response_model.dart';
 import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import 'package:picker/core/components/textfield/custom_label_widget.dart';
 import 'package:picker/core/components/textfield/custom_text_field.dart';
-import 'package:picker/core/constants/enum/cari_edit_enum.dart';
+import 'package:picker/core/constants/enum/base_edit_enum.dart';
 import 'package:picker/core/constants/extensions/widget_extensions.dart';
 import 'package:picker/core/constants/static_variables/static_variables.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_grup_kodu_model.dart';
@@ -20,13 +20,13 @@ import '../../../../../../../view/auth/model/isletme_model.dart';
 import '../../../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_kosullar_model.dart';
 import '../../../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
 import '../../../../../../init/cache/cache_manager.dart';
+import '../../../../../model/base_edit_model.dart';
 import '../../../../../state/base_state.dart';
-import '../../base_cari_edit_genel/model/base_cari_edit_model.dart';
 import '../../base_cari_edit_genel/view/base_edit_cari_genel_view.dart';
 import '../../base_cari_edit_genel/view_model/base_cari_genel_edit_view_model.dart';
 
 class CariEditDigerView extends StatefulWidget {
-  final BaseCariEditModel? model;
+  final BaseEditModel? model;
   const CariEditDigerView({super.key, this.model});
 
   @override
@@ -120,7 +120,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
     CariListesiModel.instance.subeKodu = CariListesiModel.instance.subeKodu ?? 0;
     subeController.text = subeList.firstWhere((element) => (element).subeKodu == CariListesiModel.instance.subeKodu).subeAdi ?? "";
     log(CariListesiModel.instance.subeKodu.toStringIfNull);
-    bool enabled = widget.model?.cariEditEnum != CariEditEnum.goruntule;
+    bool enabled = widget.model?.baseEditEnum != BaseEditEnum.goruntule;
     return SingleChildScrollView(
       child: Form(
           key: formKey,
@@ -254,7 +254,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               ).withExpanded,
               CustomTextField(enabled: enabled, labelText: "Bilgi", controller: bilgiController),
               CustomTextField(
-                  enabled: (enabled && subeList.firstWhere((element) => element.subeKodu == veriTabani["Şube"]).merkezmi == "E") || widget.model?.cariEditEnum == CariEditEnum.ekle,
+                  enabled: (enabled && subeList.firstWhere((element) => element.subeKodu == veriTabani["Şube"]).merkezmi == "E") || widget.model?.baseEditEnum == BaseEditEnum.ekle,
                   readOnly: true,
                   suffix: iconSwitcher(subeController),
                   isMust: true,
@@ -574,7 +574,6 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
           onPressed: () {
             setState(() {
               value?.text = "";
-              
             });
           },
           icon: const Icon(Icons.close));

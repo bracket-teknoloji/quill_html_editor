@@ -19,5 +19,6 @@ class ApiUrls {
   static const String deleteCari = "api/Cari/DeleteCari";
   //*Stoklar
   static const String getStoklar = "api/Stok/GetStoklar";
+  static const String getStokDetay = "api/Stok/GetStokDetay";
   static const String deleteStok = "api/Stok/DeleteStok";
 }

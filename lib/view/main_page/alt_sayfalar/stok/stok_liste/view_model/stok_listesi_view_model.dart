@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../cari/cari_listesi/model/cari_listesi_grup_kodu_model.dart';
@@ -9,6 +10,14 @@ part 'stok_listesi_view_model.g.dart';
 class StokListesiViewModel = _StokListesiViewModelBase with _$StokListesiViewModel;
 
 abstract class _StokListesiViewModelBase with Store {
+  @observable
+  Map<String,MemoryImage> imageMap = {};
+
+  @action
+  void setImageMap(Map<String,MemoryImage> value) => imageMap = value;
+
+  @action
+  void removeImageMap(String key) => imageMap.remove(key);
   @observable
   bool searchBar = false;
 

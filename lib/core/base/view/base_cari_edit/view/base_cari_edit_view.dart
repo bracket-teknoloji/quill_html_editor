@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:picker/core/base/helpers/helper.dart';
-import 'package:picker/core/base/view/base_cari_edit/model/base_editing_model.dart';
 import 'package:picker/core/components/wrap/appbar_title.dart';
-import 'package:picker/core/constants/enum/cari_edit_enum.dart';
+import 'package:picker/core/constants/enum/base_edit_enum.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_save_request_model.dart';
 
 import '../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
+import '../../../model/base_edit_model.dart';
 import '../../../state/base_state.dart';
 import 'base_cari_edit_banka/view/base_cari_edit_banka_view.dart';
 import 'base_cari_edit_diger/view/base_edit_cari_diger_view.dart';
-import 'base_cari_edit_genel/model/base_cari_edit_model.dart';
 import 'base_cari_edit_genel/view/base_edit_cari_genel_view.dart';
 import 'base_cari_edit_iletisim/view/base_edit_cari_iletisim_view.dart';
 import 'base_cari_edit_ozel/view/base_edit_cari_ozet_view.dart';
@@ -20,22 +19,21 @@ class BaseCariEditingView extends StatefulWidget {
   final String? appBarSubtitle;
   final bool? isSubTitleSmall;
   // final List<Widget>? actions;
-  final BaseCariEditModel? cariListesiModel;
-  final BaseEditingModel? model;
-  const BaseCariEditingView({super.key, this.appBarTitle, this.appBarSubtitle, this.model, this.isSubTitleSmall, this.cariListesiModel});
+  final BaseEditModel? model;
+  const BaseCariEditingView({super.key, this.appBarTitle, this.appBarSubtitle, this.isSubTitleSmall, this.model});
 
   @override
   State<BaseCariEditingView> createState() => _BasCariEditingViewState();
 }
 
 class _BasCariEditingViewState extends BaseState<BaseCariEditingView> {
-  List<Tab>? get addTabs => widget.cariListesiModel?.cariEditEnum != CariEditEnum.ekle && widget.cariListesiModel?.cariEditEnum != null
+  List<Tab>? get addTabs => widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null
       ? [const Tab(child: Text("Özet")), const Tab(child: Text("Banka")), const Tab(child: Text("İletişim"))]
       : [];
-  List<Widget>? get addBody => widget.cariListesiModel?.cariEditEnum != CariEditEnum.ekle && widget.cariListesiModel?.cariEditEnum != null
+  List<Widget>? get addBody => widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null
       ? [const BaseEditCariOzetView(), const BaseCariEditBankaView(), const BaseCariEditIletisimView()]
       : [];
-  Widget? get addSaveButton => widget.cariListesiModel?.cariEditEnum != CariEditEnum.goruntule
+  Widget? get addSaveButton => widget.model?.baseEditEnum != BaseEditEnum.goruntule
       ? IconButton(
           onPressed: () async {
             dialogManager.showSnackBar("Yükleniyor");
@@ -56,8 +54,8 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> {
       ...?addTabs,
     ];
     var views = [
-      BaseEditCariGenelView(model: widget.cariListesiModel),
-      CariEditDigerView(model: widget.cariListesiModel),
+      BaseEditCariGenelView(model: widget.model),
+      CariEditDigerView(model: widget.model),
       ...?addBody,
     ];
     return DefaultTabController(
@@ -65,7 +63,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> {
       child: Scaffold(
         // bottomNavigationBar: NavigationBar(destinations: const [Tab(child: Text("Genel")), Tab(child: Text("Diğer"))]),
         appBar: AppBar(
-          title: AppBarTitle(title: (widget.appBarTitle ?? "Cari Kartı"), subtitle: (widget.cariListesiModel?.cariEditEnum?.name ?? CariEditEnum.ekle.name), isSubTitleSmall: widget.isSubTitleSmall),
+          title: AppBarTitle(title: (widget.appBarTitle ?? "Cari Kartı"), subtitle: (widget.model?.baseEditEnum?.name ?? BaseEditEnum.ekle.name), isSubTitleSmall: widget.isSubTitleSmall),
           actions: [
             IconButton(
               onPressed: () {},
@@ -73,7 +71,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> {
             ),
             addSaveButton ?? Container(),
           ],
-          bottom: TabBar(indicatorColor: UIHelper.primaryColor, indicatorSize: TabBarIndicatorSize.tab, labelColor: UIHelper.primaryColor, tabs: tabs),
+          bottom: TabBar(tabs: tabs),
         ),
         body: TabBarView(
           // controller: _tabController,
@@ -96,7 +94,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> {
       ..adres = CariListesiModel.instance.cariAdres
       ..ilce = CariListesiModel.instance.cariIlce
       ..sehir = CariListesiModel.instance.cariIl
-      ..yeniKayit = widget.cariListesiModel?.cariEditEnum == CariEditEnum.ekle
+      ..yeniKayit = widget.model?.baseEditEnum == BaseEditEnum.ekle
       ..tipi = CariListesiModel.instance.cariTip;
     var response = await networkManager.dioPost<CariListesiModel>(
       path: ApiUrls.saveCari,

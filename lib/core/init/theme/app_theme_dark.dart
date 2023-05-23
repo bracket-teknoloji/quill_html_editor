@@ -19,6 +19,9 @@ class AppThemeDark extends AppTheme {
       useMaterial3: true,
       colorSchemeSeed: UIHelper.primaryColor,
       tabBarTheme: TabBarTheme(
+        indicatorColor: UIHelper.primaryColor,
+        indicatorSize: TabBarIndicatorSize.tab,
+        labelColor: UIHelper.primaryColor,
         labelPadding: UIHelper.lowPadding,
         labelStyle: const TextStyle(
           fontSize: 14,

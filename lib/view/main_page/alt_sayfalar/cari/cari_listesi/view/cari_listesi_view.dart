@@ -9,13 +9,13 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:kartal/kartal.dart';
-import 'package:picker/core/constants/enum/cari_edit_enum.dart';
+import 'package:picker/core/constants/enum/base_edit_enum.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_secenekler_model.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_network_manager.dart';
 import 'package:scroll_app_bar/scroll_app_bar.dart';
 
+import '../../../../../../core/base/model/base_edit_model.dart';
 import '../../../../../../core/base/state/base_state.dart';
-import '../../../../../../core/base/view/base_cari_edit/view/base_cari_edit_genel/model/base_cari_edit_model.dart';
 import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
 import '../../../../../../core/components/button/elevated_buttons/footer_button.dart';
 import '../../../../../../core/components/button/toggle_buttons/toggle_button.dart';
@@ -144,11 +144,11 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                     BottomSheetModel(
                                         title: "Görüntüle",
                                         iconWidget: Icons.search_outlined,
-                                        onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", cariEditEnum: CariEditEnum.goruntule))),
+                                        onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", baseEditEnum: BaseEditEnum.goruntule))),
                                     BottomSheetModel(
                                         title: "Düzelt",
                                         iconWidget: Icons.edit_outlined,
-                                        onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", cariEditEnum: CariEditEnum.duzenle))),
+                                        onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", baseEditEnum: BaseEditEnum.duzenle))),
                                     BottomSheetModel(
                                       title: "Sil",
                                       iconWidget: Icons.delete_outline,
@@ -178,11 +178,11 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                     // BottomSheetModel(title: "Serbest Raporlar", iconWidget: Icons.list_alt_outlined),
                                   ]);
                                   if (pageName != null) {
-                                    CariEditEnum? cariEditEnum;
+                                    BaseEditEnum? baseEditEnum;
                                     if (pageName is CariSeceneklerModel) {
-                                      cariEditEnum = pageName.cariEditEnum;
+                                      baseEditEnum = pageName.baseEditEnum;
                                       pageName = pageName.path;
-                                      BaseCariEditModel editModel = BaseCariEditModel(cariEditEnum: cariEditEnum, model: object);
+                                      BaseEditModel editModel = BaseEditModel(baseEditEnum: baseEditEnum, model: object);
                                       Get.toNamed(pageName, arguments: editModel);
                                     } else {
                                       Get.toNamed(pageName, arguments: object);
@@ -260,7 +260,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                 child: FloatingActionButton(
                   onPressed: () async {
                     String siradakiKod = await CariNetworkManager.getSiradakiKod();
-                    Get.toNamed("/mainPage/cariEdit", arguments: BaseCariEditModel(cariEditEnum: CariEditEnum.ekle, model: CariListesiModel(), siradakiKod: siradakiKod));
+                    Get.toNamed("/mainPage/cariEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, model: CariListesiModel(), siradakiKod: siradakiKod));
                   },
                   child: ValueListenableBuilder<bool>(
                     valueListenable: _scrollController.appBar.pinNotifier,
@@ -543,7 +543,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       log("$paramData");
     }
     log("Sayfa : $sayfa");
-    setState(() {});
+     setState(() {});
 
     return response.data;
   }
