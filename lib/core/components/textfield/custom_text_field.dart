@@ -12,10 +12,11 @@ class CustomTextField extends StatefulWidget {
   final Widget? suffix;
   final TextInputType? keyboardType;
   final FocusNode? focusNode;
-   String? controllerText;
+  final int? maxLength;
+  String? controllerText;
   final Function()? onTap;
   final Function(String)? onChanged;
-   CustomTextField(
+  CustomTextField(
       {super.key,
       this.controller,
       this.labelText,
@@ -28,7 +29,8 @@ class CustomTextField extends StatefulWidget {
       this.onTap,
       this.keyboardType,
       this.onChanged,
-      this.controllerText});
+      this.controllerText,
+      this.maxLength});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -42,6 +44,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       keyboardType: widget.keyboardType,
       focusNode: widget.focusNode,
       onTap: widget.onTap,
+      maxLength: widget.maxLength,
       onChanged: widget.onChanged,
       onTapOutside: (value) {
         widget.onChanged;

@@ -11,10 +11,10 @@ class StokListesiViewModel = _StokListesiViewModelBase with _$StokListesiViewMod
 
 abstract class _StokListesiViewModelBase with Store {
   @observable
-  Map<String,MemoryImage> imageMap = {};
+  Map<String, MemoryImage> imageMap = {};
 
   @action
-  void setImageMap(Map<String,MemoryImage> value) => imageMap = value;
+  void setImageMap(Map<String, MemoryImage> value) => imageMap = value;
 
   @action
   void removeImageMap(String key) => imageMap.remove(key);
@@ -25,6 +25,7 @@ abstract class _StokListesiViewModelBase with Store {
   void setSearchBar() {
     searchBar = !searchBar;
   }
+
   @observable
   String searchValue = "";
 
@@ -94,7 +95,7 @@ abstract class _StokListesiViewModelBase with Store {
   }
 
   @observable
-  bool isScrolledDown = false;
+  bool isScrolledDown = true;
 
   @action
   void changeIsScrolledDown(bool value) => isScrolledDown = value;

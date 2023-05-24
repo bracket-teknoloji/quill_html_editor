@@ -9,12 +9,18 @@ import 'package:picker/core/base/model/generic_response_model.dart';
 import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import 'package:picker/core/components/textfield/custom_label_widget.dart';
 import 'package:picker/core/components/textfield/custom_text_field.dart';
+import 'package:picker/core/init/cache/cache_manager.dart';
 import 'package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart';
+import 'package:picker/view/main_page/model/param_model.dart';
 
+import '../../../../../../../view/main_page/model/main_page_model.dart';
 import '../../../../../../constants/enum/base_edit_enum.dart';
 import '../../../../../model/base_edit_model.dart';
+import '../../../../../model/base_edit_siradaki_kod_model.dart';
 import '../../../../../state/base_state.dart';
 import '../../../model/stok_detay_model.dart';
+import '../../../model/stok_muhasebe_kodu_model.dart';
+import '../../../model/stok_olcu_birimleri_model.dart';
 
 class BaseStokEditGenelView extends StatefulWidget {
   final BaseEditModel<StokListesiModel>? model;
@@ -48,14 +54,20 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
   TextEditingController? kod3Controller;
   TextEditingController? kod4Controller;
   TextEditingController? kod5Controller;
-  Future<StokDetayModel?>? stokDetayModel;
+  Future? stokDetayModel;
   StokDetayModel? model;
+  String? siradakiKod;
+  List<StokOlcuBirimleriModel>? olcuBirimleriList;
 
   File? image;
   @override
   void initState() {
     super.initState();
-    stokDetayModel = getData();
+    if (widget.model?.baseEditEnum != BaseEditEnum.ekle) {
+      stokDetayModel = getData();
+    } else {
+      stokDetayModel = getSiradakiKod();
+    }
   }
 
   @override
@@ -94,7 +106,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else {
-            stokKoduController = TextEditingController(text: widgetModel?.stokKodu);
+            stokKoduController = TextEditingController(text: widgetModel?.stokKodu ?? siradakiKod);
             stokAdiController = TextEditingController(text: widgetModel?.stokAdi);
             depoController = TextEditingController(text: model?.stokList?.first.depoKodu.toStringIfNull);
             muhasebeDetayKoduController = TextEditingController(text: model?.stokList?.first.muhdetayAdi);
@@ -134,7 +146,10 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                 ImagePicker picker = ImagePicker();
                                 final XFile? result = await picker.pickImage(source: sourceType, imageQuality: 30);
                                 if (result != null) {
-                                  //!!!!!!! setState(() => image = File(result.path));
+                                  setState(() => image = File(result.path));
+                                  if (image != null) {
+                                    bottomSheetDialogManager.showBottomSheetDialog(context, title: "Skrtt", body: Image(image: FileImage(image!)));
+                                  }
                                 }
                               }
                             },
@@ -147,55 +162,148 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                             labelText: "Kodu",
                             controller: stokKoduController,
                             suffix: Wrap(
-                                children: [IconButton(onPressed: () {}, icon: const Icon(Icons.add)), IconButton(onPressed: () {}, icon: const Icon(Icons.add))]
-                                    .map((e) => SizedBox(width: 35, child: e))
-                                    .toList())),
+                                children: [
+                              IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)),
+                              IconButton(
+                                  onPressed: () async {
+                                    stokKoduController?.text = await getSiradakiKod(kod: siradakiKod);
+                                  },
+                                  icon: const Icon(Icons.add))
+                            ].map((e) => SizedBox(width: 35, child: e)).toList())),
                       ),
                     ],
                   ),
                   CustomTextField(enabled: enable, labelText: "Adı", controller: stokAdiController),
-                  CustomTextField(enabled: enable, suffix: IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)), labelText: "Depo", controller: depoController),
                   CustomTextField(
-                      enabled: enable, suffix: IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)), labelText: "Muhasebe Detay Kodu", controller: muhasebeDetayKoduController),
-                  CustomTextField(enabled: enable, suffix: IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)), labelText: "Ölçü Birimi 1", controller: olcuBirimi1Controller),
-                  CustomTextField(enabled: enable, suffix: IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)), labelText: "Ölçü Birimi 2", controller: olcuBirimi2Controller),
+                      enabled: enable,
+                      suffix: IconButton(
+                          onPressed: () async {
+                            MainPageModel? mainPageModel = CacheManager.getAnaVeri();
+                            List<DepoList>? list = mainPageModel?.paramModel?.depoList;
+                            DepoList? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                              context,
+                              title: "Depo",
+                              children: list?.map((e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNull, onTap: () => Get.back(result: e))).toList(),
+                            );
+                            if (result != null) {
+                              depoController?.text = result.depoKodu.toStringIfNull;
+                            }
+                          },
+                          icon: const Icon(Icons.more_horiz_outlined)),
+                      labelText: "Depo",
+                      controller: depoController),
+                  CustomTextField(
+                      enabled: enable,
+                      suffix: IconButton(
+                          onPressed: () async {
+                            List<StokMuhasebeKoduModel>? list = await getMuhasebeKodlari();
+                            StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                title: "Muhasebe Kodu",
+                                children: list
+                                    .map((e) =>
+                                        BottomSheetModel(title: "${e.adi ?? ""}\n${e.muhKodu.toStringIfNull}", description: "${e.alisHesabi} \n${e.satisHesabi}", onTap: () => Get.back(result: e)))
+                                    .toList());
+                            if (result != null) {
+                              muhasebeDetayKoduController?.text = "${result.adi ?? ""} ${result.muhKodu.toStringIfNull}";
+                            }
+                          },
+                          icon: const Icon(Icons.more_horiz_outlined)),
+                      labelText: "Muhasebe Detay Kodu",
+                      controller: muhasebeDetayKoduController),
+                  CustomTextField(
+                      enabled: enable,
+                      suffix: IconButton(
+                          onPressed: () {
+                            baseOlcuBirimleriController(controller: 1);
+                          },
+                          icon: const Icon(Icons.more_horiz_outlined)),
+                      labelText: "Ölçü Birimi 1",
+                      controller: olcuBirimi1Controller),
+                  CustomTextField(
+                      enabled: enable,
+                      suffix: IconButton(
+                          onPressed: () {
+                            baseOlcuBirimleriController(controller: 2);
+                          },
+                          icon: const Icon(Icons.more_horiz_outlined)),
+                      labelText: "Ölçü Birimi 2",
+                      controller: olcuBirimi2Controller),
                   Row(children: [
-                    Expanded(child: CustomTextField(enabled: enable, labelText: "Ölçü Br.2 Pay", controller: olcuBirimi2PayController)),
-                    Expanded(child: CustomTextField(enabled: enable, labelText: "Ölçü Br.2 Payda", controller: olcuBirimi2PaydaController))
+                    Expanded(child: CustomTextField(enabled: enable, keyboardType: TextInputType.number, labelText: "Ölçü Br.2 Pay", controller: olcuBirimi2PayController)),
+                    Expanded(child: CustomTextField(enabled: enable, keyboardType: TextInputType.number, labelText: "Ölçü Br.2 Payda", controller: olcuBirimi2PaydaController))
                   ]),
-                  CustomTextField(enabled: enable, suffix: IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)), labelText: "Ölçü Birimi 3", controller: olcuBirimi3Controller),
+                  CustomTextField(
+                      enabled: enable,
+                      suffix: IconButton(
+                          onPressed: () {
+                            baseOlcuBirimleriController(controller: 3);
+                          },
+                          icon: const Icon(Icons.more_horiz_outlined)),
+                      labelText: "Ölçü Birimi 3",
+                      controller: olcuBirimi3Controller),
                   Row(children: [
-                    Expanded(child: CustomTextField(enabled: enable, labelText: "Ölçü Br.3 Pay", controller: olcuBirimi3PayController)),
-                    Expanded(child: CustomTextField(enabled: enable, labelText: "Ölçü Br.3 Payda", controller: olcuBirimi3PaydaController))
+                    Expanded(child: CustomTextField(enabled: enable, keyboardType: TextInputType.number, labelText: "Ölçü Br.3 Pay", controller: olcuBirimi3PayController)),
+                    Expanded(child: CustomTextField(enabled: enable, keyboardType: TextInputType.number, labelText: "Ölçü Br.3 Payda", controller: olcuBirimi3PaydaController))
                   ]),
                   CustomWidgetWithLabel(text: "Barkod", children: [
                     CustomTextField(
                       enabled: enable,
                       labelText: "Barkod 1",
+                      maxLength: 35,
                       controller: barkod1Controller,
                       suffix: Wrap(
-                        children: [IconButton(onPressed: () {}, icon: const Icon(Icons.sms_failed_outlined)), IconButton(onPressed: () {}, icon: const Icon(Icons.qr_code_2_outlined))],
+                        children: [
+                          IconButton(
+                              onPressed: () {
+                                baseBarkodUretController(controller: 1);
+                              },
+                              icon: const Icon(Icons.add)),
+                          IconButton(onPressed: () {}, icon: const Icon(Icons.qr_code_2_outlined))
+                        ],
                       ),
                     ),
                     CustomTextField(
                       enabled: enable,
                       labelText: "Barkod 2",
                       controller: barkod2Controller,
+                      maxLength: 35,
                       suffix: Wrap(
-                        children: [IconButton(onPressed: () {}, icon: const Icon(Icons.sms_failed_outlined)), IconButton(onPressed: () {}, icon: const Icon(Icons.qr_code_2_outlined))],
+                        children: [
+                          IconButton(
+                              onPressed: () {
+                                baseBarkodUretController(controller: 2);
+                              },
+                              icon: const Icon(Icons.add)),
+                          IconButton(onPressed: () {}, icon: const Icon(Icons.qr_code_2_outlined))
+                        ],
                       ),
                     ),
                     CustomTextField(
                       enabled: enable,
                       labelText: "Barkod 3",
                       controller: barkod3Controller,
+                      maxLength: 35,
                       suffix: Wrap(
-                        children: [IconButton(onPressed: () {}, icon: const Icon(Icons.sms_failed_outlined)), IconButton(onPressed: () {}, icon: const Icon(Icons.qr_code_2_outlined))],
+                        children: [
+                          IconButton(
+                              onPressed: () {
+                                baseBarkodUretController(controller: 3);
+                              },
+                              icon: const Icon(Icons.add)),
+                          IconButton(
+                              onPressed: () async {
+                                var result = await Get.toNamed("/qr", arguments: "Barkod 3");
+                                if (result != null) {
+                                  barkod3Controller?.text = result;
+                                }
+                              },
+                              icon: const Icon(Icons.qr_code_2_outlined))
+                        ],
                       ),
                     ),
                   ]),
                   CustomWidgetWithLabel(text: "Diğer", children: [
-                    CustomTextField(enabled: enable, labelText: "Şube", isMust: true, suffix: IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined))),
+                    CustomTextField(enabled: enable, labelText: "Şube", isMust: true, suffix: IconButton(onPressed: () async {}, icon: const Icon(Icons.more_horiz_outlined))),
                   ]),
                   CustomWidgetWithLabel(text: "Rapor Kodları", children: [
                     CustomTextField(
@@ -204,20 +312,27 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                     ),
                     Row(
                       children: [
-                        Expanded(child: CustomTextField(enabled: enable, suffix: IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)), labelText: "Grup Kodu")),
-                        Expanded(child: CustomTextField(enabled: enable, suffix: IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)), labelText: "Kod1")),
+                        Expanded(
+                            child: CustomTextField(
+                                enabled: enable, controller: grupKoduController, suffix: IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)), labelText: "Grup Kodu")),
+                        Expanded(
+                            child: CustomTextField(enabled: enable, controller: kod1Controller, suffix: IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)), labelText: "Kod1")),
                       ],
                     ),
                     Row(
                       children: [
-                        Expanded(child: CustomTextField(enabled: enable, suffix: IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)), labelText: "Kod2")),
-                        Expanded(child: CustomTextField(enabled: enable, suffix: IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)), labelText: "Kod3")),
+                        Expanded(
+                            child: CustomTextField(enabled: enable, controller: kod2Controller, suffix: IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)), labelText: "Kod2")),
+                        Expanded(
+                            child: CustomTextField(enabled: enable, controller: kod3Controller, suffix: IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)), labelText: "Kod3")),
                       ],
                     ),
                     Row(
                       children: [
-                        Expanded(child: CustomTextField(enabled: enable, suffix: IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)), labelText: "Kod4")),
-                        Expanded(child: CustomTextField(enabled: enable, suffix: IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)), labelText: "Kod5")),
+                        Expanded(
+                            child: CustomTextField(enabled: enable, controller: kod4Controller, suffix: IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)), labelText: "Kod4")),
+                        Expanded(
+                            child: CustomTextField(enabled: enable, controller: kod5Controller, suffix: IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)), labelText: "Kod5")),
                       ],
                     ),
                   ])
@@ -226,6 +341,40 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
             );
           }
         });
+  }
+
+  Future<void> baseOlcuBirimleriController({int? controller}) async {
+    dialogManager.showLoadingDialog("Ölçü Birimleri Yükleniyor...");
+    List<StokOlcuBirimleriModel>? filteredList = [];
+    olcuBirimleriList ??= await getOlcuBirimleri();
+    dialogManager.hideAlertDialog;
+    filteredList = olcuBirimleriList?.where((element) => element.birimNo == controller).toList();
+    // ignore: use_build_context_synchronously
+    var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
+        title: "Ölçü Birimi $controller",
+        children: filteredList?.map((e) => BottomSheetModel(title: e.olcuBirimi ?? "", description: e.birimNo.toStringIfNull, onTap: () => Get.back(result: e.olcuBirimi))).toList());
+    if (result != null) {
+      if (controller == 1) {
+        olcuBirimi1Controller?.text = result;
+      } else if (controller == 2) {
+        olcuBirimi2Controller?.text = result;
+      } else if (controller == 3) {
+        olcuBirimi3Controller?.text = result;
+      }
+    }
+  }
+
+  void baseBarkodUretController({int? controller}) async {
+    dialogManager.showLoadingDialog("Barkod Üretiliyor...");
+    var result = await getBarkod(controller);
+    dialogManager.hideAlertDialog;
+    if (controller == 1) {
+      barkod1Controller?.text = result;
+    } else if (controller == 2) {
+      barkod2Controller?.text = result;
+    } else if (controller == 3) {
+      barkod3Controller?.text = result;
+    }
   }
 
   Future<StokDetayModel> getData() async {
@@ -238,9 +387,70 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
         "stokKodu": widget.model?.model?.stokKodu ?? "",
       },
     );
-    image = await networkManager.getImage(widget.model?.model?.resimUrlKucuk ?? "");
+    // image = await networkManager.getImage(widget.model?.model?.resimUrlKucuk ?? "");
     log((result.data.first as StokDetayModel).toJson().toString());
     model = result.data.first as StokDetayModel;
+    StokDetayModel.setInstance(model!);
     return result.data.first as StokDetayModel;
+  }
+
+  Future<String> getSiradakiKod({String? kod = ""}) async {
+    dialogManager.showLoadingDialog("Sıradaki Kod Getiriliyor...");
+    GenericResponseModel? result = await networkManager.dioGet<BaseEditSiradakiKodModel>(
+      path: ApiUrls.getSiradakiKod,
+      bodyModel: BaseEditSiradakiKodModel(),
+      addCKey: true,
+      addSirketBilgileri: true,
+      addTokenKey: true,
+      queryParameters: {
+        "SonKoduGetir": "H",
+        "Kod": kod ?? "",
+        "Modul": "STOK",
+      },
+    );
+    siradakiKod = result.paramData!["SIRADAKI_NO"];
+    dialogManager.hideAlertDialog;
+    return result.paramData!["SIRADAKI_NO"];
+  }
+
+  Future<List<StokMuhasebeKoduModel>> getMuhasebeKodlari() async {
+    GenericResponseModel result = await networkManager.dioGet<StokMuhasebeKoduModel>(
+      path: ApiUrls.getMuhasebeKodlari,
+      bodyModel: StokMuhasebeKoduModel(),
+      addCKey: true,
+      addSirketBilgileri: true,
+      addTokenKey: true,
+    );
+    return result.data.map((e) => e as StokMuhasebeKoduModel).toList().cast<StokMuhasebeKoduModel>();
+  }
+
+  Future<List<StokOlcuBirimleriModel>> getOlcuBirimleri() async {
+    GenericResponseModel result = await networkManager.dioGet<StokOlcuBirimleriModel>(
+      path: ApiUrls.getOlcuBirimleri,
+      bodyModel: StokOlcuBirimleriModel(),
+      addCKey: true,
+      addSirketBilgileri: true,
+      addTokenKey: true,
+    );
+    return result.data.map((e) => e as StokOlcuBirimleriModel).toList().cast<StokOlcuBirimleriModel>();
+  }
+
+  Future<String> getBarkod(int? controller) async {
+    String seriValue = "";
+    if (controller == 1) {
+      seriValue = barkod1Controller?.text ?? "";
+    } else if (controller == 2) {
+      seriValue = barkod2Controller?.text ?? "";
+    } else if (controller == 3) {
+      seriValue = barkod3Controller?.text ?? "";
+    }
+    GenericResponseModel result = await networkManager.dioPost<StokOlcuBirimleriModel>(
+        path: ApiUrls.barkodUret,
+        bodyModel: StokOlcuBirimleriModel(),
+        addCKey: true,
+        addSirketBilgileri: true,
+        addTokenKey: true,
+        data: {"BarkodSira": controller.toStringIfNull, "StokKodu": model?.stokKodu ?? stokKoduController?.text, "Seri": seriValue});
+    return result.paramData!["URETILEN_BARKOD"];
   }
 }

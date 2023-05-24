@@ -2,7 +2,7 @@ import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_
 
 import '../../../../core/base/model/base_network_mixin.dart';
 import '../../../../core/base/model/generic_response_model.dart';
-import '../../../../core/base/view/base_cari_edit/view/base_cari_edit_genel/model/base_cari_siradaki_kod_model.dart';
+import '../../../../core/base/model/base_edit_siradaki_kod_model.dart';
 import '../../../../core/init/network/login/api_urls.dart';
 import '../../../../core/init/network/network_manager.dart';
 import 'cari_listesi/model/cari_listesi_grup_kodu_model.dart';
@@ -44,9 +44,9 @@ class CariNetworkManager {
   }
 
   static Future<String> getSiradakiKod() async {
-    GenericResponseModel? result = await networkManager.dioGet<BaseCariEditSiradakiKodModel>(
+    GenericResponseModel? result = await networkManager.dioGet<BaseEditSiradakiKodModel>(
       path: ApiUrls.getSiradakiKod,
-      bodyModel: BaseCariEditSiradakiKodModel(),
+      bodyModel: BaseEditSiradakiKodModel(),
       addCKey: true,
       addSirketBilgileri: true,
       addTokenKey: true,

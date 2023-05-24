@@ -3,13 +3,26 @@ import 'package:picker/core/base/model/base_network_mixin.dart';
 
 part 'stok_detay_model.g.dart';
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(includeIfNull: false, createToJson: true, fieldRename: FieldRename.screamingSnake)
 class StokDetayModel with NetworkManagerMixin {
+  //singleton
+  static StokDetayModel? _instance;
+  static StokDetayModel get instance {
+    _instance ??= StokDetayModel();
+    return _instance!;
+  }
+
+  //setter for singleton
+  static setInstance(StokDetayModel value) => _instance = value;
   String? stokKodu;
   String? stokAdi;
+  @JsonKey(name: "SeriList")
   List<dynamic>? seriList;
+  @JsonKey(name: "YapList")
   List<dynamic>? yapList;
+  @JsonKey(name: "StokList")
   List<StokList>? stokList;
+  @JsonKey(name: "FiyatList")
   List<FiyatList>? fiyatList;
 
   StokDetayModel();
@@ -25,7 +38,7 @@ class StokDetayModel with NetworkManagerMixin {
   }
 }
 
-@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.screamingSnake, createToJson: true)
+@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.screamingSnake, createToJson: true, createFactory: true)
 class FiyatList {
   FiyatList();
   String? aS;
@@ -33,33 +46,37 @@ class FiyatList {
   int? dovizTipi;
   String? dovizKodu;
   DateTime? bastar;
+  DateTime? bittar;
   String? gecerli;
   double? fiyat1;
+  double? fiyat2;
+  double? fiyat3;
+  double? fiyat4;
 
   factory FiyatList.fromJson(Map<String, dynamic> json) => _$FiyatListFromJson(json);
 
   toJson() => _$FiyatListToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.screamingSnake, createToJson: true)
+@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.screamingSnake, createToJson: true, createFactory: true)
 class StokList {
   StokList();
   String? stokKodu;
   String? stokAdi;
   int? depoKodu;
-  int? bakiye;
+  double? bakiye;
   String? muhdetayAdi;
-  int? alisFiat1;
-  int? alisKdv;
+  double? alisFiat1;
+  double? alisKdv;
   double? satisFiat1;
-  int? satisKdv;
+  double? satisKdv;
   String? olcuBirimi;
   String? olcuBirimi2;
   String? olcuBirimi3;
-  int? olcuBirimi2Pay;
-  int? olcuBirimi2Payda;
-  int? olcuBirimi3Pay;
-  int? olcuBirimi3Payda;
+  double? olcuBirimi2Pay;
+  double? olcuBirimi2Payda;
+  double? olcuBirimi3Pay;
+  double? olcuBirimi3Payda;
   String? barkod1;
   String? barkod2;
   String? barkod3;

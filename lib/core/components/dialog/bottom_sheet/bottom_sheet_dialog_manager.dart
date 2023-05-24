@@ -51,7 +51,9 @@ class BottomSheetDialogManager {
                   ? children.isNotNullOrEmpty
                       ? SizedBox(
                           // if children are not fit to screen, it will be scrollable
-                          height: children!.length * 52 < Get.height * 0.9 ? children!.length * 52 : Get.height * 0.9,
+                          height: children!.length * ((children?.any((element) => element.description.isNotNullOrNoEmpty) ?? false) ? 60 : 50) < Get.height * 0.9
+                              ? children!.length * ((children?.any((element) => element.description.isNotNullOrNoEmpty) ?? false) ? 60 : 50)
+                              : Get.height * 0.9,
                           child: ListView.builder(
                             itemCount: children?.length,
                             itemBuilder: (context, index) => Column(
@@ -130,7 +132,7 @@ class BottomSheetDialogManager {
                                         RadioListTile(
                                           activeColor: UIHelper.primaryColor,
                                           onChanged: (value) {
-                                            viewModel.changeRadioGroupValue(value.toString());
+                                            viewModel.changeRadioGroupValue(title);
                                             children[index].onTap!();
                                           },
                                           value: children[index].title,
@@ -486,12 +488,12 @@ class BottomSheetDialogManager {
         "";
     }
   }
-  void clearSelectedData(){
+
+  void clearSelectedData() {
     viewModel.deleteIsSelectedListMap();
   }
-  void showSubeBottomSheetDialog(){
-    
-  }
+
+  void showSubeBottomSheetDialog() {}
 
   //  Future<GenericResponseModel<NetworkManagerMixin>> getData() async {
   //   GenericResponseModel<NetworkManagerMixin> response;

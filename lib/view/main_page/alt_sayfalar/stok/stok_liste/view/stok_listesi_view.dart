@@ -429,7 +429,14 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
 
   Observer? fab() {
     return Observer(builder: (_) {
-      return viewModel.isScrolledDown ? FloatingActionButton(child: const Icon(Icons.add), onPressed: () {}) : const SizedBox();
+      return viewModel.isScrolledDown
+          ? FloatingActionButton(
+              child: const Icon(Icons.add),
+              onPressed: () {
+                BaseEditModel result = BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.ekle, model: StokListesiModel());
+                Get.toNamed("/mainPage/stokEdit", arguments: result);
+              })
+          : const SizedBox();
     });
   }
 
@@ -463,13 +470,19 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                           ],
                         ),
                       ),
-                      onTap: () async{
-                        BaseEditModel? result =await bottomSheetDialogManager.showBottomSheetDialog(context, title: stok.stokAdi ?? "", children: [
+                      onTap: () async {
+                        BaseEditModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: stok.stokAdi ?? "", children: [
                           BottomSheetModel(
                               title: "Görüntüle", iconWidget: Icons.visibility, onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.goruntule, model: stok))),
                           BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit, onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.duzenle, model: stok))),
                           BottomSheetModel(title: "Sil", iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? "")),
-                          BottomSheetModel(title: "Hareketler", iconWidget: Icons.list_alt),
+                          BottomSheetModel(
+                              title: "Hareketler",
+                              iconWidget: Icons.list_alt,
+                              onTap: () {
+                                Get.back();
+                                return Get.toNamed("/mainPage/stokHareketleri", arguments: stok);
+                              }),
                           BottomSheetModel(title: "Depo Bakiye Durumu", iconWidget: Icons.list_alt),
                           BottomSheetModel(
                             title: "Yazdır",
@@ -489,7 +502,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                           ),
                           BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt),
                         ]);
-                        if(result != null){
+                        if (result != null) {
                           Get.toNamed("/mainPage/stokEdit", arguments: result);
                         }
                       },

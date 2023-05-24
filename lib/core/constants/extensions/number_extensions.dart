@@ -1,6 +1,7 @@
 // an extension on int to separate the digits with commas
-extension NumExtension on num {
+extension NumExtension on num? {
   String get commaSeparated {
+    if (this == null) return "0,00";
     return toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]}.');
   }
 }

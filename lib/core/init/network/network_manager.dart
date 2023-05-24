@@ -56,7 +56,7 @@ class NetworkManager {
       required T bodyModel,
       Map<String, String>? headers,
       dynamic data,
-      Map<String, String>? queryParameters,
+      Map<String, dynamic>? queryParameters,
       bool addQuery = true,
       bool addSirketBilgileri = false,
       bool addCKey = false,
@@ -64,7 +64,7 @@ class NetworkManager {
     CancelToken cancelToken = CancelToken();
     Map<String, String> head = getStandardHeader(addTokenKey, addSirketBilgileri, addCKey);
     if (headers != null) head.addEntries(headers.entries);
-    Map<String, String> queries = getStandardQueryParameters();
+    Map<String, dynamic> queries = getStandardQueryParameters();
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
 
     final response = await _dio.get(path, queryParameters: queries, options: Options(headers: head), cancelToken: cancelToken);
@@ -84,7 +84,7 @@ class NetworkManager {
       bool addTokenKey = true}) async {
     Map<String, String> head = getStandardHeader(addTokenKey, addSirketBilgileri, addCKey);
     if (headers != null) head.addEntries(headers.entries);
-    Map<String, String> queries = getStandardQueryParameters();
+    Map<String, dynamic> queries = getStandardQueryParameters();
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
     final response = await _dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
@@ -125,8 +125,8 @@ class NetworkManager {
     return header;
   }
 
-  Map<String, String> getStandardQueryParameters() {
-    Map<String, String> query = {};
+  Map<String, dynamic> getStandardQueryParameters() {
+    Map<String, dynamic> query = {};
     return query;
   }
 }

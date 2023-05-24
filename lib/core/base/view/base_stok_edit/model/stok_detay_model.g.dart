@@ -16,15 +16,15 @@ StokDetayModel _$StokDetayModelFromJson(Map<String, dynamic> json) =>
         final val = StokDetayModel();
         $checkedConvert('STOK_KODU', (v) => val.stokKodu = v as String?);
         $checkedConvert('STOK_ADI', (v) => val.stokAdi = v as String?);
-        $checkedConvert('SERI_LIST', (v) => val.seriList = v as List<dynamic>?);
-        $checkedConvert('YAP_LIST', (v) => val.yapList = v as List<dynamic>?);
+        $checkedConvert('SeriList', (v) => val.seriList = v as List<dynamic>?);
+        $checkedConvert('YapList', (v) => val.yapList = v as List<dynamic>?);
         $checkedConvert(
-            'STOK_LIST',
+            'StokList',
             (v) => val.stokList = (v as List<dynamic>?)
                 ?.map((e) => StokList.fromJson(e as Map<String, dynamic>))
                 .toList());
         $checkedConvert(
-            'FIYAT_LIST',
+            'FiyatList',
             (v) => val.fiyatList = (v as List<dynamic>?)
                 ?.map((e) => FiyatList.fromJson(e as Map<String, dynamic>))
                 .toList());
@@ -33,10 +33,10 @@ StokDetayModel _$StokDetayModelFromJson(Map<String, dynamic> json) =>
       fieldKeyMap: const {
         'stokKodu': 'STOK_KODU',
         'stokAdi': 'STOK_ADI',
-        'seriList': 'SERI_LIST',
-        'yapList': 'YAP_LIST',
-        'stokList': 'STOK_LIST',
-        'fiyatList': 'FIYAT_LIST'
+        'seriList': 'SeriList',
+        'yapList': 'YapList',
+        'stokList': 'StokList',
+        'fiyatList': 'FiyatList'
       },
     );
 
@@ -51,11 +51,11 @@ Map<String, dynamic> _$StokDetayModelToJson(StokDetayModel instance) {
 
   writeNotNull('STOK_KODU', instance.stokKodu);
   writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('SERI_LIST', instance.seriList);
-  writeNotNull('YAP_LIST', instance.yapList);
-  writeNotNull('STOK_LIST', instance.stokList?.map((e) => e.toJson()).toList());
+  writeNotNull('SeriList', instance.seriList);
+  writeNotNull('YapList', instance.yapList);
+  writeNotNull('StokList', instance.stokList?.map((e) => e.toJson()).toList());
   writeNotNull(
-      'FIYAT_LIST', instance.fiyatList?.map((e) => e.toJson()).toList());
+      'FiyatList', instance.fiyatList?.map((e) => e.toJson()).toList());
   return val;
 }
 
@@ -70,8 +70,13 @@ FiyatList _$FiyatListFromJson(Map<String, dynamic> json) => $checkedCreate(
         $checkedConvert('DOVIZ_KODU', (v) => val.dovizKodu = v as String?);
         $checkedConvert('BASTAR',
             (v) => val.bastar = v == null ? null : DateTime.parse(v as String));
+        $checkedConvert('BITTAR',
+            (v) => val.bittar = v == null ? null : DateTime.parse(v as String));
         $checkedConvert('GECERLI', (v) => val.gecerli = v as String?);
         $checkedConvert('FIYAT1', (v) => val.fiyat1 = (v as num?)?.toDouble());
+        $checkedConvert('FIYAT2', (v) => val.fiyat2 = (v as num?)?.toDouble());
+        $checkedConvert('FIYAT3', (v) => val.fiyat3 = (v as num?)?.toDouble());
+        $checkedConvert('FIYAT4', (v) => val.fiyat4 = (v as num?)?.toDouble());
         return val;
       },
       fieldKeyMap: const {
@@ -80,8 +85,12 @@ FiyatList _$FiyatListFromJson(Map<String, dynamic> json) => $checkedCreate(
         'dovizTipi': 'DOVIZ_TIPI',
         'dovizKodu': 'DOVIZ_KODU',
         'bastar': 'BASTAR',
+        'bittar': 'BITTAR',
         'gecerli': 'GECERLI',
-        'fiyat1': 'FIYAT1'
+        'fiyat1': 'FIYAT1',
+        'fiyat2': 'FIYAT2',
+        'fiyat3': 'FIYAT3',
+        'fiyat4': 'FIYAT4'
       },
     );
 
@@ -91,8 +100,12 @@ Map<String, dynamic> _$FiyatListToJson(FiyatList instance) => <String, dynamic>{
       'DOVIZ_TIPI': instance.dovizTipi,
       'DOVIZ_KODU': instance.dovizKodu,
       'BASTAR': instance.bastar?.toIso8601String(),
+      'BITTAR': instance.bittar?.toIso8601String(),
       'GECERLI': instance.gecerli,
       'FIYAT1': instance.fiyat1,
+      'FIYAT2': instance.fiyat2,
+      'FIYAT3': instance.fiyat3,
+      'FIYAT4': instance.fiyat4,
     };
 
 StokList _$StokListFromJson(Map<String, dynamic> json) => $checkedCreate(
@@ -103,24 +116,27 @@ StokList _$StokListFromJson(Map<String, dynamic> json) => $checkedCreate(
         $checkedConvert('STOK_KODU', (v) => val.stokKodu = v as String?);
         $checkedConvert('STOK_ADI', (v) => val.stokAdi = v as String?);
         $checkedConvert('DEPO_KODU', (v) => val.depoKodu = v as int?);
-        $checkedConvert('BAKIYE', (v) => val.bakiye = v as int?);
+        $checkedConvert('BAKIYE', (v) => val.bakiye = (v as num?)?.toDouble());
         $checkedConvert('MUHDETAY_ADI', (v) => val.muhdetayAdi = v as String?);
-        $checkedConvert('ALIS_FIAT1', (v) => val.alisFiat1 = v as int?);
-        $checkedConvert('ALIS_KDV', (v) => val.alisKdv = v as int?);
+        $checkedConvert(
+            'ALIS_FIAT1', (v) => val.alisFiat1 = (v as num?)?.toDouble());
+        $checkedConvert(
+            'ALIS_KDV', (v) => val.alisKdv = (v as num?)?.toDouble());
         $checkedConvert(
             'SATIS_FIAT1', (v) => val.satisFiat1 = (v as num?)?.toDouble());
-        $checkedConvert('SATIS_KDV', (v) => val.satisKdv = v as int?);
+        $checkedConvert(
+            'SATIS_KDV', (v) => val.satisKdv = (v as num?)?.toDouble());
         $checkedConvert('OLCU_BIRIMI', (v) => val.olcuBirimi = v as String?);
         $checkedConvert('OLCU_BIRIMI2', (v) => val.olcuBirimi2 = v as String?);
         $checkedConvert('OLCU_BIRIMI3', (v) => val.olcuBirimi3 = v as String?);
-        $checkedConvert(
-            'OLCU_BIRIMI2_PAY', (v) => val.olcuBirimi2Pay = v as int?);
-        $checkedConvert(
-            'OLCU_BIRIMI2_PAYDA', (v) => val.olcuBirimi2Payda = v as int?);
-        $checkedConvert(
-            'OLCU_BIRIMI3_PAY', (v) => val.olcuBirimi3Pay = v as int?);
-        $checkedConvert(
-            'OLCU_BIRIMI3_PAYDA', (v) => val.olcuBirimi3Payda = v as int?);
+        $checkedConvert('OLCU_BIRIMI2_PAY',
+            (v) => val.olcuBirimi2Pay = (v as num?)?.toDouble());
+        $checkedConvert('OLCU_BIRIMI2_PAYDA',
+            (v) => val.olcuBirimi2Payda = (v as num?)?.toDouble());
+        $checkedConvert('OLCU_BIRIMI3_PAY',
+            (v) => val.olcuBirimi3Pay = (v as num?)?.toDouble());
+        $checkedConvert('OLCU_BIRIMI3_PAYDA',
+            (v) => val.olcuBirimi3Payda = (v as num?)?.toDouble());
         $checkedConvert('BARKOD1', (v) => val.barkod1 = v as String?);
         $checkedConvert('BARKOD2', (v) => val.barkod2 = v as String?);
         $checkedConvert('BARKOD3', (v) => val.barkod3 = v as String?);

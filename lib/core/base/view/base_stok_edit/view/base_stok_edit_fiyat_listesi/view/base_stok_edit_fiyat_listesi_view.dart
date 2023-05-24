@@ -1,0 +1,50 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:kartal/kartal.dart';
+import 'package:picker/core/base/helpers/helper.dart';
+import 'package:picker/core/base/view/base_stok_edit/model/stok_detay_model.dart';
+import 'package:picker/core/constants/extensions/date_time_extensions.dart';
+
+class BaseStokEditFiyatListesiView extends StatefulWidget {
+  const BaseStokEditFiyatListesiView({super.key});
+
+  @override
+  State<BaseStokEditFiyatListesiView> createState() => _BaseStokEditFiyatListesiViewState();
+}
+
+class _BaseStokEditFiyatListesiViewState extends State<BaseStokEditFiyatListesiView> {
+  StokDetayModel model = StokDetayModel.instance;
+  @override
+  Widget build(BuildContext context) {
+    return model.fiyatList.isNotNullOrEmpty
+        ? ListView.builder(
+            itemCount: model.fiyatList?.length,
+            itemBuilder: (context, index) => Card(
+              child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Visibility(visible: model.fiyatList?[index].gecerli == "E", child: const Badge(label: Text("Geçerli Fiyat"))),
+                Text("Yap. Kodu: ${model.fiyatList![index].stokKodu ?? ""}"),
+                Row(
+                  children: [
+                    Expanded(child: Text("Alış-Satış: ${model.fiyatList![index].aS == "S" ? "Satış" : "Alış"}")),
+                    Expanded(child: Text("Başlama: ${model.fiyatList![index].bastar!.toDateString()}")),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Expanded(child: Text("Bitiş: ${model.fiyatList![index].bittar ?? ""}")),
+                    Expanded(child: Text("Fiyat 1: ${model.fiyatList![index].fiyat1.commaSeparated}")),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Expanded(child: Text("Fiyat 2: ${model.fiyatList![index].fiyat2.commaSeparated}")),
+                    Expanded(child: Text("Fiyat 3: ${model.fiyatList![index].fiyat3.commaSeparated}")),
+                  ],
+                ),
+                Text("Fiyat 4: ${model.fiyatList![index].fiyat4.commaSeparated}"),
+              ]).paddingAll(UIHelper.lowSize),
+            ),
+          ).paddingAll(UIHelper.lowSize)
+        : const Center(child: Text("Fiyat bilgisi bulunamadı"));
+  }
+}

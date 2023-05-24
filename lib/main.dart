@@ -16,6 +16,7 @@ import "view/add_company/view/qr_view.dart";
 import "view/auth/view/login_view.dart";
 import "view/entry_company_view.dart";
 import "view/main_page/alt_sayfalar/cari/cari_listesi/view/cari_listesi_view.dart";
+import 'view/main_page/alt_sayfalar/stok/stok_hareketleri/view/stok_hareketleri_view.dart';
 import "view/main_page/view/main_page_view.dart";
 
 void main() async {
@@ -68,6 +69,10 @@ class MyApp extends StatelessWidget {
             GetPage(
               name: "/stokEdit",
               page: () => BaseStokEditingView(model: Get.arguments),
+            ),
+            GetPage(
+              name: "/stokHareketleri",
+              page: () =>   StokHareketleriView(model: Get.arguments),
             ),
           ],
         ),
