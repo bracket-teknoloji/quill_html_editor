@@ -186,7 +186,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                               children: list?.map((e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNull, onTap: () => Get.back(result: e))).toList(),
                             );
                             if (result != null) {
-                              depoController?.text = result.depoKodu.toStringIfNull;
+                              depoController?.text = result.depoKodu.toStringIfNull ?? "";
                             }
                           },
                           icon: const Icon(Icons.more_horiz_outlined)),

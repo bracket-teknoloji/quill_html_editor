@@ -48,7 +48,9 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
         $checkedConvert('GRUP_KODU', (v) => val.grupKodu = v as String?);
         $checkedConvert('GRUP_TANIMI', (v) => val.grupTanimi = v as String?);
         $checkedConvert(
-            'DUZELTMETARIHI', (v) => val.duzeltmetarihi = v as String?);
+            'DUZELTMETARIHI',
+            (v) => val.duzeltmetarihi =
+                v == null ? null : DateTime.parse(v as String));
         $checkedConvert(
             'DUZELTMEYAPANKUL', (v) => val.duzeltmeyapankul = v as String?);
         $checkedConvert(
@@ -176,7 +178,7 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) =>
       'KAYITTARIHI': instance.kayittarihi,
       'GRUP_KODU': instance.grupKodu,
       'GRUP_TANIMI': instance.grupTanimi,
-      'DUZELTMETARIHI': instance.duzeltmetarihi,
+      'DUZELTMETARIHI': instance.duzeltmetarihi?.toIso8601String(),
       'DUZELTMEYAPANKUL': instance.duzeltmeyapankul,
       'STOK_FIYAT_LIST': instance.stokFiyatList,
       'STOK_LIST': instance.stokList,

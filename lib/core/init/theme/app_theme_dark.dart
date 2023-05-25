@@ -95,6 +95,10 @@ class AppThemeDark extends AppTheme {
             backgroundColor: MaterialStateProperty.all(Colors.red),
           ),
           inputDecorationTheme: InputDecorationTheme(
+            errorStyle: const TextStyle(
+              fontSize: 12,
+              color: Colors.green,
+            ),
             border: OutlineInputBorder(
               borderRadius: UIHelper.lowBorderRadius,
               borderSide: const BorderSide(color: Colors.green),

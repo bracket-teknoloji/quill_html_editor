@@ -82,6 +82,7 @@ dependencies:
   intl: ^0.18.1
   scroll_app_bar: ^2.0.0
   image_picker: ^0.8.7+5
+  flutter_slidable: ^3.0.0
 
 
   

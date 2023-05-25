@@ -5,6 +5,7 @@ class ApiUrls {
   static const String isletmelerSubeler = "api/General/GetIsletmelerSubeler";
   static const String createSession = "api/General/CreateSessionV3";
   static const String getUyeBilgileri = "https://storews.netfect.com/api/Picker/GetUyeBilgileri";
+  static const String getProjeler = "api/General/GetProjeler";
   //*Cariler
   static const String getCariler = "api/Cari/GetCariler";
   static const String getCariKayitliSehirler = "api/Cari/GetCariKayitliSehirler";
@@ -25,4 +26,5 @@ class ApiUrls {
   static const String getOlcuBirimleri = "api/Stok/GetOlcuBirimleri";
   static const String barkodUret = "api/Stok/BarkodUret";
   static const String getStokHareketleri = "api/Stok/GetStokHareketleri";
+  static const String saveStokHareket = "api/Stok/SaveStokHareket";
 }

@@ -13,10 +13,12 @@ class CustomTextField extends StatefulWidget {
   final TextInputType? keyboardType;
   final FocusNode? focusNode;
   final int? maxLength;
-  String? controllerText;
+  final String? controllerText;
   final Function()? onTap;
+  final String? Function(String?)? validator;
   final Function(String)? onChanged;
-  CustomTextField(
+  final Function(String)? onSubmitted;
+  const CustomTextField(
       {super.key,
       this.controller,
       this.labelText,
@@ -30,7 +32,7 @@ class CustomTextField extends StatefulWidget {
       this.keyboardType,
       this.onChanged,
       this.controllerText,
-      this.maxLength});
+      this.maxLength, this.onSubmitted, this.validator});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -45,7 +47,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
       focusNode: widget.focusNode,
       onTap: widget.onTap,
       maxLength: widget.maxLength,
+      validator: widget.validator,
       onChanged: widget.onChanged,
+      onFieldSubmitted: widget.onSubmitted ,
       onTapOutside: (value) {
         widget.onChanged;
       },

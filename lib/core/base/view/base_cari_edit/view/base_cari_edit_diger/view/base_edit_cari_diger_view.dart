@@ -119,7 +119,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
   Widget build(BuildContext context) {
     CariListesiModel.instance.subeKodu = CariListesiModel.instance.subeKodu ?? 0;
     subeController.text = subeList.firstWhere((element) => (element).subeKodu == CariListesiModel.instance.subeKodu).subeAdi ?? "";
-    log(CariListesiModel.instance.subeKodu.toStringIfNull);
+    log(CariListesiModel.instance.subeKodu.toStringIfNull ?? "");
     bool enabled = widget.model?.baseEditEnum != BaseEditEnum.goruntule;
     return SingleChildScrollView(
       child: Form(

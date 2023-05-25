@@ -3,6 +3,7 @@ import "package:flutter/services.dart";
 import "package:get/get.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/view/cari_hareketleri_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/view/stok_listesi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/stok_yeni_kayit/view/stok_yeni_kayit_view.dart";
 
 import "core/base/view/base_cari_edit/view/base_cari_edit_view.dart";
 import "core/base/view/base_stok_edit/view/base_stok_edit_view.dart";
@@ -72,7 +73,11 @@ class MyApp extends StatelessWidget {
             ),
             GetPage(
               name: "/stokHareketleri",
-              page: () =>   StokHareketleriView(model: Get.arguments),
+              page: () => StokHareketleriView(model: Get.arguments),
+            ),
+            GetPage(
+              name: "/stokYeniKayit",
+              page: () => StokYeniKayitView(model: Get.arguments),
             ),
           ],
         ),

@@ -28,7 +28,7 @@ class StokListesiModel with NetworkManagerMixin {
   String? kayittarihi;
   String? grupKodu;
   String? grupTanimi;
-  String? duzeltmetarihi;
+  DateTime? duzeltmetarihi;
   String? duzeltmeyapankul;
   List<dynamic>? stokFiyatList;
   List<dynamic>? stokList;
