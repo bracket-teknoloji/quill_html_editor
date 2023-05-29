@@ -1,12 +1,12 @@
-import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_grup_kodu_model.dart';
+import 'package:picker/core/base/model/base_grup_kodu_model.dart';
 
 class StokBottomSheetModel {
-  List<CariGrupKoduModel>? grupKodu = [];
-  List<CariGrupKoduModel>? kod1 = [];
-  List<CariGrupKoduModel>? kod2 = [];
-  List<CariGrupKoduModel>? kod3 = [];
-  List<CariGrupKoduModel>? kod4 = [];
-  List<CariGrupKoduModel>? kod5 = [];
+  List<BaseGrupKoduModel>? grupKodu = [];
+  List<BaseGrupKoduModel>? kod1 = [];
+  List<BaseGrupKoduModel>? kod2 = [];
+  List<BaseGrupKoduModel>? kod3 = [];
+  List<BaseGrupKoduModel>? kod4 = [];
+  List<BaseGrupKoduModel>? kod5 = [];
 
   //lazy  singleton
   static StokBottomSheetModel _instance = StokBottomSheetModel._init();

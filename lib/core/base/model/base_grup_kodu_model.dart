@@ -1,11 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../../../../core/base/model/base_network_mixin.dart';
+import 'base_network_mixin.dart';
 
-part 'cari_listesi_grup_kodu_model.g.dart';
+part 'base_grup_kodu_model.g.dart';
 
 @JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake)
-class CariGrupKoduModel with NetworkManagerMixin{
+class BaseGrupKoduModel with NetworkManagerMixin{
     String? modul;
     int? grupNo;
     String? grupKodu;
@@ -24,12 +24,12 @@ class CariGrupKoduModel with NetworkManagerMixin{
     
       @override
       fromJson(Map<String, dynamic> json) {
-        return _$CariGrupKoduModelFromJson(json);
+        return _$BaseGrupKoduModelFromJson(json);
       }
     
       @override
       Map<String, dynamic> toJson() {
-        return _$CariGrupKoduModelToJson(this);
+        return _$BaseGrupKoduModelToJson(this);
       }
 
 

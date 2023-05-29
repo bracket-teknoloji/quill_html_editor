@@ -7,12 +7,12 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:picker/core/base/helpers/helper.dart';
 import 'package:picker/core/base/model/base_edit_model.dart';
+import 'package:picker/core/base/model/base_grup_kodu_model.dart';
 import 'package:picker/core/base/model/generic_response_model.dart';
 import 'package:picker/core/components/button/elevated_buttons/bottom_appbar_button.dart';
 import 'package:picker/core/components/textfield/custom_label_widget.dart';
 import 'package:picker/core/components/textfield/custom_text_field.dart';
 import 'package:picker/core/constants/extensions/list_extensions.dart';
-import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_grup_kodu_model.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_network_manager.dart';
 import 'package:scroll_app_bar/scroll_app_bar.dart';
 
@@ -158,8 +158,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                   onPressed: () async {
                     if (viewModel.grupKodlari.isEmptyOrNull) {
                       var grupKodlari = await CariNetworkManager.getKod(name: GrupKoduEnum.STOK.name);
-                      // StaticVariables.grupKodlari = grupKodlari.data.map((e) => e as CariGrupKoduModel).toList().cast<CariGrupKoduModel>();
-                      viewModel.setGrupKodlari(grupKodlari.data.map((e) => e as CariGrupKoduModel).toList().cast<CariGrupKoduModel>());
+                      // StaticVariables.grupKodlari = grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
+                      viewModel.setGrupKodlari(grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>());
                     }
                     // ignore: use_build_context_synchronously
                     await bottomSheetDialogManager.showBottomSheetDialog(
@@ -218,7 +218,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                   suffix: const Icon(Icons.more_horiz),
                                   controller: kod1Controller,
                                   onTap: () async {
-                                    List<CariGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 1).toList();
+                                    List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 1).toList();
                                     await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                       context,
                                       title: "Kod 1",
@@ -249,7 +249,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                   suffix: const Icon(Icons.more_horiz),
                                   controller: kod2Controller,
                                   onTap: () async {
-                                    List<CariGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 2).toList();
+                                    List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 2).toList();
                                     await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                       context,
                                       title: "Kod 2",
@@ -276,7 +276,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                   suffix: const Icon(Icons.more_horiz),
                                   controller: kod3Controller,
                                   onTap: () async {
-                                    List<CariGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 3).toList();
+                                    List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 3).toList();
                                     await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                       context,
                                       title: "Kod 3",
@@ -307,7 +307,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                   suffix: const Icon(Icons.more_horiz),
                                   controller: kod4Controller,
                                   onTap: () async {
-                                    List<CariGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 4).toList();
+                                    List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 4).toList();
                                     await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                       context,
                                       title: "Kod 4",
@@ -334,7 +334,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                   suffix: const Icon(Icons.more_horiz),
                                   controller: kod5Controller,
                                   onTap: () async {
-                                    List<CariGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 5).toList();
+                                    List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 5).toList();
                                     await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                       context,
                                       title: "Kod 5",
@@ -503,7 +503,10 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                           BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt),
                         ]);
                         if (result != null) {
-                          Get.toNamed("/mainPage/stokEdit", arguments: result);
+                          await Get.toNamed("/mainPage/stokEdit", arguments: result);
+                          viewModel.setStokListesi(null);
+                          viewModel.resetSayfa();
+                          await getData();
                         }
                       },
                     ).paddingAll(10),

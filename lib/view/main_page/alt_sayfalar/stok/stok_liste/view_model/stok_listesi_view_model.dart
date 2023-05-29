@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../../cari/cari_listesi/model/cari_listesi_grup_kodu_model.dart';
+import '../../../../../../core/base/model/base_grup_kodu_model.dart';
 import '../model/stok_bottom_sheet_model.dart';
 import '../model/stok_listesi_model.dart';
 
@@ -78,10 +78,10 @@ abstract class _StokListesiViewModelBase with Store {
   }
 
   @observable
-  ObservableList<CariGrupKoduModel> grupKodlari = <CariGrupKoduModel>[].asObservable();
+  ObservableList<BaseGrupKoduModel> grupKodlari = <BaseGrupKoduModel>[].asObservable();
 
   @action
-  void setGrupKodlari(List<CariGrupKoduModel> value) => grupKodlari = value.asObservable();
+  void setGrupKodlari(List<BaseGrupKoduModel> value) => grupKodlari = value.asObservable();
 
   @observable
   List<StokListesiModel>? stokListesi;

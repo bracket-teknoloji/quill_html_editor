@@ -11,7 +11,9 @@ import 'package:picker/core/constants/extensions/date_time_extensions.dart';
 import 'package:picker/core/init/cache/cache_manager.dart';
 import 'package:picker/view/auth/model/login_model.dart';
 
+import '../../base/model/base_grup_kodu_model.dart';
 import '../../constants/enum/dio_enum.dart';
+import 'login/api_urls.dart';
 
 class NetworkManager {
   static final Dio _dio = Dio(BaseOptions(
@@ -62,7 +64,7 @@ class NetworkManager {
       bool addCKey = false,
       bool addTokenKey = true}) async {
     CancelToken cancelToken = CancelToken();
-    Map<String, String> head = getStandardHeader(addTokenKey, addSirketBilgileri, addCKey);
+    Map<String, String> head = getStandardHeader(addTokenKey, addSirketBilgileri, addCKey); 
     if (headers != null) head.addEntries(headers.entries);
     Map<String, dynamic> queries = getStandardQueryParameters();
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
@@ -77,7 +79,7 @@ class NetworkManager {
       required T bodyModel,
       Map<String, String>? headers,
       dynamic data,
-      Map<String, String>? queryParameters,
+      Map<String, dynamic>? queryParameters,
       bool addQuery = true,
       bool addSirketBilgileri = false,
       bool addCKey = false,
@@ -99,6 +101,17 @@ class NetworkManager {
     log(response.data.toString());
     // response is a png file
     return MemoryImage(response.data);
+  
+  }Future<List<BaseGrupKoduModel>> getGrupKod({required String name, required int grupNo, bool? kullanimda}) async {
+    var responseKod = await dioGet<BaseGrupKoduModel>(
+        path: ApiUrls.getGrupKodlari,
+        bodyModel: BaseGrupKoduModel(),
+        addCKey: true,
+        headers: {"Modul": name , "GrupNo": grupNo.toString(), "Kullanimda": (kullanimda ?? true)? "E" : "H"},
+        addQuery: true,
+        addSirketBilgileri: true,
+        queryParameters: {"Modul": name, "GrupNo": grupNo});
+    return responseKod.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
   }
 
   Map<String, String> getStandardHeader(bool addTokenKey, [bool headerSirketBilgileri = false, bool headerCKey = false]) {

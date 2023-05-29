@@ -5,15 +5,15 @@ import '../../../../core/base/model/generic_response_model.dart';
 import '../../../../core/base/model/base_edit_siradaki_kod_model.dart';
 import '../../../../core/init/network/login/api_urls.dart';
 import '../../../../core/init/network/network_manager.dart';
-import 'cari_listesi/model/cari_listesi_grup_kodu_model.dart';
+import '../../../../core/base/model/base_grup_kodu_model.dart';
 import 'cari_listesi/model/cari_sehirler_model.dart';
 
 class CariNetworkManager {
   static NetworkManager networkManager = NetworkManager();
   static Future<GenericResponseModel<NetworkManagerMixin>> getKod({String? name}) async {
-    var responseKod = await networkManager.dioGet<CariGrupKoduModel>(
+    var responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
         path: ApiUrls.getGrupKodlari,
-        bodyModel: CariGrupKoduModel(),
+        bodyModel: BaseGrupKoduModel(),
         addCKey: true,
         headers: {"Modul": name ?? "CARI", "GrupNo": "1", "Kullanimda": "E"},
         addQuery: true,

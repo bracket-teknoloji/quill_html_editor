@@ -30,9 +30,8 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> {
   List<Tab>? get addTabs => widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null
       ? [const Tab(child: Text("Özet")), const Tab(child: Text("Banka")), const Tab(child: Text("İletişim"))]
       : [];
-  List<Widget>? get addBody => widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null
-      ? [const BaseEditCariOzetView(), const BaseCariEditBankaView(), const BaseCariEditIletisimView()]
-      : [];
+  List<Widget>? get addBody =>
+      widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null ? [const BaseEditCariOzetView(), const BaseCariEditBankaView(), const BaseCariEditIletisimView()] : [];
   Widget? get addSaveButton => widget.model?.baseEditEnum != BaseEditEnum.goruntule
       ? IconButton(
           onPressed: () async {
@@ -48,16 +47,8 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> {
 
   @override
   Widget build(BuildContext context) {
-    var tabs = [
-      const Tab(child: Text("Genel")),
-      const Tab(child: Text("Diğer")),
-      ...?addTabs,
-    ];
-    var views = [
-      BaseEditCariGenelView(model: widget.model),
-      CariEditDigerView(model: widget.model),
-      ...?addBody,
-    ];
+    var tabs = [const Tab(child: Text("Genel")), const Tab(child: Text("Diğer")), ...?addTabs];
+    var views = [BaseEditCariGenelView(model: widget.model), CariEditDigerView(model: widget.model), ...?addBody];
     return DefaultTabController(
       length: tabs.length,
       child: Scaffold(

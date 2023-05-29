@@ -25,6 +25,9 @@ class ApiUrls {
   static const String getMuhasebeKodlari = "api/Stok/GetStokMuhasebeKodlari";
   static const String getOlcuBirimleri = "api/Stok/GetOlcuBirimleri";
   static const String barkodUret = "api/Stok/BarkodUret";
+  static const String saveStok = "api/Stok/SaveStok";
+  static const String getStokDigerBilgi = "api/Stok/GetStokDigerBilgi";
   static const String getStokHareketleri = "api/Stok/GetStokHareketleri";
   static const String saveStokHareket = "api/Stok/SaveStokHareket";
+  static const String deleteStokHareket = "api/Stok/DeleteStokHareket";
 }

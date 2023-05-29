@@ -13,7 +13,7 @@ import 'package:picker/core/components/textfield/custom_text_field.dart';
 import 'package:picker/core/constants/enum/base_edit_enum.dart';
 import 'package:picker/core/constants/extensions/widget_extensions.dart';
 import 'package:picker/core/constants/static_variables/static_variables.dart';
-import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_grup_kodu_model.dart';
+import 'package:picker/core/base/model/base_grup_kodu_model.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_network_manager.dart';
 
 import '../../../../../../../view/auth/model/isletme_model.dart';
@@ -37,7 +37,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
   Map veriTabani = CacheManager.getVeriTabani();
   final formKey = GlobalKey<FormState>();
   BaseCariGenelEditViewModel viewModel = BaseEditCariGenelViewState.viewModel;
-  List<CariGrupKoduModel>? list = [];
+  List<BaseGrupKoduModel>? list = [];
   List<IsletmeModel> subeList = [];
   List<CariKosullarModel> kosullarList = [];
   CariListesiModel model = CariListesiModel.instance;
@@ -197,7 +197,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                       labelText: "Kod 3",
                       controller: kod3Controller,
                       onTap: () async {
-                        List<CariGrupKoduModel>? liste = list?.where((element) => element.grupNo == 3).toList();
+                        List<BaseGrupKoduModel>? liste = list?.where((element) => element.grupNo == 3).toList();
                         var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                             aramaVarMi: true,
                             title: "Kod 3",
@@ -549,7 +549,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
   void dataChecker() async {
     if (list.isNullOrEmpty && StaticVariables.grupKodlari.isNullOrEmpty) {
       GenericResponseModel data = await CariNetworkManager.getKod();
-      list = data.data.map((e) => e as CariGrupKoduModel).toList().cast<CariGrupKoduModel>();
+      list = data.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
       if (list != null) {
         StaticVariables.grupKodlari = list!;
       }

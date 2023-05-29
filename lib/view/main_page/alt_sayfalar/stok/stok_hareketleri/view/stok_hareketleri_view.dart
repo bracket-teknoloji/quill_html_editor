@@ -224,24 +224,48 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                           itemCount: viewModel.stokHareketleri?.length ?? 0,
                           itemBuilder: (context, index) {
                             StokHareketleriModel model = viewModel.stokHareketleri![index];
-                            return Slidable(
-                              closeOnScroll: true,
-                              enabled: true,
-                              endActionPane: ActionPane(
-                                extentRatio: 0.3,
-                                motion: const ScrollMotion(),
-                                children: [
-                                  SlidableAction(
-                                    onPressed: (context) async {
-                                      await Get.toNamed("mainPage/stokYeniKayit", arguments: model);
+                            List<Widget> children2 = [];
+                            if (model.hareketTuruAciklama == "Devir") {
+                              children2.add(SlidableAction(
+                                onPressed: (context) async {
+                                  dialogManager.showAreYouSureDialog(() async {
+                                    var result = await networkManager.dioPost<StokHareketleriModel>(
+                                        path: ApiUrls.deleteStokHareket,
+                                        bodyModel: StokHareketleriModel(),
+                                        addCKey: true,
+                                        addSirketBilgileri: true,
+                                        queryParameters: {"INCKEYNO": model.inckeyno.toString()});
+                                    if (result.success == true) {
+                                      dialogManager.showSnackBar("Stok Hareket Kaydı Silindi.");
                                       viewModel.setStokHareketleri(await getData()!);
-                                    },
-                                    icon: Icons.directions_walk_outlined,
-                                    backgroundColor: theme.cardColor,
-                                    foregroundColor: theme.colorScheme.primary,
-                                    label: 'Hareket\nDetayı',
-                                  )
-                                ],
+                                    } else {
+                                      dialogManager.showSnackBar("Lütfen daha sonra tekrar deneyiniz.\n ${result.exceptionName}");
+                                    }
+                                  });
+                                },
+                                icon: Icons.delete_forever,
+                                backgroundColor: theme.cardColor,
+                                foregroundColor: theme.colorScheme.primary,
+                                label: 'Sil',
+                              ));
+                            }
+                            if (model.hareketTuruAciklama != "Muhtelif") {
+                              children2.add(SlidableAction(
+                                onPressed: (context) async {
+                                  await Get.toNamed("mainPage/stokYeniKayit", arguments: model);
+                                  viewModel.setStokHareketleri(await getData()!);
+                                },
+                                icon: Icons.directions_walk_outlined,
+                                backgroundColor: theme.cardColor,
+                                foregroundColor: theme.colorScheme.primary,
+                                label: 'Hareket\nDetayı',
+                              ));
+                            }
+                            return Slidable(
+                              enabled: children2.isNotNullOrEmpty,
+                              endActionPane: ActionPane(
+                                motion: const ScrollMotion(),
+                                children: children2,
                               ),
                               child: GestureDetector(
                                 onTap: () async {
@@ -266,7 +290,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                             ),
                                           ),
                                           Text(model.fisno ?? ""),
-                                          Icon(model.cikisIslemi ?? false ? Icons.chevron_right_outlined : Icons.chevron_left_sharp, color: model.cikisIslemi ?? false ? Colors.red : Colors.green)
+                                          Icon(model.cikisIslemi ?? false ? Icons.chevron_right_outlined : Icons.chevron_left_sharp, color: model.cikisIslemi ?? false ? Colors.red : Colors.green),
                                         ],
                                       ),
                                       Text.rich(

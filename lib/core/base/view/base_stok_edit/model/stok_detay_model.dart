@@ -67,8 +67,14 @@ class StokList {
   double? bakiye;
   String? muhdetayAdi;
   double? alisFiat1;
+  double? alisFiat2;
+  double? alisFiat3;
+  double? alisFiat4;
   double? alisKdv;
   double? satisFiat1;
+  double? satisFiat2;
+  double? satisFiat3;
+  double? satisFiat4;
   double? satisKdv;
   String? olcuBirimi;
   String? olcuBirimi2;
@@ -94,6 +100,12 @@ class StokList {
   String? kod4Tanimi;
   String? kod5;
   String? kod5Tanimi;
+  bool? seriCikislardaAcik;
+  bool? seriGirislerdeAcik;
+  bool? seriMiktarKadarSor;
+  bool? seriBakiyeKontrolu;
+  bool? seriGiristeOtomatikMi;
+  bool? seriCikistaOtomatikMi;
   DateTime? duzeltmetarihi;
   String? duzeltmeyapankul;
   List<dynamic>? stokFiyatList;
@@ -104,6 +116,16 @@ class StokList {
   String? kilitMussip;
   String? kilitAlis;
   String? kilitSatis;
+  int? subeKodu;
+  int? muhdetayKodu;
+  int? alisDovTip;
+  double? dovAlisFiat;
+  String? alisDovizAdi;
+  int? satDovTip;
+  double? dovSatisFiat;
+  String? satisDovizAdi;
+  String? ureticiKodu;
+  double? birimAgirlik;
 
   factory StokList.fromJson(Map<String, dynamic> json) => _$StokListFromJson(json);
 

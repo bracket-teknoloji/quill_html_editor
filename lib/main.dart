@@ -6,7 +6,7 @@ import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/view/stok_lis
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_yeni_kayit/view/stok_yeni_kayit_view.dart";
 
 import "core/base/view/base_cari_edit/view/base_cari_edit_view.dart";
-import "core/base/view/base_stok_edit/view/base_stok_edit_view.dart";
+import 'core/base/view/base_stok_edit/view/base_stok_edit_view.dart';
 import "core/init/cache/cache_manager.dart";
 import "core/init/theme/app_theme_dark.dart";
 import "view/add_company/model/account_model.dart";

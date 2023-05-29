@@ -140,13 +140,13 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
       Atom(name: '_StokListesiViewModelBase.grupKodlari', context: context);
 
   @override
-  ObservableList<CariGrupKoduModel> get grupKodlari {
+  ObservableList<BaseGrupKoduModel> get grupKodlari {
     _$grupKodlariAtom.reportRead();
     return super.grupKodlari;
   }
 
   @override
-  set grupKodlari(ObservableList<CariGrupKoduModel> value) {
+  set grupKodlari(ObservableList<BaseGrupKoduModel> value) {
     _$grupKodlariAtom.reportWrite(value, super.grupKodlari, () {
       super.grupKodlari = value;
     });
@@ -345,7 +345,7 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
   }
 
   @override
-  void setGrupKodlari(List<CariGrupKoduModel> value) {
+  void setGrupKodlari(List<BaseGrupKoduModel> value) {
     final _$actionInfo = _$_StokListesiViewModelBaseActionController
         .startAction(name: '_StokListesiViewModelBase.setGrupKodlari');
     try {

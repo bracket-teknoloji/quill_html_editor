@@ -78,7 +78,7 @@ dependencies:
   flutter_native_timezone: ^2.0.0
   carrier_info: ^2.0.8
   crypto: ^3.0.2
-  connectivity_plus: ^3.0.3
+  connectivity_plus: ^4.0.1
   intl: ^0.18.1
   scroll_app_bar: ^2.0.0
   image_picker: ^0.8.7+5

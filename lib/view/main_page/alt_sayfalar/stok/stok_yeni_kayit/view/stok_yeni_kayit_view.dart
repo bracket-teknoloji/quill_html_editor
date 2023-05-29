@@ -47,9 +47,11 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                 //check if form is valid
                 if ((key.currentState as FormState).validate()) {
                   dialogManager.showAreYouSureDialog(() async {
+                    dialogManager.showLoadingDialog("Kaydediliyor");
                     viewModel.model.stokKodu = stokKoduController.text;
                     GenericResponseModel result = await networkManager.dioPost<StokYeniKayitModel>(
                         path: ApiUrls.saveStokHareket, bodyModel: StokYeniKayitModel(), addCKey: true, addSirketBilgileri: true, data: viewModel.model.toJson());
+                    dialogManager.hideAlertDialog;
                     if (result.success ?? false) {
                       dialogManager.showSnackBar("Kayıt başarılı");
                       Get.back();
@@ -59,7 +61,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                   });
                 }
               },
-              icon: const Icon(Icons.save))
+              icon: const Icon(Icons.save_outlined))
         ],
       ),
       body: SingleChildScrollView(
@@ -68,21 +70,19 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
           key: key,
           child: Column(
             children: [
-              Observer(builder: (_) {
-                return Center(
-                  child: Observer(builder: (_) {
-                    return ToggleButtons(
-                      constraints: BoxConstraints(minWidth: width / 2.1, minHeight: height / 20),
-                      isSelected: viewModel.isSelected,
-                      children: viewModel.toggleButtonName.map((e) => Text(e)).toList(),
-                      onPressed: (index) {
-                        viewModel.model.gc = index == 0 ? "G" : "C";
-                        viewModel.changeIsSelected(index);
-                      },
-                    );
-                  }),
-                );
-              }),
+              Center(
+                child: Observer(builder: (_) {
+                  return ToggleButtons(
+                    constraints: BoxConstraints(minWidth: width / 2.1, minHeight: height / 20),
+                    isSelected: viewModel.isSelected,
+                    children: viewModel.toggleButtonName.map((e) => Text(e)).toList(),
+                    onPressed: (index) {
+                      viewModel.model.gc = index == 0 ? "G" : "C";
+                      viewModel.changeIsSelected(index);
+                    },
+                  );
+                }),
+              ),
               CustomTextField(
                 labelText: "Stok",
                 valueText: widget.model?.stokKodu ?? "",

@@ -121,9 +121,21 @@ StokList _$StokListFromJson(Map<String, dynamic> json) => $checkedCreate(
         $checkedConvert(
             'ALIS_FIAT1', (v) => val.alisFiat1 = (v as num?)?.toDouble());
         $checkedConvert(
+            'ALIS_FIAT2', (v) => val.alisFiat2 = (v as num?)?.toDouble());
+        $checkedConvert(
+            'ALIS_FIAT3', (v) => val.alisFiat3 = (v as num?)?.toDouble());
+        $checkedConvert(
+            'ALIS_FIAT4', (v) => val.alisFiat4 = (v as num?)?.toDouble());
+        $checkedConvert(
             'ALIS_KDV', (v) => val.alisKdv = (v as num?)?.toDouble());
         $checkedConvert(
             'SATIS_FIAT1', (v) => val.satisFiat1 = (v as num?)?.toDouble());
+        $checkedConvert(
+            'SATIS_FIAT2', (v) => val.satisFiat2 = (v as num?)?.toDouble());
+        $checkedConvert(
+            'SATIS_FIAT3', (v) => val.satisFiat3 = (v as num?)?.toDouble());
+        $checkedConvert(
+            'SATIS_FIAT4', (v) => val.satisFiat4 = (v as num?)?.toDouble());
         $checkedConvert(
             'SATIS_KDV', (v) => val.satisKdv = (v as num?)?.toDouble());
         $checkedConvert('OLCU_BIRIMI', (v) => val.olcuBirimi = v as String?);
@@ -159,6 +171,18 @@ StokList _$StokListFromJson(Map<String, dynamic> json) => $checkedCreate(
         $checkedConvert('KOD5', (v) => val.kod5 = v as String?);
         $checkedConvert('KOD5_TANIMI', (v) => val.kod5Tanimi = v as String?);
         $checkedConvert(
+            'SERI_CIKISLARDA_ACIK', (v) => val.seriCikislardaAcik = v as bool?);
+        $checkedConvert(
+            'SERI_GIRISLERDE_ACIK', (v) => val.seriGirislerdeAcik = v as bool?);
+        $checkedConvert('SERI_MIKTAR_KADAR_SOR',
+            (v) => val.seriMiktarKadarSor = v as bool?);
+        $checkedConvert(
+            'SERI_BAKIYE_KONTROLU', (v) => val.seriBakiyeKontrolu = v as bool?);
+        $checkedConvert('SERI_GIRISTE_OTOMATIK_MI',
+            (v) => val.seriGiristeOtomatikMi = v as bool?);
+        $checkedConvert('SERI_CIKISTA_OTOMATIK_MI',
+            (v) => val.seriCikistaOtomatikMi = v as bool?);
+        $checkedConvert(
             'DUZELTMETARIHI',
             (v) => val.duzeltmetarihi =
                 v == null ? null : DateTime.parse(v as String));
@@ -174,6 +198,21 @@ StokList _$StokListFromJson(Map<String, dynamic> json) => $checkedCreate(
         $checkedConvert('KILIT_MUSSIP', (v) => val.kilitMussip = v as String?);
         $checkedConvert('KILIT_ALIS', (v) => val.kilitAlis = v as String?);
         $checkedConvert('KILIT_SATIS', (v) => val.kilitSatis = v as String?);
+        $checkedConvert('SUBE_KODU', (v) => val.subeKodu = v as int?);
+        $checkedConvert('MUHDETAY_KODU', (v) => val.muhdetayKodu = v as int?);
+        $checkedConvert('ALIS_DOV_TIP', (v) => val.alisDovTip = v as int?);
+        $checkedConvert(
+            'DOV_ALIS_FIAT', (v) => val.dovAlisFiat = (v as num?)?.toDouble());
+        $checkedConvert(
+            'ALIS_DOVIZ_ADI', (v) => val.alisDovizAdi = v as String?);
+        $checkedConvert('SAT_DOV_TIP', (v) => val.satDovTip = v as int?);
+        $checkedConvert('DOV_SATIS_FIAT',
+            (v) => val.dovSatisFiat = (v as num?)?.toDouble());
+        $checkedConvert(
+            'SATIS_DOVIZ_ADI', (v) => val.satisDovizAdi = v as String?);
+        $checkedConvert('URETICI_KODU', (v) => val.ureticiKodu = v as String?);
+        $checkedConvert(
+            'BIRIM_AGIRLIK', (v) => val.birimAgirlik = (v as num?)?.toDouble());
         return val;
       },
       fieldKeyMap: const {
@@ -183,8 +222,14 @@ StokList _$StokListFromJson(Map<String, dynamic> json) => $checkedCreate(
         'bakiye': 'BAKIYE',
         'muhdetayAdi': 'MUHDETAY_ADI',
         'alisFiat1': 'ALIS_FIAT1',
+        'alisFiat2': 'ALIS_FIAT2',
+        'alisFiat3': 'ALIS_FIAT3',
+        'alisFiat4': 'ALIS_FIAT4',
         'alisKdv': 'ALIS_KDV',
         'satisFiat1': 'SATIS_FIAT1',
+        'satisFiat2': 'SATIS_FIAT2',
+        'satisFiat3': 'SATIS_FIAT3',
+        'satisFiat4': 'SATIS_FIAT4',
         'satisKdv': 'SATIS_KDV',
         'olcuBirimi': 'OLCU_BIRIMI',
         'olcuBirimi2': 'OLCU_BIRIMI2',
@@ -210,6 +255,12 @@ StokList _$StokListFromJson(Map<String, dynamic> json) => $checkedCreate(
         'kod4Tanimi': 'KOD4_TANIMI',
         'kod5': 'KOD5',
         'kod5Tanimi': 'KOD5_TANIMI',
+        'seriCikislardaAcik': 'SERI_CIKISLARDA_ACIK',
+        'seriGirislerdeAcik': 'SERI_GIRISLERDE_ACIK',
+        'seriMiktarKadarSor': 'SERI_MIKTAR_KADAR_SOR',
+        'seriBakiyeKontrolu': 'SERI_BAKIYE_KONTROLU',
+        'seriGiristeOtomatikMi': 'SERI_GIRISTE_OTOMATIK_MI',
+        'seriCikistaOtomatikMi': 'SERI_CIKISTA_OTOMATIK_MI',
         'duzeltmetarihi': 'DUZELTMETARIHI',
         'duzeltmeyapankul': 'DUZELTMEYAPANKUL',
         'stokFiyatList': 'STOK_FIYAT_LIST',
@@ -219,7 +270,17 @@ StokList _$StokListFromJson(Map<String, dynamic> json) => $checkedCreate(
         'kilitSaticisip': 'KILIT_SATICISIP',
         'kilitMussip': 'KILIT_MUSSIP',
         'kilitAlis': 'KILIT_ALIS',
-        'kilitSatis': 'KILIT_SATIS'
+        'kilitSatis': 'KILIT_SATIS',
+        'subeKodu': 'SUBE_KODU',
+        'muhdetayKodu': 'MUHDETAY_KODU',
+        'alisDovTip': 'ALIS_DOV_TIP',
+        'dovAlisFiat': 'DOV_ALIS_FIAT',
+        'alisDovizAdi': 'ALIS_DOVIZ_ADI',
+        'satDovTip': 'SAT_DOV_TIP',
+        'dovSatisFiat': 'DOV_SATIS_FIAT',
+        'satisDovizAdi': 'SATIS_DOVIZ_ADI',
+        'ureticiKodu': 'URETICI_KODU',
+        'birimAgirlik': 'BIRIM_AGIRLIK'
       },
     );
 
@@ -230,8 +291,14 @@ Map<String, dynamic> _$StokListToJson(StokList instance) => <String, dynamic>{
       'BAKIYE': instance.bakiye,
       'MUHDETAY_ADI': instance.muhdetayAdi,
       'ALIS_FIAT1': instance.alisFiat1,
+      'ALIS_FIAT2': instance.alisFiat2,
+      'ALIS_FIAT3': instance.alisFiat3,
+      'ALIS_FIAT4': instance.alisFiat4,
       'ALIS_KDV': instance.alisKdv,
       'SATIS_FIAT1': instance.satisFiat1,
+      'SATIS_FIAT2': instance.satisFiat2,
+      'SATIS_FIAT3': instance.satisFiat3,
+      'SATIS_FIAT4': instance.satisFiat4,
       'SATIS_KDV': instance.satisKdv,
       'OLCU_BIRIMI': instance.olcuBirimi,
       'OLCU_BIRIMI2': instance.olcuBirimi2,
@@ -257,6 +324,12 @@ Map<String, dynamic> _$StokListToJson(StokList instance) => <String, dynamic>{
       'KOD4_TANIMI': instance.kod4Tanimi,
       'KOD5': instance.kod5,
       'KOD5_TANIMI': instance.kod5Tanimi,
+      'SERI_CIKISLARDA_ACIK': instance.seriCikislardaAcik,
+      'SERI_GIRISLERDE_ACIK': instance.seriGirislerdeAcik,
+      'SERI_MIKTAR_KADAR_SOR': instance.seriMiktarKadarSor,
+      'SERI_BAKIYE_KONTROLU': instance.seriBakiyeKontrolu,
+      'SERI_GIRISTE_OTOMATIK_MI': instance.seriGiristeOtomatikMi,
+      'SERI_CIKISTA_OTOMATIK_MI': instance.seriCikistaOtomatikMi,
       'DUZELTMETARIHI': instance.duzeltmetarihi?.toIso8601String(),
       'DUZELTMEYAPANKUL': instance.duzeltmeyapankul,
       'STOK_FIYAT_LIST': instance.stokFiyatList,
@@ -267,4 +340,14 @@ Map<String, dynamic> _$StokListToJson(StokList instance) => <String, dynamic>{
       'KILIT_MUSSIP': instance.kilitMussip,
       'KILIT_ALIS': instance.kilitAlis,
       'KILIT_SATIS': instance.kilitSatis,
+      'SUBE_KODU': instance.subeKodu,
+      'MUHDETAY_KODU': instance.muhdetayKodu,
+      'ALIS_DOV_TIP': instance.alisDovTip,
+      'DOV_ALIS_FIAT': instance.dovAlisFiat,
+      'ALIS_DOVIZ_ADI': instance.alisDovizAdi,
+      'SAT_DOV_TIP': instance.satDovTip,
+      'DOV_SATIS_FIAT': instance.dovSatisFiat,
+      'SATIS_DOVIZ_ADI': instance.satisDovizAdi,
+      'URETICI_KODU': instance.ureticiKodu,
+      'BIRIM_AGIRLIK': instance.birimAgirlik,
     };

@@ -3,8 +3,18 @@ import 'package:picker/core/base/model/base_network_mixin.dart';
 
 part 'stok_listesi_model.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.screamingSnake, createToJson: true)
+@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.screamingSnake, createToJson: true, includeIfNull: false)
 class StokListesiModel with NetworkManagerMixin {
+  static StokListesiModel? _instance;
+  static StokListesiModel get instance {
+    _instance ??= StokListesiModel._init();
+    return _instance!;
+  }
+
+  StokListesiModel._init();
+  StokListesiModel();
+  static void setInstance(StokListesiModel? instance) => _instance = instance;
+
   String? stokKodu;
   String? stokAdi;
   int? depoKodu;
@@ -15,7 +25,6 @@ class StokListesiModel with NetworkManagerMixin {
   String? resimUrlKucuk;
   double? alisFiat1;
   double? alisKdv;
-  double? satisFiat1;
   double? satisKdv;
   String? olcuBirimi;
   String? olcuBirimi2;
@@ -55,10 +64,24 @@ class StokListesiModel with NetworkManagerMixin {
   int? alisDovTip;
   String? alisDovizAdi;
   String? ureticiKodu;
+  double? satisFiat1;
   double? satisFiat2;
   double? satisFiat3;
   double? satisFiat4;
   String? kod5;
+  double? alisFiat2;
+  double? alisFiat3;
+  double? alisFiat4;
+  String? kod2Tanimi;
+  String? kod3Tanimi;
+  String? kod4Tanimi;
+  String? kod5Tanimi;
+  bool? seriCikislardaAcik;
+  bool? seriGirislerdeAcik;
+  bool? seriMiktarKadarSor;
+  bool? seriBakiyeKontrolu;
+  int? muhdetayKodu;
+  double? dovAlisFiat;
 
   @override
   fromJson(Map<String, dynamic> json) {

@@ -4,7 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../../view/add_company/model/account_model.dart';
 import '../../../view/add_company/model/account_response_model.dart';
 import '../../../view/auth/model/isletme_model.dart';
-import '../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_grup_kodu_model.dart';
+import '../../base/model/base_grup_kodu_model.dart';
 import '../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_sehirler_model.dart';
 import '../../../view/main_page/model/main_page_model.dart';
 import '../../../view/main_page/model/sirket_model.dart';
