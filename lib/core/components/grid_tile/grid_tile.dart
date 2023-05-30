@@ -43,7 +43,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
       borderRadius: UIHelper.lowBorderRadius,
       splashFactory: InkRipple.splashFactory,
       onLongPress: () {
-        Clipboard.setData(ClipboardData(text: widget.title));
+        Clipboard.setData(ClipboardData(text: widget.title!));
         dialogManager.showSnackBar("Kopyalandı");
       },
       splashColor: theme.primaryColor,

@@ -1,4 +1,4 @@
-import 'package:picker/core/base/model/base_grup_kodu_model.dart';
+import '../../../../../../core/base/model/base_grup_kodu_model.dart';
 
 class StokBottomSheetModel {
   List<BaseGrupKoduModel>? grupKodu = [];

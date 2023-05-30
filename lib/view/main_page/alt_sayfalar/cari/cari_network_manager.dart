@@ -1,4 +1,4 @@
-import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_kosullar_model.dart';
+import 'cari_listesi/model/cari_kosullar_model.dart';
 
 import '../../../../core/base/model/base_network_mixin.dart';
 import '../../../../core/base/model/generic_response_model.dart';

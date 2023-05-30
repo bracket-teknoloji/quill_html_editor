@@ -3,9 +3,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:picker/core/base/helpers/helper.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
+import '../../../core/base/helpers/helper.dart';
 import '../../../core/base/state/base_state.dart';
 
 class QRScannerView extends StatefulWidget {

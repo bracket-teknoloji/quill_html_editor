@@ -1,25 +1,27 @@
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
-import 'package:picker/core/base/helpers/helper.dart';
-import 'package:picker/core/base/model/base_edit_model.dart';
-import 'package:picker/core/base/model/base_grup_kodu_model.dart';
-import 'package:picker/core/base/model/generic_response_model.dart';
-import 'package:picker/core/components/button/elevated_buttons/bottom_appbar_button.dart';
-import 'package:picker/core/components/textfield/custom_label_widget.dart';
-import 'package:picker/core/components/textfield/custom_text_field.dart';
-import 'package:picker/core/constants/extensions/list_extensions.dart';
-import 'package:picker/view/main_page/alt_sayfalar/cari/cari_network_manager.dart';
-import 'package:scroll_app_bar/scroll_app_bar.dart';
+import 'package:picker/core/constants/extensions/model_extensions.dart';
+import 'package:picker/core/constants/extensions/widget_extensions.dart';
 
+import '../../../../../../core/base/helpers/helper.dart';
+import '../../../../../../core/base/model/base_edit_model.dart';
+import '../../../../../../core/base/model/base_grup_kodu_model.dart';
+import '../../../../../../core/base/model/generic_response_model.dart';
 import '../../../../../../core/base/state/base_state.dart';
+import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
+import '../../../../../../core/components/floating_action_button/custom_floating_action_button.dart';
+import '../../../../../../core/components/textfield/custom_label_widget.dart';
+import '../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../core/constants/enum/grup_kodu_enums.dart';
+import '../../../../../../core/constants/extensions/list_extensions.dart';
+import '../../../../../../core/init/cache/cache_manager.dart';
+import '../../../cari/cari_network_manager.dart';
 import '../model/stok_bottom_sheet_model.dart';
 import '../model/stok_listesi_model.dart';
 import '../view_model/stok_listesi_view_model.dart';
@@ -82,23 +84,30 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
       },
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        appBar: appBar(),
+        // floatingActionButton: Observer(builder: (_) {
+        //   return CustomFloatingActionButton(isScrolledDown: viewModel.isScrolledDown, onPressed: () {});
+        // }),
         floatingActionButton: fab(),
-        body: RefreshIndicator(
-            onRefresh: () async {
-              viewModel.setStokListesi(null);
-              viewModel.resetSayfa();
-              return await getData();
-            },
-            child: body().paddingAll(UIHelper.lowSize)),
+        body: NestedScrollView(
+            headerSliverBuilder: (context, innerBoxIsScrolled) => [appBar()],
+            body: RefreshIndicator(
+                onRefresh: () async {
+                  viewModel.setStokListesi(null);
+                  viewModel.resetSayfa();
+                  return await getData();
+                },
+                child: body())),
       ),
     );
   }
 
-  ScrollAppBar appBar() {
-    Platform.isLinux || Platform.isWindows || Platform.isMacOS ? _scrollController.appBar.setPinState(true) : _scrollController.appBar.setPinState(false);
-    return ScrollAppBar(
-      controller: _scrollController,
+  SliverAppBar appBar() {
+    return SliverAppBar(
+      primary: true,
+      floating: true,
+      snap: true,
+      pinned: true,
+      // controller: _scrollController,
       title: Observer(
           builder: (_) => viewModel.searchBar
               ? TextField(
@@ -146,7 +155,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(50),
         child: SizedBox(
-          height: height * 0.07,
+          height: height * 0.06,
           child: ListView(
             shrinkWrap: true,
             itemExtent: width * 0.2,
@@ -429,14 +438,12 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
 
   Observer? fab() {
     return Observer(builder: (_) {
-      return viewModel.isScrolledDown
-          ? FloatingActionButton(
-              child: const Icon(Icons.add),
-              onPressed: () {
-                BaseEditModel result = BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.ekle, model: StokListesiModel());
-                Get.toNamed("/mainPage/stokEdit", arguments: result);
-              })
-          : const SizedBox();
+      return CustomFloatingActionButton(
+          isScrolledDown: viewModel.isScrolledDown,
+          onPressed: () {
+            BaseEditModel result = BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.ekle, model: StokListesiModel());
+            Get.toNamed("/mainPage/stokEdit", arguments: result);
+          }).yetkiVarMi(yetkiController.stokKartiYeniKayit);
     });
   }
 
@@ -447,7 +454,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
               ? const Center(child: Text("Stok Bulunamadı"))
               : const Center(child: CircularProgressIndicator())
           : ListView.builder(
-              controller: _scrollController,
+              padding: UIHelper.lowPadding,
               itemCount: (stokListesi?.length ?? 0) + 1,
               itemBuilder: (context, index) {
                 if (index < (viewModel.stokListesi?.length ?? 0)) {
@@ -462,20 +469,35 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                         child: Text((stok.stokAdi ?? "  ").substring(0, 1)),
                       ),
                       trailing: Text("${stok.bakiye ?? 0} ${stok.olcuBirimi ?? ""}", style: context.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(stok.bakiye ?? 0))),
-                      title: Text.rich(
-                        TextSpan(
-                          text: stok.stokAdi,
-                          children: [
-                            TextSpan(text: "\n${stok.stokKodu}", style: context.textTheme.bodySmall?.copyWith(color: Colors.grey)),
-                          ],
-                        ),
+                      title: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text.rich(
+                            TextSpan(
+                              text: stok.stokAdi,
+                              children: [
+                                TextSpan(text: "\n${stok.stokKodu}", style: context.textTheme.bodySmall?.copyWith(color: Colors.grey)),
+                              ],
+                            ),
+                          ),
+                          Wrap(
+                            spacing: UIHelper.lowSize,
+                            children: [
+                              (stok.seriCikislardaAcik ?? false) ? const Badge(label: Text("Seri")) : const SizedBox(),
+                              (stok.satDovTip != null || stok.alisDovTip != null) ? const Badge(label: Text("Dövizli")) : const SizedBox()
+                            ],
+                          )
+                        ],
                       ),
                       onTap: () async {
-                        BaseEditModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: stok.stokAdi ?? "", children: [
+                        var children2 = [
                           BottomSheetModel(
-                              title: "Görüntüle", iconWidget: Icons.visibility, onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.goruntule, model: stok))),
-                          BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit, onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.duzenle, model: stok))),
-                          BottomSheetModel(title: "Sil", iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? "")),
+                              title: "Görüntüle",
+                              iconWidget: Icons.visibility,
+                              onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.goruntule, model: stok))).yetkiKontrol(yetkiController.stokKarti),
+                          BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit, onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.duzenle, model: stok)))
+                              .yetkiKontrol(yetkiController.stokKartiDuzenleme),
                           BottomSheetModel(
                               title: "Hareketler",
                               iconWidget: Icons.list_alt,
@@ -501,7 +523,12 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                             },
                           ),
                           BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt),
-                        ]);
+                        ];
+                        if (CacheManager.getAnaVeri()?.userModel!.adminMi ?? false) {
+                          children2.insert(2, BottomSheetModel(title: "Sil", iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? "")).yetkiKontrol(yetkiController.stokKartiSilme));
+                        }
+                        List<BottomSheetModel>? newResult = children2.nullCheck.cast<BottomSheetModel>();
+                        BaseEditModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: stok.stokAdi ?? "", children: newResult);
                         if (result != null) {
                           await Get.toNamed("/mainPage/stokEdit", arguments: result);
                           viewModel.setStokListesi(null);

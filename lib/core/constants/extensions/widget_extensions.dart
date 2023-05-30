@@ -29,3 +29,10 @@ extension RowExtension on Row {
     );
   }
 }
+extension YetkiExtension on Widget{
+  Widget yetkiVarMi(bool yetki){
+    return yetki
+        ? this
+        : const SizedBox();
+  }
+}

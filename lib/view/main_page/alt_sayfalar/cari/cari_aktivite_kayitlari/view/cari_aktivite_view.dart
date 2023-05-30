@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
-import 'package:picker/core/base/helpers/helper.dart';
-import 'package:picker/core/components/button/elevated_buttons/bottom_appbar_button.dart';
-import 'package:picker/core/components/textfield/custom_label_widget.dart';
-import 'package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_appbar_model.dart';
 
+import '../../../../../../core/base/helpers/helper.dart';
 import '../../../../../../core/base/state/base_state.dart';
+import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
+import '../../../../../../core/components/textfield/custom_label_widget.dart';
+import '../model/cari_aktivite_appbar_model.dart';
 import 'dialog/cari_aktivite_filtre_dialog.dart';
 
 class CariAktiviteView extends StatefulWidget {

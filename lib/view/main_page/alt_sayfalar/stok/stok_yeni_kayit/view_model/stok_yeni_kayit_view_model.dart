@@ -1,9 +1,9 @@
 import 'package:mobx/mobx.dart';
-import 'package:picker/core/init/cache/cache_manager.dart';
-import 'package:picker/view/main_page/alt_sayfalar/stok/stok_yeni_kayit/model/stok_yeni_kayit_model.dart';
 
 import '../../../../../../core/base/model/base_proje_model.dart';
+import '../../../../../../core/init/cache/cache_manager.dart';
 import '../../../../model/main_page_model.dart';
+import '../model/stok_yeni_kayit_model.dart';
 
 part 'stok_yeni_kayit_view_model.g.dart';
 
@@ -17,7 +17,9 @@ abstract class _StokYeniKayitViewModelBase with Store {
   @observable
   MainPageModel? anaVeri = CacheManager.getAnaVeri();
   @observable
-  StokYeniKayitModel model = StokYeniKayitModel()..miktar = 0..tarih = DateTime.now();
+  StokYeniKayitModel model = StokYeniKayitModel()
+    ..miktar = 0
+    ..tarih = DateTime.now();
 
   @observable
   ObservableList<bool> isSelected = [true, false].asObservable();
@@ -33,8 +35,8 @@ abstract class _StokYeniKayitViewModelBase with Store {
     }
   }
 
-  List<String> toggleButtonName = ["Giriş", "Çıkış"];
-  Map<String,String> hareketTurMap = {
+  ObservableList<String> toggleButtonName = ["Giriş", "Çıkış"].asObservable();
+  Map<String, String> hareketTurMap = {
     "Devir": "A",
     "Depo Transferi": "B",
     "Üretim": "C",

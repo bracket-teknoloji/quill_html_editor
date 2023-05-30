@@ -1,7 +1,8 @@
 
 
 import 'package:json_annotation/json_annotation.dart';
-import 'package:picker/core/base/model/base_network_mixin.dart';
+
+import '../../../../../../core/base/model/base_network_mixin.dart';
 
 part 'stok_yeni_kayit_model.g.dart';
 

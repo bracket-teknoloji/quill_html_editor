@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 
-import '../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart';
 import '../../../../core/constants/grid_constants.dart';
 import '../../view/grid_items.dart';
 

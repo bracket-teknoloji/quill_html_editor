@@ -1,21 +1,19 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:picker/core/base/helpers/helper.dart';
-import 'package:picker/core/components/button/elevated_buttons/bottom_appbar_button.dart';
-import 'package:picker/core/components/button/elevated_buttons/footer_button.dart';
-import 'package:picker/core/components/card/cari_hareketler_card.dart';
-import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import 'package:picker/core/components/wrap/appbar_title.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/view_model/cari_hareketleri_view_model.dart';
-import 'package:scroll_app_bar/scroll_app_bar.dart';
 
+import '../../../../../../core/base/helpers/helper.dart';
 import '../../../../../../core/base/state/base_state.dart';
+import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
+import '../../../../../../core/components/button/elevated_buttons/footer_button.dart';
+import '../../../../../../core/components/card/cari_hareketler_card.dart';
+import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import '../../cari_listesi/model/cari_listesi_model.dart';
 
 class CariHareketleriView extends StatefulWidget {
@@ -63,9 +61,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
         appBar: appBar(context),
         floatingActionButton: fab(),
         bottomNavigationBar: bottomButtonBar(),
-        body: Snap(
-          controller: scrollController!.appBar,
-          child: RefreshIndicator(
+        body: RefreshIndicator(
             onRefresh: () async {
               viewModel.setCariHareketleri(null);
               return getData().then((value) => viewModel.setCariHareketleri(value));
@@ -105,11 +101,10 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                     })),
             ),
           ),
-        )
+        );
         // : Observer(builder: (_) {
         // var list = viewModel.cariHareketleriList;
 
-        );
   }
 
   Widget fab() {
@@ -119,12 +114,12 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
     });
   }
 
-  ScrollAppBar appBar(BuildContext context) {
-    Platform.isLinux || Platform.isWindows || Platform.isMacOS ? scrollController?.appBar.setPinState(true) : scrollController?.appBar.setPinState(false);
-    return ScrollAppBar(
-      materialType: MaterialType.transparency,
+  AppBar appBar(BuildContext context) {
+
+    return AppBar(
+      // materialType: MaterialType.transparency,
       backgroundColor: Colors.transparent,
-      controller: scrollController!,
+      // controller: scrollController!,
       title: Observer(
           builder: (_) => viewModel.isSearchBarOpened
               ? SizedBox(

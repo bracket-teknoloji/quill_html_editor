@@ -5,16 +5,16 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:picker/core/base/helpers/helper.dart';
-import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import 'package:picker/core/components/textfield/custom_label_widget.dart';
 import 'package:picker/core/components/textfield/custom_text_field.dart';
 import 'package:picker/core/constants/extensions/date_time_extensions.dart';
 import 'package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart';
 
+import '../../../../../../core/base/helpers/helper.dart';
 import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart';
 import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
+import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import '../../../../../../core/components/wrap/appbar_title.dart';
 import '../model/stok_hareketleri_model.dart';
 import '../view_model/stok_hareketleri_view_model.dart';
@@ -38,14 +38,16 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(),
       floatingActionButton: fab(),
-      body: body(),
+      body: NestedScrollView(headerSliverBuilder: (context, innerBoxIsScrolled) => [appBar()], body: body()),
     );
   }
 
-  AppBar appBar() {
-    return AppBar(
+  SliverAppBar appBar() {
+    return SliverAppBar(
+      floating: true,
+      snap: true,
+      pinned: true,
       title: Observer(
           builder: (_) => viewModel.searchBar
               ? SizedBox(
@@ -209,133 +211,128 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
         future: viewModel.future,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return RefreshIndicator(
-              onRefresh: () async {
-                viewModel.setStokHareketleri(await getData()!);
-              },
-              child: Observer(builder: (_) {
-                return viewModel.stokHareketleri.isNullOrEmpty
-                    ? const Center(child: Text("Stok Hareket Kaydı Bulunamadı."))
-                    : RefreshIndicator(
-                        onRefresh: () async {
-                          viewModel.setStokHareketleri(await getData()!);
-                        },
-                        child: ListView.builder(
-                          itemCount: viewModel.stokHareketleri?.length ?? 0,
-                          itemBuilder: (context, index) {
-                            StokHareketleriModel model = viewModel.stokHareketleri![index];
-                            List<Widget> children2 = [];
-                            if (model.hareketTuruAciklama == "Devir") {
-                              children2.add(SlidableAction(
-                                onPressed: (context) async {
-                                  dialogManager.showAreYouSureDialog(() async {
-                                    var result = await networkManager.dioPost<StokHareketleriModel>(
-                                        path: ApiUrls.deleteStokHareket,
-                                        bodyModel: StokHareketleriModel(),
-                                        addCKey: true,
-                                        addSirketBilgileri: true,
-                                        queryParameters: {"INCKEYNO": model.inckeyno.toString()});
-                                    if (result.success == true) {
-                                      dialogManager.showSnackBar("Stok Hareket Kaydı Silindi.");
-                                      viewModel.setStokHareketleri(await getData()!);
-                                    } else {
-                                      dialogManager.showSnackBar("Lütfen daha sonra tekrar deneyiniz.\n ${result.exceptionName}");
-                                    }
-                                  });
-                                },
-                                icon: Icons.delete_forever,
-                                backgroundColor: theme.cardColor,
-                                foregroundColor: theme.colorScheme.primary,
-                                label: 'Sil',
-                              ));
-                            }
-                            if (model.hareketTuruAciklama != "Muhtelif") {
-                              children2.add(SlidableAction(
-                                onPressed: (context) async {
-                                  await Get.toNamed("mainPage/stokYeniKayit", arguments: model);
-                                  viewModel.setStokHareketleri(await getData()!);
-                                },
-                                icon: Icons.directions_walk_outlined,
-                                backgroundColor: theme.cardColor,
-                                foregroundColor: theme.colorScheme.primary,
-                                label: 'Hareket\nDetayı',
-                              ));
-                            }
-                            return Slidable(
-                              enabled: children2.isNotNullOrEmpty,
-                              endActionPane: ActionPane(
-                                motion: const ScrollMotion(),
-                                children: children2,
-                              ),
-                              child: GestureDetector(
-                                onTap: () async {
-                                  await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: [
-                                    BottomSheetModel(title: "Belgeyi Göster"),
-                                    BottomSheetModel(title: "Stok İşlemleri"),
-                                  ]);
-                                },
-                                child: Card(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: Wrap(
-                                              children: [
-                                                Text(model.stharTarih.toDateString()),
-                                                model.dovizTipi == 1 ? const Badge(label: Text("Dövizli")) : Container(),
-                                              ],
-                                            ),
+            return Observer(builder: (_) {
+              return viewModel.stokHareketleri.isNullOrEmpty
+                  ? const Center(child: Text("Stok Hareket Kaydı Bulunamadı."))
+                  : RefreshIndicator(
+                      onRefresh: () async {
+                        viewModel.setStokHareketleri(await getData()!);
+                      },
+                      child: ListView.builder(
+                        itemCount: viewModel.stokHareketleri?.length ?? 0,
+                        itemBuilder: (context, index) {
+                          StokHareketleriModel model = viewModel.stokHareketleri![index];
+                          List<Widget> children2 = [];
+                          if (model.hareketTuruAciklama == "Devir") {
+                            children2.add(SlidableAction(
+                              onPressed: (context) async {
+                                dialogManager.showAreYouSureDialog(() async {
+                                  var result = await networkManager.dioPost<StokHareketleriModel>(
+                                      path: ApiUrls.deleteStokHareket,
+                                      bodyModel: StokHareketleriModel(),
+                                      addCKey: true,
+                                      addSirketBilgileri: true,
+                                      queryParameters: {"INCKEYNO": model.inckeyno.toString()});
+                                  if (result.success == true) {
+                                    dialogManager.showSnackBar("Stok Hareket Kaydı Silindi.");
+                                    viewModel.setStokHareketleri(await getData()!);
+                                  } else {
+                                    dialogManager.showSnackBar("Lütfen daha sonra tekrar deneyiniz.\n ${result.exceptionName}");
+                                  }
+                                });
+                              },
+                              icon: Icons.delete_forever,
+                              backgroundColor: theme.cardColor,
+                              foregroundColor: theme.colorScheme.primary,
+                              label: 'Sil',
+                            ));
+                          }
+                          if (model.hareketTuruAciklama != "Muhtelif") {
+                            children2.add(SlidableAction(
+                              onPressed: (context) async {
+                                await Get.toNamed("mainPage/stokYeniKayit", arguments: model);
+                                viewModel.setStokHareketleri(await getData()!);
+                              },
+                              icon: Icons.directions_walk_outlined,
+                              backgroundColor: theme.cardColor,
+                              foregroundColor: theme.colorScheme.primary,
+                              label: 'Hareket\nDetayı',
+                            ));
+                          }
+                          return Slidable(
+                            enabled: children2.isNotNullOrEmpty,
+                            endActionPane: ActionPane(
+                              motion: const ScrollMotion(),
+                              children: children2,
+                            ),
+                            child: GestureDetector(
+                              onTap: () async {
+                                await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: [
+                                  BottomSheetModel(title: "Belgeyi Göster"),
+                                  BottomSheetModel(title: "Stok İşlemleri"),
+                                ]);
+                              },
+                              child: Card(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Wrap(
+                                            children: [
+                                              Text(model.stharTarih.toDateString()),
+                                              model.dovizTipi == 1 ? const Badge(label: Text("Dövizli")) : Container(),
+                                            ],
                                           ),
-                                          Text(model.fisno ?? ""),
-                                          Icon(model.cikisIslemi ?? false ? Icons.chevron_right_outlined : Icons.chevron_left_sharp, color: model.cikisIslemi ?? false ? Colors.red : Colors.green),
-                                        ],
-                                      ),
-                                      Text.rich(
-                                        TextSpan(
-                                          children: [
-                                            TextSpan(
-                                                text: "${model.belgeTipiAciklama ?? model.hareketTuruAciklama}  ", style: TextStyle(color: (model.cikisIslemi ?? false) ? Colors.red : Colors.green)),
-                                            TextSpan(text: "(${model.hareketTuruAciklama})", style: const TextStyle(color: Colors.white30)),
-                                          ],
                                         ),
-                                      ),
-                                      Row(
+                                        Text(model.fisno ?? ""),
+                                        Icon(model.cikisIslemi ?? false ? Icons.chevron_right_outlined : Icons.chevron_left_sharp, color: model.cikisIslemi ?? false ? Colors.red : Colors.green),
+                                      ],
+                                    ),
+                                    Text.rich(
+                                      TextSpan(
                                         children: [
-                                          Expanded(child: Text("Miktar: ${model.stharGcmik?.toInt() ?? 0}")),
-                                          Expanded(child: Text("Depo: ${model.depoKodu ?? ""} (${model.depoAdi ?? ""})")),
+                                          TextSpan(
+                                              text: "${model.belgeTipiAciklama ?? model.hareketTuruAciklama}  ", style: TextStyle(color: (model.cikisIslemi ?? false) ? Colors.red : Colors.green)),
+                                          TextSpan(text: "(${model.hareketTuruAciklama})", style: const TextStyle(color: Colors.white30)),
                                         ],
                                       ),
-                                      Row(
-                                        children: [
-                                          Expanded(child: Text("Plasiyer: ${model.plasiyerAciklama ?? ""}")),
-                                          Expanded(child: Text("KDV %: ${model.stharKdv?.toInt() ?? 0}")),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Expanded(child: Text("Net Fiyat: ${(model.stharNf ?? 0).commaSeparatedWithFixedDigits}")),
-                                          Expanded(child: Text("Brüt Fiyat: ${(model.stharBf ?? 0).commaSeparatedWithFixedDigits}")),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Expanded(child: Text("Net Tutar: ${((model.stharNf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithFixedDigits}")),
-                                          Expanded(child: Text("Brüt Tutar: ${((model.stharBf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithFixedDigits}")),
-                                        ],
-                                      ),
-                                    ],
-                                  ).paddingAll(UIHelper.lowSize),
-                                ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Expanded(child: Text("Miktar: ${model.stharGcmik?.toInt() ?? 0}")),
+                                        Expanded(child: Text("Depo: ${model.depoKodu ?? ""} (${model.depoAdi ?? ""})")),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Expanded(child: Text("Plasiyer: ${model.plasiyerAciklama ?? ""}")),
+                                        Expanded(child: Text("KDV %: ${model.stharKdv?.toInt() ?? 0}")),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Expanded(child: Text("Net Fiyat: ${(model.stharNf ?? 0).commaSeparatedWithFixedDigits}")),
+                                        Expanded(child: Text("Brüt Fiyat: ${(model.stharBf ?? 0).commaSeparatedWithFixedDigits}")),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Expanded(child: Text("Net Tutar: ${((model.stharNf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithFixedDigits}")),
+                                        Expanded(child: Text("Brüt Tutar: ${((model.stharBf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithFixedDigits}")),
+                                      ],
+                                    ),
+                                  ],
+                                ).paddingAll(UIHelper.lowSize),
                               ),
-                            );
-                          },
-                        ).paddingAll(UIHelper.lowSize),
-                      );
-              }),
-            );
+                            ),
+                          );
+                        },
+                      ).paddingAll(UIHelper.lowSize),
+                    );
+            });
           } else {
             return const Center(child: CircularProgressIndicator());
           }

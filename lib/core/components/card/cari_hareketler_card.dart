@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:picker/core/base/helpers/helper.dart';
-import 'package:picker/core/components/textfield/custom_label_widget.dart';
-import 'package:picker/core/constants/extensions/date_time_extensions.dart';
-import 'package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart';
+import '../../base/helpers/helper.dart';
+import '../textfield/custom_label_widget.dart';
+import '../../constants/extensions/date_time_extensions.dart';
+import '../../../view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart';
 
 import '../../base/state/base_state.dart';
 

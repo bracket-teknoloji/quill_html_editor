@@ -29,9 +29,14 @@ extension ListExtension3<T> on List<T>? {
   }
 }
 
-
 extension ListExtension4<T> on List? {
-  List<T> cast(T model){
+  List<T> cast(T model) {
     return this!.map((e) => e).toList().cast<T>();
+  }
+}
+
+extension NotNullExtension<T> on List<T> {
+  List<T> get nullCheck {
+    return where((element) => element != null).toList().cast<T>();
   }
 }

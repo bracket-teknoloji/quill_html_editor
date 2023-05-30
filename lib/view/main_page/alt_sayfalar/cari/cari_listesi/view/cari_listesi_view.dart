@@ -1,7 +1,5 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'dart:io';
-import 'dart:math' hide log;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -9,10 +7,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:kartal/kartal.dart';
-import 'package:picker/core/constants/enum/base_edit_enum.dart';
-import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_secenekler_model.dart';
-import 'package:picker/view/main_page/alt_sayfalar/cari/cari_network_manager.dart';
-import 'package:scroll_app_bar/scroll_app_bar.dart';
 
 import '../../../../../../core/base/model/base_edit_model.dart';
 import '../../../../../../core/base/state/base_state.dart';
@@ -23,11 +17,14 @@ import '../../../../../../core/components/dialog/bottom_sheet/bottom_sheet_dialo
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_response_model.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/view_model/bottom_sheet_state_manager.dart';
+import '../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../core/constants/extensions/number_extensions.dart';
 import '../../../../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../../../../core/init/network/login/api_urls.dart';
 import '../../../../../add_company/model/account_model.dart';
+import '../../cari_network_manager.dart';
 import '../model/cari_listesi_model.dart';
+import '../model/cari_secenekler_model.dart';
 import '../view_model/cari_listesi_view_model.dart';
 
 class CariListesiView extends StatefulWidget {
@@ -152,8 +149,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                     BottomSheetModel(
                                       title: "Sil",
                                       iconWidget: Icons.delete_outline,
-                                      onTap: () async {
-                                        var result = dialogManager.showAreYouSureDialog(() async {
+                                      onTap: () async { dialogManager.showAreYouSureDialog(() async {
                                           var result = await networkManager.dioPost<CariListesiModel>(
                                             path: ApiUrls.deleteCari,
                                             bodyModel: CariListesiModel(),
@@ -251,7 +247,6 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   }
 
   Widget fab() {
-    _scrollController.appBar.setPinState(false);
     return Observer(
         builder: (_) => Visibility(
               visible: !viewModel.isScrolledDown,
@@ -262,23 +257,17 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     String siradakiKod = await CariNetworkManager.getSiradakiKod();
                     Get.toNamed("/mainPage/cariEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, model: CariListesiModel(), siradakiKod: siradakiKod));
                   },
-                  child: ValueListenableBuilder<bool>(
-                    valueListenable: _scrollController.appBar.pinNotifier,
-                    child: const Icon(Icons.add),
-                    builder: (context, value, child) {
-                      if (!value) return child!;
-                      return Transform.rotate(angle: pi / 2, child: child);
-                    },
+                  child: const Icon(Icons.add)
                   ),
                 ),
               ),
-            ));
+            );
   }
 
-  ScrollAppBar appBar(BuildContext context) {
-    Platform.isLinux || Platform.isWindows || Platform.isMacOS ? _scrollController.appBar.setPinState(true) : _scrollController.appBar.setPinState(false);
-    return ScrollAppBar(
-      controller: _scrollController,
+  AppBar appBar(BuildContext context) {
+    // Platform.isLinux || Platform.isWindows || Platform.isMacOS ? _scrollController.appBar.setPinState(true) : _scrollController.appBar.setPinState(false);
+    return AppBar(
+      // controller: _scrollController,
       title: Observer(
         builder: (_) {
           return (viewModel.searchBar

@@ -61,10 +61,10 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
                     ],
                   ),
                 ),
-                Wrap(
+                 const Wrap(
                   direction: Axis.horizontal,
                   crossAxisAlignment: WrapCrossAlignment.center,
-                  children: const [
+                  children: [
                     Icon(Icons.question_mark_rounded),
                     Text(
                       "Bilgileri girerken büyük-küçük uyumuna dikkat ediniz.",

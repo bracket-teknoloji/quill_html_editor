@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:picker/core/base/model/base_network_mixin.dart';
+
+import 'base_network_mixin.dart';
 
 part 'base_proje_model.g.dart';
 

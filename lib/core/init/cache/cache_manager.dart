@@ -4,7 +4,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../../view/add_company/model/account_model.dart';
 import '../../../view/add_company/model/account_response_model.dart';
 import '../../../view/auth/model/isletme_model.dart';
-import '../../base/model/base_grup_kodu_model.dart';
 import '../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_sehirler_model.dart';
 import '../../../view/main_page/model/main_page_model.dart';
 import '../../../view/main_page/model/sirket_model.dart';
@@ -25,7 +24,7 @@ class CacheManager {
   static late Box _hesapBilgileriBox;
   static late Box _cariSehirBox;
   static late Box _subeListesiBox;
-  static late Box _grupKoduListesiBox;
+  // static late Box _grupKoduListesiBox;
   //Lazy Singleton
   static final CacheManager _instance = CacheManager._init();
   static CacheManager get instance => _instance;

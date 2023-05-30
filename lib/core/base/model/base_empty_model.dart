@@ -1,4 +1,4 @@
-import 'package:picker/core/base/model/base_network_mixin.dart';
+import 'base_network_mixin.dart';
 
 class BaseEmptyModel with NetworkManagerMixin {
   @override
