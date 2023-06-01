@@ -2,6 +2,7 @@
 
 
 import 'package:json_annotation/json_annotation.dart';
+
 import '../../../../../../../../core/base/model/base_network_mixin.dart';
 
 part 'ulke_model.g.dart';

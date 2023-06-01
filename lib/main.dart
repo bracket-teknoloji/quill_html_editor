@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/base_cari_edit/view/base_cari_edit_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_hareket_yeni_kayit/view/cari_hareket_yeni_kayit_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/view/base_stok_edit_view.dart";
+import "view/main_page/alt_sayfalar/cari/base_cari_edit/view/base_cari_edit_view.dart";
+import "view/main_page/alt_sayfalar/cari/cari_hareket_yeni_kayit/view/cari_hareket_yeni_kayit_view.dart";
+import "view/main_page/alt_sayfalar/stok/base_stok_edit/view/base_stok_edit_view.dart";
 
 import "core/init/cache/cache_manager.dart";
 import "core/init/theme/app_theme_dark.dart";

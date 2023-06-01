@@ -5,10 +5,10 @@ import 'package:mobx/mobx.dart';
 import '../../../../../../core/base/helpers/helper.dart';
 import '../../../../../../core/base/model/generic_response_model.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import 'package:picker/core/components/textfield/custom_text_field.dart';
-import 'package:picker/core/constants/extensions/date_time_extensions.dart';
-import 'package:picker/view/main_page/alt_sayfalar/stok/stok_yeni_kayit/model/stok_yeni_kayit_model.dart';
-import 'package:picker/view/main_page/model/param_model.dart';
+import '../../../../../../core/components/textfield/custom_text_field.dart';
+import '../../../../../../core/constants/extensions/date_time_extensions.dart';
+import '../model/stok_yeni_kayit_model.dart';
+import '../../../../model/param_model.dart';
 
 import '../../../../../../core/base/model/base_proje_model.dart';
 import '../../../../../../core/base/state/base_state.dart';

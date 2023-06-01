@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
-import 'package:picker/core/constants/extensions/model_extensions.dart';
 import 'package:picker/core/constants/extensions/widget_extensions.dart';
 
 import '../../../../../../core/base/helpers/helper.dart';
@@ -20,6 +19,7 @@ import '../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../core/constants/enum/grup_kodu_enums.dart';
 import '../../../../../../core/constants/extensions/list_extensions.dart';
+import '../../../../../../core/constants/extensions/model_extensions.dart';
 import '../../../cari/cari_network_manager.dart';
 import '../model/stok_bottom_sheet_model.dart';
 import '../model/stok_listesi_model.dart';

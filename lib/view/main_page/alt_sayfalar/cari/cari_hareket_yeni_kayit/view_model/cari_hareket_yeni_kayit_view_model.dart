@@ -2,7 +2,6 @@ import 'package:mobx/mobx.dart';
 
 import '../model/cari_yeni_kayit_model.dart';
 
-
 part 'cari_hareket_yeni_kayit_view_model.g.dart';
 
 class CariYeniKayitViewModel = _CariYeniKayitViewModelBase with _$CariYeniKayitViewModel;

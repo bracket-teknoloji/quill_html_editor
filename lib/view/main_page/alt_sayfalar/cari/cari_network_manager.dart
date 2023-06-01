@@ -1,11 +1,10 @@
-import 'cari_listesi/model/cari_kosullar_model.dart';
-
+import '../../../../core/base/model/base_edit_siradaki_kod_model.dart';
+import '../../../../core/base/model/base_grup_kodu_model.dart';
 import '../../../../core/base/model/base_network_mixin.dart';
 import '../../../../core/base/model/generic_response_model.dart';
-import '../../../../core/base/model/base_edit_siradaki_kod_model.dart';
 import '../../../../core/init/network/login/api_urls.dart';
 import '../../../../core/init/network/network_manager.dart';
-import '../../../../core/base/model/base_grup_kodu_model.dart';
+import 'cari_listesi/model/cari_kosullar_model.dart';
 import 'cari_listesi/model/cari_sehirler_model.dart';
 
 class CariNetworkManager {
