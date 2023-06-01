@@ -5,7 +5,6 @@
 import FlutterMacOS
 import Foundation
 
-import app_install_date
 import connectivity_plus
 import device_info_plus
 import flutter_native_timezone
@@ -16,7 +15,6 @@ import share_plus
 import url_launcher_macos
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
-  AppInstallDatePlugin.register(with: registry.registrar(forPlugin: "AppInstallDatePlugin"))
   ConnectivityPlugin.register(with: registry.registrar(forPlugin: "ConnectivityPlugin"))
   DeviceInfoPlusMacosPlugin.register(with: registry.registrar(forPlugin: "DeviceInfoPlusMacosPlugin"))
   FlutterNativeTimezonePlugin.register(with: registry.registrar(forPlugin: "FlutterNativeTimezonePlugin"))

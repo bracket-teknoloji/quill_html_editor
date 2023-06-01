@@ -216,6 +216,7 @@ class AccountModel with NetworkManagerMixin {
       cihazModeli = iosInfo.model;
       cihazSistemVersiyonu = iosInfo.systemVersion;
       ozelCihazKimligi = iosInfo.identifierForVendor;
+      cihazKimligi = iosInfo.identifierForVendor;
     }
     //!DESKTOP
     else if (Platform.isWindows) {

@@ -73,10 +73,8 @@ dependencies:
   qr_code_scanner: ^1.0.1
   qr_flutter: ^4.0.0
   permission_handler: ^10.2.0
-  app_install_date: ^0.1.2
   timezone: ^0.9.1
   flutter_native_timezone: ^2.0.0
-  carrier_info: ^2.0.8
   crypto: ^3.0.2
   connectivity_plus: ^4.0.1
   intl: ^0.18.1
