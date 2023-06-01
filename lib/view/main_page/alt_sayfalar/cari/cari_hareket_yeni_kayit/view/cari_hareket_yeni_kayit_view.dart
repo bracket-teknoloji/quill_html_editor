@@ -26,7 +26,8 @@ class CariYeniKayitView extends StatefulWidget {
 
 class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
   CariYeniKayitViewModel viewModel = CariYeniKayitViewModel();
-  CariHareketleriModel? get model => widget.model?.model ?? CariHareketleriModel();
+  CariHareketleriModel? get model =>
+      widget.model?.model ?? CariHareketleriModel();
   bool get enable => widget.model?.baseEditEnum != BaseEditEnum.goruntule;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController? cariKoduController;
@@ -43,17 +44,21 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
   @override
   void initState() {
     viewModel.model = CariYeniKayitModel().fromJson(model?.toJson() ?? {});
-    viewModel.model.yeniKayit = widget.model == CariHareketleriModel() ? true : null;
+    viewModel.model.yeniKayit =
+        widget.model == CariHareketleriModel() ? true : null;
     viewModel.model.inckeyno = model?.inckeyno;
     viewModel.model.tarih ??= DateTime.now();
     viewModel.model.vadeTarihi ??= DateTime.now();
     cariKoduController = TextEditingController(text: model?.cariAdi);
-    tarihController = TextEditingController(text: viewModel.model.tarih?.toDateString());
+    tarihController =
+        TextEditingController(text: viewModel.model.tarih?.toDateString());
     hareketTuruController = TextEditingController(text: model?.hareketAciklama);
     belgeNoController = TextEditingController(text: model?.belgeNo);
     aciklamaController = TextEditingController(text: model?.aciklama);
-    vadeTarihiController = TextEditingController(text: viewModel.model.vadeTarihi?.toDateString());
-    tutarController = TextEditingController(text: model?.borc.toStringIfNull ?? model?.alacak.toStringIfNull ?? "");
+    vadeTarihiController =
+        TextEditingController(text: viewModel.model.vadeTarihi?.toDateString());
+    tutarController = TextEditingController(
+        text: model?.borc.toStringIfNull ?? model?.alacak.toStringIfNull ?? "");
     plasiyerController = TextEditingController(text: model?.plasiyerAciklama);
     projeController = TextEditingController(text: model?.projeAciklama);
     if (widget.model?.baseEditEnum != BaseEditEnum.ekle) {
@@ -87,7 +92,8 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
 
   AppBar appBar() {
     return AppBar(
-      title: AppBarTitle(title: "Cari Hareket", subtitle: widget.model!.baseEditEnum!.name),
+      title: AppBarTitle(
+          title: "Cari Hareket", subtitle: widget.model!.baseEditEnum!.name),
       actions: [
         Visibility(
           visible: enable,
@@ -113,12 +119,25 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
             Observer(
               builder: (_) => ToggleButtons(
                 isSelected: viewModel.isSelected,
-                constraints: BoxConstraints(minWidth: width / 2.1, minHeight: 50),
-                children: viewModel.toggleButtonLabelList.map((e) => Text(e)).toList(),
-                onPressed: (index) => viewModel.setIsSelected(index),
+                constraints:
+                    BoxConstraints(minWidth: width / 2.1, minHeight: 50),
+                children: viewModel.toggleButtonLabelList
+                    .map((e) => Text(e))
+                    .toList(),
+                onPressed: (index) =>
+                    widget.model?.baseEditEnum == BaseEditEnum.goruntule
+                        ? null
+                        : viewModel.setIsSelected(index),
               ),
             ).paddingSymmetric(vertical: UIHelper.lowSize),
-            CustomTextField(enabled: enable, labelText: "Cari", valueText: viewModel.model.cariKodu, readOnly: true, isMust: true, validator: validator, controller: cariKoduController),
+            CustomTextField(
+                enabled: enable,
+                labelText: "Cari",
+                valueText: viewModel.model.cariKodu,
+                readOnly: true,
+                isMust: true,
+                validator: validator,
+                controller: cariKoduController),
             CustomTextField(
                 enabled: enable,
                 labelText: "Tarih",
@@ -151,9 +170,16 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                 controller: hareketTuruController,
                 suffix: const Icon(Icons.more_horiz_outlined),
                 onTap: () async {
-                  Map? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Hareket Türü", children: [
-                    BottomSheetModel(title: "Devir", description: "A", onTap: () => Get.back(result: {"title": "Devir", "value": "A"}))
-                  ]);
+                  Map? result = await bottomSheetDialogManager
+                      .showBottomSheetDialog(context,
+                          title: "Hareket Türü",
+                          children: [
+                        BottomSheetModel(
+                            title: "Devir",
+                            description: "A",
+                            onTap: () => Get.back(
+                                result: {"title": "Devir", "value": "A"}))
+                      ]);
                   if (result != null) {
                     hareketTuruController?.text = result["title"];
                     viewModel.setModelHareketKodu(result["value"]);
@@ -161,8 +187,16 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                 },
               );
             }),
-            CustomTextField(enabled: enable, labelText: "Belge No", controller: belgeNoController, onChanged: (value) => viewModel.model.belgeNo = value),
-            CustomTextField(enabled: enable, labelText: "Açıklama", controller: aciklamaController, onChanged: (value) => viewModel.model.aciklama = value),
+            CustomTextField(
+                enabled: enable,
+                labelText: "Belge No",
+                controller: belgeNoController,
+                onChanged: (value) => viewModel.model.belgeNo = value),
+            CustomTextField(
+                enabled: enable,
+                labelText: "Açıklama",
+                controller: aciklamaController,
+                onChanged: (value) => viewModel.model.aciklama = value),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -179,7 +213,8 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                     onTap: () {
                       showDatePicker(
                         context: context,
-                        initialDate: viewModel.model.vadeTarihi ?? DateTime.now(),
+                        initialDate:
+                            viewModel.model.vadeTarihi ?? DateTime.now(),
                         firstDate: DateTime(2000),
                         lastDate: DateTime(2100),
                       ).then((value) {
@@ -198,7 +233,9 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                       isMust: true,
                       validator: validator,
                       controller: tutarController,
-                      onChanged: (value) => viewModel.model.borc == null ? viewModel.model.alacak = double.tryParse(value) : viewModel.model.borc = double.tryParse(value)),
+                      onChanged: (value) => viewModel.model.borc == null
+                          ? viewModel.model.alacak = double.tryParse(value)
+                          : viewModel.model.borc = double.tryParse(value)),
                 ),
               ],
             ),
@@ -215,12 +252,18 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                     validator: validator,
                     controller: plasiyerController,
                     onTap: () async {
-                      var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                          title: "Plasiyer",
-                          children: mainPageModel?.paramModel?.plasiyerList
-                              ?.map((e) =>
-                                  BottomSheetModel(title: e.plasiyerAciklama ?? "", description: e.plasiyerKodu, onTap: () => Get.back(result: {"title": e.plasiyerAciklama, "value": e.plasiyerKodu})))
-                              .toList());
+                      var result = await bottomSheetDialogManager
+                          .showBottomSheetDialog(context,
+                              title: "Plasiyer",
+                              children: mainPageModel?.paramModel?.plasiyerList
+                                  ?.map((e) => BottomSheetModel(
+                                      title: e.plasiyerAciklama ?? "",
+                                      description: e.plasiyerKodu,
+                                      onTap: () => Get.back(result: {
+                                            "title": e.plasiyerAciklama,
+                                            "value": e.plasiyerKodu
+                                          })))
+                                  .toList());
                       if (result != null) {
                         plasiyerController?.text = result["title"];
                         viewModel.model.plasiyerKodu = result["value"];
@@ -229,7 +272,12 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                   ),
                 ),
                 Expanded(
-                  child: CustomTextField(enabled: enable, labelText: "Proje", isMust: true, validator: validator, controller: projeController),
+                  child: CustomTextField(
+                      enabled: enable,
+                      labelText: "Proje",
+                      isMust: true,
+                      validator: validator,
+                      controller: projeController),
                 ),
               ],
             ),
@@ -240,8 +288,12 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
   }
 
   void postData() async {
-    var result =
-        await networkManager.dioPost<CariHareketleriModel>(path: ApiUrls.saveCariHareket, bodyModel: CariHareketleriModel(), data: viewModel.model.toJson(), addCKey: true, addSirketBilgileri: true);
+    var result = await networkManager.dioPost<CariHareketleriModel>(
+        path: ApiUrls.saveCariHareket,
+        bodyModel: CariHareketleriModel(),
+        data: viewModel.model.toJson(),
+        addCKey: true,
+        addSirketBilgileri: true);
     if (result.success ?? false) {
       dialogManager.showSnackBar(result.message ?? "Kayıt Başarılı");
       Get.back();
