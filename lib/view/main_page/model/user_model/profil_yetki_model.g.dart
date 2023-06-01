@@ -1,7 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: implicit_dynamic_parameter
-
 part of 'profil_yetki_model.dart';
 
 // **************************************************************************
@@ -2147,7 +2145,7 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) =>
       'sevkemri_MalKontrol': instance.sevkemriMalKontrol,
       'sevkemri_MalKontrol_KlavyeEngelle':
           instance.sevkemriMalKontrolKlavyeEngelle,
-      'sevkemri_MalKontrolTipi': instance.sevkemriMalKontrolTipi?.toJson(),
+      'sevkemri_MalKontrolTipi': instance.sevkemriMalKontrolTipi,
       'sevkemri_MalKontrolKullanicilar':
           instance.sevkemriMalKontrolKullanicilar,
       'sevkemri_Paketleme': instance.sevkemriPaketleme,

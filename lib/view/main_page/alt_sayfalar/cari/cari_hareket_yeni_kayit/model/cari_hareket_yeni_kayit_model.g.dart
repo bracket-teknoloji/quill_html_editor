@@ -1,15 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: implicit_dynamic_parameter
-
-part of 'cari_yeni_kayit_model.dart';
+part of 'cari_hareket_yeni_kayit_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-CariYeniKayitModel _$CariYeniKayitModelFromJson(Map<String, dynamic> json) =>
-    CariYeniKayitModel()
+CariHareketYeniKayitModel _$CariHareketYeniKayitModelFromJson(
+        Map<String, dynamic> json) =>
+    CariHareketYeniKayitModel()
       ..aciklama = json['ACIKLAMA'] as String?
       ..alacak = (json['ALACAK'] as num?)?.toDouble()
       ..borc = (json['BORC'] as num?)?.toDouble()
@@ -26,7 +25,8 @@ CariYeniKayitModel _$CariYeniKayitModelFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['VADE_TARIHI'] as String)
       ..yeniKayit = json['_YeniKayit'] as bool?;
 
-Map<String, dynamic> _$CariYeniKayitModelToJson(CariYeniKayitModel instance) {
+Map<String, dynamic> _$CariHareketYeniKayitModelToJson(
+    CariHareketYeniKayitModel instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

@@ -94,24 +94,19 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   void dispose() {
     super.dispose();
     _scrollController.dispose();
+    BottomSheetResponseModel.instance.clear();
   }
 
   @override
   Widget build(BuildContext context) {
     log(paramData.toString());
     return Observer(builder: (_) {
-      return WillPopScope(
-        onWillPop: () async {
-          BottomSheetResponseModel.instance.clear();
-          return true;
-        },
-        child: Scaffold(
-          resizeToAvoidBottomInset: true,
-          floatingActionButton: fab(),
-          bottomNavigationBar: bottomButtonBar(),
-          appBar: appBar(context),
-          body: body(),
-        ),
+      return Scaffold(
+        resizeToAvoidBottomInset: true,
+        floatingActionButton: fab(),
+        bottomNavigationBar: bottomButtonBar(),
+        appBar: appBar(context),
+        body: body(),
       );
     });
   }

@@ -1,7 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: implicit_dynamic_parameter
-
 part of 'main_page_model.dart';
 
 // **************************************************************************
@@ -75,11 +73,11 @@ MainPageModel _$MainPageModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$MainPageModelToJson(MainPageModel instance) =>
     <String, dynamic>{
-      'UserModel': instance.userModel?.toJson(),
+      'UserModel': instance.userModel,
       'ServiceVersion': instance.serviceVersion,
       'LangVersion': instance.langVersion,
-      'SirketModel': instance.sirketModel?.toJson(),
-      'LangModel': instance.langModel?.toJson(),
+      'SirketModel': instance.sirketModel,
+      'LangModel': instance.langModel,
       'MenuList': instance.menuList,
-      'ParamModel': instance.paramModel?.toJson(),
+      'ParamModel': instance.paramModel,
     };

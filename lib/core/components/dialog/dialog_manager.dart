@@ -282,6 +282,7 @@ class DialogManager {
         customHeader: customHeader,
         alignment: Alignment.center,
         reverseBtnOrder: false,
+        
         barrierColor: Colors.black.withOpacity(0.9),
         dialogBorderRadius: UIHelper.lowBorderRadius,
         useRootNavigator: false,

@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
+
 import '../../../../../../core/base/helpers/helper.dart';
+import '../../../../../../core/base/model/base_edit_model.dart';
+import '../../../../../../core/base/model/base_proje_model.dart';
+import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import '../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../core/components/wrap/appbar_title.dart';
-import 'package:picker/core/constants/extensions/date_time_extensions.dart';
-import 'package:picker/core/init/cache/cache_manager.dart';
-import 'package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart';
-import 'package:picker/view/main_page/model/main_page_model.dart';
-
-import '../../../../../../core/base/model/base_edit_model.dart';
-import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
-import '../model/cari_yeni_kayit_model.dart';
+import '../../../../../../core/constants/extensions/date_time_extensions.dart';
+import '../../../../../../core/init/cache/cache_manager.dart';
+import '../../../../model/main_page_model.dart';
+import '../../cari_hareketleri/model/cari_hareketleri_model.dart';
+import '../model/cari_hareket_yeni_kayit_model.dart';
 import '../view_model/cari_hareket_yeni_kayit_view_model.dart';
 
 class CariYeniKayitView extends StatefulWidget {
@@ -25,7 +26,7 @@ class CariYeniKayitView extends StatefulWidget {
 }
 
 class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
-  CariYeniKayitViewModel viewModel = CariYeniKayitViewModel();
+  CariHareketYeniKayitViewModel viewModel = CariHareketYeniKayitViewModel();
   CariHareketleriModel? get model => widget.model?.model ?? CariHareketleriModel();
   bool get enable => widget.model?.baseEditEnum != BaseEditEnum.goruntule;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -42,7 +43,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
 
   @override
   void initState() {
-    viewModel.model = CariYeniKayitModel().fromJson(model?.toJson() ?? {});
+    viewModel.model = CariHareketYeniKayitModel().fromJson(model?.toJson() ?? {});
     viewModel.model.yeniKayit = widget.model == CariHareketleriModel() ? true : null;
     viewModel.model.inckeyno = model?.inckeyno;
     viewModel.model.tarih ??= DateTime.now();
@@ -115,7 +116,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                 isSelected: viewModel.isSelected,
                 constraints: BoxConstraints(minWidth: width / 2.1, minHeight: 50),
                 children: viewModel.toggleButtonLabelList.map((e) => Text(e)).toList(),
-                onPressed:(index) => widget.model?.baseEditEnum ==  BaseEditEnum.goruntule ? null : viewModel.setIsSelected(index),
+                onPressed: (index) => widget.model?.baseEditEnum == BaseEditEnum.goruntule ? null : viewModel.setIsSelected(index),
               ),
             ).paddingSymmetric(vertical: UIHelper.lowSize),
             CustomTextField(enabled: enable, labelText: "Cari", valueText: viewModel.model.cariKodu, readOnly: true, isMust: true, validator: validator, controller: cariKoduController),
@@ -229,7 +230,30 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                   ),
                 ),
                 Expanded(
-                  child: CustomTextField(enabled: enable, labelText: "Proje", isMust: true, validator: validator, controller: projeController),
+                  child: CustomTextField(
+                    enabled: enable,
+                    labelText: "Proje",
+                    readOnly: true,
+                    isMust: true,
+                    validator: validator,
+                    controller: projeController,
+                    suffix: const Icon(Icons.more_horiz_outlined),
+                    onTap: () async {
+                      if (viewModel.projeList.isEmpty) {
+                        viewModel.setProjeList(await getProjeData());
+                      }
+                      // ignore: use_build_context_synchronously
+                      var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                          title: "Projeler",
+                          children: viewModel.projeList
+                              .map((e) => BottomSheetModel(title: e.projeAciklama ?? "", description: e.projeKodu, onTap: () => Get.back(result: {"title": e.projeAciklama, "value": e.projeKodu})))
+                              .toList());
+                      if (result != null) {
+                        projeController?.text = result["title"];
+                        viewModel.model.projeKodu = result["value"];
+                      }
+                    },
+                  ),
                 ),
               ],
             ),
@@ -244,7 +268,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
         await networkManager.dioPost<CariHareketleriModel>(path: ApiUrls.saveCariHareket, bodyModel: CariHareketleriModel(), data: viewModel.model.toJson(), addCKey: true, addSirketBilgileri: true);
     if (result.success ?? false) {
       dialogManager.showSnackBar(result.message ?? "Kayıt Başarılı");
-      Get.back();
+      Get.back(result: false);
     } else {
       dialogManager.showSnackBar(result.message ?? "Kayıt Başarısız");
     }
@@ -253,6 +277,17 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
   String? validator(p0) {
     if (p0 == null || p0.isEmpty) {
       return "Bu alan boş bırakılamaz";
+    }
+    return null;
+  }
+
+  Future<List<BaseProjeModel>?> getProjeData() async {
+    dialogManager.showLoadingDialog("Proje Listesi Getiriliyor...");
+    var result = await networkManager.dioGet<BaseProjeModel>(path: ApiUrls.getProjeler, bodyModel: BaseProjeModel(), addCKey: true, addSirketBilgileri: true);
+
+    dialogManager.hideAlertDialog;
+    if (result.success ?? false) {
+      return result.data.map((e) => e as BaseProjeModel).toList().cast<BaseProjeModel>();
     }
     return null;
   }

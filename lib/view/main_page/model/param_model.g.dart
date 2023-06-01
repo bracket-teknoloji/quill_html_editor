@@ -1,7 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: implicit_dynamic_parameter
-
 part of 'param_model.dart';
 
 // **************************************************************************
@@ -317,51 +315,37 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) {
   writeNotNull('KULLANICI', instance.kullanici);
   writeNotNull('SIRKET', instance.sirket);
   writeNotNull('ISLETME_KODU', instance.isletmeKodu);
-  writeNotNull('MapCariKullSahalar', instance.mapCariKullSahalar?.toJson());
-  writeNotNull('MapCariEkAlanlar',
-      instance.mapCariEkAlanlar?.map((e) => e.toJson()).toList());
+  writeNotNull('MapCariKullSahalar', instance.mapCariKullSahalar);
+  writeNotNull('MapCariEkAlanlar', instance.mapCariEkAlanlar);
   writeNotNull('sabitSayfalamaOgeSayisi', instance.sabitSayfalamaOgeSayisi);
-  writeNotNull('_NetsisOndalikResponseModel',
-      instance.netsisOndalikResponseModel?.map((e) => e.toJson()).toList());
-  writeNotNull('DepoList', instance.depoList?.map((e) => e.toJson()).toList());
   writeNotNull(
-      'DovizList', instance.dovizList?.map((e) => e.toJson()).toList());
-  writeNotNull('SatirAcikBaslikList',
-      instance.satirAcikBaslikList?.map((e) => e.toJson()).toList());
-  writeNotNull('KasaList', instance.kasaList?.map((e) => e.toJson()).toList());
+      '_NetsisOndalikResponseModel', instance.netsisOndalikResponseModel);
+  writeNotNull('DepoList', instance.depoList);
+  writeNotNull('DovizList', instance.dovizList);
+  writeNotNull('SatirAcikBaslikList', instance.satirAcikBaslikList);
+  writeNotNull('KasaList', instance.kasaList);
+  writeNotNull('PlasiyerList', instance.plasiyerList);
+  writeNotNull('PlasiyerListTumu', instance.plasiyerListTumu);
+  writeNotNull('SubeList', instance.subeList);
+  writeNotNull('TalTekParam', instance.talTekParam);
+  writeNotNull('CekSenParam', instance.cekSenParam);
+  writeNotNull('ListOzelKodTum', instance.listOzelKodTum);
+  writeNotNull('ListIskTip', instance.listIskTip);
+  writeNotNull('ListCariOdemeKodu', instance.listCariOdemeKodu);
+  writeNotNull('YaziciList', instance.yaziciList);
+  writeNotNull('NetFectDizaynList', instance.netFectDizaynList);
+  writeNotNull('MapStokGrupAdlari', instance.mapStokGrupAdlari);
+  writeNotNull('MustahsilParam', instance.mustahsilParam);
+  writeNotNull('ListFatuEkMaliyet', instance.listFatuEkMaliyet);
   writeNotNull(
-      'PlasiyerList', instance.plasiyerList?.map((e) => e.toJson()).toList());
-  writeNotNull('PlasiyerListTumu',
-      instance.plasiyerListTumu?.map((e) => e.toJson()).toList());
-  writeNotNull('SubeList', instance.subeList?.map((e) => e.toJson()).toList());
-  writeNotNull(
-      'TalTekParam', instance.talTekParam?.map((e) => e.toJson()).toList());
-  writeNotNull(
-      'CekSenParam', instance.cekSenParam?.map((e) => e.toJson()).toList());
-  writeNotNull('ListOzelKodTum',
-      instance.listOzelKodTum?.map((e) => e.toJson()).toList());
-  writeNotNull(
-      'ListIskTip', instance.listIskTip?.map((e) => e.toJson()).toList());
-  writeNotNull('ListCariOdemeKodu',
-      instance.listCariOdemeKodu?.map((e) => e.toJson()).toList());
-  writeNotNull(
-      'YaziciList', instance.yaziciList?.map((e) => e.toJson()).toList());
-  writeNotNull('NetFectDizaynList',
-      instance.netFectDizaynList?.map((e) => e.toJson()).toList());
-  writeNotNull('MapStokGrupAdlari', instance.mapStokGrupAdlari?.toJson());
-  writeNotNull('MustahsilParam', instance.mustahsilParam?.toJson());
-  writeNotNull('ListFatuEkMaliyet',
-      instance.listFatuEkMaliyet?.map((e) => e.toJson()).toList());
-  writeNotNull('MapKdvSifirBelgeTipiOzelKod2',
-      instance.mapKdvSifirBelgeTipiOzelKod2?.toJson());
+      'MapKdvSifirBelgeTipiOzelKod2', instance.mapKdvSifirBelgeTipiOzelKod2);
   writeNotNull('LokalDepoUygulamasiAcik', instance.lokalDepoUygulamasiAcik);
   writeNotNull('EsnekYapilandir', instance.esnekYapilandir);
   writeNotNull('OzelFiyatSistemi', instance.ozelFiyatSistemi);
   writeNotNull('SadeceOzelFiyatSistemi', instance.sadeceOzelFiyatSistemi);
   writeNotNull('OtvliStoklarVar', instance.otvliStoklarVar);
-  writeNotNull('MapStokKullSahalar', instance.mapStokKullSahalar?.toJson());
-  writeNotNull('MapStokEkAlanlar',
-      instance.mapStokEkAlanlar?.map((e) => e.toJson()).toList());
+  writeNotNull('MapStokKullSahalar', instance.mapStokKullSahalar);
+  writeNotNull('MapStokEkAlanlar', instance.mapStokEkAlanlar);
   writeNotNull('KarmaKoliUyg', instance.karmaKoliUyg);
   writeNotNull('AlisEkAciklamalarAktif', instance.alisEkAciklamalarAktif);
   writeNotNull('AlisEkAciklamaTanimi1', instance.alisEkAciklamaTanimi1);
@@ -522,8 +506,7 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) {
   writeNotNull('KKNoZorunluDegil', instance.kkNoZorunluDegil);
   writeNotNull('FifoLifoYontem', instance.fifoLifoYontem);
   writeNotNull('CariAktiviteUygulamasi', instance.cariAktiviteUygulamasi);
-  writeNotNull('CariAktiviteTipleri',
-      instance.cariAktiviteTipleri?.map((e) => e.toJson()).toList());
+  writeNotNull('CariAktiviteTipleri', instance.cariAktiviteTipleri);
   writeNotNull('CariAktiviteEkAlanlar', instance.cariAktiviteEkAlanlar);
   writeNotNull(
       'SatisCariDovizTipiniKullan', instance.satisCariDovizTipiniKullan);
@@ -549,8 +532,7 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) {
   writeNotNull(
       'Stok_KanbanBarkodEslemeUyg', instance.stokKanbanBarkodEslemeUyg);
   writeNotNull('Stok_SeriParcalamaUyg', instance.stokSeriParcalamaUyg);
-  writeNotNull('Stok_DetayliAramaAlanlar',
-      instance.stokDetayliAramaAlanlar?.map((e) => e.toJson()).toList());
+  writeNotNull('Stok_DetayliAramaAlanlar', instance.stokDetayliAramaAlanlar);
   writeNotNull('Genel_KonumTakibiYapilsin', instance.genelKonumTakibiYapilsin);
   writeNotNull('Genel_KonumTakibiDakika', instance.genelKonumTakibiDakika);
   writeNotNull('Genel_KonumTakibiMetre', instance.genelKonumTakibiMetre);
@@ -801,8 +783,8 @@ Map<String, dynamic> _$ListOzelKodTumToJson(ListOzelKodTum instance) {
 
 MapEkAlanlar _$MapEkAlanlarFromJson(Map<String, dynamic> json) => MapEkAlanlar()
   ..caption = json['caption'] as String?
-  ..fieldName = json['field_name'] as String?
-  ..veriTipi = json['veri_tipi'] as String?;
+  ..fieldName = json['fieldName'] as String?
+  ..veriTipi = json['veriTipi'] as String?;
 
 Map<String, dynamic> _$MapEkAlanlarToJson(MapEkAlanlar instance) {
   final val = <String, dynamic>{};
@@ -814,8 +796,8 @@ Map<String, dynamic> _$MapEkAlanlarToJson(MapEkAlanlar instance) {
   }
 
   writeNotNull('caption', instance.caption);
-  writeNotNull('field_name', instance.fieldName);
-  writeNotNull('veri_tipi', instance.veriTipi);
+  writeNotNull('fieldName', instance.fieldName);
+  writeNotNull('veriTipi', instance.veriTipi);
   return val;
 }
 
@@ -1317,8 +1299,8 @@ Map<String, dynamic> _$TalTekParamToJson(TalTekParam instance) {
 }
 
 YaziciList _$YaziciListFromJson(Map<String, dynamic> json) => YaziciList()
-  ..yaziciAdi = json['yazici_adi'] as String?
-  ..yaziciTipi = json['yazici_tipi'] as String?
+  ..yaziciAdi = json['yaziciAdi'] as String?
+  ..yaziciTipi = json['yaziciTipi'] as String?
   ..aciklama = json['aciklama'] as String?;
 
 Map<String, dynamic> _$YaziciListToJson(YaziciList instance) {
@@ -1330,8 +1312,8 @@ Map<String, dynamic> _$YaziciListToJson(YaziciList instance) {
     }
   }
 
-  writeNotNull('yazici_adi', instance.yaziciAdi);
-  writeNotNull('yazici_tipi', instance.yaziciTipi);
+  writeNotNull('yaziciAdi', instance.yaziciAdi);
+  writeNotNull('yaziciTipi', instance.yaziciTipi);
   writeNotNull('aciklama', instance.aciklama);
   return val;
 }

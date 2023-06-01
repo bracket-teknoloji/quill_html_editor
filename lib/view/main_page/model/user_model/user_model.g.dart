@@ -1,7 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: implicit_dynamic_parameter
-
 part of 'user_model.dart';
 
 // **************************************************************************
@@ -131,13 +129,13 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'ERP_PAROLA': instance.erpParola,
       'PROFIL_KODU': instance.profilKodu,
       'PROFIL_ADI': instance.profilAdi,
-      'PROFIL_YETKI': instance.profilYetki?.toJson(),
+      'PROFIL_YETKI': instance.profilYetki,
       'KULLANICI_YETKI': instance.kullaniciYetki,
       'PICKER_YETKILI': instance.pickerYetkili,
       'YETKILI_SUBE_JSON': instance.yetkiliSubelerJson,
       'KONUM_ENLEM': instance.konumEnlem,
       'KONUM_BOYLAM': instance.konumBoylam,
-      'LANG_MODEL': instance.langModel?.toJson(),
+      'LANG_MODEL': instance.langModel,
       'AD_SOYAD': instance.adSoyad,
       'ADMIN': instance.admin,
       'ADMIN_MI': instance.adminMi,

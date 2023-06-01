@@ -1,7 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: implicit_dynamic_parameter
-
 part of 'cari_detay_model.dart';
 
 // **************************************************************************
@@ -89,13 +87,10 @@ Map<String, dynamic> _$CariDetayModelToJson(CariDetayModel instance) {
   writeNotNull('IRSALIYE_RISK_O', instance.irsaliyeRiskO);
   writeNotNull('RISK_LIMITI', instance.riskLimiti);
   writeNotNull('TEMINAT_TUTARI', instance.teminatTutari);
-  writeNotNull(
-      'IrtibatList', instance.irtibatList?.map((e) => e.toJson()).toList());
-  writeNotNull(
-      'BankaList', instance.bankaList?.map((e) => e.toJson()).toList());
-  writeNotNull('CariList', instance.cariList?.map((e) => e.toJson()).toList());
-  writeNotNull(
-      'BakiyeList', instance.bakiyeList?.map((e) => e.toJson()).toList());
+  writeNotNull('IrtibatList', instance.irtibatList);
+  writeNotNull('BankaList', instance.bankaList);
+  writeNotNull('CariList', instance.cariList);
+  writeNotNull('BakiyeList', instance.bakiyeList);
   return val;
 }
 

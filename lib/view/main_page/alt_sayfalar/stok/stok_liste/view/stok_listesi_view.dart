@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
-import 'package:picker/core/constants/extensions/widget_extensions.dart';
 
 import '../../../../../../core/base/helpers/helper.dart';
 import '../../../../../../core/base/model/base_edit_model.dart';
@@ -20,6 +19,7 @@ import '../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../core/constants/enum/grup_kodu_enums.dart';
 import '../../../../../../core/constants/extensions/list_extensions.dart';
 import '../../../../../../core/constants/extensions/model_extensions.dart';
+import '../../../../../../core/constants/extensions/widget_extensions.dart';
 import '../../../cari/cari_network_manager.dart';
 import '../model/stok_bottom_sheet_model.dart';
 import '../model/stok_listesi_model.dart';
@@ -62,6 +62,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
 
   @override
   void dispose() {
+    bottomSheetDialogManager.clearSelectedData();
+    viewModel.setBottomSheetModel(StokBottomSheetModel());
     _scrollController.dispose();
     super.dispose();
     grupKoduController.dispose();
@@ -75,29 +77,22 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   @override
   Widget build(BuildContext context) {
     kod5Controller.text = viewModel.kod5;
-    return WillPopScope(
-      onWillPop: () async {
-        bottomSheetDialogManager.clearSelectedData();
-        viewModel.setBottomSheetModel(StokBottomSheetModel());
-        return true;
-      },
-      child: Scaffold(
-        resizeToAvoidBottomInset: true,
-        // floatingActionButton: Observer(builder: (_) {
-        //   return CustomFloatingActionButton(isScrolledDown: viewModel.isScrolledDown, onPressed: () {});
-        // }),
-        floatingActionButton: fab(),
-        body: NestedScrollView(
-            // controller: _scrollController,
-            headerSliverBuilder: (context, innerBoxIsScrolled) => [appBar()],
-            body: RefreshIndicator.adaptive(
-                onRefresh: () async {
-                  viewModel.setStokListesi(null);
-                  viewModel.resetSayfa();
-                  return await getData();
-                },
-                child: body())),
-      ),
+    return Scaffold(
+      resizeToAvoidBottomInset: true,
+      // floatingActionButton: Observer(builder: (_) {
+      //   return CustomFloatingActionButton(isScrolledDown: viewModel.isScrolledDown, onPressed: () {});
+      // }),
+      floatingActionButton: fab(),
+      body: NestedScrollView(
+          // controller: _scrollController,
+          headerSliverBuilder: (context, innerBoxIsScrolled) => [appBar()],
+          body: RefreshIndicator.adaptive(
+              onRefresh: () async {
+                viewModel.setStokListesi(null);
+                viewModel.resetSayfa();
+                return await getData();
+              },
+              child: body())),
     );
   }
 
@@ -161,9 +156,12 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
             itemExtent: width * 0.2,
             scrollDirection: Axis.horizontal,
             children: [
-              AppBarButton(child: const Icon(Icons.qr_code_2_outlined), onPressed: () async => await Get.toNamed("/qr")),
               AppBarButton(
-                  child: const Icon(Icons.filter_alt_outlined),
+                icon: Icons.qr_code_2_outlined,
+                onPressed: () async => await Get.toNamed("/qr"),
+              ),
+              AppBarButton(
+                  icon: Icons.filter_alt_outlined,
                   onPressed: () async {
                     if (viewModel.grupKodlari.isEmptyOrNull) {
                       var grupKodlari = await CariNetworkManager.getKod(name: GrupKoduEnum.STOK.name);
@@ -404,7 +402,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                     );
                   }),
               AppBarButton(
-                  child: const Icon(Icons.sort_by_alpha_outlined),
+                  icon: Icons.sort_by_alpha_outlined,
+                  // child: const Icon(Icons.sort_by_alpha_outlined),
                   onPressed: () async {
                     String? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Sırala", children: [
                       BottomSheetModel(title: "Stok Adı (A-Z)", value: "AZ", onTap: () => Get.back(result: "AZ")),
@@ -421,9 +420,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                       getData();
                     }
                   }),
-              AppBarButton(child: const Icon(Icons.format_align_left_sharp), onPressed: () {}),
+              AppBarButton(icon: Icons.format_align_left_sharp, onPressed: () {}),
               AppBarButton(
-                  child: const Icon(Icons.refresh_outlined),
+                  icon: Icons.refresh_outlined,
                   onPressed: () {
                     viewModel.setStokListesi(null);
                     viewModel.resetSayfa();

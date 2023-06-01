@@ -1,7 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: implicit_dynamic_parameter
-
 part of 'login_model.dart';
 
 // **************************************************************************
@@ -96,7 +94,7 @@ Map<String, dynamic> _$TokenModelToJson(TokenModel instance) =>
       'access_token': instance.accessToken,
       'token_type': instance.tokenType,
       'expires_in': instance.expiresIn,
-      'USER_JSON': instance.userJson?.toJson(),
+      'USER_JSON': instance.userJson,
       '.issued': instance.issued,
       '.expires': instance.expires,
       'error': instance.error,

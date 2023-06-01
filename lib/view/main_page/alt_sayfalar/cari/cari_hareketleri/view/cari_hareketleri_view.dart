@@ -3,21 +3,21 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import '../../../../../../core/base/model/base_edit_model.dart';
-import '../../../../../../core/components/floating_action_button/custom_floating_action_button.dart';
-import '../../../../../../core/components/wrap/appbar_title.dart';
-import '../../../../../../core/constants/enum/base_edit_enum.dart';
-import '../../../../../../core/constants/extensions/widget_extensions.dart';
-import '../model/cari_hareketleri_model.dart';
-import '../view_model/cari_hareketleri_view_model.dart';
 
 import '../../../../../../core/base/helpers/helper.dart';
+import '../../../../../../core/base/model/base_edit_model.dart';
 import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
 import '../../../../../../core/components/button/elevated_buttons/footer_button.dart';
 import '../../../../../../core/components/card/cari_hareketler_card.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
+import '../../../../../../core/components/floating_action_button/custom_floating_action_button.dart';
+import '../../../../../../core/components/wrap/appbar_title.dart';
+import '../../../../../../core/constants/enum/base_edit_enum.dart';
+import '../../../../../../core/constants/extensions/widget_extensions.dart';
 import '../../cari_listesi/model/cari_listesi_model.dart';
+import '../model/cari_hareketleri_model.dart';
+import '../view_model/cari_hareketleri_view_model.dart';
 
 class CariHareketleriView extends StatefulWidget {
   final CariListesiModel? cari;
@@ -190,18 +190,18 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                 Get.back();
                                 await Get.toNamed("/mainPage/cariYeniKayit",
                                     arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.goruntule, model: viewModel.cariHareketleriList![index]));
-                                viewModel.setCariHareketleri(null);
-                                return getData().then((value) => viewModel.setCariHareketleri(value));
                               }),
                           BottomSheetModel(
                               iconWidget: Icons.display_settings_outlined,
                               title: "Düzenle",
                               onTap: () async {
                                 Get.back();
-                                await Get.toNamed("/mainPage/cariYeniKayit",
+                                var result = await Get.toNamed("/mainPage/cariYeniKayit",
                                     arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.duzenle, model: viewModel.cariHareketleriList![index]));
-                                viewModel.setCariHareketleri(null);
-                                return getData().then((value) => viewModel.setCariHareketleri(value));
+                                if (result != null) {
+                                  viewModel.setCariHareketleri(null);
+                                  return getData().then((value) => viewModel.setCariHareketleri(value));
+                                }
                               }),
                           BottomSheetModel(iconWidget: Icons.display_settings_outlined, title: "İşlemler", onTap: () {}),
                           BottomSheetModel(iconWidget: Icons.picture_as_pdf_outlined, title: "PDF Görüntüle", onTap: () {}),

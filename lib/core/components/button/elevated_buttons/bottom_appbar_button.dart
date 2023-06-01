@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:picker/core/constants/extensions/list_extensions.dart';
 
 import '../../../constants/ui_helper/ui_helper.dart';
 
 class AppBarButton extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final Function()? onPressed;
   final IconData? icon;
-  const AppBarButton({super.key, required this.child, this.onPressed, this.icon});
+  const AppBarButton({super.key, this.child, this.onPressed, this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +22,10 @@ class AppBarButton extends StatelessWidget {
         ),
         onPressed: onPressed,
         child: Center(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [icon != null ? Icon(icon, size: 20).paddingOnly(bottom: UIHelper.lowSize) : Container(), child])));
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [icon != null ? Icon(icon, size: 20).paddingOnly(bottom: UIHelper.lowSize) : null, child].nullCheck.cast<Widget>()),
+        ));
   }
 }

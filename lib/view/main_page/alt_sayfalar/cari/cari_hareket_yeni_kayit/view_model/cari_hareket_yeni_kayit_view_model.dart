@@ -1,14 +1,25 @@
 import 'package:mobx/mobx.dart';
 
-import '../model/cari_yeni_kayit_model.dart';
+import '../../../../../../core/base/model/base_proje_model.dart';
+import '../model/cari_hareket_yeni_kayit_model.dart';
 
 part 'cari_hareket_yeni_kayit_view_model.g.dart';
 
-class CariYeniKayitViewModel = _CariYeniKayitViewModelBase with _$CariYeniKayitViewModel;
+class CariHareketYeniKayitViewModel = _CariHareketYeniKayitViewModelBase with _$CariHareketYeniKayitViewModel;
 
-abstract class _CariYeniKayitViewModelBase with Store {
+abstract class _CariHareketYeniKayitViewModelBase with Store {
   @observable
-  CariYeniKayitModel model = CariYeniKayitModel();
+  List<BaseProjeModel> projeList = [];
+
+  @action
+  void setProjeList(List<BaseProjeModel>? value) {
+    if (value != null) {
+      projeList = value;
+    }
+  }
+
+  @observable
+  CariHareketYeniKayitModel model = CariHareketYeniKayitModel();
 
   @computed
   String get getHareketKodu => model.hareketKodu ?? "";

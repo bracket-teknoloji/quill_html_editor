@@ -50,8 +50,8 @@ class MyApp extends StatelessWidget {
           page: () => const MainPageView(),
           children: [
             //* Cari
-            GetPage(name: "/cariEdit", page: () => BaseCariEditingView(model: Get.arguments)),
             GetPage(name: "/cariListesi", page: () => CariListesiView(isGetData: Get.arguments)),
+            GetPage(name: "/cariEdit", page: () => BaseCariEditingView(model: Get.arguments)),
             GetPage(name: "/cariHareketleri", page: () => CariHareketleriView(cari: Get.arguments)),
             GetPage(name: "/cariYeniKayit", page: () => CariYeniKayitView(model: Get.arguments)),
             //* Stok

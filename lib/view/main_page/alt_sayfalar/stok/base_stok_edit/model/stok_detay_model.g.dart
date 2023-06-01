@@ -1,7 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: implicit_dynamic_parameter
-
 part of 'stok_detay_model.dart';
 
 // **************************************************************************
@@ -34,9 +32,8 @@ Map<String, dynamic> _$StokDetayModelToJson(StokDetayModel instance) {
   writeNotNull('STOK_ADI', instance.stokAdi);
   writeNotNull('SeriList', instance.seriList);
   writeNotNull('YapList', instance.yapList);
-  writeNotNull('StokList', instance.stokList?.map((e) => e.toJson()).toList());
-  writeNotNull(
-      'FiyatList', instance.fiyatList?.map((e) => e.toJson()).toList());
+  writeNotNull('StokList', instance.stokList);
+  writeNotNull('FiyatList', instance.fiyatList);
   return val;
 }
 

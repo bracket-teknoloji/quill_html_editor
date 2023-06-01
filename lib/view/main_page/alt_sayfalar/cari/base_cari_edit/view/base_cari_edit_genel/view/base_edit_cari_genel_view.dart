@@ -138,6 +138,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                           icon: const Icon(Icons.spatial_audio_off_outlined)),
                       IconButton(
                           onPressed: () {
+                            //!!!! BU NE AMK SALAĞI !!!!!!!! HELP AMK
                             String kod = model?.cariKodu ?? "";
                             String newCariKodu = kod.substring(0, kod.length - 1) + (int.parse(kod.substring(kod.length - 1)) + 1).toString();
                             kodController.text = newCariKodu;

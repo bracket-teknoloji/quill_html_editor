@@ -1,7 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: implicit_dynamic_parameter
-
 part of 'user_json_model.dart';
 
 // **************************************************************************
@@ -25,7 +23,7 @@ UserJson _$UserJsonFromJson(Map<String, dynamic> json) => UserJson()
   ..pickerYetkili = json['PICKER_YETKILI'] as String?;
 
 Map<String, dynamic> _$UserJsonToJson(UserJson instance) => <String, dynamic>{
-      'profilModel': instance.profilModel?.toJson(),
+      'profilModel': instance.profilModel,
       'yetkiModel': instance.yetkiModel,
       'ID': instance.id,
       'KULADI': instance.kullaniciAdi,
