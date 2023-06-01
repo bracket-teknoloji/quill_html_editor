@@ -63,7 +63,8 @@ class DialogManager {
             ),
             Padding(
               padding: UIHelper.midPaddingHorizontal,
-              child: const Text("İnternet bağlantınızı kontrol edin.", textAlign: TextAlign.center),
+              child: const Text("İnternet bağlantınızı kontrol edin.",
+                  textAlign: TextAlign.center),
             ),
           ],
         ),
@@ -72,18 +73,26 @@ class DialogManager {
   void showLoadingDialog(String loadText) => _baseDialog(
         body: Center(
           child: Column(
-            children: [const CircularProgressIndicator(), context.emptySizedHeightBoxLow, Text(loadText, style: context.theme.textTheme.labelSmall)],
+            children: [
+              const CircularProgressIndicator.adaptive(),
+              context.emptySizedHeightBoxLow,
+              Text(loadText, style: context.theme.textTheme.labelSmall)
+            ],
           ),
         ),
       ).show();
-  void showAreYouSureDialog(void Function() onYes) => _areYouSureDialog(onYes).show();
+  void showAreYouSureDialog(void Function() onYes) =>
+      _areYouSureDialog(onYes).show();
 
   void showExitDialog() => _baseDialog(
         title: "Uyarı",
         desc: "Çıkmak istediğinize emin misiniz?",
         dialogType: DialogType.question,
         onOk: () async {
-          final response = await NetworkManager().dioPost<LogoutModel>(path: ApiUrls.logoutUser, bodyModel: LogoutModel(), data: AccountModel.instance.toJson());
+          final response = await NetworkManager().dioPost<LogoutModel>(
+              path: ApiUrls.logoutUser,
+              bodyModel: LogoutModel(),
+              data: AccountModel.instance.toJson());
           if (response.success ?? false) {
             showLoadingDialog("Çıkış yapılıyor...");
             log("Çıkış yapılıyor...");
@@ -129,7 +138,11 @@ class DialogManager {
             title: const Text("DEMO"),
             leading: IconHelper.smallIcon("User-Account"),
             onTap: () {
-              Get.back(result: {"company": "DEMO", "user": "demo", "password": "demo"});
+              Get.back(result: {
+                "company": "DEMO",
+                "user": "demo",
+                "password": "demo"
+              });
             }),
         ...List.generate(
           box.length,
@@ -220,7 +233,11 @@ class DialogManager {
               title: const Text("DEMO"),
               leading: IconHelper.smallIcon("User-Account"),
               onTap: () {
-                Get.back(result: {"company": "demo", "user": "demo", "password": "demo"});
+                Get.back(result: {
+                  "company": "demo",
+                  "user": "demo",
+                  "password": "demo"
+                });
               }),
           ...List.generate(
             box.length,
@@ -259,7 +276,9 @@ class DialogManager {
       Widget? body}) {
     return AwesomeDialog(
         context: context,
-        width: Platform.isLinux || Platform.isWindows || Platform.isMacOS ? MediaQuery.of(context).size.width * 0.4 : null,
+        width: Platform.isLinux || Platform.isWindows || Platform.isMacOS
+            ? MediaQuery.of(context).size.width * 0.4
+            : null,
         customHeader: customHeader,
         alignment: Alignment.center,
         reverseBtnOrder: false,

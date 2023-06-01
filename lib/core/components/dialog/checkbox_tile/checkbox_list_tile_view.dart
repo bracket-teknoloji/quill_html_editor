@@ -23,7 +23,8 @@ class _CheckBoxListTileDialogState extends BaseState<CheckBoxListTileDialog> {
     super.initState();
     getData().then((value) {
       response = value!.data;
-      viewModel.changeValueList(List.generate(response!.length, (index) => false));
+      viewModel
+          .changeValueList(List.generate(response!.length, (index) => false));
       setState(() {});
     });
   }
@@ -42,21 +43,28 @@ class _CheckBoxListTileDialogState extends BaseState<CheckBoxListTileDialog> {
               return Observer(builder: (_) {
                 return CheckboxListTile(
                     controlAffinity: ListTileControlAffinity.leading,
-                    title: response?[index].sehirAdi != null ? Text(response?[index].sehirAdi!) : const Text(""),
+                    title: response?[index].sehirAdi != null
+                        ? Text(response?[index].sehirAdi!)
+                        : const Text(""),
                     value: viewModel.valueList![index],
-                    onChanged: (value) => viewModel.changeValueList(viewModel.valueList!..[index] = value!));
+                    onChanged: (value) => viewModel.changeValueList(
+                        viewModel.valueList!..[index] = value!));
               });
             }),
           )
-        : const Center(child: CircularProgressIndicator());
+        : const Center(child: CircularProgressIndicator.adaptive());
   }
 
   Future<GenericResponseModel<CariSehirlerModel>?> getData() async {
-    final response = await networkManager.dioGet<CariSehirlerModel>(path: ApiUrls.getCariKayitliSehirler, bodyModel: CariSehirlerModel(), addTokenKey: true, headers: {
-      // "VERITABANI": AccountModel.instance.aktifVeritabani.toString(),
-      // "ISLETME_KODU": AccountModel.instance.aktifIsletmeKodu.toString(),
-      // "SUBE_KODU": AccountModel.instance.aktifSubeKodu.toString(),
-    });
+    final response = await networkManager.dioGet<CariSehirlerModel>(
+        path: ApiUrls.getCariKayitliSehirler,
+        bodyModel: CariSehirlerModel(),
+        addTokenKey: true,
+        headers: {
+          // "VERITABANI": AccountModel.instance.aktifVeritabani.toString(),
+          // "ISLETME_KODU": AccountModel.instance.aktifIsletmeKodu.toString(),
+          // "SUBE_KODU": AccountModel.instance.aktifSubeKodu.toString(),
+        });
     return response as GenericResponseModel<CariSehirlerModel>;
   }
 }
