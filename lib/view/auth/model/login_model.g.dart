@@ -66,46 +66,30 @@ class TokenModelAdapter extends TypeAdapter<TokenModel> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-TokenModel _$TokenModelFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'TokenModel',
-      json,
-      ($checkedConvert) {
-        $checkKeys(
-          json,
-          allowedKeys: const [
-            'access_token',
-            'token_type',
-            'expires_in',
-            'USER_JSON',
-            '.issued',
-            '.expires',
-            'error',
-            'error_description'
-          ],
-        );
-        final val = TokenModel();
-        $checkedConvert('access_token', (v) => val.accessToken = v as String?);
-        $checkedConvert('token_type', (v) => val.tokenType = v as String?);
-        $checkedConvert('expires_in', (v) => val.expiresIn = v as int?);
-        $checkedConvert(
-            'USER_JSON', (v) => val.userJson = UserJson.fromJson(v as String));
-        $checkedConvert('.issued', (v) => val.issued = v as String?);
-        $checkedConvert('.expires', (v) => val.expires = v as String?);
-        $checkedConvert('error', (v) => val.error = v as String?);
-        $checkedConvert(
-            'error_description', (v) => val.errorDescription = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'accessToken': 'access_token',
-        'tokenType': 'token_type',
-        'expiresIn': 'expires_in',
-        'userJson': 'USER_JSON',
-        'issued': '.issued',
-        'expires': '.expires',
-        'errorDescription': 'error_description'
-      },
-    );
+TokenModel _$TokenModelFromJson(Map<String, dynamic> json) {
+  $checkKeys(
+    json,
+    allowedKeys: const [
+      'access_token',
+      'token_type',
+      'expires_in',
+      'USER_JSON',
+      '.issued',
+      '.expires',
+      'error',
+      'error_description'
+    ],
+  );
+  return TokenModel()
+    ..accessToken = json['access_token'] as String?
+    ..tokenType = json['token_type'] as String?
+    ..expiresIn = json['expires_in'] as int?
+    ..userJson = UserJson.fromJson(json['USER_JSON'] as String)
+    ..issued = json['.issued'] as String?
+    ..expires = json['.expires'] as String?
+    ..error = json['error'] as String?
+    ..errorDescription = json['error_description'] as String?;
+}
 
 Map<String, dynamic> _$TokenModelToJson(TokenModel instance) =>
     <String, dynamic>{

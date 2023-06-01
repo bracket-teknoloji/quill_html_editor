@@ -9,36 +9,17 @@ part of 'stok_detay_model.dart';
 // **************************************************************************
 
 StokDetayModel _$StokDetayModelFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'StokDetayModel',
-      json,
-      ($checkedConvert) {
-        final val = StokDetayModel();
-        $checkedConvert('STOK_KODU', (v) => val.stokKodu = v as String?);
-        $checkedConvert('STOK_ADI', (v) => val.stokAdi = v as String?);
-        $checkedConvert('SeriList', (v) => val.seriList = v as List<dynamic>?);
-        $checkedConvert('YapList', (v) => val.yapList = v as List<dynamic>?);
-        $checkedConvert(
-            'StokList',
-            (v) => val.stokList = (v as List<dynamic>?)
-                ?.map((e) => StokList.fromJson(e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert(
-            'FiyatList',
-            (v) => val.fiyatList = (v as List<dynamic>?)
-                ?.map((e) => FiyatList.fromJson(e as Map<String, dynamic>))
-                .toList());
-        return val;
-      },
-      fieldKeyMap: const {
-        'stokKodu': 'STOK_KODU',
-        'stokAdi': 'STOK_ADI',
-        'seriList': 'SeriList',
-        'yapList': 'YapList',
-        'stokList': 'StokList',
-        'fiyatList': 'FiyatList'
-      },
-    );
+    StokDetayModel()
+      ..stokKodu = json['STOK_KODU'] as String?
+      ..stokAdi = json['STOK_ADI'] as String?
+      ..seriList = json['SeriList'] as List<dynamic>?
+      ..yapList = json['YapList'] as List<dynamic>?
+      ..stokList = (json['StokList'] as List<dynamic>?)
+          ?.map((e) => StokList.fromJson(e as Map<String, dynamic>))
+          .toList()
+      ..fiyatList = (json['FiyatList'] as List<dynamic>?)
+          ?.map((e) => FiyatList.fromJson(e as Map<String, dynamic>))
+          .toList();
 
 Map<String, dynamic> _$StokDetayModelToJson(StokDetayModel instance) {
   final val = <String, dynamic>{};
@@ -59,40 +40,20 @@ Map<String, dynamic> _$StokDetayModelToJson(StokDetayModel instance) {
   return val;
 }
 
-FiyatList _$FiyatListFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'FiyatList',
-      json,
-      ($checkedConvert) {
-        final val = FiyatList();
-        $checkedConvert('A_S', (v) => val.aS = v as String?);
-        $checkedConvert('STOK_KODU', (v) => val.stokKodu = v as String?);
-        $checkedConvert('DOVIZ_TIPI', (v) => val.dovizTipi = v as int?);
-        $checkedConvert('DOVIZ_KODU', (v) => val.dovizKodu = v as String?);
-        $checkedConvert('BASTAR',
-            (v) => val.bastar = v == null ? null : DateTime.parse(v as String));
-        $checkedConvert('BITTAR',
-            (v) => val.bittar = v == null ? null : DateTime.parse(v as String));
-        $checkedConvert('GECERLI', (v) => val.gecerli = v as String?);
-        $checkedConvert('FIYAT1', (v) => val.fiyat1 = (v as num?)?.toDouble());
-        $checkedConvert('FIYAT2', (v) => val.fiyat2 = (v as num?)?.toDouble());
-        $checkedConvert('FIYAT3', (v) => val.fiyat3 = (v as num?)?.toDouble());
-        $checkedConvert('FIYAT4', (v) => val.fiyat4 = (v as num?)?.toDouble());
-        return val;
-      },
-      fieldKeyMap: const {
-        'aS': 'A_S',
-        'stokKodu': 'STOK_KODU',
-        'dovizTipi': 'DOVIZ_TIPI',
-        'dovizKodu': 'DOVIZ_KODU',
-        'bastar': 'BASTAR',
-        'bittar': 'BITTAR',
-        'gecerli': 'GECERLI',
-        'fiyat1': 'FIYAT1',
-        'fiyat2': 'FIYAT2',
-        'fiyat3': 'FIYAT3',
-        'fiyat4': 'FIYAT4'
-      },
-    );
+FiyatList _$FiyatListFromJson(Map<String, dynamic> json) => FiyatList()
+  ..aS = json['A_S'] as String?
+  ..stokKodu = json['STOK_KODU'] as String?
+  ..dovizTipi = json['DOVIZ_TIPI'] as int?
+  ..dovizKodu = json['DOVIZ_KODU'] as String?
+  ..bastar =
+      json['BASTAR'] == null ? null : DateTime.parse(json['BASTAR'] as String)
+  ..bittar =
+      json['BITTAR'] == null ? null : DateTime.parse(json['BITTAR'] as String)
+  ..gecerli = json['GECERLI'] as String?
+  ..fiyat1 = (json['FIYAT1'] as num?)?.toDouble()
+  ..fiyat2 = (json['FIYAT2'] as num?)?.toDouble()
+  ..fiyat3 = (json['FIYAT3'] as num?)?.toDouble()
+  ..fiyat4 = (json['FIYAT4'] as num?)?.toDouble();
 
 Map<String, dynamic> _$FiyatListToJson(FiyatList instance) => <String, dynamic>{
       'A_S': instance.aS,
@@ -108,181 +69,76 @@ Map<String, dynamic> _$FiyatListToJson(FiyatList instance) => <String, dynamic>{
       'FIYAT4': instance.fiyat4,
     };
 
-StokList _$StokListFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'StokList',
-      json,
-      ($checkedConvert) {
-        final val = StokList();
-        $checkedConvert('STOK_KODU', (v) => val.stokKodu = v as String?);
-        $checkedConvert('STOK_ADI', (v) => val.stokAdi = v as String?);
-        $checkedConvert('DEPO_KODU', (v) => val.depoKodu = v as int?);
-        $checkedConvert('BAKIYE', (v) => val.bakiye = (v as num?)?.toDouble());
-        $checkedConvert('MUHDETAY_ADI', (v) => val.muhdetayAdi = v as String?);
-        $checkedConvert(
-            'ALIS_FIAT1', (v) => val.alisFiat1 = (v as num?)?.toDouble());
-        $checkedConvert(
-            'ALIS_FIAT2', (v) => val.alisFiat2 = (v as num?)?.toDouble());
-        $checkedConvert(
-            'ALIS_FIAT3', (v) => val.alisFiat3 = (v as num?)?.toDouble());
-        $checkedConvert(
-            'ALIS_FIAT4', (v) => val.alisFiat4 = (v as num?)?.toDouble());
-        $checkedConvert(
-            'ALIS_KDV', (v) => val.alisKdv = (v as num?)?.toDouble());
-        $checkedConvert(
-            'SATIS_FIAT1', (v) => val.satisFiat1 = (v as num?)?.toDouble());
-        $checkedConvert(
-            'SATIS_FIAT2', (v) => val.satisFiat2 = (v as num?)?.toDouble());
-        $checkedConvert(
-            'SATIS_FIAT3', (v) => val.satisFiat3 = (v as num?)?.toDouble());
-        $checkedConvert(
-            'SATIS_FIAT4', (v) => val.satisFiat4 = (v as num?)?.toDouble());
-        $checkedConvert(
-            'SATIS_KDV', (v) => val.satisKdv = (v as num?)?.toDouble());
-        $checkedConvert('OLCU_BIRIMI', (v) => val.olcuBirimi = v as String?);
-        $checkedConvert('OLCU_BIRIMI2', (v) => val.olcuBirimi2 = v as String?);
-        $checkedConvert('OLCU_BIRIMI3', (v) => val.olcuBirimi3 = v as String?);
-        $checkedConvert('OLCU_BIRIMI2_PAY',
-            (v) => val.olcuBirimi2Pay = (v as num?)?.toDouble());
-        $checkedConvert('OLCU_BIRIMI2_PAYDA',
-            (v) => val.olcuBirimi2Payda = (v as num?)?.toDouble());
-        $checkedConvert('OLCU_BIRIMI3_PAY',
-            (v) => val.olcuBirimi3Pay = (v as num?)?.toDouble());
-        $checkedConvert('OLCU_BIRIMI3_PAYDA',
-            (v) => val.olcuBirimi3Payda = (v as num?)?.toDouble());
-        $checkedConvert('BARKOD1', (v) => val.barkod1 = v as String?);
-        $checkedConvert('BARKOD2', (v) => val.barkod2 = v as String?);
-        $checkedConvert('BARKOD3', (v) => val.barkod3 = v as String?);
-        $checkedConvert(
-            'KAYITYAPANKUL', (v) => val.kayityapankul = v as String?);
-        $checkedConvert(
-            'KAYITTARIHI',
-            (v) => val.kayittarihi =
-                v == null ? null : DateTime.parse(v as String));
-        $checkedConvert('GRUP_KODU', (v) => val.grupKodu = v as String?);
-        $checkedConvert('GRUP_TANIMI', (v) => val.grupTanimi = v as String?);
-        $checkedConvert('KOD1', (v) => val.kod1 = v as String?);
-        $checkedConvert('KOD1_TANIMI', (v) => val.kod1Tanimi = v as String?);
-        $checkedConvert('KOD2', (v) => val.kod2 = v as String?);
-        $checkedConvert('KOD2_TANIMI', (v) => val.kod2Tanimi = v as String?);
-        $checkedConvert('KOD3', (v) => val.kod3 = v as String?);
-        $checkedConvert('KOD3_TANIMI', (v) => val.kod3Tanimi = v as String?);
-        $checkedConvert('KOD4', (v) => val.kod4 = v as String?);
-        $checkedConvert('KOD4_TANIMI', (v) => val.kod4Tanimi = v as String?);
-        $checkedConvert('KOD5', (v) => val.kod5 = v as String?);
-        $checkedConvert('KOD5_TANIMI', (v) => val.kod5Tanimi = v as String?);
-        $checkedConvert(
-            'SERI_CIKISLARDA_ACIK', (v) => val.seriCikislardaAcik = v as bool?);
-        $checkedConvert(
-            'SERI_GIRISLERDE_ACIK', (v) => val.seriGirislerdeAcik = v as bool?);
-        $checkedConvert('SERI_MIKTAR_KADAR_SOR',
-            (v) => val.seriMiktarKadarSor = v as bool?);
-        $checkedConvert(
-            'SERI_BAKIYE_KONTROLU', (v) => val.seriBakiyeKontrolu = v as bool?);
-        $checkedConvert('SERI_GIRISTE_OTOMATIK_MI',
-            (v) => val.seriGiristeOtomatikMi = v as bool?);
-        $checkedConvert('SERI_CIKISTA_OTOMATIK_MI',
-            (v) => val.seriCikistaOtomatikMi = v as bool?);
-        $checkedConvert(
-            'DUZELTMETARIHI',
-            (v) => val.duzeltmetarihi =
-                v == null ? null : DateTime.parse(v as String));
-        $checkedConvert(
-            'DUZELTMEYAPANKUL', (v) => val.duzeltmeyapankul = v as String?);
-        $checkedConvert(
-            'STOK_FIYAT_LIST', (v) => val.stokFiyatList = v as List<dynamic>?);
-        $checkedConvert('STOK_LIST', (v) => val.stokList = v as List<dynamic>?);
-        $checkedConvert('FIAT_BIRIMI', (v) => val.fiatBirimi = v as int?);
-        $checkedConvert('KILIT_GENEL', (v) => val.kilitGenel = v as String?);
-        $checkedConvert(
-            'KILIT_SATICISIP', (v) => val.kilitSaticisip = v as String?);
-        $checkedConvert('KILIT_MUSSIP', (v) => val.kilitMussip = v as String?);
-        $checkedConvert('KILIT_ALIS', (v) => val.kilitAlis = v as String?);
-        $checkedConvert('KILIT_SATIS', (v) => val.kilitSatis = v as String?);
-        $checkedConvert('SUBE_KODU', (v) => val.subeKodu = v as int?);
-        $checkedConvert('MUHDETAY_KODU', (v) => val.muhdetayKodu = v as int?);
-        $checkedConvert('ALIS_DOV_TIP', (v) => val.alisDovTip = v as int?);
-        $checkedConvert(
-            'DOV_ALIS_FIAT', (v) => val.dovAlisFiat = (v as num?)?.toDouble());
-        $checkedConvert(
-            'ALIS_DOVIZ_ADI', (v) => val.alisDovizAdi = v as String?);
-        $checkedConvert('SAT_DOV_TIP', (v) => val.satDovTip = v as int?);
-        $checkedConvert('DOV_SATIS_FIAT',
-            (v) => val.dovSatisFiat = (v as num?)?.toDouble());
-        $checkedConvert(
-            'SATIS_DOVIZ_ADI', (v) => val.satisDovizAdi = v as String?);
-        $checkedConvert('URETICI_KODU', (v) => val.ureticiKodu = v as String?);
-        $checkedConvert(
-            'BIRIM_AGIRLIK', (v) => val.birimAgirlik = (v as num?)?.toDouble());
-        return val;
-      },
-      fieldKeyMap: const {
-        'stokKodu': 'STOK_KODU',
-        'stokAdi': 'STOK_ADI',
-        'depoKodu': 'DEPO_KODU',
-        'bakiye': 'BAKIYE',
-        'muhdetayAdi': 'MUHDETAY_ADI',
-        'alisFiat1': 'ALIS_FIAT1',
-        'alisFiat2': 'ALIS_FIAT2',
-        'alisFiat3': 'ALIS_FIAT3',
-        'alisFiat4': 'ALIS_FIAT4',
-        'alisKdv': 'ALIS_KDV',
-        'satisFiat1': 'SATIS_FIAT1',
-        'satisFiat2': 'SATIS_FIAT2',
-        'satisFiat3': 'SATIS_FIAT3',
-        'satisFiat4': 'SATIS_FIAT4',
-        'satisKdv': 'SATIS_KDV',
-        'olcuBirimi': 'OLCU_BIRIMI',
-        'olcuBirimi2': 'OLCU_BIRIMI2',
-        'olcuBirimi3': 'OLCU_BIRIMI3',
-        'olcuBirimi2Pay': 'OLCU_BIRIMI2_PAY',
-        'olcuBirimi2Payda': 'OLCU_BIRIMI2_PAYDA',
-        'olcuBirimi3Pay': 'OLCU_BIRIMI3_PAY',
-        'olcuBirimi3Payda': 'OLCU_BIRIMI3_PAYDA',
-        'barkod1': 'BARKOD1',
-        'barkod2': 'BARKOD2',
-        'barkod3': 'BARKOD3',
-        'kayityapankul': 'KAYITYAPANKUL',
-        'kayittarihi': 'KAYITTARIHI',
-        'grupKodu': 'GRUP_KODU',
-        'grupTanimi': 'GRUP_TANIMI',
-        'kod1': 'KOD1',
-        'kod1Tanimi': 'KOD1_TANIMI',
-        'kod2': 'KOD2',
-        'kod2Tanimi': 'KOD2_TANIMI',
-        'kod3': 'KOD3',
-        'kod3Tanimi': 'KOD3_TANIMI',
-        'kod4': 'KOD4',
-        'kod4Tanimi': 'KOD4_TANIMI',
-        'kod5': 'KOD5',
-        'kod5Tanimi': 'KOD5_TANIMI',
-        'seriCikislardaAcik': 'SERI_CIKISLARDA_ACIK',
-        'seriGirislerdeAcik': 'SERI_GIRISLERDE_ACIK',
-        'seriMiktarKadarSor': 'SERI_MIKTAR_KADAR_SOR',
-        'seriBakiyeKontrolu': 'SERI_BAKIYE_KONTROLU',
-        'seriGiristeOtomatikMi': 'SERI_GIRISTE_OTOMATIK_MI',
-        'seriCikistaOtomatikMi': 'SERI_CIKISTA_OTOMATIK_MI',
-        'duzeltmetarihi': 'DUZELTMETARIHI',
-        'duzeltmeyapankul': 'DUZELTMEYAPANKUL',
-        'stokFiyatList': 'STOK_FIYAT_LIST',
-        'stokList': 'STOK_LIST',
-        'fiatBirimi': 'FIAT_BIRIMI',
-        'kilitGenel': 'KILIT_GENEL',
-        'kilitSaticisip': 'KILIT_SATICISIP',
-        'kilitMussip': 'KILIT_MUSSIP',
-        'kilitAlis': 'KILIT_ALIS',
-        'kilitSatis': 'KILIT_SATIS',
-        'subeKodu': 'SUBE_KODU',
-        'muhdetayKodu': 'MUHDETAY_KODU',
-        'alisDovTip': 'ALIS_DOV_TIP',
-        'dovAlisFiat': 'DOV_ALIS_FIAT',
-        'alisDovizAdi': 'ALIS_DOVIZ_ADI',
-        'satDovTip': 'SAT_DOV_TIP',
-        'dovSatisFiat': 'DOV_SATIS_FIAT',
-        'satisDovizAdi': 'SATIS_DOVIZ_ADI',
-        'ureticiKodu': 'URETICI_KODU',
-        'birimAgirlik': 'BIRIM_AGIRLIK'
-      },
-    );
+StokList _$StokListFromJson(Map<String, dynamic> json) => StokList()
+  ..stokKodu = json['STOK_KODU'] as String?
+  ..stokAdi = json['STOK_ADI'] as String?
+  ..depoKodu = json['DEPO_KODU'] as int?
+  ..bakiye = (json['BAKIYE'] as num?)?.toDouble()
+  ..muhdetayAdi = json['MUHDETAY_ADI'] as String?
+  ..alisFiat1 = (json['ALIS_FIAT1'] as num?)?.toDouble()
+  ..alisFiat2 = (json['ALIS_FIAT2'] as num?)?.toDouble()
+  ..alisFiat3 = (json['ALIS_FIAT3'] as num?)?.toDouble()
+  ..alisFiat4 = (json['ALIS_FIAT4'] as num?)?.toDouble()
+  ..alisKdv = (json['ALIS_KDV'] as num?)?.toDouble()
+  ..satisFiat1 = (json['SATIS_FIAT1'] as num?)?.toDouble()
+  ..satisFiat2 = (json['SATIS_FIAT2'] as num?)?.toDouble()
+  ..satisFiat3 = (json['SATIS_FIAT3'] as num?)?.toDouble()
+  ..satisFiat4 = (json['SATIS_FIAT4'] as num?)?.toDouble()
+  ..satisKdv = (json['SATIS_KDV'] as num?)?.toDouble()
+  ..olcuBirimi = json['OLCU_BIRIMI'] as String?
+  ..olcuBirimi2 = json['OLCU_BIRIMI2'] as String?
+  ..olcuBirimi3 = json['OLCU_BIRIMI3'] as String?
+  ..olcuBirimi2Pay = (json['OLCU_BIRIMI2_PAY'] as num?)?.toDouble()
+  ..olcuBirimi2Payda = (json['OLCU_BIRIMI2_PAYDA'] as num?)?.toDouble()
+  ..olcuBirimi3Pay = (json['OLCU_BIRIMI3_PAY'] as num?)?.toDouble()
+  ..olcuBirimi3Payda = (json['OLCU_BIRIMI3_PAYDA'] as num?)?.toDouble()
+  ..barkod1 = json['BARKOD1'] as String?
+  ..barkod2 = json['BARKOD2'] as String?
+  ..barkod3 = json['BARKOD3'] as String?
+  ..kayityapankul = json['KAYITYAPANKUL'] as String?
+  ..kayittarihi = json['KAYITTARIHI'] == null
+      ? null
+      : DateTime.parse(json['KAYITTARIHI'] as String)
+  ..grupKodu = json['GRUP_KODU'] as String?
+  ..grupTanimi = json['GRUP_TANIMI'] as String?
+  ..kod1 = json['KOD1'] as String?
+  ..kod1Tanimi = json['KOD1_TANIMI'] as String?
+  ..kod2 = json['KOD2'] as String?
+  ..kod2Tanimi = json['KOD2_TANIMI'] as String?
+  ..kod3 = json['KOD3'] as String?
+  ..kod3Tanimi = json['KOD3_TANIMI'] as String?
+  ..kod4 = json['KOD4'] as String?
+  ..kod4Tanimi = json['KOD4_TANIMI'] as String?
+  ..kod5 = json['KOD5'] as String?
+  ..kod5Tanimi = json['KOD5_TANIMI'] as String?
+  ..seriCikislardaAcik = json['SERI_CIKISLARDA_ACIK'] as bool?
+  ..seriGirislerdeAcik = json['SERI_GIRISLERDE_ACIK'] as bool?
+  ..seriMiktarKadarSor = json['SERI_MIKTAR_KADAR_SOR'] as bool?
+  ..seriBakiyeKontrolu = json['SERI_BAKIYE_KONTROLU'] as bool?
+  ..seriGiristeOtomatikMi = json['SERI_GIRISTE_OTOMATIK_MI'] as bool?
+  ..seriCikistaOtomatikMi = json['SERI_CIKISTA_OTOMATIK_MI'] as bool?
+  ..duzeltmetarihi = json['DUZELTMETARIHI'] == null
+      ? null
+      : DateTime.parse(json['DUZELTMETARIHI'] as String)
+  ..duzeltmeyapankul = json['DUZELTMEYAPANKUL'] as String?
+  ..stokFiyatList = json['STOK_FIYAT_LIST'] as List<dynamic>?
+  ..stokList = json['STOK_LIST'] as List<dynamic>?
+  ..fiatBirimi = json['FIAT_BIRIMI'] as int?
+  ..kilitGenel = json['KILIT_GENEL'] as String?
+  ..kilitSaticisip = json['KILIT_SATICISIP'] as String?
+  ..kilitMussip = json['KILIT_MUSSIP'] as String?
+  ..kilitAlis = json['KILIT_ALIS'] as String?
+  ..kilitSatis = json['KILIT_SATIS'] as String?
+  ..subeKodu = json['SUBE_KODU'] as int?
+  ..muhdetayKodu = json['MUHDETAY_KODU'] as int?
+  ..alisDovTip = json['ALIS_DOV_TIP'] as int?
+  ..dovAlisFiat = (json['DOV_ALIS_FIAT'] as num?)?.toDouble()
+  ..alisDovizAdi = json['ALIS_DOVIZ_ADI'] as String?
+  ..satDovTip = json['SAT_DOV_TIP'] as int?
+  ..dovSatisFiat = (json['DOV_SATIS_FIAT'] as num?)?.toDouble()
+  ..satisDovizAdi = json['SATIS_DOVIZ_ADI'] as String?
+  ..ureticiKodu = json['URETICI_KODU'] as String?
+  ..birimAgirlik = (json['BIRIM_AGIRLIK'] as num?)?.toDouble();
 
 Map<String, dynamic> _$StokListToJson(StokList instance) => <String, dynamic>{
       'STOK_KODU': instance.stokKodu,

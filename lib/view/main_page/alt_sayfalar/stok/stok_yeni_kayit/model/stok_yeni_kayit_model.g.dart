@@ -9,42 +9,20 @@ part of 'stok_yeni_kayit_model.dart';
 // **************************************************************************
 
 StokYeniKayitModel _$StokYeniKayitModelFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'StokYeniKayitModel',
-      json,
-      ($checkedConvert) {
-        final val = StokYeniKayitModel();
-        $checkedConvert('ACIKLAMA', (v) => val.aciklama = v as String?);
-        $checkedConvert('BELGE_NO', (v) => val.belgeNo = v as String?);
-        $checkedConvert('DEPO_KODU', (v) => val.depoKodu = v as int?);
-        $checkedConvert('FIYAT', (v) => val.fiyat = v as int?);
-        $checkedConvert('GC', (v) => val.gc = v as String?);
-        $checkedConvert('HAREKET_TURU', (v) => val.hareketTuru = v as String?);
-        $checkedConvert('MIKTAR', (v) => val.miktar = v as int?);
-        $checkedConvert(
-            'PLASIYER_KODU', (v) => val.plasiyerKodu = v as String?);
-        $checkedConvert('PROJE_KODU', (v) => val.projeKodu = v as String?);
-        $checkedConvert('STOK_KODU', (v) => val.stokKodu = v as String?);
-        $checkedConvert('TARIH',
-            (v) => val.tarih = v == null ? null : DateTime.parse(v as String));
-        $checkedConvert('_YeniKayit', (v) => val.yeniKayit = v as bool?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'aciklama': 'ACIKLAMA',
-        'belgeNo': 'BELGE_NO',
-        'depoKodu': 'DEPO_KODU',
-        'fiyat': 'FIYAT',
-        'gc': 'GC',
-        'hareketTuru': 'HAREKET_TURU',
-        'miktar': 'MIKTAR',
-        'plasiyerKodu': 'PLASIYER_KODU',
-        'projeKodu': 'PROJE_KODU',
-        'stokKodu': 'STOK_KODU',
-        'tarih': 'TARIH',
-        'yeniKayit': '_YeniKayit'
-      },
-    );
+    StokYeniKayitModel()
+      ..aciklama = json['ACIKLAMA'] as String?
+      ..belgeNo = json['BELGE_NO'] as String?
+      ..depoKodu = json['DEPO_KODU'] as int?
+      ..fiyat = json['FIYAT'] as int?
+      ..gc = json['GC'] as String?
+      ..hareketTuru = json['HAREKET_TURU'] as String?
+      ..miktar = json['MIKTAR'] as int?
+      ..plasiyerKodu = json['PLASIYER_KODU'] as String?
+      ..projeKodu = json['PROJE_KODU'] as String?
+      ..stokKodu = json['STOK_KODU'] as String?
+      ..tarih =
+          json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
+      ..yeniKayit = json['_YeniKayit'] as bool?;
 
 Map<String, dynamic> _$StokYeniKayitModelToJson(StokYeniKayitModel instance) {
   final val = <String, dynamic>{};

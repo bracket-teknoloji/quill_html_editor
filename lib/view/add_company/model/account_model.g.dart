@@ -174,131 +174,57 @@ class AccountModelAdapter extends TypeAdapter<AccountModel> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-AccountModel _$AccountModelFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'AccountModel',
-      json,
-      ($checkedConvert) {
-        final val = AccountModel();
-        $checkedConvert('ADI', (v) => val.isim = v as String?);
-        $checkedConvert('ADMIN', (v) => val.admin = v as String?);
-        $checkedConvert(
-            'AKTIF_ISLETME_KODU', (v) => val.aktifIsletmeKodu = v as int?);
-        $checkedConvert(
-            'AKTIF_SUBE_KODU', (v) => val.aktifSubeKodu = v as int?);
-        $checkedConvert(
-            'AKTIF_VERITABANI', (v) => val.aktifVeritabani = v as String?);
-        $checkedConvert('CIHAZ_SISTEM_VERSIYONU',
-            (v) => val.cihazSistemVersiyonu = v as String?);
-        $checkedConvert(
-            'APK_DERLEME_TARIHI',
-            (v) => val.apkDerlemeTarihi =
-                v == null ? null : DateTime.parse(v as String));
-        $checkedConvert('CIHAZ_DILI', (v) => val.cihazDili = v as String?);
-        $checkedConvert('G_CID', (v) => val.gCid = v as String?);
-        $checkedConvert(
-            'CIHAZ_MARKASI', (v) => val.cihazMarkasi = v as String?);
-        $checkedConvert(
-            'CIHAZ_KIMLIGI', (v) => val.cihazKimligi = v as String?);
-        $checkedConvert('CIHAZ_MODELI', (v) => val.cihazModeli = v as String?);
-        $checkedConvert('G_DSN', (v) => val.gDsn = v as String?);
-        $checkedConvert('CIHAZ_TARIHI', (v) => val.cihazTarihi = v as String?);
-        $checkedConvert(
-            'CIHAZ_TARIHI_UTC',
-            (v) => val.cihazTarihiUtc =
-                v == null ? null : DateTime.parse(v as String));
-        $checkedConvert('CIHAZ_TIME_ZONE_DAKIKA',
-            (v) => val.cihazTimeZoneDakika = v as int?);
-        $checkedConvert('FCM_TOKEN', (v) => val.fcmToken = v as String?);
-        $checkedConvert('UYE_EMAIL', (v) => val.uyeEmail = v as String?);
-        $checkedConvert('UYE_SIFRE', (v) => val.uyeSifre = v as String?);
-        $checkedConvert(
-            'KONUM_DATE',
-            (v) =>
-                val.konumDate = v == null ? null : DateTime.parse(v as String));
-        $checkedConvert('KONUM_TARIHI', (v) => val.konumTarihi = v as String?);
-        $checkedConvert('G_KA', (v) => val.gKa = v as String?);
-        $checkedConvert('G_BO', (v) => val.gBo = v as String?);
-        $checkedConvert('G_EN', (v) => val.gEn = v as String?);
-        $checkedConvert(
-            'KULLANICI_ADI', (v) => val.kullaniciAdi = v as String?);
-        $checkedConvert(
-            'KURULU_HESAPLAR', (v) => val.kuruluHesaplar = v as String?);
-        $checkedConvert('LOCAL_IP', (v) => val.localIp = v as String?);
-        $checkedConvert(
-            'OZEL_CIHAZ_KIMLIGI', (v) => val.ozelCihazKimligi = v as String?);
-        $checkedConvert('OFFLINE', (v) => val.offline = v as String?);
-        $checkedConvert('SIM_OPERATOR', (v) => val.simOperator = v as String?);
-        $checkedConvert('PAKET_ADI', (v) => val.paketAdi = v as String?);
-        $checkedConvert('PARAM_MAP', (v) => val.paramMap = v as String?);
-        $checkedConvert('PLATFORM', (v) => val.platform = v as String?);
-        $checkedConvert(
-            'REQUEST_VERSION', (v) => val.requestVersion = v as int?);
-        $checkedConvert('SOYADI', (v) => val.soyadi = v as String?);
-        $checkedConvert(
-            'SERVICE_VERSION', (v) => val.serviceVersion = v as String?);
-        $checkedConvert('TZ_INFO', (v) => val.tzInfo = v as String?);
-        $checkedConvert(
-            'UYGULAMA_DILI', (v) => val.uygulamaDili = v as String?);
-        $checkedConvert('UYGULAMA_GUNCELLEME_TARIHI',
-            (v) => val.uygulamaGuncellemeTarihi = v as String?);
-        $checkedConvert(
-            'UYGULAMA_SURUMU', (v) => val.uygulamaSurumu = v as String?);
-        $checkedConvert(
-            'UYGULAMA_SURUM_KODU', (v) => val.uygulamaSurumKodu = v as int?);
-        $checkedConvert('UZAK_ERISIM', (v) => val.uzakErisim = v as String?);
-        $checkedConvert(
-            'WIFIDEN_BAGLI', (v) => val.wifidenBagli = v as String?);
-        $checkedConvert('QR_DATA', (v) => val.qrData = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'isim': 'ADI',
-        'admin': 'ADMIN',
-        'aktifIsletmeKodu': 'AKTIF_ISLETME_KODU',
-        'aktifSubeKodu': 'AKTIF_SUBE_KODU',
-        'aktifVeritabani': 'AKTIF_VERITABANI',
-        'cihazSistemVersiyonu': 'CIHAZ_SISTEM_VERSIYONU',
-        'apkDerlemeTarihi': 'APK_DERLEME_TARIHI',
-        'cihazDili': 'CIHAZ_DILI',
-        'gCid': 'G_CID',
-        'cihazMarkasi': 'CIHAZ_MARKASI',
-        'cihazKimligi': 'CIHAZ_KIMLIGI',
-        'cihazModeli': 'CIHAZ_MODELI',
-        'gDsn': 'G_DSN',
-        'cihazTarihi': 'CIHAZ_TARIHI',
-        'cihazTarihiUtc': 'CIHAZ_TARIHI_UTC',
-        'cihazTimeZoneDakika': 'CIHAZ_TIME_ZONE_DAKIKA',
-        'fcmToken': 'FCM_TOKEN',
-        'uyeEmail': 'UYE_EMAIL',
-        'uyeSifre': 'UYE_SIFRE',
-        'konumDate': 'KONUM_DATE',
-        'konumTarihi': 'KONUM_TARIHI',
-        'gKa': 'G_KA',
-        'gBo': 'G_BO',
-        'gEn': 'G_EN',
-        'kullaniciAdi': 'KULLANICI_ADI',
-        'kuruluHesaplar': 'KURULU_HESAPLAR',
-        'localIp': 'LOCAL_IP',
-        'ozelCihazKimligi': 'OZEL_CIHAZ_KIMLIGI',
-        'offline': 'OFFLINE',
-        'simOperator': 'SIM_OPERATOR',
-        'paketAdi': 'PAKET_ADI',
-        'paramMap': 'PARAM_MAP',
-        'platform': 'PLATFORM',
-        'requestVersion': 'REQUEST_VERSION',
-        'soyadi': 'SOYADI',
-        'serviceVersion': 'SERVICE_VERSION',
-        'tzInfo': 'TZ_INFO',
-        'uygulamaDili': 'UYGULAMA_DILI',
-        'uygulamaGuncellemeTarihi': 'UYGULAMA_GUNCELLEME_TARIHI',
-        'uygulamaSurumu': 'UYGULAMA_SURUMU',
-        'uygulamaSurumKodu': 'UYGULAMA_SURUM_KODU',
-        'uzakErisim': 'UZAK_ERISIM',
-        'wifidenBagli': 'WIFIDEN_BAGLI',
-        'qrData': 'QR_DATA'
-      },
-    );
+AccountModel _$AccountModelFromJson(Map<String, dynamic> json) => AccountModel()
+  ..isim = json['ADI'] as String?
+  ..admin = json['ADMIN'] as String?
+  ..aktifIsletmeKodu = json['AKTIF_ISLETME_KODU'] as int?
+  ..aktifSubeKodu = json['AKTIF_SUBE_KODU'] as int?
+  ..aktifVeritabani = json['AKTIF_VERITABANI'] as String?
+  ..cihazSistemVersiyonu = json['CIHAZ_SISTEM_VERSIYONU'] as String?
+  ..apkDerlemeTarihi = json['APK_DERLEME_TARIHI'] == null
+      ? null
+      : DateTime.parse(json['APK_DERLEME_TARIHI'] as String)
+  ..cihazDili = json['CIHAZ_DILI'] as String?
+  ..gCid = json['G_CID'] as String?
+  ..cihazMarkasi = json['CIHAZ_MARKASI'] as String?
+  ..cihazKimligi = json['CIHAZ_KIMLIGI'] as String?
+  ..cihazModeli = json['CIHAZ_MODELI'] as String?
+  ..gDsn = json['G_DSN'] as String?
+  ..cihazTarihi = json['CIHAZ_TARIHI'] as String?
+  ..cihazTarihiUtc = json['CIHAZ_TARIHI_UTC'] == null
+      ? null
+      : DateTime.parse(json['CIHAZ_TARIHI_UTC'] as String)
+  ..cihazTimeZoneDakika = json['CIHAZ_TIME_ZONE_DAKIKA'] as int?
+  ..fcmToken = json['FCM_TOKEN'] as String?
+  ..uyeEmail = json['UYE_EMAIL'] as String?
+  ..uyeSifre = json['UYE_SIFRE'] as String?
+  ..konumDate = json['KONUM_DATE'] == null
+      ? null
+      : DateTime.parse(json['KONUM_DATE'] as String)
+  ..konumTarihi = json['KONUM_TARIHI'] as String?
+  ..gKa = json['G_KA'] as String?
+  ..gBo = json['G_BO'] as String?
+  ..gEn = json['G_EN'] as String?
+  ..kullaniciAdi = json['KULLANICI_ADI'] as String?
+  ..kuruluHesaplar = json['KURULU_HESAPLAR'] as String?
+  ..localIp = json['LOCAL_IP'] as String?
+  ..ozelCihazKimligi = json['OZEL_CIHAZ_KIMLIGI'] as String?
+  ..offline = json['OFFLINE'] as String?
+  ..simOperator = json['SIM_OPERATOR'] as String?
+  ..paketAdi = json['PAKET_ADI'] as String?
+  ..paramMap = json['PARAM_MAP'] as String?
+  ..platform = json['PLATFORM'] as String?
+  ..requestVersion = json['REQUEST_VERSION'] as int?
+  ..soyadi = json['SOYADI'] as String?
+  ..serviceVersion = json['SERVICE_VERSION'] as String?
+  ..tzInfo = json['TZ_INFO'] as String?
+  ..uygulamaDili = json['UYGULAMA_DILI'] as String?
+  ..uygulamaGuncellemeTarihi = json['UYGULAMA_GUNCELLEME_TARIHI'] as String?
+  ..uygulamaSurumu = json['UYGULAMA_SURUMU'] as String?
+  ..uygulamaSurumKodu = json['UYGULAMA_SURUM_KODU'] as int?
+  ..uzakErisim = json['UZAK_ERISIM'] as String?
+  ..wifidenBagli = json['WIFIDEN_BAGLI'] as String?
+  ..qrData = json['QR_DATA'] as String?;
 
 Map<String, dynamic> _$AccountModelToJson(AccountModel instance) =>
     <String, dynamic>{
@@ -348,13 +274,6 @@ Map<String, dynamic> _$AccountModelToJson(AccountModel instance) =>
       'QR_DATA': instance.qrData,
     };
 
-ParamMap _$ParamMapFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'ParamMap',
-      json,
-      ($checkedConvert) {
-        final val = ParamMap();
-        return val;
-      },
-    );
+ParamMap _$ParamMapFromJson(Map<String, dynamic> json) => ParamMap();
 
 Map<String, dynamic> _$ParamMapToJson(ParamMap instance) => <String, dynamic>{};

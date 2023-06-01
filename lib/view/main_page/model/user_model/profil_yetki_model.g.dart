@@ -9,3045 +9,1504 @@ part of 'profil_yetki_model.dart';
 // **************************************************************************
 
 ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'ProfilYetkiModel',
-      json,
-      ($checkedConvert) {
-        final val = ProfilYetkiModel();
-        $checkedConvert(
-            'yazdirma_SatisIrs_Yazicilari',
-            (v) => val.yazdirmaSatisIrsYazicilari =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'yazdirma_Dizayn_SatisIrs',
-            (v) => val.yazdirmaDizaynSatisIrs =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert('yazdirma_SatisTalebi',
-            (v) => val.yazdirmaSatisTalebi = v as bool?);
-        $checkedConvert(
-            'yazdirma_SatisTalebi_Yazicilari',
-            (v) => val.yazdirmaSatisTalebiYazicilari =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'yazdirma_Dizayn_SatisTalebi',
-            (v) => val.yazdirmaDizaynSatisTalebi =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert('yazdirma_SatisTeklifi',
-            (v) => val.yazdirmaSatisTeklifi = v as bool?);
-        $checkedConvert(
-            'yazdirma_Dizayn_SatisTeklifi',
-            (v) => val.yazdirmaDizaynSatisTeklifi =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert(
-            'yazdirma_Sayim', (v) => val.yazdirmaSayim = v as bool?);
-        $checkedConvert(
-            'yazdirma_Sayim_Yazicilari',
-            (v) => val.yazdirmaSayimYazicilari =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'yazdirma_Dizayn_Sayim',
-            (v) => val.yazdirmaDizaynSayim =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert('yazdirma_Sevkiyat_Etiketi',
-            (v) => val.yazdirmaSevkiyatEtiketi = v as bool?);
-        $checkedConvert(
-            'yazdirma_Sevkiyat_Etiketi_Yazicilari',
-            (v) => val.yazdirmaSevkiyatEtiketiYazicilari =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'yazdirma_Dizayn_SevkiyatEtiketi',
-            (v) => val.yazdirmaDizaynSevkiyatEtiketi =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert('yazdirma_Sevkiyat_Etiketi_KopyaSayisiGizle',
-            (v) => val.yazdirmaSevkiyatEtiketiKopyaSayisiGizle = v as bool?);
-        $checkedConvert(
-            'yazdirma_Serbest', (v) => val.yazdirmaSerbest = v as bool?);
-        $checkedConvert('yazdirma_Serbest_Yazicilari',
-            (v) => val.yazdirmaSerbestYazicilari = v as List<dynamic>?);
-        $checkedConvert(
-            'yazdirma_Dizayn_Serbest',
-            (v) => val.yazdirmaDizaynSerbest =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert('yazdirma_SeriEtiketi',
-            (v) => val.yazdirmaSeriEtiketi = v as bool?);
-        $checkedConvert(
-            'yazdirma_Seri_Etiketi_Yazicilari',
-            (v) => val.yazdirmaSeriEtiketiYazicilari =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'yazdirma_Dizayn_SeriEtiketi',
-            (v) => val.yazdirmaDizaynSeriEtiketi =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert('yazdirma_Stok_Etiketi',
-            (v) => val.yazdirmaStokEtiketi = v as bool?);
-        $checkedConvert(
-            'yazdirma_Stok_Etiketi_Yazicilari',
-            (v) => val.yazdirmaStokEtiketiYazicilari =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'yazdirma_Dizayn_StokEtiketi',
-            (v) => val.yazdirmaDizaynStokEtiketi =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert('yazdirma_TahsilatMakbuzu',
-            (v) => val.yazdirmaTahsilatMakbuzu = v as bool?);
-        $checkedConvert(
-            'yazdirma_Dizayn_TahsilatMakbuzu',
-            (v) => val.yazdirmaDizaynTahsilatMakbuzu =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert('yazdirma_USK', (v) => val.yazdirmaUSK = v as bool?);
-        $checkedConvert(
-            'yazdirma_USK_Yazicilari',
-            (v) => val.yazdirmaUSKYazicilari =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'yazdirma_Dizayn_USK',
-            (v) => val.yazdirmaDizaynUSK =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert(
-            'yazdirma_UretMalTop', (v) => val.yazdirmaUretMalTop = v as bool?);
-        $checkedConvert('yazdirma_UretMalTop_Yazicilari',
-            (v) => val.yazdirmaUretMalTopYazicilari = v as List<dynamic>?);
-        $checkedConvert('yazdirma_Dizayn_UretMalTop',
-            (v) => val.yazdirmaDizaynUretMalTop = v as List<dynamic>?);
-        $checkedConvert(
-            'kullanicilar',
-            (v) => val.kullanicilar =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert('sirket_TamEkranAcilsin',
-            (v) => val.sirketTamEkranAcilsin = v as bool?);
-        $checkedConvert('sirket_RehberdeCariKodGizle',
-            (v) => val.sirketRehberdeCariKodGizle = v as bool?);
-        $checkedConvert('sirket_RehberdeStokKodGizle',
-            (v) => val.sirketRehberdeStokKodGizle = v as bool?);
-        $checkedConvert('sirket_RaporlardaFiyatGizle',
-            (v) => val.sirketRaporlardaFiyatGizle = v as bool?);
-        $checkedConvert('sirket_TarihDegismesin',
-            (v) => val.sirketTarihDegismesin = v as bool?);
-        $checkedConvert('sirket_DevirSirketineGiris',
-            (v) => val.sirketDevirSirketineGiris = v as String?);
-        $checkedConvert(
-            'sirket_KontrolluAktar_BelgeTipleri',
-            (v) => val.sirketKontrolluAktarBelgeTipleri =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert('sirket_KontrolluAktar_BelgeNoGoster',
-            (v) => val.sirketKontrolluAktarBelgeNoGoster = v as List<dynamic>?);
-        $checkedConvert(
-            'sirket_KontrolAciklamasi_BelgeTipleri',
-            (v) =>
-                val.sirketKontrolAciklamasiBelgeTipleri = v as List<dynamic>?);
-        $checkedConvert('sirket_TLFiyatGelsin_BelgeTipleri',
-            (v) => val.sirketTLFiyatGelsinBelgeTipleri = v as List<dynamic>?);
-        $checkedConvert(
-            'sirket_KalemKayitKontrol_BelgeTipleri',
-            (v) =>
-                val.sirketKalemKayitKontrolBelgeTipleri = v as List<dynamic>?);
-        $checkedConvert('sirket_aktifDepolar',
-            (v) => val.sirketAktifDepolar = v as List<dynamic>?);
-        $checkedConvert(
-            'sirket_satisDepo', (v) => val.sirketSatisDepo = v as int?);
-        $checkedConvert('sirket_satisDepo_Ozellestir',
-            (v) => val.sirketSatisDepoOzellestir = v as bool?);
-        $checkedConvert('sirket_satisDepo_MusSip',
-            (v) => val.sirketSatisDepoMusSip = v as int?);
-        $checkedConvert('sirket_satisDepo_SatisFat',
-            (v) => val.sirketSatisDepoSatisFat = v as int?);
-        $checkedConvert('sirket_satisDepo_SatisIrs',
-            (v) => val.sirketSatisDepoSatisIrs = v as int?);
-        $checkedConvert(
-            'sirket_alisDepo', (v) => val.sirketAlisDepo = v as int?);
-        $checkedConvert(
-            'sirket_iadeDepo', (v) => val.sirketIadeDepo = v as int?);
-        $checkedConvert(
-            'sirket_projeKodu', (v) => val.sirketProjeKodu = v as String?);
-        $checkedConvert(
-            'sirket_aktifProjeler',
-            (v) => val.sirketAktifProjeler =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert('ayarlar_FirmaAyarlari',
-            (v) => val.ayarlarFirmaAyarlari = v as bool?);
-        $checkedConvert(
-            'ayarlar_Oturumlar', (v) => val.ayarlarOturumlar = v as bool?);
-        $checkedConvert('sirket_SifreHatirlamaDurumu',
-            (v) => val.sirketSifreHatirlamaDurumu = v as String?);
-        $checkedConvert(
-            'genel_DovizKurlari', (v) => val.genelDovizKurlari = v as bool?);
-        $checkedConvert('genel_DovizKurlari_Ekle',
-            (v) => val.genelDovizKurlariEkle = v as bool?);
-        $checkedConvert('genel_DovizKurlari_Duzelt',
-            (v) => val.genelDovizKurlariDuzelt = v as bool?);
-        $checkedConvert('genel_DovizKurlari_Sil',
-            (v) => val.genelDovizKurlariSil = v as bool?);
-        $checkedConvert(
-            'genel_BelgeKontrol', (v) => val.genelBelgeKontrol = v as bool?);
-        $checkedConvert('genel_BelgeKontrol_Ekle',
-            (v) => val.genelBelgeKontrolEkle = v as bool?);
-        $checkedConvert('genel_BelgeKontrol_Sil',
-            (v) => val.genelBelgeKontrolSil = v as bool?);
-        $checkedConvert(
-            'genel_BelgeKontrol_BelgeTipleri',
-            (v) => val.genelBelgeKontrolBelgeTipleri =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert('genel_BelgeKontrol_BarkodOkutsun',
-            (v) => val.genelBelgeKontrolBarkodOkutsun = v as String?);
-        $checkedConvert('genel_BelgeKontrol_MiktarOtomatikGelsin',
-            (v) => val.genelBelgeKontrolMiktarOtomatikGelsin = v as String?);
-        $checkedConvert('genel_BelgeKontrol_KalemDetaySorulmasin',
-            (v) => val.genelBelgeKontrolKalemDetaySorulmasin = v as String?);
-        $checkedConvert('genel_BelgeKontrol_BelgeOnaySormasin',
-            (v) => val.genelBelgeKontrolBelgeOnaySormasin = v as String?);
-        $checkedConvert('malKabul_FiyatDegistirilmesin',
-            (v) => val.malKabulFiyatDegistirilmesin = v as bool?);
-        $checkedConvert(
-            'malKabul_AlisIrs_BelgeTipleri',
-            (v) => val.malKabulAlisIrsBelgeTipleri =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert('malKabul_AlisIrs_GizlenecekAlanlar',
-            (v) => val.malKabulAlisIrsGizlenecekAlanlar = v as List<dynamic>?);
-        $checkedConvert(
-            'malKabul_AlisIrs_AciklamaAlanlari',
-            (v) => val.malKabulAlisIrsAciklamaAlanlari =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert(
-            'malKabul_SatinAlma', (v) => val.malKabulSatinAlma = v as bool?);
-        $checkedConvert('malKabul_SatinAlma_Kaydet',
-            (v) => val.malKabulSatinAlmaKaydet = v as bool?);
-        $checkedConvert('malKabul_SatinAlma_Duzelt',
-            (v) => val.malKabulSatinAlmaDuzelt = v as bool?);
-        $checkedConvert('malKabul_SatinAlma_Sil',
-            (v) => val.malKabulSatinAlmaSil = v as bool?);
-        $checkedConvert('malKabul_AlisIrsaliyesiFiyatGor',
-            (v) => val.malKabulAlisIrsaliyesiFiyatGor = v as bool?);
-        $checkedConvert('malKabul_AlisIrs_DigerSekmesiGoster',
-            (v) => val.malKabulAlisIrsDigerSekmesiGoster = v as bool?);
-        $checkedConvert('malKabul_AlisIrs_SipBagSecenegi',
-            (v) => val.malKabulAlisIrsSipBagSecenegi = v as String?);
-        $checkedConvert('malKabul_AlisIrs_ReferansStokUygulamasi',
-            (v) => val.malKabulAlisIrsReferansStokUygulamasi = v as bool?);
-        $checkedConvert(
-            'malKabul_AlisIrs_SipBag_SipHariciKalemEklenebilir',
-            (v) => val.malKabulAlisIrsSipBagSipHariciKalemEklenebilir =
-                v as bool?);
-        $checkedConvert(
-            'malKabul_AlisIrs_SipBag_FazlaTeslimatYapilabilir',
-            (v) =>
-                val.malKabulAlisIrsSipBagFazlaTeslimatYapilabilir = v as bool?);
-        $checkedConvert('malKabul_AlisIrs_SipBag_SipOkutulsun',
-            (v) => val.malKabulAlisIrsSipBagSipOkutulsun = v as bool?);
-        $checkedConvert('malKabul_AlisIrs_SipBag_CokluSecim',
-            (v) => val.malKabulAlisIrsSipBagCokluSecim = v as bool?);
-        $checkedConvert('malKabul_AlisIrs_SipBag_TumKalemlerSecilsin',
-            (v) => val.malKabulAlisIrsSipBagTumKalemlerSecilsin = v as bool?);
-        $checkedConvert('malKabul_AlisIrs_SipBag_EslesmeDurumu',
-            (v) => val.malKabulAlisIrsSipBagEslesmeDurumu = v as int?);
-        $checkedConvert('malKabul_AlisIrs_BarkodluGiris',
-            (v) => val.malKabulAlisIrsBarkodluGiris = v as bool?);
-        $checkedConvert('malKabul_AlisIrs_MiktarOtomatikGelsin',
-            (v) => val.malKabulAlisIrsMiktarOtomatikGelsin = v as bool?);
-        $checkedConvert('malKabul_AlisIrs_KalemDetaySorulmasin',
-            (v) => val.malKabulAlisIrsKalemDetaySorulmasin = v as bool?);
-        $checkedConvert('malKabul_AlisIrs_KalemlerBirlestirilsin',
-            (v) => val.malKabulAlisIrsKalemlerBirlestirilsin = v as bool?);
-        $checkedConvert('malKabul_AlisIrs_StokRehberiAcilmasin',
-            (v) => val.malKabulAlisIrsStokRehberiAcilmasin = v as bool?);
-        $checkedConvert('malKabul_AlisIrs_KalemDuzeltilemesin',
-            (v) => val.malKabulAlisIrsKalemDuzeltilemesin = v as bool?);
-        $checkedConvert('malKabul_AlisIrs_TekrarEdenBarkod',
-            (v) => val.malKabulAlisIrsTekrarEdenBarkod = v as String?);
-        $checkedConvert('malKabul_AlisIrs_KlavyeEngelle',
-            (v) => val.malKabulAlisIrsKlavyeEngelle = v as bool?);
-        $checkedConvert('malKabul_AlisIrs_Miktar1Gelsin',
-            (v) => val.malKabulAlisIrsMiktar1Gelsin = v as bool?);
-        $checkedConvert('malKabul_AlisIrs_Raporlar',
-            (v) => val.malKabulAlisIrsRaporlar = v as bool?);
-        $checkedConvert('malKabul_AlisIrs_KalemRaporu',
-            (v) => val.malKabulAlisIrsKalemRaporu = v as bool?);
-        $checkedConvert('malKabul_AlisIrs_OtoBasimYap',
-            (v) => val.malKabulAlisIrsOtoBasimYap = v as bool?);
-        $checkedConvert('malKabul_AlisIrs_KacGunlukKayitlarListelensin',
-            (v) => val.malKabulAlisIrsKacGunlukKayitlarListelensin = v as int?);
-        $checkedConvert('malKabul_AlisIrs_FiyatSirasi',
-            (v) => val.malKabulAlisIrsFiyatSirasi = v as int?);
-        $checkedConvert('malKabul_AlisIrs_Birim1denKaydet',
-            (v) => val.malKabulAlisIrsBirim1denKaydet = v as bool?);
-        $checkedConvert('malKabul_AlisIrs_CariKoduDegistir',
-            (v) => val.malKabulAlisIrsCariKoduDegistir = v as bool?);
-        $checkedConvert('malKabul_AlisIrs_CariRehPlaEslesmesin',
-            (v) => val.malKabulAlisIrsCariRehPlaEslesmesin = v as bool?);
-        $checkedConvert('malKabul_Iade', (v) => val.malKabulIade = v as bool?);
-        $checkedConvert(
-            'malKabul_Iade_Kaydet', (v) => val.malKabulIadeKaydet = v as bool?);
-        $checkedConvert(
-            'malKabul_Iade_Duzelt', (v) => val.malKabulIadeDuzelt = v as bool?);
-        $checkedConvert(
-            'malKabul_Iade_Sil', (v) => val.malKabulIadeSil = v as bool?);
-        $checkedConvert(
-            'malKabul_AlisFaturasi_BelgeTipleri',
-            (v) => val.malKabulAlisFaturasiBelgeTipleri =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert('malKabul_AlisFaturasi',
-            (v) => val.malKabulAlisFaturasi = v as bool?);
-        $checkedConvert('malKabul_AlisFaturasi_Kaydet',
-            (v) => val.malKabulAlisFaturasiKaydet = v as bool?);
-        $checkedConvert('malKabul_AlisFaturasi_Duzelt',
-            (v) => val.malKabulAlisFaturasiDuzelt = v as bool?);
-        $checkedConvert('malKabul_AlisFaturasi_Sil',
-            (v) => val.malKabulAlisFaturasiSil = v as bool?);
-        $checkedConvert('malKabul_AlisFat_DigerSekmesiGoster',
-            (v) => val.malKabulAlisFatDigerSekmesiGoster = v as bool?);
-        $checkedConvert('malKabul_AlisFat_KacGunlukKayitlarListelensin',
-            (v) => val.malKabulAlisFatKacGunlukKayitlarListelensin = v as int?);
-        $checkedConvert('malKabul_AlisFat_FiyatSirasi',
-            (v) => val.malKabulAlisFatFiyatSirasi = v as int?);
-        $checkedConvert('malKabul_AlisFat_Birim1denKaydet',
-            (v) => val.malKabulAlisFatBirim1denKaydet = v as bool?);
-        $checkedConvert('malKabul_AlisFat_Aciklamalar_YetkiTuru',
-            (v) => val.malKabulAlisFatAciklamalarYetkiTuru = v as String?);
-        $checkedConvert(
-            'malKabul_AlisFat_AciklamaAlanlari',
-            (v) => val.malKabulAlisFatAciklamaAlanlari =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert('malKabul_AlisFat_CariKoduDegistir',
-            (v) => val.malKabulAlisFatCariKoduDegistir = v as bool?);
-        $checkedConvert('malKabul_AlisFat_BarkodluGiris',
-            (v) => val.malKabulAlisFatBarkodluGiris = v as bool?);
-        $checkedConvert('malKabul_AlisFat_MiktarOtomatikGelsin',
-            (v) => val.malKabulAlisFatMiktarOtomatikGelsin = v as bool?);
-        $checkedConvert('malKabul_AlisFat_KalemDetaySorulmasin',
-            (v) => val.malKabulAlisFatKalemDetaySorulmasin = v as bool?);
-        $checkedConvert('malKabul_AlisFat_StokRehberiAcilmasin',
-            (v) => val.malKabulAlisFatStokRehberiAcilmasin = v as bool?);
-        $checkedConvert('malKabul_AlisFat_KalemDuzeltilemesin',
-            (v) => val.malKabulAlisFatKalemDuzeltilemesin = v as bool?);
-        $checkedConvert('malKabul_AlisFat_KlavyeEngelle',
-            (v) => val.malKabulAlisFatKlavyeEngelle = v as bool?);
-        $checkedConvert('malKabul_AlisFat_Miktar1Gelsin',
-            (v) => val.malKabulAlisFatMiktar1Gelsin = v as bool?);
-        $checkedConvert('malKabul_AlisFat_ReferansStokUygulamasi',
-            (v) => val.malKabulAlisFatReferansStokUygulamasi = v as bool?);
-        $checkedConvert(
-            'malKabul_AlisFat_SipBag_SipHariciKalemEklenebilir',
-            (v) => val.malKabulAlisFatSipBagSipHariciKalemEklenebilir =
-                v as bool?);
-        $checkedConvert(
-            'malKabul_AlisFat_SipBag_FazlaTeslimatYapilabilir',
-            (v) =>
-                val.malKabulAlisFatSipBagFazlaTeslimatYapilabilir = v as bool?);
-        $checkedConvert('malKabul_AlisFat_SipBag_SipOkutulsun',
-            (v) => val.malKabulAlisFatSipBagSipOkutulsun = v as bool?);
-        $checkedConvert('malKabul_AlisFat_SipBag_CokluSecim',
-            (v) => val.malKabulAlisFatSipBagCokluSecim = v as bool?);
-        $checkedConvert('malKabul_AlisFat_SipBag_TumKalemlerSecilsin',
-            (v) => val.malKabulAlisFatSipBagTumKalemlerSecilsin = v as bool?);
-        $checkedConvert('malKabul_AlisFat_SipBag_EslesmeDurumu',
-            (v) => val.malKabulAlisFatSipBagEslesmeDurumu = v as int?);
-        $checkedConvert('malKabul_AlisFat_Raporlar',
-            (v) => val.malKabulAlisFatRaporlar = v as bool?);
-        $checkedConvert('malKabul_AlisFat_KalemRaporu',
-            (v) => val.malKabulAlisFatKalemRaporu = v as bool?);
-        $checkedConvert(
-            'malKabul_Mustahsil', (v) => val.malKabulMustahsil = v as bool?);
-        $checkedConvert('malKabul_Mustahsil_Ekle',
-            (v) => val.malKabulMustahsilEkle = v as bool?);
-        $checkedConvert('malKabul_Mustahsil_Duzelt',
-            (v) => val.malKabulMustahsilDuzelt = v as bool?);
-        $checkedConvert('malKabul_Mustahsil_Sil',
-            (v) => val.malKabulMustahsilSil = v as bool?);
-        $checkedConvert('transfer_DAT', (v) => val.transferDAT = v as bool?);
-        $checkedConvert(
-            'transfer_DAT_Kaydet', (v) => val.transferDATKaydet = v as bool?);
-        $checkedConvert(
-            'transfer_DAT_Duzelt', (v) => val.transferDATDuzelt = v as bool?);
-        $checkedConvert(
-            'transfer_DAT_Sil', (v) => val.transferDATSil = v as bool?);
-        $checkedConvert('transfer_DAT_FiyatGor',
-            (v) => val.transferDATFiyatGor = v as bool?);
-        $checkedConvert('transfer_DAT_OtoEtiketBas',
-            (v) => val.transferDATOtoEtiketBas = v as bool?);
-        $checkedConvert('transfer_DAT_VarsayilanCikisDepo',
-            (v) => val.transferDATVarsayilanCikisDepo = v as int?);
-        $checkedConvert('transfer_DAT_VarsayilanGirisDepo',
-            (v) => val.transferDATVarsayilanGirisDepo = v as int?);
-        $checkedConvert('transfer_DAT_eIrsIsaretleyemesin',
-            (v) => val.transferDATEIrsIsaretleyemesin = v as bool?);
-        $checkedConvert('transfer_DAT_DigerSekmesiGoster',
-            (v) => val.transferDATDigerSekmesiGoster = v as bool?);
-        $checkedConvert('transfer_DAT_BarkodluGiris',
-            (v) => val.transferDATBarkodluGiris = v as bool?);
-        $checkedConvert('transfer_DAT_MiktarOtomatikGelsin',
-            (v) => val.transferDATMiktarOtomatikGelsin = v as bool?);
-        $checkedConvert('transfer_DAT_KalemDetaySorulmasin',
-            (v) => val.transferDATKalemDetaySorulmasin = v as bool?);
-        $checkedConvert('transfer_DAT_StokRehberiAcilmasin',
-            (v) => val.transferDATStokRehberiAcilmasin = v as bool?);
-        $checkedConvert('transfer_DAT_KalemDuzeltilemesin',
-            (v) => val.transferDATKalemDuzeltilemesin = v as bool?);
-        $checkedConvert('transfer_DAT_KlavyeEngelle',
-            (v) => val.transferDATKlavyeEngelle = v as bool?);
-        $checkedConvert('transfer_DAT_Miktar1Gelsin',
-            (v) => val.transferDATMiktar1Gelsin = v as bool?);
-        $checkedConvert('transfer_DAT_KalemlerBirlestirilsin',
-            (v) => val.transferDATKalemlerBirlestirilsin = v as bool?);
-        $checkedConvert('transfer_DAT_KacGunlukKayitlarListelensin',
-            (v) => val.transferDATKacGunlukKayitlarListelensin = v as int?);
-        $checkedConvert('transfer_DAT_OnayIslemleri',
-            (v) => val.transferDATOnayIslemleri = v as bool?);
-        $checkedConvert('transfer_DAT_OnayIslemleri_Depolar',
-            (v) => val.transferDATOnayIslemleriDepolar = v as List<dynamic>?);
-        $checkedConvert('transfer_DAT_EkAlan2Hatirla',
-            (v) => val.transferDATEkAlan2Hatirla = v as bool?);
-        $checkedConvert('transfer_DAT_EkAlan2Tablodan',
-            (v) => val.transferDATEkAlan2Tablodan = v as bool?);
-        $checkedConvert('transfer_DAT_LokalDATSeciliGelmesin',
-            (v) => val.transferDATLokalDATSeciliGelmesin = v as bool?);
-        $checkedConvert('transfer_DAT_SeriGirisHarYapabilsin',
-            (v) => val.transferDATSeriGirisHarYapabilsin = v as bool?);
-        $checkedConvert('transfer_DAT_Birim1denKaydet',
-            (v) => val.transferDATBirim1denKaydet = v as bool?);
-        $checkedConvert('transfer_DAT_Barkod2Sor',
-            (v) => val.transferDATBarkod2Sor = v as bool?);
-        $checkedConvert('transfer_DAT_BosGecilmeyecekAlanlar',
-            (v) => val.transferDATBosGecilmeyecekAlanlar = v as List<dynamic>?);
-        $checkedConvert('transfer_DAT_GizlenecekAlanlar',
-            (v) => val.transferDATGizlenecekAlanlar = v as List<dynamic>?);
-        $checkedConvert('transfer_DAT_DegismeyecekAlanlar',
-            (v) => val.transferDATDegismeyecekAlanlar = v as List<dynamic>?);
-        $checkedConvert('transfer_DAT_AciklamaAlanlari',
-            (v) => val.transferDATAciklamaAlanlari = v as List<dynamic>?);
-        $checkedConvert('transfer_DAT_SipBagSecenegi',
-            (v) => val.transferDATSipBagSecenegi = v as String?);
-        $checkedConvert('transfer_DAT_ReferansStokUygulamasi',
-            (v) => val.transferDATReferansStokUygulamasi = v as bool?);
-        $checkedConvert('transfer_DAT_SipBag_SipHariciKalemEklenebilir',
-            (v) => val.transferDATSipBagSipHariciKalemEklenebilir = v as bool?);
-        $checkedConvert('transfer_DAT_SipBag_FazlaTeslimatYapilabilir',
-            (v) => val.transferDATSipBagFazlaTeslimatYapilabilir = v as bool?);
-        $checkedConvert('transfer_DAT_SipBag_SipOkutulsun',
-            (v) => val.transferDATSipBagSipOkutulsun = v as bool?);
-        $checkedConvert('transfer_DAT_SipBag_SipOkutulsun_Miktar2BazAl',
-            (v) => val.transferDATSipBagSipOkutulsunMiktar2BazAl = v as bool?);
-        $checkedConvert(
-            'transfer_DAT_SipBag_SipOkutulsun_KalanMiktarGelsin',
-            (v) => val.transferDATSipBagSipOkutulsunKalanMiktarGelsin =
-                v as String?);
-        $checkedConvert('transfer_DAT_SipBag_CokluSecim',
-            (v) => val.transferDATSipBagCokluSecim = v as bool?);
-        $checkedConvert('transfer_DAT_SipBag_TumKalemlerSecilsin',
-            (v) => val.transferDATSipBagTumKalemlerSecilsin = v as bool?);
-        $checkedConvert('transfer_DAT_SipBag_EslesmeDurumu',
-            (v) => val.transferDATSipBagEslesmeDurumu = v as int?);
-        $checkedConvert('transfer_DAT_SipBag_MalToplananlarGelsin',
-            (v) => val.transferDATSipBagMalToplananlarGelsin = v as bool?);
-        $checkedConvert(
-            'transfer_DAT_SipBag_SevkOnayliSiparislerGelsin',
-            (v) =>
-                val.transferDATSipBagSevkOnayliSiparislerGelsin = v as bool?);
-        $checkedConvert('transfer_AG', (v) => val.transferAG = v as bool?);
-        $checkedConvert(
-            'transfer_AG_Kaydet', (v) => val.transferAGKaydet = v as bool?);
-        $checkedConvert(
-            'transfer_AG_Duzelt', (v) => val.transferAGDuzelt = v as bool?);
-        $checkedConvert(
-            'transfer_AG_Sil', (v) => val.transferAGSil = v as bool?);
-        $checkedConvert(
-            'transfer_AG_FiyatGor', (v) => val.transferAGFiyatGor = v as bool?);
-        $checkedConvert('transfer_AG_KacGunlukKayitlarListelensin',
-            (v) => val.transferAGKacGunlukKayitlarListelensin = v as int?);
-        $checkedConvert('transfer_AG_VarsayilanDepo',
-            (v) => val.transferAGVarsayilanDepo = v as int?);
-        $checkedConvert('transfer_AG_DigerSekmesiGoster',
-            (v) => val.transferAGDigerSekmesiGoster = v as bool?);
-        $checkedConvert('transfer_AG_BelgeKopyala',
-            (v) => val.transferAGBelgeKopyala = v as bool?);
-        $checkedConvert('transfer_AG_Birim1denKaydet',
-            (v) => val.transferAGBirim1denKaydet = v as bool?);
-        $checkedConvert('transfer_AG_OtoBasimYap',
-            (v) => val.transferAGOtoBasimYap = v as bool?);
-        $checkedConvert('transfer_AG_SeriGirisHarYapabilsin',
-            (v) => val.transferAGSeriGirisHarYapabilsin = v as bool?);
-        $checkedConvert('transfer_AG_BarkodluGiris',
-            (v) => val.transferAGBarkodluGiris = v as bool?);
-        $checkedConvert('transfer_AG_MiktarOtomatikGelsin',
-            (v) => val.transferAGMiktarOtomatikGelsin = v as bool?);
-        $checkedConvert('transfer_AG_KalemDetaySorulmasin',
-            (v) => val.transferAGKalemDetaySorulmasin = v as bool?);
-        $checkedConvert('transfer_AG_StokRehberiAcilmasin',
-            (v) => val.transferAGStokRehberiAcilmasin = v as bool?);
-        $checkedConvert('transfer_AG_KalemDuzeltilemesin',
-            (v) => val.transferAGKalemDuzeltilemesin = v as bool?);
-        $checkedConvert('transfer_AG_KlavyeEngelle',
-            (v) => val.transferAGKlavyeEngelle = v as bool?);
-        $checkedConvert('transfer_AG_Miktar1Gelsin',
-            (v) => val.transferAGMiktar1Gelsin = v as bool?);
-        $checkedConvert('transfer_AG_ReferansStokUygulamasi',
-            (v) => val.transferAGReferansStokUygulamasi = v as bool?);
-        $checkedConvert('transfer_AG_SipBag_SipHariciKalemEklenebilir',
-            (v) => val.transferAGSipBagSipHariciKalemEklenebilir = v as bool?);
-        $checkedConvert('transfer_AG_SipBag_FazlaTeslimatYapilabilir',
-            (v) => val.transferAGSipBagFazlaTeslimatYapilabilir = v as bool?);
-        $checkedConvert('transfer_AG_SipBag_SipOkutulsun',
-            (v) => val.transferAGSipBagSipOkutulsun = v as bool?);
-        $checkedConvert('transfer_AG_SipBag_SipOkutulsun_Miktar2BazAl',
-            (v) => val.transferAGSipBagSipOkutulsunMiktar2BazAl = v as bool?);
-        $checkedConvert('transfer_AG_SipBag_CokluSecim',
-            (v) => val.transferAGSipBagCokluSecim = v as bool?);
-        $checkedConvert('transfer_AG_SipBag_TumKalemlerSecilsin',
-            (v) => val.transferAGSipBagTumKalemlerSecilsin = v as bool?);
-        $checkedConvert('transfer_AG_SipBag_EslesmeDurumu',
-            (v) => val.transferAGSipBagEslesmeDurumu = v as int?);
-        $checkedConvert('transfer_AG_SipBag_MalToplananlarGelsin',
-            (v) => val.transferAGSipBagMalToplananlarGelsin = v as bool?);
-        $checkedConvert('transfer_AG_SipBag_SevkOnayliSiparislerGelsin',
-            (v) => val.transferAGSipBagSevkOnayliSiparislerGelsin = v as bool?);
-        $checkedConvert('transfer_AC', (v) => val.transferAC = v as bool?);
-        $checkedConvert(
-            'transfer_AC_Kaydet', (v) => val.transferACKaydet = v as bool?);
-        $checkedConvert(
-            'transfer_AC_Duzelt', (v) => val.transferACDuzelt = v as bool?);
-        $checkedConvert(
-            'transfer_AC_Sil', (v) => val.transferACSil = v as bool?);
-        $checkedConvert(
-            'transfer_AC_FiyatGor', (v) => val.transferACFiyatGor = v as bool?);
-        $checkedConvert('transfer_AC_KacGunlukKayitlarListelensin',
-            (v) => val.transferACKacGunlukKayitlarListelensin = v as int?);
-        $checkedConvert('transfer_AC_VarsayilanDepo',
-            (v) => val.transferACVarsayilanDepo = v as int?);
-        $checkedConvert('transfer_AC_eIrsIsaretleyemesin',
-            (v) => val.transferACEIrsIsaretleyemesin = v as bool?);
-        $checkedConvert('transfer_AC_DigerSekmesiGoster',
-            (v) => val.transferACDigerSekmesiGoster = v as bool?);
-        $checkedConvert('transfer_AC_BelgeKopyala',
-            (v) => val.transferACBelgeKopyala = v as bool?);
-        $checkedConvert('transfer_AC_Birim1denKaydet',
-            (v) => val.transferACBirim1denKaydet = v as bool?);
-        $checkedConvert('transfer_AC_OtoBasimYap',
-            (v) => val.transferACOtoBasimYap = v as bool?);
-        $checkedConvert('transfer_AC_SeriGirisHarYapabilsin',
-            (v) => val.transferACSeriGirisHarYapabilsin = v as bool?);
-        $checkedConvert('transfer_AC_EkAlan2Tablodan',
-            (v) => val.transferACEkAlan2Tablodan = v as bool?);
-        $checkedConvert('transfer_AC_EkAlan2Hatirla',
-            (v) => val.transferACEkAlan2Hatirla = v as bool?);
-        $checkedConvert('transfer_AC_MinStokMikGoster',
-            (v) => val.transferACMinStokMikGoster = v as String?);
-        $checkedConvert('transfer_AC_BosGecilmeyecekAlanlar',
-            (v) => val.transferACBosGecilmeyecekAlanlar = v as List<dynamic>?);
-        $checkedConvert('transfer_AC_BarkodluGiris',
-            (v) => val.transferACBarkodluGiris = v as bool?);
-        $checkedConvert('transfer_AC_MiktarOtomatikGelsin',
-            (v) => val.transferACMiktarOtomatikGelsin = v as bool?);
-        $checkedConvert('transfer_AC_KalemDetaySorulmasin',
-            (v) => val.transferACKalemDetaySorulmasin = v as bool?);
-        $checkedConvert('transfer_AC_StokRehberiAcilmasin',
-            (v) => val.transferACStokRehberiAcilmasin = v as bool?);
-        $checkedConvert('transfer_AC_KalemDuzeltilemesin',
-            (v) => val.transferACKalemDuzeltilemesin = v as bool?);
-        $checkedConvert('transfer_AC_KlavyeEngelle',
-            (v) => val.transferACKlavyeEngelle = v as bool?);
-        $checkedConvert('transfer_AC_Miktar1Gelsin',
-            (v) => val.transferACMiktar1Gelsin = v as bool?);
-        $checkedConvert('transfer_AC_ReferansStokUygulamasi',
-            (v) => val.transferACReferansStokUygulamasi = v as bool?);
-        $checkedConvert('transfer_AC_SipBag_SipHariciKalemEklenebilir',
-            (v) => val.transferACSipBagSipHariciKalemEklenebilir = v as bool?);
-        $checkedConvert('transfer_AC_SipBag_FazlaTeslimatYapilabilir',
-            (v) => val.transferACSipBagFazlaTeslimatYapilabilir = v as bool?);
-        $checkedConvert('transfer_AC_SipBag_SipOkutulsun',
-            (v) => val.transferACSipBagSipOkutulsun = v as bool?);
-        $checkedConvert('transfer_AC_SipBag_SipOkutulsun_Miktar2BazAl',
-            (v) => val.transferACSipBagSipOkutulsunMiktar2BazAl = v as bool?);
-        $checkedConvert('transfer_AC_SipBag_CokluSecim',
-            (v) => val.transferACSipBagCokluSecim = v as bool?);
-        $checkedConvert('transfer_AC_SipBag_TumKalemlerSecilsin',
-            (v) => val.transferACSipBagTumKalemlerSecilsin = v as bool?);
-        $checkedConvert('transfer_AC_SipBag_EslesmeDurumu',
-            (v) => val.transferACSipBagEslesmeDurumu = v as int?);
-        $checkedConvert('transfer_AC_SipBag_MalToplananlarGelsin',
-            (v) => val.transferACSipBagMalToplananlarGelsin = v as bool?);
-        $checkedConvert('transfer_AC_SipBag_SevkOnayliSiparislerGelsin',
-            (v) => val.transferACSipBagSevkOnayliSiparislerGelsin = v as bool?);
-        $checkedConvert(
-            'transfer_DepoTalebi', (v) => val.transferDepoTalebi = v as bool?);
-        $checkedConvert('transfer_DepoTalebi_Sil',
-            (v) => val.transferDepoTalebiSil = v as bool?);
-        $checkedConvert('transfer_DepoTalebi_MalTop',
-            (v) => val.transferDepoTalebiMalTop = v as bool?);
-        $checkedConvert('transfer_DepoTalebi_MalTop_FazlaTeslimat',
-            (v) => val.transferDepoTalebiMalTopFazlaTeslimat = v as String?);
-        $checkedConvert('hucre_GiristeHucreYerlestir',
-            (v) => val.hucreGiristeHucreYerlestir = v as bool?);
-        $checkedConvert('hucre_CikistaHucreYerlestir',
-            (v) => val.hucreCikistaHucreYerlestir = v as bool?);
-        $checkedConvert(
-            'hucre_Yerlestir', (v) => val.hucreYerlestir = v as bool?);
-        $checkedConvert('hucre_YerlestirBelgesiz',
-            (v) => val.hucreYerlestirBelgesiz = v as bool?);
-        $checkedConvert('hucre_Yerlestir_KlavyeEngelle',
-            (v) => val.hucreYerlestirKlavyeEngelle = v as bool?);
-        $checkedConvert('hucre_Yerlestir_RehberdenStokSecilmesin',
-            (v) => val.hucreYerlestirRehberdenStokSecilmesin = v as bool?);
-        $checkedConvert('hucre_Yerlestir_HangiHucrede',
-            (v) => val.hucreYerlestirHangiHucrede = v as bool?);
-        $checkedConvert(
-            'hucre_Yerlestir_BelgeTipleri',
-            (v) => val.hucreYerlestirBelgeTipleri =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert('hucre_Bosalt', (v) => val.hucreBosalt = v as bool?);
-        $checkedConvert('hucre_BosaltBelgesiz',
-            (v) => val.hucreBosaltBelgesiz = v as bool?);
-        $checkedConvert('hucre_Bosalt_KlavyeEngelle',
-            (v) => val.hucreBosaltKlavyeEngelle = v as bool?);
-        $checkedConvert('hucre_Bosalt_RehberdenStokSecilmesin',
-            (v) => val.hucreBosaltRehberdenStokSecilmesin = v as bool?);
-        $checkedConvert('hucre_Bosalt_HangiHucrede',
-            (v) => val.hucreBosaltHangiHucrede = v as bool?);
-        $checkedConvert(
-            'hucre_Bosalt_BelgeTipleri',
-            (v) => val.hucreBosaltBelgeTipleri =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert('hucre_Arama', (v) => val.hucreArama = v as bool?);
-        $checkedConvert('hucre_AramaTumDepolar',
-            (v) => val.hucreAramaTumDepolar = v as bool?);
-        $checkedConvert('hucre_AramaOzelFonksiyon',
-            (v) => val.hucreAramaOzelFonksiyon = v as String?);
-        $checkedConvert(
-            'hucre_Transfer', (v) => val.hucreTransfer = v as bool?);
-        $checkedConvert('hucre_Transfer_KlavyeEngelle',
-            (v) => val.hucreTransferKlavyeEngelle = v as bool?);
-        $checkedConvert('hucre_Transfer_RehberdenStokSecilmesin',
-            (v) => val.hucreTransferRehberdenStokSecilmesin = v as bool?);
-        $checkedConvert(
-            'hucre_Transfer_BelgeTipleri',
-            (v) => val.hucreTransferBelgeTipleri =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert('hucre_Listesi', (v) => val.hucreListesi = v as bool?);
-        $checkedConvert('hucre_Bosalt_OtomatikStokEtiketiYazdir',
-            (v) => val.hucreBosaltOtomatikStokEtiketiYazdir = v as bool?);
-        $checkedConvert(
-            'hucre_BakiyeDurumu', (v) => val.hucreBakiyeDurumu = v as bool?);
-        $checkedConvert(
-            'hucre_Hareketleri', (v) => val.hucreHareketleri = v as bool?);
-        $checkedConvert('hucre_Hareketleri_Sil',
-            (v) => val.hucreHareketleriSil = v as bool?);
-        $checkedConvert(
-            'sevkiyat_SatisIrsaliyesi_BelgeTipleri',
-            (v) =>
-                val.sevkiyatSatisIrsaliyesiBelgeTipleri = v as List<dynamic>?);
-        $checkedConvert(
-            'sevkiyat_SatisIrsaliyesi_GizlenecekAlanlar',
-            (v) => val.sevkiyatSatisIrsaliyesiGizlenecekAlanlar =
-                v as List<dynamic>?);
-        $checkedConvert(
-            'sevkiyat_SatisIrsaliyesi_DegismeyecekAlanlar',
-            (v) => val.sevkiyatSatisIrsaliyesiDegismeyecekAlanlar =
-                v as List<dynamic>?);
-        $checkedConvert('sevkiyat_SatisIrsaliyesi',
-            (v) => val.sevkiyatSatisIrsaliyesi = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrsaliyesiKayit',
-            (v) => val.sevkiyatSatisIrsaliyesiKayit = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrsaliyesiDuzeltme',
-            (v) => val.sevkiyatSatisIrsaliyesiDuzeltme = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrsaliyesiSilme',
-            (v) => val.sevkiyatSatisIrsaliyesiSilme = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrsaliyesiFiyatGor',
-            (v) => val.sevkiyatSatisIrsaliyesiFiyatGor = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_DigerSekmesiGoster',
-            (v) => val.sevkiyatSatisIrsDigerSekmesiGoster = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrsaliyesi_SipBagSecenegi',
-            (v) => val.sevkiyatSatisIrsaliyesiSipBagSecenegi = v as String?);
-        $checkedConvert('sevkiyat_SatisIrs_ReferansStokUygulamasi',
-            (v) => val.sevkiyatSatisIrsReferansStokUygulamasi = v as bool?);
-        $checkedConvert(
-            'sevkiyat_SatisIrs_SipBag_SipHariciKalemEklenebilir',
-            (v) => val.sevkiyatSatisIrsSipBagSipHariciKalemEklenebilir =
-                v as bool?);
-        $checkedConvert(
-            'sevkiyat_SatisIrs_SipBag_FazlaTeslimatYapilabilir',
-            (v) => val.sevkiyatSatisIrsSipBagFazlaTeslimatYapilabilir =
-                v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_SipBag_SipOkutulsun',
-            (v) => val.sevkiyatSatisIrsSipBagSipOkutulsun = v as bool?);
-        $checkedConvert(
-            'sevkiyat_SatisIrs_SipBag_SipOkutulsun_Miktar2BazAl',
-            (v) => val.sevkiyatSatisIrsSipBagSipOkutulsunMiktar2BazAl =
-                v as bool?);
-        $checkedConvert(
-            'sevkiyat_SatisIrs_SipBag_SipOkutulsun_KalanMiktarGelsin',
-            (v) => val.sevkiyatSatisIrsSipBagSipOkutulsunKalanMiktarGelsin =
-                v as String?);
-        $checkedConvert('sevkiyat_SatisIrs_SipBag_CokluSecim',
-            (v) => val.sevkiyatSatisIrsSipBagCokluSecim = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_SipBag_TumKalemlerSecilsin',
-            (v) => val.sevkiyatSatisIrsSipBagTumKalemlerSecilsin = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_SipBag_EslesmeDurumu',
-            (v) => val.sevkiyatSatisIrsSipBagEslesmeDurumu = v as int?);
-        $checkedConvert('sevkiyat_SatisIrs_SipBag_MalToplananlarGelsin',
-            (v) => val.sevkiyatSatisIrsSipBagMalToplananlarGelsin = v as bool?);
-        $checkedConvert(
-            'sevkiyat_SatisIrs_SipBag_SevkOnayliSiparislerGelsin',
-            (v) => val.sevkiyatSatisIrsSipBagSevkOnayliSiparislerGelsin =
-                v as bool?);
-        $checkedConvert('sevkiyat_FiyatDegistirilmesin',
-            (v) => val.sevkiyatFiyatDegistirilmesin = v as bool?);
-        $checkedConvert(
-            'sevkiyat_SatisIrsaliyesi_EIrsaliyeDuzenleyemesin',
-            (v) => val.sevkiyatSatisIrsaliyesiEIrsaliyeDuzenleyemesin =
-                v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_KalemlerBirlestirilsin',
-            (v) => val.sevkiyatSatisIrsKalemlerBirlestirilsin = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_OtoBasimYap',
-            (v) => val.sevkiyatSatisIrsOtoBasimYap = v as bool?);
-        $checkedConvert(
-            'sevkiyat_SatisIrs_KacGunlukKayitlarListelensin',
-            (v) =>
-                val.sevkiyatSatisIrsKacGunlukKayitlarListelensin = v as int?);
-        $checkedConvert('sevkiyat_SatisIrs_FiyatSirasi',
-            (v) => val.sevkiyatSatisIrsFiyatSirasi = v as int?);
-        $checkedConvert('sevkiyat_SatisIrs_KDVSifirGelsin',
-            (v) => val.sevkiyatSatisIrsKDVSifirGelsin = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_SeriGirisHarYapabilsin',
-            (v) => val.sevkiyatSatisIrsSeriGirisHarYapabilsin = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_Birim1denKaydet',
-            (v) => val.sevkiyatSatisIrsBirim1denKaydet = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_EkAlan2Tablodan',
-            (v) => val.sevkiyatSatisIrsEkAlan2Tablodan = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_EkAlan2Hatirla',
-            (v) => val.sevkiyatSatisIrsEkAlan2Hatirla = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_OlcuBirimi',
-            (v) => val.sevkiyatSatisIrsOlcuBirimi = v as int?);
-        $checkedConvert('sevkiyat_SatisIrs_CariKoduDegistir',
-            (v) => val.sevkiyatSatisIrsCariKoduDegistir = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_MaxIskUygulamasi',
-            (v) => val.sevkiyatSatisIrsMaxIskUygulamasi = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_MaxSatIsk1',
-            (v) => val.sevkiyatSatisIrsMaxSatIsk1 = (v as num?)?.toDouble());
-        $checkedConvert('sevkiyat_SatisIrs_MaxSatIsk2',
-            (v) => val.sevkiyatSatisIrsMaxSatIsk2 = (v as num?)?.toDouble());
-        $checkedConvert('sevkiyat_SatisIrs_MaxSatIsk3',
-            (v) => val.sevkiyatSatisIrsMaxSatIsk3 = (v as num?)?.toDouble());
-        $checkedConvert('sevkiyat_SatisIrs_MaxSatIsk4',
-            (v) => val.sevkiyatSatisIrsMaxSatIsk4 = (v as num?)?.toDouble());
-        $checkedConvert('sevkiyat_SatisIrs_MaxSatIsk5',
-            (v) => val.sevkiyatSatisIrsMaxSatIsk5 = (v as num?)?.toDouble());
-        $checkedConvert('sevkiyat_SatisIrs_MaxSatIsk6',
-            (v) => val.sevkiyatSatisIrsMaxSatIsk6 = (v as num?)?.toDouble());
-        $checkedConvert('sevkiyat_SatisIrs_MaxGenIsk1',
-            (v) => val.sevkiyatSatisIrsMaxGenIsk1 = (v as num?)?.toDouble());
-        $checkedConvert('sevkiyat_SatisIrs_MaxGenIsk2',
-            (v) => val.sevkiyatSatisIrsMaxGenIsk2 = (v as num?)?.toDouble());
-        $checkedConvert('sevkiyat_SatisIrs_MaxGenIsk3',
-            (v) => val.sevkiyatSatisIrsMaxGenIsk3 = (v as num?)?.toDouble());
-        $checkedConvert('sevkiyat_SatisIrs_DipFiyatUygulamasi',
-            (v) => val.sevkiyatSatisIrsDipFiyatUygulamasi = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_DipFiyatSaha',
-            (v) => val.sevkiyatSatisIrsDipFiyatSaha = v as String?);
-        $checkedConvert('sevkiyat_SatisIrs_DipFiyatEylem',
-            (v) => val.sevkiyatSatisIrsDipFiyatEylem = v as String?);
-        $checkedConvert('sevkiyat_SatisIrs_DipFiyatKDVDurumu',
-            (v) => val.sevkiyatSatisIrsDipFiyatKDVDurumu = v as String?);
-        $checkedConvert('sevkiyat_SatisIrs_BarkodluGiris',
-            (v) => val.sevkiyatSatisIrsBarkodluGiris = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_MiktarOtomatikGelsin',
-            (v) => val.sevkiyatSatisIrsMiktarOtomatikGelsin = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_KalemDetaySorulmasin',
-            (v) => val.sevkiyatSatisIrsKalemDetaySorulmasin = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_StokRehberiAcilmasin',
-            (v) => val.sevkiyatSatisIrsStokRehberiAcilmasin = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_KalemDuzeltilemesin',
-            (v) => val.sevkiyatSatisIrsKalemDuzeltilemesin = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_KlavyeEngelle',
-            (v) => val.sevkiyatSatisIrsKlavyeEngelle = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_Miktar1Gelsin',
-            (v) => val.sevkiyatSatisIrsMiktar1Gelsin = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_BakiyesizStokSecilmesin',
-            (v) => val.sevkiyatSatisIrsBakiyesizStokSecilmesin = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_Raporlar',
-            (v) => val.sevkiyatSatisIrsRaporlar = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrs_KalemRaporu',
-            (v) => val.sevkiyatSatisIrsKalemRaporu = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_BelgeTipleri',
-            (v) => val.sevkiyatSatisFatBelgeTipleri = v as List<dynamic>?);
-        $checkedConvert('sevkiyat_SatisFat_VarsayilanBelgeTipi',
-            (v) => val.sevkiyatSatisFatVarsayilanBelgeTipi = v as int?);
-        $checkedConvert(
-            'sevkiyat_SatisFat', (v) => val.sevkiyatSatisFat = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_Kaydet',
-            (v) => val.sevkiyatSatisFatKaydet = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_Duzelt',
-            (v) => val.sevkiyatSatisFatDuzelt = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_Sil',
-            (v) => val.sevkiyatSatisFatSil = v as bool?);
-        $checkedConvert(
-            'sevkiyat_SatisFat_ToplamlarCariTahsilatIslemleri',
-            (v) => val.sevkiyatSatisFatToplamlarCariTahsilatIslemleri =
-                v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_KayittanSonraTaslakOlustur',
-            (v) => val.sevkiyatSatisFatKayittanSonraTaslakOlustur = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_OtomatikBasimYap',
-            (v) => val.sevkiyatSatisFatOtomatikBasimYap = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_DigerSekmesiGoster',
-            (v) => val.sevkiyatSatisFatDigerSekmesiGoster = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_FiyatDegistirilmesin',
-            (v) => val.sevkiyatSatisFatFiyatDegistirilmesin = v as bool?);
-        $checkedConvert(
-            'sevkiyat_SatisFat_KacGunlukKayitlarListelensin',
-            (v) =>
-                val.sevkiyatSatisFatKacGunlukKayitlarListelensin = v as int?);
-        $checkedConvert('sevkiyat_SatisFat_FiyatSirasi',
-            (v) => val.sevkiyatSatisFatFiyatSirasi = v as int?);
-        $checkedConvert('sevkiyat_SatisFat_KalemlerBirlestirilsin',
-            (v) => val.sevkiyatSatisFatKalemlerBirlestirilsin = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_Birim1denKaydet',
-            (v) => val.sevkiyatSatisFatBirim1denKaydet = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_EkAlan2Tablodan',
-            (v) => val.sevkiyatSatisFatEkAlan2Tablodan = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_EkAlan2Hatirla',
-            (v) => val.sevkiyatSatisFatEkAlan2Hatirla = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_Filtre',
-            (v) => val.sevkiyatSatisFatFiltre = v as String?);
-        $checkedConvert('sevkiyat_SatisFat_FiltreSQL',
-            (v) => val.sevkiyatSatisFatFiltreSQL = v as String?);
-        $checkedConvert('sevkiyat_SatisFat_OlcuBirimi',
-            (v) => val.sevkiyatSatisFatOlcuBirimi = v as int?);
-        $checkedConvert(
-            'sevkiyat_SatisFat_AciklamaAlanlari',
-            (v) => val.sevkiyatSatisFatAciklamaAlanlari =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert(
-            'sevkiyat_SatisFat_BosGecilmeyecekAlanlar',
-            (v) => val.sevkiyatSatisFatBosGecilmeyecekAlanlar =
-                v as List<dynamic>?);
-        $checkedConvert('sevkiyat_SatisFat_GizlenecekAlanlar',
-            (v) => val.sevkiyatSatisFatGizlenecekAlanlar = v as List<dynamic>?);
-        $checkedConvert(
-            'sevkiyat_SatisFat_DegismeyecekAlanlar',
-            (v) =>
-                val.sevkiyatSatisFatDegismeyecekAlanlar = v as List<dynamic>?);
-        $checkedConvert('sevkiyat_SatisFat_SeriGirisHarYapabilsin',
-            (v) => val.sevkiyatSatisFatSeriGirisHarYapabilsin = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_CariKoduDegistir',
-            (v) => val.sevkiyatSatisFatCariKoduDegistir = v as bool?);
-        $checkedConvert('sevkiyat_SatisFaturasi_SipBagSecenegi',
-            (v) => val.sevkiyatSatisFaturasiSipBagSecenegi = v as String?);
-        $checkedConvert('sevkiyat_SatisFat_ReferansStokUygulamasi',
-            (v) => val.sevkiyatSatisFatReferansStokUygulamasi = v as bool?);
-        $checkedConvert(
-            'sevkiyat_SatisFat_SipBag_SipHariciKalemEklenebilir',
-            (v) => val.sevkiyatSatisFatSipBagSipHariciKalemEklenebilir =
-                v as bool?);
-        $checkedConvert(
-            'sevkiyat_SatisFat_SipBag_FazlaTeslimatYapilabilir',
-            (v) => val.sevkiyatSatisFatSipBagFazlaTeslimatYapilabilir =
-                v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_SipBag_SipOkutulsun',
-            (v) => val.sevkiyatSatisFatSipBagSipOkutulsun = v as bool?);
-        $checkedConvert(
-            'sevkiyat_SatisFat_SipBag_SipOkutulsun_Miktar2BazAl',
-            (v) => val.sevkiyatSatisFatSipBagSipOkutulsunMiktar2BazAl =
-                v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_SipBag_CokluSecim',
-            (v) => val.sevkiyatSatisFatSipBagCokluSecim = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_SipBag_TumKalemlerSecilsin',
-            (v) => val.sevkiyatSatisFatSipBagTumKalemlerSecilsin = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_SipBag_EslesmeDurumu',
-            (v) => val.sevkiyatSatisFatSipBagEslesmeDurumu = v as int?);
-        $checkedConvert(
-            'sevkiyat_SatisFat_SipBag_SevkOnayliSiparislerGelsin',
-            (v) => val.sevkiyatSatisFatSipBagSevkOnayliSiparislerGelsin =
-                v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_BarkodluGiris',
-            (v) => val.sevkiyatSatisFatBarkodluGiris = v as bool?);
-        $checkedConvert('sevkiyat_SatisFaturasi_MiktarOtomatikGelsin',
-            (v) => val.sevkiyatSatisFaturasiMiktarOtomatikGelsin = v as bool?);
-        $checkedConvert('sevkiyat_SatisFaturasi_KalemDetaySorulmasin',
-            (v) => val.sevkiyatSatisFaturasiKalemDetaySorulmasin = v as bool?);
-        $checkedConvert(
-            'sevkiyat_SatisFat_BarkodSayisiSaklanacakAlan',
-            (v) =>
-                val.sevkiyatSatisFatBarkodSayisiSaklanacakAlan = v as String?);
-        $checkedConvert('sevkiyat_SatisFat_StokRehberiAcilmasin',
-            (v) => val.sevkiyatSatisFatStokRehberiAcilmasin = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_KalemDuzeltilemesin',
-            (v) => val.sevkiyatSatisFatKalemDuzeltilemesin = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_KlavyeEngelle',
-            (v) => val.sevkiyatSatisFatKlavyeEngelle = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_Miktar1Gelsin',
-            (v) => val.sevkiyatSatisFatMiktar1Gelsin = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_BakiyesizStokSecilmesin',
-            (v) => val.sevkiyatSatisFatBakiyesizStokSecilmesin = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_Raporlar',
-            (v) => val.sevkiyatSatisFatRaporlar = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_KalemRaporu',
-            (v) => val.sevkiyatSatisFatKalemRaporu = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_KarlilikRaporu',
-            (v) => val.sevkiyatSatisFatKarlilikRaporu = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_MaxIskUygulamasi',
-            (v) => val.sevkiyatSatisFatMaxIskUygulamasi = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_MaxSatIsk1',
-            (v) => val.sevkiyatSatisFatMaxSatIsk1 = (v as num?)?.toDouble());
-        $checkedConvert('sevkiyat_SatisFat_MaxSatIsk2',
-            (v) => val.sevkiyatSatisFatMaxSatIsk2 = (v as num?)?.toDouble());
-        $checkedConvert('sevkiyat_SatisFat_MaxSatIsk3',
-            (v) => val.sevkiyatSatisFatMaxSatIsk3 = (v as num?)?.toDouble());
-        $checkedConvert('sevkiyat_SatisFat_MaxSatIsk4',
-            (v) => val.sevkiyatSatisFatMaxSatIsk4 = (v as num?)?.toDouble());
-        $checkedConvert('sevkiyat_SatisFat_MaxSatIsk5',
-            (v) => val.sevkiyatSatisFatMaxSatIsk5 = (v as num?)?.toDouble());
-        $checkedConvert('sevkiyat_SatisFat_MaxSatIsk6',
-            (v) => val.sevkiyatSatisFatMaxSatIsk6 = (v as num?)?.toDouble());
-        $checkedConvert('sevkiyat_SatisFat_MaxGenIsk1',
-            (v) => val.sevkiyatSatisFatMaxGenIsk1 = (v as num?)?.toDouble());
-        $checkedConvert('sevkiyat_SatisFat_MaxGenIsk2',
-            (v) => val.sevkiyatSatisFatMaxGenIsk2 = (v as num?)?.toDouble());
-        $checkedConvert('sevkiyat_SatisFat_MaxGenIsk3',
-            (v) => val.sevkiyatSatisFatMaxGenIsk3 = (v as num?)?.toDouble());
-        $checkedConvert('sevkiyat_SatisFat_DipFiyatUygulamasi',
-            (v) => val.sevkiyatSatisFatDipFiyatUygulamasi = v as bool?);
-        $checkedConvert('sevkiyat_SatisFat_DipFiyatSaha',
-            (v) => val.sevkiyatSatisFatDipFiyatSaha = v as String?);
-        $checkedConvert('sevkiyat_SatisFat_DipFiyatEylem',
-            (v) => val.sevkiyatSatisFatDipFiyatEylem = v as String?);
-        $checkedConvert('sevkiyat_SatisFat_DipFiyatKDVDurumu',
-            (v) => val.sevkiyatSatisFatDipFiyatKDVDurumu = v as String?);
-        $checkedConvert('sevkiyat_SatisIrsaliyesiSiparissiz',
-            (v) => val.sevkiyatSatisIrsaliyesiSiparissiz = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrsaliyesiSiparissizFiyatGor',
-            (v) => val.sevkiyatSatisIrsaliyesiSiparissizFiyatGor = v as bool?);
-        $checkedConvert('sevkiyat_SatisIrsaliyesiIade',
-            (v) => val.sevkiyatSatisIrsaliyesiIade = v as bool?);
-        $checkedConvert('sevkiyat_SiptenMalTop',
-            (v) => val.sevkiyatSiptenMalTop = v as bool?);
-        $checkedConvert('sevkiyat_SiptenMalTop_MiktarBarkoddanGelsin',
-            (v) => val.sevkiyatSiptenMalTopMiktarBarkoddanGelsin = v as bool?);
-        $checkedConvert(
-            'sevkiyat_SiptenMalTop_RehberdenStokSecilmesin',
-            (v) =>
-                val.sevkiyatSiptenMalTopRehberdenStokSecilmesin = v as bool?);
-        $checkedConvert(
-            'sevkiyat_SiptenMalTop_KlavyedenBarkodGirilmesin',
-            (v) =>
-                val.sevkiyatSiptenMalTopKlavyedenBarkodGirilmesin = v as bool?);
-        $checkedConvert(
-            'sevkiyat_SiptenMalTop_SevkOnayliSiparislerGelsin',
-            (v) => val.sevkiyatSiptenMalTopSevkOnayliSiparislerGelsin =
-                v as bool?);
-        $checkedConvert(
-            'sevkiyat_SiptenMalTop_KacGunlukKayitlarListelensin',
-            (v) => val.sevkiyatSiptenMalTopKacGunlukKayitlarListelensin =
-                v as int?);
-        $checkedConvert(
-            'sevkemri_MalToplama', (v) => val.sevkemriMalToplama = v as bool?);
-        $checkedConvert('sevkemri_MalToplamaAtanabilir',
-            (v) => val.sevkemriMalToplamaAtanabilir = v as bool?);
-        $checkedConvert('sevkemri_MalToplamaAtayabilir',
-            (v) => val.sevkemriMalToplamaAtayabilir = v as bool?);
-        $checkedConvert('sevkemri_UrunDegistir',
-            (v) => val.sevkemriUrunDegistir = v as bool?);
-        $checkedConvert('sevkemri_MiktarDegistir',
-            (v) => val.sevkemriMiktarDegistir = v as bool?);
-        $checkedConvert(
-            'sevkemri_MuadilUrun', (v) => val.sevkemriMuadilUrun = v as bool?);
-        $checkedConvert(
-            'sevkemri_malToplama_BarkodsuzUrunListedenSecilsin',
-            (v) => val.sevkemriMalToplamaBarkodsuzUrunListedenSecilsin =
-                v as bool?);
-        $checkedConvert('sevkemri_MalToplama_OtoStokEtiketiYazdir',
-            (v) => val.sevkemriMalToplamaOtoStokEtiketiYazdir = v as bool?);
-        $checkedConvert('sevkemri_MalToplama_OtoStokEtiketiYazdirSor',
-            (v) => val.sevkemriMalToplamaOtoStokEtiketiYazdirSor = v as bool?);
-        $checkedConvert('sevkemri_MalToplama_KlavyedenGirisiEngelle',
-            (v) => val.sevkemriMalToplamaKlavyedenGirisiEngelle = v as bool?);
-        $checkedConvert('sevkemri_MalToplama_Barkod2Sor',
-            (v) => val.sevkemriMalToplamaBarkod2Sor = v as bool?);
-        $checkedConvert('sevkemri_MalToplama_Barkod2_YildizliGorunsun',
-            (v) => val.sevkemriMalToplamaBarkod2YildizliGorunsun = v as bool?);
-        $checkedConvert('sevkemri_MalToplama_Barkod2KalemEkranindaSor',
-            (v) => val.sevkemriMalToplamaBarkod2KalemEkranindaSor = v as bool?);
-        $checkedConvert(
-            'sevkemri_MalToplama_TumuToplanmadanTamamlanmasin',
-            (v) => val.sevkemriMalToplamaTumuToplanmadanTamamlanmasin =
-                v as bool?);
-        $checkedConvert('sevkemri_MalToplama_HangiHucredeGoster',
-            (v) => val.sevkemriMalToplamaHangiHucredeGoster = v as bool?);
-        $checkedConvert(
-            'sevkemri_MalToplama_KalemDetayIslemOnaySormasin',
-            (v) =>
-                val.sevkemriMalToplamaKalemDetayIslemOnaySormasin = v as bool?);
-        $checkedConvert(
-            'sevkemri_MalToplama_GosterilecekEkBilgiler',
-            (v) => val.sevkemriMalToplamaGosterilecekEkBilgiler =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'sevkemri_MalToplama_DegistirilemeyecekAlanlar',
-            (v) => val.sevkemriMalToplamaDegistirilemeyecekAlanlar =
-                v as List<dynamic>?);
-        $checkedConvert(
-            'sevkemri_MalToplama_GizlenecekAlanlar',
-            (v) =>
-                val.sevkemriMalToplamaGizlenecekAlanlar = v as List<dynamic>?);
-        $checkedConvert('sevkemri_MalToplama_MiktarBarkoddan',
-            (v) => val.sevkemriMalToplamaMiktarBarkoddan = v as bool?);
-        $checkedConvert('sevkemri_MalToplama_KalemDetayiSorulmasin',
-            (v) => val.sevkemriMalToplamaKalemDetayiSorulmasin = v as bool?);
-        $checkedConvert('sevkemri_MalToplama_KalemDetayaUlasamasin',
-            (v) => val.sevkemriMalToplamaKalemDetayaUlasamasin = v as bool?);
-        $checkedConvert('sevkemri_MalToplama_FazlaTeslimat',
-            (v) => val.sevkemriMalToplamaFazlaTeslimat = v as String?);
-        $checkedConvert('sevkemri_MalToplama_VarsayilanOlcuBirimi',
-            (v) => val.sevkemriMalToplamaVarsayilanOlcuBirimi = v as int?);
-        $checkedConvert('sevkemri_MalToplama_SiralamaTipi',
-            (v) => val.sevkemriMalToplamaSiralamaTipi = v as String?);
-        $checkedConvert(
-            'sevkemri_MalKontrol', (v) => val.sevkemriMalKontrol = v as bool?);
-        $checkedConvert('sevkemri_MalKontrol_KlavyeEngelle',
-            (v) => val.sevkemriMalKontrolKlavyeEngelle = v as bool?);
-        $checkedConvert(
-            'sevkemri_MalKontrolTipi',
-            (v) => val.sevkemriMalKontrolTipi = v == null
-                ? null
-                : SevkemriMalKontrolTipi.fromJson(v as Map<String, dynamic>));
-        $checkedConvert(
-            'sevkemri_MalKontrolKullanicilar',
-            (v) => val.sevkemriMalKontrolKullanicilar =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert(
-            'sevkemri_Paketleme', (v) => val.sevkemriPaketleme = v as bool?);
-        $checkedConvert('sevkemri_Paketleme_KlavyeEngelle',
-            (v) => val.sevkemriPaketlemeKlavyeEngelle = v as bool?);
-        $checkedConvert('sevkemri_Paketleme_BarkodOkutmayaZorla',
-            (v) => val.sevkemriPaketlemeBarkodOkutmayaZorla = v as bool?);
-        $checkedConvert(
-            'sevkemri_Paketleme_BarkodsuzUrunListedenSecilsin',
-            (v) => val.sevkemriPaketlemeBarkodsuzUrunListedenSecilsin =
-                v as bool?);
-        $checkedConvert('sevkemri_AracYukleme',
-            (v) => val.sevkemriAracYukleme = v as bool?);
-        $checkedConvert('sevkemri_AracYukleme_KlavyeEngelle',
-            (v) => val.sevkemriAracYuklemeKlavyeEngelle = v as bool?);
-        $checkedConvert('sevkemri_AracBosaltma',
-            (v) => val.sevkemriAracBosaltma = v as bool?);
-        $checkedConvert('sevkemri_AracBosaltma_KlavyeEngelle',
-            (v) => val.sevkemriAracBosaltmaKlavyeEngelle = v as bool?);
-        $checkedConvert('sevkemri_DepodanTeslimat',
-            (v) => val.sevkemriDepodanTeslimat = v as bool?);
-        $checkedConvert('sevkemri_DepodanTeslimat_KlavyeEngelle',
-            (v) => val.sevkemriDepodanTeslimatKlavyeEngelle = v as bool?);
-        $checkedConvert('sayim_sayim', (v) => val.sayimSayim = v as bool?);
-        $checkedConvert('sayim_Kontrol_Miktari',
-            (v) => val.sayimKontrolMiktari = v as int?);
-        $checkedConvert('sayim_MiktarBarkoddanGelsin',
-            (v) => val.sayimMiktarBarkoddanGelsin = v as bool?);
-        $checkedConvert('sayim_AyniStokDurumu',
-            (v) => val.sayimAyniStokDurumu = v as String?);
-        $checkedConvert(
-            'sayim_Miktar1Gelsin', (v) => val.sayimMiktar1Gelsin = v as bool?);
-        $checkedConvert(
-            'sayim_HemenKaydet', (v) => val.sayimHemenKaydet = v as bool?);
-        $checkedConvert(
-            'sayim_CarpanAktif', (v) => val.sayimCarpanAktif = v as bool?);
-        $checkedConvert('sayim_SeriMikGirilenMikKabulEdilsin',
-            (v) => val.sayimSeriMikGirilenMikKabulEdilsin = v as bool?);
-        $checkedConvert('sayim_DigerKulSayimHarGorsun',
-            (v) => val.sayimDigerKulSayimHarGorsun = v as String?);
-        $checkedConvert('sayim_DigerKulSayimFisGorsun',
-            (v) => val.sayimDigerKulSayimFisGorsun = v as String?);
-        $checkedConvert('sayim_Serbest', (v) => val.sayimSerbest = v as bool?);
-        $checkedConvert(
-            'sayim_Serbest_Sil', (v) => val.sayimSerbestSil = v as bool?);
-        $checkedConvert('sayim_DepoFarkRaporu',
-            (v) => val.sayimDepoFarkRaporu = v as bool?);
-        $checkedConvert('sayim_BelgeBaglantisiniKopar',
-            (v) => val.sayimBelgeBaglantisiniKopar = v as bool?);
-        $checkedConvert(
-            'sayim_BelgeOlusturabilir',
-            (v) => val.sayimBelgeOlusturabilir =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'sayim_EkAlanlar', (v) => val.sayimEkAlanlar = v as List<dynamic>?);
-        $checkedConvert('sayim_DegismeyecekAlanlar',
-            (v) => val.sayimDegismeyecekAlanlar = v as List<dynamic>?);
-        $checkedConvert('sayim_GizlenecekAlanlar',
-            (v) => val.sayimGizlenecekAlanlar = v as List<dynamic>?);
-        $checkedConvert('sayim_VarsayilanOlcuBirimi',
-            (v) => val.sayimVarsayilanOlcuBirimi = v as int?);
-        $checkedConvert('sayim_Raporu', (v) => val.sayimRaporu = v as bool?);
-        $checkedConvert('paket_Olustur', (v) => val.paketOlustur = v as bool?);
-        $checkedConvert(
-            'paket_CokluOlustur', (v) => val.paketCokluOlustur = v as bool?);
-        $checkedConvert('paket_Kontrol', (v) => val.paketKontrol = v as bool?);
-        $checkedConvert(
-            'paket_MalzemeCikisi', (v) => val.paketMalzemeCikisi = v as bool?);
-        $checkedConvert('paket_ReceteyiFiltrele',
-            (v) => val.paketReceteyiFiltrele = v as bool?);
-        $checkedConvert('islemler_HucreEtiket',
-            (v) => val.islemlerHucreEtiket = v as bool?);
-        $checkedConvert(
-            'islemler_StokEtiket', (v) => val.islemlerStokEtiket = v as bool?);
-        $checkedConvert('islemler_BarkodTanimlama',
-            (v) => val.islemlerBarkodTanimlama = v as bool?);
-        $checkedConvert('siparis_MusteriSiparisi',
-            (v) => val.siparisMusteriSiparisi = v as bool?);
-        $checkedConvert('siparis_MusteriSiparisi_Kaydet',
-            (v) => val.siparisMusteriSiparisiKaydet = v as bool?);
-        $checkedConvert('siparis_MusteriSiparisi_Duzelt',
-            (v) => val.siparisMusteriSiparisiDuzelt = v as bool?);
-        $checkedConvert('siparis_MusteriSiparisi_Sil',
-            (v) => val.siparisMusteriSiparisiSil = v as bool?);
-        $checkedConvert(
-            'siparis_MusteriSiparisi_KapalilarListelenmesin',
-            (v) =>
-                val.siparisMusteriSiparisiKapalilarListelenmesin = v as bool?);
-        $checkedConvert('siparis_MusteriSiparisi_FiyatDegistirilmesin',
-            (v) => val.siparisMusteriSiparisiFiyatDegistirilmesin = v as bool?);
-        $checkedConvert('siparis_MusteriSiparisi_FiyatSirasi',
-            (v) => val.siparisMusteriSiparisiFiyatSirasi = v as int?);
-        $checkedConvert('siparis_MusSip_Birim1denKaydet',
-            (v) => val.siparisMusSipBirim1denKaydet = v as bool?);
-        $checkedConvert('siparis_MusteriSiparisi_KapatmaIslemi',
-            (v) => val.siparisMusteriSiparisiKapatmaIslemi = v as bool?);
-        $checkedConvert('siparis_MusSip_OnayIslemleri',
-            (v) => val.siparisMusSipOnayIslemleri = v as bool?);
-        $checkedConvert('siparis_MusteriSiparisi_SonFiyatGoster',
-            (v) => val.siparisMusteriSiparisiSonFiyatGoster = v as bool?);
-        $checkedConvert('siparis_MusSip_DigerSekmesiGoster',
-            (v) => val.siparisMusSipDigerSekmesiGoster = v as bool?);
-        $checkedConvert('siparis_MusSip_EkAlan2Tablodan',
-            (v) => val.siparisMusSipEkAlan2Tablodan = v as bool?);
-        $checkedConvert('siparis_MusSip_EkAlan2Hatirla',
-            (v) => val.siparisMusSipEkAlan2Hatirla = v as bool?);
-        $checkedConvert('siparis_MusSip_Miktar1Gelsin',
-            (v) => val.siparisMusSipMiktar1Gelsin = v as bool?);
-        $checkedConvert(
-            'siparis_MusSip_BosGecilmeyecekAlanlar',
-            (v) => val.siparisMusSipBosGecilmeyecekAlanlar =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert('siparis_MusSip_OtoPdfGor',
-            (v) => val.siparisMusSipOtoPdfGor = v as bool?);
-        $checkedConvert('siparis_MusSip_CariKoduDegistir',
-            (v) => val.siparisMusSipCariKoduDegistir = v as bool?);
-        $checkedConvert(
-            'siparis_MusteriSiparisi_AciklamaAlanlari',
-            (v) => val.siparisMusteriSiparisiAciklamaAlanlari =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert(
-            'siparis_MusteriSiparisi_GizlenecekAlanlar',
-            (v) => val.siparisMusteriSiparisiGizlenecekAlanlar =
-                v as List<dynamic>?);
-        $checkedConvert(
-            'siparis_MusteriSiparisi_DegismeyecekAlanlar',
-            (v) => val.siparisMusteriSiparisiDegismeyecekAlanlar =
-                v as List<dynamic>?);
-        $checkedConvert(
-            'siparis_MusSip_EkstraAlanlar',
-            (v) => val.siparisMusSipEkstraAlanlar =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'siparis_MusteriSiparisi_SatirAciklamaAlanlari',
-            (v) => val.siparisMusteriSiparisiSatirAciklamaAlanlari =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert('siparis_MusSip_OlcuBirimi',
-            (v) => val.siparisMusSipOlcuBirimi = v as int?);
-        $checkedConvert('siparis_MusSip_BakiyesizStokSecilmesin',
-            (v) => val.siparisMusSipBakiyesizStokSecilmesin = v as bool?);
-        $checkedConvert(
-            'siparis_MusSip_HizliUrunGirisi_Miktar2Kullanilsin',
-            (v) => val.siparisMusSipHizliUrunGirisiMiktar2Kullanilsin =
-                v as String?);
-        $checkedConvert('siparis_MusteriSiparisi_DipFiyatUygulamasi',
-            (v) => val.siparisMusteriSiparisiDipFiyatUygulamasi = v as bool?);
-        $checkedConvert('siparis_MusteriSiparisi_DipFiyatSaha',
-            (v) => val.siparisMusteriSiparisiDipFiyatSaha = v as String?);
-        $checkedConvert('siparis_MusteriSiparisi_DipFiyatEylem',
-            (v) => val.siparisMusteriSiparisiDipFiyatEylem = v as String?);
-        $checkedConvert('siparis_MusteriSiparisi_DipFiyatKDVDurumu',
-            (v) => val.siparisMusteriSiparisiDipFiyatKDVDurumu = v as String?);
-        $checkedConvert('siparis_MusSip_MaxIskUygulamasi',
-            (v) => val.siparisMusSipMaxIskUygulamasi = v as bool?);
-        $checkedConvert('siparis_MusSip_MaxSatIsk1',
-            (v) => val.siparisMusSipMaxSatIsk1 = (v as num?)?.toDouble());
-        $checkedConvert('siparis_MusSip_MaxSatIsk2',
-            (v) => val.siparisMusSipMaxSatIsk2 = (v as num?)?.toDouble());
-        $checkedConvert('siparis_MusSip_MaxSatIsk3',
-            (v) => val.siparisMusSipMaxSatIsk3 = (v as num?)?.toDouble());
-        $checkedConvert('siparis_MusSip_MaxSatIsk4',
-            (v) => val.siparisMusSipMaxSatIsk4 = (v as num?)?.toDouble());
-        $checkedConvert('siparis_MusSip_MaxSatIsk5',
-            (v) => val.siparisMusSipMaxSatIsk5 = (v as num?)?.toDouble());
-        $checkedConvert('siparis_MusSip_MaxSatIsk6',
-            (v) => val.siparisMusSipMaxSatIsk6 = (v as num?)?.toDouble());
-        $checkedConvert('siparis_MusSip_MaxGenIsk1',
-            (v) => val.siparisMusSipMaxGenIsk1 = (v as num?)?.toDouble());
-        $checkedConvert('siparis_MusSip_MaxGenIsk2',
-            (v) => val.siparisMusSipMaxGenIsk2 = (v as num?)?.toDouble());
-        $checkedConvert('siparis_MusSip_MaxGenIsk3',
-            (v) => val.siparisMusSipMaxGenIsk3 = (v as num?)?.toDouble());
-        $checkedConvert('siparis_MusteriSiparisi_Raporlar',
-            (v) => val.siparisMusteriSiparisiRaporlar = v as bool?);
-        $checkedConvert('siparis_MusteriSiparisi_DurumRaporu',
-            (v) => val.siparisMusteriSiparisiDurumRaporu = v as bool?);
-        $checkedConvert('siparis_MusteriSiparisi_DurumRaporuFiyatGor',
-            (v) => val.siparisMusteriSiparisiDurumRaporuFiyatGor = v as bool?);
-        $checkedConvert('siparis_MusSip_KarlilikRaporu',
-            (v) => val.siparisMusSipKarlilikRaporu = v as bool?);
-        $checkedConvert('siparis_MusSip_TeslimRaporu',
-            (v) => val.siparisMusSipTeslimRaporu = v as bool?);
-        $checkedConvert('siparis_SaticiSiparisi',
-            (v) => val.siparisSaticiSiparisi = v as bool?);
-        $checkedConvert('siparis_SaticiSiparisi_Kaydet',
-            (v) => val.siparisSaticiSiparisiKaydet = v as bool?);
-        $checkedConvert('siparis_SaticiSiparisi_Duzelt',
-            (v) => val.siparisSaticiSiparisiDuzelt = v as bool?);
-        $checkedConvert('siparis_SaticiSiparisi_Sil',
-            (v) => val.siparisSaticiSiparisiSil = v as bool?);
-        $checkedConvert(
-            'siparis_SaticiSiparisi_KapalilarListelenmesin',
-            (v) =>
-                val.siparisSaticiSiparisiKapalilarListelenmesin = v as bool?);
-        $checkedConvert('siparis_SaticiSiparisi_FiyatDegistirilmesin',
-            (v) => val.siparisSaticiSiparisiFiyatDegistirilmesin = v as bool?);
-        $checkedConvert('siparis_SaticiSiparisi_FiyatSirasi',
-            (v) => val.siparisSaticiSiparisiFiyatSirasi = v as int?);
-        $checkedConvert('siparis_SaticiSip_Birim1denKaydet',
-            (v) => val.siparisSaticiSipBirim1denKaydet = v as bool?);
-        $checkedConvert('siparis_SaticiSiparisi_KapatmaIslemi',
-            (v) => val.siparisSaticiSiparisiKapatmaIslemi = v as bool?);
-        $checkedConvert('siparis_SaticiSip_OnayIslemleri',
-            (v) => val.siparisSaticiSipOnayIslemleri = v as bool?);
-        $checkedConvert('siparis_SaticiSip_DigerSekmesiGoster',
-            (v) => val.siparisSaticiSipDigerSekmesiGoster = v as bool?);
-        $checkedConvert('siparis_SaticiSip_OlcuBirimi',
-            (v) => val.siparisSaticiSipOlcuBirimi = v as int?);
-        $checkedConvert('siparis_SaticiSip_CariKoduDegistir',
-            (v) => val.siparisSaticiSipCariKoduDegistir = v as bool?);
-        $checkedConvert('siparis_SaticiSiparisi_Raporlar',
-            (v) => val.siparisSaticiSiparisiRaporlar = v as bool?);
-        $checkedConvert('siparis_SaticiSiparisi_DurumRaporu',
-            (v) => val.siparisSaticiSiparisiDurumRaporu = v as bool?);
-        $checkedConvert('siparis_SaticiSiparisi_DurumRaporuFiyatGor',
-            (v) => val.siparisSaticiSiparisiDurumRaporuFiyatGor = v as bool?);
-        $checkedConvert('siparis_SaticiSip_TeslimRaporu',
-            (v) => val.siparisSaticiSipTeslimRaporu = v as bool?);
-        $checkedConvert(
-            'stok_StokListesi', (v) => val.stokStokListesi = v as bool?);
-        $checkedConvert(
-            'stok_StokListesi_ExtraAlanlar',
-            (v) => val.stokStokListesiExtraAlanlar =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'stok_StokKarti', (v) => val.stokStokKarti = v as bool?);
-        $checkedConvert('stok_StokKarti_Kaydet',
-            (v) => val.stokStokKartiKaydet = v as bool?);
-        $checkedConvert('stok_StokKarti_Duzelt',
-            (v) => val.stokStokKartiDuzelt = v as bool?);
-        $checkedConvert(
-            'stok_StokKarti_Sil', (v) => val.stokStokKartiSil = v as bool?);
-        $checkedConvert('stok_StokKarti_AlisFiyatiGizle',
-            (v) => val.stokStokKartiAlisFiyatiGizle = v as bool?);
-        $checkedConvert('stok_StokKarti_SatisFiyatiGizle',
-            (v) => val.stokStokKartiSatisFiyatiGizle = v as bool?);
-        $checkedConvert('stok_StokHareketleri',
-            (v) => val.stokStokHareketleri = v as bool?);
-        $checkedConvert(
-            'stok_StokHar_Kaydet', (v) => val.stokStokHarKaydet = v as bool?);
-        $checkedConvert(
-            'stok_StokHar_Duzelt', (v) => val.stokStokHarDuzelt = v as bool?);
-        $checkedConvert(
-            'stok_StokHar_Sil', (v) => val.stokStokHarSil = v as bool?);
-        $checkedConvert('stok_StokHar_PlasiyerKendiniGorsun',
-            (v) => val.stokStokHarPlasiyerKendiniGorsun = v as bool?);
-        $checkedConvert(
-            'stok_FiltreSQLTipi', (v) => val.stokFiltreSQLTipi = v as String?);
-        $checkedConvert(
-            'stok_ResimGoster', (v) => val.stokResimGoster = v as bool?);
-        $checkedConvert('stok_ResimGoster_Ekle',
-            (v) => val.stokResimGosterEkle = v as bool?);
-        $checkedConvert(
-            'stok_ResimGoster_Sil', (v) => val.stokResimGosterSil = v as bool?);
-        $checkedConvert(
-            'stok_FiyatOzeti', (v) => val.stokFiyatOzeti = v as bool?);
-        $checkedConvert('stok_HareketDetayiniGizle',
-            (v) => val.stokHareketDetayiniGizle = v as bool?);
-        $checkedConvert('stok_GirisHareketleriniGizle',
-            (v) => val.stokGirisHareketleriniGizle = v as bool?);
-        $checkedConvert('stok_CikisHareketleriniGizle',
-            (v) => val.stokCikisHareketleriniGizle = v as bool?);
-        $checkedConvert('stok_BakiyeGosterimTipi',
-            (v) => val.stokBakiyeGosterimTipi = v as String?);
-        $checkedConvert(
-            'stok_BarkodKontrol', (v) => val.stokBarkodKontrol = v as bool?);
-        $checkedConvert('stok_DepoBakiyeDurumu',
-            (v) => val.stokDepoBakiyeDurumu = v as String?);
-        $checkedConvert('stok_BarkodTanimlama',
-            (v) => val.stokBarkodTanimlama = v as bool?);
-        $checkedConvert(
-            'stok_BarkodTanimlama_GorunecekAlanlar',
-            (v) => val.stokBarkodTanimlamaGorunecekAlanlar =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert('stok_BarkodKayitlari',
-            (v) => val.stokBarkodKayitlari = v as bool?);
-        $checkedConvert('stok_BarkodKayitlari_Ekle',
-            (v) => val.stokBarkodKayitlariEkle = v as bool?);
-        $checkedConvert('stok_BarkodKayitlari_Duzelt',
-            (v) => val.stokBarkodKayitlariDuzelt = v as bool?);
-        $checkedConvert('stok_BarkodKayitlari_Sil',
-            (v) => val.stokBarkodKayitlariSil = v as bool?);
-        $checkedConvert('stok_KanbanBarkodEsle',
-            (v) => val.stokKanbanBarkodEsle = v as bool?);
-        $checkedConvert('stok_KanbanBarkodEsle_Sil',
-            (v) => val.stokKanbanBarkodEsleSil = v as bool?);
-        $checkedConvert('stok_KanbanBarkodEsleFarkliStokOkutulmasin',
-            (v) => val.stokKanbanBarkodEsleFarkliStokOkutulmasin = v as bool?);
-        $checkedConvert(
-            'stok_FiyatGorEkrani', (v) => val.stokFiyatGorEkrani = v as bool?);
-        $checkedConvert('stok_FiyatGorEkrani_GunlukKurdanTLGoster',
-            (v) => val.stokFiyatGorEkraniGunlukKurdanTLGoster = v as bool?);
-        $checkedConvert(
-            'stok_FiyatGorEkraniGorunecekAlanlar',
-            (v) => val.stokFiyatGorEkraniGorunecekAlanlar =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'stok_FiyatGecmisi', (v) => val.stokFiyatGecmisi = v as bool?);
-        $checkedConvert('stok_FiyatGecmisiSil',
-            (v) => val.stokFiyatGecmisiSil = v as bool?);
-        $checkedConvert(
-            'stok_FiyatGecmisiFiyatTipleri',
-            (v) => val.stokFiyatGecmisiFiyatTipleri =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert('stok_SeriHar', (v) => val.stokSeriHar = v as bool?);
-        $checkedConvert(
-            'stok_SeriHar_Ekle', (v) => val.stokSeriHarEkle = v as bool?);
-        $checkedConvert(
-            'stok_SeriHar_Duzelt', (v) => val.stokSeriHarDuzelt = v as bool?);
-        $checkedConvert(
-            'stok_SeriHar_Sil', (v) => val.stokSeriHarSil = v as bool?);
-        $checkedConvert(
-            'stok_SeriParcala', (v) => val.stokSeriParcala = v as bool?);
-        $checkedConvert('stok_SeriParcala_Ekle',
-            (v) => val.stokSeriParcalaEkle = v as bool?);
-        $checkedConvert('stok_SeriParcala_Duzelt',
-            (v) => val.stokSeriParcalaDuzelt = v as bool?);
-        $checkedConvert(
-            'stok_SeriParcala_Sil', (v) => val.stokSeriParcalaSil = v as bool?);
-        $checkedConvert(
-            'stok_SeriBirlestir', (v) => val.stokSeriBirlestir = v as bool?);
-        $checkedConvert('stok_SeriBirlestir_Ekle',
-            (v) => val.stokSeriBirlestirEkle = v as bool?);
-        $checkedConvert('stok_SeriBirlestir_Duzelt',
-            (v) => val.stokSeriBirlestirDuzelt = v as bool?);
-        $checkedConvert('stok_SeriBirlestir_Sil',
-            (v) => val.stokSeriBirlestirSil = v as bool?);
-        $checkedConvert(
-            'stok_Paketleme', (v) => val.stokPaketleme = v as bool?);
-        $checkedConvert(
-            'stok_Paketleme_Ekle', (v) => val.stokPaketlemeEkle = v as bool?);
-        $checkedConvert(
-            'stok_Paketleme_Sil', (v) => val.stokPaketlemeSil = v as bool?);
-        $checkedConvert('stok_Paketleme_OnaySormasin',
-            (v) => val.stokPaketlemeOnaySormasin = v as String?);
-        $checkedConvert('stok_Paketleme_DigerKulKayitGorebilir',
-            (v) => val.stokPaketlemeDigerKulKayitGorebilir = v as String?);
-        $checkedConvert(
-            'stok_Paketleme_SorulacakBelgeTipleri',
-            (v) => val.stokPaketlemeSorulacakBelgeTipleri =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert('stok_Raporlar', (v) => val.stokRaporlar = v as bool?);
-        $checkedConvert('stok_Rap_AmbarMaliyet',
-            (v) => val.stokRapAmbarMaliyet = v as bool?);
-        $checkedConvert('stok_Rap_LokalDepoBakiye',
-            (v) => val.stokRapLokalDepoBakiye = v as bool?);
-        $checkedConvert('stok_Rap_UrunGrubunaGoreSatis',
-            (v) => val.stokRapUrunGrubunaGoreSatis = v as bool?);
-        $checkedConvert(
-            'cari_CariListesi', (v) => val.cariCariListesi = v as bool?);
-        $checkedConvert('cari_CariListesi_RiskGorebilir',
-            (v) => val.cariCariListesiRiskGorebilir = v as bool?);
-        $checkedConvert(
-            'cari_RiskGirisi', (v) => val.cariRiskGirisi = v as bool?);
-        $checkedConvert(
-            'cari_CariKarti', (v) => val.cariCariKarti = v as bool?);
-        $checkedConvert('cari_CariKarti_Kaydet',
-            (v) => val.cariCariKartiKaydet = v as bool?);
-        $checkedConvert('cari_CariKarti_Duzelt',
-            (v) => val.cariCariKartiDuzelt = v as bool?);
-        $checkedConvert(
-            'cari_CariKarti_Sil', (v) => val.cariCariKartiSil = v as bool?);
-        $checkedConvert('cari_CariKarti_EIslemler',
-            (v) => val.cariCariKartiEIslemler = v as bool?);
-        $checkedConvert(
-            'cari_CariKarti_DegismeyecekAlanlar',
-            (v) => val.cariCariKartiDegismeyecekAlanlar =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert('cari_CariKarti_GizlenecekAlanlar',
-            (v) => val.cariCariKartiGizlenecekAlanlar = v as List<dynamic>?);
-        $checkedConvert('cari_CariHareketleri',
-            (v) => val.cariCariHareketleri = v as bool?);
-        $checkedConvert(
-            'cari_CariHar_Kaydet', (v) => val.cariCariHarKaydet = v as bool?);
-        $checkedConvert(
-            'cari_CariHar_Duzelt', (v) => val.cariCariHarDuzelt = v as bool?);
-        $checkedConvert(
-            'cari_CariHar_Sil', (v) => val.cariCariHarSil = v as bool?);
-        $checkedConvert('cari_CariHareketleri_HarDetayGorsun',
-            (v) => val.cariCariHareketleriHarDetayGorsun = v as bool?);
-        $checkedConvert('stok_CariHar_PlasiyerKendiniGorsun',
-            (v) => val.stokCariHarPlasiyerKendiniGorsun = v as bool?);
-        $checkedConvert('cari_Aktivite', (v) => val.cariAktivite = v as bool?);
-        $checkedConvert(
-            'cari_Aktivite_Ekle', (v) => val.cariAktiviteEkle = v as bool?);
-        $checkedConvert(
-            'cari_Aktivite_Duzelt', (v) => val.cariAktiviteDuzelt = v as bool?);
-        $checkedConvert(
-            'cari_Aktivite_Sil', (v) => val.cariAktiviteSil = v as bool?);
-        $checkedConvert('cari_Aktivite_Atayabilir',
-            (v) => val.cariAktiviteAtayabilir = v as bool?);
-        $checkedConvert('cari_Aktivite_BitirmeyiGeriAl',
-            (v) => val.cariAktiviteBitirmeyiGeriAl = v as bool?);
-        $checkedConvert('cari_OzelHesapKapatma',
-            (v) => val.cariOzelHesapKapatma = v as bool?);
-        $checkedConvert('cari_OzelHesapKapatma_Sil',
-            (v) => val.cariOzelHesapKapatmaSil = v as bool?);
-        $checkedConvert(
-            'cari_VadeKontrolu', (v) => val.cariVadeKontrolu = v as bool?);
-        $checkedConvert('cari_VadeKontrolu_Gun',
-            (v) => val.cariVadeKontroluGun = v as int?);
-        $checkedConvert(
-            'cari_VadeKontrolu_BelgeTipleri',
-            (v) => val.cariVadeKontroluBelgeTipleri =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert('cari_Filtre', (v) => val.cariFiltre = v as String?);
-        $checkedConvert(
-            'cari_FiltreSQL', (v) => val.cariFiltreSQL = v as String?);
-        $checkedConvert(
-            'cari_FiltreSQLTipi', (v) => val.cariFiltreSQLTipi = v as String?);
-        $checkedConvert('cari_Virman', (v) => val.cariVirman = v as bool?);
-        $checkedConvert(
-            'cari_Virman_Kaydet', (v) => val.cariVirmanKaydet = v as bool?);
-        $checkedConvert('cari_Harita', (v) => val.cariHarita = v as bool?);
-        $checkedConvert('cari_TeslimCari_RehberSadeceSecsin',
-            (v) => val.cariTeslimCariRehberSadeceSecsin = v as String?);
-        $checkedConvert(
-            'cari_TeslimCari_SatisBaglanmisCarilerSecilsin',
-            (v) =>
-                val.cariTeslimCariSatisBaglanmisCarilerSecilsin = v as String?);
-        $checkedConvert('cari_Raporlar', (v) => val.cariRaporlar = v as bool?);
-        $checkedConvert(
-            'cari_Rap_Ekstre', (v) => val.cariRapEkstre = v as bool?);
-        $checkedConvert(
-            'cari_Rap_StokEkstre', (v) => val.cariRapStokEkstre = v as bool?);
-        $checkedConvert(
-            'cari_Rap_Yaslandirma', (v) => val.cariRapYaslandirma = v as bool?);
-        $checkedConvert('cari_Rap_HarDetayliYaslandir',
-            (v) => val.cariRapHarDetayliYaslandir = v as bool?);
-        $checkedConvert(
-            'cari_Rap_DovizBakiye', (v) => val.cariRapDovizBakiye = v as bool?);
-        $checkedConvert('cari_Rap_StokSatisOzeti',
-            (v) => val.cariRapStokSatisOzeti = v as bool?);
-        $checkedConvert('cari_Rap_DovizliEkstre',
-            (v) => val.cariRapDovizliEkstre = v as bool?);
-        $checkedConvert('tahsilat_Tahsilatlar',
-            (v) => val.tahsilatTahsilatlar = v as bool?);
-        $checkedConvert('tahsilat_NakitTahsilat',
-            (v) => val.tahsilatNakitTahsilat = v as bool?);
-        $checkedConvert('tahsilat_NakitTahsilat_Kaydet',
-            (v) => val.tahsilatNakitTahsilatKaydet = v as bool?);
-        $checkedConvert('tahsilat_KKartiTahsilat',
-            (v) => val.tahsilatKKartiTahsilat = v as bool?);
-        $checkedConvert('tahsilat_KKartiTahsilat_Kaydet',
-            (v) => val.tahsilatKKartiTahsilatKaydet = v as bool?);
-        $checkedConvert(
-            'tahsilat_NakitOdeme', (v) => val.tahsilatNakitOdeme = v as bool?);
-        $checkedConvert('tahsilat_NakitOdeme_Kaydet',
-            (v) => val.tahsilatNakitOdemeKaydet = v as bool?);
-        $checkedConvert('tahsilat_SenetTahsilat',
-            (v) => val.tahsilatSenetTahsilat = v as bool?);
-        $checkedConvert('tahsilat_SenetTahsilat_Kaydet',
-            (v) => val.tahsilatSenetTahsilatKaydet = v as bool?);
-        $checkedConvert('tahsilat_CekTahsilat',
-            (v) => val.tahsilatCekTahsilat = v as bool?);
-        $checkedConvert('tahsilat_CekTahsilat_Kaydet',
-            (v) => val.tahsilatCekTahsilatKaydet = v as bool?);
-        $checkedConvert('tahsilat_MuhtelifTahsilat',
-            (v) => val.tahsilatMuhtelifTahsilat = v as bool?);
-        $checkedConvert('tahsilat_MuhtelifOdeme',
-            (v) => val.tahsilatMuhtelifOdeme = v as bool?);
-        $checkedConvert('tahsilat_MuhtelifTahsilatFiltre',
-            (v) => val.tahsilatMuhtelifTahsilatFiltre = v as String?);
-        $checkedConvert('tahsilat_MuhtelifTahsilatFiltreSQL',
-            (v) => val.tahsilatMuhtelifTahsilatFiltreSQL = v as String?);
-        $checkedConvert('tahsilat_MuhtelifOdemeFiltre',
-            (v) => val.tahsilatMuhtelifOdemeFiltre = v as String?);
-        $checkedConvert('tahsilat_MuhtelifOdemeFiltreSQL',
-            (v) => val.tahsilatMuhtelifOdemeFiltreSQL = v as String?);
-        $checkedConvert('yonetici_Banka_Banka_Litesi',
-            (v) => val.yoneticiBankaBankaLitesi = v as bool?);
-        $checkedConvert('yonetici_Banka_Islemleri',
-            (v) => val.yoneticiBankaIslemleri = v as bool?);
-        $checkedConvert('yonetici_Banka_Islemleri_Sil',
-            (v) => val.yoneticiBankaIslemleriSil = v as bool?);
-        $checkedConvert('yonetici_Banka_Islem_HesapEFT',
-            (v) => val.yoneticiBankaIslemHesapEFT = v as bool?);
-        $checkedConvert('yonetici_Banka_Islem_HesapVirman',
-            (v) => val.yoneticiBankaIslemHesapVirman = v as bool?);
-        $checkedConvert('yonetici_Banka_Islem_CariEFT',
-            (v) => val.yoneticiBankaIslemCariEFT = v as bool?);
-        $checkedConvert('finans_Banka_Kasa_Transferi',
-            (v) => val.finansBankaKasaTransferi = v as bool?);
-        $checkedConvert(
-            'finans_Kasa_Listesi', (v) => val.finansKasaListesi = v as bool?);
-        $checkedConvert('finans_Kasa_Islemleri',
-            (v) => val.finansKasaIslemleri = v as bool?);
-        $checkedConvert('finans_Kasa_Islemleri_Sil',
-            (v) => val.finansKasaIslemleriSil = v as bool?);
-        $checkedConvert('finans_KasalarArasiTransfer',
-            (v) => val.finansKasalarArasiTransfer = v as bool?);
-        $checkedConvert('finans_Kasa_NakitTahsilat',
-            (v) => val.finansKasaNakitTahsilat = v as bool?);
-        $checkedConvert('finans_Kasa_NakitOdeme',
-            (v) => val.finansKasaNakitOdeme = v as bool?);
-        $checkedConvert('finans_Kasa_MuhtelifTahsilat',
-            (v) => val.finansKasaMuhtelifTahsilat = v as bool?);
-        $checkedConvert('finans_Kasa_MuhtelifOdeme',
-            (v) => val.finansKasaMuhtelifOdeme = v as bool?);
-        $checkedConvert('finans_Kasa_SenetTahsilati',
-            (v) => val.finansKasaSenetTahsilati = v as bool?);
-        $checkedConvert('finans_Kasa_SenetOdemesi',
-            (v) => val.finansKasaSenetOdemesi = v as bool?);
-        $checkedConvert('finans_Kasa_CekTahsilati',
-            (v) => val.finansKasaCekTahsilati = v as bool?);
-        $checkedConvert('finans_Kasa_CekOdemesi',
-            (v) => val.finansKasaCekOdemesi = v as bool?);
-        $checkedConvert(
-            'dekont_Listesi', (v) => val.dekontListesi = v as bool?);
-        $checkedConvert('dekont_Kaydet', (v) => val.dekontKaydet = v as bool?);
-        $checkedConvert('dekont_Duzelt', (v) => val.dekontDuzelt = v as bool?);
-        $checkedConvert('dekont_Sil', (v) => val.dekontSil = v as bool?);
-        $checkedConvert('finans_Cek_GizlenecekAlanlar',
-            (v) => val.finansCekGizlenecekAlanlar = v as List<dynamic>?);
-        $checkedConvert(
-            'finans_Cek_Musteri', (v) => val.finansCekMusteri = v as bool?);
-        $checkedConvert(
-            'finans_MCEK_Ekle', (v) => val.finansMCEKEkle = v as bool?);
-        $checkedConvert(
-            'finans_MCEK_Sil', (v) => val.finansMCEKSil = v as bool?);
-        $checkedConvert('finans_MCEK_BelgeDetayi',
-            (v) => val.finansMCEKBelgeDetayi = v as bool?);
-        $checkedConvert('finans_MCEK_Hareketler',
-            (v) => val.finansMCEKHareketler = v as bool?);
-        $checkedConvert(
-            'finans_MCEK_Evraklar', (v) => val.finansMCEKEvraklar = v as bool?);
-        $checkedConvert('finans_MCEK_CariyeCiro',
-            (v) => val.finansMCEKCariyeCiro = v as bool?);
-        $checkedConvert('finans_MCEK_TahsileCiro',
-            (v) => val.finansMCEKTahsileCiro = v as bool?);
-        $checkedConvert('finans_MCEK_TahsilDekontu',
-            (v) => val.finansMCEKTahsilDekontu = v as bool?);
-        $checkedConvert(
-            'finans_Cek_Borc', (v) => val.finansCekBorc = v as bool?);
-        $checkedConvert(
-            'finans_BorcCeki_Ekle', (v) => val.finansBorcCekiEkle = v as bool?);
-        $checkedConvert(
-            'finans_BorcCeki_Sil', (v) => val.finansBorcCekiSil = v as bool?);
-        $checkedConvert('finans_BCEK_BelgeDetayi',
-            (v) => val.finansBCEKBelgeDetayi = v as bool?);
-        $checkedConvert('finans_BCEK_Hareketler',
-            (v) => val.finansBCEKHareketler = v as bool?);
-        $checkedConvert(
-            'finans_BCEK_Evraklar', (v) => val.finansBCEKEvraklar = v as bool?);
-        $checkedConvert('finans_BCEK_OdemeDekontu',
-            (v) => val.finansBCEKOdemeDekontu = v as bool?);
-        $checkedConvert(
-            'finans_Senet_Musteri', (v) => val.finansSenetMusteri = v as bool?);
-        $checkedConvert(
-            'finans_MSEN_Ekle', (v) => val.finansMSENEkle = v as bool?);
-        $checkedConvert(
-            'finans_MSEN_Sil', (v) => val.finansMSENSil = v as bool?);
-        $checkedConvert('finans_MSEN_BelgeDetayi',
-            (v) => val.finansMSENBelgeDetayi = v as bool?);
-        $checkedConvert('finans_MSEN_Hareketler',
-            (v) => val.finansMSENHareketler = v as bool?);
-        $checkedConvert(
-            'finans_MSEN_Evraklar', (v) => val.finansMSENEvraklar = v as bool?);
-        $checkedConvert('finans_MSEN_CariyeCiro',
-            (v) => val.finansMSENCariyeCiro = v as bool?);
-        $checkedConvert('finans_MSEN_TahsileCiro',
-            (v) => val.finansMSENTahsileCiro = v as bool?);
-        $checkedConvert('finans_MSEN_TahsilDekontu',
-            (v) => val.finansMSENTahsilDekontu = v as bool?);
-        $checkedConvert(
-            'finans_Senet_Borc', (v) => val.finansSenetBorc = v as bool?);
-        $checkedConvert(
-            'finans_BSEN_Ekle', (v) => val.finansBSENEkle = v as bool?);
-        $checkedConvert(
-            'finans_BSEN_Sil', (v) => val.finansBSENSil = v as bool?);
-        $checkedConvert('finans_BSEN_BelgeDetayi',
-            (v) => val.finansBSENBelgeDetayi = v as bool?);
-        $checkedConvert('finans_BSEN_Hareketler',
-            (v) => val.finansBSENHareketler = v as bool?);
-        $checkedConvert(
-            'finans_BSEN_Evraklar', (v) => val.finansBSENEvraklar = v as bool?);
-        $checkedConvert('finans_BSEN_OdemeDekontu',
-            (v) => val.finansBSENOdemeDekontu = v as bool?);
-        $checkedConvert('finans_KKartiTahsilati',
-            (v) => val.finansKKartiTahsilati = v as bool?);
-        $checkedConvert('finans_MuhtelifTahsilat',
-            (v) => val.finansMuhtelifTahsilat = v as bool?);
-        $checkedConvert('finans_MuhtelifOdeme',
-            (v) => val.finansMuhtelifOdeme = v as bool?);
-        $checkedConvert('finans_TahsilatKayitlari',
-            (v) => val.finansTahsilatKayitlari = v as bool?);
-        $checkedConvert('finans_HizliTahsilatKayitlari',
-            (v) => val.finansHizliTahsilatKayitlari = v as bool?);
-        $checkedConvert('finans_HizliTahsilatKayitlari_Sil',
-            (v) => val.finansHizliTahsilatKayitlariSil = v as bool?);
-        $checkedConvert('finans_OrtalamaVadeTarihiHesaplama',
-            (v) => val.finansOrtalamaVadeTarihiHesaplama = v as bool?);
-        $checkedConvert(
-            'finans_OzetRapor', (v) => val.finansOzetRapor = v as bool?);
-        $checkedConvert('finans_Raporlar_FinansalDurum',
-            (v) => val.finansRaporlarFinansalDurum = v as bool?);
-        $checkedConvert('finans_Raporlar_AylikMizan',
-            (v) => val.finansRaporlarAylikMizan = v as bool?);
-        $checkedConvert(
-            'temsilci_Profil', (v) => val.temsilciProfil = v as bool?);
-        $checkedConvert('temsilci_Profil_KdvDahil',
-            (v) => val.temsilciProfilKdvDahil = v as bool?);
-        $checkedConvert('temsilci_Profil_SatisPerformansiniGizle',
-            (v) => val.temsilciProfilSatisPerformansiniGizle = v as bool?);
-        $checkedConvert('temsilci_Profil_AylaraGoreSatisiGizle',
-            (v) => val.temsilciProfilAylaraGoreSatisiGizle = v as bool?);
-        $checkedConvert('temsilci_Profil_AylaraGoreTahsilatiGizle',
-            (v) => val.temsilciProfilAylaraGoreTahsilatiGizle = v as bool?);
-        $checkedConvert('yazdirma_BluetoothYaziciKullanabilir',
-            (v) => val.yazdirmaBluetoothYaziciKullanabilir = v as bool?);
-        $checkedConvert('yazdirma_Hucre_Etiketi',
-            (v) => val.yazdirmaHucreEtiketi = v as bool?);
-        $checkedConvert(
-            'yazdirma_Hucre_Etiketi_Yazicilari',
-            (v) => val.yazdirmaHucreEtiketiYazicilari =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert('yazdirma_Dizayn_HucreEtiketi',
-            (v) => val.yazdirmaDizaynHucreEtiketi = v as List<dynamic>?);
-        $checkedConvert('yazdirma_MalToplama_Etiketi',
-            (v) => val.yazdirmaMalToplamaEtiketi = v as bool?);
-        $checkedConvert(
-            'yazdirma_Mal_Toplama_Yazicilari',
-            (v) => val.yazdirmaMalToplamaYazicilari =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert('yazdirma_Dizayn_MalToplama',
-            (v) => val.yazdirmaDizaynMalToplama = v as List<dynamic>?);
-        $checkedConvert('yazdirma_MalKontrol_Etiketi',
-            (v) => val.yazdirmaMalKontrolEtiketi = v as bool?);
-        $checkedConvert(
-            'yazdirma_Mal_Kontrol_Yazicilari',
-            (v) => val.yazdirmaMalKontrolYazicilari =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert('yazdirma_Dizayn_MalKontrol',
-            (v) => val.yazdirmaDizaynMalKontrol = v as List<dynamic>?);
-        $checkedConvert('yazdirma_DAT', (v) => val.yazdirmaDAT = v as bool?);
-        $checkedConvert(
-            'yazdirma_DAT_Yazicilari',
-            (v) => val.yazdirmaDATYazicilari =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'yazdirma_Dizayn_DAT',
-            (v) => val.yazdirmaDizaynDAT =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert('yazdirma_Paketleme_Etiketi',
-            (v) => val.yazdirmaPaketlemeEtiketi = v as bool?);
-        $checkedConvert('yazdirma_Paketleme_KopyaSayisiGizle',
-            (v) => val.yazdirmaPaketlemeKopyaSayisiGizle = v as bool?);
-        $checkedConvert(
-            'yazdirma_Paketleme_Yazicilari',
-            (v) => val.yazdirmaPaketlemeYazicilari =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'yazdirma_Dizayn_Paketleme',
-            (v) => val.yazdirmaDizaynPaketleme =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert(
-            'yazdirma_SatisIrs', (v) => val.yazdirmaSatisIrs = v as bool?);
-        $checkedConvert(
-            'yazdirma_SatisFat', (v) => val.yazdirmaSatisFat = v as bool?);
-        $checkedConvert(
-            'yazdirma_SatisFat_Yazicilari',
-            (v) => val.yazdirmaSatisFatYazicilari =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'yazdirma_Dizayn_SatisFat',
-            (v) => val.yazdirmaDizaynSatisFat =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert(
-            'yazdirma_AlisFat', (v) => val.yazdirmaAlisFat = v as bool?);
-        $checkedConvert('yazdirma_Dizayn_AlisFat',
-            (v) => val.yazdirmaDizaynAlisFat = v as List<dynamic>?);
-        $checkedConvert(
-            'yazdirma_Mustahsil', (v) => val.yazdirmaMustahsil = v as bool?);
-        $checkedConvert(
-            'yazdirma_MusSip', (v) => val.yazdirmaMusSip = v as bool?);
-        $checkedConvert('yazdirma_MusSip_Yazicilari',
-            (v) => val.yazdirmaMusSipYazicilari = v as List<dynamic>?);
-        $checkedConvert(
-            'yazdirma_Dizayn_MusSip',
-            (v) => val.yazdirmaDizaynMusSip =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert(
-            'yazdirma_SaticiSip', (v) => val.yazdirmaSaticiSip = v as bool?);
-        $checkedConvert(
-            'yazdirma_Dizayn_SaticiSip',
-            (v) => val.yazdirmaDizaynSaticiSip =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert('yazdirma_ATAL', (v) => val.yazdirmaATAL = v as bool?);
-        $checkedConvert(
-            'yazdirma_ATAL_Yazicilari',
-            (v) => val.yazdirmaATALYazicilari =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'yazdirma_Dizayn_ATAL',
-            (v) => val.yazdirmaDizaynATAL =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert('yazdirma_OdemeMakbuzu',
-            (v) => val.yazdirmaOdemeMakbuzu = v as bool?);
-        $checkedConvert('yazdirma_OdemeMakbuzu_Yazicilari',
-            (v) => val.yazdirmaOdemeMakbuzuYazicilari = v as List<dynamic>?);
-        $checkedConvert(
-            'yazdirma_Dizayn_OdemeMakbuzu',
-            (v) => val.yazdirmaDizaynOdemeMakbuzu =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert(
-            'yazdirma_AlisIrs', (v) => val.yazdirmaAlisIrs = v as bool?);
-        $checkedConvert(
-            'yazdirma_AlisIrs_Yazicilari',
-            (v) => val.yazdirmaAlisIrsYazicilari =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'yazdirma_Dizayn_AlisIrs',
-            (v) => val.yazdirmaDizaynAlisIrs =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert(
-            'yazdirma_IsEmri', (v) => val.yazdirmaIsEmri = v as bool?);
-        $checkedConvert(
-            'yazdirma_AmbarCikis', (v) => val.yazdirmaAmbarCikis = v as bool?);
-        $checkedConvert(
-            'yazdirma_AmbarGiris', (v) => val.yazdirmaAmbarGiris = v as bool?);
-        $checkedConvert('yazdirma_CariHareket',
-            (v) => val.yazdirmaCariHareket = v as bool?);
-        $checkedConvert('uretim_FiyatGorebilir',
-            (v) => val.uretimFiyatGorebilir = v as bool?);
-        $checkedConvert('uretim_USK', (v) => val.uretimUSK = v as bool?);
-        $checkedConvert(
-            'uretim_USK_Kaydet', (v) => val.uretimUSKKaydet = v as bool?);
-        $checkedConvert(
-            'uretim_USK_Duzelt', (v) => val.uretimUSKDuzelt = v as bool?);
-        $checkedConvert('uretim_USK_Sil', (v) => val.uretimUSKSil = v as bool?);
-        $checkedConvert('uretim_USK_KacGunlukKayitlarListelensin',
-            (v) => val.uretimUSKKacGunlukKayitlarListelensin = v as int?);
-        $checkedConvert('uretim_USK_MiktarBarkoddan',
-            (v) => val.uretimUSKMiktarBarkoddan = v as bool?);
-        $checkedConvert('uretim_USK_Miktar1Gelsin',
-            (v) => val.uretimUSKMiktar1Gelsin = v as bool?);
-        $checkedConvert('sirket_Depo_Uretim_Giris',
-            (v) => val.sirketDepoUretimGiris = v as int?);
-        $checkedConvert('sirket_Depo_Uretim_Cikis',
-            (v) => val.sirketDepoUretimCikis = v as int?);
-        $checkedConvert('uretim_USK_IsEmriOtoGelsin',
-            (v) => val.uretimUSKIsEmriOtoGelsin = v as bool?);
-        $checkedConvert('uretim_USK_SoruSorulmasin',
-            (v) => val.uretimUSKSoruSorulmasin = v as bool?);
-        $checkedConvert('uretim_USK_StokRehberiAcilmasin',
-            (v) => val.uretimUSKStokRehberiAcilmasin = v as bool?);
-        $checkedConvert('uretim_USK_KlavyeEngelle',
-            (v) => val.uretimUSKKlavyeEngelle = v as bool?);
-        $checkedConvert('uretim_USK_DepoOnceligi',
-            (v) => val.uretimUSKDepoOnceligi = v as String?);
-        $checkedConvert('uretim_USK_FisiErpUretsin',
-            (v) => val.uretimUSKFisiErpUretsin = v as bool?);
-        $checkedConvert('uretim_USK_GizlenecekAlanlar',
-            (v) => val.uretimUSKGizlenecekAlanlar = v as List<dynamic>?);
-        $checkedConvert('uretim_USK_BosGecilmeyecekAlanlar',
-            (v) => val.uretimUSKBosGecilmeyecekAlanlar = v as List<dynamic>?);
-        $checkedConvert('uretim_USK_DegismeyecekAlanlar',
-            (v) => val.uretimUSKDegismeyecekAlanlar = v as List<dynamic>?);
-        $checkedConvert('uretim_USK_OlcuBirimi',
-            (v) => val.uretimUSKOlcuBirimi = v as int?);
-        $checkedConvert('uretim_USK_OtoYazdir',
-            (v) => val.uretimUSKOtoYazdir = v as String?);
-        $checkedConvert('uretim_USK_KalemliYapi',
-            (v) => val.uretimUSKKalemliYapi = v as bool?);
-        $checkedConvert('uretim_USK_KalemliYapi_StokMevcutaEklensin',
-            (v) => val.uretimUSKKalemliYapiStokMevcutaEklensin = v as bool?);
-        $checkedConvert('uretim_USK_KalemliYapi_OtoEtiketYazdir',
-            (v) => val.uretimUSKKalemliYapiOtoEtiketYazdir = v as bool?);
-        $checkedConvert('uretim_USK_KalemliYapi_AyniBarkodOkutulamaz',
-            (v) => val.uretimUSKKalemliYapiAyniBarkodOkutulamaz = v as bool?);
-        $checkedConvert('uretim_USK_KalemliYapi_OkutulanEnUsteEklensin',
-            (v) => val.uretimUSKKalemliYapiOkutulanEnUsteEklensin = v as bool?);
-        $checkedConvert('uretim_USK_KalemliYapi_KalemDuzeltilemesin',
-            (v) => val.uretimUSKKalemliYapiKalemDuzeltilemesin = v as bool?);
-        $checkedConvert(
-            'uretim_ReceteIzleme', (v) => val.uretimReceteIzleme = v as bool?);
-        $checkedConvert(
-            'uretim_MalToplama', (v) => val.uretimMalToplama = v as bool?);
-        $checkedConvert('uretim_MalToplama_Ekle',
-            (v) => val.uretimMalToplamaEkle = v as bool?);
-        $checkedConvert('uretim_MalToplama_Sil',
-            (v) => val.uretimMalToplamaSil = v as bool?);
-        $checkedConvert('uretim_MalToplama_KlavyeEngelle',
-            (v) => val.uretimMalToplamaKlavyeEngelle = v as bool?);
-        $checkedConvert('uretim_MalToplama_BarkodOkutsun',
-            (v) => val.uretimMalToplamaBarkodOkutsun = v as bool?);
-        $checkedConvert(
-            'uretim_MalToplama_BelgeTipleri',
-            (v) => val.uretimMalToplamaBelgeTipleri =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert('uretim_MalToplama_ReceteFiltresi',
-            (v) => val.uretimMalToplamaReceteFiltresi = v as String?);
-        $checkedConvert('uretim_MalToplama_ReceteFiltresiSQL',
-            (v) => val.uretimMalToplamaReceteFiltresiSQL = v as String?);
-        $checkedConvert('uretim_IsEmri', (v) => val.uretimIsEmri = v as bool?);
-        $checkedConvert(
-            'uretim_IsEmri_Ekle', (v) => val.uretimIsEmriEkle = v as bool?);
-        $checkedConvert(
-            'uretim_IsEmri_Duzelt', (v) => val.uretimIsEmriDuzelt = v as bool?);
-        $checkedConvert(
-            'uretim_IsEmri_Sil', (v) => val.uretimIsEmriSil = v as bool?);
-        $checkedConvert('taltek_STEK', (v) => val.taltekSTEK = v as bool?);
-        $checkedConvert(
-            'taltek_STEK_Kaydet', (v) => val.taltekSTEKKaydet = v as bool?);
-        $checkedConvert(
-            'taltek_STEK_Duzelt', (v) => val.taltekSTEKDuzelt = v as bool?);
-        $checkedConvert(
-            'taltek_STEK_Sil', (v) => val.taltekSTEKSil = v as bool?);
-        $checkedConvert('taltek_STEK_KapalilarListenlenmesin',
-            (v) => val.taltekSTEKKapalilarListenlenmesin = v as bool?);
-        $checkedConvert('taltek_STEK_OnayIslemleri',
-            (v) => val.taltekSTEKOnayIslemleri = v as bool?);
-        $checkedConvert('taltek_STEK_CariKoduDegistir',
-            (v) => val.taltekSTEKCariKoduDegistir = v as bool?);
-        $checkedConvert('taltek_STEK_FiyatDegistirilmesin',
-            (v) => val.taltekSTEKFiyatDegistirilmesin = v as bool?);
-        $checkedConvert('taltek_STEK_Aciklamalar_YetkiTuru',
-            (v) => val.taltekSTEKAciklamalarYetkiTuru = v as String?);
-        $checkedConvert('taltek_STEK_GizlenecekAlanlar',
-            (v) => val.taltekSTEKGizlenecekAlanlar = v as List<dynamic>?);
-        $checkedConvert('taltek_STEK_DegismeyecekAlanlar',
-            (v) => val.taltekSTEKDegismeyecekAlanlar = v as List<dynamic>?);
-        $checkedConvert('taltek_STEK_BosGecilmeyecekAlanlar',
-            (v) => val.taltekSTEKBosGecilmeyecekAlanlar = v as List<dynamic>?);
-        $checkedConvert(
-            'taltek_STEK_AciklamaAlanlari',
-            (v) => val.taltekSTEKAciklamaAlanlari =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert('taltek_STEK_OzelKod1Degeri',
-            (v) => val.taltekSTEKOzelKod1Degeri = v as String?);
-        $checkedConvert('taltek_STEK_DipFiyatUygulamasi',
-            (v) => val.taltekSTEKDipFiyatUygulamasi = v as bool?);
-        $checkedConvert('taltek_STEK_DipFiyatSaha',
-            (v) => val.taltekSTEKDipFiyatSaha = v as String?);
-        $checkedConvert('taltek_STEK_DipFiyatEylem',
-            (v) => val.taltekSTEKDipFiyatEylem = v as String?);
-        $checkedConvert('taltek_ATAL', (v) => val.taltekATAL = v as bool?);
-        $checkedConvert(
-            'taltek_ATAL_Kaydet', (v) => val.taltekATALKaydet = v as bool?);
-        $checkedConvert(
-            'taltek_ATAL_Duzelt', (v) => val.taltekATALDuzelt = v as bool?);
-        $checkedConvert(
-            'taltek_ATAL_Sil', (v) => val.taltekATALSil = v as bool?);
-        $checkedConvert('taltek_ATAL_CariEMailAlani',
-            (v) => val.taltekATALCariEMailAlani = v as String?);
-        $checkedConvert('taltek_ATAL_OnayIslemleri',
-            (v) => val.taltekATALOnayIslemleri = v as bool?);
-        $checkedConvert('taltek_ATAL_CariKoduDegistir',
-            (v) => val.taltekATALCariKoduDegistir = v as bool?);
-        $checkedConvert('taltek_ATAL_Aciklamalar_YetkiTuru',
-            (v) => val.taltekATALAciklamalarYetkiTuru = v as String?);
-        $checkedConvert(
-            'taltek_ATAL_GizlenecekAlanlar',
-            (v) => val.taltekATALGizlenecekAlanlar =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'taltek_ATAL_AciklamaAlanlari',
-            (v) => val.taltekATALAciklamaAlanlari =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert('taltek_ATAL_BelgeKopyala',
-            (v) => val.taltekATALBelgeKopyala = v as bool?);
-        $checkedConvert('taltek_STAL', (v) => val.taltekSTAL = v as bool?);
-        $checkedConvert(
-            'taltek_STAL_Kaydet', (v) => val.taltekSTALKaydet = v as bool?);
-        $checkedConvert(
-            'taltek_STAL_Duzelt', (v) => val.taltekSTALDuzelt = v as bool?);
-        $checkedConvert(
-            'taltek_STAL_Sil', (v) => val.taltekSTALSil = v as bool?);
-        $checkedConvert('taltek_STAL_KapalilarListenlenmesin',
-            (v) => val.taltekSTALKapalilarListenlenmesin = v as bool?);
-        $checkedConvert('taltek_STAL_OnayIslemleri',
-            (v) => val.taltekSTALOnayIslemleri = v as bool?);
-        $checkedConvert('taltek_STAL_CariKoduDegistir',
-            (v) => val.taltekSTALCariKoduDegistir = v as bool?);
-        $checkedConvert('taltek_STAL_FiyatDegistirilmesin',
-            (v) => val.taltekSTALFiyatDegistirilmesin = v as bool?);
-        $checkedConvert(
-            'taltek_STAL_GizlenecekAlanlar',
-            (v) => val.taltekSTALGizlenecekAlanlar =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert('taltek_STAL_DipFiyatUygulamasi',
-            (v) => val.taltekSTALDipFiyatUygulamasi = v as bool?);
-        $checkedConvert('ebelge_EFat', (v) => val.ebelgeEFat = v as bool?);
-        $checkedConvert('ebelge_EFatCariGuncelle',
-            (v) => val.ebelgeEFatCariGuncelle = v as bool?);
-        $checkedConvert(
-            'ebelge_EFatSorgula', (v) => val.ebelgeEFatSorgula = v as bool?);
-        $checkedConvert('ebelge_EFatGelenKutusu',
-            (v) => val.ebelgeEFatGelenKutusu = v as bool?);
-        $checkedConvert('ebelge_EFatTaslakOlustur',
-            (v) => val.ebelgeEFatTaslakOlustur = v as bool?);
-        $checkedConvert('ebelge_EFatTaslakSil',
-            (v) => val.ebelgeEFatTaslakSil = v as bool?);
-        $checkedConvert('ebelge_EFatTaslakBasim',
-            (v) => val.ebelgeEFatTaslakBasim = v as bool?);
-        $checkedConvert('ebelge_EFatGoruntule',
-            (v) => val.ebelgeEFatGoruntule = v as bool?);
-        $checkedConvert('ebelge_EFatAlisFatOlustur',
-            (v) => val.ebelgeEFatAlisFatOlustur = v as bool?);
-        $checkedConvert(
-            'ebelge_EFatGonder', (v) => val.ebelgeEFatGonder = v as bool?);
-        $checkedConvert(
-            'ebelge_EFat_Dizayn', (v) => val.ebelgeEFatDizayn = v as int?);
-        $checkedConvert('ebelge_EArsiv', (v) => val.ebelgeEArsiv = v as bool?);
-        $checkedConvert('ebelge_EArsivTaslakOlustur',
-            (v) => val.ebelgeEArsivTaslakOlustur = v as bool?);
-        $checkedConvert('ebelge_EArsivTaslakSil',
-            (v) => val.ebelgeEArsivTaslakSil = v as bool?);
-        $checkedConvert('ebelge_EArsivTaslakBasim',
-            (v) => val.ebelgeEArsivTaslakBasim = v as bool?);
-        $checkedConvert('ebelge_EArsivGoruntule',
-            (v) => val.ebelgeEArsivGoruntule = v as bool?);
-        $checkedConvert('ebelge_EArsivSorgula',
-            (v) => val.ebelgeEArsivSorgula = v as bool?);
-        $checkedConvert(
-            'ebelge_EArsivGonder', (v) => val.ebelgeEArsivGonder = v as bool?);
-        $checkedConvert(
-            'ebelge_EArsiv_Dizayn', (v) => val.ebelgeEArsivDizayn = v as int?);
-        $checkedConvert(
-            'ebelge_EIrsaliye', (v) => val.ebelgeEIrsaliye = v as bool?);
-        $checkedConvert('ebelge_EIrsaliyeGidenKutusu',
-            (v) => val.ebelgeEIrsaliyeGidenKutusu = v as bool?);
-        $checkedConvert('ebelge_EIrsaliyeGelenKutusu',
-            (v) => val.ebelgeEIrsaliyeGelenKutusu = v as bool?);
-        $checkedConvert('ebelge_EIrsaliyeTaslakOlustur',
-            (v) => val.ebelgeEIrsaliyeTaslakOlustur = v as bool?);
-        $checkedConvert('ebelge_EIrsaliyeTaslakSil',
-            (v) => val.ebelgeEIrsaliyeTaslakSil = v as bool?);
-        $checkedConvert('ebelge_EIrsaliyeTaslakBasim',
-            (v) => val.ebelgeEIrsaliyeTaslakBasim = v as bool?);
-        $checkedConvert('ebelge_EIrsaliyeGonder',
-            (v) => val.ebelgeEIrsaliyeGonder = v as bool?);
-        $checkedConvert('ebelge_EIrsaliyeGoruntule',
-            (v) => val.ebelgeEIrsaliyeGoruntule = v as bool?);
-        $checkedConvert('ebelge_EIrsaliye_Dizayn',
-            (v) => val.ebelgeEIrsaliyeDizayn = v as int?);
-        $checkedConvert('entegrasyon_UETDSESYA',
-            (v) => val.entegrasyonUETDSESYA = v as bool?);
-        $checkedConvert('entegrasyon_UETDSESYA_Iptal',
-            (v) => val.entegrasyonUETDSESYAIptal = v as bool?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'yazdirmaSatisIrsYazicilari': 'yazdirma_SatisIrs_Yazicilari',
-        'yazdirmaDizaynSatisIrs': 'yazdirma_Dizayn_SatisIrs',
-        'yazdirmaSatisTalebi': 'yazdirma_SatisTalebi',
-        'yazdirmaSatisTalebiYazicilari': 'yazdirma_SatisTalebi_Yazicilari',
-        'yazdirmaDizaynSatisTalebi': 'yazdirma_Dizayn_SatisTalebi',
-        'yazdirmaSatisTeklifi': 'yazdirma_SatisTeklifi',
-        'yazdirmaDizaynSatisTeklifi': 'yazdirma_Dizayn_SatisTeklifi',
-        'yazdirmaSayim': 'yazdirma_Sayim',
-        'yazdirmaSayimYazicilari': 'yazdirma_Sayim_Yazicilari',
-        'yazdirmaDizaynSayim': 'yazdirma_Dizayn_Sayim',
-        'yazdirmaSevkiyatEtiketi': 'yazdirma_Sevkiyat_Etiketi',
-        'yazdirmaSevkiyatEtiketiYazicilari':
-            'yazdirma_Sevkiyat_Etiketi_Yazicilari',
-        'yazdirmaDizaynSevkiyatEtiketi': 'yazdirma_Dizayn_SevkiyatEtiketi',
-        'yazdirmaSevkiyatEtiketiKopyaSayisiGizle':
-            'yazdirma_Sevkiyat_Etiketi_KopyaSayisiGizle',
-        'yazdirmaSerbest': 'yazdirma_Serbest',
-        'yazdirmaSerbestYazicilari': 'yazdirma_Serbest_Yazicilari',
-        'yazdirmaDizaynSerbest': 'yazdirma_Dizayn_Serbest',
-        'yazdirmaSeriEtiketi': 'yazdirma_SeriEtiketi',
-        'yazdirmaSeriEtiketiYazicilari': 'yazdirma_Seri_Etiketi_Yazicilari',
-        'yazdirmaDizaynSeriEtiketi': 'yazdirma_Dizayn_SeriEtiketi',
-        'yazdirmaStokEtiketi': 'yazdirma_Stok_Etiketi',
-        'yazdirmaStokEtiketiYazicilari': 'yazdirma_Stok_Etiketi_Yazicilari',
-        'yazdirmaDizaynStokEtiketi': 'yazdirma_Dizayn_StokEtiketi',
-        'yazdirmaTahsilatMakbuzu': 'yazdirma_TahsilatMakbuzu',
-        'yazdirmaDizaynTahsilatMakbuzu': 'yazdirma_Dizayn_TahsilatMakbuzu',
-        'yazdirmaUSK': 'yazdirma_USK',
-        'yazdirmaUSKYazicilari': 'yazdirma_USK_Yazicilari',
-        'yazdirmaDizaynUSK': 'yazdirma_Dizayn_USK',
-        'yazdirmaUretMalTop': 'yazdirma_UretMalTop',
-        'yazdirmaUretMalTopYazicilari': 'yazdirma_UretMalTop_Yazicilari',
-        'yazdirmaDizaynUretMalTop': 'yazdirma_Dizayn_UretMalTop',
-        'sirketTamEkranAcilsin': 'sirket_TamEkranAcilsin',
-        'sirketRehberdeCariKodGizle': 'sirket_RehberdeCariKodGizle',
-        'sirketRehberdeStokKodGizle': 'sirket_RehberdeStokKodGizle',
-        'sirketRaporlardaFiyatGizle': 'sirket_RaporlardaFiyatGizle',
-        'sirketTarihDegismesin': 'sirket_TarihDegismesin',
-        'sirketDevirSirketineGiris': 'sirket_DevirSirketineGiris',
-        'sirketKontrolluAktarBelgeTipleri':
-            'sirket_KontrolluAktar_BelgeTipleri',
-        'sirketKontrolluAktarBelgeNoGoster':
-            'sirket_KontrolluAktar_BelgeNoGoster',
-        'sirketKontrolAciklamasiBelgeTipleri':
-            'sirket_KontrolAciklamasi_BelgeTipleri',
-        'sirketTLFiyatGelsinBelgeTipleri': 'sirket_TLFiyatGelsin_BelgeTipleri',
-        'sirketKalemKayitKontrolBelgeTipleri':
-            'sirket_KalemKayitKontrol_BelgeTipleri',
-        'sirketAktifDepolar': 'sirket_aktifDepolar',
-        'sirketSatisDepo': 'sirket_satisDepo',
-        'sirketSatisDepoOzellestir': 'sirket_satisDepo_Ozellestir',
-        'sirketSatisDepoMusSip': 'sirket_satisDepo_MusSip',
-        'sirketSatisDepoSatisFat': 'sirket_satisDepo_SatisFat',
-        'sirketSatisDepoSatisIrs': 'sirket_satisDepo_SatisIrs',
-        'sirketAlisDepo': 'sirket_alisDepo',
-        'sirketIadeDepo': 'sirket_iadeDepo',
-        'sirketProjeKodu': 'sirket_projeKodu',
-        'sirketAktifProjeler': 'sirket_aktifProjeler',
-        'ayarlarFirmaAyarlari': 'ayarlar_FirmaAyarlari',
-        'ayarlarOturumlar': 'ayarlar_Oturumlar',
-        'sirketSifreHatirlamaDurumu': 'sirket_SifreHatirlamaDurumu',
-        'genelDovizKurlari': 'genel_DovizKurlari',
-        'genelDovizKurlariEkle': 'genel_DovizKurlari_Ekle',
-        'genelDovizKurlariDuzelt': 'genel_DovizKurlari_Duzelt',
-        'genelDovizKurlariSil': 'genel_DovizKurlari_Sil',
-        'genelBelgeKontrol': 'genel_BelgeKontrol',
-        'genelBelgeKontrolEkle': 'genel_BelgeKontrol_Ekle',
-        'genelBelgeKontrolSil': 'genel_BelgeKontrol_Sil',
-        'genelBelgeKontrolBelgeTipleri': 'genel_BelgeKontrol_BelgeTipleri',
-        'genelBelgeKontrolBarkodOkutsun': 'genel_BelgeKontrol_BarkodOkutsun',
-        'genelBelgeKontrolMiktarOtomatikGelsin':
-            'genel_BelgeKontrol_MiktarOtomatikGelsin',
-        'genelBelgeKontrolKalemDetaySorulmasin':
-            'genel_BelgeKontrol_KalemDetaySorulmasin',
-        'genelBelgeKontrolBelgeOnaySormasin':
-            'genel_BelgeKontrol_BelgeOnaySormasin',
-        'malKabulFiyatDegistirilmesin': 'malKabul_FiyatDegistirilmesin',
-        'malKabulAlisIrsBelgeTipleri': 'malKabul_AlisIrs_BelgeTipleri',
-        'malKabulAlisIrsGizlenecekAlanlar':
-            'malKabul_AlisIrs_GizlenecekAlanlar',
-        'malKabulAlisIrsAciklamaAlanlari': 'malKabul_AlisIrs_AciklamaAlanlari',
-        'malKabulSatinAlma': 'malKabul_SatinAlma',
-        'malKabulSatinAlmaKaydet': 'malKabul_SatinAlma_Kaydet',
-        'malKabulSatinAlmaDuzelt': 'malKabul_SatinAlma_Duzelt',
-        'malKabulSatinAlmaSil': 'malKabul_SatinAlma_Sil',
-        'malKabulAlisIrsaliyesiFiyatGor': 'malKabul_AlisIrsaliyesiFiyatGor',
-        'malKabulAlisIrsDigerSekmesiGoster':
-            'malKabul_AlisIrs_DigerSekmesiGoster',
-        'malKabulAlisIrsSipBagSecenegi': 'malKabul_AlisIrs_SipBagSecenegi',
-        'malKabulAlisIrsReferansStokUygulamasi':
-            'malKabul_AlisIrs_ReferansStokUygulamasi',
-        'malKabulAlisIrsSipBagSipHariciKalemEklenebilir':
-            'malKabul_AlisIrs_SipBag_SipHariciKalemEklenebilir',
-        'malKabulAlisIrsSipBagFazlaTeslimatYapilabilir':
-            'malKabul_AlisIrs_SipBag_FazlaTeslimatYapilabilir',
-        'malKabulAlisIrsSipBagSipOkutulsun':
-            'malKabul_AlisIrs_SipBag_SipOkutulsun',
-        'malKabulAlisIrsSipBagCokluSecim': 'malKabul_AlisIrs_SipBag_CokluSecim',
-        'malKabulAlisIrsSipBagTumKalemlerSecilsin':
-            'malKabul_AlisIrs_SipBag_TumKalemlerSecilsin',
-        'malKabulAlisIrsSipBagEslesmeDurumu':
-            'malKabul_AlisIrs_SipBag_EslesmeDurumu',
-        'malKabulAlisIrsBarkodluGiris': 'malKabul_AlisIrs_BarkodluGiris',
-        'malKabulAlisIrsMiktarOtomatikGelsin':
-            'malKabul_AlisIrs_MiktarOtomatikGelsin',
-        'malKabulAlisIrsKalemDetaySorulmasin':
-            'malKabul_AlisIrs_KalemDetaySorulmasin',
-        'malKabulAlisIrsKalemlerBirlestirilsin':
-            'malKabul_AlisIrs_KalemlerBirlestirilsin',
-        'malKabulAlisIrsStokRehberiAcilmasin':
-            'malKabul_AlisIrs_StokRehberiAcilmasin',
-        'malKabulAlisIrsKalemDuzeltilemesin':
-            'malKabul_AlisIrs_KalemDuzeltilemesin',
-        'malKabulAlisIrsTekrarEdenBarkod': 'malKabul_AlisIrs_TekrarEdenBarkod',
-        'malKabulAlisIrsKlavyeEngelle': 'malKabul_AlisIrs_KlavyeEngelle',
-        'malKabulAlisIrsMiktar1Gelsin': 'malKabul_AlisIrs_Miktar1Gelsin',
-        'malKabulAlisIrsRaporlar': 'malKabul_AlisIrs_Raporlar',
-        'malKabulAlisIrsKalemRaporu': 'malKabul_AlisIrs_KalemRaporu',
-        'malKabulAlisIrsOtoBasimYap': 'malKabul_AlisIrs_OtoBasimYap',
-        'malKabulAlisIrsKacGunlukKayitlarListelensin':
-            'malKabul_AlisIrs_KacGunlukKayitlarListelensin',
-        'malKabulAlisIrsFiyatSirasi': 'malKabul_AlisIrs_FiyatSirasi',
-        'malKabulAlisIrsBirim1denKaydet': 'malKabul_AlisIrs_Birim1denKaydet',
-        'malKabulAlisIrsCariKoduDegistir': 'malKabul_AlisIrs_CariKoduDegistir',
-        'malKabulAlisIrsCariRehPlaEslesmesin':
-            'malKabul_AlisIrs_CariRehPlaEslesmesin',
-        'malKabulIade': 'malKabul_Iade',
-        'malKabulIadeKaydet': 'malKabul_Iade_Kaydet',
-        'malKabulIadeDuzelt': 'malKabul_Iade_Duzelt',
-        'malKabulIadeSil': 'malKabul_Iade_Sil',
-        'malKabulAlisFaturasiBelgeTipleri':
-            'malKabul_AlisFaturasi_BelgeTipleri',
-        'malKabulAlisFaturasi': 'malKabul_AlisFaturasi',
-        'malKabulAlisFaturasiKaydet': 'malKabul_AlisFaturasi_Kaydet',
-        'malKabulAlisFaturasiDuzelt': 'malKabul_AlisFaturasi_Duzelt',
-        'malKabulAlisFaturasiSil': 'malKabul_AlisFaturasi_Sil',
-        'malKabulAlisFatDigerSekmesiGoster':
-            'malKabul_AlisFat_DigerSekmesiGoster',
-        'malKabulAlisFatKacGunlukKayitlarListelensin':
-            'malKabul_AlisFat_KacGunlukKayitlarListelensin',
-        'malKabulAlisFatFiyatSirasi': 'malKabul_AlisFat_FiyatSirasi',
-        'malKabulAlisFatBirim1denKaydet': 'malKabul_AlisFat_Birim1denKaydet',
-        'malKabulAlisFatAciklamalarYetkiTuru':
-            'malKabul_AlisFat_Aciklamalar_YetkiTuru',
-        'malKabulAlisFatAciklamaAlanlari': 'malKabul_AlisFat_AciklamaAlanlari',
-        'malKabulAlisFatCariKoduDegistir': 'malKabul_AlisFat_CariKoduDegistir',
-        'malKabulAlisFatBarkodluGiris': 'malKabul_AlisFat_BarkodluGiris',
-        'malKabulAlisFatMiktarOtomatikGelsin':
-            'malKabul_AlisFat_MiktarOtomatikGelsin',
-        'malKabulAlisFatKalemDetaySorulmasin':
-            'malKabul_AlisFat_KalemDetaySorulmasin',
-        'malKabulAlisFatStokRehberiAcilmasin':
-            'malKabul_AlisFat_StokRehberiAcilmasin',
-        'malKabulAlisFatKalemDuzeltilemesin':
-            'malKabul_AlisFat_KalemDuzeltilemesin',
-        'malKabulAlisFatKlavyeEngelle': 'malKabul_AlisFat_KlavyeEngelle',
-        'malKabulAlisFatMiktar1Gelsin': 'malKabul_AlisFat_Miktar1Gelsin',
-        'malKabulAlisFatReferansStokUygulamasi':
-            'malKabul_AlisFat_ReferansStokUygulamasi',
-        'malKabulAlisFatSipBagSipHariciKalemEklenebilir':
-            'malKabul_AlisFat_SipBag_SipHariciKalemEklenebilir',
-        'malKabulAlisFatSipBagFazlaTeslimatYapilabilir':
-            'malKabul_AlisFat_SipBag_FazlaTeslimatYapilabilir',
-        'malKabulAlisFatSipBagSipOkutulsun':
-            'malKabul_AlisFat_SipBag_SipOkutulsun',
-        'malKabulAlisFatSipBagCokluSecim': 'malKabul_AlisFat_SipBag_CokluSecim',
-        'malKabulAlisFatSipBagTumKalemlerSecilsin':
-            'malKabul_AlisFat_SipBag_TumKalemlerSecilsin',
-        'malKabulAlisFatSipBagEslesmeDurumu':
-            'malKabul_AlisFat_SipBag_EslesmeDurumu',
-        'malKabulAlisFatRaporlar': 'malKabul_AlisFat_Raporlar',
-        'malKabulAlisFatKalemRaporu': 'malKabul_AlisFat_KalemRaporu',
-        'malKabulMustahsil': 'malKabul_Mustahsil',
-        'malKabulMustahsilEkle': 'malKabul_Mustahsil_Ekle',
-        'malKabulMustahsilDuzelt': 'malKabul_Mustahsil_Duzelt',
-        'malKabulMustahsilSil': 'malKabul_Mustahsil_Sil',
-        'transferDAT': 'transfer_DAT',
-        'transferDATKaydet': 'transfer_DAT_Kaydet',
-        'transferDATDuzelt': 'transfer_DAT_Duzelt',
-        'transferDATSil': 'transfer_DAT_Sil',
-        'transferDATFiyatGor': 'transfer_DAT_FiyatGor',
-        'transferDATOtoEtiketBas': 'transfer_DAT_OtoEtiketBas',
-        'transferDATVarsayilanCikisDepo': 'transfer_DAT_VarsayilanCikisDepo',
-        'transferDATVarsayilanGirisDepo': 'transfer_DAT_VarsayilanGirisDepo',
-        'transferDATEIrsIsaretleyemesin': 'transfer_DAT_eIrsIsaretleyemesin',
-        'transferDATDigerSekmesiGoster': 'transfer_DAT_DigerSekmesiGoster',
-        'transferDATBarkodluGiris': 'transfer_DAT_BarkodluGiris',
-        'transferDATMiktarOtomatikGelsin': 'transfer_DAT_MiktarOtomatikGelsin',
-        'transferDATKalemDetaySorulmasin': 'transfer_DAT_KalemDetaySorulmasin',
-        'transferDATStokRehberiAcilmasin': 'transfer_DAT_StokRehberiAcilmasin',
-        'transferDATKalemDuzeltilemesin': 'transfer_DAT_KalemDuzeltilemesin',
-        'transferDATKlavyeEngelle': 'transfer_DAT_KlavyeEngelle',
-        'transferDATMiktar1Gelsin': 'transfer_DAT_Miktar1Gelsin',
-        'transferDATKalemlerBirlestirilsin':
-            'transfer_DAT_KalemlerBirlestirilsin',
-        'transferDATKacGunlukKayitlarListelensin':
-            'transfer_DAT_KacGunlukKayitlarListelensin',
-        'transferDATOnayIslemleri': 'transfer_DAT_OnayIslemleri',
-        'transferDATOnayIslemleriDepolar': 'transfer_DAT_OnayIslemleri_Depolar',
-        'transferDATEkAlan2Hatirla': 'transfer_DAT_EkAlan2Hatirla',
-        'transferDATEkAlan2Tablodan': 'transfer_DAT_EkAlan2Tablodan',
-        'transferDATLokalDATSeciliGelmesin':
-            'transfer_DAT_LokalDATSeciliGelmesin',
-        'transferDATSeriGirisHarYapabilsin':
-            'transfer_DAT_SeriGirisHarYapabilsin',
-        'transferDATBirim1denKaydet': 'transfer_DAT_Birim1denKaydet',
-        'transferDATBarkod2Sor': 'transfer_DAT_Barkod2Sor',
-        'transferDATBosGecilmeyecekAlanlar':
-            'transfer_DAT_BosGecilmeyecekAlanlar',
-        'transferDATGizlenecekAlanlar': 'transfer_DAT_GizlenecekAlanlar',
-        'transferDATDegismeyecekAlanlar': 'transfer_DAT_DegismeyecekAlanlar',
-        'transferDATAciklamaAlanlari': 'transfer_DAT_AciklamaAlanlari',
-        'transferDATSipBagSecenegi': 'transfer_DAT_SipBagSecenegi',
-        'transferDATReferansStokUygulamasi':
-            'transfer_DAT_ReferansStokUygulamasi',
-        'transferDATSipBagSipHariciKalemEklenebilir':
-            'transfer_DAT_SipBag_SipHariciKalemEklenebilir',
-        'transferDATSipBagFazlaTeslimatYapilabilir':
-            'transfer_DAT_SipBag_FazlaTeslimatYapilabilir',
-        'transferDATSipBagSipOkutulsun': 'transfer_DAT_SipBag_SipOkutulsun',
-        'transferDATSipBagSipOkutulsunMiktar2BazAl':
-            'transfer_DAT_SipBag_SipOkutulsun_Miktar2BazAl',
-        'transferDATSipBagSipOkutulsunKalanMiktarGelsin':
-            'transfer_DAT_SipBag_SipOkutulsun_KalanMiktarGelsin',
-        'transferDATSipBagCokluSecim': 'transfer_DAT_SipBag_CokluSecim',
-        'transferDATSipBagTumKalemlerSecilsin':
-            'transfer_DAT_SipBag_TumKalemlerSecilsin',
-        'transferDATSipBagEslesmeDurumu': 'transfer_DAT_SipBag_EslesmeDurumu',
-        'transferDATSipBagMalToplananlarGelsin':
-            'transfer_DAT_SipBag_MalToplananlarGelsin',
-        'transferDATSipBagSevkOnayliSiparislerGelsin':
-            'transfer_DAT_SipBag_SevkOnayliSiparislerGelsin',
-        'transferAG': 'transfer_AG',
-        'transferAGKaydet': 'transfer_AG_Kaydet',
-        'transferAGDuzelt': 'transfer_AG_Duzelt',
-        'transferAGSil': 'transfer_AG_Sil',
-        'transferAGFiyatGor': 'transfer_AG_FiyatGor',
-        'transferAGKacGunlukKayitlarListelensin':
-            'transfer_AG_KacGunlukKayitlarListelensin',
-        'transferAGVarsayilanDepo': 'transfer_AG_VarsayilanDepo',
-        'transferAGDigerSekmesiGoster': 'transfer_AG_DigerSekmesiGoster',
-        'transferAGBelgeKopyala': 'transfer_AG_BelgeKopyala',
-        'transferAGBirim1denKaydet': 'transfer_AG_Birim1denKaydet',
-        'transferAGOtoBasimYap': 'transfer_AG_OtoBasimYap',
-        'transferAGSeriGirisHarYapabilsin':
-            'transfer_AG_SeriGirisHarYapabilsin',
-        'transferAGBarkodluGiris': 'transfer_AG_BarkodluGiris',
-        'transferAGMiktarOtomatikGelsin': 'transfer_AG_MiktarOtomatikGelsin',
-        'transferAGKalemDetaySorulmasin': 'transfer_AG_KalemDetaySorulmasin',
-        'transferAGStokRehberiAcilmasin': 'transfer_AG_StokRehberiAcilmasin',
-        'transferAGKalemDuzeltilemesin': 'transfer_AG_KalemDuzeltilemesin',
-        'transferAGKlavyeEngelle': 'transfer_AG_KlavyeEngelle',
-        'transferAGMiktar1Gelsin': 'transfer_AG_Miktar1Gelsin',
-        'transferAGReferansStokUygulamasi':
-            'transfer_AG_ReferansStokUygulamasi',
-        'transferAGSipBagSipHariciKalemEklenebilir':
-            'transfer_AG_SipBag_SipHariciKalemEklenebilir',
-        'transferAGSipBagFazlaTeslimatYapilabilir':
-            'transfer_AG_SipBag_FazlaTeslimatYapilabilir',
-        'transferAGSipBagSipOkutulsun': 'transfer_AG_SipBag_SipOkutulsun',
-        'transferAGSipBagSipOkutulsunMiktar2BazAl':
-            'transfer_AG_SipBag_SipOkutulsun_Miktar2BazAl',
-        'transferAGSipBagCokluSecim': 'transfer_AG_SipBag_CokluSecim',
-        'transferAGSipBagTumKalemlerSecilsin':
-            'transfer_AG_SipBag_TumKalemlerSecilsin',
-        'transferAGSipBagEslesmeDurumu': 'transfer_AG_SipBag_EslesmeDurumu',
-        'transferAGSipBagMalToplananlarGelsin':
-            'transfer_AG_SipBag_MalToplananlarGelsin',
-        'transferAGSipBagSevkOnayliSiparislerGelsin':
-            'transfer_AG_SipBag_SevkOnayliSiparislerGelsin',
-        'transferAC': 'transfer_AC',
-        'transferACKaydet': 'transfer_AC_Kaydet',
-        'transferACDuzelt': 'transfer_AC_Duzelt',
-        'transferACSil': 'transfer_AC_Sil',
-        'transferACFiyatGor': 'transfer_AC_FiyatGor',
-        'transferACKacGunlukKayitlarListelensin':
-            'transfer_AC_KacGunlukKayitlarListelensin',
-        'transferACVarsayilanDepo': 'transfer_AC_VarsayilanDepo',
-        'transferACEIrsIsaretleyemesin': 'transfer_AC_eIrsIsaretleyemesin',
-        'transferACDigerSekmesiGoster': 'transfer_AC_DigerSekmesiGoster',
-        'transferACBelgeKopyala': 'transfer_AC_BelgeKopyala',
-        'transferACBirim1denKaydet': 'transfer_AC_Birim1denKaydet',
-        'transferACOtoBasimYap': 'transfer_AC_OtoBasimYap',
-        'transferACSeriGirisHarYapabilsin':
-            'transfer_AC_SeriGirisHarYapabilsin',
-        'transferACEkAlan2Tablodan': 'transfer_AC_EkAlan2Tablodan',
-        'transferACEkAlan2Hatirla': 'transfer_AC_EkAlan2Hatirla',
-        'transferACMinStokMikGoster': 'transfer_AC_MinStokMikGoster',
-        'transferACBosGecilmeyecekAlanlar':
-            'transfer_AC_BosGecilmeyecekAlanlar',
-        'transferACBarkodluGiris': 'transfer_AC_BarkodluGiris',
-        'transferACMiktarOtomatikGelsin': 'transfer_AC_MiktarOtomatikGelsin',
-        'transferACKalemDetaySorulmasin': 'transfer_AC_KalemDetaySorulmasin',
-        'transferACStokRehberiAcilmasin': 'transfer_AC_StokRehberiAcilmasin',
-        'transferACKalemDuzeltilemesin': 'transfer_AC_KalemDuzeltilemesin',
-        'transferACKlavyeEngelle': 'transfer_AC_KlavyeEngelle',
-        'transferACMiktar1Gelsin': 'transfer_AC_Miktar1Gelsin',
-        'transferACReferansStokUygulamasi':
-            'transfer_AC_ReferansStokUygulamasi',
-        'transferACSipBagSipHariciKalemEklenebilir':
-            'transfer_AC_SipBag_SipHariciKalemEklenebilir',
-        'transferACSipBagFazlaTeslimatYapilabilir':
-            'transfer_AC_SipBag_FazlaTeslimatYapilabilir',
-        'transferACSipBagSipOkutulsun': 'transfer_AC_SipBag_SipOkutulsun',
-        'transferACSipBagSipOkutulsunMiktar2BazAl':
-            'transfer_AC_SipBag_SipOkutulsun_Miktar2BazAl',
-        'transferACSipBagCokluSecim': 'transfer_AC_SipBag_CokluSecim',
-        'transferACSipBagTumKalemlerSecilsin':
-            'transfer_AC_SipBag_TumKalemlerSecilsin',
-        'transferACSipBagEslesmeDurumu': 'transfer_AC_SipBag_EslesmeDurumu',
-        'transferACSipBagMalToplananlarGelsin':
-            'transfer_AC_SipBag_MalToplananlarGelsin',
-        'transferACSipBagSevkOnayliSiparislerGelsin':
-            'transfer_AC_SipBag_SevkOnayliSiparislerGelsin',
-        'transferDepoTalebi': 'transfer_DepoTalebi',
-        'transferDepoTalebiSil': 'transfer_DepoTalebi_Sil',
-        'transferDepoTalebiMalTop': 'transfer_DepoTalebi_MalTop',
-        'transferDepoTalebiMalTopFazlaTeslimat':
-            'transfer_DepoTalebi_MalTop_FazlaTeslimat',
-        'hucreGiristeHucreYerlestir': 'hucre_GiristeHucreYerlestir',
-        'hucreCikistaHucreYerlestir': 'hucre_CikistaHucreYerlestir',
-        'hucreYerlestir': 'hucre_Yerlestir',
-        'hucreYerlestirBelgesiz': 'hucre_YerlestirBelgesiz',
-        'hucreYerlestirKlavyeEngelle': 'hucre_Yerlestir_KlavyeEngelle',
-        'hucreYerlestirRehberdenStokSecilmesin':
-            'hucre_Yerlestir_RehberdenStokSecilmesin',
-        'hucreYerlestirHangiHucrede': 'hucre_Yerlestir_HangiHucrede',
-        'hucreYerlestirBelgeTipleri': 'hucre_Yerlestir_BelgeTipleri',
-        'hucreBosalt': 'hucre_Bosalt',
-        'hucreBosaltBelgesiz': 'hucre_BosaltBelgesiz',
-        'hucreBosaltKlavyeEngelle': 'hucre_Bosalt_KlavyeEngelle',
-        'hucreBosaltRehberdenStokSecilmesin':
-            'hucre_Bosalt_RehberdenStokSecilmesin',
-        'hucreBosaltHangiHucrede': 'hucre_Bosalt_HangiHucrede',
-        'hucreBosaltBelgeTipleri': 'hucre_Bosalt_BelgeTipleri',
-        'hucreArama': 'hucre_Arama',
-        'hucreAramaTumDepolar': 'hucre_AramaTumDepolar',
-        'hucreAramaOzelFonksiyon': 'hucre_AramaOzelFonksiyon',
-        'hucreTransfer': 'hucre_Transfer',
-        'hucreTransferKlavyeEngelle': 'hucre_Transfer_KlavyeEngelle',
-        'hucreTransferRehberdenStokSecilmesin':
-            'hucre_Transfer_RehberdenStokSecilmesin',
-        'hucreTransferBelgeTipleri': 'hucre_Transfer_BelgeTipleri',
-        'hucreListesi': 'hucre_Listesi',
-        'hucreBosaltOtomatikStokEtiketiYazdir':
-            'hucre_Bosalt_OtomatikStokEtiketiYazdir',
-        'hucreBakiyeDurumu': 'hucre_BakiyeDurumu',
-        'hucreHareketleri': 'hucre_Hareketleri',
-        'hucreHareketleriSil': 'hucre_Hareketleri_Sil',
-        'sevkiyatSatisIrsaliyesiBelgeTipleri':
-            'sevkiyat_SatisIrsaliyesi_BelgeTipleri',
-        'sevkiyatSatisIrsaliyesiGizlenecekAlanlar':
-            'sevkiyat_SatisIrsaliyesi_GizlenecekAlanlar',
-        'sevkiyatSatisIrsaliyesiDegismeyecekAlanlar':
-            'sevkiyat_SatisIrsaliyesi_DegismeyecekAlanlar',
-        'sevkiyatSatisIrsaliyesi': 'sevkiyat_SatisIrsaliyesi',
-        'sevkiyatSatisIrsaliyesiKayit': 'sevkiyat_SatisIrsaliyesiKayit',
-        'sevkiyatSatisIrsaliyesiDuzeltme': 'sevkiyat_SatisIrsaliyesiDuzeltme',
-        'sevkiyatSatisIrsaliyesiSilme': 'sevkiyat_SatisIrsaliyesiSilme',
-        'sevkiyatSatisIrsaliyesiFiyatGor': 'sevkiyat_SatisIrsaliyesiFiyatGor',
-        'sevkiyatSatisIrsDigerSekmesiGoster':
-            'sevkiyat_SatisIrs_DigerSekmesiGoster',
-        'sevkiyatSatisIrsaliyesiSipBagSecenegi':
-            'sevkiyat_SatisIrsaliyesi_SipBagSecenegi',
-        'sevkiyatSatisIrsReferansStokUygulamasi':
-            'sevkiyat_SatisIrs_ReferansStokUygulamasi',
-        'sevkiyatSatisIrsSipBagSipHariciKalemEklenebilir':
-            'sevkiyat_SatisIrs_SipBag_SipHariciKalemEklenebilir',
-        'sevkiyatSatisIrsSipBagFazlaTeslimatYapilabilir':
-            'sevkiyat_SatisIrs_SipBag_FazlaTeslimatYapilabilir',
-        'sevkiyatSatisIrsSipBagSipOkutulsun':
-            'sevkiyat_SatisIrs_SipBag_SipOkutulsun',
-        'sevkiyatSatisIrsSipBagSipOkutulsunMiktar2BazAl':
-            'sevkiyat_SatisIrs_SipBag_SipOkutulsun_Miktar2BazAl',
-        'sevkiyatSatisIrsSipBagSipOkutulsunKalanMiktarGelsin':
-            'sevkiyat_SatisIrs_SipBag_SipOkutulsun_KalanMiktarGelsin',
-        'sevkiyatSatisIrsSipBagCokluSecim':
-            'sevkiyat_SatisIrs_SipBag_CokluSecim',
-        'sevkiyatSatisIrsSipBagTumKalemlerSecilsin':
-            'sevkiyat_SatisIrs_SipBag_TumKalemlerSecilsin',
-        'sevkiyatSatisIrsSipBagEslesmeDurumu':
-            'sevkiyat_SatisIrs_SipBag_EslesmeDurumu',
-        'sevkiyatSatisIrsSipBagMalToplananlarGelsin':
-            'sevkiyat_SatisIrs_SipBag_MalToplananlarGelsin',
-        'sevkiyatSatisIrsSipBagSevkOnayliSiparislerGelsin':
-            'sevkiyat_SatisIrs_SipBag_SevkOnayliSiparislerGelsin',
-        'sevkiyatFiyatDegistirilmesin': 'sevkiyat_FiyatDegistirilmesin',
-        'sevkiyatSatisIrsaliyesiEIrsaliyeDuzenleyemesin':
-            'sevkiyat_SatisIrsaliyesi_EIrsaliyeDuzenleyemesin',
-        'sevkiyatSatisIrsKalemlerBirlestirilsin':
-            'sevkiyat_SatisIrs_KalemlerBirlestirilsin',
-        'sevkiyatSatisIrsOtoBasimYap': 'sevkiyat_SatisIrs_OtoBasimYap',
-        'sevkiyatSatisIrsKacGunlukKayitlarListelensin':
-            'sevkiyat_SatisIrs_KacGunlukKayitlarListelensin',
-        'sevkiyatSatisIrsFiyatSirasi': 'sevkiyat_SatisIrs_FiyatSirasi',
-        'sevkiyatSatisIrsKDVSifirGelsin': 'sevkiyat_SatisIrs_KDVSifirGelsin',
-        'sevkiyatSatisIrsSeriGirisHarYapabilsin':
-            'sevkiyat_SatisIrs_SeriGirisHarYapabilsin',
-        'sevkiyatSatisIrsBirim1denKaydet': 'sevkiyat_SatisIrs_Birim1denKaydet',
-        'sevkiyatSatisIrsEkAlan2Tablodan': 'sevkiyat_SatisIrs_EkAlan2Tablodan',
-        'sevkiyatSatisIrsEkAlan2Hatirla': 'sevkiyat_SatisIrs_EkAlan2Hatirla',
-        'sevkiyatSatisIrsOlcuBirimi': 'sevkiyat_SatisIrs_OlcuBirimi',
-        'sevkiyatSatisIrsCariKoduDegistir':
-            'sevkiyat_SatisIrs_CariKoduDegistir',
-        'sevkiyatSatisIrsMaxIskUygulamasi':
-            'sevkiyat_SatisIrs_MaxIskUygulamasi',
-        'sevkiyatSatisIrsMaxSatIsk1': 'sevkiyat_SatisIrs_MaxSatIsk1',
-        'sevkiyatSatisIrsMaxSatIsk2': 'sevkiyat_SatisIrs_MaxSatIsk2',
-        'sevkiyatSatisIrsMaxSatIsk3': 'sevkiyat_SatisIrs_MaxSatIsk3',
-        'sevkiyatSatisIrsMaxSatIsk4': 'sevkiyat_SatisIrs_MaxSatIsk4',
-        'sevkiyatSatisIrsMaxSatIsk5': 'sevkiyat_SatisIrs_MaxSatIsk5',
-        'sevkiyatSatisIrsMaxSatIsk6': 'sevkiyat_SatisIrs_MaxSatIsk6',
-        'sevkiyatSatisIrsMaxGenIsk1': 'sevkiyat_SatisIrs_MaxGenIsk1',
-        'sevkiyatSatisIrsMaxGenIsk2': 'sevkiyat_SatisIrs_MaxGenIsk2',
-        'sevkiyatSatisIrsMaxGenIsk3': 'sevkiyat_SatisIrs_MaxGenIsk3',
-        'sevkiyatSatisIrsDipFiyatUygulamasi':
-            'sevkiyat_SatisIrs_DipFiyatUygulamasi',
-        'sevkiyatSatisIrsDipFiyatSaha': 'sevkiyat_SatisIrs_DipFiyatSaha',
-        'sevkiyatSatisIrsDipFiyatEylem': 'sevkiyat_SatisIrs_DipFiyatEylem',
-        'sevkiyatSatisIrsDipFiyatKDVDurumu':
-            'sevkiyat_SatisIrs_DipFiyatKDVDurumu',
-        'sevkiyatSatisIrsBarkodluGiris': 'sevkiyat_SatisIrs_BarkodluGiris',
-        'sevkiyatSatisIrsMiktarOtomatikGelsin':
-            'sevkiyat_SatisIrs_MiktarOtomatikGelsin',
-        'sevkiyatSatisIrsKalemDetaySorulmasin':
-            'sevkiyat_SatisIrs_KalemDetaySorulmasin',
-        'sevkiyatSatisIrsStokRehberiAcilmasin':
-            'sevkiyat_SatisIrs_StokRehberiAcilmasin',
-        'sevkiyatSatisIrsKalemDuzeltilemesin':
-            'sevkiyat_SatisIrs_KalemDuzeltilemesin',
-        'sevkiyatSatisIrsKlavyeEngelle': 'sevkiyat_SatisIrs_KlavyeEngelle',
-        'sevkiyatSatisIrsMiktar1Gelsin': 'sevkiyat_SatisIrs_Miktar1Gelsin',
-        'sevkiyatSatisIrsBakiyesizStokSecilmesin':
-            'sevkiyat_SatisIrs_BakiyesizStokSecilmesin',
-        'sevkiyatSatisIrsRaporlar': 'sevkiyat_SatisIrs_Raporlar',
-        'sevkiyatSatisIrsKalemRaporu': 'sevkiyat_SatisIrs_KalemRaporu',
-        'sevkiyatSatisFatBelgeTipleri': 'sevkiyat_SatisFat_BelgeTipleri',
-        'sevkiyatSatisFatVarsayilanBelgeTipi':
-            'sevkiyat_SatisFat_VarsayilanBelgeTipi',
-        'sevkiyatSatisFat': 'sevkiyat_SatisFat',
-        'sevkiyatSatisFatKaydet': 'sevkiyat_SatisFat_Kaydet',
-        'sevkiyatSatisFatDuzelt': 'sevkiyat_SatisFat_Duzelt',
-        'sevkiyatSatisFatSil': 'sevkiyat_SatisFat_Sil',
-        'sevkiyatSatisFatToplamlarCariTahsilatIslemleri':
-            'sevkiyat_SatisFat_ToplamlarCariTahsilatIslemleri',
-        'sevkiyatSatisFatKayittanSonraTaslakOlustur':
-            'sevkiyat_SatisFat_KayittanSonraTaslakOlustur',
-        'sevkiyatSatisFatOtomatikBasimYap':
-            'sevkiyat_SatisFat_OtomatikBasimYap',
-        'sevkiyatSatisFatDigerSekmesiGoster':
-            'sevkiyat_SatisFat_DigerSekmesiGoster',
-        'sevkiyatSatisFatFiyatDegistirilmesin':
-            'sevkiyat_SatisFat_FiyatDegistirilmesin',
-        'sevkiyatSatisFatKacGunlukKayitlarListelensin':
-            'sevkiyat_SatisFat_KacGunlukKayitlarListelensin',
-        'sevkiyatSatisFatFiyatSirasi': 'sevkiyat_SatisFat_FiyatSirasi',
-        'sevkiyatSatisFatKalemlerBirlestirilsin':
-            'sevkiyat_SatisFat_KalemlerBirlestirilsin',
-        'sevkiyatSatisFatBirim1denKaydet': 'sevkiyat_SatisFat_Birim1denKaydet',
-        'sevkiyatSatisFatEkAlan2Tablodan': 'sevkiyat_SatisFat_EkAlan2Tablodan',
-        'sevkiyatSatisFatEkAlan2Hatirla': 'sevkiyat_SatisFat_EkAlan2Hatirla',
-        'sevkiyatSatisFatFiltre': 'sevkiyat_SatisFat_Filtre',
-        'sevkiyatSatisFatFiltreSQL': 'sevkiyat_SatisFat_FiltreSQL',
-        'sevkiyatSatisFatOlcuBirimi': 'sevkiyat_SatisFat_OlcuBirimi',
-        'sevkiyatSatisFatAciklamaAlanlari':
-            'sevkiyat_SatisFat_AciklamaAlanlari',
-        'sevkiyatSatisFatBosGecilmeyecekAlanlar':
-            'sevkiyat_SatisFat_BosGecilmeyecekAlanlar',
-        'sevkiyatSatisFatGizlenecekAlanlar':
-            'sevkiyat_SatisFat_GizlenecekAlanlar',
-        'sevkiyatSatisFatDegismeyecekAlanlar':
-            'sevkiyat_SatisFat_DegismeyecekAlanlar',
-        'sevkiyatSatisFatSeriGirisHarYapabilsin':
-            'sevkiyat_SatisFat_SeriGirisHarYapabilsin',
-        'sevkiyatSatisFatCariKoduDegistir':
-            'sevkiyat_SatisFat_CariKoduDegistir',
-        'sevkiyatSatisFaturasiSipBagSecenegi':
-            'sevkiyat_SatisFaturasi_SipBagSecenegi',
-        'sevkiyatSatisFatReferansStokUygulamasi':
-            'sevkiyat_SatisFat_ReferansStokUygulamasi',
-        'sevkiyatSatisFatSipBagSipHariciKalemEklenebilir':
-            'sevkiyat_SatisFat_SipBag_SipHariciKalemEklenebilir',
-        'sevkiyatSatisFatSipBagFazlaTeslimatYapilabilir':
-            'sevkiyat_SatisFat_SipBag_FazlaTeslimatYapilabilir',
-        'sevkiyatSatisFatSipBagSipOkutulsun':
-            'sevkiyat_SatisFat_SipBag_SipOkutulsun',
-        'sevkiyatSatisFatSipBagSipOkutulsunMiktar2BazAl':
-            'sevkiyat_SatisFat_SipBag_SipOkutulsun_Miktar2BazAl',
-        'sevkiyatSatisFatSipBagCokluSecim':
-            'sevkiyat_SatisFat_SipBag_CokluSecim',
-        'sevkiyatSatisFatSipBagTumKalemlerSecilsin':
-            'sevkiyat_SatisFat_SipBag_TumKalemlerSecilsin',
-        'sevkiyatSatisFatSipBagEslesmeDurumu':
-            'sevkiyat_SatisFat_SipBag_EslesmeDurumu',
-        'sevkiyatSatisFatSipBagSevkOnayliSiparislerGelsin':
-            'sevkiyat_SatisFat_SipBag_SevkOnayliSiparislerGelsin',
-        'sevkiyatSatisFatBarkodluGiris': 'sevkiyat_SatisFat_BarkodluGiris',
-        'sevkiyatSatisFaturasiMiktarOtomatikGelsin':
-            'sevkiyat_SatisFaturasi_MiktarOtomatikGelsin',
-        'sevkiyatSatisFaturasiKalemDetaySorulmasin':
-            'sevkiyat_SatisFaturasi_KalemDetaySorulmasin',
-        'sevkiyatSatisFatBarkodSayisiSaklanacakAlan':
-            'sevkiyat_SatisFat_BarkodSayisiSaklanacakAlan',
-        'sevkiyatSatisFatStokRehberiAcilmasin':
-            'sevkiyat_SatisFat_StokRehberiAcilmasin',
-        'sevkiyatSatisFatKalemDuzeltilemesin':
-            'sevkiyat_SatisFat_KalemDuzeltilemesin',
-        'sevkiyatSatisFatKlavyeEngelle': 'sevkiyat_SatisFat_KlavyeEngelle',
-        'sevkiyatSatisFatMiktar1Gelsin': 'sevkiyat_SatisFat_Miktar1Gelsin',
-        'sevkiyatSatisFatBakiyesizStokSecilmesin':
-            'sevkiyat_SatisFat_BakiyesizStokSecilmesin',
-        'sevkiyatSatisFatRaporlar': 'sevkiyat_SatisFat_Raporlar',
-        'sevkiyatSatisFatKalemRaporu': 'sevkiyat_SatisFat_KalemRaporu',
-        'sevkiyatSatisFatKarlilikRaporu': 'sevkiyat_SatisFat_KarlilikRaporu',
-        'sevkiyatSatisFatMaxIskUygulamasi':
-            'sevkiyat_SatisFat_MaxIskUygulamasi',
-        'sevkiyatSatisFatMaxSatIsk1': 'sevkiyat_SatisFat_MaxSatIsk1',
-        'sevkiyatSatisFatMaxSatIsk2': 'sevkiyat_SatisFat_MaxSatIsk2',
-        'sevkiyatSatisFatMaxSatIsk3': 'sevkiyat_SatisFat_MaxSatIsk3',
-        'sevkiyatSatisFatMaxSatIsk4': 'sevkiyat_SatisFat_MaxSatIsk4',
-        'sevkiyatSatisFatMaxSatIsk5': 'sevkiyat_SatisFat_MaxSatIsk5',
-        'sevkiyatSatisFatMaxSatIsk6': 'sevkiyat_SatisFat_MaxSatIsk6',
-        'sevkiyatSatisFatMaxGenIsk1': 'sevkiyat_SatisFat_MaxGenIsk1',
-        'sevkiyatSatisFatMaxGenIsk2': 'sevkiyat_SatisFat_MaxGenIsk2',
-        'sevkiyatSatisFatMaxGenIsk3': 'sevkiyat_SatisFat_MaxGenIsk3',
-        'sevkiyatSatisFatDipFiyatUygulamasi':
-            'sevkiyat_SatisFat_DipFiyatUygulamasi',
-        'sevkiyatSatisFatDipFiyatSaha': 'sevkiyat_SatisFat_DipFiyatSaha',
-        'sevkiyatSatisFatDipFiyatEylem': 'sevkiyat_SatisFat_DipFiyatEylem',
-        'sevkiyatSatisFatDipFiyatKDVDurumu':
-            'sevkiyat_SatisFat_DipFiyatKDVDurumu',
-        'sevkiyatSatisIrsaliyesiSiparissiz':
-            'sevkiyat_SatisIrsaliyesiSiparissiz',
-        'sevkiyatSatisIrsaliyesiSiparissizFiyatGor':
-            'sevkiyat_SatisIrsaliyesiSiparissizFiyatGor',
-        'sevkiyatSatisIrsaliyesiIade': 'sevkiyat_SatisIrsaliyesiIade',
-        'sevkiyatSiptenMalTop': 'sevkiyat_SiptenMalTop',
-        'sevkiyatSiptenMalTopMiktarBarkoddanGelsin':
-            'sevkiyat_SiptenMalTop_MiktarBarkoddanGelsin',
-        'sevkiyatSiptenMalTopRehberdenStokSecilmesin':
-            'sevkiyat_SiptenMalTop_RehberdenStokSecilmesin',
-        'sevkiyatSiptenMalTopKlavyedenBarkodGirilmesin':
-            'sevkiyat_SiptenMalTop_KlavyedenBarkodGirilmesin',
-        'sevkiyatSiptenMalTopSevkOnayliSiparislerGelsin':
-            'sevkiyat_SiptenMalTop_SevkOnayliSiparislerGelsin',
-        'sevkiyatSiptenMalTopKacGunlukKayitlarListelensin':
-            'sevkiyat_SiptenMalTop_KacGunlukKayitlarListelensin',
-        'sevkemriMalToplama': 'sevkemri_MalToplama',
-        'sevkemriMalToplamaAtanabilir': 'sevkemri_MalToplamaAtanabilir',
-        'sevkemriMalToplamaAtayabilir': 'sevkemri_MalToplamaAtayabilir',
-        'sevkemriUrunDegistir': 'sevkemri_UrunDegistir',
-        'sevkemriMiktarDegistir': 'sevkemri_MiktarDegistir',
-        'sevkemriMuadilUrun': 'sevkemri_MuadilUrun',
-        'sevkemriMalToplamaBarkodsuzUrunListedenSecilsin':
-            'sevkemri_malToplama_BarkodsuzUrunListedenSecilsin',
-        'sevkemriMalToplamaOtoStokEtiketiYazdir':
-            'sevkemri_MalToplama_OtoStokEtiketiYazdir',
-        'sevkemriMalToplamaOtoStokEtiketiYazdirSor':
-            'sevkemri_MalToplama_OtoStokEtiketiYazdirSor',
-        'sevkemriMalToplamaKlavyedenGirisiEngelle':
-            'sevkemri_MalToplama_KlavyedenGirisiEngelle',
-        'sevkemriMalToplamaBarkod2Sor': 'sevkemri_MalToplama_Barkod2Sor',
-        'sevkemriMalToplamaBarkod2YildizliGorunsun':
-            'sevkemri_MalToplama_Barkod2_YildizliGorunsun',
-        'sevkemriMalToplamaBarkod2KalemEkranindaSor':
-            'sevkemri_MalToplama_Barkod2KalemEkranindaSor',
-        'sevkemriMalToplamaTumuToplanmadanTamamlanmasin':
-            'sevkemri_MalToplama_TumuToplanmadanTamamlanmasin',
-        'sevkemriMalToplamaHangiHucredeGoster':
-            'sevkemri_MalToplama_HangiHucredeGoster',
-        'sevkemriMalToplamaKalemDetayIslemOnaySormasin':
-            'sevkemri_MalToplama_KalemDetayIslemOnaySormasin',
-        'sevkemriMalToplamaGosterilecekEkBilgiler':
-            'sevkemri_MalToplama_GosterilecekEkBilgiler',
-        'sevkemriMalToplamaDegistirilemeyecekAlanlar':
-            'sevkemri_MalToplama_DegistirilemeyecekAlanlar',
-        'sevkemriMalToplamaGizlenecekAlanlar':
-            'sevkemri_MalToplama_GizlenecekAlanlar',
-        'sevkemriMalToplamaMiktarBarkoddan':
-            'sevkemri_MalToplama_MiktarBarkoddan',
-        'sevkemriMalToplamaKalemDetayiSorulmasin':
-            'sevkemri_MalToplama_KalemDetayiSorulmasin',
-        'sevkemriMalToplamaKalemDetayaUlasamasin':
-            'sevkemri_MalToplama_KalemDetayaUlasamasin',
-        'sevkemriMalToplamaFazlaTeslimat': 'sevkemri_MalToplama_FazlaTeslimat',
-        'sevkemriMalToplamaVarsayilanOlcuBirimi':
-            'sevkemri_MalToplama_VarsayilanOlcuBirimi',
-        'sevkemriMalToplamaSiralamaTipi': 'sevkemri_MalToplama_SiralamaTipi',
-        'sevkemriMalKontrol': 'sevkemri_MalKontrol',
-        'sevkemriMalKontrolKlavyeEngelle': 'sevkemri_MalKontrol_KlavyeEngelle',
-        'sevkemriMalKontrolTipi': 'sevkemri_MalKontrolTipi',
-        'sevkemriMalKontrolKullanicilar': 'sevkemri_MalKontrolKullanicilar',
-        'sevkemriPaketleme': 'sevkemri_Paketleme',
-        'sevkemriPaketlemeKlavyeEngelle': 'sevkemri_Paketleme_KlavyeEngelle',
-        'sevkemriPaketlemeBarkodOkutmayaZorla':
-            'sevkemri_Paketleme_BarkodOkutmayaZorla',
-        'sevkemriPaketlemeBarkodsuzUrunListedenSecilsin':
-            'sevkemri_Paketleme_BarkodsuzUrunListedenSecilsin',
-        'sevkemriAracYukleme': 'sevkemri_AracYukleme',
-        'sevkemriAracYuklemeKlavyeEngelle':
-            'sevkemri_AracYukleme_KlavyeEngelle',
-        'sevkemriAracBosaltma': 'sevkemri_AracBosaltma',
-        'sevkemriAracBosaltmaKlavyeEngelle':
-            'sevkemri_AracBosaltma_KlavyeEngelle',
-        'sevkemriDepodanTeslimat': 'sevkemri_DepodanTeslimat',
-        'sevkemriDepodanTeslimatKlavyeEngelle':
-            'sevkemri_DepodanTeslimat_KlavyeEngelle',
-        'sayimSayim': 'sayim_sayim',
-        'sayimKontrolMiktari': 'sayim_Kontrol_Miktari',
-        'sayimMiktarBarkoddanGelsin': 'sayim_MiktarBarkoddanGelsin',
-        'sayimAyniStokDurumu': 'sayim_AyniStokDurumu',
-        'sayimMiktar1Gelsin': 'sayim_Miktar1Gelsin',
-        'sayimHemenKaydet': 'sayim_HemenKaydet',
-        'sayimCarpanAktif': 'sayim_CarpanAktif',
-        'sayimSeriMikGirilenMikKabulEdilsin':
-            'sayim_SeriMikGirilenMikKabulEdilsin',
-        'sayimDigerKulSayimHarGorsun': 'sayim_DigerKulSayimHarGorsun',
-        'sayimDigerKulSayimFisGorsun': 'sayim_DigerKulSayimFisGorsun',
-        'sayimSerbest': 'sayim_Serbest',
-        'sayimSerbestSil': 'sayim_Serbest_Sil',
-        'sayimDepoFarkRaporu': 'sayim_DepoFarkRaporu',
-        'sayimBelgeBaglantisiniKopar': 'sayim_BelgeBaglantisiniKopar',
-        'sayimBelgeOlusturabilir': 'sayim_BelgeOlusturabilir',
-        'sayimEkAlanlar': 'sayim_EkAlanlar',
-        'sayimDegismeyecekAlanlar': 'sayim_DegismeyecekAlanlar',
-        'sayimGizlenecekAlanlar': 'sayim_GizlenecekAlanlar',
-        'sayimVarsayilanOlcuBirimi': 'sayim_VarsayilanOlcuBirimi',
-        'sayimRaporu': 'sayim_Raporu',
-        'paketOlustur': 'paket_Olustur',
-        'paketCokluOlustur': 'paket_CokluOlustur',
-        'paketKontrol': 'paket_Kontrol',
-        'paketMalzemeCikisi': 'paket_MalzemeCikisi',
-        'paketReceteyiFiltrele': 'paket_ReceteyiFiltrele',
-        'islemlerHucreEtiket': 'islemler_HucreEtiket',
-        'islemlerStokEtiket': 'islemler_StokEtiket',
-        'islemlerBarkodTanimlama': 'islemler_BarkodTanimlama',
-        'siparisMusteriSiparisi': 'siparis_MusteriSiparisi',
-        'siparisMusteriSiparisiKaydet': 'siparis_MusteriSiparisi_Kaydet',
-        'siparisMusteriSiparisiDuzelt': 'siparis_MusteriSiparisi_Duzelt',
-        'siparisMusteriSiparisiSil': 'siparis_MusteriSiparisi_Sil',
-        'siparisMusteriSiparisiKapalilarListelenmesin':
-            'siparis_MusteriSiparisi_KapalilarListelenmesin',
-        'siparisMusteriSiparisiFiyatDegistirilmesin':
-            'siparis_MusteriSiparisi_FiyatDegistirilmesin',
-        'siparisMusteriSiparisiFiyatSirasi':
-            'siparis_MusteriSiparisi_FiyatSirasi',
-        'siparisMusSipBirim1denKaydet': 'siparis_MusSip_Birim1denKaydet',
-        'siparisMusteriSiparisiKapatmaIslemi':
-            'siparis_MusteriSiparisi_KapatmaIslemi',
-        'siparisMusSipOnayIslemleri': 'siparis_MusSip_OnayIslemleri',
-        'siparisMusteriSiparisiSonFiyatGoster':
-            'siparis_MusteriSiparisi_SonFiyatGoster',
-        'siparisMusSipDigerSekmesiGoster': 'siparis_MusSip_DigerSekmesiGoster',
-        'siparisMusSipEkAlan2Tablodan': 'siparis_MusSip_EkAlan2Tablodan',
-        'siparisMusSipEkAlan2Hatirla': 'siparis_MusSip_EkAlan2Hatirla',
-        'siparisMusSipMiktar1Gelsin': 'siparis_MusSip_Miktar1Gelsin',
-        'siparisMusSipBosGecilmeyecekAlanlar':
-            'siparis_MusSip_BosGecilmeyecekAlanlar',
-        'siparisMusSipOtoPdfGor': 'siparis_MusSip_OtoPdfGor',
-        'siparisMusSipCariKoduDegistir': 'siparis_MusSip_CariKoduDegistir',
-        'siparisMusteriSiparisiAciklamaAlanlari':
-            'siparis_MusteriSiparisi_AciklamaAlanlari',
-        'siparisMusteriSiparisiGizlenecekAlanlar':
-            'siparis_MusteriSiparisi_GizlenecekAlanlar',
-        'siparisMusteriSiparisiDegismeyecekAlanlar':
-            'siparis_MusteriSiparisi_DegismeyecekAlanlar',
-        'siparisMusSipEkstraAlanlar': 'siparis_MusSip_EkstraAlanlar',
-        'siparisMusteriSiparisiSatirAciklamaAlanlari':
-            'siparis_MusteriSiparisi_SatirAciklamaAlanlari',
-        'siparisMusSipOlcuBirimi': 'siparis_MusSip_OlcuBirimi',
-        'siparisMusSipBakiyesizStokSecilmesin':
-            'siparis_MusSip_BakiyesizStokSecilmesin',
-        'siparisMusSipHizliUrunGirisiMiktar2Kullanilsin':
-            'siparis_MusSip_HizliUrunGirisi_Miktar2Kullanilsin',
-        'siparisMusteriSiparisiDipFiyatUygulamasi':
-            'siparis_MusteriSiparisi_DipFiyatUygulamasi',
-        'siparisMusteriSiparisiDipFiyatSaha':
-            'siparis_MusteriSiparisi_DipFiyatSaha',
-        'siparisMusteriSiparisiDipFiyatEylem':
-            'siparis_MusteriSiparisi_DipFiyatEylem',
-        'siparisMusteriSiparisiDipFiyatKDVDurumu':
-            'siparis_MusteriSiparisi_DipFiyatKDVDurumu',
-        'siparisMusSipMaxIskUygulamasi': 'siparis_MusSip_MaxIskUygulamasi',
-        'siparisMusSipMaxSatIsk1': 'siparis_MusSip_MaxSatIsk1',
-        'siparisMusSipMaxSatIsk2': 'siparis_MusSip_MaxSatIsk2',
-        'siparisMusSipMaxSatIsk3': 'siparis_MusSip_MaxSatIsk3',
-        'siparisMusSipMaxSatIsk4': 'siparis_MusSip_MaxSatIsk4',
-        'siparisMusSipMaxSatIsk5': 'siparis_MusSip_MaxSatIsk5',
-        'siparisMusSipMaxSatIsk6': 'siparis_MusSip_MaxSatIsk6',
-        'siparisMusSipMaxGenIsk1': 'siparis_MusSip_MaxGenIsk1',
-        'siparisMusSipMaxGenIsk2': 'siparis_MusSip_MaxGenIsk2',
-        'siparisMusSipMaxGenIsk3': 'siparis_MusSip_MaxGenIsk3',
-        'siparisMusteriSiparisiRaporlar': 'siparis_MusteriSiparisi_Raporlar',
-        'siparisMusteriSiparisiDurumRaporu':
-            'siparis_MusteriSiparisi_DurumRaporu',
-        'siparisMusteriSiparisiDurumRaporuFiyatGor':
-            'siparis_MusteriSiparisi_DurumRaporuFiyatGor',
-        'siparisMusSipKarlilikRaporu': 'siparis_MusSip_KarlilikRaporu',
-        'siparisMusSipTeslimRaporu': 'siparis_MusSip_TeslimRaporu',
-        'siparisSaticiSiparisi': 'siparis_SaticiSiparisi',
-        'siparisSaticiSiparisiKaydet': 'siparis_SaticiSiparisi_Kaydet',
-        'siparisSaticiSiparisiDuzelt': 'siparis_SaticiSiparisi_Duzelt',
-        'siparisSaticiSiparisiSil': 'siparis_SaticiSiparisi_Sil',
-        'siparisSaticiSiparisiKapalilarListelenmesin':
-            'siparis_SaticiSiparisi_KapalilarListelenmesin',
-        'siparisSaticiSiparisiFiyatDegistirilmesin':
-            'siparis_SaticiSiparisi_FiyatDegistirilmesin',
-        'siparisSaticiSiparisiFiyatSirasi':
-            'siparis_SaticiSiparisi_FiyatSirasi',
-        'siparisSaticiSipBirim1denKaydet': 'siparis_SaticiSip_Birim1denKaydet',
-        'siparisSaticiSiparisiKapatmaIslemi':
-            'siparis_SaticiSiparisi_KapatmaIslemi',
-        'siparisSaticiSipOnayIslemleri': 'siparis_SaticiSip_OnayIslemleri',
-        'siparisSaticiSipDigerSekmesiGoster':
-            'siparis_SaticiSip_DigerSekmesiGoster',
-        'siparisSaticiSipOlcuBirimi': 'siparis_SaticiSip_OlcuBirimi',
-        'siparisSaticiSipCariKoduDegistir':
-            'siparis_SaticiSip_CariKoduDegistir',
-        'siparisSaticiSiparisiRaporlar': 'siparis_SaticiSiparisi_Raporlar',
-        'siparisSaticiSiparisiDurumRaporu':
-            'siparis_SaticiSiparisi_DurumRaporu',
-        'siparisSaticiSiparisiDurumRaporuFiyatGor':
-            'siparis_SaticiSiparisi_DurumRaporuFiyatGor',
-        'siparisSaticiSipTeslimRaporu': 'siparis_SaticiSip_TeslimRaporu',
-        'stokStokListesi': 'stok_StokListesi',
-        'stokStokListesiExtraAlanlar': 'stok_StokListesi_ExtraAlanlar',
-        'stokStokKarti': 'stok_StokKarti',
-        'stokStokKartiKaydet': 'stok_StokKarti_Kaydet',
-        'stokStokKartiDuzelt': 'stok_StokKarti_Duzelt',
-        'stokStokKartiSil': 'stok_StokKarti_Sil',
-        'stokStokKartiAlisFiyatiGizle': 'stok_StokKarti_AlisFiyatiGizle',
-        'stokStokKartiSatisFiyatiGizle': 'stok_StokKarti_SatisFiyatiGizle',
-        'stokStokHareketleri': 'stok_StokHareketleri',
-        'stokStokHarKaydet': 'stok_StokHar_Kaydet',
-        'stokStokHarDuzelt': 'stok_StokHar_Duzelt',
-        'stokStokHarSil': 'stok_StokHar_Sil',
-        'stokStokHarPlasiyerKendiniGorsun':
-            'stok_StokHar_PlasiyerKendiniGorsun',
-        'stokFiltreSQLTipi': 'stok_FiltreSQLTipi',
-        'stokResimGoster': 'stok_ResimGoster',
-        'stokResimGosterEkle': 'stok_ResimGoster_Ekle',
-        'stokResimGosterSil': 'stok_ResimGoster_Sil',
-        'stokFiyatOzeti': 'stok_FiyatOzeti',
-        'stokHareketDetayiniGizle': 'stok_HareketDetayiniGizle',
-        'stokGirisHareketleriniGizle': 'stok_GirisHareketleriniGizle',
-        'stokCikisHareketleriniGizle': 'stok_CikisHareketleriniGizle',
-        'stokBakiyeGosterimTipi': 'stok_BakiyeGosterimTipi',
-        'stokBarkodKontrol': 'stok_BarkodKontrol',
-        'stokDepoBakiyeDurumu': 'stok_DepoBakiyeDurumu',
-        'stokBarkodTanimlama': 'stok_BarkodTanimlama',
-        'stokBarkodTanimlamaGorunecekAlanlar':
-            'stok_BarkodTanimlama_GorunecekAlanlar',
-        'stokBarkodKayitlari': 'stok_BarkodKayitlari',
-        'stokBarkodKayitlariEkle': 'stok_BarkodKayitlari_Ekle',
-        'stokBarkodKayitlariDuzelt': 'stok_BarkodKayitlari_Duzelt',
-        'stokBarkodKayitlariSil': 'stok_BarkodKayitlari_Sil',
-        'stokKanbanBarkodEsle': 'stok_KanbanBarkodEsle',
-        'stokKanbanBarkodEsleSil': 'stok_KanbanBarkodEsle_Sil',
-        'stokKanbanBarkodEsleFarkliStokOkutulmasin':
-            'stok_KanbanBarkodEsleFarkliStokOkutulmasin',
-        'stokFiyatGorEkrani': 'stok_FiyatGorEkrani',
-        'stokFiyatGorEkraniGunlukKurdanTLGoster':
-            'stok_FiyatGorEkrani_GunlukKurdanTLGoster',
-        'stokFiyatGorEkraniGorunecekAlanlar':
-            'stok_FiyatGorEkraniGorunecekAlanlar',
-        'stokFiyatGecmisi': 'stok_FiyatGecmisi',
-        'stokFiyatGecmisiSil': 'stok_FiyatGecmisiSil',
-        'stokFiyatGecmisiFiyatTipleri': 'stok_FiyatGecmisiFiyatTipleri',
-        'stokSeriHar': 'stok_SeriHar',
-        'stokSeriHarEkle': 'stok_SeriHar_Ekle',
-        'stokSeriHarDuzelt': 'stok_SeriHar_Duzelt',
-        'stokSeriHarSil': 'stok_SeriHar_Sil',
-        'stokSeriParcala': 'stok_SeriParcala',
-        'stokSeriParcalaEkle': 'stok_SeriParcala_Ekle',
-        'stokSeriParcalaDuzelt': 'stok_SeriParcala_Duzelt',
-        'stokSeriParcalaSil': 'stok_SeriParcala_Sil',
-        'stokSeriBirlestir': 'stok_SeriBirlestir',
-        'stokSeriBirlestirEkle': 'stok_SeriBirlestir_Ekle',
-        'stokSeriBirlestirDuzelt': 'stok_SeriBirlestir_Duzelt',
-        'stokSeriBirlestirSil': 'stok_SeriBirlestir_Sil',
-        'stokPaketleme': 'stok_Paketleme',
-        'stokPaketlemeEkle': 'stok_Paketleme_Ekle',
-        'stokPaketlemeSil': 'stok_Paketleme_Sil',
-        'stokPaketlemeOnaySormasin': 'stok_Paketleme_OnaySormasin',
-        'stokPaketlemeDigerKulKayitGorebilir':
-            'stok_Paketleme_DigerKulKayitGorebilir',
-        'stokPaketlemeSorulacakBelgeTipleri':
-            'stok_Paketleme_SorulacakBelgeTipleri',
-        'stokRaporlar': 'stok_Raporlar',
-        'stokRapAmbarMaliyet': 'stok_Rap_AmbarMaliyet',
-        'stokRapLokalDepoBakiye': 'stok_Rap_LokalDepoBakiye',
-        'stokRapUrunGrubunaGoreSatis': 'stok_Rap_UrunGrubunaGoreSatis',
-        'cariCariListesi': 'cari_CariListesi',
-        'cariCariListesiRiskGorebilir': 'cari_CariListesi_RiskGorebilir',
-        'cariRiskGirisi': 'cari_RiskGirisi',
-        'cariCariKarti': 'cari_CariKarti',
-        'cariCariKartiKaydet': 'cari_CariKarti_Kaydet',
-        'cariCariKartiDuzelt': 'cari_CariKarti_Duzelt',
-        'cariCariKartiSil': 'cari_CariKarti_Sil',
-        'cariCariKartiEIslemler': 'cari_CariKarti_EIslemler',
-        'cariCariKartiDegismeyecekAlanlar':
-            'cari_CariKarti_DegismeyecekAlanlar',
-        'cariCariKartiGizlenecekAlanlar': 'cari_CariKarti_GizlenecekAlanlar',
-        'cariCariHareketleri': 'cari_CariHareketleri',
-        'cariCariHarKaydet': 'cari_CariHar_Kaydet',
-        'cariCariHarDuzelt': 'cari_CariHar_Duzelt',
-        'cariCariHarSil': 'cari_CariHar_Sil',
-        'cariCariHareketleriHarDetayGorsun':
-            'cari_CariHareketleri_HarDetayGorsun',
-        'stokCariHarPlasiyerKendiniGorsun':
-            'stok_CariHar_PlasiyerKendiniGorsun',
-        'cariAktivite': 'cari_Aktivite',
-        'cariAktiviteEkle': 'cari_Aktivite_Ekle',
-        'cariAktiviteDuzelt': 'cari_Aktivite_Duzelt',
-        'cariAktiviteSil': 'cari_Aktivite_Sil',
-        'cariAktiviteAtayabilir': 'cari_Aktivite_Atayabilir',
-        'cariAktiviteBitirmeyiGeriAl': 'cari_Aktivite_BitirmeyiGeriAl',
-        'cariOzelHesapKapatma': 'cari_OzelHesapKapatma',
-        'cariOzelHesapKapatmaSil': 'cari_OzelHesapKapatma_Sil',
-        'cariVadeKontrolu': 'cari_VadeKontrolu',
-        'cariVadeKontroluGun': 'cari_VadeKontrolu_Gun',
-        'cariVadeKontroluBelgeTipleri': 'cari_VadeKontrolu_BelgeTipleri',
-        'cariFiltre': 'cari_Filtre',
-        'cariFiltreSQL': 'cari_FiltreSQL',
-        'cariFiltreSQLTipi': 'cari_FiltreSQLTipi',
-        'cariVirman': 'cari_Virman',
-        'cariVirmanKaydet': 'cari_Virman_Kaydet',
-        'cariHarita': 'cari_Harita',
-        'cariTeslimCariRehberSadeceSecsin':
-            'cari_TeslimCari_RehberSadeceSecsin',
-        'cariTeslimCariSatisBaglanmisCarilerSecilsin':
-            'cari_TeslimCari_SatisBaglanmisCarilerSecilsin',
-        'cariRaporlar': 'cari_Raporlar',
-        'cariRapEkstre': 'cari_Rap_Ekstre',
-        'cariRapStokEkstre': 'cari_Rap_StokEkstre',
-        'cariRapYaslandirma': 'cari_Rap_Yaslandirma',
-        'cariRapHarDetayliYaslandir': 'cari_Rap_HarDetayliYaslandir',
-        'cariRapDovizBakiye': 'cari_Rap_DovizBakiye',
-        'cariRapStokSatisOzeti': 'cari_Rap_StokSatisOzeti',
-        'cariRapDovizliEkstre': 'cari_Rap_DovizliEkstre',
-        'tahsilatTahsilatlar': 'tahsilat_Tahsilatlar',
-        'tahsilatNakitTahsilat': 'tahsilat_NakitTahsilat',
-        'tahsilatNakitTahsilatKaydet': 'tahsilat_NakitTahsilat_Kaydet',
-        'tahsilatKKartiTahsilat': 'tahsilat_KKartiTahsilat',
-        'tahsilatKKartiTahsilatKaydet': 'tahsilat_KKartiTahsilat_Kaydet',
-        'tahsilatNakitOdeme': 'tahsilat_NakitOdeme',
-        'tahsilatNakitOdemeKaydet': 'tahsilat_NakitOdeme_Kaydet',
-        'tahsilatSenetTahsilat': 'tahsilat_SenetTahsilat',
-        'tahsilatSenetTahsilatKaydet': 'tahsilat_SenetTahsilat_Kaydet',
-        'tahsilatCekTahsilat': 'tahsilat_CekTahsilat',
-        'tahsilatCekTahsilatKaydet': 'tahsilat_CekTahsilat_Kaydet',
-        'tahsilatMuhtelifTahsilat': 'tahsilat_MuhtelifTahsilat',
-        'tahsilatMuhtelifOdeme': 'tahsilat_MuhtelifOdeme',
-        'tahsilatMuhtelifTahsilatFiltre': 'tahsilat_MuhtelifTahsilatFiltre',
-        'tahsilatMuhtelifTahsilatFiltreSQL':
-            'tahsilat_MuhtelifTahsilatFiltreSQL',
-        'tahsilatMuhtelifOdemeFiltre': 'tahsilat_MuhtelifOdemeFiltre',
-        'tahsilatMuhtelifOdemeFiltreSQL': 'tahsilat_MuhtelifOdemeFiltreSQL',
-        'yoneticiBankaBankaLitesi': 'yonetici_Banka_Banka_Litesi',
-        'yoneticiBankaIslemleri': 'yonetici_Banka_Islemleri',
-        'yoneticiBankaIslemleriSil': 'yonetici_Banka_Islemleri_Sil',
-        'yoneticiBankaIslemHesapEFT': 'yonetici_Banka_Islem_HesapEFT',
-        'yoneticiBankaIslemHesapVirman': 'yonetici_Banka_Islem_HesapVirman',
-        'yoneticiBankaIslemCariEFT': 'yonetici_Banka_Islem_CariEFT',
-        'finansBankaKasaTransferi': 'finans_Banka_Kasa_Transferi',
-        'finansKasaListesi': 'finans_Kasa_Listesi',
-        'finansKasaIslemleri': 'finans_Kasa_Islemleri',
-        'finansKasaIslemleriSil': 'finans_Kasa_Islemleri_Sil',
-        'finansKasalarArasiTransfer': 'finans_KasalarArasiTransfer',
-        'finansKasaNakitTahsilat': 'finans_Kasa_NakitTahsilat',
-        'finansKasaNakitOdeme': 'finans_Kasa_NakitOdeme',
-        'finansKasaMuhtelifTahsilat': 'finans_Kasa_MuhtelifTahsilat',
-        'finansKasaMuhtelifOdeme': 'finans_Kasa_MuhtelifOdeme',
-        'finansKasaSenetTahsilati': 'finans_Kasa_SenetTahsilati',
-        'finansKasaSenetOdemesi': 'finans_Kasa_SenetOdemesi',
-        'finansKasaCekTahsilati': 'finans_Kasa_CekTahsilati',
-        'finansKasaCekOdemesi': 'finans_Kasa_CekOdemesi',
-        'dekontListesi': 'dekont_Listesi',
-        'dekontKaydet': 'dekont_Kaydet',
-        'dekontDuzelt': 'dekont_Duzelt',
-        'dekontSil': 'dekont_Sil',
-        'finansCekGizlenecekAlanlar': 'finans_Cek_GizlenecekAlanlar',
-        'finansCekMusteri': 'finans_Cek_Musteri',
-        'finansMCEKEkle': 'finans_MCEK_Ekle',
-        'finansMCEKSil': 'finans_MCEK_Sil',
-        'finansMCEKBelgeDetayi': 'finans_MCEK_BelgeDetayi',
-        'finansMCEKHareketler': 'finans_MCEK_Hareketler',
-        'finansMCEKEvraklar': 'finans_MCEK_Evraklar',
-        'finansMCEKCariyeCiro': 'finans_MCEK_CariyeCiro',
-        'finansMCEKTahsileCiro': 'finans_MCEK_TahsileCiro',
-        'finansMCEKTahsilDekontu': 'finans_MCEK_TahsilDekontu',
-        'finansCekBorc': 'finans_Cek_Borc',
-        'finansBorcCekiEkle': 'finans_BorcCeki_Ekle',
-        'finansBorcCekiSil': 'finans_BorcCeki_Sil',
-        'finansBCEKBelgeDetayi': 'finans_BCEK_BelgeDetayi',
-        'finansBCEKHareketler': 'finans_BCEK_Hareketler',
-        'finansBCEKEvraklar': 'finans_BCEK_Evraklar',
-        'finansBCEKOdemeDekontu': 'finans_BCEK_OdemeDekontu',
-        'finansSenetMusteri': 'finans_Senet_Musteri',
-        'finansMSENEkle': 'finans_MSEN_Ekle',
-        'finansMSENSil': 'finans_MSEN_Sil',
-        'finansMSENBelgeDetayi': 'finans_MSEN_BelgeDetayi',
-        'finansMSENHareketler': 'finans_MSEN_Hareketler',
-        'finansMSENEvraklar': 'finans_MSEN_Evraklar',
-        'finansMSENCariyeCiro': 'finans_MSEN_CariyeCiro',
-        'finansMSENTahsileCiro': 'finans_MSEN_TahsileCiro',
-        'finansMSENTahsilDekontu': 'finans_MSEN_TahsilDekontu',
-        'finansSenetBorc': 'finans_Senet_Borc',
-        'finansBSENEkle': 'finans_BSEN_Ekle',
-        'finansBSENSil': 'finans_BSEN_Sil',
-        'finansBSENBelgeDetayi': 'finans_BSEN_BelgeDetayi',
-        'finansBSENHareketler': 'finans_BSEN_Hareketler',
-        'finansBSENEvraklar': 'finans_BSEN_Evraklar',
-        'finansBSENOdemeDekontu': 'finans_BSEN_OdemeDekontu',
-        'finansKKartiTahsilati': 'finans_KKartiTahsilati',
-        'finansMuhtelifTahsilat': 'finans_MuhtelifTahsilat',
-        'finansMuhtelifOdeme': 'finans_MuhtelifOdeme',
-        'finansTahsilatKayitlari': 'finans_TahsilatKayitlari',
-        'finansHizliTahsilatKayitlari': 'finans_HizliTahsilatKayitlari',
-        'finansHizliTahsilatKayitlariSil': 'finans_HizliTahsilatKayitlari_Sil',
-        'finansOrtalamaVadeTarihiHesaplama':
-            'finans_OrtalamaVadeTarihiHesaplama',
-        'finansOzetRapor': 'finans_OzetRapor',
-        'finansRaporlarFinansalDurum': 'finans_Raporlar_FinansalDurum',
-        'finansRaporlarAylikMizan': 'finans_Raporlar_AylikMizan',
-        'temsilciProfil': 'temsilci_Profil',
-        'temsilciProfilKdvDahil': 'temsilci_Profil_KdvDahil',
-        'temsilciProfilSatisPerformansiniGizle':
-            'temsilci_Profil_SatisPerformansiniGizle',
-        'temsilciProfilAylaraGoreSatisiGizle':
-            'temsilci_Profil_AylaraGoreSatisiGizle',
-        'temsilciProfilAylaraGoreTahsilatiGizle':
-            'temsilci_Profil_AylaraGoreTahsilatiGizle',
-        'yazdirmaBluetoothYaziciKullanabilir':
-            'yazdirma_BluetoothYaziciKullanabilir',
-        'yazdirmaHucreEtiketi': 'yazdirma_Hucre_Etiketi',
-        'yazdirmaHucreEtiketiYazicilari': 'yazdirma_Hucre_Etiketi_Yazicilari',
-        'yazdirmaDizaynHucreEtiketi': 'yazdirma_Dizayn_HucreEtiketi',
-        'yazdirmaMalToplamaEtiketi': 'yazdirma_MalToplama_Etiketi',
-        'yazdirmaMalToplamaYazicilari': 'yazdirma_Mal_Toplama_Yazicilari',
-        'yazdirmaDizaynMalToplama': 'yazdirma_Dizayn_MalToplama',
-        'yazdirmaMalKontrolEtiketi': 'yazdirma_MalKontrol_Etiketi',
-        'yazdirmaMalKontrolYazicilari': 'yazdirma_Mal_Kontrol_Yazicilari',
-        'yazdirmaDizaynMalKontrol': 'yazdirma_Dizayn_MalKontrol',
-        'yazdirmaDAT': 'yazdirma_DAT',
-        'yazdirmaDATYazicilari': 'yazdirma_DAT_Yazicilari',
-        'yazdirmaDizaynDAT': 'yazdirma_Dizayn_DAT',
-        'yazdirmaPaketlemeEtiketi': 'yazdirma_Paketleme_Etiketi',
-        'yazdirmaPaketlemeKopyaSayisiGizle':
-            'yazdirma_Paketleme_KopyaSayisiGizle',
-        'yazdirmaPaketlemeYazicilari': 'yazdirma_Paketleme_Yazicilari',
-        'yazdirmaDizaynPaketleme': 'yazdirma_Dizayn_Paketleme',
-        'yazdirmaSatisIrs': 'yazdirma_SatisIrs',
-        'yazdirmaSatisFat': 'yazdirma_SatisFat',
-        'yazdirmaSatisFatYazicilari': 'yazdirma_SatisFat_Yazicilari',
-        'yazdirmaDizaynSatisFat': 'yazdirma_Dizayn_SatisFat',
-        'yazdirmaAlisFat': 'yazdirma_AlisFat',
-        'yazdirmaDizaynAlisFat': 'yazdirma_Dizayn_AlisFat',
-        'yazdirmaMustahsil': 'yazdirma_Mustahsil',
-        'yazdirmaMusSip': 'yazdirma_MusSip',
-        'yazdirmaMusSipYazicilari': 'yazdirma_MusSip_Yazicilari',
-        'yazdirmaDizaynMusSip': 'yazdirma_Dizayn_MusSip',
-        'yazdirmaSaticiSip': 'yazdirma_SaticiSip',
-        'yazdirmaDizaynSaticiSip': 'yazdirma_Dizayn_SaticiSip',
-        'yazdirmaATAL': 'yazdirma_ATAL',
-        'yazdirmaATALYazicilari': 'yazdirma_ATAL_Yazicilari',
-        'yazdirmaDizaynATAL': 'yazdirma_Dizayn_ATAL',
-        'yazdirmaOdemeMakbuzu': 'yazdirma_OdemeMakbuzu',
-        'yazdirmaOdemeMakbuzuYazicilari': 'yazdirma_OdemeMakbuzu_Yazicilari',
-        'yazdirmaDizaynOdemeMakbuzu': 'yazdirma_Dizayn_OdemeMakbuzu',
-        'yazdirmaAlisIrs': 'yazdirma_AlisIrs',
-        'yazdirmaAlisIrsYazicilari': 'yazdirma_AlisIrs_Yazicilari',
-        'yazdirmaDizaynAlisIrs': 'yazdirma_Dizayn_AlisIrs',
-        'yazdirmaIsEmri': 'yazdirma_IsEmri',
-        'yazdirmaAmbarCikis': 'yazdirma_AmbarCikis',
-        'yazdirmaAmbarGiris': 'yazdirma_AmbarGiris',
-        'yazdirmaCariHareket': 'yazdirma_CariHareket',
-        'uretimFiyatGorebilir': 'uretim_FiyatGorebilir',
-        'uretimUSK': 'uretim_USK',
-        'uretimUSKKaydet': 'uretim_USK_Kaydet',
-        'uretimUSKDuzelt': 'uretim_USK_Duzelt',
-        'uretimUSKSil': 'uretim_USK_Sil',
-        'uretimUSKKacGunlukKayitlarListelensin':
-            'uretim_USK_KacGunlukKayitlarListelensin',
-        'uretimUSKMiktarBarkoddan': 'uretim_USK_MiktarBarkoddan',
-        'uretimUSKMiktar1Gelsin': 'uretim_USK_Miktar1Gelsin',
-        'sirketDepoUretimGiris': 'sirket_Depo_Uretim_Giris',
-        'sirketDepoUretimCikis': 'sirket_Depo_Uretim_Cikis',
-        'uretimUSKIsEmriOtoGelsin': 'uretim_USK_IsEmriOtoGelsin',
-        'uretimUSKSoruSorulmasin': 'uretim_USK_SoruSorulmasin',
-        'uretimUSKStokRehberiAcilmasin': 'uretim_USK_StokRehberiAcilmasin',
-        'uretimUSKKlavyeEngelle': 'uretim_USK_KlavyeEngelle',
-        'uretimUSKDepoOnceligi': 'uretim_USK_DepoOnceligi',
-        'uretimUSKFisiErpUretsin': 'uretim_USK_FisiErpUretsin',
-        'uretimUSKGizlenecekAlanlar': 'uretim_USK_GizlenecekAlanlar',
-        'uretimUSKBosGecilmeyecekAlanlar': 'uretim_USK_BosGecilmeyecekAlanlar',
-        'uretimUSKDegismeyecekAlanlar': 'uretim_USK_DegismeyecekAlanlar',
-        'uretimUSKOlcuBirimi': 'uretim_USK_OlcuBirimi',
-        'uretimUSKOtoYazdir': 'uretim_USK_OtoYazdir',
-        'uretimUSKKalemliYapi': 'uretim_USK_KalemliYapi',
-        'uretimUSKKalemliYapiStokMevcutaEklensin':
-            'uretim_USK_KalemliYapi_StokMevcutaEklensin',
-        'uretimUSKKalemliYapiOtoEtiketYazdir':
-            'uretim_USK_KalemliYapi_OtoEtiketYazdir',
-        'uretimUSKKalemliYapiAyniBarkodOkutulamaz':
-            'uretim_USK_KalemliYapi_AyniBarkodOkutulamaz',
-        'uretimUSKKalemliYapiOkutulanEnUsteEklensin':
-            'uretim_USK_KalemliYapi_OkutulanEnUsteEklensin',
-        'uretimUSKKalemliYapiKalemDuzeltilemesin':
-            'uretim_USK_KalemliYapi_KalemDuzeltilemesin',
-        'uretimReceteIzleme': 'uretim_ReceteIzleme',
-        'uretimMalToplama': 'uretim_MalToplama',
-        'uretimMalToplamaEkle': 'uretim_MalToplama_Ekle',
-        'uretimMalToplamaSil': 'uretim_MalToplama_Sil',
-        'uretimMalToplamaKlavyeEngelle': 'uretim_MalToplama_KlavyeEngelle',
-        'uretimMalToplamaBarkodOkutsun': 'uretim_MalToplama_BarkodOkutsun',
-        'uretimMalToplamaBelgeTipleri': 'uretim_MalToplama_BelgeTipleri',
-        'uretimMalToplamaReceteFiltresi': 'uretim_MalToplama_ReceteFiltresi',
-        'uretimMalToplamaReceteFiltresiSQL':
-            'uretim_MalToplama_ReceteFiltresiSQL',
-        'uretimIsEmri': 'uretim_IsEmri',
-        'uretimIsEmriEkle': 'uretim_IsEmri_Ekle',
-        'uretimIsEmriDuzelt': 'uretim_IsEmri_Duzelt',
-        'uretimIsEmriSil': 'uretim_IsEmri_Sil',
-        'taltekSTEK': 'taltek_STEK',
-        'taltekSTEKKaydet': 'taltek_STEK_Kaydet',
-        'taltekSTEKDuzelt': 'taltek_STEK_Duzelt',
-        'taltekSTEKSil': 'taltek_STEK_Sil',
-        'taltekSTEKKapalilarListenlenmesin':
-            'taltek_STEK_KapalilarListenlenmesin',
-        'taltekSTEKOnayIslemleri': 'taltek_STEK_OnayIslemleri',
-        'taltekSTEKCariKoduDegistir': 'taltek_STEK_CariKoduDegistir',
-        'taltekSTEKFiyatDegistirilmesin': 'taltek_STEK_FiyatDegistirilmesin',
-        'taltekSTEKAciklamalarYetkiTuru': 'taltek_STEK_Aciklamalar_YetkiTuru',
-        'taltekSTEKGizlenecekAlanlar': 'taltek_STEK_GizlenecekAlanlar',
-        'taltekSTEKDegismeyecekAlanlar': 'taltek_STEK_DegismeyecekAlanlar',
-        'taltekSTEKBosGecilmeyecekAlanlar':
-            'taltek_STEK_BosGecilmeyecekAlanlar',
-        'taltekSTEKAciklamaAlanlari': 'taltek_STEK_AciklamaAlanlari',
-        'taltekSTEKOzelKod1Degeri': 'taltek_STEK_OzelKod1Degeri',
-        'taltekSTEKDipFiyatUygulamasi': 'taltek_STEK_DipFiyatUygulamasi',
-        'taltekSTEKDipFiyatSaha': 'taltek_STEK_DipFiyatSaha',
-        'taltekSTEKDipFiyatEylem': 'taltek_STEK_DipFiyatEylem',
-        'taltekATAL': 'taltek_ATAL',
-        'taltekATALKaydet': 'taltek_ATAL_Kaydet',
-        'taltekATALDuzelt': 'taltek_ATAL_Duzelt',
-        'taltekATALSil': 'taltek_ATAL_Sil',
-        'taltekATALCariEMailAlani': 'taltek_ATAL_CariEMailAlani',
-        'taltekATALOnayIslemleri': 'taltek_ATAL_OnayIslemleri',
-        'taltekATALCariKoduDegistir': 'taltek_ATAL_CariKoduDegistir',
-        'taltekATALAciklamalarYetkiTuru': 'taltek_ATAL_Aciklamalar_YetkiTuru',
-        'taltekATALGizlenecekAlanlar': 'taltek_ATAL_GizlenecekAlanlar',
-        'taltekATALAciklamaAlanlari': 'taltek_ATAL_AciklamaAlanlari',
-        'taltekATALBelgeKopyala': 'taltek_ATAL_BelgeKopyala',
-        'taltekSTAL': 'taltek_STAL',
-        'taltekSTALKaydet': 'taltek_STAL_Kaydet',
-        'taltekSTALDuzelt': 'taltek_STAL_Duzelt',
-        'taltekSTALSil': 'taltek_STAL_Sil',
-        'taltekSTALKapalilarListenlenmesin':
-            'taltek_STAL_KapalilarListenlenmesin',
-        'taltekSTALOnayIslemleri': 'taltek_STAL_OnayIslemleri',
-        'taltekSTALCariKoduDegistir': 'taltek_STAL_CariKoduDegistir',
-        'taltekSTALFiyatDegistirilmesin': 'taltek_STAL_FiyatDegistirilmesin',
-        'taltekSTALGizlenecekAlanlar': 'taltek_STAL_GizlenecekAlanlar',
-        'taltekSTALDipFiyatUygulamasi': 'taltek_STAL_DipFiyatUygulamasi',
-        'ebelgeEFat': 'ebelge_EFat',
-        'ebelgeEFatCariGuncelle': 'ebelge_EFatCariGuncelle',
-        'ebelgeEFatSorgula': 'ebelge_EFatSorgula',
-        'ebelgeEFatGelenKutusu': 'ebelge_EFatGelenKutusu',
-        'ebelgeEFatTaslakOlustur': 'ebelge_EFatTaslakOlustur',
-        'ebelgeEFatTaslakSil': 'ebelge_EFatTaslakSil',
-        'ebelgeEFatTaslakBasim': 'ebelge_EFatTaslakBasim',
-        'ebelgeEFatGoruntule': 'ebelge_EFatGoruntule',
-        'ebelgeEFatAlisFatOlustur': 'ebelge_EFatAlisFatOlustur',
-        'ebelgeEFatGonder': 'ebelge_EFatGonder',
-        'ebelgeEFatDizayn': 'ebelge_EFat_Dizayn',
-        'ebelgeEArsiv': 'ebelge_EArsiv',
-        'ebelgeEArsivTaslakOlustur': 'ebelge_EArsivTaslakOlustur',
-        'ebelgeEArsivTaslakSil': 'ebelge_EArsivTaslakSil',
-        'ebelgeEArsivTaslakBasim': 'ebelge_EArsivTaslakBasim',
-        'ebelgeEArsivGoruntule': 'ebelge_EArsivGoruntule',
-        'ebelgeEArsivSorgula': 'ebelge_EArsivSorgula',
-        'ebelgeEArsivGonder': 'ebelge_EArsivGonder',
-        'ebelgeEArsivDizayn': 'ebelge_EArsiv_Dizayn',
-        'ebelgeEIrsaliye': 'ebelge_EIrsaliye',
-        'ebelgeEIrsaliyeGidenKutusu': 'ebelge_EIrsaliyeGidenKutusu',
-        'ebelgeEIrsaliyeGelenKutusu': 'ebelge_EIrsaliyeGelenKutusu',
-        'ebelgeEIrsaliyeTaslakOlustur': 'ebelge_EIrsaliyeTaslakOlustur',
-        'ebelgeEIrsaliyeTaslakSil': 'ebelge_EIrsaliyeTaslakSil',
-        'ebelgeEIrsaliyeTaslakBasim': 'ebelge_EIrsaliyeTaslakBasim',
-        'ebelgeEIrsaliyeGonder': 'ebelge_EIrsaliyeGonder',
-        'ebelgeEIrsaliyeGoruntule': 'ebelge_EIrsaliyeGoruntule',
-        'ebelgeEIrsaliyeDizayn': 'ebelge_EIrsaliye_Dizayn',
-        'entegrasyonUETDSESYA': 'entegrasyon_UETDSESYA',
-        'entegrasyonUETDSESYAIptal': 'entegrasyon_UETDSESYA_Iptal'
-      },
-    );
+    ProfilYetkiModel()
+      ..yazdirmaSatisIrsYazicilari =
+          (json['yazdirma_SatisIrs_Yazicilari'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..yazdirmaDizaynSatisIrs =
+          (json['yazdirma_Dizayn_SatisIrs'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..yazdirmaSatisTalebi = json['yazdirma_SatisTalebi'] as bool?
+      ..yazdirmaSatisTalebiYazicilari =
+          (json['yazdirma_SatisTalebi_Yazicilari'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..yazdirmaDizaynSatisTalebi =
+          (json['yazdirma_Dizayn_SatisTalebi'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..yazdirmaSatisTeklifi = json['yazdirma_SatisTeklifi'] as bool?
+      ..yazdirmaDizaynSatisTeklifi =
+          (json['yazdirma_Dizayn_SatisTeklifi'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..yazdirmaSayim = json['yazdirma_Sayim'] as bool?
+      ..yazdirmaSayimYazicilari =
+          (json['yazdirma_Sayim_Yazicilari'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..yazdirmaDizaynSayim = (json['yazdirma_Dizayn_Sayim'] as List<dynamic>?)
+          ?.map((e) => e as int)
+          .toList()
+      ..yazdirmaSevkiyatEtiketi = json['yazdirma_Sevkiyat_Etiketi'] as bool?
+      ..yazdirmaSevkiyatEtiketiYazicilari =
+          (json['yazdirma_Sevkiyat_Etiketi_Yazicilari'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..yazdirmaDizaynSevkiyatEtiketi =
+          (json['yazdirma_Dizayn_SevkiyatEtiketi'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..yazdirmaSevkiyatEtiketiKopyaSayisiGizle =
+          json['yazdirma_Sevkiyat_Etiketi_KopyaSayisiGizle'] as bool?
+      ..yazdirmaSerbest = json['yazdirma_Serbest'] as bool?
+      ..yazdirmaSerbestYazicilari =
+          json['yazdirma_Serbest_Yazicilari'] as List<dynamic>?
+      ..yazdirmaDizaynSerbest =
+          (json['yazdirma_Dizayn_Serbest'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..yazdirmaSeriEtiketi = json['yazdirma_SeriEtiketi'] as bool?
+      ..yazdirmaSeriEtiketiYazicilari =
+          (json['yazdirma_Seri_Etiketi_Yazicilari'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..yazdirmaDizaynSeriEtiketi =
+          (json['yazdirma_Dizayn_SeriEtiketi'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..yazdirmaStokEtiketi = json['yazdirma_Stok_Etiketi'] as bool?
+      ..yazdirmaStokEtiketiYazicilari =
+          (json['yazdirma_Stok_Etiketi_Yazicilari'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..yazdirmaDizaynStokEtiketi =
+          (json['yazdirma_Dizayn_StokEtiketi'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..yazdirmaTahsilatMakbuzu = json['yazdirma_TahsilatMakbuzu'] as bool?
+      ..yazdirmaDizaynTahsilatMakbuzu =
+          (json['yazdirma_Dizayn_TahsilatMakbuzu'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..yazdirmaUSK = json['yazdirma_USK'] as bool?
+      ..yazdirmaUSKYazicilari =
+          (json['yazdirma_USK_Yazicilari'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..yazdirmaDizaynUSK = (json['yazdirma_Dizayn_USK'] as List<dynamic>?)
+          ?.map((e) => e as int)
+          .toList()
+      ..yazdirmaUretMalTop = json['yazdirma_UretMalTop'] as bool?
+      ..yazdirmaUretMalTopYazicilari =
+          json['yazdirma_UretMalTop_Yazicilari'] as List<dynamic>?
+      ..yazdirmaDizaynUretMalTop =
+          json['yazdirma_Dizayn_UretMalTop'] as List<dynamic>?
+      ..kullanicilar = (json['kullanicilar'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
+      ..sirketTamEkranAcilsin = json['sirket_TamEkranAcilsin'] as bool?
+      ..sirketRehberdeCariKodGizle =
+          json['sirket_RehberdeCariKodGizle'] as bool?
+      ..sirketRehberdeStokKodGizle =
+          json['sirket_RehberdeStokKodGizle'] as bool?
+      ..sirketRaporlardaFiyatGizle =
+          json['sirket_RaporlardaFiyatGizle'] as bool?
+      ..sirketTarihDegismesin = json['sirket_TarihDegismesin'] as bool?
+      ..sirketDevirSirketineGiris =
+          json['sirket_DevirSirketineGiris'] as String?
+      ..sirketKontrolluAktarBelgeTipleri =
+          (json['sirket_KontrolluAktar_BelgeTipleri'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..sirketKontrolluAktarBelgeNoGoster =
+          json['sirket_KontrolluAktar_BelgeNoGoster'] as List<dynamic>?
+      ..sirketKontrolAciklamasiBelgeTipleri =
+          json['sirket_KontrolAciklamasi_BelgeTipleri'] as List<dynamic>?
+      ..sirketTLFiyatGelsinBelgeTipleri =
+          json['sirket_TLFiyatGelsin_BelgeTipleri'] as List<dynamic>?
+      ..sirketKalemKayitKontrolBelgeTipleri =
+          json['sirket_KalemKayitKontrol_BelgeTipleri'] as List<dynamic>?
+      ..sirketAktifDepolar = json['sirket_aktifDepolar'] as List<dynamic>?
+      ..sirketSatisDepo = json['sirket_satisDepo'] as int?
+      ..sirketSatisDepoOzellestir = json['sirket_satisDepo_Ozellestir'] as bool?
+      ..sirketSatisDepoMusSip = json['sirket_satisDepo_MusSip'] as int?
+      ..sirketSatisDepoSatisFat = json['sirket_satisDepo_SatisFat'] as int?
+      ..sirketSatisDepoSatisIrs = json['sirket_satisDepo_SatisIrs'] as int?
+      ..sirketAlisDepo = json['sirket_alisDepo'] as int?
+      ..sirketIadeDepo = json['sirket_iadeDepo'] as int?
+      ..sirketProjeKodu = json['sirket_projeKodu'] as String?
+      ..sirketAktifProjeler = (json['sirket_aktifProjeler'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
+      ..ayarlarFirmaAyarlari = json['ayarlar_FirmaAyarlari'] as bool?
+      ..ayarlarOturumlar = json['ayarlar_Oturumlar'] as bool?
+      ..sirketSifreHatirlamaDurumu =
+          json['sirket_SifreHatirlamaDurumu'] as String?
+      ..genelDovizKurlari = json['genel_DovizKurlari'] as bool?
+      ..genelDovizKurlariEkle = json['genel_DovizKurlari_Ekle'] as bool?
+      ..genelDovizKurlariDuzelt = json['genel_DovizKurlari_Duzelt'] as bool?
+      ..genelDovizKurlariSil = json['genel_DovizKurlari_Sil'] as bool?
+      ..genelBelgeKontrol = json['genel_BelgeKontrol'] as bool?
+      ..genelBelgeKontrolEkle = json['genel_BelgeKontrol_Ekle'] as bool?
+      ..genelBelgeKontrolSil = json['genel_BelgeKontrol_Sil'] as bool?
+      ..genelBelgeKontrolBelgeTipleri =
+          (json['genel_BelgeKontrol_BelgeTipleri'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..genelBelgeKontrolBarkodOkutsun =
+          json['genel_BelgeKontrol_BarkodOkutsun'] as String?
+      ..genelBelgeKontrolMiktarOtomatikGelsin =
+          json['genel_BelgeKontrol_MiktarOtomatikGelsin'] as String?
+      ..genelBelgeKontrolKalemDetaySorulmasin =
+          json['genel_BelgeKontrol_KalemDetaySorulmasin'] as String?
+      ..genelBelgeKontrolBelgeOnaySormasin =
+          json['genel_BelgeKontrol_BelgeOnaySormasin'] as String?
+      ..malKabulFiyatDegistirilmesin =
+          json['malKabul_FiyatDegistirilmesin'] as bool?
+      ..malKabulAlisIrsBelgeTipleri =
+          (json['malKabul_AlisIrs_BelgeTipleri'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..malKabulAlisIrsGizlenecekAlanlar =
+          json['malKabul_AlisIrs_GizlenecekAlanlar'] as List<dynamic>?
+      ..malKabulAlisIrsAciklamaAlanlari =
+          (json['malKabul_AlisIrs_AciklamaAlanlari'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..malKabulSatinAlma = json['malKabul_SatinAlma'] as bool?
+      ..malKabulSatinAlmaKaydet = json['malKabul_SatinAlma_Kaydet'] as bool?
+      ..malKabulSatinAlmaDuzelt = json['malKabul_SatinAlma_Duzelt'] as bool?
+      ..malKabulSatinAlmaSil = json['malKabul_SatinAlma_Sil'] as bool?
+      ..malKabulAlisIrsaliyesiFiyatGor =
+          json['malKabul_AlisIrsaliyesiFiyatGor'] as bool?
+      ..malKabulAlisIrsDigerSekmesiGoster =
+          json['malKabul_AlisIrs_DigerSekmesiGoster'] as bool?
+      ..malKabulAlisIrsSipBagSecenegi =
+          json['malKabul_AlisIrs_SipBagSecenegi'] as String?
+      ..malKabulAlisIrsReferansStokUygulamasi =
+          json['malKabul_AlisIrs_ReferansStokUygulamasi'] as bool?
+      ..malKabulAlisIrsSipBagSipHariciKalemEklenebilir =
+          json['malKabul_AlisIrs_SipBag_SipHariciKalemEklenebilir'] as bool?
+      ..malKabulAlisIrsSipBagFazlaTeslimatYapilabilir =
+          json['malKabul_AlisIrs_SipBag_FazlaTeslimatYapilabilir'] as bool?
+      ..malKabulAlisIrsSipBagSipOkutulsun =
+          json['malKabul_AlisIrs_SipBag_SipOkutulsun'] as bool?
+      ..malKabulAlisIrsSipBagCokluSecim =
+          json['malKabul_AlisIrs_SipBag_CokluSecim'] as bool?
+      ..malKabulAlisIrsSipBagTumKalemlerSecilsin =
+          json['malKabul_AlisIrs_SipBag_TumKalemlerSecilsin'] as bool?
+      ..malKabulAlisIrsSipBagEslesmeDurumu =
+          json['malKabul_AlisIrs_SipBag_EslesmeDurumu'] as int?
+      ..malKabulAlisIrsBarkodluGiris =
+          json['malKabul_AlisIrs_BarkodluGiris'] as bool?
+      ..malKabulAlisIrsMiktarOtomatikGelsin =
+          json['malKabul_AlisIrs_MiktarOtomatikGelsin'] as bool?
+      ..malKabulAlisIrsKalemDetaySorulmasin =
+          json['malKabul_AlisIrs_KalemDetaySorulmasin'] as bool?
+      ..malKabulAlisIrsKalemlerBirlestirilsin =
+          json['malKabul_AlisIrs_KalemlerBirlestirilsin'] as bool?
+      ..malKabulAlisIrsStokRehberiAcilmasin =
+          json['malKabul_AlisIrs_StokRehberiAcilmasin'] as bool?
+      ..malKabulAlisIrsKalemDuzeltilemesin =
+          json['malKabul_AlisIrs_KalemDuzeltilemesin'] as bool?
+      ..malKabulAlisIrsTekrarEdenBarkod =
+          json['malKabul_AlisIrs_TekrarEdenBarkod'] as String?
+      ..malKabulAlisIrsKlavyeEngelle =
+          json['malKabul_AlisIrs_KlavyeEngelle'] as bool?
+      ..malKabulAlisIrsMiktar1Gelsin =
+          json['malKabul_AlisIrs_Miktar1Gelsin'] as bool?
+      ..malKabulAlisIrsRaporlar = json['malKabul_AlisIrs_Raporlar'] as bool?
+      ..malKabulAlisIrsKalemRaporu =
+          json['malKabul_AlisIrs_KalemRaporu'] as bool?
+      ..malKabulAlisIrsOtoBasimYap =
+          json['malKabul_AlisIrs_OtoBasimYap'] as bool?
+      ..malKabulAlisIrsKacGunlukKayitlarListelensin =
+          json['malKabul_AlisIrs_KacGunlukKayitlarListelensin'] as int?
+      ..malKabulAlisIrsFiyatSirasi =
+          json['malKabul_AlisIrs_FiyatSirasi'] as int?
+      ..malKabulAlisIrsBirim1denKaydet =
+          json['malKabul_AlisIrs_Birim1denKaydet'] as bool?
+      ..malKabulAlisIrsCariKoduDegistir =
+          json['malKabul_AlisIrs_CariKoduDegistir'] as bool?
+      ..malKabulAlisIrsCariRehPlaEslesmesin =
+          json['malKabul_AlisIrs_CariRehPlaEslesmesin'] as bool?
+      ..malKabulIade = json['malKabul_Iade'] as bool?
+      ..malKabulIadeKaydet = json['malKabul_Iade_Kaydet'] as bool?
+      ..malKabulIadeDuzelt = json['malKabul_Iade_Duzelt'] as bool?
+      ..malKabulIadeSil = json['malKabul_Iade_Sil'] as bool?
+      ..malKabulAlisFaturasiBelgeTipleri =
+          (json['malKabul_AlisFaturasi_BelgeTipleri'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..malKabulAlisFaturasi = json['malKabul_AlisFaturasi'] as bool?
+      ..malKabulAlisFaturasiKaydet =
+          json['malKabul_AlisFaturasi_Kaydet'] as bool?
+      ..malKabulAlisFaturasiDuzelt =
+          json['malKabul_AlisFaturasi_Duzelt'] as bool?
+      ..malKabulAlisFaturasiSil = json['malKabul_AlisFaturasi_Sil'] as bool?
+      ..malKabulAlisFatDigerSekmesiGoster =
+          json['malKabul_AlisFat_DigerSekmesiGoster'] as bool?
+      ..malKabulAlisFatKacGunlukKayitlarListelensin =
+          json['malKabul_AlisFat_KacGunlukKayitlarListelensin'] as int?
+      ..malKabulAlisFatFiyatSirasi =
+          json['malKabul_AlisFat_FiyatSirasi'] as int?
+      ..malKabulAlisFatBirim1denKaydet =
+          json['malKabul_AlisFat_Birim1denKaydet'] as bool?
+      ..malKabulAlisFatAciklamalarYetkiTuru =
+          json['malKabul_AlisFat_Aciklamalar_YetkiTuru'] as String?
+      ..malKabulAlisFatAciklamaAlanlari =
+          (json['malKabul_AlisFat_AciklamaAlanlari'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..malKabulAlisFatCariKoduDegistir =
+          json['malKabul_AlisFat_CariKoduDegistir'] as bool?
+      ..malKabulAlisFatBarkodluGiris =
+          json['malKabul_AlisFat_BarkodluGiris'] as bool?
+      ..malKabulAlisFatMiktarOtomatikGelsin =
+          json['malKabul_AlisFat_MiktarOtomatikGelsin'] as bool?
+      ..malKabulAlisFatKalemDetaySorulmasin =
+          json['malKabul_AlisFat_KalemDetaySorulmasin'] as bool?
+      ..malKabulAlisFatStokRehberiAcilmasin =
+          json['malKabul_AlisFat_StokRehberiAcilmasin'] as bool?
+      ..malKabulAlisFatKalemDuzeltilemesin =
+          json['malKabul_AlisFat_KalemDuzeltilemesin'] as bool?
+      ..malKabulAlisFatKlavyeEngelle =
+          json['malKabul_AlisFat_KlavyeEngelle'] as bool?
+      ..malKabulAlisFatMiktar1Gelsin =
+          json['malKabul_AlisFat_Miktar1Gelsin'] as bool?
+      ..malKabulAlisFatReferansStokUygulamasi =
+          json['malKabul_AlisFat_ReferansStokUygulamasi'] as bool?
+      ..malKabulAlisFatSipBagSipHariciKalemEklenebilir =
+          json['malKabul_AlisFat_SipBag_SipHariciKalemEklenebilir'] as bool?
+      ..malKabulAlisFatSipBagFazlaTeslimatYapilabilir =
+          json['malKabul_AlisFat_SipBag_FazlaTeslimatYapilabilir'] as bool?
+      ..malKabulAlisFatSipBagSipOkutulsun =
+          json['malKabul_AlisFat_SipBag_SipOkutulsun'] as bool?
+      ..malKabulAlisFatSipBagCokluSecim =
+          json['malKabul_AlisFat_SipBag_CokluSecim'] as bool?
+      ..malKabulAlisFatSipBagTumKalemlerSecilsin =
+          json['malKabul_AlisFat_SipBag_TumKalemlerSecilsin'] as bool?
+      ..malKabulAlisFatSipBagEslesmeDurumu =
+          json['malKabul_AlisFat_SipBag_EslesmeDurumu'] as int?
+      ..malKabulAlisFatRaporlar = json['malKabul_AlisFat_Raporlar'] as bool?
+      ..malKabulAlisFatKalemRaporu =
+          json['malKabul_AlisFat_KalemRaporu'] as bool?
+      ..malKabulMustahsil = json['malKabul_Mustahsil'] as bool?
+      ..malKabulMustahsilEkle = json['malKabul_Mustahsil_Ekle'] as bool?
+      ..malKabulMustahsilDuzelt = json['malKabul_Mustahsil_Duzelt'] as bool?
+      ..malKabulMustahsilSil = json['malKabul_Mustahsil_Sil'] as bool?
+      ..transferDAT = json['transfer_DAT'] as bool?
+      ..transferDATKaydet = json['transfer_DAT_Kaydet'] as bool?
+      ..transferDATDuzelt = json['transfer_DAT_Duzelt'] as bool?
+      ..transferDATSil = json['transfer_DAT_Sil'] as bool?
+      ..transferDATFiyatGor = json['transfer_DAT_FiyatGor'] as bool?
+      ..transferDATOtoEtiketBas = json['transfer_DAT_OtoEtiketBas'] as bool?
+      ..transferDATVarsayilanCikisDepo =
+          json['transfer_DAT_VarsayilanCikisDepo'] as int?
+      ..transferDATVarsayilanGirisDepo =
+          json['transfer_DAT_VarsayilanGirisDepo'] as int?
+      ..transferDATEIrsIsaretleyemesin =
+          json['transfer_DAT_eIrsIsaretleyemesin'] as bool?
+      ..transferDATDigerSekmesiGoster =
+          json['transfer_DAT_DigerSekmesiGoster'] as bool?
+      ..transferDATBarkodluGiris = json['transfer_DAT_BarkodluGiris'] as bool?
+      ..transferDATMiktarOtomatikGelsin =
+          json['transfer_DAT_MiktarOtomatikGelsin'] as bool?
+      ..transferDATKalemDetaySorulmasin =
+          json['transfer_DAT_KalemDetaySorulmasin'] as bool?
+      ..transferDATStokRehberiAcilmasin =
+          json['transfer_DAT_StokRehberiAcilmasin'] as bool?
+      ..transferDATKalemDuzeltilemesin =
+          json['transfer_DAT_KalemDuzeltilemesin'] as bool?
+      ..transferDATKlavyeEngelle = json['transfer_DAT_KlavyeEngelle'] as bool?
+      ..transferDATMiktar1Gelsin = json['transfer_DAT_Miktar1Gelsin'] as bool?
+      ..transferDATKalemlerBirlestirilsin =
+          json['transfer_DAT_KalemlerBirlestirilsin'] as bool?
+      ..transferDATKacGunlukKayitlarListelensin =
+          json['transfer_DAT_KacGunlukKayitlarListelensin'] as int?
+      ..transferDATOnayIslemleri = json['transfer_DAT_OnayIslemleri'] as bool?
+      ..transferDATOnayIslemleriDepolar =
+          json['transfer_DAT_OnayIslemleri_Depolar'] as List<dynamic>?
+      ..transferDATEkAlan2Hatirla = json['transfer_DAT_EkAlan2Hatirla'] as bool?
+      ..transferDATEkAlan2Tablodan =
+          json['transfer_DAT_EkAlan2Tablodan'] as bool?
+      ..transferDATLokalDATSeciliGelmesin =
+          json['transfer_DAT_LokalDATSeciliGelmesin'] as bool?
+      ..transferDATSeriGirisHarYapabilsin =
+          json['transfer_DAT_SeriGirisHarYapabilsin'] as bool?
+      ..transferDATBirim1denKaydet =
+          json['transfer_DAT_Birim1denKaydet'] as bool?
+      ..transferDATBarkod2Sor = json['transfer_DAT_Barkod2Sor'] as bool?
+      ..transferDATBosGecilmeyecekAlanlar =
+          json['transfer_DAT_BosGecilmeyecekAlanlar'] as List<dynamic>?
+      ..transferDATGizlenecekAlanlar =
+          json['transfer_DAT_GizlenecekAlanlar'] as List<dynamic>?
+      ..transferDATDegismeyecekAlanlar =
+          json['transfer_DAT_DegismeyecekAlanlar'] as List<dynamic>?
+      ..transferDATAciklamaAlanlari =
+          json['transfer_DAT_AciklamaAlanlari'] as List<dynamic>?
+      ..transferDATSipBagSecenegi =
+          json['transfer_DAT_SipBagSecenegi'] as String?
+      ..transferDATReferansStokUygulamasi =
+          json['transfer_DAT_ReferansStokUygulamasi'] as bool?
+      ..transferDATSipBagSipHariciKalemEklenebilir =
+          json['transfer_DAT_SipBag_SipHariciKalemEklenebilir'] as bool?
+      ..transferDATSipBagFazlaTeslimatYapilabilir =
+          json['transfer_DAT_SipBag_FazlaTeslimatYapilabilir'] as bool?
+      ..transferDATSipBagSipOkutulsun =
+          json['transfer_DAT_SipBag_SipOkutulsun'] as bool?
+      ..transferDATSipBagSipOkutulsunMiktar2BazAl =
+          json['transfer_DAT_SipBag_SipOkutulsun_Miktar2BazAl'] as bool?
+      ..transferDATSipBagSipOkutulsunKalanMiktarGelsin =
+          json['transfer_DAT_SipBag_SipOkutulsun_KalanMiktarGelsin'] as String?
+      ..transferDATSipBagCokluSecim =
+          json['transfer_DAT_SipBag_CokluSecim'] as bool?
+      ..transferDATSipBagTumKalemlerSecilsin =
+          json['transfer_DAT_SipBag_TumKalemlerSecilsin'] as bool?
+      ..transferDATSipBagEslesmeDurumu =
+          json['transfer_DAT_SipBag_EslesmeDurumu'] as int?
+      ..transferDATSipBagMalToplananlarGelsin =
+          json['transfer_DAT_SipBag_MalToplananlarGelsin'] as bool?
+      ..transferDATSipBagSevkOnayliSiparislerGelsin =
+          json['transfer_DAT_SipBag_SevkOnayliSiparislerGelsin'] as bool?
+      ..transferAG = json['transfer_AG'] as bool?
+      ..transferAGKaydet = json['transfer_AG_Kaydet'] as bool?
+      ..transferAGDuzelt = json['transfer_AG_Duzelt'] as bool?
+      ..transferAGSil = json['transfer_AG_Sil'] as bool?
+      ..transferAGFiyatGor = json['transfer_AG_FiyatGor'] as bool?
+      ..transferAGKacGunlukKayitlarListelensin =
+          json['transfer_AG_KacGunlukKayitlarListelensin'] as int?
+      ..transferAGVarsayilanDepo = json['transfer_AG_VarsayilanDepo'] as int?
+      ..transferAGDigerSekmesiGoster =
+          json['transfer_AG_DigerSekmesiGoster'] as bool?
+      ..transferAGBelgeKopyala = json['transfer_AG_BelgeKopyala'] as bool?
+      ..transferAGBirim1denKaydet = json['transfer_AG_Birim1denKaydet'] as bool?
+      ..transferAGOtoBasimYap = json['transfer_AG_OtoBasimYap'] as bool?
+      ..transferAGSeriGirisHarYapabilsin =
+          json['transfer_AG_SeriGirisHarYapabilsin'] as bool?
+      ..transferAGBarkodluGiris = json['transfer_AG_BarkodluGiris'] as bool?
+      ..transferAGMiktarOtomatikGelsin =
+          json['transfer_AG_MiktarOtomatikGelsin'] as bool?
+      ..transferAGKalemDetaySorulmasin =
+          json['transfer_AG_KalemDetaySorulmasin'] as bool?
+      ..transferAGStokRehberiAcilmasin =
+          json['transfer_AG_StokRehberiAcilmasin'] as bool?
+      ..transferAGKalemDuzeltilemesin =
+          json['transfer_AG_KalemDuzeltilemesin'] as bool?
+      ..transferAGKlavyeEngelle = json['transfer_AG_KlavyeEngelle'] as bool?
+      ..transferAGMiktar1Gelsin = json['transfer_AG_Miktar1Gelsin'] as bool?
+      ..transferAGReferansStokUygulamasi =
+          json['transfer_AG_ReferansStokUygulamasi'] as bool?
+      ..transferAGSipBagSipHariciKalemEklenebilir =
+          json['transfer_AG_SipBag_SipHariciKalemEklenebilir'] as bool?
+      ..transferAGSipBagFazlaTeslimatYapilabilir =
+          json['transfer_AG_SipBag_FazlaTeslimatYapilabilir'] as bool?
+      ..transferAGSipBagSipOkutulsun =
+          json['transfer_AG_SipBag_SipOkutulsun'] as bool?
+      ..transferAGSipBagSipOkutulsunMiktar2BazAl =
+          json['transfer_AG_SipBag_SipOkutulsun_Miktar2BazAl'] as bool?
+      ..transferAGSipBagCokluSecim =
+          json['transfer_AG_SipBag_CokluSecim'] as bool?
+      ..transferAGSipBagTumKalemlerSecilsin =
+          json['transfer_AG_SipBag_TumKalemlerSecilsin'] as bool?
+      ..transferAGSipBagEslesmeDurumu =
+          json['transfer_AG_SipBag_EslesmeDurumu'] as int?
+      ..transferAGSipBagMalToplananlarGelsin =
+          json['transfer_AG_SipBag_MalToplananlarGelsin'] as bool?
+      ..transferAGSipBagSevkOnayliSiparislerGelsin =
+          json['transfer_AG_SipBag_SevkOnayliSiparislerGelsin'] as bool?
+      ..transferAC = json['transfer_AC'] as bool?
+      ..transferACKaydet = json['transfer_AC_Kaydet'] as bool?
+      ..transferACDuzelt = json['transfer_AC_Duzelt'] as bool?
+      ..transferACSil = json['transfer_AC_Sil'] as bool?
+      ..transferACFiyatGor = json['transfer_AC_FiyatGor'] as bool?
+      ..transferACKacGunlukKayitlarListelensin =
+          json['transfer_AC_KacGunlukKayitlarListelensin'] as int?
+      ..transferACVarsayilanDepo = json['transfer_AC_VarsayilanDepo'] as int?
+      ..transferACEIrsIsaretleyemesin =
+          json['transfer_AC_eIrsIsaretleyemesin'] as bool?
+      ..transferACDigerSekmesiGoster =
+          json['transfer_AC_DigerSekmesiGoster'] as bool?
+      ..transferACBelgeKopyala = json['transfer_AC_BelgeKopyala'] as bool?
+      ..transferACBirim1denKaydet = json['transfer_AC_Birim1denKaydet'] as bool?
+      ..transferACOtoBasimYap = json['transfer_AC_OtoBasimYap'] as bool?
+      ..transferACSeriGirisHarYapabilsin =
+          json['transfer_AC_SeriGirisHarYapabilsin'] as bool?
+      ..transferACEkAlan2Tablodan = json['transfer_AC_EkAlan2Tablodan'] as bool?
+      ..transferACEkAlan2Hatirla = json['transfer_AC_EkAlan2Hatirla'] as bool?
+      ..transferACMinStokMikGoster =
+          json['transfer_AC_MinStokMikGoster'] as String?
+      ..transferACBosGecilmeyecekAlanlar =
+          json['transfer_AC_BosGecilmeyecekAlanlar'] as List<dynamic>?
+      ..transferACBarkodluGiris = json['transfer_AC_BarkodluGiris'] as bool?
+      ..transferACMiktarOtomatikGelsin =
+          json['transfer_AC_MiktarOtomatikGelsin'] as bool?
+      ..transferACKalemDetaySorulmasin =
+          json['transfer_AC_KalemDetaySorulmasin'] as bool?
+      ..transferACStokRehberiAcilmasin =
+          json['transfer_AC_StokRehberiAcilmasin'] as bool?
+      ..transferACKalemDuzeltilemesin =
+          json['transfer_AC_KalemDuzeltilemesin'] as bool?
+      ..transferACKlavyeEngelle = json['transfer_AC_KlavyeEngelle'] as bool?
+      ..transferACMiktar1Gelsin = json['transfer_AC_Miktar1Gelsin'] as bool?
+      ..transferACReferansStokUygulamasi =
+          json['transfer_AC_ReferansStokUygulamasi'] as bool?
+      ..transferACSipBagSipHariciKalemEklenebilir =
+          json['transfer_AC_SipBag_SipHariciKalemEklenebilir'] as bool?
+      ..transferACSipBagFazlaTeslimatYapilabilir =
+          json['transfer_AC_SipBag_FazlaTeslimatYapilabilir'] as bool?
+      ..transferACSipBagSipOkutulsun =
+          json['transfer_AC_SipBag_SipOkutulsun'] as bool?
+      ..transferACSipBagSipOkutulsunMiktar2BazAl =
+          json['transfer_AC_SipBag_SipOkutulsun_Miktar2BazAl'] as bool?
+      ..transferACSipBagCokluSecim =
+          json['transfer_AC_SipBag_CokluSecim'] as bool?
+      ..transferACSipBagTumKalemlerSecilsin =
+          json['transfer_AC_SipBag_TumKalemlerSecilsin'] as bool?
+      ..transferACSipBagEslesmeDurumu =
+          json['transfer_AC_SipBag_EslesmeDurumu'] as int?
+      ..transferACSipBagMalToplananlarGelsin =
+          json['transfer_AC_SipBag_MalToplananlarGelsin'] as bool?
+      ..transferACSipBagSevkOnayliSiparislerGelsin =
+          json['transfer_AC_SipBag_SevkOnayliSiparislerGelsin'] as bool?
+      ..transferDepoTalebi = json['transfer_DepoTalebi'] as bool?
+      ..transferDepoTalebiSil = json['transfer_DepoTalebi_Sil'] as bool?
+      ..transferDepoTalebiMalTop = json['transfer_DepoTalebi_MalTop'] as bool?
+      ..transferDepoTalebiMalTopFazlaTeslimat =
+          json['transfer_DepoTalebi_MalTop_FazlaTeslimat'] as String?
+      ..hucreGiristeHucreYerlestir =
+          json['hucre_GiristeHucreYerlestir'] as bool?
+      ..hucreCikistaHucreYerlestir =
+          json['hucre_CikistaHucreYerlestir'] as bool?
+      ..hucreYerlestir = json['hucre_Yerlestir'] as bool?
+      ..hucreYerlestirBelgesiz = json['hucre_YerlestirBelgesiz'] as bool?
+      ..hucreYerlestirKlavyeEngelle =
+          json['hucre_Yerlestir_KlavyeEngelle'] as bool?
+      ..hucreYerlestirRehberdenStokSecilmesin =
+          json['hucre_Yerlestir_RehberdenStokSecilmesin'] as bool?
+      ..hucreYerlestirHangiHucrede =
+          json['hucre_Yerlestir_HangiHucrede'] as bool?
+      ..hucreYerlestirBelgeTipleri =
+          (json['hucre_Yerlestir_BelgeTipleri'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..hucreBosalt = json['hucre_Bosalt'] as bool?
+      ..hucreBosaltBelgesiz = json['hucre_BosaltBelgesiz'] as bool?
+      ..hucreBosaltKlavyeEngelle = json['hucre_Bosalt_KlavyeEngelle'] as bool?
+      ..hucreBosaltRehberdenStokSecilmesin =
+          json['hucre_Bosalt_RehberdenStokSecilmesin'] as bool?
+      ..hucreBosaltHangiHucrede = json['hucre_Bosalt_HangiHucrede'] as bool?
+      ..hucreBosaltBelgeTipleri =
+          (json['hucre_Bosalt_BelgeTipleri'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..hucreArama = json['hucre_Arama'] as bool?
+      ..hucreAramaTumDepolar = json['hucre_AramaTumDepolar'] as bool?
+      ..hucreAramaOzelFonksiyon = json['hucre_AramaOzelFonksiyon'] as String?
+      ..hucreTransfer = json['hucre_Transfer'] as bool?
+      ..hucreTransferKlavyeEngelle =
+          json['hucre_Transfer_KlavyeEngelle'] as bool?
+      ..hucreTransferRehberdenStokSecilmesin =
+          json['hucre_Transfer_RehberdenStokSecilmesin'] as bool?
+      ..hucreTransferBelgeTipleri =
+          (json['hucre_Transfer_BelgeTipleri'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..hucreListesi = json['hucre_Listesi'] as bool?
+      ..hucreBosaltOtomatikStokEtiketiYazdir =
+          json['hucre_Bosalt_OtomatikStokEtiketiYazdir'] as bool?
+      ..hucreBakiyeDurumu = json['hucre_BakiyeDurumu'] as bool?
+      ..hucreHareketleri = json['hucre_Hareketleri'] as bool?
+      ..hucreHareketleriSil = json['hucre_Hareketleri_Sil'] as bool?
+      ..sevkiyatSatisIrsaliyesiBelgeTipleri =
+          json['sevkiyat_SatisIrsaliyesi_BelgeTipleri'] as List<dynamic>?
+      ..sevkiyatSatisIrsaliyesiGizlenecekAlanlar =
+          json['sevkiyat_SatisIrsaliyesi_GizlenecekAlanlar'] as List<dynamic>?
+      ..sevkiyatSatisIrsaliyesiDegismeyecekAlanlar =
+          json['sevkiyat_SatisIrsaliyesi_DegismeyecekAlanlar'] as List<dynamic>?
+      ..sevkiyatSatisIrsaliyesi = json['sevkiyat_SatisIrsaliyesi'] as bool?
+      ..sevkiyatSatisIrsaliyesiKayit =
+          json['sevkiyat_SatisIrsaliyesiKayit'] as bool?
+      ..sevkiyatSatisIrsaliyesiDuzeltme =
+          json['sevkiyat_SatisIrsaliyesiDuzeltme'] as bool?
+      ..sevkiyatSatisIrsaliyesiSilme =
+          json['sevkiyat_SatisIrsaliyesiSilme'] as bool?
+      ..sevkiyatSatisIrsaliyesiFiyatGor =
+          json['sevkiyat_SatisIrsaliyesiFiyatGor'] as bool?
+      ..sevkiyatSatisIrsDigerSekmesiGoster =
+          json['sevkiyat_SatisIrs_DigerSekmesiGoster'] as bool?
+      ..sevkiyatSatisIrsaliyesiSipBagSecenegi =
+          json['sevkiyat_SatisIrsaliyesi_SipBagSecenegi'] as String?
+      ..sevkiyatSatisIrsReferansStokUygulamasi =
+          json['sevkiyat_SatisIrs_ReferansStokUygulamasi'] as bool?
+      ..sevkiyatSatisIrsSipBagSipHariciKalemEklenebilir =
+          json['sevkiyat_SatisIrs_SipBag_SipHariciKalemEklenebilir'] as bool?
+      ..sevkiyatSatisIrsSipBagFazlaTeslimatYapilabilir =
+          json['sevkiyat_SatisIrs_SipBag_FazlaTeslimatYapilabilir'] as bool?
+      ..sevkiyatSatisIrsSipBagSipOkutulsun =
+          json['sevkiyat_SatisIrs_SipBag_SipOkutulsun'] as bool?
+      ..sevkiyatSatisIrsSipBagSipOkutulsunMiktar2BazAl =
+          json['sevkiyat_SatisIrs_SipBag_SipOkutulsun_Miktar2BazAl'] as bool?
+      ..sevkiyatSatisIrsSipBagSipOkutulsunKalanMiktarGelsin =
+          json['sevkiyat_SatisIrs_SipBag_SipOkutulsun_KalanMiktarGelsin']
+              as String?
+      ..sevkiyatSatisIrsSipBagCokluSecim =
+          json['sevkiyat_SatisIrs_SipBag_CokluSecim'] as bool?
+      ..sevkiyatSatisIrsSipBagTumKalemlerSecilsin =
+          json['sevkiyat_SatisIrs_SipBag_TumKalemlerSecilsin'] as bool?
+      ..sevkiyatSatisIrsSipBagEslesmeDurumu =
+          json['sevkiyat_SatisIrs_SipBag_EslesmeDurumu'] as int?
+      ..sevkiyatSatisIrsSipBagMalToplananlarGelsin =
+          json['sevkiyat_SatisIrs_SipBag_MalToplananlarGelsin'] as bool?
+      ..sevkiyatSatisIrsSipBagSevkOnayliSiparislerGelsin =
+          json['sevkiyat_SatisIrs_SipBag_SevkOnayliSiparislerGelsin'] as bool?
+      ..sevkiyatFiyatDegistirilmesin =
+          json['sevkiyat_FiyatDegistirilmesin'] as bool?
+      ..sevkiyatSatisIrsaliyesiEIrsaliyeDuzenleyemesin =
+          json['sevkiyat_SatisIrsaliyesi_EIrsaliyeDuzenleyemesin'] as bool?
+      ..sevkiyatSatisIrsKalemlerBirlestirilsin =
+          json['sevkiyat_SatisIrs_KalemlerBirlestirilsin'] as bool?
+      ..sevkiyatSatisIrsOtoBasimYap =
+          json['sevkiyat_SatisIrs_OtoBasimYap'] as bool?
+      ..sevkiyatSatisIrsKacGunlukKayitlarListelensin =
+          json['sevkiyat_SatisIrs_KacGunlukKayitlarListelensin'] as int?
+      ..sevkiyatSatisIrsFiyatSirasi =
+          json['sevkiyat_SatisIrs_FiyatSirasi'] as int?
+      ..sevkiyatSatisIrsKDVSifirGelsin =
+          json['sevkiyat_SatisIrs_KDVSifirGelsin'] as bool?
+      ..sevkiyatSatisIrsSeriGirisHarYapabilsin =
+          json['sevkiyat_SatisIrs_SeriGirisHarYapabilsin'] as bool?
+      ..sevkiyatSatisIrsBirim1denKaydet =
+          json['sevkiyat_SatisIrs_Birim1denKaydet'] as bool?
+      ..sevkiyatSatisIrsEkAlan2Tablodan =
+          json['sevkiyat_SatisIrs_EkAlan2Tablodan'] as bool?
+      ..sevkiyatSatisIrsEkAlan2Hatirla =
+          json['sevkiyat_SatisIrs_EkAlan2Hatirla'] as bool?
+      ..sevkiyatSatisIrsOlcuBirimi =
+          json['sevkiyat_SatisIrs_OlcuBirimi'] as int?
+      ..sevkiyatSatisIrsCariKoduDegistir =
+          json['sevkiyat_SatisIrs_CariKoduDegistir'] as bool?
+      ..sevkiyatSatisIrsMaxIskUygulamasi =
+          json['sevkiyat_SatisIrs_MaxIskUygulamasi'] as bool?
+      ..sevkiyatSatisIrsMaxSatIsk1 =
+          (json['sevkiyat_SatisIrs_MaxSatIsk1'] as num?)?.toDouble()
+      ..sevkiyatSatisIrsMaxSatIsk2 =
+          (json['sevkiyat_SatisIrs_MaxSatIsk2'] as num?)?.toDouble()
+      ..sevkiyatSatisIrsMaxSatIsk3 =
+          (json['sevkiyat_SatisIrs_MaxSatIsk3'] as num?)?.toDouble()
+      ..sevkiyatSatisIrsMaxSatIsk4 =
+          (json['sevkiyat_SatisIrs_MaxSatIsk4'] as num?)?.toDouble()
+      ..sevkiyatSatisIrsMaxSatIsk5 =
+          (json['sevkiyat_SatisIrs_MaxSatIsk5'] as num?)?.toDouble()
+      ..sevkiyatSatisIrsMaxSatIsk6 =
+          (json['sevkiyat_SatisIrs_MaxSatIsk6'] as num?)?.toDouble()
+      ..sevkiyatSatisIrsMaxGenIsk1 =
+          (json['sevkiyat_SatisIrs_MaxGenIsk1'] as num?)?.toDouble()
+      ..sevkiyatSatisIrsMaxGenIsk2 =
+          (json['sevkiyat_SatisIrs_MaxGenIsk2'] as num?)?.toDouble()
+      ..sevkiyatSatisIrsMaxGenIsk3 =
+          (json['sevkiyat_SatisIrs_MaxGenIsk3'] as num?)?.toDouble()
+      ..sevkiyatSatisIrsDipFiyatUygulamasi =
+          json['sevkiyat_SatisIrs_DipFiyatUygulamasi'] as bool?
+      ..sevkiyatSatisIrsDipFiyatSaha =
+          json['sevkiyat_SatisIrs_DipFiyatSaha'] as String?
+      ..sevkiyatSatisIrsDipFiyatEylem =
+          json['sevkiyat_SatisIrs_DipFiyatEylem'] as String?
+      ..sevkiyatSatisIrsDipFiyatKDVDurumu =
+          json['sevkiyat_SatisIrs_DipFiyatKDVDurumu'] as String?
+      ..sevkiyatSatisIrsBarkodluGiris =
+          json['sevkiyat_SatisIrs_BarkodluGiris'] as bool?
+      ..sevkiyatSatisIrsMiktarOtomatikGelsin =
+          json['sevkiyat_SatisIrs_MiktarOtomatikGelsin'] as bool?
+      ..sevkiyatSatisIrsKalemDetaySorulmasin =
+          json['sevkiyat_SatisIrs_KalemDetaySorulmasin'] as bool?
+      ..sevkiyatSatisIrsStokRehberiAcilmasin =
+          json['sevkiyat_SatisIrs_StokRehberiAcilmasin'] as bool?
+      ..sevkiyatSatisIrsKalemDuzeltilemesin =
+          json['sevkiyat_SatisIrs_KalemDuzeltilemesin'] as bool?
+      ..sevkiyatSatisIrsKlavyeEngelle =
+          json['sevkiyat_SatisIrs_KlavyeEngelle'] as bool?
+      ..sevkiyatSatisIrsMiktar1Gelsin =
+          json['sevkiyat_SatisIrs_Miktar1Gelsin'] as bool?
+      ..sevkiyatSatisIrsBakiyesizStokSecilmesin =
+          json['sevkiyat_SatisIrs_BakiyesizStokSecilmesin'] as bool?
+      ..sevkiyatSatisIrsRaporlar = json['sevkiyat_SatisIrs_Raporlar'] as bool?
+      ..sevkiyatSatisIrsKalemRaporu =
+          json['sevkiyat_SatisIrs_KalemRaporu'] as bool?
+      ..sevkiyatSatisFatBelgeTipleri =
+          json['sevkiyat_SatisFat_BelgeTipleri'] as List<dynamic>?
+      ..sevkiyatSatisFatVarsayilanBelgeTipi =
+          json['sevkiyat_SatisFat_VarsayilanBelgeTipi'] as int?
+      ..sevkiyatSatisFat = json['sevkiyat_SatisFat'] as bool?
+      ..sevkiyatSatisFatKaydet = json['sevkiyat_SatisFat_Kaydet'] as bool?
+      ..sevkiyatSatisFatDuzelt = json['sevkiyat_SatisFat_Duzelt'] as bool?
+      ..sevkiyatSatisFatSil = json['sevkiyat_SatisFat_Sil'] as bool?
+      ..sevkiyatSatisFatToplamlarCariTahsilatIslemleri =
+          json['sevkiyat_SatisFat_ToplamlarCariTahsilatIslemleri'] as bool?
+      ..sevkiyatSatisFatKayittanSonraTaslakOlustur =
+          json['sevkiyat_SatisFat_KayittanSonraTaslakOlustur'] as bool?
+      ..sevkiyatSatisFatOtomatikBasimYap =
+          json['sevkiyat_SatisFat_OtomatikBasimYap'] as bool?
+      ..sevkiyatSatisFatDigerSekmesiGoster =
+          json['sevkiyat_SatisFat_DigerSekmesiGoster'] as bool?
+      ..sevkiyatSatisFatFiyatDegistirilmesin =
+          json['sevkiyat_SatisFat_FiyatDegistirilmesin'] as bool?
+      ..sevkiyatSatisFatKacGunlukKayitlarListelensin =
+          json['sevkiyat_SatisFat_KacGunlukKayitlarListelensin'] as int?
+      ..sevkiyatSatisFatFiyatSirasi =
+          json['sevkiyat_SatisFat_FiyatSirasi'] as int?
+      ..sevkiyatSatisFatKalemlerBirlestirilsin =
+          json['sevkiyat_SatisFat_KalemlerBirlestirilsin'] as bool?
+      ..sevkiyatSatisFatBirim1denKaydet =
+          json['sevkiyat_SatisFat_Birim1denKaydet'] as bool?
+      ..sevkiyatSatisFatEkAlan2Tablodan =
+          json['sevkiyat_SatisFat_EkAlan2Tablodan'] as bool?
+      ..sevkiyatSatisFatEkAlan2Hatirla =
+          json['sevkiyat_SatisFat_EkAlan2Hatirla'] as bool?
+      ..sevkiyatSatisFatFiltre = json['sevkiyat_SatisFat_Filtre'] as String?
+      ..sevkiyatSatisFatFiltreSQL =
+          json['sevkiyat_SatisFat_FiltreSQL'] as String?
+      ..sevkiyatSatisFatOlcuBirimi =
+          json['sevkiyat_SatisFat_OlcuBirimi'] as int?
+      ..sevkiyatSatisFatAciklamaAlanlari =
+          (json['sevkiyat_SatisFat_AciklamaAlanlari'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..sevkiyatSatisFatBosGecilmeyecekAlanlar =
+          json['sevkiyat_SatisFat_BosGecilmeyecekAlanlar'] as List<dynamic>?
+      ..sevkiyatSatisFatGizlenecekAlanlar =
+          json['sevkiyat_SatisFat_GizlenecekAlanlar'] as List<dynamic>?
+      ..sevkiyatSatisFatDegismeyecekAlanlar =
+          json['sevkiyat_SatisFat_DegismeyecekAlanlar'] as List<dynamic>?
+      ..sevkiyatSatisFatSeriGirisHarYapabilsin =
+          json['sevkiyat_SatisFat_SeriGirisHarYapabilsin'] as bool?
+      ..sevkiyatSatisFatCariKoduDegistir =
+          json['sevkiyat_SatisFat_CariKoduDegistir'] as bool?
+      ..sevkiyatSatisFaturasiSipBagSecenegi =
+          json['sevkiyat_SatisFaturasi_SipBagSecenegi'] as String?
+      ..sevkiyatSatisFatReferansStokUygulamasi =
+          json['sevkiyat_SatisFat_ReferansStokUygulamasi'] as bool?
+      ..sevkiyatSatisFatSipBagSipHariciKalemEklenebilir =
+          json['sevkiyat_SatisFat_SipBag_SipHariciKalemEklenebilir'] as bool?
+      ..sevkiyatSatisFatSipBagFazlaTeslimatYapilabilir =
+          json['sevkiyat_SatisFat_SipBag_FazlaTeslimatYapilabilir'] as bool?
+      ..sevkiyatSatisFatSipBagSipOkutulsun =
+          json['sevkiyat_SatisFat_SipBag_SipOkutulsun'] as bool?
+      ..sevkiyatSatisFatSipBagSipOkutulsunMiktar2BazAl =
+          json['sevkiyat_SatisFat_SipBag_SipOkutulsun_Miktar2BazAl'] as bool?
+      ..sevkiyatSatisFatSipBagCokluSecim =
+          json['sevkiyat_SatisFat_SipBag_CokluSecim'] as bool?
+      ..sevkiyatSatisFatSipBagTumKalemlerSecilsin =
+          json['sevkiyat_SatisFat_SipBag_TumKalemlerSecilsin'] as bool?
+      ..sevkiyatSatisFatSipBagEslesmeDurumu =
+          json['sevkiyat_SatisFat_SipBag_EslesmeDurumu'] as int?
+      ..sevkiyatSatisFatSipBagSevkOnayliSiparislerGelsin =
+          json['sevkiyat_SatisFat_SipBag_SevkOnayliSiparislerGelsin'] as bool?
+      ..sevkiyatSatisFatBarkodluGiris =
+          json['sevkiyat_SatisFat_BarkodluGiris'] as bool?
+      ..sevkiyatSatisFaturasiMiktarOtomatikGelsin =
+          json['sevkiyat_SatisFaturasi_MiktarOtomatikGelsin'] as bool?
+      ..sevkiyatSatisFaturasiKalemDetaySorulmasin =
+          json['sevkiyat_SatisFaturasi_KalemDetaySorulmasin'] as bool?
+      ..sevkiyatSatisFatBarkodSayisiSaklanacakAlan =
+          json['sevkiyat_SatisFat_BarkodSayisiSaklanacakAlan'] as String?
+      ..sevkiyatSatisFatStokRehberiAcilmasin =
+          json['sevkiyat_SatisFat_StokRehberiAcilmasin'] as bool?
+      ..sevkiyatSatisFatKalemDuzeltilemesin =
+          json['sevkiyat_SatisFat_KalemDuzeltilemesin'] as bool?
+      ..sevkiyatSatisFatKlavyeEngelle =
+          json['sevkiyat_SatisFat_KlavyeEngelle'] as bool?
+      ..sevkiyatSatisFatMiktar1Gelsin =
+          json['sevkiyat_SatisFat_Miktar1Gelsin'] as bool?
+      ..sevkiyatSatisFatBakiyesizStokSecilmesin =
+          json['sevkiyat_SatisFat_BakiyesizStokSecilmesin'] as bool?
+      ..sevkiyatSatisFatRaporlar = json['sevkiyat_SatisFat_Raporlar'] as bool?
+      ..sevkiyatSatisFatKalemRaporu =
+          json['sevkiyat_SatisFat_KalemRaporu'] as bool?
+      ..sevkiyatSatisFatKarlilikRaporu =
+          json['sevkiyat_SatisFat_KarlilikRaporu'] as bool?
+      ..sevkiyatSatisFatMaxIskUygulamasi =
+          json['sevkiyat_SatisFat_MaxIskUygulamasi'] as bool?
+      ..sevkiyatSatisFatMaxSatIsk1 =
+          (json['sevkiyat_SatisFat_MaxSatIsk1'] as num?)?.toDouble()
+      ..sevkiyatSatisFatMaxSatIsk2 =
+          (json['sevkiyat_SatisFat_MaxSatIsk2'] as num?)?.toDouble()
+      ..sevkiyatSatisFatMaxSatIsk3 =
+          (json['sevkiyat_SatisFat_MaxSatIsk3'] as num?)?.toDouble()
+      ..sevkiyatSatisFatMaxSatIsk4 =
+          (json['sevkiyat_SatisFat_MaxSatIsk4'] as num?)?.toDouble()
+      ..sevkiyatSatisFatMaxSatIsk5 =
+          (json['sevkiyat_SatisFat_MaxSatIsk5'] as num?)?.toDouble()
+      ..sevkiyatSatisFatMaxSatIsk6 =
+          (json['sevkiyat_SatisFat_MaxSatIsk6'] as num?)?.toDouble()
+      ..sevkiyatSatisFatMaxGenIsk1 =
+          (json['sevkiyat_SatisFat_MaxGenIsk1'] as num?)?.toDouble()
+      ..sevkiyatSatisFatMaxGenIsk2 =
+          (json['sevkiyat_SatisFat_MaxGenIsk2'] as num?)?.toDouble()
+      ..sevkiyatSatisFatMaxGenIsk3 =
+          (json['sevkiyat_SatisFat_MaxGenIsk3'] as num?)?.toDouble()
+      ..sevkiyatSatisFatDipFiyatUygulamasi =
+          json['sevkiyat_SatisFat_DipFiyatUygulamasi'] as bool?
+      ..sevkiyatSatisFatDipFiyatSaha =
+          json['sevkiyat_SatisFat_DipFiyatSaha'] as String?
+      ..sevkiyatSatisFatDipFiyatEylem =
+          json['sevkiyat_SatisFat_DipFiyatEylem'] as String?
+      ..sevkiyatSatisFatDipFiyatKDVDurumu =
+          json['sevkiyat_SatisFat_DipFiyatKDVDurumu'] as String?
+      ..sevkiyatSatisIrsaliyesiSiparissiz =
+          json['sevkiyat_SatisIrsaliyesiSiparissiz'] as bool?
+      ..sevkiyatSatisIrsaliyesiSiparissizFiyatGor =
+          json['sevkiyat_SatisIrsaliyesiSiparissizFiyatGor'] as bool?
+      ..sevkiyatSatisIrsaliyesiIade =
+          json['sevkiyat_SatisIrsaliyesiIade'] as bool?
+      ..sevkiyatSiptenMalTop = json['sevkiyat_SiptenMalTop'] as bool?
+      ..sevkiyatSiptenMalTopMiktarBarkoddanGelsin =
+          json['sevkiyat_SiptenMalTop_MiktarBarkoddanGelsin'] as bool?
+      ..sevkiyatSiptenMalTopRehberdenStokSecilmesin =
+          json['sevkiyat_SiptenMalTop_RehberdenStokSecilmesin'] as bool?
+      ..sevkiyatSiptenMalTopKlavyedenBarkodGirilmesin =
+          json['sevkiyat_SiptenMalTop_KlavyedenBarkodGirilmesin'] as bool?
+      ..sevkiyatSiptenMalTopSevkOnayliSiparislerGelsin =
+          json['sevkiyat_SiptenMalTop_SevkOnayliSiparislerGelsin'] as bool?
+      ..sevkiyatSiptenMalTopKacGunlukKayitlarListelensin =
+          json['sevkiyat_SiptenMalTop_KacGunlukKayitlarListelensin'] as int?
+      ..sevkemriMalToplama = json['sevkemri_MalToplama'] as bool?
+      ..sevkemriMalToplamaAtanabilir =
+          json['sevkemri_MalToplamaAtanabilir'] as bool?
+      ..sevkemriMalToplamaAtayabilir =
+          json['sevkemri_MalToplamaAtayabilir'] as bool?
+      ..sevkemriUrunDegistir = json['sevkemri_UrunDegistir'] as bool?
+      ..sevkemriMiktarDegistir = json['sevkemri_MiktarDegistir'] as bool?
+      ..sevkemriMuadilUrun = json['sevkemri_MuadilUrun'] as bool?
+      ..sevkemriMalToplamaBarkodsuzUrunListedenSecilsin =
+          json['sevkemri_malToplama_BarkodsuzUrunListedenSecilsin'] as bool?
+      ..sevkemriMalToplamaOtoStokEtiketiYazdir =
+          json['sevkemri_MalToplama_OtoStokEtiketiYazdir'] as bool?
+      ..sevkemriMalToplamaOtoStokEtiketiYazdirSor =
+          json['sevkemri_MalToplama_OtoStokEtiketiYazdirSor'] as bool?
+      ..sevkemriMalToplamaKlavyedenGirisiEngelle =
+          json['sevkemri_MalToplama_KlavyedenGirisiEngelle'] as bool?
+      ..sevkemriMalToplamaBarkod2Sor =
+          json['sevkemri_MalToplama_Barkod2Sor'] as bool?
+      ..sevkemriMalToplamaBarkod2YildizliGorunsun =
+          json['sevkemri_MalToplama_Barkod2_YildizliGorunsun'] as bool?
+      ..sevkemriMalToplamaBarkod2KalemEkranindaSor =
+          json['sevkemri_MalToplama_Barkod2KalemEkranindaSor'] as bool?
+      ..sevkemriMalToplamaTumuToplanmadanTamamlanmasin =
+          json['sevkemri_MalToplama_TumuToplanmadanTamamlanmasin'] as bool?
+      ..sevkemriMalToplamaHangiHucredeGoster =
+          json['sevkemri_MalToplama_HangiHucredeGoster'] as bool?
+      ..sevkemriMalToplamaKalemDetayIslemOnaySormasin =
+          json['sevkemri_MalToplama_KalemDetayIslemOnaySormasin'] as bool?
+      ..sevkemriMalToplamaGosterilecekEkBilgiler =
+          (json['sevkemri_MalToplama_GosterilecekEkBilgiler'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..sevkemriMalToplamaDegistirilemeyecekAlanlar =
+          json['sevkemri_MalToplama_DegistirilemeyecekAlanlar']
+              as List<dynamic>?
+      ..sevkemriMalToplamaGizlenecekAlanlar =
+          json['sevkemri_MalToplama_GizlenecekAlanlar'] as List<dynamic>?
+      ..sevkemriMalToplamaMiktarBarkoddan =
+          json['sevkemri_MalToplama_MiktarBarkoddan'] as bool?
+      ..sevkemriMalToplamaKalemDetayiSorulmasin =
+          json['sevkemri_MalToplama_KalemDetayiSorulmasin'] as bool?
+      ..sevkemriMalToplamaKalemDetayaUlasamasin =
+          json['sevkemri_MalToplama_KalemDetayaUlasamasin'] as bool?
+      ..sevkemriMalToplamaFazlaTeslimat =
+          json['sevkemri_MalToplama_FazlaTeslimat'] as String?
+      ..sevkemriMalToplamaVarsayilanOlcuBirimi =
+          json['sevkemri_MalToplama_VarsayilanOlcuBirimi'] as int?
+      ..sevkemriMalToplamaSiralamaTipi =
+          json['sevkemri_MalToplama_SiralamaTipi'] as String?
+      ..sevkemriMalKontrol = json['sevkemri_MalKontrol'] as bool?
+      ..sevkemriMalKontrolKlavyeEngelle =
+          json['sevkemri_MalKontrol_KlavyeEngelle'] as bool?
+      ..sevkemriMalKontrolTipi = json['sevkemri_MalKontrolTipi'] == null
+          ? null
+          : SevkemriMalKontrolTipi.fromJson(
+              json['sevkemri_MalKontrolTipi'] as Map<String, dynamic>)
+      ..sevkemriMalKontrolKullanicilar =
+          (json['sevkemri_MalKontrolKullanicilar'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..sevkemriPaketleme = json['sevkemri_Paketleme'] as bool?
+      ..sevkemriPaketlemeKlavyeEngelle =
+          json['sevkemri_Paketleme_KlavyeEngelle'] as bool?
+      ..sevkemriPaketlemeBarkodOkutmayaZorla =
+          json['sevkemri_Paketleme_BarkodOkutmayaZorla'] as bool?
+      ..sevkemriPaketlemeBarkodsuzUrunListedenSecilsin =
+          json['sevkemri_Paketleme_BarkodsuzUrunListedenSecilsin'] as bool?
+      ..sevkemriAracYukleme = json['sevkemri_AracYukleme'] as bool?
+      ..sevkemriAracYuklemeKlavyeEngelle =
+          json['sevkemri_AracYukleme_KlavyeEngelle'] as bool?
+      ..sevkemriAracBosaltma = json['sevkemri_AracBosaltma'] as bool?
+      ..sevkemriAracBosaltmaKlavyeEngelle =
+          json['sevkemri_AracBosaltma_KlavyeEngelle'] as bool?
+      ..sevkemriDepodanTeslimat = json['sevkemri_DepodanTeslimat'] as bool?
+      ..sevkemriDepodanTeslimatKlavyeEngelle =
+          json['sevkemri_DepodanTeslimat_KlavyeEngelle'] as bool?
+      ..sayimSayim = json['sayim_sayim'] as bool?
+      ..sayimKontrolMiktari = json['sayim_Kontrol_Miktari'] as int?
+      ..sayimMiktarBarkoddanGelsin =
+          json['sayim_MiktarBarkoddanGelsin'] as bool?
+      ..sayimAyniStokDurumu = json['sayim_AyniStokDurumu'] as String?
+      ..sayimMiktar1Gelsin = json['sayim_Miktar1Gelsin'] as bool?
+      ..sayimHemenKaydet = json['sayim_HemenKaydet'] as bool?
+      ..sayimCarpanAktif = json['sayim_CarpanAktif'] as bool?
+      ..sayimSeriMikGirilenMikKabulEdilsin =
+          json['sayim_SeriMikGirilenMikKabulEdilsin'] as bool?
+      ..sayimDigerKulSayimHarGorsun =
+          json['sayim_DigerKulSayimHarGorsun'] as String?
+      ..sayimDigerKulSayimFisGorsun =
+          json['sayim_DigerKulSayimFisGorsun'] as String?
+      ..sayimSerbest = json['sayim_Serbest'] as bool?
+      ..sayimSerbestSil = json['sayim_Serbest_Sil'] as bool?
+      ..sayimDepoFarkRaporu = json['sayim_DepoFarkRaporu'] as bool?
+      ..sayimBelgeBaglantisiniKopar =
+          json['sayim_BelgeBaglantisiniKopar'] as bool?
+      ..sayimBelgeOlusturabilir =
+          (json['sayim_BelgeOlusturabilir'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..sayimEkAlanlar = json['sayim_EkAlanlar'] as List<dynamic>?
+      ..sayimDegismeyecekAlanlar =
+          json['sayim_DegismeyecekAlanlar'] as List<dynamic>?
+      ..sayimGizlenecekAlanlar =
+          json['sayim_GizlenecekAlanlar'] as List<dynamic>?
+      ..sayimVarsayilanOlcuBirimi = json['sayim_VarsayilanOlcuBirimi'] as int?
+      ..sayimRaporu = json['sayim_Raporu'] as bool?
+      ..paketOlustur = json['paket_Olustur'] as bool?
+      ..paketCokluOlustur = json['paket_CokluOlustur'] as bool?
+      ..paketKontrol = json['paket_Kontrol'] as bool?
+      ..paketMalzemeCikisi = json['paket_MalzemeCikisi'] as bool?
+      ..paketReceteyiFiltrele = json['paket_ReceteyiFiltrele'] as bool?
+      ..islemlerHucreEtiket = json['islemler_HucreEtiket'] as bool?
+      ..islemlerStokEtiket = json['islemler_StokEtiket'] as bool?
+      ..islemlerBarkodTanimlama = json['islemler_BarkodTanimlama'] as bool?
+      ..siparisMusteriSiparisi = json['siparis_MusteriSiparisi'] as bool?
+      ..siparisMusteriSiparisiKaydet =
+          json['siparis_MusteriSiparisi_Kaydet'] as bool?
+      ..siparisMusteriSiparisiDuzelt =
+          json['siparis_MusteriSiparisi_Duzelt'] as bool?
+      ..siparisMusteriSiparisiSil = json['siparis_MusteriSiparisi_Sil'] as bool?
+      ..siparisMusteriSiparisiKapalilarListelenmesin =
+          json['siparis_MusteriSiparisi_KapalilarListelenmesin'] as bool?
+      ..siparisMusteriSiparisiFiyatDegistirilmesin =
+          json['siparis_MusteriSiparisi_FiyatDegistirilmesin'] as bool?
+      ..siparisMusteriSiparisiFiyatSirasi =
+          json['siparis_MusteriSiparisi_FiyatSirasi'] as int?
+      ..siparisMusSipBirim1denKaydet =
+          json['siparis_MusSip_Birim1denKaydet'] as bool?
+      ..siparisMusteriSiparisiKapatmaIslemi =
+          json['siparis_MusteriSiparisi_KapatmaIslemi'] as bool?
+      ..siparisMusSipOnayIslemleri =
+          json['siparis_MusSip_OnayIslemleri'] as bool?
+      ..siparisMusteriSiparisiSonFiyatGoster =
+          json['siparis_MusteriSiparisi_SonFiyatGoster'] as bool?
+      ..siparisMusSipDigerSekmesiGoster =
+          json['siparis_MusSip_DigerSekmesiGoster'] as bool?
+      ..siparisMusSipEkAlan2Tablodan =
+          json['siparis_MusSip_EkAlan2Tablodan'] as bool?
+      ..siparisMusSipEkAlan2Hatirla =
+          json['siparis_MusSip_EkAlan2Hatirla'] as bool?
+      ..siparisMusSipMiktar1Gelsin =
+          json['siparis_MusSip_Miktar1Gelsin'] as bool?
+      ..siparisMusSipBosGecilmeyecekAlanlar =
+          (json['siparis_MusSip_BosGecilmeyecekAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..siparisMusSipOtoPdfGor = json['siparis_MusSip_OtoPdfGor'] as bool?
+      ..siparisMusSipCariKoduDegistir =
+          json['siparis_MusSip_CariKoduDegistir'] as bool?
+      ..siparisMusteriSiparisiAciklamaAlanlari =
+          (json['siparis_MusteriSiparisi_AciklamaAlanlari'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..siparisMusteriSiparisiGizlenecekAlanlar =
+          json['siparis_MusteriSiparisi_GizlenecekAlanlar'] as List<dynamic>?
+      ..siparisMusteriSiparisiDegismeyecekAlanlar =
+          json['siparis_MusteriSiparisi_DegismeyecekAlanlar'] as List<dynamic>?
+      ..siparisMusSipEkstraAlanlar =
+          (json['siparis_MusSip_EkstraAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..siparisMusteriSiparisiSatirAciklamaAlanlari =
+          (json['siparis_MusteriSiparisi_SatirAciklamaAlanlari']
+                  as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..siparisMusSipOlcuBirimi = json['siparis_MusSip_OlcuBirimi'] as int?
+      ..siparisMusSipBakiyesizStokSecilmesin =
+          json['siparis_MusSip_BakiyesizStokSecilmesin'] as bool?
+      ..siparisMusSipHizliUrunGirisiMiktar2Kullanilsin =
+          json['siparis_MusSip_HizliUrunGirisi_Miktar2Kullanilsin'] as String?
+      ..siparisMusteriSiparisiDipFiyatUygulamasi =
+          json['siparis_MusteriSiparisi_DipFiyatUygulamasi'] as bool?
+      ..siparisMusteriSiparisiDipFiyatSaha =
+          json['siparis_MusteriSiparisi_DipFiyatSaha'] as String?
+      ..siparisMusteriSiparisiDipFiyatEylem =
+          json['siparis_MusteriSiparisi_DipFiyatEylem'] as String?
+      ..siparisMusteriSiparisiDipFiyatKDVDurumu =
+          json['siparis_MusteriSiparisi_DipFiyatKDVDurumu'] as String?
+      ..siparisMusSipMaxIskUygulamasi =
+          json['siparis_MusSip_MaxIskUygulamasi'] as bool?
+      ..siparisMusSipMaxSatIsk1 =
+          (json['siparis_MusSip_MaxSatIsk1'] as num?)?.toDouble()
+      ..siparisMusSipMaxSatIsk2 =
+          (json['siparis_MusSip_MaxSatIsk2'] as num?)?.toDouble()
+      ..siparisMusSipMaxSatIsk3 =
+          (json['siparis_MusSip_MaxSatIsk3'] as num?)?.toDouble()
+      ..siparisMusSipMaxSatIsk4 =
+          (json['siparis_MusSip_MaxSatIsk4'] as num?)?.toDouble()
+      ..siparisMusSipMaxSatIsk5 =
+          (json['siparis_MusSip_MaxSatIsk5'] as num?)?.toDouble()
+      ..siparisMusSipMaxSatIsk6 =
+          (json['siparis_MusSip_MaxSatIsk6'] as num?)?.toDouble()
+      ..siparisMusSipMaxGenIsk1 =
+          (json['siparis_MusSip_MaxGenIsk1'] as num?)?.toDouble()
+      ..siparisMusSipMaxGenIsk2 =
+          (json['siparis_MusSip_MaxGenIsk2'] as num?)?.toDouble()
+      ..siparisMusSipMaxGenIsk3 =
+          (json['siparis_MusSip_MaxGenIsk3'] as num?)?.toDouble()
+      ..siparisMusteriSiparisiRaporlar =
+          json['siparis_MusteriSiparisi_Raporlar'] as bool?
+      ..siparisMusteriSiparisiDurumRaporu =
+          json['siparis_MusteriSiparisi_DurumRaporu'] as bool?
+      ..siparisMusteriSiparisiDurumRaporuFiyatGor =
+          json['siparis_MusteriSiparisi_DurumRaporuFiyatGor'] as bool?
+      ..siparisMusSipKarlilikRaporu =
+          json['siparis_MusSip_KarlilikRaporu'] as bool?
+      ..siparisMusSipTeslimRaporu = json['siparis_MusSip_TeslimRaporu'] as bool?
+      ..siparisSaticiSiparisi = json['siparis_SaticiSiparisi'] as bool?
+      ..siparisSaticiSiparisiKaydet =
+          json['siparis_SaticiSiparisi_Kaydet'] as bool?
+      ..siparisSaticiSiparisiDuzelt =
+          json['siparis_SaticiSiparisi_Duzelt'] as bool?
+      ..siparisSaticiSiparisiSil = json['siparis_SaticiSiparisi_Sil'] as bool?
+      ..siparisSaticiSiparisiKapalilarListelenmesin =
+          json['siparis_SaticiSiparisi_KapalilarListelenmesin'] as bool?
+      ..siparisSaticiSiparisiFiyatDegistirilmesin =
+          json['siparis_SaticiSiparisi_FiyatDegistirilmesin'] as bool?
+      ..siparisSaticiSiparisiFiyatSirasi =
+          json['siparis_SaticiSiparisi_FiyatSirasi'] as int?
+      ..siparisSaticiSipBirim1denKaydet =
+          json['siparis_SaticiSip_Birim1denKaydet'] as bool?
+      ..siparisSaticiSiparisiKapatmaIslemi =
+          json['siparis_SaticiSiparisi_KapatmaIslemi'] as bool?
+      ..siparisSaticiSipOnayIslemleri =
+          json['siparis_SaticiSip_OnayIslemleri'] as bool?
+      ..siparisSaticiSipDigerSekmesiGoster =
+          json['siparis_SaticiSip_DigerSekmesiGoster'] as bool?
+      ..siparisSaticiSipOlcuBirimi =
+          json['siparis_SaticiSip_OlcuBirimi'] as int?
+      ..siparisSaticiSipCariKoduDegistir =
+          json['siparis_SaticiSip_CariKoduDegistir'] as bool?
+      ..siparisSaticiSiparisiRaporlar =
+          json['siparis_SaticiSiparisi_Raporlar'] as bool?
+      ..siparisSaticiSiparisiDurumRaporu =
+          json['siparis_SaticiSiparisi_DurumRaporu'] as bool?
+      ..siparisSaticiSiparisiDurumRaporuFiyatGor =
+          json['siparis_SaticiSiparisi_DurumRaporuFiyatGor'] as bool?
+      ..siparisSaticiSipTeslimRaporu =
+          json['siparis_SaticiSip_TeslimRaporu'] as bool?
+      ..stokStokListesi = json['stok_StokListesi'] as bool?
+      ..stokStokListesiExtraAlanlar =
+          (json['stok_StokListesi_ExtraAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..stokStokKarti = json['stok_StokKarti'] as bool?
+      ..stokStokKartiKaydet = json['stok_StokKarti_Kaydet'] as bool?
+      ..stokStokKartiDuzelt = json['stok_StokKarti_Duzelt'] as bool?
+      ..stokStokKartiSil = json['stok_StokKarti_Sil'] as bool?
+      ..stokStokKartiAlisFiyatiGizle =
+          json['stok_StokKarti_AlisFiyatiGizle'] as bool?
+      ..stokStokKartiSatisFiyatiGizle =
+          json['stok_StokKarti_SatisFiyatiGizle'] as bool?
+      ..stokStokHareketleri = json['stok_StokHareketleri'] as bool?
+      ..stokStokHarKaydet = json['stok_StokHar_Kaydet'] as bool?
+      ..stokStokHarDuzelt = json['stok_StokHar_Duzelt'] as bool?
+      ..stokStokHarSil = json['stok_StokHar_Sil'] as bool?
+      ..stokStokHarPlasiyerKendiniGorsun =
+          json['stok_StokHar_PlasiyerKendiniGorsun'] as bool?
+      ..stokFiltreSQLTipi = json['stok_FiltreSQLTipi'] as String?
+      ..stokResimGoster = json['stok_ResimGoster'] as bool?
+      ..stokResimGosterEkle = json['stok_ResimGoster_Ekle'] as bool?
+      ..stokResimGosterSil = json['stok_ResimGoster_Sil'] as bool?
+      ..stokFiyatOzeti = json['stok_FiyatOzeti'] as bool?
+      ..stokHareketDetayiniGizle = json['stok_HareketDetayiniGizle'] as bool?
+      ..stokGirisHareketleriniGizle =
+          json['stok_GirisHareketleriniGizle'] as bool?
+      ..stokCikisHareketleriniGizle =
+          json['stok_CikisHareketleriniGizle'] as bool?
+      ..stokBakiyeGosterimTipi = json['stok_BakiyeGosterimTipi'] as String?
+      ..stokBarkodKontrol = json['stok_BarkodKontrol'] as bool?
+      ..stokDepoBakiyeDurumu = json['stok_DepoBakiyeDurumu'] as String?
+      ..stokBarkodTanimlama = json['stok_BarkodTanimlama'] as bool?
+      ..stokBarkodTanimlamaGorunecekAlanlar =
+          (json['stok_BarkodTanimlama_GorunecekAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..stokBarkodKayitlari = json['stok_BarkodKayitlari'] as bool?
+      ..stokBarkodKayitlariEkle = json['stok_BarkodKayitlari_Ekle'] as bool?
+      ..stokBarkodKayitlariDuzelt = json['stok_BarkodKayitlari_Duzelt'] as bool?
+      ..stokBarkodKayitlariSil = json['stok_BarkodKayitlari_Sil'] as bool?
+      ..stokKanbanBarkodEsle = json['stok_KanbanBarkodEsle'] as bool?
+      ..stokKanbanBarkodEsleSil = json['stok_KanbanBarkodEsle_Sil'] as bool?
+      ..stokKanbanBarkodEsleFarkliStokOkutulmasin =
+          json['stok_KanbanBarkodEsleFarkliStokOkutulmasin'] as bool?
+      ..stokFiyatGorEkrani = json['stok_FiyatGorEkrani'] as bool?
+      ..stokFiyatGorEkraniGunlukKurdanTLGoster =
+          json['stok_FiyatGorEkrani_GunlukKurdanTLGoster'] as bool?
+      ..stokFiyatGorEkraniGorunecekAlanlar =
+          (json['stok_FiyatGorEkraniGorunecekAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..stokFiyatGecmisi = json['stok_FiyatGecmisi'] as bool?
+      ..stokFiyatGecmisiSil = json['stok_FiyatGecmisiSil'] as bool?
+      ..stokFiyatGecmisiFiyatTipleri =
+          (json['stok_FiyatGecmisiFiyatTipleri'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..stokSeriHar = json['stok_SeriHar'] as bool?
+      ..stokSeriHarEkle = json['stok_SeriHar_Ekle'] as bool?
+      ..stokSeriHarDuzelt = json['stok_SeriHar_Duzelt'] as bool?
+      ..stokSeriHarSil = json['stok_SeriHar_Sil'] as bool?
+      ..stokSeriParcala = json['stok_SeriParcala'] as bool?
+      ..stokSeriParcalaEkle = json['stok_SeriParcala_Ekle'] as bool?
+      ..stokSeriParcalaDuzelt = json['stok_SeriParcala_Duzelt'] as bool?
+      ..stokSeriParcalaSil = json['stok_SeriParcala_Sil'] as bool?
+      ..stokSeriBirlestir = json['stok_SeriBirlestir'] as bool?
+      ..stokSeriBirlestirEkle = json['stok_SeriBirlestir_Ekle'] as bool?
+      ..stokSeriBirlestirDuzelt = json['stok_SeriBirlestir_Duzelt'] as bool?
+      ..stokSeriBirlestirSil = json['stok_SeriBirlestir_Sil'] as bool?
+      ..stokPaketleme = json['stok_Paketleme'] as bool?
+      ..stokPaketlemeEkle = json['stok_Paketleme_Ekle'] as bool?
+      ..stokPaketlemeSil = json['stok_Paketleme_Sil'] as bool?
+      ..stokPaketlemeOnaySormasin =
+          json['stok_Paketleme_OnaySormasin'] as String?
+      ..stokPaketlemeDigerKulKayitGorebilir =
+          json['stok_Paketleme_DigerKulKayitGorebilir'] as String?
+      ..stokPaketlemeSorulacakBelgeTipleri =
+          (json['stok_Paketleme_SorulacakBelgeTipleri'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..stokRaporlar = json['stok_Raporlar'] as bool?
+      ..stokRapAmbarMaliyet = json['stok_Rap_AmbarMaliyet'] as bool?
+      ..stokRapLokalDepoBakiye = json['stok_Rap_LokalDepoBakiye'] as bool?
+      ..stokRapUrunGrubunaGoreSatis =
+          json['stok_Rap_UrunGrubunaGoreSatis'] as bool?
+      ..cariCariListesi = json['cari_CariListesi'] as bool?
+      ..cariCariListesiRiskGorebilir =
+          json['cari_CariListesi_RiskGorebilir'] as bool?
+      ..cariRiskGirisi = json['cari_RiskGirisi'] as bool?
+      ..cariCariKarti = json['cari_CariKarti'] as bool?
+      ..cariCariKartiKaydet = json['cari_CariKarti_Kaydet'] as bool?
+      ..cariCariKartiDuzelt = json['cari_CariKarti_Duzelt'] as bool?
+      ..cariCariKartiSil = json['cari_CariKarti_Sil'] as bool?
+      ..cariCariKartiEIslemler = json['cari_CariKarti_EIslemler'] as bool?
+      ..cariCariKartiDegismeyecekAlanlar =
+          (json['cari_CariKarti_DegismeyecekAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..cariCariKartiGizlenecekAlanlar =
+          json['cari_CariKarti_GizlenecekAlanlar'] as List<dynamic>?
+      ..cariCariHareketleri = json['cari_CariHareketleri'] as bool?
+      ..cariCariHarKaydet = json['cari_CariHar_Kaydet'] as bool?
+      ..cariCariHarDuzelt = json['cari_CariHar_Duzelt'] as bool?
+      ..cariCariHarSil = json['cari_CariHar_Sil'] as bool?
+      ..cariCariHareketleriHarDetayGorsun =
+          json['cari_CariHareketleri_HarDetayGorsun'] as bool?
+      ..stokCariHarPlasiyerKendiniGorsun =
+          json['stok_CariHar_PlasiyerKendiniGorsun'] as bool?
+      ..cariAktivite = json['cari_Aktivite'] as bool?
+      ..cariAktiviteEkle = json['cari_Aktivite_Ekle'] as bool?
+      ..cariAktiviteDuzelt = json['cari_Aktivite_Duzelt'] as bool?
+      ..cariAktiviteSil = json['cari_Aktivite_Sil'] as bool?
+      ..cariAktiviteAtayabilir = json['cari_Aktivite_Atayabilir'] as bool?
+      ..cariAktiviteBitirmeyiGeriAl =
+          json['cari_Aktivite_BitirmeyiGeriAl'] as bool?
+      ..cariOzelHesapKapatma = json['cari_OzelHesapKapatma'] as bool?
+      ..cariOzelHesapKapatmaSil = json['cari_OzelHesapKapatma_Sil'] as bool?
+      ..cariVadeKontrolu = json['cari_VadeKontrolu'] as bool?
+      ..cariVadeKontroluGun = json['cari_VadeKontrolu_Gun'] as int?
+      ..cariVadeKontroluBelgeTipleri =
+          (json['cari_VadeKontrolu_BelgeTipleri'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..cariFiltre = json['cari_Filtre'] as String?
+      ..cariFiltreSQL = json['cari_FiltreSQL'] as String?
+      ..cariFiltreSQLTipi = json['cari_FiltreSQLTipi'] as String?
+      ..cariVirman = json['cari_Virman'] as bool?
+      ..cariVirmanKaydet = json['cari_Virman_Kaydet'] as bool?
+      ..cariHarita = json['cari_Harita'] as bool?
+      ..cariTeslimCariRehberSadeceSecsin =
+          json['cari_TeslimCari_RehberSadeceSecsin'] as String?
+      ..cariTeslimCariSatisBaglanmisCarilerSecilsin =
+          json['cari_TeslimCari_SatisBaglanmisCarilerSecilsin'] as String?
+      ..cariRaporlar = json['cari_Raporlar'] as bool?
+      ..cariRapEkstre = json['cari_Rap_Ekstre'] as bool?
+      ..cariRapStokEkstre = json['cari_Rap_StokEkstre'] as bool?
+      ..cariRapYaslandirma = json['cari_Rap_Yaslandirma'] as bool?
+      ..cariRapHarDetayliYaslandir =
+          json['cari_Rap_HarDetayliYaslandir'] as bool?
+      ..cariRapDovizBakiye = json['cari_Rap_DovizBakiye'] as bool?
+      ..cariRapStokSatisOzeti = json['cari_Rap_StokSatisOzeti'] as bool?
+      ..cariRapDovizliEkstre = json['cari_Rap_DovizliEkstre'] as bool?
+      ..tahsilatTahsilatlar = json['tahsilat_Tahsilatlar'] as bool?
+      ..tahsilatNakitTahsilat = json['tahsilat_NakitTahsilat'] as bool?
+      ..tahsilatNakitTahsilatKaydet =
+          json['tahsilat_NakitTahsilat_Kaydet'] as bool?
+      ..tahsilatKKartiTahsilat = json['tahsilat_KKartiTahsilat'] as bool?
+      ..tahsilatKKartiTahsilatKaydet =
+          json['tahsilat_KKartiTahsilat_Kaydet'] as bool?
+      ..tahsilatNakitOdeme = json['tahsilat_NakitOdeme'] as bool?
+      ..tahsilatNakitOdemeKaydet = json['tahsilat_NakitOdeme_Kaydet'] as bool?
+      ..tahsilatSenetTahsilat = json['tahsilat_SenetTahsilat'] as bool?
+      ..tahsilatSenetTahsilatKaydet =
+          json['tahsilat_SenetTahsilat_Kaydet'] as bool?
+      ..tahsilatCekTahsilat = json['tahsilat_CekTahsilat'] as bool?
+      ..tahsilatCekTahsilatKaydet = json['tahsilat_CekTahsilat_Kaydet'] as bool?
+      ..tahsilatMuhtelifTahsilat = json['tahsilat_MuhtelifTahsilat'] as bool?
+      ..tahsilatMuhtelifOdeme = json['tahsilat_MuhtelifOdeme'] as bool?
+      ..tahsilatMuhtelifTahsilatFiltre =
+          json['tahsilat_MuhtelifTahsilatFiltre'] as String?
+      ..tahsilatMuhtelifTahsilatFiltreSQL =
+          json['tahsilat_MuhtelifTahsilatFiltreSQL'] as String?
+      ..tahsilatMuhtelifOdemeFiltre =
+          json['tahsilat_MuhtelifOdemeFiltre'] as String?
+      ..tahsilatMuhtelifOdemeFiltreSQL =
+          json['tahsilat_MuhtelifOdemeFiltreSQL'] as String?
+      ..yoneticiBankaBankaLitesi = json['yonetici_Banka_Banka_Litesi'] as bool?
+      ..yoneticiBankaIslemleri = json['yonetici_Banka_Islemleri'] as bool?
+      ..yoneticiBankaIslemleriSil =
+          json['yonetici_Banka_Islemleri_Sil'] as bool?
+      ..yoneticiBankaIslemHesapEFT =
+          json['yonetici_Banka_Islem_HesapEFT'] as bool?
+      ..yoneticiBankaIslemHesapVirman =
+          json['yonetici_Banka_Islem_HesapVirman'] as bool?
+      ..yoneticiBankaIslemCariEFT =
+          json['yonetici_Banka_Islem_CariEFT'] as bool?
+      ..finansBankaKasaTransferi = json['finans_Banka_Kasa_Transferi'] as bool?
+      ..finansKasaListesi = json['finans_Kasa_Listesi'] as bool?
+      ..finansKasaIslemleri = json['finans_Kasa_Islemleri'] as bool?
+      ..finansKasaIslemleriSil = json['finans_Kasa_Islemleri_Sil'] as bool?
+      ..finansKasalarArasiTransfer =
+          json['finans_KasalarArasiTransfer'] as bool?
+      ..finansKasaNakitTahsilat = json['finans_Kasa_NakitTahsilat'] as bool?
+      ..finansKasaNakitOdeme = json['finans_Kasa_NakitOdeme'] as bool?
+      ..finansKasaMuhtelifTahsilat =
+          json['finans_Kasa_MuhtelifTahsilat'] as bool?
+      ..finansKasaMuhtelifOdeme = json['finans_Kasa_MuhtelifOdeme'] as bool?
+      ..finansKasaSenetTahsilati = json['finans_Kasa_SenetTahsilati'] as bool?
+      ..finansKasaSenetOdemesi = json['finans_Kasa_SenetOdemesi'] as bool?
+      ..finansKasaCekTahsilati = json['finans_Kasa_CekTahsilati'] as bool?
+      ..finansKasaCekOdemesi = json['finans_Kasa_CekOdemesi'] as bool?
+      ..dekontListesi = json['dekont_Listesi'] as bool?
+      ..dekontKaydet = json['dekont_Kaydet'] as bool?
+      ..dekontDuzelt = json['dekont_Duzelt'] as bool?
+      ..dekontSil = json['dekont_Sil'] as bool?
+      ..finansCekGizlenecekAlanlar =
+          json['finans_Cek_GizlenecekAlanlar'] as List<dynamic>?
+      ..finansCekMusteri = json['finans_Cek_Musteri'] as bool?
+      ..finansMCEKEkle = json['finans_MCEK_Ekle'] as bool?
+      ..finansMCEKSil = json['finans_MCEK_Sil'] as bool?
+      ..finansMCEKBelgeDetayi = json['finans_MCEK_BelgeDetayi'] as bool?
+      ..finansMCEKHareketler = json['finans_MCEK_Hareketler'] as bool?
+      ..finansMCEKEvraklar = json['finans_MCEK_Evraklar'] as bool?
+      ..finansMCEKCariyeCiro = json['finans_MCEK_CariyeCiro'] as bool?
+      ..finansMCEKTahsileCiro = json['finans_MCEK_TahsileCiro'] as bool?
+      ..finansMCEKTahsilDekontu = json['finans_MCEK_TahsilDekontu'] as bool?
+      ..finansCekBorc = json['finans_Cek_Borc'] as bool?
+      ..finansBorcCekiEkle = json['finans_BorcCeki_Ekle'] as bool?
+      ..finansBorcCekiSil = json['finans_BorcCeki_Sil'] as bool?
+      ..finansBCEKBelgeDetayi = json['finans_BCEK_BelgeDetayi'] as bool?
+      ..finansBCEKHareketler = json['finans_BCEK_Hareketler'] as bool?
+      ..finansBCEKEvraklar = json['finans_BCEK_Evraklar'] as bool?
+      ..finansBCEKOdemeDekontu = json['finans_BCEK_OdemeDekontu'] as bool?
+      ..finansSenetMusteri = json['finans_Senet_Musteri'] as bool?
+      ..finansMSENEkle = json['finans_MSEN_Ekle'] as bool?
+      ..finansMSENSil = json['finans_MSEN_Sil'] as bool?
+      ..finansMSENBelgeDetayi = json['finans_MSEN_BelgeDetayi'] as bool?
+      ..finansMSENHareketler = json['finans_MSEN_Hareketler'] as bool?
+      ..finansMSENEvraklar = json['finans_MSEN_Evraklar'] as bool?
+      ..finansMSENCariyeCiro = json['finans_MSEN_CariyeCiro'] as bool?
+      ..finansMSENTahsileCiro = json['finans_MSEN_TahsileCiro'] as bool?
+      ..finansMSENTahsilDekontu = json['finans_MSEN_TahsilDekontu'] as bool?
+      ..finansSenetBorc = json['finans_Senet_Borc'] as bool?
+      ..finansBSENEkle = json['finans_BSEN_Ekle'] as bool?
+      ..finansBSENSil = json['finans_BSEN_Sil'] as bool?
+      ..finansBSENBelgeDetayi = json['finans_BSEN_BelgeDetayi'] as bool?
+      ..finansBSENHareketler = json['finans_BSEN_Hareketler'] as bool?
+      ..finansBSENEvraklar = json['finans_BSEN_Evraklar'] as bool?
+      ..finansBSENOdemeDekontu = json['finans_BSEN_OdemeDekontu'] as bool?
+      ..finansKKartiTahsilati = json['finans_KKartiTahsilati'] as bool?
+      ..finansMuhtelifTahsilat = json['finans_MuhtelifTahsilat'] as bool?
+      ..finansMuhtelifOdeme = json['finans_MuhtelifOdeme'] as bool?
+      ..finansTahsilatKayitlari = json['finans_TahsilatKayitlari'] as bool?
+      ..finansHizliTahsilatKayitlari =
+          json['finans_HizliTahsilatKayitlari'] as bool?
+      ..finansHizliTahsilatKayitlariSil =
+          json['finans_HizliTahsilatKayitlari_Sil'] as bool?
+      ..finansOrtalamaVadeTarihiHesaplama =
+          json['finans_OrtalamaVadeTarihiHesaplama'] as bool?
+      ..finansOzetRapor = json['finans_OzetRapor'] as bool?
+      ..finansRaporlarFinansalDurum =
+          json['finans_Raporlar_FinansalDurum'] as bool?
+      ..finansRaporlarAylikMizan = json['finans_Raporlar_AylikMizan'] as bool?
+      ..temsilciProfil = json['temsilci_Profil'] as bool?
+      ..temsilciProfilKdvDahil = json['temsilci_Profil_KdvDahil'] as bool?
+      ..temsilciProfilSatisPerformansiniGizle =
+          json['temsilci_Profil_SatisPerformansiniGizle'] as bool?
+      ..temsilciProfilAylaraGoreSatisiGizle =
+          json['temsilci_Profil_AylaraGoreSatisiGizle'] as bool?
+      ..temsilciProfilAylaraGoreTahsilatiGizle =
+          json['temsilci_Profil_AylaraGoreTahsilatiGizle'] as bool?
+      ..yazdirmaBluetoothYaziciKullanabilir =
+          json['yazdirma_BluetoothYaziciKullanabilir'] as bool?
+      ..yazdirmaHucreEtiketi = json['yazdirma_Hucre_Etiketi'] as bool?
+      ..yazdirmaHucreEtiketiYazicilari =
+          (json['yazdirma_Hucre_Etiketi_Yazicilari'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..yazdirmaDizaynHucreEtiketi =
+          json['yazdirma_Dizayn_HucreEtiketi'] as List<dynamic>?
+      ..yazdirmaMalToplamaEtiketi = json['yazdirma_MalToplama_Etiketi'] as bool?
+      ..yazdirmaMalToplamaYazicilari =
+          (json['yazdirma_Mal_Toplama_Yazicilari'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..yazdirmaDizaynMalToplama =
+          json['yazdirma_Dizayn_MalToplama'] as List<dynamic>?
+      ..yazdirmaMalKontrolEtiketi = json['yazdirma_MalKontrol_Etiketi'] as bool?
+      ..yazdirmaMalKontrolYazicilari =
+          (json['yazdirma_Mal_Kontrol_Yazicilari'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..yazdirmaDizaynMalKontrol =
+          json['yazdirma_Dizayn_MalKontrol'] as List<dynamic>?
+      ..yazdirmaDAT = json['yazdirma_DAT'] as bool?
+      ..yazdirmaDATYazicilari =
+          (json['yazdirma_DAT_Yazicilari'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..yazdirmaDizaynDAT = (json['yazdirma_Dizayn_DAT'] as List<dynamic>?)
+          ?.map((e) => e as int)
+          .toList()
+      ..yazdirmaPaketlemeEtiketi = json['yazdirma_Paketleme_Etiketi'] as bool?
+      ..yazdirmaPaketlemeKopyaSayisiGizle =
+          json['yazdirma_Paketleme_KopyaSayisiGizle'] as bool?
+      ..yazdirmaPaketlemeYazicilari =
+          (json['yazdirma_Paketleme_Yazicilari'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..yazdirmaDizaynPaketleme =
+          (json['yazdirma_Dizayn_Paketleme'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..yazdirmaSatisIrs = json['yazdirma_SatisIrs'] as bool?
+      ..yazdirmaSatisFat = json['yazdirma_SatisFat'] as bool?
+      ..yazdirmaSatisFatYazicilari =
+          (json['yazdirma_SatisFat_Yazicilari'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..yazdirmaDizaynSatisFat =
+          (json['yazdirma_Dizayn_SatisFat'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..yazdirmaAlisFat = json['yazdirma_AlisFat'] as bool?
+      ..yazdirmaDizaynAlisFat =
+          json['yazdirma_Dizayn_AlisFat'] as List<dynamic>?
+      ..yazdirmaMustahsil = json['yazdirma_Mustahsil'] as bool?
+      ..yazdirmaMusSip = json['yazdirma_MusSip'] as bool?
+      ..yazdirmaMusSipYazicilari =
+          json['yazdirma_MusSip_Yazicilari'] as List<dynamic>?
+      ..yazdirmaDizaynMusSip =
+          (json['yazdirma_Dizayn_MusSip'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..yazdirmaSaticiSip = json['yazdirma_SaticiSip'] as bool?
+      ..yazdirmaDizaynSaticiSip =
+          (json['yazdirma_Dizayn_SaticiSip'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..yazdirmaATAL = json['yazdirma_ATAL'] as bool?
+      ..yazdirmaATALYazicilari =
+          (json['yazdirma_ATAL_Yazicilari'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..yazdirmaDizaynATAL = (json['yazdirma_Dizayn_ATAL'] as List<dynamic>?)
+          ?.map((e) => e as int)
+          .toList()
+      ..yazdirmaOdemeMakbuzu = json['yazdirma_OdemeMakbuzu'] as bool?
+      ..yazdirmaOdemeMakbuzuYazicilari =
+          json['yazdirma_OdemeMakbuzu_Yazicilari'] as List<dynamic>?
+      ..yazdirmaDizaynOdemeMakbuzu =
+          (json['yazdirma_Dizayn_OdemeMakbuzu'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..yazdirmaAlisIrs = json['yazdirma_AlisIrs'] as bool?
+      ..yazdirmaAlisIrsYazicilari =
+          (json['yazdirma_AlisIrs_Yazicilari'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..yazdirmaDizaynAlisIrs =
+          (json['yazdirma_Dizayn_AlisIrs'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..yazdirmaIsEmri = json['yazdirma_IsEmri'] as bool?
+      ..yazdirmaAmbarCikis = json['yazdirma_AmbarCikis'] as bool?
+      ..yazdirmaAmbarGiris = json['yazdirma_AmbarGiris'] as bool?
+      ..yazdirmaCariHareket = json['yazdirma_CariHareket'] as bool?
+      ..uretimFiyatGorebilir = json['uretim_FiyatGorebilir'] as bool?
+      ..uretimUSK = json['uretim_USK'] as bool?
+      ..uretimUSKKaydet = json['uretim_USK_Kaydet'] as bool?
+      ..uretimUSKDuzelt = json['uretim_USK_Duzelt'] as bool?
+      ..uretimUSKSil = json['uretim_USK_Sil'] as bool?
+      ..uretimUSKKacGunlukKayitlarListelensin =
+          json['uretim_USK_KacGunlukKayitlarListelensin'] as int?
+      ..uretimUSKMiktarBarkoddan = json['uretim_USK_MiktarBarkoddan'] as bool?
+      ..uretimUSKMiktar1Gelsin = json['uretim_USK_Miktar1Gelsin'] as bool?
+      ..sirketDepoUretimGiris = json['sirket_Depo_Uretim_Giris'] as int?
+      ..sirketDepoUretimCikis = json['sirket_Depo_Uretim_Cikis'] as int?
+      ..uretimUSKIsEmriOtoGelsin = json['uretim_USK_IsEmriOtoGelsin'] as bool?
+      ..uretimUSKSoruSorulmasin = json['uretim_USK_SoruSorulmasin'] as bool?
+      ..uretimUSKStokRehberiAcilmasin =
+          json['uretim_USK_StokRehberiAcilmasin'] as bool?
+      ..uretimUSKKlavyeEngelle = json['uretim_USK_KlavyeEngelle'] as bool?
+      ..uretimUSKDepoOnceligi = json['uretim_USK_DepoOnceligi'] as String?
+      ..uretimUSKFisiErpUretsin = json['uretim_USK_FisiErpUretsin'] as bool?
+      ..uretimUSKGizlenecekAlanlar =
+          json['uretim_USK_GizlenecekAlanlar'] as List<dynamic>?
+      ..uretimUSKBosGecilmeyecekAlanlar =
+          json['uretim_USK_BosGecilmeyecekAlanlar'] as List<dynamic>?
+      ..uretimUSKDegismeyecekAlanlar =
+          json['uretim_USK_DegismeyecekAlanlar'] as List<dynamic>?
+      ..uretimUSKOlcuBirimi = json['uretim_USK_OlcuBirimi'] as int?
+      ..uretimUSKOtoYazdir = json['uretim_USK_OtoYazdir'] as String?
+      ..uretimUSKKalemliYapi = json['uretim_USK_KalemliYapi'] as bool?
+      ..uretimUSKKalemliYapiStokMevcutaEklensin =
+          json['uretim_USK_KalemliYapi_StokMevcutaEklensin'] as bool?
+      ..uretimUSKKalemliYapiOtoEtiketYazdir =
+          json['uretim_USK_KalemliYapi_OtoEtiketYazdir'] as bool?
+      ..uretimUSKKalemliYapiAyniBarkodOkutulamaz =
+          json['uretim_USK_KalemliYapi_AyniBarkodOkutulamaz'] as bool?
+      ..uretimUSKKalemliYapiOkutulanEnUsteEklensin =
+          json['uretim_USK_KalemliYapi_OkutulanEnUsteEklensin'] as bool?
+      ..uretimUSKKalemliYapiKalemDuzeltilemesin =
+          json['uretim_USK_KalemliYapi_KalemDuzeltilemesin'] as bool?
+      ..uretimReceteIzleme = json['uretim_ReceteIzleme'] as bool?
+      ..uretimMalToplama = json['uretim_MalToplama'] as bool?
+      ..uretimMalToplamaEkle = json['uretim_MalToplama_Ekle'] as bool?
+      ..uretimMalToplamaSil = json['uretim_MalToplama_Sil'] as bool?
+      ..uretimMalToplamaKlavyeEngelle =
+          json['uretim_MalToplama_KlavyeEngelle'] as bool?
+      ..uretimMalToplamaBarkodOkutsun =
+          json['uretim_MalToplama_BarkodOkutsun'] as bool?
+      ..uretimMalToplamaBelgeTipleri =
+          (json['uretim_MalToplama_BelgeTipleri'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..uretimMalToplamaReceteFiltresi =
+          json['uretim_MalToplama_ReceteFiltresi'] as String?
+      ..uretimMalToplamaReceteFiltresiSQL =
+          json['uretim_MalToplama_ReceteFiltresiSQL'] as String?
+      ..uretimIsEmri = json['uretim_IsEmri'] as bool?
+      ..uretimIsEmriEkle = json['uretim_IsEmri_Ekle'] as bool?
+      ..uretimIsEmriDuzelt = json['uretim_IsEmri_Duzelt'] as bool?
+      ..uretimIsEmriSil = json['uretim_IsEmri_Sil'] as bool?
+      ..taltekSTEK = json['taltek_STEK'] as bool?
+      ..taltekSTEKKaydet = json['taltek_STEK_Kaydet'] as bool?
+      ..taltekSTEKDuzelt = json['taltek_STEK_Duzelt'] as bool?
+      ..taltekSTEKSil = json['taltek_STEK_Sil'] as bool?
+      ..taltekSTEKKapalilarListenlenmesin =
+          json['taltek_STEK_KapalilarListenlenmesin'] as bool?
+      ..taltekSTEKOnayIslemleri = json['taltek_STEK_OnayIslemleri'] as bool?
+      ..taltekSTEKCariKoduDegistir =
+          json['taltek_STEK_CariKoduDegistir'] as bool?
+      ..taltekSTEKFiyatDegistirilmesin =
+          json['taltek_STEK_FiyatDegistirilmesin'] as bool?
+      ..taltekSTEKAciklamalarYetkiTuru =
+          json['taltek_STEK_Aciklamalar_YetkiTuru'] as String?
+      ..taltekSTEKGizlenecekAlanlar =
+          json['taltek_STEK_GizlenecekAlanlar'] as List<dynamic>?
+      ..taltekSTEKDegismeyecekAlanlar =
+          json['taltek_STEK_DegismeyecekAlanlar'] as List<dynamic>?
+      ..taltekSTEKBosGecilmeyecekAlanlar =
+          json['taltek_STEK_BosGecilmeyecekAlanlar'] as List<dynamic>?
+      ..taltekSTEKAciklamaAlanlari =
+          (json['taltek_STEK_AciklamaAlanlari'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..taltekSTEKOzelKod1Degeri = json['taltek_STEK_OzelKod1Degeri'] as String?
+      ..taltekSTEKDipFiyatUygulamasi =
+          json['taltek_STEK_DipFiyatUygulamasi'] as bool?
+      ..taltekSTEKDipFiyatSaha = json['taltek_STEK_DipFiyatSaha'] as String?
+      ..taltekSTEKDipFiyatEylem = json['taltek_STEK_DipFiyatEylem'] as String?
+      ..taltekATAL = json['taltek_ATAL'] as bool?
+      ..taltekATALKaydet = json['taltek_ATAL_Kaydet'] as bool?
+      ..taltekATALDuzelt = json['taltek_ATAL_Duzelt'] as bool?
+      ..taltekATALSil = json['taltek_ATAL_Sil'] as bool?
+      ..taltekATALCariEMailAlani = json['taltek_ATAL_CariEMailAlani'] as String?
+      ..taltekATALOnayIslemleri = json['taltek_ATAL_OnayIslemleri'] as bool?
+      ..taltekATALCariKoduDegistir =
+          json['taltek_ATAL_CariKoduDegistir'] as bool?
+      ..taltekATALAciklamalarYetkiTuru =
+          json['taltek_ATAL_Aciklamalar_YetkiTuru'] as String?
+      ..taltekATALGizlenecekAlanlar =
+          (json['taltek_ATAL_GizlenecekAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..taltekATALAciklamaAlanlari =
+          (json['taltek_ATAL_AciklamaAlanlari'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..taltekATALBelgeKopyala = json['taltek_ATAL_BelgeKopyala'] as bool?
+      ..taltekSTAL = json['taltek_STAL'] as bool?
+      ..taltekSTALKaydet = json['taltek_STAL_Kaydet'] as bool?
+      ..taltekSTALDuzelt = json['taltek_STAL_Duzelt'] as bool?
+      ..taltekSTALSil = json['taltek_STAL_Sil'] as bool?
+      ..taltekSTALKapalilarListenlenmesin =
+          json['taltek_STAL_KapalilarListenlenmesin'] as bool?
+      ..taltekSTALOnayIslemleri = json['taltek_STAL_OnayIslemleri'] as bool?
+      ..taltekSTALCariKoduDegistir =
+          json['taltek_STAL_CariKoduDegistir'] as bool?
+      ..taltekSTALFiyatDegistirilmesin =
+          json['taltek_STAL_FiyatDegistirilmesin'] as bool?
+      ..taltekSTALGizlenecekAlanlar =
+          (json['taltek_STAL_GizlenecekAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..taltekSTALDipFiyatUygulamasi =
+          json['taltek_STAL_DipFiyatUygulamasi'] as bool?
+      ..ebelgeEFat = json['ebelge_EFat'] as bool?
+      ..ebelgeEFatCariGuncelle = json['ebelge_EFatCariGuncelle'] as bool?
+      ..ebelgeEFatSorgula = json['ebelge_EFatSorgula'] as bool?
+      ..ebelgeEFatGelenKutusu = json['ebelge_EFatGelenKutusu'] as bool?
+      ..ebelgeEFatTaslakOlustur = json['ebelge_EFatTaslakOlustur'] as bool?
+      ..ebelgeEFatTaslakSil = json['ebelge_EFatTaslakSil'] as bool?
+      ..ebelgeEFatTaslakBasim = json['ebelge_EFatTaslakBasim'] as bool?
+      ..ebelgeEFatGoruntule = json['ebelge_EFatGoruntule'] as bool?
+      ..ebelgeEFatAlisFatOlustur = json['ebelge_EFatAlisFatOlustur'] as bool?
+      ..ebelgeEFatGonder = json['ebelge_EFatGonder'] as bool?
+      ..ebelgeEFatDizayn = json['ebelge_EFat_Dizayn'] as int?
+      ..ebelgeEArsiv = json['ebelge_EArsiv'] as bool?
+      ..ebelgeEArsivTaslakOlustur = json['ebelge_EArsivTaslakOlustur'] as bool?
+      ..ebelgeEArsivTaslakSil = json['ebelge_EArsivTaslakSil'] as bool?
+      ..ebelgeEArsivTaslakBasim = json['ebelge_EArsivTaslakBasim'] as bool?
+      ..ebelgeEArsivGoruntule = json['ebelge_EArsivGoruntule'] as bool?
+      ..ebelgeEArsivSorgula = json['ebelge_EArsivSorgula'] as bool?
+      ..ebelgeEArsivGonder = json['ebelge_EArsivGonder'] as bool?
+      ..ebelgeEArsivDizayn = json['ebelge_EArsiv_Dizayn'] as int?
+      ..ebelgeEIrsaliye = json['ebelge_EIrsaliye'] as bool?
+      ..ebelgeEIrsaliyeGidenKutusu =
+          json['ebelge_EIrsaliyeGidenKutusu'] as bool?
+      ..ebelgeEIrsaliyeGelenKutusu =
+          json['ebelge_EIrsaliyeGelenKutusu'] as bool?
+      ..ebelgeEIrsaliyeTaslakOlustur =
+          json['ebelge_EIrsaliyeTaslakOlustur'] as bool?
+      ..ebelgeEIrsaliyeTaslakSil = json['ebelge_EIrsaliyeTaslakSil'] as bool?
+      ..ebelgeEIrsaliyeTaslakBasim =
+          json['ebelge_EIrsaliyeTaslakBasim'] as bool?
+      ..ebelgeEIrsaliyeGonder = json['ebelge_EIrsaliyeGonder'] as bool?
+      ..ebelgeEIrsaliyeGoruntule = json['ebelge_EIrsaliyeGoruntule'] as bool?
+      ..ebelgeEIrsaliyeDizayn = json['ebelge_EIrsaliye_Dizayn'] as int?
+      ..entegrasyonUETDSESYA = json['entegrasyon_UETDSESYA'] as bool?
+      ..entegrasyonUETDSESYAIptal =
+          json['entegrasyon_UETDSESYA_Iptal'] as bool?;
 
 Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) =>
     <String, dynamic>{
@@ -4215,17 +2674,9 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) =>
 
 SevkemriMalKontrolTipi _$SevkemriMalKontrolTipiFromJson(
         Map<String, dynamic> json) =>
-    $checkedCreate(
-      'SevkemriMalKontrolTipi',
-      json,
-      ($checkedConvert) {
-        final val = SevkemriMalKontrolTipi();
-        $checkedConvert('Kod', (v) => val.kod = v as int?);
-        $checkedConvert('Tanim', (v) => val.tanim = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {'kod': 'Kod', 'tanim': 'Tanim'},
-    );
+    SevkemriMalKontrolTipi()
+      ..kod = json['Kod'] as int?
+      ..tanim = json['Tanim'] as String?;
 
 Map<String, dynamic> _$SevkemriMalKontrolTipiToJson(
         SevkemriMalKontrolTipi instance) =>

@@ -9,191 +9,87 @@ part of 'cari_listesi_model.dart';
 // **************************************************************************
 
 CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'CariListesiModel',
-      json,
-      ($checkedConvert) {
-        final val = CariListesiModel();
-        $checkedConvert('CARI_KODU', (v) => val.cariKodu = v as String?);
-        $checkedConvert('CARI_ADI', (v) => val.cariAdi = v as String?);
-        $checkedConvert('BAGLI_CARI', (v) => val.bagliCari = v as String?);
-        $checkedConvert(
-            'BAGLI_CARI_ADI', (v) => val.bagliCariAdi = v as String?);
-        $checkedConvert('CARI_TIP', (v) => val.cariTip = v as String?);
-        $checkedConvert(
-            'CARI_TIP_ACIKLAMA', (v) => val.cariTipAciklama = v as String?);
-        $checkedConvert('KILIT', (v) => val.kilit = v as String?);
-        $checkedConvert('VADE_GUNU', (v) => val.vadeGunu = v as int?);
-        $checkedConvert('ODEME_TIPI', (v) => val.odemeTipi = v as String?);
-        $checkedConvert(
-            'HESAPTUTMASEKLI', (v) => val.hesaptutmasekli = v as String?);
-        $checkedConvert(
-            'PLASIYER_KODU', (v) => val.plasiyerKodu = v as String?);
-        $checkedConvert(
-            'PLASIYER_ACIKLAMA', (v) => val.plasiyerAciklama = v as String?);
-        $checkedConvert(
-            'BORC_TOPLAMI', (v) => val.borcToplami = (v as num?)?.toDouble());
-        $checkedConvert('ALACAK_TOPLAMI',
-            (v) => val.alacakToplami = (v as num?)?.toDouble());
-        $checkedConvert('GENISK1_ORANI', (v) => val.genisk1Orani = v as int?);
-        $checkedConvert('ULKE_KODU', (v) => val.ulkeKodu = v as String?);
-        $checkedConvert('ULKE_ADI', (v) => val.ulkeAdi = v as String?);
-        $checkedConvert('CARI_IL', (v) => val.cariIl = v as String?);
-        $checkedConvert('CARI_ILCE', (v) => val.cariIlce = v as String?);
-        $checkedConvert('CARI_TEL', (v) => val.cariTel = v as String?);
-        $checkedConvert('POSTAKODU', (v) => val.postakodu = v as String?);
-        $checkedConvert('EMAIL', (v) => val.email = v as String?);
-        $checkedConvert('WEB', (v) => val.web = v as String?);
-        $checkedConvert('CARI_ADRES', (v) => val.cariAdres = v as String?);
-        $checkedConvert(
-            'VERGI_DAIRESI', (v) => val.vergiDairesi = v as String?);
-        $checkedConvert(
-            'VERGI_NUMARASI', (v) => val.vergiNumarasi = v as String?);
-        $checkedConvert('GRUP_KODU', (v) => val.grupKodu = v as String?);
-        $checkedConvert('GRUP_TANIMI', (v) => val.grupTanimi = v as String?);
-        $checkedConvert('BILGI', (v) => val.bilgi = v as String?);
-        $checkedConvert('ACIKLAMA1', (v) => val.aciklama1 = v as String?);
-        $checkedConvert('ACIKLAMA2', (v) => val.aciklama2 = v as String?);
-        $checkedConvert('ACIKLAMA3', (v) => val.aciklama3 = v as String?);
-        $checkedConvert('KODU', (v) => val.kodu = v as String?);
-        $checkedConvert('KOD1', (v) => val.kod1 = v as String?);
-        $checkedConvert('KOD1_TANIMI', (v) => val.kod1Tanimi = v as String?);
-        $checkedConvert('KOD2', (v) => val.kod2 = v as String?);
-        $checkedConvert('KOD2_TANIMI', (v) => val.kod2Tanimi = v as String?);
-        $checkedConvert('KOD3', (v) => val.kod3 = v as String?);
-        $checkedConvert('KOD3_TANIMI', (v) => val.kod3Tanimi = v as String?);
-        $checkedConvert('KOD4', (v) => val.kod4 = v as String?);
-        $checkedConvert('KOD4_TANIMI', (v) => val.kod4Tanimi = v as String?);
-        $checkedConvert('KOD5', (v) => val.kod5 = v as String?);
-        $checkedConvert('KOD5_TANIMI', (v) => val.kod5Tanimi = v as String?);
-        $checkedConvert(
-            'KAYITYAPANKUL', (v) => val.kayityapankul = v as String?);
-        $checkedConvert('KAYITTARIHI', (v) => val.kayittarihi = v as String?);
-        $checkedConvert(
-            'DUZELTMEYAPANKUL', (v) => val.duzeltmeyapankul = v as String?);
-        $checkedConvert(
-            'DUZELTMETARIHI', (v) => val.duzeltmetarihi = v as String?);
-        $checkedConvert('EFATURA_MI', (v) => val.efaturaMi = v as bool?);
-        $checkedConvert('EFATURA_TIPI', (v) => val.efaturaTipi = v as String?);
-        $checkedConvert(
-            'EFAT_GECIS_TARIHI', (v) => val.efatGecisTarihi = v as String?);
-        $checkedConvert('EFAT_AKTIF', (v) => val.efatAktif = v as bool?);
-        $checkedConvert('RISK_TAKIBI', (v) => val.riskTakibi = v as String?);
-        $checkedConvert(
-            'EFATURA_CARISI', (v) => val.efaturaCarisi = v as String?);
-        $checkedConvert('BAKIYE', (v) => val.bakiye = (v as num?)?.toDouble());
-        $checkedConvert('ENLEM', (v) => val.enlem = (v as num?)?.toDouble());
-        $checkedConvert('BOYLAM', (v) => val.boylam = (v as num?)?.toDouble());
-        $checkedConvert('KULL1S', (v) => val.kull1s = v as String?);
-        $checkedConvert('KULL2S', (v) => val.kull2s = v as String?);
-        $checkedConvert('KULL3S', (v) => val.kull3s = v as String?);
-        $checkedConvert('KULL4S', (v) => val.kull4s = v as String?);
-        $checkedConvert('KULL5S', (v) => val.kull5s = v as String?);
-        $checkedConvert('KULL6S', (v) => val.kull6s = v as String?);
-        $checkedConvert('KULL7S', (v) => val.kull7s = v as String?);
-        $checkedConvert('KULL8S', (v) => val.kull8s = v as String?);
-        $checkedConvert('KULL1N', (v) => val.kull1n = (v as num?)?.toDouble());
-        $checkedConvert('KULL2N', (v) => val.kull2n = (v as num?)?.toDouble());
-        $checkedConvert('KULL3N', (v) => val.kull3n = (v as num?)?.toDouble());
-        $checkedConvert('KULL4N', (v) => val.kull4n = (v as num?)?.toDouble());
-        $checkedConvert('KULL5N', (v) => val.kull5n = (v as num?)?.toDouble());
-        $checkedConvert('KULL6N', (v) => val.kull6n = (v as num?)?.toDouble());
-        $checkedConvert('KULL7N', (v) => val.kull7n = (v as num?)?.toDouble());
-        $checkedConvert('KULL8N', (v) => val.kull8n = (v as num?)?.toDouble());
-        $checkedConvert('FAX', (v) => val.fax = v as String?);
-        $checkedConvert(
-            'SAHIS_FIRMASI_MI', (v) => val.sahisFirmasiMi = v as bool?);
-        $checkedConvert('DOVIZLI', (v) => val.dovizli = v as bool?);
-        $checkedConvert('DOVIZ_KODU', (v) => val.dovizKodu = v as int?);
-        $checkedConvert('DOVIZ_ADI', (v) => val.dovizAdi = v as String?);
-        $checkedConvert('SUBE_KODU', (v) => val.subeKodu = v as int?);
-        $checkedConvert('KOSUL_KODU', (v) => val.kosulKodu = v as String?);
-        $checkedConvert('FIYAT_GRUBU', (v) => val.fiyatGrubu = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'cariKodu': 'CARI_KODU',
-        'cariAdi': 'CARI_ADI',
-        'bagliCari': 'BAGLI_CARI',
-        'bagliCariAdi': 'BAGLI_CARI_ADI',
-        'cariTip': 'CARI_TIP',
-        'cariTipAciklama': 'CARI_TIP_ACIKLAMA',
-        'kilit': 'KILIT',
-        'vadeGunu': 'VADE_GUNU',
-        'odemeTipi': 'ODEME_TIPI',
-        'hesaptutmasekli': 'HESAPTUTMASEKLI',
-        'plasiyerKodu': 'PLASIYER_KODU',
-        'plasiyerAciklama': 'PLASIYER_ACIKLAMA',
-        'borcToplami': 'BORC_TOPLAMI',
-        'alacakToplami': 'ALACAK_TOPLAMI',
-        'genisk1Orani': 'GENISK1_ORANI',
-        'ulkeKodu': 'ULKE_KODU',
-        'ulkeAdi': 'ULKE_ADI',
-        'cariIl': 'CARI_IL',
-        'cariIlce': 'CARI_ILCE',
-        'cariTel': 'CARI_TEL',
-        'postakodu': 'POSTAKODU',
-        'email': 'EMAIL',
-        'web': 'WEB',
-        'cariAdres': 'CARI_ADRES',
-        'vergiDairesi': 'VERGI_DAIRESI',
-        'vergiNumarasi': 'VERGI_NUMARASI',
-        'grupKodu': 'GRUP_KODU',
-        'grupTanimi': 'GRUP_TANIMI',
-        'bilgi': 'BILGI',
-        'aciklama1': 'ACIKLAMA1',
-        'aciklama2': 'ACIKLAMA2',
-        'aciklama3': 'ACIKLAMA3',
-        'kodu': 'KODU',
-        'kod1': 'KOD1',
-        'kod1Tanimi': 'KOD1_TANIMI',
-        'kod2': 'KOD2',
-        'kod2Tanimi': 'KOD2_TANIMI',
-        'kod3': 'KOD3',
-        'kod3Tanimi': 'KOD3_TANIMI',
-        'kod4': 'KOD4',
-        'kod4Tanimi': 'KOD4_TANIMI',
-        'kod5': 'KOD5',
-        'kod5Tanimi': 'KOD5_TANIMI',
-        'kayityapankul': 'KAYITYAPANKUL',
-        'kayittarihi': 'KAYITTARIHI',
-        'duzeltmeyapankul': 'DUZELTMEYAPANKUL',
-        'duzeltmetarihi': 'DUZELTMETARIHI',
-        'efaturaMi': 'EFATURA_MI',
-        'efaturaTipi': 'EFATURA_TIPI',
-        'efatGecisTarihi': 'EFAT_GECIS_TARIHI',
-        'efatAktif': 'EFAT_AKTIF',
-        'riskTakibi': 'RISK_TAKIBI',
-        'efaturaCarisi': 'EFATURA_CARISI',
-        'bakiye': 'BAKIYE',
-        'enlem': 'ENLEM',
-        'boylam': 'BOYLAM',
-        'kull1s': 'KULL1S',
-        'kull2s': 'KULL2S',
-        'kull3s': 'KULL3S',
-        'kull4s': 'KULL4S',
-        'kull5s': 'KULL5S',
-        'kull6s': 'KULL6S',
-        'kull7s': 'KULL7S',
-        'kull8s': 'KULL8S',
-        'kull1n': 'KULL1N',
-        'kull2n': 'KULL2N',
-        'kull3n': 'KULL3N',
-        'kull4n': 'KULL4N',
-        'kull5n': 'KULL5N',
-        'kull6n': 'KULL6N',
-        'kull7n': 'KULL7N',
-        'kull8n': 'KULL8N',
-        'fax': 'FAX',
-        'sahisFirmasiMi': 'SAHIS_FIRMASI_MI',
-        'dovizli': 'DOVIZLI',
-        'dovizKodu': 'DOVIZ_KODU',
-        'dovizAdi': 'DOVIZ_ADI',
-        'subeKodu': 'SUBE_KODU',
-        'kosulKodu': 'KOSUL_KODU',
-        'fiyatGrubu': 'FIYAT_GRUBU'
-      },
-    );
+    CariListesiModel()
+      ..cariKodu = json['CARI_KODU'] as String?
+      ..cariAdi = json['CARI_ADI'] as String?
+      ..bagliCari = json['BAGLI_CARI'] as String?
+      ..bagliCariAdi = json['BAGLI_CARI_ADI'] as String?
+      ..cariTip = json['CARI_TIP'] as String?
+      ..cariTipAciklama = json['CARI_TIP_ACIKLAMA'] as String?
+      ..kilit = json['KILIT'] as String?
+      ..vadeGunu = json['VADE_GUNU'] as int?
+      ..odemeTipi = json['ODEME_TIPI'] as String?
+      ..hesaptutmasekli = json['HESAPTUTMASEKLI'] as String?
+      ..plasiyerKodu = json['PLASIYER_KODU'] as String?
+      ..plasiyerAciklama = json['PLASIYER_ACIKLAMA'] as String?
+      ..borcToplami = (json['BORC_TOPLAMI'] as num?)?.toDouble()
+      ..alacakToplami = (json['ALACAK_TOPLAMI'] as num?)?.toDouble()
+      ..genisk1Orani = json['GENISK1_ORANI'] as int?
+      ..ulkeKodu = json['ULKE_KODU'] as String?
+      ..ulkeAdi = json['ULKE_ADI'] as String?
+      ..cariIl = json['CARI_IL'] as String?
+      ..cariIlce = json['CARI_ILCE'] as String?
+      ..cariTel = json['CARI_TEL'] as String?
+      ..postakodu = json['POSTAKODU'] as String?
+      ..email = json['EMAIL'] as String?
+      ..web = json['WEB'] as String?
+      ..cariAdres = json['CARI_ADRES'] as String?
+      ..vergiDairesi = json['VERGI_DAIRESI'] as String?
+      ..vergiNumarasi = json['VERGI_NUMARASI'] as String?
+      ..grupKodu = json['GRUP_KODU'] as String?
+      ..grupTanimi = json['GRUP_TANIMI'] as String?
+      ..bilgi = json['BILGI'] as String?
+      ..aciklama1 = json['ACIKLAMA1'] as String?
+      ..aciklama2 = json['ACIKLAMA2'] as String?
+      ..aciklama3 = json['ACIKLAMA3'] as String?
+      ..kodu = json['KODU'] as String?
+      ..kod1 = json['KOD1'] as String?
+      ..kod1Tanimi = json['KOD1_TANIMI'] as String?
+      ..kod2 = json['KOD2'] as String?
+      ..kod2Tanimi = json['KOD2_TANIMI'] as String?
+      ..kod3 = json['KOD3'] as String?
+      ..kod3Tanimi = json['KOD3_TANIMI'] as String?
+      ..kod4 = json['KOD4'] as String?
+      ..kod4Tanimi = json['KOD4_TANIMI'] as String?
+      ..kod5 = json['KOD5'] as String?
+      ..kod5Tanimi = json['KOD5_TANIMI'] as String?
+      ..kayityapankul = json['KAYITYAPANKUL'] as String?
+      ..kayittarihi = json['KAYITTARIHI'] as String?
+      ..duzeltmeyapankul = json['DUZELTMEYAPANKUL'] as String?
+      ..duzeltmetarihi = json['DUZELTMETARIHI'] as String?
+      ..efaturaMi = json['EFATURA_MI'] as bool?
+      ..efaturaTipi = json['EFATURA_TIPI'] as String?
+      ..efatGecisTarihi = json['EFAT_GECIS_TARIHI'] as String?
+      ..efatAktif = json['EFAT_AKTIF'] as bool?
+      ..riskTakibi = json['RISK_TAKIBI'] as String?
+      ..efaturaCarisi = json['EFATURA_CARISI'] as String?
+      ..bakiye = (json['BAKIYE'] as num?)?.toDouble()
+      ..enlem = (json['ENLEM'] as num?)?.toDouble()
+      ..boylam = (json['BOYLAM'] as num?)?.toDouble()
+      ..kull1s = json['KULL1S'] as String?
+      ..kull2s = json['KULL2S'] as String?
+      ..kull3s = json['KULL3S'] as String?
+      ..kull4s = json['KULL4S'] as String?
+      ..kull5s = json['KULL5S'] as String?
+      ..kull6s = json['KULL6S'] as String?
+      ..kull7s = json['KULL7S'] as String?
+      ..kull8s = json['KULL8S'] as String?
+      ..kull1n = (json['KULL1N'] as num?)?.toDouble()
+      ..kull2n = (json['KULL2N'] as num?)?.toDouble()
+      ..kull3n = (json['KULL3N'] as num?)?.toDouble()
+      ..kull4n = (json['KULL4N'] as num?)?.toDouble()
+      ..kull5n = (json['KULL5N'] as num?)?.toDouble()
+      ..kull6n = (json['KULL6N'] as num?)?.toDouble()
+      ..kull7n = (json['KULL7N'] as num?)?.toDouble()
+      ..kull8n = (json['KULL8N'] as num?)?.toDouble()
+      ..fax = json['FAX'] as String?
+      ..sahisFirmasiMi = json['SAHIS_FIRMASI_MI'] as bool?
+      ..dovizli = json['DOVIZLI'] as bool?
+      ..dovizKodu = json['DOVIZ_KODU'] as int?
+      ..dovizAdi = json['DOVIZ_ADI'] as String?
+      ..subeKodu = json['SUBE_KODU'] as int?
+      ..kosulKodu = json['KOSUL_KODU'] as String?
+      ..fiyatGrubu = json['FIYAT_GRUBU'] as String?;
 
 Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) =>
     <String, dynamic>{
@@ -279,29 +175,13 @@ Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) =>
       'FIYAT_GRUBU': instance.fiyatGrubu,
     };
 
-BakiyeModel _$BakiyeModelFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'BakiyeModel',
-      json,
-      ($checkedConvert) {
-        final val = BakiyeModel();
-        $checkedConvert('CARI_KODU', (v) => val.cariKodu = v as String?);
-        $checkedConvert('DOVIZ_TIPI', (v) => val.dovizTipi = v as int?);
-        $checkedConvert(
-            'BORC_TOPLAMI', (v) => val.borcToplami = (v as num?)?.toDouble());
-        $checkedConvert('ALACAK_TOPLAMI', (v) => val.alacakToplami = v as int?);
-        $checkedConvert('BAKIYE', (v) => val.bakiye = (v as num?)?.toDouble());
-        $checkedConvert('DOVIZ_ADI', (v) => val.dovizAdi = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'cariKodu': 'CARI_KODU',
-        'dovizTipi': 'DOVIZ_TIPI',
-        'borcToplami': 'BORC_TOPLAMI',
-        'alacakToplami': 'ALACAK_TOPLAMI',
-        'bakiye': 'BAKIYE',
-        'dovizAdi': 'DOVIZ_ADI'
-      },
-    );
+BakiyeModel _$BakiyeModelFromJson(Map<String, dynamic> json) => BakiyeModel()
+  ..cariKodu = json['CARI_KODU'] as String?
+  ..dovizTipi = json['DOVIZ_TIPI'] as int?
+  ..borcToplami = (json['BORC_TOPLAMI'] as num?)?.toDouble()
+  ..alacakToplami = json['ALACAK_TOPLAMI'] as int?
+  ..bakiye = (json['BAKIYE'] as num?)?.toDouble()
+  ..dovizAdi = json['DOVIZ_ADI'] as String?;
 
 Map<String, dynamic> _$BakiyeModelToJson(BakiyeModel instance) =>
     <String, dynamic>{

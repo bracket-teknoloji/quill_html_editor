@@ -96,67 +96,30 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-UserModel _$UserModelFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'UserModel',
-      json,
-      ($checkedConvert) {
-        final val = UserModel();
-        $checkedConvert('ID', (v) => val.id = v as int?);
-        $checkedConvert('KULADI', (v) => val.kuladi = v as String?);
-        $checkedConvert('PAROLA', (v) => val.parola = v as String?);
-        $checkedConvert('ADI', (v) => val.adi = v as String?);
-        $checkedConvert('SOYADI', (v) => val.soyadi = v as String?);
-        $checkedConvert(
-            'ERP_KULLANICI', (v) => val.erpKullanici = v as String?);
-        $checkedConvert('ERP_PAROLA', (v) => val.erpParola = v as String?);
-        $checkedConvert('PROFIL_KODU', (v) => val.profilKodu = v as int?);
-        $checkedConvert('PROFIL_ADI', (v) => val.profilAdi = v as String?);
-        $checkedConvert(
-            'PROFIL_YETKI',
-            (v) => val.profilYetki =
-                v == null ? null : ProfilYetkiModel.fromJson(v as String));
-        $checkedConvert(
-            'KULLANICI_YETKI', (v) => val.kullaniciYetki = v as String?);
-        $checkedConvert(
-            'PICKER_YETKILI', (v) => val.pickerYetkili = v as String?);
-        $checkedConvert(
-            'YETKILI_SUBE_JSON', (v) => val.yetkiliSubelerJson = v as String?);
-        $checkedConvert(
-            'KONUM_ENLEM', (v) => val.konumEnlem = (v as num?)?.toDouble());
-        $checkedConvert(
-            'KONUM_BOYLAM', (v) => val.konumBoylam = (v as num?)?.toDouble());
-        $checkedConvert(
-            'LANG_MODEL',
-            (v) => val.langModel = v == null
-                ? null
-                : LangModel.fromJson(v as Map<String, dynamic>));
-        $checkedConvert('AD_SOYAD', (v) => val.adSoyad = v as String?);
-        $checkedConvert('ADMIN', (v) => val.admin = v as String?);
-        $checkedConvert('ADMIN_MI', (v) => val.adminMi = v as bool?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'id': 'ID',
-        'kuladi': 'KULADI',
-        'parola': 'PAROLA',
-        'adi': 'ADI',
-        'soyadi': 'SOYADI',
-        'erpKullanici': 'ERP_KULLANICI',
-        'erpParola': 'ERP_PAROLA',
-        'profilKodu': 'PROFIL_KODU',
-        'profilAdi': 'PROFIL_ADI',
-        'profilYetki': 'PROFIL_YETKI',
-        'kullaniciYetki': 'KULLANICI_YETKI',
-        'pickerYetkili': 'PICKER_YETKILI',
-        'yetkiliSubelerJson': 'YETKILI_SUBE_JSON',
-        'konumEnlem': 'KONUM_ENLEM',
-        'konumBoylam': 'KONUM_BOYLAM',
-        'langModel': 'LANG_MODEL',
-        'adSoyad': 'AD_SOYAD',
-        'admin': 'ADMIN',
-        'adminMi': 'ADMIN_MI'
-      },
-    );
+UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel()
+  ..id = json['ID'] as int?
+  ..kuladi = json['KULADI'] as String?
+  ..parola = json['PAROLA'] as String?
+  ..adi = json['ADI'] as String?
+  ..soyadi = json['SOYADI'] as String?
+  ..erpKullanici = json['ERP_KULLANICI'] as String?
+  ..erpParola = json['ERP_PAROLA'] as String?
+  ..profilKodu = json['PROFIL_KODU'] as int?
+  ..profilAdi = json['PROFIL_ADI'] as String?
+  ..profilYetki = json['PROFIL_YETKI'] == null
+      ? null
+      : ProfilYetkiModel.fromJson(json['PROFIL_YETKI'] as String)
+  ..kullaniciYetki = json['KULLANICI_YETKI'] as String?
+  ..pickerYetkili = json['PICKER_YETKILI'] as String?
+  ..yetkiliSubelerJson = json['YETKILI_SUBE_JSON'] as String?
+  ..konumEnlem = (json['KONUM_ENLEM'] as num?)?.toDouble()
+  ..konumBoylam = (json['KONUM_BOYLAM'] as num?)?.toDouble()
+  ..langModel = json['LANG_MODEL'] == null
+      ? null
+      : LangModel.fromJson(json['LANG_MODEL'] as Map<String, dynamic>)
+  ..adSoyad = json['AD_SOYAD'] as String?
+  ..admin = json['ADMIN'] as String?
+  ..adminMi = json['ADMIN_MI'] as bool?;
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'ID': instance.id,

@@ -101,65 +101,26 @@ class AccountResponseModelAdapter extends TypeAdapter<AccountResponseModel> {
 
 AccountResponseModel _$AccountResponseModelFromJson(
         Map<String, dynamic> json) =>
-    $checkedCreate(
-      'AccountResponseModel',
-      json,
-      ($checkedConvert) {
-        final val = AccountResponseModel();
-        $checkedConvert('FIRMA', (v) => val.firma = v as String?);
-        $checkedConvert('EMAIL', (v) => val.email = v as String?);
-        $checkedConvert('PAROLA', (v) => val.parola = v as String?);
-        $checkedConvert(
-            'PICKER_LISANSI_VAR', (v) => val.pickerLisansiVar = v as String?);
-        $checkedConvert('WS_LAN', (v) => val.wsLan = v as String?);
-        $checkedConvert('WS_WAN', (v) => val.wsWan = v as String?);
-        $checkedConvert('WEB_SERVIS', (v) => val.webServis = v as String?);
-        $checkedConvert(
-            'LISANS_BITIS_TARIHI', (v) => val.lisansBitisTarihi = v);
-        $checkedConvert(
-            'KULLANICI_SAYISI', (v) => val.kullaniciSayisi = v as int?);
-        $checkedConvert(
-            'FIRMA_KISA_ADI', (v) => val.firmaKisaAdi = v as String?);
-        $checkedConvert(
-            'SOZLESME_BITIS_TARIHI', (v) => val.sozlesmeBitisTarihi = v);
-        $checkedConvert('SOZLESME_BITIS_KALAN_GUN',
-            (v) => val.sozlesmeBitisKalanGun = v as int?);
-        $checkedConvert('KARSILAMA_MESAJI', (v) => val.karsilamaMesaji = v);
-        $checkedConvert(
-            'KARSILAMA_RESIM_URL', (v) => val.karsilamaResimUrl = v);
-        $checkedConvert(
-            'KARSILAMA_SURESI', (v) => val.karsilamaSaniye = v as int?);
-        $checkedConvert(
-            'GUNCELLEME_VARMI', (v) => val.guncellemeVarmi = v as bool?);
-        $checkedConvert(
-            'MAX_APK_VERSION', (v) => val.maxApkVersion = v as int?);
-        $checkedConvert(
-            'MAX_WS_VERSION', (v) => val.maxWsVersion = v as String?);
-        $checkedConvert('DEMO_BITIS_TARIHI', (v) => val.demoBitisTarihi = v);
-        return val;
-      },
-      fieldKeyMap: const {
-        'firma': 'FIRMA',
-        'email': 'EMAIL',
-        'parola': 'PAROLA',
-        'pickerLisansiVar': 'PICKER_LISANSI_VAR',
-        'wsLan': 'WS_LAN',
-        'wsWan': 'WS_WAN',
-        'webServis': 'WEB_SERVIS',
-        'lisansBitisTarihi': 'LISANS_BITIS_TARIHI',
-        'kullaniciSayisi': 'KULLANICI_SAYISI',
-        'firmaKisaAdi': 'FIRMA_KISA_ADI',
-        'sozlesmeBitisTarihi': 'SOZLESME_BITIS_TARIHI',
-        'sozlesmeBitisKalanGun': 'SOZLESME_BITIS_KALAN_GUN',
-        'karsilamaMesaji': 'KARSILAMA_MESAJI',
-        'karsilamaResimUrl': 'KARSILAMA_RESIM_URL',
-        'karsilamaSaniye': 'KARSILAMA_SURESI',
-        'guncellemeVarmi': 'GUNCELLEME_VARMI',
-        'maxApkVersion': 'MAX_APK_VERSION',
-        'maxWsVersion': 'MAX_WS_VERSION',
-        'demoBitisTarihi': 'DEMO_BITIS_TARIHI'
-      },
-    );
+    AccountResponseModel()
+      ..firma = json['FIRMA'] as String?
+      ..email = json['EMAIL'] as String?
+      ..parola = json['PAROLA'] as String?
+      ..pickerLisansiVar = json['PICKER_LISANSI_VAR'] as String?
+      ..wsLan = json['WS_LAN'] as String?
+      ..wsWan = json['WS_WAN'] as String?
+      ..webServis = json['WEB_SERVIS'] as String?
+      ..lisansBitisTarihi = json['LISANS_BITIS_TARIHI']
+      ..kullaniciSayisi = json['KULLANICI_SAYISI'] as int?
+      ..firmaKisaAdi = json['FIRMA_KISA_ADI'] as String?
+      ..sozlesmeBitisTarihi = json['SOZLESME_BITIS_TARIHI']
+      ..sozlesmeBitisKalanGun = json['SOZLESME_BITIS_KALAN_GUN'] as int?
+      ..karsilamaMesaji = json['KARSILAMA_MESAJI']
+      ..karsilamaResimUrl = json['KARSILAMA_RESIM_URL']
+      ..karsilamaSaniye = json['KARSILAMA_SURESI'] as int?
+      ..guncellemeVarmi = json['GUNCELLEME_VARMI'] as bool?
+      ..maxApkVersion = json['MAX_APK_VERSION'] as int?
+      ..maxWsVersion = json['MAX_WS_VERSION'] as String?
+      ..demoBitisTarihi = json['DEMO_BITIS_TARIHI'];
 
 Map<String, dynamic> _$AccountResponseModelToJson(
         AccountResponseModel instance) =>

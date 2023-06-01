@@ -54,27 +54,17 @@ class SirketModelAdapter extends TypeAdapter<SirketModel> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-SirketModel _$SirketModelFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'SirketModel',
-      json,
-      ($checkedConvert) {
-        $checkKeys(
-          json,
-          requiredKeys: const ['isDevredilmis'],
-        );
-        final val = SirketModel();
-        $checkedConvert('SIRKET', (v) => val.sirket = v as String?);
-        $checkedConvert('DEVSIRKET', (v) => val.devsirket = v as String?);
-        $checkedConvert('YIL', (v) => val.yil = v as int?);
-        $checkedConvert('isDevredilmis', (v) => val.isDevredilmis = v as bool?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'sirket': 'SIRKET',
-        'devsirket': 'DEVSIRKET',
-        'yil': 'YIL'
-      },
-    );
+SirketModel _$SirketModelFromJson(Map<String, dynamic> json) {
+  $checkKeys(
+    json,
+    requiredKeys: const ['isDevredilmis'],
+  );
+  return SirketModel()
+    ..sirket = json['SIRKET'] as String?
+    ..devsirket = json['DEVSIRKET'] as String?
+    ..yil = json['YIL'] as int?
+    ..isDevredilmis = json['isDevredilmis'] as bool?;
+}
 
 Map<String, dynamic> _$SirketModelToJson(SirketModel instance) =>
     <String, dynamic>{

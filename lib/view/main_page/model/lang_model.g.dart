@@ -8,552 +8,328 @@ part of 'lang_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-LangModel _$LangModelFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'LangModel',
-      json,
-      ($checkedConvert) {
-        final val = LangModel();
-        $checkedConvert('DilKodu', (v) => val.dilKodu = v as String?);
-        $checkedConvert('DilAciklama', (v) => val.dilAciklama = v as String?);
-        $checkedConvert('menuMalKabul', (v) => val.menuMalKabul = v as String?);
-        $checkedConvert('menuMalKabulSatinAlma',
-            (v) => val.menuMalKabulSatinAlma = v as String?);
-        $checkedConvert(
-            'menuMalKabulIade', (v) => val.menuMalKabulIade = v as String?);
-        $checkedConvert('menuTransfer', (v) => val.menuTransfer = v as String?);
-        $checkedConvert(
-            'menuTransferDAT', (v) => val.menuTransferDAT = v as String?);
-        $checkedConvert('menuTransferAmbarGirisFisi',
-            (v) => val.menuTransferAmbarGirisFisi = v as String?);
-        $checkedConvert('menuTransferAmbarCikisFisi',
-            (v) => val.menuTransferAmbarCikisFisi = v as String?);
-        $checkedConvert(
-            'menuHucreTakibi', (v) => val.menuHucreTakibi = v as String?);
-        $checkedConvert('menuHucreTakibiYerlestir',
-            (v) => val.menuHucreTakibiYerlestir = v as String?);
-        $checkedConvert('menuHucreTakibiBosalt',
-            (v) => val.menuHucreTakibiBosalt = v as String?);
-        $checkedConvert('menuHucreTakibiTransfer',
-            (v) => val.menuHucreTakibiTransfer = v as String?);
-        $checkedConvert(
-            'menuHucreTakibiAra', (v) => val.menuHucreTakibiAra = v as String?);
-        $checkedConvert('menuHucreTakibiListe',
-            (v) => val.menuHucreTakibiListe = v as String?);
-        $checkedConvert('menuSevkiyat', (v) => val.menuSevkiyat = v as String?);
-        $checkedConvert('menuSevkiyatSatisIrsaliyesi',
-            (v) => val.menuSevkiyatSatisIrsaliyesi = v as String?);
-        $checkedConvert('menuSevkiyatMalToplama',
-            (v) => val.menuSevkiyatMalToplama = v as String?);
-        $checkedConvert('menuSayim', (v) => val.menuSayim = v as String?);
-        $checkedConvert(
-            'menuSayimSayim', (v) => val.menuSayimSayim = v as String?);
-        $checkedConvert('menuSiparis', (v) => val.menuSiparis = v as String?);
-        $checkedConvert('menuMusteriSiparisi',
-            (v) => val.menuMusteriSiparisi = v as String?);
-        $checkedConvert(
-            'menuSaticiSiparisi', (v) => val.menuSaticiSiparisi = v as String?);
-        $checkedConvert('menuCari', (v) => val.menuCari = v as String?);
-        $checkedConvert(
-            'menuCariListesi', (v) => val.menuCariListesi = v as String?);
-        $checkedConvert('menuStok', (v) => val.menuStok = v as String?);
-        $checkedConvert(
-            'menuStokListesi', (v) => val.menuStokListesi = v as String?);
-        $checkedConvert('menuYonetici', (v) => val.menuYonetici = v as String?);
-        $checkedConvert('menuBanka', (v) => val.menuBanka = v as String?);
-        $checkedConvert(
-            'menuBankaListesi', (v) => val.menuBankaListesi = v as String?);
-        $checkedConvert('menuTahsilat', (v) => val.menuTahsilat = v as String?);
-        $checkedConvert(
-            'menuTahsilatYap', (v) => val.menuTahsilatYap = v as String?);
-        $checkedConvert('menuTahsilatKayitlari',
-            (v) => val.menuTahsilatKayitlari = v as String?);
-        $checkedConvert(
-            'menuNakitOdeme', (v) => val.menuNakitOdeme = v as String?);
-        $checkedConvert(
-            'menuKKTahsilat', (v) => val.menuKKTahsilat = v as String?);
-        $checkedConvert(
-            'menuNakitTahsilat', (v) => val.menuNakitTahsilat = v as String?);
-        $checkedConvert(
-            'menuSenetTahsilati', (v) => val.menuSenetTahsilati = v as String?);
-        $checkedConvert(
-            'menuCekTahsilati', (v) => val.menuCekTahsilati = v as String?);
-        $checkedConvert('menuAyarlar', (v) => val.menuAyarlar = v as String?);
-        $checkedConvert('menuFirmalar', (v) => val.menuFirmalar = v as String?);
-        $checkedConvert('menuTemsilci', (v) => val.menuTemsilci = v as String?);
-        $checkedConvert('menuProfilim', (v) => val.menuProfilim = v as String?);
-        $checkedConvert(
-            'menuAlisFaturasi', (v) => val.menuAlisFaturasi = v as String?);
-        $checkedConvert(
-            'menuSatisFaturasi', (v) => val.menuSatisFaturasi = v as String?);
-        $checkedConvert('genelSirketDegistir',
-            (v) => val.genelSirketDegistir = v as String?);
-        $checkedConvert('genelSirketOturumuKapat',
-            (v) => val.genelSirketOturumuKapat = v as String?);
-        $checkedConvert('genelGuncelSurumuIndir',
-            (v) => val.genelGuncelSurumuIndir = v as String?);
-        $checkedConvert('genelLutfenBekleyin',
-            (v) => val.genelLutfenBekleyin = v as String?);
-        $checkedConvert('genelKaydet', (v) => val.genelKaydet = v as String?);
-        $checkedConvert('genelTamam', (v) => val.genelTamam = v as String?);
-        $checkedConvert('genelHayir', (v) => val.genelHayir = v as String?);
-        $checkedConvert('genelEvet', (v) => val.genelEvet = v as String?);
-        $checkedConvert('genelIptal', (v) => val.genelIptal = v as String?);
-        $checkedConvert('genelSil', (v) => val.genelSil = v as String?);
-        $checkedConvert('genelDuzenle', (v) => val.genelDuzenle = v as String?);
-        $checkedConvert('genelSirket', (v) => val.genelSirket = v as String?);
-        $checkedConvert('genelIsletme', (v) => val.genelIsletme = v as String?);
-        $checkedConvert('genelSube', (v) => val.genelSube = v as String?);
-        $checkedConvert(
-            'genelFirmaEkle', (v) => val.genelFirmaEkle = v as String?);
-        $checkedConvert(
-            'genelKayitAdi', (v) => val.genelKayitAdi = v as String?);
-        $checkedConvert(
-            'genelKullaniciAdi', (v) => val.genelKullaniciAdi = v as String?);
-        $checkedConvert('genelSifre', (v) => val.genelSifre = v as String?);
-        $checkedConvert(
-            'genelRevizyon', (v) => val.genelRevizyon = v as String?);
-        $checkedConvert('genelTarih', (v) => val.genelTarih = v as String?);
-        $checkedConvert('genelBelgeNo', (v) => val.genelBelgeNo = v as String?);
-        $checkedConvert('genelCari', (v) => val.genelCari = v as String?);
-        $checkedConvert(
-            'genelSiparisTipi', (v) => val.genelSiparisTipi = v as String?);
-        $checkedConvert('genelProje', (v) => val.genelProje = v as String?);
-        $checkedConvert(
-            'genelPlasiyer', (v) => val.genelPlasiyer = v as String?);
-        $checkedConvert(
-            'genelKDVDahil', (v) => val.genelKDVDahil = v as String?);
-        $checkedConvert(
-            'genelAciklama', (v) => val.genelAciklama = v as String?);
-        $checkedConvert('genelMiktar', (v) => val.genelMiktar = v as String?);
-        $checkedConvert('genelTutar', (v) => val.genelTutar = v as String?);
-        $checkedConvert(
-            'genelBirimFiyat', (v) => val.genelBirimFiyat = v as String?);
-        $checkedConvert('genelKDV', (v) => val.genelKDV = v as String?);
-        $checkedConvert(
-            'genelStokKodu', (v) => val.genelStokKodu = v as String?);
-        $checkedConvert(
-            'genelBrutTutar', (v) => val.genelBrutTutar = v as String?);
-        $checkedConvert(
-            'genelMalFazIsk', (v) => val.genelMalFazIsk = v as String?);
-        $checkedConvert(
-            'genelMalFazTutari', (v) => val.genelMalFazTutari = v as String?);
-        $checkedConvert(
-            'genelMalFazMiktari', (v) => val.genelMalFazMiktari = v as String?);
-        $checkedConvert(
-            'genelSatirIsk', (v) => val.genelSatirIsk = v as String?);
-        $checkedConvert(
-            'genelGenelToplam', (v) => val.genelGenelToplam = v as String?);
-        $checkedConvert(
-            'genelGenelIskonto', (v) => val.genelGenelIskonto = v as String?);
-        $checkedConvert(
-            'genelStokSeviyesi', (v) => val.genelStokSeviyesi = v as String?);
-        $checkedConvert(
-            'genelOlcuBirimi', (v) => val.genelOlcuBirimi = v as String?);
-        $checkedConvert('genelDepo', (v) => val.genelDepo = v as String?);
-        $checkedConvert(
-            'genelCikisDepo', (v) => val.genelCikisDepo = v as String?);
-        $checkedConvert(
-            'genelGirisDepo', (v) => val.genelGirisDepo = v as String?);
-        $checkedConvert(
-            'genelDovizTipi', (v) => val.genelDovizTipi = v as String?);
-        $checkedConvert(
-            'genelTLFiyati', (v) => val.genelTLFiyati = v as String?);
-        $checkedConvert('genelIskonto', (v) => val.genelIskonto = v as String?);
-        $checkedConvert('genelSeriler', (v) => val.genelSeriler = v as String?);
-        $checkedConvert('genelSeri', (v) => val.genelSeri = v as String?);
-        $checkedConvert(
-            'genelHucreler', (v) => val.genelHucreler = v as String?);
-        $checkedConvert('genelBelge', (v) => val.genelBelge = v as String?);
-        $checkedConvert(
-            'genelCariKodu', (v) => val.genelCariKodu = v as String?);
-        $checkedConvert('genelCariAdi', (v) => val.genelCariAdi = v as String?);
-        $checkedConvert(
-            'genelKalemMiktari', (v) => val.genelKalemMiktari = v as String?);
-        $checkedConvert('genelHucre', (v) => val.genelHucre = v as String?);
-        $checkedConvert('genelBarkod', (v) => val.genelBarkod = v as String?);
-        $checkedConvert('genelKalem', (v) => val.genelKalem = v as String?);
-        $checkedConvert(
-            'genelGoruntule', (v) => val.genelGoruntule = v as String?);
-        $checkedConvert(
-            'genelSecenekler', (v) => val.genelSecenekler = v as String?);
-        $checkedConvert('genelEkle', (v) => val.genelEkle = v as String?);
-        $checkedConvert('genelYenile', (v) => val.genelYenile = v as String?);
-        $checkedConvert(
-            'genelFiltrele', (v) => val.genelFiltrele = v as String?);
-        $checkedConvert('genelSirala', (v) => val.genelSirala = v as String?);
-        $checkedConvert(
-            'genelEkAciklamalar', (v) => val.genelEkAciklamalar = v as String?);
-        $checkedConvert('genelIthalat', (v) => val.genelIthalat = v as String?);
-        $checkedConvert(
-            'genelYeniBelge', (v) => val.genelYeniBelge = v as String?);
-        $checkedConvert('genelYurtici', (v) => val.genelYurtici = v as String?);
-        $checkedConvert(
-            'genelYurtdisi', (v) => val.genelYurtdisi = v as String?);
-        $checkedConvert('genelDevir', (v) => val.genelDevir = v as String?);
-        $checkedConvert('genelDepolar', (v) => val.genelDepolar = v as String?);
-        $checkedConvert('genelUretim', (v) => val.genelUretim = v as String?);
-        $checkedConvert(
-            'genelMuhtelif', (v) => val.genelMuhtelif = v as String?);
-        $checkedConvert(
-            'genelKonsinye', (v) => val.genelKonsinye = v as String?);
-        $checkedConvert(
-            'genelXRehberi', (v) => val.genelXRehberi = v as String?);
-        $checkedConvert('genelAlisIrsaliyesi',
-            (v) => val.genelAlisIrsaliyesi = v as String?);
-        $checkedConvert('genelSatisIrsaliyesi',
-            (v) => val.genelSatisIrsaliyesi = v as String?);
-        $checkedConvert(
-            'genelAlisFaturasi', (v) => val.genelAlisFaturasi = v as String?);
-        $checkedConvert(
-            'genelSatisFaturasi', (v) => val.genelSatisFaturasi = v as String?);
-        $checkedConvert('genelIade', (v) => val.genelIade = v as String?);
-        $checkedConvert(
-            'genelXGiriniz', (v) => val.genelXGiriniz = v as String?);
-        $checkedConvert(
-            'genelXSeciniz', (v) => val.genelXSeciniz = v as String?);
-        $checkedConvert(
-            'genelXSilinsinMi', (v) => val.genelXSilinsinMi = v as String?);
-        $checkedConvert('genelKayitSilinsinMi',
-            (v) => val.genelKayitSilinsinMi = v as String?);
-        $checkedConvert(
-            'genelKaydedilsinMi', (v) => val.genelKaydedilsinMi = v as String?);
-        $checkedConvert(
-            'genelEksikBilgiler', (v) => val.genelEksikBilgiler = v as String?);
-        $checkedConvert(
-            'genelMiktarGiriniz', (v) => val.genelMiktarGiriniz = v as String?);
-        $checkedConvert(
-            'genelDovizSeciniz', (v) => val.genelDovizSeciniz = v as String?);
-        $checkedConvert('genelOlcuBirimiSeciniz',
-            (v) => val.genelOlcuBirimiSeciniz = v as String?);
-        $checkedConvert('genelPlasiyerSeciniz',
-            (v) => val.genelPlasiyerSeciniz = v as String?);
-        $checkedConvert(
-            'genelProjeSeciniz', (v) => val.genelProjeSeciniz = v as String?);
-        $checkedConvert(
-            'genelCariSeciniz', (v) => val.genelCariSeciniz = v as String?);
-        $checkedConvert(
-            'genelTarihSeciniz', (v) => val.genelTarihSeciniz = v as String?);
-        $checkedConvert('genelIthalatTipiSeciniz',
-            (v) => val.genelIthalatTipiSeciniz = v as String?);
-        $checkedConvert('genelGirisDepoSeciniz',
-            (v) => val.genelGirisDepoSeciniz = v as String?);
-        $checkedConvert('genelGirisVeCikisDepolarAyni',
-            (v) => val.genelGirisVeCikisDepolarAyni = v as String?);
-        $checkedConvert('genelAciklamaGiriniz',
-            (v) => val.genelAciklamaGiriniz = v as String?);
-        $checkedConvert('genelOzelKod1Seciniz',
-            (v) => val.genelOzelKod1Seciniz = v as String?);
-        $checkedConvert('genelOzelKod2Seciniz',
-            (v) => val.genelOzelKod2Seciniz = v as String?);
-        $checkedConvert(
-            'genelStokSeciniz', (v) => val.genelStokSeciniz = v as String?);
-        $checkedConvert('genelHareketTuruSeciniz',
-            (v) => val.genelHareketTuruSeciniz = v as String?);
-        $checkedConvert('genelHucreMiktarlariUyumsuz',
-            (v) => val.genelHucreMiktarlariUyumsuz = v as String?);
-        $checkedConvert('genelSeriMiktarlariUyumsuz',
-            (v) => val.genelSeriMiktarlariUyumsuz = v as String?);
-        $checkedConvert(
-            'genelXBulunamadi', (v) => val.genelXBulunamadi = v as String?);
-        $checkedConvert('genelMuhasebeKoduSeciniz',
-            (v) => val.genelMuhasebeKoduSeciniz = v as String?);
-        $checkedConvert(
-            'genelFiyatGiriniz', (v) => val.genelFiyatGiriniz = v as String?);
-        $checkedConvert('genelAdet', (v) => val.genelAdet = v as String?);
-        $checkedConvert('genelAramaIcinEnAzXHarfGiriniz',
-            (v) => val.genelAramaIcinEnAzXHarfGiriniz = v as String?);
-        $checkedConvert('genelAra', (v) => val.genelAra = v as String?);
-        $checkedConvert(
-            'genelDovizKuru', (v) => val.genelDovizKuru = v as String?);
-        $checkedConvert('genelTemizle', (v) => val.genelTemizle = v as String?);
-        $checkedConvert('genelFisNo', (v) => val.genelFisNo = v as String?);
-        $checkedConvert('genelBelgeTuruSeciniz',
-            (v) => val.genelBelgeTuruSeciniz = v as String?);
-        $checkedConvert(
-            'genelHucreSeciniz', (v) => val.genelHucreSeciniz = v as String?);
-        $checkedConvert(
-            'genelHucreBakiyesi', (v) => val.genelHucreBakiyesi = v as String?);
-        $checkedConvert(
-            'genelIslemBasarili', (v) => val.genelIslemBasarili = v as String?);
-        $checkedConvert('genelIslemBasarisiz',
-            (v) => val.genelIslemBasarisiz = v as String?);
-        $checkedConvert(
-            'genelDepoSeciniz', (v) => val.genelDepoSeciniz = v as String?);
-        $checkedConvert(
-            'genelBelgeSeciniz', (v) => val.genelBelgeSeciniz = v as String?);
-        $checkedConvert(
-            'genelBelgeTuru', (v) => val.genelBelgeTuru = v as String?);
-        $checkedConvert(
-            'genelBelgeTarihi', (v) => val.genelBelgeTarihi = v as String?);
-        $checkedConvert(
-            'genelIslemMiktari', (v) => val.genelIslemMiktari = v as String?);
-        $checkedConvert('genelKaynakHucreSeciniz',
-            (v) => val.genelKaynakHucreSeciniz = v as String?);
-        $checkedConvert('genelHedefHucreSeciniz',
-            (v) => val.genelHedefHucreSeciniz = v as String?);
-        $checkedConvert('genelKaynakVeHedefHucrelerAyni',
-            (v) => val.genelKaynakVeHedefHucrelerAyni = v as String?);
-        $checkedConvert('genelYetersizBakiye',
-            (v) => val.genelYetersizBakiye = v as String?);
-        $checkedConvert(
-            'genelHedefHucre', (v) => val.genelHedefHucre = v as String?);
-        $checkedConvert(
-            'genelKaynakHucre', (v) => val.genelKaynakHucre = v as String?);
-        $checkedConvert('genelStokAdi', (v) => val.genelStokAdi = v as String?);
-        $checkedConvert('genelBakiye', (v) => val.genelBakiye = v as String?);
-        $checkedConvert(
-            'genelHareketler', (v) => val.genelHareketler = v as String?);
-        $checkedConvert(
-            'genelDetaylar', (v) => val.genelDetaylar = v as String?);
-        $checkedConvert('genelDepoBakiyeDurumu',
-            (v) => val.genelDepoBakiyeDurumu = v as String?);
-        $checkedConvert('genelArti', (v) => val.genelArti = v as String?);
-        $checkedConvert('genelEksi', (v) => val.genelEksi = v as String?);
-        $checkedConvert('genelSifir', (v) => val.genelSifir = v as String?);
-        $checkedConvert(
-            'genelGrupKodu', (v) => val.genelGrupKodu = v as String?);
-        $checkedConvert('genelKod', (v) => val.genelKod = v as String?);
-        $checkedConvert(
-            'genelXHareketleri', (v) => val.genelXHareketleri = v as String?);
-        $checkedConvert('genelArtan', (v) => val.genelArtan = v as String?);
-        $checkedConvert('genelAzalan', (v) => val.genelAzalan = v as String?);
-        $checkedConvert(
-            'genelXDetaylari', (v) => val.genelXDetaylari = v as String?);
-        $checkedConvert('genelFiyat', (v) => val.genelFiyat = v as String?);
-        $checkedConvert('genelAdi', (v) => val.genelAdi = v as String?);
-        $checkedConvert('genelKodu', (v) => val.genelKodu = v as String?);
-        $checkedConvert('genelSeriCikistaAktif',
-            (v) => val.genelSeriCikistaAktif = v as String?);
-        $checkedConvert('genelSeriGiristeAktif',
-            (v) => val.genelSeriGiristeAktif = v as String?);
-        $checkedConvert('genelSeriMiktarKadarSor',
-            (v) => val.genelSeriMiktarKadarSor = v as String?);
-        $checkedConvert('genelSeriBakiyeTakibiVar',
-            (v) => val.genelSeriBakiyeTakibiVar = v as String?);
-        $checkedConvert('genelAlis', (v) => val.genelAlis = v as String?);
-        $checkedConvert('genelSatis', (v) => val.genelSatis = v as String?);
-        $checkedConvert(
-            'genelSatisFiyati', (v) => val.genelSatisFiyati = v as String?);
-        $checkedConvert(
-            'genelAlisFiyati', (v) => val.genelAlisFiyati = v as String?);
-        $checkedConvert(
-            'genelBaslamaTarihi', (v) => val.genelBaslamaTarihi = v as String?);
-        $checkedConvert(
-            'genelBitisTarihi', (v) => val.genelBitisTarihi = v as String?);
-        $checkedConvert(
-            'genelSayilanlar', (v) => val.genelSayilanlar = v as String?);
-        $checkedConvert(
-            'genelMalToplama', (v) => val.genelMalToplama = v as String?);
-        $checkedConvert(
-            'genelMalKontrol', (v) => val.genelMalKontrol = v as String?);
-        $checkedConvert('genelKullaniciyaGonder',
-            (v) => val.genelKullaniciyaGonder = v as String?);
-        $checkedConvert(
-            'genelDepodaYok', (v) => val.genelDepodaYok = v as String?);
-        $checkedConvert('genelToplananMallar',
-            (v) => val.genelToplananMallar = v as String?);
-        $checkedConvert('genelMalKontroleGonder',
-            (v) => val.genelMalKontroleGonder = v as String?);
-        $checkedConvert(
-            'genelTamamlandi', (v) => val.genelTamamlandi = v as String?);
-        $checkedConvert('genelIslemiOnayliyorMusunuz',
-            (v) => val.genelIslemiOnayliyorMusunuz = v as String?);
-        $checkedConvert('genelTamamla', (v) => val.genelTamamla = v as String?);
-        $checkedConvert(
-            'genelKullanicilar', (v) => val.genelKullanicilar = v as String?);
-        $checkedConvert(
-            'genelCariKoduBos', (v) => val.genelCariKoduBos = v as String?);
-        $checkedConvert('genelHucreIslemTuruBos',
-            (v) => val.genelHucreIslemTuruBos = v as String?);
-        $checkedConvert('genelKullaniciAdiVeyaSifreYanlis',
-            (v) => val.genelKullaniciAdiVeyaSifreYanlis = v as String?);
-        $checkedConvert('genelKullaniciKilitliDurumda',
-            (v) => val.genelKullaniciKilitliDurumda = v as String?);
-        $checkedConvert(
-            'genelStokKoduBos', (v) => val.genelStokKoduBos = v as String?);
-        $checkedConvert('genelBelgeZatenKayitli',
-            (v) => val.genelBelgeZatenKayitli = v as String?);
-        $checkedConvert(
-            'genelKayitYapildi', (v) => val.genelKayitYapildi = v as String?);
-        $checkedConvert('genelMusteriSiparisi',
-            (v) => val.genelMusteriSiparisi = v as String?);
-        $checkedConvert('genelSaticiSiparisi',
-            (v) => val.genelSaticiSiparisi = v as String?);
-        $checkedConvert(
-            'genelStokKarti', (v) => val.genelStokKarti = v as String?);
-        $checkedConvert('genelYazdir', (v) => val.genelYazdir = v as String?);
-        $checkedConvert(
-            'genelNetFiyat', (v) => val.genelNetFiyat = v as String?);
-        $checkedConvert(
-            'genelBrutFiyat', (v) => val.genelBrutFiyat = v as String?);
-        $checkedConvert(
-            'genelProfilim', (v) => val.genelProfilim = v as String?);
-        $checkedConvert('genelKullaniciBulunamadi',
-            (v) => val.genelKullaniciBulunamadi = v as String?);
-        $checkedConvert('genelKayitBulunamadi',
-            (v) => val.genelKayitBulunamadi = v as String?);
-        $checkedConvert('genelCariEFaturaMukellefidir',
-            (v) => val.genelCariEFaturaMukellefidir = v as String?);
-        $checkedConvert('genelCariEArsivMukellefidir',
-            (v) => val.genelCariEArsivMukellefidir = v as String?);
-        $checkedConvert('genelCariIleTeslimCariAyniOlamaz',
-            (v) => val.genelCariIleTeslimCariAyniOlamaz = v as String?);
-        $checkedConvert(
-            'genelYeniBelgeNo', (v) => val.genelYeniBelgeNo = v as String?);
-        $checkedConvert('genelStokHareketleri',
-            (v) => val.genelStokHareketleri = v as String?);
-        $checkedConvert('genelBelgeKayitliDegisiklikYapilamaz',
-            (v) => val.genelBelgeKayitliDegisiklikYapilamaz = v as String?);
-        $checkedConvert(
-            'genelBelgeTipi', (v) => val.genelBelgeTipi = v as String?);
-        $checkedConvert('genelBelgeTipiSeciniz',
-            (v) => val.genelBelgeTipiSeciniz = v as String?);
-        $checkedConvert('genelKasa', (v) => val.genelKasa = v as String?);
-        $checkedConvert(
-            'genelKasaSeciniz', (v) => val.genelKasaSeciniz = v as String?);
-        $checkedConvert('genel15HaneliBelgeGiriniz',
-            (v) => val.genel15HaneliBelgeGiriniz = v as String?);
-        $checkedConvert('genelBelgeSerisiniKontrolEdin',
-            (v) => val.genelBelgeSerisiniKontrolEdin = v as String?);
-        $checkedConvert(
-            'genelTopluDepo', (v) => val.genelTopluDepo = v as String?);
-        $checkedConvert(
-            'genelXXXSeciniz', (v) => val.genelXXXSeciniz = v as String?);
-        $checkedConvert('genelEFatura', (v) => val.genelEFatura = v as String?);
-        $checkedConvert('genelEArsiv', (v) => val.genelEArsiv = v as String?);
-        $checkedConvert('genelEsnekYapilandirma',
-            (v) => val.genelEsnekYapilandirma = v as String?);
-        $checkedConvert('genelYapilandirmaKodu',
-            (v) => val.genelYapilandirmaKodu = v as String?);
-        $checkedConvert(
-            'genelIslemler', (v) => val.genelIslemler = v as String?);
-        $checkedConvert('genelBankaIslemleri',
-            (v) => val.genelBankaIslemleri = v as String?);
-        $checkedConvert('genelGelen', (v) => val.genelGelen = v as String?);
-        $checkedConvert(
-            'genelGonderilen', (v) => val.genelGonderilen = v as String?);
-        $checkedConvert('genelBaslama', (v) => val.genelBaslama = v as String?);
-        $checkedConvert('genelBitis', (v) => val.genelBitis = v as String?);
-        $checkedConvert(
-            'genelCariEFTKaydi', (v) => val.genelCariEFTKaydi = v as String?);
-        $checkedConvert(
-            'bankayaParaGirisi', (v) => val.bankayaParaGirisi = v as String?);
-        $checkedConvert(
-            'bankadanParaCikisi', (v) => val.bankadanParaCikisi = v as String?);
-        $checkedConvert('bankaHesabi', (v) => val.bankaHesabi = v as String?);
-        $checkedConvert(
-            'hareketDetayi', (v) => val.hareketDetayi = v as String?);
-        $checkedConvert('islemTuru', (v) => val.islemTuru = v as String?);
-        $checkedConvert(
-            'MobilCariEFTIslemi', (v) => val.mobilCariEFTIslemi = v as String?);
-        $checkedConvert('MobilHesaplarArasiEFT',
-            (v) => val.mobilHesaplarArasiEFT = v as String?);
-        $checkedConvert('MobilHesaplarArasiVirman',
-            (v) => val.mobilHesaplarArasiVirman = v as String?);
-        $checkedConvert('XXXBos', (v) => val.xXXBos = v as String?);
-        $checkedConvert('Tahsilat', (v) => val.tahsilat = v as String?);
-        $checkedConvert('Odeme', (v) => val.odeme = v as String?);
-        $checkedConvert(
-            'HucreBakiyeDurumu', (v) => val.hucreBakiyeDurumu = v as String?);
-        $checkedConvert(
-            'HucreHareketleri', (v) => val.hucreHareketleri = v as String?);
-        $checkedConvert(
-            'SiparisDurumRaporu', (v) => val.siparisDurumRaporu = v as String?);
-        $checkedConvert(
-            'SiparisDurumRaporuDetay', (v) => val.olustur = v as String?);
-        $checkedConvert(
-            'faturaTabGenel', (v) => val.faturaTabGenel = v as String?);
-        $checkedConvert(
-            'faturaTabKalem', (v) => val.faturaTabKalem = v as String?);
-        $checkedConvert(
-            'faturaTabToplamlar', (v) => val.faturaTabToplamlar = v as String?);
-        $checkedConvert(
-            'faturaOzelKod1', (v) => val.faturaOzelKod1 = v as String?);
-        $checkedConvert(
-            'faturaOzelKod2', (v) => val.faturaOzelKod2 = v as String?);
-        $checkedConvert('faturaKosul', (v) => val.faturaKosul = v as String?);
-        $checkedConvert(
-            'faturaHareketTuru', (v) => val.faturaHareketTuru = v as String?);
-        $checkedConvert(
-            'faturaCikisYeri', (v) => val.faturaCikisYeri = v as String?);
-        $checkedConvert(
-            'faturaMasrafKodu', (v) => val.faturaMasrafKodu = v as String?);
-        $checkedConvert('faturaFarkliTeslimat',
-            (v) => val.faturaFarkliTeslimat = v as String?);
-        $checkedConvert(
-            'faturaIthalatTipi', (v) => val.faturaIthalatTipi = v as String?);
-        $checkedConvert(
-            'faturaIthalatRefNo', (v) => val.faturaIthalatRefNo = v as String?);
-        $checkedConvert('faturaIskontoToplami',
-            (v) => val.faturaIskontoToplami = v as String?);
-        $checkedConvert(
-            'faturaAraToplam', (v) => val.faturaAraToplam = v as String?);
-        $checkedConvert(
-            'faturaKDVTutari', (v) => val.faturaKDVTutari = v as String?);
-        $checkedConvert('faturaMasrafMerkezi',
-            (v) => val.faturaMasrafMerkezi = v as String?);
-        $checkedConvert(
-            'faturaAnaMalGrubu', (v) => val.faturaAnaMalGrubu = v as String?);
-        $checkedConvert(
-            'faturaMalGrubu', (v) => val.faturaMalGrubu = v as String?);
-        $checkedConvert(
-            'faturaSerbest', (v) => val.faturaSerbest = v as String?);
-        $checkedConvert('faturaGenelToplamEksiyeDustu',
-            (v) => val.faturaGenelToplamEksiyeDustu = v as String?);
-        $checkedConvert('faturaCikisYeriSeciniz',
-            (v) => val.faturaCikisYeriSeciniz = v as String?);
-        $checkedConvert('faturaMasrafKoduSeciniz',
-            (v) => val.faturaMasrafKoduSeciniz = v as String?);
-        $checkedConvert('faturaFarkliTeslimCariSeciniz',
-            (v) => val.faturaFarkliTeslimCariSeciniz = v as String?);
-        $checkedConvert(
-            'faturaKalemGiriniz', (v) => val.faturaKalemGiriniz = v as String?);
-        $checkedConvert('faturaSeriEFaturaIcinKullaniliyor',
-            (v) => val.faturaSeriEFaturaIcinKullaniliyor = v as String?);
-        $checkedConvert('faturaSeriEArsivIcinKullaniliyor',
-            (v) => val.faturaSeriEArsivIcinKullaniliyor = v as String?);
-        $checkedConvert('faturaSeriXXXIleBaslamali',
-            (v) => val.faturaSeriXXXIleBaslamali = v as String?);
-        $checkedConvert('faturaEFaturaOlusturulmus',
-            (v) => val.faturaEFaturaOlusturulmus = v as String?);
-        $checkedConvert('faturaEArsivOlusturulmus',
-            (v) => val.faturaEArsivOlusturulmus = v as String?);
-        $checkedConvert('depoGiris', (v) => val.depoGiris = v as String?);
-        $checkedConvert('depoCikis', (v) => val.depoCikis = v as String?);
-        $checkedConvert('depoKalan', (v) => val.depoKalan = v as String?);
-        $checkedConvert(
-            'servisKullaniciDogrulamaServisiCalismiyor',
-            (v) =>
-                val.servisKullaniciDogrulamaServisiCalismiyor = v as String?);
-        $checkedConvert('servisKullaniciDogrulanamadi',
-            (v) => val.servisKullaniciDogrulanamadi = v as String?);
-        $checkedConvert('servisOzelKodNoTanimliDegil',
-            (v) => val.servisOzelKodNoTanimliDegil = v as String?);
-        $checkedConvert('servisPickerBelgeTuruTanimliDegil',
-            (v) => val.servisPickerBelgeTuruTanimliDegil = v as String?);
-        $checkedConvert('servisPickerYetkinizBulunmuyor',
-            (v) => val.servisPickerYetkinizBulunmuyor = v as String?);
-        $checkedConvert(
-            'servisSunucuHatasi', (v) => val.servisSunucuHatasi = v as String?);
-        $checkedConvert('servisYeniBelgeNoAlinamadi',
-            (v) => val.servisYeniBelgeNoAlinamadi = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'dilKodu': 'DilKodu',
-        'dilAciklama': 'DilAciklama',
-        'mobilCariEFTIslemi': 'MobilCariEFTIslemi',
-        'mobilHesaplarArasiEFT': 'MobilHesaplarArasiEFT',
-        'mobilHesaplarArasiVirman': 'MobilHesaplarArasiVirman',
-        'xXXBos': 'XXXBos',
-        'tahsilat': 'Tahsilat',
-        'odeme': 'Odeme',
-        'hucreBakiyeDurumu': 'HucreBakiyeDurumu',
-        'hucreHareketleri': 'HucreHareketleri',
-        'siparisDurumRaporu': 'SiparisDurumRaporu',
-        'olustur': 'SiparisDurumRaporuDetay'
-      },
-    );
+LangModel _$LangModelFromJson(Map<String, dynamic> json) => LangModel()
+  ..dilKodu = json['DilKodu'] as String?
+  ..dilAciklama = json['DilAciklama'] as String?
+  ..menuMalKabul = json['menuMalKabul'] as String?
+  ..menuMalKabulSatinAlma = json['menuMalKabulSatinAlma'] as String?
+  ..menuMalKabulIade = json['menuMalKabulIade'] as String?
+  ..menuTransfer = json['menuTransfer'] as String?
+  ..menuTransferDAT = json['menuTransferDAT'] as String?
+  ..menuTransferAmbarGirisFisi = json['menuTransferAmbarGirisFisi'] as String?
+  ..menuTransferAmbarCikisFisi = json['menuTransferAmbarCikisFisi'] as String?
+  ..menuHucreTakibi = json['menuHucreTakibi'] as String?
+  ..menuHucreTakibiYerlestir = json['menuHucreTakibiYerlestir'] as String?
+  ..menuHucreTakibiBosalt = json['menuHucreTakibiBosalt'] as String?
+  ..menuHucreTakibiTransfer = json['menuHucreTakibiTransfer'] as String?
+  ..menuHucreTakibiAra = json['menuHucreTakibiAra'] as String?
+  ..menuHucreTakibiListe = json['menuHucreTakibiListe'] as String?
+  ..menuSevkiyat = json['menuSevkiyat'] as String?
+  ..menuSevkiyatSatisIrsaliyesi = json['menuSevkiyatSatisIrsaliyesi'] as String?
+  ..menuSevkiyatMalToplama = json['menuSevkiyatMalToplama'] as String?
+  ..menuSayim = json['menuSayim'] as String?
+  ..menuSayimSayim = json['menuSayimSayim'] as String?
+  ..menuSiparis = json['menuSiparis'] as String?
+  ..menuMusteriSiparisi = json['menuMusteriSiparisi'] as String?
+  ..menuSaticiSiparisi = json['menuSaticiSiparisi'] as String?
+  ..menuCari = json['menuCari'] as String?
+  ..menuCariListesi = json['menuCariListesi'] as String?
+  ..menuStok = json['menuStok'] as String?
+  ..menuStokListesi = json['menuStokListesi'] as String?
+  ..menuYonetici = json['menuYonetici'] as String?
+  ..menuBanka = json['menuBanka'] as String?
+  ..menuBankaListesi = json['menuBankaListesi'] as String?
+  ..menuTahsilat = json['menuTahsilat'] as String?
+  ..menuTahsilatYap = json['menuTahsilatYap'] as String?
+  ..menuTahsilatKayitlari = json['menuTahsilatKayitlari'] as String?
+  ..menuNakitOdeme = json['menuNakitOdeme'] as String?
+  ..menuKKTahsilat = json['menuKKTahsilat'] as String?
+  ..menuNakitTahsilat = json['menuNakitTahsilat'] as String?
+  ..menuSenetTahsilati = json['menuSenetTahsilati'] as String?
+  ..menuCekTahsilati = json['menuCekTahsilati'] as String?
+  ..menuAyarlar = json['menuAyarlar'] as String?
+  ..menuFirmalar = json['menuFirmalar'] as String?
+  ..menuTemsilci = json['menuTemsilci'] as String?
+  ..menuProfilim = json['menuProfilim'] as String?
+  ..menuAlisFaturasi = json['menuAlisFaturasi'] as String?
+  ..menuSatisFaturasi = json['menuSatisFaturasi'] as String?
+  ..genelSirketDegistir = json['genelSirketDegistir'] as String?
+  ..genelSirketOturumuKapat = json['genelSirketOturumuKapat'] as String?
+  ..genelGuncelSurumuIndir = json['genelGuncelSurumuIndir'] as String?
+  ..genelLutfenBekleyin = json['genelLutfenBekleyin'] as String?
+  ..genelKaydet = json['genelKaydet'] as String?
+  ..genelTamam = json['genelTamam'] as String?
+  ..genelHayir = json['genelHayir'] as String?
+  ..genelEvet = json['genelEvet'] as String?
+  ..genelIptal = json['genelIptal'] as String?
+  ..genelSil = json['genelSil'] as String?
+  ..genelDuzenle = json['genelDuzenle'] as String?
+  ..genelSirket = json['genelSirket'] as String?
+  ..genelIsletme = json['genelIsletme'] as String?
+  ..genelSube = json['genelSube'] as String?
+  ..genelFirmaEkle = json['genelFirmaEkle'] as String?
+  ..genelKayitAdi = json['genelKayitAdi'] as String?
+  ..genelKullaniciAdi = json['genelKullaniciAdi'] as String?
+  ..genelSifre = json['genelSifre'] as String?
+  ..genelRevizyon = json['genelRevizyon'] as String?
+  ..genelTarih = json['genelTarih'] as String?
+  ..genelBelgeNo = json['genelBelgeNo'] as String?
+  ..genelCari = json['genelCari'] as String?
+  ..genelSiparisTipi = json['genelSiparisTipi'] as String?
+  ..genelProje = json['genelProje'] as String?
+  ..genelPlasiyer = json['genelPlasiyer'] as String?
+  ..genelKDVDahil = json['genelKDVDahil'] as String?
+  ..genelAciklama = json['genelAciklama'] as String?
+  ..genelMiktar = json['genelMiktar'] as String?
+  ..genelTutar = json['genelTutar'] as String?
+  ..genelBirimFiyat = json['genelBirimFiyat'] as String?
+  ..genelKDV = json['genelKDV'] as String?
+  ..genelStokKodu = json['genelStokKodu'] as String?
+  ..genelBrutTutar = json['genelBrutTutar'] as String?
+  ..genelMalFazIsk = json['genelMalFazIsk'] as String?
+  ..genelMalFazTutari = json['genelMalFazTutari'] as String?
+  ..genelMalFazMiktari = json['genelMalFazMiktari'] as String?
+  ..genelSatirIsk = json['genelSatirIsk'] as String?
+  ..genelGenelToplam = json['genelGenelToplam'] as String?
+  ..genelGenelIskonto = json['genelGenelIskonto'] as String?
+  ..genelStokSeviyesi = json['genelStokSeviyesi'] as String?
+  ..genelOlcuBirimi = json['genelOlcuBirimi'] as String?
+  ..genelDepo = json['genelDepo'] as String?
+  ..genelCikisDepo = json['genelCikisDepo'] as String?
+  ..genelGirisDepo = json['genelGirisDepo'] as String?
+  ..genelDovizTipi = json['genelDovizTipi'] as String?
+  ..genelTLFiyati = json['genelTLFiyati'] as String?
+  ..genelIskonto = json['genelIskonto'] as String?
+  ..genelSeriler = json['genelSeriler'] as String?
+  ..genelSeri = json['genelSeri'] as String?
+  ..genelHucreler = json['genelHucreler'] as String?
+  ..genelBelge = json['genelBelge'] as String?
+  ..genelCariKodu = json['genelCariKodu'] as String?
+  ..genelCariAdi = json['genelCariAdi'] as String?
+  ..genelKalemMiktari = json['genelKalemMiktari'] as String?
+  ..genelHucre = json['genelHucre'] as String?
+  ..genelBarkod = json['genelBarkod'] as String?
+  ..genelKalem = json['genelKalem'] as String?
+  ..genelGoruntule = json['genelGoruntule'] as String?
+  ..genelSecenekler = json['genelSecenekler'] as String?
+  ..genelEkle = json['genelEkle'] as String?
+  ..genelYenile = json['genelYenile'] as String?
+  ..genelFiltrele = json['genelFiltrele'] as String?
+  ..genelSirala = json['genelSirala'] as String?
+  ..genelEkAciklamalar = json['genelEkAciklamalar'] as String?
+  ..genelIthalat = json['genelIthalat'] as String?
+  ..genelYeniBelge = json['genelYeniBelge'] as String?
+  ..genelYurtici = json['genelYurtici'] as String?
+  ..genelYurtdisi = json['genelYurtdisi'] as String?
+  ..genelDevir = json['genelDevir'] as String?
+  ..genelDepolar = json['genelDepolar'] as String?
+  ..genelUretim = json['genelUretim'] as String?
+  ..genelMuhtelif = json['genelMuhtelif'] as String?
+  ..genelKonsinye = json['genelKonsinye'] as String?
+  ..genelXRehberi = json['genelXRehberi'] as String?
+  ..genelAlisIrsaliyesi = json['genelAlisIrsaliyesi'] as String?
+  ..genelSatisIrsaliyesi = json['genelSatisIrsaliyesi'] as String?
+  ..genelAlisFaturasi = json['genelAlisFaturasi'] as String?
+  ..genelSatisFaturasi = json['genelSatisFaturasi'] as String?
+  ..genelIade = json['genelIade'] as String?
+  ..genelXGiriniz = json['genelXGiriniz'] as String?
+  ..genelXSeciniz = json['genelXSeciniz'] as String?
+  ..genelXSilinsinMi = json['genelXSilinsinMi'] as String?
+  ..genelKayitSilinsinMi = json['genelKayitSilinsinMi'] as String?
+  ..genelKaydedilsinMi = json['genelKaydedilsinMi'] as String?
+  ..genelEksikBilgiler = json['genelEksikBilgiler'] as String?
+  ..genelMiktarGiriniz = json['genelMiktarGiriniz'] as String?
+  ..genelDovizSeciniz = json['genelDovizSeciniz'] as String?
+  ..genelOlcuBirimiSeciniz = json['genelOlcuBirimiSeciniz'] as String?
+  ..genelPlasiyerSeciniz = json['genelPlasiyerSeciniz'] as String?
+  ..genelProjeSeciniz = json['genelProjeSeciniz'] as String?
+  ..genelCariSeciniz = json['genelCariSeciniz'] as String?
+  ..genelTarihSeciniz = json['genelTarihSeciniz'] as String?
+  ..genelIthalatTipiSeciniz = json['genelIthalatTipiSeciniz'] as String?
+  ..genelGirisDepoSeciniz = json['genelGirisDepoSeciniz'] as String?
+  ..genelGirisVeCikisDepolarAyni =
+      json['genelGirisVeCikisDepolarAyni'] as String?
+  ..genelAciklamaGiriniz = json['genelAciklamaGiriniz'] as String?
+  ..genelOzelKod1Seciniz = json['genelOzelKod1Seciniz'] as String?
+  ..genelOzelKod2Seciniz = json['genelOzelKod2Seciniz'] as String?
+  ..genelStokSeciniz = json['genelStokSeciniz'] as String?
+  ..genelHareketTuruSeciniz = json['genelHareketTuruSeciniz'] as String?
+  ..genelHucreMiktarlariUyumsuz = json['genelHucreMiktarlariUyumsuz'] as String?
+  ..genelSeriMiktarlariUyumsuz = json['genelSeriMiktarlariUyumsuz'] as String?
+  ..genelXBulunamadi = json['genelXBulunamadi'] as String?
+  ..genelMuhasebeKoduSeciniz = json['genelMuhasebeKoduSeciniz'] as String?
+  ..genelFiyatGiriniz = json['genelFiyatGiriniz'] as String?
+  ..genelAdet = json['genelAdet'] as String?
+  ..genelAramaIcinEnAzXHarfGiriniz =
+      json['genelAramaIcinEnAzXHarfGiriniz'] as String?
+  ..genelAra = json['genelAra'] as String?
+  ..genelDovizKuru = json['genelDovizKuru'] as String?
+  ..genelTemizle = json['genelTemizle'] as String?
+  ..genelFisNo = json['genelFisNo'] as String?
+  ..genelBelgeTuruSeciniz = json['genelBelgeTuruSeciniz'] as String?
+  ..genelHucreSeciniz = json['genelHucreSeciniz'] as String?
+  ..genelHucreBakiyesi = json['genelHucreBakiyesi'] as String?
+  ..genelIslemBasarili = json['genelIslemBasarili'] as String?
+  ..genelIslemBasarisiz = json['genelIslemBasarisiz'] as String?
+  ..genelDepoSeciniz = json['genelDepoSeciniz'] as String?
+  ..genelBelgeSeciniz = json['genelBelgeSeciniz'] as String?
+  ..genelBelgeTuru = json['genelBelgeTuru'] as String?
+  ..genelBelgeTarihi = json['genelBelgeTarihi'] as String?
+  ..genelIslemMiktari = json['genelIslemMiktari'] as String?
+  ..genelKaynakHucreSeciniz = json['genelKaynakHucreSeciniz'] as String?
+  ..genelHedefHucreSeciniz = json['genelHedefHucreSeciniz'] as String?
+  ..genelKaynakVeHedefHucrelerAyni =
+      json['genelKaynakVeHedefHucrelerAyni'] as String?
+  ..genelYetersizBakiye = json['genelYetersizBakiye'] as String?
+  ..genelHedefHucre = json['genelHedefHucre'] as String?
+  ..genelKaynakHucre = json['genelKaynakHucre'] as String?
+  ..genelStokAdi = json['genelStokAdi'] as String?
+  ..genelBakiye = json['genelBakiye'] as String?
+  ..genelHareketler = json['genelHareketler'] as String?
+  ..genelDetaylar = json['genelDetaylar'] as String?
+  ..genelDepoBakiyeDurumu = json['genelDepoBakiyeDurumu'] as String?
+  ..genelArti = json['genelArti'] as String?
+  ..genelEksi = json['genelEksi'] as String?
+  ..genelSifir = json['genelSifir'] as String?
+  ..genelGrupKodu = json['genelGrupKodu'] as String?
+  ..genelKod = json['genelKod'] as String?
+  ..genelXHareketleri = json['genelXHareketleri'] as String?
+  ..genelArtan = json['genelArtan'] as String?
+  ..genelAzalan = json['genelAzalan'] as String?
+  ..genelXDetaylari = json['genelXDetaylari'] as String?
+  ..genelFiyat = json['genelFiyat'] as String?
+  ..genelAdi = json['genelAdi'] as String?
+  ..genelKodu = json['genelKodu'] as String?
+  ..genelSeriCikistaAktif = json['genelSeriCikistaAktif'] as String?
+  ..genelSeriGiristeAktif = json['genelSeriGiristeAktif'] as String?
+  ..genelSeriMiktarKadarSor = json['genelSeriMiktarKadarSor'] as String?
+  ..genelSeriBakiyeTakibiVar = json['genelSeriBakiyeTakibiVar'] as String?
+  ..genelAlis = json['genelAlis'] as String?
+  ..genelSatis = json['genelSatis'] as String?
+  ..genelSatisFiyati = json['genelSatisFiyati'] as String?
+  ..genelAlisFiyati = json['genelAlisFiyati'] as String?
+  ..genelBaslamaTarihi = json['genelBaslamaTarihi'] as String?
+  ..genelBitisTarihi = json['genelBitisTarihi'] as String?
+  ..genelSayilanlar = json['genelSayilanlar'] as String?
+  ..genelMalToplama = json['genelMalToplama'] as String?
+  ..genelMalKontrol = json['genelMalKontrol'] as String?
+  ..genelKullaniciyaGonder = json['genelKullaniciyaGonder'] as String?
+  ..genelDepodaYok = json['genelDepodaYok'] as String?
+  ..genelToplananMallar = json['genelToplananMallar'] as String?
+  ..genelMalKontroleGonder = json['genelMalKontroleGonder'] as String?
+  ..genelTamamlandi = json['genelTamamlandi'] as String?
+  ..genelIslemiOnayliyorMusunuz = json['genelIslemiOnayliyorMusunuz'] as String?
+  ..genelTamamla = json['genelTamamla'] as String?
+  ..genelKullanicilar = json['genelKullanicilar'] as String?
+  ..genelCariKoduBos = json['genelCariKoduBos'] as String?
+  ..genelHucreIslemTuruBos = json['genelHucreIslemTuruBos'] as String?
+  ..genelKullaniciAdiVeyaSifreYanlis =
+      json['genelKullaniciAdiVeyaSifreYanlis'] as String?
+  ..genelKullaniciKilitliDurumda =
+      json['genelKullaniciKilitliDurumda'] as String?
+  ..genelStokKoduBos = json['genelStokKoduBos'] as String?
+  ..genelBelgeZatenKayitli = json['genelBelgeZatenKayitli'] as String?
+  ..genelKayitYapildi = json['genelKayitYapildi'] as String?
+  ..genelMusteriSiparisi = json['genelMusteriSiparisi'] as String?
+  ..genelSaticiSiparisi = json['genelSaticiSiparisi'] as String?
+  ..genelStokKarti = json['genelStokKarti'] as String?
+  ..genelYazdir = json['genelYazdir'] as String?
+  ..genelNetFiyat = json['genelNetFiyat'] as String?
+  ..genelBrutFiyat = json['genelBrutFiyat'] as String?
+  ..genelProfilim = json['genelProfilim'] as String?
+  ..genelKullaniciBulunamadi = json['genelKullaniciBulunamadi'] as String?
+  ..genelKayitBulunamadi = json['genelKayitBulunamadi'] as String?
+  ..genelCariEFaturaMukellefidir =
+      json['genelCariEFaturaMukellefidir'] as String?
+  ..genelCariEArsivMukellefidir = json['genelCariEArsivMukellefidir'] as String?
+  ..genelCariIleTeslimCariAyniOlamaz =
+      json['genelCariIleTeslimCariAyniOlamaz'] as String?
+  ..genelYeniBelgeNo = json['genelYeniBelgeNo'] as String?
+  ..genelStokHareketleri = json['genelStokHareketleri'] as String?
+  ..genelBelgeKayitliDegisiklikYapilamaz =
+      json['genelBelgeKayitliDegisiklikYapilamaz'] as String?
+  ..genelBelgeTipi = json['genelBelgeTipi'] as String?
+  ..genelBelgeTipiSeciniz = json['genelBelgeTipiSeciniz'] as String?
+  ..genelKasa = json['genelKasa'] as String?
+  ..genelKasaSeciniz = json['genelKasaSeciniz'] as String?
+  ..genel15HaneliBelgeGiriniz = json['genel15HaneliBelgeGiriniz'] as String?
+  ..genelBelgeSerisiniKontrolEdin =
+      json['genelBelgeSerisiniKontrolEdin'] as String?
+  ..genelTopluDepo = json['genelTopluDepo'] as String?
+  ..genelXXXSeciniz = json['genelXXXSeciniz'] as String?
+  ..genelEFatura = json['genelEFatura'] as String?
+  ..genelEArsiv = json['genelEArsiv'] as String?
+  ..genelEsnekYapilandirma = json['genelEsnekYapilandirma'] as String?
+  ..genelYapilandirmaKodu = json['genelYapilandirmaKodu'] as String?
+  ..genelIslemler = json['genelIslemler'] as String?
+  ..genelBankaIslemleri = json['genelBankaIslemleri'] as String?
+  ..genelGelen = json['genelGelen'] as String?
+  ..genelGonderilen = json['genelGonderilen'] as String?
+  ..genelBaslama = json['genelBaslama'] as String?
+  ..genelBitis = json['genelBitis'] as String?
+  ..genelCariEFTKaydi = json['genelCariEFTKaydi'] as String?
+  ..bankayaParaGirisi = json['bankayaParaGirisi'] as String?
+  ..bankadanParaCikisi = json['bankadanParaCikisi'] as String?
+  ..bankaHesabi = json['bankaHesabi'] as String?
+  ..hareketDetayi = json['hareketDetayi'] as String?
+  ..islemTuru = json['islemTuru'] as String?
+  ..mobilCariEFTIslemi = json['MobilCariEFTIslemi'] as String?
+  ..mobilHesaplarArasiEFT = json['MobilHesaplarArasiEFT'] as String?
+  ..mobilHesaplarArasiVirman = json['MobilHesaplarArasiVirman'] as String?
+  ..xXXBos = json['XXXBos'] as String?
+  ..tahsilat = json['Tahsilat'] as String?
+  ..odeme = json['Odeme'] as String?
+  ..hucreBakiyeDurumu = json['HucreBakiyeDurumu'] as String?
+  ..hucreHareketleri = json['HucreHareketleri'] as String?
+  ..siparisDurumRaporu = json['SiparisDurumRaporu'] as String?
+  ..olustur = json['SiparisDurumRaporuDetay'] as String?
+  ..faturaTabGenel = json['faturaTabGenel'] as String?
+  ..faturaTabKalem = json['faturaTabKalem'] as String?
+  ..faturaTabToplamlar = json['faturaTabToplamlar'] as String?
+  ..faturaOzelKod1 = json['faturaOzelKod1'] as String?
+  ..faturaOzelKod2 = json['faturaOzelKod2'] as String?
+  ..faturaKosul = json['faturaKosul'] as String?
+  ..faturaHareketTuru = json['faturaHareketTuru'] as String?
+  ..faturaCikisYeri = json['faturaCikisYeri'] as String?
+  ..faturaMasrafKodu = json['faturaMasrafKodu'] as String?
+  ..faturaFarkliTeslimat = json['faturaFarkliTeslimat'] as String?
+  ..faturaIthalatTipi = json['faturaIthalatTipi'] as String?
+  ..faturaIthalatRefNo = json['faturaIthalatRefNo'] as String?
+  ..faturaIskontoToplami = json['faturaIskontoToplami'] as String?
+  ..faturaAraToplam = json['faturaAraToplam'] as String?
+  ..faturaKDVTutari = json['faturaKDVTutari'] as String?
+  ..faturaMasrafMerkezi = json['faturaMasrafMerkezi'] as String?
+  ..faturaAnaMalGrubu = json['faturaAnaMalGrubu'] as String?
+  ..faturaMalGrubu = json['faturaMalGrubu'] as String?
+  ..faturaSerbest = json['faturaSerbest'] as String?
+  ..faturaGenelToplamEksiyeDustu =
+      json['faturaGenelToplamEksiyeDustu'] as String?
+  ..faturaCikisYeriSeciniz = json['faturaCikisYeriSeciniz'] as String?
+  ..faturaMasrafKoduSeciniz = json['faturaMasrafKoduSeciniz'] as String?
+  ..faturaFarkliTeslimCariSeciniz =
+      json['faturaFarkliTeslimCariSeciniz'] as String?
+  ..faturaKalemGiriniz = json['faturaKalemGiriniz'] as String?
+  ..faturaSeriEFaturaIcinKullaniliyor =
+      json['faturaSeriEFaturaIcinKullaniliyor'] as String?
+  ..faturaSeriEArsivIcinKullaniliyor =
+      json['faturaSeriEArsivIcinKullaniliyor'] as String?
+  ..faturaSeriXXXIleBaslamali = json['faturaSeriXXXIleBaslamali'] as String?
+  ..faturaEFaturaOlusturulmus = json['faturaEFaturaOlusturulmus'] as String?
+  ..faturaEArsivOlusturulmus = json['faturaEArsivOlusturulmus'] as String?
+  ..depoGiris = json['depoGiris'] as String?
+  ..depoCikis = json['depoCikis'] as String?
+  ..depoKalan = json['depoKalan'] as String?
+  ..servisKullaniciDogrulamaServisiCalismiyor =
+      json['servisKullaniciDogrulamaServisiCalismiyor'] as String?
+  ..servisKullaniciDogrulanamadi =
+      json['servisKullaniciDogrulanamadi'] as String?
+  ..servisOzelKodNoTanimliDegil = json['servisOzelKodNoTanimliDegil'] as String?
+  ..servisPickerBelgeTuruTanimliDegil =
+      json['servisPickerBelgeTuruTanimliDegil'] as String?
+  ..servisPickerYetkinizBulunmuyor =
+      json['servisPickerYetkinizBulunmuyor'] as String?
+  ..servisSunucuHatasi = json['servisSunucuHatasi'] as String?
+  ..servisYeniBelgeNoAlinamadi = json['servisYeniBelgeNoAlinamadi'] as String?;
 
 Map<String, dynamic> _$LangModelToJson(LangModel instance) => <String, dynamic>{
       'DilKodu': instance.dilKodu,

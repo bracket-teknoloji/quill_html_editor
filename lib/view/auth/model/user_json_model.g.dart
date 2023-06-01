@@ -8,45 +8,21 @@ part of 'user_json_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-UserJson _$UserJsonFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'UserJson',
-      json,
-      ($checkedConvert) {
-        final val = UserJson();
-        $checkedConvert(
-            'profilModel',
-            (v) => val.profilModel = v == null
-                ? null
-                : ProfilModel.fromJson(v as Map<String, dynamic>));
-        $checkedConvert(
-            'yetkiModel', (v) => val.yetkiModel = v as Map<String, dynamic>?);
-        $checkedConvert('ID', (v) => val.id = v as int?);
-        $checkedConvert('KULADI', (v) => val.kullaniciAdi = v as String?);
-        $checkedConvert('PAROLA', (v) => val.parola = v as String?);
-        $checkedConvert('ADI', (v) => val.ad = v as String?);
-        $checkedConvert('SOYADI', (v) => val.soyad = v as String?);
-        $checkedConvert(
-            'ERP_KULLANICI', (v) => val.erpKullanici = v as String?);
-        $checkedConvert('ERP_PAROLA', (v) => val.erpParola = v as String?);
-        $checkedConvert('ADMIN', (v) => val.admin = v as String?);
-        $checkedConvert('ADMIN_MI', (v) => val.adminMi = v as bool?);
-        $checkedConvert(
-            'PICKER_YETKILI', (v) => val.pickerYetkili = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'id': 'ID',
-        'kullaniciAdi': 'KULADI',
-        'parola': 'PAROLA',
-        'ad': 'ADI',
-        'soyad': 'SOYADI',
-        'erpKullanici': 'ERP_KULLANICI',
-        'erpParola': 'ERP_PAROLA',
-        'admin': 'ADMIN',
-        'adminMi': 'ADMIN_MI',
-        'pickerYetkili': 'PICKER_YETKILI'
-      },
-    );
+UserJson _$UserJsonFromJson(Map<String, dynamic> json) => UserJson()
+  ..profilModel = json['profilModel'] == null
+      ? null
+      : ProfilModel.fromJson(json['profilModel'] as Map<String, dynamic>)
+  ..yetkiModel = json['yetkiModel'] as Map<String, dynamic>?
+  ..id = json['ID'] as int?
+  ..kullaniciAdi = json['KULADI'] as String?
+  ..parola = json['PAROLA'] as String?
+  ..ad = json['ADI'] as String?
+  ..soyad = json['SOYADI'] as String?
+  ..erpKullanici = json['ERP_KULLANICI'] as String?
+  ..erpParola = json['ERP_PAROLA'] as String?
+  ..admin = json['ADMIN'] as String?
+  ..adminMi = json['ADMIN_MI'] as bool?
+  ..pickerYetkili = json['PICKER_YETKILI'] as String?;
 
 Map<String, dynamic> _$UserJsonToJson(UserJson instance) => <String, dynamic>{
       'profilModel': instance.profilModel?.toJson(),
@@ -63,36 +39,14 @@ Map<String, dynamic> _$UserJsonToJson(UserJson instance) => <String, dynamic>{
       'PICKER_YETKILI': instance.pickerYetkili,
     };
 
-ProfilModel _$ProfilModelFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'ProfilModel',
-      json,
-      ($checkedConvert) {
-        final val = ProfilModel();
-        $checkedConvert('kullaniciYetkiModel',
-            (v) => val.kullaniciYetkiModel = v as Map<String, dynamic>?);
-        $checkedConvert(
-            'sirket_KalemKayitKontrol_BelgeTipleri',
-            (v) =>
-                val.sirketKalemKayitKontrolBelgeTipleri = v as List<dynamic>?);
-        $checkedConvert(
-            'sevkiyat_SatisIrs_EArsivMukellefineKesilmesin',
-            (v) =>
-                val.sevkiyatSatisIrsEArsivMukellefineKesilmesin = v as String?);
-        $checkedConvert(
-            'sevkiyat_SatisFat_EFaturaMukellefineKesilmesin',
-            (v) => val.sevkiyatSatisFatEFaturaMukellefineKesilmesin =
-                v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'sirketKalemKayitKontrolBelgeTipleri':
-            'sirket_KalemKayitKontrol_BelgeTipleri',
-        'sevkiyatSatisIrsEArsivMukellefineKesilmesin':
-            'sevkiyat_SatisIrs_EArsivMukellefineKesilmesin',
-        'sevkiyatSatisFatEFaturaMukellefineKesilmesin':
-            'sevkiyat_SatisFat_EFaturaMukellefineKesilmesin'
-      },
-    );
+ProfilModel _$ProfilModelFromJson(Map<String, dynamic> json) => ProfilModel()
+  ..kullaniciYetkiModel = json['kullaniciYetkiModel'] as Map<String, dynamic>?
+  ..sirketKalemKayitKontrolBelgeTipleri =
+      json['sirket_KalemKayitKontrol_BelgeTipleri'] as List<dynamic>?
+  ..sevkiyatSatisIrsEArsivMukellefineKesilmesin =
+      json['sevkiyat_SatisIrs_EArsivMukellefineKesilmesin'] as String?
+  ..sevkiyatSatisFatEFaturaMukellefineKesilmesin =
+      json['sevkiyat_SatisFat_EFaturaMukellefineKesilmesin'] as String?;
 
 Map<String, dynamic> _$ProfilModelToJson(ProfilModel instance) =>
     <String, dynamic>{

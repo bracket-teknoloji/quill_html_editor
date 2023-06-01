@@ -49,12 +49,10 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
   void init() async {
     viewModel.setCariHareketleri(await getData());
     scrollController?.addListener(() {
-      if (scrollController!.position.userScrollDirection ==
-          ScrollDirection.forward) {
+      if (scrollController!.position.userScrollDirection == ScrollDirection.forward) {
         viewModel.changeScrollDown(true);
       }
-      if (scrollController!.position.userScrollDirection ==
-          ScrollDirection.reverse) {
+      if (scrollController!.position.userScrollDirection == ScrollDirection.reverse) {
         viewModel.changeScrollDown(false);
       }
     });
@@ -87,8 +85,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                   ).marginAll(5),
                 )
               : AppBarTitle(
-                  title:
-                      "Cari Hareketleri ${viewModel.cariHareketleriList?.isNotEmpty ?? false ? '(${viewModel.cariHareketleriList!.length})' : ''}",
+                  title: "Cari Hareketleri ${viewModel.cariHareketleriList?.isNotEmpty ?? false ? '(${viewModel.cariHareketleriList!.length})' : ''}",
                   subtitle: widget.cari?.cariAdi.toString() ?? "",
                 )),
       leading: viewModel.isSearchBarOpened
@@ -102,9 +99,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
         IconButton(onPressed: () {
           viewModel.changeSearchBar();
         }, icon: Observer(builder: (_) {
-          return Icon(viewModel.isSearchBarOpened
-              ? Icons.search_off_outlined
-              : Icons.search_outlined);
+          return Icon(viewModel.isSearchBarOpened ? Icons.search_off_outlined : Icons.search_outlined);
         }))
       ],
       bottom: PreferredSize(
@@ -116,29 +111,18 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
               itemExtent: width * 0.33,
               scrollDirection: Axis.horizontal,
               children: [
-                AppBarButton(
-                    onPressed: () {},
-                    icon: Icons.tune_outlined,
-                    child: const Text("Cari İşlemleri")),
+                AppBarButton(onPressed: () {}, icon: Icons.tune_outlined, child: const Text("Cari İşlemleri")),
                 AppBarButton(
                     icon: Icons.sort_by_alpha_outlined,
                     onPressed: () async {
-                      var siralama = await bottomSheetDialogManager
-                          .showRadioBottomSheetDialog(context,
-                              title: "Sıralama seçiniz",
-                              children: [
-                            BottomSheetModel(
-                                title: "Tarih (Eskiden-Yeniye)",
-                                onTap: () => Get.back(result: "TARIH_AZ")),
-                            BottomSheetModel(
-                                title: "Tarih (Yeniden-Eskiye)",
-                                onTap: () => Get.back(result: "TARIH_ZA")),
-                          ]);
+                      var siralama = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Sıralama seçiniz", children: [
+                        BottomSheetModel(title: "Tarih (Eskiden-Yeniye)", onTap: () => Get.back(result: "TARIH_AZ")),
+                        BottomSheetModel(title: "Tarih (Yeniden-Eskiye)", onTap: () => Get.back(result: "TARIH_ZA")),
+                      ]);
                       if (siralama != viewModel.siralama && siralama != null) {
                         viewModel.setSiralama(siralama!);
                         viewModel.setCariHareketleri(null);
-                        return getData().then(
-                            (value) => viewModel.setCariHareketleri(value));
+                        return getData().then((value) => viewModel.setCariHareketleri(value));
                       }
                     },
                     child: const Text("Sırala")),
@@ -147,8 +131,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                     child: const Text("Yenile"),
                     onPressed: () {
                       viewModel.setCariHareketleri(null);
-                      return getData()
-                          .then((value) => viewModel.setCariHareketleri(value));
+                      return getData().then((value) => viewModel.setCariHareketleri(value));
                     }),
               ].map((e) => e.paddingAll(UIHelper.lowSize)).toList()),
         ),
@@ -169,14 +152,13 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                       ..cariKodu = widget.cari!.cariKodu,
                     baseEditEnum: BaseEditEnum.ekle));
             viewModel.setCariHareketleri(null);
-            return getData()
-                .then((value) => viewModel.setCariHareketleri(value));
+            return getData().then((value) => viewModel.setCariHareketleri(value));
           }).yetkiVarMi(yetkiController.cariHareketleriYeniKayit);
     });
   }
 
   RefreshIndicator body() {
-    return RefreshIndicator(
+    return RefreshIndicator.adaptive(
       onRefresh: () async {
         viewModel.setCariHareketleri(null);
         return getData().then((value) => viewModel.setCariHareketleri(value));
@@ -188,24 +170,17 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                     child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Icon(Icons.crisis_alert_outlined,
-                          color: theme.colorScheme.primary),
-                      const Text("Cari Hareket Detayı Bulunamadı")
-                    ],
+                    children: [Icon(Icons.crisis_alert_outlined, color: theme.colorScheme.primary), const Text("Cari Hareket Detayı Bulunamadı")],
                   ))
                 : const Center(child: CircularProgressIndicator.adaptive())
             : Observer(builder: (_) {
                 return ListView.builder(
                   primary: false,
                   controller: scrollController,
-                  itemCount: viewModel.cariHareketleriList != null
-                      ? viewModel.cariHareketleriList!.length
-                      : 0,
+                  itemCount: viewModel.cariHareketleriList != null ? viewModel.cariHareketleriList!.length : 0,
                   itemBuilder: (context, index) {
                     return CariHareketlerCard(
-                      cariHareketleriModel:
-                          viewModel.cariHareketleriList![index],
+                      cariHareketleriModel: viewModel.cariHareketleriList![index],
                       onTap: () {
                         var children2 = [
                           BottomSheetModel(
@@ -214,15 +189,9 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                               onTap: () async {
                                 Get.back();
                                 await Get.toNamed("/mainPage/cariYeniKayit",
-                                    arguments:
-                                        BaseEditModel<CariHareketleriModel>(
-                                            baseEditEnum:
-                                                BaseEditEnum.goruntule,
-                                            model: viewModel
-                                                .cariHareketleriList![index]));
+                                    arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.goruntule, model: viewModel.cariHareketleriList![index]));
                                 viewModel.setCariHareketleri(null);
-                                return getData().then((value) =>
-                                    viewModel.setCariHareketleri(value));
+                                return getData().then((value) => viewModel.setCariHareketleri(value));
                               }),
                           BottomSheetModel(
                               iconWidget: Icons.display_settings_outlined,
@@ -230,35 +199,17 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                               onTap: () async {
                                 Get.back();
                                 await Get.toNamed("/mainPage/cariYeniKayit",
-                                    arguments:
-                                        BaseEditModel<CariHareketleriModel>(
-                                            baseEditEnum: BaseEditEnum.duzenle,
-                                            model: viewModel
-                                                .cariHareketleriList![index]));
+                                    arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.duzenle, model: viewModel.cariHareketleriList![index]));
                                 viewModel.setCariHareketleri(null);
-                                return getData().then((value) =>
-                                    viewModel.setCariHareketleri(value));
+                                return getData().then((value) => viewModel.setCariHareketleri(value));
                               }),
-                          BottomSheetModel(
-                              iconWidget: Icons.display_settings_outlined,
-                              title: "İşlemler",
-                              onTap: () {}),
-                          BottomSheetModel(
-                              iconWidget: Icons.picture_as_pdf_outlined,
-                              title: "PDF Görüntüle",
-                              onTap: () {}),
+                          BottomSheetModel(iconWidget: Icons.display_settings_outlined, title: "İşlemler", onTap: () {}),
+                          BottomSheetModel(iconWidget: Icons.picture_as_pdf_outlined, title: "PDF Görüntüle", onTap: () {}),
                         ];
-                        if (viewModel.cariHareketleriList![index].dovizBorc ==
-                                null &&
-                            viewModel.cariHareketleriList![index].dovizAlacak ==
-                                null) {
-                          children2.add(BottomSheetModel(
-                              iconWidget: Icons.picture_as_pdf_outlined,
-                              title: "Tahsilat Makbuzu",
-                              onTap: () {}));
+                        if (viewModel.cariHareketleriList![index].dovizBorc == null && viewModel.cariHareketleriList![index].dovizAlacak == null) {
+                          children2.add(BottomSheetModel(iconWidget: Icons.picture_as_pdf_outlined, title: "Tahsilat Makbuzu", onTap: () {}));
                         }
-                        bottomSheetDialogManager.showBottomSheetDialog(context,
-                            title: "Seçenekler", children: children2);
+                        bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: children2);
                       },
                     );
                   },
@@ -279,29 +230,18 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                   child: FooterButton(children: [
                 const Text("Borç"),
                 Observer(builder: (_) {
-                  return Text(
-                      "${viewModel.borclarToplami.dotSeparatedWithFixedDigits} TL");
+                  return Text("${viewModel.borclarToplami.dotSeparatedWithFixedDigits} TL");
                 })
               ])),
               const VerticalDivider(thickness: 1, width: 1),
-              Expanded(
-                  child: FooterButton(children: [
-                const Text("Alacak"),
-                Text(
-                    "${viewModel.alacaklarToplami.dotSeparatedWithFixedDigits} TL")
-              ])),
+              Expanded(child: FooterButton(children: [const Text("Alacak"), Text("${viewModel.alacaklarToplami.dotSeparatedWithFixedDigits} TL")])),
               const VerticalDivider(thickness: 1, width: 1),
               Expanded(
                   child: FooterButton(children: [
                 const Text("Tahsil Edilecek"),
                 Text(
                   "${(viewModel.borclarToplami - viewModel.alacaklarToplami).dotSeparatedWithFixedDigits} TL",
-                  style: TextStyle(
-                      color: (viewModel.borclarToplami -
-                                  viewModel.alacaklarToplami) <
-                              0
-                          ? Colors.red
-                          : Colors.green),
+                  style: TextStyle(color: (viewModel.borclarToplami - viewModel.alacaklarToplami) < 0 ? Colors.red : Colors.green),
                 )
               ]))
             ],
@@ -323,17 +263,10 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
       path: ApiUrls.getCariHareketleri,
       bodyModel: CariHareketleriModel(),
       addTokenKey: true,
-      queryParameters: {
-        "SIRALAMA": viewModel.siralama,
-        "EkranTipi": "L",
-        "CariKodu": widget.cari?.cariKodu ?? ""
-      },
+      queryParameters: {"SIRALAMA": viewModel.siralama, "EkranTipi": "L", "CariKodu": widget.cari?.cariKodu ?? ""},
       addSirketBilgileri: true,
     );
     // setState(() {});
-    return (response.data)
-        .map((e) => e as CariHareketleriModel)
-        .toList()
-        .cast<CariHareketleriModel>();
+    return (response.data).map((e) => e as CariHareketleriModel).toList().cast<CariHareketleriModel>();
   }
 }

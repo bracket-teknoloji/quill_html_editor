@@ -9,23 +9,10 @@ part of 'base_proje_model.dart';
 // **************************************************************************
 
 BaseProjeModel _$BaseProjeModelFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'BaseProjeModel',
-      json,
-      ($checkedConvert) {
-        final val = BaseProjeModel();
-        $checkedConvert('PROJE_KODU', (v) => val.projeKodu = v as String?);
-        $checkedConvert(
-            'PROJE_ACIKLAMA', (v) => val.projeAciklama = v as String?);
-        $checkedConvert('AKTIF', (v) => val.aktif = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'projeKodu': 'PROJE_KODU',
-        'projeAciklama': 'PROJE_ACIKLAMA',
-        'aktif': 'AKTIF'
-      },
-    );
+    BaseProjeModel()
+      ..projeKodu = json['PROJE_KODU'] as String?
+      ..projeAciklama = json['PROJE_ACIKLAMA'] as String?
+      ..aktif = json['AKTIF'] as String?;
 
 Map<String, dynamic> _$BaseProjeModelToJson(BaseProjeModel instance) {
   final val = <String, dynamic>{};

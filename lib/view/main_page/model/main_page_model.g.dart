@@ -58,47 +58,20 @@ class MainPageModelAdapter extends TypeAdapter<MainPageModel> {
 // **************************************************************************
 
 MainPageModel _$MainPageModelFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'MainPageModel',
-      json,
-      ($checkedConvert) {
-        final val = MainPageModel();
-        $checkedConvert(
-            'UserModel',
-            (v) => val.userModel = v == null
-                ? null
-                : UserModel.fromJson(v as Map<String, dynamic>));
-        $checkedConvert(
-            'ServiceVersion', (v) => val.serviceVersion = v as String?);
-        $checkedConvert('LangVersion', (v) => val.langVersion = v as String?);
-        $checkedConvert(
-            'SirketModel',
-            (v) => val.sirketModel =
-                SirketModel.fromJson(v as Map<String, dynamic>));
-        $checkedConvert(
-            'LangModel',
-            (v) =>
-                val.langModel = LangModel.fromJson(v as Map<String, dynamic>));
-        $checkedConvert(
-            'MenuList',
-            (v) => val.menuList =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'ParamModel',
-            (v) => val.paramModel =
-                ParamModel.fromJson(v as Map<String, dynamic>));
-        return val;
-      },
-      fieldKeyMap: const {
-        'userModel': 'UserModel',
-        'serviceVersion': 'ServiceVersion',
-        'langVersion': 'LangVersion',
-        'sirketModel': 'SirketModel',
-        'langModel': 'LangModel',
-        'menuList': 'MenuList',
-        'paramModel': 'ParamModel'
-      },
-    );
+    MainPageModel()
+      ..userModel = json['UserModel'] == null
+          ? null
+          : UserModel.fromJson(json['UserModel'] as Map<String, dynamic>)
+      ..serviceVersion = json['ServiceVersion'] as String?
+      ..langVersion = json['LangVersion'] as String?
+      ..sirketModel =
+          SirketModel.fromJson(json['SirketModel'] as Map<String, dynamic>)
+      ..langModel =
+          LangModel.fromJson(json['LangModel'] as Map<String, dynamic>)
+      ..menuList =
+          (json['MenuList'] as List<dynamic>?)?.map((e) => e as String).toList()
+      ..paramModel =
+          ParamModel.fromJson(json['ParamModel'] as Map<String, dynamic>);
 
 Map<String, dynamic> _$MainPageModelToJson(MainPageModel instance) =>
     <String, dynamic>{

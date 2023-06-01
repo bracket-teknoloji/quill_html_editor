@@ -10,16 +10,7 @@ part of 'base_edit_siradaki_kod_model.dart';
 
 BaseEditSiradakiKodModel _$BaseEditSiradakiKodModelFromJson(
         Map<String, dynamic> json) =>
-    $checkedCreate(
-      'BaseEditSiradakiKodModel',
-      json,
-      ($checkedConvert) {
-        final val = BaseEditSiradakiKodModel();
-        $checkedConvert('SIRADAKI_KOD', (v) => val.siradakiKod = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {'siradakiKod': 'SIRADAKI_KOD'},
-    );
+    BaseEditSiradakiKodModel()..siradakiKod = json['SIRADAKI_KOD'] as String?;
 
 Map<String, dynamic> _$BaseEditSiradakiKodModelToJson(
         BaseEditSiradakiKodModel instance) =>

@@ -9,45 +9,22 @@ part of 'cari_yeni_kayit_model.dart';
 // **************************************************************************
 
 CariYeniKayitModel _$CariYeniKayitModelFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'CariYeniKayitModel',
-      json,
-      ($checkedConvert) {
-        final val = CariYeniKayitModel();
-        $checkedConvert('ACIKLAMA', (v) => val.aciklama = v as String?);
-        $checkedConvert('ALACAK', (v) => val.alacak = (v as num?)?.toDouble());
-        $checkedConvert('BORC', (v) => val.borc = (v as num?)?.toDouble());
-        $checkedConvert('BELGE_NO', (v) => val.belgeNo = v as String?);
-        $checkedConvert('CARI_KODU', (v) => val.cariKodu = v as String?);
-        $checkedConvert('HAREKET_KODU', (v) => val.hareketKodu = v as String?);
-        $checkedConvert(
-            'PLASIYER_KODU', (v) => val.plasiyerKodu = v as String?);
-        $checkedConvert('PROJE_KODU', (v) => val.projeKodu = v as String?);
-        $checkedConvert('INCKEYNO', (v) => val.inckeyno = v as int?);
-        $checkedConvert('TARIH',
-            (v) => val.tarih = v == null ? null : DateTime.parse(v as String));
-        $checkedConvert(
-            'VADE_TARIHI',
-            (v) => val.vadeTarihi =
-                v == null ? null : DateTime.parse(v as String));
-        $checkedConvert('_YeniKayit', (v) => val.yeniKayit = v as bool?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'aciklama': 'ACIKLAMA',
-        'alacak': 'ALACAK',
-        'borc': 'BORC',
-        'belgeNo': 'BELGE_NO',
-        'cariKodu': 'CARI_KODU',
-        'hareketKodu': 'HAREKET_KODU',
-        'plasiyerKodu': 'PLASIYER_KODU',
-        'projeKodu': 'PROJE_KODU',
-        'inckeyno': 'INCKEYNO',
-        'tarih': 'TARIH',
-        'vadeTarihi': 'VADE_TARIHI',
-        'yeniKayit': '_YeniKayit'
-      },
-    );
+    CariYeniKayitModel()
+      ..aciklama = json['ACIKLAMA'] as String?
+      ..alacak = (json['ALACAK'] as num?)?.toDouble()
+      ..borc = (json['BORC'] as num?)?.toDouble()
+      ..belgeNo = json['BELGE_NO'] as String?
+      ..cariKodu = json['CARI_KODU'] as String?
+      ..hareketKodu = json['HAREKET_KODU'] as String?
+      ..plasiyerKodu = json['PLASIYER_KODU'] as String?
+      ..projeKodu = json['PROJE_KODU'] as String?
+      ..inckeyno = json['INCKEYNO'] as int?
+      ..tarih =
+          json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
+      ..vadeTarihi = json['VADE_TARIHI'] == null
+          ? null
+          : DateTime.parse(json['VADE_TARIHI'] as String)
+      ..yeniKayit = json['_YeniKayit'] as bool?;
 
 Map<String, dynamic> _$CariYeniKayitModelToJson(CariYeniKayitModel instance) {
   final val = <String, dynamic>{};

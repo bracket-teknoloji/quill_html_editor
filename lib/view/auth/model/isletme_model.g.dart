@@ -88,48 +88,22 @@ class IsletmeModelAdapter extends TypeAdapter<IsletmeModel> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-IsletmeModel _$IsletmeModelFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'IsletmeModel',
-      json,
-      ($checkedConvert) {
-        final val = IsletmeModel(
-          sirket: $checkedConvert('SIRKET', (v) => v as String?),
-          isletmeKodu: $checkedConvert('ISLETME_KODU', (v) => v as int?),
-          subeKodu: $checkedConvert('SUBE_KODU', (v) => v as int?),
-          subeAdi: $checkedConvert('SUBE_ADI', (v) => v as String?),
-          isletmeAdi: $checkedConvert('ISLETME_ADI', (v) => v as String?),
-          lokalDepoAktif:
-              $checkedConvert('LOKAL_DEPO_AKTIF', (v) => v as bool?),
-          merkezmi: $checkedConvert('MERKEZMI', (v) => v as String?),
-          adres: $checkedConvert('ADRES', (v) => v as String?),
-          telefon: $checkedConvert('TELEFON', (v) => v as String?),
-          faks: $checkedConvert('FAKS', (v) => v as String?),
-          email: $checkedConvert('EMAIL', (v) => v as String?),
-          ilAdi: $checkedConvert('IL_ADI', (v) => v as String?),
-          ilce: $checkedConvert('ILCE', (v) => v as String?),
-          vergiNumarasi: $checkedConvert('VERGI_NUMARASI', (v) => v as String?),
-          vergiDairesi: $checkedConvert('VERGI_DAIRESI', (v) => v as String?),
-        );
-        return val;
-      },
-      fieldKeyMap: const {
-        'sirket': 'SIRKET',
-        'isletmeKodu': 'ISLETME_KODU',
-        'subeKodu': 'SUBE_KODU',
-        'subeAdi': 'SUBE_ADI',
-        'isletmeAdi': 'ISLETME_ADI',
-        'lokalDepoAktif': 'LOKAL_DEPO_AKTIF',
-        'merkezmi': 'MERKEZMI',
-        'adres': 'ADRES',
-        'telefon': 'TELEFON',
-        'faks': 'FAKS',
-        'email': 'EMAIL',
-        'ilAdi': 'IL_ADI',
-        'ilce': 'ILCE',
-        'vergiNumarasi': 'VERGI_NUMARASI',
-        'vergiDairesi': 'VERGI_DAIRESI'
-      },
+IsletmeModel _$IsletmeModelFromJson(Map<String, dynamic> json) => IsletmeModel(
+      sirket: json['SIRKET'] as String?,
+      isletmeKodu: json['ISLETME_KODU'] as int?,
+      subeKodu: json['SUBE_KODU'] as int?,
+      subeAdi: json['SUBE_ADI'] as String?,
+      isletmeAdi: json['ISLETME_ADI'] as String?,
+      lokalDepoAktif: json['LOKAL_DEPO_AKTIF'] as bool?,
+      merkezmi: json['MERKEZMI'] as String?,
+      adres: json['ADRES'] as String?,
+      telefon: json['TELEFON'] as String?,
+      faks: json['FAKS'] as String?,
+      email: json['EMAIL'] as String?,
+      ilAdi: json['IL_ADI'] as String?,
+      ilce: json['ILCE'] as String?,
+      vergiNumarasi: json['VERGI_NUMARASI'] as String?,
+      vergiDairesi: json['VERGI_DAIRESI'] as String?,
     );
 
 Map<String, dynamic> _$IsletmeModelToJson(IsletmeModel instance) =>

@@ -10,80 +10,35 @@ part of 'stok_hareketleri_model.dart';
 
 StokHareketleriModel _$StokHareketleriModelFromJson(
         Map<String, dynamic> json) =>
-    $checkedCreate(
-      'StokHareketleriModel',
-      json,
-      ($checkedConvert) {
-        final val = StokHareketleriModel();
-        $checkedConvert('INCKEYNO', (v) => val.inckeyno = v as int?);
-        $checkedConvert('CIKIS_ISLEMI', (v) => val.cikisIslemi = v as bool?);
-        $checkedConvert('STOK_ADI', (v) => val.stokAdi = v as String?);
-        $checkedConvert('STOK_KODU', (v) => val.stokKodu = v as String?);
-        $checkedConvert('FISNO', (v) => val.fisno = v as String?);
-        $checkedConvert(
-            'STHAR_GCMIK', (v) => val.stharGcmik = (v as num?)?.toDouble());
-        $checkedConvert(
-            'STHAR_TARIH',
-            (v) => val.stharTarih =
-                v == null ? null : DateTime.parse(v as String));
-        $checkedConvert(
-            'STHAR_NF', (v) => val.stharNf = (v as num?)?.toDouble());
-        $checkedConvert(
-            'STHAR_BF', (v) => val.stharBf = (v as num?)?.toDouble());
-        $checkedConvert(
-            'STHAR_KDV', (v) => val.stharKdv = (v as num?)?.toDouble());
-        $checkedConvert('HAREKET_TURU', (v) => val.hareketTuru = v as String?);
-        $checkedConvert('HAREKET_TURU_ACIKLAMA',
-            (v) => val.hareketTuruAciklama = v as String?);
-        $checkedConvert('BELGE_TIPI', (v) => val.belgeTipi = v as String?);
-        $checkedConvert(
-            'BELGE_TIPI_ACIKLAMA', (v) => val.belgeTipiAciklama = v as String?);
-        $checkedConvert('CARI_KODU', (v) => val.cariKodu = v as String?);
-        $checkedConvert('AMBAR_ISLEMI', (v) => val.ambarIslemi = v as String?);
-        $checkedConvert('DEPO_KODU', (v) => val.depoKodu = v as int?);
-        $checkedConvert('DEPO_ADI', (v) => val.depoAdi = v as String?);
-        $checkedConvert('ACIKLAMA', (v) => val.aciklama = v as String?);
-        $checkedConvert('DOVIZ_TIPI', (v) => val.dovizTipi = v as int?);
-        $checkedConvert(
-            'DOVIZ_FIYATI', (v) => val.dovizFiyati = (v as num?)?.toDouble());
-        $checkedConvert('SERI_AKTIF', (v) => val.seriAktif = v as String?);
-        $checkedConvert('EKALAN1', (v) => val.ekalan1 = v as String?);
-        $checkedConvert('PROJE_KODU', (v) => val.projeKodu = v as String?);
-        $checkedConvert(
-            'PLASIYER_KODU', (v) => val.plasiyerKodu = v as String?);
-        $checkedConvert(
-            'PLASIYER_ACIKLAMA', (v) => val.plasiyerAciklama = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'inckeyno': 'INCKEYNO',
-        'cikisIslemi': 'CIKIS_ISLEMI',
-        'stokAdi': 'STOK_ADI',
-        'stokKodu': 'STOK_KODU',
-        'fisno': 'FISNO',
-        'stharGcmik': 'STHAR_GCMIK',
-        'stharTarih': 'STHAR_TARIH',
-        'stharNf': 'STHAR_NF',
-        'stharBf': 'STHAR_BF',
-        'stharKdv': 'STHAR_KDV',
-        'hareketTuru': 'HAREKET_TURU',
-        'hareketTuruAciklama': 'HAREKET_TURU_ACIKLAMA',
-        'belgeTipi': 'BELGE_TIPI',
-        'belgeTipiAciklama': 'BELGE_TIPI_ACIKLAMA',
-        'cariKodu': 'CARI_KODU',
-        'ambarIslemi': 'AMBAR_ISLEMI',
-        'depoKodu': 'DEPO_KODU',
-        'depoAdi': 'DEPO_ADI',
-        'aciklama': 'ACIKLAMA',
-        'dovizTipi': 'DOVIZ_TIPI',
-        'dovizFiyati': 'DOVIZ_FIYATI',
-        'seriAktif': 'SERI_AKTIF',
-        'ekalan1': 'EKALAN1',
-        'projeKodu': 'PROJE_KODU',
-        'plasiyerKodu': 'PLASIYER_KODU',
-        'plasiyerAciklama': 'PLASIYER_ACIKLAMA'
-      },
-    );
+    StokHareketleriModel()
+      ..inckeyno = json['INCKEYNO'] as int?
+      ..cikisIslemi = json['CIKIS_ISLEMI'] as bool?
+      ..stokAdi = json['STOK_ADI'] as String?
+      ..stokKodu = json['STOK_KODU'] as String?
+      ..fisno = json['FISNO'] as String?
+      ..stharGcmik = (json['STHAR_GCMIK'] as num?)?.toDouble()
+      ..stharTarih = json['STHAR_TARIH'] == null
+          ? null
+          : DateTime.parse(json['STHAR_TARIH'] as String)
+      ..stharNf = (json['STHAR_NF'] as num?)?.toDouble()
+      ..stharBf = (json['STHAR_BF'] as num?)?.toDouble()
+      ..stharKdv = (json['STHAR_KDV'] as num?)?.toDouble()
+      ..hareketTuru = json['HAREKET_TURU'] as String?
+      ..hareketTuruAciklama = json['HAREKET_TURU_ACIKLAMA'] as String?
+      ..belgeTipi = json['BELGE_TIPI'] as String?
+      ..belgeTipiAciklama = json['BELGE_TIPI_ACIKLAMA'] as String?
+      ..cariKodu = json['CARI_KODU'] as String?
+      ..ambarIslemi = json['AMBAR_ISLEMI'] as String?
+      ..depoKodu = json['DEPO_KODU'] as int?
+      ..depoAdi = json['DEPO_ADI'] as String?
+      ..aciklama = json['ACIKLAMA'] as String?
+      ..dovizTipi = json['DOVIZ_TIPI'] as int?
+      ..dovizFiyati = (json['DOVIZ_FIYATI'] as num?)?.toDouble()
+      ..seriAktif = json['SERI_AKTIF'] as String?
+      ..ekalan1 = json['EKALAN1'] as String?
+      ..projeKodu = json['PROJE_KODU'] as String?
+      ..plasiyerKodu = json['PLASIYER_KODU'] as String?
+      ..plasiyerAciklama = json['PLASIYER_ACIKLAMA'] as String?;
 
 Map<String, dynamic> _$StokHareketleriModelToJson(
     StokHareketleriModel instance) {

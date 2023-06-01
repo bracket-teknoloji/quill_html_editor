@@ -10,24 +10,11 @@ part of 'stok_muhasebe_kodu_model.dart';
 
 StokMuhasebeKoduModel _$StokMuhasebeKoduModelFromJson(
         Map<String, dynamic> json) =>
-    $checkedCreate(
-      'StokMuhasebeKoduModel',
-      json,
-      ($checkedConvert) {
-        final val = StokMuhasebeKoduModel();
-        $checkedConvert('MUH_KODU', (v) => val.muhKodu = v as int?);
-        $checkedConvert('ADI', (v) => val.adi = v as String?);
-        $checkedConvert('ALIS_HESABI', (v) => val.alisHesabi = v as String?);
-        $checkedConvert('SATIS_HESABI', (v) => val.satisHesabi = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'muhKodu': 'MUH_KODU',
-        'adi': 'ADI',
-        'alisHesabi': 'ALIS_HESABI',
-        'satisHesabi': 'SATIS_HESABI'
-      },
-    );
+    StokMuhasebeKoduModel()
+      ..muhKodu = json['MUH_KODU'] as int?
+      ..adi = json['ADI'] as String?
+      ..alisHesabi = json['ALIS_HESABI'] as String?
+      ..satisHesabi = json['SATIS_HESABI'] as String?;
 
 Map<String, dynamic> _$StokMuhasebeKoduModelToJson(
     StokMuhasebeKoduModel instance) {

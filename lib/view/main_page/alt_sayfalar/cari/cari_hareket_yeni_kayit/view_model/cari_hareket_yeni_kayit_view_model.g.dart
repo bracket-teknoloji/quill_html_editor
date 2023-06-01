@@ -2,7 +2,7 @@
 
 // ignore_for_file: implicit_dynamic_parameter
 
-part of 'cari_yeni_kayit_view_model.dart';
+part of 'cari_hareket_yeni_kayit_view_model.dart';
 
 // **************************************************************************
 // StoreGenerator

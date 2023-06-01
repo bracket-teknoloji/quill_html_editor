@@ -8,732 +8,301 @@ part of 'param_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'ParamModel',
-      json,
-      ($checkedConvert) {
-        final val = ParamModel();
-        $checkedConvert('ParamYuklendi', (v) => val.paramYuklendi = v as bool?);
-        $checkedConvert('KULLANICI', (v) => val.kullanici = v as String?);
-        $checkedConvert('SIRKET', (v) => val.sirket = v as String?);
-        $checkedConvert('ISLETME_KODU', (v) => val.isletmeKodu = v as int?);
-        $checkedConvert(
-            'MapCariKullSahalar',
-            (v) => val.mapCariKullSahalar = v == null
-                ? null
-                : MapCariKullSahalar.fromJson(v as Map<String, dynamic>));
-        $checkedConvert(
-            'MapCariEkAlanlar',
-            (v) => val.mapCariEkAlanlar = (v as List<dynamic>?)
-                ?.map((e) => MapEkAlanlar.fromJson(e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert('sabitSayfalamaOgeSayisi',
-            (v) => val.sabitSayfalamaOgeSayisi = v as int?);
-        $checkedConvert(
-            '_NetsisOndalikResponseModel',
-            (v) => val.netsisOndalikResponseModel = (v as List<dynamic>?)
-                ?.map((e) => NetsisOndalikResponseModel.fromJson(
-                    e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert(
-            'DepoList',
-            (v) => val.depoList = (v as List<dynamic>?)
-                ?.map((e) => DepoList.fromJson(e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert(
-            'DovizList',
-            (v) => val.dovizList = (v as List<dynamic>?)
-                ?.map((e) => DovizList.fromJson(e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert(
-            'SatirAcikBaslikList',
-            (v) => val.satirAcikBaslikList = (v as List<dynamic>?)
-                ?.map((e) =>
-                    SatirAcikBaslikList.fromJson(e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert(
-            'KasaList',
-            (v) => val.kasaList = (v as List<dynamic>?)
-                ?.map((e) => KasaList.fromJson(e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert(
-            'PlasiyerList',
-            (v) => val.plasiyerList = (v as List<dynamic>?)
-                ?.map((e) => PlasiyerList.fromJson(e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert(
-            'PlasiyerListTumu',
-            (v) => val.plasiyerListTumu = (v as List<dynamic>?)
-                ?.map((e) => PlasiyerList.fromJson(e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert(
-            'SubeList',
-            (v) => val.subeList = (v as List<dynamic>?)
-                ?.map((e) => SubeList.fromJson(e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert(
-            'TalTekParam',
-            (v) => val.talTekParam = (v as List<dynamic>?)
-                ?.map((e) => TalTekParam.fromJson(e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert(
-            'CekSenParam',
-            (v) => val.cekSenParam = (v as List<dynamic>?)
-                ?.map((e) => CekSenParam.fromJson(e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert(
-            'ListOzelKodTum',
-            (v) => val.listOzelKodTum = (v as List<dynamic>?)
-                ?.map((e) => ListOzelKodTum.fromJson(e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert(
-            'ListIskTip',
-            (v) => val.listIskTip = (v as List<dynamic>?)
-                ?.map((e) => ListIskTip.fromJson(e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert(
-            'ListCariOdemeKodu',
-            (v) => val.listCariOdemeKodu = (v as List<dynamic>?)
-                ?.map((e) =>
-                    ListCariOdemeKodu.fromJson(e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert(
-            'YaziciList',
-            (v) => val.yaziciList = (v as List<dynamic>?)
-                ?.map((e) => YaziciList.fromJson(e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert(
-            'NetFectDizaynList',
-            (v) => val.netFectDizaynList = (v as List<dynamic>?)
-                ?.map((e) =>
-                    NetFectDizaynList.fromJson(e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert(
-            'MapStokGrupAdlari',
-            (v) => val.mapStokGrupAdlari = v == null
-                ? null
-                : MapStokGrupAdlari.fromJson(v as Map<String, dynamic>));
-        $checkedConvert(
-            'MustahsilParam',
-            (v) => val.mustahsilParam = v == null
-                ? null
-                : MustahsilParam.fromJson(v as Map<String, dynamic>));
-        $checkedConvert(
-            'ListFatuEkMaliyet',
-            (v) => val.listFatuEkMaliyet = (v as List<dynamic>?)
-                ?.map((e) =>
-                    ListFatuEkMaliyet.fromJson(e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert(
-            'MapKdvSifirBelgeTipiOzelKod2',
-            (v) => val.mapKdvSifirBelgeTipiOzelKod2 = v == null
-                ? null
-                : MapKdvSifirBelgeTipiOzelKod2.fromJson(
-                    v as Map<String, dynamic>));
-        $checkedConvert('LokalDepoUygulamasiAcik',
-            (v) => val.lokalDepoUygulamasiAcik = v as bool?);
-        $checkedConvert(
-            'EsnekYapilandir', (v) => val.esnekYapilandir = v as bool?);
-        $checkedConvert(
-            'OzelFiyatSistemi', (v) => val.ozelFiyatSistemi = v as bool?);
-        $checkedConvert('SadeceOzelFiyatSistemi',
-            (v) => val.sadeceOzelFiyatSistemi = v as String?);
-        $checkedConvert(
-            'OtvliStoklarVar', (v) => val.otvliStoklarVar = v as bool?);
-        $checkedConvert(
-            'MapStokKullSahalar',
-            (v) => val.mapStokKullSahalar = v == null
-                ? null
-                : MapStokKullSahalar.fromJson(v as Map<String, dynamic>));
-        $checkedConvert(
-            'MapStokEkAlanlar',
-            (v) => val.mapStokEkAlanlar = (v as List<dynamic>?)
-                ?.map((e) => MapEkAlanlar.fromJson(e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert('KarmaKoliUyg', (v) => val.karmaKoliUyg = v as String?);
-        $checkedConvert('AlisEkAciklamalarAktif',
-            (v) => val.alisEkAciklamalarAktif = v as bool?);
-        $checkedConvert('AlisEkAciklamaTanimi1',
-            (v) => val.alisEkAciklamaTanimi1 = v as String?);
-        $checkedConvert('AlisEkAciklamaTanimi2',
-            (v) => val.alisEkAciklamaTanimi2 = v as String?);
-        $checkedConvert('AlisEkAciklamaTanimi3',
-            (v) => val.alisEkAciklamaTanimi3 = v as String?);
-        $checkedConvert('AlisEkAciklamaTanimi4',
-            (v) => val.alisEkAciklamaTanimi4 = v as String?);
-        $checkedConvert('AlisEkAciklamaTanimi5',
-            (v) => val.alisEkAciklamaTanimi5 = v as String?);
-        $checkedConvert('AlisEkAciklamaTanimi6',
-            (v) => val.alisEkAciklamaTanimi6 = v as String?);
-        $checkedConvert('AlisEkAciklamaTanimi7',
-            (v) => val.alisEkAciklamaTanimi7 = v as String?);
-        $checkedConvert('AlisEkAciklamaTanimi8',
-            (v) => val.alisEkAciklamaTanimi8 = v as String?);
-        $checkedConvert('AlisEkAciklamaTanimi9',
-            (v) => val.alisEkAciklamaTanimi9 = v as String?);
-        $checkedConvert('AlisEkAciklamaTanimi10',
-            (v) => val.alisEkAciklamaTanimi10 = v as String?);
-        $checkedConvert('AlisEkAciklamaTanimi11',
-            (v) => val.alisEkAciklamaTanimi11 = v as String?);
-        $checkedConvert('AlisEkAciklamaTanimi12',
-            (v) => val.alisEkAciklamaTanimi12 = v as String?);
-        $checkedConvert('AlisEkAciklamaTanimi13',
-            (v) => val.alisEkAciklamaTanimi13 = v as String?);
-        $checkedConvert('AlisEkAciklamaTanimi14',
-            (v) => val.alisEkAciklamaTanimi14 = v as String?);
-        $checkedConvert('AlisEkAciklamaTanimi15',
-            (v) => val.alisEkAciklamaTanimi15 = v as String?);
-        $checkedConvert('AlisEkAciklamaTanimi16',
-            (v) => val.alisEkAciklamaTanimi16 = v as String?);
-        $checkedConvert('AlisOzelKod1Tablodan',
-            (v) => val.alisOzelKod1Tablodan = v as bool?);
-        $checkedConvert(
-            'AlisKosulAktif', (v) => val.alisKosulAktif = v as bool?);
-        $checkedConvert('AlisFarkliTeslimCariAktif',
-            (v) => val.alisFarkliTeslimCariAktif = v as bool?);
-        $checkedConvert('AlisMalFazMiktarIskontoAcik',
-            (v) => val.alisMalFazMiktarIskontoAcik = v as bool?);
-        $checkedConvert('AlisSatirKademeliIskontoAcik',
-            (v) => val.alisSatirKademeliIskontoAcik = v as bool?);
-        $checkedConvert('AlisSatirKademeliIskontoSayisi',
-            (v) => val.alisSatirKademeliIskontoSayisi = v as int?);
-        $checkedConvert(
-            'AlisGenIsk1Aktif', (v) => val.alisGenIsk1Aktif = v as bool?);
-        $checkedConvert(
-            'AlisGenIsk2Aktif', (v) => val.alisGenIsk2Aktif = v as bool?);
-        $checkedConvert(
-            'AlisGenIsk3Aktif', (v) => val.alisGenIsk3Aktif = v as bool?);
-        $checkedConvert(
-            'AlisTopluDepoAktif', (v) => val.alisTopluDepoAktif = v as bool?);
-        $checkedConvert('AlisStokDepoKarttanGelsin',
-            (v) => val.alisStokDepoKarttanGelsin = v as bool?);
-        $checkedConvert('AlisGenellikleKDVHaric',
-            (v) => val.alisGenellikleKdvHaric = v as bool?);
-        $checkedConvert('AlisFarkliOlcuBirimleriKullan',
-            (v) => val.alisFarkliOlcuBirimleriKullan = v as bool?);
-        $checkedConvert(
-            'AlisDovizAktif', (v) => val.alisDovizAktif = v as bool?);
-        $checkedConvert(
-            'AlisSatirdaKDVSor', (v) => val.alisSatirdaKdvSor = v as bool?);
-        $checkedConvert('AlisSatirdaAciklamalarAktif',
-            (v) => val.alisSatirdaAciklamalarAktif = v as bool?);
-        $checkedConvert('AlisSatirdaEkAlan2Aktif',
-            (v) => val.alisSatirdaEkAlan2Aktif = v as bool?);
-        $checkedConvert(
-            'AlisEkMaliyet2Aktif', (v) => val.alisEkMaliyet2Aktif = v as bool?);
-        $checkedConvert(
-            'AlisEkMaliyet2Adi', (v) => val.alisEkMaliyet2Adi = v as String?);
-        $checkedConvert(
-            'AlisTevkifatPay', (v) => val.alisTevkifatPay = v as int?);
-        $checkedConvert(
-            'AlisTevkifatPayda', (v) => val.alisTevkifatPayda = v as int?);
-        $checkedConvert('AlisFaturaFiyatSifirGecilsin',
-            (v) => val.alisFaturaFiyatSifirGecilsin = v as bool?);
-        $checkedConvert(
-            'AlisFazlaTeslimat', (v) => val.alisFazlaTeslimat = v as bool?);
-        $checkedConvert('AlisDovizTakipHangiDeger',
-            (v) => val.alisDovizTakipHangiDeger = v as int?);
-        $checkedConvert(
-            'AlisHizmetAktif', (v) => val.alisHizmetAktif = v as bool?);
-        $checkedConvert(
-            'AlisHizmetDepoKodu', (v) => val.alisHizmetDepoKodu = v as int?);
-        $checkedConvert(
-            'AlisMiktar2Sor', (v) => val.alisMiktar2Sor = v as bool?);
-        $checkedConvert('AlisSatirdaTeslimTarihiSor',
-            (v) => val.alisSatirdaTeslimTarihiSor = v as bool?);
-        $checkedConvert('AlisFisSeriTakibiVar',
-            (v) => val.alisFisSeriTakibiVar = v as bool?);
-        $checkedConvert('AlisTutardanFiyataGecilsin',
-            (v) => val.alisTutardanFiyataGecilsin = v as bool?);
-        $checkedConvert('AlisCariIskSatiraUygula',
-            (v) => val.alisCariIskSatiraUygula = v as bool?);
-        $checkedConvert(
-            'SeriUygulamasiAcik', (v) => val.seriUygulamasiAcik = v as bool?);
-        $checkedConvert('SirketDovizUygulamasiAcik',
-            (v) => val.sirketDovizUygulamasiAcik = v as bool?);
-        $checkedConvert('SirketDovizUygulamasiDovizKodu',
-            (v) => val.sirketDovizUygulamasiDovizKodu = v as int?);
-        $checkedConvert(
-            'PlasiyerUygulamasi', (v) => val.plasiyerUygulamasi = v as bool?);
-        $checkedConvert('ParaBirimi', (v) => val.paraBirimi = v as String?);
-        $checkedConvert('BankaEntegre', (v) => val.bankaEntegre = v as bool?);
-        $checkedConvert('BagliCariVar', (v) => val.bagliCariVar = v as bool?);
-        $checkedConvert(
-            'ProjeUygulamasiAcik', (v) => val.projeUygulamasiAcik = v as bool?);
-        $checkedConvert('SatisEkAciklamalarAktif',
-            (v) => val.satisEkAciklamalarAktif = v as bool?);
-        $checkedConvert('SatisEkAciklamaTanimi1',
-            (v) => val.satisEkAciklamaTanimi1 = v as String?);
-        $checkedConvert('SatisEkAciklamaTanimi2',
-            (v) => val.satisEkAciklamaTanimi2 = v as String?);
-        $checkedConvert('SatisEkAciklamaTanimi3',
-            (v) => val.satisEkAciklamaTanimi3 = v as String?);
-        $checkedConvert('SatisEkAciklamaTanimi4',
-            (v) => val.satisEkAciklamaTanimi4 = v as String?);
-        $checkedConvert('SatisEkAciklamaTanimi5',
-            (v) => val.satisEkAciklamaTanimi5 = v as String?);
-        $checkedConvert('SatisEkAciklamaTanimi6',
-            (v) => val.satisEkAciklamaTanimi6 = v as String?);
-        $checkedConvert('SatisEkAciklamaTanimi7',
-            (v) => val.satisEkAciklamaTanimi7 = v as String?);
-        $checkedConvert('SatisEkAciklamaTanimi8',
-            (v) => val.satisEkAciklamaTanimi8 = v as String?);
-        $checkedConvert('SatisEkAciklamaTanimi9',
-            (v) => val.satisEkAciklamaTanimi9 = v as String?);
-        $checkedConvert('SatisEkAciklamaTanimi10',
-            (v) => val.satisEkAciklamaTanimi10 = v as String?);
-        $checkedConvert('SatisEkAciklamaTanimi11',
-            (v) => val.satisEkAciklamaTanimi11 = v as String?);
-        $checkedConvert('SatisEkAciklamaTanimi12',
-            (v) => val.satisEkAciklamaTanimi12 = v as String?);
-        $checkedConvert('SatisEkAciklamaTanimi13',
-            (v) => val.satisEkAciklamaTanimi13 = v as String?);
-        $checkedConvert('SatisEkAciklamaTanimi14',
-            (v) => val.satisEkAciklamaTanimi14 = v as String?);
-        $checkedConvert('SatisEkAciklamaTanimi15',
-            (v) => val.satisEkAciklamaTanimi15 = v as String?);
-        $checkedConvert('SatisEkAciklamaTanimi16',
-            (v) => val.satisEkAciklamaTanimi16 = v as String?);
-        $checkedConvert(
-            'SatisOzelKod1Aktif', (v) => val.satisOzelKod1Aktif = v as bool?);
-        $checkedConvert(
-            'SatisOzelKod2Aktif', (v) => val.satisOzelKod2Aktif = v as bool?);
-        $checkedConvert('SatisSatirIsk1YuzdeSor',
-            (v) => val.satisSatirIsk1YuzdeSor = v as bool?);
-        $checkedConvert(
-            'SatisKosulAktif', (v) => val.satisKosulAktif = v as bool?);
-        $checkedConvert('SatisKosulSatirdaSor',
-            (v) => val.satisKosulSatirdaSor = v as bool?);
-        $checkedConvert('SatisFarkliTeslimCariAktif',
-            (v) => val.satisFarkliTeslimCariAktif = v as bool?);
-        $checkedConvert('SatisMalFazMiktarIskontoAcik',
-            (v) => val.satisMalFazMiktarIskontoAcik = v as bool?);
-        $checkedConvert('SatisSatirKademeliIskontoAcik',
-            (v) => val.satisSatirKademeliIskontoAcik = v as bool?);
-        $checkedConvert('SatisSatirKademeliIskontoSayisi',
-            (v) => val.satisSatirKademeliIskontoSayisi = v as int?);
-        $checkedConvert(
-            'SatisGenIsk1Aktif', (v) => val.satisGenIsk1Aktif = v as bool?);
-        $checkedConvert(
-            'SatisGenIsk2Aktif', (v) => val.satisGenIsk2Aktif = v as bool?);
-        $checkedConvert(
-            'SatisGenIsk3Aktif', (v) => val.satisGenIsk3Aktif = v as bool?);
-        $checkedConvert(
-            'SatisTopluDepoAktif', (v) => val.satisTopluDepoAktif = v as bool?);
-        $checkedConvert('SatisStokDepoKarttanGelsin',
-            (v) => val.satisStokDepoKarttanGelsin = v as bool?);
-        $checkedConvert('SatisGenellikleKDVHaric',
-            (v) => val.satisGenellikleKdvHaric = v as bool?);
-        $checkedConvert('SatisFarkliOlcuBirimleriKullan',
-            (v) => val.satisFarkliOlcuBirimleriKullan = v as bool?);
-        $checkedConvert('SatisCariRiskTakibi',
-            (v) => val.satisCariRiskTakibi = v as String?);
-        $checkedConvert(
-            'SatisDovizAktif', (v) => val.satisDovizAktif = v as bool?);
-        $checkedConvert(
-            'SatisSatirdaKDVSor', (v) => val.satisSatirdaKdvSor = v as bool?);
-        $checkedConvert('SatisSatirdaAciklamalarAktif',
-            (v) => val.satisSatirdaAciklamalarAktif = v as bool?);
-        $checkedConvert('SatisSatirdaEkAlan2Aktif',
-            (v) => val.satisSatirdaEkAlan2Aktif = v as bool?);
-        $checkedConvert('SatisEkMaliyet2Aktif',
-            (v) => val.satisEkMaliyet2Aktif = v as bool?);
-        $checkedConvert(
-            'SatisEkMaliyet2Adi', (v) => val.satisEkMaliyet2Adi = v as String?);
-        $checkedConvert(
-            'SatisTevkifatPay', (v) => val.satisTevkifatPay = v as int?);
-        $checkedConvert(
-            'SatisTevkifatPayda', (v) => val.satisTevkifatPayda = v as int?);
-        $checkedConvert('SatisFaturaFiyatSifirGecilsin',
-            (v) => val.satisFaturaFiyatSifirGecilsin = v as bool?);
-        $checkedConvert(
-            'SatisFazlaTeslimat', (v) => val.satisFazlaTeslimat = v as bool?);
-        $checkedConvert('SatisDovizTakipHangiDeger',
-            (v) => val.satisDovizTakipHangiDeger = v as int?);
-        $checkedConvert(
-            'SatisHizmetAktif', (v) => val.satisHizmetAktif = v as bool?);
-        $checkedConvert(
-            'SatisHizmetDepoKodu', (v) => val.satisHizmetDepoKodu = v as int?);
-        $checkedConvert(
-            'SatisMiktar2Sor', (v) => val.satisMiktar2Sor = v as bool?);
-        $checkedConvert('SatisSubeDATOnaylansin',
-            (v) => val.satisSubeDatOnaylansin = v as bool?);
-        $checkedConvert('SatisSatirdaTeslimTarihiSor',
-            (v) => val.satisSatirdaTeslimTarihiSor = v as bool?);
-        $checkedConvert('SatisSatirdaIsEmriSorulsun',
-            (v) => val.satisSatirdaIsEmriSorulsun = v as bool?);
-        $checkedConvert('SatisFisSeriTakibiVar',
-            (v) => val.satisFisSeriTakibiVar = v as bool?);
-        $checkedConvert(
-            'SatisIrsCariHesaba', (v) => val.satisIrsCariHesaba = v as bool?);
-        $checkedConvert(
-            'SatisEkAlan1Aktif', (v) => val.satisEkAlan1Aktif = v as bool?);
-        $checkedConvert('SatisDATSiparisTakibi',
-            (v) => val.satisDatSiparisTakibi = v as String?);
-        $checkedConvert('SatisIrsFatuSipVadeDegissin',
-            (v) => val.satisIrsFatuSipVadeDegissin = v as String?);
-        $checkedConvert(
-            'KonsinyeUygulamasi', (v) => val.konsinyeUygulamasi = v as bool?);
-        $checkedConvert(
-            'MSenetDovizAktif', (v) => val.mSenetDovizAktif = v as bool?);
-        $checkedConvert(
-            'MCekDovizAktif', (v) => val.mCekDovizAktif = v as bool?);
-        $checkedConvert(
-            'MCekAciklamaAktif', (v) => val.mCekAciklamaAktif = v as bool?);
-        $checkedConvert('SeriGirislerdeOtomatik',
-            (v) => val.seriGirislerdeOtomatik = v as bool?);
-        $checkedConvert(
-            'SerideYilOlsun', (v) => val.serideYilOlsun = v as bool?);
-        $checkedConvert('SerideAyOlsun', (v) => val.serideAyOlsun = v as bool?);
-        $checkedConvert(
-            'SerideGunOlsun', (v) => val.serideGunOlsun = v as bool?);
-        $checkedConvert('SeriUzunlugu', (v) => val.seriUzunlugu = v as int?);
-        $checkedConvert(
-            'SeriEkAlanList',
-            (v) => val.seriEkAlanList =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert('EFaturaAktif', (v) => val.eFaturaAktif = v as bool?);
-        $checkedConvert('Seri_EFatura', (v) => val.seriEFatura = v as String?);
-        $checkedConvert('EFaturaSenaryoDegistir',
-            (v) => val.eFaturaSenaryoDegistir = v as bool?);
-        $checkedConvert(
-            'EIrsaliyeAktif', (v) => val.eIrsaliyeAktif = v as bool?);
-        $checkedConvert(
-            'SeriEIrsaliye', (v) => val.seriEIrsaliye = v as String?);
-        $checkedConvert(
-            'ArrEIrsSeri',
-            (v) => val.arrEIrsSeri =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'ArrEFatSeri',
-            (v) => val.arrEFatSeri =
-                (v as List<dynamic>?)?.map((e) => e as String?).toList());
-        $checkedConvert(
-            'ArrEArSeri',
-            (v) => val.arrEArSeri =
-                (v as List<dynamic>?)?.map((e) => e as String?).toList());
-        $checkedConvert('Seri_EArsiv', (v) => val.seriEArsiv = v as String?);
-        $checkedConvert(
-            'UretimEkAlanKullan', (v) => val.uretimEkAlanKullan = v as bool?);
-        $checkedConvert('OzelFaturaIadeMaliyetiZorunlu',
-            (v) => val.ozelFaturaIadeMaliyetiZorunlu = v as bool?);
-        $checkedConvert('bankaKKartiKasayaIsle',
-            (v) => val.bankaKKartiKasayaIsle = v as bool?);
-        $checkedConvert('KayitliBankaHesapTipleri',
-            (v) => val.kayitliBankaHesapTipleri = v as List<dynamic>?);
-        $checkedConvert(
-            'KKNoZorunluDegil', (v) => val.kkNoZorunluDegil = v as bool?);
-        $checkedConvert(
-            'FifoLifoYontem', (v) => val.fifoLifoYontem = v as String?);
-        $checkedConvert('CariAktiviteUygulamasi',
-            (v) => val.cariAktiviteUygulamasi = v as String?);
-        $checkedConvert(
-            'CariAktiviteTipleri',
-            (v) => val.cariAktiviteTipleri = (v as List<dynamic>?)
-                ?.map((e) =>
-                    CariAktiviteTipleri.fromJson(e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert(
-            'CariAktiviteEkAlanlar',
-            (v) => val.cariAktiviteEkAlanlar =
-                (v as List<dynamic>?)?.map((e) => e as int).toList());
-        $checkedConvert('SatisCariDovizTipiniKullan',
-            (v) => val.satisCariDovizTipiniKullan = v as bool?);
-        $checkedConvert('AlisCariDovizTipiniKullan',
-            (v) => val.alisCariDovizTipiniKullan = v as bool?);
-        $checkedConvert(
-            'Fatu_KontrolAciklamasiAktif',
-            (v) => val.fatuKontrolAciklamasiAktif =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert('SatisFiyatGrubuSorulacakAlan',
-            (v) => val.satisFiyatGrubuSorulacakAlan = v as String?);
-        $checkedConvert('Siparis_FarkliSubeUyg',
-            (v) => val.siparisFarkliSubeUyg = v as String?);
-        $checkedConvert('SatisIskEkSahadanGelsin',
-            (v) => val.satisIskEkSahadanGelsin = v as String?);
-        $checkedConvert(
-            'SatisIsk1Saha', (v) => val.satisIsk1Saha = v as String?);
-        $checkedConvert(
-            'SatisIsk1Kullanim', (v) => val.satisIsk1Kullanim = v as String?);
-        $checkedConvert('Uretim_MalTop_HangiHucrede',
-            (v) => val.uretimMalTopHangiHucrede = v as bool?);
-        $checkedConvert('Uretim_MalTop_FazlaTeslimYapilabilir',
-            (v) => val.uretimMalTopFazlaTeslimYapilabilir = v as bool?);
-        $checkedConvert('Uretim_USK_SeriGirilsin',
-            (v) => val.uretimUskSeriGirilsin = v as bool?);
-        $checkedConvert('Finans_BankaIslemModulu',
-            (v) => val.finansBankaIslemModulu = v as String?);
-        $checkedConvert('Finans_BankaTcmbBankaKodu',
-            (v) => val.finansBankaTcmbBankaKodu = v as String?);
-        $checkedConvert('Finans_BankaTcmbSubeKodu',
-            (v) => val.finansBankaTcmbSubeKodu = v as String?);
-        $checkedConvert(
-            'Finans_CekSenOzelOrtalamaVadeGunuHesapla',
-            (v) => val.finansCekSenOzelOrtalamaVadeGunuHesapla =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'Stok_Yap_RehberTipi', (v) => val.stokYapRehberTipi = v as String?);
-        $checkedConvert('Stok_KanbanBarkodEslemeUyg',
-            (v) => val.stokKanbanBarkodEslemeUyg = v as String?);
-        $checkedConvert('Stok_SeriParcalamaUyg',
-            (v) => val.stokSeriParcalamaUyg = v as String?);
-        $checkedConvert(
-            'Stok_DetayliAramaAlanlar',
-            (v) => val.stokDetayliAramaAlanlar = (v as List<dynamic>?)
-                ?.map((e) =>
-                    StokDetayliAramaAlanlar.fromJson(e as Map<String, dynamic>))
-                .toList());
-        $checkedConvert('Genel_KonumTakibiYapilsin',
-            (v) => val.genelKonumTakibiYapilsin = v as String?);
-        $checkedConvert('Genel_KonumTakibiDakika',
-            (v) => val.genelKonumTakibiDakika = v as int?);
-        $checkedConvert('Genel_KonumTakibiMetre',
-            (v) => val.genelKonumTakibiMetre = v as int?);
-        $checkedConvert(
-            'UetdsEsyaAktif', (v) => val.uetdsEsyaAktif = v as bool?);
-        $checkedConvert('SatistaSiparisKullan',
-            (v) => val.satistaSiparisKullan = v as bool?);
-        $checkedConvert(
-            'AlistaSiparisKullan', (v) => val.alistaSiparisKullan = v as bool?);
-        $checkedConvert(
-            'SipOtoEslestir', (v) => val.sipOtoEslestir = v as bool?);
-        $checkedConvert('SevkEmriTerminalFatura',
-            (v) => val.sevkEmriTerminalFatura = v as bool?);
-        $checkedConvert('SevkEmriTerminalIrsaliye',
-            (v) => val.sevkEmriTerminalIrsaliye = v as bool?);
-        $checkedConvert('SevkEmriTerminalTransfer',
-            (v) => val.sevkEmriTerminalTransfer = v as bool?);
-        $checkedConvert('SevkEmriHucreKontrol',
-            (v) => val.sevkEmriHucreKontrol = v as bool?);
-        $checkedConvert(
-            'SevkEmriMalTopGorunecekAlanlar',
-            (v) => val.sevkEmriMalTopGorunecekAlanlar =
-                (v as List<dynamic>?)?.map((e) => e as String).toList());
-        $checkedConvert(
-            'Seri_SevkIrsaliye', (v) => val.seriSevkIrsaliye = v as String?);
-        $checkedConvert('KontrolluBelgeAktarimAktif',
-            (v) => val.kontrolluBelgeAktarimAktif = v as bool?);
-        $checkedConvert(
-            'KontrolluBelgeAktarimBelgeNoGoster',
-            (v) =>
-                val.kontrolluBelgeAktarimBelgeNoGoster = v as List<dynamic>?);
-        $checkedConvert(
-            'EMustahsilAktif', (v) => val.eMustahsilAktif = v as bool?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'paramYuklendi': 'ParamYuklendi',
-        'kullanici': 'KULLANICI',
-        'sirket': 'SIRKET',
-        'isletmeKodu': 'ISLETME_KODU',
-        'mapCariKullSahalar': 'MapCariKullSahalar',
-        'mapCariEkAlanlar': 'MapCariEkAlanlar',
-        'netsisOndalikResponseModel': '_NetsisOndalikResponseModel',
-        'depoList': 'DepoList',
-        'dovizList': 'DovizList',
-        'satirAcikBaslikList': 'SatirAcikBaslikList',
-        'kasaList': 'KasaList',
-        'plasiyerList': 'PlasiyerList',
-        'plasiyerListTumu': 'PlasiyerListTumu',
-        'subeList': 'SubeList',
-        'talTekParam': 'TalTekParam',
-        'cekSenParam': 'CekSenParam',
-        'listOzelKodTum': 'ListOzelKodTum',
-        'listIskTip': 'ListIskTip',
-        'listCariOdemeKodu': 'ListCariOdemeKodu',
-        'yaziciList': 'YaziciList',
-        'netFectDizaynList': 'NetFectDizaynList',
-        'mapStokGrupAdlari': 'MapStokGrupAdlari',
-        'mustahsilParam': 'MustahsilParam',
-        'listFatuEkMaliyet': 'ListFatuEkMaliyet',
-        'mapKdvSifirBelgeTipiOzelKod2': 'MapKdvSifirBelgeTipiOzelKod2',
-        'lokalDepoUygulamasiAcik': 'LokalDepoUygulamasiAcik',
-        'esnekYapilandir': 'EsnekYapilandir',
-        'ozelFiyatSistemi': 'OzelFiyatSistemi',
-        'sadeceOzelFiyatSistemi': 'SadeceOzelFiyatSistemi',
-        'otvliStoklarVar': 'OtvliStoklarVar',
-        'mapStokKullSahalar': 'MapStokKullSahalar',
-        'mapStokEkAlanlar': 'MapStokEkAlanlar',
-        'karmaKoliUyg': 'KarmaKoliUyg',
-        'alisEkAciklamalarAktif': 'AlisEkAciklamalarAktif',
-        'alisEkAciklamaTanimi1': 'AlisEkAciklamaTanimi1',
-        'alisEkAciklamaTanimi2': 'AlisEkAciklamaTanimi2',
-        'alisEkAciklamaTanimi3': 'AlisEkAciklamaTanimi3',
-        'alisEkAciklamaTanimi4': 'AlisEkAciklamaTanimi4',
-        'alisEkAciklamaTanimi5': 'AlisEkAciklamaTanimi5',
-        'alisEkAciklamaTanimi6': 'AlisEkAciklamaTanimi6',
-        'alisEkAciklamaTanimi7': 'AlisEkAciklamaTanimi7',
-        'alisEkAciklamaTanimi8': 'AlisEkAciklamaTanimi8',
-        'alisEkAciklamaTanimi9': 'AlisEkAciklamaTanimi9',
-        'alisEkAciklamaTanimi10': 'AlisEkAciklamaTanimi10',
-        'alisEkAciklamaTanimi11': 'AlisEkAciklamaTanimi11',
-        'alisEkAciklamaTanimi12': 'AlisEkAciklamaTanimi12',
-        'alisEkAciklamaTanimi13': 'AlisEkAciklamaTanimi13',
-        'alisEkAciklamaTanimi14': 'AlisEkAciklamaTanimi14',
-        'alisEkAciklamaTanimi15': 'AlisEkAciklamaTanimi15',
-        'alisEkAciklamaTanimi16': 'AlisEkAciklamaTanimi16',
-        'alisOzelKod1Tablodan': 'AlisOzelKod1Tablodan',
-        'alisKosulAktif': 'AlisKosulAktif',
-        'alisFarkliTeslimCariAktif': 'AlisFarkliTeslimCariAktif',
-        'alisMalFazMiktarIskontoAcik': 'AlisMalFazMiktarIskontoAcik',
-        'alisSatirKademeliIskontoAcik': 'AlisSatirKademeliIskontoAcik',
-        'alisSatirKademeliIskontoSayisi': 'AlisSatirKademeliIskontoSayisi',
-        'alisGenIsk1Aktif': 'AlisGenIsk1Aktif',
-        'alisGenIsk2Aktif': 'AlisGenIsk2Aktif',
-        'alisGenIsk3Aktif': 'AlisGenIsk3Aktif',
-        'alisTopluDepoAktif': 'AlisTopluDepoAktif',
-        'alisStokDepoKarttanGelsin': 'AlisStokDepoKarttanGelsin',
-        'alisGenellikleKdvHaric': 'AlisGenellikleKDVHaric',
-        'alisFarkliOlcuBirimleriKullan': 'AlisFarkliOlcuBirimleriKullan',
-        'alisDovizAktif': 'AlisDovizAktif',
-        'alisSatirdaKdvSor': 'AlisSatirdaKDVSor',
-        'alisSatirdaAciklamalarAktif': 'AlisSatirdaAciklamalarAktif',
-        'alisSatirdaEkAlan2Aktif': 'AlisSatirdaEkAlan2Aktif',
-        'alisEkMaliyet2Aktif': 'AlisEkMaliyet2Aktif',
-        'alisEkMaliyet2Adi': 'AlisEkMaliyet2Adi',
-        'alisTevkifatPay': 'AlisTevkifatPay',
-        'alisTevkifatPayda': 'AlisTevkifatPayda',
-        'alisFaturaFiyatSifirGecilsin': 'AlisFaturaFiyatSifirGecilsin',
-        'alisFazlaTeslimat': 'AlisFazlaTeslimat',
-        'alisDovizTakipHangiDeger': 'AlisDovizTakipHangiDeger',
-        'alisHizmetAktif': 'AlisHizmetAktif',
-        'alisHizmetDepoKodu': 'AlisHizmetDepoKodu',
-        'alisMiktar2Sor': 'AlisMiktar2Sor',
-        'alisSatirdaTeslimTarihiSor': 'AlisSatirdaTeslimTarihiSor',
-        'alisFisSeriTakibiVar': 'AlisFisSeriTakibiVar',
-        'alisTutardanFiyataGecilsin': 'AlisTutardanFiyataGecilsin',
-        'alisCariIskSatiraUygula': 'AlisCariIskSatiraUygula',
-        'seriUygulamasiAcik': 'SeriUygulamasiAcik',
-        'sirketDovizUygulamasiAcik': 'SirketDovizUygulamasiAcik',
-        'sirketDovizUygulamasiDovizKodu': 'SirketDovizUygulamasiDovizKodu',
-        'plasiyerUygulamasi': 'PlasiyerUygulamasi',
-        'paraBirimi': 'ParaBirimi',
-        'bankaEntegre': 'BankaEntegre',
-        'bagliCariVar': 'BagliCariVar',
-        'projeUygulamasiAcik': 'ProjeUygulamasiAcik',
-        'satisEkAciklamalarAktif': 'SatisEkAciklamalarAktif',
-        'satisEkAciklamaTanimi1': 'SatisEkAciklamaTanimi1',
-        'satisEkAciklamaTanimi2': 'SatisEkAciklamaTanimi2',
-        'satisEkAciklamaTanimi3': 'SatisEkAciklamaTanimi3',
-        'satisEkAciklamaTanimi4': 'SatisEkAciklamaTanimi4',
-        'satisEkAciklamaTanimi5': 'SatisEkAciklamaTanimi5',
-        'satisEkAciklamaTanimi6': 'SatisEkAciklamaTanimi6',
-        'satisEkAciklamaTanimi7': 'SatisEkAciklamaTanimi7',
-        'satisEkAciklamaTanimi8': 'SatisEkAciklamaTanimi8',
-        'satisEkAciklamaTanimi9': 'SatisEkAciklamaTanimi9',
-        'satisEkAciklamaTanimi10': 'SatisEkAciklamaTanimi10',
-        'satisEkAciklamaTanimi11': 'SatisEkAciklamaTanimi11',
-        'satisEkAciklamaTanimi12': 'SatisEkAciklamaTanimi12',
-        'satisEkAciklamaTanimi13': 'SatisEkAciklamaTanimi13',
-        'satisEkAciklamaTanimi14': 'SatisEkAciklamaTanimi14',
-        'satisEkAciklamaTanimi15': 'SatisEkAciklamaTanimi15',
-        'satisEkAciklamaTanimi16': 'SatisEkAciklamaTanimi16',
-        'satisOzelKod1Aktif': 'SatisOzelKod1Aktif',
-        'satisOzelKod2Aktif': 'SatisOzelKod2Aktif',
-        'satisSatirIsk1YuzdeSor': 'SatisSatirIsk1YuzdeSor',
-        'satisKosulAktif': 'SatisKosulAktif',
-        'satisKosulSatirdaSor': 'SatisKosulSatirdaSor',
-        'satisFarkliTeslimCariAktif': 'SatisFarkliTeslimCariAktif',
-        'satisMalFazMiktarIskontoAcik': 'SatisMalFazMiktarIskontoAcik',
-        'satisSatirKademeliIskontoAcik': 'SatisSatirKademeliIskontoAcik',
-        'satisSatirKademeliIskontoSayisi': 'SatisSatirKademeliIskontoSayisi',
-        'satisGenIsk1Aktif': 'SatisGenIsk1Aktif',
-        'satisGenIsk2Aktif': 'SatisGenIsk2Aktif',
-        'satisGenIsk3Aktif': 'SatisGenIsk3Aktif',
-        'satisTopluDepoAktif': 'SatisTopluDepoAktif',
-        'satisStokDepoKarttanGelsin': 'SatisStokDepoKarttanGelsin',
-        'satisGenellikleKdvHaric': 'SatisGenellikleKDVHaric',
-        'satisFarkliOlcuBirimleriKullan': 'SatisFarkliOlcuBirimleriKullan',
-        'satisCariRiskTakibi': 'SatisCariRiskTakibi',
-        'satisDovizAktif': 'SatisDovizAktif',
-        'satisSatirdaKdvSor': 'SatisSatirdaKDVSor',
-        'satisSatirdaAciklamalarAktif': 'SatisSatirdaAciklamalarAktif',
-        'satisSatirdaEkAlan2Aktif': 'SatisSatirdaEkAlan2Aktif',
-        'satisEkMaliyet2Aktif': 'SatisEkMaliyet2Aktif',
-        'satisEkMaliyet2Adi': 'SatisEkMaliyet2Adi',
-        'satisTevkifatPay': 'SatisTevkifatPay',
-        'satisTevkifatPayda': 'SatisTevkifatPayda',
-        'satisFaturaFiyatSifirGecilsin': 'SatisFaturaFiyatSifirGecilsin',
-        'satisFazlaTeslimat': 'SatisFazlaTeslimat',
-        'satisDovizTakipHangiDeger': 'SatisDovizTakipHangiDeger',
-        'satisHizmetAktif': 'SatisHizmetAktif',
-        'satisHizmetDepoKodu': 'SatisHizmetDepoKodu',
-        'satisMiktar2Sor': 'SatisMiktar2Sor',
-        'satisSubeDatOnaylansin': 'SatisSubeDATOnaylansin',
-        'satisSatirdaTeslimTarihiSor': 'SatisSatirdaTeslimTarihiSor',
-        'satisSatirdaIsEmriSorulsun': 'SatisSatirdaIsEmriSorulsun',
-        'satisFisSeriTakibiVar': 'SatisFisSeriTakibiVar',
-        'satisIrsCariHesaba': 'SatisIrsCariHesaba',
-        'satisEkAlan1Aktif': 'SatisEkAlan1Aktif',
-        'satisDatSiparisTakibi': 'SatisDATSiparisTakibi',
-        'satisIrsFatuSipVadeDegissin': 'SatisIrsFatuSipVadeDegissin',
-        'konsinyeUygulamasi': 'KonsinyeUygulamasi',
-        'mSenetDovizAktif': 'MSenetDovizAktif',
-        'mCekDovizAktif': 'MCekDovizAktif',
-        'mCekAciklamaAktif': 'MCekAciklamaAktif',
-        'seriGirislerdeOtomatik': 'SeriGirislerdeOtomatik',
-        'serideYilOlsun': 'SerideYilOlsun',
-        'serideAyOlsun': 'SerideAyOlsun',
-        'serideGunOlsun': 'SerideGunOlsun',
-        'seriUzunlugu': 'SeriUzunlugu',
-        'seriEkAlanList': 'SeriEkAlanList',
-        'eFaturaAktif': 'EFaturaAktif',
-        'seriEFatura': 'Seri_EFatura',
-        'eFaturaSenaryoDegistir': 'EFaturaSenaryoDegistir',
-        'eIrsaliyeAktif': 'EIrsaliyeAktif',
-        'seriEIrsaliye': 'SeriEIrsaliye',
-        'arrEIrsSeri': 'ArrEIrsSeri',
-        'arrEFatSeri': 'ArrEFatSeri',
-        'arrEArSeri': 'ArrEArSeri',
-        'seriEArsiv': 'Seri_EArsiv',
-        'uretimEkAlanKullan': 'UretimEkAlanKullan',
-        'ozelFaturaIadeMaliyetiZorunlu': 'OzelFaturaIadeMaliyetiZorunlu',
-        'kayitliBankaHesapTipleri': 'KayitliBankaHesapTipleri',
-        'kkNoZorunluDegil': 'KKNoZorunluDegil',
-        'fifoLifoYontem': 'FifoLifoYontem',
-        'cariAktiviteUygulamasi': 'CariAktiviteUygulamasi',
-        'cariAktiviteTipleri': 'CariAktiviteTipleri',
-        'cariAktiviteEkAlanlar': 'CariAktiviteEkAlanlar',
-        'satisCariDovizTipiniKullan': 'SatisCariDovizTipiniKullan',
-        'alisCariDovizTipiniKullan': 'AlisCariDovizTipiniKullan',
-        'fatuKontrolAciklamasiAktif': 'Fatu_KontrolAciklamasiAktif',
-        'satisFiyatGrubuSorulacakAlan': 'SatisFiyatGrubuSorulacakAlan',
-        'siparisFarkliSubeUyg': 'Siparis_FarkliSubeUyg',
-        'satisIskEkSahadanGelsin': 'SatisIskEkSahadanGelsin',
-        'satisIsk1Saha': 'SatisIsk1Saha',
-        'satisIsk1Kullanim': 'SatisIsk1Kullanim',
-        'uretimMalTopHangiHucrede': 'Uretim_MalTop_HangiHucrede',
-        'uretimMalTopFazlaTeslimYapilabilir':
-            'Uretim_MalTop_FazlaTeslimYapilabilir',
-        'uretimUskSeriGirilsin': 'Uretim_USK_SeriGirilsin',
-        'finansBankaIslemModulu': 'Finans_BankaIslemModulu',
-        'finansBankaTcmbBankaKodu': 'Finans_BankaTcmbBankaKodu',
-        'finansBankaTcmbSubeKodu': 'Finans_BankaTcmbSubeKodu',
-        'finansCekSenOzelOrtalamaVadeGunuHesapla':
-            'Finans_CekSenOzelOrtalamaVadeGunuHesapla',
-        'stokYapRehberTipi': 'Stok_Yap_RehberTipi',
-        'stokKanbanBarkodEslemeUyg': 'Stok_KanbanBarkodEslemeUyg',
-        'stokSeriParcalamaUyg': 'Stok_SeriParcalamaUyg',
-        'stokDetayliAramaAlanlar': 'Stok_DetayliAramaAlanlar',
-        'genelKonumTakibiYapilsin': 'Genel_KonumTakibiYapilsin',
-        'genelKonumTakibiDakika': 'Genel_KonumTakibiDakika',
-        'genelKonumTakibiMetre': 'Genel_KonumTakibiMetre',
-        'uetdsEsyaAktif': 'UetdsEsyaAktif',
-        'satistaSiparisKullan': 'SatistaSiparisKullan',
-        'alistaSiparisKullan': 'AlistaSiparisKullan',
-        'sipOtoEslestir': 'SipOtoEslestir',
-        'sevkEmriTerminalFatura': 'SevkEmriTerminalFatura',
-        'sevkEmriTerminalIrsaliye': 'SevkEmriTerminalIrsaliye',
-        'sevkEmriTerminalTransfer': 'SevkEmriTerminalTransfer',
-        'sevkEmriHucreKontrol': 'SevkEmriHucreKontrol',
-        'sevkEmriMalTopGorunecekAlanlar': 'SevkEmriMalTopGorunecekAlanlar',
-        'seriSevkIrsaliye': 'Seri_SevkIrsaliye',
-        'kontrolluBelgeAktarimAktif': 'KontrolluBelgeAktarimAktif',
-        'kontrolluBelgeAktarimBelgeNoGoster':
-            'KontrolluBelgeAktarimBelgeNoGoster',
-        'eMustahsilAktif': 'EMustahsilAktif'
-      },
-    );
+ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
+  ..paramYuklendi = json['ParamYuklendi'] as bool?
+  ..kullanici = json['KULLANICI'] as String?
+  ..sirket = json['SIRKET'] as String?
+  ..isletmeKodu = json['ISLETME_KODU'] as int?
+  ..mapCariKullSahalar = json['MapCariKullSahalar'] == null
+      ? null
+      : MapCariKullSahalar.fromJson(
+          json['MapCariKullSahalar'] as Map<String, dynamic>)
+  ..mapCariEkAlanlar = (json['MapCariEkAlanlar'] as List<dynamic>?)
+      ?.map((e) => MapEkAlanlar.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..sabitSayfalamaOgeSayisi = json['sabitSayfalamaOgeSayisi'] as int?
+  ..netsisOndalikResponseModel = (json['_NetsisOndalikResponseModel']
+          as List<dynamic>?)
+      ?.map(
+          (e) => NetsisOndalikResponseModel.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..depoList = (json['DepoList'] as List<dynamic>?)
+      ?.map((e) => DepoList.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..dovizList = (json['DovizList'] as List<dynamic>?)
+      ?.map((e) => DovizList.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..satirAcikBaslikList = (json['SatirAcikBaslikList'] as List<dynamic>?)
+      ?.map((e) => SatirAcikBaslikList.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..kasaList = (json['KasaList'] as List<dynamic>?)
+      ?.map((e) => KasaList.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..plasiyerList = (json['PlasiyerList'] as List<dynamic>?)
+      ?.map((e) => PlasiyerList.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..plasiyerListTumu = (json['PlasiyerListTumu'] as List<dynamic>?)
+      ?.map((e) => PlasiyerList.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..subeList = (json['SubeList'] as List<dynamic>?)
+      ?.map((e) => SubeList.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..talTekParam = (json['TalTekParam'] as List<dynamic>?)
+      ?.map((e) => TalTekParam.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..cekSenParam = (json['CekSenParam'] as List<dynamic>?)
+      ?.map((e) => CekSenParam.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..listOzelKodTum = (json['ListOzelKodTum'] as List<dynamic>?)
+      ?.map((e) => ListOzelKodTum.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..listIskTip = (json['ListIskTip'] as List<dynamic>?)
+      ?.map((e) => ListIskTip.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..listCariOdemeKodu = (json['ListCariOdemeKodu'] as List<dynamic>?)
+      ?.map((e) => ListCariOdemeKodu.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..yaziciList = (json['YaziciList'] as List<dynamic>?)
+      ?.map((e) => YaziciList.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..netFectDizaynList = (json['NetFectDizaynList'] as List<dynamic>?)
+      ?.map((e) => NetFectDizaynList.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..mapStokGrupAdlari = json['MapStokGrupAdlari'] == null
+      ? null
+      : MapStokGrupAdlari.fromJson(
+          json['MapStokGrupAdlari'] as Map<String, dynamic>)
+  ..mustahsilParam = json['MustahsilParam'] == null
+      ? null
+      : MustahsilParam.fromJson(json['MustahsilParam'] as Map<String, dynamic>)
+  ..listFatuEkMaliyet = (json['ListFatuEkMaliyet'] as List<dynamic>?)
+      ?.map((e) => ListFatuEkMaliyet.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..mapKdvSifirBelgeTipiOzelKod2 = json['MapKdvSifirBelgeTipiOzelKod2'] == null
+      ? null
+      : MapKdvSifirBelgeTipiOzelKod2.fromJson(
+          json['MapKdvSifirBelgeTipiOzelKod2'] as Map<String, dynamic>)
+  ..lokalDepoUygulamasiAcik = json['LokalDepoUygulamasiAcik'] as bool?
+  ..esnekYapilandir = json['EsnekYapilandir'] as bool?
+  ..ozelFiyatSistemi = json['OzelFiyatSistemi'] as bool?
+  ..sadeceOzelFiyatSistemi = json['SadeceOzelFiyatSistemi'] as String?
+  ..otvliStoklarVar = json['OtvliStoklarVar'] as bool?
+  ..mapStokKullSahalar = json['MapStokKullSahalar'] == null
+      ? null
+      : MapStokKullSahalar.fromJson(
+          json['MapStokKullSahalar'] as Map<String, dynamic>)
+  ..mapStokEkAlanlar = (json['MapStokEkAlanlar'] as List<dynamic>?)
+      ?.map((e) => MapEkAlanlar.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..karmaKoliUyg = json['KarmaKoliUyg'] as String?
+  ..alisEkAciklamalarAktif = json['AlisEkAciklamalarAktif'] as bool?
+  ..alisEkAciklamaTanimi1 = json['AlisEkAciklamaTanimi1'] as String?
+  ..alisEkAciklamaTanimi2 = json['AlisEkAciklamaTanimi2'] as String?
+  ..alisEkAciklamaTanimi3 = json['AlisEkAciklamaTanimi3'] as String?
+  ..alisEkAciklamaTanimi4 = json['AlisEkAciklamaTanimi4'] as String?
+  ..alisEkAciklamaTanimi5 = json['AlisEkAciklamaTanimi5'] as String?
+  ..alisEkAciklamaTanimi6 = json['AlisEkAciklamaTanimi6'] as String?
+  ..alisEkAciklamaTanimi7 = json['AlisEkAciklamaTanimi7'] as String?
+  ..alisEkAciklamaTanimi8 = json['AlisEkAciklamaTanimi8'] as String?
+  ..alisEkAciklamaTanimi9 = json['AlisEkAciklamaTanimi9'] as String?
+  ..alisEkAciklamaTanimi10 = json['AlisEkAciklamaTanimi10'] as String?
+  ..alisEkAciklamaTanimi11 = json['AlisEkAciklamaTanimi11'] as String?
+  ..alisEkAciklamaTanimi12 = json['AlisEkAciklamaTanimi12'] as String?
+  ..alisEkAciklamaTanimi13 = json['AlisEkAciklamaTanimi13'] as String?
+  ..alisEkAciklamaTanimi14 = json['AlisEkAciklamaTanimi14'] as String?
+  ..alisEkAciklamaTanimi15 = json['AlisEkAciklamaTanimi15'] as String?
+  ..alisEkAciklamaTanimi16 = json['AlisEkAciklamaTanimi16'] as String?
+  ..alisOzelKod1Tablodan = json['AlisOzelKod1Tablodan'] as bool?
+  ..alisKosulAktif = json['AlisKosulAktif'] as bool?
+  ..alisFarkliTeslimCariAktif = json['AlisFarkliTeslimCariAktif'] as bool?
+  ..alisMalFazMiktarIskontoAcik = json['AlisMalFazMiktarIskontoAcik'] as bool?
+  ..alisSatirKademeliIskontoAcik = json['AlisSatirKademeliIskontoAcik'] as bool?
+  ..alisSatirKademeliIskontoSayisi =
+      json['AlisSatirKademeliIskontoSayisi'] as int?
+  ..alisGenIsk1Aktif = json['AlisGenIsk1Aktif'] as bool?
+  ..alisGenIsk2Aktif = json['AlisGenIsk2Aktif'] as bool?
+  ..alisGenIsk3Aktif = json['AlisGenIsk3Aktif'] as bool?
+  ..alisTopluDepoAktif = json['AlisTopluDepoAktif'] as bool?
+  ..alisStokDepoKarttanGelsin = json['AlisStokDepoKarttanGelsin'] as bool?
+  ..alisGenellikleKdvHaric = json['AlisGenellikleKDVHaric'] as bool?
+  ..alisFarkliOlcuBirimleriKullan =
+      json['AlisFarkliOlcuBirimleriKullan'] as bool?
+  ..alisDovizAktif = json['AlisDovizAktif'] as bool?
+  ..alisSatirdaKdvSor = json['AlisSatirdaKDVSor'] as bool?
+  ..alisSatirdaAciklamalarAktif = json['AlisSatirdaAciklamalarAktif'] as bool?
+  ..alisSatirdaEkAlan2Aktif = json['AlisSatirdaEkAlan2Aktif'] as bool?
+  ..alisEkMaliyet2Aktif = json['AlisEkMaliyet2Aktif'] as bool?
+  ..alisEkMaliyet2Adi = json['AlisEkMaliyet2Adi'] as String?
+  ..alisTevkifatPay = json['AlisTevkifatPay'] as int?
+  ..alisTevkifatPayda = json['AlisTevkifatPayda'] as int?
+  ..alisFaturaFiyatSifirGecilsin = json['AlisFaturaFiyatSifirGecilsin'] as bool?
+  ..alisFazlaTeslimat = json['AlisFazlaTeslimat'] as bool?
+  ..alisDovizTakipHangiDeger = json['AlisDovizTakipHangiDeger'] as int?
+  ..alisHizmetAktif = json['AlisHizmetAktif'] as bool?
+  ..alisHizmetDepoKodu = json['AlisHizmetDepoKodu'] as int?
+  ..alisMiktar2Sor = json['AlisMiktar2Sor'] as bool?
+  ..alisSatirdaTeslimTarihiSor = json['AlisSatirdaTeslimTarihiSor'] as bool?
+  ..alisFisSeriTakibiVar = json['AlisFisSeriTakibiVar'] as bool?
+  ..alisTutardanFiyataGecilsin = json['AlisTutardanFiyataGecilsin'] as bool?
+  ..alisCariIskSatiraUygula = json['AlisCariIskSatiraUygula'] as bool?
+  ..seriUygulamasiAcik = json['SeriUygulamasiAcik'] as bool?
+  ..sirketDovizUygulamasiAcik = json['SirketDovizUygulamasiAcik'] as bool?
+  ..sirketDovizUygulamasiDovizKodu =
+      json['SirketDovizUygulamasiDovizKodu'] as int?
+  ..plasiyerUygulamasi = json['PlasiyerUygulamasi'] as bool?
+  ..paraBirimi = json['ParaBirimi'] as String?
+  ..bankaEntegre = json['BankaEntegre'] as bool?
+  ..bagliCariVar = json['BagliCariVar'] as bool?
+  ..projeUygulamasiAcik = json['ProjeUygulamasiAcik'] as bool?
+  ..satisEkAciklamalarAktif = json['SatisEkAciklamalarAktif'] as bool?
+  ..satisEkAciklamaTanimi1 = json['SatisEkAciklamaTanimi1'] as String?
+  ..satisEkAciklamaTanimi2 = json['SatisEkAciklamaTanimi2'] as String?
+  ..satisEkAciklamaTanimi3 = json['SatisEkAciklamaTanimi3'] as String?
+  ..satisEkAciklamaTanimi4 = json['SatisEkAciklamaTanimi4'] as String?
+  ..satisEkAciklamaTanimi5 = json['SatisEkAciklamaTanimi5'] as String?
+  ..satisEkAciklamaTanimi6 = json['SatisEkAciklamaTanimi6'] as String?
+  ..satisEkAciklamaTanimi7 = json['SatisEkAciklamaTanimi7'] as String?
+  ..satisEkAciklamaTanimi8 = json['SatisEkAciklamaTanimi8'] as String?
+  ..satisEkAciklamaTanimi9 = json['SatisEkAciklamaTanimi9'] as String?
+  ..satisEkAciklamaTanimi10 = json['SatisEkAciklamaTanimi10'] as String?
+  ..satisEkAciklamaTanimi11 = json['SatisEkAciklamaTanimi11'] as String?
+  ..satisEkAciklamaTanimi12 = json['SatisEkAciklamaTanimi12'] as String?
+  ..satisEkAciklamaTanimi13 = json['SatisEkAciklamaTanimi13'] as String?
+  ..satisEkAciklamaTanimi14 = json['SatisEkAciklamaTanimi14'] as String?
+  ..satisEkAciklamaTanimi15 = json['SatisEkAciklamaTanimi15'] as String?
+  ..satisEkAciklamaTanimi16 = json['SatisEkAciklamaTanimi16'] as String?
+  ..satisOzelKod1Aktif = json['SatisOzelKod1Aktif'] as bool?
+  ..satisOzelKod2Aktif = json['SatisOzelKod2Aktif'] as bool?
+  ..satisSatirIsk1YuzdeSor = json['SatisSatirIsk1YuzdeSor'] as bool?
+  ..satisKosulAktif = json['SatisKosulAktif'] as bool?
+  ..satisKosulSatirdaSor = json['SatisKosulSatirdaSor'] as bool?
+  ..satisFarkliTeslimCariAktif = json['SatisFarkliTeslimCariAktif'] as bool?
+  ..satisMalFazMiktarIskontoAcik = json['SatisMalFazMiktarIskontoAcik'] as bool?
+  ..satisSatirKademeliIskontoAcik =
+      json['SatisSatirKademeliIskontoAcik'] as bool?
+  ..satisSatirKademeliIskontoSayisi =
+      json['SatisSatirKademeliIskontoSayisi'] as int?
+  ..satisGenIsk1Aktif = json['SatisGenIsk1Aktif'] as bool?
+  ..satisGenIsk2Aktif = json['SatisGenIsk2Aktif'] as bool?
+  ..satisGenIsk3Aktif = json['SatisGenIsk3Aktif'] as bool?
+  ..satisTopluDepoAktif = json['SatisTopluDepoAktif'] as bool?
+  ..satisStokDepoKarttanGelsin = json['SatisStokDepoKarttanGelsin'] as bool?
+  ..satisGenellikleKdvHaric = json['SatisGenellikleKDVHaric'] as bool?
+  ..satisFarkliOlcuBirimleriKullan =
+      json['SatisFarkliOlcuBirimleriKullan'] as bool?
+  ..satisCariRiskTakibi = json['SatisCariRiskTakibi'] as String?
+  ..satisDovizAktif = json['SatisDovizAktif'] as bool?
+  ..satisSatirdaKdvSor = json['SatisSatirdaKDVSor'] as bool?
+  ..satisSatirdaAciklamalarAktif = json['SatisSatirdaAciklamalarAktif'] as bool?
+  ..satisSatirdaEkAlan2Aktif = json['SatisSatirdaEkAlan2Aktif'] as bool?
+  ..satisEkMaliyet2Aktif = json['SatisEkMaliyet2Aktif'] as bool?
+  ..satisEkMaliyet2Adi = json['SatisEkMaliyet2Adi'] as String?
+  ..satisTevkifatPay = json['SatisTevkifatPay'] as int?
+  ..satisTevkifatPayda = json['SatisTevkifatPayda'] as int?
+  ..satisFaturaFiyatSifirGecilsin =
+      json['SatisFaturaFiyatSifirGecilsin'] as bool?
+  ..satisFazlaTeslimat = json['SatisFazlaTeslimat'] as bool?
+  ..satisDovizTakipHangiDeger = json['SatisDovizTakipHangiDeger'] as int?
+  ..satisHizmetAktif = json['SatisHizmetAktif'] as bool?
+  ..satisHizmetDepoKodu = json['SatisHizmetDepoKodu'] as int?
+  ..satisMiktar2Sor = json['SatisMiktar2Sor'] as bool?
+  ..satisSubeDatOnaylansin = json['SatisSubeDATOnaylansin'] as bool?
+  ..satisSatirdaTeslimTarihiSor = json['SatisSatirdaTeslimTarihiSor'] as bool?
+  ..satisSatirdaIsEmriSorulsun = json['SatisSatirdaIsEmriSorulsun'] as bool?
+  ..satisFisSeriTakibiVar = json['SatisFisSeriTakibiVar'] as bool?
+  ..satisIrsCariHesaba = json['SatisIrsCariHesaba'] as bool?
+  ..satisEkAlan1Aktif = json['SatisEkAlan1Aktif'] as bool?
+  ..satisDatSiparisTakibi = json['SatisDATSiparisTakibi'] as String?
+  ..satisIrsFatuSipVadeDegissin = json['SatisIrsFatuSipVadeDegissin'] as String?
+  ..konsinyeUygulamasi = json['KonsinyeUygulamasi'] as bool?
+  ..mSenetDovizAktif = json['MSenetDovizAktif'] as bool?
+  ..mCekDovizAktif = json['MCekDovizAktif'] as bool?
+  ..mCekAciklamaAktif = json['MCekAciklamaAktif'] as bool?
+  ..seriGirislerdeOtomatik = json['SeriGirislerdeOtomatik'] as bool?
+  ..serideYilOlsun = json['SerideYilOlsun'] as bool?
+  ..serideAyOlsun = json['SerideAyOlsun'] as bool?
+  ..serideGunOlsun = json['SerideGunOlsun'] as bool?
+  ..seriUzunlugu = json['SeriUzunlugu'] as int?
+  ..seriEkAlanList = (json['SeriEkAlanList'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList()
+  ..eFaturaAktif = json['EFaturaAktif'] as bool?
+  ..seriEFatura = json['Seri_EFatura'] as String?
+  ..eFaturaSenaryoDegistir = json['EFaturaSenaryoDegistir'] as bool?
+  ..eIrsaliyeAktif = json['EIrsaliyeAktif'] as bool?
+  ..seriEIrsaliye = json['SeriEIrsaliye'] as String?
+  ..arrEIrsSeri =
+      (json['ArrEIrsSeri'] as List<dynamic>?)?.map((e) => e as String).toList()
+  ..arrEFatSeri =
+      (json['ArrEFatSeri'] as List<dynamic>?)?.map((e) => e as String?).toList()
+  ..arrEArSeri =
+      (json['ArrEArSeri'] as List<dynamic>?)?.map((e) => e as String?).toList()
+  ..seriEArsiv = json['Seri_EArsiv'] as String?
+  ..uretimEkAlanKullan = json['UretimEkAlanKullan'] as bool?
+  ..ozelFaturaIadeMaliyetiZorunlu =
+      json['OzelFaturaIadeMaliyetiZorunlu'] as bool?
+  ..bankaKKartiKasayaIsle = json['bankaKKartiKasayaIsle'] as bool?
+  ..kayitliBankaHesapTipleri =
+      json['KayitliBankaHesapTipleri'] as List<dynamic>?
+  ..kkNoZorunluDegil = json['KKNoZorunluDegil'] as bool?
+  ..fifoLifoYontem = json['FifoLifoYontem'] as String?
+  ..cariAktiviteUygulamasi = json['CariAktiviteUygulamasi'] as String?
+  ..cariAktiviteTipleri = (json['CariAktiviteTipleri'] as List<dynamic>?)
+      ?.map((e) => CariAktiviteTipleri.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..cariAktiviteEkAlanlar = (json['CariAktiviteEkAlanlar'] as List<dynamic>?)
+      ?.map((e) => e as int)
+      .toList()
+  ..satisCariDovizTipiniKullan = json['SatisCariDovizTipiniKullan'] as bool?
+  ..alisCariDovizTipiniKullan = json['AlisCariDovizTipiniKullan'] as bool?
+  ..fatuKontrolAciklamasiAktif =
+      (json['Fatu_KontrolAciklamasiAktif'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
+  ..satisFiyatGrubuSorulacakAlan =
+      json['SatisFiyatGrubuSorulacakAlan'] as String?
+  ..siparisFarkliSubeUyg = json['Siparis_FarkliSubeUyg'] as String?
+  ..satisIskEkSahadanGelsin = json['SatisIskEkSahadanGelsin'] as String?
+  ..satisIsk1Saha = json['SatisIsk1Saha'] as String?
+  ..satisIsk1Kullanim = json['SatisIsk1Kullanim'] as String?
+  ..uretimMalTopHangiHucrede = json['Uretim_MalTop_HangiHucrede'] as bool?
+  ..uretimMalTopFazlaTeslimYapilabilir =
+      json['Uretim_MalTop_FazlaTeslimYapilabilir'] as bool?
+  ..uretimUskSeriGirilsin = json['Uretim_USK_SeriGirilsin'] as bool?
+  ..finansBankaIslemModulu = json['Finans_BankaIslemModulu'] as String?
+  ..finansBankaTcmbBankaKodu = json['Finans_BankaTcmbBankaKodu'] as String?
+  ..finansBankaTcmbSubeKodu = json['Finans_BankaTcmbSubeKodu'] as String?
+  ..finansCekSenOzelOrtalamaVadeGunuHesapla =
+      (json['Finans_CekSenOzelOrtalamaVadeGunuHesapla'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
+  ..stokYapRehberTipi = json['Stok_Yap_RehberTipi'] as String?
+  ..stokKanbanBarkodEslemeUyg = json['Stok_KanbanBarkodEslemeUyg'] as String?
+  ..stokSeriParcalamaUyg = json['Stok_SeriParcalamaUyg'] as String?
+  ..stokDetayliAramaAlanlar = (json['Stok_DetayliAramaAlanlar']
+          as List<dynamic>?)
+      ?.map((e) => StokDetayliAramaAlanlar.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..genelKonumTakibiYapilsin = json['Genel_KonumTakibiYapilsin'] as String?
+  ..genelKonumTakibiDakika = json['Genel_KonumTakibiDakika'] as int?
+  ..genelKonumTakibiMetre = json['Genel_KonumTakibiMetre'] as int?
+  ..uetdsEsyaAktif = json['UetdsEsyaAktif'] as bool?
+  ..satistaSiparisKullan = json['SatistaSiparisKullan'] as bool?
+  ..alistaSiparisKullan = json['AlistaSiparisKullan'] as bool?
+  ..sipOtoEslestir = json['SipOtoEslestir'] as bool?
+  ..sevkEmriTerminalFatura = json['SevkEmriTerminalFatura'] as bool?
+  ..sevkEmriTerminalIrsaliye = json['SevkEmriTerminalIrsaliye'] as bool?
+  ..sevkEmriTerminalTransfer = json['SevkEmriTerminalTransfer'] as bool?
+  ..sevkEmriHucreKontrol = json['SevkEmriHucreKontrol'] as bool?
+  ..sevkEmriMalTopGorunecekAlanlar =
+      (json['SevkEmriMalTopGorunecekAlanlar'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
+  ..seriSevkIrsaliye = json['Seri_SevkIrsaliye'] as String?
+  ..kontrolluBelgeAktarimAktif = json['KontrolluBelgeAktarimAktif'] as bool?
+  ..kontrolluBelgeAktarimBelgeNoGoster =
+      json['KontrolluBelgeAktarimBelgeNoGoster'] as List<dynamic>?
+  ..eMustahsilAktif = json['EMustahsilAktif'] as bool?;
 
 Map<String, dynamic> _$ParamModelToJson(ParamModel instance) {
   final val = <String, dynamic>{};
@@ -1005,20 +574,9 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) {
 }
 
 CariAktiviteTipleri _$CariAktiviteTipleriFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'CariAktiviteTipleri',
-      json,
-      ($checkedConvert) {
-        final val = CariAktiviteTipleri();
-        $checkedConvert('AKTIVITE_TIPI', (v) => val.aktiviteTipi = v as int?);
-        $checkedConvert('AKTIVITE_ADI', (v) => val.aktiviteAdi = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'aktiviteTipi': 'AKTIVITE_TIPI',
-        'aktiviteAdi': 'AKTIVITE_ADI'
-      },
-    );
+    CariAktiviteTipleri()
+      ..aktiviteTipi = json['AKTIVITE_TIPI'] as int?
+      ..aktiviteAdi = json['AKTIVITE_ADI'] as String?;
 
 Map<String, dynamic> _$CariAktiviteTipleriToJson(CariAktiviteTipleri instance) {
   final val = <String, dynamic>{};
@@ -1034,29 +592,12 @@ Map<String, dynamic> _$CariAktiviteTipleriToJson(CariAktiviteTipleri instance) {
   return val;
 }
 
-CekSenParam _$CekSenParamFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'CekSenParam',
-      json,
-      ($checkedConvert) {
-        final val = CekSenParam();
-        $checkedConvert('BELGE_TIPI', (v) => val.belgeTipi = v as String?);
-        $checkedConvert('DOVIZ_AKTIF', (v) => val.dovizAktif = v as String?);
-        $checkedConvert('VERILEN_KODU_ISTENSIN',
-            (v) => val.verilenKoduIstensin = v as String?);
-        $checkedConvert(
-            'EK_ACIKLAMA_KULLAN', (v) => val.ekAciklamaKullan = v as String?);
-        $checkedConvert(
-            'CIKISTA_BANKA_KODU', (v) => val.cikistaBankaKodu = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'belgeTipi': 'BELGE_TIPI',
-        'dovizAktif': 'DOVIZ_AKTIF',
-        'verilenKoduIstensin': 'VERILEN_KODU_ISTENSIN',
-        'ekAciklamaKullan': 'EK_ACIKLAMA_KULLAN',
-        'cikistaBankaKodu': 'CIKISTA_BANKA_KODU'
-      },
-    );
+CekSenParam _$CekSenParamFromJson(Map<String, dynamic> json) => CekSenParam()
+  ..belgeTipi = json['BELGE_TIPI'] as String?
+  ..dovizAktif = json['DOVIZ_AKTIF'] as String?
+  ..verilenKoduIstensin = json['VERILEN_KODU_ISTENSIN'] as String?
+  ..ekAciklamaKullan = json['EK_ACIKLAMA_KULLAN'] as String?
+  ..cikistaBankaKodu = json['CIKISTA_BANKA_KODU'] as String?;
 
 Map<String, dynamic> _$CekSenParamToJson(CekSenParam instance) {
   final val = <String, dynamic>{};
@@ -1075,27 +616,12 @@ Map<String, dynamic> _$CekSenParamToJson(CekSenParam instance) {
   return val;
 }
 
-DepoList _$DepoListFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'DepoList',
-      json,
-      ($checkedConvert) {
-        final val = DepoList();
-        $checkedConvert('DEPO_KODU', (v) => val.depoKodu = v as int?);
-        $checkedConvert('DEPO_TANIMI', (v) => val.depoTanimi = v as String?);
-        $checkedConvert(
-            'BAKIYE_TAKIBI', (v) => val.bakiyeTakibi = v as String?);
-        $checkedConvert('HUCRE_TAKIBI', (v) => val.hucreTakibi = v as String?);
-        $checkedConvert('SUBE_KODU', (v) => val.subeKodu = v as int?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'depoKodu': 'DEPO_KODU',
-        'depoTanimi': 'DEPO_TANIMI',
-        'bakiyeTakibi': 'BAKIYE_TAKIBI',
-        'hucreTakibi': 'HUCRE_TAKIBI',
-        'subeKodu': 'SUBE_KODU'
-      },
-    );
+DepoList _$DepoListFromJson(Map<String, dynamic> json) => DepoList()
+  ..depoKodu = json['DEPO_KODU'] as int?
+  ..depoTanimi = json['DEPO_TANIMI'] as String?
+  ..bakiyeTakibi = json['BAKIYE_TAKIBI'] as String?
+  ..hucreTakibi = json['HUCRE_TAKIBI'] as String?
+  ..subeKodu = json['SUBE_KODU'] as int?;
 
 Map<String, dynamic> _$DepoListToJson(DepoList instance) {
   final val = <String, dynamic>{};
@@ -1114,31 +640,14 @@ Map<String, dynamic> _$DepoListToJson(DepoList instance) {
   return val;
 }
 
-DovizList _$DovizListFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'DovizList',
-      json,
-      ($checkedConvert) {
-        final val = DovizList();
-        $checkedConvert('DOVIZ_KODU', (v) => val.dovizKodu = v as int?);
-        $checkedConvert('DOVIZ_TIPI', (v) => val.dovizTipi = v as int?);
-        $checkedConvert('ISIM', (v) => val.isim = v as String?);
-        $checkedConvert('ALIS', (v) => val.alis = (v as num?)?.toDouble());
-        $checkedConvert('SATIS', (v) => val.satis = (v as num?)?.toDouble());
-        $checkedConvert('EF_ALIS', (v) => val.efAlis = (v as num?)?.toDouble());
-        $checkedConvert(
-            'EF_SATIS', (v) => val.efSatis = (v as num?)?.toDouble());
-        return val;
-      },
-      fieldKeyMap: const {
-        'dovizKodu': 'DOVIZ_KODU',
-        'dovizTipi': 'DOVIZ_TIPI',
-        'isim': 'ISIM',
-        'alis': 'ALIS',
-        'satis': 'SATIS',
-        'efAlis': 'EF_ALIS',
-        'efSatis': 'EF_SATIS'
-      },
-    );
+DovizList _$DovizListFromJson(Map<String, dynamic> json) => DovizList()
+  ..dovizKodu = json['DOVIZ_KODU'] as int?
+  ..dovizTipi = json['DOVIZ_TIPI'] as int?
+  ..isim = json['ISIM'] as String?
+  ..alis = (json['ALIS'] as num?)?.toDouble()
+  ..satis = (json['SATIS'] as num?)?.toDouble()
+  ..efAlis = (json['EF_ALIS'] as num?)?.toDouble()
+  ..efSatis = (json['EF_SATIS'] as num?)?.toDouble();
 
 Map<String, dynamic> _$DovizListToJson(DovizList instance) {
   final val = <String, dynamic>{};
@@ -1159,59 +668,24 @@ Map<String, dynamic> _$DovizListToJson(DovizList instance) {
   return val;
 }
 
-KasaList _$KasaListFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'KasaList',
-      json,
-      ($checkedConvert) {
-        final val = KasaList();
-        $checkedConvert('KASA_KODU', (v) => val.kasaKodu = v as String?);
-        $checkedConvert('KASA_TANIMI', (v) => val.kasaTanimi = v as String?);
-        $checkedConvert('SUBE_KODU', (v) => val.subeKodu = v as int?);
-        $checkedConvert('DOVIZLI', (v) => val.dovizli = v as String?);
-        $checkedConvert('DOVIZ_TIPI', (v) => val.dovizTipi = v as int?);
-        $checkedConvert('KKART_KASASI', (v) => val.kkartKasasi = v as bool?);
-        $checkedConvert(
-            'DEVIR_TUTARI', (v) => val.devirTutari = (v as num?)?.toDouble());
-        $checkedConvert('DOVIZ_DEVIR_TUTARI',
-            (v) => val.dovizDevirTutari = (v as num?)?.toDouble());
-        $checkedConvert('DOVIZ_ADI', (v) => val.dovizAdi = v as String?);
-        $checkedConvert(
-            'TOPLAM_GIRIS', (v) => val.toplamGiris = (v as num?)?.toDouble());
-        $checkedConvert(
-            'TOPLAM_CIKIS', (v) => val.toplamCikis = (v as num?)?.toDouble());
-        $checkedConvert('BAKIYE', (v) => val.bakiye = (v as num?)?.toDouble());
-        $checkedConvert('DEVIRLI_BAKIYE',
-            (v) => val.devirliBakiye = (v as num?)?.toDouble());
-        $checkedConvert('DOVIZ_TOPLAM_GIRIS',
-            (v) => val.dovizToplamGiris = (v as num?)?.toDouble());
-        $checkedConvert('DOVIZ_TOPLAM_CIKIS',
-            (v) => val.dovizToplamCikis = (v as num?)?.toDouble());
-        $checkedConvert(
-            'DOVIZ_BAKIYE', (v) => val.dovizBakiye = (v as num?)?.toDouble());
-        $checkedConvert('DEVIRLI_DOVIZ_BAKIYE',
-            (v) => val.devirliDovizBakiye = (v as num?)?.toDouble());
-        return val;
-      },
-      fieldKeyMap: const {
-        'kasaKodu': 'KASA_KODU',
-        'kasaTanimi': 'KASA_TANIMI',
-        'subeKodu': 'SUBE_KODU',
-        'dovizli': 'DOVIZLI',
-        'dovizTipi': 'DOVIZ_TIPI',
-        'kkartKasasi': 'KKART_KASASI',
-        'devirTutari': 'DEVIR_TUTARI',
-        'dovizDevirTutari': 'DOVIZ_DEVIR_TUTARI',
-        'dovizAdi': 'DOVIZ_ADI',
-        'toplamGiris': 'TOPLAM_GIRIS',
-        'toplamCikis': 'TOPLAM_CIKIS',
-        'bakiye': 'BAKIYE',
-        'devirliBakiye': 'DEVIRLI_BAKIYE',
-        'dovizToplamGiris': 'DOVIZ_TOPLAM_GIRIS',
-        'dovizToplamCikis': 'DOVIZ_TOPLAM_CIKIS',
-        'dovizBakiye': 'DOVIZ_BAKIYE',
-        'devirliDovizBakiye': 'DEVIRLI_DOVIZ_BAKIYE'
-      },
-    );
+KasaList _$KasaListFromJson(Map<String, dynamic> json) => KasaList()
+  ..kasaKodu = json['KASA_KODU'] as String?
+  ..kasaTanimi = json['KASA_TANIMI'] as String?
+  ..subeKodu = json['SUBE_KODU'] as int?
+  ..dovizli = json['DOVIZLI'] as String?
+  ..dovizTipi = json['DOVIZ_TIPI'] as int?
+  ..kkartKasasi = json['KKART_KASASI'] as bool?
+  ..devirTutari = (json['DEVIR_TUTARI'] as num?)?.toDouble()
+  ..dovizDevirTutari = (json['DOVIZ_DEVIR_TUTARI'] as num?)?.toDouble()
+  ..dovizAdi = json['DOVIZ_ADI'] as String?
+  ..toplamGiris = (json['TOPLAM_GIRIS'] as num?)?.toDouble()
+  ..toplamCikis = (json['TOPLAM_CIKIS'] as num?)?.toDouble()
+  ..bakiye = (json['BAKIYE'] as num?)?.toDouble()
+  ..devirliBakiye = (json['DEVIRLI_BAKIYE'] as num?)?.toDouble()
+  ..dovizToplamGiris = (json['DOVIZ_TOPLAM_GIRIS'] as num?)?.toDouble()
+  ..dovizToplamCikis = (json['DOVIZ_TOPLAM_CIKIS'] as num?)?.toDouble()
+  ..dovizBakiye = (json['DOVIZ_BAKIYE'] as num?)?.toDouble()
+  ..devirliDovizBakiye = (json['DEVIRLI_DOVIZ_BAKIYE'] as num?)?.toDouble();
 
 Map<String, dynamic> _$KasaListToJson(KasaList instance) {
   final val = <String, dynamic>{};
@@ -1243,17 +717,9 @@ Map<String, dynamic> _$KasaListToJson(KasaList instance) {
 }
 
 ListCariOdemeKodu _$ListCariOdemeKoduFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'ListCariOdemeKodu',
-      json,
-      ($checkedConvert) {
-        final val = ListCariOdemeKodu();
-        $checkedConvert('ODEME_KODU', (v) => val.odemeKodu = v as String?);
-        $checkedConvert('ACIKLAMA', (v) => val.aciklama = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {'odemeKodu': 'ODEME_KODU', 'aciklama': 'ACIKLAMA'},
-    );
+    ListCariOdemeKodu()
+      ..odemeKodu = json['ODEME_KODU'] as String?
+      ..aciklama = json['ACIKLAMA'] as String?;
 
 Map<String, dynamic> _$ListCariOdemeKoduToJson(ListCariOdemeKodu instance) {
   final val = <String, dynamic>{};
@@ -1270,18 +736,10 @@ Map<String, dynamic> _$ListCariOdemeKoduToJson(ListCariOdemeKodu instance) {
 }
 
 ListFatuEkMaliyet _$ListFatuEkMaliyetFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'ListFatuEkMaliyet',
-      json,
-      ($checkedConvert) {
-        final val = ListFatuEkMaliyet();
-        $checkedConvert('NO', (v) => val.no = v as int?);
-        $checkedConvert('BELGE_TIPI', (v) => val.belgeTipi = v as String?);
-        $checkedConvert('ADI', (v) => val.adi = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {'no': 'NO', 'belgeTipi': 'BELGE_TIPI', 'adi': 'ADI'},
-    );
+    ListFatuEkMaliyet()
+      ..no = json['NO'] as int?
+      ..belgeTipi = json['BELGE_TIPI'] as String?
+      ..adi = json['ADI'] as String?;
 
 Map<String, dynamic> _$ListFatuEkMaliyetToJson(ListFatuEkMaliyet instance) {
   final val = <String, dynamic>{};
@@ -1298,20 +756,9 @@ Map<String, dynamic> _$ListFatuEkMaliyetToJson(ListFatuEkMaliyet instance) {
   return val;
 }
 
-ListIskTip _$ListIskTipFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'ListIskTip',
-      json,
-      ($checkedConvert) {
-        final val = ListIskTip();
-        $checkedConvert('ISKONTO_TIPI', (v) => val.iskontoTipi = v as int?);
-        $checkedConvert('ACIKLAMA', (v) => val.aciklama = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'iskontoTipi': 'ISKONTO_TIPI',
-        'aciklama': 'ACIKLAMA'
-      },
-    );
+ListIskTip _$ListIskTipFromJson(Map<String, dynamic> json) => ListIskTip()
+  ..iskontoTipi = json['ISKONTO_TIPI'] as int?
+  ..aciklama = json['ACIKLAMA'] as String?;
 
 Map<String, dynamic> _$ListIskTipToJson(ListIskTip instance) {
   final val = <String, dynamic>{};
@@ -1328,26 +775,12 @@ Map<String, dynamic> _$ListIskTipToJson(ListIskTip instance) {
 }
 
 ListOzelKodTum _$ListOzelKodTumFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'ListOzelKodTum',
-      json,
-      ($checkedConvert) {
-        final val = ListOzelKodTum();
-        $checkedConvert('KOD_TIPI', (v) => val.kodTipi = v as int?);
-        $checkedConvert('BELGE_TIPI', (v) => val.belgeTipi = v as String?);
-        $checkedConvert('KOD', (v) => val.kod = v as String?);
-        $checkedConvert('ACIKLAMA', (v) => val.aciklama = v as String?);
-        $checkedConvert('FIYAT_SIRASI', (v) => val.fiyatSirasi = v as int?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'kodTipi': 'KOD_TIPI',
-        'belgeTipi': 'BELGE_TIPI',
-        'kod': 'KOD',
-        'aciklama': 'ACIKLAMA',
-        'fiyatSirasi': 'FIYAT_SIRASI'
-      },
-    );
+    ListOzelKodTum()
+      ..kodTipi = json['KOD_TIPI'] as int?
+      ..belgeTipi = json['BELGE_TIPI'] as String?
+      ..kod = json['KOD'] as String?
+      ..aciklama = json['ACIKLAMA'] as String?
+      ..fiyatSirasi = json['FIYAT_SIRASI'] as int?;
 
 Map<String, dynamic> _$ListOzelKodTumToJson(ListOzelKodTum instance) {
   final val = <String, dynamic>{};
@@ -1366,19 +799,10 @@ Map<String, dynamic> _$ListOzelKodTumToJson(ListOzelKodTum instance) {
   return val;
 }
 
-MapEkAlanlar _$MapEkAlanlarFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'MapEkAlanlar',
-      json,
-      ($checkedConvert) {
-        final val = MapEkAlanlar();
-        $checkedConvert('caption', (v) => val.caption = v as String?);
-        $checkedConvert('field_name', (v) => val.fieldName = v as String?);
-        $checkedConvert('veri_tipi', (v) => val.veriTipi = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {'fieldName': 'field_name', 'veriTipi': 'veri_tipi'},
-    );
+MapEkAlanlar _$MapEkAlanlarFromJson(Map<String, dynamic> json) => MapEkAlanlar()
+  ..caption = json['caption'] as String?
+  ..fieldName = json['field_name'] as String?
+  ..veriTipi = json['veri_tipi'] as String?;
 
 Map<String, dynamic> _$MapEkAlanlarToJson(MapEkAlanlar instance) {
   final val = <String, dynamic>{};
@@ -1396,48 +820,23 @@ Map<String, dynamic> _$MapEkAlanlarToJson(MapEkAlanlar instance) {
 }
 
 MapCariKullSahalar _$MapCariKullSahalarFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'MapCariKullSahalar',
-      json,
-      ($checkedConvert) {
-        final val = MapCariKullSahalar();
-        $checkedConvert('1S', (v) => val.the1S = v as String?);
-        $checkedConvert('2S', (v) => val.the2S = v as String?);
-        $checkedConvert('3S', (v) => val.the3S = v as String?);
-        $checkedConvert('4S', (v) => val.the4S = v as String?);
-        $checkedConvert('5S', (v) => val.the5S = v as String?);
-        $checkedConvert('6S', (v) => val.the6S = v as String?);
-        $checkedConvert('7S', (v) => val.the7S = v as String?);
-        $checkedConvert('8S', (v) => val.the8S = v as String?);
-        $checkedConvert('1N', (v) => val.the1N = v as String?);
-        $checkedConvert('2N', (v) => val.the2N = v as String?);
-        $checkedConvert('3N', (v) => val.the3N = v as String?);
-        $checkedConvert('4N', (v) => val.the4N = v as String?);
-        $checkedConvert('5N', (v) => val.the5N = v as String?);
-        $checkedConvert('6N', (v) => val.the6N = v as String?);
-        $checkedConvert('7N', (v) => val.the7N = v as String?);
-        $checkedConvert('8N', (v) => val.the8N = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'the1S': '1S',
-        'the2S': '2S',
-        'the3S': '3S',
-        'the4S': '4S',
-        'the5S': '5S',
-        'the6S': '6S',
-        'the7S': '7S',
-        'the8S': '8S',
-        'the1N': '1N',
-        'the2N': '2N',
-        'the3N': '3N',
-        'the4N': '4N',
-        'the5N': '5N',
-        'the6N': '6N',
-        'the7N': '7N',
-        'the8N': '8N'
-      },
-    );
+    MapCariKullSahalar()
+      ..the1S = json['1S'] as String?
+      ..the2S = json['2S'] as String?
+      ..the3S = json['3S'] as String?
+      ..the4S = json['4S'] as String?
+      ..the5S = json['5S'] as String?
+      ..the6S = json['6S'] as String?
+      ..the7S = json['7S'] as String?
+      ..the8S = json['8S'] as String?
+      ..the1N = json['1N'] as String?
+      ..the2N = json['2N'] as String?
+      ..the3N = json['3N'] as String?
+      ..the4N = json['4N'] as String?
+      ..the5N = json['5N'] as String?
+      ..the6N = json['6N'] as String?
+      ..the7N = json['7N'] as String?
+      ..the8N = json['8N'] as String?;
 
 Map<String, dynamic> _$MapCariKullSahalarToJson(MapCariKullSahalar instance) {
   final val = <String, dynamic>{};
@@ -1469,28 +868,13 @@ Map<String, dynamic> _$MapCariKullSahalarToJson(MapCariKullSahalar instance) {
 
 MapKdvSifirBelgeTipiOzelKod2 _$MapKdvSifirBelgeTipiOzelKod2FromJson(
         Map<String, dynamic> json) =>
-    $checkedCreate(
-      'MapKdvSifirBelgeTipiOzelKod2',
-      json,
-      ($checkedConvert) {
-        final val = MapKdvSifirBelgeTipiOzelKod2();
-        $checkedConvert('DC', (v) => val.dc = v as String?);
-        $checkedConvert('AC', (v) => val.ac = v as String?);
-        $checkedConvert('MS', (v) => val.ms = v as String?);
-        $checkedConvert('SI', (v) => val.si = v as String?);
-        $checkedConvert('SF', (v) => val.sf = v as String?);
-        $checkedConvert('STEK', (v) => val.stek = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'dc': 'DC',
-        'ac': 'AC',
-        'ms': 'MS',
-        'si': 'SI',
-        'sf': 'SF',
-        'stek': 'STEK'
-      },
-    );
+    MapKdvSifirBelgeTipiOzelKod2()
+      ..dc = json['DC'] as String?
+      ..ac = json['AC'] as String?
+      ..ms = json['MS'] as String?
+      ..si = json['SI'] as String?
+      ..sf = json['SF'] as String?
+      ..stek = json['STEK'] as String?;
 
 Map<String, dynamic> _$MapKdvSifirBelgeTipiOzelKod2ToJson(
     MapKdvSifirBelgeTipiOzelKod2 instance) {
@@ -1512,28 +896,13 @@ Map<String, dynamic> _$MapKdvSifirBelgeTipiOzelKod2ToJson(
 }
 
 MapStokGrupAdlari _$MapStokGrupAdlariFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'MapStokGrupAdlari',
-      json,
-      ($checkedConvert) {
-        final val = MapStokGrupAdlari();
-        $checkedConvert('GRUP_KODU', (v) => val.grupKodu = v as String?);
-        $checkedConvert('KOD1', (v) => val.kod1 = v);
-        $checkedConvert('KOD2', (v) => val.kod2 = v);
-        $checkedConvert('KOD3', (v) => val.kod3 = v);
-        $checkedConvert('KOD4', (v) => val.kod4 = v);
-        $checkedConvert('KOD5', (v) => val.kod5 = v);
-        return val;
-      },
-      fieldKeyMap: const {
-        'grupKodu': 'GRUP_KODU',
-        'kod1': 'KOD1',
-        'kod2': 'KOD2',
-        'kod3': 'KOD3',
-        'kod4': 'KOD4',
-        'kod5': 'KOD5'
-      },
-    );
+    MapStokGrupAdlari()
+      ..grupKodu = json['GRUP_KODU'] as String?
+      ..kod1 = json['KOD1']
+      ..kod2 = json['KOD2']
+      ..kod3 = json['KOD3']
+      ..kod4 = json['KOD4']
+      ..kod5 = json['KOD5'];
 
 Map<String, dynamic> _$MapStokGrupAdlariToJson(MapStokGrupAdlari instance) {
   final val = <String, dynamic>{};
@@ -1554,48 +923,23 @@ Map<String, dynamic> _$MapStokGrupAdlariToJson(MapStokGrupAdlari instance) {
 }
 
 MapStokKullSahalar _$MapStokKullSahalarFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'MapStokKullSahalar',
-      json,
-      ($checkedConvert) {
-        final val = MapStokKullSahalar();
-        $checkedConvert('1S', (v) => val.the1S = v as String?);
-        $checkedConvert('2S', (v) => val.the2S = v as String?);
-        $checkedConvert('3S', (v) => val.the3S = v as String?);
-        $checkedConvert('4S', (v) => val.the4S = v as String?);
-        $checkedConvert('5S', (v) => val.the5S = v as String?);
-        $checkedConvert('6S', (v) => val.the6S = v as String?);
-        $checkedConvert('7S', (v) => val.the7S = v as String?);
-        $checkedConvert('8S', (v) => val.the8S = v as String?);
-        $checkedConvert('1N', (v) => val.the1N = v as String?);
-        $checkedConvert('2N', (v) => val.the2N = v as String?);
-        $checkedConvert('3N', (v) => val.the3N = v as String?);
-        $checkedConvert('4N', (v) => val.the4N = v as String?);
-        $checkedConvert('5N', (v) => val.the5N = v as String?);
-        $checkedConvert('6N', (v) => val.the6N = v as String?);
-        $checkedConvert('7N', (v) => val.the7N = v as String?);
-        $checkedConvert('8N', (v) => val.the8N = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'the1S': '1S',
-        'the2S': '2S',
-        'the3S': '3S',
-        'the4S': '4S',
-        'the5S': '5S',
-        'the6S': '6S',
-        'the7S': '7S',
-        'the8S': '8S',
-        'the1N': '1N',
-        'the2N': '2N',
-        'the3N': '3N',
-        'the4N': '4N',
-        'the5N': '5N',
-        'the6N': '6N',
-        'the7N': '7N',
-        'the8N': '8N'
-      },
-    );
+    MapStokKullSahalar()
+      ..the1S = json['1S'] as String?
+      ..the2S = json['2S'] as String?
+      ..the3S = json['3S'] as String?
+      ..the4S = json['4S'] as String?
+      ..the5S = json['5S'] as String?
+      ..the6S = json['6S'] as String?
+      ..the7S = json['7S'] as String?
+      ..the8S = json['8S'] as String?
+      ..the1N = json['1N'] as String?
+      ..the2N = json['2N'] as String?
+      ..the3N = json['3N'] as String?
+      ..the4N = json['4N'] as String?
+      ..the5N = json['5N'] as String?
+      ..the6N = json['6N'] as String?
+      ..the7N = json['7N'] as String?
+      ..the8N = json['8N'] as String?;
 
 Map<String, dynamic> _$MapStokKullSahalarToJson(MapStokKullSahalar instance) {
   final val = <String, dynamic>{};
@@ -1626,35 +970,14 @@ Map<String, dynamic> _$MapStokKullSahalarToJson(MapStokKullSahalar instance) {
 }
 
 MustahsilParam _$MustahsilParamFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'MustahsilParam',
-      json,
-      ($checkedConvert) {
-        final val = MustahsilParam();
-        $checkedConvert(
-            'STOPAJ_ORANI', (v) => val.stopajOrani = (v as num?)?.toDouble());
-        $checkedConvert(
-            'FON_ORANI', (v) => val.fonOrani = (v as num?)?.toDouble());
-        $checkedConvert(
-            'BORSA_ORANI', (v) => val.borsaOrani = (v as num?)?.toDouble());
-        $checkedConvert('BAGKUR_ORANI', (v) => val.bagkurOrani = v as int?);
-        $checkedConvert('BAGKUR_YB', (v) => val.bagkurYb = v as String?);
-        $checkedConvert(
-            'MERA_ORANI', (v) => val.meraOrani = (v as num?)?.toDouble());
-        $checkedConvert('BORSA_UCRET_DUZENLEMESI',
-            (v) => val.borsaUcretDuzenlemesi = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'stopajOrani': 'STOPAJ_ORANI',
-        'fonOrani': 'FON_ORANI',
-        'borsaOrani': 'BORSA_ORANI',
-        'bagkurOrani': 'BAGKUR_ORANI',
-        'bagkurYb': 'BAGKUR_YB',
-        'meraOrani': 'MERA_ORANI',
-        'borsaUcretDuzenlemesi': 'BORSA_UCRET_DUZENLEMESI'
-      },
-    );
+    MustahsilParam()
+      ..stopajOrani = (json['STOPAJ_ORANI'] as num?)?.toDouble()
+      ..fonOrani = (json['FON_ORANI'] as num?)?.toDouble()
+      ..borsaOrani = (json['BORSA_ORANI'] as num?)?.toDouble()
+      ..bagkurOrani = json['BAGKUR_ORANI'] as int?
+      ..bagkurYb = json['BAGKUR_YB'] as String?
+      ..meraOrani = (json['MERA_ORANI'] as num?)?.toDouble()
+      ..borsaUcretDuzenlemesi = json['BORSA_UCRET_DUZENLEMESI'] as String?;
 
 Map<String, dynamic> _$MustahsilParamToJson(MustahsilParam instance) {
   final val = <String, dynamic>{};
@@ -1676,38 +999,18 @@ Map<String, dynamic> _$MustahsilParamToJson(MustahsilParam instance) {
 }
 
 NetFectDizaynList _$NetFectDizaynListFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'NetFectDizaynList',
-      json,
-      ($checkedConvert) {
-        final val = NetFectDizaynList();
-        $checkedConvert('ID', (v) => val.id = v as int?);
-        $checkedConvert('DIZAYN_YERI', (v) => val.dizaynYeri = v as String?);
-        $checkedConvert('DIZAYN_YOLU', (v) => val.dizaynYolu = v as String?);
-        $checkedConvert('DIZAYN_ADI', (v) => val.dizaynAdi = v as String?);
-        $checkedConvert('OZEL_KOD', (v) => val.ozelKod = v as String?);
-        $checkedConvert('KOPYA_SAYISI', (v) => val.kopyaSayisi = v as int?);
-        $checkedConvert('SABLON_VAR', (v) => val.sablonVar = v as String?);
-        $checkedConvert('AKTIF', (v) => val.aktif = v as String?);
-        $checkedConvert('DOSYA_ADI', (v) => val.dosyaAdi = v as String?);
-        $checkedConvert('PARAMETRELER', (v) => val.parametreler = v as String?);
-        $checkedConvert('VARSAYILAN_MI', (v) => val.varsayilanMi = v as bool?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'id': 'ID',
-        'dizaynYeri': 'DIZAYN_YERI',
-        'dizaynYolu': 'DIZAYN_YOLU',
-        'dizaynAdi': 'DIZAYN_ADI',
-        'ozelKod': 'OZEL_KOD',
-        'kopyaSayisi': 'KOPYA_SAYISI',
-        'sablonVar': 'SABLON_VAR',
-        'aktif': 'AKTIF',
-        'dosyaAdi': 'DOSYA_ADI',
-        'parametreler': 'PARAMETRELER',
-        'varsayilanMi': 'VARSAYILAN_MI'
-      },
-    );
+    NetFectDizaynList()
+      ..id = json['ID'] as int?
+      ..dizaynYeri = json['DIZAYN_YERI'] as String?
+      ..dizaynYolu = json['DIZAYN_YOLU'] as String?
+      ..dizaynAdi = json['DIZAYN_ADI'] as String?
+      ..ozelKod = json['OZEL_KOD'] as String?
+      ..kopyaSayisi = json['KOPYA_SAYISI'] as int?
+      ..sablonVar = json['SABLON_VAR'] as String?
+      ..aktif = json['AKTIF'] as String?
+      ..dosyaAdi = json['DOSYA_ADI'] as String?
+      ..parametreler = json['PARAMETRELER'] as String?
+      ..varsayilanMi = json['VARSAYILAN_MI'] as bool?;
 
 Map<String, dynamic> _$NetFectDizaynListToJson(NetFectDizaynList instance) {
   final val = <String, dynamic>{};
@@ -1734,32 +1037,15 @@ Map<String, dynamic> _$NetFectDizaynListToJson(NetFectDizaynList instance) {
 
 NetsisOndalikResponseModel _$NetsisOndalikResponseModelFromJson(
         Map<String, dynamic> json) =>
-    $checkedCreate(
-      'NetsisOndalikResponseModel',
-      json,
-      ($checkedConvert) {
-        final val = NetsisOndalikResponseModel();
-        $checkedConvert('MODUL', (v) => val.modul = v as String?);
-        $checkedConvert('MIKTAR', (v) => val.miktar = v as int?);
-        $checkedConvert('FIYAT', (v) => val.fiyat = v as int?);
-        $checkedConvert('TUTAR', (v) => val.tutar = v as int?);
-        $checkedConvert('KUR', (v) => val.kur = v as int?);
-        $checkedConvert('DOVIZ', (v) => val.doviz = v as int?);
-        $checkedConvert('DOVIZ_FIYATI', (v) => val.dovizFiyati = v as int?);
-        $checkedConvert('ORAN', (v) => val.oran = v as int?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'modul': 'MODUL',
-        'miktar': 'MIKTAR',
-        'fiyat': 'FIYAT',
-        'tutar': 'TUTAR',
-        'kur': 'KUR',
-        'doviz': 'DOVIZ',
-        'dovizFiyati': 'DOVIZ_FIYATI',
-        'oran': 'ORAN'
-      },
-    );
+    NetsisOndalikResponseModel()
+      ..modul = json['MODUL'] as String?
+      ..miktar = json['MIKTAR'] as int?
+      ..fiyat = json['FIYAT'] as int?
+      ..tutar = json['TUTAR'] as int?
+      ..kur = json['KUR'] as int?
+      ..doviz = json['DOVIZ'] as int?
+      ..dovizFiyati = json['DOVIZ_FIYATI'] as int?
+      ..oran = json['ORAN'] as int?;
 
 Map<String, dynamic> _$NetsisOndalikResponseModelToJson(
     NetsisOndalikResponseModel instance) {
@@ -1782,23 +1068,9 @@ Map<String, dynamic> _$NetsisOndalikResponseModelToJson(
   return val;
 }
 
-PlasiyerList _$PlasiyerListFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'PlasiyerList',
-      json,
-      ($checkedConvert) {
-        final val = PlasiyerList();
-        $checkedConvert(
-            'PLASIYER_KODU', (v) => val.plasiyerKodu = v as String?);
-        $checkedConvert(
-            'PLASIYER_ACIKLAMA', (v) => val.plasiyerAciklama = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'plasiyerKodu': 'PLASIYER_KODU',
-        'plasiyerAciklama': 'PLASIYER_ACIKLAMA'
-      },
-    );
+PlasiyerList _$PlasiyerListFromJson(Map<String, dynamic> json) => PlasiyerList()
+  ..plasiyerKodu = json['PLASIYER_KODU'] as String?
+  ..plasiyerAciklama = json['PLASIYER_ACIKLAMA'] as String?;
 
 Map<String, dynamic> _$PlasiyerListToJson(PlasiyerList instance) {
   final val = <String, dynamic>{};
@@ -1815,38 +1087,18 @@ Map<String, dynamic> _$PlasiyerListToJson(PlasiyerList instance) {
 }
 
 SatirAcikBaslikList _$SatirAcikBaslikListFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'SatirAcikBaslikList',
-      json,
-      ($checkedConvert) {
-        final val = SatirAcikBaslikList();
-        $checkedConvert('BELGE_KODU', (v) => val.belgeKodu = v as String?);
-        $checkedConvert('ACIKLAMA1', (v) => val.aciklama1 = v as String?);
-        $checkedConvert('ACIKLAMA2', (v) => val.aciklama2 = v as String?);
-        $checkedConvert('ACIKLAMA3', (v) => val.aciklama3 = v as String?);
-        $checkedConvert('ACIKLAMA4', (v) => val.aciklama4 = v as String?);
-        $checkedConvert('ACIKLAMA5', (v) => val.aciklama5 = v as String?);
-        $checkedConvert('ACIKLAMA6', (v) => val.aciklama6 = v as String?);
-        $checkedConvert('ACIKLAMA7', (v) => val.aciklama7 = v as String?);
-        $checkedConvert('ACIKLAMA8', (v) => val.aciklama8 = v as String?);
-        $checkedConvert('ACIKLAMA9', (v) => val.aciklama9 = v as String?);
-        $checkedConvert('ACIKLAMA10', (v) => val.aciklama10 = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'belgeKodu': 'BELGE_KODU',
-        'aciklama1': 'ACIKLAMA1',
-        'aciklama2': 'ACIKLAMA2',
-        'aciklama3': 'ACIKLAMA3',
-        'aciklama4': 'ACIKLAMA4',
-        'aciklama5': 'ACIKLAMA5',
-        'aciklama6': 'ACIKLAMA6',
-        'aciklama7': 'ACIKLAMA7',
-        'aciklama8': 'ACIKLAMA8',
-        'aciklama9': 'ACIKLAMA9',
-        'aciklama10': 'ACIKLAMA10'
-      },
-    );
+    SatirAcikBaslikList()
+      ..belgeKodu = json['BELGE_KODU'] as String?
+      ..aciklama1 = json['ACIKLAMA1'] as String?
+      ..aciklama2 = json['ACIKLAMA2'] as String?
+      ..aciklama3 = json['ACIKLAMA3'] as String?
+      ..aciklama4 = json['ACIKLAMA4'] as String?
+      ..aciklama5 = json['ACIKLAMA5'] as String?
+      ..aciklama6 = json['ACIKLAMA6'] as String?
+      ..aciklama7 = json['ACIKLAMA7'] as String?
+      ..aciklama8 = json['ACIKLAMA8'] as String?
+      ..aciklama9 = json['ACIKLAMA9'] as String?
+      ..aciklama10 = json['ACIKLAMA10'] as String?;
 
 Map<String, dynamic> _$SatirAcikBaslikListToJson(SatirAcikBaslikList instance) {
   final val = <String, dynamic>{};
@@ -1873,17 +1125,9 @@ Map<String, dynamic> _$SatirAcikBaslikListToJson(SatirAcikBaslikList instance) {
 
 StokDetayliAramaAlanlar _$StokDetayliAramaAlanlarFromJson(
         Map<String, dynamic> json) =>
-    $checkedCreate(
-      'StokDetayliAramaAlanlar',
-      json,
-      ($checkedConvert) {
-        final val = StokDetayliAramaAlanlar();
-        $checkedConvert('SearchField', (v) => val.searchField = v as String?);
-        $checkedConvert('Name', (v) => val.name = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {'searchField': 'SearchField', 'name': 'Name'},
-    );
+    StokDetayliAramaAlanlar()
+      ..searchField = json['SearchField'] as String?
+      ..name = json['Name'] as String?;
 
 Map<String, dynamic> _$StokDetayliAramaAlanlarToJson(
     StokDetayliAramaAlanlar instance) {
@@ -1900,58 +1144,26 @@ Map<String, dynamic> _$StokDetayliAramaAlanlarToJson(
   return val;
 }
 
-SubeList _$SubeListFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'SubeList',
-      json,
-      ($checkedConvert) {
-        final val = SubeList();
-        $checkedConvert('SIRKET', (v) => val.sirket = v as String?);
-        $checkedConvert('ISLETME_KODU', (v) => val.isletmeKodu = v as int?);
-        $checkedConvert('SUBE_ADI', (v) => val.subeAdi = v as String?);
-        $checkedConvert('ISLETME_ADI', (v) => val.isletmeAdi = v as String?);
-        $checkedConvert(
-            'LOKAL_DEPO_AKTIF', (v) => val.lokalDepoAktif = v as bool?);
-        $checkedConvert('MERKEZMI', (v) => val.merkezmi = v as String?);
-        $checkedConvert('ADRES', (v) => val.adres = v as String?);
-        $checkedConvert('TELEFON', (v) => val.telefon = v as String?);
-        $checkedConvert('FAKS', (v) => val.faks = v as String?);
-        $checkedConvert('EMAIL', (v) => val.email = v as String?);
-        $checkedConvert('IL_ADI', (v) => val.ilAdi = v as String?);
-        $checkedConvert('ILCE', (v) => val.ilce = v as String?);
-        $checkedConvert(
-            'VERGI_NUMARASI', (v) => val.vergiNumarasi = v as String?);
-        $checkedConvert(
-            'VERGI_DAIRESI', (v) => val.vergiDairesi = v as String?);
-        $checkedConvert('PARA_BIRIMI', (v) => val.paraBirimi = v as String?);
-        $checkedConvert(
-            'PARA_BIRIMI_KUSURAT', (v) => val.paraBirimiKusurat = v as String?);
-        $checkedConvert('SUBE_KODU', (v) => val.subeKodu = v as int?);
-        $checkedConvert('CARI_KODU', (v) => val.cariKodu = v as String?);
-        $checkedConvert('CARI_ADI', (v) => val.cariAdi = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'sirket': 'SIRKET',
-        'isletmeKodu': 'ISLETME_KODU',
-        'subeAdi': 'SUBE_ADI',
-        'isletmeAdi': 'ISLETME_ADI',
-        'lokalDepoAktif': 'LOKAL_DEPO_AKTIF',
-        'merkezmi': 'MERKEZMI',
-        'adres': 'ADRES',
-        'telefon': 'TELEFON',
-        'faks': 'FAKS',
-        'email': 'EMAIL',
-        'ilAdi': 'IL_ADI',
-        'ilce': 'ILCE',
-        'vergiNumarasi': 'VERGI_NUMARASI',
-        'vergiDairesi': 'VERGI_DAIRESI',
-        'paraBirimi': 'PARA_BIRIMI',
-        'paraBirimiKusurat': 'PARA_BIRIMI_KUSURAT',
-        'subeKodu': 'SUBE_KODU',
-        'cariKodu': 'CARI_KODU',
-        'cariAdi': 'CARI_ADI'
-      },
-    );
+SubeList _$SubeListFromJson(Map<String, dynamic> json) => SubeList()
+  ..sirket = json['SIRKET'] as String?
+  ..isletmeKodu = json['ISLETME_KODU'] as int?
+  ..subeAdi = json['SUBE_ADI'] as String?
+  ..isletmeAdi = json['ISLETME_ADI'] as String?
+  ..lokalDepoAktif = json['LOKAL_DEPO_AKTIF'] as bool?
+  ..merkezmi = json['MERKEZMI'] as String?
+  ..adres = json['ADRES'] as String?
+  ..telefon = json['TELEFON'] as String?
+  ..faks = json['FAKS'] as String?
+  ..email = json['EMAIL'] as String?
+  ..ilAdi = json['IL_ADI'] as String?
+  ..ilce = json['ILCE'] as String?
+  ..vergiNumarasi = json['VERGI_NUMARASI'] as String?
+  ..vergiDairesi = json['VERGI_DAIRESI'] as String?
+  ..paraBirimi = json['PARA_BIRIMI'] as String?
+  ..paraBirimiKusurat = json['PARA_BIRIMI_KUSURAT'] as String?
+  ..subeKodu = json['SUBE_KODU'] as int?
+  ..cariKodu = json['CARI_KODU'] as String?
+  ..cariAdi = json['CARI_ADI'] as String?;
 
 Map<String, dynamic> _$SubeListToJson(SubeList instance) {
   final val = <String, dynamic>{};
@@ -1984,164 +1196,60 @@ Map<String, dynamic> _$SubeListToJson(SubeList instance) {
   return val;
 }
 
-TalTekParam _$TalTekParamFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'TalTekParam',
-      json,
-      ($checkedConvert) {
-        final val = TalTekParam();
-        $checkedConvert('TIP', (v) => val.tip = v as int?);
-        $checkedConvert('BELGE_TIPI', (v) => val.belgeTipi = v as String?);
-        $checkedConvert('DOVIZ_TAKIP', (v) => val.dovizTakip = v as String?);
-        $checkedConvert('SATIR_ISKONTO_SAYISI',
-            (v) => val.satirIskontoSayisi = v as String?);
-        $checkedConvert('FARKLI_BIRIMLERDEN_ISLEM',
-            (v) => val.farkliBirimlerdenIslem = v as String?);
-        $checkedConvert(
-            'FARKLI_TESLIM_YERI', (v) => val.farkliTeslimYeri = v as String?);
-        $checkedConvert('DEPO_STOK_KARTINDAN_GELSIN',
-            (v) => val.depoStokKartindanGelsin = v as String?);
-        $checkedConvert('EKACIKLAMALAR_AKTIF',
-            (v) => val.ekaciklamalarAktif = v as String?);
-        $checkedConvert(
-            'OZEL_KOD1_AKTIF', (v) => val.ozelKod1Aktif = v as String?);
-        $checkedConvert(
-            'OZEL_KOD1_SECIM11', (v) => val.ozelKod1Secim11 = v as String?);
-        $checkedConvert(
-            'OZEL_KOD1_SECIM21', (v) => val.ozelKod1Secim21 = v as String?);
-        $checkedConvert(
-            'OZEL_KOD1_SECIM31', (v) => val.ozelKod1Secim31 = v as String?);
-        $checkedConvert(
-            'OZEL_KOD1_SECIM41', (v) => val.ozelKod1Secim41 = v as String?);
-        $checkedConvert(
-            'OZEL_KOD2_AKTIF', (v) => val.ozelKod2Aktif = v as String?);
-        $checkedConvert('ACIKLAR1', (v) => val.aciklar1 = v as String?);
-        $checkedConvert('ACIKLAR2', (v) => val.aciklar2 = v as String?);
-        $checkedConvert(
-            'SATIRDA_KDV_SOR', (v) => val.satirdaKdvSor = v as String?);
-        $checkedConvert('SATIR_TESLIM_TAR_SOR',
-            (v) => val.satirTeslimTarSor = v as String?);
-        $checkedConvert(
-            'DOVIZ_TAKIP_HANGISI', (v) => val.dovizTakipHangisi = v as int?);
-        $checkedConvert('SATIR_EKALAN2_KULLAN',
-            (v) => val.satirEkalan2Kullan = v as String?);
-        $checkedConvert(
-            'HIZMET_UYGULAMASI', (v) => val.hizmetUygulamasi = v as String?);
-        $checkedConvert(
-            'HIZMET_DEPO_KODU', (v) => val.hizmetDepoKodu = v as int?);
-        $checkedConvert('KALEMLERDE_ACIKLAMA_AKTIF',
-            (v) => val.kalemlerdeAciklamaAktif = v as String?);
-        $checkedConvert(
-            'ONAY_SISTEMI_KULLAN', (v) => val.onaySistemiKullan = v as String?);
-        $checkedConvert('KDV_HARIC', (v) => val.kdvHaric = v as String?);
-        $checkedConvert(
-            'KDV_DAHIL_HARIC_SOR', (v) => val.kdvDahilHaricSor = v as String?);
-        $checkedConvert(
-            'OZEL_KOD2_TABLODAN', (v) => val.ozelKod2Tablodan = v as String?);
-        $checkedConvert(
-            'MUHREFKOD_SORULSUN', (v) => val.muhrefkodSorulsun = v as String?);
-        $checkedConvert(
-            'TOPLU_DEPO_KULLAN', (v) => val.topluDepoKullan = v as String?);
-        $checkedConvert('KOSUL_AKTIF', (v) => val.kosulAktif = v as String?);
-        $checkedConvert(
-            'SATIR_ISKONTOSU', (v) => val.satirIskontosu = v as String?);
-        $checkedConvert(
-            'YUZDE_SORULSUN', (v) => val.yuzdeSorulsun = v as String?);
-        $checkedConvert(
-            'MAL_FAZLASI_ISKONTO', (v) => val.malFazlasiIskonto = v as String?);
-        $checkedConvert(
-            'GEN_ISK1_AKTIF', (v) => val.genIsk1Aktif = v as String?);
-        $checkedConvert('GEN_ISK1_ADI', (v) => val.genIsk1Adi = v as String?);
-        $checkedConvert(
-            'GEN_ISK2_AKTIF', (v) => val.genIsk2Aktif = v as String?);
-        $checkedConvert('GEN_ISK2_ADI', (v) => val.genIsk2Adi = v as String?);
-        $checkedConvert(
-            'GEN_ISK3_AKTIF', (v) => val.genIsk3Aktif = v as String?);
-        $checkedConvert('GEN_ISK3_ADI', (v) => val.genIsk3Adi = v as String?);
-        $checkedConvert(
-            'OZEL_KOD1_TABLODAN', (v) => val.ozelKod1Tablodan = v as String?);
-        $checkedConvert(
-            'ACIKLAMA_AKTIF', (v) => val.aciklamaAktif = v as String?);
-        $checkedConvert('MIKTAR2_SOR', (v) => val.miktar2Sor = v as String?);
-        $checkedConvert(
-            'MIKTAR_BIR_GELSIN', (v) => val.miktarBirGelsin = v as String?);
-        $checkedConvert('VARSAYILAN_MUHREFKOD',
-            (v) => val.varsayilanMuhrefkod = v as String?);
-        $checkedConvert('TUTARDAN_BIRIM_FIATA',
-            (v) => val.tutardanBirimFiata = v as String?);
-        $checkedConvert('CARI_ISK_SATIRA_UYGULA',
-            (v) => val.cariIskSatiraUygula = v as String?);
-        $checkedConvert(
-            'MIKTAR_SIFIR_OLAMAZ', (v) => val.miktarSifirOlamaz = v as String?);
-        $checkedConvert(
-            'FAT_ALTM1_VARMI', (v) => val.fatAltm1Varmi = v as String?);
-        $checkedConvert(
-            'FAT_ALTM2_VARMI', (v) => val.fatAltm2Varmi = v as String?);
-        $checkedConvert(
-            'FAT_ALTM1_TANIM', (v) => val.fatAltm1Tanim = v as String?);
-        $checkedConvert(
-            'FAT_ALTM2_TANIM', (v) => val.fatAltm2Tanim = v as String?);
-        $checkedConvert('KDV_SIFIRLANACAK_OZELKOD2',
-            (v) => val.kdvSifirlanacakOzelkod2 = v as String?);
-        $checkedConvert(
-            'KOSUL_SATIRDA_AKTIF', (v) => val.kosulSatirdaAktif = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'tip': 'TIP',
-        'belgeTipi': 'BELGE_TIPI',
-        'dovizTakip': 'DOVIZ_TAKIP',
-        'satirIskontoSayisi': 'SATIR_ISKONTO_SAYISI',
-        'farkliBirimlerdenIslem': 'FARKLI_BIRIMLERDEN_ISLEM',
-        'farkliTeslimYeri': 'FARKLI_TESLIM_YERI',
-        'depoStokKartindanGelsin': 'DEPO_STOK_KARTINDAN_GELSIN',
-        'ekaciklamalarAktif': 'EKACIKLAMALAR_AKTIF',
-        'ozelKod1Aktif': 'OZEL_KOD1_AKTIF',
-        'ozelKod1Secim11': 'OZEL_KOD1_SECIM11',
-        'ozelKod1Secim21': 'OZEL_KOD1_SECIM21',
-        'ozelKod1Secim31': 'OZEL_KOD1_SECIM31',
-        'ozelKod1Secim41': 'OZEL_KOD1_SECIM41',
-        'ozelKod2Aktif': 'OZEL_KOD2_AKTIF',
-        'aciklar1': 'ACIKLAR1',
-        'aciklar2': 'ACIKLAR2',
-        'satirdaKdvSor': 'SATIRDA_KDV_SOR',
-        'satirTeslimTarSor': 'SATIR_TESLIM_TAR_SOR',
-        'dovizTakipHangisi': 'DOVIZ_TAKIP_HANGISI',
-        'satirEkalan2Kullan': 'SATIR_EKALAN2_KULLAN',
-        'hizmetUygulamasi': 'HIZMET_UYGULAMASI',
-        'hizmetDepoKodu': 'HIZMET_DEPO_KODU',
-        'kalemlerdeAciklamaAktif': 'KALEMLERDE_ACIKLAMA_AKTIF',
-        'onaySistemiKullan': 'ONAY_SISTEMI_KULLAN',
-        'kdvHaric': 'KDV_HARIC',
-        'kdvDahilHaricSor': 'KDV_DAHIL_HARIC_SOR',
-        'ozelKod2Tablodan': 'OZEL_KOD2_TABLODAN',
-        'muhrefkodSorulsun': 'MUHREFKOD_SORULSUN',
-        'topluDepoKullan': 'TOPLU_DEPO_KULLAN',
-        'kosulAktif': 'KOSUL_AKTIF',
-        'satirIskontosu': 'SATIR_ISKONTOSU',
-        'yuzdeSorulsun': 'YUZDE_SORULSUN',
-        'malFazlasiIskonto': 'MAL_FAZLASI_ISKONTO',
-        'genIsk1Aktif': 'GEN_ISK1_AKTIF',
-        'genIsk1Adi': 'GEN_ISK1_ADI',
-        'genIsk2Aktif': 'GEN_ISK2_AKTIF',
-        'genIsk2Adi': 'GEN_ISK2_ADI',
-        'genIsk3Aktif': 'GEN_ISK3_AKTIF',
-        'genIsk3Adi': 'GEN_ISK3_ADI',
-        'ozelKod1Tablodan': 'OZEL_KOD1_TABLODAN',
-        'aciklamaAktif': 'ACIKLAMA_AKTIF',
-        'miktar2Sor': 'MIKTAR2_SOR',
-        'miktarBirGelsin': 'MIKTAR_BIR_GELSIN',
-        'varsayilanMuhrefkod': 'VARSAYILAN_MUHREFKOD',
-        'tutardanBirimFiata': 'TUTARDAN_BIRIM_FIATA',
-        'cariIskSatiraUygula': 'CARI_ISK_SATIRA_UYGULA',
-        'miktarSifirOlamaz': 'MIKTAR_SIFIR_OLAMAZ',
-        'fatAltm1Varmi': 'FAT_ALTM1_VARMI',
-        'fatAltm2Varmi': 'FAT_ALTM2_VARMI',
-        'fatAltm1Tanim': 'FAT_ALTM1_TANIM',
-        'fatAltm2Tanim': 'FAT_ALTM2_TANIM',
-        'kdvSifirlanacakOzelkod2': 'KDV_SIFIRLANACAK_OZELKOD2',
-        'kosulSatirdaAktif': 'KOSUL_SATIRDA_AKTIF'
-      },
-    );
+TalTekParam _$TalTekParamFromJson(Map<String, dynamic> json) => TalTekParam()
+  ..tip = json['TIP'] as int?
+  ..belgeTipi = json['BELGE_TIPI'] as String?
+  ..dovizTakip = json['DOVIZ_TAKIP'] as String?
+  ..satirIskontoSayisi = json['SATIR_ISKONTO_SAYISI'] as String?
+  ..farkliBirimlerdenIslem = json['FARKLI_BIRIMLERDEN_ISLEM'] as String?
+  ..farkliTeslimYeri = json['FARKLI_TESLIM_YERI'] as String?
+  ..depoStokKartindanGelsin = json['DEPO_STOK_KARTINDAN_GELSIN'] as String?
+  ..ekaciklamalarAktif = json['EKACIKLAMALAR_AKTIF'] as String?
+  ..ozelKod1Aktif = json['OZEL_KOD1_AKTIF'] as String?
+  ..ozelKod1Secim11 = json['OZEL_KOD1_SECIM11'] as String?
+  ..ozelKod1Secim21 = json['OZEL_KOD1_SECIM21'] as String?
+  ..ozelKod1Secim31 = json['OZEL_KOD1_SECIM31'] as String?
+  ..ozelKod1Secim41 = json['OZEL_KOD1_SECIM41'] as String?
+  ..ozelKod2Aktif = json['OZEL_KOD2_AKTIF'] as String?
+  ..aciklar1 = json['ACIKLAR1'] as String?
+  ..aciklar2 = json['ACIKLAR2'] as String?
+  ..satirdaKdvSor = json['SATIRDA_KDV_SOR'] as String?
+  ..satirTeslimTarSor = json['SATIR_TESLIM_TAR_SOR'] as String?
+  ..dovizTakipHangisi = json['DOVIZ_TAKIP_HANGISI'] as int?
+  ..satirEkalan2Kullan = json['SATIR_EKALAN2_KULLAN'] as String?
+  ..hizmetUygulamasi = json['HIZMET_UYGULAMASI'] as String?
+  ..hizmetDepoKodu = json['HIZMET_DEPO_KODU'] as int?
+  ..kalemlerdeAciklamaAktif = json['KALEMLERDE_ACIKLAMA_AKTIF'] as String?
+  ..onaySistemiKullan = json['ONAY_SISTEMI_KULLAN'] as String?
+  ..kdvHaric = json['KDV_HARIC'] as String?
+  ..kdvDahilHaricSor = json['KDV_DAHIL_HARIC_SOR'] as String?
+  ..ozelKod2Tablodan = json['OZEL_KOD2_TABLODAN'] as String?
+  ..muhrefkodSorulsun = json['MUHREFKOD_SORULSUN'] as String?
+  ..topluDepoKullan = json['TOPLU_DEPO_KULLAN'] as String?
+  ..kosulAktif = json['KOSUL_AKTIF'] as String?
+  ..satirIskontosu = json['SATIR_ISKONTOSU'] as String?
+  ..yuzdeSorulsun = json['YUZDE_SORULSUN'] as String?
+  ..malFazlasiIskonto = json['MAL_FAZLASI_ISKONTO'] as String?
+  ..genIsk1Aktif = json['GEN_ISK1_AKTIF'] as String?
+  ..genIsk1Adi = json['GEN_ISK1_ADI'] as String?
+  ..genIsk2Aktif = json['GEN_ISK2_AKTIF'] as String?
+  ..genIsk2Adi = json['GEN_ISK2_ADI'] as String?
+  ..genIsk3Aktif = json['GEN_ISK3_AKTIF'] as String?
+  ..genIsk3Adi = json['GEN_ISK3_ADI'] as String?
+  ..ozelKod1Tablodan = json['OZEL_KOD1_TABLODAN'] as String?
+  ..aciklamaAktif = json['ACIKLAMA_AKTIF'] as String?
+  ..miktar2Sor = json['MIKTAR2_SOR'] as String?
+  ..miktarBirGelsin = json['MIKTAR_BIR_GELSIN'] as String?
+  ..varsayilanMuhrefkod = json['VARSAYILAN_MUHREFKOD'] as String?
+  ..tutardanBirimFiata = json['TUTARDAN_BIRIM_FIATA'] as String?
+  ..cariIskSatiraUygula = json['CARI_ISK_SATIRA_UYGULA'] as String?
+  ..miktarSifirOlamaz = json['MIKTAR_SIFIR_OLAMAZ'] as String?
+  ..fatAltm1Varmi = json['FAT_ALTM1_VARMI'] as String?
+  ..fatAltm2Varmi = json['FAT_ALTM2_VARMI'] as String?
+  ..fatAltm1Tanim = json['FAT_ALTM1_TANIM'] as String?
+  ..fatAltm2Tanim = json['FAT_ALTM2_TANIM'] as String?
+  ..kdvSifirlanacakOzelkod2 = json['KDV_SIFIRLANACAK_OZELKOD2'] as String?
+  ..kosulSatirdaAktif = json['KOSUL_SATIRDA_AKTIF'] as String?;
 
 Map<String, dynamic> _$TalTekParamToJson(TalTekParam instance) {
   final val = <String, dynamic>{};
@@ -2208,21 +1316,10 @@ Map<String, dynamic> _$TalTekParamToJson(TalTekParam instance) {
   return val;
 }
 
-YaziciList _$YaziciListFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'YaziciList',
-      json,
-      ($checkedConvert) {
-        final val = YaziciList();
-        $checkedConvert('yazici_adi', (v) => val.yaziciAdi = v as String?);
-        $checkedConvert('yazici_tipi', (v) => val.yaziciTipi = v as String?);
-        $checkedConvert('aciklama', (v) => val.aciklama = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'yaziciAdi': 'yazici_adi',
-        'yaziciTipi': 'yazici_tipi'
-      },
-    );
+YaziciList _$YaziciListFromJson(Map<String, dynamic> json) => YaziciList()
+  ..yaziciAdi = json['yazici_adi'] as String?
+  ..yaziciTipi = json['yazici_tipi'] as String?
+  ..aciklama = json['aciklama'] as String?;
 
 Map<String, dynamic> _$YaziciListToJson(YaziciList instance) {
   final val = <String, dynamic>{};

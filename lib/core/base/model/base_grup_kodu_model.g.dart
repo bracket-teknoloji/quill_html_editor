@@ -9,46 +9,22 @@ part of 'base_grup_kodu_model.dart';
 // **************************************************************************
 
 BaseGrupKoduModel _$BaseGrupKoduModelFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'BaseGrupKoduModel',
-      json,
-      ($checkedConvert) {
-        final val = BaseGrupKoduModel();
-        $checkedConvert('MODUL', (v) => val.modul = v as String?);
-        $checkedConvert('GRUP_NO', (v) => val.grupNo = v as int?);
-        $checkedConvert('GRUP_KODU', (v) => val.grupKodu = v as String?);
-        $checkedConvert('GRUP_ADI', (v) => val.grupAdi = v as String?);
-        $checkedConvert('TIP', (v) => val.tip = v as String?);
-        $checkedConvert('KOD1', (v) => val.kod1 = v as String?);
-        $checkedConvert('KOD2', (v) => val.kod2 = v as String?);
-        $checkedConvert('KOD3', (v) => val.kod3 = v as String?);
-        $checkedConvert('KOD4', (v) => val.kod4 = v as String?);
-        $checkedConvert('KOD5', (v) => val.kod5 = v as String?);
-        $checkedConvert('KOD1_ADI', (v) => val.kod1Adi = v as String?);
-        $checkedConvert('KOD2_ADI', (v) => val.kod2Adi = v as String?);
-        $checkedConvert('KOD3_ADI', (v) => val.kod3Adi = v as String?);
-        $checkedConvert('KOD4_ADI', (v) => val.kod4Adi = v as String?);
-        $checkedConvert('KOD5_ADI', (v) => val.kod5Adi = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {
-        'modul': 'MODUL',
-        'grupNo': 'GRUP_NO',
-        'grupKodu': 'GRUP_KODU',
-        'grupAdi': 'GRUP_ADI',
-        'tip': 'TIP',
-        'kod1': 'KOD1',
-        'kod2': 'KOD2',
-        'kod3': 'KOD3',
-        'kod4': 'KOD4',
-        'kod5': 'KOD5',
-        'kod1Adi': 'KOD1_ADI',
-        'kod2Adi': 'KOD2_ADI',
-        'kod3Adi': 'KOD3_ADI',
-        'kod4Adi': 'KOD4_ADI',
-        'kod5Adi': 'KOD5_ADI'
-      },
-    );
+    BaseGrupKoduModel()
+      ..modul = json['MODUL'] as String?
+      ..grupNo = json['GRUP_NO'] as int?
+      ..grupKodu = json['GRUP_KODU'] as String?
+      ..grupAdi = json['GRUP_ADI'] as String?
+      ..tip = json['TIP'] as String?
+      ..kod1 = json['KOD1'] as String?
+      ..kod2 = json['KOD2'] as String?
+      ..kod3 = json['KOD3'] as String?
+      ..kod4 = json['KOD4'] as String?
+      ..kod5 = json['KOD5'] as String?
+      ..kod1Adi = json['KOD1_ADI'] as String?
+      ..kod2Adi = json['KOD2_ADI'] as String?
+      ..kod3Adi = json['KOD3_ADI'] as String?
+      ..kod4Adi = json['KOD4_ADI'] as String?
+      ..kod5Adi = json['KOD5_ADI'] as String?;
 
 Map<String, dynamic> _$BaseGrupKoduModelToJson(BaseGrupKoduModel instance) =>
     <String, dynamic>{

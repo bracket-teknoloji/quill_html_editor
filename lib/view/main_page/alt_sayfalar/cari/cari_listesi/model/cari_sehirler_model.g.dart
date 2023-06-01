@@ -45,16 +45,7 @@ class CariSehirlerModelAdapter extends TypeAdapter<CariSehirlerModel> {
 // **************************************************************************
 
 CariSehirlerModel _$CariSehirlerModelFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      'CariSehirlerModel',
-      json,
-      ($checkedConvert) {
-        final val = CariSehirlerModel();
-        $checkedConvert('SEHIR_ADI', (v) => val.sehirAdi = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {'sehirAdi': 'SEHIR_ADI'},
-    );
+    CariSehirlerModel()..sehirAdi = json['SEHIR_ADI'] as String?;
 
 Map<String, dynamic> _$CariSehirlerModelToJson(CariSehirlerModel instance) =>
     <String, dynamic>{

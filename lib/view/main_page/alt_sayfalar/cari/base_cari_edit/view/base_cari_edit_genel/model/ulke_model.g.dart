@@ -8,17 +8,9 @@ part of 'ulke_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-UlkeModel _$UlkeModelFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'UlkeModel',
-      json,
-      ($checkedConvert) {
-        final val = UlkeModel();
-        $checkedConvert('ULKE_KODU', (v) => val.ulkeKodu = v as String?);
-        $checkedConvert('ULKE_ADI', (v) => val.ulkeAdi = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {'ulkeKodu': 'ULKE_KODU', 'ulkeAdi': 'ULKE_ADI'},
-    );
+UlkeModel _$UlkeModelFromJson(Map<String, dynamic> json) => UlkeModel()
+  ..ulkeKodu = json['ULKE_KODU'] as String?
+  ..ulkeAdi = json['ULKE_ADI'] as String?;
 
 Map<String, dynamic> _$UlkeModelToJson(UlkeModel instance) => <String, dynamic>{
       'ULKE_KODU': instance.ulkeKodu,

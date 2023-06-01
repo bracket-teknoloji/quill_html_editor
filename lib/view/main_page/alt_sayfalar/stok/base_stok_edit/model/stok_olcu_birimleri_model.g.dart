@@ -10,17 +10,9 @@ part of 'stok_olcu_birimleri_model.dart';
 
 StokOlcuBirimleriModel _$StokOlcuBirimleriModelFromJson(
         Map<String, dynamic> json) =>
-    $checkedCreate(
-      'StokOlcuBirimleriModel',
-      json,
-      ($checkedConvert) {
-        final val = StokOlcuBirimleriModel();
-        $checkedConvert('BIRIM_NO', (v) => val.birimNo = v as int?);
-        $checkedConvert('OLCU_BIRIMI', (v) => val.olcuBirimi = v as String?);
-        return val;
-      },
-      fieldKeyMap: const {'birimNo': 'BIRIM_NO', 'olcuBirimi': 'OLCU_BIRIMI'},
-    );
+    StokOlcuBirimleriModel()
+      ..birimNo = json['BIRIM_NO'] as int?
+      ..olcuBirimi = json['OLCU_BIRIMI'] as String?;
 
 Map<String, dynamic> _$StokOlcuBirimleriModelToJson(
     StokOlcuBirimleriModel instance) {
