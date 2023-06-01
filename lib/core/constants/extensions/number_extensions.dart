@@ -23,7 +23,7 @@ extension NumExtensionWithFixedDigitsAndComma on num {
 //an extension on num to string if null return empty string
 extension NumExtensionToString on num? {
   String? get toStringIfNull {
-    return toString() == "null" ? "   " : toString();
+    return toString() == "null" ? null : toString();
   }
 }
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/constants/extensions/list_extensions.dart';
 
 import '../../../constants/extensions/widget_extensions.dart';
 import '../../../constants/ui_helper/icon_helper.dart';
@@ -94,7 +95,8 @@ class BottomSheetDialogManager {
         });
   }
 
-  showRadioBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel>? children}) {
+  showRadioBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel?>? children}) {
+    children = children?.nullCheck.cast<BottomSheetModel>();
     return showModalBottomSheet(
         context: context,
         isDismissible: true,
@@ -133,11 +135,11 @@ class BottomSheetDialogManager {
                                           activeColor: UIHelper.primaryColor,
                                           onChanged: (value) {
                                             viewModel.changeRadioGroupValue(title);
-                                            children[index].onTap!();
+                                            children?[index]?.onTap!();
                                           },
-                                          value: children[index].title,
+                                          value: children?[index]?.title,
                                           groupValue: viewModel.radioGroupValue,
-                                          title: Text(children[index].title),
+                                          title: Text(children![index]!.title),
                                         ),
                                         index != children.length - 1
                                             ? Padding(

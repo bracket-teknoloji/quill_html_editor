@@ -22,8 +22,8 @@ class YetkiController {
   bool get cariListesiRiskGorebilir => isTrue(yetkiModel?.cariCariListesiRiskGorebilir);
   //* Cari Kartı
   bool get cariKarti => isTrue(yetkiModel?.cariCariKarti);
-  bool get cariYeniKayit => isTrue(yetkiModel?.cariCariKartiKaydet);
-  bool get carKartiDuzenleme => isTrue(yetkiModel?.cariCariKartiDuzelt);
+  bool get cariKartiYeniKayit => isTrue(yetkiModel?.cariCariKartiKaydet);
+  bool get cariKartiDuzenleme => isTrue(yetkiModel?.cariCariKartiDuzelt);
   bool get cariKartiSilme => isTrue(yetkiModel?.cariCariKartiSil);
 
   //* Cari Hareketleri

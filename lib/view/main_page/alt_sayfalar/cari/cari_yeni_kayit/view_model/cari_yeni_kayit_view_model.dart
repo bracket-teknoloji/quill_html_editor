@@ -1,0 +1,38 @@
+import 'package:mobx/mobx.dart';
+
+import '../model/cari_yeni_kayit_model.dart';
+
+part 'cari_yeni_kayit_view_model.g.dart';
+
+class CariYeniKayitViewModel = _CariYeniKayitViewModelBase with _$CariYeniKayitViewModel;
+
+abstract class _CariYeniKayitViewModelBase with Store {
+  @observable
+  CariYeniKayitModel model = CariYeniKayitModel();
+
+  @computed
+  String get getHareketKodu => model.hareketKodu ?? "";
+
+  @action
+  void setModelHareketKodu(String value) {
+    model.hareketKodu = value;
+  }
+
+  @observable
+  List<bool> isSelected = [true, false];
+
+  @action
+  void setIsSelected(int index) {
+    isSelected = [false, false];
+    isSelected[index] = true;
+    if (index == 0) {
+      model.borc ??= model.alacak;
+      model.alacak = null;
+    } else {
+      model.alacak ??= model.borc;
+      model.borc = null;
+    }
+  }
+
+  List<String> get toggleButtonLabelList => ["Borç", "Alacak"];
+}

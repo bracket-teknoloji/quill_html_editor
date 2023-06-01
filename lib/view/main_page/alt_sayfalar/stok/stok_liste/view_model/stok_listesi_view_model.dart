@@ -17,6 +17,9 @@ abstract class _StokListesiViewModelBase with Store {
   void setImageMap(Map<String, MemoryImage> value) => imageMap = value;
 
   @action
+  void addImageMap(Map<String, MemoryImage> value) => imageMap.addAll(value);
+
+  @action
   void removeImageMap(String key) => imageMap.remove(key);
   @observable
   bool searchBar = false;

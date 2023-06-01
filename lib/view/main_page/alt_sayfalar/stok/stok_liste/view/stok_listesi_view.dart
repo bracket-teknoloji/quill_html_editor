@@ -20,7 +20,6 @@ import '../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../core/constants/enum/grup_kodu_enums.dart';
 import '../../../../../../core/constants/extensions/list_extensions.dart';
-import '../../../../../../core/init/cache/cache_manager.dart';
 import '../../../cari/cari_network_manager.dart';
 import '../model/stok_bottom_sheet_model.dart';
 import '../model/stok_listesi_model.dart';
@@ -89,6 +88,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
         // }),
         floatingActionButton: fab(),
         body: NestedScrollView(
+            // controller: _scrollController,
             headerSliverBuilder: (context, innerBoxIsScrolled) => [appBar()],
             body: RefreshIndicator(
                 onRefresh: () async {
@@ -454,6 +454,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
               ? const Center(child: Text("Stok Bulunamadı"))
               : const Center(child: CircularProgressIndicator())
           : ListView.builder(
+              shrinkWrap: true,
+              physics: const ClampingScrollPhysics(),
               padding: UIHelper.lowPadding,
               itemCount: (stokListesi?.length ?? 0) + 1,
               itemBuilder: (context, index) {
@@ -465,7 +467,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                       contentPadding: UIHelper.lowPadding,
                       // leading: stok.resimUrlKucuk !=null ? Image.memory(networkManager.getImage(stok.resimUrlKucuk))
                       leading: CircleAvatar(
-                        foregroundImage: stok.resimUrlKucuk != null ? viewModel.imageMap[stok.stokKodu] : null,
+                        foregroundImage: viewModel.imageMap[stok.stokKodu],
                         child: Text((stok.stokAdi ?? "  ").substring(0, 1)),
                       ),
                       trailing: Text("${stok.bakiye ?? 0} ${stok.olcuBirimi ?? ""}", style: context.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(stok.bakiye ?? 0))),
@@ -504,7 +506,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                               onTap: () {
                                 Get.back();
                                 return Get.toNamed("/mainPage/stokHareketleri", arguments: stok);
-                              }),
+                              }).yetkiKontrol(yetkiController.stokHareketleriStokHareketleri),
                           BottomSheetModel(title: "Depo Bakiye Durumu", iconWidget: Icons.list_alt),
                           BottomSheetModel(
                             title: "Yazdır",
@@ -524,9 +526,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                           ),
                           BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt),
                         ];
-                        if (CacheManager.getAnaVeri()?.userModel!.adminMi ?? false) {
-                          children2.insert(2, BottomSheetModel(title: "Sil", iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? "")).yetkiKontrol(yetkiController.stokKartiSilme));
-                        }
+                        children2.insert(2, BottomSheetModel(title: "Sil", iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? "")).yetkiKontrol(yetkiController.stokKartiSilme));
                         List<BottomSheetModel>? newResult = children2.nullCheck.cast<BottomSheetModel>();
                         BaseEditModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: stok.stokAdi ?? "", children: newResult);
                         if (result != null) {
@@ -626,6 +626,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
             imageMap[stokKaydi.stokKodu ?? ""] = await getImage(stokKaydi.resimUrlKucuk ?? "");
           }
         }
+        viewModel.setImageMap(imageMap);
         viewModel.setStokListesi(liste);
       } else {
         for (var stokKaydi in liste ?? <StokListesiModel>[]) {
@@ -634,8 +635,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
           }
         }
         viewModel.addStokListesi(liste ?? <StokListesiModel>[]);
+        viewModel.addImageMap(imageMap);
       }
-      viewModel.setImageMap(imageMap);
     } else {
       viewModel.setStokListesi(<StokListesiModel>[]);
     }

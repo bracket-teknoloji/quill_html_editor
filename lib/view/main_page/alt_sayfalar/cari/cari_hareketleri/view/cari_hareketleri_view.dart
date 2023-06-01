@@ -1,10 +1,13 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/base/model/base_edit_model.dart';
+import 'package:picker/core/components/floating_action_button/custom_floating_action_button.dart';
 import 'package:picker/core/components/wrap/appbar_title.dart';
+import 'package:picker/core/constants/enum/base_edit_enum.dart';
+import 'package:picker/core/constants/extensions/widget_extensions.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/view_model/cari_hareketleri_view_model.dart';
 
@@ -58,64 +61,14 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appBar(context),
-        floatingActionButton: fab(),
-        bottomNavigationBar: bottomButtonBar(),
-        body: RefreshIndicator(
-            onRefresh: () async {
-              viewModel.setCariHareketleri(null);
-              return getData().then((value) => viewModel.setCariHareketleri(value));
-            },
-            child: Observer(
-              builder: (_) => (viewModel.cariHareketleriList.isNullOrEmpty
-                  ? (viewModel.cariHareketleriList?.isEmpty ?? false)
-                      ? Center(
-                          child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [Icon(Icons.crisis_alert_outlined, color: theme.colorScheme.primary), const Text("Cari Hareket Detayı Bulunamadı")],
-                        ))
-                      : const Center(child: CircularProgressIndicator())
-                  : Observer(builder: (_) {
-                      return ListView.builder(
-                        primary: false,
-                        controller: scrollController,
-                        itemCount: viewModel.cariHareketleriList != null ? viewModel.cariHareketleriList!.length : 0,
-                        itemBuilder: (context, index) {
-                          return CariHareketlerCard(
-                            cariHareketleriModel: viewModel.cariHareketleriList![index],
-                            onTap: () {
-                              var children2 = [
-                                BottomSheetModel(iconWidget: Icons.view_comfy_outlined, title: "Görüntüle", onTap: () {}),
-                                BottomSheetModel(iconWidget: Icons.display_settings_outlined, title: "İşlemler", onTap: () {}),
-                                BottomSheetModel(iconWidget: Icons.picture_as_pdf_outlined, title: "PDF Görüntüle", onTap: () {}),
-                              ];
-                              if (viewModel.cariHareketleriList![index].dovizBorc == null && viewModel.cariHareketleriList![index].dovizAlacak == null) {
-                                children2.add(BottomSheetModel(iconWidget: Icons.picture_as_pdf_outlined, title: "Tahsilat Makbuzu", onTap: () {}));
-                              }
-                              bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: children2);
-                            },
-                          );
-                        },
-                      );
-                    })),
-            ),
-          ),
-        );
-        // : Observer(builder: (_) {
-        // var list = viewModel.cariHareketleriList;
-
-  }
-
-  Widget fab() {
-    // scrollController?.appBar.setPinState(false);
-    return Observer(builder: (_) {
-      return Visibility(visible: viewModel.isScrollDown, child: FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add_outlined)));
-    });
+      appBar: appBar(context),
+      floatingActionButton: fab(),
+      bottomNavigationBar: bottomButtonBar(),
+      body: body(),
+    );
   }
 
   AppBar appBar(BuildContext context) {
-
     return AppBar(
       // materialType: MaterialType.transparency,
       backgroundColor: Colors.transparent,
@@ -182,6 +135,86 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                     }),
               ].map((e) => e.paddingAll(UIHelper.lowSize)).toList()),
         ),
+      ),
+    );
+  }
+
+  Widget fab() {
+    // scrollController?.appBar.setPinState(false);
+    return Observer(builder: (_) {
+      return CustomFloatingActionButton(
+          isScrolledDown: viewModel.isScrollDown,
+          onPressed: () async {
+            await Get.toNamed("/mainPage/cariYeniKayit",
+                arguments: BaseEditModel<CariHareketleriModel>(
+                    model: CariHareketleriModel()
+                      ..cariAdi = widget.cari!.cariAdi
+                      ..cariKodu = widget.cari!.cariKodu,
+                    baseEditEnum: BaseEditEnum.ekle));
+            viewModel.setCariHareketleri(null);
+            return getData().then((value) => viewModel.setCariHareketleri(value));
+          }).yetkiVarMi(yetkiController.cariHareketleriYeniKayit);
+    });
+  }
+
+  RefreshIndicator body() {
+    return RefreshIndicator(
+      onRefresh: () async {
+        viewModel.setCariHareketleri(null);
+        return getData().then((value) => viewModel.setCariHareketleri(value));
+      },
+      child: Observer(
+        builder: (_) => (viewModel.cariHareketleriList.isNullOrEmpty
+            ? (viewModel.cariHareketleriList?.isEmpty ?? false)
+                ? Center(
+                    child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [Icon(Icons.crisis_alert_outlined, color: theme.colorScheme.primary), const Text("Cari Hareket Detayı Bulunamadı")],
+                  ))
+                : const Center(child: CircularProgressIndicator())
+            : Observer(builder: (_) {
+                return ListView.builder(
+                  primary: false,
+                  controller: scrollController,
+                  itemCount: viewModel.cariHareketleriList != null ? viewModel.cariHareketleriList!.length : 0,
+                  itemBuilder: (context, index) {
+                    return CariHareketlerCard(
+                      cariHareketleriModel: viewModel.cariHareketleriList![index],
+                      onTap: () {
+                        var children2 = [
+                          BottomSheetModel(
+                              iconWidget: Icons.view_comfy_outlined,
+                              title: "Görüntüle",
+                              onTap: () async {
+                                Get.back();
+                                await Get.toNamed("/mainPage/cariYeniKayit",
+                                    arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.goruntule, model: viewModel.cariHareketleriList![index]));
+                                viewModel.setCariHareketleri(null);
+                                return getData().then((value) => viewModel.setCariHareketleri(value));
+                              }),
+                          BottomSheetModel(
+                              iconWidget: Icons.display_settings_outlined,
+                              title: "Düzenle",
+                              onTap: () async {
+                                Get.back();
+                                await Get.toNamed("/mainPage/cariYeniKayit",
+                                    arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.duzenle, model: viewModel.cariHareketleriList![index]));
+                                viewModel.setCariHareketleri(null);
+                                return getData().then((value) => viewModel.setCariHareketleri(value));
+                              }),
+                          BottomSheetModel(iconWidget: Icons.display_settings_outlined, title: "İşlemler", onTap: () {}),
+                          BottomSheetModel(iconWidget: Icons.picture_as_pdf_outlined, title: "PDF Görüntüle", onTap: () {}),
+                        ];
+                        if (viewModel.cariHareketleriList![index].dovizBorc == null && viewModel.cariHareketleriList![index].dovizAlacak == null) {
+                          children2.add(BottomSheetModel(iconWidget: Icons.picture_as_pdf_outlined, title: "Tahsilat Makbuzu", onTap: () {}));
+                        }
+                        bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: children2);
+                      },
+                    );
+                  },
+                );
+              })),
       ),
     );
   }

@@ -99,6 +99,10 @@ class AppThemeDark extends AppTheme {
               fontSize: 12,
               color: Colors.green,
             ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: UIHelper.lowBorderRadius,
+              borderSide: const BorderSide(color: Colors.green),
+            ),
             border: OutlineInputBorder(
               borderRadius: UIHelper.lowBorderRadius,
               borderSide: const BorderSide(color: Colors.green),

@@ -279,6 +279,17 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
   }
 
   @override
+  void addImageMap(Map<String, MemoryImage> value) {
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController
+        .startAction(name: '_StokListesiViewModelBase.addImageMap');
+    try {
+      return super.addImageMap(value);
+    } finally {
+      _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void removeImageMap(String key) {
     final _$actionInfo = _$_StokListesiViewModelBaseActionController
         .startAction(name: '_StokListesiViewModelBase.removeImageMap');

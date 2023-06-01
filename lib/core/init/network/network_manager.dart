@@ -17,7 +17,7 @@ import 'login/api_urls.dart';
 
 class NetworkManager {
   static final Dio _dio = Dio(BaseOptions(
-    baseUrl: "http://ofis.bracket.com.tr:7575/pickerBracket/",
+    baseUrl: "http://ofis.bracket.com.tr:7575/Picker/",
     // baseUrl: "http:localhost/picker/",
     connectTimeout: const Duration(seconds: 20),
   ));
@@ -64,7 +64,7 @@ class NetworkManager {
       bool addCKey = false,
       bool addTokenKey = true}) async {
     CancelToken cancelToken = CancelToken();
-    Map<String, String> head = getStandardHeader(addTokenKey, addSirketBilgileri, addCKey); 
+    Map<String, String> head = getStandardHeader(addTokenKey, addSirketBilgileri, addCKey);
     if (headers != null) head.addEntries(headers.entries);
     Map<String, dynamic> queries = getStandardQueryParameters();
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
@@ -101,13 +101,14 @@ class NetworkManager {
     log(response.data.toString());
     // response is a png file
     return MemoryImage(response.data);
-  
-  }Future<List<BaseGrupKoduModel>> getGrupKod({required String name, required int grupNo, bool? kullanimda}) async {
+  }
+
+  Future<List<BaseGrupKoduModel>> getGrupKod({required String name, required int grupNo, bool? kullanimda}) async {
     var responseKod = await dioGet<BaseGrupKoduModel>(
         path: ApiUrls.getGrupKodlari,
         bodyModel: BaseGrupKoduModel(),
         addCKey: true,
-        headers: {"Modul": name , "GrupNo": grupNo.toString(), "Kullanimda": (kullanimda ?? true)? "E" : "H"},
+        headers: {"Modul": name, "GrupNo": grupNo.toString(), "Kullanimda": (kullanimda ?? true) ? "E" : "H"},
         addQuery: true,
         addSirketBilgileri: true,
         queryParameters: {"Modul": name, "GrupNo": grupNo});

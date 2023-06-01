@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+
 import '../../../../../../core/base/model/base_network_mixin.dart';
 
 part 'cari_hareketleri_model.g.dart';
@@ -42,4 +43,7 @@ class CariHareketleriModel with NetworkManagerMixin {
 
   @override
   toString() => toJson().toString();
+
+  @override
+  operator ==(o) => o is CariHareketleriModel && o.inckeyno == inckeyno;
 }

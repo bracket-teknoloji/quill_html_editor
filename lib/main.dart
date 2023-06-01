@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/base_cari_edit/view/base_cari_edit_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_yeni_kayit/view/cari_yeni_kayit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/view/base_stok_edit_view.dart";
 
 import "core/init/cache/cache_manager.dart";
@@ -43,56 +44,26 @@ class MyApp extends StatelessWidget {
       title: "Picker",
       home: const LoginView(),
       getPages: [
-        GetPage(
-          name: "/entryCompany",
-          page: () => const EntryCompanyView(),
-        ),
+        GetPage(name: "/entryCompany", page: () => const EntryCompanyView()),
         GetPage(
           name: "/mainPage",
           page: () => const MainPageView(),
           children: [
-            GetPage(
-              name: "/cariEdit",
-              page: () => BaseCariEditingView(model: Get.arguments),
-            ),
-            GetPage(
-              name: "/cariListesi",
-              page: () => CariListesiView(isGetData: Get.arguments),
-            ),
-            GetPage(
-              name: "/cariHareketleri",
-              page: () => CariHareketleriView(cari: Get.arguments),
-            ),
-            GetPage(
-              name: "/stokListesi",
-              page: () => const StokListesiView(),
-            ),
-            GetPage(
-              name: "/stokEdit",
-              page: () => BaseStokEditingView(model: Get.arguments),
-            ),
-            GetPage(
-              name: "/stokHareketleri",
-              page: () => StokHareketleriView(model: Get.arguments),
-            ),
-            GetPage(
-              name: "/stokYeniKayit",
-              page: () => StokYeniKayitView(model: Get.arguments),
-            ),
+            //* Cari
+            GetPage(name: "/cariEdit", page: () => BaseCariEditingView(model: Get.arguments)),
+            GetPage(name: "/cariListesi", page: () => CariListesiView(isGetData: Get.arguments)),
+            GetPage(name: "/cariHareketleri", page: () => CariHareketleriView(cari: Get.arguments)),
+            GetPage(name: "/cariYeniKayit", page: () => CariYeniKayitView(model: Get.arguments)),
+            //* Stok
+            GetPage(name: "/stokListesi", page: () => const StokListesiView()),
+            GetPage(name: "/stokEdit", page: () => BaseStokEditingView(model: Get.arguments)),
+            GetPage(name: "/stokHareketleri", page: () => StokHareketleriView(model: Get.arguments)),
+            GetPage(name: "/stokYeniKayit", page: () => StokYeniKayitView(model: Get.arguments)),
           ],
         ),
-        GetPage(
-          name: "/addCompany",
-          page: () => const AccountsView(),
-        ),
-        GetPage(
-          name: "/addAccount",
-          page: () => const AddAccountView(),
-        ),
-        GetPage(
-          name: "/qr",
-          page: () => const QRScannerView(),
-        ),
+        GetPage(name: "/addCompany", page: () => const AccountsView()),
+        GetPage(name: "/addAccount", page: () => const AddAccountView()),
+        GetPage(name: "/qr", page: () => const QRScannerView()),
       ],
     );
   }

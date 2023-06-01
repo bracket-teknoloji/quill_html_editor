@@ -8,6 +8,7 @@ import 'package:kartal/kartal.dart';
 import 'package:picker/core/components/textfield/custom_label_widget.dart';
 import 'package:picker/core/components/textfield/custom_text_field.dart';
 import 'package:picker/core/constants/extensions/date_time_extensions.dart';
+import 'package:picker/core/constants/extensions/widget_extensions.dart';
 import 'package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart';
 
 import '../../../../../../core/base/helpers/helper.dart';
@@ -38,7 +39,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: fab(),
+      floatingActionButton: fab().yetkiVarMi(yetkiController.stokHareketleriStokYeniKayit),
       body: NestedScrollView(headerSliverBuilder: (context, innerBoxIsScrolled) => [appBar()], body: body()),
     );
   }
@@ -77,7 +78,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
         IconButton(onPressed: () => viewModel.changeSearchBar(), icon: const Icon(Icons.search_outlined))
       ],
       bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(50),
+          preferredSize: const Size.fromHeight(60),
           child: AppBarPreferedSizedBottom(children: [
             AppBarButton(
                 child: const Text("Filtrele"),
@@ -219,12 +220,13 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                         viewModel.setStokHareketleri(await getData()!);
                       },
                       child: ListView.builder(
+                        padding: UIHelper.lowPadding,
                         itemCount: viewModel.stokHareketleri?.length ?? 0,
                         itemBuilder: (context, index) {
                           StokHareketleriModel model = viewModel.stokHareketleri![index];
                           List<Widget> children2 = [];
                           if (model.hareketTuruAciklama == "Devir") {
-                            children2.add(SlidableAction(
+                            Widget? slidableAction = SlidableAction(
                               onPressed: (context) async {
                                 dialogManager.showAreYouSureDialog(() async {
                                   var result = await networkManager.dioPost<StokHareketleriModel>(
@@ -245,7 +247,10 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                               backgroundColor: theme.cardColor,
                               foregroundColor: theme.colorScheme.primary,
                               label: 'Sil',
-                            ));
+                            ).yetkiVarMi(yetkiController.stokHareketleriStokSilme);
+                            if (slidableAction != const SizedBox()) {
+                              children2.add(slidableAction);
+                            }
                           }
                           if (model.hareketTuruAciklama != "Muhtelif") {
                             children2.add(SlidableAction(
@@ -273,64 +278,72 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                 ]);
                               },
                               child: Card(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                child: Row(
                                   children: [
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                          child: Wrap(
+                                    Expanded(
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
                                             children: [
-                                              Text(model.stharTarih.toDateString()),
-                                              model.dovizTipi == 1 ? const Badge(label: Text("Dövizli")) : Container(),
+                                              Expanded(
+                                                child: Wrap(
+                                                  children: [
+                                                    Text(model.stharTarih.toDateString()),
+                                                    model.dovizTipi == 1 ? const Badge(label: Text("Dövizli")) : Container(),
+                                                  ],
+                                                ),
+                                              ),
+                                              Text(model.fisno ?? ""),
+                                              Icon(model.cikisIslemi ?? false ? Icons.chevron_right_outlined : Icons.chevron_left_sharp, color: model.cikisIslemi ?? false ? Colors.red : Colors.green),
                                             ],
                                           ),
-                                        ),
-                                        Text(model.fisno ?? ""),
-                                        Icon(model.cikisIslemi ?? false ? Icons.chevron_right_outlined : Icons.chevron_left_sharp, color: model.cikisIslemi ?? false ? Colors.red : Colors.green),
-                                      ],
-                                    ),
-                                    Text.rich(
-                                      TextSpan(
-                                        children: [
-                                          TextSpan(
-                                              text: "${model.belgeTipiAciklama ?? model.hareketTuruAciklama}  ", style: TextStyle(color: (model.cikisIslemi ?? false) ? Colors.red : Colors.green)),
-                                          TextSpan(text: "(${model.hareketTuruAciklama})", style: const TextStyle(color: Colors.white30)),
+                                          Text.rich(
+                                            TextSpan(
+                                              children: [
+                                                TextSpan(
+                                                    text: "${model.belgeTipiAciklama ?? model.hareketTuruAciklama}  ",
+                                                    style: TextStyle(color: (model.cikisIslemi ?? false) ? Colors.red : Colors.green)),
+                                                TextSpan(text: "(${model.hareketTuruAciklama})", style: const TextStyle(color: Colors.white30)),
+                                              ],
+                                            ),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Expanded(child: Text("Miktar: ${model.stharGcmik?.toInt() ?? 0}")),
+                                              Expanded(child: Text("Depo: ${model.depoKodu ?? ""} (${model.depoAdi ?? ""})")),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Expanded(child: Text("Plasiyer: ${model.plasiyerAciklama ?? ""}")),
+                                              Expanded(child: Text("KDV %: ${model.stharKdv?.toInt() ?? 0}")),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Expanded(child: Text("Net Fiyat: ${(model.stharNf ?? 0).commaSeparatedWithFixedDigits}")),
+                                              Expanded(child: Text("Brüt Fiyat: ${(model.stharBf ?? 0).commaSeparatedWithFixedDigits}")),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Expanded(child: Text("Net Tutar: ${((model.stharNf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithFixedDigits}")),
+                                              Expanded(child: Text("Brüt Tutar: ${((model.stharBf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithFixedDigits}")),
+                                            ],
+                                          ),
                                         ],
-                                      ),
+                                      ).paddingAll(UIHelper.lowSize),
                                     ),
-                                    Row(
-                                      children: [
-                                        Expanded(child: Text("Miktar: ${model.stharGcmik?.toInt() ?? 0}")),
-                                        Expanded(child: Text("Depo: ${model.depoKodu ?? ""} (${model.depoAdi ?? ""})")),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Expanded(child: Text("Plasiyer: ${model.plasiyerAciklama ?? ""}")),
-                                        Expanded(child: Text("KDV %: ${model.stharKdv?.toInt() ?? 0}")),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Expanded(child: Text("Net Fiyat: ${(model.stharNf ?? 0).commaSeparatedWithFixedDigits}")),
-                                        Expanded(child: Text("Brüt Fiyat: ${(model.stharBf ?? 0).commaSeparatedWithFixedDigits}")),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Expanded(child: Text("Net Tutar: ${((model.stharNf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithFixedDigits}")),
-                                        Expanded(child: Text("Brüt Tutar: ${((model.stharBf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithFixedDigits}")),
-                                      ],
-                                    ),
+                                    Icon(model.hareketTuruAciklama != "Muhtelif" ? Icons.chevron_right_outlined : null, color: theme.colorScheme.primary),
                                   ],
-                                ).paddingAll(UIHelper.lowSize),
+                                ),
                               ),
                             ),
                           );
                         },
-                      ).paddingAll(UIHelper.lowSize),
+                      ),
                     );
             });
           } else {

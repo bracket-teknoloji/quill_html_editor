@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../base/helpers/helper.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -32,7 +33,9 @@ class CustomTextField extends StatefulWidget {
       this.keyboardType,
       this.onChanged,
       this.controllerText,
-      this.maxLength, this.onSubmitted, this.validator});
+      this.maxLength,
+      this.onSubmitted,
+      this.validator});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -49,7 +52,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       maxLength: widget.maxLength,
       validator: widget.validator,
       onChanged: widget.onChanged,
-      onFieldSubmitted: widget.onSubmitted ,
+      onFieldSubmitted: widget.onSubmitted,
       onTapOutside: (value) {
         widget.onChanged;
       },
@@ -57,6 +60,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
       readOnly: widget.readOnly ?? false,
       decoration: InputDecoration(
           enabled: widget.enabled ?? true,
+          errorStyle: TextStyle(color: UIHelper.primaryColor, fontWeight: FontWeight.bold),
+          errorBorder: OutlineInputBorder(borderSide: BorderSide(color: UIHelper.primaryColor.withOpacity(0.7), width: 2), borderRadius: BorderRadius.circular(10), gapPadding: 0),
           suffixIcon: widget.enabled ?? true ? widget.suffix : null,
           label: Text.rich(TextSpan(children: [
             TextSpan(
