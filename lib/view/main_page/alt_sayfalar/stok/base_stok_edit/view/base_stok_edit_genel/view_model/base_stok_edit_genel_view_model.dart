@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../../../../../core/base/model/base_grup_kodu_model.dart';
@@ -9,6 +10,8 @@ part 'base_stok_edit_genel_view_model.g.dart';
 class BaseStokEditGenelViewModel = _BaseStokEditGenelViewModelBase with _$BaseStokEditGenelViewModel;
 
 abstract class _BaseStokEditGenelViewModelBase with Store {
+  @observable
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @observable
   StokListesiModel? stokListesiModel = StokListesiModel.instance;
 

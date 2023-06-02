@@ -153,184 +153,186 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
         future: dioGetData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return Padding(
-                padding: context.paddingNormal,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          CustomWidgetWithLabel(text: "Şirket", children: [
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                suffixIcon: Icon(Icons.more_horiz_outlined),
-                              ),
-                              controller: controller1,
-                              readOnly: true,
-                              autofocus: true,
-                              focusNode: focusNode,
-                              textInputAction: TextInputAction.next,
-                              onTap: () {
-                                sirketDialog(context);
-                              },
-                            ),
-                          ]),
-                          CustomWidgetWithLabel(
-                            text: "İşletme Kodu",
-                            children: [
+            return SingleChildScrollView(
+              child: Padding(
+                  padding: context.paddingNormal,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            CustomWidgetWithLabel(text: "Şirket", children: [
                               TextFormField(
-                                controller: controller2,
-                                enabled: isletme?.isNotNullOrEmpty,
+                                decoration: const InputDecoration(
+                                  suffixIcon: Icon(Icons.more_horiz_outlined),
+                                ),
+                                controller: controller1,
+                                readOnly: true,
+                                autofocus: true,
+                                focusNode: focusNode,
+                                textInputAction: TextInputAction.next,
+                                onTap: () {
+                                  sirketDialog(context);
+                                },
+                              ),
+                            ]),
+                            CustomWidgetWithLabel(
+                              text: "İşletme Kodu",
+                              children: [
+                                TextFormField(
+                                  controller: controller2,
+                                  enabled: isletme?.isNotNullOrEmpty,
+                                  readOnly: true,
+                                  onTap: () {
+                                    isletmeDialog(context);
+                                  },
+                                  decoration: const InputDecoration(
+                                    suffixIcon: Icon(Icons.more_horiz_outlined),
+                                  ),
+                                )
+                              ],
+                            ),
+                            CustomWidgetWithLabel(text: "Şube Kodu", children: [
+                              TextFormField(
+                                controller: controller3,
+                                enabled: sube?.isNotNullOrEmpty,
                                 readOnly: true,
                                 onTap: () {
-                                  isletmeDialog(context);
+                                  subeDialog(context);
                                 },
                                 decoration: const InputDecoration(
                                   suffixIcon: Icon(Icons.more_horiz_outlined),
                                 ),
                               )
-                            ],
-                          ),
-                          CustomWidgetWithLabel(text: "Şube Kodu", children: [
-                            TextFormField(
-                              controller: controller3,
-                              enabled: sube?.isNotNullOrEmpty,
-                              readOnly: true,
-                              onTap: () {
-                                subeDialog(context);
-                              },
-                              decoration: const InputDecoration(
-                                suffixIcon: Icon(Icons.more_horiz_outlined),
-                              ),
-                            )
-                          ]),
-                          // CustomWidgetWithLabel(
-                          //   text: "Şirket",
-                          //   children: [
-                          //     DropdownButtonFormField(
-                          //       autofocus: true,
-                          //       decoration: const InputDecoration(
-                          //         hoverColor: Colors.transparent,
-                          //       ),
-                          //       isExpanded: true,
-                          //       validator: validator,
-                          //       focusNode: focusNode,
-                          //       items: sirket?.toSet().map((e) => DropdownMenuItem(value: e, child: Text(e.company!.toString()))).toList(),
-                          //       onChanged: (value) {
-                          //         if (value is CompanyModel) {
-                          //           setState(() {
-                          //             selected["Şirket"] = value.company;
-                          //             userData["Şirket"] = value.company;
-                          //             selected["İşletme"] = null;
-                          //             selected["Şube"] = null;
-                          //             focusNode!.requestFocus();
-                          //           });
-                          //         }
-                          //         log(selected.toString(), name: "Şirket");
-                          //       },
-                          //     )
-                          //   ],
-                          // ),
-                          // CustomWidgetWithLabel(
-                          //   text: "İşletme Kodu",
-                          //   children: [
-                          //     DropdownButtonFormField(
-                          //       isExpanded: true,
-                          //       validator: validator,
-                          //       focusNode: focusNode,
-                          //       //items: isletme değişkenindeki unique değerler
-                          //       items: isletme!.toSet().map((e) => DropdownMenuItem(value: e, child: Text("${e.isletmeAdi} ${e.isletmeKodu ?? 0}"))).toList(),
-                          //       onChanged: (value) {
-                          //         if (value is IsletmeModel) {
-                          //           selected["İşletme"] = value.isletmeKodu;
-                          //           userData["İşletme"] = value.isletmeAdi;
-                          //           log(userData.toString(), name: "İşletmeler");
-                          //           focusNode?.requestFocus();
-                          //         }
-                          //       },
-                          //     )
-                          //   ],
-                          // ),
-                          // CustomWidgetWithLabel(
-                          //   text: "Şube Kodu ",
-                          //   children: [
-                          //     DropdownButtonFormField(
-                          //       isExpanded: true,
-                          //       validator: validator,
-                          //       key: formKey,
-                          //       focusNode: focusNode,
-                          //       items: sube?.map((e) => DropdownMenuItem(value: e, child: Text("${e.subeAdi} ${e.subeKodu ?? 0}"))).toList(),
-                          //       onChanged: (value) {
-                          //         if (value is IsletmeModel) {
-                          //           selected["Şube"] = value.subeKodu ?? 0;
-                          //           userData["Şube"] = value.subeAdi;
-                          //           log(selected.toString(), name: "Şube");
-                          //           log(value.toString(), name: "Şube");
-                          //           log(sube!.length.toString(), name: "Şube");
-                          //           focusNode?.unfocus();
-                          //         }
-                          //       },
-                          //     )
-                          //   ],
-                          // ),
-                        ]
-                            .map((widget) => Padding(
-                                  padding: context.onlyBottomPaddingNormal,
-                                  child: widget,
-                                ))
-                            .toList()),
-                    context.emptySizedHeightBoxLow,
-                    ElevatedButton(
-                      onPressed: () async {
-                        if (!selected.values.contains(null)) {
-                          /// var [model] = {
-                          ///   "AKTIF_ISLETME_KODU": selected["İşletme"].toString(),
-                          ///  "AKTIF_VERITABANI": selected["Şirket"].toString(),
-                          ///   "G_CID": "/Y5TBF72qY7bnZl3+NOYvUtln/g5FJPl4jQ9i59td5M=",
-                          ///   "UYE_EMAIL": "destek@netfect.com",
-                          ///   "OZEL_CIHAZ_KIMLIGI": "4b0f40f3caabceaa7e6a60d5ba133d3323741f0644c2dbb6b74b40152f9aeaf7",
-                          /// };
-                          final model = AccountModel.instance
-                            // ..admin = CacheManager.getAnaVeri()?.userModel?.admin
-                            ..aktifVeritabani = selected["Şirket"]
-                            ..aktifIsletmeKodu = selected["İşletme"]
-                            ..aktifSubeKodu = selected["Şube"];
+                            ]),
+                            // CustomWidgetWithLabel(
+                            //   text: "Şirket",
+                            //   children: [
+                            //     DropdownButtonFormField(
+                            //       autofocus: true,
+                            //       decoration: const InputDecoration(
+                            //         hoverColor: Colors.transparent,
+                            //       ),
+                            //       isExpanded: true,
+                            //       validator: validator,
+                            //       focusNode: focusNode,
+                            //       items: sirket?.toSet().map((e) => DropdownMenuItem(value: e, child: Text(e.company!.toString()))).toList(),
+                            //       onChanged: (value) {
+                            //         if (value is CompanyModel) {
+                            //           setState(() {
+                            //             selected["Şirket"] = value.company;
+                            //             userData["Şirket"] = value.company;
+                            //             selected["İşletme"] = null;
+                            //             selected["Şube"] = null;
+                            //             focusNode!.requestFocus();
+                            //           });
+                            //         }
+                            //         log(selected.toString(), name: "Şirket");
+                            //       },
+                            //     )
+                            //   ],
+                            // ),
+                            // CustomWidgetWithLabel(
+                            //   text: "İşletme Kodu",
+                            //   children: [
+                            //     DropdownButtonFormField(
+                            //       isExpanded: true,
+                            //       validator: validator,
+                            //       focusNode: focusNode,
+                            //       //items: isletme değişkenindeki unique değerler
+                            //       items: isletme!.toSet().map((e) => DropdownMenuItem(value: e, child: Text("${e.isletmeAdi} ${e.isletmeKodu ?? 0}"))).toList(),
+                            //       onChanged: (value) {
+                            //         if (value is IsletmeModel) {
+                            //           selected["İşletme"] = value.isletmeKodu;
+                            //           userData["İşletme"] = value.isletmeAdi;
+                            //           log(userData.toString(), name: "İşletmeler");
+                            //           focusNode?.requestFocus();
+                            //         }
+                            //       },
+                            //     )
+                            //   ],
+                            // ),
+                            // CustomWidgetWithLabel(
+                            //   text: "Şube Kodu ",
+                            //   children: [
+                            //     DropdownButtonFormField(
+                            //       isExpanded: true,
+                            //       validator: validator,
+                            //       key: formKey,
+                            //       focusNode: focusNode,
+                            //       items: sube?.map((e) => DropdownMenuItem(value: e, child: Text("${e.subeAdi} ${e.subeKodu ?? 0}"))).toList(),
+                            //       onChanged: (value) {
+                            //         if (value is IsletmeModel) {
+                            //           selected["Şube"] = value.subeKodu ?? 0;
+                            //           userData["Şube"] = value.subeAdi;
+                            //           log(selected.toString(), name: "Şube");
+                            //           log(value.toString(), name: "Şube");
+                            //           log(sube!.length.toString(), name: "Şube");
+                            //           focusNode?.unfocus();
+                            //         }
+                            //       },
+                            //     )
+                            //   ],
+                            // ),
+                          ]
+                              .map((widget) => Padding(
+                                    padding: context.onlyBottomPaddingNormal,
+                                    child: widget,
+                                  ))
+                              .toList()),
+                      context.emptySizedHeightBoxLow,
+                      ElevatedButton(
+                        onPressed: () async {
+                          if (!selected.values.contains(null)) {
+                            /// var [model] = {
+                            ///   "AKTIF_ISLETME_KODU": selected["İşletme"].toString(),
+                            ///  "AKTIF_VERITABANI": selected["Şirket"].toString(),
+                            ///   "G_CID": "/Y5TBF72qY7bnZl3+NOYvUtln/g5FJPl4jQ9i59td5M=",
+                            ///   "UYE_EMAIL": "destek@netfect.com",
+                            ///   "OZEL_CIHAZ_KIMLIGI": "4b0f40f3caabceaa7e6a60d5ba133d3323741f0644c2dbb6b74b40152f9aeaf7",
+                            /// };
+                            final model = AccountModel.instance
+                              // ..admin = CacheManager.getAnaVeri()?.userModel?.admin
+                              ..aktifVeritabani = selected["Şirket"]
+                              ..aktifIsletmeKodu = selected["İşletme"]
+                              ..aktifSubeKodu = selected["Şube"];
 
-                          ///!!!!!!!!!!!!!!!!!!!! --> TODO BUNU EKLE
-                          // ..gCid = "/Y5TBF72qY7bnZl3+NOYvUtln/g5FJPl4jQ9i59td5M=";
-                          log(selected.toString(), name: "SONUNDA");
-                          dialogManager.showLoadingDialog("${selected["Şirket"]} şirketine giriş yapılıyor.");
-                          log(CacheManager.getHesapBilgileri().toJson().toString(), name: "dflkgjsşldkfjsşd");
+                            ///!!!!!!!!!!!!!!!!!!!! --> TODO BUNU EKLE
+                            // ..gCid = "/Y5TBF72qY7bnZl3+NOYvUtln/g5FJPl4jQ9i59td5M=";
+                            log(selected.toString(), name: "SONUNDA");
+                            dialogManager.showLoadingDialog("${selected["Şirket"]} şirketine giriş yapılıyor.");
+                            log(CacheManager.getHesapBilgileri().toJson().toString(), name: "dflkgjsşldkfjsşd");
 
-                          final response = await networkManager.dioPost<MainPageModel>(path: ApiUrls.createSession, bodyModel: MainPageModel(), addTokenKey: true, data: model, headers: {
-                            "VERITABANI": selected["Şirket"].toString(),
-                            "ISLETME_KODU": selected["İşletme"].toString(),
-                            "SUBE_KODU": selected["Şube"].toString(),
-                            "content-type": "application/json"
-                          });
-                          if (response.data != null) {
-                            MainPageModel model = response.data[0];
-                            CacheManager.setAnaVeri(model);
-                            CacheManager.setVeriTabani(selected);
-                            CacheManager.setIsletmeSube(userData);
-                            CacheManager.setLogout(true);
-                            Get.offAndToNamed("/mainPage");
-                            // Get.toNamed("/mainPage");
-                            response.message.isNotNullOrNoEmpty ? dialogManager.showAlertDialog(response.message.toString()) : null;
+                            final response = await networkManager.dioPost<MainPageModel>(path: ApiUrls.createSession, bodyModel: MainPageModel(), addTokenKey: true, data: model, headers: {
+                              "VERITABANI": selected["Şirket"].toString(),
+                              "ISLETME_KODU": selected["İşletme"].toString(),
+                              "SUBE_KODU": selected["Şube"].toString(),
+                              "content-type": "application/json"
+                            });
+                            if (response.data != null) {
+                              MainPageModel model = response.data[0];
+                              CacheManager.setAnaVeri(model);
+                              CacheManager.setVeriTabani(selected);
+                              CacheManager.setIsletmeSube(userData);
+                              CacheManager.setLogout(true);
+                              Get.offAndToNamed("/mainPage");
+                              // Get.toNamed("/mainPage");
+                              response.message.isNotNullOrNoEmpty ? dialogManager.showAlertDialog(response.message.toString()) : null;
+                            } else {
+                              dialogManager.hideAlertDialog;
+                              dialogManager.showAlertDialog(response.message.toString());
+                            }
                           } else {
-                            dialogManager.hideAlertDialog;
-                            dialogManager.showAlertDialog(response.message.toString());
+                            dialogManager.showSnackBar("Boş bırakmayınız.");
                           }
-                        } else {
-                          dialogManager.showSnackBar("Boş bırakmayınız.");
-                        }
-                      },
-                      child: const Text("Giriş"),
-                    ),
-                  ],
-                ));
+                        },
+                        child: const Text("Giriş"),
+                      ),
+                    ],
+                  )),
+            );
           } else {
             return Center(
                 child: Column(

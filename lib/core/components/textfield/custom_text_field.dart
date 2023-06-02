@@ -50,7 +50,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       focusNode: widget.focusNode,
       onTap: widget.onTap,
       maxLength: widget.maxLength,
-      validator: widget.validator,
+      validator: widget.validator ?? validator,
       onChanged: widget.onChanged,
       onFieldSubmitted: widget.onSubmitted,
       onTapOutside: (value) {
@@ -72,5 +72,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
             TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: Colors.grey.withOpacity(0.3), fontSize: 12))
           ]))),
     ).paddingAll(UIHelper.lowSize);
+  }
+
+  String? validator(p0) {
+    if (p0 == null || p0.isEmpty) {
+      return "Bu alan boş bırakılamaz";
+    }
+    return null;
   }
 }

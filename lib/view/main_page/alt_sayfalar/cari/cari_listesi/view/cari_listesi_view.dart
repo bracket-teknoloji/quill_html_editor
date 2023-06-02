@@ -153,6 +153,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                           iconWidget: Icons.delete_outline,
                                           onTap: () async {
                                             dialogManager.showAreYouSureDialog(() async {
+                                              dialogManager.showLoadingDialog("Cari Siliniyor...");
                                               var result = await networkManager.dioPost<CariListesiModel>(
                                                 path: ApiUrls.deleteCari,
                                                 bodyModel: CariListesiModel(),
@@ -163,6 +164,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                               );
                                               if (result.success ?? false) {
                                                 Get.back();
+                                                dialogManager.hideAlertDialog;
                                                 dialogManager.showSnackBar("${object.cariAdi} adlı cari silindi");
                                                 getData(sayfa: 1).then((value) {
                                                   viewModel.changeCariListesi(value);
@@ -311,9 +313,9 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                   icon: const Icon(Icons.arrow_back));
             }),
       bottom: PreferredSize(
-        preferredSize: Size.fromHeight(height * 0.07),
+        preferredSize: const Size.fromHeight(50),
         child: SizedBox(
-          height: height * 0.07,
+          height: context.isPortrait ? height * 0.06 : height * 0.1,
           child: ListView(
             shrinkWrap: true,
             itemExtent: width * 0.33,

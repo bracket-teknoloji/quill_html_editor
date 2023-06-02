@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/components/wrap/appbar_title.dart';
 
 import '../../../core/base/state/base_state.dart';
 import '../../../core/components/drawer/left_drawer.dart';
@@ -128,9 +129,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
                           },
                           child: Row(
                             children: [
-                              (CacheManager.getAnaVeri()!.userModel!.admin == "E"
-                                      ? Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20)
-                                      : IconHelper.smallIcon("User-Account"))
+                              (CacheManager.getAnaVeri()!.userModel!.admin == "E" ? Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20) : IconHelper.smallIcon("User-Account"))
                                   .marginOnly(right: 5),
                               Text(CacheManager.getAnaVeri()!.userModel!.kuladi.toString(), style: theme.textTheme.bodyMedium),
                             ],
@@ -197,10 +196,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
 
   AppBar appBar(GlobalKey<ScaffoldState> scaffoldKey, BuildContext context) {
     return AppBar(
-      title: Text(
-        title2.last,
-        style: theme.textTheme.titleLarge,
-      ),
+      title: AppBarTitle(title: title2.last),
       centerTitle: true,
       leading: anaSayfaMi
           ? IconButton(
@@ -214,7 +210,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
               },
             )
           : IconButton(
-              icon: IconHelper.appBarIcon("Yildiz"),
+              icon: const Icon(Icons.star_border_outlined),
               onPressed: () async {
                 if (scaffoldKey.currentState!.isDrawerOpen) {
                   Navigator.pop(context);
@@ -228,7 +224,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
             onPressed: () {
               scaffoldKey.currentState!.openEndDrawer();
             },
-            icon: IconHelper.appBarIcon("User-Account")),
+            icon: const Icon(Icons.person_outline_outlined)),
       ],
     );
   }

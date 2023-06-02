@@ -83,25 +83,20 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
       //   return CustomFloatingActionButton(isScrolledDown: viewModel.isScrolledDown, onPressed: () {});
       // }),
       floatingActionButton: fab(),
-      body: NestedScrollView(
-          // controller: _scrollController,
-          headerSliverBuilder: (context, innerBoxIsScrolled) => [appBar()],
-          body: RefreshIndicator.adaptive(
-              onRefresh: () async {
-                viewModel.setStokListesi(null);
-                viewModel.resetSayfa();
-                return await getData();
-              },
-              child: body())),
+      appBar: appBar(),
+      body: RefreshIndicator.adaptive(
+          onRefresh: () async {
+            viewModel.setStokListesi(null);
+            viewModel.resetSayfa();
+            return await getData();
+          },
+          child: body()),
     );
   }
 
-  SliverAppBar appBar() {
-    return SliverAppBar(
+  AppBar appBar() {
+    return AppBar(
       primary: true,
-      floating: true,
-      snap: true,
-      pinned: true,
       // controller: _scrollController,
       title: Observer(
           builder: (_) => viewModel.searchBar
@@ -150,7 +145,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(50),
         child: SizedBox(
-          height: height * 0.06,
+          height: context.isPortrait ? height * 0.06 : height * 0.1,
           child: ListView(
             shrinkWrap: true,
             itemExtent: width * 0.2,
@@ -179,7 +174,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                             Center(
                               child: Observer(builder: (_) {
                                 return ToggleButtons(
-                                  constraints: BoxConstraints(minWidth: (width * 0.9) / 5, minHeight: height * 0.05),
+                                  constraints: BoxConstraints(minWidth: ((context.isPortrait ? width : 600) * 0.9) / 5, minHeight: height * 0.05),
                                   isSelected: viewModel.selected.toList(),
                                   children: viewModel.selectedList.map((e) => Text(e)).toList(),
                                   onPressed: (index) {
@@ -454,6 +449,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
               : const Center(child: CircularProgressIndicator.adaptive())
           : ListView.builder(
               shrinkWrap: true,
+              controller: _scrollController,
               physics: const ClampingScrollPhysics(),
               padding: UIHelper.lowPadding,
               itemCount: (stokListesi?.length ?? 0) + 1,
@@ -621,15 +617,15 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
       }
       if (viewModel.sayfa == 1) {
         for (var stokKaydi in liste ?? <StokListesiModel>[]) {
-          if (stokKaydi.resimUrlKucuk != null) {
+          if (stokKaydi.resimUrlKucuk != null && viewModel.resimleriGoster == "E") {
             imageMap[stokKaydi.stokKodu ?? ""] = await getImage(stokKaydi.resimUrlKucuk ?? "");
           }
         }
-        viewModel.setImageMap(imageMap);
+        viewModel.addImageMap(imageMap);
         viewModel.setStokListesi(liste);
       } else {
         for (var stokKaydi in liste ?? <StokListesiModel>[]) {
-          if (stokKaydi.resimUrlKucuk != null) {
+          if (stokKaydi.resimUrlKucuk != null && viewModel.resimleriGoster == "E") {
             imageMap[stokKaydi.stokKodu ?? ""] = await getImage(stokKaydi.resimUrlKucuk ?? "");
           }
         }

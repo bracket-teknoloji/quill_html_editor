@@ -37,9 +37,10 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
     return Drawer(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       ListTile(
+        titleAlignment: ListTileTitleAlignment.bottom,
         title: Text("Favoriler", style: theme.textTheme.titleMedium),
         trailing: IconButton(
-          icon: IconButton(onPressed: () {}, icon: IconHelper.smallIcon("Duzenle")),
+          icon: IconButton(onPressed: () {}, icon: const Icon(Icons.edit_note_outlined)),
           onPressed: () => Get.back(),
         ),
         contentPadding: const EdgeInsets.only(left: 12, top: 10, bottom: 10),

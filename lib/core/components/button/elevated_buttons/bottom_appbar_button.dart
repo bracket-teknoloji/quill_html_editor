@@ -22,10 +22,21 @@ class AppBarButton extends StatelessWidget {
         ),
         onPressed: onPressed,
         child: Center(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [icon != null ? Icon(icon, size: 20).paddingOnly(bottom: UIHelper.lowSize) : null, child].nullCheck.cast<Widget>()),
+          child: Wrap(
+              alignment: WrapAlignment.center,
+              runAlignment: WrapAlignment.center,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              direction: context.isPortrait ? Axis.vertical : Axis.horizontal,
+              children: [
+                icon != null
+                    ? Icon(
+                        icon,
+                        size: 20,
+                        fill: 1,
+                      )
+                    : null,
+                child
+              ].nullCheck.cast<Widget>()),
         ));
   }
 }

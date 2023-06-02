@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
+import 'package:picker/view/main_page/alt_sayfalar/cari/cari_network_manager.dart';
 
 import '../../../../../../../../core/base/helpers/helper.dart';
 import '../../../../../../../../core/base/model/base_bottom_sheet_response_model.dart';
@@ -137,12 +138,10 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                           },
                           icon: const Icon(Icons.spatial_audio_off_outlined)),
                       IconButton(
-                          onPressed: () {
-                            //!!!! BU NE AMK SALAĞI !!!!!!!! HELP AMK
-                            String kod = model?.cariKodu ?? "";
-                            String newCariKodu = kod.substring(0, kod.length - 1) + (int.parse(kod.substring(kod.length - 1)) + 1).toString();
-                            kodController.text = newCariKodu;
-                            model?.cariKodu = newCariKodu;
+                          onPressed: () async {
+                            String kod = await CariNetworkManager.getSiradakiKod(kod: model?.cariKodu);
+                            kodController.text = kod;
+                            model?.cariKodu = kod;
                             viewModel.changeModel(model);
                           },
                           icon: const Icon(Icons.format_list_numbered_rtl_outlined))

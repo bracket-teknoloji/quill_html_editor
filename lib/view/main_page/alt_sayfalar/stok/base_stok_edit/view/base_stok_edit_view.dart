@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/view/base_stok_edit_genel/view_model/base_stok_edit_genel_view_model.dart';
 
 import '../../../../../../core/base/model/base_edit_model.dart';
 import '../../../../../../core/base/state/base_state.dart';
@@ -71,59 +72,61 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> {
   }
 
   void postData() async {
-    StokListesiModel model = StokListesiModel.instance;
-    SaveStokModel saveStokModel = SaveStokModel().fromJson(model.toJson());
-    saveStokModel.adi = model.stokAdi;
-    saveStokModel.kodu = model.stokKodu;
-    saveStokModel.alisFiyati1 = model.alisFiat1;
-    saveStokModel.alisDovizTipi = model.alisDovTip;
-    saveStokModel.satisDovizTipi = model.satDovTip;
-    saveStokModel.alisFiyati2 = model.alisFiat2;
-    // saveStokModel.subeKodu = model.subeKodu;
-    saveStokModel.alisFiyati3 = model.alisFiat3;
-    saveStokModel.alisFiyati4 = model.alisFiat4;
-    saveStokModel.olcuBirimi1 = model.olcuBirimi;
-    saveStokModel.seriGiristeAktif = model.seriGirislerdeAcik;
-    saveStokModel.seriCikistaAktif = model.seriCikislardaAcik;
-    saveStokModel.seriGiristeOtomatik = model.seriGiristeOtomatikMi;
-    saveStokModel.seriCikistaOtomatik = model.seriCikistaOtomatikMi;
-    saveStokModel.seriMiktarKadar = model.seriMiktarKadarSor;
-    saveStokModel.alisKdvOrani = model.alisKdv;
-    saveStokModel.satisKdvOrani = model.satisKdv;
-    saveStokModel.alisDovizFiyati = model.dovAlisFiat;
-    saveStokModel.satisDovizFiyati = model.dovSatisFiat;
-    saveStokModel.muhdetayKodu = model.muhdetayKodu;
-    saveStokModel.islemKodu = widget.model?.baseEditEnum == BaseEditEnum.ekle ? 1 : 2;
-    saveStokModel.yeniKayit = saveStokModel.islemKodu == 1 ? true : false;
-    saveStokModel.satisFiyati1 = model.satisFiat1;
-    saveStokModel.satisFiyati2 = model.satisFiat2;
-    saveStokModel.satisFiyati3 = model.satisFiat3;
-    saveStokModel.satisFiyati4 = model.satisFiat4;
-    saveStokModel.alisFiyati1 = model.alisFiat1;
-    saveStokModel.alisFiyati2 = model.alisFiat2;
-    saveStokModel.alisFiyati3 = model.alisFiat3;
-    saveStokModel.alisFiyati4 = model.alisFiat4;
-    saveStokModel.satisKdvOrani = model.satisKdv;
-    saveStokModel.alisKdvOrani = model.alisKdv;
-    saveStokModel.satisDovizFiyati = model.dovSatisFiat;
-    saveStokModel.alisDovizFiyati = model.dovAlisFiat;
-    saveStokModel.alisDovizTipi = model.alisDovTip;
-    saveStokModel.satisDovizTipi = model.satDovTip;
-    dialogManager.showLoadingDialog("Kaydediliyor..");
-    var result = await networkManager.dioPost<SaveStokModel>(
-      path: ApiUrls.saveStok,
-      bodyModel: SaveStokModel(),
-      addCKey: true,
-      addSirketBilgileri: true,
-      data: saveStokModel.toJson(),
-    );
-    dialogManager.hideAlertDialog;
-    SaveStokModel.setInstance(SaveStokModel());
-    if (result.success == true) {
-      dialogManager.showSnackBar("Başarılı");
-      Get.back(result: BaseEditModel());
-    } else {
-      dialogManager.showSnackBar(result.message ?? "Hata oluştu");
+    if (BaseStokEditGenelViewModel().formKey.currentState!.validate()) {
+      StokListesiModel model = StokListesiModel.instance;
+      SaveStokModel saveStokModel = SaveStokModel().fromJson(model.toJson());
+      saveStokModel.adi = model.stokAdi;
+      saveStokModel.kodu = model.stokKodu;
+      saveStokModel.alisFiyati1 = model.alisFiat1;
+      saveStokModel.alisDovizTipi = model.alisDovTip;
+      saveStokModel.satisDovizTipi = model.satDovTip;
+      saveStokModel.alisFiyati2 = model.alisFiat2;
+      // saveStokModel.subeKodu = model.subeKodu;
+      saveStokModel.alisFiyati3 = model.alisFiat3;
+      saveStokModel.alisFiyati4 = model.alisFiat4;
+      saveStokModel.olcuBirimi1 = model.olcuBirimi;
+      saveStokModel.seriGiristeAktif = model.seriGirislerdeAcik;
+      saveStokModel.seriCikistaAktif = model.seriCikislardaAcik;
+      saveStokModel.seriGiristeOtomatik = model.seriGiristeOtomatikMi;
+      saveStokModel.seriCikistaOtomatik = model.seriCikistaOtomatikMi;
+      saveStokModel.seriMiktarKadar = model.seriMiktarKadarSor;
+      saveStokModel.alisKdvOrani = model.alisKdv;
+      saveStokModel.satisKdvOrani = model.satisKdv;
+      saveStokModel.alisDovizFiyati = model.dovAlisFiat;
+      saveStokModel.satisDovizFiyati = model.dovSatisFiat;
+      saveStokModel.muhdetayKodu = model.muhdetayKodu;
+      saveStokModel.islemKodu = widget.model?.baseEditEnum == BaseEditEnum.ekle ? 1 : 2;
+      saveStokModel.yeniKayit = saveStokModel.islemKodu == 1 ? true : false;
+      saveStokModel.satisFiyati1 = model.satisFiat1;
+      saveStokModel.satisFiyati2 = model.satisFiat2;
+      saveStokModel.satisFiyati3 = model.satisFiat3;
+      saveStokModel.satisFiyati4 = model.satisFiat4;
+      saveStokModel.alisFiyati1 = model.alisFiat1;
+      saveStokModel.alisFiyati2 = model.alisFiat2;
+      saveStokModel.alisFiyati3 = model.alisFiat3;
+      saveStokModel.alisFiyati4 = model.alisFiat4;
+      saveStokModel.satisKdvOrani = model.satisKdv;
+      saveStokModel.alisKdvOrani = model.alisKdv;
+      saveStokModel.satisDovizFiyati = model.dovSatisFiat;
+      saveStokModel.alisDovizFiyati = model.dovAlisFiat;
+      saveStokModel.alisDovizTipi = model.alisDovTip;
+      saveStokModel.satisDovizTipi = model.satDovTip;
+      dialogManager.showLoadingDialog("Kaydediliyor..");
+      var result = await networkManager.dioPost<SaveStokModel>(
+        path: ApiUrls.saveStok,
+        bodyModel: SaveStokModel(),
+        addCKey: true,
+        addSirketBilgileri: true,
+        data: saveStokModel.toJson(),
+      );
+      dialogManager.hideAlertDialog;
+      SaveStokModel.setInstance(SaveStokModel());
+      if (result.success == true) {
+        dialogManager.showSnackBar("Başarılı");
+        Get.back(result: BaseEditModel());
+      } else {
+        dialogManager.showSnackBar(result.message ?? "Hata oluştu");
+      }
     }
   }
 }
