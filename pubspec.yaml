@@ -87,6 +87,7 @@ dependencies:
 flutter_icons:
   image_path: "assets/splash/pickerLogoTuruncu.png"
   android: true
+  ios: true
     
 
 dev_dependencies:
