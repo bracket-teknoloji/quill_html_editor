@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
+import 'package:picker/core/constants/static_variables/static_variables.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_network_manager.dart';
 
 import '../../../../../../../../core/base/helpers/helper.dart';
@@ -93,7 +94,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
     return SingleChildScrollView(
       child: Form(
         autovalidateMode: AutovalidateMode.onUserInteraction,
-        key: formKey,
+        key: StaticVariables.formKey,
         child: Column(
           children: [
             Align(
@@ -116,7 +117,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
               ),
             ),
             Observer(builder: (_) {
-              return Row(children: [
+              return Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Expanded(
                     child: CustomTextField(
                   enabled: enabled && widget.model?.baseEditEnum == BaseEditEnum.ekle,
@@ -230,7 +231,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                             }),
                   ));
             }),
-            Row(children: [
+            Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Expanded(
                   child: CustomTextField(
                 enabled: enabled,
@@ -290,7 +291,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                 viewModel.changeModel(model?..web = p0);
               },
             ),
-            Row(children: [
+            Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Expanded(
                   child: CustomTextField(
                 enabled: enabled,
@@ -310,7 +311,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                 },
               ))
             ]),
-            Row(children: [
+            Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Expanded(
                   child: CustomTextField(
                       enabled: enabled,
@@ -387,6 +388,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                           icon: const Icon(Icons.more_horiz_outlined)),
                     ))),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                     child: CustomTextField(

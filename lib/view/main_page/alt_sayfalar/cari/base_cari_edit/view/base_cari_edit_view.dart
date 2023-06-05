@@ -5,6 +5,7 @@ import '../../../../../../core/base/model/base_edit_model.dart';
 import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/wrap/appbar_title.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
+import '../../../../../../core/constants/static_variables/static_variables.dart';
 import '../../../../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../../../../core/init/network/login/api_urls.dart';
 import '../../cari_listesi/model/cari_listesi_model.dart';
@@ -36,8 +37,12 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> {
   Widget? get addSaveButton => widget.model?.baseEditEnum != BaseEditEnum.goruntule
       ? IconButton(
           onPressed: () async {
-            dialogManager.showSnackBar("Yükleniyor");
-            await postData();
+            if (StaticVariables.formKey.currentState!.validate()) {
+              dialogManager.showSnackBar("Yükleniyor");
+              await postData();
+            } else {
+              dialogManager.showSnackBar("Eksik bilgi var. Lütfen kontrol ediniz.");
+            }
           },
           icon: const Icon(Icons.save_outlined))
       : null;
@@ -66,7 +71,6 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> {
           bottom: TabBar(tabs: tabs),
         ),
         body: TabBarView(
-          // controller: _tabController,
           children: views,
         ).paddingAll(UIHelper.midSize),
       ),

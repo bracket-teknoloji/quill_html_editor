@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/constants/static_variables/static_variables.dart';
 
 import '../../../../../../../../core/base/helpers/helper.dart';
 import '../../../../../../../../core/components/textfield/custom_label_widget.dart';
@@ -16,6 +17,7 @@ class BaseEditCariOzetView extends StatefulWidget {
 class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
   CariDetayModel? cariDetayModel = CariDetayModel.instance;
   List<BakiyeList>? bakiyeList = CariDetayModel.instance.bakiyeList ?? [];
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     TextEditingController borcEuroController = TextEditingController(text: getBorc("Euro"));
@@ -44,125 +46,127 @@ class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
     TextEditingController toplamRiskController = TextEditingController(text: "${((cariDetayModel?.riskBorcToplami ?? 0) - (cariDetayModel?.riskAlacakToplami ?? 0)).commaSeparatedWithFixedDigits} TL");
     return SingleChildScrollView(
       child: Form(
+          key: StaticVariables.formKey,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           child: Column(children: [
-        getBakiye("TL") == ""
-            ? const Center(
-                child: Column(
-                  children: [Icon(Icons.crisis_alert_outlined), Text("Kayıt Bulunamadı")],
-                ),
-              )
-            : CustomWidgetWithLabel(text: "Döviz Bakiyeleri", children: [
-                const Divider(),
-                const Row(
+            getBakiye("TL") == ""
+                ? const Center(
+                    child: Column(
+                      children: [Icon(Icons.crisis_alert_outlined), Text("Kayıt Bulunamadı")],
+                    ),
+                  )
+                : CustomWidgetWithLabel(text: "Döviz Bakiyeleri", children: [
+                    const Divider(),
+                    const Row(
+                      children: [
+                        Expanded(child: Text("  Borç")),
+                        Expanded(child: Text("  Alacak")),
+                        Expanded(child: Text("  Bakiye")),
+                      ],
+                    ),
+                    CustomWidgetWithLabel(
+                      text: "  €",
+                      isVertical: false,
+                      children: [
+                        SizedBox(
+                          child: Row(
+                            children: [
+                              Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcEuroController)),
+                              Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakEuroController)),
+                              Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeEuroController)),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    CustomWidgetWithLabel(
+                      text: "  \$",
+                      isVertical: false,
+                      children: [
+                        SizedBox(
+                          child: Row(
+                            children: [
+                              Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcDolarController)),
+                              Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakDolarController)),
+                              Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeDolarController)),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    CustomWidgetWithLabel(
+                      text: "  TL",
+                      isVertical: false,
+                      children: [
+                        SizedBox(
+                          child: Row(
+                            children: [
+                              Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcTLController)),
+                              Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakTLController)),
+                              Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeTLController)),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ]),
+            CustomWidgetWithLabel(
+              text: "Risk Bilgileri",
+              children: [
+                Row(
                   children: [
-                    Expanded(child: Text("  Borç")),
-                    Expanded(child: Text("  Alacak")),
-                    Expanded(child: Text("  Bakiye")),
+                    Expanded(child: CustomTextField(readOnly: true, labelText: "Borç Toplamı", controller: borcToplamiController)),
+                    Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak Toplamı", controller: alacakToplamiController)),
                   ],
                 ),
-                CustomWidgetWithLabel(
-                  text: "  €",
-                  isVertical: false,
+                CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeToplamiController),
+                Row(
                   children: [
-                    SizedBox(
-                      child: Row(
-                        children: [
-                          Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcEuroController)),
-                          Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakEuroController)),
-                          Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeEuroController)),
-                        ],
-                      ),
-                    )
+                    Expanded(child: CustomTextField(readOnly: true, labelText: "Risk Limiti", controller: riskLimitiController)),
+                    Expanded(child: CustomTextField(readOnly: true, labelText: "Teminat", controller: teminatController)),
                   ],
                 ),
-                CustomWidgetWithLabel(
-                  text: "  \$",
-                  isVertical: false,
+                Row(
                   children: [
-                    SizedBox(
-                      child: Row(
-                        children: [
-                          Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcDolarController)),
-                          Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakDolarController)),
-                          Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeDolarController)),
-                        ],
-                      ),
-                    )
+                    Expanded(
+                        child: CustomTextField(
+                            readOnly: true, labelText: "Senet Asıl Riski", valueText: "% ${CariDetayModel.instance.senetAsilRiskO?.toIntIfDouble.toStringIfNull}", controller: senetAsilController)),
+                    Expanded(
+                        child: CustomTextField(
+                            readOnly: true, labelText: "Senet Ciro Riski", valueText: "% ${CariDetayModel.instance.senetCiroRiskO?.toIntIfDouble.toStringIfNull}", controller: senetCiroController)),
                   ],
                 ),
-                CustomWidgetWithLabel(
-                  text: "  TL",
-                  isVertical: false,
+                Row(
                   children: [
-                    SizedBox(
-                      child: Row(
-                        children: [
-                          Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcTLController)),
-                          Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakTLController)),
-                          Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeTLController)),
-                        ],
-                      ),
-                    )
+                    Expanded(
+                        child: CustomTextField(
+                            readOnly: true, labelText: "Çek Asıl Riski", valueText: "% ${CariDetayModel.instance.senetAsilRiskO?.toIntIfDouble.toStringIfNull}", controller: cekAsilController)),
+                    Expanded(
+                        child: CustomTextField(
+                            readOnly: true, labelText: "Çek Ciro Riski", valueText: "% ${CariDetayModel.instance.senetCiroRiskO?.toIntIfDouble.toStringIfNull}", controller: cekCiroController)),
                   ],
                 ),
-              ]),
-        CustomWidgetWithLabel(
-          text: "Risk Bilgileri",
-          children: [
-            Row(
-              children: [
-                Expanded(child: CustomTextField(readOnly: true, labelText: "Borç Toplamı", controller: borcToplamiController)),
-                Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak Toplamı", controller: alacakToplamiController)),
+                Row(
+                  children: [
+                    Expanded(child: CustomTextField(readOnly: true, labelText: "Sipariş Riski", controller: siparisController)),
+                    Expanded(child: CustomTextField(readOnly: true, labelText: "Sevk Riski", controller: sevkController)),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Expanded(child: CustomTextField(readOnly: true, labelText: "Yükleme Riski", controller: yuklemelerController)),
+                    Expanded(child: CustomTextField(readOnly: true, labelText: "İrsaliye Riski", controller: irsaliyeController)),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Expanded(child: CustomTextField(readOnly: true, labelText: "Teminat Riski", controller: teminatRiskiController)),
+                    Expanded(child: CustomTextField(readOnly: true, labelText: "Toplam Risk", controller: toplamRiskController)),
+                  ],
+                ),
               ],
-            ),
-            CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeToplamiController),
-            Row(
-              children: [
-                Expanded(child: CustomTextField(readOnly: true, labelText: "Risk Limiti", controller: riskLimitiController)),
-                Expanded(child: CustomTextField(readOnly: true, labelText: "Teminat", controller: teminatController)),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                    child: CustomTextField(
-                        readOnly: true, labelText: "Senet Asıl Riski", valueText: "% ${CariDetayModel.instance.senetAsilRiskO?.toIntIfDouble.toStringIfNull}", controller: senetAsilController)),
-                Expanded(
-                    child: CustomTextField(
-                        readOnly: true, labelText: "Senet Ciro Riski", valueText: "% ${CariDetayModel.instance.senetCiroRiskO?.toIntIfDouble.toStringIfNull}", controller: senetCiroController)),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                    child: CustomTextField(
-                        readOnly: true, labelText: "Çek Asıl Riski", valueText: "% ${CariDetayModel.instance.senetAsilRiskO?.toIntIfDouble.toStringIfNull}", controller: cekAsilController)),
-                Expanded(
-                    child: CustomTextField(
-                        readOnly: true, labelText: "Çek Ciro Riski", valueText: "% ${CariDetayModel.instance.senetCiroRiskO?.toIntIfDouble.toStringIfNull}", controller: cekCiroController)),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(child: CustomTextField(readOnly: true, labelText: "Sipariş Riski", controller: siparisController)),
-                Expanded(child: CustomTextField(readOnly: true, labelText: "Sevk Riski", controller: sevkController)),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(child: CustomTextField(readOnly: true, labelText: "Yükleme Riski", controller: yuklemelerController)),
-                Expanded(child: CustomTextField(readOnly: true, labelText: "İrsaliye Riski", controller: irsaliyeController)),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(child: CustomTextField(readOnly: true, labelText: "Teminat Riski", controller: teminatRiskiController)),
-                Expanded(child: CustomTextField(readOnly: true, labelText: "Toplam Risk", controller: toplamRiskController)),
-              ],
-            ),
-          ],
-        )
-      ])),
+            )
+          ])),
     );
   }
 

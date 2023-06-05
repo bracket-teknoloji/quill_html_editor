@@ -50,7 +50,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       focusNode: widget.focusNode,
       onTap: widget.onTap,
       maxLength: widget.maxLength,
-      validator: widget.validator ?? validator,
+      validator: widget.validator ?? ((widget.isMust ?? false) ? validator : null),
       onChanged: widget.onChanged,
       onFieldSubmitted: widget.onSubmitted,
       onTapOutside: (value) {
@@ -76,7 +76,19 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   String? validator(p0) {
     if (p0 == null || p0.isEmpty) {
-      return "Bu alan boş bırakılamaz";
+      return "${widget.labelText} boş bırakılamaz";
+    } else if (widget.maxLength != null && p0.length > widget.maxLength!) {
+      return "${widget.labelText} en fazla ${widget.maxLength} karakter olabilir";
+    } else if (widget.keyboardType == TextInputType.emailAddress && !GetUtils.isEmail(p0)) {
+      return "Geçerli bir e-posta adresi giriniz";
+    } else if (widget.keyboardType == TextInputType.number && !GetUtils.isNumericOnly(p0)) {
+      return "Sadece rakam giriniz";
+    } else if (widget.keyboardType == TextInputType.phone && !GetUtils.isPhoneNumber(p0)) {
+      return "Geçerli bir telefon numarası giriniz";
+    } else if (widget.keyboardType == TextInputType.url && !GetUtils.isURL(p0)) {
+      return "Geçerli bir url giriniz";
+    } else if (widget.keyboardType == TextInputType.visiblePassword && !GetUtils.isLengthGreaterOrEqual(p0, 6)) {
+      return "Şifre en az 6 karakter olmalıdır";
     }
     return null;
   }

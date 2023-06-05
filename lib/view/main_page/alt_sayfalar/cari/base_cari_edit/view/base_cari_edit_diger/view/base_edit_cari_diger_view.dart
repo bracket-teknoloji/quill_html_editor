@@ -123,7 +123,8 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
     bool enabled = widget.model?.baseEditEnum != BaseEditEnum.goruntule;
     return SingleChildScrollView(
       child: Form(
-          key: formKey,
+          key: StaticVariables.formKey,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           child: Column(
             children: [
               Row(
@@ -252,7 +253,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                       }),
                 ],
               ).withExpanded,
-              CustomTextField(enabled: enabled, labelText: "Bilgi", controller: bilgiController),
+              CustomTextField(enabled: enabled, labelText: "Bilgi", controller: bilgiController, isMust: true),
               CustomTextField(
                   enabled: (enabled && subeList.firstWhere((element) => element.subeKodu == veriTabani["Şube"]).merkezmi == "E") || widget.model?.baseEditEnum == BaseEditEnum.ekle,
                   readOnly: true,
