@@ -28,7 +28,9 @@ class BaseCariEditingView extends StatefulWidget {
   State<BaseCariEditingView> createState() => _BasCariEditingViewState();
 }
 
-class _BasCariEditingViewState extends BaseState<BaseCariEditingView> {
+class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with TickerProviderStateMixin {
+  TabController? tabController;
+  CariListesiModel get cariListesiModel => CariListesiModel.instance;
   List<Tab>? get addTabs => widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null
       ? [const Tab(child: Text("Özet")), const Tab(child: Text("Banka")), const Tab(child: Text("İletişim"))]
       : [];
@@ -38,10 +40,10 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> {
       ? IconButton(
           onPressed: () async {
             if (StaticVariables.formKey.currentState!.validate()) {
-              dialogManager.showSnackBar("Yükleniyor");
-              await postData();
+              dialogManager.showAreYouSureDialog(() async => await postData());
             } else {
-              dialogManager.showSnackBar("Eksik bilgi var. Lütfen kontrol ediniz.");
+              // String errorText =
+              dialogManager.showSnackBar("Lütfen zorunlu alanları doldurunuz.");
             }
           },
           icon: const Icon(Icons.save_outlined))
@@ -55,6 +57,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> {
   Widget build(BuildContext context) {
     var tabs = [const Tab(child: Text("Genel")), const Tab(child: Text("Diğer")), ...?addTabs];
     var views = [BaseEditCariGenelView(model: widget.model), CariEditDigerView(model: widget.model), ...?addBody];
+    tabController = TabController(length: tabs.length, vsync: this);
     return DefaultTabController(
       length: tabs.length,
       child: Scaffold(
@@ -68,9 +71,22 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> {
             ),
             addSaveButton ?? Container(),
           ],
-          bottom: TabBar(tabs: tabs),
+          bottom: TabBar(
+            tabs: tabs,
+            controller: tabController,
+            onTap: (value) {
+              if (StaticVariables.formKey.currentState!.validate()) {
+                tabController?.animateTo(value);
+              } else {
+                tabController?.animateTo(tabController!.previousIndex);
+                dialogManager.showSnackBar("Lütfen zorunlu alanları doldurunuz.");
+              }
+            },
+          ),
         ),
         body: TabBarView(
+          physics: StaticVariables.formKey.currentState?.validate() ?? false ? null : const NeverScrollableScrollPhysics(),
+          controller: tabController,
           children: views,
         ).paddingAll(UIHelper.midSize),
       ),
@@ -78,6 +94,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> {
   }
 
   Future<void> postData() async {
+    dialogManager.showSnackBar("Yükleniyor");
     Map<String, dynamic> data = CariListesiModel.instance.toJson();
     CariSaveRequestModel model = CariSaveRequestModel.instance;
     model = model.fromJson(data);

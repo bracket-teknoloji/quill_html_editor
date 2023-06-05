@@ -5,8 +5,8 @@ import 'package:kartal/kartal.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-import '../../../core/base/helpers/helper.dart';
 import '../../../core/base/state/base_state.dart';
+import '../../../core/constants/ui_helper/ui_helper.dart';
 
 class QRScannerView extends StatefulWidget {
   const QRScannerView({super.key});

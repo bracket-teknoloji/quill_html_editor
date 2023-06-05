@@ -1,11 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../core/base/helpers/helper.dart';
 import '../../../../../../core/base/model/base_edit_model.dart';
 import '../../../../../../core/base/model/base_grup_kodu_model.dart';
 import '../../../../../../core/base/model/generic_response_model.dart';
@@ -19,7 +16,10 @@ import '../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../core/constants/enum/grup_kodu_enums.dart';
 import '../../../../../../core/constants/extensions/list_extensions.dart';
 import '../../../../../../core/constants/extensions/model_extensions.dart';
+import '../../../../../../core/constants/extensions/number_extensions.dart';
 import '../../../../../../core/constants/extensions/widget_extensions.dart';
+import '../../../../../../core/constants/ui_helper/ui_helper.dart';
+import '../../../../../../core/init/network/login/api_urls.dart';
 import '../../../cari/cari_network_manager.dart';
 import '../model/stok_bottom_sheet_model.dart';
 import '../model/stok_listesi_model.dart';
@@ -98,6 +98,20 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     return AppBar(
       primary: true,
       // controller: _scrollController,
+      leading: Observer(
+          builder: (_) => IconButton(
+              onPressed: () {
+                if (viewModel.searchBar) {
+                  viewModel.setSearchBar();
+                  viewModel.setSearchValue("");
+                  viewModel.setStokListesi(null);
+                  viewModel.resetSayfa();
+                  getData();
+                } else {
+                  Get.back();
+                }
+              },
+              icon: const Icon(Icons.arrow_back_outlined))),
       title: Observer(
           builder: (_) => viewModel.searchBar
               ? TextField(
@@ -111,20 +125,24 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                 )
               : Text("Stok Listesi ${viewModel.stokListesi?.length ?? ""}")),
       actions: [
-        IconButton(
-          onPressed: () {
-            viewModel.setSearchBar();
-            if (!viewModel.searchBar) {
-              viewModel.setSearchValue("");
-              viewModel.setStokListesi(null);
-              viewModel.resetSayfa();
-              getData();
-            }
-          },
-          icon: Observer(builder: (_) {
-            return Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined);
-          }),
-        ),
+        Observer(builder: (_) {
+          if (!viewModel.searchBar) {
+            return IconButton(
+              onPressed: () {
+                viewModel.setSearchBar();
+                if (!viewModel.searchBar) {
+                  viewModel.setSearchValue("");
+                  viewModel.setStokListesi(null);
+                  viewModel.resetSayfa();
+                  getData();
+                }
+              },
+              icon: const Icon(Icons.search_outlined),
+            );
+          } else {
+            return const SizedBox();
+          }
+        }),
         IconButton(
             onPressed: () async {
               await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context, title: "Seçenekler", children: [
@@ -132,11 +150,18 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                     title: "Resimleri Göster",
                     onTap: () {
                       viewModel.setResimleriGoster();
-                      viewModel.setStokListesi(null);
-                      viewModel.resetSayfa();
-                      log(viewModel.resimleriGoster);
-                      getData();
-                      Get.back();
+                      if (viewModel.resimleriGoster == "E") {
+                        viewModel.setStokListesi(null);
+                        viewModel.resetSayfa();
+                        getData();
+                        Get.back();
+                      } else {
+                        viewModel.setStokListesi(null);
+                        viewModel.setImageMap({});
+                        viewModel.resetSayfa();
+                        getData();
+                        Get.back();
+                      }
                     })
               ]);
             },
@@ -153,15 +178,26 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
             children: [
               AppBarButton(
                 icon: Icons.qr_code_2_outlined,
-                onPressed: () async => await Get.toNamed("/qr"),
+                onPressed: () async {
+                  var result = await Get.toNamed("/qr");
+                  if (result != null) {
+                    viewModel.setSearchBar();
+                    viewModel.setSearchValue(result);
+                    viewModel.setStokListesi(null);
+                    viewModel.resetSayfa();
+                    getData();
+                  }
+                },
               ),
               AppBarButton(
                   icon: Icons.filter_alt_outlined,
                   onPressed: () async {
                     if (viewModel.grupKodlari.isEmptyOrNull) {
+                      dialogManager.showLoadingDialog("Kodlar alınıyor...");
                       var grupKodlari = await CariNetworkManager.getKod(name: GrupKoduEnum.STOK.name);
                       // StaticVariables.grupKodlari = grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
                       viewModel.setGrupKodlari(grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>());
+                      dialogManager.hideAlertDialog;
                     }
                     // ignore: use_build_context_synchronously
                     await bottomSheetDialogManager.showBottomSheetDialog(
@@ -178,7 +214,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                   isSelected: viewModel.selected.toList(),
                                   children: viewModel.selectedList.map((e) => Text(e)).toList(),
                                   onPressed: (index) {
-                                    viewModel.setSelectedWithIndex(index, !viewModel.selected[index]);
+                                    viewModel.setSelectedWithIndex(index);
                                   },
                                 );
                               }),
@@ -443,7 +479,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
 
   Observer body() {
     return Observer(builder: (_) {
-      return viewModel.stokListesi == null
+      return viewModel.stokListesi.isEmptyOrNull
           ? (viewModel.stokListesi?.isEmpty ?? false)
               ? const Center(child: Text("Stok Bulunamadı"))
               : const Center(child: CircularProgressIndicator.adaptive())
@@ -536,8 +572,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                 } else {
                   return AnimatedContainer(
                     duration: const Duration(milliseconds: 150),
-                    height: viewModel.dahaVarMi || (viewModel.stokListesi?.isEmpty ?? false) ? 50 : 0,
-                    child: const Center(child: CircularProgressIndicator.adaptive()),
+                    child: viewModel.dahaVarMi || (viewModel.stokListesi?.isEmpty ?? false) ? const Center(child: CircularProgressIndicator.adaptive()) : const SizedBox(),
                   );
                 }
               },

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:picker/core/components/wrap/appbar_title.dart';
 
 import '../../../core/base/state/base_state.dart';
 import '../../../core/components/drawer/left_drawer.dart';
 import '../../../core/components/drawer/right_drawer/right_drawer.dart';
 import '../../../core/components/grid_tile/grid_tile.dart';
+import '../../../core/components/wrap/appbar_title.dart';
 import '../../../core/constants/ui_helper/icon_helper.dart';
 import '../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../core/init/cache/cache_manager.dart';
@@ -53,14 +53,14 @@ class _MainPageViewState extends BaseState<MainPageView> {
           return false;
         }
       },
-      child: SafeArea(
-        child: Scaffold(
-            appBar: appBar(scaffoldKey, context),
-            key: scaffoldKey,
-            drawerEnableOpenDragGesture: lastItems.isEmpty,
-            drawer: const LeftDrawer(),
-            endDrawer: const EndDrawer(),
-            body: Column(
+      child: Scaffold(
+          appBar: appBar(scaffoldKey, context),
+          key: scaffoldKey,
+          drawerEnableOpenDragGesture: lastItems.isEmpty,
+          drawer: const SafeArea(child: LeftDrawer()),
+          endDrawer: const SafeArea(child: EndDrawer()),
+          body: SafeArea(
+            child: Column(
               children: [
                 Expanded(
                   flex: 9,
@@ -151,8 +151,8 @@ class _MainPageViewState extends BaseState<MainPageView> {
                   ),
                 )
               ],
-            )),
-      ),
+            ),
+          )),
     );
 
     // return BaseView(

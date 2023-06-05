@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kartal/kartal.dart';
 
-import '../../../../../../../../core/base/helpers/helper.dart';
 import '../../../../../../../../core/base/model/base_edit_siradaki_kod_model.dart';
 import '../../../../../../../../core/base/model/base_grup_kodu_model.dart';
 import '../../../../../../../../core/base/model/generic_response_model.dart';
@@ -16,7 +15,11 @@ import '../../../../../../../../core/components/dialog/bottom_sheet/model/bottom
 import '../../../../../../../../core/components/textfield/custom_label_widget.dart';
 import '../../../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../../../core/constants/enum/base_edit_enum.dart';
+import '../../../../../../../../core/constants/extensions/number_extensions.dart';
+import '../../../../../../../../core/constants/static_variables/static_variables.dart';
+import '../../../../../../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../../../../../../core/init/cache/cache_manager.dart';
+import '../../../../../../../../core/init/network/login/api_urls.dart';
 import '../../../../../../../auth/model/isletme_model.dart';
 import '../../../../../../model/main_page_model.dart';
 import '../../../../../../model/param_model.dart';
@@ -109,7 +112,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
     }
     bool enable = widget.model != BaseEditEnum.goruntule;
     return Form(
-      key: viewModel.formKey,
+      key: StaticVariables.formKey,
       child: FutureBuilder(
           future: stokDetayModel,
           builder: (context, snapshot) {

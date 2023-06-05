@@ -128,9 +128,9 @@ abstract class _StokListesiViewModelBase with Store {
   ObservableList<bool> selected = [true, false, false, false, false].asObservable();
 
   @action
-  void setSelectedWithIndex(int index, bool value) {
+  void setSelectedWithIndex(int index) {
     selected = [false, false, false, false, false].asObservable();
-    selected[index] = value;
+    selected[index] = true;
   }
 
   @action

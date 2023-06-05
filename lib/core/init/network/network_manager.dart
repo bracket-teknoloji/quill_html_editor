@@ -97,7 +97,6 @@ class NetworkManager {
   Future<MemoryImage> getImage(String path) async {
     Map<String, String> head = getStandardHeader(true, true, true);
     final response = await _dio.get(path, options: Options(headers: head, responseType: ResponseType.bytes));
-    // convert response to bytes
     log(response.data.toString());
     // response is a png file
     return MemoryImage(response.data);

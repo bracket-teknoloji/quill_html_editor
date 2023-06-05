@@ -1,9 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
-import "view/main_page/alt_sayfalar/cari/base_cari_edit/view/base_cari_edit_view.dart";
-import "view/main_page/alt_sayfalar/cari/cari_hareket_yeni_kayit/view/cari_hareket_yeni_kayit_view.dart";
-import "view/main_page/alt_sayfalar/stok/base_stok_edit/view/base_stok_edit_view.dart";
 
 import "core/init/cache/cache_manager.dart";
 import "core/init/theme/app_theme_dark.dart";
@@ -14,8 +11,11 @@ import "view/add_company/view/company_page.dart";
 import "view/add_company/view/qr_view.dart";
 import "view/auth/view/login_view.dart";
 import "view/entry_company_view.dart";
+import "view/main_page/alt_sayfalar/cari/base_cari_edit/view/base_cari_edit_view.dart";
+import "view/main_page/alt_sayfalar/cari/cari_hareket_yeni_kayit/view/cari_hareket_yeni_kayit_view.dart";
 import "view/main_page/alt_sayfalar/cari/cari_hareketleri/view/cari_hareketleri_view.dart";
 import "view/main_page/alt_sayfalar/cari/cari_listesi/view/cari_listesi_view.dart";
+import "view/main_page/alt_sayfalar/stok/base_stok_edit/view/base_stok_edit_view.dart";
 import 'view/main_page/alt_sayfalar/stok/stok_hareketleri/view/stok_hareketleri_view.dart';
 import "view/main_page/alt_sayfalar/stok/stok_liste/view/stok_listesi_view.dart";
 import "view/main_page/alt_sayfalar/stok/stok_yeni_kayit/view/stok_yeni_kayit_view.dart";
@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       defaultTransition: Transition.rightToLeft,
+      
       popGesture: true,
       debugShowCheckedModeBanner: false,
       opaqueRoute: false,

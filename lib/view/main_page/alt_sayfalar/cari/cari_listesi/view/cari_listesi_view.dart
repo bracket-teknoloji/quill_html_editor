@@ -18,6 +18,7 @@ import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_response_model.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/view_model/bottom_sheet_state_manager.dart';
 import '../../../../../../core/components/floating_action_button/custom_floating_action_button.dart';
+import '../../../../../../core/components/widget/scrollable_widget.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../core/constants/extensions/list_extensions.dart';
 import '../../../../../../core/constants/extensions/model_extensions.dart';
@@ -67,25 +68,30 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
           })
         : null;
     _scrollController.addListener(() async {
-      if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent && viewModel.dahaVarMi) {
+      if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
         // await getData(sayfa: viewModel.sayfa + 1).then((value) {
         //   if (value.length == 25) {
         //     viewModel.increaseSayfa();
         //   }
         //   cariListesi!.addAll(value);
         // });
-        List? a = await getData(sayfa: viewModel.sayfa + 1);
-        if (a?.length == 25) {
-          viewModel.increaseSayfa();
-        }
-        viewModel.addCariListesi(a!);
-        // cariListesi!.addAll(a);
+        if (viewModel.dahaVarMi) {
+          List? a = await getData(sayfa: viewModel.sayfa + 1);
+          if (a?.length == 25) {
+            viewModel.increaseSayfa();
+          }
+          viewModel.addCariListesi(a!);
+        } // cariListesi!.addAll(a);
       }
       // when scroll down change isScrolledDown to true
       if (_scrollController.position.userScrollDirection == ScrollDirection.forward) {
         viewModel.changeIsScrolledDown(false);
       } else if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
         viewModel.changeIsScrolledDown(true);
+      }
+      // if scrollcontroller is at the end of the page change isScrolldown to true
+      if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+        viewModel.changeIsScrolledDown(false);
       }
     });
   }
@@ -102,7 +108,8 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
     log(paramData.toString());
     return Observer(builder: (_) {
       return Scaffold(
-        resizeToAvoidBottomInset: true,
+        resizeToAvoidBottomInset: false,
+        extendBody: true,
         floatingActionButton: fab(),
         bottomNavigationBar: bottomButtonBar(),
         appBar: appBar(context),
@@ -229,32 +236,34 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
         ));
   }
 
-  SafeArea bottomButtonBar() {
-    return SafeArea(
-      child: SizedBox(
-        height: context.isPortrait ? (height * 0.06) : height * 0.15,
-        child: paramData.keys.isNotEmpty
-            ? Row(
-                children: [
-                  Expanded(
-                      child: FooterButton(onPressed: () {}, children: [
-                    const Text("Tahsil Edilecek"),
-                    Text(
-                      "${double.tryParse(paramData["TAHSIL_EDILECEK"].replaceAll(",", "."))?.toInt().commaSeparated} TL",
-                      style: const TextStyle(color: Colors.green),
-                    ),
-                  ])),
-                  const VerticalDivider(thickness: 1, width: 1),
-                  Expanded(
-                      child: FooterButton(children: [
-                    const Text("Ödenecek"),
-                    Text("${(double.tryParse(paramData["ODENECEK"].replaceAll(",", "."))!.toInt() * -1).commaSeparated} TL", style: const TextStyle(color: Colors.red)),
-                  ]))
-                ],
-              )
-            : Container(),
-      ),
-    );
+  Widget? bottomButtonBar() {
+    return Observer(
+        builder: (_) => ScrollableWidget(
+              isScrolledDown: !viewModel.isScrolledDown,
+              child: SizedBox(
+                height: context.isPortrait ? (height * 0.06) : (height * 0.1 < 60 ? 60 : height * 0.1),
+                child: paramData.keys.isNotEmpty
+                    ? Row(
+                        children: [
+                          Expanded(
+                              child: FooterButton(onPressed: () {}, children: [
+                            const Text("Tahsil Edilecek"),
+                            Text(
+                              "${double.tryParse(paramData["TAHSIL_EDILECEK"].replaceAll(",", "."))?.toInt().commaSeparated} TL",
+                              style: const TextStyle(color: Colors.green),
+                            ),
+                          ])),
+                          const VerticalDivider(thickness: 1, width: 1),
+                          Expanded(
+                              child: FooterButton(children: [
+                            const Text("Ödenecek"),
+                            Text("${(double.tryParse(paramData["ODENECEK"].replaceAll(",", "."))!.toInt() * -1).commaSeparated} TL", style: const TextStyle(color: Colors.red)),
+                          ]))
+                        ],
+                      )
+                    : null,
+              ),
+            ));
   }
 
   Widget fab() {

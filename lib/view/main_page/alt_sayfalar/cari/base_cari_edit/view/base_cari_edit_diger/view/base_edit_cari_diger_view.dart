@@ -5,7 +5,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 
-import '../../../../../../../../core/base/helpers/helper.dart';
 import '../../../../../../../../core/base/model/base_bottom_sheet_response_model.dart';
 import '../../../../../../../../core/base/model/base_edit_model.dart';
 import '../../../../../../../../core/base/model/base_grup_kodu_model.dart';
@@ -15,6 +14,7 @@ import '../../../../../../../../core/components/dialog/bottom_sheet/model/bottom
 import '../../../../../../../../core/components/textfield/custom_label_widget.dart';
 import '../../../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../../../core/constants/enum/base_edit_enum.dart';
+import '../../../../../../../../core/constants/extensions/number_extensions.dart';
 import '../../../../../../../../core/constants/extensions/widget_extensions.dart';
 import '../../../../../../../../core/constants/static_variables/static_variables.dart';
 import '../../../../../../../../core/init/cache/cache_manager.dart';
@@ -49,7 +49,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
   TextEditingController kod5Controller = TextEditingController(text: CariListesiModel.instance.kod5);
   TextEditingController bilgiController = TextEditingController(text: CariListesiModel.instance.bilgi);
   TextEditingController subeController = TextEditingController(text: CariListesiModel.instance.subeKodu.toStringIfNull);
-  TextEditingController konumController = TextEditingController(text: "${CariListesiModel.instance.enlem.toStringIfNull}${CariListesiModel.instance.boylam.toStringIfNull}");
+  TextEditingController konumController = TextEditingController(text: "${CariListesiModel.instance.enlem.toStringIfNull ?? ""}${CariListesiModel.instance.boylam.toStringIfNull ?? ""}");
   TextEditingController kilitController = TextEditingController(text: CariListesiModel.instance.kilit);
   TextEditingController bagliCariController = TextEditingController(text: CariListesiModel.instance.bagliCariAdi);
   TextEditingController kosulKoduController = TextEditingController(text: CariListesiModel.instance.kosulKodu);
@@ -128,6 +128,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
           child: Column(
             children: [
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomTextField(
                     enabled: enabled,
@@ -172,6 +173,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                 ],
               ).withExpanded,
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomTextField(
                       enabled: enabled,
@@ -212,6 +214,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                 ],
               ).withExpanded,
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomTextField(
                       enabled: enabled,
@@ -373,6 +376,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                 text: "Kullanıcı Tanımlı Sahalar",
                 children: [
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomTextField(
                           enabled: enabled,
@@ -413,6 +417,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                     ],
                   ).withExpanded,
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomTextField(
                           enabled: enabled,
@@ -433,6 +438,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                     ],
                   ).withExpanded,
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomTextField(
                           enabled: enabled,
@@ -453,6 +459,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                     ],
                   ).withExpanded,
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomTextField(
                           enabled: enabled,
@@ -475,6 +482,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                     ],
                   ).withExpanded,
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomTextField(
                           enabled: enabled,
@@ -497,6 +505,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                     ],
                   ).withExpanded,
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomTextField(
                           enabled: enabled,
@@ -519,6 +528,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                     ],
                   ).withExpanded,
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomTextField(
                           enabled: enabled,

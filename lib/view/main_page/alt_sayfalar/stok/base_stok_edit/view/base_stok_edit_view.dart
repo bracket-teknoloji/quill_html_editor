@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/view/base_stok_edit_genel/view_model/base_stok_edit_genel_view_model.dart';
 
 import '../../../../../../core/base/model/base_edit_model.dart';
 import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/wrap/appbar_title.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
+import '../../../../../../core/constants/static_variables/static_variables.dart';
 import '../../../../../../core/init/network/login/api_urls.dart';
 import '../../stok_liste/model/stok_listesi_model.dart';
 import '../model/save_stok_model.dart';
@@ -72,7 +72,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> {
   }
 
   void postData() async {
-    if (BaseStokEditGenelViewModel().formKey.currentState!.validate()) {
+    if (StaticVariables.formKey.currentState!.validate()) {
       StokListesiModel model = StokListesiModel.instance;
       SaveStokModel saveStokModel = SaveStokModel().fromJson(model.toJson());
       saveStokModel.adi = model.stokAdi;

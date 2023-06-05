@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import '../../../constants/extensions/list_extensions.dart';
 
+import '../../../constants/extensions/list_extensions.dart';
 import '../../../constants/extensions/widget_extensions.dart';
 import '../../../constants/ui_helper/icon_helper.dart';
 import '../../../constants/ui_helper/ui_helper.dart';

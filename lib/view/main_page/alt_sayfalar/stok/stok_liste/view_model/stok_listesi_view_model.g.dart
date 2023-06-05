@@ -442,11 +442,11 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
   }
 
   @override
-  void setSelectedWithIndex(int index, bool value) {
+  void setSelectedWithIndex(int index) {
     final _$actionInfo = _$_StokListesiViewModelBaseActionController
         .startAction(name: '_StokListesiViewModelBase.setSelectedWithIndex');
     try {
-      return super.setSelectedWithIndex(index, value);
+      return super.setSelectedWithIndex(index);
     } finally {
       _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
     }

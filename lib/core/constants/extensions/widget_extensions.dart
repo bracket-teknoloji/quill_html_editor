@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:picker/core/constants/ui_helper/ui_helper.dart';
 
+import '../ui_helper/duration_helper.dart';
+
 extension WidgetExtension on Widget {
   Widget get withSafeArea {
     return SafeArea(
@@ -29,10 +31,23 @@ extension RowExtension on Row {
     );
   }
 }
-extension YetkiExtension on Widget{
-  Widget yetkiVarMi(bool yetki){
-    return yetki
-        ? this
-        : const SizedBox();
+
+extension YetkiExtension on Widget {
+  Widget yetkiVarMi(bool yetki) {
+    return yetki ? this : const SizedBox();
+  }
+}
+
+extension ScrollAnimated on Widget? {
+  Widget scrollAnimated(bool isScrolledDown) {
+    return AnimatedSlide(
+      duration: DurationHelper.durationLow,
+      offset: isScrolledDown ? Offset.zero : const Offset(0, 2),
+      child: AnimatedOpacity(
+        duration: DurationHelper.durationLow,
+        opacity: isScrolledDown ? 1 : 0,
+        child: this,
+      ),
+    );
   }
 }
