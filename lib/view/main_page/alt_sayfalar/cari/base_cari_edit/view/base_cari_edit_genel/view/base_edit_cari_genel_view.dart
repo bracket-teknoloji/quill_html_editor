@@ -8,7 +8,7 @@ import '../../../../../../../../core/base/model/base_bottom_sheet_response_model
 import '../../../../../../../../core/base/model/base_edit_model.dart';
 import '../../../../../../../../core/base/state/base_state.dart';
 import '../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../../../../../core/components/textfield/custom_label_widget.dart';
+import '../../../../../../../../core/components/widget/custom_label_widget.dart';
 import '../../../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../../../core/constants/extensions/number_extensions.dart';
@@ -44,17 +44,18 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
 
   @override
   void initState() {
-    super.initState();
+    StaticVariables.instance.cariKartiGenelFormKey.currentState?.activate();
     getCariDetay(model?.cariKodu ?? "");
     viewModel.changeModel(model);
     viewModel.changeIsSahisFirmasi(model?.sahisFirmasiMi ?? false);
     viewModel.changeIsDovizli(model?.dovizli ?? false);
+    super.initState();
   }
 
   @override
-  void dispose() {
-    StaticVariables.formKey.currentState?.deactivate();
-    super.dispose();
+  void deactivate() {
+    StaticVariables.instance.cariKartiGenelFormKey.currentState?.deactivate();
+    super.deactivate();
   }
 
   @override
@@ -96,7 +97,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
     return SingleChildScrollView(
       child: Form(
         autovalidateMode: AutovalidateMode.onUserInteraction,
-        key: StaticVariables.formKey,
+        key: StaticVariables.instance.cariKartiGenelFormKey,
         child: Column(
           children: [
             Align(

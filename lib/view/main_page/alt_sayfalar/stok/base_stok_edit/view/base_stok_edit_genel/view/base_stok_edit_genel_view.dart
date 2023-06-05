@@ -12,7 +12,7 @@ import '../../../../../../../../core/base/model/base_grup_kodu_model.dart';
 import '../../../../../../../../core/base/model/generic_response_model.dart';
 import '../../../../../../../../core/base/state/base_state.dart';
 import '../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../../../../../core/components/textfield/custom_label_widget.dart';
+import '../../../../../../../../core/components/widget/custom_label_widget.dart';
 import '../../../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../../../core/constants/extensions/number_extensions.dart';
@@ -112,7 +112,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
     }
     bool enable = widget.model != BaseEditEnum.goruntule;
     return Form(
-      key: StaticVariables.formKey,
+      key: StaticVariables.instance.stokKartiGenelFormKey,
       child: FutureBuilder(
           future: stokDetayModel,
           builder: (context, snapshot) {
@@ -175,6 +175,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                           child: CustomTextField(
                               enabled: enable,
                               labelText: "Kodu",
+                              isMust: true,
                               controller: stokKoduController,
                               suffix: Wrap(
                                   children: [

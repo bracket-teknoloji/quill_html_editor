@@ -7,7 +7,7 @@ import 'package:kartal/kartal.dart';
 import '../../../../../../../../core/base/model/base_empty_model.dart';
 import '../../../../../../../../core/base/state/base_state.dart';
 import '../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../../../../../core/components/textfield/custom_label_widget.dart';
+import '../../../../../../../../core/components/widget/custom_label_widget.dart';
 import '../../../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../../../core/constants/extensions/number_extensions.dart';

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kartal/kartal.dart';
 
 import '../../../../../../core/base/model/base_edit_model.dart';
 import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/wrap/appbar_title.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
+import '../../../../../../core/constants/extensions/number_extensions.dart';
 import '../../../../../../core/constants/static_variables/static_variables.dart';
 import '../../../../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../../../../core/init/network/login/api_urls.dart';
@@ -39,20 +41,14 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
   Widget? get addSaveButton => widget.model?.baseEditEnum != BaseEditEnum.goruntule
       ? IconButton(
           onPressed: () async {
-            if (StaticVariables.formKey.currentState!.validate()) {
+            if (StaticVariables.instance.isCariKartiValid && validate.isEmpty) {
               dialogManager.showAreYouSureDialog(() async => await postData());
             } else {
-              // String errorText =
-              dialogManager.showSnackBar("Lütfen zorunlu alanları doldurunuz.");
+              await dialogManager.showEmptyFieldDialog(validate.keys.toList(), onOk: () => tabController?.animateTo(validate.values.first));
             }
           },
           icon: const Icon(Icons.save_outlined))
       : null;
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     var tabs = [const Tab(child: Text("Genel")), const Tab(child: Text("Diğer")), ...?addTabs];
@@ -74,18 +70,18 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
           bottom: TabBar(
             tabs: tabs,
             controller: tabController,
-            onTap: (value) {
-              if (StaticVariables.formKey.currentState!.validate()) {
-                tabController?.animateTo(value);
-              } else {
-                tabController?.animateTo(tabController!.previousIndex);
-                dialogManager.showSnackBar("Lütfen zorunlu alanları doldurunuz.");
-              }
-            },
+            // onTap: (value) {
+            //   if (StaticVariables.formKey.currentState!.validate()) {
+            //
+            // tabController?.animateTo(value);
+            //   } else {
+            //     tabController?.animateTo(tabController!.previousIndex);
+            //     dialogManager.showSnackBar("Lütfen zorunlu alanları doldurunuz.");
+            //   }
+            // },
           ),
         ),
         body: TabBarView(
-          physics: StaticVariables.formKey.currentState?.validate() ?? false ? null : const NeverScrollableScrollPhysics(),
           controller: tabController,
           children: views,
         ).paddingAll(UIHelper.midSize),
@@ -123,5 +119,26 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
       dialogManager.showSnackBar("Kayıt başarılı");
       Get.back();
     }
+  }
+
+  Map<String, int> get validate {
+    Map<String, int> map = {};
+    CariListesiModel data = CariListesiModel.instance;
+    if (data.cariKodu.isNullOrEmpty) {
+      map["Kodu"] = 0;
+    }
+    if (data.cariTip.isNullOrEmpty) {
+      map["Cari Tipi"] = 0;
+    }
+    if (data.cariAdi.isNullOrEmpty) {
+      map["Adı"] = 0;
+    }
+    if (data.subeKodu.toStringIfNull.isNullOrEmpty) {
+      map["Şube Kodu"] = 1;
+    }
+    if (data.kilit.isNullOrEmpty) {
+      map["Kilit"] = 1;
+    }
+    return map;
   }
 }

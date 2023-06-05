@@ -11,7 +11,7 @@ import '../../../../../../../../core/base/model/base_grup_kodu_model.dart';
 import '../../../../../../../../core/base/model/generic_response_model.dart';
 import '../../../../../../../../core/base/state/base_state.dart';
 import '../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../../../../../core/components/textfield/custom_label_widget.dart';
+import '../../../../../../../../core/components/widget/custom_label_widget.dart';
 import '../../../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../../../core/constants/extensions/number_extensions.dart';
@@ -35,7 +35,7 @@ class CariEditDigerView extends StatefulWidget {
 
 class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
   Map veriTabani = CacheManager.getVeriTabani();
-  final formKey = GlobalKey<FormState>();
+  final cariKartiDigerFormKey = GlobalKey<FormState>();
   BaseCariGenelEditViewModel viewModel = BaseEditCariGenelViewState.viewModel;
   List<BaseGrupKoduModel>? list = [];
   List<IsletmeModel> subeList = [];
@@ -74,9 +74,16 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
   TextEditingController n8Controller = TextEditingController(text: CariListesiModel.instance.kull8n.toStringIfNull);
   @override
   void initState() {
+    StaticVariables.instance.cariKartiDigerFormKey.currentState?.activate();
     super.initState();
     dataChecker();
     subeChecker();
+  }
+
+  @override
+  void deactivate() {
+    StaticVariables.instance.cariKartiDigerFormKey.currentState?.deactivate();
+    super.deactivate();
   }
 
   @override
@@ -123,7 +130,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
     bool enabled = widget.model?.baseEditEnum != BaseEditEnum.goruntule;
     return SingleChildScrollView(
       child: Form(
-          key: StaticVariables.formKey,
+          key: StaticVariables.instance.cariKartiDigerFormKey,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           child: Column(
             children: [
@@ -256,7 +263,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                       }),
                 ],
               ).withExpanded,
-              CustomTextField(enabled: enabled, labelText: "Bilgi", controller: bilgiController, isMust: true),
+              CustomTextField(enabled: enabled, labelText: "Bilgi", controller: bilgiController),
               CustomTextField(
                   enabled: (enabled && subeList.firstWhere((element) => element.subeKodu == veriTabani["Şube"]).merkezmi == "E") || widget.model?.baseEditEnum == BaseEditEnum.ekle,
                   readOnly: true,

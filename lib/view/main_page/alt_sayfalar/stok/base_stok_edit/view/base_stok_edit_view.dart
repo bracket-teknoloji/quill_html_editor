@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kartal/kartal.dart';
 
 import '../../../../../../core/base/model/base_edit_model.dart';
 import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/wrap/appbar_title.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
+import '../../../../../../core/constants/extensions/number_extensions.dart';
 import '../../../../../../core/constants/static_variables/static_variables.dart';
 import '../../../../../../core/init/network/login/api_urls.dart';
 import '../../stok_liste/model/stok_listesi_model.dart';
@@ -26,7 +28,8 @@ class BaseStokEditingView extends StatefulWidget {
   State<BaseStokEditingView> createState() => _BaseStokEditingViewState();
 }
 
-class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> {
+class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with TickerProviderStateMixin {
+  TabController? tabController;
   List<Tab>? get tabs => (widget.model!.baseEditEnum != BaseEditEnum.ekle) ? [const Tab(child: Text("Fiyat Listesi"))] : [];
   List<Widget>? get views => (widget.model!.baseEditEnum != BaseEditEnum.ekle) ? [const BaseStokEditFiyatListesiView()] : [];
 
@@ -40,6 +43,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> {
       BaseStokEditFiyatView(model: widget.model?.baseEditEnum),
       BaseStokEditSerilerView(model: widget.model?.baseEditEnum)
     ];
+    tabController = TabController(length: tabList.length, vsync: this);
     return WillPopScope(
       onWillPop: () async {
         return true;
@@ -55,24 +59,32 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> {
                   visible: widget.model?.baseEditEnum != BaseEditEnum.goruntule,
                   child: IconButton(
                       onPressed: () async {
-                        dialogManager.showAreYouSureDialog(() {
-                          postData();
-                        });
+                        if (StaticVariables.instance.isStokKartiValid && validate.isEmpty) {
+                          dialogManager.showAreYouSureDialog(() {
+                            postData();
+                          });
+                        } else {
+                          dialogManager.showEmptyFieldDialog(
+                            validate.keys,
+                            onOk: () => tabController?.animateTo(validate.values.first),
+                          );
+                        }
                       },
                       icon: const Icon(Icons.save_outlined)))
             ],
             bottom: TabBar(
+              controller: tabController,
               tabs: tabList,
             ),
           ),
-          body: TabBarView(children: viewList),
+          body: TabBarView(controller: tabController, children: viewList),
         ),
       ),
     );
   }
 
   void postData() async {
-    if (StaticVariables.formKey.currentState!.validate()) {
+    if (StaticVariables.instance.isStokKartiValid) {
       StokListesiModel model = StokListesiModel.instance;
       SaveStokModel saveStokModel = SaveStokModel().fromJson(model.toJson());
       saveStokModel.adi = model.stokAdi;
@@ -128,5 +140,17 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> {
         dialogManager.showSnackBar(result.message ?? "Hata oluştu");
       }
     }
+  }
+
+  Map<String, int> get validate {
+    StokListesiModel model = StokListesiModel.instance;
+    Map<String, int> validate = {};
+    if (model.stokKodu.isNullOrEmpty) {
+      validate["Stok Kodu"] = 0;
+    }
+    if (model.subeKodu.toStringIfNull.isNullOrEmpty) {
+      validate["Şube Kodu"] = 0;
+    }
+    return validate;
   }
 }

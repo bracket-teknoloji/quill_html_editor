@@ -30,7 +30,7 @@ class DialogManager {
     ScaffoldMessenger.of(context).showSnackBar(snackBarError(message));
   }
 
-  void showAlertDialog(String message) => _baseDialog(
+  Future<void> showAlertDialog(String message) async => _baseDialog(
         title: "Uyarı",
         desc: message,
         dialogType: DialogType.error,
@@ -52,6 +52,9 @@ class DialogManager {
         onOk: () {},
       ).show();
 
+  Future showEmptyFieldDialog(Iterable values, {void Function()? onOk}) =>
+      _baseDialog(dialogType: DialogType.error, title: "Eksik var", btnOkText: "Tamam", desc: "${values.toList().join(", ")}\nLütfen zorunlu alanları doldurunuz. ", onOk: onOk ?? () {}).show();
+
   void internetConnectionDialog() => _baseDialog(
         customHeader: const CircularProgressIndicator.adaptive(),
         body: Column(
@@ -63,8 +66,7 @@ class DialogManager {
             ),
             Padding(
               padding: UIHelper.midPaddingHorizontal,
-              child: const Text("İnternet bağlantınızı kontrol edin.",
-                  textAlign: TextAlign.center),
+              child: const Text("İnternet bağlantınızı kontrol edin.", textAlign: TextAlign.center),
             ),
           ],
         ),
@@ -73,26 +75,18 @@ class DialogManager {
   void showLoadingDialog(String loadText) => _baseDialog(
         body: Center(
           child: Column(
-            children: [
-              const CircularProgressIndicator.adaptive(),
-              context.emptySizedHeightBoxLow,
-              Text(loadText, style: context.theme.textTheme.labelSmall)
-            ],
+            children: [const CircularProgressIndicator.adaptive(), context.emptySizedHeightBoxLow, Text(loadText, style: context.theme.textTheme.labelSmall)],
           ),
         ),
       ).show();
-  void showAreYouSureDialog(void Function() onYes) =>
-      _areYouSureDialog(onYes).show();
+  void showAreYouSureDialog(void Function() onYes) => _areYouSureDialog(onYes).show();
 
   void showExitDialog() => _baseDialog(
         title: "Uyarı",
         desc: "Çıkmak istediğinize emin misiniz?",
         dialogType: DialogType.question,
         onOk: () async {
-          final response = await NetworkManager().dioPost<LogoutModel>(
-              path: ApiUrls.logoutUser,
-              bodyModel: LogoutModel(),
-              data: AccountModel.instance.toJson());
+          final response = await NetworkManager().dioPost<LogoutModel>(path: ApiUrls.logoutUser, bodyModel: LogoutModel(), data: AccountModel.instance.toJson());
           if (response.success ?? false) {
             showLoadingDialog("Çıkış yapılıyor...");
             log("Çıkış yapılıyor...");
@@ -138,11 +132,7 @@ class DialogManager {
             title: const Text("DEMO"),
             leading: IconHelper.smallIcon("User-Account"),
             onTap: () {
-              Get.back(result: {
-                "company": "DEMO",
-                "user": "demo",
-                "password": "demo"
-              });
+              Get.back(result: {"company": "DEMO", "user": "demo", "password": "demo"});
             }),
         ...List.generate(
           box.length,
@@ -233,11 +223,7 @@ class DialogManager {
               title: const Text("DEMO"),
               leading: IconHelper.smallIcon("User-Account"),
               onTap: () {
-                Get.back(result: {
-                  "company": "demo",
-                  "user": "demo",
-                  "password": "demo"
-                });
+                Get.back(result: {"company": "demo", "user": "demo", "password": "demo"});
               }),
           ...List.generate(
             box.length,
@@ -276,13 +262,10 @@ class DialogManager {
       Widget? body}) {
     return AwesomeDialog(
         context: context,
-        width: Platform.isLinux || Platform.isWindows || Platform.isMacOS
-            ? MediaQuery.of(context).size.width * 0.4
-            : null,
+        width: Platform.isLinux || Platform.isWindows || Platform.isMacOS ? MediaQuery.of(context).size.width * 0.4 : null,
         customHeader: customHeader,
         alignment: Alignment.center,
         reverseBtnOrder: false,
-        
         barrierColor: Colors.black.withOpacity(0.9),
         dialogBorderRadius: UIHelper.lowBorderRadius,
         useRootNavigator: false,

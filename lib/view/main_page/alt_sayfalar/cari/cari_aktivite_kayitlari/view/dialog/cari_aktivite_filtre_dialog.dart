@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart';
-import '../../../../../../../core/components/textfield/custom_label_widget.dart';
+import '../../../../../../../core/components/widget/custom_label_widget.dart';
 import '../../../../../../../core/constants/ui_helper/ui_helper.dart';
 
 class CariAktiviteFiltreDialogManager {

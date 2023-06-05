@@ -10,7 +10,7 @@ import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart';
 import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../../../core/components/textfield/custom_label_widget.dart';
+import '../../../../../../core/components/widget/custom_label_widget.dart';
 import '../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../core/components/wrap/appbar_title.dart';
 import '../../../../../../core/constants/extensions/date_time_extensions.dart';

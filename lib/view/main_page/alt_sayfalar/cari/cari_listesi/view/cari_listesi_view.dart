@@ -18,6 +18,7 @@ import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_response_model.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/view_model/bottom_sheet_state_manager.dart';
 import '../../../../../../core/components/floating_action_button/custom_floating_action_button.dart';
+import '../../../../../../core/components/textfield/custom_app_bar_text_field.dart';
 import '../../../../../../core/components/widget/scrollable_widget.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../core/constants/extensions/list_extensions.dart';
@@ -285,16 +286,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       title: Observer(
         builder: (_) {
           return (viewModel.searchBar
-              ? SizedBox(
-                  height: kToolbarHeight * 0.9,
-                  child: TextFormField(
-                    autofocus: true,
-                    decoration: const InputDecoration(
-                      hintText: "Ara",
-                    ),
-                    onFieldSubmitted: onFieldSubmitted,
-                  ).marginAll(5),
-                )
+              ? CustomAppBarTextField(onFieldSubmitted: onFieldSubmitted )
               : Wrap(direction: Axis.vertical, children: [
                   const Text("Cari Listesi"),
                   Text("${viewModel.cariListesi?.length ?? ""}", style: theme.textTheme.labelSmall),

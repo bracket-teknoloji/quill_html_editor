@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
-import '../../../../../../../../core/components/textfield/custom_label_widget.dart';
+import '../../../../../../../../core/components/widget/custom_label_widget.dart';
 import '../../../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../../../core/constants/extensions/number_extensions.dart';
-import '../../../../../../../../core/constants/static_variables/static_variables.dart';
 import '../../../../cari_listesi/model/cari_detay_model.dart';
 
 class BaseEditCariOzetView extends StatefulWidget {
@@ -46,7 +45,6 @@ class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
     TextEditingController toplamRiskController = TextEditingController(text: "${((cariDetayModel?.riskBorcToplami ?? 0) - (cariDetayModel?.riskAlacakToplami ?? 0)).commaSeparatedWithFixedDigits} TL");
     return SingleChildScrollView(
       child: Form(
-          key: StaticVariables.formKey,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           child: Column(children: [
             getBakiye("TL") == ""

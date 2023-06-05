@@ -12,7 +12,7 @@ import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
 import '../../../core/base/state/base_state.dart';
-import '../../../core/components/textfield/custom_label_widget.dart';
+import '../../../core/components/widget/custom_label_widget.dart';
 import '../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../core/init/app_info/app_info.dart';
 import '../../../core/init/cache/cache_manager.dart';

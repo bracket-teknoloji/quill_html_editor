@@ -10,8 +10,9 @@ import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import '../../../../../../core/components/floating_action_button/custom_floating_action_button.dart';
-import '../../../../../../core/components/textfield/custom_label_widget.dart';
+import '../../../../../../core/components/textfield/custom_app_bar_text_field.dart';
 import '../../../../../../core/components/textfield/custom_text_field.dart';
+import '../../../../../../core/components/widget/custom_label_widget.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../core/constants/enum/grup_kodu_enums.dart';
 import '../../../../../../core/constants/extensions/list_extensions.dart';
@@ -114,9 +115,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
               icon: const Icon(Icons.arrow_back_outlined))),
       title: Observer(
           builder: (_) => viewModel.searchBar
-              ? TextField(
-                  autofocus: true,
-                  onSubmitted: (value) {
+              ? CustomAppBarTextField(
+                  onFieldSubmitted: (value) {
                     viewModel.setSearchValue(value);
                     viewModel.setStokListesi(null);
                     viewModel.resetSayfa();
@@ -173,11 +173,12 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
           height: context.isPortrait ? height * 0.06 : height * 0.1,
           child: ListView(
             shrinkWrap: true,
-            itemExtent: width * 0.2,
+            itemExtent: width * 0.33,
             scrollDirection: Axis.horizontal,
             children: [
               AppBarButton(
                 icon: Icons.qr_code_2_outlined,
+                child: const Text("Barkod"),
                 onPressed: () async {
                   var result = await Get.toNamed("/qr");
                   if (result != null) {
@@ -191,6 +192,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
               ),
               AppBarButton(
                   icon: Icons.filter_alt_outlined,
+                  child: const Text("Filtrele"),
                   onPressed: () async {
                     if (viewModel.grupKodlari.isEmptyOrNull) {
                       dialogManager.showLoadingDialog("Kodlar alınıyor...");
@@ -434,6 +436,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                   }),
               AppBarButton(
                   icon: Icons.sort_by_alpha_outlined,
+                  child: const Text("Sırala"),
                   // child: const Icon(Icons.sort_by_alpha_outlined),
                   onPressed: () async {
                     String? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Sırala", children: [
@@ -451,14 +454,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                       getData();
                     }
                   }),
-              AppBarButton(icon: Icons.format_align_left_sharp, onPressed: () {}),
-              AppBarButton(
-                  icon: Icons.refresh_outlined,
-                  onPressed: () {
-                    viewModel.setStokListesi(null);
-                    viewModel.resetSayfa();
-                    getData();
-                  }),
+              //! AppBarButton(icon: Icons.format_align_left_sharp, onPressed: () {}),
+              //! AppBarButton(icon: Icons.refresh_outlined, onPressed: () {})
             ].map((e) => e.paddingAll(5)).toList(),
           ),
         ).paddingZero,

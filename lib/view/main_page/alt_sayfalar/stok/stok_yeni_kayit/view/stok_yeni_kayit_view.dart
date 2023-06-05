@@ -90,13 +90,11 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                 valueText: widget.model?.stokKodu ?? "",
                 readOnly: true,
                 isMust: true,
-                validator: validate,
                 controller: stokKoduController,
               ),
               CustomTextField(
                   labelText: "Tarih",
                   isMust: true,
-                  validator: validate,
                   readOnly: true,
                   controller: tarihController,
                   onTap: () {
@@ -128,7 +126,6 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                 labelText: "Hareket Türü",
                 valueText: viewModel.model.hareketTuru,
                 isMust: true,
-                validator: validate,
                 readOnly: true,
                 controller: hareketTuruController,
                 suffix: const Icon(Icons.more_horiz_outlined),
@@ -155,7 +152,6 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
               CustomTextField(
                 labelText: "Depo",
                 isMust: true,
-                validator: validate,
                 readOnly: true,
                 controller: depoController,
                 suffix: const Icon(Icons.more_horiz_outlined),
@@ -207,7 +203,6 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
               CustomTextField(
                 labelText: "Plasiyer",
                 isMust: true,
-                validator: validate,
                 readOnly: true,
                 controller: plasiyerController,
                 suffix: const Icon(Icons.more_horiz_outlined),
@@ -265,20 +260,6 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
         ),
       ),
     );
-  }
-
-  String? validate(value) {
-    if (value == null || value.isEmpty) {
-      return "Bu alan boş bırakılamaz";
-    }
-    return null;
-  }
-
-  String? validator(value) {
-    if (value == null || value.isEmpty) {
-      return "Bu alan boş bırakılamaz";
-    }
-    return null;
   }
 
   Future<List<BaseProjeModel>?> getProjeData() async {

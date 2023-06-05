@@ -7,7 +7,7 @@ import "package:kartal/kartal.dart";
 import "../core/base/state/base_state.dart";
 import '../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart';
 import '../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../core/components/textfield/custom_label_widget.dart';
+import '../core/components/widget/custom_label_widget.dart';
 import "../core/init/cache/cache_manager.dart";
 import "../core/init/network/login/api_urls.dart";
 import "add_company/model/account_model.dart";
