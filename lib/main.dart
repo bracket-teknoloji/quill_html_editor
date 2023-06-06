@@ -1,7 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_ekstre/view/cari_ekstre_view.dart";
 
+import "core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "core/init/cache/cache_manager.dart";
 import "core/init/theme/app_theme_dark.dart";
 import "view/add_company/model/account_model.dart";
@@ -36,7 +38,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       defaultTransition: Transition.rightToLeft,
-      
       popGesture: true,
       debugShowCheckedModeBanner: false,
       opaqueRoute: false,
@@ -55,6 +56,7 @@ class MyApp extends StatelessWidget {
             GetPage(name: "/cariEdit", page: () => BaseCariEditingView(model: Get.arguments)),
             GetPage(name: "/cariHareketleri", page: () => CariHareketleriView(cari: Get.arguments)),
             GetPage(name: "/cariYeniKayit", page: () => CariYeniKayitView(model: Get.arguments)),
+            GetPage(name: "/cariEkstre", page: () => const CariEkstreView()),
             //* Stok
             GetPage(name: "/stokListesi", page: () => const StokListesiView()),
             GetPage(name: "/stokEdit", page: () => BaseStokEditingView(model: Get.arguments)),
@@ -65,6 +67,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/addCompany", page: () => const AccountsView()),
         GetPage(name: "/addAccount", page: () => const AddAccountView()),
         GetPage(name: "/qr", page: () => const QRScannerView()),
+        GetPage(name: "/pdf", page: () => const PDFViewerView())
       ],
     );
   }

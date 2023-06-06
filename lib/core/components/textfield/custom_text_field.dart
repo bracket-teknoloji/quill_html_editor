@@ -7,6 +7,7 @@ class CustomTextField extends StatefulWidget {
   final TextEditingController? controller;
   final String? labelText;
   final String? valueText;
+  final Widget? valueWidget;
   final bool? isMust;
   final bool? readOnly;
   final bool? enabled;
@@ -35,7 +36,7 @@ class CustomTextField extends StatefulWidget {
       this.controllerText,
       this.maxLength,
       this.onSubmitted,
-      this.validator});
+      this.validator, this.valueWidget});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();

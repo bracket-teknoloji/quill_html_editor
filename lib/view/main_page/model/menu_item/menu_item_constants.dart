@@ -9,9 +9,9 @@ class MenuItemConstants {
     //*
     GridItems.anamenu(name: "CARI", title: "Cari", icon: "supervisor", color: GridThemeManager.cari, altMenuler: [
       GridItems.item(name: "cari_CariListesi", title: "Cari Listesi", onTap: () => Get.toNamed("/mainPage/cariListesi", arguments: false)),
-      GridItems.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları", onTap: () => Get.toNamed("/mainPage/cariAktivite")),
+      GridItems.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları"),
       GridItems.altmenu(name: "cari_Raporlar", title: "Raporlar", icon: "monitoring", altMenuler: [
-        GridItems.item(name: "cari_Rap_Ekstre", title: "Cari Ekstre"),
+        GridItems.item(name: "cari_Rap_Ekstre", title: "Cari Ekstre", onTap: () => Get.toNamed("/mainPage/cariEkstre")),
         GridItems.item(name: "cari_Rap_DovizliEkstre", title: "Cari Dövizli Ekstre"),
         GridItems.item(name: "cari_Rap_StokEkstre", title: "Stok Ekstresi"),
         GridItems.item(name: "cari_Rap_Yaslandirma", title: "Yaşlandırma Raporu"),
@@ -24,7 +24,7 @@ class MenuItemConstants {
     //*
     GridItems.anamenu(name: "EBEL", title: "E-Belge", icon: "e_belge", color: GridThemeManager.eBelge, altMenuler: [
       //! UNUTMA BUNU AÇMAYI
-      GridItems.item(name: "ebelge_EIrsaliyeGelenKutusu", title: "Gelen Kutusu"),// onTap: () => Get.to(PDFViewerView())),
+      GridItems.item(name: "ebelge_EIrsaliyeGelenKutusu", title: "Gelen Kutusu"), // onTap: () => Get.to(PDFViewerView())),
       GridItems.item(name: "ebelge_EIrsaliyeGidenKutusu", title: "Giden Kutusu"),
       GridItems.item(name: "ebelge_EFatCariGuncelle", title: "E-Fatura Carilerini Güncelle ")
     ]),

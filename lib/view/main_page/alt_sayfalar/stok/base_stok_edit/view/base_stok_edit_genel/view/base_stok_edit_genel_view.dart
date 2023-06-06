@@ -12,8 +12,8 @@ import '../../../../../../../../core/base/model/base_grup_kodu_model.dart';
 import '../../../../../../../../core/base/model/generic_response_model.dart';
 import '../../../../../../../../core/base/state/base_state.dart';
 import '../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../../../../../core/components/widget/custom_label_widget.dart';
 import '../../../../../../../../core/components/textfield/custom_text_field.dart';
+import '../../../../../../../../core/components/widget/custom_label_widget.dart';
 import '../../../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../../../core/constants/extensions/number_extensions.dart';
 import '../../../../../../../../core/constants/static_variables/static_variables.dart';
@@ -116,6 +116,8 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
       child: FutureBuilder(
           future: stokDetayModel,
           builder: (context, snapshot) {
+              var isletmeModel = IsletmeModel(subeKodu: -1, subeAdi: "Şubelerde Ortak");
+              viewModel.stokListesiModel?.subeKodu = isletmeModel.subeKodu;
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator.adaptive());
             } else {
@@ -134,7 +136,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
               barkod2Controller = TextEditingController(text: model?.stokList?.first.barkod2);
               barkod3Controller = TextEditingController(text: model?.stokList?.first.barkod3);
               subeController = TextEditingController(
-                  text: subeList.isNotNullOrEmpty ? subeList.where((element) => element.subeKodu == model?.stokList?.first.subeKodu).firstOrNull?.subeAdi : ""); //text: model?.stokAdi
+                  text: subeList.isNotNullOrEmpty ? subeList.where((element) => element.subeKodu == model?.stokList?.first.subeKodu).firstOrNull?.subeAdi : "${isletmeModel.subeAdi} ${isletmeModel.subeKodu}"); //text: model?.stokAdi
               ureticiKoduController = TextEditingController(text: model?.stokList?.first.ureticiKodu); //text: model?.stokAdi
               grupKoduController = TextEditingController(text: model?.stokList?.first.grupKodu);
               kod1Controller = TextEditingController(text: model?.stokList?.first.kod1);

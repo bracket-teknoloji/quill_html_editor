@@ -12,6 +12,8 @@ import 'package:picker/core/init/cache/cache_manager.dart';
 import 'package:picker/view/auth/model/login_model.dart';
 
 import '../../base/model/base_grup_kodu_model.dart';
+import '../../base/model/base_pdf_model.dart';
+import '../../base/view/pdf_viewer/model/pdf_viewer_model.dart';
 import '../../constants/enum/dio_enum.dart';
 import 'login/api_urls.dart';
 
@@ -100,6 +102,17 @@ class NetworkManager {
     log(response.data.toString());
     // response is a png file
     return MemoryImage(response.data);
+  }
+
+  Future getPDF(PdfModel model) async {
+    Map<String, String> head = getStandardHeader(true, true, true);
+    final response = await dioPost<BasePdfModel>(path: ApiUrls.print, bodyModel: BasePdfModel(), headers: head, data: model.toJson());
+    if (response.data != null) {
+      log("PDF Oluşturuldu");
+      return response;
+    } else {
+      throw Exception("PDF Oluşturulamadı");
+    }
   }
 
   Future<List<BaseGrupKoduModel>> getGrupKod({required String name, required int grupNo, bool? kullanimda}) async {

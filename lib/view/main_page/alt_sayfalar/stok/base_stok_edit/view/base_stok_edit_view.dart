@@ -59,7 +59,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
                   visible: widget.model?.baseEditEnum != BaseEditEnum.goruntule,
                   child: IconButton(
                       onPressed: () async {
-                        if (StaticVariables.instance.isStokKartiValid && validate.isEmpty) {
+                        if (validate.isEmpty) {
                           dialogManager.showAreYouSureDialog(() {
                             postData();
                           });

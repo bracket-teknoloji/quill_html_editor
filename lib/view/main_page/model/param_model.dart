@@ -1123,7 +1123,7 @@ class TalTekParam {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, genericArgumentFactories: true)
+@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
 class YaziciList {
   YaziciList();
 

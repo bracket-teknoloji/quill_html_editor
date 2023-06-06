@@ -1299,9 +1299,9 @@ Map<String, dynamic> _$TalTekParamToJson(TalTekParam instance) {
 }
 
 YaziciList _$YaziciListFromJson(Map<String, dynamic> json) => YaziciList()
-  ..yaziciAdi = json['yaziciAdi'] as String?
-  ..yaziciTipi = json['yaziciTipi'] as String?
-  ..aciklama = json['aciklama'] as String?;
+  ..yaziciAdi = json['YAZICI_ADI'] as String?
+  ..yaziciTipi = json['YAZICI_TIPI'] as String?
+  ..aciklama = json['ACIKLAMA'] as String?;
 
 Map<String, dynamic> _$YaziciListToJson(YaziciList instance) {
   final val = <String, dynamic>{};
@@ -1312,8 +1312,8 @@ Map<String, dynamic> _$YaziciListToJson(YaziciList instance) {
     }
   }
 
-  writeNotNull('yaziciAdi', instance.yaziciAdi);
-  writeNotNull('yaziciTipi', instance.yaziciTipi);
-  writeNotNull('aciklama', instance.aciklama);
+  writeNotNull('YAZICI_ADI', instance.yaziciAdi);
+  writeNotNull('YAZICI_TIPI', instance.yaziciTipi);
+  writeNotNull('ACIKLAMA', instance.aciklama);
   return val;
 }

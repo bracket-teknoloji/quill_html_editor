@@ -7,7 +7,6 @@ import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/wrap/appbar_title.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../core/constants/extensions/number_extensions.dart';
-import '../../../../../../core/constants/static_variables/static_variables.dart';
 import '../../../../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../../../../core/init/network/login/api_urls.dart';
 import '../../cari_listesi/model/cari_listesi_model.dart';
@@ -41,7 +40,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
   Widget? get addSaveButton => widget.model?.baseEditEnum != BaseEditEnum.goruntule
       ? IconButton(
           onPressed: () async {
-            if (StaticVariables.instance.isCariKartiValid && validate.isEmpty) {
+            if (validate.isEmpty) {
               dialogManager.showAreYouSureDialog(() async => await postData());
             } else {
               await dialogManager.showEmptyFieldDialog(validate.keys.toList(), onOk: () => tabController?.animateTo(validate.values.first));

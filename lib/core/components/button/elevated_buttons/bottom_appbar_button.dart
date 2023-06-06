@@ -15,28 +15,27 @@ class AppBarButton extends StatelessWidget {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
           alignment: Alignment.center,
+          padding: UIHelper.zeroPadding,
           textStyle: const TextStyle(fontSize: 12),
           backgroundColor: UIHelper.primaryColor.withOpacity(0.1),
           shadowColor: Colors.transparent,
           elevation: 0,
         ),
         onPressed: onPressed,
-        child: Center(
-          child: Wrap(
-              alignment: WrapAlignment.center,
-              runAlignment: WrapAlignment.center,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              direction: context.isPortrait ? Axis.vertical : Axis.horizontal,
-              children: [
-                icon != null
-                    ? Icon(
-                        icon,
-                        size: 20,
-                        fill: 1,
-                      )
-                    : null,
-                child
-              ].nullCheck.cast<Widget>()),
-        ));
+        child: Wrap(
+            alignment: WrapAlignment.center,
+            runAlignment: WrapAlignment.start,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            direction: context.isPortrait ? Axis.vertical : Axis.horizontal,
+            children: [
+              icon != null
+                  ? Icon(
+                      icon,
+                      size: 20,
+                      fill: 1,
+                    )
+                  : null,
+              child
+            ].nullCheck.cast<Widget>()));
   }
 }

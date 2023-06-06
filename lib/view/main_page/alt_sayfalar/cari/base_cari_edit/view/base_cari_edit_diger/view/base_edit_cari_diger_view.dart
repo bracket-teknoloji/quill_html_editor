@@ -11,8 +11,8 @@ import '../../../../../../../../core/base/model/base_grup_kodu_model.dart';
 import '../../../../../../../../core/base/model/generic_response_model.dart';
 import '../../../../../../../../core/base/state/base_state.dart';
 import '../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../../../../../core/components/widget/custom_label_widget.dart';
 import '../../../../../../../../core/components/textfield/custom_text_field.dart';
+import '../../../../../../../../core/components/widget/custom_label_widget.dart';
 import '../../../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../../../core/constants/extensions/number_extensions.dart';
 import '../../../../../../../../core/constants/extensions/widget_extensions.dart';
@@ -74,6 +74,9 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
   TextEditingController n8Controller = TextEditingController(text: CariListesiModel.instance.kull8n.toStringIfNull);
   @override
   void initState() {
+    kilitController.text = "Kilitli Değil";
+    model.kilit = "H";
+    viewModel.changeModel(model);
     StaticVariables.instance.cariKartiDigerFormKey.currentState?.activate();
     super.initState();
     dataChecker();

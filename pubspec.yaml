@@ -2,7 +2,7 @@ name: picker
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.19.4 <3.0.0'
+  sdk: ">=2.19.4 <3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -28,17 +28,10 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-
-  #UI Dependencies
-  cupertino_icons: ^1.0.2
-  google_fonts: ^4.0.3
-  flutter_staggered_animations: ^1.1.1
-  lottie: ^2.3.1
   awesome_dialog: ^3.0.2
-  flutter_animate: ^4.1.1+1
-  flutter_svg: ^2.0.5
-  wave: ^0.2.2
-
+  connectivity_plus: ^4.0.1
+  crypto: ^3.0.2
+  cupertino_icons: ^1.0.2
 
   #Info Dependencies
   device_info_plus: ^8.1.0
@@ -48,51 +41,56 @@ dependencies:
   # equatable: ^2.0.5
   flutter:
     sdk: flutter
+  flutter_animate: ^4.1.1+1
+  flutter_mobx: ^2.0.6+5
+  flutter_native_timezone: ^2.0.0
+
+  #Utils Dependencies
+  flutter_pdfview: ^1.3.1
+  flutter_slidable: ^3.0.0
+  flutter_staggered_animations: ^1.1.1
+  flutter_svg: ^2.0.5
 
   #State Management Dependencies
   get: ^4.6.5
-  mobx: ^2.1.4
-  flutter_mobx: ^2.0.6+5
-
+  google_fonts: ^4.0.3
 
   # get_it: ^7.2.0
   # flutter_bloc: ^8.1.2
-
   #Hive Caching Dependencies
   hive: ^2.0.4
   hive_flutter: ^1.0.0
+  # scroll_app_bar: ^2.0.0
+  image_picker: ^0.8.7+5
+  intl: ^0.18.1
+  json_annotation: ^4.8.1
 
   #Json Serialization Dependencies
   json_serializable: ^6.6.1
-  json_annotation: ^4.8.1
-
-  #Utils Dependencies
   kartal: ^2.8.0
+  lottie: ^2.3.1
+  mobx: ^2.1.4
   package_info_plus: ^3.0.3
-  toast: ^0.3.0
+  path: ^1.8.3
+  path_provider: ^2.0.15
+  permission_handler: ^10.2.0
+
+  #QR
   qr_code_scanner: ^1.0.1
   qr_flutter: ^4.0.0
-  permission_handler: ^10.2.0
+  share_plus: ^6.3.4
   timezone: ^0.9.1
-  flutter_native_timezone: ^2.0.0
-  crypto: ^3.0.2
-  connectivity_plus: ^4.0.1
-  intl: ^0.18.1
-  # scroll_app_bar: ^2.0.0
-  image_picker: ^0.8.7+5
-  flutter_slidable: ^3.0.0
+  toast: ^0.3.0
+  wave: ^0.2.2
 
-
-  
 flutter_icons:
   image_path: "assets/splash/pickerLogoTuruncu.png"
   android: true
   ios: true
-    
 
 dev_dependencies:
-  flutter_launcher_icons: ^0.13.0
   build_runner: any
+  flutter_launcher_icons: ^0.13.0
   flutter_lints: ^2.0.0
   flutter_native_splash: ^2.2.19
   flutter_test:
@@ -104,7 +102,7 @@ flutter_native_splash:
   color: "#201A19"
   image: "assets/splash/pickerLogoTuruncu_512.png"
   fill: false
-  android12: 
+  android12: null
 
   android: true
   ios: true
@@ -113,7 +111,6 @@ flutter_native_splash:
   windows: true
   linux: false
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

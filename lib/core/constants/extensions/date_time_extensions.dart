@@ -1,4 +1,3 @@
-
 import 'package:intl/intl.dart';
 
 extension DateTimeExtension on DateTime? {
@@ -6,8 +5,16 @@ extension DateTimeExtension on DateTime? {
     return DateFormat('dd.MM.yyyy').format(this ?? DateTime.now());
   }
 }
+
+extension DateTimeExtensionWithTime2 on DateTime? {
+  String? toDateStringIfNull() {
+    if (this == null) return null;
+    return DateFormat('dd.MM.yyyy').format(this ?? DateTime.now());
+  }
+}
+
 extension DateTimeExtensionWithTime on DateTime {
-  String toDateTimeString() {
+  String? toDateTimeString() {
     return DateFormat('dd.MM.yyyy HH:mm:ss').format(this);
   }
 }
