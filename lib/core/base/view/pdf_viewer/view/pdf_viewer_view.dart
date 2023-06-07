@@ -49,7 +49,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
       }
     });
     //* Sayfa
-    return Scaffold(appBar: appBar(context), bottomNavigationBar: Visibility(visible: true, child: bottomAppBar()), body: body());
+    return Scaffold(appBar: appBar(context), bottomNavigationBar: Observer(builder: (_) => Visibility(visible: viewModel.pageCounter > 1, child: bottomAppBar())), body: body());
   }
 
   AppBar appBar(BuildContext context) {
@@ -59,7 +59,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
         IconButton(
             onPressed: () async {
               //! EKLENECEK
-              Share.shareXFiles([XFile((await getFile).path)], subject: "Armut");
+              Share.shareXFiles([XFile((await getFile).path)], subject: "Pdf Paylaşımı");
             },
             icon: const Icon(Icons.share_outlined)),
         IconButton(
@@ -102,7 +102,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                 onPressed: () async {
                   //! EKLENECEK
 
-                  Share.shareXFiles([XFile((await getFile).path)], subject: "Armut");
+                  Share.shareXFiles([XFile((await getFile).path)], subject: "Pdf Paylaşımı");
                 }),
           ],
         ),
@@ -144,7 +144,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
       } else if (viewModel.futureController.value == null) {
         return const Center(child: CircularProgressIndicator());
       } else {
-        return const Center(child: Text("PDF bulunamadı"));
+        return const Center();
       }
     });
   }

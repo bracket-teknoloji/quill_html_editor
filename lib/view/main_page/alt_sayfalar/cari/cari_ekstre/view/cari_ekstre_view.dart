@@ -22,6 +22,7 @@ class CariEkstreView extends StatefulWidget {
 
 class _CariEkstreViewState extends BaseState<CariEkstreView> {
   CariEkstreViewModel viewModel = CariEkstreViewModel();
+  ScrollController? scrollController;
   TextEditingController? cariController;
   TextEditingController? dovizController;
   TextEditingController? baslangicTarihiController;
@@ -33,7 +34,24 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
     dovizController = TextEditingController();
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
+    scrollController = ScrollController();
+    Future.delayed(const Duration(seconds: 1), () async {
+      await scrollController?.animateTo(50, duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+      await scrollController?.animateTo(scrollController?.position.minScrollExtent ?? 0, duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+    });
+    dovizController?.text = "Tümü";
+    viewModel.changeDovizTipi(-1);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    cariController?.dispose();
+    dovizController?.dispose();
+    baslangicTarihiController?.dispose();
+    bitisTarihiController?.dispose();
+    scrollController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -56,6 +74,7 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
                 height: 50,
                 width: double.infinity,
                 child: ListView.builder(
+                    controller: scrollController,
                     scrollDirection: Axis.horizontal,
                     itemCount: viewModel.childrenTitleList.length,
                     itemBuilder: (context, listTileIndex) => Observer(
