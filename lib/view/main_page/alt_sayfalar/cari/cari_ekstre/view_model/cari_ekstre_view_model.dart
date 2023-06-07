@@ -1,4 +1,5 @@
 import 'package:mobx/mobx.dart';
+import 'package:picker/core/constants/extensions/number_extensions.dart';
 
 import '../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart';
 
@@ -25,7 +26,7 @@ abstract class _CariEkstreViewModelBase with Store {
   void changeCariKodu(value)=> pdfModel.dicParams!.cariKodu = value;
 
   @action
-  void changeDovizTipi(value)=> pdfModel.dicParams!.dovizTipi = value;
+  void changeDovizTipi(int value)=> pdfModel.dicParams!.dovizTipi = value.toStringIfNull;
   @observable
   ObservableFuture<bool?> futureController = ObservableFuture(Future.error(false));
 
@@ -33,7 +34,7 @@ abstract class _CariEkstreViewModelBase with Store {
   void setFuture() => futureController = ObservableFuture.value(true);
 
   @action
-  void resetFuture() => futureController = ObservableFuture.error(false);
+  void resetFuture() => futureController = ObservableFuture.value(false);
 
   final List<String> childrenTitleList = ["Tümü", "Bugün", "Dün", "Bu Hafta", "Bu Ay", "Geçen Ay", "Son 3 Ay", "Bu Yıl", "Geçen Yıl"];
 

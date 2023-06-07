@@ -3,7 +3,6 @@ import "package:flutter/services.dart";
 import "package:get/get.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_ekstre/view/cari_ekstre_view.dart";
 
-import "core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "core/init/cache/cache_manager.dart";
 import "core/init/theme/app_theme_dark.dart";
 import "view/add_company/model/account_model.dart";
@@ -67,7 +66,6 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/addCompany", page: () => const AccountsView()),
         GetPage(name: "/addAccount", page: () => const AddAccountView()),
         GetPage(name: "/qr", page: () => const QRScannerView()),
-        GetPage(name: "/pdf", page: () => const PDFViewerView())
       ],
     );
   }

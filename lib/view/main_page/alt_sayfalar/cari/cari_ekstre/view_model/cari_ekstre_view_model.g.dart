@@ -126,7 +126,7 @@ mixin _$CariEkstreViewModel on _CariEkstreViewModelBase, Store {
   }
 
   @override
-  void changeDovizTipi(dynamic value) {
+  void changeDovizTipi(int value) {
     final _$actionInfo = _$_CariEkstreViewModelBaseActionController.startAction(
         name: '_CariEkstreViewModelBase.changeDovizTipi');
     try {

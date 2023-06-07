@@ -532,7 +532,6 @@ class DovizList {
     return _$DovizListFromJson(json);
   }
 
-  get dovizAciklama => null;
   Map<String, dynamic> toJson() {
     return _$DovizListToJson(this);
   }

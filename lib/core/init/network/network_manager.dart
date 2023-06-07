@@ -104,7 +104,7 @@ class NetworkManager {
     return MemoryImage(response.data);
   }
 
-  Future getPDF(PdfModel model) async {
+  Future<GenericResponseModel> getPDF(PdfModel model) async {
     Map<String, String> head = getStandardHeader(true, true, true);
     final response = await dioPost<BasePdfModel>(path: ApiUrls.print, bodyModel: BasePdfModel(), headers: head, data: model.toJson());
     if (response.data != null) {

@@ -18,3 +18,11 @@ extension DateTimeExtensionWithTime on DateTime {
     return DateFormat('dd.MM.yyyy HH:mm:ss').format(this);
   }
 }
+
+// am extension for String dd.MM.yyyy to DateTime
+extension StringExtension on String? {
+  DateTime? toDateTimeDDMMYYYY() {
+    if (this == null) return null;
+    return DateFormat('dd.MM.yyyy').parse(this!, true);
+  }
+}

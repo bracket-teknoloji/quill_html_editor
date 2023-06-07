@@ -34,5 +34,5 @@ class DicParams {
   Map<String, dynamic> toJson() => _$DicParamsToJson(this);
 
   @override
-  toString() => toJson().toString();
+toString() => toJson().toString();
 }
