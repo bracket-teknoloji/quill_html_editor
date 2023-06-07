@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 import 'package:picker/core/base/view/pdf_viewer/view/pdf_viewer_view.dart';
 import 'package:picker/core/constants/extensions/date_time_extensions.dart';
+import 'package:picker/core/constants/ui_helper/duration_helper.dart';
 
 import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
@@ -36,8 +37,8 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
     bitisTarihiController = TextEditingController();
     scrollController = ScrollController();
     Future.delayed(const Duration(seconds: 1), () async {
-      await scrollController?.animateTo(50, duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
-      await scrollController?.animateTo(scrollController?.position.minScrollExtent ?? 0, duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+      await scrollController?.animateTo(50, duration: DurationHelper.durationLow, curve: Curves.easeIn);
+      await scrollController?.animateTo(scrollController?.position.minScrollExtent ?? 0, duration: DurationHelper.durationLow, curve: Curves.easeInOut);
     });
     dovizController?.text = "Tümü";
     viewModel.changeDovizTipi(-1);
