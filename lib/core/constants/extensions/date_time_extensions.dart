@@ -25,3 +25,12 @@ extension StringExtension on String? {
     return DateFormat('dd.MM.yyyy').parse(this!, true);
   }
 }
+
+// an extension for get monday to today
+extension DateTimeExtensionMonday on DateTime {
+  DateTime getMonday() {
+    var now = DateTime.now();
+    var monday = now.subtract(Duration(days: now.weekday - 1));
+    return monday;
+  }
+}

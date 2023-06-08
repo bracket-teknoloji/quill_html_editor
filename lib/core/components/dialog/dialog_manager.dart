@@ -29,6 +29,14 @@ class DialogManager {
     hideSnackBar;
     ScaffoldMessenger.of(context).showSnackBar(snackBarError(message));
   }
+  Future<DateTime?> showDateTimePicker() async {
+    return await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+    );
+  }
 
   Future<void> showAlertDialog(String message) async => _baseDialog(
         title: "Uyarı",

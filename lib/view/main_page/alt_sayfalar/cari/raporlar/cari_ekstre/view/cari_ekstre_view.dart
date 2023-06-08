@@ -66,7 +66,6 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
                 filterOnChanged: filterOnChanged,
                 baslangicTarihiController: baslangicTarihiController,
                 bitisTarihiController: bitisTarihiController,
-                
               ),
               CustomTextField(
                 labelText: "Cari",
@@ -113,8 +112,8 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
                       if (viewModel.pdfModel.dicParams?.cariKodu == null || viewModel.pdfModel.dicParams?.dovizTipi == null) {
                         dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
                       } else {
-                        viewModel.pdfModel.dicParams?.bastar = baslangicTarihiController.text;
-                        viewModel.pdfModel.dicParams?.bittar = bitisTarihiController.text;
+                        viewModel.pdfModel.dicParams?.bastar = baslangicTarihiController.text != "" ? baslangicTarihiController.text : null;
+                        viewModel.pdfModel.dicParams?.bittar = bitisTarihiController.text != "" ? bitisTarihiController.text : null;
                         viewModel.setFuture();
                         Get.back();
                       }

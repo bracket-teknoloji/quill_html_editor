@@ -82,7 +82,6 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                   child: TextFormField(
                     autofocus: true,
                     decoration: const InputDecoration(
-                      hintText: "Daha eklemedim :)",
                     ),
                   ).marginAll(5),
                 )

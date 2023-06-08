@@ -165,7 +165,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                     setState(() => image = File(result.path));
                                     if (image != null) {
                                       // ignore: use_build_context_synchronously
-                                      bottomSheetDialogManager.showBottomSheetDialog(context, title: "Burayı Ekleyemedim ama güzel çıkmışsın :) 😘", body: Image(image: FileImage(image!)));
+                                      // bottomSheetDialogManager.showBottomSheetDialog(context, title: "Burayı Ekleyemedim ama güzel çıkmışsın :) 😘", body: Image(image: FileImage(image!)));
                                     }
                                   }
                                 }

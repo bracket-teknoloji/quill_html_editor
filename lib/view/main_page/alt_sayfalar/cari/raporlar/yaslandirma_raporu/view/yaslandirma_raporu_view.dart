@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
+import 'package:picker/core/base/model/base_grup_kodu_model.dart';
 import 'package:picker/core/base/view/pdf_viewer/view/pdf_viewer_view.dart';
+import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
+import 'package:picker/core/constants/extensions/date_time_extensions.dart';
+import 'package:picker/core/constants/extensions/list_extensions.dart';
+import 'package:picker/core/init/cache/cache_manager.dart';
+import 'package:picker/view/main_page/model/param_model.dart';
 
 import '../../../../../../../core/base/state/base_state.dart';
-import '../../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart';
+import '../../../../../../../core/components/slide_controller/view/slide_controller_view.dart';
 import '../../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../../core/constants/ui_helper/ui_helper.dart';
 import '../view_model/yaslandirma_raporu_view_model.dart';
@@ -18,31 +24,55 @@ class YaslandirmaRaporuView extends StatefulWidget {
 
 class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
   YaslandirmaRaporuViewModel viewModel = YaslandirmaRaporuViewModel();
-  TextEditingController? cariController;
-  late TextEditingController baslangicTarihiController;
-  late TextEditingController bitisTarihiController;
+  List<BaseGrupKoduModel> grupKodList = [];
+  late TextEditingController? cariController;
+  late TextEditingController referansTarihController;
+  late TextEditingController plasiyerController;
+  late TextEditingController tarihTipiController;
+  late TextEditingController grupKoduController;
+  late TextEditingController kod1Controller;
+  late TextEditingController kod2Controller;
+  late TextEditingController kod3Controller;
+  late TextEditingController kod4Controller;
+  late TextEditingController kod5Controller;
 
   @override
   void initState() {
     cariController = TextEditingController();
-    baslangicTarihiController = TextEditingController();
-    bitisTarihiController = TextEditingController();
+    referansTarihController = TextEditingController();
+    plasiyerController = TextEditingController();
+    tarihTipiController = TextEditingController();
+    grupKoduController = TextEditingController();
+    kod1Controller = TextEditingController();
+    kod2Controller = TextEditingController();
+    kod3Controller = TextEditingController();
+    kod4Controller = TextEditingController();
+    kod5Controller = TextEditingController();
+
     super.initState();
   }
 
   @override
   void dispose() {
     cariController?.dispose();
-    baslangicTarihiController.dispose();
-    bitisTarihiController.dispose();
+    referansTarihController.dispose();
+    plasiyerController.dispose();
+    tarihTipiController.dispose();
+    grupKoduController.dispose();
+    kod1Controller.dispose();
+    kod2Controller.dispose();
+    kod3Controller.dispose();
+    kod4Controller.dispose();
+    kod5Controller.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Yaşlandırma Raporu", pdfData: viewModel.pdfModel);
   }
 
-Future<bool> filterBottomSheet() async {
+  Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
     await bottomSheetDialogManager.showBottomSheetDialog(context,
         title: "Filtrele",
@@ -51,14 +81,185 @@ Future<bool> filterBottomSheet() async {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              
+              Observer(builder: (_) {
+                return SlideControllerView(
+                    childrenTitleList: viewModel.sureAraligiList,
+                    filterOnChanged: (index) => viewModel.changeSureAraligi(index),
+                    childrenValueList: viewModel.sureAraligivalue,
+                    groupValue: viewModel.sureAraligiGroupValue);
+              }),
+              const Divider(),
+              Observer(builder: (_) {
+                return SlideControllerView(
+                    childrenTitleList: viewModel.odemeTipiList,
+                    filterOnChanged: (index) => viewModel.changeOdemeTipi(index),
+                    childrenValueList: viewModel.odemeTipiValue,
+                    groupValue: viewModel.odemeTipiGroupValue);
+              }),
+              CustomTextField(
+                labelText: "Cari",
+                controller: cariController,
+                readOnly: true,
+                suffix: const Icon(Icons.more_horiz_outlined),
+                onTap: () async {
+                  var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                  if (result != null) {
+                    cariController!.text = result.cariAdi ?? "";
+                    viewModel.pdfModel.dicParams?.cariKodu = result.cariKodu ?? "";
+                  }
+                },
+              ),
+              Row(
+                children: [
+                  Expanded(
+                      child: CustomTextField(
+                    labelText: "Referans Tarih",
+                    isMust: true,
+                    readOnly: true,
+                    controller: referansTarihController,
+                    suffix: const Icon(Icons.calendar_today_outlined),
+                    onTap: () async {
+                      DateTime? result = await dialogManager.showDateTimePicker();
+                      if (result != null) {
+                        referansTarihController.text = result.toDateString();
+                        viewModel.pdfModel.dicParams?.refTarih = result.toDateString();
+                      }
+                    },
+                  )),
+                  Expanded(
+                      child: CustomTextField(
+                    labelText: "Plasiyer",
+                    readOnly: true,
+                    controller: plasiyerController,
+                    onTap: () async {
+                      List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList;
+                      if (plasiyerList != null) {
+                        PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                            title: "Plasiyer",
+                            children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e.plasiyerKodu ?? "", onTap: () => Get.back(result: e))).toList());
+                        if (result != null) {
+                          plasiyerController.text = result.plasiyerAciklama ?? "";
+                          viewModel.pdfModel.dicParams?.plasiyerKodu = result.plasiyerKodu ?? "";
+                        }
+                      }
+                    },
+                    suffix: const Icon(Icons.more_horiz_outlined),
+                  )),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(
+                      child: CustomTextField(
+                    labelText: "Tarih Tipi",
+                    isMust: true,
+                    readOnly: true,
+                    controller: tarihTipiController,
+                    onTap: () async {
+                      var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Tarih Tipi", children: [
+                        BottomSheetModel(title: "Vade Tarihi", onTap: () => Get.back(result: "Vade Tarihi")),
+                        BottomSheetModel(title: "Kayıt Tarihi", onTap: () => Get.back(result: "Kayıt Tarihi")),
+                      ]);
+                      if (result != null) {
+                        tarihTipiController.text = result;
+                        viewModel.pdfModel.dicParams?.tarihTipi = result.split("")[0];
+                      }
+                    },
+                  )),
+                  // Expanded(
+                  //     child: CustomTextField(
+                  //   labelText: "Vade Bitiş",
+                  //   readOnly: true,
+                  //   onTap: () async {
+                  //     DateTime? result = await dialogManager.showDateTimePicker();
+                  //     if (result != null) {}
+                  //   },
+                  //   //! TODO #3 BURAYA YETKİ EKLE
+                  // )).yetkiVarMi(false),
+                ],
+              ),
+              Row(children: [
+                Expanded(
+                    child: CustomTextField(
+                        labelText: "Grup Kodu",
+                        controller: grupKoduController,
+                        readOnly: true,
+                        suffix: const Icon(Icons.more_horiz_outlined),
+                        onTap: () async => await getGrupKodu(0, grupKoduController))),
+                Expanded(
+                    child: CustomTextField(
+                        labelText: "Kod 1", controller: kod1Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(1, kod1Controller)))
+              ]),
+              Row(children: [
+                Expanded(
+                    child: CustomTextField(
+                        labelText: "Kod 2", controller: kod2Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(2, kod2Controller))),
+                Expanded(
+                    child: CustomTextField(
+                        labelText: "Kod 3", controller: kod3Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(3, kod3Controller)))
+              ]),
+              Row(children: [
+                Expanded(
+                    child: CustomTextField(
+                        labelText: "Kod 4", controller: kod4Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(4, kod4Controller))),
+                Expanded(
+                    child: CustomTextField(
+                        labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(5, kod5Controller)))
+              ]),
+              ElevatedButton(
+                  onPressed: () {
+                    if (viewModel.pdfModel.dicParams?.refTarih == null || viewModel.pdfModel.dicParams?.tarihTipi == null) {
+                      dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
+                    } else {
+                      viewModel.setFuture();
+                      Get.back();
+                    }
+                  },
+                  child: const Text("Uygula"))
             ],
           ),
         ));
     return Future.value(viewModel.futureController.value);
-  
-  }void filterOnChanged(index) {
-    viewModel.pdfModel.dicParams?.bastar = baslangicTarihiController.text;
-    viewModel.pdfModel.dicParams?.bittar = bitisTarihiController.text;
   }
+
+  Future<String?> getGrupKodu(int grupNo, TextEditingController? controller) async {
+    if (grupKodList.isEmptyOrNull) {
+      grupKodList = await networkManager.getGrupKod(name: "CARI", grupNo: -1);
+    }
+    List<BottomSheetModel>? bottomSheetList = grupKodList
+        .where((e) => e.grupNo == grupNo)
+        .toList()
+        .cast<BaseGrupKoduModel>()
+        .map((e) => BottomSheetModel(title: e.grupKodu ?? "", onTap: () => Get.back(result: e)))
+        .toList()
+        .cast<BottomSheetModel>();
+    // ignore: use_build_context_synchronously
+    var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Grup Kodu", children: bottomSheetList);
+    if (result != null) {
+      controller?.text = result.grupKodu ?? "";
+      switch (grupNo) {
+        case 0:
+          viewModel.pdfModel.dicParams?.grupKodu = result.grupKodu ?? "";
+          break;
+        case 1:
+          viewModel.pdfModel.dicParams?.kod1 = result.grupKodu ?? "";
+          break;
+        case 2:
+          viewModel.pdfModel.dicParams?.kod2 = result.grupKodu ?? "";
+          break;
+        case 3:
+          viewModel.pdfModel.dicParams?.kod3 = result.grupKodu ?? "";
+          break;
+        case 4:
+          viewModel.pdfModel.dicParams?.kod4 = result.grupKodu ?? "";
+          break;
+        case 5:
+          viewModel.pdfModel.dicParams?.kod5 = result.grupKodu ?? "";
+          break;
+      }
+    }
+    return null;
+  }
+
+  void filterOnChanged(index) {}
 }

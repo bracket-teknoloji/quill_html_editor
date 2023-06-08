@@ -15,7 +15,7 @@ class CariNetworkManager {
         path: ApiUrls.getGrupKodlari,
         bodyModel: BaseGrupKoduModel(),
         addCKey: true,
-        headers: {"Modul": name ?? "CARI", "GrupNo": "1", "Kullanimda": "E"},
+        headers: {"Modul": name ?? "CARI", "GrupNo": "-1", "Kullanimda": "E"},
         addQuery: true,
         addSirketBilgileri: true,
         queryParameters: {"Modul": name ?? "CARI", "GrupNo": "-1"});
