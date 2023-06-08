@@ -240,7 +240,7 @@ class _LoginViewState extends BaseState<LoginView> {
           CacheManager.setToken(response.accessToken.toString());
           Get.toNamed("/entryCompany");
         }
-      } on DioError catch (e) {
+      } on DioException catch (e) {
         dialogManager.hideAlertDialog;
         dialogManager.showAlertDialog(e.response?.data["error_description"] ?? "Hata :${e.message}");
       } on Exception catch (e) {

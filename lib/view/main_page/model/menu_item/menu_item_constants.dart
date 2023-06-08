@@ -12,9 +12,9 @@ class MenuItemConstants {
       GridItems.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları"),
       GridItems.altmenu(name: "cari_Raporlar", title: "Raporlar", icon: "monitoring", altMenuler: [
         GridItems.item(name: "cari_Rap_Ekstre", title: "Cari Ekstre", onTap: () => Get.toNamed("/mainPage/cariEkstre")),
-        GridItems.item(name: "cari_Rap_DovizliEkstre", title: "Cari Dövizli Ekstre"),
-        GridItems.item(name: "cari_Rap_StokEkstre", title: "Stok Ekstresi"),
-        GridItems.item(name: "cari_Rap_Yaslandirma", title: "Yaşlandırma Raporu"),
+        GridItems.item(name: "cari_Rap_DovizliEkstre", title: "Cari Dövizli Ekstre", onTap: () => Get.toNamed("/mainPage/cariDovizliEkstre")),
+        GridItems.item(name: "cari_Rap_StokEkstre", title: "Stok Ekstresi", onTap: () => Get.toNamed("/mainPage/cariStokEkstre")),
+        GridItems.item(name: "cari_Rap_Yaslandirma", title: "Yaşlandırma Raporu", onTap: () => Get.toNamed("/mainPage/cariYaslandirmaRaporu")),
         GridItems.item(name: "cari_Rap_DovizBakiye", title: "Döviz Bakiye Raporu"),
         GridItems.item(name: "cari_Rap_HarDetayliYaslandir", title: "Hareket Detaylı Yaşlandırma Rap."),
         GridItems.item(name: "cari_Rap_StokSatisOzeti", title: "Cari Stok Satış Özeti"),

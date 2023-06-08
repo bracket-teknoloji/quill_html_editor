@@ -30,12 +30,6 @@ class _CheckBoxListTileDialogState extends BaseState<CheckBoxListTileDialog> {
   }
 
   @override
-  void dispose() {
-    super.dispose();
-    // CacheManager.setCariSehirler(valueList!);
-  }
-
-  @override
   Widget build(BuildContext context) {
     return response != null
         ? Column(

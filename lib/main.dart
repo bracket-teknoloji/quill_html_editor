@@ -1,7 +1,10 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_ekstre/view/cari_ekstre_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/cari_dovizli_ekstre/view/cari_dovizli_ekstre_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/cari_ekstre/view/cari_ekstre_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/stok_ekstre/view/stok_ekstre_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/yaslandirma_raporu/view/yaslandirma_raporu_view.dart";
 
 import "core/init/cache/cache_manager.dart";
 import "core/init/theme/app_theme_dark.dart";
@@ -55,7 +58,13 @@ class MyApp extends StatelessWidget {
             GetPage(name: "/cariEdit", page: () => BaseCariEditingView(model: Get.arguments)),
             GetPage(name: "/cariHareketleri", page: () => CariHareketleriView(cari: Get.arguments)),
             GetPage(name: "/cariYeniKayit", page: () => CariYeniKayitView(model: Get.arguments)),
+            //* Cari Raporları
             GetPage(name: "/cariEkstre", page: () => const CariEkstreView()),
+            GetPage(name: "/cariDovizliEkstre", page: () => const CariDovizliEkstreView()),
+            GetPage(name: "/cariStokEkstre", page: () => const StokEkstreView()),
+            GetPage(name: "/cariYaslandirmaRaporu", page: () => const YaslandirmaRaporuView()),
+
+
             //* Stok
             GetPage(name: "/stokListesi", page: () => const StokListesiView()),
             GetPage(name: "/stokEdit", page: () => BaseStokEditingView(model: Get.arguments)),

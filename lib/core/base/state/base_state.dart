@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -15,7 +16,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   late final AppInfoModel appInfoModel;
   late final NetworkManager networkManager;
   late final YetkiController yetkiController;
-  bool isInternetConnected = true;
+  late StreamSubscription connectivitySubscription;
   ConnectivityResult connectivityResult = ConnectivityResult.none;
   Connectivity connectivity = Connectivity();
   BaseState() {
@@ -26,29 +27,17 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
     yetkiController = YetkiController();
     internetChecker();
   }
+  @override
+  void dispose() {
+    connectivitySubscription.cancel();
+    super.dispose();
+  }
 
   double get width => MediaQuery.of(context).size.width;
   double get height => MediaQuery.of(context).size.height;
   ThemeData get theme => Theme.of(context);
-  Future showAlertDialog(AlertDialog alertDialog) => showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (context) => alertDialog,
-      );
   void internetChecker() {
-    // connectivity.checkConnectivity().then((value) {
-    //   connectivityResult = value;
-    //   if (connectivityResult == ConnectivityResult.none) {
-    //     dialogManager.internetConnectionDialog();
-    //     isInternetConnected = false;
-    //   } else {
-    //     isInternetConnected = true;
-    //   }
-    //   if (isInternetConnected) {
-    //     dialogManager.hideAlertDialog;
-    //   }
-    // });
-    connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
+    connectivitySubscription = connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
       connectivityResult = result;
       log(connectivityResult.toString());
       if (connectivityResult == ConnectivityResult.none) {

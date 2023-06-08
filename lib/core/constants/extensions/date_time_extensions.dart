@@ -21,8 +21,7 @@ extension DateTimeExtensionWithTime on DateTime {
 
 // am extension for String dd.MM.yyyy to DateTime
 extension StringExtension on String? {
-  DateTime? toDateTimeDDMMYYYY() {
-    if (this == null) return null;
+  DateTime toDateTimeDDMMYYYY() {
     return DateFormat('dd.MM.yyyy').parse(this!, true);
   }
 }

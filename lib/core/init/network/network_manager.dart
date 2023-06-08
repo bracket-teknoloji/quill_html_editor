@@ -30,10 +30,10 @@ class NetworkManager {
           return handler.next(options);
         },
         onError: (e, handler) {
-          if (e.type == DioErrorType.connectionError) {
-            return handler.next(DioError(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error}"));
-          } else if (e.type == DioErrorType.connectionTimeout) {
-            return handler.next(DioError(requestOptions: RequestOptions(), message: "Bağlantı zaman aşımına uğradı."));
+          if (e.type == DioExceptionType.connectionError) {
+            return handler.next(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error}"));
+          } else if (e.type == DioExceptionType.connectionTimeout) {
+            return handler.next(DioException(requestOptions: RequestOptions(), message: "Bağlantı zaman aşımına uğradı."));
           } else {
             return handler.next(e);
           }

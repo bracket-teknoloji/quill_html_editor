@@ -30,7 +30,8 @@ class BottomSheetDialogManager {
             child: Wrap(
               children: [
                 ListTile(
-                  title: Text(title, style: context.theme.textTheme.titleMedium),
+                  contentPadding: UIHelper.lowPadding,
+                  title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
                   trailing: IconButton(icon: const Icon(Icons.close), onPressed: () => Get.back()),
                   splashColor: Colors.transparent,
                 ).paddingSymmetric(vertical: 10),

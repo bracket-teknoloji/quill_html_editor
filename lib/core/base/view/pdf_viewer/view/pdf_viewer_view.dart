@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
-import 'package:open_file/open_file.dart';
+import 'package:open_file_plus/open_file_plus.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:picker/core/base/model/base_pdf_model.dart';
 import 'package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart';
@@ -59,7 +59,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
         IconButton(
             onPressed: () async {
               //! EKLENECEK
-              Share.shareXFiles([XFile((await getFile).path)], subject: "Pdf Paylaşımı");
+              await fileChecker();
             },
             icon: const Icon(Icons.share_outlined)),
         IconButton(
@@ -93,16 +93,16 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                 icon: Icons.picture_as_pdf_outlined,
                 child: const Text("PDF Görüntüle"),
                 onPressed: () async {
-                  File file = await getFile;
-                  OpenFile.open(file.path);
+                  if (await getFile != null) {
+                    OpenFile.open((await getFile)!.path);
+                  }
                 }),
             AppBarButton(
                 icon: Icons.mail_outline_outlined,
                 child: const Text("Mail Gönder"),
                 onPressed: () async {
                   //! EKLENECEK
-
-                  Share.shareXFiles([XFile((await getFile).path)], subject: "Pdf Paylaşımı");
+                  await fileChecker();
                 }),
           ],
         ),
@@ -110,14 +110,21 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
     );
   }
 
-  Future<File> get getFile async {
+  Future<void> fileChecker() async {
+    if (await getFile != null) {
+      Share.shareXFiles([XFile((await getFile)!.path)], subject: "Pdf Paylaşımı");
+    }else{
+      dialogManager.snackBarError("Dosya bulunamadı. Lütfen tekrar deneyiniz.");
+    }
+  }
+
+  Future<File?> get getFile async {
     final appStorage = await getApplicationDocumentsDirectory();
     final file = File('${appStorage.path}/${widget.pdfData?.raporOzelKod}${widget.pdfData?.dicParams?.cariKodu}.${pdfFile?.uzanti ?? "pdf"}');
-    final raf = file.openSync(mode: FileMode.write);
-    raf.writeFromSync(base64Decode(pdfFile?.byteData ?? ""));
-    await raf.close();
-    print(file.path);
-    return file;
+    final fileWriter = file.openSync(mode: FileMode.write);
+    fileWriter.writeFromSync(base64Decode(pdfFile?.byteData ?? ""));
+    await fileWriter.close();
+    return file.lengthSync() > 0 ? file : null;
   }
 
   Observer body() {
