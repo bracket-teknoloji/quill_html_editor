@@ -3,6 +3,8 @@ import "package:flutter/services.dart";
 import "package:get/get.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/cari_dovizli_ekstre/view/cari_dovizli_ekstre_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/cari_ekstre/view/cari_ekstre_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/cari_hareket_raporu/view/cari_hareket_raporu_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/doviz_bakiye_raporu/view/doviz_bakiye_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/stok_ekstre/view/stok_ekstre_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/yaslandirma_raporu/view/yaslandirma_raporu_view.dart";
 
@@ -63,7 +65,8 @@ class MyApp extends StatelessWidget {
             GetPage(name: "/cariDovizliEkstre", page: () => const CariDovizliEkstreView()),
             GetPage(name: "/cariStokEkstre", page: () => const StokEkstreView()),
             GetPage(name: "/cariYaslandirmaRaporu", page: () => const YaslandirmaRaporuView()),
-
+            GetPage(name: "/cariDovizBakiyeRaporu", page: () => const DovizBakiyeRaporuView()),
+            GetPage(name: "/cariHareketRaporu", page: () => const CariHareketRaporuView()),
 
             //* Stok
             GetPage(name: "/stokListesi", page: () => const StokListesiView()),

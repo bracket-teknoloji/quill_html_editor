@@ -15,7 +15,9 @@ class MenuItemConstants {
         GridItems.item(name: "cari_Rap_DovizliEkstre", title: "Cari Dövizli Ekstre", onTap: () => Get.toNamed("/mainPage/cariDovizliEkstre")),
         GridItems.item(name: "cari_Rap_StokEkstre", title: "Stok Ekstresi", onTap: () => Get.toNamed("/mainPage/cariStokEkstre")),
         GridItems.item(name: "cari_Rap_Yaslandirma", title: "Yaşlandırma Raporu", onTap: () => Get.toNamed("/mainPage/cariYaslandirmaRaporu")),
-        GridItems.item(name: "cari_Rap_DovizBakiye", title: "Döviz Bakiye Raporu"),
+        GridItems.item(name: "cari_Rap_DovizBakiye", title: "Döviz Bakiye Raporu", onTap: () => Get.toNamed("/mainPage/cariDovizBakiyeRaporu")),
+        //TODO! Buna yetki verilmedi. Düzenle
+        GridItems.item(name: "x", title: "Cari Hareket Raporu", onTap: () => Get.toNamed("/mainPage/cariHareketRaporu")),
         GridItems.item(name: "cari_Rap_HarDetayliYaslandir", title: "Hareket Detaylı Yaşlandırma Rap."),
         GridItems.item(name: "cari_Rap_StokSatisOzeti", title: "Cari Stok Satış Özeti"),
       ])

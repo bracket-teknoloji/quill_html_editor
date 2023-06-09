@@ -46,6 +46,8 @@ DicParams _$DicParamsFromJson(Map<String, dynamic> json) => DicParams(
       kod5: json['KOD5'] as String?,
       plasiyerKodu: json['PLASIYER_KODU'] as String?,
       aralikTipi: json['ARALIK_TIPI'] as String?,
+      sirala: json['SIRALA'] as String?,
+      bakiyeDurumu: json['BAKIYE_DURUMU'] as String?,
     );
 
 Map<String, dynamic> _$DicParamsToJson(DicParams instance) {
@@ -73,5 +75,7 @@ Map<String, dynamic> _$DicParamsToJson(DicParams instance) {
   writeNotNull('KOD5', instance.kod5);
   writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
   writeNotNull('ARALIK_TIPI', instance.aralikTipi);
+  writeNotNull('SIRALA', instance.sirala);
+  writeNotNull('BAKIYE_DURUMU', instance.bakiyeDurumu);
   return val;
 }

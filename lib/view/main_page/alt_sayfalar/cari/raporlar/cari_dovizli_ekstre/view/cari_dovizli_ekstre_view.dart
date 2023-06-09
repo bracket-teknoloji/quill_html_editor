@@ -85,7 +85,6 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                       labelText: "Döviz Tipi",
                       valueWidget: Observer(builder: (_) => Text(viewModel.dovizValue ?? "")),
                       controller: dovizController,
-                      isMust: true,
                       readOnly: true,
                       suffix: const Icon(Icons.more_horiz_outlined),
                       onTap: () async {
@@ -120,7 +119,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
               Observer(builder: (_) {
                 return ElevatedButton(
                     onPressed: () {
-                      if (viewModel.pdfModel.dicParams?.cariKodu == null || viewModel.pdfModel.dicParams?.dovizTipi == null) {
+                      if (viewModel.pdfModel.dicParams?.cariKodu == null) {
                         dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
                       } else {
                         viewModel.pdfModel.dicParams?.bastar = baslangicTarihiController.text != "" ? baslangicTarihiController.text : null;
