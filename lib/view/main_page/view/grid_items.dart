@@ -26,7 +26,7 @@ class GridItems {
   GridItems.altmenu({required this.name, required this.title, this.icon, required this.altMenuler, this.iconWidget}) {
     menuTipi = "S";
   }
-  GridItems.item({required this.name, required this.title, this.icon, this.onTap}) {
+  GridItems.item({required this.name, required this.title, this.icon, this.onTap, this.color}) {
     menuTipi = "I";
     onTap ??= () {
       DialogManager().showSnackBar("Yapım Aşamasında");

@@ -5,8 +5,10 @@ import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/cari_dovizli_ek
 import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/cari_ekstre/view/cari_ekstre_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/cari_hareket_raporu/view/cari_hareket_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/doviz_bakiye_raporu/view/doviz_bakiye_raporu_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/hareket_detayli_yapilandirma_raporu/view/hareket_detayli_yapilandirma_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/stok_ekstre/view/stok_ekstre_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/yaslandirma_raporu/view/yaslandirma_raporu_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/temsilci_profil/view/temsilci_profil_view.dart";
 
 import "core/init/cache/cache_manager.dart";
 import "core/init/theme/app_theme_dark.dart";
@@ -60,6 +62,7 @@ class MyApp extends StatelessWidget {
             GetPage(name: "/cariEdit", page: () => BaseCariEditingView(model: Get.arguments)),
             GetPage(name: "/cariHareketleri", page: () => CariHareketleriView(cari: Get.arguments)),
             GetPage(name: "/cariYeniKayit", page: () => CariYeniKayitView(model: Get.arguments)),
+
             //* Cari Raporları
             GetPage(name: "/cariEkstre", page: () => const CariEkstreView()),
             GetPage(name: "/cariDovizliEkstre", page: () => const CariDovizliEkstreView()),
@@ -67,12 +70,16 @@ class MyApp extends StatelessWidget {
             GetPage(name: "/cariYaslandirmaRaporu", page: () => const YaslandirmaRaporuView()),
             GetPage(name: "/cariDovizBakiyeRaporu", page: () => const DovizBakiyeRaporuView()),
             GetPage(name: "/cariHareketRaporu", page: () => const CariHareketRaporuView()),
+            GetPage(name: "/cariHareketDetayliYaslandirmaRaporu", page: () => const HareketDetayliYaslandirmaRaporuView()),
 
             //* Stok
             GetPage(name: "/stokListesi", page: () => const StokListesiView()),
             GetPage(name: "/stokEdit", page: () => BaseStokEditingView(model: Get.arguments)),
             GetPage(name: "/stokHareketleri", page: () => StokHareketleriView(model: Get.arguments)),
             GetPage(name: "/stokYeniKayit", page: () => StokYeniKayitView(model: Get.arguments)),
+
+            //* Profil
+            GetPage(name: "/temsilciProfil", page: () => const TemsilciProfilView()),
           ],
         ),
         GetPage(name: "/addCompany", page: () => const AccountsView()),

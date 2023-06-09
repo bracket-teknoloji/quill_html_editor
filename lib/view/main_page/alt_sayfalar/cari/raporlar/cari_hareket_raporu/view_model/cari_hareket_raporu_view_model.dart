@@ -24,10 +24,11 @@ abstract class _CariHareketRaporuViewModelBase with Store {
   //*
   @observable
   ObservableFuture<bool?> futureController = ObservableFuture(Future.error(false));
+  
 
   @action
   void setFuture() => futureController = ObservableFuture.value(true);
-
+    
   @action
   void resetFuture() => futureController = ObservableFuture.value(false);
 }

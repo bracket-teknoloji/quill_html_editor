@@ -18,7 +18,7 @@ class MenuItemConstants {
         GridItems.item(name: "cari_Rap_DovizBakiye", title: "Döviz Bakiye Raporu", onTap: () => Get.toNamed("/mainPage/cariDovizBakiyeRaporu")),
         //TODO! Buna yetki verilmedi. Düzenle
         GridItems.item(name: "x", title: "Cari Hareket Raporu", onTap: () => Get.toNamed("/mainPage/cariHareketRaporu")),
-        GridItems.item(name: "cari_Rap_HarDetayliYaslandir", title: "Hareket Detaylı Yaşlandırma Rap."),
+        GridItems.item(name: "cari_Rap_HarDetayliYaslandir", title: "Hareket Detaylı Yaşlandırma Rap.", onTap: () => Get.toNamed("/mainPage/cariHareketDetayliYaslandirmaRaporu")),
         GridItems.item(name: "cari_Rap_StokSatisOzeti", title: "Cari Stok Satış Özeti"),
       ])
     ]),
@@ -106,7 +106,10 @@ class MenuItemConstants {
 
     //* Temsilci
     //*
-    GridItems.anamenu(name: "TEMS", title: "Temsilci", icon: "profile", color: GridThemeManager.temsilci, altMenuler: []),
+    GridItems.anamenu(name: "TEMS", title: "Profilim", icon: "profile", color: GridThemeManager.temsilci, altMenuler: [
+      //? anamenünün onTap'i olmadığı için tek item verdim. Tek item verince direkt onu açıyor. O yüzden parametrelerin bir anlamı yok.
+      GridItems.item(name: "taltek_STAL", title: "Profilim", icon: "profile", onTap: () => Get.toNamed("/mainPage/temsilciProfil")),
+    ]),
 
     //* Transfer
     //*

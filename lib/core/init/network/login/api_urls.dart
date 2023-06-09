@@ -32,4 +32,7 @@ class ApiUrls {
   static const String getStokHareketleri = "api/Stok/GetStokHareketleri";
   static const String saveStokHareket = "api/Stok/SaveStokHareket";
   static const String deleteStokHareket = "api/Stok/DeleteStokHareket";
+
+  //*Temsilci
+  static const String getPlasiyerOzetRaporu = "api/Finans/GetPlasiyerOzetRaporu";
 }

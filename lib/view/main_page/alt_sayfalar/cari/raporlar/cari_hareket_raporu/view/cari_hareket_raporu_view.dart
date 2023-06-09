@@ -73,7 +73,7 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
   }
 
   Future<bool> filterBottomSheet() async {
-    {
+    
       viewModel.resetFuture();
       await bottomSheetDialogManager.showBottomSheetDialog(context,
           title: "Filtrele",
@@ -87,18 +87,18 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
                       filterOnChanged: (index) => viewModel.pdfModel.dicParams?.aralikTipi, baslangicTarihiController: baslangicTarihiController, bitisTarihiController: bitisTarihiController);
                 }),
                 CustomTextField(
-                  labelText: "Cari",
-                  controller: cariController,
-                  readOnly: true,
-                  suffix: const Icon(Icons.more_horiz_outlined),
-                  onTap: () async {
-                    var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                    if (result != null) {
-                      viewModel.pdfModel.dicParams?.cariKodu = result;
-                      cariController.text = result;
-                    }
-                  },
-                ),
+                labelText: "Cari",
+                controller: cariController,
+                readOnly: true,
+                suffix: const Icon(Icons.more_horiz_outlined),
+                onTap: () async {
+                  var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                  if (result != null) {
+                    cariController.text = result.cariAdi ?? "";
+                    viewModel.pdfModel.dicParams?.cariKodu = result.cariKodu ?? "";
+                  }
+                },
+              ),
                 Row(
                   children: [
                     Expanded(
@@ -175,7 +175,6 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
             ),
           ));
       return Future.value(viewModel.futureController.value);
-    }
   }
 
   Future<String?> getGrupKodu(int grupNo, TextEditingController? controller) async {

@@ -1275,6 +1275,8 @@ class ProfilYetkiModel {
   bool? cariRapYaslandirma;
   @JsonKey(name: "cari_Rap_HarDetayliYaslandir")
   bool? cariRapHarDetayliYaslandir;
+  @JsonKey(name: "cari_Rap_Hareket")
+  bool? cariRapHareket;
   @JsonKey(name: "cari_Rap_DovizBakiye")
   bool? cariRapDovizBakiye;
   @JsonKey(name: "cari_Rap_StokSatisOzeti")

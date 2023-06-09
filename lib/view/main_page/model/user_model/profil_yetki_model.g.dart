@@ -1141,6 +1141,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..cariRapYaslandirma = json['cari_Rap_Yaslandirma'] as bool?
       ..cariRapHarDetayliYaslandir =
           json['cari_Rap_HarDetayliYaslandir'] as bool?
+      ..cariRapHareket = json['cari_Rap_Hareket'] as bool?
       ..cariRapDovizBakiye = json['cari_Rap_DovizBakiye'] as bool?
       ..cariRapStokSatisOzeti = json['cari_Rap_StokSatisOzeti'] as bool?
       ..cariRapDovizliEkstre = json['cari_Rap_DovizliEkstre'] as bool?
@@ -2398,6 +2399,7 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) =>
       'cari_Rap_StokEkstre': instance.cariRapStokEkstre,
       'cari_Rap_Yaslandirma': instance.cariRapYaslandirma,
       'cari_Rap_HarDetayliYaslandir': instance.cariRapHarDetayliYaslandir,
+      'cari_Rap_Hareket': instance.cariRapHareket,
       'cari_Rap_DovizBakiye': instance.cariRapDovizBakiye,
       'cari_Rap_StokSatisOzeti': instance.cariRapStokSatisOzeti,
       'cari_Rap_DovizliEkstre': instance.cariRapDovizliEkstre,
