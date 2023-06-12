@@ -111,7 +111,8 @@ class BottomSheetDialogManager {
           return Wrap(
             children: [
               ListTile(
-                title: Text(title, style: context.theme.textTheme.titleMedium),
+                contentPadding: UIHelper.lowPadding,
+                title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
                 trailing: IconButton(icon: const Icon(Icons.close), onPressed: () => Get.back()),
                 splashColor: Colors.transparent,
               ).paddingSymmetric(vertical: 10),
@@ -192,7 +193,8 @@ class BottomSheetDialogManager {
         return Wrap(
           children: [
             ListTile(
-              title: Text(title, style: context.theme.textTheme.titleMedium),
+              contentPadding: UIHelper.lowPadding,
+              title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
               trailing: IconButton(icon: const Icon(Icons.close), onPressed: () => Get.back()),
               splashColor: Colors.transparent,
             ).paddingSymmetric(vertical: 10),
@@ -497,8 +499,6 @@ class BottomSheetDialogManager {
   void clearSelectedData() {
     viewModel.deleteIsSelectedListMap();
   }
-
-  void showSubeBottomSheetDialog() {}
 
   //  Future<GenericResponseModel<NetworkManagerMixin>> getData() async {
   //   GenericResponseModel<NetworkManagerMixin> response;

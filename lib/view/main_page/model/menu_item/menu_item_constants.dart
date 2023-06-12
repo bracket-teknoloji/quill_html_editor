@@ -11,14 +11,14 @@ class MenuItemConstants {
       GridItems.item(name: "cari_CariListesi", title: "Cari Listesi", onTap: () => Get.toNamed("/mainPage/cariListesi", arguments: false)),
       GridItems.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları"),
       GridItems.altmenu(name: "cari_Raporlar", title: "Raporlar", icon: "monitoring", altMenuler: [
-        GridItems.item(name: "cari_Rap_Ekstre", title: "Cari Ekstre", onTap: () => Get.toNamed("/mainPage/cariEkstre")),
-        GridItems.item(name: "cari_Rap_DovizliEkstre", title: "Cari Dövizli Ekstre", onTap: () => Get.toNamed("/mainPage/cariDovizliEkstre")),
-        GridItems.item(name: "cari_Rap_StokEkstre", title: "Stok Ekstresi", onTap: () => Get.toNamed("/mainPage/cariStokEkstre")),
-        GridItems.item(name: "cari_Rap_Yaslandirma", title: "Yaşlandırma Raporu", onTap: () => Get.toNamed("/mainPage/cariYaslandirmaRaporu")),
-        GridItems.item(name: "cari_Rap_DovizBakiye", title: "Döviz Bakiye Raporu", onTap: () => Get.toNamed("/mainPage/cariDovizBakiyeRaporu")),
+        GridItems.item(name: "cari_Rap_Ekstre", title: "Cari Ekstre", route: "/mainPage/cariEkstre"),
+        GridItems.item(name: "cari_Rap_DovizliEkstre", title: "Cari Dövizli Ekstre", route: "/mainPage/cariDovizliEkstre"),
+        GridItems.item(name: "cari_Rap_StokEkstre", title: "Stok Ekstresi", route: "/mainPage/cariStokEkstre"),
+        GridItems.item(name: "cari_Rap_Yaslandirma", title: "Yaşlandırma Raporu", route: "/mainPage/cariYaslandirmaRaporu"),
+        GridItems.item(name: "cari_Rap_DovizBakiye", title: "Döviz Bakiye Raporu", route: "/mainPage/cariDovizBakiyeRaporu"),
         //TODO! Buna yetki verilmedi. Düzenle
-        GridItems.item(name: "x", title: "Cari Hareket Raporu", onTap: () => Get.toNamed("/mainPage/cariHareketRaporu")),
-        GridItems.item(name: "cari_Rap_HarDetayliYaslandir", title: "Hareket Detaylı Yaşlandırma Rap.", onTap: () => Get.toNamed("/mainPage/cariHareketDetayliYaslandirmaRaporu")),
+        GridItems.item(name: "cari_Rap_Hareket", title: "Cari Hareket Raporu", route: "/mainPage/cariHareketRaporu"),
+        GridItems.item(name: "cari_Rap_HarDetayliYaslandir", title: "Hareket Detaylı Yaşlandırma Rap.", route: "/mainPage/cariHareketDetayliYaslandirmaRaporu"),
         GridItems.item(name: "cari_Rap_StokSatisOzeti", title: "Cari Stok Satış Özeti"),
       ])
     ]),

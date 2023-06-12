@@ -91,6 +91,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                           child: Observer(builder: (_) {
                             return PieChart(
                               PieChartData(
+                                
                                 startDegreeOffset: 0,
                                 sections: List.generate(
                                     viewModel.temsilciProfilList!.where((element) => element.ayKodu == viewModel.donemKodu).map((element) => element.plasiyerAciklama).toSet().length,

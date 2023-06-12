@@ -29,6 +29,7 @@ class DialogManager {
     hideSnackBar;
     ScaffoldMessenger.of(context).showSnackBar(snackBarError(message));
   }
+
   Future<DateTime?> showDateTimePicker() async {
     return await showDatePicker(
       context: context,
@@ -88,6 +89,8 @@ class DialogManager {
         ),
       ).show();
   void showAreYouSureDialog(void Function() onYes) => _areYouSureDialog(onYes).show();
+
+  void showGridViewDialog(String title, Widget body) => _baseDialog(title: title, body: body, onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
   void showExitDialog() => _baseDialog(
         title: "Uyarı",

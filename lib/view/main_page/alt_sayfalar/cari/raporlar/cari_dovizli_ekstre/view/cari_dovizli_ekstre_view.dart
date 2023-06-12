@@ -12,9 +12,12 @@ import '../../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../../../../../core/init/cache/cache_manager.dart';
 import '../../../../../model/param_model.dart';
+import '../../../cari_listesi/model/cari_listesi_model.dart';
 
 class CariDovizliEkstreView extends StatefulWidget {
-  const CariDovizliEkstreView({super.key});
+  final CariListesiModel? model;
+
+  const CariDovizliEkstreView({super.key, this.model});
 
   @override
   State<CariDovizliEkstreView> createState() => _CariDovizliEkstreViewState();
@@ -33,6 +36,10 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
     dovizController = TextEditingController();
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
+    if (widget.model != null) {
+      cariController!.text = widget.model!.cariAdi ?? "";
+      viewModel.changeCariKodu(widget.model!.cariKodu ?? "");
+    }
     super.initState();
   }
 

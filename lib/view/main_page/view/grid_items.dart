@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 
 import '../../../core/components/dialog/dialog_manager.dart';
@@ -17,6 +18,7 @@ class GridItems {
   Color? color;
   List<GridItems>? altMenuler;
   Function()? onTap;
+  String? route;
   late final String menuTipi;
 
   GridItems.anamenu({required this.name, required this.title, required this.icon, required this.color, required this.altMenuler, this.iconWidget}) {
@@ -26,11 +28,17 @@ class GridItems {
   GridItems.altmenu({required this.name, required this.title, this.icon, required this.altMenuler, this.iconWidget}) {
     menuTipi = "S";
   }
-  GridItems.item({required this.name, required this.title, this.icon, this.onTap, this.color}) {
+  GridItems.item({required this.name, required this.title, this.icon, this.onTap, this.color, this.route}) {
     menuTipi = "I";
-    onTap ??= () {
-      DialogManager().showSnackBar("Yapım Aşamasında");
-    };
+    if(route == null){
+      onTap ??= () {
+        DialogManager().showSnackBar("Yapım Aşamasında");
+      };
+    }else{
+      onTap = () {
+        Get.toNamed(route!);
+      };
+    }
   }
 
   bool get yetkiKontrol {

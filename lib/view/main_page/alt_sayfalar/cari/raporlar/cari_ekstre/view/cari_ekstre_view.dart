@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:picker/core/base/view/pdf_viewer/view/pdf_viewer_view.dart';
 import 'package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart';
+import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
 
 import '../../../../../../../core/base/state/base_state.dart';
 import '../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
@@ -13,7 +14,8 @@ import '../../../../../model/param_model.dart';
 import '../view_model/cari_ekstre_view_model.dart';
 
 class CariEkstreView extends StatefulWidget {
-  const CariEkstreView({super.key});
+  final CariListesiModel? model;
+  const CariEkstreView({super.key, this.model});
 
   @override
   State<CariEkstreView> createState() => _CariEkstreViewState();
@@ -32,6 +34,10 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
     dovizController = TextEditingController();
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
+    if (widget.model != null) {
+      cariController?.text = widget.model?.cariAdi ?? "";
+      viewModel.pdfModel.dicParams?.cariKodu = widget.model?.cariKodu ?? "";
+    }
     dovizController?.text = "Tümü";
     viewModel.changeDovizTipi(-1);
     super.initState();

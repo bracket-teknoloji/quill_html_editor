@@ -8,10 +8,13 @@ import '../../../../../../../core/base/state/base_state.dart';
 import '../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart';
 import '../../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../../core/constants/ui_helper/ui_helper.dart';
+import '../../../cari_listesi/model/cari_listesi_model.dart';
 import '../view_model/hareket_detayli_yapilandirma_raporu_view_model.dart';
 
 class HareketDetayliYaslandirmaRaporuView extends StatefulWidget {
-  const HareketDetayliYaslandirmaRaporuView({super.key});
+  final CariListesiModel? model;
+
+  const HareketDetayliYaslandirmaRaporuView({super.key, this.model});
 
   @override
   State<HareketDetayliYaslandirmaRaporuView> createState() => _HareketDetayliYaslandirmaRaporuViewState();
@@ -26,6 +29,10 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
   void initState() {
     cariController = TextEditingController();
     referansTarihController = TextEditingController();
+    if (widget.model != null) {
+      cariController.text = widget.model!.cariAdi ?? "";
+      viewModel.pdfModel.dicParams?.cariKodu = widget.model!.cariKodu ?? "";
+    }
     super.initState();
   }
 

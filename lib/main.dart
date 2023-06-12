@@ -15,7 +15,6 @@ import "core/init/theme/app_theme_dark.dart";
 import "view/add_company/model/account_model.dart";
 import "view/add_company/view/add_account_view.dart";
 import "view/add_company/view/company_page.dart";
-// import 'view/add_company/view/edit_company_view.dart.dart';
 import "view/add_company/view/qr_view.dart";
 import "view/auth/view/login_view.dart";
 import "view/entry_company_view.dart";
@@ -64,13 +63,13 @@ class MyApp extends StatelessWidget {
             GetPage(name: "/cariYeniKayit", page: () => CariYeniKayitView(model: Get.arguments)),
 
             //* Cari Raporları
-            GetPage(name: "/cariEkstre", page: () => const CariEkstreView()),
-            GetPage(name: "/cariDovizliEkstre", page: () => const CariDovizliEkstreView()),
-            GetPage(name: "/cariStokEkstre", page: () => const StokEkstreView()),
-            GetPage(name: "/cariYaslandirmaRaporu", page: () => const YaslandirmaRaporuView()),
-            GetPage(name: "/cariDovizBakiyeRaporu", page: () => const DovizBakiyeRaporuView()),
-            GetPage(name: "/cariHareketRaporu", page: () => const CariHareketRaporuView()),
-            GetPage(name: "/cariHareketDetayliYaslandirmaRaporu", page: () => const HareketDetayliYaslandirmaRaporuView()),
+            GetPage(name: "/cariEkstre", page: () =>  CariEkstreView(model: Get.arguments)),
+            GetPage(name: "/cariDovizliEkstre", page: () =>  CariDovizliEkstreView(model: Get.arguments)),
+            GetPage(name: "/cariStokEkstre", page: () =>  StokEkstreView(model: Get.arguments)),
+            GetPage(name: "/cariYaslandirmaRaporu", page: () =>  YaslandirmaRaporuView(model: Get.arguments)),
+            GetPage(name: "/cariDovizBakiyeRaporu", page: () =>  DovizBakiyeRaporuView(model: Get.arguments)),
+            GetPage(name: "/cariHareketRaporu", page: () =>  CariHareketRaporuView(model: Get.arguments)),
+            GetPage(name: "/cariHareketDetayliYaslandirmaRaporu", page: () =>  HareketDetayliYaslandirmaRaporuView(model: Get.arguments)),
 
             //* Stok
             GetPage(name: "/stokListesi", page: () => const StokListesiView()),

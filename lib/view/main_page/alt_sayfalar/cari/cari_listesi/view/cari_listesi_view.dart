@@ -18,6 +18,7 @@ import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_response_model.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/view_model/bottom_sheet_state_manager.dart';
 import '../../../../../../core/components/floating_action_button/custom_floating_action_button.dart';
+import '../../../../../../core/components/grid_tile/custom_animated_grid/view/custom_animated_grid_view.dart';
 import '../../../../../../core/components/textfield/custom_app_bar_text_field.dart';
 import '../../../../../../core/components/widget/scrollable_widget.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
@@ -184,7 +185,10 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                         BottomSheetModel(title: "Hareketler", iconWidget: Icons.list_alt_outlined, onTap: () => Get.back(result: "/mainPage/cariHareketleri"))
                                             .yetkiKontrol(yetkiController.cariHareketleri),
                                         // BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
-                                        // BottomSheetModel(title: "Raporlar", iconWidget: Icons.list_alt_outlined),
+                                        BottomSheetModel(
+                                            title: "Raporlar",
+                                            iconWidget: Icons.list_alt_outlined,
+                                            onTap: () => dialogManager.showGridViewDialog("Merhaba", CustomAnimatedGridView(cariListesiModel: object))),
                                         // BottomSheetModel(title: "Serbest Raporlar", iconWidget: Icons.list_alt_outlined),
                                       ].nullCheck.cast<BottomSheetModel>());
                                   if (pageName != null) {
@@ -199,9 +203,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                     }
                                   }
                                 }
-                              : () {
-                                  Get.back(result: object);
-                                },
+                              : () => Get.back(result: object),
                           isThreeLine: true,
                           contentPadding: UIHelper.midPadding,
                           leading: CircleAvatar(backgroundColor: UIHelper.getColorWithValue(object.bakiye ?? 0.0), child: Text(object.cariAdi?.substring(0, 1) ?? "")),
@@ -286,7 +288,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       title: Observer(
         builder: (_) {
           return (viewModel.searchBar
-              ? CustomAppBarTextField(onFieldSubmitted: onFieldSubmitted )
+              ? CustomAppBarTextField(onFieldSubmitted: onFieldSubmitted)
               : Wrap(direction: Axis.vertical, children: [
                   const Text("Cari Listesi"),
                   Text("${viewModel.cariListesi?.length ?? ""}", style: theme.textTheme.labelSmall),

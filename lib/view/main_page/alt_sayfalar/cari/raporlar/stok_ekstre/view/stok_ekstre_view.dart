@@ -8,9 +8,12 @@ import '../../../../../../../core/base/state/base_state.dart';
 import '../../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart';
 import '../../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../../core/constants/ui_helper/ui_helper.dart';
+import '../../../cari_listesi/model/cari_listesi_model.dart';
 
 class StokEkstreView extends StatefulWidget {
-  const StokEkstreView({super.key});
+  final CariListesiModel? model;
+
+  const StokEkstreView({super.key, this.model});
 
   @override
   State<StokEkstreView> createState() => _StokEkstreViewState();
@@ -27,6 +30,10 @@ class _StokEkstreViewState extends BaseState<StokEkstreView> {
     cariController = TextEditingController();
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
+    if (widget.model != null) {
+      cariController?.text = widget.model!.cariAdi!;
+      viewModel.pdfModel.dicParams?.cariKodu = widget.model!.cariKodu!;
+    }
     super.initState();
   }
 

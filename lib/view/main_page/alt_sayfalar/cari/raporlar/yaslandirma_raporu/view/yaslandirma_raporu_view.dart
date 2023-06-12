@@ -13,10 +13,12 @@ import '../../../../../../../core/base/state/base_state.dart';
 import '../../../../../../../core/components/slide_controller/view/slide_controller_view.dart';
 import '../../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../../core/constants/ui_helper/ui_helper.dart';
+import '../../../cari_listesi/model/cari_listesi_model.dart';
 import '../view_model/yaslandirma_raporu_view_model.dart';
 
 class YaslandirmaRaporuView extends StatefulWidget {
-  const YaslandirmaRaporuView({super.key});
+  final CariListesiModel? model;
+  const YaslandirmaRaporuView({super.key, this.model});
 
   @override
   State<YaslandirmaRaporuView> createState() => _YaslandirmaRaporuViewState();
@@ -48,7 +50,10 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
     kod3Controller = TextEditingController();
     kod4Controller = TextEditingController();
     kod5Controller = TextEditingController();
-
+    if (widget.model != null) {
+      cariController?.text = widget.model!.cariAdi ?? "";
+      viewModel.pdfModel.dicParams?.cariKodu = widget.model!.cariKodu ?? "";
+    }
     super.initState();
   }
 

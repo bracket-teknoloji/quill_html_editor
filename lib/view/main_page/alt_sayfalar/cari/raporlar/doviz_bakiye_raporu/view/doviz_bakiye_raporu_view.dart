@@ -12,10 +12,13 @@ import '../../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../../../../../core/init/cache/cache_manager.dart';
 import '../../../../../model/param_model.dart';
+import '../../../cari_listesi/model/cari_listesi_model.dart';
 import '../view_model/doviz_bakiye_raporu_view_model.dart';
 
 class DovizBakiyeRaporuView extends StatefulWidget {
-  const DovizBakiyeRaporuView({super.key});
+  final CariListesiModel? model;
+
+  const DovizBakiyeRaporuView({super.key, this.model});
 
   @override
   State<DovizBakiyeRaporuView> createState() => _DovizBakiyeRaporuViewState();
@@ -45,6 +48,10 @@ class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
     kod3Controller = TextEditingController();
     kod4Controller = TextEditingController();
     kod5Controller = TextEditingController();
+    if (widget.model != null) {
+      cariController.text = widget.model!.cariAdi ?? "";
+      viewModel.pdfModel.dicParams?.cariKodu = widget.model!.cariKodu ?? "";
+    }
     super.initState();
   }
 
@@ -175,7 +182,7 @@ class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
       return Future.value(viewModel.futureController.value);
     }
   }
-  
+
   Future<String?> getGrupKodu(int grupNo, TextEditingController? controller) async {
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: "CARI", grupNo: -1);
