@@ -25,6 +25,23 @@ mixin _$CustomAnimatedGridViewModel on _CustomAnimatedGridViewModelBase, Store {
     });
   }
 
+  late final _$returnGridItemsAtom = Atom(
+      name: '_CustomAnimatedGridViewModelBase.returnGridItems',
+      context: context);
+
+  @override
+  ObservableList<ObservableList<GridItems>> get returnGridItems {
+    _$returnGridItemsAtom.reportRead();
+    return super.returnGridItems;
+  }
+
+  @override
+  set returnGridItems(ObservableList<ObservableList<GridItems>> value) {
+    _$returnGridItemsAtom.reportWrite(value, super.returnGridItems, () {
+      super.returnGridItems = value;
+    });
+  }
+
   late final _$_CustomAnimatedGridViewModelBaseActionController =
       ActionController(
           name: '_CustomAnimatedGridViewModelBase', context: context);
@@ -42,9 +59,36 @@ mixin _$CustomAnimatedGridViewModel on _CustomAnimatedGridViewModelBase, Store {
   }
 
   @override
+  void addReturnGridItems(List<GridItems>? value) {
+    final _$actionInfo =
+        _$_CustomAnimatedGridViewModelBaseActionController.startAction(
+            name: '_CustomAnimatedGridViewModelBase.addReturnGridItems');
+    try {
+      return super.addReturnGridItems(value);
+    } finally {
+      _$_CustomAnimatedGridViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void deleteLastReturnGridItems() {
+    final _$actionInfo =
+        _$_CustomAnimatedGridViewModelBaseActionController.startAction(
+            name: '_CustomAnimatedGridViewModelBase.deleteLastReturnGridItems');
+    try {
+      return super.deleteLastReturnGridItems();
+    } finally {
+      _$_CustomAnimatedGridViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-gridItems: ${gridItems}
+gridItems: ${gridItems},
+returnGridItems: ${returnGridItems}
     ''';
   }
 }

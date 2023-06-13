@@ -188,7 +188,10 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                         BottomSheetModel(
                                             title: "Raporlar",
                                             iconWidget: Icons.list_alt_outlined,
-                                            onTap: () => dialogManager.showGridViewDialog("Merhaba", CustomAnimatedGridView(cariListesiModel: object))),
+                                            onTap: () {
+                                              Get.back();
+                                              dialogManager.showGridViewDialog("Merhaba", CustomAnimatedGridView(cariListesiModel: object));
+                                            }),
                                         // BottomSheetModel(title: "Serbest Raporlar", iconWidget: Icons.list_alt_outlined),
                                       ].nullCheck.cast<BottomSheetModel>());
                                   if (pageName != null) {
@@ -240,33 +243,35 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   }
 
   Widget? bottomButtonBar() {
-    return Observer(
-        builder: (_) => ScrollableWidget(
-              isScrolledDown: !viewModel.isScrolledDown,
-              child: SizedBox(
-                height: context.isPortrait ? (height * 0.06) : (height * 0.1 < 60 ? 60 : height * 0.1),
-                child: paramData.keys.isNotEmpty
-                    ? Row(
-                        children: [
-                          Expanded(
-                              child: FooterButton(onPressed: () {}, children: [
-                            const Text("Tahsil Edilecek"),
-                            Text(
-                              "${double.tryParse(paramData["TAHSIL_EDILECEK"].replaceAll(",", "."))?.toInt().commaSeparated} TL",
-                              style: const TextStyle(color: Colors.green),
-                            ),
-                          ])),
-                          const VerticalDivider(thickness: 1, width: 1),
-                          Expanded(
-                              child: FooterButton(children: [
-                            const Text("Ödenecek"),
-                            Text("${(double.tryParse(paramData["ODENECEK"].replaceAll(",", "."))!.toInt() * -1).commaSeparated} TL", style: const TextStyle(color: Colors.red)),
-                          ]))
-                        ],
-                      )
-                    : null,
-              ),
-            ));
+    return SafeArea(
+      child: Observer(
+          builder: (_) => ScrollableWidget(
+                isScrolledDown: !viewModel.isScrolledDown,
+                child: SizedBox(
+                  height: context.isPortrait ? (height * 0.06) : (height * 0.1 < 60 ? 60 : height * 0.1),
+                  child: paramData.keys.isNotEmpty
+                      ? Row(
+                          children: [
+                            Expanded(
+                                child: FooterButton(onPressed: () {}, children: [
+                              const Text("Tahsil Edilecek"),
+                              Text(
+                                "${double.tryParse(paramData["TAHSIL_EDILECEK"].replaceAll(",", "."))?.toInt().commaSeparated} TL",
+                                style: const TextStyle(color: Colors.green),
+                              ),
+                            ])),
+                            const VerticalDivider(thickness: 1, width: 1),
+                            Expanded(
+                                child: FooterButton(children: [
+                              const Text("Ödenecek"),
+                              Text("${(double.tryParse(paramData["ODENECEK"].replaceAll(",", "."))!.toInt() * -1).commaSeparated} TL", style: const TextStyle(color: Colors.red)),
+                            ]))
+                          ],
+                        )
+                      : null,
+                ),
+              )),
+    );
   }
 
   Widget fab() {

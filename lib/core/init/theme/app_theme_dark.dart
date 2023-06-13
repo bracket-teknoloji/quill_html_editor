@@ -16,6 +16,7 @@ class AppThemeDark extends AppTheme {
   var colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark);
   @override
   ThemeData get theme => ThemeData(
+    
       radioTheme: RadioThemeData(fillColor: MaterialStateProperty.all(UIHelper.primaryColor), overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.1))),
       useMaterial3: true,
       colorSchemeSeed: UIHelper.primaryColor,

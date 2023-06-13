@@ -6,7 +6,7 @@ class BottomSheetModel {
   final String? description;
   final String? icon;
   final String? value;
-  late final Function()? onTap;
+  Function()? onTap;
   final IconData? iconWidget;
 
   BottomSheetModel({required this.title, this.description, this.icon, this.value, this.onTap, this.iconWidget}) {

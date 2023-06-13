@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/components/widget/scrollable_widget.dart';
 
 import '../../../../../../core/base/model/base_edit_model.dart';
 import '../../../../../../core/base/state/base_state.dart';
@@ -63,6 +64,8 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
+      extendBody: true,
       appBar: appBar(context),
       floatingActionButton: fab(),
       bottomNavigationBar: bottomButtonBar(),
@@ -81,8 +84,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                   height: kToolbarHeight * 0.9,
                   child: TextFormField(
                     autofocus: true,
-                    decoration: const InputDecoration(
-                    ),
+                    decoration: const InputDecoration(),
                   ).marginAll(5),
                 )
               : AppBarTitle(
@@ -222,33 +224,38 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
 
   SafeArea bottomButtonBar() {
     return SafeArea(
-      child: SizedBox(
-        height: context.isPortrait ? (height * 0.06) : height * 0.15,
-        child: Observer(builder: (_) {
-          return Row(
-            children: [
-              Expanded(
-                  child: FooterButton(children: [
-                const Text("Borç"),
-                Observer(builder: (_) {
-                  return Text("${viewModel.borclarToplami.dotSeparatedWithFixedDigits} TL");
-                })
-              ])),
-              const VerticalDivider(thickness: 1, width: 1),
-              Expanded(child: FooterButton(children: [const Text("Alacak"), Text("${viewModel.alacaklarToplami.dotSeparatedWithFixedDigits} TL")])),
-              const VerticalDivider(thickness: 1, width: 1),
-              Expanded(
-                  child: FooterButton(children: [
-                const Text("Tahsil Edilecek"),
-                Text(
-                  "${(viewModel.borclarToplami - viewModel.alacaklarToplami).dotSeparatedWithFixedDigits} TL",
-                  style: TextStyle(color: (viewModel.borclarToplami - viewModel.alacaklarToplami) < 0 ? Colors.red : Colors.green),
-                )
-              ]))
-            ],
-          );
-        }),
-      ),
+      child: Observer(builder: (_) {
+        return ScrollableWidget(
+          isScrolledDown: viewModel.isScrollDown,
+          child: SizedBox(
+            height: context.isPortrait ? (height * 0.06) : height * 0.15,
+            child: Observer(builder: (_) {
+              return Row(
+                children: [
+                  Expanded(
+                      child: FooterButton(children: [
+                    const Text("Borç"),
+                    Observer(builder: (_) {
+                      return Text("${viewModel.borclarToplami.dotSeparatedWithFixedDigits} TL");
+                    })
+                  ])),
+                  const VerticalDivider(thickness: 1, width: 1),
+                  Expanded(child: FooterButton(children: [const Text("Alacak"), Text("${viewModel.alacaklarToplami.dotSeparatedWithFixedDigits} TL")])),
+                  const VerticalDivider(thickness: 1, width: 1),
+                  Expanded(
+                      child: FooterButton(children: [
+                    const Text("Tahsil Edilecek"),
+                    Text(
+                      "${(viewModel.borclarToplami - viewModel.alacaklarToplami).dotSeparatedWithFixedDigits} TL",
+                      style: TextStyle(color: (viewModel.borclarToplami - viewModel.alacaklarToplami) < 0 ? Colors.red : Colors.green),
+                    )
+                  ]))
+                ],
+              );
+            }),
+          ),
+        );
+      }),
     );
   }
 

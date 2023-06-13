@@ -69,8 +69,8 @@ class CacheManager {
   static MainPageModel? getAnaVeri() => _anaVeriBox.get("data");
   static AccountResponseModel? getAccounts(String query) => _accountsBox.get(query);
   static Map? get getVerifiedUser => _verifiedUsersBox.get("data");
-  static Map getVeriTabani() => _veriTabaniBox.get(AccountModel.instance.kullaniciAdi) ?? {};
-  static Map getIsletmeSube() => _isletmeSubeBox.get(AccountModel.instance.kullaniciAdi) ?? {};
+  static Map getVeriTabani() => _veriTabaniBox.get(getVerifiedUser?["user"]) ?? {};
+  static Map getIsletmeSube() => _isletmeSubeBox.get(getVerifiedUser?["user"]) ?? {};
   static Map getFavoriler() => _favorilerBox.toMap();
   static Map getFavorilerSira() => _favorilerSiraBox.toMap();
   static AccountModel getHesapBilgileri() => _hesapBilgileriBox.get("value");
@@ -88,8 +88,8 @@ class CacheManager {
 
   ///? `[TODO DÜZELT]`
   static void setVerifiedUser(Map value) => _verifiedUsersBox.put("data", value);
-  static void setVeriTabani(Map value) => _veriTabaniBox.put(AccountModel.instance.kullaniciAdi, value);
-  static void setIsletmeSube(Map value) => _isletmeSubeBox.put(AccountModel.instance.kullaniciAdi, value);
+  static void setVeriTabani(Map value) => _veriTabaniBox.put(getVerifiedUser?["user"], value);
+  static void setIsletmeSube(Map value) => _isletmeSubeBox.put(getVerifiedUser?["user"], value);
   static void setFavoriler(FavoritesModel value) => _favorilerBox.put(value.name, value);
   static void setFavorilerSira(Map value) => _favorilerSiraBox.putAll(value);
   static void setCariSehirler(CariSehirlerModel value) => _cariSehirBox.put("value", value);

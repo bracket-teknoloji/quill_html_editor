@@ -32,38 +32,31 @@ class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> 
       onTap: widget.onTap,
       child: GridTile(
           footer: (widget.menuTipi == "S" && widget.altMenuler!.length > 1) ? const Icon(Icons.expand_more, size: 15) : const SizedBox(),
-          child: widget.menuTipi == "I"
-              ? Center(
-                  child: Text(
-                  widget.title ?? "",
-                  textAlign: TextAlign.center,
-                  style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
-                ))
-              : Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    AnimatedContainer(
-                            duration: const Duration(milliseconds: 500),
-                            child: widget.iconWidget == null
-                                ? IconHelper.bigMenuIcon(widget.icon ?? "", color: UIHelper.primaryColor)
-                                : const IconTheme(
-                                    data: IconThemeData(weight: 0.1, size: 30, color: Colors.white),
-                                    child: Icon(
-                                      Icons.abc,
-                                      size: 30,
-                                      grade: 0.1,
-                                    ),
-                                  ))
-                        .marginOnly(bottom: 5),
-                    Text(
-                      widget.menuTipi != "I" ? widget.title.toString() : "",
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.visible,
-                      style: theme.textTheme.bodySmall?.copyWith(color: Colors.white, fontSize: 10),
-                    ),
-                  ],
-                )),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              AnimatedContainer(
+                      duration: const Duration(milliseconds: 500),
+                      child: widget.iconWidget == null
+                          ? IconHelper.bigMenuIcon(widget.icon ?? "", color: UIHelper.primaryColor)
+                          : const IconTheme(
+                              data: IconThemeData(weight: 0.1, size: 30, color: Colors.white),
+                              child: Icon(
+                                Icons.abc,
+                                size: 30,
+                                grade: 0.1,
+                              ),
+                            ))
+                  .marginOnly(bottom: 5),
+              Text(
+                widget.title.toString() ,
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.visible,
+                style: theme.textTheme.bodySmall?.copyWith(color: Colors.white, fontSize: 10),
+              ),
+            ],
+          )),
     );
   }
 }

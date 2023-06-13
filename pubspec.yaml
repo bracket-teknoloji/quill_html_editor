@@ -44,7 +44,6 @@ dependencies:
     sdk: flutter
   flutter_animate: ^4.1.1+1
   flutter_mobx: ^2.0.6+5
-  flutter_native_timezone: ^2.0.0
 
   #Utils Dependencies
   flutter_pdfview: ^1.3.1
@@ -92,12 +91,12 @@ flutter_icons:
   ios: true
 
 dev_dependencies:
+  flutter_test:
+    sdk: flutter
   build_runner: any
   flutter_launcher_icons: ^0.13.0
   flutter_lints: ^2.0.0
   flutter_native_splash: ^2.2.19
-  flutter_test:
-    sdk: flutter
   hive_generator: ^2.0.0
   mobx_codegen: ^2.2.0
 
@@ -118,6 +117,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  generate: true
   assets:
     - assets/splash/
     - assets/icons/PickerSvgIcon/

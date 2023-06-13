@@ -16,10 +16,10 @@ class MenuItemConstants {
         GridItems.item(name: "cari_Rap_StokEkstre", title: "Stok Ekstresi", route: "/mainPage/cariStokEkstre"),
         GridItems.item(name: "cari_Rap_Yaslandirma", title: "Yaşlandırma Raporu", route: "/mainPage/cariYaslandirmaRaporu"),
         GridItems.item(name: "cari_Rap_DovizBakiye", title: "Döviz Bakiye Raporu", route: "/mainPage/cariDovizBakiyeRaporu"),
-        //TODO! Buna yetki verilmedi. Düzenle
         GridItems.item(name: "cari_Rap_Hareket", title: "Cari Hareket Raporu", route: "/mainPage/cariHareketRaporu"),
         GridItems.item(name: "cari_Rap_HarDetayliYaslandir", title: "Hareket Detaylı Yaşlandırma Rap.", route: "/mainPage/cariHareketDetayliYaslandirmaRaporu"),
-        GridItems.item(name: "cari_Rap_StokSatisOzeti", title: "Cari Stok Satış Özeti"),
+        GridItems.item(name: "cari_Rap_StokSatisOzeti", title: "Cari Stok Satış Özeti", route: "/mainPage/cariStokSatisOzeti"),
+        GridItems.item(name: "stok_Rap_UrunGrubunaGoreSatis", title: "Ürün Grubuna Göre Satış Grafiği", route: "/mainPage/cariStokSatisOzeti"),
       ])
     ]),
     //*E-Belge

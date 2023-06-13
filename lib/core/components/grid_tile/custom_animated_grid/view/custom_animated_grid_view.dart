@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
@@ -39,56 +40,73 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
       children: [
         Row(
           children: [
-            Visibility(
-              visible: viewModel.gridItems?.any((element) => element.altMenuVarMi == true) ?? false,
-              child: IconButton(
-                onPressed: () => Get.back(),
-                icon: const Icon(Icons.arrow_back_outlined),
-              ),
-            ),
-            Text(widget.cariListesiModel?.cariAdi ?? "", style: theme.appBarTheme.titleTextStyle)
+            Observer(builder: (_) {
+              return Visibility(
+                visible: viewModel.returnGridItems.isNotEmpty,
+                child: IconButton(
+                  onPressed: () {
+                    viewModel.setGridItems(viewModel.returnGridItems.last.toList());
+                    viewModel.deleteLastReturnGridItems();
+                  },
+                  icon: const Icon(Icons.arrow_back_outlined),
+                ),
+              );
+            }),
+            SizedBox(width: height * 0.3, child: Text(widget.cariListesiModel?.cariAdi ?? "", style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis)))
           ],
-        ).paddingSymmetric(horizontal: UIHelper.midSize),
-        const Divider().paddingAll(UIHelper.lowSize),
-        Container(
+        ),
+        const Divider(
+          indent: 0,
+          endIndent: 0,
+        ).paddingSymmetric(vertical: UIHelper.lowSize),
+        AnimatedContainer(
+          duration: const Duration(milliseconds: 500),
           constraints: BoxConstraints(
             minHeight: context.dynamicHeight(0.2),
           ),
           child: AnimationLimiter(
-            child: GridView.builder(
-              padding: UIHelper.zeroPadding,
-              shrinkWrap: true,
-              physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: MediaQuery.of(context).size.width ~/ 85,
-                childAspectRatio: 0.9,
-              ),
-              itemCount: viewModel.gridItems?.length ?? 0,
-              itemBuilder: (context, index) {
-                var item = viewModel.gridItems?[index];
-                return AnimationConfiguration.staggeredList(
-                    position: index,
-                    duration: const Duration(milliseconds: 900),
-                    delay: const Duration(milliseconds: 50),
-                    child: ScaleAnimation(
-                        curve: Curves.fastLinearToSlowEaseIn,
-                        duration: const Duration(milliseconds: 900),
-                        child: FadeInAnimation(
-                            child: AnimatedIslemlerGridTile(
-                                icon: "monitoring",
-                                altMenuler: item?.altMenuler,
-                                color: item?.color,
-                                name: item?.name.toString(),
-                                title: item?.title.toString(),
-                                onTap: () {
-                                  Get.back();
-                                  Get.toNamed(item?.route ?? "", arguments: widget.cariListesiModel);
-                                }))));
-              },
-            ),
+            child: Observer(builder: (_) {
+              return GridView.builder(
+                padding: UIHelper.zeroPadding,
+                shrinkWrap: true,
+                physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: MediaQuery.of(context).size.width ~/ 85,
+                  childAspectRatio: 0.9,
+                ),
+                itemCount: viewModel.gridItems?.length ?? 0,
+                itemBuilder: (context, index) {
+                  var item = viewModel.gridItems?[index];
+                  return AnimationConfiguration.staggeredList(
+                      position: index,
+                      duration: const Duration(milliseconds: 900),
+                      delay: const Duration(milliseconds: 50),
+                      child: ScaleAnimation(
+                          curve: Curves.fastLinearToSlowEaseIn,
+                          duration: const Duration(milliseconds: 900),
+                          child: FadeInAnimation(
+                              child: AnimatedIslemlerGridTile(
+                                  icon: item?.icon ?? "monitoring",
+                                  altMenuler: item?.altMenuler,
+                                  menuTipi: item?.menuTipi,
+                                  color: item?.color,
+                                  name: item?.name.toString(),
+                                  title: item?.title.toString(),
+                                  onTap: () {
+                                    if (item?.menuTipi == "S") {
+                                      viewModel.addReturnGridItems(viewModel.gridItems);
+                                      viewModel.setGridItems(item?.altMenuler);
+                                    } else {
+                                      Get.back();
+                                      Get.toNamed(item?.route ?? "", arguments: widget.cariListesiModel);
+                                    }
+                                  }))));
+                },
+              );
+            }),
           ),
         ),
       ],
-    );
+    ).paddingAll(UIHelper.lowSize);
   }
 }

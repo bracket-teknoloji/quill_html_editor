@@ -102,7 +102,7 @@ class DialogManager {
             showLoadingDialog("Çıkış yapılıyor...");
             log("Çıkış yapılıyor...");
             CacheManager.setLogout(false);
-            Get.offAndToNamed("/");
+            Get.offAndToNamed("/login");
           }
         },
         btnOkText: "Evet",
@@ -272,6 +272,9 @@ class DialogManager {
       Widget? customHeader,
       Widget? body}) {
     return AwesomeDialog(
+        keyboardAware: true,
+        //* Standardı 15 olduğu için ve null kabul etmediği için 15 verdim.
+        bodyHeaderDistance: dialogType != DialogType.noHeader ? 15 : UIHelper.lowSize,
         context: context,
         width: Platform.isLinux || Platform.isWindows || Platform.isMacOS ? MediaQuery.of(context).size.width * 0.4 : null,
         customHeader: customHeader,

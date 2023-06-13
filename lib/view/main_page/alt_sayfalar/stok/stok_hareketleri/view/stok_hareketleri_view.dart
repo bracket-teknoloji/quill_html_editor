@@ -10,8 +10,8 @@ import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart';
 import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../../../core/components/widget/custom_label_widget.dart';
 import '../../../../../../core/components/textfield/custom_text_field.dart';
+import '../../../../../../core/components/widget/custom_label_widget.dart';
 import '../../../../../../core/components/wrap/appbar_title.dart';
 import '../../../../../../core/constants/extensions/date_time_extensions.dart';
 import '../../../../../../core/constants/extensions/number_extensions.dart';
@@ -24,7 +24,8 @@ import '../view_model/stok_hareketleri_view_model.dart';
 
 class StokHareketleriView extends StatefulWidget {
   final StokListesiModel? model;
-  const StokHareketleriView({super.key, this.model});
+  final String? stokKodu;
+  const StokHareketleriView({super.key, this.model, this.stokKodu});
 
   @override
   State<StokHareketleriView> createState() => _StokHareketleriViewState();
@@ -61,7 +62,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                       viewModel.setStokHareketleri(viewModel.stokHareketleri!.where((element) => element.stokAdi!.toLowerCase().contains(value.toLowerCase())).toList());
                     },
                   ))
-              : AppBarTitle(title: "Stok Hareketleri", subtitle: widget.model?.stokAdi ?? "")),
+              : AppBarTitle(title: "Stok Hareketleri", subtitle: widget.model?.stokAdi ?? widget.stokKodu ?? "")),
       actions: [
         IconButton(
             onPressed: () async {
@@ -202,7 +203,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
   FloatingActionButton fab() {
     return FloatingActionButton(
       onPressed: () async {
-        await Get.toNamed("mainPage/stokYeniKayit", arguments: StokHareketleriModel()..stokKodu = widget.model!.stokKodu);
+        await Get.toNamed("mainPage/stokYeniKayit", arguments: StokHareketleriModel()..stokKodu = widget.model?.stokKodu ?? widget.stokKodu);
         viewModel.setStokHareketleri(await getData()!);
       },
       child: const Icon(Icons.add),
@@ -359,7 +360,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
     setState(() {});
     Map<String, dynamic> queryParameters = {
       "FilterModel":
-          '{"EkranTipi": "L", "siralama": "${viewModel.siralama}", "stokKodu": "${widget.model?.stokKodu ?? ""}", "GC": "${viewModel.getIsSelected}", "CariKodu": "${viewModel.cariListesiModel?.cariKodu ?? ""}", "ArrHareketTuru": ${jsonEncode(viewModel.arrHareketTuru)}}'
+          '{"EkranTipi": "L", "siralama": "${viewModel.siralama}", "stokKodu": "${widget.model?.stokKodu ?? widget.stokKodu}", "GC": "${viewModel.getIsSelected}", "CariKodu": "${viewModel.cariListesiModel?.cariKodu ?? ""}", "ArrHareketTuru": ${jsonEncode(viewModel.arrHareketTuru)}}'
     };
     // if (viewModel.arrHareketTuru.isNotNullOrEmpty) {
     //   queryParameters["FilterModel"] = "\"ArrHareketTuru\":${jsonEncode(viewModel.arrHareketTuru)}, ${queryParameters["FilterModel"]!}";

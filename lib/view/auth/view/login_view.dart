@@ -50,11 +50,7 @@ class _LoginViewState extends BaseState<LoginView> {
     emailController.text = textFieldData["user"];
     passwordController.text = textFieldData["password"];
     autoLogin();
-    AppInfoModel().init().then((value) {
-      setState(() {
-        version = AppInfoModel.version;
-      });
-    });
+     
   }
 
   @override
@@ -66,7 +62,9 @@ class _LoginViewState extends BaseState<LoginView> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { setState(() {
+        version = AppInfoModel.version;
+      });
     return WillPopScope(
       onWillPop: () async {
         return false;
@@ -235,7 +233,6 @@ class _LoginViewState extends BaseState<LoginView> {
         log(CacheManager.getHesapBilgileri().toJson().toString(), name: "sea2");
 
         if (context.mounted) {
-          // TODO: Hata: VerifiedUser'ı kontrol et.
           CacheManager.setVerifiedUser({"user": emailController.text, "password": passwordController.text, "company": companyController.text, "email": accountCache?.email ?? ""});
           CacheManager.setToken(response.accessToken.toString());
           Get.toNamed("/entryCompany");
