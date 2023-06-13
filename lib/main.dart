@@ -10,6 +10,7 @@ import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/doviz_bakiye_ra
 import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/hareket_detayli_yapilandirma_raporu/view/hareket_detayli_yapilandirma_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/stok_ekstre/view/stok_ekstre_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/yaslandirma_raporu/view/yaslandirma_raporu_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/raporlar/ambar_maliyet_raporu/view/ambar_maliyet_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_hareketleri/model/stok_hareketleri_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/temsilci_profil/view/temsilci_profil_view.dart";
 import "package:picker/view/splash_auth/view/splash_auth_view.dart";
@@ -79,12 +80,15 @@ class MyApp extends StatelessWidget {
             GetPage(name: "//cariStokSatisOzeti", page: () => CariStokSatisOzetiView(model: Get.arguments)),
 
             //* Stok
-            GetPage(name: "/stokListesi", page: () => const StokListesiView()),
+            GetPage(name: "/stokListesi", page: () =>  StokListesiView(isGetData: Get.arguments)),
             GetPage(name: "/stokEdit", page: () => BaseStokEditingView(model: Get.arguments)),
             GetPage(
                 name: "/stokHareketleri",
                 page: () => StokHareketleriView(model: Get.arguments is StokHareketleriModel ? Get.arguments : null, stokKodu: Get.arguments is String ? Get.arguments : null)),
             GetPage(name: "/stokYeniKayit", page: () => StokYeniKayitView(model: Get.arguments)),
+
+            //* Stok Raporları
+            GetPage(name: "/stokAmbarMaliyetRaporu", page: () => AmbarMaliyetRaporuView(model: Get.arguments)),
             //? GetPage(name: "/urunGrubunaGoreSatisGrafigi", page: () => StokYeniKayitView(model: Get.arguments)),
 
             //* Profil

@@ -31,6 +31,9 @@ Map<String, dynamic> _$PdfModelToJson(PdfModel instance) {
 
 DicParams _$DicParamsFromJson(Map<String, dynamic> json) => DicParams(
       cariKodu: json['CARI_KODU'] as String?,
+      stokKodu: json['STOK_KODU'] as String?,
+      sifirHaric: json['SIFIR_HARIC'] as String?,
+      maliyetTipi: json['MALIYET_TIPI'] as String?,
       tlHarDokulsun: json['TL_HAR_DOKULSUN'] as String?,
       dovizTipi: json['DOVIZ_TIPI'] as String?,
       bastar: json['BASTAR'] as String?,
@@ -60,6 +63,9 @@ Map<String, dynamic> _$DicParamsToJson(DicParams instance) {
   }
 
   writeNotNull('CARI_KODU', instance.cariKodu);
+  writeNotNull('STOK_KODU', instance.stokKodu);
+  writeNotNull('SIFIR_HARIC', instance.sifirHaric);
+  writeNotNull('MALIYET_TIPI', instance.maliyetTipi);
   writeNotNull('TL_HAR_DOKULSUN', instance.tlHarDokulsun);
   writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
   writeNotNull('BASTAR', instance.bastar);

@@ -25,6 +25,9 @@ class PdfModel with NetworkManagerMixin {
 class DicParams {
   DicParams(
       {this.cariKodu,
+      this.stokKodu,
+      this.sifirHaric,
+      this.maliyetTipi,
       this.tlHarDokulsun,
       this.dovizTipi,
       this.bastar,
@@ -44,6 +47,9 @@ class DicParams {
       this.bakiyeDurumu});
 
   String? cariKodu;
+  String? stokKodu;
+  String? sifirHaric;
+  String? maliyetTipi;
   String? tlHarDokulsun;
   String? dovizTipi;
   String? bastar;

@@ -19,7 +19,7 @@ class MenuItemConstants {
         GridItems.item(name: "cari_Rap_Hareket", title: "Cari Hareket Raporu", route: "/mainPage/cariHareketRaporu"),
         GridItems.item(name: "cari_Rap_HarDetayliYaslandir", title: "Hareket Detaylı Yaşlandırma Rap.", route: "/mainPage/cariHareketDetayliYaslandirmaRaporu"),
         GridItems.item(name: "cari_Rap_StokSatisOzeti", title: "Cari Stok Satış Özeti", route: "/mainPage/cariStokSatisOzeti"),
-        GridItems.item(name: "stok_Rap_UrunGrubunaGoreSatis", title: "Ürün Grubuna Göre Satış Grafiği", route: "/mainPage/cariStokSatisOzeti"),
+        //? GridItems.item(name: "stok_Rap_UrunGrubunaGoreSatis", title: "Ürün Grubuna Göre Satış Grafiği", route: "/mainPage/cariStokSatisOzeti"),
       ])
     ]),
     //*E-Belge
@@ -82,7 +82,7 @@ class MenuItemConstants {
       ]),
       GridItems.item(name: "stok_StokListesi", title: "Paketleme"),
       GridItems.altmenu(name: "stok_Raporlar", title: "Raporlar", icon: "monitoring", altMenuler: [
-        GridItems.item(name: "stok_Rap_AmbarMaliyet", title: "Ambar Maliyet Raporu"),
+        GridItems.item(name: "stok_Rap_AmbarMaliyet", title: "Ambar Maliyet Raporu", route: "/mainPage/stokAmbarMaliyetRaporu"),
         GridItems.item(name: "stok_Rap_LokalDepoBakiye", title: "Lokal Depo Bakiye Raporu"),
         GridItems.item(name: "stok_Rap_UrunGrubunaGoreSatis", title: "Ürün Grubuna Göre Satış Grafiği"),
       ])

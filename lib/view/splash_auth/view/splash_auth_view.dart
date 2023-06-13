@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:picker/core/constants/ui_helper/ui_helper.dart';
 import 'package:picker/view/add_company/model/account_model.dart';
@@ -37,7 +38,8 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
     });
     return Scaffold(
       body: Stack(
-        children: [ WaveWidget(
+        children: [
+          WaveWidget(
               config: CustomConfig(durations: [8000, 10000], heightPercentages: [0.78, 0.8], colors: [const Color.fromRGBO(70, 59, 57, 26), Colors.black.withOpacity(0.3)]),
               size: const Size(double.infinity, double.infinity),
               waveAmplitude: 2,
@@ -45,14 +47,20 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
               duration: 200,
               backgroundColor: theme.scaffoldBackgroundColor),
           Center(
-            child: Wrap(
-              alignment: WrapAlignment.center,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              runAlignment: WrapAlignment.center,
-              direction: Axis.vertical,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const CircularProgressIndicator.adaptive().paddingAll(UIHelper.lowSize),
-                Observer(builder: (_) => Text(viewModel.title)),
+                SvgPicture.asset("assets/splash/PickerLogoTuruncu.svg", height: height * 0.1),
+                Wrap(
+                  alignment: WrapAlignment.center,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  direction: Axis.vertical,
+                  children: [
+                    const CircularProgressIndicator.adaptive().paddingAll(UIHelper.lowSize),
+                    SizedBox(width: width * 0.6, child: Observer(builder: (_) => Text(viewModel.title, overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center))),
+                  ],
+                )
               ],
             ),
           )
@@ -88,7 +96,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
   }
 
   Future<void> getSession() async {
-    viewModel.setTitle("${CacheManager.getVerifiedUser?["company"] ?? ""}\n şirketi için oturum açılıyor...");
+    viewModel.setTitle("${CacheManager.getVerifiedUser?["company"] ?? ""} şirketi için oturum açılıyor...");
     AccountResponseModel? accountResponseModel = CacheManager.getAccounts(CacheManager.getVerifiedUser?["company"]);
     AccountModel.instance
       ..kullaniciAdi = CacheManager.getVerifiedUser?["user"]

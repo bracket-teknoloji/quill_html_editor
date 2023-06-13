@@ -27,7 +27,8 @@ import '../model/stok_listesi_model.dart';
 import '../view_model/stok_listesi_view_model.dart';
 
 class StokListesiView extends StatefulWidget {
-  const StokListesiView({super.key});
+  final bool? isGetData;
+  const StokListesiView({super.key, this.isGetData});
 
   @override
   State<StokListesiView> createState() => _StokListesiViewState();
@@ -520,7 +521,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                           )
                         ],
                       ),
-                      onTap: () async {
+                      onTap:(widget.isGetData??false) ? ()=> Get.back(result: stok):() async {
                         var children2 = [
                           BottomSheetModel(
                               title: "Görüntüle",

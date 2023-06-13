@@ -36,7 +36,8 @@ class CustomTextField extends StatefulWidget {
       this.controllerText,
       this.maxLength,
       this.onSubmitted,
-      this.validator, this.valueWidget});
+      this.validator,
+      this.valueWidget});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -56,6 +57,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       onFieldSubmitted: widget.onSubmitted,
       onTapOutside: (value) {
         widget.onChanged;
+        FocusScope.of(context).unfocus();
       },
       controller: widget.controller ?? TextEditingController(text: widget.controllerText ?? ""),
       readOnly: widget.readOnly ?? false,
