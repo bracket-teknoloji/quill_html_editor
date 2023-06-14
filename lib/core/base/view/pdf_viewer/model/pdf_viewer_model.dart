@@ -29,6 +29,9 @@ class DicParams {
       this.sifirHaric,
       this.maliyetTipi,
       this.tlHarDokulsun,
+      this.depoKodlari,
+      this.haricStokKodlari,
+      this.haricStokGrupKodlari,
       this.dovizTipi,
       this.bastar,
       this.bittar,
@@ -51,6 +54,9 @@ class DicParams {
   String? sifirHaric;
   String? maliyetTipi;
   String? tlHarDokulsun;
+  String? depoKodlari;
+  String? haricStokKodlari;
+  String? haricStokGrupKodlari;
   String? dovizTipi;
   String? bastar;
   String? bittar;

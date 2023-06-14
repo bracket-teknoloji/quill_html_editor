@@ -81,14 +81,10 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
         "password": CacheManager.getVerifiedUser?["password"],
       });
       if (response.accessToken != null) {
-        CacheManager.setToken(response.accessToken ?? "");
-        CacheManager.setVerifiedUser({
-          "user": CacheManager.getVerifiedUser?["user"],
-          "password": CacheManager.getVerifiedUser?["password"],
-          "company": CacheManager.getVerifiedUser?["company"],
-          "email": CacheManager.getVerifiedUser?["email"]
-        });
+        CacheManager.setToken(response.accessToken!);
         await getSession();
+      }else{
+        Get.offAllNamed("/login");
       }
     } else {
       Get.offAllNamed("/login");
@@ -96,7 +92,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
   }
 
   Future<void> getSession() async {
-    viewModel.setTitle("${CacheManager.getVerifiedUser?["company"] ?? ""} şirketi için oturum açılıyor...");
+    viewModel.setTitle("${CacheManager.getVeriTabani()["Şirket"] ?? ""} şirketi için oturum açılıyor...");
     AccountResponseModel? accountResponseModel = CacheManager.getAccounts(CacheManager.getVerifiedUser?["company"]);
     AccountModel.instance
       ..kullaniciAdi = CacheManager.getVerifiedUser?["user"]

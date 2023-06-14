@@ -13,9 +13,10 @@ class RaporFiltreDateTimeBottomSheetView extends StatefulWidget {
   final void Function(int? index) filterOnChanged;
   final dynamic Function()? baslangicOnTap;
   final dynamic Function()? bitisOnTap;
+  final bool isVertical;
 
   const RaporFiltreDateTimeBottomSheetView(
-      {super.key, required this.filterOnChanged, required this.baslangicTarihiController, required this.bitisTarihiController, this.baslangicOnTap, this.bitisOnTap});
+      {super.key, required this.filterOnChanged, required this.baslangicTarihiController, required this.bitisTarihiController, this.baslangicOnTap, this.bitisOnTap, this.isVertical = true});
 
   @override
   State<RaporFiltreDateTimeBottomSheetView> createState() => _RaporFiltreDateTimeBottomSheetViewState();
@@ -43,6 +44,21 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
 
   @override
   Widget build(BuildContext context) {
+    var children2 = [
+      CustomTextField(
+          labelText: "Başlangıç Tarihi",
+          controller: widget.baslangicTarihiController,
+          readOnly: true,
+          suffix: const Icon(Icons.date_range_outlined),
+          onTap: () async => widget.baslangicOnTap ?? getDate(true).then((value) => widget.filterOnChanged(9))),
+      CustomTextField(
+        labelText: "Bitiş Tarihi",
+        controller: widget.bitisTarihiController,
+        readOnly: true,
+        suffix: const Icon(Icons.date_range_outlined),
+        onTap: () async => widget.bitisOnTap ?? getDate(false).then((value) => widget.filterOnChanged(9)),
+      ),
+    ];
     return Column(
       children: [
         SizedBox(
@@ -65,19 +81,13 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
                   },
                   child: Text(viewModel.childrenTitleList[listTileIndex]))),
         ).paddingAll(UIHelper.lowSize),
-        CustomTextField(
-            labelText: "Başlangıç Tarihi",
-            controller: widget.baslangicTarihiController,
-            readOnly: true,
-            suffix: const Icon(Icons.date_range_outlined),
-            onTap: () async => widget.baslangicOnTap ?? getDate(true)),
-        CustomTextField(
-          labelText: "Bitiş Tarihi",
-          controller: widget.bitisTarihiController,
-          readOnly: true,
-          suffix: const Icon(Icons.date_range_outlined),
-          onTap: () async => widget.bitisOnTap ?? getDate(false),
-        ),
+        widget.isVertical
+            ? Column(
+                children: children2,
+              )
+            : Row(
+                children: children2.map((e) => Expanded(child: e)).toList(),
+              )
       ],
     );
   }

@@ -90,7 +90,14 @@ class DialogManager {
       ).show();
   void showAreYouSureDialog(void Function() onYes) => _areYouSureDialog(onYes).show();
 
-  void showGridViewDialog(String title, Widget body) => _baseDialog(title: title, body: body, onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
+  void showInfoDialog(String? description)=> _baseDialog(
+        desc: description,
+        dialogType: DialogType.info,
+        btnOkText: "Tamam",
+        onOk: () {},
+      ).show();
+
+  void showGridViewDialog(Widget body) => _baseDialog(body: body, onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
   void showExitDialog() => _baseDialog(
         title: "Uyarı",

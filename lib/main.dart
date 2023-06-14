@@ -11,6 +11,8 @@ import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/hareket_detayli
 import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/stok_ekstre/view/stok_ekstre_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/yaslandirma_raporu/view/yaslandirma_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/raporlar/ambar_maliyet_raporu/view/ambar_maliyet_raporu_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/raporlar/lokal_depo_bakiye_raporu/view/lokal_depo_bakiye_raporu_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/raporlar/urun_grubuna_gore_satis_grafigi/view/urun_grubuna_gore_satis_grafigi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_hareketleri/model/stok_hareketleri_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/temsilci_profil/view/temsilci_profil_view.dart";
 import "package:picker/view/splash_auth/view/splash_auth_view.dart";
@@ -77,7 +79,7 @@ class MyApp extends StatelessWidget {
             GetPage(name: "/cariDovizBakiyeRaporu", page: () => DovizBakiyeRaporuView(model: Get.arguments)),
             GetPage(name: "/cariHareketRaporu", page: () => CariHareketRaporuView(model: Get.arguments)),
             GetPage(name: "/cariHareketDetayliYaslandirmaRaporu", page: () => HareketDetayliYaslandirmaRaporuView(model: Get.arguments)),
-            GetPage(name: "//cariStokSatisOzeti", page: () => CariStokSatisOzetiView(model: Get.arguments)),
+            GetPage(name: "/cariStokSatisOzeti", page: () => CariStokSatisOzetiView(model: Get.arguments)),
 
             //* Stok
             GetPage(name: "/stokListesi", page: () =>  StokListesiView(isGetData: Get.arguments)),
@@ -89,7 +91,8 @@ class MyApp extends StatelessWidget {
 
             //* Stok Raporları
             GetPage(name: "/stokAmbarMaliyetRaporu", page: () => AmbarMaliyetRaporuView(model: Get.arguments)),
-            //? GetPage(name: "/urunGrubunaGoreSatisGrafigi", page: () => StokYeniKayitView(model: Get.arguments)),
+            GetPage(name: "/stokLokalDepoBakiyeRaporu", page: () => LokalDepoBakiyeRaporuView(model: Get.arguments)),
+            GetPage(name: "/urunGrubunaGoreSatisGrafigi", page: () => UrunGrubunaGoreSatisGrafigiView(model: Get.arguments)),
 
             //* Profil
             GetPage(name: "/temsilciProfil", page: () => const TemsilciProfilView()),

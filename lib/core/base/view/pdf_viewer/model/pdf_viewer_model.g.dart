@@ -35,6 +35,9 @@ DicParams _$DicParamsFromJson(Map<String, dynamic> json) => DicParams(
       sifirHaric: json['SIFIR_HARIC'] as String?,
       maliyetTipi: json['MALIYET_TIPI'] as String?,
       tlHarDokulsun: json['TL_HAR_DOKULSUN'] as String?,
+      depoKodlari: json['DEPO_KODLARI'] as String?,
+      haricStokKodlari: json['HARIC_STOK_KODLARI'] as String?,
+      haricStokGrupKodlari: json['HARIC_STOK_GRUP_KODLARI'] as String?,
       dovizTipi: json['DOVIZ_TIPI'] as String?,
       bastar: json['BASTAR'] as String?,
       bittar: json['BITTAR'] as String?,
@@ -67,6 +70,9 @@ Map<String, dynamic> _$DicParamsToJson(DicParams instance) {
   writeNotNull('SIFIR_HARIC', instance.sifirHaric);
   writeNotNull('MALIYET_TIPI', instance.maliyetTipi);
   writeNotNull('TL_HAR_DOKULSUN', instance.tlHarDokulsun);
+  writeNotNull('DEPO_KODLARI', instance.depoKodlari);
+  writeNotNull('HARIC_STOK_KODLARI', instance.haricStokKodlari);
+  writeNotNull('HARIC_STOK_GRUP_KODLARI', instance.haricStokGrupKodlari);
   writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
   writeNotNull('BASTAR', instance.bastar);
   writeNotNull('BITTAR', instance.bittar);

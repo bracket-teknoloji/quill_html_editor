@@ -26,7 +26,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
   @override
   void initState() {
     viewModel.setGridItems(widget.gridItems);
-    var result = MenuItemConstants();
+    MenuItemConstants result = MenuItemConstants();
     viewModel.setGridItems(result.getList().first.altMenuler?.where((element) => element.title == "Raporlar").first.altMenuler?.where((element) => element.yetkiKontrol == true).toList());
     super.initState();
   }

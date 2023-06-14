@@ -187,10 +187,10 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                         // BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
                                         BottomSheetModel(
                                             title: "Raporlar",
-                                            iconWidget: Icons.list_alt_outlined,
+                                            iconWidget: Icons.sync_alt_outlined,
                                             onTap: () {
                                               Get.back();
-                                              dialogManager.showGridViewDialog("Merhaba", CustomAnimatedGridView(cariListesiModel: object));
+                                              dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object));
                                             }),
                                         // BottomSheetModel(title: "Serbest Raporlar", iconWidget: Icons.list_alt_outlined),
                                       ].nullCheck.cast<BottomSheetModel>());

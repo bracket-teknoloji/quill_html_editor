@@ -32,7 +32,7 @@ class ApiUrls {
   static const String getStokHareketleri = "api/Stok/GetStokHareketleri";
   static const String saveStokHareket = "api/Stok/SaveStokHareket";
   static const String deleteStokHareket = "api/Stok/DeleteStokHareket";
-  static const String getUrununGrubunaGoreSatisGrafigi = "api/Stok/GetUrununGrubunaGoreSatisGrafigi";
+  static const String getUrunGrubunaGoreSatisGrafigi = "api/Stok/GetUrunGrubunaGoreSatisGrafigi";
 
   //*Fatura
   static const String getFaturaKalemleri = "api/Fatura/GetFaturaKalemleri";

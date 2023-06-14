@@ -83,8 +83,8 @@ class NetworkManager {
       dynamic data,
       Map<String, dynamic>? queryParameters,
       bool addQuery = true,
-      bool addSirketBilgileri = false,
-      bool addCKey = false,
+      bool addSirketBilgileri = true,
+      bool addCKey = true,
       bool addTokenKey = true}) async {
     Map<String, String> head = getStandardHeader(addTokenKey, addSirketBilgileri, addCKey);
     if (headers != null) head.addEntries(headers.entries);
