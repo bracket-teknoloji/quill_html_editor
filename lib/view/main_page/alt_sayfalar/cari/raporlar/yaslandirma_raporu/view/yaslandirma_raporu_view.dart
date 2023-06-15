@@ -87,7 +87,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Observer(builder: (_) {
-                return SlideControllerView(
+                return SlideControllerWidget(
                     childrenTitleList: viewModel.sureAraligiList,
                     filterOnChanged: (index) => viewModel.changeSureAraligi(index),
                     childrenValueList: viewModel.sureAraligivalue,
@@ -95,7 +95,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
               }),
               const Divider(),
               Observer(builder: (_) {
-                return SlideControllerView(
+                return SlideControllerWidget(
                     childrenTitleList: viewModel.odemeTipiList,
                     filterOnChanged: (index) => viewModel.changeOdemeTipi(index),
                     childrenValueList: viewModel.odemeTipiValue,

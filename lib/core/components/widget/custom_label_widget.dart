@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../constants/ui_helper/ui_helper.dart';
 
@@ -25,6 +26,6 @@ class CustomWidgetWithLabel extends StatelessWidget {
                 : null),
         ...children
       ],
-    );
+    ).paddingSymmetric(horizontal: UIHelper.lowSize);
   }
 }

@@ -58,7 +58,7 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Observer(
-                  builder: (_) => SlideControllerView(
+                  builder: (_) => SlideControllerWidget(
                       childrenTitleList: viewModel.bakiyeDurumuTitleList,
                       filterOnChanged: (index) => viewModel.changeBakiyeDurumu(index),
                       childrenValueList: viewModel.bakiyeDurumuListValue,

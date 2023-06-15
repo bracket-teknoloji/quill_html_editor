@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
+import 'package:picker/core/components/charts/custom_pie_chart.dart';
 import 'package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart';
-import 'package:picker/core/components/pie_chart/custom_pie_chart.dart';
 import 'package:picker/core/components/textfield/custom_text_field.dart';
 import 'package:picker/core/components/widget/custom_label_widget.dart';
 import 'package:picker/core/constants/extensions/list_extensions.dart';
@@ -172,7 +172,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
             Observer(
                 builder: (_) => CustomPieChart(
                     pieChartValue: viewModel.modelList?.map((element) => element.netTutar ?? 0).toList().cast<double>() ?? [],
-                    pieChartTitle: viewModel.modelList?.map((element) => element.grupAdi).toList().cast<String>() ?? [])),
+                    pieChartTitle: viewModel.modelList?.map((element) => "${element.grupAdi ?? element.grupKodu} %${element.oran}").toList().cast<String>() ?? [])),
           ],
         ),
       ),

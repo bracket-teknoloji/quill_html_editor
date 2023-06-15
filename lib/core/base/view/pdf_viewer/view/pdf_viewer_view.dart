@@ -110,29 +110,14 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
     );
   }
 
-  Future<void> fileChecker() async {
-    if (await getFile != null) {
-      Share.shareXFiles([XFile((await getFile)!.path)], subject: "Pdf Paylaşımı");
-    }else{
-      dialogManager.snackBarError("Dosya bulunamadı. Lütfen tekrar deneyiniz.");
-    }
-  }
-
-  Future<File?> get getFile async {
-    final appStorage = await getApplicationDocumentsDirectory();
-    final file = File('${appStorage.path}/${widget.pdfData?.raporOzelKod}${widget.pdfData?.dicParams?.cariKodu}.${pdfFile?.uzanti ?? "pdf"}');
-    final fileWriter = file.openSync(mode: FileMode.write);
-    fileWriter.writeFromSync(base64Decode(pdfFile?.byteData ?? ""));
-    await fileWriter.close();
-    return file.lengthSync() > 0 ? file : null;
-  }
-
   Observer body() {
     return Observer(builder: (_) {
       if (viewModel.futureController.value == true) {
         return PDFView(
           nightMode: false,
           pageFling: true,
+          pageSnap: true,
+          fitEachPage: true,
           pdfData: base64Decode(pdfFile?.byteData ?? ""),
           onError: (error) {
             dialogManager.snackBarError("Bir hata oluştu");
@@ -183,4 +168,21 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
     }
     return true;
   }
+  Future<void> fileChecker() async {
+    if (await getFile != null) {
+      Share.shareXFiles([XFile((await getFile)!.path)], subject: "Pdf Paylaşımı");
+    }else{
+      dialogManager.snackBarError("Dosya bulunamadı. Lütfen tekrar deneyiniz.");
+    }
+  }
+
+  Future<File?> get getFile async {
+    final appStorage = await getApplicationDocumentsDirectory();
+    final file = File('${appStorage.path}/${widget.pdfData?.raporOzelKod}${widget.pdfData?.dicParams?.cariKodu}.${pdfFile?.uzanti ?? "pdf"}');
+    final fileWriter = file.openSync(mode: FileMode.write);
+    fileWriter.writeFromSync(base64Decode(pdfFile?.byteData ?? ""));
+    await fileWriter.close();
+    return file.lengthSync() > 0 ? file : null;
+  }
+
 }

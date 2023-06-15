@@ -85,7 +85,7 @@ class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Observer(builder: (_) {
-                  return SlideControllerView(
+                  return SlideControllerWidget(
                       childrenTitleList: viewModel.bakiyeDurumuTitleList,
                       filterOnChanged: (index) => viewModel.changeBakiyeDurumu(index),
                       childrenValueList: viewModel.bakiyeDurumuValueList,
