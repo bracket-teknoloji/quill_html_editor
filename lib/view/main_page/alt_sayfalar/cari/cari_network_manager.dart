@@ -3,6 +3,7 @@ import '../../../../core/base/model/base_grup_kodu_model.dart';
 import '../../../../core/base/model/base_network_mixin.dart';
 import '../../../../core/base/model/generic_response_model.dart';
 import '../../../../core/components/dialog/dialog_manager.dart';
+import '../../../../core/constants/enum/grup_kodu_enums.dart';
 import '../../../../core/init/network/login/api_urls.dart';
 import '../../../../core/init/network/network_manager.dart';
 import 'cari_listesi/model/cari_kosullar_model.dart';
@@ -10,12 +11,12 @@ import 'cari_listesi/model/cari_sehirler_model.dart';
 
 class CariNetworkManager {
   static NetworkManager networkManager = NetworkManager();
-  static Future<GenericResponseModel<NetworkManagerMixin>> getKod({String? name}) async {
+  static Future<GenericResponseModel<NetworkManagerMixin>> getKod({GrupKoduEnum? name}) async {
     var responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
         path: ApiUrls.getGrupKodlari,
         bodyModel: BaseGrupKoduModel(),
         addCKey: true,
-        headers: {"Modul": name ?? "CARI", "GrupNo": "-1", "Kullanimda": "E"},
+        headers: {"Modul": name?.name ?? "CARI", "GrupNo": "-1", "Kullanimda": "E"},
         addQuery: true,
         addSirketBilgileri: true,
         queryParameters: {"Modul": name ?? "CARI", "GrupNo": "-1"});

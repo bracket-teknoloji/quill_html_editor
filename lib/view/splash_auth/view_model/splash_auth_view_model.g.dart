@@ -25,6 +25,22 @@ mixin _$SplashAuthViewModel on _SplashAuthViewModelBase, Store {
     });
   }
 
+  late final _$isErrorAtom =
+      Atom(name: '_SplashAuthViewModelBase.isError', context: context);
+
+  @override
+  bool get isError {
+    _$isErrorAtom.reportRead();
+    return super.isError;
+  }
+
+  @override
+  set isError(bool value) {
+    _$isErrorAtom.reportWrite(value, super.isError, () {
+      super.isError = value;
+    });
+  }
+
   late final _$_SplashAuthViewModelBaseActionController =
       ActionController(name: '_SplashAuthViewModelBase', context: context);
 
@@ -40,9 +56,21 @@ mixin _$SplashAuthViewModel on _SplashAuthViewModelBase, Store {
   }
 
   @override
+  void setIsError(bool value) {
+    final _$actionInfo = _$_SplashAuthViewModelBaseActionController.startAction(
+        name: '_SplashAuthViewModelBase.setIsError');
+    try {
+      return super.setIsError(value);
+    } finally {
+      _$_SplashAuthViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-title: ${title}
+title: ${title},
+isError: ${isError}
     ''';
   }
 }

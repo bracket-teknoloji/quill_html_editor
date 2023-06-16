@@ -7,7 +7,6 @@ import '../../constants/ui_helper/icon_helper.dart';
 import '../../constants/ui_helper/ui_helper.dart';
 import '../../init/cache/cache_manager.dart';
 import '../../init/cache/favorites_model.dart';
-import '../dialog/dialog_manager.dart';
 
 class LeftDrawer extends StatefulWidget {
   const LeftDrawer({super.key});
@@ -85,7 +84,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                           value.title.toString(),
                         ),
                         leading: IconHelper.smallMenuIcon(value.icon.toString(), color: Color(value.color!)),
-                        onTap: () => DialogManager().showSnackBar(value.onTap.toString()),
+                        onTap: () => Get.toNamed(value.onTap.toString()),
                       );
                     } else {
                       return const SizedBox();

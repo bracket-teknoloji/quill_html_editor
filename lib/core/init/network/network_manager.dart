@@ -18,31 +18,33 @@ import '../../constants/enum/dio_enum.dart';
 import 'login/api_urls.dart';
 
 class NetworkManager {
-  static final Dio _dio = Dio(BaseOptions(
-    baseUrl: "http://ofis.bracket.com.tr:7575/Picker/",
-    // baseUrl: "http:localhost/picker/",
-    connectTimeout: const Duration(seconds: 20),
-  ));
+  static final Dio _dio = Dio(BaseOptions(baseUrl: "http://ofis.bracket.com.tr:7575/Picker/", connectTimeout: const Duration(seconds: 20)));
   NetworkManager() {
     _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) {
           return handler.next(options);
         },
+        onResponse: (e, handler) {
+          return e.statusCode == 200 ? handler.next(e) : handler.reject(DioException(requestOptions: e.requestOptions, error: e.data));
+        },
         onError: (e, handler) {
+          print(e);
           if (e.type == DioExceptionType.connectionError) {
-            return handler.next(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error}"));
+            return handler.reject(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error}"));
           } else if (e.type == DioExceptionType.connectionTimeout) {
-            return handler.next(DioException(requestOptions: RequestOptions(), message: "Bağlantı zaman aşımına uğradı."));
+            return handler.reject(DioException(requestOptions: RequestOptions(), message: "Bağlantı zaman aşımına uğradı."));
+          } else if (e.type == DioExceptionType.unknown) {
+            return handler.reject(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz."));
           } else {
-            return handler.next(e);
+            handler.reject(e);
           }
         },
       ),
     );
   }
 
-  static Future<TokenModel> getToken({required String path, Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
+  static Future<TokenModel?> getToken({required String path, Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
     final response = await _dio.request(path,
         queryParameters: queryParameters,
         cancelToken: CancelToken(),
@@ -145,7 +147,6 @@ class NetworkManager {
     if (headerCKey) {
       final timeZoneMinutes = DateTime.now().timeZoneOffset.inMinutes;
       String baseEncoded = base64Encode(utf8.encode('{"TZ_MINUTES" :$timeZoneMinutes,"ZAMAN": "${DateTime.now().toDateTimeString()}"}'));
-      print(baseEncoded);
       header.addAll({"CKey": baseEncoded});
     }
     return header;

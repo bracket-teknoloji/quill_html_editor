@@ -17,8 +17,9 @@ class GridItems {
   bool? isFavorite;
   Color? color;
   List<GridItems>? altMenuler;
-  Function()? onTap;
   String? route;
+  Function()? onTap;
+  dynamic arguments;
   late final String menuTipi;
 
   GridItems.anamenu({required this.name, required this.title, required this.icon, required this.color, required this.altMenuler, this.iconWidget}) {
@@ -28,16 +29,12 @@ class GridItems {
   GridItems.altmenu({required this.name, required this.title, this.icon, required this.altMenuler, this.iconWidget}) {
     menuTipi = "S";
   }
-  GridItems.item({required this.name, required this.title, this.icon, this.onTap, this.color, this.route}) {
+  GridItems.item({required this.name, required this.title, this.icon, this.color, this.route, this.arguments}) {
     menuTipi = "I";
-    if(route == null){
-      onTap ??= () {
-        DialogManager().showSnackBar("Yapım Aşamasında");
-      };
-    }else{
-      onTap = () {
-        Get.toNamed(route!);
-      };
+    if (route == null) {
+      onTap ??= ()=> DialogManager().showSnackBar("Yapım Aşamasında");
+    } else {
+      onTap = () => Get.toNamed(route!, arguments: arguments);
     }
   }
 

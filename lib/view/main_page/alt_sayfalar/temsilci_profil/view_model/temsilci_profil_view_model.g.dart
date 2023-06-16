@@ -30,6 +30,13 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
           () => super.getBugunSiparis,
           name: '_TemsilciProfilViewModelBase.getBugunSiparis'))
       .value;
+  Computed<double>? _$getBugunTahsilatlarComputed;
+
+  @override
+  double get getBugunTahsilatlar => (_$getBugunTahsilatlarComputed ??=
+          Computed<double>(() => super.getBugunTahsilatlar,
+              name: '_TemsilciProfilViewModelBase.getBugunTahsilatlar'))
+      .value;
   Computed<double>? _$getBuAySatisComputed;
 
   @override
@@ -51,6 +58,13 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
       (_$getBuAySiparisComputed ??= Computed<double>(() => super.getBuAySiparis,
               name: '_TemsilciProfilViewModelBase.getBuAySiparis'))
           .value;
+  Computed<double>? _$getBuAyTahsilatlarComputed;
+
+  @override
+  double get getBuAyTahsilatlar => (_$getBuAyTahsilatlarComputed ??=
+          Computed<double>(() => super.getBuAyTahsilatlar,
+              name: '_TemsilciProfilViewModelBase.getBuAyTahsilatlar'))
+      .value;
   Computed<double>? _$getGecenAySatisComputed;
 
   @override
@@ -72,6 +86,13 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
           Computed<double>(() => super.getGecenAySiparis,
               name: '_TemsilciProfilViewModelBase.getGecenAySiparis'))
       .value;
+  Computed<double>? _$getGecenAyTahsilatlarComputed;
+
+  @override
+  double get getGecenAyTahsilatlar => (_$getGecenAyTahsilatlarComputed ??=
+          Computed<double>(() => super.getGecenAyTahsilatlar,
+              name: '_TemsilciProfilViewModelBase.getGecenAyTahsilatlar'))
+      .value;
   Computed<double>? _$getBuYilSatisComputed;
 
   @override
@@ -92,6 +113,13 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
   double get getBuYilSiparis => (_$getBuYilSiparisComputed ??= Computed<double>(
           () => super.getBuYilSiparis,
           name: '_TemsilciProfilViewModelBase.getBuYilSiparis'))
+      .value;
+  Computed<double>? _$getBuYilTahsilatlarComputed;
+
+  @override
+  double get getBuYilTahsilatlar => (_$getBuYilTahsilatlarComputed ??=
+          Computed<double>(() => super.getBuYilTahsilatlar,
+              name: '_TemsilciProfilViewModelBase.getBuYilTahsilatlar'))
       .value;
   Computed<List<double>>? _$getPlasiyerToplamComputed;
 
@@ -127,6 +155,13 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
   List<double> get getAylikSiparisler => (_$getAylikSiparislerComputed ??=
           Computed<List<double>>(() => super.getAylikSiparisler,
               name: '_TemsilciProfilViewModelBase.getAylikSiparisler'))
+      .value;
+  Computed<List<double>>? _$getAylikTahsilatlarComputed;
+
+  @override
+  List<double> get getAylikTahsilatlar => (_$getAylikTahsilatlarComputed ??=
+          Computed<List<double>>(() => super.getAylikTahsilatlar,
+              name: '_TemsilciProfilViewModelBase.getAylikTahsilatlar'))
       .value;
 
   late final _$iadeDurumuValueListAtom = Atom(
@@ -385,20 +420,25 @@ temsilciProfilList: ${temsilciProfilList},
 getBugunSatis: ${getBugunSatis},
 getBugunAlis: ${getBugunAlis},
 getBugunSiparis: ${getBugunSiparis},
+getBugunTahsilatlar: ${getBugunTahsilatlar},
 getBuAySatis: ${getBuAySatis},
 getBuAyAlis: ${getBuAyAlis},
 getBuAySiparis: ${getBuAySiparis},
+getBuAyTahsilatlar: ${getBuAyTahsilatlar},
 getGecenAySatis: ${getGecenAySatis},
 getGecenAyAlis: ${getGecenAyAlis},
 getGecenAySiparis: ${getGecenAySiparis},
+getGecenAyTahsilatlar: ${getGecenAyTahsilatlar},
 getBuYilSatis: ${getBuYilSatis},
 getBuYilAlis: ${getBuYilAlis},
 getBuYilSiparis: ${getBuYilSiparis},
+getBuYilTahsilatlar: ${getBuYilTahsilatlar},
 getPlasiyerToplam: ${getPlasiyerToplam},
 getPlasiyerTitle: ${getPlasiyerTitle},
 getAylikSatislar: ${getAylikSatislar},
 getAylikAlislar: ${getAylikAlislar},
-getAylikSiparisler: ${getAylikSiparisler}
+getAylikSiparisler: ${getAylikSiparisler},
+getAylikTahsilatlar: ${getAylikTahsilatlar}
     ''';
   }
 }

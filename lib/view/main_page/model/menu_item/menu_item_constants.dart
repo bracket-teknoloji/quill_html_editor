@@ -1,5 +1,3 @@
-import 'package:get/get.dart';
-
 import '../../../../core/constants/grid_constants.dart';
 import '../../view/grid_items.dart';
 
@@ -8,7 +6,7 @@ class MenuItemConstants {
     //*Cari
     //*
     GridItems.anamenu(name: "CARI", title: "Cari", icon: "supervisor", color: GridThemeManager.cari, altMenuler: [
-      GridItems.item(name: "cari_CariListesi", title: "Cari Listesi", onTap: () => Get.toNamed("/mainPage/cariListesi", arguments: false)),
+      GridItems.item(name: "cari_CariListesi", title: "Cari Listesi", route: "/mainPage/cariListesi", arguments: false),
       GridItems.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları"),
       GridItems.altmenu(name: "cari_Raporlar", title: "Raporlar", icon: "monitoring", altMenuler: [
         GridItems.item(name: "cari_Rap_Ekstre", title: "Cari Ekstre", route: "/mainPage/cariEkstre"),
@@ -69,7 +67,7 @@ class MenuItemConstants {
     //* Stok
     //*
     GridItems.anamenu(name: "STOK", title: "Stok", icon: "inventory", color: GridThemeManager.stok, altMenuler: [
-      GridItems.item(name: "stok_StokListesi", title: "Stok Listesi", onTap: () => Get.toNamed("/mainPage/stokListesi")),
+      GridItems.item(name: "stok_StokListesi", title: "Stok Listesi", route: "/mainPage/stokListesi"),
       GridItems.item(name: "stok_BarkodTanimlama", title: "Barkod Tanımla"),
       GridItems.item(name: "stok_FiyatGorEkrani", title: "Fiyat Gör"),
       GridItems.item(name: "stok_FiyatGecmisi", title: "Fiyat Geçmişi"),
@@ -108,7 +106,7 @@ class MenuItemConstants {
     //*
     GridItems.anamenu(name: "TEMS", title: "Profilim", icon: "profile", color: GridThemeManager.temsilci, altMenuler: [
       //? anamenünün onTap'i olmadığı için tek item verdim. Tek item verince direkt onu açıyor. O yüzden parametrelerin bir anlamı yok.
-      GridItems.item(name: "taltek_STAL", title: "Profilim", icon: "profile", onTap: () => Get.toNamed("/mainPage/temsilciProfil")),
+      GridItems.item(name: "taltek_STAL", title: "Profilim", icon: "profile", route: "/mainPage/temsilciProfil"),
     ]),
 
     //* Transfer

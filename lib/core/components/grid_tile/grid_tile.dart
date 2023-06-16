@@ -14,12 +14,13 @@ class CustomGridTile extends StatefulWidget {
   final String? title;
   final String? icon;
   final Color? color;
+  final String? route;
   final List<GridItems>? altMenuler;
   final Function()? onTap;
   final String? menuTipi;
   final IconData? iconWidget;
 
-  const CustomGridTile({super.key, this.name, this.title, this.icon, this.color, this.onTap, this.altMenuler, this.menuTipi, this.iconWidget});
+  const CustomGridTile({super.key, this.name, this.title, this.icon, this.color, this.onTap, this.altMenuler, this.menuTipi, this.iconWidget, this.route});
 
   @override
   CustomGridTileState createState() => CustomGridTileState();
@@ -66,7 +67,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                           dialogManager.showSnackBar("Favorilerden çıkarıldı");
                         } else {
                           icon = const Icon(Icons.star, size: 20);
-                          CacheManager.setFavoriler(FavoritesModel(name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.title, color: widget.color?.value));
+                          CacheManager.setFavoriler(FavoritesModel(name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value));
                           dialogManager.hideSnackBar;
                           dialogManager.showSnackBar("Favorilere eklendi");
                         }

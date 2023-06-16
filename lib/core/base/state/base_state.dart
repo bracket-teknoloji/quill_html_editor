@@ -41,8 +41,10 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
       connectivityResult = result;
       log(connectivityResult.toString());
       if (connectivityResult == ConnectivityResult.none) {
+        print(result);
         dialogManager.internetConnectionDialog();
       } else {
+        print(result);
         dialogManager.hideAlertDialog;
       }
     });

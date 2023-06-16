@@ -9,4 +9,10 @@ abstract class _SplashAuthViewModelBase with Store {
 
   @action
   void setTitle(String value) => title = value;
+
+  @observable
+  bool isError = false;
+
+  @action
+  void setIsError(bool value) => isError = value;
 }

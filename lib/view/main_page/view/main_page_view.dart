@@ -88,6 +88,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
                                       child: CustomGridTile(
                                           iconWidget: item.iconWidget,
                                           menuTipi: item.menuTipi,
+                                          route: item.route,
                                           altMenuler: item.altMenuler,
                                           color: item.color,
                                           icon: item.icon,

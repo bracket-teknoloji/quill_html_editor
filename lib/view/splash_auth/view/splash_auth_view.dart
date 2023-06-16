@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:picker/core/constants/ui_helper/ui_helper.dart';
-import 'package:picker/view/add_company/model/account_model.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
 import '../../../core/base/state/base_state.dart';
+import '../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../core/init/cache/cache_manager.dart';
 import '../../../core/init/network/login/api_urls.dart';
 import '../../../core/init/network/network_manager.dart';
+import '../../add_company/model/account_model.dart';
 import '../../add_company/model/account_response_model.dart';
 import '../../main_page/model/main_page_model.dart';
 import '../view_model/splash_auth_view_model.dart';
@@ -26,6 +26,7 @@ class SplashAuthView extends StatefulWidget {
 
 class _SplashAuthViewState extends BaseState<SplashAuthView> {
   SplashAuthViewModel viewModel = SplashAuthViewModel();
+
   @override
   void initState() {
     super.initState();
@@ -33,9 +34,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 0), () async {
-      login();
-    });
+    Future.delayed(const Duration(seconds: 0), () => login());
     return Scaffold(
       body: Stack(
         children: [
@@ -59,6 +58,26 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
                   children: [
                     const CircularProgressIndicator.adaptive().paddingAll(UIHelper.lowSize),
                     SizedBox(width: width * 0.6, child: Observer(builder: (_) => Text(viewModel.title, overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center))),
+                    Observer(builder: (_) {
+                      return Visibility(
+                        visible: viewModel.isError,
+                        child: Row(
+                          children: [
+                            OutlinedButton(
+                              onPressed: () => login(),
+                              child: const Text("Tekrar Dene"),
+                            ).paddingAll(UIHelper.lowSize),
+                            OutlinedButton(
+                              onPressed: () {
+                                CacheManager.setLogout(false);
+                                Get.offAllNamed("/login");
+                              },
+                              child: const Text("Ana Ekrana Dön"),
+                            ).paddingAll(UIHelper.lowSize),
+                          ],
+                        ),
+                      );
+                    })
                   ],
                 )
               ],
@@ -70,6 +89,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
   }
 
   void login() async {
+    viewModel.setIsError(false);
     if (CacheManager.getVerifiedUser?["user"] == null) {
       Get.offAllNamed("/login");
     } else if (CacheManager.getLogout == true) {
@@ -80,11 +100,16 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
         "username": CacheManager.getVerifiedUser?["user"],
         "password": CacheManager.getVerifiedUser?["password"],
       });
-      if (response.accessToken != null) {
-        CacheManager.setToken(response.accessToken!);
-        await getSession();
-      }else{
-        Get.offAllNamed("/login");
+      if (response != null) {
+        if (response.accessToken != null) {
+          CacheManager.setToken(response.accessToken!);
+          await getSession();
+        } else {
+          Get.offAllNamed("/login");
+        }
+      } else {
+        viewModel.setTitle("Bağlantı kurulamadı. Lütfen internet bağlantınızı kontrol edin.");
+        viewModel.setIsError(true);
       }
     } else {
       Get.offAllNamed("/login");

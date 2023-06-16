@@ -57,6 +57,5 @@ abstract class _BaseStokEditSerilerViewModelBase with Store {
         StokDetayModel.instance.stokList?.first.seriMiktarKadarSor = switchValueList[index];
         break;
     }
-    print(StokDetayModel.instance.stokList?.first.toJson());
   }
 }

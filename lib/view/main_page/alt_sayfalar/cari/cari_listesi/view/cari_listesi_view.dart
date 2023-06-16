@@ -489,6 +489,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   // }
 
   Future<List?> getData({required int sayfa, String? sort1}) async {
+          viewModel.changeDahaVarMi(false);
     var queryParameters2 = {
       "EFaturaGoster": "true",
       "SIRALAMA": sort1 ?? sort,

@@ -196,55 +196,12 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                                   label: Observer(builder: (_) => Text(viewModel.donem ?? "")))
                             ],
                           ),
-                          // SizedBox(
-                          //   height: 200,
-                          //   width: Get.width,
-                          //   child: Observer(builder: (_) {
-                          //     return PieChart(
-                          //       PieChartData(
-                          //         startDegreeOffset: 0,
-                          //         sections: List.generate(
-                          //             viewModel.temsilciProfilList!.where((element) => element.ayKodu == viewModel.donemKodu).map((element) => element.plasiyerAciklama).toSet().length,
-                          //             (index) => PieChartSectionData(
-                          //                   showTitle: false,
-                          //                   badgeWidget: Text(
-                          //                     viewModel.temsilciProfilList!
-                          //                             .where((element) => element.ayKodu == viewModel.donemKodu)
-                          //                             .map((element) => element.plasiyerAciklama)
-                          //                             .toSet()
-                          //                             .elementAt(index) ??
-                          //                         "",
-                          //                     style: const TextStyle(color: Colors.white, fontSize: 8),
-                          //                   ),
-                          //                   radius: 30,
-                          //                   borderSide: const BorderSide(color: Colors.white, width: 1),
-                          //                   titlePositionPercentageOffset: 0.9,
-                          //                   color: Colors.primaries[index],
-                          //                   title: viewModel.temsilciProfilList!.map((element) => element.plasiyerAciklama).toSet().elementAt(index),
-                          //                   titleStyle: const TextStyle(color: Colors.white, fontSize: 8),
-                          //                   value: viewModel.temsilciProfilList!
-                          //                           .where((element) => element.plasiyerAciklama == viewModel.temsilciProfilList!.map((element) => element.plasiyerAciklama).toSet().elementAt(index))
-                          //                           .map((e) => e.tutar)
-                          //                           .reduce((value, element) => value! + element!)
-                          //                           ?.toDouble() ??
-                          //                       0,
-                          //                 )),
-                          //       ),
-                          //       swapAnimationCurve: Curves.bounceIn,
-                          //       swapAnimationDuration: DurationHelper.durationLow,
-                          //     );
-                          //   }),
-                          // ),
-                          AspectRatio(
-                              aspectRatio: 1.8,
-                              child: Observer(builder: (_) {
-                                return CustomPieChart(pieChartTitle: viewModel.getPlasiyerTitle, pieChartValue: viewModel.getPlasiyerToplam);
-                              })),
-                          AspectRatio(
-                              aspectRatio: 1.8,
-                              child: Observer(builder: (_) {
-                                return CustomLineChart(lineChartValue: viewModel.getAylikSatislar);
-                              })),
+                          Observer(builder: (_) {
+                            return CustomPieChart(pieChartTitle: viewModel.getPlasiyerTitle, pieChartValue: viewModel.getPlasiyerToplam);
+                          }),
+                          Observer(builder: (_) {
+                            return CustomLineChart(lineChartValue: viewModel.getAylikSatislar);
+                          }),
                         ],
                       ).paddingAll(UIHelper.lowSize);
                     })),
@@ -256,11 +213,9 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                         Observer(builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAyAlis.commaSeparatedWithFixedDigits} TL"))),
                         Observer(builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAyAlis.commaSeparatedWithFixedDigits} TL"))),
                         Observer(builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilAlis.commaSeparatedWithFixedDigits} TL"))),
-                        AspectRatio(
-                            aspectRatio: 1.8,
-                            child: Observer(builder: (_) {
-                              return CustomLineChart(lineChartValue: viewModel.getAylikAlislar);
-                            })),
+                        Observer(builder: (_) {
+                          return CustomLineChart(lineChartValue: viewModel.getAylikAlislar);
+                        }),
                       ],
                     ).paddingAll(UIHelper.lowSize)),
                     Card(
@@ -271,13 +226,24 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                         Observer(builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAyAlis.commaSeparatedWithFixedDigits} TL"))),
                         Observer(builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAyAlis.commaSeparatedWithFixedDigits} TL"))),
                         Observer(builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilAlis.commaSeparatedWithFixedDigits} TL"))),
-                        AspectRatio(
-                            aspectRatio: 1.8,
-                            child: Observer(builder: (_) {
-                              return CustomLineChart(lineChartValue: viewModel.getAylikSiparisler);
-                            })),
+                        Observer(builder: (_) {
+                          return CustomLineChart(lineChartValue: viewModel.getAylikSiparisler);
+                        }),
                       ],
                     ).paddingAll(UIHelper.lowSize)),
+                    Card(
+                        child: Column(
+                      children: [
+                        Text("Tahsilatlar", style: TextStyleHelper.title),
+                        Observer(builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunTahsilatlar.commaSeparatedWithFixedDigits} TL"))),
+                        Observer(builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAyTahsilatlar.commaSeparatedWithFixedDigits} TL"))),
+                        Observer(builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAyTahsilatlar.commaSeparatedWithFixedDigits} TL"))),
+                        Observer(builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilTahsilatlar.commaSeparatedWithFixedDigits} TL"))),
+                        Observer(builder: (_) {
+                          return CustomLineChart(lineChartValue: viewModel.getAylikTahsilatlar);
+                        }),
+                      ],
+                    ).paddingAll(UIHelper.lowSize))
                   ],
                 ).paddingAll(UIHelper.lowSize));
     });

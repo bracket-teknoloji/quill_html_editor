@@ -5,6 +5,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/components/textfield/custom_app_bar_text_field.dart';
 
 import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart';
@@ -54,14 +55,16 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
       pinned: true,
       title: Observer(
           builder: (_) => viewModel.searchBar
-              ? SizedBox(
-                  height: kToolbarHeight * 0.9,
-                  child: TextField(
-                    decoration: const InputDecoration(hintText: "Ara", border: InputBorder.none),
-                    onChanged: (value) {
-                      viewModel.setStokHareketleri(viewModel.stokHareketleri!.where((element) => element.stokAdi!.toLowerCase().contains(value.toLowerCase())).toList());
-                    },
-                  ))
+              ? CustomAppBarTextField(
+                  onFieldSubmitted: (value) async {
+                    await getData();
+                    if (value == "") {
+                      return;
+                    } else {
+                      viewModel.setStokHareketleri(viewModel.stokHareketleri!.where((element) => element.fisno?.toLowerCase().contains(value.toLowerCase()) ?? false).toList());
+                    }
+                  },
+                )
               : AppBarTitle(title: "Stok Hareketleri", subtitle: widget.model?.stokAdi ?? widget.stokKodu ?? "")),
       actions: [
         IconButton(
@@ -78,7 +81,12 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
               ]);
             },
             icon: const Icon(Icons.more_vert_outlined)),
-        IconButton(onPressed: () => viewModel.changeSearchBar(), icon: const Icon(Icons.search_outlined))
+        IconButton(
+            onPressed: () {
+              viewModel.searchBar ? getData() : null;
+              viewModel.changeSearchBar();
+            },
+            icon: const Icon(Icons.search_outlined))
       ],
       bottom: PreferredSize(
           preferredSize: const Size.fromHeight(60),
@@ -360,7 +368,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
     setState(() {});
     Map<String, dynamic> queryParameters = {
       "FilterModel":
-          '{"EkranTipi": "L", "siralama": "${viewModel.siralama}", "stokKodu": "${widget.model?.stokKodu ?? widget.stokKodu}", "GC": "${viewModel.getIsSelected}", "CariKodu": "${viewModel.cariListesiModel?.cariKodu ?? ""}", "ArrHareketTuru": ${jsonEncode(viewModel.arrHareketTuru)}}'
+          '{"EkranTipi": "L", "siralama": "${viewModel.siralama}", "stokKodu": "${widget.model?.stokKodu ?? widget.stokKodu ?? ""}", "GC": "${viewModel.getIsSelected}", "CariKodu": "${viewModel.cariListesiModel?.cariKodu ?? ""}", "ArrHareketTuru": ${jsonEncode(viewModel.arrHareketTuru)}}'
     };
     // if (viewModel.arrHareketTuru.isNotNullOrEmpty) {
     //   queryParameters["FilterModel"] = "\"ArrHareketTuru\":${jsonEncode(viewModel.arrHareketTuru)}, ${queryParameters["FilterModel"]!}";
