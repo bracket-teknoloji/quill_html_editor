@@ -31,6 +31,8 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
 
                     touchTooltipData: LineTouchTooltipData(
                       tooltipBgColor: UIHelper.primaryColor,
+                      
+                      fitInsideHorizontally: true,
                       tooltipRoundedRadius: 8,
                       getTooltipItems: (List<LineBarSpot> touchedBarSpots) {
                         return touchedBarSpots.map((barSpot) {
@@ -41,6 +43,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                               color: flSpot.bar.color,
                               fontWeight: FontWeight.w900,
                             ),
+
                             children: [
                               const TextSpan(
                                 text: ' TL',
