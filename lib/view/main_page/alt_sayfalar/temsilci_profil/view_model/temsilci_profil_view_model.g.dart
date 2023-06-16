@@ -9,6 +9,12 @@ part of 'temsilci_profil_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
+  Computed<String>? _$donemComputed;
+
+  @override
+  String get donem => (_$donemComputed ??= Computed<String>(() => super.donem,
+          name: '_TemsilciProfilViewModelBase.donem'))
+      .value;
   Computed<double>? _$getBugunSatisComputed;
 
   @override
@@ -263,22 +269,6 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
     });
   }
 
-  late final _$donemAtom =
-      Atom(name: '_TemsilciProfilViewModelBase.donem', context: context);
-
-  @override
-  String? get donem {
-    _$donemAtom.reportRead();
-    return super.donem;
-  }
-
-  @override
-  set donem(String? value) {
-    _$donemAtom.reportWrite(value, super.donem, () {
-      super.donem = value;
-    });
-  }
-
   late final _$donemKoduAtom =
       Atom(name: '_TemsilciProfilViewModelBase.donemKodu', context: context);
 
@@ -361,17 +351,6 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
   }
 
   @override
-  void setDonem(String? value) {
-    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController
-        .startAction(name: '_TemsilciProfilViewModelBase.setDonem');
-    try {
-      return super.setDonem(value);
-    } finally {
-      _$_TemsilciProfilViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void setDonemKodu(int value) {
     final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController
         .startAction(name: '_TemsilciProfilViewModelBase.setDonemKodu');
@@ -414,9 +393,9 @@ irsaliyelerDahil: ${irsaliyelerDahil},
 donemValueList: ${donemValueList},
 temsilciProfilRequestModel: ${temsilciProfilRequestModel},
 aciklama: ${aciklama},
-donem: ${donem},
 donemKodu: ${donemKodu},
 temsilciProfilList: ${temsilciProfilList},
+donem: ${donem},
 getBugunSatis: ${getBugunSatis},
 getBugunAlis: ${getBugunAlis},
 getBugunSiparis: ${getBugunSiparis},

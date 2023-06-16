@@ -55,15 +55,16 @@ abstract class _TemsilciProfilViewModelBase with Store {
   }
 
   @observable
-  TemsilciProfilRequestModel temsilciProfilRequestModel = TemsilciProfilRequestModel();
+  TemsilciProfilRequestModel temsilciProfilRequestModel = TemsilciProfilRequestModel()
+    ..donemTipi = "BY"
+    ..satisIrsDahil = "H"
+    ..iadeDurumu = "H"
+    ..kdvDahil = "H";
   @observable
   String? aciklama;
 
-  @observable
-  String? donem = "Ocak";
-
-  @action
-  void setDonem(String? value) => donem = value;
+  @computed
+  String get donem => aylar[donemKodu - 1];
 
   @observable
   int donemKodu = DateTime.now().month;
@@ -212,72 +213,98 @@ abstract class _TemsilciProfilViewModelBase with Store {
     //her plasiyerin toplam satışı
     Set<String> uniquePlasiyer = <String>{};
     for (TemsilciProfilModel element in temsilciProfilList!) {
-      uniquePlasiyer.add(element.plasiyerAciklama!);
+      if (element.plasiyerAciklama != null && element.kayitTipi == "SF" && element.ayKodu == donemKodu) {
+        uniquePlasiyer.add(element.plasiyerAciklama!);
+      }
     }
     List<double> list = List.generate(uniquePlasiyer.length, (index) => 0);
-    temsilciProfilList?.where((element) => element.ayKodu == donemKodu).forEach((element) {
-      list[uniquePlasiyer.toList().indexOf(element.plasiyerAciklama!)] += element.tutar ?? 0;
+    temsilciProfilList?.where((element) => element.ayKodu == donemKodu && element.kayitTipi == "SF").forEach((element) {
+      list[uniquePlasiyer.toList().indexOf(element.plasiyerAciklama ?? "")] += element.tutar ?? 0;
     });
-    return list.where((element) => element != 0).toList();
+    print(list);
+    return list;
   }
 
   @computed
-  List<String> get getPlasiyerTitle => temsilciProfilList?.map((e) => e.plasiyerAciklama!).toSet().toList() ?? [];
+  List<String> get getPlasiyerTitle {
+    if (temsilciProfilList.isNotNullOrEmpty) {
+      Set<String> uniquePlasiyer = <String>{};
+      for (TemsilciProfilModel element in temsilciProfilList!) {
+        if (element.plasiyerAciklama != null && element.kayitTipi == "SF" && element.ayKodu == donemKodu) {
+          uniquePlasiyer.add(element.plasiyerAciklama!);
+        }
+      }
+      return uniquePlasiyer.toList();
+    }
+    return [];
+  }
 
   @computed
   List<double> get getAylikSatislar {
-    List<double> list = [];
-    for (int i = 1; i <= DateTime.now().month; i++) {
+    int biggestMonth = temsilciProfilList?.map((element) => element.ayKodu).toList().reduce((value, element) => value! > element! ? value : element)! ?? 0;
+    List<double> list = List.generate(biggestMonth-1, (index) => 0);
+    for (int i = 1; i <= biggestMonth; i++) {
       var value = temsilciProfilList?.where((element) => element.tabloTipi == "SATIS" && element.ayKodu == i && (element.tutar != null)).map((e) => e.tutar).toList();
       if (value.isNotNullOrEmpty) {
-        list.add(value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
-      } else {
-        list.add(0);
+        list[i > 12 ? DateTime.now().month-1 : i - 1] =list[i > 12 ? DateTime.now().month-1 : i - 1]+  (value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
+        // list.add(value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
       }
     }
-    return list.where((element) => element != 0).toList();
+    while(list.last == 0){
+      list.removeLast();
+    }
+    return list;
   }
 
   @computed
   List<double> get getAylikAlislar {
-    List<double> list = [];
-    for (int i = 1; i <= DateTime.now().month; i++) {
-      var value = temsilciProfilList?.where((element) => element.tabloTipi == "ALIS" && element.ayKodu == i).map((e) => e.tutar).toList();
+    int biggestMonth = temsilciProfilList?.map((element) => element.ayKodu).toList().reduce((value, element) => value! > element! ? value : element)! ?? 0;
+    List<double> list = List.generate(biggestMonth-1, (index) => 0);
+    for (int i = 1; i <= biggestMonth; i++) {
+      var value = temsilciProfilList?.where((element) => element.tabloTipi == "ALIS" && element.ayKodu == i && (element.tutar != null)).map((e) => e.tutar).toList();
       if (value.isNotNullOrEmpty) {
-        list.add(value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
-      } else {
-        list.add(0);
+        list[i > 12 ? DateTime.now().month-1 : i - 1] =list[i > 12 ? DateTime.now().month-1 : i - 1]+  (value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
+        // list.add(value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
       }
     }
-    return list.where((element) => element != 0).toList();
+    while(list.last == 0){
+      list.removeLast();
+    }
+    return list;
   }
 
   @computed
   List<double> get getAylikSiparisler {
-    List<double> list = [];
-    for (int i = 1; i <= DateTime.now().month; i++) {
-      var value = temsilciProfilList?.where((element) => element.tabloTipi == "SIPARIS" && element.ayKodu == i).map((e) => e.tutar).toList();
+    int biggestMonth = temsilciProfilList?.map((element) => element.ayKodu).toList().reduce((value, element) => value! > element! ? value : element)! ?? 0;
+    List<double> list = List.generate(biggestMonth-1, (index) => 0);
+    for (int i = 1; i <= biggestMonth; i++) {
+      var value = temsilciProfilList?.where((element) => element.tabloTipi == "SIPARIS" && element.ayKodu == i && (element.tutar != null)).map((e) => e.tutar).toList();
       if (value.isNotNullOrEmpty) {
-        list.add(value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
-      } else {
-        list.add(0);
+        list[i > 12 ? DateTime.now().month-1 : i - 1] =list[i > 12 ? DateTime.now().month-1 : i - 1]+  (value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
+        // list.add(value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
       }
     }
-    return list.where((element) => element != 0).toList();
+    while(list.last == 0){
+      list.removeLast();
+    }
+    return list;
   }
 
   @computed
   List<double> get getAylikTahsilatlar {
-    List<double> list = [];
-    for (int i = 1; i <= 12; i++) {
-      var value = temsilciProfilList?.where((element) => element.tabloTipi == "TAHSILAT" && element.ayKodu == i).map((e) => e.tutar).toList();
+    int biggestMonth = temsilciProfilList?.map((element) => element.ayKodu).toList().reduce((value, element) => value! > element! ? value : element)! ?? 0;
+    List<double> list = List.generate(biggestMonth-1, (index) => 0);
+    for (int i = 1; i <= biggestMonth; i++) {
+      var value = temsilciProfilList?.where((element) => element.tabloTipi == "TAHSILAT" && element.ayKodu == i && (element.tutar != null)).map((e) => e.tutar).toList();
       if (value.isNotNullOrEmpty) {
-        list.add(value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
-      } else {
-        list.add(0);
+        list[i > 12 ? DateTime.now().month-1 : i - 1] =list[i > 12 ? DateTime.now().month-1 : i - 1]+  (value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
+        // list.add(value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
       }
     }
-    return list.where((element) => element != 0).toList();
+    while(list.last == 0){
+      list.removeLast();
+    }
+    return list;
   }
 
   final List<String> aylar = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];

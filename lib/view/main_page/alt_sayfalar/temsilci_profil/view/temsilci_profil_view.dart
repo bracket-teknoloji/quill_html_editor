@@ -188,12 +188,11 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                                     var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                                         title: "Dönem", children: viewModel.aylar.map((e) => BottomSheetModel(title: e, onTap: () => Get.back(result: e))).toList());
                                     if (result != null) {
-                                      viewModel.setDonem(result);
                                       viewModel.setDonemKodu(viewModel.aylar.indexOf(result) + 1);
                                     }
                                   },
                                   icon: const Icon(Icons.more_horiz_outlined),
-                                  label: Observer(builder: (_) => Text(viewModel.donem ?? "")))
+                                  label: Observer(builder: (_) => Text(viewModel.donem)))
                             ],
                           ),
                           Observer(builder: (_) {
