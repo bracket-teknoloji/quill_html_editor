@@ -87,6 +87,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                                 labelText: "Plasiyer",
                                 controller: plasiyerController,
                                 readOnly: true,
+                                suffix: const Icon(Icons.more_horiz_outlined),
                                 onTap: () async {
                                   List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? [];
                                   var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
@@ -101,6 +102,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                           labelText: "Cari",
                           controller: cariController,
                           readOnly: true,
+                          suffix: const Icon(Icons.more_horiz_outlined),
                           onTap: () async {
                             var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                             if (result != null) {

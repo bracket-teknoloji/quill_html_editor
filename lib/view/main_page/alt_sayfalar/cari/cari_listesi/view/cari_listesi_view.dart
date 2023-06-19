@@ -12,7 +12,6 @@ import '../../../../../../core/base/model/base_edit_model.dart';
 import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
 import '../../../../../../core/components/button/elevated_buttons/footer_button.dart';
-import '../../../../../../core/components/button/toggle_buttons/toggle_button.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_response_model.dart';
@@ -57,7 +56,6 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   }
 
   void init() {
-    ToggleButton.selected = "";
     BottomSheetResponseModel.instance.clear();
     BottomSheetStateManager().deleteIsSelectedListMap();
     viewModel.sayfa == 1
@@ -112,12 +110,143 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       return Scaffold(
         resizeToAvoidBottomInset: false,
         extendBody: true,
-        floatingActionButton: fab(),
-        bottomNavigationBar: bottomButtonBar(),
         appBar: appBar(context),
+        floatingActionButton: fab(),
         body: body(),
+        bottomNavigationBar: bottomButtonBar(),
       );
     });
+  }
+
+  AppBar appBar(BuildContext context) {
+    // Platform.isLinux || Platform.isWindows || Platform.isMacOS ? _scrollController.appBar.setPinState(true) : _scrollController.appBar.setPinState(false);
+    return AppBar(
+      // controller: _scrollController,
+      title: Observer(
+        builder: (_) {
+          return (viewModel.searchBar
+              ? CustomAppBarTextField(onFieldSubmitted: onFieldSubmitted)
+              : Wrap(direction: Axis.vertical, children: [
+                  const Text("Cari Listesi"),
+                  Text("${viewModel.cariListesi?.length ?? ""}", style: theme.textTheme.labelSmall),
+                ]));
+        },
+      ),
+      leading: viewModel.searchBar
+          ? IconButton(
+              onPressed: () {
+                viewModel.changeSearchBar();
+                viewModel.changeArama("");
+                onFieldSubmitted(viewModel.arama);
+              },
+              icon: const Icon(Icons.arrow_back))
+          : Observer(builder: (_) {
+              return IconButton(
+                  onPressed: () {
+                    BottomSheetDialogManager.viewModel.deleteIsSelectedListMap();
+                    BottomSheetDialogManager.viewModel.deleteKodControllerText();
+                    BottomSheetDialogManager.viewModel.ilce = "";
+                    BottomSheetDialogManager.viewModel.sehir = "";
+                    BottomSheetDialogManager.viewModel.plasiyer = "";
+                    Get.back();
+                  },
+                  icon: const Icon(Icons.arrow_back));
+            }),
+      bottom: PreferredSize(
+        preferredSize: const Size.fromHeight(50),
+        child: SizedBox(
+          height: context.isPortrait ? height * 0.06 : height * 0.1,
+          child: ListView(
+            shrinkWrap: true,
+            itemExtent: width * 0.33,
+            scrollDirection: Axis.horizontal,
+            children: [
+              AppBarButton(
+                icon: Icons.filter_alt_outlined,
+                onPressed: () async {
+                  if (filterData == null) {
+                    dialogManager.showLoadingDialog("Filtreler yükleniyor");
+                    var responseSehir = await CariNetworkManager.getFilterData();
+                    var responseKod = await CariNetworkManager.getKod();
+                    filterData = {"sehir": responseSehir.data, "kod": responseKod.data};
+                    dialogManager.hideAlertDialog;
+                  }
+                  // ignore: use_build_context_synchronously
+                  var a = await bottomSheetDialogManager.showFilterBottomSheetDialog(context, request: filterData);
+                  if (a != null && a is BottomSheetResponseModel) {
+                    bottomSheetResponseModel = a;
+                    List? data = await getData(sayfa: 1);
+                    if (data.isNotNullOrEmpty) {
+                      viewModel.changeCariListesi(data);
+                    } else {
+                      viewModel.changeCariListesi([]);
+                    }
+                  }
+                },
+                child: const Text("Filtrele"),
+              ),
+              AppBarButton(
+                icon: Icons.sort_by_alpha_outlined,
+                onPressed: () async {
+                  var a = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Sıralama türünü seçiniz", children: [
+                    BottomSheetModel(title: "Cari Adı (A-Z)", onTap: () => Get.back(result: "AZ")),
+                    BottomSheetModel(title: "Cari Adı (Z-A)", onTap: () => Get.back(result: "ZA")),
+                    BottomSheetModel(title: "Bakiye (0-9)", onTap: () => Get.back(result: "BAKIYE_AZ")),
+                    BottomSheetModel(title: "Bakiye (9-0)", onTap: () => Get.back(result: "BAKIYE_ZA")),
+                    BottomSheetModel(title: "Döviz Bakiye (0-9)", onTap: () => Get.back(result: "DOV_BAKIYE_AZ")),
+                    BottomSheetModel(title: "Döviz Bakiye (9-0)", onTap: () => Get.back(result: "DOV_BAKIYE_ZA")),
+                    BottomSheetModel(title: "Cari Kodu (A-Z)", onTap: () => Get.back(result: "CARI_KODU_AZ")),
+                    BottomSheetModel(title: "Cari Kodu (Z-A))", onTap: () => Get.back(result: "CARI_KODU_ZA")),
+                    BottomSheetModel(title: "Kayıt Tarihi (Artan)", onTap: () => Get.back(result: "KAYITTAR_ASC")),
+                    BottomSheetModel(title: "Kayıt Tarihi (Azalan)", onTap: () => Get.back(result: "KAYITTAR_DESC")),
+                    BottomSheetModel(title: "Konum(En yakın)", onTap: () => Get.back(result: "KONUM_AZ")),
+                    BottomSheetModel(title: "Konum (En uzak)", onTap: () => Get.back(result: "KONUM_ZA")),
+                  ]);
+                  if (a.toString() != sort && a != null) {
+                    sort = a;
+                    viewModel.changeCariListesi(null);
+                    getData(sayfa: 1).then((value) {
+                      viewModel.changeCariListesi(value);
+                    });
+                  }
+                },
+                child: const Text("Sırala"),
+              ),
+              AppBarButton(
+                onPressed: () {},
+                child: const Icon(Icons.more_horiz_outlined),
+              ),
+            ].map((e) => e.paddingAll(5)).toList(),
+          ),
+        ).paddingZero,
+      ),
+      actions: [
+        IconButton(
+          onPressed: () {
+            viewModel.changeSearchBar();
+            viewModel.changeArama("");
+            if (!viewModel.searchBar) {
+              onFieldSubmitted(viewModel.arama);
+            }
+          },
+          icon: Observer(builder: (_) {
+            return Icon((viewModel.searchBar ? Icons.search_off : Icons.search));
+          }),
+        ),
+      ],
+    );
+  }
+
+  Widget fab() {
+    return Observer(
+      builder: (_) => CustomFloatingActionButton(
+        isScrolledDown: !viewModel.isScrolledDown,
+        onPressed: () async {
+          String siradakiKod = await CariNetworkManager.getSiradakiKod();
+          Get.toNamed("/mainPage/cariEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, model: CariListesiModel(), siradakiKod: siradakiKod));
+        },
+      ),
+    );
   }
 
   RefreshIndicator body() {
@@ -142,9 +271,13 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                       CariListesiModel object = viewModel.cariListesi?[index];
                       return Card(
                         child: ListTile(
+                          onLongPress: () {
+                            Get.back();
+                            dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object));
+                          },
                           onTap: !(widget.isGetData ?? true)
                               ? () async {
-                                  var pageName = await BottomSheetDialogManager().showBottomSheetDialog(context,
+                                  var pageName = await bottomSheetDialogManager.showBottomSheetDialog(context,
                                       title: "${object.cariKodu}\n${object.cariAdi}",
                                       children: [
                                         BottomSheetModel(
@@ -182,12 +315,12 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                             });
                                           },
                                         ).yetkiKontrol(yetkiController.cariKartiSilme),
-                                        BottomSheetModel(title: "Hareketler", iconWidget: Icons.list_alt_outlined, onTap: () => Get.back(result: "/mainPage/cariHareketleri"))
+                                        BottomSheetModel(title: "Hareketler", iconWidget: Icons.sync_alt_outlined, onTap: () => Get.back(result: "/mainPage/cariHareketleri"))
                                             .yetkiKontrol(yetkiController.cariHareketleri),
                                         // BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
                                         BottomSheetModel(
                                             title: "Raporlar",
-                                            iconWidget: Icons.sync_alt_outlined,
+                                            iconWidget: Icons.list_alt_outlined,
                                             onTap: () {
                                               Get.back();
                                               dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object));
@@ -274,141 +407,10 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
     );
   }
 
-  Widget fab() {
-    return Observer(
-      builder: (_) => CustomFloatingActionButton(
-        isScrolledDown: !viewModel.isScrolledDown,
-        onPressed: () async {
-          String siradakiKod = await CariNetworkManager.getSiradakiKod();
-          Get.toNamed("/mainPage/cariEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, model: CariListesiModel(), siradakiKod: siradakiKod));
-        },
-      ),
-    );
-  }
-
-  AppBar appBar(BuildContext context) {
-    // Platform.isLinux || Platform.isWindows || Platform.isMacOS ? _scrollController.appBar.setPinState(true) : _scrollController.appBar.setPinState(false);
-    return AppBar(
-      // controller: _scrollController,
-      title: Observer(
-        builder: (_) {
-          return (viewModel.searchBar
-              ? CustomAppBarTextField(onFieldSubmitted: onFieldSubmitted)
-              : Wrap(direction: Axis.vertical, children: [
-                  const Text("Cari Listesi"),
-                  Text("${viewModel.cariListesi?.length ?? ""}", style: theme.textTheme.labelSmall),
-                ]));
-        },
-      ),
-      leading: viewModel.searchBar
-          ? IconButton(
-              onPressed: () {
-                viewModel.changeSearchBar();
-                viewModel.changeArama("");
-                onFieldSubmitted(viewModel.arama);
-              },
-              icon: const Icon(Icons.arrow_back))
-          : Observer(builder: (_) {
-              return IconButton(
-                  onPressed: () {
-                    BottomSheetDialogManager.viewModel.deleteIsSelectedListMap();
-                    BottomSheetDialogManager.viewModel.deleteKodControllerText();
-                    BottomSheetDialogManager.viewModel.ilce = "";
-                    BottomSheetDialogManager.viewModel.sehir = "";
-                    BottomSheetDialogManager.viewModel.plasiyer = "";
-                    Get.back();
-                  },
-                  icon: const Icon(Icons.arrow_back));
-            }),
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(50),
-        child: SizedBox(
-          height: context.isPortrait ? height * 0.06 : height * 0.1,
-          child: ListView(
-            shrinkWrap: true,
-            itemExtent: width * 0.33,
-            scrollDirection: Axis.horizontal,
-            children: [
-              AppBarButton(
-                icon: Icons.filter_alt_outlined,
-                onPressed: () async {
-                  if (filterData == null) {
-                    dialogManager.showLoadingDialog("Filtreler yükleniyor");
-                    var responseSehir = await CariNetworkManager.getFilterData();
-                    var responseKod = await CariNetworkManager.getKod();
-                    filterData = {"sehir": responseSehir.data, "kod": responseKod.data};
-                    dialogManager.hideAlertDialog;
-                  }
-                  // ignore: use_build_context_synchronously
-                  var a = await BottomSheetDialogManager().showFilterBottomSheetDialog(context, request: filterData);
-                  if (a != null && a is BottomSheetResponseModel) {
-                    bottomSheetResponseModel = a;
-                    List? data = await getData(sayfa: 1);
-                    if (data.isNotNullOrEmpty) {
-                      viewModel.changeCariListesi(data);
-                    } else {
-                      viewModel.changeCariListesi([]);
-                    }
-                  }
-                },
-                child: const Text("Filtrele"),
-              ),
-              AppBarButton(
-                icon: Icons.sort_by_alpha_outlined,
-                onPressed: () async {
-                  var a = await BottomSheetDialogManager().showBottomSheetDialog(context, title: "Sıralama türünü seçiniz", children: [
-                    BottomSheetModel(title: "Cari Adı (A-Z)", onTap: () => Get.back(result: "AZ")),
-                    BottomSheetModel(title: "Cari Adı (Z-A)", onTap: () => Get.back(result: "ZA")),
-                    BottomSheetModel(title: "Bakiye (0-9)", onTap: () => Get.back(result: "BAKIYE_AZ")),
-                    BottomSheetModel(title: "Bakiye (9-0)", onTap: () => Get.back(result: "BAKIYE_ZA")),
-                    BottomSheetModel(title: "Döviz Bakiye (0-9)", onTap: () => Get.back(result: "DOV_BAKIYE_AZ")),
-                    BottomSheetModel(title: "Döviz Bakiye (9-0)", onTap: () => Get.back(result: "DOV_BAKIYE_ZA")),
-                    BottomSheetModel(title: "Cari Kodu (A-Z)", onTap: () => Get.back(result: "CARI_KODU_AZ")),
-                    BottomSheetModel(title: "Cari Kodu (Z-A))", onTap: () => Get.back(result: "CARI_KODU_ZA")),
-                    BottomSheetModel(title: "Kayıt Tarihi (Artan)", onTap: () => Get.back(result: "KAYITTAR_ASC")),
-                    BottomSheetModel(title: "Kayıt Tarihi (Azalan)", onTap: () => Get.back(result: "KAYITTAR_DESC")),
-                    BottomSheetModel(title: "Konum(En yakın)", onTap: () => Get.back(result: "KONUM_AZ")),
-                    BottomSheetModel(title: "Konum (En uzak)", onTap: () => Get.back(result: "KONUM_ZA")),
-                  ]);
-                  if (a.toString() != sort && a != null) {
-                    sort = a;
-                    viewModel.changeCariListesi(null);
-                    getData(sayfa: 1).then((value) {
-                      viewModel.changeCariListesi(value);
-                    });
-                  }
-                },
-                child: const Text("Sırala"),
-              ),
-              AppBarButton(
-                onPressed: () {},
-                child: const Icon(Icons.more_horiz_outlined),
-              ),
-            ].map((e) => e.paddingAll(5)).toList(),
-          ),
-        ).paddingZero,
-      ),
-      actions: [
-        IconButton(
-          onPressed: () {
-            viewModel.changeSearchBar();
-            viewModel.changeArama("");
-            if (!viewModel.searchBar) {
-              onFieldSubmitted(viewModel.arama);
-            }
-          },
-          icon: Observer(builder: (_) {
-            return Icon((viewModel.searchBar ? Icons.search_off : Icons.search));
-          }),
-        ),
-      ],
-    );
-  }
-
   AppBarButton siralaButton(BuildContext context) {
     return AppBarButton(
       onPressed: () async {
-        var a = await BottomSheetDialogManager().showBottomSheetDialog(context, title: "Sıralama türünü seçiniz", children: [
+        var a = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Sıralama türünü seçiniz", children: [
           BottomSheetModel(title: "Cari Adı (A-Z)", onTap: () => Get.back(result: "AZ")),
           BottomSheetModel(title: "Cari Adı (Z-A)", onTap: () => Get.back(result: "ZA")),
           BottomSheetModel(title: "Bakiye (0-9)", onTap: () => Get.back(result: "BAKIYE_AZ")),
@@ -489,7 +491,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   // }
 
   Future<List?> getData({required int sayfa, String? sort1}) async {
-          viewModel.changeDahaVarMi(false);
+    viewModel.changeDahaVarMi(false);
     var queryParameters2 = {
       "EFaturaGoster": "true",
       "SIRALAMA": sort1 ?? sort,

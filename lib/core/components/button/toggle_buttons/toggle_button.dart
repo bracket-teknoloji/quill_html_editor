@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../../base/state/base_state.dart';
 import '../../../constants/ui_helper/ui_helper.dart';
 
 class ToggleButton extends StatefulWidget {
@@ -12,7 +14,7 @@ class ToggleButton extends StatefulWidget {
   State<ToggleButton> createState() => _ToggleButtonState();
 }
 
-class _ToggleButtonState extends State<ToggleButton> {
+class _ToggleButtonState extends BaseState<ToggleButton> {
   List<String> title = ["Tümü", "Tahsil Edilecek", "Ödeme Yapılacak", "Sıfır Bakiye", "Bakiyeli"];
   var isSelected2 = [false, false, false, false, false];
   @override
@@ -34,6 +36,7 @@ class _ToggleButtonState extends State<ToggleButton> {
   Widget build(BuildContext context) {
     return ToggleButtons(
       direction: Axis.horizontal,
+      constraints: BoxConstraints(minWidth: ((context.isPortrait ? width : 600) * 0.2) / title.length, minHeight: height * 0.05),
       isSelected: isSelected2,
       children: List.generate(title.length, (index) {
         return Padding(

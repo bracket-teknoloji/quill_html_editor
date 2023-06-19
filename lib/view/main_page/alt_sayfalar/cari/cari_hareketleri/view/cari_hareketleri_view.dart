@@ -3,10 +3,13 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart';
 import 'package:picker/core/components/widget/scrollable_widget.dart';
+import 'package:picker/view/main_page/model/param_model.dart';
 
 import '../../../../../../core/base/model/base_edit_model.dart';
 import '../../../../../../core/base/state/base_state.dart';
+import '../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart';
 import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
 import '../../../../../../core/components/button/elevated_buttons/footer_button.dart';
 import '../../../../../../core/components/card/cari_hareketler_card.dart';
@@ -17,6 +20,7 @@ import '../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../core/constants/extensions/number_extensions.dart';
 import '../../../../../../core/constants/extensions/widget_extensions.dart';
 import '../../../../../../core/constants/ui_helper/ui_helper.dart';
+import '../../../../../../core/init/cache/cache_manager.dart';
 import '../../../../../../core/init/network/login/api_urls.dart';
 import '../../cari_listesi/model/cari_listesi_model.dart';
 import '../model/cari_hareketleri_model.dart';
@@ -185,31 +189,68 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                     return CariHareketlerCard(
                       cariHareketleriModel: viewModel.cariHareketleriList![index],
                       onTap: () {
-                        var children2 = [
+                        List<BottomSheetModel> children2 = [
+                          //TODO DÜZELT. ORJİNAL PİCKER'A BAK
+                          // BottomSheetModel(
+                          //     iconWidget: Icons.view_comfy_outlined,
+                          //     title: "Görüntüle",
+                          //     onTap: () async {
+                          //       Get.back();
+                          //       await Get.toNamed("/mainPage/cariYeniKayit",
+                          //           arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.goruntule, model: viewModel.cariHareketleriList![index]));
+                          //     }),
+
+                          //! BottomSheetModel(iconWidget: Icons.display_settings_outlined, title: "İşlemler", onTap: () {}),
                           BottomSheetModel(
+                              iconWidget: Icons.picture_as_pdf_outlined,
+                              title: "PDF Görüntüle",
+                              onTap: () async {
+                                PdfModel pdfModel = PdfModel(raporOzelKod: "CariHareket", dicParams: DicParams());
+                                var anaVeri = CacheManager.getAnaVeri();
+                                var result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == "CariHareket").toList();
+                                NetFectDizaynList? dizaynList;
+                                if (result.isNotNullOrEmpty) {
+                                  if (result!.length == 1) {
+                                    pdfModel.dizaynId = result.first.id;
+                                    pdfModel.etiketSayisi = result.first.kopyaSayisi;
+                                    pdfModel.dicParams?.caharInckey = viewModel.cariHareketleriList![index].inckeyno.toStringIfNull;
+                                    dizaynList = result.first;
+                                  } else {
+                                    dizaynList = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                        title: "Dizayn Seçiniz", children: result.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", onTap: () => Get.back(result: e))).toList());
+                                  }
+                                  Get.to(() => PDFViewerView(title: dizaynList?.dizaynAdi ?? "", pdfData: pdfModel));
+                                }
+                              }),
+                        ];
+                        if (viewModel.cariHareketleriList![index].devirMi) {
+                          children2.add(
+                            BottomSheetModel(
+                                iconWidget: Icons.display_settings_outlined,
+                                title: "Düzenle",
+                                onTap: () async {
+                                  Get.back();
+                                  var result = await Get.toNamed("/mainPage/cariYeniKayit",
+                                      arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.duzenle, model: viewModel.cariHareketleriList![index]));
+                                  if (result != null) {
+                                    viewModel.setCariHareketleri(null);
+                                    return getData().then((value) => viewModel.setCariHareketleri(value));
+                                  }
+                                }),
+                          );
+                          children2.add(BottomSheetModel(
                               iconWidget: Icons.view_comfy_outlined,
                               title: "Görüntüle",
                               onTap: () async {
                                 Get.back();
                                 await Get.toNamed("/mainPage/cariYeniKayit",
                                     arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.goruntule, model: viewModel.cariHareketleriList![index]));
-                              }),
-                          BottomSheetModel(
-                              iconWidget: Icons.display_settings_outlined,
-                              title: "Düzenle",
-                              onTap: () async {
-                                Get.back();
-                                var result = await Get.toNamed("/mainPage/cariYeniKayit",
-                                    arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.duzenle, model: viewModel.cariHareketleriList![index]));
-                                if (result != null) {
-                                  viewModel.setCariHareketleri(null);
-                                  return getData().then((value) => viewModel.setCariHareketleri(value));
-                                }
-                              }),
-                          BottomSheetModel(iconWidget: Icons.display_settings_outlined, title: "İşlemler", onTap: () {}),
-                          BottomSheetModel(iconWidget: Icons.picture_as_pdf_outlined, title: "PDF Görüntüle", onTap: () {}),
-                        ];
-                        if (viewModel.cariHareketleriList![index].dovizBorc == null && viewModel.cariHareketleriList![index].dovizAlacak == null) {
+                              }));
+                        }
+                        // B = Kasa hareketi
+                        // G = Ta
+                        if ((viewModel.cariHareketleriList![index].kasaMi || viewModel.cariHareketleriList![index].musteriCekMi || viewModel.cariHareketleriList![index].musteriSenediMi) &&
+                            viewModel.cariHareketleriList![index].alacak != null) {
                           children2.add(BottomSheetModel(iconWidget: Icons.picture_as_pdf_outlined, title: "Tahsilat Makbuzu", onTap: () {}));
                         }
                         bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: children2);

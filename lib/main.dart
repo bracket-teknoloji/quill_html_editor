@@ -27,7 +27,6 @@ import "view/main_page/alt_sayfalar/stok/base_stok_edit/view/base_stok_edit_view
 import "view/main_page/alt_sayfalar/stok/raporlar/ambar_maliyet_raporu/view/ambar_maliyet_raporu_view.dart";
 import "view/main_page/alt_sayfalar/stok/raporlar/lokal_depo_bakiye_raporu/view/lokal_depo_bakiye_raporu_view.dart";
 import "view/main_page/alt_sayfalar/stok/raporlar/urun_grubuna_gore_satis_grafigi/view/urun_grubuna_gore_satis_grafigi_view.dart";
-import "view/main_page/alt_sayfalar/stok/stok_hareketleri/model/stok_hareketleri_model.dart";
 import 'view/main_page/alt_sayfalar/stok/stok_hareketleri/view/stok_hareketleri_view.dart';
 import "view/main_page/alt_sayfalar/stok/stok_liste/view/stok_listesi_view.dart";
 import "view/main_page/alt_sayfalar/stok/stok_yeni_kayit/view/stok_yeni_kayit_view.dart";
@@ -55,12 +54,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       opaqueRoute: false,
       darkTheme: AppThemeDark.instance?.theme,
-      
       themeMode: ThemeMode.dark,
       title: "Picker",
       home: const SplashAuthView(),
       getPages: [
-        GetPage(name: "/login", page: () => const LoginView(), middlewares: [GetMiddleware(priority: 1)]),
+        GetPage(name: "/login", page: () => const LoginView()),
         GetPage(name: "/entryCompany", page: () => const EntryCompanyView()),
         GetPage(
           name: "/mainPage",
@@ -86,8 +84,10 @@ class MyApp extends StatelessWidget {
             GetPage(name: "/stokListesi", page: () => StokListesiView(isGetData: Get.arguments)),
             GetPage(name: "/stokEdit", page: () => BaseStokEditingView(model: Get.arguments)),
             GetPage(
-                name: "/stokHareketleri",
-                page: () => StokHareketleriView(model: Get.arguments is StokHareketleriModel ? Get.arguments : null, stokKodu: Get.arguments is String ? Get.arguments : null)),
+              name: "/stokHareketleri",
+              page: () => StokHareketleriView(model: Get.arguments),
+            ),
+            // page: () => StokHareketleriView(model: Get.arguments is StokHareketleriModel ? Get.arguments : null, stokKodu: Get.arguments is String ? Get.arguments : null)),
             GetPage(name: "/stokYeniKayit", page: () => StokYeniKayitView(model: Get.arguments)),
 
             //* Stok Raporları

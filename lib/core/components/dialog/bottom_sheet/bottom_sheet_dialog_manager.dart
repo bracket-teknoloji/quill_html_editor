@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 
 import '../../../constants/extensions/list_extensions.dart';
-import '../../../constants/extensions/widget_extensions.dart';
 import '../../../constants/ui_helper/icon_helper.dart';
 import '../../../constants/ui_helper/ui_helper.dart';
 import '../../../init/cache/cache_manager.dart';
@@ -84,7 +83,7 @@ class BottomSheetDialogManager {
                               ),
                             ).paddingOnly(bottom: 10),
                           )
-                        : Center(child: Text('Veri bulunamadı.', style: context.theme.textTheme.titleMedium))
+                        : Center(child: Text('Veri bulunamadı.', style: context.theme.textTheme.titleMedium)).paddingAll(UIHelper.highSize)
                     : WillPopScope(
                         child: SingleChildScrollView(child: body),
                         onWillPop: () async {
@@ -190,7 +189,8 @@ class BottomSheetDialogManager {
       useSafeArea: true,
       isScrollControlled: true,
       builder: (context) {
-        return Wrap(
+        return SafeArea(
+            child: Wrap(
           children: [
             ListTile(
               contentPadding: UIHelper.lowPadding,
@@ -203,60 +203,62 @@ class BottomSheetDialogManager {
               endIndent: 0,
               indent: 0,
             ),
-            SizedBox(
-              // if children are not fit to screen, it will be scrollable
-              height: (children.length + 1) * 50 < Get.height * 0.8 ? (children.length + 1) * 50 : Get.height * 0.8,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Wrap(
-                        children: List.generate(children.length, (index) {
-                          return Wrap(
-                            children: [
-                              Observer(builder: (_) {
-                                return CheckboxListTile(
-                                  controlAffinity: ListTileControlAffinity.leading,
-                                  value: viewModel.isSelectedListMap?[title]![index],
-                                  title: Text(children[index].title),
-                                  onChanged: (value) {
-                                    if (children[index].onTap != null) {
-                                      children[index].onTap!();
-                                    }
-                                    viewModel.changeIndexIsSelectedListMap(title, index, value!);
-                                    // viewModel.isSelectedListMap![title]![index] = value!;
-                                    list = selectedChecker(children, title);
-                                    // if (!value) {
-                                    //   list!.remove(children[index].title);
-                                    // }
-                                  },
-                                );
+            children.isNotNullOrEmpty
+                ? SizedBox(
+                    // if children are not fit to screen, it will be scrollable
+                    height: (children.length + 1) * 50 < Get.height * 0.8 ? (children.length + 1) * 50 : Get.height * 0.8,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Expanded(
+                          child: SingleChildScrollView(
+                            child: Wrap(
+                              children: List.generate(children.length, (index) {
+                                return Wrap(
+                                  children: [
+                                    Observer(builder: (_) {
+                                      return CheckboxListTile(
+                                        controlAffinity: ListTileControlAffinity.leading,
+                                        value: viewModel.isSelectedListMap?[title]![index],
+                                        title: Text(children[index].title),
+                                        onChanged: (value) {
+                                          if (children[index].onTap != null) {
+                                            children[index].onTap!();
+                                          }
+                                          viewModel.changeIndexIsSelectedListMap(title, index, value!);
+                                          // viewModel.isSelectedListMap![title]![index] = value!;
+                                          list = selectedChecker(children, title);
+                                          // if (!value) {
+                                          //   list!.remove(children[index].title);
+                                          // }
+                                        },
+                                      );
+                                    }),
+                                    index != children.length - 1
+                                        ? Padding(
+                                            padding: UIHelper.lowPaddingVertical,
+                                            child: const Divider(),
+                                          )
+                                        : Container()
+                                  ],
+                                ).paddingOnly(bottom: 10);
                               }),
-                              index != children.length - 1
-                                  ? Padding(
-                                      padding: UIHelper.lowPaddingVertical,
-                                      child: const Divider(),
-                                    )
-                                  : Container()
-                            ],
-                          ).paddingOnly(bottom: 10);
-                        }),
-                      ),
+                            ),
+                          ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            list = selectedChecker(children, title);
+                            Get.back(result: list);
+                          },
+                          child: const Text("Seç"),
+                        )
+                      ],
                     ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      list = selectedChecker(children, title);
-                      Get.back(result: list);
-                    },
-                    child: const Text("Seç"),
-                  ).paddingAll(UIHelper.midSize)
-                ],
-              ),
-            ),
+                  )
+                : Wrap(children: [Center(child: const Text("Veri Yok").paddingAll(UIHelper.highSize))]),
           ],
-        ).paddingAll(UIHelper.midSize);
+        ).paddingAll(UIHelper.midSize));
       },
     );
   }
@@ -425,7 +427,7 @@ class BottomSheetDialogManager {
                           );
                         },
                       ),
-                    ].map((e) => e.withSizedBox.paddingAll(5)).toList(),
+                    ],
                   ),
                 ),
                 Row(
@@ -457,7 +459,7 @@ class BottomSheetDialogManager {
                           child: const Text("Uygula"));
                     })),
                   ],
-                ).paddingAll(UIHelper.midSize),
+                ),
                 const ResponsiveBox(),
               ],
             ),

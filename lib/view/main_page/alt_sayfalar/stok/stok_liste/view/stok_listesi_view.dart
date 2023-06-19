@@ -117,6 +117,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
       title: Observer(
           builder: (_) => viewModel.searchBar
               ? CustomAppBarTextField(
+                  controller: TextEditingController(text: viewModel.searchValue),
                   onFieldSubmitted: (value) {
                     viewModel.setSearchValue(value);
                     viewModel.setStokListesi(null);
@@ -184,9 +185,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                   var result = await Get.toNamed("/qr");
                   if (result != null) {
                     viewModel.setSearchBar();
-                    viewModel.setSearchValue(result);
                     viewModel.setStokListesi(null);
                     viewModel.resetSayfa();
+                    viewModel.setSearchValue(result);
                     getData();
                   }
                 },
@@ -199,7 +200,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                       dialogManager.showLoadingDialog("Kodlar alınıyor...");
                       var grupKodlari = await CariNetworkManager.getKod(name: GrupKoduEnum.STOK);
                       // StaticVariables.grupKodlari = grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
-                      viewModel.setGrupKodlari(grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>());
+                      if (grupKodlari.data != null) {
+                        viewModel.setGrupKodlari(grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>());
+                      }
                       dialogManager.hideAlertDialog;
                     }
                     // ignore: use_build_context_synchronously
@@ -540,7 +543,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       Get.back();
                                       return Get.toNamed("/mainPage/stokHareketleri", arguments: stok);
                                     }).yetkiKontrol(yetkiController.stokHareketleriStokHareketleri),
-                                BottomSheetModel(title: "Depo Bakiye Durumu", iconWidget: Icons.list_alt),
+                                //😳 BottomSheetModel(title: "Depo Bakiye Durumu", iconWidget: Icons.list_alt),
                                 // !!BottomSheetModel(
                                 // !!  title: "Yazdır",
                                 //   iconWidget: Icons.print,
@@ -556,7 +559,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                 //     //     ));
                                 //   },
                                 // ),
-                                BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt),
+                                //😳 BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt),
                               ];
                               children2.insert(2, BottomSheetModel(title: "Sil", iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? "")).yetkiKontrol(yetkiController.stokKartiSilme));
                               List<BottomSheetModel>? newResult = children2.nullCheck.cast<BottomSheetModel>();

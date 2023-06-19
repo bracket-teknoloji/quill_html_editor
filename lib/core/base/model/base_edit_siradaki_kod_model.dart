@@ -1,8 +1,8 @@
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-import 'base_network_mixin.dart';
+import "base_network_mixin.dart";
 
-part 'base_edit_siradaki_kod_model.g.dart';
+part "base_edit_siradaki_kod_model.g.dart";
 
 @JsonSerializable(fieldRename: FieldRename.screamingSnake, createToJson: true)
 class BaseEditSiradakiKodModel with NetworkManagerMixin {

@@ -1,4 +1,4 @@
-import '../../constants/enum/base_edit_enum.dart';
+import "../../constants/enum/base_edit_enum.dart";
 
 class BaseEditModel<T> {
   T? model;

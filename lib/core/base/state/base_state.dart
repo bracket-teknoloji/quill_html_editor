@@ -20,12 +20,12 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   ConnectivityResult connectivityResult = ConnectivityResult.none;
   Connectivity connectivity = Connectivity();
   BaseState() {
+    internetChecker();
     networkManager = NetworkManager();
     bottomSheetDialogManager = BottomSheetDialogManager();
     dialogManager = DialogManager();
     appInfoModel = AppInfoModel();
     yetkiController = YetkiController();
-    internetChecker();
   }
   @override
   void dispose() {

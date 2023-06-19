@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:kartal/kartal.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
@@ -89,30 +90,35 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
   }
 
   void login() async {
-    viewModel.setIsError(false);
-    if (CacheManager.getVerifiedUser?["user"] == null) {
-      Get.offAllNamed("/login");
-    } else if (CacheManager.getLogout == true) {
-      final response = await NetworkManager.getToken(path: ApiUrls.token, queryParameters: {
-        "deviceInfos": jsonEncode(CacheManager.getHesapBilgileri().toJson())
-      }, data: {
-        "grant_type": "password",
-        "username": CacheManager.getVerifiedUser?["user"],
-        "password": CacheManager.getVerifiedUser?["password"],
-      });
-      if (response != null) {
-        if (response.accessToken != null) {
-          CacheManager.setToken(response.accessToken!);
-          await getSession();
+    try {
+      viewModel.setIsError(false);
+      if (CacheManager.getVerifiedUser?["user"] == null) {
+        Get.offAllNamed("/login");
+      } else if (CacheManager.getLogout == true) {
+        final response = await NetworkManager.getToken(path: ApiUrls.token, queryParameters: {
+          "deviceInfos": jsonEncode(CacheManager.getHesapBilgileri().toJson())
+        }, data: {
+          "grant_type": "password",
+          "username": CacheManager.getVerifiedUser?["user"],
+          "password": CacheManager.getVerifiedUser?["password"],
+        });
+        if (response != null) {
+          if (response.accessToken != null) {
+            CacheManager.setToken(response.accessToken!);
+            await getSession();
+          } else {
+            Get.offAllNamed("/login");
+          }
         } else {
-          Get.offAllNamed("/login");
+          viewModel.setTitle("Bağlantı kurulamadı. Lütfen internet bağlantınızı kontrol edin.");
+          viewModel.setIsError(true);
         }
       } else {
-        viewModel.setTitle("Bağlantı kurulamadı. Lütfen internet bağlantınızı kontrol edin.");
-        viewModel.setIsError(true);
+        Get.offAllNamed("/login");
       }
-    } else {
-      Get.offAllNamed("/login");
+    } on Exception catch (e) {
+      viewModel.setTitle("Bağlantı kurulamadı. Lütfen internet bağlantınızı kontrol edin.\n$e");
+      viewModel.setIsError(true);
     }
   }
 
@@ -135,6 +141,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
     if (response.data != null) {
       CacheManager.setAnaVeri(response.data.first);
       Get.offAllNamed("/mainPage");
+      response.message.isNotNullOrNoEmpty ? dialogManager.showAlertDialog(response.message.toString()) : null;
     } else {
       Get.offAllNamed("/entryCompany");
     }

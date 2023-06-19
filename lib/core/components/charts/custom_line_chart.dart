@@ -28,11 +28,10 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                   borderData: FlBorderData(show: false),
                   lineTouchData: LineTouchData(
                     enabled: true,
-
                     touchTooltipData: LineTouchTooltipData(
                       tooltipBgColor: UIHelper.primaryColor,
-                      
                       fitInsideHorizontally: true,
+                      fitInsideVertically: true,
                       tooltipRoundedRadius: 8,
                       getTooltipItems: (List<LineBarSpot> touchedBarSpots) {
                         return touchedBarSpots.map((barSpot) {
@@ -43,7 +42,6 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                               color: flSpot.bar.color,
                               fontWeight: FontWeight.w900,
                             ),
-
                             children: [
                               const TextSpan(
                                 text: ' TL',
@@ -56,7 +54,6 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                         }).toList();
                       },
                       rotateAngle: 0.5,
-
                       tooltipPadding: const EdgeInsets.all(5),
                     ),
                   ),
@@ -68,8 +65,8 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                     show: true,
                     topTitles: AxisTitles(drawBehindEverything: true, sideTitles: SideTitles(showTitles: true, getTitlesWidget: topTitleWidgets, interval: 1)),
                     bottomTitles: AxisTitles(drawBehindEverything: true, sideTitles: SideTitles(showTitles: true, getTitlesWidget: bottomTitleWidgets, interval: 1)),
-                    leftTitles: AxisTitles(drawBehindEverything: true, sideTitles: SideTitles(showTitles: true, getTitlesWidget: leftTitleWidgets)),
                     rightTitles: AxisTitles(axisNameWidget: const Text("")),
+                    leftTitles: AxisTitles(drawBehindEverything: true, sideTitles: SideTitles(showTitles: true, getTitlesWidget: leftTitleWidgets)),
                   ),
                   minX: 0,
                   maxX: (widget.lineChartValue?.length.toDouble() ?? 0) - 1,
@@ -93,18 +90,13 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                         dotData: FlDotData(
                             show: true,
                             getDotPainter: (FlSpot spot, double xPercentage, LineChartBarData bar, int index) {
-                              return FlDotCirclePainter(
-                                radius: 4,
-                                color: Colors.transparent,
-                                strokeWidth: 2,
-                                strokeColor: Colors.primaries[index],
-                              );
+                              return FlDotCirclePainter(radius: 4, color: Colors.transparent, strokeWidth: 2, strokeColor: Colors.primaries[index]);
                             }),
                         belowBarData: BarAreaData(
                           show: true,
                           gradient: LinearGradient(
                             begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
+                            end: Alignment.topRight,
                             colors: Colors.primaries.sublist(0, widget.lineChartValue?.length ?? 0).map((e) => e.withOpacity(0.3)).toList(),
                           ),
                         ))
@@ -175,7 +167,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
       fontWeight: FontWeight.bold,
       fontSize: 8,
     );
-    return Text("${(value ~/ 1000).toStringIfNull ?? ""}k", style: style, textAlign: TextAlign.left);
+    return Text("${(value ~/ 1000).toStringIfNull ?? ""}k ", style: style, textAlign: TextAlign.left);
   }
 
   Widget topTitleWidgets(double value, TitleMeta meta) {

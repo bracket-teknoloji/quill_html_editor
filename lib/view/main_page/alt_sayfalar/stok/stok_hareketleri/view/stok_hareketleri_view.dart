@@ -67,20 +67,20 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                 )
               : AppBarTitle(title: "Stok Hareketleri", subtitle: widget.model?.stokAdi ?? widget.stokKodu ?? "")),
       actions: [
-        IconButton(
-            onPressed: () async {
-              await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: [
-                BottomSheetModel(
-                    iconWidget: viewModel.dovizliFiyat ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
-                    title: "Dövizli Fiyat Göster",
-                    onTap: () {
-                      viewModel.changeDovizliFiyat();
-                      Get.back();
-                    }),
-                BottomSheetModel(iconWidget: Icons.visibility_off_outlined, title: "Gizlenecek Alanlar", onTap: () async {}),
-              ]);
-            },
-            icon: const Icon(Icons.more_vert_outlined)),
+        //😳 IconButton(
+        //😳     onPressed: () async {
+        //😳       await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: [
+        //😳         BottomSheetModel(
+        //😳             iconWidget: viewModel.dovizliFiyat ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
+        //😳             title: "Dövizli Fiyat Göster",
+        //😳             onTap: () {
+        //😳               viewModel.changeDovizliFiyat();
+        //😳               Get.back();
+        //😳             }),
+        //😳         BottomSheetModel(iconWidget: Icons.visibility_off_outlined, title: "Gizlenecek Alanlar", onTap: () async {}),
+        //😳       ]);
+        //😳     },
+        //😳     icon: const Icon(Icons.more_vert_outlined)),
         IconButton(
             onPressed: () {
               viewModel.searchBar ? getData() : null;
@@ -263,7 +263,9 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                               children2.add(slidableAction);
                             }
                           }
-                          if (model.hareketTuruAciklama != "Muhtelif") {
+                          //😳 Aslında devir değil. Muhtelif yapmak lazım ama sadece devirin sayfası olduğu için böyle yaptım.
+                          //😳 "Muhtelif"
+                          if (model.hareketTuruAciklama == "Devir") {
                             children2.add(SlidableAction(
                               onPressed: (context) async {
                                 await Get.toNamed("mainPage/stokYeniKayit", arguments: model);
@@ -347,7 +349,8 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                         ],
                                       ).paddingAll(UIHelper.lowSize),
                                     ),
-                                    Icon(model.hareketTuruAciklama != "Muhtelif" ? Icons.chevron_right_outlined : null, color: theme.colorScheme.primary),
+                                    //😳 Orijinali model.hareketTuruAciklama != "Muhtelif" fakaat devir sayfası olduğu için böyle yaptım.
+                                    Icon(children2.isNotNullOrEmpty ? Icons.chevron_right_outlined : null, color: theme.colorScheme.primary),
                                   ],
                                 ),
                               ),

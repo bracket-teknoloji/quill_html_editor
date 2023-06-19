@@ -12,6 +12,8 @@ PdfModel _$PdfModelFromJson(Map<String, dynamic> json) => PdfModel(
       dicParams: json['DIC_PARAMS'] == null
           ? null
           : DicParams.fromJson(json['DIC_PARAMS'] as Map<String, dynamic>),
+      dizaynId: json['DIZAYN_ID'] as int?,
+      etiketSayisi: json['ETIKET_SAYISI'] as int?,
     );
 
 Map<String, dynamic> _$PdfModelToJson(PdfModel instance) {
@@ -25,6 +27,8 @@ Map<String, dynamic> _$PdfModelToJson(PdfModel instance) {
 
   writeNotNull('RAPOR_OZEL_KOD', instance.raporOzelKod);
   writeNotNull('STANDART', instance.standart);
+  writeNotNull('DIZAYN_ID', instance.dizaynId);
+  writeNotNull('ETIKET_SAYISI', instance.etiketSayisi);
   writeNotNull('DIC_PARAMS', instance.dicParams?.toJson());
   return val;
 }
@@ -54,6 +58,7 @@ DicParams _$DicParamsFromJson(Map<String, dynamic> json) => DicParams(
       aralikTipi: json['ARALIK_TIPI'] as String?,
       sirala: json['SIRALA'] as String?,
       bakiyeDurumu: json['BAKIYE_DURUMU'] as String?,
+      caharInckey: json['CAHAR_INCKEY'] as String?,
     );
 
 Map<String, dynamic> _$DicParamsToJson(DicParams instance) {
@@ -89,5 +94,6 @@ Map<String, dynamic> _$DicParamsToJson(DicParams instance) {
   writeNotNull('ARALIK_TIPI', instance.aralikTipi);
   writeNotNull('SIRALA', instance.sirala);
   writeNotNull('BAKIYE_DURUMU', instance.bakiyeDurumu);
+  writeNotNull('CAHAR_INCKEY', instance.caharInckey);
   return val;
 }

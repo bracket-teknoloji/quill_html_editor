@@ -22,8 +22,8 @@ class PDFViewerView extends StatefulWidget {
   final String title;
   final PdfModel? pdfData;
 
-  final Future Function() filterBottomSheet;
-  const PDFViewerView({super.key, this.pdfData, required this.filterBottomSheet, required this.title});
+  final Future Function()? filterBottomSheet;
+  const PDFViewerView({super.key, this.pdfData, this.filterBottomSheet, required this.title});
 
   @override
   State<PDFViewerView> createState() => _PDFViewerViewState();
@@ -43,7 +43,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
   Widget build(BuildContext context) {
     //* Açılıştaki dialog için
     Future.delayed(Duration.zero, () async {
-      bool result = await widget.filterBottomSheet();
+      bool result = widget.filterBottomSheet != null ? await widget.filterBottomSheet!() : true;
       if (result) {
         getData();
       }
@@ -64,8 +64,8 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
             icon: const Icon(Icons.share_outlined)),
         IconButton(
             onPressed: () async {
-              await bottomSheetDialogManager.showBottomSheetDialog(context,
-                  title: "Yazıcı", children: CacheManager.getAnaVeri()?.paramModel?.yaziciList?.map((e) => BottomSheetModel(title: e.yaziciAdi ?? "", onTap: () {})).toList());
+              //😳 await bottomSheetDialogManager.showBottomSheetDialog(context,
+              //😳     title: "Yazıcı", children: CacheManager.getAnaVeri()?.paramModel?.yaziciList?.map((e) => BottomSheetModel(title: e.yaziciAdi ?? "", onTap: () {})).toList());
             },
             icon: const Icon(Icons.more_vert_outlined)),
       ],
@@ -73,15 +73,18 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
         preferredSize: const Size.fromHeight(60),
         child: AppBarPreferedSizedBottom(
           children: [
-            AppBarButton(
-                icon: Icons.filter_alt_outlined,
-                onPressed: () async {
-                  bool result = await widget.filterBottomSheet();
-                  if (result) {
-                    getData();
-                  }
-                },
-                child: const Text("Filtrele")),
+            widget.filterBottomSheet != null
+                ? AppBarButton(
+                    icon: Icons.filter_alt_outlined,
+                    onPressed: () async {
+                      bool result = widget.filterBottomSheet != null ? await widget.filterBottomSheet!() : true;
+
+                      if (result) {
+                        getData();
+                      }
+                    },
+                    child: const Text("Filtrele"))
+                : null,
             AppBarButton(
                 icon: Icons.print_outlined,
                 child: const Text("Yazdır"),
@@ -168,10 +171,11 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
     }
     return true;
   }
+
   Future<void> fileChecker() async {
     if (await getFile != null) {
       Share.shareXFiles([XFile((await getFile)!.path)], subject: "Pdf Paylaşımı");
-    }else{
+    } else {
       dialogManager.snackBarError("Dosya bulunamadı. Lütfen tekrar deneyiniz.");
     }
   }
@@ -184,5 +188,4 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
     await fileWriter.close();
     return file.lengthSync() > 0 ? file : null;
   }
-
 }

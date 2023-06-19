@@ -22,10 +22,12 @@ linter:
   # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
   rules:
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    prefer_single_quotes: false  # Uncomment to enable the `double_quotes` rule
-    prefer_const_constructors: true  # Uncomment to disable the `prefer_const_constructors` rule
-    prefer_mixin: true  # Uncomment to disable the `prefer_mixin` rule    
+    
+    prefer_single_quotes: false 
+    prefer_const_constructors: true 
+    prefer_mixin: true
+    library_private_types_in_public_api: false
+    constant_identifier_names: false
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

@@ -30,6 +30,39 @@ class CariHareketleriModel with NetworkManagerMixin {
   bool? bordroMu;
   double? dovizAlacak;
   int? subeKodu;
+  bool get borcHareketiMi {
+    return (borc! > 0);
+  }
+
+  bool get devirMi {
+    return hareketKodu == "A";
+  }
+
+  bool get kasaMi {
+    return hareketKodu == "D";
+  }
+
+  bool get musteriCekMi {
+    return hareketKodu == "G";
+  }
+
+  bool get musteriSenediMi {
+    return hareketKodu == "E";
+  }
+
+  bool get borcCekMi {
+    // DOLDUR
+    return hareketKodu == "";
+  }
+
+  bool get borcSenediMi {
+    // DOLDUR
+    return hareketKodu == "";
+  }
+
+  String getBorcAlacakHarf() {
+    return borcHareketiMi ? "B" : "A";
+  }
 
   @override
   fromJson(Map<String, dynamic> json) {

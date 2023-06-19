@@ -38,47 +38,47 @@ dependencies:
 
   #Network Dependencies
   dio: ^5.1.1
-  # equatable: ^2.0.5
   fl_chart: ^0.62.0
   flutter:
     sdk: flutter
-  flutter_animate: ^4.1.1+1
-  flutter_mobx: ^2.0.6+5
 
   #Utils Dependencies
+  flutter_animate: ^4.1.1+1
   flutter_pdfview: ^1.3.1
   flutter_slidable: ^3.0.0
   flutter_staggered_animations: ^1.1.1
   flutter_svg: ^2.0.5
+  google_fonts: ^4.0.3
+  path: ^1.8.3
+  path_provider: ^2.0.15
+  kartal: ^2.8.0
 
   #State Management Dependencies
   get: ^4.6.5
-  google_fonts: ^4.0.3
+  mobx: ^2.1.4
+  flutter_mobx: ^2.0.6+5
 
-  # get_it: ^7.2.0
-  # flutter_bloc: ^8.1.2
   #Hive Caching Dependencies
   hive: ^2.0.4
   hive_flutter: ^1.0.0
   # scroll_app_bar: ^2.0.0
   image_picker: ^0.8.7+5
   intl: ^0.18.1
-  json_annotation: ^4.8.1
 
   #Json Serialization Dependencies
+  json_annotation: ^4.8.1
   json_serializable: ^6.6.1
-  kartal: ^2.8.0
+
+
   lottie: ^2.3.1
-  mobx: ^2.1.4
   open_file_plus: ^3.4.1
   package_info_plus: ^3.0.3
-  path: ^1.8.3
-  path_provider: ^2.0.15
   permission_handler: ^10.3.0
 
   #QR
   qr_code_scanner: ^1.0.1
   qr_flutter: ^4.0.0
+
   share_plus: ^6.3.4
   shimmer: ^3.0.0
   timezone: ^0.9.1
@@ -105,9 +105,8 @@ flutter_native_splash:
   color: "#201A19"
   image: "assets/splash/pickerLogoTuruncu_512.png"
   fill: false
-  android12: null
-
   android: true
+  android12: true
   ios: true
   web: false
   macos: false

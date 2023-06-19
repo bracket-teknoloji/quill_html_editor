@@ -5,9 +5,11 @@ part 'pdf_viewer_model.g.dart';
 
 @JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, createFactory: true, includeIfNull: false, explicitToJson: true)
 class PdfModel with NetworkManagerMixin {
-  PdfModel({this.raporOzelKod, this.standart, this.dicParams});
+  PdfModel({this.raporOzelKod, this.standart, this.dicParams, this.dizaynId, this.etiketSayisi});
   String? raporOzelKod;
   bool? standart;
+  int? dizaynId;
+  int? etiketSayisi;
   @JsonKey(includeToJson: true)
   DicParams? dicParams;
 
@@ -47,7 +49,7 @@ class DicParams {
       this.plasiyerKodu,
       this.aralikTipi,
       this.sirala,
-      this.bakiyeDurumu});
+      this.bakiyeDurumu, this.caharInckey});
 
   String? cariKodu;
   String? stokKodu;
@@ -73,6 +75,7 @@ class DicParams {
   String? aralikTipi;
   String? sirala;
   String? bakiyeDurumu;
+  String? caharInckey;
 
   factory DicParams.fromJson(Map<String, dynamic> json) => _$DicParamsFromJson(json);
 

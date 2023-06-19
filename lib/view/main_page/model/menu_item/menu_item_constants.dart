@@ -7,7 +7,7 @@ class MenuItemConstants {
     //*
     GridItems.anamenu(name: "CARI", title: "Cari", icon: "supervisor", color: GridThemeManager.cari, altMenuler: [
       GridItems.item(name: "cari_CariListesi", title: "Cari Listesi", route: "/mainPage/cariListesi", arguments: false),
-      GridItems.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları"),
+      //😳 GridItems.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları"),
       GridItems.altmenu(name: "cari_Raporlar", title: "Raporlar", icon: "monitoring", altMenuler: [
         GridItems.item(name: "cari_Rap_Ekstre", title: "Cari Ekstre", route: "/mainPage/cariEkstre"),
         GridItems.item(name: "cari_Rap_DovizliEkstre", title: "Cari Dövizli Ekstre", route: "/mainPage/cariDovizliEkstre"),
@@ -24,9 +24,9 @@ class MenuItemConstants {
     //*
     GridItems.anamenu(name: "EBEL", title: "E-Belge", icon: "e_belge", color: GridThemeManager.eBelge, altMenuler: [
       //! UNUTMA BUNU AÇMAYI
-      GridItems.item(name: "ebelge_EIrsaliyeGelenKutusu", title: "Gelen Kutusu"), // onTap: () => Get.to(PDFViewerView())),
-      GridItems.item(name: "ebelge_EIrsaliyeGidenKutusu", title: "Giden Kutusu"),
-      GridItems.item(name: "ebelge_EFatCariGuncelle", title: "E-Fatura Carilerini Güncelle ")
+      //😳GridItems.item(name: "ebelge_EIrsaliyeGelenKutusu", title: "Gelen Kutusu"), // onTap: () => Get.to(PDFViewerView())),
+      //😳GridItems.item(name: "ebelge_EIrsaliyeGidenKutusu", title: "Giden Kutusu"),
+      //😳GridItems.item(name: "ebelge_EFatCariGuncelle", title: "E-Fatura Carilerini Güncelle ")
     ]),
     //*Finans
     //*
@@ -43,13 +43,13 @@ class MenuItemConstants {
     //* Mal Kabul
     //*
     GridItems.anamenu(name: "MKBL", title: "Mal Kabul", icon: "pallet", color: GridThemeManager.malKabul, altMenuler: [
-      GridItems.item(name: "malKabul_AlisFaturasi", title: "Alış Faturası"),
-      GridItems.item(name: "mkbl_MalKabul", title: "Alış İrsaliyesi"),
-      GridItems.item(name: "malKabul_Mustahsil", title: "Müstahsil Makbuzu"),
-      GridItems.altmenu(name: "malKabul_AlisIrs_Raporlar", title: "Raporlar", icon: "monitoring", altMenuler: [
-        GridItems.item(name: "malKabul_AlisIrs_KalemRaporu", title: "Alış İrs. Kalem Raporu"),
-        GridItems.item(name: "malKabul_AlisFat_KalemRaporu", title: "Alış Fat. Kalem Raporu"),
-      ]),
+      //😳GridItems.item(name: "malKabul_AlisFaturasi", title: "Alış Faturası"),
+      //😳GridItems.item(name: "mkbl_MalKabul", title: "Alış İrsaliyesi"),
+      //😳GridItems.item(name: "malKabul_Mustahsil", title: "Müstahsil Makbuzu"),
+      //😳GridItems.altmenu(name: "malKabul_AlisIrs_Raporlar", title: "Raporlar", icon: "monitoring", altMenuler: [
+      //😳  GridItems.item(name: "malKabul_AlisIrs_KalemRaporu", title: "Alış İrs. Kalem Raporu"),
+      //😳  GridItems.item(name: "malKabul_AlisFat_KalemRaporu", title: "Alış Fat. Kalem Raporu"),
+      //😳]),
     ]),
 
     //* Sayım
@@ -68,17 +68,17 @@ class MenuItemConstants {
     //*
     GridItems.anamenu(name: "STOK", title: "Stok", icon: "inventory", color: GridThemeManager.stok, altMenuler: [
       GridItems.item(name: "stok_StokListesi", title: "Stok Listesi", route: "/mainPage/stokListesi"),
-      GridItems.item(name: "stok_BarkodTanimlama", title: "Barkod Tanımla"),
-      GridItems.item(name: "stok_FiyatGorEkrani", title: "Fiyat Gör"),
-      GridItems.item(name: "stok_FiyatGecmisi", title: "Fiyat Geçmişi"),
-      // TODO [name] Değiştir
-      GridItems.item(name: "stok_StokListesi", title: "Yazdır"),
-      GridItems.altmenu(name: "stok_StokListesi", title: "Seri İşlemleri", icon: "inventory", altMenuler: [
-        GridItems.item(name: "stok_SeriHar", title: "Seri Hareketleri"),
-        // TODO [name] Değiştir
-        GridItems.item(name: "stok_StokListesi", title: "Seri Etiketi Yazdır"),
-      ]),
-      GridItems.item(name: "stok_StokListesi", title: "Paketleme"),
+      //😳GridItems.item(name: "stok_BarkodTanimlama", title: "Barkod Tanımla"),
+      //😳GridItems.item(name: "stok_FiyatGorEkrani", title: "Fiyat Gör"),
+      //😳GridItems.item(name: "stok_FiyatGecmisi", title: "Fiyat Geçmişi"),
+      //😳 TODO [name] Değiştir
+      //😳GridItems.item(name: "stok_StokListesi", title: "Yazdır"),
+      //😳GridItems.altmenu(name: "stok_StokListesi", title: "Seri İşlemleri", icon: "inventory", altMenuler: [
+      //😳  GridItems.item(name: "stok_SeriHar", title: "Seri Hareketleri"),
+      //😳  // TODO [name] Değiştir
+      //😳  GridItems.item(name: "stok_StokListesi", title: "Seri Etiketi Yazdır"),
+      //😳]),
+      //😳GridItems.item(name: "stok_StokListesi", title: "Paketleme"),
       GridItems.altmenu(name: "stok_Raporlar", title: "Raporlar", icon: "monitoring", altMenuler: [
         GridItems.item(name: "stok_Rap_AmbarMaliyet", title: "Ambar Maliyet Raporu", route: "/mainPage/stokAmbarMaliyetRaporu"),
         GridItems.item(name: "stok_Rap_LokalDepoBakiye", title: "Lokal Depo Bakiye Raporu", route: "/mainPage/stokLokalDepoBakiyeRaporu"),
@@ -90,16 +90,16 @@ class MenuItemConstants {
     //*
     GridItems.anamenu(name: "TAHS", title: "Tahsilat & Ödeme", icon: "atm_dollar", color: GridThemeManager.tahsilatOdeme, altMenuler: [
       //TODO [taltek_STEK] sonradan kaldır
-      GridItems.item(name: "taltek_STEK", title: "Satış Teklifi", icon: "atm_dollar"),
+      //😳GridItems.item(name: "taltek_STEK", title: "Satış Teklifi", icon: "atm_dollar"),
     ]),
 
     //* Talep & Teklif
     //*
     GridItems.anamenu(name: "TEKL", title: "Talep & Teklif", icon: "offer", color: GridThemeManager.talepTeklif, altMenuler: [
-      GridItems.item(name: "taltek_STEK", title: "Satış Teklifi", icon: "offer"),
-      GridItems.item(name: "taltek_STAL", title: "Satın Alma Talebi", icon: "offer"),
-      // TODO [name] Değiştir
-      GridItems.item(name: "taltek_STAL", title: "Satış Talebi", icon: "offer"),
+      //😳GridItems.item(name: "taltek_STEK", title: "Satış Teklifi", icon: "offer"),
+      //😳GridItems.item(name: "taltek_STAL", title: "Satın Alma Talebi", icon: "offer"),
+      //😳 TODO [name] Değiştir
+      //😳GridItems.item(name: "taltek_STAL", title: "Satış Talebi", icon: "offer"),
     ]),
 
     //* Temsilci

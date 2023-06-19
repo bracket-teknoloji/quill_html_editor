@@ -84,6 +84,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                           value.title.toString(),
                         ),
                         leading: IconHelper.smallMenuIcon(value.icon.toString(), color: Color(value.color!)),
+                        trailing: const Icon(Icons.drag_handle),
                         onTap: () => Get.toNamed(value.onTap.toString()),
                       );
                     } else {
