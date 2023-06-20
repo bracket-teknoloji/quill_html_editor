@@ -89,6 +89,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
                                           iconWidget: item.iconWidget,
                                           menuTipi: item.menuTipi,
                                           route: item.route,
+                                          arguments: item.arguments,
                                           altMenuler: item.altMenuler,
                                           color: item.color,
                                           icon: item.icon,

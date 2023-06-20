@@ -15,12 +15,13 @@ class CustomGridTile extends StatefulWidget {
   final String? icon;
   final Color? color;
   final String? route;
+  final dynamic arguments;
   final List<GridItems>? altMenuler;
   final Function()? onTap;
   final String? menuTipi;
   final IconData? iconWidget;
 
-  const CustomGridTile({super.key, this.name, this.title, this.icon, this.color, this.onTap, this.altMenuler, this.menuTipi, this.iconWidget, this.route});
+  const CustomGridTile({super.key, this.name, this.title, this.icon, this.color, this.onTap, this.altMenuler, this.menuTipi, this.iconWidget, this.route, this.arguments});
 
   @override
   CustomGridTileState createState() => CustomGridTileState();
@@ -30,7 +31,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
   @override
   Widget build(BuildContext context) {
     Icon yetkiKontrol() {
-      if (CacheManager.getFavoriler().containsKey(widget.name.toString())) {
+      if (CacheManager.getFavoriler().containsKey(widget.title.toString())) {
         return const Icon(Icons.star, size: 20);
       } else {
         CacheManager.removeFavoriler(widget.name.toString());
@@ -54,11 +55,11 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
         color: widget.color,
         semanticContainer: true,
         child: GridTile(
-            header: (widget.menuTipi == "I")
+            header: (widget.menuTipi == "I" || widget.menuTipi == "SR")
                 ? Align(
                     alignment: Alignment.centerRight,
                     child: InkWell(
-                      child: yetkiKontrolIcon(widget.name.toString()),
+                      child: yetkiKontrolIcon(widget.title.toString()),
                       onTap: () {
                         if (icon.icon == Icons.star) {
                           icon = const Icon(Icons.star_border, size: 20);
@@ -67,7 +68,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                           dialogManager.showSnackBar("Favorilerden çıkarıldı");
                         } else {
                           icon = const Icon(Icons.star, size: 20);
-                          CacheManager.setFavoriler(FavoritesModel(name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value));
+                          CacheManager.setFavoriler(FavoritesModel(name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments));
                           dialogManager.hideSnackBar;
                           dialogManager.showSnackBar("Favorilere eklendi");
                         }
@@ -113,11 +114,11 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
     );
   }
 
-  Icon yetkiKontrolIcon(String name) {
-    if (CacheManager.getFavoriler().containsKey(name.toString())) {
+  Icon yetkiKontrolIcon(String title) {
+    if (CacheManager.getFavoriler().containsKey(title.toString())) {
       return const Icon(Icons.star, size: 20);
     } else {
-      CacheManager.removeFavoriler(name.toString());
+      CacheManager.removeFavoriler(title.toString());
       return const Icon(Icons.star_border, size: 20);
     }
   }

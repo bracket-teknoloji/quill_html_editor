@@ -1,3 +1,4 @@
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'param_model.g.dart';
@@ -879,30 +880,42 @@ class MustahsilParam {
 }
 
 @JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@HiveType(typeId: 47)
 class NetFectDizaynList {
   NetFectDizaynList();
 
   @JsonKey(name: "ID")
+  @HiveField(0)
   int? id;
   @JsonKey(name: "DIZAYN_YERI")
+  @HiveField(1)
   String? dizaynYeri;
   @JsonKey(name: "DIZAYN_YOLU")
+  @HiveField(2)
   String? dizaynYolu;
   @JsonKey(name: "DIZAYN_ADI")
+  @HiveField(3)
   String? dizaynAdi;
   @JsonKey(name: "OZEL_KOD")
+  @HiveField(4)
   String? ozelKod;
   @JsonKey(name: "KOPYA_SAYISI")
+  @HiveField(5)
   int? kopyaSayisi;
   @JsonKey(name: "SABLON_VAR")
+  @HiveField(6)
   String? sablonVar;
   @JsonKey(name: "AKTIF")
+  @HiveField(7)
   String? aktif;
   @JsonKey(name: "DOSYA_ADI")
+  @HiveField(8)
   String? dosyaAdi;
   @JsonKey(name: "PARAMETRELER")
+  @HiveField(9)
   String? parametreler;
   @JsonKey(name: "VARSAYILAN_MI")
+  @HiveField(10)
   bool? varsayilanMi;
 
   factory NetFectDizaynList.fromJson(Map<String, dynamic> json) {

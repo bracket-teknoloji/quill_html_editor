@@ -16,6 +16,7 @@ class LeftDrawer extends StatefulWidget {
 }
 
 class _LeftDrawerState extends BaseState<LeftDrawer> {
+  bool isEditing = false;
   List list = CacheManager.getFavoriler().values.toList();
   List get liste {
     var yetkiKontrol = CacheManager.getAnaVeri()?.userModel?.profilYetki;
@@ -39,9 +40,12 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
         titleAlignment: ListTileTitleAlignment.bottom,
         title: Text("Favoriler", style: theme.textTheme.titleMedium),
         trailing: IconButton(
-          icon: IconButton(onPressed: () {}, icon: const Icon(Icons.edit_note_outlined)),
-          onPressed: () => Get.back(),
-        ),
+            onPressed: () {
+              setState(() {
+                isEditing = !isEditing;
+              });
+            },
+            icon: const Icon(Icons.edit_note_outlined)),
         contentPadding: const EdgeInsets.only(left: 12, top: 10, bottom: 10),
       ),
       const Divider(),
@@ -66,11 +70,12 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                       if (newIndex > oldIndex) {
                         newIndex -= 1;
                       }
-                      final item = list.removeAt(oldIndex);
-                      list.insert(newIndex, item);
-                      CacheManager.setFavorilerSira(
-                        {for (var e in list) e.name: e},
-                      );
+                      final item = liste.elementAt(oldIndex);
+                      final item2 = liste.elementAt(newIndex);
+                      liste.removeAt(oldIndex);
+                      liste.insert(newIndex, item);
+                      CacheManager.setFavorilerSira(oldIndex, item2);
+                      CacheManager.setFavorilerSira(newIndex, item);
                     });
                   },
                   key: const Key("Favoriler"),
@@ -84,8 +89,17 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                           value.title.toString(),
                         ),
                         leading: IconHelper.smallMenuIcon(value.icon.toString(), color: Color(value.color!)),
-                        trailing: const Icon(Icons.drag_handle),
-                        onTap: () => Get.toNamed(value.onTap.toString()),
+                        trailing: isEditing
+                            ? IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    list.removeAt(index);
+                                    CacheManager.setFavorilerList(list.map((e) => e as FavoritesModel).toList());
+                                  });
+                                },
+                                icon: const Icon(Icons.delete_outline))
+                            : const Icon(Icons.drag_handle),
+                        onTap: value.arguments != null ? () => Get.toNamed(value.onTap.toString(), arguments: value.arguments) : () => Get.toNamed(value.onTap.toString()),
                       );
                     } else {
                       return const SizedBox();

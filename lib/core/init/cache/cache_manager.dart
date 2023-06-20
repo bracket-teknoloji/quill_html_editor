@@ -6,6 +6,7 @@ import '../../../view/add_company/model/account_response_model.dart';
 import '../../../view/auth/model/isletme_model.dart';
 import '../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_sehirler_model.dart';
 import '../../../view/main_page/model/main_page_model.dart';
+import '../../../view/main_page/model/param_model.dart';
 import '../../../view/main_page/model/sirket_model.dart';
 import '../../../view/main_page/model/user_model/user_model.dart';
 import 'favorites_model.dart';
@@ -20,7 +21,6 @@ class CacheManager {
   static late Box _veriTabaniBox;
   static late Box _isletmeSubeBox;
   static late Box _favorilerBox;
-  static late Box _favorilerSiraBox;
   static late Box _hesapBilgileriBox;
   static late Box _cariSehirBox;
   static late Box _subeListesiBox;
@@ -38,6 +38,7 @@ class CacheManager {
     Hive.registerAdapter(AccountModelAdapter());
     Hive.registerAdapter(CariSehirlerModelAdapter());
     Hive.registerAdapter(IsletmeModelAdapter());
+    Hive.registerAdapter(NetFectDizaynListAdapter());
 
     initHiveBoxes();
   }
@@ -53,11 +54,9 @@ class CacheManager {
     _veriTabaniBox = await Hive.openBox("veriTabani");
     _isletmeSubeBox = await Hive.openBox("isletmeSube");
     _favorilerBox = await Hive.openBox("favoriler");
-    _favorilerSiraBox = await Hive.openBox("favorilerSira");
     _hesapBilgileriBox = await Hive.openBox("hesapBilgileri");
     _cariSehirBox = await Hive.openBox("cariSehir");
     _subeListesiBox = await Hive.openBox<List>("cariListesi");
-
   }
 
 //*  Getters and Setters
@@ -72,7 +71,6 @@ class CacheManager {
   static Map getVeriTabani() => _veriTabaniBox.get(getVerifiedUser?["user"]) ?? {};
   static Map getIsletmeSube() => _isletmeSubeBox.get(getVerifiedUser?["user"]) ?? {};
   static Map getFavoriler() => _favorilerBox.toMap();
-  static Map getFavorilerSira() => _favorilerSiraBox.toMap();
   static AccountModel getHesapBilgileri() => _hesapBilgileriBox.get("value");
   static CariSehirlerModel getCariSehirler() => _cariSehirBox.get("value");
   static List getSubeListesi() => _subeListesiBox.get("value") ?? [];
@@ -90,12 +88,18 @@ class CacheManager {
   static void setVerifiedUser(Map value) => _verifiedUsersBox.put("data", value);
   static void setVeriTabani(Map value) => _veriTabaniBox.put(getVerifiedUser?["user"], value);
   static void setIsletmeSube(Map value) => _isletmeSubeBox.put(getVerifiedUser?["user"], value);
-  static void setFavoriler(FavoritesModel value) => _favorilerBox.put(value.name, value);
-  static void setFavorilerSira(Map value) => _favorilerSiraBox.putAll(value);
+  static void setFavoriler(FavoritesModel value) => _favorilerBox.put(value.title, value);
+  static void setFavorilerSira(int index, FavoritesModel value) => _favorilerBox.putAt(index, value);
+  static Future<void> setFavorilerList(List<FavoritesModel> value) async {
+    await _favorilerBox.clear();
+    _favorilerBox.putAll({for (var e in value) e.title: e});
+  }
+
   static void setCariSehirler(CariSehirlerModel value) => _cariSehirBox.put("value", value);
   static void setSubeListesi(List value) => _subeListesiBox.put("value", value);
 
 //* Clear and Remove
   static void clearBox(String boxName) => Hive.box(boxName).clear();
   static void removeFavoriler(String key) => _favorilerBox.delete(key);
+  static void removeFavoriWithIndex(int index) => _favorilerBox.deleteAt(index);
 }

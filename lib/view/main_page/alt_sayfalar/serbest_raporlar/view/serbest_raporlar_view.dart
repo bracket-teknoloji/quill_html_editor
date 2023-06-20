@@ -45,7 +45,6 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
   Future<bool> filterBottomSheet() async {
     await getData();
     viewModel.resetFuture();
-    // ignore: use_build_context_synchronously
     await bottomSheetDialogManager.showBottomSheetDialog(context,
         title: "Filtrele",
         body: Column(

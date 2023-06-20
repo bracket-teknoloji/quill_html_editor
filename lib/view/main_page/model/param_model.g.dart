@@ -3,6 +3,73 @@
 part of 'param_model.dart';
 
 // **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class NetFectDizaynListAdapter extends TypeAdapter<NetFectDizaynList> {
+  @override
+  final int typeId = 47;
+
+  @override
+  NetFectDizaynList read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return NetFectDizaynList()
+      ..id = fields[0] as int?
+      ..dizaynYeri = fields[1] as String?
+      ..dizaynYolu = fields[2] as String?
+      ..dizaynAdi = fields[3] as String?
+      ..ozelKod = fields[4] as String?
+      ..kopyaSayisi = fields[5] as int?
+      ..sablonVar = fields[6] as String?
+      ..aktif = fields[7] as String?
+      ..dosyaAdi = fields[8] as String?
+      ..parametreler = fields[9] as String?
+      ..varsayilanMi = fields[10] as bool?;
+  }
+
+  @override
+  void write(BinaryWriter writer, NetFectDizaynList obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.dizaynYeri)
+      ..writeByte(2)
+      ..write(obj.dizaynYolu)
+      ..writeByte(3)
+      ..write(obj.dizaynAdi)
+      ..writeByte(4)
+      ..write(obj.ozelKod)
+      ..writeByte(5)
+      ..write(obj.kopyaSayisi)
+      ..writeByte(6)
+      ..write(obj.sablonVar)
+      ..writeByte(7)
+      ..write(obj.aktif)
+      ..writeByte(8)
+      ..write(obj.dosyaAdi)
+      ..writeByte(9)
+      ..write(obj.parametreler)
+      ..writeByte(10)
+      ..write(obj.varsayilanMi);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is NetFectDizaynListAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 

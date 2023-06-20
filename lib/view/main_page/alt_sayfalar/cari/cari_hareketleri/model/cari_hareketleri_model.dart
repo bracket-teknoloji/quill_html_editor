@@ -34,45 +34,25 @@ class CariHareketleriModel with NetworkManagerMixin {
     return (borc! > 0);
   }
 
-  bool get devirMi {
-    return hareketKodu == "A";
-  }
+  bool get devirMi => hareketKodu == "A";
 
-  bool get kasaMi {
-    return hareketKodu == "D";
-  }
+  bool get kasaMi => hareketKodu == "D";
 
-  bool get musteriCekMi {
-    return hareketKodu == "G";
-  }
+  bool get musteriCekMi => hareketKodu == "G";
 
-  bool get musteriSenediMi {
-    return hareketKodu == "E";
-  }
+  bool get musteriSenediMi => hareketKodu == "E";
 
-  bool get borcCekMi {
-    // DOLDUR
-    return hareketKodu == "";
-  }
+  bool get borcCekMi => hareketKodu == "";
 
-  bool get borcSenediMi {
-    // DOLDUR
-    return hareketKodu == "";
-  }
+  bool get borcSenediMi => hareketKodu == "";
 
-  String getBorcAlacakHarf() {
-    return borcHareketiMi ? "B" : "A";
-  }
+  String getBorcAlacakHarf() => borcHareketiMi ? "B" : "A";
 
   @override
-  fromJson(Map<String, dynamic> json) {
-    return _$CariHareketleriModelFromJson(json);
-  }
+  fromJson(Map<String, dynamic> json) => _$CariHareketleriModelFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$CariHareketleriModelToJson(this);
-  }
+  Map<String, dynamic> toJson() => _$CariHareketleriModelToJson(this);
 
   @override
   toString() => toJson().toString();

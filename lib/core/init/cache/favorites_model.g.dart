@@ -8,7 +8,7 @@ part of 'favorites_model.dart';
 
 class FavoritesModelAdapter extends TypeAdapter<FavoritesModel> {
   @override
-  final int typeId = 23;
+  final int typeId = 24;
 
   @override
   FavoritesModel read(BinaryReader reader) {
@@ -22,13 +22,14 @@ class FavoritesModelAdapter extends TypeAdapter<FavoritesModel> {
       icon: fields[2] as String?,
       onTap: fields[3] as String?,
       color: fields[4] as int?,
+      arguments: fields[5] as dynamic,
     );
   }
 
   @override
   void write(BinaryWriter writer, FavoritesModel obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
@@ -38,7 +39,9 @@ class FavoritesModelAdapter extends TypeAdapter<FavoritesModel> {
       ..writeByte(3)
       ..write(obj.onTap)
       ..writeByte(4)
-      ..write(obj.color);
+      ..write(obj.color)
+      ..writeByte(5)
+      ..write(obj.arguments);
   }
 
   @override

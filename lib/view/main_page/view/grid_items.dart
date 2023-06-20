@@ -38,6 +38,7 @@ class GridItems {
   }
   GridItems.serbestRaporlar({required this.title, this.arguments}) {
     menuTipi = "SR";
+    route = "/mainPage/serbestRaporlar";
     onTap = () => Get.toNamed("/mainPage/serbestRaporlar", arguments: arguments);
   }
 
