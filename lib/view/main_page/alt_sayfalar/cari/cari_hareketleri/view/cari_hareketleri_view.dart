@@ -251,7 +251,32 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                         // G = Ta
                         if ((viewModel.cariHareketleriList![index].kasaMi || viewModel.cariHareketleriList![index].musteriCekMi || viewModel.cariHareketleriList![index].musteriSenediMi) &&
                             viewModel.cariHareketleriList![index].alacak != null) {
-                          children2.add(BottomSheetModel(iconWidget: Icons.picture_as_pdf_outlined, title: "Tahsilat Makbuzu", onTap: () {}));
+                          children2.add(BottomSheetModel(
+                              iconWidget: Icons.picture_as_pdf_outlined,
+                              title: "Tahsilat Makbuzu",
+                              onTap: () async {
+                                PdfModel pdfModel = PdfModel(raporOzelKod: "TahsilatMakbuzu", dicParams: DicParams());
+                                var anaVeri = CacheManager.getAnaVeri();
+                                var result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == "TahsilatMakbuzu").toList();
+                                NetFectDizaynList? dizaynList;
+                                if (result.isNotNullOrEmpty) {
+                                  if (result!.length == 1) {
+                                    pdfModel.dicParams?.caharInckey = viewModel.cariHareketleriList![index].inckeyno.toStringIfNull;
+                                    pdfModel.dizaynId = result.first.id;
+                                    //😳 Bunu sor kanka 👇🏼👇🏼
+                                    pdfModel.dicParams?.kasaharInckey = viewModel.cariHareketleriList![index].kasaMi ? "1" : "0";
+
+                                    dizaynList = result.first;
+                                  } else {
+                                    dizaynList = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                        title: "Dizayn Seçiniz", children: result.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", onTap: () => Get.back(result: e))).toList());
+                                    pdfModel.dizaynId = dizaynList?.id;
+                                    pdfModel.dicParams?.caharInckey = viewModel.cariHareketleriList![index].inckeyno.toStringIfNull;
+                                    pdfModel.dicParams?.kasaharInckey = viewModel.cariHareketleriList![index].kasaMi ? "1" : "0";
+                                  }
+                                  Get.to(() => PDFViewerView(title: dizaynList?.dizaynAdi ?? "", pdfData: pdfModel));
+                                }
+                              }));
                         }
                         bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: children2);
                       },

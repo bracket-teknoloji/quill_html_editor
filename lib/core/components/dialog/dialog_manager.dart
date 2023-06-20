@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -283,7 +284,7 @@ class DialogManager {
         //* Standardı 15 olduğu için ve null kabul etmediği için 15 verdim.
         bodyHeaderDistance: dialogType != DialogType.noHeader ? 15 : UIHelper.lowSize,
         context: context,
-        width: Platform.isLinux || Platform.isWindows || Platform.isMacOS ? MediaQuery.of(context).size.width * 0.4 : null,
+        width:kIsWeb? null : Platform.isLinux || Platform.isWindows || Platform.isMacOS ? MediaQuery.of(context).size.width * 0.4 : null,
         customHeader: customHeader,
         alignment: Alignment.center,
         reverseBtnOrder: false,

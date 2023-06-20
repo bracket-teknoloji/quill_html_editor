@@ -164,11 +164,14 @@ class AccountModel with NetworkManagerMixin {
     // aktifVeritabani = CacheManager.getVeriTabani()["Şirket"];
     //* Network Bilgileri (Connectivity Plus)
     offline = "H";
-    var list = await NetworkInterface.list(includeLoopback: true, type: InternetAddressType.IPv4);
-    for (var interface in list) {
-      for (var i = 0; i < interface.addresses.length; i++) {
-        if (interface.addresses[i].address != "") {
-          localIp = interface.addresses[i].address;
+    if (kIsWeb) {
+    } else {
+      var list = await NetworkInterface.list(includeLoopback: true, type: InternetAddressType.IPv4);
+      for (var interface in list) {
+        for (var i = 0; i < interface.addresses.length; i++) {
+          if (interface.addresses[i].address != "") {
+            localIp = interface.addresses[i].address;
+          }
         }
       }
     }

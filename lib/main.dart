@@ -101,11 +101,7 @@ class MyApp extends StatelessWidget {
 
             //* Serbest Raporlar
             //*
-            GetPage(
-                name: "/serbestRaporlar",
-                page: () => SerbestRaporlarView(
-                      dizaynList: Get.arguments
-                    )),
+            GetPage(name: "/serbestRaporlar", page: () => SerbestRaporlarView(dizaynList: Get.arguments)),
           ],
         ),
         GetPage(name: "/addCompany", page: () => const AccountsView()),

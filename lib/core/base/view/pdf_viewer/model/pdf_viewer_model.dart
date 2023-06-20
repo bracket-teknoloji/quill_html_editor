@@ -54,7 +54,9 @@ class DicParams {
       this.caharInckey,
       this.belgeTipi,
       this.belgeNo,
-      this.isemriNo, this.dinamikParam});
+      this.isemriNo,
+      this.dinamikParam,
+      this.kasaharInckey});
 
   String? cariKodu;
   String? stokKodu;
@@ -85,6 +87,7 @@ class DicParams {
   String? belgeNo;
   String? isemriNo;
   String? dinamikParam;
+  String? kasaharInckey;
 
   factory DicParams.fromJson(Map<String, dynamic> json) => _$DicParamsFromJson(json);
 

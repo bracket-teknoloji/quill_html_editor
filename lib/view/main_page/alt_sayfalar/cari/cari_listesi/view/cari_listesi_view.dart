@@ -324,7 +324,14 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                               Get.back();
                                               dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object));
                                             }),
-                                        // BottomSheetModel(title: "Serbest Raporlar", iconWidget: Icons.list_alt_outlined),
+                                        BottomSheetModel(
+                                          title: "Serbest Raporlar",
+                                          iconWidget: Icons.list_alt_outlined,
+                                          onTap: () {
+                                            Get.back();
+                                            dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, serbestMi: true));
+                                          },
+                                        ),
                                       ].nullCheck.cast<BottomSheetModel>());
                                   if (pageName != null) {
                                     BaseEditEnum? baseEditEnum;

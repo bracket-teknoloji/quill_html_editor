@@ -15,7 +15,8 @@ import '../view_model/custom_animated_grid_view_model.dart';
 class CustomAnimatedGridView extends StatefulWidget {
   final List<GridItems>? gridItems;
   final CariListesiModel? cariListesiModel;
-  const CustomAnimatedGridView({super.key, this.gridItems, this.cariListesiModel});
+  final bool? serbestMi;
+  const CustomAnimatedGridView({super.key, this.gridItems, this.cariListesiModel, this.serbestMi});
 
   @override
   State<CustomAnimatedGridView> createState() => _CustomAnimatedGridViewState();
@@ -28,6 +29,9 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
     viewModel.setGridItems(widget.gridItems);
     MenuItemConstants result = MenuItemConstants();
     viewModel.setGridItems(result.getList().first.altMenuler?.where((element) => element.title == "Raporlar").first.altMenuler?.where((element) => element.yetkiKontrol == true).toList());
+    if (widget.serbestMi == true) {
+      viewModel.setGridItems(result.getList().where((element) => element.title == "Serbest Raporlar").first.altMenuler);
+    }
     super.initState();
   }
 
@@ -98,7 +102,11 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                                       viewModel.setGridItems(item?.altMenuler);
                                     } else {
                                       Get.back();
-                                      Get.toNamed(item?.route ?? "", arguments: widget.cariListesiModel);
+                                      if (widget.serbestMi == true) {
+                                        item?.onTap?.call();
+                                      } else {
+                                        Get.toNamed(item?.route ?? "", arguments: widget.cariListesiModel);
+                                      }
                                     }
                                   }))));
                 },

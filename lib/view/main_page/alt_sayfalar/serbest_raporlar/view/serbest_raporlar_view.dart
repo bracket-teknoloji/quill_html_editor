@@ -63,7 +63,9 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                                   suffix: const Icon(Icons.calendar_today),
                                   onTap: () async {
                                     DateTime? result = await dialogManager.showDateTimePicker();
-                                    viewModel.changeDicParams(e.adi ?? "", result?.toDateString() ?? "");
+                                    if (result != null) {
+                                      viewModel.changeDicParams(e.adi ?? "", result.toDateString());
+                                    }
                                   });
                             } else if (e.rehberTipi != null) {
                               return Observer(
@@ -87,7 +89,9 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                                       ? () async {
                                           var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                                               title: "Seçiniz", children: e.paramMap!.values.map((value) => BottomSheetModel(title: value, onTap: () => Get.back(result: e))).toList());
-                                          viewModel.changeDicParams(e.adi ?? "", result.adi);
+                                              if (result != null) {
+                                                viewModel.changeDicParams(e.adi ?? "", result.adi);
+                                              }
                                         }
                                       : null,
                                   onChanged: (value) {
