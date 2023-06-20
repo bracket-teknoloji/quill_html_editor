@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:mobx/mobx.dart';
-import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
+import '../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import 'package:picker/core/constants/extensions/number_extensions.dart';
 import 'package:picker/core/init/cache/cache_manager.dart';
 

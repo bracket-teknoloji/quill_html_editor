@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:mobx/mobx.dart';
-import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
+import '../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 
 import '../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart';
 part 'ambar_maliyet_raporu_view_model.g.dart';

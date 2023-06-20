@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
-import 'package:picker/core/components/widget/custom_label_widget.dart';
-import 'package:picker/core/constants/extensions/list_extensions.dart';
-import 'package:picker/view/main_page/alt_sayfalar/stok/raporlar/ambar_maliyet_raporu/view_model/ambar_maliyet_raporu_view_model.dart';
+import '../../../../../../../core/components/widget/custom_label_widget.dart';
+import '../../../../../../../core/constants/extensions/list_extensions.dart';
+import '../view_model/ambar_maliyet_raporu_view_model.dart';
 
 import '../../../../../../../core/base/model/base_grup_kodu_model.dart';
 import '../../../../../../../core/base/state/base_state.dart';

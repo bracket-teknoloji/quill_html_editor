@@ -1,5 +1,6 @@
 import 'package:mobx/mobx.dart';
-import 'package:picker/view/main_page/view/grid_items.dart';
+
+import '../../../../../view/main_page/view/grid_items.dart';
 
 part 'custom_animated_grid_view_model.g.dart';
 

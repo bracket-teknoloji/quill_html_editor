@@ -1,7 +1,12 @@
 import '../../../../core/constants/grid_constants.dart';
+import '../../../../core/init/cache/cache_manager.dart';
 import '../../view/grid_items.dart';
+import '../main_page_model.dart';
+import '../param_model.dart';
 
 class MenuItemConstants {
+  static final MainPageModel? _anaVeri = CacheManager.getAnaVeri();
+  static final List<NetFectDizaynList>? _serbestRapor = _anaVeri?.paramModel?.netFectDizaynList!.where((element) => element.ozelKod == "Serbest").toList();
   final List<GridItems> _gridItems = [
     //*Cari
     //*
@@ -119,6 +124,9 @@ class MenuItemConstants {
     //* Üretim
     //*
     GridItems.anamenu(name: "URET", title: "Üretim", icon: "factory", color: GridThemeManager.uretim, altMenuler: []),
+    GridItems.anamenu(name: "EBEL", title: "Serbest Raporlar", icon: "monitoring", color: GridThemeManager.genel, altMenuler: [
+      ...List.generate(_serbestRapor?.length ?? 0, (index) => GridItems.serbestRaporlar(title: _serbestRapor?[index].dizaynAdi ?? "", arguments: _serbestRapor?[index]))
+    ]),
   ];
   List<GridItems> getList() {
     // grid items içindeki yetkiKontrol true olanları döndür

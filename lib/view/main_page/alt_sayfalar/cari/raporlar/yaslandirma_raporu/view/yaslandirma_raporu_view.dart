@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
-import 'package:picker/core/base/model/base_grup_kodu_model.dart';
-import 'package:picker/core/base/view/pdf_viewer/view/pdf_viewer_view.dart';
-import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import 'package:picker/core/constants/extensions/date_time_extensions.dart';
-import 'package:picker/core/constants/extensions/list_extensions.dart';
-import 'package:picker/core/init/cache/cache_manager.dart';
-import 'package:picker/view/main_page/model/param_model.dart';
+import '../../../../../../../core/base/model/base_grup_kodu_model.dart';
+import '../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart';
+import '../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
+import '../../../../../../../core/constants/extensions/date_time_extensions.dart';
+import '../../../../../../../core/constants/extensions/list_extensions.dart';
+import '../../../../../../../core/init/cache/cache_manager.dart';
+import '../../../../../model/param_model.dart';
 
 import '../../../../../../../core/base/state/base_state.dart';
 import '../../../../../../../core/components/slide_controller/view/slide_controller_view.dart';

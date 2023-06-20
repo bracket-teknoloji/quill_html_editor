@@ -272,7 +272,6 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                       return Card(
                         child: ListTile(
                           onLongPress: () {
-                            Get.back();
                             dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object));
                           },
                           onTap: !(widget.isGetData ?? true)

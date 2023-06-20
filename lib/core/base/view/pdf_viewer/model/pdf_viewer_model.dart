@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:picker/core/base/model/base_network_mixin.dart';
+
+import '../../../model/base_network_mixin.dart';
 
 part 'pdf_viewer_model.g.dart';
 
@@ -49,7 +50,11 @@ class DicParams {
       this.plasiyerKodu,
       this.aralikTipi,
       this.sirala,
-      this.bakiyeDurumu, this.caharInckey});
+      this.bakiyeDurumu,
+      this.caharInckey,
+      this.belgeTipi,
+      this.belgeNo,
+      this.isemriNo, this.dinamikParam});
 
   String? cariKodu;
   String? stokKodu;
@@ -76,6 +81,10 @@ class DicParams {
   String? sirala;
   String? bakiyeDurumu;
   String? caharInckey;
+  String? belgeTipi;
+  String? belgeNo;
+  String? isemriNo;
+  String? dinamikParam;
 
   factory DicParams.fromJson(Map<String, dynamic> json) => _$DicParamsFromJson(json);
 

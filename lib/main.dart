@@ -23,6 +23,7 @@ import "view/main_page/alt_sayfalar/cari/raporlar/doviz_bakiye_raporu/view/doviz
 import "view/main_page/alt_sayfalar/cari/raporlar/hareket_detayli_yapilandirma_raporu/view/hareket_detayli_yapilandirma_raporu_view.dart";
 import "view/main_page/alt_sayfalar/cari/raporlar/stok_ekstre/view/stok_ekstre_view.dart";
 import "view/main_page/alt_sayfalar/cari/raporlar/yaslandirma_raporu/view/yaslandirma_raporu_view.dart";
+import "view/main_page/alt_sayfalar/serbest_raporlar/view/serbest_raporlar_view.dart";
 import "view/main_page/alt_sayfalar/stok/base_stok_edit/view/base_stok_edit_view.dart";
 import "view/main_page/alt_sayfalar/stok/raporlar/ambar_maliyet_raporu/view/ambar_maliyet_raporu_view.dart";
 import "view/main_page/alt_sayfalar/stok/raporlar/lokal_depo_bakiye_raporu/view/lokal_depo_bakiye_raporu_view.dart";
@@ -97,6 +98,14 @@ class MyApp extends StatelessWidget {
 
             //* Profil
             GetPage(name: "/temsilciProfil", page: () => const TemsilciProfilView()),
+
+            //* Serbest Raporlar
+            //*
+            GetPage(
+                name: "/serbestRaporlar",
+                page: () => SerbestRaporlarView(
+                      dizaynList: Get.arguments
+                    )),
           ],
         ),
         GetPage(name: "/addCompany", page: () => const AccountsView()),

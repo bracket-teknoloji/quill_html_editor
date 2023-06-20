@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
-import 'package:picker/core/base/view/pdf_viewer/view/pdf_viewer_view.dart';
-import 'package:picker/view/main_page/alt_sayfalar/cari/raporlar/stok_ekstre/view_model/stok_ekstre_view_model.dart';
+import '../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart';
+import '../view_model/stok_ekstre_view_model.dart';
 
 import '../../../../../../../core/base/state/base_state.dart';
 import '../../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart';

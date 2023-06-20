@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of "base_edit_siradaki_kod_model.dart";
+part of 'base_edit_siradaki_kod_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -8,10 +8,10 @@ part of "base_edit_siradaki_kod_model.dart";
 
 BaseEditSiradakiKodModel _$BaseEditSiradakiKodModelFromJson(
         Map<String, dynamic> json) =>
-    BaseEditSiradakiKodModel()..siradakiKod = json["SIRADAKI_KOD"] as String?;
+    BaseEditSiradakiKodModel()..siradakiKod = json['SIRADAKI_KOD'] as String?;
 
 Map<String, dynamic> _$BaseEditSiradakiKodModelToJson(
         BaseEditSiradakiKodModel instance) =>
     <String, dynamic>{
-      "SIRADAKI_KOD": instance.siradakiKod,
+      'SIRADAKI_KOD': instance.siradakiKod,
     };

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
-import 'package:picker/core/components/slide_controller/view/slide_controller_view.dart';
-import 'package:picker/core/constants/extensions/list_extensions.dart';
+import '../../../../../../../core/components/slide_controller/view/slide_controller_view.dart';
+import '../../../../../../../core/constants/extensions/list_extensions.dart';
 
 import '../../../../../../../core/base/model/base_grup_kodu_model.dart';
 import '../../../../../../../core/base/state/base_state.dart';

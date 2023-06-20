@@ -7,6 +7,7 @@ class ApiUrls {
   static const String getUyeBilgileri = "https://storews.netfect.com/api/Picker/GetUyeBilgileri";
   static const String getProjeler = "api/General/GetProjeler";
   static const String print = "api/Print/Print";
+  static const String getDizaynParametreleri = "api/Print/GetDizaynParametreleri";
   //*Cariler
   static const String getCariler = "api/Cari/GetCariler";
   static const String getCariKayitliSehirler = "api/Cari/GetCariKayitliSehirler";

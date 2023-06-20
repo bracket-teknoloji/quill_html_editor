@@ -570,10 +570,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
   Future<List<StokMuhasebeKoduModel>> getMuhasebeKodlari() async {
     GenericResponseModel result = await networkManager.dioGet<StokMuhasebeKoduModel>(
       path: ApiUrls.getMuhasebeKodlari,
-      bodyModel: StokMuhasebeKoduModel(),
-      addCKey: true,
-      addSirketBilgileri: true,
-      addTokenKey: true,
+      bodyModel: StokMuhasebeKoduModel()
     );
     return result.data.map((e) => e as StokMuhasebeKoduModel).toList().cast<StokMuhasebeKoduModel>();
   }

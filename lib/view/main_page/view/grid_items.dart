@@ -10,11 +10,10 @@ class GridItems {
   UserModel? cacheManager = CacheManager.getAnaVeri()?.userModel;
   List<String>? menuList = CacheManager.getAnaVeri()?.menuList;
 
-  String name;
+  String? name;
   String title;
   String? icon;
   IconData? iconWidget;
-  bool? isFavorite;
   Color? color;
   List<GridItems>? altMenuler;
   String? route;
@@ -32,10 +31,14 @@ class GridItems {
   GridItems.item({required this.name, required this.title, this.icon, this.color, this.route, this.arguments}) {
     menuTipi = "I";
     if (route == null) {
-      onTap ??= ()=> DialogManager().showSnackBar("Yapım Aşamasında");
+      onTap ??= () => DialogManager().showSnackBar("Yapım Aşamasında");
     } else {
       onTap = () => Get.toNamed(route!, arguments: arguments);
     }
+  }
+  GridItems.serbestRaporlar({required this.title, this.arguments}) {
+    menuTipi = "SR";
+    onTap = () => Get.toNamed("/mainPage/serbestRaporlar", arguments: arguments);
   }
 
   bool get yetkiKontrol {
@@ -53,6 +56,8 @@ class GridItems {
       int sayac = altMenuler!.length;
       var result = sayac != 0 ? cacheManager?.profilYetki?.toJson()[name] : false;
       return result;
+    } else if (menuTipi == "SR") {
+      return true;
     } else {
       var result = cacheManager?.profilYetki?.toJson()[name] ?? false;
       return result;
