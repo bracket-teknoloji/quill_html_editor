@@ -451,8 +451,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                       BottomSheetModel(title: "Bakiye (Artan)", value: "BAKIYE_AZ", onTap: () => Get.back(result: "BAKIYE_AZ")),
                       BottomSheetModel(title: "Bakiye (Azalan)", value: "BAKIYE_ZA", onTap: () => Get.back(result: "BAKIYE_ZA")),
                     ]);
-                    viewModel.setStokListesi(null);
                     if (result != null) {
+                    viewModel.setStokListesi(null);
                       viewModel.setSiralama(result);
                       viewModel.resetSayfa();
                       getData();
