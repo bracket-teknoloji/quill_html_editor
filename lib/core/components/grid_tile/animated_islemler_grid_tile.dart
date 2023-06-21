@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../view/main_page/view/grid_items.dart';
+import '../../../view/main_page/model/grid_item_model.dart';
 import '../../base/state/base_state.dart';
 import '../../constants/ui_helper/icon_helper.dart';
 import '../../constants/ui_helper/ui_helper.dart';
@@ -11,7 +11,7 @@ class AnimatedIslemlerGridTile extends StatefulWidget {
   final String? title;
   final String? icon;
   final Color? color;
-  final List<GridItems>? altMenuler;
+  final List<GridItemModel>? altMenuler;
   final Function()? onTap;
   final String? menuTipi;
   final IconData? iconWidget;
@@ -50,7 +50,7 @@ class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> 
                             ))
                   .marginOnly(bottom: 5),
               Text(
-                widget.title.toString() ,
+                widget.title.toString(),
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.visible,
                 style: theme.textTheme.bodySmall?.copyWith(color: Colors.white, fontSize: 10),

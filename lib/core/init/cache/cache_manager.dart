@@ -70,7 +70,7 @@ class CacheManager {
   static Map? get getVerifiedUser => _verifiedUsersBox.get("data");
   static Map getVeriTabani() => _veriTabaniBox.get(getVerifiedUser?["user"]) ?? {};
   static Map getIsletmeSube() => _isletmeSubeBox.get(getVerifiedUser?["user"]) ?? {};
-  static Map getFavoriler() => _favorilerBox.toMap();
+  static Map<String,FavoritesModel> getFavoriler() => _favorilerBox.toMap().cast<String, FavoritesModel>();
   static AccountModel getHesapBilgileri() => _hesapBilgileriBox.get("value");
   static CariSehirlerModel getCariSehirler() => _cariSehirBox.get("value");
   static List getSubeListesi() => _subeListesiBox.get("value") ?? [];

@@ -17,21 +17,8 @@ class LeftDrawer extends StatefulWidget {
 
 class _LeftDrawerState extends BaseState<LeftDrawer> {
   bool isEditing = false;
-  List list = CacheManager.getFavoriler().values.toList();
-  List get liste {
-    var yetkiKontrol = CacheManager.getAnaVeri()?.userModel?.profilYetki;
-    yetkiKontrol?.toJson().forEach((key, value) {
-      for (var i = 0; i < list.length; i++) {
-        if (key == list[i].name) {
-          if (value == false) {
-            list = list.where((element) => element.name != key).toList();
-          }
-        }
-      }
-    });
-    return list;
-  }
-
+  List<FavoritesModel> list = CacheManager.getFavoriler().values.toList();
+  List get liste => list.where((element) => element.yetkiKontrol).toList();
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -49,7 +36,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
         contentPadding: const EdgeInsets.only(left: 12, top: 10, bottom: 10),
       ),
       const Divider(),
-      liste.isNullOrEmpty
+      list.isNullOrEmpty
           ? Expanded(
               flex: 2,
               child: Column(
@@ -70,21 +57,20 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                       if (newIndex > oldIndex) {
                         newIndex -= 1;
                       }
-                      final item = liste.elementAt(oldIndex);
-                      final item2 = liste.elementAt(newIndex);
-                      liste.removeAt(oldIndex);
-                      liste.insert(newIndex, item);
+                      final item = list.elementAt(oldIndex);
+                      final item2 = list.elementAt(newIndex);
+                      list.removeAt(oldIndex);
+                      list.insert(newIndex, item);
                       CacheManager.setFavorilerSira(oldIndex, item2);
                       CacheManager.setFavorilerSira(newIndex, item);
                     });
                   },
                   key: const Key("Favoriler"),
                   itemBuilder: (context, index) {
-                    var value = liste[index];
-                    if (value is FavoritesModel) {
-                      //return ListTile with ordered by CacheManager.getFavorilerSira
+                    var value = list[index];
                       return ListTile(
                         key: ValueKey(index),
+                        enabled: liste.contains(value),
                         title: Text(
                           value.title.toString(),
                         ),
@@ -94,18 +80,15 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                                 onPressed: () {
                                   setState(() {
                                     list.removeAt(index);
-                                    CacheManager.setFavorilerList(list.map((e) => e as FavoritesModel).toList());
+                                    CacheManager.setFavorilerList(list.map((e) => e).toList());
                                   });
                                 },
                                 icon: const Icon(Icons.delete_outline))
                             : const Icon(Icons.drag_handle),
                         onTap: value.arguments != null ? () => Get.toNamed(value.onTap.toString(), arguments: value.arguments) : () => Get.toNamed(value.onTap.toString()),
                       );
-                    } else {
-                      return const SizedBox();
-                    }
                   },
-                  itemCount: liste.length)),
+                  itemCount: list.length)),
     ]));
   }
 }

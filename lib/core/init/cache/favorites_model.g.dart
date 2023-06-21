@@ -23,13 +23,14 @@ class FavoritesModelAdapter extends TypeAdapter<FavoritesModel> {
       onTap: fields[3] as String?,
       color: fields[4] as int?,
       arguments: fields[5] as dynamic,
+      menuTipi: fields[6] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, FavoritesModel obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
@@ -41,7 +42,9 @@ class FavoritesModelAdapter extends TypeAdapter<FavoritesModel> {
       ..writeByte(4)
       ..write(obj.color)
       ..writeByte(5)
-      ..write(obj.arguments);
+      ..write(obj.arguments)
+      ..writeByte(6)
+      ..write(obj.menuTipi);
   }
 
   @override

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import '../../../view/main_page/view/grid_items.dart';
+import '../../../view/main_page/model/grid_item_model.dart';
 import '../../base/state/base_state.dart';
 import '../../constants/ui_helper/icon_helper.dart';
 import '../../constants/ui_helper/ui_helper.dart';
@@ -16,7 +16,7 @@ class CustomGridTile extends StatefulWidget {
   final Color? color;
   final String? route;
   final dynamic arguments;
-  final List<GridItems>? altMenuler;
+  final List<GridItemModel>? altMenuler;
   final Function()? onTap;
   final String? menuTipi;
   final IconData? iconWidget;
@@ -68,7 +68,8 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                           dialogManager.showSnackBar("Favorilerden çıkarıldı");
                         } else {
                           icon = const Icon(Icons.star, size: 20);
-                          CacheManager.setFavoriler(FavoritesModel(name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments));
+                          CacheManager.setFavoriler(
+                              FavoritesModel(name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments, menuTipi: widget.menuTipi));
                           dialogManager.hideSnackBar;
                           dialogManager.showSnackBar("Favorilere eklendi");
                         }

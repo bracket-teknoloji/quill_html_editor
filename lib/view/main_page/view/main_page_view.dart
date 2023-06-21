@@ -13,7 +13,7 @@ import '../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../core/init/cache/cache_manager.dart';
 import '../model/main_page_model.dart';
 import '../model/menu_item/menu_item_constants.dart';
-import 'grid_items.dart';
+import '../model/grid_item_model.dart';
 
 class MainPageView extends StatefulWidget {
   const MainPageView({super.key});
@@ -23,8 +23,8 @@ class MainPageView extends StatefulWidget {
 }
 
 class _MainPageViewState extends BaseState<MainPageView> {
-  List<GridItems> items = MenuItemConstants().getList();
-  List<List<GridItems>> lastItems = [];
+  List<GridItemModel> items = MenuItemConstants().getList();
+  List<List<GridItemModel>> lastItems = [];
   bool? yetkiVarMi;
   MainPageModel? model = CacheManager.getAnaVeri();
   List<String> title2 = ["Picker"];

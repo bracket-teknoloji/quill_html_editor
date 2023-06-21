@@ -1,5 +1,8 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
+import '../../../view/main_page/model/user_model/user_model.dart';
+import 'cache_manager.dart';
+
 part 'favorites_model.g.dart';
 
 @HiveType(typeId: 24)
@@ -15,7 +18,29 @@ class FavoritesModel {
   @HiveField(4)
   int? color;
   @HiveField(5)
-  dynamic arguments; 
+  dynamic arguments;
+  @HiveField(6)
+  String? menuTipi;
 
-  FavoritesModel({this.name, this.title, this.icon, this.onTap, this.color, this.arguments});
+  
+  UserModel? get cacheManager => CacheManager.getAnaVeri()?.userModel;
+  bool get yetkiKontrol {
+    if (menuTipi == "SR") {
+      return true;
+    } else if(cacheManager?.adminMi == true) {
+      return true;
+    }else if (menuTipi == "I") {
+      var result = cacheManager?.profilYetki?.toJson()[name] ?? false;
+      return result;
+    }else {
+      return true;
+    }
+  }
+
+  FavoritesModel({this.name, this.title, this.icon, this.onTap, this.color, this.arguments, this.menuTipi});
+
+  @override
+  String toString() {
+    return 'FavoritesModel{name: $name, title: $title, icon: $icon, onTap: $onTap, color: $color, arguments: $arguments}';
+  }
 }

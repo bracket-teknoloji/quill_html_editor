@@ -1,6 +1,6 @@
 import 'package:mobx/mobx.dart';
 
-import '../../../../../view/main_page/view/grid_items.dart';
+import '../../../../../view/main_page/model/grid_item_model.dart';
 
 part 'custom_animated_grid_view_model.g.dart';
 
@@ -8,17 +8,17 @@ class CustomAnimatedGridViewModel = _CustomAnimatedGridViewModelBase with _$Cust
 
 abstract class _CustomAnimatedGridViewModelBase with Store {
   @observable
-  ObservableList<GridItems>? gridItems;
+  ObservableList<GridItemModel>? gridItemModelList;
 
   @observable
-  ObservableList<ObservableList<GridItems>> returnGridItems = <ObservableList<GridItems>>[].asObservable();
+  ObservableList<ObservableList<GridItemModel>> returnGridItemModel = <ObservableList<GridItemModel>>[].asObservable();
 
   @action
-  void setGridItems(List<GridItems>? value) => gridItems = value?.asObservable();
+  void setGridItemModel(List<GridItemModel>? value) => gridItemModelList = value?.asObservable();
 
   @action
-  void addReturnGridItems(List<GridItems>? value) => returnGridItems.add(value?.asObservable() ?? ObservableList.of([]));
+  void addReturnGridItemModel(List<GridItemModel>? value) => returnGridItemModel.add(value?.asObservable() ?? ObservableList.of([]));
 
   @action
-  void deleteLastReturnGridItems() => returnGridItems.removeLast();
+  void deleteLastReturnGridItemModel() => returnGridItemModel.removeLast();
 }

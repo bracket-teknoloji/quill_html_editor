@@ -6,17 +6,17 @@ import 'package:kartal/kartal.dart';
 
 import '../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
 import '../../../../../view/main_page/model/menu_item/menu_item_constants.dart';
-import '../../../../../view/main_page/view/grid_items.dart';
+import '../../../../../view/main_page/model/grid_item_model.dart';
 import '../../../../base/state/base_state.dart';
 import '../../../../constants/ui_helper/ui_helper.dart';
 import '../../animated_islemler_grid_tile.dart';
 import '../view_model/custom_animated_grid_view_model.dart';
 
 class CustomAnimatedGridView extends StatefulWidget {
-  final List<GridItems>? gridItems;
+  final List<GridItemModel>? gridItemModelList;
   final CariListesiModel? cariListesiModel;
   final bool? serbestMi;
-  const CustomAnimatedGridView({super.key, this.gridItems, this.cariListesiModel, this.serbestMi});
+  const CustomAnimatedGridView({super.key, this.gridItemModelList, this.cariListesiModel, this.serbestMi});
 
   @override
   State<CustomAnimatedGridView> createState() => _CustomAnimatedGridViewState();
@@ -26,11 +26,11 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
   CustomAnimatedGridViewModel viewModel = CustomAnimatedGridViewModel();
   @override
   void initState() {
-    viewModel.setGridItems(widget.gridItems);
+    viewModel.setGridItemModel(widget.gridItemModelList);
     MenuItemConstants result = MenuItemConstants();
-    viewModel.setGridItems(result.getList().first.altMenuler?.where((element) => element.title == "Raporlar").first.altMenuler?.where((element) => element.yetkiKontrol == true).toList());
+    viewModel.setGridItemModel(result.getList().first.altMenuler?.where((element) => element.title == "Raporlar").first.altMenuler?.where((element) => element.yetkiKontrol == true).toList());
     if (widget.serbestMi == true) {
-      viewModel.setGridItems(result.getList().where((element) => element.title == "Serbest Raporlar").first.altMenuler);
+      viewModel.setGridItemModel(result.getList().where((element) => element.title == "Serbest Raporlar").first.altMenuler);
     }
     super.initState();
   }
@@ -46,11 +46,11 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
           children: [
             Observer(builder: (_) {
               return Visibility(
-                visible: viewModel.returnGridItems.isNotEmpty,
+                visible: viewModel.returnGridItemModel.isNotEmpty,
                 child: IconButton(
                   onPressed: () {
-                    viewModel.setGridItems(viewModel.returnGridItems.last.toList());
-                    viewModel.deleteLastReturnGridItems();
+                    viewModel.setGridItemModel(viewModel.returnGridItemModel.last.toList());
+                    viewModel.deleteLastReturnGridItemModel();
                   },
                   icon: const Icon(Icons.arrow_back_outlined),
                 ),
@@ -78,9 +78,9 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                   crossAxisCount: MediaQuery.of(context).size.width ~/ 85,
                   childAspectRatio: 0.9,
                 ),
-                itemCount: viewModel.gridItems?.length ?? 0,
+                itemCount: viewModel.gridItemModelList?.length ?? 0,
                 itemBuilder: (context, index) {
-                  var item = viewModel.gridItems?[index];
+                  var item = viewModel.gridItemModelList?[index];
                   return AnimationConfiguration.staggeredList(
                       position: index,
                       duration: const Duration(milliseconds: 900),
@@ -98,8 +98,8 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                                   title: item?.title.toString(),
                                   onTap: () {
                                     if (item?.menuTipi == "S") {
-                                      viewModel.addReturnGridItems(viewModel.gridItems);
-                                      viewModel.setGridItems(item?.altMenuler);
+                                      viewModel.addReturnGridItemModel(viewModel.gridItemModelList);
+                                      viewModel.setGridItemModel(item?.altMenuler);
                                     } else {
                                       Get.back();
                                       if (widget.serbestMi == true) {
