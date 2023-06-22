@@ -142,11 +142,12 @@ mixin _$SerbestRaporlarViewModel on _SerbestRaporlarViewModelBase, Store {
   }
 
   @override
-  void changeDicParams(String key, String value) {
+  void changeDicParams(String key, String value,
+      [bool changeController = true]) {
     final _$actionInfo = _$_SerbestRaporlarViewModelBaseActionController
         .startAction(name: '_SerbestRaporlarViewModelBase.changeDicParams');
     try {
-      return super.changeDicParams(key, value);
+      return super.changeDicParams(key, value, changeController);
     } finally {
       _$_SerbestRaporlarViewModelBaseActionController.endAction(_$actionInfo);
     }

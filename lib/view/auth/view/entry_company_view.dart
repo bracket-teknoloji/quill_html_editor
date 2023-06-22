@@ -146,7 +146,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(onPressed: () => Get.toNamed("/login")),
         centerTitle: false,
         title: const Text("Şirkete Giriş"),
       ),
@@ -352,6 +351,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   }
 
   subeDialog(BuildContext context) {
+    controller3!.text = "";
     BottomSheetDialogManager().showRadioBottomSheetDialog(context,
         title: "Şube Seçiniz",
         children: List.generate(
@@ -374,6 +374,8 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   }
 
   sirketDialog(BuildContext context) {
+    controller2!.text = "";
+
     BottomSheetDialogManager().showRadioBottomSheetDialog(context,
         title: "Şirket Seçiniz",
         children: List.generate(
@@ -420,12 +422,5 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
             );
           },
         ));
-  }
-
-  String? validator(value) {
-    if (value == null) {
-      return "";
-    }
-    return null;
   }
 }

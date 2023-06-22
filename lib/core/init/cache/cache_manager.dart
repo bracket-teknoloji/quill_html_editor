@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -50,7 +52,7 @@ class CacheManager {
     _companiesBox = await Hive.openBox("companies");
     _tokenBox = await Hive.openBox("token");
     _accountsBox = await Hive.openBox("accounts");
-    _accountsBox = await Hive.openBox("anaHesap");
+    _anaHesapBox = await Hive.openBox("anaHesap");
     _anaVeriBox = await Hive.openBox<MainPageModel>("anaVeri");
     _verifiedUsersBox = await Hive.openBox("logged");
     _veriTabaniBox = await Hive.openBox("veriTabani");
@@ -68,12 +70,12 @@ class CacheManager {
   static String getPref(String query) => _preferencesBox.get(query);
   static String getCompanies(String query) => _companiesBox.get(query);
   static AccountResponseModel? getAccounts(String query) => _accountsBox.get(query);
-  
+
   static MainPageModel? getAnaVeri() => _anaVeriBox.get("data");
   static Map? get getVerifiedUser => _verifiedUsersBox.get("data");
   static Map getVeriTabani() => _veriTabaniBox.get(getVerifiedUser?["user"]) ?? {};
   static Map getIsletmeSube() => _isletmeSubeBox.get(getVerifiedUser?["user"]) ?? {};
-  static Map<String,FavoritesModel> getFavoriler() => _favorilerBox.toMap().cast<String, FavoritesModel>();
+  static Map<String, FavoritesModel> getFavoriler() => _favorilerBox.toMap().cast<String, FavoritesModel>();
   static AccountModel getHesapBilgileri() => _hesapBilgileriBox.get("value");
   static CariSehirlerModel getCariSehirler() => _cariSehirBox.get("value");
   static List getSubeListesi() => _subeListesiBox.get("value") ?? [];
@@ -84,14 +86,18 @@ class CacheManager {
   static void setPref(String key, String value) => _preferencesBox.put(key, value);
   static void setCompanies(String key, String value) => _companiesBox.put(key, value);
   static void setAnaVeri(MainPageModel value) => _anaVeriBox.put("data", value);
-  static void setAccounts(String key, AccountResponseModel value) => _accountsBox.put(key, value);
+  static void setAccounts(AccountResponseModel value) {
+    _accountsBox.put(value.firma, value);
+    log("AccountResponseModel: ${_accountsBox.toMap()}");
+  }
+
   static void setHesapBilgileri(AccountModel value) => _hesapBilgileriBox.put("value", value);
 
   ///? `[TODO DÜZELT]`
   static void setVerifiedUser(Map value) => _verifiedUsersBox.put("data", value);
   static void setVeriTabani(Map value) => _veriTabaniBox.put(getVerifiedUser?["user"], value);
   static void setIsletmeSube(Map value) => _isletmeSubeBox.put(getVerifiedUser?["user"], value);
-  static void setFavoriler(FavoritesModel value) => _favorilerBox.put(value.title, value);
+  static void setFavoriler(FavoritesModel value) => _favorilerBox.put(AccountModel.instance.kullaniciAdi, value);
   static void setFavorilerSira(int index, FavoritesModel value) => _favorilerBox.putAt(index, value);
   static Future<void> setFavorilerList(List<FavoritesModel> value) async {
     await _favorilerBox.clear();

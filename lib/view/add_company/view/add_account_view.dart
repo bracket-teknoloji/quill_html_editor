@@ -12,6 +12,7 @@ import '../../../core/base/model/base_network_mixin.dart';
 import '../../../core/base/model/generic_response_model.dart';
 import '../../../core/base/state/base_state.dart';
 import '../../../core/components/helper_widgets/custom_label_widget.dart';
+import '../../../core/init/cache/cache_manager.dart';
 import '../../../core/init/network/login/api_urls.dart';
 import '../model/account_model.dart';
 import '../model/account_response_model.dart';
@@ -61,7 +62,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
                     ],
                   ),
                 ),
-                 const Wrap(
+                const Wrap(
                   direction: Axis.horizontal,
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
@@ -101,7 +102,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
           if (!box.containsKey(item.firma)) {
             Get.back(result: true);
             setState(() {});
-            box.put(item.firma, item);
+            CacheManager.setAccounts(item);
             dialogManager.showSnackBar("Başarılı");
           } else {
             dialogManager.showSnackBar("${item.firmaKisaAdi} zaten kayıtlı");
@@ -116,7 +117,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
   }
 
   Future<void> _getQR(BuildContext context) async {
-    dynamic barcode = await Get.toNamed("/qr");
+    var barcode = await Get.toNamed("/qr");
     var model = AccountModel.instance..qrData = barcode;
     var data = model.toJson();
     GenericResponseModel<NetworkManagerMixin> response;
@@ -132,11 +133,13 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
         if (response.success ?? false) {
           var anaHesapBox = Hive.box("anaHesap");
           response.data.forEach((element) {
-            anaHesapBox.put("anaHesap", [element.uyeEmail, element.uyeSifre]);
+            if (element is AccountResponseModel) {
+              anaHesapBox.put("anaHesap", [element.email, element.parola]);
+            }
           });
           AccountModel.instance
-            ..uyeEmail = response.data![0].uyeEmail
-            ..uyeSifre = response.data![0].uyeSifre;
+            ..uyeEmail = response.data![0].email
+            ..uyeSifre = response.data![0].parola;
           Box box = Hive.box("accounts");
           for (AccountResponseModel item in response.data!) {
             if (!box.containsKey(item.firma)) {

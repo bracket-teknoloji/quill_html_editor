@@ -44,9 +44,11 @@ abstract class _SerbestRaporlarViewModelBase with Store {
   DicParams get dicParamsComputed => DicParams.fromJson(dicParams);
 
   @action
-  void changeDicParams(String key, String value) {
+  void changeDicParams(String key, String value, [bool changeController = true]) {
     dicParams[key] = value;
-    changeControllerText(key, value);
+    if (changeController) {
+      changeControllerText(key, value);
+    }
   }
 
   //* Future

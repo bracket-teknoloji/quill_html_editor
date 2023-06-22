@@ -16,7 +16,9 @@ class AppThemeDark extends AppTheme {
   var colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark);
   @override
   ThemeData get theme => ThemeData(
-    
+    datePickerTheme: DatePickerThemeData(
+      shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
+    ),
       radioTheme: RadioThemeData(fillColor: MaterialStateProperty.all(UIHelper.primaryColor), overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.1))),
       useMaterial3: true,
       colorSchemeSeed: UIHelper.primaryColor,
@@ -215,6 +217,7 @@ class AppThemeDark extends AppTheme {
             systemStatusBarContrastEnforced: true,
           ),
           centerTitle: false,
+
           iconTheme: IconThemeData(color: colorManager.primary),
           titleTextStyle: TextStyle(color: colorManager.primary, fontSize: 20),
           scrolledUnderElevation: 0,
