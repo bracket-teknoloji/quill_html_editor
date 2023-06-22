@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
-import '../../../../../../../core/components/widget/custom_label_widget.dart';
+import '../../../../../../../core/components/helper_widgets/custom_label_widget.dart';
 import '../../../../../../../core/constants/extensions/list_extensions.dart';
 import '../view_model/ambar_maliyet_raporu_view_model.dart';
 

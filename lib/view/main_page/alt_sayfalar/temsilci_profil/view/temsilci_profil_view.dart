@@ -5,7 +5,7 @@ import '../../../../../core/components/charts/custom_pie_chart.dart';
 import '../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import '../../../../../core/components/slide_controller/view/slide_controller_view.dart';
 import '../../../../../core/components/textfield/custom_text_field.dart';
-import '../../../../../core/components/widget/custom_label_widget.dart';
+import '../../../../../core/components/helper_widgets/custom_label_widget.dart';
 import '../../../../../core/components/wrap/appbar_title.dart';
 import '../../../../../core/constants/extensions/number_extensions.dart';
 import '../../../../../core/constants/ui_helper/text_style_helper.dart';

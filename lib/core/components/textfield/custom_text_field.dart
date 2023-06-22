@@ -20,6 +20,7 @@ class CustomTextField extends StatefulWidget {
   final String? Function(String?)? validator;
   final Function(String)? onChanged;
   final Function(String)? onSubmitted;
+  final bool? fitContent;
   const CustomTextField(
       {super.key,
       this.controller,
@@ -37,60 +38,61 @@ class CustomTextField extends StatefulWidget {
       this.maxLength,
       this.onSubmitted,
       this.validator,
-      this.valueWidget});
+      this.valueWidget,
+      this.fitContent});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
-  late FocusNode focusNode;
-  late TextEditingController controller;
-
+  TextEditingController get controller => widget.controller ?? TextEditingController(text: widget.controllerText);
   @override
   void initState() {
-    controller = widget.controller ?? TextEditingController(text: widget.controllerText);
-    focusNode = widget.focusNode ?? FocusNode();
-    
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    if (widget.fitContent ?? false) {
+      return SizedBox(
+        width: Get.width / 2.1,
+        child: textFormField,
+      );
+    } else {
+      return textFormField;
+    }
+  }
+
+  Widget get textFormField {
     return TextFormField(
-      textInputAction: TextInputAction.next,
-      keyboardType: widget.keyboardType,
-      focusNode: focusNode,
-      onTap: () {
-        // if (widget.controller!.value.text.isNotEmpty) {
-        //   controller.selection = TextSelection(baseOffset: 0, extentOffset: widget.controller?.value.text.length ?? 0);
-        // }
-        widget.onTap;
-      },
-      maxLength: widget.maxLength,
-      validator: widget.validator ?? ((widget.isMust ?? false) ? validator : null),
-      onChanged: widget.onChanged,
-      onFieldSubmitted: widget.onSubmitted,
-      onTapOutside: (value) {
-        widget.onChanged;
-        FocusScope.of(context).unfocus();
-      },
-      controller: controller,
-      readOnly: widget.readOnly ?? false,
-      decoration: InputDecoration(
-          enabled: widget.enabled ?? true,
-          errorStyle: TextStyle(color: UIHelper.primaryColor, fontWeight: FontWeight.bold),
-          errorBorder: OutlineInputBorder(borderSide: BorderSide(color: UIHelper.primaryColor.withOpacity(0.7), width: 2), borderRadius: BorderRadius.circular(10), gapPadding: 0),
-          suffixIcon: widget.enabled ?? true ? widget.suffix : null,
-          label: Text.rich(TextSpan(children: [
-            TextSpan(
-                text: widget.labelText ?? "",
-                style: (widget.isMust ?? false)
-                    ? TextStyle(color: UIHelper.primaryColor)
-                    : ((widget.controller?.text == "") ? TextStyle(color: Colors.grey.withOpacity(0.6)) : TextStyle(color: Colors.grey.withOpacity(0.8)))),
-            TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: Colors.grey.withOpacity(0.3), fontSize: 12))
-          ]))),
-    ).paddingAll(UIHelper.lowSize);
+        textInputAction: TextInputAction.next,
+        keyboardType: widget.keyboardType,
+        focusNode: widget.focusNode,
+        onTap: () {
+          widget.onTap?.call();
+          controller.selection = TextSelection(baseOffset: 0, extentOffset: controller.value.text.length);
+        },
+        onChanged: widget.onChanged,
+        onFieldSubmitted: widget.onSubmitted,
+        maxLength: widget.maxLength,
+        validator: widget.validator ?? ((widget.isMust ?? false) ? validator : null),
+        controller: controller,
+        readOnly: widget.readOnly ?? false,
+        decoration: InputDecoration(
+            enabled: widget.enabled ?? true,
+            errorStyle: TextStyle(color: UIHelper.primaryColor, fontWeight: FontWeight.bold),
+            errorBorder: OutlineInputBorder(borderSide: BorderSide(color: UIHelper.primaryColor.withOpacity(0.7), width: 2), borderRadius: BorderRadius.circular(10), gapPadding: 0),
+            suffixIcon: widget.enabled ?? true ? widget.suffix : null,
+            label: Text.rich(TextSpan(children: [
+              TextSpan(
+                  text: widget.labelText ?? "",
+                  style: (widget.isMust ?? false)
+                      ? TextStyle(color: UIHelper.primaryColor)
+                      : ((widget.controller?.text == "") ? TextStyle(color: Colors.grey.withOpacity(0.6)) : TextStyle(color: Colors.grey.withOpacity(0.8)))),
+              TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: Colors.grey.withOpacity(0.3), fontSize: 12))
+            ]))),
+      ).paddingAll(UIHelper.lowSize);
   }
 
   String? validator(p0) {

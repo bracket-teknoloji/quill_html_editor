@@ -16,6 +16,7 @@ class CacheManager {
   static late Box _preferencesBox;
   static late Box _companiesBox;
   static late Box _accountsBox;
+  static late Box _anaHesapBox;
   static late Box _anaVeriBox;
   static late Box _verifiedUsersBox;
   static late Box _veriTabaniBox;
@@ -49,6 +50,7 @@ class CacheManager {
     _companiesBox = await Hive.openBox("companies");
     _tokenBox = await Hive.openBox("token");
     _accountsBox = await Hive.openBox("accounts");
+    _accountsBox = await Hive.openBox("anaHesap");
     _anaVeriBox = await Hive.openBox<MainPageModel>("anaVeri");
     _verifiedUsersBox = await Hive.openBox("logged");
     _veriTabaniBox = await Hive.openBox("veriTabani");
@@ -65,8 +67,9 @@ class CacheManager {
   static String getToken() => _tokenBox.get("token");
   static String getPref(String query) => _preferencesBox.get(query);
   static String getCompanies(String query) => _companiesBox.get(query);
-  static MainPageModel? getAnaVeri() => _anaVeriBox.get("data");
   static AccountResponseModel? getAccounts(String query) => _accountsBox.get(query);
+  
+  static MainPageModel? getAnaVeri() => _anaVeriBox.get("data");
   static Map? get getVerifiedUser => _verifiedUsersBox.get("data");
   static Map getVeriTabani() => _veriTabaniBox.get(getVerifiedUser?["user"]) ?? {};
   static Map getIsletmeSube() => _isletmeSubeBox.get(getVerifiedUser?["user"]) ?? {};

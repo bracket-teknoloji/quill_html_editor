@@ -131,11 +131,11 @@ mixin _$SerbestRaporlarViewModel on _SerbestRaporlarViewModelBase, Store {
   }
 
   @override
-  void doNothing() {
+  void dispose() {
     final _$actionInfo = _$_SerbestRaporlarViewModelBaseActionController
-        .startAction(name: '_SerbestRaporlarViewModelBase.doNothing');
+        .startAction(name: '_SerbestRaporlarViewModelBase.dispose');
     try {
-      return super.doNothing();
+      return super.dispose();
     } finally {
       _$_SerbestRaporlarViewModelBaseActionController.endAction(_$actionInfo);
     }

@@ -3,7 +3,7 @@ import 'package:get/get_utils/get_utils.dart';
 
 import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
-import '../../../../../../core/components/widget/custom_label_widget.dart';
+import '../../../../../../core/components/helper_widgets/custom_label_widget.dart';
 import '../../../../../../core/constants/ui_helper/ui_helper.dart';
 import '../model/cari_aktivite_appbar_model.dart';
 import 'dialog/cari_aktivite_filtre_dialog.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
-import 'package:picker/core/components/widget/custom_label_widget.dart';
+import 'package:picker/core/components/helper_widgets/custom_label_widget.dart';
 import 'package:picker/core/constants/extensions/list_extensions.dart';
 import 'package:picker/core/init/network/login/api_urls.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
@@ -67,7 +67,6 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
         child: Column(
           children: [
             RaporFiltreDateTimeBottomSheetView(
-                isVertical: false,
                 filterOnChanged: (value) {
                   viewModel.donemTipiIndex = value ?? 0;
                   viewModel.model.donemTipi = viewModel.donemTipiList[viewModel.donemTipiIndex];

@@ -30,7 +30,6 @@ class SerbestRaporlarView extends StatefulWidget {
 
 class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
   SerbestRaporlarViewModel viewModel = SerbestRaporlarViewModel();
-  final formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -38,8 +37,14 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
   }
 
   @override
+  void dispose() {
+    // viewModel.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Observer(builder: (_) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Serbest Raporlar", pdfData: viewModel.pdfModel));
+    return PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Serbest Raporlar", pdfData: viewModel.pdfModel);
   }
 
   Future<bool> filterBottomSheet() async {
@@ -56,6 +61,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                           ?.map((e) {
                             if (e.tipi == "Date") {
                               return CustomTextField(
+                                fitContent: true,
                                   labelText: e.adi ?? "",
                                   controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList!.indexOf(e)],
                                   isMust: e.bosGecilebilir != true,
@@ -68,32 +74,33 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                                     }
                                   });
                             } else if (e.rehberTipi != null) {
-                              return Observer(
-                                  builder: (_) => CustomTextField(
-                                      labelText: e.adi ?? "",
-                                      controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList!.indexOf(e)],
-                                      isMust: e.bosGecilebilir != true,
-                                      readOnly: true,
-                                      suffix: const Icon(Icons.more_horiz_outlined),
-                                      onTap: () async {
-                                        getRehber(e);
-                                      }));
+                              return CustomTextField(
+                                fitContent: true,
+                                  labelText: e.adi ?? "",
+                                  controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList!.indexOf(e)],
+                                  isMust: e.bosGecilebilir != true,
+                                  readOnly: true,
+                                  suffix: const Icon(Icons.more_horiz_outlined),
+                                  onTap: () {
+                                    getRehber(e);
+                                  });
                             } else {
                               return CustomTextField(
+                                fitContent: true,
                                   labelText: e.adi ?? "",
-                                  readOnly: e.paramMap != null ? true : false,
+                                  readOnly: e.paramMap != null ? true : null,
                                   controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList!.indexOf(e)],
                                   isMust: e.bosGecilebilir != true,
                                   suffix: e.paramMap != null ? const Icon(Icons.more_horiz_outlined) : null,
-                                  onTap: e.paramMap != null
-                                      ? () async {
+                                  onTap: e.paramMap == null
+                                      ? null
+                                      : () async {
                                           var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                                               title: "Seçiniz", children: e.paramMap!.values.map((value) => BottomSheetModel(title: value, onTap: () => Get.back(result: e))).toList());
-                                              if (result != null) {
-                                                viewModel.changeDicParams(e.adi ?? "", result.adi);
-                                              }
-                                        }
-                                      : null,
+                                          if (result != null) {
+                                            viewModel.changeDicParams(e.adi ?? "", result.adi);
+                                          }
+                                        },
                                   onChanged: (value) {
                                     viewModel.changeDicParams(e.adi ?? "", value);
                                     print(viewModel.dicParams);
@@ -101,7 +108,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                             }
                           })
                           .toList()
-                          .map((e) => Container(constraints: BoxConstraints(maxWidth: width / 2.1), child: e))
+                          .nullCheck
                           .toList()
                           .cast<Widget>()
                           .nullCheck ??
@@ -179,11 +186,11 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
   }
 
   Future<void> getData() async {
-    dialogManager.showLoadingDialog("Lütfen Bekleyiniz");
+    // dialogManager.showLoadingDialog("Lütfen Bekleyiniz");
     var result = await networkManager.dioGet<SerbestRaporResponseModel>(path: ApiUrls.getDizaynParametreleri, bodyModel: SerbestRaporResponseModel(), queryParameters: {"ID": widget.dizaynList?.id});
     if (result.success == true) {
       viewModel.changeSerbestRaporResponseModelList(result.data.map((e) => e as SerbestRaporResponseModel).toList().cast<SerbestRaporResponseModel>());
     }
-    dialogManager.hideAlertDialog;
+    // dialogManager.hideAlertDialog;
   }
 }

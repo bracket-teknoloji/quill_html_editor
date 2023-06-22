@@ -13,7 +13,7 @@ import '../../../../../../core/components/button/elevated_buttons/footer_button.
 import '../../../../../../core/components/card/cari_hareketler_card.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import '../../../../../../core/components/floating_action_button/custom_floating_action_button.dart';
-import '../../../../../../core/components/widget/scrollable_widget.dart';
+import '../../../../../../core/components/helper_widgets/scrollable_widget.dart';
 import '../../../../../../core/components/wrap/appbar_title.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../core/constants/extensions/number_extensions.dart';

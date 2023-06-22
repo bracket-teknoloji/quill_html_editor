@@ -218,9 +218,11 @@ abstract class _TemsilciProfilViewModelBase with Store {
       }
     }
     List<double> list = List.generate(uniquePlasiyer.length, (index) => 0);
-    temsilciProfilList?.where((element) => element.ayKodu == donemKodu && element.kayitTipi == "SF").forEach((element) {
+    if (list.isNotNullOrEmpty) {
+      temsilciProfilList?.where((element) => element.ayKodu == donemKodu && element.kayitTipi == "SF").forEach((element) {
       list[uniquePlasiyer.toList().indexOf(element.plasiyerAciklama ?? "")] += element.tutar ?? 0;
     });
+    }
     print(list);
     return list;
   }

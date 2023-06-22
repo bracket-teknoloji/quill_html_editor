@@ -9,7 +9,7 @@ import '../../../../../../../core/base/state/base_state.dart';
 import '../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart';
 import '../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import '../../../../../../../core/components/textfield/custom_text_field.dart';
-import '../../../../../../../core/components/widget/custom_label_widget.dart';
+import '../../../../../../../core/components/helper_widgets/custom_label_widget.dart';
 import '../../../../../../../core/constants/ui_helper/ui_helper.dart';
 import '../view_model/lokal_depo_bakiye_raporu_view_model.dart';
 

@@ -12,7 +12,7 @@ import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet
 import '../../../../../../core/components/floating_action_button/custom_floating_action_button.dart';
 import '../../../../../../core/components/textfield/custom_app_bar_text_field.dart';
 import '../../../../../../core/components/textfield/custom_text_field.dart';
-import '../../../../../../core/components/widget/custom_label_widget.dart';
+import '../../../../../../core/components/helper_widgets/custom_label_widget.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../core/constants/enum/grup_kodu_enums.dart';
 import '../../../../../../core/constants/extensions/list_extensions.dart';

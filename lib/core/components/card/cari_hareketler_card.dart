@@ -6,7 +6,7 @@ import '../../base/state/base_state.dart';
 import '../../constants/extensions/date_time_extensions.dart';
 import '../../constants/extensions/number_extensions.dart';
 import '../../constants/ui_helper/ui_helper.dart';
-import '../widget/custom_label_widget.dart';
+import '../helper_widgets/custom_label_widget.dart';
 
 class CariHareketlerCard extends StatefulWidget {
   final CariHareketleriModel cariHareketleriModel;

@@ -8,7 +8,8 @@ import '../../../constants/ui_helper/icon_helper.dart';
 import '../../../constants/ui_helper/ui_helper.dart';
 import '../../../init/cache/cache_manager.dart';
 import '../../button/toggle_buttons/toggle_button.dart';
-import '../../widget/custom_label_widget.dart';
+import '../../helper_widgets/custom_label_widget.dart';
+import '../../helper_widgets/responsive_height_box.dart';
 import 'model/bottom_sheet_model.dart';
 import 'model/bottom_sheet_response_model.dart';
 import 'view_model/bottom_sheet_state_manager.dart';
@@ -91,6 +92,7 @@ class BottomSheetDialogManager {
                           Get.back(result: result);
                           return true;
                         }),
+                context.isKeyBoardOpen ? const ResponsiveBox() : Container(),
               ],
             ),
           );
@@ -506,13 +508,4 @@ class BottomSheetDialogManager {
   //   });
   //   return response;
   // }
-}
-
-class ResponsiveBox extends StatelessWidget {
-  const ResponsiveBox({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(duration: const Duration(milliseconds: 300), height: context.isKeyBoardOpen ? context.dynamicHeight(0.3) : 0);
-  }
 }

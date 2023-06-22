@@ -219,7 +219,7 @@ class AccountModel with NetworkManagerMixin {
       cihazModeli = iosInfo.model;
       cihazSistemVersiyonu = iosInfo.systemVersion;
       ozelCihazKimligi = iosInfo.identifierForVendor;
-      cihazKimligi = iosInfo.identifierForVendor;
+      cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
     }
     //!DESKTOP
     else if (Platform.isWindows) {
@@ -237,11 +237,11 @@ class AccountModel with NetworkManagerMixin {
       }
     }
     //* Uygulama Bilgileri
-    uygulamaSurumu = "225";
+    uygulamaSurumu = "228";
 
     ///  [uygulamaSurumu = packageInfo.version;]
     ///* olarak değiştirilecek fakat API bu uygulamanın sürümünü kabul etmediği için manuel verdim.
-    uygulamaSurumKodu = 225;
+    uygulamaSurumKodu = 228;
     requestVersion = 2;
     await PackageInfo.fromPlatform().then((value) => paketAdi = value.packageName);
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../widget/custom_label_widget.dart';
+import '../../helper_widgets/custom_label_widget.dart';
 
 import '../../../base/state/base_state.dart';
 

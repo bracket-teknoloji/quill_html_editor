@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
@@ -66,14 +67,13 @@ class _QRScannerState extends BaseState<QRScannerView> {
         overlay: QrScannerOverlayShape(borderColor: UIHelper.primaryColor, borderRadius: 10, borderWidth: 20, cutOutSize: width * 0.7, overlayColor: Colors.black.withOpacity(0.7)),
         key: qrKey,
         onQRViewCreated: _onQRViewCreated,
+        
         cameraFacing: CameraFacing.back,
       );
   void _onQRViewCreated(QRViewController controller) async {
-    PermissionStatus status = await Permission.camera.status;
     qrViewController = controller;
-
-    if (status.isDenied) {
-      await Permission.camera.request();
+    if (await Permission.camera.request() != PermissionStatus.granted) {
+      Get.back();
     }
     qrViewController?.scannedDataStream.listen((scanData) {
       setState(() {

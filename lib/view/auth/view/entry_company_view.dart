@@ -7,7 +7,7 @@ import "package:kartal/kartal.dart";
 import '../../../core/base/state/base_state.dart';
 import '../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart';
 import '../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../core/components/widget/custom_label_widget.dart';
+import '../../../core/components/helper_widgets/custom_label_widget.dart';
 import '../../../core/init/cache/cache_manager.dart';
 import '../../../core/init/network/login/api_urls.dart';
 import '../../add_company/model/account_model.dart';
@@ -146,6 +146,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(onPressed: () => Get.toNamed("/login")),
         centerTitle: false,
         title: const Text("Şirkete Giriş"),
       ),
@@ -351,7 +352,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   }
 
   subeDialog(BuildContext context) {
-    controller3!.text = "";
     BottomSheetDialogManager().showRadioBottomSheetDialog(context,
         title: "Şube Seçiniz",
         children: List.generate(
@@ -374,8 +374,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   }
 
   sirketDialog(BuildContext context) {
-    controller2!.text = "";
-
     BottomSheetDialogManager().showRadioBottomSheetDialog(context,
         title: "Şirket Seçiniz",
         children: List.generate(

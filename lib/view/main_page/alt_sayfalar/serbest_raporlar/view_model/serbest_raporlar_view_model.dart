@@ -28,7 +28,12 @@ abstract class _SerbestRaporlarViewModelBase with Store {
   void changeControllerText(String name, String value) => textEditingControllerList![serbestRaporResponseModelList!.indexWhere((element) => element.adi == name)].text = value;
 
   @action
-  void doNothing() => pdfModel = pdfModel;
+  void dispose() {
+    textEditingControllerList?.forEach((element) {
+      element.dispose();
+    });
+  }
+
   @observable
   PdfModel pdfModel = PdfModel(raporOzelKod: "Serbest");
 
@@ -41,7 +46,6 @@ abstract class _SerbestRaporlarViewModelBase with Store {
   @action
   void changeDicParams(String key, String value) {
     dicParams[key] = value;
-    pdfModel = pdfModel..dicParams = DicParams.fromJson(dicParams);
     changeControllerText(key, value);
   }
 

@@ -19,7 +19,7 @@ import '../../../../../../core/components/dialog/bottom_sheet/view_model/bottom_
 import '../../../../../../core/components/floating_action_button/custom_floating_action_button.dart';
 import '../../../../../../core/components/grid_tile/custom_animated_grid/view/custom_animated_grid_view.dart';
 import '../../../../../../core/components/textfield/custom_app_bar_text_field.dart';
-import '../../../../../../core/components/widget/scrollable_widget.dart';
+import '../../../../../../core/components/helper_widgets/scrollable_widget.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../core/constants/extensions/list_extensions.dart';
 import '../../../../../../core/constants/extensions/model_extensions.dart';

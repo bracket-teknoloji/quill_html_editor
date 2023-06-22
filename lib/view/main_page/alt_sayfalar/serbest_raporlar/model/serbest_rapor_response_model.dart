@@ -1,3 +1,4 @@
+
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../../../../core/base/model/base_network_mixin.dart';
@@ -35,4 +36,20 @@ class SerbestRaporResponseModel with NetworkManagerMixin {
   fromJson(Map<String, dynamic> json) => _$SerbestRaporResponseModelFromJson(json);
   @override
   Map<String, dynamic> toJson() => _$SerbestRaporResponseModelToJson(this);
+  
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+      other is SerbestRaporResponseModel &&
+          runtimeType == other.runtimeType &&
+          adi == other.adi &&
+          bosGecilebilir == other.bosGecilebilir &&
+          tipi == other.tipi &&
+          deger == other.deger &&
+          rehberTipi == other.rehberTipi &&
+          paramMap == other.paramMap;
+  }
+  
+           
 }

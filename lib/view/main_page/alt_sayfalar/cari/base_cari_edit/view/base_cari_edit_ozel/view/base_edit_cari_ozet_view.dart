@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
-import '../../../../../../../../core/components/widget/custom_label_widget.dart';
+import '../../../../../../../../core/components/helper_widgets/custom_label_widget.dart';
 import '../../../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../../../core/constants/extensions/number_extensions.dart';
 import '../../../../cari_listesi/model/cari_detay_model.dart';

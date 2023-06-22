@@ -7,7 +7,7 @@ import 'package:kartal/kartal.dart';
 import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import 'package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart';
 import 'package:picker/core/components/textfield/custom_app_bar_text_field.dart';
-import 'package:picker/core/components/widget/custom_label_widget.dart';
+import 'package:picker/core/components/helper_widgets/custom_label_widget.dart';
 import 'package:picker/core/constants/extensions/list_extensions.dart';
 import 'package:picker/core/constants/extensions/number_extensions.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
