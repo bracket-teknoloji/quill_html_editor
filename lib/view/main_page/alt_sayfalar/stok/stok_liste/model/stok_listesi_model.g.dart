@@ -16,6 +16,7 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
       ..muhdetayAdi = json['MUHDETAY_ADI'] as String?
       ..resimUrl = json['RESIM_URL'] as String?
       ..resimUrlKucuk = json['RESIM_URL_KUCUK'] as String?
+      ..resimBase64 = json['RESIM_BASE64'] as String?
       ..alisFiat1 = (json['ALIS_FIAT1'] as num?)?.toDouble()
       ..alisKdv = (json['ALIS_KDV'] as num?)?.toDouble()
       ..satisKdv = (json['SATIS_KDV'] as num?)?.toDouble()
@@ -95,6 +96,7 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
   writeNotNull('MUHDETAY_ADI', instance.muhdetayAdi);
   writeNotNull('RESIM_URL', instance.resimUrl);
   writeNotNull('RESIM_URL_KUCUK', instance.resimUrlKucuk);
+  writeNotNull('RESIM_BASE64', instance.resimBase64);
   writeNotNull('ALIS_FIAT1', instance.alisFiat1);
   writeNotNull('ALIS_KDV', instance.alisKdv);
   writeNotNull('SATIS_KDV', instance.satisKdv);

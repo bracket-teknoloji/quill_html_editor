@@ -4,7 +4,7 @@ import '../../../../../../core/base/model/base_network_mixin.dart';
 
 part 'save_stok_model.g.dart';
 
-@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.screamingSnake, createToJson: true)
+@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.screamingSnake, createToJson: true, includeIfNull: false)
 class SaveStokModel with NetworkManagerMixin {
   static SaveStokModel? _instance;
   static SaveStokModel get instance {
@@ -51,6 +51,7 @@ class SaveStokModel with NetworkManagerMixin {
   double? satisFiyati3;
   double? satisFiyati4;
   double? satisKdvOrani;
+  String? resimBase64;
   bool? seriGiristeOtomatik;
   bool? seriCikistaAktif;
   bool? seriCikistaOtomatik;

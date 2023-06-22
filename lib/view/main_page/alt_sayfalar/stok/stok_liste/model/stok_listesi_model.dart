@@ -24,6 +24,7 @@ class StokListesiModel with NetworkManagerMixin {
   String? muhdetayAdi;
   String? resimUrl;
   String? resimUrlKucuk;
+  String? resimBase64;
   double? alisFiat1;
   double? alisKdv;
   double? satisKdv;

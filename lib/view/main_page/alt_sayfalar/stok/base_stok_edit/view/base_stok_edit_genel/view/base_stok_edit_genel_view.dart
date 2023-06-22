@@ -1,7 +1,11 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
+import 'dart:typed_data';
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -12,8 +16,8 @@ import '../../../../../../../../core/base/model/base_grup_kodu_model.dart';
 import '../../../../../../../../core/base/model/generic_response_model.dart';
 import '../../../../../../../../core/base/state/base_state.dart';
 import '../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../../../core/components/helper_widgets/custom_label_widget.dart';
+import '../../../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../../../core/constants/extensions/number_extensions.dart';
 import '../../../../../../../../core/constants/static_variables/static_variables.dart';
@@ -116,8 +120,8 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
       child: FutureBuilder(
           future: stokDetayModel,
           builder: (context, snapshot) {
-              var isletmeModel = IsletmeModel(subeKodu: -1, subeAdi: "Şubelerde Ortak");
-              viewModel.stokListesiModel?.subeKodu = isletmeModel.subeKodu;
+            var isletmeModel = IsletmeModel(subeKodu: -1, subeAdi: "Şubelerde Ortak");
+            viewModel.stokListesiModel?.subeKodu = isletmeModel.subeKodu;
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator.adaptive());
             } else {
@@ -136,7 +140,9 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
               barkod2Controller = TextEditingController(text: model?.stokList?.first.barkod2);
               barkod3Controller = TextEditingController(text: model?.stokList?.first.barkod3);
               subeController = TextEditingController(
-                  text: subeList.isNotNullOrEmpty ? subeList.where((element) => element.subeKodu == model?.stokList?.first.subeKodu).firstOrNull?.subeAdi : "${isletmeModel.subeAdi} ${isletmeModel.subeKodu}"); //text: model?.stokAdi
+                  text: subeList.isNotNullOrEmpty
+                      ? subeList.where((element) => element.subeKodu == model?.stokList?.first.subeKodu).firstOrNull?.subeAdi
+                      : "${isletmeModel.subeAdi} ${isletmeModel.subeKodu}"); //text: model?.stokAdi
               ureticiKoduController = TextEditingController(text: model?.stokList?.first.ureticiKodu); //text: model?.stokAdi
               grupKoduController = TextEditingController(text: model?.stokList?.first.grupKodu);
               kod1Controller = TextEditingController(text: model?.stokList?.first.kod1);
@@ -164,8 +170,17 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                   if (result != null) {
                                     setState(() => image = File(result.path));
                                     if (image != null) {
-                                      // ignore: use_build_context_synchronously
-                                      // bottomSheetDialogManager.showBottomSheetDialog(context, title: "Burayı Ekleyemedim ama güzel çıkmışsın :) 😘", body: Image(image: FileImage(image!)));
+                                      Uint8List? compressedImage;
+                                      try {
+                                        compressedImage = await FlutterImageCompress.compressWithFile(image!.path,
+                                            format: CompressFormat.jpeg, numberOfRetries: 10, quality: 30, keepExif: true, autoCorrectionAngle: true);
+                                      } catch (e) {
+                                        compressedImage =
+                                            await FlutterImageCompress.compressWithFile(image!.path, format: CompressFormat.heic, numberOfRetries: 10, keepExif: true, autoCorrectionAngle: true);
+                                      }
+                                      var base64 = base64Encode(compressedImage!.toList());
+                                      viewModel.stokListesiModel?.resimBase64 = base64;
+                                      print(base64);
                                     }
                                   }
                                 }
@@ -568,10 +583,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
   }
 
   Future<List<StokMuhasebeKoduModel>> getMuhasebeKodlari() async {
-    GenericResponseModel result = await networkManager.dioGet<StokMuhasebeKoduModel>(
-      path: ApiUrls.getMuhasebeKodlari,
-      bodyModel: StokMuhasebeKoduModel()
-    );
+    GenericResponseModel result = await networkManager.dioGet<StokMuhasebeKoduModel>(path: ApiUrls.getMuhasebeKodlari, bodyModel: StokMuhasebeKoduModel());
     return result.data.map((e) => e as StokMuhasebeKoduModel).toList().cast<StokMuhasebeKoduModel>();
   }
 
@@ -611,5 +623,15 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
         addTokenKey: true,
         data: {"BarkodSira": controller.toStringIfNull, "StokKodu": model?.stokKodu ?? stokKoduController?.text, "Seri": seriValue});
     return result.paramData!["URETILEN_BARKOD"];
+  }
+
+  Future<String> bitmapToBase64(ui.Image bitmap) async {
+    try {
+      final ByteData? byteData = await bitmap.toByteData(format: ui.ImageByteFormat.png);
+      final Uint8List pngBytes = byteData?.buffer.asUint8List() ?? Uint8List(0);
+      return base64Encode(pngBytes);
+    } catch (e) {
+      return '';
+    }
   }
 }

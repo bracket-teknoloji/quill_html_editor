@@ -84,6 +84,7 @@ dependencies:
   timezone: ^0.9.1
   toast: ^0.3.0
   wave: ^0.2.2
+  flutter_image_compress: ^2.0.3
 
 flutter_icons:
   image_path: "assets/splash/pickerLogoTuruncu.png"
