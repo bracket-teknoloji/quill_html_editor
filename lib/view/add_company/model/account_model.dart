@@ -201,7 +201,7 @@ class AccountModel with NetworkManagerMixin {
     //!WEB
     if (kIsWeb) {
       final webInfo = await deviceInfo.webBrowserInfo;
-      cihazSistemVersiyonu = webInfo.appVersion;
+      cihazSistemVersiyonu = "20";
       cihazMarkasi = webInfo.vendor;
       cihazModeli = webInfo.userAgent;
       ozelCihazKimligi = webInfo.userAgent;
