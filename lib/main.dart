@@ -39,7 +39,11 @@ void main() async {
   await CacheManager.instance.initHiveBoxes();
   await AccountModel.instance.init();
   AppInfoModel().init();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]).then((_) {
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.landscapeRight,
+    DeviceOrientation.landscapeLeft,
+  ]).then((_) {
     runApp(const MyApp());
   });
 }

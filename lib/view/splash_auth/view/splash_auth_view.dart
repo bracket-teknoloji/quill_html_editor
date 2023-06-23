@@ -37,6 +37,19 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 0), () => login());
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Wrap(
+        direction: Axis.vertical,
+        alignment: WrapAlignment.center,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        children: [
+          Text.rich(TextSpan(children: [
+            TextSpan(text: "Powered by ", style: TextStyle(color: theme.colorScheme.primary.withOpacity(0.8))),
+            const TextSpan(text: "Bracket Teknoloji\n", style: TextStyle(fontWeight: FontWeight.bold)),
+          ])),
+          Text(AccountModel.instance.uygulamaSurumu ?? "")
+        ],
+      ).paddingAll(UIHelper.lowSize),
       body: Stack(
         children: [
           WaveWidget(
@@ -51,7 +64,12 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SvgPicture.asset("assets/splash/PickerLogoTuruncu.svg", height: height * 0.1),
+                Column(
+                  children: [
+                    SvgPicture.asset("assets/splash/PickerLogoTuruncu.svg", height: height * 0.1),
+                    const Text("Picker\nVeri Toplama Çözümleri", overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center).paddingAll(UIHelper.lowSize),
+                  ],
+                ),
                 Wrap(
                   alignment: WrapAlignment.center,
                   crossAxisAlignment: WrapCrossAlignment.center,

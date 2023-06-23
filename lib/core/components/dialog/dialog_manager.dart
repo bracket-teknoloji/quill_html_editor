@@ -210,6 +210,7 @@ class DialogManager {
 
   SnackBar snackBarError(String message) => SnackBar(
         content: Text(message),
+        behavior: SnackBarBehavior.fixed,
       );
 
   AwesomeDialog _areYouSureDialog(void Function() onYes) {

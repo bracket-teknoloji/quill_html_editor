@@ -625,13 +625,16 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
     return result.paramData!["URETILEN_BARKOD"];
   }
 
-  Future<String> bitmapToBase64(ui.Image bitmap) async {
-    try {
-      final ByteData? byteData = await bitmap.toByteData(format: ui.ImageByteFormat.png);
-      final Uint8List pngBytes = byteData?.buffer.asUint8List() ?? Uint8List(0);
-      return base64Encode(pngBytes);
-    } catch (e) {
-      return '';
-    }
+ Future<String> bitmapToBase64(ui.Image? bitmap) async{
+  if (bitmap == null) {
+    return '';
   }
+  try {
+    final ByteData? byteData = await bitmap.toByteData(format: ui.ImageByteFormat.png);
+    final Uint8List pngBytes = byteData?.buffer.asUint8List() ?? Uint8List(0);
+    return base64Encode(pngBytes);
+  } catch (e) {
+    return '';
+  }
+}
 }

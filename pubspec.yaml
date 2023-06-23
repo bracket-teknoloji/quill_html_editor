@@ -19,7 +19,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.19.4 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -28,30 +28,42 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  awesome_dialog: ^3.0.2
-  connectivity_plus: ^4.0.1
-  crypto: ^3.0.2
+  flutter:
+    sdk: flutter
+
+
   cupertino_icons: ^1.0.2
 
   #Info Dependencies
   device_info_plus: ^8.1.0
+  package_info_plus: ^3.0.3
+  connectivity_plus: ^4.0.1
 
   #Network Dependencies
   dio: ^5.1.1
-  fl_chart: ^0.62.0
-  flutter:
-    sdk: flutter
 
   #Utils Dependencies
+  crypto: ^3.0.2
   flutter_animate: ^4.1.1+1
   flutter_pdfview: ^1.3.1
-  flutter_slidable: ^3.0.0
-  flutter_staggered_animations: ^1.1.1
   flutter_svg: ^2.0.5
   google_fonts: ^4.0.3
   path: ^1.8.3
-  path_provider: ^2.0.15
   kartal: ^2.8.0
+  path_provider: ^2.0.15
+  open_file_plus: ^3.4.1
+  permission_handler: ^10.3.0
+  share_plus: ^6.3.4
+
+  # Component  Dependencies
+  awesome_dialog: ^3.0.2
+  fl_chart: ^0.62.0
+  flutter_staggered_animations: ^1.1.1
+  flutter_slidable: ^3.0.0
+  lottie: ^2.3.1
+  shimmer: ^3.0.0
+  toast: ^0.3.0
+  wave: ^0.2.2
 
   #State Management Dependencies
   get: ^4.6.5
@@ -61,6 +73,8 @@ dependencies:
   #Hive Caching Dependencies
   hive: ^2.0.4
   hive_flutter: ^1.0.0
+
+
   # scroll_app_bar: ^2.0.0
   image_picker: ^0.8.7+5
   intl: ^0.18.1
@@ -70,21 +84,13 @@ dependencies:
   json_serializable: ^6.6.1
 
 
-  lottie: ^2.3.1
-  open_file_plus: ^3.4.1
-  package_info_plus: ^3.0.3
-  permission_handler: ^10.3.0
 
   #QR
   qr_code_scanner: ^1.0.1
   qr_flutter: ^4.0.0
 
-  share_plus: ^6.3.4
-  shimmer: ^3.0.0
-  timezone: ^0.9.1
-  toast: ^0.3.0
-  wave: ^0.2.2
   flutter_image_compress: ^2.0.3
+  timezone: ^0.9.1
 
 flutter_icons:
   image_path: "assets/splash/pickerLogoTuruncu.png"

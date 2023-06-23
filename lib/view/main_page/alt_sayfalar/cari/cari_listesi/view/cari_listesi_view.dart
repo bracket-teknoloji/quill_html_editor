@@ -310,6 +310,10 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                                 getData(sayfa: 1).then((value) {
                                                   viewModel.changeCariListesi(value);
                                                 });
+                                              }else {
+                                                Get.back();
+                                                dialogManager.hideAlertDialog;
+                                                dialogManager.showSnackBar(result.message ?? "");
                                               }
                                             });
                                           },

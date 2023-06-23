@@ -6,4 +6,13 @@ mixin NetworkManagerMixin on Object {
   String toString() {
     return toJson().toString();
   }
+
+  @override
+  operator ==(Object other) {
+    if (other is NetworkManagerMixin) {
+      return other.toJson().toString() == toJson().toString();
+    } else {
+      return false;
+    }
+  }
 }

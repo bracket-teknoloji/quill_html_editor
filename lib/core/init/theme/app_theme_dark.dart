@@ -188,7 +188,7 @@ class AppThemeDark extends AppTheme {
         shape: RoundedRectangleBorder(
           borderRadius: UIHelper.lowBorderRadius,
         ),
-        behavior: SnackBarBehavior.floating,
+        behavior: SnackBarBehavior.fixed ,
       ),
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),

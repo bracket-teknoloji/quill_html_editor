@@ -165,7 +165,9 @@ class AccountModel with NetworkManagerMixin {
     //* Network Bilgileri (Connectivity Plus)
     offline = "H";
     if (kIsWeb) {
+      platform = "Web";
     } else {
+      platform = Platform.operatingSystem;
       var list = await NetworkInterface.list(includeLoopback: true, type: InternetAddressType.IPv4);
       for (var interface in list) {
         for (var i = 0; i < interface.addresses.length; i++) {
@@ -185,6 +187,7 @@ class AccountModel with NetworkManagerMixin {
       wifidenBagli = "H";
     }
     if (kIsWeb) {
+      wifidenBagli = "E";
     } else {
       // cihazDili = Platform.localeName;
     }
@@ -196,9 +199,14 @@ class AccountModel with NetworkManagerMixin {
     final deviceInfo = DeviceInfoPlugin();
     //!WEB
     if (kIsWeb) {
+      final webInfo = await deviceInfo.webBrowserInfo;
+      cihazSistemVersiyonu = webInfo.appVersion;
+      cihazMarkasi = webInfo.vendor;
+      cihazModeli = webInfo.userAgent;
+      ozelCihazKimligi = webInfo.userAgent;
+      cihazKimligi = base64Encode(utf8.encode("$cihazMarkasi:$cihazModeli:$ozelCihazKimligi:"));
     } //! ANDROID
     else if (Platform.isAndroid) {
-      platform = Platform.operatingSystem;
       final androidInfo = await deviceInfo.androidInfo;
       cihazSistemVersiyonu = androidInfo.version.sdkInt.toString();
       cihazMarkasi = androidInfo.brand;
@@ -232,8 +240,10 @@ class AccountModel with NetworkManagerMixin {
         cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
         log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");
       } else {
-        ozelCihazKimligi = base64Encode(utf8.encode("$cihazMarkasi:$cihazModeli:${desktopInfo.releaseId}:"));
-        cihazKimligi = base64Encode(utf8.encode("$cihazMarkasi:$cihazModeli:${desktopInfo.releaseId}:"));
+        //TODO Bunu guid gönereceğiz.
+        //* Bilgisayar adını gönderiyoruz. Bilgisayar adı aynı olduğunda ağda problem olacağı için böyle yapıyoruz.
+        ozelCihazKimligi = base64Encode(utf8.encode("win_${desktopInfo.computerName}"));
+        cihazKimligi = ozelCihazKimligi;
       }
     }
     //* Uygulama Bilgileri
