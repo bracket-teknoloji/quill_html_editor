@@ -62,7 +62,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
       if (scrollController!.position.userScrollDirection == ScrollDirection.reverse) {
         viewModel.changeScrollDown(false);
       } if (scrollController?.position.pixels == scrollController!.position.maxScrollExtent) {
-        viewModel.changeScrollDown(false);
+        viewModel.changeScrollDown(true);
       }
     });
   }

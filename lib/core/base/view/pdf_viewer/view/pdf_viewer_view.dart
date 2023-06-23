@@ -116,7 +116,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
   Observer body() {
     return Observer(builder: (_) {
       if (viewModel.futureController.value == true) {
-        return PDFView(
+        return(Platform.isAndroid || Platform.isIOS) ? PDFView(
           nightMode: false,
           pageFling: true,
           pageSnap: true,
@@ -135,7 +135,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
             viewModel.changeCurrentPage(page ?? 0);
             viewModel.changePageCounter(total ?? 0);
           },
-        );
+        ) : const Center(child: Text("PDF Görüntüleme Şu Anlık Sadece Android ve IOS'ta Desteklenmektedir. Yukarıdaki pdf görüntüleme butonunu kullanınız."));
       } else if (viewModel.futureController.value == null) {
         return const Center(child: CircularProgressIndicator());
       } else {

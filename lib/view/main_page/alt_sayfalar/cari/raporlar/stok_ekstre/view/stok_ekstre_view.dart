@@ -31,7 +31,7 @@ class _StokEkstreViewState extends BaseState<StokEkstreView> {
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
     if (widget.model != null) {
-      cariController?.text = widget.model!.cariAdi!;
+      cariController?.text = widget.model!.cariAdi ?? "";
       viewModel.pdfModel.dicParams?.cariKodu = widget.model!.cariKodu!;
     }
     super.initState();

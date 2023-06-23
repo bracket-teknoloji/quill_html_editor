@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 
 import '../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
-import '../../../../../view/main_page/model/menu_item/menu_item_constants.dart';
 import '../../../../../view/main_page/model/grid_item_model.dart';
+import '../../../../../view/main_page/model/menu_item/menu_item_constants.dart';
 import '../../../../base/state/base_state.dart';
 import '../../../../constants/ui_helper/ui_helper.dart';
 import '../../animated_islemler_grid_tile.dart';
@@ -75,7 +75,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                 shrinkWrap: true,
                 physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: MediaQuery.of(context).size.width ~/ 85,
+                  crossAxisCount: MediaQuery.of(context).size.width ~/ 85 > 5 ? 5 : MediaQuery.of(context).size.width ~/ 85,
                   childAspectRatio: 0.9,
                 ),
                 itemCount: viewModel.gridItemModelList?.length ?? 0,

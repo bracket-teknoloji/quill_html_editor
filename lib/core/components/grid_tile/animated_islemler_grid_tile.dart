@@ -52,7 +52,7 @@ class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> 
               Text(
                 widget.title.toString(),
                 textAlign: TextAlign.center,
-                overflow: TextOverflow.visible,
+                overflow: TextOverflow.ellipsis,
                 style: theme.textTheme.bodySmall?.copyWith(color: Colors.white, fontSize: 10),
               ),
             ],

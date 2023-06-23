@@ -286,6 +286,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                             child: GestureDetector(
                               onTap: () async {
                                 await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: [
+                                  //TODO Bunları unutma 😳
                                   BottomSheetModel(title: "Belgeyi Göster"),
                                   BottomSheetModel(title: "Stok İşlemleri"),
                                 ]);

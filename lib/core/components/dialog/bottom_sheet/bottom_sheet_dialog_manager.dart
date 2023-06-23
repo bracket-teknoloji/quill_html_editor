@@ -224,9 +224,6 @@ class BottomSheetDialogManager {
                                         value: viewModel.isSelectedListMap?[title]![index],
                                         title: Text(children[index].title),
                                         onChanged: (value) {
-                                          if (children[index].onTap != null) {
-                                            children[index].onTap!();
-                                          }
                                           viewModel.changeIndexIsSelectedListMap(title, index, value!);
                                           // viewModel.isSelectedListMap![title]![index] = value!;
                                           list = selectedChecker(children, title);
@@ -374,19 +371,17 @@ class BottomSheetDialogManager {
                       Observer(builder: (_) {
                         return TextField(
                             controller: TextEditingController(text: viewModel.cariTipi),
-                            decoration: InputDecoration(
-                                suffixIcon: IconButton(
-                                    onPressed: () => viewModel.cariTipi != "" ? viewModel.cariTipi = "" : null, icon: Icon(viewModel.cariTipi == "" ? Icons.more_horiz_outlined : Icons.close))),
+                            decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz_outlined)),
                             readOnly: true,
                             onTap: () async {
                               var a = await showRadioBottomSheetDialog(context, title: "Tipi seç", children: [
-                                BottomSheetModel(title: "Alıcı", onTap: () => Get.back(result: "Alıcı")),
-                                BottomSheetModel(title: "Satıcı", onTap: () => Get.back(result: "Satıcı")),
-                                BottomSheetModel(title: "Toptancı", onTap: () => Get.back(result: "Toptancı")),
-                                BottomSheetModel(title: "Kefil", onTap: () => Get.back(result: "Kefil")),
-                                BottomSheetModel(title: "Müstahsil", onTap: () => Get.back(result: "Müstahsil")),
-                                BottomSheetModel(title: "Diğer", onTap: () => Get.back(result: "Diğer")),
-                                BottomSheetModel(title: "Komisyoncu", onTap: () => Get.back(result: "Komisyoncu")),
+                                BottomSheetModel(title: "Alıcı",value: "A", onTap: () => Get.back(result: "Alıcı")),
+                                BottomSheetModel(title: "Satıcı",value: "S", onTap: () => Get.back(result: "Satıcı")),
+                                BottomSheetModel(title: "Toptancı",value: "T", onTap: () => Get.back(result: "Toptancı")),
+                                BottomSheetModel(title: "Kefil",value: "K", onTap: () => Get.back(result: "Kefil")),
+                                BottomSheetModel(title: "Müstahsil",value: "M", onTap: () => Get.back(result: "Müstahsil")),
+                                BottomSheetModel(title: "Diğer",value: "D", onTap: () => Get.back(result: "Diğer")),
+                                BottomSheetModel(title: "Komisyoncu",value: "I", onTap: () => Get.back(result: "Komisyoncu")),
                               ]);
                               if (a != null) {
                                 var result = a != "Komisyoncu" ? a[0] : "I";

@@ -58,7 +58,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
       } else if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
         viewModel.changeIsScrolledDown(false);
       } if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
-        viewModel.changeIsScrolledDown(false);
+        viewModel.changeIsScrolledDown(true);
       }
     });
     super.initState();

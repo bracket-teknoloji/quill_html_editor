@@ -166,6 +166,7 @@ class AccountModel with NetworkManagerMixin {
     offline = "H";
     if (kIsWeb) {
       platform = "Web";
+
     } else {
       platform = Platform.operatingSystem;
       var list = await NetworkInterface.list(includeLoopback: true, type: InternetAddressType.IPv4);
@@ -225,7 +226,7 @@ class AccountModel with NetworkManagerMixin {
       final iosInfo = await deviceInfo.iosInfo;
       cihazMarkasi = iosInfo.name;
       cihazModeli = iosInfo.model;
-      cihazSistemVersiyonu = iosInfo.systemVersion;
+      cihazSistemVersiyonu = "20";
       ozelCihazKimligi = iosInfo.identifierForVendor;
       cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
     }
