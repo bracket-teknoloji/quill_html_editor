@@ -45,6 +45,7 @@ void main() async {
     DeviceOrientation.landscapeLeft,
   ]).then((_) {
     runApp(const MyApp());
+    //deneme
   });
 }
 
