@@ -109,6 +109,13 @@ class CacheManager {
 
 //* Clear and Remove
   static void clearBox(String boxName) => Hive.box(boxName).clear();
-  static void removeFavoriler(String key) => _favorilerBox.delete(key);
+  static void removeFavoriler(String key) {
+    if (_favorilerBox.values.toList().indexWhere((element) => element.title == key) >= 0) {
+      _favorilerBox.deleteAt(_favorilerBox.values.toList().indexWhere((element) => element.title == key));
+    } else {
+      log("Favorilerde böyle bir key yok");
+    }
+  }
+
   static void removeFavoriWithIndex(int index) => _favorilerBox.deleteAt(index);
 }

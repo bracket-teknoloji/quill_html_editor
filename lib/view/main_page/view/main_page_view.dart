@@ -234,12 +234,12 @@ class _MainPageViewState extends BaseState<MainPageView> {
   bool get anaSayfaMi => items.any((element) {
         return element.menuTipi != "A";
       });
-  Icon yetkiKontrolIcon(String name) {
-    if (CacheManager.getFavoriler().containsKey(name.toString())) {
-      return const Icon(Icons.star, size: 20);
-    } else {
-      CacheManager.removeFavoriler(name.toString());
-      return const Icon(Icons.star_border, size: 20);
-    }
-  }
+  // Icon yetkiKontrolIcon(String name) {
+  //   if (CacheManager.getFavoriler().values.any((element) => element.title == name)) {
+  //     return const Icon(Icons.star, size: 20);
+  //   } else {
+  //     CacheManager.removeFavoriler(name.toString());
+  //     return const Icon(Icons.star_border, size: 20);
+  //   }
+  // }
 }
