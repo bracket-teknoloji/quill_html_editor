@@ -2,7 +2,6 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
 
-import "core/init/app_info/app_info.dart";
 import "core/init/cache/cache_manager.dart";
 import "core/init/dependency_injection/network_dependency_injection.dart";
 import "core/init/theme/app_theme_dark.dart";
@@ -39,7 +38,6 @@ import "view/splash_auth/view/splash_auth_view.dart";
 void main() async {
   await CacheManager.instance.initHiveBoxes();
   await AccountModel.instance.init();
-  AppInfoModel().init();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.landscapeRight,

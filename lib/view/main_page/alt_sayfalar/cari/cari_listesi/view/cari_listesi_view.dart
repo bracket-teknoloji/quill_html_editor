@@ -18,8 +18,8 @@ import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet
 import '../../../../../../core/components/dialog/bottom_sheet/view_model/bottom_sheet_state_manager.dart';
 import '../../../../../../core/components/floating_action_button/custom_floating_action_button.dart';
 import '../../../../../../core/components/grid_tile/custom_animated_grid/view/custom_animated_grid_view.dart';
-import '../../../../../../core/components/textfield/custom_app_bar_text_field.dart';
 import '../../../../../../core/components/helper_widgets/scrollable_widget.dart';
+import '../../../../../../core/components/textfield/custom_app_bar_text_field.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../core/constants/extensions/list_extensions.dart';
 import '../../../../../../core/constants/extensions/model_extensions.dart';
@@ -153,9 +153,9 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                   icon: const Icon(Icons.arrow_back));
             }),
       bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(50),
+        preferredSize: Size.fromHeight(height * 0.07),
         child: SizedBox(
-          height: context.isPortrait ? height * 0.06 : height * 0.1,
+          height: height * 0.07,
           child: ListView(
             shrinkWrap: true,
             itemExtent: width * 0.33,
@@ -310,7 +310,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                                 getData(sayfa: 1).then((value) {
                                                   viewModel.changeCariListesi(value);
                                                 });
-                                              }else {
+                                              } else {
                                                 Get.back();
                                                 dialogManager.hideAlertDialog;
                                                 dialogManager.showSnackBar(result.message ?? "");

@@ -10,9 +10,9 @@ import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import '../../../../../../core/components/floating_action_button/custom_floating_action_button.dart';
+import '../../../../../../core/components/helper_widgets/custom_label_widget.dart';
 import '../../../../../../core/components/textfield/custom_app_bar_text_field.dart';
 import '../../../../../../core/components/textfield/custom_text_field.dart';
-import '../../../../../../core/components/helper_widgets/custom_label_widget.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../core/constants/enum/grup_kodu_enums.dart';
 import '../../../../../../core/constants/extensions/list_extensions.dart';
@@ -57,7 +57,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
         viewModel.changeIsScrolledDown(true);
       } else if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
         viewModel.changeIsScrolledDown(false);
-      } if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+      }
+      if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
         viewModel.changeIsScrolledDown(true);
       }
     });
@@ -172,9 +173,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
             icon: const Icon(Icons.more_vert_outlined))
       ],
       bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(50),
+        preferredSize: Size.fromHeight(height * 0.07),
         child: SizedBox(
-          height: context.isPortrait ? height * 0.06 : height * 0.1,
+          height: height * 0.07,
           child: ListView(
             shrinkWrap: true,
             itemExtent: width * 0.33,
@@ -454,7 +455,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                       BottomSheetModel(title: "Bakiye (Azalan)", value: "BAKIYE_ZA", onTap: () => Get.back(result: "BAKIYE_ZA")),
                     ]);
                     if (result != null) {
-                    viewModel.setStokListesi(null);
+                      viewModel.setStokListesi(null);
                       viewModel.setSiralama(result);
                       viewModel.resetSayfa();
                       getData();

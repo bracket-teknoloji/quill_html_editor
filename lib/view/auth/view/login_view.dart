@@ -216,13 +216,11 @@ class _LoginViewState extends BaseState<LoginView> {
         CacheManager.setHesapBilgileri(a);
 
         log(jsonEncode(a.toJson()), name: "sea");
-        final response = await NetworkManager.getToken(path: ApiUrls.token, queryParameters: {
-          "deviceInfos": jsonEncode(a.toJson())
-        }, data: {
-          "grant_type": "password",
-          "username": emailController.text,
-          "password": passwordController.text,
-        });
+        final response = await NetworkManager.getToken(
+          path: ApiUrls.token,
+          queryParameters: {"deviceInfos": jsonEncode(a.toJson())},
+          data: {"grant_type": "password", "username": emailController.text, "password": passwordController.text},
+        );
         dialogManager.hideAlertDialog;
 
         Hive.box("preferences").put(companyController.text, [

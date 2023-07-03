@@ -296,7 +296,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
         return ScrollableWidget(
           isScrolledDown: viewModel.isScrollDown,
           child: SizedBox(
-            height: context.isPortrait ? (height * 0.06) : height * 0.15,
+            height: context.isPortrait ? (height * 0.06) : (height * 0.1 < 60 ? 60 : height * 0.1),
             child: Observer(builder: (_) {
               return Row(
                 children: [

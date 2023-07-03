@@ -182,16 +182,16 @@ class AccountModel with NetworkManagerMixin {
     konumTarihi = "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day} ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}";
 
     uygulamaGuncellemeTarihi = "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}";
-    if (await Connectivity().checkConnectivity() == ConnectivityResult.wifi) {
+    if (kIsWeb){
+
+      wifidenBagli = "E";
+    }
+    else if (await Connectivity().checkConnectivity() == ConnectivityResult.wifi) {
       wifidenBagli = "E";
     } else {
       wifidenBagli = "H";
     }
-    if (kIsWeb) {
-      wifidenBagli = "E";
-    } else {
-      // cihazDili = Platform.localeName;
-    }
+    
     cihazTimeZoneDakika = DateTime.now().timeZoneOffset.inMinutes;
     //* Cihaz ve Sim Bilgileri
     uygulamaDili = "tr";
@@ -203,6 +203,7 @@ class AccountModel with NetworkManagerMixin {
       final webInfo = await deviceInfo.webBrowserInfo;
       cihazSistemVersiyonu = webInfo.appVersion;
       cihazMarkasi = webInfo.vendor;
+      cihazSistemVersiyonu = "20";
       cihazModeli = webInfo.userAgent;
       ozelCihazKimligi = webInfo.userAgent;
       cihazKimligi = base64Encode(utf8.encode("$cihazMarkasi:$cihazModeli:$ozelCihazKimligi:"));
