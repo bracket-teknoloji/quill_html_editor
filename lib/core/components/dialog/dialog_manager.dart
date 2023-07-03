@@ -120,7 +120,7 @@ class DialogManager {
 
   void get hideSnackBar => ScaffoldMessenger.of(context).clearSnackBars();
 
-  void get hideAlertDialog => Get.back(canPop: true, closeOverlays: true);
+  void get hideAlertDialog => Get.back(closeOverlays: true);
 
   AlertDialog loadingDialog() {
     return AlertDialog(
@@ -288,6 +288,8 @@ class DialogManager {
         width:kIsWeb? 400 : Platform.isLinux || Platform.isWindows || Platform.isMacOS ? MediaQuery.of(context).size.width * 0.4 : null,
         customHeader: customHeader,
         alignment: Alignment.center,
+        onDismissCallback: (type) {
+        },
         reverseBtnOrder: false,
         barrierColor: Colors.black.withOpacity(0.9),
         dialogBorderRadius: UIHelper.lowBorderRadius,

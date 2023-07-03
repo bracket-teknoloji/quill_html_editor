@@ -19,7 +19,7 @@ import '../../constants/enum/dio_enum.dart';
 import 'login/api_urls.dart';
 
 class NetworkManager {
-  static final Dio _dio = Dio(BaseOptions(baseUrl: "http://ofis.bracket.com.tr:7575/PickerDebug/", connectTimeout: const Duration(seconds: 20)));
+  static final Dio _dio = Dio(BaseOptions(baseUrl: "http://ofis.bracket.com.tr:7575/Picker/", connectTimeout: const Duration(seconds: 20)));
   NetworkManager() {
     _dio.interceptors.add(
       InterceptorsWrapper(
