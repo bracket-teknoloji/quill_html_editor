@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../../view/main_page/model/grid_item_model.dart';
@@ -43,10 +42,6 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
     return InkWell(
       borderRadius: UIHelper.lowBorderRadius,
       splashFactory: InkRipple.splashFactory,
-      onLongPress: () {
-        Clipboard.setData(ClipboardData(text: widget.title!));
-        dialogManager.showSnackBar("Kopyalandı");
-      },
       splashColor: theme.primaryColor,
       onTap: widget.onTap,
       child: Card(
@@ -82,6 +77,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                     child: Text(
                     widget.title ?? "",
                     textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
                     style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
                   ))
                 : Column(
@@ -106,6 +102,9 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                       Text(
                         widget.menuTipi != "I" ? widget.title.toString() : "",
                         textAlign: TextAlign.center,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        softWrap: true,
                         style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
                       ),
                     ],

@@ -11,9 +11,9 @@ import '../../../core/components/wrap/appbar_title.dart';
 import '../../../core/constants/ui_helper/icon_helper.dart';
 import '../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../core/init/cache/cache_manager.dart';
+import '../model/grid_item_model.dart';
 import '../model/main_page_model.dart';
 import '../model/menu_item/menu_item_constants.dart';
-import '../model/grid_item_model.dart';
 
 class MainPageView extends StatefulWidget {
   const MainPageView({super.key});
@@ -70,7 +70,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
                       child: GridView.builder(
                         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: MediaQuery.of(context).size.width ~/ 85,
+                          crossAxisCount: MediaQuery.of(context).size.width ~/ 85 > 10 ? 10 : MediaQuery.of(context).size.width ~/ 85,
                           childAspectRatio: 0.9,
                         ),
                         itemCount: items.length,
@@ -86,7 +86,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
                                   duration: const Duration(milliseconds: 900),
                                   child: FadeInAnimation(
                                       child: CustomGridTile(
-                                          iconWidget: item.iconWidget,
+                                          iconWidget: item.iconData,
                                           menuTipi: item.menuTipi,
                                           route: item.route,
                                           arguments: item.arguments,

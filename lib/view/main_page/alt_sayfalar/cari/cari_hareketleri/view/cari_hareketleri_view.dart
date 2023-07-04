@@ -17,6 +17,7 @@ import '../../../../../../core/components/grid_tile/custom_animated_grid/view/cu
 import '../../../../../../core/components/helper_widgets/scrollable_widget.dart';
 import '../../../../../../core/components/wrap/appbar_title.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
+import '../../../../../../core/constants/enum/islem_tipi_enum.dart';
 import '../../../../../../core/constants/extensions/number_extensions.dart';
 import '../../../../../../core/constants/extensions/widget_extensions.dart';
 import '../../../../../../core/constants/ui_helper/ui_helper.dart';
@@ -124,7 +125,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
               children: [
                 AppBarButton(
                     onPressed: () {
-                      dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: widget.cari));
+                      dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: widget.cari, islemTipi: IslemTipi.cari));
                     },
                     icon: Icons.tune_outlined,
                     child: const Text("Cari İşlemleri")),

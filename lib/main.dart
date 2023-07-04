@@ -1,7 +1,12 @@
+import "dart:ui";
+
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
+import "core/init/app_info/app_info.dart";
 import "core/init/cache/cache_manager.dart";
 import "core/init/dependency_injection/network_dependency_injection.dart";
 import "core/init/theme/app_theme_dark.dart";
@@ -38,6 +43,7 @@ import "view/splash_auth/view/splash_auth_view.dart";
 void main() async {
   await CacheManager.instance.initHiveBoxes();
   await AccountModel.instance.init();
+  await AppInfoModel.instance.init();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.landscapeRight,
@@ -55,11 +61,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       defaultTransition: Transition.rightToLeft,
+      color: Colors.amber,
       popGesture: true,
       debugShowCheckedModeBanner: false,
       opaqueRoute: false,
+      scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: {PointerDeviceKind.touch, PointerDeviceKind.mouse, PointerDeviceKind.stylus, PointerDeviceKind.unknown}),
       darkTheme: AppThemeDark.instance?.theme,
       themeMode: ThemeMode.dark,
+      locale: Get.deviceLocale,
       title: "Picker",
       home: const SplashAuthView(),
       getPages: [
@@ -90,7 +99,10 @@ class MyApp extends StatelessWidget {
             GetPage(name: "/stokEdit", page: () => BaseStokEditingView(model: Get.arguments)),
             GetPage(
               name: "/stokHareketleri",
-              page: () => StokHareketleriView(model: Get.arguments),
+              page: () => StokHareketleriView(
+                  model: Get.arguments is StokListesiModel ? Get.arguments : null,
+                  stokKodu: Get.arguments is String ? Get.arguments : null,
+                  cariModel: Get.arguments is CariListesiModel ? Get.arguments : null),
             ),
             // page: () => StokHareketleriView(model: Get.arguments is StokHareketleriModel ? Get.arguments : null, stokKodu: Get.arguments is String ? Get.arguments : null)),
             GetPage(name: "/stokYeniKayit", page: () => StokYeniKayitView(model: Get.arguments)),

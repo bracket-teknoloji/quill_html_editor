@@ -54,7 +54,7 @@ class DialogManager {
             ),
             Padding(
               padding: UIHelper.midPaddingHorizontal,
-              child: Text(message, textAlign: TextAlign.center),
+              child: SelectableText(message, textAlign: TextAlign.center),
             ),
           ],
         ),
@@ -285,7 +285,7 @@ class DialogManager {
         //* Standardı 15 olduğu için ve null kabul etmediği için 15 verdim.
         bodyHeaderDistance: dialogType != DialogType.noHeader ? 15 : UIHelper.lowSize,
         context: context,
-        width:kIsWeb? 400 : Platform.isLinux || Platform.isWindows || Platform.isMacOS ? MediaQuery.of(context).size.width * 0.4 : null,
+        width:kIsWeb? 400 : Platform.isLinux || Platform.isWindows || Platform.isMacOS ? (context.isLandscape? MediaQuery.of(context).size.width * 0.4: null) : null,
         customHeader: customHeader,
         alignment: Alignment.center,
         onDismissCallback: (type) {

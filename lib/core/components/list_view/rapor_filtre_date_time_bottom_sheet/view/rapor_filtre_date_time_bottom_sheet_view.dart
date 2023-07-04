@@ -63,22 +63,24 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
         SizedBox(
           height: 50,
           width: double.infinity,
-          child: ListView.builder(
-              controller: scrollController,
-              scrollDirection: Axis.horizontal,
-              itemCount: viewModel.childrenTitleList.length,
-              itemBuilder: (context, listTileIndex) => RadioMenuButton(
-                  style: ButtonStyle(textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 12))),
-                  value: listTileIndex,
-                  groupValue: viewModel.groupValue,
-                  onChanged: (index) {
-                    widget.baslangicTarihiController.text = viewModel.startDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull() ?? "";
-                    widget.bitisTarihiController.text = index != 0 ? viewModel.finishDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull() ?? "" : "";
-                    widget.filterOnChanged(index);
-                    viewModel.changeGroupValue(index ?? 0);
-                    setState(() {});
-                  },
-                  child: Text(viewModel.childrenTitleList[listTileIndex]))),
+          child: Listener(
+            child: ListView.builder(
+                controller: scrollController,
+                scrollDirection: Axis.horizontal,
+                itemCount: viewModel.childrenTitleList.length,
+                itemBuilder: (context, listTileIndex) => RadioMenuButton(
+                    style: ButtonStyle(textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 12))),
+                    value: listTileIndex,
+                    groupValue: viewModel.groupValue,
+                    onChanged: (index) {
+                      widget.baslangicTarihiController.text = viewModel.startDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull() ?? "";
+                      widget.bitisTarihiController.text = index != 0 ? viewModel.finishDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull() ?? "" : "";
+                      widget.filterOnChanged(index);
+                      viewModel.changeGroupValue(index ?? 0);
+                      setState(() {});
+                    },
+                    child: Text(viewModel.childrenTitleList[listTileIndex]))),
+          ),
         ).paddingAll(UIHelper.lowSize),
         Row(
                 children: children2.map((e) => Expanded(child: e)).toList(),

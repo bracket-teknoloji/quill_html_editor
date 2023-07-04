@@ -19,7 +19,7 @@ class CariNetworkManager {
         headers: {"Modul": name?.name ?? "CARI", "GrupNo": "-1", "Kullanimda": "E"},
         addQuery: true,
         addSirketBilgileri: true,
-        queryParameters: {"Modul": name ?? "CARI", "GrupNo": "-1"});
+        queryParameters: {"Modul": name?.name ?? "CARI", "GrupNo": "-1"});
     return responseKod;
   }
 

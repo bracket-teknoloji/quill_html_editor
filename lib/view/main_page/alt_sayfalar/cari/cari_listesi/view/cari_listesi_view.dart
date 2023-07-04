@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -21,6 +22,7 @@ import '../../../../../../core/components/grid_tile/custom_animated_grid/view/cu
 import '../../../../../../core/components/helper_widgets/scrollable_widget.dart';
 import '../../../../../../core/components/textfield/custom_app_bar_text_field.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
+import '../../../../../../core/constants/enum/islem_tipi_enum.dart';
 import '../../../../../../core/constants/extensions/list_extensions.dart';
 import '../../../../../../core/constants/extensions/model_extensions.dart';
 import '../../../../../../core/constants/extensions/number_extensions.dart';
@@ -270,107 +272,120 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     if (index < (viewModel.cariListesi?.length ?? 0)) {
                       CariListesiModel object = viewModel.cariListesi?[index];
                       return Card(
-                        child: ListTile(
-                          onLongPress: () {
-                            dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object));
+                        child: Listener(
+                          onPointerDown: (event) {
+                            if (event.kind == PointerDeviceKind.mouse && event.buttons == 2) {
+                              dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipi.cari));
+                            }
                           },
-                          onTap: !(widget.isGetData ?? true)
-                              ? () async {
-                                  var pageName = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                      title: "${object.cariKodu}\n${object.cariAdi}",
-                                      children: [
-                                        BottomSheetModel(
-                                                title: "Görüntüle",
-                                                iconWidget: Icons.search_outlined,
-                                                onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", baseEditEnum: BaseEditEnum.goruntule)))
-                                            .yetkiKontrol(yetkiController.cariKarti),
-                                        BottomSheetModel(
-                                                title: "Düzelt",
-                                                iconWidget: Icons.edit_outlined,
-                                                onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", baseEditEnum: BaseEditEnum.duzenle)))
-                                            .yetkiKontrol(yetkiController.cariKartiDuzenleme),
-                                        BottomSheetModel(
-                                          title: "Sil",
-                                          iconWidget: Icons.delete_outline,
-                                          onTap: () async {
-                                            dialogManager.showAreYouSureDialog(() async {
-                                              dialogManager.showLoadingDialog("Cari Siliniyor...");
-                                              var result = await networkManager.dioPost<CariListesiModel>(
-                                                path: ApiUrls.deleteCari,
-                                                bodyModel: CariListesiModel(),
-                                                addCKey: true,
-                                                addSirketBilgileri: true,
-                                                addTokenKey: true,
-                                                queryParameters: {"CariKodu": object.cariKodu ?? ""},
-                                              );
-                                              if (result.success ?? false) {
+                          child: ListTile(
+                            onLongPress: () {
+                              dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipi.cari));
+                            },
+                            onTap: !(widget.isGetData ?? true)
+                                ? () async {
+                                    var pageName = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                        title: "${object.cariKodu}\n${object.cariAdi}",
+                                        children: [
+                                          BottomSheetModel(
+                                                  title: "Görüntüle",
+                                                  iconWidget: Icons.search_outlined,
+                                                  onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", baseEditEnum: BaseEditEnum.goruntule)))
+                                              .yetkiKontrol(yetkiController.cariKarti),
+                                          BottomSheetModel(
+                                                  title: "Düzelt",
+                                                  iconWidget: Icons.edit_outlined,
+                                                  onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", baseEditEnum: BaseEditEnum.duzenle)))
+                                              .yetkiKontrol(yetkiController.cariKartiDuzenleme),
+                                          BottomSheetModel(
+                                            title: "Sil",
+                                            iconWidget: Icons.delete_outline,
+                                            onTap: () async {
+                                              dialogManager.showAreYouSureDialog(() async {
+                                                dialogManager.showLoadingDialog("Cari Siliniyor...");
+                                                var result = await networkManager.dioPost<CariListesiModel>(
+                                                  path: ApiUrls.deleteCari,
+                                                  bodyModel: CariListesiModel(),
+                                                  addCKey: true,
+                                                  addSirketBilgileri: true,
+                                                  addTokenKey: true,
+                                                  queryParameters: {"CariKodu": object.cariKodu ?? ""},
+                                                );
+                                                if (result.success ?? false) {
+                                                  Get.back();
+                                                  dialogManager.hideAlertDialog;
+                                                  dialogManager.showSnackBar("${object.cariAdi} adlı cari silindi");
+                                                  getData(sayfa: 1).then((value) {
+                                                    viewModel.changeCariListesi(value);
+                                                  });
+                                                } else {
+                                                  Get.back();
+                                                  dialogManager.hideAlertDialog;
+                                                  dialogManager.showSnackBar(result.message ?? "");
+                                                }
+                                              });
+                                            },
+                                          ).yetkiKontrol(yetkiController.cariKartiSilme),
+                                          BottomSheetModel(title: "Hareketler", iconWidget: Icons.sync_alt_outlined, onTap: () => Get.back(result: "/mainPage/cariHareketleri"))
+                                              .yetkiKontrol(yetkiController.cariHareketleri),
+                                          BottomSheetModel(
+                                              title: "İşlemler",
+                                              iconWidget: Icons.list_alt_outlined,
+                                              onTap: () {
                                                 Get.back();
-                                                dialogManager.hideAlertDialog;
-                                                dialogManager.showSnackBar("${object.cariAdi} adlı cari silindi");
-                                                getData(sayfa: 1).then((value) {
-                                                  viewModel.changeCariListesi(value);
-                                                });
-                                              } else {
+                                                dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipi.cari));
+                                              }),
+                                          BottomSheetModel(
+                                              title: "Raporlar",
+                                              iconWidget: Icons.area_chart_outlined,
+                                              onTap: () {
                                                 Get.back();
-                                                dialogManager.hideAlertDialog;
-                                                dialogManager.showSnackBar(result.message ?? "");
-                                              }
-                                            });
-                                          },
-                                        ).yetkiKontrol(yetkiController.cariKartiSilme),
-                                        BottomSheetModel(title: "Hareketler", iconWidget: Icons.sync_alt_outlined, onTap: () => Get.back(result: "/mainPage/cariHareketleri"))
-                                            .yetkiKontrol(yetkiController.cariHareketleri),
-                                        // BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
-                                        BottomSheetModel(
-                                            title: "Raporlar",
-                                            iconWidget: Icons.list_alt_outlined,
+                                                dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipi.cariRapor));
+                                              }),
+                                          BottomSheetModel(
+                                            title: "Serbest Raporlar",
+                                            iconWidget: Icons.area_chart_outlined,
                                             onTap: () {
                                               Get.back();
-                                              dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object));
-                                            }),
-                                        BottomSheetModel(
-                                          title: "Serbest Raporlar",
-                                          iconWidget: Icons.list_alt_outlined,
-                                          onTap: () {
-                                            Get.back();
-                                            dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, serbestMi: true));
-                                          },
-                                        ),
-                                      ].nullCheck.cast<BottomSheetModel>());
-                                  if (pageName != null) {
-                                    BaseEditEnum? baseEditEnum;
-                                    if (pageName is CariSeceneklerModel) {
-                                      baseEditEnum = pageName.baseEditEnum;
-                                      pageName = pageName.path;
-                                      BaseEditModel editModel = BaseEditModel(baseEditEnum: baseEditEnum, model: object);
-                                      Get.toNamed(pageName, arguments: editModel);
-                                    } else {
-                                      Get.toNamed(pageName, arguments: object);
+                                              dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipi.cariSerbest));
+                                            },
+                                          ),
+                                        ].nullCheck.cast<BottomSheetModel>());
+                                    if (pageName != null) {
+                                      BaseEditEnum? baseEditEnum;
+                                      if (pageName is CariSeceneklerModel) {
+                                        baseEditEnum = pageName.baseEditEnum;
+                                        pageName = pageName.path;
+                                        BaseEditModel editModel = BaseEditModel(baseEditEnum: baseEditEnum, model: object);
+                                        Get.toNamed(pageName, arguments: editModel);
+                                      } else {
+                                        Get.toNamed(pageName, arguments: object);
+                                      }
                                     }
                                   }
-                                }
-                              : () => Get.back(result: object),
-                          isThreeLine: true,
-                          contentPadding: UIHelper.midPadding,
-                          leading: CircleAvatar(backgroundColor: UIHelper.getColorWithValue(object.bakiye ?? 0.0), child: Text(object.cariAdi?.substring(0, 1) ?? "")),
-                          title: Text(object.cariAdi ?? ""),
-                          subtitle: Wrap(
-                            direction: Axis.vertical,
-                            alignment: WrapAlignment.spaceBetween,
-                            children: [
-                              Text("${object.cariKodu}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))),
-                              object.cariIl != null ? Text("${object.cariIl}/${object.cariIlce}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))) : const SizedBox(),
-                            ],
+                                : () => Get.back(result: object),
+                            isThreeLine: true,
+                            contentPadding: UIHelper.midPadding,
+                            leading: CircleAvatar(backgroundColor: UIHelper.getColorWithValue(object.bakiye ?? 0.0), child: Text(object.cariAdi?.substring(0, 1) ?? "")),
+                            title: Text(object.cariAdi ?? ""),
+                            subtitle: Wrap(
+                              direction: Axis.vertical,
+                              alignment: WrapAlignment.spaceBetween,
+                              children: [
+                                Text("${object.cariKodu}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))),
+                                object.cariIl != null ? Text("${object.cariIl}/${object.cariIlce}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))) : const SizedBox(),
+                              ],
+                            ),
+                            trailing: Wrap(children: [
+                              Text(
+                                  (object.bakiye == null
+                                          ? '0.00 TL'
+                                          : '${formatter.format(object.bakiye)} TL'
+                                              "\n")
+                                      .toString(),
+                                  style: TextStyle(color: UIHelper.getColorWithValue(object.bakiye ?? 0.0)))
+                            ]),
                           ),
-                          trailing: Wrap(children: [
-                            Text(
-                                (object.bakiye == null
-                                        ? '0.00 TL'
-                                        : '${formatter.format(object.bakiye)} TL'
-                                            "\n")
-                                    .toString(),
-                                style: TextStyle(color: UIHelper.getColorWithValue(object.bakiye ?? 0.0)))
-                          ]),
                         ),
                       );
                     } else {
@@ -396,7 +411,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                       ? Row(
                           children: [
                             Expanded(
-                                child: FooterButton(onPressed: () {}, children: [
+                                child: FooterButton(children: [
                               const Text("Tahsil Edilecek"),
                               Text(
                                 "${double.tryParse(paramData["TAHSIL_EDILECEK"].replaceAll(",", "."))?.toInt().commaSeparated} TL",

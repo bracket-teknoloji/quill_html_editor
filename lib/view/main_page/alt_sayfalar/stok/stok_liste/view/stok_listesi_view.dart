@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -10,11 +12,13 @@ import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import '../../../../../../core/components/floating_action_button/custom_floating_action_button.dart';
+import '../../../../../../core/components/grid_tile/custom_animated_grid/view/custom_animated_grid_view.dart';
 import '../../../../../../core/components/helper_widgets/custom_label_widget.dart';
 import '../../../../../../core/components/textfield/custom_app_bar_text_field.dart';
 import '../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../core/constants/enum/grup_kodu_enums.dart';
+import '../../../../../../core/constants/enum/islem_tipi_enum.dart';
 import '../../../../../../core/constants/extensions/list_extensions.dart';
 import '../../../../../../core/constants/extensions/model_extensions.dart';
 import '../../../../../../core/constants/extensions/number_extensions.dart';
@@ -498,83 +502,93 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                   StokListesiModel stok = stokListesi![index];
 
                   return Card(
-                    child: ListTile(
-                      contentPadding: UIHelper.lowPadding,
-                      // leading: stok.resimUrlKucuk !=null ? Image.memory(networkManager.getImage(stok.resimUrlKucuk))
-                      leading: CircleAvatar(
-                        foregroundImage: viewModel.imageMap[stok.stokKodu],
-                        child: Text((stok.stokAdi ?? "  ").substring(0, 1)),
-                      ),
-                      trailing: Text("${stok.bakiye ?? 0} ${stok.olcuBirimi ?? ""}", style: context.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(stok.bakiye ?? 0))),
-                      title: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text.rich(
-                            TextSpan(
-                              text: stok.stokAdi,
-                              children: [
-                                TextSpan(text: "\n${stok.stokKodu}", style: context.textTheme.bodySmall?.copyWith(color: Colors.grey)),
-                              ],
+                    child: Listener(
+                      onPointerDown: (event){
+                        if (event.kind == PointerDeviceKind.mouse && event.buttons == 2) {
+                          dialogManager.showGridViewDialog(CustomAnimatedGridView<StokListesiModel>(model: stok, islemTipi: IslemTipi.stok));
+                        }
+                      },
+                      child: ListTile(
+                        onLongPress: () {
+                          dialogManager.showGridViewDialog(CustomAnimatedGridView<StokListesiModel>(model: stok, islemTipi: IslemTipi.stok));
+                        },
+                        contentPadding: UIHelper.lowPadding,
+                        // leading: stok.resimUrlKucuk !=null ? Image.memory(networkManager.getImage(stok.resimUrlKucuk))
+                        leading: CircleAvatar(
+                          foregroundImage: viewModel.imageMap[stok.stokKodu],
+                          child: Text((stok.stokAdi ?? "  ").substring(0, 1)),
+                        ),
+                        trailing: Text("${stok.bakiye ?? 0} ${stok.olcuBirimi ?? ""}", style: context.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(stok.bakiye ?? 0))),
+                        title: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text.rich(
+                              TextSpan(
+                                text: stok.stokAdi,
+                                children: [
+                                  TextSpan(text: "\n${stok.stokKodu}", style: context.textTheme.bodySmall?.copyWith(color: Colors.grey)),
+                                ],
+                              ),
                             ),
-                          ),
-                          Wrap(
-                            spacing: UIHelper.lowSize,
-                            children: [
-                              (stok.seriCikislardaAcik ?? false) ? const Badge(label: Text("Seri")) : const SizedBox(),
-                              (stok.satDovTip != null || stok.alisDovTip != null) ? const Badge(label: Text("Dövizli")) : const SizedBox()
-                            ],
-                          )
-                        ],
-                      ),
-                      onTap: (widget.isGetData ?? false)
-                          ? () => Get.back(result: stok)
-                          : () async {
-                              var children2 = [
-                                BottomSheetModel(
-                                    title: "Görüntüle",
-                                    iconWidget: Icons.visibility,
-                                    onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.goruntule, model: stok))).yetkiKontrol(yetkiController.stokKarti),
-                                BottomSheetModel(
-                                    title: "Düzelt",
-                                    iconWidget: Icons.edit,
-                                    onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.duzenle, model: stok))).yetkiKontrol(yetkiController.stokKartiDuzenleme),
-                                BottomSheetModel(
-                                    title: "Hareketler",
-                                    iconWidget: Icons.list_alt,
-                                    onTap: () {
-                                      Get.back();
-                                      return Get.toNamed("/mainPage/stokHareketleri", arguments: stok);
-                                    }).yetkiKontrol(yetkiController.stokHareketleriStokHareketleri),
-                                //😳 BottomSheetModel(title: "Depo Bakiye Durumu", iconWidget: Icons.list_alt),
-                                // !!BottomSheetModel(
-                                // !!  title: "Yazdır",
-                                //   iconWidget: Icons.print,
-                                //   onTap: () async {
-                                //     // // ignore: use_build_context_synchronously
-                                //     // await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                //     //     title: "fdsfg",
-                                //     //     body: Image(
-                                //     //       image: result,
-                                //     //       errorBuilder: (context, error, stackTrace) {
-                                //     //         return const Icon(Icons.image_not_supported_outlined);
-                                //     //       },
-                                //     //     ));
-                                //   },
-                                // ),
-                                //😳 BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt),
-                              ];
-                              children2.insert(2, BottomSheetModel(title: "Sil", iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? "")).yetkiKontrol(yetkiController.stokKartiSilme));
-                              List<BottomSheetModel>? newResult = children2.nullCheck.cast<BottomSheetModel>();
-                              BaseEditModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: stok.stokAdi ?? "", children: newResult);
-                              if (result != null) {
-                                await Get.toNamed("/mainPage/stokEdit", arguments: result);
-                                viewModel.setStokListesi(null);
-                                viewModel.resetSayfa();
-                                await getData();
-                              }
-                            },
-                    ).paddingAll(10),
+                            Wrap(
+                              spacing: UIHelper.lowSize,
+                              children: [
+                                (stok.seriCikislardaAcik ?? false) ? const Badge(label: Text("Seri")) : const SizedBox(),
+                                (stok.satDovTip != null || stok.alisDovTip != null) ? const Badge(label: Text("Dövizli")) : const SizedBox()
+                              ],
+                            )
+                          ],
+                        ),
+                        onTap: (widget.isGetData ?? false)
+                            ? () => Get.back(result: stok)
+                            : () async {
+                                var children2 = [
+                                  BottomSheetModel(
+                                      title: "Görüntüle",
+                                      iconWidget: Icons.visibility,
+                                      onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.goruntule, model: stok))).yetkiKontrol(yetkiController.stokKarti),
+                                  BottomSheetModel(
+                                      title: "Düzelt",
+                                      iconWidget: Icons.edit,
+                                      onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.duzenle, model: stok))).yetkiKontrol(yetkiController.stokKartiDuzenleme),
+                                  BottomSheetModel(
+                                      title: "Hareketler",
+                                      iconWidget: Icons.list_alt,
+                                      onTap: () {
+                                        Get.back();
+                                        return Get.toNamed("/mainPage/stokHareketleri", arguments: stok);
+                                      }).yetkiKontrol(yetkiController.stokHareketleriStokHareketleri),
+                                  //😳 BottomSheetModel(title: "Depo Bakiye Durumu", iconWidget: Icons.list_alt),
+                                  // !!BottomSheetModel(
+                                  // !!  title: "Yazdır",
+                                  //   iconWidget: Icons.print,
+                                  //   onTap: () async {
+                                  //     // // ignore: use_build_context_synchronously
+                                  //     // await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                  //     //     title: "fdsfg",
+                                  //     //     body: Image(
+                                  //     //       image: result,
+                                  //     //       errorBuilder: (context, error, stackTrace) {
+                                  //     //         return const Icon(Icons.image_not_supported_outlined);
+                                  //     //       },
+                                  //     //     ));
+                                  //   },
+                                  // ),
+                                  //😳 BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt),
+                                ];
+                                children2.insert(2, BottomSheetModel(title: "Sil", iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? "")).yetkiKontrol(yetkiController.stokKartiSilme));
+                                List<BottomSheetModel>? newResult = children2.nullCheck.cast<BottomSheetModel>();
+                                BaseEditModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: stok.stokKodu ?? "", children: newResult);
+                                if (result != null) {
+                                  await Get.toNamed("/mainPage/stokEdit", arguments: result);
+                                  viewModel.setStokListesi(null);
+                                  viewModel.resetSayfa();
+                                  await getData();
+                                }
+                              },
+                      ).paddingAll(10),
+                    ),
                   );
                 } else {
                   return Observer(builder: (_) {

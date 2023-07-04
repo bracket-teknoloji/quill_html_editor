@@ -1,12 +1,18 @@
 import 'package:package_info_plus/package_info_plus.dart';
 
 class AppInfoModel {
-  static String? appName;
-  static String? packageName;
-  static String? version;
-  static String? buildNumber;
+   String? appName;
+   String? packageName;
+   String? version;
+   String? buildNumber;
+  
 
-  Future<void> init() async {
+  //singleton
+  static final AppInfoModel _instance = AppInfoModel._init();
+  static AppInfoModel get instance => _instance;
+  AppInfoModel._init();
+
+   Future<void> init() async {
     final packageInfo = await PackageInfo.fromPlatform();
     appName = packageInfo.buildSignature;
     packageName = packageInfo.packageName;

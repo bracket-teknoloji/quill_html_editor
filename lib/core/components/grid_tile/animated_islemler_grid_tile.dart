@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 
 import '../../../view/main_page/model/grid_item_model.dart';
@@ -15,8 +16,9 @@ class AnimatedIslemlerGridTile extends StatefulWidget {
   final Function()? onTap;
   final String? menuTipi;
   final IconData? iconWidget;
+  final bool? altMenuVarMi;
 
-  const AnimatedIslemlerGridTile({super.key, this.name, this.title, this.icon, this.color, this.onTap, this.altMenuler, this.menuTipi, this.iconWidget});
+  const AnimatedIslemlerGridTile({super.key, this.name, this.title, this.icon, this.color, this.onTap, this.altMenuler, this.menuTipi, this.iconWidget, this.altMenuVarMi});
 
   @override
   AnimatedIslemlerGridTileState createState() => AnimatedIslemlerGridTileState();
@@ -30,33 +32,35 @@ class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> 
       splashFactory: InkRipple.splashFactory,
       splashColor: theme.primaryColor,
       onTap: widget.onTap,
-      child: GridTile(
-          footer: (widget.menuTipi == "S" && widget.altMenuler!.length > 1) ? const Icon(Icons.expand_more, size: 15) : const SizedBox(),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              AnimatedContainer(
-                      duration: const Duration(milliseconds: 500),
-                      child: widget.iconWidget == null
-                          ? IconHelper.bigMenuIcon(widget.icon ?? "", color: UIHelper.primaryColor)
-                          : const IconTheme(
-                              data: IconThemeData(weight: 0.1, size: 30, color: Colors.white),
-                              child: Icon(
-                                Icons.abc,
-                                size: 30,
-                                grade: 0.1,
-                              ),
-                            ))
-                  .marginOnly(bottom: 5),
-              Text(
-                widget.title.toString(),
-                textAlign: TextAlign.center,
-                overflow: TextOverflow.ellipsis,
-                style: theme.textTheme.bodySmall?.copyWith(color: Colors.white, fontSize: 10),
-              ),
-            ],
-          )),
+      child: Observer(
+          builder: (_) => GridTile(
+              footer: (widget.altMenuVarMi ?? false) ? const Icon(Icons.expand_more, size: 15) : const SizedBox(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  AnimatedContainer(
+                          duration: const Duration(milliseconds: 500),
+                          child: widget.iconWidget == null
+                              ? IconHelper.bigMenuIcon(widget.icon ?? "", color: UIHelper.primaryColor)
+                              : IconTheme(
+                                  data: IconThemeData(weight: 0.1, size: 40, color: widget.color ?? UIHelper.primaryColor),
+                                  child: Icon(
+                                    widget.iconWidget,
+                                    size: 40,
+                                    grade: 0.1,
+                                  ),
+                                ))
+                      .marginOnly(bottom: 5),
+                  Text(
+                    widget.title.toString(),
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.bodySmall?.copyWith(color: Colors.white, fontSize: 10),
+                  ),
+                ],
+              ))),
     );
   }
 }

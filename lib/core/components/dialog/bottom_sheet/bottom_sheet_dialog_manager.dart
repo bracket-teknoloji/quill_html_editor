@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/components/textfield/custom_text_field.dart';
 
 import '../../../constants/extensions/list_extensions.dart';
 import '../../../constants/ui_helper/icon_helper.dart';
@@ -174,7 +175,7 @@ class BottomSheetDialogManager {
         });
   }
 
-  showCheckBoxBottomSheetDialog(BuildContext context, {List<BottomSheetModel>? children, required String title}) {
+  showCheckBoxBottomSheetDialog(BuildContext context, {List<BottomSheetModel>? children, required String title, bool onlyValue = false }) {
     List<dynamic>? list;
     if (viewModel.isSelectedListMap?[title] == null) {
       viewModel.changeIsSelectedListMap(title, List.generate(children!.length, (index) => false));
@@ -226,7 +227,7 @@ class BottomSheetDialogManager {
                                         onChanged: (value) {
                                           viewModel.changeIndexIsSelectedListMap(title, index, value!);
                                           // viewModel.isSelectedListMap![title]![index] = value!;
-                                          list = selectedChecker(children, title);
+                                          list = selectedChecker(children, title, onlyValue);
                                           // if (!value) {
                                           //   list!.remove(children[index].title);
                                           // }
@@ -247,7 +248,7 @@ class BottomSheetDialogManager {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            list = selectedChecker(children, title);
+                            list = selectedChecker(children, title, onlyValue);
                             Get.back(result: list);
                           },
                           child: const Text("Seç"),
@@ -262,11 +263,11 @@ class BottomSheetDialogManager {
     );
   }
 
-  List<dynamic> selectedChecker(List<BottomSheetModel>? children, String title) {
+  List<dynamic> selectedChecker(List<BottomSheetModel>? children, String title, bool onlyValue) {
     List list = [];
     for (var i = 0; i < viewModel.isSelectedListMap![title]!.length; i++) {
       if (viewModel.isSelectedListMap![title]![i]) {
-        list.add(children![i].title);
+        list.add(children![i].value ?? (onlyValue ? null : children[i].title));
       }
     }
     return list;
@@ -307,121 +308,100 @@ class BottomSheetDialogManager {
                 runAlignment: WrapAlignment.spaceAround,
                 alignment: WrapAlignment.start,
                 children: [
-                  CustomWidgetWithLabel(
-                    text: "Plasiyer",
-                    children: [
-                      Observer(builder: (_) {
-                        return TextField(
-                          controller: plasiyerController,
-                          decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz_outlined)),
-                          readOnly: true,
-                          onTap: () async {
-                            var data = CacheManager.getAnaVeri();
+                  Observer(builder: (_) {
+                    return CustomTextField(
+                      labelText: "Plasiyer",
+                      controller: plasiyerController,
+                      suffix: const Icon(Icons.more_horiz_outlined),
+                      readOnly: true,
+                      onTap: () async {
+                        var data = CacheManager.getAnaVeri();
 
-                            var result = await showCheckBoxBottomSheetDialog(context,
-                                title: "Plasiyer seç",
-                                children:
-                                    List.generate(data?.paramModel?.plasiyerList?.length ?? 0, (index) => BottomSheetModel(title: data?.paramModel?.plasiyerList![index].plasiyerAciklama ?? "")));
-                            if (result != null) {
-                              var plasiyerKoduList = data?.paramModel?.plasiyerList?.where((element) => result.contains(element.plasiyerAciklama)).map((e) => e.plasiyerKodu).toList();
-                              bottomSheetResponseModel.arrPlasiyer = plasiyerKoduList;
-                              plasiyerController.text = result.join(", ");
-                              viewModel.changePlasiyer(result.join(", "));
-                            }
-                          },
-                        );
-                      })
-                    ],
+                        var result = await showCheckBoxBottomSheetDialog(context,
+                            title: "Plasiyer seç",
+                            children: List.generate(data?.paramModel?.plasiyerList?.length ?? 0, (index) => BottomSheetModel(title: data?.paramModel?.plasiyerList![index].plasiyerAciklama ?? "")));
+                        if (result != null) {
+                          var plasiyerKoduList = data?.paramModel?.plasiyerList?.where((element) => result.contains(element.plasiyerAciklama)).map((e) => e.plasiyerKodu).toList();
+                          bottomSheetResponseModel.arrPlasiyer = plasiyerKoduList;
+                          plasiyerController.text = result.join(", ");
+                          viewModel.changePlasiyer(result.join(", "));
+                        }
+                      },
+                    );
+                  }),
+                  Observer(builder: (_) {
+                    return CustomTextField(
+                      labelText: "Şehir",
+                      readOnly: true,
+                      controller: sehirController,
+                      suffix: const Icon(Icons.more_horiz_outlined),
+                      onTap: () async {
+                        var result = await showCheckBoxBottomSheetDialog(context,
+                            title: "Şehir seç", children: List.generate(request["sehir"].length, (index) => BottomSheetModel(title: request["sehir"][index].sehirAdi)));
+                        if (result != null) {
+                          bottomSheetResponseModel.arrSehir = result;
+                          viewModel.changeSehir(result.join(", "));
+                          sehirController.text = viewModel.sehir ?? "";
+                        }
+                      },
+                    );
+                  }),
+                  CustomTextField(
+                    labelText: "İlçe",
+                    controller: ilceController,
+                    onChanged: (value) {
+                      viewModel.changeIlce(value);
+                    },
                   ),
-                  CustomWidgetWithLabel(
-                    text: "Şehir",
-                    children: [
-                      Observer(builder: (_) {
-                        return TextField(
-                          readOnly: true,
-                          controller: sehirController,
-                          decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz_outlined)),
-                          onTap: () async {
-                            var result = await showCheckBoxBottomSheetDialog(context,
-                                title: "Şehir seç", children: List.generate(request["sehir"].length, (index) => BottomSheetModel(title: request["sehir"][index].sehirAdi)));
-                            if (result != null) {
-                              bottomSheetResponseModel.arrSehir = result;
-                              viewModel.changeSehir(result.join(", "));
-                              sehirController.text = viewModel.sehir ?? "";
-                            }
-                          },
-                        );
-                      })
-                    ],
-                  ),
-                  CustomWidgetWithLabel(
-                    text: "İlçe",
-                    children: [
-                      TextField(
-                        controller: ilceController,
-                        onChanged: (value) {
-                          viewModel.changeIlce(value);
-                        },
-                      )
-                    ],
-                  ),
-                  CustomWidgetWithLabel(
-                    text: "Tipi",
-                    children: [
-                      Observer(builder: (_) {
-                        return TextField(
-                            controller: TextEditingController(text: viewModel.cariTipi),
-                            decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz_outlined)),
-                            readOnly: true,
-                            onTap: () async {
-                              var a = await showRadioBottomSheetDialog(context, title: "Tipi seç", children: [
-                                BottomSheetModel(title: "Alıcı",value: "A", onTap: () => Get.back(result: "Alıcı")),
-                                BottomSheetModel(title: "Satıcı",value: "S", onTap: () => Get.back(result: "Satıcı")),
-                                BottomSheetModel(title: "Toptancı",value: "T", onTap: () => Get.back(result: "Toptancı")),
-                                BottomSheetModel(title: "Kefil",value: "K", onTap: () => Get.back(result: "Kefil")),
-                                BottomSheetModel(title: "Müstahsil",value: "M", onTap: () => Get.back(result: "Müstahsil")),
-                                BottomSheetModel(title: "Diğer",value: "D", onTap: () => Get.back(result: "Diğer")),
-                                BottomSheetModel(title: "Komisyoncu",value: "I", onTap: () => Get.back(result: "Komisyoncu")),
-                              ]);
-                              if (a != null) {
-                                var result = a != "Komisyoncu" ? a[0] : "I";
-                                viewModel.cariTipi = a;
-                                bottomSheetResponseModel.cariTipi = result;
-                              }
-                            });
-                      })
-                    ],
-                  ),
+                  Observer(builder: (_) {
+                    return CustomTextField(
+                        labelText: "Tipi",
+                        controller: TextEditingController(text: viewModel.cariTipi),
+                        suffix: const Icon(Icons.more_horiz_outlined),
+                        readOnly: true,
+                        onTap: () async {
+                          var a = await showRadioBottomSheetDialog(context, title: "Tipi seç", children: [
+                            BottomSheetModel(title: "Alıcı", value: "A", onTap: () => Get.back(result: "Alıcı")),
+                            BottomSheetModel(title: "Satıcı", value: "S", onTap: () => Get.back(result: "Satıcı")),
+                            BottomSheetModel(title: "Toptancı", value: "T", onTap: () => Get.back(result: "Toptancı")),
+                            BottomSheetModel(title: "Kefil", value: "K", onTap: () => Get.back(result: "Kefil")),
+                            BottomSheetModel(title: "Müstahsil", value: "M", onTap: () => Get.back(result: "Müstahsil")),
+                            BottomSheetModel(title: "Diğer", value: "D", onTap: () => Get.back(result: "Diğer")),
+                            BottomSheetModel(title: "Komisyoncu", value: "I", onTap: () => Get.back(result: "Komisyoncu")),
+                          ]);
+                          if (a != null) {
+                            var result = a != "Komisyoncu" ? a[0] : "I";
+                            viewModel.cariTipi = a;
+                            bottomSheetResponseModel.cariTipi = result;
+                          }
+                        });
+                  }),
                   ...List.generate(
                     onayliGrupNo.length,
                     (index) {
                       String title = onayliGrupNo[index] != 0 ? "Kod ${onayliGrupNo[index]}" : "Grup Kodu";
                       List data = items[index];
 
-                      return CustomWidgetWithLabel(
-                        text: title,
-                        children: [
-                          Observer(builder: (_) {
-                            return TextField(
-                              controller: controllers[index],
-                              decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz_outlined)),
-                              readOnly: true,
-                              onTap: () async {
-                                var result =
-                                    await showCheckBoxBottomSheetDialog(context, title: "$title seç", children: List.generate(data.length, (index2) => BottomSheetModel(title: data[index2].grupAdi)));
-                                if (result != null) {
-                                  controllers[index].text = result.join(", ");
-                                  var a = data.where((element) => result.contains(element.grupAdi)).map((e) => e.grupKodu).toList();
-                                  arrKodFinder(index, bottomSheetResponseModel, a);
-                                }
-                              },
-                            );
-                          })
-                        ],
-                      );
+                      return Observer(builder: (_) {
+                        return CustomTextField(
+                          labelText: title,
+                          controller: controllers[index],
+                          suffix: const Icon(Icons.more_horiz_outlined),
+                          readOnly: true,
+                          onTap: () async {
+                            var result =
+                                await showCheckBoxBottomSheetDialog(context, title: "$title seç", children: List.generate(data.length, (index2) => BottomSheetModel(title: data[index2].grupAdi)));
+                            if (result != null) {
+                              controllers[index].text = result.join(", ");
+                              var a = data.where((element) => result.contains(element.grupAdi)).map((e) => e.grupKodu).toList();
+                              arrKodFinder(index, bottomSheetResponseModel, a);
+                            }
+                          },
+                        );
+                      });
                     },
                   ),
-                ].map((e) => Container(constraints: BoxConstraints(maxWidth: Get.width / 2.2), child: e)).toList(),
+                ],
               ),
             ),
             Row(

@@ -97,7 +97,7 @@ class CacheManager {
   static void setVerifiedUser(Map value) => _verifiedUsersBox.put("data", value);
   static void setVeriTabani(Map value) => _veriTabaniBox.put(getVerifiedUser?["user"], value);
   static void setIsletmeSube(Map value) => _isletmeSubeBox.put(getVerifiedUser?["user"], value);
-  static void setFavoriler(FavoritesModel value) => _favorilerBox.put(AccountModel.instance.kullaniciAdi, value);
+  static void setFavoriler(FavoritesModel value) => _favorilerBox.add(value);
   static void setFavorilerSira(int index, FavoritesModel value) => _favorilerBox.putAt(index, value);
   static Future<void> setFavorilerList(List<FavoritesModel> value) async {
     await _favorilerBox.clear();

@@ -4,7 +4,7 @@ import '../../../../../../core/base/model/base_network_mixin.dart';
 
 part 'cari_listesi_model.g.dart';
 
-@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.screamingSnake, createToJson: true)
+@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.screamingSnake, createToJson: true, includeIfNull: false)
 class CariListesiModel with NetworkManagerMixin {
   //singleton
   static CariListesiModel? _instance;

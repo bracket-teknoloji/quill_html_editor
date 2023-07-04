@@ -20,7 +20,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
     networkManager = NetworkManager();
     bottomSheetDialogManager = BottomSheetDialogManager();
     dialogManager = DialogManager();
-    appInfoModel = AppInfoModel();
+    appInfoModel = AppInfoModel.instance;
     yetkiController = YetkiController();
   }
   @override
