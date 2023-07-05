@@ -51,7 +51,11 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
       }
     });
     //* Sayfa
-    return Scaffold(appBar: appBar(context), bottomNavigationBar: Observer(builder: (_) => Visibility(visible: viewModel.pageCounter > 1, child: bottomAppBar())), body: body());
+    return Scaffold(
+      appBar: appBar(context),
+      bottomNavigationBar: Observer(builder: (_) => Visibility(visible: viewModel.pageCounter > 1, child: bottomAppBar())),
+      body: body(),
+    );
   }
 
   void awaiter() async {
@@ -154,8 +158,10 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
   }
 
   BottomAppBar bottomAppBar() => BottomAppBar(
-          child: Row(
+      height: 70,
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Expanded(child: Observer(builder: (_) => Text(viewModel.getPageCounter))),
           IconButton(onPressed: () => pdfViewerController.firstPage(), icon: const Icon(Icons.first_page_outlined)),
@@ -208,7 +214,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
       builder: (context) => Positioned(
         top: details.globalSelectedRegion!.center.dy - 55,
         left: details.globalSelectedRegion!.bottomLeft.dx,
-        child: ElevatedButton(
+        child: OutlinedButton(
           onPressed: () {
             Clipboard.setData(ClipboardData(text: details.selectedText!));
             dialogManager.showSnackBar("Kopyalandı");

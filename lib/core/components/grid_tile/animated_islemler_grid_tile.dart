@@ -42,12 +42,12 @@ class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> 
                   AnimatedContainer(
                           duration: const Duration(milliseconds: 500),
                           child: widget.iconWidget == null
-                              ? IconHelper.bigMenuIcon(widget.icon ?? "", color: UIHelper.primaryColor)
+                              ? IconHelper.middleMenuIcon(widget.icon ?? "", color: UIHelper.primaryColor)
                               : IconTheme(
-                                  data: IconThemeData(weight: 0.1, size: 40, color: widget.color ?? UIHelper.primaryColor),
+                                  data: IconThemeData(weight: 0.1, size: 20, color: widget.color ?? UIHelper.primaryColor),
                                   child: Icon(
                                     widget.iconWidget,
-                                    size: 40,
+                                    size: 20,
                                     grade: 0.1,
                                   ),
                                 ))
