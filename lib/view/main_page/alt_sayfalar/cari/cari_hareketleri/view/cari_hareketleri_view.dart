@@ -13,9 +13,11 @@ import '../../../../../../core/components/button/elevated_buttons/footer_button.
 import '../../../../../../core/components/card/cari_hareketler_card.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import '../../../../../../core/components/floating_action_button/custom_floating_action_button.dart';
+import '../../../../../../core/components/grid_tile/custom_animated_grid/view/custom_animated_grid_view.dart';
 import '../../../../../../core/components/helper_widgets/scrollable_widget.dart';
 import '../../../../../../core/components/wrap/appbar_title.dart';
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
+import '../../../../../../core/constants/enum/islem_tipi_enum.dart';
 import '../../../../../../core/constants/extensions/number_extensions.dart';
 import '../../../../../../core/constants/extensions/widget_extensions.dart';
 import '../../../../../../core/constants/ui_helper/ui_helper.dart';
@@ -61,7 +63,8 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
       }
       if (scrollController!.position.userScrollDirection == ScrollDirection.reverse) {
         viewModel.changeScrollDown(false);
-      } if (scrollController?.position.pixels == scrollController!.position.maxScrollExtent) {
+      }
+      if (scrollController?.position.pixels == scrollController!.position.maxScrollExtent) {
         viewModel.changeScrollDown(true);
       }
     });
@@ -120,7 +123,12 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
               itemExtent: width * 0.33,
               scrollDirection: Axis.horizontal,
               children: [
-                AppBarButton(onPressed: () {}, icon: Icons.tune_outlined, child: const Text("Cari İşlemleri")),
+                AppBarButton(
+                    onPressed: () {
+                      dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: widget.cari, islemTipi: IslemTipi.cari));
+                    },
+                    icon: Icons.tune_outlined,
+                    child: const Text("Cari İşlemleri")),
                 AppBarButton(
                     icon: Icons.sort_by_alpha_outlined,
                     onPressed: () async {
@@ -296,7 +304,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
         return ScrollableWidget(
           isScrolledDown: viewModel.isScrollDown,
           child: SizedBox(
-            height: context.isPortrait ? (height * 0.06) : height * 0.15,
+            height: context.isPortrait ? (height * 0.06) : (height * 0.1 < 60 ? 60 : height * 0.1),
             child: Observer(builder: (_) {
               return Row(
                 children: [

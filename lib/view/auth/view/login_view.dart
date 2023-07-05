@@ -30,7 +30,6 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends BaseState<LoginView> {
   bool isObscure = true;
-  String? version;
   Map textFieldData = {"company": "demo", "user": "demo", "password": "demo"};
   late final TextEditingController emailController;
   late final TextEditingController companyController;
@@ -62,9 +61,6 @@ class _LoginViewState extends BaseState<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    setState(() {
-      version = AppInfoModel.version;
-    });
     return WillPopScope(
       onWillPop: () async {
         return false;
@@ -80,7 +76,7 @@ class _LoginViewState extends BaseState<LoginView> {
               backgroundColor: theme.scaffoldBackgroundColor),
           Scaffold(
             appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent, automaticallyImplyLeading: false),
-            floatingActionButton: !context.isKeyBoardOpen ? Text("V $version").paddingOnly(bottom: 20) : null,
+            floatingActionButton: !context.isKeyBoardOpen ? Text("V ${AppInfoModel.instance.version}").paddingOnly(bottom: 20) : null,
             floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerDocked,
             primary: true,
             backgroundColor: Colors.transparent,
@@ -216,13 +212,11 @@ class _LoginViewState extends BaseState<LoginView> {
         CacheManager.setHesapBilgileri(a);
 
         log(jsonEncode(a.toJson()), name: "sea");
-        final response = await NetworkManager.getToken(path: ApiUrls.token, queryParameters: {
-          "deviceInfos": jsonEncode(a.toJson())
-        }, data: {
-          "grant_type": "password",
-          "username": emailController.text,
-          "password": passwordController.text,
-        });
+        final response = await NetworkManager.getToken(
+          path: ApiUrls.token,
+          queryParameters: {"deviceInfos": jsonEncode(a.toJson())},
+          data: {"grant_type": "password", "username": emailController.text, "password": passwordController.text},
+        );
         dialogManager.hideAlertDialog;
 
         Hive.box("preferences").put(companyController.text, [

@@ -190,7 +190,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                         Expanded(
                           flex: 4,
                           child: CustomTextField(
-                              enabled: enable,
+                              enabled: enable && widget.model == BaseEditEnum.ekle,
                               labelText: "Kodu",
                               isMust: true,
                               controller: stokKoduController,

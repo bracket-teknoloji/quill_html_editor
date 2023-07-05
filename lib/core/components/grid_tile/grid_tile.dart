@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../../view/main_page/model/grid_item_model.dart';
@@ -31,10 +30,9 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
   @override
   Widget build(BuildContext context) {
     Icon yetkiKontrol() {
-      if (CacheManager.getFavoriler().containsKey(widget.title.toString())) {
+      if (CacheManager.getFavoriler().values.any((element) => element.title == widget.title)) {
         return const Icon(Icons.star, size: 20);
       } else {
-        CacheManager.removeFavoriler(widget.name.toString());
         return const Icon(Icons.star_border, size: 20);
       }
     }
@@ -44,10 +42,6 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
     return InkWell(
       borderRadius: UIHelper.lowBorderRadius,
       splashFactory: InkRipple.splashFactory,
-      onLongPress: () {
-        Clipboard.setData(ClipboardData(text: widget.title!));
-        dialogManager.showSnackBar("Kopyalandı");
-      },
       splashColor: theme.primaryColor,
       onTap: widget.onTap,
       child: Card(
@@ -59,17 +53,17 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                 ? Align(
                     alignment: Alignment.centerRight,
                     child: InkWell(
-                      child: yetkiKontrolIcon(widget.title.toString()),
+                      child: yetkiKontrol(),
                       onTap: () {
                         if (icon.icon == Icons.star) {
                           icon = const Icon(Icons.star_border, size: 20);
-                          CacheManager.removeFavoriler(widget.name.toString());
+                          CacheManager.removeFavoriler(widget.title.toString());
                           dialogManager.hideSnackBar;
                           dialogManager.showSnackBar("Favorilerden çıkarıldı");
                         } else {
                           icon = const Icon(Icons.star, size: 20);
-                          CacheManager.setFavoriler(
-                              FavoritesModel(name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments, menuTipi: widget.menuTipi));
+                          CacheManager.setFavoriler(FavoritesModel(
+                              name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments, menuTipi: widget.menuTipi));
                           dialogManager.hideSnackBar;
                           dialogManager.showSnackBar("Favorilere eklendi");
                         }
@@ -83,6 +77,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                     child: Text(
                     widget.title ?? "",
                     textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
                     style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
                   ))
                 : Column(
@@ -107,6 +102,9 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                       Text(
                         widget.menuTipi != "I" ? widget.title.toString() : "",
                         textAlign: TextAlign.center,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        softWrap: true,
                         style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
                       ),
                     ],
@@ -115,12 +113,12 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
     );
   }
 
-  Icon yetkiKontrolIcon(String title) {
-    if (CacheManager.getFavoriler().containsKey(title.toString())) {
-      return const Icon(Icons.star, size: 20);
-    } else {
-      CacheManager.removeFavoriler(title.toString());
-      return const Icon(Icons.star_border, size: 20);
-    }
-  }
+  // Icon yetkiKontrolIcon(String title) {
+  //   if (CacheManager.getFavoriler().containsKey(title.toString())) {
+  //     return const Icon(Icons.star, size: 20);
+  //   } else {
+  //     CacheManager.removeFavoriler(title.toString());
+  //     return const Icon(Icons.star_border, size: 20);
+  //   }
+  // }
 }

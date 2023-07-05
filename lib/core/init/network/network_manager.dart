@@ -9,6 +9,7 @@ import 'package:picker/core/base/model/base_network_mixin.dart';
 import 'package:picker/core/base/model/generic_response_model.dart';
 import 'package:picker/core/constants/extensions/date_time_extensions.dart';
 import 'package:picker/core/init/cache/cache_manager.dart';
+import 'package:picker/view/add_company/model/account_model.dart';
 import 'package:picker/view/auth/model/login_model.dart';
 
 import '../../base/model/base_grup_kodu_model.dart';
@@ -26,7 +27,8 @@ class NetworkManager {
           return handler.next(options);
         },
         onResponse: (e, handler) {
-          return e.statusCode == 200 ? handler.next(e) : handler.reject(DioException(requestOptions: e.requestOptions, error: e.data));
+          return handler.next(e);
+          // return e.statusCode == 200 ? handler.next(e) : handler.reject(DioException(requestOptions: e.requestOptions, error: e.data));
         },
         onError: (e, handler) {
           print(e);
@@ -45,13 +47,16 @@ class NetworkManager {
   }
 
   static Future<TokenModel?> getToken({required String path, Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
+    log(AccountModel.instance.toJson().toString());
     final response = await _dio.request(path,
         queryParameters: queryParameters,
         cancelToken: CancelToken(),
         options: Options(headers: {
-          "Platform": "netfect",
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/x-www-form-urlencoded",
-        }, method: HttpTypes.GET, responseType: ResponseType.json),
+          "Platform": "netfect",
+          "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"
+        },contentType: "application/x-www-form-urlencoded", method: HttpTypes.GET, responseType: ResponseType.json),
         data: data);
     var a = response.data;
     return TokenModel().fromJson(a);

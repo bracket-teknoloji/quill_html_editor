@@ -2,11 +2,12 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:open_file_plus/open_file_plus.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 import '../../../../../view/main_page/model/param_model.dart';
 import '../../../../components/appbar/appbar_prefered_sized_bottom.dart';
@@ -21,7 +22,6 @@ import '../view_model/pdf_viewer_view_model.dart';
 class PDFViewerView extends StatefulWidget {
   final String title;
   final PdfModel? pdfData;
-
   final Future Function()? filterBottomSheet;
   const PDFViewerView({super.key, this.pdfData, this.filterBottomSheet, required this.title});
 
@@ -32,10 +32,12 @@ class PDFViewerView extends StatefulWidget {
 class _PDFViewerViewState extends BaseState<PDFViewerView> {
   PdfViewerViewModel viewModel = PdfViewerViewModel();
   BasePdfModel? pdfFile;
-  PDFViewController? pdfViewController;
+  late PdfViewerController pdfViewerController;
+  OverlayEntry? overlayEntry;
 
   @override
   void initState() {
+    pdfViewerController = PdfViewerController();
     super.initState();
   }
 
@@ -49,7 +51,18 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
       }
     });
     //* Sayfa
-    return Scaffold(appBar: appBar(context), bottomNavigationBar: Observer(builder: (_) => Visibility(visible: viewModel.pageCounter > 1, child: bottomAppBar())), body: body());
+    return Scaffold(
+      appBar: appBar(context),
+      bottomNavigationBar: Observer(builder: (_) => Visibility(visible: viewModel.pageCounter > 1, child: bottomAppBar())),
+      body: body(),
+    );
+  }
+
+  void awaiter() async {
+    File? pdf = await getFile;
+    if (pdf != null) {
+      viewModel.changePdfFile(pdf);
+    }
   }
 
   AppBar appBar(BuildContext context) {
@@ -115,27 +128,27 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
 
   Observer body() {
     return Observer(builder: (_) {
-      if (viewModel.futureController.value == true) {
-        return(Platform.isAndroid || Platform.isIOS) ? PDFView(
-          nightMode: false,
-          pageFling: true,
-          pageSnap: true,
-          fitEachPage: true,
-          pdfData: base64Decode(pdfFile?.byteData ?? ""),
-          onError: (error) {
-            dialogManager.snackBarError("Bir hata oluştu");
-          },
-          onPageError: (page, error) {},
-          onViewCreated: (PDFViewController pdfViewController) {
-            this.pdfViewController = pdfViewController;
-          },
-          onLinkHandler: (String? uri) {},
-          autoSpacing: true,
-          onPageChanged: (int? page, int? total) {
-            viewModel.changeCurrentPage(page ?? 0);
-            viewModel.changePageCounter(total ?? 0);
-          },
-        ) : const Center(child: Text("PDF Görüntüleme Şu Anlık Sadece Android ve IOS'ta Desteklenmektedir. Yukarıdaki pdf görüntüleme butonunu kullanınız."));
+      if (viewModel.futureController.value == true && viewModel.pdfFile != null) {
+        return Observer(
+            builder: (_) => SfPdfViewer.file(
+                  viewModel.pdfFile!,
+                  controller: pdfViewerController,
+                  interactionMode: PdfInteractionMode.selection,
+                  onTextSelectionChanged: (details) {
+                    if (details.selectedText != null && (Platform.isAndroid || Platform.isIOS)) {
+                      if (details.selectedText == null && overlayEntry != null) {
+                        overlayEntry!.remove();
+                        overlayEntry = null;
+                      } else if (details.selectedText != null && overlayEntry == null) {
+                        showContextMenu(context, details);
+                      }
+                      // Clipboard.setData(ClipboardData(text: details.selectedText!));
+                      // dialogManager.showSnackBar("Kopyalandı");
+                    }
+                  },
+                  onDocumentLoaded: (details) => viewModel.changePageCounter(details.document.pages.count),
+                  onPageChanged: (details) => viewModel.changeCurrentPage(details.newPageNumber - 1),
+                ));
       } else if (viewModel.futureController.value == null) {
         return const Center(child: CircularProgressIndicator());
       } else {
@@ -145,17 +158,19 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
   }
 
   BottomAppBar bottomAppBar() => BottomAppBar(
-          child: Row(
+      height: 70,
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Expanded(child: Observer(builder: (_) => Text(viewModel.getPageCounter))),
-          IconButton(onPressed: () => pdfViewController?.setPage(0), icon: const Icon(Icons.first_page_outlined)),
-          IconButton(onPressed: () => pdfViewController?.setPage(viewModel.currentPage - 1), icon: const Icon(Icons.arrow_back_outlined)),
-          IconButton(onPressed: () => pdfViewController?.setPage(viewModel.currentPage + 1), icon: const Icon(Icons.arrow_forward_outlined)),
+          IconButton(onPressed: () => pdfViewerController.firstPage(), icon: const Icon(Icons.first_page_outlined)),
+          IconButton(onPressed: () => pdfViewerController.previousPage(), icon: const Icon(Icons.arrow_back_outlined)),
+          IconButton(onPressed: () => pdfViewerController.nextPage(), icon: const Icon(Icons.arrow_forward_outlined)),
           Observer(
               builder: (_) => IconButton(
                   onPressed: () {
-                    pdfViewController?.setPage(viewModel.pageCounter);
+                    pdfViewerController.lastPage();
                   },
                   icon: const Icon(Icons.last_page_outlined))),
         ],
@@ -167,6 +182,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
       pdfFile = result.data.first;
       if (result.success == true) {
         viewModel.setFuture(result.success);
+        awaiter();
       }
     }
     return true;
@@ -186,6 +202,29 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
     final fileWriter = file.openSync(mode: FileMode.write);
     fileWriter.writeFromSync(base64Decode(pdfFile?.byteData ?? ""));
     await fileWriter.close();
+    if (file.lengthSync() > 0) {
+      viewModel.changePdfFile(file);
+    }
     return file.lengthSync() > 0 ? file : null;
+  }
+
+  void showContextMenu(BuildContext context, PdfTextSelectionChangedDetails details) {
+    final OverlayState overlayState = Overlay.of(context);
+    overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        top: details.globalSelectedRegion!.center.dy - 55,
+        left: details.globalSelectedRegion!.bottomLeft.dx,
+        child: OutlinedButton(
+          onPressed: () {
+            Clipboard.setData(ClipboardData(text: details.selectedText!));
+            dialogManager.showSnackBar("Kopyalandı");
+            pdfViewerController.clearSelection();
+            overlayEntry!.remove();
+          },
+          child: const Text('Kopyala'),
+        ),
+      ),
+    );
+    overlayState.insert(overlayEntry!);
   }
 }

@@ -47,7 +47,6 @@ class CustomTextField extends StatefulWidget {
 
 class _CustomTextFieldState extends State<CustomTextField> {
   TextEditingController get controller => widget.controller ?? TextEditingController(text: widget.controllerText);
-  FocusNode get focusNode => widget.focusNode ?? FocusNode();
   @override
   void initState() {
     super.initState();
@@ -69,14 +68,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return TextFormField(
       textInputAction: TextInputAction.next,
       keyboardType: widget.keyboardType,
-      focusNode: focusNode,
+      focusNode: widget.focusNode,
       onTap: () {
         widget.onTap?.call();
-        controller.selection = TextSelection(baseOffset: 0, extentOffset: controller.value.text.length);
+        // controller.selection = TextSelection(baseOffset: 0, extentOffset: controller.value.text.length);
       },
+      
       onChanged: widget.onChanged,
       onFieldSubmitted: widget.onSubmitted,
-      onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
+      // onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
       maxLength: widget.maxLength,
       validator: widget.validator ?? ((widget.isMust ?? false) ? validator : null),
       controller: controller,

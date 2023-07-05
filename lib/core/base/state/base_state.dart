@@ -1,7 +1,3 @@
-import 'dart:async';
-import 'dart:developer';
-
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart';
@@ -16,37 +12,37 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   late final AppInfoModel appInfoModel;
   late final NetworkManager networkManager;
   late final YetkiController yetkiController;
-  late StreamSubscription connectivitySubscription;
-  ConnectivityResult connectivityResult = ConnectivityResult.none;
-  Connectivity connectivity = Connectivity();
+  // late StreamSubscription connectivitySubscription;
+  // ConnectivityResult connectivityResult = ConnectivityResult.none;
+  // Connectivity connectivity = Connectivity();
   BaseState() {
-    internetChecker();
+    // internetChecker();
     networkManager = NetworkManager();
     bottomSheetDialogManager = BottomSheetDialogManager();
     dialogManager = DialogManager();
-    appInfoModel = AppInfoModel();
+    appInfoModel = AppInfoModel.instance;
     yetkiController = YetkiController();
   }
   @override
   void dispose() {
-    connectivitySubscription.cancel();
+    // connectivitySubscription.cancel();
     super.dispose();
   }
 
   double get width => MediaQuery.of(context).size.width;
   double get height => MediaQuery.of(context).size.height;
   ThemeData get theme => Theme.of(context);
-  void internetChecker() {
-    connectivitySubscription = connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
-      connectivityResult = result;
-      log(connectivityResult.toString());
-      if (connectivityResult == ConnectivityResult.none) {
-        print(result);
-        dialogManager.internetConnectionDialog();
-      } else {
-        print(result);
-        dialogManager.hideAlertDialog;
-      }
-    });
-  }
+  // void internetChecker() {
+  //   connectivitySubscription = connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
+  //     connectivityResult = result;
+  //     log(connectivityResult.toString());
+  //     if (connectivityResult == ConnectivityResult.none) {
+  //       print(result);
+  //       dialogManager.internetConnectionDialog();
+  //     } else {
+  //       print(result);
+  //       dialogManager.hideAlertDialog;
+  //     }
+  //   });
+  // }
 }

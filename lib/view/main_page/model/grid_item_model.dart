@@ -13,7 +13,7 @@ class GridItemModel {
   String? name;
   String title;
   String? icon;
-  IconData? iconWidget;
+  IconData? iconData;
   Color? color;
   List<GridItemModel>? altMenuler;
   String? route;
@@ -21,11 +21,12 @@ class GridItemModel {
   dynamic arguments;
   late final String menuTipi;
 
-  GridItemModel.anamenu({required this.name, required this.title, required this.icon, required this.color, required this.altMenuler, this.iconWidget}) {
+  GridItemModel.anamenu({required this.name, required this.title, required this.icon, required this.color, required this.altMenuler, this.iconData}) {
     menuTipi = "A";
   }
 
-  GridItemModel.altmenu({required this.name, required this.title, this.icon, required this.altMenuler, this.iconWidget}) {
+  GridItemModel.altmenu({required this.name, required this.title, this.icon, required this.altMenuler, this.iconData}) {
+    //😳 Sub menu yani alt menü o yüzden "S"
     menuTipi = "S";
   }
   GridItemModel.item({required this.name, required this.title, this.icon, this.color, this.route, this.arguments}) {
@@ -36,7 +37,11 @@ class GridItemModel {
       onTap = () => Get.toNamed(route!, arguments: arguments);
     }
   }
-  GridItemModel.serbestRaporlar({required this.title, this.arguments}) {
+  GridItemModel.islemler({required this.title, this.icon, this.color, this.onTap, this.iconData}) {
+    menuTipi = "IS";
+
+  }
+  GridItemModel.serbestRaporlar({required this.title, this.arguments, this.color}) {
     menuTipi = "SR";
     route = "/mainPage/serbestRaporlar";
     onTap = () => Get.toNamed("/mainPage/serbestRaporlar", arguments: arguments);

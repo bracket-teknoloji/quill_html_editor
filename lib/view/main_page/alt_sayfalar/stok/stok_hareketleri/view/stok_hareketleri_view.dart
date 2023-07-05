@@ -10,15 +10,16 @@ import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart';
 import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
+import '../../../../../../core/components/helper_widgets/custom_label_widget.dart';
 import '../../../../../../core/components/textfield/custom_app_bar_text_field.dart';
 import '../../../../../../core/components/textfield/custom_text_field.dart';
-import '../../../../../../core/components/helper_widgets/custom_label_widget.dart';
 import '../../../../../../core/components/wrap/appbar_title.dart';
 import '../../../../../../core/constants/extensions/date_time_extensions.dart';
 import '../../../../../../core/constants/extensions/number_extensions.dart';
 import '../../../../../../core/constants/extensions/widget_extensions.dart';
 import '../../../../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../../../../core/init/network/login/api_urls.dart';
+import '../../../cari/cari_listesi/model/cari_listesi_model.dart';
 import '../../stok_liste/model/stok_listesi_model.dart';
 import '../model/stok_hareketleri_model.dart';
 import '../view_model/stok_hareketleri_view_model.dart';
@@ -26,7 +27,8 @@ import '../view_model/stok_hareketleri_view_model.dart';
 class StokHareketleriView extends StatefulWidget {
   final StokListesiModel? model;
   final String? stokKodu;
-  const StokHareketleriView({super.key, this.model, this.stokKodu});
+  final CariListesiModel? cariModel;
+  const StokHareketleriView({super.key, this.model, this.stokKodu, this.cariModel});
 
   @override
   State<StokHareketleriView> createState() => _StokHareketleriViewState();
@@ -37,6 +39,9 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
   @override
   void initState() {
     super.initState();
+    if (widget.cariModel != null) {
+      viewModel.setCariListesiModel(widget.cariModel!);
+    }
     viewModel.setFuture(getData());
   }
 
@@ -104,13 +109,15 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                             CustomWidgetWithLabel(text: "Hareket Yönü", children: [
                               Center(
                                 child: Observer(builder: (_) {
-                                  return ToggleButtons(
-                                      constraints: BoxConstraints(minWidth: (width * 0.9) / 3, minHeight: height * 0.05),
-                                      isSelected: viewModel.isSelected,
-                                      onPressed: (index) {
-                                        viewModel.changeIsSelected(index);
-                                      },
-                                      children: viewModel.hareketYonuList.map((e) => Text(e)).toList());
+                                  return SizedBox(
+                                    width: double.infinity,
+                                    child: ToggleButtons(
+                                        isSelected: viewModel.isSelected,
+                                        onPressed: (index) {
+                                          viewModel.changeIsSelected(index);
+                                        },
+                                        children: viewModel.hareketYonuList.map((e) => Text(e)).toList()),
+                                  );
                                 }),
                               )
                             ]),
@@ -119,18 +126,17 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                   labelText: "Hareket Türü",
                                   readOnly: true,
                                   controllerText: viewModel.arrHareketTuru?.join(", "),
-                                  suffix: IconButton(
-                                      onPressed: () async {
-                                        bottomSheetDialogManager.clearSelectedData();
-                                        viewModel.clearArrHareketTuru();
-                                        List? result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context,
-                                            title: "Hareket Türü", children: viewModel.hareketTuruMap.entries.map((e) => BottomSheetModel(title: e.key)).toList());
-                                        if (result != null) {
-                                          viewModel.changeArrHareketTuru(result.map((e) => e as String).toList().cast<String>());
-                                          setState(() {});
-                                        }
-                                      },
-                                      icon: const Icon(Icons.more_horiz_outlined)));
+                                  onTap: () async {
+                                    bottomSheetDialogManager.clearSelectedData();
+                                    viewModel.clearArrHareketTuru();
+                                    List? result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context,
+                                        title: "Hareket Türü", children: viewModel.hareketTuruMap.entries.map((e) => BottomSheetModel(title: e.key)).toList());
+                                    if (result != null) {
+                                      viewModel.changeArrHareketTuru(result.map((e) => e as String).toList().cast<String>());
+                                      setState(() {});
+                                    }
+                                  },
+                                  suffix: const Icon(Icons.more_horiz_outlined));
                             }),
                             Observer(builder: (_) {
                               return CustomTextField(

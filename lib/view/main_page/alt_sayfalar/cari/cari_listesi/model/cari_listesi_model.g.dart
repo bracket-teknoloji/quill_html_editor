@@ -89,89 +89,97 @@ CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
       ..kosulKodu = json['KOSUL_KODU'] as String?
       ..fiyatGrubu = json['FIYAT_GRUBU'] as String?;
 
-Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) =>
-    <String, dynamic>{
-      'CARI_KODU': instance.cariKodu,
-      'CARI_ADI': instance.cariAdi,
-      'BAGLI_CARI': instance.bagliCari,
-      'BAGLI_CARI_ADI': instance.bagliCariAdi,
-      'CARI_TIP': instance.cariTip,
-      'CARI_TIP_ACIKLAMA': instance.cariTipAciklama,
-      'KILIT': instance.kilit,
-      'VADE_GUNU': instance.vadeGunu,
-      'ODEME_TIPI': instance.odemeTipi,
-      'HESAPTUTMASEKLI': instance.hesaptutmasekli,
-      'PLASIYER_KODU': instance.plasiyerKodu,
-      'PLASIYER_ACIKLAMA': instance.plasiyerAciklama,
-      'BORC_TOPLAMI': instance.borcToplami,
-      'ALACAK_TOPLAMI': instance.alacakToplami,
-      'GENISK1_ORANI': instance.genisk1Orani,
-      'ULKE_KODU': instance.ulkeKodu,
-      'ULKE_ADI': instance.ulkeAdi,
-      'CARI_IL': instance.cariIl,
-      'CARI_ILCE': instance.cariIlce,
-      'CARI_TEL': instance.cariTel,
-      'POSTAKODU': instance.postakodu,
-      'EMAIL': instance.email,
-      'WEB': instance.web,
-      'CARI_ADRES': instance.cariAdres,
-      'VERGI_DAIRESI': instance.vergiDairesi,
-      'VERGI_NUMARASI': instance.vergiNumarasi,
-      'GRUP_KODU': instance.grupKodu,
-      'GRUP_TANIMI': instance.grupTanimi,
-      'BILGI': instance.bilgi,
-      'ACIKLAMA1': instance.aciklama1,
-      'ACIKLAMA2': instance.aciklama2,
-      'ACIKLAMA3': instance.aciklama3,
-      'KODU': instance.kodu,
-      'KOD1': instance.kod1,
-      'KOD1_TANIMI': instance.kod1Tanimi,
-      'KOD2': instance.kod2,
-      'KOD2_TANIMI': instance.kod2Tanimi,
-      'KOD3': instance.kod3,
-      'KOD3_TANIMI': instance.kod3Tanimi,
-      'KOD4': instance.kod4,
-      'KOD4_TANIMI': instance.kod4Tanimi,
-      'KOD5': instance.kod5,
-      'KOD5_TANIMI': instance.kod5Tanimi,
-      'KAYITYAPANKUL': instance.kayityapankul,
-      'KAYITTARIHI': instance.kayittarihi,
-      'DUZELTMEYAPANKUL': instance.duzeltmeyapankul,
-      'DUZELTMETARIHI': instance.duzeltmetarihi,
-      'EFATURA_MI': instance.efaturaMi,
-      'EFATURA_TIPI': instance.efaturaTipi,
-      'EFAT_GECIS_TARIHI': instance.efatGecisTarihi,
-      'EFAT_AKTIF': instance.efatAktif,
-      'RISK_TAKIBI': instance.riskTakibi,
-      'EFATURA_CARISI': instance.efaturaCarisi,
-      'BAKIYE': instance.bakiye,
-      'ENLEM': instance.enlem,
-      'BOYLAM': instance.boylam,
-      'KULL1S': instance.kull1s,
-      'KULL2S': instance.kull2s,
-      'KULL3S': instance.kull3s,
-      'KULL4S': instance.kull4s,
-      'KULL5S': instance.kull5s,
-      'KULL6S': instance.kull6s,
-      'KULL7S': instance.kull7s,
-      'KULL8S': instance.kull8s,
-      'KULL1N': instance.kull1n,
-      'KULL2N': instance.kull2n,
-      'KULL3N': instance.kull3n,
-      'KULL4N': instance.kull4n,
-      'KULL5N': instance.kull5n,
-      'KULL6N': instance.kull6n,
-      'KULL7N': instance.kull7n,
-      'KULL8N': instance.kull8n,
-      'FAX': instance.fax,
-      'SAHIS_FIRMASI_MI': instance.sahisFirmasiMi,
-      'DOVIZLI': instance.dovizli,
-      'DOVIZ_KODU': instance.dovizKodu,
-      'DOVIZ_ADI': instance.dovizAdi,
-      'SUBE_KODU': instance.subeKodu,
-      'KOSUL_KODU': instance.kosulKodu,
-      'FIYAT_GRUBU': instance.fiyatGrubu,
-    };
+Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('CARI_KODU', instance.cariKodu);
+  writeNotNull('CARI_ADI', instance.cariAdi);
+  writeNotNull('BAGLI_CARI', instance.bagliCari);
+  writeNotNull('BAGLI_CARI_ADI', instance.bagliCariAdi);
+  writeNotNull('CARI_TIP', instance.cariTip);
+  writeNotNull('CARI_TIP_ACIKLAMA', instance.cariTipAciklama);
+  writeNotNull('KILIT', instance.kilit);
+  writeNotNull('VADE_GUNU', instance.vadeGunu);
+  writeNotNull('ODEME_TIPI', instance.odemeTipi);
+  writeNotNull('HESAPTUTMASEKLI', instance.hesaptutmasekli);
+  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
+  writeNotNull('PLASIYER_ACIKLAMA', instance.plasiyerAciklama);
+  writeNotNull('BORC_TOPLAMI', instance.borcToplami);
+  writeNotNull('ALACAK_TOPLAMI', instance.alacakToplami);
+  writeNotNull('GENISK1_ORANI', instance.genisk1Orani);
+  writeNotNull('ULKE_KODU', instance.ulkeKodu);
+  writeNotNull('ULKE_ADI', instance.ulkeAdi);
+  writeNotNull('CARI_IL', instance.cariIl);
+  writeNotNull('CARI_ILCE', instance.cariIlce);
+  writeNotNull('CARI_TEL', instance.cariTel);
+  writeNotNull('POSTAKODU', instance.postakodu);
+  writeNotNull('EMAIL', instance.email);
+  writeNotNull('WEB', instance.web);
+  writeNotNull('CARI_ADRES', instance.cariAdres);
+  writeNotNull('VERGI_DAIRESI', instance.vergiDairesi);
+  writeNotNull('VERGI_NUMARASI', instance.vergiNumarasi);
+  writeNotNull('GRUP_KODU', instance.grupKodu);
+  writeNotNull('GRUP_TANIMI', instance.grupTanimi);
+  writeNotNull('BILGI', instance.bilgi);
+  writeNotNull('ACIKLAMA1', instance.aciklama1);
+  writeNotNull('ACIKLAMA2', instance.aciklama2);
+  writeNotNull('ACIKLAMA3', instance.aciklama3);
+  writeNotNull('KODU', instance.kodu);
+  writeNotNull('KOD1', instance.kod1);
+  writeNotNull('KOD1_TANIMI', instance.kod1Tanimi);
+  writeNotNull('KOD2', instance.kod2);
+  writeNotNull('KOD2_TANIMI', instance.kod2Tanimi);
+  writeNotNull('KOD3', instance.kod3);
+  writeNotNull('KOD3_TANIMI', instance.kod3Tanimi);
+  writeNotNull('KOD4', instance.kod4);
+  writeNotNull('KOD4_TANIMI', instance.kod4Tanimi);
+  writeNotNull('KOD5', instance.kod5);
+  writeNotNull('KOD5_TANIMI', instance.kod5Tanimi);
+  writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
+  writeNotNull('KAYITTARIHI', instance.kayittarihi);
+  writeNotNull('DUZELTMEYAPANKUL', instance.duzeltmeyapankul);
+  writeNotNull('DUZELTMETARIHI', instance.duzeltmetarihi);
+  writeNotNull('EFATURA_MI', instance.efaturaMi);
+  writeNotNull('EFATURA_TIPI', instance.efaturaTipi);
+  writeNotNull('EFAT_GECIS_TARIHI', instance.efatGecisTarihi);
+  writeNotNull('EFAT_AKTIF', instance.efatAktif);
+  writeNotNull('RISK_TAKIBI', instance.riskTakibi);
+  writeNotNull('EFATURA_CARISI', instance.efaturaCarisi);
+  writeNotNull('BAKIYE', instance.bakiye);
+  writeNotNull('ENLEM', instance.enlem);
+  writeNotNull('BOYLAM', instance.boylam);
+  writeNotNull('KULL1S', instance.kull1s);
+  writeNotNull('KULL2S', instance.kull2s);
+  writeNotNull('KULL3S', instance.kull3s);
+  writeNotNull('KULL4S', instance.kull4s);
+  writeNotNull('KULL5S', instance.kull5s);
+  writeNotNull('KULL6S', instance.kull6s);
+  writeNotNull('KULL7S', instance.kull7s);
+  writeNotNull('KULL8S', instance.kull8s);
+  writeNotNull('KULL1N', instance.kull1n);
+  writeNotNull('KULL2N', instance.kull2n);
+  writeNotNull('KULL3N', instance.kull3n);
+  writeNotNull('KULL4N', instance.kull4n);
+  writeNotNull('KULL5N', instance.kull5n);
+  writeNotNull('KULL6N', instance.kull6n);
+  writeNotNull('KULL7N', instance.kull7n);
+  writeNotNull('KULL8N', instance.kull8n);
+  writeNotNull('FAX', instance.fax);
+  writeNotNull('SAHIS_FIRMASI_MI', instance.sahisFirmasiMi);
+  writeNotNull('DOVIZLI', instance.dovizli);
+  writeNotNull('DOVIZ_KODU', instance.dovizKodu);
+  writeNotNull('DOVIZ_ADI', instance.dovizAdi);
+  writeNotNull('SUBE_KODU', instance.subeKodu);
+  writeNotNull('KOSUL_KODU', instance.kosulKodu);
+  writeNotNull('FIYAT_GRUBU', instance.fiyatGrubu);
+  return val;
+}
 
 BakiyeModel _$BakiyeModelFromJson(Map<String, dynamic> json) => BakiyeModel()
   ..cariKodu = json['CARI_KODU'] as String?
