@@ -62,9 +62,6 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
       } else if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
         viewModel.changeIsScrolledDown(false);
       }
-      if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
-        viewModel.changeIsScrolledDown(true);
-      }
     });
     super.initState();
   }
@@ -492,9 +489,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
               ? const Center(child: Text("Stok Bulunamadı"))
               : const Center(child: CircularProgressIndicator.adaptive())
           : ListView.builder(
-              shrinkWrap: true,
+              primary: false,
               controller: _scrollController,
-              physics: const ClampingScrollPhysics(),
               padding: UIHelper.lowPadding,
               itemCount: (stokListesi?.length ?? 0) + 1,
               itemBuilder: (context, index) {
@@ -503,7 +499,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
 
                   return Card(
                     child: Listener(
-                      onPointerDown: (event){
+                      onPointerDown: (event) {
                         if (event.kind == PointerDeviceKind.mouse && event.buttons == 2) {
                           dialogManager.showGridViewDialog(CustomAnimatedGridView<StokListesiModel>(model: stok, islemTipi: IslemTipi.stok));
                         }
@@ -577,7 +573,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                   // ),
                                   //😳 BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt),
                                 ];
-                                children2.insert(2, BottomSheetModel(title: "Sil", iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? "")).yetkiKontrol(yetkiController.stokKartiSilme));
+                                children2.insert(
+                                    2, BottomSheetModel(title: "Sil", iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? "")).yetkiKontrol(yetkiController.stokKartiSilme));
                                 List<BottomSheetModel>? newResult = children2.nullCheck.cast<BottomSheetModel>();
                                 BaseEditModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: stok.stokKodu ?? "", children: newResult);
                                 if (result != null) {
@@ -591,12 +588,11 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                     ),
                   );
                 } else {
-                  return Observer(builder: (_) {
-                    return AnimatedContainer(
-                      duration: const Duration(milliseconds: 150),
-                      child: viewModel.dahaVarMi || (viewModel.stokListesi?.isEmpty ?? false) ? const Center(child: CircularProgressIndicator.adaptive()) : const SizedBox(),
-                    );
-                  });
+                  return AnimatedContainer(
+                    duration: const Duration(milliseconds: 150),
+                    height: (viewModel.dahaVarMi) ? 50 : 0,
+                    child: const Center(child: CircularProgressIndicator.adaptive()),
+                  );
                 }
               },
             );
@@ -694,6 +690,10 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
       viewModel.setStokListesi(<StokListesiModel>[]);
     }
     setState(() {});
+
+    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+      viewModel.changeIsScrolledDown(true);
+    }
   }
 
   Future<MemoryImage> getImage(String path) async {
