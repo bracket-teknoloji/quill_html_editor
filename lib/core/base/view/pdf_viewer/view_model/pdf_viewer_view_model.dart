@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:mobx/mobx.dart';
 
 part 'pdf_viewer_view_model.g.dart';
@@ -10,6 +12,12 @@ abstract class _PdfViewerViewModelBase with Store {
 
   @observable
   int pageCounter = 0;
+
+  @observable
+  File? pdfFile;
+
+  @action
+  void changePdfFile(File? value) => pdfFile = value;
 
   @observable
   ObservableFuture<bool?> futureController = ObservableFuture(Future.value(false));

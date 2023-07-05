@@ -118,7 +118,12 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                                       viewModel.setGridItemModel(item?.altMenuler);
                                     } else {
                                       Get.back();
+                                      if (item?.route != null){
+                                       Get.toNamed(item?.route ?? "", arguments: widget.cariListesiModel ?? widget.model);
+                                      }else {
                                       item?.onTap?.call();
+                                      }
+                                      // call with arguments
                                     }
                                   }))));
                 },
