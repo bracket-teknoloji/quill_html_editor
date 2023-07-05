@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:open_file_plus/open_file_plus.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:picker/core/constants/extensions/date_time_extensions.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
@@ -132,6 +133,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
         return Observer(
             builder: (_) => SfPdfViewer.file(
                   viewModel.pdfFile!,
+                  
                   controller: pdfViewerController,
                   interactionMode: PdfInteractionMode.selection,
                   onTextSelectionChanged: (details) {
@@ -198,7 +200,10 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
 
   Future<File?> get getFile async {
     final appStorage = await getApplicationDocumentsDirectory();
-    final file = File('${appStorage.path}/${widget.pdfData?.raporOzelKod}${widget.pdfData?.dicParams?.cariKodu}.${pdfFile?.uzanti ?? "pdf"}');
+    //create a folder in documents/picker as name picker
+    await Directory('${appStorage.path}\\picker\\pdf').create(recursive: true);
+    final file = File(
+        '${appStorage.path}\\picker\\pdf\\${widget.pdfData?.raporOzelKod}${widget.pdfData?.dicParams?.cariKodu ?? widget.pdfData?.dicParams?.stokKodu ?? ""}${DateTime.now().toDateTimeHypenString()}.${pdfFile?.uzanti ?? "pdf"}');
     final fileWriter = file.openSync(mode: FileMode.write);
     fileWriter.writeFromSync(base64Decode(pdfFile?.byteData ?? ""));
     await fileWriter.close();

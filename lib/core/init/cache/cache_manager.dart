@@ -47,7 +47,7 @@ class CacheManager {
   }
 
   Future<void> initHiveBoxes() async {
-    await Hive.initFlutter();
+    await Hive.initFlutter("picker/hive");
     _preferencesBox = await Hive.openBox("preferences");
     _companiesBox = await Hive.openBox("companies");
     _tokenBox = await Hive.openBox("token");
