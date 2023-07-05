@@ -73,6 +73,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         widget.onTap?.call();
         // controller.selection = TextSelection(baseOffset: 0, extentOffset: controller.value.text.length);
       },
+      
       onChanged: widget.onChanged,
       onFieldSubmitted: widget.onSubmitted,
       // onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
