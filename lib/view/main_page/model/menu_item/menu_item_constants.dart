@@ -7,7 +7,10 @@ import '../param_model.dart';
 class MenuItemConstants {
   static final MainPageModel? _anaVeri = CacheManager.getAnaVeri();
   static final List<NetFectDizaynList>? _serbestRapor = _anaVeri?.paramModel?.netFectDizaynList!.where((element) => element.ozelKod == "Serbest").toList();
-  final List<GridItemModel> _GridItemModel = [
+  List<GridItemModel> get getGridItemModel =>
+      _serbestRapor!.map((e) => GridItemModel.serbestRaporlar(name: e.detayKod, title: e.dizaynAdi ?? "", color: GridThemeManager.serbestRaporlar, arguments: e)).toList();
+
+  final List<GridItemModel> _gridItemModel = [
     //*Cari
     //*
     GridItemModel.anamenu(name: "CARI", title: "Cari", icon: "supervisor", color: GridThemeManager.cari, altMenuler: [
@@ -23,6 +26,10 @@ class MenuItemConstants {
         GridItemModel.item(name: "cari_Rap_HarDetayliYaslandir", title: "Hareket Detaylı Yaşlandırma Rap.", route: "/mainPage/cariHareketDetayliYaslandirmaRaporu"),
         GridItemModel.item(name: "cari_Rap_StokSatisOzeti", title: "Cari Stok Satış Özeti", route: "/mainPage/cariStokSatisOzeti"),
         GridItemModel.item(name: "stok_Rap_UrunGrubunaGoreSatis", title: "Ürün Grubuna Göre Satış Grafiği", route: "/mainPage/urunGrubunaGoreSatisGrafigi"),
+        ...List.generate(
+          _serbestRapor?.where((element) => element.detayKod == "Cari").length ?? 0,
+          (index) => GridItemModel.serbestRaporlar(title: "cari_Rap_Serbest${_serbestRapor![index].dizaynAdi}", arguments: _serbestRapor?[index]),
+        ),
       ])
     ]),
     //*E-Belge
@@ -124,12 +131,16 @@ class MenuItemConstants {
     //* Üretim
     //*
     GridItemModel.anamenu(name: "URET", title: "Üretim", icon: "factory", color: GridThemeManager.uretim, altMenuler: []),
-    GridItemModel.anamenu(name: "GNEL_SRAP", title: "Serbest Raporlar", icon: "monitoring", color: GridThemeManager.genel, altMenuler: [
+    GridItemModel.anamenu(name: "GNEL_SRAP", title: "Serbest Raporlar", icon: "monitoring", color: GridThemeManager.serbestRaporlar, altMenuler: [
       ...List.generate(_serbestRapor?.length ?? 0, (index) => GridItemModel.serbestRaporlar(title: _serbestRapor?[index].dizaynAdi ?? "", arguments: _serbestRapor?[index])),
     ]),
   ];
   List<GridItemModel> getList() {
     // grid items içindeki yetkiKontrol true olanları döndür
-    return _GridItemModel.where((element) => element.yetkiKontrol).toList();
+    return _gridItemModel.where((element) => element.yetkiKontrol).toList();
+  }
+
+  List<GridItemModel?> getAltMenuList(String name) {
+    return getGridItemModel.where((element) => element.name == name).toList();
   }
 }

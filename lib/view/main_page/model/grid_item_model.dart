@@ -41,7 +41,7 @@ class GridItemModel {
     menuTipi = "IS";
 
   }
-  GridItemModel.serbestRaporlar({required this.title, this.arguments, this.color}) {
+  GridItemModel.serbestRaporlar({required this.title, this.arguments, this.color, this.name}) {
     menuTipi = "SR";
     route = "/mainPage/serbestRaporlar";
     onTap = () => Get.toNamed("/mainPage/serbestRaporlar", arguments: arguments);

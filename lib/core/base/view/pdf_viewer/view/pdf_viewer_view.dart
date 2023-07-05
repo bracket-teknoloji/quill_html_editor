@@ -76,12 +76,12 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
               await fileChecker();
             },
             icon: const Icon(Icons.share_outlined)),
-        IconButton(
-            onPressed: () async {
-              //😳 await bottomSheetDialogManager.showBottomSheetDialog(context,
-              //😳     title: "Yazıcı", children: CacheManager.getAnaVeri()?.paramModel?.yaziciList?.map((e) => BottomSheetModel(title: e.yaziciAdi ?? "", onTap: () {})).toList());
-            },
-            icon: const Icon(Icons.more_vert_outlined)),
+        // IconButton(
+        //     onPressed: () async {
+        //       //😳 await bottomSheetDialogManager.showBottomSheetDialog(context,
+        //       //😳     title: "Yazıcı", children: CacheManager.getAnaVeri()?.paramModel?.yaziciList?.map((e) => BottomSheetModel(title: e.yaziciAdi ?? "", onTap: () {})).toList());
+        //     },
+        //     icon: const Icon(Icons.more_vert_outlined)),
       ],
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(60),
@@ -114,13 +114,13 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                     OpenFile.open((await getFile)!.path);
                   }
                 }),
-            AppBarButton(
-                icon: Icons.mail_outline_outlined,
-                child: const Text("Mail Gönder"),
-                onPressed: () async {
-                  //! EKLENECEK
-                  await fileChecker();
-                }),
+            // AppBarButton(
+            //     icon: Icons.mail_outline_outlined,
+            //     child: const Text("Mail Gönder"),
+            //     onPressed: () async {
+            //       //! EKLENECEK
+            //       await fileChecker();
+            //     }),
           ],
         ),
       ),
@@ -133,7 +133,6 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
         return Observer(
             builder: (_) => SfPdfViewer.file(
                   viewModel.pdfFile!,
-                  
                   controller: pdfViewerController,
                   interactionMode: PdfInteractionMode.selection,
                   onTextSelectionChanged: (details) {

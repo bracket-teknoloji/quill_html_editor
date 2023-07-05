@@ -15,6 +15,7 @@ import 'package:picker/view/auth/model/login_model.dart';
 import '../../base/model/base_grup_kodu_model.dart';
 import '../../base/model/base_pdf_model.dart';
 import '../../base/view/pdf_viewer/model/pdf_viewer_model.dart';
+import '../../components/dialog/dialog_manager.dart';
 import '../../constants/enum/dio_enum.dart';
 import 'login/api_urls.dart';
 
@@ -56,7 +57,7 @@ class NetworkManager {
           "Content-Type": "application/x-www-form-urlencoded",
           "Platform": "netfect",
           "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"
-        },contentType: "application/x-www-form-urlencoded", method: HttpTypes.GET, responseType: ResponseType.json),
+        }, contentType: "application/x-www-form-urlencoded", method: HttpTypes.GET, responseType: ResponseType.json),
         data: data);
     var a = response.data;
     return TokenModel().fromJson(a);
@@ -80,6 +81,10 @@ class NetworkManager {
 
     final response = await _dio.get(path, queryParameters: queries, options: Options(headers: head), cancelToken: cancelToken);
     GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
+    if (responseModel.success != true) {
+      DialogManager().showAlertDialog(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
+      throw Exception(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
+    }
     return responseModel;
   }
 
@@ -100,6 +105,10 @@ class NetworkManager {
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
     final response = await _dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
     GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
+    if (responseModel.success != true) {
+      DialogManager().showAlertDialog(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
+      throw Exception(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
+    }
     return responseModel;
   }
 

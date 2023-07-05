@@ -21,6 +21,7 @@ class ApiUrls {
   static const String getCariDetay = "api/Cari/GetCariDetay";
   static const String getSiradakiKod = "api/General/GetSiradakiKod";
   static const String deleteCari = "api/Cari/DeleteCari";
+  static const String kodDegistir = "api/Cari/KodDegistir";
   //*Stoklar
   static const String getStoklar = "api/Stok/GetStoklar";
   static const String getStokDetay = "api/Stok/GetStokDetay";
