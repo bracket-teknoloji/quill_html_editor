@@ -1,3 +1,6 @@
+import 'package:collection/collection.dart';
+import 'package:picker/core/constants/enum/serbest_rapor_detay_kod_enum.dart';
+
 import '../../../../core/constants/grid_constants.dart';
 import '../../../../core/init/cache/cache_manager.dart';
 import '../grid_item_model.dart';
@@ -7,8 +10,17 @@ import '../param_model.dart';
 class MenuItemConstants {
   static final MainPageModel? _anaVeri = CacheManager.getAnaVeri();
   static final List<NetFectDizaynList>? _serbestRapor = _anaVeri?.paramModel?.netFectDizaynList!.where((element) => element.ozelKod == "Serbest").toList();
-  List<GridItemModel> get getGridItemModel =>
+
+  static List<GridItemModel> get getGridItemModel =>
       _serbestRapor!.map((e) => GridItemModel.serbestRaporlar(name: e.detayKod, title: e.dizaynAdi ?? "", color: GridThemeManager.serbestRaporlar, arguments: e)).toList();
+
+  static List<GridItemModel> _getSerbestRapor(SerbestRaporDetayKodEnum detayKod) {
+    List<NetFectDizaynList>? serbestRaporList = _serbestRapor?.where((element) => element.detayKod == detayKod.value).toList();
+    return List.generate(
+      _serbestRapor?.where((element) => element.detayKod == detayKod.value).length ?? 0,
+      (index) => GridItemModel.serbestRaporlar(title: serbestRaporList![index].dizaynAdi ?? "", arguments: serbestRaporList[index], color: GridThemeManager.serbestRaporlar),
+    );
+  }
 
   final List<GridItemModel> _gridItemModel = [
     //*Cari
@@ -26,10 +38,7 @@ class MenuItemConstants {
         GridItemModel.item(name: "cari_Rap_HarDetayliYaslandir", title: "Hareket Detaylı Yaşlandırma Rap.", route: "/mainPage/cariHareketDetayliYaslandirmaRaporu"),
         GridItemModel.item(name: "cari_Rap_StokSatisOzeti", title: "Cari Stok Satış Özeti", route: "/mainPage/cariStokSatisOzeti"),
         GridItemModel.item(name: "stok_Rap_UrunGrubunaGoreSatis", title: "Ürün Grubuna Göre Satış Grafiği", route: "/mainPage/urunGrubunaGoreSatisGrafigi"),
-        ...List.generate(
-          _serbestRapor?.where((element) => element.detayKod == "Cari").length ?? 0,
-          (index) => GridItemModel.serbestRaporlar(title: "cari_Rap_Serbest${_serbestRapor![index].dizaynAdi}", arguments: _serbestRapor?[index]),
-        ),
+        ..._getSerbestRapor(SerbestRaporDetayKodEnum.cari),
       ])
     ]),
     //*E-Belge
@@ -95,6 +104,7 @@ class MenuItemConstants {
         GridItemModel.item(name: "stok_Rap_AmbarMaliyet", title: "Ambar Maliyet Raporu", route: "/mainPage/stokAmbarMaliyetRaporu"),
         GridItemModel.item(name: "stok_Rap_LokalDepoBakiye", title: "Lokal Depo Bakiye Raporu", route: "/mainPage/stokLokalDepoBakiyeRaporu"),
         GridItemModel.item(name: "stok_Rap_UrunGrubunaGoreSatis", title: "Ürün Grubuna Göre Satış Grafiği", route: "/mainPage/urunGrubunaGoreSatisGrafigi"),
+        ..._getSerbestRapor(SerbestRaporDetayKodEnum.stok)
       ])
     ]),
 
@@ -132,9 +142,11 @@ class MenuItemConstants {
     //*
     GridItemModel.anamenu(name: "URET", title: "Üretim", icon: "factory", color: GridThemeManager.uretim, altMenuler: []),
     GridItemModel.anamenu(name: "GNEL_SRAP", title: "Serbest Raporlar", icon: "monitoring", color: GridThemeManager.serbestRaporlar, altMenuler: [
-      ...List.generate(_serbestRapor?.length ?? 0, (index) => GridItemModel.serbestRaporlar(title: _serbestRapor?[index].dizaynAdi ?? "", arguments: _serbestRapor?[index])),
+      ...groupBySerbestRaporList(),
+      // ...List.generate(_serbestRapor?.length ?? 0, (index) => GridItemModel.serbestRaporlar(title: _serbestRapor?[index].dizaynAdi ?? "", arguments: _serbestRapor?[index])),
     ]),
   ];
+
   List<GridItemModel> getList() {
     // grid items içindeki yetkiKontrol true olanları döndür
     return _gridItemModel.where((element) => element.yetkiKontrol).toList();
@@ -142,5 +154,33 @@ class MenuItemConstants {
 
   List<GridItemModel?> getAltMenuList(String name) {
     return getGridItemModel.where((element) => element.name == name).toList();
+  }
+
+  static List<GridItemModel> groupBySerbestRaporList() {
+    if (_serbestRapor!.length >= 16) {
+      Map<String?, GridItemModel> result = groupBy(
+        _serbestRapor!,
+        (obj) => obj.detayKod,
+      ).map((key, value) {
+        if (value.length != 1) {
+          return MapEntry(
+              key,
+              GridItemModel.altmenu(
+                  name: "stok_Raporlar",
+                  title: key ?? "",
+                  altMenuler: List.generate(value.length, (index) => GridItemModel.serbestRaporlar(title: value[index].dizaynAdi ?? "", arguments: value[index]))));
+        } else {
+          return MapEntry(
+              key,
+              GridItemModel.serbestRaporlar(
+                title: value[0].dizaynAdi ?? "",
+                arguments: value[0],
+              ));
+        }
+      });
+      return result.values.sortedBy((element) => element.menuTipi).toList();
+    } else {
+      return getGridItemModel;
+    }
   }
 }

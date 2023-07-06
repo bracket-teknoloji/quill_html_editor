@@ -2,11 +2,11 @@
 
 import '../enum/islem_tipi_enum.dart';
 
-extension IslemTipiExtensions on IslemTipi {
+extension IslemTipiExtensions on IslemTipiEnum {
   bool get islemMi {
     switch (this) {
-      case IslemTipi.cari:
-      case IslemTipi.stok:
+      case IslemTipiEnum.cari:
+      case IslemTipiEnum.stok:
         return true;
       default:
         return false;

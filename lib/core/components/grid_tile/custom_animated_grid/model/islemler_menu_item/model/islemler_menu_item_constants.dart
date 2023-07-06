@@ -27,17 +27,16 @@ import '../../../../../dialog/dialog_manager.dart';
 class IslemlerMenuItemConstants<T> {
   IslemlerMenuItemConstantsViewModel viewModel = IslemlerMenuItemConstantsViewModel();
   BottomSheetDialogManager bottomSheetDialogManager = BottomSheetDialogManager();
-  IslemTipi islemtipi;
+  IslemTipiEnum islemtipi;
   List<GridItemModel?> islemler = [];
   T? model;
 
   IslemlerMenuItemConstants({required this.islemtipi, List<GridItemModel?>? raporlar, this.model}) {
-    if (islemtipi == IslemTipi.stok) {
+    if (islemtipi == IslemTipiEnum.stok) {
       islemler.add(stokKarti);
-      islemler.add(raporlar?.first);
-    } else if (islemtipi == IslemTipi.cari) {
+      islemler.addAll(raporlar!);
+    } else if (islemtipi == IslemTipiEnum.cari) {
       if (model is CariListesiModel) {
-        GridItemModel cariHareketleri = GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Cari Hareketleri", onTap: () => Get.toNamed("mainPage/cariHareketleri", arguments: model));
         islemler.add(paylas);
         islemler.add(cariHareketleri);
         islemler.add(cariKoduDegistir);
@@ -48,6 +47,8 @@ class IslemlerMenuItemConstants<T> {
       islemler.add(stokHareketleri);
     }
   }
+
+  GridItemModel get cariHareketleri => GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Cari Hareketleri", onTap: () => Get.toNamed("mainPage/cariHareketleri", arguments: model));
 
   //* Genel
   GridItemModel get stokHareketleri => GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Stok Hareketleri", onTap: () => Get.toNamed("mainPage/stokHareketleri", arguments: model));

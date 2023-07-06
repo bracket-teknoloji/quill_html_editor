@@ -501,12 +501,12 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                     child: Listener(
                       onPointerDown: (event) {
                         if (event.kind == PointerDeviceKind.mouse && event.buttons == 2) {
-                          dialogManager.showGridViewDialog(CustomAnimatedGridView<StokListesiModel>(model: stok, islemTipi: IslemTipi.stok));
+                          dialogManager.showGridViewDialog(CustomAnimatedGridView<StokListesiModel>(model: stok, islemTipi: IslemTipiEnum.stok));
                         }
                       },
                       child: ListTile(
                         onLongPress: () {
-                          dialogManager.showGridViewDialog(CustomAnimatedGridView<StokListesiModel>(model: stok, islemTipi: IslemTipi.stok));
+                          dialogManager.showGridViewDialog(CustomAnimatedGridView<StokListesiModel>(model: stok, islemTipi: IslemTipiEnum.stok));
                         },
                         contentPadding: UIHelper.lowPadding,
                         // leading: stok.resimUrlKucuk !=null ? Image.memory(networkManager.getImage(stok.resimUrlKucuk))

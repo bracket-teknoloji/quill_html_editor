@@ -275,12 +275,12 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                         child: Listener(
                           onPointerDown: (event) {
                             if (event.kind == PointerDeviceKind.mouse && event.buttons == 2) {
-                              dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipi.cari));
+                              dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipiEnum.cari));
                             }
                           },
                           child: ListTile(
                             onLongPress: () {
-                              dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipi.cari));
+                              dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipiEnum.cari));
                             },
                             onTap: !(widget.isGetData ?? true)
                                 ? () async {
@@ -333,21 +333,21 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                               iconWidget: Icons.list_alt_outlined,
                                               onTap: () {
                                                 Get.back();
-                                                dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipi.cari));
+                                                dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipiEnum.cari));
                                               }),
                                           BottomSheetModel(
                                               title: "Raporlar",
                                               iconWidget: Icons.area_chart_outlined,
                                               onTap: () {
                                                 Get.back();
-                                                dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipi.cariRapor));
+                                                dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipiEnum.cariRapor));
                                               }),
                                           BottomSheetModel(
                                             title: "Serbest Raporlar",
                                             iconWidget: Icons.area_chart_outlined,
                                             onTap: () {
                                               Get.back();
-                                              dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipi.cariSerbest));
+                                              dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipiEnum.cariSerbest));
                                             },
                                           ),
                                         ].nullCheck.cast<BottomSheetModel>());

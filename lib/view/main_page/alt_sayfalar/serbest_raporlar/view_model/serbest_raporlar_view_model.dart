@@ -45,7 +45,11 @@ abstract class _SerbestRaporlarViewModelBase with Store {
 
   @action
   void changeDicParams(String key, String value, [bool changeController = true]) {
-    dicParams[key] = value;
+    if (int.tryParse(key.split("").last) != null) {
+      dicParams["KOD${key.split("").last}"] = value;
+    } else {
+      dicParams[key] = value;
+    }
     if (changeController) {
       changeControllerText(key, value);
     }

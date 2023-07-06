@@ -125,7 +125,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
               children: [
                 AppBarButton(
                     onPressed: () {
-                      dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: widget.cari, islemTipi: IslemTipi.cari));
+                      dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: widget.cari, islemTipi: IslemTipiEnum.cari));
                     },
                     icon: Icons.tune_outlined,
                     child: const Text("Cari İşlemleri")),

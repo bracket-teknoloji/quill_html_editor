@@ -91,6 +91,7 @@ dependencies:
   flutter_image_compress: ^2.0.3
   timezone: ^0.9.1
   syncfusion_flutter_pdfviewer: ^21.2.10
+  collection: ^1.17.1
 
 flutter_icons:
   image_path: "assets/splash/pickerLogoTuruncu.png"
