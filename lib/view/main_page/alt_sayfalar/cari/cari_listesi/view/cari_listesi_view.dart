@@ -302,7 +302,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                             iconWidget: Icons.delete_outline,
                                             onTap: () async {
                                               dialogManager.showAreYouSureDialog(() async {
-                                                dialogManager.showLoadingDialog("Cari Siliniyor...");
+                                                dialogManager.showSnackBar("Cari Siliniyor...");
                                                 var result = await networkManager.dioPost<CariListesiModel>(
                                                   path: ApiUrls.deleteCari,
                                                   bodyModel: CariListesiModel(),
@@ -313,14 +313,12 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                                 );
                                                 if (result.success ?? false) {
                                                   Get.back();
-                                                  dialogManager.hideAlertDialog;
                                                   dialogManager.showSnackBar("${object.cariAdi} adlı cari silindi");
                                                   getData(sayfa: 1).then((value) {
                                                     viewModel.changeCariListesi(value);
                                                   });
                                                 } else {
                                                   Get.back();
-                                                  dialogManager.hideAlertDialog;
                                                   dialogManager.showSnackBar(result.message ?? "");
                                                 }
                                               });
@@ -342,14 +340,6 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                                 Get.back();
                                                 dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipiEnum.cariRapor));
                                               }),
-                                          BottomSheetModel(
-                                            title: "Serbest Raporlar",
-                                            iconWidget: Icons.area_chart_outlined,
-                                            onTap: () {
-                                              Get.back();
-                                              dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipiEnum.cariSerbest));
-                                            },
-                                          ),
                                         ].nullCheck.cast<BottomSheetModel>());
                                     if (pageName != null) {
                                       BaseEditEnum? baseEditEnum;

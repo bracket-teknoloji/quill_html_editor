@@ -86,7 +86,6 @@ dependencies:
 
   #QR
   qr_code_scanner: ^1.0.1
-  qr_flutter: ^4.0.0
 
   flutter_image_compress: ^2.0.3
   timezone: ^0.9.1

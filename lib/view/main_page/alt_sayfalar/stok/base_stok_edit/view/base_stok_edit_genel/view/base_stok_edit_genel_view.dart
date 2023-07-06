@@ -190,7 +190,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                         Expanded(
                           flex: 4,
                           child: CustomTextField(
-                              enabled: enable && widget.model == BaseEditEnum.ekle,
+                              enabled: enable && (widget.model == BaseEditEnum.ekle || widget.model == BaseEditEnum.kopyala),
                               labelText: "Kodu",
                               isMust: true,
                               controller: stokKoduController,
@@ -341,16 +341,15 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                             labelText: "Şube",
                             isMust: true,
                             controller: subeController,
-                            suffix: IconButton(
-                                onPressed: () async {
-                                  var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                      title: "Şube", children: subeList.map((e) => BottomSheetModel(title: "${e.subeAdi} ${e.subeKodu}", onTap: () => Get.back(result: e))).toList());
-                                  if (result != null) {
-                                    subeController?.text = "${result.subeAdi} ${result.subeKodu}";
-                                    viewModel.stokListesiModel?.subeKodu = result.subeKodu;
-                                  }
-                                },
-                                icon: const Icon(Icons.more_horiz_outlined))),
+                            onTap: () async {
+                              var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                  title: "Şube", children: subeList.map((e) => BottomSheetModel(title: "${e.subeAdi} ${e.subeKodu}", onTap: () => Get.back(result: e))).toList());
+                              if (result != null) {
+                                subeController?.text = "${result.subeAdi} ${result.subeKodu}";
+                                viewModel.stokListesiModel?.subeKodu = result.subeKodu;
+                              }
+                            },
+                            suffix: const Icon(Icons.more_horiz_outlined)),
                       ]);
                     }),
                     CustomWidgetWithLabel(text: "Rapor Kodları", children: [
@@ -600,7 +599,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
 
   void subeChecker() {
     List result = CacheManager.getSubeListesi();
-    if (result.any((element) => element.subeKodu != -1)) {
+    if (!result.any((element) => element.subeKodu == -1)) {
       result.insert(0, IsletmeModel(subeKodu: -1, subeAdi: "Şubelerde Ortak"));
     }
     subeList = result.map((e) => e as IsletmeModel).toList().cast<IsletmeModel>();
@@ -625,16 +624,16 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
     return result.paramData!["URETILEN_BARKOD"];
   }
 
- Future<String> bitmapToBase64(ui.Image? bitmap) async{
-  if (bitmap == null) {
-    return '';
+  Future<String> bitmapToBase64(ui.Image? bitmap) async {
+    if (bitmap == null) {
+      return '';
+    }
+    try {
+      final ByteData? byteData = await bitmap.toByteData(format: ui.ImageByteFormat.png);
+      final Uint8List pngBytes = byteData?.buffer.asUint8List() ?? Uint8List(0);
+      return base64Encode(pngBytes);
+    } catch (e) {
+      return '';
+    }
   }
-  try {
-    final ByteData? byteData = await bitmap.toByteData(format: ui.ImageByteFormat.png);
-    final Uint8List pngBytes = byteData?.buffer.asUint8List() ?? Uint8List(0);
-    return base64Encode(pngBytes);
-  } catch (e) {
-    return '';
-  }
-}
 }

@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:picker/core/base/model/base_network_mixin.dart';
 import 'package:picker/core/base/model/generic_response_model.dart';
@@ -48,17 +49,18 @@ class NetworkManager {
   }
 
   static Future<TokenModel?> getToken({required String path, Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
+    FormData formData = FormData.fromMap(data);
     log(AccountModel.instance.toJson().toString());
     final response = await _dio.request(path,
         queryParameters: queryParameters,
         cancelToken: CancelToken(),
         options: Options(headers: {
           "Access-Control-Allow-Origin": "*",
-          "Content-Type": "application/x-www-form-urlencoded",
+          // "Content-Type": "application/x-www-form-urlencoded",
           "Platform": "netfect",
           "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"
         }, contentType: "application/x-www-form-urlencoded", method: HttpTypes.GET, responseType: ResponseType.json),
-        data: data);
+        data: kIsWeb ? formData : data);
     var a = response.data;
     return TokenModel().fromJson(a);
   }

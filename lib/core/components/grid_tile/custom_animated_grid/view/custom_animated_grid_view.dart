@@ -37,7 +37,11 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
       IslemlerMenuItemConstants islemlerResult = IslemlerMenuItemConstants(islemtipi: widget.islemTipi, raporlar: getRaporList(widget.islemTipi), model: widget.cariListesiModel ?? widget.model);
       viewModel.setGridItemModel(islemlerResult.islemler.cast<GridItemModel>());
     } else if (raporMu) {
-      viewModel.setGridItemModel(result.first.altMenuler?.where((element) => element.title == "Raporlar").first.altMenuler);
+      if (widget.islemTipi == IslemTipiEnum.cariRapor) {
+        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.cari)?.first.altMenuler);
+      } else if (widget.islemTipi == IslemTipiEnum.stokRapor) {
+        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.stok)?.first.altMenuler);
+      }
     }
     super.initState();
   }
@@ -80,7 +84,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
               return GridView.builder(
                 padding: UIHelper.zeroPadding,
                 shrinkWrap: true,
-                physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                // physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: MediaQuery.of(context).size.width ~/ 85 > 6 ? 6 : MediaQuery.of(context).size.width ~/ 85,
                   childAspectRatio: context.isLandscape ? 1.2 : 0.9,
@@ -128,7 +132,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
     ).paddingAll(UIHelper.lowSize);
   }
 
-  List<GridItemModel?>? getRaporList(IslemTipiEnum menu) {
+  List<GridItemModel>? getRaporList(IslemTipiEnum menu) {
     return result.where((element) => element.title == menu.value).first.altMenuler?.where((element) => element.title == "Raporlar").toList();
   }
-} 
+}

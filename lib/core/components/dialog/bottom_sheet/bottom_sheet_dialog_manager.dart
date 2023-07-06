@@ -228,6 +228,7 @@ class BottomSheetDialogManager {
                                           viewModel.changeIndexIsSelectedListMap(title, index, value!);
                                           // viewModel.isSelectedListMap![title]![index] = value!;
                                           list = selectedChecker(children, title, onlyValue);
+                                          children[index].onTap!();
                                           // if (!value) {
                                           //   list!.remove(children[index].title);
                                           // }

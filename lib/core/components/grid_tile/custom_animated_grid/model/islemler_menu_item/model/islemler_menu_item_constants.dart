@@ -30,14 +30,16 @@ class IslemlerMenuItemConstants<T> {
   IslemTipiEnum islemtipi;
   List<GridItemModel?> islemler = [];
   T? model;
-
+  T? get model2 => model;
   IslemlerMenuItemConstants({required this.islemtipi, List<GridItemModel?>? raporlar, this.model}) {
     if (islemtipi == IslemTipiEnum.stok) {
       islemler.add(stokKarti);
+      islemler.add(kopyala);
       islemler.addAll(raporlar!);
     } else if (islemtipi == IslemTipiEnum.cari) {
       if (model is CariListesiModel) {
         islemler.add(paylas);
+        islemler.add(kopyala);
         islemler.add(cariHareketleri);
         islemler.add(cariKoduDegistir);
         islemler.addAll(raporlar!);
@@ -52,6 +54,7 @@ class IslemlerMenuItemConstants<T> {
 
   //* Genel
   GridItemModel get stokHareketleri => GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Stok Hareketleri", onTap: () => Get.toNamed("mainPage/stokHareketleri", arguments: model));
+  GridItemModel get kopyala => GridItemModel.islemler(title: "Kopyala", onTap: () => Get.toNamed(islemtipi == IslemTipiEnum.cari? "/mainPage/cariEdit" :"/mainPage/stokEdit" , arguments: BaseEditModel(model: model2, baseEditEnum: BaseEditEnum.kopyala)));
 
   //* Stok
   GridItemModel get stokKarti => GridItemModel.islemler(
@@ -104,6 +107,7 @@ class IslemlerMenuItemConstants<T> {
                     labelText: "Yeni Cari Kodu",
                     controller: controller,
                     isMust: true,
+                    onChanged: (p0) => kodDegistirModel.hedefCari = p0,
                     suffix: IconButton(
                         onPressed: () async {
                           var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
@@ -137,7 +141,8 @@ class IslemlerMenuItemConstants<T> {
                               DialogManager().showAreYouSureDialog(() async {
                                 var result = await NetworkManager().dioPost<KodDegistirModel>(path: ApiUrls.kodDegistir, bodyModel: KodDegistirModel(), data: kodDegistirModel.toJson());
                                 if (result.success == true) {
-                                  print(result.data.toString());
+                                  Get.back();
+                                  DialogManager().showSnackBar("Başarılı");
                                 }
                               });
                             },

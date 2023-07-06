@@ -555,6 +555,12 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                         Get.back();
                                         return Get.toNamed("/mainPage/stokHareketleri", arguments: stok);
                                       }).yetkiKontrol(yetkiController.stokHareketleriStokHareketleri),
+                                  BottomSheetModel(
+                                      title: "Raporlar",
+                                      iconWidget: Icons.area_chart_outlined,
+                                      onTap: () async {
+                                        dialogManager.showGridViewDialog(CustomAnimatedGridView<StokListesiModel>(model: stok, islemTipi: IslemTipiEnum.stokRapor));
+                                      }),
                                   //😳 BottomSheetModel(title: "Depo Bakiye Durumu", iconWidget: Icons.list_alt),
                                   // !!BottomSheetModel(
                                   // !!  title: "Yazdır",

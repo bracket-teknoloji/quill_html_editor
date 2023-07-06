@@ -1,4 +1,4 @@
-enum BaseEditEnum {ekle, duzenle, goruntule }
+enum BaseEditEnum {ekle, duzenle, goruntule, kopyala}
 
 extension ToString on BaseEditEnum {
   String? get name => getName(this);
@@ -11,6 +11,8 @@ extension ToString on BaseEditEnum {
         return "Düzenle";
       case BaseEditEnum.goruntule:
         return "Görüntüle";
+      case BaseEditEnum.kopyala:
+        return "Kopyala";
       default:
         return "";
     }

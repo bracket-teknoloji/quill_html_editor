@@ -1,3 +1,4 @@
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -62,7 +63,6 @@ class _QRScannerState extends BaseState<QRScannerView> {
       ),
     );
   }
-
   Widget buildQrView(BuildContext context) => QRView(
         overlay: QrScannerOverlayShape(borderColor: UIHelper.primaryColor, borderRadius: 10, borderWidth: 20, cutOutSize: width * 0.7, overlayColor: Colors.black.withOpacity(0.7)),
         key: qrKey,

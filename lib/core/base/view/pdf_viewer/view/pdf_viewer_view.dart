@@ -200,9 +200,9 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
   Future<File?> get getFile async {
     final appStorage = await getApplicationDocumentsDirectory();
     //create a folder in documents/picker as name picker
-    await Directory('${appStorage.path}\\picker\\pdf').create(recursive: true);
+    await Directory('${appStorage.path}/picker/pdf').create(recursive: true);
     final file = File(
-        '${appStorage.path}\\picker\\pdf\\${widget.pdfData?.raporOzelKod}${widget.pdfData?.dicParams?.cariKodu ?? widget.pdfData?.dicParams?.stokKodu ?? ""}${DateTime.now().toDateTimeHypenString()}.${pdfFile?.uzanti ?? "pdf"}');
+        '${appStorage.path}/picker/pdf/${widget.pdfData?.raporOzelKod}${widget.pdfData?.dicParams?.cariKodu ?? widget.pdfData?.dicParams?.stokKodu ?? ""}${DateTime.now().toDateTimeHypenString()}.${pdfFile?.uzanti ?? "pdf"}');
     final fileWriter = file.openSync(mode: FileMode.write);
     fileWriter.writeFromSync(base64Decode(pdfFile?.byteData ?? ""));
     await fileWriter.close();
