@@ -35,6 +35,7 @@ class ApiUrls {
   static const String saveStokHareket = "api/Stok/SaveStokHareket";
   static const String deleteStokHareket = "api/Stok/DeleteStokHareket";
   static const String getUrunGrubunaGoreSatisGrafigi = "api/Stok/GetUrunGrubunaGoreSatisGrafigi";
+  static const String getFiyatGorFiyatlari = "api/Stok/GetFiyatGorFiyatlari";
 
   //*Fatura
   static const String getFaturaKalemleri = "api/Fatura/GetFaturaKalemleri";

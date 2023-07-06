@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_gor/view/fiyat_gor_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 import "core/init/app_info/app_info.dart";
@@ -80,6 +81,7 @@ class MyApp extends StatelessWidget {
           children: [
             //* Cari
             GetPage(name: "/cariListesi", page: () => CariListesiView(isGetData: Get.arguments)),
+            // GetPage(name: "/cariAktivite", page: () => const CariAktiviteView()),
             GetPage(name: "/cariEdit", page: () => BaseCariEditingView(model: Get.arguments)),
             GetPage(name: "/cariHareketleri", page: () => CariHareketleriView(cari: Get.arguments)),
             GetPage(name: "/cariYeniKayit", page: () => CariYeniKayitView(model: Get.arguments)),
@@ -96,6 +98,8 @@ class MyApp extends StatelessWidget {
 
             //* Stok
             GetPage(name: "/stokListesi", page: () => StokListesiView(isGetData: Get.arguments)),
+            // GetPage(name: "/stokFiyatGor", page: () => const FiyatGorView()),
+
             GetPage(name: "/stokEdit", page: () => BaseStokEditingView(model: Get.arguments)),
             GetPage(
               name: "/stokHareketleri",

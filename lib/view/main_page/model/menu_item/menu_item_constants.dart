@@ -90,7 +90,7 @@ class MenuItemConstants {
     GridItemModel.anamenu(name: "STOK", title: "Stok", icon: "inventory", color: GridThemeManager.stok, altMenuler: [
       GridItemModel.item(name: "stok_StokListesi", title: "Stok Listesi", route: "/mainPage/stokListesi"),
       //😳GridItemModel.item(name: "stok_BarkodTanimlama", title: "Barkod Tanımla"),
-      //😳GridItemModel.item(name: "stok_FiyatGorEkrani", title: "Fiyat Gör"),
+      GridItemModel.item(name: "stok_FiyatGorEkrani", title: "Fiyat Gör", route: "/mainPage/stokFiyatGor"),
       //😳GridItemModel.item(name: "stok_FiyatGecmisi", title: "Fiyat Geçmişi"),
       //😳 TODO [name] Değiştir
       //😳GridItemModel.item(name: "stok_StokListesi", title: "Yazdır"),

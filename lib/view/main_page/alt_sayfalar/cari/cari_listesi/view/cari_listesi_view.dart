@@ -275,12 +275,12 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                         child: Listener(
                           onPointerDown: (event) {
                             if (event.kind == PointerDeviceKind.mouse && event.buttons == 2) {
-                              dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipiEnum.cari));
+                              dialogManager.showCariGridViewDialog(object);
                             }
                           },
                           child: ListTile(
                             onLongPress: () {
-                              dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipiEnum.cari));
+                              dialogManager.showCariGridViewDialog(object);
                             },
                             onTap: !(widget.isGetData ?? true)
                                 ? () async {
@@ -331,7 +331,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                               iconWidget: Icons.list_alt_outlined,
                                               onTap: () {
                                                 Get.back();
-                                                dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipiEnum.cari));
+                                                dialogManager.showCariGridViewDialog(object, IslemTipiEnum.cariRapor);
                                               }),
                                           BottomSheetModel(
                                               title: "Raporlar",
@@ -506,6 +506,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   // }
 
   Future<List?> getData({required int sayfa, String? sort1}) async {
+    viewModel.changeCariListesi(null);
     viewModel.changeDahaVarMi(false);
     var queryParameters2 = {
       "EFaturaGoster": "true",

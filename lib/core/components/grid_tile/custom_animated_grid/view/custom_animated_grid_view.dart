@@ -67,7 +67,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                 ),
               );
             }),
-            SizedBox(width: height * 0.3, child: Text(widget.cariListesiModel?.cariAdi ?? widget.model.stokKodu, style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis)))
+            Expanded(child: SizedBox(child: Text(widget.cariListesiModel?.cariAdi ?? widget.model.stokKodu, style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis))))
           ],
         ),
         const Divider(
@@ -76,6 +76,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
         ).paddingSymmetric(vertical: UIHelper.lowSize),
         AnimatedContainer(
           duration: const Duration(milliseconds: 500),
+          padding: UIHelper.lowPadding,
           constraints: BoxConstraints(
             minHeight: context.dynamicHeight(0.2),
           ),

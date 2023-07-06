@@ -7,13 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
 
 import '../../../view/add_company/model/account_model.dart';
+import '../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart';
+import '../../constants/enum/islem_tipi_enum.dart';
 import '../../constants/ui_helper/icon_helper.dart';
 import '../../constants/ui_helper/ui_helper.dart';
 import '../../init/cache/cache_manager.dart';
 import '../../init/network/login/api_urls.dart';
 import '../../init/network/network_manager.dart';
+import '../grid_tile/custom_animated_grid/view/custom_animated_grid_view.dart';
 import 'logout_model.dart';
 
 class DialogManager {
@@ -91,7 +95,7 @@ class DialogManager {
       ).show();
   void showAreYouSureDialog(void Function() onYes) => _areYouSureDialog(onYes).show();
 
-  void showInfoDialog(String? description)=> _baseDialog(
+  void showInfoDialog(String? description) => _baseDialog(
         desc: description,
         dialogType: DialogType.info,
         btnOkText: "Tamam",
@@ -99,6 +103,13 @@ class DialogManager {
       ).show();
 
   void showGridViewDialog(Widget body) => _baseDialog(body: body, onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
+
+  void showCariGridViewDialog(CariListesiModel? model, [IslemTipiEnum? tip]) => _baseDialog(
+          body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: tip ?? IslemTipiEnum.cari), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader)
+      .show();
+
+  void showStokGridViewDialog(StokListesiModel? model, [IslemTipiEnum? tip]) =>
+      _baseDialog(body: CustomAnimatedGridView<StokListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.stok), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
   void showExitDialog() => _baseDialog(
         title: "Uyarı",
@@ -284,12 +295,19 @@ class DialogManager {
         keyboardAware: true,
         //* Standardı 15 olduğu için ve null kabul etmediği için 15 verdim.
         bodyHeaderDistance: dialogType != DialogType.noHeader ? 15 : UIHelper.lowSize,
+        enableEnterKey: true,
         context: context,
-        width:kIsWeb? 400 : Platform.isLinux || Platform.isWindows || Platform.isMacOS ? (context.isLandscape? MediaQuery.of(context).size.width * 0.4: null) : null,
+        isDense: true,
+        width: kIsWeb
+            ? 400
+            : Platform.isLinux || Platform.isWindows || Platform.isMacOS
+                ? context.isLandscape
+                    ? MediaQuery.of(context).size.width * 0.5
+                    : MediaQuery.of(context).size.width * 0.8
+                : null,
         customHeader: customHeader,
         alignment: Alignment.center,
-        onDismissCallback: (type) {
-        },
+        onDismissCallback: (type) {},
         reverseBtnOrder: false,
         barrierColor: Colors.black.withOpacity(0.9),
         dialogBorderRadius: UIHelper.lowBorderRadius,

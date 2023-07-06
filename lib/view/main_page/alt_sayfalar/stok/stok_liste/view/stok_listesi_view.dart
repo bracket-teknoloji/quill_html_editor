@@ -12,7 +12,6 @@ import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import '../../../../../../core/components/floating_action_button/custom_floating_action_button.dart';
-import '../../../../../../core/components/grid_tile/custom_animated_grid/view/custom_animated_grid_view.dart';
 import '../../../../../../core/components/helper_widgets/custom_label_widget.dart';
 import '../../../../../../core/components/textfield/custom_app_bar_text_field.dart';
 import '../../../../../../core/components/textfield/custom_text_field.dart';
@@ -54,7 +53,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     _scrollController.addListener(() async {
       if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent && viewModel.dahaVarMi) {
         if (viewModel.dahaVarMi) {
-          getData();
+          Future.delayed(const Duration(milliseconds: 500), () {
+            getData();
+          });
         }
       }
       if (_scrollController.position.userScrollDirection == ScrollDirection.forward) {
@@ -501,12 +502,12 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                     child: Listener(
                       onPointerDown: (event) {
                         if (event.kind == PointerDeviceKind.mouse && event.buttons == 2) {
-                          dialogManager.showGridViewDialog(CustomAnimatedGridView<StokListesiModel>(model: stok, islemTipi: IslemTipiEnum.stok));
+                          dialogManager.showStokGridViewDialog(stok);
                         }
                       },
                       child: ListTile(
                         onLongPress: () {
-                          dialogManager.showGridViewDialog(CustomAnimatedGridView<StokListesiModel>(model: stok, islemTipi: IslemTipiEnum.stok));
+                          dialogManager.showStokGridViewDialog(stok);
                         },
                         contentPadding: UIHelper.lowPadding,
                         // leading: stok.resimUrlKucuk !=null ? Image.memory(networkManager.getImage(stok.resimUrlKucuk))
@@ -559,7 +560,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       title: "Raporlar",
                                       iconWidget: Icons.area_chart_outlined,
                                       onTap: () async {
-                                        dialogManager.showGridViewDialog(CustomAnimatedGridView<StokListesiModel>(model: stok, islemTipi: IslemTipiEnum.stokRapor));
+                                        dialogManager.showStokGridViewDialog(stok, IslemTipiEnum.stokRapor);
                                       }),
                                   //😳 BottomSheetModel(title: "Depo Bakiye Durumu", iconWidget: Icons.list_alt),
                                   // !!BottomSheetModel(
@@ -577,7 +578,13 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                   //     //     ));
                                   //   },
                                   // ),
-                                  //😳 BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt),
+                                  BottomSheetModel(
+                                      title: "İşlemler",
+                                      iconWidget: Icons.list_alt,
+                                      onTap: () {
+                                        Get.back();
+                                        dialogManager.showStokGridViewDialog(stok);
+                                      }),
                                 ];
                                 children2.insert(
                                     2, BottomSheetModel(title: "Sil", iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? "")).yetkiKontrol(yetkiController.stokKartiSilme));

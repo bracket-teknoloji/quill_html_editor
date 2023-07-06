@@ -3,9 +3,10 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' ;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart'hide FormData;
 import 'package:picker/core/base/model/base_network_mixin.dart';
 import 'package:picker/core/base/model/generic_response_model.dart';
 import 'package:picker/core/constants/extensions/date_time_extensions.dart';
@@ -85,6 +86,9 @@ class NetworkManager {
     GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
     if (responseModel.success != true) {
       DialogManager().showAlertDialog(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
+      if (responseModel.errorCode == 1){
+        Get.toNamed("/");
+      }
       throw Exception(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
     }
     return responseModel;

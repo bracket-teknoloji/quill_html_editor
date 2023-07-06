@@ -36,11 +36,10 @@ class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> 
           builder: (_) => GridTile(
               footer: (widget.altMenuVarMi ?? false) ? const Icon(Icons.expand_more, size: 15) : const SizedBox(),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  AnimatedContainer(
-                          duration: const Duration(milliseconds: 500),
+                  Flexible(
                           child: widget.iconWidget == null
                               ? IconHelper.middleMenuIcon(widget.icon ?? "", color: UIHelper.primaryColor)
                               : IconTheme(
@@ -59,6 +58,7 @@ class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> 
                     overflow: TextOverflow.ellipsis,
                     style: theme.textTheme.bodySmall?.copyWith(color: Colors.white, fontSize: 10),
                   ),
+                  // Flexible(child: (widget.altMenuVarMi ?? false) ? const Icon(Icons.expand_more, size: 15) : const SizedBox())
                 ],
               ))),
     );
