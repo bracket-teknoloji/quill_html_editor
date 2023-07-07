@@ -175,7 +175,7 @@ class BottomSheetDialogManager {
         });
   }
 
-  showCheckBoxBottomSheetDialog(BuildContext context, {List<BottomSheetModel>? children, required String title, bool onlyValue = false }) {
+  showCheckBoxBottomSheetDialog(BuildContext context, {List<BottomSheetModel>? children, required String title, bool onlyValue = false}) {
     List<dynamic>? list;
     if (viewModel.isSelectedListMap?[title] == null) {
       viewModel.changeIsSelectedListMap(title, List.generate(children!.length, (index) => false));
@@ -228,7 +228,9 @@ class BottomSheetDialogManager {
                                           viewModel.changeIndexIsSelectedListMap(title, index, value!);
                                           // viewModel.isSelectedListMap![title]![index] = value!;
                                           list = selectedChecker(children, title, onlyValue);
-                                          children[index].onTap!();
+                                          if (children[index].onTap != null) {
+                                            children[index].onTap!();
+                                          }
                                           // if (!value) {
                                           //   list!.remove(children[index].title);
                                           // }
@@ -302,7 +304,7 @@ class BottomSheetDialogManager {
           children: [
             const CustomWidgetWithLabel(
               text: "Bakiye Durumu",
-              child:ToggleButton(),
+              child: ToggleButton(),
             ),
             Center(
               child: Wrap(
@@ -393,7 +395,11 @@ class BottomSheetDialogManager {
                             var result =
                                 await showCheckBoxBottomSheetDialog(context, title: "$title seç", children: List.generate(data.length, (index2) => BottomSheetModel(title: data[index2].grupAdi)));
                             if (result != null) {
-                              controllers[index].text = result.join(", ");
+                              if (result is String) {
+                                controllers[index].text = result;
+                              } else {
+                                controllers[index].text = result.join(", ");
+                              }
                               var a = data.where((element) => result.contains(element.grupAdi)).map((e) => e.grupKodu).toList();
                               arrKodFinder(index, bottomSheetResponseModel, a);
                             }

@@ -39,18 +39,16 @@ class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> 
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Flexible(
-                          child: widget.iconWidget == null
-                              ? IconHelper.middleMenuIcon(widget.icon ?? "", color: UIHelper.primaryColor)
-                              : IconTheme(
-                                  data: IconThemeData(weight: 0.1, size: 20, color: widget.color ?? UIHelper.primaryColor),
-                                  child: Icon(
-                                    widget.iconWidget,
-                                    size: 20,
-                                    grade: 0.1,
-                                  ),
-                                ))
-                      .marginOnly(bottom: 5),
+                  widget.iconWidget == null
+                      ? IconHelper.middleMenuIcon(widget.icon ?? "", color: UIHelper.primaryColor)
+                      : IconTheme(
+                          data: IconThemeData(weight: 0.1, size: 20, color: widget.color ?? UIHelper.primaryColor),
+                          child: Icon(
+                            widget.iconWidget,
+                            size: 20,
+                            grade: 0.1,
+                          ),
+                        ).marginOnly(bottom: 5),
                   Text(
                     widget.title.toString(),
                     textAlign: TextAlign.center,

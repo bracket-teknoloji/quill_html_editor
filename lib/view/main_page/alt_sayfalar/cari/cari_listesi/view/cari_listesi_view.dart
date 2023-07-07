@@ -44,7 +44,7 @@ class CariListesiView extends StatefulWidget {
 
 class _CariListesiViewState extends BaseState<CariListesiView> {
   CariListesiViewModel viewModel = CariListesiViewModel();
-  final ScrollController _scrollController = ScrollController();
+  late final ScrollController _scrollController;
   BottomSheetResponseModel? bottomSheetResponseModel;
   var formatter = NumberFormat("#,##0.00", "tr_TR");
   bool isLoading = false;
@@ -53,8 +53,9 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   String sort = "AZ";
   @override
   void initState() {
-    super.initState();
+    _scrollController = ScrollController();
     init();
+    super.initState();
   }
 
   void init() {
@@ -108,16 +109,14 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   @override
   Widget build(BuildContext context) {
     log(paramData.toString());
-    return Observer(builder: (_) {
-      return Scaffold(
-        resizeToAvoidBottomInset: false,
-        extendBody: true,
-        appBar: appBar(context),
-        floatingActionButton: fab(),
-        body: body(),
-        bottomNavigationBar: bottomButtonBar(),
-      );
-    });
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      extendBody: true,
+      appBar: appBar(context),
+      floatingActionButton: fab(),
+      body: body(),
+      bottomNavigationBar: bottomButtonBar(),
+    );
   }
 
   AppBar appBar(BuildContext context) {
@@ -142,18 +141,16 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                 onFieldSubmitted(viewModel.arama);
               },
               icon: const Icon(Icons.arrow_back))
-          : Observer(builder: (_) {
-              return IconButton(
-                  onPressed: () {
-                    BottomSheetDialogManager.viewModel.deleteIsSelectedListMap();
-                    BottomSheetDialogManager.viewModel.deleteKodControllerText();
-                    BottomSheetDialogManager.viewModel.ilce = "";
-                    BottomSheetDialogManager.viewModel.sehir = "";
-                    BottomSheetDialogManager.viewModel.plasiyer = "";
-                    Get.back();
-                  },
-                  icon: const Icon(Icons.arrow_back));
-            }),
+          : IconButton(
+              onPressed: () {
+                BottomSheetDialogManager.viewModel.deleteIsSelectedListMap();
+                BottomSheetDialogManager.viewModel.deleteKodControllerText();
+                BottomSheetDialogManager.viewModel.ilce = "";
+                BottomSheetDialogManager.viewModel.sehir = "";
+                BottomSheetDialogManager.viewModel.plasiyer = "";
+                Get.back();
+              },
+              icon: const Icon(Icons.arrow_back)),
       bottom: PreferredSize(
         preferredSize: Size.fromHeight(height * 0.07),
         child: SizedBox(
@@ -177,6 +174,8 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                   var a = await bottomSheetDialogManager.showFilterBottomSheetDialog(context, request: filterData);
                   if (a != null && a is BottomSheetResponseModel) {
                     bottomSheetResponseModel = a;
+
+                    viewModel.changeCariListesi(null);
                     List? data = await getData(sayfa: 1);
                     if (data.isNotNullOrEmpty) {
                       viewModel.changeCariListesi(data);
@@ -506,7 +505,6 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   // }
 
   Future<List?> getData({required int sayfa, String? sort1}) async {
-    viewModel.changeCariListesi(null);
     viewModel.changeDahaVarMi(false);
     var queryParameters2 = {
       "EFaturaGoster": "true",
