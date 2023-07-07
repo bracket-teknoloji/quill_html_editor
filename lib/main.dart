@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_gecmisi/view/fiyat_gecmisi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_gor/view/fiyat_gor_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
@@ -98,7 +99,8 @@ class MyApp extends StatelessWidget {
 
             //* Stok
             GetPage(name: "/stokListesi", page: () => StokListesiView(isGetData: Get.arguments)),
-            // GetPage(name: "/stokFiyatGor", page: () => const FiyatGorView()),
+            GetPage(name: "/stokFiyatGor", page: () => const FiyatGorView()),
+            GetPage(name: "/stokFiyatGecmisi", page: () => const FiyatGecmisiView()),
 
             GetPage(name: "/stokEdit", page: () => BaseStokEditingView(model: Get.arguments)),
             GetPage(

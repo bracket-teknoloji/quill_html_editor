@@ -40,11 +40,11 @@ mixin _$FiyatGorViewModel on _FiyatGorViewModelBase, Store {
   }
 
   @override
-  String? getBilgi(int index) {
+  String? getBilgi(int index, {bool isSatis = false}) {
     final _$actionInfo = _$_FiyatGorViewModelBaseActionController.startAction(
         name: '_FiyatGorViewModelBase.getBilgi');
     try {
-      return super.getBilgi(index);
+      return super.getBilgi(index, isSatis: isSatis);
     } finally {
       _$_FiyatGorViewModelBaseActionController.endAction(_$actionInfo);
     }

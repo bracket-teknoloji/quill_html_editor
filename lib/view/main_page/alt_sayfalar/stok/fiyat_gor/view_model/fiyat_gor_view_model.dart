@@ -17,18 +17,18 @@ abstract class _FiyatGorViewModelBase with Store {
   final List<String> titleList = ["Döviz Fiyatı", "Fiyat 1", "Fiyat 2", "Fiyat 3", "Fiyat 4"];
 
   @action
-  String? getBilgi(int index) {
+  String? getBilgi(int index, {bool isSatis = false}) {
     switch (index) {
       case 0:
-        return modelList?.first?.dovizTipi.dotSeparatedWithFixedDigits;
+        return isSatis ? modelList?.last?.dovizTipi.dotSeparatedWithFixedDigits : modelList?.first?.dovizTipi.dotSeparatedWithFixedDigits;
       case 1:
-        return modelList?.first?.fiyat1.dotSeparatedWithFixedDigits;
+        return isSatis ? modelList?.last?.fiyat1.dotSeparatedWithFixedDigits : modelList?.first?.fiyat1.dotSeparatedWithFixedDigits;
       case 2:
-        return modelList?.first?.fiyat2.dotSeparatedWithFixedDigits;
+        return isSatis ? modelList?.last?.fiyat2.dotSeparatedWithFixedDigits : modelList?.first?.fiyat2.dotSeparatedWithFixedDigits;
       case 3:
-        return modelList?.first?.fiyat3.dotSeparatedWithFixedDigits;
+        return isSatis ? modelList?.last?.fiyat3.dotSeparatedWithFixedDigits : modelList?.first?.fiyat3.dotSeparatedWithFixedDigits;
       case 4:
-        return modelList?.first?.fiyat4.dotSeparatedWithFixedDigits;
+        return isSatis ? modelList?.last?.fiyat4.dotSeparatedWithFixedDigits : modelList?.first?.fiyat4.dotSeparatedWithFixedDigits;
       default:
         return null;
     }
