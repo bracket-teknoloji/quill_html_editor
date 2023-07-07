@@ -53,7 +53,7 @@ class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
                       children: [Icon(Icons.crisis_alert_outlined), Text("Kayıt Bulunamadı")],
                     ),
                   )
-                : CustomWidgetWithLabel(text: "Döviz Bakiyeleri", children: [
+                : CustomWidgetWithLabel(text: "Döviz Bakiyeleri", child:Wrap(children: [
                     const Divider(),
                     const Row(
                       children: [
@@ -65,7 +65,7 @@ class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
                     CustomWidgetWithLabel(
                       text: "  €",
                       isVertical: false,
-                      children: [
+                      child: 
                         SizedBox(
                           child: Row(
                             children: [
@@ -75,12 +75,12 @@ class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
                             ],
                           ),
                         )
-                      ],
+                      
                     ),
                     CustomWidgetWithLabel(
                       text: "  \$",
                       isVertical: false,
-                      children: [
+                      child: 
                         SizedBox(
                           child: Row(
                             children: [
@@ -90,12 +90,12 @@ class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
                             ],
                           ),
                         )
-                      ],
+                      
                     ),
                     CustomWidgetWithLabel(
                       text: "  TL",
                       isVertical: false,
-                      children: [
+                      child: 
                         SizedBox(
                           child: Row(
                             children: [
@@ -105,12 +105,12 @@ class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
                             ],
                           ),
                         )
-                      ],
+                      
                     ),
-                  ]),
+                  ],) ),
             CustomWidgetWithLabel(
               text: "Risk Bilgileri",
-              children: [
+              child: Wrap(children: [
                 Row(
                   children: [
                     Expanded(child: CustomTextField(readOnly: true, labelText: "Borç Toplamı", controller: borcToplamiController)),
@@ -162,7 +162,7 @@ class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
                     Expanded(child: CustomTextField(readOnly: true, labelText: "Toplam Risk", controller: toplamRiskController)),
                   ],
                 ),
-              ],
+              ]),
             )
           ])),
     );

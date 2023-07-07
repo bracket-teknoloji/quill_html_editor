@@ -38,7 +38,7 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
   Widget build(BuildContext context) {
     return CustomWidgetWithLabel(
       text: widget.title,
-      children: [
+      child: 
         Column(
           children: [
             SizedBox(
@@ -59,7 +59,7 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
                         )))
           ],
         ),
-      ],
+      
     );
   }
 }

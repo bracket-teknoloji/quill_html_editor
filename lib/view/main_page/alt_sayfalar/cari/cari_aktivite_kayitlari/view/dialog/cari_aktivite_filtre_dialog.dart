@@ -12,11 +12,11 @@ class CariAktiviteFiltreDialogManager {
       body: Column(crossAxisAlignment: CrossAxisAlignment.stretch, mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         const CustomWidgetWithLabel(
           text: "Cari",
-          children: [TextField()],
+          child: TextField(),
         ),
         const CustomWidgetWithLabel(
           text: "Kullanıcı",
-          children: [TextField()],
+          child: TextField(),
         ),
         SizedBox(
           height: Get.height * 0.1,

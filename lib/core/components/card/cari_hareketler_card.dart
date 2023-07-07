@@ -49,10 +49,10 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
             subtitle: Wrap(
               runAlignment: WrapAlignment.spaceBetween,
               children: [
-                CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Belge No", children: [Text(widget.cariHareketleriModel.belgeNo ?? "")]),
-                CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Vade Tarihi", children: [Text(widget.cariHareketleriModel.vadeTarihi?.toDateString() ?? "")]),
-                CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Plasiyer", children: [Text(widget.cariHareketleriModel.plasiyerAciklama ?? "")]),
-                CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Şube", children: [Text("${widget.cariHareketleriModel.subeKodu ?? 0}")])
+                CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Belge No", child: Text(widget.cariHareketleriModel.belgeNo ?? "")),
+                CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Vade Tarihi", child:Text(widget.cariHareketleriModel.vadeTarihi?.toDateString() ?? "")),
+                CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Plasiyer", child:Text(widget.cariHareketleriModel.plasiyerAciklama ?? "")),
+                CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Şube", child:Text("${widget.cariHareketleriModel.subeKodu ?? 0}"))
               ].map((e) => SizedBox(width: width * 0.33, child: e).paddingOnly(right: UIHelper.lowSize, bottom: UIHelper.lowSize)).toList(),
             ),
           ),

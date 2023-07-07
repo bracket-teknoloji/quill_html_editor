@@ -73,11 +73,11 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                       children: [
                         Expanded(
                             child: CustomWidgetWithLabel(
-                                text: "KDV Dahil", children: [Observer(builder: (_) => Switch.adaptive(value: viewModel.kdvDahil, onChanged: (value) => viewModel.setKDVDahil(value)))])),
+                                text: "KDV Dahil", child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kdvDahil, onChanged: (value) => viewModel.setKDVDahil(value))))),
                         Expanded(
                             child: CustomWidgetWithLabel(
                                 text: "İrsaliyeler Dahil",
-                                children: [Observer(builder: (_) => Switch.adaptive(value: viewModel.irsaliyelerDahil, onChanged: (value) => viewModel.setIrsaliyelerDahil(value)))])),
+                                child: Observer(builder: (_) => Switch.adaptive(value: viewModel.irsaliyelerDahil, onChanged: (value) => viewModel.setIrsaliyelerDahil(value))))),
                       ],
                     ),
                     Row(

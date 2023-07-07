@@ -217,7 +217,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                       body: Column(children: [
                         CustomWidgetWithLabel(
                           text: "Bakiye",
-                          children: [
+                          child: Wrap(children: [
                             Center(
                               child: Observer(builder: (_) {
                                 return ToggleButtons(
@@ -438,7 +438,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                         child: const Text("Uygula")))
                               ],
                             ).paddingAll(UIHelper.lowSize),
-                          ],
+                          ],),
                         )
                       ]).paddingAll(UIHelper.lowSize),
                     );

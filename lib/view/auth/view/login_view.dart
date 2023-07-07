@@ -108,7 +108,7 @@ class _LoginViewState extends BaseState<LoginView> {
                             ],
                           ),
                         ),
-                        CustomWidgetWithLabel(text: "Firma", children: [
+                        CustomWidgetWithLabel(text: "Firma", child:
                           TextFormField(
                             readOnly: true,
                             onTap: () async {
@@ -125,24 +125,23 @@ class _LoginViewState extends BaseState<LoginView> {
                             controller: companyController,
                             textInputAction: TextInputAction.next,
                           )
-                        ]),
+                        ),
                         Padding(
                           padding: UIHelper.midPaddingOnlyTop,
                           child: CustomWidgetWithLabel(
                             text: "Netfect Kullanıcı Adı",
-                            children: [
+                            child: 
                               TextFormField(
                                 controller: emailController,
                                 textInputAction: TextInputAction.next,
                               ),
-                            ],
                           ),
                         ),
                         Padding(
                           padding: UIHelper.midPaddingVertical,
                           child: CustomWidgetWithLabel(
                             text: "Şifre",
-                            children: [
+                            child: 
                               TextField(
                                 controller: passwordController,
                                 textInputAction: TextInputAction.done,
@@ -158,7 +157,7 @@ class _LoginViewState extends BaseState<LoginView> {
                                   ),
                                 ),
                               )
-                            ],
+                            
                           ),
                         ),
                         Padding(

@@ -43,7 +43,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
               children: [
                 CustomWidgetWithLabel(
                   text: "Firma E-Posta Adresi",
-                  children: [
+                  child: 
                     TextFormField(
                         controller: _controller,
                         inputFormatters: [
@@ -51,15 +51,15 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
                           FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9@.]')),
                         ],
                         textInputAction: TextInputAction.next),
-                  ],
+                  
                 ),
                 Padding(
                   padding: context.verticalPaddingLow,
                   child: CustomWidgetWithLabel(
                     text: "Şifre",
-                    children: [
+                    child: 
                       TextFormField(obscureText: true, controller: _controller2),
-                    ],
+                    
                   ),
                 ),
                 const Wrap(

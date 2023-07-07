@@ -166,7 +166,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                CustomWidgetWithLabel(text: "Şirket", children: [
+                                CustomWidgetWithLabel(text: "Şirket", child: 
                                   TextFormField(
                                     decoration: const InputDecoration(
                                       suffixIcon: Icon(Icons.more_horiz_outlined),
@@ -180,10 +180,10 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                       sirketDialog(context);
                                     },
                                   ),
-                                ]),
+                                ),
                                 CustomWidgetWithLabel(
                                   text: "İşletme Kodu",
-                                  children: [
+                                  child: 
                                     TextFormField(
                                       controller: controller2,
                                       enabled: isletme?.isNotNullOrEmpty,
@@ -195,9 +195,9 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                         suffixIcon: Icon(Icons.more_horiz_outlined),
                                       ),
                                     )
-                                  ],
+                                  
                                 ),
-                                CustomWidgetWithLabel(text: "Şube Kodu", children: [
+                                CustomWidgetWithLabel(text: "Şube Kodu", child: 
                                   TextFormField(
                                     controller: controller3,
                                     enabled: sube?.isNotNullOrEmpty,
@@ -208,8 +208,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                     decoration: const InputDecoration(
                                       suffixIcon: Icon(Icons.more_horiz_outlined),
                                     ),
-                                  )
-                                ]),
+                                  )),
                                 // CustomWidgetWithLabel(
                                 //   text: "Şirket",
                                 //   children: [

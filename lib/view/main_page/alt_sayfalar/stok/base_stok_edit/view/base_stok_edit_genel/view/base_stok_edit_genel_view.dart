@@ -282,7 +282,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                       Expanded(child: CustomTextField(enabled: enable, keyboardType: TextInputType.number, labelText: "Ölçü Br.3 Pay", controller: olcuBirimi3PayController)),
                       Expanded(child: CustomTextField(enabled: enable, keyboardType: TextInputType.number, labelText: "Ölçü Br.3 Payda", controller: olcuBirimi3PaydaController))
                     ]),
-                    CustomWidgetWithLabel(text: "Barkod", children: [
+                    CustomWidgetWithLabel(text: "Barkod", child: Wrap(children: [
                       CustomTextField(
                         enabled: enable,
                         labelText: "Barkod 1",
@@ -331,9 +331,9 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                           ],
                         ),
                       ),
-                    ]),
+                    ])),
                     Observer(builder: (_) {
-                      return CustomWidgetWithLabel(text: "Diğer", children: [
+                      return CustomWidgetWithLabel(text: "Diğer", child: 
                         CustomTextField(
                             // valueText: viewModel.stokListesiModel?.subeKodu.toStringIfNull,
                             readOnly: true,
@@ -350,9 +350,9 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                               }
                             },
                             suffix: const Icon(Icons.more_horiz_outlined)),
-                      ]);
+                      );
                     }),
-                    CustomWidgetWithLabel(text: "Rapor Kodları", children: [
+                    CustomWidgetWithLabel(text: "Rapor Kodları", child: Wrap(children: [
                       CustomTextField(
                         enabled: enable,
                         labelText: "Üretici Kodu",
@@ -491,7 +491,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                   labelText: "Kod5")),
                         ],
                       ),
-                    ])
+                    ],))
                   ],
                 ).paddingAll(UIHelper.lowSize),
               );

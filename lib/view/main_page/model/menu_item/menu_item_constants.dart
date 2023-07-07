@@ -91,7 +91,7 @@ class MenuItemConstants {
       GridItemModel.item(name: "stok_StokListesi", title: "Stok Listesi", route: "/mainPage/stokListesi"),
       //😳GridItemModel.item(name: "stok_BarkodTanimlama", title: "Barkod Tanımla"),
       GridItemModel.item(name: "stok_FiyatGorEkrani", title: "Fiyat Gör", route: "/mainPage/stokFiyatGor"),
-      // GridItemModel.item(name: "stok_FiyatGecmisi", title: "Fiyat Geçmişi", route: "/mainPage/stokFiyatGecmisi"),
+      GridItemModel.item(name: "stok_FiyatGecmisi", title: "Fiyat Geçmişi", route: "/mainPage/stokFiyatGecmisi"),
       //😳 TODO [name] Değiştir
       //😳GridItemModel.item(name: "stok_StokListesi", title: "Yazdır"),
       //😳GridItemModel.altmenu(name: "stok_StokListesi", title: "Seri İşlemleri", icon: "inventory", altMenuler: [

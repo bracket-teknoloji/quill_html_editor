@@ -107,7 +107,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
               child: CustomWidgetWithLabel(
                 isVertical: true,
                 text: "Şahıs Firması",
-                children: [
+                child: 
                   Observer(
                       builder: (_) => Switch.adaptive(
                           value: viewModel.isSahisFirmasi,
@@ -118,7 +118,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                                   viewModel.changeModel(model);
                                 }
                               : null)),
-                ],
+                
               ),
             ),
             Observer(builder: (_) {
@@ -350,7 +350,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                                     ?..plasiyerAciklama = null
                                     ..plasiyerKodu = null))))),
               Expanded(
-                  child: CustomWidgetWithLabel(isVertical: true, text: "Dövizli", children: [
+                  child: CustomWidgetWithLabel(isVertical: true, text: "Dövizli", child: 
                 Observer(
                     builder: (_) => Switch.adaptive(
                         value: viewModel.isDovizli,
@@ -361,7 +361,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                                 viewModel.changeModel(model);
                               }
                             : null))
-              ]))
+              ))
             ]),
             Observer(
                 builder: (_) => Visibility(

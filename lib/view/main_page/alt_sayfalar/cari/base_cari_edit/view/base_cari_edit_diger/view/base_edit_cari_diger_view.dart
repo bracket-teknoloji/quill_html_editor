@@ -384,7 +384,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                   }),
               CustomWidgetWithLabel(
                 text: "Kullanıcı Tanımlı Sahalar",
-                children: [
+                child: Wrap(children: [
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -560,7 +560,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                           }),
                     ],
                   ).withExpanded,
-                ],
+                ],),
               )
             ],
           )),

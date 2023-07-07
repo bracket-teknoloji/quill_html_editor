@@ -302,7 +302,7 @@ class BottomSheetDialogManager {
           children: [
             const CustomWidgetWithLabel(
               text: "Bakiye Durumu",
-              children: [ToggleButton()],
+              child:ToggleButton(),
             ),
             Center(
               child: Wrap(

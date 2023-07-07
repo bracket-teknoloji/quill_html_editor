@@ -124,7 +124,7 @@ class IslemlerMenuItemConstants<T> {
                   CustomWidgetWithLabel(
                     text: "Eski Cari Kodu Silinsin mi?",
                     isVertical: true,
-                    children: [
+                    child: 
                       Observer(
                           builder: (_) => Switch.adaptive(
                               value: viewModel.cariKodDegistirSwitch,
@@ -132,7 +132,7 @@ class IslemlerMenuItemConstants<T> {
                                 viewModel.changeCariKodDegistirSwitch(value);
                                 kodDegistirModel.kaynakSil = (value ? "E" : "H");
                               })),
-                    ],
+                    
                   ),
                   Row(
                     children: [

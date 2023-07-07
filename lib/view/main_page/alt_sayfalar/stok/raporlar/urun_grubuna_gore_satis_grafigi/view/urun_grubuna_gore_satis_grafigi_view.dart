@@ -158,7 +158,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
                         })),
               ],
             ),
-            CustomWidgetWithLabel(children: [
+            CustomWidgetWithLabel(child: 
               Observer(
                   builder: (_) => SwitchListTile(
                       value: viewModel.irsDahilValue,
@@ -167,7 +167,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
                         getData();
                       },
                       title: const Text("İrsaliye Dahil")))
-            ]),
+            ),
             Observer(
                 builder: (_) => CustomPieChart(
                     pieChartValue: viewModel.modelList?.map((element) => element.netTutar ?? 0).toList().cast<double>() ?? [],
