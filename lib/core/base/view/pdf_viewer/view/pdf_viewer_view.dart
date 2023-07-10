@@ -136,7 +136,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                   controller: pdfViewerController,
                   interactionMode: PdfInteractionMode.selection,
                   onTextSelectionChanged: (details) {
-                    if (details.selectedText != null && (Platform.isAndroid || Platform.isIOS)) {
+                    if ((Platform.isAndroid || Platform.isIOS)) {
                       if (details.selectedText == null && overlayEntry != null) {
                         overlayEntry!.remove();
                         overlayEntry = null;
@@ -218,7 +218,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
       builder: (context) => Positioned(
         top: details.globalSelectedRegion!.center.dy - 55,
         left: details.globalSelectedRegion!.bottomLeft.dx,
-        child: OutlinedButton(
+        child: ElevatedButton(
           onPressed: () {
             Clipboard.setData(ClipboardData(text: details.selectedText!));
             dialogManager.showSnackBar("Kopyalandı");

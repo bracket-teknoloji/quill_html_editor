@@ -132,6 +132,8 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                     viewModel.yazdirmaGroupValue = "";
                                     viewModel.alisSatisGroupValue = "";
                                     viewModel.model.sirala = "";
+                                    viewModel.model.fiyatTipi = "";
+                                    getData();
                                     Get.back();
                                   },
                                   child: const Text("Temizle")),

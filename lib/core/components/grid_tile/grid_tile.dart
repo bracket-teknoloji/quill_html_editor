@@ -77,6 +77,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                     child: Text(
                     widget.title ?? "",
                     textAlign: TextAlign.center,
+                    maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
                   ))
@@ -102,9 +103,9 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                       Text(
                         widget.menuTipi != "I" ? widget.title.toString() : "",
                         textAlign: TextAlign.center,
-                        maxLines: 2,
+                        maxLines: 3,
                         overflow: TextOverflow.ellipsis,
-                        softWrap: true,
+                        // softWrap: true,
                         style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
                       ),
                     ],
