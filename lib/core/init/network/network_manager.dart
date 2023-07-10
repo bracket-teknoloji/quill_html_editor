@@ -3,10 +3,10 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:dio/dio.dart' ;
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart'hide FormData;
+import 'package:get/get.dart' hide FormData;
 import 'package:picker/core/base/model/base_network_mixin.dart';
 import 'package:picker/core/base/model/generic_response_model.dart';
 import 'package:picker/core/constants/extensions/date_time_extensions.dart';
@@ -22,9 +22,9 @@ import '../../constants/enum/dio_enum.dart';
 import 'login/api_urls.dart';
 
 class NetworkManager {
-  static final Dio _dio = Dio(BaseOptions(baseUrl: "http://ofis.bracket.com.tr:7575/Picker/", connectTimeout: const Duration(seconds: 20)));
+  Dio get dio => Dio(BaseOptions(baseUrl: "${CacheManager.getAccounts(CacheManager.getSirketAdi)?.wsWan}/" ?? "", connectTimeout: const Duration(seconds: 20)));
   NetworkManager() {
-    _dio.interceptors.add(
+    dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) {
           return handler.next(options);
@@ -49,10 +49,11 @@ class NetworkManager {
     );
   }
 
-  static Future<TokenModel?> getToken({required String path, Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
+  Future<TokenModel?> getToken({required String path, Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
     FormData formData = FormData.fromMap(data);
     log(AccountModel.instance.toJson().toString());
-    final response = await _dio.request(path,
+    log(CacheManager.getAccounts(CacheManager.getSirketAdi)?.wsWan ?? "");
+    final response = await dio.request(path,
         queryParameters: queryParameters,
         cancelToken: CancelToken(),
         options: Options(headers: {
@@ -82,11 +83,11 @@ class NetworkManager {
     Map<String, dynamic> queries = getStandardQueryParameters();
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
 
-    final response = await _dio.get(path, queryParameters: queries, options: Options(headers: head), cancelToken: cancelToken);
+    final response = await dio.get(path, queryParameters: queries, options: Options(headers: head), cancelToken: cancelToken);
     GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
     if (responseModel.success != true) {
       DialogManager().showAlertDialog(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
-      if (responseModel.errorCode == 1){
+      if (responseModel.errorCode == 1) {
         Get.toNamed("/");
       }
       throw Exception(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
@@ -109,7 +110,7 @@ class NetworkManager {
     Map<String, dynamic> queries = getStandardQueryParameters();
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
-    final response = await _dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
+    final response = await dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
     GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
     if (responseModel.success != true) {
       DialogManager().showAlertDialog(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
@@ -120,7 +121,7 @@ class NetworkManager {
 
   Future<MemoryImage> getImage(String path) async {
     Map<String, String> head = getStandardHeader(true, true, true);
-    final response = await _dio.get(path, options: Options(headers: head, responseType: ResponseType.bytes));
+    final response = await dio.get(path, options: Options(headers: head, responseType: ResponseType.bytes));
     log(response.data.toString());
     // response is a png file
     return MemoryImage(response.data);

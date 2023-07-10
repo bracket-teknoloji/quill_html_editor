@@ -44,7 +44,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     // controller1?.text = CacheManager.getVeriTabani()?["Şirket"] ?? "";
     // controller2?.text = CacheManager.getIsletmeSube()?["İşletme"] ?? "";
     // controller3?.text = "${CacheManager.getIsletmeSube()?["Şube"] ?? ""} ${CacheManager.getVeriTabani()?["Şube"] ?? ""}";
-    userData = CacheManager.getIsletmeSube();
+    userData = CacheManager.getIsletmeSube;
     focusNode = FocusNode();
   }
 

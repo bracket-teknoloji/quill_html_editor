@@ -208,16 +208,16 @@ class _LoginViewState extends BaseState<LoginView> {
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
       AccountResponseModel? accountCache = CacheManager.getAccounts(companyController.text);
       try {
+        CacheManager.setSirketAdi(companyController.text);
         CacheManager.setHesapBilgileri(a);
 
         log(jsonEncode(a.toJson()), name: "sea");
-        final response = await NetworkManager.getToken(
+        final response = await networkManager.getToken(
           path: ApiUrls.token,
           queryParameters: {"deviceInfos": jsonEncode(a.toJson())},
           data: {"grant_type": "password", "username": emailController.text, "password": passwordController.text},
         );
         dialogManager.hideAlertDialog;
-
         Hive.box("preferences").put(companyController.text, [
           textFieldData["user"],
           emailController.text,
