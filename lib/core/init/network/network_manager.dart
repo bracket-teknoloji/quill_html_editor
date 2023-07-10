@@ -22,7 +22,7 @@ import '../../constants/enum/dio_enum.dart';
 import 'login/api_urls.dart';
 
 class NetworkManager {
-  Dio get dio => Dio(BaseOptions(baseUrl: "${CacheManager.getAccounts(CacheManager.getSirketAdi)?.wsWan}/" ?? "", connectTimeout: const Duration(seconds: 20)));
+  Dio get dio => Dio(BaseOptions(baseUrl:CacheManager.getAccounts(CacheManager.getSirketAdi)?.wsWan != null? "${CacheManager.getAccounts(CacheManager.getSirketAdi)?.wsWan}/" : "http://ofis.bracket.com.tr:7575/Picker/", connectTimeout: const Duration(seconds: 20)));
   NetworkManager() {
     dio.interceptors.add(
       InterceptorsWrapper(
