@@ -49,7 +49,6 @@ import "view/splash_auth/view/splash_auth_view.dart";
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheManager.instance.initHiveBoxes();
-  await AccountModel.instance.init();
   await AppInfoModel.instance.init();
   //* Firebase Crashlytics
   await firebaseInitialized();
@@ -57,8 +56,9 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.landscapeRight,
     DeviceOrientation.landscapeLeft,
-  ]).then((_) {
+  ]).then((_) async {
     runApp(const MyApp());
+    await AccountModel.instance.init();
     NetworkDependencyInjection.init();
   });
 }

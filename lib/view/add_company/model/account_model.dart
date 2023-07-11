@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
@@ -9,7 +10,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:kartal/kartal.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 import '../../../core/base/model/base_network_mixin.dart';
 
@@ -167,7 +167,6 @@ class AccountModel with NetworkManagerMixin {
     offline = "H";
     if (kIsWeb) {
       platform = "Web";
-
     } else {
       platform = Platform.operatingSystem;
       var list = await NetworkInterface.list(includeLoopback: true, type: InternetAddressType.IPv4);
@@ -183,16 +182,14 @@ class AccountModel with NetworkManagerMixin {
     konumTarihi = "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day} ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}";
 
     uygulamaGuncellemeTarihi = "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}";
-    if (kIsWeb){
-
+    if (kIsWeb) {
       wifidenBagli = "E";
-    }
-    else if (await Connectivity().checkConnectivity() == ConnectivityResult.wifi) {
+    } else if (await Connectivity().checkConnectivity() == ConnectivityResult.wifi) {
       wifidenBagli = "E";
     } else {
       wifidenBagli = "H";
     }
-    
+
     cihazTimeZoneDakika = DateTime.now().timeZoneOffset.inMinutes;
     //* Cihaz ve Sim Bilgileri
     uygulamaDili = "tr";
@@ -225,14 +222,14 @@ class AccountModel with NetworkManagerMixin {
     }
     //! IOS
     else if (Platform.isIOS) {
-      await Permission.appTrackingTransparency.request();
-      if(await Permission.appTrackingTransparency.isGranted) {
+      await AppTrackingTransparency.requestTrackingAuthorization();
+      if (await AppTrackingTransparency.trackingAuthorizationStatus == TrackingStatus.authorized) {
         final iosInfo = await deviceInfo.iosInfo;
-      cihazMarkasi = iosInfo.name;
-      cihazModeli = iosInfo.model;
-      cihazSistemVersiyonu = "20";
-      ozelCihazKimligi = iosInfo.identifierForVendor;
-      cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
+        cihazMarkasi = iosInfo.name;
+        cihazModeli = iosInfo.model;
+        cihazSistemVersiyonu = "20";
+        ozelCihazKimligi = iosInfo.identifierForVendor;
+        cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
       }
     }
     //!DESKTOP
