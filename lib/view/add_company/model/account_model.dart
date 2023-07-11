@@ -248,6 +248,29 @@ class AccountModel with NetworkManagerMixin {
         ozelCihazKimligi = base64Encode(utf8.encode("win_${desktopInfo.computerName}"));
         cihazKimligi = ozelCihazKimligi;
       }
+    } else if (Platform.isMacOS) {
+      platform = Platform.operatingSystem;
+      final desktopInfo = await deviceInfo.macOsInfo;
+      cihazSistemVersiyonu = Platform.operatingSystemVersion;
+      cihazMarkasi = desktopInfo.computerName;
+      cihazModeli = desktopInfo.model;
+      if (ozelCihazKimligi.isNotNullOrNoEmpty) {
+        cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
+        log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");
+      }
+    } else if (Platform.isLinux) {
+      platform = Platform.operatingSystem;
+      final desktopInfo = await deviceInfo.linuxInfo;
+      cihazSistemVersiyonu = Platform.operatingSystemVersion;
+      cihazMarkasi = desktopInfo.name;
+      cihazModeli = desktopInfo.prettyName;
+      if (ozelCihazKimligi.isNotNullOrNoEmpty) {
+        cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
+        log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");
+      } else {
+        ozelCihazKimligi = base64Encode(utf8.encode("linux_${desktopInfo.name}"));
+        cihazKimligi = ozelCihazKimligi;
+      }
     }
     //* Uygulama Bilgileri
     uygulamaSurumu = "228";

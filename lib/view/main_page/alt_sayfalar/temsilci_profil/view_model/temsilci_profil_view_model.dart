@@ -220,8 +220,8 @@ abstract class _TemsilciProfilViewModelBase with Store {
     List<double> list = List.generate(uniquePlasiyer.length, (index) => 0);
     if (list.isNotNullOrEmpty) {
       temsilciProfilList?.where((element) => element.ayKodu == donemKodu && element.kayitTipi == "SF").forEach((element) {
-      list[uniquePlasiyer.toList().indexOf(element.plasiyerAciklama ?? "")] += element.tutar ?? 0;
-    });
+        list[uniquePlasiyer.toList().indexOf(element.plasiyerAciklama ?? "")] += element.tutar ?? 0;
+      });
     }
     print(list);
     return list;
@@ -251,11 +251,11 @@ abstract class _TemsilciProfilViewModelBase with Store {
     for (int i = 1; i <= biggestMonth; i++) {
       var value = temsilciProfilList?.where((element) => element.tabloTipi == "SATIS" && element.ayKodu == i && (element.tutar != null)).map((e) => e.tutar).toList();
       if (value.isNotNullOrEmpty) {
-        list[i > 12 ? DateTime.now().month-1 : i - 1] += (value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
+        list[i > 12 ? DateTime.now().month - 1 : i - 1] += (value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
         // list.add(value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
       }
     }
-    while(list.last == 0){
+    while (list.last == 0) {
       list.removeLast();
     }
     return list;
@@ -271,12 +271,14 @@ abstract class _TemsilciProfilViewModelBase with Store {
     for (int i = 1; i <= biggestMonth; i++) {
       var value = temsilciProfilList?.where((element) => element.tabloTipi == "ALIS" && element.ayKodu == i && (element.tutar != null)).map((e) => e.tutar).toList();
       if (value.isNotNullOrEmpty) {
-        list[i > 12 ? DateTime.now().month-1 : i - 1] +=  (value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
+        list[i > 12 ? DateTime.now().month - 1 : i - 1] += (value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
         // list.add(value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
       }
     }
-    while(list.last == 0){
-      list.removeLast();
+    if (list.isNotNullOrEmpty) {
+      while (list.last == 0) {
+        list.removeLast();
+      }
     }
     return list;
   }
@@ -291,11 +293,12 @@ abstract class _TemsilciProfilViewModelBase with Store {
     for (int i = 1; i <= biggestMonth; i++) {
       var value = temsilciProfilList?.where((element) => element.tabloTipi == "SIPARIS" && element.ayKodu == i && (element.tutar != null)).map((e) => e.tutar).toList();
       if (value.isNotNullOrEmpty) {
-        list[i > 12 ? DateTime.now().month-1 : i - 1] =list[i > 12 ? DateTime.now().month-1 : i - 1]+  (value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
+        list[i > 12 ? DateTime.now().month - 1 : i - 1] =
+            list[i > 12 ? DateTime.now().month - 1 : i - 1] + (value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
         // list.add(value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
       }
     }
-    while(list.last == 0){
+    while (list.last == 0) {
       list.removeLast();
     }
     return list;
@@ -311,11 +314,12 @@ abstract class _TemsilciProfilViewModelBase with Store {
     for (int i = 1; i <= biggestMonth; i++) {
       var value = temsilciProfilList?.where((element) => element.tabloTipi == "TAHSILAT" && element.ayKodu == i && (element.tutar != null)).map((e) => e.tutar).toList();
       if (value.isNotNullOrEmpty) {
-        list[i > 12 ? DateTime.now().month-1 : i - 1] =list[i > 12 ? DateTime.now().month-1 : i - 1]+  (value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
+        list[i > 12 ? DateTime.now().month - 1 : i - 1] =
+            list[i > 12 ? DateTime.now().month - 1 : i - 1] + (value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
         // list.add(value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
       }
     }
-    while(list.last == 0){
+    while (list.last == 0) {
       list.removeLast();
     }
     return list;

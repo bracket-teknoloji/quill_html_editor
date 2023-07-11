@@ -3,6 +3,7 @@ import "dart:ui";
 
 import "package:firebase_core/firebase_core.dart";
 import "package:firebase_crashlytics/firebase_crashlytics.dart";
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
@@ -142,6 +143,7 @@ class MyApp extends StatelessWidget {
 }
 
 Future<void> firebaseInitialized() async {
+  if (kIsWeb) return;
   if (!Platform.isWindows) {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
     FirebaseCrashlytics.instance.setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");
