@@ -49,9 +49,17 @@ class CustomTextField extends StatefulWidget {
 
 class _CustomTextFieldState extends State<CustomTextField> {
   TextEditingController get controller => widget.controller ?? TextEditingController(text: widget.controllerText);
+  FocusNode get focusNode => widget.focusNode ?? FocusNode();
   @override
   void initState() {
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    focusNode.dispose();
+    super.dispose();
   }
 
   @override
@@ -67,39 +75,38 @@ class _CustomTextFieldState extends State<CustomTextField> {
   }
 
   Widget get textFormField {
-    return MouseRegion(
-      onExit: (event) => FocusManager.instance.primaryFocus?.unfocus(),
-      child: TextFormField(
-        textInputAction: TextInputAction.next,
-        keyboardType: widget.keyboardType,
-        focusNode: widget.focusNode,
-
-        onTap: () {
-          widget.onTap?.call();
-          // controller.selection = TextSelection(baseOffset: 0, extentOffset: controller.value.text.length);
-        },
-
-        onChanged: widget.onChanged,
-        onFieldSubmitted: widget.onSubmitted,
-        // onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
-        maxLength: widget.maxLength,
-        validator: widget.validator ?? ((widget.isMust ?? false) ? validator : null),
-        controller: controller,
-        readOnly: widget.readOnly ?? false,
-        decoration: InputDecoration(
-            enabled: widget.enabled ?? true,
-            errorStyle: TextStyle(color: UIHelper.primaryColor, fontWeight: FontWeight.bold),
-            errorBorder: OutlineInputBorder(borderSide: BorderSide(color: UIHelper.primaryColor.withOpacity(0.7), width: 2), borderRadius: BorderRadius.circular(10), gapPadding: 0),
-            suffixIcon: (widget.enabled ?? true ? (widget.suffixMore ?? false ? const Icon(Icons.more_horiz_outlined) : widget.suffix) : null),
-            label: Text.rich(TextSpan(children: [
-              TextSpan(
-                  text: widget.labelText ?? "",
-                  style: (widget.isMust ?? false)
-                      ? TextStyle(color: UIHelper.primaryColor)
-                      : ((widget.controller?.text == "") ? TextStyle(color: Colors.grey.withOpacity(0.6)) : TextStyle(color: Colors.grey.withOpacity(0.8)))),
-              TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: Colors.grey.withOpacity(0.3), fontSize: 12))
-            ]))),
-      ).paddingAll(UIHelper.lowSize),
+    return TextFieldTapRegion(
+      onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
+      onTapInside: (event) => SelectableText.rich(TextSpan(children: [TextSpan(text: controller.text)])),
+      child: MouseRegion(
+        onExit: (event) => FocusManager.instance.primaryFocus?.unfocus(),
+        child: TextFormField(
+          textInputAction: TextInputAction.next,
+          keyboardType: widget.keyboardType,
+          focusNode: focusNode,
+          onTap: widget.onTap,
+          onChanged: widget.onChanged,
+          onFieldSubmitted: widget.onSubmitted,
+          // onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
+          maxLength: widget.maxLength,
+          validator: widget.validator ?? ((widget.isMust ?? false) ? validator : null),
+          controller: controller,
+          readOnly: widget.readOnly ?? false,
+          decoration: InputDecoration(
+              enabled: widget.enabled ?? true,
+              errorStyle: TextStyle(color: UIHelper.primaryColor, fontWeight: FontWeight.bold),
+              errorBorder: OutlineInputBorder(borderSide: BorderSide(color: UIHelper.primaryColor.withOpacity(0.7), width: 2), borderRadius: BorderRadius.circular(10), gapPadding: 0),
+              suffixIcon: (widget.enabled ?? true ? (widget.suffixMore ?? false ? const Icon(Icons.more_horiz_outlined) : widget.suffix) : null),
+              label: Text.rich(TextSpan(children: [
+                TextSpan(
+                    text: widget.labelText ?? "",
+                    style: (widget.isMust ?? false)
+                        ? TextStyle(color: UIHelper.primaryColor)
+                        : ((widget.controller?.text == "") ? TextStyle(color: Colors.grey.withOpacity(0.6)) : TextStyle(color: Colors.grey.withOpacity(0.8)))),
+                TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: Colors.grey.withOpacity(0.3), fontSize: 12))
+              ]))),
+        ).paddingAll(UIHelper.lowSize),
+      ),
     );
   }
 

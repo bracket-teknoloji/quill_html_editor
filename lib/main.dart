@@ -1,5 +1,8 @@
+import "dart:io";
 import "dart:ui";
 
+import "package:firebase_core/firebase_core.dart";
+import "package:firebase_crashlytics/firebase_crashlytics.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
@@ -12,6 +15,7 @@ import "core/init/app_info/app_info.dart";
 import "core/init/cache/cache_manager.dart";
 import "core/init/dependency_injection/network_dependency_injection.dart";
 import "core/init/theme/app_theme_dark.dart";
+import "firebase_options.dart";
 import "view/add_company/model/account_model.dart";
 import "view/add_company/view/add_account_view.dart";
 import "view/add_company/view/company_page.dart";
@@ -43,9 +47,12 @@ import "view/main_page/view/main_page_view.dart";
 import "view/splash_auth/view/splash_auth_view.dart";
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await CacheManager.instance.initHiveBoxes();
   await AccountModel.instance.init();
   await AppInfoModel.instance.init();
+  //* Firebase Crashlytics
+  await firebaseInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.landscapeRight,
@@ -131,5 +138,20 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/qr", page: () => const QRScannerView()),
       ],
     );
+  }
+}
+
+Future<void> firebaseInitialized() async {
+  if (!Platform.isWindows) {
+    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+    
+    FirebaseCrashlytics.instance.setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");
+    FlutterError.onError = (errorDetails) => FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+    PlatformDispatcher.instance.onError = (error, stack) {
+      AccountModel.instance.toJson().forEach((key, value) => value != null ? FirebaseCrashlytics.instance.setCustomKey(key, value) : null);
+      FirebaseCrashlytics.instance.setCustomKey("new version", AppInfoModel.instance.version ?? "");
+      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      return true;
+    };
   }
 }
