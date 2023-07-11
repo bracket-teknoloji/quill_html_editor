@@ -12,7 +12,6 @@ import '../../../core/base/state/base_state.dart';
 import '../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../core/init/cache/cache_manager.dart';
 import '../../../core/init/network/login/api_urls.dart';
-import '../../../core/init/network/network_manager.dart';
 import '../../add_company/model/account_model.dart';
 import '../../add_company/model/account_response_model.dart';
 import '../../main_page/model/main_page_model.dart';
@@ -113,7 +112,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       if (CacheManager.getVerifiedUser?["user"] == null) {
         Get.offAllNamed("/login");
       } else if (CacheManager.getLogout == true) {
-        final response = await NetworkManager.getToken(path: ApiUrls.token, queryParameters: {
+        final response = await networkManager.getToken(path: ApiUrls.token, queryParameters: {
           "deviceInfos": jsonEncode(CacheManager.getHesapBilgileri().toJson())
         }, data: {
           "grant_type": "password",

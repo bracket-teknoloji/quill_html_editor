@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "9609536428",
+    "project_id": "flutter-picker",
+    "storage_bucket": "flutter-picker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9609536428:android:5a7b2c579d031d2e579009",
+        "android_client_info": {
+          "package_name": "com.bracket23.picker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "9609536428-e92gh86fmjhh6jdlc7i7383j6m7c0psa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaCY9dnWAUBvbsdwSlWt-7XmU0eyfBWt8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "9609536428-e92gh86fmjhh6jdlc7i7383j6m7c0psa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "9609536428-2c7dc8e9upos2oldpu5t4lr3mm3h0akq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.picker"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

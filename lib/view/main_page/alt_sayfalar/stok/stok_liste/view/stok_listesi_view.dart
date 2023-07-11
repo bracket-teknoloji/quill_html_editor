@@ -12,7 +12,6 @@ import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
 import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import '../../../../../../core/components/floating_action_button/custom_floating_action_button.dart';
-import '../../../../../../core/components/grid_tile/custom_animated_grid/view/custom_animated_grid_view.dart';
 import '../../../../../../core/components/helper_widgets/custom_label_widget.dart';
 import '../../../../../../core/components/textfield/custom_app_bar_text_field.dart';
 import '../../../../../../core/components/textfield/custom_text_field.dart';
@@ -41,7 +40,7 @@ class StokListesiView extends StatefulWidget {
 class _StokListesiViewState extends BaseState<StokListesiView> {
   StokListesiViewModel viewModel = StokListesiViewModel();
   List<StokListesiModel>? get stokListesi => viewModel.stokListesi ?? [];
-  final ScrollController _scrollController = ScrollController();
+  ScrollController scrollController = ScrollController();
   TextEditingController grupKoduController = TextEditingController();
   TextEditingController kod1Controller = TextEditingController();
   TextEditingController kod2Controller = TextEditingController();
@@ -50,16 +49,20 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   TextEditingController kod5Controller = TextEditingController();
   @override
   void initState() {
-    getData();
-    _scrollController.addListener(() async {
-      if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent && viewModel.dahaVarMi) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getData();
+    });
+    scrollController.addListener(() async {
+      if (scrollController.position.pixels == scrollController.position.maxScrollExtent && viewModel.dahaVarMi) {
         if (viewModel.dahaVarMi) {
-          getData();
+          Future.delayed(const Duration(milliseconds: 500), () {
+            getData();
+          });
         }
       }
-      if (_scrollController.position.userScrollDirection == ScrollDirection.forward) {
+      if (scrollController.position.userScrollDirection == ScrollDirection.forward) {
         viewModel.changeIsScrolledDown(true);
-      } else if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
+      } else if (scrollController.position.userScrollDirection == ScrollDirection.reverse) {
         viewModel.changeIsScrolledDown(false);
       }
     });
@@ -70,7 +73,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   void dispose() {
     bottomSheetDialogManager.clearSelectedData();
     viewModel.setBottomSheetModel(StokBottomSheetModel());
-    _scrollController.dispose();
+    scrollController.dispose();
     super.dispose();
     grupKoduController.dispose();
     kod1Controller.dispose();
@@ -103,21 +106,20 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   AppBar appBar() {
     return AppBar(
       primary: true,
-      // controller: _scrollController,
-      leading: Observer(
-          builder: (_) => IconButton(
-              onPressed: () {
-                if (viewModel.searchBar) {
-                  viewModel.setSearchBar();
-                  viewModel.setSearchValue("");
-                  viewModel.setStokListesi(null);
-                  viewModel.resetSayfa();
-                  getData();
-                } else {
-                  Get.back();
-                }
-              },
-              icon: const Icon(Icons.arrow_back_outlined))),
+      // controller: scrollController,
+      leading: IconButton(
+          onPressed: () {
+            if (viewModel.searchBar) {
+              viewModel.setSearchBar();
+              viewModel.setSearchValue("");
+              viewModel.setStokListesi(null);
+              viewModel.resetSayfa();
+              getData();
+            } else {
+              Get.back();
+            }
+          },
+          icon: const Icon(Icons.arrow_back_outlined)),
       title: Observer(
           builder: (_) => viewModel.searchBar
               ? CustomAppBarTextField(
@@ -131,24 +133,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                 )
               : Text("Stok Listesi ${viewModel.stokListesi?.length ?? ""}")),
       actions: [
-        Observer(builder: (_) {
-          if (!viewModel.searchBar) {
-            return IconButton(
-              onPressed: () {
-                viewModel.setSearchBar();
-                if (!viewModel.searchBar) {
-                  viewModel.setSearchValue("");
-                  viewModel.setStokListesi(null);
-                  viewModel.resetSayfa();
-                  getData();
-                }
-              },
-              icon: const Icon(Icons.search_outlined),
-            );
-          } else {
-            return const SizedBox();
-          }
-        }),
+        hideSearchBar(),
         IconButton(
             onPressed: () async {
               await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context, title: "Seçenekler", children: [
@@ -216,228 +201,230 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                       body: Column(children: [
                         CustomWidgetWithLabel(
                           text: "Bakiye",
-                          children: [
-                            Center(
-                              child: Observer(builder: (_) {
-                                return ToggleButtons(
-                                  constraints: BoxConstraints(minWidth: ((context.isPortrait ? width : 600) * 0.9) / 5, minHeight: height * 0.05),
-                                  isSelected: viewModel.selected.toList(),
-                                  children: viewModel.selectedList.map((e) => Text(e)).toList(),
-                                  onPressed: (index) {
-                                    viewModel.setSelectedWithIndex(index);
-                                  },
-                                );
-                              }),
-                            ),
-                            Row(
-                              children: [
-                                Expanded(child: Observer(builder: (_) {
-                                  return CustomTextField(
-                                      labelText: "Grup Kodu",
-                                      readOnly: true,
-                                      controller: grupKoduController,
-                                      onTap: () async {
-                                        await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
-                                          context,
-                                          title: "Grup Kodu",
-                                          children: viewModel.grupKodlari
-                                              .map((e) => BottomSheetModel(
-                                                    title: e.grupAdi ?? "",
-                                                    value: e.grupNo.toStringIfNull,
-                                                    onTap: () {
-                                                      if (viewModel.bottomSheetModel.grupKodu?.contains(e) ?? false) {
-                                                        viewModel.bottomSheetModel.grupKodu?.remove(e);
-                                                      } else {
-                                                        viewModel.bottomSheetModel.grupKodu?.add(e);
-                                                      }
-                                                      debugPrint(viewModel.grupKodu);
-                                                    },
-                                                  ))
-                                              .toList(),
-                                        );
-                                        grupKoduController.text = viewModel.grupKodu;
-                                      },
-                                      suffix: const Icon(Icons.more_horiz));
-                                })),
-                                Expanded(
-                                    child: CustomTextField(
-                                  labelText: "Kod 1",
-                                  readOnly: true,
-                                  suffix: const Icon(Icons.more_horiz),
-                                  controller: kod1Controller,
-                                  onTap: () async {
-                                    List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 1).toList();
-                                    await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
-                                      context,
-                                      title: "Kod 1",
-                                      children: grupKodlari
-                                          .map((e) => BottomSheetModel(
-                                                title: e.grupAdi ?? "",
-                                                onTap: () {
-                                                  if (viewModel.bottomSheetModel.kod1?.contains(e) ?? false) {
-                                                    viewModel.bottomSheetModel.kod1?.remove(e);
-                                                  } else {
-                                                    viewModel.bottomSheetModel.kod1?.add(e);
-                                                  }
-                                                },
-                                              ))
-                                          .toList(),
-                                    );
-                                    kod1Controller.text = viewModel.kod1;
-                                  },
-                                ))
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                    child: CustomTextField(
-                                  labelText: "Kod 2",
-                                  readOnly: true,
-                                  suffix: const Icon(Icons.more_horiz),
-                                  controller: kod2Controller,
-                                  onTap: () async {
-                                    List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 2).toList();
-                                    await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
-                                      context,
-                                      title: "Kod 2",
-                                      children: grupKodlari
-                                          .map((e) => BottomSheetModel(
-                                                title: e.grupAdi ?? "",
-                                                onTap: () {
-                                                  if (viewModel.bottomSheetModel.kod2?.contains(e) ?? false) {
-                                                    viewModel.bottomSheetModel.kod2?.remove(e);
-                                                  } else {
-                                                    viewModel.bottomSheetModel.kod2?.add(e);
-                                                  }
-                                                },
-                                              ))
-                                          .toList(),
-                                    );
-                                    kod2Controller.text = viewModel.kod2;
-                                  },
-                                )),
-                                Expanded(
-                                    child: CustomTextField(
-                                  labelText: "Kod 3",
-                                  readOnly: true,
-                                  suffix: const Icon(Icons.more_horiz),
-                                  controller: kod3Controller,
-                                  onTap: () async {
-                                    List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 3).toList();
-                                    await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
-                                      context,
-                                      title: "Kod 3",
-                                      children: grupKodlari
-                                          .map((e) => BottomSheetModel(
-                                                title: e.grupAdi ?? "",
-                                                onTap: () {
-                                                  if (viewModel.bottomSheetModel.kod3?.contains(e) ?? false) {
-                                                    viewModel.bottomSheetModel.kod3?.remove(e);
-                                                  } else {
-                                                    viewModel.bottomSheetModel.kod3?.add(e);
-                                                  }
-                                                },
-                                              ))
-                                          .toList(),
-                                    );
-                                    kod3Controller.text = viewModel.kod3;
-                                  },
-                                ))
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                    child: CustomTextField(
-                                  labelText: "Kod 4",
-                                  readOnly: true,
-                                  suffix: const Icon(Icons.more_horiz),
-                                  controller: kod4Controller,
-                                  onTap: () async {
-                                    List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 4).toList();
-                                    await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
-                                      context,
-                                      title: "Kod 4",
-                                      children: grupKodlari
-                                          .map((e) => BottomSheetModel(
-                                                title: e.grupAdi ?? "",
-                                                onTap: () {
-                                                  if (viewModel.bottomSheetModel.kod4?.contains(e) ?? false) {
-                                                    viewModel.bottomSheetModel.kod4?.remove(e);
-                                                  } else {
-                                                    viewModel.bottomSheetModel.kod4?.add(e);
-                                                  }
-                                                },
-                                              ))
-                                          .toList(),
-                                    );
-                                    kod4Controller.text = viewModel.kod4;
-                                  },
-                                )),
-                                Expanded(
-                                    child: CustomTextField(
-                                  labelText: "Kod 5",
-                                  readOnly: true,
-                                  suffix: const Icon(Icons.more_horiz),
-                                  controller: kod5Controller,
-                                  onTap: () async {
-                                    List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 5).toList();
-                                    await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
-                                      context,
-                                      title: "Kod 5",
-                                      children: grupKodlari
-                                          .map((e) => BottomSheetModel(
-                                                title: e.grupAdi ?? "",
-                                                onTap: () {
-                                                  if (viewModel.bottomSheetModel.kod5?.contains(e) ?? false) {
-                                                    viewModel.bottomSheetModel.kod5?.remove(e);
-                                                  } else {
-                                                    viewModel.bottomSheetModel.kod5?.add(e);
-                                                  }
-                                                },
-                                              ))
-                                          .toList(),
-                                    );
-                                    kod5Controller.text = viewModel.kod5;
-                                  },
-                                ))
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                    child: ElevatedButton(
-                                        onPressed: () {
-                                          grupKoduController.text = "";
-                                          kod1Controller.text = "";
-                                          kod2Controller.text = "";
-                                          kod3Controller.text = "";
-                                          kod4Controller.text = "";
-                                          kod5Controller.text = "";
-                                          viewModel.setBottomSheetModel(StokBottomSheetModel());
-                                          viewModel.resetSayfa();
-                                          viewModel.setStokListesi(null);
-                                          viewModel.resetSelected();
-                                          bottomSheetDialogManager.clearSelectedData();
-                                          getData();
-                                          Get.back();
+                          child: Wrap(
+                            children: [
+                              Center(
+                                child: Observer(builder: (_) {
+                                  return ToggleButtons(
+                                    constraints: BoxConstraints(minWidth: ((context.isPortrait ? width : 600) * 0.9) / 5, minHeight: height * 0.05),
+                                    isSelected: viewModel.selected.toList(),
+                                    children: viewModel.selectedList.map((e) => Text(e)).toList(),
+                                    onPressed: (index) {
+                                      viewModel.setSelectedWithIndex(index);
+                                    },
+                                  );
+                                }),
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(child: Observer(builder: (_) {
+                                    return CustomTextField(
+                                        labelText: "Grup Kodu",
+                                        readOnly: true,
+                                        controller: grupKoduController,
+                                        onTap: () async {
+                                          await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                            context,
+                                            title: "Grup Kodu",
+                                            children: viewModel.grupKodlari
+                                                .map((e) => BottomSheetModel(
+                                                      title: e.grupAdi ?? "",
+                                                      value: e.grupNo.toStringIfNull,
+                                                      onTap: () {
+                                                        if (viewModel.bottomSheetModel.grupKodu?.contains(e) ?? false) {
+                                                          viewModel.bottomSheetModel.grupKodu?.remove(e);
+                                                        } else {
+                                                          viewModel.bottomSheetModel.grupKodu?.add(e);
+                                                        }
+                                                        debugPrint(viewModel.grupKodu);
+                                                      },
+                                                    ))
+                                                .toList(),
+                                          );
+                                          grupKoduController.text = viewModel.grupKodu;
                                         },
-                                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
-                                        child: const Text("Temizle"))),
-                                SizedBox(width: width * 0.02),
-                                Expanded(
-                                    child: ElevatedButton(
-                                        onPressed: () {
-                                          viewModel.resetSayfa();
-                                          viewModel.setStokListesi(null);
-                                          getData();
-                                          Get.back();
-                                        },
-                                        child: const Text("Uygula")))
-                              ],
-                            ).paddingAll(UIHelper.lowSize),
-                          ],
+                                        suffix: const Icon(Icons.more_horiz));
+                                  })),
+                                  Expanded(
+                                      child: CustomTextField(
+                                    labelText: "Kod 1",
+                                    readOnly: true,
+                                    suffix: const Icon(Icons.more_horiz),
+                                    controller: kod1Controller,
+                                    onTap: () async {
+                                      List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 1).toList();
+                                      await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                        context,
+                                        title: "Kod 1",
+                                        children: grupKodlari
+                                            .map((e) => BottomSheetModel(
+                                                  title: e.grupAdi ?? "",
+                                                  onTap: () {
+                                                    if (viewModel.bottomSheetModel.kod1?.contains(e) ?? false) {
+                                                      viewModel.bottomSheetModel.kod1?.remove(e);
+                                                    } else {
+                                                      viewModel.bottomSheetModel.kod1?.add(e);
+                                                    }
+                                                  },
+                                                ))
+                                            .toList(),
+                                      );
+                                      kod1Controller.text = viewModel.kod1;
+                                    },
+                                  ))
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                      child: CustomTextField(
+                                    labelText: "Kod 2",
+                                    readOnly: true,
+                                    suffix: const Icon(Icons.more_horiz),
+                                    controller: kod2Controller,
+                                    onTap: () async {
+                                      List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 2).toList();
+                                      await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                        context,
+                                        title: "Kod 2",
+                                        children: grupKodlari
+                                            .map((e) => BottomSheetModel(
+                                                  title: e.grupAdi ?? "",
+                                                  onTap: () {
+                                                    if (viewModel.bottomSheetModel.kod2?.contains(e) ?? false) {
+                                                      viewModel.bottomSheetModel.kod2?.remove(e);
+                                                    } else {
+                                                      viewModel.bottomSheetModel.kod2?.add(e);
+                                                    }
+                                                  },
+                                                ))
+                                            .toList(),
+                                      );
+                                      kod2Controller.text = viewModel.kod2;
+                                    },
+                                  )),
+                                  Expanded(
+                                      child: CustomTextField(
+                                    labelText: "Kod 3",
+                                    readOnly: true,
+                                    suffix: const Icon(Icons.more_horiz),
+                                    controller: kod3Controller,
+                                    onTap: () async {
+                                      List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 3).toList();
+                                      await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                        context,
+                                        title: "Kod 3",
+                                        children: grupKodlari
+                                            .map((e) => BottomSheetModel(
+                                                  title: e.grupAdi ?? "",
+                                                  onTap: () {
+                                                    if (viewModel.bottomSheetModel.kod3?.contains(e) ?? false) {
+                                                      viewModel.bottomSheetModel.kod3?.remove(e);
+                                                    } else {
+                                                      viewModel.bottomSheetModel.kod3?.add(e);
+                                                    }
+                                                  },
+                                                ))
+                                            .toList(),
+                                      );
+                                      kod3Controller.text = viewModel.kod3;
+                                    },
+                                  ))
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                      child: CustomTextField(
+                                    labelText: "Kod 4",
+                                    readOnly: true,
+                                    suffix: const Icon(Icons.more_horiz),
+                                    controller: kod4Controller,
+                                    onTap: () async {
+                                      List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 4).toList();
+                                      await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                        context,
+                                        title: "Kod 4",
+                                        children: grupKodlari
+                                            .map((e) => BottomSheetModel(
+                                                  title: e.grupAdi ?? "",
+                                                  onTap: () {
+                                                    if (viewModel.bottomSheetModel.kod4?.contains(e) ?? false) {
+                                                      viewModel.bottomSheetModel.kod4?.remove(e);
+                                                    } else {
+                                                      viewModel.bottomSheetModel.kod4?.add(e);
+                                                    }
+                                                  },
+                                                ))
+                                            .toList(),
+                                      );
+                                      kod4Controller.text = viewModel.kod4;
+                                    },
+                                  )),
+                                  Expanded(
+                                      child: CustomTextField(
+                                    labelText: "Kod 5",
+                                    readOnly: true,
+                                    suffix: const Icon(Icons.more_horiz),
+                                    controller: kod5Controller,
+                                    onTap: () async {
+                                      List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 5).toList();
+                                      await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                        context,
+                                        title: "Kod 5",
+                                        children: grupKodlari
+                                            .map((e) => BottomSheetModel(
+                                                  title: e.grupAdi ?? "",
+                                                  onTap: () {
+                                                    if (viewModel.bottomSheetModel.kod5?.contains(e) ?? false) {
+                                                      viewModel.bottomSheetModel.kod5?.remove(e);
+                                                    } else {
+                                                      viewModel.bottomSheetModel.kod5?.add(e);
+                                                    }
+                                                  },
+                                                ))
+                                            .toList(),
+                                      );
+                                      kod5Controller.text = viewModel.kod5;
+                                    },
+                                  ))
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                      child: ElevatedButton(
+                                          onPressed: () {
+                                            grupKoduController.text = "";
+                                            kod1Controller.text = "";
+                                            kod2Controller.text = "";
+                                            kod3Controller.text = "";
+                                            kod4Controller.text = "";
+                                            kod5Controller.text = "";
+                                            viewModel.setBottomSheetModel(StokBottomSheetModel());
+                                            viewModel.resetSayfa();
+                                            viewModel.setStokListesi(null);
+                                            viewModel.resetSelected();
+                                            bottomSheetDialogManager.clearSelectedData();
+                                            getData();
+                                            Get.back();
+                                          },
+                                          style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
+                                          child: const Text("Temizle"))),
+                                  SizedBox(width: width * 0.02),
+                                  Expanded(
+                                      child: ElevatedButton(
+                                          onPressed: () {
+                                            viewModel.resetSayfa();
+                                            viewModel.setStokListesi(null);
+                                            getData();
+                                            Get.back();
+                                          },
+                                          child: const Text("Uygula")))
+                                ],
+                              ).paddingAll(UIHelper.lowSize),
+                            ],
+                          ),
                         )
                       ]).paddingAll(UIHelper.lowSize),
                     );
@@ -471,6 +458,25 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     );
   }
 
+  Widget hideSearchBar() {
+    if (!viewModel.searchBar) {
+      return IconButton(
+        onPressed: () {
+          viewModel.setSearchBar();
+          if (!viewModel.searchBar) {
+            viewModel.setSearchValue("");
+            viewModel.setStokListesi(null);
+            viewModel.resetSayfa();
+            getData();
+          }
+        },
+        icon: const Icon(Icons.search_outlined),
+      );
+    } else {
+      return const SizedBox();
+    }
+  }
+
   Observer? fab() {
     return Observer(builder: (_) {
       return CustomFloatingActionButton(
@@ -490,7 +496,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
               : const Center(child: CircularProgressIndicator.adaptive())
           : ListView.builder(
               primary: false,
-              controller: _scrollController,
+              controller: scrollController,
               padding: UIHelper.lowPadding,
               itemCount: (stokListesi?.length ?? 0) + 1,
               itemBuilder: (context, index) {
@@ -501,12 +507,12 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                     child: Listener(
                       onPointerDown: (event) {
                         if (event.kind == PointerDeviceKind.mouse && event.buttons == 2) {
-                          dialogManager.showGridViewDialog(CustomAnimatedGridView<StokListesiModel>(model: stok, islemTipi: IslemTipi.stok));
+                          dialogManager.showStokGridViewDialog(stok);
                         }
                       },
                       child: ListTile(
                         onLongPress: () {
-                          dialogManager.showGridViewDialog(CustomAnimatedGridView<StokListesiModel>(model: stok, islemTipi: IslemTipi.stok));
+                          dialogManager.showStokGridViewDialog(stok);
                         },
                         contentPadding: UIHelper.lowPadding,
                         // leading: stok.resimUrlKucuk !=null ? Image.memory(networkManager.getImage(stok.resimUrlKucuk))
@@ -550,11 +556,17 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.duzenle, model: stok))).yetkiKontrol(yetkiController.stokKartiDuzenleme),
                                   BottomSheetModel(
                                       title: "Hareketler",
-                                      iconWidget: Icons.list_alt,
+                                      iconWidget: Icons.sync_alt_outlined,
                                       onTap: () {
                                         Get.back();
                                         return Get.toNamed("/mainPage/stokHareketleri", arguments: stok);
                                       }).yetkiKontrol(yetkiController.stokHareketleriStokHareketleri),
+                                  BottomSheetModel(
+                                      title: "Raporlar",
+                                      iconWidget: Icons.area_chart_outlined,
+                                      onTap: () async {
+                                        dialogManager.showStokGridViewDialog(stok, IslemTipiEnum.stokRapor);
+                                      }),
                                   //😳 BottomSheetModel(title: "Depo Bakiye Durumu", iconWidget: Icons.list_alt),
                                   // !!BottomSheetModel(
                                   // !!  title: "Yazdır",
@@ -571,7 +583,13 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                   //     //     ));
                                   //   },
                                   // ),
-                                  //😳 BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt),
+                                  BottomSheetModel(
+                                      title: "İşlemler",
+                                      iconWidget: Icons.list_alt,
+                                      onTap: () {
+                                        Get.back();
+                                        dialogManager.showStokGridViewDialog(stok);
+                                      }),
                                 ];
                                 children2.insert(
                                     2, BottomSheetModel(title: "Sil", iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? "")).yetkiKontrol(yetkiController.stokKartiSilme));
@@ -691,7 +709,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     }
     setState(() {});
 
-    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+    if (scrollController.positions.isNotEmpty && (scrollController.position.pixels == scrollController.position.maxScrollExtent)) {
       viewModel.changeIsScrolledDown(true);
     }
   }

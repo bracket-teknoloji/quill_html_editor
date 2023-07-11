@@ -110,7 +110,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                   CustomWidgetWithLabel(
                     text: "TL Hareketi Dökülsün",
                     isVertical: true,
-                    children: [
+                    child: 
                       Observer(builder: (_) {
                         return Switch.adaptive(
                             value: viewModel.tlHareketleriDokulsun,
@@ -119,7 +119,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                               viewModel.pdfModel.dicParams?.tlHarDokulsun = value ? "E" : null;
                             });
                       })
-                    ],
+                    
                   )
                 ],
               ),

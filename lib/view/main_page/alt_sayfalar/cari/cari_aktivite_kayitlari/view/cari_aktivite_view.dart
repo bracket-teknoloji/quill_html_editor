@@ -26,11 +26,11 @@ class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
               preferredSize: Size.fromHeight(height * 0.1),
               child: const CustomWidgetWithLabel(
                 text: "Ara",
-                children: [
+                child: 
                   TextField(
                     decoration: InputDecoration(suffixIcon: Icon(Icons.search_outlined)),
                   )
-                ],
+                
               ).paddingAll(UIHelper.midSize)),
         ),
         body: SizedBox(

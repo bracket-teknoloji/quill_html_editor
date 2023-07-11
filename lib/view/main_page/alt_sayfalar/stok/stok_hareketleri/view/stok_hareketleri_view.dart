@@ -106,7 +106,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            CustomWidgetWithLabel(text: "Hareket Yönü", children: [
+                            CustomWidgetWithLabel(text: "Hareket Yönü", child: 
                               Center(
                                 child: Observer(builder: (_) {
                                   return SizedBox(
@@ -120,7 +120,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                   );
                                 }),
                               )
-                            ]),
+                            ),
                             Observer(builder: (_) {
                               return CustomTextField(
                                   labelText: "Hareket Türü",

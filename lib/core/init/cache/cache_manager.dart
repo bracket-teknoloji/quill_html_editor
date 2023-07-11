@@ -27,6 +27,7 @@ class CacheManager {
   static late Box _hesapBilgileriBox;
   static late Box _cariSehirBox;
   static late Box _subeListesiBox;
+  static late Box _sirketAdiBox;
   // static late Box _grupKoduListesiBox;
   //Lazy Singleton
   static final CacheManager _instance = CacheManager._init();
@@ -47,7 +48,7 @@ class CacheManager {
   }
 
   Future<void> initHiveBoxes() async {
-    await Hive.initFlutter();
+    await Hive.initFlutter("picker/hive");
     _preferencesBox = await Hive.openBox("preferences");
     _companiesBox = await Hive.openBox("companies");
     _tokenBox = await Hive.openBox("token");
@@ -61,6 +62,7 @@ class CacheManager {
     _hesapBilgileriBox = await Hive.openBox("hesapBilgileri");
     _cariSehirBox = await Hive.openBox("cariSehir");
     _subeListesiBox = await Hive.openBox<List>("cariListesi");
+    _sirketAdiBox = await Hive.openBox("sirketAdi");
   }
 
 //*  Getters and Setters
@@ -74,11 +76,12 @@ class CacheManager {
   static MainPageModel? getAnaVeri() => _anaVeriBox.get("data");
   static Map? get getVerifiedUser => _verifiedUsersBox.get("data");
   static Map getVeriTabani() => _veriTabaniBox.get(getVerifiedUser?["user"]) ?? {};
-  static Map getIsletmeSube() => _isletmeSubeBox.get(getVerifiedUser?["user"]) ?? {};
+  static Map get getIsletmeSube => _isletmeSubeBox.get(getVerifiedUser?["user"]) ?? {};
   static Map<String, FavoritesModel> getFavoriler() => _favorilerBox.toMap().cast<String, FavoritesModel>();
   static AccountModel getHesapBilgileri() => _hesapBilgileriBox.get("value");
   static CariSehirlerModel getCariSehirler() => _cariSehirBox.get("value");
   static List getSubeListesi() => _subeListesiBox.get("value") ?? [];
+  static String get  getSirketAdi => _sirketAdiBox.get("value") ?? "";
 
   //* Setters
   static void setLogout(bool value) => _preferencesBox.put("logout", value);
@@ -106,6 +109,7 @@ class CacheManager {
 
   static void setCariSehirler(CariSehirlerModel value) => _cariSehirBox.put("value", value);
   static void setSubeListesi(List value) => _subeListesiBox.put("value", value);
+  static void setSirketAdi(String value) => _sirketAdiBox.put("value", value);
 
 //* Clear and Remove
   static void clearBox(String boxName) => Hive.box(boxName).clear();

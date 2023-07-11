@@ -21,7 +21,7 @@ class BaseStokEditingView extends StatefulWidget {
   final String? appBarSubtitle;
   final bool? isSubTitleSmall;
   // final List<Widget>? actions;
-  final BaseEditModel<StokListesiModel>? model;
+  final BaseEditModel? model;
   const BaseStokEditingView({super.key, this.appBarTitle, this.appBarSubtitle, this.isSubTitleSmall, this.model});
 
   @override
@@ -30,8 +30,8 @@ class BaseStokEditingView extends StatefulWidget {
 
 class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with TickerProviderStateMixin {
   TabController? tabController;
-  List<Tab>? get tabs => (widget.model!.baseEditEnum != BaseEditEnum.ekle) ? [const Tab(child: Text("Fiyat Listesi"))] : [];
-  List<Widget>? get views => (widget.model!.baseEditEnum != BaseEditEnum.ekle) ? [const BaseStokEditFiyatListesiView()] : [];
+  List<Tab>? get tabs => (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala) ? [const Tab(child: Text("Fiyat Listesi"))] : [];
+  List<Widget>? get views => (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala) ? [const BaseStokEditFiyatListesiView()] : [];
 
   @override
   Widget build(BuildContext context) {
@@ -137,6 +137,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
         dialogManager.showSnackBar("Başarılı");
         Get.back(result: BaseEditModel());
       } else {
+        dialogManager.hideAlertDialog;
         dialogManager.showSnackBar(result.message ?? "Hata oluştu");
       }
     }

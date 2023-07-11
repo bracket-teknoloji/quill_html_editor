@@ -1,43 +1,47 @@
 class ApiUrls {
   static const String token = "token";
-  static const String logoutUser = "api/User/LogoutUser";
-  static const String veriTabanlari = "api/General/GetVeritabanlari";
-  static const String isletmelerSubeler = "api/General/GetIsletmelerSubeler";
-  static const String createSession = "api/General/CreateSessionV3";
+  static const String logoutUser = "User/LogoutUser";
+  static const String veriTabanlari = "General/GetVeritabanlari";
+  static const String isletmelerSubeler = "General/GetIsletmelerSubeler";
+  static const String createSession = "General/CreateSessionV3";
   static const String getUyeBilgileri = "https://storews.netfect.com/api/Picker/GetUyeBilgileri";
-  static const String getProjeler = "api/General/GetProjeler";
-  static const String print = "api/Print/Print";
-  static const String getDizaynParametreleri = "api/Print/GetDizaynParametreleri";
+  static const String getProjeler = "General/GetProjeler";
+  static const String print = "Print/Print";
+  static const String getDizaynParametreleri = "Print/GetDizaynParametreleri";
   //*Cariler
-  static const String getCariler = "api/Cari/GetCariler";
-  static const String getCariKayitliSehirler = "api/Cari/GetCariKayitliSehirler";
-  static const String getGrupKodlari = "api/General/GetGrupKodlari";
-  static const String getAktiviteler = "api/Cari/GetAktiviteler";
-  static const String getCariHareketleri = "api/Cari/GetCariHareketleri";
-  static const String saveCariHareket = "api/Cari/SaveCariHareket";
-  static const String getUlkeler = "api/General/GetUlkeler";
-  static const String saveCari = "api/Cari/SaveCari";
-  static const String getKosullar = "api/General/GetKosullar";
-  static const String getCariDetay = "api/Cari/GetCariDetay";
-  static const String getSiradakiKod = "api/General/GetSiradakiKod";
-  static const String deleteCari = "api/Cari/DeleteCari";
+  static const String getCariler = "Cari/GetCariler";
+  static const String getCariKayitliSehirler = "Cari/GetCariKayitliSehirler";
+  static const String getGrupKodlari = "General/GetGrupKodlari";
+  static const String getAktiviteler = "Cari/GetAktiviteler";
+  static const String getCariHareketleri = "Cari/GetCariHareketleri";
+  static const String saveCariHareket = "Cari/SaveCariHareket";
+  static const String getUlkeler = "General/GetUlkeler";
+  static const String saveCari = "Cari/SaveCari";
+  static const String getKosullar = "General/GetKosullar";
+  static const String getCariDetay = "Cari/GetCariDetay";
+  static const String getSiradakiKod = "General/GetSiradakiKod";
+  static const String deleteCari = "Cari/DeleteCari";
+  static const String kodDegistir = "Cari/KodDegistir";
   //*Stoklar
-  static const String getStoklar = "api/Stok/GetStoklar";
-  static const String getStokDetay = "api/Stok/GetStokDetay";
-  static const String deleteStok = "api/Stok/DeleteStok";
-  static const String getMuhasebeKodlari = "api/Stok/GetStokMuhasebeKodlari";
-  static const String getOlcuBirimleri = "api/Stok/GetOlcuBirimleri";
-  static const String barkodUret = "api/Stok/BarkodUret";
-  static const String saveStok = "api/Stok/SaveStok";
-  static const String getStokDigerBilgi = "api/Stok/GetStokDigerBilgi";
-  static const String getStokHareketleri = "api/Stok/GetStokHareketleri";
-  static const String saveStokHareket = "api/Stok/SaveStokHareket";
-  static const String deleteStokHareket = "api/Stok/DeleteStokHareket";
-  static const String getUrunGrubunaGoreSatisGrafigi = "api/Stok/GetUrunGrubunaGoreSatisGrafigi";
+  static const String getStoklar = "Stok/GetStoklar";
+  static const String getStokDetay = "Stok/GetStokDetay";
+  static const String deleteStok = "Stok/DeleteStok";
+  static const String getMuhasebeKodlari = "Stok/GetStokMuhasebeKodlari";
+  static const String getOlcuBirimleri = "Stok/GetOlcuBirimleri";
+  static const String barkodUret = "Stok/BarkodUret";
+  static const String saveStok = "Stok/SaveStok";
+  static const String getStokDigerBilgi = "Stok/GetStokDigerBilgi";
+  static const String getStokHareketleri = "Stok/GetStokHareketleri";
+  static const String saveStokHareket = "Stok/SaveStokHareket";
+  static const String deleteStokHareket = "Stok/DeleteStokHareket";
+  static const String getUrunGrubunaGoreSatisGrafigi = "Stok/GetUrunGrubunaGoreSatisGrafigi";
+  static const String getFiyatGorFiyatlari = "Stok/GetFiyatGorFiyatlari";
+  static const String getStokFiyatGecmisi = "Stok/GetStokFiyatGecmisi";
+  static const String savestokFiyatGecmisi = "Stok/SaveStokFiyatGecmisi";
 
   //*Fatura
-  static const String getFaturaKalemleri = "api/Fatura/GetFaturaKalemleri";
+  static const String getFaturaKalemleri = "Fatura/GetFaturaKalemleri";
 
   //*Temsilci
-  static const String getPlasiyerOzetRaporu = "api/Finans/GetPlasiyerOzetRaporu";
+  static const String getPlasiyerOzetRaporu = "Finans/GetPlasiyerOzetRaporu";
 }

@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
+
+import '../../../../../core/base/state/base_state.dart';
+import '../../../../../core/components/charts/custom_line_chart.dart';
 import '../../../../../core/components/charts/custom_pie_chart.dart';
 import '../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
+import '../../../../../core/components/helper_widgets/custom_label_widget.dart';
 import '../../../../../core/components/slide_controller/view/slide_controller_view.dart';
 import '../../../../../core/components/textfield/custom_text_field.dart';
-import '../../../../../core/components/helper_widgets/custom_label_widget.dart';
 import '../../../../../core/components/wrap/appbar_title.dart';
 import '../../../../../core/constants/extensions/number_extensions.dart';
 import '../../../../../core/constants/ui_helper/text_style_helper.dart';
 import '../../../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../../../core/init/cache/cache_manager.dart';
+import '../../../../../core/init/network/login/api_urls.dart';
+import '../../../model/param_model.dart';
 import '../model/temsilci_profil_model.dart';
 import '../view_model/temsilci_profil_view_model.dart';
-import '../../../model/param_model.dart';
-
-import '../../../../../core/base/state/base_state.dart';
-import '../../../../../core/components/charts/custom_line_chart.dart';
-import '../../../../../core/init/network/login/api_urls.dart';
 
 class TemsilciProfilView extends StatefulWidget {
   const TemsilciProfilView({super.key});
@@ -73,11 +73,11 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                       children: [
                         Expanded(
                             child: CustomWidgetWithLabel(
-                                text: "KDV Dahil", children: [Observer(builder: (_) => Switch.adaptive(value: viewModel.kdvDahil, onChanged: (value) => viewModel.setKDVDahil(value)))])),
+                                text: "KDV Dahil", child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kdvDahil, onChanged: (value) => viewModel.setKDVDahil(value))))),
                         Expanded(
                             child: CustomWidgetWithLabel(
                                 text: "İrsaliyeler Dahil",
-                                children: [Observer(builder: (_) => Switch.adaptive(value: viewModel.irsaliyelerDahil, onChanged: (value) => viewModel.setIrsaliyelerDahil(value)))])),
+                                child: Observer(builder: (_) => Switch.adaptive(value: viewModel.irsaliyelerDahil, onChanged: (value) => viewModel.setIrsaliyelerDahil(value))))),
                       ],
                     ),
                     Row(

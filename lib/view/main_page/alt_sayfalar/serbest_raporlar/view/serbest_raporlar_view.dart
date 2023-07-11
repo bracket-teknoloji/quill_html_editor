@@ -9,7 +9,9 @@ import 'package:picker/core/components/textfield/custom_text_field.dart';
 import 'package:picker/core/constants/extensions/date_time_extensions.dart';
 import 'package:picker/core/constants/extensions/list_extensions.dart';
 import 'package:picker/core/constants/extensions/number_extensions.dart';
+import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
 import 'package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart';
+import 'package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart';
 import 'package:picker/view/main_page/model/param_model.dart';
 
 import '../../../../../core/base/state/base_state.dart';
@@ -22,7 +24,9 @@ import '../view_model/serbest_raporlar_view_model.dart';
 
 class SerbestRaporlarView extends StatefulWidget {
   final NetFectDizaynList? dizaynList;
-  const SerbestRaporlarView({super.key, this.dizaynList});
+  final CariListesiModel? cariListesiModel;
+  final StokListesiModel? stokListesiModel;
+  const SerbestRaporlarView({super.key, this.dizaynList, this.cariListesiModel, this.stokListesiModel});
 
   @override
   State<SerbestRaporlarView> createState() => _SerbestRaporlarViewState();
@@ -37,14 +41,8 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
   }
 
   @override
-  void dispose() {
-    // viewModel.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Serbest Raporlar", pdfData: viewModel.pdfModel);
+    return PDFViewerView(filterBottomSheet: filterBottomSheet, title: widget.dizaynList?.dizaynAdi ?? "Serbest Raporlar", pdfData: viewModel.pdfModel);
   }
 
   Future<bool> filterBottomSheet() async {
@@ -61,7 +59,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                           ?.map((e) {
                             if (e.tipi == "Date") {
                               return CustomTextField(
-                                fitContent: true,
+                                  fitContent: true,
                                   labelText: e.adi ?? "",
                                   controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList!.indexOf(e)],
                                   isMust: e.bosGecilebilir != true,
@@ -75,7 +73,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                                   });
                             } else if (e.rehberTipi != null) {
                               return CustomTextField(
-                                fitContent: true,
+                                  fitContent: true,
                                   labelText: e.adi ?? "",
                                   controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList!.indexOf(e)],
                                   isMust: e.bosGecilebilir != true,
@@ -86,7 +84,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                                   });
                             } else {
                               return CustomTextField(
-                                fitContent: true,
+                                  fitContent: true,
                                   labelText: e.adi ?? "",
                                   readOnly: e.paramMap != null ? true : null,
                                   controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList!.indexOf(e)],

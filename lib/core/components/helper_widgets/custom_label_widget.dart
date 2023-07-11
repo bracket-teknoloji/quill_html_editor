@@ -5,11 +5,11 @@ import '../../constants/ui_helper/ui_helper.dart';
 
 class CustomWidgetWithLabel extends StatelessWidget {
   final String? text;
-  final List<Widget> children;
+  final Widget child;
   final bool? isVertical;
   final bool? isTitleSmall;
   final bool? isMust;
-  const CustomWidgetWithLabel({super.key, this.text, required this.children, this.isVertical, this.isTitleSmall, this.isMust});
+  const CustomWidgetWithLabel({super.key, this.text, required this.child, this.isVertical, this.isTitleSmall, this.isMust});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class CustomWidgetWithLabel extends StatelessWidget {
                       color: (isMust ?? false) ? UIHelper.primaryColor : null,
                     )
                 : null),
-        ...children
+        child,
       ],
     ).paddingSymmetric(horizontal: UIHelper.lowSize);
   }

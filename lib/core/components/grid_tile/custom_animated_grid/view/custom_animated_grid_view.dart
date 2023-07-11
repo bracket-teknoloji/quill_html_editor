@@ -3,7 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:picker/core/components/grid_tile/custom_animated_grid/model/islemler_menu_item_constants.dart';
+import 'package:picker/core/components/grid_tile/custom_animated_grid/model/islemler_menu_item/model/islemler_menu_item_constants.dart';
 
 import '../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
 import '../../../../../view/main_page/model/grid_item_model.dart';
@@ -15,36 +15,33 @@ import '../../animated_islemler_grid_tile.dart';
 import '../view_model/custom_animated_grid_view_model.dart';
 
 class CustomAnimatedGridView<T> extends StatefulWidget {
-  final List<GridItemModel>? gridItemModelList;
   final CariListesiModel? cariListesiModel;
-  final IslemTipi islemTipi;
+  final IslemTipiEnum islemTipi;
   final T? model;
-  const CustomAnimatedGridView({super.key, this.gridItemModelList, this.cariListesiModel, required this.islemTipi, this.model});
-
+  const CustomAnimatedGridView({super.key, this.cariListesiModel, required this.islemTipi, this.model});
   @override
   State<CustomAnimatedGridView> createState() => _CustomAnimatedGridViewState();
 }
 
 class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
   CustomAnimatedGridViewModel viewModel = CustomAnimatedGridViewModel();
-  bool get islemMi => widget.islemTipi == IslemTipi.cari || widget.islemTipi == IslemTipi.stok;
-  bool get raporMu => widget.islemTipi == IslemTipi.cariRapor || widget.islemTipi == IslemTipi.stokRapor;
-  bool get serbestMi => widget.islemTipi == IslemTipi.cariSerbest || widget.islemTipi == IslemTipi.stokSerbest;
+  bool get islemMi => widget.islemTipi == IslemTipiEnum.cari || widget.islemTipi == IslemTipiEnum.stok;
+  bool get cariMi => widget.islemTipi == IslemTipiEnum.cari;
+  bool get stokMu => widget.islemTipi == IslemTipiEnum.stok;
+  bool get raporMu => widget.islemTipi == IslemTipiEnum.cariRapor || widget.islemTipi == IslemTipiEnum.stokRapor;
+  List<GridItemModel> result = MenuItemConstants().getList();
   @override
   void initState() {
-    viewModel.setGridItemModel(widget.gridItemModelList);
-    MenuItemConstants result = MenuItemConstants();
     // viewModel.setGridItemModel(result.getList().first.altMenuler?.where((element) => element.title == "Raporlar").first.altMenuler?.where((element) => element.yetkiKontrol == true).toList());
     if (islemMi) {
-      IslemlerMenuItemConstants islemlerResult = IslemlerMenuItemConstants(
-          islemtipi: widget.islemTipi,
-          raporlar: [result.getList().first.altMenuler?.where((element) => element.title == "Raporlar").first, result.getList().where((element) => element.title == "Serbest Raporlar").first],
-          model: widget.cariListesiModel ?? widget.model);
+      IslemlerMenuItemConstants islemlerResult = IslemlerMenuItemConstants(islemtipi: widget.islemTipi, raporlar: getRaporList(widget.islemTipi), model: widget.cariListesiModel ?? widget.model);
       viewModel.setGridItemModel(islemlerResult.islemler.cast<GridItemModel>());
     } else if (raporMu) {
-      viewModel.setGridItemModel(result.getList().first.altMenuler?.where((element) => element.title == "Raporlar").first.altMenuler);
-    } else if (serbestMi) {
-      viewModel.setGridItemModel(result.getList().where((element) => element.title == "Serbest Raporlar").first.altMenuler);
+      if (widget.islemTipi == IslemTipiEnum.cariRapor) {
+        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.cari)?.first.altMenuler);
+      } else if (widget.islemTipi == IslemTipiEnum.stokRapor) {
+        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.stok)?.first.altMenuler);
+      }
     }
     super.initState();
   }
@@ -70,7 +67,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                 ),
               );
             }),
-            SizedBox(width: height * 0.3, child: Text(widget.cariListesiModel?.cariAdi ?? widget.model.stokKodu, style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis)))
+            Expanded(child: SizedBox(child: Text(widget.cariListesiModel?.cariAdi ?? widget.model.stokKodu, style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis))))
           ],
         ),
         const Divider(
@@ -79,6 +76,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
         ).paddingSymmetric(vertical: UIHelper.lowSize),
         AnimatedContainer(
           duration: const Duration(milliseconds: 500),
+          padding: UIHelper.lowPadding,
           constraints: BoxConstraints(
             minHeight: context.dynamicHeight(0.2),
           ),
@@ -87,7 +85,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
               return GridView.builder(
                 padding: UIHelper.zeroPadding,
                 shrinkWrap: true,
-                physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                // physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: MediaQuery.of(context).size.width ~/ 85 > 6 ? 6 : MediaQuery.of(context).size.width ~/ 85,
                   childAspectRatio: context.isLandscape ? 1.2 : 0.9,
@@ -118,10 +116,10 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                                       viewModel.setGridItemModel(item?.altMenuler);
                                     } else {
                                       Get.back();
-                                      if (item?.route != null){
-                                       Get.toNamed(item?.route ?? "", arguments: widget.cariListesiModel ?? widget.model);
-                                      }else {
-                                      item?.onTap?.call();
+                                      if (item?.route != null && item?.menuTipi != "SR") {
+                                        Get.toNamed(item?.route ?? "", arguments: widget.cariListesiModel ?? widget.model);
+                                      } else {
+                                        item?.onTap?.call();
                                       }
                                       // call with arguments
                                     }
@@ -133,5 +131,9 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
         ),
       ],
     ).paddingAll(UIHelper.lowSize);
+  }
+
+  List<GridItemModel>? getRaporList(IslemTipiEnum menu) {
+    return result.where((element) => element.title == menu.value).first.altMenuler?.where((element) => element.title == "Raporlar").toList();
   }
 }

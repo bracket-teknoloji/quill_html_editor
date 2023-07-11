@@ -16,4 +16,5 @@ class GridThemeManager {
   static const Color genel = Color.fromRGBO(255, 99, 71, 1);
   static const Color temsilci = Color.fromRGBO(235, 150, 5, 1);
   static const Color eBelge = Color.fromRGBO(132, 182, 190, 1);
+  static const Color serbestRaporlar = Color.fromRGBO(114, 148, 115, 1);
 }

@@ -27,13 +27,14 @@ class NetFectDizaynListAdapter extends TypeAdapter<NetFectDizaynList> {
       ..aktif = fields[7] as String?
       ..dosyaAdi = fields[8] as String?
       ..parametreler = fields[9] as String?
-      ..varsayilanMi = fields[10] as bool?;
+      ..varsayilanMi = fields[10] as bool?
+      ..detayKod = fields[11] as String?;
   }
 
   @override
   void write(BinaryWriter writer, NetFectDizaynList obj) {
     writer
-      ..writeByte(11)
+      ..writeByte(12)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -55,7 +56,9 @@ class NetFectDizaynListAdapter extends TypeAdapter<NetFectDizaynList> {
       ..writeByte(9)
       ..write(obj.parametreler)
       ..writeByte(10)
-      ..write(obj.varsayilanMi);
+      ..write(obj.varsayilanMi)
+      ..writeByte(11)
+      ..write(obj.detayKod);
   }
 
   @override
@@ -1059,7 +1062,8 @@ NetFectDizaynList _$NetFectDizaynListFromJson(Map<String, dynamic> json) =>
       ..aktif = json['AKTIF'] as String?
       ..dosyaAdi = json['DOSYA_ADI'] as String?
       ..parametreler = json['PARAMETRELER'] as String?
-      ..varsayilanMi = json['VARSAYILAN_MI'] as bool?;
+      ..varsayilanMi = json['VARSAYILAN_MI'] as bool?
+      ..detayKod = json['DETAY_KOD'] as String?;
 
 Map<String, dynamic> _$NetFectDizaynListToJson(NetFectDizaynList instance) {
   final val = <String, dynamic>{};
@@ -1081,6 +1085,7 @@ Map<String, dynamic> _$NetFectDizaynListToJson(NetFectDizaynList instance) {
   writeNotNull('DOSYA_ADI', instance.dosyaAdi);
   writeNotNull('PARAMETRELER', instance.parametreler);
   writeNotNull('VARSAYILAN_MI', instance.varsayilanMi);
+  writeNotNull('DETAY_KOD', instance.detayKod);
   return val;
 }
 

@@ -6,6 +6,12 @@ extension DateTimeExtension on DateTime? {
   }
 }
 
+extension DateTimeExtensionWithHypen on DateTime? {
+  String toDateTimeHypenString() {
+    return DateFormat('dd_MM_yyyy_HH_mm_ss').format(this ?? DateTime.now());
+  }
+}
+
 extension DateTimeExtensionWithTime2 on DateTime? {
   String? toDateStringIfNull() {
     if (this == null) return null;

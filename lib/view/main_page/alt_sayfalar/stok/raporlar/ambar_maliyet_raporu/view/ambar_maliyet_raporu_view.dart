@@ -79,9 +79,8 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
               CustomWidgetWithLabel(
                 text: "Sıfır Tutar Hariç",
                 isVertical: true,
-                children: [
+                child: 
                   Observer(builder: (_) => Switch.adaptive(value: viewModel.sifirHaricValue, onChanged: (value) => viewModel.setSifirHaric(value))),
-                ],
               ),
               Row(
                 children: [

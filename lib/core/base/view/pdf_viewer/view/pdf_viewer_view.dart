@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:open_file_plus/open_file_plus.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:picker/core/constants/extensions/date_time_extensions.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
@@ -75,12 +76,12 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
               await fileChecker();
             },
             icon: const Icon(Icons.share_outlined)),
-        IconButton(
-            onPressed: () async {
-              //😳 await bottomSheetDialogManager.showBottomSheetDialog(context,
-              //😳     title: "Yazıcı", children: CacheManager.getAnaVeri()?.paramModel?.yaziciList?.map((e) => BottomSheetModel(title: e.yaziciAdi ?? "", onTap: () {})).toList());
-            },
-            icon: const Icon(Icons.more_vert_outlined)),
+        // IconButton(
+        //     onPressed: () async {
+        //       //😳 await bottomSheetDialogManager.showBottomSheetDialog(context,
+        //       //😳     title: "Yazıcı", children: CacheManager.getAnaVeri()?.paramModel?.yaziciList?.map((e) => BottomSheetModel(title: e.yaziciAdi ?? "", onTap: () {})).toList());
+        //     },
+        //     icon: const Icon(Icons.more_vert_outlined)),
       ],
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(60),
@@ -113,13 +114,13 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                     OpenFile.open((await getFile)!.path);
                   }
                 }),
-            AppBarButton(
-                icon: Icons.mail_outline_outlined,
-                child: const Text("Mail Gönder"),
-                onPressed: () async {
-                  //! EKLENECEK
-                  await fileChecker();
-                }),
+            // AppBarButton(
+            //     icon: Icons.mail_outline_outlined,
+            //     child: const Text("Mail Gönder"),
+            //     onPressed: () async {
+            //       //! EKLENECEK
+            //       await fileChecker();
+            //     }),
           ],
         ),
       ),
@@ -135,7 +136,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                   controller: pdfViewerController,
                   interactionMode: PdfInteractionMode.selection,
                   onTextSelectionChanged: (details) {
-                    if (details.selectedText != null && (Platform.isAndroid || Platform.isIOS)) {
+                    if ((Platform.isAndroid || Platform.isIOS)) {
                       if (details.selectedText == null && overlayEntry != null) {
                         overlayEntry!.remove();
                         overlayEntry = null;
@@ -198,7 +199,10 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
 
   Future<File?> get getFile async {
     final appStorage = await getApplicationDocumentsDirectory();
-    final file = File('${appStorage.path}/${widget.pdfData?.raporOzelKod}${widget.pdfData?.dicParams?.cariKodu}.${pdfFile?.uzanti ?? "pdf"}');
+    //create a folder in documents/picker as name picker
+    await Directory('${appStorage.path}/picker/pdf').create(recursive: true);
+    final file = File(
+        '${appStorage.path}/picker/pdf/${widget.pdfData?.raporOzelKod}${widget.pdfData?.dicParams?.cariKodu ?? widget.pdfData?.dicParams?.stokKodu ?? ""}${DateTime.now().toDateTimeHypenString()}.${pdfFile?.uzanti ?? "pdf"}');
     final fileWriter = file.openSync(mode: FileMode.write);
     fileWriter.writeFromSync(base64Decode(pdfFile?.byteData ?? ""));
     await fileWriter.close();
@@ -214,7 +218,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
       builder: (context) => Positioned(
         top: details.globalSelectedRegion!.center.dy - 55,
         left: details.globalSelectedRegion!.bottomLeft.dx,
-        child: OutlinedButton(
+        child: ElevatedButton(
           onPressed: () {
             Clipboard.setData(ClipboardData(text: details.selectedText!));
             dialogManager.showSnackBar("Kopyalandı");

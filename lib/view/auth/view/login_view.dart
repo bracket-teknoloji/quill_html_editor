@@ -108,7 +108,7 @@ class _LoginViewState extends BaseState<LoginView> {
                             ],
                           ),
                         ),
-                        CustomWidgetWithLabel(text: "Firma", children: [
+                        CustomWidgetWithLabel(text: "Firma", child:
                           TextFormField(
                             readOnly: true,
                             onTap: () async {
@@ -125,24 +125,23 @@ class _LoginViewState extends BaseState<LoginView> {
                             controller: companyController,
                             textInputAction: TextInputAction.next,
                           )
-                        ]),
+                        ),
                         Padding(
                           padding: UIHelper.midPaddingOnlyTop,
                           child: CustomWidgetWithLabel(
                             text: "Netfect Kullanıcı Adı",
-                            children: [
+                            child: 
                               TextFormField(
                                 controller: emailController,
                                 textInputAction: TextInputAction.next,
                               ),
-                            ],
                           ),
                         ),
                         Padding(
                           padding: UIHelper.midPaddingVertical,
                           child: CustomWidgetWithLabel(
                             text: "Şifre",
-                            children: [
+                            child: 
                               TextField(
                                 controller: passwordController,
                                 textInputAction: TextInputAction.done,
@@ -158,7 +157,7 @@ class _LoginViewState extends BaseState<LoginView> {
                                   ),
                                 ),
                               )
-                            ],
+                            
                           ),
                         ),
                         Padding(
@@ -209,16 +208,16 @@ class _LoginViewState extends BaseState<LoginView> {
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
       AccountResponseModel? accountCache = CacheManager.getAccounts(companyController.text);
       try {
+        CacheManager.setSirketAdi(companyController.text);
         CacheManager.setHesapBilgileri(a);
 
         log(jsonEncode(a.toJson()), name: "sea");
-        final response = await NetworkManager.getToken(
+        final response = await networkManager.getToken(
           path: ApiUrls.token,
           queryParameters: {"deviceInfos": jsonEncode(a.toJson())},
           data: {"grant_type": "password", "username": emailController.text, "password": passwordController.text},
         );
         dialogManager.hideAlertDialog;
-
         Hive.box("preferences").put(companyController.text, [
           textFieldData["user"],
           emailController.text,

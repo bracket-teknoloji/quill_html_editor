@@ -28,6 +28,8 @@ abstract class _BaseCariGenelEditViewModelBase with Store {
 
   @action
   void changeModel(CariListesiModel? value) {
+    value?.subeKodu ??= -1;
+    value?.kilit ??= "H";
     CariListesiModel.setInstance(value!);
     model = value;
   }

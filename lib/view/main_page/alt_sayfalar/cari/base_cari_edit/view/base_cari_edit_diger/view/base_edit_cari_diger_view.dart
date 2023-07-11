@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 
@@ -91,7 +90,6 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
 
   @override
   void dispose() {
-    super.dispose();
     grupKoduController.dispose();
     kod1Controller.dispose();
     kod2Controller.dispose();
@@ -123,6 +121,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
     n6Controller.dispose();
     n7Controller.dispose();
     n8Controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -308,25 +307,23 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                   }
                 },
               ),
-              Observer(builder: (_) {
-                return CustomTextField(
-                  enabled: enabled,
-                  readOnly: true,
-                  suffix: iconSwitcher(bagliCariController),
-                  labelText: "Bağlı Cari",
-                  valueText: model.bagliCari ?? "",
-                  controller: bagliCariController,
-                  onTap: () async {
-                    var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                    if (result != null) {
-                      bagliCariController.text = result.cariAdi ?? "";
-                      model.bagliCari = result.cariKodu ?? 0;
-                      viewModel.changeModel(model);
-                      setState(() {});
-                    }
-                  },
-                );
-              }),
+              CustomTextField(
+                enabled: enabled,
+                readOnly: true,
+                suffix: iconSwitcher(bagliCariController),
+                labelText: "Bağlı Cari",
+                valueText: model.bagliCari ?? "",
+                controller: bagliCariController,
+                onTap: () async {
+                  var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                  if (result != null) {
+                    bagliCariController.text = result.cariAdi ?? "";
+                    model.bagliCari = result.cariKodu ?? 0;
+                    viewModel.changeModel(model);
+                    setState(() {});
+                  }
+                },
+              ),
               CustomTextField(
                 enabled: enabled,
                 readOnly: true,
@@ -384,183 +381,185 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                   }),
               CustomWidgetWithLabel(
                 text: "Kullanıcı Tanımlı Sahalar",
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomTextField(
-                          enabled: enabled,
-                          labelText: "A 1",
-                          controller: a1Controller,
-                          onChanged: (p0) {
-                            model.kull1s = p0;
-                            viewModel.changeModel(model);
-                          }),
-                      CustomTextField(
-                          enabled: enabled,
-                          labelText: "A 2",
-                          controller: a2Controller,
-                          onChanged: (p0) {
-                            model.kull2s = p0;
-                            viewModel.changeModel(model);
-                          }),
-                    ],
-                  ).withExpanded,
-                  Row(
-                    children: [
-                      CustomTextField(
-                          enabled: enabled,
-                          labelText: "A 3",
-                          controller: a3Controller,
-                          onChanged: (p0) {
-                            model.kull3s = p0;
-                            viewModel.changeModel(model);
-                          }),
-                      CustomTextField(
-                          enabled: enabled,
-                          labelText: "A 4",
-                          controller: a4Controller,
-                          onChanged: (p0) {
-                            model.kull4s = p0;
-                            viewModel.changeModel(model);
-                          }),
-                    ],
-                  ).withExpanded,
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomTextField(
-                          enabled: enabled,
-                          labelText: "A 5",
-                          controller: a5Controller,
-                          onChanged: (p0) {
-                            model.kull5s = p0;
-                            viewModel.changeModel(model);
-                          }),
-                      CustomTextField(
-                          enabled: enabled,
-                          labelText: "A 6",
-                          controller: a6Controller,
-                          onChanged: (p0) {
-                            model.kull6s = p0;
-                            viewModel.changeModel(model);
-                          }),
-                    ],
-                  ).withExpanded,
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomTextField(
-                          enabled: enabled,
-                          labelText: "A 7",
-                          controller: a7Controller,
-                          onChanged: (p0) {
-                            model.kull7s = p0;
-                            viewModel.changeModel(model);
-                          }),
-                      CustomTextField(
-                          enabled: enabled,
-                          labelText: "A 8",
-                          controller: a8Controller,
-                          onChanged: (p0) {
-                            model.kull8s = p0;
-                            viewModel.changeModel(model);
-                          }),
-                    ],
-                  ).withExpanded,
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomTextField(
-                          enabled: enabled,
-                          labelText: "N 1",
-                          keyboardType: TextInputType.number,
-                          controller: n1Controller,
-                          onChanged: (p0) {
-                            model.kull1n = double.tryParse(p0);
-                            viewModel.changeModel(model);
-                          }),
-                      CustomTextField(
-                          enabled: enabled,
-                          labelText: "N 2",
-                          keyboardType: TextInputType.number,
-                          controller: n2Controller,
-                          onChanged: (p0) {
-                            model.kull2n = double.tryParse(p0);
-                            viewModel.changeModel(model);
-                          }),
-                    ],
-                  ).withExpanded,
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomTextField(
-                          enabled: enabled,
-                          labelText: "N 3",
-                          keyboardType: TextInputType.number,
-                          controller: n3Controller,
-                          onChanged: (p0) {
-                            model.kull3n = double.tryParse(p0);
-                            viewModel.changeModel(model);
-                          }),
-                      CustomTextField(
-                          enabled: enabled,
-                          labelText: "N 4",
-                          keyboardType: TextInputType.number,
-                          controller: n4Controller,
-                          onChanged: (p0) {
-                            model.kull4n = double.tryParse(p0);
-                            viewModel.changeModel(model);
-                          }),
-                    ],
-                  ).withExpanded,
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomTextField(
-                          enabled: enabled,
-                          labelText: "N 5",
-                          keyboardType: TextInputType.number,
-                          controller: n5Controller,
-                          onChanged: (p0) {
-                            model.kull5n = double.tryParse(p0);
-                            viewModel.changeModel(model);
-                          }),
-                      CustomTextField(
-                          enabled: enabled,
-                          labelText: "N 6",
-                          keyboardType: TextInputType.number,
-                          controller: n6Controller,
-                          onChanged: (p0) {
-                            model.kull6n = double.tryParse(p0);
-                            viewModel.changeModel(model);
-                          }),
-                    ],
-                  ).withExpanded,
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomTextField(
-                          enabled: enabled,
-                          labelText: "N 7",
-                          keyboardType: TextInputType.number,
-                          controller: n7Controller,
-                          onChanged: (p0) {
-                            model.kull7n = double.tryParse(p0);
-                            viewModel.changeModel(model);
-                          }),
-                      CustomTextField(
-                          enabled: enabled,
-                          labelText: "N 8",
-                          keyboardType: TextInputType.number,
-                          controller: n8Controller,
-                          onChanged: (p0) {
-                            model.kull8n = double.tryParse(p0);
-                            viewModel.changeModel(model);
-                          }),
-                    ],
-                  ).withExpanded,
-                ],
+                child: Wrap(
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomTextField(
+                            enabled: enabled,
+                            labelText: "A 1",
+                            controller: a1Controller,
+                            onChanged: (p0) {
+                              model.kull1s = p0;
+                              viewModel.changeModel(model);
+                            }),
+                        CustomTextField(
+                            enabled: enabled,
+                            labelText: "A 2",
+                            controller: a2Controller,
+                            onChanged: (p0) {
+                              model.kull2s = p0;
+                              viewModel.changeModel(model);
+                            }),
+                      ],
+                    ).withExpanded,
+                    Row(
+                      children: [
+                        CustomTextField(
+                            enabled: enabled,
+                            labelText: "A 3",
+                            controller: a3Controller,
+                            onChanged: (p0) {
+                              model.kull3s = p0;
+                              viewModel.changeModel(model);
+                            }),
+                        CustomTextField(
+                            enabled: enabled,
+                            labelText: "A 4",
+                            controller: a4Controller,
+                            onChanged: (p0) {
+                              model.kull4s = p0;
+                              viewModel.changeModel(model);
+                            }),
+                      ],
+                    ).withExpanded,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomTextField(
+                            enabled: enabled,
+                            labelText: "A 5",
+                            controller: a5Controller,
+                            onChanged: (p0) {
+                              model.kull5s = p0;
+                              viewModel.changeModel(model);
+                            }),
+                        CustomTextField(
+                            enabled: enabled,
+                            labelText: "A 6",
+                            controller: a6Controller,
+                            onChanged: (p0) {
+                              model.kull6s = p0;
+                              viewModel.changeModel(model);
+                            }),
+                      ],
+                    ).withExpanded,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomTextField(
+                            enabled: enabled,
+                            labelText: "A 7",
+                            controller: a7Controller,
+                            onChanged: (p0) {
+                              model.kull7s = p0;
+                              viewModel.changeModel(model);
+                            }),
+                        CustomTextField(
+                            enabled: enabled,
+                            labelText: "A 8",
+                            controller: a8Controller,
+                            onChanged: (p0) {
+                              model.kull8s = p0;
+                              viewModel.changeModel(model);
+                            }),
+                      ],
+                    ).withExpanded,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomTextField(
+                            enabled: enabled,
+                            labelText: "N 1",
+                            keyboardType: TextInputType.number,
+                            controller: n1Controller,
+                            onChanged: (p0) {
+                              model.kull1n = double.tryParse(p0);
+                              viewModel.changeModel(model);
+                            }),
+                        CustomTextField(
+                            enabled: enabled,
+                            labelText: "N 2",
+                            keyboardType: TextInputType.number,
+                            controller: n2Controller,
+                            onChanged: (p0) {
+                              model.kull2n = double.tryParse(p0);
+                              viewModel.changeModel(model);
+                            }),
+                      ],
+                    ).withExpanded,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomTextField(
+                            enabled: enabled,
+                            labelText: "N 3",
+                            keyboardType: TextInputType.number,
+                            controller: n3Controller,
+                            onChanged: (p0) {
+                              model.kull3n = double.tryParse(p0);
+                              viewModel.changeModel(model);
+                            }),
+                        CustomTextField(
+                            enabled: enabled,
+                            labelText: "N 4",
+                            keyboardType: TextInputType.number,
+                            controller: n4Controller,
+                            onChanged: (p0) {
+                              model.kull4n = double.tryParse(p0);
+                              viewModel.changeModel(model);
+                            }),
+                      ],
+                    ).withExpanded,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomTextField(
+                            enabled: enabled,
+                            labelText: "N 5",
+                            keyboardType: TextInputType.number,
+                            controller: n5Controller,
+                            onChanged: (p0) {
+                              model.kull5n = double.tryParse(p0);
+                              viewModel.changeModel(model);
+                            }),
+                        CustomTextField(
+                            enabled: enabled,
+                            labelText: "N 6",
+                            keyboardType: TextInputType.number,
+                            controller: n6Controller,
+                            onChanged: (p0) {
+                              model.kull6n = double.tryParse(p0);
+                              viewModel.changeModel(model);
+                            }),
+                      ],
+                    ).withExpanded,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomTextField(
+                            enabled: enabled,
+                            labelText: "N 7",
+                            keyboardType: TextInputType.number,
+                            controller: n7Controller,
+                            onChanged: (p0) {
+                              model.kull7n = double.tryParse(p0);
+                              viewModel.changeModel(model);
+                            }),
+                        CustomTextField(
+                            enabled: enabled,
+                            labelText: "N 8",
+                            keyboardType: TextInputType.number,
+                            controller: n8Controller,
+                            onChanged: (p0) {
+                              model.kull8n = double.tryParse(p0);
+                              viewModel.changeModel(model);
+                            }),
+                      ],
+                    ).withExpanded,
+                  ],
+                ),
               )
             ],
           )),

@@ -14,11 +14,11 @@ class SerbestRaporResponseModel with NetworkManagerMixin {
   String? rehberTipi;
   Map<String, dynamic>? paramMap;
 
-  bool get plasiyerKoduMu => rehberTipi == "PLASIYER_KODU";
+  bool get plasiyerKoduMu => ["KOD", "KODU","PLASIYER", "PLASIYERKOD","PLASIYER_KOD","PLASIYERKODU","PLASIYER_KODU"].contains(rehberTipi);
 
-  bool get cariKoduMu => rehberTipi == "CARI";
+  bool get cariKoduMu => ["KOD", "KODU","CARI", "CARIKOD","CARI_KOD","CARIKODU","CARI_KODU"].contains(rehberTipi);
 
-  bool get stokKoduMu => rehberTipi == "STOK";
+  bool get stokKoduMu => ["KOD", "KODU","STOK", "STOKKOD","STOK_KOD","STOKKODU","STOK_KODU"].contains(rehberTipi);
 
   bool get dovizTipiMi => rehberTipi == "DOVIZ_TIPI";
 

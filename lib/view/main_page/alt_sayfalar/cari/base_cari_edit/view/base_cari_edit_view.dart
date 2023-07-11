@@ -32,11 +32,11 @@ class BaseCariEditingView extends StatefulWidget {
 class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with TickerProviderStateMixin {
   TabController? tabController;
   CariListesiModel get cariListesiModel => CariListesiModel.instance;
-  List<Tab>? get addTabs => widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null
+  List<Tab>? get addTabs => widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null && widget.model?.baseEditEnum != BaseEditEnum.kopyala
       ? [const Tab(child: Text("Özet")), const Tab(child: Text("Banka")), const Tab(child: Text("İletişim"))]
       : [];
   List<Widget>? get addBody =>
-      widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null ? [const BaseEditCariOzetView(), const BaseCariEditBankaView(), const BaseCariEditIletisimView()] : [];
+      widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null && widget.model?.baseEditEnum != BaseEditEnum.kopyala ? [const BaseEditCariOzetView(), const BaseCariEditBankaView(), const BaseCariEditIletisimView()] : [];
   Widget? get addSaveButton => widget.model?.baseEditEnum != BaseEditEnum.goruntule
       ? IconButton(
           onPressed: () async {

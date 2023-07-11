@@ -66,7 +66,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          CustomWidgetWithLabel(text: "Alış", children: [
+          CustomWidgetWithLabel(text: "Alış", child: Wrap(children: [
             CustomTextField(
                 enabled: isEnabled,
                 labelText: "KDV Oranı",
@@ -127,10 +127,10 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                         enabled: isEnabled, labelText: "Alış Fiyatı", controller: alisDovizFiyatiController, onChanged: (p0) => stokDetayModel.stokList?.first.dovAlisFiat = double.tryParse(p0))),
               ],
             ),
-          ]),
+          ])),
           CustomWidgetWithLabel(
             text: "Satış",
-            children: [
+            child: Wrap(children: [
               CustomTextField(
                   enabled: isEnabled,
                   labelText: "KDV Oranı",
@@ -207,7 +207,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           enabled: isEnabled, labelText: "Alış Fiyatı", controller: satisDovizFiyatiController, onChanged: (p0) => stokDetayModel.stokList?.first.dovSatisFiat = double.tryParse(p0))),
                 ],
               ),
-            ],
+            ],),
           )
         ],
       ).paddingAll(UIHelper.lowSize),

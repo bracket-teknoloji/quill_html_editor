@@ -8,8 +8,8 @@ import '../../../../../../../../core/base/model/base_bottom_sheet_response_model
 import '../../../../../../../../core/base/model/base_edit_model.dart';
 import '../../../../../../../../core/base/state/base_state.dart';
 import '../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../../../core/components/helper_widgets/custom_label_widget.dart';
+import '../../../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../../../core/constants/extensions/number_extensions.dart';
 import '../../../../../../../../core/constants/static_variables/static_variables.dart';
@@ -45,7 +45,9 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
   @override
   void initState() {
     StaticVariables.instance.cariKartiGenelFormKey.currentState?.activate();
-    getCariDetay(model?.cariKodu ?? "");
+    if (widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != BaseEditEnum.kopyala) {
+      getCariDetay(model?.cariKodu ?? "");
+    }
     viewModel.changeModel(model);
     viewModel.changeIsSahisFirmasi(model?.sahisFirmasiMi ?? false);
     viewModel.changeIsDovizli(model?.dovizli ?? false);
@@ -105,7 +107,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
               child: CustomWidgetWithLabel(
                 isVertical: true,
                 text: "Şahıs Firması",
-                children: [
+                child: 
                   Observer(
                       builder: (_) => Switch.adaptive(
                           value: viewModel.isSahisFirmasi,
@@ -116,15 +118,15 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                                   viewModel.changeModel(model);
                                 }
                               : null)),
-                ],
+                
               ),
             ),
             Observer(builder: (_) {
               return Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Expanded(
                     child: CustomTextField(
-                  enabled: enabled && widget.model?.baseEditEnum == BaseEditEnum.ekle,
-                  readOnly: widget.model?.baseEditEnum != BaseEditEnum.ekle,
+                  enabled: enabled && (widget.model?.baseEditEnum == BaseEditEnum.ekle || widget.model?.baseEditEnum == BaseEditEnum.kopyala),
+                  readOnly: widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != BaseEditEnum.kopyala,
                   isMust: true,
                   labelText: "Kodu",
                   controller: kodController,
@@ -348,7 +350,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                                     ?..plasiyerAciklama = null
                                     ..plasiyerKodu = null))))),
               Expanded(
-                  child: CustomWidgetWithLabel(isVertical: true, text: "Dövizli", children: [
+                  child: CustomWidgetWithLabel(isVertical: true, text: "Dövizli", child: 
                 Observer(
                     builder: (_) => Switch.adaptive(
                         value: viewModel.isDovizli,
@@ -359,7 +361,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                                 viewModel.changeModel(model);
                               }
                             : null))
-              ]))
+              ))
             ]),
             Observer(
                 builder: (_) => Visibility(

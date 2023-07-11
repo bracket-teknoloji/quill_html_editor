@@ -9,6 +9,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:kartal/kartal.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../../../core/base/model/base_network_mixin.dart';
 
@@ -224,12 +225,15 @@ class AccountModel with NetworkManagerMixin {
     }
     //! IOS
     else if (Platform.isIOS) {
-      final iosInfo = await deviceInfo.iosInfo;
+      await Permission.appTrackingTransparency.request();
+      if(await Permission.appTrackingTransparency.isGranted) {
+        final iosInfo = await deviceInfo.iosInfo;
       cihazMarkasi = iosInfo.name;
       cihazModeli = iosInfo.model;
       cihazSistemVersiyonu = "20";
       ozelCihazKimligi = iosInfo.identifierForVendor;
       cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
+      }
     }
     //!DESKTOP
     else if (Platform.isWindows) {

@@ -30,7 +30,7 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
     scrollController = ScrollController();
     Future.delayed(Duration.zero, () async {
       await scrollController?.animateTo(30, duration: DurationHelper.durationLow, curve: Curves.easeIn);
-      await scrollController?.animateTo(scrollController?.position.minScrollExtent ?? 0, duration: DurationHelper.durationLow, curve: Curves.easeInOut);
+      await scrollController?.animateTo((scrollController?.positions.isNotEmpty ??false)? (scrollController?.position.minScrollExtent??0) : 0, duration: DurationHelper.durationLow, curve: Curves.easeInOut);
     });
     super.initState();
   }
