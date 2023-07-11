@@ -27,6 +27,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
 
   @override
   void dispose() {
+    controller = TextEditingController();
     controller.dispose();
     super.dispose();
   }

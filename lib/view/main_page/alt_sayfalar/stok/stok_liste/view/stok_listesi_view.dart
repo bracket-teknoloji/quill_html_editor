@@ -40,7 +40,7 @@ class StokListesiView extends StatefulWidget {
 class _StokListesiViewState extends BaseState<StokListesiView> {
   StokListesiViewModel viewModel = StokListesiViewModel();
   List<StokListesiModel>? get stokListesi => viewModel.stokListesi ?? [];
-  final ScrollController _scrollController = ScrollController();
+  ScrollController scrollController = ScrollController();
   TextEditingController grupKoduController = TextEditingController();
   TextEditingController kod1Controller = TextEditingController();
   TextEditingController kod2Controller = TextEditingController();
@@ -49,18 +49,20 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   TextEditingController kod5Controller = TextEditingController();
   @override
   void initState() {
-    getData();
-    _scrollController.addListener(() async {
-      if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent && viewModel.dahaVarMi) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getData();
+    });
+    scrollController.addListener(() async {
+      if (scrollController.position.pixels == scrollController.position.maxScrollExtent && viewModel.dahaVarMi) {
         if (viewModel.dahaVarMi) {
           Future.delayed(const Duration(milliseconds: 500), () {
             getData();
           });
         }
       }
-      if (_scrollController.position.userScrollDirection == ScrollDirection.forward) {
+      if (scrollController.position.userScrollDirection == ScrollDirection.forward) {
         viewModel.changeIsScrolledDown(true);
-      } else if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
+      } else if (scrollController.position.userScrollDirection == ScrollDirection.reverse) {
         viewModel.changeIsScrolledDown(false);
       }
     });
@@ -71,7 +73,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   void dispose() {
     bottomSheetDialogManager.clearSelectedData();
     viewModel.setBottomSheetModel(StokBottomSheetModel());
-    _scrollController.dispose();
+    scrollController.dispose();
     super.dispose();
     grupKoduController.dispose();
     kod1Controller.dispose();
@@ -104,21 +106,20 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   AppBar appBar() {
     return AppBar(
       primary: true,
-      // controller: _scrollController,
-      leading: Observer(
-          builder: (_) => IconButton(
-              onPressed: () {
-                if (viewModel.searchBar) {
-                  viewModel.setSearchBar();
-                  viewModel.setSearchValue("");
-                  viewModel.setStokListesi(null);
-                  viewModel.resetSayfa();
-                  getData();
-                } else {
-                  Get.back();
-                }
-              },
-              icon: const Icon(Icons.arrow_back_outlined))),
+      // controller: scrollController,
+      leading: IconButton(
+          onPressed: () {
+            if (viewModel.searchBar) {
+              viewModel.setSearchBar();
+              viewModel.setSearchValue("");
+              viewModel.setStokListesi(null);
+              viewModel.resetSayfa();
+              getData();
+            } else {
+              Get.back();
+            }
+          },
+          icon: const Icon(Icons.arrow_back_outlined)),
       title: Observer(
           builder: (_) => viewModel.searchBar
               ? CustomAppBarTextField(
@@ -132,24 +133,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                 )
               : Text("Stok Listesi ${viewModel.stokListesi?.length ?? ""}")),
       actions: [
-        Observer(builder: (_) {
-          if (!viewModel.searchBar) {
-            return IconButton(
-              onPressed: () {
-                viewModel.setSearchBar();
-                if (!viewModel.searchBar) {
-                  viewModel.setSearchValue("");
-                  viewModel.setStokListesi(null);
-                  viewModel.resetSayfa();
-                  getData();
-                }
-              },
-              icon: const Icon(Icons.search_outlined),
-            );
-          } else {
-            return const SizedBox();
-          }
-        }),
+        hideSearchBar(),
         IconButton(
             onPressed: () async {
               await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context, title: "Seçenekler", children: [
@@ -474,6 +458,25 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     );
   }
 
+  Widget hideSearchBar() {
+    if (!viewModel.searchBar) {
+      return IconButton(
+        onPressed: () {
+          viewModel.setSearchBar();
+          if (!viewModel.searchBar) {
+            viewModel.setSearchValue("");
+            viewModel.setStokListesi(null);
+            viewModel.resetSayfa();
+            getData();
+          }
+        },
+        icon: const Icon(Icons.search_outlined),
+      );
+    } else {
+      return const SizedBox();
+    }
+  }
+
   Observer? fab() {
     return Observer(builder: (_) {
       return CustomFloatingActionButton(
@@ -493,7 +496,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
               : const Center(child: CircularProgressIndicator.adaptive())
           : ListView.builder(
               primary: false,
-              controller: _scrollController,
+              controller: scrollController,
               padding: UIHelper.lowPadding,
               itemCount: (stokListesi?.length ?? 0) + 1,
               itemBuilder: (context, index) {
@@ -706,7 +709,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     }
     setState(() {});
 
-    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+    if (scrollController.positions.isNotEmpty && (scrollController.position.pixels == scrollController.position.maxScrollExtent)) {
       viewModel.changeIsScrolledDown(true);
     }
   }

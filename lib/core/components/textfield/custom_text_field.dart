@@ -49,7 +49,6 @@ class CustomTextField extends StatefulWidget {
 
 class _CustomTextFieldState extends State<CustomTextField> {
   TextEditingController get controller => widget.controller ?? TextEditingController(text: widget.controllerText);
-  FocusNode get focusNode => widget.focusNode ?? FocusNode();
   @override
   void initState() {
     super.initState();
@@ -58,7 +57,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   void dispose() {
     controller.dispose();
-    focusNode.dispose();
+    if (widget.focusNode != null) widget.focusNode!.dispose();
     super.dispose();
   }
 
@@ -83,7 +82,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         child: TextFormField(
           textInputAction: TextInputAction.next,
           keyboardType: widget.keyboardType,
-          focusNode: focusNode,
+          focusNode: widget.focusNode,
           onTap: widget.onTap,
           onChanged: widget.onChanged,
           onFieldSubmitted: widget.onSubmitted,

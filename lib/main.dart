@@ -144,7 +144,6 @@ class MyApp extends StatelessWidget {
 Future<void> firebaseInitialized() async {
   if (!Platform.isWindows) {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-    
     FirebaseCrashlytics.instance.setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");
     FlutterError.onError = (errorDetails) => FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
     PlatformDispatcher.instance.onError = (error, stack) {

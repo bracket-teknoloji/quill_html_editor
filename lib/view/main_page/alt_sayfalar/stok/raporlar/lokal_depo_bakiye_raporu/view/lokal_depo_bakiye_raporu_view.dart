@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
-import '../../../../../../../core/constants/extensions/list_extensions.dart';
-import '../../../stok_liste/model/stok_listesi_model.dart';
 
 import '../../../../../../../core/base/model/base_grup_kodu_model.dart';
 import '../../../../../../../core/base/state/base_state.dart';
 import '../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart';
 import '../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../../core/components/helper_widgets/custom_label_widget.dart';
+import '../../../../../../../core/components/textfield/custom_text_field.dart';
+import '../../../../../../../core/constants/extensions/list_extensions.dart';
 import '../../../../../../../core/constants/ui_helper/ui_helper.dart';
+import '../../../stok_liste/model/stok_listesi_model.dart';
 import '../view_model/lokal_depo_bakiye_raporu_view_model.dart';
 
 class LokalDepoBakiyeRaporuView extends StatefulWidget {
@@ -82,8 +82,7 @@ class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRaporuVie
               CustomWidgetWithLabel(
                 text: "Sıfır Tutar Hariç",
                 isVertical: true,
-                child: 
-                  Observer(builder: (_) => Switch.adaptive(value: viewModel.sifirHaricValue, onChanged: (value) => viewModel.setSifirHaric(value))),
+                child: Observer(builder: (_) => Switch.adaptive(value: viewModel.sifirHaricValue, onChanged: (value) => viewModel.setSifirHaric(value))),
               ),
               Row(
                 children: [
@@ -164,21 +163,19 @@ class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRaporuVie
                     child: CustomTextField(
                         labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(5, kod5Controller)))
               ]),
-              Observer(builder: (_) {
-                return ElevatedButton(
-                    onPressed: () {
-                      viewModel.setFuture();
-                      Get.back();
-                    },
-                    child: const Text("Uygula"));
-              })
+              ElevatedButton(
+                  onPressed: () {
+                    viewModel.setFuture();
+                    Get.back();
+                  },
+                  child: const Text("Uygula"))
             ],
           ),
         ));
     return Future.value(viewModel.futureController.value);
   }
 
-  void infoDialog()=> dialogManager.showInfoDialog("Kodları noktalı Virgül (' ; ') ile ayırarak, aralarında boşluk bırakmadan yazınız.\nÖrnek: 01;02;03");
+  void infoDialog() => dialogManager.showInfoDialog("Kodları noktalı Virgül (' ; ') ile ayırarak, aralarında boşluk bırakmadan yazınız.\nÖrnek: 01;02;03");
 
   Future<String?> getGrupKodu(int grupNo, TextEditingController? controller) async {
     if (grupKodList.isEmptyOrNull) {
