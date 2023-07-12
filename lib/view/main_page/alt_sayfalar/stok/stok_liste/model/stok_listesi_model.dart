@@ -8,7 +8,7 @@ part 'stok_listesi_model.g.dart';
 class StokListesiModel with NetworkManagerMixin {
   static StokListesiModel? _instance;
   static StokListesiModel get instance {
-    _instance ??= StokListesiModel._init();
+    _instance ??= StokListesiModel._init()..stokList = [];
     return _instance!;
   }
 

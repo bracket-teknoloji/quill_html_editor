@@ -5,6 +5,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/base/model/generic_response_model.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
@@ -69,13 +70,16 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
                     const Text("Picker\nVeri Toplama Çözümleri", overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center).paddingAll(UIHelper.lowSize),
                   ],
                 ),
+                SizedBox(width: width * 0.6, child: Observer(builder: (_) => Visibility(visible: viewModel.isError ,child: Text(viewModel.title, overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center)))),
                 Wrap(
                   alignment: WrapAlignment.center,
                   crossAxisAlignment: WrapCrossAlignment.center,
                   direction: Axis.vertical,
                   children: [
-                    const CircularProgressIndicator.adaptive().paddingAll(UIHelper.lowSize),
-                    SizedBox(width: width * 0.6, child: Observer(builder: (_) => Text(viewModel.title, overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center))),
+                    Observer(builder: (_) {
+                      return Visibility(visible: !viewModel.isError, child: const CircularProgressIndicator.adaptive().paddingAll(UIHelper.lowSize));
+                    }),
+                    SizedBox(width: width * 0.6, child: Observer(builder: (_) => Visibility(visible: !viewModel.isError , child: Text(viewModel.title, overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center)))),
                     Observer(builder: (_) {
                       return Visibility(
                         visible: viewModel.isError,
@@ -139,13 +143,30 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
     }
   }
 
+  Future<GenericResponseModel> getUyeBilgileri() async {
+    viewModel.setTitle("Lisans bilgileri alınıyor...");
+    final response =
+        await networkManager.dioPost<AccountResponseModel>(bodyModel: AccountResponseModel(), showError: false, data: AccountModel.instance, addTokenKey: false, path: ApiUrls.getUyeBilgileri);
+    if (response.success == true) {
+      CacheManager.setAccounts(response.data.first);
+    }
+    await Future.delayed(const Duration(seconds: 2));
+    return response;
+  }
+
   Future<void> getSession() async {
+    // GenericResponseModel lisansResponse = await getUyeBilgileri();
+    // if (lisansResponse.success != true) {
+    //   if (lisansResponse.errorCode == 5) {
+    //     viewModel.setTitle(lisansResponse.message ?? "");
+    //     viewModel.setIsError(true);
+    //     return;
+    //   }
+    // }
+
     viewModel.setTitle("${CacheManager.getVeriTabani()["Şirket"] ?? ""} şirketi için oturum açılıyor...");
-    AccountResponseModel? accountResponseModel = CacheManager.getAccounts(CacheManager.getVerifiedUser?["company"]);
     AccountModel.instance
       ..kullaniciAdi = CacheManager.getVerifiedUser?["user"]
-      ..uyeSifre = accountResponseModel?.parola
-      ..uyeEmail = accountResponseModel?.email
       ..aktifVeritabani = CacheManager.getVeriTabani()["Şirket"]
       ..aktifIsletmeKodu = CacheManager.getVeriTabani()["İşletme"]
       ..aktifSubeKodu = CacheManager.getVeriTabani()["Şube"];

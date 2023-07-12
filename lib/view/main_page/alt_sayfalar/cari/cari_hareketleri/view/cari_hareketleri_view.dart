@@ -197,6 +197,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                   itemCount: viewModel.cariHareketleriList != null ? viewModel.cariHareketleriList!.length : 0,
                   itemBuilder: (context, index) {
                     return CariHareketlerCard(
+                      dovizTipi: widget.cari?.dovizAdi,
                       cariHareketleriModel: viewModel.cariHareketleriList![index],
                       onTap: () {
                         List<BottomSheetModel> children2 = [
@@ -312,17 +313,23 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                       child: FooterButton(children: [
                     const Text("Borç"),
                     Observer(builder: (_) {
-                      return Text("${viewModel.borclarToplami.dotSeparatedWithFixedDigits} TL");
+                      return Text(
+                          "${widget.cari?.dovizli == true ? viewModel.dovizBorclarToplami.dotSeparatedWithFixedDigits : viewModel.borclarToplami.dotSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? "TL"}");
                     })
                   ])),
                   const VerticalDivider(thickness: 1, width: 1),
-                  Expanded(child: FooterButton(children: [const Text("Alacak"), Text("${viewModel.alacaklarToplami.dotSeparatedWithFixedDigits} TL")])),
+                  Expanded(
+                      child: FooterButton(children: [
+                    const Text("Alacak"),
+                    Text(
+                        "${widget.cari?.dovizli == true ? viewModel.dovizAlacaklarToplami.dotSeparatedWithFixedDigits : viewModel.borclarToplami.dotSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? "TL"}")
+                  ])),
                   const VerticalDivider(thickness: 1, width: 1),
                   Expanded(
                       child: FooterButton(children: [
                     const Text("Tahsil Edilecek"),
                     Text(
-                      "${(viewModel.borclarToplami - viewModel.alacaklarToplami).dotSeparatedWithFixedDigits} TL",
+                      "${(widget.cari?.dovizli == true ? viewModel.dovizBorclarToplami - viewModel.dovizAlacaklarToplami : viewModel.borclarToplami - viewModel.alacaklarToplami).dotSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? "TL"}",
                       style: TextStyle(color: (viewModel.borclarToplami - viewModel.alacaklarToplami) < 0 ? Colors.red : Colors.green),
                     )
                   ]))

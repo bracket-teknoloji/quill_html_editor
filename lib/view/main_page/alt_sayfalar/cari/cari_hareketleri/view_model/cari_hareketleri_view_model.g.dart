@@ -23,6 +23,20 @@ mixin _$CariHareketleriViewModel on _CariHareketleriViewModelBase, Store {
           Computed<double>(() => super.alacaklarToplami,
               name: '_CariHareketleriViewModelBase.alacaklarToplami'))
       .value;
+  Computed<double>? _$dovizBorclarToplamiComputed;
+
+  @override
+  double get dovizBorclarToplami => (_$dovizBorclarToplamiComputed ??=
+          Computed<double>(() => super.dovizBorclarToplami,
+              name: '_CariHareketleriViewModelBase.dovizBorclarToplami'))
+      .value;
+  Computed<double>? _$dovizAlacaklarToplamiComputed;
+
+  @override
+  double get dovizAlacaklarToplami => (_$dovizAlacaklarToplamiComputed ??=
+          Computed<double>(() => super.dovizAlacaklarToplami,
+              name: '_CariHareketleriViewModelBase.dovizAlacaklarToplami'))
+      .value;
 
   late final _$isScrollDownAtom = Atom(
       name: '_CariHareketleriViewModelBase.isScrollDown', context: context);
@@ -145,7 +159,9 @@ cariHareketleriList: ${cariHareketleriList},
 siralama: ${siralama},
 isSearchBarOpened: ${isSearchBarOpened},
 borclarToplami: ${borclarToplami},
-alacaklarToplami: ${alacaklarToplami}
+alacaklarToplami: ${alacaklarToplami},
+dovizBorclarToplami: ${dovizBorclarToplami},
+dovizAlacaklarToplami: ${dovizAlacaklarToplami}
     ''';
   }
 }

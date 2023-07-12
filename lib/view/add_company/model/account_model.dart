@@ -10,6 +10,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:kartal/kartal.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:picker/core/init/cache/cache_manager.dart';
 
 import '../../../core/base/model/base_network_mixin.dart';
 
@@ -20,8 +21,10 @@ part 'account_model.g.dart';
 class AccountModel with NetworkManagerMixin {
   AccountModel.getValue() {
     init();
+    uyeEmail = CacheManager.getHesapBilgileri().uyeEmail ?? "";
+    uyeSifre = CacheManager.getHesapBilgileri().uyeSifre ?? "";
   }
-  static final AccountModel instance = AccountModel.getValue();
+  static AccountModel instance = AccountModel.getValue();
 
   AccountModel();
   @HiveField(0)
@@ -179,7 +182,7 @@ class AccountModel with NetworkManagerMixin {
       }
     }
     konumDate = DateTime.now();
-    konumTarihi = "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day} ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}";
+    konumTarihi = getKonumTarihi;
 
     uygulamaGuncellemeTarihi = "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}";
     if (kIsWeb) {
@@ -283,6 +286,8 @@ class AccountModel with NetworkManagerMixin {
 
     log(toJson().toString(), name: runtimeType.toString());
   }
+
+  String get getKonumTarihi => "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day} ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}";
 
   @override
   fromJson(Map<String, dynamic> json) {

@@ -9,16 +9,18 @@ import '../../constants/ui_helper/ui_helper.dart';
 import '../helper_widgets/custom_label_widget.dart';
 
 class CariHareketlerCard extends StatefulWidget {
+  final String? dovizTipi;
   final CariHareketleriModel cariHareketleriModel;
   final dynamic Function()? onTap;
 
-  const CariHareketlerCard({super.key, this.onTap, required this.cariHareketleriModel});
+  const CariHareketlerCard({super.key, this.onTap, required this.cariHareketleriModel, this.dovizTipi});
 
   @override
   State<CariHareketlerCard> createState() => _CariHareketlerCardState();
 }
 
 class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
+  bool get dovizliMi => widget.cariHareketleriModel.dovizliMi || widget.dovizTipi != null;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -36,23 +38,31 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                     Row(
                       children: [
                         Text("${widget.cariHareketleriModel.tarih?.toDateString() ?? ""} (${widget.cariHareketleriModel.hareketKodu ?? ""}) "),
-                        (widget.cariHareketleriModel.dovizBorc != null || widget.cariHareketleriModel.dovizAlacak != null) ? const Badge(label: Text("Dövizli")) : Container(),
+                        widget.cariHareketleriModel.dovizliMi ? const Badge(label: Text("Dövizli")) : Container(),
                       ],
                     ),
                     Text(widget.cariHareketleriModel.hareketAciklama ?? "", style: TextStyle(color: UIHelper.primaryColor)),
                   ],
                 ),
-                Text("${widget.cariHareketleriModel.alacak?.dotSeparatedWithFixedDigits ?? widget.cariHareketleriModel.borc?.dotSeparatedWithFixedDigits} TL",
-                    style: theme.textTheme.bodySmall?.copyWith(fontSize: 12)),
+                Column(
+                  children: [
+                    Text("${widget.cariHareketleriModel.alacak?.dotSeparatedWithFixedDigits ?? widget.cariHareketleriModel.borc?.dotSeparatedWithFixedDigits} TL",
+                        style: theme.textTheme.bodySmall?.copyWith(fontSize: 12)),
+                    Visibility(
+                        visible: widget.cariHareketleriModel.dovizliMi,
+                        child: Text("${widget.cariHareketleriModel.dovizBakiye.dotSeparatedWithFixedDigits} ${widget.cariHareketleriModel.dovizAdi ?? "TL"}",
+                            style: theme.textTheme.bodySmall?.copyWith(fontSize: 12)))
+                  ],
+                ),
               ],
             ),
             subtitle: Wrap(
               runAlignment: WrapAlignment.spaceBetween,
               children: [
                 CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Belge No", child: Text(widget.cariHareketleriModel.belgeNo ?? "")),
-                CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Vade Tarihi", child:Text(widget.cariHareketleriModel.vadeTarihi?.toDateString() ?? "")),
-                CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Plasiyer", child:Text(widget.cariHareketleriModel.plasiyerAciklama ?? "")),
-                CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Şube", child:Text("${widget.cariHareketleriModel.subeKodu ?? 0}"))
+                CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Vade Tarihi", child: Text(widget.cariHareketleriModel.vadeTarihi?.toDateString() ?? "")),
+                CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Plasiyer", child: Text(widget.cariHareketleriModel.plasiyerAciklama ?? "")),
+                CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Şube", child: Text("${widget.cariHareketleriModel.subeKodu ?? 0}"))
               ].map((e) => SizedBox(width: width * 0.33, child: e).paddingOnly(right: UIHelper.lowSize, bottom: UIHelper.lowSize)).toList(),
             ),
           ),
@@ -70,12 +80,14 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
               Container(
                   alignment: Alignment.topRight,
                   width: width * 0.4,
-                  child: Text("Bakiye : ${widget.cariHareketleriModel.yuruyenBakiye?.dotSeparatedWithFixedDigits ?? "0"} TL",
-                      style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(widget.cariHareketleriModel.yuruyenBakiye ?? 0)))),
+                  child: Text("Bakiye : ${dovizCheck.commaSeparatedWithFixedDigits} ${widget.dovizTipi ?? "TL"}",
+                      style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(dovizCheck)))),
             ].map((e) => e.paddingAll(UIHelper.lowSize)).toList(),
           )
         ],
       ).paddingAll(UIHelper.lowSize),
     );
   }
+
+  double get dovizCheck => dovizliMi ? widget.cariHareketleriModel.dovYuruyenBakiye ?? 0 : widget.cariHareketleriModel.yuruyenBakiye ?? 0;
 }
