@@ -319,7 +319,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   CacheManager.setLogout(true);
                                   Get.offAndToNamed("/mainPage");
                                   // Get.toNamed("/mainPage");
-                                  response.message.isNotNullOrNoEmpty ? dialogManager.showAlertDialog(response.message.toString()) : null;
+                                  (response.message?.isNotNullOrNoEmpty??false) ? dialogManager.showAlertDialog(response.message.toString()) : null;
                                 } else {
                                   // dialogManager.hideAlertDialog;
                                   dialogManager.showAlertDialog(response.message.toString());

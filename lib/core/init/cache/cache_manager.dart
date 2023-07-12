@@ -78,7 +78,7 @@ class CacheManager {
   static Map getVeriTabani() => _veriTabaniBox.get(getVerifiedUser?["user"]) ?? {};
   static Map get getIsletmeSube => _isletmeSubeBox.get(getVerifiedUser?["user"]) ?? {};
   static Map<String, FavoritesModel> getFavoriler() => _favorilerBox.toMap().cast<String, FavoritesModel>();
-  static AccountModel getHesapBilgileri() => _hesapBilgileriBox.get("value");
+  static AccountModel? get getHesapBilgileri => _hesapBilgileriBox.get("value") ?? AccountModel();
   static CariSehirlerModel getCariSehirler() => _cariSehirBox.get("value");
   static List getSubeListesi() => _subeListesiBox.get("value") ?? [];
   static String get  getSirketAdi => _sirketAdiBox.get("value") ?? "";

@@ -204,7 +204,7 @@ class _LoginViewState extends BaseState<LoginView> {
         log(jsonEncode(a.toJson()), name: "sea");
         final response = await networkManager.getToken(
           path: ApiUrls.token,
-          queryParameters: {"deviceInfos": jsonEncode(a.toJson())},
+          queryParameters: {"deviceInfos": jsonEncode((a..kullaniciAdi= emailController.text).toJson())},
           data: {"grant_type": "password", "username": emailController.text, "password": passwordController.text},
         );
         dialogManager.hideAlertDialog;
@@ -213,7 +213,6 @@ class _LoginViewState extends BaseState<LoginView> {
           emailController.text,
           passwordController.text,
         ]);
-        log(CacheManager.getHesapBilgileri().toJson().toString(), name: "sea2");
 
         if (context.mounted && response != null) {
           CacheManager.setVerifiedUser({"user": emailController.text, "password": passwordController.text, "company": companyController.text, "email": accountCache?.email ?? ""});

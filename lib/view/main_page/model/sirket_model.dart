@@ -16,7 +16,7 @@ class SirketModel {
   @JsonKey(name: "YIL")
   @HiveField(2)
   int? yil;
-  @JsonKey(name: "isDevredilmis", required: true)
+  @JsonKey(name: "isDevredilmis")
   @HiveField(3)
   bool? isDevredilmis;
 

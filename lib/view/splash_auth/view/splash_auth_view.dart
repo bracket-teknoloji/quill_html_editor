@@ -70,7 +70,9 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
                     const Text("Picker\nVeri Toplama Çözümleri", overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center).paddingAll(UIHelper.lowSize),
                   ],
                 ),
-                SizedBox(width: width * 0.6, child: Observer(builder: (_) => Visibility(visible: viewModel.isError ,child: Text(viewModel.title, overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center)))),
+                SizedBox(
+                    width: width * 0.6,
+                    child: Observer(builder: (_) => Visibility(visible: viewModel.isError, child: Text(viewModel.title, overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center)))),
                 Wrap(
                   alignment: WrapAlignment.center,
                   crossAxisAlignment: WrapCrossAlignment.center,
@@ -79,7 +81,10 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
                     Observer(builder: (_) {
                       return Visibility(visible: !viewModel.isError, child: const CircularProgressIndicator.adaptive().paddingAll(UIHelper.lowSize));
                     }),
-                    SizedBox(width: width * 0.6, child: Observer(builder: (_) => Visibility(visible: !viewModel.isError , child: Text(viewModel.title, overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center)))),
+                    SizedBox(
+                        width: width * 0.6,
+                        child:
+                            Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: Text(viewModel.title, overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center)))),
                     Observer(builder: (_) {
                       return Visibility(
                         visible: viewModel.isError,
@@ -117,7 +122,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
         Get.offAllNamed("/login");
       } else if (CacheManager.getLogout == true) {
         final response = await networkManager.getToken(path: ApiUrls.token, queryParameters: {
-          "deviceInfos": jsonEncode(CacheManager.getHesapBilgileri().toJson())
+          "deviceInfos": jsonEncode(CacheManager.getHesapBilgileri?.toJson())
         }, data: {
           "grant_type": "password",
           "username": CacheManager.getVerifiedUser?["user"],

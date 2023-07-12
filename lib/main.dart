@@ -51,6 +51,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheManager.instance.initHiveBoxes();
   await AppInfoModel.instance.init();
+    await AccountModel.instance.init();
   //* Firebase Crashlytics
   await firebaseInitialized();
   SystemChrome.setPreferredOrientations([
@@ -59,7 +60,6 @@ void main() async {
     DeviceOrientation.landscapeLeft,
   ]).then((_) async {
     runApp(const MyApp());
-    await AccountModel.instance.init();
     NetworkDependencyInjection.init();
   });
 }
