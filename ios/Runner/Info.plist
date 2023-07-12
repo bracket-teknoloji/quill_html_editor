@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CADisableMinimumFrameDurationOnPhone</key>
-	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -17,8 +15,6 @@
 			<string>Default</string>
 		</dict>
 	</array>
-	<key>NSUserTrackingUsageDescription</key>
-		<string>Merhaba Uygulamaya erişiminiz için buna ihtiyacımız var.</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -41,6 +37,8 @@
 	<string>To capture profile photo please grant camera access</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>App needs access to photo lib for profile images</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Merhaba Uygulamaya erişiminiz için buna ihtiyacımız var.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -64,5 +62,7 @@
 	<true/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 </dict>
 </plist>

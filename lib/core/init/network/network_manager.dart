@@ -184,7 +184,7 @@ class NetworkManager {
   String get getBaseUrl {
     String result = CacheManager.getAccounts(CacheManager.getSirketAdi)?.wsWan != null
         ? "${CacheManager.getAccounts(CacheManager.getSirketAdi)?.wsWan}/"
-        : (CacheManager.getAccounts(CacheManager.getSirketAdi)?.wsLan ?? "http://ofis.bracket.com.tr:7575/Picker/api/");
+        : (CacheManager.getAccounts(CacheManager.getSirketAdi)?.wsLan ?? "http://ofis.bracket.com.tr:7575/Picker/");
     return result;
   }
 }
