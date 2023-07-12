@@ -93,6 +93,7 @@ dependencies:
   collection: ^1.17.1
   firebase_core: ^2.14.0
   firebase_crashlytics: ^3.3.3
+  app_tracking_transparency: ^2.0.4
 
 flutter_icons:
   image_path: "assets/splash/pickerLogoTuruncu.png"

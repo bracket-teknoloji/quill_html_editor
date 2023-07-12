@@ -22,6 +22,7 @@ CariHareketleriModel _$CariHareketleriModelFromJson(
       ..plasiyerKodu = json['PLASIYER_KODU'] as String?
       ..plasiyerAciklama = json['PLASIYER_ACIKLAMA'] as String?
       ..yuruyenBakiye = (json['YURUYEN_BAKIYE'] as num?)?.toDouble()
+      ..dovYuruyenBakiye = (json['DOV_YURUYEN_BAKIYE'] as num?)?.toDouble()
       ..projeKodu = json['PROJE_KODU'] as String?
       ..projeAciklama = json['PROJE_ACIKLAMA'] as String?
       ..dovizBorc = (json['DOVIZ_BORC'] as num?)?.toDouble()
@@ -52,6 +53,7 @@ Map<String, dynamic> _$CariHareketleriModelToJson(
       'PLASIYER_KODU': instance.plasiyerKodu,
       'PLASIYER_ACIKLAMA': instance.plasiyerAciklama,
       'YURUYEN_BAKIYE': instance.yuruyenBakiye,
+      'DOV_YURUYEN_BAKIYE': instance.dovYuruyenBakiye,
       'PROJE_KODU': instance.projeKodu,
       'PROJE_ACIKLAMA': instance.projeAciklama,
       'DOVIZ_BORC': instance.dovizBorc,

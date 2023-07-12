@@ -16,7 +16,7 @@
 	<array>
 		<dict>
 			<key>CFBundleTypeName</key>
-			<string></string>
+			<string>Picker</string>
 			<key>LSHandlerRank</key>
 			<string>Default</string>
 		</dict>

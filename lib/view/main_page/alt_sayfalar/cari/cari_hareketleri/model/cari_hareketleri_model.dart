@@ -18,6 +18,7 @@ class CariHareketleriModel with NetworkManagerMixin {
   String? plasiyerKodu;
   String? plasiyerAciklama;
   double? yuruyenBakiye;
+  double? dovYuruyenBakiye;
   String? projeKodu;
   String? projeAciklama;
   double? dovizBorc;
@@ -47,6 +48,10 @@ class CariHareketleriModel with NetworkManagerMixin {
   bool get borcSenediMi => hareketKodu == "";
 
   String getBorcAlacakHarf() => borcHareketiMi ? "B" : "A";
+
+  bool get dovizliMi => (dovizTuru ?? 0) > 1;
+
+  double get dovizBakiye => ((dovizAlacak ?? 0) - (dovizBorc ?? 0)).abs();
 
   @override
   fromJson(Map<String, dynamic> json) => _$CariHareketleriModelFromJson(json);

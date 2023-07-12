@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../helper_widgets/custom_label_widget.dart';
 
 import '../../../base/state/base_state.dart';
+import '../../helper_widgets/custom_label_widget.dart';
 
 class SlideControllerWidget extends StatefulWidget {
   final String? title;
@@ -23,7 +23,8 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
     scrollController = ScrollController();
     Future.delayed(Duration.zero, () async {
       await scrollController?.animateTo(30, duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
-      await scrollController?.animateTo(scrollController?.position.minScrollExtent ?? 0, duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+      await scrollController?.animateTo((scrollController?.positions.isNotEmpty ?? false) ? (scrollController?.position.minScrollExtent ?? 0) : 0,
+          duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
     });
     super.initState();
   }
@@ -38,28 +39,26 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
   Widget build(BuildContext context) {
     return CustomWidgetWithLabel(
       text: widget.title,
-      child: 
-        Column(
-          children: [
-            SizedBox(
-                height: 50,
-                width: double.infinity,
-                child: ListView.builder(
-                    controller: scrollController,
-                    scrollDirection: Axis.horizontal,
-                    itemExtent: widget.childrenTitleList.length < 3 ? width / widget.childrenTitleList.length : null,
-                    itemCount: widget.childrenTitleList.length,
-                    itemBuilder: (context, listTileIndex) => RadioMenuButton(
-                          value: widget.childrenValueList[listTileIndex],
-                          groupValue: widget.groupValue,
-                          onChanged: (index) {
-                            widget.filterOnChanged(listTileIndex);
-                          },
-                          child: Text(widget.childrenTitleList[listTileIndex]),
-                        )))
-          ],
-        ),
-      
+      child: Column(
+        children: [
+          SizedBox(
+              height: 50,
+              width: double.infinity,
+              child: ListView.builder(
+                  controller: scrollController,
+                  scrollDirection: Axis.horizontal,
+                  itemExtent: widget.childrenTitleList.length < 3 ? width / widget.childrenTitleList.length : null,
+                  itemCount: widget.childrenTitleList.length,
+                  itemBuilder: (context, listTileIndex) => RadioMenuButton(
+                        value: widget.childrenValueList[listTileIndex],
+                        groupValue: widget.groupValue,
+                        onChanged: (index) {
+                          widget.filterOnChanged(listTileIndex);
+                        },
+                        child: Text(widget.childrenTitleList[listTileIndex]),
+                      )))
+        ],
+      ),
     );
   }
 }

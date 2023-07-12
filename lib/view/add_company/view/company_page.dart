@@ -62,11 +62,11 @@ class _AccountsViewState extends BaseState<AccountsView> {
                                 onTap: () {
                                   Navigator.pop(context);
                                   dialogManager.showAreYouSureDialog(() {
-                                    Hive.box("accounts").delete(account.firma.toString());
+                                    Hive.box("accounts").delete(account.email.toString());
                                     setState(() {});
                                   });
                                 }),
-                            BottomSheetModel(
+                            BottomSheetModel( 
                                 icon: "Database",
                                 iconWidget: Icons.storage_rounded,
                                 title: "Sunucu Tercihi",

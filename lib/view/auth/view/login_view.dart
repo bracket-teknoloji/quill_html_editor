@@ -17,7 +17,6 @@ import '../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../core/init/app_info/app_info.dart';
 import '../../../core/init/cache/cache_manager.dart';
 import '../../../core/init/network/login/api_urls.dart';
-import '../../../core/init/network/network_manager.dart';
 import '../../add_company/model/account_model.dart';
 import '../../add_company/model/account_response_model.dart';
 
@@ -108,41 +107,39 @@ class _LoginViewState extends BaseState<LoginView> {
                             ],
                           ),
                         ),
-                        CustomWidgetWithLabel(text: "Firma", child:
-                          TextFormField(
-                            readOnly: true,
-                            onTap: () async {
-                              var a = await dialogManager.selectCompanyDialog();
-                              if (a != null) {
-                                textFieldData = a;
-                              }
-                              companyController.text = textFieldData["company"] ?? "";
-                              emailController.text = textFieldData["user"] ?? "";
-                              passwordController.text = textFieldData["password"] ?? "";
-                              setState(() {});
-                            },
-                            decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz)),
-                            controller: companyController,
-                            textInputAction: TextInputAction.next,
-                          )
-                        ),
+                        CustomWidgetWithLabel(
+                            text: "Firma",
+                            child: TextFormField(
+                              readOnly: true,
+                              onTap: () async {
+                                var a = await dialogManager.selectCompanyDialog();
+                                if (a != null) {
+                                  textFieldData = a;
+                                }
+                                companyController.text = textFieldData["company"] ?? "";
+                                emailController.text = textFieldData["user"] ?? "";
+                                passwordController.text = textFieldData["password"] ?? "";
+                                setState(() {});
+                              },
+                              decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz)),
+                              controller: companyController,
+                              textInputAction: TextInputAction.next,
+                            )),
                         Padding(
                           padding: UIHelper.midPaddingOnlyTop,
                           child: CustomWidgetWithLabel(
                             text: "Netfect Kullanıcı Adı",
-                            child: 
-                              TextFormField(
-                                controller: emailController,
-                                textInputAction: TextInputAction.next,
-                              ),
+                            child: TextFormField(
+                              controller: emailController,
+                              textInputAction: TextInputAction.next,
+                            ),
                           ),
                         ),
                         Padding(
                           padding: UIHelper.midPaddingVertical,
                           child: CustomWidgetWithLabel(
-                            text: "Şifre",
-                            child: 
-                              TextField(
+                              text: "Şifre",
+                              child: TextField(
                                 controller: passwordController,
                                 textInputAction: TextInputAction.done,
                                 obscureText: isObscure,
@@ -156,9 +153,7 @@ class _LoginViewState extends BaseState<LoginView> {
                                     icon: isObscure ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
                                   ),
                                 ),
-                              )
-                            
-                          ),
+                              )),
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -196,20 +191,15 @@ class _LoginViewState extends BaseState<LoginView> {
   }
 
   void login() async {
-    AccountResponseModel? accountCache = CacheManager.getAccounts(companyController.text);
     AccountModel instance = AccountModel.instance;
-    var a = instance
-      ..kullaniciAdi = emailController.text
-      ..uyeEmail = accountCache?.email ?? "demo@netfect.com";
-    a.uyeSifre = accountCache?.parola;
-
+    var a = instance..kullaniciAdi = emailController.text;
     dialogManager.showLoadingDialog("Giriş Yapılıyor");
 
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
       AccountResponseModel? accountCache = CacheManager.getAccounts(companyController.text);
       try {
         CacheManager.setSirketAdi(companyController.text);
-        CacheManager.setHesapBilgileri(a);
+        // CacheManager.setHesapBilgileri(a);
 
         log(jsonEncode(a.toJson()), name: "sea");
         final response = await networkManager.getToken(
@@ -228,6 +218,11 @@ class _LoginViewState extends BaseState<LoginView> {
         if (context.mounted && response != null) {
           CacheManager.setVerifiedUser({"user": emailController.text, "password": passwordController.text, "company": companyController.text, "email": accountCache?.email ?? ""});
           CacheManager.setToken(response.accessToken.toString());
+          // final uyeBilgiResponse =
+          //     await networkManager.dioPost<AccountResponseModel>(bodyModel: AccountResponseModel(), data: AccountModel.instance, addTokenKey: false, path: ApiUrls.getUyeBilgileri);
+          // if (uyeBilgiResponse.success == true) {
+          //   CacheManager.setAccounts(uyeBilgiResponse.data.first);
+          // }
           Get.toNamed("/entryCompany");
         }
       } on DioException catch (e) {

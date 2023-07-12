@@ -22,7 +22,8 @@ import '../../constants/enum/dio_enum.dart';
 import 'login/api_urls.dart';
 
 class NetworkManager {
-  Dio get dio => Dio(BaseOptions(baseUrl:CacheManager.getAccounts(CacheManager.getSirketAdi)?.wsWan != null? "${CacheManager.getAccounts(CacheManager.getSirketAdi)?.wsWan}/" : "http://ofis.bracket.com.tr:7575/Picker/", connectTimeout: const Duration(seconds: 20)));
+  Dio get dio =>
+      Dio(BaseOptions(baseUrl: getBaseUrl, receiveTimeout: const Duration(minutes: 2), connectTimeout: const Duration(seconds: 20), contentType: "application/json", responseType: ResponseType.json));
   NetworkManager() {
     dio.interceptors.add(
       InterceptorsWrapper(
@@ -76,7 +77,8 @@ class NetworkManager {
       bool addQuery = true,
       bool addSirketBilgileri = true,
       bool addCKey = true,
-      bool addTokenKey = true}) async {
+      bool addTokenKey = true,
+      bool showError = true}) async {
     CancelToken cancelToken = CancelToken();
     Map<String, String> head = getStandardHeader(addTokenKey, addSirketBilgileri, addCKey);
     if (headers != null) head.addEntries(headers.entries);
@@ -86,11 +88,12 @@ class NetworkManager {
     final response = await dio.get(path, queryParameters: queries, options: Options(headers: head), cancelToken: cancelToken);
     GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
     if (responseModel.success != true) {
-      DialogManager().showAlertDialog(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
+      if (showError) {
+        DialogManager().showAlertDialog(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
+      }
       if (responseModel.errorCode == 1) {
         Get.toNamed("/");
       }
-      throw Exception(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
     }
     return responseModel;
   }
@@ -104,7 +107,8 @@ class NetworkManager {
       bool addQuery = true,
       bool addSirketBilgileri = true,
       bool addCKey = true,
-      bool addTokenKey = true}) async {
+      bool addTokenKey = true,
+      bool showError = true}) async {
     Map<String, String> head = getStandardHeader(addTokenKey, addSirketBilgileri, addCKey);
     if (headers != null) head.addEntries(headers.entries);
     Map<String, dynamic> queries = getStandardQueryParameters();
@@ -113,8 +117,12 @@ class NetworkManager {
     final response = await dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
     GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
     if (responseModel.success != true) {
-      DialogManager().showAlertDialog(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
-      throw Exception(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
+      if (showError) {
+        DialogManager().showAlertDialog(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
+      }
+      if (responseModel.errorCode == 1) {
+        Get.toNamed("/");
+      }
     }
     return responseModel;
   }
@@ -130,12 +138,7 @@ class NetworkManager {
   Future<GenericResponseModel> getPDF(PdfModel model) async {
     Map<String, String> head = getStandardHeader(true, true, true);
     final response = await dioPost<BasePdfModel>(path: ApiUrls.print, bodyModel: BasePdfModel(), headers: head, data: model.toJson());
-    if (response.data != null) {
-      log("PDF Oluşturuldu");
       return response;
-    } else {
-      throw Exception("PDF Oluşturulamadı");
-    }
   }
 
   Future<List<BaseGrupKoduModel>> getGrupKod({required String name, required int grupNo, bool? kullanimda}) async {
@@ -176,5 +179,12 @@ class NetworkManager {
   Map<String, dynamic> getStandardQueryParameters() {
     Map<String, dynamic> query = {};
     return query;
+  }
+
+  String get getBaseUrl {
+    String result = CacheManager.getAccounts(CacheManager.getSirketAdi)?.wsWan != null
+        ? "${CacheManager.getAccounts(CacheManager.getSirketAdi)?.wsWan}/"
+        : (CacheManager.getAccounts(CacheManager.getSirketAdi)?.wsLan ?? "http://ofis.bracket.com.tr:7575/Picker/");
+    return result;
   }
 }

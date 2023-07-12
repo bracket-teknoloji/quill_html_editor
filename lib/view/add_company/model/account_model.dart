@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
@@ -9,7 +10,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:kartal/kartal.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:picker/core/init/cache/cache_manager.dart';
 
 import '../../../core/base/model/base_network_mixin.dart';
 
@@ -20,8 +21,10 @@ part 'account_model.g.dart';
 class AccountModel with NetworkManagerMixin {
   AccountModel.getValue() {
     init();
+    uyeEmail = CacheManager.getHesapBilgileri().uyeEmail ?? "";
+    uyeSifre = CacheManager.getHesapBilgileri().uyeSifre ?? "";
   }
-  static final AccountModel instance = AccountModel.getValue();
+  static AccountModel instance = AccountModel.getValue();
 
   AccountModel();
   @HiveField(0)
@@ -167,7 +170,6 @@ class AccountModel with NetworkManagerMixin {
     offline = "H";
     if (kIsWeb) {
       platform = "Web";
-
     } else {
       platform = Platform.operatingSystem;
       var list = await NetworkInterface.list(includeLoopback: true, type: InternetAddressType.IPv4);
@@ -180,19 +182,17 @@ class AccountModel with NetworkManagerMixin {
       }
     }
     konumDate = DateTime.now();
-    konumTarihi = "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day} ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}";
+    konumTarihi = getKonumTarihi;
 
     uygulamaGuncellemeTarihi = "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}";
-    if (kIsWeb){
-
+    if (kIsWeb) {
       wifidenBagli = "E";
-    }
-    else if (await Connectivity().checkConnectivity() == ConnectivityResult.wifi) {
+    } else if (await Connectivity().checkConnectivity() == ConnectivityResult.wifi) {
       wifidenBagli = "E";
     } else {
       wifidenBagli = "H";
     }
-    
+
     cihazTimeZoneDakika = DateTime.now().timeZoneOffset.inMinutes;
     //* Cihaz ve Sim Bilgileri
     uygulamaDili = "tr";
@@ -225,14 +225,14 @@ class AccountModel with NetworkManagerMixin {
     }
     //! IOS
     else if (Platform.isIOS) {
-      await Permission.appTrackingTransparency.request();
-      if(await Permission.appTrackingTransparency.isGranted) {
+      await AppTrackingTransparency.requestTrackingAuthorization();
+      if (await AppTrackingTransparency.trackingAuthorizationStatus == TrackingStatus.authorized) {
         final iosInfo = await deviceInfo.iosInfo;
-      cihazMarkasi = iosInfo.name;
-      cihazModeli = iosInfo.model;
-      cihazSistemVersiyonu = "20";
-      ozelCihazKimligi = iosInfo.identifierForVendor;
-      cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
+        cihazMarkasi = iosInfo.name;
+        cihazModeli = iosInfo.model;
+        cihazSistemVersiyonu = "20";
+        ozelCihazKimligi = iosInfo.identifierForVendor;
+        cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
       }
     }
     //!DESKTOP
@@ -251,6 +251,29 @@ class AccountModel with NetworkManagerMixin {
         ozelCihazKimligi = base64Encode(utf8.encode("win_${desktopInfo.computerName}"));
         cihazKimligi = ozelCihazKimligi;
       }
+    } else if (Platform.isMacOS) {
+      platform = Platform.operatingSystem;
+      final desktopInfo = await deviceInfo.macOsInfo;
+      cihazSistemVersiyonu = Platform.operatingSystemVersion;
+      cihazMarkasi = desktopInfo.computerName;
+      cihazModeli = desktopInfo.model;
+      if (ozelCihazKimligi.isNotNullOrNoEmpty) {
+        cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
+        log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");
+      }
+    } else if (Platform.isLinux) {
+      platform = Platform.operatingSystem;
+      final desktopInfo = await deviceInfo.linuxInfo;
+      cihazSistemVersiyonu = Platform.operatingSystemVersion;
+      cihazMarkasi = desktopInfo.name;
+      cihazModeli = desktopInfo.prettyName;
+      if (ozelCihazKimligi.isNotNullOrNoEmpty) {
+        cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
+        log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");
+      } else {
+        ozelCihazKimligi = base64Encode(utf8.encode("linux_${desktopInfo.name}"));
+        cihazKimligi = ozelCihazKimligi;
+      }
     }
     //* Uygulama Bilgileri
     uygulamaSurumu = "228";
@@ -263,6 +286,8 @@ class AccountModel with NetworkManagerMixin {
 
     log(toJson().toString(), name: runtimeType.toString());
   }
+
+  String get getKonumTarihi => "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day} ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}";
 
   @override
   fromJson(Map<String, dynamic> json) {

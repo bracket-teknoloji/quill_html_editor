@@ -303,11 +303,9 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
 
                                 ///!!!!!!!!!!!!!!!!!!!! --> TODO BUNU EKLE
                                 // ..gCid = "/Y5TBF72qY7bnZl3+NOYvUtln/g5FJPl4jQ9i59td5M=";
-                                log(selected.toString(), name: "SONUNDA");
                                 dialogManager.showLoadingDialog("${selected["Şirket"]} şirketine giriş yapılıyor.");
-                                log(CacheManager.getHesapBilgileri().toJson().toString(), name: "dflkgjsşldkfjsşd");
-
-                                final response = await networkManager.dioPost<MainPageModel>(path: ApiUrls.createSession, bodyModel: MainPageModel(), addTokenKey: true, data: model, headers: {
+                                var response;
+                                  response = await networkManager.dioPost<MainPageModel>(path: ApiUrls.createSession, bodyModel: MainPageModel(), addTokenKey: true, showError: false, data: model, headers: {
                                   "VERITABANI": selected["Şirket"].toString(),
                                   "ISLETME_KODU": selected["İşletme"].toString(),
                                   "SUBE_KODU": selected["Şube"].toString(),
@@ -323,7 +321,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   // Get.toNamed("/mainPage");
                                   response.message.isNotNullOrNoEmpty ? dialogManager.showAlertDialog(response.message.toString()) : null;
                                 } else {
-                                  dialogManager.hideAlertDialog;
+                                  // dialogManager.hideAlertDialog;
                                   dialogManager.showAlertDialog(response.message.toString());
                                 }
                               } else {

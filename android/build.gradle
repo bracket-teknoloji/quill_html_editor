@@ -1,5 +1,6 @@
 buildscript {
 ext{
+    ext.kotlin_version = '1.8.21'
     kotlin_version = '1.8.21'
 }
     repositories {
@@ -27,8 +28,6 @@ allprojects {
 rootProject.buildDir = '../build'
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
-}
-subprojects {
     project.evaluationDependsOn(':app')
     project.configurations.all {
         resolutionStrategy.eachDependency { details ->

@@ -3,6 +3,7 @@ import "dart:ui";
 
 import "package:firebase_core/firebase_core.dart";
 import "package:firebase_crashlytics/firebase_crashlytics.dart";
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
@@ -49,7 +50,6 @@ import "view/splash_auth/view/splash_auth_view.dart";
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheManager.instance.initHiveBoxes();
-  await AccountModel.instance.init();
   await AppInfoModel.instance.init();
   //* Firebase Crashlytics
   await firebaseInitialized();
@@ -57,8 +57,9 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.landscapeRight,
     DeviceOrientation.landscapeLeft,
-  ]).then((_) {
+  ]).then((_) async {
     runApp(const MyApp());
+    await AccountModel.instance.init();
     NetworkDependencyInjection.init();
   });
 }
@@ -142,6 +143,7 @@ class MyApp extends StatelessWidget {
 }
 
 Future<void> firebaseInitialized() async {
+  if (kIsWeb) return;
   if (!Platform.isWindows) {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
     FirebaseCrashlytics.instance.setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");

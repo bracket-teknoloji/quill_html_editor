@@ -62,4 +62,23 @@ abstract class _CariHareketleriViewModelBase with Store {
       return 0.0;
     }
   }
+  @computed
+  double get dovizBorclarToplami {
+    var data = cariHareketleriList?.where((element) => element.dovizBorc != null);
+    if (data?.isNotEmpty ?? false) {
+      return data!.map((e) => e.dovizBorc!).reduce((value, element) => value + element);
+    } else {
+      return 0.0;
+    }
+  }
+
+  @computed
+  double get dovizAlacaklarToplami {
+    var data = cariHareketleriList?.where((element) => element.dovizAlacak != null);
+    if (data?.isNotEmpty ?? false) {
+      return data!.map((e) => e.dovizAlacak!).reduce((value, element) => value + element);
+    } else {
+      return 0.0;
+    }
+  }
 }

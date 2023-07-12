@@ -90,7 +90,7 @@ class CacheManager {
   static void setCompanies(String key, String value) => _companiesBox.put(key, value);
   static void setAnaVeri(MainPageModel value) => _anaVeriBox.put("data", value);
   static void setAccounts(AccountResponseModel value) {
-    _accountsBox.put(value.firma, value);
+    _accountsBox.put(value.email, value);
     log("AccountResponseModel: ${_accountsBox.toMap()}");
   }
 

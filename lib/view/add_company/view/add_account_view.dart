@@ -99,10 +99,11 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
       if (response.success!) {
         Box box = Hive.box("accounts");
         for (AccountResponseModel item in response.data!) {
-          if (!box.containsKey(item.firma)) {
+          if (!box.containsKey(item.email)) {
             Get.back(result: true);
             setState(() {});
-            CacheManager.setAccounts(item);
+            CacheManager.setAccounts(item..parola = _controller2.text);
+            CacheManager.setHesapBilgileri(model);
             dialogManager.showSnackBar("Başarılı");
           } else {
             dialogManager.showSnackBar("${item.firmaKisaAdi} zaten kayıtlı");
@@ -142,9 +143,9 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
             ..uyeSifre = response.data![0].parola;
           Box box = Hive.box("accounts");
           for (AccountResponseModel item in response.data!) {
-            if (!box.containsKey(item.firma)) {
+            if (!box.containsKey(item.email)) {
               Get.offAndToNamed("/addCompany");
-              box.put(item.firma, item);
+              box.put(item.email, item);
               log("item: ${item.toJson()}");
               dialogManager.showSnackBar("Başarılı");
             } else {

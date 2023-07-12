@@ -705,7 +705,7 @@ class MapEkAlanlar {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createToJson: true, genericArgumentFactories: true)
+@JsonSerializable(includeIfNull: false, createToJson: true)
 class MapCariKullSahalar {
   MapCariKullSahalar();
 

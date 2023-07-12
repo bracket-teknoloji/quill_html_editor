@@ -363,6 +363,13 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                               children: [
                                 Text("${object.cariKodu}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))),
                                 object.cariIl != null ? Text("${object.cariIl}/${object.cariIlce}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))) : const SizedBox(),
+                                Row(
+                                  children: [
+                                    object.efaturaMi == true ? const Badge(label: Text(('E-Fatura'))) : const SizedBox(),
+                                    object.boylam != null && object.enlem != null ? const Badge(label: Text(('Konum'))) : const SizedBox(),
+                                    object.dovizli == true ? Badge(label: Text(('Dövizli ${object.dovizAdi}'))) : const SizedBox(),
+                                  ].map((e) => e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize)).toList(),
+                                ),
                               ],
                             ),
                             trailing: Wrap(children: [
