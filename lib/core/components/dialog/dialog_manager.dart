@@ -254,7 +254,7 @@ class DialogManager {
               title: const Text("DEMO"),
               leading: IconHelper.smallIcon("User-Account"),
               onTap: () {
-                Get.back(result: {"company": "demo", "user": "demo", "password": "demo"});
+                Get.back(result: {"company": "demo", "user": "demo", "password": "demo", "mail" :"demo@netfect.com"});
               }),
           ...List.generate(
             box.length,

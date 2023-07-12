@@ -48,6 +48,9 @@ class _LoginViewState extends BaseState<LoginView> {
     emailController.text = textFieldData["user"];
     passwordController.text = textFieldData["password"];
     // autoLogin();
+    if (emailController.text == "demo") {
+      AccountModel.instance.uyeEmail = "demo@netfect.com";
+    }
   }
 
   @override
@@ -204,7 +207,7 @@ class _LoginViewState extends BaseState<LoginView> {
         log(jsonEncode(a.toJson()), name: "sea");
         final response = await networkManager.getToken(
           path: ApiUrls.token,
-          queryParameters: {"deviceInfos": jsonEncode((a..kullaniciAdi= emailController.text).toJson())},
+          queryParameters: {"deviceInfos": jsonEncode(a.toJson())},
           data: {"grant_type": "password", "username": emailController.text, "password": passwordController.text},
         );
         dialogManager.hideAlertDialog;

@@ -21,8 +21,8 @@ part 'account_model.g.dart';
 class AccountModel with NetworkManagerMixin {
   AccountModel.getValue() {
     init();
-    uyeEmail = CacheManager.getHesapBilgileri?.uyeEmail ?? "";
-    uyeSifre = CacheManager.getHesapBilgileri?.uyeSifre ?? "";
+    uyeEmail = CacheManager.getHesapBilgileri?.uyeEmail;
+    uyeSifre = CacheManager.getHesapBilgileri?.uyeSifre;
   }
   static AccountModel instance = AccountModel.getValue();
 
