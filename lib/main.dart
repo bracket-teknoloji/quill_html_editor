@@ -53,11 +53,9 @@ void main() async {
   await CacheManager.instance.initHiveBoxes();
   await AppInfoModel.instance.init();
   //* AccountModel'i splashAuthView'da init ediyoruz.
-    // await AccountModel.instance.init();
+  // await AccountModel.instance.init();
   //* Firebase Crashlytics
-  if (await AppTrackingTransparency.requestTrackingAuthorization() == TrackingStatus.authorized) {
     WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) async => await firebaseInitialized());
-  }
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.landscapeRight,
@@ -70,7 +68,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-  
 
   @override
   Widget build(BuildContext context) {
@@ -149,7 +146,7 @@ class MyApp extends StatelessWidget {
 
 Future<void> firebaseInitialized() async {
   if (kIsWeb) return;
-  if (!Platform.isWindows) {
+  if (!Platform.isWindows && (await AppTrackingTransparency.requestTrackingAuthorization() == TrackingStatus.authorized || !Platform.isIOS)) {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
     FirebaseCrashlytics.instance.setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");
     FlutterError.onError = (errorDetails) => FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
