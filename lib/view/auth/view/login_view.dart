@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:app_settings/app_settings.dart';
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
@@ -52,6 +53,7 @@ class _LoginViewState extends BaseState<LoginView> {
     // autoLogin();
     if (emailController.text == "demo") {
       AccountModel.instance.uyeEmail = "demo@netfect.com";
+      // AccountModel.instance.uyeSifre = "demo";
     }
   }
 
@@ -188,13 +190,14 @@ class _LoginViewState extends BaseState<LoginView> {
   ElevatedButton get elevatedButton {
     return ElevatedButton(
         onPressed: () async {
-          if (await AppTrackingTransparency.trackingAuthorizationStatus != TrackingStatus.authorized) {
-            await dialogManager.showAlertDialog(
-                "Cihaz bilgilerinizin toplanması için izin vermeniz gerekmektedir. Ayarlar'dan lütfen cihazın \n\"Takip Etmeye İzin Ver\"\nayarını açınız.\n\nAyarlar sayfasına yönlendiriliyorsunuz.");
-            await AppSettings.openAppSettings(type: AppSettingsType.settings);
-          } else {
+          // await AppTrackingTransparency.requestTrackingAuthorization();
+          // if ((await AppTrackingTransparency.trackingAuthorizationStatus != TrackingStatus.authorized) && Platform.isIOS) {
+          //   await dialogManager.showAlertDialog(
+          //       "Cihaz bilgilerinizin toplanması için izin vermeniz gerekmektedir. Ayarlar'dan lütfen cihazın \n\"Takip Etmeye İzin Ver\"\nayarını açınız.\n\nAyarlar sayfasına yönlendiriliyorsunuz.");
+          //   await AppSettings.openAppSettings();
+          // } else {
+          // }
             login();
-          }
         },
         child: const Text(
           "Giriş",
@@ -202,6 +205,7 @@ class _LoginViewState extends BaseState<LoginView> {
   }
 
   void login() async {
+    await AccountModel.instance.init();
     AccountModel instance = AccountModel.instance;
     var a = instance..kullaniciAdi = emailController.text;
     dialogManager.showLoadingDialog("Giriş Yapılıyor");
@@ -211,7 +215,6 @@ class _LoginViewState extends BaseState<LoginView> {
       try {
         CacheManager.setSirketAdi(companyController.text);
         // CacheManager.setHesapBilgileri(a);
-
         log(jsonEncode(a.toJson()), name: "sea");
         final response = await networkManager.getToken(
           path: ApiUrls.token,

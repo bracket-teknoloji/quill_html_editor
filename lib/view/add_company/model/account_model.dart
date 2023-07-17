@@ -225,13 +225,13 @@ class AccountModel with NetworkManagerMixin {
     //! IOS
     else if (Platform.isIOS) {
       // while (await AppTrackingTransparency.trackingAuthorizationStatus != TrackingStatus.authorized) {
-        await Future.delayed(const Duration(seconds: 1));
-        await AppTrackingTransparency.requestTrackingAuthorization();
           final iosInfo = await deviceInfo.iosInfo;
           cihazMarkasi = iosInfo.name;
-          cihazModeli = iosInfo.model;
+          cihazModeli = iosInfo.localizedModel;
           ozelCihazKimligi = iosInfo.identifierForVendor;
           cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
+        await Future.delayed(const Duration(seconds: 1));
+        await AppTrackingTransparency.requestTrackingAuthorization();
       // }
     }
     //!DESKTOP

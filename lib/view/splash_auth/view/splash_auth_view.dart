@@ -31,7 +31,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
   @override
   void initState() {
     super.initState();
-    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp)=>AccountModel.instance.init());
+    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) async => AccountModel.instance.init());
   }
 
   @override

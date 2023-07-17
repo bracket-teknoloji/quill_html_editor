@@ -1,6 +1,7 @@
 import "dart:io";
 import "dart:ui";
 
+import "package:app_tracking_transparency/app_tracking_transparency.dart";
 import "package:firebase_core/firebase_core.dart";
 import "package:firebase_crashlytics/firebase_crashlytics.dart";
 import "package:flutter/foundation.dart";
@@ -54,7 +55,9 @@ void main() async {
   //* AccountModel'i splashAuthView'da init ediyoruz.
     // await AccountModel.instance.init();
   //* Firebase Crashlytics
-  await firebaseInitialized();
+  if (await AppTrackingTransparency.requestTrackingAuthorization() == TrackingStatus.authorized) {
+    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) async => await firebaseInitialized());
+  }
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.landscapeRight,

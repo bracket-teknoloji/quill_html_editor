@@ -38,11 +38,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>To capture profile photo please grant camera access</string>
+	<string>QR kodu okutabilmek için lütfen bunu onaylayın.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>App needs access to photo lib for profile images</string>
+	<string>Fotoğraflarınıza erişmek için lütfen bunu onaylayın.</string>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>Merhaba Uygulamaya erişiminiz için buna ihtiyacımız var.</string>
+	<string>Uygulama herhangi bir hata aldığında bize haber vermesi için bunu onaylayın.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

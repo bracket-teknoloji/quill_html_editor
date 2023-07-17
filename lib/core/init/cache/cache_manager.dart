@@ -81,7 +81,7 @@ class CacheManager {
   static AccountModel? get getHesapBilgileri => _hesapBilgileriBox.get("value") ?? AccountModel();
   static CariSehirlerModel getCariSehirler() => _cariSehirBox.get("value");
   static List getSubeListesi() => _subeListesiBox.get("value") ?? [];
-  static String get  getSirketAdi => _sirketAdiBox.get("value") ?? "";
+  static String get getSirketAdi => _sirketAdiBox.get("value") ?? "";
 
   //* Setters
   static void setLogout(bool value) => _preferencesBox.put("logout", value);
@@ -94,7 +94,7 @@ class CacheManager {
     log("AccountResponseModel: ${_accountsBox.toMap()}");
   }
 
-  static void setHesapBilgileri(AccountModel value) => _hesapBilgileriBox.put("value", value);
+  static void setHesapBilgileri(AccountModel value) => _hesapBilgileriBox.put("value", value ?? AccountModel());
 
   ///? `[TODO DÜZELT]`
   static void setVerifiedUser(Map value) => _verifiedUsersBox.put("data", value);
