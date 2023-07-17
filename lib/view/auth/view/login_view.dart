@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:app_settings/app_settings.dart';
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -64,9 +66,7 @@ class _LoginViewState extends BaseState<LoginView> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async {
-        return false;
-      },
+      onWillPop: () async => false,
       child: Stack(
         children: [
           WaveWidget(
@@ -187,7 +187,15 @@ class _LoginViewState extends BaseState<LoginView> {
 
   ElevatedButton get elevatedButton {
     return ElevatedButton(
-        onPressed: login,
+        onPressed: () async {
+          if (await AppTrackingTransparency.trackingAuthorizationStatus != TrackingStatus.authorized) {
+            await dialogManager.showAlertDialog(
+                "Cihaz bilgilerinizin toplanması için izin vermeniz gerekmektedir. Ayarlar'dan lütfen cihazın \n\"Takip Etmeye İzin Ver\"\nayarını açınız.\n\nAyarlar sayfasına yönlendiriliyorsunuz.");
+            await AppSettings.openAppSettings(type: AppSettingsType.settings);
+          } else {
+            login();
+          }
+        },
         child: const Text(
           "Giriş",
         ));

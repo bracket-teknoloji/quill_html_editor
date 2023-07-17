@@ -197,14 +197,13 @@ class AccountModel with NetworkManagerMixin {
     //* Cihaz ve Sim Bilgileri
     uygulamaDili = "tr";
     cihazDili = "tr";
+      cihazSistemVersiyonu = "20";
     cihazTarihiUtc = DateTime.now().toUtc();
     final deviceInfo = DeviceInfoPlugin();
     //!WEB
     if (kIsWeb) {
       final webInfo = await deviceInfo.webBrowserInfo;
-      cihazSistemVersiyonu = "20";
       cihazMarkasi = webInfo.vendor;
-      cihazSistemVersiyonu = "20";
       cihazModeli = webInfo.userAgent;
       ozelCihazKimligi = webInfo.userAgent;
       cihazKimligi = base64Encode(utf8.encode("$cihazMarkasi:$cihazModeli:$ozelCihazKimligi:"));
@@ -225,15 +224,15 @@ class AccountModel with NetworkManagerMixin {
     }
     //! IOS
     else if (Platform.isIOS) {
-      await AppTrackingTransparency.requestTrackingAuthorization();
-      if (await AppTrackingTransparency.trackingAuthorizationStatus == TrackingStatus.authorized) {
-        final iosInfo = await deviceInfo.iosInfo;
-        cihazMarkasi = iosInfo.name;
-        cihazModeli = iosInfo.model;
-        cihazSistemVersiyonu = "20";
-        ozelCihazKimligi = iosInfo.identifierForVendor;
-        cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
-      }
+      // while (await AppTrackingTransparency.trackingAuthorizationStatus != TrackingStatus.authorized) {
+        await Future.delayed(const Duration(seconds: 1));
+        await AppTrackingTransparency.requestTrackingAuthorization();
+          final iosInfo = await deviceInfo.iosInfo;
+          cihazMarkasi = iosInfo.name;
+          cihazModeli = iosInfo.model;
+          ozelCihazKimligi = iosInfo.identifierForVendor;
+          cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
+      // }
     }
     //!DESKTOP
     else if (Platform.isWindows) {
@@ -276,11 +275,10 @@ class AccountModel with NetworkManagerMixin {
       }
     }
     //* Uygulama Bilgileri
-    uygulamaSurumu = "228";
-
     ///  [uygulamaSurumu = packageInfo.version;]
     ///* olarak değiştirilecek fakat API bu uygulamanın sürümünü kabul etmediği için manuel verdim.
     uygulamaSurumKodu = 228;
+    uygulamaSurumu = uygulamaSurumKodu.toString();
     requestVersion = 2;
     await PackageInfo.fromPlatform().then((value) => paketAdi = value.packageName);
 

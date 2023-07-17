@@ -37,13 +37,13 @@ class NetworkManager {
         onError: (e, handler) {
           print(e);
           if (e.type == DioExceptionType.connectionError) {
-            return handler.reject(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error}"));
+            return handler.next(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error}"));
           } else if (e.type == DioExceptionType.connectionTimeout) {
-            return handler.reject(DioException(requestOptions: RequestOptions(), message: "Bağlantı zaman aşımına uğradı."));
+            return handler.next(DioException(requestOptions: RequestOptions(), message: "Bağlantı zaman aşımına uğradı."));
           } else if (e.type == DioExceptionType.unknown) {
-            return handler.reject(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz."));
+            return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz."));
           } else {
-            handler.reject(e);
+            handler.next(e);
           }
         },
       ),

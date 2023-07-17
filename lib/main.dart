@@ -51,7 +51,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheManager.instance.initHiveBoxes();
   await AppInfoModel.instance.init();
-    await AccountModel.instance.init();
+  //* AccountModel'i splashAuthView'da init ediyoruz.
+    // await AccountModel.instance.init();
   //* Firebase Crashlytics
   await firebaseInitialized();
   SystemChrome.setPreferredOrientations([
@@ -66,6 +67,7 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+  
 
   @override
   Widget build(BuildContext context) {
