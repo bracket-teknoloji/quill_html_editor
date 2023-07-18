@@ -99,15 +99,11 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
           if (!box.containsKey(item.email)) {
             Get.back(result: true);
             setState(() {});
-            CacheManager.setAccounts(item..parola = _controller2.text);
+            CacheManager.setAccounts(item..parola = encodedPassword);
             CacheManager.setHesapBilgileri(model);
             dialogManager.showSnackBar("Başarılı");
-          } else {
-            dialogManager.showSnackBar("${item.firmaKisaAdi} zaten kayıtlı");
           }
         }
-      } else {
-        dialogManager.showAlertDialog(response.message.toString());
       }
     } else {
       dialogManager.showSnackBar("Lütfen boş alan bırakmayınız");
@@ -125,6 +121,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
         bodyModel: AccountResponseModel(),
         addTokenKey: false,
         data: data,
+        showError: false,
         path: ApiUrls.getUyeBilgileri,
       );
       if (response.data != null) {
@@ -135,9 +132,10 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
               anaHesapBox.put("anaHesap", [element.email, element.parola]);
             }
           });
+    String encodedPassword = passwordDecoder(_controller2.text);
           AccountModel.instance
             ..uyeEmail = response.data![0].email
-            ..uyeSifre = response.data![0].parola;
+            ..uyeSifre = encodedPassword;
           Box box = CacheManager.accountsBox;
           for (AccountResponseModel item in response.data!) {
             if (!box.containsKey(item.email)) {
@@ -149,13 +147,8 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
               dialogManager.showSnackBar("${item.firmaKisaAdi} zaten kayıtlı");
             }
           }
-        } else {
-          dialogManager.showAlertDialog(response.message.toString());
-        }
-      } else {
-        //?
-        dialogManager.showAlertDialog(response.message.toString());
-      }
+        } 
+      } 
     }
   }
 

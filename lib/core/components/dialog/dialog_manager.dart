@@ -8,7 +8,6 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kartal/kartal.dart';
 import 'package:picker/core/base/model/login_dialog_model.dart';
-import 'package:picker/core/constants/extensions/number_extensions.dart';
 import 'package:picker/view/add_company/model/account_response_model.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
 
@@ -124,7 +123,6 @@ class DialogManager {
             showLoadingDialog("Çıkış yapılıyor...");
             log("Çıkış yapılıyor...");
             CacheManager.setLogout(false);
-            CacheManager.setHesapBilgileri(AccountModel());
             Get.offAndToNamed("/login");
           }
         },
@@ -258,7 +256,13 @@ class DialogManager {
               title: const Text("demo"),
               leading: IconHelper.smallIcon("User-Account"),
               onTap: () {
-                Get.back(result: LoginDialogModel(account: AccountResponseModel()..firma = "demo"..email = "demo@netfect.com", username: "demo", password: "demo"));
+                Get.back(
+                    result: LoginDialogModel(
+                        account: AccountResponseModel()
+                          ..firma = "demo"
+                          ..email = "demo@netfect.com",
+                        username: "demo",
+                        password: "demo"));
               }),
           ...List.generate(
             box.length,

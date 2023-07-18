@@ -28,6 +28,7 @@ class CacheManager {
   static late Box hesapBilgileriBox;
   static late Box cariSehirBox;
   static late Box subeListesiBox;
+  static late Box<bool> isLicenseVerifiedBox;
   // static late Box _grupKoduListesiBox;
   //Lazy Singleton
   static final CacheManager _instance = CacheManager._init();
@@ -63,8 +64,12 @@ class CacheManager {
     hesapBilgileriBox = await Hive.openBox("hesapBilgileri");
     cariSehirBox = await Hive.openBox("cariSehir");
     subeListesiBox = await Hive.openBox<List>("cariListesi");
+    isLicenseVerifiedBox = await Hive.openBox<bool>("isLicenseVerified");
+    if (isLicenseVerifiedBox.isEmpty) {
+      isLicenseVerifiedBox.put("value", false);
+    }
     if (verifiedUsersBox.isEmpty) {
-      verifiedUsersBox.put("data", LoginDialogModel(account: AccountResponseModel.demo(firma: "demo",email: "demo@netfect.com"), username: "demo", password: "demo"));
+      verifiedUsersBox.put("data", LoginDialogModel(account: AccountResponseModel.demo(firma: "demo", email: "demo@netfect.com"), username: "demo", password: "demo"));
     }
     if (hesapBilgileriBox.isEmpty) {
       hesapBilgileriBox.put("value", AccountModel.instance);
@@ -87,6 +92,7 @@ class CacheManager {
   static AccountModel? get getHesapBilgileri => hesapBilgileriBox.get("value") ?? AccountModel();
   static CariSehirlerModel getCariSehirler() => cariSehirBox.get("value");
   static List getSubeListesi() => subeListesiBox.get("value") ?? [];
+  static bool get getIsLicenseVerified => isLicenseVerifiedBox.get("value") ?? false;
   // static String get getSirketAdi => _sirketAdiBox.get("value") ?? "";
 
   //* Setters
@@ -115,6 +121,7 @@ class CacheManager {
 
   static void setCariSehirler(CariSehirlerModel value) => cariSehirBox.put("value", value);
   static void setSubeListesi(List value) => subeListesiBox.put("value", value);
+  static void setIsLicenseVerified(bool value) => isLicenseVerifiedBox.put("value", value);
   // static void setSirketAdi(String value) => _sirketAdiBox.put("value", value);
 
 //* Clear and Remove

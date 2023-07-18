@@ -8,7 +8,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/base/model/generic_response_model.dart';
 import 'package:picker/core/base/model/login_dialog_model.dart';
+import 'package:picker/view/add_company/model/account_response_model.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
@@ -118,24 +120,29 @@ class _LoginViewState extends BaseState<LoginView> {
                                 a = a as LoginDialogModel?;
                                 if (a != null) {
                                   textFieldData = a;
+                                  //*LoginDialogModel
+                                  if (textFieldData.account?.firma != null) {
+                                    companyController.text = textFieldData.account!.firma!;
+                                  }
+                                  if (textFieldData.username != null) {
+                                    emailController.text = textFieldData.username!;
+                                  }
+                                  if (textFieldData.password != null) {
+                                    passwordController.text = textFieldData.password ?? "";
+                                  }
+                                  if (textFieldData.account?.firma == "demo") {
+                                    AccountModel.instance.uyeEmail = "demo@netfect.com";
+                                    AccountModel.instance.uyeSifre = null;
+                                    textFieldData.account?.email = "demo@netfect.com";
+                                    textFieldData.account?.parola = null;
+                                  } else {
+                                    AccountModel.instance.uyeEmail = textFieldData.account?.email;
+                                    AccountModel.instance.uyeSifre = textFieldData.account?.parola;
+                                    textFieldData.account?.email = textFieldData.account?.email;
+                                    textFieldData.account?.parola = textFieldData.account?.parola;
+                                  }
+                                  setState(() {});
                                 }
-                                //*LoginDialogModel
-                                if (textFieldData.account?.firma != null) {
-                                  companyController.text = textFieldData.account!.firma!;
-                                }
-                                if (textFieldData.username != null) {
-                                  emailController.text = textFieldData.username!;
-                                }
-                                if (textFieldData.password != null) {
-                                  passwordController.text = textFieldData.password ?? "";
-                                }
-                                if (textFieldData.account?.firma == "demo") {
-                                  AccountModel.instance.uyeEmail = "demo@netfect.com";
-                                  AccountModel.instance.uyeSifre = null;
-                                } else {
-                                  AccountModel.instance.init();
-                                }
-                                setState(() {});
                               },
                               decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz)),
                               controller: companyController,
@@ -216,11 +223,25 @@ class _LoginViewState extends BaseState<LoginView> {
   }
 
   void login() async {
-    await AccountModel.instance.init();
+    var result = await getUyeBilgileri();
+    if (result.success != true) {
+      if (result.errorCode == 5) {
+        CacheManager.setIsLicenseVerified(false);
+        dialogManager.showAlertDialog(result.message ?? "");
+        return;
+      } else {
+        CacheManager.setIsLicenseVerified(true);
+      }
+    }
     AccountModel instance = AccountModel.instance;
     var a = instance
       ..kullaniciAdi = emailController.text
       ..uyeEmail = textFieldData.account?.email;
+    if (a.uyeEmail == "demo@netfect.com") {
+      a.uyeSifre = null;
+    } else {
+      a.uyeSifre = textFieldData.account?.parola;
+    }
     dialogManager.showLoadingDialog("Giriş Yapılıyor");
 
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
@@ -262,5 +283,14 @@ class _LoginViewState extends BaseState<LoginView> {
       dialogManager.hideSnackBar;
       dialogManager.showSnackBar("Lütfen boş alan bırakmayınız.");
     }
+  }
+
+  Future<GenericResponseModel> getUyeBilgileri() async {
+    final response = await networkManager.dioPost<AccountResponseModel>(
+        bodyModel: AccountResponseModel(), showError: false, data: AccountModel.instance.toJson(), addTokenKey: false, path: ApiUrls.getUyeBilgileri);
+    if (response.success == true) {
+      CacheManager.setAccounts(response.data.first..parola = AccountModel.instance.uyeSifre);
+    }
+    return response;
   }
 }

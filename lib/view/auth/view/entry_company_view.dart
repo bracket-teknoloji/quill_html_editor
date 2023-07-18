@@ -317,7 +317,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   CacheManager.setVeriTabani(selected);
                                   CacheManager.setIsletmeSube(userData);
                                   CacheManager.setLogout(true);
-                                  CacheManager.setHesapBilgileri(AccountModel.instance);
                                   Get.offAndToNamed("/mainPage");
                                   // Get.toNamed("/mainPage");
                                   (response.message?.isNotNullOrNoEmpty??false) ? dialogManager.showAlertDialog(response.message.toString()) : null;

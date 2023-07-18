@@ -7,5 +7,8 @@
   // Remove from file watching
   "files.watcherExclude": {
     "**/.fvm": true
-  }
+  },
+  "editor.fontFamily": "JetBrains Mono",
+  "errorLens.fontWeight": "normal",
+  "editor.fontWeight": "normal"
 }
