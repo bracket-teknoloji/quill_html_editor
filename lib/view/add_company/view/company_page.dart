@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:picker/core/init/cache/cache_manager.dart';
 
 import '../../../core/base/state/base_state.dart';
 import '../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart';
@@ -15,12 +16,10 @@ class AccountsView extends StatefulWidget {
   State<AccountsView> createState() => _AccountsViewState();
 }
 
-int getListLength() {
-  return Hive.box("accounts").length;
-}
 
 class _AccountsViewState extends BaseState<AccountsView> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+int get getListLength => Hive.box("accounts").length;
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +42,12 @@ class _AccountsViewState extends BaseState<AccountsView> {
         ),
         title: const Text("Hesaplar"),
       ),
-      body: getListLength() == 0
+      body: getListLength == 0
           ? const Center(child: Text("Hesap Bulunamadı"))
           : Padding(
               padding: UIHelper.midPadding,
               child: ListView.builder(
-                  itemCount: getListLength() == 0 ? 1 : getListLength(),
+                  itemCount: getListLength == 0 ? 1 : getListLength,
                   itemBuilder: (context, index) {
                     AccountResponseModel account = Hive.box("accounts").getAt(index);
                     return Card(
@@ -62,7 +61,7 @@ class _AccountsViewState extends BaseState<AccountsView> {
                                 onTap: () {
                                   Navigator.pop(context);
                                   dialogManager.showAreYouSureDialog(() {
-                                    Hive.box("accounts").delete(account.email.toString());
+                                   CacheManager.accountsBox.delete(account.email);
                                     setState(() {});
                                   });
                                 }),

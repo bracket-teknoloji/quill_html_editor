@@ -110,8 +110,10 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   Widget build(BuildContext context) {
     log(paramData.toString());
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
+      
       extendBody: true,
+      extendBodyBehindAppBar: false,
       appBar: appBar(context),
       floatingActionButton: fab(),
       body: body(),
@@ -397,35 +399,33 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   }
 
   Widget? bottomButtonBar() {
-    return SafeArea(
-      child: Observer(
-          builder: (_) => ScrollableWidget(
-                isScrolledDown: !viewModel.isScrolledDown,
-                child: SizedBox(
-                  height: context.isPortrait ? (height * 0.06) : (height * 0.1 < 60 ? 60 : height * 0.1),
-                  child: paramData.keys.isNotEmpty
-                      ? Row(
-                          children: [
-                            Expanded(
-                                child: FooterButton(children: [
-                              const Text("Tahsil Edilecek"),
-                              Text(
-                                "${double.tryParse(paramData["TAHSIL_EDILECEK"].replaceAll(",", "."))?.toInt().commaSeparated} TL",
-                                style: const TextStyle(color: Colors.green),
-                              ),
-                            ])),
-                            const VerticalDivider(thickness: 1, width: 1),
-                            Expanded(
-                                child: FooterButton(children: [
-                              const Text("Ödenecek"),
-                              Text("${(double.tryParse(paramData["ODENECEK"].replaceAll(",", "."))!.toInt() * -1).commaSeparated} TL", style: const TextStyle(color: Colors.red)),
-                            ]))
-                          ],
-                        )
-                      : null,
-                ),
-              )),
-    );
+    return Observer(
+        builder: (_) => ScrollableWidget(
+              isScrolledDown: !viewModel.isScrolledDown,
+              child: SizedBox(
+                height: context.isPortrait ? (height * 0.07) : (height * 0.1 < 60 ? 60 : height * 0.1),
+                child: paramData.keys.isNotEmpty
+                    ? Row(
+                        children: [
+                          Expanded(
+                              child: FooterButton(children: [
+                            const Text("Tahsil Edilecek"),
+                            Text(
+                              "${double.tryParse(paramData["TAHSIL_EDILECEK"].replaceAll(",", "."))?.toInt().commaSeparated} TL",
+                              style: const TextStyle(color: Colors.green),
+                            ),
+                          ])),
+                          const VerticalDivider(thickness: 1, width: 1),
+                          Expanded(
+                              child: FooterButton(children: [
+                            const Text("Ödenecek"),
+                            Text("${(double.tryParse(paramData["ODENECEK"].replaceAll(",", "."))!.toInt() * -1).commaSeparated} TL", style: const TextStyle(color: Colors.red)),
+                          ]))
+                        ],
+                      )
+                    : null,
+              ),
+            ));
   }
 
   AppBarButton siralaButton(BuildContext context) {

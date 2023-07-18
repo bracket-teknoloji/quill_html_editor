@@ -73,7 +73,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
                 ),
                 SizedBox(
                     width: width * 0.6,
-                    child: Observer(builder: (_) => Visibility(visible: viewModel.isError, child: Text(viewModel.title, overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center)))),
+                    child: Observer(builder: (_) => Visibility(visible: viewModel.isError, child: Text(viewModel.title, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center)))),
                 Wrap(
                   alignment: WrapAlignment.center,
                   crossAxisAlignment: WrapCrossAlignment.center,
@@ -82,10 +82,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
                     Observer(builder: (_) {
                       return Visibility(visible: !viewModel.isError, child: const CircularProgressIndicator.adaptive().paddingAll(UIHelper.lowSize));
                     }),
-                    SizedBox(
-                        width: width * 0.6,
-                        child:
-                            Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: Text(viewModel.title, overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center)))),
+                    SizedBox(width: width * 0.6, child: Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: Text(viewModel.title, textAlign: TextAlign.center)))),
                     Observer(builder: (_) {
                       return Visibility(
                         visible: viewModel.isError,
@@ -117,17 +114,21 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
   }
 
   void login() async {
+    viewModel.setTitle("Giriş yapılıyor...");
     try {
       viewModel.setIsError(false);
-      if (CacheManager.getVerifiedUser?["user"] == null) {
+      if (CacheManager.getVerifiedUser?.username == null) {
         Get.offAllNamed("/login");
       } else if (CacheManager.getLogout == true) {
         final response = await networkManager.getToken(path: ApiUrls.token, queryParameters: {
-          "deviceInfos": jsonEncode(CacheManager.getHesapBilgileri?.toJson())
+          "deviceInfos": jsonEncode((CacheManager.getHesapBilgileri
+                ?..aktifIsletmeKodu = null
+                ..aktifSubeKodu = null)
+              ?.toJson())
         }, data: {
           "grant_type": "password",
-          "username": CacheManager.getVerifiedUser?["user"],
-          "password": CacheManager.getVerifiedUser?["password"],
+          "username": CacheManager.getVerifiedUser?.username,
+          "password": CacheManager.getVerifiedUser?.password,
         });
         if (response != null) {
           if (response.accessToken != null) {
@@ -152,7 +153,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
   Future<GenericResponseModel> getUyeBilgileri() async {
     viewModel.setTitle("Lisans bilgileri alınıyor...");
     final response =
-        await networkManager.dioPost<AccountResponseModel>(bodyModel: AccountResponseModel(), showError: false, data: AccountModel.instance, addTokenKey: false, path: ApiUrls.getUyeBilgileri);
+        await networkManager.dioPost<AccountResponseModel>(bodyModel: AccountResponseModel(), showError: false, data: CacheManager.getHesapBilgileri?.toJson(), addTokenKey: false, path: ApiUrls.getUyeBilgileri);
     if (response.success == true) {
       CacheManager.setAccounts(response.data.first);
     }
@@ -161,18 +162,18 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
   }
 
   Future<void> getSession() async {
-    // GenericResponseModel lisansResponse = await getUyeBilgileri();
-    // if (lisansResponse.success != true) {
-    //   if (lisansResponse.errorCode == 5) {
-    //     viewModel.setTitle(lisansResponse.message ?? "");
-    //     viewModel.setIsError(true);
-    //     return;
-    //   }
-    // }
+    GenericResponseModel lisansResponse = await getUyeBilgileri();
+    if (lisansResponse.success != true) {
+      if (lisansResponse.errorCode == 5) {
+        viewModel.setTitle(lisansResponse.message ?? "");
+        viewModel.setIsError(true);
+        return;
+      }
+    }
 
     viewModel.setTitle("${CacheManager.getVeriTabani()["Şirket"] ?? ""} şirketi için oturum açılıyor...");
     AccountModel.instance
-      ..kullaniciAdi = CacheManager.getVerifiedUser?["user"]
+      ..kullaniciAdi = CacheManager.getVerifiedUser?.username
       ..aktifVeritabani = CacheManager.getVeriTabani()["Şirket"]
       ..aktifIsletmeKodu = CacheManager.getVeriTabani()["İşletme"]
       ..aktifSubeKodu = CacheManager.getVeriTabani()["Şube"];

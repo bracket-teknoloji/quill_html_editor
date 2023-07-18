@@ -53,7 +53,7 @@ class NetworkManager {
   Future<TokenModel?> getToken({required String path, Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
     FormData formData = FormData.fromMap(data);
     log(AccountModel.instance.toJson().toString());
-    log(CacheManager.getAccounts(CacheManager.getSirketAdi)?.wsWan ?? "");
+    log(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.firma ?? "")?.wsWan ?? "");
     final response = await dio.request(path,
         queryParameters: queryParameters,
         cancelToken: CancelToken(),
@@ -138,7 +138,7 @@ class NetworkManager {
   Future<GenericResponseModel> getPDF(PdfModel model) async {
     Map<String, String> head = getStandardHeader(true, true, true);
     final response = await dioPost<BasePdfModel>(path: ApiUrls.print, bodyModel: BasePdfModel(), headers: head, data: model.toJson());
-      return response;
+    return response;
   }
 
   Future<List<BaseGrupKoduModel>> getGrupKod({required String name, required int grupNo, bool? kullanimda}) async {
@@ -182,9 +182,12 @@ class NetworkManager {
   }
 
   String get getBaseUrl {
-    String result = CacheManager.getAccounts(CacheManager.getSirketAdi)?.wsWan != null
-        ? "${CacheManager.getAccounts(CacheManager.getSirketAdi)?.wsWan}/"
-        : (CacheManager.getAccounts(CacheManager.getSirketAdi)?.wsLan ?? "http://ofis.bracket.com.tr:7575/Picker/");
+    String result;
+    if (CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.email ?? "")?.wsWan != null) {
+      result = "${CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.email ?? "")?.wsWan}/";
+    } else {
+      result = (CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.email ?? "")?.wsLan ?? "http://ofis.bracket.com.tr:7575/Picker/");
+    }
     return result;
   }
 }

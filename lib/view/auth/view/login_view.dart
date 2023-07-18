@@ -1,9 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'dart:io';
 
-import 'package:app_settings/app_settings.dart';
-import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -11,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/base/model/login_dialog_model.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
@@ -21,7 +19,6 @@ import '../../../core/init/app_info/app_info.dart';
 import '../../../core/init/cache/cache_manager.dart';
 import '../../../core/init/network/login/api_urls.dart';
 import '../../add_company/model/account_model.dart';
-import '../../add_company/model/account_response_model.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -32,7 +29,7 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends BaseState<LoginView> {
   bool isObscure = true;
-  Map textFieldData = {"company": "demo", "user": "demo", "password": "demo"};
+  late LoginDialogModel textFieldData;
   late final TextEditingController emailController;
   late final TextEditingController companyController;
   late final TextEditingController passwordController;
@@ -44,17 +41,17 @@ class _LoginViewState extends BaseState<LoginView> {
     companyController = TextEditingController();
     passwordController = TextEditingController();
     var box = CacheManager.getVerifiedUser;
-    if (box != null) {
-      textFieldData = box;
+    textFieldData = box;
+    if (textFieldData.account?.firma != null) {
+      companyController.text = textFieldData.account!.firma!;
     }
-    companyController.text = textFieldData["company"];
-    emailController.text = textFieldData["user"];
-    passwordController.text = textFieldData["password"];
+    if (textFieldData.username != null) {
+      emailController.text = textFieldData.username!;
+    }
+    if (textFieldData.password != null) {
+      passwordController.text = textFieldData.password!;
+    }
     // autoLogin();
-    if (emailController.text == "demo") {
-      AccountModel.instance.uyeEmail = "demo@netfect.com";
-      // AccountModel.instance.uyeSifre = "demo";
-    }
   }
 
   @override
@@ -118,12 +115,26 @@ class _LoginViewState extends BaseState<LoginView> {
                               readOnly: true,
                               onTap: () async {
                                 var a = await dialogManager.selectCompanyDialog();
+                                a = a as LoginDialogModel?;
                                 if (a != null) {
                                   textFieldData = a;
                                 }
-                                companyController.text = textFieldData["company"] ?? "";
-                                emailController.text = textFieldData["user"] ?? "";
-                                passwordController.text = textFieldData["password"] ?? "";
+                                //*LoginDialogModel
+                                if (textFieldData.account?.firma != null) {
+                                  companyController.text = textFieldData.account!.firma!;
+                                }
+                                if (textFieldData.username != null) {
+                                  emailController.text = textFieldData.username!;
+                                }
+                                if (textFieldData.password != null) {
+                                  passwordController.text = textFieldData.password ?? "";
+                                }
+                                if (textFieldData.account?.firma == "demo") {
+                                  AccountModel.instance.uyeEmail = "demo@netfect.com";
+                                  AccountModel.instance.uyeSifre = null;
+                                } else {
+                                  AccountModel.instance.init();
+                                }
                                 setState(() {});
                               },
                               decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz)),
@@ -197,7 +208,7 @@ class _LoginViewState extends BaseState<LoginView> {
           //   await AppSettings.openAppSettings();
           // } else {
           // }
-            login();
+          login();
         },
         child: const Text(
           "Giriş",
@@ -207,29 +218,31 @@ class _LoginViewState extends BaseState<LoginView> {
   void login() async {
     await AccountModel.instance.init();
     AccountModel instance = AccountModel.instance;
-    var a = instance..kullaniciAdi = emailController.text;
+    var a = instance
+      ..kullaniciAdi = emailController.text
+      ..uyeEmail = textFieldData.account?.email;
     dialogManager.showLoadingDialog("Giriş Yapılıyor");
 
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-      AccountResponseModel? accountCache = CacheManager.getAccounts(companyController.text);
       try {
-        CacheManager.setSirketAdi(companyController.text);
-        // CacheManager.setHesapBilgileri(a);
         log(jsonEncode(a.toJson()), name: "sea");
         final response = await networkManager.getToken(
           path: ApiUrls.token,
           queryParameters: {"deviceInfos": jsonEncode(a.toJson())},
           data: {"grant_type": "password", "username": emailController.text, "password": passwordController.text},
         );
+        CacheManager.setHesapBilgileri(a);
         dialogManager.hideAlertDialog;
         Hive.box("preferences").put(companyController.text, [
-          textFieldData["user"],
+          textFieldData.account?.firma,
           emailController.text,
           passwordController.text,
         ]);
 
         if (context.mounted && response != null) {
-          CacheManager.setVerifiedUser({"user": emailController.text, "password": passwordController.text, "company": companyController.text, "email": accountCache?.email ?? ""});
+          CacheManager.setVerifiedUser(textFieldData
+            ..username = emailController.text
+            ..password = passwordController.text);
           CacheManager.setToken(response.accessToken.toString());
           // final uyeBilgiResponse =
           //     await networkManager.dioPost<AccountResponseModel>(bodyModel: AccountResponseModel(), data: AccountModel.instance, addTokenKey: false, path: ApiUrls.getUyeBilgileri);

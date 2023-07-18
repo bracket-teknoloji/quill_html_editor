@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:picker/core/base/model/login_dialog_model.dart';
 
 import '../../../view/add_company/model/account_model.dart';
 import '../../../view/add_company/model/account_response_model.dart';
@@ -14,20 +15,19 @@ import '../../../view/main_page/model/user_model/user_model.dart';
 import 'favorites_model.dart';
 
 class CacheManager {
-  static late Box _tokenBox;
-  static late Box _preferencesBox;
-  static late Box _companiesBox;
-  static late Box _accountsBox;
-  static late Box _anaHesapBox;
-  static late Box _anaVeriBox;
-  static late Box _verifiedUsersBox;
-  static late Box _veriTabaniBox;
-  static late Box _isletmeSubeBox;
-  static late Box _favorilerBox;
-  static late Box _hesapBilgileriBox;
-  static late Box _cariSehirBox;
-  static late Box _subeListesiBox;
-  static late Box _sirketAdiBox;
+  static late Box tokenBox;
+  static late Box preferencesBox;
+  static late Box companiesBox;
+  static late Box accountsBox;
+  static late Box anaHesapBox;
+  static late Box anaVeriBox;
+  static late Box verifiedUsersBox;
+  static late Box veriTabaniBox;
+  static late Box isletmeSubeBox;
+  static late Box favorilerBox;
+  static late Box hesapBilgileriBox;
+  static late Box cariSehirBox;
+  static late Box subeListesiBox;
   // static late Box _grupKoduListesiBox;
   //Lazy Singleton
   static final CacheManager _instance = CacheManager._init();
@@ -43,83 +43,89 @@ class CacheManager {
     Hive.registerAdapter(CariSehirlerModelAdapter());
     Hive.registerAdapter(IsletmeModelAdapter());
     Hive.registerAdapter(NetFectDizaynListAdapter());
+    Hive.registerAdapter(LoginDialogModelAdapter());
 
     initHiveBoxes();
   }
 
   Future<void> initHiveBoxes() async {
     await Hive.initFlutter("picker/hive");
-    _preferencesBox = await Hive.openBox("preferences");
-    _companiesBox = await Hive.openBox("companies");
-    _tokenBox = await Hive.openBox("token");
-    _accountsBox = await Hive.openBox("accounts");
-    _anaHesapBox = await Hive.openBox("anaHesap");
-    _anaVeriBox = await Hive.openBox<MainPageModel>("anaVeri");
-    _verifiedUsersBox = await Hive.openBox("logged");
-    _veriTabaniBox = await Hive.openBox("veriTabani");
-    _isletmeSubeBox = await Hive.openBox("isletmeSube");
-    _favorilerBox = await Hive.openBox("favoriler");
-    _hesapBilgileriBox = await Hive.openBox("hesapBilgileri");
-    _cariSehirBox = await Hive.openBox("cariSehir");
-    _subeListesiBox = await Hive.openBox<List>("cariListesi");
-    _sirketAdiBox = await Hive.openBox("sirketAdi");
+    preferencesBox = await Hive.openBox("preferences");
+    companiesBox = await Hive.openBox("companies");
+    tokenBox = await Hive.openBox("token");
+    accountsBox = await Hive.openBox("accounts");
+    anaHesapBox = await Hive.openBox("anaHesap");
+    anaVeriBox = await Hive.openBox<MainPageModel>("anaVeri");
+    verifiedUsersBox = await Hive.openBox("logged");
+    veriTabaniBox = await Hive.openBox("veriTabani");
+    isletmeSubeBox = await Hive.openBox("isletmeSube");
+    favorilerBox = await Hive.openBox("favoriler");
+    hesapBilgileriBox = await Hive.openBox("hesapBilgileri");
+    cariSehirBox = await Hive.openBox("cariSehir");
+    subeListesiBox = await Hive.openBox<List>("cariListesi");
+    if (verifiedUsersBox.isEmpty) {
+      verifiedUsersBox.put("data", LoginDialogModel(account: AccountResponseModel.demo(firma: "demo",email: "demo@netfect.com"), username: "demo", password: "demo"));
+    }
+    if (hesapBilgileriBox.isEmpty) {
+      hesapBilgileriBox.put("value", AccountModel.instance);
+    }
   }
 
 //*  Getters and Setters
   //* Getters
-  static bool? get getLogout => _preferencesBox.get("logout");
-  static String getToken() => _tokenBox.get("token");
-  static String getPref(String query) => _preferencesBox.get(query);
-  static String getCompanies(String query) => _companiesBox.get(query);
-  static AccountResponseModel? getAccounts(String query) => _accountsBox.get(query);
+  static bool? get getLogout => preferencesBox.get("logout");
+  static String getToken() => tokenBox.get("token");
+  static String getPref(String query) => preferencesBox.get(query);
+  static String getCompanies(String query) => companiesBox.get(query);
+  static AccountResponseModel? getAccounts(String query) => accountsBox.get(query);
 
-  static MainPageModel? getAnaVeri() => _anaVeriBox.get("data");
-  static Map? get getVerifiedUser => _verifiedUsersBox.get("data");
-  static Map getVeriTabani() => _veriTabaniBox.get(getVerifiedUser?["user"]) ?? {};
-  static Map get getIsletmeSube => _isletmeSubeBox.get(getVerifiedUser?["user"]) ?? {};
-  static Map<String, FavoritesModel> getFavoriler() => _favorilerBox.toMap().cast<String, FavoritesModel>();
-  static AccountModel? get getHesapBilgileri => _hesapBilgileriBox.get("value") ?? AccountModel();
-  static CariSehirlerModel getCariSehirler() => _cariSehirBox.get("value");
-  static List getSubeListesi() => _subeListesiBox.get("value") ?? [];
-  static String get getSirketAdi => _sirketAdiBox.get("value") ?? "";
+  static MainPageModel? getAnaVeri() => anaVeriBox.get("data");
+  static LoginDialogModel get getVerifiedUser => verifiedUsersBox.get("data");
+  static Map getVeriTabani() => veriTabaniBox.get(getVerifiedUser.username) ?? {};
+  static Map get getIsletmeSube => isletmeSubeBox.get(getVerifiedUser.username) ?? {};
+  static Map<String, FavoritesModel> getFavoriler() => favorilerBox.toMap().cast<String, FavoritesModel>();
+  static AccountModel? get getHesapBilgileri => hesapBilgileriBox.get("value") ?? AccountModel();
+  static CariSehirlerModel getCariSehirler() => cariSehirBox.get("value");
+  static List getSubeListesi() => subeListesiBox.get("value") ?? [];
+  // static String get getSirketAdi => _sirketAdiBox.get("value") ?? "";
 
   //* Setters
-  static void setLogout(bool value) => _preferencesBox.put("logout", value);
-  static void setToken(String token) => _tokenBox.put("token", token);
-  static void setPref(String key, String value) => _preferencesBox.put(key, value);
-  static void setCompanies(String key, String value) => _companiesBox.put(key, value);
-  static void setAnaVeri(MainPageModel value) => _anaVeriBox.put("data", value);
+  static void setLogout(bool value) => preferencesBox.put("logout", value);
+  static void setToken(String token) => tokenBox.put("token", token);
+  static void setPref(String key, String value) => preferencesBox.put(key, value);
+  static void setCompanies(String key, String value) => companiesBox.put(key, value);
+  static void setAnaVeri(MainPageModel value) => anaVeriBox.put("data", value);
   static void setAccounts(AccountResponseModel value) {
-    _accountsBox.put(value.email, value);
-    log("AccountResponseModel: ${_accountsBox.toMap()}");
+    accountsBox.put(value.email, value);
+    log("AccountResponseModel: ${accountsBox.toMap()}");
   }
 
-  static void setHesapBilgileri(AccountModel value) => _hesapBilgileriBox.put("value", value ?? AccountModel());
+  static void setHesapBilgileri(AccountModel value) => hesapBilgileriBox.put("value", value);
 
   ///? `[TODO DÜZELT]`
-  static void setVerifiedUser(Map value) => _verifiedUsersBox.put("data", value);
-  static void setVeriTabani(Map value) => _veriTabaniBox.put(getVerifiedUser?["user"], value);
-  static void setIsletmeSube(Map value) => _isletmeSubeBox.put(getVerifiedUser?["user"], value);
-  static void setFavoriler(FavoritesModel value) => _favorilerBox.add(value);
-  static void setFavorilerSira(int index, FavoritesModel value) => _favorilerBox.putAt(index, value);
+  static void setVerifiedUser(LoginDialogModel value) => verifiedUsersBox.put("data", value);
+  static void setVeriTabani(Map value) => veriTabaniBox.put(getVerifiedUser.username, value);
+  static void setIsletmeSube(Map value) => isletmeSubeBox.put(getVerifiedUser.username, value);
+  static void setFavoriler(FavoritesModel value) => favorilerBox.add(value);
+  static void setFavorilerSira(int index, FavoritesModel value) => favorilerBox.putAt(index, value);
   static Future<void> setFavorilerList(List<FavoritesModel> value) async {
-    await _favorilerBox.clear();
-    _favorilerBox.putAll({for (var e in value) e.title: e});
+    await favorilerBox.clear();
+    favorilerBox.putAll({for (var e in value) e.title: e});
   }
 
-  static void setCariSehirler(CariSehirlerModel value) => _cariSehirBox.put("value", value);
-  static void setSubeListesi(List value) => _subeListesiBox.put("value", value);
-  static void setSirketAdi(String value) => _sirketAdiBox.put("value", value);
+  static void setCariSehirler(CariSehirlerModel value) => cariSehirBox.put("value", value);
+  static void setSubeListesi(List value) => subeListesiBox.put("value", value);
+  // static void setSirketAdi(String value) => _sirketAdiBox.put("value", value);
 
 //* Clear and Remove
   static void clearBox(String boxName) => Hive.box(boxName).clear();
   static void removeFavoriler(String key) {
-    if (_favorilerBox.values.toList().indexWhere((element) => element.title == key) >= 0) {
-      _favorilerBox.deleteAt(_favorilerBox.values.toList().indexWhere((element) => element.title == key));
+    if (favorilerBox.values.toList().indexWhere((element) => element.title == key) >= 0) {
+      favorilerBox.deleteAt(favorilerBox.values.toList().indexWhere((element) => element.title == key));
     } else {
       log("Favorilerde böyle bir key yok");
     }
   }
 
-  static void removeFavoriWithIndex(int index) => _favorilerBox.deleteAt(index);
+  static void removeFavoriWithIndex(int index) => favorilerBox.deleteAt(index);
 }

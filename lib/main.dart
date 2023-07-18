@@ -12,6 +12,7 @@ import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_
 import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_gecmisi/view/fiyat_gecmisi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_gor/view/fiyat_gor_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+import "package:picker/view/main_page/model/param_model.dart";
 
 import "core/init/app_info/app_info.dart";
 import "core/init/cache/cache_manager.dart";
@@ -55,7 +56,7 @@ void main() async {
   //* AccountModel'i splashAuthView'da init ediyoruz.
   // await AccountModel.instance.init();
   //* Firebase Crashlytics
-    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) async => await firebaseInitialized());
+  WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) async => await firebaseInitialized());
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.landscapeRight,
@@ -86,6 +87,9 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(name: "/login", page: () => const LoginView()),
         GetPage(name: "/entryCompany", page: () => const EntryCompanyView()),
+        GetPage(name: "/addCompany", page: () => const AccountsView()),
+        GetPage(name: "/addAccount", page: () => const AddAccountView()),
+        GetPage(name: "/qr", page: () => const QRScannerView()),
         GetPage(
           name: "/mainPage",
           page: () => const MainPageView(),
@@ -133,12 +137,14 @@ class MyApp extends StatelessWidget {
 
             //* Serbest Raporlar
             //*
-            GetPage(name: "/serbestRaporlar", page: () => SerbestRaporlarView(dizaynList: Get.arguments)),
+            GetPage(
+                name: "/serbestRaporlar",
+                page: () => SerbestRaporlarView(
+                    dizaynList: Get.arguments is NetFectDizaynList ? Get.arguments : null,
+                    cariListesiModel: Get.arguments is CariListesiModel ? Get.arguments : null,
+                    stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null)),
           ],
         ),
-        GetPage(name: "/addCompany", page: () => const AccountsView()),
-        GetPage(name: "/addAccount", page: () => const AddAccountView()),
-        GetPage(name: "/qr", page: () => const QRScannerView()),
       ],
     );
   }

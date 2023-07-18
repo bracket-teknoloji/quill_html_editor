@@ -7,6 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/base/model/login_dialog_model.dart';
+import 'package:picker/core/constants/extensions/number_extensions.dart';
+import 'package:picker/view/add_company/model/account_response_model.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
 
 import '../../../view/add_company/model/account_model.dart';
@@ -121,6 +124,7 @@ class DialogManager {
             showLoadingDialog("Çıkış yapılıyor...");
             log("Çıkış yapılıyor...");
             CacheManager.setLogout(false);
+            CacheManager.setHesapBilgileri(AccountModel());
             Get.offAndToNamed("/login");
           }
         },
@@ -237,8 +241,8 @@ class DialogManager {
   }
 
   Future selectCompanyDialog() {
-    Box box = Hive.box("accounts");
-    Box preferences = Hive.box("preferences");
+    Box? box = CacheManager.accountsBox;
+    Box preferences = CacheManager.preferencesBox;
     return _baseDialog(
         btnOkText: "Firmaları Düzenle",
         btnCancelText: "Vazgeç",
@@ -251,25 +255,21 @@ class DialogManager {
         body: Column(mainAxisSize: MainAxisSize.min, children: [
           Text("Şirket Seçiniz", style: Theme.of(context).textTheme.titleLarge),
           ListTile(
-              title: const Text("DEMO"),
+              title: const Text("demo"),
               leading: IconHelper.smallIcon("User-Account"),
               onTap: () {
-                Get.back(result: {"company": "demo", "user": "demo", "password": "demo", "mail" :"demo@netfect.com"});
+                Get.back(result: LoginDialogModel(account: AccountResponseModel()..firma = "demo"..email = "demo@netfect.com", username: "demo", password: "demo"));
               }),
           ...List.generate(
             box.length,
             (index) {
-              var title = box.getAt(index).firma.toString();
+              var title = ((box.getAt(index)?.firma ?? "")).toString();
               log(box.getAt(index).toString());
               return ListTile(
                   title: Text(title),
                   leading: IconHelper.smallIcon("User-Account"),
                   onTap: () {
-                    Get.back(result: {
-                      "company": title,
-                      "user": preferences.get(title)?[1] ?? "",
-                      "password": preferences.get(title)?[2] ?? "",
-                    }, closeOverlays: true);
+                    Get.back(result: LoginDialogModel(account: box.getAt(index)!, username: preferences.get(title)?[1] ?? "", password: preferences.get(title)?[2] ?? ""), closeOverlays: true);
                   });
             },
           ),

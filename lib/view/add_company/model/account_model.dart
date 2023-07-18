@@ -26,6 +26,9 @@ class AccountModel with NetworkManagerMixin {
   }
   static AccountModel instance = AccountModel.getValue();
 
+  //setter for instance
+  static setInstance(AccountModel value) => instance = value;
+
   AccountModel();
   @HiveField(0)
   @JsonKey(name: "ADI")
@@ -166,6 +169,15 @@ class AccountModel with NetworkManagerMixin {
     // aktifIsletmeKodu = CacheManager.getVeriTabani()["İşletme"];
     // aktifSubeKodu = CacheManager.getVeriTabani()["Şube"];
     // aktifVeritabani = CacheManager.getVeriTabani()["Şirket"];
+    //* Uygulama Bilgileri
+    ///  [uygulamaSurumu = packageInfo.version;]
+    ///* olarak değiştirilecek fakat API bu uygulamanın sürümünü kabul etmediği için manuel verdim.
+    uygulamaSurumKodu = 228;
+    uygulamaSurumu = uygulamaSurumKodu.toString();
+    requestVersion = 2;
+    await PackageInfo.fromPlatform().then((value) => paketAdi = value.packageName);
+
+    log(toJson().toString(), name: runtimeType.toString());
     //* Network Bilgileri (Connectivity Plus)
     offline = "H";
     if (kIsWeb) {
@@ -227,7 +239,7 @@ class AccountModel with NetworkManagerMixin {
       // while (await AppTrackingTransparency.trackingAuthorizationStatus != TrackingStatus.authorized) {
           final iosInfo = await deviceInfo.iosInfo;
           cihazMarkasi = iosInfo.name;
-          cihazModeli = iosInfo.localizedModel;
+          cihazModeli = iosInfo.utsname.machine;
           ozelCihazKimligi = iosInfo.identifierForVendor;
           cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
         await Future.delayed(const Duration(seconds: 1));
@@ -274,15 +286,6 @@ class AccountModel with NetworkManagerMixin {
         cihazKimligi = ozelCihazKimligi;
       }
     }
-    //* Uygulama Bilgileri
-    ///  [uygulamaSurumu = packageInfo.version;]
-    ///* olarak değiştirilecek fakat API bu uygulamanın sürümünü kabul etmediği için manuel verdim.
-    uygulamaSurumKodu = 228;
-    uygulamaSurumu = uygulamaSurumKodu.toString();
-    requestVersion = 2;
-    await PackageInfo.fromPlatform().then((value) => paketAdi = value.packageName);
-
-    log(toJson().toString(), name: runtimeType.toString());
   }
 
   String get getKonumTarihi => "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day} ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}";

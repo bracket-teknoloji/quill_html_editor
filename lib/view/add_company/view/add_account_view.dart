@@ -43,23 +43,20 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
               children: [
                 CustomWidgetWithLabel(
                   text: "Firma E-Posta Adresi",
-                  child: 
-                    TextFormField(
-                        controller: _controller,
-                        inputFormatters: [
-                          //email
-                          FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9@.]')),
-                        ],
-                        textInputAction: TextInputAction.next),
-                  
+                  child: TextFormField(
+                      controller: _controller,
+                      keyboardType: TextInputType.emailAddress,
+                      inputFormatters: [
+                        //email
+                        FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9@.]')),
+                      ],
+                      textInputAction: TextInputAction.next),
                 ),
                 Padding(
                   padding: context.verticalPaddingLow,
                   child: CustomWidgetWithLabel(
                     text: "Şifre",
-                    child: 
-                      TextFormField(obscureText: true, controller: _controller2),
-                    
+                    child: TextFormField(obscureText: true, controller: _controller2),
                   ),
                 ),
                 const Wrap(
@@ -97,7 +94,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
       var data = model.toJson();
       final response = await networkManager.dioPost<AccountResponseModel>(bodyModel: AccountResponseModel(), data: data, addTokenKey: false, path: ApiUrls.getUyeBilgileri);
       if (response.success!) {
-        Box box = Hive.box("accounts");
+        Box box = CacheManager.accountsBox;
         for (AccountResponseModel item in response.data!) {
           if (!box.containsKey(item.email)) {
             Get.back(result: true);
@@ -141,7 +138,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
           AccountModel.instance
             ..uyeEmail = response.data![0].email
             ..uyeSifre = response.data![0].parola;
-          Box box = Hive.box("accounts");
+          Box box = CacheManager.accountsBox;
           for (AccountResponseModel item in response.data!) {
             if (!box.containsKey(item.email)) {
               Get.offAndToNamed("/addCompany");
