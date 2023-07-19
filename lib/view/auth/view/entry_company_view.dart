@@ -3,6 +3,8 @@ import "dart:developer";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import 'package:picker/core/base/model/base_network_mixin.dart';
+import 'package:picker/core/base/model/generic_response_model.dart';
 
 import '../../../core/base/state/base_state.dart';
 import '../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart';
@@ -304,7 +306,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                 ///!!!!!!!!!!!!!!!!!!!! --> TODO BUNU EKLE
                                 // ..gCid = "/Y5TBF72qY7bnZl3+NOYvUtln/g5FJPl4jQ9i59td5M=";
                                 dialogManager.showLoadingDialog("${selected["Şirket"]} şirketine giriş yapılıyor.");
-                                var response;
+                                GenericResponseModel<NetworkManagerMixin> response;
                                   response = await networkManager.dioPost<MainPageModel>(path: ApiUrls.createSession, bodyModel: MainPageModel(), addTokenKey: true, showError: false, data: model, headers: {
                                   "VERITABANI": selected["Şirket"].toString(),
                                   "ISLETME_KODU": selected["İşletme"].toString(),

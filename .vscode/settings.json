@@ -10,5 +10,6 @@
   },
   "editor.fontFamily": "JetBrains Mono",
   "errorLens.fontWeight": "normal",
-  "editor.fontWeight": "normal"
+  "editor.fontWeight": "normal",
+  "editor.fontSize": 13
 }

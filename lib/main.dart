@@ -4,6 +4,7 @@ import "dart:ui";
 import "package:app_tracking_transparency/app_tracking_transparency.dart";
 import "package:firebase_core/firebase_core.dart";
 import "package:firebase_crashlytics/firebase_crashlytics.dart";
+import "package:firebase_messaging/firebase_messaging.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
@@ -73,8 +74,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      title: "Picker",
       defaultTransition: Transition.rightToLeft,
-      color: Colors.amber,
       popGesture: true,
       debugShowCheckedModeBanner: false,
       opaqueRoute: false,
@@ -82,7 +83,6 @@ class MyApp extends StatelessWidget {
       darkTheme: AppThemeDark.instance?.theme,
       themeMode: ThemeMode.dark,
       locale: Get.deviceLocale,
-      title: "Picker",
       home: const SplashAuthView(),
       getPages: [
         GetPage(name: "/login", page: () => const LoginView()),
@@ -130,7 +130,7 @@ class MyApp extends StatelessWidget {
             //* Stok Raporları
             GetPage(name: "/stokAmbarMaliyetRaporu", page: () => AmbarMaliyetRaporuView(model: Get.arguments)),
             GetPage(name: "/stokLokalDepoBakiyeRaporu", page: () => LokalDepoBakiyeRaporuView(model: Get.arguments)),
-            GetPage(name: "/urunGrubunaGoreSatisGrafigi", page: () => UrunGrubunaGoreSatisGrafigiView(model: Get.arguments)),
+            GetPage(name: "/urunGrubunaGoreSatisGrafigi", page: () => UrunGrubunaGoreSatisGrafigiView(model: Get.arguments is CariListesiModel ? Get.arguments : null)),
 
             //* Profil
             GetPage(name: "/temsilciProfil", page: () => const TemsilciProfilView()),
@@ -154,6 +154,13 @@ Future<void> firebaseInitialized() async {
   if (kIsWeb) return;
   if (!Platform.isWindows && (await AppTrackingTransparency.requestTrackingAuthorization() == TrackingStatus.authorized || !Platform.isIOS || !Platform.isMacOS)) {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+    await messaging.requestPermission();
+    await messaging.getToken();
+    // FirebaseMessaging.onMessageOpenedApp.listen((event) => print(event.toMap().toString()));
+    // messaging.getNotificationSettings().then((value) => print(value.authorizationStatus));
+    // messaging.setForegroundNotificationPresentationOptions();
+    // FirebaseMessaging.onBackgroundMessage((message) async => print(message));
     FirebaseCrashlytics.instance.setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");
     FlutterError.onError = (errorDetails) => FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
     PlatformDispatcher.instance.onError = (error, stack) {

@@ -38,6 +38,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 0), () => login());
     return Scaffold(
+      
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Wrap(
         direction: Axis.vertical,

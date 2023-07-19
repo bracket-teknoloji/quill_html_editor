@@ -172,7 +172,7 @@ class AccountModel with NetworkManagerMixin {
     //* Uygulama Bilgileri
     ///  [uygulamaSurumu = packageInfo.version;]
     ///* olarak değiştirilecek fakat API bu uygulamanın sürümünü kabul etmediği için manuel verdim.
-    uygulamaSurumKodu = 228;
+    uygulamaSurumKodu = 229;
     uygulamaSurumu = uygulamaSurumKodu.toString();
     requestVersion = 2;
     await PackageInfo.fromPlatform().then((value) => paketAdi = value.packageName);
