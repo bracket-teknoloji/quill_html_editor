@@ -73,8 +73,9 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       extendBody: true,
+      extendBodyBehindAppBar: false,
       appBar: appBar(context),
       floatingActionButton: fab(),
       bottomNavigationBar: bottomButtonBar(),
@@ -299,47 +300,45 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
     );
   }
 
-  SafeArea bottomButtonBar() {
-    return SafeArea(
-      child: Observer(builder: (_) {
-        return ScrollableWidget(
-          isScrolledDown: viewModel.isScrollDown,
-          child: SizedBox(
-            height: context.isPortrait ? (height * 0.06) : (height * 0.1 < 60 ? 60 : height * 0.1),
-            child: Observer(builder: (_) {
-              return Row(
-                children: [
-                  Expanded(
-                      child: FooterButton(children: [
-                    const Text("Borç"),
-                    Observer(builder: (_) {
-                      return Text(
-                          "${widget.cari?.dovizli == true ? viewModel.dovizBorclarToplami.dotSeparatedWithFixedDigits : viewModel.borclarToplami.dotSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? "TL"}");
-                    })
-                  ])),
-                  const VerticalDivider(thickness: 1, width: 1),
-                  Expanded(
-                      child: FooterButton(children: [
-                    const Text("Alacak"),
-                    Text(
-                        "${widget.cari?.dovizli == true ? viewModel.dovizAlacaklarToplami.dotSeparatedWithFixedDigits : viewModel.borclarToplami.dotSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? "TL"}")
-                  ])),
-                  const VerticalDivider(thickness: 1, width: 1),
-                  Expanded(
-                      child: FooterButton(children: [
-                    const Text("Tahsil Edilecek"),
-                    Text(
-                      "${(widget.cari?.dovizli == true ? viewModel.dovizBorclarToplami - viewModel.dovizAlacaklarToplami : viewModel.borclarToplami - viewModel.alacaklarToplami).dotSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? "TL"}",
-                      style: TextStyle(color: (viewModel.borclarToplami - viewModel.alacaklarToplami) < 0 ? Colors.red : Colors.green),
-                    )
-                  ]))
-                ],
-              );
-            }),
-          ),
-        );
-      }),
-    );
+  Widget bottomButtonBar() {
+    return Observer(builder: (_) {
+      return ScrollableWidget(
+        isScrolledDown: viewModel.isScrollDown,
+        child: SizedBox(
+          height: context.isPortrait ? (height * 0.07) : (height * 0.1 < 60 ? 60 : height * 0.1),
+          child: Observer(builder: (_) {
+            return Row(
+              children: [
+                Expanded(
+                    child: FooterButton(children: [
+                  const Text("Borç"),
+                  Observer(builder: (_) {
+                    return Text(
+                        "${widget.cari?.dovizli == true ? viewModel.dovizBorclarToplami.dotSeparatedWithFixedDigits : viewModel.borclarToplami.dotSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? "TL"}");
+                  })
+                ])),
+                const VerticalDivider(thickness: 1, width: 1),
+                Expanded(
+                    child: FooterButton(children: [
+                  const Text("Alacak"),
+                  Text(
+                      "${widget.cari?.dovizli == true ? viewModel.dovizAlacaklarToplami.dotSeparatedWithFixedDigits : viewModel.borclarToplami.dotSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? "TL"}")
+                ])),
+                const VerticalDivider(thickness: 1, width: 1),
+                Expanded(
+                    child: FooterButton(children: [
+                  const Text("Tahsil Edilecek"),
+                  Text(
+                    "${(widget.cari?.dovizli == true ? viewModel.dovizBorclarToplami - viewModel.dovizAlacaklarToplami : viewModel.borclarToplami - viewModel.alacaklarToplami).dotSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? "TL"}",
+                    style: TextStyle(color: (viewModel.borclarToplami - viewModel.alacaklarToplami) < 0 ? Colors.red : Colors.green),
+                  )
+                ]))
+              ],
+            );
+          }),
+        ),
+      );
+    });
   }
 
   bool getFilter(CariHareketleriModel model, String filter) {

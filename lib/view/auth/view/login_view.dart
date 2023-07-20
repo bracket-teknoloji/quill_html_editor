@@ -275,8 +275,6 @@ class _LoginViewState extends BaseState<LoginView> {
       } on DioException catch (e) {
         dialogManager.hideAlertDialog;
         dialogManager.showAlertDialog(e.response?.data["error_description"] ?? "Hata :${e.message}");
-      } on Exception catch (e) {
-        dialogManager.showAlertDialog(e.toString());
       }
     } else {
       Navigator.of(context, rootNavigator: true).pop();

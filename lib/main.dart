@@ -10,6 +10,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/musteri_siparisleri/view/musteri_siparisleri_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_gecmisi/view/fiyat_gecmisi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_gor/view/fiyat_gor_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -111,6 +112,9 @@ class MyApp extends StatelessWidget {
             GetPage(name: "/cariHareketDetayliYaslandirmaRaporu", page: () => HareketDetayliYaslandirmaRaporuView(model: Get.arguments)),
             GetPage(name: "/cariStokSatisOzeti", page: () => CariStokSatisOzetiView(model: Get.arguments)),
 
+            //* Sipariş
+            GetPage(name: "/siparisMusteriSiparisi", page: () => const MusteriSiparisleriView()),
+
             //* Stok
             GetPage(name: "/stokListesi", page: () => StokListesiView(isGetData: Get.arguments)),
             GetPage(name: "/stokFiyatGor", page: () => const FiyatGorView()),
@@ -156,10 +160,9 @@ Future<void> firebaseInitialized() async {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
     FirebaseMessaging messaging = FirebaseMessaging.instance;
     await messaging.requestPermission();
-    await messaging.getToken();
+    messaging.setForegroundNotificationPresentationOptions(sound: true);
     // FirebaseMessaging.onMessageOpenedApp.listen((event) => print(event.toMap().toString()));
     // messaging.getNotificationSettings().then((value) => print(value.authorizationStatus));
-    // messaging.setForegroundNotificationPresentationOptions();
     // FirebaseMessaging.onBackgroundMessage((message) async => print(message));
     FirebaseCrashlytics.instance.setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");
     FlutterError.onError = (errorDetails) => FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
