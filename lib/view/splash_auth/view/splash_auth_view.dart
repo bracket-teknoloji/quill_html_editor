@@ -38,7 +38,6 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 0), () => login());
     return Scaffold(
-      
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Wrap(
         direction: Axis.vertical,
@@ -164,11 +163,17 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       if (lisansResponse.errorCode == 5) {
         viewModel.setTitle(lisansResponse.message ?? "");
         viewModel.setIsError(true);
-        CacheManager.setIsLicenseVerified(false);
+        CacheManager.setIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "", false);
         return;
       } else {
-        CacheManager.setIsLicenseVerified(true);
+        CacheManager.setIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "", true);
       }
+    }
+
+    if (CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "")) {
+      viewModel.setTitle("Lisansınızın yenilenmesi gerekiyor.");
+      viewModel.setIsError(true);
+      return;
     }
 
     viewModel.setTitle("${CacheManager.getVeriTabani()["Şirket"] ?? ""} şirketi için oturum açılıyor...");

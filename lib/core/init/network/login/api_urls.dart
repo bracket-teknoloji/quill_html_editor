@@ -42,6 +42,7 @@ class ApiUrls {
 
   //*Fatura
   static const String getFaturaKalemleri = "Fatura/GetFaturaKalemleri";
+  static const String getFaturalar = "Fatura/GetFaturalar";
 
   //*Temsilci
   static const String getPlasiyerOzetRaporu = "Finans/GetPlasiyerOzetRaporu";

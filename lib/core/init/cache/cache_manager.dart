@@ -92,7 +92,7 @@ class CacheManager {
   static AccountModel? get getHesapBilgileri => hesapBilgileriBox.get("value") ?? AccountModel();
   static CariSehirlerModel getCariSehirler() => cariSehirBox.get("value");
   static List getSubeListesi() => subeListesiBox.get("value") ?? [];
-  static bool get getIsLicenseVerified => isLicenseVerifiedBox.get("value") ?? false;
+  static bool  getIsLicenseVerified(String key) => isLicenseVerifiedBox.get(key) ?? false;
   // static String get getSirketAdi => _sirketAdiBox.get("value") ?? "";
 
   //* Setters
@@ -121,7 +121,7 @@ class CacheManager {
 
   static void setCariSehirler(CariSehirlerModel value) => cariSehirBox.put("value", value);
   static void setSubeListesi(List value) => subeListesiBox.put("value", value);
-  static void setIsLicenseVerified(bool value) => isLicenseVerifiedBox.put("value", value);
+  static void setIsLicenseVerified(String key,bool value) => isLicenseVerifiedBox.put(key, value);
   // static void setSirketAdi(String value) => _sirketAdiBox.put("value", value);
 
 //* Clear and Remove

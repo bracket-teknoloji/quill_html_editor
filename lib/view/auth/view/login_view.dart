@@ -226,12 +226,16 @@ class _LoginViewState extends BaseState<LoginView> {
     var result = await getUyeBilgileri();
     if (result.success != true) {
       if (result.errorCode == 5) {
-        CacheManager.setIsLicenseVerified(false);
+        CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "",false);
         dialogManager.showAlertDialog(result.message ?? "");
         return;
       } else {
-        CacheManager.setIsLicenseVerified(true);
+        CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "",true);
       }
+    }
+    if (CacheManager.getIsLicenseVerified(textFieldData.account?.email ?? "")){
+      dialogManager.showAlertDialog("Lisansınızın yenilenmesi gerekiyor.");
+      return;
     }
     AccountModel instance = AccountModel.instance;
     var a = instance
