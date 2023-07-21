@@ -8,6 +8,7 @@
   "files.watcherExclude": {
     "**/.fvm": true
   },
+  "dart.debugSdkLibraries": true,
   "editor.fontFamily": "JetBrains Mono",
   "errorLens.fontWeight": "normal",
   "editor.fontWeight": "normal",

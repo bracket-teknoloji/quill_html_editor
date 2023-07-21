@@ -5,10 +5,12 @@
     "version": "0.2.0",
     "configurations": [
 
+
         {
             "name": "Picker",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "flutterMode": "debug"
         },
         {
             "name": "Picker (profile mode)",

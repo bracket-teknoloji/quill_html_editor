@@ -8,7 +8,9 @@ import 'package:picker/core/components/button/elevated_buttons/bottom_appbar_but
 import 'package:picker/core/components/card/musteri_siparisleri_card.dart';
 import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import 'package:picker/core/components/floating_action_button/custom_floating_action_button.dart';
+import 'package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart';
 import 'package:picker/core/components/textfield/custom_app_bar_text_field.dart';
+import 'package:picker/core/components/textfield/custom_text_field.dart';
 import 'package:picker/core/components/wrap/appbar_title.dart';
 import 'package:picker/core/constants/ui_helper/ui_helper.dart';
 import 'package:picker/core/init/network/login/api_urls.dart';
@@ -24,12 +26,16 @@ class MusteriSiparisleriView extends StatefulWidget {
 
 class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
   late ScrollController scrollController;
+  late TextEditingController baslangicTarihiController;
+  late TextEditingController bitisTarihiController;
   MusteriSiparisleriViewModel viewModel = MusteriSiparisleriViewModel();
   List<MusteriSiparisleriModel?>? get musteriSiparisleriList => viewModel.musteriSiparisleriList;
 
   @override
   void initState() {
     scrollController = ScrollController();
+    baslangicTarihiController = TextEditingController();
+    bitisTarihiController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       getData();
     });
@@ -53,6 +59,8 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
   @override
   void dispose() {
     scrollController.dispose();
+    baslangicTarihiController.dispose();
+    bitisTarihiController.dispose();
     super.dispose();
   }
 
@@ -96,7 +104,42 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
             children: [
               AppBarButton(
                 icon: Icons.filter_alt_outlined,
-                onPressed: () {},
+                onPressed: () async {
+                  var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                      title: "Filtrele",
+                      body: Column(
+                        children: [
+                          RaporFiltreDateTimeBottomSheetView(
+                            filterOnChanged: (index) {
+                              viewModel.setMusteriSiparisleriList(null);
+                              viewModel.setDahaVarMi(true);
+                              viewModel.resetSayfa();
+                              getData();
+                            },
+                            baslangicTarihiController: baslangicTarihiController,
+                            bitisTarihiController: bitisTarihiController,
+                          ),
+                          const Row(
+                            children: [
+                              Expanded(child: CustomTextField(labelText: "Cari", suffixMore: true, readOnly: true)),
+                              Expanded(child: CustomTextField(labelText: "Cari Tipi", suffixMore: true, readOnly: true)),
+                            ],
+                          ),
+                          const Row(
+                            children: [
+                              Expanded(child: CustomTextField(labelText: "Plasiyer", suffixMore: true, readOnly: true)),
+                              Expanded(child: CustomTextField(labelText: "Proje", suffixMore: true, readOnly: true)),
+                            ],
+                          ),
+                          const Row(
+                            children: [
+                              Expanded(child: CustomTextField(labelText: "Özel Kod 1", suffixMore: true)),
+                              Expanded(child: CustomTextField(labelText: "Özel Kod 2", suffixMore: true)),
+                            ],
+                          ),
+                        ],
+                      ));
+                },
                 child: const Text("Filtrele"),
               ),
               AppBarButton(

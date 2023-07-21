@@ -170,7 +170,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       }
     }
 
-    if (CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "")) {
+    if (CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "") == false) {
       viewModel.setTitle("Lisansınızın yenilenmesi gerekiyor.");
       viewModel.setIsError(true);
       return;

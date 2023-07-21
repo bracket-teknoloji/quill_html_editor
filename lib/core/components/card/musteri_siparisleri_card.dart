@@ -23,7 +23,6 @@ class _MusteriSiparisleriCardState extends BaseState<MusteriSiparisleriCard> {
     return Card(
         child: ListTile(
       onTap: () async {
-        // widget.model.
         var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: widget.model?.belgeNo ?? "", children: [
           BottomSheetModel(title: "Görüntüle", iconWidget: Icons.search_outlined),
           BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit_outlined),

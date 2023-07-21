@@ -80,7 +80,6 @@ class _QRScannerState extends BaseState<QRScannerView> {
         barcode = scanData;
         if (barcode?.code != null) {
           qrViewController?.pauseCamera();
-          log(barcode?.code.toString() ?? "null");
           Navigator.pop(context, barcode?.code);
         }
       });

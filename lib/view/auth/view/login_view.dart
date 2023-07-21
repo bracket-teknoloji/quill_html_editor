@@ -137,9 +137,9 @@ class _LoginViewState extends BaseState<LoginView> {
                                     textFieldData.account?.parola = null;
                                   } else {
                                     AccountModel.instance.uyeEmail = textFieldData.account?.email;
+                                    if (CacheManager.getHesapBilgileri?.qrData == null){
                                     AccountModel.instance.uyeSifre = textFieldData.account?.parola;
-                                    textFieldData.account?.email = textFieldData.account?.email;
-                                    textFieldData.account?.parola = textFieldData.account?.parola;
+                                    }
                                   }
                                   setState(() {});
                                 }
@@ -233,7 +233,7 @@ class _LoginViewState extends BaseState<LoginView> {
         CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "",true);
       }
     }
-    if (CacheManager.getIsLicenseVerified(textFieldData.account?.email ?? "")){
+    if (CacheManager.getIsLicenseVerified(textFieldData.account?.email ?? "") == false){
       dialogManager.showAlertDialog("Lisansınızın yenilenmesi gerekiyor.");
       return;
     }
@@ -244,7 +244,9 @@ class _LoginViewState extends BaseState<LoginView> {
     if (a.uyeEmail == "demo@netfect.com") {
       a.uyeSifre = null;
     } else {
+      if (a.qrData == null){
       a.uyeSifre = textFieldData.account?.parola;
+      }
     }
     dialogManager.showLoadingDialog("Giriş Yapılıyor");
 

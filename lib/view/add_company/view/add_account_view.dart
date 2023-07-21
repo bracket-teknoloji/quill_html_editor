@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
@@ -121,9 +120,9 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
         bodyModel: AccountResponseModel(),
         addTokenKey: false,
         data: data,
-        showError: false,
         path: ApiUrls.getUyeBilgileri,
       );
+      AccountModel.instance.qrData = null;
       if (response.data != null) {
         if (response.success ?? false) {
           var anaHesapBox = Hive.box("anaHesap");
@@ -132,23 +131,21 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
               anaHesapBox.put("anaHesap", [element.email, element.parola]);
             }
           });
-    String encodedPassword = passwordDecoder(_controller2.text);
           AccountModel.instance
             ..uyeEmail = response.data![0].email
-            ..uyeSifre = encodedPassword;
+            ..qrData = response.data![0].parola;
           Box box = CacheManager.accountsBox;
           for (AccountResponseModel item in response.data!) {
             if (!box.containsKey(item.email)) {
               Get.offAndToNamed("/addCompany");
               box.put(item.email, item);
-              log("item: ${item.toJson()}");
               dialogManager.showSnackBar("Başarılı");
             } else {
               dialogManager.showSnackBar("${item.firmaKisaAdi} zaten kayıtlı");
             }
           }
-        } 
-      } 
+        }
+      }
     }
   }
 
