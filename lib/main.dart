@@ -113,7 +113,7 @@ class MyApp extends StatelessWidget {
             GetPage(name: "/cariStokSatisOzeti", page: () => CariStokSatisOzetiView(model: Get.arguments)),
 
             //* Sipariş
-            GetPage(name: "/siparisMusteriSiparisi", page: () => const MusteriSiparisleriView()),
+            GetPage(name: "/siparisMusteriSiparisi", page: () => MusteriSiparisleriView(isMusteriSiparisleri: Get.arguments)),
 
             //* Stok
             GetPage(name: "/stokListesi", page: () => StokListesiView(isGetData: Get.arguments)),

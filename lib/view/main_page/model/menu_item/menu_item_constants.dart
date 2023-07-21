@@ -84,8 +84,8 @@ class MenuItemConstants {
     //* Sipariş
     //*
     GridItemModel.anamenu(name: "SIPA", title: "Sipariş", icon: "order", color: GridThemeManager.siparis, altMenuler: [
-      GridItemModel.item(name: "siparis_MusteriSiparisi", title: "Müşteri Siparişleri", route: "/mainPage/siparisMusteriSiparisi"),
-      GridItemModel.item(name: "siparis_MusteriSiparisi", title: "Satıcı Siparişleri", route: "/mainPage/siparisMusteriSiparisi"),
+      GridItemModel.item(name: "siparis_MusteriSiparisi", title: "Müşteri Siparişleri", route: "/mainPage/siparisMusteriSiparisi", arguments: true),
+      GridItemModel.item(name: "siparis_SaticiSiparisi", title: "Satıcı Siparişleri", route: "/mainPage/siparisMusteriSiparisi", arguments: false),
     ]),
 
     //* Stok

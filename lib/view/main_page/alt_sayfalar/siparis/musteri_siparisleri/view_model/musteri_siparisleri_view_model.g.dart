@@ -33,6 +33,41 @@ mixin _$MusteriSiparisleriViewModel on _MusteriSiparisleriViewModelBase, Store {
     });
   }
 
+  late final _$grupKodlariGosterAtom = Atom(
+      name: '_MusteriSiparisleriViewModelBase.grupKodlariGoster',
+      context: context);
+
+  @override
+  bool get grupKodlariGoster {
+    _$grupKodlariGosterAtom.reportRead();
+    return super.grupKodlariGoster;
+  }
+
+  @override
+  set grupKodlariGoster(bool value) {
+    _$grupKodlariGosterAtom.reportWrite(value, super.grupKodlariGoster, () {
+      super.grupKodlariGoster = value;
+    });
+  }
+
+  late final _$kapaliBelgelerListelenmesinAtom = Atom(
+      name: '_MusteriSiparisleriViewModelBase.kapaliBelgelerListelenmesin',
+      context: context);
+
+  @override
+  bool get kapaliBelgelerListelenmesin {
+    _$kapaliBelgelerListelenmesinAtom.reportRead();
+    return super.kapaliBelgelerListelenmesin;
+  }
+
+  @override
+  set kapaliBelgelerListelenmesin(bool value) {
+    _$kapaliBelgelerListelenmesinAtom
+        .reportWrite(value, super.kapaliBelgelerListelenmesin, () {
+      super.kapaliBelgelerListelenmesin = value;
+    });
+  }
+
   late final _$sayfaAtom =
       Atom(name: '_MusteriSiparisleriViewModelBase.sayfa', context: context);
 
@@ -137,6 +172,19 @@ mixin _$MusteriSiparisleriViewModel on _MusteriSiparisleriViewModelBase, Store {
           name: '_MusteriSiparisleriViewModelBase', context: context);
 
   @override
+  void changeGrupKodlariGoster() {
+    final _$actionInfo =
+        _$_MusteriSiparisleriViewModelBaseActionController.startAction(
+            name: '_MusteriSiparisleriViewModelBase.changeGrupKodlariGoster');
+    try {
+      return super.changeGrupKodlariGoster();
+    } finally {
+      _$_MusteriSiparisleriViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setDahaVarMi(bool value) {
     final _$actionInfo = _$_MusteriSiparisleriViewModelBaseActionController
         .startAction(name: '_MusteriSiparisleriViewModelBase.setDahaVarMi');
@@ -166,6 +214,20 @@ mixin _$MusteriSiparisleriViewModel on _MusteriSiparisleriViewModelBase, Store {
         .startAction(name: '_MusteriSiparisleriViewModelBase.resetSayfa');
     try {
       return super.resetSayfa();
+    } finally {
+      _$_MusteriSiparisleriViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setKapaliBelgelerListelenmesin(bool value) {
+    final _$actionInfo =
+        _$_MusteriSiparisleriViewModelBaseActionController.startAction(
+            name:
+                '_MusteriSiparisleriViewModelBase.setKapaliBelgelerListelenmesin');
+    try {
+      return super.setKapaliBelgelerListelenmesin(value);
     } finally {
       _$_MusteriSiparisleriViewModelBaseActionController
           .endAction(_$actionInfo);
@@ -251,6 +313,8 @@ mixin _$MusteriSiparisleriViewModel on _MusteriSiparisleriViewModelBase, Store {
   String toString() {
     return '''
 dahaVarMi: ${dahaVarMi},
+grupKodlariGoster: ${grupKodlariGoster},
+kapaliBelgelerListelenmesin: ${kapaliBelgelerListelenmesin},
 sayfa: ${sayfa},
 siralama: ${siralama},
 searchText: ${searchText},

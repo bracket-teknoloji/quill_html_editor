@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 import 'package:picker/core/components/textfield/custom_text_field.dart';
+import 'package:picker/view/main_page/model/param_model.dart';
 
 import '../../../constants/extensions/list_extensions.dart';
 import '../../../constants/ui_helper/icon_helper.dart';
@@ -363,15 +364,7 @@ class BottomSheetDialogManager {
                         suffix: const Icon(Icons.more_horiz_outlined),
                         readOnly: true,
                         onTap: () async {
-                          var a = await showRadioBottomSheetDialog(context, title: "Tipi seç", children: [
-                            BottomSheetModel(title: "Alıcı", value: "A", onTap: () => Get.back(result: "Alıcı")),
-                            BottomSheetModel(title: "Satıcı", value: "S", onTap: () => Get.back(result: "Satıcı")),
-                            BottomSheetModel(title: "Toptancı", value: "T", onTap: () => Get.back(result: "Toptancı")),
-                            BottomSheetModel(title: "Kefil", value: "K", onTap: () => Get.back(result: "Kefil")),
-                            BottomSheetModel(title: "Müstahsil", value: "M", onTap: () => Get.back(result: "Müstahsil")),
-                            BottomSheetModel(title: "Diğer", value: "D", onTap: () => Get.back(result: "Diğer")),
-                            BottomSheetModel(title: "Komisyoncu", value: "I", onTap: () => Get.back(result: "Komisyoncu")),
-                          ]);
+                          var a = await showCariTipiBottomSheetDialog(context);
                           if (a != null) {
                             var result = a != "Komisyoncu" ? a[0] : "I";
                             viewModel.cariTipi = a;
@@ -490,4 +483,18 @@ class BottomSheetDialogManager {
   //   });
   //   return response;
   // }
+  showCariTipiBottomSheetDialog(BuildContext context) async => await showRadioBottomSheetDialog(context, title: "Tipi seç", children: [
+        BottomSheetModel(title: "Alıcı", value: "A", onTap: () => Get.back(result: "Alıcı")),
+        BottomSheetModel(title: "Satıcı", value: "S", onTap: () => Get.back(result: "Satıcı")),
+        BottomSheetModel(title: "Toptancı", value: "T", onTap: () => Get.back(result: "Toptancı")),
+        BottomSheetModel(title: "Kefil", value: "K", onTap: () => Get.back(result: "Kefil")),
+        BottomSheetModel(title: "Müstahsil", value: "M", onTap: () => Get.back(result: "Müstahsil")),
+        BottomSheetModel(title: "Diğer", value: "D", onTap: () => Get.back(result: "Diğer")),
+        BottomSheetModel(title: "Komisyoncu", value: "I", onTap: () => Get.back(result: "Komisyoncu")),
+      ]);
+      showPlasiyerDialog(BuildContext context)async{
+        List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? [];
+      return await showCheckBoxBottomSheetDialog(context,
+          title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e)).toList());
+      }
 }

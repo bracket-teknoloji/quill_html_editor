@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 import 'package:picker/core/base/state/base_state.dart';
 import 'package:picker/core/components/appbar/appbar_prefered_sized_bottom.dart';
@@ -8,6 +9,7 @@ import 'package:picker/core/components/button/elevated_buttons/bottom_appbar_but
 import 'package:picker/core/components/card/musteri_siparisleri_card.dart';
 import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import 'package:picker/core/components/floating_action_button/custom_floating_action_button.dart';
+import 'package:picker/core/components/helper_widgets/custom_label_widget.dart';
 import 'package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart';
 import 'package:picker/core/components/textfield/custom_app_bar_text_field.dart';
 import 'package:picker/core/components/textfield/custom_text_field.dart';
@@ -18,7 +20,8 @@ import 'package:picker/view/main_page/alt_sayfalar/siparis/musteri_siparisleri/m
 import 'package:picker/view/main_page/alt_sayfalar/siparis/musteri_siparisleri/view_model/musteri_siparisleri_view_model.dart';
 
 class MusteriSiparisleriView extends StatefulWidget {
-  const MusteriSiparisleriView({super.key});
+  final bool isMusteriSiparisleri;
+  const MusteriSiparisleriView({super.key, required this.isMusteriSiparisleri});
 
   @override
   State<MusteriSiparisleriView> createState() => _MusteriSiparisleriViewState();
@@ -28,14 +31,27 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
   late ScrollController scrollController;
   late TextEditingController baslangicTarihiController;
   late TextEditingController bitisTarihiController;
-  MusteriSiparisleriViewModel viewModel = MusteriSiparisleriViewModel();
+  late TextEditingController cariController;
+  late TextEditingController cariTipiController;
+  late TextEditingController plasiyerController;
+  late TextEditingController projeController;
+  late TextEditingController ozelKod1Controller;
+  late TextEditingController ozelKod2Controller;
+  late MusteriSiparisleriViewModel viewModel;
   List<MusteriSiparisleriModel?>? get musteriSiparisleriList => viewModel.musteriSiparisleriList;
 
   @override
   void initState() {
+    viewModel = MusteriSiparisleriViewModel(pickerBelgeTuru: widget.isMusteriSiparisleri ? "MS" : "SS");
     scrollController = ScrollController();
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
+    cariController = TextEditingController();
+    cariTipiController = TextEditingController();
+    plasiyerController = TextEditingController();
+    projeController = TextEditingController();
+    ozelKod1Controller = TextEditingController();
+    ozelKod2Controller = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       getData();
     });
@@ -61,6 +77,12 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
     scrollController.dispose();
     baslangicTarihiController.dispose();
     bitisTarihiController.dispose();
+    cariController.dispose();
+    cariTipiController.dispose();
+    plasiyerController.dispose();
+    projeController.dispose();
+    ozelKod1Controller.dispose();
+    ozelKod2Controller.dispose();
     super.dispose();
   }
 
@@ -87,7 +109,7 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
                     getData();
                   },
                 )
-              : AppBarTitle(title: "Müşteri Siparişleri", subtitle: viewModel.musteriSiparisleriList?.length.toString())),
+              : AppBarTitle(title: "${widget.isMusteriSiparisleri ? "Müşteri" : "Satıcı"} Siparişleri", subtitle: viewModel.musteriSiparisleriList?.length.toString())),
       //*Actions
       actions: [
         IconButton(
@@ -104,42 +126,129 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
             children: [
               AppBarButton(
                 icon: Icons.filter_alt_outlined,
-                onPressed: () async {
-                  var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                      title: "Filtrele",
-                      body: Column(
-                        children: [
-                          RaporFiltreDateTimeBottomSheetView(
-                            filterOnChanged: (index) {
-                              viewModel.setMusteriSiparisleriList(null);
-                              viewModel.setDahaVarMi(true);
-                              viewModel.resetSayfa();
-                              getData();
-                            },
-                            baslangicTarihiController: baslangicTarihiController,
-                            bitisTarihiController: bitisTarihiController,
+                onPressed: () async => await bottomSheetDialogManager.showBottomSheetDialog(context,
+                    title: "Filtrele",
+                    body: Column(
+                      children: [
+                        RaporFiltreDateTimeBottomSheetView(
+                          filterOnChanged: (index) {
+                            viewModel.setMusteriSiparisleriList(null);
+                            viewModel.setDahaVarMi(true);
+                            viewModel.resetSayfa();
+                            getData();
+                          },
+                          baslangicTarihiController: baslangicTarihiController,
+                          bitisTarihiController: bitisTarihiController,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                                child: CustomTextField(
+                                    labelText: "Cari",
+                                    controller: cariController,
+                                    suffixMore: true,
+                                    readOnly: true,
+                                    onTap: () async {
+                                      var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
+                                      if (result != null) {
+                                        cariController.text = result.cariAdi;
+                                        viewModel.musteriSiparisleriRequestModel.cariKodu = result.cariKodu;
+                                      }
+                                    })),
+                            Expanded(
+                                child: CustomTextField(
+                                    labelText: "Cari Tipi",
+                                    controller: cariTipiController,
+                                    suffixMore: true,
+                                    readOnly: true,
+                                    onTap: () async {
+                                      var result = await bottomSheetDialogManager.showCariTipiBottomSheetDialog(context);
+                                      if (result != null) {
+                                        cariTipiController.text = result;
+                                        viewModel.musteriSiparisleriRequestModel.cariTipi = result;
+                                      }
+                                    })),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                                child: CustomTextField(
+                                    labelText: "Plasiyer",
+                                    controller: plasiyerController,
+                                    suffixMore: true,
+                                    readOnly: true,
+                                    onTap: () async {
+                                      var result = await bottomSheetDialogManager.showPlasiyerDialog(context);
+                                      if (result != null) {
+                                        plasiyerController.text = result.map((e) => e.plasiyerAciklama).join(", ");
+                                        viewModel.musteriSiparisleriRequestModel.arrPlasiyerKodu = result.map((e) => e.plasiyerKodu).toList();
+                                      }
+                                    })),
+                            Expanded(child: CustomTextField(labelText: "Proje", controller: projeController, suffixMore: true, readOnly: true)),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Expanded(child: CustomTextField(labelText: "Özel Kod 1", controller: ozelKod1Controller, suffixMore: true)),
+                            Expanded(child: CustomTextField(labelText: "Özel Kod 2", controller: ozelKod2Controller, suffixMore: true)),
+                          ],
+                        ),
+                        CustomWidgetWithLabel(
+                          isVertical: true,
+                          text: "Kapalı Belgeler Listelenmesin",
+                          child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kapaliBelgelerListelenmesin, onChanged: (value) => viewModel.setKapaliBelgelerListelenmesin(value))),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [const Text("Cari Rapor Kodları"), IconButton(onPressed: () => viewModel.changeGrupKodlariGoster(), icon: const Icon(Icons.arrow_drop_down))],
+                        ),
+                        Observer(
+                          builder: (_) => AnimatedContainer(
+                            height: viewModel.grupKodlariGoster ? null : 0,
+                            duration: const Duration(seconds: 2),
+                            child: const Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Expanded(child: CustomTextField(labelText: "Grup Kodu", suffixMore: true)),
+                                    Expanded(child: CustomTextField(labelText: "Kod 1", suffixMore: true)),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(child: CustomTextField(labelText: "Kod 2", suffixMore: true)),
+                                    Expanded(child: CustomTextField(labelText: "Kod 3", suffixMore: true)),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(child: CustomTextField(labelText: "kod 4", suffixMore: true)),
+                                    Expanded(child: CustomTextField(labelText: "kod 5", suffixMore: true)),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                          const Row(
-                            children: [
-                              Expanded(child: CustomTextField(labelText: "Cari", suffixMore: true, readOnly: true)),
-                              Expanded(child: CustomTextField(labelText: "Cari Tipi", suffixMore: true, readOnly: true)),
-                            ],
-                          ),
-                          const Row(
-                            children: [
-                              Expanded(child: CustomTextField(labelText: "Plasiyer", suffixMore: true, readOnly: true)),
-                              Expanded(child: CustomTextField(labelText: "Proje", suffixMore: true, readOnly: true)),
-                            ],
-                          ),
-                          const Row(
-                            children: [
-                              Expanded(child: CustomTextField(labelText: "Özel Kod 1", suffixMore: true)),
-                              Expanded(child: CustomTextField(labelText: "Özel Kod 2", suffixMore: true)),
-                            ],
-                          ),
-                        ],
-                      ));
-                },
+                        ),
+                        Row(
+                          children: [
+                            Expanded(child: ElevatedButton(onPressed: () {}, style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))), child: const Text("Temizle"))),
+                            SizedBox(width: context.dynamicWidth(0.02)),
+                            Expanded(
+                                child: ElevatedButton(
+                                    onPressed: () {
+                                      viewModel.setMusteriSiparisleriList(null);
+                                      viewModel.setDahaVarMi(true);
+                                      viewModel.resetSayfa();
+                                      getData();
+                                      Get.back();
+                                    },
+                                    child: const Text("Kaydet"))),
+                          ],
+                        )
+                      ],
+                    )),
                 child: const Text("Filtrele"),
               ),
               AppBarButton(

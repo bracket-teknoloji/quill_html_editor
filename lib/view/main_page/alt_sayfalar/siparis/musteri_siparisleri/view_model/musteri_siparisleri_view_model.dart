@@ -9,12 +9,24 @@ part 'musteri_siparisleri_view_model.g.dart';
 class MusteriSiparisleriViewModel = _MusteriSiparisleriViewModelBase with _$MusteriSiparisleriViewModel;
 
 abstract class _MusteriSiparisleriViewModelBase with Store {
-  MusteriSiparisleriRequestModel get musteriSiparisleriRequestModel =>
-      MusteriSiparisleriRequestModel(pickerBelgeTuru: "MS", iadeMi: false, faturalasmaGoster: true, miktarGetir: "H", siralama: siralama, sayfa: sayfa, searchText: searchText);
-
+  _MusteriSiparisleriViewModelBase({required this.pickerBelgeTuru});
+  MusteriSiparisleriRequestModel get musteriSiparisleriRequestModel => MusteriSiparisleriRequestModel(
+      pickerBelgeTuru: pickerBelgeTuru,
+      iadeMi: false,
+      faturalasmaGoster: true,
+      miktarGetir: "H",
+      siralama: siralama,
+      sayfa: sayfa,
+      searchText: searchText,
+      kapaliBelgelerListelenmesin: kapaliBelgelerListelenmesin ? "E" : "H");
+  final String? pickerBelgeTuru;
   @observable
   bool dahaVarMi = true;
+  @observable
+  bool grupKodlariGoster = false;
 
+  @action
+  void changeGrupKodlariGoster() => grupKodlariGoster = !grupKodlariGoster;
   @action
   void setDahaVarMi(bool value) => dahaVarMi = value;
 
@@ -23,6 +35,12 @@ abstract class _MusteriSiparisleriViewModelBase with Store {
 
   @action
   void resetSayfa() => sayfa = 1;
+
+  @observable
+  bool kapaliBelgelerListelenmesin = false;
+
+  @action
+  void setKapaliBelgelerListelenmesin(bool value) => kapaliBelgelerListelenmesin = value;
 
   @observable
   int sayfa = 1;
@@ -67,7 +85,7 @@ abstract class _MusteriSiparisleriViewModelBase with Store {
   @computed
   String get getQueryParams => jsonEncode(musteriSiparisleriRequestModel.toJson());
 
-  Map<String,String> siralaMap = {
+  Map<String, String> siralaMap = {
     "Belge No (A-Z)": "BELGE_NO_AZ",
     "Belge No (Z-A)": "BELGE_NO_ZA",
     "Tarih (A-Z)": "TARIH_AZ",

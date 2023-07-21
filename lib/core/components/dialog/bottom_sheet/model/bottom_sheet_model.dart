@@ -4,7 +4,7 @@ class BottomSheetModel {
   final String title;
   final String? description;
   final String? icon;
-  final String? value;
+  final dynamic value;
   Function()? onTap;
   final IconData? iconWidget;
 
