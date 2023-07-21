@@ -49,6 +49,38 @@ mixin _$MusteriSiparisleriViewModel on _MusteriSiparisleriViewModelBase, Store {
     });
   }
 
+  late final _$siralamaAtom =
+      Atom(name: '_MusteriSiparisleriViewModelBase.siralama', context: context);
+
+  @override
+  String get siralama {
+    _$siralamaAtom.reportRead();
+    return super.siralama;
+  }
+
+  @override
+  set siralama(String value) {
+    _$siralamaAtom.reportWrite(value, super.siralama, () {
+      super.siralama = value;
+    });
+  }
+
+  late final _$searchTextAtom = Atom(
+      name: '_MusteriSiparisleriViewModelBase.searchText', context: context);
+
+  @override
+  String? get searchText {
+    _$searchTextAtom.reportRead();
+    return super.searchText;
+  }
+
+  @override
+  set searchText(String? value) {
+    _$searchTextAtom.reportWrite(value, super.searchText, () {
+      super.searchText = value;
+    });
+  }
+
   late final _$isScrolledDownAtom = Atom(
       name: '_MusteriSiparisleriViewModelBase.isScrolledDown',
       context: context);
@@ -105,6 +137,18 @@ mixin _$MusteriSiparisleriViewModel on _MusteriSiparisleriViewModelBase, Store {
           name: '_MusteriSiparisleriViewModelBase', context: context);
 
   @override
+  void setDahaVarMi(bool value) {
+    final _$actionInfo = _$_MusteriSiparisleriViewModelBaseActionController
+        .startAction(name: '_MusteriSiparisleriViewModelBase.setDahaVarMi');
+    try {
+      return super.setDahaVarMi(value);
+    } finally {
+      _$_MusteriSiparisleriViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void increaseSayfa() {
     final _$actionInfo = _$_MusteriSiparisleriViewModelBaseActionController
         .startAction(name: '_MusteriSiparisleriViewModelBase.increaseSayfa');
@@ -129,11 +173,23 @@ mixin _$MusteriSiparisleriViewModel on _MusteriSiparisleriViewModelBase, Store {
   }
 
   @override
-  void setDahaVarMi(bool value) {
+  void setSiralama(String value) {
     final _$actionInfo = _$_MusteriSiparisleriViewModelBaseActionController
-        .startAction(name: '_MusteriSiparisleriViewModelBase.setDahaVarMi');
+        .startAction(name: '_MusteriSiparisleriViewModelBase.setSiralama');
     try {
-      return super.setDahaVarMi(value);
+      return super.setSiralama(value);
+    } finally {
+      _$_MusteriSiparisleriViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSearchText(String? value) {
+    final _$actionInfo = _$_MusteriSiparisleriViewModelBaseActionController
+        .startAction(name: '_MusteriSiparisleriViewModelBase.setSearchText');
+    try {
+      return super.setSearchText(value);
     } finally {
       _$_MusteriSiparisleriViewModelBaseActionController
           .endAction(_$actionInfo);
@@ -179,10 +235,25 @@ mixin _$MusteriSiparisleriViewModel on _MusteriSiparisleriViewModelBase, Store {
   }
 
   @override
+  void addMusteriSiparisleriList(List<MusteriSiparisleriModel?>? value) {
+    final _$actionInfo =
+        _$_MusteriSiparisleriViewModelBaseActionController.startAction(
+            name: '_MusteriSiparisleriViewModelBase.addMusteriSiparisleriList');
+    try {
+      return super.addMusteriSiparisleriList(value);
+    } finally {
+      _$_MusteriSiparisleriViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 dahaVarMi: ${dahaVarMi},
 sayfa: ${sayfa},
+siralama: ${siralama},
+searchText: ${searchText},
 isScrolledDown: ${isScrolledDown},
 searchBar: ${searchBar},
 musteriSiparisleriList: ${musteriSiparisleriList},

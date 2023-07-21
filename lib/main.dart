@@ -63,7 +63,7 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.landscapeRight,
     DeviceOrientation.landscapeLeft,
-  ]).then((_) async {
+  ]).then((_) {
     runApp(const MyApp());
     NetworkDependencyInjection.init();
   });

@@ -63,7 +63,7 @@ class BottomSheetDialogManager {
                               itemBuilder: (context, index) => Column(
                                 children: [
                                   ListTile(
-                                      onTap: children?[index].onTap,
+                                      onTap: children?[index].onTap ?? () => Get.back(result: children![index].value),
                                       title: Text(children![index].title),
                                       subtitle: children![index].description != null ? Text(children![index].description ?? '') : null,
                                       leading: children![index].icon != null || children![index].iconWidget != null

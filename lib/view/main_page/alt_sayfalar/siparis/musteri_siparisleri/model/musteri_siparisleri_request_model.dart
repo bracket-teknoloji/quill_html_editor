@@ -28,6 +28,7 @@ class MusteriSiparisleriRequestModel {
     int? sayfa;
     String? baslamaTarihi;
     String? bitisTarihi;
+    String? searchText;
 
     MusteriSiparisleriRequestModel({
         this.pickerBelgeTuru,
@@ -53,6 +54,7 @@ class MusteriSiparisleriRequestModel {
         this.sayfa,
         this.baslamaTarihi,
         this.bitisTarihi,
+        this.searchText,
     });
     Map<String, dynamic> toJson() => _$MusteriSiparisleriRequestModelToJson(this);
 }

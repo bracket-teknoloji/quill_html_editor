@@ -33,6 +33,7 @@ MusteriSiparisleriRequestModel _$MusteriSiparisleriRequestModelFromJson(
       sayfa: json['sayfa'] as int?,
       baslamaTarihi: json['baslamaTarihi'] as String?,
       bitisTarihi: json['bitisTarihi'] as String?,
+      searchText: json['searchText'] as String?,
     );
 
 Map<String, dynamic> _$MusteriSiparisleriRequestModelToJson(
@@ -61,4 +62,5 @@ Map<String, dynamic> _$MusteriSiparisleriRequestModelToJson(
       'sayfa': instance.sayfa,
       'baslamaTarihi': instance.baslamaTarihi,
       'bitisTarihi': instance.bitisTarihi,
+      'searchText': instance.searchText,
     };

@@ -40,6 +40,7 @@ class MusteriSiparisleriModel with NetworkManagerMixin {
   String? plasiyerAciklama;
   DateTime? kosulTarihi;
   String? irsaliyelesti;
+  int? irslesenSayi;
   String? faturalasti;
   String? cYedek6;
   int? topluDepo;

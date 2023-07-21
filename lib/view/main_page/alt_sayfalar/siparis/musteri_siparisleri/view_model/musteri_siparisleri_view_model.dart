@@ -10,13 +10,13 @@ class MusteriSiparisleriViewModel = _MusteriSiparisleriViewModelBase with _$Must
 
 abstract class _MusteriSiparisleriViewModelBase with Store {
   MusteriSiparisleriRequestModel get musteriSiparisleriRequestModel =>
-      MusteriSiparisleriRequestModel(pickerBelgeTuru: "MS", iadeMi: false, faturalasmaGoster: true, miktarGetir: "H", siralama: "TARIH_ZA", sayfa: sayfa);
+      MusteriSiparisleriRequestModel(pickerBelgeTuru: "MS", iadeMi: false, faturalasmaGoster: true, miktarGetir: "H", siralama: siralama, sayfa: sayfa, searchText: searchText);
 
   @observable
   bool dahaVarMi = true;
 
-  @observable
-  int sayfa = 1;
+  @action
+  void setDahaVarMi(bool value) => dahaVarMi = value;
 
   @action
   void increaseSayfa() => sayfa++;
@@ -24,9 +24,20 @@ abstract class _MusteriSiparisleriViewModelBase with Store {
   @action
   void resetSayfa() => sayfa = 1;
 
-  @action
-  void setDahaVarMi(bool value) => dahaVarMi = value;
+  @observable
+  int sayfa = 1;
 
+  @observable
+  String siralama = "TARIH_ZA";
+
+  @action
+  void setSiralama(String value) => siralama = value;
+
+  @observable
+  String? searchText;
+
+  @action
+  void setSearchText(String? value) => searchText = value;
   @observable
   bool isScrolledDown = false;
 
@@ -36,19 +47,34 @@ abstract class _MusteriSiparisleriViewModelBase with Store {
   bool searchBar = false;
 
   @action
-  void changeSearchBar() => searchBar = !searchBar;
+  void changeSearchBar() {
+    searchBar = !searchBar;
+    if (!searchBar) {
+      searchText = null;
+      setMusteriSiparisleriList(null);
+      setDahaVarMi(true);
+      resetSayfa();
+    }
+  }
 
   @observable
   List<MusteriSiparisleriModel?>? musteriSiparisleriList;
   @action
-  void setMusteriSiparisleriList(List<MusteriSiparisleriModel?>? value) {
-    if (musteriSiparisleriList == null) {
-      musteriSiparisleriList = value;
-    } else {
-      musteriSiparisleriList?.addAll(value ?? []);
-    }
-  }
+  void setMusteriSiparisleriList(List<MusteriSiparisleriModel?>? value) => musteriSiparisleriList = value;
+  @action
+  void addMusteriSiparisleriList(List<MusteriSiparisleriModel?>? value) => musteriSiparisleriList = musteriSiparisleriList! + value!;
 
   @computed
   String get getQueryParams => jsonEncode(musteriSiparisleriRequestModel.toJson());
+
+  Map<String,String> siralaMap = {
+    "Belge No (A-Z)": "BELGE_NO_AZ",
+    "Belge No (Z-A)": "BELGE_NO_ZA",
+    "Tarih (A-Z)": "TARIH_AZ",
+    "Tarih (Z-A)": "TARIH_ZA",
+    "Cari Adı (A-Z)": "CARI_ADI_AZ",
+    "Cari Adı (Z-A)": "CARI_ADI_ZA",
+    "Vade Günü (A-Z)": "VADE_GUNU_AZ",
+    "Vade Günü (Z-A)": "VADE_GUNU_ZA",
+  };
 }

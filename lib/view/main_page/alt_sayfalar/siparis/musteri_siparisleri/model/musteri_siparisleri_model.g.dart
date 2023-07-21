@@ -56,6 +56,7 @@ MusteriSiparisleriModel _$MusteriSiparisleriModelFromJson(
           ? null
           : DateTime.parse(json['KOSUL_TARIHI'] as String)
       ..irsaliyelesti = json['IRSALIYELESTI'] as String?
+      ..irslesenSayi = json['IRSLESEN_SAYI'] as int?
       ..faturalasti = json['FATURALASTI'] as String?
       ..cYedek6 = json['C_YEDEK6'] as String?
       ..topluDepo = json['TOPLU_DEPO'] as int?
@@ -114,6 +115,7 @@ Map<String, dynamic> _$MusteriSiparisleriModelToJson(
       'PLASIYER_ACIKLAMA': instance.plasiyerAciklama,
       'KOSUL_TARIHI': instance.kosulTarihi?.toIso8601String(),
       'IRSALIYELESTI': instance.irsaliyelesti,
+      'IRSLESEN_SAYI': instance.irslesenSayi,
       'FATURALASTI': instance.faturalasti,
       'C_YEDEK6': instance.cYedek6,
       'TOPLU_DEPO': instance.topluDepo,

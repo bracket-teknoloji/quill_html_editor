@@ -40,3 +40,4 @@ extension NotNullExtension<T> on List<T> {
     return where((element) => element != null).toList().cast<T>();
   }
 }
+
