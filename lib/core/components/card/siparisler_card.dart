@@ -61,8 +61,8 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                 children: [
                   Text("Tipi: ${widget.model?.tipi ?? ""}"),
                   widget.model?.kosulKodu != null ? Text("Koşul: ${widget.model?.kosulKodu ?? ""}") : null,
-                  Text("Ara Toplam: ${widget.model?.araToplam.commaSeparatedWithFixedDigits} TL"),
-                  Text("Genel Toplam: ${widget.model?.genelToplam ?? ""} TL"),
+                  Text("Ara Toplam: ${widget.model?.araToplam.commaSeparatedWithFixedDigits ?? ""} TL"),
+                  Text("Genel Toplam: ${widget.model!.genelToplam?.commaSeparatedWithFixedDigits ?? ""} TL"),
                 ].nullCheck.cast<Widget>(),
               ),
               Column(

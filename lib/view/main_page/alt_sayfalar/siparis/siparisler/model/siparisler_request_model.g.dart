@@ -37,30 +37,39 @@ SiparislerRequestModel _$SiparislerRequestModelFromJson(
     );
 
 Map<String, dynamic> _$SiparislerRequestModelToJson(
-        SiparislerRequestModel instance) =>
-    <String, dynamic>{
-      'PickerBelgeTuru': instance.pickerBelgeTuru,
-      'IadeMi': instance.iadeMi,
-      'CariKodu': instance.cariKodu,
-      'OzelKod2': instance.ozelKod2,
-      'CariTipi': instance.cariTipi,
-      'MiktarGetir': instance.miktarGetir,
-      'Siralama': instance.siralama,
-      'SiparisKarsilanmaDurumu': instance.siparisKarsilanmaDurumu,
-      'OzelKod1': instance.ozelKod1,
-      'KapaliBelgelerListelenmesin': instance.kapaliBelgelerListelenmesin,
-      'ProjeKodu': instance.projeKodu,
-      'FaturalasmaGoster': instance.faturalasmaGoster,
-      'ArrKod5': instance.arrKod5,
-      'ArrGrupKodu': instance.arrGrupKodu,
-      'ArrKod4': instance.arrKod4,
-      'ArrKod3': instance.arrKod3,
-      'ArrKod2': instance.arrKod2,
-      'ArrPlasiyerKodu': instance.arrPlasiyerKodu,
-      'ArrKod1': instance.arrKod1,
-      'EkranTipi': instance.ekranTipi,
-      'Sayfa': instance.sayfa,
-      'BaslamaTarihi': instance.baslamaTarihi,
-      'BitisTarihi': instance.bitisTarihi,
-      'SearchText': instance.searchText,
-    };
+    SiparislerRequestModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('PickerBelgeTuru', instance.pickerBelgeTuru);
+  writeNotNull('IadeMi', instance.iadeMi);
+  writeNotNull('CariKodu', instance.cariKodu);
+  writeNotNull('OzelKod2', instance.ozelKod2);
+  writeNotNull('CariTipi', instance.cariTipi);
+  writeNotNull('MiktarGetir', instance.miktarGetir);
+  writeNotNull('Siralama', instance.siralama);
+  writeNotNull('SiparisKarsilanmaDurumu', instance.siparisKarsilanmaDurumu);
+  writeNotNull('OzelKod1', instance.ozelKod1);
+  writeNotNull(
+      'KapaliBelgelerListelenmesin', instance.kapaliBelgelerListelenmesin);
+  writeNotNull('ProjeKodu', instance.projeKodu);
+  writeNotNull('FaturalasmaGoster', instance.faturalasmaGoster);
+  writeNotNull('ArrKod5', instance.arrKod5);
+  writeNotNull('ArrGrupKodu', instance.arrGrupKodu);
+  writeNotNull('ArrKod4', instance.arrKod4);
+  writeNotNull('ArrKod3', instance.arrKod3);
+  writeNotNull('ArrKod2', instance.arrKod2);
+  writeNotNull('ArrPlasiyerKodu', instance.arrPlasiyerKodu);
+  writeNotNull('ArrKod1', instance.arrKod1);
+  writeNotNull('EkranTipi', instance.ekranTipi);
+  writeNotNull('Sayfa', instance.sayfa);
+  writeNotNull('BaslamaTarihi', instance.baslamaTarihi);
+  writeNotNull('BitisTarihi', instance.bitisTarihi);
+  writeNotNull('SearchText', instance.searchText);
+  return val;
+}

@@ -264,7 +264,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
 
   Future<List<BaseProjeModel>?> getProjeData() async {
     dialogManager.showLoadingDialog("Proje Listesi Getiriliyor...");
-    var result = await networkManager.dioGet<BaseProjeModel>(path: ApiUrls.getProjeler, bodyModel: BaseProjeModel(), addCKey: true, addSirketBilgileri: true);
+    var result = await networkManager.dioGet<BaseProjeModel>(path: ApiUrls.getProjeler, bodyModel: BaseProjeModel());
 
     dialogManager.hideAlertDialog;
     if (result.success ?? false) {

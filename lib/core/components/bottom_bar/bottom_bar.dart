@@ -26,7 +26,8 @@ class _BottomBarWidgetState extends BaseState<BottomBarWidget> {
     }
     return ScrollableWidget(
       isScrolledDown: widget.isScrolledDown,
-      child: SizedBox(
+      child: Container(
+        color: theme.primaryColor,
         height: context.isPortrait ? (height * 0.07) : (height * 0.1 < 60 ? 60 : height * 0.1),
         child: widget.visible && widget.children.isNotEmpty
             ? Row(

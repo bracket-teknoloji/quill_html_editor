@@ -85,6 +85,7 @@ class AppThemeDark extends AppTheme {
       dividerTheme: DividerThemeData(
         space: 0,
         thickness: 1,
+        color: colorManager.onPrimaryContainer.withOpacity(0.9),
         endIndent: UIHelper.highSize,
         indent: UIHelper.highSize,
       ),

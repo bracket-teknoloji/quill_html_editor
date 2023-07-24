@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'siparisler_request_model.g.dart';
 
 // @JsonSerializable(includeIfNull: false, createToJson: true, createFactory: true, explicitToJson: true, fieldRename: FieldRename.pascal)
-@JsonSerializable(createToJson: true, fieldRename: FieldRename.pascal)
+@JsonSerializable(createToJson: true, fieldRename: FieldRename.pascal, includeIfNull: false)
 class SiparislerRequestModel {
   String? pickerBelgeTuru;
   bool? iadeMi;

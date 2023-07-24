@@ -8,6 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide FormData;
 import 'package:picker/core/base/model/base_network_mixin.dart';
+import 'package:picker/core/base/model/base_proje_model.dart';
 import 'package:picker/core/base/model/generic_response_model.dart';
 import 'package:picker/core/constants/extensions/date_time_extensions.dart';
 import 'package:picker/core/init/cache/cache_manager.dart';
@@ -179,6 +180,13 @@ class NetworkManager {
   Map<String, dynamic> getStandardQueryParameters() {
     Map<String, dynamic> query = {};
     return query;
+  }
+  Future<List<BaseProjeModel>?> getProjeData() async {
+    var result = await dioGet<BaseProjeModel>(path: ApiUrls.getProjeler, bodyModel: BaseProjeModel());
+    if (result.success ?? false) {
+      return result.data.map((e) => e as BaseProjeModel).toList().cast<BaseProjeModel>();
+    }
+    return null;
   }
 
   String get getBaseUrl {

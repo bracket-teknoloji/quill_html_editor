@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/base/model/base_proje_model.dart';
 import 'package:picker/core/components/textfield/custom_text_field.dart';
+import 'package:picker/core/init/network/network_manager.dart';
 import 'package:picker/view/main_page/model/param_model.dart';
 
 import '../../../constants/extensions/list_extensions.dart';
@@ -23,12 +25,14 @@ class BottomSheetDialogManager {
     return showModalBottomSheet(
         context: context,
         isDismissible: true,
+        // constraints: BoxConstraints(maxHeight: Get.height * 0.9),
         barrierColor: Colors.black.withOpacity(0.9),
         enableDrag: false,
         useSafeArea: true,
         isScrollControlled: true,
         builder: (context) {
-          return SafeArea(
+          return Padding(
+            padding: MediaQuery.of(context).viewInsets,
             child: Wrap(
               children: [
                 ListTile(
@@ -87,13 +91,9 @@ class BottomSheetDialogManager {
                             ).paddingOnly(bottom: 10),
                           )
                         : Center(child: Text('Veri bulunamadı.', style: context.theme.textTheme.titleMedium)).paddingAll(UIHelper.highSize)
-                    : WillPopScope(
-                        child: SingleChildScrollView(child: body),
-                        onWillPop: () async {
-                          var result = body;
-                          Get.back(result: result);
-                          return true;
-                        }),
+                    : SafeArea(
+                        child: Container(constraints: BoxConstraints(maxHeight: Get.height * 0.9), child: SingleChildScrollView(child: body)),
+                      ),
                 context.isKeyBoardOpen ? const ResponsiveBox() : Container(),
               ],
             ),
@@ -142,7 +142,11 @@ class BottomSheetDialogManager {
                                           activeColor: UIHelper.primaryColor,
                                           onChanged: (value) {
                                             viewModel.changeRadioGroupValue(title);
-                                            children?[index]?.onTap!();
+                                            if (children?[index]?.onTap != null) {
+                                              children?[index]?.onTap!();
+                                            } else {
+                                              Get.back(result: children![index]?.value);
+                                            }
                                           },
                                           value: children?[index]?.title,
                                           groupValue: viewModel.radioGroupValue,
@@ -492,9 +496,13 @@ class BottomSheetDialogManager {
         BottomSheetModel(title: "Diğer", value: "D", onTap: () => Get.back(result: "Diğer")),
         BottomSheetModel(title: "Komisyoncu", value: "I", onTap: () => Get.back(result: "Komisyoncu")),
       ]);
-      showPlasiyerDialog(BuildContext context)async{
-        List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? [];
-      return await showCheckBoxBottomSheetDialog(context,
-          title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e)).toList());
-      }
+  showPlasiyerDialog(BuildContext context) async {
+    List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? [];
+    return await showCheckBoxBottomSheetDialog(context, title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e)).toList());
+  }
+
+  showProjeDialog(BuildContext context) async {
+    List<BaseProjeModel> projeList = await NetworkManager().getProjeData() ?? [];
+    return await showRadioBottomSheetDialog(context, title: "Proje Seçiniz", children: projeList.map((e) => BottomSheetModel(title: e.projeAciklama ?? "", value: e)).toList());
+  }
 }

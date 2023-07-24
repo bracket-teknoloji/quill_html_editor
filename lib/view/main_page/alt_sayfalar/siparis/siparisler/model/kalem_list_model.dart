@@ -17,25 +17,25 @@ class KalemListModel{
     String? cariKodu;
     int? depoKodu;
     String? depoTanimi;
-    int? miktar;
+    double? miktar;
     List<dynamic>? seriList;
-    int? kdvOrani;
-    int? brutFiyat;
-    int? dipFiyat;
+    double? kdvOrani;
+    double? brutFiyat;
+    double? dipFiyat;
     bool? iskonto1OranMi;
     int? stokSatDovTip;
     double? stokSatisKuru;
     String? stokSatDovizAdi;
     int? olcuBirimKodu;
     String? olcuBirimAdi;
-    int? olcuBirimCarpani;
+    double? olcuBirimCarpani;
     String? stokOlcuBirimi;
     String? projeKodu;
     List<dynamic>? kalemListHucreList;
     List<dynamic>? hucreList;
-    int? stokBakiye;
+    double? stokBakiye;
     String? kosulKodu;
-    int? stokBirimAgirlik;
+    double? stokBirimAgirlik;
     
     KalemListModel();
 
