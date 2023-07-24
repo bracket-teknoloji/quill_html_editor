@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'musteri_siparisleri_view_model.dart';
+part of 'siparisler_view_model.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,17 +8,33 @@ part of 'musteri_siparisleri_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$MusteriSiparisleriViewModel on _MusteriSiparisleriViewModelBase, Store {
+mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   Computed<String>? _$getQueryParamsComputed;
 
   @override
   String get getQueryParams =>
       (_$getQueryParamsComputed ??= Computed<String>(() => super.getQueryParams,
-              name: '_MusteriSiparisleriViewModelBase.getQueryParams'))
+              name: '_SiparislerViewModelBase.getQueryParams'))
           .value;
 
-  late final _$dahaVarMiAtom = Atom(
-      name: '_MusteriSiparisleriViewModelBase.dahaVarMi', context: context);
+  late final _$paramDataAtom =
+      Atom(name: '_SiparislerViewModelBase.paramData', context: context);
+
+  @override
+  Map<String, String> get paramData {
+    _$paramDataAtom.reportRead();
+    return super.paramData;
+  }
+
+  @override
+  set paramData(Map<String, String> value) {
+    _$paramDataAtom.reportWrite(value, super.paramData, () {
+      super.paramData = value;
+    });
+  }
+
+  late final _$dahaVarMiAtom =
+      Atom(name: '_SiparislerViewModelBase.dahaVarMi', context: context);
 
   @override
   bool get dahaVarMi {
@@ -34,8 +50,7 @@ mixin _$MusteriSiparisleriViewModel on _MusteriSiparisleriViewModelBase, Store {
   }
 
   late final _$grupKodlariGosterAtom = Atom(
-      name: '_MusteriSiparisleriViewModelBase.grupKodlariGoster',
-      context: context);
+      name: '_SiparislerViewModelBase.grupKodlariGoster', context: context);
 
   @override
   bool get grupKodlariGoster {
@@ -51,7 +66,7 @@ mixin _$MusteriSiparisleriViewModel on _MusteriSiparisleriViewModelBase, Store {
   }
 
   late final _$kapaliBelgelerListelenmesinAtom = Atom(
-      name: '_MusteriSiparisleriViewModelBase.kapaliBelgelerListelenmesin',
+      name: '_SiparislerViewModelBase.kapaliBelgelerListelenmesin',
       context: context);
 
   @override
@@ -69,7 +84,7 @@ mixin _$MusteriSiparisleriViewModel on _MusteriSiparisleriViewModelBase, Store {
   }
 
   late final _$sayfaAtom =
-      Atom(name: '_MusteriSiparisleriViewModelBase.sayfa', context: context);
+      Atom(name: '_SiparislerViewModelBase.sayfa', context: context);
 
   @override
   int get sayfa {
@@ -85,7 +100,7 @@ mixin _$MusteriSiparisleriViewModel on _MusteriSiparisleriViewModelBase, Store {
   }
 
   late final _$siralamaAtom =
-      Atom(name: '_MusteriSiparisleriViewModelBase.siralama', context: context);
+      Atom(name: '_SiparislerViewModelBase.siralama', context: context);
 
   @override
   String get siralama {
@@ -100,8 +115,8 @@ mixin _$MusteriSiparisleriViewModel on _MusteriSiparisleriViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom = Atom(
-      name: '_MusteriSiparisleriViewModelBase.searchText', context: context);
+  late final _$searchTextAtom =
+      Atom(name: '_SiparislerViewModelBase.searchText', context: context);
 
   @override
   String? get searchText {
@@ -116,9 +131,8 @@ mixin _$MusteriSiparisleriViewModel on _MusteriSiparisleriViewModelBase, Store {
     });
   }
 
-  late final _$isScrolledDownAtom = Atom(
-      name: '_MusteriSiparisleriViewModelBase.isScrolledDown',
-      context: context);
+  late final _$isScrolledDownAtom =
+      Atom(name: '_SiparislerViewModelBase.isScrolledDown', context: context);
 
   @override
   bool get isScrolledDown {
@@ -133,8 +147,8 @@ mixin _$MusteriSiparisleriViewModel on _MusteriSiparisleriViewModelBase, Store {
     });
   }
 
-  late final _$searchBarAtom = Atom(
-      name: '_MusteriSiparisleriViewModelBase.searchBar', context: context);
+  late final _$searchBarAtom =
+      Atom(name: '_SiparislerViewModelBase.searchBar', context: context);
 
   @override
   bool get searchBar {
@@ -150,168 +164,162 @@ mixin _$MusteriSiparisleriViewModel on _MusteriSiparisleriViewModelBase, Store {
   }
 
   late final _$musteriSiparisleriListAtom = Atom(
-      name: '_MusteriSiparisleriViewModelBase.musteriSiparisleriList',
+      name: '_SiparislerViewModelBase.musteriSiparisleriList',
       context: context);
 
   @override
-  List<MusteriSiparisleriModel?>? get musteriSiparisleriList {
+  List<SiparislerModel?>? get musteriSiparisleriList {
     _$musteriSiparisleriListAtom.reportRead();
     return super.musteriSiparisleriList;
   }
 
   @override
-  set musteriSiparisleriList(List<MusteriSiparisleriModel?>? value) {
+  set musteriSiparisleriList(List<SiparislerModel?>? value) {
     _$musteriSiparisleriListAtom
         .reportWrite(value, super.musteriSiparisleriList, () {
       super.musteriSiparisleriList = value;
     });
   }
 
-  late final _$_MusteriSiparisleriViewModelBaseActionController =
-      ActionController(
-          name: '_MusteriSiparisleriViewModelBase', context: context);
+  late final _$_SiparislerViewModelBaseActionController =
+      ActionController(name: '_SiparislerViewModelBase', context: context);
+
+  @override
+  void setParamData(Map<String, String> value) {
+    final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
+        name: '_SiparislerViewModelBase.setParamData');
+    try {
+      return super.setParamData(value);
+    } finally {
+      _$_SiparislerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void changeGrupKodlariGoster() {
-    final _$actionInfo =
-        _$_MusteriSiparisleriViewModelBaseActionController.startAction(
-            name: '_MusteriSiparisleriViewModelBase.changeGrupKodlariGoster');
+    final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
+        name: '_SiparislerViewModelBase.changeGrupKodlariGoster');
     try {
       return super.changeGrupKodlariGoster();
     } finally {
-      _$_MusteriSiparisleriViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparislerViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setDahaVarMi(bool value) {
-    final _$actionInfo = _$_MusteriSiparisleriViewModelBaseActionController
-        .startAction(name: '_MusteriSiparisleriViewModelBase.setDahaVarMi');
+    final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
+        name: '_SiparislerViewModelBase.setDahaVarMi');
     try {
       return super.setDahaVarMi(value);
     } finally {
-      _$_MusteriSiparisleriViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparislerViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void increaseSayfa() {
-    final _$actionInfo = _$_MusteriSiparisleriViewModelBaseActionController
-        .startAction(name: '_MusteriSiparisleriViewModelBase.increaseSayfa');
+    final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
+        name: '_SiparislerViewModelBase.increaseSayfa');
     try {
       return super.increaseSayfa();
     } finally {
-      _$_MusteriSiparisleriViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparislerViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void resetSayfa() {
-    final _$actionInfo = _$_MusteriSiparisleriViewModelBaseActionController
-        .startAction(name: '_MusteriSiparisleriViewModelBase.resetSayfa');
+    final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
+        name: '_SiparislerViewModelBase.resetSayfa');
     try {
       return super.resetSayfa();
     } finally {
-      _$_MusteriSiparisleriViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparislerViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setKapaliBelgelerListelenmesin(bool value) {
-    final _$actionInfo =
-        _$_MusteriSiparisleriViewModelBaseActionController.startAction(
-            name:
-                '_MusteriSiparisleriViewModelBase.setKapaliBelgelerListelenmesin');
+    final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
+        name: '_SiparislerViewModelBase.setKapaliBelgelerListelenmesin');
     try {
       return super.setKapaliBelgelerListelenmesin(value);
     } finally {
-      _$_MusteriSiparisleriViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparislerViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setSiralama(String value) {
-    final _$actionInfo = _$_MusteriSiparisleriViewModelBaseActionController
-        .startAction(name: '_MusteriSiparisleriViewModelBase.setSiralama');
+    final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
+        name: '_SiparislerViewModelBase.setSiralama');
     try {
       return super.setSiralama(value);
     } finally {
-      _$_MusteriSiparisleriViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparislerViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_MusteriSiparisleriViewModelBaseActionController
-        .startAction(name: '_MusteriSiparisleriViewModelBase.setSearchText');
+    final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
+        name: '_SiparislerViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
     } finally {
-      _$_MusteriSiparisleriViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparislerViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void changeIsScrolledDown(bool value) {
-    final _$actionInfo =
-        _$_MusteriSiparisleriViewModelBaseActionController.startAction(
-            name: '_MusteriSiparisleriViewModelBase.changeIsScrolledDown');
+    final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
+        name: '_SiparislerViewModelBase.changeIsScrolledDown');
     try {
       return super.changeIsScrolledDown(value);
     } finally {
-      _$_MusteriSiparisleriViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparislerViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void changeSearchBar() {
-    final _$actionInfo = _$_MusteriSiparisleriViewModelBaseActionController
-        .startAction(name: '_MusteriSiparisleriViewModelBase.changeSearchBar');
+    final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
+        name: '_SiparislerViewModelBase.changeSearchBar');
     try {
       return super.changeSearchBar();
     } finally {
-      _$_MusteriSiparisleriViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparislerViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setMusteriSiparisleriList(List<MusteriSiparisleriModel?>? value) {
-    final _$actionInfo =
-        _$_MusteriSiparisleriViewModelBaseActionController.startAction(
-            name: '_MusteriSiparisleriViewModelBase.setMusteriSiparisleriList');
+  void setSiparislerList(List<SiparislerModel?>? value) {
+    final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
+        name: '_SiparislerViewModelBase.setSiparislerList');
     try {
-      return super.setMusteriSiparisleriList(value);
+      return super.setSiparislerList(value);
     } finally {
-      _$_MusteriSiparisleriViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparislerViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void addMusteriSiparisleriList(List<MusteriSiparisleriModel?>? value) {
-    final _$actionInfo =
-        _$_MusteriSiparisleriViewModelBaseActionController.startAction(
-            name: '_MusteriSiparisleriViewModelBase.addMusteriSiparisleriList');
+  void addSiparislerList(List<SiparislerModel?>? value) {
+    final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
+        name: '_SiparislerViewModelBase.addSiparislerList');
     try {
-      return super.addMusteriSiparisleriList(value);
+      return super.addSiparislerList(value);
     } finally {
-      _$_MusteriSiparisleriViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_SiparislerViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   String toString() {
     return '''
+paramData: ${paramData},
 dahaVarMi: ${dahaVarMi},
 grupKodlariGoster: ${grupKodlariGoster},
 kapaliBelgelerListelenmesin: ${kapaliBelgelerListelenmesin},

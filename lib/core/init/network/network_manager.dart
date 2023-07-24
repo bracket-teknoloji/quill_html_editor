@@ -183,10 +183,10 @@ class NetworkManager {
 
   String get getBaseUrl {
     String result;
-    if (CacheManager.getAccounts(AccountModel.instance.uyeEmail ??"")?.wsWan != null) {
-      result = "${CacheManager.getAccounts(AccountModel.instance.uyeEmail ??"")?.wsWan}/";
+    if (CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "")?.wsWan != null) {
+      result = "${CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "")?.wsWan}/";
     } else {
-      result = (CacheManager.getAccounts(AccountModel.instance.uyeEmail ??"")?.wsLan ?? "http://ofis.bracket.com.tr:7575/Picker/");
+      result = (CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "")?.wsLan ?? "http://ofis.bracket.com.tr:7575/Picker/");
     }
     return result;
   }

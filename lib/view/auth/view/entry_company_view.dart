@@ -1,5 +1,3 @@
-import "dart:developer";
-
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
@@ -133,7 +131,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
       addQuery: true,
       queryParameters: {"Veritabani": sirket},
     );
-    log("message");
     final data = response.data;
     if (data != null) {
       for (IsletmeModel element in data) {
@@ -168,8 +165,9 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                CustomWidgetWithLabel(text: "Şirket", child: 
-                                  TextFormField(
+                                CustomWidgetWithLabel(
+                                  text: "Şirket",
+                                  child: TextFormField(
                                     decoration: const InputDecoration(
                                       suffixIcon: Icon(Icons.more_horiz_outlined),
                                     ),
@@ -184,9 +182,8 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   ),
                                 ),
                                 CustomWidgetWithLabel(
-                                  text: "İşletme Kodu",
-                                  child: 
-                                    TextFormField(
+                                    text: "İşletme Kodu",
+                                    child: TextFormField(
                                       controller: controller2,
                                       enabled: isletme?.isNotNullOrEmpty,
                                       readOnly: true,
@@ -196,21 +193,20 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                       decoration: const InputDecoration(
                                         suffixIcon: Icon(Icons.more_horiz_outlined),
                                       ),
-                                    )
-                                  
-                                ),
-                                CustomWidgetWithLabel(text: "Şube Kodu", child: 
-                                  TextFormField(
-                                    controller: controller3,
-                                    enabled: sube?.isNotNullOrEmpty,
-                                    readOnly: true,
-                                    onTap: () {
-                                      subeDialog(context);
-                                    },
-                                    decoration: const InputDecoration(
-                                      suffixIcon: Icon(Icons.more_horiz_outlined),
-                                    ),
-                                  )),
+                                    )),
+                                CustomWidgetWithLabel(
+                                    text: "Şube Kodu",
+                                    child: TextFormField(
+                                      controller: controller3,
+                                      enabled: sube?.isNotNullOrEmpty,
+                                      readOnly: true,
+                                      onTap: () {
+                                        subeDialog(context);
+                                      },
+                                      decoration: const InputDecoration(
+                                        suffixIcon: Icon(Icons.more_horiz_outlined),
+                                      ),
+                                    )),
                                 // CustomWidgetWithLabel(
                                 //   text: "Şirket",
                                 //   children: [
@@ -307,12 +303,18 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                 // ..gCid = "/Y5TBF72qY7bnZl3+NOYvUtln/g5FJPl4jQ9i59td5M=";
                                 dialogManager.showLoadingDialog("${selected["Şirket"]} şirketine giriş yapılıyor.");
                                 GenericResponseModel<NetworkManagerMixin> response;
-                                  response = await networkManager.dioPost<MainPageModel>(path: ApiUrls.createSession, bodyModel: MainPageModel(), addTokenKey: true, showError: false, data: model, headers: {
-                                  "VERITABANI": selected["Şirket"].toString(),
-                                  "ISLETME_KODU": selected["İşletme"].toString(),
-                                  "SUBE_KODU": selected["Şube"].toString(),
-                                  "content-type": "application/json"
-                                });
+                                response = await networkManager.dioPost<MainPageModel>(
+                                    path: ApiUrls.createSession,
+                                    bodyModel: MainPageModel(),
+                                    addTokenKey: true,
+                                    showError: false,
+                                    data: model,
+                                    headers: {
+                                      "VERITABANI": selected["Şirket"].toString(),
+                                      "ISLETME_KODU": selected["İşletme"].toString(),
+                                      "SUBE_KODU": selected["Şube"].toString(),
+                                      "content-type": "application/json"
+                                    });
                                 if (response.data != null) {
                                   MainPageModel model = response.data[0];
                                   CacheManager.setAnaVeri(model);
@@ -321,7 +323,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   CacheManager.setLogout(true);
                                   Get.offAndToNamed("/mainPage");
                                   // Get.toNamed("/mainPage");
-                                  (response.message?.isNotNullOrNoEmpty??false) ? dialogManager.showAlertDialog(response.message.toString()) : null;
+                                  (response.message?.isNotNullOrNoEmpty ?? false) ? dialogManager.showAlertDialog(response.message.toString()) : null;
                                 } else {
                                   // dialogManager.hideAlertDialog;
                                   dialogManager.showAlertDialog(response.message.toString());

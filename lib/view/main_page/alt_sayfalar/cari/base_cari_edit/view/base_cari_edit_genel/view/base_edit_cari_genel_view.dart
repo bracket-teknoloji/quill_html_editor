@@ -142,10 +142,10 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                             }
                             log(result.toString());
                           },
-                          icon: const Icon(Icons.spatial_audio_off_outlined)),
+                          icon: const Icon(Icons.more_horiz_outlined)),
                       IconButton(
                           onPressed: () async {
-                            String kod = await CariNetworkManager.getSiradakiKod(kod: model?.cariKodu);
+                            String kod = await CariNetworkManager.getSiradakiKod(kod: kodController.text);
                             kodController.text = kod;
                             model?.cariKodu = kod;
                             viewModel.changeModel(model);

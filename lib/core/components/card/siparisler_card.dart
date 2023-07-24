@@ -7,17 +7,17 @@ import 'package:picker/core/constants/extensions/list_extensions.dart';
 import 'package:picker/core/constants/extensions/number_extensions.dart';
 import 'package:picker/core/constants/extensions/widget_extensions.dart';
 import 'package:picker/core/constants/ui_helper/ui_helper.dart';
-import 'package:picker/view/main_page/alt_sayfalar/siparis/musteri_siparisleri/model/musteri_siparisleri_model.dart';
+import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_model.dart';
 
-class MusteriSiparisleriCard extends StatefulWidget {
-  final MusteriSiparisleriModel? model;
-  const MusteriSiparisleriCard({super.key, required this.model});
+class SiparislerCard extends StatefulWidget {
+  final SiparislerModel? model;
+  const SiparislerCard({super.key, required this.model});
 
   @override
-  State<MusteriSiparisleriCard> createState() => _MusteriSiparisleriCardState();
+  State<SiparislerCard> createState() => _SiparislerCardState();
 }
 
-class _MusteriSiparisleriCardState extends BaseState<MusteriSiparisleriCard> {
+class _SiparislerCardState extends BaseState<SiparislerCard> {
   @override
   Widget build(BuildContext context) {
     return Card(

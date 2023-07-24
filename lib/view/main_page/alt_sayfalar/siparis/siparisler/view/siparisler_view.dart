@@ -5,8 +5,10 @@ import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 import 'package:picker/core/base/state/base_state.dart';
 import 'package:picker/core/components/appbar/appbar_prefered_sized_bottom.dart';
+import 'package:picker/core/components/bottom_bar/bottom_bar.dart';
 import 'package:picker/core/components/button/elevated_buttons/bottom_appbar_button.dart';
-import 'package:picker/core/components/card/musteri_siparisleri_card.dart';
+import 'package:picker/core/components/button/elevated_buttons/footer_button.dart';
+import 'package:picker/core/components/card/siparisler_card.dart';
 import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import 'package:picker/core/components/floating_action_button/custom_floating_action_button.dart';
 import 'package:picker/core/components/helper_widgets/custom_label_widget.dart';
@@ -16,18 +18,18 @@ import 'package:picker/core/components/textfield/custom_text_field.dart';
 import 'package:picker/core/components/wrap/appbar_title.dart';
 import 'package:picker/core/constants/ui_helper/ui_helper.dart';
 import 'package:picker/core/init/network/login/api_urls.dart';
-import 'package:picker/view/main_page/alt_sayfalar/siparis/musteri_siparisleri/model/musteri_siparisleri_model.dart';
-import 'package:picker/view/main_page/alt_sayfalar/siparis/musteri_siparisleri/view_model/musteri_siparisleri_view_model.dart';
+import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_model.dart';
+import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/view_model/siparisler_view_model.dart';
 
-class MusteriSiparisleriView extends StatefulWidget {
-  final bool isMusteriSiparisleri;
-  const MusteriSiparisleriView({super.key, required this.isMusteriSiparisleri});
+class SiparislerView extends StatefulWidget {
+  final bool isSiparisler;
+  const SiparislerView({super.key, required this.isSiparisler});
 
   @override
-  State<MusteriSiparisleriView> createState() => _MusteriSiparisleriViewState();
+  State<SiparislerView> createState() => _SiparislerViewState();
 }
 
-class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
+class _SiparislerViewState extends BaseState<SiparislerView> {
   late ScrollController scrollController;
   late TextEditingController baslangicTarihiController;
   late TextEditingController bitisTarihiController;
@@ -37,12 +39,12 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
   late TextEditingController projeController;
   late TextEditingController ozelKod1Controller;
   late TextEditingController ozelKod2Controller;
-  late MusteriSiparisleriViewModel viewModel;
-  List<MusteriSiparisleriModel?>? get musteriSiparisleriList => viewModel.musteriSiparisleriList;
+  late SiparislerViewModel viewModel;
+  List<SiparislerModel?>? get musteriSiparisleriList => viewModel.musteriSiparisleriList;
 
   @override
   void initState() {
-    viewModel = MusteriSiparisleriViewModel(pickerBelgeTuru: widget.isMusteriSiparisleri ? "MS" : "SS");
+    viewModel = SiparislerViewModel(pickerBelgeTuru: widget.isSiparisler ? "MS" : "SS");
     scrollController = ScrollController();
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
@@ -57,16 +59,15 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
     });
     scrollController.addListener(() async {
       if (scrollController.position.pixels == scrollController.position.maxScrollExtent && viewModel.dahaVarMi) {
-        if (viewModel.dahaVarMi) {
-          Future.delayed(const Duration(milliseconds: 500), () {
-            getData();
-          });
-        }
+        Future.delayed(const Duration(milliseconds: 500), () => getData());
       }
       if (scrollController.position.userScrollDirection == ScrollDirection.forward) {
         viewModel.changeIsScrolledDown(true);
       } else if (scrollController.position.userScrollDirection == ScrollDirection.reverse) {
         viewModel.changeIsScrolledDown(false);
+      }
+      if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+        viewModel.changeIsScrolledDown(true);
       }
     });
     super.initState();
@@ -89,9 +90,18 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
+      extendBody: true,
+      extendBodyBehindAppBar: false,
       appBar: appBar(context),
       floatingActionButton: fab(),
       body: body(),
+      bottomNavigationBar: Observer(
+          builder: (_) => BottomBarWidget(isScrolledDown: viewModel.isScrolledDown, visible: viewModel.paramData.isNotEmpty, children: [
+                FooterButton(children: [const Text("KDV Hariç"), Text("${viewModel.paramData["ARA_TOPLAM"] ?? ""} TL")]),
+                FooterButton(children: [const Text("KDV"), Text("${viewModel.paramData["KDV"] ?? ""} TL")]),
+                FooterButton(children: [const Text("KDV Dahil"), Text("${viewModel.paramData["GENEL_TOPLAM"] ?? ""} TL")]),
+              ])),
     );
   }
 
@@ -103,13 +113,13 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
               ? CustomAppBarTextField(
                   onFieldSubmitted: (value) {
                     viewModel.setSearchText(value);
-                    viewModel.setMusteriSiparisleriList(null);
+                    viewModel.setSiparislerList(null);
                     viewModel.setDahaVarMi(true);
                     viewModel.resetSayfa();
                     getData();
                   },
                 )
-              : AppBarTitle(title: "${widget.isMusteriSiparisleri ? "Müşteri" : "Satıcı"} Siparişleri", subtitle: viewModel.musteriSiparisleriList?.length.toString())),
+              : AppBarTitle(title: "${widget.isSiparisler ? "Müşteri" : "Satıcı"} Siparişleri", subtitle: viewModel.musteriSiparisleriList?.length.toString())),
       //*Actions
       actions: [
         IconButton(
@@ -132,7 +142,7 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
                       children: [
                         RaporFiltreDateTimeBottomSheetView(
                           filterOnChanged: (index) {
-                            viewModel.setMusteriSiparisleriList(null);
+                            viewModel.setSiparislerList(null);
                             viewModel.setDahaVarMi(true);
                             viewModel.resetSayfa();
                             getData();
@@ -165,6 +175,7 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
                                       var result = await bottomSheetDialogManager.showCariTipiBottomSheetDialog(context);
                                       if (result != null) {
                                         cariTipiController.text = result;
+                                        //😳 Bunu düzenle
                                         viewModel.musteriSiparisleriRequestModel.cariTipi = result;
                                       }
                                     })),
@@ -182,6 +193,7 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
                                       var result = await bottomSheetDialogManager.showPlasiyerDialog(context);
                                       if (result != null) {
                                         plasiyerController.text = result.map((e) => e.plasiyerAciklama).join(", ");
+                                        //😳 Bunu düzenle
                                         viewModel.musteriSiparisleriRequestModel.arrPlasiyerKodu = result.map((e) => e.plasiyerKodu).toList();
                                       }
                                     })),
@@ -206,7 +218,7 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
                         Observer(
                           builder: (_) => AnimatedContainer(
                             height: viewModel.grupKodlariGoster ? null : 0,
-                            duration: const Duration(seconds: 2),
+                            duration: const Duration(seconds: 1),
                             child: const Column(
                               children: [
                                 Row(
@@ -233,12 +245,13 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
                         ),
                         Row(
                           children: [
-                            Expanded(child: ElevatedButton(onPressed: () {}, style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))), child: const Text("Temizle"))),
+                            Expanded(
+                                child: ElevatedButton(onPressed: () {}, style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))), child: const Text("Temizle"))),
                             SizedBox(width: context.dynamicWidth(0.02)),
                             Expanded(
                                 child: ElevatedButton(
                                     onPressed: () {
-                                      viewModel.setMusteriSiparisleriList(null);
+                                      viewModel.setSiparislerList(null);
                                       viewModel.setDahaVarMi(true);
                                       viewModel.resetSayfa();
                                       getData();
@@ -261,7 +274,7 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
                   if (result != null) {
                     viewModel.setSiralama(result);
                     viewModel.resetSayfa();
-                    viewModel.setMusteriSiparisleriList(null);
+                    viewModel.setSiparislerList(null);
                     viewModel.setDahaVarMi(true);
                     getData();
                   }
@@ -278,7 +291,7 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
   RefreshIndicator body() {
     return RefreshIndicator.adaptive(
         onRefresh: () async {
-          viewModel.setMusteriSiparisleriList(null);
+          viewModel.setSiparislerList(null);
           viewModel.setDahaVarMi(true);
           getData();
         },
@@ -301,7 +314,7 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
                             child: const Center(child: CircularProgressIndicator.adaptive()),
                           );
                         }
-                        return MusteriSiparisleriCard(model: viewModel.musteriSiparisleriList?[index]);
+                        return SiparislerCard(model: viewModel.musteriSiparisleriList?[index]);
                       },
                     );
                   })));
@@ -309,10 +322,10 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
 
   void getData() async {
     viewModel.setDahaVarMi(false);
-    var result =
-        await networkManager.dioGet<MusteriSiparisleriModel>(path: ApiUrls.getFaturalar, bodyModel: MusteriSiparisleriModel(), queryParameters: viewModel.musteriSiparisleriRequestModel.toJson());
+    var result = await networkManager.dioGet<SiparislerModel>(path: ApiUrls.getFaturalar, bodyModel: SiparislerModel(), queryParameters: viewModel.musteriSiparisleriRequestModel.toJson());
     if (result.data != null) {
-      List<MusteriSiparisleriModel?>? list = result.data.map((e) => e as MusteriSiparisleriModel).toList().cast<MusteriSiparisleriModel?>();
+      viewModel.setParamData(result.paramData?.map((key, value) => MapEntry(key, value.toString())) ?? {});
+      List<SiparislerModel?>? list = result.data.map((e) => e as SiparislerModel).toList().cast<SiparislerModel?>();
       if (list!.length < 25) {
         viewModel.setDahaVarMi(false);
       } else {
@@ -320,12 +333,12 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
         viewModel.increaseSayfa();
       }
       if (viewModel.musteriSiparisleriList == null) {
-        viewModel.setMusteriSiparisleriList(list);
+        viewModel.setSiparislerList(list);
       } else {
-        viewModel.addMusteriSiparisleriList(list);
+        viewModel.addSiparislerList(list);
       }
       // if (viewModel.sayfa == 1) {
-      //   viewModel.setMusteriSiparisleriList(list);
+      //   viewModel.setSiparislerList(list);
       //   viewModel.setDahaVarMi(true);
       //   viewModel.increaseSayfa();
       // } else if (viewModel.sayfa > 1) {
@@ -335,7 +348,7 @@ class _MusteriSiparisleriViewState extends BaseState<MusteriSiparisleriView> {
       //   viewModel.setDahaVarMi(true);
       //   viewModel.increaseSayfa();
       // }
-      //   viewModel.addMusteriSiparisleriList(list);
+      //   viewModel.addSiparislerList(list);
       // }
     }
   }

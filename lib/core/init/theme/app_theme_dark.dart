@@ -16,9 +16,9 @@ class AppThemeDark extends AppTheme {
   var colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark);
   @override
   ThemeData get theme => ThemeData(
-    datePickerTheme: DatePickerThemeData(
-      shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
-    ),
+      datePickerTheme: DatePickerThemeData(
+        shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
+      ),
       radioTheme: RadioThemeData(fillColor: MaterialStateProperty.all(UIHelper.primaryColor), overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.1))),
       useMaterial3: true,
       colorSchemeSeed: UIHelper.primaryColor,
@@ -95,29 +95,22 @@ class AppThemeDark extends AppTheme {
         linearMinHeight: 2,
       ),
       dropdownMenuTheme: DropdownMenuThemeData(
-          menuStyle: MenuStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.red),
-          ),
+          menuStyle: const MenuStyle(),
           inputDecorationTheme: InputDecorationTheme(
             errorStyle: const TextStyle(
               fontSize: 12,
-              color: Colors.green,
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: UIHelper.lowBorderRadius,
-              borderSide: const BorderSide(color: Colors.green),
             ),
             border: OutlineInputBorder(
               borderRadius: UIHelper.lowBorderRadius,
-              borderSide: const BorderSide(color: Colors.green),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: UIHelper.lowBorderRadius,
-              borderSide: const BorderSide(color: Colors.white),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: UIHelper.lowBorderRadius,
-              borderSide: const BorderSide(color: Colors.white),
             ),
           )),
       applyElevationOverlayColor: true,
@@ -188,7 +181,7 @@ class AppThemeDark extends AppTheme {
         shape: RoundedRectangleBorder(
           borderRadius: UIHelper.lowBorderRadius,
         ),
-        behavior: SnackBarBehavior.fixed ,
+        behavior: SnackBarBehavior.fixed,
       ),
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -217,7 +210,6 @@ class AppThemeDark extends AppTheme {
             systemStatusBarContrastEnforced: true,
           ),
           centerTitle: false,
-
           iconTheme: IconThemeData(color: colorManager.primary),
           titleTextStyle: TextStyle(color: colorManager.primary, fontSize: 20),
           scrolledUnderElevation: 0,

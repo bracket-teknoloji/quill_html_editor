@@ -1,14 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'musteri_siparisleri_model.dart';
+part of 'siparisler_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-MusteriSiparisleriModel _$MusteriSiparisleriModelFromJson(
-        Map<String, dynamic> json) =>
-    MusteriSiparisleriModel()
+SiparislerModel _$SiparislerModelFromJson(Map<String, dynamic> json) =>
+    SiparislerModel()
       ..islemId = json['ISLEM_ID'] as String?
       ..tempKayitTipi = json['TEMP_KAYIT_TIPI'] as int?
       ..tempBelgeId = json['TEMP_BELGE_ID'] as int?
@@ -77,8 +76,7 @@ MusteriSiparisleriModel _$MusteriSiparisleriModelFromJson(
       ..fYedek4 = (json['F_YEDEK4'] as num?)?.toDouble()
       ..acik12 = json['ACIK12'] as String?;
 
-Map<String, dynamic> _$MusteriSiparisleriModelToJson(
-        MusteriSiparisleriModel instance) =>
+Map<String, dynamic> _$SiparislerModelToJson(SiparislerModel instance) =>
     <String, dynamic>{
       'ISLEM_ID': instance.islemId,
       'TEMP_KAYIT_TIPI': instance.tempKayitTipi,

@@ -1,11 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:picker/core/base/model/base_network_mixin.dart';
-import 'package:picker/view/main_page/alt_sayfalar/siparis/musteri_siparisleri/model/kalem_list_model.dart';
+import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/kalem_list_model.dart';
 
-part 'musteri_siparisleri_model.g.dart';
+part 'siparisler_model.g.dart';
 
 @JsonSerializable(createToJson: true, includeIfNull: true, fieldRename: FieldRename.screamingSnake)
-class MusteriSiparisleriModel with NetworkManagerMixin {
+class SiparislerModel with NetworkManagerMixin {
   String? islemId;
   int? tempKayitTipi;
   int? tempBelgeId;
@@ -62,8 +62,8 @@ class MusteriSiparisleriModel with NetworkManagerMixin {
   double get araToplam => (genelToplam ?? 0) - (kdv ?? 0);
 
   @override
-  fromJson(Map<String, dynamic> json) => _$MusteriSiparisleriModelFromJson(json);
+  fromJson(Map<String, dynamic> json) => _$SiparislerModelFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$MusteriSiparisleriModelToJson(this);
+  Map<String, dynamic> toJson() => _$SiparislerModelToJson(this);
 }

@@ -111,7 +111,6 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
     log(paramData.toString());
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      
       extendBody: true,
       extendBodyBehindAppBar: false,
       appBar: appBar(context),

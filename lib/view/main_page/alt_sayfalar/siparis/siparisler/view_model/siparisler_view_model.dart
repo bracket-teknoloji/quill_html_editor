@@ -1,16 +1,16 @@
 import 'dart:convert';
 
 import 'package:mobx/mobx.dart';
-import 'package:picker/view/main_page/alt_sayfalar/siparis/musteri_siparisleri/model/musteri_siparisleri_model.dart';
-import 'package:picker/view/main_page/alt_sayfalar/siparis/musteri_siparisleri/model/musteri_siparisleri_request_model.dart';
+import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_model.dart';
+import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart';
 
-part 'musteri_siparisleri_view_model.g.dart';
+part 'siparisler_view_model.g.dart';
 
-class MusteriSiparisleriViewModel = _MusteriSiparisleriViewModelBase with _$MusteriSiparisleriViewModel;
+class SiparislerViewModel = _SiparislerViewModelBase with _$SiparislerViewModel;
 
-abstract class _MusteriSiparisleriViewModelBase with Store {
-  _MusteriSiparisleriViewModelBase({required this.pickerBelgeTuru});
-  MusteriSiparisleriRequestModel get musteriSiparisleriRequestModel => MusteriSiparisleriRequestModel(
+abstract class _SiparislerViewModelBase with Store {
+  _SiparislerViewModelBase({required this.pickerBelgeTuru});
+  SiparislerRequestModel get musteriSiparisleriRequestModel => SiparislerRequestModel(
       pickerBelgeTuru: pickerBelgeTuru,
       iadeMi: false,
       faturalasmaGoster: true,
@@ -20,6 +20,13 @@ abstract class _MusteriSiparisleriViewModelBase with Store {
       searchText: searchText,
       kapaliBelgelerListelenmesin: kapaliBelgelerListelenmesin ? "E" : "H");
   final String? pickerBelgeTuru;
+
+  @observable
+  Map<String, String> paramData = {};
+
+  @action
+  void setParamData(Map<String, String> value) => paramData = value;
+
   @observable
   bool dahaVarMi = true;
   @observable
@@ -57,7 +64,7 @@ abstract class _MusteriSiparisleriViewModelBase with Store {
   @action
   void setSearchText(String? value) => searchText = value;
   @observable
-  bool isScrolledDown = false;
+  bool isScrolledDown = true;
 
   @action
   void changeIsScrolledDown(bool value) => isScrolledDown = value;
@@ -69,18 +76,18 @@ abstract class _MusteriSiparisleriViewModelBase with Store {
     searchBar = !searchBar;
     if (!searchBar) {
       searchText = null;
-      setMusteriSiparisleriList(null);
+      setSiparislerList(null);
       setDahaVarMi(true);
       resetSayfa();
     }
   }
 
   @observable
-  List<MusteriSiparisleriModel?>? musteriSiparisleriList;
+  List<SiparislerModel?>? musteriSiparisleriList;
   @action
-  void setMusteriSiparisleriList(List<MusteriSiparisleriModel?>? value) => musteriSiparisleriList = value;
+  void setSiparislerList(List<SiparislerModel?>? value) => musteriSiparisleriList = value;
   @action
-  void addMusteriSiparisleriList(List<MusteriSiparisleriModel?>? value) => musteriSiparisleriList = musteriSiparisleriList! + value!;
+  void addSiparislerList(List<SiparislerModel?>? value) => musteriSiparisleriList = musteriSiparisleriList! + value!;
 
   @computed
   String get getQueryParams => jsonEncode(musteriSiparisleriRequestModel.toJson());

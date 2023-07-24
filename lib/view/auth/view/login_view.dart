@@ -137,8 +137,8 @@ class _LoginViewState extends BaseState<LoginView> {
                                     textFieldData.account?.parola = null;
                                   } else {
                                     AccountModel.instance.uyeEmail = textFieldData.account?.email;
-                                    if (CacheManager.getHesapBilgileri?.qrData == null){
-                                    AccountModel.instance.uyeSifre = textFieldData.account?.parola;
+                                    if (CacheManager.getHesapBilgileri?.qrData == null) {
+                                      AccountModel.instance.uyeSifre = textFieldData.account?.parola;
                                     }
                                   }
                                   setState(() {});
@@ -226,14 +226,16 @@ class _LoginViewState extends BaseState<LoginView> {
     var result = await getUyeBilgileri();
     if (result.success != true) {
       if (result.errorCode == 5) {
-        CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "",false);
+        CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "", false);
         dialogManager.showAlertDialog(result.message ?? "");
         return;
       } else {
-        CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "",true);
+        CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "", true);
       }
+    } else {
+      CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "", true);
     }
-    if (CacheManager.getIsLicenseVerified(textFieldData.account?.email ?? "") == false){
+    if (CacheManager.getIsLicenseVerified(textFieldData.account?.email ?? "") == false) {
       dialogManager.showAlertDialog("Lisansınızın yenilenmesi gerekiyor.");
       return;
     }
@@ -244,8 +246,8 @@ class _LoginViewState extends BaseState<LoginView> {
     if (a.uyeEmail == "demo@netfect.com") {
       a.uyeSifre = null;
     } else {
-      if (a.qrData == null){
-      a.uyeSifre = textFieldData.account?.parola;
+      if (a.qrData == null) {
+        a.uyeSifre = textFieldData.account?.parola;
       }
     }
     dialogManager.showLoadingDialog("Giriş Yapılıyor");
