@@ -223,10 +223,12 @@ class _LoginViewState extends BaseState<LoginView> {
   }
 
   void login() async {
+    dialogManager.showLoadingDialog("Yükleniyor...");
     var result = await getUyeBilgileri();
     if (result.success != true) {
       if (result.errorCode == 5) {
         CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "", false);
+        dialogManager.hideAlertDialog;
         dialogManager.showAlertDialog(result.message ?? "");
         return;
       } else {
@@ -236,6 +238,7 @@ class _LoginViewState extends BaseState<LoginView> {
       CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "", true);
     }
     if (CacheManager.getIsLicenseVerified(textFieldData.account?.email ?? "") == false) {
+      dialogManager.hideAlertDialog;
       dialogManager.showAlertDialog("Lisansınızın yenilenmesi gerekiyor.");
       return;
     }
@@ -250,6 +253,7 @@ class _LoginViewState extends BaseState<LoginView> {
         a.uyeSifre = textFieldData.account?.parola;
       }
     }
+    dialogManager.hideAlertDialog;
     dialogManager.showLoadingDialog("Giriş Yapılıyor");
 
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
@@ -260,6 +264,7 @@ class _LoginViewState extends BaseState<LoginView> {
           queryParameters: {"deviceInfos": jsonEncode(a.toJson())},
           data: {"grant_type": "password", "username": emailController.text, "password": passwordController.text},
         );
+        a = a..isim= response?.userJson?.ad..soyadi= response?.userJson?.soyad..admin = response?.userJson?.admin;
         CacheManager.setHesapBilgileri(a);
         dialogManager.hideAlertDialog;
         Hive.box("preferences").put(companyController.text, [
@@ -292,8 +297,8 @@ class _LoginViewState extends BaseState<LoginView> {
   }
 
   Future<GenericResponseModel> getUyeBilgileri() async {
-    final response = await networkManager.dioPost<AccountResponseModel>(
-        bodyModel: AccountResponseModel(), showError: false, data: AccountModel.instance.toJson(), addTokenKey: false, path: ApiUrls.getUyeBilgileri);
+    final response =
+        await networkManager.dioPost<AccountResponseModel>(bodyModel: AccountResponseModel(), showError: false, data: AccountModel.instance.toJson(), addTokenKey: false, path: ApiUrls.getUyeBilgileri);
     if (response.success == true) {
       CacheManager.setAccounts(response.data.first..parola = AccountModel.instance.uyeSifre);
     }

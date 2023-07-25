@@ -16,10 +16,9 @@ class AccountsView extends StatefulWidget {
   State<AccountsView> createState() => _AccountsViewState();
 }
 
-
 class _AccountsViewState extends BaseState<AccountsView> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-int get getListLength => Hive.box("accounts").length;
+  int get getListLength => Hive.box("accounts").length;
 
   @override
   Widget build(BuildContext context) {
@@ -61,11 +60,11 @@ int get getListLength => Hive.box("accounts").length;
                                 onTap: () {
                                   Navigator.pop(context);
                                   dialogManager.showAreYouSureDialog(() {
-                                   CacheManager.accountsBox.delete(account.email);
+                                    CacheManager.accountsBox.delete(account.email);
                                     setState(() {});
                                   });
                                 }),
-                            BottomSheetModel( 
+                            BottomSheetModel(
                                 icon: "Database",
                                 iconWidget: Icons.storage_rounded,
                                 title: "Sunucu Tercihi",

@@ -89,6 +89,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           maxLength: widget.maxLength,
           validator: widget.validator ?? ((widget.isMust ?? false) ? validator : null),
           controller: controller,
+          obscureText: widget.keyboardType == TextInputType.visiblePassword,
           readOnly: widget.readOnly ?? false,
           decoration: InputDecoration(
               enabled: widget.enabled ?? true,

@@ -159,21 +159,15 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
 
   Future<void> getSession() async {
     GenericResponseModel lisansResponse = await getUyeBilgileri();
-    if (lisansResponse.success != true) {
-      if (lisansResponse.errorCode == 5) {
+    if (lisansResponse.success == true) {
+      CacheManager.setIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "", true);
+    } else {
+      if (lisansResponse.errorCode == 5 || !CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "")) {
         viewModel.setTitle(lisansResponse.message ?? "");
         viewModel.setIsError(true);
         CacheManager.setIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "", false);
         return;
-      } else {
-        CacheManager.setIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "", true);
       }
-    }
-
-    if (CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "") == false) {
-      viewModel.setTitle("Lisansınızın yenilenmesi gerekiyor.");
-      viewModel.setIsError(true);
-      return;
     }
 
     viewModel.setTitle("${CacheManager.getVeriTabani()["Şirket"] ?? ""} şirketi için oturum açılıyor...");

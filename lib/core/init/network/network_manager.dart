@@ -115,7 +115,15 @@ class NetworkManager {
     Map<String, dynamic> queries = getStandardQueryParameters();
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
-    final response = await dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
+    var response;
+    try {
+    response = await dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
+    } catch ( e) {
+      if(showError){
+      DialogManager().showAlertDialog(e.toString());
+      }
+      return GenericResponseModel<T>(success: false, message: e.toString());
+    }
     GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
     if (responseModel.success != true) {
       if (showError) {

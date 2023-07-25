@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/components/textfield/custom_text_field.dart';
 
 import '../../../core/base/model/base_network_mixin.dart';
 import '../../../core/base/model/generic_response_model.dart';
@@ -24,8 +24,23 @@ class AddAccountView extends StatefulWidget {
 }
 
 class _AddAccountViewState extends BaseState<AddAccountView> {
-  final TextEditingController _controller = TextEditingController();
-  final TextEditingController _controller2 = TextEditingController();
+  late final TextEditingController _controller;
+  late final TextEditingController _controller2;
+  final formKey = GlobalKey<FormState>();
+  @override
+  void initState() {
+    _controller = TextEditingController();
+    _controller2 = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _controller2.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,61 +52,53 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
         body: SingleChildScrollView(
           child: Padding(
             padding: context.paddingNormal,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                CustomWidgetWithLabel(
-                  text: "Firma E-Posta Adresi",
-                  child: TextFormField(
-                      controller: _controller,
-                      keyboardType: TextInputType.emailAddress,
-                      inputFormatters: [
-                        //email
-                        FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9@.]')),
-                      ],
-                      textInputAction: TextInputAction.next),
-                ),
-                Padding(
-                  padding: context.verticalPaddingLow,
-                  child: CustomWidgetWithLabel(
-                    text: "Şifre",
-                    child: TextFormField(obscureText: true, controller: _controller2),
+            child: Form(
+              key: formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  CustomWidgetWithLabel(
+                    text: "Firma E-Posta Adresi",
+                    child: CustomTextField(controller: _controller, keyboardType: TextInputType.emailAddress),
                   ),
-                ),
-                const Wrap(
-                  direction: Axis.horizontal,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: [
-                    Icon(Icons.question_mark_rounded),
-                    Text(
-                      "Bilgileri girerken büyük-küçük uyumuna dikkat ediniz.",
-                      softWrap: true,
-                    )
-                  ],
-                ),
-                Padding(
-                  padding: context.verticalPaddingLow,
-                  child: ElevatedButton(
-                      onPressed: () {
-                        _getQR(context);
-                      },
-                      child: const Text("BİLGİLERİ QR KOD'DAN AL")),
-                )
-              ],
+                  Padding(
+                    padding: context.verticalPaddingLow,
+                    child: CustomWidgetWithLabel(
+                      text: "Şifre",
+                      child: CustomTextField(keyboardType: TextInputType.visiblePassword, controller: _controller2),
+                    ),
+                  ),
+                  const Wrap(
+                    direction: Axis.horizontal,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [Icon(Icons.question_mark_rounded), Text("Bilgileri girerken büyük-küçük uyumuna dikkat ediniz.", softWrap: true)],
+                  ),
+                  Padding(
+                    padding: context.verticalPaddingLow,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          _getQR(context);
+                        },
+                        child: const Text("BİLGİLERİ QR KOD'DAN AL")),
+                  )
+                ],
+              ),
             ),
           ),
         ));
   }
 
   Future<void> loginMethod() async {
+    formKey.currentState!.validate();
     String encodedPassword = passwordDecoder(_controller2.text);
-    dialogManager.loadingDialog();
     if (_controller.text != "" && _controller2.text != "") {
+      dialogManager.showLoadingDialog("Yükleniyor...");
       var model = AccountModel.instance
         ..uyeEmail = _controller.text
         ..uyeSifre = encodedPassword;
       var data = model.toJson();
-      final response = await networkManager.dioPost<AccountResponseModel>(bodyModel: AccountResponseModel(), data: data, addTokenKey: false, path: ApiUrls.getUyeBilgileri);
+      final response = await networkManager.dioPost<AccountResponseModel>(bodyModel: AccountResponseModel(),showError: false, data: data, addTokenKey: false, path: ApiUrls.getUyeBilgileri);
+      dialogManager.hideAlertDialog;
       if (response.success!) {
         Box box = CacheManager.accountsBox;
         for (AccountResponseModel item in response.data!) {
@@ -103,6 +110,8 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
             dialogManager.showSnackBar("Başarılı");
           }
         }
+      }else{
+        dialogManager.showAlertDialog(response.message ?? "");
       }
     } else {
       dialogManager.showSnackBar("Lütfen boş alan bırakmayınız");

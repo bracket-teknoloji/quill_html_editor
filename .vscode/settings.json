@@ -11,6 +11,6 @@
   "dart.debugSdkLibraries": true,
   "editor.fontFamily": "JetBrains Mono",
   "errorLens.fontWeight": "normal",
-  "editor.fontWeight": "normal",
-  "editor.fontSize": 13
+  "editor.fontWeight": "450",
+  "editor.fontSize": 14
 }
