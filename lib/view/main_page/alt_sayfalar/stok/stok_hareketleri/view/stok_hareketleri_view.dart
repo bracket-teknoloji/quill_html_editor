@@ -1,10 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/components/slide_controller/view/slide_controller_view.dart';
 
 import '../../../../../../core/base/state/base_state.dart';
 import '../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart';
@@ -111,15 +113,11 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                 text: "Hareket Yönü",
                                 child: Center(
                                   child: Observer(builder: (_) {
-                                    return SizedBox(
-                                      width: double.infinity,
-                                      child: ToggleButtons(
-                                          isSelected: viewModel.isSelected,
-                                          onPressed: (index) {
-                                            viewModel.changeIsSelected(index);
-                                          },
-                                          children: viewModel.hareketYonuList.map((e) => Text(e)).toList()),
-                                    );
+                                    return SlideControllerWidget(
+                                        childrenTitleList: viewModel.hareketYonuList,
+                                        filterOnChanged: (index) => viewModel.changeIsSelected(index ?? 0),
+                                        childrenValueList: viewModel.isSelected,
+                                        groupValue: viewModel.isSelectedGroupValue);
                                   }),
                                 )),
                             Observer(builder: (_) {
@@ -134,7 +132,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                         title: "Hareket Türü", children: viewModel.hareketTuruMap.entries.map((e) => BottomSheetModel(title: e.key)).toList());
                                     if (result != null) {
                                       viewModel.changeArrHareketTuru(result.map((e) => e as String).toList().cast<String>());
-                                      setState(() {});
+                                      // setState(() {});
                                     }
                                   },
                                   suffix: const Icon(Icons.more_horiz_outlined));
@@ -147,7 +145,13 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                   readOnly: true,
                                   suffix: Wrap(children: [
                                     IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          if (viewModel.cariListesiModel != null) {
+                                            dialogManager.showCariGridViewDialog(viewModel.cariListesiModel);
+                                          } else {
+                                            dialogManager.showAlertDialog("Lütfen önce cari seçiniz.");
+                                          }
+                                        },
                                         icon: Icon(
                                           Icons.data_exploration_outlined,
                                           color: UIHelper.primaryColor,
@@ -169,7 +173,6 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                     onPressed: () {
                                       Get.back();
                                       viewModel.clearArrHareketTuru();
-                                      viewModel.resetIsSelected();
                                       viewModel.setCariListesiModel(null);
                                       viewModel.setFuture(getData());
                                     },
@@ -360,7 +363,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                       ).paddingAll(UIHelper.lowSize),
                                     ),
                                     //😳 Orijinali model.hareketTuruAciklama != "Muhtelif" fakaat devir sayfası olduğu için böyle yaptım.
-                                    Icon(children2.isNotNullOrEmpty ? Icons.chevron_right_outlined : null, color: theme.colorScheme.primary),
+                                    Visibility(visible: children2.isNotNullOrEmpty, child: Icon(Icons.chevron_right_outlined, color: theme.colorScheme.primary)),
                                   ],
                                 ),
                               ),

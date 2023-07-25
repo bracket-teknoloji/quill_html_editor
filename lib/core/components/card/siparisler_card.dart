@@ -23,7 +23,8 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
     return Card(
         child: ListTile(
       onTap: () async {
-        var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: widget.model?.belgeNo ?? "", children: [
+        // var result = 
+        await bottomSheetDialogManager.showBottomSheetDialog(context, title: widget.model?.belgeNo ?? "", children: [
           BottomSheetModel(title: "Görüntüle", iconWidget: Icons.search_outlined),
           BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit_outlined),
           BottomSheetModel(title: "Sil", iconWidget: Icons.delete_outline),

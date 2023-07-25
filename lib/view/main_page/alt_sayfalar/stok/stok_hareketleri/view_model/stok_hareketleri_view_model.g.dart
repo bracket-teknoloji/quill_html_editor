@@ -44,15 +44,33 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
       Atom(name: '_StokHareketleriViewModelBase.isSelected', context: context);
 
   @override
-  ObservableList<bool> get isSelected {
+  ObservableList<int> get isSelected {
     _$isSelectedAtom.reportRead();
     return super.isSelected;
   }
 
   @override
-  set isSelected(ObservableList<bool> value) {
+  set isSelected(ObservableList<int> value) {
     _$isSelectedAtom.reportWrite(value, super.isSelected, () {
       super.isSelected = value;
+    });
+  }
+
+  late final _$isSelectedGroupValueAtom = Atom(
+      name: '_StokHareketleriViewModelBase.isSelectedGroupValue',
+      context: context);
+
+  @override
+  int? get isSelectedGroupValue {
+    _$isSelectedGroupValueAtom.reportRead();
+    return super.isSelectedGroupValue;
+  }
+
+  @override
+  set isSelectedGroupValue(int? value) {
+    _$isSelectedGroupValueAtom.reportWrite(value, super.isSelectedGroupValue,
+        () {
+      super.isSelectedGroupValue = value;
     });
   }
 
@@ -217,17 +235,6 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
   }
 
   @override
-  void resetIsSelected() {
-    final _$actionInfo = _$_StokHareketleriViewModelBaseActionController
-        .startAction(name: '_StokHareketleriViewModelBase.resetIsSelected');
-    try {
-      return super.resetIsSelected();
-    } finally {
-      _$_StokHareketleriViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void changeIsSelected(int index) {
     final _$actionInfo = _$_StokHareketleriViewModelBaseActionController
         .startAction(name: '_StokHareketleriViewModelBase.changeIsSelected');
@@ -355,6 +362,7 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
     return '''
 cariListesiModel: ${cariListesiModel},
 isSelected: ${isSelected},
+isSelectedGroupValue: ${isSelectedGroupValue},
 hareketTuruMap: ${hareketTuruMap},
 hareketYonuList: ${hareketYonuList},
 arrHareketTuru: ${arrHareketTuru},

@@ -3,7 +3,6 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import 'package:picker/core/base/model/base_network_mixin.dart';
 import 'package:picker/core/base/model/generic_response_model.dart';
-import 'package:picker/view/add_company/model/account_response_model.dart';
 
 import '../../../core/base/state/base_state.dart';
 import '../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart';
@@ -323,8 +322,8 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   CacheManager.setIsletmeSube(userData);
                                   CacheManager.setLogout(true);
                                   Get.offAndToNamed("/mainPage");
-                                  var result = await networkManager.dioPost<AccountModel>(path: ApiUrls.saveUyeBilgileri, bodyModel: AccountModel(),data: CacheManager.getHesapBilgileri?.toJson());
-                                  if (result.success == true){
+                                  var result = await networkManager.dioPost<AccountModel>(path: ApiUrls.saveUyeBilgileri, bodyModel: AccountModel(), data: CacheManager.getHesapBilgileri?.toJson());
+                                  if (result.success == true) {
                                     print("Başarılı");
                                   }
                                   // Get.toNamed("/mainPage");

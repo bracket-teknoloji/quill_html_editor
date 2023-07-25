@@ -15,26 +15,30 @@ abstract class _StokHareketleriViewModelBase with Store {
   void setCariListesiModel(CariListesiModel? model) => cariListesiModel = model;
 
   @observable
-  ObservableList<bool> isSelected = [true, false, false].asObservable();
+  ObservableList<int> isSelected = [0, 1, 2].asObservable();
 
-  @action
-  void resetIsSelected() => isSelected = [true, false, false].asObservable();
+  // @action
+  // void resetIsSelected() => isSelected = [true, false, false].asObservable();
+
+  @observable
+  int? isSelectedGroupValue = 0;
 
   @action
   void changeIsSelected(int index) {
-    for (int i = 0; i < isSelected.length; i++) {
-      if (i == index) {
-        isSelected[i] = true;
-      } else {
-        isSelected[i] = false;
-      }
-    }
+    isSelectedGroupValue = index;
+    // for (int i = 0; i < isSelected.length; i++) {
+    //   if (i == index) {
+    //     isSelected[i] = true;
+    //   } else {
+    //     isSelected[i] = false;
+    //   }
+    // }
   }
 
   @computed
-  String get getIsSelected => isSelected.indexWhere((element) => element == true) == 0
+  String get getIsSelected => isSelectedGroupValue == 0
       ? ""
-      : isSelected.indexWhere((element) => element == true) == 1
+      : isSelectedGroupValue == 1
           ? "G"
           : "C";
 

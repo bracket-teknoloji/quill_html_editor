@@ -54,9 +54,9 @@ class NetworkManager {
   Future<TokenModel?> getToken({required String path, Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
     FormData formData = FormData.fromMap(data);
     log(AccountModel.instance.toJson().toString());
-    log(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.firma ?? "")?.wsWan ?? "");
+          log(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.firma ?? "")?.wsWan ?? "");
     final response = await dio.request(path,
-        queryParameters: queryParameters,
+          queryParameters: queryParameters,
         cancelToken: CancelToken(),
         options: Options(headers: {
           "Access-Control-Allow-Origin": "*",
@@ -115,7 +115,7 @@ class NetworkManager {
     Map<String, dynamic> queries = getStandardQueryParameters();
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
-    var response;
+    dynamic response;
     try {
     response = await dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
     } catch ( e) {
