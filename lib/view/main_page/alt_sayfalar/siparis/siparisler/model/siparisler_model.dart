@@ -31,6 +31,7 @@ class SiparislerModel with NetworkManagerMixin {
   String? projeAciklama;
   String? kdvDahil;
   String? ozelKod1;
+  String? ozelKod2;
   String? kosulKodu;
   String? kayityapankul;
   DateTime? kayittarihi;

@@ -97,6 +97,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
           preferredSize: const Size.fromHeight(60),
           child: AppBarPreferedSizedBottom(children: [
             AppBarButton(
+                icon: Icons.filter_alt_outlined,
                 child: const Text("Filtrele"),
                 onPressed: () async {
                   //TODO! viewModel.arrHareketTuru bağla
@@ -106,21 +107,21 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            CustomWidgetWithLabel(text: "Hareket Yönü", child: 
-                              Center(
-                                child: Observer(builder: (_) {
-                                  return SizedBox(
-                                    width: double.infinity,
-                                    child: ToggleButtons(
-                                        isSelected: viewModel.isSelected,
-                                        onPressed: (index) {
-                                          viewModel.changeIsSelected(index);
-                                        },
-                                        children: viewModel.hareketYonuList.map((e) => Text(e)).toList()),
-                                  );
-                                }),
-                              )
-                            ),
+                            CustomWidgetWithLabel(
+                                text: "Hareket Yönü",
+                                child: Center(
+                                  child: Observer(builder: (_) {
+                                    return SizedBox(
+                                      width: double.infinity,
+                                      child: ToggleButtons(
+                                          isSelected: viewModel.isSelected,
+                                          onPressed: (index) {
+                                            viewModel.changeIsSelected(index);
+                                          },
+                                          children: viewModel.hareketYonuList.map((e) => Text(e)).toList()),
+                                    );
+                                  }),
+                                )),
                             Observer(builder: (_) {
                               return CustomTextField(
                                   labelText: "Hareket Türü",
@@ -192,6 +193,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                       ));
                 }),
             AppBarButton(
+                icon: Icons.sort_by_alpha_outlined,
                 child: const Text("Sırala"),
                 onPressed: () async {
                   String? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Sırala", children: [
@@ -206,6 +208,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                   }
                 }),
             AppBarButton(
+                icon: Icons.refresh_outlined,
                 child: const Text("Yenile"),
                 onPressed: () {
                   getData();

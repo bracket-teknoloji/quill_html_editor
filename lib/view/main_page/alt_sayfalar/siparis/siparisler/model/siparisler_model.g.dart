@@ -42,6 +42,7 @@ SiparislerModel _$SiparislerModelFromJson(Map<String, dynamic> json) =>
       ..projeAciklama = json['PROJE_ACIKLAMA'] as String?
       ..kdvDahil = json['KDV_DAHIL'] as String?
       ..ozelKod1 = json['OZEL_KOD1'] as String?
+      ..ozelKod2 = json['OZEL_KOD2'] as String?
       ..kosulKodu = json['KOSUL_KODU'] as String?
       ..kayityapankul = json['KAYITYAPANKUL'] as String?
       ..kayittarihi = json['KAYITTARIHI'] == null
@@ -104,6 +105,7 @@ Map<String, dynamic> _$SiparislerModelToJson(SiparislerModel instance) =>
       'PROJE_ACIKLAMA': instance.projeAciklama,
       'KDV_DAHIL': instance.kdvDahil,
       'OZEL_KOD1': instance.ozelKod1,
+      'OZEL_KOD2': instance.ozelKod2,
       'KOSUL_KODU': instance.kosulKodu,
       'KAYITYAPANKUL': instance.kayityapankul,
       'KAYITTARIHI': instance.kayittarihi?.toIso8601String(),

@@ -246,6 +246,11 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                     filterOnChanged: (x) => viewModel.setTeslimatDurumuGroupValue(x),
                                     childrenValueList: viewModel.teslimatDurumuValueList,
                                     groupValue: viewModel.teslimatDurumuGroupValue))),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [const Text("Cari Rapor Kodları"), IconButton(onPressed: () => viewModel.changeGrupKodlariGoster(), icon: const Icon(Icons.arrow_drop_down))],
+                        ),
+                        // viewModel.musteriSiparisleriList.first.o
                         Observer(
                           builder: (_) => AnimatedContainer(
                             height: viewModel.grupKodlariGoster ? null : 0,
@@ -351,6 +356,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
         onRefresh: () async {
           viewModel.setSiparislerList(null);
           viewModel.setDahaVarMi(true);
+          viewModel.resetSayfa();
           getData();
         },
         child: Observer(
@@ -390,7 +396,9 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
     viewModel.setDahaVarMi(false);
     var result = await networkManager.dioGet<SiparislerModel>(path: ApiUrls.getFaturalar, bodyModel: SiparislerModel(), queryParameters: viewModel.musteriSiparisleriRequestModel.toJson());
     if (result.data != null) {
-      viewModel.setParamData(result.paramData?.map((key, value) => MapEntry(key, value.toString())) ?? {});
+      if (viewModel.sayfa == 1) {
+        viewModel.setParamData(result.paramData?.map((key, value) => MapEntry(key, value.toString())) ?? {});
+      }
       List<SiparislerModel?>? list = result.data.map((e) => e as SiparislerModel).toList().cast<SiparislerModel?>();
       if (list!.length < 25) {
         viewModel.setDahaVarMi(false);
