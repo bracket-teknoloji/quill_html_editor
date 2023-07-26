@@ -17,7 +17,7 @@ import '../../../core/base/model/base_network_mixin.dart';
 part 'account_model.g.dart';
 
 @HiveType(typeId: 73)
-@JsonSerializable(createToJson: true)
+@JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake)
 class AccountModel with NetworkManagerMixin {
   AccountModel.getValue() {
     init();
@@ -31,138 +31,94 @@ class AccountModel with NetworkManagerMixin {
 
   AccountModel();
   @HiveField(0)
-  @JsonKey(name: "ADI")
   String? isim;
   @HiveField(1)
-  @JsonKey(name: "ADMIN")
   String? admin;
   @HiveField(2)
-  @JsonKey(name: "AKTIF_ISLETME_KODU")
   int? aktifIsletmeKodu;
   @HiveField(3)
-  @JsonKey(name: "AKTIF_SUBE_KODU")
   int? aktifSubeKodu;
   @HiveField(4)
-  @JsonKey(name: "AKTIF_VERITABANI")
   String? aktifVeritabani;
   @HiveField(5)
-  @JsonKey(name: "CIHAZ_SISTEM_VERSIYONU")
   String? cihazSistemVersiyonu;
   @HiveField(6)
-  @JsonKey(name: "APK_DERLEME_TARIHI")
   DateTime? apkDerlemeTarihi;
   @HiveField(7)
-  @JsonKey(name: "CIHAZ_DILI")
   String? cihazDili;
   @HiveField(8)
-  @JsonKey(name: "G_CID")
   String? gCid;
   @HiveField(9)
-  @JsonKey(name: "CIHAZ_MARKASI")
   String? cihazMarkasi;
   @HiveField(10)
-  @JsonKey(name: "CIHAZ_KIMLIGI")
   String? cihazKimligi;
   @HiveField(11)
-  @JsonKey(name: "CIHAZ_MODELI")
   String? cihazModeli;
   @HiveField(12)
-  @JsonKey(name: "G_DSN")
   String? gDsn;
   @HiveField(13)
-  @JsonKey(name: "CIHAZ_TARIHI")
   String? cihazTarihi;
   @HiveField(14)
-  @JsonKey(name: "CIHAZ_TARIHI_UTC")
   DateTime? cihazTarihiUtc;
   @HiveField(15)
-  @JsonKey(name: "CIHAZ_TIME_ZONE_DAKIKA")
   int? cihazTimeZoneDakika;
   @HiveField(16)
-  @JsonKey(name: "FCM_TOKEN")
   String? fcmToken;
   @HiveField(17)
-  @JsonKey(name: "UYE_EMAIL")
   String? uyeEmail;
   @HiveField(18)
-  @JsonKey(name: "UYE_SIFRE")
   String? uyeSifre;
   @HiveField(19)
-  @JsonKey(name: "KONUM_DATE")
   DateTime? konumDate;
   @HiveField(20)
-  @JsonKey(name: "KONUM_TARIHI")
   String? konumTarihi;
   @HiveField(21)
-  @JsonKey(name: "G_KA")
   String? gKa;
   @HiveField(22)
-  @JsonKey(name: "G_BO")
   String? gBo;
   @HiveField(23)
-  @JsonKey(name: "G_EN")
   String? gEn;
   @HiveField(24)
-  @JsonKey(name: "KULLANICI_ADI")
   String? kullaniciAdi;
   @HiveField(25)
-  @JsonKey(name: "KURULU_HESAPLAR")
   String? kuruluHesaplar;
   @HiveField(26)
-  @JsonKey(name: "LOCAL_IP")
   String? localIp;
 
   /// TODO özel cihaz kimliği ?
   @HiveField(27)
-  @JsonKey(name: "OZEL_CIHAZ_KIMLIGI")
   String? ozelCihazKimligi;
   @HiveField(28)
-  @JsonKey(name: "OFFLINE")
   String? offline;
   @HiveField(29)
-  @JsonKey(name: "SIM_OPERATOR")
   String? simOperator;
   @HiveField(30)
-  @JsonKey(name: "PAKET_ADI")
   String? paketAdi;
   @HiveField(31)
-  @JsonKey(name: "PARAM_MAP")
   String? paramMap;
   @HiveField(32)
-  @JsonKey(name: "PLATFORM")
   String? platform;
   @HiveField(33)
-  @JsonKey(name: "REQUEST_VERSION")
   int? requestVersion;
   @HiveField(34)
-  @JsonKey(name: "SOYADI")
   String? soyadi;
   @HiveField(35)
-  @JsonKey(name: "SERVICE_VERSION")
   String? serviceVersion;
   @HiveField(36)
-  @JsonKey(name: "TZ_INFO")
   String? tzInfo;
   @HiveField(37)
-  @JsonKey(name: "UYGULAMA_DILI")
   String? uygulamaDili;
   @HiveField(38)
-  @JsonKey(name: "UYGULAMA_GUNCELLEME_TARIHI")
   String? uygulamaGuncellemeTarihi;
   @HiveField(39)
-  @JsonKey(name: "UYGULAMA_SURUMU")
   String? uygulamaSurumu;
   @HiveField(40)
-  @JsonKey(name: "UYGULAMA_SURUM_KODU")
   int? uygulamaSurumKodu;
   @HiveField(41)
-  @JsonKey(name: "UZAK_ERISIM")
   String? uzakErisim;
   @HiveField(42)
-  @JsonKey(name: "WIFIDEN_BAGLI")
   String? wifidenBagli;
   @HiveField(43)
-  @JsonKey(name: "QR_DATA")
   String? qrData;
 
   Future<void> init() async {
@@ -209,7 +165,7 @@ class AccountModel with NetworkManagerMixin {
     //* Cihaz ve Sim Bilgileri
     uygulamaDili = "tr";
     cihazDili = "tr";
-      cihazSistemVersiyonu = "20";
+    cihazSistemVersiyonu = "20";
     cihazTarihiUtc = DateTime.now().toUtc();
     final deviceInfo = DeviceInfoPlugin();
     //!WEB
@@ -237,13 +193,14 @@ class AccountModel with NetworkManagerMixin {
     //! IOS
     else if (Platform.isIOS) {
       // while (await AppTrackingTransparency.trackingAuthorizationStatus != TrackingStatus.authorized) {
-          final iosInfo = await deviceInfo.iosInfo;
-          cihazMarkasi = iosInfo.name;
-          cihazModeli = iosInfo.utsname.machine;
-          ozelCihazKimligi = iosInfo.identifierForVendor;
-          cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
-        await Future.delayed(const Duration(seconds: 1));
-        await AppTrackingTransparency.requestTrackingAuthorization();
+      final iosInfo = await deviceInfo.iosInfo;
+      cihazSistemVersiyonu = iosInfo.systemVersion?.split(".")[0];
+      cihazMarkasi = iosInfo.name;
+      cihazModeli = iosInfo.utsname.machine;
+      ozelCihazKimligi = iosInfo.identifierForVendor;
+      cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
+      await Future.delayed(const Duration(seconds: 1));
+      await AppTrackingTransparency.requestTrackingAuthorization();
       // }
     }
     //!DESKTOP
@@ -257,7 +214,6 @@ class AccountModel with NetworkManagerMixin {
         cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
         log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");
       } else {
-        //TODO Bunu guid gönereceğiz.
         //* Bilgisayar adını gönderiyoruz. Bilgisayar adı aynı olduğunda ağda problem olacağı için böyle yapıyoruz.
         ozelCihazKimligi = base64Encode(utf8.encode("win_${desktopInfo.computerName}"));
         cihazKimligi = ozelCihazKimligi;

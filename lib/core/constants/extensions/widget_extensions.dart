@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:picker/core/constants/ui_helper/ui_helper.dart';
+import 'package:picker/core/init/cache/cache_manager.dart';
 
 import '../ui_helper/duration_helper.dart';
 
@@ -35,6 +36,11 @@ extension RowExtension on Row {
 extension YetkiExtension on Widget {
   Widget yetkiVarMi(bool yetki) {
     return yetki ? this : const SizedBox();
+  }
+}
+extension YetkiExtension2 on dynamic{
+  Object? isDebug(){
+    return CacheManager.getHesapBilgileri?.uyeEmail == "destek@netfect.com"? this : null;
   }
 }
 

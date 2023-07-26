@@ -40,6 +40,7 @@ class DialogManager {
   Future<DateTime?> showDateTimePicker() async {
     return await showDatePicker(
       context: context,
+      locale: Get.locale,
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime(2100),

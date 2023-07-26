@@ -32,7 +32,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                 isEditing = !isEditing;
               });
             },
-            icon: const Icon(Icons.edit_note_outlined)),
+            icon: Icon(isEditing ? Icons.edit_off_outlined : Icons.edit_outlined)),
         contentPadding: const EdgeInsets.only(left: 12, top: 10, bottom: 10),
       ),
       const Divider(),
@@ -68,25 +68,25 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                   key: const Key("Favoriler"),
                   itemBuilder: (context, index) {
                     var value = list[index];
-                      return ListTile(
-                        key: ValueKey(index),
-                        enabled: liste.contains(value),
-                        title: Text(
-                          value.title.toString(),
-                        ),
-                        leading: IconHelper.smallMenuIcon(value.icon.toString(), color: Color(value.color!)),
-                        trailing: isEditing
-                            ? IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    list.removeAt(index);
-                                    CacheManager.setFavorilerList(list.map((e) => e).toList());
-                                  });
-                                },
-                                icon: const Icon(Icons.delete_outline))
-                            : const Icon(Icons.drag_handle),
-                        onTap: value.arguments != null ? () => Get.toNamed(value.onTap.toString(), arguments: value.arguments) : () => Get.toNamed(value.onTap.toString()),
-                      );
+                    return ListTile(
+                      key: ValueKey(index),
+                      enabled: liste.contains(value),
+                      title: Text(
+                        value.title.toString(),
+                      ),
+                      leading: IconHelper.smallMenuIcon(value.icon.toString(), color: Color(value.color!)),
+                      trailing: isEditing
+                          ? IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  list.removeAt(index);
+                                  CacheManager.setFavorilerList(list.map((e) => e).toList());
+                                });
+                              },
+                              icon: const Icon(Icons.delete_outline))
+                          : const Icon(Icons.drag_handle),
+                      onTap: value.arguments != null ? () => Get.toNamed(value.onTap.toString(), arguments: value.arguments) : () => Get.toNamed(value.onTap.toString()),
+                    );
                   },
                   itemCount: list.length)),
     ]));

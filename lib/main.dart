@@ -8,6 +8,7 @@ import "package:firebase_messaging/firebase_messaging.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
+import 'package:flutter_localizations/flutter_localizations.dart';
 import "package:get/get.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/view/siparisler_view.dart";
@@ -79,11 +80,14 @@ class MyApp extends StatelessWidget {
       defaultTransition: Transition.rightToLeft,
       popGesture: true,
       debugShowCheckedModeBanner: false,
-      opaqueRoute: false,
+      locale: Get.deviceLocale,
+      fallbackLocale: const Locale("en", "US"),
+      supportedLocales: const [Locale("tr", "TR"), Locale("en", "US")],
+      localizationsDelegates: const [DefaultMaterialLocalizations.delegate, DefaultWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate, GlobalMaterialLocalizations.delegate],
       scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: {PointerDeviceKind.touch, PointerDeviceKind.mouse, PointerDeviceKind.stylus, PointerDeviceKind.unknown}),
+      opaqueRoute: false,
       darkTheme: AppThemeDark.instance?.theme,
       themeMode: ThemeMode.dark,
-      locale: Get.deviceLocale,
       home: const SplashAuthView(),
       getPages: [
         GetPage(name: "/login", page: () => const LoginView()),

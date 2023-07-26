@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
@@ -322,14 +324,15 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   CacheManager.setIsletmeSube(userData);
                                   CacheManager.setLogout(true);
                                   Get.offAndToNamed("/mainPage");
-                                  var result = await networkManager.dioPost<AccountModel>(path: ApiUrls.saveUyeBilgileri, bodyModel: AccountModel(), data: CacheManager.getHesapBilgileri?.toJson());
+                                  var result = await networkManager.dioPost<AccountModel>(
+                                      path: ApiUrls.saveUyeBilgileri, bodyModel: AccountModel(), showError: false, data: CacheManager.getHesapBilgileri?.toJson());
                                   if (result.success == true) {
-                                    print("Başarılı");
+                                    log("Başarılı");
                                   }
                                   // Get.toNamed("/mainPage");
                                   (response.message?.isNotNullOrNoEmpty ?? false) ? dialogManager.showAlertDialog(response.message.toString()) : null;
                                 } else {
-                                  // dialogManager.hideAlertDialog;
+                                  dialogManager.hideAlertDialog;
                                   dialogManager.showAlertDialog(response.message.toString());
                                 }
                               } else {

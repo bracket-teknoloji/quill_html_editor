@@ -8,8 +8,9 @@ class SlideControllerWidget extends StatefulWidget {
   final List<String> childrenTitleList;
   final List childrenValueList;
   final dynamic groupValue;
+  final bool? scroll;
   final void Function(int? index) filterOnChanged;
-  const SlideControllerWidget({super.key, required this.childrenTitleList, required this.filterOnChanged, required this.childrenValueList, required this.groupValue, this.title});
+  const SlideControllerWidget({super.key, required this.childrenTitleList, required this.filterOnChanged, required this.childrenValueList, required this.groupValue, this.title, this.scroll = true});
 
   @override
   State<SlideControllerWidget> createState() => _SlideControllerWidgetState();
@@ -22,9 +23,11 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
   void initState() {
     scrollController = ScrollController();
     Future.delayed(Duration.zero, () async {
-      await scrollController?.animateTo(30, duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
-      await scrollController?.animateTo((scrollController?.positions.isNotEmpty ?? false) ? (scrollController?.position.minScrollExtent ?? 0) : 0,
-          duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+      if (widget.scroll ?? false) {
+        await scrollController?.animateTo(30, duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+        await scrollController?.animateTo((scrollController?.positions.isNotEmpty ?? false) ? (scrollController?.position.minScrollExtent ?? 0) : 0,
+            duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+      }
     });
     super.initState();
   }

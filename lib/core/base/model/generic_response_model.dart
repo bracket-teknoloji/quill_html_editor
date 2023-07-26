@@ -4,9 +4,7 @@ import 'base_network_mixin.dart';
 
 part 'generic_response_model.g.dart';
 
-@JsonSerializable(
-  createToJson: false,
-)
+@JsonSerializable(createToJson: false)
 class GenericResponseModel<T extends NetworkManagerMixin> {
   @JsonKey(name: "Message")
   String? message;

@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
@@ -51,15 +50,13 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: fab().yetkiVarMi(yetkiController.stokHareketleriStokYeniKayit),
-      body: NestedScrollView(headerSliverBuilder: (context, innerBoxIsScrolled) => [appBar()], body: body()),
+      appBar: appBar(),
+      body: body(),
     );
   }
 
-  SliverAppBar appBar() {
-    return SliverAppBar(
-      floating: true,
-      snap: true,
-      pinned: true,
+  AppBar appBar() {
+    return AppBar(
       title: Observer(
           builder: (_) => viewModel.searchBar
               ? CustomAppBarTextField(
@@ -114,6 +111,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                 child: Center(
                                   child: Observer(builder: (_) {
                                     return SlideControllerWidget(
+                                        scroll: false,
                                         childrenTitleList: viewModel.hareketYonuList,
                                         filterOnChanged: (index) => viewModel.changeIsSelected(index ?? 0),
                                         childrenValueList: viewModel.isSelected,
@@ -297,11 +295,18 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                             ),
                             child: GestureDetector(
                               onTap: () async {
-                                await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: [
-                                  //TODO Bunları unutma 😳
-                                  BottomSheetModel(title: "Belgeyi Göster"),
-                                  BottomSheetModel(title: "Stok İşlemleri"),
-                                ]);
+                                if (widget.model != null) {
+                                  await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: [
+                                    //TODO Bunları unutma 😳
+                                    // BottomSheetModel(title: "Belgeyi Göster"),
+                                    BottomSheetModel(
+                                        title: "Stok İşlemleri",
+                                        onTap: () {
+                                          Get.back();
+                                          dialogManager.showStokGridViewDialog(widget.model);
+                                        }),
+                                  ]);
+                                }
                               },
                               child: Card(
                                 child: Row(

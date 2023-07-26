@@ -6,7 +6,8 @@ class ApiUrls {
   static const String createSession = "General/CreateSessionV3";
   static const String getUyeBilgileri = "https://storews.netfect.com/api/Picker/GetUyeBilgileri";
   // static const String getUyeBilgileri = "http://192.168.3.54/netstore/api/Picker/GetUyeBilgileri";
-  static const String saveUyeBilgileri = "https://storews.netfect.com/api/Picker/SaveUyeBilgileri";
+  // static const String saveUyeBilgileri = "https://storews.netfect.com/api/Picker/SaveUyeBilgileri";
+  static const String saveUyeBilgileri = "http://192.168.3.54/netstore/api/Picker/SaveUyeBilgileri";
   static const String getProjeler = "General/GetProjeler";
   static const String print = "Print/Print";
   static const String getDizaynParametreleri = "Print/GetDizaynParametreleri";

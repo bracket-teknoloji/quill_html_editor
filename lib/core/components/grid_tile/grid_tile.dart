@@ -44,6 +44,23 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
       splashFactory: InkRipple.splashFactory,
       splashColor: theme.primaryColor,
       onTap: widget.onTap,
+      onLongPress: () {
+        if (widget.menuTipi == "I" || widget.menuTipi == "SR") {
+          if (icon.icon == Icons.star) {
+            icon = const Icon(Icons.star_border, size: 20);
+            CacheManager.removeFavoriler(widget.title.toString());
+            dialogManager.hideSnackBar;
+            dialogManager.showSnackBar("Favorilerden çıkarıldı");
+          } else {
+            icon = const Icon(Icons.star, size: 20);
+            CacheManager.setFavoriler(
+                FavoritesModel(name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments, menuTipi: widget.menuTipi));
+            dialogManager.hideSnackBar;
+            dialogManager.showSnackBar("Favorilere eklendi");
+          }
+          setState(() {});
+        }
+      },
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
         color: widget.color,

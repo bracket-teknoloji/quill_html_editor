@@ -187,7 +187,6 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                       }
                                       var base64 = base64Encode(compressedImage!.toList());
                                       viewModel.stokListesiModel?.resimBase64 = base64;
-                                      print(base64);
                                     }
                                   }
                                 }

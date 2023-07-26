@@ -7,6 +7,7 @@ import 'package:picker/core/constants/extensions/list_extensions.dart';
 import 'package:picker/core/constants/extensions/number_extensions.dart';
 import 'package:picker/core/constants/extensions/widget_extensions.dart';
 import 'package:picker/core/constants/ui_helper/ui_helper.dart';
+import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
 import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_model.dart';
 
 class SiparislerCard extends StatefulWidget {
@@ -23,7 +24,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
     return Card(
         child: ListTile(
       onTap: () async {
-        // var result = 
+        // var result =
         await bottomSheetDialogManager.showBottomSheetDialog(context, title: widget.model?.belgeNo ?? "", children: [
           BottomSheetModel(title: "Görüntüle", iconWidget: Icons.search_outlined),
           BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit_outlined),
@@ -31,7 +32,15 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
           BottomSheetModel(title: "Yazdır", iconWidget: Icons.print_outlined),
           BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
           BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined),
-          BottomSheetModel(title: "Cari İşlemleri", iconWidget: Icons.person_outline_outlined),
+          BottomSheetModel(
+              title: "Cari İşlemleri",
+              iconWidget: Icons.person_outline_outlined,
+              onTap: () {
+                Get.back();
+                dialogManager.showCariGridViewDialog(CariListesiModel()
+                  ..cariKodu = widget.model?.cariKodu
+                  ..cariAdi = widget.model?.cariAdi);
+              }),
         ]);
       },
       title: Row(

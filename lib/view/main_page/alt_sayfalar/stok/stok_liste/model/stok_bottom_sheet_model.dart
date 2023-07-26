@@ -18,6 +18,7 @@ class StokBottomSheetModel {
   void setSingleton(StokBottomSheetModel value) => _instance = value;
   //an operator that returns if 2 objects values are equal
   @override
+  // ignore: hash_and_equals
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is StokBottomSheetModel &&

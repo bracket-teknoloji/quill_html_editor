@@ -242,13 +242,17 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                             text: "Teslimat Durumu",
                             child: Observer(
                                 builder: (_) => SlideControllerWidget(
+                                    scroll: false,
                                     childrenTitleList: viewModel.teslimatDurumu,
                                     filterOnChanged: (x) => viewModel.setTeslimatDurumuGroupValue(x),
                                     childrenValueList: viewModel.teslimatDurumuValueList,
                                     groupValue: viewModel.teslimatDurumuGroupValue))),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [const Text("Cari Rapor Kodları"), IconButton(onPressed: () => viewModel.changeGrupKodlariGoster(), icon: const Icon(Icons.arrow_drop_down))],
+                        InkWell(
+                          onTap: () => viewModel.changeGrupKodlariGoster(),
+                          child: const Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [Text("Cari Rapor Kodları"), Icon(Icons.arrow_drop_down)],
+                          ),
                         ),
                         // viewModel.musteriSiparisleriList.first.o
                         Observer(
@@ -411,19 +415,6 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
       } else {
         viewModel.addSiparislerList(list);
       }
-      // if (viewModel.sayfa == 1) {
-      //   viewModel.setSiparislerList(list);
-      //   viewModel.setDahaVarMi(true);
-      //   viewModel.increaseSayfa();
-      // } else if (viewModel.sayfa > 1) {
-      // if (list!.length < 25) {
-      //   viewModel.setDahaVarMi(false);
-      // } else {
-      //   viewModel.setDahaVarMi(true);
-      //   viewModel.increaseSayfa();
-      // }
-      //   viewModel.addSiparislerList(list);
-      // }
     }
   }
 

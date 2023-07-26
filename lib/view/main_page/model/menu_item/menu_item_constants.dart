@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:picker/core/constants/enum/serbest_rapor_detay_kod_enum.dart';
+import 'package:picker/core/constants/extensions/widget_extensions.dart';
 
 import '../../../../core/constants/grid_constants.dart';
 import '../../../../core/init/cache/cache_manager.dart';
@@ -86,7 +87,7 @@ class MenuItemConstants {
     GridItemModel.anamenu(name: "SIPA", title: "Sipariş", icon: "order", color: GridThemeManager.siparis, altMenuler: [
       GridItemModel.item(name: "siparis_MusteriSiparisi", title: "Müşteri Siparişleri", route: "/mainPage/siparisMusteriSiparisi", arguments: true),
       GridItemModel.item(name: "siparis_SaticiSiparisi", title: "Satıcı Siparişleri", route: "/mainPage/siparisMusteriSiparisi", arguments: false),
-    ]),
+    ]).isDebug(),
 
     //* Stok
     //*
@@ -148,7 +149,7 @@ class MenuItemConstants {
       ...groupBySerbestRaporList(),
       // ...List.generate(_serbestRapor?.length ?? 0, (index) => GridItemModel.serbestRaporlar(title: _serbestRapor?[index].dizaynAdi ?? "", arguments: _serbestRapor?[index])),
     ]),
-  ];
+  ].where((e) => e != null).toList().cast<GridItemModel>();
 
   List<GridItemModel> getList() {
     // grid items içindeki yetkiKontrol true olanları döndür

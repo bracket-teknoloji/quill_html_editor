@@ -46,7 +46,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
   @override
   void initState() {
     viewModel.model = CariHareketYeniKayitModel().fromJson(model?.toJson() ?? {});
-    viewModel.model.yeniKayit = widget.model == CariHareketleriModel() ? true : null;
+    viewModel.model.yeniKayit = widget.model == BaseEditModel(model: CariHareketleriModel()) ? true : null;
     viewModel.model.inckeyno = model?.inckeyno;
     viewModel.model.tarih ??= DateTime.now();
     viewModel.model.vadeTarihi ??= DateTime.now();

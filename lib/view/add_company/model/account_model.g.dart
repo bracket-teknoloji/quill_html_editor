@@ -173,7 +173,7 @@ class AccountModelAdapter extends TypeAdapter<AccountModel> {
 // **************************************************************************
 
 AccountModel _$AccountModelFromJson(Map<String, dynamic> json) => AccountModel()
-  ..isim = json['ADI'] as String?
+  ..isim = json['ISIM'] as String?
   ..admin = json['ADMIN'] as String?
   ..aktifIsletmeKodu = json['AKTIF_ISLETME_KODU'] as int?
   ..aktifSubeKodu = json['AKTIF_SUBE_KODU'] as int?
@@ -226,7 +226,7 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) => AccountModel()
 
 Map<String, dynamic> _$AccountModelToJson(AccountModel instance) =>
     <String, dynamic>{
-      'ADI': instance.isim,
+      'ISIM': instance.isim,
       'ADMIN': instance.admin,
       'AKTIF_ISLETME_KODU': instance.aktifIsletmeKodu,
       'AKTIF_SUBE_KODU': instance.aktifSubeKodu,

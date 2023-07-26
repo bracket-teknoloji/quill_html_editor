@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
@@ -85,7 +87,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                       title: "Filtrele",
                       body: Column(
                         children: [
-                          RaporFiltreDateTimeBottomSheetView(filterOnChanged: (index) => print(""), baslangicTarihiController: baslangicTarihiController, bitisTarihiController: bitisTarihiController),
+                          RaporFiltreDateTimeBottomSheetView(filterOnChanged: (index) => log(""), baslangicTarihiController: baslangicTarihiController, bitisTarihiController: bitisTarihiController),
                           Observer(builder: (_) {
                             return SlideControllerWidget(
                               title: "Yazdırma Durumu",

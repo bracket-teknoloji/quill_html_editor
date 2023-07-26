@@ -31,71 +31,73 @@ class BottomSheetDialogManager {
         useSafeArea: true,
         isScrollControlled: true,
         builder: (context) {
-          return Padding(
-            padding: MediaQuery.of(context).viewInsets,
-            child: Wrap(
-              children: [
-                ListTile(
-                  contentPadding: UIHelper.lowPadding,
-                  title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
-                  trailing: IconButton(icon: const Icon(Icons.close), onPressed: () => Get.back()),
-                  splashColor: Colors.transparent,
-                ).paddingSymmetric(vertical: 10),
-                const Divider(
-                  thickness: 2,
-                  endIndent: 0,
-                  indent: 0,
-                ),
-                body == null && ((children?.length ?? 0) > 20)
-                    ? TextField(
-                        decoration: const InputDecoration(hintText: "Aramak istediğiniz metni yazınız."),
-                        onSubmitted: (value) {
-                          if (value == "") {
-                            children = children2;
-                          }
-                          children = children!.where((element) => element.title.toLowerCase().contains(value.toLowerCase())).toList();
-                        }).paddingAll(UIHelper.midSize)
-                    : const SizedBox(),
-                body == null
-                    ? children.isNotNullOrEmpty
-                        ? SizedBox(
-                            // if children are not fit to screen, it will be scrollable
-                            height: children!.length * ((children?.any((element) => element.description.isNotNullOrNoEmpty) ?? false) ? 60 : 50) < Get.height * 0.9
-                                ? children!.length * ((children?.any((element) => element.description.isNotNullOrNoEmpty) ?? false) ? 60 : 50)
-                                : Get.height * 0.9,
-                            child: ListView.builder(
-                              itemCount: children?.length,
-                              itemBuilder: (context, index) => Column(
-                                children: [
-                                  ListTile(
-                                      onTap: children?[index].onTap ?? () => Get.back(result: children![index].value),
-                                      title: Text(children![index].title),
-                                      subtitle: children![index].description != null ? Text(children![index].description ?? '') : null,
-                                      leading: children![index].icon != null || children![index].iconWidget != null
-                                          ? SizedBox(
-                                              width: 20,
-                                              height: 20,
-                                              child: children![index].iconWidget != null
-                                                  ? Icon(children![index].iconWidget, size: 25, color: UIHelper.primaryColor)
-                                                  : IconHelper.smallIcon(children![index].icon!),
-                                            )
-                                          : null),
-                                  index != children!.length - 1
-                                      ? Padding(
-                                          padding: UIHelper.lowPaddingVertical,
-                                          child: const Divider(),
-                                        )
-                                      : Container()
-                                ],
-                              ),
-                            ).paddingOnly(bottom: 10),
-                          )
-                        : Center(child: Text('Veri bulunamadı.', style: context.theme.textTheme.titleMedium)).paddingAll(UIHelper.highSize)
-                    : SafeArea(
-                        child: Container(constraints: BoxConstraints(maxHeight: Get.height * 0.9), child: SingleChildScrollView(child: body)),
-                      ),
-                context.isKeyBoardOpen ? const ResponsiveBox() : Container(),
-              ],
+          return SafeArea(
+            child: Padding(
+              padding: MediaQuery.of(context).viewInsets,
+              child: Wrap(
+                children: [
+                  ListTile(
+                    contentPadding: UIHelper.lowPadding,
+                    title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
+                    trailing: IconButton(icon: const Icon(Icons.close), onPressed: () => Get.back()),
+                    splashColor: Colors.transparent,
+                  ).paddingSymmetric(vertical: 10),
+                  const Divider(
+                    thickness: 2,
+                    endIndent: 0,
+                    indent: 0,
+                  ),
+                  body == null && ((children?.length ?? 0) > 20)
+                      ? TextField(
+                          decoration: const InputDecoration(hintText: "Aramak istediğiniz metni yazınız."),
+                          onSubmitted: (value) {
+                            if (value == "") {
+                              children = children2;
+                            }
+                            children = children!.where((element) => element.title.toLowerCase().contains(value.toLowerCase())).toList();
+                          }).paddingAll(UIHelper.midSize)
+                      : const SizedBox(),
+                  body == null
+                      ? children.isNotNullOrEmpty
+                          ? SizedBox(
+                              // if children are not fit to screen, it will be scrollable
+                              height: children!.length * ((children?.any((element) => element.description.isNotNullOrNoEmpty) ?? false) ? 60 : 50) < Get.height * 0.9
+                                  ? children!.length * ((children?.any((element) => element.description.isNotNullOrNoEmpty) ?? false) ? 60 : 50)
+                                  : Get.height * 0.9,
+                              child: ListView.builder(
+                                itemCount: children?.length,
+                                itemBuilder: (context, index) => Column(
+                                  children: [
+                                    ListTile(
+                                        onTap: children?[index].onTap ?? () => Get.back(result: children![index].value),
+                                        title: Text(children![index].title),
+                                        subtitle: children![index].description != null ? Text(children![index].description ?? '') : null,
+                                        leading: children![index].icon != null || children![index].iconWidget != null
+                                            ? SizedBox(
+                                                width: 20,
+                                                height: 20,
+                                                child: children![index].iconWidget != null
+                                                    ? Icon(children![index].iconWidget, size: 25, color: UIHelper.primaryColor)
+                                                    : IconHelper.smallIcon(children![index].icon!),
+                                              )
+                                            : null),
+                                    index != children!.length - 1
+                                        ? Padding(
+                                            padding: UIHelper.lowPaddingVertical,
+                                            child: const Divider(),
+                                          )
+                                        : Container()
+                                  ],
+                                ),
+                              ).paddingOnly(bottom: 10),
+                            )
+                          : Center(child: Text('Veri bulunamadı.', style: context.theme.textTheme.titleMedium)).paddingAll(UIHelper.highSize)
+                      : SafeArea(
+                          child: Container(constraints: BoxConstraints(maxHeight: Get.height * 0.9), child: SingleChildScrollView(child: body)),
+                        ),
+                  context.isKeyBoardOpen ? const ResponsiveBox() : Container(),
+                ],
+              ),
             ),
           );
         });

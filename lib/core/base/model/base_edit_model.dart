@@ -6,4 +6,13 @@ class BaseEditModel<T> {
   String? siradakiKod;
 
   BaseEditModel({this.model, this.baseEditEnum, this.siradakiKod});
+
+  @override
+  operator ==(Object other) =>
+      identical(this, other) ||
+      other is BaseEditModel &&
+          runtimeType == other.runtimeType &&
+          model == other.model &&
+          baseEditEnum == other.baseEditEnum &&
+          siradakiKod == other.siradakiKod;
 }

@@ -28,5 +28,7 @@ class TemsilciProfilRequestModel{
     this.iadeDurumu,
   });
 
+  factory TemsilciProfilRequestModel.fromJson(Map<String, dynamic> json) => _$TemsilciProfilRequestModelFromJson(json);
+
   toJson()=> _$TemsilciProfilRequestModelToJson(this);
 }

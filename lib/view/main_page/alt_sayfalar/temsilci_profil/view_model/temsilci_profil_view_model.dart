@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:kartal/kartal.dart';
 import 'package:mobx/mobx.dart';
 
@@ -223,7 +225,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
         list[uniquePlasiyer.toList().indexOf(element.plasiyerAciklama ?? "")] += element.tutar ?? 0;
       });
     }
-    print(list);
+    log(list.toString());
     return list;
   }
 
