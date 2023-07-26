@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 
 import '../../components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart';
 import '../../components/dialog/dialog_manager.dart';

@@ -65,13 +65,13 @@ void main() async {
     DeviceOrientation.landscapeRight,
     DeviceOrientation.landscapeLeft,
   ]).then((_) {
-    runApp(const MyApp());
+    runApp(const PickerApp());
     NetworkDependencyInjection.init();
   });
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class PickerApp extends StatelessWidget {
+  const PickerApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +83,7 @@ class MyApp extends StatelessWidget {
       locale: Get.deviceLocale,
       fallbackLocale: const Locale("en", "US"),
       supportedLocales: const [Locale("tr", "TR"), Locale("en", "US")],
-      localizationsDelegates: const [DefaultMaterialLocalizations.delegate, DefaultWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate, GlobalMaterialLocalizations.delegate],
+      localizationsDelegates: const [GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate, GlobalMaterialLocalizations.delegate],
       scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: {PointerDeviceKind.touch, PointerDeviceKind.mouse, PointerDeviceKind.stylus, PointerDeviceKind.unknown}),
       opaqueRoute: false,
       darkTheme: AppThemeDark.instance?.theme,
@@ -132,7 +132,6 @@ class MyApp extends StatelessWidget {
                   stokKodu: Get.arguments is String ? Get.arguments : null,
                   cariModel: Get.arguments is CariListesiModel ? Get.arguments : null),
             ),
-            // page: () => StokHareketleriView(model: Get.arguments is StokHareketleriModel ? Get.arguments : null, stokKodu: Get.arguments is String ? Get.arguments : null)),
             GetPage(name: "/stokYeniKayit", page: () => StokYeniKayitView(model: Get.arguments)),
 
             //* Stok Raporları

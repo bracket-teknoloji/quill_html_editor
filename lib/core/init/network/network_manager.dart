@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide FormData;
 import 'package:picker/core/base/model/base_network_mixin.dart';
 import 'package:picker/core/base/model/base_proje_model.dart';
+import 'package:picker/core/base/model/delete_fatura_model.dart';
 import 'package:picker/core/base/model/generic_response_model.dart';
 import 'package:picker/core/constants/extensions/date_time_extensions.dart';
 import 'package:picker/core/init/cache/cache_manager.dart';
@@ -134,6 +135,10 @@ class NetworkManager {
       }
     }
     return responseModel;
+  }
+
+  Future<GenericResponseModel> deleteFatura(DeleteFaturaModel model){
+    return dioPost<DeleteFaturaModel>(path: ApiUrls.deleteFatura, bodyModel: DeleteFaturaModel(), data: model.toJson());
   }
 
   Future<MemoryImage> getImage(String path) async {

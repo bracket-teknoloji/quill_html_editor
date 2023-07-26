@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:picker/core/base/model/delete_fatura_model.dart';
 import 'package:picker/core/base/state/base_state.dart';
 import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import 'package:picker/core/constants/extensions/date_time_extensions.dart';
@@ -7,6 +8,7 @@ import 'package:picker/core/constants/extensions/list_extensions.dart';
 import 'package:picker/core/constants/extensions/number_extensions.dart';
 import 'package:picker/core/constants/extensions/widget_extensions.dart';
 import 'package:picker/core/constants/ui_helper/ui_helper.dart';
+import 'package:picker/core/init/network/login/api_urls.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
 import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_model.dart';
 
@@ -28,7 +30,14 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
         await bottomSheetDialogManager.showBottomSheetDialog(context, title: widget.model?.belgeNo ?? "", children: [
           BottomSheetModel(title: "Görüntüle", iconWidget: Icons.search_outlined),
           BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit_outlined),
-          BottomSheetModel(title: "Sil", iconWidget: Icons.delete_outline),
+          BottomSheetModel(title: "Sil", iconWidget: Icons.delete_outline, onTap: ()=>  dialogManager.showAreYouSureDialog(() async{
+            var result = await networkManager.deleteFatura(DeleteFaturaModel().fromJson(widget.model!.toJson()));
+            if (result.success ==true){
+              Get.back();
+              dialogManager.showSnackBar("Silindi");
+            }
+             
+          })),
           BottomSheetModel(title: "Yazdır", iconWidget: Icons.print_outlined),
           BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
           BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined),

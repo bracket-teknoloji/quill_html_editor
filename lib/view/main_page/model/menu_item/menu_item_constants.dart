@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:flutter/foundation.dart';
 import 'package:picker/core/constants/enum/serbest_rapor_detay_kod_enum.dart';
 import 'package:picker/core/constants/extensions/widget_extensions.dart';
 
@@ -152,8 +153,12 @@ class MenuItemConstants {
   ].where((e) => e != null).toList().cast<GridItemModel>();
 
   List<GridItemModel> getList() {
-    // grid items içindeki yetkiKontrol true olanları döndür
-    return _gridItemModel.where((element) => element.yetkiKontrol).toList();
+    if (kDebugMode) {
+      return _gridItemModel;
+    } else {
+      //grid items içindeki yetkiKontrol true olanları döndür
+      return _gridItemModel.where((element) => element.yetkiKontrol).toList();
+    }
   }
 
   List<GridItemModel?> getAltMenuList(String name) {
