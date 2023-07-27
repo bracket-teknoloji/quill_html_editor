@@ -18,7 +18,7 @@ class _BaseStokEditFiyatListesiViewState extends State<BaseStokEditFiyatListesiV
   StokDetayModel model = StokDetayModel.instance;
   @override
   Widget build(BuildContext context) {
-    return model.fiyatList.isNotNullOrEmpty
+    return model.fiyatList.ext.isNotNullOrEmpty
         ? ListView.builder(
             itemCount: model.fiyatList?.length,
             itemBuilder: (context, index) => Card(

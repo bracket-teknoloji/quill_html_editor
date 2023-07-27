@@ -63,11 +63,14 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                     viewModel.setGridItemModel(viewModel.returnGridItemModel.last.toList());
                     viewModel.deleteLastReturnGridItemModel();
                   },
-                  icon: const Icon(Icons.arrow_back_outlined),
+                  icon: Icon(Icons.arrow_back_outlined, color: theme.colorScheme.primary),
                 ),
               );
             }),
-            Expanded(child: SizedBox(child: Text(widget.cariListesiModel?.cariAdi ?? widget.model.stokKodu, style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis))))
+            Expanded(
+                child: SizedBox(
+                    child: Text(widget.cariListesiModel?.cariAdi ?? widget.model.stokKodu, style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis))
+                        .paddingOnly(left: UIHelper.midSize)))
           ],
         ),
         const Divider(

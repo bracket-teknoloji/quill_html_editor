@@ -47,7 +47,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
     return WillPopScope(
       onWillPop: () async {
         return true;
-        //! BURAYA BAK
+        //TODO! BURAYA BAK
       },
       child: DefaultTabController(
         length: tabList.length,
@@ -146,10 +146,10 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
   Map<String, int> get validate {
     StokListesiModel model = StokListesiModel.instance;
     Map<String, int> validate = {};
-    if (model.stokKodu.isNullOrEmpty) {
+    if (model.stokKodu.ext.isNullOrEmpty) {
       validate["Stok Kodu"] = 0;
     }
-    if (model.subeKodu.toStringIfNull.isNullOrEmpty) {
+    if (model.subeKodu.toStringIfNull.ext.isNullOrEmpty) {
       validate["Şube Kodu"] = 0;
     }
     return validate;

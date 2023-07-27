@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 import 'package:picker/core/base/model/base_proje_model.dart';
+import 'package:picker/core/components/slide_controller/view/slide_controller_view.dart';
 import 'package:picker/core/components/textfield/custom_text_field.dart';
 import 'package:picker/core/init/network/network_manager.dart';
 import 'package:picker/view/main_page/model/param_model.dart';
@@ -58,11 +59,11 @@ class BottomSheetDialogManager {
                           }).paddingAll(UIHelper.midSize)
                       : const SizedBox(),
                   body == null
-                      ? children.isNotNullOrEmpty
+                      ? children.ext.isNotNullOrEmpty
                           ? SizedBox(
                               // if children are not fit to screen, it will be scrollable
-                              height: children!.length * ((children?.any((element) => element.description.isNotNullOrNoEmpty) ?? false) ? 60 : 50) < Get.height * 0.9
-                                  ? children!.length * ((children?.any((element) => element.description.isNotNullOrNoEmpty) ?? false) ? 60 : 50)
+                              height: children!.length * ((children?.any((element) => element.description.ext.isNotNullOrNoEmpty) ?? false) ? 60 : 50) < Get.height * 0.9
+                                  ? children!.length * ((children?.any((element) => element.description.ext.isNotNullOrNoEmpty) ?? false) ? 60 : 50)
                                   : Get.height * 0.9,
                               child: ListView.builder(
                                 itemCount: children?.length,
@@ -95,7 +96,7 @@ class BottomSheetDialogManager {
                       : SafeArea(
                           child: Container(constraints: BoxConstraints(maxHeight: Get.height * 0.9), child: SingleChildScrollView(child: body)),
                         ),
-                  context.isKeyBoardOpen ? const ResponsiveBox() : Container(),
+                  context.general.isKeyBoardOpen ? const ResponsiveBox() : Container(),
                 ],
               ),
             ),
@@ -213,7 +214,7 @@ class BottomSheetDialogManager {
               endIndent: 0,
               indent: 0,
             ),
-            children.isNotNullOrEmpty
+            children.ext.isNotNullOrEmpty
                 ? SizedBox(
                     // if children are not fit to screen, it will be scrollable
                     height: (children.length + 1) * 50 < Get.height * 0.8 ? (children.length + 1) * 50 : Get.height * 0.8,
@@ -296,7 +297,7 @@ class BottomSheetDialogManager {
       });
       items.add(liste);
     }
-    if (viewModel.kodControllerText.isNullOrEmpty || viewModel.getKodControllerText?.length != onayliGrupNo.length) {
+    if (viewModel.kodControllerText.ext.isNullOrEmpty || viewModel.getKodControllerText?.length != onayliGrupNo.length) {
       viewModel.changeKodControllerTextList(List.generate(onayliGrupNo.length, (index) => ""));
     }
     TextEditingController sehirController = TextEditingController(text: viewModel.sehir ?? "");
@@ -304,6 +305,7 @@ class BottomSheetDialogManager {
     TextEditingController ilceController = TextEditingController(text: viewModel.ilce ?? "");
     List controllers = List.generate(onayliGrupNo.length, (index) => TextEditingController(text: viewModel.getKodControllerText![index]));
     BottomSheetResponseModel bottomSheetResponseModel = BottomSheetResponseModel.instance;
+    const childrenValueList2 = ["", "T", "O", "S", "B"];
     return showBottomSheetDialog(context,
         title: "Filtrele",
         body: Column(
@@ -311,7 +313,7 @@ class BottomSheetDialogManager {
           children: [
             const CustomWidgetWithLabel(
               text: "Bakiye Durumu",
-              child: ToggleButton(),
+              child: SliderWidget(childrenValueList2: childrenValueList2),
             ),
             Center(
               child: Wrap(
@@ -506,5 +508,29 @@ class BottomSheetDialogManager {
   showProjeDialog(BuildContext context) async {
     List<BaseProjeModel> projeList = await NetworkManager().getProjeData() ?? [];
     return await showRadioBottomSheetDialog(context, title: "Proje Seçiniz", children: projeList.map((e) => BottomSheetModel(title: e.projeAciklama ?? "", value: e)).toList());
+  }
+}
+
+class SliderWidget extends StatefulWidget {
+  const SliderWidget({super.key, required this.childrenValueList2});
+
+  final List<String> childrenValueList2;
+
+  @override
+  State<SliderWidget> createState() => _SliderWidgetState();
+}
+
+class _SliderWidgetState extends State<SliderWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return SlideControllerWidget(
+        childrenTitleList: const ["Tümü", "Tahsil Edilecek", "Ödeme Yapılacak", "Sıfır Bakiye", "Bakiyeli"],
+        childrenValueList: widget.childrenValueList2,
+        groupValue: ToggleButton.selected,
+        filterOnChanged: (index) {
+          setState(() {
+            ToggleButton.selected = widget.childrenValueList2[index ?? 0];
+          });
+        });
   }
 }

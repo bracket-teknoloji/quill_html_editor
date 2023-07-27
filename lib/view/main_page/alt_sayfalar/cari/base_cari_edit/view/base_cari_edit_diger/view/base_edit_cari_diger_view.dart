@@ -332,7 +332,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                 valueText: model.kosulKodu ?? "",
                 controller: kosulKoduController,
                 onTap: () async {
-                  if (kosullarList.isNullOrEmpty) {
+                  if (kosullarList.ext.isNullOrEmpty) {
                     GenericResponseModel data = await CariNetworkManager.getkosullar();
                     kosullarList = data.data.map((e) => e as CariKosullarModel).toList().cast<CariKosullarModel>();
                   }
@@ -567,7 +567,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
   }
 
   void dataChecker() async {
-    if (list.isNullOrEmpty && StaticVariables.grupKodlari.isNullOrEmpty) {
+    if (list.ext.isNullOrEmpty && StaticVariables.grupKodlari.ext.isNullOrEmpty) {
       GenericResponseModel data = await CariNetworkManager.getKod();
       list = data.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
       if (list != null) {

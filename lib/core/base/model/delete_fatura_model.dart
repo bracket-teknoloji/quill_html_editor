@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'package:json_annotation/json_annotation.dart';
 import 'package:picker/core/base/model/base_network_mixin.dart';
 

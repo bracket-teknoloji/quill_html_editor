@@ -85,12 +85,14 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
         //😳       ]);
         //😳     },
         //😳     icon: const Icon(Icons.more_vert_outlined)),
-        IconButton(
-            onPressed: () {
-              viewModel.searchBar ? getData() : null;
-              viewModel.changeSearchBar();
-            },
-            icon: const Icon(Icons.search_outlined))
+        Observer(builder: (_) {
+          return IconButton(
+              onPressed: () {
+                viewModel.searchBar ? getData() : null;
+                viewModel.changeSearchBar();
+              },
+              icon: Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined));
+        })
       ],
       bottom: PreferredSize(
           preferredSize: const Size.fromHeight(60),
@@ -234,7 +236,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             return Observer(builder: (_) {
-              return viewModel.stokHareketleri.isNullOrEmpty
+              return viewModel.stokHareketleri.ext.isNullOrEmpty
                   ? const Center(child: Text("Stok Hareket Kaydı Bulunamadı."))
                   : RefreshIndicator.adaptive(
                       onRefresh: () async {
@@ -288,7 +290,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                             ));
                           }
                           return Slidable(
-                            enabled: children2.isNotNullOrEmpty,
+                            enabled: children2.ext.isNotNullOrEmpty,
                             endActionPane: ActionPane(
                               motion: const ScrollMotion(),
                               children: children2,
@@ -368,7 +370,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                       ).paddingAll(UIHelper.lowSize),
                                     ),
                                     //😳 Orijinali model.hareketTuruAciklama != "Muhtelif" fakaat devir sayfası olduğu için böyle yaptım.
-                                    Visibility(visible: children2.isNotNullOrEmpty, child: Icon(Icons.chevron_right_outlined, color: theme.colorScheme.primary)),
+                                    Visibility(visible: children2.ext.isNotNullOrEmpty, child: Icon(Icons.chevron_right_outlined, color: theme.colorScheme.primary)),
                                   ],
                                 ),
                               ),
@@ -391,7 +393,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
       "FilterModel":
           '{"EkranTipi": "L", "siralama": "${viewModel.siralama}", "stokKodu": "${widget.model?.stokKodu ?? widget.stokKodu ?? ""}", "GC": "${viewModel.getIsSelected}", "CariKodu": "${viewModel.cariListesiModel?.cariKodu ?? ""}", "ArrHareketTuru": ${jsonEncode(viewModel.arrHareketTuru)}}'
     };
-    // if (viewModel.arrHareketTuru.isNotNullOrEmpty) {
+    // if (viewModel.arrHareketTuru.ext.isNotNullOrEmpty) {
     //   queryParameters["FilterModel"] = "\"ArrHareketTuru\":${jsonEncode(viewModel.arrHareketTuru)}, ${queryParameters["FilterModel"]!}";
     // }
     var result = await networkManager.dioGet<StokHareketleriModel>(

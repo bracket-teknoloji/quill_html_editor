@@ -39,7 +39,6 @@ class GridItemModel {
   }
   GridItemModel.islemler({required this.title, this.icon, this.color, this.onTap, this.iconData}) {
     menuTipi = "IS";
-
   }
   GridItemModel.serbestRaporlar({required this.title, this.arguments, this.color, this.name}) {
     menuTipi = "SR";
@@ -76,7 +75,7 @@ class GridItemModel {
 
   bool get altMenuVarMi {
     if (menuTipi == "A" || menuTipi == "S") {
-      return altMenuler!.isNotNullOrEmpty; //&& altMenuler!.any((element) => element.altMenuler?.isNotEmpty ?? false);
+      return altMenuler!.ext.isNotNullOrEmpty; //&& altMenuler!.any((element) => element.altMenuler?.isNotEmpty ?? false);
     } else {
       return false;
     }

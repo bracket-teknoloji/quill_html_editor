@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/base/model/base_edit_model.dart';
 import 'package:picker/core/base/model/base_grup_kodu_model.dart';
 import 'package:picker/core/base/state/base_state.dart';
 import 'package:picker/core/components/appbar/appbar_prefered_sized_bottom.dart';
@@ -23,6 +24,9 @@ import 'package:picker/core/constants/ui_helper/ui_helper.dart';
 import 'package:picker/core/init/network/login/api_urls.dart';
 import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_model.dart';
 import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/view_model/siparisler_view_model.dart';
+
+import '../../../../../../core/constants/enum/base_edit_enum.dart';
+import '../model/siparis_edit_reuqest_model.dart';
 
 class SiparislerView extends StatefulWidget {
   final bool isSiparisler;
@@ -353,7 +357,9 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
     kod5Controller.clear();
   }
 
-  Observer fab() => Observer(builder: (_) => CustomFloatingActionButton(isScrolledDown: viewModel.isScrolledDown));
+  Observer fab() => Observer(
+      builder: (_) => CustomFloatingActionButton(
+          isScrolledDown: viewModel.isScrolledDown, onPressed: () => Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: SiparisEditRequestModel(), baseEditEnum: BaseEditEnum.ekle))));
 
   RefreshIndicator body() {
     return RefreshIndicator.adaptive(
@@ -364,7 +370,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
           getData();
         },
         child: Observer(
-            builder: (_) => musteriSiparisleriList.isNullOrEmpty
+            builder: (_) => musteriSiparisleriList.ext.isNullOrEmpty
                 ? (viewModel.musteriSiparisleriList?.isEmpty ?? false)
                     ? const Center(child: Text("Stok Bulunamadı"))
                     : const Center(child: CircularProgressIndicator.adaptive())
@@ -381,7 +387,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                             child: const Center(child: CircularProgressIndicator.adaptive()),
                           );
                         }
-                        return SiparislerCard(model: viewModel.musteriSiparisleriList?[index]);
+                        return SiparislerCard(model: viewModel.musteriSiparisleriList![index]!);
                       },
                     );
                   })));
@@ -419,7 +425,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
   }
 
   Future<String?> getGrupKodu(int grupNo, TextEditingController? controller) async {
-    if (grupKodList.isNullOrEmpty) {
+    if (grupKodList.ext.isNullOrEmpty) {
       grupKodList = await networkManager.getGrupKod(name: "CARI", grupNo: -1);
     }
     List<BottomSheetModel>? bottomSheetList =

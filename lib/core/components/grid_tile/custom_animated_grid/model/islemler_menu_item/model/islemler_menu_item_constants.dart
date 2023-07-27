@@ -45,7 +45,7 @@ class IslemlerMenuItemConstants<T> {
         islemler.addAll(raporlar!);
       }
     }
-    if (raporlar.isNotNullOrEmpty) {
+    if (raporlar.ext.isNotNullOrEmpty) {
       islemler.add(stokHareketleri);
     }
   }
@@ -124,15 +124,13 @@ class IslemlerMenuItemConstants<T> {
                   CustomWidgetWithLabel(
                     text: "Eski Cari Kodu Silinsin mi?",
                     isVertical: true,
-                    child: 
-                      Observer(
-                          builder: (_) => Switch.adaptive(
-                              value: viewModel.cariKodDegistirSwitch,
-                              onChanged: (value) {
-                                viewModel.changeCariKodDegistirSwitch(value);
-                                kodDegistirModel.kaynakSil = (value ? "E" : "H");
-                              })),
-                    
+                    child: Observer(
+                        builder: (_) => Switch.adaptive(
+                            value: viewModel.cariKodDegistirSwitch,
+                            onChanged: (value) {
+                              viewModel.changeCariKodDegistirSwitch(value);
+                              kodDegistirModel.kaynakSil = (value ? "E" : "H");
+                            })),
                   ),
                   Row(
                     children: [

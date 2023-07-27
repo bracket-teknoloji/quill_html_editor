@@ -79,7 +79,7 @@ class _LoginViewState extends BaseState<LoginView> {
               backgroundColor: theme.scaffoldBackgroundColor),
           Scaffold(
             appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent, automaticallyImplyLeading: false),
-            floatingActionButton: !context.isKeyBoardOpen ? Text("V ${AppInfoModel.instance.version}").paddingOnly(bottom: 20) : null,
+            floatingActionButton: !context.general.isKeyBoardOpen ? Text("V ${AppInfoModel.instance.version}").paddingOnly(bottom: 20) : null,
             floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerDocked,
             primary: true,
             backgroundColor: Colors.transparent,
@@ -96,7 +96,7 @@ class _LoginViewState extends BaseState<LoginView> {
                       children: [
                         AnimatedContainer(
                           duration: const Duration(milliseconds: 200),
-                          height: context.isKeyBoardOpen ? context.dynamicHeight(0.06) : context.dynamicHeight(0.12),
+                          height: context.general.isKeyBoardOpen ? context.dynamicHeight(0.06) : context.dynamicHeight(0.12),
                           child: SvgPicture.asset("assets/splash/PickerLogoTuruncu.svg"),
                         ).paddingOnly(bottom: context.dynamicHeight(0.02), top: context.dynamicHeight(0.04)),
                         Padding(
@@ -196,7 +196,7 @@ class _LoginViewState extends BaseState<LoginView> {
 
   void autoLogin() async {
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      if (AccountModel.instance.ozelCihazKimligi.isNotNullOrNoEmpty) {
+      if (AccountModel.instance.ozelCihazKimligi.ext.isNotNullOrNoEmpty) {
         bool? a = CacheManager.getLogout;
         if (a != null && a) {
           login();
@@ -264,7 +264,10 @@ class _LoginViewState extends BaseState<LoginView> {
           queryParameters: {"deviceInfos": jsonEncode(a.toJson())},
           data: {"grant_type": "password", "username": emailController.text, "password": passwordController.text},
         );
-        a = a..isim= response?.userJson?.ad..soyadi= response?.userJson?.soyad..admin = response?.userJson?.admin;
+        a = a
+          ..isim = response?.userJson?.ad
+          ..soyadi = response?.userJson?.soyad
+          ..admin = response?.userJson?.admin;
         CacheManager.setHesapBilgileri(a);
         dialogManager.hideAlertDialog;
         Hive.box("preferences").put(companyController.text, [
@@ -297,8 +300,8 @@ class _LoginViewState extends BaseState<LoginView> {
   }
 
   Future<GenericResponseModel> getUyeBilgileri() async {
-    final response =
-        await networkManager.dioPost<AccountResponseModel>(bodyModel: AccountResponseModel(), showError: false, data: AccountModel.instance.toJson(), addTokenKey: false, path: ApiUrls.getUyeBilgileri);
+    final response = await networkManager.dioPost<AccountResponseModel>(
+        bodyModel: AccountResponseModel(), showError: false, data: AccountModel.instance.toJson(), addTokenKey: false, path: ApiUrls.getUyeBilgileri);
     if (response.success == true) {
       CacheManager.setAccounts(response.data.first..parola = AccountModel.instance.uyeSifre);
     }

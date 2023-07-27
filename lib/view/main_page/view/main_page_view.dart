@@ -104,7 +104,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
                                                       title2.add(item.title.toString());
                                                       items = item.altMenuler!.where((element) {
                                                         element.color ??= item.color;
-                                                        if (element.icon.isNullOrEmpty) {
+                                                        if (element.icon.ext.isNullOrEmpty) {
                                                           element.icon = item.icon;
                                                         }
                                                         return element.yetkiKontrol;

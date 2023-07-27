@@ -1,11 +1,11 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+
+import '../../base/state/base_state.dart';
 import '../../constants/extensions/number_extensions.dart';
 import '../../constants/ui_helper/duration_helper.dart';
 import '../../constants/ui_helper/ui_helper.dart';
-
-import '../../base/state/base_state.dart';
 
 class CustomLineChart extends StatefulWidget {
   final List<double>? lineChartValue;
@@ -22,7 +22,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 1.8,
-      child: widget.lineChartValue.isNotNullOrEmpty
+      child: widget.lineChartValue.ext.isNotNullOrEmpty
           ? LineChart(
               LineChartData(
                   borderData: FlBorderData(show: false),
@@ -57,24 +57,25 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                       tooltipPadding: const EdgeInsets.all(5),
                     ),
                   ),
-                  gridData: FlGridData(
+                  gridData: const FlGridData(
                     show: true,
                     drawVerticalLine: true,
                   ),
                   titlesData: FlTitlesData(
                     show: true,
-                    topTitles: AxisTitles(drawBehindEverything: true, sideTitles: SideTitles(showTitles: true, getTitlesWidget: topTitleWidgets, interval: 1)),
-                    bottomTitles: AxisTitles(drawBehindEverything: true, sideTitles: SideTitles(showTitles: true, getTitlesWidget: bottomTitleWidgets, interval: 1)),
-                    rightTitles: AxisTitles(axisNameWidget: const Text("")),
-                    leftTitles: AxisTitles(drawBehindEverything: true, sideTitles: SideTitles(showTitles: true, getTitlesWidget: leftTitleWidgets)),
+                    topTitles: AxisTitles(sideTitles: SideTitles(showTitles: true, getTitlesWidget: topTitleWidgets, interval: 1)),
+                    bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: true, getTitlesWidget: bottomTitleWidgets, interval: 1)),
+                    rightTitles: const AxisTitles(axisNameWidget: Text("")),
+                    leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: true, getTitlesWidget: leftTitleWidgets)),
                   ),
                   minX: 0,
                   maxX: (widget.lineChartValue?.length.toDouble() ?? 0) - 1,
                   minY: 0,
                   lineBarsData: [
                     LineChartBarData(
-                        spots:
-                            widget.lineChartValue.isNotNullOrEmpty ? List.generate(widget.lineChartValue?.length ?? 0, (index) => FlSpot(index.toDouble(), widget.lineChartValue?[index] ?? 0)) : null,
+                        spots: widget.lineChartValue.ext.isNotNullOrEmpty
+                            ? List.generate(widget.lineChartValue?.length ?? 0, (index) => FlSpot(index.toDouble(), widget.lineChartValue?[index] ?? 0))
+                            : [],
                         show: true,
                         preventCurveOverShooting: true,
                         isCurved: true,
@@ -101,8 +102,8 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                           ),
                         ))
                   ]),
-              swapAnimationCurve: Curves.linear,
-              swapAnimationDuration: DurationHelper.durationLow)
+              curve: Curves.linear,
+              duration: DurationHelper.durationLow)
           : const SizedBox(),
     );
   }

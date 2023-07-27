@@ -143,7 +143,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
               barkod2Controller = TextEditingController(text: model?.stokList?.first.barkod2 ?? viewModel.stokListesiModel?.barkod2);
               barkod3Controller = TextEditingController(text: model?.stokList?.first.barkod3 ?? viewModel.stokListesiModel?.barkod3);
               subeController = TextEditingController(
-                  text: subeList.isNotNullOrEmpty
+                  text: subeList.ext.isNotNullOrEmpty
                       ? subeList.where((element) => element.subeKodu == model?.stokList?.first.subeKodu || element.subeKodu == viewModel.stokListesiModel?.subeKodu).firstOrNull?.subeAdi
                       : "${isletmeModel.subeAdi} ${isletmeModel.subeKodu}"); //text: model?.stokAdi
               ureticiKoduController = TextEditingController(text: model?.stokList?.first.ureticiKodu ?? viewModel.stokListesiModel?.ureticiKodu); //text: model?.stokAdi

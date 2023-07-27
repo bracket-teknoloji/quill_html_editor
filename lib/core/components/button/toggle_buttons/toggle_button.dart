@@ -5,7 +5,7 @@ import '../../../base/state/base_state.dart';
 import '../../../constants/ui_helper/ui_helper.dart';
 
 class ToggleButton extends StatefulWidget {
-  static String selected = "Tümü";
+  static String selected = "";
   // onCHanged fonksiyonu ile seçilen butonun değerini almak için kullanılan değişken
   final Function(String)? onChanged;
   const ToggleButton({super.key, this.onChanged});

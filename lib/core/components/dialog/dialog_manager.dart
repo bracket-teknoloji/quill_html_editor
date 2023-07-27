@@ -96,7 +96,7 @@ class DialogManager {
           ),
         ),
       ).show();
-  void showAreYouSureDialog(void Function() onYes) => _areYouSureDialog(onYes).show();
+  Future<void> showAreYouSureDialog(void Function() onYes) async => _areYouSureDialog(onYes).show();
 
   void showInfoDialog(String? description) => _baseDialog(
         desc: description,

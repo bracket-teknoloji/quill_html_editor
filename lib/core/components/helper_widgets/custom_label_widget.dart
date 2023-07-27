@@ -18,14 +18,15 @@ class CustomWidgetWithLabel extends StatelessWidget {
       runSpacing: UIHelper.lowSize,
       children: [
         Text(text ?? "",
-            style: (isTitleSmall ?? false)
-                ? Theme.of(context).textTheme.bodySmall?.copyWith(
-                      fontSize: UIHelper.midSize,
-                      color: (isMust ?? false) ? UIHelper.primaryColor : null,
-                    )
-                : null),
+                style: (isTitleSmall ?? false)
+                    ? Theme.of(context).textTheme.bodySmall?.copyWith(
+                          fontSize: UIHelper.midSize,
+                          color: (isMust ?? false) ? UIHelper.primaryColor : null,
+                        )
+                    : null)
+            .paddingOnly(left: UIHelper.lowSize),
         child,
       ],
-    ).paddingSymmetric(horizontal: UIHelper.lowSize);
+    );
   }
 }

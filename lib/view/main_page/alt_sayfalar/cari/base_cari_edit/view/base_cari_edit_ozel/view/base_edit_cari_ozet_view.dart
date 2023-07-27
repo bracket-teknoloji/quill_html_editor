@@ -53,61 +53,56 @@ class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
                       children: [Icon(Icons.crisis_alert_outlined), Text("Kayıt Bulunamadı")],
                     ),
                   )
-                : CustomWidgetWithLabel(text: "Döviz Bakiyeleri", child:Wrap(children: [
-                    const Divider(),
-                    const Row(
+                : CustomWidgetWithLabel(
+                    text: "Döviz Bakiyeleri",
+                    child: Wrap(
                       children: [
-                        Expanded(child: Text("  Borç")),
-                        Expanded(child: Text("  Alacak")),
-                        Expanded(child: Text("  Bakiye")),
+                        const Divider(),
+                        const Row(
+                          children: [
+                            Expanded(child: Text("  Borç")),
+                            Expanded(child: Text("  Alacak")),
+                            Expanded(child: Text("  Bakiye")),
+                          ],
+                        ),
+                        CustomWidgetWithLabel(
+                            text: "  €",
+                            isVertical: false,
+                            child: SizedBox(
+                              child: Row(
+                                children: [
+                                  Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcEuroController)),
+                                  Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakEuroController)),
+                                  Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeEuroController)),
+                                ],
+                              ),
+                            )),
+                        CustomWidgetWithLabel(
+                            text: "  \$",
+                            isVertical: false,
+                            child: SizedBox(
+                              child: Row(
+                                children: [
+                                  Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcDolarController)),
+                                  Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakDolarController)),
+                                  Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeDolarController)),
+                                ],
+                              ),
+                            )),
+                        CustomWidgetWithLabel(
+                            text: "  TL",
+                            isVertical: false,
+                            child: SizedBox(
+                              child: Row(
+                                children: [
+                                  Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcTLController)),
+                                  Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakTLController)),
+                                  Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeTLController)),
+                                ],
+                              ),
+                            )),
                       ],
-                    ),
-                    CustomWidgetWithLabel(
-                      text: "  €",
-                      isVertical: false,
-                      child: 
-                        SizedBox(
-                          child: Row(
-                            children: [
-                              Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcEuroController)),
-                              Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakEuroController)),
-                              Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeEuroController)),
-                            ],
-                          ),
-                        )
-                      
-                    ),
-                    CustomWidgetWithLabel(
-                      text: "  \$",
-                      isVertical: false,
-                      child: 
-                        SizedBox(
-                          child: Row(
-                            children: [
-                              Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcDolarController)),
-                              Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakDolarController)),
-                              Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeDolarController)),
-                            ],
-                          ),
-                        )
-                      
-                    ),
-                    CustomWidgetWithLabel(
-                      text: "  TL",
-                      isVertical: false,
-                      child: 
-                        SizedBox(
-                          child: Row(
-                            children: [
-                              Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcTLController)),
-                              Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakTLController)),
-                              Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeTLController)),
-                            ],
-                          ),
-                        )
-                      
-                    ),
-                  ],) ),
+                    )),
             CustomWidgetWithLabel(
               text: "Risk Bilgileri",
               child: Wrap(children: [
@@ -169,7 +164,7 @@ class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
   }
 
   String getBakiye(String paraBirimi) {
-    if (bakiyeList.isNotNullOrEmpty) {
+    if (bakiyeList.ext.isNotNullOrEmpty) {
       if (paraBirimi == "TL") {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
           return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.bakiye?.commaSeparatedWithFixedDigits ?? "";
@@ -197,7 +192,7 @@ class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
   }
 
   String getAlacak(String paraBirimi) {
-    if (bakiyeList.isNotNullOrEmpty) {
+    if (bakiyeList.ext.isNotNullOrEmpty) {
       if (paraBirimi == "TL") {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
           return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.alacakToplami?.commaSeparatedWithFixedDigits ?? "";
@@ -225,7 +220,7 @@ class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
   }
 
   String getBorc(String paraBirimi) {
-    if (bakiyeList.isNotNullOrEmpty) {
+    if (bakiyeList.ext.isNotNullOrEmpty) {
       if (paraBirimi == "TL") {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
           return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.borcToplami?.commaSeparatedWithFixedDigits ?? "";

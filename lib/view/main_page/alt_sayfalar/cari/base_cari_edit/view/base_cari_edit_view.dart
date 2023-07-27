@@ -35,8 +35,9 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
   List<Tab>? get addTabs => widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null && widget.model?.baseEditEnum != BaseEditEnum.kopyala
       ? [const Tab(child: Text("Özet")), const Tab(child: Text("Banka")), const Tab(child: Text("İletişim"))]
       : [];
-  List<Widget>? get addBody =>
-      widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null && widget.model?.baseEditEnum != BaseEditEnum.kopyala ? [const BaseEditCariOzetView(), const BaseCariEditBankaView(), const BaseCariEditIletisimView()] : [];
+  List<Widget>? get addBody => widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null && widget.model?.baseEditEnum != BaseEditEnum.kopyala
+      ? [const BaseEditCariOzetView(), const BaseCariEditBankaView(), const BaseCariEditIletisimView()]
+      : [];
   Widget? get addSaveButton => widget.model?.baseEditEnum != BaseEditEnum.goruntule
       ? IconButton(
           onPressed: () async {
@@ -89,7 +90,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
   }
 
   Future<void> postData() async {
-    dialogManager.showSnackBar("Yükleniyor");
+    dialogManager.showLoadingDialog("Yükleniyor");
     Map<String, dynamic> data = CariListesiModel.instance.toJson();
     CariSaveRequestModel model = CariSaveRequestModel.instance;
     model = model.fromJson(data);
@@ -109,12 +110,15 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
       bodyModel: CariListesiModel(),
       addTokenKey: true,
       addCKey: true,
+      showError: false,
       addSirketBilgileri: true,
       data: model.toJson(),
     );
     if (!(response.success ?? false)) {
+      dialogManager.hideAlertDialog;
       dialogManager.showAlertDialog("Eksik bilgi var\n${response.message}");
     } else {
+      dialogManager.hideAlertDialog;
       dialogManager.showSnackBar("Kayıt başarılı");
       Get.back();
     }
@@ -123,19 +127,19 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
   Map<String, int> get validate {
     Map<String, int> map = {};
     CariListesiModel data = CariListesiModel.instance;
-    if (data.cariKodu.isNullOrEmpty) {
+    if (data.cariKodu.ext.isNullOrEmpty) {
       map["Kodu"] = 0;
     }
-    if (data.cariTip.isNullOrEmpty) {
+    if (data.cariTip.ext.isNullOrEmpty) {
       map["Cari Tipi"] = 0;
     }
-    if (data.cariAdi.isNullOrEmpty) {
+    if (data.cariAdi.ext.isNullOrEmpty) {
       map["Adı"] = 0;
     }
-    if (data.subeKodu.toStringIfNull.isNullOrEmpty) {
+    if (data.subeKodu.toStringIfNull.ext.isNullOrEmpty) {
       map["Şube Kodu"] = 1;
     }
-    if (data.kilit.isNullOrEmpty) {
+    if (data.kilit.ext.isNullOrEmpty) {
       map["Kilit"] = 1;
     }
     return map;

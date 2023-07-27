@@ -21,7 +21,7 @@ abstract class _FiyatGecmisiViewModelBase with Store {
 
   @action
   void filterModelList(String value) {
-    if (value.isNullOrEmpty) {
+    if (value.ext.isNullOrEmpty) {
       filteredModelList = modelList;
     } else {
       filteredModelList = modelList
@@ -85,7 +85,7 @@ abstract class _FiyatGecmisiViewModelBase with Store {
     "Yazdırılmış": "1",
     "Yazdırılmadı": "2",
   };
-    @observable
+  @observable
   String fiyatTipiGroupValue = "";
 
   @action

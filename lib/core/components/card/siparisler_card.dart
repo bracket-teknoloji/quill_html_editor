@@ -8,12 +8,15 @@ import 'package:picker/core/constants/extensions/list_extensions.dart';
 import 'package:picker/core/constants/extensions/number_extensions.dart';
 import 'package:picker/core/constants/extensions/widget_extensions.dart';
 import 'package:picker/core/constants/ui_helper/ui_helper.dart';
-import 'package:picker/core/init/network/login/api_urls.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
 import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_model.dart';
 
+import '../../../view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_reuqest_model.dart';
+import '../../base/model/base_edit_model.dart';
+import '../../constants/enum/base_edit_enum.dart';
+
 class SiparislerCard extends StatefulWidget {
-  final SiparislerModel? model;
+  final SiparislerModel model;
   const SiparislerCard({super.key, required this.model});
 
   @override
@@ -27,17 +30,31 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
         child: ListTile(
       onTap: () async {
         // var result =
-        await bottomSheetDialogManager.showBottomSheetDialog(context, title: widget.model?.belgeNo ?? "", children: [
-          BottomSheetModel(title: "Görüntüle", iconWidget: Icons.search_outlined),
-          BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit_outlined),
-          BottomSheetModel(title: "Sil", iconWidget: Icons.delete_outline, onTap: ()=>  dialogManager.showAreYouSureDialog(() async{
-            var result = await networkManager.deleteFatura(DeleteFaturaModel().fromJson(widget.model!.toJson()));
-            if (result.success ==true){
-              Get.back();
-              dialogManager.showSnackBar("Silindi");
-            }
-             
-          })),
+        await bottomSheetDialogManager.showBottomSheetDialog(context, title: widget.model.belgeNo ?? "", children: [
+          BottomSheetModel(
+              title: "Görüntüle",
+              iconWidget: Icons.search_outlined,
+              onTap: () {
+                Get.back();
+                return Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: SiparisEditRequestModel.fromSiparislerModel(widget.model), baseEditEnum: BaseEditEnum.goruntule));
+              }),
+          BottomSheetModel(
+              title: "Düzelt",
+              iconWidget: Icons.edit_outlined,
+              onTap: () {
+                Get.back();
+                return Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: SiparisEditRequestModel.fromSiparislerModel(widget.model), baseEditEnum: BaseEditEnum.duzenle));
+              }),
+          BottomSheetModel(
+              title: "Sil",
+              iconWidget: Icons.delete_outline,
+              onTap: () => dialogManager.showAreYouSureDialog(() async {
+                    var result = await networkManager.deleteFatura(DeleteFaturaModel().fromJson(widget.model.toJson()));
+                    if (result.success == true) {
+                      Get.back();
+                      dialogManager.showSnackBar("Silindi");
+                    }
+                  })),
           BottomSheetModel(title: "Yazdır", iconWidget: Icons.print_outlined),
           BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
           BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined),
@@ -47,16 +64,16 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
               onTap: () {
                 Get.back();
                 dialogManager.showCariGridViewDialog(CariListesiModel()
-                  ..cariKodu = widget.model?.cariKodu
-                  ..cariAdi = widget.model?.cariAdi);
+                  ..cariKodu = widget.model.cariKodu
+                  ..cariAdi = widget.model.cariAdi);
               }),
         ]);
       },
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(widget.model?.belgeNo ?? ""),
-          Text(widget.model?.kayittarihi.toDateString() ?? ""),
+          Text(widget.model.belgeNo ?? ""),
+          Text(widget.model.kayittarihi.toDateString()),
         ],
       ),
       subtitle: Column(
@@ -65,33 +82,33 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
         children: [
           Row(
             children: [
-              Badge(label: Text(widget.model?.remoteTempBelgeEtiketi ?? "")).yetkiVarMi(widget.model?.remoteTempBelgeEtiketi != null),
-              Badge(label: Text("Dövizli ${widget.model?.dovizAdi ?? ""}")).yetkiVarMi(widget.model?.dovizAdi != null),
-              const Badge(label: Text("Onayda")).yetkiVarMi(widget.model?.tipi == 3),
-              Badge(label: Text("İrsaliye (${widget.model?.irslesenSayi ?? ""})")).yetkiVarMi(widget.model?.irsaliyelesti == "E"),
+              Badge(label: Text(widget.model.remoteTempBelgeEtiketi ?? "")).yetkiVarMi(widget.model.remoteTempBelgeEtiketi != null),
+              Badge(label: Text("Dövizli ${widget.model.dovizAdi ?? ""}")).yetkiVarMi(widget.model.dovizAdi != null),
+              const Badge(label: Text("Onayda")).yetkiVarMi(widget.model.tipi == 3),
+              Badge(label: Text("İrsaliye (${widget.model.irslesenSayi ?? ""})")).yetkiVarMi(widget.model.irsaliyelesti == "E"),
             ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
           ),
-          Text(widget.model?.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
+          Text(widget.model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Tipi: ${widget.model?.tipi ?? ""}"),
-                  widget.model?.kosulKodu != null ? Text("Koşul: ${widget.model?.kosulKodu ?? ""}") : null,
-                  Text("Ara Toplam: ${widget.model?.araToplam.commaSeparatedWithFixedDigits ?? ""} TL"),
-                  Text("Genel Toplam: ${widget.model!.genelToplam?.commaSeparatedWithFixedDigits ?? ""} TL"),
+                  Text("Tipi: ${widget.model.tipi ?? ""}"),
+                  widget.model.kosulKodu != null ? Text("Koşul: ${widget.model.kosulKodu ?? ""}") : null,
+                  Text("Ara Toplam: ${widget.model.araToplam.commaSeparatedWithFixedDigits} TL"),
+                  Text("Genel Toplam: ${widget.model.genelToplam?.commaSeparatedWithFixedDigits ?? ""} TL"),
                 ].nullCheck.cast<Widget>(),
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Kalem Adedi: ${widget.model?.kalemAdedi ?? ""}"),
-                  Text("Plasiyer: ${widget.model?.plasiyerAciklama ?? ""}"),
-                  Text("KDV: ${widget.model?.kdv ?? ""} TL"),
-                  widget.model?.dovizAdi != null ? Text("Döviz Toplamı: ${widget.model?.dovizTutari ?? ""} ${widget.model?.dovizAdi ?? ""}") : null,
+                  Text("Kalem Adedi: ${widget.model.kalemAdedi ?? ""}"),
+                  Text("Plasiyer: ${widget.model.plasiyerAciklama ?? ""}"),
+                  Text("KDV: ${widget.model.kdv ?? ""} TL"),
+                  widget.model.dovizAdi != null ? Text("Döviz Toplamı: ${widget.model.dovizTutari ?? ""} ${widget.model.dovizAdi ?? ""}") : null,
                 ].nullCheck.cast<Widget>(),
               ),
             ].map((e) => Expanded(child: e)).toList(),

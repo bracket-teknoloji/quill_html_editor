@@ -182,7 +182,7 @@ class AccountModel with NetworkManagerMixin {
       cihazMarkasi = androidInfo.brand;
       cihazModeli = androidInfo.model;
       ozelCihazKimligi = androidInfo.id;
-      if (ozelCihazKimligi.isNotNullOrNoEmpty) {
+      if (ozelCihazKimligi.ext.isNotNullOrNoEmpty) {
         cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
         log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");
       } else {
@@ -194,7 +194,7 @@ class AccountModel with NetworkManagerMixin {
     else if (Platform.isIOS) {
       // while (await AppTrackingTransparency.trackingAuthorizationStatus != TrackingStatus.authorized) {
       final iosInfo = await deviceInfo.iosInfo;
-      cihazSistemVersiyonu = iosInfo.systemVersion?.split(".")[0];
+      cihazSistemVersiyonu = iosInfo.systemVersion.split(".")[0];
       cihazMarkasi = iosInfo.name;
       cihazModeli = iosInfo.utsname.machine;
       ozelCihazKimligi = iosInfo.identifierForVendor;
@@ -210,7 +210,7 @@ class AccountModel with NetworkManagerMixin {
       cihazSistemVersiyonu = Platform.operatingSystemVersion;
       cihazMarkasi = desktopInfo.productName;
       cihazModeli = desktopInfo.productId;
-      if (ozelCihazKimligi.isNotNullOrNoEmpty) {
+      if (ozelCihazKimligi.ext.isNotNullOrNoEmpty) {
         cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
         log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");
       } else {
@@ -224,7 +224,7 @@ class AccountModel with NetworkManagerMixin {
       cihazSistemVersiyonu = Platform.operatingSystemVersion;
       cihazMarkasi = desktopInfo.computerName;
       cihazModeli = desktopInfo.model;
-      if (ozelCihazKimligi.isNotNullOrNoEmpty) {
+      if (ozelCihazKimligi.ext.isNotNullOrNoEmpty) {
         cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
         log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");
       }
@@ -234,7 +234,7 @@ class AccountModel with NetworkManagerMixin {
       cihazSistemVersiyonu = Platform.operatingSystemVersion;
       cihazMarkasi = desktopInfo.name;
       cihazModeli = desktopInfo.prettyName;
-      if (ozelCihazKimligi.isNotNullOrNoEmpty) {
+      if (ozelCihazKimligi.ext.isNotNullOrNoEmpty) {
         cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
         log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");
       } else {

@@ -96,9 +96,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                     title: "Filtrele",
                     body: Column(children: [
                       CustomWidgetWithLabel(
-                          text: "İrsaliyeler Dahil",
-                          isVertical: true,
-                          child: Observer(builder: (_) => Switch.adaptive(value: viewModel.irsDahil, onChanged: (value) => viewModel.setIrsDahil(value)))),
+                          text: "İrsaliyeler Dahil", isVertical: true, child: Observer(builder: (_) => Switch.adaptive(value: viewModel.irsDahil, onChanged: (value) => viewModel.setIrsDahil(value)))),
                       Row(
                         children: [
                           Expanded(

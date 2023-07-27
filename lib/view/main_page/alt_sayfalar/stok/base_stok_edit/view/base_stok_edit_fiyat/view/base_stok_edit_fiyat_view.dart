@@ -78,7 +78,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                     readOnly: true,
                     suffixMore: true,
                     onTap: () async {
-                      if (viewModel.kdvOraniList.isNullOrEmpty) {
+                      if (viewModel.kdvOraniList.ext.isNullOrEmpty) {
                         await getKdvOrani();
                       }
                       // ignore: use_build_context_synchronously
@@ -179,7 +179,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                     readOnly: true,
                     suffixMore: true,
                     onTap: () async {
-                      if (viewModel.kdvOraniList.isNullOrEmpty) {
+                      if (viewModel.kdvOraniList.ext.isNullOrEmpty) {
                         await getKdvOrani();
                       }
                       // ignore: use_build_context_synchronously
@@ -211,7 +211,6 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                             enabled: isEnabled,
                             labelText: "Fiyat 2",
                             controller: satisFiyat2Controller,
-                           
                             onChanged: (p0) {
                               stokDetayModel.stokList?.first.satisFiat2 = double.tryParse(p0);
                               stokListesiModel.satisFiat2 = double.tryParse(p0);

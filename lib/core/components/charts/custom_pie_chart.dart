@@ -24,7 +24,7 @@ class _CustomPieChartState extends BaseState<CustomPieChart> {
     return AspectRatio(
       aspectRatio: 1.8,
       child: widget.pieChartValue != null
-          ? widget.pieChartValue.isNotNullOrEmpty
+          ? widget.pieChartValue.ext.isNotNullOrEmpty
               ? Padding(
                   padding: UIHelper.lowPadding,
                   child: PieChart(

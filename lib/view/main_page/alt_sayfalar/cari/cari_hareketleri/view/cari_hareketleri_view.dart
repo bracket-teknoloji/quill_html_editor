@@ -182,7 +182,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
         return getData().then((value) => viewModel.setCariHareketleri(value));
       },
       child: Observer(
-        builder: (_) => (viewModel.cariHareketleriList.isNullOrEmpty
+        builder: (_) => (viewModel.cariHareketleriList.ext.isNullOrEmpty
             ? (viewModel.cariHareketleriList?.isEmpty ?? false)
                 ? Center(
                     child: Column(
@@ -221,7 +221,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                 var anaVeri = CacheManager.getAnaVeri();
                                 var result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == "CariHareket").toList();
                                 NetFectDizaynList? dizaynList;
-                                if (result.isNotNullOrEmpty) {
+                                if (result.ext.isNotNullOrEmpty) {
                                   if (result!.length == 1) {
                                     pdfModel.dizaynId = result.first.id;
                                     pdfModel.etiketSayisi = result.first.kopyaSayisi;
@@ -271,7 +271,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                 var anaVeri = CacheManager.getAnaVeri();
                                 var result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == "TahsilatMakbuzu").toList();
                                 NetFectDizaynList? dizaynList;
-                                if (result.isNotNullOrEmpty) {
+                                if (result.ext.isNotNullOrEmpty) {
                                   if (result!.length == 1) {
                                     pdfModel.dicParams?.caharInckey = viewModel.cariHareketleriList![index].inckeyno.toStringIfNull;
                                     pdfModel.dizaynId = result.first.id;

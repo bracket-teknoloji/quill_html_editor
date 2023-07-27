@@ -37,8 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.2
 
   #Info Dependencies
-  device_info_plus: ^8.1.0
-  package_info_plus: ^3.0.3
+  device_info_plus: ^9.0.2
+  package_info_plus: ^4.0.2
   connectivity_plus: ^4.0.1
 
   #Network Dependencies
@@ -48,17 +48,17 @@ dependencies:
   crypto: ^3.0.2
   flutter_animate: ^4.1.1+1
   flutter_svg: ^2.0.5
-  google_fonts: ^4.0.3
+  google_fonts: ^5.1.0
   path: ^1.8.3
-  kartal: ^2.8.0
+  kartal: ^3.2.0
   path_provider: ^2.0.15
   open_file_plus: ^3.4.1
   permission_handler: ^10.3.0
-  share_plus: ^6.3.4
+  share_plus: ^7.0.2
 
   # Component  Dependencies
   awesome_dialog: ^3.0.2
-  fl_chart: ^0.62.0
+  fl_chart: ^0.63.0
   flutter_staggered_animations: ^1.1.1
   flutter_slidable: ^3.0.0
   lottie: ^2.3.1
@@ -75,8 +75,8 @@ dependencies:
   hive: ^2.0.4
   hive_flutter: ^1.0.0
 
-  image_picker: ^0.8.7+5
-  intl: ^0.18.1
+  image_picker: ^1.0.1
+  intl: any
 
   #Json Serialization Dependencies
   json_annotation: ^4.8.1
@@ -89,7 +89,7 @@ dependencies:
 
   flutter_image_compress: ^2.0.3
   timezone: ^0.9.1
-  syncfusion_flutter_pdfviewer: ^21.2.10
+  syncfusion_flutter_pdfviewer: ^22.1.39
   collection: ^1.17.1
   app_tracking_transparency: ^2.0.4
   app_settings: ^5.0.0
@@ -98,6 +98,7 @@ dependencies:
   firebase_core: ^2.15.0
   firebase_crashlytics: ^3.3.3
   firebase_messaging: ^14.6.5
+  flutter_quill: ^7.2.18
 
 flutter_icons:
   image_path: "assets/splash/pickerLogoTuruncu.png"

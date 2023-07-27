@@ -134,29 +134,33 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
               : Text("Stok Listesi ${viewModel.stokListesi?.length ?? ""}")),
       actions: [
         hideSearchBar(),
-        IconButton(
-            onPressed: () async {
-              await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context, title: "Seçenekler", children: [
-                BottomSheetModel(
-                    title: "Resimleri Göster",
-                    onTap: () {
-                      viewModel.setResimleriGoster();
-                      if (viewModel.resimleriGoster == "E") {
-                        viewModel.setStokListesi(null);
-                        viewModel.resetSayfa();
-                        getData();
-                        Get.back();
-                      } else {
-                        viewModel.setStokListesi(null);
-                        viewModel.setImageMap({});
-                        viewModel.resetSayfa();
-                        getData();
-                        Get.back();
-                      }
-                    })
-              ]);
-            },
-            icon: const Icon(Icons.more_vert_outlined))
+        Observer(builder: (_) {
+          return viewModel.searchBar
+              ? const SizedBox()
+              : IconButton(
+                  onPressed: () async {
+                    await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context, title: "Seçenekler", children: [
+                      BottomSheetModel(
+                          title: "Resimleri Göster",
+                          onTap: () {
+                            viewModel.setResimleriGoster();
+                            if (viewModel.resimleriGoster == "E") {
+                              viewModel.setStokListesi(null);
+                              viewModel.resetSayfa();
+                              getData();
+                              Get.back();
+                            } else {
+                              viewModel.setStokListesi(null);
+                              viewModel.setImageMap({});
+                              viewModel.resetSayfa();
+                              getData();
+                              Get.back();
+                            }
+                          })
+                    ]);
+                  },
+                  icon: const Icon(Icons.more_vert_outlined));
+        })
       ],
       bottom: PreferredSize(
         preferredSize: Size.fromHeight(height * 0.07),
@@ -459,7 +463,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   }
 
   Widget hideSearchBar() {
-    if (!viewModel.searchBar) {
+    return Observer(builder: (_) {
       return IconButton(
         onPressed: () {
           viewModel.setSearchBar();
@@ -470,11 +474,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
             getData();
           }
         },
-        icon: const Icon(Icons.search_outlined),
+        icon: Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined),
       );
-    } else {
-      return const SizedBox();
-    }
+    });
   }
 
   Observer? fab() {

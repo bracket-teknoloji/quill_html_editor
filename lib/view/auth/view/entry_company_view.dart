@@ -187,7 +187,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                     text: "İşletme Kodu",
                                     child: TextFormField(
                                       controller: controller2,
-                                      enabled: isletme?.isNotNullOrEmpty,
+                                      enabled: isletme?.ext.isNotNullOrEmpty,
                                       readOnly: true,
                                       onTap: () {
                                         isletmeDialog(context);
@@ -200,7 +200,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                     text: "Şube Kodu",
                                     child: TextFormField(
                                       controller: controller3,
-                                      enabled: sube?.isNotNullOrEmpty,
+                                      enabled: sube?.ext.isNotNullOrEmpty,
                                       readOnly: true,
                                       onTap: () {
                                         subeDialog(context);
@@ -330,7 +330,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                     log("Başarılı");
                                   }
                                   // Get.toNamed("/mainPage");
-                                  (response.message?.isNotNullOrNoEmpty ?? false) ? dialogManager.showAlertDialog(response.message.toString()) : null;
+                                  (response.message?.ext.isNotNullOrNoEmpty ?? false) ? dialogManager.showAlertDialog(response.message.toString()) : null;
                                 } else {
                                   dialogManager.hideAlertDialog;
                                   dialogManager.showAlertDialog(response.message.toString());

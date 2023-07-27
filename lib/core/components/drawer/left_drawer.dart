@@ -36,7 +36,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
         contentPadding: const EdgeInsets.only(left: 12, top: 10, bottom: 10),
       ),
       const Divider(),
-      list.isNullOrEmpty
+      list.ext.isNullOrEmpty
           ? Expanded(
               flex: 2,
               child: Column(

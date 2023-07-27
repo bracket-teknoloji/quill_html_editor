@@ -178,7 +178,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
 
                     viewModel.changeCariListesi(null);
                     List? data = await getData(sayfa: 1);
-                    if (data.isNotNullOrEmpty) {
+                    if (data.ext.isNotNullOrEmpty) {
                       viewModel.changeCariListesi(data);
                     } else {
                       viewModel.changeCariListesi([]);
@@ -260,7 +260,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
           });
         },
         child: Observer(
-          builder: (_) => (viewModel.cariListesi.isNullOrEmpty
+          builder: (_) => (viewModel.cariListesi.ext.isNullOrEmpty
               ? (viewModel.cariListesi?.isEmpty ?? false)
                   ? const Center(child: Text("Cari Bulunamadı"))
                   : const Center(child: CircularProgressIndicator.adaptive())
@@ -302,7 +302,8 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                             iconWidget: Icons.delete_outline,
                                             onTap: () async {
                                               dialogManager.showAreYouSureDialog(() async {
-                                                dialogManager.showSnackBar("Cari Siliniyor...");
+                                                Get.back();
+                                                dialogManager.showAlertDialog("Cari Siliniyor...");
                                                 var result = await networkManager.dioPost<CariListesiModel>(
                                                   path: ApiUrls.deleteCari,
                                                   bodyModel: CariListesiModel(),
@@ -311,14 +312,13 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                                   addTokenKey: true,
                                                   queryParameters: {"CariKodu": object.cariKodu ?? ""},
                                                 );
+                                                dialogManager.hideAlertDialog;
                                                 if (result.success ?? false) {
-                                                  Get.back();
                                                   dialogManager.showSnackBar("${object.cariAdi} adlı cari silindi");
                                                   getData(sayfa: 1).then((value) {
                                                     viewModel.changeCariListesi(value);
                                                   });
                                                 } else {
-                                                  Get.back();
                                                   dialogManager.showSnackBar(result.message ?? "");
                                                 }
                                               });
@@ -331,7 +331,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                               iconWidget: Icons.list_alt_outlined,
                                               onTap: () {
                                                 Get.back();
-                                                dialogManager.showCariGridViewDialog(object, IslemTipiEnum.cariRapor);
+                                                dialogManager.showCariGridViewDialog(object);
                                               }),
                                           BottomSheetModel(
                                               title: "Raporlar",
@@ -531,7 +531,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       nullChecker("arrKod5", queryParameters2);
       nullChecker("ilce", queryParameters2);
       nullChecker("cariTipi", queryParameters2);
-      if (bottomSheetResponseModel!.filterBakiye!.isNotNullOrNoEmpty) {
+      if (bottomSheetResponseModel!.filterBakiye!.ext.isNotNullOrNoEmpty) {
         String a = bottomSheetResponseModel!.filterBakiye ?? "";
         String b = a == "Tümü" ? "" : a[0];
         queryParameters2["FILTER_BAKIYE"] = b;
@@ -568,7 +568,9 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       log("$paramData");
     }
     log("Sayfa : $sayfa");
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
 
     return response.data;
   }
