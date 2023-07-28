@@ -61,12 +61,11 @@ void main() async {
   // await AccountModel.instance.init();
   //* Firebase Crashlytics
   WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) async => await firebaseInitialized());
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.landscapeRight,
-    DeviceOrientation.landscapeLeft,
-  ]).then((_) {
+
+  //* Screen Orientation
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]).then((_) {
     runApp(const PickerApp());
+    //* Network Dependency Injection (Uygulamanın internet bağlantısı olup olmadığını kontrol ediyoruz.)
     NetworkDependencyInjection.init();
   });
 }

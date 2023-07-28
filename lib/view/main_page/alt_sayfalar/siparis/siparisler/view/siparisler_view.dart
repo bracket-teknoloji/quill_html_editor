@@ -209,11 +209,11 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                     suffixMore: true,
                                     readOnly: true,
                                     onTap: () async {
-                                      var result = await bottomSheetDialogManager.showPlasiyerDialog(context);
-                                      if (result != null) {
-                                        plasiyerController.text = result.map((e) => e.plasiyerAciklama).join(", ");
+                                      var result = await bottomSheetDialogManager.showPlasiyerListesiDialog(context);
+                                      if (result.ext.isNotNullOrEmpty) {
+                                        plasiyerController.text = result!.map((e) => e?.plasiyerAciklama).join(", ");
 
-                                        viewModel.setArrPlasiyerKodu(result.map((e) => e.plasiyerKodu.toString()).toList().cast<String>());
+                                        viewModel.setArrPlasiyerKodu(result.map((e) => e?.plasiyerKodu.toString()).toList().cast<String>());
                                       }
                                     })),
                             Expanded(
@@ -225,7 +225,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                     onTap: () async {
                                       var result = await bottomSheetDialogManager.showProjeDialog(context);
                                       if (result != null) {
-                                        projeController.text = result.projeAciklama;
+                                        projeController.text = result.projeAciklama ?? "";
                                         viewModel.setProjeKodu(result.projeKodu);
                                       }
                                     })),

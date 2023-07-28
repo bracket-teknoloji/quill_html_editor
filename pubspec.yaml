@@ -55,6 +55,7 @@ dependencies:
   open_file_plus: ^3.4.1
   permission_handler: ^10.3.0
   share_plus: ^7.0.2
+  equatable: ^2.0.5
 
   # Component  Dependencies
   awesome_dialog: ^3.0.2
@@ -99,6 +100,7 @@ dependencies:
   firebase_crashlytics: ^3.3.3
   firebase_messaging: ^14.6.5
   flutter_quill: ^7.2.18
+  markdown: ^7.1.1
 
 flutter_icons:
   image_path: "assets/splash/pickerLogoTuruncu.png"

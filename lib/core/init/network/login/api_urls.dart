@@ -11,6 +11,7 @@ class ApiUrls {
   static const String getProjeler = "General/GetProjeler";
   static const String print = "Print/Print";
   static const String getDizaynParametreleri = "Print/GetDizaynParametreleri";
+  static const String getSiradakiBelgeNo = "General/GetSiradakiBelgeNo";
   //*Cariler
   static const String getCariler = "Cari/GetCariler";
   static const String getCariKayitliSehirler = "Cari/GetCariKayitliSehirler";

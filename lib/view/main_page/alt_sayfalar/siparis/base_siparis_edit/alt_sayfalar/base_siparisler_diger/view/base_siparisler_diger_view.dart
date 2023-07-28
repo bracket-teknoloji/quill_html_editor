@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:get/get.dart';
+import 'package:markdown/markdown.dart' hide Document;
 import 'package:picker/core/base/state/base_state.dart';
 import 'package:picker/core/constants/ui_helper/ui_helper.dart';
+import 'package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart';
 
 class BaseSiparislerDigerView extends StatefulWidget {
   const BaseSiparislerDigerView({super.key});
@@ -16,14 +20,30 @@ class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerView> {
 
   @override
   void initState() {
-    _controller = QuillController.basic();
+    // Map jsonData = {"insert": ""};
+    // //html to delta
+    // // jsonToHtml(jsonData);
+    // log(jsonData["insert"]);
+      _controller = QuillController.basic();
+    // if (BaseSiparisEditModel.instance.ekAciklama == null) {
+    // } else {
+    //   var json = jsonDecode(r'{"insert":"hello\n"}');
+    //   _controller = QuillController(document: Document.fromJson(json), selection: const TextSelection.collapsed(offset: 0));
+    // }
 
     super.initState();
   }
 
+  void jsonToHtml(Map<dynamic, dynamic> jsonData) {
+    markdownToHtml(BaseSiparisEditModel.instance.ekAciklama ?? "").split("\n").forEach((element) {
+      jsonData["insert"] += BaseSiparisEditModel.instance.ekAciklama ?? "";
+      jsonData["insert"] += "\n";
+    });
+  }
+
   @override
   void dispose() {
-    print(_controller.document.toPlainText());
+    print(_controller.document.toDelta());
     super.dispose();
   }
 

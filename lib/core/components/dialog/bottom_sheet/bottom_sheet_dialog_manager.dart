@@ -496,14 +496,22 @@ class BottomSheetDialogManager {
         BottomSheetModel(title: "Diğer", value: "D", onTap: () => Get.back(result: "Diğer")),
         BottomSheetModel(title: "Komisyoncu", value: "I", onTap: () => Get.back(result: "Komisyoncu")),
       ]);
-  showPlasiyerDialog(BuildContext context) async {
+  Future<List<PlasiyerList?>?> showPlasiyerListesiDialog(BuildContext context) async {
     List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? [];
-    return await showCheckBoxBottomSheetDialog(context, title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e)).toList());
+    List<PlasiyerList?> plasiyerListesi = [];
+    plasiyerListesi =  await showCheckBoxBottomSheetDialog(context, title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e)).toList());
+    return plasiyerListesi;
+  }
+  Future<PlasiyerList?> showPlasiyerDialog(BuildContext context) async {
+    List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? [];
+    PlasiyerList? plasiyer = await showRadioBottomSheetDialog(context, title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e)).toList());
+    return plasiyer;
   }
 
-  showProjeDialog(BuildContext context) async {
+  Future<BaseProjeModel?> showProjeDialog(BuildContext context) async {
     List<BaseProjeModel> projeList = await NetworkManager().getProjeData() ?? [];
-    return await showRadioBottomSheetDialog(context, title: "Proje Seçiniz", children: projeList.map((e) => BottomSheetModel(title: e.projeAciklama ?? "", value: e)).toList());
+    BaseProjeModel? proje = await showRadioBottomSheetDialog(context, title: "Proje Seçiniz", children: projeList.map((e) => BottomSheetModel(title: e.projeAciklama ?? "", value: e)).toList());
+    return proje;
   }
 }
 

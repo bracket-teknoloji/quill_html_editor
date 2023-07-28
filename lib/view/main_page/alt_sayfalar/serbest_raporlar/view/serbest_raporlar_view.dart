@@ -61,7 +61,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                               return CustomTextField(
                                   fitContent: true,
                                   labelText: e.adi ?? "",
-                                  controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList!.indexOf(e)],
+                                  controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
                                   isMust: e.bosGecilebilir != true,
                                   readOnly: true,
                                   suffix: const Icon(Icons.calendar_today),
@@ -75,7 +75,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                               return CustomTextField(
                                   fitContent: true,
                                   labelText: e.adi ?? "",
-                                  controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList!.indexOf(e)],
+                                  controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
                                   isMust: e.bosGecilebilir != true,
                                   readOnly: true,
                                   suffix: const Icon(Icons.more_horiz_outlined),

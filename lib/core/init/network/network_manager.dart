@@ -18,6 +18,7 @@ import 'package:picker/view/auth/model/login_model.dart';
 
 import '../../base/model/base_grup_kodu_model.dart';
 import '../../base/model/base_pdf_model.dart';
+import '../../base/model/siradaki_belge_no_model.dart';
 import '../../base/view/pdf_viewer/model/pdf_viewer_model.dart';
 import '../../components/dialog/dialog_manager.dart';
 import '../../constants/enum/dio_enum.dart';
@@ -55,9 +56,9 @@ class NetworkManager {
   Future<TokenModel?> getToken({required String path, Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
     FormData formData = FormData.fromMap(data);
     log(AccountModel.instance.toJson().toString());
-          log(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.firma ?? "")?.wsWan ?? "");
+    log(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.firma ?? "")?.wsWan ?? "");
     final response = await dio.request(path,
-          queryParameters: queryParameters,
+        queryParameters: queryParameters,
         cancelToken: CancelToken(),
         options: Options(headers: {
           "Access-Control-Allow-Origin": "*",
@@ -80,15 +81,21 @@ class NetworkManager {
       bool addSirketBilgileri = true,
       bool addCKey = true,
       bool addTokenKey = true,
+      bool showLoading = false,
       bool showError = true}) async {
     CancelToken cancelToken = CancelToken();
     Map<String, String> head = getStandardHeader(addTokenKey, addSirketBilgileri, addCKey);
     if (headers != null) head.addEntries(headers.entries);
     Map<String, dynamic> queries = getStandardQueryParameters();
     if (queryParameters != null) queries.addEntries(queryParameters.entries);
-
+    if (showLoading) {
+      DialogManager().showLoadingDialog("Yükleniyor...");
+    }
     final response = await dio.get(path, queryParameters: queries, options: Options(headers: head), cancelToken: cancelToken);
     GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
+    if (showLoading) {
+      DialogManager().hideAlertDialog;
+    }
     if (responseModel.success != true) {
       if (showError) {
         DialogManager().showAlertDialog(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
@@ -110,22 +117,30 @@ class NetworkManager {
       bool addSirketBilgileri = true,
       bool addCKey = true,
       bool addTokenKey = true,
+      bool showLoading = false,
       bool showError = true}) async {
-    Map<String, String> head = getStandardHeader(addTokenKey, addSirketBilgileri, addCKey);
-    if (headers != null) head.addEntries(headers.entries);
-    Map<String, dynamic> queries = getStandardQueryParameters();
-    if (queryParameters != null) queries.addEntries(queryParameters.entries);
-    if (queryParameters != null) queries.addEntries(queryParameters.entries);
     dynamic response;
+    if (showLoading) {
+      DialogManager().showLoadingDialog("Yükleniyor...");
+    }
     try {
-    response = await dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
-    } catch ( e) {
-      if(showError){
-      DialogManager().showAlertDialog(e.toString());
+      Map<String, String> head = getStandardHeader(addTokenKey, addSirketBilgileri, addCKey);
+      if (headers != null) head.addEntries(headers.entries);
+      Map<String, dynamic> queries = getStandardQueryParameters();
+      if (queryParameters != null) queries.addEntries(queryParameters.entries);
+      if (queryParameters != null) queries.addEntries(queryParameters.entries);
+      response = await dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
+    } catch (e) {
+      if (showError) {
+        DialogManager().showAlertDialog(e.toString());
       }
       return GenericResponseModel<T>(success: false, message: e.toString());
     }
+    if (showLoading) {
+      DialogManager().hideAlertDialog;
+    }
     GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
+
     if (responseModel.success != true) {
       if (showError) {
         DialogManager().showAlertDialog(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
@@ -137,7 +152,7 @@ class NetworkManager {
     return responseModel;
   }
 
-  Future<GenericResponseModel> deleteFatura(DeleteFaturaModel model){
+  Future<GenericResponseModel> deleteFatura(DeleteFaturaModel model) {
     return dioPost<DeleteFaturaModel>(path: ApiUrls.deleteFatura, bodyModel: DeleteFaturaModel(), data: model.toJson());
   }
 
@@ -194,10 +209,19 @@ class NetworkManager {
     Map<String, dynamic> query = {};
     return query;
   }
+
   Future<List<BaseProjeModel>?> getProjeData() async {
     var result = await dioGet<BaseProjeModel>(path: ApiUrls.getProjeler, bodyModel: BaseProjeModel());
     if (result.success ?? false) {
       return result.data.map((e) => e as BaseProjeModel).toList().cast<BaseProjeModel>();
+    }
+    return null;
+  }
+
+  Future<String?> getSiradakiBelgeNo(SiradakiBelgeNoModel model) async {
+    var result = await dioGet<SiradakiBelgeNoModel>(path: ApiUrls.getSiradakiBelgeNo, bodyModel: SiradakiBelgeNoModel(), data: (model..belgeNo = null).toJson());
+    if (result.success ?? false) {
+      return result.data.first.belgeNo;
     }
     return null;
   }
