@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:picker/core/constants/enum/serbest_rapor_detay_kod_enum.dart';
 import 'package:picker/core/constants/extensions/widget_extensions.dart';
 
@@ -154,7 +155,7 @@ class MenuItemConstants {
 
   List<GridItemModel> getList() {
     if (kDebugMode) {
-      return _gridItemModel;
+      return _gridItemModel.map((e) => e.altMenuVarMi ? e : (e..color = Colors.grey)).toList();
     } else {
       //grid items içindeki yetkiKontrol true olanları döndür
       return _gridItemModel.where((element) => element.yetkiKontrol).toList();
