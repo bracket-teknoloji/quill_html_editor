@@ -21,11 +21,27 @@ class BaseSiparislerGenelView extends StatefulWidget {
 
 class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
   bool get isEnable => widget.model.baseEditEnum != BaseEditEnum.goruntule;
+  BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
+  late TextEditingController belgeNoController;
+  late TextEditingController cariController;
+  late TextEditingController teslimCariController;
+  late TextEditingController belgeTipiController;
+  late TextEditingController plasiyerController;
+  late TextEditingController tarihController;
+  late TextEditingController teslimTarihController;
+  late TextEditingController topluDepoController;
+  late TextEditingController projeController;
+  late TextEditingController odemeKoduController;
+  late TextEditingController kosulController;
+  late TextEditingController ozelKod1Controller;
+  late TextEditingController ozelKod2Controller;
+
   @override
   void initState() {
-    if (widget.model.baseEditEnum != BaseEditEnum.ekle) {
-      getData();
-    }
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        init();
+    });
+    controllerInitializer();
     super.initState();
   }
 
@@ -101,9 +117,33 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
       ).paddingAll(UIHelper.lowSize),
     );
   }
+  Future<void> init() async {
+      if (widget.model.baseEditEnum != BaseEditEnum.ekle) {
+    await getData();
+      }
+    controllerInitializer();
+  }
 
   Future<void> getData() async {
     var result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: widget.model.model?.toJson());
-    if (result.success == true) {}
+    if (result.success == true) {
+      BaseSiparisEditModel.setInstance(result.data!);
+    }
+  }
+
+  void controllerInitializer() {
+    belgeNoController = TextEditingController();
+    cariController = TextEditingController();
+    teslimCariController = TextEditingController();
+    belgeTipiController = TextEditingController();
+    plasiyerController = TextEditingController();
+    tarihController = TextEditingController();
+    teslimTarihController = TextEditingController();
+    topluDepoController = TextEditingController();
+    projeController = TextEditingController();
+    odemeKoduController = TextEditingController();
+    kosulController = TextEditingController();
+    ozelKod1Controller = TextEditingController();
+    ozelKod2Controller = TextEditingController();
   }
 }

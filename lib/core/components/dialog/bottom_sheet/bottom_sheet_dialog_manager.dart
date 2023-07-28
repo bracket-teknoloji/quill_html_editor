@@ -13,7 +13,6 @@ import '../../../constants/ui_helper/icon_helper.dart';
 import '../../../constants/ui_helper/ui_helper.dart';
 import '../../../init/cache/cache_manager.dart';
 import '../../button/toggle_buttons/toggle_button.dart';
-import '../../helper_widgets/custom_label_widget.dart';
 import '../../helper_widgets/responsive_height_box.dart';
 import 'model/bottom_sheet_model.dart';
 import 'model/bottom_sheet_response_model.dart';
@@ -311,10 +310,7 @@ class BottomSheetDialogManager {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const CustomWidgetWithLabel(
-              text: "Bakiye Durumu",
-              child: SliderWidget(childrenValueList2: childrenValueList2),
-            ),
+            const SliderWidget(title: "Bakiye Durumu", childrenValueList2: childrenValueList2),
             Center(
               child: Wrap(
                 runAlignment: WrapAlignment.spaceAround,
@@ -512,9 +508,9 @@ class BottomSheetDialogManager {
 }
 
 class SliderWidget extends StatefulWidget {
-  const SliderWidget({super.key, required this.childrenValueList2});
-
+  final String title;
   final List<String> childrenValueList2;
+  const SliderWidget({super.key, required this.childrenValueList2, required this.title});
 
   @override
   State<SliderWidget> createState() => _SliderWidgetState();
@@ -524,6 +520,7 @@ class _SliderWidgetState extends State<SliderWidget> {
   @override
   Widget build(BuildContext context) {
     return SlideControllerWidget(
+        title: widget.title,
         childrenTitleList: const ["Tümü", "Tahsil Edilecek", "Ödeme Yapılacak", "Sıfır Bakiye", "Bakiyeli"],
         childrenValueList: widget.childrenValueList2,
         groupValue: ToggleButton.selected,

@@ -38,6 +38,18 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   List<KalemModel>? kalemModeller;
 
   BaseSiparisEditModel();
+  //singleton
+  static BaseSiparisEditModel? _instance;
+  static BaseSiparisEditModel get instance {
+    _instance ??= BaseSiparisEditModel._init();
+    return _instance!;
+  }
+
+  BaseSiparisEditModel._init();
+
+  //setter for singleton
+  static void setInstance(BaseSiparisEditModel instance) => _instance = instance;
+
   @override
   fromJson(Map<String, dynamic> json) => _$BaseSiparisEditModelFromJson(json);
 

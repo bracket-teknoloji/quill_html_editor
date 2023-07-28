@@ -301,9 +301,9 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                             title: "Sil",
                                             iconWidget: Icons.delete_outline,
                                             onTap: () async {
-                                              dialogManager.showAreYouSureDialog(() async {
                                                 Get.back();
-                                                dialogManager.showAlertDialog("Cari Siliniyor...");
+                                              dialogManager.showAreYouSureDialog(() async {
+                                                dialogManager.showLoadingDialog("Cari Siliniyor...");
                                                 var result = await networkManager.dioPost<CariListesiModel>(
                                                   path: ApiUrls.deleteCari,
                                                   bodyModel: CariListesiModel(),
