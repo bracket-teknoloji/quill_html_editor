@@ -5,6 +5,8 @@ class BaseEditModel<T> {
   BaseEditEnum? baseEditEnum;
   String? siradakiKod;
 
+  bool get enable => baseEditEnum == BaseEditEnum.ekle || baseEditEnum == BaseEditEnum.duzenle;
+
   BaseEditModel({this.model, this.baseEditEnum, this.siradakiKod});
 
   @override

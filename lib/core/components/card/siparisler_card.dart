@@ -48,13 +48,15 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
           BottomSheetModel(
               title: "Sil",
               iconWidget: Icons.delete_outline,
-              onTap: () => dialogManager.showAreYouSureDialog(() async {
-                    var result = await networkManager.deleteFatura(DeleteFaturaModel().fromJson(widget.model.toJson()));
-                    if (result.success == true) {
-                      Get.back();
-                      dialogManager.showSnackBar("Silindi");
-                    }
-                  })),
+              onTap: () {
+                Get.back();
+                return dialogManager.showAreYouSureDialog(() async {
+                  var result = await networkManager.deleteFatura(DeleteFaturaModel().fromJson(widget.model.toJson()));
+                  if (result.success == true) {
+                    dialogManager.showSnackBar("Silindi");
+                  }
+                });
+              }),
           BottomSheetModel(title: "Yazdır", iconWidget: Icons.print_outlined),
           BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
           BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined),
@@ -84,6 +86,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
             children: [
               Badge(label: Text(widget.model.remoteTempBelgeEtiketi ?? "")).yetkiVarMi(widget.model.remoteTempBelgeEtiketi != null),
               Badge(label: Text("Dövizli ${widget.model.dovizAdi ?? ""}")).yetkiVarMi(widget.model.dovizAdi != null),
+              const Badge(label: Text("Kapalı")).yetkiVarMi(widget.model.tipi == 1),
               const Badge(label: Text("Onayda")).yetkiVarMi(widget.model.tipi == 3),
               Badge(label: Text("İrsaliye (${widget.model.irslesenSayi ?? ""})")).yetkiVarMi(widget.model.irsaliyelesti == "E"),
             ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
@@ -95,7 +98,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Tipi: ${widget.model.tipi ?? ""}"),
+                  Text("Tipi: ${widget.model.yurticiMi ? "Yurtiçi" : "Yurtdışı"}"),
                   widget.model.kosulKodu != null ? Text("Koşul: ${widget.model.kosulKodu ?? ""}") : null,
                   Text("Ara Toplam: ${widget.model.araToplam.commaSeparatedWithFixedDigits} TL"),
                   Text("Genel Toplam: ${widget.model.genelToplam?.commaSeparatedWithFixedDigits ?? ""} TL"),

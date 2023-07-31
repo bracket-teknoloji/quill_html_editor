@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
@@ -8,6 +10,7 @@ import 'package:picker/core/components/textfield/custom_text_field.dart';
 import 'package:picker/core/init/network/network_manager.dart';
 import 'package:picker/view/main_page/model/param_model.dart';
 
+import '../../../base/model/print_model.dart';
 import '../../../constants/extensions/list_extensions.dart';
 import '../../../constants/ui_helper/icon_helper.dart';
 import '../../../constants/ui_helper/ui_helper.dart';
@@ -22,6 +25,8 @@ class BottomSheetDialogManager {
   static final BottomSheetStateManager viewModel = BottomSheetStateManager();
   showBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel>? children, bool aramaVarMi = false}) {
     List<BottomSheetModel>? children2 = children;
+    //if keyboard is open, close it
+    FocusScope.of(context).unfocus();
     return showModalBottomSheet(
         context: context,
         isDismissible: true,
@@ -105,6 +110,7 @@ class BottomSheetDialogManager {
 
   showRadioBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel?>? children}) {
     children = children?.nullCheck.cast<BottomSheetModel>();
+    FocusScope.of(context).unfocus();
     return showModalBottomSheet(
         context: context,
         isDismissible: true,
@@ -191,6 +197,7 @@ class BottomSheetDialogManager {
         viewModel.changeIsSelectedListMap(title, List.generate(children.length, (index) => false));
       }
     }
+    FocusScope.of(context).unfocus();
     return showModalBottomSheet(
       context: context,
       isDismissible: true,
@@ -499,12 +506,14 @@ class BottomSheetDialogManager {
   Future<List<PlasiyerList?>?> showPlasiyerListesiDialog(BuildContext context) async {
     List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? [];
     List<PlasiyerList?> plasiyerListesi = [];
-    plasiyerListesi =  await showCheckBoxBottomSheetDialog(context, title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e)).toList());
+    plasiyerListesi = await showCheckBoxBottomSheetDialog(context, title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e)).toList());
     return plasiyerListesi;
   }
+
   Future<PlasiyerList?> showPlasiyerDialog(BuildContext context) async {
     List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? [];
-    PlasiyerList? plasiyer = await showRadioBottomSheetDialog(context, title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e)).toList());
+    PlasiyerList? plasiyer =
+        await showRadioBottomSheetDialog(context, title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e)).toList());
     return plasiyer;
   }
 
@@ -512,6 +521,55 @@ class BottomSheetDialogManager {
     List<BaseProjeModel> projeList = await NetworkManager().getProjeData() ?? [];
     BaseProjeModel? proje = await showRadioBottomSheetDialog(context, title: "Proje Seçiniz", children: projeList.map((e) => BottomSheetModel(title: e.projeAciklama ?? "", value: e)).toList());
     return proje;
+  }
+
+  Future<YaziciList?> showYaziciDialog(BuildContext context) async {
+    List<YaziciList>? yaziciList = CacheManager.getAnaVeri()?.paramModel?.yaziciList;
+    var result = await showRadioBottomSheetDialog(context,
+        title: "Yazıcı Seçiniz",
+        children: yaziciList
+                ?.map((e) => BottomSheetModel(
+                    title: (e.yaziciAdi ?? ""),
+                    onTap: () {
+                      Get.back(result: e);
+                    }))
+                .toList() ??
+            [].cast<BottomSheetModel>());
+    if (result != null && result is YaziciList) {
+      return result;
+    }
+    return null;
+  }
+
+  Future<NetFectDizaynList?> showDizaynDialog(BuildContext context) async {
+    List<NetFectDizaynList> netFectDizaynList = CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList ?? [];
+    NetFectDizaynList? dizayn =
+        await showRadioBottomSheetDialog(context, title: "Diazyn Seçiniz", children: netFectDizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList());
+    return dizayn;
+  }
+
+  Future<PrintModel?> showPrintDialog(BuildContext context, DicParams dicParams) async {
+    PrintModel printModel = PrintModel(yazdir: true, dicParams: dicParams, etiketSayisi: 1);
+    var yaziciList = await showYaziciDialog(context);
+    if (yaziciList != null) {
+      printModel.yaziciAdi = yaziciList.yaziciAdi;
+      printModel.yaziciTipi = yaziciList.yaziciTipi;
+    }
+    var dizaynList = await showDizaynDialog(context);
+    if (dizaynList != null) {
+      printModel.dizaynId = dizaynList.id;
+    }
+    await showBottomSheetDialog(context,
+        title: "",
+        body: Column(
+          children: [
+            const CustomTextField(labelText: "Dizayn", isMust: true),
+            const CustomTextField(labelText: "Yazıcı", isMust: true),
+            const CustomTextField(labelText: "Kopya Sayısı", isMust: true),
+            ElevatedButton(onPressed: () {}, child: const Text("Yazdır"))
+          ],
+        ));
+    return null;
   }
 }
 

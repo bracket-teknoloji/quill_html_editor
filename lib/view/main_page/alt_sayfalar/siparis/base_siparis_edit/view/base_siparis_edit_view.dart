@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:picker/core/base/model/base_edit_model.dart';
 import 'package:picker/core/base/state/base_state.dart';
+import 'package:picker/core/components/wrap/appbar_title.dart';
 import 'package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/alt_sayfalar/base_siparisler_diger/view/base_siparisler_diger_view.dart';
 import 'package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/alt_sayfalar/base_siparisler_genel/view/base_siparisler_genel_view.dart';
 import 'package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/view_model/base_siparis_editing_view_model.dart';
 import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_reuqest_model.dart';
 
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
+import '../../../../../../core/init/network/login/api_urls.dart';
 import '../alt_sayfalar/base_siparisler_kalemler/view/base_siparis_kalemler_view.dart';
 import '../alt_sayfalar/base_siparisler_toplamlar/view/base_siparis_toplamlar_view.dart';
 import '../model/base_siparis_edit_model.dart';
@@ -33,6 +35,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
   void initState() {
     tabController = TabController(length: 4, vsync: this);
     tabController.addListener(() {
+      if (tabController.indexIsChanging) {}
       if (tabController.index == 3) {
         viewModel.changeIsLastPage(true);
       } else {
@@ -40,11 +43,22 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
       }
     });
     model = widget.model;
-    model.model?.kayitModu = widget.model.baseEditEnum == BaseEditEnum.duzenle
-        ? "S"
-        : widget.model.baseEditEnum == BaseEditEnum.goruntule
-            ? "U"
-            : null;
+    if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
+      model.model?.kayitModu = "S";
+    } else {
+      if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
+        model.model?.kayitModu = "U";
+      } else {
+        model.model?.kayitModu = null;
+      }
+    }
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      if (BaseSiparisEditModel.instance.isEmpty && widget.model.baseEditEnum != BaseEditEnum.ekle) {
+        await getData();
+      } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
+        BaseSiparisEditModel.resetInstance();
+      }
+    });
     super.initState();
   }
 
@@ -61,7 +75,12 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           length: 4,
           child: Scaffold(
             appBar: AppBar(
-              title: const Text("Sipariş Detayları"),
+              title: AppBarTitle(
+                title: widget.appBarTitle ?? "Sipariş",
+                subtitle: widget.appBarSubtitle ?? widget.model.model?.belgeNo,
+                isSubTitleSmall: widget.isSubTitleSmall,
+              ),
+              // title: const Text("Sipariş Detayları"),
               actions: [
                 IconButton(
                   onPressed: () {},
@@ -92,10 +111,13 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
             body: TabBarView(
               controller: tabController,
               children: [
-                BaseSiparislerGenelView(model: model),
+                Observer(
+                    builder: (_) => (viewModel.isBaseSiparisEmpty && widget.model.baseEditEnum != BaseEditEnum.ekle)
+                        ? const Center(child: CircularProgressIndicator.adaptive())
+                        : BaseSiparislerGenelView(model: model)),
                 const BaseSiparislerDigerView(),
                 const BaseSiparisKalemlerView(),
-                const BaseSiparisToplamlarView(),
+                BaseSiparisToplamlarView(model: model),
               ],
             ),
           ),
@@ -108,5 +130,13 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           });
           return result;
         });
+  }
+
+  Future<void> getData() async {
+    var result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: widget.model.model?.toJson(), showLoading: true);
+    if (result.success == true) {
+      BaseSiparisEditModel.setInstance(result.data.first as BaseSiparisEditModel);
+      viewModel.changeFuture();
+    }
   }
 }

@@ -18,6 +18,7 @@ import 'package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_li
 import 'package:picker/view/main_page/model/grid_item_model.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../../../../../../../view/main_page/alt_sayfalar/cari/cari_network_manager.dart';
 import '../../../../../../constants/enum/base_edit_enum.dart';
 import '../../../../../../constants/enum/islem_tipi_enum.dart';
 import '../../../../../../constants/ui_helper/ui_helper.dart';
@@ -82,8 +83,10 @@ class IslemlerMenuItemConstants<T> {
               BottomSheetModel(title: "Web Sitesi", value: (model as CariListesiModel).web).yetkiKontrol((model as CariListesiModel).web != null),
               BottomSheetModel(title: "Mail", value: (model as CariListesiModel).email).yetkiKontrol((model as CariListesiModel).email != null),
             ].nullCheck.cast<BottomSheetModel>());
-        Clipboard.setData(ClipboardData(text: result.join("\n")));
-        Share.share(result.join("\n"));
+        if ((result as List?).ext.isNotNullOrEmpty) {
+          Clipboard.setData(ClipboardData(text: result!.join("\n")));
+          Share.share(result.join("\n"));
+        }
       });
 
   GridItemModel get cariKoduDegistir => GridItemModel.islemler(
@@ -112,15 +115,27 @@ class IslemlerMenuItemConstants<T> {
                       controller: controller,
                       isMust: true,
                       onChanged: (p0) => kodDegistirModel.hedefCari = p0,
-                      suffix: IconButton(
-                          onPressed: () async {
-                            var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
-                            if (result != null) {
-                              kodDegistirModel.hedefCari = (result as CariListesiModel).cariKodu;
-                              controller.text = (result).cariKodu ?? "";
-                            }
-                          },
-                          icon: const Icon(Icons.more_horiz_outlined))),
+                      suffix: Wrap(
+                        children: [
+                          IconButton(
+                            onPressed: () async {
+                              String kod = await CariNetworkManager.getSiradakiKod(kod: kodDegistirModel.hedefCari);
+                              kodDegistirModel.hedefCari = kod;
+                              controller.text = kod;
+                            },
+                            icon: const Icon(Icons.format_list_numbered_rtl_outlined),
+                          ),
+                          IconButton(
+                              onPressed: () async {
+                                var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
+                                if (result != null) {
+                                  kodDegistirModel.hedefCari = (result as CariListesiModel).cariKodu;
+                                  controller.text = (result).cariKodu ?? "";
+                                }
+                              },
+                              icon: const Icon(Icons.more_horiz_outlined)),
+                        ],
+                      )),
                   CustomWidgetWithLabel(
                     text: "Eski Cari Kodu Silinsin mi?",
                     isVertical: true,

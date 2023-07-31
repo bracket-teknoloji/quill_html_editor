@@ -114,7 +114,7 @@ AccountResponseModel _$AccountResponseModelFromJson(
       ..sozlesmeBitisKalanGun = json['SOZLESME_BITIS_KALAN_GUN'] as int?
       ..karsilamaMesaji = json['KARSILAMA_MESAJI']
       ..karsilamaResimUrl = json['KARSILAMA_RESIM_URL']
-      ..karsilamaSaniye = json['KARSILAMA_SURESI'] as int?
+      ..karsilamaSaniye = json['KARSILAMA_SANIYE'] as int?
       ..guncellemeVarmi = json['GUNCELLEME_VARMI'] as bool?
       ..maxApkVersion = json['MAX_APK_VERSION'] as int?
       ..maxWsVersion = json['MAX_WS_VERSION'] as String?
@@ -137,7 +137,7 @@ Map<String, dynamic> _$AccountResponseModelToJson(
       'SOZLESME_BITIS_KALAN_GUN': instance.sozlesmeBitisKalanGun,
       'KARSILAMA_MESAJI': instance.karsilamaMesaji,
       'KARSILAMA_RESIM_URL': instance.karsilamaResimUrl,
-      'KARSILAMA_SURESI': instance.karsilamaSaniye,
+      'KARSILAMA_SANIYE': instance.karsilamaSaniye,
       'GUNCELLEME_VARMI': instance.guncellemeVarmi,
       'MAX_APK_VERSION': instance.maxApkVersion,
       'MAX_WS_VERSION': instance.maxWsVersion,

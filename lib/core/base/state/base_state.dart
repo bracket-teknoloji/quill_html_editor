@@ -6,7 +6,7 @@ import '../../components/yetki_controller/yetki_controller.dart';
 import '../../init/app_info/app_info.dart';
 import '../../init/network/network_manager.dart';
 
-abstract class BaseState<T extends StatefulWidget> extends State<T> {
+abstract class BaseState<T extends StatefulWidget> extends State<T>{
   late final DialogManager dialogManager;
   late final BottomSheetDialogManager bottomSheetDialogManager;
   late final AppInfoModel appInfoModel;
@@ -24,8 +24,13 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
     yetkiController = YetkiController();
   }
   @override
+  @override
+  void initState() { 
+    super.initState();
+    
+  }
+  @override
   void dispose() {
-    // connectivitySubscription.cancel();
     super.dispose();
   }
 

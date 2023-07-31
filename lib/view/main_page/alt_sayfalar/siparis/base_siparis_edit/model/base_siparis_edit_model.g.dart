@@ -9,6 +9,16 @@ part of 'base_siparis_edit_model.dart';
 BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
         Map<String, dynamic> json) =>
     BaseSiparisEditModel()
+      ..duzeltmetarihi = json['DUZELTMETARIHI'] == null
+          ? null
+          : DateTime.parse(json['DUZELTMETARIHI'] as String)
+      ..kalemAdedi = json['KALEM_ADEDI'] as int?
+      ..cariEfaturami = json['CARI_EFATURAMI'] as String?
+      ..cYedek6 = json['C_YEDEK6'] as String?
+      ..duzeltmeyapankul = json['DUZELTMEYAPANKUL'] as String?
+      ..plasiyerAciklama = json['PLASIYER_ACIKLAMA'] as String?
+      ..projeAciklama = json['PROJE_ACIKLAMA'] as String?
+      ..teslimCariAdi = json['TESLIM_CARI_ADI'] as String?
       ..kdvDahilmi = json['KDV_DAHILMI'] as bool?
       ..remoteTempBelge = json['REMOTE_TEMP_BELGE'] as bool?
       ..tempBelgeMi = json['TEMP_BELGE_MI'] as bool?
@@ -36,7 +46,9 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
           ? null
           : DateTime.parse(json['VADE_TARIHI'] as String)
       ..araToplam = (json['ARA_TOPLAM'] as num?)?.toDouble()
+      ..ekMaliyet1Tutari = (json['EK_MALIYET1_TUTARI'] as num?)?.toDouble()
       ..ekMaliyet2Tutari = (json['EK_MALIYET2_TUTARI'] as num?)?.toDouble()
+      ..ekMaliyet3Tutari = (json['EK_MALIYET3_TUTARI'] as num?)?.toDouble()
       ..genelIskonto1 = (json['GENEL_ISKONTO1'] as num?)?.toDouble()
       ..genelIskonto2 = (json['GENEL_ISKONTO2'] as num?)?.toDouble()
       ..genelIskonto3 = (json['GENEL_ISKONTO3'] as num?)?.toDouble()
@@ -50,8 +62,6 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       ..kdv = (json['KDV'] as num?)?.toDouble()
       ..belgeTipi = json['BELGE_TIPI'] as int?
       ..cikisDepoKodu = json['CIKIS_DEPO_KODU'] as int?
-      ..ekMaliyet1Tutari = (json['EK_MALIYET1_TUTARI'] as num?)?.toDouble()
-      ..ekMaliyet3Tutari = (json['EK_MALIYET3_TUTARI'] as num?)?.toDouble()
       ..genisk1Tipi = json['GENISK1_TIPI'] as int?
       ..genisk2Tipi = json['GENISK2_TIPI'] as int?
       ..genisk3Tipi = json['GENISK3_TIPI'] as int?
@@ -62,6 +72,9 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       ..topluDepo = json['TOPLU_DEPO'] as int?
       ..vadeGunu = json['VADE_GUNU'] as int?
       ..tempSipList = json['TEMP_SIP_LIST'] as List<dynamic>?
+      ..kalemList = (json['KALEM_LIST'] as List<dynamic>?)
+          ?.map((e) => KalemModel.fromJson(e as Map<String, dynamic>))
+          .toList()
       ..kalemModeller = (json['KALEM_MODELLER'] as List<dynamic>?)
           ?.map((e) => KalemModel.fromJson(e as Map<String, dynamic>))
           .toList()
@@ -119,17 +132,19 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       ..plasiyerKodu = json['PLASIYER_KODU'] as String?
       ..projeKodu = json['PROJE_KODU'] as String?
       ..remoteTempBelgeEtiketi = json['REMOTE_TEMP_BELGE_ETIKETI'] as String?
-      ..tag = json['TAG'] as String?
-      ..kalemAdedi = json['KALEM_ADEDI'] as int?
-      ..teslimCariAdi = json['TESLIM_CARI_ADI'] as String?
-      ..projeAciklama = json['PROJE_ACIKLAMA'] as String?
-      ..plasiyerAciklama = json['PLASIYER_ACIKLAMA'] as String?
-      ..cYedek6 = json['C_YEDEK6'] as String?
-      ..cariEfaturami = json['CARI_EFATURAMI'] as String?;
+      ..tag = json['TAG'] as String?;
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
         BaseSiparisEditModel instance) =>
     <String, dynamic>{
+      'DUZELTMETARIHI': instance.duzeltmetarihi?.toIso8601String(),
+      'KALEM_ADEDI': instance.kalemAdedi,
+      'CARI_EFATURAMI': instance.cariEfaturami,
+      'C_YEDEK6': instance.cYedek6,
+      'DUZELTMEYAPANKUL': instance.duzeltmeyapankul,
+      'PLASIYER_ACIKLAMA': instance.plasiyerAciklama,
+      'PROJE_ACIKLAMA': instance.projeAciklama,
+      'TESLIM_CARI_ADI': instance.teslimCariAdi,
       'KDV_DAHILMI': instance.kdvDahilmi,
       'REMOTE_TEMP_BELGE': instance.remoteTempBelge,
       'TEMP_BELGE_MI': instance.tempBelgeMi,
@@ -143,7 +158,9 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
       'TESLIM_TARIHI': instance.teslimTarihi?.toIso8601String(),
       'VADE_TARIHI': instance.vadeTarihi?.toIso8601String(),
       'ARA_TOPLAM': instance.araToplam,
+      'EK_MALIYET1_TUTARI': instance.ekMaliyet1Tutari,
       'EK_MALIYET2_TUTARI': instance.ekMaliyet2Tutari,
+      'EK_MALIYET3_TUTARI': instance.ekMaliyet3Tutari,
       'GENEL_ISKONTO1': instance.genelIskonto1,
       'GENEL_ISKONTO2': instance.genelIskonto2,
       'GENEL_ISKONTO3': instance.genelIskonto3,
@@ -157,8 +174,6 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
       'KDV': instance.kdv,
       'BELGE_TIPI': instance.belgeTipi,
       'CIKIS_DEPO_KODU': instance.cikisDepoKodu,
-      'EK_MALIYET1_TUTARI': instance.ekMaliyet1Tutari,
-      'EK_MALIYET3_TUTARI': instance.ekMaliyet3Tutari,
       'GENISK1_TIPI': instance.genisk1Tipi,
       'GENISK2_TIPI': instance.genisk2Tipi,
       'GENISK3_TIPI': instance.genisk3Tipi,
@@ -169,6 +184,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
       'TOPLU_DEPO': instance.topluDepo,
       'VADE_GUNU': instance.vadeGunu,
       'TEMP_SIP_LIST': instance.tempSipList,
+      'KALEM_LIST': instance.kalemList,
       'KALEM_MODELLER': instance.kalemModeller,
       'KALEM_MODEL_LIST': instance.kalemModelList,
       'ACIK1': instance.acik1,
@@ -223,55 +239,49 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
       'PROJE_KODU': instance.projeKodu,
       'REMOTE_TEMP_BELGE_ETIKETI': instance.remoteTempBelgeEtiketi,
       'TAG': instance.tag,
-      'KALEM_ADEDI': instance.kalemAdedi,
-      'TESLIM_CARI_ADI': instance.teslimCariAdi,
-      'PROJE_ACIKLAMA': instance.projeAciklama,
-      'PLASIYER_ACIKLAMA': instance.plasiyerAciklama,
-      'C_YEDEK6': instance.cYedek6,
-      'CARI_EFATURAMI': instance.cariEfaturami,
     };
 
 CariModel _$CariModelFromJson(Map<String, dynamic> json) => CariModel()
-  ..cariKodu = json['CARI_KODU'] as String?
-  ..cariAdi = json['CARI_ADI'] as String?
-  ..cariTip = json['CARI_TIP'] as String?
-  ..cariTipAciklama = json['CARI_TIP_ACIKLAMA'] as String?
-  ..kilit = json['KILIT'] as String?
-  ..odemeTipi = json['ODEME_TIPI'] as String?
-  ..hesaptutmasekli = json['HESAPTUTMASEKLI'] as String?
-  ..subeKodu = json['SUBE_KODU'] as int?
-  ..plasiyerKodu = json['PLASIYER_KODU'] as String?
-  ..plasiyerAciklama = json['PLASIYER_ACIKLAMA'] as String?
-  ..borcToplami = (json['BORC_TOPLAMI'] as num?)?.toDouble()
-  ..alacakToplami = (json['ALACAK_TOPLAMI'] as num?)?.toDouble()
-  ..bakiye = (json['BAKIYE'] as num?)?.toDouble()
-  ..kosulKodu = json['KOSUL_KODU'] as String?
-  ..ulkeKodu = json['ULKE_KODU'] as String?
-  ..ulkeAdi = json['ULKE_ADI'] as String?
-  ..cariIl = json['CARI_IL'] as String?
-  ..cariIlce = json['CARI_ILCE'] as String?
-  ..cariTel = json['CARI_TEL'] as String?
-  ..fax = json['FAX'] as String?
-  ..email = json['EMAIL'] as String?
-  ..web = json['WEB'] as String?
-  ..cariAdres = json['CARI_ADRES'] as String?
-  ..vergiDairesi = json['VERGI_DAIRESI'] as String?
-  ..vergiNumarasi = json['VERGI_NUMARASI'] as String?
-  ..kayityapankul = json['KAYITYAPANKUL'] as String?
-  ..kayittarihi = json['KAYITTARIHI'] == null
-      ? null
-      : DateTime.parse(json['KAYITTARIHI'] as String)
-  ..duzeltmeyapankul = json['DUZELTMEYAPANKUL'] as String?
   ..duzeltmetarihi = json['DUZELTMETARIHI'] == null
       ? null
       : DateTime.parse(json['DUZELTMETARIHI'] as String)
-  ..efaturaTipi = json['EFATURA_TIPI'] as String?
-  ..enlem = (json['ENLEM'] as num?)?.toDouble()
+  ..kayittarihi = json['KAYITTARIHI'] == null
+      ? null
+      : DateTime.parse(json['KAYITTARIHI'] as String)
+  ..alacakToplami = (json['ALACAK_TOPLAMI'] as num?)?.toDouble()
+  ..bakiye = (json['BAKIYE'] as num?)?.toDouble()
+  ..borcToplami = (json['BORC_TOPLAMI'] as num?)?.toDouble()
   ..boylam = (json['BOYLAM'] as num?)?.toDouble()
+  ..enlem = (json['ENLEM'] as num?)?.toDouble()
+  ..subeKodu = json['SUBE_KODU'] as int?
+  ..cariAdi = json['CARI_ADI'] as String?
+  ..cariAdres = json['CARI_ADRES'] as String?
+  ..cariIl = json['CARI_IL'] as String?
+  ..cariIlce = json['CARI_ILCE'] as String?
+  ..cariKodu = json['CARI_KODU'] as String?
+  ..cariTel = json['CARI_TEL'] as String?
+  ..cariTip = json['CARI_TIP'] as String?
+  ..cariTipAciklama = json['CARI_TIP_ACIKLAMA'] as String?
+  ..duzeltmeyapankul = json['DUZELTMEYAPANKUL'] as String?
+  ..efaturaCarisi = json['EFATURA_CARISI'] as String?
+  ..efaturaTipi = json['EFATURA_TIPI'] as String?
+  ..email = json['EMAIL'] as String?
+  ..fax = json['FAX'] as String?
+  ..hesaptutmasekli = json['HESAPTUTMASEKLI'] as String?
+  ..kayityapankul = json['KAYITYAPANKUL'] as String?
+  ..kilit = json['KILIT'] as String?
+  ..kosulKodu = json['KOSUL_KODU'] as String?
   ..kull1S = json['KULL1_S'] as String?
   ..kull2S = json['KULL2_S'] as String?
+  ..odemeTipi = json['ODEME_TIPI'] as String?
+  ..plasiyerAciklama = json['PLASIYER_ACIKLAMA'] as String?
+  ..plasiyerKodu = json['PLASIYER_KODU'] as String?
   ..riskTakibi = json['RISK_TAKIBI'] as String?
-  ..efaturaCarisi = json['EFATURA_CARISI'] as String?;
+  ..ulkeAdi = json['ULKE_ADI'] as String?
+  ..ulkeKodu = json['ULKE_KODU'] as String?
+  ..vergiDairesi = json['VERGI_DAIRESI'] as String?
+  ..vergiNumarasi = json['VERGI_NUMARASI'] as String?
+  ..web = json['WEB'] as String?;
 
 Map<String, dynamic> _$CariModelToJson(CariModel instance) {
   final val = <String, dynamic>{};
@@ -282,70 +292,70 @@ Map<String, dynamic> _$CariModelToJson(CariModel instance) {
     }
   }
 
-  writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('CARI_ADI', instance.cariAdi);
-  writeNotNull('CARI_TIP', instance.cariTip);
-  writeNotNull('CARI_TIP_ACIKLAMA', instance.cariTipAciklama);
-  writeNotNull('KILIT', instance.kilit);
-  writeNotNull('ODEME_TIPI', instance.odemeTipi);
-  writeNotNull('HESAPTUTMASEKLI', instance.hesaptutmasekli);
-  writeNotNull('SUBE_KODU', instance.subeKodu);
-  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
-  writeNotNull('PLASIYER_ACIKLAMA', instance.plasiyerAciklama);
-  writeNotNull('BORC_TOPLAMI', instance.borcToplami);
+  writeNotNull('DUZELTMETARIHI', instance.duzeltmetarihi?.toIso8601String());
+  writeNotNull('KAYITTARIHI', instance.kayittarihi?.toIso8601String());
   writeNotNull('ALACAK_TOPLAMI', instance.alacakToplami);
   writeNotNull('BAKIYE', instance.bakiye);
-  writeNotNull('KOSUL_KODU', instance.kosulKodu);
-  writeNotNull('ULKE_KODU', instance.ulkeKodu);
-  writeNotNull('ULKE_ADI', instance.ulkeAdi);
+  writeNotNull('BORC_TOPLAMI', instance.borcToplami);
+  writeNotNull('BOYLAM', instance.boylam);
+  writeNotNull('ENLEM', instance.enlem);
+  writeNotNull('SUBE_KODU', instance.subeKodu);
+  writeNotNull('CARI_ADI', instance.cariAdi);
+  writeNotNull('CARI_ADRES', instance.cariAdres);
   writeNotNull('CARI_IL', instance.cariIl);
   writeNotNull('CARI_ILCE', instance.cariIlce);
+  writeNotNull('CARI_KODU', instance.cariKodu);
   writeNotNull('CARI_TEL', instance.cariTel);
-  writeNotNull('FAX', instance.fax);
-  writeNotNull('EMAIL', instance.email);
-  writeNotNull('WEB', instance.web);
-  writeNotNull('CARI_ADRES', instance.cariAdres);
-  writeNotNull('VERGI_DAIRESI', instance.vergiDairesi);
-  writeNotNull('VERGI_NUMARASI', instance.vergiNumarasi);
-  writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
-  writeNotNull('KAYITTARIHI', instance.kayittarihi?.toIso8601String());
+  writeNotNull('CARI_TIP', instance.cariTip);
+  writeNotNull('CARI_TIP_ACIKLAMA', instance.cariTipAciklama);
   writeNotNull('DUZELTMEYAPANKUL', instance.duzeltmeyapankul);
-  writeNotNull('DUZELTMETARIHI', instance.duzeltmetarihi?.toIso8601String());
+  writeNotNull('EFATURA_CARISI', instance.efaturaCarisi);
   writeNotNull('EFATURA_TIPI', instance.efaturaTipi);
-  writeNotNull('ENLEM', instance.enlem);
-  writeNotNull('BOYLAM', instance.boylam);
+  writeNotNull('EMAIL', instance.email);
+  writeNotNull('FAX', instance.fax);
+  writeNotNull('HESAPTUTMASEKLI', instance.hesaptutmasekli);
+  writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
+  writeNotNull('KILIT', instance.kilit);
+  writeNotNull('KOSUL_KODU', instance.kosulKodu);
   writeNotNull('KULL1_S', instance.kull1S);
   writeNotNull('KULL2_S', instance.kull2S);
+  writeNotNull('ODEME_TIPI', instance.odemeTipi);
+  writeNotNull('PLASIYER_ACIKLAMA', instance.plasiyerAciklama);
+  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
   writeNotNull('RISK_TAKIBI', instance.riskTakibi);
-  writeNotNull('EFATURA_CARISI', instance.efaturaCarisi);
+  writeNotNull('ULKE_ADI', instance.ulkeAdi);
+  writeNotNull('ULKE_KODU', instance.ulkeKodu);
+  writeNotNull('VERGI_DAIRESI', instance.vergiDairesi);
+  writeNotNull('VERGI_NUMARASI', instance.vergiNumarasi);
+  writeNotNull('WEB', instance.web);
   return val;
 }
 
 KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel()
-  ..tempBarkodList = json['TEMP_BARKOD_LIST'] as List<dynamic>?
-  ..sira = json['SIRA'] as int?
+  ..iskonto1OranMi = json['ISKONTO1_ORAN_MI'] as bool?
   ..tarih =
       json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
   ..teslimTarihi = json['TESLIM_TARIHI'] == null
       ? null
       : DateTime.parse(json['TESLIM_TARIHI'] as String)
+  ..brutFiyat = (json['BRUT_FIYAT'] as num?)?.toDouble()
+  ..depoKodu = json['DEPO_KODU'] as int?
+  ..kdvOrani = (json['KDV_ORANI'] as num?)?.toDouble()
+  ..miktar = (json['MIKTAR'] as num?)?.toDouble()
+  ..olcuBirimKodu = json['OLCU_BIRIM_KODU'] as int?
+  ..sira = json['SIRA'] as int?
+  ..hucreList = json['HUCRE_LIST'] as List<dynamic>?
+  ..kalemModelHucreList = json['KALEM_MODEL_HUCRE_LIST'] as List<dynamic>?
+  ..seriList = json['SERI_LIST'] as List<dynamic>?
+  ..tempBarkodList = json['TEMP_BARKOD_LIST'] as List<dynamic>?
   ..belgeNo = json['BELGE_NO'] as String?
   ..belgeTipi = json['BELGE_TIPI'] as String?
-  ..stokKodu = json['STOK_KODU'] as String?
-  ..stokAdi = json['STOK_ADI'] as String?
   ..cariKodu = json['CARI_KODU'] as String?
-  ..depoKodu = json['DEPO_KODU'] as int?
   ..depoTanimi = json['DEPO_TANIMI'] as String?
-  ..miktar = json['MIKTAR'] as int?
-  ..seriList = json['SERI_LIST'] as List<dynamic>?
-  ..kdvOrani = json['KDV_ORANI'] as int?
-  ..brutFiyat = json['BRUT_FIYAT'] as int?
-  ..iskonto1OranMi = json['ISKONTO1_ORAN_MI'] as bool?
-  ..olcuBirimKodu = json['OLCU_BIRIM_KODU'] as int?
   ..olcuBirimAdi = json['OLCU_BIRIM_ADI'] as String?
-  ..stokOlcuBirimi = json['STOK_OLCU_BIRIMI'] as String?
-  ..kalemModelHucreList = json['KALEM_MODEL_HUCRE_LIST'] as List<dynamic>?
-  ..hucreList = json['HUCRE_LIST'] as List<dynamic>?;
+  ..stokAdi = json['STOK_ADI'] as String?
+  ..stokKodu = json['STOK_KODU'] as String?
+  ..stokOlcuBirimi = json['STOK_OLCU_BIRIMI'] as String?;
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   final val = <String, dynamic>{};
@@ -356,26 +366,26 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
     }
   }
 
-  writeNotNull('TEMP_BARKOD_LIST', instance.tempBarkodList);
-  writeNotNull('SIRA', instance.sira);
+  writeNotNull('ISKONTO1_ORAN_MI', instance.iskonto1OranMi);
   writeNotNull('TARIH', instance.tarih?.toIso8601String());
   writeNotNull('TESLIM_TARIHI', instance.teslimTarihi?.toIso8601String());
+  writeNotNull('BRUT_FIYAT', instance.brutFiyat);
+  writeNotNull('DEPO_KODU', instance.depoKodu);
+  writeNotNull('KDV_ORANI', instance.kdvOrani);
+  writeNotNull('MIKTAR', instance.miktar);
+  writeNotNull('OLCU_BIRIM_KODU', instance.olcuBirimKodu);
+  writeNotNull('SIRA', instance.sira);
+  writeNotNull('HUCRE_LIST', instance.hucreList);
+  writeNotNull('KALEM_MODEL_HUCRE_LIST', instance.kalemModelHucreList);
+  writeNotNull('SERI_LIST', instance.seriList);
+  writeNotNull('TEMP_BARKOD_LIST', instance.tempBarkodList);
   writeNotNull('BELGE_NO', instance.belgeNo);
   writeNotNull('BELGE_TIPI', instance.belgeTipi);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('STOK_ADI', instance.stokAdi);
   writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('DEPO_KODU', instance.depoKodu);
   writeNotNull('DEPO_TANIMI', instance.depoTanimi);
-  writeNotNull('MIKTAR', instance.miktar);
-  writeNotNull('SERI_LIST', instance.seriList);
-  writeNotNull('KDV_ORANI', instance.kdvOrani);
-  writeNotNull('BRUT_FIYAT', instance.brutFiyat);
-  writeNotNull('ISKONTO1_ORAN_MI', instance.iskonto1OranMi);
-  writeNotNull('OLCU_BIRIM_KODU', instance.olcuBirimKodu);
   writeNotNull('OLCU_BIRIM_ADI', instance.olcuBirimAdi);
+  writeNotNull('STOK_ADI', instance.stokAdi);
+  writeNotNull('STOK_KODU', instance.stokKodu);
   writeNotNull('STOK_OLCU_BIRIMI', instance.stokOlcuBirimi);
-  writeNotNull('KALEM_MODEL_HUCRE_LIST', instance.kalemModelHucreList);
-  writeNotNull('HUCRE_LIST', instance.hucreList);
   return val;
 }

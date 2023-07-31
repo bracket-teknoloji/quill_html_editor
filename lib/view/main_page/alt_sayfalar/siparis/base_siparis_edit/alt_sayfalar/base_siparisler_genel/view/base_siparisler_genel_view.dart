@@ -27,7 +27,7 @@ class BaseSiparislerGenelView extends StatefulWidget {
 
 class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
   BaseSiparislerGenelViewModel viewModel = BaseSiparislerGenelViewModel();
-  bool get isEnable => widget.model.baseEditEnum != BaseEditEnum.goruntule;
+  bool get enable => widget.model.enable;
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   late final TextEditingController belgeNoController;
   late final TextEditingController cariController;
@@ -58,6 +58,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
   late final TextEditingController satisAcik14Controller;
   late final TextEditingController satisAcik15Controller;
   late final TextEditingController satisAcik16Controller;
+  final formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -76,167 +77,175 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          CustomTextField(enabled: isEnable, labelText: "Belge No", readOnly: true, isMust: true, controller: belgeNoController, maxLength: 15),
-          CustomTextField(
-              enabled: isEnable,
-              labelText: "Cari",
-              readOnly: true,
-              isMust: true,
-              suffixMore: true,
-              controller: cariController,
-              onTap: () async {
-                var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
-                if (result != null && result is CariListesiModel) {
-                  model.cariAdi = result.cariAdi ?? "";
-                  model.cariKodu = result.cariKodu ?? "";
-                  cariController.text = result.cariAdi ?? "";
-                }
-              }),
-          CustomTextField(
-              enabled: isEnable,
-              labelText: "Teslim Cari",
-              readOnly: true,
-              suffixMore: true,
-              controller: teslimCariController,
-              onTap: () async {
-                var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
-                if (result != null && result is CariListesiModel) {
-                  model.cariKodu = result.cariKodu ?? "";
-                  teslimCariController.text = result.cariAdi ?? "";
-                }
-              }),
-          Row(
+    return WillPopScope(
+      onWillPop: () async {
+        // if (formKey.currentState!.validate()) {
+        //   formKey.currentState!.save();
+        //   return true;
+        // } else {
+        //   return false;
+        // }
+        return true;
+      },
+      child: SingleChildScrollView(
+        child: Form(
+          key: formKey,
+          child: Column(
             children: [
-              Expanded(child: CustomTextField(enabled: isEnable, labelText: "Belge Tipi", readOnly: true, isMust: true, suffixMore: true, controller: belgeTipiController)),
-              Expanded(
-                  child: CustomTextField(
-                enabled: isEnable,
-                labelText: "Plasiyer",
-                isMust: true,
-                readOnly: true,
-                suffixMore: true,
-                controller: plasiyerController,
-                onTap: () async {
-                  var result = await bottomSheetDialogManager.showPlasiyerDialog(context);
-                  if (result != null) {
-                    model.cariModel?.plasiyerKodu = result.plasiyerKodu;
-                    model.cariModel?.plasiyerAciklama = result.plasiyerAciklama;
-                    plasiyerController.text = result.plasiyerAciklama ?? "";
-                  }
-                },
-              )),
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(
-                  child: CustomTextField(
-                      enabled: isEnable,
-                      labelText: "Tarih",
-                      isMust: true,
-                      readOnly: true,
-                      onTap: () => dialogManager.showDateTimePicker(),
-                      suffix: const Icon(Icons.date_range_outlined),
-                      controller: tarihController)),
-              Expanded(
-                  child: CustomTextField(
-                      enabled: isEnable,
-                      labelText: "Teslim Tarihi",
-                      isMust: true,
-                      readOnly: true,
-                      onTap: () => dialogManager.showDateTimePicker(),
-                      suffix: const Icon(Icons.date_range_outlined),
-                      controller: teslimTarihController)),
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(child: CustomTextField(enabled: isEnable, labelText: "Toplu Depo", readOnly: true, suffixMore: true, controller: topluDepoController)),
-              Expanded(
-                  child: CustomTextField(
-                enabled: isEnable,
-                labelText: "Proje",
-                isMust: true,
-                readOnly: true,
-                suffixMore: true,
-                controller: projeController,
-                onTap: () async {
-                  BaseProjeModel? result = await bottomSheetDialogManager.showProjeDialog(context);
-                  if (result != null) {
-                    model.projeKodu = result.projeKodu;
-                    projeController.text = result.projeAciklama ?? "";
-                  }
-                },
-              )),
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(child: CustomTextField(enabled: isEnable, labelText: "Ödeme Kodu", readOnly: true, suffixMore: true, controller: odemeKoduController)),
-              Expanded(child: CustomTextField(enabled: isEnable, labelText: "Koşul", readOnly: true, suffixMore: true, controller: kosulController)),
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(
-                  child: CustomTextField(
-                enabled: isEnable,
-                labelText: "Özel Kod 1",
-                isMust: true,
-                readOnly: true,
-                suffixMore: true,
-                controller: ozelKod1Controller,
-                onTap: () async {
-                  var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Özel Kod 1");
-                },
-              )),
-              Expanded(child: CustomTextField(enabled: isEnable, labelText: "Özel Kod 2", readOnly: true, suffixMore: true, controller: ozelKod2Controller)),
-            ],
-          ),
-          CustomWidgetWithLabel(
-            
-              text: "KDV Dahil",
-              isVertical: true,
-              child: Observer(
-                  builder: (_) => Switch.adaptive(value: viewModel.kdvDahil, onChanged: widget.model.baseEditEnum != BaseEditEnum.goruntule ? (value) => viewModel.changeKdvDahil(value) : null))),
-          CustomWidgetWithLabel(
-              text: "Ek Açıklamalar",
-              child: Column(
+              CustomTextField(enabled: enable, labelText: "Belge No", readOnly: true, isMust: true, controller: belgeNoController, maxLength: 15),
+              CustomTextField(
+                  enabled: enable,
+                  labelText: "Cari",
+                  readOnly: true,
+                  isMust: true,
+                  suffixMore: true,
+                  controller: cariController,
+                  onTap: () async {
+                    var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
+                    if (result != null && result is CariListesiModel) {
+                      model.cariAdi = result.cariAdi ?? "";
+                      model.cariKodu = result.cariKodu ?? "";
+                      cariController.text = result.cariAdi ?? "";
+                    }
+                  }),
+              CustomTextField(
+                  enabled: enable,
+                  labelText: "Teslim Cari",
+                  readOnly: true,
+                  suffixMore: true,
+                  controller: teslimCariController,
+                  onTap: () async {
+                    var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
+                    if (result != null && result is CariListesiModel) {
+                      model.cariKodu = result.cariKodu ?? "";
+                      teslimCariController.text = result.cariAdi ?? "";
+                    }
+                  }),
+              Row(
                 children: [
-                  CustomTextField(enabled: isEnable, labelText: "Teslim Edilecek Kişi", onChanged: (p0) => changeAciklama(1, p0), controller: teslimEdilecekKisiController),
-                  CustomTextField(enabled: isEnable, labelText: "B2B Email", onChanged: (p0) => changeAciklama(2, p0), controller: b2bEmailController),
-                  CustomTextField(enabled: isEnable, labelText: "Masraf Kodu", onChanged: (p0) => changeAciklama(3, p0), controller: masrafKoduController),
-                  CustomTextField(enabled: isEnable, labelText: "Masraf Yeri", onChanged: (p0) => changeAciklama(4, p0), controller: masrafYeriController),
-                  CustomTextField(enabled: isEnable, labelText: "Sipariş Notu", onChanged: (p0) => changeAciklama(5, p0), controller: siparisNotuController),
-                  CustomTextField(enabled: isEnable, labelText: "S.A.S. No", onChanged: (p0) => changeAciklama(6, p0), controller: sASNoController),
-                  CustomTextField(enabled: isEnable, labelText: "B2B Sepet ID", onChanged: (p0) => changeAciklama(7, p0), controller: b2bSepetIDController),
-                  CustomTextField(enabled: isEnable, labelText: "Tam Teslimat", onChanged: (p0) => changeAciklama(8, p0), controller: tamTeslimatController),
-                  CustomTextField(enabled: isEnable, labelText: "Satış Açık. 9", onChanged: (p0) => changeAciklama(9, p0), controller: satisAcik9Controller),
-                  CustomTextField(enabled: isEnable, labelText: "Satış Açık. 10", onChanged: (p0) => changeAciklama(10, p0), controller: satisAcik10Controller),
-                  CustomTextField(enabled: isEnable, labelText: "Satış Açık. 11", onChanged: (p0) => changeAciklama(11, p0), controller: satisAcik11Controller),
-                  CustomTextField(enabled: isEnable, labelText: "Fiyat Grubu", onChanged: (p0) => changeAciklama(12, p0), controller: fiyatGrubuController),
-                  CustomTextField(enabled: isEnable, labelText: "Satış Açık. 13", onChanged: (p0) => changeAciklama(13, p0), controller: satisAcik13Controller),
-                  CustomTextField(enabled: isEnable, labelText: "Satış Açık. 14", onChanged: (p0) => changeAciklama(14, p0), controller: satisAcik14Controller),
-                  CustomTextField(enabled: isEnable, labelText: "Satış Açık. 15", onChanged: (p0) => changeAciklama(15, p0), controller: satisAcik15Controller),
-                  CustomTextField(enabled: isEnable, labelText: "Satış Açık. 16", onChanged: (p0) => changeAciklama(16, p0), controller: satisAcik16Controller),
+                  Expanded(child: CustomTextField(enabled: enable, labelText: "Belge Tipi", readOnly: true, isMust: true, suffixMore: true, controller: belgeTipiController)),
+                  Expanded(
+                      child: CustomTextField(
+                    enabled: enable,
+                    labelText: "Plasiyer",
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    controller: plasiyerController,
+                    onTap: () async {
+                      var result = await bottomSheetDialogManager.showPlasiyerDialog(context);
+                      if (result != null) {
+                        model.cariModel?.plasiyerKodu = result.plasiyerKodu;
+                        model.cariModel?.plasiyerAciklama = result.plasiyerAciklama;
+                        plasiyerController.text = result.plasiyerAciklama ?? "";
+                      }
+                    },
+                  )),
                 ],
-              ))
-        ],
-      ).paddingAll(UIHelper.lowSize),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                      child: CustomTextField(
+                          enabled: enable,
+                          labelText: "Tarih",
+                          isMust: true,
+                          readOnly: true,
+                          onTap: () => dialogManager.showDateTimePicker(),
+                          suffix: const Icon(Icons.date_range_outlined),
+                          controller: tarihController)),
+                  Expanded(
+                      child: CustomTextField(
+                          enabled: enable,
+                          labelText: "Teslim Tarihi",
+                          isMust: true,
+                          readOnly: true,
+                          onTap: () => dialogManager.showDateTimePicker(),
+                          suffix: const Icon(Icons.date_range_outlined),
+                          controller: teslimTarihController)),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(child: CustomTextField(enabled: enable, labelText: "Toplu Depo", readOnly: true, suffixMore: true, controller: topluDepoController)),
+                  Expanded(
+                      child: CustomTextField(
+                    enabled: enable,
+                    labelText: "Proje",
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    controller: projeController,
+                    onTap: () async {
+                      BaseProjeModel? result = await bottomSheetDialogManager.showProjeDialog(context);
+                      if (result != null) {
+                        model.projeKodu = result.projeKodu;
+                        projeController.text = result.projeAciklama ?? "";
+                      }
+                    },
+                  )),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(child: CustomTextField(enabled: enable, labelText: "Ödeme Kodu", readOnly: true, suffixMore: true, controller: odemeKoduController)),
+                  Expanded(child: CustomTextField(enabled: enable, labelText: "Koşul", readOnly: true, suffixMore: true, controller: kosulController)),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(
+                      child: CustomTextField(
+                    enabled: enable,
+                    labelText: "Özel Kod 1",
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    controller: ozelKod1Controller,
+                    onTap: () async {
+                      var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Özel Kod 1");
+                    },
+                  )),
+                  Expanded(child: CustomTextField(enabled: enable, labelText: "Özel Kod 2", readOnly: true, suffixMore: true, controller: ozelKod2Controller)),
+                ],
+              ),
+              CustomWidgetWithLabel(
+                  text: "KDV Dahil",
+                  isVertical: true,
+                  child: Observer(
+                      builder: (_) => Switch.adaptive(value: viewModel.kdvDahil, onChanged: widget.model.baseEditEnum != BaseEditEnum.goruntule ? (value) => viewModel.changeKdvDahil(value) : null))),
+              CustomWidgetWithLabel(
+                  text: "Ek Açıklamalar",
+                  child: Column(
+                    children: [
+                      CustomTextField(enabled: enable, labelText: "Teslim Edilecek Kişi", onChanged: (p0) => changeAciklama(1, p0), controller: teslimEdilecekKisiController),
+                      CustomTextField(enabled: enable, labelText: "B2B Email", onChanged: (p0) => changeAciklama(2, p0), controller: b2bEmailController),
+                      CustomTextField(enabled: enable, labelText: "Masraf Kodu", onChanged: (p0) => changeAciklama(3, p0), controller: masrafKoduController),
+                      CustomTextField(enabled: enable, labelText: "Masraf Yeri", onChanged: (p0) => changeAciklama(4, p0), controller: masrafYeriController),
+                      CustomTextField(enabled: enable, labelText: "Sipariş Notu", onChanged: (p0) => changeAciklama(5, p0), controller: siparisNotuController),
+                      CustomTextField(enabled: enable, labelText: "S.A.S. No", onChanged: (p0) => changeAciklama(6, p0), controller: sASNoController),
+                      CustomTextField(enabled: enable, labelText: "B2B Sepet ID", onChanged: (p0) => changeAciklama(7, p0), controller: b2bSepetIDController),
+                      CustomTextField(enabled: enable, labelText: "Tam Teslimat", onChanged: (p0) => changeAciklama(8, p0), controller: tamTeslimatController),
+                      CustomTextField(enabled: enable, labelText: "Satış Açık. 9", onChanged: (p0) => changeAciklama(9, p0), controller: satisAcik9Controller),
+                      CustomTextField(enabled: enable, labelText: "Satış Açık. 10", onChanged: (p0) => changeAciklama(10, p0), controller: satisAcik10Controller),
+                      CustomTextField(enabled: enable, labelText: "Satış Açık. 11", onChanged: (p0) => changeAciklama(11, p0), controller: satisAcik11Controller),
+                      CustomTextField(enabled: enable, labelText: "Fiyat Grubu", onChanged: (p0) => changeAciklama(12, p0), controller: fiyatGrubuController),
+                      CustomTextField(enabled: enable, labelText: "Satış Açık. 13", onChanged: (p0) => changeAciklama(13, p0), controller: satisAcik13Controller),
+                      CustomTextField(enabled: enable, labelText: "Satış Açık. 14", onChanged: (p0) => changeAciklama(14, p0), controller: satisAcik14Controller),
+                      CustomTextField(enabled: enable, labelText: "Satış Açık. 15", onChanged: (p0) => changeAciklama(15, p0), controller: satisAcik15Controller),
+                      CustomTextField(enabled: enable, labelText: "Satış Açık. 16", onChanged: (p0) => changeAciklama(16, p0), controller: satisAcik16Controller),
+                    ],
+                  ))
+            ],
+          ).paddingAll(UIHelper.lowSize),
+        ),
+      ),
     );
   }
 
   Future<void> init() async {
-    if (widget.model.baseEditEnum != BaseEditEnum.ekle) {
-      if (BaseSiparisEditModel.instance.isEmpty) {
-        await getData();
-      }
-    } else {
-      BaseSiparisEditModel.resetInstance();
-    }
+    controllerFiller();
+    if (BaseSiparisEditModel.instance.isEmpty) {}
   }
 
   Future<void> getData() async {
@@ -310,7 +319,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
     satisAcik14Controller = TextEditingController();
     satisAcik15Controller = TextEditingController();
     satisAcik16Controller = TextEditingController();
-    controllerFiller();
+    // controllerFiller();
   }
 
   void controllerDisposer() {

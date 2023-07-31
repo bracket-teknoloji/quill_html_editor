@@ -11,6 +11,7 @@ import 'package:picker/core/base/model/base_network_mixin.dart';
 import 'package:picker/core/base/model/base_proje_model.dart';
 import 'package:picker/core/base/model/delete_fatura_model.dart';
 import 'package:picker/core/base/model/generic_response_model.dart';
+import 'package:picker/core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart';
 import 'package:picker/core/constants/extensions/date_time_extensions.dart';
 import 'package:picker/core/init/cache/cache_manager.dart';
 import 'package:picker/view/add_company/model/account_model.dart';
@@ -18,6 +19,7 @@ import 'package:picker/view/auth/model/login_model.dart';
 
 import '../../base/model/base_grup_kodu_model.dart';
 import '../../base/model/base_pdf_model.dart';
+import '../../base/model/print_model.dart';
 import '../../base/model/siradaki_belge_no_model.dart';
 import '../../base/view/pdf_viewer/model/pdf_viewer_model.dart';
 import '../../components/dialog/dialog_manager.dart';
@@ -25,18 +27,27 @@ import '../../constants/enum/dio_enum.dart';
 import 'login/api_urls.dart';
 
 class NetworkManager {
-  Dio get dio =>
-      Dio(BaseOptions(baseUrl: getBaseUrl, receiveTimeout: const Duration(minutes: 2), connectTimeout: const Duration(seconds: 20), contentType: "application/json", responseType: ResponseType.json));
+  Dio get dio => Dio(BaseOptions(
+        baseUrl: getBaseUrl,
+        receiveTimeout: const Duration(minutes: 2),
+        connectTimeout: const Duration(seconds: 20),
+        sendTimeout: const Duration(minutes: 2),
+        receiveDataWhenStatusError: true,
+        
+        contentType: "application/json",
+        responseType: ResponseType.json,
+      ));
   NetworkManager() {
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) {
+          //if appLifeCycleState is paused or inactive, cancel the request
+          // if (appLifeCycleState == AppLifecycleState.paused || appLifeCycleState == AppLifecycleState.inactive) {
+          //   return handler.reject(DioException(requestOptions: options, error: "App is paused or inactive"));
+          // }
           return handler.next(options);
         },
-        onResponse: (e, handler) {
-          return handler.next(e);
-          // return e.statusCode == 200 ? handler.next(e) : handler.reject(DioException(requestOptions: e.requestOptions, error: e.data));
-        },
+        onResponse: (e, handler) => handler.next(e),
         onError: (e, handler) {
           print(e);
           if (e.type == DioExceptionType.connectionError) {
@@ -45,7 +56,9 @@ class NetworkManager {
             return handler.next(DioException(requestOptions: RequestOptions(), message: "Bağlantı zaman aşımına uğradı."));
           } else if (e.type == DioExceptionType.unknown) {
             return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz."));
-          } else {
+          }else if (e.type == DioExceptionType.receiveTimeout || e.type == DioExceptionType.sendTimeout || e.type == DioExceptionType.connectionTimeout) {
+            return handler.next(DioException(requestOptions: RequestOptions(), message: e.message));
+          }else {
             handler.next(e);
           }
         },
@@ -216,6 +229,10 @@ class NetworkManager {
       return result.data.map((e) => e as BaseProjeModel).toList().cast<BaseProjeModel>();
     }
     return null;
+  }
+  Future<GenericResponseModel> postPrint(BuildContext context, {required PrintModel model}) async {
+    var result = await BottomSheetDialogManager().showBottomSheetDialog(context, title: "");
+    return dioPost<PrintModel>(path: ApiUrls.print, bodyModel: PrintModel(), data: model.toJson());
   }
 
   Future<String?> getSiradakiBelgeNo(SiradakiBelgeNoModel model) async {

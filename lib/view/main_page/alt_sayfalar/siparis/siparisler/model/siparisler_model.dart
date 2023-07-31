@@ -62,6 +62,8 @@ class SiparislerModel with NetworkManagerMixin {
 
   double get araToplam => (genelToplam ?? 0) - (kdv ?? 0);
 
+  bool get yurticiMi => tipi != 6;
+
   @override
   fromJson(Map<String, dynamic> json) => _$SiparislerModelFromJson(json);
 

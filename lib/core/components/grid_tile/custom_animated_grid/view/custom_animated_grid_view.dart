@@ -81,7 +81,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
           duration: const Duration(milliseconds: 500),
           padding: UIHelper.lowPadding,
           constraints: BoxConstraints(
-            minHeight: context.dynamicHeight(0.2),
+            minHeight: context.sized.dynamicHeight(0.2),
           ),
           child: AnimationLimiter(
             child: Observer(builder: (_) {

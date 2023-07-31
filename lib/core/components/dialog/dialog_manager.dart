@@ -232,7 +232,7 @@ class DialogManager {
       title: "Uyarı",
       desc: "Bu işlemi yapmak istediğinizden emin misiniz?",
       dialogType: DialogType.question,
-      onOk:onYes,
+      onOk: onYes,
       btnOkText: "Evet",
       onCancel: () {},
       btnCancelText: "Hayır",

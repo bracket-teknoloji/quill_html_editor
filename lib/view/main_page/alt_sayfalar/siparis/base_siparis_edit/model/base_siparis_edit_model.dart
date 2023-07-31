@@ -13,7 +13,18 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     return _instance!;
   }
 
-
+  DateTime? duzeltmetarihi;
+  int? kalemAdedi;
+  String? cariEfaturami;
+  String? cYedek6;
+  String? duzeltmeyapankul;
+  String? plasiyerAciklama;
+  String? projeAciklama;
+  @JsonKey(
+    includeFromJson: false,
+  )
+  String? tempJsonData;
+  String? teslimCariAdi;
   bool? kdvDahilmi;
   bool? remoteTempBelge;
   bool? tempBelgeMi;
@@ -26,7 +37,9 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   DateTime? teslimTarihi;
   DateTime? vadeTarihi;
   double? araToplam;
+  double? ekMaliyet1Tutari;
   double? ekMaliyet2Tutari;
+  double? ekMaliyet3Tutari;
   double? genelIskonto1;
   double? genelIskonto2;
   double? genelIskonto3;
@@ -40,8 +53,6 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   double? kdv;
   int? belgeTipi;
   int? cikisDepoKodu;
-  double? ekMaliyet1Tutari;
-  double? ekMaliyet3Tutari;
   int? genisk1Tipi;
   int? genisk2Tipi;
   int? genisk3Tipi;
@@ -52,6 +63,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   int? topluDepo;
   int? vadeGunu;
   List<dynamic>? tempSipList;
+  List<KalemModel>? kalemList;
   List<KalemModel>? kalemModeller;
   List<KalemModel>? kalemModelList;
   String? acik1;
@@ -106,17 +118,14 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   String? projeKodu;
   String? remoteTempBelgeEtiketi;
   String? tag;
-    int? kalemAdedi;
-    String? teslimCariAdi;
-    String? projeAciklama;
-    String? plasiyerAciklama;
-    String? cYedek6;
-    String? cariEfaturami;
   BaseSiparisEditModel();
 
   BaseSiparisEditModel._init();
 
   bool get isEmpty => this == BaseSiparisEditModel();
+
+  double get getToplamIskonto => (genelIskonto1 ?? 0) + (genelIskonto2 ?? 0) + (genelIskonto3 ?? 0);
+  double get getBrutTutar => kalemList?.map((e) => e.brutFiyat).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
 
   @override
   //override ==
@@ -124,34 +133,34 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     if (identical(this, other)) return true;
 
     return other is BaseSiparisEditModel &&
-        other.islemId == islemId &&
-        other.tempKayitTipi == tempKayitTipi &&
-        other.tempBelgeId == tempBelgeId &&
-        other.tempBelgeMi == tempBelgeMi &&
-        other.remoteTempBelge == remoteTempBelge &&
-        other.remoteTempBelgeEtiketi == remoteTempBelgeEtiketi &&
-        other.tempSipList == tempSipList &&
-        other.tarih == tarih &&
-        other.teslimTarihi == teslimTarihi &&
-        other.istenilenTeslimTarihi == istenilenTeslimTarihi &&
-        other.belgeNo == belgeNo &&
-        other.belgeTuru == belgeTuru &&
-        other.belgeKodu == belgeKodu &&
         other.acik1 == acik1 &&
         other.acik2 == acik2 &&
         other.acik7 == acik7 &&
         other.acik8 == acik8 &&
-        other.kalemModelAdedi == kalemModelAdedi &&
-        other.cariKodu == cariKodu &&
+        other.belgeKodu == belgeKodu &&
+        other.belgeNo == belgeNo &&
+        other.belgeTuru == belgeTuru &&
         other.cariAdi == cariAdi &&
-        other.tipi == tipi &&
-        other.vadeTarihi == vadeTarihi &&
-        other.kdvDahil == kdvDahil &&
-        other.kayityapankul == kayityapankul &&
-        other.kayittarihi == kayittarihi &&
-        other.kdv == kdv &&
+        other.cariKodu == cariKodu &&
         other.genelToplam == genelToplam &&
-        other.kalemModeller == kalemModeller;
+        other.islemId == islemId &&
+        other.istenilenTeslimTarihi == istenilenTeslimTarihi &&
+        other.kalemModelAdedi == kalemModelAdedi &&
+        other.kalemModeller == kalemModeller &&
+        other.kayittarihi == kayittarihi &&
+        other.kayityapankul == kayityapankul &&
+        other.kdv == kdv &&
+        other.kdvDahil == kdvDahil &&
+        other.remoteTempBelge == remoteTempBelge &&
+        other.remoteTempBelgeEtiketi == remoteTempBelgeEtiketi &&
+        other.tarih == tarih &&
+        other.tempBelgeId == tempBelgeId &&
+        other.tempBelgeMi == tempBelgeMi &&
+        other.tempKayitTipi == tempKayitTipi &&
+        other.tempSipList == tempSipList &&
+        other.teslimTarihi == teslimTarihi &&
+        other.tipi == tipi &&
+        other.vadeTarihi == vadeTarihi;
   }
 
   @override
@@ -169,42 +178,42 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
 @JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, includeIfNull: false, createFactory: true)
 class CariModel {
-  String? cariKodu;
-  String? cariAdi;
-  String? cariTip;
-  String? cariTipAciklama;
-  String? kilit;
-  String? odemeTipi;
-  String? hesaptutmasekli;
-  int? subeKodu;
-  String? plasiyerKodu;
-  String? plasiyerAciklama;
-  double? borcToplami;
+  DateTime? duzeltmetarihi;
+  DateTime? kayittarihi;
   double? alacakToplami;
   double? bakiye;
-  String? kosulKodu;
-  String? ulkeKodu;
-  String? ulkeAdi;
+  double? borcToplami;
+  double? boylam;
+  double? enlem;
+  int? subeKodu;
+  String? cariAdi;
+  String? cariAdres;
   String? cariIl;
   String? cariIlce;
+  String? cariKodu;
   String? cariTel;
-  String? fax;
-  String? email;
-  String? web;
-  String? cariAdres;
-  String? vergiDairesi;
-  String? vergiNumarasi;
-  String? kayityapankul;
-  DateTime? kayittarihi;
+  String? cariTip;
+  String? cariTipAciklama;
   String? duzeltmeyapankul;
-  DateTime? duzeltmetarihi;
+  String? efaturaCarisi;
   String? efaturaTipi;
-  double? enlem;
-  double? boylam;
+  String? email;
+  String? fax;
+  String? hesaptutmasekli;
+  String? kayityapankul;
+  String? kilit;
+  String? kosulKodu;
   String? kull1S;
   String? kull2S;
+  String? odemeTipi;
+  String? plasiyerAciklama;
+  String? plasiyerKodu;
   String? riskTakibi;
-  String? efaturaCarisi;
+  String? ulkeAdi;
+  String? ulkeKodu;
+  String? vergiDairesi;
+  String? vergiNumarasi;
+  String? web;
 
   CariModel();
 
@@ -215,27 +224,27 @@ class CariModel {
 
 @JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, includeIfNull: false, createFactory: true)
 class KalemModel {
-  List<dynamic>? tempBarkodList;
-  int? sira;
+  bool? iskonto1OranMi;
   DateTime? tarih;
   DateTime? teslimTarihi;
+  double? brutFiyat;
+  int? depoKodu;
+  double? kdvOrani;
+  double? miktar;
+  int? olcuBirimKodu;
+  int? sira;
+  List<dynamic>? hucreList;
+  List<dynamic>? kalemModelHucreList;
+  List<dynamic>? seriList;
+  List<dynamic>? tempBarkodList;
   String? belgeNo;
   String? belgeTipi;
-  String? stokKodu;
-  String? stokAdi;
   String? cariKodu;
-  int? depoKodu;
   String? depoTanimi;
-  int? miktar;
-  List<dynamic>? seriList;
-  int? kdvOrani;
-  int? brutFiyat;
-  bool? iskonto1OranMi;
-  int? olcuBirimKodu;
   String? olcuBirimAdi;
+  String? stokAdi;
+  String? stokKodu;
   String? stokOlcuBirimi;
-  List<dynamic>? kalemModelHucreList;
-  List<dynamic>? hucreList;
 
   KalemModel();
 
