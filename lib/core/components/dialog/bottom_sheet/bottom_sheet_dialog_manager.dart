@@ -26,7 +26,7 @@ class BottomSheetDialogManager {
   showBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel>? children, bool aramaVarMi = false}) {
     List<BottomSheetModel>? children2 = children;
     //if keyboard is open, close it
-    FocusScope.of(context).unfocus();
+    //FocusScope.of(context).unfocus();
     return showModalBottomSheet(
         context: context,
         isDismissible: true,
@@ -110,7 +110,7 @@ class BottomSheetDialogManager {
 
   showRadioBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel?>? children}) {
     children = children?.nullCheck.cast<BottomSheetModel>();
-    FocusScope.of(context).unfocus();
+    //FocusScope.of(context).unfocus();
     return showModalBottomSheet(
         context: context,
         isDismissible: true,
@@ -197,7 +197,7 @@ class BottomSheetDialogManager {
         viewModel.changeIsSelectedListMap(title, List.generate(children.length, (index) => false));
       }
     }
-    FocusScope.of(context).unfocus();
+    //FocusScope.of(context).unfocus();
     return showModalBottomSheet(
       context: context,
       isDismissible: true,
