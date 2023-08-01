@@ -230,9 +230,14 @@ class NetworkManager {
     }
     return null;
   }
-  Future<GenericResponseModel> postPrint(BuildContext context, {required PrintModel model}) async {
-    var result = await BottomSheetDialogManager().showBottomSheetDialog(context, title: "");
-    return dioPost<PrintModel>(path: ApiUrls.print, bodyModel: PrintModel(), data: model.toJson());
+  Future<GenericResponseModel> postPrint(BuildContext context, {required DicParams model}) async {
+    var result = await BottomSheetDialogManager().showPrintDialog(context, model);
+    if (result != null) {
+      return dioPost<PrintModel>(path: ApiUrls.print, bodyModel: PrintModel(), data: model.toJson());
+    }
+    else{
+      return GenericResponseModel(success: false);
+    }
   }
 
   Future<String?> getSiradakiBelgeNo(SiradakiBelgeNoModel model) async {

@@ -11,6 +11,7 @@ import 'package:picker/core/init/network/network_manager.dart';
 import 'package:picker/view/main_page/model/param_model.dart';
 
 import '../../../base/model/print_model.dart';
+import '../../../base/view/pdf_viewer/model/pdf_viewer_model.dart';
 import '../../../constants/extensions/list_extensions.dart';
 import '../../../constants/ui_helper/icon_helper.dart';
 import '../../../constants/ui_helper/ui_helper.dart';
@@ -494,6 +495,10 @@ class BottomSheetDialogManager {
   //   });
   //   return response;
   // }
+  Future<DepoList?> showDepoBottomSheetDialog(BuildContext context) async => await showRadioBottomSheetDialog(context,
+      title: "Depo seç", children: CacheManager.getAnaVeri()?.paramModel?.depoList?.map((e) => BottomSheetModel(title: e.depoTanimi ?? "", value: e)).toList());
+  Future<ListCariOdemeKodu?> showOdemeKoduBottomSheetDialog(BuildContext context) async => await showRadioBottomSheetDialog(context,
+      title: "Ödeme Kodu seç", children: CacheManager.getAnaVeri()?.paramModel?.listCariOdemeKodu?.map((e) => BottomSheetModel(title: e.aciklama ?? "", value: e)).toList());
   showCariTipiBottomSheetDialog(BuildContext context) async => await showRadioBottomSheetDialog(context, title: "Tipi seç", children: [
         BottomSheetModel(title: "Alıcı", value: "A", onTap: () => Get.back(result: "Alıcı")),
         BottomSheetModel(title: "Satıcı", value: "S", onTap: () => Get.back(result: "Satıcı")),

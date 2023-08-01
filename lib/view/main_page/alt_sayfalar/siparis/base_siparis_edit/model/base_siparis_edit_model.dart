@@ -4,7 +4,7 @@ import '../../../../../../core/base/model/base_network_mixin.dart';
 
 part 'base_siparis_edit_model.g.dart';
 
-@JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, createFactory: true)
+@JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, createFactory: true, includeIfNull: false)
 class BaseSiparisEditModel with NetworkManagerMixin {
   //singleton
   static BaseSiparisEditModel? _instance;

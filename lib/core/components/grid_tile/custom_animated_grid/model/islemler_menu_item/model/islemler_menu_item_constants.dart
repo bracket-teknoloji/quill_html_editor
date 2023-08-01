@@ -99,80 +99,77 @@ class IslemlerMenuItemConstants<T> {
           ..kaynakCari = (model as CariListesiModel).cariKodu;
         await bottomSheetDialogManager.showBottomSheetDialog(Get.context!,
             title: "Cari Kodu Değiştir",
-            body: Form(
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  CustomTextField(
-                    labelText: "Cari",
-                    readOnly: true,
+            body: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CustomTextField(
+                  labelText: "Cari",
+                  readOnly: true,
+                  isMust: true,
+                  controllerText: model is CariListesiModel ? (model as CariListesiModel).cariAdi : null,
+                ),
+                CustomTextField(
+                    labelText: "Yeni Cari Kodu",
+                    controller: controller,
                     isMust: true,
-                    controllerText: model is CariListesiModel ? (model as CariListesiModel).cariAdi : null,
-                  ),
-                  CustomTextField(
-                      labelText: "Yeni Cari Kodu",
-                      controller: controller,
-                      isMust: true,
-                      onChanged: (p0) => kodDegistirModel.hedefCari = p0,
-                      suffix: Wrap(
-                        children: [
-                          IconButton(
+                    onChanged: (p0) => kodDegistirModel.hedefCari = p0,
+                    suffix: Wrap(
+                      children: [
+                        IconButton(
+                          onPressed: () async {
+                            String kod = await CariNetworkManager.getSiradakiKod(kod: kodDegistirModel.hedefCari);
+                            kodDegistirModel.hedefCari = kod;
+                            controller.text = kod;
+                          },
+                          icon: const Icon(Icons.format_list_numbered_rtl_outlined),
+                        ),
+                        IconButton(
                             onPressed: () async {
-                              String kod = await CariNetworkManager.getSiradakiKod(kod: kodDegistirModel.hedefCari);
-                              kodDegistirModel.hedefCari = kod;
-                              controller.text = kod;
+                              var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
+                              if (result != null) {
+                                kodDegistirModel.hedefCari = (result as CariListesiModel).cariKodu;
+                                controller.text = (result).cariKodu ?? "";
+                              }
                             },
-                            icon: const Icon(Icons.format_list_numbered_rtl_outlined),
-                          ),
-                          IconButton(
-                              onPressed: () async {
-                                var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
-                                if (result != null) {
-                                  kodDegistirModel.hedefCari = (result as CariListesiModel).cariKodu;
-                                  controller.text = (result).cariKodu ?? "";
-                                }
-                              },
-                              icon: const Icon(Icons.more_horiz_outlined)),
-                        ],
-                      )),
-                  CustomWidgetWithLabel(
-                    text: "Eski Cari Kodu Silinsin mi?",
-                    isVertical: true,
-                    child: Observer(
-                        builder: (_) => Switch.adaptive(
-                            value: viewModel.cariKodDegistirSwitch,
-                            onChanged: (value) {
-                              viewModel.changeCariKodDegistirSwitch(value);
-                              kodDegistirModel.kaynakSil = (value ? "E" : "H");
-                            })),
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                          child:
-                              ElevatedButton(onPressed: () => Get.back(), style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))), child: const Text("İptal"))),
-                      SizedBox(width: Get.width * 0.02),
-                      Expanded(
-                          child: ElevatedButton(
-                              onPressed: () {
-                                if (controller.text != "") {
-                                  DialogManager().showAreYouSureDialog(() async {
-                                    var result = await NetworkManager().dioPost<KodDegistirModel>(path: ApiUrls.kodDegistir, bodyModel: KodDegistirModel(), data: kodDegistirModel.toJson());
-                                    if (result.success == true) {
-                                      Get.back();
-                                      DialogManager().showSnackBar("Başarılı");
-                                    }
-                                  });
-                                } else {
-                                  DialogManager().showAlertDialog("Lütfen Cari Kodu Giriniz");
-                                }
-                              },
-                              child: const Text("Kaydet"))),
-                    ],
-                  ).paddingAll(UIHelper.lowSize)
-                ],
-              ).paddingAll(UIHelper.lowSize),
-            ));
+                            icon: const Icon(Icons.more_horiz_outlined)),
+                      ],
+                    )),
+                CustomWidgetWithLabel(
+                  text: "Eski Cari Kodu Silinsin mi?",
+                  isVertical: true,
+                  child: Observer(
+                      builder: (_) => Switch.adaptive(
+                          value: viewModel.cariKodDegistirSwitch,
+                          onChanged: (value) {
+                            viewModel.changeCariKodDegistirSwitch(value);
+                            kodDegistirModel.kaynakSil = (value ? "E" : "H");
+                          })),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                        child: ElevatedButton(onPressed: () => Get.back(), style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))), child: const Text("İptal"))),
+                    SizedBox(width: Get.width * 0.02),
+                    Expanded(
+                        child: ElevatedButton(
+                            onPressed: () {
+                              if (controller.text != "") {
+                                DialogManager().showAreYouSureDialog(() async {
+                                  var result = await NetworkManager().dioPost<KodDegistirModel>(path: ApiUrls.kodDegistir, bodyModel: KodDegistirModel(), data: kodDegistirModel.toJson());
+                                  if (result.success == true) {
+                                    Get.back();
+                                    DialogManager().showSnackBar("Başarılı");
+                                  }
+                                });
+                              } else {
+                                DialogManager().showAlertDialog("Lütfen Cari Kodu Giriniz");
+                              }
+                            },
+                            child: const Text("Kaydet"))),
+                  ],
+                ).paddingAll(UIHelper.lowSize)
+              ],
+            ).paddingAll(UIHelper.lowSize));
       });
 }

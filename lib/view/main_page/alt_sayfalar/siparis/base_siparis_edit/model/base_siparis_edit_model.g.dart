@@ -135,111 +135,120 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       ..tag = json['TAG'] as String?;
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
-        BaseSiparisEditModel instance) =>
-    <String, dynamic>{
-      'DUZELTMETARIHI': instance.duzeltmetarihi?.toIso8601String(),
-      'KALEM_ADEDI': instance.kalemAdedi,
-      'CARI_EFATURAMI': instance.cariEfaturami,
-      'C_YEDEK6': instance.cYedek6,
-      'DUZELTMEYAPANKUL': instance.duzeltmeyapankul,
-      'PLASIYER_ACIKLAMA': instance.plasiyerAciklama,
-      'PROJE_ACIKLAMA': instance.projeAciklama,
-      'TESLIM_CARI_ADI': instance.teslimCariAdi,
-      'KDV_DAHILMI': instance.kdvDahilmi,
-      'REMOTE_TEMP_BELGE': instance.remoteTempBelge,
-      'TEMP_BELGE_MI': instance.tempBelgeMi,
-      'CARI_MODEL': instance.cariModel,
-      'ISLEME_BASLAMA_TARIHI': instance.islemeBaslamaTarihi?.toIso8601String(),
-      'ISTENILEN_TESLIM_TARIHI':
-          instance.istenilenTeslimTarihi?.toIso8601String(),
-      'KAYITTARIHI': instance.kayittarihi?.toIso8601String(),
-      'KOSUL_TARIHI': instance.kosulTarihi?.toIso8601String(),
-      'TARIH': instance.tarih?.toIso8601String(),
-      'TESLIM_TARIHI': instance.teslimTarihi?.toIso8601String(),
-      'VADE_TARIHI': instance.vadeTarihi?.toIso8601String(),
-      'ARA_TOPLAM': instance.araToplam,
-      'EK_MALIYET1_TUTARI': instance.ekMaliyet1Tutari,
-      'EK_MALIYET2_TUTARI': instance.ekMaliyet2Tutari,
-      'EK_MALIYET3_TUTARI': instance.ekMaliyet3Tutari,
-      'GENEL_ISKONTO1': instance.genelIskonto1,
-      'GENEL_ISKONTO2': instance.genelIskonto2,
-      'GENEL_ISKONTO3': instance.genelIskonto3,
-      'GENEL_TOPLAM': instance.genelToplam,
-      'GEN_ISK1_O': instance.genIsk1O,
-      'GEN_ISK1_T': instance.genIsk1T,
-      'GEN_ISK2_O': instance.genIsk2O,
-      'GEN_ISK2_T': instance.genIsk2T,
-      'GEN_ISK3_O': instance.genIsk3O,
-      'GEN_ISK3_T': instance.genIsk3T,
-      'KDV': instance.kdv,
-      'BELGE_TIPI': instance.belgeTipi,
-      'CIKIS_DEPO_KODU': instance.cikisDepoKodu,
-      'GENISK1_TIPI': instance.genisk1Tipi,
-      'GENISK2_TIPI': instance.genisk2Tipi,
-      'GENISK3_TIPI': instance.genisk3Tipi,
-      'KALEM_MODEL_ADEDI': instance.kalemModelAdedi,
-      'TEMP_BELGE_ID': instance.tempBelgeId,
-      'TEMP_KAYIT_TIPI': instance.tempKayitTipi,
-      'TIPI': instance.tipi,
-      'TOPLU_DEPO': instance.topluDepo,
-      'VADE_GUNU': instance.vadeGunu,
-      'TEMP_SIP_LIST': instance.tempSipList,
-      'KALEM_LIST': instance.kalemList,
-      'KALEM_MODELLER': instance.kalemModeller,
-      'KALEM_MODEL_LIST': instance.kalemModelList,
-      'ACIK1': instance.acik1,
-      'ACIK10': instance.acik10,
-      'ACIK11': instance.acik11,
-      'ACIK12': instance.acik12,
-      'ACIK13': instance.acik13,
-      'ACIK14': instance.acik14,
-      'ACIK15': instance.acik15,
-      'ACIK16': instance.acik16,
-      'ACIK2': instance.acik2,
-      'ACIK3': instance.acik3,
-      'ACIK4': instance.acik4,
-      'ACIK5': instance.acik5,
-      'ACIK6': instance.acik6,
-      'ACIK7': instance.acik7,
-      'ACIK8': instance.acik8,
-      'ACIK9': instance.acik9,
-      'BELGE_KODU': instance.belgeKodu,
-      'BELGE_NO': instance.belgeNo,
-      'BELGE_TURU': instance.belgeTuru,
-      'CARI_ADI': instance.cariAdi,
-      'CARI_KODU': instance.cariKodu,
-      'EK_ACIK1': instance.ekAcik1,
-      'EK_ACIK10': instance.ekAcik10,
-      'EK_ACIK11': instance.ekAcik11,
-      'EK_ACIK12': instance.ekAcik12,
-      'EK_ACIK13': instance.ekAcik13,
-      'EK_ACIK14': instance.ekAcik14,
-      'EK_ACIK15': instance.ekAcik15,
-      'EK_ACIK16': instance.ekAcik16,
-      'EK_ACIK2': instance.ekAcik2,
-      'EK_ACIK3': instance.ekAcik3,
-      'EK_ACIK4': instance.ekAcik4,
-      'EK_ACIK5': instance.ekAcik5,
-      'EK_ACIK6': instance.ekAcik6,
-      'EK_ACIK7': instance.ekAcik7,
-      'EK_ACIK8': instance.ekAcik8,
-      'EK_ACIK9': instance.ekAcik9,
-      'EK_ACIKLAMA': instance.ekAciklama,
-      'ISLEM_ID': instance.islemId,
-      'KAYITYAPANKUL': instance.kayityapankul,
-      'KDV_DAHIL': instance.kdvDahil,
-      'KOSUL_KODU': instance.kosulKodu,
-      'MEVCUT_BELGE_NO': instance.mevcutBelgeNo,
-      'MEVCUT_CARI_KODU': instance.mevcutCariKodu,
-      'ODEME_KODU': instance.odemeKodu,
-      'OZEL_KOD1': instance.ozelKod1,
-      'OZEL_KOD2': instance.ozelKod2,
-      'PICKER_BELGE_TURU': instance.pickerBelgeTuru,
-      'PLASIYER_KODU': instance.plasiyerKodu,
-      'PROJE_KODU': instance.projeKodu,
-      'REMOTE_TEMP_BELGE_ETIKETI': instance.remoteTempBelgeEtiketi,
-      'TAG': instance.tag,
-    };
+    BaseSiparisEditModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('DUZELTMETARIHI', instance.duzeltmetarihi?.toIso8601String());
+  writeNotNull('KALEM_ADEDI', instance.kalemAdedi);
+  writeNotNull('CARI_EFATURAMI', instance.cariEfaturami);
+  writeNotNull('C_YEDEK6', instance.cYedek6);
+  writeNotNull('DUZELTMEYAPANKUL', instance.duzeltmeyapankul);
+  writeNotNull('PLASIYER_ACIKLAMA', instance.plasiyerAciklama);
+  writeNotNull('PROJE_ACIKLAMA', instance.projeAciklama);
+  writeNotNull('TESLIM_CARI_ADI', instance.teslimCariAdi);
+  writeNotNull('KDV_DAHILMI', instance.kdvDahilmi);
+  writeNotNull('REMOTE_TEMP_BELGE', instance.remoteTempBelge);
+  writeNotNull('TEMP_BELGE_MI', instance.tempBelgeMi);
+  writeNotNull('CARI_MODEL', instance.cariModel);
+  writeNotNull(
+      'ISLEME_BASLAMA_TARIHI', instance.islemeBaslamaTarihi?.toIso8601String());
+  writeNotNull('ISTENILEN_TESLIM_TARIHI',
+      instance.istenilenTeslimTarihi?.toIso8601String());
+  writeNotNull('KAYITTARIHI', instance.kayittarihi?.toIso8601String());
+  writeNotNull('KOSUL_TARIHI', instance.kosulTarihi?.toIso8601String());
+  writeNotNull('TARIH', instance.tarih?.toIso8601String());
+  writeNotNull('TESLIM_TARIHI', instance.teslimTarihi?.toIso8601String());
+  writeNotNull('VADE_TARIHI', instance.vadeTarihi?.toIso8601String());
+  writeNotNull('ARA_TOPLAM', instance.araToplam);
+  writeNotNull('EK_MALIYET1_TUTARI', instance.ekMaliyet1Tutari);
+  writeNotNull('EK_MALIYET2_TUTARI', instance.ekMaliyet2Tutari);
+  writeNotNull('EK_MALIYET3_TUTARI', instance.ekMaliyet3Tutari);
+  writeNotNull('GENEL_ISKONTO1', instance.genelIskonto1);
+  writeNotNull('GENEL_ISKONTO2', instance.genelIskonto2);
+  writeNotNull('GENEL_ISKONTO3', instance.genelIskonto3);
+  writeNotNull('GENEL_TOPLAM', instance.genelToplam);
+  writeNotNull('GEN_ISK1_O', instance.genIsk1O);
+  writeNotNull('GEN_ISK1_T', instance.genIsk1T);
+  writeNotNull('GEN_ISK2_O', instance.genIsk2O);
+  writeNotNull('GEN_ISK2_T', instance.genIsk2T);
+  writeNotNull('GEN_ISK3_O', instance.genIsk3O);
+  writeNotNull('GEN_ISK3_T', instance.genIsk3T);
+  writeNotNull('KDV', instance.kdv);
+  writeNotNull('BELGE_TIPI', instance.belgeTipi);
+  writeNotNull('CIKIS_DEPO_KODU', instance.cikisDepoKodu);
+  writeNotNull('GENISK1_TIPI', instance.genisk1Tipi);
+  writeNotNull('GENISK2_TIPI', instance.genisk2Tipi);
+  writeNotNull('GENISK3_TIPI', instance.genisk3Tipi);
+  writeNotNull('KALEM_MODEL_ADEDI', instance.kalemModelAdedi);
+  writeNotNull('TEMP_BELGE_ID', instance.tempBelgeId);
+  writeNotNull('TEMP_KAYIT_TIPI', instance.tempKayitTipi);
+  writeNotNull('TIPI', instance.tipi);
+  writeNotNull('TOPLU_DEPO', instance.topluDepo);
+  writeNotNull('VADE_GUNU', instance.vadeGunu);
+  writeNotNull('TEMP_SIP_LIST', instance.tempSipList);
+  writeNotNull('KALEM_LIST', instance.kalemList);
+  writeNotNull('KALEM_MODELLER', instance.kalemModeller);
+  writeNotNull('KALEM_MODEL_LIST', instance.kalemModelList);
+  writeNotNull('ACIK1', instance.acik1);
+  writeNotNull('ACIK10', instance.acik10);
+  writeNotNull('ACIK11', instance.acik11);
+  writeNotNull('ACIK12', instance.acik12);
+  writeNotNull('ACIK13', instance.acik13);
+  writeNotNull('ACIK14', instance.acik14);
+  writeNotNull('ACIK15', instance.acik15);
+  writeNotNull('ACIK16', instance.acik16);
+  writeNotNull('ACIK2', instance.acik2);
+  writeNotNull('ACIK3', instance.acik3);
+  writeNotNull('ACIK4', instance.acik4);
+  writeNotNull('ACIK5', instance.acik5);
+  writeNotNull('ACIK6', instance.acik6);
+  writeNotNull('ACIK7', instance.acik7);
+  writeNotNull('ACIK8', instance.acik8);
+  writeNotNull('ACIK9', instance.acik9);
+  writeNotNull('BELGE_KODU', instance.belgeKodu);
+  writeNotNull('BELGE_NO', instance.belgeNo);
+  writeNotNull('BELGE_TURU', instance.belgeTuru);
+  writeNotNull('CARI_ADI', instance.cariAdi);
+  writeNotNull('CARI_KODU', instance.cariKodu);
+  writeNotNull('EK_ACIK1', instance.ekAcik1);
+  writeNotNull('EK_ACIK10', instance.ekAcik10);
+  writeNotNull('EK_ACIK11', instance.ekAcik11);
+  writeNotNull('EK_ACIK12', instance.ekAcik12);
+  writeNotNull('EK_ACIK13', instance.ekAcik13);
+  writeNotNull('EK_ACIK14', instance.ekAcik14);
+  writeNotNull('EK_ACIK15', instance.ekAcik15);
+  writeNotNull('EK_ACIK16', instance.ekAcik16);
+  writeNotNull('EK_ACIK2', instance.ekAcik2);
+  writeNotNull('EK_ACIK3', instance.ekAcik3);
+  writeNotNull('EK_ACIK4', instance.ekAcik4);
+  writeNotNull('EK_ACIK5', instance.ekAcik5);
+  writeNotNull('EK_ACIK6', instance.ekAcik6);
+  writeNotNull('EK_ACIK7', instance.ekAcik7);
+  writeNotNull('EK_ACIK8', instance.ekAcik8);
+  writeNotNull('EK_ACIK9', instance.ekAcik9);
+  writeNotNull('EK_ACIKLAMA', instance.ekAciklama);
+  writeNotNull('ISLEM_ID', instance.islemId);
+  writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
+  writeNotNull('KDV_DAHIL', instance.kdvDahil);
+  writeNotNull('KOSUL_KODU', instance.kosulKodu);
+  writeNotNull('MEVCUT_BELGE_NO', instance.mevcutBelgeNo);
+  writeNotNull('MEVCUT_CARI_KODU', instance.mevcutCariKodu);
+  writeNotNull('ODEME_KODU', instance.odemeKodu);
+  writeNotNull('OZEL_KOD1', instance.ozelKod1);
+  writeNotNull('OZEL_KOD2', instance.ozelKod2);
+  writeNotNull('PICKER_BELGE_TURU', instance.pickerBelgeTuru);
+  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
+  writeNotNull('PROJE_KODU', instance.projeKodu);
+  writeNotNull('REMOTE_TEMP_BELGE_ETIKETI', instance.remoteTempBelgeEtiketi);
+  writeNotNull('TAG', instance.tag);
+  return val;
+}
 
 CariModel _$CariModelFromJson(Map<String, dynamic> json) => CariModel()
   ..duzeltmetarihi = json['DUZELTMETARIHI'] == null

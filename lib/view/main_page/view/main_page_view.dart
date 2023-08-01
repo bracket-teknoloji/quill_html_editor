@@ -70,7 +70,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
                       child: GridView.builder(
                         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: MediaQuery.of(context).size.width ~/ 100 > 10 ? 10 : MediaQuery.of(context).size.width ~/ 100,
+                          crossAxisCount: MediaQuery.of(context).size.width ~/ 90 > 10 ? 10 : MediaQuery.of(context).size.width ~/ 90,
                           childAspectRatio: 0.9,
                         ),
                         itemCount: items.length,

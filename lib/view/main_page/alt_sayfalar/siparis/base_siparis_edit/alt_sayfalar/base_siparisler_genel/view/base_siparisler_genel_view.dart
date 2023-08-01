@@ -27,7 +27,11 @@ class BaseSiparislerGenelView extends StatefulWidget {
 
 class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
   BaseSiparislerGenelViewModel viewModel = BaseSiparislerGenelViewModel();
-  bool get enable => widget.model.enable;
+  BaseEditModel<SiparisEditRequestModel> get siparisModel => widget.model;
+  bool get enable => siparisModel.enable;
+  bool get isDuzenle => siparisModel.isDuzenle;
+  bool get isEkle => siparisModel.isEkle;
+  bool get isGoruntule => siparisModel.isGoruntule;
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   late final TextEditingController belgeNoController;
   late final TextEditingController cariController;
@@ -92,9 +96,9 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
           key: formKey,
           child: Column(
             children: [
-              CustomTextField(enabled: enable, labelText: "Belge No", readOnly: true, isMust: true, controller: belgeNoController, maxLength: 15),
+              Visibility(visible: !isDuzenle, child: CustomTextField(enabled: enable, labelText: "Belge No", readOnly: true, isMust: true, controller: belgeNoController, maxLength: 15)),
               CustomTextField(
-                  enabled: enable,
+                  enabled: isEkle,
                   labelText: "Cari",
                   readOnly: true,
                   isMust: true,
@@ -188,7 +192,20 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
               ),
               Row(
                 children: [
-                  Expanded(child: CustomTextField(enabled: enable, labelText: "Ödeme Kodu", readOnly: true, suffixMore: true, controller: odemeKoduController)),
+                  Expanded(
+                      child: CustomTextField(
+                          enabled: enable,
+                          labelText: "Ödeme Kodu",
+                          readOnly: true,
+                          suffixMore: true,
+                          controller: odemeKoduController,
+                          onTap: () async {
+                            var result = await bottomSheetDialogManager.showOdemeKoduBottomSheetDialog(context);
+                            if (result != null) {
+                              model.odemeKodu = result.odemeKodu;
+                              odemeKoduController.text = "${result.odemeKodu ?? ""} - ${result.aciklama ?? ""}";
+                            }
+                          })),
                   Expanded(child: CustomTextField(enabled: enable, labelText: "Koşul", readOnly: true, suffixMore: true, controller: kosulController)),
                 ],
               ),
@@ -203,7 +220,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     suffixMore: true,
                     controller: ozelKod1Controller,
                     onTap: () async {
-                      var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Özel Kod 1");
+                      // var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Özel Kod 1");
                     },
                   )),
                   Expanded(child: CustomTextField(enabled: enable, labelText: "Özel Kod 2", readOnly: true, suffixMore: true, controller: ozelKod2Controller)),
@@ -260,7 +277,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
     belgeNoController.text = model.belgeNo ?? "";
     cariController.text = model.cariAdi ?? "";
     teslimCariController.text = model.teslimCariAdi ?? "";
-    belgeTipiController.text = model.belgeTuru ?? "";
+    belgeTipiController.text = (model.tipi ?? 0) < 6 ? "Yurtiçi" : "Yurtdışı";
     plasiyerController.text = model.cariModel?.plasiyerAciklama ?? "";
     tarihController.text = model.tarih != null ? model.tarih.toDateString() : "";
     teslimTarihController.text = model.teslimTarihi != null ? model.teslimTarihi.toDateString() : "";

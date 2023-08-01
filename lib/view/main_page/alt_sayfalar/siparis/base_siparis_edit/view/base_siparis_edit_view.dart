@@ -90,7 +90,9 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                   return Visibility(
                     visible: viewModel.isLastPage,
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        await postData();
+                      },
                       icon: const Icon(Icons.save_outlined),
                     ),
                   );
@@ -115,7 +117,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                     builder: (_) => (viewModel.isBaseSiparisEmpty && widget.model.baseEditEnum != BaseEditEnum.ekle)
                         ? const Center(child: CircularProgressIndicator.adaptive())
                         : BaseSiparislerGenelView(model: model)),
-                const BaseSiparislerDigerView(),
+                BaseSiparislerDigerView(model: model),
                 const BaseSiparisKalemlerView(),
                 BaseSiparisToplamlarView(model: model),
               ],
@@ -138,5 +140,10 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
       BaseSiparisEditModel.setInstance(result.data.first as BaseSiparisEditModel);
       viewModel.changeFuture();
     }
+  }
+
+  Future<void> postData() async {
+    var result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.saveFatura, bodyModel: BaseSiparisEditModel(), data: BaseSiparisEditModel.instance.toJson(), showLoading: true);
+    if (result.success == true) {}
   }
 }

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:picker/core/base/model/print_model.dart';
 import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import 'package:picker/core/components/textfield/custom_text_field.dart';
 import 'package:picker/core/constants/extensions/date_time_extensions.dart';
-import 'package:picker/core/constants/extensions/number_extensions.dart';
 import 'package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart';
 import 'package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart';
 
@@ -25,7 +23,8 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          bottomSheetDialogManager.showPrintDialog(context, DicParams(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi.toStringIfNull, cariKodu: model.cariKodu));
+          // bottomSheetDialogManager.showPrintDialog(context, DicParams(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi.toStringIfNull, cariKodu: model.cariKodu));
+          Get.toNamed("/kalemEkle");
         },
         child: const Icon(Icons.add),
       ),
@@ -65,9 +64,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                                   BottomSheetModel(
                                       title: "Stok İşlemleri",
                                       iconWidget: Icons.list_alt_outlined,
-                                      onTap: () {
-                                        return dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = BaseSiparisEditModel.instance.kalemList?[index].stokKodu ?? "");
-                                      }),
+                                      onTap: () => dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = BaseSiparisEditModel.instance.kalemList?[index].stokKodu ?? "")),
                                 ]);
                               },
                               icon: const Icon(Icons.more_vert_outlined))

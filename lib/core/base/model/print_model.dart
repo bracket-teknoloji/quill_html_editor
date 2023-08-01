@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../view/pdf_viewer/model/pdf_viewer_model.dart';
 import 'base_network_mixin.dart';
 part 'print_model.g.dart';
 
@@ -31,20 +32,3 @@ class PrintModel with NetworkManagerMixin{
 
 }
 
-@JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake)
-class DicParams {
-    String? belgeNo;
-    String? cariKodu;
-    String? belgeTipi;
-
-    DicParams({
-        this.belgeNo,
-        this.cariKodu,
-        this.belgeTipi,
-    });
-
-    factory DicParams.fromJson(Map<String, dynamic> json) => _$DicParamsFromJson(json);
-
-    Map<String, dynamic> toJson() => _$DicParamsToJson(this);
-
-}

@@ -28,15 +28,3 @@ Map<String, dynamic> _$PrintModelToJson(PrintModel instance) =>
       'YAZICI_TIPI': instance.yaziciTipi,
       'DIC_PARAMS': instance.dicParams,
     };
-
-DicParams _$DicParamsFromJson(Map<String, dynamic> json) => DicParams(
-      belgeNo: json['BELGE_NO'] as String?,
-      cariKodu: json['CARI_KODU'] as String?,
-      belgeTipi: json['BELGE_TIPI'] as String?,
-    );
-
-Map<String, dynamic> _$DicParamsToJson(DicParams instance) => <String, dynamic>{
-      'BELGE_NO': instance.belgeNo,
-      'CARI_KODU': instance.cariKodu,
-      'BELGE_TIPI': instance.belgeTipi,
-    };

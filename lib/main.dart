@@ -10,6 +10,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import 'package:flutter_localizations/flutter_localizations.dart';
 import "package:get/get.dart";
+import "package:picker/core/base/view/kalem_ekle/view/kalem_ekle_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/view/base_siparis_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/view/siparisler_view.dart";
@@ -95,6 +96,8 @@ class PickerApp extends StatelessWidget {
         GetPage(name: "/addCompany", page: () => const AccountsView()),
         GetPage(name: "/addAccount", page: () => const AddAccountView()),
         GetPage(name: "/qr", page: () => const QRScannerView()),
+        GetPage(name: "/kalemEkle", page: () => const KalemEkleView()),
+
         GetPage(
           name: "/mainPage",
           page: () => const MainPageView(),
