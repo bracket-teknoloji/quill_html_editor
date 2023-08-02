@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:get/get.dart';
-import 'package:markdown/markdown.dart' hide Document;
+import 'package:markdown/markdown.dart' as md;
+import 'package:markdown_quill/markdown_quill.dart';
 import 'package:picker/core/base/state/base_state.dart';
 import 'package:picker/core/constants/ui_helper/ui_helper.dart';
 import 'package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart';
@@ -19,15 +20,35 @@ class BaseSiparislerDigerView extends StatefulWidget {
 
 class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerView> {
   late final QuillController _controller;
+  BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   bool get enable => widget.model.enable;
 
   @override
   void initState() {
+    final mdDocument = md.Document(
+      encodeHtml: true,
+      extensionSet: md.ExtensionSet.gitHubFlavored,
+
+      // you can add custom syntax.
+      blockSyntaxes: [const EmbeddableTableSyntax()],
+    );
+    final mdToDelta = MarkdownToDelta(
+      markdownDocument: mdDocument,
+      customElementToBlockAttribute: {
+        'h4': (element) => [const HeaderAttribute(level: 4)],
+      },
+      // custom embed
+      customElementToEmbeddable: {
+        EmbeddableTable.tableType: EmbeddableTable.fromMdSyntax,
+      },
+    );
+    // String md.markdownToHtml(model.ekAciklama ?? "");
+    // doc =
     // Map jsonData = {"insert": ""};
     // //html to delta
     // // jsonToHtml(jsonData);
     // log(jsonData["insert"]);
-    _controller = QuillController.basic();
+    _controller = QuillController(document: Document.fromDelta(mdToDelta.convert(model.ekAciklama ?? "")), selection: const TextSelection.collapsed(offset: 0));
     // if (BaseSiparisEditModel.instance.ekAciklama == null) {
     // } else {
     //   var json = jsonDecode(r'{"insert":"hello\n"}');
@@ -38,15 +59,16 @@ class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerView> {
   }
 
   void jsonToHtml(Map<dynamic, dynamic> jsonData) {
-    markdownToHtml(BaseSiparisEditModel.instance.ekAciklama ?? "").split("\n").forEach((element) {
-      jsonData["insert"] += BaseSiparisEditModel.instance.ekAciklama ?? "";
-      jsonData["insert"] += "\n";
-    });
+    // markdownToHtml(BaseSiparisEditModel.instance.ekAciklama ?? "").split("\n").forEach((element) {
+    //   jsonData["insert"] += BaseSiparisEditModel.instance.ekAciklama ?? "";
+    //   jsonData["insert"] += "\n";
+    // });
   }
 
   @override
   void dispose() {
     print(_controller.document.toDelta());
+    FocusScope.of(context).unfocus();
     super.dispose();
   }
 

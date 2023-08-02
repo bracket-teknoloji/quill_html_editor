@@ -79,15 +79,13 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
     });
     scrollController.addListener(() async {
       if (scrollController.position.pixels == scrollController.position.maxScrollExtent && viewModel.dahaVarMi) {
-        Future.delayed(const Duration(milliseconds: 500), () => getData());
+        await Future.delayed(const Duration(milliseconds: 500), () => getData());
+        viewModel.changeIsScrolledDown(true);
       }
       if (scrollController.position.userScrollDirection == ScrollDirection.forward) {
         viewModel.changeIsScrolledDown(true);
       } else if (scrollController.position.userScrollDirection == ScrollDirection.reverse) {
         viewModel.changeIsScrolledDown(false);
-      }
-      if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
-        viewModel.changeIsScrolledDown(true);
       }
     });
     super.initState();
@@ -301,7 +299,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                     },
                                     style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
                                     child: const Text("Temizle"))),
-                            SizedBox(width: context.dynamicWidth(0.02)),
+                            SizedBox(width: context.sized.dynamicWidth(0.02)),
                             Expanded(
                                 child: ElevatedButton(
                                     onPressed: () {
@@ -387,7 +385,15 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                             child: const Center(child: CircularProgressIndicator.adaptive()),
                           );
                         }
-                        return SiparislerCard(model: viewModel.musteriSiparisleriList![index]!);
+                        return SiparislerCard(
+                          model: viewModel.musteriSiparisleriList![index]!,
+                          onDeleted: () {
+                            viewModel.setSiparislerList(null);
+                            viewModel.setDahaVarMi(true);
+                            viewModel.resetSayfa();
+                            getData();
+                          },
+                        );
                       },
                     );
                   })));

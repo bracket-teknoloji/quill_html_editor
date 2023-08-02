@@ -224,53 +224,62 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) => AccountModel()
   ..wifidenBagli = json['WIFIDEN_BAGLI'] as String?
   ..qrData = json['QR_DATA'] as String?;
 
-Map<String, dynamic> _$AccountModelToJson(AccountModel instance) =>
-    <String, dynamic>{
-      'ISIM': instance.isim,
-      'ADMIN': instance.admin,
-      'AKTIF_ISLETME_KODU': instance.aktifIsletmeKodu,
-      'AKTIF_SUBE_KODU': instance.aktifSubeKodu,
-      'AKTIF_VERITABANI': instance.aktifVeritabani,
-      'CIHAZ_SISTEM_VERSIYONU': instance.cihazSistemVersiyonu,
-      'APK_DERLEME_TARIHI': instance.apkDerlemeTarihi?.toIso8601String(),
-      'CIHAZ_DILI': instance.cihazDili,
-      'G_CID': instance.gCid,
-      'CIHAZ_MARKASI': instance.cihazMarkasi,
-      'CIHAZ_KIMLIGI': instance.cihazKimligi,
-      'CIHAZ_MODELI': instance.cihazModeli,
-      'G_DSN': instance.gDsn,
-      'CIHAZ_TARIHI': instance.cihazTarihi,
-      'CIHAZ_TARIHI_UTC': instance.cihazTarihiUtc?.toIso8601String(),
-      'CIHAZ_TIME_ZONE_DAKIKA': instance.cihazTimeZoneDakika,
-      'FCM_TOKEN': instance.fcmToken,
-      'UYE_EMAIL': instance.uyeEmail,
-      'UYE_SIFRE': instance.uyeSifre,
-      'KONUM_DATE': instance.konumDate?.toIso8601String(),
-      'KONUM_TARIHI': instance.konumTarihi,
-      'G_KA': instance.gKa,
-      'G_BO': instance.gBo,
-      'G_EN': instance.gEn,
-      'KULLANICI_ADI': instance.kullaniciAdi,
-      'KURULU_HESAPLAR': instance.kuruluHesaplar,
-      'LOCAL_IP': instance.localIp,
-      'OZEL_CIHAZ_KIMLIGI': instance.ozelCihazKimligi,
-      'OFFLINE': instance.offline,
-      'SIM_OPERATOR': instance.simOperator,
-      'PAKET_ADI': instance.paketAdi,
-      'PARAM_MAP': instance.paramMap,
-      'PLATFORM': instance.platform,
-      'REQUEST_VERSION': instance.requestVersion,
-      'SOYADI': instance.soyadi,
-      'SERVICE_VERSION': instance.serviceVersion,
-      'TZ_INFO': instance.tzInfo,
-      'UYGULAMA_DILI': instance.uygulamaDili,
-      'UYGULAMA_GUNCELLEME_TARIHI': instance.uygulamaGuncellemeTarihi,
-      'UYGULAMA_SURUMU': instance.uygulamaSurumu,
-      'UYGULAMA_SURUM_KODU': instance.uygulamaSurumKodu,
-      'UZAK_ERISIM': instance.uzakErisim,
-      'WIFIDEN_BAGLI': instance.wifidenBagli,
-      'QR_DATA': instance.qrData,
-    };
+Map<String, dynamic> _$AccountModelToJson(AccountModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('ISIM', instance.isim);
+  writeNotNull('ADMIN', instance.admin);
+  writeNotNull('AKTIF_ISLETME_KODU', instance.aktifIsletmeKodu);
+  writeNotNull('AKTIF_SUBE_KODU', instance.aktifSubeKodu);
+  writeNotNull('AKTIF_VERITABANI', instance.aktifVeritabani);
+  writeNotNull('CIHAZ_SISTEM_VERSIYONU', instance.cihazSistemVersiyonu);
+  writeNotNull(
+      'APK_DERLEME_TARIHI', instance.apkDerlemeTarihi?.toIso8601String());
+  writeNotNull('CIHAZ_DILI', instance.cihazDili);
+  writeNotNull('G_CID', instance.gCid);
+  writeNotNull('CIHAZ_MARKASI', instance.cihazMarkasi);
+  writeNotNull('CIHAZ_KIMLIGI', instance.cihazKimligi);
+  writeNotNull('CIHAZ_MODELI', instance.cihazModeli);
+  writeNotNull('G_DSN', instance.gDsn);
+  writeNotNull('CIHAZ_TARIHI', instance.cihazTarihi);
+  writeNotNull('CIHAZ_TARIHI_UTC', instance.cihazTarihiUtc?.toIso8601String());
+  writeNotNull('CIHAZ_TIME_ZONE_DAKIKA', instance.cihazTimeZoneDakika);
+  writeNotNull('FCM_TOKEN', instance.fcmToken);
+  writeNotNull('UYE_EMAIL', instance.uyeEmail);
+  writeNotNull('UYE_SIFRE', instance.uyeSifre);
+  writeNotNull('KONUM_DATE', instance.konumDate?.toIso8601String());
+  writeNotNull('KONUM_TARIHI', instance.konumTarihi);
+  writeNotNull('G_KA', instance.gKa);
+  writeNotNull('G_BO', instance.gBo);
+  writeNotNull('G_EN', instance.gEn);
+  writeNotNull('KULLANICI_ADI', instance.kullaniciAdi);
+  writeNotNull('KURULU_HESAPLAR', instance.kuruluHesaplar);
+  writeNotNull('LOCAL_IP', instance.localIp);
+  writeNotNull('OZEL_CIHAZ_KIMLIGI', instance.ozelCihazKimligi);
+  writeNotNull('OFFLINE', instance.offline);
+  writeNotNull('SIM_OPERATOR', instance.simOperator);
+  writeNotNull('PAKET_ADI', instance.paketAdi);
+  writeNotNull('PARAM_MAP', instance.paramMap);
+  writeNotNull('PLATFORM', instance.platform);
+  writeNotNull('REQUEST_VERSION', instance.requestVersion);
+  writeNotNull('SOYADI', instance.soyadi);
+  writeNotNull('SERVICE_VERSION', instance.serviceVersion);
+  writeNotNull('TZ_INFO', instance.tzInfo);
+  writeNotNull('UYGULAMA_DILI', instance.uygulamaDili);
+  writeNotNull('UYGULAMA_GUNCELLEME_TARIHI', instance.uygulamaGuncellemeTarihi);
+  writeNotNull('UYGULAMA_SURUMU', instance.uygulamaSurumu);
+  writeNotNull('UYGULAMA_SURUM_KODU', instance.uygulamaSurumKodu);
+  writeNotNull('UZAK_ERISIM', instance.uzakErisim);
+  writeNotNull('WIFIDEN_BAGLI', instance.wifidenBagli);
+  writeNotNull('QR_DATA', instance.qrData);
+  return val;
+}
 
 ParamMap _$ParamMapFromJson(Map<String, dynamic> json) => ParamMap();
 

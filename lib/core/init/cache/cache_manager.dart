@@ -103,7 +103,7 @@ class CacheManager {
   static void setAnaVeri(MainPageModel value) => anaVeriBox.put("data", value);
   static void setAccounts(AccountResponseModel value) {
     accountsBox.put(value.email, value);
-    log("AccountResponseModel: ${accountsBox.toMap()}");
+    log("AccountResponseModel: ${value}");
   }
 
   static void setHesapBilgileri(AccountModel value) => hesapBilgileriBox.put("value", value);

@@ -74,7 +74,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
                 ),
                 SizedBox(
                     width: width * 0.6,
-                    child: Observer(builder: (_) => Visibility(visible: viewModel.isError, child: Text(viewModel.title, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center)))),
+                    child: Observer(builder: (_) => Visibility(visible: viewModel.isError, child: Text(viewModel.title, overflow: TextOverflow.ellipsis, maxLines: 10, textAlign: TextAlign.center)))),
                 Wrap(
                   alignment: WrapAlignment.center,
                   crossAxisAlignment: WrapCrossAlignment.center,
@@ -187,7 +187,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       CacheManager.setAnaVeri(response.data.first);
       Get.offAllNamed("/mainPage");
       response.message.ext.isNotNullOrNoEmpty ? dialogManager.showAlertDialog(response.message.toString()) : null;
-      var result = await networkManager.dioPost<AccountModel>(path: ApiUrls.saveUyeBilgileri, bodyModel: AccountModel(), data: CacheManager.getHesapBilgileri?.toJson());
+      var result = await networkManager.dioPost<AccountModel>(path: ApiUrls.saveUyeBilgileri, showError: false, bodyModel: AccountModel(), data: CacheManager.getHesapBilgileri?.toJson());
       if (result.success == true) {
         log("Başarılı");
       } else {

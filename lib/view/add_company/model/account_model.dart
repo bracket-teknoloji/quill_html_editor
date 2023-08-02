@@ -17,7 +17,7 @@ import '../../../core/base/model/base_network_mixin.dart';
 part 'account_model.g.dart';
 
 @HiveType(typeId: 73)
-@JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, includeIfNull: false)
 class AccountModel with NetworkManagerMixin {
   AccountModel.getValue() {
     init();

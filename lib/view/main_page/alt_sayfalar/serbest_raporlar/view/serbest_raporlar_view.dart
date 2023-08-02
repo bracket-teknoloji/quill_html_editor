@@ -35,10 +35,6 @@ class SerbestRaporlarView extends StatefulWidget {
 class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
   SerbestRaporlarViewModel viewModel = SerbestRaporlarViewModel();
 
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

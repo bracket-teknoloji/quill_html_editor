@@ -68,7 +68,7 @@ class NetworkManager {
 
   Future<TokenModel?> getToken({required String path, Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
     FormData formData = FormData.fromMap(data);
-    log(AccountModel.instance.toJson().toString());
+    log(AccountModel.instance.toString());
     log(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.firma ?? "")?.wsWan ?? "");
     final response = await dio.request(path,
         queryParameters: queryParameters,
@@ -165,8 +165,8 @@ class NetworkManager {
     return responseModel;
   }
 
-  Future<GenericResponseModel> deleteFatura(DeleteFaturaModel model) {
-    return dioPost<DeleteFaturaModel>(path: ApiUrls.deleteFatura, bodyModel: DeleteFaturaModel(), data: model.toJson());
+  Future<GenericResponseModel> deleteFatura(DeleteFaturaModel model ,{showError =true, showLoading =true} ) {
+    return dioPost<DeleteFaturaModel>(path: ApiUrls.deleteFatura, bodyModel: DeleteFaturaModel(), data: model.toJson(), showError: showError, showLoading: showLoading);
   }
 
   Future<MemoryImage> getImage(String path) async {

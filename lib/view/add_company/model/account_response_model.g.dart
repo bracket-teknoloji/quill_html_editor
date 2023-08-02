@@ -121,25 +121,33 @@ AccountResponseModel _$AccountResponseModelFromJson(
       ..demoBitisTarihi = json['DEMO_BITIS_TARIHI'];
 
 Map<String, dynamic> _$AccountResponseModelToJson(
-        AccountResponseModel instance) =>
-    <String, dynamic>{
-      'FIRMA': instance.firma,
-      'EMAIL': instance.email,
-      'PAROLA': instance.parola,
-      'PICKER_LISANSI_VAR': instance.pickerLisansiVar,
-      'WS_LAN': instance.wsLan,
-      'WS_WAN': instance.wsWan,
-      'WEB_SERVIS': instance.webServis,
-      'LISANS_BITIS_TARIHI': instance.lisansBitisTarihi,
-      'KULLANICI_SAYISI': instance.kullaniciSayisi,
-      'FIRMA_KISA_ADI': instance.firmaKisaAdi,
-      'SOZLESME_BITIS_TARIHI': instance.sozlesmeBitisTarihi,
-      'SOZLESME_BITIS_KALAN_GUN': instance.sozlesmeBitisKalanGun,
-      'KARSILAMA_MESAJI': instance.karsilamaMesaji,
-      'KARSILAMA_RESIM_URL': instance.karsilamaResimUrl,
-      'KARSILAMA_SANIYE': instance.karsilamaSaniye,
-      'GUNCELLEME_VARMI': instance.guncellemeVarmi,
-      'MAX_APK_VERSION': instance.maxApkVersion,
-      'MAX_WS_VERSION': instance.maxWsVersion,
-      'DEMO_BITIS_TARIHI': instance.demoBitisTarihi,
-    };
+    AccountResponseModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('FIRMA', instance.firma);
+  writeNotNull('EMAIL', instance.email);
+  writeNotNull('PAROLA', instance.parola);
+  writeNotNull('PICKER_LISANSI_VAR', instance.pickerLisansiVar);
+  writeNotNull('WS_LAN', instance.wsLan);
+  writeNotNull('WS_WAN', instance.wsWan);
+  writeNotNull('WEB_SERVIS', instance.webServis);
+  writeNotNull('LISANS_BITIS_TARIHI', instance.lisansBitisTarihi);
+  writeNotNull('KULLANICI_SAYISI', instance.kullaniciSayisi);
+  writeNotNull('FIRMA_KISA_ADI', instance.firmaKisaAdi);
+  writeNotNull('SOZLESME_BITIS_TARIHI', instance.sozlesmeBitisTarihi);
+  writeNotNull('SOZLESME_BITIS_KALAN_GUN', instance.sozlesmeBitisKalanGun);
+  writeNotNull('KARSILAMA_MESAJI', instance.karsilamaMesaji);
+  writeNotNull('KARSILAMA_RESIM_URL', instance.karsilamaResimUrl);
+  writeNotNull('KARSILAMA_SANIYE', instance.karsilamaSaniye);
+  writeNotNull('GUNCELLEME_VARMI', instance.guncellemeVarmi);
+  writeNotNull('MAX_APK_VERSION', instance.maxApkVersion);
+  writeNotNull('MAX_WS_VERSION', instance.maxWsVersion);
+  writeNotNull('DEMO_BITIS_TARIHI', instance.demoBitisTarihi);
+  return val;
+}

@@ -31,7 +31,8 @@ import '../view_model/stok_listesi_view_model.dart';
 
 class StokListesiView extends StatefulWidget {
   final bool? isGetData;
-  const StokListesiView({super.key, this.isGetData});
+final String? searchText;
+  const StokListesiView({super.key, this.isGetData, this.searchText});
 
   @override
   State<StokListesiView> createState() => _StokListesiViewState();
@@ -49,6 +50,10 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   TextEditingController kod5Controller = TextEditingController();
   @override
   void initState() {
+    if (widget.searchText != null){
+      viewModel.setSearchBar();
+      viewModel.setSearchValue(widget.searchText!);
+    }
     WidgetsBinding.instance.addPostFrameCallback((_) {
       getData();
     });
@@ -85,6 +90,10 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
 
   @override
   Widget build(BuildContext context) {
+    if (viewModel.searchBar && widget.searchText != null){
+      
+      FocusScope.of(context).unfocus();
+    }
     kod5Controller.text = viewModel.kod5;
     return Scaffold(
       resizeToAvoidBottomInset: true,

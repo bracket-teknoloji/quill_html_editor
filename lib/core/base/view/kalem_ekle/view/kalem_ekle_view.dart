@@ -1,19 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
+import 'package:picker/core/base/view/kalem_ekle/view_model/kalem_ekle_view_model.dart';
 import 'package:picker/core/components/textfield/custom_text_field.dart';
+import 'package:picker/core/constants/extensions/date_time_extensions.dart';
+import 'package:picker/core/constants/extensions/number_extensions.dart';
 import 'package:picker/core/constants/ui_helper/ui_helper.dart';
+import 'package:picker/core/init/network/login/api_urls.dart';
 
+import '../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart';
 import '../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart';
+import '../../../model/doviz_kurlari_model.dart';
 import '../../../state/base_state.dart';
 
 class KalemEkleView extends StatefulWidget {
-  const KalemEkleView({super.key});
+  final StokListesiModel? stokListesiModel;
+  const KalemEkleView({super.key, this.stokListesiModel});
 
   @override
   State<KalemEkleView> createState() => _KalemEkleViewState();
 }
 
 class _KalemEkleViewState extends BaseState<KalemEkleView> {
+  KalemEkleViewModel viewModel = KalemEkleViewModel();
+  BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   late final TextEditingController kalemAdiController;
   late final TextEditingController ekAlan1Controller;
   late final TextEditingController ekAlan2Controller;
@@ -33,15 +43,13 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   late final TextEditingController isk2YuzdeController;
   late final TextEditingController isk3TipiController;
   late final TextEditingController isk3YuzdeController;
-  StokListesiModel? model;
+
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      var result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
-      if (result is StokListesiModel) {
-        model = result;
-      }
     initControllers();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await getData();
+      controllerFiller();
     });
 
     super.initState();
@@ -65,7 +73,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
-            dialogManager.showStokGridViewDialog(model);
+            dialogManager.showStokGridViewDialog(viewModel.model);
           },
           child: const Icon(Icons.open_in_new_outlined),
         ),
@@ -73,39 +81,46 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
           child: Column(
             children: [
               Card(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Row(
-                      children: [
-                        Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "Stok Kodu: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
-                        Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "StkBakiye: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
-                      ],
-                    ),
-                    const Row(
-                      children: [
-                        Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "Brüt Tutar: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
-                        Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "MF. Tutarı: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
-                      ],
-                    ),
-                    const Row(
-                      children: [
-                        Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "İsk. Tutarı: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
-                        Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "Ara Toplam: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
-                      ],
-                    ),
-                    const Row(
-                      children: [
-                        Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "KDV Tutarı: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
-                        Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "Genel Toplam: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
-                      ],
-                    ),
-                    Card(
-                        child:
-                            const Text.rich(TextSpan(children: [TextSpan(text: "Son Fiyat: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))])).paddingAll(UIHelper.lowSize))
-                  ],
-                ).paddingAll(UIHelper.lowSize),
+                child: Observer(
+                    builder: (_) => Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(
+                                    child: Text.rich(TextSpan(
+                                        children: [const TextSpan(text: "Stok Kodu: "), TextSpan(text: viewModel.model?.stokKodu ?? "", style: const TextStyle(fontWeight: FontWeight.bold))]))),
+                                Expanded(
+                                    child: Text.rich(TextSpan(children: [
+                                  const TextSpan(text: "StkBakiye: "),
+                                  TextSpan(text: "${viewModel.model?.bakiye.toStringIfNull} ${viewModel.model?.olcuBirimi}", style: const TextStyle(fontWeight: FontWeight.bold))
+                                ]))),
+                              ],
+                            ),
+                            const Row(
+                              children: [
+                                Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "Brüt Tutar: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
+                                Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "MF. Tutarı: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
+                              ],
+                            ),
+                            const Row(
+                              children: [
+                                Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "İsk. Tutarı: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
+                                Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "Ara Toplam: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
+                              ],
+                            ),
+                            const Row(
+                              children: [
+                                Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "KDV Tutarı: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
+                                Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "Genel Toplam: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
+                              ],
+                            ),
+                            Card(
+                                child: const Text.rich(TextSpan(children: [TextSpan(text: "Son Fiyat: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))
+                                    .paddingAll(UIHelper.lowSize))
+                          ],
+                        ).paddingAll(UIHelper.lowSize)),
               ),
               const CustomTextField(labelText: "Kalem Adı"),
               const CustomTextField(labelText: "Ek Alan 1"),
@@ -115,6 +130,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   Expanded(
                       child: CustomTextField(
                           labelText: "Teslim Tarihi",
+                          controller: teslimTarihiController,
                           readOnly: true,
                           suffix: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -122,10 +138,23 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   const Expanded(child: CustomTextField(labelText: "Koşul", isMust: true, readOnly: true, suffixMore: true)),
                 ],
               ),
-              const Row(
+              Row(
                 children: [
-                  Expanded(child: CustomTextField(labelText: "Depo", isMust: true, readOnly: true, suffixMore: true)),
-                  Expanded(child: CustomTextField(labelText: "Proje", isMust: true, readOnly: true, suffixMore: true)),
+                  Expanded(
+                      child: CustomTextField(
+                    labelText: "Depo",
+                    controller: depoController,
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    onTap: () async {
+                      var result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context);
+                      if (result != null) {
+                        depoController.text = result.depoKodu.toStringIfNull ?? "";
+                      }
+                    },
+                  )),
+                  Expanded(child: CustomTextField(labelText: "Proje", controller: projeController, isMust: true, readOnly: true, suffixMore: true)),
                 ],
               ),
               const Row(
@@ -169,6 +198,25 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
         ));
   }
 
+  Future<void> getData() async {
+    if (widget.stokListesiModel != null) {
+      viewModel.setModel(widget.stokListesiModel!);
+    } else {
+      var result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
+      if (result is StokListesiModel) {
+        viewModel.setModel(result);
+      }
+      // var stokResult = await networkManager.dioGet(path: ApiUrls.getStokFiyatOzeti, bodyModel: bodyModel)
+      if (viewModel.dovizliMi) {
+        var dovizResult =
+            await networkManager.dioGet(path: ApiUrls.getDovizKurlari, bodyModel: DovizKurlariModel(), queryParameters: {"EkranTipi": "D", "DovizTipi": 2, "Tarih": result.duzeltmetarihi});
+        if (dovizResult.data != null) {
+          print(dovizResult.data);
+        }
+      }
+    }
+  }
+
   void initControllers() {
     ekAlan1Controller = TextEditingController();
     ekAlan2Controller = TextEditingController();
@@ -188,6 +236,12 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     isk2YuzdeController = TextEditingController();
     isk3TipiController = TextEditingController();
     isk3YuzdeController = TextEditingController();
+  }
+
+  void controllerFiller() {
+    teslimTarihiController.text = model.teslimTarihi.toDateString();
+    projeController.text = model.projeKodu ?? "";
+    depoController.text = model.cikisDepoKodu.toStringIfNull ?? "";
   }
 
   void disposeControllers() {

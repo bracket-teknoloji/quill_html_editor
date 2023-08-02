@@ -5,7 +5,7 @@ import '../../../core/base/model/base_network_mixin.dart';
 
 part 'account_response_model.g.dart';
 
-@JsonSerializable(explicitToJson: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(explicitToJson: true, createToJson: true, fieldRename: FieldRename.screamingSnake, includeIfNull: false)
 @HiveType(typeId: 123)
 class AccountResponseModel with NetworkManagerMixin {
   @HiveField(0)

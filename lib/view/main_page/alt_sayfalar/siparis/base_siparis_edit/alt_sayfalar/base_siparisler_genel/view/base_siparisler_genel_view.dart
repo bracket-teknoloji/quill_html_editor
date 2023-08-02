@@ -95,6 +95,8 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
         child: Form(
           key: formKey,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Visibility(visible: !isDuzenle, child: CustomTextField(enabled: enable, labelText: "Belge No", readOnly: true, isMust: true, controller: belgeNoController, maxLength: 15)),
               CustomTextField(

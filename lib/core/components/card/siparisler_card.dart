@@ -5,6 +5,7 @@ import 'package:picker/core/base/state/base_state.dart';
 import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
 import 'package:picker/core/constants/extensions/date_time_extensions.dart';
 import 'package:picker/core/constants/extensions/list_extensions.dart';
+import 'package:picker/core/constants/extensions/model_extensions.dart';
 import 'package:picker/core/constants/extensions/number_extensions.dart';
 import 'package:picker/core/constants/extensions/widget_extensions.dart';
 import 'package:picker/core/constants/ui_helper/ui_helper.dart';
@@ -17,7 +18,8 @@ import '../../constants/enum/base_edit_enum.dart';
 
 class SiparislerCard extends StatefulWidget {
   final SiparislerModel model;
-  const SiparislerCard({super.key, required this.model});
+  final Function? onDeleted;
+  const SiparislerCard({super.key, required this.model, this.onDeleted});
 
   @override
   State<SiparislerCard> createState() => _SiparislerCardState();
@@ -54,12 +56,14 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                   var result = await networkManager.deleteFatura(DeleteFaturaModel().fromJson(widget.model.toJson()));
                   if (result.success == true) {
                     dialogManager.showSnackBar("Silindi");
+                    widget.onDeleted?.call();
+                    
                   }
                 });
               }),
-          BottomSheetModel(title: "Yazdır", iconWidget: Icons.print_outlined),
-          BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
-          BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined),
+          BottomSheetModel(title: "Yazdır", iconWidget: Icons.print_outlined).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
+          BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
+          BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
           BottomSheetModel(
               title: "Cari İşlemleri",
               iconWidget: Icons.person_outline_outlined,
@@ -69,7 +73,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                   ..cariKodu = widget.model.cariKodu
                   ..cariAdi = widget.model.cariAdi);
               }),
-        ]);
+        ].nullCheck.cast<BottomSheetModel>().toList());
       },
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

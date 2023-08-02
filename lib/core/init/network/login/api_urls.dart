@@ -5,13 +5,14 @@ class ApiUrls {
   static const String isletmelerSubeler = "General/GetIsletmelerSubeler";
   static const String createSession = "General/CreateSessionV3";
   static const String getUyeBilgileri = "https://storews.netfect.com/api/Picker/GetUyeBilgileri";
+  static const String saveUyeBilgileri = "https://storews.netfect.com/api/Picker/SaveUyeBilgileri";
   // static const String getUyeBilgileri = "http://192.168.3.54/netstore/api/Picker/GetUyeBilgileri";
-  // static const String saveUyeBilgileri = "https://storews.netfect.com/api/Picker/SaveUyeBilgileri";
-  static const String saveUyeBilgileri = "http://192.168.3.54/netstore/api/Picker/SaveUyeBilgileri";
+  // static const String saveUyeBilgileri = "http://192.168.3.54/netstore/api/Picker/SaveUyeBilgileri";
   static const String getProjeler = "General/GetProjeler";
   static const String print = "Print/Print";
   static const String getDizaynParametreleri = "Print/GetDizaynParametreleri";
   static const String getSiradakiBelgeNo = "General/GetSiradakiBelgeNo";
+  static const String getDovizKurlari = "General/GetDovizKurlari";
   //*Cariler
   static const String getCariler = "Cari/GetCariler";
   static const String getCariKayitliSehirler = "Cari/GetCariKayitliSehirler";
@@ -42,6 +43,7 @@ class ApiUrls {
   static const String getFiyatGorFiyatlari = "Stok/GetFiyatGorFiyatlari";
   static const String getStokFiyatGecmisi = "Stok/GetStokFiyatGecmisi";
   static const String savestokFiyatGecmisi = "Stok/SaveStokFiyatGecmisi";
+  static const String getStokFiyatOzeti = "Stok/GetStokFiyatOzeti";
 
   //*Fatura
   static const String getFaturaKalemleri = "Fatura/GetFaturaKalemleri";

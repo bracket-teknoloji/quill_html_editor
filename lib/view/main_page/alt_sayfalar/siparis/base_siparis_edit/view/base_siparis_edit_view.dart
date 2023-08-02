@@ -118,13 +118,16 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                         ? const Center(child: CircularProgressIndicator.adaptive())
                         : BaseSiparislerGenelView(model: model)),
                 BaseSiparislerDigerView(model: model),
-                const BaseSiparisKalemlerView(),
+                BaseSiparisKalemlerView(model: model),
                 BaseSiparisToplamlarView(model: model),
               ],
             ),
           ),
         ),
         onWillPop: () async {
+          if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
+            return true;
+          }
           bool result = false;
           await dialogManager.showAreYouSureDialog(() {
             result = true;

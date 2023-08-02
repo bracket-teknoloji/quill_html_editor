@@ -101,6 +101,7 @@ dependencies:
   firebase_messaging: ^14.6.5
   flutter_quill: ^7.2.18
   markdown: ^7.1.1
+  markdown_quill: ^2.0.0
 
 flutter_icons:
   image_path: "assets/splash/pickerLogoTuruncu.png"

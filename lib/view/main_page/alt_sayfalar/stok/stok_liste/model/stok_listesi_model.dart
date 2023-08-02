@@ -84,6 +84,8 @@ class StokListesiModel with NetworkManagerMixin {
   bool? seriBakiyeKontrolu;
   int? muhdetayKodu;
   double? dovAlisFiat;
+  
+  bool get dovizliMi => fiatBirimi != 0;
 
   @override
   fromJson(Map<String, dynamic> json) {
