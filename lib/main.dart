@@ -164,7 +164,7 @@ class PickerApp extends StatelessWidget {
 }
 
 Future<void> firebaseInitialized() async {
-  if (kIsWeb) return;
+  if (kIsWeb || kDebugMode) return;
   if (!Platform.isWindows && (await AppTrackingTransparency.requestTrackingAuthorization() == TrackingStatus.authorized || !Platform.isIOS || !Platform.isMacOS)) {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
     FirebaseMessaging messaging = FirebaseMessaging.instance;

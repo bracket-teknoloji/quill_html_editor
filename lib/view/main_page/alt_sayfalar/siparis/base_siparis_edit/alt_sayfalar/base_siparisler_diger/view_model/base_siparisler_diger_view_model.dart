@@ -5,4 +5,9 @@ class BaseSiparislerDigerViewModel = _BaseSiparislerDigerViewModelBase with _$Ba
 
 abstract class _BaseSiparislerDigerViewModelBase with Store {
   
+  @observable
+  bool isInit = false;
+
+  @action
+  void init() => isInit = true;
 }
