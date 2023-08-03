@@ -34,8 +34,8 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>{
     super.dispose();
   }
 
-  double get width => MediaQuery.of(context).size.width;
-  double get height => MediaQuery.of(context).size.height;
+  double get width => MediaQuery.sizeOf(context).width;
+  double get height => MediaQuery.sizeOf(context).height;
   ThemeData get theme => Theme.of(context);
   // void internetChecker() {
   //   connectivitySubscription = connectivity.onConnectivityChanged.listen((ConnectivityResult result) {

@@ -96,9 +96,9 @@ class _LoginViewState extends BaseState<LoginView> {
                       children: [
                         AnimatedContainer(
                           duration: const Duration(milliseconds: 200),
-                          height: context.general.isKeyBoardOpen ? context.dynamicHeight(0.06) : context.dynamicHeight(0.12),
+                          height: context.general.isKeyBoardOpen ? context.sized.dynamicHeight(0.06) : context.sized.dynamicHeight(0.12),
                           child: SvgPicture.asset("assets/splash/PickerLogoTuruncu.svg"),
-                        ).paddingOnly(bottom: context.dynamicHeight(0.02), top: context.dynamicHeight(0.04)),
+                        ).paddingOnly(bottom: context.sized.dynamicHeight(0.02), top: context.sized.dynamicHeight(0.04)),
                         Padding(
                           padding: UIHelper.midPaddingVertical,
                           child: Column(

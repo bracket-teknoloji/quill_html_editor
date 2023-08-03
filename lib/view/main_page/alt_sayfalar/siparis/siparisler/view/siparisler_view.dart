@@ -379,7 +379,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                       controller: scrollController,
                       itemCount: musteriSiparisleriList?.length != null ? musteriSiparisleriList!.length + 1 : 0,
                       itemBuilder: (context, index) {
-                        if (index == (viewModel.musteriSiparisleriList?.length ?? 0)) {
+                        if (index == viewModel.musteriSiparisleriList?.length) {
                           return Visibility(
                             visible: viewModel.dahaVarMi,
                             child: const Center(child: CircularProgressIndicator.adaptive()),

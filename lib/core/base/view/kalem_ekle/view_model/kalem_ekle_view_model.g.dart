@@ -33,6 +33,22 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
     });
   }
 
+  late final _$kalemModelAtom =
+      Atom(name: '_KalemEkleViewModelBase.kalemModel', context: context);
+
+  @override
+  KalemModel get kalemModel {
+    _$kalemModelAtom.reportRead();
+    return super.kalemModel;
+  }
+
+  @override
+  set kalemModel(KalemModel value) {
+    _$kalemModelAtom.reportWrite(value, super.kalemModel, () {
+      super.kalemModel = value;
+    });
+  }
+
   late final _$_KalemEkleViewModelBaseActionController =
       ActionController(name: '_KalemEkleViewModelBase', context: context);
 
@@ -51,6 +67,7 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   String toString() {
     return '''
 model: ${model},
+kalemModel: ${kalemModel},
 dovizliMi: ${dovizliMi}
     ''';
   }

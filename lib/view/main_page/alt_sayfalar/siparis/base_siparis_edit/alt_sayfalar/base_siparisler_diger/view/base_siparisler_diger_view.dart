@@ -104,7 +104,9 @@ class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerView> {
 
   void onPageLoad() {
     _htmlController.setFullScreen();
-    _htmlController.setText(model.ekAciklama ?? "");
+    if (model.ekAciklama != null){
+    _htmlController.setText(model.ekAciklama!);
+    }
   }
 
   // Column quillEditor(bool isDarkMode) {

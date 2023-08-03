@@ -18,6 +18,9 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       ..duzeltmeyapankul = json['DUZELTMEYAPANKUL'] as String?
       ..plasiyerAciklama = json['PLASIYER_ACIKLAMA'] as String?
       ..projeAciklama = json['PROJE_ACIKLAMA'] as String?
+      ..tempJsonData = json['TEMP_JSON_DATA'] == null
+          ? null
+          : BaseSiparisEditModel.fromJson(json['TEMP_JSON_DATA'] as String)
       ..teslimCariAdi = json['TESLIM_CARI_ADI'] as String?
       ..kdvDahilmi = json['KDV_DAHILMI'] as bool?
       ..remoteTempBelge = json['REMOTE_TEMP_BELGE'] as bool?
@@ -151,6 +154,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('DUZELTMEYAPANKUL', instance.duzeltmeyapankul);
   writeNotNull('PLASIYER_ACIKLAMA', instance.plasiyerAciklama);
   writeNotNull('PROJE_ACIKLAMA', instance.projeAciklama);
+  writeNotNull('TEMP_JSON_DATA', instance.tempJsonData);
   writeNotNull('TESLIM_CARI_ADI', instance.teslimCariAdi);
   writeNotNull('KDV_DAHILMI', instance.kdvDahilmi);
   writeNotNull('REMOTE_TEMP_BELGE', instance.remoteTempBelge);

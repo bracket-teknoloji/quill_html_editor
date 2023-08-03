@@ -42,31 +42,31 @@ abstract class _StokListesiViewModelBase with Store {
 
   @action
   void setBottomSheetModel(StokBottomSheetModel value) {
-    bottomSheetModel.grupKodu = [];
-    bottomSheetModel.kod1 = [];
-    bottomSheetModel.kod2 = [];
-    bottomSheetModel.kod3 = [];
-    bottomSheetModel.kod4 = [];
-    bottomSheetModel.kod5 = [];
+    bottomSheetModel.arrGrupKodu = [];
+    bottomSheetModel.arrKod1 = [];
+    bottomSheetModel.arrKod2 = [];
+    bottomSheetModel.arrKod3 = [];
+    bottomSheetModel.arrKod4 = [];
+    bottomSheetModel.arrKod5 = [];
   }
 
   @computed
-  String get grupKodu => bottomSheetModel.grupKodu?.map((e) => e.grupAdi).toList().join(", ") ?? "";
+  String get grupKodu => bottomSheetModel.arrGrupKodu?.map((e) => e.grupAdi).toList().join(", ") ?? "";
 
   @computed
-  String get kod1 => bottomSheetModel.kod1?.map((e) => e.grupAdi).toList().join(", ") ?? "";
+  String get kod1 => bottomSheetModel.arrKod1?.map((e) => e.grupAdi).toList().join(", ") ?? "";
 
   @computed
-  String get kod2 => bottomSheetModel.kod2?.map((e) => e.grupAdi).toList().join(", ") ?? "";
+  String get kod2 => bottomSheetModel.arrKod2?.map((e) => e.grupAdi).toList().join(", ") ?? "";
 
   @computed
-  String get kod3 => bottomSheetModel.kod3?.map((e) => e.grupAdi).toList().join(", ") ?? "";
+  String get kod3 => bottomSheetModel.arrKod3?.map((e) => e.grupAdi).toList().join(", ") ?? "";
 
   @computed
-  String get kod4 => bottomSheetModel.kod4?.map((e) => e.grupAdi).toList().join(", ") ?? "";
+  String get kod4 => bottomSheetModel.arrKod4?.map((e) => e.grupAdi).toList().join(", ") ?? "";
 
   @computed
-  String get kod5 => bottomSheetModel.kod5?.map((e) => e.grupAdi).toList().join(", ") ?? "";
+  String get kod5 => bottomSheetModel.arrKod5?.map((e) => e.grupAdi).toList().join(", ") ?? "";
 
   @observable
   String resimleriGoster = "H";

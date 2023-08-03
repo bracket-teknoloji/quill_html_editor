@@ -31,7 +31,7 @@ import '../view_model/stok_listesi_view_model.dart';
 
 class StokListesiView extends StatefulWidget {
   final bool? isGetData;
-final String? searchText;
+  final String? searchText;
   const StokListesiView({super.key, this.isGetData, this.searchText});
 
   @override
@@ -50,7 +50,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   TextEditingController kod5Controller = TextEditingController();
   @override
   void initState() {
-    if (widget.searchText != null){
+    if (widget.searchText != null) {
       viewModel.setSearchBar();
       viewModel.setSearchValue(widget.searchText!);
     }
@@ -90,8 +90,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
 
   @override
   Widget build(BuildContext context) {
-    if (viewModel.searchBar && widget.searchText != null){
-      
+    if (viewModel.searchBar && widget.searchText != null) {
       FocusScope.of(context).unfocus();
     }
     kod5Controller.text = viewModel.kod5;
@@ -244,10 +243,10 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                                       title: e.grupAdi ?? "",
                                                       value: e.grupNo.toStringIfNull,
                                                       onTap: () {
-                                                        if (viewModel.bottomSheetModel.grupKodu?.contains(e) ?? false) {
-                                                          viewModel.bottomSheetModel.grupKodu?.remove(e);
+                                                        if (viewModel.bottomSheetModel.arrGrupKodu?.contains(e) ?? false) {
+                                                          viewModel.bottomSheetModel.arrGrupKodu?.remove(e);
                                                         } else {
-                                                          viewModel.bottomSheetModel.grupKodu?.add(e);
+                                                          viewModel.bottomSheetModel.arrGrupKodu?.add(e);
                                                         }
                                                         debugPrint(viewModel.grupKodu);
                                                       },
@@ -273,10 +272,10 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                             .map((e) => BottomSheetModel(
                                                   title: e.grupAdi ?? "",
                                                   onTap: () {
-                                                    if (viewModel.bottomSheetModel.kod1?.contains(e) ?? false) {
-                                                      viewModel.bottomSheetModel.kod1?.remove(e);
+                                                    if (viewModel.bottomSheetModel.arrKod1?.contains(e) ?? false) {
+                                                      viewModel.bottomSheetModel.arrKod1?.remove(e);
                                                     } else {
-                                                      viewModel.bottomSheetModel.kod1?.add(e);
+                                                      viewModel.bottomSheetModel.arrKod1?.add(e);
                                                     }
                                                   },
                                                 ))
@@ -304,10 +303,10 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                             .map((e) => BottomSheetModel(
                                                   title: e.grupAdi ?? "",
                                                   onTap: () {
-                                                    if (viewModel.bottomSheetModel.kod2?.contains(e) ?? false) {
-                                                      viewModel.bottomSheetModel.kod2?.remove(e);
+                                                    if (viewModel.bottomSheetModel.arrKod2?.contains(e) ?? false) {
+                                                      viewModel.bottomSheetModel.arrKod2?.remove(e);
                                                     } else {
-                                                      viewModel.bottomSheetModel.kod2?.add(e);
+                                                      viewModel.bottomSheetModel.arrKod2?.add(e);
                                                     }
                                                   },
                                                 ))
@@ -331,10 +330,10 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                             .map((e) => BottomSheetModel(
                                                   title: e.grupAdi ?? "",
                                                   onTap: () {
-                                                    if (viewModel.bottomSheetModel.kod3?.contains(e) ?? false) {
-                                                      viewModel.bottomSheetModel.kod3?.remove(e);
+                                                    if (viewModel.bottomSheetModel.arrKod3?.contains(e) ?? false) {
+                                                      viewModel.bottomSheetModel.arrKod3?.remove(e);
                                                     } else {
-                                                      viewModel.bottomSheetModel.kod3?.add(e);
+                                                      viewModel.bottomSheetModel.arrKod3?.add(e);
                                                     }
                                                   },
                                                 ))
@@ -362,10 +361,10 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                             .map((e) => BottomSheetModel(
                                                   title: e.grupAdi ?? "",
                                                   onTap: () {
-                                                    if (viewModel.bottomSheetModel.kod4?.contains(e) ?? false) {
-                                                      viewModel.bottomSheetModel.kod4?.remove(e);
+                                                    if (viewModel.bottomSheetModel.arrKod4?.contains(e) ?? false) {
+                                                      viewModel.bottomSheetModel.arrKod4?.remove(e);
                                                     } else {
-                                                      viewModel.bottomSheetModel.kod4?.add(e);
+                                                      viewModel.bottomSheetModel.arrKod4?.add(e);
                                                     }
                                                   },
                                                 ))
@@ -389,10 +388,10 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                             .map((e) => BottomSheetModel(
                                                   title: e.grupAdi ?? "",
                                                   onTap: () {
-                                                    if (viewModel.bottomSheetModel.kod5?.contains(e) ?? false) {
-                                                      viewModel.bottomSheetModel.kod5?.remove(e);
+                                                    if (viewModel.bottomSheetModel.arrKod5?.contains(e) ?? false) {
+                                                      viewModel.bottomSheetModel.arrKod5?.remove(e);
                                                     } else {
-                                                      viewModel.bottomSheetModel.kod5?.add(e);
+                                                      viewModel.bottomSheetModel.arrKod5?.add(e);
                                                     }
                                                   },
                                                 ))
@@ -631,9 +630,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   Future<void> getData() async {
     viewModel.setDahaVarMi(false);
     var data2 = {"MenuKodu": "STOK_STOK", "ResimGoster": viewModel.resimleriGoster, "Siralama": viewModel.siralama, "Sayfa": viewModel.sayfa + 1, "BakiyeDurumu": viewModel.bakiye ?? ""};
-    if (!viewModel.bottomSheetModel.grupKodu.isEmptyOrNull) {
+    if (!viewModel.bottomSheetModel.arrGrupKodu.isEmptyOrNull) {
       List<String> liste = [];
-      viewModel.bottomSheetModel.grupKodu?.forEach((element) {
+      viewModel.bottomSheetModel.arrGrupKodu?.forEach((element) {
         liste.add(element.grupKodu ?? "");
       });
       data2["ArrGrupKodu"] = liste;
@@ -641,49 +640,42 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     if (viewModel.searchValue.isNotEmpty) {
       data2["SearchText"] = viewModel.searchValue;
     }
-    if (!viewModel.bottomSheetModel.kod1.isEmptyOrNull) {
+    if (!viewModel.bottomSheetModel.arrKod1.isEmptyOrNull) {
       List<String> liste = [];
-      viewModel.bottomSheetModel.kod1?.forEach((element) {
+      viewModel.bottomSheetModel.arrKod1?.forEach((element) {
         liste.add(element.grupKodu ?? "");
       });
       data2["ArrKod1"] = liste;
     }
-    if (!viewModel.bottomSheetModel.kod2.isEmptyOrNull) {
+    if (!viewModel.bottomSheetModel.arrKod2.isEmptyOrNull) {
       List<String> liste = [];
-      viewModel.bottomSheetModel.kod2?.forEach((element) {
+      viewModel.bottomSheetModel.arrKod2?.forEach((element) {
         liste.add(element.grupKodu ?? "");
       });
       data2["ArrKod2"] = liste;
     }
-    if (!viewModel.bottomSheetModel.kod3.isEmptyOrNull) {
+    if (!viewModel.bottomSheetModel.arrKod3.isEmptyOrNull) {
       List<String> liste = [];
-      viewModel.bottomSheetModel.kod3?.forEach((element) {
+      viewModel.bottomSheetModel.arrKod3?.forEach((element) {
         liste.add(element.grupKodu ?? "");
       });
       data2["ArrKod3"] = liste;
     }
-    if (!viewModel.bottomSheetModel.kod4.isEmptyOrNull) {
+    if (!viewModel.bottomSheetModel.arrKod4.isEmptyOrNull) {
       List<String> liste = [];
-      viewModel.bottomSheetModel.kod4?.forEach((element) {
+      viewModel.bottomSheetModel.arrKod4?.forEach((element) {
         liste.add(element.grupKodu ?? "");
       });
       data2["ArrKod4"] = liste;
     }
-    if (!viewModel.bottomSheetModel.kod5.isEmptyOrNull) {
+    if (!viewModel.bottomSheetModel.arrKod5.isEmptyOrNull) {
       List<String> liste = [];
-      viewModel.bottomSheetModel.kod5?.forEach((element) {
+      viewModel.bottomSheetModel.arrKod5?.forEach((element) {
         liste.add(element.grupKodu ?? "");
       });
       data2["ArrKod5"] = liste;
     }
-    GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(
-      path: ApiUrls.getStoklar,
-      data: data2,
-      bodyModel: StokListesiModel(),
-      addCKey: true,
-      addTokenKey: true,
-      addSirketBilgileri: true,
-    );
+    GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: data2, bodyModel: StokListesiModel());
     if (response.success ?? false) {
       Map<String, MemoryImage> imageMap = {};
       List<StokListesiModel>? liste = response.data.map((e) => e as StokListesiModel).toList().cast<StokListesiModel>();

@@ -1,32 +1,62 @@
+import 'package:json_annotation/json_annotation.dart';
+import 'package:picker/core/base/model/base_network_mixin.dart';
+
 import '../../../../../../core/base/model/base_grup_kodu_model.dart';
 
-class StokBottomSheetModel {
-  List<BaseGrupKoduModel>? grupKodu = [];
-  List<BaseGrupKoduModel>? kod1 = [];
-  List<BaseGrupKoduModel>? kod2 = [];
-  List<BaseGrupKoduModel>? kod3 = [];
-  List<BaseGrupKoduModel>? kod4 = [];
-  List<BaseGrupKoduModel>? kod5 = [];
+
+part 'stok_bottom_sheet_model.g.dart';
+
+@JsonSerializable(createToJson: true, includeIfNull: false, fieldRename: FieldRename.pascal)
+class StokBottomSheetModel with NetworkManagerMixin{
+  int? sayfa;
+  String? bakiyeDurumu;
+  String? menuKodu;
+  String? resimleriGoster;
+  String? siralama;
+  String? searchText;
+  List<BaseGrupKoduModel>? arrGrupKodu = [];
+  List<BaseGrupKoduModel>? arrKod1 = [];
+  List<BaseGrupKoduModel>? arrKod2 = [];
+  List<BaseGrupKoduModel>? arrKod3 = [];
+  List<BaseGrupKoduModel>? arrKod4 = [];
+  List<BaseGrupKoduModel>? arrKod5 = [];
 
   //lazy  singleton
   static StokBottomSheetModel _instance = StokBottomSheetModel._init();
   static StokBottomSheetModel get instance => _instance;
   StokBottomSheetModel._init();
 
-  StokBottomSheetModel();
+  StokBottomSheetModel({
+    this.sayfa,
+    this.bakiyeDurumu,
+    this.menuKodu,
+    this.resimleriGoster,
+    this.siralama,
+    this.searchText,
+    this.arrGrupKodu,
+    this.arrKod1,
+    this.arrKod2,
+    this.arrKod3,
+    this.arrKod4,
+    this.arrKod5,
+  });
   //setter for singleton
   void setSingleton(StokBottomSheetModel value) => _instance = value;
-  //an operator that returns if 2 objects values are equal
+            @override
+            fromJson(Map<String, dynamic> json) => _$StokBottomSheetModelFromJson(json);
+          
+            @override
+            Map<String, dynamic> toJson()  => _$StokBottomSheetModelToJson(this);
   @override
-  // ignore: hash_and_equals
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is StokBottomSheetModel &&
           runtimeType == other.runtimeType &&
-          grupKodu == other.grupKodu &&
-          kod1 == other.kod1 &&
-          kod2 == other.kod2 &&
-          kod3 == other.kod3 &&
-          kod4 == other.kod4 &&
-          kod5 == other.kod5;
+          arrGrupKodu == other.arrGrupKodu &&
+          arrKod1 == other.arrKod1 &&
+          arrKod2 == other.arrKod2 &&
+          arrKod3 == other.arrKod3 &&
+          arrKod4 == other.arrKod4 &&
+          arrKod5 == other.arrKod5;
+          
 }

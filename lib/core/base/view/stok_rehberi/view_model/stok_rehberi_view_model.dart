@@ -1,0 +1,64 @@
+import 'package:mobx/mobx.dart';
+import 'package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart';
+
+import '../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart';
+
+part 'stok_rehberi_view_model.g.dart';
+
+class StokRehberiViewModel = _StokRehberiViewModelBase with _$StokRehberiViewModel;
+
+abstract class _StokRehberiViewModelBase with Store {
+  @observable
+  bool dahaVarMi = true;
+
+  @action
+  void setDahaVarMi(bool value) => dahaVarMi = value;
+
+  @observable
+  bool isScrolledDown = false;
+
+  @action
+  void changeIsScrolledDown(bool value) => isScrolledDown = value;
+
+  @observable
+  List<StokListesiModel>? stokListesi;
+
+  @action
+  void setStokListesi(List? value) {
+    if (value == null) {
+      stokListesi = null;
+      return;
+    }
+    if (stokListesi == null) {
+      stokListesi = value.map((e) => e as StokListesiModel).toList();
+    } else {
+      stokListesi = stokListesi! + value.map((e) => e as StokListesiModel).toList();
+    }
+  }
+
+  @observable
+  StokBottomSheetModel stokBottomSheetModel = StokBottomSheetModel(sayfa: 1, siralama: "AZ");
+
+  @action
+  void increaseSayfa() => stokBottomSheetModel.sayfa = stokBottomSheetModel.sayfa! + 1;
+  @action
+  void resetSayfa() => stokBottomSheetModel.sayfa = 1;
+  @action
+  void setSiralama(String value) => stokBottomSheetModel.siralama = value;
+  @action
+  void setSearchText(String value) => stokBottomSheetModel.searchText = value;
+  @action
+  void resetPage() {
+    setStokListesi(null);
+    resetSayfa();
+  }
+
+  final Map<String, String> siralamaMap = {
+    "Stok Adı (A-Z)": "AZ",
+    "Stok Adı (Z-A)": "ZA",
+    "Stok Kodu (A-Z)": "KOD_AZ",
+    "Stok Kodu (Z-A)": "KOD_ZA",
+    "Bakiye (Artan)": "BAKIYE_AZ",
+    "Bakiye (Azalan)": "BAKIYE_ZA"
+  };
+}

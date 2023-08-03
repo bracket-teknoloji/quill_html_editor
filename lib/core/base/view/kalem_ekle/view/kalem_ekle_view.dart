@@ -84,7 +84,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 child: Observer(
                     builder: (_) => Column(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             Row(
                               children: [
@@ -94,33 +94,36 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                 Expanded(
                                     child: Text.rich(TextSpan(children: [
                                   const TextSpan(text: "StkBakiye: "),
-                                  TextSpan(text: "${viewModel.model?.bakiye.toStringIfNull} ${viewModel.model?.olcuBirimi}", style: const TextStyle(fontWeight: FontWeight.bold))
+                                  TextSpan(text: "${viewModel.model?.bakiye.toStringIfNull ?? ""} ${viewModel.model?.olcuBirimi ?? ""}", style: const TextStyle(fontWeight: FontWeight.bold))
                                 ]))),
                               ],
-                            ),
+                            ).paddingSymmetric(horizontal: UIHelper.lowSize).paddingOnly(top: UIHelper.lowSize),
                             const Row(
                               children: [
                                 Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "Brüt Tutar: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
                                 Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "MF. Tutarı: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
                               ],
-                            ),
+                            ).paddingSymmetric(horizontal: UIHelper.lowSize),
                             const Row(
                               children: [
                                 Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "İsk. Tutarı: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
                                 Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "Ara Toplam: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
                               ],
-                            ),
+                            ).paddingSymmetric(horizontal: UIHelper.lowSize),
                             const Row(
                               children: [
                                 Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "KDV Tutarı: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
                                 Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "Genel Toplam: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
                               ],
-                            ),
+                            ).paddingSymmetric(horizontal: UIHelper.lowSize),
                             Card(
-                                child: const Text.rich(TextSpan(children: [TextSpan(text: "Son Fiyat: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))
-                                    .paddingAll(UIHelper.lowSize))
+                                color: theme.colorScheme.primary.withOpacity(0.1),
+                                child: Center(
+                                  child: const Text.rich(TextSpan(children: [TextSpan(text: "Son Fiyat: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))
+                                      .paddingOnly(top: UIHelper.lowSize),
+                                ))
                           ],
-                        ).paddingAll(UIHelper.lowSize)),
+                        )),
               ),
               const CustomTextField(labelText: "Kalem Adı"),
               const CustomTextField(labelText: "Ek Alan 1"),
@@ -132,9 +135,21 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           labelText: "Teslim Tarihi",
                           controller: teslimTarihiController,
                           readOnly: true,
-                          suffix: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [IconButton(onPressed: () {}, icon: const Icon(Icons.close)), IconButton(onPressed: () {}, icon: const Icon(Icons.calendar_today_outlined))]))),
+                          suffix: Row(mainAxisSize: MainAxisSize.min, children: [
+                            IconButton(
+                                onPressed: () {
+                                  teslimTarihiController.clear();
+                                },
+                                icon: const Icon(Icons.close)),
+                            IconButton(
+                                onPressed: () async {
+                                  var result = await dialogManager.showDateTimePicker();
+                                  if (result != null) {
+                                    teslimTarihiController.text = result.toDateString();
+                                  }
+                                },
+                                icon: const Icon(Icons.calendar_today_outlined))
+                          ]))),
                   const Expanded(child: CustomTextField(labelText: "Koşul", isMust: true, readOnly: true, suffixMore: true)),
                 ],
               ),
@@ -157,10 +172,25 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   Expanded(child: CustomTextField(labelText: "Proje", controller: projeController, isMust: true, readOnly: true, suffixMore: true)),
                 ],
               ),
-              const Row(
+              Row(
                 children: [
-                  Expanded(child: CustomTextField(labelText: "Miktar", isMust: true)),
-                  Expanded(child: CustomTextField(labelText: "Miktar 2")),
+                  Expanded(
+                      child: CustomTextField(
+                    labelText: "Miktar",
+                    isMust: true,
+                    suffix: Wrap(children: [
+                      IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () {}),
+                      IconButton(icon: const Icon(Icons.add_outlined), onPressed: () {}),
+                    ]),
+                  )),
+                  Expanded(
+                      child: CustomTextField(
+                    labelText: "Miktar 2",
+                    suffix: Wrap(children: [
+                      IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () {}),
+                      IconButton(icon: const Icon(Icons.add_outlined), onPressed: () {}),
+                    ]),
+                  )),
                 ],
               ),
               const Row(
@@ -240,7 +270,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
 
   void controllerFiller() {
     teslimTarihiController.text = model.teslimTarihi.toDateString();
-    projeController.text = model.projeKodu ?? "";
+    projeController.text = BaseSiparisEditModel.instance.projeKodu ?? "";
     depoController.text = model.cikisDepoKodu.toStringIfNull ?? "";
   }
 

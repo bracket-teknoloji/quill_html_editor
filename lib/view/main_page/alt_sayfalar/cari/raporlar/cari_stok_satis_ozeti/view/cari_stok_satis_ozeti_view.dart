@@ -204,7 +204,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
               viewModel.modelList != null
                   ? (viewModel.modelList!.isNotEmpty
                       ? SizedBox(
-                          height: context.dynamicHeight(0.8),
+                          height: context.sized.dynamicHeight(0.8),
                           child: ListView.builder(
                             shrinkWrap: true,
                             itemCount: viewModel.modelList?.length,

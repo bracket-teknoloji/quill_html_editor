@@ -22,6 +22,11 @@ class BaseGrupKoduModel with NetworkManagerMixin {
   String? kod4Adi;
   String? kod5Adi;
 
+  BaseGrupKoduModel();
+
+  factory BaseGrupKoduModel.fromJson(Map<String, dynamic> json) =>
+      _$BaseGrupKoduModelFromJson(json);
+
   @override
   fromJson(Map<String, dynamic> json) {
     return _$BaseGrupKoduModelFromJson(json);

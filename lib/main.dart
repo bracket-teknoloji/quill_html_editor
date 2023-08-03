@@ -20,6 +20,7 @@ import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_gor/view/fiyat_gor
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
+import "core/base/view/stok_rehberi/view/stok_rehberi_view.dart";
 import "core/init/app_info/app_info.dart";
 import "core/init/cache/cache_manager.dart";
 import "core/init/dependency_injection/network_dependency_injection.dart";
@@ -126,11 +127,14 @@ class PickerApp extends StatelessWidget {
             //* Stok
             GetPage(
                 name: "/stokListesi",
-                page: () => StokListesiView(isGetData: Get.arguments is bool ? Get.arguments : Get.arguments.getArguments, searchText: Get.arguments is KalemEkleModel ? Get.arguments.searchText : null)),
+                page: () => StokListesiView(
+                    isGetData: Get.arguments is bool ? Get.arguments : (Get.arguments is KalemEkleModel ? Get.arguments.getArguments : null),
+                    searchText: Get.arguments is KalemEkleModel ? Get.arguments.searchText : null)),
             GetPage(name: "/stokFiyatGor", page: () => const FiyatGorView()),
             GetPage(name: "/stokFiyatGecmisi", page: () => const FiyatGecmisiView()),
 
             GetPage(name: "/stokEdit", page: () => BaseStokEditingView(model: Get.arguments)),
+            GetPage(name: "/stokRehberi", page: () => StokRehberiView(searchText: Get.arguments)),
             GetPage(
               name: "/stokHareketleri",
               page: () => StokHareketleriView(

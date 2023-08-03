@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../../../../../core/base/model/base_network_mixin.dart';
@@ -20,10 +22,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   String? duzeltmeyapankul;
   String? plasiyerAciklama;
   String? projeAciklama;
-  @JsonKey(
-    includeFromJson: false,
-  )
-  String? tempJsonData;
+  @JsonKey(includeFromJson: true)
+  BaseSiparisEditModel? tempJsonData;
   String? teslimCariAdi;
   bool? kdvDahilmi;
   bool? remoteTempBelge;
@@ -162,7 +162,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
         other.tipi == tipi &&
         other.vadeTarihi == vadeTarihi;
   }
-
+  factory BaseSiparisEditModel.fromJson(String json) => _$BaseSiparisEditModelFromJson(jsonDecode(json));
   @override
   fromJson(Map<String, dynamic> json) => _$BaseSiparisEditModelFromJson(json);
 
