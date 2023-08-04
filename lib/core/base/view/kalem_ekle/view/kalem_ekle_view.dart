@@ -125,7 +125,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           ],
                         )),
               ),
-              const CustomTextField(labelText: "Kalem Adı"),
+              CustomTextField(labelText: "Kalem Adı", controller: kalemAdiController),
               const CustomTextField(labelText: "Ek Alan 1"),
               const CustomTextField(labelText: "Ek Alan 2"),
               Row(
@@ -165,7 +165,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     onTap: () async {
                       var result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context);
                       if (result != null) {
-                        depoController.text = result.depoKodu.toStringIfNull ?? "";
+                        depoController.text = result.depoTanimi ?? "";
                       }
                     },
                   )),
@@ -248,6 +248,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   }
 
   void initControllers() {
+    kalemAdiController = TextEditingController();
     ekAlan1Controller = TextEditingController();
     ekAlan2Controller = TextEditingController();
     teslimTarihiController = TextEditingController();
@@ -269,6 +270,8 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   }
 
   void controllerFiller() {
+    kalemAdiController.text = widget.stokListesiModel?.stokAdi ?? widget.stokListesiModel?.stokKodu ?? "";
+    depoController.text = widget.stokListesiModel?.depoKodu.toStringIfNull ?? "";
     teslimTarihiController.text = model.teslimTarihi.toDateString();
     projeController.text = BaseSiparisEditModel.instance.projeKodu ?? "";
     depoController.text = model.cikisDepoKodu.toStringIfNull ?? "";

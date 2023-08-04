@@ -88,9 +88,9 @@ class _QRScannerState extends BaseState<QRScannerView> {
     return Center(
       child: Container(
         alignment: Alignment.bottomCenter,
-        padding: context.horizontalPaddingHigh,
-        margin: context.verticalPaddingHigh,
-        child: Text(barcode?.code ?? 'QR Kodu Okutunuz', style: context.appTheme.textTheme.titleLarge!.copyWith(color: Colors.white)),
+        padding: UIHelper.highPaddingHorizontal,
+        margin: UIHelper.highPaddingVertical,
+        child: Text(barcode?.code ?? 'QR Kodu Okutunuz', style: context.general.appTheme.textTheme.titleLarge!.copyWith(color: Colors.white)),
       ),
     );
   }

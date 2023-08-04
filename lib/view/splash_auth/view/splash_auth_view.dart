@@ -32,12 +32,14 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
   @override
   void initState() {
     super.initState();
-    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) async => AccountModel.instance.init());
+    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) async {
+      AccountModel.instance.init();
+      login();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 0), () => login());
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Wrap(
@@ -130,6 +132,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
         });
         if (response != null) {
           if (response.accessToken != null) {
+            CacheManager.setVerifiedUser(CacheManager.getVerifiedUser);
             CacheManager.setToken(response.accessToken!);
             await getSession();
           } else {
@@ -153,7 +156,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
     final response = await networkManager.dioPost<AccountResponseModel>(
         bodyModel: AccountResponseModel(), showError: false, data: CacheManager.getHesapBilgileri?.toJson(), addTokenKey: false, path: ApiUrls.getUyeBilgileri);
     if (response.success == true) {
-      CacheManager.setAccounts(response.data.first..parola = CacheManager.getVerifiedUser.password);
+      CacheManager.setAccounts(response.data.first..parola = CacheManager.getVerifiedUser.account?.parola);
     }
     return response;
   }

@@ -8,7 +8,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kartal/kartal.dart';
-import 'package:picker/core/base/model/generic_response_model.dart';
 import 'package:picker/core/base/model/login_dialog_model.dart';
 import 'package:picker/view/add_company/model/account_response_model.dart';
 import 'package:wave/config.dart';
@@ -224,24 +223,7 @@ class _LoginViewState extends BaseState<LoginView> {
 
   void login() async {
     dialogManager.showLoadingDialog("Yükleniyor...");
-    var result = await getUyeBilgileri();
-    if (result.success != true) {
-      if (result.errorCode == 5) {
-        CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "", false);
-        dialogManager.hideAlertDialog;
-        dialogManager.showAlertDialog(result.message ?? "");
-        return;
-      } else {
-        CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "", true);
-      }
-    } else {
-      CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "", true);
-    }
-    if (CacheManager.getIsLicenseVerified(textFieldData.account?.email ?? "") == false) {
-      dialogManager.hideAlertDialog;
-      dialogManager.showAlertDialog("Lisansınızın yenilenmesi gerekiyor.");
-      return;
-    }
+
     AccountModel instance = AccountModel.instance;
     var a = instance
       ..kullaniciAdi = emailController.text
@@ -252,6 +234,10 @@ class _LoginViewState extends BaseState<LoginView> {
       if (a.qrData == null) {
         a.uyeSifre = textFieldData.account?.parola;
       }
+    }
+    var result = await getUyeBilgileri();
+    if (!result) {
+      return;
     }
     dialogManager.hideAlertDialog;
     dialogManager.showLoadingDialog("Giriş Yapılıyor");
@@ -276,11 +262,11 @@ class _LoginViewState extends BaseState<LoginView> {
           passwordController.text,
         ]);
 
-        if (context.mounted && response != null) {
+        if (context.mounted && response?.accessToken != null) {
           CacheManager.setVerifiedUser(textFieldData
             ..username = emailController.text
             ..password = passwordController.text);
-          CacheManager.setToken(response.accessToken.toString());
+          CacheManager.setToken(response!.accessToken.toString());
           // final uyeBilgiResponse =
           //     await networkManager.dioPost<AccountResponseModel>(bodyModel: AccountResponseModel(), data: AccountModel.instance, addTokenKey: false, path: ApiUrls.getUyeBilgileri);
           // if (uyeBilgiResponse.success == true) {
@@ -299,12 +285,28 @@ class _LoginViewState extends BaseState<LoginView> {
     }
   }
 
-  Future<GenericResponseModel> getUyeBilgileri() async {
-    final response = await networkManager.dioPost<AccountResponseModel>(
+  Future<bool> getUyeBilgileri() async {
+    final result = await networkManager.dioPost<AccountResponseModel>(
         bodyModel: AccountResponseModel(), showError: false, data: AccountModel.instance.toJson(), addTokenKey: false, path: ApiUrls.getUyeBilgileri);
-    if (response.success == true) {
-      CacheManager.setAccounts(response.data.first..parola = AccountModel.instance.uyeSifre);
+    if (result.success == true) {
+      CacheManager.setAccounts(result.data.first..parola = textFieldData.account?.parola);
     }
-    return response;
+    if (result.success != true) {
+      if (result.errorCode == 5) {
+        CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "", false);
+        dialogManager.hideAlertDialog;
+        dialogManager.showAlertDialog(result.message ?? "");
+      } else {
+        CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "", true);
+      }
+    } else {
+      CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "", true);
+    }
+    if (CacheManager.getIsLicenseVerified(textFieldData.account?.email ?? "") == false) {
+      dialogManager.hideAlertDialog;
+      dialogManager.showAlertDialog("Lisansınızın yenilenmesi gerekiyor.");
+      return false;
+    }
+    return true;
   }
 }
