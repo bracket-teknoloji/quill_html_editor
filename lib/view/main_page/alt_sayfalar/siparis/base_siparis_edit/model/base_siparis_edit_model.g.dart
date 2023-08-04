@@ -3,6 +3,665 @@
 part of 'base_siparis_edit_model.dart';
 
 // **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
+  @override
+  final int typeId = 152;
+
+  @override
+  BaseSiparisEditModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return BaseSiparisEditModel()
+      ..duzeltmetarihi = fields[0] as DateTime?
+      ..kalemAdedi = fields[1] as int?
+      ..cariEfaturami = fields[2] as String?
+      ..cYedek6 = fields[3] as String?
+      ..duzeltmeyapankul = fields[4] as String?
+      ..plasiyerAciklama = fields[5] as String?
+      ..projeAciklama = fields[6] as String?
+      ..tempJsonData = fields[7] as BaseSiparisEditModel?
+      ..teslimCariAdi = fields[8] as String?
+      ..kdvDahilmi = fields[9] as bool?
+      ..remoteTempBelge = fields[10] as bool?
+      ..tempBelgeMi = fields[11] as bool?
+      ..cariModel = fields[12] as CariModel?
+      ..islemeBaslamaTarihi = fields[13] as DateTime?
+      ..istenilenTeslimTarihi = fields[14] as DateTime?
+      ..kayittarihi = fields[15] as DateTime?
+      ..kosulTarihi = fields[16] as DateTime?
+      ..tarih = fields[17] as DateTime?
+      ..teslimTarihi = fields[18] as DateTime?
+      ..vadeTarihi = fields[19] as DateTime?
+      ..araToplam = fields[20] as double?
+      ..ekMaliyet1Tutari = fields[21] as double?
+      ..ekMaliyet2Tutari = fields[22] as double?
+      ..ekMaliyet3Tutari = fields[23] as double?
+      ..genelIskonto1 = fields[24] as double?
+      ..genelIskonto2 = fields[25] as double?
+      ..genelIskonto3 = fields[26] as double?
+      ..genelToplam = fields[27] as double?
+      ..genIsk1O = fields[28] as double?
+      ..genIsk1T = fields[29] as double?
+      ..genIsk2O = fields[30] as double?
+      ..genIsk2T = fields[31] as double?
+      ..genIsk3O = fields[32] as double?
+      ..genIsk3T = fields[33] as double?
+      ..kdv = fields[34] as double?
+      ..belgeTipi = fields[35] as int?
+      ..cikisDepoKodu = fields[36] as int?
+      ..genisk1Tipi = fields[37] as int?
+      ..genisk2Tipi = fields[38] as int?
+      ..genisk3Tipi = fields[39] as int?
+      ..kalemModelAdedi = fields[40] as int?
+      ..tempBelgeId = fields[41] as int?
+      ..tempKayitTipi = fields[42] as int?
+      ..tipi = fields[43] as int?
+      ..topluDepo = fields[44] as int?
+      ..vadeGunu = fields[45] as int?
+      ..tempSipList = (fields[46] as List?)?.cast<dynamic>()
+      ..kalemList = (fields[47] as List?)?.cast<KalemModel>()
+      ..kalemModeller = (fields[48] as List?)?.cast<KalemModel>()
+      ..kalemModelList = (fields[49] as List?)?.cast<KalemModel>()
+      ..acik1 = fields[50] as String?
+      ..acik10 = fields[51] as String?
+      ..acik11 = fields[52] as String?
+      ..acik12 = fields[53] as String?
+      ..acik13 = fields[54] as String?
+      ..acik14 = fields[55] as String?
+      ..acik15 = fields[56] as String?
+      ..acik16 = fields[57] as String?
+      ..acik2 = fields[58] as String?
+      ..acik3 = fields[59] as String?
+      ..acik4 = fields[60] as String?
+      ..acik5 = fields[61] as String?
+      ..acik6 = fields[62] as String?
+      ..acik7 = fields[63] as String?
+      ..acik8 = fields[64] as String?
+      ..acik9 = fields[65] as String?
+      ..belgeKodu = fields[66] as String?
+      ..belgeNo = fields[67] as String?
+      ..belgeTuru = fields[68] as String?
+      ..cariAdi = fields[69] as String?
+      ..cariKodu = fields[70] as String?
+      ..ekAcik1 = fields[71] as String?
+      ..ekAcik10 = fields[72] as String?
+      ..ekAcik11 = fields[73] as String?
+      ..ekAcik12 = fields[74] as String?
+      ..ekAcik13 = fields[75] as String?
+      ..ekAcik14 = fields[76] as String?
+      ..ekAcik15 = fields[77] as String?
+      ..ekAcik16 = fields[78] as String?
+      ..ekAcik2 = fields[79] as String?
+      ..ekAcik3 = fields[80] as String?
+      ..ekAcik4 = fields[81] as String?
+      ..ekAcik5 = fields[82] as String?
+      ..ekAcik6 = fields[83] as String?
+      ..ekAcik7 = fields[84] as String?
+      ..ekAcik8 = fields[85] as String?
+      ..ekAcik9 = fields[86] as String?
+      ..ekAciklama = fields[87] as String?
+      ..islemId = fields[88] as String?
+      ..kayityapankul = fields[89] as String?
+      ..kdvDahil = fields[90] as String?
+      ..kosulKodu = fields[91] as String?
+      ..mevcutBelgeNo = fields[92] as String?
+      ..mevcutCariKodu = fields[93] as String?
+      ..odemeKodu = fields[94] as String?
+      ..ozelKod1 = fields[95] as String?
+      ..ozelKod2 = fields[96] as String?
+      ..pickerBelgeTuru = fields[97] as String?
+      ..plasiyerKodu = fields[98] as String?
+      ..projeKodu = fields[99] as String?
+      ..remoteTempBelgeEtiketi = fields[100] as String?
+      ..tag = fields[101] as String?;
+  }
+
+  @override
+  void write(BinaryWriter writer, BaseSiparisEditModel obj) {
+    writer
+      ..writeByte(102)
+      ..writeByte(0)
+      ..write(obj.duzeltmetarihi)
+      ..writeByte(1)
+      ..write(obj.kalemAdedi)
+      ..writeByte(2)
+      ..write(obj.cariEfaturami)
+      ..writeByte(3)
+      ..write(obj.cYedek6)
+      ..writeByte(4)
+      ..write(obj.duzeltmeyapankul)
+      ..writeByte(5)
+      ..write(obj.plasiyerAciklama)
+      ..writeByte(6)
+      ..write(obj.projeAciklama)
+      ..writeByte(7)
+      ..write(obj.tempJsonData)
+      ..writeByte(8)
+      ..write(obj.teslimCariAdi)
+      ..writeByte(9)
+      ..write(obj.kdvDahilmi)
+      ..writeByte(10)
+      ..write(obj.remoteTempBelge)
+      ..writeByte(11)
+      ..write(obj.tempBelgeMi)
+      ..writeByte(12)
+      ..write(obj.cariModel)
+      ..writeByte(13)
+      ..write(obj.islemeBaslamaTarihi)
+      ..writeByte(14)
+      ..write(obj.istenilenTeslimTarihi)
+      ..writeByte(15)
+      ..write(obj.kayittarihi)
+      ..writeByte(16)
+      ..write(obj.kosulTarihi)
+      ..writeByte(17)
+      ..write(obj.tarih)
+      ..writeByte(18)
+      ..write(obj.teslimTarihi)
+      ..writeByte(19)
+      ..write(obj.vadeTarihi)
+      ..writeByte(20)
+      ..write(obj.araToplam)
+      ..writeByte(21)
+      ..write(obj.ekMaliyet1Tutari)
+      ..writeByte(22)
+      ..write(obj.ekMaliyet2Tutari)
+      ..writeByte(23)
+      ..write(obj.ekMaliyet3Tutari)
+      ..writeByte(24)
+      ..write(obj.genelIskonto1)
+      ..writeByte(25)
+      ..write(obj.genelIskonto2)
+      ..writeByte(26)
+      ..write(obj.genelIskonto3)
+      ..writeByte(27)
+      ..write(obj.genelToplam)
+      ..writeByte(28)
+      ..write(obj.genIsk1O)
+      ..writeByte(29)
+      ..write(obj.genIsk1T)
+      ..writeByte(30)
+      ..write(obj.genIsk2O)
+      ..writeByte(31)
+      ..write(obj.genIsk2T)
+      ..writeByte(32)
+      ..write(obj.genIsk3O)
+      ..writeByte(33)
+      ..write(obj.genIsk3T)
+      ..writeByte(34)
+      ..write(obj.kdv)
+      ..writeByte(35)
+      ..write(obj.belgeTipi)
+      ..writeByte(36)
+      ..write(obj.cikisDepoKodu)
+      ..writeByte(37)
+      ..write(obj.genisk1Tipi)
+      ..writeByte(38)
+      ..write(obj.genisk2Tipi)
+      ..writeByte(39)
+      ..write(obj.genisk3Tipi)
+      ..writeByte(40)
+      ..write(obj.kalemModelAdedi)
+      ..writeByte(41)
+      ..write(obj.tempBelgeId)
+      ..writeByte(42)
+      ..write(obj.tempKayitTipi)
+      ..writeByte(43)
+      ..write(obj.tipi)
+      ..writeByte(44)
+      ..write(obj.topluDepo)
+      ..writeByte(45)
+      ..write(obj.vadeGunu)
+      ..writeByte(46)
+      ..write(obj.tempSipList)
+      ..writeByte(47)
+      ..write(obj.kalemList)
+      ..writeByte(48)
+      ..write(obj.kalemModeller)
+      ..writeByte(49)
+      ..write(obj.kalemModelList)
+      ..writeByte(50)
+      ..write(obj.acik1)
+      ..writeByte(51)
+      ..write(obj.acik10)
+      ..writeByte(52)
+      ..write(obj.acik11)
+      ..writeByte(53)
+      ..write(obj.acik12)
+      ..writeByte(54)
+      ..write(obj.acik13)
+      ..writeByte(55)
+      ..write(obj.acik14)
+      ..writeByte(56)
+      ..write(obj.acik15)
+      ..writeByte(57)
+      ..write(obj.acik16)
+      ..writeByte(58)
+      ..write(obj.acik2)
+      ..writeByte(59)
+      ..write(obj.acik3)
+      ..writeByte(60)
+      ..write(obj.acik4)
+      ..writeByte(61)
+      ..write(obj.acik5)
+      ..writeByte(62)
+      ..write(obj.acik6)
+      ..writeByte(63)
+      ..write(obj.acik7)
+      ..writeByte(64)
+      ..write(obj.acik8)
+      ..writeByte(65)
+      ..write(obj.acik9)
+      ..writeByte(66)
+      ..write(obj.belgeKodu)
+      ..writeByte(67)
+      ..write(obj.belgeNo)
+      ..writeByte(68)
+      ..write(obj.belgeTuru)
+      ..writeByte(69)
+      ..write(obj.cariAdi)
+      ..writeByte(70)
+      ..write(obj.cariKodu)
+      ..writeByte(71)
+      ..write(obj.ekAcik1)
+      ..writeByte(72)
+      ..write(obj.ekAcik10)
+      ..writeByte(73)
+      ..write(obj.ekAcik11)
+      ..writeByte(74)
+      ..write(obj.ekAcik12)
+      ..writeByte(75)
+      ..write(obj.ekAcik13)
+      ..writeByte(76)
+      ..write(obj.ekAcik14)
+      ..writeByte(77)
+      ..write(obj.ekAcik15)
+      ..writeByte(78)
+      ..write(obj.ekAcik16)
+      ..writeByte(79)
+      ..write(obj.ekAcik2)
+      ..writeByte(80)
+      ..write(obj.ekAcik3)
+      ..writeByte(81)
+      ..write(obj.ekAcik4)
+      ..writeByte(82)
+      ..write(obj.ekAcik5)
+      ..writeByte(83)
+      ..write(obj.ekAcik6)
+      ..writeByte(84)
+      ..write(obj.ekAcik7)
+      ..writeByte(85)
+      ..write(obj.ekAcik8)
+      ..writeByte(86)
+      ..write(obj.ekAcik9)
+      ..writeByte(87)
+      ..write(obj.ekAciklama)
+      ..writeByte(88)
+      ..write(obj.islemId)
+      ..writeByte(89)
+      ..write(obj.kayityapankul)
+      ..writeByte(90)
+      ..write(obj.kdvDahil)
+      ..writeByte(91)
+      ..write(obj.kosulKodu)
+      ..writeByte(92)
+      ..write(obj.mevcutBelgeNo)
+      ..writeByte(93)
+      ..write(obj.mevcutCariKodu)
+      ..writeByte(94)
+      ..write(obj.odemeKodu)
+      ..writeByte(95)
+      ..write(obj.ozelKod1)
+      ..writeByte(96)
+      ..write(obj.ozelKod2)
+      ..writeByte(97)
+      ..write(obj.pickerBelgeTuru)
+      ..writeByte(98)
+      ..write(obj.plasiyerKodu)
+      ..writeByte(99)
+      ..write(obj.projeKodu)
+      ..writeByte(100)
+      ..write(obj.remoteTempBelgeEtiketi)
+      ..writeByte(101)
+      ..write(obj.tag);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BaseSiparisEditModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class CariModelAdapter extends TypeAdapter<CariModel> {
+  @override
+  final int typeId = 163;
+
+  @override
+  CariModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CariModel()
+      ..duzeltmetarihi = fields[0] as DateTime?
+      ..kayittarihi = fields[1] as DateTime?
+      ..alacakToplami = fields[2] as double?
+      ..bakiye = fields[3] as double?
+      ..borcToplami = fields[4] as double?
+      ..boylam = fields[5] as double?
+      ..enlem = fields[6] as double?
+      ..subeKodu = fields[7] as int?
+      ..cariAdi = fields[8] as String?
+      ..cariAdres = fields[9] as String?
+      ..cariIl = fields[10] as String?
+      ..cariIlce = fields[11] as String?
+      ..cariKodu = fields[12] as String?
+      ..cariTel = fields[13] as String?
+      ..cariTip = fields[14] as String?
+      ..cariTipAciklama = fields[15] as String?
+      ..duzeltmeyapankul = fields[16] as String?
+      ..efaturaCarisi = fields[17] as String?
+      ..efaturaTipi = fields[18] as String?
+      ..email = fields[19] as String?
+      ..fax = fields[20] as String?
+      ..hesaptutmasekli = fields[21] as String?
+      ..kayityapankul = fields[22] as String?
+      ..kilit = fields[23] as String?
+      ..kosulKodu = fields[24] as String?
+      ..kull1S = fields[25] as String?
+      ..kull2S = fields[26] as String?
+      ..odemeTipi = fields[27] as String?
+      ..plasiyerAciklama = fields[28] as String?
+      ..plasiyerKodu = fields[29] as String?
+      ..riskTakibi = fields[30] as String?
+      ..ulkeAdi = fields[31] as String?
+      ..ulkeKodu = fields[32] as String?
+      ..vergiDairesi = fields[33] as String?
+      ..vergiNumarasi = fields[34] as String?
+      ..web = fields[35] as String?;
+  }
+
+  @override
+  void write(BinaryWriter writer, CariModel obj) {
+    writer
+      ..writeByte(36)
+      ..writeByte(0)
+      ..write(obj.duzeltmetarihi)
+      ..writeByte(1)
+      ..write(obj.kayittarihi)
+      ..writeByte(2)
+      ..write(obj.alacakToplami)
+      ..writeByte(3)
+      ..write(obj.bakiye)
+      ..writeByte(4)
+      ..write(obj.borcToplami)
+      ..writeByte(5)
+      ..write(obj.boylam)
+      ..writeByte(6)
+      ..write(obj.enlem)
+      ..writeByte(7)
+      ..write(obj.subeKodu)
+      ..writeByte(8)
+      ..write(obj.cariAdi)
+      ..writeByte(9)
+      ..write(obj.cariAdres)
+      ..writeByte(10)
+      ..write(obj.cariIl)
+      ..writeByte(11)
+      ..write(obj.cariIlce)
+      ..writeByte(12)
+      ..write(obj.cariKodu)
+      ..writeByte(13)
+      ..write(obj.cariTel)
+      ..writeByte(14)
+      ..write(obj.cariTip)
+      ..writeByte(15)
+      ..write(obj.cariTipAciklama)
+      ..writeByte(16)
+      ..write(obj.duzeltmeyapankul)
+      ..writeByte(17)
+      ..write(obj.efaturaCarisi)
+      ..writeByte(18)
+      ..write(obj.efaturaTipi)
+      ..writeByte(19)
+      ..write(obj.email)
+      ..writeByte(20)
+      ..write(obj.fax)
+      ..writeByte(21)
+      ..write(obj.hesaptutmasekli)
+      ..writeByte(22)
+      ..write(obj.kayityapankul)
+      ..writeByte(23)
+      ..write(obj.kilit)
+      ..writeByte(24)
+      ..write(obj.kosulKodu)
+      ..writeByte(25)
+      ..write(obj.kull1S)
+      ..writeByte(26)
+      ..write(obj.kull2S)
+      ..writeByte(27)
+      ..write(obj.odemeTipi)
+      ..writeByte(28)
+      ..write(obj.plasiyerAciklama)
+      ..writeByte(29)
+      ..write(obj.plasiyerKodu)
+      ..writeByte(30)
+      ..write(obj.riskTakibi)
+      ..writeByte(31)
+      ..write(obj.ulkeAdi)
+      ..writeByte(32)
+      ..write(obj.ulkeKodu)
+      ..writeByte(33)
+      ..write(obj.vergiDairesi)
+      ..writeByte(34)
+      ..write(obj.vergiNumarasi)
+      ..writeByte(35)
+      ..write(obj.web);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CariModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class KalemModelAdapter extends TypeAdapter<KalemModel> {
+  @override
+  final int typeId = 17;
+
+  @override
+  KalemModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return KalemModel(
+      miktar: fields[6] as double?,
+      stokKodu: fields[19] as String?,
+      stokAdi: fields[18] as String?,
+      stokOlcuBirimi: fields[20] as String?,
+      olcuBirimAdi: fields[17] as String?,
+      depoTanimi: fields[16] as String?,
+      belgeNo: fields[13] as String?,
+      belgeTipi: fields[14] as String?,
+      cariKodu: fields[15] as String?,
+      sira: fields[8] as int?,
+      hucreList: (fields[9] as List?)?.cast<dynamic>(),
+      kalemModelHucreList: (fields[10] as List?)?.cast<dynamic>(),
+      seriList: (fields[11] as List?)?.cast<dynamic>(),
+      tempBarkodList: (fields[12] as List?)?.cast<dynamic>(),
+      iskonto1OranMi: fields[0] as bool?,
+      tarih: fields[1] as DateTime?,
+      teslimTarihi: fields[2] as DateTime?,
+      brutFiyat: fields[3] as double?,
+      depoKodu: fields[4] as int?,
+      kdvOrani: fields[5] as double?,
+      olcuBirimKodu: fields[7] as int?,
+    )
+      ..dovizKuru = fields[21] as double?
+      ..dovizTipi = fields[22] as int?
+      ..dovizliFiyat = fields[23] as double?
+      ..aciklama1 = fields[24] as String?
+      ..aciklama10 = fields[25] as String?
+      ..aciklama2 = fields[26] as String?
+      ..aciklama3 = fields[27] as String?
+      ..aciklama4 = fields[28] as String?
+      ..aciklama5 = fields[29] as String?
+      ..aciklama6 = fields[30] as String?
+      ..aciklama7 = fields[31] as String?
+      ..aciklama8 = fields[32] as String?
+      ..aciklama9 = fields[33] as String?
+      ..ekalan1 = fields[34] as String?
+      ..ekalan2 = fields[35] as String?
+      ..isk1Tipi = fields[36] as int?
+      ..isk2Tipi = fields[37] as int?
+      ..isk3Tipi = fields[38] as int?
+      ..iskonto1 = fields[39] as double?
+      ..iskonto2 = fields[40] as double?
+      ..iskonto3 = fields[41] as double?
+      ..malfazIskAdedi = fields[42] as double?
+      ..miktar2 = fields[43] as double?
+      ..projeKodu = fields[44] as String?
+      ..satisFiyati = fields[45] as double?
+      ..dovizKodu = fields[46] as int?
+      ..dovizFiyati = fields[47] as double?
+      ..malfazCevrimliMiktar = fields[48] as double?
+      ..malFazlasiMiktar = fields[49] as double?;
+  }
+
+  @override
+  void write(BinaryWriter writer, KalemModel obj) {
+    writer
+      ..writeByte(50)
+      ..writeByte(0)
+      ..write(obj.iskonto1OranMi)
+      ..writeByte(1)
+      ..write(obj.tarih)
+      ..writeByte(2)
+      ..write(obj.teslimTarihi)
+      ..writeByte(3)
+      ..write(obj.brutFiyat)
+      ..writeByte(4)
+      ..write(obj.depoKodu)
+      ..writeByte(5)
+      ..write(obj.kdvOrani)
+      ..writeByte(6)
+      ..write(obj.miktar)
+      ..writeByte(7)
+      ..write(obj.olcuBirimKodu)
+      ..writeByte(8)
+      ..write(obj.sira)
+      ..writeByte(9)
+      ..write(obj.hucreList)
+      ..writeByte(10)
+      ..write(obj.kalemModelHucreList)
+      ..writeByte(11)
+      ..write(obj.seriList)
+      ..writeByte(12)
+      ..write(obj.tempBarkodList)
+      ..writeByte(13)
+      ..write(obj.belgeNo)
+      ..writeByte(14)
+      ..write(obj.belgeTipi)
+      ..writeByte(15)
+      ..write(obj.cariKodu)
+      ..writeByte(16)
+      ..write(obj.depoTanimi)
+      ..writeByte(17)
+      ..write(obj.olcuBirimAdi)
+      ..writeByte(18)
+      ..write(obj.stokAdi)
+      ..writeByte(19)
+      ..write(obj.stokKodu)
+      ..writeByte(20)
+      ..write(obj.stokOlcuBirimi)
+      ..writeByte(21)
+      ..write(obj.dovizKuru)
+      ..writeByte(22)
+      ..write(obj.dovizTipi)
+      ..writeByte(23)
+      ..write(obj.dovizliFiyat)
+      ..writeByte(24)
+      ..write(obj.aciklama1)
+      ..writeByte(25)
+      ..write(obj.aciklama10)
+      ..writeByte(26)
+      ..write(obj.aciklama2)
+      ..writeByte(27)
+      ..write(obj.aciklama3)
+      ..writeByte(28)
+      ..write(obj.aciklama4)
+      ..writeByte(29)
+      ..write(obj.aciklama5)
+      ..writeByte(30)
+      ..write(obj.aciklama6)
+      ..writeByte(31)
+      ..write(obj.aciklama7)
+      ..writeByte(32)
+      ..write(obj.aciklama8)
+      ..writeByte(33)
+      ..write(obj.aciklama9)
+      ..writeByte(34)
+      ..write(obj.ekalan1)
+      ..writeByte(35)
+      ..write(obj.ekalan2)
+      ..writeByte(36)
+      ..write(obj.isk1Tipi)
+      ..writeByte(37)
+      ..write(obj.isk2Tipi)
+      ..writeByte(38)
+      ..write(obj.isk3Tipi)
+      ..writeByte(39)
+      ..write(obj.iskonto1)
+      ..writeByte(40)
+      ..write(obj.iskonto2)
+      ..writeByte(41)
+      ..write(obj.iskonto3)
+      ..writeByte(42)
+      ..write(obj.malfazIskAdedi)
+      ..writeByte(43)
+      ..write(obj.miktar2)
+      ..writeByte(44)
+      ..write(obj.projeKodu)
+      ..writeByte(45)
+      ..write(obj.satisFiyati)
+      ..writeByte(46)
+      ..write(obj.dovizKodu)
+      ..writeByte(47)
+      ..write(obj.dovizFiyati)
+      ..writeByte(48)
+      ..write(obj.malfazCevrimliMiktar)
+      ..writeByte(49)
+      ..write(obj.malFazlasiMiktar);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is KalemModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
@@ -135,7 +794,10 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       ..plasiyerKodu = json['PLASIYER_KODU'] as String?
       ..projeKodu = json['PROJE_KODU'] as String?
       ..remoteTempBelgeEtiketi = json['REMOTE_TEMP_BELGE_ETIKETI'] as String?
-      ..tag = json['TAG'] as String?;
+      ..tag = json['TAG'] as String?
+      ..kalemler = (json['KALEMLER'] as List<dynamic>?)
+          ?.map((e) => KalemModel.fromJson(e as Map<String, dynamic>))
+          .toList();
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
     BaseSiparisEditModel instance) {
@@ -251,6 +913,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('PROJE_KODU', instance.projeKodu);
   writeNotNull('REMOTE_TEMP_BELGE_ETIKETI', instance.remoteTempBelgeEtiketi);
   writeNotNull('TAG', instance.tag);
+  writeNotNull('KALEMLER', instance.kalemler);
   return val;
 }
 
@@ -344,31 +1007,63 @@ Map<String, dynamic> _$CariModelToJson(CariModel instance) {
   return val;
 }
 
-KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel()
-  ..iskonto1OranMi = json['ISKONTO1_ORAN_MI'] as bool?
-  ..tarih =
-      json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
-  ..teslimTarihi = json['TESLIM_TARIHI'] == null
-      ? null
-      : DateTime.parse(json['TESLIM_TARIHI'] as String)
-  ..brutFiyat = (json['BRUT_FIYAT'] as num?)?.toDouble()
-  ..depoKodu = json['DEPO_KODU'] as int?
-  ..kdvOrani = (json['KDV_ORANI'] as num?)?.toDouble()
-  ..miktar = (json['MIKTAR'] as num?)?.toDouble()
-  ..olcuBirimKodu = json['OLCU_BIRIM_KODU'] as int?
-  ..sira = json['SIRA'] as int?
-  ..hucreList = json['HUCRE_LIST'] as List<dynamic>?
-  ..kalemModelHucreList = json['KALEM_MODEL_HUCRE_LIST'] as List<dynamic>?
-  ..seriList = json['SERI_LIST'] as List<dynamic>?
-  ..tempBarkodList = json['TEMP_BARKOD_LIST'] as List<dynamic>?
-  ..belgeNo = json['BELGE_NO'] as String?
-  ..belgeTipi = json['BELGE_TIPI'] as String?
-  ..cariKodu = json['CARI_KODU'] as String?
-  ..depoTanimi = json['DEPO_TANIMI'] as String?
-  ..olcuBirimAdi = json['OLCU_BIRIM_ADI'] as String?
-  ..stokAdi = json['STOK_ADI'] as String?
-  ..stokKodu = json['STOK_KODU'] as String?
-  ..stokOlcuBirimi = json['STOK_OLCU_BIRIMI'] as String?;
+KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
+      miktar: (json['MIKTAR'] as num?)?.toDouble(),
+      stokKodu: json['STOK_KODU'] as String?,
+      stokAdi: json['STOK_ADI'] as String?,
+      stokOlcuBirimi: json['STOK_OLCU_BIRIMI'] as String?,
+      olcuBirimAdi: json['OLCU_BIRIM_ADI'] as String?,
+      depoTanimi: json['DEPO_TANIMI'] as String?,
+      belgeNo: json['BELGE_NO'] as String?,
+      belgeTipi: json['BELGE_TIPI'] as String?,
+      cariKodu: json['CARI_KODU'] as String?,
+      sira: json['SIRA'] as int?,
+      hucreList: json['HUCRE_LIST'] as List<dynamic>?,
+      kalemModelHucreList: json['KALEM_MODEL_HUCRE_LIST'] as List<dynamic>?,
+      seriList: json['SERI_LIST'] as List<dynamic>?,
+      tempBarkodList: json['TEMP_BARKOD_LIST'] as List<dynamic>?,
+      iskonto1OranMi: json['ISKONTO1_ORAN_MI'] as bool?,
+      tarih: json['TARIH'] == null
+          ? null
+          : DateTime.parse(json['TARIH'] as String),
+      teslimTarihi: json['TESLIM_TARIHI'] == null
+          ? null
+          : DateTime.parse(json['TESLIM_TARIHI'] as String),
+      brutFiyat: (json['BRUT_FIYAT'] as num?)?.toDouble(),
+      depoKodu: json['DEPO_KODU'] as int?,
+      kdvOrani: (json['KDV_ORANI'] as num?)?.toDouble(),
+      olcuBirimKodu: json['OLCU_BIRIM_KODU'] as int?,
+    )
+      ..dovizKuru = (json['DOVIZ_KURU'] as num?)?.toDouble()
+      ..dovizTipi = json['DOVIZ_TIPI'] as int?
+      ..dovizliFiyat = (json['DOVIZLI_FIYAT'] as num?)?.toDouble()
+      ..aciklama1 = json['ACIKLAMA1'] as String?
+      ..aciklama10 = json['ACIKLAMA10'] as String?
+      ..aciklama2 = json['ACIKLAMA2'] as String?
+      ..aciklama3 = json['ACIKLAMA3'] as String?
+      ..aciklama4 = json['ACIKLAMA4'] as String?
+      ..aciklama5 = json['ACIKLAMA5'] as String?
+      ..aciklama6 = json['ACIKLAMA6'] as String?
+      ..aciklama7 = json['ACIKLAMA7'] as String?
+      ..aciklama8 = json['ACIKLAMA8'] as String?
+      ..aciklama9 = json['ACIKLAMA9'] as String?
+      ..ekalan1 = json['EKALAN1'] as String?
+      ..ekalan2 = json['EKALAN2'] as String?
+      ..isk1Tipi = json['ISK1_TIPI'] as int?
+      ..isk2Tipi = json['ISK2_TIPI'] as int?
+      ..isk3Tipi = json['ISK3_TIPI'] as int?
+      ..iskonto1 = (json['ISKONTO1'] as num?)?.toDouble()
+      ..iskonto2 = (json['ISKONTO2'] as num?)?.toDouble()
+      ..iskonto3 = (json['ISKONTO3'] as num?)?.toDouble()
+      ..malfazIskAdedi = (json['MALFAZ_ISK_ADEDI'] as num?)?.toDouble()
+      ..miktar2 = (json['MIKTAR2'] as num?)?.toDouble()
+      ..projeKodu = json['PROJE_KODU'] as String?
+      ..satisFiyati = (json['SATIS_FIYATI'] as num?)?.toDouble()
+      ..dovizKodu = json['DOVIZ_KODU'] as int?
+      ..dovizFiyati = (json['DOVIZ_FIYATI'] as num?)?.toDouble()
+      ..malfazCevrimliMiktar =
+          (json['MALFAZ_CEVRIMLI_MIKTAR'] as num?)?.toDouble()
+      ..malFazlasiMiktar = (json['MAL_FAZLASI_MIKTAR'] as num?)?.toDouble();
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   final val = <String, dynamic>{};
@@ -400,5 +1095,34 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('STOK_ADI', instance.stokAdi);
   writeNotNull('STOK_KODU', instance.stokKodu);
   writeNotNull('STOK_OLCU_BIRIMI', instance.stokOlcuBirimi);
+  writeNotNull('DOVIZ_KURU', instance.dovizKuru);
+  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
+  writeNotNull('DOVIZLI_FIYAT', instance.dovizliFiyat);
+  writeNotNull('ACIKLAMA1', instance.aciklama1);
+  writeNotNull('ACIKLAMA10', instance.aciklama10);
+  writeNotNull('ACIKLAMA2', instance.aciklama2);
+  writeNotNull('ACIKLAMA3', instance.aciklama3);
+  writeNotNull('ACIKLAMA4', instance.aciklama4);
+  writeNotNull('ACIKLAMA5', instance.aciklama5);
+  writeNotNull('ACIKLAMA6', instance.aciklama6);
+  writeNotNull('ACIKLAMA7', instance.aciklama7);
+  writeNotNull('ACIKLAMA8', instance.aciklama8);
+  writeNotNull('ACIKLAMA9', instance.aciklama9);
+  writeNotNull('EKALAN1', instance.ekalan1);
+  writeNotNull('EKALAN2', instance.ekalan2);
+  writeNotNull('ISK1_TIPI', instance.isk1Tipi);
+  writeNotNull('ISK2_TIPI', instance.isk2Tipi);
+  writeNotNull('ISK3_TIPI', instance.isk3Tipi);
+  writeNotNull('ISKONTO1', instance.iskonto1);
+  writeNotNull('ISKONTO2', instance.iskonto2);
+  writeNotNull('ISKONTO3', instance.iskonto3);
+  writeNotNull('MALFAZ_ISK_ADEDI', instance.malfazIskAdedi);
+  writeNotNull('MIKTAR2', instance.miktar2);
+  writeNotNull('PROJE_KODU', instance.projeKodu);
+  writeNotNull('SATIS_FIYATI', instance.satisFiyati);
+  writeNotNull('DOVIZ_KODU', instance.dovizKodu);
+  writeNotNull('DOVIZ_FIYATI', instance.dovizFiyati);
+  writeNotNull('MALFAZ_CEVRIMLI_MIKTAR', instance.malfazCevrimliMiktar);
+  writeNotNull('MAL_FAZLASI_MIKTAR', instance.malFazlasiMiktar);
   return val;
 }

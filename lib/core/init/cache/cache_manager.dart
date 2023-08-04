@@ -8,6 +8,7 @@ import '../../../view/add_company/model/account_model.dart';
 import '../../../view/add_company/model/account_response_model.dart';
 import '../../../view/auth/model/isletme_model.dart';
 import '../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_sehirler_model.dart';
+import '../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart';
 import '../../../view/main_page/model/main_page_model.dart';
 import '../../../view/main_page/model/param_model.dart';
 import '../../../view/main_page/model/sirket_model.dart';
@@ -29,6 +30,7 @@ class CacheManager {
   static late Box cariSehirBox;
   static late Box subeListesiBox;
   static late Box<bool> isLicenseVerifiedBox;
+  static late Box<BaseSiparisEditModel> siparisEditBox;
   // static late Box _grupKoduListesiBox;
   //Lazy Singleton
   static final CacheManager _instance = CacheManager._init();
@@ -45,6 +47,9 @@ class CacheManager {
     Hive.registerAdapter(IsletmeModelAdapter());
     Hive.registerAdapter(NetFectDizaynListAdapter());
     Hive.registerAdapter(LoginDialogModelAdapter());
+    Hive.registerAdapter(BaseSiparisEditModelAdapter());
+    Hive.registerAdapter(CariModelAdapter());
+    Hive.registerAdapter(KalemModelAdapter());
 
     initHiveBoxes();
   }
@@ -65,6 +70,7 @@ class CacheManager {
     cariSehirBox = await Hive.openBox("cariSehir");
     subeListesiBox = await Hive.openBox<List>("cariListesi");
     isLicenseVerifiedBox = await Hive.openBox<bool>("isLicenseVerified");
+    siparisEditBox = await Hive.openBox<BaseSiparisEditModel>("siparisEdit");
     if (isLicenseVerifiedBox.isEmpty) {
       isLicenseVerifiedBox.put("value", false);
     }
@@ -92,7 +98,15 @@ class CacheManager {
   static AccountModel? get getHesapBilgileri => hesapBilgileriBox.get("value") ?? AccountModel();
   static CariSehirlerModel getCariSehirler() => cariSehirBox.get("value");
   static List getSubeListesi() => subeListesiBox.get("value") ?? [];
-  static bool  getIsLicenseVerified(String key) => isLicenseVerifiedBox.get(key) ?? false;
+  static bool getIsLicenseVerified(String key) => isLicenseVerifiedBox.get(key) ?? false;
+
+  /// Cari Kodu ile arayacaksın
+  /// ```dart
+  /// // Örnek
+  /// BaseSiparisEditModel.instance.cariKodu
+  /// ```
+  /// {@end-tool}
+  static BaseSiparisEditModel? getSiparisEdit(String key) => siparisEditBox.get(key);
   // static String get getSirketAdi => _sirketAdiBox.get("value") ?? "";
 
   //* Setters
@@ -101,10 +115,7 @@ class CacheManager {
   static void setPref(String key, String value) => preferencesBox.put(key, value);
   static void setCompanies(String key, String value) => companiesBox.put(key, value);
   static void setAnaVeri(MainPageModel value) => anaVeriBox.put("data", value);
-  static void setAccounts(AccountResponseModel value) {
-    accountsBox.put(value.email, value);
-    log("AccountResponseModel: ${value}");
-  }
+  static void setAccounts(AccountResponseModel value) => accountsBox.put(value.email, value);
 
   static void setHesapBilgileri(AccountModel value) => hesapBilgileriBox.put("value", value);
 
@@ -121,7 +132,9 @@ class CacheManager {
 
   static void setCariSehirler(CariSehirlerModel value) => cariSehirBox.put("value", value);
   static void setSubeListesi(List value) => subeListesiBox.put("value", value);
-  static void setIsLicenseVerified(String key,bool value) => isLicenseVerifiedBox.put(key, value);
+  static void setIsLicenseVerified(String key, bool value) => isLicenseVerifiedBox.put(key, value);
+
+  static void setSiparisEdit(BaseSiparisEditModel value) => siparisEditBox.put(value.cariKodu, value);
   // static void setSirketAdi(String value) => _sirketAdiBox.put("value", value);
 
 //* Clear and Remove

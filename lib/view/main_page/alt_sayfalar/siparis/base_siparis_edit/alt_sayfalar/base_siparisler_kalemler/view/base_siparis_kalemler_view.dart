@@ -67,11 +67,11 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
           ),
           Expanded(
               child: ListView.builder(
-                  itemCount: BaseSiparisEditModel.instance.tempJsonData?.kalemAdedi ?? 0,
+                  itemCount: BaseSiparisEditModel.instance.kalemAdedi ?? 0,
                   itemBuilder: (context, index) {
                     return Card(
                         child: ListTile(
-                      onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(context, title: BaseSiparisEditModel.instance.tempJsonData?.kalemList?[index].stokAdi ?? "", children: [
+                      onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(context, title: BaseSiparisEditModel.instance.kalemList?[index].stokAdi ?? "", children: [
                         BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit_outlined),
                         BottomSheetModel(title: "Sil", iconWidget: Icons.delete_outline_outlined),
                         BottomSheetModel(
@@ -79,23 +79,23 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                             iconWidget: Icons.list_alt_outlined,
                             onTap: () {
                               Get.back();
-                              return dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = BaseSiparisEditModel.instance.tempJsonData?.kalemList?[index].stokKodu ?? "");
+                              return dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = BaseSiparisEditModel.instance.kalemList?[index].stokKodu ?? "");
                             }),
                       ]),
                       contentPadding: UIHelper.lowPadding,
                       title: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(BaseSiparisEditModel.instance.tempJsonData?.kalemList?[index].stokAdi ?? ""),
+                          Text(BaseSiparisEditModel.instance.kalemList?[index].stokAdi ?? ""),
                           IconButton(
                               onPressed: () async {
-                                await bottomSheetDialogManager.showBottomSheetDialog(context, title: BaseSiparisEditModel.instance.tempJsonData?.kalemList?[index].stokAdi ?? "", children: [
+                                await bottomSheetDialogManager.showBottomSheetDialog(context, title: BaseSiparisEditModel.instance.kalemList?[index].stokAdi ?? "", children: [
                                   BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit_outlined),
                                   BottomSheetModel(title: "Sil", iconWidget: Icons.delete_outline_outlined),
                                   BottomSheetModel(
                                       title: "Stok İşlemleri",
                                       iconWidget: Icons.list_alt_outlined,
-                                      onTap: () => dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = BaseSiparisEditModel.instance.tempJsonData?.kalemList?[index].stokKodu ?? "")),
+                                      onTap: () => dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = BaseSiparisEditModel.instance.kalemList?[index].stokKodu ?? "")),
                                 ]);
                               },
                               icon: const Icon(Icons.more_vert_outlined))
@@ -105,17 +105,17 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(BaseSiparisEditModel.instance.tempJsonData?.kalemList?[index].stokKodu ?? ""),
-                          Text("${BaseSiparisEditModel.instance.tempJsonData?.kalemList?[index].depoKodu ?? ""} - ${BaseSiparisEditModel.instance.tempJsonData?.kalemList?[index].depoTanimi ?? ""}")
+                          Text(BaseSiparisEditModel.instance.kalemler?[index].stokKodu ?? ""),
+                          Text("${BaseSiparisEditModel.instance.kalemler?[index].depoKodu ?? ""} - ${BaseSiparisEditModel.instance.kalemList?[index].depoTanimi ?? ""}")
                               .paddingOnly(bottom: UIHelper.lowSize),
                           Wrap(
                               children: [
-                            Text("Miktar: ${BaseSiparisEditModel.instance.tempJsonData?.kalemList?[index].miktar ?? ""} ${BaseSiparisEditModel.instance.tempJsonData?.kalemList?[index].olcuBirimAdi ?? ""}"),
-                            Text("Teslim Miktar: ${BaseSiparisEditModel.instance.tempJsonData?.kalemList?[index].miktar ?? ""} ${BaseSiparisEditModel.instance.tempJsonData?.kalemList?[index].olcuBirimAdi ?? ""}"),
-                            // Text("Miktar2: ${BaseSiparisEditModel.instance.tempJsonData?.kalemList?[index].miktar ?? ""} ${BaseSiparisEditModel.instance.tempJsonData?.kalemList?[index].olcuBirimAdi ?? ""}"),
-                            Text("Kalan Miktar: ${BaseSiparisEditModel.instance.tempJsonData?.kalemList?[index].miktar ?? ""} ${BaseSiparisEditModel.instance.tempJsonData?.kalemList?[index].olcuBirimAdi ?? ""}"),
-                            Text("Fiyat: ${(BaseSiparisEditModel.instance.tempJsonData?.kalemList?[index].miktar ?? 0) * (BaseSiparisEditModel.instance.tempJsonData?.kalemList?[index].brutFiyat ?? 0)}"),
-                            Text("Teslim Tarihi: ${BaseSiparisEditModel.instance.tempJsonData?.kalemList?[index].teslimTarihi.toDateStringIfNull() ?? ""}"),
+                            Text("Miktar: ${BaseSiparisEditModel.instance.kalemList?[index].miktar ?? ""} ${BaseSiparisEditModel.instance.kalemList?[index].olcuBirimAdi ?? ""}"),
+                            Text("Teslim Miktar: ${BaseSiparisEditModel.instance.kalemList?[index].miktar ?? ""} ${BaseSiparisEditModel.instance.kalemList?[index].olcuBirimAdi ?? ""}"),
+                            // Text("Miktar2: ${BaseSiparisEditModel.instance.kalemList?[index].miktar ?? ""} ${BaseSiparisEditModel.instance.kalemList?[index].olcuBirimAdi ?? ""}"),
+                            Text("Kalan Miktar: ${BaseSiparisEditModel.instance.kalemList?[index].miktar ?? ""} ${BaseSiparisEditModel.instance.kalemList?[index].olcuBirimAdi ?? ""}"),
+                            Text("Fiyat: ${(BaseSiparisEditModel.instance.kalemList?[index].miktar ?? 0) * (BaseSiparisEditModel.instance.kalemList?[index].brutFiyat ?? 0)}"),
+                            Text("Teslim Tarihi: ${BaseSiparisEditModel.instance.kalemList?[index].teslimTarihi.toDateStringIfNull() ?? ""}"),
                           ]
                                   .map((e) => SizedBox(
                                         width: width * 0.4,

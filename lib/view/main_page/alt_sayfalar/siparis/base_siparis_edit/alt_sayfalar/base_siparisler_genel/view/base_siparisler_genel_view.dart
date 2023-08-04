@@ -98,7 +98,10 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Visibility(visible: !isDuzenle, child: CustomTextField(enabled: enable, labelText: "Belge No", readOnly: true, isMust: true, controller: belgeNoController, maxLength: 15)),
+              Visibility(
+                  visible: model.isRemoteTempBelgeNull, child: CustomTextField(enabled: enable, labelText: "Belge No", readOnly: true, isMust: true, controller: belgeNoController, maxLength: 15, onChanged: (value){
+                    model.belgeNo = value;
+                  },)),
               CustomTextField(
                   enabled: isEkle,
                   labelText: "Cari",

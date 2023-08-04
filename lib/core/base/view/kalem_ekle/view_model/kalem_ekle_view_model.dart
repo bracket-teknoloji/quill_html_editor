@@ -19,5 +19,5 @@ abstract class _KalemEkleViewModelBase with Store {
   bool get dovizliMi => model?.dovizliMi ?? false;
 
   @observable
-  KalemModel kalemModel = KalemModel();
+  KalemModel kalemModel = KalemModel(miktar: 0, );
 }
