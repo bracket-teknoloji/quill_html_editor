@@ -22,7 +22,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     if (_instance?.isNew == true) {
       BaseSiparisEditModel? otherInstance = CacheManager.getSiparisEdit(_instance?.belgeNo ?? "");
       if (_instance != otherInstance && _instance?.belgeNo != null) {
-        log("Model Güncellendi: ${_instance?.cariModel?.cariKodu}");
+        log("Model Güncellendi: ${_instance?.belgeNo}");
         CacheManager.setSiparisEdit(_instance!);
       }
     }
@@ -239,17 +239,28 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   @JsonKey(includeToJson: false, includeFromJson: false)
   SiparisTipiEnum? siparisTipi;
   //! Yeni mi diye kontrol etmek için
+  @HiveField(104)
   @JsonKey(includeToJson: false, includeFromJson: false)
   bool? isNew;
+  @HiveField(105)
   String? irsaliyelesti;
+  @HiveField(106)
   int? irslesenSayi;
+  @HiveField(107)
   String? faturalasti;
+  @HiveField(108)
   int? dovizTipi;
+  @HiveField(109)
   String? dovizAdi;
+  @HiveField(110)
   String? kapatilmis;
+  @HiveField(111)
   String? aciklama;
+  @HiveField(112)
   double? dovizTutari;
+  @HiveField(113)
   String? teslimCari;
+  @HiveField(114)
   double? fYedek4;
   BaseSiparisEditModel();
 
