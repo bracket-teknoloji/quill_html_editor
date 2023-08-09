@@ -9,17 +9,20 @@ import 'package:picker/core/constants/extensions/model_extensions.dart';
 import 'package:picker/core/constants/extensions/number_extensions.dart';
 import 'package:picker/core/constants/extensions/widget_extensions.dart';
 import 'package:picker/core/constants/ui_helper/ui_helper.dart';
+import 'package:picker/core/init/cache/cache_manager.dart';
 import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
-import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_model.dart';
 
+import '../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart';
 import '../../../view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_reuqest_model.dart';
 import '../../base/model/base_edit_model.dart';
 import '../../constants/enum/base_edit_enum.dart';
+import '../../constants/enum/siparis_tipi_enum.dart';
 
 class SiparislerCard extends StatefulWidget {
-  final SiparislerModel model;
+  final BaseSiparisEditModel model;
   final Function? onDeleted;
-  const SiparislerCard({super.key, required this.model, this.onDeleted});
+  final SiparisTipiEnum siparisTipiEnum;
+  const SiparislerCard({super.key, required this.model, this.onDeleted, required this.siparisTipiEnum});
 
   @override
   State<SiparislerCard> createState() => _SiparislerCardState();
@@ -32,48 +35,61 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
         child: ListTile(
       onTap: () async {
         // var result =
-        await bottomSheetDialogManager.showBottomSheetDialog(context, title: widget.model.belgeNo ?? "", children: [
-          BottomSheetModel(
-              title: "Görüntüle",
-              iconWidget: Icons.search_outlined,
-              onTap: () {
-                Get.back();
-                return Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: SiparisEditRequestModel.fromSiparislerModel(widget.model), baseEditEnum: BaseEditEnum.goruntule));
-              }),
-          BottomSheetModel(
-              title: "Düzelt",
-              iconWidget: Icons.edit_outlined,
-              onTap: () {
-                Get.back();
-                return Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: SiparisEditRequestModel.fromSiparislerModel(widget.model), baseEditEnum: BaseEditEnum.duzenle));
-              }),
-          BottomSheetModel(
-              title: "Sil",
-              iconWidget: Icons.delete_outline,
-              onTap: () {
-                Get.back();
-                return dialogManager.showAreYouSureDialog(() async {
-                  var result = await networkManager.deleteFatura(DeleteFaturaModel().fromJson(widget.model.toJson()));
-                  if (result.success == true) {
-                    dialogManager.showSnackBar("Silindi");
-                    widget.onDeleted?.call();
-                    
-                  }
-                });
-              }),
-          BottomSheetModel(title: "Yazdır", iconWidget: Icons.print_outlined).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
-          BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
-          BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
-          BottomSheetModel(
-              title: "Cari İşlemleri",
-              iconWidget: Icons.person_outline_outlined,
-              onTap: () {
-                Get.back();
-                dialogManager.showCariGridViewDialog(CariListesiModel()
-                  ..cariKodu = widget.model.cariKodu
-                  ..cariAdi = widget.model.cariAdi);
-              }),
-        ].nullCheck.cast<BottomSheetModel>().toList());
+        await bottomSheetDialogManager.showBottomSheetDialog(context,
+            title: widget.model.belgeNo ?? "",
+            children: [
+              BottomSheetModel(
+                  title: "Görüntüle",
+                  iconWidget: Icons.search_outlined,
+                  onTap: () {
+                    Get.back();
+                    return Get.toNamed("mainPage/siparisEdit",
+                        arguments: BaseEditModel(model: SiparisEditRequestModel.fromSiparislerModel(widget.model), baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum));
+                  }),
+              BottomSheetModel(
+                  title: "Düzelt",
+                  iconWidget: Icons.edit_outlined,
+                  onTap: () {
+                    Get.back();
+                    return Get.toNamed("mainPage/siparisEdit",
+                        arguments: BaseEditModel(
+                          model: SiparisEditRequestModel.fromSiparislerModel(widget.model),
+                          baseEditEnum: BaseEditEnum.duzenle,
+                          siparisTipiEnum: widget.siparisTipiEnum,
+                        ));
+                  }),
+              BottomSheetModel(
+                  title: "Sil",
+                  iconWidget: Icons.delete_outline,
+                  onTap: () {
+                    Get.back();
+                    return dialogManager.showAreYouSureDialog(() async {
+                      if (widget.model.isNew == true) {
+                        CacheManager.removeSiparisEdit(widget.model.cariModel?.cariKodu ?? "");
+                        dialogManager.showSnackBar("Silindi");
+                        widget.onDeleted?.call();
+                        return;
+                      }
+                      var result = await networkManager.deleteFatura(DeleteFaturaModel().fromJson(widget.model.toJson()));
+                      if (result.success == true) {
+                        dialogManager.showSnackBar("Silindi");
+                        widget.onDeleted?.call();
+                      }
+                    });
+                  }),
+              BottomSheetModel(title: "Yazdır", iconWidget: Icons.print_outlined).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
+              BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
+              BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
+              BottomSheetModel(
+                  title: "Cari İşlemleri",
+                  iconWidget: Icons.person_outline_outlined,
+                  onTap: () {
+                    Get.back();
+                    dialogManager.showCariGridViewDialog(CariListesiModel()
+                      ..cariKodu = widget.model.cariKodu
+                      ..cariAdi = widget.model.cariAdi);
+                  }),
+            ].nullCheck.cast<BottomSheetModel>().toList());
       },
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -90,6 +106,10 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
             children: [
               Badge(label: Text(widget.model.remoteTempBelgeEtiketi ?? "")).yetkiVarMi(widget.model.remoteTempBelgeEtiketi != null),
               Badge(label: Text("Dövizli ${widget.model.dovizAdi ?? ""}")).yetkiVarMi(widget.model.dovizAdi != null),
+              const Badge(
+                label: Text("Tamamlanmamış"),
+                backgroundColor: Colors.red,
+              ).yetkiVarMi(widget.model.isNew == true),
               const Badge(label: Text("Kapalı")).yetkiVarMi(widget.model.tipi == 1),
               const Badge(label: Text("Onayda")).yetkiVarMi(widget.model.tipi == 3),
               Badge(label: Text("İrsaliye (${widget.model.irslesenSayi ?? ""})")).yetkiVarMi(widget.model.irsaliyelesti == "E"),
@@ -104,7 +124,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                 children: [
                   Text("Tipi: ${widget.model.yurticiMi ? "Yurtiçi" : "Yurtdışı"}"),
                   widget.model.kosulKodu != null ? Text("Koşul: ${widget.model.kosulKodu ?? ""}") : null,
-                  Text("Ara Toplam: ${widget.model.araToplam.commaSeparatedWithFixedDigits} TL"),
+                  Text("Ara Toplam: ${widget.model.getAraToplam.commaSeparatedWithFixedDigits} TL"),
                   Text("Genel Toplam: ${widget.model.genelToplam?.commaSeparatedWithFixedDigits ?? ""} TL"),
                 ].nullCheck.cast<Widget>(),
               ),

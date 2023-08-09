@@ -29,7 +29,7 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..kdvDahilmi = fields[9] as bool?
       ..remoteTempBelge = fields[10] as bool?
       ..tempBelgeMi = fields[11] as bool?
-      ..cariModel = fields[12] as CariModel?
+      ..cariModel = fields[12] as CariListesiModel?
       ..islemeBaslamaTarihi = fields[13] as DateTime?
       ..istenilenTeslimTarihi = fields[14] as DateTime?
       ..kayittarihi = fields[15] as DateTime?
@@ -118,13 +118,15 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..plasiyerKodu = fields[98] as String?
       ..projeKodu = fields[99] as String?
       ..remoteTempBelgeEtiketi = fields[100] as String?
-      ..tag = fields[101] as String?;
+      ..tag = fields[101] as String?
+      ..kalemler = (fields[102] as List?)?.cast<KalemModel>()
+      ..siparisTipi = fields[103] as SiparisTipiEnum?;
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(102)
+      ..writeByte(104)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -328,7 +330,11 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(100)
       ..write(obj.remoteTempBelgeEtiketi)
       ..writeByte(101)
-      ..write(obj.tag);
+      ..write(obj.tag)
+      ..writeByte(102)
+      ..write(obj.kalemler)
+      ..writeByte(103)
+      ..write(obj.siparisTipi);
   }
 
   @override
@@ -338,144 +344,6 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is BaseSiparisEditModelAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
-}
-
-class CariModelAdapter extends TypeAdapter<CariModel> {
-  @override
-  final int typeId = 163;
-
-  @override
-  CariModel read(BinaryReader reader) {
-    final numOfFields = reader.readByte();
-    final fields = <int, dynamic>{
-      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CariModel()
-      ..duzeltmetarihi = fields[0] as DateTime?
-      ..kayittarihi = fields[1] as DateTime?
-      ..alacakToplami = fields[2] as double?
-      ..bakiye = fields[3] as double?
-      ..borcToplami = fields[4] as double?
-      ..boylam = fields[5] as double?
-      ..enlem = fields[6] as double?
-      ..subeKodu = fields[7] as int?
-      ..cariAdi = fields[8] as String?
-      ..cariAdres = fields[9] as String?
-      ..cariIl = fields[10] as String?
-      ..cariIlce = fields[11] as String?
-      ..cariKodu = fields[12] as String?
-      ..cariTel = fields[13] as String?
-      ..cariTip = fields[14] as String?
-      ..cariTipAciklama = fields[15] as String?
-      ..duzeltmeyapankul = fields[16] as String?
-      ..efaturaCarisi = fields[17] as String?
-      ..efaturaTipi = fields[18] as String?
-      ..email = fields[19] as String?
-      ..fax = fields[20] as String?
-      ..hesaptutmasekli = fields[21] as String?
-      ..kayityapankul = fields[22] as String?
-      ..kilit = fields[23] as String?
-      ..kosulKodu = fields[24] as String?
-      ..kull1S = fields[25] as String?
-      ..kull2S = fields[26] as String?
-      ..odemeTipi = fields[27] as String?
-      ..plasiyerAciklama = fields[28] as String?
-      ..plasiyerKodu = fields[29] as String?
-      ..riskTakibi = fields[30] as String?
-      ..ulkeAdi = fields[31] as String?
-      ..ulkeKodu = fields[32] as String?
-      ..vergiDairesi = fields[33] as String?
-      ..vergiNumarasi = fields[34] as String?
-      ..web = fields[35] as String?;
-  }
-
-  @override
-  void write(BinaryWriter writer, CariModel obj) {
-    writer
-      ..writeByte(36)
-      ..writeByte(0)
-      ..write(obj.duzeltmetarihi)
-      ..writeByte(1)
-      ..write(obj.kayittarihi)
-      ..writeByte(2)
-      ..write(obj.alacakToplami)
-      ..writeByte(3)
-      ..write(obj.bakiye)
-      ..writeByte(4)
-      ..write(obj.borcToplami)
-      ..writeByte(5)
-      ..write(obj.boylam)
-      ..writeByte(6)
-      ..write(obj.enlem)
-      ..writeByte(7)
-      ..write(obj.subeKodu)
-      ..writeByte(8)
-      ..write(obj.cariAdi)
-      ..writeByte(9)
-      ..write(obj.cariAdres)
-      ..writeByte(10)
-      ..write(obj.cariIl)
-      ..writeByte(11)
-      ..write(obj.cariIlce)
-      ..writeByte(12)
-      ..write(obj.cariKodu)
-      ..writeByte(13)
-      ..write(obj.cariTel)
-      ..writeByte(14)
-      ..write(obj.cariTip)
-      ..writeByte(15)
-      ..write(obj.cariTipAciklama)
-      ..writeByte(16)
-      ..write(obj.duzeltmeyapankul)
-      ..writeByte(17)
-      ..write(obj.efaturaCarisi)
-      ..writeByte(18)
-      ..write(obj.efaturaTipi)
-      ..writeByte(19)
-      ..write(obj.email)
-      ..writeByte(20)
-      ..write(obj.fax)
-      ..writeByte(21)
-      ..write(obj.hesaptutmasekli)
-      ..writeByte(22)
-      ..write(obj.kayityapankul)
-      ..writeByte(23)
-      ..write(obj.kilit)
-      ..writeByte(24)
-      ..write(obj.kosulKodu)
-      ..writeByte(25)
-      ..write(obj.kull1S)
-      ..writeByte(26)
-      ..write(obj.kull2S)
-      ..writeByte(27)
-      ..write(obj.odemeTipi)
-      ..writeByte(28)
-      ..write(obj.plasiyerAciklama)
-      ..writeByte(29)
-      ..write(obj.plasiyerKodu)
-      ..writeByte(30)
-      ..write(obj.riskTakibi)
-      ..writeByte(31)
-      ..write(obj.ulkeAdi)
-      ..writeByte(32)
-      ..write(obj.ulkeKodu)
-      ..writeByte(33)
-      ..write(obj.vergiDairesi)
-      ..writeByte(34)
-      ..write(obj.vergiNumarasi)
-      ..writeByte(35)
-      ..write(obj.web);
-  }
-
-  @override
-  int get hashCode => typeId.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CariModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -491,57 +359,57 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return KalemModel(
-      miktar: fields[6] as double?,
-      stokKodu: fields[19] as String?,
-      stokAdi: fields[18] as String?,
-      stokOlcuBirimi: fields[20] as String?,
-      olcuBirimAdi: fields[17] as String?,
-      depoTanimi: fields[16] as String?,
-      belgeNo: fields[13] as String?,
-      belgeTipi: fields[14] as String?,
-      cariKodu: fields[15] as String?,
-      sira: fields[8] as int?,
-      hucreList: (fields[9] as List?)?.cast<dynamic>(),
-      kalemModelHucreList: (fields[10] as List?)?.cast<dynamic>(),
-      seriList: (fields[11] as List?)?.cast<dynamic>(),
-      tempBarkodList: (fields[12] as List?)?.cast<dynamic>(),
       iskonto1OranMi: fields[0] as bool?,
       tarih: fields[1] as DateTime?,
       teslimTarihi: fields[2] as DateTime?,
       brutFiyat: fields[3] as double?,
       depoKodu: fields[4] as int?,
       kdvOrani: fields[5] as double?,
+      miktar: fields[6] as double?,
       olcuBirimKodu: fields[7] as int?,
-    )
-      ..dovizKuru = fields[21] as double?
-      ..dovizTipi = fields[22] as int?
-      ..dovizliFiyat = fields[23] as double?
-      ..aciklama1 = fields[24] as String?
-      ..aciklama10 = fields[25] as String?
-      ..aciklama2 = fields[26] as String?
-      ..aciklama3 = fields[27] as String?
-      ..aciklama4 = fields[28] as String?
-      ..aciklama5 = fields[29] as String?
-      ..aciklama6 = fields[30] as String?
-      ..aciklama7 = fields[31] as String?
-      ..aciklama8 = fields[32] as String?
-      ..aciklama9 = fields[33] as String?
-      ..ekalan1 = fields[34] as String?
-      ..ekalan2 = fields[35] as String?
-      ..isk1Tipi = fields[36] as int?
-      ..isk2Tipi = fields[37] as int?
-      ..isk3Tipi = fields[38] as int?
-      ..iskonto1 = fields[39] as double?
-      ..iskonto2 = fields[40] as double?
-      ..iskonto3 = fields[41] as double?
-      ..malfazIskAdedi = fields[42] as double?
-      ..miktar2 = fields[43] as double?
-      ..projeKodu = fields[44] as String?
-      ..satisFiyati = fields[45] as double?
-      ..dovizKodu = fields[46] as int?
-      ..dovizFiyati = fields[47] as double?
-      ..malfazCevrimliMiktar = fields[48] as double?
-      ..malFazlasiMiktar = fields[49] as double?;
+      sira: fields[8] as int?,
+      hucreList: (fields[9] as List?)?.cast<dynamic>(),
+      kalemModelHucreList: (fields[10] as List?)?.cast<dynamic>(),
+      seriList: (fields[11] as List?)?.cast<dynamic>(),
+      tempBarkodList: (fields[12] as List?)?.cast<dynamic>(),
+      belgeNo: fields[13] as String?,
+      belgeTipi: fields[14] as String?,
+      cariKodu: fields[15] as String?,
+      depoTanimi: fields[16] as String?,
+      olcuBirimAdi: fields[17] as String?,
+      stokAdi: fields[18] as String?,
+      stokKodu: fields[19] as String?,
+      stokOlcuBirimi: fields[20] as String?,
+      dovizKuru: fields[21] as double?,
+      dovizTipi: fields[22] as int?,
+      dovizliFiyat: fields[23] as double?,
+      aciklama1: fields[24] as String?,
+      aciklama10: fields[25] as String?,
+      aciklama2: fields[26] as String?,
+      aciklama3: fields[27] as String?,
+      aciklama4: fields[28] as String?,
+      aciklama5: fields[29] as String?,
+      aciklama6: fields[30] as String?,
+      aciklama7: fields[31] as String?,
+      aciklama8: fields[32] as String?,
+      aciklama9: fields[33] as String?,
+      ekalan1: fields[34] as String?,
+      ekalan2: fields[35] as String?,
+      isk1Tipi: fields[36] as int?,
+      isk2Tipi: fields[37] as int?,
+      isk3Tipi: fields[38] as int?,
+      iskonto1: fields[39] as double?,
+      iskonto2: fields[40] as double?,
+      iskonto3: fields[41] as double?,
+      malfazIskAdedi: fields[42] as double?,
+      miktar2: fields[43] as double?,
+      projeKodu: fields[44] as String?,
+      satisFiyati: fields[45] as double?,
+      dovizKodu: fields[46] as int?,
+      dovizFiyati: fields[47] as double?,
+      malfazCevrimliMiktar: fields[48] as double?,
+      malFazlasiMiktar: fields[49] as double?,
+    );
   }
 
   @override
@@ -686,7 +554,8 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       ..tempBelgeMi = json['TEMP_BELGE_MI'] as bool?
       ..cariModel = json['CARI_MODEL'] == null
           ? null
-          : CariModel.fromJson(json['CARI_MODEL'] as Map<String, dynamic>)
+          : CariListesiModel.fromJson(
+              json['CARI_MODEL'] as Map<String, dynamic>)
       ..islemeBaslamaTarihi = json['ISLEME_BASLAMA_TARIHI'] == null
           ? null
           : DateTime.parse(json['ISLEME_BASLAMA_TARIHI'] as String)
@@ -797,7 +666,17 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       ..tag = json['TAG'] as String?
       ..kalemler = (json['KALEMLER'] as List<dynamic>?)
           ?.map((e) => KalemModel.fromJson(e as Map<String, dynamic>))
-          .toList();
+          .toList()
+      ..irsaliyelesti = json['IRSALIYELESTI'] as String?
+      ..irslesenSayi = json['IRSLESEN_SAYI'] as int?
+      ..faturalasti = json['FATURALASTI'] as String?
+      ..dovizTipi = json['DOVIZ_TIPI'] as int?
+      ..dovizAdi = json['DOVIZ_ADI'] as String?
+      ..kapatilmis = json['KAPATILMIS'] as String?
+      ..aciklama = json['ACIKLAMA'] as String?
+      ..dovizTutari = (json['DOVIZ_TUTARI'] as num?)?.toDouble()
+      ..teslimCari = json['TESLIM_CARI'] as String?
+      ..fYedek4 = (json['F_YEDEK4'] as num?)?.toDouble();
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
     BaseSiparisEditModel instance) {
@@ -914,114 +793,20 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('REMOTE_TEMP_BELGE_ETIKETI', instance.remoteTempBelgeEtiketi);
   writeNotNull('TAG', instance.tag);
   writeNotNull('KALEMLER', instance.kalemler);
-  return val;
-}
-
-CariModel _$CariModelFromJson(Map<String, dynamic> json) => CariModel()
-  ..duzeltmetarihi = json['DUZELTMETARIHI'] == null
-      ? null
-      : DateTime.parse(json['DUZELTMETARIHI'] as String)
-  ..kayittarihi = json['KAYITTARIHI'] == null
-      ? null
-      : DateTime.parse(json['KAYITTARIHI'] as String)
-  ..alacakToplami = (json['ALACAK_TOPLAMI'] as num?)?.toDouble()
-  ..bakiye = (json['BAKIYE'] as num?)?.toDouble()
-  ..borcToplami = (json['BORC_TOPLAMI'] as num?)?.toDouble()
-  ..boylam = (json['BOYLAM'] as num?)?.toDouble()
-  ..enlem = (json['ENLEM'] as num?)?.toDouble()
-  ..subeKodu = json['SUBE_KODU'] as int?
-  ..cariAdi = json['CARI_ADI'] as String?
-  ..cariAdres = json['CARI_ADRES'] as String?
-  ..cariIl = json['CARI_IL'] as String?
-  ..cariIlce = json['CARI_ILCE'] as String?
-  ..cariKodu = json['CARI_KODU'] as String?
-  ..cariTel = json['CARI_TEL'] as String?
-  ..cariTip = json['CARI_TIP'] as String?
-  ..cariTipAciklama = json['CARI_TIP_ACIKLAMA'] as String?
-  ..duzeltmeyapankul = json['DUZELTMEYAPANKUL'] as String?
-  ..efaturaCarisi = json['EFATURA_CARISI'] as String?
-  ..efaturaTipi = json['EFATURA_TIPI'] as String?
-  ..email = json['EMAIL'] as String?
-  ..fax = json['FAX'] as String?
-  ..hesaptutmasekli = json['HESAPTUTMASEKLI'] as String?
-  ..kayityapankul = json['KAYITYAPANKUL'] as String?
-  ..kilit = json['KILIT'] as String?
-  ..kosulKodu = json['KOSUL_KODU'] as String?
-  ..kull1S = json['KULL1_S'] as String?
-  ..kull2S = json['KULL2_S'] as String?
-  ..odemeTipi = json['ODEME_TIPI'] as String?
-  ..plasiyerAciklama = json['PLASIYER_ACIKLAMA'] as String?
-  ..plasiyerKodu = json['PLASIYER_KODU'] as String?
-  ..riskTakibi = json['RISK_TAKIBI'] as String?
-  ..ulkeAdi = json['ULKE_ADI'] as String?
-  ..ulkeKodu = json['ULKE_KODU'] as String?
-  ..vergiDairesi = json['VERGI_DAIRESI'] as String?
-  ..vergiNumarasi = json['VERGI_NUMARASI'] as String?
-  ..web = json['WEB'] as String?;
-
-Map<String, dynamic> _$CariModelToJson(CariModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('DUZELTMETARIHI', instance.duzeltmetarihi?.toIso8601String());
-  writeNotNull('KAYITTARIHI', instance.kayittarihi?.toIso8601String());
-  writeNotNull('ALACAK_TOPLAMI', instance.alacakToplami);
-  writeNotNull('BAKIYE', instance.bakiye);
-  writeNotNull('BORC_TOPLAMI', instance.borcToplami);
-  writeNotNull('BOYLAM', instance.boylam);
-  writeNotNull('ENLEM', instance.enlem);
-  writeNotNull('SUBE_KODU', instance.subeKodu);
-  writeNotNull('CARI_ADI', instance.cariAdi);
-  writeNotNull('CARI_ADRES', instance.cariAdres);
-  writeNotNull('CARI_IL', instance.cariIl);
-  writeNotNull('CARI_ILCE', instance.cariIlce);
-  writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('CARI_TEL', instance.cariTel);
-  writeNotNull('CARI_TIP', instance.cariTip);
-  writeNotNull('CARI_TIP_ACIKLAMA', instance.cariTipAciklama);
-  writeNotNull('DUZELTMEYAPANKUL', instance.duzeltmeyapankul);
-  writeNotNull('EFATURA_CARISI', instance.efaturaCarisi);
-  writeNotNull('EFATURA_TIPI', instance.efaturaTipi);
-  writeNotNull('EMAIL', instance.email);
-  writeNotNull('FAX', instance.fax);
-  writeNotNull('HESAPTUTMASEKLI', instance.hesaptutmasekli);
-  writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
-  writeNotNull('KILIT', instance.kilit);
-  writeNotNull('KOSUL_KODU', instance.kosulKodu);
-  writeNotNull('KULL1_S', instance.kull1S);
-  writeNotNull('KULL2_S', instance.kull2S);
-  writeNotNull('ODEME_TIPI', instance.odemeTipi);
-  writeNotNull('PLASIYER_ACIKLAMA', instance.plasiyerAciklama);
-  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
-  writeNotNull('RISK_TAKIBI', instance.riskTakibi);
-  writeNotNull('ULKE_ADI', instance.ulkeAdi);
-  writeNotNull('ULKE_KODU', instance.ulkeKodu);
-  writeNotNull('VERGI_DAIRESI', instance.vergiDairesi);
-  writeNotNull('VERGI_NUMARASI', instance.vergiNumarasi);
-  writeNotNull('WEB', instance.web);
+  writeNotNull('IRSALIYELESTI', instance.irsaliyelesti);
+  writeNotNull('IRSLESEN_SAYI', instance.irslesenSayi);
+  writeNotNull('FATURALASTI', instance.faturalasti);
+  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
+  writeNotNull('DOVIZ_ADI', instance.dovizAdi);
+  writeNotNull('KAPATILMIS', instance.kapatilmis);
+  writeNotNull('ACIKLAMA', instance.aciklama);
+  writeNotNull('DOVIZ_TUTARI', instance.dovizTutari);
+  writeNotNull('TESLIM_CARI', instance.teslimCari);
+  writeNotNull('F_YEDEK4', instance.fYedek4);
   return val;
 }
 
 KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
-      miktar: (json['MIKTAR'] as num?)?.toDouble(),
-      stokKodu: json['STOK_KODU'] as String?,
-      stokAdi: json['STOK_ADI'] as String?,
-      stokOlcuBirimi: json['STOK_OLCU_BIRIMI'] as String?,
-      olcuBirimAdi: json['OLCU_BIRIM_ADI'] as String?,
-      depoTanimi: json['DEPO_TANIMI'] as String?,
-      belgeNo: json['BELGE_NO'] as String?,
-      belgeTipi: json['BELGE_TIPI'] as String?,
-      cariKodu: json['CARI_KODU'] as String?,
-      sira: json['SIRA'] as int?,
-      hucreList: json['HUCRE_LIST'] as List<dynamic>?,
-      kalemModelHucreList: json['KALEM_MODEL_HUCRE_LIST'] as List<dynamic>?,
-      seriList: json['SERI_LIST'] as List<dynamic>?,
-      tempBarkodList: json['TEMP_BARKOD_LIST'] as List<dynamic>?,
       iskonto1OranMi: json['ISKONTO1_ORAN_MI'] as bool?,
       tarih: json['TARIH'] == null
           ? null
@@ -1032,38 +817,52 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       brutFiyat: (json['BRUT_FIYAT'] as num?)?.toDouble(),
       depoKodu: json['DEPO_KODU'] as int?,
       kdvOrani: (json['KDV_ORANI'] as num?)?.toDouble(),
+      miktar: (json['MIKTAR'] as num?)?.toDouble(),
       olcuBirimKodu: json['OLCU_BIRIM_KODU'] as int?,
-    )
-      ..dovizKuru = (json['DOVIZ_KURU'] as num?)?.toDouble()
-      ..dovizTipi = json['DOVIZ_TIPI'] as int?
-      ..dovizliFiyat = (json['DOVIZLI_FIYAT'] as num?)?.toDouble()
-      ..aciklama1 = json['ACIKLAMA1'] as String?
-      ..aciklama10 = json['ACIKLAMA10'] as String?
-      ..aciklama2 = json['ACIKLAMA2'] as String?
-      ..aciklama3 = json['ACIKLAMA3'] as String?
-      ..aciklama4 = json['ACIKLAMA4'] as String?
-      ..aciklama5 = json['ACIKLAMA5'] as String?
-      ..aciklama6 = json['ACIKLAMA6'] as String?
-      ..aciklama7 = json['ACIKLAMA7'] as String?
-      ..aciklama8 = json['ACIKLAMA8'] as String?
-      ..aciklama9 = json['ACIKLAMA9'] as String?
-      ..ekalan1 = json['EKALAN1'] as String?
-      ..ekalan2 = json['EKALAN2'] as String?
-      ..isk1Tipi = json['ISK1_TIPI'] as int?
-      ..isk2Tipi = json['ISK2_TIPI'] as int?
-      ..isk3Tipi = json['ISK3_TIPI'] as int?
-      ..iskonto1 = (json['ISKONTO1'] as num?)?.toDouble()
-      ..iskonto2 = (json['ISKONTO2'] as num?)?.toDouble()
-      ..iskonto3 = (json['ISKONTO3'] as num?)?.toDouble()
-      ..malfazIskAdedi = (json['MALFAZ_ISK_ADEDI'] as num?)?.toDouble()
-      ..miktar2 = (json['MIKTAR2'] as num?)?.toDouble()
-      ..projeKodu = json['PROJE_KODU'] as String?
-      ..satisFiyati = (json['SATIS_FIYATI'] as num?)?.toDouble()
-      ..dovizKodu = json['DOVIZ_KODU'] as int?
-      ..dovizFiyati = (json['DOVIZ_FIYATI'] as num?)?.toDouble()
-      ..malfazCevrimliMiktar =
-          (json['MALFAZ_CEVRIMLI_MIKTAR'] as num?)?.toDouble()
-      ..malFazlasiMiktar = (json['MAL_FAZLASI_MIKTAR'] as num?)?.toDouble();
+      sira: json['SIRA'] as int?,
+      hucreList: json['HUCRE_LIST'] as List<dynamic>?,
+      kalemModelHucreList: json['KALEM_MODEL_HUCRE_LIST'] as List<dynamic>?,
+      seriList: json['SERI_LIST'] as List<dynamic>?,
+      tempBarkodList: json['TEMP_BARKOD_LIST'] as List<dynamic>?,
+      belgeNo: json['BELGE_NO'] as String?,
+      belgeTipi: json['BELGE_TIPI'] as String?,
+      cariKodu: json['CARI_KODU'] as String?,
+      depoTanimi: json['DEPO_TANIMI'] as String?,
+      olcuBirimAdi: json['OLCU_BIRIM_ADI'] as String?,
+      stokAdi: json['STOK_ADI'] as String?,
+      stokKodu: json['STOK_KODU'] as String?,
+      stokOlcuBirimi: json['STOK_OLCU_BIRIMI'] as String?,
+      dovizKuru: (json['DOVIZ_KURU'] as num?)?.toDouble(),
+      dovizTipi: json['DOVIZ_TIPI'] as int?,
+      dovizliFiyat: (json['DOVIZLI_FIYAT'] as num?)?.toDouble(),
+      aciklama1: json['ACIKLAMA1'] as String?,
+      aciklama10: json['ACIKLAMA10'] as String?,
+      aciklama2: json['ACIKLAMA2'] as String?,
+      aciklama3: json['ACIKLAMA3'] as String?,
+      aciklama4: json['ACIKLAMA4'] as String?,
+      aciklama5: json['ACIKLAMA5'] as String?,
+      aciklama6: json['ACIKLAMA6'] as String?,
+      aciklama7: json['ACIKLAMA7'] as String?,
+      aciklama8: json['ACIKLAMA8'] as String?,
+      aciklama9: json['ACIKLAMA9'] as String?,
+      ekalan1: json['EKALAN1'] as String?,
+      ekalan2: json['EKALAN2'] as String?,
+      isk1Tipi: json['ISK1_TIPI'] as int?,
+      isk2Tipi: json['ISK2_TIPI'] as int?,
+      isk3Tipi: json['ISK3_TIPI'] as int?,
+      iskonto1: (json['ISKONTO1'] as num?)?.toDouble(),
+      iskonto2: (json['ISKONTO2'] as num?)?.toDouble(),
+      iskonto3: (json['ISKONTO3'] as num?)?.toDouble(),
+      malfazIskAdedi: (json['MALFAZ_ISK_ADEDI'] as num?)?.toDouble(),
+      miktar2: (json['MIKTAR2'] as num?)?.toDouble(),
+      projeKodu: json['PROJE_KODU'] as String?,
+      satisFiyati: (json['SATIS_FIYATI'] as num?)?.toDouble(),
+      dovizKodu: json['DOVIZ_KODU'] as int?,
+      dovizFiyati: (json['DOVIZ_FIYATI'] as num?)?.toDouble(),
+      malfazCevrimliMiktar:
+          (json['MALFAZ_CEVRIMLI_MIKTAR'] as num?)?.toDouble(),
+      malFazlasiMiktar: (json['MAL_FAZLASI_MIKTAR'] as num?)?.toDouble(),
+    );
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   final val = <String, dynamic>{};

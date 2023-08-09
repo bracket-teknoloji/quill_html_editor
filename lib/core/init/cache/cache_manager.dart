@@ -2,17 +2,19 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:picker/core/base/model/login_dialog_model.dart';
 
 import '../../../view/add_company/model/account_model.dart';
 import '../../../view/add_company/model/account_response_model.dart';
 import '../../../view/auth/model/isletme_model.dart';
+import '../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
 import '../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_sehirler_model.dart';
 import '../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart';
 import '../../../view/main_page/model/main_page_model.dart';
 import '../../../view/main_page/model/param_model.dart';
 import '../../../view/main_page/model/sirket_model.dart';
 import '../../../view/main_page/model/user_model/user_model.dart';
+import '../../base/model/login_dialog_model.dart';
+import '../../constants/enum/siparis_tipi_enum.dart';
 import 'favorites_model.dart';
 
 class CacheManager {
@@ -48,8 +50,9 @@ class CacheManager {
     Hive.registerAdapter(NetFectDizaynListAdapter());
     Hive.registerAdapter(LoginDialogModelAdapter());
     Hive.registerAdapter(BaseSiparisEditModelAdapter());
-    Hive.registerAdapter(CariModelAdapter());
     Hive.registerAdapter(KalemModelAdapter());
+    Hive.registerAdapter(CariListesiModelAdapter());
+    Hive.registerAdapter(SiparisTipiEnumAdapter());
 
     initHiveBoxes();
   }
@@ -107,6 +110,7 @@ class CacheManager {
   /// ```
   /// {@end-tool}
   static BaseSiparisEditModel? getSiparisEdit(String key) => siparisEditBox.get(key);
+  static List<BaseSiparisEditModel?> get getSiparisEditList => siparisEditBox.values.map((e) => e..isNew = true).toList().cast<BaseSiparisEditModel?>();
   // static String get getSirketAdi => _sirketAdiBox.get("value") ?? "";
 
   //* Setters
@@ -134,7 +138,7 @@ class CacheManager {
   static void setSubeListesi(List value) => subeListesiBox.put("value", value);
   static void setIsLicenseVerified(String key, bool value) => isLicenseVerifiedBox.put(key, value);
 
-  static void setSiparisEdit(BaseSiparisEditModel value) => siparisEditBox.put(value.cariKodu, value);
+  static void setSiparisEdit(BaseSiparisEditModel value) => siparisEditBox.put(value.belgeNo, value);
   // static void setSirketAdi(String value) => _sirketAdiBox.put("value", value);
 
 //* Clear and Remove
@@ -148,4 +152,5 @@ class CacheManager {
   }
 
   static void removeFavoriWithIndex(int index) => favorilerBox.deleteAt(index);
+  static void removeSiparisEdit(String key) => siparisEditBox.delete(key);
 }

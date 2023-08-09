@@ -528,6 +528,12 @@ class BottomSheetDialogManager {
     return proje;
   }
 
+  Future<DovizList?> showDovizDialog(BuildContext context) async {
+    List<DovizList> dovizList = CacheManager.getAnaVeri()?.paramModel?.dovizList ?? [];
+    DovizList? doviz = await showRadioBottomSheetDialog(context, title: "Döviz Seçiniz", children: dovizList.map((e) => BottomSheetModel(title: e.isim ?? "", value: e)).toList());
+    return doviz;
+  }
+
   Future<YaziciList?> showYaziciDialog(BuildContext context) async {
     List<YaziciList>? yaziciList = CacheManager.getAnaVeri()?.paramModel?.yaziciList;
     var result = await showRadioBottomSheetDialog(context,
@@ -551,6 +557,11 @@ class BottomSheetDialogManager {
     NetFectDizaynList? dizayn =
         await showRadioBottomSheetDialog(context, title: "Diazyn Seçiniz", children: netFectDizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList());
     return dizayn;
+  }
+
+  Future<double?> showKDVOranlariDialog(BuildContext context) async {
+    var list =await NetworkManager().getKDVOrani();
+    return await showRadioBottomSheetDialog(context, title: "KDV Oranı Seçiniz", children: list?.map((e) => BottomSheetModel(title: e.toString(), value: e)).toList());
   }
 
   Future<PrintModel?> showPrintDialog(BuildContext context, DicParams dicParams) async {

@@ -7,12 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kartal/kartal.dart';
-import 'package:picker/core/base/model/login_dialog_model.dart';
-import 'package:picker/view/add_company/model/account_response_model.dart';
-import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
 
 import '../../../view/add_company/model/account_model.dart';
+import '../../../view/add_company/model/account_response_model.dart';
+import '../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
 import '../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart';
+import '../../base/model/login_dialog_model.dart';
 import '../../constants/enum/islem_tipi_enum.dart';
 import '../../constants/ui_helper/icon_helper.dart';
 import '../../constants/ui_helper/ui_helper.dart';
@@ -104,6 +104,19 @@ class DialogManager {
         btnOkText: "Tamam",
         onOk: () {},
       ).show();
+
+  Future showStokKayitliDialog(StokListesiModel model) async {
+    bool result = false;
+    await _baseDialog(
+      desc: "Stok Kodu:${model.stokKodu}\n\nÜrün Listenizde Mevcut\nYine de eklensin mi?",
+      dialogType: DialogType.question,
+      btnOkText: "Evet",
+      onOk: () => result = true,
+      btnCancelText: "Hayır",
+      onCancel: () {},
+    ).show();
+    return result;
+  }
 
   void showGridViewDialog(Widget body) => _baseDialog(body: body, onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 

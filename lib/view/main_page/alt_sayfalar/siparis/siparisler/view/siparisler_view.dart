@@ -22,10 +22,12 @@ import 'package:picker/core/components/wrap/appbar_title.dart';
 import 'package:picker/core/constants/extensions/number_extensions.dart';
 import 'package:picker/core/constants/ui_helper/ui_helper.dart';
 import 'package:picker/core/init/network/login/api_urls.dart';
-import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_model.dart';
 import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/view_model/siparisler_view_model.dart';
 
 import '../../../../../../core/constants/enum/base_edit_enum.dart';
+import '../../../../../../core/constants/enum/siparis_tipi_enum.dart';
+import '../../../../../../core/init/cache/cache_manager.dart';
+import '../../base_siparis_edit/model/base_siparis_edit_model.dart';
 import '../model/siparis_edit_reuqest_model.dart';
 
 class SiparislerView extends StatefulWidget {
@@ -54,7 +56,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
   late TextEditingController kod4Controller;
   late TextEditingController kod5Controller;
   late SiparislerViewModel viewModel;
-  List<SiparislerModel?>? get musteriSiparisleriList => viewModel.musteriSiparisleriList;
+  List<BaseSiparisEditModel?>? get musteriSiparisleriList => viewModel.musteriSiparisleriList;
 
   @override
   void initState() {
@@ -357,7 +359,9 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
 
   Observer fab() => Observer(
       builder: (_) => CustomFloatingActionButton(
-          isScrolledDown: viewModel.isScrolledDown, onPressed: () => Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: SiparisEditRequestModel(), baseEditEnum: BaseEditEnum.ekle))));
+          isScrolledDown: viewModel.isScrolledDown,
+          onPressed: () => Get.toNamed("mainPage/siparisEdit",
+              arguments: BaseEditModel(model: SiparisEditRequestModel(), baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: widget.isSiparisler ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici))));
 
   RefreshIndicator body() {
     return RefreshIndicator.adaptive(
@@ -387,6 +391,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                         }
                         return SiparislerCard(
                           model: viewModel.musteriSiparisleriList![index]!,
+                          siparisTipiEnum: widget.isSiparisler ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici,
                           onDeleted: () {
                             viewModel.setSiparislerList(null);
                             viewModel.setDahaVarMi(true);
@@ -410,19 +415,20 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
 
   void getData() async {
     viewModel.setDahaVarMi(false);
-    var result = await networkManager.dioGet<SiparislerModel>(path: ApiUrls.getFaturalar, bodyModel: SiparislerModel(), queryParameters: viewModel.musteriSiparisleriRequestModel.toJson());
+    var result = await networkManager.dioGet<BaseSiparisEditModel>(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: viewModel.musteriSiparisleriRequestModel.toJson());
     if (result.data != null) {
       if (viewModel.sayfa == 1) {
+        viewModel.setSiparislerList(CacheManager.getSiparisEditList);
         viewModel.setParamData(result.paramData?.map((key, value) => MapEntry(key, value.toString())) ?? {});
       }
-      List<SiparislerModel?>? list = result.data.map((e) => e as SiparislerModel).toList().cast<SiparislerModel?>();
+      List<BaseSiparisEditModel?>? list = result.data.map((e) => e as BaseSiparisEditModel?).toList().cast<BaseSiparisEditModel?>();
       if (list!.length < 25) {
         viewModel.setDahaVarMi(false);
       } else {
         viewModel.setDahaVarMi(true);
         viewModel.increaseSayfa();
       }
-      if (viewModel.musteriSiparisleriList == null) {
+      if (viewModel.musteriSiparisleriList.ext.isNullOrEmpty) {
         viewModel.setSiparislerList(list);
       } else {
         viewModel.addSiparislerList(list);

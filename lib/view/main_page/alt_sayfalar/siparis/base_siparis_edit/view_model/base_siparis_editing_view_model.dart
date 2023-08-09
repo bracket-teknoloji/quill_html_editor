@@ -1,5 +1,6 @@
 import 'package:mobx/mobx.dart';
-import 'package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart';
+
+import '../model/base_siparis_edit_model.dart';
 
 part 'base_siparis_editing_view_model.g.dart';
 
@@ -12,8 +13,8 @@ abstract class _BaseSiparisEditingViewModelBase with Store {
   @action
   void changeIsLastPage(bool value) => isLastPage = value;
 
-  @observable
-  int getKalemCount = BaseSiparisEditModel.instance.kalemList?.length ?? 0;
+  @computed
+  int get getKalemCount => BaseSiparisEditModel.instance.getKalemSayisi;
 
   @observable
   bool isBaseSiparisEmpty = BaseSiparisEditModel.instance.isEmpty;
@@ -22,7 +23,7 @@ abstract class _BaseSiparisEditingViewModelBase with Store {
   void changeIsBaseSiparisEmpty(bool value) => isBaseSiparisEmpty = value;
   @action
   void changeFuture() {
-    getKalemCount = BaseSiparisEditModel.instance.kalemList?.length ?? 0;
     changeIsBaseSiparisEmpty(BaseSiparisEditModel.instance.isEmpty);
+    print(getKalemCount);
   }
 }

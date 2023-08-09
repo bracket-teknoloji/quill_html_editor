@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
-import 'package:picker/core/base/view/kalem_ekle/view_model/kalem_ekle_view_model.dart';
-import 'package:picker/core/components/textfield/custom_text_field.dart';
-import 'package:picker/core/constants/extensions/date_time_extensions.dart';
-import 'package:picker/core/constants/extensions/number_extensions.dart';
-import 'package:picker/core/constants/ui_helper/ui_helper.dart';
-import 'package:picker/core/init/network/login/api_urls.dart';
 
 import '../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart';
 import '../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart';
+import '../../../../components/textfield/custom_text_field.dart';
+import '../../../../constants/extensions/date_time_extensions.dart';
+import '../../../../constants/extensions/number_extensions.dart';
+import '../../../../constants/extensions/widget_extensions.dart';
+import '../../../../constants/ui_helper/ui_helper.dart';
+import '../../../../init/network/login/api_urls.dart';
 import '../../../model/doviz_kurlari_model.dart';
 import '../../../state/base_state.dart';
+import '../view_model/kalem_ekle_view_model.dart';
 
 class KalemEkleView extends StatefulWidget {
   final StokListesiModel? stokListesiModel;
@@ -31,6 +32,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   late final TextEditingController kosulController;
   late final TextEditingController depoController;
   late final TextEditingController projeController;
+  late final TextEditingController dovizTipiController;
+  late final TextEditingController dovizKuruController;
+  late final TextEditingController dovizFiyatiController;
   late final TextEditingController miktarController;
   late final TextEditingController miktar2Controller;
   late final TextEditingController malFazMiktarController;
@@ -72,196 +76,266 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
         });
         return result;
       },
-      child: Scaffold(
-          appBar: AppBar(
-            title: const Text("Kalem Ekle"),
-            actions: [
-              IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
-              IconButton(
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      BaseSiparisEditModel.instance.kalemler?.add(viewModel.kalemModel);
-                      Get.back();
-                    }
-                  },
-                  icon: const Icon(Icons.save_outlined)),
-            ],
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () async {
-              dialogManager.showStokGridViewDialog(viewModel.model);
+      child: Scaffold(appBar: appBar(), floatingActionButton: fab(), body: body(context)),
+    );
+  }
+
+  AppBar appBar() {
+    return AppBar(
+      title: const Text("Kalem Ekle"),
+      actions: [
+        IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
+        IconButton(
+            onPressed: () {
+              if (formKey.currentState!.validate()) {
+                BaseSiparisEditModel.instance.kalemler ??= [];
+                BaseSiparisEditModel.instance.kalemler?.add(viewModel.kalemModel);
+                Get.back();
+              }
             },
-            child: const Icon(Icons.open_in_new_outlined),
-          ),
-          body: Column(
-            children: [
-              Card(
-                child: Observer(
-                    builder: (_) => Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Row(
-                              children: [
-                                Expanded(
-                                    child: Text.rich(TextSpan(
-                                        children: [const TextSpan(text: "Stok Kodu: "), TextSpan(text: viewModel.model?.stokKodu ?? "", style: const TextStyle(fontWeight: FontWeight.bold))]))),
-                                Expanded(
-                                    child: Text.rich(TextSpan(children: [
-                                  const TextSpan(text: "StkBakiye: "),
-                                  TextSpan(text: "${viewModel.model?.bakiye.toStringIfNull ?? ""} ${viewModel.model?.olcuBirimi ?? ""}", style: const TextStyle(fontWeight: FontWeight.bold))
-                                ]))),
-                              ],
-                            ).paddingSymmetric(horizontal: UIHelper.lowSize).paddingOnly(top: UIHelper.lowSize),
-                            const Row(
-                              children: [
-                                Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "Brüt Tutar: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
-                                Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "MF. Tutarı: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
-                              ],
-                            ).paddingSymmetric(horizontal: UIHelper.lowSize),
-                            const Row(
-                              children: [
-                                Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "İsk. Tutarı: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
-                                Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "Ara Toplam: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
-                              ],
-                            ).paddingSymmetric(horizontal: UIHelper.lowSize),
-                            const Row(
-                              children: [
-                                Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "KDV Tutarı: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
-                                Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "Genel Toplam: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
-                              ],
-                            ).paddingSymmetric(horizontal: UIHelper.lowSize),
-                            Card(
-                                color: theme.colorScheme.primary.withOpacity(0.1),
-                                child: Center(
-                                  child: const Text.rich(TextSpan(children: [TextSpan(text: "Son Fiyat: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))
-                                      .paddingOnly(top: UIHelper.lowSize),
-                                ))
-                          ],
-                        )),
-              ),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Form(
-                    key: formKey,
-                    child: Column(
-                      children: [
-                        CustomTextField(labelText: "Kalem Adı", controller: kalemAdiController),
-                        const CustomTextField(labelText: "Ek Alan 1"),
-                        const CustomTextField(labelText: "Ek Alan 2"),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                                child: CustomTextField(
-                                    labelText: "Teslim Tarihi",
-                                    controller: teslimTarihiController,
-                                    readOnly: true,
-                                    suffix: Row(mainAxisSize: MainAxisSize.min, children: [
-                                      IconButton(
-                                          onPressed: () {
-                                            teslimTarihiController.clear();
-                                          },
-                                          icon: const Icon(Icons.close)),
-                                      IconButton(
-                                          onPressed: () async {
-                                            var result = await dialogManager.showDateTimePicker();
-                                            if (result != null) {
-                                              teslimTarihiController.text = result.toDateString();
-                                              viewModel.kalemModel.teslimTarihi = result;
-                                            }
-                                          },
-                                          icon: const Icon(Icons.calendar_today_outlined))
-                                    ]))),
-                            const Expanded(child: CustomTextField(labelText: "Koşul", isMust: true, readOnly: true, suffixMore: true)),
-                          ],
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                                child: CustomTextField(
-                              labelText: "Depo",
-                              controller: depoController,
-                              isMust: true,
+            icon: const Icon(Icons.save_outlined)),
+      ],
+    );
+  }
+
+  FloatingActionButton fab() {
+    return FloatingActionButton(
+      onPressed: () async {
+        dialogManager.showStokGridViewDialog(viewModel.model);
+      },
+      child: const Icon(Icons.open_in_new_outlined),
+    );
+  }
+
+  Column body(BuildContext context) {
+    return Column(
+      children: [
+        Card(
+          child: Observer(
+              builder: (_) => Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                              child: Text.rich(
+                                  TextSpan(children: [const TextSpan(text: "Stok Kodu: "), TextSpan(text: viewModel.model?.stokKodu ?? "", style: const TextStyle(fontWeight: FontWeight.bold))]))),
+                          Expanded(
+                              child: Text.rich(TextSpan(children: [
+                            const TextSpan(text: "StkBakiye: "),
+                            TextSpan(text: "${viewModel.model?.bakiye.toStringIfNull ?? ""} ${viewModel.model?.olcuBirimi ?? ""}", style: const TextStyle(fontWeight: FontWeight.bold))
+                          ]))),
+                        ],
+                      ).paddingSymmetric(horizontal: UIHelper.lowSize).paddingOnly(top: UIHelper.lowSize),
+                      const Row(
+                        children: [
+                          Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "Brüt Tutar: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
+                          Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "MF. Tutarı: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
+                        ],
+                      ).paddingSymmetric(horizontal: UIHelper.lowSize),
+                      const Row(
+                        children: [
+                          Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "İsk. Tutarı: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
+                          Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "Ara Toplam: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
+                        ],
+                      ).paddingSymmetric(horizontal: UIHelper.lowSize),
+                      const Row(
+                        children: [
+                          Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "KDV Tutarı: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
+                          Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "Genel Toplam: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
+                        ],
+                      ).paddingSymmetric(horizontal: UIHelper.lowSize),
+                      Card(
+                          color: theme.colorScheme.primary.withOpacity(0.1),
+                          child: Center(
+                            child: const Text.rich(TextSpan(children: [TextSpan(text: "Son Fiyat: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))
+                                .paddingOnly(top: UIHelper.lowSize),
+                          ))
+                    ],
+                  )),
+        ),
+        Expanded(
+          child: SingleChildScrollView(
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  CustomTextField(labelText: "Kalem Adı", controller: kalemAdiController),
+                  CustomTextField(labelText: "Ek Alan 1", onChanged: (p0) => viewModel.kalemModel.ekalan1 = p0),
+                  CustomTextField(labelText: "Ek Alan 12", onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                          child: CustomTextField(
+                              labelText: "Teslim Tarihi",
+                              controller: teslimTarihiController,
                               readOnly: true,
-                              suffixMore: true,
-                              onTap: () async {
-                                var result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context);
-                                if (result != null) {
-                                  depoController.text = result.depoTanimi ?? "";
-                                  viewModel.kalemModel.depoTanimi = result.depoTanimi;
-                                  viewModel.kalemModel.depoKodu = result.depoKodu;
-                                }
-                              },
-                            )),
-                            Expanded(child: CustomTextField(labelText: "Proje", controller: projeController, isMust: true, readOnly: true, suffixMore: true)),
-                          ],
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                                child: CustomTextField(
-                              labelText: "Miktar",
-                              isMust: true,
-                              suffix: Wrap(children: [
-                                IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () {}),
-                                IconButton(icon: const Icon(Icons.add_outlined), onPressed: () {}),
-                              ]),
-                            )),
-                            Expanded(
-                                child: CustomTextField(
-                              labelText: "Miktar 2",
-                              suffix: Wrap(children: [
-                                IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () {}),
-                                IconButton(icon: const Icon(Icons.add_outlined), onPressed: () {}),
-                              ]),
-                            )),
-                          ],
-                        ),
-                        const Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(child: CustomTextField(labelText: "Mal. Faz. Miktar")),
-                            Expanded(child: CustomTextField(labelText: "Ölçü Birimi", readOnly: true, suffixMore: true)),
-                          ],
-                        ),
-                        const Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(child: CustomTextField(labelText: "KDV Oranı", isMust: true)),
-                            Expanded(child: CustomTextField(labelText: "Fiyat")),
-                          ],
-                        ),
-                        const Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(child: CustomTextField(labelText: "İsk.1")),
-                            Expanded(child: CustomTextField(labelText: "İsk.Tipi 1")),
-                          ],
-                        ),
-                        const Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(child: CustomTextField(labelText: "İsk.Tipi 2")),
-                            Expanded(child: CustomTextField(labelText: "İsk.2 %")),
-                          ],
-                        ),
-                        const Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(child: CustomTextField(labelText: "İsk.Tipi 3")),
-                            Expanded(child: CustomTextField(labelText: "İsk.3 %")),
-                          ],
-                        ),
-                      ],
-                    ),
+                              suffix: Row(mainAxisSize: MainAxisSize.min, children: [
+                                IconButton(
+                                    onPressed: () {
+                                      teslimTarihiController.clear();
+                                    },
+                                    icon: const Icon(Icons.close)),
+                                IconButton(
+                                    onPressed: () async {
+                                      var result = await dialogManager.showDateTimePicker();
+                                      if (result != null) {
+                                        teslimTarihiController.text = result.toDateString();
+                                        viewModel.kalemModel.teslimTarihi = result;
+                                      }
+                                    },
+                                    icon: const Icon(Icons.calendar_today_outlined))
+                              ]))),
+                      const Expanded(child: CustomTextField(labelText: "Koşul", readOnly: true, suffixMore: true)),
+                    ],
                   ),
-                ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                          child: CustomTextField(
+                        labelText: "Depo",
+                        controller: depoController,
+                        isMust: true,
+                        readOnly: true,
+                        suffixMore: true,
+                        onTap: () async {
+                          var result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context);
+                          if (result != null) {
+                            depoController.text = result.depoTanimi ?? "";
+                            viewModel.kalemModel.depoTanimi = result.depoTanimi;
+                            viewModel.kalemModel.depoKodu = result.depoKodu;
+                          }
+                        },
+                      )),
+                      Expanded(
+                          child: CustomTextField(
+                        labelText: "Proje",
+                        controller: projeController,
+                        isMust: true,
+                        readOnly: true,
+                        suffixMore: true,
+                        onTap: () async {
+                          var result = await bottomSheetDialogManager.showProjeDialog(context);
+                          if (result != null) {
+                            projeController.text = result.projeAciklama ?? "";
+                            viewModel.kalemModel.projeKodu = result.projeKodu;
+                          }
+                        },
+                      )),
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                          child: CustomTextField(
+                        labelText: "Döviz Tipi",
+                        controller: dovizTipiController,
+                        isMust: true,
+                        readOnly: true,
+                        suffixMore: true,
+                        onTap: () async {
+                          var result = await bottomSheetDialogManager.showDovizDialog(context);
+                          if (result != null) {
+                            dovizTipiController.text = result.isim ?? "";
+                            viewModel.kalemModel.dovizTipi = result.dovizKodu;
+                          }
+                        },
+                      )).yetkiVarMi(widget.stokListesiModel?.dovizliMi ?? false),
+                      Expanded(child: CustomTextField(labelText: "Döviz Kuru", controller: dovizKuruController, keyboardType: TextInputType.number))
+                          .yetkiVarMi(widget.stokListesiModel?.dovizliMi ?? false),
+                    ],
+                  ),
+                  CustomTextField(
+                      labelText: "Döviz Fiyatı",
+                      controller: dovizFiyatiController,
+                      keyboardType: TextInputType.number,
+                      onChanged: (p0) => viewModel.kalemModel.dovizFiyati = double.tryParse(p0)).yetkiVarMi(widget.stokListesiModel?.dovizliMi ?? false),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                          child: CustomTextField(
+                        labelText: "Miktar",
+                        isMust: true,
+                        controller: miktarController,
+                        keyboardType: TextInputType.number,
+                        onChanged: (value) => viewModel.setMiktar(int.tryParse(value) ?? 0),
+                        suffix: Wrap(children: [
+                          IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () => viewModel.decreaseMiktar(miktarController)),
+                          IconButton(icon: const Icon(Icons.add_outlined), onPressed: () => viewModel.increaseMiktar(miktarController)),
+                        ]),
+                      )),
+                      Expanded(
+                          child: CustomTextField(
+                        labelText: "Miktar 2",
+                        controller: miktar2Controller,
+                        keyboardType: TextInputType.number,
+                        onChanged: (value) => viewModel.setMiktar2(int.tryParse(value) ?? 0),
+                        suffix: Wrap(children: [
+                          IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () => viewModel.decreaseMiktar2(miktar2Controller)),
+                          IconButton(icon: const Icon(Icons.add_outlined), onPressed: () => viewModel.increaseMiktar2(miktar2Controller)),
+                        ]),
+                      )),
+                    ],
+                  ),
+                  const Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(child: CustomTextField(labelText: "Mal. Faz. Miktar")),
+                      Expanded(child: CustomTextField(labelText: "Ölçü Birimi", readOnly: true, suffixMore: true)),
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                          child: CustomTextField(
+                        labelText: "KDV Oranı",
+                        controller: kdvOraniController,
+                        isMust: true,
+                        readOnly: true,
+                        onTap: () async {
+                          var result = await bottomSheetDialogManager.showKDVOranlariDialog(context);
+                          if (result != null) {
+                            kdvOraniController.text = result.toString();
+                            viewModel.kalemModel.kdvOrani = result;
+                          }
+                        },
+                      )),
+                      const Expanded(child: CustomTextField(labelText: "Fiyat")),
+                    ],
+                  ),
+                  const Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(child: CustomTextField(labelText: "İsk.1")),
+                      Expanded(child: CustomTextField(labelText: "İsk.Tipi 1")),
+                    ],
+                  ),
+                  const Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(child: CustomTextField(labelText: "İsk.Tipi 2")),
+                      Expanded(child: CustomTextField(labelText: "İsk.2 %")),
+                    ],
+                  ),
+                  const Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(child: CustomTextField(labelText: "İsk.Tipi 3")),
+                      Expanded(child: CustomTextField(labelText: "İsk.3 %")),
+                    ],
+                  ),
+                ],
               ),
-            ],
-          )),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -277,9 +351,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
       if (viewModel.dovizliMi) {
         var dovizResult =
             await networkManager.dioGet(path: ApiUrls.getDovizKurlari, bodyModel: DovizKurlariModel(), queryParameters: {"EkranTipi": "D", "DovizTipi": 2, "Tarih": result.duzeltmetarihi});
-        if (dovizResult.data != null) {
-          print(dovizResult.data);
-        }
+        if (dovizResult.data != null) {}
       }
     }
   }
@@ -292,6 +364,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     kosulController = TextEditingController();
     depoController = TextEditingController();
     projeController = TextEditingController();
+    dovizTipiController = TextEditingController();
+    dovizKuruController = TextEditingController();
+    dovizFiyatiController = TextEditingController();
     miktarController = TextEditingController();
     miktar2Controller = TextEditingController();
     malFazMiktarController = TextEditingController();
@@ -308,10 +383,13 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
 
   void controllerFiller() {
     kalemAdiController.text = widget.stokListesiModel?.stokAdi ?? widget.stokListesiModel?.stokKodu ?? "";
-    depoController.text = widget.stokListesiModel?.depoKodu.toStringIfNull ?? "";
+    miktarController.text = viewModel.kalemModel.miktar!.toIntIfDouble.toString();
+    miktar2Controller.text = viewModel.kalemModel.miktar2!.toIntIfDouble.toString();
+    depoController.text = widget.stokListesiModel?.depoKodu.toStringIfNull ?? "kjhlkjh";
     teslimTarihiController.text = model.teslimTarihi.toDateString();
     projeController.text = BaseSiparisEditModel.instance.projeKodu ?? "";
     depoController.text = model.cikisDepoKodu.toStringIfNull ?? "";
+    viewModel.kalemModel.stokAdi = widget.stokListesiModel?.stokAdi ?? widget.stokListesiModel?.stokKodu ?? "";
   }
 
   void disposeControllers() {
@@ -322,6 +400,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     kosulController.dispose();
     depoController.dispose();
     projeController.dispose();
+    dovizTipiController.dispose();
+    dovizKuruController.dispose();
+    dovizFiyatiController.dispose();
     miktarController.dispose();
     miktar2Controller.dispose();
     malFazMiktarController.dispose();

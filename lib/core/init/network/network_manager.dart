@@ -17,6 +17,7 @@ import 'package:picker/core/init/cache/cache_manager.dart';
 import 'package:picker/view/add_company/model/account_model.dart';
 import 'package:picker/view/auth/model/login_model.dart';
 
+import '../../base/model/base_empty_model.dart';
 import '../../base/model/base_grup_kodu_model.dart';
 import '../../base/model/base_pdf_model.dart';
 import '../../base/model/print_model.dart';
@@ -33,7 +34,6 @@ class NetworkManager {
         connectTimeout: const Duration(seconds: 20),
         sendTimeout: const Duration(minutes: 2),
         receiveDataWhenStatusError: true,
-        
         contentType: "application/json",
         responseType: ResponseType.json,
       ));
@@ -56,9 +56,9 @@ class NetworkManager {
             return handler.next(DioException(requestOptions: RequestOptions(), message: "Bağlantı zaman aşımına uğradı."));
           } else if (e.type == DioExceptionType.unknown) {
             return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz."));
-          }else if (e.type == DioExceptionType.receiveTimeout || e.type == DioExceptionType.sendTimeout || e.type == DioExceptionType.connectionTimeout) {
+          } else if (e.type == DioExceptionType.receiveTimeout || e.type == DioExceptionType.sendTimeout || e.type == DioExceptionType.connectionTimeout) {
             return handler.next(DioException(requestOptions: RequestOptions(), message: e.message));
-          }else {
+          } else {
             handler.next(e);
           }
         },
@@ -165,7 +165,7 @@ class NetworkManager {
     return responseModel;
   }
 
-  Future<GenericResponseModel> deleteFatura(DeleteFaturaModel model ,{showError =true, showLoading =true} ) {
+  Future<GenericResponseModel> deleteFatura(DeleteFaturaModel model, {showError = true, showLoading = true}) {
     return dioPost<DeleteFaturaModel>(path: ApiUrls.deleteFatura, bodyModel: DeleteFaturaModel(), data: model.toJson(), showError: showError, showLoading: showLoading);
   }
 
@@ -230,12 +230,17 @@ class NetworkManager {
     }
     return null;
   }
+
+  Future<List?> getKDVOrani() async {
+    var result = await dioGet<BaseEmptyModel>(path: ApiUrls.getStokDigerBilgi, bodyModel: BaseEmptyModel(), queryParameters: {"BilgiTipi": "KDVGRUP"});
+    return jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]);
+  }
+
   Future<GenericResponseModel> postPrint(BuildContext context, {required DicParams model}) async {
     var result = await BottomSheetDialogManager().showPrintDialog(context, model);
     if (result != null) {
       return dioPost<PrintModel>(path: ApiUrls.print, bodyModel: PrintModel(), data: model.toJson());
-    }
-    else{
+    } else {
       return GenericResponseModel(success: false);
     }
   }

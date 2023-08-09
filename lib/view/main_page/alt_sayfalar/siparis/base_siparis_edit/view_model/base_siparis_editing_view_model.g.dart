@@ -9,6 +9,14 @@ part of 'base_siparis_editing_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
+  Computed<int>? _$getKalemCountComputed;
+
+  @override
+  int get getKalemCount =>
+      (_$getKalemCountComputed ??= Computed<int>(() => super.getKalemCount,
+              name: '_BaseSiparisEditingViewModelBase.getKalemCount'))
+          .value;
+
   late final _$isLastPageAtom = Atom(
       name: '_BaseSiparisEditingViewModelBase.isLastPage', context: context);
 
@@ -22,22 +30,6 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
   set isLastPage(bool value) {
     _$isLastPageAtom.reportWrite(value, super.isLastPage, () {
       super.isLastPage = value;
-    });
-  }
-
-  late final _$getKalemCountAtom = Atom(
-      name: '_BaseSiparisEditingViewModelBase.getKalemCount', context: context);
-
-  @override
-  int get getKalemCount {
-    _$getKalemCountAtom.reportRead();
-    return super.getKalemCount;
-  }
-
-  @override
-  set getKalemCount(int value) {
-    _$getKalemCountAtom.reportWrite(value, super.getKalemCount, () {
-      super.getKalemCount = value;
     });
   }
 
@@ -103,8 +95,8 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
   String toString() {
     return '''
 isLastPage: ${isLastPage},
-getKalemCount: ${getKalemCount},
-isBaseSiparisEmpty: ${isBaseSiparisEmpty}
+isBaseSiparisEmpty: ${isBaseSiparisEmpty},
+getKalemCount: ${getKalemCount}
     ''';
   }
 }

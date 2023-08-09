@@ -1,10 +1,14 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../../../../../core/base/model/base_network_mixin.dart';
+import '../../../../../../core/constants/enum/siparis_tipi_enum.dart';
 import '../../../../../../core/init/cache/cache_manager.dart';
+import '../../../cari/cari_listesi/model/cari_listesi_model.dart';
+import '../../../stok/stok_liste/model/stok_listesi_model.dart';
 
 part 'base_siparis_edit_model.g.dart';
 
@@ -15,10 +19,10 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   static BaseSiparisEditModel? _instance;
   static BaseSiparisEditModel get instance {
     _instance ??= BaseSiparisEditModel._init();
-    //if instance and setSiparisEdit are not equeal
-    //setSiparisEdit will be called
-    if (_instance?.cariKodu != null) {
-      if (_instance == CacheManager.getSiparisEdit(_instance?.cariKodu ?? "")) {
+    if (_instance?.isNew == true) {
+      BaseSiparisEditModel? otherInstance = CacheManager.getSiparisEdit(_instance?.belgeNo ?? "");
+      if (_instance != otherInstance && _instance?.belgeNo != null) {
+        log("Model Güncellendi: ${_instance?.cariModel?.cariKodu}");
         CacheManager.setSiparisEdit(_instance!);
       }
     }
@@ -50,7 +54,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   @HiveField(11)
   bool? tempBelgeMi;
   @HiveField(12)
-  CariModel? cariModel;
+  CariListesiModel? cariModel;
   @HiveField(13)
   DateTime? islemeBaslamaTarihi;
   @HiveField(14)
@@ -229,26 +233,45 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   String? remoteTempBelgeEtiketi;
   @HiveField(101)
   String? tag;
+  @HiveField(102)
   List<KalemModel>? kalemler;
+  @HiveField(103)
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  SiparisTipiEnum? siparisTipi;
+  //! Yeni mi diye kontrol etmek için
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  bool? isNew;
+  String? irsaliyelesti;
+  int? irslesenSayi;
+  String? faturalasti;
+  int? dovizTipi;
+  String? dovizAdi;
+  String? kapatilmis;
+  String? aciklama;
+  double? dovizTutari;
+  String? teslimCari;
+  double? fYedek4;
   BaseSiparisEditModel();
 
   BaseSiparisEditModel._init();
 
+  bool kalemEkliMi(StokListesiModel? model) {
+    if (model != null) {
+      return kalemList?.any((element) => element.stokKodu == model.stokKodu) ?? false;
+    } else {
+      return false;
+    }
+  }
+
+  double get getAraToplam => (genelToplam ?? 0) - (kdv ?? 0);
+  double get getToplamMiktar => kalemler?.map((e) => e.miktar).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
+  bool get yurticiMi => tipi != 6;
+  int get getKalemSayisi => kalemler?.length ?? (kalemAdedi ?? 0);
   bool get isEmpty => this == BaseSiparisEditModel();
   bool get isRemoteTempBelgeNull => remoteTempBelge == null;
 
   double get getToplamIskonto => (genelIskonto1 ?? 0) + (genelIskonto2 ?? 0) + (genelIskonto3 ?? 0);
   double get getBrutTutar => kalemList?.map((e) => e.brutFiyat).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
-
-  @override
-  //override ==
-  bool operator ==(Object other) {
-    if (other is BaseSiparisEditModel) {
-      return toJson().toString() == other.toJson().toString();
-    }
-    return false;
-  }
-
 
   factory BaseSiparisEditModel.fromJson(String json) => _$BaseSiparisEditModelFromJson(jsonDecode(json));
 
@@ -260,93 +283,10 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   Map<String, dynamic> toJson() => _$BaseSiparisEditModelToJson(this);
 
   //reset singleton
-  static void resetInstance() => _instance = BaseSiparisEditModel();
+  static void resetInstance() => setInstance(BaseSiparisEditModel());
 
   //setter for singleton
   static void setInstance(BaseSiparisEditModel instance) => _instance = instance;
-}
-
-@HiveType(typeId: 163)
-@JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, includeIfNull: false, createFactory: true)
-class CariModel {
-  @HiveField(0)
-  DateTime? duzeltmetarihi;
-  @HiveField(1)
-  DateTime? kayittarihi;
-  @HiveField(2)
-  double? alacakToplami;
-  @HiveField(3)
-  double? bakiye;
-  @HiveField(4)
-  double? borcToplami;
-  @HiveField(5)
-  double? boylam;
-  @HiveField(6)
-  double? enlem;
-  @HiveField(7)
-  int? subeKodu;
-  @HiveField(8)
-  String? cariAdi;
-  @HiveField(9)
-  String? cariAdres;
-  @HiveField(10)
-  String? cariIl;
-  @HiveField(11)
-  String? cariIlce;
-  @HiveField(12)
-  String? cariKodu;
-  @HiveField(13)
-  String? cariTel;
-  @HiveField(14)
-  String? cariTip;
-  @HiveField(15)
-  String? cariTipAciklama;
-  @HiveField(16)
-  String? duzeltmeyapankul;
-  @HiveField(17)
-  String? efaturaCarisi;
-  @HiveField(18)
-  String? efaturaTipi;
-  @HiveField(19)
-  String? email;
-  @HiveField(20)
-  String? fax;
-  @HiveField(21)
-  String? hesaptutmasekli;
-  @HiveField(22)
-  String? kayityapankul;
-  @HiveField(23)
-  String? kilit;
-  @HiveField(24)
-  String? kosulKodu;
-  @HiveField(25)
-  String? kull1S;
-  @HiveField(26)
-  String? kull2S;
-  @HiveField(27)
-  String? odemeTipi;
-  @HiveField(28)
-  String? plasiyerAciklama;
-  @HiveField(29)
-  String? plasiyerKodu;
-  @HiveField(30)
-  String? riskTakibi;
-  @HiveField(31)
-  String? ulkeAdi;
-  @HiveField(32)
-  String? ulkeKodu;
-  @HiveField(33)
-  String? vergiDairesi;
-  @HiveField(34)
-  String? vergiNumarasi;
-  @HiveField(35)
-  String? web;
-
-  CariModel();
-
-  factory CariModel.fromJson(Map<String, dynamic> json) => _$CariModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CariModelToJson(this);
 }
 
 @HiveType(typeId: 17)
@@ -454,27 +394,56 @@ class KalemModel {
   double? malFazlasiMiktar;
 
   KalemModel(
-      {this.miktar,
-      this.stokKodu,
-      this.stokAdi,
-      this.stokOlcuBirimi,
-      this.olcuBirimAdi,
-      this.depoTanimi,
-      this.belgeNo,
-      this.belgeTipi,
-      this.cariKodu,
-      this.sira,
-      this.hucreList,
-      this.kalemModelHucreList,
-      this.seriList,
-      this.tempBarkodList,
-      this.iskonto1OranMi,
+      {this.iskonto1OranMi,
       this.tarih,
       this.teslimTarihi,
       this.brutFiyat,
       this.depoKodu,
       this.kdvOrani,
-      this.olcuBirimKodu});
+      this.miktar,
+      this.olcuBirimKodu,
+      this.sira,
+      this.hucreList,
+      this.kalemModelHucreList,
+      this.seriList,
+      this.tempBarkodList,
+      this.belgeNo,
+      this.belgeTipi,
+      this.cariKodu,
+      this.depoTanimi,
+      this.olcuBirimAdi,
+      this.stokAdi,
+      this.stokKodu,
+      this.stokOlcuBirimi,
+      this.dovizKuru,
+      this.dovizTipi,
+      this.dovizliFiyat,
+      this.aciklama1,
+      this.aciklama10,
+      this.aciklama2,
+      this.aciklama3,
+      this.aciklama4,
+      this.aciklama5,
+      this.aciklama6,
+      this.aciklama7,
+      this.aciklama8,
+      this.aciklama9,
+      this.ekalan1,
+      this.ekalan2,
+      this.isk1Tipi,
+      this.isk2Tipi,
+      this.isk3Tipi,
+      this.iskonto1,
+      this.iskonto2,
+      this.iskonto3,
+      this.malfazIskAdedi,
+      this.miktar2,
+      this.projeKodu,
+      this.satisFiyati,
+      this.dovizKodu,
+      this.dovizFiyati,
+      this.malfazCevrimliMiktar,
+      this.malFazlasiMiktar});
 
   factory KalemModel.fromJson(Map<String, dynamic> json) => _$KalemModelFromJson(json);
 

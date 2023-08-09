@@ -12,7 +12,8 @@ TempJsonModel _$TempJsonModelFromJson(Map<String, dynamic> json) =>
       ..cariKodu = json['CARI_KODU'] as String?
       ..cariModel = json['CARI_MODEL'] == null
           ? null
-          : CariModel.fromJson(json['CARI_MODEL'] as Map<String, dynamic>)
+          : CariListesiModel.fromJson(
+              json['CARI_MODEL'] as Map<String, dynamic>)
       ..acik1 = json['ACIK1'] as String?
       ..acik2 = json['ACIK2'] as String?
       ..acik7 = json['ACIK7'] as String?

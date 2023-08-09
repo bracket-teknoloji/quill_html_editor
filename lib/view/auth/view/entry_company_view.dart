@@ -284,7 +284,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                         child: widget,
                                       ))
                                   .toList()),
-                          context.emptySizedHeightBoxLow,
+                          context.sized.emptySizedHeightBoxLow,
                           ElevatedButton(
                             onPressed: () async {
                               if (!selected.values.contains(null)) {
@@ -353,7 +353,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const CircularProgressIndicator.adaptive(),
-                context.emptySizedHeightBoxLow,
+                context.sized.emptySizedHeightBoxLow,
                 Text("Şirketler yükleniyor.", style: theme.textTheme.bodySmall),
               ],
             ));

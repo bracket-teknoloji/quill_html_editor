@@ -3,6 +3,289 @@
 part of 'cari_listesi_model.dart';
 
 // **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
+  @override
+  final int typeId = 195;
+
+  @override
+  CariListesiModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CariListesiModel()
+      ..cariKodu = fields[0] as String?
+      ..cariAdi = fields[1] as String?
+      ..bagliCari = fields[2] as String?
+      ..bagliCariAdi = fields[3] as String?
+      ..cariTip = fields[4] as String?
+      ..cariTipAciklama = fields[5] as String?
+      ..kilit = fields[6] as String?
+      ..vadeGunu = fields[7] as int?
+      ..odemeTipi = fields[8] as String?
+      ..hesaptutmasekli = fields[9] as String?
+      ..plasiyerKodu = fields[10] as String?
+      ..plasiyerAciklama = fields[11] as String?
+      ..borcToplami = fields[12] as double?
+      ..bakiyeList = (fields[13] as List?)?.cast<dynamic>()
+      ..alacakToplami = fields[15] as double?
+      ..genisk1Orani = fields[16] as int?
+      ..ulkeKodu = fields[17] as String?
+      ..ulkeAdi = fields[18] as String?
+      ..cariIl = fields[19] as String?
+      ..cariIlce = fields[20] as String?
+      ..cariTel = fields[21] as String?
+      ..postakodu = fields[22] as String?
+      ..email = fields[23] as String?
+      ..web = fields[24] as String?
+      ..cariAdres = fields[25] as String?
+      ..vergiDairesi = fields[26] as String?
+      ..vergiNumarasi = fields[27] as String?
+      ..grupKodu = fields[28] as String?
+      ..grupTanimi = fields[29] as String?
+      ..bilgi = fields[30] as String?
+      ..aciklama1 = fields[31] as String?
+      ..aciklama2 = fields[32] as String?
+      ..aciklama3 = fields[33] as String?
+      ..kodu = fields[34] as String?
+      ..kod1 = fields[35] as String?
+      ..kod1Tanimi = fields[36] as String?
+      ..kod2 = fields[37] as String?
+      ..kod2Tanimi = fields[38] as String?
+      ..kod3 = fields[39] as String?
+      ..kod3Tanimi = fields[40] as String?
+      ..kod4 = fields[41] as String?
+      ..kod4Tanimi = fields[42] as String?
+      ..kod5 = fields[43] as String?
+      ..kod5Tanimi = fields[44] as String?
+      ..kayityapankul = fields[45] as String?
+      ..kayittarihi = fields[46] as String?
+      ..duzeltmeyapankul = fields[47] as String?
+      ..duzeltmetarihi = fields[48] as String?
+      ..efaturaMi = fields[49] as bool?
+      ..efaturaTipi = fields[50] as String?
+      ..efatGecisTarihi = fields[51] as String?
+      ..efatAktif = fields[52] as bool?
+      ..riskTakibi = fields[53] as String?
+      ..efaturaCarisi = fields[54] as String?
+      ..bakiye = fields[55] as double?
+      ..enlem = fields[56] as double?
+      ..boylam = fields[57] as double?
+      ..kull1s = fields[58] as String?
+      ..kull2s = fields[59] as String?
+      ..kull3s = fields[60] as String?
+      ..kull4s = fields[61] as String?
+      ..kull5s = fields[62] as String?
+      ..kull6s = fields[63] as String?
+      ..kull7s = fields[64] as String?
+      ..kull8s = fields[65] as String?
+      ..kull1n = fields[66] as double?
+      ..kull2n = fields[67] as double?
+      ..kull3n = fields[68] as double?
+      ..kull4n = fields[69] as double?
+      ..kull5n = fields[70] as double?
+      ..kull6n = fields[71] as double?
+      ..kull7n = fields[72] as double?
+      ..kull8n = fields[73] as double?
+      ..fax = fields[74] as String?
+      ..sahisFirmasiMi = fields[75] as bool?
+      ..dovizli = fields[76] as bool?
+      ..dovizKodu = fields[77] as int?
+      ..dovizAdi = fields[78] as String?
+      ..subeKodu = fields[79] as int?
+      ..kosulKodu = fields[80] as String?
+      ..fiyatGrubu = fields[81] as String?
+      ..kull1S = fields[82] as String?
+      ..kull2S = fields[83] as String?;
+  }
+
+  @override
+  void write(BinaryWriter writer, CariListesiModel obj) {
+    writer
+      ..writeByte(83)
+      ..writeByte(0)
+      ..write(obj.cariKodu)
+      ..writeByte(1)
+      ..write(obj.cariAdi)
+      ..writeByte(2)
+      ..write(obj.bagliCari)
+      ..writeByte(3)
+      ..write(obj.bagliCariAdi)
+      ..writeByte(4)
+      ..write(obj.cariTip)
+      ..writeByte(5)
+      ..write(obj.cariTipAciklama)
+      ..writeByte(6)
+      ..write(obj.kilit)
+      ..writeByte(7)
+      ..write(obj.vadeGunu)
+      ..writeByte(8)
+      ..write(obj.odemeTipi)
+      ..writeByte(9)
+      ..write(obj.hesaptutmasekli)
+      ..writeByte(10)
+      ..write(obj.plasiyerKodu)
+      ..writeByte(11)
+      ..write(obj.plasiyerAciklama)
+      ..writeByte(12)
+      ..write(obj.borcToplami)
+      ..writeByte(13)
+      ..write(obj.bakiyeList)
+      ..writeByte(15)
+      ..write(obj.alacakToplami)
+      ..writeByte(16)
+      ..write(obj.genisk1Orani)
+      ..writeByte(17)
+      ..write(obj.ulkeKodu)
+      ..writeByte(18)
+      ..write(obj.ulkeAdi)
+      ..writeByte(19)
+      ..write(obj.cariIl)
+      ..writeByte(20)
+      ..write(obj.cariIlce)
+      ..writeByte(21)
+      ..write(obj.cariTel)
+      ..writeByte(22)
+      ..write(obj.postakodu)
+      ..writeByte(23)
+      ..write(obj.email)
+      ..writeByte(24)
+      ..write(obj.web)
+      ..writeByte(25)
+      ..write(obj.cariAdres)
+      ..writeByte(26)
+      ..write(obj.vergiDairesi)
+      ..writeByte(27)
+      ..write(obj.vergiNumarasi)
+      ..writeByte(28)
+      ..write(obj.grupKodu)
+      ..writeByte(29)
+      ..write(obj.grupTanimi)
+      ..writeByte(30)
+      ..write(obj.bilgi)
+      ..writeByte(31)
+      ..write(obj.aciklama1)
+      ..writeByte(32)
+      ..write(obj.aciklama2)
+      ..writeByte(33)
+      ..write(obj.aciklama3)
+      ..writeByte(34)
+      ..write(obj.kodu)
+      ..writeByte(35)
+      ..write(obj.kod1)
+      ..writeByte(36)
+      ..write(obj.kod1Tanimi)
+      ..writeByte(37)
+      ..write(obj.kod2)
+      ..writeByte(38)
+      ..write(obj.kod2Tanimi)
+      ..writeByte(39)
+      ..write(obj.kod3)
+      ..writeByte(40)
+      ..write(obj.kod3Tanimi)
+      ..writeByte(41)
+      ..write(obj.kod4)
+      ..writeByte(42)
+      ..write(obj.kod4Tanimi)
+      ..writeByte(43)
+      ..write(obj.kod5)
+      ..writeByte(44)
+      ..write(obj.kod5Tanimi)
+      ..writeByte(45)
+      ..write(obj.kayityapankul)
+      ..writeByte(46)
+      ..write(obj.kayittarihi)
+      ..writeByte(47)
+      ..write(obj.duzeltmeyapankul)
+      ..writeByte(48)
+      ..write(obj.duzeltmetarihi)
+      ..writeByte(49)
+      ..write(obj.efaturaMi)
+      ..writeByte(50)
+      ..write(obj.efaturaTipi)
+      ..writeByte(51)
+      ..write(obj.efatGecisTarihi)
+      ..writeByte(52)
+      ..write(obj.efatAktif)
+      ..writeByte(53)
+      ..write(obj.riskTakibi)
+      ..writeByte(54)
+      ..write(obj.efaturaCarisi)
+      ..writeByte(55)
+      ..write(obj.bakiye)
+      ..writeByte(56)
+      ..write(obj.enlem)
+      ..writeByte(57)
+      ..write(obj.boylam)
+      ..writeByte(58)
+      ..write(obj.kull1s)
+      ..writeByte(59)
+      ..write(obj.kull2s)
+      ..writeByte(60)
+      ..write(obj.kull3s)
+      ..writeByte(61)
+      ..write(obj.kull4s)
+      ..writeByte(62)
+      ..write(obj.kull5s)
+      ..writeByte(63)
+      ..write(obj.kull6s)
+      ..writeByte(64)
+      ..write(obj.kull7s)
+      ..writeByte(65)
+      ..write(obj.kull8s)
+      ..writeByte(66)
+      ..write(obj.kull1n)
+      ..writeByte(67)
+      ..write(obj.kull2n)
+      ..writeByte(68)
+      ..write(obj.kull3n)
+      ..writeByte(69)
+      ..write(obj.kull4n)
+      ..writeByte(70)
+      ..write(obj.kull5n)
+      ..writeByte(71)
+      ..write(obj.kull6n)
+      ..writeByte(72)
+      ..write(obj.kull7n)
+      ..writeByte(73)
+      ..write(obj.kull8n)
+      ..writeByte(74)
+      ..write(obj.fax)
+      ..writeByte(75)
+      ..write(obj.sahisFirmasiMi)
+      ..writeByte(76)
+      ..write(obj.dovizli)
+      ..writeByte(77)
+      ..write(obj.dovizKodu)
+      ..writeByte(78)
+      ..write(obj.dovizAdi)
+      ..writeByte(79)
+      ..write(obj.subeKodu)
+      ..writeByte(80)
+      ..write(obj.kosulKodu)
+      ..writeByte(81)
+      ..write(obj.fiyatGrubu)
+      ..writeByte(82)
+      ..write(obj.kull1S)
+      ..writeByte(83)
+      ..write(obj.kull2S);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CariListesiModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
@@ -87,7 +370,9 @@ CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
       ..dovizAdi = json['DOVIZ_ADI'] as String?
       ..subeKodu = json['SUBE_KODU'] as int?
       ..kosulKodu = json['KOSUL_KODU'] as String?
-      ..fiyatGrubu = json['FIYAT_GRUBU'] as String?;
+      ..fiyatGrubu = json['FIYAT_GRUBU'] as String?
+      ..kull1S = json['KULL1_S'] as String?
+      ..kull2S = json['KULL2_S'] as String?;
 
 Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) {
   final val = <String, dynamic>{};
@@ -178,6 +463,8 @@ Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) {
   writeNotNull('SUBE_KODU', instance.subeKodu);
   writeNotNull('KOSUL_KODU', instance.kosulKodu);
   writeNotNull('FIYAT_GRUBU', instance.fiyatGrubu);
+  writeNotNull('KULL1_S', instance.kull1S);
+  writeNotNull('KULL2_S', instance.kull2S);
   return val;
 }
 

@@ -1,9 +1,9 @@
-
 import 'dart:convert';
 
 import 'package:mobx/mobx.dart';
-import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_model.dart';
 import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart';
+
+import '../../base_siparis_edit/model/base_siparis_edit_model.dart';
 
 part 'siparisler_view_model.g.dart';
 
@@ -53,7 +53,7 @@ abstract class _SiparislerViewModelBase with Store {
   @observable
   bool grupKodlariGoster = false;
   @observable
-  List<SiparislerModel?>? musteriSiparisleriList;
+  List<BaseSiparisEditModel?>? musteriSiparisleriList;
 
   @action
   void changeGrupKodlariGoster() => grupKodlariGoster = !grupKodlariGoster;
@@ -78,9 +78,9 @@ abstract class _SiparislerViewModelBase with Store {
   }
 
   @action
-  void setSiparislerList(List<SiparislerModel?>? value) => musteriSiparisleriList = value;
+  void setSiparislerList(List<BaseSiparisEditModel?>? value) => musteriSiparisleriList = value;
   @action
-  void addSiparislerList(List<SiparislerModel?>? value) => musteriSiparisleriList = musteriSiparisleriList! + value!;
+  void addSiparislerList(List<BaseSiparisEditModel?>? value) => musteriSiparisleriList = musteriSiparisleriList! + value!;
 
   //*for model
   SiparislerRequestModel get musteriSiparisleriRequestModel => SiparislerRequestModel(

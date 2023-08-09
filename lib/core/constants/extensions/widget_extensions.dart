@@ -1,4 +1,5 @@
 // an extension on a widget to add safe area
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:picker/core/constants/ui_helper/ui_helper.dart';
@@ -38,9 +39,10 @@ extension YetkiExtension on Widget {
     return yetki ? this : const SizedBox();
   }
 }
-extension YetkiExtension2 on dynamic{
-  Object? isDebug(){
-    return CacheManager.getHesapBilgileri?.uyeEmail == "destek@netfect.com"? this : null;
+
+extension YetkiExtension2 on dynamic {
+  Object? isDebug() {
+    return (CacheManager.getHesapBilgileri?.uyeEmail == "destek@netfect.com" || kDebugMode) ? this : null;
   }
 }
 
@@ -57,5 +59,3 @@ extension ScrollAnimated on Widget? {
     );
   }
 }
-
-

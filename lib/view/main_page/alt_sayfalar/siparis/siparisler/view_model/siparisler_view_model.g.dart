@@ -187,13 +187,13 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
       context: context);
 
   @override
-  List<SiparislerModel?>? get musteriSiparisleriList {
+  List<BaseSiparisEditModel?>? get musteriSiparisleriList {
     _$musteriSiparisleriListAtom.reportRead();
     return super.musteriSiparisleriList;
   }
 
   @override
-  set musteriSiparisleriList(List<SiparislerModel?>? value) {
+  set musteriSiparisleriList(List<BaseSiparisEditModel?>? value) {
     _$musteriSiparisleriListAtom
         .reportWrite(value, super.musteriSiparisleriList, () {
       super.musteriSiparisleriList = value;
@@ -550,7 +550,7 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   }
 
   @override
-  void setSiparislerList(List<SiparislerModel?>? value) {
+  void setSiparislerList(List<BaseSiparisEditModel?>? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
         name: '_SiparislerViewModelBase.setSiparislerList');
     try {
@@ -561,7 +561,7 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   }
 
   @override
-  void addSiparislerList(List<SiparislerModel?>? value) {
+  void addSiparislerList(List<BaseSiparisEditModel?>? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
         name: '_SiparislerViewModelBase.addSiparislerList');
     try {

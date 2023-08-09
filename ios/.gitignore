@@ -1,6 +1,9 @@
 **/dgph
 *.mode1v3
 *.mode2v3
+*.ipa
+*.dSYM.zip
+*.dSYM
 *.moved-aside
 *.pbxuser
 *.perspectivev3

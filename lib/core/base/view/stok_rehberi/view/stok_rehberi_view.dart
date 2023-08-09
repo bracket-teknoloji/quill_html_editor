@@ -3,16 +3,17 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:picker/core/base/model/base_edit_model.dart';
-import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import 'package:picker/core/components/floating_action_button/custom_floating_action_button.dart';
-import 'package:picker/core/components/textfield/custom_text_field.dart';
-import 'package:picker/core/constants/extensions/number_extensions.dart';
-import 'package:picker/core/constants/ui_helper/ui_helper.dart';
 
+import '../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart';
 import '../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart';
+import '../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
+import '../../../../components/floating_action_button/custom_floating_action_button.dart';
+import '../../../../components/textfield/custom_text_field.dart';
 import '../../../../constants/enum/base_edit_enum.dart';
+import '../../../../constants/extensions/number_extensions.dart';
+import '../../../../constants/ui_helper/ui_helper.dart';
 import '../../../../init/network/login/api_urls.dart';
+import '../../../model/base_edit_model.dart';
 import '../../../model/generic_response_model.dart';
 import '../../../state/base_state.dart';
 import '../view_model/stok_rehberi_view_model.dart';
@@ -152,6 +153,12 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 return Card(
                                   child: ListTile(
                                     onTap: () async {
+                                      if (BaseSiparisEditModel.instance.kalemEkliMi(viewModel.stokListesi?[index])) {
+                                        var result = await dialogManager.showStokKayitliDialog(viewModel.stokListesi![index]);
+                                        if (result != true) {
+                                          return;
+                                        }
+                                      }
                                       var result = Get.toNamed("/kalemEkle", arguments: viewModel.stokListesi?[index]);
                                     },
                                     title: Text(viewModel.stokListesi?[index].stokKodu ?? ""),

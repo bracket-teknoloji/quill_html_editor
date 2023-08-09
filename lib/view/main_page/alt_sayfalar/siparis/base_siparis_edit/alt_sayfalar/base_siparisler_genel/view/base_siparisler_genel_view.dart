@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
-import 'package:picker/core/base/model/base_proje_model.dart';
-import 'package:picker/core/base/state/base_state.dart';
-import 'package:picker/core/components/helper_widgets/custom_label_widget.dart';
-import 'package:picker/core/components/textfield/custom_text_field.dart';
-import 'package:picker/core/constants/extensions/date_time_extensions.dart';
-import 'package:picker/core/constants/extensions/number_extensions.dart';
-import 'package:picker/core/constants/ui_helper/ui_helper.dart';
-import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
-import 'package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/alt_sayfalar/base_siparisler_genel/view_model/base_siparisler_genel_view_model.dart';
-import 'package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart';
-import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_reuqest_model.dart';
+import 'package:picker/core/constants/enum/siparis_tipi_enum.dart';
 
 import '../../../../../../../../core/base/model/base_edit_model.dart';
+import '../../../../../../../../core/base/model/base_proje_model.dart';
+import '../../../../../../../../core/base/state/base_state.dart';
+import '../../../../../../../../core/components/helper_widgets/custom_label_widget.dart';
+import '../../../../../../../../core/components/textfield/custom_text_field.dart';
 import '../../../../../../../../core/constants/enum/base_edit_enum.dart';
+import '../../../../../../../../core/constants/extensions/date_time_extensions.dart';
+import '../../../../../../../../core/constants/extensions/number_extensions.dart';
+import '../../../../../../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../../../../../../core/init/network/login/api_urls.dart';
+import '../../../../../cari/cari_listesi/model/cari_listesi_model.dart';
+import '../../../../siparisler/model/siparis_edit_reuqest_model.dart';
+import '../../../model/base_siparis_edit_model.dart';
+import '../view_model/base_siparisler_genel_view_model.dart';
 
 class BaseSiparislerGenelView extends StatefulWidget {
   final BaseEditModel<SiparisEditRequestModel> model;
@@ -32,7 +33,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
   bool get isDuzenle => siparisModel.isDuzenle;
   bool get isEkle => siparisModel.isEkle;
   bool get isGoruntule => siparisModel.isGoruntule;
-  BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
+  BaseSiparisEditModel model = BaseSiparisEditModel.instance;
   late final TextEditingController belgeNoController;
   late final TextEditingController cariController;
   late final TextEditingController teslimCariController;
@@ -99,9 +100,22 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Visibility(
-                  visible: model.isRemoteTempBelgeNull, child: CustomTextField(enabled: enable, labelText: "Belge No", readOnly: true, isMust: true, controller: belgeNoController, maxLength: 15, onChanged: (value){
-                    model.belgeNo = value;
-                  },)),
+                  visible: model.isRemoteTempBelgeNull,
+                  child: CustomTextField(
+                    enabled: enable,
+                    labelText: "Belge No",
+                    isMust: true,
+                    controller: belgeNoController,
+                    maxLength: 15,
+                    suffix: IconButton(
+                        onPressed: () async {
+                          await getBelgeNo();
+                        },
+                        icon: const Icon(Icons.format_list_numbered_rtl_outlined)),
+                    onChanged: (value) {
+                      model.belgeNo = value;
+                    },
+                  )),
               CustomTextField(
                   enabled: isEkle,
                   labelText: "Cari",
@@ -160,7 +174,13 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                           labelText: "Tarih",
                           isMust: true,
                           readOnly: true,
-                          onTap: () => dialogManager.showDateTimePicker(),
+                          onTap: () async {
+                            var result = await dialogManager.showDateTimePicker();
+                            if (result != null) {
+                              model.tarih = result;
+                              tarihController.text = result.toDateString();
+                            }
+                          },
                           suffix: const Icon(Icons.date_range_outlined),
                           controller: tarihController)),
                   Expanded(
@@ -169,7 +189,13 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                           labelText: "Teslim Tarihi",
                           isMust: true,
                           readOnly: true,
-                          onTap: () => dialogManager.showDateTimePicker(),
+                          onTap: () async {
+                            var result = await dialogManager.showDateTimePicker();
+                            if (result != null) {
+                              model.teslimTarihi = result;
+                              teslimTarihController.text = result.toDateString();
+                            }
+                          },
                           suffix: const Icon(Icons.date_range_outlined),
                           controller: teslimTarihController)),
                 ],
@@ -189,6 +215,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                       BaseProjeModel? result = await bottomSheetDialogManager.showProjeDialog(context);
                       if (result != null) {
                         model.projeKodu = result.projeKodu;
+                        model.projeAciklama = result.projeAciklama;
                         projeController.text = result.projeAciklama ?? "";
                       }
                     },
@@ -267,24 +294,39 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
 
   Future<void> init() async {
     controllerFiller();
+    if (BaseSiparisEditModel.instance.belgeNo == null) {
+      getBelgeNo();
+    }
     if (BaseSiparisEditModel.instance.isEmpty) {}
   }
 
-  Future<void> getData() async {
-    var result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: widget.model.model?.toJson(), showLoading: true);
+  // Future<void> getData() async {
+  //   var result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: widget.model.model?.toJson(), showLoading: true);
+  //   if (result.success == true) {
+  //     BaseSiparisEditModel.setInstance(result.data.first as BaseSiparisEditModel);
+  //     controllerFiller();
+  //   }
+  // }
+
+  Future<void> getBelgeNo() async {
+    var result = await networkManager.dioGet<BaseSiparisEditModel>(
+        path: ApiUrls.getSiradakiBelgeNo,
+        bodyModel: BaseSiparisEditModel(),
+        queryParameters: {"Seri": belgeNoController.text, "BelgeTipi": widget.model.siparisTipiEnum!.rawValue, "EIrsaliye": "H", "CariKodu": model.cariModel?.cariKodu},
+        showLoading: true);
     if (result.success == true) {
-      BaseSiparisEditModel.setInstance(result.data.first as BaseSiparisEditModel);
-      controllerFiller();
+      BaseSiparisEditModel.instance.belgeNo = result.data!.first.belgeNo;
+      belgeNoController.text = BaseSiparisEditModel.instance.belgeNo ?? "";
     }
   }
 
   void controllerFiller() {
     belgeNoController.text = model.belgeNo ?? "";
-    cariController.text = model.cariAdi ?? "";
-    teslimCariController.text = model.teslimCariAdi ?? "";
+    cariController.text = model.cariModel?.cariAdi ?? "";
+    teslimCariController.text = model.teslimCariAdi ?? (widget.model.baseEditEnum == BaseEditEnum.ekle ? DateTime.now().toDateString() : "");
     belgeTipiController.text = (model.tipi ?? 0) < 6 ? "Yurtiçi" : "Yurtdışı";
     plasiyerController.text = model.cariModel?.plasiyerAciklama ?? "";
-    tarihController.text = model.tarih != null ? model.tarih.toDateString() : "";
+    tarihController.text = model.tarih != null ? model.tarih.toDateString() : (widget.model.baseEditEnum == BaseEditEnum.ekle ? DateTime.now().toDateString() : "");
     teslimTarihController.text = model.teslimTarihi != null ? model.teslimTarihi.toDateString() : "";
     topluDepoController.text = model.topluDepo.toStringIfNull ?? "";
     projeController.text = model.projeAciklama ?? "";

@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart';
 
 import '../../../../../../../../core/base/model/base_empty_model.dart';
 import '../../../../../../../../core/base/state/base_state.dart';
@@ -14,6 +13,7 @@ import '../../../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../../../core/constants/extensions/number_extensions.dart';
 import '../../../../../../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../../../../../../core/init/network/login/api_urls.dart';
+import '../../../../stok_liste/model/stok_listesi_model.dart';
 import '../../../model/stok_detay_model.dart';
 import '../view_model/base_stok_edit_fiyat_view_model.dart';
 
@@ -280,7 +280,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
 
   Future<void> getKdvOrani() async {
     var result =
-        await networkManager.dioGet<BaseEmptyModel>(path: ApiUrls.getStokDigerBilgi, bodyModel: BaseEmptyModel(), addCKey: true, addSirketBilgileri: true, queryParameters: {"BilgiTipi": "KDVGRUP"});
+        await networkManager.dioGet<BaseEmptyModel>(path: ApiUrls.getStokDigerBilgi, bodyModel: BaseEmptyModel(), queryParameters: {"BilgiTipi": "KDVGRUP"});
     if (result.success == true) {
       viewModel.setKdvOraniList(jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]).cast<double>());
     } else {

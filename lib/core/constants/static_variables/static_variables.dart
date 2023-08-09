@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../base/model/base_grup_kodu_model.dart';
 
+
 class StaticVariables {
   //singleton
   StaticVariables._init();

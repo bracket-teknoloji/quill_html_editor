@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_model.dart';
+import 'package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart';
 
 import '../../../../../../core/base/model/base_network_mixin.dart';
 
@@ -15,6 +15,7 @@ class SiparisEditRequestModel with NetworkManagerMixin{
     String? kayitModu;
     bool? kisitYok;
     int? tempBelgeId;
+    
 
     SiparisEditRequestModel({
         this.belgeNo,
@@ -25,7 +26,7 @@ class SiparisEditRequestModel with NetworkManagerMixin{
         this.kisitYok,
         this.tempBelgeId,
     });
-  factory SiparisEditRequestModel.fromSiparislerModel(SiparislerModel? model){
+  factory SiparisEditRequestModel.fromSiparislerModel(BaseSiparisEditModel? model){
     return SiparisEditRequestModel(
       belgeNo: model?.belgeNo,
       belgeTuru: model?.belgeTuru,
