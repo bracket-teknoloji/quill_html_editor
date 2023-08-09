@@ -19,9 +19,9 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   static BaseSiparisEditModel? _instance;
   static BaseSiparisEditModel get instance {
     _instance ??= BaseSiparisEditModel._init();
-    if (_instance?.isNew == true) {
+    if (_instance?.isNew == true && _instance?.belgeNo != null) {
       BaseSiparisEditModel? otherInstance = CacheManager.getSiparisEdit(_instance?.belgeNo ?? "");
-      if (_instance != otherInstance && _instance?.belgeNo != null) {
+      if (_instance != otherInstance) {
         log("Model Güncellendi: ${_instance?.belgeNo}");
         CacheManager.setSiparisEdit(_instance!);
       }

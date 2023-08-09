@@ -50,6 +50,9 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                   title: "Düzelt",
                   iconWidget: Icons.edit_outlined,
                   onTap: () {
+                    if (widget.model.isNew == true){
+                      BaseSiparisEditModel.setInstance(widget.model);
+                    }
                     Get.back();
                     return Get.toNamed("mainPage/siparisEdit",
                         arguments: BaseEditModel(

@@ -12,9 +12,8 @@ mixin NetworkManagerMixin on Object {
   @override
   operator ==(Object other) {
     if (other is NetworkManagerMixin) {
-      log(other.toJson().toString());
-      log(toJson().toString());
       bool result = other.toJson().toString() == toJson().toString();
+      log('NetworkManagerMixin: $result', name: 'isEqual');
       return result;
     } else {
       return false;

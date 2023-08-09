@@ -120,13 +120,24 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..remoteTempBelgeEtiketi = fields[100] as String?
       ..tag = fields[101] as String?
       ..kalemler = (fields[102] as List?)?.cast<KalemModel>()
-      ..siparisTipi = fields[103] as SiparisTipiEnum?;
+      ..siparisTipi = fields[103] as SiparisTipiEnum?
+      ..isNew = fields[104] as bool?
+      ..irsaliyelesti = fields[105] as String?
+      ..irslesenSayi = fields[106] as int?
+      ..faturalasti = fields[107] as String?
+      ..dovizTipi = fields[108] as int?
+      ..dovizAdi = fields[109] as String?
+      ..kapatilmis = fields[110] as String?
+      ..aciklama = fields[111] as String?
+      ..dovizTutari = fields[112] as double?
+      ..teslimCari = fields[113] as String?
+      ..fYedek4 = fields[114] as double?;
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(104)
+      ..writeByte(115)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -334,7 +345,29 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(102)
       ..write(obj.kalemler)
       ..writeByte(103)
-      ..write(obj.siparisTipi);
+      ..write(obj.siparisTipi)
+      ..writeByte(104)
+      ..write(obj.isNew)
+      ..writeByte(105)
+      ..write(obj.irsaliyelesti)
+      ..writeByte(106)
+      ..write(obj.irslesenSayi)
+      ..writeByte(107)
+      ..write(obj.faturalasti)
+      ..writeByte(108)
+      ..write(obj.dovizTipi)
+      ..writeByte(109)
+      ..write(obj.dovizAdi)
+      ..writeByte(110)
+      ..write(obj.kapatilmis)
+      ..writeByte(111)
+      ..write(obj.aciklama)
+      ..writeByte(112)
+      ..write(obj.dovizTutari)
+      ..writeByte(113)
+      ..write(obj.teslimCari)
+      ..writeByte(114)
+      ..write(obj.fYedek4);
   }
 
   @override

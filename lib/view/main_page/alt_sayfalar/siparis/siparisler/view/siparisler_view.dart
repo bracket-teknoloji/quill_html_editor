@@ -418,7 +418,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
     var result = await networkManager.dioGet<BaseSiparisEditModel>(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: viewModel.musteriSiparisleriRequestModel.toJson());
     if (result.data != null) {
       if (viewModel.sayfa == 1) {
-        viewModel.setSiparislerList(CacheManager.getSiparisEditList);
+        viewModel.setSiparislerList(CacheManager.getSiparisEditList(widget.isSiparisler ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici));
         viewModel.setParamData(result.paramData?.map((key, value) => MapEntry(key, value.toString())) ?? {});
       }
       List<BaseSiparisEditModel?>? list = result.data.map((e) => e as BaseSiparisEditModel?).toList().cast<BaseSiparisEditModel?>();

@@ -10,6 +10,7 @@ import 'package:picker/core/components/textfield/custom_text_field.dart';
 import 'package:picker/core/init/network/network_manager.dart';
 import 'package:picker/view/main_page/model/param_model.dart';
 
+import '../../../base/model/belge_tipi_model.dart';
 import '../../../base/model/print_model.dart';
 import '../../../base/view/pdf_viewer/model/pdf_viewer_model.dart';
 import '../../../constants/extensions/list_extensions.dart';
@@ -559,8 +560,13 @@ class BottomSheetDialogManager {
     return dizayn;
   }
 
+  Future<BelgeTipiModel?> showBelgeTipiDialog(BuildContext context) async {
+    List<BelgeTipiModel> belgeTipiList = [BelgeTipiModel(belgeTipi: "Yurt İçi", belgeTipiId: 2), BelgeTipiModel(belgeTipi: "Yurt Dışı", belgeTipiId: 6)];
+     return await showRadioBottomSheetDialog(context, title: "Belge Tipi Seçiniz", children: belgeTipiList.map((e) => BottomSheetModel(title: e.belgeTipi ?? "", value: e)).toList());
+  }
+
   Future<double?> showKDVOranlariDialog(BuildContext context) async {
-    var list =await NetworkManager().getKDVOrani();
+    var list = await NetworkManager().getKDVOrani();
     return await showRadioBottomSheetDialog(context, title: "KDV Oranı Seçiniz", children: list?.map((e) => BottomSheetModel(title: e.toString(), value: e)).toList());
   }
 

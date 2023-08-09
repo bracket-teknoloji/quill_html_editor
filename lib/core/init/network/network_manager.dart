@@ -17,6 +17,7 @@ import 'package:picker/core/init/cache/cache_manager.dart';
 import 'package:picker/view/add_company/model/account_model.dart';
 import 'package:picker/view/auth/model/login_model.dart';
 
+import '../../../view/add_company/model/account_response_model.dart';
 import '../../base/model/base_empty_model.dart';
 import '../../base/model/base_grup_kodu_model.dart';
 import '../../base/model/base_pdf_model.dart';
@@ -234,6 +235,29 @@ class NetworkManager {
   Future<List?> getKDVOrani() async {
     var result = await dioGet<BaseEmptyModel>(path: ApiUrls.getStokDigerBilgi, bodyModel: BaseEmptyModel(), queryParameters: {"BilgiTipi": "KDVGRUP"});
     return jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]);
+  }
+
+  Future<GenericResponseModel> getUyeBilgileri(String email, [bool getFromCache = true]) async {
+    if (email == "demo@netfect.com") {
+      return GenericResponseModel(success: true);
+    }
+    var result = await dioPost<AccountResponseModel>(
+        bodyModel: AccountResponseModel(),
+        showError: false,
+        data: getFromCache ? CacheManager.getHesapBilgileri?.toJson() : AccountModel.instance.toJson(),
+        addTokenKey: false,
+        path: ApiUrls.getUyeBilgileri);
+    if (result.success == true) {
+      CacheManager.setIsLicenseVerified(email, true);
+      if (!getFromCache){
+      CacheManager.setAccounts(result.data.first..parola = CacheManager.getVerifiedUser.account?.parola);
+      }
+    } else {
+      if (result.errorCode == 5) {
+        CacheManager.setIsLicenseVerified(email, false);
+      }
+    }
+    return result;
   }
 
   Future<GenericResponseModel> postPrint(BuildContext context, {required DicParams model}) async {

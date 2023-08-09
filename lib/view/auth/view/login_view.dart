@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 import 'dart:developer';
 
@@ -9,7 +11,6 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kartal/kartal.dart';
 import 'package:picker/core/base/model/login_dialog_model.dart';
-import 'package:picker/view/add_company/model/account_response_model.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
@@ -235,9 +236,13 @@ class _LoginViewState extends BaseState<LoginView> {
         a.uyeSifre = textFieldData.account?.parola;
       }
     }
-    var result = await getUyeBilgileri();
-    if (!result) {
+    var result = await networkManager.getUyeBilgileri(textFieldData.account?.email ?? "");
+    if (result.success != true) {
+      if (CacheManager.getIsLicenseVerified(textFieldData.account?.email ?? "") == false) {
+        dialogManager.hideAlertDialog;
+        dialogManager.showAlertDialog(result.message ?? "Lisansınız bulunamadı. Lütfen lisansınızı kontrol ediniz.");
       return;
+      }
     }
     dialogManager.hideAlertDialog;
     dialogManager.showLoadingDialog("Giriş Yapılıyor");
@@ -285,28 +290,23 @@ class _LoginViewState extends BaseState<LoginView> {
     }
   }
 
-  Future<bool> getUyeBilgileri() async {
-    final result = await networkManager.dioPost<AccountResponseModel>(
-        bodyModel: AccountResponseModel(), showError: false, data: AccountModel.instance.toJson(), addTokenKey: false, path: ApiUrls.getUyeBilgileri);
-    if (result.success == true) {
-      CacheManager.setAccounts(result.data.first..parola = textFieldData.account?.parola);
-    }
-    if (result.success != true) {
-      if (result.errorCode == 5) {
-        CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "", false);
-        dialogManager.hideAlertDialog;
-        dialogManager.showAlertDialog(result.message ?? "");
-      } else {
-        CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "", true);
-      }
-    } else {
-      CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "", true);
-    }
-    if (CacheManager.getIsLicenseVerified(textFieldData.account?.email ?? "") == false) {
-      dialogManager.hideAlertDialog;
-      dialogManager.showAlertDialog("Lisansınızın yenilenmesi gerekiyor.");
-      return false;
-    }
-    return true;
-  }
+  // Future<GenericResponseModel> getUyeBilgileri() async {
+  //   final result = await networkManager.dioPost<AccountResponseModel>(
+  //       bodyModel: AccountResponseModel(), showError: false, data: AccountModel.instance.toJson(), addTokenKey: false, path: ApiUrls.getUyeBilgileri);
+  //   if (result.success == true) {
+  //     CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "", true);
+  //     CacheManager.setAccounts(result.data.first..parola = textFieldData.account?.parola);
+  //   } else {
+  //     if (result.errorCode == 5) {
+  //       CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "", false);
+  //     }
+  //     dialogManager.hideAlertDialog;
+  //     dialogManager.showAlertDialog(result.message ?? "");
+  //   }
+  //   if (CacheManager.getIsLicenseVerified(textFieldData.account?.email ?? "") == false) {
+  //     dialogManager.hideAlertDialog;
+  //     dialogManager.showAlertDialog("Lisansınızın yenilenmesi gerekiyor.");
+  //   }
+  //   return result;
+  // }
 }

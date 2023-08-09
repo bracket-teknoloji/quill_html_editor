@@ -23,4 +23,9 @@ class StaticVariables {
   bool get isStokKartiValid => (stokKartiGenelFormKey.currentState?.validate() ?? false) || (stokKartiDigerFormKey.currentState?.validate() ?? false);
   GlobalKey<FormState> stokKartiGenelFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> stokKartiDigerFormKey = GlobalKey<FormState>();
+
+  //* Sipariş
+  bool get isSiparisValid => (siparisGenelFormKey.currentState?.validate() ?? false) || (siparisDigerFormKey.currentState?.validate() ?? false);
+  GlobalKey<FormState> siparisGenelFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> siparisDigerFormKey = GlobalKey<FormState>();
 }

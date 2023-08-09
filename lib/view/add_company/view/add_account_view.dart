@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kartal/kartal.dart';
 import 'package:picker/core/components/textfield/custom_text_field.dart';
 
@@ -24,20 +23,20 @@ class AddAccountView extends StatefulWidget {
 }
 
 class _AddAccountViewState extends BaseState<AddAccountView> {
-  late final TextEditingController _controller;
-  late final TextEditingController _controller2;
-  final formKey = GlobalKey<FormState>();
+  late final TextEditingController emailController;
+  late final TextEditingController passwordController;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   void initState() {
-    _controller = TextEditingController();
-    _controller2 = TextEditingController();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
-    _controller2.dispose();
+    emailController.dispose();
+    passwordController.dispose();
     super.dispose();
   }
 
@@ -59,13 +58,13 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
                 children: [
                   CustomWidgetWithLabel(
                     text: "Firma E-Posta Adresi",
-                    child: CustomTextField(controller: _controller, keyboardType: TextInputType.emailAddress),
+                    child: CustomTextField(controller: emailController, keyboardType: TextInputType.emailAddress, isMust: true),
                   ),
                   Padding(
                     padding: context.verticalPaddingLow,
                     child: CustomWidgetWithLabel(
                       text: "Şifre",
-                      child: CustomTextField(keyboardType: TextInputType.visiblePassword, controller: _controller2),
+                      child: CustomTextField(keyboardType: TextInputType.visiblePassword, controller: passwordController, isMust: true),
                     ),
                   ),
                   const Wrap(
@@ -89,32 +88,27 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
   }
 
   Future<void> loginMethod() async {
-    formKey.currentState!.validate();
-    String encodedPassword = passwordDecoder(_controller2.text);
-    if (_controller.text != "" && _controller2.text != "") {
+    if (formKey.currentState!.validate()) {
+      String encodedPassword = passwordDecoder(passwordController.text);
       dialogManager.showLoadingDialog("Yükleniyor...");
-      var model = AccountModel.instance
-        ..uyeEmail = _controller.text
+      AccountModel.instance
+        ..uyeEmail = emailController.text
         ..uyeSifre = encodedPassword;
-      var data = model.toJson();
-      final response = await networkManager.dioPost<AccountResponseModel>(bodyModel: AccountResponseModel(),showError: false, data: data, addTokenKey: false, path: ApiUrls.getUyeBilgileri);
+      final response = await networkManager.getUyeBilgileri(emailController.text, false);
       dialogManager.hideAlertDialog;
-      if (response.success!) {
-        Box box = CacheManager.accountsBox;
-        for (AccountResponseModel item in response.data!) {
-          if (!box.containsKey(item.email)) {
-            Get.back(result: true);
-            setState(() {});
-            CacheManager.setAccounts(item..parola = encodedPassword);
-            CacheManager.setHesapBilgileri(model);
-            dialogManager.showSnackBar("Başarılı");
-          }
-        }
-      }else{
+      if (response.success == true) {
+        bool isExist = !(CacheManager.accountsBox.containsKey(emailController.text));
+          CacheManager.setHesapBilgileri(AccountModel.instance);
+          Get.back(result: true);
+          setState(() {});
+          Get.offAndToNamed("/addCompany");
+          dialogManager.showSnackBar("Başarılı");
+        if (isExist) {
+          CacheManager.setAccounts(response.data.first..parola = encodedPassword);
+        } 
+      } else {
         dialogManager.showAlertDialog(response.message ?? "");
       }
-    } else {
-      dialogManager.showSnackBar("Lütfen boş alan bırakmayınız");
     }
   }
 
@@ -133,21 +127,14 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
       );
       AccountModel.instance.qrData = null;
       if (response.data != null) {
-        if (response.success ?? false) {
-          var anaHesapBox = Hive.box("anaHesap");
-          response.data.forEach((element) {
-            if (element is AccountResponseModel) {
-              anaHesapBox.put("anaHesap", [element.email, element.parola]);
-            }
-          });
+        if (response.success == true) {
           AccountModel.instance
-            ..uyeEmail = response.data![0].email
-            ..qrData = response.data![0].parola;
-          Box box = CacheManager.accountsBox;
+            ..uyeEmail = response.data.first.email
+            ..qrData = response.data.first.parola;
           for (AccountResponseModel item in response.data!) {
-            if (!box.containsKey(item.email)) {
+            if (!CacheManager.accountsBox.containsKey(item.email)) {
               Get.offAndToNamed("/addCompany");
-              box.put(item.email, item);
+              CacheManager.setAccounts(item);
               dialogManager.showSnackBar("Başarılı");
             } else {
               dialogManager.showSnackBar("${item.firmaKisaAdi} zaten kayıtlı");
@@ -159,7 +146,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
   }
 
   String passwordDecoder(String password) {
-    String password = md5.convert(utf8.encode(_controller2.text)).toString();
+    String password = md5.convert(utf8.encode(passwordController.text)).toString();
     return password;
   }
 }

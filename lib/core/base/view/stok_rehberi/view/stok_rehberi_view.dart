@@ -66,6 +66,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(onPressed: () => Get.back(result: true)),
         title: const Text("Stok Rehberi"),
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.filter_alt_outlined)),
@@ -82,7 +83,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
               },
               icon: const Icon(Icons.sort_by_alpha_outlined)),
           IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.check_circle, color: UIHelper.primaryColor)),
+          IconButton(onPressed: () => Get.back(result: true), icon: Icon(Icons.check_circle, color: UIHelper.primaryColor)),
         ],
       ),
       floatingActionButton: Observer(

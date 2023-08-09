@@ -60,7 +60,7 @@ class _AccountsViewState extends BaseState<AccountsView> {
                                 onTap: () {
                                   Navigator.pop(context);
                                   dialogManager.showAreYouSureDialog(() {
-                                    CacheManager.accountsBox.delete(account.email);
+                                    CacheManager.removeAccounts(account.email ?? "");
                                     setState(() {});
                                   });
                                 }),
@@ -106,7 +106,7 @@ class _AccountsViewState extends BaseState<AccountsView> {
                 onTap: () {
                   Navigator.pop(context);
                   dialogManager.showAreYouSureDialog(() {
-                    Hive.box("accounts").delete(firma);
+                    CacheManager.removeAccounts(firma);
                     setState(() {});
                   });
                 },

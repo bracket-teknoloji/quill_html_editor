@@ -10,13 +10,21 @@ part of 'base_siparis_kalemler_view_model.dart';
 
 mixin _$BaseSiparisKalemlerViewModel
     on _BaseSiparisKalemlerViewModelBase, Store {
-  Computed<List<KalemModel>>? _$kalemListComputed;
+  late final _$kalemListAtom = Atom(
+      name: '_BaseSiparisKalemlerViewModelBase.kalemList', context: context);
 
   @override
-  List<KalemModel> get kalemList =>
-      (_$kalemListComputed ??= Computed<List<KalemModel>>(() => super.kalemList,
-              name: '_BaseSiparisKalemlerViewModelBase.kalemList'))
-          .value;
+  ObservableList<KalemModel>? get kalemList {
+    _$kalemListAtom.reportRead();
+    return super.kalemList;
+  }
+
+  @override
+  set kalemList(ObservableList<KalemModel>? value) {
+    _$kalemListAtom.reportWrite(value, super.kalemList, () {
+      super.kalemList = value;
+    });
+  }
 
   late final _$_BaseSiparisKalemlerViewModelBaseActionController =
       ActionController(
@@ -29,6 +37,18 @@ mixin _$BaseSiparisKalemlerViewModel
             name: '_BaseSiparisKalemlerViewModelBase.removeAtKalemList');
     try {
       return super.removeAtKalemList(index);
+    } finally {
+      _$_BaseSiparisKalemlerViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void updateKalemList(List<KalemModel>? list) {
+    final _$actionInfo = _$_BaseSiparisKalemlerViewModelBaseActionController
+        .startAction(name: '_BaseSiparisKalemlerViewModelBase.updateKalemList');
+    try {
+      return super.updateKalemList(list);
     } finally {
       _$_BaseSiparisKalemlerViewModelBaseActionController
           .endAction(_$actionInfo);

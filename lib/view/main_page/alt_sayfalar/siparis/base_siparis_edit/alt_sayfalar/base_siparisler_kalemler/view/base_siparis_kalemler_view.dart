@@ -29,6 +29,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
   @override
   void initState() {
     _searchTextController = TextEditingController();
+    viewModel.updateKalemList(BaseSiparisEditModel.instance.kalemler);
     super.initState();
   }
 
@@ -62,6 +63,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
               onSubmitted: (p0) async {
                 if (p0.ext.isNotNullOrNoEmpty) {
                   await Get.toNamed("/mainPage/stokRehberi", arguments: p0);
+            setState(() {});
                 }
               },
               suffix: IconButton(
@@ -70,6 +72,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                     if (result != null) {
                       _searchTextController.text = result;
                       await Get.toNamed("/mainPage/stokRehberi", arguments: result);
+                      setState(() {});
                     }
                   },
                   icon: const Icon(Icons.qr_code_2_outlined)),
@@ -77,60 +80,65 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
           ),
           Expanded(
               child: Observer(
-                  builder: (_) => ListView.builder(
-                      itemCount: viewModel.kalemList.length,
-                      itemBuilder: (context, index) {
-                        return Card(
-                            child: ListTile(
-                          onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(context, title: viewModel.kalemList[index].stokAdi ?? "", children: [
-                            BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit_outlined),
-                            BottomSheetModel(
-                                title: "Sil",
-                                iconWidget: Icons.delete_outline_outlined,
-                                onTap: () => dialogManager.showAreYouSureDialog(() {
-                                      Get.back();
-                                      viewModel.removeAtKalemList(index);
-                                      setState(() {});
-                                    })),
-                            BottomSheetModel(
-                                title: "Stok İşlemleri",
-                                iconWidget: Icons.list_alt_outlined,
-                                onTap: () {
-                                  Get.back();
-                                  return dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = viewModel.kalemList[index].stokKodu ?? "");
-                                }),
-                          ]),
-                          contentPadding: UIHelper.lowPadding,
-                          title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [Text(viewModel.kalemList[index].stokAdi ?? ""), const Icon(Icons.more_vert_outlined)],
-                          ),
-                          subtitle: Observer(builder: (_) {
-                            return Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(viewModel.kalemList[index].stokKodu ?? ""),
-                                Text("${viewModel.kalemList[index].depoKodu ?? ""} - ${viewModel.kalemList[index].depoTanimi ?? ""}").paddingOnly(bottom: UIHelper.lowSize),
-                                Wrap(
-                                    children: [
-                                  Text("Miktar: ${viewModel.kalemList[index].miktar ?? ""} ${viewModel.kalemList[index].olcuBirimAdi ?? ""}"),
-                                  Text("Teslim Miktar: ${viewModel.kalemList[index].miktar ?? ""} ${viewModel.kalemList[index].olcuBirimAdi ?? ""}"),
-                                  // Text("Miktar2: ${viewModel.kalemList[index].miktar ?? ""} ${viewModel.kalemList[index].olcuBirimAdi ?? ""}"),
-                                  Text("Kalan Miktar: ${viewModel.kalemList[index].miktar ?? ""} ${viewModel.kalemList[index].olcuBirimAdi ?? ""}"),
-                                  Text("Fiyat: ${(viewModel.kalemList[index].miktar ?? 0) * (viewModel.kalemList[index].brutFiyat ?? 0)}"),
-                                  Text("Teslim Tarihi: ${viewModel.kalemList[index].teslimTarihi.toDateStringIfNull() ?? ""}"),
-                                ]
-                                        .map((e) => SizedBox(
-                                              width: width * 0.4,
-                                              child: e,
-                                            ))
-                                        .toList()),
-                              ],
-                            );
-                          }),
-                        ).paddingAll(UIHelper.lowSize));
-                      })))
+                  builder: (_) => viewModel.kalemList.ext.isNullOrEmpty
+                      ? const Center(child: Text("Kalem bulunamadı. Lütfen Kalem Ekleyin."))
+                      : Observer(
+                          builder: (_) => ListView.builder(
+                              primary: false,
+                              padding: UIHelper.lowPadding,
+                              itemCount: viewModel.kalemList?.length ?? 0,
+                              itemBuilder: (context, index) {
+                                return Card(
+                                    child: ListTile(
+                                  onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(context, title: viewModel.kalemList?[index].stokAdi ?? "", children: [
+                                    BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit_outlined),
+                                    BottomSheetModel(
+                                        title: "Sil",
+                                        iconWidget: Icons.delete_outline_outlined,
+                                        onTap: () => dialogManager.showAreYouSureDialog(() {
+                                              Get.back();
+                                              viewModel.removeAtKalemList(index);
+                                              setState(() {});
+                                            })),
+                                    BottomSheetModel(
+                                        title: "Stok İşlemleri",
+                                        iconWidget: Icons.list_alt_outlined,
+                                        onTap: () {
+                                          Get.back();
+                                          return dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = viewModel.kalemList?[index].stokKodu ?? "");
+                                        }),
+                                  ]),
+                                  contentPadding: UIHelper.lowPadding,
+                                  title: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [Text(viewModel.kalemList?[index].stokAdi ?? ""), const Icon(Icons.more_vert_outlined)],
+                                  ),
+                                  subtitle: Observer(builder: (_) {
+                                    return Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(viewModel.kalemList?[index].stokKodu ?? ""),
+                                        Text("${viewModel.kalemList?[index].depoKodu ?? ""} - ${viewModel.kalemList?[index].depoTanimi ?? ""}").paddingOnly(bottom: UIHelper.lowSize),
+                                        Wrap(
+                                            children: [
+                                          Text("Miktar: ${viewModel.kalemList?[index].miktar ?? ""} ${viewModel.kalemList?[index].olcuBirimAdi ?? ""}"),
+                                          Text("Teslim Miktar: ${viewModel.kalemList?[index].miktar ?? ""} ${viewModel.kalemList?[index].olcuBirimAdi ?? ""}"),
+                                          // Text("Miktar2: ${viewModel.kalemList[index].miktar ?? ""} ${viewModel.kalemList[index].olcuBirimAdi ?? ""}"),
+                                          Text("Kalan Miktar: ${viewModel.kalemList?[index].miktar ?? ""} ${viewModel.kalemList?[index].olcuBirimAdi ?? ""}"),
+                                          Text("Fiyat: ${(viewModel.kalemList?[index].miktar ?? 0) * (viewModel.kalemList?[index].brutFiyat ?? 0)}"),
+                                          Text("Teslim Tarihi: ${viewModel.kalemList?[index].teslimTarihi.toDateStringIfNull() ?? ""}"),
+                                        ]
+                                                .map((e) => SizedBox(
+                                                      width: width * 0.4,
+                                                      child: e,
+                                                    ))
+                                                .toList()),
+                                      ],
+                                    );
+                                  }),
+                                ).paddingAll(UIHelper.lowSize));
+                              }))))
         ],
       ),
     );

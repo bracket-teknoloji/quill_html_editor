@@ -11,6 +11,7 @@ import '../../../../../../../../core/components/textfield/custom_text_field.dart
 import '../../../../../../../../core/constants/enum/base_edit_enum.dart';
 import '../../../../../../../../core/constants/extensions/date_time_extensions.dart';
 import '../../../../../../../../core/constants/extensions/number_extensions.dart';
+import '../../../../../../../../core/constants/static_variables/static_variables.dart';
 import '../../../../../../../../core/constants/ui_helper/ui_helper.dart';
 import '../../../../../../../../core/init/network/login/api_urls.dart';
 import '../../../../../cari/cari_listesi/model/cari_listesi_model.dart';
@@ -33,7 +34,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
   bool get isDuzenle => siparisModel.isDuzenle;
   bool get isEkle => siparisModel.isEkle;
   bool get isGoruntule => siparisModel.isGoruntule;
-  BaseSiparisEditModel model = BaseSiparisEditModel.instance;
+  BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   late final TextEditingController belgeNoController;
   late final TextEditingController cariController;
   late final TextEditingController teslimCariController;
@@ -63,7 +64,6 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
   late final TextEditingController satisAcik14Controller;
   late final TextEditingController satisAcik15Controller;
   late final TextEditingController satisAcik16Controller;
-  final formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -94,7 +94,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
       },
       child: SingleChildScrollView(
         child: Form(
-          key: formKey,
+          key: StaticVariables.instance.siparisGenelFormKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,8 +126,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                   onTap: () async {
                     var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
                     if (result != null && result is CariListesiModel) {
-                      model.cariAdi = result.cariAdi ?? "";
-                      model.cariKodu = result.cariKodu ?? "";
+                      model.cariModel = result;
                       cariController.text = result.cariAdi ?? "";
                     }
                   }),
@@ -146,7 +145,21 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                   }),
               Row(
                 children: [
-                  Expanded(child: CustomTextField(enabled: enable, labelText: "Belge Tipi", readOnly: true, isMust: true, suffixMore: true, controller: belgeTipiController)),
+                  Expanded(
+                      child: CustomTextField(
+                          enabled: enable,
+                          labelText: "Belge Tipi",
+                          readOnly: true,
+                          isMust: true,
+                          suffixMore: true,
+                          controller: belgeTipiController,
+                          onTap: () async {
+                            var result = await bottomSheetDialogManager.showBelgeTipiDialog(context);
+                            if (result != null) {
+                              model.belgeTipi = result.belgeTipiId;
+                              belgeTipiController.text = result.belgeTipi ?? "";
+                            }
+                          })),
                   Expanded(
                       child: CustomTextField(
                     enabled: enable,
@@ -295,9 +308,8 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
   Future<void> init() async {
     controllerFiller();
     if (BaseSiparisEditModel.instance.belgeNo == null) {
-      getBelgeNo();
+      await getBelgeNo();
     }
-    if (BaseSiparisEditModel.instance.isEmpty) {}
   }
 
   // Future<void> getData() async {

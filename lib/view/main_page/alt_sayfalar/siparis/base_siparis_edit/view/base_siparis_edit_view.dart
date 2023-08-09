@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
+import 'package:kartal/kartal.dart';
+import 'package:picker/core/constants/static_variables/static_variables.dart';
 
 import '../../../../../../core/base/model/base_edit_model.dart';
 import '../../../../../../core/base/state/base_state.dart';
@@ -32,13 +34,19 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
   BaseSiparisEditingViewModel viewModel = BaseSiparisEditingViewModel();
   late TabController tabController;
   late BaseEditModel<SiparisEditRequestModel> model;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     tabController = TabController(length: 4, vsync: this);
     tabController.addListener(() {
-      if (tabController.indexIsChanging) {}
-      if (tabController.index == 3) {
+      if (tabController.indexIsChanging && tabController.previousIndex == 0) {
+        //😳 var result = StaticVariables.instance.siparisGenelFormKey.currentState?.validate();
+        //😳 if (result == null || result == false) {
+        //😳   tabController.animateTo(tabController.previousIndex);
+        //😳 }
+      }
+      if (tabController.index == 3 && BaseSiparisEditModel.instance.kalemler.ext.isNotNullOrEmpty) {
         viewModel.changeIsLastPage(true);
       } else {
         viewModel.changeIsLastPage(false);
@@ -55,11 +63,11 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
       }
     }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      if (BaseSiparisEditModel.instance.isEmpty && widget.model.baseEditEnum != BaseEditEnum.ekle && model.model?.tempBelgeId != null) {
+      if (BaseSiparisEditModel.instance.isEmpty && widget.model.baseEditEnum != BaseEditEnum.ekle) {
         await getData();
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
-          BaseSiparisEditModel.instance.isNew = true;
+        BaseSiparisEditModel.instance.isNew = true;
         var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
         if (result is CariListesiModel) {
           viewModel.changeIsBaseSiparisEmpty(true);
@@ -69,11 +77,9 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           BaseSiparisEditModel.instance.cariKodu = result.cariKodu;
           BaseSiparisEditModel.instance.belgeTipi = int.tryParse(result.odemeTipi ?? "0");
         }
-          viewModel.changeIsBaseSiparisEmpty(false);
-      }else{
-        // BaseSiparisEditModel.setInstance();
-      }
+      } else {}
     });
+    viewModel.changeIsBaseSiparisEmpty(false);
     super.initState();
   }
 
@@ -147,7 +153,6 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
     if (result.success == true) {
       viewModel.changeFuture();
       BaseSiparisEditModel.setInstance(result.data!.first);
-      viewModel.changeIsBaseSiparisEmpty(false);
     }
   }
 

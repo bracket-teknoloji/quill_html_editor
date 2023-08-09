@@ -22,7 +22,6 @@ class CacheManager {
   static late Box preferencesBox;
   static late Box companiesBox;
   static late Box accountsBox;
-  static late Box anaHesapBox;
   static late Box anaVeriBox;
   static late Box verifiedUsersBox;
   static late Box veriTabaniBox;
@@ -63,7 +62,6 @@ class CacheManager {
     companiesBox = await Hive.openBox("companies");
     tokenBox = await Hive.openBox("token");
     accountsBox = await Hive.openBox("accounts");
-    anaHesapBox = await Hive.openBox("anaHesap");
     anaVeriBox = await Hive.openBox<MainPageModel>("anaVeri");
     verifiedUsersBox = await Hive.openBox("logged");
     veriTabaniBox = await Hive.openBox("veriTabani");
@@ -110,7 +108,7 @@ class CacheManager {
   /// ```
   /// {@end-tool}
   static BaseSiparisEditModel? getSiparisEdit(String key) => siparisEditBox.get(key);
-  static List<BaseSiparisEditModel?> get getSiparisEditList => siparisEditBox.values.map((e) => e..isNew = true).toList().cast<BaseSiparisEditModel?>();
+  static List<BaseSiparisEditModel?> getSiparisEditList(SiparisTipiEnum siparisTipi) => siparisEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel?>();
   // static String get getSirketAdi => _sirketAdiBox.get("value") ?? "";
 
   //* Setters
@@ -150,7 +148,7 @@ class CacheManager {
       log("Favorilerde böyle bir key yok");
     }
   }
-
+  static void removeAccounts(String key) => accountsBox.delete(key);
   static void removeFavoriWithIndex(int index) => favorilerBox.deleteAt(index);
   static void removeSiparisEdit(String key) => siparisEditBox.delete(key);
 }
