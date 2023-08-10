@@ -19,6 +19,7 @@ class ListSiparisEditModel{
 
   ListSiparisEditModel({this.list});
 }
+//sdşfljksjşdlfkjsdlş
 
 @JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, createFactory: true, includeIfNull: false)
 @HiveType(typeId: 152)
