@@ -128,10 +128,15 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           ]))),
                         ],
                       ).paddingSymmetric(horizontal: UIHelper.lowSize).paddingOnly(top: UIHelper.lowSize),
-                      const Row(
+                      Row(
                         children: [
-                          Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "Brüt Tutar: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
-                          Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "MF. Tutarı: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
+                          Expanded(child: Observer(builder: (_) {
+                            return Text.rich(TextSpan(children: [
+                              const TextSpan(text: "Brüt Tutar: "),
+                              TextSpan(text: "${viewModel.brutTutar.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                            ]));
+                          })),
+                          const Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "MF. Tutarı: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
                         ],
                       ).paddingSymmetric(horizontal: UIHelper.lowSize),
                       const Row(
@@ -140,10 +145,15 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "Ara Toplam: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
                         ],
                       ).paddingSymmetric(horizontal: UIHelper.lowSize),
-                      const Row(
+                      Row(
                         children: [
-                          Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "KDV Tutarı: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
-                          Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "Genel Toplam: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
+                          Expanded(child: Observer(builder: (_) {
+                            return Text.rich(TextSpan(children: [
+                              const TextSpan(text: "KDV Tutarı: "),
+                              TextSpan(text: "${viewModel.kdvTutari.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                            ]));
+                          })),
+                          const Expanded(child: Text.rich(TextSpan(children: [TextSpan(text: "Genel Toplam: "), TextSpan(text: "123456", style: TextStyle(fontWeight: FontWeight.bold))]))),
                         ],
                       ).paddingSymmetric(horizontal: UIHelper.lowSize),
                       Card(
@@ -161,9 +171,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
               key: formKey,
               child: Column(
                 children: [
-                  CustomTextField(labelText: "Kalem Adı", controller: kalemAdiController),
+                  CustomTextField(labelText: "Kalem Adı", controller: kalemAdiController, readOnly: true),
                   CustomTextField(labelText: "Ek Alan 1", onChanged: (p0) => viewModel.kalemModel.ekalan1 = p0),
-                  CustomTextField(labelText: "Ek Alan 12", onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0),
+                  CustomTextField(labelText: "Ek Alan 2", onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -298,36 +308,45 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         controller: kdvOraniController,
                         isMust: true,
                         readOnly: true,
-                        onTap: () async {
-                          var result = await bottomSheetDialogManager.showKDVOranlariDialog(context);
-                          if (result != null) {
-                            kdvOraniController.text = result.toString();
-                            viewModel.kalemModel.kdvOrani = result;
-                          }
-                        },
+                        onChanged: (p0) => viewModel.setKdvOrani(double.tryParse(p0) ?? 0),
+                        suffix: IconButton(
+                          icon: const Icon(Icons.more_horiz_outlined),
+                          onPressed: () async {
+                            var result = await bottomSheetDialogManager.showKDVOranlariDialog(context);
+                            if (result != null) {
+                              kdvOraniController.text = result.toString();
+                              viewModel.kalemModel.kdvOrani = result;
+                            }
+                          },
+                        ),
                       )),
-                      const Expanded(child: CustomTextField(labelText: "Fiyat")),
+                      Expanded(
+                          child: CustomTextField(
+                              labelText: "Fiyat",
+                              controller: fiyatController,
+                              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                              onChanged: (p0) => viewModel.setBrutFiyat(double.tryParse(p0.replaceAll(RegExp(r","), ".")) ?? 0))),
                     ],
                   ),
-                  const Row(
+                  Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(child: CustomTextField(labelText: "İsk.1")),
-                      Expanded(child: CustomTextField(labelText: "İsk.Tipi 1")),
+                      Expanded(child: CustomTextField(labelText: "İsk.1", controller: isk1Controller, onChanged: (p0) => viewModel.setIskonto1(double.tryParse(p0) ?? 0))),
+                      const Expanded(child: CustomTextField(labelText: "İsk.Tipi 1")),
                     ],
                   ),
-                  const Row(
+                  Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(child: CustomTextField(labelText: "İsk.Tipi 2")),
-                      Expanded(child: CustomTextField(labelText: "İsk.2 %")),
+                      const Expanded(child: CustomTextField(labelText: "İsk.Tipi 2")),
+                      Expanded(child: CustomTextField(labelText: "İsk.2 %", controller: isk2YuzdeController, onChanged: (p0) => viewModel.setIskonto2(double.tryParse(p0) ?? 0))),
                     ],
                   ),
-                  const Row(
+                  Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(child: CustomTextField(labelText: "İsk.Tipi 3")),
-                      Expanded(child: CustomTextField(labelText: "İsk.3 %")),
+                      const Expanded(child: CustomTextField(labelText: "İsk.Tipi 3")),
+                      Expanded(child: CustomTextField(labelText: "İsk.3 %", controller: isk3YuzdeController, onChanged: (p0) => viewModel.setIskonto3(double.tryParse(p0) ?? 0))),
                     ],
                   ),
                 ],
@@ -383,9 +402,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
 
   void controllerFiller() {
     kalemAdiController.text = widget.stokListesiModel?.stokAdi ?? widget.stokListesiModel?.stokKodu ?? "";
-    miktarController.text = viewModel.kalemModel.miktar!.toIntIfDouble.toString();
-    miktar2Controller.text = viewModel.kalemModel.miktar2!.toIntIfDouble.toString();
-    depoController.text = widget.stokListesiModel?.depoKodu.toStringIfNull ?? "kjhlkjh";
+    miktarController.text = viewModel.kalemModel.miktar?.toIntIfDouble.toStringIfNull ?? "";
+    miktar2Controller.text = viewModel.kalemModel.miktar2?.toIntIfDouble.toStringIfNull ?? "";
+    depoController.text = widget.stokListesiModel?.depoKodu.toStringIfNull ?? "";
     teslimTarihiController.text = model.teslimTarihi.toDateString();
     projeController.text = BaseSiparisEditModel.instance.projeKodu ?? "";
     depoController.text = model.cikisDepoKodu.toStringIfNull ?? "";

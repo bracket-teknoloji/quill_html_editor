@@ -20,29 +20,38 @@ abstract class _KalemEkleViewModelBase with Store {
   bool get dovizliMi => model?.dovizliMi ?? false;
 
   @observable
-  KalemModel kalemModel = KalemModel(miktar: 0, miktar2: 0);
+  KalemModel kalemModel = KalemModel();
 
   @action
   void increaseMiktar(TextEditingController controller) {
-    kalemModel.miktar = (kalemModel.miktar! + 1);
-    controller.text = (kalemModel.miktar)!.toIntIfDouble.toString();
+    kalemModel = kalemModel.copyWith(miktar: (kalemModel.miktar ?? 0) + 1);
+    controller.text = (kalemModel.miktar ?? 0).toIntIfDouble.toString();
   }
 
   @action
-  void setMiktar(int value) {
-    kalemModel.miktar = value.toDouble();
-  }
-
+  void setMiktar(int value) => kalemModel = kalemModel.copyWith(miktar: value.toDouble());
+  @action
+  void setBrutFiyat(double value) => kalemModel = kalemModel.copyWith(brutFiyat: value);
+  @action
+  void setKdvOrani(double value) => kalemModel = kalemModel.copyWith(kdvOrani: value);
+  @action
+  void setIskonto1(double value) => kalemModel = kalemModel.copyWith(iskonto1: value);
+  @action
+  void setIskonto2(double value) => kalemModel = kalemModel.copyWith(iskonto2: value);
+  @action
+  void setIskonto3(double value) => kalemModel = kalemModel.copyWith(iskonto3: value);
   @action
   void decreaseMiktar(TextEditingController controller) {
-    if (kalemModel.miktar! > 0) kalemModel.miktar = (kalemModel.miktar! - 1);
-    controller.text = (kalemModel.miktar)!.toIntIfDouble.toString();
+    if ((kalemModel.miktar ?? 0) > 0) {
+      kalemModel = kalemModel.copyWith(miktar: (kalemModel.miktar ?? 0) - 1);
+      controller.text = (kalemModel.miktar ?? 0).toIntIfDouble.toString();
+    }
   }
 
   @action
   void increaseMiktar2(TextEditingController controller) {
-    kalemModel.miktar2 = kalemModel.miktar2! + 1;
-    controller.text = (kalemModel.miktar2)!.toIntIfDouble.toString();
+    kalemModel.miktar2 = (kalemModel.miktar2 ?? 0) + 1;
+    controller.text = (kalemModel.miktar2 ?? 0).toIntIfDouble.toString();
   }
 
   @action
@@ -52,7 +61,13 @@ abstract class _KalemEkleViewModelBase with Store {
 
   @action
   void decreaseMiktar2(TextEditingController controller) {
-    if (kalemModel.miktar2! > 0) kalemModel.miktar2 = kalemModel.miktar2! - 1;
-    controller.text = (kalemModel.miktar2)!.toIntIfDouble.toString();
+    if ((kalemModel.miktar2 ?? 0) > 0) kalemModel.miktar2 = (kalemModel.miktar2 ?? 0) - 1;
+    controller.text = (kalemModel.miktar2 ?? 0).toIntIfDouble.toString();
   }
+
+  @computed
+  double get brutTutar => kalemModel.brutTutar;
+
+  @computed
+  double get kdvTutari => kalemModel.kdvTutari;
 }

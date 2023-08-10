@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -13,7 +14,7 @@ import '../../../stok/stok_liste/model/stok_listesi_model.dart';
 part 'base_siparis_edit_model.g.dart';
 
 @HiveType(typeId: 151)
-class ListSiparisEditModel{
+class ListSiparisEditModel {
   @HiveField(0)
   List<BaseSiparisEditModel>? list;
 
@@ -309,6 +310,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   static void setInstance(BaseSiparisEditModel instance) => _instance = instance;
 }
 
+@CopyWith()
 @HiveType(typeId: 17)
 @JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, includeIfNull: false, createFactory: true)
 class KalemModel {
@@ -464,6 +466,12 @@ class KalemModel {
       this.dovizFiyati,
       this.malfazCevrimliMiktar,
       this.malFazlasiMiktar});
+
+  double get brutTutar => (miktar ?? 0) * (brutFiyat ?? 0);
+
+  double get kdvTutari => (brutTutar * (kdvOrani ?? 0) / 100) * (miktar ?? 0);
+
+  double get iskontoTutari => (miktar ?? 0) * (iskonto1 ?? 0) / 100;
 
   factory KalemModel.fromJson(Map<String, dynamic> json) => _$KalemModelFromJson(json);
 

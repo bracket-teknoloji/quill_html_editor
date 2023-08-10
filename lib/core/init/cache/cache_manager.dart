@@ -73,7 +73,6 @@ class CacheManager {
     isLicenseVerifiedBox = await Hive.openBox<bool>("isLicenseVerified");
     siparisEditBox = await Hive.openBox<BaseSiparisEditModel>("siparisEdit");
     siparisEditListBox = await Hive.openBox<ListSiparisEditModel>("siparisEditList");
-    // siparisEditListBox.clear();
     if (isLicenseVerifiedBox.isEmpty) {
       isLicenseVerifiedBox.put("value", false);
     }
@@ -148,9 +147,9 @@ class CacheManager {
       siparisEditListBox.put(getSiparisString, ListSiparisEditModel());
     }
     if (siparisEditListBox.get(getSiparisString)?.list?.any((element) => element.belgeNo == value.belgeNo) ?? false) {
-      siparisEditListBox.put(getSiparisString, ListSiparisEditModel(list:siparisEditListBox.get(getSiparisString)?.list?.map((e) => e.belgeNo == value.belgeNo ? value : e).toList()));
+      siparisEditListBox.put(getSiparisString, ListSiparisEditModel(list: siparisEditListBox.get(getSiparisString)?.list?.map((e) => e.belgeNo == value.belgeNo ? value : e).toList()));
     } else {
-      siparisEditListBox.put(getSiparisString, ListSiparisEditModel(list:[...?siparisEditListBox.get(getSiparisString)?.list, value]));
+      siparisEditListBox.put(getSiparisString, ListSiparisEditModel(list: [...?siparisEditListBox.get(getSiparisString)?.list, value]));
     }
   }
 
@@ -169,5 +168,5 @@ class CacheManager {
   static void removeSiparisEdit(String key) => siparisEditBox.delete(key);
 
   //* Helper
-  static String get getSiparisString => "${getVerifiedUser.account?.email ?? ""}-${AccountModel.instance.aktifSubeKodu ?? ""}";
+  static String get getSiparisString => "${getVerifiedUser.account?.email ?? ""}-${AccountModel.instance.aktifVeritabani ?? ""}-${AccountModel.instance.aktifSubeKodu ?? ""}";
 }

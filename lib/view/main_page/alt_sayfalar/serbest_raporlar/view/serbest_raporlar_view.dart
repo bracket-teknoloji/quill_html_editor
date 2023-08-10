@@ -90,7 +90,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                                       ? null
                                       : () async {
                                           var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                              title: "Seçiniz", children: e.paramMap!.values.map((value) => BottomSheetModel(title: value, onTap: () => Get.back(result: e))).toList());
+                                              title: "Seçiniz", children: e.paramMap?.values.map((value) => BottomSheetModel(title: value, onTap: () => Get.back(result: e))).toList());
                                           if (result != null) {
                                             viewModel.changeDicParams(e.adi ?? "", result.adi);
                                           }
@@ -111,7 +111,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
               return ElevatedButton(
                   onPressed: () {
                     //😳 Düzelt kanki
-                    if (viewModel.serbestRaporResponseModelList!.where((element) => element.bosGecilebilir == false).any((element) => viewModel.dicParams[element.adi ?? ""] == null)) {
+                    if (viewModel.serbestRaporResponseModelList?.where((element) => element.bosGecilebilir == false).any((element) => viewModel.dicParams[element.adi ?? ""] == null) ??false) {
                       dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
                     } else {
                       viewModel.setFuture();

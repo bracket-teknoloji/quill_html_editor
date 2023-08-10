@@ -16,6 +16,20 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
       (_$dovizliMiComputed ??= Computed<bool>(() => super.dovizliMi,
               name: '_KalemEkleViewModelBase.dovizliMi'))
           .value;
+  Computed<double>? _$brutTutarComputed;
+
+  @override
+  double get brutTutar =>
+      (_$brutTutarComputed ??= Computed<double>(() => super.brutTutar,
+              name: '_KalemEkleViewModelBase.brutTutar'))
+          .value;
+  Computed<double>? _$kdvTutariComputed;
+
+  @override
+  double get kdvTutari =>
+      (_$kdvTutariComputed ??= Computed<double>(() => super.kdvTutari,
+              name: '_KalemEkleViewModelBase.kdvTutari'))
+          .value;
 
   late final _$modelAtom =
       Atom(name: '_KalemEkleViewModelBase.model', context: context);
@@ -86,6 +100,61 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
+  void setBrutFiyat(double value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setBrutFiyat');
+    try {
+      return super.setBrutFiyat(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setKdvOrani(double value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setKdvOrani');
+    try {
+      return super.setKdvOrani(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setIskonto1(double value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setIskonto1');
+    try {
+      return super.setIskonto1(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setIskonto2(double value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setIskonto2');
+    try {
+      return super.setIskonto2(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setIskonto3(double value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setIskonto3');
+    try {
+      return super.setIskonto3(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void decreaseMiktar(TextEditingController controller) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.decreaseMiktar');
@@ -134,7 +203,9 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
     return '''
 model: ${model},
 kalemModel: ${kalemModel},
-dovizliMi: ${dovizliMi}
+dovizliMi: ${dovizliMi},
+brutTutar: ${brutTutar},
+kdvTutari: ${kdvTutari}
     ''';
   }
 }

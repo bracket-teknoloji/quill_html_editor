@@ -3,6 +3,609 @@
 part of 'base_siparis_edit_model.dart';
 
 // **************************************************************************
+// CopyWithGenerator
+// **************************************************************************
+
+abstract class _$KalemModelCWProxy {
+  KalemModel iskonto1OranMi(bool? iskonto1OranMi);
+
+  KalemModel tarih(DateTime? tarih);
+
+  KalemModel teslimTarihi(DateTime? teslimTarihi);
+
+  KalemModel brutFiyat(double? brutFiyat);
+
+  KalemModel depoKodu(int? depoKodu);
+
+  KalemModel kdvOrani(double? kdvOrani);
+
+  KalemModel miktar(double? miktar);
+
+  KalemModel olcuBirimKodu(int? olcuBirimKodu);
+
+  KalemModel sira(int? sira);
+
+  KalemModel hucreList(List<dynamic>? hucreList);
+
+  KalemModel kalemModelHucreList(List<dynamic>? kalemModelHucreList);
+
+  KalemModel seriList(List<dynamic>? seriList);
+
+  KalemModel tempBarkodList(List<dynamic>? tempBarkodList);
+
+  KalemModel belgeNo(String? belgeNo);
+
+  KalemModel belgeTipi(String? belgeTipi);
+
+  KalemModel cariKodu(String? cariKodu);
+
+  KalemModel depoTanimi(String? depoTanimi);
+
+  KalemModel olcuBirimAdi(String? olcuBirimAdi);
+
+  KalemModel stokAdi(String? stokAdi);
+
+  KalemModel stokKodu(String? stokKodu);
+
+  KalemModel stokOlcuBirimi(String? stokOlcuBirimi);
+
+  KalemModel dovizKuru(double? dovizKuru);
+
+  KalemModel dovizTipi(int? dovizTipi);
+
+  KalemModel dovizliFiyat(double? dovizliFiyat);
+
+  KalemModel aciklama1(String? aciklama1);
+
+  KalemModel aciklama10(String? aciklama10);
+
+  KalemModel aciklama2(String? aciklama2);
+
+  KalemModel aciklama3(String? aciklama3);
+
+  KalemModel aciklama4(String? aciklama4);
+
+  KalemModel aciklama5(String? aciklama5);
+
+  KalemModel aciklama6(String? aciklama6);
+
+  KalemModel aciklama7(String? aciklama7);
+
+  KalemModel aciklama8(String? aciklama8);
+
+  KalemModel aciklama9(String? aciklama9);
+
+  KalemModel ekalan1(String? ekalan1);
+
+  KalemModel ekalan2(String? ekalan2);
+
+  KalemModel isk1Tipi(int? isk1Tipi);
+
+  KalemModel isk2Tipi(int? isk2Tipi);
+
+  KalemModel isk3Tipi(int? isk3Tipi);
+
+  KalemModel iskonto1(double? iskonto1);
+
+  KalemModel iskonto2(double? iskonto2);
+
+  KalemModel iskonto3(double? iskonto3);
+
+  KalemModel malfazIskAdedi(double? malfazIskAdedi);
+
+  KalemModel miktar2(double? miktar2);
+
+  KalemModel projeKodu(String? projeKodu);
+
+  KalemModel satisFiyati(double? satisFiyati);
+
+  KalemModel dovizKodu(int? dovizKodu);
+
+  KalemModel dovizFiyati(double? dovizFiyati);
+
+  KalemModel malfazCevrimliMiktar(double? malfazCevrimliMiktar);
+
+  KalemModel malFazlasiMiktar(double? malFazlasiMiktar);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// KalemModel(...).copyWith(id: 12, name: "My name")
+  /// ````
+  KalemModel call({
+    bool? iskonto1OranMi,
+    DateTime? tarih,
+    DateTime? teslimTarihi,
+    double? brutFiyat,
+    int? depoKodu,
+    double? kdvOrani,
+    double? miktar,
+    int? olcuBirimKodu,
+    int? sira,
+    List<dynamic>? hucreList,
+    List<dynamic>? kalemModelHucreList,
+    List<dynamic>? seriList,
+    List<dynamic>? tempBarkodList,
+    String? belgeNo,
+    String? belgeTipi,
+    String? cariKodu,
+    String? depoTanimi,
+    String? olcuBirimAdi,
+    String? stokAdi,
+    String? stokKodu,
+    String? stokOlcuBirimi,
+    double? dovizKuru,
+    int? dovizTipi,
+    double? dovizliFiyat,
+    String? aciklama1,
+    String? aciklama10,
+    String? aciklama2,
+    String? aciklama3,
+    String? aciklama4,
+    String? aciklama5,
+    String? aciklama6,
+    String? aciklama7,
+    String? aciklama8,
+    String? aciklama9,
+    String? ekalan1,
+    String? ekalan2,
+    int? isk1Tipi,
+    int? isk2Tipi,
+    int? isk3Tipi,
+    double? iskonto1,
+    double? iskonto2,
+    double? iskonto3,
+    double? malfazIskAdedi,
+    double? miktar2,
+    String? projeKodu,
+    double? satisFiyati,
+    int? dovizKodu,
+    double? dovizFiyati,
+    double? malfazCevrimliMiktar,
+    double? malFazlasiMiktar,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfKalemModel.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfKalemModel.copyWith.fieldName(...)`
+class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
+  const _$KalemModelCWProxyImpl(this._value);
+
+  final KalemModel _value;
+
+  @override
+  KalemModel iskonto1OranMi(bool? iskonto1OranMi) =>
+      this(iskonto1OranMi: iskonto1OranMi);
+
+  @override
+  KalemModel tarih(DateTime? tarih) => this(tarih: tarih);
+
+  @override
+  KalemModel teslimTarihi(DateTime? teslimTarihi) =>
+      this(teslimTarihi: teslimTarihi);
+
+  @override
+  KalemModel brutFiyat(double? brutFiyat) => this(brutFiyat: brutFiyat);
+
+  @override
+  KalemModel depoKodu(int? depoKodu) => this(depoKodu: depoKodu);
+
+  @override
+  KalemModel kdvOrani(double? kdvOrani) => this(kdvOrani: kdvOrani);
+
+  @override
+  KalemModel miktar(double? miktar) => this(miktar: miktar);
+
+  @override
+  KalemModel olcuBirimKodu(int? olcuBirimKodu) =>
+      this(olcuBirimKodu: olcuBirimKodu);
+
+  @override
+  KalemModel sira(int? sira) => this(sira: sira);
+
+  @override
+  KalemModel hucreList(List<dynamic>? hucreList) => this(hucreList: hucreList);
+
+  @override
+  KalemModel kalemModelHucreList(List<dynamic>? kalemModelHucreList) =>
+      this(kalemModelHucreList: kalemModelHucreList);
+
+  @override
+  KalemModel seriList(List<dynamic>? seriList) => this(seriList: seriList);
+
+  @override
+  KalemModel tempBarkodList(List<dynamic>? tempBarkodList) =>
+      this(tempBarkodList: tempBarkodList);
+
+  @override
+  KalemModel belgeNo(String? belgeNo) => this(belgeNo: belgeNo);
+
+  @override
+  KalemModel belgeTipi(String? belgeTipi) => this(belgeTipi: belgeTipi);
+
+  @override
+  KalemModel cariKodu(String? cariKodu) => this(cariKodu: cariKodu);
+
+  @override
+  KalemModel depoTanimi(String? depoTanimi) => this(depoTanimi: depoTanimi);
+
+  @override
+  KalemModel olcuBirimAdi(String? olcuBirimAdi) =>
+      this(olcuBirimAdi: olcuBirimAdi);
+
+  @override
+  KalemModel stokAdi(String? stokAdi) => this(stokAdi: stokAdi);
+
+  @override
+  KalemModel stokKodu(String? stokKodu) => this(stokKodu: stokKodu);
+
+  @override
+  KalemModel stokOlcuBirimi(String? stokOlcuBirimi) =>
+      this(stokOlcuBirimi: stokOlcuBirimi);
+
+  @override
+  KalemModel dovizKuru(double? dovizKuru) => this(dovizKuru: dovizKuru);
+
+  @override
+  KalemModel dovizTipi(int? dovizTipi) => this(dovizTipi: dovizTipi);
+
+  @override
+  KalemModel dovizliFiyat(double? dovizliFiyat) =>
+      this(dovizliFiyat: dovizliFiyat);
+
+  @override
+  KalemModel aciklama1(String? aciklama1) => this(aciklama1: aciklama1);
+
+  @override
+  KalemModel aciklama10(String? aciklama10) => this(aciklama10: aciklama10);
+
+  @override
+  KalemModel aciklama2(String? aciklama2) => this(aciklama2: aciklama2);
+
+  @override
+  KalemModel aciklama3(String? aciklama3) => this(aciklama3: aciklama3);
+
+  @override
+  KalemModel aciklama4(String? aciklama4) => this(aciklama4: aciklama4);
+
+  @override
+  KalemModel aciklama5(String? aciklama5) => this(aciklama5: aciklama5);
+
+  @override
+  KalemModel aciklama6(String? aciklama6) => this(aciklama6: aciklama6);
+
+  @override
+  KalemModel aciklama7(String? aciklama7) => this(aciklama7: aciklama7);
+
+  @override
+  KalemModel aciklama8(String? aciklama8) => this(aciklama8: aciklama8);
+
+  @override
+  KalemModel aciklama9(String? aciklama9) => this(aciklama9: aciklama9);
+
+  @override
+  KalemModel ekalan1(String? ekalan1) => this(ekalan1: ekalan1);
+
+  @override
+  KalemModel ekalan2(String? ekalan2) => this(ekalan2: ekalan2);
+
+  @override
+  KalemModel isk1Tipi(int? isk1Tipi) => this(isk1Tipi: isk1Tipi);
+
+  @override
+  KalemModel isk2Tipi(int? isk2Tipi) => this(isk2Tipi: isk2Tipi);
+
+  @override
+  KalemModel isk3Tipi(int? isk3Tipi) => this(isk3Tipi: isk3Tipi);
+
+  @override
+  KalemModel iskonto1(double? iskonto1) => this(iskonto1: iskonto1);
+
+  @override
+  KalemModel iskonto2(double? iskonto2) => this(iskonto2: iskonto2);
+
+  @override
+  KalemModel iskonto3(double? iskonto3) => this(iskonto3: iskonto3);
+
+  @override
+  KalemModel malfazIskAdedi(double? malfazIskAdedi) =>
+      this(malfazIskAdedi: malfazIskAdedi);
+
+  @override
+  KalemModel miktar2(double? miktar2) => this(miktar2: miktar2);
+
+  @override
+  KalemModel projeKodu(String? projeKodu) => this(projeKodu: projeKodu);
+
+  @override
+  KalemModel satisFiyati(double? satisFiyati) => this(satisFiyati: satisFiyati);
+
+  @override
+  KalemModel dovizKodu(int? dovizKodu) => this(dovizKodu: dovizKodu);
+
+  @override
+  KalemModel dovizFiyati(double? dovizFiyati) => this(dovizFiyati: dovizFiyati);
+
+  @override
+  KalemModel malfazCevrimliMiktar(double? malfazCevrimliMiktar) =>
+      this(malfazCevrimliMiktar: malfazCevrimliMiktar);
+
+  @override
+  KalemModel malFazlasiMiktar(double? malFazlasiMiktar) =>
+      this(malFazlasiMiktar: malFazlasiMiktar);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// KalemModel(...).copyWith(id: 12, name: "My name")
+  /// ````
+  KalemModel call({
+    Object? iskonto1OranMi = const $CopyWithPlaceholder(),
+    Object? tarih = const $CopyWithPlaceholder(),
+    Object? teslimTarihi = const $CopyWithPlaceholder(),
+    Object? brutFiyat = const $CopyWithPlaceholder(),
+    Object? depoKodu = const $CopyWithPlaceholder(),
+    Object? kdvOrani = const $CopyWithPlaceholder(),
+    Object? miktar = const $CopyWithPlaceholder(),
+    Object? olcuBirimKodu = const $CopyWithPlaceholder(),
+    Object? sira = const $CopyWithPlaceholder(),
+    Object? hucreList = const $CopyWithPlaceholder(),
+    Object? kalemModelHucreList = const $CopyWithPlaceholder(),
+    Object? seriList = const $CopyWithPlaceholder(),
+    Object? tempBarkodList = const $CopyWithPlaceholder(),
+    Object? belgeNo = const $CopyWithPlaceholder(),
+    Object? belgeTipi = const $CopyWithPlaceholder(),
+    Object? cariKodu = const $CopyWithPlaceholder(),
+    Object? depoTanimi = const $CopyWithPlaceholder(),
+    Object? olcuBirimAdi = const $CopyWithPlaceholder(),
+    Object? stokAdi = const $CopyWithPlaceholder(),
+    Object? stokKodu = const $CopyWithPlaceholder(),
+    Object? stokOlcuBirimi = const $CopyWithPlaceholder(),
+    Object? dovizKuru = const $CopyWithPlaceholder(),
+    Object? dovizTipi = const $CopyWithPlaceholder(),
+    Object? dovizliFiyat = const $CopyWithPlaceholder(),
+    Object? aciklama1 = const $CopyWithPlaceholder(),
+    Object? aciklama10 = const $CopyWithPlaceholder(),
+    Object? aciklama2 = const $CopyWithPlaceholder(),
+    Object? aciklama3 = const $CopyWithPlaceholder(),
+    Object? aciklama4 = const $CopyWithPlaceholder(),
+    Object? aciklama5 = const $CopyWithPlaceholder(),
+    Object? aciklama6 = const $CopyWithPlaceholder(),
+    Object? aciklama7 = const $CopyWithPlaceholder(),
+    Object? aciklama8 = const $CopyWithPlaceholder(),
+    Object? aciklama9 = const $CopyWithPlaceholder(),
+    Object? ekalan1 = const $CopyWithPlaceholder(),
+    Object? ekalan2 = const $CopyWithPlaceholder(),
+    Object? isk1Tipi = const $CopyWithPlaceholder(),
+    Object? isk2Tipi = const $CopyWithPlaceholder(),
+    Object? isk3Tipi = const $CopyWithPlaceholder(),
+    Object? iskonto1 = const $CopyWithPlaceholder(),
+    Object? iskonto2 = const $CopyWithPlaceholder(),
+    Object? iskonto3 = const $CopyWithPlaceholder(),
+    Object? malfazIskAdedi = const $CopyWithPlaceholder(),
+    Object? miktar2 = const $CopyWithPlaceholder(),
+    Object? projeKodu = const $CopyWithPlaceholder(),
+    Object? satisFiyati = const $CopyWithPlaceholder(),
+    Object? dovizKodu = const $CopyWithPlaceholder(),
+    Object? dovizFiyati = const $CopyWithPlaceholder(),
+    Object? malfazCevrimliMiktar = const $CopyWithPlaceholder(),
+    Object? malFazlasiMiktar = const $CopyWithPlaceholder(),
+  }) {
+    return KalemModel(
+      iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
+          ? _value.iskonto1OranMi
+          // ignore: cast_nullable_to_non_nullable
+          : iskonto1OranMi as bool?,
+      tarih: tarih == const $CopyWithPlaceholder()
+          ? _value.tarih
+          // ignore: cast_nullable_to_non_nullable
+          : tarih as DateTime?,
+      teslimTarihi: teslimTarihi == const $CopyWithPlaceholder()
+          ? _value.teslimTarihi
+          // ignore: cast_nullable_to_non_nullable
+          : teslimTarihi as DateTime?,
+      brutFiyat: brutFiyat == const $CopyWithPlaceholder()
+          ? _value.brutFiyat
+          // ignore: cast_nullable_to_non_nullable
+          : brutFiyat as double?,
+      depoKodu: depoKodu == const $CopyWithPlaceholder()
+          ? _value.depoKodu
+          // ignore: cast_nullable_to_non_nullable
+          : depoKodu as int?,
+      kdvOrani: kdvOrani == const $CopyWithPlaceholder()
+          ? _value.kdvOrani
+          // ignore: cast_nullable_to_non_nullable
+          : kdvOrani as double?,
+      miktar: miktar == const $CopyWithPlaceholder()
+          ? _value.miktar
+          // ignore: cast_nullable_to_non_nullable
+          : miktar as double?,
+      olcuBirimKodu: olcuBirimKodu == const $CopyWithPlaceholder()
+          ? _value.olcuBirimKodu
+          // ignore: cast_nullable_to_non_nullable
+          : olcuBirimKodu as int?,
+      sira: sira == const $CopyWithPlaceholder()
+          ? _value.sira
+          // ignore: cast_nullable_to_non_nullable
+          : sira as int?,
+      hucreList: hucreList == const $CopyWithPlaceholder()
+          ? _value.hucreList
+          // ignore: cast_nullable_to_non_nullable
+          : hucreList as List<dynamic>?,
+      kalemModelHucreList: kalemModelHucreList == const $CopyWithPlaceholder()
+          ? _value.kalemModelHucreList
+          // ignore: cast_nullable_to_non_nullable
+          : kalemModelHucreList as List<dynamic>?,
+      seriList: seriList == const $CopyWithPlaceholder()
+          ? _value.seriList
+          // ignore: cast_nullable_to_non_nullable
+          : seriList as List<dynamic>?,
+      tempBarkodList: tempBarkodList == const $CopyWithPlaceholder()
+          ? _value.tempBarkodList
+          // ignore: cast_nullable_to_non_nullable
+          : tempBarkodList as List<dynamic>?,
+      belgeNo: belgeNo == const $CopyWithPlaceholder()
+          ? _value.belgeNo
+          // ignore: cast_nullable_to_non_nullable
+          : belgeNo as String?,
+      belgeTipi: belgeTipi == const $CopyWithPlaceholder()
+          ? _value.belgeTipi
+          // ignore: cast_nullable_to_non_nullable
+          : belgeTipi as String?,
+      cariKodu: cariKodu == const $CopyWithPlaceholder()
+          ? _value.cariKodu
+          // ignore: cast_nullable_to_non_nullable
+          : cariKodu as String?,
+      depoTanimi: depoTanimi == const $CopyWithPlaceholder()
+          ? _value.depoTanimi
+          // ignore: cast_nullable_to_non_nullable
+          : depoTanimi as String?,
+      olcuBirimAdi: olcuBirimAdi == const $CopyWithPlaceholder()
+          ? _value.olcuBirimAdi
+          // ignore: cast_nullable_to_non_nullable
+          : olcuBirimAdi as String?,
+      stokAdi: stokAdi == const $CopyWithPlaceholder()
+          ? _value.stokAdi
+          // ignore: cast_nullable_to_non_nullable
+          : stokAdi as String?,
+      stokKodu: stokKodu == const $CopyWithPlaceholder()
+          ? _value.stokKodu
+          // ignore: cast_nullable_to_non_nullable
+          : stokKodu as String?,
+      stokOlcuBirimi: stokOlcuBirimi == const $CopyWithPlaceholder()
+          ? _value.stokOlcuBirimi
+          // ignore: cast_nullable_to_non_nullable
+          : stokOlcuBirimi as String?,
+      dovizKuru: dovizKuru == const $CopyWithPlaceholder()
+          ? _value.dovizKuru
+          // ignore: cast_nullable_to_non_nullable
+          : dovizKuru as double?,
+      dovizTipi: dovizTipi == const $CopyWithPlaceholder()
+          ? _value.dovizTipi
+          // ignore: cast_nullable_to_non_nullable
+          : dovizTipi as int?,
+      dovizliFiyat: dovizliFiyat == const $CopyWithPlaceholder()
+          ? _value.dovizliFiyat
+          // ignore: cast_nullable_to_non_nullable
+          : dovizliFiyat as double?,
+      aciklama1: aciklama1 == const $CopyWithPlaceholder()
+          ? _value.aciklama1
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama1 as String?,
+      aciklama10: aciklama10 == const $CopyWithPlaceholder()
+          ? _value.aciklama10
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama10 as String?,
+      aciklama2: aciklama2 == const $CopyWithPlaceholder()
+          ? _value.aciklama2
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama2 as String?,
+      aciklama3: aciklama3 == const $CopyWithPlaceholder()
+          ? _value.aciklama3
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama3 as String?,
+      aciklama4: aciklama4 == const $CopyWithPlaceholder()
+          ? _value.aciklama4
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama4 as String?,
+      aciklama5: aciklama5 == const $CopyWithPlaceholder()
+          ? _value.aciklama5
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama5 as String?,
+      aciklama6: aciklama6 == const $CopyWithPlaceholder()
+          ? _value.aciklama6
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama6 as String?,
+      aciklama7: aciklama7 == const $CopyWithPlaceholder()
+          ? _value.aciklama7
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama7 as String?,
+      aciklama8: aciklama8 == const $CopyWithPlaceholder()
+          ? _value.aciklama8
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama8 as String?,
+      aciklama9: aciklama9 == const $CopyWithPlaceholder()
+          ? _value.aciklama9
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama9 as String?,
+      ekalan1: ekalan1 == const $CopyWithPlaceholder()
+          ? _value.ekalan1
+          // ignore: cast_nullable_to_non_nullable
+          : ekalan1 as String?,
+      ekalan2: ekalan2 == const $CopyWithPlaceholder()
+          ? _value.ekalan2
+          // ignore: cast_nullable_to_non_nullable
+          : ekalan2 as String?,
+      isk1Tipi: isk1Tipi == const $CopyWithPlaceholder()
+          ? _value.isk1Tipi
+          // ignore: cast_nullable_to_non_nullable
+          : isk1Tipi as int?,
+      isk2Tipi: isk2Tipi == const $CopyWithPlaceholder()
+          ? _value.isk2Tipi
+          // ignore: cast_nullable_to_non_nullable
+          : isk2Tipi as int?,
+      isk3Tipi: isk3Tipi == const $CopyWithPlaceholder()
+          ? _value.isk3Tipi
+          // ignore: cast_nullable_to_non_nullable
+          : isk3Tipi as int?,
+      iskonto1: iskonto1 == const $CopyWithPlaceholder()
+          ? _value.iskonto1
+          // ignore: cast_nullable_to_non_nullable
+          : iskonto1 as double?,
+      iskonto2: iskonto2 == const $CopyWithPlaceholder()
+          ? _value.iskonto2
+          // ignore: cast_nullable_to_non_nullable
+          : iskonto2 as double?,
+      iskonto3: iskonto3 == const $CopyWithPlaceholder()
+          ? _value.iskonto3
+          // ignore: cast_nullable_to_non_nullable
+          : iskonto3 as double?,
+      malfazIskAdedi: malfazIskAdedi == const $CopyWithPlaceholder()
+          ? _value.malfazIskAdedi
+          // ignore: cast_nullable_to_non_nullable
+          : malfazIskAdedi as double?,
+      miktar2: miktar2 == const $CopyWithPlaceholder()
+          ? _value.miktar2
+          // ignore: cast_nullable_to_non_nullable
+          : miktar2 as double?,
+      projeKodu: projeKodu == const $CopyWithPlaceholder()
+          ? _value.projeKodu
+          // ignore: cast_nullable_to_non_nullable
+          : projeKodu as String?,
+      satisFiyati: satisFiyati == const $CopyWithPlaceholder()
+          ? _value.satisFiyati
+          // ignore: cast_nullable_to_non_nullable
+          : satisFiyati as double?,
+      dovizKodu: dovizKodu == const $CopyWithPlaceholder()
+          ? _value.dovizKodu
+          // ignore: cast_nullable_to_non_nullable
+          : dovizKodu as int?,
+      dovizFiyati: dovizFiyati == const $CopyWithPlaceholder()
+          ? _value.dovizFiyati
+          // ignore: cast_nullable_to_non_nullable
+          : dovizFiyati as double?,
+      malfazCevrimliMiktar: malfazCevrimliMiktar == const $CopyWithPlaceholder()
+          ? _value.malfazCevrimliMiktar
+          // ignore: cast_nullable_to_non_nullable
+          : malfazCevrimliMiktar as double?,
+      malFazlasiMiktar: malFazlasiMiktar == const $CopyWithPlaceholder()
+          ? _value.malFazlasiMiktar
+          // ignore: cast_nullable_to_non_nullable
+          : malFazlasiMiktar as double?,
+    );
+  }
+}
+
+extension $KalemModelCopyWith on KalemModel {
+  /// Returns a callable class that can be used as follows: `instanceOfKalemModel.copyWith(...)` or like so:`instanceOfKalemModel.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$KalemModelCWProxy get copyWith => _$KalemModelCWProxyImpl(this);
+}
+
+// **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 

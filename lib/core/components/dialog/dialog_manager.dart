@@ -189,6 +189,7 @@ class DialogManager {
       content: Column(mainAxisSize: MainAxisSize.min, children: [
         ListTile(
             title: const Text("DEMO"),
+            subtitle: const Text("demo"),
             leading: IconHelper.smallIcon("User-Account"),
             onTap: () {
               Get.back(result: {"company": "DEMO", "user": "demo", "password": "demo"});
@@ -200,6 +201,7 @@ class DialogManager {
             log(box.getAt(index).toString());
             return ListTile(
                 title: Text(title),
+                subtitle: Text(box.getAt(index).kullanici.toString()),
                 leading: IconHelper.smallIcon("User-Account"),
                 onTap: () {
                   Get.back(result: {
