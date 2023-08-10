@@ -63,7 +63,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
               onSubmitted: (p0) async {
                 if (p0.ext.isNotNullOrNoEmpty) {
                   await Get.toNamed("/mainPage/stokRehberi", arguments: p0);
-            setState(() {});
+                  setState(() {});
                 }
               },
               suffix: IconButton(
@@ -81,7 +81,14 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
           Expanded(
               child: Observer(
                   builder: (_) => viewModel.kalemList.ext.isNullOrEmpty
-                      ? const Center(child: Text("Kalem bulunamadı. Lütfen Kalem Ekleyin."))
+                      ? const Center(
+                          child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.warning_amber_rounded, size: 50, color: Colors.grey),
+                            Text("Kalem bulunamadı. Lütfen Kalem Ekleyin."),
+                          ],
+                        ))
                       : Observer(
                           builder: (_) => ListView.builder(
                               primary: false,

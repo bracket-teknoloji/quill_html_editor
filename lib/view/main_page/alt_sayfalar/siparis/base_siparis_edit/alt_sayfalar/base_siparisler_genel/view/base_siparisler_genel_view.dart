@@ -330,6 +330,8 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
       BaseSiparisEditModel.instance.belgeNo = result.data!.first.belgeNo;
       belgeNoController.text = BaseSiparisEditModel.instance.belgeNo ?? "";
     }
+
+    controllerFiller();
   }
 
   void controllerFiller() {

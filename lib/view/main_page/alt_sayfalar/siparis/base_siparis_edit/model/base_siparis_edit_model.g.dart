@@ -6,6 +6,40 @@ part of 'base_siparis_edit_model.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
+class ListSiparisEditModelAdapter extends TypeAdapter<ListSiparisEditModel> {
+  @override
+  final int typeId = 151;
+
+  @override
+  ListSiparisEditModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ListSiparisEditModel(
+      list: (fields[0] as List?)?.cast<BaseSiparisEditModel>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ListSiparisEditModel obj) {
+    writer
+      ..writeByte(1)
+      ..writeByte(0)
+      ..write(obj.list);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ListSiparisEditModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
 class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
   @override
   final int typeId = 152;

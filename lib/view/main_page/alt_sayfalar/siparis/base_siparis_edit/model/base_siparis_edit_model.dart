@@ -12,6 +12,14 @@ import '../../../stok/stok_liste/model/stok_listesi_model.dart';
 
 part 'base_siparis_edit_model.g.dart';
 
+@HiveType(typeId: 151)
+class ListSiparisEditModel{
+  @HiveField(0)
+  List<BaseSiparisEditModel>? list;
+
+  ListSiparisEditModel({this.list});
+}
+
 @JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, createFactory: true, includeIfNull: false)
 @HiveType(typeId: 152)
 class BaseSiparisEditModel with NetworkManagerMixin {
@@ -23,7 +31,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
       BaseSiparisEditModel? otherInstance = CacheManager.getSiparisEdit(_instance?.belgeNo ?? "");
       if (_instance != otherInstance) {
         log("Model Güncellendi: ${_instance?.belgeNo}");
-        CacheManager.setSiparisEdit(_instance!);
+        CacheManager.addSiparisEditListItem(_instance!);
       }
     }
     return _instance!;

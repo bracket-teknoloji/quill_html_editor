@@ -197,12 +197,8 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                                   label: Observer(builder: (_) => Text(viewModel.donem)))
                             ],
                           ),
-                          Observer(builder: (_) {
-                            return CustomPieChart(pieChartTitle: viewModel.getPlasiyerTitle, pieChartValue: viewModel.getPlasiyerToplam);
-                          }),
-                          Observer(builder: (_) {
-                            return CustomLineChart(lineChartValue: viewModel.getAylikSatislar);
-                          }),
+                          Observer(builder: (_) => CustomPieChart(pieChartTitle: viewModel.getPlasiyerTitle, pieChartValue: viewModel.getPlasiyerToplam)),
+                          Observer(builder: (_) => CustomLineChart(lineChartValue: viewModel.getAylikSatislar)),
                         ],
                       ).paddingAll(UIHelper.lowSize);
                     })),

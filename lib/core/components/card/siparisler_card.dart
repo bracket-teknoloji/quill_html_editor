@@ -50,7 +50,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                   title: "Düzelt",
                   iconWidget: Icons.edit_outlined,
                   onTap: () {
-                    if (widget.model.isNew == true){
+                    if (widget.model.isNew == true) {
                       BaseSiparisEditModel.setInstance(widget.model);
                     }
                     Get.back();
@@ -128,7 +128,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                   Text("Tipi: ${widget.model.yurticiMi ? "Yurtiçi" : "Yurtdışı"}"),
                   widget.model.kosulKodu != null ? Text("Koşul: ${widget.model.kosulKodu ?? ""}") : null,
                   Text("Ara Toplam: ${widget.model.getAraToplam.commaSeparatedWithFixedDigits} TL"),
-                  Text("Genel Toplam: ${widget.model.genelToplam?.commaSeparatedWithFixedDigits ?? ""} TL"),
+                  Text("Genel Toplam: ${widget.model.genelToplam?.commaSeparatedWithFixedDigits ?? "0.00"} TL"),
                 ].nullCheck.cast<Widget>(),
               ),
               Column(
@@ -137,7 +137,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                 children: [
                   Text("Kalem Adedi: ${widget.model.kalemAdedi ?? ""}"),
                   Text("Plasiyer: ${widget.model.plasiyerAciklama ?? ""}"),
-                  Text("KDV: ${widget.model.kdv ?? ""} TL"),
+                  Text("KDV: ${widget.model.kdv ?? "0.00"} TL"),
                   widget.model.dovizAdi != null ? Text("Döviz Toplamı: ${widget.model.dovizTutari ?? ""} ${widget.model.dovizAdi ?? ""}") : null,
                 ].nullCheck.cast<Widget>(),
               ),

@@ -163,7 +163,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
 
   Future<void> getSession() async {
     GenericResponseModel lisansResponse = await networkManager.getUyeBilgileri(CacheManager.getVerifiedUser.account?.email ?? "");
-    if (CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "")) {
+    if (CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "") == false) {
       viewModel.setTitle(lisansResponse.message ?? "");
       viewModel.setIsError(true);
       return;

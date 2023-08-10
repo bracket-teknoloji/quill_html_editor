@@ -32,8 +32,8 @@ class CacheManager {
   static late Box subeListesiBox;
   static late Box<bool> isLicenseVerifiedBox;
   static late Box<BaseSiparisEditModel> siparisEditBox;
-  // static late Box _grupKoduListesiBox;
-  //Lazy Singleton
+  static late Box<ListSiparisEditModel> siparisEditListBox;
+
   static final CacheManager _instance = CacheManager._init();
   static CacheManager get instance => _instance;
   CacheManager._init() {
@@ -52,7 +52,7 @@ class CacheManager {
     Hive.registerAdapter(KalemModelAdapter());
     Hive.registerAdapter(CariListesiModelAdapter());
     Hive.registerAdapter(SiparisTipiEnumAdapter());
-
+    Hive.registerAdapter(ListSiparisEditModelAdapter());
     initHiveBoxes();
   }
 
@@ -72,6 +72,8 @@ class CacheManager {
     subeListesiBox = await Hive.openBox<List>("cariListesi");
     isLicenseVerifiedBox = await Hive.openBox<bool>("isLicenseVerified");
     siparisEditBox = await Hive.openBox<BaseSiparisEditModel>("siparisEdit");
+    siparisEditListBox = await Hive.openBox<ListSiparisEditModel>("siparisEditList");
+    // siparisEditListBox.clear();
     if (isLicenseVerifiedBox.isEmpty) {
       isLicenseVerifiedBox.put("value", false);
     }
@@ -99,7 +101,7 @@ class CacheManager {
   static AccountModel? get getHesapBilgileri => hesapBilgileriBox.get("value") ?? AccountModel();
   static CariSehirlerModel getCariSehirler() => cariSehirBox.get("value");
   static List getSubeListesi() => subeListesiBox.get("value") ?? [];
-  static bool getIsLicenseVerified(String key) => isLicenseVerifiedBox.get(key) ?? false;
+  static bool getIsLicenseVerified(String key) => key == "demo@netfect.com" ? true : (isLicenseVerifiedBox.get(key) ?? false);
 
   /// Cari Kodu ile arayacaksın
   /// ```dart
@@ -108,7 +110,11 @@ class CacheManager {
   /// ```
   /// {@end-tool}
   static BaseSiparisEditModel? getSiparisEdit(String key) => siparisEditBox.get(key);
-  static List<BaseSiparisEditModel?> getSiparisEditList(SiparisTipiEnum siparisTipi) => siparisEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel?>();
+  static List<BaseSiparisEditModel?> getSiparisEditList(SiparisTipiEnum siparisTipi) =>
+      siparisEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel?>();
+
+  static List<BaseSiparisEditModel>? getSiparisEditLists(SiparisTipiEnum siparisTipi) =>
+      siparisEditListBox.get(getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).map((e) => e).toList().cast<BaseSiparisEditModel>();
   // static String get getSirketAdi => _sirketAdiBox.get("value") ?? "";
 
   //* Setters
@@ -137,7 +143,16 @@ class CacheManager {
   static void setIsLicenseVerified(String key, bool value) => isLicenseVerifiedBox.put(key, value);
 
   static void setSiparisEdit(BaseSiparisEditModel value) => siparisEditBox.put(value.belgeNo, value);
-  // static void setSirketAdi(String value) => _sirketAdiBox.put("value", value);
+  static void addSiparisEditListItem(BaseSiparisEditModel value) {
+    if (siparisEditListBox.get(getSiparisString) == null) {
+      siparisEditListBox.put(getSiparisString, ListSiparisEditModel());
+    }
+    if (siparisEditListBox.get(getSiparisString)?.list?.any((element) => element.belgeNo == value.belgeNo) ?? false) {
+      siparisEditListBox.put(getSiparisString, ListSiparisEditModel(list:siparisEditListBox.get(getSiparisString)?.list?.map((e) => e.belgeNo == value.belgeNo ? value : e).toList()));
+    } else {
+      siparisEditListBox.put(getSiparisString, ListSiparisEditModel(list:[...?siparisEditListBox.get(getSiparisString)?.list, value]));
+    }
+  }
 
 //* Clear and Remove
   static void clearBox(String boxName) => Hive.box(boxName).clear();
@@ -148,7 +163,11 @@ class CacheManager {
       log("Favorilerde böyle bir key yok");
     }
   }
+
   static void removeAccounts(String key) => accountsBox.delete(key);
   static void removeFavoriWithIndex(int index) => favorilerBox.deleteAt(index);
   static void removeSiparisEdit(String key) => siparisEditBox.delete(key);
+
+  //* Helper
+  static String get getSiparisString => "${getVerifiedUser.account?.email ?? ""}-${AccountModel.instance.aktifSubeKodu ?? ""}";
 }

@@ -77,9 +77,9 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           BaseSiparisEditModel.instance.cariKodu = result.cariKodu;
           BaseSiparisEditModel.instance.belgeTipi = int.tryParse(result.odemeTipi ?? "0");
         }
-      } else {}
-    });
+      } 
     viewModel.changeIsBaseSiparisEmpty(false);
+    });
     super.initState();
   }
 

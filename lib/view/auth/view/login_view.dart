@@ -241,7 +241,7 @@ class _LoginViewState extends BaseState<LoginView> {
       if (CacheManager.getIsLicenseVerified(textFieldData.account?.email ?? "") == false) {
         dialogManager.hideAlertDialog;
         dialogManager.showAlertDialog(result.message ?? "Lisansınız bulunamadı. Lütfen lisansınızı kontrol ediniz.");
-      return;
+        return;
       }
     }
     dialogManager.hideAlertDialog;

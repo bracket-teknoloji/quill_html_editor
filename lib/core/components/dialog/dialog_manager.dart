@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:kartal/kartal.dart';
+import 'package:picker/core/constants/extensions/date_time_extensions.dart';
 
 import '../../../view/add_company/model/account_model.dart';
 import '../../../view/add_company/model/account_response_model.dart';
@@ -16,6 +17,7 @@ import '../../base/model/login_dialog_model.dart';
 import '../../constants/enum/islem_tipi_enum.dart';
 import '../../constants/ui_helper/icon_helper.dart';
 import '../../constants/ui_helper/ui_helper.dart';
+import '../../init/app_info/app_info.dart';
 import '../../init/cache/cache_manager.dart';
 import '../../init/network/login/api_urls.dart';
 import '../../init/network/network_manager.dart';
@@ -47,27 +49,34 @@ class DialogManager {
     );
   }
 
-  Future<void> showAlertDialog(String message) async => _baseDialog(
-        title: "Uyarı",
-        desc: message,
-        dialogType: DialogType.error,
-        btnOkText: "Tamam",
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(bottom: 10),
-              child: Text("Uyarı"),
-            ),
-            Padding(
-              padding: UIHelper.midPaddingHorizontal,
-              child: SelectableText(message, textAlign: TextAlign.center),
-            ),
-          ],
-        ),
-        // onOk is rootNavigator true without Get
-        onOk: () {},
-      ).show();
+  Future<void> showAlertDialog(String message) async {
+    String appData = "\nVersion: ${AppInfoModel.instance.version}\nTarih: ${DateTime.now().toDateTimeString()}\nE-mail: ${CacheManager.getHesapBilgileri?.uyeEmail ?? ""}";
+    return _baseDialog(
+      title: "Uyarı",
+      desc: message,
+      dialogType: DialogType.error,
+      btnOkText: "Tamam",
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(bottom: 10),
+            child: Text("Uyarı", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+          ),
+          Padding(
+            padding: UIHelper.midPaddingHorizontal,
+            child: SelectableText(message, textAlign: TextAlign.center),
+          ),
+          Padding(
+            padding: UIHelper.midPaddingHorizontal,
+            child: Text(appData, style: TextStyle(color: Colors.grey.withOpacity(0.8), fontSize: 12), textAlign: TextAlign.center),
+          ).paddingOnly(top: UIHelper.highSize),
+        ],
+      ),
+      // onOk is rootNavigator true without Get
+      onOk: () {},
+    ).show();
+  }
 
   Future showEmptyFieldDialog(Iterable values, {void Function()? onOk}) =>
       _baseDialog(dialogType: DialogType.error, title: "Eksik var", btnOkText: "Tamam", desc: "${values.toList().join(", ")}\nLütfen zorunlu alanları doldurunuz. ", onOk: onOk ?? () {}).show();
@@ -85,6 +94,10 @@ class DialogManager {
               padding: UIHelper.midPaddingHorizontal,
               child: const Text("İnternet bağlantınızı kontrol edin.", textAlign: TextAlign.center),
             ),
+            Padding(
+              padding: UIHelper.midPaddingHorizontal,
+              child: Text("appData", style: TextStyle(color: Colors.grey.withOpacity(0.8)), textAlign: TextAlign.center),
+            ).paddingOnly(top: UIHelper.highSize),
           ],
         ),
       ).show();
