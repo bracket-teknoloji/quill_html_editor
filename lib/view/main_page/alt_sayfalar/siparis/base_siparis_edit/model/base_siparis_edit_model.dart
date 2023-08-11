@@ -119,7 +119,6 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   @HiveField(39)
   int? genisk3Tipi;
   @HiveField(40)
-  @JsonKey(defaultValue: toplamKalemMiktari)
   int? kalemModelAdedi;
   @HiveField(41)
   int? tempBelgeId;
