@@ -16,20 +16,6 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
       (_$dovizliMiComputed ??= Computed<bool>(() => super.dovizliMi,
               name: '_KalemEkleViewModelBase.dovizliMi'))
           .value;
-  Computed<double>? _$brutTutarComputed;
-
-  @override
-  double get brutTutar =>
-      (_$brutTutarComputed ??= Computed<double>(() => super.brutTutar,
-              name: '_KalemEkleViewModelBase.brutTutar'))
-          .value;
-  Computed<double>? _$kdvTutariComputed;
-
-  @override
-  double get kdvTutari =>
-      (_$kdvTutariComputed ??= Computed<double>(() => super.kdvTutari,
-              name: '_KalemEkleViewModelBase.kdvTutari'))
-          .value;
 
   late final _$modelAtom =
       Atom(name: '_KalemEkleViewModelBase.model', context: context);
@@ -78,17 +64,6 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
-  void increaseMiktar(TextEditingController controller) {
-    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
-        name: '_KalemEkleViewModelBase.increaseMiktar');
-    try {
-      return super.increaseMiktar(controller);
-    } finally {
-      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void setMiktar(int value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setMiktar');
@@ -105,6 +80,17 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
         name: '_KalemEkleViewModelBase.setBrutFiyat');
     try {
       return super.setBrutFiyat(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setMFTutari(double value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setMFTutari');
+    try {
+      return super.setMFTutari(value);
     } finally {
       _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -155,6 +141,28 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
+  void setIskonto1OranMi() {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setIskonto1OranMi');
+    try {
+      return super.setIskonto1OranMi();
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void increaseMiktar(TextEditingController controller) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.increaseMiktar');
+    try {
+      return super.increaseMiktar(controller);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void decreaseMiktar(TextEditingController controller) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.decreaseMiktar');
@@ -199,13 +207,44 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
+  void increaseMFMiktar(TextEditingController controller) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.increaseMFMiktar');
+    try {
+      return super.increaseMFMiktar(controller);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setMFMiktar(int value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setMFMiktar');
+    try {
+      return super.setMFMiktar(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void decreaseMFMiktar(TextEditingController controller) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.decreaseMFMiktar');
+    try {
+      return super.decreaseMFMiktar(controller);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 model: ${model},
 kalemModel: ${kalemModel},
-dovizliMi: ${dovizliMi},
-brutTutar: ${brutTutar},
-kdvTutari: ${kdvTutari}
+dovizliMi: ${dovizliMi}
     ''';
   }
 }

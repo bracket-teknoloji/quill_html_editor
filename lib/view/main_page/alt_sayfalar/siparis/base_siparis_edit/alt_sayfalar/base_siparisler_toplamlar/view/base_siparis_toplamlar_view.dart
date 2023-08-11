@@ -57,11 +57,14 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const Text.rich(TextSpan(children: [TextSpan(text: "Miktar\n", style: TextStyle(color: Colors.grey)), TextSpan(text: "1", style: TextStyle(fontWeight: FontWeight.bold))])),
+              Text.rich(TextSpan(children: [
+                const TextSpan(text: "Miktar\n", style: TextStyle(color: Colors.grey)),
+                TextSpan(text: BaseSiparisEditModel.instance.toplamKalemMiktari.toIntIfDouble.toStringIfNull ?? "", style: const TextStyle(fontWeight: FontWeight.bold))
+              ])),
               const Text.rich(TextSpan(children: [TextSpan(text: "Mal Ağırlığı\n", style: TextStyle(color: Colors.grey)), TextSpan(text: "1", style: TextStyle(fontWeight: FontWeight.bold))])),
               Text.rich(TextSpan(children: [
                 const TextSpan(text: "Brüt Tutar\n", style: TextStyle(color: Colors.grey)),
-                TextSpan(text: "${model.getBrutTutar.dotSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                TextSpan(text: "${model.toplamBrutTutar.dotSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
               ])),
             ].map((e) => Expanded(child: e)).toList(),
           ),
@@ -112,6 +115,8 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
             CustomTextField(
               labelText: "İsk.Tipi 1",
               enabled: enable,
+              readOnly: true,
+              suffixMore: true,
               controller: iskontoTipi1Controller,
             ),
           ].map((e) => Expanded(child: e)).toList(),
@@ -127,6 +132,8 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
             CustomTextField(
               labelText: "İsk.Tipi 2",
               enabled: enable,
+              readOnly: true,
+              suffixMore: true,
               controller: iskontoTipi2Controller,
             ),
           ].map((e) => Expanded(child: e)).toList(),
@@ -142,6 +149,8 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
             CustomTextField(
               labelText: "İsk.Tipi 3",
               enabled: enable,
+              suffixMore: true,
+              readOnly: true,
               controller: iskontoTipi3Controller,
             ),
           ].map((e) => Expanded(child: e)).toList(),
@@ -157,6 +166,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
             CustomTextField(
               labelText: "Tevkifat",
               enabled: enable,
+              keyboardType: TextInputType.number,
               controller: tevkifatController,
             ),
           ].map((e) => Expanded(child: e)).toList(),
@@ -172,7 +182,8 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               labelText: "Vade Günü",
               enabled: enable,
               controller: vadeGunuController,
-              readOnly: true,
+              keyboardType: TextInputType.number,
+              onChanged: (value) => model.vadeGunu = int.tryParse(value),
               suffix: IconButton(
                 onPressed: () async {
                   final date = await showDatePicker(context: context, initialDate: model.vadeTarihi!, firstDate: model.tarih!, lastDate: DateTime.now().add(const Duration(days: 365)));

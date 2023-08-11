@@ -1079,13 +1079,13 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       dovizFiyati: fields[47] as double?,
       malfazCevrimliMiktar: fields[48] as double?,
       malFazlasiMiktar: fields[49] as double?,
-    );
+    )..kosulKodu = fields[50] as String?;
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(50)
+      ..writeByte(51)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -1185,7 +1185,9 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(48)
       ..write(obj.malfazCevrimliMiktar)
       ..writeByte(49)
-      ..write(obj.malFazlasiMiktar);
+      ..write(obj.malFazlasiMiktar)
+      ..writeByte(50)
+      ..write(obj.kosulKodu);
   }
 
   @override
@@ -1532,7 +1534,7 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       malfazCevrimliMiktar:
           (json['MALFAZ_CEVRIMLI_MIKTAR'] as num?)?.toDouble(),
       malFazlasiMiktar: (json['MAL_FAZLASI_MIKTAR'] as num?)?.toDouble(),
-    );
+    )..kosulKodu = json['KOSUL_KODU'] as String?;
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   final val = <String, dynamic>{};
@@ -1593,5 +1595,6 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('DOVIZ_FIYATI', instance.dovizFiyati);
   writeNotNull('MALFAZ_CEVRIMLI_MIKTAR', instance.malfazCevrimliMiktar);
   writeNotNull('MAL_FAZLASI_MIKTAR', instance.malFazlasiMiktar);
+  writeNotNull('KOSUL_KODU', instance.kosulKodu);
   return val;
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get_utils/src/platform/platform.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../constants/ui_helper/ui_helper.dart';
@@ -16,6 +17,7 @@ class AppThemeDark extends AppTheme {
   var colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark);
   @override
   ThemeData get theme => ThemeData(
+      platform: GetPlatform.isIOS ? TargetPlatform.iOS : TargetPlatform.android,
       datePickerTheme: DatePickerThemeData(shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius)),
       radioTheme: RadioThemeData(fillColor: MaterialStateProperty.all(UIHelper.primaryColor), overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.1))),
       useMaterial3: true,

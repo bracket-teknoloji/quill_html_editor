@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:picker/core/constants/static_variables/static_variables.dart';
 
 import '../../../../../../core/base/model/base_edit_model.dart';
 import '../../../../../../core/base/state/base_state.dart';
@@ -46,7 +45,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
         //😳   tabController.animateTo(tabController.previousIndex);
         //😳 }
       }
-      if (tabController.index == 3 && BaseSiparisEditModel.instance.kalemler.ext.isNotNullOrEmpty) {
+      if (tabController.index == 3 && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
         viewModel.changeIsLastPage(true);
       } else {
         viewModel.changeIsLastPage(false);
@@ -77,8 +76,8 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           BaseSiparisEditModel.instance.cariKodu = result.cariKodu;
           BaseSiparisEditModel.instance.belgeTipi = int.tryParse(result.odemeTipi ?? "0");
         }
-      } 
-    viewModel.changeIsBaseSiparisEmpty(false);
+      }
+      viewModel.changeIsBaseSiparisEmpty(false);
     });
     super.initState();
   }

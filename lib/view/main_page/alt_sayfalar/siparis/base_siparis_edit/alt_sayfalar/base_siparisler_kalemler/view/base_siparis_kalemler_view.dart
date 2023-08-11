@@ -29,7 +29,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
   @override
   void initState() {
     _searchTextController = TextEditingController();
-    viewModel.updateKalemList(BaseSiparisEditModel.instance.kalemler);
+    viewModel.updateKalemList();
     super.initState();
   }
 
@@ -48,7 +48,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
           onPressed: () async {
             // bottomSheetDialogManager.showPrintDialog(context, DicParams(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi.toStringIfNull, cariKodu: model.cariKodu));
             await Get.toNamed("/mainPage/stokRehberi");
-            setState(() {});
+            viewModel.updateKalemList();
           },
           child: const Icon(Icons.add),
         ),
@@ -63,7 +63,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
               onSubmitted: (p0) async {
                 if (p0.ext.isNotNullOrNoEmpty) {
                   await Get.toNamed("/mainPage/stokRehberi", arguments: p0);
-                  setState(() {});
+                  viewModel.updateKalemList();
                 }
               },
               suffix: IconButton(
@@ -72,7 +72,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                     if (result != null) {
                       _searchTextController.text = result;
                       await Get.toNamed("/mainPage/stokRehberi", arguments: result);
-                      setState(() {});
+                      viewModel.updateKalemList();
                     }
                   },
                   icon: const Icon(Icons.qr_code_2_outlined)),
@@ -81,12 +81,12 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
           Expanded(
               child: Observer(
                   builder: (_) => viewModel.kalemList.ext.isNullOrEmpty
-                      ? const Center(
+                      ? Center(
                           child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.warning_amber_rounded, size: 50, color: Colors.grey),
-                            Text("Kalem bulunamadı. Lütfen Kalem Ekleyin."),
+                            Icon(Icons.manage_search_outlined, size: 50, color: theme.colorScheme.primary),
+                            const Text("Kalem bulunamadı.\nLütfen Kalem Ekleyin.", textAlign: TextAlign.center),
                           ],
                         ))
                       : Observer(
@@ -105,7 +105,6 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                                         onTap: () => dialogManager.showAreYouSureDialog(() {
                                               Get.back();
                                               viewModel.removeAtKalemList(index);
-                                              setState(() {});
                                             })),
                                     BottomSheetModel(
                                         title: "Stok İşlemleri",
@@ -118,7 +117,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                                   contentPadding: UIHelper.lowPadding,
                                   title: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [Text(viewModel.kalemList?[index].stokAdi ?? ""), const Icon(Icons.more_vert_outlined)],
+                                    children: [Text(viewModel.kalemList?[index].stokAdi ?? viewModel.kalemList?[index].stokKodu ?? ""), const Icon(Icons.more_vert_outlined)],
                                   ),
                                   subtitle: Observer(builder: (_) {
                                     return Column(

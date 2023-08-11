@@ -251,7 +251,13 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                               odemeKoduController.text = "${result.odemeKodu ?? ""} - ${result.aciklama ?? ""}";
                             }
                           })),
-                  Expanded(child: CustomTextField(enabled: enable, labelText: "Koşul", readOnly: true, suffixMore: true, controller: kosulController)),
+                  Expanded(child: CustomTextField(enabled: enable, labelText: "Koşul", readOnly: true, suffixMore: true, controller: kosulController, onTap: ()async{
+                    var result = await bottomSheetDialogManager.showKosullarDialog(context);
+                    if (result != null) {
+                      model.kosulKodu = result.kosulKodu;
+                      kosulController.text = "${result.kosulKodu ?? ""} - ${result.genelKosulAdi ?? ""}";
+                    }
+                  })),
                 ],
               ),
               Row(

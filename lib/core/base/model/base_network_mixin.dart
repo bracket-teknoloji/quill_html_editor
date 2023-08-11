@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 mixin NetworkManagerMixin on Object {
   Map<String, dynamic> toJson();
   fromJson(Map<String, dynamic> json);
@@ -13,7 +11,6 @@ mixin NetworkManagerMixin on Object {
   operator ==(Object other) {
     if (other is NetworkManagerMixin) {
       bool result = other.toJson().toString() == toJson().toString();
-      log('NetworkManagerMixin: $result', name: 'isEqual');
       return result;
     } else {
       return false;

@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:copy_with_extension/copy_with_extension.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -32,7 +32,6 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     if (_instance?.isNew == true && _instance?.belgeNo != null) {
       BaseSiparisEditModel? otherInstance = CacheManager.getSiparisEdit(_instance?.belgeNo ?? "");
       if (_instance != otherInstance) {
-        log("Model Güncellendi: ${_instance?.belgeNo}");
         CacheManager.addSiparisEditListItem(_instance!);
       }
     }
@@ -120,6 +119,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   @HiveField(39)
   int? genisk3Tipi;
   @HiveField(40)
+  @JsonKey(defaultValue: toplamKalemMiktari)
   int? kalemModelAdedi;
   @HiveField(41)
   int? tempBelgeId;
@@ -283,11 +283,12 @@ class BaseSiparisEditModel with NetworkManagerMixin {
       return false;
     }
   }
-
+  double get  toplamKalemMiktari => kalemList?.map((e) => e.miktar).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
+  double get toplamBrutTutar => kalemList?.map((e) => e.brutFiyat).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
   double get getAraToplam => (genelToplam ?? 0) - (kdv ?? 0);
-  double get getToplamMiktar => kalemler?.map((e) => e.miktar).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
+  double get getToplamMiktar => kalemList?.map((e) => e.miktar).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
   bool get yurticiMi => tipi != 6;
-  int get getKalemSayisi => kalemler?.length ?? (kalemAdedi ?? 0);
+  int get getKalemSayisi => kalemList?.length ?? (kalemAdedi ?? 0);
   bool get isEmpty => this == BaseSiparisEditModel();
   bool get isRemoteTempBelgeNull => remoteTempBelge == null;
 
@@ -414,6 +415,8 @@ class KalemModel {
   double? malfazCevrimliMiktar;
   @HiveField(49)
   double? malFazlasiMiktar;
+  @HiveField(50)
+  String? kosulKodu;
 
   KalemModel(
       {this.iskonto1OranMi,
@@ -467,11 +470,33 @@ class KalemModel {
       this.malfazCevrimliMiktar,
       this.malFazlasiMiktar});
 
-  double get brutTutar => (miktar ?? 0) * (brutFiyat ?? 0);
+  double get brutTutar => ((miktar ?? 0) + (malFazlasiMiktar ?? 0)) * (brutFiyat ?? 0);
 
-  double get kdvTutari => (brutTutar * (kdvOrani ?? 0) / 100) * (miktar ?? 0);
+  double get araToplamTutari => ((miktar ?? 0) * (brutFiyat ?? 0)) - iskontoTutari;
 
-  double get iskontoTutari => (miktar ?? 0) * (iskonto1 ?? 0) / 100;
+  double get genelToplamTutari => araToplamTutari + kdvTutari;
+
+  double get mfTutari => (malFazlasiMiktar ?? 0) * (brutFiyat ?? 0);
+
+  double get kdvTutari => araToplamTutari * ((kdvOrani ?? 0) / 100);
+
+  double get iskontoTutari {
+    if ((iskonto1OranMi ?? false)) {
+      double result = ((miktar ?? 0) * (brutFiyat ?? 0));
+      if (iskonto1 != null && iskonto1 != 0) {
+        result = result - result * ((iskonto1 ?? 0) / 100);
+      }
+      if (iskonto2 != null && iskonto2 != 0) {
+        result = result - result * ((iskonto2 ?? 0) / 100);
+      }
+      if (iskonto3 != null && iskonto3 != 0) {
+        result = result - result * ((iskonto3 ?? 0) / 100);
+      }
+      return ((miktar ?? 0) * (brutFiyat ?? 0)) - result;
+    } else {
+      return (iskonto1 ?? 0);
+    }
+  }
 
   factory KalemModel.fromJson(Map<String, dynamic> json) => _$KalemModelFromJson(json);
 

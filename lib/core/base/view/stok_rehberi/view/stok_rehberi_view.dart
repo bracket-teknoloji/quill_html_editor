@@ -150,23 +150,37 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                     visible: viewModel.dahaVarMi,
                                     child: const Center(child: CircularProgressIndicator.adaptive()),
                                   );
-                                }
-                                return Card(
-                                  child: ListTile(
-                                    onTap: () async {
-                                      if (BaseSiparisEditModel.instance.kalemEkliMi(viewModel.stokListesi?[index])) {
-                                        var result = await dialogManager.showStokKayitliDialog(viewModel.stokListesi![index]);
-                                        if (result != true) {
-                                          return;
+                                } else {
+                                  StokListesiModel? stok = viewModel.stokListesi?[index];
+                                  return Card(
+                                    child: ListTile(
+                                      onTap: () async {
+                                        if (BaseSiparisEditModel.instance.kalemEkliMi(stok)) {
+                                          var result = await dialogManager.showStokKayitliDialog(viewModel.stokListesi![index]);
+                                          if (result != true) {
+                                            return;
+                                          }
                                         }
-                                      }
-                                      var result = Get.toNamed("/kalemEkle", arguments: viewModel.stokListesi?[index]);
-                                    },
-                                    title: Text(viewModel.stokListesi?[index].stokKodu ?? ""),
-                                    subtitle: Text(viewModel.stokListesi?[index].stokAdi ?? ""),
-                                    trailing: Text("${viewModel.stokListesi?[index].bakiye.commaSeparated ?? 0} ${viewModel.stokListesi?[index].olcuBirimi ?? ""}"),
-                                  ),
-                                );
+                                        var result = Get.toNamed("/kalemEkle", arguments: stok);
+                                      },
+                                      title: Text(stok?.stokKodu ?? "", textAlign: TextAlign.start, style: const TextStyle(fontWeight: FontWeight.bold)),
+                                      subtitle: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Wrap(
+                                            spacing: UIHelper.lowSize,
+                                            children: [
+                                              (stok?.seriCikislardaAcik ?? false) ? const Badge(label: Text("Seri")) : const SizedBox(),
+                                              (stok?.satDovTip != null || stok?.alisDovTip != null) ? Badge(label: Text("Dövizli ${stok?.satisDovizAdi ?? ""}")) : const SizedBox()
+                                            ],
+                                          ),
+                                          Text(stok?.stokAdi ?? ""),
+                                        ],
+                                      ),
+                                      trailing: Text("${stok?.bakiye.commaSeparated ?? 0} ${stok?.olcuBirimi ?? ""}"),
+                                    ),
+                                  );
+                                }
                               });
                         })),
             ),

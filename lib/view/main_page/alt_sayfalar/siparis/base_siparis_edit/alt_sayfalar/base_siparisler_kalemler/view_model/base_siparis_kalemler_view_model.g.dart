@@ -44,11 +44,11 @@ mixin _$BaseSiparisKalemlerViewModel
   }
 
   @override
-  void updateKalemList(List<KalemModel>? list) {
+  void updateKalemList() {
     final _$actionInfo = _$_BaseSiparisKalemlerViewModelBaseActionController
         .startAction(name: '_BaseSiparisKalemlerViewModelBase.updateKalemList');
     try {
-      return super.updateKalemList(list);
+      return super.updateKalemList();
     } finally {
       _$_BaseSiparisKalemlerViewModelBaseActionController
           .endAction(_$actionInfo);

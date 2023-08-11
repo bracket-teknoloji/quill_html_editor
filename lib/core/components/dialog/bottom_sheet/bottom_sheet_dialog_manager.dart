@@ -7,10 +7,14 @@ import 'package:kartal/kartal.dart';
 import 'package:picker/core/base/model/base_proje_model.dart';
 import 'package:picker/core/components/slide_controller/view/slide_controller_view.dart';
 import 'package:picker/core/components/textfield/custom_text_field.dart';
+import 'package:picker/core/constants/extensions/number_extensions.dart';
 import 'package:picker/core/init/network/network_manager.dart';
 import 'package:picker/view/main_page/model/param_model.dart';
 
+import '../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_kosullar_model.dart';
+import '../../../../view/main_page/alt_sayfalar/cari/cari_network_manager.dart';
 import '../../../base/model/belge_tipi_model.dart';
+import '../../../base/model/generic_response_model.dart';
 import '../../../base/model/print_model.dart';
 import '../../../base/view/pdf_viewer/model/pdf_viewer_model.dart';
 import '../../../constants/extensions/list_extensions.dart';
@@ -556,13 +560,33 @@ class BottomSheetDialogManager {
   Future<NetFectDizaynList?> showDizaynDialog(BuildContext context) async {
     List<NetFectDizaynList> netFectDizaynList = CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList ?? [];
     NetFectDizaynList? dizayn =
-        await showRadioBottomSheetDialog(context, title: "Diazyn Seçiniz", children: netFectDizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList());
+        await showRadioBottomSheetDialog(context, title: "Dizayn Seçiniz", children: netFectDizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? e.detayKod ?? "", value: e)).toList());
     return dizayn;
   }
 
   Future<BelgeTipiModel?> showBelgeTipiDialog(BuildContext context) async {
     List<BelgeTipiModel> belgeTipiList = [BelgeTipiModel(belgeTipi: "Yurt İçi", belgeTipiId: 2), BelgeTipiModel(belgeTipi: "Yurt Dışı", belgeTipiId: 6)];
-     return await showRadioBottomSheetDialog(context, title: "Belge Tipi Seçiniz", children: belgeTipiList.map((e) => BottomSheetModel(title: e.belgeTipi ?? "", value: e)).toList());
+    return await showRadioBottomSheetDialog(context,
+        title: "Belge Tipi Seçiniz", children: belgeTipiList.map((e) => BottomSheetModel(title: e.belgeTipi ?? e.belgeTipiId.toStringIfNull ?? "", value: e)).toList());
+  }
+
+  Future showOlcuBirimiDialog(BuildContext context) async {
+    // List olcuBirimleriList = CacheManager.getAnaVeri().paramModel.olc;
+    // var olcuBirimi =
+    //     await showRadioBottomSheetDialog(context, title: "Ölçü Birimi Seçiniz", children: olcuBirimleriList.map((e) => BottomSheetModel(title: e.olcuBirimi ?? "", value: e)).toList());
+    // return olcuBirimi;
+  }
+  Future<ListIskTip?> showIskontoTipiDialog(BuildContext context) async {
+    List<ListIskTip> iskontoTipiList = CacheManager.getAnaVeri()?.paramModel?.listIskTip ?? [];
+    ListIskTip? iskontoTipi = await showRadioBottomSheetDialog(context,
+        title: "İskonto Tipi Seçiniz", children: iskontoTipiList.map((e) => BottomSheetModel(title: e.aciklama ?? e.iskontoTipi.toStringIfNull ?? "", value: e)).toList());
+    return iskontoTipi;
+  }
+
+  Future<CariKosullarModel?> showKosullarDialog(BuildContext context) async {
+    GenericResponseModel data = await CariNetworkManager.getkosullar();
+    List<CariKosullarModel> list = data.data.map((e) => e as CariKosullarModel).toList().cast<CariKosullarModel>();
+    return await showRadioBottomSheetDialog(context, title: "Koşullar Seçiniz", children: list.map((e) => BottomSheetModel(title: e.genelKosulAdi ?? e.kosulKodu ?? "", value: e)).toList());
   }
 
   Future<double?> showKDVOranlariDialog(BuildContext context) async {

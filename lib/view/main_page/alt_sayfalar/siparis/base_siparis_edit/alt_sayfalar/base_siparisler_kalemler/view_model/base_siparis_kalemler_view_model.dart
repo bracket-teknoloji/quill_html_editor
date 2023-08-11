@@ -13,9 +13,10 @@ abstract class _BaseSiparisKalemlerViewModelBase with Store {
   @action
   void removeAtKalemList(int index) {
     kalemList?.removeAt(index);
-    BaseSiparisEditModel.instance.kalemler = kalemList;
+    BaseSiparisEditModel.instance.kalemList = kalemList;
+    updateKalemList();
   }
 
   @action
-  void updateKalemList(List<KalemModel>? list)=> kalemList = list?.asObservable();
+  void updateKalemList()=> kalemList =  BaseSiparisEditModel.instance.kalemList?.asObservable();
 }

@@ -146,7 +146,7 @@ class NetworkManager {
       response = await dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
     } catch (e) {
       if (showError) {
-        DialogManager().showAlertDialog(e.toString());
+        await DialogManager().showAlertDialog(e.toString());
       }
       return GenericResponseModel<T>(success: false, message: e.toString());
     }
@@ -233,7 +233,7 @@ class NetworkManager {
   }
 
   Future<List?> getKDVOrani() async {
-    var result = await dioGet<BaseEmptyModel>(path: ApiUrls.getStokDigerBilgi, bodyModel: BaseEmptyModel(), queryParameters: {"BilgiTipi": "KDVGRUP"});
+    var result = await dioGet<BaseEmptyModel>(path: ApiUrls.getStokDigerBilgi, showLoading: true, bodyModel: BaseEmptyModel(), queryParameters: {"BilgiTipi": "KDVGRUP"});
     return jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]);
   }
 
