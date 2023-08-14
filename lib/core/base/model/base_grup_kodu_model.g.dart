@@ -24,21 +24,29 @@ BaseGrupKoduModel _$BaseGrupKoduModelFromJson(Map<String, dynamic> json) =>
       ..kod4Adi = json['KOD4_ADI'] as String?
       ..kod5Adi = json['KOD5_ADI'] as String?;
 
-Map<String, dynamic> _$BaseGrupKoduModelToJson(BaseGrupKoduModel instance) =>
-    <String, dynamic>{
-      'MODUL': instance.modul,
-      'GRUP_NO': instance.grupNo,
-      'GRUP_KODU': instance.grupKodu,
-      'GRUP_ADI': instance.grupAdi,
-      'TIP': instance.tip,
-      'KOD1': instance.kod1,
-      'KOD2': instance.kod2,
-      'KOD3': instance.kod3,
-      'KOD4': instance.kod4,
-      'KOD5': instance.kod5,
-      'KOD1_ADI': instance.kod1Adi,
-      'KOD2_ADI': instance.kod2Adi,
-      'KOD3_ADI': instance.kod3Adi,
-      'KOD4_ADI': instance.kod4Adi,
-      'KOD5_ADI': instance.kod5Adi,
-    };
+Map<String, dynamic> _$BaseGrupKoduModelToJson(BaseGrupKoduModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('MODUL', instance.modul);
+  writeNotNull('GRUP_NO', instance.grupNo);
+  writeNotNull('GRUP_KODU', instance.grupKodu);
+  writeNotNull('GRUP_ADI', instance.grupAdi);
+  writeNotNull('TIP', instance.tip);
+  writeNotNull('KOD1', instance.kod1);
+  writeNotNull('KOD2', instance.kod2);
+  writeNotNull('KOD3', instance.kod3);
+  writeNotNull('KOD4', instance.kod4);
+  writeNotNull('KOD5', instance.kod5);
+  writeNotNull('KOD1_ADI', instance.kod1Adi);
+  writeNotNull('KOD2_ADI', instance.kod2Adi);
+  writeNotNull('KOD3_ADI', instance.kod3Adi);
+  writeNotNull('KOD4_ADI', instance.kod4Adi);
+  writeNotNull('KOD5_ADI', instance.kod5Adi);
+  return val;
+}

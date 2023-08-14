@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:get/get_utils/src/platform/platform.dart';
-import 'package:google_fonts/google_fonts.dart';
+import "package:flutter/material.dart";
+import "package:flutter/services.dart";
+import "package:get/get_utils/src/platform/platform.dart";
+import "package:google_fonts/google_fonts.dart";
 
-import '../../constants/ui_helper/ui_helper.dart';
-import 'app_theme.dart';
+import "../../constants/ui_helper/ui_helper.dart";
+import "app_theme.dart";
 
 class AppThemeDark extends AppTheme {
   static AppThemeDark? _instance;

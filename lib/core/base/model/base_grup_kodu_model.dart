@@ -1,8 +1,8 @@
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-import 'base_network_mixin.dart';
+import "base_network_mixin.dart";
 
-part 'base_grup_kodu_model.g.dart';
+part "base_grup_kodu_model.g.dart";
 
 @JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake)
 class BaseGrupKoduModel with NetworkManagerMixin {

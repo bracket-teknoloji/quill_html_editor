@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:kartal/kartal.dart';
+import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 
-import '../../../../../../../../core/constants/extensions/date_time_extensions.dart';
-import '../../../../../../../../core/constants/extensions/number_extensions.dart';
-import '../../../../../../../../core/constants/ui_helper/ui_helper.dart';
-import '../../../model/stok_detay_model.dart';
+import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../model/stok_detay_model.dart";
 
 class BaseStokEditFiyatListesiView extends StatefulWidget {
   const BaseStokEditFiyatListesiView({super.key});
@@ -28,7 +28,7 @@ class _BaseStokEditFiyatListesiViewState extends State<BaseStokEditFiyatListesiV
                 Row(
                   children: [
                     Expanded(child: Text("Alış-Satış: ${model.fiyatList![index].aS == "S" ? "Satış" : "Alış"}")),
-                    Expanded(child: Text("Başlama: ${model.fiyatList![index].bastar!.toDateString()}")),
+                    Expanded(child: Text("Başlama: ${model.fiyatList![index].bastar!.toDateString}")),
                   ],
                 ),
                 Row(

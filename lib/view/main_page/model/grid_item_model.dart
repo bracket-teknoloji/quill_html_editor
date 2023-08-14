@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:kartal/kartal.dart';
+import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 
-import '../../../core/components/dialog/dialog_manager.dart';
-import '../../../core/init/cache/cache_manager.dart';
-import 'user_model/user_model.dart';
+import "../../../core/components/dialog/dialog_manager.dart";
+import "../../../core/init/cache/cache_manager.dart";
+import "user_model/user_model.dart";
 
 class GridItemModel {
   UserModel? cacheManager = CacheManager.getAnaVeri()?.userModel;

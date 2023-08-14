@@ -1,9 +1,9 @@
-import 'package:mobx/mobx.dart';
-import '../../../../../../../core/constants/extensions/number_extensions.dart';
+import "package:mobx/mobx.dart";
+import "../../../../../../../core/constants/extensions/number_extensions.dart";
 
-import '../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart';
+import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 
-part 'stok_ekstre_view_model.g.dart';
+part "stok_ekstre_view_model.g.dart";
 
 class StokEkstreViewModel = _StokEkstreViewModelBase with _$StokEkstreViewModel;
 

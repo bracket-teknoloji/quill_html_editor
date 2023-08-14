@@ -1,8 +1,8 @@
 
 
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
-import '../init/theme/app_theme_dark.dart';
+import "../init/theme/app_theme_dark.dart";
 
 class ThemeNotifier extends ChangeNotifier {
 ThemeData _currentTheme = AppThemeDark.instance!.theme;

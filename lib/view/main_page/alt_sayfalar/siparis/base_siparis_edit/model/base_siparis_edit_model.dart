@@ -1,27 +1,39 @@
-import 'dart:convert';
+import "dart:convert";
 
-import 'package:copy_with_extension/copy_with_extension.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:json_annotation/json_annotation.dart';
+import "package:copy_with_extension/copy_with_extension.dart";
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:hive_flutter/hive_flutter.dart";
+import "package:json_annotation/json_annotation.dart";
+import "package:kartal/kartal.dart";
 
-import '../../../../../../core/base/model/base_network_mixin.dart';
-import '../../../../../../core/constants/enum/siparis_tipi_enum.dart';
-import '../../../../../../core/init/cache/cache_manager.dart';
-import '../../../cari/cari_listesi/model/cari_listesi_model.dart';
-import '../../../stok/stok_liste/model/stok_listesi_model.dart';
+import "../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../core/constants/enum/siparis_tipi_enum.dart";
+import "../../../../../../core/init/cache/cache_manager.dart";
+import "../../../cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../../stok/stok_liste/model/stok_listesi_model.dart";
 
-part 'base_siparis_edit_model.g.dart';
+part "base_siparis_edit_model.g.dart";
 
 @HiveType(typeId: 151)
 class ListSiparisEditModel {
   @HiveField(0)
   List<BaseSiparisEditModel>? list;
 
+  //setter for list
+  set setList(List<BaseSiparisEditModel>? list) {
+    this.list = list;
+  }
+
+  //remove index and set
+  void removeAt(int index) {
+    list?.removeAt(index);
+    setList = list;
+  }
+
   ListSiparisEditModel({this.list});
 }
-//sdşfljksjşdlfkjsdlş
 
+//sdşfljksjşdlfkjsdlş
 @JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, createFactory: true, includeIfNull: false)
 @HiveType(typeId: 152)
 class BaseSiparisEditModel with NetworkManagerMixin {
@@ -29,7 +41,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   static BaseSiparisEditModel? _instance;
   static BaseSiparisEditModel get instance {
     _instance ??= BaseSiparisEditModel._init();
-    if (_instance?.isNew == true && _instance?.belgeNo != null) {
+    if (_instance?.isNew == true && _instance?.belgeNo != null && _instance?.kalemList.ext.isNotNullOrEmpty == true) {
       BaseSiparisEditModel? otherInstance = CacheManager.getSiparisEdit(_instance?.belgeNo ?? "");
       if (_instance != otherInstance) {
         CacheManager.addSiparisEditListItem(_instance!);
@@ -282,7 +294,11 @@ class BaseSiparisEditModel with NetworkManagerMixin {
       return false;
     }
   }
-  double get  toplamKalemMiktari => kalemList?.map((e) => e.miktar).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
+
+  double get sumGenIsk1 => kalemList?.map((e) => e.iskonto1).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
+  double get sumGenIsk2 => kalemList?.map((e) => e.iskonto2).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
+  double get sumGenIsk3 => kalemList?.map((e) => e.iskonto3).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
+  double get toplamKalemMiktari => kalemList?.map((e) => e.toplamKalemMiktari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0;
   double get toplamBrutTutar => kalemList?.map((e) => e.brutFiyat).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
   double get getAraToplam => (genelToplam ?? 0) - (kdv ?? 0);
   double get getToplamMiktar => kalemList?.map((e) => e.miktar).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
@@ -291,7 +307,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   bool get isEmpty => this == BaseSiparisEditModel();
   bool get isRemoteTempBelgeNull => remoteTempBelge == null;
 
-  double get getToplamIskonto => (genelIskonto1 ?? 0) + (genelIskonto2 ?? 0) + (genelIskonto3 ?? 0);
+  double get getToplamIskonto => sumGenIsk1 + sumGenIsk2 + sumGenIsk3;
   double get getBrutTutar => kalemList?.map((e) => e.brutFiyat).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
 
   factory BaseSiparisEditModel.fromJson(String json) => _$BaseSiparisEditModelFromJson(jsonDecode(json));
@@ -467,8 +483,10 @@ class KalemModel {
       this.dovizKodu,
       this.dovizFiyati,
       this.malfazCevrimliMiktar,
-      this.malFazlasiMiktar});
+      this.malFazlasiMiktar,
+      this.kosulKodu});
 
+  double get toplamKalemMiktari => (miktar ?? 0) + (malFazlasiMiktar ?? 0);
   double get brutTutar => ((miktar ?? 0) + (malFazlasiMiktar ?? 0)) * (brutFiyat ?? 0);
 
   double get araToplamTutari => ((miktar ?? 0) * (brutFiyat ?? 0)) - iskontoTutari;

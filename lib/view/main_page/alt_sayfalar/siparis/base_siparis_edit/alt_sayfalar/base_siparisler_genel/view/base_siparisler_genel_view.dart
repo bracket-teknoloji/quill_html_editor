@@ -1,23 +1,24 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:get/get.dart';
-import 'package:picker/core/constants/enum/siparis_tipi_enum.dart';
+import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
+import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
+import "package:picker/view/main_page/model/param_model.dart";
 
-import '../../../../../../../../core/base/model/base_edit_model.dart';
-import '../../../../../../../../core/base/model/base_proje_model.dart';
-import '../../../../../../../../core/base/state/base_state.dart';
-import '../../../../../../../../core/components/helper_widgets/custom_label_widget.dart';
-import '../../../../../../../../core/components/textfield/custom_text_field.dart';
-import '../../../../../../../../core/constants/enum/base_edit_enum.dart';
-import '../../../../../../../../core/constants/extensions/date_time_extensions.dart';
-import '../../../../../../../../core/constants/extensions/number_extensions.dart';
-import '../../../../../../../../core/constants/static_variables/static_variables.dart';
-import '../../../../../../../../core/constants/ui_helper/ui_helper.dart';
-import '../../../../../../../../core/init/network/login/api_urls.dart';
-import '../../../../../cari/cari_listesi/model/cari_listesi_model.dart';
-import '../../../../siparisler/model/siparis_edit_reuqest_model.dart';
-import '../../../model/base_siparis_edit_model.dart';
-import '../view_model/base_siparisler_genel_view_model.dart';
+import "../../../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../../../core/base/model/base_proje_model.dart";
+import "../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../core/constants/static_variables/static_variables.dart";
+import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../../cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../../../siparisler/model/siparis_edit_reuqest_model.dart";
+import "../../../model/base_siparis_edit_model.dart";
+import "../view_model/base_siparisler_genel_view_model.dart";
 
 class BaseSiparislerGenelView extends StatefulWidget {
   final BaseEditModel<SiparisEditRequestModel> model;
@@ -154,7 +155,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                           suffixMore: true,
                           controller: belgeTipiController,
                           onTap: () async {
-                            var result = await bottomSheetDialogManager.showBelgeTipiDialog(context);
+                            var result = await bottomSheetDialogManager.showBelgeTipiBottomSheetDialog(context);
                             if (result != null) {
                               model.belgeTipi = result.belgeTipiId;
                               belgeTipiController.text = result.belgeTipi ?? "";
@@ -169,7 +170,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     suffixMore: true,
                     controller: plasiyerController,
                     onTap: () async {
-                      var result = await bottomSheetDialogManager.showPlasiyerDialog(context);
+                      var result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
                       if (result != null) {
                         model.cariModel?.plasiyerKodu = result.plasiyerKodu;
                         model.cariModel?.plasiyerAciklama = result.plasiyerAciklama;
@@ -191,7 +192,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                             var result = await dialogManager.showDateTimePicker();
                             if (result != null) {
                               model.tarih = result;
-                              tarihController.text = result.toDateString();
+                              tarihController.text = result.toDateString;
                             }
                           },
                           suffix: const Icon(Icons.date_range_outlined),
@@ -206,7 +207,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                             var result = await dialogManager.showDateTimePicker();
                             if (result != null) {
                               model.teslimTarihi = result;
-                              teslimTarihController.text = result.toDateString();
+                              teslimTarihController.text = result.toDateString;
                             }
                           },
                           suffix: const Icon(Icons.date_range_outlined),
@@ -225,7 +226,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     suffixMore: true,
                     controller: projeController,
                     onTap: () async {
-                      BaseProjeModel? result = await bottomSheetDialogManager.showProjeDialog(context);
+                      BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
                       if (result != null) {
                         model.projeKodu = result.projeKodu;
                         model.projeAciklama = result.projeAciklama;
@@ -251,13 +252,20 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                               odemeKoduController.text = "${result.odemeKodu ?? ""} - ${result.aciklama ?? ""}";
                             }
                           })),
-                  Expanded(child: CustomTextField(enabled: enable, labelText: "Koşul", readOnly: true, suffixMore: true, controller: kosulController, onTap: ()async{
-                    var result = await bottomSheetDialogManager.showKosullarDialog(context);
-                    if (result != null) {
-                      model.kosulKodu = result.kosulKodu;
-                      kosulController.text = "${result.kosulKodu ?? ""} - ${result.genelKosulAdi ?? ""}";
-                    }
-                  })),
+                  Expanded(
+                      child: CustomTextField(
+                          enabled: enable,
+                          labelText: "Koşul",
+                          readOnly: true,
+                          suffixMore: true,
+                          controller: kosulController,
+                          onTap: () async {
+                            var result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context);
+                            if (result != null) {
+                              model.kosulKodu = result.kosulKodu;
+                              kosulController.text = result.genelKosulAdi ?? result.kosulKodu ?? "";
+                            }
+                          })),
                 ],
               ),
               Row(
@@ -271,10 +279,29 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     suffixMore: true,
                     controller: ozelKod1Controller,
                     onTap: () async {
+                      ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context);
+                      if (result != null) {
+                        model.ozelKod1 = result.kod;
+                        ozelKod1Controller.text = result.aciklama ?? result.kod ?? "";
+                      }
                       // var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Özel Kod 1");
                     },
                   )),
-                  Expanded(child: CustomTextField(enabled: enable, labelText: "Özel Kod 2", readOnly: true, suffixMore: true, controller: ozelKod2Controller)),
+                  Expanded(
+                      child: CustomTextField(
+                    enabled: enable,
+                    labelText: "Özel Kod 2",
+                    readOnly: true,
+                    suffixMore: true,
+                    controller: ozelKod2Controller,
+                    onTap: () async {
+                      ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context);
+                      if (result != null) {
+                        model.ozelKod2 = result.kod;
+                        ozelKod2Controller.text = result.aciklama ?? result.kod ?? "";
+                      }
+                    },
+                  )),
                 ],
               ),
               CustomWidgetWithLabel(
@@ -343,11 +370,11 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
   void controllerFiller() {
     belgeNoController.text = model.belgeNo ?? "";
     cariController.text = model.cariModel?.cariAdi ?? "";
-    teslimCariController.text = model.teslimCariAdi ?? (widget.model.baseEditEnum == BaseEditEnum.ekle ? DateTime.now().toDateString() : "");
+    teslimCariController.text = model.teslimCariAdi ?? "";
     belgeTipiController.text = (model.tipi ?? 0) < 6 ? "Yurtiçi" : "Yurtdışı";
     plasiyerController.text = model.cariModel?.plasiyerAciklama ?? "";
-    tarihController.text = model.tarih != null ? model.tarih.toDateString() : (widget.model.baseEditEnum == BaseEditEnum.ekle ? DateTime.now().toDateString() : "");
-    teslimTarihController.text = model.teslimTarihi != null ? model.teslimTarihi.toDateString() : "";
+    tarihController.text = model.tarih.toDateString;
+    teslimTarihController.text = model.teslimTarihi.toDateString;
     topluDepoController.text = model.topluDepo.toStringIfNull ?? "";
     projeController.text = model.projeAciklama ?? "";
     odemeKoduController.text = model.odemeKodu ?? "";

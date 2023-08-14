@@ -1,9 +1,9 @@
-import 'package:hive_flutter/hive_flutter.dart';
+import "package:hive_flutter/hive_flutter.dart";
 
-import '../../../view/main_page/model/user_model/user_model.dart';
-import 'cache_manager.dart';
+import "../../../view/main_page/model/user_model/user_model.dart";
+import "cache_manager.dart";
 
-part 'favorites_model.g.dart';
+part "favorites_model.g.dart";
 
 @HiveType(typeId: 24)
 class FavoritesModel {
@@ -41,6 +41,6 @@ class FavoritesModel {
 
   @override
   String toString() {
-    return 'FavoritesModel{name: $name, title: $title, icon: $icon, onTap: $onTap, color: $color, arguments: $arguments}';
+    return "FavoritesModel{name: $name, title: $title, icon: $icon, onTap: $onTap, color: $color, arguments: $arguments}";
   }
 }

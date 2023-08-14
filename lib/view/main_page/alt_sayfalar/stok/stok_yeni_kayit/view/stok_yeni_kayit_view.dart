@@ -1,21 +1,21 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:get/get.dart';
-import 'package:mobx/mobx.dart';
+import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
+import "package:mobx/mobx.dart";
 
-import '../../../../../../core/base/model/base_proje_model.dart';
-import '../../../../../../core/base/model/generic_response_model.dart';
-import '../../../../../../core/base/state/base_state.dart';
-import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../../../core/components/textfield/custom_text_field.dart';
-import '../../../../../../core/constants/extensions/date_time_extensions.dart';
-import '../../../../../../core/constants/extensions/number_extensions.dart';
-import '../../../../../../core/constants/ui_helper/ui_helper.dart';
-import '../../../../../../core/init/network/login/api_urls.dart';
-import '../../../../model/param_model.dart';
-import '../../stok_hareketleri/model/stok_hareketleri_model.dart';
-import '../model/stok_yeni_kayit_model.dart';
-import '../view_model/stok_yeni_kayit_view_model.dart';
+import "../../../../../../core/base/model/base_proje_model.dart";
+import "../../../../../../core/base/model/generic_response_model.dart";
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../model/param_model.dart";
+import "../../stok_hareketleri/model/stok_hareketleri_model.dart";
+import "../model/stok_yeni_kayit_model.dart";
+import "../view_model/stok_yeni_kayit_view_model.dart";
 
 class StokYeniKayitView extends StatefulWidget {
   final StokHareketleriModel? model;
@@ -28,7 +28,7 @@ class StokYeniKayitView extends StatefulWidget {
 class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
   late StokYeniKayitViewModel viewModel = StokYeniKayitViewModel()..isSelected = (widget.model?.cikisIslemi ?? false) ? [false, true].asObservable() : ([true, false]).asObservable();
   late TextEditingController stokKoduController = TextEditingController(text: widget.model?.stokKodu ?? "");
-  late TextEditingController tarihController = TextEditingController(text: widget.model?.stharTarih?.toDateString() ?? viewModel.model.tarih.toDateString());
+  late TextEditingController tarihController = TextEditingController(text: widget.model?.stharTarih?.toDateString ?? viewModel.model.tarih.toDateString);
   late TextEditingController belgeNoController = TextEditingController(text: widget.model?.fisno ?? viewModel.model.belgeNo);
   late TextEditingController hareketTuruController = TextEditingController(text: widget.model?.hareketTuruAciklama ?? viewModel.model.hareketTuru);
   late TextEditingController fiyatController = TextEditingController(text: widget.model?.stharNf.commaSeparated ?? viewModel.model.fiyat.toStringIfNull);
@@ -106,7 +106,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                     ).then((value) {
                       if (value != null) {
                         viewModel.model.tarih = value;
-                        tarihController.text = viewModel.model.tarih.toDateString();
+                        tarihController.text = viewModel.model.tarih.toDateString;
                       }
                     });
                   },

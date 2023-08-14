@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
+import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
 
-import '../../../../../../../../core/constants/enum/base_edit_enum.dart';
-import '../view_model/base_stok_edit_seriler_view_model.dart';
+import "../../../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../view_model/base_stok_edit_seriler_view_model.dart";
 
 class BaseStokEditSerilerView extends StatefulWidget {
   final BaseEditEnum? model;

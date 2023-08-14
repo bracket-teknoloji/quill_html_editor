@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import "package:flutter/material.dart";
+import "package:get/get.dart";
 
-import '../../../view/main_page/model/grid_item_model.dart';
-import '../../base/state/base_state.dart';
-import '../../constants/ui_helper/icon_helper.dart';
-import '../../constants/ui_helper/ui_helper.dart';
+import "../../../view/main_page/model/grid_item_model.dart";
+import "../../base/state/base_state.dart";
+import "../../constants/ui_helper/icon_helper.dart";
+import "../../constants/ui_helper/ui_helper.dart";
 
 class AnimatedIslemlerGridTile extends StatefulWidget {
   final String? name;

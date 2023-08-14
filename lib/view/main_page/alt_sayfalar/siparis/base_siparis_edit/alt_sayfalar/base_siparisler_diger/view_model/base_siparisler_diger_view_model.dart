@@ -1,5 +1,5 @@
-import 'package:mobx/mobx.dart';
-part 'base_siparisler_diger_view_model.g.dart';
+import "package:mobx/mobx.dart";
+part "base_siparisler_diger_view_model.g.dart";
 
 class BaseSiparislerDigerViewModel = _BaseSiparislerDigerViewModelBase with _$BaseSiparislerDigerViewModel;
 

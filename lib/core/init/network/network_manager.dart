@@ -1,32 +1,32 @@
 // ignore_for_file: avoid_print
 
-import 'dart:convert';
-import 'dart:developer';
+import "dart:convert";
+import "dart:developer";
 
-import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart' hide FormData;
-import 'package:picker/core/base/model/base_network_mixin.dart';
-import 'package:picker/core/base/model/base_proje_model.dart';
-import 'package:picker/core/base/model/delete_fatura_model.dart';
-import 'package:picker/core/base/model/generic_response_model.dart';
-import 'package:picker/core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart';
-import 'package:picker/core/constants/extensions/date_time_extensions.dart';
-import 'package:picker/core/init/cache/cache_manager.dart';
-import 'package:picker/view/add_company/model/account_model.dart';
-import 'package:picker/view/auth/model/login_model.dart';
+import "package:dio/dio.dart";
+import "package:flutter/foundation.dart";
+import "package:flutter/material.dart";
+import "package:get/get.dart" hide FormData;
+import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/model/base_proje_model.dart";
+import "package:picker/core/base/model/delete_fatura_model.dart";
+import "package:picker/core/base/model/generic_response_model.dart";
+import "package:picker/core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
+import "package:picker/view/add_company/model/account_model.dart";
+import "package:picker/view/auth/model/login_model.dart";
 
-import '../../../view/add_company/model/account_response_model.dart';
-import '../../base/model/base_empty_model.dart';
-import '../../base/model/base_grup_kodu_model.dart';
-import '../../base/model/base_pdf_model.dart';
-import '../../base/model/print_model.dart';
-import '../../base/model/siradaki_belge_no_model.dart';
-import '../../base/view/pdf_viewer/model/pdf_viewer_model.dart';
-import '../../components/dialog/dialog_manager.dart';
-import '../../constants/enum/dio_enum.dart';
-import 'login/api_urls.dart';
+import "../../../view/add_company/model/account_response_model.dart";
+import "../../base/model/base_empty_model.dart";
+import "../../base/model/base_grup_kodu_model.dart";
+import "../../base/model/base_pdf_model.dart";
+import "../../base/model/print_model.dart";
+import "../../base/model/siradaki_belge_no_model.dart";
+import "../../base/view/pdf_viewer/model/pdf_viewer_model.dart";
+import "../../components/dialog/dialog_manager.dart";
+import "../../constants/enum/dio_enum.dart";
+import "login/api_urls.dart";
 
 class NetworkManager {
   Dio get dio => Dio(BaseOptions(
@@ -167,7 +167,7 @@ class NetworkManager {
   }
 
   Future<GenericResponseModel> deleteFatura(DeleteFaturaModel model, {showError = true, showLoading = true}) {
-    return dioPost<DeleteFaturaModel>(path: ApiUrls.deleteFatura, bodyModel: DeleteFaturaModel(), data: model.toJson(), showError: showError, showLoading: showLoading);
+    return dioPost<DeleteFaturaModel>(path: ApiUrls.deleteFatura, bodyModel: const DeleteFaturaModel(), data: model.toJson(), showError: showError, showLoading: showLoading);
   }
 
   Future<MemoryImage> getImage(String path) async {
@@ -261,7 +261,7 @@ class NetworkManager {
   }
 
   Future<GenericResponseModel> postPrint(BuildContext context, {required DicParams model}) async {
-    var result = await BottomSheetDialogManager().showPrintDialog(context, model);
+    var result = await BottomSheetDialogManager().showPrintBottomSheetDialog(context, model);
     if (result != null) {
       return dioPost<PrintModel>(path: ApiUrls.print, bodyModel: PrintModel(), data: model.toJson());
     } else {

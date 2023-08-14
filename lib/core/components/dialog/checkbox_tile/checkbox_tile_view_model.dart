@@ -1,6 +1,6 @@
-import 'package:mobx/mobx.dart';
+import "package:mobx/mobx.dart";
 
-part 'checkbox_tile_view_model.g.dart';
+part "checkbox_tile_view_model.g.dart";
 
 // ignore: library_private_types_in_public_api
 class CheckBoxTileViewModel = _CheckBoxTileViewModelBase with _$CheckBoxTileViewModel;

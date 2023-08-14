@@ -329,316 +329,344 @@ LangModel _$LangModelFromJson(Map<String, dynamic> json) => LangModel()
   ..servisSunucuHatasi = json['servisSunucuHatasi'] as String?
   ..servisYeniBelgeNoAlinamadi = json['servisYeniBelgeNoAlinamadi'] as String?;
 
-Map<String, dynamic> _$LangModelToJson(LangModel instance) => <String, dynamic>{
-      'DilKodu': instance.dilKodu,
-      'DilAciklama': instance.dilAciklama,
-      'menuMalKabul': instance.menuMalKabul,
-      'menuMalKabulSatinAlma': instance.menuMalKabulSatinAlma,
-      'menuMalKabulIade': instance.menuMalKabulIade,
-      'menuTransfer': instance.menuTransfer,
-      'menuTransferDAT': instance.menuTransferDAT,
-      'menuTransferAmbarGirisFisi': instance.menuTransferAmbarGirisFisi,
-      'menuTransferAmbarCikisFisi': instance.menuTransferAmbarCikisFisi,
-      'menuHucreTakibi': instance.menuHucreTakibi,
-      'menuHucreTakibiYerlestir': instance.menuHucreTakibiYerlestir,
-      'menuHucreTakibiBosalt': instance.menuHucreTakibiBosalt,
-      'menuHucreTakibiTransfer': instance.menuHucreTakibiTransfer,
-      'menuHucreTakibiAra': instance.menuHucreTakibiAra,
-      'menuHucreTakibiListe': instance.menuHucreTakibiListe,
-      'menuSevkiyat': instance.menuSevkiyat,
-      'menuSevkiyatSatisIrsaliyesi': instance.menuSevkiyatSatisIrsaliyesi,
-      'menuSevkiyatMalToplama': instance.menuSevkiyatMalToplama,
-      'menuSayim': instance.menuSayim,
-      'menuSayimSayim': instance.menuSayimSayim,
-      'menuSiparis': instance.menuSiparis,
-      'menuMusteriSiparisi': instance.menuMusteriSiparisi,
-      'menuSaticiSiparisi': instance.menuSaticiSiparisi,
-      'menuCari': instance.menuCari,
-      'menuCariListesi': instance.menuCariListesi,
-      'menuStok': instance.menuStok,
-      'menuStokListesi': instance.menuStokListesi,
-      'menuYonetici': instance.menuYonetici,
-      'menuBanka': instance.menuBanka,
-      'menuBankaListesi': instance.menuBankaListesi,
-      'menuTahsilat': instance.menuTahsilat,
-      'menuTahsilatYap': instance.menuTahsilatYap,
-      'menuTahsilatKayitlari': instance.menuTahsilatKayitlari,
-      'menuNakitOdeme': instance.menuNakitOdeme,
-      'menuKKTahsilat': instance.menuKKTahsilat,
-      'menuNakitTahsilat': instance.menuNakitTahsilat,
-      'menuSenetTahsilati': instance.menuSenetTahsilati,
-      'menuCekTahsilati': instance.menuCekTahsilati,
-      'menuAyarlar': instance.menuAyarlar,
-      'menuFirmalar': instance.menuFirmalar,
-      'menuTemsilci': instance.menuTemsilci,
-      'menuProfilim': instance.menuProfilim,
-      'menuAlisFaturasi': instance.menuAlisFaturasi,
-      'menuSatisFaturasi': instance.menuSatisFaturasi,
-      'genelSirketDegistir': instance.genelSirketDegistir,
-      'genelSirketOturumuKapat': instance.genelSirketOturumuKapat,
-      'genelGuncelSurumuIndir': instance.genelGuncelSurumuIndir,
-      'genelLutfenBekleyin': instance.genelLutfenBekleyin,
-      'genelKaydet': instance.genelKaydet,
-      'genelTamam': instance.genelTamam,
-      'genelHayir': instance.genelHayir,
-      'genelEvet': instance.genelEvet,
-      'genelIptal': instance.genelIptal,
-      'genelSil': instance.genelSil,
-      'genelDuzenle': instance.genelDuzenle,
-      'genelSirket': instance.genelSirket,
-      'genelIsletme': instance.genelIsletme,
-      'genelSube': instance.genelSube,
-      'genelFirmaEkle': instance.genelFirmaEkle,
-      'genelKayitAdi': instance.genelKayitAdi,
-      'genelKullaniciAdi': instance.genelKullaniciAdi,
-      'genelSifre': instance.genelSifre,
-      'genelRevizyon': instance.genelRevizyon,
-      'genelTarih': instance.genelTarih,
-      'genelBelgeNo': instance.genelBelgeNo,
-      'genelCari': instance.genelCari,
-      'genelSiparisTipi': instance.genelSiparisTipi,
-      'genelProje': instance.genelProje,
-      'genelPlasiyer': instance.genelPlasiyer,
-      'genelKDVDahil': instance.genelKDVDahil,
-      'genelAciklama': instance.genelAciklama,
-      'genelMiktar': instance.genelMiktar,
-      'genelTutar': instance.genelTutar,
-      'genelBirimFiyat': instance.genelBirimFiyat,
-      'genelKDV': instance.genelKDV,
-      'genelStokKodu': instance.genelStokKodu,
-      'genelBrutTutar': instance.genelBrutTutar,
-      'genelMalFazIsk': instance.genelMalFazIsk,
-      'genelMalFazTutari': instance.genelMalFazTutari,
-      'genelMalFazMiktari': instance.genelMalFazMiktari,
-      'genelSatirIsk': instance.genelSatirIsk,
-      'genelGenelToplam': instance.genelGenelToplam,
-      'genelGenelIskonto': instance.genelGenelIskonto,
-      'genelStokSeviyesi': instance.genelStokSeviyesi,
-      'genelOlcuBirimi': instance.genelOlcuBirimi,
-      'genelDepo': instance.genelDepo,
-      'genelCikisDepo': instance.genelCikisDepo,
-      'genelGirisDepo': instance.genelGirisDepo,
-      'genelDovizTipi': instance.genelDovizTipi,
-      'genelTLFiyati': instance.genelTLFiyati,
-      'genelIskonto': instance.genelIskonto,
-      'genelSeriler': instance.genelSeriler,
-      'genelSeri': instance.genelSeri,
-      'genelHucreler': instance.genelHucreler,
-      'genelBelge': instance.genelBelge,
-      'genelCariKodu': instance.genelCariKodu,
-      'genelCariAdi': instance.genelCariAdi,
-      'genelKalemMiktari': instance.genelKalemMiktari,
-      'genelHucre': instance.genelHucre,
-      'genelBarkod': instance.genelBarkod,
-      'genelKalem': instance.genelKalem,
-      'genelGoruntule': instance.genelGoruntule,
-      'genelSecenekler': instance.genelSecenekler,
-      'genelEkle': instance.genelEkle,
-      'genelYenile': instance.genelYenile,
-      'genelFiltrele': instance.genelFiltrele,
-      'genelSirala': instance.genelSirala,
-      'genelEkAciklamalar': instance.genelEkAciklamalar,
-      'genelIthalat': instance.genelIthalat,
-      'genelYeniBelge': instance.genelYeniBelge,
-      'genelYurtici': instance.genelYurtici,
-      'genelYurtdisi': instance.genelYurtdisi,
-      'genelDevir': instance.genelDevir,
-      'genelDepolar': instance.genelDepolar,
-      'genelUretim': instance.genelUretim,
-      'genelMuhtelif': instance.genelMuhtelif,
-      'genelKonsinye': instance.genelKonsinye,
-      'genelXRehberi': instance.genelXRehberi,
-      'genelAlisIrsaliyesi': instance.genelAlisIrsaliyesi,
-      'genelSatisIrsaliyesi': instance.genelSatisIrsaliyesi,
-      'genelAlisFaturasi': instance.genelAlisFaturasi,
-      'genelSatisFaturasi': instance.genelSatisFaturasi,
-      'genelIade': instance.genelIade,
-      'genelXGiriniz': instance.genelXGiriniz,
-      'genelXSeciniz': instance.genelXSeciniz,
-      'genelXSilinsinMi': instance.genelXSilinsinMi,
-      'genelKayitSilinsinMi': instance.genelKayitSilinsinMi,
-      'genelKaydedilsinMi': instance.genelKaydedilsinMi,
-      'genelEksikBilgiler': instance.genelEksikBilgiler,
-      'genelMiktarGiriniz': instance.genelMiktarGiriniz,
-      'genelDovizSeciniz': instance.genelDovizSeciniz,
-      'genelOlcuBirimiSeciniz': instance.genelOlcuBirimiSeciniz,
-      'genelPlasiyerSeciniz': instance.genelPlasiyerSeciniz,
-      'genelProjeSeciniz': instance.genelProjeSeciniz,
-      'genelCariSeciniz': instance.genelCariSeciniz,
-      'genelTarihSeciniz': instance.genelTarihSeciniz,
-      'genelIthalatTipiSeciniz': instance.genelIthalatTipiSeciniz,
-      'genelGirisDepoSeciniz': instance.genelGirisDepoSeciniz,
-      'genelGirisVeCikisDepolarAyni': instance.genelGirisVeCikisDepolarAyni,
-      'genelAciklamaGiriniz': instance.genelAciklamaGiriniz,
-      'genelOzelKod1Seciniz': instance.genelOzelKod1Seciniz,
-      'genelOzelKod2Seciniz': instance.genelOzelKod2Seciniz,
-      'genelStokSeciniz': instance.genelStokSeciniz,
-      'genelHareketTuruSeciniz': instance.genelHareketTuruSeciniz,
-      'genelHucreMiktarlariUyumsuz': instance.genelHucreMiktarlariUyumsuz,
-      'genelSeriMiktarlariUyumsuz': instance.genelSeriMiktarlariUyumsuz,
-      'genelXBulunamadi': instance.genelXBulunamadi,
-      'genelMuhasebeKoduSeciniz': instance.genelMuhasebeKoduSeciniz,
-      'genelFiyatGiriniz': instance.genelFiyatGiriniz,
-      'genelAdet': instance.genelAdet,
-      'genelAramaIcinEnAzXHarfGiriniz': instance.genelAramaIcinEnAzXHarfGiriniz,
-      'genelAra': instance.genelAra,
-      'genelDovizKuru': instance.genelDovizKuru,
-      'genelTemizle': instance.genelTemizle,
-      'genelFisNo': instance.genelFisNo,
-      'genelBelgeTuruSeciniz': instance.genelBelgeTuruSeciniz,
-      'genelHucreSeciniz': instance.genelHucreSeciniz,
-      'genelHucreBakiyesi': instance.genelHucreBakiyesi,
-      'genelIslemBasarili': instance.genelIslemBasarili,
-      'genelIslemBasarisiz': instance.genelIslemBasarisiz,
-      'genelDepoSeciniz': instance.genelDepoSeciniz,
-      'genelBelgeSeciniz': instance.genelBelgeSeciniz,
-      'genelBelgeTuru': instance.genelBelgeTuru,
-      'genelBelgeTarihi': instance.genelBelgeTarihi,
-      'genelIslemMiktari': instance.genelIslemMiktari,
-      'genelKaynakHucreSeciniz': instance.genelKaynakHucreSeciniz,
-      'genelHedefHucreSeciniz': instance.genelHedefHucreSeciniz,
-      'genelKaynakVeHedefHucrelerAyni': instance.genelKaynakVeHedefHucrelerAyni,
-      'genelYetersizBakiye': instance.genelYetersizBakiye,
-      'genelHedefHucre': instance.genelHedefHucre,
-      'genelKaynakHucre': instance.genelKaynakHucre,
-      'genelStokAdi': instance.genelStokAdi,
-      'genelBakiye': instance.genelBakiye,
-      'genelHareketler': instance.genelHareketler,
-      'genelDetaylar': instance.genelDetaylar,
-      'genelDepoBakiyeDurumu': instance.genelDepoBakiyeDurumu,
-      'genelArti': instance.genelArti,
-      'genelEksi': instance.genelEksi,
-      'genelSifir': instance.genelSifir,
-      'genelGrupKodu': instance.genelGrupKodu,
-      'genelKod': instance.genelKod,
-      'genelXHareketleri': instance.genelXHareketleri,
-      'genelArtan': instance.genelArtan,
-      'genelAzalan': instance.genelAzalan,
-      'genelXDetaylari': instance.genelXDetaylari,
-      'genelFiyat': instance.genelFiyat,
-      'genelAdi': instance.genelAdi,
-      'genelKodu': instance.genelKodu,
-      'genelSeriCikistaAktif': instance.genelSeriCikistaAktif,
-      'genelSeriGiristeAktif': instance.genelSeriGiristeAktif,
-      'genelSeriMiktarKadarSor': instance.genelSeriMiktarKadarSor,
-      'genelSeriBakiyeTakibiVar': instance.genelSeriBakiyeTakibiVar,
-      'genelAlis': instance.genelAlis,
-      'genelSatis': instance.genelSatis,
-      'genelSatisFiyati': instance.genelSatisFiyati,
-      'genelAlisFiyati': instance.genelAlisFiyati,
-      'genelBaslamaTarihi': instance.genelBaslamaTarihi,
-      'genelBitisTarihi': instance.genelBitisTarihi,
-      'genelSayilanlar': instance.genelSayilanlar,
-      'genelMalToplama': instance.genelMalToplama,
-      'genelMalKontrol': instance.genelMalKontrol,
-      'genelKullaniciyaGonder': instance.genelKullaniciyaGonder,
-      'genelDepodaYok': instance.genelDepodaYok,
-      'genelToplananMallar': instance.genelToplananMallar,
-      'genelMalKontroleGonder': instance.genelMalKontroleGonder,
-      'genelTamamlandi': instance.genelTamamlandi,
-      'genelIslemiOnayliyorMusunuz': instance.genelIslemiOnayliyorMusunuz,
-      'genelTamamla': instance.genelTamamla,
-      'genelKullanicilar': instance.genelKullanicilar,
-      'genelCariKoduBos': instance.genelCariKoduBos,
-      'genelHucreIslemTuruBos': instance.genelHucreIslemTuruBos,
-      'genelKullaniciAdiVeyaSifreYanlis':
-          instance.genelKullaniciAdiVeyaSifreYanlis,
-      'genelKullaniciKilitliDurumda': instance.genelKullaniciKilitliDurumda,
-      'genelStokKoduBos': instance.genelStokKoduBos,
-      'genelBelgeZatenKayitli': instance.genelBelgeZatenKayitli,
-      'genelKayitYapildi': instance.genelKayitYapildi,
-      'genelMusteriSiparisi': instance.genelMusteriSiparisi,
-      'genelSaticiSiparisi': instance.genelSaticiSiparisi,
-      'genelStokKarti': instance.genelStokKarti,
-      'genelYazdir': instance.genelYazdir,
-      'genelNetFiyat': instance.genelNetFiyat,
-      'genelBrutFiyat': instance.genelBrutFiyat,
-      'genelProfilim': instance.genelProfilim,
-      'genelKullaniciBulunamadi': instance.genelKullaniciBulunamadi,
-      'genelKayitBulunamadi': instance.genelKayitBulunamadi,
-      'genelCariEFaturaMukellefidir': instance.genelCariEFaturaMukellefidir,
-      'genelCariEArsivMukellefidir': instance.genelCariEArsivMukellefidir,
-      'genelCariIleTeslimCariAyniOlamaz':
-          instance.genelCariIleTeslimCariAyniOlamaz,
-      'genelYeniBelgeNo': instance.genelYeniBelgeNo,
-      'genelStokHareketleri': instance.genelStokHareketleri,
-      'genelBelgeKayitliDegisiklikYapilamaz':
-          instance.genelBelgeKayitliDegisiklikYapilamaz,
-      'genelBelgeTipi': instance.genelBelgeTipi,
-      'genelBelgeTipiSeciniz': instance.genelBelgeTipiSeciniz,
-      'genelKasa': instance.genelKasa,
-      'genelKasaSeciniz': instance.genelKasaSeciniz,
-      'genel15HaneliBelgeGiriniz': instance.genel15HaneliBelgeGiriniz,
-      'genelBelgeSerisiniKontrolEdin': instance.genelBelgeSerisiniKontrolEdin,
-      'genelTopluDepo': instance.genelTopluDepo,
-      'genelXXXSeciniz': instance.genelXXXSeciniz,
-      'genelEFatura': instance.genelEFatura,
-      'genelEArsiv': instance.genelEArsiv,
-      'genelEsnekYapilandirma': instance.genelEsnekYapilandirma,
-      'genelYapilandirmaKodu': instance.genelYapilandirmaKodu,
-      'genelIslemler': instance.genelIslemler,
-      'genelBankaIslemleri': instance.genelBankaIslemleri,
-      'genelGelen': instance.genelGelen,
-      'genelGonderilen': instance.genelGonderilen,
-      'genelBaslama': instance.genelBaslama,
-      'genelBitis': instance.genelBitis,
-      'genelCariEFTKaydi': instance.genelCariEFTKaydi,
-      'bankayaParaGirisi': instance.bankayaParaGirisi,
-      'bankadanParaCikisi': instance.bankadanParaCikisi,
-      'bankaHesabi': instance.bankaHesabi,
-      'hareketDetayi': instance.hareketDetayi,
-      'islemTuru': instance.islemTuru,
-      'MobilCariEFTIslemi': instance.mobilCariEFTIslemi,
-      'MobilHesaplarArasiEFT': instance.mobilHesaplarArasiEFT,
-      'MobilHesaplarArasiVirman': instance.mobilHesaplarArasiVirman,
-      'XXXBos': instance.xXXBos,
-      'Tahsilat': instance.tahsilat,
-      'Odeme': instance.odeme,
-      'HucreBakiyeDurumu': instance.hucreBakiyeDurumu,
-      'HucreHareketleri': instance.hucreHareketleri,
-      'SiparisDurumRaporu': instance.siparisDurumRaporu,
-      'SiparisDurumRaporuDetay': instance.olustur,
-      'faturaTabGenel': instance.faturaTabGenel,
-      'faturaTabKalem': instance.faturaTabKalem,
-      'faturaTabToplamlar': instance.faturaTabToplamlar,
-      'faturaOzelKod1': instance.faturaOzelKod1,
-      'faturaOzelKod2': instance.faturaOzelKod2,
-      'faturaKosul': instance.faturaKosul,
-      'faturaHareketTuru': instance.faturaHareketTuru,
-      'faturaCikisYeri': instance.faturaCikisYeri,
-      'faturaMasrafKodu': instance.faturaMasrafKodu,
-      'faturaFarkliTeslimat': instance.faturaFarkliTeslimat,
-      'faturaIthalatTipi': instance.faturaIthalatTipi,
-      'faturaIthalatRefNo': instance.faturaIthalatRefNo,
-      'faturaIskontoToplami': instance.faturaIskontoToplami,
-      'faturaAraToplam': instance.faturaAraToplam,
-      'faturaKDVTutari': instance.faturaKDVTutari,
-      'faturaMasrafMerkezi': instance.faturaMasrafMerkezi,
-      'faturaAnaMalGrubu': instance.faturaAnaMalGrubu,
-      'faturaMalGrubu': instance.faturaMalGrubu,
-      'faturaSerbest': instance.faturaSerbest,
-      'faturaGenelToplamEksiyeDustu': instance.faturaGenelToplamEksiyeDustu,
-      'faturaCikisYeriSeciniz': instance.faturaCikisYeriSeciniz,
-      'faturaMasrafKoduSeciniz': instance.faturaMasrafKoduSeciniz,
-      'faturaFarkliTeslimCariSeciniz': instance.faturaFarkliTeslimCariSeciniz,
-      'faturaKalemGiriniz': instance.faturaKalemGiriniz,
-      'faturaSeriEFaturaIcinKullaniliyor':
-          instance.faturaSeriEFaturaIcinKullaniliyor,
-      'faturaSeriEArsivIcinKullaniliyor':
-          instance.faturaSeriEArsivIcinKullaniliyor,
-      'faturaSeriXXXIleBaslamali': instance.faturaSeriXXXIleBaslamali,
-      'faturaEFaturaOlusturulmus': instance.faturaEFaturaOlusturulmus,
-      'faturaEArsivOlusturulmus': instance.faturaEArsivOlusturulmus,
-      'depoGiris': instance.depoGiris,
-      'depoCikis': instance.depoCikis,
-      'depoKalan': instance.depoKalan,
-      'servisKullaniciDogrulamaServisiCalismiyor':
-          instance.servisKullaniciDogrulamaServisiCalismiyor,
-      'servisKullaniciDogrulanamadi': instance.servisKullaniciDogrulanamadi,
-      'servisOzelKodNoTanimliDegil': instance.servisOzelKodNoTanimliDegil,
-      'servisPickerBelgeTuruTanimliDegil':
-          instance.servisPickerBelgeTuruTanimliDegil,
-      'servisPickerYetkinizBulunmuyor': instance.servisPickerYetkinizBulunmuyor,
-      'servisSunucuHatasi': instance.servisSunucuHatasi,
-      'servisYeniBelgeNoAlinamadi': instance.servisYeniBelgeNoAlinamadi,
-    };
+Map<String, dynamic> _$LangModelToJson(LangModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('DilKodu', instance.dilKodu);
+  writeNotNull('DilAciklama', instance.dilAciklama);
+  writeNotNull('menuMalKabul', instance.menuMalKabul);
+  writeNotNull('menuMalKabulSatinAlma', instance.menuMalKabulSatinAlma);
+  writeNotNull('menuMalKabulIade', instance.menuMalKabulIade);
+  writeNotNull('menuTransfer', instance.menuTransfer);
+  writeNotNull('menuTransferDAT', instance.menuTransferDAT);
+  writeNotNull(
+      'menuTransferAmbarGirisFisi', instance.menuTransferAmbarGirisFisi);
+  writeNotNull(
+      'menuTransferAmbarCikisFisi', instance.menuTransferAmbarCikisFisi);
+  writeNotNull('menuHucreTakibi', instance.menuHucreTakibi);
+  writeNotNull('menuHucreTakibiYerlestir', instance.menuHucreTakibiYerlestir);
+  writeNotNull('menuHucreTakibiBosalt', instance.menuHucreTakibiBosalt);
+  writeNotNull('menuHucreTakibiTransfer', instance.menuHucreTakibiTransfer);
+  writeNotNull('menuHucreTakibiAra', instance.menuHucreTakibiAra);
+  writeNotNull('menuHucreTakibiListe', instance.menuHucreTakibiListe);
+  writeNotNull('menuSevkiyat', instance.menuSevkiyat);
+  writeNotNull(
+      'menuSevkiyatSatisIrsaliyesi', instance.menuSevkiyatSatisIrsaliyesi);
+  writeNotNull('menuSevkiyatMalToplama', instance.menuSevkiyatMalToplama);
+  writeNotNull('menuSayim', instance.menuSayim);
+  writeNotNull('menuSayimSayim', instance.menuSayimSayim);
+  writeNotNull('menuSiparis', instance.menuSiparis);
+  writeNotNull('menuMusteriSiparisi', instance.menuMusteriSiparisi);
+  writeNotNull('menuSaticiSiparisi', instance.menuSaticiSiparisi);
+  writeNotNull('menuCari', instance.menuCari);
+  writeNotNull('menuCariListesi', instance.menuCariListesi);
+  writeNotNull('menuStok', instance.menuStok);
+  writeNotNull('menuStokListesi', instance.menuStokListesi);
+  writeNotNull('menuYonetici', instance.menuYonetici);
+  writeNotNull('menuBanka', instance.menuBanka);
+  writeNotNull('menuBankaListesi', instance.menuBankaListesi);
+  writeNotNull('menuTahsilat', instance.menuTahsilat);
+  writeNotNull('menuTahsilatYap', instance.menuTahsilatYap);
+  writeNotNull('menuTahsilatKayitlari', instance.menuTahsilatKayitlari);
+  writeNotNull('menuNakitOdeme', instance.menuNakitOdeme);
+  writeNotNull('menuKKTahsilat', instance.menuKKTahsilat);
+  writeNotNull('menuNakitTahsilat', instance.menuNakitTahsilat);
+  writeNotNull('menuSenetTahsilati', instance.menuSenetTahsilati);
+  writeNotNull('menuCekTahsilati', instance.menuCekTahsilati);
+  writeNotNull('menuAyarlar', instance.menuAyarlar);
+  writeNotNull('menuFirmalar', instance.menuFirmalar);
+  writeNotNull('menuTemsilci', instance.menuTemsilci);
+  writeNotNull('menuProfilim', instance.menuProfilim);
+  writeNotNull('menuAlisFaturasi', instance.menuAlisFaturasi);
+  writeNotNull('menuSatisFaturasi', instance.menuSatisFaturasi);
+  writeNotNull('genelSirketDegistir', instance.genelSirketDegistir);
+  writeNotNull('genelSirketOturumuKapat', instance.genelSirketOturumuKapat);
+  writeNotNull('genelGuncelSurumuIndir', instance.genelGuncelSurumuIndir);
+  writeNotNull('genelLutfenBekleyin', instance.genelLutfenBekleyin);
+  writeNotNull('genelKaydet', instance.genelKaydet);
+  writeNotNull('genelTamam', instance.genelTamam);
+  writeNotNull('genelHayir', instance.genelHayir);
+  writeNotNull('genelEvet', instance.genelEvet);
+  writeNotNull('genelIptal', instance.genelIptal);
+  writeNotNull('genelSil', instance.genelSil);
+  writeNotNull('genelDuzenle', instance.genelDuzenle);
+  writeNotNull('genelSirket', instance.genelSirket);
+  writeNotNull('genelIsletme', instance.genelIsletme);
+  writeNotNull('genelSube', instance.genelSube);
+  writeNotNull('genelFirmaEkle', instance.genelFirmaEkle);
+  writeNotNull('genelKayitAdi', instance.genelKayitAdi);
+  writeNotNull('genelKullaniciAdi', instance.genelKullaniciAdi);
+  writeNotNull('genelSifre', instance.genelSifre);
+  writeNotNull('genelRevizyon', instance.genelRevizyon);
+  writeNotNull('genelTarih', instance.genelTarih);
+  writeNotNull('genelBelgeNo', instance.genelBelgeNo);
+  writeNotNull('genelCari', instance.genelCari);
+  writeNotNull('genelSiparisTipi', instance.genelSiparisTipi);
+  writeNotNull('genelProje', instance.genelProje);
+  writeNotNull('genelPlasiyer', instance.genelPlasiyer);
+  writeNotNull('genelKDVDahil', instance.genelKDVDahil);
+  writeNotNull('genelAciklama', instance.genelAciklama);
+  writeNotNull('genelMiktar', instance.genelMiktar);
+  writeNotNull('genelTutar', instance.genelTutar);
+  writeNotNull('genelBirimFiyat', instance.genelBirimFiyat);
+  writeNotNull('genelKDV', instance.genelKDV);
+  writeNotNull('genelStokKodu', instance.genelStokKodu);
+  writeNotNull('genelBrutTutar', instance.genelBrutTutar);
+  writeNotNull('genelMalFazIsk', instance.genelMalFazIsk);
+  writeNotNull('genelMalFazTutari', instance.genelMalFazTutari);
+  writeNotNull('genelMalFazMiktari', instance.genelMalFazMiktari);
+  writeNotNull('genelSatirIsk', instance.genelSatirIsk);
+  writeNotNull('genelGenelToplam', instance.genelGenelToplam);
+  writeNotNull('genelGenelIskonto', instance.genelGenelIskonto);
+  writeNotNull('genelStokSeviyesi', instance.genelStokSeviyesi);
+  writeNotNull('genelOlcuBirimi', instance.genelOlcuBirimi);
+  writeNotNull('genelDepo', instance.genelDepo);
+  writeNotNull('genelCikisDepo', instance.genelCikisDepo);
+  writeNotNull('genelGirisDepo', instance.genelGirisDepo);
+  writeNotNull('genelDovizTipi', instance.genelDovizTipi);
+  writeNotNull('genelTLFiyati', instance.genelTLFiyati);
+  writeNotNull('genelIskonto', instance.genelIskonto);
+  writeNotNull('genelSeriler', instance.genelSeriler);
+  writeNotNull('genelSeri', instance.genelSeri);
+  writeNotNull('genelHucreler', instance.genelHucreler);
+  writeNotNull('genelBelge', instance.genelBelge);
+  writeNotNull('genelCariKodu', instance.genelCariKodu);
+  writeNotNull('genelCariAdi', instance.genelCariAdi);
+  writeNotNull('genelKalemMiktari', instance.genelKalemMiktari);
+  writeNotNull('genelHucre', instance.genelHucre);
+  writeNotNull('genelBarkod', instance.genelBarkod);
+  writeNotNull('genelKalem', instance.genelKalem);
+  writeNotNull('genelGoruntule', instance.genelGoruntule);
+  writeNotNull('genelSecenekler', instance.genelSecenekler);
+  writeNotNull('genelEkle', instance.genelEkle);
+  writeNotNull('genelYenile', instance.genelYenile);
+  writeNotNull('genelFiltrele', instance.genelFiltrele);
+  writeNotNull('genelSirala', instance.genelSirala);
+  writeNotNull('genelEkAciklamalar', instance.genelEkAciklamalar);
+  writeNotNull('genelIthalat', instance.genelIthalat);
+  writeNotNull('genelYeniBelge', instance.genelYeniBelge);
+  writeNotNull('genelYurtici', instance.genelYurtici);
+  writeNotNull('genelYurtdisi', instance.genelYurtdisi);
+  writeNotNull('genelDevir', instance.genelDevir);
+  writeNotNull('genelDepolar', instance.genelDepolar);
+  writeNotNull('genelUretim', instance.genelUretim);
+  writeNotNull('genelMuhtelif', instance.genelMuhtelif);
+  writeNotNull('genelKonsinye', instance.genelKonsinye);
+  writeNotNull('genelXRehberi', instance.genelXRehberi);
+  writeNotNull('genelAlisIrsaliyesi', instance.genelAlisIrsaliyesi);
+  writeNotNull('genelSatisIrsaliyesi', instance.genelSatisIrsaliyesi);
+  writeNotNull('genelAlisFaturasi', instance.genelAlisFaturasi);
+  writeNotNull('genelSatisFaturasi', instance.genelSatisFaturasi);
+  writeNotNull('genelIade', instance.genelIade);
+  writeNotNull('genelXGiriniz', instance.genelXGiriniz);
+  writeNotNull('genelXSeciniz', instance.genelXSeciniz);
+  writeNotNull('genelXSilinsinMi', instance.genelXSilinsinMi);
+  writeNotNull('genelKayitSilinsinMi', instance.genelKayitSilinsinMi);
+  writeNotNull('genelKaydedilsinMi', instance.genelKaydedilsinMi);
+  writeNotNull('genelEksikBilgiler', instance.genelEksikBilgiler);
+  writeNotNull('genelMiktarGiriniz', instance.genelMiktarGiriniz);
+  writeNotNull('genelDovizSeciniz', instance.genelDovizSeciniz);
+  writeNotNull('genelOlcuBirimiSeciniz', instance.genelOlcuBirimiSeciniz);
+  writeNotNull('genelPlasiyerSeciniz', instance.genelPlasiyerSeciniz);
+  writeNotNull('genelProjeSeciniz', instance.genelProjeSeciniz);
+  writeNotNull('genelCariSeciniz', instance.genelCariSeciniz);
+  writeNotNull('genelTarihSeciniz', instance.genelTarihSeciniz);
+  writeNotNull('genelIthalatTipiSeciniz', instance.genelIthalatTipiSeciniz);
+  writeNotNull('genelGirisDepoSeciniz', instance.genelGirisDepoSeciniz);
+  writeNotNull(
+      'genelGirisVeCikisDepolarAyni', instance.genelGirisVeCikisDepolarAyni);
+  writeNotNull('genelAciklamaGiriniz', instance.genelAciklamaGiriniz);
+  writeNotNull('genelOzelKod1Seciniz', instance.genelOzelKod1Seciniz);
+  writeNotNull('genelOzelKod2Seciniz', instance.genelOzelKod2Seciniz);
+  writeNotNull('genelStokSeciniz', instance.genelStokSeciniz);
+  writeNotNull('genelHareketTuruSeciniz', instance.genelHareketTuruSeciniz);
+  writeNotNull(
+      'genelHucreMiktarlariUyumsuz', instance.genelHucreMiktarlariUyumsuz);
+  writeNotNull(
+      'genelSeriMiktarlariUyumsuz', instance.genelSeriMiktarlariUyumsuz);
+  writeNotNull('genelXBulunamadi', instance.genelXBulunamadi);
+  writeNotNull('genelMuhasebeKoduSeciniz', instance.genelMuhasebeKoduSeciniz);
+  writeNotNull('genelFiyatGiriniz', instance.genelFiyatGiriniz);
+  writeNotNull('genelAdet', instance.genelAdet);
+  writeNotNull('genelAramaIcinEnAzXHarfGiriniz',
+      instance.genelAramaIcinEnAzXHarfGiriniz);
+  writeNotNull('genelAra', instance.genelAra);
+  writeNotNull('genelDovizKuru', instance.genelDovizKuru);
+  writeNotNull('genelTemizle', instance.genelTemizle);
+  writeNotNull('genelFisNo', instance.genelFisNo);
+  writeNotNull('genelBelgeTuruSeciniz', instance.genelBelgeTuruSeciniz);
+  writeNotNull('genelHucreSeciniz', instance.genelHucreSeciniz);
+  writeNotNull('genelHucreBakiyesi', instance.genelHucreBakiyesi);
+  writeNotNull('genelIslemBasarili', instance.genelIslemBasarili);
+  writeNotNull('genelIslemBasarisiz', instance.genelIslemBasarisiz);
+  writeNotNull('genelDepoSeciniz', instance.genelDepoSeciniz);
+  writeNotNull('genelBelgeSeciniz', instance.genelBelgeSeciniz);
+  writeNotNull('genelBelgeTuru', instance.genelBelgeTuru);
+  writeNotNull('genelBelgeTarihi', instance.genelBelgeTarihi);
+  writeNotNull('genelIslemMiktari', instance.genelIslemMiktari);
+  writeNotNull('genelKaynakHucreSeciniz', instance.genelKaynakHucreSeciniz);
+  writeNotNull('genelHedefHucreSeciniz', instance.genelHedefHucreSeciniz);
+  writeNotNull('genelKaynakVeHedefHucrelerAyni',
+      instance.genelKaynakVeHedefHucrelerAyni);
+  writeNotNull('genelYetersizBakiye', instance.genelYetersizBakiye);
+  writeNotNull('genelHedefHucre', instance.genelHedefHucre);
+  writeNotNull('genelKaynakHucre', instance.genelKaynakHucre);
+  writeNotNull('genelStokAdi', instance.genelStokAdi);
+  writeNotNull('genelBakiye', instance.genelBakiye);
+  writeNotNull('genelHareketler', instance.genelHareketler);
+  writeNotNull('genelDetaylar', instance.genelDetaylar);
+  writeNotNull('genelDepoBakiyeDurumu', instance.genelDepoBakiyeDurumu);
+  writeNotNull('genelArti', instance.genelArti);
+  writeNotNull('genelEksi', instance.genelEksi);
+  writeNotNull('genelSifir', instance.genelSifir);
+  writeNotNull('genelGrupKodu', instance.genelGrupKodu);
+  writeNotNull('genelKod', instance.genelKod);
+  writeNotNull('genelXHareketleri', instance.genelXHareketleri);
+  writeNotNull('genelArtan', instance.genelArtan);
+  writeNotNull('genelAzalan', instance.genelAzalan);
+  writeNotNull('genelXDetaylari', instance.genelXDetaylari);
+  writeNotNull('genelFiyat', instance.genelFiyat);
+  writeNotNull('genelAdi', instance.genelAdi);
+  writeNotNull('genelKodu', instance.genelKodu);
+  writeNotNull('genelSeriCikistaAktif', instance.genelSeriCikistaAktif);
+  writeNotNull('genelSeriGiristeAktif', instance.genelSeriGiristeAktif);
+  writeNotNull('genelSeriMiktarKadarSor', instance.genelSeriMiktarKadarSor);
+  writeNotNull('genelSeriBakiyeTakibiVar', instance.genelSeriBakiyeTakibiVar);
+  writeNotNull('genelAlis', instance.genelAlis);
+  writeNotNull('genelSatis', instance.genelSatis);
+  writeNotNull('genelSatisFiyati', instance.genelSatisFiyati);
+  writeNotNull('genelAlisFiyati', instance.genelAlisFiyati);
+  writeNotNull('genelBaslamaTarihi', instance.genelBaslamaTarihi);
+  writeNotNull('genelBitisTarihi', instance.genelBitisTarihi);
+  writeNotNull('genelSayilanlar', instance.genelSayilanlar);
+  writeNotNull('genelMalToplama', instance.genelMalToplama);
+  writeNotNull('genelMalKontrol', instance.genelMalKontrol);
+  writeNotNull('genelKullaniciyaGonder', instance.genelKullaniciyaGonder);
+  writeNotNull('genelDepodaYok', instance.genelDepodaYok);
+  writeNotNull('genelToplananMallar', instance.genelToplananMallar);
+  writeNotNull('genelMalKontroleGonder', instance.genelMalKontroleGonder);
+  writeNotNull('genelTamamlandi', instance.genelTamamlandi);
+  writeNotNull(
+      'genelIslemiOnayliyorMusunuz', instance.genelIslemiOnayliyorMusunuz);
+  writeNotNull('genelTamamla', instance.genelTamamla);
+  writeNotNull('genelKullanicilar', instance.genelKullanicilar);
+  writeNotNull('genelCariKoduBos', instance.genelCariKoduBos);
+  writeNotNull('genelHucreIslemTuruBos', instance.genelHucreIslemTuruBos);
+  writeNotNull('genelKullaniciAdiVeyaSifreYanlis',
+      instance.genelKullaniciAdiVeyaSifreYanlis);
+  writeNotNull(
+      'genelKullaniciKilitliDurumda', instance.genelKullaniciKilitliDurumda);
+  writeNotNull('genelStokKoduBos', instance.genelStokKoduBos);
+  writeNotNull('genelBelgeZatenKayitli', instance.genelBelgeZatenKayitli);
+  writeNotNull('genelKayitYapildi', instance.genelKayitYapildi);
+  writeNotNull('genelMusteriSiparisi', instance.genelMusteriSiparisi);
+  writeNotNull('genelSaticiSiparisi', instance.genelSaticiSiparisi);
+  writeNotNull('genelStokKarti', instance.genelStokKarti);
+  writeNotNull('genelYazdir', instance.genelYazdir);
+  writeNotNull('genelNetFiyat', instance.genelNetFiyat);
+  writeNotNull('genelBrutFiyat', instance.genelBrutFiyat);
+  writeNotNull('genelProfilim', instance.genelProfilim);
+  writeNotNull('genelKullaniciBulunamadi', instance.genelKullaniciBulunamadi);
+  writeNotNull('genelKayitBulunamadi', instance.genelKayitBulunamadi);
+  writeNotNull(
+      'genelCariEFaturaMukellefidir', instance.genelCariEFaturaMukellefidir);
+  writeNotNull(
+      'genelCariEArsivMukellefidir', instance.genelCariEArsivMukellefidir);
+  writeNotNull('genelCariIleTeslimCariAyniOlamaz',
+      instance.genelCariIleTeslimCariAyniOlamaz);
+  writeNotNull('genelYeniBelgeNo', instance.genelYeniBelgeNo);
+  writeNotNull('genelStokHareketleri', instance.genelStokHareketleri);
+  writeNotNull('genelBelgeKayitliDegisiklikYapilamaz',
+      instance.genelBelgeKayitliDegisiklikYapilamaz);
+  writeNotNull('genelBelgeTipi', instance.genelBelgeTipi);
+  writeNotNull('genelBelgeTipiSeciniz', instance.genelBelgeTipiSeciniz);
+  writeNotNull('genelKasa', instance.genelKasa);
+  writeNotNull('genelKasaSeciniz', instance.genelKasaSeciniz);
+  writeNotNull('genel15HaneliBelgeGiriniz', instance.genel15HaneliBelgeGiriniz);
+  writeNotNull(
+      'genelBelgeSerisiniKontrolEdin', instance.genelBelgeSerisiniKontrolEdin);
+  writeNotNull('genelTopluDepo', instance.genelTopluDepo);
+  writeNotNull('genelXXXSeciniz', instance.genelXXXSeciniz);
+  writeNotNull('genelEFatura', instance.genelEFatura);
+  writeNotNull('genelEArsiv', instance.genelEArsiv);
+  writeNotNull('genelEsnekYapilandirma', instance.genelEsnekYapilandirma);
+  writeNotNull('genelYapilandirmaKodu', instance.genelYapilandirmaKodu);
+  writeNotNull('genelIslemler', instance.genelIslemler);
+  writeNotNull('genelBankaIslemleri', instance.genelBankaIslemleri);
+  writeNotNull('genelGelen', instance.genelGelen);
+  writeNotNull('genelGonderilen', instance.genelGonderilen);
+  writeNotNull('genelBaslama', instance.genelBaslama);
+  writeNotNull('genelBitis', instance.genelBitis);
+  writeNotNull('genelCariEFTKaydi', instance.genelCariEFTKaydi);
+  writeNotNull('bankayaParaGirisi', instance.bankayaParaGirisi);
+  writeNotNull('bankadanParaCikisi', instance.bankadanParaCikisi);
+  writeNotNull('bankaHesabi', instance.bankaHesabi);
+  writeNotNull('hareketDetayi', instance.hareketDetayi);
+  writeNotNull('islemTuru', instance.islemTuru);
+  writeNotNull('MobilCariEFTIslemi', instance.mobilCariEFTIslemi);
+  writeNotNull('MobilHesaplarArasiEFT', instance.mobilHesaplarArasiEFT);
+  writeNotNull('MobilHesaplarArasiVirman', instance.mobilHesaplarArasiVirman);
+  writeNotNull('XXXBos', instance.xXXBos);
+  writeNotNull('Tahsilat', instance.tahsilat);
+  writeNotNull('Odeme', instance.odeme);
+  writeNotNull('HucreBakiyeDurumu', instance.hucreBakiyeDurumu);
+  writeNotNull('HucreHareketleri', instance.hucreHareketleri);
+  writeNotNull('SiparisDurumRaporu', instance.siparisDurumRaporu);
+  writeNotNull('SiparisDurumRaporuDetay', instance.olustur);
+  writeNotNull('faturaTabGenel', instance.faturaTabGenel);
+  writeNotNull('faturaTabKalem', instance.faturaTabKalem);
+  writeNotNull('faturaTabToplamlar', instance.faturaTabToplamlar);
+  writeNotNull('faturaOzelKod1', instance.faturaOzelKod1);
+  writeNotNull('faturaOzelKod2', instance.faturaOzelKod2);
+  writeNotNull('faturaKosul', instance.faturaKosul);
+  writeNotNull('faturaHareketTuru', instance.faturaHareketTuru);
+  writeNotNull('faturaCikisYeri', instance.faturaCikisYeri);
+  writeNotNull('faturaMasrafKodu', instance.faturaMasrafKodu);
+  writeNotNull('faturaFarkliTeslimat', instance.faturaFarkliTeslimat);
+  writeNotNull('faturaIthalatTipi', instance.faturaIthalatTipi);
+  writeNotNull('faturaIthalatRefNo', instance.faturaIthalatRefNo);
+  writeNotNull('faturaIskontoToplami', instance.faturaIskontoToplami);
+  writeNotNull('faturaAraToplam', instance.faturaAraToplam);
+  writeNotNull('faturaKDVTutari', instance.faturaKDVTutari);
+  writeNotNull('faturaMasrafMerkezi', instance.faturaMasrafMerkezi);
+  writeNotNull('faturaAnaMalGrubu', instance.faturaAnaMalGrubu);
+  writeNotNull('faturaMalGrubu', instance.faturaMalGrubu);
+  writeNotNull('faturaSerbest', instance.faturaSerbest);
+  writeNotNull(
+      'faturaGenelToplamEksiyeDustu', instance.faturaGenelToplamEksiyeDustu);
+  writeNotNull('faturaCikisYeriSeciniz', instance.faturaCikisYeriSeciniz);
+  writeNotNull('faturaMasrafKoduSeciniz', instance.faturaMasrafKoduSeciniz);
+  writeNotNull(
+      'faturaFarkliTeslimCariSeciniz', instance.faturaFarkliTeslimCariSeciniz);
+  writeNotNull('faturaKalemGiriniz', instance.faturaKalemGiriniz);
+  writeNotNull('faturaSeriEFaturaIcinKullaniliyor',
+      instance.faturaSeriEFaturaIcinKullaniliyor);
+  writeNotNull('faturaSeriEArsivIcinKullaniliyor',
+      instance.faturaSeriEArsivIcinKullaniliyor);
+  writeNotNull('faturaSeriXXXIleBaslamali', instance.faturaSeriXXXIleBaslamali);
+  writeNotNull('faturaEFaturaOlusturulmus', instance.faturaEFaturaOlusturulmus);
+  writeNotNull('faturaEArsivOlusturulmus', instance.faturaEArsivOlusturulmus);
+  writeNotNull('depoGiris', instance.depoGiris);
+  writeNotNull('depoCikis', instance.depoCikis);
+  writeNotNull('depoKalan', instance.depoKalan);
+  writeNotNull('servisKullaniciDogrulamaServisiCalismiyor',
+      instance.servisKullaniciDogrulamaServisiCalismiyor);
+  writeNotNull(
+      'servisKullaniciDogrulanamadi', instance.servisKullaniciDogrulanamadi);
+  writeNotNull(
+      'servisOzelKodNoTanimliDegil', instance.servisOzelKodNoTanimliDegil);
+  writeNotNull('servisPickerBelgeTuruTanimliDegil',
+      instance.servisPickerBelgeTuruTanimliDegil);
+  writeNotNull('servisPickerYetkinizBulunmuyor',
+      instance.servisPickerYetkinizBulunmuyor);
+  writeNotNull('servisSunucuHatasi', instance.servisSunucuHatasi);
+  writeNotNull(
+      'servisYeniBelgeNoAlinamadi', instance.servisYeniBelgeNoAlinamadi);
+  return val;
+}

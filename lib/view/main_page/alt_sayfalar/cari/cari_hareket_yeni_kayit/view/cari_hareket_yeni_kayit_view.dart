@@ -1,23 +1,23 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:get/get.dart';
+import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
 
-import '../../../../../../core/base/model/base_edit_model.dart';
-import '../../../../../../core/base/model/base_proje_model.dart';
-import '../../../../../../core/base/state/base_state.dart';
-import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../../../core/components/textfield/custom_text_field.dart';
-import '../../../../../../core/components/wrap/appbar_title.dart';
-import '../../../../../../core/constants/enum/base_edit_enum.dart';
-import '../../../../../../core/constants/extensions/date_time_extensions.dart';
-import '../../../../../../core/constants/extensions/number_extensions.dart';
-import '../../../../../../core/constants/ui_helper/ui_helper.dart';
-import '../../../../../../core/init/cache/cache_manager.dart';
-import '../../../../../../core/init/network/login/api_urls.dart';
-import '../../../../model/main_page_model.dart';
-import '../../cari_hareketleri/model/cari_hareketleri_model.dart';
-import '../model/cari_hareket_yeni_kayit_model.dart';
-import '../view_model/cari_hareket_yeni_kayit_view_model.dart';
+import "../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../core/base/model/base_proje_model.dart";
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../core/init/cache/cache_manager.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../model/main_page_model.dart";
+import "../../cari_hareketleri/model/cari_hareketleri_model.dart";
+import "../model/cari_hareket_yeni_kayit_model.dart";
+import "../view_model/cari_hareket_yeni_kayit_view_model.dart";
 
 class CariYeniKayitView extends StatefulWidget {
   final BaseEditModel<CariHareketleriModel>? model;
@@ -51,11 +51,11 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
     viewModel.model.tarih ??= DateTime.now();
     viewModel.model.vadeTarihi ??= DateTime.now();
     cariKoduController = TextEditingController(text: model?.cariAdi);
-    tarihController = TextEditingController(text: viewModel.model.tarih?.toDateString());
+    tarihController = TextEditingController(text: viewModel.model.tarih?.toDateString);
     hareketTuruController = TextEditingController(text: model?.hareketAciklama);
     belgeNoController = TextEditingController(text: model?.belgeNo);
     aciklamaController = TextEditingController(text: model?.aciklama);
-    vadeTarihiController = TextEditingController(text: viewModel.model.vadeTarihi?.toDateString());
+    vadeTarihiController = TextEditingController(text: viewModel.model.vadeTarihi?.toDateString);
     tutarController = TextEditingController(text: model?.borc.toStringIfNull ?? model?.alacak.toStringIfNull ?? "");
     plasiyerController = TextEditingController(text: model?.plasiyerAciklama);
     projeController = TextEditingController(text: model?.projeAciklama);
@@ -139,7 +139,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                   ).then((value) {
                     if (value != null) {
                       viewModel.model.tarih = value;
-                      tarihController?.text = value.toDateString();
+                      tarihController?.text = value.toDateString;
                     }
                   });
                 }),
@@ -188,7 +188,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                       ).then((value) {
                         if (value != null) {
                           viewModel.model.vadeTarihi = value;
-                          vadeTarihiController?.text = value.toDateString();
+                          vadeTarihiController?.text = value.toDateString;
                         }
                       });
                     },

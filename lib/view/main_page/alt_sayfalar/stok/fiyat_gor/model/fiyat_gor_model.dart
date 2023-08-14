@@ -1,7 +1,7 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:picker/core/base/model/base_network_mixin.dart';
+import "package:json_annotation/json_annotation.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
 
-part 'fiyat_gor_model.g.dart';
+part "fiyat_gor_model.g.dart";
 
 @JsonSerializable(createToJson: true, includeIfNull: false, fieldRename: FieldRename.screamingSnake)
 class FiyatGorModel with NetworkManagerMixin {

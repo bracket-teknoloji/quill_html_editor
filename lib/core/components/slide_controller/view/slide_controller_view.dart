@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
-import '../../../base/state/base_state.dart';
-import '../../helper_widgets/custom_label_widget.dart';
+import "../../../base/state/base_state.dart";
+import "../../helper_widgets/custom_label_widget.dart";
 
 class SlideControllerWidget extends StatefulWidget {
   final String? title;

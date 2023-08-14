@@ -1,12 +1,12 @@
-import 'dart:developer';
+import "dart:developer";
 
-import 'package:kartal/kartal.dart';
-import 'package:mobx/mobx.dart';
+import "package:kartal/kartal.dart";
+import "package:mobx/mobx.dart";
 
-import '../model/temsilci_profil_model.dart';
-import '../model/temsilci_profil_request_model.dart';
+import "../model/temsilci_profil_model.dart";
+import "../model/temsilci_profil_request_model.dart";
 
-part 'temsilci_profil_view_model.g.dart';
+part "temsilci_profil_view_model.g.dart";
 
 class TemsilciProfilViewModel = _TemsilciProfilViewModelBase with _$TemsilciProfilViewModel;
 

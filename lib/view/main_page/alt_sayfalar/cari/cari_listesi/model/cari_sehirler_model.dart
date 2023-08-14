@@ -1,11 +1,11 @@
 
 
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:json_annotation/json_annotation.dart';
+import "package:hive_flutter/hive_flutter.dart";
+import "package:json_annotation/json_annotation.dart";
 
-import '../../../../../../core/base/model/base_network_mixin.dart';
+import "../../../../../../core/base/model/base_network_mixin.dart";
 
-part 'cari_sehirler_model.g.dart';
+part "cari_sehirler_model.g.dart";
 
 @HiveType(typeId: 7)
 @JsonSerializable(fieldRename: FieldRename.screamingSnake, createToJson: true)

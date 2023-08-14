@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
+import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:lottie/lottie.dart";
 
-import '../../../base/state/base_state.dart';
-import '../../../constants/ui_helper/icon_helper.dart';
-import '../../../constants/ui_helper/ui_helper.dart';
-import '../../../init/cache/cache_manager.dart';
-import 'drawer_constants.dart';
+import "../../../base/state/base_state.dart";
+import "../../../constants/ui_helper/icon_helper.dart";
+import "../../../constants/ui_helper/ui_helper.dart";
+import "../../../init/cache/cache_manager.dart";
+import "drawer_constants.dart";
 
 class EndDrawer extends StatefulWidget {
   const EndDrawer({super.key});

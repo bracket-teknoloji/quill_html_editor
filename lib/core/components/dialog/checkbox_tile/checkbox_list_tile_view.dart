@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
+import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
 
-import '../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_sehirler_model.dart';
-import '../../../base/model/generic_response_model.dart';
-import '../../../base/state/base_state.dart';
-import '../../../init/network/login/api_urls.dart';
-import 'checkbox_tile_view_model.dart';
+import "../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_sehirler_model.dart";
+import "../../../base/model/generic_response_model.dart";
+import "../../../base/state/base_state.dart";
+import "../../../init/network/login/api_urls.dart";
+import "checkbox_tile_view_model.dart";
 
 class CheckBoxListTileDialog extends StatefulWidget {
   const CheckBoxListTileDialog({super.key});

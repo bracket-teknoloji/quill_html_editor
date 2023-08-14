@@ -1,18 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:get/get.dart';
+import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
 
-import '../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart';
-import '../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart';
-import '../../../../components/textfield/custom_text_field.dart';
-import '../../../../constants/extensions/date_time_extensions.dart';
-import '../../../../constants/extensions/number_extensions.dart';
-import '../../../../constants/extensions/widget_extensions.dart';
-import '../../../../constants/ui_helper/ui_helper.dart';
-import '../../../../init/network/login/api_urls.dart';
-import '../../../model/doviz_kurlari_model.dart';
-import '../../../state/base_state.dart';
-import '../view_model/kalem_ekle_view_model.dart';
+import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+import "../../../../components/textfield/custom_text_field.dart";
+import "../../../../constants/extensions/date_time_extensions.dart";
+import "../../../../constants/extensions/number_extensions.dart";
+import "../../../../constants/extensions/widget_extensions.dart";
+import "../../../../constants/ui_helper/ui_helper.dart";
+import "../../../../init/network/login/api_urls.dart";
+import "../../../model/doviz_kurlari_model.dart";
+import "../../../state/base_state.dart";
+import "../view_model/kalem_ekle_view_model.dart";
 
 class KalemEkleView extends StatefulWidget {
   final StokListesiModel? stokListesiModel;
@@ -90,6 +90,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
               if (formKey.currentState!.validate()) {
                 BaseSiparisEditModel.instance.kalemList ??= [];
                 BaseSiparisEditModel.instance.kalemList?.add(viewModel.kalemModel);
+                dialogManager.showSnackBar("Kalem Eklendi");
                 Get.back();
               } else {
                 dialogManager.showSnackBar("Lütfen gerekli alanları doldurunuz");
@@ -213,7 +214,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                     onPressed: () async {
                                       var result = await dialogManager.showDateTimePicker();
                                       if (result != null) {
-                                        teslimTarihiController.text = result.toDateString();
+                                        teslimTarihiController.text = result.toDateString;
                                         viewModel.kalemModel.teslimTarihi = result;
                                       }
                                     },
@@ -224,12 +225,13 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         labelText: "Koşul",
                         readOnly: true,
                         suffixMore: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.kosulKodu ?? "")),
                         controller: kosulController,
                         onTap: () async {
-                          var result = await bottomSheetDialogManager.showKosullarDialog(context);
+                          var result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context);
                           if (result != null) {
-                            kosulController.text = result.genelKosulAdi ?? "";
-                            viewModel.kalemModel.kosulKodu = result.kosulKodu;
+                            kosulController.text = result.genelKosulAdi ?? result.kosulKodu ?? "";
+                            viewModel.setKosul(result.kosulKodu ?? "");
                           }
                         },
                       )),
@@ -245,12 +247,15 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         isMust: true,
                         readOnly: true,
                         suffixMore: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.depoKodu.toStringIfNull ?? "")),
                         onTap: () async {
                           var result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context);
                           if (result != null) {
-                            depoController.text = result.depoTanimi ?? "";
+                            depoController.text = result.depoTanimi ?? result.depoKodu.toStringIfNull ?? "";
                             viewModel.kalemModel.depoTanimi = result.depoTanimi;
-                            viewModel.kalemModel.depoKodu = result.depoKodu;
+                            if (result.depoKodu != null) {
+                              viewModel.setDepoKodu(result.depoKodu!);
+                            }
                           }
                         },
                       )),
@@ -261,11 +266,12 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         isMust: true,
                         readOnly: true,
                         suffixMore: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.projeKodu ?? "")),
                         onTap: () async {
-                          var result = await bottomSheetDialogManager.showProjeDialog(context);
+                          var result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
                           if (result != null) {
-                            projeController.text = result.projeAciklama ?? "";
-                            viewModel.kalemModel.projeKodu = result.projeKodu;
+                            projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
+                            viewModel.setProjeKodu(result.projeKodu ?? "");
                           }
                         },
                       )),
@@ -282,7 +288,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         readOnly: true,
                         suffixMore: true,
                         onTap: () async {
-                          var result = await bottomSheetDialogManager.showDovizDialog(context);
+                          var result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context);
                           if (result != null) {
                             dovizTipiController.text = result.isim ?? "";
                             viewModel.kalemModel.dovizTipi = result.dovizKodu;
@@ -350,11 +356,11 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         controller: kdvOraniController,
                         isMust: true,
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        onChanged: (p0) => viewModel.setKdvOrani(double.tryParse(p0) ?? 0),
+                        onChanged: (p0) => viewModel.setKdvOrani(double.tryParse(p0.replaceAll(RegExp(r","), ".")) ?? 0),
                         suffix: IconButton(
                           icon: const Icon(Icons.more_horiz_outlined),
                           onPressed: () async {
-                            var result = await bottomSheetDialogManager.showKDVOranlariDialog(context);
+                            var result = await bottomSheetDialogManager.showKdvOranlariBottomSheetDialog(context);
                             if (result != null) {
                               viewModel.setKdvOrani(result);
                               kdvOraniController.text = result.toString();
@@ -390,7 +396,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         keyboardType: TextInputType.number,
                         controller: isk1TipiController,
                         onTap: () async {
-                          var result = await bottomSheetDialogManager.showIskontoTipiDialog(context);
+                          var result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
                           if (result != null) {
                             viewModel.kalemModel.isk1Tipi = result.iskontoTipi;
                             isk1TipiController.text = result.aciklama ?? "";
@@ -409,7 +415,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         suffixMore: true,
                         keyboardType: TextInputType.number,
                         onTap: () async {
-                          var result = await bottomSheetDialogManager.showIskontoTipiDialog(context);
+                          var result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
                           if (result != null) {
                             viewModel.kalemModel.isk2Tipi = result.iskontoTipi;
                             isk2TipiController.text = result.aciklama ?? "";
@@ -431,7 +437,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         suffixMore: true,
                         controller: isk3TipiController,
                         onTap: () async {
-                          var result = await bottomSheetDialogManager.showIskontoTipiDialog(context);
+                          var result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
                           if (result != null) {
                             viewModel.kalemModel.isk3Tipi = result.iskontoTipi;
                             isk3TipiController.text = result.aciklama ?? "";
@@ -503,12 +509,18 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     miktarController.text = viewModel.kalemModel.miktar?.toIntIfDouble.toStringIfNull ?? "";
     miktar2Controller.text = viewModel.kalemModel.miktar2?.toIntIfDouble.toStringIfNull ?? "";
     depoController.text = widget.stokListesiModel?.depoKodu.toStringIfNull ?? "";
-    teslimTarihiController.text = model.teslimTarihi.toDateString();
-    kosulController.text = model.kosulKodu ?? "";
+    teslimTarihiController.text = model.teslimTarihi.toDateString;
+    kosulController.text = model.kosulKodu ?? BaseSiparisEditModel.instance.kosulKodu ?? "";
     depoController.text = model.cikisDepoKodu.toStringIfNull ?? "";
-    projeController.text = BaseSiparisEditModel.instance.projeKodu ?? "";
+    projeController.text = model.projeKodu ?? BaseSiparisEditModel.instance.projeKodu ?? "";
     depoController.text = model.cikisDepoKodu.toStringIfNull ?? "";
     viewModel.kalemModel.stokAdi = widget.stokListesiModel?.stokAdi ?? widget.stokListesiModel?.stokKodu ?? "";
+    viewModel.kalemModel.stokKodu = widget.stokListesiModel?.stokKodu ?? "";
+    viewModel.kalemModel.depoKodu = model.cikisDepoKodu;
+    viewModel.kalemModel.projeKodu = model.projeKodu;
+    viewModel.kalemModel.kosulKodu = model.kosulKodu;
+    viewModel.kalemModel.teslimTarihi = model.teslimTarihi;
+    viewModel.setKosul(model.kosulKodu ?? BaseSiparisEditModel.instance.kosulKodu ?? "");
   }
 
   void disposeControllers() {

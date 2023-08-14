@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-part 'siparisler_request_model.g.dart';
+part "siparisler_request_model.g.dart";
 
 // @JsonSerializable(includeIfNull: false, createToJson: true, createFactory: true, explicitToJson: true, fieldRename: FieldRename.pascal)
 @JsonSerializable(createToJson: true, fieldRename: FieldRename.pascal, includeIfNull: false)
@@ -56,5 +56,7 @@ class SiparislerRequestModel {
     this.bitisTarihi,
     this.searchText,
   });
+  factory SiparislerRequestModel.fromJson(Map<String, dynamic> json) => _$SiparislerRequestModelFromJson(json);
+
   Map<String, dynamic> toJson() => _$SiparislerRequestModelToJson(this);
 }

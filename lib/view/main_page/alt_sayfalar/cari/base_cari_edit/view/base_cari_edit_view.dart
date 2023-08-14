@@ -1,21 +1,21 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:kartal/kartal.dart';
+import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 
-import '../../../../../../core/base/model/base_edit_model.dart';
-import '../../../../../../core/base/state/base_state.dart';
-import '../../../../../../core/components/wrap/appbar_title.dart';
-import '../../../../../../core/constants/enum/base_edit_enum.dart';
-import '../../../../../../core/constants/extensions/number_extensions.dart';
-import '../../../../../../core/constants/ui_helper/ui_helper.dart';
-import '../../../../../../core/init/network/login/api_urls.dart';
-import '../../cari_listesi/model/cari_listesi_model.dart';
-import '../../cari_listesi/model/cari_save_request_model.dart';
-import 'base_cari_edit_banka/view/base_cari_edit_banka_view.dart';
-import 'base_cari_edit_diger/view/base_edit_cari_diger_view.dart';
-import 'base_cari_edit_genel/view/base_edit_cari_genel_view.dart';
-import 'base_cari_edit_iletisim/view/base_edit_cari_iletisim_view.dart';
-import 'base_cari_edit_ozel/view/base_edit_cari_ozet_view.dart';
+import "../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
+import "../../cari_listesi/model/cari_listesi_model.dart";
+import "../../cari_listesi/model/cari_save_request_model.dart";
+import "base_cari_edit_banka/view/base_cari_edit_banka_view.dart";
+import "base_cari_edit_diger/view/base_edit_cari_diger_view.dart";
+import "base_cari_edit_genel/view/base_edit_cari_genel_view.dart";
+import "base_cari_edit_iletisim/view/base_edit_cari_iletisim_view.dart";
+import "base_cari_edit_ozel/view/base_edit_cari_ozet_view.dart";
 
 class BaseCariEditingView extends StatefulWidget {
   final String? appBarTitle;

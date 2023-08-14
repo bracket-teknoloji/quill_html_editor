@@ -1,8 +1,8 @@
 
 
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-part 'kalem_list_model.g.dart';
+part "kalem_list_model.g.dart";
 
 
 @JsonSerializable( createToJson: true, includeIfNull: true, createFactory: true, fieldRename: FieldRename.screamingSnake)

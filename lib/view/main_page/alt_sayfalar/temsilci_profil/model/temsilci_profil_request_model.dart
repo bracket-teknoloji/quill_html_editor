@@ -1,9 +1,9 @@
 
 
 
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-part 'temsilci_profil_request_model.g.dart';
+part "temsilci_profil_request_model.g.dart";
 @JsonSerializable(createToJson: true, includeIfNull: false)
 class TemsilciProfilRequestModel{
   @JsonKey(name: "CariKodu")

@@ -1,7 +1,7 @@
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:json_annotation/json_annotation.dart';
+import "package:hive_flutter/hive_flutter.dart";
+import "package:json_annotation/json_annotation.dart";
 
-part 'sirket_model.g.dart';
+part "sirket_model.g.dart";
 
 @JsonSerializable(createToJson: true, createFactory: true)
 @HiveType(typeId: 102)

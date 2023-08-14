@@ -72,67 +72,75 @@ CariSaveRequestModel _$CariSaveRequestModelFromJson(
       ..aciklama3 = json['ACIKLAMA3'] as String?;
 
 Map<String, dynamic> _$CariSaveRequestModelToJson(
-        CariSaveRequestModel instance) =>
-    <String, dynamic>{
-      'REQUEST_VERSION': instance.requestVersion,
-      'ISLEM_KODU': instance.islemKodu,
-      '_YeniKayit': instance.yeniKayit,
-      'SAHIS_FIRMASI': instance.sahisFirmasi,
-      'SUBE_KODU': instance.subeKodu,
-      'KODU': instance.kodu,
-      'TIPI': instance.tipi,
-      'ADI': instance.adi,
-      'ULKE_KODU': instance.ulkeKodu,
-      'SEHIR': instance.sehir,
-      'ILCE': instance.ilce,
-      'ADRES': instance.adres,
-      'TELEFON': instance.telefon,
-      'EPOSTA': instance.eposta,
-      'ENLEM': instance.enlem,
-      'BOYLAM': instance.boylam,
-      'POSTA_KODU': instance.postaKodu,
-      'WEBSITE': instance.website,
-      'VERGI_DAIRESI': instance.vergiDairesi,
-      'VERGI_NO': instance.vergiNo,
-      'PLASIYER_KODU': instance.plasiyerKodu,
-      'DOVIZLI': instance.dovizli,
-      'DOVIZ_KODU': instance.dovizKodu,
-      'GRUP_KODU': instance.grupKodu,
-      'KOD1': instance.kod1,
-      'KOD2': instance.kod2,
-      'KOD3': instance.kod3,
-      'KOD4': instance.kod4,
-      'KOD5': instance.kod5,
-      'BILGI': instance.bilgi,
-      'KILIT': instance.kilit,
-      'BAGLI_CARI': instance.bagliCari,
-      'KOSUL_KODU': instance.kosulKodu,
-      'MUHASEBE_KODU': instance.muhasebeKodu,
-      'KURFARKIBORC_KODU': instance.kurfarkiborcKodu,
-      'KURFARKIALACAK_KODU': instance.kurfarkialacakKodu,
-      'VADE_GUNU': instance.vadeGunu,
-      'ODEME_TIPI': instance.odemeTipi,
-      'MUHTELIF_CARI': instance.muhtelifCari,
-      'MUHTELIF_BELGE_TIPI': instance.muhtelifBelgeTipi,
-      'MUHTELIF_BELGE_NO': instance.muhtelifBelgeNo,
-      'EFATURA_SENARYO': instance.efaturaSenaryo,
-      'KULL1S': instance.kull1s,
-      'KULL2S': instance.kull2s,
-      'KULL3S': instance.kull3s,
-      'KULL4S': instance.kull4s,
-      'KULL5S': instance.kull5s,
-      'KULL6S': instance.kull6s,
-      'KULL7S': instance.kull7s,
-      'KULL8S': instance.kull8s,
-      'KULL1N': instance.kull1n,
-      'KULL2N': instance.kull2n,
-      'KULL3N': instance.kull3n,
-      'KULL4N': instance.kull4n,
-      'KULL5N': instance.kull5n,
-      'KULL6N': instance.kull6n,
-      'KULL7N': instance.kull7n,
-      'KULL8N': instance.kull8n,
-      'ACIKLAMA1': instance.aciklama1,
-      'ACIKLAMA2': instance.aciklama2,
-      'ACIKLAMA3': instance.aciklama3,
-    };
+    CariSaveRequestModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('REQUEST_VERSION', instance.requestVersion);
+  writeNotNull('ISLEM_KODU', instance.islemKodu);
+  writeNotNull('_YeniKayit', instance.yeniKayit);
+  writeNotNull('SAHIS_FIRMASI', instance.sahisFirmasi);
+  writeNotNull('SUBE_KODU', instance.subeKodu);
+  writeNotNull('KODU', instance.kodu);
+  writeNotNull('TIPI', instance.tipi);
+  writeNotNull('ADI', instance.adi);
+  writeNotNull('ULKE_KODU', instance.ulkeKodu);
+  writeNotNull('SEHIR', instance.sehir);
+  writeNotNull('ILCE', instance.ilce);
+  writeNotNull('ADRES', instance.adres);
+  writeNotNull('TELEFON', instance.telefon);
+  writeNotNull('EPOSTA', instance.eposta);
+  writeNotNull('ENLEM', instance.enlem);
+  writeNotNull('BOYLAM', instance.boylam);
+  writeNotNull('POSTA_KODU', instance.postaKodu);
+  writeNotNull('WEBSITE', instance.website);
+  writeNotNull('VERGI_DAIRESI', instance.vergiDairesi);
+  writeNotNull('VERGI_NO', instance.vergiNo);
+  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
+  writeNotNull('DOVIZLI', instance.dovizli);
+  writeNotNull('DOVIZ_KODU', instance.dovizKodu);
+  writeNotNull('GRUP_KODU', instance.grupKodu);
+  writeNotNull('KOD1', instance.kod1);
+  writeNotNull('KOD2', instance.kod2);
+  writeNotNull('KOD3', instance.kod3);
+  writeNotNull('KOD4', instance.kod4);
+  writeNotNull('KOD5', instance.kod5);
+  writeNotNull('BILGI', instance.bilgi);
+  writeNotNull('KILIT', instance.kilit);
+  writeNotNull('BAGLI_CARI', instance.bagliCari);
+  writeNotNull('KOSUL_KODU', instance.kosulKodu);
+  writeNotNull('MUHASEBE_KODU', instance.muhasebeKodu);
+  writeNotNull('KURFARKIBORC_KODU', instance.kurfarkiborcKodu);
+  writeNotNull('KURFARKIALACAK_KODU', instance.kurfarkialacakKodu);
+  writeNotNull('VADE_GUNU', instance.vadeGunu);
+  writeNotNull('ODEME_TIPI', instance.odemeTipi);
+  writeNotNull('MUHTELIF_CARI', instance.muhtelifCari);
+  writeNotNull('MUHTELIF_BELGE_TIPI', instance.muhtelifBelgeTipi);
+  writeNotNull('MUHTELIF_BELGE_NO', instance.muhtelifBelgeNo);
+  writeNotNull('EFATURA_SENARYO', instance.efaturaSenaryo);
+  writeNotNull('KULL1S', instance.kull1s);
+  writeNotNull('KULL2S', instance.kull2s);
+  writeNotNull('KULL3S', instance.kull3s);
+  writeNotNull('KULL4S', instance.kull4s);
+  writeNotNull('KULL5S', instance.kull5s);
+  writeNotNull('KULL6S', instance.kull6s);
+  writeNotNull('KULL7S', instance.kull7s);
+  writeNotNull('KULL8S', instance.kull8s);
+  writeNotNull('KULL1N', instance.kull1n);
+  writeNotNull('KULL2N', instance.kull2n);
+  writeNotNull('KULL3N', instance.kull3n);
+  writeNotNull('KULL4N', instance.kull4n);
+  writeNotNull('KULL5N', instance.kull5n);
+  writeNotNull('KULL6N', instance.kull6n);
+  writeNotNull('KULL7N', instance.kull7n);
+  writeNotNull('KULL8N', instance.kull8n);
+  writeNotNull('ACIKLAMA1', instance.aciklama1);
+  writeNotNull('ACIKLAMA2', instance.aciklama2);
+  writeNotNull('ACIKLAMA3', instance.aciklama3);
+  return val;
+}

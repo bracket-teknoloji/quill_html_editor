@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
-import '../../../../base/state/base_state.dart';
-import '../view_model/switch_tile_view_model.dart';
+import "../../../../base/state/base_state.dart";
+import "../view_model/switch_tile_view_model.dart";
 
 class DialogSwitchTile extends StatefulWidget {
   final String? title;

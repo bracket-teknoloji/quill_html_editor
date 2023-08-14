@@ -17,11 +17,19 @@ SiradakiBelgeNoModel _$SiradakiBelgeNoModelFromJson(
     );
 
 Map<String, dynamic> _$SiradakiBelgeNoModelToJson(
-        SiradakiBelgeNoModel instance) =>
-    <String, dynamic>{
-      'Seri': instance.seri,
-      'BelgeTipi': instance.belgeTipi,
-      'EIrsaliye': instance.eIrsaliye,
-      'CariKodu': instance.cariKodu,
-      'BelgeNo': instance.belgeNo,
-    };
+    SiradakiBelgeNoModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('Seri', instance.seri);
+  writeNotNull('BelgeTipi', instance.belgeTipi);
+  writeNotNull('EIrsaliye', instance.eIrsaliye);
+  writeNotNull('CariKodu', instance.cariKodu);
+  writeNotNull('BelgeNo', instance.belgeNo);
+  return val;
+}

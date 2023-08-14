@@ -87,7 +87,7 @@ Map<String, dynamic> _$SiparislerModelToJson(SiparislerModel instance) =>
       'REMOTE_TEMP_BELGE_ETIKETI': instance.remoteTempBelgeEtiketi,
       'TEMP_JSON_DATA': instance.tempJsonData,
       'TEMP_SIP_LIST': instance.tempSipList,
-      'KALEM_LIST': instance.kalemList,
+      'KALEM_LIST': instance.kalemList?.map((e) => e.toJson()).toList(),
       'TARIH': instance.tarih?.toIso8601String(),
       'TESLIM_TARIHI': instance.teslimTarihi?.toIso8601String(),
       'ISTENILEN_TESLIM_TARIHI':

@@ -1,7 +1,7 @@
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:json_annotation/json_annotation.dart';
+import "package:hive_flutter/hive_flutter.dart";
+import "package:json_annotation/json_annotation.dart";
 
-part 'param_model.g.dart';
+part "param_model.g.dart";
 
 @JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
 class ParamModel {
@@ -754,8 +754,6 @@ class MapCariKullSahalar {
     return toJson().toString();
   }
 }
-
-// TODO kontrol et
 @JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
 class MapKdvSifirBelgeTipiOzelKod2 {
   MapKdvSifirBelgeTipiOzelKod2();

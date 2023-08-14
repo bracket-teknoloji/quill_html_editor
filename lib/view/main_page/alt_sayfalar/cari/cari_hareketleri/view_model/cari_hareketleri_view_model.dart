@@ -1,8 +1,8 @@
-import 'package:mobx/mobx.dart';
+import "package:mobx/mobx.dart";
 
-import '../model/cari_hareketleri_model.dart';
+import "../model/cari_hareketleri_model.dart";
 
-part 'cari_hareketleri_view_model.g.dart';
+part "cari_hareketleri_view_model.g.dart";
 
 class CariHareketleriViewModel = _CariHareketleriViewModelBase with _$CariHareketleriViewModel;
 

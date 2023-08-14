@@ -1,11 +1,11 @@
-import 'package:mobx/mobx.dart';
+import "package:mobx/mobx.dart";
 
-import '../../../../../../core/base/model/base_proje_model.dart';
-import '../../../../../../core/init/cache/cache_manager.dart';
-import '../../../../model/main_page_model.dart';
-import '../model/stok_yeni_kayit_model.dart';
+import "../../../../../../core/base/model/base_proje_model.dart";
+import "../../../../../../core/init/cache/cache_manager.dart";
+import "../../../../model/main_page_model.dart";
+import "../model/stok_yeni_kayit_model.dart";
 
-part 'stok_yeni_kayit_view_model.g.dart';
+part "stok_yeni_kayit_view_model.g.dart";
 
 class StokYeniKayitViewModel = _StokYeniKayitViewModelBase with _$StokYeniKayitViewModel;
 

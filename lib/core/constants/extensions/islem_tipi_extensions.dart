@@ -1,6 +1,6 @@
 
 
-import '../enum/islem_tipi_enum.dart';
+import "../enum/islem_tipi_enum.dart";
 
 extension IslemTipiExtensions on IslemTipiEnum {
   bool get islemMi {

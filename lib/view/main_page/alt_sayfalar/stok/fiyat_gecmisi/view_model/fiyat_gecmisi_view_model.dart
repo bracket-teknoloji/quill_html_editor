@@ -1,11 +1,11 @@
-import 'package:kartal/kartal.dart';
-import 'package:mobx/mobx.dart';
+import "package:kartal/kartal.dart";
+import "package:mobx/mobx.dart";
 
-import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../model/fiyat_gecmisi_model.dart';
-import '../model/fiyat_gecmisi_response_model.dart';
+import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../model/fiyat_gecmisi_model.dart";
+import "../model/fiyat_gecmisi_response_model.dart";
 
-part 'fiyat_gecmisi_view_model.g.dart';
+part "fiyat_gecmisi_view_model.g.dart";
 
 class FiyatGecmisiViewModel = _FiyatGecmisiViewModelBase with _$FiyatGecmisiViewModel;
 

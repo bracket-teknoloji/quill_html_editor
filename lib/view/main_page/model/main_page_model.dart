@@ -1,13 +1,13 @@
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:json_annotation/json_annotation.dart';
+import "package:hive_flutter/hive_flutter.dart";
+import "package:json_annotation/json_annotation.dart";
 
-import '../../../core/base/model/base_network_mixin.dart';
-import 'lang_model.dart';
-import 'param_model.dart';
-import 'sirket_model.dart';
-import 'user_model/user_model.dart';
+import "../../../core/base/model/base_network_mixin.dart";
+import "lang_model.dart";
+import "param_model.dart";
+import "sirket_model.dart";
+import "user_model/user_model.dart";
 
-part 'main_page_model.g.dart';
+part "main_page_model.g.dart";
 
 @JsonSerializable(createToJson: true)
 @HiveType(typeId: 100)

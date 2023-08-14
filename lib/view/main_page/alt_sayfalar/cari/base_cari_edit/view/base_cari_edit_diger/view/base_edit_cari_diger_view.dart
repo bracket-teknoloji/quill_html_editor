@@ -1,28 +1,28 @@
-import 'dart:developer';
+import "dart:developer";
 
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:kartal/kartal.dart';
+import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 
-import '../../../../../../../../core/base/model/base_bottom_sheet_response_model.dart';
-import '../../../../../../../../core/base/model/base_edit_model.dart';
-import '../../../../../../../../core/base/model/base_grup_kodu_model.dart';
-import '../../../../../../../../core/base/model/generic_response_model.dart';
-import '../../../../../../../../core/base/state/base_state.dart';
-import '../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../../../../../core/components/helper_widgets/custom_label_widget.dart';
-import '../../../../../../../../core/components/textfield/custom_text_field.dart';
-import '../../../../../../../../core/constants/enum/base_edit_enum.dart';
-import '../../../../../../../../core/constants/extensions/number_extensions.dart';
-import '../../../../../../../../core/constants/extensions/widget_extensions.dart';
-import '../../../../../../../../core/constants/static_variables/static_variables.dart';
-import '../../../../../../../../core/init/cache/cache_manager.dart';
-import '../../../../../../../auth/model/isletme_model.dart';
-import '../../../../cari_listesi/model/cari_kosullar_model.dart';
-import '../../../../cari_listesi/model/cari_listesi_model.dart';
-import '../../../../cari_network_manager.dart';
-import '../../base_cari_edit_genel/view/base_edit_cari_genel_view.dart';
-import '../../base_cari_edit_genel/view_model/base_cari_genel_edit_view_model.dart';
+import "../../../../../../../../core/base/model/base_bottom_sheet_response_model.dart";
+import "../../../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../../../core/base/model/base_grup_kodu_model.dart";
+import "../../../../../../../../core/base/model/generic_response_model.dart";
+import "../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../../../core/constants/static_variables/static_variables.dart";
+import "../../../../../../../../core/init/cache/cache_manager.dart";
+import "../../../../../../../auth/model/isletme_model.dart";
+import "../../../../cari_listesi/model/cari_kosullar_model.dart";
+import "../../../../cari_listesi/model/cari_listesi_model.dart";
+import "../../../../cari_network_manager.dart";
+import "../../base_cari_edit_genel/view/base_edit_cari_genel_view.dart";
+import "../../base_cari_edit_genel/view_model/base_cari_genel_edit_view_model.dart";
 
 class CariEditDigerView extends StatefulWidget {
   final BaseEditModel? model;

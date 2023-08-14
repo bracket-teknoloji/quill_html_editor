@@ -1,9 +1,9 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart';
+import "package:json_annotation/json_annotation.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
-import '../../../../../../core/base/model/base_network_mixin.dart';
+import "../../../../../../core/base/model/base_network_mixin.dart";
 
-part 'siparis_edit_reuqest_model.g.dart';
+part "siparis_edit_reuqest_model.g.dart";
 
 
 @JsonSerializable(createToJson: true, includeIfNull: true, fieldRename: FieldRename.pascal)

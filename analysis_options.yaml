@@ -9,6 +9,8 @@
 # packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 analyzer:
+  exclude:
+    - "**/*.g.dart"
   errors:
     prefer_mixin: true
     invalid_annotation_target: false
@@ -25,7 +27,7 @@ linter:
   # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
   rules:
-    
+    prefer_double_quotes: true
     prefer_single_quotes: false
     prefer_const_constructors: true
     prefer_mixin: true

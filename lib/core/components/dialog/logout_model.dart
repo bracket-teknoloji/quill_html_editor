@@ -1,10 +1,10 @@
 
 
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-import '../../base/model/base_network_mixin.dart';
+import "../../base/model/base_network_mixin.dart";
 
-part 'logout_model.g.dart';
+part "logout_model.g.dart";
 
 @JsonSerializable(createToJson: true)
 class LogoutModel with NetworkManagerMixin{

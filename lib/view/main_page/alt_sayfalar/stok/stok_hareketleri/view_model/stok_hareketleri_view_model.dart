@@ -1,9 +1,9 @@
-import 'package:mobx/mobx.dart';
+import "package:mobx/mobx.dart";
 
-import '../../../cari/cari_listesi/model/cari_listesi_model.dart';
-import '../model/stok_hareketleri_model.dart';
+import "../../../cari/cari_listesi/model/cari_listesi_model.dart";
+import "../model/stok_hareketleri_model.dart";
 
-part 'stok_hareketleri_view_model.g.dart';
+part "stok_hareketleri_view_model.g.dart";
 
 class StokHareketleriViewModel = _StokHareketleriViewModelBase with _$StokHareketleriViewModel;
 

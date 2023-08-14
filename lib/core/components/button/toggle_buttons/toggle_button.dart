@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import "package:flutter/material.dart";
+import "package:get/get.dart";
 
-import '../../../base/state/base_state.dart';
-import '../../../constants/ui_helper/ui_helper.dart';
+import "../../../base/state/base_state.dart";
+import "../../../constants/ui_helper/ui_helper.dart";
 
 class ToggleButton extends StatefulWidget {
   static String selected = "";

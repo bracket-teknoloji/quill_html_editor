@@ -1,10 +1,10 @@
-import 'package:get/get.dart';
-import 'package:mobx/mobx.dart';
+import "package:get/get.dart";
+import "package:mobx/mobx.dart";
 
-import '../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart';
-import '../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
+import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
+import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
-part 'doviz_bakiye_raporu_view_model.g.dart';
+part "doviz_bakiye_raporu_view_model.g.dart";
 
 class DovizBakiyeRaporuViewModel = _DovizBakiyeRaporuViewModelBase with _$DovizBakiyeRaporuViewModel;
 

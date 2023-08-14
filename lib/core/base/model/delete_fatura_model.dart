@@ -1,35 +1,30 @@
-// ignore_for_file: unused_field
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
 
-import 'package:json_annotation/json_annotation.dart';
-import 'package:picker/core/base/model/base_network_mixin.dart';
+part "delete_fatura_model.freezed.dart";
+part "delete_fatura_model.g.dart";
 
-part 'delete_fatura_model.g.dart';
+@freezed
+class DeleteFaturaModel with NetworkManagerMixin, _$DeleteFaturaModel {
+  const DeleteFaturaModel._();
 
-@JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake)
-class DeleteFaturaModel with NetworkManagerMixin {
-  int? tipi;
-  String? tag;
-  Map? paramMap;
-  String? belgeNo;
-  String? cariKodu;
-  String? belgeTuru;
-  @JsonKey(name: "BELGE_TIPI")
-  int? _belgeTipi;
-  @JsonKey(name: "MEVCUT_BELGE_NO")
-  String? _mevcutBelgeNo;
-  @JsonKey(name: "MEVCUT_CARI_KODU")
-  String? _mevcutCariKodu;
-  @JsonKey(name: "PICKER_BELGE_TURU")
-  String? _pickerBelgeTuru;
+  const factory DeleteFaturaModel({
+    @JsonKey(name: "BelgeTipi") int? belgeTipi,
+    @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
+    bool? remoteTempBelge,
+    int? tempBelgeId,
+    int? tipi,
+    String? belgeNo,
+    String? belgeTuru,
+    String? cariKodu,
+    String? islemId,
+    String? mevcutBelgeNo,
+    String? mevcutCariKodu,
+    String? paramMap,
+    String? tag,
+  }) = _DeleteFaturaModel;
 
-  @override
-  Map<String, dynamic> toJson() {
-    tipi = _belgeTipi;
-    _mevcutBelgeNo = belgeNo;
-    _mevcutCariKodu = cariKodu;
-    _pickerBelgeTuru = belgeTuru;
-    return _$DeleteFaturaModelToJson(this);
-  }
+  factory DeleteFaturaModel.fromJson(Map<String, Object?> json) => _$DeleteFaturaModelFromJson(json);
 
   @override
   fromJson(Map<String, dynamic> json) => _$DeleteFaturaModelFromJson(json);

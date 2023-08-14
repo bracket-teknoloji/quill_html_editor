@@ -1,8 +1,8 @@
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-import '../../../../../../core/base/model/base_network_mixin.dart';
+import "../../../../../../core/base/model/base_network_mixin.dart";
 
-part 'cari_hareket_yeni_kayit_model.g.dart';
+part "cari_hareket_yeni_kayit_model.g.dart";
 
 @JsonSerializable(createToJson: true, includeIfNull: false, fieldRename: FieldRename.screamingSnake, explicitToJson: true)
 class CariHareketYeniKayitModel with NetworkManagerMixin {

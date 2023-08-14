@@ -1,10 +1,10 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:picker/core/base/model/base_network_mixin.dart';
+import "package:json_annotation/json_annotation.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
 
-import '../../../../../../core/base/model/base_grup_kodu_model.dart';
+import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 
 
-part 'stok_bottom_sheet_model.g.dart';
+part "stok_bottom_sheet_model.g.dart";
 
 @JsonSerializable(createToJson: true, includeIfNull: false, fieldRename: FieldRename.pascal)
 class StokBottomSheetModel with NetworkManagerMixin{

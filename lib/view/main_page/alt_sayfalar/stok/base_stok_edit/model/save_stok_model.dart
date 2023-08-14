@@ -1,8 +1,8 @@
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-import '../../../../../../core/base/model/base_network_mixin.dart';
+import "../../../../../../core/base/model/base_network_mixin.dart";
 
-part 'save_stok_model.g.dart';
+part "save_stok_model.g.dart";
 
 @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.screamingSnake, createToJson: true, includeIfNull: false)
 class SaveStokModel with NetworkManagerMixin {

@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import "package:flutter/material.dart";
+import "package:get/get.dart";
 
-import '../../../view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart';
-import '../../base/state/base_state.dart';
-import '../../constants/extensions/date_time_extensions.dart';
-import '../../constants/extensions/number_extensions.dart';
-import '../../constants/ui_helper/ui_helper.dart';
-import '../helper_widgets/custom_label_widget.dart';
+import "../../../view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
+import "../../base/state/base_state.dart";
+import "../../constants/extensions/date_time_extensions.dart";
+import "../../constants/extensions/number_extensions.dart";
+import "../../constants/ui_helper/ui_helper.dart";
+import "../helper_widgets/custom_label_widget.dart";
 
 class CariHareketlerCard extends StatefulWidget {
   final String? dovizTipi;
@@ -37,7 +37,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                   children: [
                     Row(
                       children: [
-                        Text("${widget.cariHareketleriModel.tarih?.toDateString() ?? ""} (${widget.cariHareketleriModel.hareketKodu ?? ""}) "),
+                        Text("${widget.cariHareketleriModel.tarih?.toDateString ?? ""} (${widget.cariHareketleriModel.hareketKodu ?? ""}) "),
                         widget.cariHareketleriModel.dovizliMi ? const Badge(label: Text("Dövizli")) : Container(),
                       ],
                     ),
@@ -60,7 +60,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
               runAlignment: WrapAlignment.spaceBetween,
               children: [
                 CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Belge No", child: Text(widget.cariHareketleriModel.belgeNo ?? "")),
-                CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Vade Tarihi", child: Text(widget.cariHareketleriModel.vadeTarihi?.toDateString() ?? "")),
+                CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Vade Tarihi", child: Text(widget.cariHareketleriModel.vadeTarihi?.toDateString ?? "")),
                 CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Plasiyer", child: Text(widget.cariHareketleriModel.plasiyerAciklama ?? "")),
                 CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Şube", child: Text("${widget.cariHareketleriModel.subeKodu ?? 0}"))
               ].map((e) => SizedBox(width: width * 0.33, child: e).paddingOnly(right: UIHelper.lowSize, bottom: UIHelper.lowSize)).toList(),

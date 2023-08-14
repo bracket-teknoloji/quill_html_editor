@@ -1,13 +1,13 @@
-import 'package:get/get.dart';
-import 'package:kartal/kartal.dart';
-import 'package:mobx/mobx.dart';
-import 'package:picker/core/base/model/base_proje_model.dart';
-import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
+import "package:get/get.dart";
+import "package:kartal/kartal.dart";
+import "package:mobx/mobx.dart";
+import "package:picker/core/base/model/base_proje_model.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
-import '../model/urun_grubuna_gore_satis_grafigi_model.dart';
-import '../model/urun_grubuna_gore_satis_grafigi_request_model.dart';
+import "../model/urun_grubuna_gore_satis_grafigi_model.dart";
+import "../model/urun_grubuna_gore_satis_grafigi_request_model.dart";
 
-part 'urun_grubuna_gore_satis_grafigi_view_model.g.dart';
+part "urun_grubuna_gore_satis_grafigi_view_model.g.dart";
 
 class UrunGrubunaGoreSatisGrafigiViewModel = _UrunGrubunaGoreSatisGrafigiViewModelBase with _$UrunGrubunaGoreSatisGrafigiViewModel;
 

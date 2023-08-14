@@ -1,11 +1,11 @@
-import 'dart:convert';
+import "dart:convert";
 
-import 'package:mobx/mobx.dart';
-import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart';
+import "package:mobx/mobx.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
 
-import '../../base_siparis_edit/model/base_siparis_edit_model.dart';
+import "../../base_siparis_edit/model/base_siparis_edit_model.dart";
 
-part 'siparisler_view_model.g.dart';
+part "siparisler_view_model.g.dart";
 
 class SiparislerViewModel = _SiparislerViewModelBase with _$SiparislerViewModel;
 

@@ -1,19 +1,19 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:get/get.dart';
-import 'package:kartal/kartal.dart';
+import "package:flutter/material.dart";
+import "package:flutter_staggered_animations/flutter_staggered_animations.dart";
+import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 
-import '../../../core/base/state/base_state.dart';
-import '../../../core/components/drawer/left_drawer.dart';
-import '../../../core/components/drawer/right_drawer/right_drawer.dart';
-import '../../../core/components/grid_tile/grid_tile.dart';
-import '../../../core/components/wrap/appbar_title.dart';
-import '../../../core/constants/ui_helper/icon_helper.dart';
-import '../../../core/constants/ui_helper/ui_helper.dart';
-import '../../../core/init/cache/cache_manager.dart';
-import '../model/grid_item_model.dart';
-import '../model/main_page_model.dart';
-import '../model/menu_item/menu_item_constants.dart';
+import "../../../core/base/state/base_state.dart";
+import "../../../core/components/drawer/left_drawer.dart";
+import "../../../core/components/drawer/right_drawer/right_drawer.dart";
+import "../../../core/components/grid_tile/grid_tile.dart";
+import "../../../core/components/wrap/appbar_title.dart";
+import "../../../core/constants/ui_helper/icon_helper.dart";
+import "../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../core/init/cache/cache_manager.dart";
+import "../model/grid_item_model.dart";
+import "../model/main_page_model.dart";
+import "../model/menu_item/menu_item_constants.dart";
 
 class MainPageView extends StatefulWidget {
   const MainPageView({super.key});

@@ -1,20 +1,20 @@
-import 'dart:convert';
-import 'dart:developer';
-import 'dart:io';
+import "dart:convert";
+import "dart:developer";
+import "dart:io";
 
-import 'package:app_tracking_transparency/app_tracking_transparency.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:device_info_plus/device_info_plus.dart';
-import 'package:flutter/foundation.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:json_annotation/json_annotation.dart';
-import 'package:kartal/kartal.dart';
-import 'package:package_info_plus/package_info_plus.dart';
-import 'package:picker/core/init/cache/cache_manager.dart';
+import "package:app_tracking_transparency/app_tracking_transparency.dart";
+import "package:connectivity_plus/connectivity_plus.dart";
+import "package:device_info_plus/device_info_plus.dart";
+import "package:flutter/foundation.dart";
+import "package:hive_flutter/hive_flutter.dart";
+import "package:json_annotation/json_annotation.dart";
+import "package:kartal/kartal.dart";
+import "package:package_info_plus/package_info_plus.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 
-import '../../../core/base/model/base_network_mixin.dart';
+import "../../../core/base/model/base_network_mixin.dart";
 
-part 'account_model.g.dart';
+part "account_model.g.dart";
 
 @HiveType(typeId: 73)
 @JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, includeIfNull: false)
@@ -84,8 +84,6 @@ class AccountModel with NetworkManagerMixin {
   String? kuruluHesaplar;
   @HiveField(26)
   String? localIp;
-
-  /// TODO özel cihaz kimliği ?
   @HiveField(27)
   String? ozelCihazKimligi;
   @HiveField(28)

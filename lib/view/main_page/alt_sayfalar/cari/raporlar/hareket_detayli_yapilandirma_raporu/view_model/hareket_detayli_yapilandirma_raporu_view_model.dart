@@ -1,8 +1,8 @@
-import 'package:mobx/mobx.dart';
+import "package:mobx/mobx.dart";
 
-import '../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart';
+import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 
-part 'hareket_detayli_yapilandirma_raporu_view_model.g.dart';
+part "hareket_detayli_yapilandirma_raporu_view_model.g.dart";
 
 class HareketDetayliYaslandirmaRaporuViewModel = _HareketDetayliYaslandirmaRaporuViewModelBase with _$HareketDetayliYaslandirmaRaporuViewModel;
 

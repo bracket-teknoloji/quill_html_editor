@@ -1,8 +1,8 @@
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-import '../../../../../../core/base/model/base_network_mixin.dart';
+import "../../../../../../core/base/model/base_network_mixin.dart";
 
-part 'stok_muhasebe_kodu_model.g.dart';
+part "stok_muhasebe_kodu_model.g.dart";
 
 @JsonSerializable(includeIfNull: false, createToJson: true, fieldRename: FieldRename.screamingSnake)
 class StokMuhasebeKoduModel with NetworkManagerMixin {

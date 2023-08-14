@@ -1,11 +1,11 @@
 // an extension on a widget to add safe area
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:picker/core/constants/ui_helper/ui_helper.dart';
-import 'package:picker/core/init/cache/cache_manager.dart';
+import "package:flutter/foundation.dart";
+import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 
-import '../ui_helper/duration_helper.dart';
+import "../ui_helper/duration_helper.dart";
 
 extension WidgetExtension on Widget {
   Widget get withSafeArea {

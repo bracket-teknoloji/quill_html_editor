@@ -1,11 +1,11 @@
-import 'package:get/get.dart';
-import 'package:mobx/mobx.dart';
+import "package:get/get.dart";
+import "package:mobx/mobx.dart";
 
-import '../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../cari_listesi/model/cari_listesi_model.dart';
-import '../model/cari_stok_satis_ozeti_model.dart';
+import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../cari_listesi/model/cari_listesi_model.dart";
+import "../model/cari_stok_satis_ozeti_model.dart";
 
-part 'cari_stok_satis_ozeti_view_model.g.dart';
+part "cari_stok_satis_ozeti_view_model.g.dart";
 
 class CariStokSatisOzetiViewModel = _CariStokSatisOzetiViewModelBase with _$CariStokSatisOzetiViewModel;
 

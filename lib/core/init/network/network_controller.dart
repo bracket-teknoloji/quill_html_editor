@@ -1,7 +1,7 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:get/get.dart';
+import "package:connectivity_plus/connectivity_plus.dart";
+import "package:get/get.dart";
 
-import '../../components/dialog/dialog_manager.dart';
+import "../../components/dialog/dialog_manager.dart";
 
 class NetworkController extends GetxController {
   final Connectivity _connectivity = Connectivity();

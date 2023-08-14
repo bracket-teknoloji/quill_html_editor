@@ -1,34 +1,34 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:get/get.dart';
-import 'package:kartal/kartal.dart';
-import 'package:picker/core/base/model/base_edit_model.dart';
-import 'package:picker/core/base/model/base_grup_kodu_model.dart';
-import 'package:picker/core/base/state/base_state.dart';
-import 'package:picker/core/components/appbar/appbar_prefered_sized_bottom.dart';
-import 'package:picker/core/components/bottom_bar/bottom_bar.dart';
-import 'package:picker/core/components/button/elevated_buttons/bottom_appbar_button.dart';
-import 'package:picker/core/components/button/elevated_buttons/footer_button.dart';
-import 'package:picker/core/components/card/siparisler_card.dart';
-import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import 'package:picker/core/components/floating_action_button/custom_floating_action_button.dart';
-import 'package:picker/core/components/helper_widgets/custom_label_widget.dart';
-import 'package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart';
-import 'package:picker/core/components/slide_controller/view/slide_controller_view.dart';
-import 'package:picker/core/components/textfield/custom_app_bar_text_field.dart';
-import 'package:picker/core/components/textfield/custom_text_field.dart';
-import 'package:picker/core/components/wrap/appbar_title.dart';
-import 'package:picker/core/constants/extensions/number_extensions.dart';
-import 'package:picker/core/constants/ui_helper/ui_helper.dart';
-import 'package:picker/core/init/network/login/api_urls.dart';
-import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/view_model/siparisler_view_model.dart';
+import "package:flutter/material.dart";
+import "package:flutter/rendering.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
+import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/base_edit_model.dart";
+import "package:picker/core/base/model/base_grup_kodu_model.dart";
+import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/components/appbar/appbar_prefered_sized_bottom.dart";
+import "package:picker/core/components/bottom_bar/bottom_bar.dart";
+import "package:picker/core/components/button/elevated_buttons/bottom_appbar_button.dart";
+import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
+import "package:picker/core/components/card/siparisler_card.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
+import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
+import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
+import "package:picker/core/components/slide_controller/view/slide_controller_view.dart";
+import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
+import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/view_model/siparisler_view_model.dart";
 
-import '../../../../../../core/constants/enum/base_edit_enum.dart';
-import '../../../../../../core/constants/enum/siparis_tipi_enum.dart';
-import '../../../../../../core/init/cache/cache_manager.dart';
-import '../../base_siparis_edit/model/base_siparis_edit_model.dart';
-import '../model/siparis_edit_reuqest_model.dart';
+import "../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../core/constants/enum/siparis_tipi_enum.dart";
+import "../../../../../../core/init/cache/cache_manager.dart";
+import "../../base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../model/siparis_edit_reuqest_model.dart";
 
 class SiparislerView extends StatefulWidget {
   final bool isSiparisler;
@@ -209,7 +209,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                     suffixMore: true,
                                     readOnly: true,
                                     onTap: () async {
-                                      var result = await bottomSheetDialogManager.showPlasiyerListesiDialog(context);
+                                      var result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context);
                                       if (result.ext.isNotNullOrEmpty) {
                                         plasiyerController.text = result!.map((e) => e?.plasiyerAciklama).join(", ");
 
@@ -223,7 +223,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                     suffixMore: true,
                                     readOnly: true,
                                     onTap: () async {
-                                      var result = await bottomSheetDialogManager.showProjeDialog(context);
+                                      var result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
                                       if (result != null) {
                                         projeController.text = result.projeAciklama ?? "";
                                         viewModel.setProjeKodu(result.projeKodu);
@@ -391,6 +391,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                         }
                         return SiparislerCard(
                           model: viewModel.musteriSiparisleriList![index]!,
+                          index: (viewModel.musteriSiparisleriList![index]?.isNew ?? false) ? index : null,
                           siparisTipiEnum: widget.isSiparisler ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici,
                           onDeleted: () {
                             viewModel.setSiparislerList(null);

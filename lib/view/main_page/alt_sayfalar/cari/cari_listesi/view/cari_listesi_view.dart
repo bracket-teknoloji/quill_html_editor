@@ -1,38 +1,38 @@
-import 'dart:convert';
-import 'dart:developer';
-import 'dart:ui';
+import "dart:convert";
+import "dart:developer";
+import "dart:ui";
 
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:get/get.dart';
-import 'package:intl/intl.dart';
-import 'package:kartal/kartal.dart';
-import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
+import "package:flutter/material.dart";
+import "package:flutter/rendering.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
+import "package:intl/intl.dart";
+import "package:kartal/kartal.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
-import '../../../../../../core/base/model/base_edit_model.dart';
-import '../../../../../../core/base/state/base_state.dart';
-import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
-import '../../../../../../core/components/button/elevated_buttons/footer_button.dart';
-import '../../../../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart';
-import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_response_model.dart';
-import '../../../../../../core/components/dialog/bottom_sheet/view_model/bottom_sheet_state_manager.dart';
-import '../../../../../../core/components/floating_action_button/custom_floating_action_button.dart';
-import '../../../../../../core/components/grid_tile/custom_animated_grid/view/custom_animated_grid_view.dart';
-import '../../../../../../core/components/helper_widgets/scrollable_widget.dart';
-import '../../../../../../core/components/textfield/custom_app_bar_text_field.dart';
-import '../../../../../../core/constants/enum/base_edit_enum.dart';
-import '../../../../../../core/constants/enum/islem_tipi_enum.dart';
-import '../../../../../../core/constants/extensions/list_extensions.dart';
-import '../../../../../../core/constants/extensions/model_extensions.dart';
-import '../../../../../../core/constants/extensions/number_extensions.dart';
-import '../../../../../../core/constants/ui_helper/ui_helper.dart';
-import '../../../../../../core/init/network/login/api_urls.dart';
-import '../../../../../add_company/model/account_model.dart';
-import '../../cari_network_manager.dart';
-import '../model/cari_secenekler_model.dart';
-import '../view_model/cari_listesi_view_model.dart';
+import "../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart";
+import "../../../../../../core/components/button/elevated_buttons/footer_button.dart";
+import "../../../../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
+import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_response_model.dart";
+import "../../../../../../core/components/dialog/bottom_sheet/view_model/bottom_sheet_state_manager.dart";
+import "../../../../../../core/components/floating_action_button/custom_floating_action_button.dart";
+import "../../../../../../core/components/grid_tile/custom_animated_grid/view/custom_animated_grid_view.dart";
+import "../../../../../../core/components/helper_widgets/scrollable_widget.dart";
+import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
+import "../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../core/constants/enum/islem_tipi_enum.dart";
+import "../../../../../../core/constants/extensions/list_extensions.dart";
+import "../../../../../../core/constants/extensions/model_extensions.dart";
+import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../../add_company/model/account_model.dart";
+import "../../cari_network_manager.dart";
+import "../model/cari_secenekler_model.dart";
+import "../view_model/cari_listesi_view_model.dart";
 
 class CariListesiView extends StatefulWidget {
   final bool? isGetData;
@@ -366,9 +366,9 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                 object.cariIl != null ? Text("${object.cariIl}/${object.cariIlce}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))) : const SizedBox(),
                                 Row(
                                   children: [
-                                    object.efaturaMi == true ? const Badge(label: Text(('E-Fatura'))) : const SizedBox(),
-                                    object.boylam != null && object.enlem != null ? const Badge(label: Text(('Konum'))) : const SizedBox(),
-                                    object.dovizli == true ? Badge(label: Text(('Dövizli ${object.dovizAdi}'))) : const SizedBox(),
+                                    object.efaturaMi == true ? const Badge(label: Text(("E-Fatura"))) : const SizedBox(),
+                                    object.boylam != null && object.enlem != null ? const Badge(label: Text(("Konum"))) : const SizedBox(),
+                                    object.dovizli == true ? Badge(label: Text(("Dövizli ${object.dovizAdi}"))) : const SizedBox(),
                                   ].map((e) => e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize)).toList(),
                                 ),
                               ],
@@ -376,8 +376,8 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                             trailing: Wrap(children: [
                               Text(
                                   (object.bakiye == null
-                                          ? '0.00 TL'
-                                          : '${formatter.format(object.bakiye)} TL'
+                                          ? "0.00 TL"
+                                          : "${formatter.format(object.bakiye)} TL"
                                               "\n")
                                       .toString(),
                                   style: TextStyle(color: UIHelper.getColorWithValue(object.bakiye ?? 0.0)))

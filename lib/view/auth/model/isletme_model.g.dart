@@ -104,21 +104,29 @@ IsletmeModel _$IsletmeModelFromJson(Map<String, dynamic> json) => IsletmeModel(
       vergiDairesi: json['VERGI_DAIRESI'] as String?,
     );
 
-Map<String, dynamic> _$IsletmeModelToJson(IsletmeModel instance) =>
-    <String, dynamic>{
-      'SIRKET': instance.sirket,
-      'ISLETME_KODU': instance.isletmeKodu,
-      'SUBE_KODU': instance.subeKodu,
-      'SUBE_ADI': instance.subeAdi,
-      'ISLETME_ADI': instance.isletmeAdi,
-      'LOKAL_DEPO_AKTIF': instance.lokalDepoAktif,
-      'MERKEZMI': instance.merkezmi,
-      'ADRES': instance.adres,
-      'TELEFON': instance.telefon,
-      'FAKS': instance.faks,
-      'EMAIL': instance.email,
-      'IL_ADI': instance.ilAdi,
-      'ILCE': instance.ilce,
-      'VERGI_NUMARASI': instance.vergiNumarasi,
-      'VERGI_DAIRESI': instance.vergiDairesi,
-    };
+Map<String, dynamic> _$IsletmeModelToJson(IsletmeModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('SIRKET', instance.sirket);
+  writeNotNull('ISLETME_KODU', instance.isletmeKodu);
+  writeNotNull('SUBE_KODU', instance.subeKodu);
+  writeNotNull('SUBE_ADI', instance.subeAdi);
+  writeNotNull('ISLETME_ADI', instance.isletmeAdi);
+  writeNotNull('LOKAL_DEPO_AKTIF', instance.lokalDepoAktif);
+  writeNotNull('MERKEZMI', instance.merkezmi);
+  writeNotNull('ADRES', instance.adres);
+  writeNotNull('TELEFON', instance.telefon);
+  writeNotNull('FAKS', instance.faks);
+  writeNotNull('EMAIL', instance.email);
+  writeNotNull('IL_ADI', instance.ilAdi);
+  writeNotNull('ILCE', instance.ilce);
+  writeNotNull('VERGI_NUMARASI', instance.vergiNumarasi);
+  writeNotNull('VERGI_DAIRESI', instance.vergiDairesi);
+  return val;
+}

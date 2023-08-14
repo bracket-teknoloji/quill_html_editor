@@ -1,4 +1,4 @@
-import '../../../button/toggle_buttons/toggle_button.dart';
+import "../../../button/toggle_buttons/toggle_button.dart";
 
 class BottomSheetResponseModel {
   //Sİngleton
@@ -36,17 +36,17 @@ class BottomSheetResponseModel {
 
   toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['filterBakiye'] = filterBakiye;
-    data['arrSehir'] = arrSehir;
-    data['arrPlasiyer'] = arrPlasiyer;
-    data['arrGrupKodu'] = arrGrupKodu;
-    data['arrKod1'] = arrKod1;
-    data['arrKod2'] = arrKod2;
-    data['arrKod3'] = arrKod3;
-    data['arrKod4'] = arrKod4;
-    data['arrKod5'] = arrKod5;
-    data['ilce'] = ilce;
-    data['cariTipi'] = cariTipi;
+    data["filterBakiye"] = filterBakiye;
+    data["arrSehir"] = arrSehir;
+    data["arrPlasiyer"] = arrPlasiyer;
+    data["arrGrupKodu"] = arrGrupKodu;
+    data["arrKod1"] = arrKod1;
+    data["arrKod2"] = arrKod2;
+    data["arrKod3"] = arrKod3;
+    data["arrKod4"] = arrKod4;
+    data["arrKod5"] = arrKod5;
+    data["ilce"] = ilce;
+    data["cariTipi"] = cariTipi;
     return data;
   }
 }

@@ -1,9 +1,9 @@
 
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-import '../../../../../core/base/model/base_network_mixin.dart';
+import "../../../../../core/base/model/base_network_mixin.dart";
 
-part 'serbest_rapor_response_model.g.dart';
+part "serbest_rapor_response_model.g.dart";
 
 @JsonSerializable(explicitToJson: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
 class SerbestRaporResponseModel with NetworkManagerMixin {

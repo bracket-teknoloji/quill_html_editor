@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:mobx/mobx.dart';
+import "package:flutter/material.dart";
+import "package:mobx/mobx.dart";
 
-import '../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart';
-import '../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart';
-import '../../../../constants/extensions/number_extensions.dart';
+import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+import "../../../../constants/extensions/number_extensions.dart";
 
-part 'kalem_ekle_view_model.g.dart';
+part "kalem_ekle_view_model.g.dart";
 
 class KalemEkleViewModel = _KalemEkleViewModelBase with _$KalemEkleViewModel;
 
@@ -21,7 +21,12 @@ abstract class _KalemEkleViewModelBase with Store {
 
   @observable
   KalemModel kalemModel = KalemModel();
-
+  @action
+  void setProjeKodu(String value) => kalemModel = kalemModel.copyWith(projeKodu: value);
+  @action
+  void setDepoKodu(int value) => kalemModel = kalemModel.copyWith(depoKodu: value);
+  @action
+  void setKosul(String value) => kalemModel = kalemModel.copyWith(kosulKodu: value);
   @action
   void setMiktar(int value) => kalemModel = kalemModel.copyWith(miktar: value.toDouble());
   @action

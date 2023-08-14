@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
-abstract class AppTheme {
+ class AppTheme {
   ThemeData? theme;
 }

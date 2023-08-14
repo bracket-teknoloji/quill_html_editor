@@ -1,9 +1,9 @@
 
 
-import 'package:json_annotation/json_annotation.dart';
-import 'package:picker/core/base/model/base_network_mixin.dart';
+import "package:json_annotation/json_annotation.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
 
-part 'doviz_kurlari_model.g.dart';
+part "doviz_kurlari_model.g.dart";
 
 @JsonSerializable( explicitToJson: true, fieldRename: FieldRename.screamingSnake, createToJson: true, includeIfNull: false)
 class DovizKurlariModel with NetworkManagerMixin{

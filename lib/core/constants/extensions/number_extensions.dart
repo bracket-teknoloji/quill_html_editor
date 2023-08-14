@@ -2,14 +2,14 @@
 extension NumExtension on num? {
   String get commaSeparated {
     if (this == null) return "0,00";
-    return toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]}.');
+    return toString().replaceAllMapped(RegExp(r"(\d{1,3})(?=(\d{3})+(?!\d))"), (Match m) => "${m[1]}.");
   }
 }
 
 // an extension on num to seperate the digits with commas and after fixed number of digits
 extension NumExtensionWithFixedDigits on num {
   String get commaSeparatedWithFixedDigits {
-    return toStringAsFixed(2).replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},');
+    return toStringAsFixed(2).replaceAllMapped(RegExp(r"(\d{1,3})(?=(\d{3})+(?!\d))"), (Match m) => "${m[1]},");
   }
 }
 
@@ -17,7 +17,7 @@ extension NumExtensionWithFixedDigits on num {
 extension NumExtensionWithFixedDigitsAndComma on num? {
   String get dotSeparatedWithFixedDigits {
     if (this != null) {
-      return this!.toStringAsFixed(2).replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]}.');
+      return this!.toStringAsFixed(2).replaceAllMapped(RegExp(r"(\d{1,3})(?=(\d{3})+(?!\d))"), (Match m) => "${m[1]}.");
     } else {
       return "0,00";
     }

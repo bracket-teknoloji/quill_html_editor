@@ -1,11 +1,11 @@
-import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/material.dart';
-import 'package:kartal/kartal.dart';
+import "package:fl_chart/fl_chart.dart";
+import "package:flutter/material.dart";
+import "package:kartal/kartal.dart";
 
-import '../../base/state/base_state.dart';
-import '../../constants/extensions/number_extensions.dart';
-import '../../constants/ui_helper/duration_helper.dart';
-import '../../constants/ui_helper/ui_helper.dart';
+import "../../base/state/base_state.dart";
+import "../../constants/extensions/number_extensions.dart";
+import "../../constants/ui_helper/duration_helper.dart";
+import "../../constants/ui_helper/ui_helper.dart";
 
 class CustomLineChart extends StatefulWidget {
   final List<double>? lineChartValue;
@@ -44,7 +44,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                             ),
                             children: [
                               const TextSpan(
-                                text: ' TL',
+                                text: " TL",
                                 style: TextStyle(
                                   fontWeight: FontWeight.normal,
                                 ),
@@ -115,43 +115,43 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
     Widget text;
     switch (value.toInt()) {
       case 0:
-        text = const Text('Ocak', style: style);
+        text = const Text("Ocak", style: style);
         break;
       case 1:
-        text = const Text('Şubat', style: style);
+        text = const Text("Şubat", style: style);
         break;
       case 2:
-        text = const Text('Mart', style: style);
+        text = const Text("Mart", style: style);
         break;
       case 3:
-        text = const Text('Nisan', style: style);
+        text = const Text("Nisan", style: style);
         break;
       case 4:
-        text = const Text('Mayıs', style: style);
+        text = const Text("Mayıs", style: style);
         break;
       case 5:
-        text = const Text('Haziran', style: style);
+        text = const Text("Haziran", style: style);
         break;
       case 6:
-        text = const Text('Temmuz', style: style);
+        text = const Text("Temmuz", style: style);
         break;
       case 7:
-        text = const Text('Ağustos', style: style);
+        text = const Text("Ağustos", style: style);
         break;
       case 8:
-        text = const Text('Eylül', style: style);
+        text = const Text("Eylül", style: style);
         break;
       case 9:
-        text = const Text('Ekim', style: style);
+        text = const Text("Ekim", style: style);
         break;
       case 10:
-        text = const Text('Kasım', style: style);
+        text = const Text("Kasım", style: style);
         break;
       case 11:
-        text = const Text('Aralık', style: style);
+        text = const Text("Aralık", style: style);
         break;
       default:
-        text = const Text('', style: style);
+        text = const Text("", style: style);
         break;
     }
     return RotationTransition(

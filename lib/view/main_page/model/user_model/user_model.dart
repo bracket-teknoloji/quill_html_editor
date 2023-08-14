@@ -1,10 +1,10 @@
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:json_annotation/json_annotation.dart';
+import "package:hive_flutter/hive_flutter.dart";
+import "package:json_annotation/json_annotation.dart";
 
-import '../lang_model.dart';
-import 'profil_yetki_model.dart';
+import "../lang_model.dart";
+import "profil_yetki_model.dart";
 
-part 'user_model.g.dart';
+part "user_model.g.dart";
 
 @JsonSerializable(createToJson: true, createFactory: true)
 @HiveType(typeId: 101)

@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:kartal/kartal.dart';
+import "package:flutter/material.dart";
+import "package:kartal/kartal.dart";
 
 class ResponsiveBox extends StatelessWidget {
   const ResponsiveBox({super.key});

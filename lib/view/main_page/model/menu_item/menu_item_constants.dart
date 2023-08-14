@@ -1,13 +1,13 @@
-import 'package:collection/collection.dart';
-import 'package:flutter/foundation.dart';
-import 'package:picker/core/constants/enum/serbest_rapor_detay_kod_enum.dart';
-import 'package:picker/core/constants/extensions/widget_extensions.dart';
+import "package:collection/collection.dart";
+import "package:flutter/foundation.dart";
+import "package:picker/core/constants/enum/serbest_rapor_detay_kod_enum.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 
-import '../../../../core/constants/grid_constants.dart';
-import '../../../../core/init/cache/cache_manager.dart';
-import '../grid_item_model.dart';
-import '../main_page_model.dart';
-import '../param_model.dart';
+import "../../../../core/constants/grid_constants.dart";
+import "../../../../core/init/cache/cache_manager.dart";
+import "../grid_item_model.dart";
+import "../main_page_model.dart";
+import "../param_model.dart";
 
 class MenuItemConstants {
   static final MainPageModel? _anaVeri = CacheManager.getAnaVeri();

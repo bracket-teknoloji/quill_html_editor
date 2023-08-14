@@ -1,19 +1,19 @@
-import 'dart:convert';
+import "dart:convert";
 
-import 'package:crypto/crypto.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:kartal/kartal.dart';
-import 'package:picker/core/components/textfield/custom_text_field.dart';
+import "package:crypto/crypto.dart";
+import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:kartal/kartal.dart";
+import "package:picker/core/components/textfield/custom_text_field.dart";
 
-import '../../../core/base/model/base_network_mixin.dart';
-import '../../../core/base/model/generic_response_model.dart';
-import '../../../core/base/state/base_state.dart';
-import '../../../core/components/helper_widgets/custom_label_widget.dart';
-import '../../../core/init/cache/cache_manager.dart';
-import '../../../core/init/network/login/api_urls.dart';
-import '../model/account_model.dart';
-import '../model/account_response_model.dart';
+import "../../../core/base/model/base_network_mixin.dart";
+import "../../../core/base/model/generic_response_model.dart";
+import "../../../core/base/state/base_state.dart";
+import "../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../core/init/cache/cache_manager.dart";
+import "../../../core/init/network/login/api_urls.dart";
+import "../model/account_model.dart";
+import "../model/account_response_model.dart";
 
 class AddAccountView extends StatefulWidget {
   const AddAccountView({super.key});
@@ -50,7 +50,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: context.paddingNormal,
+            padding: context.padding.normal,
             child: Form(
               key: formKey,
               child: Column(
@@ -61,7 +61,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
                     child: CustomTextField(controller: emailController, keyboardType: TextInputType.emailAddress, isMust: true),
                   ),
                   Padding(
-                    padding: context.verticalPaddingLow,
+                    padding: context.padding.verticalLow,
                     child: CustomWidgetWithLabel(
                       text: "Şifre",
                       child: CustomTextField(keyboardType: TextInputType.visiblePassword, controller: passwordController, isMust: true),
@@ -73,7 +73,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
                     children: [Icon(Icons.question_mark_rounded), Text("Bilgileri girerken büyük-küçük uyumuna dikkat ediniz.", softWrap: true)],
                   ),
                   Padding(
-                    padding: context.verticalPaddingLow,
+                    padding: context.padding.verticalLow,
                     child: ElevatedButton(
                         onPressed: () {
                           _getQR(context);

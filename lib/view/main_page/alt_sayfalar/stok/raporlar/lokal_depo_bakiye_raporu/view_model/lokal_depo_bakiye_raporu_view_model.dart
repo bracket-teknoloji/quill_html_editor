@@ -1,11 +1,11 @@
-import 'package:get/get.dart';
-import 'package:mobx/mobx.dart';
-import '../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import 'package:picker/core/constants/extensions/number_extensions.dart';
-import 'package:picker/core/init/cache/cache_manager.dart';
+import "package:get/get.dart";
+import "package:mobx/mobx.dart";
+import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 
-import '../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart';
-part 'lokal_depo_bakiye_raporu_view_model.g.dart';
+import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
+part "lokal_depo_bakiye_raporu_view_model.g.dart";
 
 class LokalDepoBakiyeRaporuViewModel = _LokalDepoBakiyeRaporuViewModelBase with _$LokalDepoBakiyeRaporuViewModel;
 

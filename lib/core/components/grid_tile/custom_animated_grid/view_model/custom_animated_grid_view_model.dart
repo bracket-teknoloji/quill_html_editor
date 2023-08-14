@@ -1,8 +1,8 @@
-import 'package:mobx/mobx.dart';
+import "package:mobx/mobx.dart";
 
-import '../../../../../view/main_page/model/grid_item_model.dart';
+import "../../../../../view/main_page/model/grid_item_model.dart";
 
-part 'custom_animated_grid_view_model.g.dart';
+part "custom_animated_grid_view_model.g.dart";
 
 class CustomAnimatedGridViewModel = _CustomAnimatedGridViewModelBase with _$CustomAnimatedGridViewModel;
 

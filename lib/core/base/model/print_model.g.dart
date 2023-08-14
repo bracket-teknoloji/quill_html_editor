@@ -18,13 +18,21 @@ PrintModel _$PrintModelFromJson(Map<String, dynamic> json) => PrintModel(
           : DicParams.fromJson(json['DIC_PARAMS'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$PrintModelToJson(PrintModel instance) =>
-    <String, dynamic>{
-      'DIZAYN_ID': instance.dizaynId,
-      'ETIKET_SAYISI': instance.etiketSayisi,
-      'RAPOR_OZEL_KOD': instance.raporOzelKod,
-      'YAZDIR': instance.yazdir,
-      'YAZICI_ADI': instance.yaziciAdi,
-      'YAZICI_TIPI': instance.yaziciTipi,
-      'DIC_PARAMS': instance.dicParams,
-    };
+Map<String, dynamic> _$PrintModelToJson(PrintModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('DIZAYN_ID', instance.dizaynId);
+  writeNotNull('ETIKET_SAYISI', instance.etiketSayisi);
+  writeNotNull('RAPOR_OZEL_KOD', instance.raporOzelKod);
+  writeNotNull('YAZDIR', instance.yazdir);
+  writeNotNull('YAZICI_ADI', instance.yaziciAdi);
+  writeNotNull('YAZICI_TIPI', instance.yaziciTipi);
+  writeNotNull('DIC_PARAMS', instance.dicParams?.toJson());
+  return val;
+}

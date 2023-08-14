@@ -1,20 +1,20 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:kartal/kartal.dart';
+import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 
-import '../../../../../../core/base/model/base_edit_model.dart';
-import '../../../../../../core/base/state/base_state.dart';
-import '../../../../../../core/components/wrap/appbar_title.dart';
-import '../../../../../../core/constants/enum/base_edit_enum.dart';
-import '../../../../../../core/constants/extensions/number_extensions.dart';
-import '../../../../../../core/constants/static_variables/static_variables.dart';
-import '../../../../../../core/init/network/login/api_urls.dart';
-import '../../stok_liste/model/stok_listesi_model.dart';
-import '../model/save_stok_model.dart';
-import 'base_stok_edit_fiyat/view/base_stok_edit_fiyat_view.dart';
-import 'base_stok_edit_fiyat_listesi/view/base_stok_edit_fiyat_listesi_view.dart';
-import 'base_stok_edit_genel/view/base_stok_edit_genel_view.dart';
-import 'base_stok_edit_seriler/view/base_stok_edit_seriler_view.dart';
+import "../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/static_variables/static_variables.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
+import "../../stok_liste/model/stok_listesi_model.dart";
+import "../model/save_stok_model.dart";
+import "base_stok_edit_fiyat/view/base_stok_edit_fiyat_view.dart";
+import "base_stok_edit_fiyat_listesi/view/base_stok_edit_fiyat_listesi_view.dart";
+import "base_stok_edit_genel/view/base_stok_edit_genel_view.dart";
+import "base_stok_edit_seriler/view/base_stok_edit_seriler_view.dart";
 
 class BaseStokEditingView extends StatefulWidget {
   final String? appBarTitle;

@@ -1,9 +1,9 @@
 
 
-import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/material.dart';
+import "package:fl_chart/fl_chart.dart";
+import "package:flutter/material.dart";
 
-import '../../base/state/base_state.dart';
+import "../../base/state/base_state.dart";
 
 class CustomBarWidget extends StatefulWidget {
   const CustomBarWidget({super.key});

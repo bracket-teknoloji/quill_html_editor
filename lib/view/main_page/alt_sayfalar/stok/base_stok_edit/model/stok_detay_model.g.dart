@@ -32,8 +32,9 @@ Map<String, dynamic> _$StokDetayModelToJson(StokDetayModel instance) {
   writeNotNull('STOK_ADI', instance.stokAdi);
   writeNotNull('SeriList', instance.seriList);
   writeNotNull('YapList', instance.yapList);
-  writeNotNull('StokList', instance.stokList);
-  writeNotNull('FiyatList', instance.fiyatList);
+  writeNotNull('StokList', instance.stokList?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'FiyatList', instance.fiyatList?.map((e) => e.toJson()).toList());
   return val;
 }
 
@@ -52,19 +53,28 @@ FiyatList _$FiyatListFromJson(Map<String, dynamic> json) => FiyatList()
   ..fiyat3 = (json['FIYAT3'] as num?)?.toDouble()
   ..fiyat4 = (json['FIYAT4'] as num?)?.toDouble();
 
-Map<String, dynamic> _$FiyatListToJson(FiyatList instance) => <String, dynamic>{
-      'A_S': instance.aS,
-      'STOK_KODU': instance.stokKodu,
-      'DOVIZ_TIPI': instance.dovizTipi,
-      'DOVIZ_KODU': instance.dovizKodu,
-      'BASTAR': instance.bastar?.toIso8601String(),
-      'BITTAR': instance.bittar?.toIso8601String(),
-      'GECERLI': instance.gecerli,
-      'FIYAT1': instance.fiyat1,
-      'FIYAT2': instance.fiyat2,
-      'FIYAT3': instance.fiyat3,
-      'FIYAT4': instance.fiyat4,
-    };
+Map<String, dynamic> _$FiyatListToJson(FiyatList instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('A_S', instance.aS);
+  writeNotNull('STOK_KODU', instance.stokKodu);
+  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
+  writeNotNull('DOVIZ_KODU', instance.dovizKodu);
+  writeNotNull('BASTAR', instance.bastar?.toIso8601String());
+  writeNotNull('BITTAR', instance.bittar?.toIso8601String());
+  writeNotNull('GECERLI', instance.gecerli);
+  writeNotNull('FIYAT1', instance.fiyat1);
+  writeNotNull('FIYAT2', instance.fiyat2);
+  writeNotNull('FIYAT3', instance.fiyat3);
+  writeNotNull('FIYAT4', instance.fiyat4);
+  return val;
+}
 
 StokList _$StokListFromJson(Map<String, dynamic> json) => StokList()
   ..stokKodu = json['STOK_KODU'] as String?
@@ -137,70 +147,79 @@ StokList _$StokListFromJson(Map<String, dynamic> json) => StokList()
   ..ureticiKodu = json['URETICI_KODU'] as String?
   ..birimAgirlik = (json['BIRIM_AGIRLIK'] as num?)?.toDouble();
 
-Map<String, dynamic> _$StokListToJson(StokList instance) => <String, dynamic>{
-      'STOK_KODU': instance.stokKodu,
-      'STOK_ADI': instance.stokAdi,
-      'DEPO_KODU': instance.depoKodu,
-      'BAKIYE': instance.bakiye,
-      'MUHDETAY_ADI': instance.muhdetayAdi,
-      'ALIS_FIAT1': instance.alisFiat1,
-      'ALIS_FIAT2': instance.alisFiat2,
-      'ALIS_FIAT3': instance.alisFiat3,
-      'ALIS_FIAT4': instance.alisFiat4,
-      'ALIS_KDV': instance.alisKdv,
-      'SATIS_FIAT1': instance.satisFiat1,
-      'SATIS_FIAT2': instance.satisFiat2,
-      'SATIS_FIAT3': instance.satisFiat3,
-      'SATIS_FIAT4': instance.satisFiat4,
-      'SATIS_KDV': instance.satisKdv,
-      'OLCU_BIRIMI': instance.olcuBirimi,
-      'OLCU_BIRIMI2': instance.olcuBirimi2,
-      'OLCU_BIRIMI3': instance.olcuBirimi3,
-      'OLCU_BIRIMI2_PAY': instance.olcuBirimi2Pay,
-      'OLCU_BIRIMI2_PAYDA': instance.olcuBirimi2Payda,
-      'OLCU_BIRIMI3_PAY': instance.olcuBirimi3Pay,
-      'OLCU_BIRIMI3_PAYDA': instance.olcuBirimi3Payda,
-      'BARKOD1': instance.barkod1,
-      'BARKOD2': instance.barkod2,
-      'BARKOD3': instance.barkod3,
-      'KAYITYAPANKUL': instance.kayityapankul,
-      'KAYITTARIHI': instance.kayittarihi?.toIso8601String(),
-      'GRUP_KODU': instance.grupKodu,
-      'GRUP_TANIMI': instance.grupTanimi,
-      'KOD1': instance.kod1,
-      'KOD1_TANIMI': instance.kod1Tanimi,
-      'KOD2': instance.kod2,
-      'KOD2_TANIMI': instance.kod2Tanimi,
-      'KOD3': instance.kod3,
-      'KOD3_TANIMI': instance.kod3Tanimi,
-      'KOD4': instance.kod4,
-      'KOD4_TANIMI': instance.kod4Tanimi,
-      'KOD5': instance.kod5,
-      'KOD5_TANIMI': instance.kod5Tanimi,
-      'SERI_CIKISLARDA_ACIK': instance.seriCikislardaAcik,
-      'SERI_GIRISLERDE_ACIK': instance.seriGirislerdeAcik,
-      'SERI_MIKTAR_KADAR_SOR': instance.seriMiktarKadarSor,
-      'SERI_BAKIYE_KONTROLU': instance.seriBakiyeKontrolu,
-      'SERI_GIRISTE_OTOMATIK_MI': instance.seriGiristeOtomatikMi,
-      'SERI_CIKISTA_OTOMATIK_MI': instance.seriCikistaOtomatikMi,
-      'DUZELTMETARIHI': instance.duzeltmetarihi?.toIso8601String(),
-      'DUZELTMEYAPANKUL': instance.duzeltmeyapankul,
-      'STOK_FIYAT_LIST': instance.stokFiyatList,
-      'STOK_LIST': instance.stokList,
-      'FIAT_BIRIMI': instance.fiatBirimi,
-      'KILIT_GENEL': instance.kilitGenel,
-      'KILIT_SATICISIP': instance.kilitSaticisip,
-      'KILIT_MUSSIP': instance.kilitMussip,
-      'KILIT_ALIS': instance.kilitAlis,
-      'KILIT_SATIS': instance.kilitSatis,
-      'SUBE_KODU': instance.subeKodu,
-      'MUHDETAY_KODU': instance.muhdetayKodu,
-      'ALIS_DOV_TIP': instance.alisDovTip,
-      'DOV_ALIS_FIAT': instance.dovAlisFiat,
-      'ALIS_DOVIZ_ADI': instance.alisDovizAdi,
-      'SAT_DOV_TIP': instance.satDovTip,
-      'DOV_SATIS_FIAT': instance.dovSatisFiat,
-      'SATIS_DOVIZ_ADI': instance.satisDovizAdi,
-      'URETICI_KODU': instance.ureticiKodu,
-      'BIRIM_AGIRLIK': instance.birimAgirlik,
-    };
+Map<String, dynamic> _$StokListToJson(StokList instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('STOK_KODU', instance.stokKodu);
+  writeNotNull('STOK_ADI', instance.stokAdi);
+  writeNotNull('DEPO_KODU', instance.depoKodu);
+  writeNotNull('BAKIYE', instance.bakiye);
+  writeNotNull('MUHDETAY_ADI', instance.muhdetayAdi);
+  writeNotNull('ALIS_FIAT1', instance.alisFiat1);
+  writeNotNull('ALIS_FIAT2', instance.alisFiat2);
+  writeNotNull('ALIS_FIAT3', instance.alisFiat3);
+  writeNotNull('ALIS_FIAT4', instance.alisFiat4);
+  writeNotNull('ALIS_KDV', instance.alisKdv);
+  writeNotNull('SATIS_FIAT1', instance.satisFiat1);
+  writeNotNull('SATIS_FIAT2', instance.satisFiat2);
+  writeNotNull('SATIS_FIAT3', instance.satisFiat3);
+  writeNotNull('SATIS_FIAT4', instance.satisFiat4);
+  writeNotNull('SATIS_KDV', instance.satisKdv);
+  writeNotNull('OLCU_BIRIMI', instance.olcuBirimi);
+  writeNotNull('OLCU_BIRIMI2', instance.olcuBirimi2);
+  writeNotNull('OLCU_BIRIMI3', instance.olcuBirimi3);
+  writeNotNull('OLCU_BIRIMI2_PAY', instance.olcuBirimi2Pay);
+  writeNotNull('OLCU_BIRIMI2_PAYDA', instance.olcuBirimi2Payda);
+  writeNotNull('OLCU_BIRIMI3_PAY', instance.olcuBirimi3Pay);
+  writeNotNull('OLCU_BIRIMI3_PAYDA', instance.olcuBirimi3Payda);
+  writeNotNull('BARKOD1', instance.barkod1);
+  writeNotNull('BARKOD2', instance.barkod2);
+  writeNotNull('BARKOD3', instance.barkod3);
+  writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
+  writeNotNull('KAYITTARIHI', instance.kayittarihi?.toIso8601String());
+  writeNotNull('GRUP_KODU', instance.grupKodu);
+  writeNotNull('GRUP_TANIMI', instance.grupTanimi);
+  writeNotNull('KOD1', instance.kod1);
+  writeNotNull('KOD1_TANIMI', instance.kod1Tanimi);
+  writeNotNull('KOD2', instance.kod2);
+  writeNotNull('KOD2_TANIMI', instance.kod2Tanimi);
+  writeNotNull('KOD3', instance.kod3);
+  writeNotNull('KOD3_TANIMI', instance.kod3Tanimi);
+  writeNotNull('KOD4', instance.kod4);
+  writeNotNull('KOD4_TANIMI', instance.kod4Tanimi);
+  writeNotNull('KOD5', instance.kod5);
+  writeNotNull('KOD5_TANIMI', instance.kod5Tanimi);
+  writeNotNull('SERI_CIKISLARDA_ACIK', instance.seriCikislardaAcik);
+  writeNotNull('SERI_GIRISLERDE_ACIK', instance.seriGirislerdeAcik);
+  writeNotNull('SERI_MIKTAR_KADAR_SOR', instance.seriMiktarKadarSor);
+  writeNotNull('SERI_BAKIYE_KONTROLU', instance.seriBakiyeKontrolu);
+  writeNotNull('SERI_GIRISTE_OTOMATIK_MI', instance.seriGiristeOtomatikMi);
+  writeNotNull('SERI_CIKISTA_OTOMATIK_MI', instance.seriCikistaOtomatikMi);
+  writeNotNull('DUZELTMETARIHI', instance.duzeltmetarihi?.toIso8601String());
+  writeNotNull('DUZELTMEYAPANKUL', instance.duzeltmeyapankul);
+  writeNotNull('STOK_FIYAT_LIST', instance.stokFiyatList);
+  writeNotNull('STOK_LIST', instance.stokList);
+  writeNotNull('FIAT_BIRIMI', instance.fiatBirimi);
+  writeNotNull('KILIT_GENEL', instance.kilitGenel);
+  writeNotNull('KILIT_SATICISIP', instance.kilitSaticisip);
+  writeNotNull('KILIT_MUSSIP', instance.kilitMussip);
+  writeNotNull('KILIT_ALIS', instance.kilitAlis);
+  writeNotNull('KILIT_SATIS', instance.kilitSatis);
+  writeNotNull('SUBE_KODU', instance.subeKodu);
+  writeNotNull('MUHDETAY_KODU', instance.muhdetayKodu);
+  writeNotNull('ALIS_DOV_TIP', instance.alisDovTip);
+  writeNotNull('DOV_ALIS_FIAT', instance.dovAlisFiat);
+  writeNotNull('ALIS_DOVIZ_ADI', instance.alisDovizAdi);
+  writeNotNull('SAT_DOV_TIP', instance.satDovTip);
+  writeNotNull('DOV_SATIS_FIAT', instance.dovSatisFiat);
+  writeNotNull('SATIS_DOVIZ_ADI', instance.satisDovizAdi);
+  writeNotNull('URETICI_KODU', instance.ureticiKodu);
+  writeNotNull('BIRIM_AGIRLIK', instance.birimAgirlik);
+  return val;
+}

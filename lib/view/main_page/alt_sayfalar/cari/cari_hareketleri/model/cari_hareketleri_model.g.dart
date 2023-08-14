@@ -39,31 +39,39 @@ CariHareketleriModel _$CariHareketleriModelFromJson(
       ..subeKodu = json['SUBE_KODU'] as int?;
 
 Map<String, dynamic> _$CariHareketleriModelToJson(
-        CariHareketleriModel instance) =>
-    <String, dynamic>{
-      'INCKEYNO': instance.inckeyno,
-      'CARI_KODU': instance.cariKodu,
-      'CARI_ADI': instance.cariAdi,
-      'TARIH': instance.tarih?.toIso8601String(),
-      'ACIKLAMA': instance.aciklama,
-      'BORC': instance.borc,
-      'HAREKET_ACIKLAMA': instance.hareketAciklama,
-      'HAREKET_KODU': instance.hareketKodu,
-      'BELGE_NO': instance.belgeNo,
-      'PLASIYER_KODU': instance.plasiyerKodu,
-      'PLASIYER_ACIKLAMA': instance.plasiyerAciklama,
-      'YURUYEN_BAKIYE': instance.yuruyenBakiye,
-      'DOV_YURUYEN_BAKIYE': instance.dovYuruyenBakiye,
-      'PROJE_KODU': instance.projeKodu,
-      'PROJE_ACIKLAMA': instance.projeAciklama,
-      'DOVIZ_BORC': instance.dovizBorc,
-      'DOVIZ_TURU': instance.dovizTuru,
-      'DOVIZ_ADI': instance.dovizAdi,
-      'REFKEY': instance.refkey,
-      'VADE_TARIHI': instance.vadeTarihi?.toIso8601String(),
-      'BELGE_TIPI': instance.belgeTipi,
-      'ALACAK': instance.alacak,
-      'BORDRO_MU': instance.bordroMu,
-      'DOVIZ_ALACAK': instance.dovizAlacak,
-      'SUBE_KODU': instance.subeKodu,
-    };
+    CariHareketleriModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('INCKEYNO', instance.inckeyno);
+  writeNotNull('CARI_KODU', instance.cariKodu);
+  writeNotNull('CARI_ADI', instance.cariAdi);
+  writeNotNull('TARIH', instance.tarih?.toIso8601String());
+  writeNotNull('ACIKLAMA', instance.aciklama);
+  writeNotNull('BORC', instance.borc);
+  writeNotNull('HAREKET_ACIKLAMA', instance.hareketAciklama);
+  writeNotNull('HAREKET_KODU', instance.hareketKodu);
+  writeNotNull('BELGE_NO', instance.belgeNo);
+  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
+  writeNotNull('PLASIYER_ACIKLAMA', instance.plasiyerAciklama);
+  writeNotNull('YURUYEN_BAKIYE', instance.yuruyenBakiye);
+  writeNotNull('DOV_YURUYEN_BAKIYE', instance.dovYuruyenBakiye);
+  writeNotNull('PROJE_KODU', instance.projeKodu);
+  writeNotNull('PROJE_ACIKLAMA', instance.projeAciklama);
+  writeNotNull('DOVIZ_BORC', instance.dovizBorc);
+  writeNotNull('DOVIZ_TURU', instance.dovizTuru);
+  writeNotNull('DOVIZ_ADI', instance.dovizAdi);
+  writeNotNull('REFKEY', instance.refkey);
+  writeNotNull('VADE_TARIHI', instance.vadeTarihi?.toIso8601String());
+  writeNotNull('BELGE_TIPI', instance.belgeTipi);
+  writeNotNull('ALACAK', instance.alacak);
+  writeNotNull('BORDRO_MU', instance.bordroMu);
+  writeNotNull('DOVIZ_ALACAK', instance.dovizAlacak);
+  writeNotNull('SUBE_KODU', instance.subeKodu);
+  return val;
+}

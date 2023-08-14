@@ -1,22 +1,22 @@
-import 'dart:developer';
+import "dart:developer";
 
-import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:get/get.dart';
-import 'package:kartal/kartal.dart';
-import 'package:picker/core/components/card/stok_fiyat_gecmisi_card.dart';
-import 'package:picker/core/components/textfield/custom_app_bar_text_field.dart';
-import 'package:picker/core/components/wrap/appbar_title.dart';
-import 'package:picker/view/main_page/alt_sayfalar/stok/fiyat_gecmisi/model/fiyat_gecmisi_response_model.dart';
+import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
+import "package:kartal/kartal.dart";
+import "package:picker/core/components/card/stok_fiyat_gecmisi_card.dart";
+import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_gecmisi/model/fiyat_gecmisi_response_model.dart";
 
-import '../../../../../../core/base/state/base_state.dart';
-import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart';
-import '../../../../../../core/components/slide_controller/view/slide_controller_view.dart';
-import '../../../../../../core/components/textfield/custom_text_field.dart';
-import '../../../../../../core/init/network/login/api_urls.dart';
-import '../model/fiyat_gecmisi_model.dart';
-import '../view_model/fiyat_gecmisi_view_model.dart';
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
+import "../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
+import "../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
+import "../model/fiyat_gecmisi_model.dart";
+import "../view_model/fiyat_gecmisi_view_model.dart";
 
 class FiyatGecmisiView extends StatefulWidget {
   const FiyatGecmisiView({super.key});

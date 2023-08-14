@@ -1,9 +1,9 @@
-import 'package:mobx/mobx.dart';
-import 'package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart';
+import "package:mobx/mobx.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart";
 
-import '../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart';
+import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
-part 'stok_rehberi_view_model.g.dart';
+part "stok_rehberi_view_model.g.dart";
 
 class StokRehberiViewModel = _StokRehberiViewModelBase with _$StokRehberiViewModel;
 

@@ -1,9 +1,9 @@
 
 
-import 'package:json_annotation/json_annotation.dart';
-import 'package:picker/core/base/model/base_network_mixin.dart';
+import "package:json_annotation/json_annotation.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
 
-part 'kod_degistir_model.g.dart';
+part "kod_degistir_model.g.dart";
 
 
 @JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, includeIfNull: true)

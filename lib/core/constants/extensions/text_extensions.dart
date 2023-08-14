@@ -1,6 +1,6 @@
 // an extension for change color of the text widget
 
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 extension TextExtension on Text {
   Text changeColor(Color color) {

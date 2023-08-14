@@ -1,21 +1,21 @@
-import 'dart:developer';
+import "dart:developer";
 
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import 'package:picker/core/base/model/base_network_mixin.dart';
-import 'package:picker/core/base/model/generic_response_model.dart';
+import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/model/generic_response_model.dart";
 
-import '../../../core/base/state/base_state.dart';
-import '../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart';
-import '../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../core/components/helper_widgets/custom_label_widget.dart';
-import '../../../core/init/cache/cache_manager.dart';
-import '../../../core/init/network/login/api_urls.dart';
-import '../../add_company/model/account_model.dart';
-import '../../main_page/model/main_page_model.dart';
-import '../model/companies.dart';
-import '../model/isletme_model.dart';
+import "../../../core/base/state/base_state.dart";
+import "../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
+import "../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../core/init/cache/cache_manager.dart";
+import "../../../core/init/network/login/api_urls.dart";
+import "../../add_company/model/account_model.dart";
+import "../../main_page/model/main_page_model.dart";
+import "../model/companies.dart";
+import "../model/isletme_model.dart";
 
 class EntryCompanyView extends StatefulWidget {
   const EntryCompanyView({super.key});
@@ -156,7 +156,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
           if (snapshot.connectionState == ConnectionState.done) {
             return SingleChildScrollView(
               child: Padding(
-                  padding: context.paddingNormal,
+                  padding: context.padding.normal,
                   child: Center(
                     child: Container(
                       constraints: const BoxConstraints(maxWidth: 500),
@@ -280,7 +280,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                 // ),
                               ]
                                   .map((widget) => Padding(
-                                        padding: context.onlyBottomPaddingNormal,
+                                        padding: context.padding.onlyBottomLow,
                                         child: widget,
                                       ))
                                   .toList()),

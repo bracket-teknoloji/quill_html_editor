@@ -1,8 +1,8 @@
-import 'dart:io';
+import "dart:io";
 
-import 'package:mobx/mobx.dart';
+import "package:mobx/mobx.dart";
 
-part 'pdf_viewer_view_model.g.dart';
+part "pdf_viewer_view_model.g.dart";
 
 class PdfViewerViewModel = _PdfViewerViewModelBase with _$PdfViewerViewModel;
 

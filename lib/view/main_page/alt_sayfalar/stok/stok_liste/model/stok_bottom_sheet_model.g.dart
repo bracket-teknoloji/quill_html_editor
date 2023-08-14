@@ -51,11 +51,12 @@ Map<String, dynamic> _$StokBottomSheetModelToJson(
   writeNotNull('ResimleriGoster', instance.resimleriGoster);
   writeNotNull('Siralama', instance.siralama);
   writeNotNull('SearchText', instance.searchText);
-  writeNotNull('ArrGrupKodu', instance.arrGrupKodu);
-  writeNotNull('ArrKod1', instance.arrKod1);
-  writeNotNull('ArrKod2', instance.arrKod2);
-  writeNotNull('ArrKod3', instance.arrKod3);
-  writeNotNull('ArrKod4', instance.arrKod4);
-  writeNotNull('ArrKod5', instance.arrKod5);
+  writeNotNull(
+      'ArrGrupKodu', instance.arrGrupKodu?.map((e) => e.toJson()).toList());
+  writeNotNull('ArrKod1', instance.arrKod1?.map((e) => e.toJson()).toList());
+  writeNotNull('ArrKod2', instance.arrKod2?.map((e) => e.toJson()).toList());
+  writeNotNull('ArrKod3', instance.arrKod3?.map((e) => e.toJson()).toList());
+  writeNotNull('ArrKod4', instance.arrKod4?.map((e) => e.toJson()).toList());
+  writeNotNull('ArrKod5', instance.arrKod5?.map((e) => e.toJson()).toList());
   return val;
 }

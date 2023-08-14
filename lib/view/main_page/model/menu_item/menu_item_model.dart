@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
-import '../../../../core/components/grid_tile/grid_tile.dart';
+import "../../../../core/components/grid_tile/grid_tile.dart";
 
 class MenuItemModel {
   String? title;

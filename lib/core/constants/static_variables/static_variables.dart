@@ -1,6 +1,8 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
-import '../../base/model/base_grup_kodu_model.dart';
+import "../../../view/add_company/model/account_model.dart";
+import "../../base/model/base_grup_kodu_model.dart";
+import "../../init/cache/cache_manager.dart";
 
 
 class StaticVariables {
@@ -13,6 +15,8 @@ class StaticVariables {
   }
 
   static List<BaseGrupKoduModel> grupKodlari = [];
+
+  static String get getSiparisString => "${CacheManager.getVerifiedUser.account?.email ?? ""}-${AccountModel.instance.aktifVeritabani ?? ""}-${AccountModel.instance.aktifSubeKodu ?? ""}";
 
   //* Cari Kartı
   bool get isCariKartiValid => (cariKartiGenelFormKey.currentState?.validate() ?? false) || (cariKartiDigerFormKey.currentState?.validate() ?? false);

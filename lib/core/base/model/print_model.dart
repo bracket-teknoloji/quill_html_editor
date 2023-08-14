@@ -1,8 +1,8 @@
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-import '../view/pdf_viewer/model/pdf_viewer_model.dart';
-import 'base_network_mixin.dart';
-part 'print_model.g.dart';
+import "../view/pdf_viewer/model/pdf_viewer_model.dart";
+import "base_network_mixin.dart";
+part "print_model.g.dart";
 
 @JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake)
 class PrintModel with NetworkManagerMixin{

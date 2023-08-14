@@ -1,8 +1,8 @@
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-import '../../../model/base_network_mixin.dart';
+import "../../../model/base_network_mixin.dart";
 
-part 'pdf_viewer_model.g.dart';
+part "pdf_viewer_model.g.dart";
 
 @JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, createFactory: true, includeIfNull: false, explicitToJson: true)
 class PdfModel with NetworkManagerMixin {

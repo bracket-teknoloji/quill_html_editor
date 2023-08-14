@@ -1,21 +1,21 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:get/get.dart';
-import 'package:kartal/kartal.dart';
+import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 
-import '../../../../../../core/base/model/base_edit_model.dart';
-import '../../../../../../core/base/state/base_state.dart';
-import '../../../../../../core/components/wrap/appbar_title.dart';
-import '../../../../../../core/constants/enum/base_edit_enum.dart';
-import '../../../../../../core/init/network/login/api_urls.dart';
-import '../../../cari/cari_listesi/model/cari_listesi_model.dart';
-import '../../siparisler/model/siparis_edit_reuqest_model.dart';
-import '../alt_sayfalar/base_siparisler_diger/view/base_siparisler_diger_view.dart';
-import '../alt_sayfalar/base_siparisler_genel/view/base_siparisler_genel_view.dart';
-import '../alt_sayfalar/base_siparisler_kalemler/view/base_siparis_kalemler_view.dart';
-import '../alt_sayfalar/base_siparisler_toplamlar/view/base_siparis_toplamlar_view.dart';
-import '../model/base_siparis_edit_model.dart';
-import '../view_model/base_siparis_editing_view_model.dart';
+import "../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
+import "../../../cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../siparisler/model/siparis_edit_reuqest_model.dart";
+import "../alt_sayfalar/base_siparisler_diger/view/base_siparisler_diger_view.dart";
+import "../alt_sayfalar/base_siparisler_genel/view/base_siparisler_genel_view.dart";
+import "../alt_sayfalar/base_siparisler_kalemler/view/base_siparis_kalemler_view.dart";
+import "../alt_sayfalar/base_siparisler_toplamlar/view/base_siparis_toplamlar_view.dart";
+import "../model/base_siparis_edit_model.dart";
+import "../view_model/base_siparis_editing_view_model.dart";
 
 class BaseSiparisEditingView extends StatefulWidget {
   final String? appBarTitle;

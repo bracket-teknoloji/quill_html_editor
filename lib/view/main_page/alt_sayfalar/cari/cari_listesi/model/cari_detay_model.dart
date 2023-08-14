@@ -1,8 +1,8 @@
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-import '../../../../../../core/base/model/base_network_mixin.dart';
+import "../../../../../../core/base/model/base_network_mixin.dart";
 
-part 'cari_detay_model.g.dart';
+part "cari_detay_model.g.dart";
 
 @JsonSerializable(includeIfNull: false, createToJson: true, fieldRename: FieldRename.screamingSnake)
 class 
@@ -46,13 +46,13 @@ CariDetayModel with NetworkManagerMixin {
   double? irsaliyeRiskO;
   double? riskLimiti;
   double? teminatTutari;
-  @JsonKey(name: 'IrtibatList')
+  @JsonKey(name: "IrtibatList")
   List<IrtibatList>? irtibatList;
-  @JsonKey(name: 'BankaList')
+  @JsonKey(name: "BankaList")
   List<BankaList>? bankaList;
-  @JsonKey(name: 'CariList')
+  @JsonKey(name: "CariList")
   List<CariList>? cariList;
-  @JsonKey(name: 'BakiyeList')
+  @JsonKey(name: "BakiyeList")
   List<BakiyeList>? bakiyeList;
 
   factory CariDetayModel.fromJson(Map<String, dynamic> json) => _$CariDetayModelFromJson(json);

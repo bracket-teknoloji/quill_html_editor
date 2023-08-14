@@ -1,8 +1,8 @@
-import 'package:mobx/mobx.dart';
+import "package:mobx/mobx.dart";
 
-import '../../../../cari_listesi/model/cari_listesi_model.dart';
+import "../../../../cari_listesi/model/cari_listesi_model.dart";
 
-part 'base_cari_genel_edit_view_model.g.dart';
+part "base_cari_genel_edit_view_model.g.dart";
 
 class BaseCariGenelEditViewModel = _BaseCariGenelEditViewModelBase with _$BaseCariGenelEditViewModel;
 

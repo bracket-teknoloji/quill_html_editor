@@ -1,22 +1,22 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:get/get.dart';
-import 'package:kartal/kartal.dart';
+import "package:flutter/material.dart";
+import "package:flutter/rendering.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 
-import '../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart';
-import '../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart';
-import '../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../components/floating_action_button/custom_floating_action_button.dart';
-import '../../../../components/textfield/custom_text_field.dart';
-import '../../../../constants/enum/base_edit_enum.dart';
-import '../../../../constants/extensions/number_extensions.dart';
-import '../../../../constants/ui_helper/ui_helper.dart';
-import '../../../../init/network/login/api_urls.dart';
-import '../../../model/base_edit_model.dart';
-import '../../../model/generic_response_model.dart';
-import '../../../state/base_state.dart';
-import '../view_model/stok_rehberi_view_model.dart';
+import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+import "../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../components/floating_action_button/custom_floating_action_button.dart";
+import "../../../../components/textfield/custom_text_field.dart";
+import "../../../../constants/enum/base_edit_enum.dart";
+import "../../../../constants/extensions/number_extensions.dart";
+import "../../../../constants/ui_helper/ui_helper.dart";
+import "../../../../init/network/login/api_urls.dart";
+import "../../../model/base_edit_model.dart";
+import "../../../model/generic_response_model.dart";
+import "../../../state/base_state.dart";
+import "../view_model/stok_rehberi_view_model.dart";
 
 class StokRehberiView extends StatefulWidget {
   final String? searchText;
@@ -161,7 +161,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                             return;
                                           }
                                         }
-                                        var result = Get.toNamed("/kalemEkle", arguments: stok);
+                                        await Get.toNamed("/kalemEkle", arguments: stok);
                                       },
                                       title: Text(stok?.stokKodu ?? "", textAlign: TextAlign.start, style: const TextStyle(fontWeight: FontWeight.bold)),
                                       subtitle: Column(

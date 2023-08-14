@@ -476,12 +476,20 @@ BakiyeModel _$BakiyeModelFromJson(Map<String, dynamic> json) => BakiyeModel()
   ..bakiye = (json['BAKIYE'] as num?)?.toDouble()
   ..dovizAdi = json['DOVIZ_ADI'] as String?;
 
-Map<String, dynamic> _$BakiyeModelToJson(BakiyeModel instance) =>
-    <String, dynamic>{
-      'CARI_KODU': instance.cariKodu,
-      'DOVIZ_TIPI': instance.dovizTipi,
-      'BORC_TOPLAMI': instance.borcToplami,
-      'ALACAK_TOPLAMI': instance.alacakToplami,
-      'BAKIYE': instance.bakiye,
-      'DOVIZ_ADI': instance.dovizAdi,
-    };
+Map<String, dynamic> _$BakiyeModelToJson(BakiyeModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('CARI_KODU', instance.cariKodu);
+  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
+  writeNotNull('BORC_TOPLAMI', instance.borcToplami);
+  writeNotNull('ALACAK_TOPLAMI', instance.alacakToplami);
+  writeNotNull('BAKIYE', instance.bakiye);
+  writeNotNull('DOVIZ_ADI', instance.dovizAdi);
+  return val;
+}

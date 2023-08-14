@@ -1,5 +1,5 @@
-import 'package:mobx/mobx.dart';
-part 'islemler_menu_item_constants_view_model.g.dart';
+import "package:mobx/mobx.dart";
+part "islemler_menu_item_constants_view_model.g.dart";
 
 class IslemlerMenuItemConstantsViewModel = _IslemlerMenuItemConstantsViewModelBase with _$IslemlerMenuItemConstantsViewModel;
 

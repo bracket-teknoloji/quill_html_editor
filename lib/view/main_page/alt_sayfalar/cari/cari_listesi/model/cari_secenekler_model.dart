@@ -1,4 +1,4 @@
-import '../../../../../../core/constants/enum/base_edit_enum.dart';
+import "../../../../../../core/constants/enum/base_edit_enum.dart";
 
 class CariSeceneklerModel {
   String? path;

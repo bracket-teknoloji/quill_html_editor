@@ -1,6 +1,6 @@
-import 'package:mobx/mobx.dart';
+import "package:mobx/mobx.dart";
 
-part 'cari_listesi_view_model.g.dart';
+part "cari_listesi_view_model.g.dart";
 
 class CariListesiViewModel = _CariListesiViewModelBase with _$CariListesiViewModel;
 

@@ -1,29 +1,29 @@
-import 'dart:convert';
+import "dart:convert";
 
-import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:get/get.dart';
-import 'package:kartal/kartal.dart';
-import 'package:picker/core/components/slide_controller/view/slide_controller_view.dart';
+import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:flutter_slidable/flutter_slidable.dart";
+import "package:get/get.dart";
+import "package:kartal/kartal.dart";
+import "package:picker/core/components/slide_controller/view/slide_controller_view.dart";
 
-import '../../../../../../core/base/state/base_state.dart';
-import '../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart';
-import '../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart';
-import '../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../../../core/components/helper_widgets/custom_label_widget.dart';
-import '../../../../../../core/components/textfield/custom_app_bar_text_field.dart';
-import '../../../../../../core/components/textfield/custom_text_field.dart';
-import '../../../../../../core/components/wrap/appbar_title.dart';
-import '../../../../../../core/constants/extensions/date_time_extensions.dart';
-import '../../../../../../core/constants/extensions/number_extensions.dart';
-import '../../../../../../core/constants/extensions/widget_extensions.dart';
-import '../../../../../../core/constants/ui_helper/ui_helper.dart';
-import '../../../../../../core/init/network/login/api_urls.dart';
-import '../../../cari/cari_listesi/model/cari_listesi_model.dart';
-import '../../stok_liste/model/stok_listesi_model.dart';
-import '../model/stok_hareketleri_model.dart';
-import '../view_model/stok_hareketleri_view_model.dart';
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
+import "../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart";
+import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
+import "../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
+import "../../../cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../stok_liste/model/stok_listesi_model.dart";
+import "../model/stok_hareketleri_model.dart";
+import "../view_model/stok_hareketleri_view_model.dart";
 
 class StokHareketleriView extends StatefulWidget {
   final StokListesiModel? model;
@@ -101,7 +101,6 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                 icon: Icons.filter_alt_outlined,
                 child: const Text("Filtrele"),
                 onPressed: () async {
-                  //TODO! viewModel.arrHareketTuru bağla
                   await bottomSheetDialogManager.showBottomSheetDialog(context,
                       title: "Filtrele",
                       body: Center(
@@ -269,7 +268,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                               icon: Icons.delete_forever,
                               backgroundColor: theme.cardColor,
                               foregroundColor: theme.colorScheme.primary,
-                              label: 'Sil',
+                              label: "Sil",
                             ).yetkiVarMi(yetkiController.stokHareketleriStokSilme);
                             if (slidableAction != const SizedBox()) {
                               children2.add(slidableAction);
@@ -286,7 +285,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                               icon: Icons.directions_walk_outlined,
                               backgroundColor: theme.cardColor,
                               foregroundColor: theme.colorScheme.primary,
-                              label: 'Hareket\nDetayı',
+                              label: "Hareket\nDetayı",
                             ));
                           }
                           return Slidable(
@@ -323,7 +322,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                               Expanded(
                                                 child: Wrap(
                                                   children: [
-                                                    Text(model.stharTarih.toDateString()),
+                                                    Text(model.stharTarih.toDateString),
                                                     model.dovizTipi == 1 ? const Badge(label: Text("Dövizli")) : Container(),
                                                   ],
                                                 ),

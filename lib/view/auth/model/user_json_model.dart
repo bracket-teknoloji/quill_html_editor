@@ -1,8 +1,8 @@
-import 'dart:convert';
+import "dart:convert";
 
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-part 'user_json_model.g.dart';
+part "user_json_model.g.dart";
 
 @JsonSerializable(createToJson: true)
 class UserJson {

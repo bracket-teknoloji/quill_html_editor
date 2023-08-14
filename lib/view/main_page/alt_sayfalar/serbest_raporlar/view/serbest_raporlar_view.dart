@@ -1,26 +1,26 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:get/get.dart';
-import 'package:picker/core/base/model/base_grup_kodu_model.dart';
-import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import 'package:picker/core/components/textfield/custom_text_field.dart';
-import 'package:picker/core/constants/extensions/date_time_extensions.dart';
-import 'package:picker/core/constants/extensions/list_extensions.dart';
-import 'package:picker/core/constants/extensions/number_extensions.dart';
-import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
-import 'package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart';
-import 'package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart';
-import 'package:picker/view/main_page/model/param_model.dart';
+import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
+import "package:picker/core/base/model/base_grup_kodu_model.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+import "package:picker/view/main_page/model/param_model.dart";
 
-import '../../../../../core/base/state/base_state.dart';
-import '../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart';
-import '../../../../../core/constants/ui_helper/ui_helper.dart';
-import '../../../../../core/init/cache/cache_manager.dart';
-import '../../../../../core/init/network/login/api_urls.dart';
-import '../model/serbest_rapor_response_model.dart';
-import '../view_model/serbest_raporlar_view_model.dart';
+import "../../../../../core/base/state/base_state.dart";
+import "../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
+import "../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../core/init/cache/cache_manager.dart";
+import "../../../../../core/init/network/login/api_urls.dart";
+import "../model/serbest_rapor_response_model.dart";
+import "../view_model/serbest_raporlar_view_model.dart";
 
 class SerbestRaporlarView extends StatefulWidget {
   final NetFectDizaynList? dizaynList;
@@ -34,7 +34,6 @@ class SerbestRaporlarView extends StatefulWidget {
 
 class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
   SerbestRaporlarViewModel viewModel = SerbestRaporlarViewModel();
-
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +63,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                                   onTap: () async {
                                     DateTime? result = await dialogManager.showDateTimePicker();
                                     if (result != null) {
-                                      viewModel.changeDicParams(e.adi ?? "", result.toDateString());
+                                      viewModel.changeDicParams(e.adi ?? "", result.toDateString);
                                     }
                                   });
                             } else if (e.rehberTipi != null) {
@@ -111,7 +110,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
               return ElevatedButton(
                   onPressed: () {
                     //😳 Düzelt kanki
-                    if (viewModel.serbestRaporResponseModelList?.where((element) => element.bosGecilebilir == false).any((element) => viewModel.dicParams[element.adi ?? ""] == null) ??false) {
+                    if (viewModel.serbestRaporResponseModelList?.where((element) => element.bosGecilebilir == false).any((element) => viewModel.dicParams[element.adi ?? ""] == null) ?? false) {
                       dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
                     } else {
                       viewModel.setFuture();

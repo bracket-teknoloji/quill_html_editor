@@ -1,9 +1,9 @@
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:json_annotation/json_annotation.dart';
+import "package:hive_flutter/hive_flutter.dart";
+import "package:json_annotation/json_annotation.dart";
 
-import '../../../../../../core/base/model/base_network_mixin.dart';
+import "../../../../../../core/base/model/base_network_mixin.dart";
 
-part 'cari_listesi_model.g.dart';
+part "cari_listesi_model.g.dart";
 
 
 @HiveType(typeId: 195)
@@ -50,7 +50,7 @@ class CariListesiModel with NetworkManagerMixin {
   @HiveField(12)
   double? borcToplami;
   @HiveField(13)
-  @JsonKey(name: 'BakiyeList', includeFromJson: false)
+  @JsonKey(name: "BakiyeList", includeFromJson: false)
   @HiveField(14)
   List? bakiyeList;
   @HiveField(15)

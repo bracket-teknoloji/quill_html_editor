@@ -1,21 +1,21 @@
-import 'dart:convert';
+import "dart:convert";
 
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:kartal/kartal.dart';
+import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 
-import '../../../../../../../../core/base/model/base_empty_model.dart';
-import '../../../../../../../../core/base/state/base_state.dart';
-import '../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../../../../../core/components/helper_widgets/custom_label_widget.dart';
-import '../../../../../../../../core/components/textfield/custom_text_field.dart';
-import '../../../../../../../../core/constants/enum/base_edit_enum.dart';
-import '../../../../../../../../core/constants/extensions/number_extensions.dart';
-import '../../../../../../../../core/constants/ui_helper/ui_helper.dart';
-import '../../../../../../../../core/init/network/login/api_urls.dart';
-import '../../../../stok_liste/model/stok_listesi_model.dart';
-import '../../../model/stok_detay_model.dart';
-import '../view_model/base_stok_edit_fiyat_view_model.dart';
+import "../../../../../../../../core/base/model/base_empty_model.dart";
+import "../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../stok_liste/model/stok_listesi_model.dart";
+import "../../../model/stok_detay_model.dart";
+import "../view_model/base_stok_edit_fiyat_view_model.dart";
 
 class BaseStokEditFiyatView extends StatefulWidget {
   final BaseEditEnum? model;

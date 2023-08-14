@@ -1,24 +1,24 @@
-import 'dart:convert';
-import 'dart:io';
+import "dart:convert";
+import "dart:io";
 
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:open_file_plus/open_file_plus.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:picker/core/constants/extensions/date_time_extensions.dart';
-import 'package:share_plus/share_plus.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+import "package:flutter/material.dart";
+import "package:flutter/services.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:open_file_plus/open_file_plus.dart";
+import "package:path_provider/path_provider.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:share_plus/share_plus.dart";
+import "package:syncfusion_flutter_pdfviewer/pdfviewer.dart";
 
-import '../../../../../view/main_page/model/param_model.dart';
-import '../../../../components/appbar/appbar_prefered_sized_bottom.dart';
-import '../../../../components/button/elevated_buttons/bottom_appbar_button.dart';
-import '../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../init/cache/cache_manager.dart';
-import '../../../model/base_pdf_model.dart';
-import '../../../state/base_state.dart';
-import '../model/pdf_viewer_model.dart';
-import '../view_model/pdf_viewer_view_model.dart';
+import "../../../../../view/main_page/model/param_model.dart";
+import "../../../../components/appbar/appbar_prefered_sized_bottom.dart";
+import "../../../../components/button/elevated_buttons/bottom_appbar_button.dart";
+import "../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../init/cache/cache_manager.dart";
+import "../../../model/base_pdf_model.dart";
+import "../../../state/base_state.dart";
+import "../model/pdf_viewer_model.dart";
+import "../view_model/pdf_viewer_view_model.dart";
 
 class PDFViewerView extends StatefulWidget {
   final String title;
@@ -200,7 +200,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
   Future<File?> get getFile async {
     final appStorage = await getApplicationDocumentsDirectory();
     //create a folder in documents/picker as name picker
-    await Directory('${appStorage.path}/picker/pdf').create(recursive: true);
+    await Directory("${appStorage.path}/picker/pdf").create(recursive: true);
     final file = File(
         '${appStorage.path}/picker/pdf/${widget.pdfData?.raporOzelKod}${widget.pdfData?.dicParams?.cariKodu ?? widget.pdfData?.dicParams?.stokKodu ?? ""}${DateTime.now().toDateTimeHypenString()}.${pdfFile?.uzanti ?? "pdf"}');
     final fileWriter = file.openSync(mode: FileMode.write);
@@ -225,7 +225,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
             pdfViewerController.clearSelection();
             overlayEntry!.remove();
           },
-          child: const Text('Kopyala'),
+          child: const Text("Kopyala"),
         ),
       ),
     );

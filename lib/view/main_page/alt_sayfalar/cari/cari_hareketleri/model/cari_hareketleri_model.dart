@@ -1,8 +1,8 @@
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-import '../../../../../../core/base/model/base_network_mixin.dart';
+import "../../../../../../core/base/model/base_network_mixin.dart";
 
-part 'cari_hareketleri_model.g.dart';
+part "cari_hareketleri_model.g.dart";
 
 @JsonSerializable(fieldRename: FieldRename.screamingSnake, createToJson: true)
 class CariHareketleriModel with NetworkManagerMixin {
@@ -63,5 +63,5 @@ class CariHareketleriModel with NetworkManagerMixin {
   toString() => toJson().toString();
 
   @override
-  operator ==(o) => o is CariHareketleriModel && o.inckeyno == inckeyno;
+  operator ==(other) => other is CariHareketleriModel && other.inckeyno == inckeyno;
 }

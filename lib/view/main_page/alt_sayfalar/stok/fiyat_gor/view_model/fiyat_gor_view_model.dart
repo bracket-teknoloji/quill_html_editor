@@ -1,9 +1,9 @@
-import 'package:mobx/mobx.dart';
-import 'package:picker/core/constants/extensions/number_extensions.dart';
+import "package:mobx/mobx.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
 
-import '../model/fiyat_gor_model.dart';
+import "../model/fiyat_gor_model.dart";
 
-part 'fiyat_gor_view_model.g.dart';
+part "fiyat_gor_view_model.g.dart";
 
 class FiyatGorViewModel = _FiyatGorViewModelBase with _$FiyatGorViewModel;
 

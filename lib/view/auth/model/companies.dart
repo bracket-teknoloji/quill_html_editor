@@ -1,8 +1,8 @@
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-import '../../../core/base/model/base_network_mixin.dart';
+import "../../../core/base/model/base_network_mixin.dart";
 
-part 'companies.g.dart';
+part "companies.g.dart";
 
 @JsonSerializable(createToJson: true)
 class CompanyModel with NetworkManagerMixin {

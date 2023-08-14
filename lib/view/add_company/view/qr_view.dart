@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:kartal/kartal.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
+import "package:flutter/material.dart";
+import "package:kartal/kartal.dart";
+import "package:permission_handler/permission_handler.dart";
+import "package:qr_code_scanner/qr_code_scanner.dart";
 
-import '../../../core/base/state/base_state.dart';
-import '../../../core/constants/ui_helper/ui_helper.dart';
+import "../../../core/base/state/base_state.dart";
+import "../../../core/constants/ui_helper/ui_helper.dart";
 
 class QRScannerView extends StatefulWidget {
   const QRScannerView({super.key});
@@ -14,7 +14,7 @@ class QRScannerView extends StatefulWidget {
 }
 
 class _QRScannerState extends BaseState<QRScannerView> {
-  final qrKey = GlobalKey(debugLabel: 'QR');
+  final qrKey = GlobalKey(debugLabel: "QR");
   QRViewController? qrViewController;
   Barcode? barcode;
   String result = "Scan a code";
@@ -90,7 +90,7 @@ class _QRScannerState extends BaseState<QRScannerView> {
         alignment: Alignment.bottomCenter,
         padding: UIHelper.highPaddingHorizontal,
         margin: UIHelper.highPaddingVertical,
-        child: Text(barcode?.code ?? 'QR Kodu Okutunuz', style: context.general.appTheme.textTheme.titleLarge!.copyWith(color: Colors.white)),
+        child: Text(barcode?.code ?? "QR Kodu Okutunuz", style: context.general.appTheme.textTheme.titleLarge!.copyWith(color: Colors.white)),
       ),
     );
   }

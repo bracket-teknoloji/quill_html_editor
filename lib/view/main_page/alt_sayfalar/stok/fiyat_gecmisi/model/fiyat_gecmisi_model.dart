@@ -2,11 +2,11 @@
 
 
 
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-import '../../../../../../core/base/model/base_network_mixin.dart';
+import "../../../../../../core/base/model/base_network_mixin.dart";
 
-part 'fiyat_gecmisi_model.g.dart';
+part "fiyat_gecmisi_model.g.dart";
 
 @JsonSerializable( createToJson: true, includeIfNull: false, fieldRename: FieldRename.pascal)
 class FiyatGecmisiModel with NetworkManagerMixin{

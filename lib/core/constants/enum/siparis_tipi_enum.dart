@@ -1,6 +1,6 @@
-import 'package:hive_flutter/hive_flutter.dart';
+import "package:hive_flutter/hive_flutter.dart";
 
-part 'siparis_tipi_enum.g.dart';
+part "siparis_tipi_enum.g.dart";
 
 @HiveType(typeId: 79)
 enum SiparisTipiEnum {

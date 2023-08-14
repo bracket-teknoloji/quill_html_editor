@@ -1,8 +1,8 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:picker/core/base/model/base_network_mixin.dart';
-import 'package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/kalem_list_model.dart';
+import "package:json_annotation/json_annotation.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/kalem_list_model.dart";
 
-part 'siparisler_model.g.dart';
+part "siparisler_model.g.dart";
 
 @JsonSerializable(createToJson: true, includeIfNull: true, fieldRename: FieldRename.screamingSnake)
 class SiparislerModel with NetworkManagerMixin {

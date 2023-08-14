@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import "package:flutter/material.dart";
+import "package:get/get.dart";
 
-import '../../../../constants/extensions/date_time_extensions.dart';
-import '../../../../constants/ui_helper/duration_helper.dart';
-import '../../../../constants/ui_helper/ui_helper.dart';
-import '../../../textfield/custom_text_field.dart';
-import '../view_model/rapor_filtre_date_time_bottom_sheet_view_model.dart';
+import "../../../../constants/extensions/date_time_extensions.dart";
+import "../../../../constants/ui_helper/duration_helper.dart";
+import "../../../../constants/ui_helper/ui_helper.dart";
+import "../../../textfield/custom_text_field.dart";
+import "../view_model/rapor_filtre_date_time_bottom_sheet_view_model.dart";
 
 class RaporFiltreDateTimeBottomSheetView extends StatefulWidget {
   final TextEditingController baslangicTarihiController;
@@ -30,7 +30,8 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
     scrollController = ScrollController();
     Future.delayed(Duration.zero, () async {
       await scrollController?.animateTo(30, duration: DurationHelper.durationLow, curve: Curves.easeIn);
-      await scrollController?.animateTo((scrollController?.positions.isNotEmpty ??false)? (scrollController?.position.minScrollExtent??0) : 0, duration: DurationHelper.durationLow, curve: Curves.easeInOut);
+      await scrollController?.animateTo((scrollController?.positions.isNotEmpty ?? false) ? (scrollController?.position.minScrollExtent ?? 0) : 0,
+          duration: DurationHelper.durationLow, curve: Curves.easeInOut);
     });
     super.initState();
   }
@@ -83,8 +84,8 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
           ),
         ).paddingAll(UIHelper.lowSize),
         Row(
-                children: children2.map((e) => Expanded(child: e)).toList(),
-              )
+          children: children2.map((e) => Expanded(child: e)).toList(),
+        )
       ],
     );
   }
@@ -97,10 +98,10 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
           : (widget.bitisTarihiController.text != "" ? widget.bitisTarihiController.text.toDateTimeDDMMYYYY() : DateTime.now()),
       firstDate: (isBaslangic ? DateTime(2000) : (widget.baslangicTarihiController.text != "" ? widget.baslangicTarihiController.text.toDateTimeDDMMYYYY() : DateTime.now())),
       lastDate: (isBaslangic ? (widget.bitisTarihiController.text != "" ? widget.bitisTarihiController.text.toDateTimeDDMMYYYY() : DateTime.now()) : DateTime.now()),
-      // currentDate: DateFormat("dd.MM.yyyy").parse(baslangicTarihiController?.text ?? DateTime.now().toDateString()),
+      // currentDate: DateFormat("dd.MM.yyyy").parse(baslangicTarihiController?.text ?? DateTime.now().toDateString),
     );
     if (result != null) {
-      isBaslangic ? widget.baslangicTarihiController.text = result.toDateString() : widget.bitisTarihiController.text = result.toDateString();
+      isBaslangic ? widget.baslangicTarihiController.text = result.toDateString : widget.bitisTarihiController.text = result.toDateString;
       viewModel.resetGroupValue();
     }
     return isBaslangic ? widget.baslangicOnTap?.call() : widget.bitisOnTap?.call();

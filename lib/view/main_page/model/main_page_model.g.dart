@@ -71,13 +71,21 @@ MainPageModel _$MainPageModelFromJson(Map<String, dynamic> json) =>
       ..paramModel =
           ParamModel.fromJson(json['ParamModel'] as Map<String, dynamic>);
 
-Map<String, dynamic> _$MainPageModelToJson(MainPageModel instance) =>
-    <String, dynamic>{
-      'UserModel': instance.userModel,
-      'ServiceVersion': instance.serviceVersion,
-      'LangVersion': instance.langVersion,
-      'SirketModel': instance.sirketModel,
-      'LangModel': instance.langModel,
-      'MenuList': instance.menuList,
-      'ParamModel': instance.paramModel,
-    };
+Map<String, dynamic> _$MainPageModelToJson(MainPageModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('UserModel', instance.userModel?.toJson());
+  writeNotNull('ServiceVersion', instance.serviceVersion);
+  writeNotNull('LangVersion', instance.langVersion);
+  writeNotNull('SirketModel', instance.sirketModel?.toJson());
+  writeNotNull('LangModel', instance.langModel?.toJson());
+  writeNotNull('MenuList', instance.menuList);
+  writeNotNull('ParamModel', instance.paramModel?.toJson());
+  return val;
+}

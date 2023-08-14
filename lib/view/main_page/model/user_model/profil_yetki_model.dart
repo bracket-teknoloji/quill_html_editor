@@ -1,8 +1,8 @@
-import 'dart:convert';
+import "dart:convert";
 
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-part 'profil_yetki_model.g.dart';
+part "profil_yetki_model.g.dart";
 
 @JsonSerializable(createToJson: true, createFactory: true)
 class ProfilYetkiModel {

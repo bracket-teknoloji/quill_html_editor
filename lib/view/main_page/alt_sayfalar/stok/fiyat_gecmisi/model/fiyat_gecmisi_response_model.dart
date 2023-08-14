@@ -1,10 +1,10 @@
 
 
-import 'package:json_annotation/json_annotation.dart';
-import 'package:picker/core/base/model/base_network_mixin.dart';
+import "package:json_annotation/json_annotation.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
 
 
-part 'fiyat_gecmisi_response_model.g.dart';
+part "fiyat_gecmisi_response_model.g.dart";
 
 
 @JsonSerializable( createToJson: true, includeIfNull: false, fieldRename: FieldRename.screamingSnake)

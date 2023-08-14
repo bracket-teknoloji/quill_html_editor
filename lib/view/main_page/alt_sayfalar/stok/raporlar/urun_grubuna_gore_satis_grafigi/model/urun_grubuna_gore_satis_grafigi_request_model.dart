@@ -1,11 +1,11 @@
 
 
 
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-import '../../../../../../../core/base/model/base_network_mixin.dart';
+import "../../../../../../../core/base/model/base_network_mixin.dart";
 
-part 'urun_grubuna_gore_satis_grafigi_request_model.g.dart';
+part "urun_grubuna_gore_satis_grafigi_request_model.g.dart";
 
 @JsonSerializable(fieldRename: FieldRename.pascal, explicitToJson: true, createToJson: true, includeIfNull: false)
 class UrunGrubunaGoreSatisGrafigiRequestModel with NetworkManagerMixin{

@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
-import 'app_theme.dart';
+import "app_theme.dart";
 
 class AppThemeLight extends AppTheme {
   static AppThemeLight? _instance;

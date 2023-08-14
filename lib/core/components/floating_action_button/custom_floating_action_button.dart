@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
-import '../../constants/ui_helper/duration_helper.dart';
+import "../../constants/ui_helper/duration_helper.dart";
 
 class CustomFloatingActionButton extends StatelessWidget {
   const CustomFloatingActionButton({

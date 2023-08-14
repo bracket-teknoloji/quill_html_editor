@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import "package:flutter/material.dart";
+import "package:get/get.dart";
 
-import '../../base/state/base_state.dart';
-import '../../constants/extensions/list_extensions.dart';
-import '../button/elevated_buttons/bottom_appbar_button.dart';
+import "../../base/state/base_state.dart";
+import "../../constants/extensions/list_extensions.dart";
+import "../button/elevated_buttons/bottom_appbar_button.dart";
 
 class AppBarPreferedSizedBottom extends StatefulWidget {
   final List<AppBarButton?> children;

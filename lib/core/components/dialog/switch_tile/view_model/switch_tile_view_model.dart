@@ -1,6 +1,6 @@
-import 'package:mobx/mobx.dart';
+import "package:mobx/mobx.dart";
 
-part 'switch_tile_view_model.g.dart';
+part "switch_tile_view_model.g.dart";
 
 class DialogSwitchTileViewModel = DialogSwitchTileViewModelBase with _$DialogSwitchTileViewModel;
 

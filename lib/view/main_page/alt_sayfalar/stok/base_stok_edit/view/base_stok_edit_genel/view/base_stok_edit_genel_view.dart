@@ -1,37 +1,37 @@
-import 'dart:convert';
-import 'dart:developer';
-import 'dart:io';
-import 'dart:typed_data';
-import 'dart:ui' as ui;
+import "dart:convert";
+import "dart:developer";
+import "dart:io";
+import "dart:typed_data";
+import "dart:ui" as ui;
 
-import 'package:flutter/material.dart';
-import 'package:flutter_image_compress/flutter_image_compress.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:kartal/kartal.dart';
+import "package:flutter/material.dart";
+import "package:flutter_image_compress/flutter_image_compress.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
+import "package:image_picker/image_picker.dart";
+import "package:kartal/kartal.dart";
 
-import '../../../../../../../../core/base/model/base_edit_siradaki_kod_model.dart';
-import '../../../../../../../../core/base/model/base_grup_kodu_model.dart';
-import '../../../../../../../../core/base/model/generic_response_model.dart';
-import '../../../../../../../../core/base/state/base_state.dart';
-import '../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../../../../../../core/components/helper_widgets/custom_label_widget.dart';
-import '../../../../../../../../core/components/textfield/custom_text_field.dart';
-import '../../../../../../../../core/constants/enum/base_edit_enum.dart';
-import '../../../../../../../../core/constants/extensions/number_extensions.dart';
-import '../../../../../../../../core/constants/static_variables/static_variables.dart';
-import '../../../../../../../../core/constants/ui_helper/ui_helper.dart';
-import '../../../../../../../../core/init/cache/cache_manager.dart';
-import '../../../../../../../../core/init/network/login/api_urls.dart';
-import '../../../../../../../auth/model/isletme_model.dart';
-import '../../../../../../model/main_page_model.dart';
-import '../../../../../../model/param_model.dart';
-import '../../../../stok_liste/model/stok_listesi_model.dart';
-import '../../../model/stok_detay_model.dart';
-import '../../../model/stok_muhasebe_kodu_model.dart';
-import '../../../model/stok_olcu_birimleri_model.dart';
-import '../view_model/base_stok_edit_genel_view_model.dart';
+import "../../../../../../../../core/base/model/base_edit_siradaki_kod_model.dart";
+import "../../../../../../../../core/base/model/base_grup_kodu_model.dart";
+import "../../../../../../../../core/base/model/generic_response_model.dart";
+import "../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../core/constants/static_variables/static_variables.dart";
+import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../../../core/init/cache/cache_manager.dart";
+import "../../../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../../../../auth/model/isletme_model.dart";
+import "../../../../../../model/main_page_model.dart";
+import "../../../../../../model/param_model.dart";
+import "../../../../stok_liste/model/stok_listesi_model.dart";
+import "../../../model/stok_detay_model.dart";
+import "../../../model/stok_muhasebe_kodu_model.dart";
+import "../../../model/stok_olcu_birimleri_model.dart";
+import "../view_model/base_stok_edit_genel_view_model.dart";
 
 class BaseStokEditGenelView extends StatefulWidget {
   final BaseEditEnum? model;
@@ -657,14 +657,14 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
 
   Future<String> bitmapToBase64(ui.Image? bitmap) async {
     if (bitmap == null) {
-      return '';
+      return "";
     }
     try {
       final ByteData? byteData = await bitmap.toByteData(format: ui.ImageByteFormat.png);
       final Uint8List pngBytes = byteData?.buffer.asUint8List() ?? Uint8List(0);
       return base64Encode(pngBytes);
     } catch (e) {
-      return '';
+      return "";
     }
   }
 }

@@ -1,28 +1,31 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:picker/core/base/model/delete_fatura_model.dart';
-import 'package:picker/core/base/state/base_state.dart';
-import 'package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import 'package:picker/core/constants/extensions/date_time_extensions.dart';
-import 'package:picker/core/constants/extensions/list_extensions.dart';
-import 'package:picker/core/constants/extensions/model_extensions.dart';
-import 'package:picker/core/constants/extensions/number_extensions.dart';
-import 'package:picker/core/constants/extensions/widget_extensions.dart';
-import 'package:picker/core/constants/ui_helper/ui_helper.dart';
-import 'package:picker/core/init/cache/cache_manager.dart';
-import 'package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
+import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:picker/core/base/model/delete_fatura_model.dart";
+import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/core/constants/extensions/model_extensions.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
-import '../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart';
-import '../../../view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_reuqest_model.dart';
-import '../../base/model/base_edit_model.dart';
-import '../../constants/enum/base_edit_enum.dart';
-import '../../constants/enum/siparis_tipi_enum.dart';
+import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_reuqest_model.dart";
+import "../../base/model/base_edit_model.dart";
+import "../../constants/enum/base_edit_enum.dart";
+import "../../constants/enum/siparis_tipi_enum.dart";
 
 class SiparislerCard extends StatefulWidget {
   final BaseSiparisEditModel model;
   final Function? onDeleted;
+
+  ///Eğer Bu widget Cache'den çağırılıyorsa index verilmelidir.
+  final int? index;
   final SiparisTipiEnum siparisTipiEnum;
-  const SiparislerCard({super.key, required this.model, this.onDeleted, required this.siparisTipiEnum});
+  const SiparislerCard({super.key, required this.model, this.onDeleted, required this.siparisTipiEnum, this.index});
 
   @override
   State<SiparislerCard> createState() => _SiparislerCardState();
@@ -68,12 +71,16 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                     Get.back();
                     return dialogManager.showAreYouSureDialog(() async {
                       if (widget.model.isNew == true) {
-                        CacheManager.removeSiparisEdit(widget.model.cariModel?.cariKodu ?? "");
-                        dialogManager.showSnackBar("Silindi");
-                        widget.onDeleted?.call();
+                        try {
+                          CacheManager.removeSiparisEditList(widget.index!);
+                          dialogManager.showSnackBar("Silindi");
+                          widget.onDeleted?.call();
+                        } catch (e) {
+                          dialogManager.showAlertDialog("Hata Oluştu.\n$e");
+                        }
                         return;
                       }
-                      var result = await networkManager.deleteFatura(DeleteFaturaModel().fromJson(widget.model.toJson()));
+                      var result = await networkManager.deleteFatura(const DeleteFaturaModel().fromJson(widget.model.toJson()));
                       if (result.success == true) {
                         dialogManager.showSnackBar("Silindi");
                         widget.onDeleted?.call();
@@ -98,7 +105,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(widget.model.belgeNo ?? ""),
-          Text(widget.model.kayittarihi.toDateString()),
+          Text(widget.model.kayittarihi.toDateString),
         ],
       ),
       subtitle: Column(

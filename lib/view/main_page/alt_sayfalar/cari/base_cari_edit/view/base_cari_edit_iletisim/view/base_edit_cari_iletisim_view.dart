@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import "package:flutter/material.dart";
+import "package:get/get.dart";
 
-import '../../../../../../../../core/constants/ui_helper/ui_helper.dart';
-import '../../../../cari_listesi/model/cari_detay_model.dart';
+import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../cari_listesi/model/cari_detay_model.dart";
 
 class BaseCariEditIletisimView extends StatefulWidget {
   const BaseCariEditIletisimView({super.key});

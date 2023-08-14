@@ -1,26 +1,26 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'dart:convert';
-import 'dart:developer';
+import "dart:convert";
+import "dart:developer";
 
-import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:kartal/kartal.dart';
-import 'package:picker/core/base/model/login_dialog_model.dart';
-import 'package:wave/config.dart';
-import 'package:wave/wave.dart';
+import "package:dio/dio.dart";
+import "package:flutter/material.dart";
+import "package:flutter/scheduler.dart";
+import "package:flutter_svg/flutter_svg.dart";
+import "package:get/get.dart";
+import "package:hive_flutter/hive_flutter.dart";
+import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/login_dialog_model.dart";
+import "package:wave/config.dart";
+import "package:wave/wave.dart";
 
-import '../../../core/base/state/base_state.dart';
-import '../../../core/components/helper_widgets/custom_label_widget.dart';
-import '../../../core/constants/ui_helper/ui_helper.dart';
-import '../../../core/init/app_info/app_info.dart';
-import '../../../core/init/cache/cache_manager.dart';
-import '../../../core/init/network/login/api_urls.dart';
-import '../../add_company/model/account_model.dart';
+import "../../../core/base/state/base_state.dart";
+import "../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../core/init/app_info/app_info.dart";
+import "../../../core/init/cache/cache_manager.dart";
+import "../../../core/init/network/login/api_urls.dart";
+import "../../add_company/model/account_model.dart";
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -87,7 +87,7 @@ class _LoginViewState extends BaseState<LoginView> {
             body: Center(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: context.horizontalPaddingHigh,
+                  padding: context.padding.horizontalHigh,
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: 500),
                     child: Column(

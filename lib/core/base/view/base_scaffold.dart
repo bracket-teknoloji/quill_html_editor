@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
-import '../state/base_state.dart';
+import "../state/base_state.dart";
 
 class BaseScaffold extends StatefulWidget {
   final Widget Function(BuildContext context, dynamic value) builder;

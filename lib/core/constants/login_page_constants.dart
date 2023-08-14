@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
-import 'ui_helper/ui_helper.dart';
+import "ui_helper/ui_helper.dart";
 
 class LoginConstants {
   static var loginFormKey = GlobalKey<FormState>();

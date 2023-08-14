@@ -1,6 +1,6 @@
-import 'package:mobx/mobx.dart';
+import "package:mobx/mobx.dart";
 
-part 'bottom_sheet_state_manager.g.dart';
+part "bottom_sheet_state_manager.g.dart";
 
 class BottomSheetStateManager = _BottomSheetStateManagerBase with _$BottomSheetStateManager;
 

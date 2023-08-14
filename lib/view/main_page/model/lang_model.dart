@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-part 'lang_model.g.dart';
+part "lang_model.g.dart";
 
 @JsonSerializable(createToJson: true, createFactory: true, fieldRename: FieldRename.none)
 class LangModel {
@@ -263,25 +263,25 @@ class LangModel {
   String? bankaHesabi;
   String? hareketDetayi;
   String? islemTuru;
-  @JsonKey(name: 'MobilCariEFTIslemi')
+  @JsonKey(name: "MobilCariEFTIslemi")
   String? mobilCariEFTIslemi;
-  @JsonKey(name: 'MobilHesaplarArasiEFT')
+  @JsonKey(name: "MobilHesaplarArasiEFT")
   String? mobilHesaplarArasiEFT;
-  @JsonKey(name: 'MobilHesaplarArasiVirman')
+  @JsonKey(name: "MobilHesaplarArasiVirman")
   String? mobilHesaplarArasiVirman;
-  @JsonKey(name: 'XXXBos')
+  @JsonKey(name: "XXXBos")
   String? xXXBos;
-  @JsonKey(name: 'Tahsilat')
+  @JsonKey(name: "Tahsilat")
   String? tahsilat;
-  @JsonKey(name: 'Odeme')
+  @JsonKey(name: "Odeme")
   String? odeme;
-  @JsonKey(name: 'HucreBakiyeDurumu')
+  @JsonKey(name: "HucreBakiyeDurumu")
   String? hucreBakiyeDurumu;
-  @JsonKey(name: 'HucreHareketleri')
+  @JsonKey(name: "HucreHareketleri")
   String? hucreHareketleri;
-  @JsonKey(name: 'SiparisDurumRaporu')
+  @JsonKey(name: "SiparisDurumRaporu")
   String? siparisDurumRaporu;
-  @JsonKey(name: 'SiparisDurumRaporuDetay')
+  @JsonKey(name: "SiparisDurumRaporuDetay")
   String? olustur;
   //* JsonKey
   String? faturaTabGenel;

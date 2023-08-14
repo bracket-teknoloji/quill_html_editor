@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:get/get.dart';
+import "package:flutter/material.dart";
+import "package:flutter/services.dart";
+import "package:get/get.dart";
 
-import '../../../../../../../../core/base/state/base_state.dart';
-import '../../../../../../../../core/constants/ui_helper/ui_helper.dart';
-import '../../../../cari_listesi/model/cari_detay_model.dart';
+import "../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../cari_listesi/model/cari_detay_model.dart";
 
 class BaseCariEditBankaView extends StatefulWidget {
   const BaseCariEditBankaView({super.key});

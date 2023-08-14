@@ -35,32 +35,40 @@ CariKosullarModel _$CariKosullarModelFromJson(Map<String, dynamic> json) =>
       ..iskAraIsk2 = (json['ISK_ARA_ISK2'] as num?)?.toDouble()
       ..iskAraIsk3 = (json['ISK_ARA_ISK3'] as num?)?.toDouble();
 
-Map<String, dynamic> _$CariKosullarModelToJson(CariKosullarModel instance) =>
-    <String, dynamic>{
-      'KOSUL_SABIT_ADI': instance.kosulSabitAdi,
-      'KOSUL_KODU': instance.kosulKodu,
-      'GENISK1_O': instance.genisk1O,
-      'GENISK2_O': instance.genisk2O,
-      'GENISK3_O': instance.genisk3O,
-      'GENEL_KOSUL_ADI': instance.genelKosulAdi,
-      'BASLANGICTAR': instance.baslangictar,
-      'VADE_GUNU': instance.vadeGunu,
-      'GENISK1_TIPI': instance.genisk1Tipi,
-      'GENISK2_TIPI': instance.genisk2Tipi,
-      'GENISK3_TIPI': instance.genisk3Tipi,
-      'SATISK1_TIPI': instance.satisk1Tipi,
-      'SATISK2_TIPI': instance.satisk2Tipi,
-      'SATISK3_TIPI': instance.satisk3Tipi,
-      'SATISK4_TIPI': instance.satisk4Tipi,
-      'SATISK5_TIPI': instance.satisk5Tipi,
-      'SATISK6_TIPI': instance.satisk6Tipi,
-      'ISK_ARA_AKTIF': instance.iskAraAktif,
-      'ISK_ARA_MIKTUT': instance.iskAraMiktut,
-      'ISK_ARA_DEGER1': instance.iskAraDeger1,
-      'ISK_ARA_DEGER2': instance.iskAraDeger2,
-      'ISK_ARA_DEGER3': instance.iskAraDeger3,
-      'ISK_ARA_HANGI_ISK': instance.iskAraHangiIsk,
-      'ISK_ARA_ISK1': instance.iskAraIsk1,
-      'ISK_ARA_ISK2': instance.iskAraIsk2,
-      'ISK_ARA_ISK3': instance.iskAraIsk3,
-    };
+Map<String, dynamic> _$CariKosullarModelToJson(CariKosullarModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('KOSUL_SABIT_ADI', instance.kosulSabitAdi);
+  writeNotNull('KOSUL_KODU', instance.kosulKodu);
+  writeNotNull('GENISK1_O', instance.genisk1O);
+  writeNotNull('GENISK2_O', instance.genisk2O);
+  writeNotNull('GENISK3_O', instance.genisk3O);
+  writeNotNull('GENEL_KOSUL_ADI', instance.genelKosulAdi);
+  writeNotNull('BASLANGICTAR', instance.baslangictar);
+  writeNotNull('VADE_GUNU', instance.vadeGunu);
+  writeNotNull('GENISK1_TIPI', instance.genisk1Tipi);
+  writeNotNull('GENISK2_TIPI', instance.genisk2Tipi);
+  writeNotNull('GENISK3_TIPI', instance.genisk3Tipi);
+  writeNotNull('SATISK1_TIPI', instance.satisk1Tipi);
+  writeNotNull('SATISK2_TIPI', instance.satisk2Tipi);
+  writeNotNull('SATISK3_TIPI', instance.satisk3Tipi);
+  writeNotNull('SATISK4_TIPI', instance.satisk4Tipi);
+  writeNotNull('SATISK5_TIPI', instance.satisk5Tipi);
+  writeNotNull('SATISK6_TIPI', instance.satisk6Tipi);
+  writeNotNull('ISK_ARA_AKTIF', instance.iskAraAktif);
+  writeNotNull('ISK_ARA_MIKTUT', instance.iskAraMiktut);
+  writeNotNull('ISK_ARA_DEGER1', instance.iskAraDeger1);
+  writeNotNull('ISK_ARA_DEGER2', instance.iskAraDeger2);
+  writeNotNull('ISK_ARA_DEGER3', instance.iskAraDeger3);
+  writeNotNull('ISK_ARA_HANGI_ISK', instance.iskAraHangiIsk);
+  writeNotNull('ISK_ARA_ISK1', instance.iskAraIsk1);
+  writeNotNull('ISK_ARA_ISK2', instance.iskAraIsk2);
+  writeNotNull('ISK_ARA_ISK3', instance.iskAraIsk3);
+  return val;
+}

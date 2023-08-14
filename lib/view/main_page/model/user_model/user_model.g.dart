@@ -119,24 +119,33 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel()
   ..admin = json['ADMIN'] as String?
   ..adminMi = json['ADMIN_MI'] as bool?;
 
-Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
-      'ID': instance.id,
-      'KULADI': instance.kuladi,
-      'PAROLA': instance.parola,
-      'ADI': instance.adi,
-      'SOYADI': instance.soyadi,
-      'ERP_KULLANICI': instance.erpKullanici,
-      'ERP_PAROLA': instance.erpParola,
-      'PROFIL_KODU': instance.profilKodu,
-      'PROFIL_ADI': instance.profilAdi,
-      'PROFIL_YETKI': instance.profilYetki,
-      'KULLANICI_YETKI': instance.kullaniciYetki,
-      'PICKER_YETKILI': instance.pickerYetkili,
-      'YETKILI_SUBE_JSON': instance.yetkiliSubelerJson,
-      'KONUM_ENLEM': instance.konumEnlem,
-      'KONUM_BOYLAM': instance.konumBoylam,
-      'LANG_MODEL': instance.langModel,
-      'AD_SOYAD': instance.adSoyad,
-      'ADMIN': instance.admin,
-      'ADMIN_MI': instance.adminMi,
-    };
+Map<String, dynamic> _$UserModelToJson(UserModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('ID', instance.id);
+  writeNotNull('KULADI', instance.kuladi);
+  writeNotNull('PAROLA', instance.parola);
+  writeNotNull('ADI', instance.adi);
+  writeNotNull('SOYADI', instance.soyadi);
+  writeNotNull('ERP_KULLANICI', instance.erpKullanici);
+  writeNotNull('ERP_PAROLA', instance.erpParola);
+  writeNotNull('PROFIL_KODU', instance.profilKodu);
+  writeNotNull('PROFIL_ADI', instance.profilAdi);
+  writeNotNull('PROFIL_YETKI', instance.profilYetki?.toJson());
+  writeNotNull('KULLANICI_YETKI', instance.kullaniciYetki);
+  writeNotNull('PICKER_YETKILI', instance.pickerYetkili);
+  writeNotNull('YETKILI_SUBE_JSON', instance.yetkiliSubelerJson);
+  writeNotNull('KONUM_ENLEM', instance.konumEnlem);
+  writeNotNull('KONUM_BOYLAM', instance.konumBoylam);
+  writeNotNull('LANG_MODEL', instance.langModel?.toJson());
+  writeNotNull('AD_SOYAD', instance.adSoyad);
+  writeNotNull('ADMIN', instance.admin);
+  writeNotNull('ADMIN_MI', instance.adminMi);
+  return val;
+}

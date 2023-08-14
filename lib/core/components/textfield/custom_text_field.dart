@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import "package:flutter/material.dart";
+import "package:get/get.dart";
 
-import '../../constants/ui_helper/ui_helper.dart';
+import "../../constants/ui_helper/ui_helper.dart";
 
 class CustomTextField extends StatefulWidget {
   final TextEditingController? controller;
@@ -98,14 +98,20 @@ class _CustomTextFieldState extends State<CustomTextField> {
               suffixIcon: (widget.enabled ?? true ? (widget.suffixMore ?? false ? const Icon(Icons.more_horiz_outlined) : widget.suffix) : null),
               label: widget.labelText == null
                   ? null
-                  : Text.rich(TextSpan(children: [
-                      TextSpan(
-                          text: widget.labelText ?? "",
-                          style: (widget.isMust ?? false)
-                              ? TextStyle(color: UIHelper.primaryColor)
-                              : ((widget.controller?.text == "") ? TextStyle(color: Colors.grey.withOpacity(0.6)) : TextStyle(color: Colors.grey.withOpacity(0.8)))),
-                      TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: Colors.grey.withOpacity(0.3), fontSize: 12))
-                    ]))),
+                  : Wrap(
+                      children: [
+                        Text.rich(TextSpan(children: [
+                          TextSpan(
+                              text: widget.labelText ?? "",
+                              style: (widget.isMust ?? false)
+                                  ? TextStyle(color: UIHelper.primaryColor)
+                                  : ((widget.controller?.text == "") ? TextStyle(color: Colors.grey.withOpacity(0.6)) : TextStyle(color: Colors.grey.withOpacity(0.8)))),
+                          TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: Colors.grey.withOpacity(0.3), fontSize: 12))
+                        ])),
+                        if (widget.valueWidget != null) SizedBox(width: UIHelper.lowSize),
+                        if (widget.valueWidget != null) widget.valueWidget!,
+                      ],
+                    )),
         ).paddingAll(UIHelper.lowSize),
       ),
     );

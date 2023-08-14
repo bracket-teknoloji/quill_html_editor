@@ -1,8 +1,8 @@
-import 'package:mobx/mobx.dart';
+import "package:mobx/mobx.dart";
 
-import '../../../model/base_siparis_edit_model.dart';
+import "../../../model/base_siparis_edit_model.dart";
 
-part 'base_siparis_kalemler_view_model.g.dart';
+part "base_siparis_kalemler_view_model.g.dart";
 
 class BaseSiparisKalemlerViewModel = _BaseSiparisKalemlerViewModelBase with _$BaseSiparisKalemlerViewModel;
 

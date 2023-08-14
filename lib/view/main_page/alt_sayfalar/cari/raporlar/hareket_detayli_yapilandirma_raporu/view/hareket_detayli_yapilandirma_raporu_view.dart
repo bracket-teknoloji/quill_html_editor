@@ -1,15 +1,15 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:get/get.dart';
+import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
 
-import '../../../../../../../core/base/state/base_state.dart';
-import '../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart';
-import '../../../../../../../core/components/slide_controller/view/slide_controller_view.dart';
-import '../../../../../../../core/components/textfield/custom_text_field.dart';
-import '../../../../../../../core/constants/extensions/date_time_extensions.dart';
-import '../../../../../../../core/constants/ui_helper/ui_helper.dart';
-import '../../../cari_listesi/model/cari_listesi_model.dart';
-import '../view_model/hareket_detayli_yapilandirma_raporu_view_model.dart';
+import "../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
+import "../../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
+import "../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../cari_listesi/model/cari_listesi_model.dart";
+import "../view_model/hareket_detayli_yapilandirma_raporu_view_model.dart";
 
 class HareketDetayliYaslandirmaRaporuView extends StatefulWidget {
   final CariListesiModel? model;
@@ -87,7 +87,7 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
                   var result = await dialogManager.showDateTimePicker();
                   if (result != null) {
                     viewModel.pdfModel.dicParams?.refTarih = result.toDateStringIfNull();
-                    referansTarihController.text = result.toDateString();
+                    referansTarihController.text = result.toDateString;
                   }
                 },
               ),

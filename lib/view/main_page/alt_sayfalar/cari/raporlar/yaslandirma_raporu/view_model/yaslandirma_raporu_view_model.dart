@@ -1,8 +1,8 @@
-import 'package:mobx/mobx.dart';
+import "package:mobx/mobx.dart";
 
-import '../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart';
+import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 
-part 'yaslandirma_raporu_view_model.g.dart';
+part "yaslandirma_raporu_view_model.g.dart";
 
 class YaslandirmaRaporuViewModel = _YaslandirmaRaporuViewModelBase with _$YaslandirmaRaporuViewModel;
 

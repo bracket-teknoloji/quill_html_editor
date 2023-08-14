@@ -1,13 +1,15 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:picker/core/components/textfield/custom_text_field.dart';
-import 'package:picker/core/constants/extensions/number_extensions.dart';
-import 'package:picker/core/constants/ui_helper/ui_helper.dart';
-import 'package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart';
+import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
+import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
-import '../../../../../../../../core/base/model/base_edit_model.dart';
-import '../../../../../../../../core/base/state/base_state.dart';
-import '../../../../siparisler/model/siparis_edit_reuqest_model.dart';
+import "../../../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../../../core/base/state/base_state.dart";
+import "../../../../siparisler/model/siparis_edit_reuqest_model.dart";
+import "../view_model/base_siparis_toplamlar_view_model.dart";
 
 class BaseSiparisToplamlarView extends StatefulWidget {
   final BaseEditModel<SiparisEditRequestModel> model;
@@ -19,6 +21,7 @@ class BaseSiparisToplamlarView extends StatefulWidget {
 
 class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView> {
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
+  BaseSiparisToplamlarViewModel viewModel = BaseSiparisToplamlarViewModel();
   bool get enable => widget.model.enable;
   late final TextEditingController genelIskonto1Controller;
   late final TextEditingController genelIskonto2Controller;
@@ -111,6 +114,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               enabled: enable,
               controller: genelIskonto1Controller,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              suffix: IconButton(onPressed: () => viewModel.changeGenIsk1O(), icon: Observer(builder: (_) => Icon(viewModel.isGenIsk1O ? Icons.money_outlined : Icons.percent_outlined))),
             ),
             CustomTextField(
               labelText: "İsk.Tipi 1",
@@ -118,6 +122,12 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               readOnly: true,
               suffixMore: true,
               controller: iskontoTipi1Controller,
+              onTap: () async {
+                var result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
+                if (result != null) {
+                  iskontoTipi1Controller.text = result.aciklama ?? "";
+                }
+              },
             ),
           ].map((e) => Expanded(child: e)).toList(),
         ),
@@ -128,6 +138,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               enabled: enable,
               controller: genelIskonto2Controller,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              suffix: IconButton(onPressed: () => viewModel.changeGenIsk2O(), icon: Observer(builder: (_) => Icon(viewModel.isGenIsk2O ? Icons.money_outlined : Icons.percent_outlined))),
             ),
             CustomTextField(
               labelText: "İsk.Tipi 2",
@@ -145,6 +156,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               enabled: enable,
               controller: genelIskonto3Controller,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              suffix: IconButton(onPressed: () => viewModel.changeGenIsk3O(), icon: Observer(builder: (_) => Icon(viewModel.isGenIsk3O ? Icons.money_outlined : Icons.percent_outlined))),
             ),
             CustomTextField(
               labelText: "İsk.Tipi 3",

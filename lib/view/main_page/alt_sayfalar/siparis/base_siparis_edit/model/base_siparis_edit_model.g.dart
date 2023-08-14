@@ -107,6 +107,8 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel malFazlasiMiktar(double? malFazlasiMiktar);
 
+  KalemModel kosulKodu(String? kosulKodu);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -164,6 +166,7 @@ abstract class _$KalemModelCWProxy {
     double? dovizFiyati,
     double? malfazCevrimliMiktar,
     double? malFazlasiMiktar,
+    String? kosulKodu,
   });
 }
 
@@ -335,6 +338,9 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
       this(malFazlasiMiktar: malFazlasiMiktar);
 
   @override
+  KalemModel kosulKodu(String? kosulKodu) => this(kosulKodu: kosulKodu);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -393,6 +399,7 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? dovizFiyati = const $CopyWithPlaceholder(),
     Object? malfazCevrimliMiktar = const $CopyWithPlaceholder(),
     Object? malFazlasiMiktar = const $CopyWithPlaceholder(),
+    Object? kosulKodu = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -595,6 +602,10 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.malFazlasiMiktar
           // ignore: cast_nullable_to_non_nullable
           : malFazlasiMiktar as double?,
+      kosulKodu: kosulKodu == const $CopyWithPlaceholder()
+          ? _value.kosulKodu
+          // ignore: cast_nullable_to_non_nullable
+          : kosulKodu as String?,
     );
   }
 }
@@ -1079,7 +1090,8 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       dovizFiyati: fields[47] as double?,
       malfazCevrimliMiktar: fields[48] as double?,
       malFazlasiMiktar: fields[49] as double?,
-    )..kosulKodu = fields[50] as String?;
+      kosulKodu: fields[50] as String?,
+    );
   }
 
   @override
@@ -1367,12 +1379,12 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('DUZELTMEYAPANKUL', instance.duzeltmeyapankul);
   writeNotNull('PLASIYER_ACIKLAMA', instance.plasiyerAciklama);
   writeNotNull('PROJE_ACIKLAMA', instance.projeAciklama);
-  writeNotNull('TEMP_JSON_DATA', instance.tempJsonData);
+  writeNotNull('TEMP_JSON_DATA', instance.tempJsonData?.toJson());
   writeNotNull('TESLIM_CARI_ADI', instance.teslimCariAdi);
   writeNotNull('KDV_DAHILMI', instance.kdvDahilmi);
   writeNotNull('REMOTE_TEMP_BELGE', instance.remoteTempBelge);
   writeNotNull('TEMP_BELGE_MI', instance.tempBelgeMi);
-  writeNotNull('CARI_MODEL', instance.cariModel);
+  writeNotNull('CARI_MODEL', instance.cariModel?.toJson());
   writeNotNull(
       'ISLEME_BASLAMA_TARIHI', instance.islemeBaslamaTarihi?.toIso8601String());
   writeNotNull('ISTENILEN_TESLIM_TARIHI',
@@ -1409,9 +1421,12 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('TOPLU_DEPO', instance.topluDepo);
   writeNotNull('VADE_GUNU', instance.vadeGunu);
   writeNotNull('TEMP_SIP_LIST', instance.tempSipList);
-  writeNotNull('KALEM_LIST', instance.kalemList);
-  writeNotNull('KALEM_MODELLER', instance.kalemModeller);
-  writeNotNull('KALEM_MODEL_LIST', instance.kalemModelList);
+  writeNotNull(
+      'KALEM_LIST', instance.kalemList?.map((e) => e.toJson()).toList());
+  writeNotNull('KALEM_MODELLER',
+      instance.kalemModeller?.map((e) => e.toJson()).toList());
+  writeNotNull('KALEM_MODEL_LIST',
+      instance.kalemModelList?.map((e) => e.toJson()).toList());
   writeNotNull('ACIK1', instance.acik1);
   writeNotNull('ACIK10', instance.acik10);
   writeNotNull('ACIK11', instance.acik11);
@@ -1464,7 +1479,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('PROJE_KODU', instance.projeKodu);
   writeNotNull('REMOTE_TEMP_BELGE_ETIKETI', instance.remoteTempBelgeEtiketi);
   writeNotNull('TAG', instance.tag);
-  writeNotNull('KALEMLER', instance.kalemler);
+  writeNotNull('KALEMLER', instance.kalemler?.map((e) => e.toJson()).toList());
   writeNotNull('IRSALIYELESTI', instance.irsaliyelesti);
   writeNotNull('IRSLESEN_SAYI', instance.irslesenSayi);
   writeNotNull('FATURALASTI', instance.faturalasti);
@@ -1534,7 +1549,8 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       malfazCevrimliMiktar:
           (json['MALFAZ_CEVRIMLI_MIKTAR'] as num?)?.toDouble(),
       malFazlasiMiktar: (json['MAL_FAZLASI_MIKTAR'] as num?)?.toDouble(),
-    )..kosulKodu = json['KOSUL_KODU'] as String?;
+      kosulKodu: json['KOSUL_KODU'] as String?,
+    );
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   final val = <String, dynamic>{};

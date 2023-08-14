@@ -1,10 +1,10 @@
 
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-import '../../../cari/cari_listesi/model/cari_listesi_model.dart';
-import 'base_siparis_edit_model.dart';
+import "../../../cari/cari_listesi/model/cari_listesi_model.dart";
+import "base_siparis_edit_model.dart";
 
-part 'temp_json_model.g.dart';
+part "temp_json_model.g.dart";
 
 @JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, includeIfNull: false, createFactory: true)
 class TempJsonModel {

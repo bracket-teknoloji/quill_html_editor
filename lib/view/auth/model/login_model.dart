@@ -1,10 +1,10 @@
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:json_annotation/json_annotation.dart';
+import "package:hive_flutter/hive_flutter.dart";
+import "package:json_annotation/json_annotation.dart";
 
-import '../../../core/base/model/base_network_mixin.dart';
-import 'user_json_model.dart';
+import "../../../core/base/model/base_network_mixin.dart";
+import "user_json_model.dart";
 
-part 'login_model.g.dart';
+part "login_model.g.dart";
 
 @HiveType(typeId: 99)
 @JsonSerializable(disallowUnrecognizedKeys: true, createToJson: true)

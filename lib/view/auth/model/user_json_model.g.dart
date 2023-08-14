@@ -22,20 +22,29 @@ UserJson _$UserJsonFromJson(Map<String, dynamic> json) => UserJson()
   ..adminMi = json['ADMIN_MI'] as bool?
   ..pickerYetkili = json['PICKER_YETKILI'] as String?;
 
-Map<String, dynamic> _$UserJsonToJson(UserJson instance) => <String, dynamic>{
-      'profilModel': instance.profilModel,
-      'yetkiModel': instance.yetkiModel,
-      'ID': instance.id,
-      'KULADI': instance.kullaniciAdi,
-      'PAROLA': instance.parola,
-      'ADI': instance.ad,
-      'SOYADI': instance.soyad,
-      'ERP_KULLANICI': instance.erpKullanici,
-      'ERP_PAROLA': instance.erpParola,
-      'ADMIN': instance.admin,
-      'ADMIN_MI': instance.adminMi,
-      'PICKER_YETKILI': instance.pickerYetkili,
-    };
+Map<String, dynamic> _$UserJsonToJson(UserJson instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('profilModel', instance.profilModel?.toJson());
+  writeNotNull('yetkiModel', instance.yetkiModel);
+  writeNotNull('ID', instance.id);
+  writeNotNull('KULADI', instance.kullaniciAdi);
+  writeNotNull('PAROLA', instance.parola);
+  writeNotNull('ADI', instance.ad);
+  writeNotNull('SOYADI', instance.soyad);
+  writeNotNull('ERP_KULLANICI', instance.erpKullanici);
+  writeNotNull('ERP_PAROLA', instance.erpParola);
+  writeNotNull('ADMIN', instance.admin);
+  writeNotNull('ADMIN_MI', instance.adminMi);
+  writeNotNull('PICKER_YETKILI', instance.pickerYetkili);
+  return val;
+}
 
 ProfilModel _$ProfilModelFromJson(Map<String, dynamic> json) => ProfilModel()
   ..kullaniciYetkiModel = json['kullaniciYetkiModel'] as Map<String, dynamic>?
@@ -46,13 +55,21 @@ ProfilModel _$ProfilModelFromJson(Map<String, dynamic> json) => ProfilModel()
   ..sevkiyatSatisFatEFaturaMukellefineKesilmesin =
       json['sevkiyat_SatisFat_EFaturaMukellefineKesilmesin'] as String?;
 
-Map<String, dynamic> _$ProfilModelToJson(ProfilModel instance) =>
-    <String, dynamic>{
-      'kullaniciYetkiModel': instance.kullaniciYetkiModel,
-      'sirket_KalemKayitKontrol_BelgeTipleri':
-          instance.sirketKalemKayitKontrolBelgeTipleri,
-      'sevkiyat_SatisIrs_EArsivMukellefineKesilmesin':
-          instance.sevkiyatSatisIrsEArsivMukellefineKesilmesin,
-      'sevkiyat_SatisFat_EFaturaMukellefineKesilmesin':
-          instance.sevkiyatSatisFatEFaturaMukellefineKesilmesin,
-    };
+Map<String, dynamic> _$ProfilModelToJson(ProfilModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('kullaniciYetkiModel', instance.kullaniciYetkiModel);
+  writeNotNull('sirket_KalemKayitKontrol_BelgeTipleri',
+      instance.sirketKalemKayitKontrolBelgeTipleri);
+  writeNotNull('sevkiyat_SatisIrs_EArsivMukellefineKesilmesin',
+      instance.sevkiyatSatisIrsEArsivMukellefineKesilmesin);
+  writeNotNull('sevkiyat_SatisFat_EFaturaMukellefineKesilmesin',
+      instance.sevkiyatSatisFatEFaturaMukellefineKesilmesin);
+  return val;
+}

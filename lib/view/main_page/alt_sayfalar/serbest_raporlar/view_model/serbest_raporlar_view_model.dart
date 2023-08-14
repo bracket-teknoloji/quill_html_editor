@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:mobx/mobx.dart';
+import "package:flutter/material.dart";
+import "package:mobx/mobx.dart";
 
-import '../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart';
-import '../model/serbest_rapor_response_model.dart';
+import "../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
+import "../model/serbest_rapor_response_model.dart";
 
-part 'serbest_raporlar_view_model.g.dart';
+part "serbest_raporlar_view_model.g.dart";
 
 class SerbestRaporlarViewModel = _SerbestRaporlarViewModelBase with _$SerbestRaporlarViewModel;
 

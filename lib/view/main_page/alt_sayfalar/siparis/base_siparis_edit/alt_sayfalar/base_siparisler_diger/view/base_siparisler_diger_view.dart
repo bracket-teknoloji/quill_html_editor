@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:html_editor_enhanced/html_editor.dart';
-import 'package:picker/core/base/state/base_state.dart';
-import 'package:picker/core/constants/ui_helper/ui_helper.dart';
-import 'package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart';
+import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:html_editor_enhanced/html_editor.dart";
+import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
-import '../../../../../../../../core/base/model/base_edit_model.dart';
-import '../../../../siparisler/model/siparis_edit_reuqest_model.dart';
-import '../view_model/base_siparisler_diger_view_model.dart';
+import "../../../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../siparisler/model/siparis_edit_reuqest_model.dart";
+import "../view_model/base_siparisler_diger_view_model.dart";
 
 class BaseSiparislerDigerView extends StatefulWidget {
   final BaseEditModel<SiparisEditRequestModel> model;
@@ -18,7 +18,6 @@ class BaseSiparislerDigerView extends StatefulWidget {
 }
 
 class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerView> {
-  // late final QuillController _controller;
   late final HtmlEditorController _htmlController;
   BaseSiparislerDigerViewModel viewModel = BaseSiparislerDigerViewModel();
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
@@ -32,8 +31,6 @@ class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerView> {
 
   @override
   void dispose() {
-    // print(_controller.document.toDelta());
-    print(_htmlController.getText());
     _htmlController.disable();
     super.dispose();
   }
@@ -43,11 +40,7 @@ class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerView> {
     return SingleChildScrollView(
       child: HtmlEditor(
           controller: _htmlController,
-          callbacks: Callbacks(
-            onInit: onPageLoad,
-            onChangeContent: (value) => model.ekAciklama = value,
-            onImageUpload: (p0) => print(p0),
-          ),
+          callbacks: Callbacks(onInit: onPageLoad, onChangeContent: (value) => model.ekAciklama = value),
           otherOptions: OtherOptions(decoration: BoxDecoration(color: theme.colorScheme.background, borderRadius: const BorderRadius.all(Radius.circular(4)))),
           htmlEditorOptions:
               HtmlEditorOptions(hint: !enable ? "" : "Eklemek istediğiniz notları buraya yazınız.", disabled: !enable, spellCheck: true, shouldEnsureVisible: true, autoAdjustHeight: false),

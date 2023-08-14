@@ -1,9 +1,9 @@
 
 
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:picker/view/add_company/model/account_response_model.dart';
+import "package:hive_flutter/hive_flutter.dart";
+import "package:picker/view/add_company/model/account_response_model.dart";
 
-part 'login_dialog_model.g.dart';
+part "login_dialog_model.g.dart";
 
 
 @HiveType(typeId: 68)

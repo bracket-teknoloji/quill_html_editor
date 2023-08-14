@@ -1,21 +1,22 @@
-import 'dart:developer';
+import "dart:developer";
 
-import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import "package:flutter/material.dart";
+import "package:hive_flutter/hive_flutter.dart";
 
-import '../../../view/add_company/model/account_model.dart';
-import '../../../view/add_company/model/account_response_model.dart';
-import '../../../view/auth/model/isletme_model.dart';
-import '../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
-import '../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_sehirler_model.dart';
-import '../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart';
-import '../../../view/main_page/model/main_page_model.dart';
-import '../../../view/main_page/model/param_model.dart';
-import '../../../view/main_page/model/sirket_model.dart';
-import '../../../view/main_page/model/user_model/user_model.dart';
-import '../../base/model/login_dialog_model.dart';
-import '../../constants/enum/siparis_tipi_enum.dart';
-import 'favorites_model.dart';
+import "../../../view/add_company/model/account_model.dart";
+import "../../../view/add_company/model/account_response_model.dart";
+import "../../../view/auth/model/isletme_model.dart";
+import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_sehirler_model.dart";
+import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../view/main_page/model/main_page_model.dart";
+import "../../../view/main_page/model/param_model.dart";
+import "../../../view/main_page/model/sirket_model.dart";
+import "../../../view/main_page/model/user_model/user_model.dart";
+import "../../base/model/login_dialog_model.dart";
+import "../../constants/enum/siparis_tipi_enum.dart";
+import "../../constants/static_variables/static_variables.dart";
+import "favorites_model.dart";
 
 class CacheManager {
   static late Box tokenBox;
@@ -113,7 +114,7 @@ class CacheManager {
       siparisEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel?>();
 
   static List<BaseSiparisEditModel>? getSiparisEditLists(SiparisTipiEnum siparisTipi) =>
-      siparisEditListBox.get(getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).map((e) => e).toList().cast<BaseSiparisEditModel>();
+      siparisEditListBox.get(StaticVariables.getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel>();
   // static String get getSirketAdi => _sirketAdiBox.get("value") ?? "";
 
   //* Setters
@@ -143,13 +144,14 @@ class CacheManager {
 
   static void setSiparisEdit(BaseSiparisEditModel value) => siparisEditBox.put(value.belgeNo, value);
   static void addSiparisEditListItem(BaseSiparisEditModel value) {
-    if (siparisEditListBox.get(getSiparisString) == null) {
-      siparisEditListBox.put(getSiparisString, ListSiparisEditModel());
+    if (siparisEditListBox.get(StaticVariables.getSiparisString) == null) {
+      siparisEditListBox.put(StaticVariables.getSiparisString, ListSiparisEditModel());
     }
-    if (siparisEditListBox.get(getSiparisString)?.list?.any((element) => element.belgeNo == value.belgeNo) ?? false) {
-      siparisEditListBox.put(getSiparisString, ListSiparisEditModel(list: siparisEditListBox.get(getSiparisString)?.list?.map((e) => e.belgeNo == value.belgeNo ? value : e).toList()));
+    if (siparisEditListBox.get(StaticVariables.getSiparisString)?.list?.any((element) => element.belgeNo == value.belgeNo) ?? false) {
+      siparisEditListBox.put(
+          StaticVariables.getSiparisString, ListSiparisEditModel(list: siparisEditListBox.get(StaticVariables.getSiparisString)?.list?.map((e) => e.belgeNo == value.belgeNo ? value : e).toList()));
     } else {
-      siparisEditListBox.put(getSiparisString, ListSiparisEditModel(list: [...?siparisEditListBox.get(getSiparisString)?.list, value]));
+      siparisEditListBox.put(StaticVariables.getSiparisString, ListSiparisEditModel(list: [...?siparisEditListBox.get(StaticVariables.getSiparisString)?.list, value]));
     }
   }
 
@@ -166,7 +168,13 @@ class CacheManager {
   static void removeAccounts(String key) => accountsBox.delete(key);
   static void removeFavoriWithIndex(int index) => favorilerBox.deleteAt(index);
   static void removeSiparisEdit(String key) => siparisEditBox.delete(key);
+  static void removeSiparisEditList(int index) {
+    var list = siparisEditListBox.get(StaticVariables.getSiparisString)?.list;
+    if (list != null) {
+      list.removeAt(index);
+    }
+    siparisEditListBox.put(StaticVariables.getSiparisString, ListSiparisEditModel(list: list));
+  }
 
   //* Helper
-  static String get getSiparisString => "${getVerifiedUser.account?.email ?? ""}-${AccountModel.instance.aktifVeritabani ?? ""}-${AccountModel.instance.aktifSubeKodu ?? ""}";
 }

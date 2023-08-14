@@ -1,8 +1,8 @@
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-import 'base_network_mixin.dart';
+import "base_network_mixin.dart";
 
-part 'siradaki_belge_no_model.g.dart';
+part "siradaki_belge_no_model.g.dart";
 
 
 @JsonSerializable(createToJson: true, fieldRename: FieldRename.pascal, createFactory: true)

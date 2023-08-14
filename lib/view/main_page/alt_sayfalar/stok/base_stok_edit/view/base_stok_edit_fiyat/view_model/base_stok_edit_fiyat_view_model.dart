@@ -1,10 +1,10 @@
-import 'package:mobx/mobx.dart';
+import "package:mobx/mobx.dart";
 
-import '../../../../../../../../core/init/cache/cache_manager.dart';
-import '../../../../../../model/main_page_model.dart';
-import '../../../../../../model/param_model.dart';
+import "../../../../../../../../core/init/cache/cache_manager.dart";
+import "../../../../../../model/main_page_model.dart";
+import "../../../../../../model/param_model.dart";
 
-part 'base_stok_edit_fiyat_view_model.g.dart';
+part "base_stok_edit_fiyat_view_model.g.dart";
 
 class BaseStokEditFiyatViewModel = _BaseStokEditFiyatViewModelBase with _$BaseStokEditFiyatViewModel;
 

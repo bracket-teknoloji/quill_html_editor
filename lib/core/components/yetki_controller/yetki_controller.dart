@@ -1,7 +1,7 @@
-import '../../../view/main_page/model/main_page_model.dart';
-import '../../../view/main_page/model/user_model/profil_yetki_model.dart';
-import '../../../view/main_page/model/user_model/user_model.dart';
-import '../../init/cache/cache_manager.dart';
+import "../../../view/main_page/model/main_page_model.dart";
+import "../../../view/main_page/model/user_model/profil_yetki_model.dart";
+import "../../../view/main_page/model/user_model/user_model.dart";
+import "../../init/cache/cache_manager.dart";
 
 class YetkiController {
   YetkiController();

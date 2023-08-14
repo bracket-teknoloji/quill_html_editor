@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:mobx/mobx.dart';
+import "package:flutter/material.dart";
+import "package:mobx/mobx.dart";
 
-import '../../../../../../core/base/model/base_grup_kodu_model.dart';
-import '../model/stok_bottom_sheet_model.dart';
-import '../model/stok_listesi_model.dart';
+import "../../../../../../core/base/model/base_grup_kodu_model.dart";
+import "../model/stok_bottom_sheet_model.dart";
+import "../model/stok_listesi_model.dart";
 
-part 'stok_listesi_view_model.g.dart';
+part "stok_listesi_view_model.g.dart";
 
 class StokListesiViewModel = _StokListesiViewModelBase with _$StokListesiViewModel;
 

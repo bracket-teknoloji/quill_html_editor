@@ -1,6 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
+import "package:json_annotation/json_annotation.dart";
 
-import '../../../../../core/base/model/base_network_mixin.dart';
+import "../../../../../core/base/model/base_network_mixin.dart";
 
 part "serbest_raporlar_parametre_model.g.dart";
 

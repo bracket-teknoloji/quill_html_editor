@@ -75,7 +75,7 @@ Map<String, dynamic> _$TempJsonModelToJson(TempJsonModel instance) {
 
   writeNotNull('CARI_ADI', instance.cariAdi);
   writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('CARI_MODEL', instance.cariModel);
+  writeNotNull('CARI_MODEL', instance.cariModel?.toJson());
   writeNotNull('ACIK1', instance.acik1);
   writeNotNull('ACIK2', instance.acik2);
   writeNotNull('ACIK7', instance.acik7);
@@ -95,7 +95,8 @@ Map<String, dynamic> _$TempJsonModelToJson(TempJsonModel instance) {
   writeNotNull(
       'ISLEME_BASLAMA_TARIHI', instance.islemeBaslamaTarihi?.toIso8601String());
   writeNotNull('KALEM_ADEDI', instance.kalemAdedi);
-  writeNotNull('KALEM_LIST', instance.kalemList);
+  writeNotNull(
+      'KALEM_LIST', instance.kalemList?.map((e) => e.toJson()).toList());
   writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
   writeNotNull('KDV_DAHIL', instance.kdvDahil);
   writeNotNull('KDV', instance.kdv);

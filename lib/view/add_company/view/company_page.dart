@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:picker/core/init/cache/cache_manager.dart';
+import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:hive_flutter/hive_flutter.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 
-import '../../../core/base/state/base_state.dart';
-import '../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart';
-import '../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart';
-import '../../../core/constants/ui_helper/ui_helper.dart';
-import '../model/account_response_model.dart';
+import "../../../core/base/state/base_state.dart";
+import "../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
+import "../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../core/constants/ui_helper/ui_helper.dart";
+import "../model/account_response_model.dart";
 
 class AccountsView extends StatefulWidget {
   const AccountsView({super.key});

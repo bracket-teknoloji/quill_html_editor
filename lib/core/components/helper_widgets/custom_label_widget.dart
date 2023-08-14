@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import "package:flutter/material.dart";
+import "package:get/get.dart";
 
-import '../../constants/ui_helper/ui_helper.dart';
+import "../../constants/ui_helper/ui_helper.dart";
 
 class CustomWidgetWithLabel extends StatelessWidget {
   final String? text;

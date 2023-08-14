@@ -1,7 +1,7 @@
 //extension on a list for padding all items
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:picker/core/constants/ui_helper/ui_helper.dart';
+import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
 
 extension ListExtension<T> on List<T> {
   List<Padding> get withPadding {

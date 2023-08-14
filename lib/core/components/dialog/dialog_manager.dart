@@ -1,28 +1,28 @@
-import 'dart:developer';
-import 'dart:io';
+import "dart:developer";
+import "dart:io";
 
-import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:kartal/kartal.dart';
-import 'package:picker/core/constants/extensions/date_time_extensions.dart';
+import "package:awesome_dialog/awesome_dialog.dart";
+import "package:flutter/foundation.dart";
+import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:hive_flutter/hive_flutter.dart";
+import "package:kartal/kartal.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
 
-import '../../../view/add_company/model/account_model.dart';
-import '../../../view/add_company/model/account_response_model.dart';
-import '../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart';
-import '../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart';
-import '../../base/model/login_dialog_model.dart';
-import '../../constants/enum/islem_tipi_enum.dart';
-import '../../constants/ui_helper/icon_helper.dart';
-import '../../constants/ui_helper/ui_helper.dart';
-import '../../init/app_info/app_info.dart';
-import '../../init/cache/cache_manager.dart';
-import '../../init/network/login/api_urls.dart';
-import '../../init/network/network_manager.dart';
-import '../grid_tile/custom_animated_grid/view/custom_animated_grid_view.dart';
-import 'logout_model.dart';
+import "../../../view/add_company/model/account_model.dart";
+import "../../../view/add_company/model/account_response_model.dart";
+import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+import "../../base/model/login_dialog_model.dart";
+import "../../constants/enum/islem_tipi_enum.dart";
+import "../../constants/ui_helper/icon_helper.dart";
+import "../../constants/ui_helper/ui_helper.dart";
+import "../../init/app_info/app_info.dart";
+import "../../init/cache/cache_manager.dart";
+import "../../init/network/login/api_urls.dart";
+import "../../init/network/network_manager.dart";
+import "../grid_tile/custom_animated_grid/view/custom_animated_grid_view.dart";
+import "logout_model.dart";
 
 class DialogManager {
   late final BuildContext context;
