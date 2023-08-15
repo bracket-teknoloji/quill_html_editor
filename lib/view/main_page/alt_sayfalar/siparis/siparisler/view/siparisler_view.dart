@@ -28,7 +28,7 @@ import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
 import "../../base_siparis_edit/model/base_siparis_edit_model.dart";
-import "../model/siparis_edit_reuqest_model.dart";
+import "../model/siparis_edit_request_model.dart";
 
 class SiparislerView extends StatefulWidget {
   final bool isSiparisler;

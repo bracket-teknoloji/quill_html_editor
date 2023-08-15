@@ -33,7 +33,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
   void initState() {
     super.initState();
     WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) async {
-      AccountModel.instance.init();
+      await AccountModel.instance.init();
       login();
     });
   }
@@ -118,36 +118,31 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
 
   void login() async {
     viewModel.setTitle("Giriş yapılıyor...");
-    try {
-      viewModel.setIsError(false);
-      if (CacheManager.getVerifiedUser.username == null) {
-        Get.offAllNamed("/login");
-      } else if (CacheManager.getLogout == true) {
-        final response = await networkManager.getToken(path: ApiUrls.token, queryParameters: {
-          "deviceInfos": jsonEncode((CacheManager.getHesapBilgileri)?.toJson())
-        }, data: {
-          "grant_type": "password",
-          "username": CacheManager.getVerifiedUser.username,
-          "password": CacheManager.getVerifiedUser.password,
-        });
-        if (response != null) {
-          if (response.accessToken != null) {
-            CacheManager.setVerifiedUser(CacheManager.getVerifiedUser);
-            CacheManager.setToken(response.accessToken!);
-            await getSession();
-          } else {
-            Get.offAllNamed("/login");
-          }
+    viewModel.setIsError(false);
+    if (CacheManager.getVerifiedUser.username == null) {
+      Get.offAllNamed("/login");
+    } else if (CacheManager.getLogout == true) {
+      final response = await networkManager.getToken(path: ApiUrls.token, queryParameters: {
+        "deviceInfos": jsonEncode((CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi)?.toJson())
+      }, data: {
+        "grant_type": "password",
+        "username": CacheManager.getVerifiedUser.username,
+        "password": CacheManager.getVerifiedUser.password,
+      });
+      if (response != null) {
+        if (response.accessToken != null) {
+          CacheManager.setVerifiedUser(CacheManager.getVerifiedUser);
+          CacheManager.setToken(response.accessToken!);
+          await getSession();
         } else {
-          viewModel.setTitle("Bağlantı kurulamadı. Lütfen internet bağlantınızı kontrol edin.");
-          viewModel.setIsError(true);
+          Get.offAllNamed("/login");
         }
       } else {
-        Get.offAllNamed("/login");
+        viewModel.setTitle(response?.error ?? response?.errorDescription ?? "Bağlantı kurulamadı. Lütfen internet bağlantınızı kontrol edin.");
+        viewModel.setIsError(true);
       }
-    } on Exception catch (e) {
-      viewModel.setTitle("Bağlantı kurulamadı. Lütfen internet bağlantınızı kontrol edin.\n$e");
-      viewModel.setIsError(true);
+    } else {
+      Get.offAllNamed("/login");
     }
   }
 
@@ -164,7 +159,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
   Future<void> getSession() async {
     GenericResponseModel lisansResponse = await networkManager.getUyeBilgileri(CacheManager.getVerifiedUser.account?.email ?? "");
     if (CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "") == false) {
-      viewModel.setTitle(lisansResponse.message ?? "");
+      viewModel.setTitle(lisansResponse.message ?? "Bir hata oluştu. Lütfen tekrar deneyin.");
       viewModel.setIsError(true);
       return;
     }

@@ -4,7 +4,7 @@ import "../../../../../../core/base/model/base_network_mixin.dart";
 
 part "stok_muhasebe_kodu_model.g.dart";
 
-@JsonSerializable(includeIfNull: false, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable()
 class StokMuhasebeKoduModel with NetworkManagerMixin {
   int? muhKodu;
   String? adi;

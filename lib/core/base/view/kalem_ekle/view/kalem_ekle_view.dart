@@ -16,7 +16,8 @@ import "../view_model/kalem_ekle_view_model.dart";
 
 class KalemEkleView extends StatefulWidget {
   final StokListesiModel? stokListesiModel;
-  const KalemEkleView({super.key, this.stokListesiModel});
+  final KalemModel? kalemModel;
+  const KalemEkleView({super.key, this.stokListesiModel, this.kalemModel});
 
   @override
   State<KalemEkleView> createState() => _KalemEkleViewState();
@@ -52,6 +53,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   @override
   void initState() {
     initControllers();
+    viewModel.setKalemModel(widget.kalemModel);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await getData();
       controllerFiller();
@@ -127,7 +129,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           Expanded(
                               child: Text.rich(TextSpan(children: [
                             const TextSpan(text: "StkBakiye: "),
-                            TextSpan(text: "${viewModel.model?.bakiye.toStringIfNull ?? ""} ${viewModel.model?.olcuBirimi ?? ""}", style: const TextStyle(fontWeight: FontWeight.bold))
+                            TextSpan(
+                                text: "${viewModel.model?.bakiye.toStringIfNull ?? viewModel.kalemModel} ${viewModel.model?.olcuBirimi ?? viewModel.kalemModel.olcuBirimAdi}",
+                                style: const TextStyle(fontWeight: FontWeight.bold))
                           ]))),
                         ],
                       ).paddingSymmetric(horizontal: UIHelper.lowSize).paddingOnly(top: UIHelper.lowSize),
@@ -414,6 +418,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         readOnly: true,
                         suffixMore: true,
                         keyboardType: TextInputType.number,
+                        controller: isk2TipiController,
                         onTap: () async {
                           var result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
                           if (result != null) {
@@ -504,23 +509,29 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   }
 
   void controllerFiller() {
-    viewModel.kalemModel.stokKodu = widget.stokListesiModel?.stokKodu ?? "";
-    kalemAdiController.text = widget.stokListesiModel?.stokAdi ?? widget.stokListesiModel?.stokKodu ?? "";
-    miktarController.text = viewModel.kalemModel.miktar?.toIntIfDouble.toStringIfNull ?? "";
-    miktar2Controller.text = viewModel.kalemModel.miktar2?.toIntIfDouble.toStringIfNull ?? "";
-    depoController.text = widget.stokListesiModel?.depoKodu.toStringIfNull ?? "";
+    viewModel.kalemModel.stokKodu ??= widget.stokListesiModel?.stokKodu;
+    kalemAdiController.text = widget.stokListesiModel?.stokAdi ?? widget.stokListesiModel?.stokKodu ?? widget.kalemModel?.stokAdi ?? widget.kalemModel?.stokKodu ?? "";
+    ekAlan1Controller.text = widget.kalemModel?.ekalan1 ?? "";
+    ekAlan2Controller.text = widget.kalemModel?.ekalan2 ?? "";
+    fiyatController.text = widget.stokListesiModel?.fiatBirimi.toStringIfNull ?? widget.kalemModel?.brutFiyat.toStringIfNull ?? "";
+    // miktarController.text = viewModel.kalemModel.miktar?.toIntIfDouble.toStringIfNull ?? "";
+    // miktar2Controller.text = viewModel.kalemModel.miktar2?.toIntIfDouble.toStringIfNull ?? "";
+    malFazMiktarController.text = viewModel.kalemModel.malFazlasiMiktar?.toIntIfDouble.toStringIfNull ?? "";
+    olcuBirimiController.text = widget.stokListesiModel?.olcuBirimi ?? widget.kalemModel?.olcuBirimAdi ?? "";
+
+    depoController.text = widget.stokListesiModel?.depoKodu.toStringIfNull ?? widget.kalemModel?.depoKodu.toStringIfNull ?? "";
     teslimTarihiController.text = model.teslimTarihi.toDateString;
     kosulController.text = model.kosulKodu ?? BaseSiparisEditModel.instance.kosulKodu ?? "";
     depoController.text = model.cikisDepoKodu.toStringIfNull ?? "";
     projeController.text = model.projeKodu ?? BaseSiparisEditModel.instance.projeKodu ?? "";
     depoController.text = model.cikisDepoKodu.toStringIfNull ?? "";
-    viewModel.kalemModel.stokAdi = widget.stokListesiModel?.stokAdi ?? widget.stokListesiModel?.stokKodu ?? "";
-    viewModel.kalemModel.stokKodu = widget.stokListesiModel?.stokKodu ?? "";
+    viewModel.kalemModel.stokAdi = widget.stokListesiModel?.stokAdi ?? widget.stokListesiModel?.stokKodu ?? widget.kalemModel?.stokAdi ?? widget.kalemModel?.stokKodu ?? "";
+    viewModel.kalemModel.stokKodu = widget.stokListesiModel?.stokKodu ?? widget.kalemModel?.stokKodu ?? "";
     viewModel.kalemModel.depoKodu = model.cikisDepoKodu;
     viewModel.kalemModel.projeKodu = model.projeKodu;
     viewModel.kalemModel.kosulKodu = model.kosulKodu;
     viewModel.kalemModel.teslimTarihi = model.teslimTarihi;
-    viewModel.setKosul(model.kosulKodu ?? BaseSiparisEditModel.instance.kosulKodu ?? "");
+    viewModel.setKosul(model.kosulKodu ?? "");
   }
 
   void disposeControllers() {

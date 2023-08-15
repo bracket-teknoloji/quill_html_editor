@@ -11,6 +11,7 @@
 #
 
 # Uncomment the line if you want fastlane to automatically update itself
+FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD = "gsbb-uybx-zqnj-ketk"
 update_fastlane
 
 default_platform(:android)

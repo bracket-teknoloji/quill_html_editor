@@ -8,7 +8,8 @@ import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/mod
 
 import "../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../core/base/state/base_state.dart";
-import "../../../../siparisler/model/siparis_edit_reuqest_model.dart";
+import "../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../siparisler/model/siparis_edit_request_model.dart";
 import "../view_model/base_siparis_toplamlar_view_model.dart";
 
 class BaseSiparisToplamlarView extends StatefulWidget {
@@ -87,7 +88,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
             children: [
               Text.rich(TextSpan(children: [
                 const TextSpan(text: "Ara Toplam\n", style: TextStyle(color: Colors.grey)),
-                TextSpan(text: "${((model.genelToplam ?? 0) - (model.kdv ?? 0)).dotSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                TextSpan(text: "${model.getAraToplam.dotSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
               ])),
               Text.rich(TextSpan(children: [
                 const TextSpan(text: "KDV Tutarı\n", style: TextStyle(color: Colors.grey)),
@@ -125,6 +126,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               onTap: () async {
                 var result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
                 if (result != null) {
+                  model.genisk1Tipi = result.iskontoTipi;
                   iskontoTipi1Controller.text = result.aciklama ?? "";
                 }
               },
@@ -145,7 +147,13 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               enabled: enable,
               readOnly: true,
               suffixMore: true,
-              controller: iskontoTipi2Controller,
+              controller: iskontoTipi2Controller, onTap: () async {
+                var result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
+                if (result != null) {
+                  model.genisk2Tipi = result.iskontoTipi;
+                  iskontoTipi2Controller.text = result.aciklama ?? "";
+                }
+              },
             ),
           ].map((e) => Expanded(child: e)).toList(),
         ),
@@ -163,7 +171,13 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               enabled: enable,
               suffixMore: true,
               readOnly: true,
-              controller: iskontoTipi3Controller,
+              controller: iskontoTipi3Controller, onTap: () async {
+                var result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
+                if (result != null) {
+                  model.genisk3Tipi = result.iskontoTipi;
+                  iskontoTipi3Controller.text = result.aciklama ?? "";
+                }
+              },
             ),
           ].map((e) => Expanded(child: e)).toList(),
         ),
@@ -180,6 +194,17 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               enabled: enable,
               keyboardType: TextInputType.number,
               controller: tevkifatController,
+              suffixMore: true,
+              onTap: () async {
+                var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                    title: "Tevkifat Oranı",
+                    children: List.generate(
+                        viewModel.tevkifatMap.length, (index) => BottomSheetModel(title: viewModel.tevkifatMap.keys.toList()[index], value: viewModel.tevkifatMap.values.toList()[index])));
+                if (result != null) {
+                  BaseSiparisEditModel.instance.ekMaliyet2Tutari = (BaseSiparisEditModel.instance.getBrutTutar) * (result ?? 0) * (-1);
+                  tevkifatController.text = BaseSiparisEditModel.instance.ekMaliyet2Tutari?.dotSeparatedWithFixedDigits ?? "";
+                }
+              },
             ),
           ].map((e) => Expanded(child: e)).toList(),
         ),
@@ -198,9 +223,11 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               onChanged: (value) => model.vadeGunu = int.tryParse(value),
               suffix: IconButton(
                 onPressed: () async {
-                  final date = await showDatePicker(context: context, initialDate: model.vadeTarihi!, firstDate: model.tarih!, lastDate: DateTime.now().add(const Duration(days: 365)));
+                  final date = await showDatePicker(
+                      context: context, initialDate: model.vadeTarihi ?? DateTime.now(), firstDate: model.tarih ?? DateTime.now(), lastDate: DateTime.now().add(const Duration(days: 365)));
                   if (date != null) {
-                    model.vadeGunu = (model.tarih!.difference(date).inDays * -1);
+                    model.vadeGunu = ((model.tarih?.difference(date).inDays ?? 0) * -1);
+                    model.vadeTarihi = date;
                     vadeGunuController.text = model.vadeGunu.toString();
                   }
                 },

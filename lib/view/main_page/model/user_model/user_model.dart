@@ -6,7 +6,7 @@ import "profil_yetki_model.dart";
 
 part "user_model.g.dart";
 
-@JsonSerializable(createToJson: true, createFactory: true)
+@JsonSerializable(createFactory: true)
 @HiveType(typeId: 101)
 class UserModel {
   UserModel();

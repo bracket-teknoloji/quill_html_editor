@@ -4,7 +4,7 @@ import "../../../../../../core/base/model/base_network_mixin.dart";
 
 part "stok_detay_model.g.dart";
 
-@JsonSerializable(includeIfNull: false, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable()
 class StokDetayModel with NetworkManagerMixin {
   //singleton
   static StokDetayModel? _instance;
@@ -39,7 +39,7 @@ class StokDetayModel with NetworkManagerMixin {
   }
 }
 
-@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.screamingSnake, createToJson: true, createFactory: true)
+@JsonSerializable(explicitToJson: true, createFactory: true)
 class FiyatList {
   FiyatList();
   String? aS;
@@ -59,7 +59,7 @@ class FiyatList {
   toJson() => _$FiyatListToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.screamingSnake, createToJson: true, createFactory: true)
+@JsonSerializable(explicitToJson: true, createFactory: true)
 class StokList {
   StokList();
   String? stokKodu;

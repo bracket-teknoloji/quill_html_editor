@@ -3,7 +3,7 @@ import "package:json_annotation/json_annotation.dart";
 
 part "sirket_model.g.dart";
 
-@JsonSerializable(createToJson: true, createFactory: true)
+@JsonSerializable(createFactory: true)
 @HiveType(typeId: 102)
 class SirketModel {
   SirketModel();

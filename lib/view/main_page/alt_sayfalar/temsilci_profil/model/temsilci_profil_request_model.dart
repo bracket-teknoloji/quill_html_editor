@@ -1,11 +1,9 @@
-
-
-
 import "package:json_annotation/json_annotation.dart";
 
 part "temsilci_profil_request_model.g.dart";
-@JsonSerializable(createToJson: true, includeIfNull: false)
-class TemsilciProfilRequestModel{
+
+@JsonSerializable()
+class TemsilciProfilRequestModel {
   @JsonKey(name: "CariKodu")
   String? cariKodu;
   @JsonKey(name: "DonemTipi")
@@ -30,5 +28,5 @@ class TemsilciProfilRequestModel{
 
   factory TemsilciProfilRequestModel.fromJson(Map<String, dynamic> json) => _$TemsilciProfilRequestModelFromJson(json);
 
-  toJson()=> _$TemsilciProfilRequestModelToJson(this);
+  toJson() => _$TemsilciProfilRequestModelToJson(this);
 }

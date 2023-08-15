@@ -6,7 +6,7 @@ import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 import "../../../../../../../../core/base/model/base_edit_model.dart";
-import "../../../../siparisler/model/siparis_edit_reuqest_model.dart";
+import "../../../../siparisler/model/siparis_edit_request_model.dart";
 import "../view_model/base_siparisler_diger_view_model.dart";
 
 class BaseSiparislerDigerView extends StatefulWidget {

@@ -4,7 +4,7 @@ import "../../../../../../core/base/model/base_network_mixin.dart";
 
 part "stok_listesi_model.g.dart";
 
-@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.screamingSnake, createToJson: true, includeIfNull: false)
+@JsonSerializable(explicitToJson: true)
 class StokListesiModel with NetworkManagerMixin {
   static StokListesiModel? _instance;
   static StokListesiModel get instance {

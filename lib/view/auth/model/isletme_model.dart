@@ -5,7 +5,7 @@ import "../../../core/base/model/base_network_mixin.dart";
 
 part "isletme_model.g.dart";
 
-@JsonSerializable(createToJson: true)
+@JsonSerializable()
 @HiveType(typeId: 107)
 class IsletmeModel with NetworkManagerMixin {
   @HiveField(0)

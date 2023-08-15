@@ -4,7 +4,7 @@ import "../../../model/base_network_mixin.dart";
 
 part "pdf_viewer_model.g.dart";
 
-@JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, createFactory: true, includeIfNull: false, explicitToJson: true)
+@JsonSerializable(createFactory: true, explicitToJson: true)
 class PdfModel with NetworkManagerMixin {
   PdfModel({this.raporOzelKod, this.standart, this.dicParams, this.dizaynId, this.etiketSayisi});
   String? raporOzelKod;
@@ -24,7 +24,7 @@ class PdfModel with NetworkManagerMixin {
   toString() => toJson().toString();
 }
 
-@JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, includeIfNull: false)
+@JsonSerializable()
 class DicParams {
   DicParams(
       {this.cariKodu,

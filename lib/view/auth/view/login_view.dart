@@ -42,8 +42,7 @@ class _LoginViewState extends BaseState<LoginView> {
     emailController = TextEditingController();
     companyController = TextEditingController();
     passwordController = TextEditingController();
-    var box = CacheManager.getVerifiedUser;
-    textFieldData = box;
+    textFieldData = CacheManager.getVerifiedUser;
     if (textFieldData.account?.firma != null) {
       companyController.text = textFieldData.account!.firma!;
     }
@@ -236,11 +235,11 @@ class _LoginViewState extends BaseState<LoginView> {
         a.uyeSifre = textFieldData.account?.parola;
       }
     }
-    var result = await networkManager.getUyeBilgileri(textFieldData.account?.email ?? "");
+    var result = await networkManager.getUyeBilgileri(textFieldData.account?.email ?? "", password: textFieldData.account?.parola ?? "");
     if (result.success != true) {
       if (CacheManager.getIsLicenseVerified(textFieldData.account?.email ?? "") == false) {
         dialogManager.hideAlertDialog;
-        dialogManager.showAlertDialog(result.message ?? "Lisansınız bulunamadı. Lütfen lisansınızı kontrol ediniz.");
+        dialogManager.showAlertDialog(("${result.message ?? ""}\n${result.exceptionStackTrace ?? "Lisansınız bulunamadı. Lütfen lisansınızı kontrol ediniz."}"));
         return;
       }
     }

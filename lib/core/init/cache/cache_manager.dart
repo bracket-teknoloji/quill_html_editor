@@ -124,7 +124,6 @@ class CacheManager {
   static void setCompanies(String key, String value) => companiesBox.put(key, value);
   static void setAnaVeri(MainPageModel value) => anaVeriBox.put("data", value);
   static void setAccounts(AccountResponseModel value) => accountsBox.put(value.email, value);
-
   static void setHesapBilgileri(AccountModel value) => hesapBilgileriBox.put("value", value);
 
   ///? `[TODO DÜZELT]`

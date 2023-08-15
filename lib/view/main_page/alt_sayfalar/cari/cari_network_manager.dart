@@ -64,6 +64,6 @@ class CariNetworkManager {
       queryParameters: queryParameters2,
     );
     DialogManager().hideAlertDialog;
-    return result.paramData!["SIRADAKI_NO"];
+    return result.paramData?["SIRADAKI_NO"];
   }
 }

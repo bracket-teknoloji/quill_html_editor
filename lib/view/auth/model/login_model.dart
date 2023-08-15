@@ -7,7 +7,7 @@ import "user_json_model.dart";
 part "login_model.g.dart";
 
 @HiveType(typeId: 99)
-@JsonSerializable(disallowUnrecognizedKeys: true, createToJson: true)
+@JsonSerializable(disallowUnrecognizedKeys: true)
 class TokenModel with NetworkManagerMixin {
   @HiveField(0)
   @JsonKey(

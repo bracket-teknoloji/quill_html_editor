@@ -5,9 +5,10 @@ import "../../../../../../core/base/model/base_network_mixin.dart";
 
 part "cari_listesi_model.g.dart";
 
-
 @HiveType(typeId: 195)
-@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.screamingSnake, createToJson: true, includeIfNull: false)
+@JsonSerializable(
+  explicitToJson: true,
+)
 class CariListesiModel with NetworkManagerMixin {
   //singleton
   static CariListesiModel? _instance;
@@ -205,7 +206,7 @@ class CariListesiModel with NetworkManagerMixin {
   }
 }
 
-@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.screamingSnake, createToJson: true)
+@JsonSerializable(explicitToJson: true)
 class BakiyeModel {
   String? cariKodu;
   int? dovizTipi;

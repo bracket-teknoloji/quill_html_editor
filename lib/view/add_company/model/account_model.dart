@@ -17,7 +17,7 @@ import "../../../core/base/model/base_network_mixin.dart";
 part "account_model.g.dart";
 
 @HiveType(typeId: 73)
-@JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, includeIfNull: false)
+@JsonSerializable()
 class AccountModel with NetworkManagerMixin {
   AccountModel.getValue() {
     init();
@@ -192,7 +192,7 @@ class AccountModel with NetworkManagerMixin {
     else if (Platform.isIOS) {
       // while (await AppTrackingTransparency.trackingAuthorizationStatus != TrackingStatus.authorized) {
       final iosInfo = await deviceInfo.iosInfo;
-      cihazSistemVersiyonu = iosInfo.systemVersion.split(".")[0];
+      cihazSistemVersiyonu = iosInfo.systemVersion.split(".").first;
       cihazMarkasi = iosInfo.name;
       cihazModeli = iosInfo.utsname.machine;
       ozelCihazKimligi = iosInfo.identifierForVendor;
@@ -255,7 +255,7 @@ class AccountModel with NetworkManagerMixin {
   }
 }
 
-@JsonSerializable(createToJson: true)
+@JsonSerializable()
 class ParamMap with NetworkManagerMixin {
   ParamMap();
 

@@ -4,7 +4,7 @@ import "base_network_mixin.dart";
 
 part "base_grup_kodu_model.g.dart";
 
-@JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable()
 class BaseGrupKoduModel with NetworkManagerMixin {
   String? modul;
   int? grupNo;
@@ -24,8 +24,7 @@ class BaseGrupKoduModel with NetworkManagerMixin {
 
   BaseGrupKoduModel();
 
-  factory BaseGrupKoduModel.fromJson(Map<String, dynamic> json) =>
-      _$BaseGrupKoduModelFromJson(json);
+  factory BaseGrupKoduModel.fromJson(Map<String, dynamic> json) => _$BaseGrupKoduModelFromJson(json);
 
   @override
   fromJson(Map<String, dynamic> json) {

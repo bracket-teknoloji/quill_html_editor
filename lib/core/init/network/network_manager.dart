@@ -18,6 +18,7 @@ import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/auth/model/login_model.dart";
 
 import "../../../view/add_company/model/account_response_model.dart";
+import "../../../view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "../../base/model/base_empty_model.dart";
 import "../../base/model/base_grup_kodu_model.dart";
 import "../../base/model/base_pdf_model.dart";
@@ -166,10 +167,9 @@ class NetworkManager {
     return responseModel;
   }
 
-  Future<GenericResponseModel> deleteFatura(DeleteFaturaModel model, {showError = true, showLoading = true}) {
+Future<GenericResponseModel> deleteFatura(DeleteFaturaModel model, {showError = true, showLoading = true}) {
     return dioPost<DeleteFaturaModel>(path: ApiUrls.deleteFatura, bodyModel: const DeleteFaturaModel(), data: model.toJson(), showError: showError, showLoading: showLoading);
   }
-
   Future<MemoryImage> getImage(String path) async {
     Map<String, String> head = getStandardHeader(true, true, true);
     final response = await dio.get(path, options: Options(headers: head, responseType: ResponseType.bytes));
@@ -244,7 +244,7 @@ class NetworkManager {
     var result = await dioPost<AccountResponseModel>(
         bodyModel: AccountResponseModel(),
         showError: false,
-        data: getFromCache ? CacheManager.getHesapBilgileri?.toJson() : AccountModel.instance.toJson(),
+        data: getFromCache ? (CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi)?.toJson() : AccountModel.instance.toJson(),
         addTokenKey: false,
         path: ApiUrls.getUyeBilgileri);
     if (result.success == true) {

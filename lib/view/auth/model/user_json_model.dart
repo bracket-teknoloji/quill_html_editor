@@ -4,7 +4,7 @@ import "package:json_annotation/json_annotation.dart";
 
 part "user_json_model.g.dart";
 
-@JsonSerializable(createToJson: true)
+@JsonSerializable()
 class UserJson {
   @JsonKey(name: "profilModel")
   ProfilModel? profilModel;
@@ -48,7 +48,7 @@ class UserJson {
   }
 }
 
-@JsonSerializable(createToJson: true)
+@JsonSerializable()
 class ProfilModel {
   @JsonKey(name: "kullaniciYetkiModel")
   Map? kullaniciYetkiModel;
@@ -60,7 +60,7 @@ class ProfilModel {
   String? sevkiyatSatisFatEFaturaMukellefineKesilmesin;
   ProfilModel();
 
-  factory ProfilModel.fromJson(Map<String,dynamic> json) {
+  factory ProfilModel.fromJson(Map<String, dynamic> json) {
     return _$ProfilModelFromJson(json);
   }
 

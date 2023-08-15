@@ -4,7 +4,7 @@ import "../../../../../../core/base/model/base_network_mixin.dart";
 
 part "stok_hareketleri_model.g.dart";
 
-@JsonSerializable(includeIfNull: false, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable()
 class StokHareketleriModel with NetworkManagerMixin {
   int? inckeyno;
   bool? cikisIslemi;

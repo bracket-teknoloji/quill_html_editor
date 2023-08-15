@@ -13,7 +13,7 @@ import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "../../../view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_reuqest_model.dart";
+import "../../../view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "../../base/model/base_edit_model.dart";
 import "../../constants/enum/base_edit_enum.dart";
 import "../../constants/enum/siparis_tipi_enum.dart";

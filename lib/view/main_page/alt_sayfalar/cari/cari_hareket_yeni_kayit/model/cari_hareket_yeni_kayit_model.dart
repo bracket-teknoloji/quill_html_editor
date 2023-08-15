@@ -4,7 +4,7 @@ import "../../../../../../core/base/model/base_network_mixin.dart";
 
 part "cari_hareket_yeni_kayit_model.g.dart";
 
-@JsonSerializable(createToJson: true, includeIfNull: false, fieldRename: FieldRename.screamingSnake, explicitToJson: true)
+@JsonSerializable(explicitToJson: true)
 class CariHareketYeniKayitModel with NetworkManagerMixin {
   String? aciklama;
   double? alacak;

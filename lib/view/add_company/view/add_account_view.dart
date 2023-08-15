@@ -129,6 +129,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
           for (AccountResponseModel item in response.data!) {
             if (!CacheManager.accountsBox.containsKey(item.email)) {
               Get.offAndToNamed("/addCompany");
+          CacheManager.setHesapBilgileri(AccountModel.instance);
               CacheManager.setAccounts(item);
               dialogManager.showSnackBar("Başarılı");
             } else {

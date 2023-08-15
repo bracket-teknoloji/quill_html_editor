@@ -4,7 +4,7 @@ import "base_network_mixin.dart";
 
 part "base_pdf_model.g.dart";
 
-@JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, includeIfNull: false)
+@JsonSerializable()
 class BasePdfModel with NetworkManagerMixin {
   String? byteData;
   String? uzanti;

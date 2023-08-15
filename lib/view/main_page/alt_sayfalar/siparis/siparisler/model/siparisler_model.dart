@@ -4,7 +4,7 @@ import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/kale
 
 part "siparisler_model.g.dart";
 
-@JsonSerializable(createToJson: true, includeIfNull: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(includeIfNull: true)
 class SiparislerModel with NetworkManagerMixin {
   String? islemId;
   int? tempKayitTipi;

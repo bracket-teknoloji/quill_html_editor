@@ -3,7 +3,7 @@ import "package:json_annotation/json_annotation.dart";
 
 part "param_model.g.dart";
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class ParamModel {
   ParamModel();
   @JsonKey(name: "ParamYuklendi")
@@ -437,7 +437,7 @@ class ParamModel {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class CariAktiviteTipleri {
   CariAktiviteTipleri();
   @JsonKey(name: "AKTIVITE_TIPI")
@@ -457,7 +457,7 @@ class CariAktiviteTipleri {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class CekSenParam {
   CekSenParam();
   @JsonKey(name: "BELGE_TIPI")
@@ -484,7 +484,7 @@ class CekSenParam {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class DepoList {
   DepoList();
   @JsonKey(name: "DEPO_KODU")
@@ -511,7 +511,7 @@ class DepoList {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class DovizList {
   DovizList();
   @JsonKey(name: "DOVIZ_KODU")
@@ -543,12 +543,7 @@ class DovizList {
   }
 }
 
-@JsonSerializable(
-  includeIfNull: false,
-  createFactory: true,
-  createToJson: true,
-  fieldRename: FieldRename.screamingSnake,
-)
+@JsonSerializable(createFactory: true)
 class KasaList {
   KasaList();
 
@@ -600,7 +595,7 @@ class KasaList {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class ListCariOdemeKodu {
   ListCariOdemeKodu();
 
@@ -620,7 +615,7 @@ class ListCariOdemeKodu {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class ListFatuEkMaliyet {
   ListFatuEkMaliyet();
 
@@ -641,7 +636,7 @@ class ListFatuEkMaliyet {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class ListIskTip {
   ListIskTip();
 
@@ -661,7 +656,7 @@ class ListIskTip {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class ListOzelKodTum {
   ListOzelKodTum();
 
@@ -684,7 +679,7 @@ class ListOzelKodTum {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true)
+@JsonSerializable(createFactory: true)
 class MapEkAlanlar {
   MapEkAlanlar();
 
@@ -705,7 +700,7 @@ class MapEkAlanlar {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createToJson: true)
+@JsonSerializable()
 class MapCariKullSahalar {
   MapCariKullSahalar();
 
@@ -754,7 +749,8 @@ class MapCariKullSahalar {
     return toJson().toString();
   }
 }
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+
+@JsonSerializable(createFactory: true)
 class MapKdvSifirBelgeTipiOzelKod2 {
   MapKdvSifirBelgeTipiOzelKod2();
 
@@ -778,7 +774,7 @@ class MapKdvSifirBelgeTipiOzelKod2 {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class MapStokGrupAdlari {
   MapStokGrupAdlari();
 
@@ -802,7 +798,7 @@ class MapStokGrupAdlari {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class MapStokKullSahalar {
   MapStokKullSahalar();
 
@@ -852,7 +848,7 @@ class MapStokKullSahalar {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class MustahsilParam {
   MustahsilParam();
 
@@ -877,7 +873,7 @@ class MustahsilParam {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 @HiveType(typeId: 47)
 class NetFectDizaynList {
   NetFectDizaynList();
@@ -905,8 +901,7 @@ class NetFectDizaynList {
   @HiveField(10)
   bool? varsayilanMi;
   @HiveField(11)
-  String?  detayKod;
-  
+  String? detayKod;
 
   factory NetFectDizaynList.fromJson(Map<String, dynamic> json) {
     return _$NetFectDizaynListFromJson(json);
@@ -921,7 +916,7 @@ class NetFectDizaynList {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class NetsisOndalikResponseModel {
   NetsisOndalikResponseModel();
 
@@ -947,7 +942,7 @@ class NetsisOndalikResponseModel {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class PlasiyerList {
   PlasiyerList();
 
@@ -967,7 +962,7 @@ class PlasiyerList {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class SatirAcikBaslikList {
   SatirAcikBaslikList();
 
@@ -996,7 +991,7 @@ class SatirAcikBaslikList {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true)
+@JsonSerializable(createFactory: true)
 class StokDetayliAramaAlanlar {
   StokDetayliAramaAlanlar();
 
@@ -1018,7 +1013,7 @@ class StokDetayliAramaAlanlar {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class SubeList {
   SubeList();
 
@@ -1055,7 +1050,7 @@ class SubeList {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class TalTekParam {
   TalTekParam();
   int? tip;
@@ -1125,7 +1120,7 @@ class TalTekParam {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class YaziciList {
   YaziciList();
 

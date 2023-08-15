@@ -16,7 +16,7 @@ import "../../../../../../../../core/constants/static_variables/static_variables
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../../core/init/network/login/api_urls.dart";
 import "../../../../../cari/cari_listesi/model/cari_listesi_model.dart";
-import "../../../../siparisler/model/siparis_edit_reuqest_model.dart";
+import "../../../../siparisler/model/siparis_edit_request_model.dart";
 import "../../../model/base_siparis_edit_model.dart";
 import "../view_model/base_siparisler_genel_view_model.dart";
 
@@ -216,7 +216,21 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
               ),
               Row(
                 children: [
-                  Expanded(child: CustomTextField(enabled: enable, labelText: "Toplu Depo", readOnly: true, suffixMore: true, controller: topluDepoController)),
+                  Expanded(
+                      child: CustomTextField(
+                    enabled: enable,
+                    labelText: "Toplu Depo",
+                    readOnly: true,
+                    suffixMore: true,
+                    controller: topluDepoController,
+                    onTap: () async {
+                      var result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context);
+                      if (result != null) {
+                        model.topluDepo = result.depoKodu;
+                        topluDepoController.text = result.depoTanimi ?? result.depoKodu.toStringIfNull ?? "";
+                      }
+                    },
+                  )),
                   Expanded(
                       child: CustomTextField(
                     enabled: enable,
@@ -368,6 +382,8 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
   }
 
   void controllerFiller() {
+    model.tarih ??= DateTime.now();
+    model.teslimTarihi ??= DateTime.now();
     belgeNoController.text = model.belgeNo ?? "";
     cariController.text = model.cariModel?.cariAdi ?? "";
     teslimCariController.text = model.teslimCariAdi ?? "";

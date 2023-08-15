@@ -1,13 +1,10 @@
-
-
 import "package:json_annotation/json_annotation.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 
 part "kod_degistir_model.g.dart";
 
-
-@JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, includeIfNull: true)
-class KodDegistirModel with NetworkManagerMixin{
+@JsonSerializable(includeIfNull: true)
+class KodDegistirModel with NetworkManagerMixin {
   String? kaynakSil;
   String? kaynakCari;
   String? hedefCari;

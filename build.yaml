@@ -5,6 +5,7 @@ targets:
         options:
           explicit_to_json: true
           include_if_null: false
+          create_to_json: true
           field_rename: screamingSnake
       freezed:
         options:

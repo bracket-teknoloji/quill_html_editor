@@ -10,7 +10,7 @@ import "../../../../../../../../core/components/textfield/custom_text_field.dart
 import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../stok/stok_liste/model/stok_listesi_model.dart";
-import "../../../../siparisler/model/siparis_edit_reuqest_model.dart";
+import "../../../../siparisler/model/siparis_edit_request_model.dart";
 import "../../../model/base_siparis_edit_model.dart";
 import "../view_model/base_siparis_kalemler_view_model.dart";
 
@@ -98,7 +98,14 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                                 return Card(
                                     child: ListTile(
                                   onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(context, title: viewModel.kalemList?[index].stokAdi ?? "", children: [
-                                    BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit_outlined),
+                                    BottomSheetModel(
+                                        title: "Düzelt",
+                                        iconWidget: Icons.edit_outlined,
+                                        onTap: () async {
+                                          Get.back();
+                                          await Get.toNamed("/kalemEkle", arguments: viewModel.kalemList?[index]);
+                                          viewModel.updateKalemList();
+                                        }),
                                     BottomSheetModel(
                                         title: "Sil",
                                         iconWidget: Icons.delete_outline_outlined,

@@ -10,6 +10,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 import "core/base/view/kalem_ekle/model/kalem_ekle_model.dart";
 import "core/base/view/kalem_ekle/view/kalem_ekle_view.dart";
@@ -98,7 +99,9 @@ class PickerApp extends StatelessWidget {
         GetPage(name: "/addCompany", page: () => const AccountsView()),
         GetPage(name: "/addAccount", page: () => const AddAccountView()),
         GetPage(name: "/qr", page: () => const QRScannerView()),
-        GetPage(name: "/kalemEkle", page: () => KalemEkleView(stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null)),
+        GetPage(
+            name: "/kalemEkle",
+            page: () => KalemEkleView(stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null, kalemModel: Get.arguments is KalemModel ? Get.arguments : null)),
         GetPage(
           name: "/mainPage",
           page: () => const MainPageView(),
@@ -173,7 +176,7 @@ Future<void> firebaseInitialized() async {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
     FirebaseMessaging messaging = FirebaseMessaging.instance;
     await messaging.requestPermission();
-    messaging.setForegroundNotificationPresentationOptions(sound: true);
+    messaging.setForegroundNotificationPresentationOptions(sound: true, alert: true, badge: true);
     // FirebaseMessaging.onMessageOpenedApp.listen((event) => print(event.toMap().toString()));
     // messaging.getNotificationSettings().then((value) => print(value.authorizationStatus));
     // FirebaseMessaging.onBackgroundMessage((message) async => print(message));

@@ -4,9 +4,8 @@ import "../../../../../../core/base/model/base_network_mixin.dart";
 
 part "cari_detay_model.g.dart";
 
-@JsonSerializable(includeIfNull: false, createToJson: true, fieldRename: FieldRename.screamingSnake)
-class 
-CariDetayModel with NetworkManagerMixin {
+@JsonSerializable()
+class CariDetayModel with NetworkManagerMixin {
   //singleton
   static CariDetayModel? _instance;
   static CariDetayModel get instance {
@@ -15,7 +14,7 @@ CariDetayModel with NetworkManagerMixin {
   }
 
   CariDetayModel._init();
-  //setter singleton 
+  //setter singleton
   static void setInstance(CariDetayModel? instance) => _instance = instance;
   CariDetayModel();
   String? cariKodu;
@@ -66,7 +65,7 @@ CariDetayModel with NetworkManagerMixin {
   }
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class BakiyeList {
   BakiyeList();
   String? cariKodu;
@@ -80,7 +79,7 @@ class BakiyeList {
   Map<String, dynamic> toJson() => _$BakiyeListToJson(this);
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class BankaList {
   BankaList();
   String? cariKodu;
@@ -97,7 +96,7 @@ class BankaList {
   Map<String, dynamic> toJson() => _$BankaListToJson(this);
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class CariList {
   CariList();
   String? cariKodu;
@@ -151,7 +150,7 @@ class CariList {
   Map<String, dynamic> toJson() => _$CariListToJson(this);
 }
 
-@JsonSerializable(includeIfNull: false, createFactory: true, createToJson: true, fieldRename: FieldRename.screamingSnake)
+@JsonSerializable(createFactory: true)
 class IrtibatList {
   IrtibatList();
   String? cariKodu;

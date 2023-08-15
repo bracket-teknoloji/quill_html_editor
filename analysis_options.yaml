@@ -9,6 +9,11 @@
 # packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 analyzer:
+  enable-experiment:
+    - records
+    - patterns
+    - sealed-class
+    - class-modifiers
   exclude:
     - "**/*.g.dart"
   errors:

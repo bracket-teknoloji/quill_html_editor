@@ -2,7 +2,7 @@ import "package:json_annotation/json_annotation.dart";
 
 part "lang_model.g.dart";
 
-@JsonSerializable(createToJson: true, createFactory: true, fieldRename: FieldRename.none)
+@JsonSerializable(createFactory: true, fieldRename: FieldRename.none)
 class LangModel {
   LangModel();
 

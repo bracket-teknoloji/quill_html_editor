@@ -268,7 +268,6 @@ class DialogManager {
   }
 
   Future selectCompanyDialog() {
-    Box? box = CacheManager.accountsBox;
     Box preferences = CacheManager.preferencesBox;
     return _baseDialog(
         btnOkText: "Firmaları Düzenle",
@@ -294,15 +293,15 @@ class DialogManager {
                         password: "demo"));
               }),
           ...List.generate(
-            box.length,
+            CacheManager.accountsBox.length,
             (index) {
-              var title = ((box.getAt(index)?.firma ?? "")).toString();
-              log(box.getAt(index).toString());
+              var title = (CacheManager.accountsBox.getAt(index)?.firma ?? "").toString();
+              log(CacheManager.accountsBox.getAt(index).toString());
               return ListTile(
                   title: Text(title),
                   leading: IconHelper.smallIcon("User-Account"),
                   onTap: () {
-                    Get.back(result: LoginDialogModel(account: box.getAt(index)!, username: preferences.get(title)?[1] ?? "", password: preferences.get(title)?[2] ?? ""), closeOverlays: true);
+                    Get.back(result: LoginDialogModel(account: CacheManager.accountsBox.getAt(index), username: preferences.get(title)?[1] ?? "", password: preferences.get(title)?[2] ?? ""), closeOverlays: true);
                   });
             },
           ),

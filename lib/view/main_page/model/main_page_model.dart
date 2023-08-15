@@ -9,7 +9,7 @@ import "user_model/user_model.dart";
 
 part "main_page_model.g.dart";
 
-@JsonSerializable(createToJson: true)
+@JsonSerializable()
 @HiveType(typeId: 100)
 class MainPageModel with NetworkManagerMixin {
   @JsonKey(name: "UserModel")

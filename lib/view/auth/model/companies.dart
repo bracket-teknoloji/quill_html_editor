@@ -4,7 +4,7 @@ import "../../../core/base/model/base_network_mixin.dart";
 
 part "companies.g.dart";
 
-@JsonSerializable(createToJson: true)
+@JsonSerializable()
 class CompanyModel with NetworkManagerMixin {
   @JsonKey(name: "SIRKET")
   String? company;
@@ -26,6 +26,7 @@ class CompanyModel with NetworkManagerMixin {
   toString() {
     return "company: $company,\n year: $year";
   }
+
   //operator == and hashCode
   @override
   bool operator ==(Object other) {

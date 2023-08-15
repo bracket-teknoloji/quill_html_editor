@@ -34,7 +34,9 @@ class ListSiparisEditModel {
 }
 
 //sdşfljksjşdlfkjsdlş
-@JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, createFactory: true, includeIfNull: false)
+@JsonSerializable(
+  createFactory: true,
+)
 @HiveType(typeId: 152)
 class BaseSiparisEditModel with NetworkManagerMixin {
   //singleton
@@ -298,10 +300,20 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   double get sumGenIsk1 => kalemList?.map((e) => e.iskonto1).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
   double get sumGenIsk2 => kalemList?.map((e) => e.iskonto2).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
   double get sumGenIsk3 => kalemList?.map((e) => e.iskonto3).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
-  double get toplamKalemMiktari => kalemList?.map((e) => e.toplamKalemMiktari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0;
-  double get toplamBrutTutar => kalemList?.map((e) => e.brutFiyat).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
-  double get getAraToplam => (genelToplam ?? 0) - (kdv ?? 0);
-  double get getToplamMiktar => kalemList?.map((e) => e.miktar).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
+  int get toplamKalemMiktari {
+    kalemAdedi = (kalemList?.map((e) => e.toplamKalemMiktari.toInt()).toList().fold(0, (a, b) => (a) + (b)) ?? 0).toInt();
+    return (kalemAdedi ?? 0);
+  }
+
+  double get toplamBrutTutar => kalemList?.map((e) => (e.brutFiyat ?? 0) * (e.miktar ?? 0)).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0;
+  double get getAraToplam {
+    araToplam = kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0;
+    return araToplam ?? 0;
+  }
+  // double get malFazIsk {
+  //   Isko
+  // }
+
   bool get yurticiMi => tipi != 6;
   int get getKalemSayisi => kalemList?.length ?? (kalemAdedi ?? 0);
   bool get isEmpty => this == BaseSiparisEditModel();
@@ -328,7 +340,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
 @CopyWith()
 @HiveType(typeId: 17)
-@JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, includeIfNull: false, createFactory: true)
+@JsonSerializable(createFactory: true)
 class KalemModel {
   @HiveField(0)
   bool? iskonto1OranMi;
@@ -511,7 +523,7 @@ class KalemModel {
       }
       return ((miktar ?? 0) * (brutFiyat ?? 0)) - result;
     } else {
-      return (iskonto1 ?? 0);
+      return (iskonto1 ?? 0) * (miktar ?? 0);
     }
   }
 

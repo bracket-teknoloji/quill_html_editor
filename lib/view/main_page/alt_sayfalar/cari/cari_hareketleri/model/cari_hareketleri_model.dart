@@ -4,7 +4,7 @@ import "../../../../../../core/base/model/base_network_mixin.dart";
 
 part "cari_hareketleri_model.g.dart";
 
-@JsonSerializable(fieldRename: FieldRename.screamingSnake, createToJson: true)
+@JsonSerializable()
 class CariHareketleriModel with NetworkManagerMixin {
   int? inckeyno;
   String? cariKodu;

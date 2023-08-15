@@ -7,11 +7,5 @@
   // Remove from file watching
   "files.watcherExclude": {
     "**/.fvm": true
-  },
-  "dart.debugSdkLibraries": true,
-  "editor.fontFamily": "JetBrains Mono",
-  "errorLens.fontWeight": "normal",
-  "editor.fontWeight": "450",
-  "editor.fontSize": 14,
-  "java.configuration.updateBuildConfiguration": "interactive"
+  }
 }

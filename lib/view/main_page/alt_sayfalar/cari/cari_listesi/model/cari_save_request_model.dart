@@ -4,7 +4,7 @@ import "../../../../../../core/base/model/base_network_mixin.dart";
 
 part "cari_save_request_model.g.dart";
 
-@JsonSerializable(fieldRename: FieldRename.screamingSnake, createToJson: true)
+@JsonSerializable()
 class CariSaveRequestModel with NetworkManagerMixin {
   //singleton
   static CariSaveRequestModel? _instance;

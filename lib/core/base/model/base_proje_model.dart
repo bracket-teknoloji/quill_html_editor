@@ -4,7 +4,7 @@ import "base_network_mixin.dart";
 
 part "base_proje_model.g.dart";
 
-@JsonSerializable(createToJson: true, fieldRename: FieldRename.screamingSnake, includeIfNull: false)
+@JsonSerializable()
 class BaseProjeModel with NetworkManagerMixin {
   String? projeKodu;
   String? projeAciklama;

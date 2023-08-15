@@ -9,7 +9,7 @@ import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
 import "../../../cari/cari_listesi/model/cari_listesi_model.dart";
-import "../../siparisler/model/siparis_edit_reuqest_model.dart";
+import "../../siparisler/model/siparis_edit_request_model.dart";
 import "../alt_sayfalar/base_siparisler_diger/view/base_siparisler_diger_view.dart";
 import "../alt_sayfalar/base_siparisler_genel/view/base_siparisler_genel_view.dart";
 import "../alt_sayfalar/base_siparisler_kalemler/view/base_siparis_kalemler_view.dart";

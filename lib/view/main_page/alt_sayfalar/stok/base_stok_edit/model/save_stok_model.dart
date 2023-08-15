@@ -4,13 +4,16 @@ import "../../../../../../core/base/model/base_network_mixin.dart";
 
 part "save_stok_model.g.dart";
 
-@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.screamingSnake, createToJson: true, includeIfNull: false)
+@JsonSerializable(
+  explicitToJson: true,
+)
 class SaveStokModel with NetworkManagerMixin {
   static SaveStokModel? _instance;
   static SaveStokModel get instance {
     _instance ??= SaveStokModel._init();
     return _instance!;
   }
+
   SaveStokModel._init();
   SaveStokModel();
   //setter for singleton

@@ -4,7 +4,7 @@ import "package:json_annotation/json_annotation.dart";
 
 part "profil_yetki_model.g.dart";
 
-@JsonSerializable(createToJson: true, createFactory: true)
+@JsonSerializable(createFactory: true)
 class ProfilYetkiModel {
   ProfilYetkiModel();
   @JsonKey(name: "yazdirma_SatisIrs_Yazicilari")
@@ -1772,7 +1772,7 @@ class ProfilYetkiModel {
   }
 }
 
-@JsonSerializable(fieldRename: FieldRename.pascal, createToJson: true)
+@JsonSerializable(fieldRename: FieldRename.pascal)
 class SevkemriMalKontrolTipi {
   int? kod;
   String? tanim;
