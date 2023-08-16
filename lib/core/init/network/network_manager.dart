@@ -18,7 +18,6 @@ import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/auth/model/login_model.dart";
 
 import "../../../view/add_company/model/account_response_model.dart";
-import "../../../view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "../../base/model/base_empty_model.dart";
 import "../../base/model/base_grup_kodu_model.dart";
 import "../../base/model/base_pdf_model.dart";

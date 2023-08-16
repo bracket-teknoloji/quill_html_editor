@@ -21,7 +21,33 @@ platform :ios do
   lane :beta do
     print(FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD)
     increment_build_number(xcodeproj: "Runner.xcodeproj")
-    build_app(workspace: "Runner.xcworkspace", scheme: "Runner")
+    build_app(
+      skip_build_archive: true,
+      archive_path: "../build/ios/archive/Runner.xcarchive",
+    )
     upload_to_testflight
+  end
+
+  desc "Release a new version to the App Store"
+  lane :release do
+    print(FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD)
+    increment_build_number(xcodeproj: "Runner.xcodeproj")
+    build_app(workspace: "Runner.xcworkspace", scheme: "Runner")
+    upload_to_app_store(
+      api_key_path: "./AuthKey_8Q3K8Z3Y9F.p8",
+      skip_waiting_for_build_processing: true,
+      skip_metadata: true,
+      skip_screenshots: true,
+      skip_app_version_update: true,
+      skip_submission: true,
+      app_version: "1.0.0",
+      build_number: "1"
+    )
+  end
+
+  desc "update screenshots"
+  lane :screenshots do
+    print(FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD)
+    capture_screenshots
   end
 end

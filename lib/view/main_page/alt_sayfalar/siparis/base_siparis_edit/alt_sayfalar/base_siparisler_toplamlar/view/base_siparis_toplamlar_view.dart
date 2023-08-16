@@ -147,7 +147,8 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               enabled: enable,
               readOnly: true,
               suffixMore: true,
-              controller: iskontoTipi2Controller, onTap: () async {
+              controller: iskontoTipi2Controller,
+              onTap: () async {
                 var result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
                 if (result != null) {
                   model.genisk2Tipi = result.iskontoTipi;
@@ -171,7 +172,8 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               enabled: enable,
               suffixMore: true,
               readOnly: true,
-              controller: iskontoTipi3Controller, onTap: () async {
+              controller: iskontoTipi3Controller,
+              onTap: () async {
                 var result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
                 if (result != null) {
                   model.genisk3Tipi = result.iskontoTipi;
@@ -194,17 +196,19 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               enabled: enable,
               keyboardType: TextInputType.number,
               controller: tevkifatController,
-              suffixMore: true,
-              onTap: () async {
-                var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                    title: "Tevkifat Oranı",
-                    children: List.generate(
-                        viewModel.tevkifatMap.length, (index) => BottomSheetModel(title: viewModel.tevkifatMap.keys.toList()[index], value: viewModel.tevkifatMap.values.toList()[index])));
-                if (result != null) {
-                  BaseSiparisEditModel.instance.ekMaliyet2Tutari = (BaseSiparisEditModel.instance.getBrutTutar) * (result ?? 0) * (-1);
-                  tevkifatController.text = BaseSiparisEditModel.instance.ekMaliyet2Tutari?.dotSeparatedWithFixedDigits ?? "";
-                }
-              },
+              suffix: IconButton(
+                  onPressed: () async {
+                    var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                        title: "Tevkifat Oranı",
+                        children: List.generate(
+                            viewModel.tevkifatMap.length, (index) => BottomSheetModel(title: viewModel.tevkifatMap.keys.toList()[index], value: viewModel.tevkifatMap.values.toList()[index])));
+                    if (result != null) {
+                      BaseSiparisEditModel.instance.ekMaliyet2Tutari = (BaseSiparisEditModel.instance.getBrutTutar) * (result ?? 0) * (-1);
+                      tevkifatController.text = BaseSiparisEditModel.instance.ekMaliyet2Tutari?.dotSeparatedWithFixedDigits ?? "";
+                    }
+                  },
+                  icon: const Icon(Icons.more_horiz_outlined)),
+              onChanged: (value) => model.ekMaliyet2Tutari = double.tryParse(value),
             ),
           ].map((e) => Expanded(child: e)).toList(),
         ),
