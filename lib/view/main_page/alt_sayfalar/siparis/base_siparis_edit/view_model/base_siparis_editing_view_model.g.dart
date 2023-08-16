@@ -50,6 +50,23 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
     });
   }
 
+  late final _$yeniKaydaHazirlaMiAtom = Atom(
+      name: '_BaseSiparisEditingViewModelBase.yeniKaydaHazirlaMi',
+      context: context);
+
+  @override
+  bool get yeniKaydaHazirlaMi {
+    _$yeniKaydaHazirlaMiAtom.reportRead();
+    return super.yeniKaydaHazirlaMi;
+  }
+
+  @override
+  set yeniKaydaHazirlaMi(bool value) {
+    _$yeniKaydaHazirlaMiAtom.reportWrite(value, super.yeniKaydaHazirlaMi, () {
+      super.yeniKaydaHazirlaMi = value;
+    });
+  }
+
   late final _$_BaseSiparisEditingViewModelBaseActionController =
       ActionController(
           name: '_BaseSiparisEditingViewModelBase', context: context);
@@ -92,10 +109,24 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
   }
 
   @override
+  void changeYeniKaydaHazirlaMi() {
+    final _$actionInfo =
+        _$_BaseSiparisEditingViewModelBaseActionController.startAction(
+            name: '_BaseSiparisEditingViewModelBase.changeYeniKaydaHazirlaMi');
+    try {
+      return super.changeYeniKaydaHazirlaMi();
+    } finally {
+      _$_BaseSiparisEditingViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 isLastPage: ${isLastPage},
 isBaseSiparisEmpty: ${isBaseSiparisEmpty},
+yeniKaydaHazirlaMi: ${yeniKaydaHazirlaMi},
 getKalemCount: ${getKalemCount}
     ''';
   }

@@ -2,6 +2,9 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/core/constants/extensions/model_extensions.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
@@ -103,7 +106,38 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
               // title: const Text("Sipariş Detayları"),
               actions: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    await bottomSheetDialogManager.showBottomSheetDialog(context,
+                        title: "Seçenekler",
+                        children: [
+                          BottomSheetModel(
+                              title: "Cari İşlemleri",
+                              iconWidget: Icons.person_2_outlined,
+                              onTap: () {
+                                Get.back();
+                                dialogManager.showCariGridViewDialog(BaseSiparisEditModel.instance.cariModel);
+                              }).yetkiKontrol(BaseSiparisEditModel.instance.cariModel == null),
+                          BottomSheetModel(title: "Toplu İskonto Girişi", iconWidget: Icons.add_outlined),
+                          BottomSheetModel(title: "Döviz Kurları", iconWidget: Icons.attach_money_outlined),
+                          BottomSheetModel(title: "Döviz Kurlarını Güncelle", iconWidget: Icons.attach_money_outlined),
+                          BottomSheetModel(
+                              title: "Cari'ye Yapılan Son Satışlar",
+                              iconWidget: Icons.info_outline_rounded,
+                              onTap: () {
+                                Get.back();
+                                Get.toNamed("/mainPage/cariStokSatisOzeti", arguments: BaseSiparisEditModel.instance.cariModel);
+                              }).yetkiKontrol(BaseSiparisEditModel.instance.cariModel == null),
+                          BottomSheetModel(title: "Barkod Tanımla", iconWidget: Icons.qr_code_outlined),
+                          BottomSheetModel(
+                              title: "Ekranı Yeni Kayda Hazırla",
+                              description: "Belge kaydından sonra yeni belge giriş ekranını otomatik hazırla.",
+                              iconWidget: viewModel.yeniKaydaHazirlaMi ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
+                              onTap: () {
+                                Get.back();
+                                viewModel.changeYeniKaydaHazirlaMi();
+                              }),
+                        ].nullCheck.cast<BottomSheetModel>());
+                  },
                   icon: const Icon(Icons.more_vert_outlined),
                 ),
                 Observer(builder: (_) {
@@ -111,7 +145,14 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                     visible: viewModel.isLastPage,
                     child: IconButton(
                       onPressed: () async {
-                        await postData();
+                        if (await postData()) {
+                          Get.back();
+                          if (viewModel.yeniKaydaHazirlaMi) {
+                            BaseSiparisEditModel.resetInstance();
+                            BaseSiparisEditModel.instance.isNew = true;
+                            Get.toNamed("/mainPage/siparisEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: model.siparisTipiEnum));
+                          }
+                        }
                       },
                       icon: const Icon(Icons.save_outlined),
                     ),
@@ -155,8 +196,12 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
     }
   }
 
-  Future<void> postData() async {
+  Future<bool> postData() async {
     var result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.saveFatura, bodyModel: BaseSiparisEditModel(), data: BaseSiparisEditModel.instance.toJson(), showLoading: true);
-    if (result.success == true) {}
+    if (result.success == true) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

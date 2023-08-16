@@ -212,6 +212,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                 IconButton(
                                     onPressed: () {
                                       teslimTarihiController.clear();
+                                      viewModel.kalemModel.teslimTarihi = null;
                                     },
                                     icon: const Icon(Icons.close)),
                                 IconButton(

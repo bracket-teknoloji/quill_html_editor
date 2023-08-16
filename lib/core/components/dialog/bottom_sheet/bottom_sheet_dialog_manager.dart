@@ -82,7 +82,9 @@ class BottomSheetDialogManager {
                                     ListTile(
                                         onTap: children?[index].onTap ?? () => Get.back(result: children![index].value),
                                         title: Text(children![index].title),
-                                        subtitle: children![index].description != null ? Text(children![index].description ?? "") : null,
+                                        subtitle: children![index].description != null
+                                            ? Text(children![index].description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withOpacity(0.6)))
+                                            : null,
                                         leading: children![index].icon != null || children![index].iconWidget != null
                                             ? SizedBox(
                                                 width: 20,

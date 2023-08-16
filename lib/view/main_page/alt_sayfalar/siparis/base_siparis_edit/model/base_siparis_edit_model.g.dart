@@ -6,6 +6,1370 @@ part of 'base_siparis_edit_model.dart';
 // CopyWithGenerator
 // **************************************************************************
 
+abstract class _$BaseSiparisEditModelCWProxy {
+  BaseSiparisEditModel duzeltmetarihi(DateTime? duzeltmetarihi);
+
+  BaseSiparisEditModel kalemAdedi(int? kalemAdedi);
+
+  BaseSiparisEditModel cariEfaturami(String? cariEfaturami);
+
+  BaseSiparisEditModel cYedek6(String? cYedek6);
+
+  BaseSiparisEditModel duzeltmeyapankul(String? duzeltmeyapankul);
+
+  BaseSiparisEditModel plasiyerAciklama(String? plasiyerAciklama);
+
+  BaseSiparisEditModel projeAciklama(String? projeAciklama);
+
+  BaseSiparisEditModel tempJsonData(BaseSiparisEditModel? tempJsonData);
+
+  BaseSiparisEditModel teslimCariAdi(String? teslimCariAdi);
+
+  BaseSiparisEditModel kdvDahilmi(bool? kdvDahilmi);
+
+  BaseSiparisEditModel remoteTempBelge(bool? remoteTempBelge);
+
+  BaseSiparisEditModel tempBelgeMi(bool? tempBelgeMi);
+
+  BaseSiparisEditModel cariModel(CariListesiModel? cariModel);
+
+  BaseSiparisEditModel islemeBaslamaTarihi(DateTime? islemeBaslamaTarihi);
+
+  BaseSiparisEditModel istenilenTeslimTarihi(DateTime? istenilenTeslimTarihi);
+
+  BaseSiparisEditModel kayittarihi(DateTime? kayittarihi);
+
+  BaseSiparisEditModel kosulTarihi(DateTime? kosulTarihi);
+
+  BaseSiparisEditModel tarih(DateTime? tarih);
+
+  BaseSiparisEditModel teslimTarihi(DateTime? teslimTarihi);
+
+  BaseSiparisEditModel vadeTarihi(DateTime? vadeTarihi);
+
+  BaseSiparisEditModel araToplam(double? araToplam);
+
+  BaseSiparisEditModel ekMaliyet1Tutari(double? ekMaliyet1Tutari);
+
+  BaseSiparisEditModel ekMaliyet2Tutari(double? ekMaliyet2Tutari);
+
+  BaseSiparisEditModel ekMaliyet3Tutari(double? ekMaliyet3Tutari);
+
+  BaseSiparisEditModel genelIskonto1(double? genelIskonto1);
+
+  BaseSiparisEditModel genelIskonto2(double? genelIskonto2);
+
+  BaseSiparisEditModel genelIskonto3(double? genelIskonto3);
+
+  BaseSiparisEditModel genelToplam(double? genelToplam);
+
+  BaseSiparisEditModel genIsk1O(double? genIsk1O);
+
+  BaseSiparisEditModel genIsk1T(double? genIsk1T);
+
+  BaseSiparisEditModel genIsk2O(double? genIsk2O);
+
+  BaseSiparisEditModel genIsk2T(double? genIsk2T);
+
+  BaseSiparisEditModel genIsk3O(double? genIsk3O);
+
+  BaseSiparisEditModel genIsk3T(double? genIsk3T);
+
+  BaseSiparisEditModel kdv(double? kdv);
+
+  BaseSiparisEditModel belgeTipi(int? belgeTipi);
+
+  BaseSiparisEditModel cikisDepoKodu(int? cikisDepoKodu);
+
+  BaseSiparisEditModel genisk1Tipi(int? genisk1Tipi);
+
+  BaseSiparisEditModel genisk2Tipi(int? genisk2Tipi);
+
+  BaseSiparisEditModel genisk3Tipi(int? genisk3Tipi);
+
+  BaseSiparisEditModel kalemModelAdedi(int? kalemModelAdedi);
+
+  BaseSiparisEditModel tempBelgeId(int? tempBelgeId);
+
+  BaseSiparisEditModel tempKayitTipi(int? tempKayitTipi);
+
+  BaseSiparisEditModel tipi(int? tipi);
+
+  BaseSiparisEditModel topluDepo(int? topluDepo);
+
+  BaseSiparisEditModel vadeGunu(int? vadeGunu);
+
+  BaseSiparisEditModel tempSipList(List<dynamic>? tempSipList);
+
+  BaseSiparisEditModel kalemList(List<KalemModel>? kalemList);
+
+  BaseSiparisEditModel kalemModeller(List<KalemModel>? kalemModeller);
+
+  BaseSiparisEditModel kalemModelList(List<KalemModel>? kalemModelList);
+
+  BaseSiparisEditModel acik1(String? acik1);
+
+  BaseSiparisEditModel acik10(String? acik10);
+
+  BaseSiparisEditModel acik11(String? acik11);
+
+  BaseSiparisEditModel acik12(String? acik12);
+
+  BaseSiparisEditModel acik13(String? acik13);
+
+  BaseSiparisEditModel acik14(String? acik14);
+
+  BaseSiparisEditModel acik15(String? acik15);
+
+  BaseSiparisEditModel acik16(String? acik16);
+
+  BaseSiparisEditModel acik2(String? acik2);
+
+  BaseSiparisEditModel acik3(String? acik3);
+
+  BaseSiparisEditModel acik4(String? acik4);
+
+  BaseSiparisEditModel acik5(String? acik5);
+
+  BaseSiparisEditModel acik6(String? acik6);
+
+  BaseSiparisEditModel acik7(String? acik7);
+
+  BaseSiparisEditModel acik8(String? acik8);
+
+  BaseSiparisEditModel acik9(String? acik9);
+
+  BaseSiparisEditModel belgeKodu(String? belgeKodu);
+
+  BaseSiparisEditModel belgeNo(String? belgeNo);
+
+  BaseSiparisEditModel belgeTuru(String? belgeTuru);
+
+  BaseSiparisEditModel cariAdi(String? cariAdi);
+
+  BaseSiparisEditModel cariKodu(String? cariKodu);
+
+  BaseSiparisEditModel ekAcik1(String? ekAcik1);
+
+  BaseSiparisEditModel ekAcik10(String? ekAcik10);
+
+  BaseSiparisEditModel ekAcik11(String? ekAcik11);
+
+  BaseSiparisEditModel ekAcik12(String? ekAcik12);
+
+  BaseSiparisEditModel ekAcik13(String? ekAcik13);
+
+  BaseSiparisEditModel ekAcik14(String? ekAcik14);
+
+  BaseSiparisEditModel ekAcik15(String? ekAcik15);
+
+  BaseSiparisEditModel ekAcik16(String? ekAcik16);
+
+  BaseSiparisEditModel ekAcik2(String? ekAcik2);
+
+  BaseSiparisEditModel ekAcik3(String? ekAcik3);
+
+  BaseSiparisEditModel ekAcik4(String? ekAcik4);
+
+  BaseSiparisEditModel ekAcik5(String? ekAcik5);
+
+  BaseSiparisEditModel ekAcik6(String? ekAcik6);
+
+  BaseSiparisEditModel ekAcik7(String? ekAcik7);
+
+  BaseSiparisEditModel ekAcik8(String? ekAcik8);
+
+  BaseSiparisEditModel ekAcik9(String? ekAcik9);
+
+  BaseSiparisEditModel ekAciklama(String? ekAciklama);
+
+  BaseSiparisEditModel islemId(String? islemId);
+
+  BaseSiparisEditModel kayityapankul(String? kayityapankul);
+
+  BaseSiparisEditModel kdvDahil(String? kdvDahil);
+
+  BaseSiparisEditModel kosulKodu(String? kosulKodu);
+
+  BaseSiparisEditModel mevcutBelgeNo(String? mevcutBelgeNo);
+
+  BaseSiparisEditModel mevcutCariKodu(String? mevcutCariKodu);
+
+  BaseSiparisEditModel odemeKodu(String? odemeKodu);
+
+  BaseSiparisEditModel ozelKod1(String? ozelKod1);
+
+  BaseSiparisEditModel ozelKod2(String? ozelKod2);
+
+  BaseSiparisEditModel pickerBelgeTuru(String? pickerBelgeTuru);
+
+  BaseSiparisEditModel plasiyerKodu(String? plasiyerKodu);
+
+  BaseSiparisEditModel projeKodu(String? projeKodu);
+
+  BaseSiparisEditModel remoteTempBelgeEtiketi(String? remoteTempBelgeEtiketi);
+
+  BaseSiparisEditModel tag(String? tag);
+
+  BaseSiparisEditModel kalemler(List<KalemModel>? kalemler);
+
+  BaseSiparisEditModel siparisTipi(SiparisTipiEnum? siparisTipi);
+
+  BaseSiparisEditModel isNew(bool? isNew);
+
+  BaseSiparisEditModel irsaliyelesti(String? irsaliyelesti);
+
+  BaseSiparisEditModel irslesenSayi(int? irslesenSayi);
+
+  BaseSiparisEditModel faturalasti(String? faturalasti);
+
+  BaseSiparisEditModel dovizTipi(int? dovizTipi);
+
+  BaseSiparisEditModel dovizAdi(String? dovizAdi);
+
+  BaseSiparisEditModel kapatilmis(String? kapatilmis);
+
+  BaseSiparisEditModel aciklama(String? aciklama);
+
+  BaseSiparisEditModel dovizTutari(double? dovizTutari);
+
+  BaseSiparisEditModel teslimCari(String? teslimCari);
+
+  BaseSiparisEditModel fYedek4(double? fYedek4);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// BaseSiparisEditModel(...).copyWith(id: 12, name: "My name")
+  /// ````
+  BaseSiparisEditModel call({
+    DateTime? duzeltmetarihi,
+    int? kalemAdedi,
+    String? cariEfaturami,
+    String? cYedek6,
+    String? duzeltmeyapankul,
+    String? plasiyerAciklama,
+    String? projeAciklama,
+    BaseSiparisEditModel? tempJsonData,
+    String? teslimCariAdi,
+    bool? kdvDahilmi,
+    bool? remoteTempBelge,
+    bool? tempBelgeMi,
+    CariListesiModel? cariModel,
+    DateTime? islemeBaslamaTarihi,
+    DateTime? istenilenTeslimTarihi,
+    DateTime? kayittarihi,
+    DateTime? kosulTarihi,
+    DateTime? tarih,
+    DateTime? teslimTarihi,
+    DateTime? vadeTarihi,
+    double? araToplam,
+    double? ekMaliyet1Tutari,
+    double? ekMaliyet2Tutari,
+    double? ekMaliyet3Tutari,
+    double? genelIskonto1,
+    double? genelIskonto2,
+    double? genelIskonto3,
+    double? genelToplam,
+    double? genIsk1O,
+    double? genIsk1T,
+    double? genIsk2O,
+    double? genIsk2T,
+    double? genIsk3O,
+    double? genIsk3T,
+    double? kdv,
+    int? belgeTipi,
+    int? cikisDepoKodu,
+    int? genisk1Tipi,
+    int? genisk2Tipi,
+    int? genisk3Tipi,
+    int? kalemModelAdedi,
+    int? tempBelgeId,
+    int? tempKayitTipi,
+    int? tipi,
+    int? topluDepo,
+    int? vadeGunu,
+    List<dynamic>? tempSipList,
+    List<KalemModel>? kalemList,
+    List<KalemModel>? kalemModeller,
+    List<KalemModel>? kalemModelList,
+    String? acik1,
+    String? acik10,
+    String? acik11,
+    String? acik12,
+    String? acik13,
+    String? acik14,
+    String? acik15,
+    String? acik16,
+    String? acik2,
+    String? acik3,
+    String? acik4,
+    String? acik5,
+    String? acik6,
+    String? acik7,
+    String? acik8,
+    String? acik9,
+    String? belgeKodu,
+    String? belgeNo,
+    String? belgeTuru,
+    String? cariAdi,
+    String? cariKodu,
+    String? ekAcik1,
+    String? ekAcik10,
+    String? ekAcik11,
+    String? ekAcik12,
+    String? ekAcik13,
+    String? ekAcik14,
+    String? ekAcik15,
+    String? ekAcik16,
+    String? ekAcik2,
+    String? ekAcik3,
+    String? ekAcik4,
+    String? ekAcik5,
+    String? ekAcik6,
+    String? ekAcik7,
+    String? ekAcik8,
+    String? ekAcik9,
+    String? ekAciklama,
+    String? islemId,
+    String? kayityapankul,
+    String? kdvDahil,
+    String? kosulKodu,
+    String? mevcutBelgeNo,
+    String? mevcutCariKodu,
+    String? odemeKodu,
+    String? ozelKod1,
+    String? ozelKod2,
+    String? pickerBelgeTuru,
+    String? plasiyerKodu,
+    String? projeKodu,
+    String? remoteTempBelgeEtiketi,
+    String? tag,
+    List<KalemModel>? kalemler,
+    SiparisTipiEnum? siparisTipi,
+    bool? isNew,
+    String? irsaliyelesti,
+    int? irslesenSayi,
+    String? faturalasti,
+    int? dovizTipi,
+    String? dovizAdi,
+    String? kapatilmis,
+    String? aciklama,
+    double? dovizTutari,
+    String? teslimCari,
+    double? fYedek4,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfBaseSiparisEditModel.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfBaseSiparisEditModel.copyWith.fieldName(...)`
+class _$BaseSiparisEditModelCWProxyImpl
+    implements _$BaseSiparisEditModelCWProxy {
+  const _$BaseSiparisEditModelCWProxyImpl(this._value);
+
+  final BaseSiparisEditModel _value;
+
+  @override
+  BaseSiparisEditModel duzeltmetarihi(DateTime? duzeltmetarihi) =>
+      this(duzeltmetarihi: duzeltmetarihi);
+
+  @override
+  BaseSiparisEditModel kalemAdedi(int? kalemAdedi) =>
+      this(kalemAdedi: kalemAdedi);
+
+  @override
+  BaseSiparisEditModel cariEfaturami(String? cariEfaturami) =>
+      this(cariEfaturami: cariEfaturami);
+
+  @override
+  BaseSiparisEditModel cYedek6(String? cYedek6) => this(cYedek6: cYedek6);
+
+  @override
+  BaseSiparisEditModel duzeltmeyapankul(String? duzeltmeyapankul) =>
+      this(duzeltmeyapankul: duzeltmeyapankul);
+
+  @override
+  BaseSiparisEditModel plasiyerAciklama(String? plasiyerAciklama) =>
+      this(plasiyerAciklama: plasiyerAciklama);
+
+  @override
+  BaseSiparisEditModel projeAciklama(String? projeAciklama) =>
+      this(projeAciklama: projeAciklama);
+
+  @override
+  BaseSiparisEditModel tempJsonData(BaseSiparisEditModel? tempJsonData) =>
+      this(tempJsonData: tempJsonData);
+
+  @override
+  BaseSiparisEditModel teslimCariAdi(String? teslimCariAdi) =>
+      this(teslimCariAdi: teslimCariAdi);
+
+  @override
+  BaseSiparisEditModel kdvDahilmi(bool? kdvDahilmi) =>
+      this(kdvDahilmi: kdvDahilmi);
+
+  @override
+  BaseSiparisEditModel remoteTempBelge(bool? remoteTempBelge) =>
+      this(remoteTempBelge: remoteTempBelge);
+
+  @override
+  BaseSiparisEditModel tempBelgeMi(bool? tempBelgeMi) =>
+      this(tempBelgeMi: tempBelgeMi);
+
+  @override
+  BaseSiparisEditModel cariModel(CariListesiModel? cariModel) =>
+      this(cariModel: cariModel);
+
+  @override
+  BaseSiparisEditModel islemeBaslamaTarihi(DateTime? islemeBaslamaTarihi) =>
+      this(islemeBaslamaTarihi: islemeBaslamaTarihi);
+
+  @override
+  BaseSiparisEditModel istenilenTeslimTarihi(DateTime? istenilenTeslimTarihi) =>
+      this(istenilenTeslimTarihi: istenilenTeslimTarihi);
+
+  @override
+  BaseSiparisEditModel kayittarihi(DateTime? kayittarihi) =>
+      this(kayittarihi: kayittarihi);
+
+  @override
+  BaseSiparisEditModel kosulTarihi(DateTime? kosulTarihi) =>
+      this(kosulTarihi: kosulTarihi);
+
+  @override
+  BaseSiparisEditModel tarih(DateTime? tarih) => this(tarih: tarih);
+
+  @override
+  BaseSiparisEditModel teslimTarihi(DateTime? teslimTarihi) =>
+      this(teslimTarihi: teslimTarihi);
+
+  @override
+  BaseSiparisEditModel vadeTarihi(DateTime? vadeTarihi) =>
+      this(vadeTarihi: vadeTarihi);
+
+  @override
+  BaseSiparisEditModel araToplam(double? araToplam) =>
+      this(araToplam: araToplam);
+
+  @override
+  BaseSiparisEditModel ekMaliyet1Tutari(double? ekMaliyet1Tutari) =>
+      this(ekMaliyet1Tutari: ekMaliyet1Tutari);
+
+  @override
+  BaseSiparisEditModel ekMaliyet2Tutari(double? ekMaliyet2Tutari) =>
+      this(ekMaliyet2Tutari: ekMaliyet2Tutari);
+
+  @override
+  BaseSiparisEditModel ekMaliyet3Tutari(double? ekMaliyet3Tutari) =>
+      this(ekMaliyet3Tutari: ekMaliyet3Tutari);
+
+  @override
+  BaseSiparisEditModel genelIskonto1(double? genelIskonto1) =>
+      this(genelIskonto1: genelIskonto1);
+
+  @override
+  BaseSiparisEditModel genelIskonto2(double? genelIskonto2) =>
+      this(genelIskonto2: genelIskonto2);
+
+  @override
+  BaseSiparisEditModel genelIskonto3(double? genelIskonto3) =>
+      this(genelIskonto3: genelIskonto3);
+
+  @override
+  BaseSiparisEditModel genelToplam(double? genelToplam) =>
+      this(genelToplam: genelToplam);
+
+  @override
+  BaseSiparisEditModel genIsk1O(double? genIsk1O) => this(genIsk1O: genIsk1O);
+
+  @override
+  BaseSiparisEditModel genIsk1T(double? genIsk1T) => this(genIsk1T: genIsk1T);
+
+  @override
+  BaseSiparisEditModel genIsk2O(double? genIsk2O) => this(genIsk2O: genIsk2O);
+
+  @override
+  BaseSiparisEditModel genIsk2T(double? genIsk2T) => this(genIsk2T: genIsk2T);
+
+  @override
+  BaseSiparisEditModel genIsk3O(double? genIsk3O) => this(genIsk3O: genIsk3O);
+
+  @override
+  BaseSiparisEditModel genIsk3T(double? genIsk3T) => this(genIsk3T: genIsk3T);
+
+  @override
+  BaseSiparisEditModel kdv(double? kdv) => this(kdv: kdv);
+
+  @override
+  BaseSiparisEditModel belgeTipi(int? belgeTipi) => this(belgeTipi: belgeTipi);
+
+  @override
+  BaseSiparisEditModel cikisDepoKodu(int? cikisDepoKodu) =>
+      this(cikisDepoKodu: cikisDepoKodu);
+
+  @override
+  BaseSiparisEditModel genisk1Tipi(int? genisk1Tipi) =>
+      this(genisk1Tipi: genisk1Tipi);
+
+  @override
+  BaseSiparisEditModel genisk2Tipi(int? genisk2Tipi) =>
+      this(genisk2Tipi: genisk2Tipi);
+
+  @override
+  BaseSiparisEditModel genisk3Tipi(int? genisk3Tipi) =>
+      this(genisk3Tipi: genisk3Tipi);
+
+  @override
+  BaseSiparisEditModel kalemModelAdedi(int? kalemModelAdedi) =>
+      this(kalemModelAdedi: kalemModelAdedi);
+
+  @override
+  BaseSiparisEditModel tempBelgeId(int? tempBelgeId) =>
+      this(tempBelgeId: tempBelgeId);
+
+  @override
+  BaseSiparisEditModel tempKayitTipi(int? tempKayitTipi) =>
+      this(tempKayitTipi: tempKayitTipi);
+
+  @override
+  BaseSiparisEditModel tipi(int? tipi) => this(tipi: tipi);
+
+  @override
+  BaseSiparisEditModel topluDepo(int? topluDepo) => this(topluDepo: topluDepo);
+
+  @override
+  BaseSiparisEditModel vadeGunu(int? vadeGunu) => this(vadeGunu: vadeGunu);
+
+  @override
+  BaseSiparisEditModel tempSipList(List<dynamic>? tempSipList) =>
+      this(tempSipList: tempSipList);
+
+  @override
+  BaseSiparisEditModel kalemList(List<KalemModel>? kalemList) =>
+      this(kalemList: kalemList);
+
+  @override
+  BaseSiparisEditModel kalemModeller(List<KalemModel>? kalemModeller) =>
+      this(kalemModeller: kalemModeller);
+
+  @override
+  BaseSiparisEditModel kalemModelList(List<KalemModel>? kalemModelList) =>
+      this(kalemModelList: kalemModelList);
+
+  @override
+  BaseSiparisEditModel acik1(String? acik1) => this(acik1: acik1);
+
+  @override
+  BaseSiparisEditModel acik10(String? acik10) => this(acik10: acik10);
+
+  @override
+  BaseSiparisEditModel acik11(String? acik11) => this(acik11: acik11);
+
+  @override
+  BaseSiparisEditModel acik12(String? acik12) => this(acik12: acik12);
+
+  @override
+  BaseSiparisEditModel acik13(String? acik13) => this(acik13: acik13);
+
+  @override
+  BaseSiparisEditModel acik14(String? acik14) => this(acik14: acik14);
+
+  @override
+  BaseSiparisEditModel acik15(String? acik15) => this(acik15: acik15);
+
+  @override
+  BaseSiparisEditModel acik16(String? acik16) => this(acik16: acik16);
+
+  @override
+  BaseSiparisEditModel acik2(String? acik2) => this(acik2: acik2);
+
+  @override
+  BaseSiparisEditModel acik3(String? acik3) => this(acik3: acik3);
+
+  @override
+  BaseSiparisEditModel acik4(String? acik4) => this(acik4: acik4);
+
+  @override
+  BaseSiparisEditModel acik5(String? acik5) => this(acik5: acik5);
+
+  @override
+  BaseSiparisEditModel acik6(String? acik6) => this(acik6: acik6);
+
+  @override
+  BaseSiparisEditModel acik7(String? acik7) => this(acik7: acik7);
+
+  @override
+  BaseSiparisEditModel acik8(String? acik8) => this(acik8: acik8);
+
+  @override
+  BaseSiparisEditModel acik9(String? acik9) => this(acik9: acik9);
+
+  @override
+  BaseSiparisEditModel belgeKodu(String? belgeKodu) =>
+      this(belgeKodu: belgeKodu);
+
+  @override
+  BaseSiparisEditModel belgeNo(String? belgeNo) => this(belgeNo: belgeNo);
+
+  @override
+  BaseSiparisEditModel belgeTuru(String? belgeTuru) =>
+      this(belgeTuru: belgeTuru);
+
+  @override
+  BaseSiparisEditModel cariAdi(String? cariAdi) => this(cariAdi: cariAdi);
+
+  @override
+  BaseSiparisEditModel cariKodu(String? cariKodu) => this(cariKodu: cariKodu);
+
+  @override
+  BaseSiparisEditModel ekAcik1(String? ekAcik1) => this(ekAcik1: ekAcik1);
+
+  @override
+  BaseSiparisEditModel ekAcik10(String? ekAcik10) => this(ekAcik10: ekAcik10);
+
+  @override
+  BaseSiparisEditModel ekAcik11(String? ekAcik11) => this(ekAcik11: ekAcik11);
+
+  @override
+  BaseSiparisEditModel ekAcik12(String? ekAcik12) => this(ekAcik12: ekAcik12);
+
+  @override
+  BaseSiparisEditModel ekAcik13(String? ekAcik13) => this(ekAcik13: ekAcik13);
+
+  @override
+  BaseSiparisEditModel ekAcik14(String? ekAcik14) => this(ekAcik14: ekAcik14);
+
+  @override
+  BaseSiparisEditModel ekAcik15(String? ekAcik15) => this(ekAcik15: ekAcik15);
+
+  @override
+  BaseSiparisEditModel ekAcik16(String? ekAcik16) => this(ekAcik16: ekAcik16);
+
+  @override
+  BaseSiparisEditModel ekAcik2(String? ekAcik2) => this(ekAcik2: ekAcik2);
+
+  @override
+  BaseSiparisEditModel ekAcik3(String? ekAcik3) => this(ekAcik3: ekAcik3);
+
+  @override
+  BaseSiparisEditModel ekAcik4(String? ekAcik4) => this(ekAcik4: ekAcik4);
+
+  @override
+  BaseSiparisEditModel ekAcik5(String? ekAcik5) => this(ekAcik5: ekAcik5);
+
+  @override
+  BaseSiparisEditModel ekAcik6(String? ekAcik6) => this(ekAcik6: ekAcik6);
+
+  @override
+  BaseSiparisEditModel ekAcik7(String? ekAcik7) => this(ekAcik7: ekAcik7);
+
+  @override
+  BaseSiparisEditModel ekAcik8(String? ekAcik8) => this(ekAcik8: ekAcik8);
+
+  @override
+  BaseSiparisEditModel ekAcik9(String? ekAcik9) => this(ekAcik9: ekAcik9);
+
+  @override
+  BaseSiparisEditModel ekAciklama(String? ekAciklama) =>
+      this(ekAciklama: ekAciklama);
+
+  @override
+  BaseSiparisEditModel islemId(String? islemId) => this(islemId: islemId);
+
+  @override
+  BaseSiparisEditModel kayityapankul(String? kayityapankul) =>
+      this(kayityapankul: kayityapankul);
+
+  @override
+  BaseSiparisEditModel kdvDahil(String? kdvDahil) => this(kdvDahil: kdvDahil);
+
+  @override
+  BaseSiparisEditModel kosulKodu(String? kosulKodu) =>
+      this(kosulKodu: kosulKodu);
+
+  @override
+  BaseSiparisEditModel mevcutBelgeNo(String? mevcutBelgeNo) =>
+      this(mevcutBelgeNo: mevcutBelgeNo);
+
+  @override
+  BaseSiparisEditModel mevcutCariKodu(String? mevcutCariKodu) =>
+      this(mevcutCariKodu: mevcutCariKodu);
+
+  @override
+  BaseSiparisEditModel odemeKodu(String? odemeKodu) =>
+      this(odemeKodu: odemeKodu);
+
+  @override
+  BaseSiparisEditModel ozelKod1(String? ozelKod1) => this(ozelKod1: ozelKod1);
+
+  @override
+  BaseSiparisEditModel ozelKod2(String? ozelKod2) => this(ozelKod2: ozelKod2);
+
+  @override
+  BaseSiparisEditModel pickerBelgeTuru(String? pickerBelgeTuru) =>
+      this(pickerBelgeTuru: pickerBelgeTuru);
+
+  @override
+  BaseSiparisEditModel plasiyerKodu(String? plasiyerKodu) =>
+      this(plasiyerKodu: plasiyerKodu);
+
+  @override
+  BaseSiparisEditModel projeKodu(String? projeKodu) =>
+      this(projeKodu: projeKodu);
+
+  @override
+  BaseSiparisEditModel remoteTempBelgeEtiketi(String? remoteTempBelgeEtiketi) =>
+      this(remoteTempBelgeEtiketi: remoteTempBelgeEtiketi);
+
+  @override
+  BaseSiparisEditModel tag(String? tag) => this(tag: tag);
+
+  @override
+  BaseSiparisEditModel kalemler(List<KalemModel>? kalemler) =>
+      this(kalemler: kalemler);
+
+  @override
+  BaseSiparisEditModel siparisTipi(SiparisTipiEnum? siparisTipi) =>
+      this(siparisTipi: siparisTipi);
+
+  @override
+  BaseSiparisEditModel isNew(bool? isNew) => this(isNew: isNew);
+
+  @override
+  BaseSiparisEditModel irsaliyelesti(String? irsaliyelesti) =>
+      this(irsaliyelesti: irsaliyelesti);
+
+  @override
+  BaseSiparisEditModel irslesenSayi(int? irslesenSayi) =>
+      this(irslesenSayi: irslesenSayi);
+
+  @override
+  BaseSiparisEditModel faturalasti(String? faturalasti) =>
+      this(faturalasti: faturalasti);
+
+  @override
+  BaseSiparisEditModel dovizTipi(int? dovizTipi) => this(dovizTipi: dovizTipi);
+
+  @override
+  BaseSiparisEditModel dovizAdi(String? dovizAdi) => this(dovizAdi: dovizAdi);
+
+  @override
+  BaseSiparisEditModel kapatilmis(String? kapatilmis) =>
+      this(kapatilmis: kapatilmis);
+
+  @override
+  BaseSiparisEditModel aciklama(String? aciklama) => this(aciklama: aciklama);
+
+  @override
+  BaseSiparisEditModel dovizTutari(double? dovizTutari) =>
+      this(dovizTutari: dovizTutari);
+
+  @override
+  BaseSiparisEditModel teslimCari(String? teslimCari) =>
+      this(teslimCari: teslimCari);
+
+  @override
+  BaseSiparisEditModel fYedek4(double? fYedek4) => this(fYedek4: fYedek4);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// BaseSiparisEditModel(...).copyWith(id: 12, name: "My name")
+  /// ````
+  BaseSiparisEditModel call({
+    Object? duzeltmetarihi = const $CopyWithPlaceholder(),
+    Object? kalemAdedi = const $CopyWithPlaceholder(),
+    Object? cariEfaturami = const $CopyWithPlaceholder(),
+    Object? cYedek6 = const $CopyWithPlaceholder(),
+    Object? duzeltmeyapankul = const $CopyWithPlaceholder(),
+    Object? plasiyerAciklama = const $CopyWithPlaceholder(),
+    Object? projeAciklama = const $CopyWithPlaceholder(),
+    Object? tempJsonData = const $CopyWithPlaceholder(),
+    Object? teslimCariAdi = const $CopyWithPlaceholder(),
+    Object? kdvDahilmi = const $CopyWithPlaceholder(),
+    Object? remoteTempBelge = const $CopyWithPlaceholder(),
+    Object? tempBelgeMi = const $CopyWithPlaceholder(),
+    Object? cariModel = const $CopyWithPlaceholder(),
+    Object? islemeBaslamaTarihi = const $CopyWithPlaceholder(),
+    Object? istenilenTeslimTarihi = const $CopyWithPlaceholder(),
+    Object? kayittarihi = const $CopyWithPlaceholder(),
+    Object? kosulTarihi = const $CopyWithPlaceholder(),
+    Object? tarih = const $CopyWithPlaceholder(),
+    Object? teslimTarihi = const $CopyWithPlaceholder(),
+    Object? vadeTarihi = const $CopyWithPlaceholder(),
+    Object? araToplam = const $CopyWithPlaceholder(),
+    Object? ekMaliyet1Tutari = const $CopyWithPlaceholder(),
+    Object? ekMaliyet2Tutari = const $CopyWithPlaceholder(),
+    Object? ekMaliyet3Tutari = const $CopyWithPlaceholder(),
+    Object? genelIskonto1 = const $CopyWithPlaceholder(),
+    Object? genelIskonto2 = const $CopyWithPlaceholder(),
+    Object? genelIskonto3 = const $CopyWithPlaceholder(),
+    Object? genelToplam = const $CopyWithPlaceholder(),
+    Object? genIsk1O = const $CopyWithPlaceholder(),
+    Object? genIsk1T = const $CopyWithPlaceholder(),
+    Object? genIsk2O = const $CopyWithPlaceholder(),
+    Object? genIsk2T = const $CopyWithPlaceholder(),
+    Object? genIsk3O = const $CopyWithPlaceholder(),
+    Object? genIsk3T = const $CopyWithPlaceholder(),
+    Object? kdv = const $CopyWithPlaceholder(),
+    Object? belgeTipi = const $CopyWithPlaceholder(),
+    Object? cikisDepoKodu = const $CopyWithPlaceholder(),
+    Object? genisk1Tipi = const $CopyWithPlaceholder(),
+    Object? genisk2Tipi = const $CopyWithPlaceholder(),
+    Object? genisk3Tipi = const $CopyWithPlaceholder(),
+    Object? kalemModelAdedi = const $CopyWithPlaceholder(),
+    Object? tempBelgeId = const $CopyWithPlaceholder(),
+    Object? tempKayitTipi = const $CopyWithPlaceholder(),
+    Object? tipi = const $CopyWithPlaceholder(),
+    Object? topluDepo = const $CopyWithPlaceholder(),
+    Object? vadeGunu = const $CopyWithPlaceholder(),
+    Object? tempSipList = const $CopyWithPlaceholder(),
+    Object? kalemList = const $CopyWithPlaceholder(),
+    Object? kalemModeller = const $CopyWithPlaceholder(),
+    Object? kalemModelList = const $CopyWithPlaceholder(),
+    Object? acik1 = const $CopyWithPlaceholder(),
+    Object? acik10 = const $CopyWithPlaceholder(),
+    Object? acik11 = const $CopyWithPlaceholder(),
+    Object? acik12 = const $CopyWithPlaceholder(),
+    Object? acik13 = const $CopyWithPlaceholder(),
+    Object? acik14 = const $CopyWithPlaceholder(),
+    Object? acik15 = const $CopyWithPlaceholder(),
+    Object? acik16 = const $CopyWithPlaceholder(),
+    Object? acik2 = const $CopyWithPlaceholder(),
+    Object? acik3 = const $CopyWithPlaceholder(),
+    Object? acik4 = const $CopyWithPlaceholder(),
+    Object? acik5 = const $CopyWithPlaceholder(),
+    Object? acik6 = const $CopyWithPlaceholder(),
+    Object? acik7 = const $CopyWithPlaceholder(),
+    Object? acik8 = const $CopyWithPlaceholder(),
+    Object? acik9 = const $CopyWithPlaceholder(),
+    Object? belgeKodu = const $CopyWithPlaceholder(),
+    Object? belgeNo = const $CopyWithPlaceholder(),
+    Object? belgeTuru = const $CopyWithPlaceholder(),
+    Object? cariAdi = const $CopyWithPlaceholder(),
+    Object? cariKodu = const $CopyWithPlaceholder(),
+    Object? ekAcik1 = const $CopyWithPlaceholder(),
+    Object? ekAcik10 = const $CopyWithPlaceholder(),
+    Object? ekAcik11 = const $CopyWithPlaceholder(),
+    Object? ekAcik12 = const $CopyWithPlaceholder(),
+    Object? ekAcik13 = const $CopyWithPlaceholder(),
+    Object? ekAcik14 = const $CopyWithPlaceholder(),
+    Object? ekAcik15 = const $CopyWithPlaceholder(),
+    Object? ekAcik16 = const $CopyWithPlaceholder(),
+    Object? ekAcik2 = const $CopyWithPlaceholder(),
+    Object? ekAcik3 = const $CopyWithPlaceholder(),
+    Object? ekAcik4 = const $CopyWithPlaceholder(),
+    Object? ekAcik5 = const $CopyWithPlaceholder(),
+    Object? ekAcik6 = const $CopyWithPlaceholder(),
+    Object? ekAcik7 = const $CopyWithPlaceholder(),
+    Object? ekAcik8 = const $CopyWithPlaceholder(),
+    Object? ekAcik9 = const $CopyWithPlaceholder(),
+    Object? ekAciklama = const $CopyWithPlaceholder(),
+    Object? islemId = const $CopyWithPlaceholder(),
+    Object? kayityapankul = const $CopyWithPlaceholder(),
+    Object? kdvDahil = const $CopyWithPlaceholder(),
+    Object? kosulKodu = const $CopyWithPlaceholder(),
+    Object? mevcutBelgeNo = const $CopyWithPlaceholder(),
+    Object? mevcutCariKodu = const $CopyWithPlaceholder(),
+    Object? odemeKodu = const $CopyWithPlaceholder(),
+    Object? ozelKod1 = const $CopyWithPlaceholder(),
+    Object? ozelKod2 = const $CopyWithPlaceholder(),
+    Object? pickerBelgeTuru = const $CopyWithPlaceholder(),
+    Object? plasiyerKodu = const $CopyWithPlaceholder(),
+    Object? projeKodu = const $CopyWithPlaceholder(),
+    Object? remoteTempBelgeEtiketi = const $CopyWithPlaceholder(),
+    Object? tag = const $CopyWithPlaceholder(),
+    Object? kalemler = const $CopyWithPlaceholder(),
+    Object? siparisTipi = const $CopyWithPlaceholder(),
+    Object? isNew = const $CopyWithPlaceholder(),
+    Object? irsaliyelesti = const $CopyWithPlaceholder(),
+    Object? irslesenSayi = const $CopyWithPlaceholder(),
+    Object? faturalasti = const $CopyWithPlaceholder(),
+    Object? dovizTipi = const $CopyWithPlaceholder(),
+    Object? dovizAdi = const $CopyWithPlaceholder(),
+    Object? kapatilmis = const $CopyWithPlaceholder(),
+    Object? aciklama = const $CopyWithPlaceholder(),
+    Object? dovizTutari = const $CopyWithPlaceholder(),
+    Object? teslimCari = const $CopyWithPlaceholder(),
+    Object? fYedek4 = const $CopyWithPlaceholder(),
+  }) {
+    return BaseSiparisEditModel(
+      duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
+          ? _value.duzeltmetarihi
+          // ignore: cast_nullable_to_non_nullable
+          : duzeltmetarihi as DateTime?,
+      kalemAdedi: kalemAdedi == const $CopyWithPlaceholder()
+          ? _value.kalemAdedi
+          // ignore: cast_nullable_to_non_nullable
+          : kalemAdedi as int?,
+      cariEfaturami: cariEfaturami == const $CopyWithPlaceholder()
+          ? _value.cariEfaturami
+          // ignore: cast_nullable_to_non_nullable
+          : cariEfaturami as String?,
+      cYedek6: cYedek6 == const $CopyWithPlaceholder()
+          ? _value.cYedek6
+          // ignore: cast_nullable_to_non_nullable
+          : cYedek6 as String?,
+      duzeltmeyapankul: duzeltmeyapankul == const $CopyWithPlaceholder()
+          ? _value.duzeltmeyapankul
+          // ignore: cast_nullable_to_non_nullable
+          : duzeltmeyapankul as String?,
+      plasiyerAciklama: plasiyerAciklama == const $CopyWithPlaceholder()
+          ? _value.plasiyerAciklama
+          // ignore: cast_nullable_to_non_nullable
+          : plasiyerAciklama as String?,
+      projeAciklama: projeAciklama == const $CopyWithPlaceholder()
+          ? _value.projeAciklama
+          // ignore: cast_nullable_to_non_nullable
+          : projeAciklama as String?,
+      tempJsonData: tempJsonData == const $CopyWithPlaceholder()
+          ? _value.tempJsonData
+          // ignore: cast_nullable_to_non_nullable
+          : tempJsonData as BaseSiparisEditModel?,
+      teslimCariAdi: teslimCariAdi == const $CopyWithPlaceholder()
+          ? _value.teslimCariAdi
+          // ignore: cast_nullable_to_non_nullable
+          : teslimCariAdi as String?,
+      kdvDahilmi: kdvDahilmi == const $CopyWithPlaceholder()
+          ? _value.kdvDahilmi
+          // ignore: cast_nullable_to_non_nullable
+          : kdvDahilmi as bool?,
+      remoteTempBelge: remoteTempBelge == const $CopyWithPlaceholder()
+          ? _value.remoteTempBelge
+          // ignore: cast_nullable_to_non_nullable
+          : remoteTempBelge as bool?,
+      tempBelgeMi: tempBelgeMi == const $CopyWithPlaceholder()
+          ? _value.tempBelgeMi
+          // ignore: cast_nullable_to_non_nullable
+          : tempBelgeMi as bool?,
+      cariModel: cariModel == const $CopyWithPlaceholder()
+          ? _value.cariModel
+          // ignore: cast_nullable_to_non_nullable
+          : cariModel as CariListesiModel?,
+      islemeBaslamaTarihi: islemeBaslamaTarihi == const $CopyWithPlaceholder()
+          ? _value.islemeBaslamaTarihi
+          // ignore: cast_nullable_to_non_nullable
+          : islemeBaslamaTarihi as DateTime?,
+      istenilenTeslimTarihi:
+          istenilenTeslimTarihi == const $CopyWithPlaceholder()
+              ? _value.istenilenTeslimTarihi
+              // ignore: cast_nullable_to_non_nullable
+              : istenilenTeslimTarihi as DateTime?,
+      kayittarihi: kayittarihi == const $CopyWithPlaceholder()
+          ? _value.kayittarihi
+          // ignore: cast_nullable_to_non_nullable
+          : kayittarihi as DateTime?,
+      kosulTarihi: kosulTarihi == const $CopyWithPlaceholder()
+          ? _value.kosulTarihi
+          // ignore: cast_nullable_to_non_nullable
+          : kosulTarihi as DateTime?,
+      tarih: tarih == const $CopyWithPlaceholder()
+          ? _value.tarih
+          // ignore: cast_nullable_to_non_nullable
+          : tarih as DateTime?,
+      teslimTarihi: teslimTarihi == const $CopyWithPlaceholder()
+          ? _value.teslimTarihi
+          // ignore: cast_nullable_to_non_nullable
+          : teslimTarihi as DateTime?,
+      vadeTarihi: vadeTarihi == const $CopyWithPlaceholder()
+          ? _value.vadeTarihi
+          // ignore: cast_nullable_to_non_nullable
+          : vadeTarihi as DateTime?,
+      araToplam: araToplam == const $CopyWithPlaceholder()
+          ? _value.araToplam
+          // ignore: cast_nullable_to_non_nullable
+          : araToplam as double?,
+      ekMaliyet1Tutari: ekMaliyet1Tutari == const $CopyWithPlaceholder()
+          ? _value.ekMaliyet1Tutari
+          // ignore: cast_nullable_to_non_nullable
+          : ekMaliyet1Tutari as double?,
+      ekMaliyet2Tutari: ekMaliyet2Tutari == const $CopyWithPlaceholder()
+          ? _value.ekMaliyet2Tutari
+          // ignore: cast_nullable_to_non_nullable
+          : ekMaliyet2Tutari as double?,
+      ekMaliyet3Tutari: ekMaliyet3Tutari == const $CopyWithPlaceholder()
+          ? _value.ekMaliyet3Tutari
+          // ignore: cast_nullable_to_non_nullable
+          : ekMaliyet3Tutari as double?,
+      genelIskonto1: genelIskonto1 == const $CopyWithPlaceholder()
+          ? _value.genelIskonto1
+          // ignore: cast_nullable_to_non_nullable
+          : genelIskonto1 as double?,
+      genelIskonto2: genelIskonto2 == const $CopyWithPlaceholder()
+          ? _value.genelIskonto2
+          // ignore: cast_nullable_to_non_nullable
+          : genelIskonto2 as double?,
+      genelIskonto3: genelIskonto3 == const $CopyWithPlaceholder()
+          ? _value.genelIskonto3
+          // ignore: cast_nullable_to_non_nullable
+          : genelIskonto3 as double?,
+      genelToplam: genelToplam == const $CopyWithPlaceholder()
+          ? _value.genelToplam
+          // ignore: cast_nullable_to_non_nullable
+          : genelToplam as double?,
+      genIsk1O: genIsk1O == const $CopyWithPlaceholder()
+          ? _value.genIsk1O
+          // ignore: cast_nullable_to_non_nullable
+          : genIsk1O as double?,
+      genIsk1T: genIsk1T == const $CopyWithPlaceholder()
+          ? _value.genIsk1T
+          // ignore: cast_nullable_to_non_nullable
+          : genIsk1T as double?,
+      genIsk2O: genIsk2O == const $CopyWithPlaceholder()
+          ? _value.genIsk2O
+          // ignore: cast_nullable_to_non_nullable
+          : genIsk2O as double?,
+      genIsk2T: genIsk2T == const $CopyWithPlaceholder()
+          ? _value.genIsk2T
+          // ignore: cast_nullable_to_non_nullable
+          : genIsk2T as double?,
+      genIsk3O: genIsk3O == const $CopyWithPlaceholder()
+          ? _value.genIsk3O
+          // ignore: cast_nullable_to_non_nullable
+          : genIsk3O as double?,
+      genIsk3T: genIsk3T == const $CopyWithPlaceholder()
+          ? _value.genIsk3T
+          // ignore: cast_nullable_to_non_nullable
+          : genIsk3T as double?,
+      kdv: kdv == const $CopyWithPlaceholder()
+          ? _value.kdv
+          // ignore: cast_nullable_to_non_nullable
+          : kdv as double?,
+      belgeTipi: belgeTipi == const $CopyWithPlaceholder()
+          ? _value.belgeTipi
+          // ignore: cast_nullable_to_non_nullable
+          : belgeTipi as int?,
+      cikisDepoKodu: cikisDepoKodu == const $CopyWithPlaceholder()
+          ? _value.cikisDepoKodu
+          // ignore: cast_nullable_to_non_nullable
+          : cikisDepoKodu as int?,
+      genisk1Tipi: genisk1Tipi == const $CopyWithPlaceholder()
+          ? _value.genisk1Tipi
+          // ignore: cast_nullable_to_non_nullable
+          : genisk1Tipi as int?,
+      genisk2Tipi: genisk2Tipi == const $CopyWithPlaceholder()
+          ? _value.genisk2Tipi
+          // ignore: cast_nullable_to_non_nullable
+          : genisk2Tipi as int?,
+      genisk3Tipi: genisk3Tipi == const $CopyWithPlaceholder()
+          ? _value.genisk3Tipi
+          // ignore: cast_nullable_to_non_nullable
+          : genisk3Tipi as int?,
+      kalemModelAdedi: kalemModelAdedi == const $CopyWithPlaceholder()
+          ? _value.kalemModelAdedi
+          // ignore: cast_nullable_to_non_nullable
+          : kalemModelAdedi as int?,
+      tempBelgeId: tempBelgeId == const $CopyWithPlaceholder()
+          ? _value.tempBelgeId
+          // ignore: cast_nullable_to_non_nullable
+          : tempBelgeId as int?,
+      tempKayitTipi: tempKayitTipi == const $CopyWithPlaceholder()
+          ? _value.tempKayitTipi
+          // ignore: cast_nullable_to_non_nullable
+          : tempKayitTipi as int?,
+      tipi: tipi == const $CopyWithPlaceholder()
+          ? _value.tipi
+          // ignore: cast_nullable_to_non_nullable
+          : tipi as int?,
+      topluDepo: topluDepo == const $CopyWithPlaceholder()
+          ? _value.topluDepo
+          // ignore: cast_nullable_to_non_nullable
+          : topluDepo as int?,
+      vadeGunu: vadeGunu == const $CopyWithPlaceholder()
+          ? _value.vadeGunu
+          // ignore: cast_nullable_to_non_nullable
+          : vadeGunu as int?,
+      tempSipList: tempSipList == const $CopyWithPlaceholder()
+          ? _value.tempSipList
+          // ignore: cast_nullable_to_non_nullable
+          : tempSipList as List<dynamic>?,
+      kalemList: kalemList == const $CopyWithPlaceholder()
+          ? _value.kalemList
+          // ignore: cast_nullable_to_non_nullable
+          : kalemList as List<KalemModel>?,
+      kalemModeller: kalemModeller == const $CopyWithPlaceholder()
+          ? _value.kalemModeller
+          // ignore: cast_nullable_to_non_nullable
+          : kalemModeller as List<KalemModel>?,
+      kalemModelList: kalemModelList == const $CopyWithPlaceholder()
+          ? _value.kalemModelList
+          // ignore: cast_nullable_to_non_nullable
+          : kalemModelList as List<KalemModel>?,
+      acik1: acik1 == const $CopyWithPlaceholder()
+          ? _value.acik1
+          // ignore: cast_nullable_to_non_nullable
+          : acik1 as String?,
+      acik10: acik10 == const $CopyWithPlaceholder()
+          ? _value.acik10
+          // ignore: cast_nullable_to_non_nullable
+          : acik10 as String?,
+      acik11: acik11 == const $CopyWithPlaceholder()
+          ? _value.acik11
+          // ignore: cast_nullable_to_non_nullable
+          : acik11 as String?,
+      acik12: acik12 == const $CopyWithPlaceholder()
+          ? _value.acik12
+          // ignore: cast_nullable_to_non_nullable
+          : acik12 as String?,
+      acik13: acik13 == const $CopyWithPlaceholder()
+          ? _value.acik13
+          // ignore: cast_nullable_to_non_nullable
+          : acik13 as String?,
+      acik14: acik14 == const $CopyWithPlaceholder()
+          ? _value.acik14
+          // ignore: cast_nullable_to_non_nullable
+          : acik14 as String?,
+      acik15: acik15 == const $CopyWithPlaceholder()
+          ? _value.acik15
+          // ignore: cast_nullable_to_non_nullable
+          : acik15 as String?,
+      acik16: acik16 == const $CopyWithPlaceholder()
+          ? _value.acik16
+          // ignore: cast_nullable_to_non_nullable
+          : acik16 as String?,
+      acik2: acik2 == const $CopyWithPlaceholder()
+          ? _value.acik2
+          // ignore: cast_nullable_to_non_nullable
+          : acik2 as String?,
+      acik3: acik3 == const $CopyWithPlaceholder()
+          ? _value.acik3
+          // ignore: cast_nullable_to_non_nullable
+          : acik3 as String?,
+      acik4: acik4 == const $CopyWithPlaceholder()
+          ? _value.acik4
+          // ignore: cast_nullable_to_non_nullable
+          : acik4 as String?,
+      acik5: acik5 == const $CopyWithPlaceholder()
+          ? _value.acik5
+          // ignore: cast_nullable_to_non_nullable
+          : acik5 as String?,
+      acik6: acik6 == const $CopyWithPlaceholder()
+          ? _value.acik6
+          // ignore: cast_nullable_to_non_nullable
+          : acik6 as String?,
+      acik7: acik7 == const $CopyWithPlaceholder()
+          ? _value.acik7
+          // ignore: cast_nullable_to_non_nullable
+          : acik7 as String?,
+      acik8: acik8 == const $CopyWithPlaceholder()
+          ? _value.acik8
+          // ignore: cast_nullable_to_non_nullable
+          : acik8 as String?,
+      acik9: acik9 == const $CopyWithPlaceholder()
+          ? _value.acik9
+          // ignore: cast_nullable_to_non_nullable
+          : acik9 as String?,
+      belgeKodu: belgeKodu == const $CopyWithPlaceholder()
+          ? _value.belgeKodu
+          // ignore: cast_nullable_to_non_nullable
+          : belgeKodu as String?,
+      belgeNo: belgeNo == const $CopyWithPlaceholder()
+          ? _value.belgeNo
+          // ignore: cast_nullable_to_non_nullable
+          : belgeNo as String?,
+      belgeTuru: belgeTuru == const $CopyWithPlaceholder()
+          ? _value.belgeTuru
+          // ignore: cast_nullable_to_non_nullable
+          : belgeTuru as String?,
+      cariAdi: cariAdi == const $CopyWithPlaceholder()
+          ? _value.cariAdi
+          // ignore: cast_nullable_to_non_nullable
+          : cariAdi as String?,
+      cariKodu: cariKodu == const $CopyWithPlaceholder()
+          ? _value.cariKodu
+          // ignore: cast_nullable_to_non_nullable
+          : cariKodu as String?,
+      ekAcik1: ekAcik1 == const $CopyWithPlaceholder()
+          ? _value.ekAcik1
+          // ignore: cast_nullable_to_non_nullable
+          : ekAcik1 as String?,
+      ekAcik10: ekAcik10 == const $CopyWithPlaceholder()
+          ? _value.ekAcik10
+          // ignore: cast_nullable_to_non_nullable
+          : ekAcik10 as String?,
+      ekAcik11: ekAcik11 == const $CopyWithPlaceholder()
+          ? _value.ekAcik11
+          // ignore: cast_nullable_to_non_nullable
+          : ekAcik11 as String?,
+      ekAcik12: ekAcik12 == const $CopyWithPlaceholder()
+          ? _value.ekAcik12
+          // ignore: cast_nullable_to_non_nullable
+          : ekAcik12 as String?,
+      ekAcik13: ekAcik13 == const $CopyWithPlaceholder()
+          ? _value.ekAcik13
+          // ignore: cast_nullable_to_non_nullable
+          : ekAcik13 as String?,
+      ekAcik14: ekAcik14 == const $CopyWithPlaceholder()
+          ? _value.ekAcik14
+          // ignore: cast_nullable_to_non_nullable
+          : ekAcik14 as String?,
+      ekAcik15: ekAcik15 == const $CopyWithPlaceholder()
+          ? _value.ekAcik15
+          // ignore: cast_nullable_to_non_nullable
+          : ekAcik15 as String?,
+      ekAcik16: ekAcik16 == const $CopyWithPlaceholder()
+          ? _value.ekAcik16
+          // ignore: cast_nullable_to_non_nullable
+          : ekAcik16 as String?,
+      ekAcik2: ekAcik2 == const $CopyWithPlaceholder()
+          ? _value.ekAcik2
+          // ignore: cast_nullable_to_non_nullable
+          : ekAcik2 as String?,
+      ekAcik3: ekAcik3 == const $CopyWithPlaceholder()
+          ? _value.ekAcik3
+          // ignore: cast_nullable_to_non_nullable
+          : ekAcik3 as String?,
+      ekAcik4: ekAcik4 == const $CopyWithPlaceholder()
+          ? _value.ekAcik4
+          // ignore: cast_nullable_to_non_nullable
+          : ekAcik4 as String?,
+      ekAcik5: ekAcik5 == const $CopyWithPlaceholder()
+          ? _value.ekAcik5
+          // ignore: cast_nullable_to_non_nullable
+          : ekAcik5 as String?,
+      ekAcik6: ekAcik6 == const $CopyWithPlaceholder()
+          ? _value.ekAcik6
+          // ignore: cast_nullable_to_non_nullable
+          : ekAcik6 as String?,
+      ekAcik7: ekAcik7 == const $CopyWithPlaceholder()
+          ? _value.ekAcik7
+          // ignore: cast_nullable_to_non_nullable
+          : ekAcik7 as String?,
+      ekAcik8: ekAcik8 == const $CopyWithPlaceholder()
+          ? _value.ekAcik8
+          // ignore: cast_nullable_to_non_nullable
+          : ekAcik8 as String?,
+      ekAcik9: ekAcik9 == const $CopyWithPlaceholder()
+          ? _value.ekAcik9
+          // ignore: cast_nullable_to_non_nullable
+          : ekAcik9 as String?,
+      ekAciklama: ekAciklama == const $CopyWithPlaceholder()
+          ? _value.ekAciklama
+          // ignore: cast_nullable_to_non_nullable
+          : ekAciklama as String?,
+      islemId: islemId == const $CopyWithPlaceholder()
+          ? _value.islemId
+          // ignore: cast_nullable_to_non_nullable
+          : islemId as String?,
+      kayityapankul: kayityapankul == const $CopyWithPlaceholder()
+          ? _value.kayityapankul
+          // ignore: cast_nullable_to_non_nullable
+          : kayityapankul as String?,
+      kdvDahil: kdvDahil == const $CopyWithPlaceholder()
+          ? _value.kdvDahil
+          // ignore: cast_nullable_to_non_nullable
+          : kdvDahil as String?,
+      kosulKodu: kosulKodu == const $CopyWithPlaceholder()
+          ? _value.kosulKodu
+          // ignore: cast_nullable_to_non_nullable
+          : kosulKodu as String?,
+      mevcutBelgeNo: mevcutBelgeNo == const $CopyWithPlaceholder()
+          ? _value.mevcutBelgeNo
+          // ignore: cast_nullable_to_non_nullable
+          : mevcutBelgeNo as String?,
+      mevcutCariKodu: mevcutCariKodu == const $CopyWithPlaceholder()
+          ? _value.mevcutCariKodu
+          // ignore: cast_nullable_to_non_nullable
+          : mevcutCariKodu as String?,
+      odemeKodu: odemeKodu == const $CopyWithPlaceholder()
+          ? _value.odemeKodu
+          // ignore: cast_nullable_to_non_nullable
+          : odemeKodu as String?,
+      ozelKod1: ozelKod1 == const $CopyWithPlaceholder()
+          ? _value.ozelKod1
+          // ignore: cast_nullable_to_non_nullable
+          : ozelKod1 as String?,
+      ozelKod2: ozelKod2 == const $CopyWithPlaceholder()
+          ? _value.ozelKod2
+          // ignore: cast_nullable_to_non_nullable
+          : ozelKod2 as String?,
+      pickerBelgeTuru: pickerBelgeTuru == const $CopyWithPlaceholder()
+          ? _value.pickerBelgeTuru
+          // ignore: cast_nullable_to_non_nullable
+          : pickerBelgeTuru as String?,
+      plasiyerKodu: plasiyerKodu == const $CopyWithPlaceholder()
+          ? _value.plasiyerKodu
+          // ignore: cast_nullable_to_non_nullable
+          : plasiyerKodu as String?,
+      projeKodu: projeKodu == const $CopyWithPlaceholder()
+          ? _value.projeKodu
+          // ignore: cast_nullable_to_non_nullable
+          : projeKodu as String?,
+      remoteTempBelgeEtiketi:
+          remoteTempBelgeEtiketi == const $CopyWithPlaceholder()
+              ? _value.remoteTempBelgeEtiketi
+              // ignore: cast_nullable_to_non_nullable
+              : remoteTempBelgeEtiketi as String?,
+      tag: tag == const $CopyWithPlaceholder()
+          ? _value.tag
+          // ignore: cast_nullable_to_non_nullable
+          : tag as String?,
+      kalemler: kalemler == const $CopyWithPlaceholder()
+          ? _value.kalemler
+          // ignore: cast_nullable_to_non_nullable
+          : kalemler as List<KalemModel>?,
+      siparisTipi: siparisTipi == const $CopyWithPlaceholder()
+          ? _value.siparisTipi
+          // ignore: cast_nullable_to_non_nullable
+          : siparisTipi as SiparisTipiEnum?,
+      isNew: isNew == const $CopyWithPlaceholder()
+          ? _value.isNew
+          // ignore: cast_nullable_to_non_nullable
+          : isNew as bool?,
+      irsaliyelesti: irsaliyelesti == const $CopyWithPlaceholder()
+          ? _value.irsaliyelesti
+          // ignore: cast_nullable_to_non_nullable
+          : irsaliyelesti as String?,
+      irslesenSayi: irslesenSayi == const $CopyWithPlaceholder()
+          ? _value.irslesenSayi
+          // ignore: cast_nullable_to_non_nullable
+          : irslesenSayi as int?,
+      faturalasti: faturalasti == const $CopyWithPlaceholder()
+          ? _value.faturalasti
+          // ignore: cast_nullable_to_non_nullable
+          : faturalasti as String?,
+      dovizTipi: dovizTipi == const $CopyWithPlaceholder()
+          ? _value.dovizTipi
+          // ignore: cast_nullable_to_non_nullable
+          : dovizTipi as int?,
+      dovizAdi: dovizAdi == const $CopyWithPlaceholder()
+          ? _value.dovizAdi
+          // ignore: cast_nullable_to_non_nullable
+          : dovizAdi as String?,
+      kapatilmis: kapatilmis == const $CopyWithPlaceholder()
+          ? _value.kapatilmis
+          // ignore: cast_nullable_to_non_nullable
+          : kapatilmis as String?,
+      aciklama: aciklama == const $CopyWithPlaceholder()
+          ? _value.aciklama
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama as String?,
+      dovizTutari: dovizTutari == const $CopyWithPlaceholder()
+          ? _value.dovizTutari
+          // ignore: cast_nullable_to_non_nullable
+          : dovizTutari as double?,
+      teslimCari: teslimCari == const $CopyWithPlaceholder()
+          ? _value.teslimCari
+          // ignore: cast_nullable_to_non_nullable
+          : teslimCari as String?,
+      fYedek4: fYedek4 == const $CopyWithPlaceholder()
+          ? _value.fYedek4
+          // ignore: cast_nullable_to_non_nullable
+          : fYedek4 as double?,
+    );
+  }
+}
+
+extension $BaseSiparisEditModelCopyWith on BaseSiparisEditModel {
+  /// Returns a callable class that can be used as follows: `instanceOfBaseSiparisEditModel.copyWith(...)` or like so:`instanceOfBaseSiparisEditModel.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$BaseSiparisEditModelCWProxy get copyWith =>
+      _$BaseSiparisEditModelCWProxyImpl(this);
+}
+
 abstract class _$KalemModelCWProxy {
   KalemModel iskonto1OranMi(bool? iskonto1OranMi);
 
@@ -664,122 +2028,123 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return BaseSiparisEditModel()
-      ..duzeltmetarihi = fields[0] as DateTime?
-      ..kalemAdedi = fields[1] as int?
-      ..cariEfaturami = fields[2] as String?
-      ..cYedek6 = fields[3] as String?
-      ..duzeltmeyapankul = fields[4] as String?
-      ..plasiyerAciklama = fields[5] as String?
-      ..projeAciklama = fields[6] as String?
-      ..tempJsonData = fields[7] as BaseSiparisEditModel?
-      ..teslimCariAdi = fields[8] as String?
-      ..kdvDahilmi = fields[9] as bool?
-      ..remoteTempBelge = fields[10] as bool?
-      ..tempBelgeMi = fields[11] as bool?
-      ..cariModel = fields[12] as CariListesiModel?
-      ..islemeBaslamaTarihi = fields[13] as DateTime?
-      ..istenilenTeslimTarihi = fields[14] as DateTime?
-      ..kayittarihi = fields[15] as DateTime?
-      ..kosulTarihi = fields[16] as DateTime?
-      ..tarih = fields[17] as DateTime?
-      ..teslimTarihi = fields[18] as DateTime?
-      ..vadeTarihi = fields[19] as DateTime?
-      ..araToplam = fields[20] as double?
-      ..ekMaliyet1Tutari = fields[21] as double?
-      ..ekMaliyet2Tutari = fields[22] as double?
-      ..ekMaliyet3Tutari = fields[23] as double?
-      ..genelIskonto1 = fields[24] as double?
-      ..genelIskonto2 = fields[25] as double?
-      ..genelIskonto3 = fields[26] as double?
-      ..genelToplam = fields[27] as double?
-      ..genIsk1O = fields[28] as double?
-      ..genIsk1T = fields[29] as double?
-      ..genIsk2O = fields[30] as double?
-      ..genIsk2T = fields[31] as double?
-      ..genIsk3O = fields[32] as double?
-      ..genIsk3T = fields[33] as double?
-      ..kdv = fields[34] as double?
-      ..belgeTipi = fields[35] as int?
-      ..cikisDepoKodu = fields[36] as int?
-      ..genisk1Tipi = fields[37] as int?
-      ..genisk2Tipi = fields[38] as int?
-      ..genisk3Tipi = fields[39] as int?
-      ..kalemModelAdedi = fields[40] as int?
-      ..tempBelgeId = fields[41] as int?
-      ..tempKayitTipi = fields[42] as int?
-      ..tipi = fields[43] as int?
-      ..topluDepo = fields[44] as int?
-      ..vadeGunu = fields[45] as int?
-      ..tempSipList = (fields[46] as List?)?.cast<dynamic>()
-      ..kalemList = (fields[47] as List?)?.cast<KalemModel>()
-      ..kalemModeller = (fields[48] as List?)?.cast<KalemModel>()
-      ..kalemModelList = (fields[49] as List?)?.cast<KalemModel>()
-      ..acik1 = fields[50] as String?
-      ..acik10 = fields[51] as String?
-      ..acik11 = fields[52] as String?
-      ..acik12 = fields[53] as String?
-      ..acik13 = fields[54] as String?
-      ..acik14 = fields[55] as String?
-      ..acik15 = fields[56] as String?
-      ..acik16 = fields[57] as String?
-      ..acik2 = fields[58] as String?
-      ..acik3 = fields[59] as String?
-      ..acik4 = fields[60] as String?
-      ..acik5 = fields[61] as String?
-      ..acik6 = fields[62] as String?
-      ..acik7 = fields[63] as String?
-      ..acik8 = fields[64] as String?
-      ..acik9 = fields[65] as String?
-      ..belgeKodu = fields[66] as String?
-      ..belgeNo = fields[67] as String?
-      ..belgeTuru = fields[68] as String?
-      ..cariAdi = fields[69] as String?
-      ..cariKodu = fields[70] as String?
-      ..ekAcik1 = fields[71] as String?
-      ..ekAcik10 = fields[72] as String?
-      ..ekAcik11 = fields[73] as String?
-      ..ekAcik12 = fields[74] as String?
-      ..ekAcik13 = fields[75] as String?
-      ..ekAcik14 = fields[76] as String?
-      ..ekAcik15 = fields[77] as String?
-      ..ekAcik16 = fields[78] as String?
-      ..ekAcik2 = fields[79] as String?
-      ..ekAcik3 = fields[80] as String?
-      ..ekAcik4 = fields[81] as String?
-      ..ekAcik5 = fields[82] as String?
-      ..ekAcik6 = fields[83] as String?
-      ..ekAcik7 = fields[84] as String?
-      ..ekAcik8 = fields[85] as String?
-      ..ekAcik9 = fields[86] as String?
-      ..ekAciklama = fields[87] as String?
-      ..islemId = fields[88] as String?
-      ..kayityapankul = fields[89] as String?
-      ..kdvDahil = fields[90] as String?
-      ..kosulKodu = fields[91] as String?
-      ..mevcutBelgeNo = fields[92] as String?
-      ..mevcutCariKodu = fields[93] as String?
-      ..odemeKodu = fields[94] as String?
-      ..ozelKod1 = fields[95] as String?
-      ..ozelKod2 = fields[96] as String?
-      ..pickerBelgeTuru = fields[97] as String?
-      ..plasiyerKodu = fields[98] as String?
-      ..projeKodu = fields[99] as String?
-      ..remoteTempBelgeEtiketi = fields[100] as String?
-      ..tag = fields[101] as String?
-      ..kalemler = (fields[102] as List?)?.cast<KalemModel>()
-      ..siparisTipi = fields[103] as SiparisTipiEnum?
-      ..isNew = fields[104] as bool?
-      ..irsaliyelesti = fields[105] as String?
-      ..irslesenSayi = fields[106] as int?
-      ..faturalasti = fields[107] as String?
-      ..dovizTipi = fields[108] as int?
-      ..dovizAdi = fields[109] as String?
-      ..kapatilmis = fields[110] as String?
-      ..aciklama = fields[111] as String?
-      ..dovizTutari = fields[112] as double?
-      ..teslimCari = fields[113] as String?
-      ..fYedek4 = fields[114] as double?;
+    return BaseSiparisEditModel(
+      duzeltmetarihi: fields[0] as DateTime?,
+      kalemAdedi: fields[1] as int?,
+      cariEfaturami: fields[2] as String?,
+      cYedek6: fields[3] as String?,
+      duzeltmeyapankul: fields[4] as String?,
+      plasiyerAciklama: fields[5] as String?,
+      projeAciklama: fields[6] as String?,
+      tempJsonData: fields[7] as BaseSiparisEditModel?,
+      teslimCariAdi: fields[8] as String?,
+      kdvDahilmi: fields[9] as bool?,
+      remoteTempBelge: fields[10] as bool?,
+      tempBelgeMi: fields[11] as bool?,
+      cariModel: fields[12] as CariListesiModel?,
+      islemeBaslamaTarihi: fields[13] as DateTime?,
+      istenilenTeslimTarihi: fields[14] as DateTime?,
+      kayittarihi: fields[15] as DateTime?,
+      kosulTarihi: fields[16] as DateTime?,
+      tarih: fields[17] as DateTime?,
+      teslimTarihi: fields[18] as DateTime?,
+      vadeTarihi: fields[19] as DateTime?,
+      araToplam: fields[20] as double?,
+      ekMaliyet1Tutari: fields[21] as double?,
+      ekMaliyet2Tutari: fields[22] as double?,
+      ekMaliyet3Tutari: fields[23] as double?,
+      genelIskonto1: fields[24] as double?,
+      genelIskonto2: fields[25] as double?,
+      genelIskonto3: fields[26] as double?,
+      genelToplam: fields[27] as double?,
+      genIsk1O: fields[28] as double?,
+      genIsk1T: fields[29] as double?,
+      genIsk2O: fields[30] as double?,
+      genIsk2T: fields[31] as double?,
+      genIsk3O: fields[32] as double?,
+      genIsk3T: fields[33] as double?,
+      kdv: fields[34] as double?,
+      belgeTipi: fields[35] as int?,
+      cikisDepoKodu: fields[36] as int?,
+      genisk1Tipi: fields[37] as int?,
+      genisk2Tipi: fields[38] as int?,
+      genisk3Tipi: fields[39] as int?,
+      kalemModelAdedi: fields[40] as int?,
+      tempBelgeId: fields[41] as int?,
+      tempKayitTipi: fields[42] as int?,
+      tipi: fields[43] as int?,
+      topluDepo: fields[44] as int?,
+      vadeGunu: fields[45] as int?,
+      tempSipList: (fields[46] as List?)?.cast<dynamic>(),
+      kalemList: (fields[47] as List?)?.cast<KalemModel>(),
+      kalemModeller: (fields[48] as List?)?.cast<KalemModel>(),
+      kalemModelList: (fields[49] as List?)?.cast<KalemModel>(),
+      acik1: fields[50] as String?,
+      acik10: fields[51] as String?,
+      acik11: fields[52] as String?,
+      acik12: fields[53] as String?,
+      acik13: fields[54] as String?,
+      acik14: fields[55] as String?,
+      acik15: fields[56] as String?,
+      acik16: fields[57] as String?,
+      acik2: fields[58] as String?,
+      acik3: fields[59] as String?,
+      acik4: fields[60] as String?,
+      acik5: fields[61] as String?,
+      acik6: fields[62] as String?,
+      acik7: fields[63] as String?,
+      acik8: fields[64] as String?,
+      acik9: fields[65] as String?,
+      belgeKodu: fields[66] as String?,
+      belgeNo: fields[67] as String?,
+      belgeTuru: fields[68] as String?,
+      cariAdi: fields[69] as String?,
+      cariKodu: fields[70] as String?,
+      ekAcik1: fields[71] as String?,
+      ekAcik10: fields[72] as String?,
+      ekAcik11: fields[73] as String?,
+      ekAcik12: fields[74] as String?,
+      ekAcik13: fields[75] as String?,
+      ekAcik14: fields[76] as String?,
+      ekAcik15: fields[77] as String?,
+      ekAcik16: fields[78] as String?,
+      ekAcik2: fields[79] as String?,
+      ekAcik3: fields[80] as String?,
+      ekAcik4: fields[81] as String?,
+      ekAcik5: fields[82] as String?,
+      ekAcik6: fields[83] as String?,
+      ekAcik7: fields[84] as String?,
+      ekAcik8: fields[85] as String?,
+      ekAcik9: fields[86] as String?,
+      ekAciklama: fields[87] as String?,
+      islemId: fields[88] as String?,
+      kayityapankul: fields[89] as String?,
+      kdvDahil: fields[90] as String?,
+      kosulKodu: fields[91] as String?,
+      mevcutBelgeNo: fields[92] as String?,
+      mevcutCariKodu: fields[93] as String?,
+      odemeKodu: fields[94] as String?,
+      ozelKod1: fields[95] as String?,
+      ozelKod2: fields[96] as String?,
+      pickerBelgeTuru: fields[97] as String?,
+      plasiyerKodu: fields[98] as String?,
+      projeKodu: fields[99] as String?,
+      remoteTempBelgeEtiketi: fields[100] as String?,
+      tag: fields[101] as String?,
+      kalemler: (fields[102] as List?)?.cast<KalemModel>(),
+      siparisTipi: fields[103] as SiparisTipiEnum?,
+      isNew: fields[104] as bool?,
+      irsaliyelesti: fields[105] as String?,
+      irslesenSayi: fields[106] as int?,
+      faturalasti: fields[107] as String?,
+      dovizTipi: fields[108] as int?,
+      dovizAdi: fields[109] as String?,
+      kapatilmis: fields[110] as String?,
+      aciklama: fields[111] as String?,
+      dovizTutari: fields[112] as double?,
+      teslimCari: fields[113] as String?,
+      fYedek4: fields[114] as double?,
+    );
   }
 
   @override
@@ -1219,148 +2584,150 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
 
 BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
         Map<String, dynamic> json) =>
-    BaseSiparisEditModel()
-      ..duzeltmetarihi = json['DUZELTMETARIHI'] == null
+    BaseSiparisEditModel(
+      duzeltmetarihi: json['DUZELTMETARIHI'] == null
           ? null
-          : DateTime.parse(json['DUZELTMETARIHI'] as String)
-      ..kalemAdedi = json['KALEM_ADEDI'] as int?
-      ..cariEfaturami = json['CARI_EFATURAMI'] as String?
-      ..cYedek6 = json['C_YEDEK6'] as String?
-      ..duzeltmeyapankul = json['DUZELTMEYAPANKUL'] as String?
-      ..plasiyerAciklama = json['PLASIYER_ACIKLAMA'] as String?
-      ..projeAciklama = json['PROJE_ACIKLAMA'] as String?
-      ..tempJsonData = json['TEMP_JSON_DATA'] == null
+          : DateTime.parse(json['DUZELTMETARIHI'] as String),
+      kalemAdedi: json['KALEM_ADEDI'] as int?,
+      cariEfaturami: json['CARI_EFATURAMI'] as String?,
+      cYedek6: json['C_YEDEK6'] as String?,
+      duzeltmeyapankul: json['DUZELTMEYAPANKUL'] as String?,
+      plasiyerAciklama: json['PLASIYER_ACIKLAMA'] as String?,
+      projeAciklama: json['PROJE_ACIKLAMA'] as String?,
+      tempJsonData: json['TEMP_JSON_DATA'] == null
           ? null
-          : BaseSiparisEditModel.fromJson(json['TEMP_JSON_DATA'] as String)
-      ..teslimCariAdi = json['TESLIM_CARI_ADI'] as String?
-      ..kdvDahilmi = json['KDV_DAHILMI'] as bool?
-      ..remoteTempBelge = json['REMOTE_TEMP_BELGE'] as bool?
-      ..tempBelgeMi = json['TEMP_BELGE_MI'] as bool?
-      ..cariModel = json['CARI_MODEL'] == null
+          : BaseSiparisEditModel.fromJson(json['TEMP_JSON_DATA'] as String),
+      teslimCariAdi: json['TESLIM_CARI_ADI'] as String?,
+      kdvDahilmi: json['KDV_DAHILMI'] as bool?,
+      remoteTempBelge: json['REMOTE_TEMP_BELGE'] as bool?,
+      tempBelgeMi: json['TEMP_BELGE_MI'] as bool?,
+      cariModel: json['CARI_MODEL'] == null
           ? null
           : CariListesiModel.fromJson(
-              json['CARI_MODEL'] as Map<String, dynamic>)
-      ..islemeBaslamaTarihi = json['ISLEME_BASLAMA_TARIHI'] == null
+              json['CARI_MODEL'] as Map<String, dynamic>),
+      islemeBaslamaTarihi: json['ISLEME_BASLAMA_TARIHI'] == null
           ? null
-          : DateTime.parse(json['ISLEME_BASLAMA_TARIHI'] as String)
-      ..istenilenTeslimTarihi = json['ISTENILEN_TESLIM_TARIHI'] == null
+          : DateTime.parse(json['ISLEME_BASLAMA_TARIHI'] as String),
+      istenilenTeslimTarihi: json['ISTENILEN_TESLIM_TARIHI'] == null
           ? null
-          : DateTime.parse(json['ISTENILEN_TESLIM_TARIHI'] as String)
-      ..kayittarihi = json['KAYITTARIHI'] == null
+          : DateTime.parse(json['ISTENILEN_TESLIM_TARIHI'] as String),
+      kayittarihi: json['KAYITTARIHI'] == null
           ? null
-          : DateTime.parse(json['KAYITTARIHI'] as String)
-      ..kosulTarihi = json['KOSUL_TARIHI'] == null
+          : DateTime.parse(json['KAYITTARIHI'] as String),
+      kosulTarihi: json['KOSUL_TARIHI'] == null
           ? null
-          : DateTime.parse(json['KOSUL_TARIHI'] as String)
-      ..tarih =
-          json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
-      ..teslimTarihi = json['TESLIM_TARIHI'] == null
+          : DateTime.parse(json['KOSUL_TARIHI'] as String),
+      tarih: json['TARIH'] == null
           ? null
-          : DateTime.parse(json['TESLIM_TARIHI'] as String)
-      ..vadeTarihi = json['VADE_TARIHI'] == null
+          : DateTime.parse(json['TARIH'] as String),
+      teslimTarihi: json['TESLIM_TARIHI'] == null
           ? null
-          : DateTime.parse(json['VADE_TARIHI'] as String)
-      ..araToplam = (json['ARA_TOPLAM'] as num?)?.toDouble()
-      ..ekMaliyet1Tutari = (json['EK_MALIYET1_TUTARI'] as num?)?.toDouble()
-      ..ekMaliyet2Tutari = (json['EK_MALIYET2_TUTARI'] as num?)?.toDouble()
-      ..ekMaliyet3Tutari = (json['EK_MALIYET3_TUTARI'] as num?)?.toDouble()
-      ..genelIskonto1 = (json['GENEL_ISKONTO1'] as num?)?.toDouble()
-      ..genelIskonto2 = (json['GENEL_ISKONTO2'] as num?)?.toDouble()
-      ..genelIskonto3 = (json['GENEL_ISKONTO3'] as num?)?.toDouble()
-      ..genelToplam = (json['GENEL_TOPLAM'] as num?)?.toDouble()
-      ..genIsk1O = (json['GEN_ISK1_O'] as num?)?.toDouble()
-      ..genIsk1T = (json['GEN_ISK1_T'] as num?)?.toDouble()
-      ..genIsk2O = (json['GEN_ISK2_O'] as num?)?.toDouble()
-      ..genIsk2T = (json['GEN_ISK2_T'] as num?)?.toDouble()
-      ..genIsk3O = (json['GEN_ISK3_O'] as num?)?.toDouble()
-      ..genIsk3T = (json['GEN_ISK3_T'] as num?)?.toDouble()
-      ..kdv = (json['KDV'] as num?)?.toDouble()
-      ..belgeTipi = json['BELGE_TIPI'] as int?
-      ..cikisDepoKodu = json['CIKIS_DEPO_KODU'] as int?
-      ..genisk1Tipi = json['GENISK1_TIPI'] as int?
-      ..genisk2Tipi = json['GENISK2_TIPI'] as int?
-      ..genisk3Tipi = json['GENISK3_TIPI'] as int?
-      ..kalemModelAdedi = json['KALEM_MODEL_ADEDI'] as int?
-      ..tempBelgeId = json['TEMP_BELGE_ID'] as int?
-      ..tempKayitTipi = json['TEMP_KAYIT_TIPI'] as int?
-      ..tipi = json['TIPI'] as int?
-      ..topluDepo = json['TOPLU_DEPO'] as int?
-      ..vadeGunu = json['VADE_GUNU'] as int?
-      ..tempSipList = json['TEMP_SIP_LIST'] as List<dynamic>?
-      ..kalemList = (json['KALEM_LIST'] as List<dynamic>?)
+          : DateTime.parse(json['TESLIM_TARIHI'] as String),
+      vadeTarihi: json['VADE_TARIHI'] == null
+          ? null
+          : DateTime.parse(json['VADE_TARIHI'] as String),
+      araToplam: (json['ARA_TOPLAM'] as num?)?.toDouble(),
+      ekMaliyet1Tutari: (json['EK_MALIYET1_TUTARI'] as num?)?.toDouble(),
+      ekMaliyet2Tutari: (json['EK_MALIYET2_TUTARI'] as num?)?.toDouble(),
+      ekMaliyet3Tutari: (json['EK_MALIYET3_TUTARI'] as num?)?.toDouble(),
+      genelIskonto1: (json['GENEL_ISKONTO1'] as num?)?.toDouble(),
+      genelIskonto2: (json['GENEL_ISKONTO2'] as num?)?.toDouble(),
+      genelIskonto3: (json['GENEL_ISKONTO3'] as num?)?.toDouble(),
+      genelToplam: (json['GENEL_TOPLAM'] as num?)?.toDouble(),
+      genIsk1O: (json['GEN_ISK1_O'] as num?)?.toDouble(),
+      genIsk1T: (json['GEN_ISK1_T'] as num?)?.toDouble(),
+      genIsk2O: (json['GEN_ISK2_O'] as num?)?.toDouble(),
+      genIsk2T: (json['GEN_ISK2_T'] as num?)?.toDouble(),
+      genIsk3O: (json['GEN_ISK3_O'] as num?)?.toDouble(),
+      genIsk3T: (json['GEN_ISK3_T'] as num?)?.toDouble(),
+      kdv: (json['KDV'] as num?)?.toDouble(),
+      belgeTipi: json['BELGE_TIPI'] as int?,
+      cikisDepoKodu: json['CIKIS_DEPO_KODU'] as int?,
+      genisk1Tipi: json['GENISK1_TIPI'] as int?,
+      genisk2Tipi: json['GENISK2_TIPI'] as int?,
+      genisk3Tipi: json['GENISK3_TIPI'] as int?,
+      kalemModelAdedi: json['KALEM_MODEL_ADEDI'] as int?,
+      tempBelgeId: json['TEMP_BELGE_ID'] as int?,
+      tempKayitTipi: json['TEMP_KAYIT_TIPI'] as int?,
+      tipi: json['TIPI'] as int?,
+      topluDepo: json['TOPLU_DEPO'] as int?,
+      vadeGunu: json['VADE_GUNU'] as int?,
+      tempSipList: json['TEMP_SIP_LIST'] as List<dynamic>?,
+      kalemList: (json['KALEM_LIST'] as List<dynamic>?)
           ?.map((e) => KalemModel.fromJson(e as Map<String, dynamic>))
-          .toList()
-      ..kalemModeller = (json['KALEM_MODELLER'] as List<dynamic>?)
+          .toList(),
+      kalemModeller: (json['KALEM_MODELLER'] as List<dynamic>?)
           ?.map((e) => KalemModel.fromJson(e as Map<String, dynamic>))
-          .toList()
-      ..kalemModelList = (json['KALEM_MODEL_LIST'] as List<dynamic>?)
+          .toList(),
+      kalemModelList: (json['KALEM_MODEL_LIST'] as List<dynamic>?)
           ?.map((e) => KalemModel.fromJson(e as Map<String, dynamic>))
-          .toList()
-      ..acik1 = json['ACIK1'] as String?
-      ..acik10 = json['ACIK10'] as String?
-      ..acik11 = json['ACIK11'] as String?
-      ..acik12 = json['ACIK12'] as String?
-      ..acik13 = json['ACIK13'] as String?
-      ..acik14 = json['ACIK14'] as String?
-      ..acik15 = json['ACIK15'] as String?
-      ..acik16 = json['ACIK16'] as String?
-      ..acik2 = json['ACIK2'] as String?
-      ..acik3 = json['ACIK3'] as String?
-      ..acik4 = json['ACIK4'] as String?
-      ..acik5 = json['ACIK5'] as String?
-      ..acik6 = json['ACIK6'] as String?
-      ..acik7 = json['ACIK7'] as String?
-      ..acik8 = json['ACIK8'] as String?
-      ..acik9 = json['ACIK9'] as String?
-      ..belgeKodu = json['BELGE_KODU'] as String?
-      ..belgeNo = json['BELGE_NO'] as String?
-      ..belgeTuru = json['BELGE_TURU'] as String?
-      ..cariAdi = json['CARI_ADI'] as String?
-      ..cariKodu = json['CARI_KODU'] as String?
-      ..ekAcik1 = json['EK_ACIK1'] as String?
-      ..ekAcik10 = json['EK_ACIK10'] as String?
-      ..ekAcik11 = json['EK_ACIK11'] as String?
-      ..ekAcik12 = json['EK_ACIK12'] as String?
-      ..ekAcik13 = json['EK_ACIK13'] as String?
-      ..ekAcik14 = json['EK_ACIK14'] as String?
-      ..ekAcik15 = json['EK_ACIK15'] as String?
-      ..ekAcik16 = json['EK_ACIK16'] as String?
-      ..ekAcik2 = json['EK_ACIK2'] as String?
-      ..ekAcik3 = json['EK_ACIK3'] as String?
-      ..ekAcik4 = json['EK_ACIK4'] as String?
-      ..ekAcik5 = json['EK_ACIK5'] as String?
-      ..ekAcik6 = json['EK_ACIK6'] as String?
-      ..ekAcik7 = json['EK_ACIK7'] as String?
-      ..ekAcik8 = json['EK_ACIK8'] as String?
-      ..ekAcik9 = json['EK_ACIK9'] as String?
-      ..ekAciklama = json['EK_ACIKLAMA'] as String?
-      ..islemId = json['ISLEM_ID'] as String?
-      ..kayityapankul = json['KAYITYAPANKUL'] as String?
-      ..kdvDahil = json['KDV_DAHIL'] as String?
-      ..kosulKodu = json['KOSUL_KODU'] as String?
-      ..mevcutBelgeNo = json['MEVCUT_BELGE_NO'] as String?
-      ..mevcutCariKodu = json['MEVCUT_CARI_KODU'] as String?
-      ..odemeKodu = json['ODEME_KODU'] as String?
-      ..ozelKod1 = json['OZEL_KOD1'] as String?
-      ..ozelKod2 = json['OZEL_KOD2'] as String?
-      ..pickerBelgeTuru = json['PICKER_BELGE_TURU'] as String?
-      ..plasiyerKodu = json['PLASIYER_KODU'] as String?
-      ..projeKodu = json['PROJE_KODU'] as String?
-      ..remoteTempBelgeEtiketi = json['REMOTE_TEMP_BELGE_ETIKETI'] as String?
-      ..tag = json['TAG'] as String?
-      ..kalemler = (json['KALEMLER'] as List<dynamic>?)
+          .toList(),
+      acik1: json['ACIK1'] as String?,
+      acik10: json['ACIK10'] as String?,
+      acik11: json['ACIK11'] as String?,
+      acik12: json['ACIK12'] as String?,
+      acik13: json['ACIK13'] as String?,
+      acik14: json['ACIK14'] as String?,
+      acik15: json['ACIK15'] as String?,
+      acik16: json['ACIK16'] as String?,
+      acik2: json['ACIK2'] as String?,
+      acik3: json['ACIK3'] as String?,
+      acik4: json['ACIK4'] as String?,
+      acik5: json['ACIK5'] as String?,
+      acik6: json['ACIK6'] as String?,
+      acik7: json['ACIK7'] as String?,
+      acik8: json['ACIK8'] as String?,
+      acik9: json['ACIK9'] as String?,
+      belgeKodu: json['BELGE_KODU'] as String?,
+      belgeNo: json['BELGE_NO'] as String?,
+      belgeTuru: json['BELGE_TURU'] as String?,
+      cariAdi: json['CARI_ADI'] as String?,
+      cariKodu: json['CARI_KODU'] as String?,
+      ekAcik1: json['EK_ACIK1'] as String?,
+      ekAcik10: json['EK_ACIK10'] as String?,
+      ekAcik11: json['EK_ACIK11'] as String?,
+      ekAcik12: json['EK_ACIK12'] as String?,
+      ekAcik13: json['EK_ACIK13'] as String?,
+      ekAcik14: json['EK_ACIK14'] as String?,
+      ekAcik15: json['EK_ACIK15'] as String?,
+      ekAcik16: json['EK_ACIK16'] as String?,
+      ekAcik2: json['EK_ACIK2'] as String?,
+      ekAcik3: json['EK_ACIK3'] as String?,
+      ekAcik4: json['EK_ACIK4'] as String?,
+      ekAcik5: json['EK_ACIK5'] as String?,
+      ekAcik6: json['EK_ACIK6'] as String?,
+      ekAcik7: json['EK_ACIK7'] as String?,
+      ekAcik8: json['EK_ACIK8'] as String?,
+      ekAcik9: json['EK_ACIK9'] as String?,
+      ekAciklama: json['EK_ACIKLAMA'] as String?,
+      islemId: json['ISLEM_ID'] as String?,
+      kayityapankul: json['KAYITYAPANKUL'] as String?,
+      kdvDahil: json['KDV_DAHIL'] as String?,
+      kosulKodu: json['KOSUL_KODU'] as String?,
+      mevcutBelgeNo: json['MEVCUT_BELGE_NO'] as String?,
+      mevcutCariKodu: json['MEVCUT_CARI_KODU'] as String?,
+      odemeKodu: json['ODEME_KODU'] as String?,
+      ozelKod1: json['OZEL_KOD1'] as String?,
+      ozelKod2: json['OZEL_KOD2'] as String?,
+      pickerBelgeTuru: json['PICKER_BELGE_TURU'] as String?,
+      plasiyerKodu: json['PLASIYER_KODU'] as String?,
+      projeKodu: json['PROJE_KODU'] as String?,
+      remoteTempBelgeEtiketi: json['REMOTE_TEMP_BELGE_ETIKETI'] as String?,
+      tag: json['TAG'] as String?,
+      kalemler: (json['KALEMLER'] as List<dynamic>?)
           ?.map((e) => KalemModel.fromJson(e as Map<String, dynamic>))
-          .toList()
-      ..irsaliyelesti = json['IRSALIYELESTI'] as String?
-      ..irslesenSayi = json['IRSLESEN_SAYI'] as int?
-      ..faturalasti = json['FATURALASTI'] as String?
-      ..dovizTipi = json['DOVIZ_TIPI'] as int?
-      ..dovizAdi = json['DOVIZ_ADI'] as String?
-      ..kapatilmis = json['KAPATILMIS'] as String?
-      ..aciklama = json['ACIKLAMA'] as String?
-      ..dovizTutari = (json['DOVIZ_TUTARI'] as num?)?.toDouble()
-      ..teslimCari = json['TESLIM_CARI'] as String?
-      ..fYedek4 = (json['F_YEDEK4'] as num?)?.toDouble();
+          .toList(),
+      irsaliyelesti: json['IRSALIYELESTI'] as String?,
+      irslesenSayi: json['IRSLESEN_SAYI'] as int?,
+      faturalasti: json['FATURALASTI'] as String?,
+      dovizTipi: json['DOVIZ_TIPI'] as int?,
+      dovizAdi: json['DOVIZ_ADI'] as String?,
+      kapatilmis: json['KAPATILMIS'] as String?,
+      aciklama: json['ACIKLAMA'] as String?,
+      dovizTutari: (json['DOVIZ_TUTARI'] as num?)?.toDouble(),
+      teslimCari: json['TESLIM_CARI'] as String?,
+      fYedek4: (json['F_YEDEK4'] as num?)?.toDouble(),
+    );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
     BaseSiparisEditModel instance) {

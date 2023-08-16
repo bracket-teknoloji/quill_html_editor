@@ -11,7 +11,7 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
   @JsonSerializable(fieldRename: FieldRename.pascal)
    factory SiparisEditRequestModel({
     @JsonKey(defaultValue: "D") String? ekranTipi,
-    @JsonKey(defaultValue: true) bool? kisitYok,
+    @Default(true) bool? kisitYok,
     @JsonKey(name: "BelgeTipi") String? belgeTipi,
     @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
     bool? remoteTempBelge,

@@ -25,9 +25,7 @@ mixin _$SiparisEditRequestModel {
   String? get ekranTipi => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: "D")
   set ekranTipi(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: true)
   bool? get kisitYok => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: true)
   set kisitYok(bool? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "BelgeTipi")
   String? get belgeTipi => throw _privateConstructorUsedError;
@@ -86,7 +84,7 @@ abstract class $SiparisEditRequestModelCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(defaultValue: "D") String? ekranTipi,
-      @JsonKey(defaultValue: true) bool? kisitYok,
+      bool? kisitYok,
       @JsonKey(name: "BelgeTipi") String? belgeTipi,
       @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
       bool? remoteTempBelge,
@@ -243,7 +241,7 @@ abstract class _$$_SiparisEditRequestModelCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(defaultValue: "D") String? ekranTipi,
-      @JsonKey(defaultValue: true) bool? kisitYok,
+      bool? kisitYok,
       @JsonKey(name: "BelgeTipi") String? belgeTipi,
       @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
       bool? remoteTempBelge,
@@ -394,7 +392,7 @@ class __$$_SiparisEditRequestModelCopyWithImpl<$Res>
 class _$_SiparisEditRequestModel extends _SiparisEditRequestModel {
   _$_SiparisEditRequestModel(
       {@JsonKey(defaultValue: "D") this.ekranTipi,
-      @JsonKey(defaultValue: true) this.kisitYok,
+      this.kisitYok = true,
       @JsonKey(name: "BelgeTipi") this.belgeTipi,
       @JsonKey(name: "PickerBelgeTuru") this.pickerBelgeTuru,
       this.remoteTempBelge,
@@ -423,7 +421,7 @@ class _$_SiparisEditRequestModel extends _SiparisEditRequestModel {
   @JsonKey(defaultValue: "D")
   String? ekranTipi;
   @override
-  @JsonKey(defaultValue: true)
+  @JsonKey()
   bool? kisitYok;
   @override
   @JsonKey(name: "BelgeTipi")
@@ -485,7 +483,7 @@ class _$_SiparisEditRequestModel extends _SiparisEditRequestModel {
 abstract class _SiparisEditRequestModel extends SiparisEditRequestModel {
   factory _SiparisEditRequestModel(
       {@JsonKey(defaultValue: "D") String? ekranTipi,
-      @JsonKey(defaultValue: true) bool? kisitYok,
+      bool? kisitYok,
       @JsonKey(name: "BelgeTipi") String? belgeTipi,
       @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
       bool? remoteTempBelge,
@@ -516,9 +514,7 @@ abstract class _SiparisEditRequestModel extends SiparisEditRequestModel {
   @JsonKey(defaultValue: "D")
   set ekranTipi(String? value);
   @override
-  @JsonKey(defaultValue: true)
   bool? get kisitYok;
-  @JsonKey(defaultValue: true)
   set kisitYok(bool? value);
   @override
   @JsonKey(name: "BelgeTipi")

@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:flutter/services.dart";
 import "package:get/get.dart";
 
 import "../../constants/ui_helper/ui_helper.dart";
@@ -16,6 +17,7 @@ class CustomTextField extends StatefulWidget {
   final FocusNode? focusNode;
   final int? maxLength;
   final String? controllerText;
+  final List<TextInputFormatter>? inputFormatter;
   final Function()? onTap;
   final String? Function(String?)? validator;
   final Function(String)? onChanged;
@@ -41,7 +43,7 @@ class CustomTextField extends StatefulWidget {
       this.validator,
       this.valueWidget,
       this.fitContent,
-      this.suffixMore});
+      this.suffixMore, this.inputFormatter});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -85,6 +87,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           onTap: widget.onTap,
           onChanged: widget.onChanged,
           onFieldSubmitted: widget.onSubmitted,
+          inputFormatters: widget.inputFormatter,
           // onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
           maxLength: widget.maxLength,
           validator: widget.validator ?? ((widget.isMust ?? false) ? validator : null),

@@ -25,4 +25,9 @@ abstract class _BaseSiparisEditingViewModelBase with Store {
   void changeFuture() {
     changeIsBaseSiparisEmpty(BaseSiparisEditModel.instance.isEmpty);
   }
+  @observable
+  bool yeniKaydaHazirlaMi = false;
+
+  @action
+  void changeYeniKaydaHazirlaMi() => yeniKaydaHazirlaMi = !yeniKaydaHazirlaMi;
 }

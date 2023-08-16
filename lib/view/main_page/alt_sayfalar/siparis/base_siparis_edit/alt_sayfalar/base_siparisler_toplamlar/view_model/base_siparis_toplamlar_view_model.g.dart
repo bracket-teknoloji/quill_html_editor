@@ -10,51 +10,67 @@ part of 'base_siparis_toplamlar_view_model.dart';
 
 mixin _$BaseSiparisToplamlarViewModel
     on _BaseSiparisToplamlarViewModelBase, Store {
-  late final _$isGenIsk1OAtom = Atom(
-      name: '_BaseSiparisToplamlarViewModelBase.isGenIsk1O', context: context);
+  late final _$isGenIsk1TAtom = Atom(
+      name: '_BaseSiparisToplamlarViewModelBase.isGenIsk1T', context: context);
 
   @override
-  bool get isGenIsk1O {
-    _$isGenIsk1OAtom.reportRead();
-    return super.isGenIsk1O;
+  bool get isGenIsk1T {
+    _$isGenIsk1TAtom.reportRead();
+    return super.isGenIsk1T;
   }
 
   @override
-  set isGenIsk1O(bool value) {
-    _$isGenIsk1OAtom.reportWrite(value, super.isGenIsk1O, () {
-      super.isGenIsk1O = value;
+  set isGenIsk1T(bool value) {
+    _$isGenIsk1TAtom.reportWrite(value, super.isGenIsk1T, () {
+      super.isGenIsk1T = value;
     });
   }
 
-  late final _$isGenIsk2OAtom = Atom(
-      name: '_BaseSiparisToplamlarViewModelBase.isGenIsk2O', context: context);
+  late final _$isGenIsk2TAtom = Atom(
+      name: '_BaseSiparisToplamlarViewModelBase.isGenIsk2T', context: context);
 
   @override
-  bool get isGenIsk2O {
-    _$isGenIsk2OAtom.reportRead();
-    return super.isGenIsk2O;
+  bool get isGenIsk2T {
+    _$isGenIsk2TAtom.reportRead();
+    return super.isGenIsk2T;
   }
 
   @override
-  set isGenIsk2O(bool value) {
-    _$isGenIsk2OAtom.reportWrite(value, super.isGenIsk2O, () {
-      super.isGenIsk2O = value;
+  set isGenIsk2T(bool value) {
+    _$isGenIsk2TAtom.reportWrite(value, super.isGenIsk2T, () {
+      super.isGenIsk2T = value;
     });
   }
 
-  late final _$isGenIsk3OAtom = Atom(
-      name: '_BaseSiparisToplamlarViewModelBase.isGenIsk3O', context: context);
+  late final _$isGenIsk3TAtom = Atom(
+      name: '_BaseSiparisToplamlarViewModelBase.isGenIsk3T', context: context);
 
   @override
-  bool get isGenIsk3O {
-    _$isGenIsk3OAtom.reportRead();
-    return super.isGenIsk3O;
+  bool get isGenIsk3T {
+    _$isGenIsk3TAtom.reportRead();
+    return super.isGenIsk3T;
   }
 
   @override
-  set isGenIsk3O(bool value) {
-    _$isGenIsk3OAtom.reportWrite(value, super.isGenIsk3O, () {
-      super.isGenIsk3O = value;
+  set isGenIsk3T(bool value) {
+    _$isGenIsk3TAtom.reportWrite(value, super.isGenIsk3T, () {
+      super.isGenIsk3T = value;
+    });
+  }
+
+  late final _$modelAtom =
+      Atom(name: '_BaseSiparisToplamlarViewModelBase.model', context: context);
+
+  @override
+  BaseSiparisEditModel get model {
+    _$modelAtom.reportRead();
+    return super.model;
+  }
+
+  @override
+  set model(BaseSiparisEditModel value) {
+    _$modelAtom.reportWrite(value, super.model, () {
+      super.model = value;
     });
   }
 
@@ -63,11 +79,95 @@ mixin _$BaseSiparisToplamlarViewModel
           name: '_BaseSiparisToplamlarViewModelBase', context: context);
 
   @override
-  void changeGenIsk1O() {
+  void setVadeTarihi(DateTime value) {
+    final _$actionInfo = _$_BaseSiparisToplamlarViewModelBaseActionController
+        .startAction(name: '_BaseSiparisToplamlarViewModelBase.setVadeTarihi');
+    try {
+      return super.setVadeTarihi(value);
+    } finally {
+      _$_BaseSiparisToplamlarViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setIskTipi1(int? value) {
+    final _$actionInfo = _$_BaseSiparisToplamlarViewModelBaseActionController
+        .startAction(name: '_BaseSiparisToplamlarViewModelBase.setIskTipi1');
+    try {
+      return super.setIskTipi1(value);
+    } finally {
+      _$_BaseSiparisToplamlarViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setIskTipi2(int? value) {
+    final _$actionInfo = _$_BaseSiparisToplamlarViewModelBaseActionController
+        .startAction(name: '_BaseSiparisToplamlarViewModelBase.setIskTipi2');
+    try {
+      return super.setIskTipi2(value);
+    } finally {
+      _$_BaseSiparisToplamlarViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setIskTipi3(int? value) {
+    final _$actionInfo = _$_BaseSiparisToplamlarViewModelBaseActionController
+        .startAction(name: '_BaseSiparisToplamlarViewModelBase.setIskTipi3');
+    try {
+      return super.setIskTipi3(value);
+    } finally {
+      _$_BaseSiparisToplamlarViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setGenIsk1(double? value) {
+    final _$actionInfo = _$_BaseSiparisToplamlarViewModelBaseActionController
+        .startAction(name: '_BaseSiparisToplamlarViewModelBase.setGenIsk1');
+    try {
+      return super.setGenIsk1(value);
+    } finally {
+      _$_BaseSiparisToplamlarViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setGenIsk2(double? value) {
+    final _$actionInfo = _$_BaseSiparisToplamlarViewModelBaseActionController
+        .startAction(name: '_BaseSiparisToplamlarViewModelBase.setGenIsk2');
+    try {
+      return super.setGenIsk2(value);
+    } finally {
+      _$_BaseSiparisToplamlarViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setGenIsk3(double? value) {
+    final _$actionInfo = _$_BaseSiparisToplamlarViewModelBaseActionController
+        .startAction(name: '_BaseSiparisToplamlarViewModelBase.setGenIsk3');
+    try {
+      return super.setGenIsk3(value);
+    } finally {
+      _$_BaseSiparisToplamlarViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeGenIsk1O(TextEditingController controller) {
     final _$actionInfo = _$_BaseSiparisToplamlarViewModelBaseActionController
         .startAction(name: '_BaseSiparisToplamlarViewModelBase.changeGenIsk1O');
     try {
-      return super.changeGenIsk1O();
+      return super.changeGenIsk1O(controller);
     } finally {
       _$_BaseSiparisToplamlarViewModelBaseActionController
           .endAction(_$actionInfo);
@@ -75,11 +175,11 @@ mixin _$BaseSiparisToplamlarViewModel
   }
 
   @override
-  void changeGenIsk2O() {
+  void changeGenIsk2O(TextEditingController controller) {
     final _$actionInfo = _$_BaseSiparisToplamlarViewModelBaseActionController
         .startAction(name: '_BaseSiparisToplamlarViewModelBase.changeGenIsk2O');
     try {
-      return super.changeGenIsk2O();
+      return super.changeGenIsk2O(controller);
     } finally {
       _$_BaseSiparisToplamlarViewModelBaseActionController
           .endAction(_$actionInfo);
@@ -87,11 +187,11 @@ mixin _$BaseSiparisToplamlarViewModel
   }
 
   @override
-  void changeGenIsk3O() {
+  void changeGenIsk3O(TextEditingController controller) {
     final _$actionInfo = _$_BaseSiparisToplamlarViewModelBaseActionController
         .startAction(name: '_BaseSiparisToplamlarViewModelBase.changeGenIsk3O');
     try {
-      return super.changeGenIsk3O();
+      return super.changeGenIsk3O(controller);
     } finally {
       _$_BaseSiparisToplamlarViewModelBaseActionController
           .endAction(_$actionInfo);
@@ -101,9 +201,10 @@ mixin _$BaseSiparisToplamlarViewModel
   @override
   String toString() {
     return '''
-isGenIsk1O: ${isGenIsk1O},
-isGenIsk2O: ${isGenIsk2O},
-isGenIsk3O: ${isGenIsk3O}
+isGenIsk1T: ${isGenIsk1T},
+isGenIsk2T: ${isGenIsk2T},
+isGenIsk3T: ${isGenIsk3T},
+model: ${model}
     ''';
   }
 }
