@@ -109,7 +109,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel()
       : ProfilYetkiModel.fromJson(json['PROFIL_YETKI'] as String)
   ..kullaniciYetki = json['KULLANICI_YETKI'] as String?
   ..pickerYetkili = json['PICKER_YETKILI'] as String?
-  ..yetkiliSubelerJson = json['YETKILI_SUBE_JSON'] as String?
+  ..yetkiliSubelerJson = json['YETKILI_SUBELER_JSON'] as String?
   ..konumEnlem = (json['KONUM_ENLEM'] as num?)?.toDouble()
   ..konumBoylam = (json['KONUM_BOYLAM'] as num?)?.toDouble()
   ..langModel = json['LANG_MODEL'] == null
@@ -140,7 +140,7 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) {
   writeNotNull('PROFIL_YETKI', instance.profilYetki?.toJson());
   writeNotNull('KULLANICI_YETKI', instance.kullaniciYetki);
   writeNotNull('PICKER_YETKILI', instance.pickerYetkili);
-  writeNotNull('YETKILI_SUBE_JSON', instance.yetkiliSubelerJson);
+  writeNotNull('YETKILI_SUBELER_JSON', instance.yetkiliSubelerJson);
   writeNotNull('KONUM_ENLEM', instance.konumEnlem);
   writeNotNull('KONUM_BOYLAM', instance.konumBoylam);
   writeNotNull('LANG_MODEL', instance.langModel?.toJson());

@@ -445,11 +445,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     } else {
       genelIskonto3 = 0;
     }
-    return result;
+    return result - (ekMaliyet1Tutari ?? 0) + (ekMaliyet2Tutari ?? 0) + (ekMaliyet3Tutari ?? 0);
   }
-  // double get malFazIsk {
-  //   Isko
-  // }
 
   bool get yurticiMi => tipi != 6;
   int get getKalemSayisi => kalemList?.length ?? (kalemAdedi ?? 0);

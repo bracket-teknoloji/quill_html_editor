@@ -679,12 +679,13 @@ class ListOzelKodTum {
   }
 }
 
-@JsonSerializable(createFactory: true)
+@JsonSerializable(createFactory: true, fieldRename: FieldRename.none)
 class MapEkAlanlar {
   MapEkAlanlar();
 
   String? caption;
   String? fieldName;
+  @JsonKey(name: "-veriTipi")
   String? veriTipi;
 
   factory MapEkAlanlar.fromJson(Map<String, dynamic> json) {
@@ -774,7 +775,7 @@ class MapKdvSifirBelgeTipiOzelKod2 {
   }
 }
 
-@JsonSerializable(createFactory: true)
+@JsonSerializable(createFactory: true, fieldRename: FieldRename.pascal)
 class MapStokGrupAdlari {
   MapStokGrupAdlari();
 

@@ -10,6 +10,7 @@ import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
 import "../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../siparisler/model/siparis_edit_request_model.dart";
@@ -43,10 +44,11 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
     tabController = TabController(length: 4, vsync: this);
     tabController.addListener(() {
       if (tabController.indexIsChanging && tabController.previousIndex == 0) {
-        //😳 var result = StaticVariables.instance.siparisGenelFormKey.currentState?.validate();
-        //😳 if (result == null || result == false) {
-        //😳   tabController.animateTo(tabController.previousIndex);
-        //😳 }
+        var result = StaticVariables.instance.siparisGenelFormKey.currentState?.validate();
+        if (result == null || result == false) {
+          dialogManager.showAlertDialog("Lütfen gerekli alanları doldurunuz.");
+          tabController.animateTo(tabController.previousIndex);
+        }
       }
       if (tabController.index == 3 && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
         viewModel.changeIsLastPage(true);
@@ -77,6 +79,8 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           BaseSiparisEditModel.instance.cariModel = result;
           BaseSiparisEditModel.instance.cariAdi = result.cariAdi;
           BaseSiparisEditModel.instance.cariKodu = result.cariKodu;
+          BaseSiparisEditModel.instance.kosulKodu = result.kosulKodu;
+
           BaseSiparisEditModel.instance.belgeTipi = int.tryParse(result.odemeTipi ?? "0");
         }
       }

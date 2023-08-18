@@ -12,6 +12,7 @@ import "package:wave/wave.dart";
 
 import "../../../core/base/state/base_state.dart";
 import "../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../core/init/app_info/app_info.dart";
 import "../../../core/init/cache/cache_manager.dart";
 import "../../../core/init/network/login/api_urls.dart";
 import "../../add_company/model/account_model.dart";
@@ -51,7 +52,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
             TextSpan(text: "Powered by ", style: TextStyle(color: theme.colorScheme.primary.withOpacity(0.8))),
             const TextSpan(text: "Bracket Teknoloji\n", style: TextStyle(fontWeight: FontWeight.bold)),
           ])),
-          Text(AccountModel.instance.uygulamaSurumu ?? "")
+          Text(AppInfoModel.instance.version ?? "")
         ],
       ).paddingAll(UIHelper.lowSize),
       body: Stack(
@@ -129,7 +130,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
         "username": CacheManager.getVerifiedUser.username,
         "password": CacheManager.getVerifiedUser.password,
       });
-      if (response != null) {
+      if (response != null && response.error == null) {
         if (response.accessToken != null) {
           CacheManager.setVerifiedUser(CacheManager.getVerifiedUser);
           CacheManager.setToken(response.accessToken!);
@@ -138,7 +139,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
           Get.offAllNamed("/login");
         }
       } else {
-        viewModel.setTitle(response?.error ?? response?.errorDescription ?? "Bağlantı kurulamadı. Lütfen internet bağlantınızı kontrol edin.");
+        viewModel.setTitle("Hata\n\n${response?.errorDescription ?? response?.error ?? "Bağlantı kurulamadı. Lütfen internet bağlantınızı kontrol edin."}");
         viewModel.setIsError(true);
       }
     } else {

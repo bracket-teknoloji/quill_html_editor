@@ -22,6 +22,24 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
   BaseSiparisEditModel model = BaseSiparisEditModel.instance;
 
   @action
+  void setEkMal1(double? value) {
+    model = model.copyWith(ekMaliyet1Tutari: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setTevkifat(double? value) {
+    model = model.copyWith(ekMaliyet2Tutari: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setEkMal3(double? value) {
+    model = model.copyWith(ekMaliyet3Tutari: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
   void setVadeTarihi(DateTime value) {
     model = model.copyWith(vadeTarihi: value);
     BaseSiparisEditModel.setInstance(model);

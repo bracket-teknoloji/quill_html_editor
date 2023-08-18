@@ -34,7 +34,10 @@ class UserJson {
   late final String? adSoyad = "$ad $soyad";
   UserJson();
 
-  factory UserJson.fromJson(String json) {
+  factory UserJson.fromJson(String? json) {
+    if (json == null) {
+      return UserJson();
+    }
     return _$UserJsonFromJson(jsonDecode(utf8.decode(base64Decode(json), allowMalformed: true)));
   }
 

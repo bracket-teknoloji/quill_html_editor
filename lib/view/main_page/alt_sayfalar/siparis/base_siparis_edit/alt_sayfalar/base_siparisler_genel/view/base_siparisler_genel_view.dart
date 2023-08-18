@@ -124,6 +124,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                   isMust: true,
                   suffixMore: true,
                   controller: cariController,
+                  // valueWidget: Observer(builder: (_) => Text(viewModel.model.cariModel?.cariKodu ?? "")),
                   onTap: () async {
                     var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
                     if (result != null && result is CariListesiModel) {
@@ -145,6 +146,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     }
                   }),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                       child: CustomTextField(
@@ -169,9 +171,11 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     readOnly: true,
                     suffixMore: true,
                     controller: plasiyerController,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                     onTap: () async {
                       var result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
                       if (result != null) {
+                        viewModel.setPlasiyer(result);
                         model.cariModel?.plasiyerKodu = result.plasiyerKodu;
                         model.cariModel?.plasiyerAciklama = result.plasiyerAciklama;
                         plasiyerController.text = result.plasiyerAciklama ?? "";
@@ -181,6 +185,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                 ],
               ),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                       child: CustomTextField(
@@ -215,6 +220,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                 ],
               ),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                       child: CustomTextField(
@@ -239,18 +245,19 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     readOnly: true,
                     suffixMore: true,
                     controller: projeController,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                     onTap: () async {
                       BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
                       if (result != null) {
-                        model.projeKodu = result.projeKodu;
-                        model.projeAciklama = result.projeAciklama;
-                        projeController.text = result.projeAciklama ?? "";
+                        viewModel.setProjeKodu(result);
+                        projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
                       }
                     },
                   )),
                 ],
               ),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                       child: CustomTextField(
@@ -259,11 +266,12 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                           readOnly: true,
                           suffixMore: true,
                           controller: odemeKoduController,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.odemeKodu ?? "")),
                           onTap: () async {
                             var result = await bottomSheetDialogManager.showOdemeKoduBottomSheetDialog(context);
                             if (result != null) {
-                              model.odemeKodu = result.odemeKodu;
-                              odemeKoduController.text = "${result.odemeKodu ?? ""} - ${result.aciklama ?? ""}";
+                              viewModel.setOdemeKodu(result.odemeKodu);
+                              odemeKoduController.text = result.aciklama ?? "";
                             }
                           })),
                   Expanded(
@@ -273,16 +281,18 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                           readOnly: true,
                           suffixMore: true,
                           controller: kosulController,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.kosulKodu ?? "")),
                           onTap: () async {
                             var result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context);
                             if (result != null) {
-                              model.kosulKodu = result.kosulKodu;
+                              viewModel.setKosulKodu(result.kosulKodu);
                               kosulController.text = result.genelKosulAdi ?? result.kosulKodu ?? "";
                             }
                           })),
                 ],
               ),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                       child: CustomTextField(

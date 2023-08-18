@@ -222,6 +222,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               enabled: enable,
               controller: ekMal1Controller,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              onChanged: (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
             ),
             CustomTextField(
               labelText: "Tevkifat",
@@ -236,8 +237,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                         children: List.generate(
                             viewModel.tevkifatMap.length, (index) => BottomSheetModel(title: viewModel.tevkifatMap.keys.toList()[index], value: viewModel.tevkifatMap.values.toList()[index])));
                     if (result != null) {
-                      BaseSiparisEditModel.instance.ekMaliyet2Tutari = (BaseSiparisEditModel.instance.getBrutTutar) * (result ?? 0) * (-1);
-                      tevkifatController.text = BaseSiparisEditModel.instance.ekMaliyet2Tutari?.dotSeparatedWithFixedDigits ?? "";
+                      viewModel.setTevkifat(result);
                     }
                   },
                   icon: const Icon(Icons.more_horiz_outlined)),
@@ -251,6 +251,8 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               labelText: "Ek Mal. 3",
               enabled: enable,
               controller: ekMal3Controller,
+              keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
+              onChanged: (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
             ),
             CustomTextField(
               labelText: "Vade Günü",
@@ -288,7 +290,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
     ekMal1Controller = TextEditingController(text: model.ekMaliyet1Tutari?.dotSeparatedWithFixedDigits);
     tevkifatController = TextEditingController(text: model.ekMaliyet2Tutari?.dotSeparatedWithFixedDigits);
     ekMal3Controller = TextEditingController(text: model.ekMaliyet3Tutari?.dotSeparatedWithFixedDigits);
-    vadeGunuController = TextEditingController(text: model.vadeGunu.toStringIfNull);
+    vadeGunuController = TextEditingController(text: model.vadeGunu.toStringIfNull ?? (model.vadeTarihi?.difference(DateTime.now()))?.inDays.toStringIfNull);
   }
 
   void disposeControllers() {

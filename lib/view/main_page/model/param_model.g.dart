@@ -868,9 +868,9 @@ Map<String, dynamic> _$ListOzelKodTumToJson(ListOzelKodTum instance) {
 }
 
 MapEkAlanlar _$MapEkAlanlarFromJson(Map<String, dynamic> json) => MapEkAlanlar()
-  ..caption = json['CAPTION'] as String?
-  ..fieldName = json['FIELD_NAME'] as String?
-  ..veriTipi = json['VERI_TIPI'] as String?;
+  ..caption = json['caption'] as String?
+  ..fieldName = json['fieldName'] as String?
+  ..veriTipi = json['-veriTipi'] as String?;
 
 Map<String, dynamic> _$MapEkAlanlarToJson(MapEkAlanlar instance) {
   final val = <String, dynamic>{};
@@ -881,9 +881,9 @@ Map<String, dynamic> _$MapEkAlanlarToJson(MapEkAlanlar instance) {
     }
   }
 
-  writeNotNull('CAPTION', instance.caption);
-  writeNotNull('FIELD_NAME', instance.fieldName);
-  writeNotNull('VERI_TIPI', instance.veriTipi);
+  writeNotNull('caption', instance.caption);
+  writeNotNull('fieldName', instance.fieldName);
+  writeNotNull('-veriTipi', instance.veriTipi);
   return val;
 }
 
@@ -965,12 +965,12 @@ Map<String, dynamic> _$MapKdvSifirBelgeTipiOzelKod2ToJson(
 
 MapStokGrupAdlari _$MapStokGrupAdlariFromJson(Map<String, dynamic> json) =>
     MapStokGrupAdlari()
-      ..grupKodu = json['GRUP_KODU'] as String?
-      ..kod1 = json['KOD1']
-      ..kod2 = json['KOD2']
-      ..kod3 = json['KOD3']
-      ..kod4 = json['KOD4']
-      ..kod5 = json['KOD5'];
+      ..grupKodu = json['GrupKodu'] as String?
+      ..kod1 = json['Kod1']
+      ..kod2 = json['Kod2']
+      ..kod3 = json['Kod3']
+      ..kod4 = json['Kod4']
+      ..kod5 = json['Kod5'];
 
 Map<String, dynamic> _$MapStokGrupAdlariToJson(MapStokGrupAdlari instance) {
   final val = <String, dynamic>{};
@@ -981,12 +981,12 @@ Map<String, dynamic> _$MapStokGrupAdlariToJson(MapStokGrupAdlari instance) {
     }
   }
 
-  writeNotNull('GRUP_KODU', instance.grupKodu);
-  writeNotNull('KOD1', instance.kod1);
-  writeNotNull('KOD2', instance.kod2);
-  writeNotNull('KOD3', instance.kod3);
-  writeNotNull('KOD4', instance.kod4);
-  writeNotNull('KOD5', instance.kod5);
+  writeNotNull('GrupKodu', instance.grupKodu);
+  writeNotNull('Kod1', instance.kod1);
+  writeNotNull('Kod2', instance.kod2);
+  writeNotNull('Kod3', instance.kod3);
+  writeNotNull('Kod4', instance.kod4);
+  writeNotNull('Kod5', instance.kod5);
   return val;
 }
 

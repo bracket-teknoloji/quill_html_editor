@@ -6,7 +6,7 @@ import "dart:developer";
 import "package:dio/dio.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
-import "package:get/get.dart" hide FormData;
+import "package:get/get.dart" hide FormData, Response;
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/delete_fatura_model.dart";
@@ -31,55 +31,80 @@ import "login/api_urls.dart";
 class NetworkManager {
   Dio get dio => Dio(BaseOptions(
         baseUrl: getBaseUrl,
+        followRedirects: false,
+        validateStatus: (status) => status! < 500,
         receiveTimeout: const Duration(minutes: 2),
         connectTimeout: const Duration(seconds: 20),
         sendTimeout: const Duration(minutes: 2),
         receiveDataWhenStatusError: true,
         contentType: "application/json",
         responseType: ResponseType.json,
-      ));
+      ))
+        ..interceptors.add(
+          InterceptorsWrapper(
+            onRequest: (options, handler) {
+              return handler.next(options);
+            },
+            onError: (e, handler) {
+              print(e);
+              if (e.type == DioExceptionType.connectionError) {
+                return handler.next(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error}"));
+              } else if (e.type == DioExceptionType.connectionTimeout) {
+                return handler.next(DioException(requestOptions: RequestOptions(), message: "Bağlantı zaman aşımına uğradı."));
+              } else if (e.type == DioExceptionType.unknown) {
+                return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz."));
+              } else if (e.type == DioExceptionType.receiveTimeout || e.type == DioExceptionType.sendTimeout || e.type == DioExceptionType.connectionTimeout) {
+                if (e.requestOptions.path == ApiUrls.token) {
+                  return handler.resolve(Response(requestOptions: RequestOptions(), data: {"error": "Bağlantı zaman aşımına uğradı."}));
+                } else {
+                  return handler.next(e);
+                }
+              } else {
+                handler.next(e);
+              }
+            },
+          ),
+        );
   NetworkManager() {
-    dio.interceptors.add(
-      InterceptorsWrapper(
-        onRequest: (options, handler) {
-          //if appLifeCycleState is paused or inactive, cancel the request
-          // if (appLifeCycleState == AppLifecycleState.paused || appLifeCycleState == AppLifecycleState.inactive) {
-          //   return handler.reject(DioException(requestOptions: options, error: "App is paused or inactive"));
-          // }
-          return handler.next(options);
-        },
-        onResponse: (e, handler) => handler.next(e),
-        onError: (e, handler) {
-          print(e);
-          if (e.type == DioExceptionType.connectionError) {
-            return handler.next(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error}"));
-          } else if (e.type == DioExceptionType.connectionTimeout) {
-            return handler.next(DioException(requestOptions: RequestOptions(), message: "Bağlantı zaman aşımına uğradı."));
-          } else if (e.type == DioExceptionType.unknown) {
-            return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz."));
-          } else if (e.type == DioExceptionType.receiveTimeout || e.type == DioExceptionType.sendTimeout || e.type == DioExceptionType.connectionTimeout) {
-            return handler.next(DioException(requestOptions: RequestOptions(), message: e.message));
-          } else {
-            handler.next(e);
-          }
-        },
-      ),
-    );
+    // dio.interceptors.add(
+    //   InterceptorsWrapper(
+    //     onRequest: (options, handler) {
+    //       return handler.next(options);
+    //     },
+    //     onError: (e, handler) {
+    //       print(e);
+    //       if (e.type == DioExceptionType.connectionError) {
+    //         return handler.next(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error}"));
+    //       } else if (e.type == DioExceptionType.connectionTimeout) {
+    //         return handler.next(DioException(requestOptions: RequestOptions(), message: "Bağlantı zaman aşımına uğradı."));
+    //       } else if (e.type == DioExceptionType.unknown) {
+    //         return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz."));
+    //       } else if (e.type == DioExceptionType.receiveTimeout || e.type == DioExceptionType.sendTimeout || e.type == DioExceptionType.connectionTimeout) {
+    //         if (e.requestOptions.path == ApiUrls.token) {
+    //           return handler.resolve(Response(requestOptions: RequestOptions(), data: {"success": false, "message": "Bağlantı zaman aşımına uğradı."}));
+    //         } else {
+    //           return handler.next(DioException(requestOptions: RequestOptions(), message: "Bağlantı zaman aşımına uğradı."));
+    //         }
+    //       } else {
+    //         handler.next(e);
+    //       }
+    //     },
+    //   ),
+    // );
   }
 
   Future<TokenModel?> getToken({required String path, Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
     FormData formData = FormData.fromMap(data);
     log(AccountModel.instance.toString());
     log(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.firma ?? "")?.wsWan ?? "");
-    final response = await dio.request(path,
+    var response = await dio.request(path,
         queryParameters: queryParameters,
         cancelToken: CancelToken(),
-        options: Options(headers: {
-          "Access-Control-Allow-Origin": "*",
-          // "Content-Type": "application/x-www-form-urlencoded",
-          "Platform": "netfect",
-          "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"
-        }, contentType: "application/x-www-form-urlencoded", method: HttpTypes.GET, responseType: ResponseType.json),
+        options: Options(
+            headers: {"Access-Control-Allow-Origin": "*", "Platform": "netfect", "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"},
+            contentType: "application/x-www-form-urlencoded",
+            method: HttpTypes.GET,
+            responseType: ResponseType.json),
         data: kIsWeb ? formData : data);
     var a = response.data;
     return TokenModel().fromJson(a);
@@ -97,19 +122,28 @@ class NetworkManager {
       bool addTokenKey = true,
       bool showLoading = false,
       bool showError = true}) async {
-    CancelToken cancelToken = CancelToken();
-    Map<String, String> head = getStandardHeader(addTokenKey, addSirketBilgileri, addCKey);
-    if (headers != null) head.addEntries(headers.entries);
-    Map<String, dynamic> queries = getStandardQueryParameters();
-    if (queryParameters != null) queries.addEntries(queryParameters.entries);
+    dynamic response;
     if (showLoading) {
       DialogManager().showLoadingDialog("Yükleniyor...");
     }
-    final response = await dio.get(path, queryParameters: queries, options: Options(headers: head), cancelToken: cancelToken);
-    GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
+    try {
+      Map<String, String> head = getStandardHeader(addTokenKey, addSirketBilgileri, addCKey);
+      if (headers != null) head.addEntries(headers.entries);
+      Map<String, dynamic> queries = getStandardQueryParameters();
+      if (queryParameters != null) queries.addEntries(queryParameters.entries);
+      if (queryParameters != null) queries.addEntries(queryParameters.entries);
+      response = await dio.get(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
+    } catch (e) {
+      if (showError) {
+        await DialogManager().showAlertDialog(e.toString());
+      }
+      return GenericResponseModel<T>(success: false, message: e.toString());
+    }
     if (showLoading) {
       DialogManager().hideAlertDialog;
     }
+    GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
+
     if (responseModel.success != true) {
       if (showError) {
         DialogManager().showAlertDialog(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
@@ -166,9 +200,10 @@ class NetworkManager {
     return responseModel;
   }
 
-Future<GenericResponseModel> deleteFatura(DeleteFaturaModel model, {showError = true, showLoading = true}) {
+  Future<GenericResponseModel> deleteFatura(DeleteFaturaModel model, {showError = true, showLoading = true}) {
     return dioPost<DeleteFaturaModel>(path: ApiUrls.deleteFatura, bodyModel: const DeleteFaturaModel(), data: model.toJson(), showError: showError, showLoading: showLoading);
   }
+
   Future<MemoryImage> getImage(String path) async {
     Map<String, String> head = getStandardHeader(true, true, true);
     final response = await dio.get(path, options: Options(headers: head, responseType: ResponseType.bytes));

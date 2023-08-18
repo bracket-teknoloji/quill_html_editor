@@ -26,6 +26,22 @@ mixin _$BaseSiparislerGenelViewModel
     });
   }
 
+  late final _$modelAtom =
+      Atom(name: '_BaseSiparislerGenelViewModelBase.model', context: context);
+
+  @override
+  BaseSiparisEditModel get model {
+    _$modelAtom.reportRead();
+    return super.model;
+  }
+
+  @override
+  set model(BaseSiparisEditModel value) {
+    _$modelAtom.reportWrite(value, super.model, () {
+      super.model = value;
+    });
+  }
+
   late final _$_BaseSiparislerGenelViewModelBaseActionController =
       ActionController(
           name: '_BaseSiparislerGenelViewModelBase', context: context);
@@ -43,9 +59,58 @@ mixin _$BaseSiparislerGenelViewModel
   }
 
   @override
+  void setProjeKodu(BaseProjeModel? value) {
+    final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
+        .startAction(name: '_BaseSiparislerGenelViewModelBase.setProjeKodu');
+    try {
+      return super.setProjeKodu(value);
+    } finally {
+      _$_BaseSiparislerGenelViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setKosulKodu(String? value) {
+    final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
+        .startAction(name: '_BaseSiparislerGenelViewModelBase.setKosulKodu');
+    try {
+      return super.setKosulKodu(value);
+    } finally {
+      _$_BaseSiparislerGenelViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setOdemeKodu(String? value) {
+    final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
+        .startAction(name: '_BaseSiparislerGenelViewModelBase.setOdemeKodu');
+    try {
+      return super.setOdemeKodu(value);
+    } finally {
+      _$_BaseSiparislerGenelViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setPlasiyer(PlasiyerList? value) {
+    final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
+        .startAction(name: '_BaseSiparislerGenelViewModelBase.setPlasiyer');
+    try {
+      return super.setPlasiyer(value);
+    } finally {
+      _$_BaseSiparislerGenelViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-kdvDahil: ${kdvDahil}
+kdvDahil: ${kdvDahil},
+model: ${model}
     ''';
   }
 }

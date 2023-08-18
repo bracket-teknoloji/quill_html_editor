@@ -79,6 +79,42 @@ mixin _$BaseSiparisToplamlarViewModel
           name: '_BaseSiparisToplamlarViewModelBase', context: context);
 
   @override
+  void setEkMal1(double? value) {
+    final _$actionInfo = _$_BaseSiparisToplamlarViewModelBaseActionController
+        .startAction(name: '_BaseSiparisToplamlarViewModelBase.setEkMal1');
+    try {
+      return super.setEkMal1(value);
+    } finally {
+      _$_BaseSiparisToplamlarViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setTevkifat(double? value) {
+    final _$actionInfo = _$_BaseSiparisToplamlarViewModelBaseActionController
+        .startAction(name: '_BaseSiparisToplamlarViewModelBase.setTevkifat');
+    try {
+      return super.setTevkifat(value);
+    } finally {
+      _$_BaseSiparisToplamlarViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setEkMal3(double? value) {
+    final _$actionInfo = _$_BaseSiparisToplamlarViewModelBaseActionController
+        .startAction(name: '_BaseSiparisToplamlarViewModelBase.setEkMal3');
+    try {
+      return super.setEkMal3(value);
+    } finally {
+      _$_BaseSiparisToplamlarViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setVadeTarihi(DateTime value) {
     final _$actionInfo = _$_BaseSiparisToplamlarViewModelBaseActionController
         .startAction(name: '_BaseSiparisToplamlarViewModelBase.setVadeTarihi');

@@ -82,7 +82,7 @@ TokenModel _$TokenModelFromJson(Map<String, dynamic> json) {
     ..accessToken = json['access_token'] as String?
     ..tokenType = json['token_type'] as String?
     ..expiresIn = json['expires_in'] as int?
-    ..userJson = UserJson.fromJson(json['USER_JSON'] as String)
+    ..userJson = UserJson.fromJson(json['USER_JSON'] as String?)
     ..issued = json['.issued'] as String?
     ..expires = json['.expires'] as String?
     ..error = json['error'] as String?

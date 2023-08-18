@@ -10,9 +10,7 @@ part "login_model.g.dart";
 @JsonSerializable(disallowUnrecognizedKeys: true)
 class TokenModel with NetworkManagerMixin {
   @HiveField(0)
-  @JsonKey(
-    name: "access_token",
-  )
+  @JsonKey(name: "access_token")
   String? accessToken;
   @HiveField(1)
   @JsonKey(name: "token_type")
@@ -21,11 +19,7 @@ class TokenModel with NetworkManagerMixin {
   @JsonKey(name: "expires_in")
   int? expiresIn;
   @HiveField(3)
-  @JsonKey(
-    required: false,
-    name: "USER_JSON",
-    fromJson: UserJson.fromJson,
-  )
+  @JsonKey(required: false, name: "USER_JSON", fromJson: UserJson.fromJson)
   UserJson? userJson;
   @HiveField(4)
   @JsonKey(name: ".issued")
