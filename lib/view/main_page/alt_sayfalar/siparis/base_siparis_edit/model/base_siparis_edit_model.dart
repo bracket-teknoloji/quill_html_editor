@@ -415,7 +415,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   double get sumGenIsk2 => kalemList?.map((e) => e.iskonto2).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
   double get sumGenIsk3 => kalemList?.map((e) => e.iskonto3).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
   double get malFazlasiTutar => kalemList?.map((e) => e.mfTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0;
-  double get kdvTutari => kalemList?.map((e) => e.kdvTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0;
+  double get kdvTutari => iskontoChecker(kalemList?.map((e) => e.kdvTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0);
   double get satirIskonto => kalemList?.map((e) => e.iskontoTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0;
   int get toplamKalemMiktari {
     kalemAdedi = (kalemList?.map((e) => e.toplamKalemMiktari.toInt()).toList().fold(0, (a, b) => (a) + (b)) ?? 0).toInt();
@@ -424,9 +424,9 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   double get toplamBrutTutar => kalemList?.map((e) => (e.brutFiyat ?? 0) * toplamKalemMiktari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0;
   double get genelToplamTutar => getAraToplam + kdvTutari;
-  double get getAraToplam {
-    double result = kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0;
-    // double result2 = kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0;
+  double get getAraToplam => iskontoChecker(kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0);
+
+  double iskontoChecker(double result) {
     if (genIsk1O != null && genIsk1O != 0.0) {
       genelIskonto1 = result * (genIsk1O ?? 0) / 10;
       result = result - result * ((genIsk1O ?? 0) / 100);
@@ -446,10 +446,6 @@ class BaseSiparisEditModel with NetworkManagerMixin {
       genelIskonto3 = 0;
     }
     return result;
-
-    // araToplam = (((araToplam ?? 0) * (1 - ((genIsk1O == 0.0 || genIsk1O == null) ? 100 : genIsk1O!) / 100)) * (1 - ((genIsk2O == 0.0 || genIsk2O == null) ? 100 : genIsk2O!) / 100)) *
-    //     (1 - ((genIsk3O == 0.0 || genIsk3O == null) ? 100 : genIsk3O!) / 100);
-    // return araToplam ?? 0;
   }
   // double get malFazIsk {
   //   Isko
@@ -460,7 +456,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   bool get isEmpty => this == BaseSiparisEditModel();
   bool get isRemoteTempBelgeNull => remoteTempBelge == null;
 
-  double get getToplamIskonto => malFazlasiTutar + satirIskonto;
+  double get getToplamIskonto => (malFazlasiTutar + satirIskonto) + (kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0) - getAraToplam;
   double get getBrutTutar => kalemList?.map((e) => e.brutFiyat).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
 
   factory BaseSiparisEditModel.fromJson(String json) => _$BaseSiparisEditModelFromJson(jsonDecode(json));

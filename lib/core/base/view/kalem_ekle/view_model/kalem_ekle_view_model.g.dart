@@ -16,6 +16,13 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
       (_$dovizliMiComputed ??= Computed<bool>(() => super.dovizliMi,
               name: '_KalemEkleViewModelBase.dovizliMi'))
           .value;
+  Computed<List<String>>? _$olcuBirimiMapComputed;
+
+  @override
+  List<String> get olcuBirimiMap => (_$olcuBirimiMapComputed ??=
+          Computed<List<String>>(() => super.olcuBirimiMap,
+              name: '_KalemEkleViewModelBase.olcuBirimiMap'))
+      .value;
 
   late final _$modelAtom =
       Atom(name: '_KalemEkleViewModelBase.model', context: context);
@@ -58,6 +65,17 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
         name: '_KalemEkleViewModelBase.setModel');
     try {
       return super.setModel(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setOlcuBirimi(MapEntry<String, int> value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setOlcuBirimi');
+    try {
+      return super.setOlcuBirimi(value);
     } finally {
       _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -288,7 +306,8 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
     return '''
 model: ${model},
 kalemModel: ${kalemModel},
-dovizliMi: ${dovizliMi}
+dovizliMi: ${dovizliMi},
+olcuBirimiMap: ${olcuBirimiMap}
     ''';
   }
 }

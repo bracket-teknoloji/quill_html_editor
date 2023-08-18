@@ -32,12 +32,16 @@ extension NumExtensionToString on num? {
 }
 
 // eğer tam sayı ise double'ları int'e çeviren tam sayı değilse kendisini döndüren extension
-extension NumExtensionToInt on num {
-  num get toIntIfDouble {
-    if (this % 1 == 0) {
-      return toInt();
+extension NumExtensionToInt on num? {
+  num? get toIntIfDouble {
+    if (this != null) {
+      if (this! % 1 == 0) {
+        return this!.toInt();
+      } else {
+        return this!;
+      }
     } else {
-      return this;
+      return null;
     }
   }
 }

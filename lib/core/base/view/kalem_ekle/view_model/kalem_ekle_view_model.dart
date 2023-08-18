@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -19,8 +20,13 @@ abstract class _KalemEkleViewModelBase with Store {
   @computed
   bool get dovizliMi => model?.dovizliMi ?? false;
 
+  @computed
+  List<String> get olcuBirimiMap =>[model?.olcuBirimi, model?.olcuBirimi2, model?.olcuBirimi3].nullCheck.cast<String>();
+
   @observable
   KalemModel kalemModel = KalemModel();
+  @action
+  void setOlcuBirimi(MapEntry<String,int> value) => kalemModel = kalemModel.copyWith(olcuBirimKodu: value.value, olcuBirimAdi: value.key);
   @action
   void setKalemModel(KalemModel? value) => kalemModel = value ?? KalemModel();
   @action
@@ -53,7 +59,7 @@ abstract class _KalemEkleViewModelBase with Store {
 
   @action
   void decreaseMiktar(TextEditingController controller) {
-    if ((kalemModel.miktar ?? 0) > 0) {
+    if ((kalemModel.miktar ?? 0) > 1) {
       kalemModel = kalemModel.copyWith(miktar: (kalemModel.miktar ?? 0) - 1);
       controller.text = (kalemModel.miktar ?? 0).toIntIfDouble.toString();
     }

@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -130,7 +131,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               child: Text.rich(TextSpan(children: [
                             const TextSpan(text: "StkBakiye: "),
                             TextSpan(
-                                text: "${viewModel.model?.bakiye.toStringIfNull ?? viewModel.kalemModel} ${viewModel.model?.olcuBirimi ?? viewModel.kalemModel.olcuBirimAdi}",
+                                text: "${viewModel.model?.bakiye.toIntIfDouble.toStringIfNull ?? "0"} ${viewModel.model?.olcuBirimi ?? viewModel.kalemModel.olcuBirimAdi ?? ""}",
                                 style: const TextStyle(fontWeight: FontWeight.bold))
                           ]))),
                         ],
@@ -349,7 +350,25 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           IconButton(icon: const Icon(Icons.add_outlined), onPressed: () => viewModel.increaseMFMiktar(malFazMiktarController)),
                         ]),
                       )),
-                      const Expanded(child: CustomTextField(labelText: "Ölçü Birimi", readOnly: true, suffixMore: true)),
+                      Expanded(
+                          child: CustomTextField(
+                              labelText: "Ölçü Birimi",
+                              readOnly: true,
+                              suffixMore: true,
+                              controller: olcuBirimiController,
+                              valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.olcuBirimKodu.toStringIfNull ?? "")),
+                              onTap: () async {
+                                var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                    title: "Ölçü Birimi Seçiniz",
+                                    children: List.generate(
+                                        viewModel.olcuBirimiMap.length,
+                                        (index) => BottomSheetModel(
+                                            title: viewModel.olcuBirimiMap[index], description: index.toStringIfNull, value: MapEntry<String, int>(viewModel.olcuBirimiMap[index], index))));
+                                if (result != null && result is MapEntry<String, int>) {
+                                  viewModel.setOlcuBirimi(result);
+                                  olcuBirimiController.text = result.key;
+                                }
+                              })),
                     ],
                   ),
                   Row(
@@ -514,7 +533,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     kalemAdiController.text = widget.stokListesiModel?.stokAdi ?? widget.stokListesiModel?.stokKodu ?? widget.kalemModel?.stokAdi ?? widget.kalemModel?.stokKodu ?? "";
     ekAlan1Controller.text = widget.kalemModel?.ekalan1 ?? "";
     ekAlan2Controller.text = widget.kalemModel?.ekalan2 ?? "";
-    fiyatController.text = widget.stokListesiModel?.fiatBirimi.toStringIfNull ?? widget.kalemModel?.brutFiyat.toStringIfNull ?? "";
+    fiyatController.text = viewModel.model?.satisFiat1.toIntIfDouble.toStringIfNull ?? widget.kalemModel?.brutFiyat?.toStringIfNull ?? "";
     // miktarController.text = viewModel.kalemModel.miktar?.toIntIfDouble.toStringIfNull ?? "";
     // miktar2Controller.text = viewModel.kalemModel.miktar2?.toIntIfDouble.toStringIfNull ?? "";
     malFazMiktarController.text = viewModel.kalemModel.malFazlasiMiktar?.toIntIfDouble.toStringIfNull ?? "";

@@ -65,9 +65,9 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
             children: [
               Text.rich(TextSpan(children: [
                 const TextSpan(text: "Miktar\n", style: TextStyle(color: Colors.grey)),
-                TextSpan(text: BaseSiparisEditModel.instance.toplamKalemMiktari.toIntIfDouble.toStringIfNull ?? "", style: const TextStyle(fontWeight: FontWeight.bold))
+                TextSpan(text: BaseSiparisEditModel.instance.toplamKalemMiktari.toIntIfDouble.toStringIfNull ?? "0", style: const TextStyle(fontWeight: FontWeight.bold))
               ])),
-              const Text.rich(TextSpan(children: [TextSpan(text: "Mal Ağırlığı\n", style: TextStyle(color: Colors.grey)), TextSpan(text: "1", style: TextStyle(fontWeight: FontWeight.bold))])),
+              const Text.rich(TextSpan(children: [TextSpan(text: "Mal Ağırlığı\n", style: TextStyle(color: Colors.grey)), TextSpan(text: "0", style: TextStyle(fontWeight: FontWeight.bold))])),
               Text.rich(TextSpan(children: [
                 const TextSpan(text: "Brüt Tutar\n", style: TextStyle(color: Colors.grey)),
                 TextSpan(text: "${model.toplamBrutTutar.dotSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
@@ -85,10 +85,12 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                 const TextSpan(text: "Satır İsk.\n", style: TextStyle(color: Colors.grey)),
                 TextSpan(text: "${model.satirIskonto.dotSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
               ])),
-              Text.rich(TextSpan(children: [
-                const TextSpan(text: "Toplam İskonto\n", style: TextStyle(color: Colors.grey)),
-                TextSpan(text: "${model.getToplamIskonto.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
-              ])),
+              Observer(builder: (_) {
+                return Text.rich(TextSpan(children: [
+                  const TextSpan(text: "Toplam İskonto\n", style: TextStyle(color: Colors.grey)),
+                  TextSpan(text: "${model.getToplamIskonto.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                ]));
+              }),
             ].map((e) => Expanded(child: e)).toList(),
           ),
           Row(
@@ -100,14 +102,18 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                   TextSpan(text: "${viewModel.model.getAraToplam.dotSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
                 ]));
               }),
-              Text.rich(TextSpan(children: [
-                const TextSpan(text: "KDV Tutarı\n", style: TextStyle(color: Colors.grey)),
-                TextSpan(text: "${(model.kdv ?? model.kdvTutari).commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
-              ])),
-              Text.rich(TextSpan(children: [
-                const TextSpan(text: "Genel Toplam\n", style: TextStyle(color: Colors.grey)),
-                TextSpan(text: "${model.genelToplamTutar.dotSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
-              ])),
+              Observer(builder: (_) {
+                return Text.rich(TextSpan(children: [
+                  const TextSpan(text: "KDV Tutarı\n", style: TextStyle(color: Colors.grey)),
+                  TextSpan(text: "${viewModel.model.kdvTutari.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                ]));
+              }),
+              Observer(builder: (_) {
+                return Text.rich(TextSpan(children: [
+                  const TextSpan(text: "Genel Toplam\n", style: TextStyle(color: Colors.grey)),
+                  TextSpan(text: "${viewModel.model.genelToplamTutar.dotSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                ]));
+              }),
             ].map((e) => Expanded(child: e)).toList(),
           ),
         ],
@@ -128,7 +134,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               onChanged: (p0) => viewModel.setGenIsk1(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
               valueWidget: Observer(
                   builder: (_) =>
-                      Text(viewModel.isGenIsk1T ? "%${(viewModel.model.genIsk1O ?? 0).toIntIfDouble.toStringAsFixed(2)}" : "${(viewModel.model.genIsk1T ?? 0).commaSeparatedWithFixedDigits} TL")),
+                      Text(viewModel.isGenIsk1T ? "%${(viewModel.model.genIsk1O ?? 0).toIntIfDouble?.toStringAsFixed(2)}" : "${(viewModel.model.genIsk1T ?? 0).commaSeparatedWithFixedDigits} TL")),
               suffix: IconButton(
                   onPressed: () => viewModel.changeGenIsk1O(genelIskonto1Controller), icon: Observer(builder: (_) => Icon(viewModel.isGenIsk1T ? Icons.money_outlined : Icons.percent_outlined))),
             ),
