@@ -3,7 +3,6 @@
 import "dart:convert";
 import "dart:developer";
 
-import "package:dio/dio.dart";
 import "package:flutter/material.dart";
 import "package:flutter/scheduler.dart";
 import "package:flutter_svg/flutter_svg.dart";
@@ -247,41 +246,42 @@ class _LoginViewState extends BaseState<LoginView> {
     dialogManager.showLoadingDialog("Giriş Yapılıyor");
 
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-      try {
         log(jsonEncode(a.toJson()), name: "sea");
         final response = await networkManager.getToken(
           path: ApiUrls.token,
           queryParameters: {"deviceInfos": jsonEncode(a.toJson())},
           data: {"grant_type": "password", "username": emailController.text, "password": passwordController.text},
         );
-        a = a
-          ..isim = response?.userJson?.ad
-          ..soyadi = response?.userJson?.soyad
-          ..admin = response?.userJson?.admin;
-        CacheManager.setHesapBilgileri(a);
-        dialogManager.hideAlertDialog;
-        Hive.box("preferences").put(companyController.text, [
-          textFieldData.account?.firma,
-          emailController.text,
-          passwordController.text,
-        ]);
+        if (response?.error == null) {
+          a = a
+            ..isim = response?.userJson?.ad
+            ..soyadi = response?.userJson?.soyad
+            ..admin = response?.userJson?.admin;
+          CacheManager.setHesapBilgileri(a);
+          dialogManager.hideAlertDialog;
+          Hive.box("preferences").put(companyController.text, [
+            textFieldData.account?.firma,
+            emailController.text,
+            passwordController.text,
+          ]);
 
-        if (context.mounted && response?.accessToken != null) {
-          CacheManager.setVerifiedUser(textFieldData
-            ..username = emailController.text
-            ..password = passwordController.text);
-          CacheManager.setToken(response!.accessToken.toString());
-          // final uyeBilgiResponse =
-          //     await networkManager.dioPost<AccountResponseModel>(bodyModel: AccountResponseModel(), data: AccountModel.instance, addTokenKey: false, path: ApiUrls.getUyeBilgileri);
-          // if (uyeBilgiResponse.success == true) {
-          //   CacheManager.setAccounts(uyeBilgiResponse.data.first);
-          // }
-          Get.toNamed("/entryCompany");
+          if (context.mounted && response?.accessToken != null) {
+            CacheManager.setVerifiedUser(textFieldData
+              ..username = emailController.text
+              ..password = passwordController.text);
+            CacheManager.setToken(response!.accessToken.toString());
+            // final uyeBilgiResponse =
+            //     await networkManager.dioPost<AccountResponseModel>(bodyModel: AccountResponseModel(), data: AccountModel.instance, addTokenKey: false, path: ApiUrls.getUyeBilgileri);
+            // if (uyeBilgiResponse.success == true) {
+            //   CacheManager.setAccounts(uyeBilgiResponse.data.first);
+            // }
+            Get.toNamed("/entryCompany");
+          }
+        } else {
+          dialogManager.hideAlertDialog;
+          dialogManager.showAlertDialog(response?.errorDescription ?? response?.error ?? "Hata");
         }
-      } on DioException catch (e) {
-        dialogManager.hideAlertDialog;
-        dialogManager.showAlertDialog(e.response?.data["error_description"] ?? "Hata :${e.message}");
-      }
+      
     } else {
       Navigator.of(context, rootNavigator: true).pop();
       dialogManager.hideSnackBar;

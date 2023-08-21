@@ -3,14 +3,17 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
+import "package:uuid/uuid.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/static_variables/static_variables.dart";
+import "../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
 import "../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../siparisler/model/siparis_edit_request_model.dart";
@@ -46,7 +49,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
       if (tabController.indexIsChanging && tabController.previousIndex == 0) {
         var result = StaticVariables.instance.siparisGenelFormKey.currentState?.validate();
         if (result == null || result == false) {
-          dialogManager.showAlertDialog("Lütfen gerekli alanları doldurunuz.");
+          dialogManager.showSnackBar("Lütfen gerekli alanları doldurunuz.");
           tabController.animateTo(tabController.previousIndex);
         }
       }
@@ -59,13 +62,12 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
     model = widget.model;
     if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
       model.model?.kayitModu = "S";
+    } else if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
+      model.model?.kayitModu = "U";
     } else {
-      if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
-        model.model?.kayitModu = "U";
-      } else {
-        model.model?.kayitModu = null;
-      }
+      model.model?.kayitModu = null;
     }
+
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (BaseSiparisEditModel.instance.isEmpty && widget.model.baseEditEnum != BaseEditEnum.ekle) {
         await getData();
@@ -75,11 +77,14 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
         var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
         if (result is CariListesiModel) {
           viewModel.changeIsBaseSiparisEmpty(true);
+          BaseSiparisEditModel.instance.tag = "FaturaModel";
           BaseSiparisEditModel.instance.siparisTipi = model.siparisTipiEnum;
           BaseSiparisEditModel.instance.cariModel = result;
           BaseSiparisEditModel.instance.cariAdi = result.cariAdi;
           BaseSiparisEditModel.instance.cariKodu = result.cariKodu;
           BaseSiparisEditModel.instance.kosulKodu = result.kosulKodu;
+          BaseSiparisEditModel.instance.belgeTuru = widget.model.siparisTipiEnum?.rawValue;
+          BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.siparisTipiEnum?.rawValue;
 
           BaseSiparisEditModel.instance.belgeTipi = int.tryParse(result.odemeTipi ?? "0");
         }
@@ -150,11 +155,12 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                     child: IconButton(
                       onPressed: () async {
                         if (await postData()) {
+                          await CacheManager.removeSiparisEditListWithUuid(BaseSiparisEditModel.instance.uuid);
                           Get.back();
                           if (viewModel.yeniKaydaHazirlaMi) {
                             BaseSiparisEditModel.resetInstance();
                             BaseSiparisEditModel.instance.isNew = true;
-                            Get.toNamed("/mainPage/siparisEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: model.siparisTipiEnum));
+                            Get.toNamed("/mainPage/siparisEdit", arguments: BaseEditModel<SiparisEditRequestModel>(baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: model.siparisTipiEnum));
                           }
                         }
                       },
@@ -201,8 +207,14 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
   }
 
   Future<bool> postData() async {
-    var result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.saveFatura, bodyModel: BaseSiparisEditModel(), data: BaseSiparisEditModel.instance.toJson(), showLoading: true);
+    if (widget.model.baseEditEnum == BaseEditEnum.ekle || (BaseSiparisEditModel.instance.isNew ?? false)) {
+      BaseSiparisEditModel.instance.yeniKayit = true;
+    }
+    var uuid = const Uuid();
+    var result = await networkManager.dioPost<BaseSiparisEditModel>(
+        path: ApiUrls.saveFatura, bodyModel: BaseSiparisEditModel(), data: (BaseSiparisEditModel.instance..islemId = uuid.v4()).toJson(), showLoading: true);
     if (result.success == true) {
+      dialogManager.showSnackBar("Kayıt Başarılı");
       return true;
     } else {
       return false;

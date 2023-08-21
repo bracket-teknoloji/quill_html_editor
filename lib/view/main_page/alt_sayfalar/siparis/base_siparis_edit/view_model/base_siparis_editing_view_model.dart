@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 
 import "../model/base_siparis_edit_model.dart";
 
@@ -25,9 +26,13 @@ abstract class _BaseSiparisEditingViewModelBase with Store {
   void changeFuture() {
     changeIsBaseSiparisEmpty(BaseSiparisEditModel.instance.isEmpty);
   }
+
   @observable
-  bool yeniKaydaHazirlaMi = false;
+  bool yeniKaydaHazirlaMi = CacheManager.getProfilParametre.siparisYeniKaydaHazirla;
 
   @action
-  void changeYeniKaydaHazirlaMi() => yeniKaydaHazirlaMi = !yeniKaydaHazirlaMi;
+  void changeYeniKaydaHazirlaMi() {
+    yeniKaydaHazirlaMi = !yeniKaydaHazirlaMi;
+    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisYeniKaydaHazirla: yeniKaydaHazirlaMi));
+  }
 }

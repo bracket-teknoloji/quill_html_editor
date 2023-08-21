@@ -35,14 +35,7 @@ class TokenModel with NetworkManagerMixin {
   String? errorDescription;
 
   TokenModel();
-
-  @override
-  toString() {
-    return error == null
-        ? "TokenModel {\n accessToken: $accessToken,\n tokenType: $tokenType,\n expiresIn: $expiresIn,\n       userJson: ${userJson?.toString()},\n issued: $issued,\n expires: $expires \n}"
-        : "TokenModel {\n error: $error,\n errorDescription: $errorDescription \n}";
-  }
-
+  
   @override
   fromJson(Map<String, dynamic> json) {
     return _$TokenModelFromJson(json);

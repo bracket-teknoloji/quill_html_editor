@@ -2144,13 +2144,15 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       dovizTutari: fields[112] as double?,
       teslimCari: fields[113] as String?,
       fYedek4: fields[114] as double?,
-    );
+    )
+      ..yeniKayit = fields[115] as bool?
+      ..uuid = fields[116] as String?;
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(115)
+      ..writeByte(117)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -2380,7 +2382,11 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(113)
       ..write(obj.teslimCari)
       ..writeByte(114)
-      ..write(obj.fYedek4);
+      ..write(obj.fYedek4)
+      ..writeByte(115)
+      ..write(obj.yeniKayit)
+      ..writeByte(116)
+      ..write(obj.uuid);
   }
 
   @override
@@ -2709,7 +2715,7 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       odemeKodu: json['ODEME_KODU'] as String?,
       ozelKod1: json['OZEL_KOD1'] as String?,
       ozelKod2: json['OZEL_KOD2'] as String?,
-      pickerBelgeTuru: json['PICKER_BELGE_TURU'] as String?,
+      pickerBelgeTuru: json['PickerBelgeTuru'] as String?,
       plasiyerKodu: json['PLASIYER_KODU'] as String?,
       projeKodu: json['PROJE_KODU'] as String?,
       remoteTempBelgeEtiketi: json['REMOTE_TEMP_BELGE_ETIKETI'] as String?,
@@ -2727,7 +2733,7 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       dovizTutari: (json['DOVIZ_TUTARI'] as num?)?.toDouble(),
       teslimCari: json['TESLIM_CARI'] as String?,
       fYedek4: (json['F_YEDEK4'] as num?)?.toDouble(),
-    );
+    )..yeniKayit = json['_YeniKayit'] as bool?;
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
     BaseSiparisEditModel instance) {
@@ -2841,7 +2847,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('ODEME_KODU', instance.odemeKodu);
   writeNotNull('OZEL_KOD1', instance.ozelKod1);
   writeNotNull('OZEL_KOD2', instance.ozelKod2);
-  writeNotNull('PICKER_BELGE_TURU', instance.pickerBelgeTuru);
+  writeNotNull('PickerBelgeTuru', instance.pickerBelgeTuru);
   writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
   writeNotNull('PROJE_KODU', instance.projeKodu);
   writeNotNull('REMOTE_TEMP_BELGE_ETIKETI', instance.remoteTempBelgeEtiketi);
@@ -2857,6 +2863,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('DOVIZ_TUTARI', instance.dovizTutari);
   writeNotNull('TESLIM_CARI', instance.teslimCari);
   writeNotNull('F_YEDEK4', instance.fYedek4);
+  writeNotNull('_YeniKayit', instance.yeniKayit);
   return val;
 }
 
@@ -2879,7 +2886,7 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       seriList: json['SERI_LIST'] as List<dynamic>?,
       tempBarkodList: json['TEMP_BARKOD_LIST'] as List<dynamic>?,
       belgeNo: json['BELGE_NO'] as String?,
-      belgeTipi: json['BELGE_TIPI'] as String?,
+      belgeTipi: json['BelgeTipi'] as String?,
       cariKodu: json['CARI_KODU'] as String?,
       depoTanimi: json['DEPO_TANIMI'] as String?,
       olcuBirimAdi: json['OLCU_BIRIM_ADI'] as String?,
@@ -2942,7 +2949,7 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('SERI_LIST', instance.seriList);
   writeNotNull('TEMP_BARKOD_LIST', instance.tempBarkodList);
   writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('BELGE_TIPI', instance.belgeTipi);
+  writeNotNull('BelgeTipi', instance.belgeTipi);
   writeNotNull('CARI_KODU', instance.cariKodu);
   writeNotNull('DEPO_TANIMI', instance.depoTanimi);
   writeNotNull('OLCU_BIRIM_ADI', instance.olcuBirimAdi);

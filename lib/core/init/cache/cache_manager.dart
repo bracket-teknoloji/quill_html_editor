@@ -13,6 +13,7 @@ import "../../../view/main_page/model/main_page_model.dart";
 import "../../../view/main_page/model/param_model.dart";
 import "../../../view/main_page/model/sirket_model.dart";
 import "../../../view/main_page/model/user_model/user_model.dart";
+import "../../base/model/base_profil_parametre_model.dart";
 import "../../base/model/login_dialog_model.dart";
 import "../../constants/enum/siparis_tipi_enum.dart";
 import "../../constants/static_variables/static_variables.dart";
@@ -34,6 +35,7 @@ class CacheManager {
   static late Box<bool> isLicenseVerifiedBox;
   static late Box<BaseSiparisEditModel> siparisEditBox;
   static late Box<ListSiparisEditModel> siparisEditListBox;
+  static late Box profilParametreBox;
 
   static final CacheManager _instance = CacheManager._init();
   static CacheManager get instance => _instance;
@@ -74,6 +76,10 @@ class CacheManager {
     isLicenseVerifiedBox = await Hive.openBox<bool>("isLicenseVerified");
     siparisEditBox = await Hive.openBox<BaseSiparisEditModel>("siparisEdit");
     siparisEditListBox = await Hive.openBox<ListSiparisEditModel>("siparisEditList");
+    profilParametreBox = await Hive.openBox("profilParametre");
+    if (profilParametreBox.isEmpty){
+      profilParametreBox.put("value", BaseProfilParametreModel());
+    }
     if (isLicenseVerifiedBox.isEmpty) {
       isLicenseVerifiedBox.put("value", false);
     }
@@ -115,6 +121,8 @@ class CacheManager {
 
   static List<BaseSiparisEditModel>? getSiparisEditLists(SiparisTipiEnum siparisTipi) =>
       siparisEditListBox.get(StaticVariables.getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel>();
+
+  static BaseProfilParametreModel get getProfilParametre =>BaseProfilParametreModel.fromJson(profilParametreBox.get("value"));
   // static String get getSirketAdi => _sirketAdiBox.get("value") ?? "";
 
   //* Setters
@@ -153,6 +161,7 @@ class CacheManager {
       siparisEditListBox.put(StaticVariables.getSiparisString, ListSiparisEditModel(list: [...?siparisEditListBox.get(StaticVariables.getSiparisString)?.list, value]));
     }
   }
+  static void setProfilParametre(BaseProfilParametreModel value) => profilParametreBox.put("value", value.toJson());
 
 //* Clear and Remove
   static void clearBox(String boxName) => Hive.box(boxName).clear();
@@ -173,6 +182,14 @@ class CacheManager {
       list.removeAt(index);
     }
     siparisEditListBox.put(StaticVariables.getSiparisString, ListSiparisEditModel(list: list));
+  }
+  static Future<bool> removeSiparisEditListWithUuid(String? uuid) async {
+    var list = siparisEditListBox.get(StaticVariables.getSiparisString)?.list;
+    if (list != null) {
+      list.removeWhere((element) => element.uuid == uuid);
+    }
+    await siparisEditListBox.put(StaticVariables.getSiparisString, ListSiparisEditModel(list: list));
+    return true;
   }
 
   //* Helper

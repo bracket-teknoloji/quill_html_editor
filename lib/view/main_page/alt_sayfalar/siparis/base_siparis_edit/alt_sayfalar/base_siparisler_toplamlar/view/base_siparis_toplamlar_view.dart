@@ -88,7 +88,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               Observer(builder: (_) {
                 return Text.rich(TextSpan(children: [
                   const TextSpan(text: "Toplam İskonto\n", style: TextStyle(color: Colors.grey)),
-                  TextSpan(text: "${model.getToplamIskonto.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                  TextSpan(text: "${viewModel.model.getToplamIskonto.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
                 ]));
               }),
             ].map((e) => Expanded(child: e)).toList(),
@@ -238,10 +238,12 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                             viewModel.tevkifatMap.length, (index) => BottomSheetModel(title: viewModel.tevkifatMap.keys.toList()[index], value: viewModel.tevkifatMap.values.toList()[index])));
                     if (result != null) {
                       viewModel.setTevkifat(result);
+                      print(-(result * viewModel.model.kdvTutari));
+                      tevkifatController.text = (-result * viewModel.model.kdvTutari).toString();
                     }
                   },
                   icon: const Icon(Icons.more_horiz_outlined)),
-              onChanged: (value) => model.ekMaliyet2Tutari = double.tryParse(value),
+              // onChanged: (value) => model.ekMaliyet2Tutari = double.tryParse(value),
             ),
           ].map((e) => Expanded(child: e)).toList(),
         ),
@@ -251,7 +253,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               labelText: "Ek Mal. 3",
               enabled: enable,
               controller: ekMal3Controller,
-              keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
               onChanged: (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
             ),
             CustomTextField(

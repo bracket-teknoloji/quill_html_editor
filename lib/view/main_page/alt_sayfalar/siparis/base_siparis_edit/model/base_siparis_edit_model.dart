@@ -5,6 +5,7 @@ import "package:freezed_annotation/freezed_annotation.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
+import "package:uuid/uuid.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../core/constants/enum/siparis_tipi_enum.dart";
@@ -33,7 +34,6 @@ class ListSiparisEditModel {
   ListSiparisEditModel({this.list});
 }
 
-//sdşfljksjşdlfkjsdlş
 @CopyWith()
 @HiveType(typeId: 152)
 @JsonSerializable(createFactory: true)
@@ -45,6 +45,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     if (_instance?.isNew == true && _instance?.belgeNo != null && _instance?.kalemList.ext.isNotNullOrEmpty == true) {
       BaseSiparisEditModel? otherInstance = CacheManager.getSiparisEdit(_instance?.belgeNo ?? "");
       if (_instance != otherInstance) {
+        var uuid = const Uuid();
+        _instance?.uuid = uuid.v4();
         CacheManager.addSiparisEditListItem(_instance!);
       }
     }
@@ -246,6 +248,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   @HiveField(96)
   String? ozelKod2;
   @HiveField(97)
+  @JsonKey(name: "PickerBelgeTuru")
   String? pickerBelgeTuru;
   @HiveField(98)
   String? plasiyerKodu;
@@ -284,6 +287,12 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   String? teslimCari;
   @HiveField(114)
   double? fYedek4;
+  @HiveField(115)
+  @JsonKey(name: "_YeniKayit")
+  bool? yeniKayit;
+  @HiveField(116)
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? uuid;
   BaseSiparisEditModel(
       {this.duzeltmetarihi,
       this.kalemAdedi,
@@ -415,7 +424,30 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   double get sumGenIsk2 => kalemList?.map((e) => e.iskonto2).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
   double get sumGenIsk3 => kalemList?.map((e) => e.iskonto3).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
   double get malFazlasiTutar => kalemList?.map((e) => e.mfTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0;
-  double get kdvTutari => iskontoChecker(kalemList?.map((e) => e.kdvTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0);
+  double get kdvTutari {
+    kdv = iskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.kdvTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0);
+    return kdv ?? 0;
+  }
+
+  double iskontoCheckerEkMaliyetsiz(double result) {
+    if (genIsk1O != null && genIsk1O != 0.0) {
+      result = result - result * ((genIsk1O ?? 0) / 100);
+    } else {
+      genelIskonto1 = 0;
+    }
+    if (genIsk2O != null && genIsk2O != 0.0) {
+      result = result - result * ((genIsk2O ?? 0) / 100);
+    } else {
+      genelIskonto2 = 0;
+    }
+    if (genIsk3O != null && genIsk3O != 0.0) {
+      result = result - result * ((genIsk3O ?? 0) / 100);
+    } else {
+      genelIskonto3 = 0;
+    }
+    return result;
+  }
+
   double get satirIskonto => kalemList?.map((e) => e.iskontoTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0;
   int get toplamKalemMiktari {
     kalemAdedi = (kalemList?.map((e) => e.toplamKalemMiktari.toInt()).toList().fold(0, (a, b) => (a) + (b)) ?? 0).toInt();
@@ -423,29 +455,40 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   }
 
   double get toplamBrutTutar => kalemList?.map((e) => (e.brutFiyat ?? 0) * toplamKalemMiktari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0;
-  double get genelToplamTutar => getAraToplam + kdvTutari;
+  double get genelToplamTutar {
+    genelToplam = getAraToplam + kdvTutari;
+    return genelToplam ?? 0;
+  }
+
   double get getAraToplam => iskontoChecker(kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0);
 
   double iskontoChecker(double result) {
+    araToplam = result;
     if (genIsk1O != null && genIsk1O != 0.0) {
-      genelIskonto1 = result * (genIsk1O ?? 0) / 10;
+      genelIskonto1 = result * (genIsk1O ?? 0) / 100;
+      genIsk1T = genelIskonto1;
       result = result - result * ((genIsk1O ?? 0) / 100);
     } else {
       genelIskonto1 = 0;
+      genIsk1T = 0;
     }
     if (genIsk2O != null && genIsk2O != 0.0) {
-      genelIskonto2 = result * (genIsk2O ?? 0) / 10;
+      genelIskonto2 = result * (genIsk2O ?? 0) / 100;
+      genIsk2T = genelIskonto2;
       result = result - result * ((genIsk2O ?? 0) / 100);
     } else {
       genelIskonto2 = 0;
+      genIsk2T = 0;
     }
     if (genIsk3O != null && genIsk3O != 0.0) {
-      genelIskonto3 = result * (genIsk3O ?? 0) / 10;
+      genelIskonto3 = result * (genIsk3O ?? 0) / 100;
+      genIsk3T = genelIskonto3;
       result = result - result * ((genIsk3O ?? 0) / 100);
     } else {
       genelIskonto3 = 0;
+      genIsk3T = 0;
     }
-    return result - (ekMaliyet1Tutari ?? 0) + (ekMaliyet2Tutari ?? 0) + (ekMaliyet3Tutari ?? 0);
+    return result + (ekMaliyet1Tutari ?? 0) + (ekMaliyet2Tutari ?? 0) + (ekMaliyet3Tutari ?? 0);
   }
 
   bool get yurticiMi => tipi != 6;
@@ -453,7 +496,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   bool get isEmpty => this == BaseSiparisEditModel();
   bool get isRemoteTempBelgeNull => remoteTempBelge == null;
 
-  double get getToplamIskonto => (malFazlasiTutar + satirIskonto) + (kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0) - getAraToplam;
+  double get getToplamIskonto =>
+      (malFazlasiTutar + satirIskonto) - (iskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0) - (araToplam ?? 0));
   double get getBrutTutar => kalemList?.map((e) => e.brutFiyat).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
 
   factory BaseSiparisEditModel.fromJson(String json) => _$BaseSiparisEditModelFromJson(jsonDecode(json));
@@ -505,6 +549,7 @@ class KalemModel {
   @HiveField(13)
   String? belgeNo;
   @HiveField(14)
+  @JsonKey(name: "BelgeTipi")
   String? belgeTipi;
   @HiveField(15)
   String? cariKodu;

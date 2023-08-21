@@ -26,9 +26,9 @@ abstract class _KalemEkleViewModelBase with Store {
   @observable
   KalemModel kalemModel = KalemModel();
   @action
-  void setOlcuBirimi(MapEntry<String,int> value) => kalemModel = kalemModel.copyWith(olcuBirimKodu: value.value, olcuBirimAdi: value.key);
-  @action
   void setKalemModel(KalemModel? value) => kalemModel = value ?? KalemModel();
+  @action
+  void setOlcuBirimi(MapEntry<String,int> value) => kalemModel = kalemModel.copyWith(olcuBirimKodu: value.value, olcuBirimAdi: value.key);
   @action
   void setProjeKodu(String value) => kalemModel = kalemModel.copyWith(projeKodu: value);
   @action

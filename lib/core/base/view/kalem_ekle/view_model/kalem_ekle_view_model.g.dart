@@ -71,22 +71,22 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
-  void setOlcuBirimi(MapEntry<String, int> value) {
+  void setKalemModel(KalemModel? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
-        name: '_KalemEkleViewModelBase.setOlcuBirimi');
+        name: '_KalemEkleViewModelBase.setKalemModel');
     try {
-      return super.setOlcuBirimi(value);
+      return super.setKalemModel(value);
     } finally {
       _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setKalemModel(KalemModel? value) {
+  void setOlcuBirimi(MapEntry<String, int> value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
-        name: '_KalemEkleViewModelBase.setKalemModel');
+        name: '_KalemEkleViewModelBase.setOlcuBirimi');
     try {
-      return super.setKalemModel(value);
+      return super.setOlcuBirimi(value);
     } finally {
       _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
     }

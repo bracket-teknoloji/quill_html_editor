@@ -552,6 +552,17 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     viewModel.kalemModel.kosulKodu = model.kosulKodu;
     viewModel.kalemModel.teslimTarihi = model.teslimTarihi;
     viewModel.setKosul(model.kosulKodu ?? "");
+    viewModel.setDepoKodu(model.cikisDepoKodu ?? 0);
+    viewModel.setProjeKodu(model.projeKodu ?? "");
+    viewModel.setBrutFiyat(double.tryParse(fiyatController.text) ?? 0);
+    viewModel.setMiktar(int.tryParse(miktarController.text) ?? 0);
+    viewModel.setMiktar2(int.tryParse(miktar2Controller.text) ?? 0);
+    viewModel.setMFMiktar(int.tryParse(malFazMiktarController.text) ?? 0);
+    viewModel.setOlcuBirimi(MapEntry<String, int>(widget.stokListesiModel?.olcuBirimi ?? widget.kalemModel?.olcuBirimAdi ?? "", 0));
+    viewModel.setKdvOrani(double.tryParse(kdvOraniController.text) ?? 0);
+    viewModel.setIskonto1(double.tryParse(isk1Controller.text) ?? 0);
+    viewModel.setIskonto2(double.tryParse(isk2YuzdeController.text) ?? 0);
+    viewModel.setIskonto3(double.tryParse(isk3YuzdeController.text) ?? 0);
   }
 
   void disposeControllers() {

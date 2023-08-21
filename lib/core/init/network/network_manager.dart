@@ -101,7 +101,7 @@ class NetworkManager {
         queryParameters: queryParameters,
         cancelToken: CancelToken(),
         options: Options(
-            headers: {"Access-Control-Allow-Origin": "*", "Platform": "netfect", "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"},
+            headers: {"Access-Control-Allow-Origin": "*", "Platform": AccountModel.instance.platform, "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"},
             contentType: "application/x-www-form-urlencoded",
             method: HttpTypes.GET,
             responseType: ResponseType.json),

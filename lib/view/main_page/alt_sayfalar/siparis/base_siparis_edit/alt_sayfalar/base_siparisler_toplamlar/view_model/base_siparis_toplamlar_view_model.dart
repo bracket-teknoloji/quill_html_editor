@@ -29,7 +29,7 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
 
   @action
   void setTevkifat(double? value) {
-    model = model.copyWith(ekMaliyet2Tutari: value);
+    model = model.copyWith(ekMaliyet2Tutari: model.kdvTutari != 0 ? (-model.kdvTutari) * (value ?? 0) : 0);
     BaseSiparisEditModel.setInstance(model);
   }
 
@@ -66,16 +66,13 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
   @action
   void setGenIsk1(double? value) {
     if (value == 0) {
-      model = model.copyWith(genIsk1T: 0, genIsk1O: 0);
+      model = model.copyWith(genIsk1O: 0);
       return;
     }
     if (isGenIsk1T) {
-      model = model.copyWith(genIsk1T: value, genIsk1O: ((value ?? 0) / (model.getAraToplam != 0 ? model.getAraToplam : 1) * 100));
+      model = model.copyWith(genIsk1O: ((value ?? 0) / (model.araToplam != 0 ? (model.araToplam ?? 0) : 1) * 100));
     } else {
-      model = model.copyWith(
-        genIsk1O: value,
-        genIsk1T: ((value ?? 0) * (model.genelIskonto1 ?? 0) / 100),
-      );
+      model = model.copyWith(genIsk1O: value);
     }
     BaseSiparisEditModel.setInstance(model);
   }
@@ -83,16 +80,13 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
   @action
   void setGenIsk2(double? value) {
     if (value == 0) {
-      model = model.copyWith(genIsk2T: 0, genIsk2O: 0);
+      model = model.copyWith(genIsk2O: 0);
       return;
     }
     if (isGenIsk2T) {
-      model = model.copyWith(genIsk2T: value, genIsk2O: ((value ?? 0) / (model.getAraToplam != 0 ? model.getAraToplam : 1) * 100));
+      model = model.copyWith(genIsk2O: ((value ?? 0) / (model.getAraToplam != 0 ? (model.araToplam ?? 0) - (model.genIsk1T ?? 0) : 1) * 100));
     } else {
-      model = model.copyWith(
-        genIsk2O: value,
-        genIsk2T: ((value ?? 0) * (model.genelIskonto2 ?? 0) / 100),
-      );
+      model = model.copyWith(genIsk2O: value);
     }
     BaseSiparisEditModel.setInstance(model);
   }
@@ -100,16 +94,13 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
   @action
   void setGenIsk3(double? value) {
     if (value == 0) {
-      model = model.copyWith(genIsk3T: 0, genIsk3O: 0);
+      model = model.copyWith(genIsk3O: 0);
       return;
     }
     if (isGenIsk3T) {
-      model = model.copyWith(genIsk3T: value, genIsk3O: ((value ?? 0) / (model.getAraToplam != 0 ? model.getAraToplam : 1) * 100));
+      model = model.copyWith(genIsk3O: ((value ?? 0) / (model.getAraToplam != 0 ? model.getAraToplam : 1) * 100));
     } else {
-      model = model.copyWith(
-        genIsk3O: value,
-        genIsk3T: ((value ?? 0) * (model.genelIskonto3 ?? 0) / 100),
-      );
+      model = model.copyWith(genIsk3O: value);
     }
     BaseSiparisEditModel.setInstance(model);
   }
