@@ -1,4 +1,5 @@
 import "../../../view/main_page/model/main_page_model.dart";
+import "../../../view/main_page/model/param_model.dart";
 import "../../../view/main_page/model/user_model/profil_yetki_model.dart";
 import "../../../view/main_page/model/user_model/user_model.dart";
 import "../../init/cache/cache_manager.dart";
@@ -8,18 +9,21 @@ class YetkiController {
   static MainPageModel? get anaVeri => CacheManager.getAnaVeri();
 
   UserModel? get userModel => anaVeri?.userModel;
+  ParamModel? get paramModel => anaVeri?.paramModel;
 
   ProfilYetkiModel? yetkiModel = anaVeri?.userModel?.profilYetki;
 
   bool isTrue(bool? value) {
-      return (value ?? false) || (userModel?.adminMi ?? false);
-
+    return (value ?? false) || (userModel?.adminMi ?? false);
   }
+  //! GENEL
+  bool get projeUygulamasiAcikMi => isTrue(paramModel?.projeUygulamasiAcik);
 
   //! CARİ
 
   bool get cariListesi => isTrue(yetkiModel?.cariCariListesi);
   bool get cariListesiRiskGorebilir => isTrue(yetkiModel?.cariCariListesiRiskGorebilir);
+
   //* Cari Kartı
   bool get cariKarti => isTrue(yetkiModel?.cariCariKarti);
   bool get cariKartiYeniKayit => isTrue(yetkiModel?.cariCariKartiKaydet);
@@ -42,8 +46,8 @@ class YetkiController {
   bool get cariAktiviteAtayabilir => isTrue(yetkiModel?.cariAktiviteAtayabilir);
   bool get cariAktiviteBitirmeyiGeriAl => isTrue(yetkiModel?.cariAktiviteBitirmeyiGeriAl);
 
-
   //! STOK
+
   bool get stokListesi => isTrue(yetkiModel?.stokStokListesi);
   bool get stokFiyatOzeti => isTrue(yetkiModel?.stokFiyatOzeti);
 
@@ -76,7 +80,18 @@ class YetkiController {
   bool get stokBarkodDuzenle => isTrue(yetkiModel?.stokBarkodKayitlariDuzelt);
   bool get stokBarkodSil => isTrue(yetkiModel?.stokBarkodKayitlariSil);
 
+  //! Sipariş
 
+  //* Müşteri Siparişi
+  bool get siparisMusteriSiparisiDuzelt => isTrue(yetkiModel?.siparisMusteriSiparisiDuzelt);
+  bool get siparisMusteriSiparisiSil => isTrue(yetkiModel?.siparisMusteriSiparisiSil);
+  bool get siparisMusSipCariKoduDegistir => isTrue(yetkiModel?.siparisMusSipCariKoduDegistir);
+  
+  bool musteriSiparisiGizlenecekAlanMi(String alan) => isTrue(yetkiModel?.siparisMusteriSiparisiGizlenecekAlanlar?.contains(alan));
+  bool musteriSiparisiDegismeyecekAlanMi(String alan) => isTrue(yetkiModel?.siparisMusteriSiparisiDegismeyecekAlanlar?.contains(alan));
 
+  //* Satıcı Siparişi
+  bool get siparisSaticiSiparisiDuzelt => isTrue(yetkiModel?.siparisSaticiSiparisiDuzelt);
+  bool get siparisSaticiSiparisiSil => isTrue(yetkiModel?.siparisSaticiSiparisiSil);
   
 }

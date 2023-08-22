@@ -1,4 +1,4 @@
-enum IslemTipiEnum { stok, cari, stokRapor, cariRapor, stokSerbest, cariSerbest }
+enum IslemTipiEnum { stok, cari, stokRapor, cariRapor, stokSerbest, cariSerbest, siparis}
 extension IslemTipiEnumExtension on IslemTipiEnum {
   String get value {
     //return capitalized with method

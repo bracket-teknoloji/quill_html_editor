@@ -19,6 +19,7 @@ import "package:picker/view/main_page/model/grid_item_model.dart";
 import "package:share_plus/share_plus.dart";
 
 import "../../../../../../../view/main_page/alt_sayfalar/cari/cari_network_manager.dart";
+import "../../../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../../constants/enum/base_edit_enum.dart";
 import "../../../../../../constants/enum/islem_tipi_enum.dart";
 import "../../../../../../constants/ui_helper/ui_helper.dart";
@@ -45,6 +46,15 @@ class IslemlerMenuItemConstants<T> {
         islemler.add(cariKoduDegistir);
         islemler.addAll(raporlar!);
       }
+    } else if (islemtipi == IslemTipiEnum.siparis) {
+      islemler.add(irsaliyeOlustur);
+      islemler.add(faturaOlustur);
+      islemler.add(belgeyiKapat);
+      islemler.add(siparisPDFGoruntule);
+      islemler.add(cariKoduDegistir);
+      islemler.add(belgeNoDegistir);
+      islemler.add(belgeyiKopyala);
+      // islemler.addAll(raporlar!);
     }
     if (raporlar.ext.isNotNullOrEmpty) {
       islemler.add(stokHareketleri);
@@ -58,7 +68,13 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel get kopyala => GridItemModel.islemler(
       title: "Kopyala",
       onTap: () => Get.toNamed(islemtipi == IslemTipiEnum.cari ? "/mainPage/cariEdit" : "/mainPage/stokEdit", arguments: BaseEditModel(model: model2, baseEditEnum: BaseEditEnum.kopyala)));
-
+  //* Siparis
+  GridItemModel get irsaliyeOlustur => GridItemModel.islemler(title: "İrsaliye Oluştur", iconData: Icons.conveyor_belt);
+  GridItemModel get faturaOlustur => GridItemModel.islemler(title: "Fatura Oluştur (Siparişten)", iconData: Icons.conveyor_belt);
+  GridItemModel get belgeyiKapat => GridItemModel.islemler(title: "Belgeyi Kapat", iconData: Icons.lock_outline);
+  GridItemModel get belgeNoDegistir => GridItemModel.islemler(title: "Belge No Değiştir", iconData: Icons.edit_outlined);
+  GridItemModel get siparisPDFGoruntule => GridItemModel.islemler(title: "PDF Görüntüle", iconData: Icons.picture_as_pdf_outlined);
+  GridItemModel get belgeyiKopyala => GridItemModel.islemler(title: "Belgeyi Kopyala", iconData: Icons.copy_outlined);
   //* Stok
   GridItemModel get stokKarti => GridItemModel.islemler(
       title: "Stok Kartı",
@@ -96,7 +112,7 @@ class IslemlerMenuItemConstants<T> {
         TextEditingController controller = TextEditingController();
         KodDegistirModel kodDegistirModel = KodDegistirModel()
           ..kaynakSil = "H"
-          ..kaynakCari = (model as CariListesiModel).cariKodu;
+          ..kaynakCari = model is CariListesiModel ? (model as CariListesiModel).cariKodu : (model is BaseSiparisEditModel ? (model as BaseSiparisEditModel).cariModel?.cariKodu : null);
         await bottomSheetDialogManager.showBottomSheetDialog(Get.context!,
             title: "Cari Kodu Değiştir",
             body: Column(

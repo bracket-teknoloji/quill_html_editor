@@ -35,7 +35,7 @@ class CacheManager {
   static late Box<bool> isLicenseVerifiedBox;
   static late Box<BaseSiparisEditModel> siparisEditBox;
   static late Box<ListSiparisEditModel> siparisEditListBox;
-  static late Box profilParametreBox;
+  static late Box<Map> profilParametreBox;
 
   static final CacheManager _instance = CacheManager._init();
   static CacheManager get instance => _instance;
@@ -76,9 +76,10 @@ class CacheManager {
     isLicenseVerifiedBox = await Hive.openBox<bool>("isLicenseVerified");
     siparisEditBox = await Hive.openBox<BaseSiparisEditModel>("siparisEdit");
     siparisEditListBox = await Hive.openBox<ListSiparisEditModel>("siparisEditList");
-    profilParametreBox = await Hive.openBox("profilParametre");
-    if (profilParametreBox.isEmpty){
-      profilParametreBox.put("value", BaseProfilParametreModel());
+    profilParametreBox = await Hive.openBox<Map>("profilParametre");
+    // profilParametreBox.clear();
+    if (profilParametreBox.isEmpty) {
+      profilParametreBox.put("value", BaseProfilParametreModel().toJson());
     }
     if (isLicenseVerifiedBox.isEmpty) {
       isLicenseVerifiedBox.put("value", false);
@@ -122,7 +123,7 @@ class CacheManager {
   static List<BaseSiparisEditModel>? getSiparisEditLists(SiparisTipiEnum siparisTipi) =>
       siparisEditListBox.get(StaticVariables.getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel>();
 
-  static BaseProfilParametreModel get getProfilParametre =>BaseProfilParametreModel.fromJson(profilParametreBox.get("value"));
+  static BaseProfilParametreModel get getProfilParametre => BaseProfilParametreModel.fromJson((profilParametreBox.get("value") ?? {}).cast<String, dynamic>());
   // static String get getSirketAdi => _sirketAdiBox.get("value") ?? "";
 
   //* Setters
@@ -161,6 +162,7 @@ class CacheManager {
       siparisEditListBox.put(StaticVariables.getSiparisString, ListSiparisEditModel(list: [...?siparisEditListBox.get(StaticVariables.getSiparisString)?.list, value]));
     }
   }
+
   static void setProfilParametre(BaseProfilParametreModel value) => profilParametreBox.put("value", value.toJson());
 
 //* Clear and Remove
@@ -183,6 +185,7 @@ class CacheManager {
     }
     siparisEditListBox.put(StaticVariables.getSiparisString, ListSiparisEditModel(list: list));
   }
+
   static Future<bool> removeSiparisEditListWithUuid(String? uuid) async {
     var list = siparisEditListBox.get(StaticVariables.getSiparisString)?.list;
     if (list != null) {

@@ -8,6 +8,7 @@ import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 import "../../../view/add_company/model/account_model.dart";
 import "../../../view/add_company/model/account_response_model.dart";
@@ -139,6 +140,13 @@ class DialogManager {
 
   void showStokGridViewDialog(StokListesiModel? model, [IslemTipiEnum? tip]) =>
       _baseDialog(body: CustomAnimatedGridView<StokListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.stok), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
+
+  void showSiparisGridViewDialog(BaseSiparisEditModel? model, [IslemTipiEnum? tip]) => _baseDialog(
+          body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.siparis, title: model?.belgeNo),
+          onOk: () {},
+          btnOkText: "İptal",
+          dialogType: DialogType.noHeader)
+      .show();
 
   void showExitDialog() => _baseDialog(
         title: "Uyarı",
@@ -301,7 +309,9 @@ class DialogManager {
                   title: Text(title),
                   leading: IconHelper.smallIcon("User-Account"),
                   onTap: () {
-                    Get.back(result: LoginDialogModel(account: CacheManager.accountsBox.getAt(index), username: preferences.get(title)?[1] ?? "", password: preferences.get(title)?[2] ?? ""), closeOverlays: true);
+                    Get.back(
+                        result: LoginDialogModel(account: CacheManager.accountsBox.getAt(index), username: preferences.get(title)?[1] ?? "", password: preferences.get(title)?[2] ?? ""),
+                        closeOverlays: true);
                   });
             },
           ),

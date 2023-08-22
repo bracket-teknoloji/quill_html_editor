@@ -18,16 +18,18 @@ class CustomAnimatedGridView<T> extends StatefulWidget {
   final CariListesiModel? cariListesiModel;
   final IslemTipiEnum islemTipi;
   final T? model;
-  const CustomAnimatedGridView({super.key, this.cariListesiModel, required this.islemTipi, this.model});
+  final String? title;
+  const CustomAnimatedGridView({super.key, this.cariListesiModel, required this.islemTipi, this.model, this.title});
   @override
   State<CustomAnimatedGridView> createState() => _CustomAnimatedGridViewState();
 }
 
 class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
   CustomAnimatedGridViewModel viewModel = CustomAnimatedGridViewModel();
-  bool get islemMi => widget.islemTipi == IslemTipiEnum.cari || widget.islemTipi == IslemTipiEnum.stok;
+  bool get islemMi => widget.islemTipi == IslemTipiEnum.cari || widget.islemTipi == IslemTipiEnum.stok || widget.islemTipi == IslemTipiEnum.siparis;
   bool get cariMi => widget.islemTipi == IslemTipiEnum.cari;
   bool get stokMu => widget.islemTipi == IslemTipiEnum.stok;
+  bool get siparisMi => widget.islemTipi == IslemTipiEnum.siparis;
   bool get raporMu => widget.islemTipi == IslemTipiEnum.cariRapor || widget.islemTipi == IslemTipiEnum.stokRapor;
   List<GridItemModel> result = MenuItemConstants().getList();
   @override
@@ -69,7 +71,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
             }),
             Expanded(
                 child: SizedBox(
-                    child: Text(widget.cariListesiModel?.cariAdi ?? widget.model.stokKodu, style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis))
+                    child: Text(widget.title ?? widget.cariListesiModel?.cariAdi ?? widget.model.stokKodu, style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis))
                         .paddingOnly(left: UIHelper.midSize)))
           ],
         ),
@@ -137,6 +139,10 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
   }
 
   List<GridItemModel>? getRaporList(IslemTipiEnum menu) {
+    //if result is not contains any menu.value return null
+    if (!result.any((element) => element.title == menu.value)) {
+      return null;
+    }
     return result.where((element) => element.title == menu.value).first.altMenuler?.where((element) => element.title == "Raporlar").toList();
   }
 }
