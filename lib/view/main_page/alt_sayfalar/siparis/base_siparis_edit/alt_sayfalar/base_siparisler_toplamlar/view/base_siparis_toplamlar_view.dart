@@ -128,7 +128,8 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
           children: [
             CustomTextField(
               labelText: "Gen. İsk 1",
-              enabled: enable,
+              //? Değişecek alansa gizlesin diye tersini aldım. Değişecekse "true" dönüyor.
+              enabled: enable && !yetkiController.musteriSiparisiDegismeyecekAlanMi("genIsk1"),
               controller: genelIskonto1Controller,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
               onChanged: (p0) => viewModel.setGenIsk1(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
@@ -140,7 +141,8 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
             ),
             CustomTextField(
               labelText: "İsk.Tipi 1",
-              enabled: enable,
+              //? Değişecek alansa gizlesin diye tersini aldım. Değişecekse "true" dönüyor.
+              enabled: enable && !yetkiController.musteriSiparisiDegismeyecekAlanMi("genIsk1"),
               readOnly: true,
               suffixMore: true,
               controller: iskontoTipi1Controller,
@@ -159,7 +161,8 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
           children: [
             CustomTextField(
               labelText: "Gen. İsk 2",
-              enabled: enable,
+              //? Değişecek alansa gizlesin diye tersini aldım. Değişecekse "true" dönüyor.
+              enabled: enable && !yetkiController.musteriSiparisiDegismeyecekAlanMi("genIsk2"),
               controller: genelIskonto2Controller,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
               valueWidget:
@@ -170,7 +173,8 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
             ),
             CustomTextField(
               labelText: "İsk.Tipi 2",
-              enabled: enable,
+              //? Değişecek alansa gizlesin diye tersini aldım. Değişecekse "true" dönüyor.
+              enabled: enable && !yetkiController.musteriSiparisiDegismeyecekAlanMi("genIsk3"),
               readOnly: true,
               suffixMore: true,
               valueWidget: Observer(builder: (_) => Text(viewModel.model.genisk2Tipi?.toStringIfNull ?? "")),
@@ -189,7 +193,8 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
           children: [
             CustomTextField(
               labelText: "Gen. İsk 3",
-              enabled: enable,
+              //? Değişecek alansa gizlesin diye tersini aldım. Değişecekse "true" dönüyor.
+              enabled: enable && !yetkiController.musteriSiparisiDegismeyecekAlanMi("genIsk3"),
               controller: genelIskonto3Controller,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
               onChanged: (p0) => viewModel.setGenIsk3(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
@@ -200,7 +205,8 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
             ),
             CustomTextField(
               labelText: "İsk.Tipi 3",
-              enabled: enable,
+              //? Değişecek alansa gizlesin diye tersini aldım. Değişecekse "true" dönüyor.
+              enabled: enable && !yetkiController.musteriSiparisiDegismeyecekAlanMi("genIsk3"),
               suffixMore: true,
               readOnly: true,
               controller: iskontoTipi3Controller,

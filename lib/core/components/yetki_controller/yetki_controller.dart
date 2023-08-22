@@ -16,6 +16,7 @@ class YetkiController {
   bool isTrue(bool? value) {
     return (value ?? false) || (userModel?.adminMi ?? false);
   }
+
   //! GENEL
   bool get projeUygulamasiAcikMi => isTrue(paramModel?.projeUygulamasiAcik);
 
@@ -86,12 +87,12 @@ class YetkiController {
   bool get siparisMusteriSiparisiDuzelt => isTrue(yetkiModel?.siparisMusteriSiparisiDuzelt);
   bool get siparisMusteriSiparisiSil => isTrue(yetkiModel?.siparisMusteriSiparisiSil);
   bool get siparisMusSipCariKoduDegistir => isTrue(yetkiModel?.siparisMusSipCariKoduDegistir);
-  
+  bool get siparisMusSipOtoPdfGor => isTrue(yetkiModel?.siparisMusSipOtoPdfGor);
+
   bool musteriSiparisiGizlenecekAlanMi(String alan) => isTrue(yetkiModel?.siparisMusteriSiparisiGizlenecekAlanlar?.contains(alan));
   bool musteriSiparisiDegismeyecekAlanMi(String alan) => isTrue(yetkiModel?.siparisMusteriSiparisiDegismeyecekAlanlar?.contains(alan));
 
   //* Satıcı Siparişi
   bool get siparisSaticiSiparisiDuzelt => isTrue(yetkiModel?.siparisSaticiSiparisiDuzelt);
   bool get siparisSaticiSiparisiSil => isTrue(yetkiModel?.siparisSaticiSiparisiSil);
-  
 }
