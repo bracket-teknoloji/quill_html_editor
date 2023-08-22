@@ -20,6 +20,7 @@ import "package:picker/core/components/textfield/custom_app_bar_text_field.dart"
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/static_variables/static_variables.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/view_model/siparisler_view_model.dart";
@@ -61,6 +62,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
   @override
   void initState() {
     viewModel = SiparislerViewModel(pickerBelgeTuru: widget.isSiparisler ? "MS" : "SS");
+    StaticVariables.instance.isMusteriSiparisleri = widget.isSiparisler;
     scrollController = ScrollController();
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();

@@ -32,4 +32,5 @@ class StaticVariables {
   bool get isSiparisValid => (siparisGenelFormKey.currentState?.validate() ?? false) || (siparisDigerFormKey.currentState?.validate() ?? false);
   GlobalKey<FormState> siparisGenelFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> siparisDigerFormKey = GlobalKey<FormState>();
+  bool isMusteriSiparisleri = false;
 }

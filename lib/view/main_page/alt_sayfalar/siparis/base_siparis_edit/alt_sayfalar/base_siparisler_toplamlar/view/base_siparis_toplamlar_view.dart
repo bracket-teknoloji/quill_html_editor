@@ -128,8 +128,8 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
           children: [
             CustomTextField(
               labelText: "Gen. İsk 1",
-              //? Değişecek alansa gizlesin diye tersini aldım. Değişecekse "true" dönüyor.
-              enabled: enable && !yetkiController.musteriSiparisiDegismeyecekAlanMi("genIsk1"),
+              //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
+              enabled: enable && !yetkiController.siparisMSDegismeyecekAlanMi("genIsk1"),
               controller: genelIskonto1Controller,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
               onChanged: (p0) => viewModel.setGenIsk1(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
@@ -141,8 +141,8 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
             ),
             CustomTextField(
               labelText: "İsk.Tipi 1",
-              //? Değişecek alansa gizlesin diye tersini aldım. Değişecekse "true" dönüyor.
-              enabled: enable && !yetkiController.musteriSiparisiDegismeyecekAlanMi("genIsk1"),
+              //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
+              enabled: enable && !yetkiController.siparisMSDegismeyecekAlanMi("genIsk1"),
               readOnly: true,
               suffixMore: true,
               controller: iskontoTipi1Controller,
@@ -161,8 +161,8 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
           children: [
             CustomTextField(
               labelText: "Gen. İsk 2",
-              //? Değişecek alansa gizlesin diye tersini aldım. Değişecekse "true" dönüyor.
-              enabled: enable && !yetkiController.musteriSiparisiDegismeyecekAlanMi("genIsk2"),
+              //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
+              enabled: enable && !yetkiController.siparisMSDegismeyecekAlanMi("genIsk2"),
               controller: genelIskonto2Controller,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
               valueWidget:
@@ -173,8 +173,8 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
             ),
             CustomTextField(
               labelText: "İsk.Tipi 2",
-              //? Değişecek alansa gizlesin diye tersini aldım. Değişecekse "true" dönüyor.
-              enabled: enable && !yetkiController.musteriSiparisiDegismeyecekAlanMi("genIsk3"),
+              //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
+              enabled: enable && !yetkiController.siparisMSDegismeyecekAlanMi("genIsk3"),
               readOnly: true,
               suffixMore: true,
               valueWidget: Observer(builder: (_) => Text(viewModel.model.genisk2Tipi?.toStringIfNull ?? "")),
@@ -193,8 +193,8 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
           children: [
             CustomTextField(
               labelText: "Gen. İsk 3",
-              //? Değişecek alansa gizlesin diye tersini aldım. Değişecekse "true" dönüyor.
-              enabled: enable && !yetkiController.musteriSiparisiDegismeyecekAlanMi("genIsk3"),
+              //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
+              enabled: enable && !yetkiController.siparisMSDegismeyecekAlanMi("genIsk3"),
               controller: genelIskonto3Controller,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
               onChanged: (p0) => viewModel.setGenIsk3(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
@@ -205,8 +205,8 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
             ),
             CustomTextField(
               labelText: "İsk.Tipi 3",
-              //? Değişecek alansa gizlesin diye tersini aldım. Değişecekse "true" dönüyor.
-              enabled: enable && !yetkiController.musteriSiparisiDegismeyecekAlanMi("genIsk3"),
+              //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
+              enabled: enable && !yetkiController.siparisMSDegismeyecekAlanMi("genIsk3"),
               suffixMore: true,
               readOnly: true,
               controller: iskontoTipi3Controller,

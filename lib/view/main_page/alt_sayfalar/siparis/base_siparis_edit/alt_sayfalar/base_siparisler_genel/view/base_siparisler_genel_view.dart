@@ -337,22 +337,80 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                   text: "Ek Açıklamalar",
                   child: Column(
                     children: [
-                      CustomTextField(enabled: enable, labelText: "Teslim Edilecek Kişi", onChanged: (p0) => changeAciklama(1, p0), controller: teslimEdilecekKisiController),
-                      CustomTextField(enabled: enable, labelText: "B2B Email", onChanged: (p0) => changeAciklama(2, p0), controller: b2bEmailController),
-                      CustomTextField(enabled: enable, labelText: "Masraf Kodu", onChanged: (p0) => changeAciklama(3, p0), controller: masrafKoduController),
-                      CustomTextField(enabled: enable, labelText: "Masraf Yeri", onChanged: (p0) => changeAciklama(4, p0), controller: masrafYeriController),
-                      CustomTextField(enabled: enable, labelText: "Sipariş Notu", onChanged: (p0) => changeAciklama(5, p0), controller: siparisNotuController),
-                      CustomTextField(enabled: enable, labelText: "S.A.S. No", onChanged: (p0) => changeAciklama(6, p0), controller: sASNoController),
-                      CustomTextField(enabled: enable, labelText: "B2B Sepet ID", onChanged: (p0) => changeAciklama(7, p0), controller: b2bSepetIDController),
-                      CustomTextField(enabled: enable, labelText: "Tam Teslimat", onChanged: (p0) => changeAciklama(8, p0), controller: tamTeslimatController),
-                      CustomTextField(enabled: enable, labelText: "Satış Açık. 9", onChanged: (p0) => changeAciklama(9, p0), controller: satisAcik9Controller),
-                      CustomTextField(enabled: enable, labelText: "Satış Açık. 10", onChanged: (p0) => changeAciklama(10, p0), controller: satisAcik10Controller),
-                      CustomTextField(enabled: enable, labelText: "Satış Açık. 11", onChanged: (p0) => changeAciklama(11, p0), controller: satisAcik11Controller),
-                      CustomTextField(enabled: enable, labelText: "Fiyat Grubu", onChanged: (p0) => changeAciklama(12, p0), controller: fiyatGrubuController),
-                      CustomTextField(enabled: enable, labelText: "Satış Açık. 13", onChanged: (p0) => changeAciklama(13, p0), controller: satisAcik13Controller),
-                      CustomTextField(enabled: enable, labelText: "Satış Açık. 14", onChanged: (p0) => changeAciklama(14, p0), controller: satisAcik14Controller),
-                      CustomTextField(enabled: enable, labelText: "Satış Açık. 15", onChanged: (p0) => changeAciklama(15, p0), controller: satisAcik15Controller),
-                      CustomTextField(enabled: enable, labelText: "Satış Açık. 16", onChanged: (p0) => changeAciklama(16, p0), controller: satisAcik16Controller),
+                      CustomTextField(
+                          enabled: enable && yetkiController.siparisMSSatirAciklamaAlanlari(1),
+                          labelText: "Teslim Edilecek Kişi",
+                          onChanged: (p0) => changeAciklama(1, p0),
+                          controller: teslimEdilecekKisiController),
+                      CustomTextField(
+                          enabled: enable && yetkiController.siparisMSSatirAciklamaAlanlari(2), labelText: "B2B Email", onChanged: (p0) => changeAciklama(2, p0), controller: b2bEmailController),
+                      CustomTextField(
+                          enabled: enable && yetkiController.siparisMSSatirAciklamaAlanlari(3),
+                          labelText: "Masraf Kodu",
+                          onChanged: (p0) => changeAciklama(3, p0),
+                          controller: masrafKoduController),
+                      CustomTextField(
+                          enabled: enable && yetkiController.siparisMSSatirAciklamaAlanlari(4),
+                          labelText: "Masraf Yeri",
+                          onChanged: (p0) => changeAciklama(4, p0),
+                          controller: masrafYeriController),
+                      CustomTextField(
+                          enabled: enable && yetkiController.siparisMSSatirAciklamaAlanlari(5),
+                          labelText: "Sipariş Notu",
+                          onChanged: (p0) => changeAciklama(5, p0),
+                          controller: siparisNotuController),
+                      CustomTextField(
+                          enabled: enable && yetkiController.siparisMSSatirAciklamaAlanlari(6), labelText: "S.A.S. No", onChanged: (p0) => changeAciklama(6, p0), controller: sASNoController),
+                      CustomTextField(
+                          enabled: enable && yetkiController.siparisMSSatirAciklamaAlanlari(7),
+                          labelText: "B2B Sepet ID",
+                          onChanged: (p0) => changeAciklama(7, p0),
+                          controller: b2bSepetIDController),
+                      CustomTextField(
+                          enabled: enable && yetkiController.siparisMSSatirAciklamaAlanlari(8),
+                          labelText: "Tam Teslimat",
+                          onChanged: (p0) => changeAciklama(8, p0),
+                          controller: tamTeslimatController),
+                      CustomTextField(
+                          enabled: enable && yetkiController.siparisMSSatirAciklamaAlanlari(9),
+                          labelText: "Satış Açık. 9",
+                          onChanged: (p0) => changeAciklama(9, p0),
+                          controller: satisAcik9Controller),
+                      CustomTextField(
+                          enabled: enable && yetkiController.siparisMSSatirAciklamaAlanlari(10),
+                          labelText: "Satış Açık. 10",
+                          onChanged: (p0) => changeAciklama(10, p0),
+                          controller: satisAcik10Controller),
+                      CustomTextField(
+                          enabled: enable && yetkiController.siparisMSSatirAciklamaAlanlari(11),
+                          labelText: "Satış Açık. 11",
+                          onChanged: (p0) => changeAciklama(11, p0),
+                          controller: satisAcik11Controller),
+                      CustomTextField(
+                          enabled: enable && yetkiController.siparisMSSatirAciklamaAlanlari(12),
+                          labelText: "Fiyat Grubu",
+                          onChanged: (p0) => changeAciklama(12, p0),
+                          controller: fiyatGrubuController),
+                      CustomTextField(
+                          enabled: enable && yetkiController.siparisMSSatirAciklamaAlanlari(13),
+                          labelText: "Satış Açık. 13",
+                          onChanged: (p0) => changeAciklama(13, p0),
+                          controller: satisAcik13Controller),
+                      CustomTextField(
+                          enabled: enable && yetkiController.siparisMSSatirAciklamaAlanlari(14),
+                          labelText: "Satış Açık. 14",
+                          onChanged: (p0) => changeAciklama(14, p0),
+                          controller: satisAcik14Controller),
+                      CustomTextField(
+                          enabled: enable && yetkiController.siparisMSSatirAciklamaAlanlari(15),
+                          labelText: "Satış Açık. 15",
+                          onChanged: (p0) => changeAciklama(15, p0),
+                          controller: satisAcik15Controller),
+                      CustomTextField(
+                          enabled: enable && yetkiController.siparisMSSatirAciklamaAlanlari(16),
+                          labelText: "Satış Açık. 16",
+                          onChanged: (p0) => changeAciklama(16, p0),
+                          controller: satisAcik16Controller),
                     ],
                   ))
             ],

@@ -64,7 +64,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                           baseEditEnum: BaseEditEnum.duzenle,
                           siparisTipiEnum: widget.siparisTipiEnum,
                         ));
-                  }).yetkiKontrol(yetkiController.siparisMusteriSiparisiDuzelt),
+                  }).yetkiKontrol(yetkiController.siparisDuzelt),
               BottomSheetModel(
                   title: "Sil",
                   iconWidget: Icons.delete_outline,
@@ -87,7 +87,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                         widget.onDeleted?.call();
                       }
                     });
-                  }).yetkiKontrol(yetkiController.siparisMusteriSiparisiSil || widget.model.isNew == true),
+                  }).yetkiKontrol(yetkiController.siparisSil || widget.model.isNew == true),
               BottomSheetModel(title: "Yazdır", iconWidget: Icons.print_outlined).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
               BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined, onTap: () => dialogManager.showSiparisGridViewDialog(widget.model))
                   .yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),

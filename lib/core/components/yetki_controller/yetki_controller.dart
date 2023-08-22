@@ -1,3 +1,5 @@
+import "package:picker/core/constants/static_variables/static_variables.dart";
+
 import "../../../view/main_page/model/main_page_model.dart";
 import "../../../view/main_page/model/param_model.dart";
 import "../../../view/main_page/model/user_model/profil_yetki_model.dart";
@@ -83,16 +85,32 @@ class YetkiController {
 
   //! Sipariş
 
-  //* Müşteri Siparişi
-  bool get siparisMusteriSiparisiDuzelt => isTrue(yetkiModel?.siparisMusteriSiparisiDuzelt);
-  bool get siparisMusteriSiparisiSil => isTrue(yetkiModel?.siparisMusteriSiparisiSil);
-  bool get siparisMusSipCariKoduDegistir => isTrue(yetkiModel?.siparisMusSipCariKoduDegistir);
-  bool get siparisMusSipOtoPdfGor => isTrue(yetkiModel?.siparisMusSipOtoPdfGor);
+  //* Genel Sipariş Yetkileri
+  bool get _musteriSiparisiMi => StaticVariables.instance.isMusteriSiparisleri;
+  bool get siparisDuzelt => _musteriSiparisiMi ? siparisMSDuzelt : siparisSSDuzelt;
+  bool get siparisSil => _musteriSiparisiMi ? siparisMSSil : siparisSSSil;
+  bool get siparisKapalilarListelenmesin => _musteriSiparisiMi ? siparisMSKapalilarListelenmesin : siparisSSKapalilarListelenmesin;
 
-  bool musteriSiparisiGizlenecekAlanMi(String alan) => isTrue(yetkiModel?.siparisMusteriSiparisiGizlenecekAlanlar?.contains(alan));
-  bool musteriSiparisiDegismeyecekAlanMi(String alan) => isTrue(yetkiModel?.siparisMusteriSiparisiDegismeyecekAlanlar?.contains(alan));
+  //* Müşteri Siparişi
+  bool get siparisMSDuzelt => isTrue(yetkiModel?.siparisMusteriSiparisiDuzelt);
+  bool get siparisMSSil => isTrue(yetkiModel?.siparisMusteriSiparisiSil);
+  bool get siparisMSCariKoduDegistir => isTrue(yetkiModel?.siparisMusSipCariKoduDegistir);
+  bool get siparisMSOtoPdfGor => isTrue(yetkiModel?.siparisMusSipOtoPdfGor);
+  bool get siparisMSKapalilarListelenmesin => isTrue(yetkiModel?.siparisMusteriSiparisiKapalilarListelenmesin);
+
+  // bool get siparisMSbelgeKopyala => isTrue(yetkiModel?.siparisMusSipBelge);
+
+  ///? Eğer içeriyorsa gizlenecek
+  bool siparisMSGizlenecekAlanMi(String alan) => isTrue(yetkiModel?.siparisMusteriSiparisiGizlenecekAlanlar?.contains(alan));
+
+  ///? Eğer içeriyorsa değiştirilemeyecek
+  bool siparisMSDegismeyecekAlanMi(String alan) => isTrue(yetkiModel?.siparisMusteriSiparisiDegismeyecekAlanlar?.contains(alan));
+
+  ///? Eğer içeriyorsa gösterilecek
+  bool siparisMSSatirAciklamaAlanlari(int index) => isTrue(yetkiModel?.siparisMusteriSiparisiSatirAciklamaAlanlari?.contains(index));
 
   //* Satıcı Siparişi
-  bool get siparisSaticiSiparisiDuzelt => isTrue(yetkiModel?.siparisSaticiSiparisiDuzelt);
-  bool get siparisSaticiSiparisiSil => isTrue(yetkiModel?.siparisSaticiSiparisiSil);
+  bool get siparisSSDuzelt => isTrue(yetkiModel?.siparisSaticiSiparisiDuzelt);
+  bool get siparisSSSil => isTrue(yetkiModel?.siparisSaticiSiparisiSil);
+  bool get siparisSSKapalilarListelenmesin => isTrue(yetkiModel?.siparisSaticiSiparisiKapalilarListelenmesin);
 }
