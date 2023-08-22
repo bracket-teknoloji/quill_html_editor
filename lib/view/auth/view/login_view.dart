@@ -246,13 +246,13 @@ class _LoginViewState extends BaseState<LoginView> {
     dialogManager.showLoadingDialog("Giriş Yapılıyor");
 
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-        log(jsonEncode(a.toJson()), name: "sea");
         final response = await networkManager.getToken(
           path: ApiUrls.token,
           queryParameters: {"deviceInfos": jsonEncode(a.toJson())},
           data: {"grant_type": "password", "username": emailController.text, "password": passwordController.text},
         );
         if (response?.error == null) {
+        log(jsonEncode(a.toJson()), name: "sea");
           a = a
             ..isim = response?.userJson?.ad
             ..soyadi = response?.userJson?.soyad

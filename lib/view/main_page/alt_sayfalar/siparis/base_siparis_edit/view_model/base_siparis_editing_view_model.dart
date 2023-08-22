@@ -9,6 +9,11 @@ class BaseSiparisEditingViewModel = _BaseSiparisEditingViewModelBase with _$Base
 
 abstract class _BaseSiparisEditingViewModelBase with Store {
   @observable
+  int pageIndex = 0;
+
+  @action
+  void changePageIndex(int value) => pageIndex = value;
+  @observable
   bool isLastPage = false;
 
   @action

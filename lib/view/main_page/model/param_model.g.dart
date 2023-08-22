@@ -222,6 +222,8 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..bankaEntegre = json['BankaEntegre'] as bool?
   ..bagliCariVar = json['BagliCariVar'] as bool?
   ..projeUygulamasiAcik = json['ProjeUygulamasiAcik'] as bool?
+  ..satisOzelKod1Aktif = json['SatisOzelKod1Aktif'] as bool?
+  ..satisOzelKod2Aktif = json['SatisOzelKod2Aktif'] as bool?
   ..satisEkAciklamalarAktif = json['SatisEkAciklamalarAktif'] as bool?
   ..satisEkAciklamaTanimi1 = json['SatisEkAciklamaTanimi1'] as String?
   ..satisEkAciklamaTanimi2 = json['SatisEkAciklamaTanimi2'] as String?
@@ -239,8 +241,6 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..satisEkAciklamaTanimi14 = json['SatisEkAciklamaTanimi14'] as String?
   ..satisEkAciklamaTanimi15 = json['SatisEkAciklamaTanimi15'] as String?
   ..satisEkAciklamaTanimi16 = json['SatisEkAciklamaTanimi16'] as String?
-  ..satisOzelKod1Aktif = json['SatisOzelKod1Aktif'] as bool?
-  ..satisOzelKod2Aktif = json['SatisOzelKod2Aktif'] as bool?
   ..satisSatirIsk1YuzdeSor = json['SatisSatirIsk1YuzdeSor'] as bool?
   ..satisKosulAktif = json['SatisKosulAktif'] as bool?
   ..satisKosulSatirdaSor = json['SatisKosulSatirdaSor'] as bool?
@@ -496,6 +496,8 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) {
   writeNotNull('BankaEntegre', instance.bankaEntegre);
   writeNotNull('BagliCariVar', instance.bagliCariVar);
   writeNotNull('ProjeUygulamasiAcik', instance.projeUygulamasiAcik);
+  writeNotNull('SatisOzelKod1Aktif', instance.satisOzelKod1Aktif);
+  writeNotNull('SatisOzelKod2Aktif', instance.satisOzelKod2Aktif);
   writeNotNull('SatisEkAciklamalarAktif', instance.satisEkAciklamalarAktif);
   writeNotNull('SatisEkAciklamaTanimi1', instance.satisEkAciklamaTanimi1);
   writeNotNull('SatisEkAciklamaTanimi2', instance.satisEkAciklamaTanimi2);
@@ -513,8 +515,6 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) {
   writeNotNull('SatisEkAciklamaTanimi14', instance.satisEkAciklamaTanimi14);
   writeNotNull('SatisEkAciklamaTanimi15', instance.satisEkAciklamaTanimi15);
   writeNotNull('SatisEkAciklamaTanimi16', instance.satisEkAciklamaTanimi16);
-  writeNotNull('SatisOzelKod1Aktif', instance.satisOzelKod1Aktif);
-  writeNotNull('SatisOzelKod2Aktif', instance.satisOzelKod2Aktif);
   writeNotNull('SatisSatirIsk1YuzdeSor', instance.satisSatirIsk1YuzdeSor);
   writeNotNull('SatisKosulAktif', instance.satisKosulAktif);
   writeNotNull('SatisKosulSatirdaSor', instance.satisKosulSatirdaSor);

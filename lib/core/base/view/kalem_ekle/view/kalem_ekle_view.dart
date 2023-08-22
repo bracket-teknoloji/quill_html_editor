@@ -9,6 +9,7 @@ import "../../../../components/textfield/custom_text_field.dart";
 import "../../../../constants/extensions/date_time_extensions.dart";
 import "../../../../constants/extensions/number_extensions.dart";
 import "../../../../constants/extensions/widget_extensions.dart";
+import "../../../../constants/static_variables/static_variables.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../../init/network/login/api_urls.dart";
 import "../../../model/doviz_kurlari_model.dart";
@@ -474,6 +475,17 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               labelText: "İsk.3 %", keyboardType: TextInputType.number, controller: isk3YuzdeController, onChanged: (p0) => viewModel.setIskonto3(double.tryParse(p0) ?? 0))),
                     ],
                   ),
+                  Text("Ek Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize)).paddingSymmetric(vertical: UIHelper.lowSize),
+                  CustomTextField(enabled: yetkiController.siparisMSSatirAciklamaAlanlari(1), labelText: getAciklamaLabel(1), onChanged: (value) => viewModel.kalemModel.aciklama1),
+                  CustomTextField(enabled: yetkiController.siparisMSSatirAciklamaAlanlari(2), labelText: getAciklamaLabel(2), onChanged: (value) => viewModel.kalemModel.aciklama2),
+                  CustomTextField(enabled: yetkiController.siparisMSSatirAciklamaAlanlari(3), labelText: getAciklamaLabel(3), onChanged: (value) => viewModel.kalemModel.aciklama3),
+                  CustomTextField(enabled: yetkiController.siparisMSSatirAciklamaAlanlari(4), labelText: getAciklamaLabel(4), onChanged: (value) => viewModel.kalemModel.aciklama4),
+                  CustomTextField(enabled: yetkiController.siparisMSSatirAciklamaAlanlari(5), labelText: getAciklamaLabel(5), onChanged: (value) => viewModel.kalemModel.aciklama5),
+                  CustomTextField(enabled: yetkiController.siparisMSSatirAciklamaAlanlari(6), labelText: getAciklamaLabel(6), onChanged: (value) => viewModel.kalemModel.aciklama6),
+                  CustomTextField(enabled: yetkiController.siparisMSSatirAciklamaAlanlari(7), labelText: getAciklamaLabel(7), onChanged: (value) => viewModel.kalemModel.aciklama7),
+                  CustomTextField(enabled: yetkiController.siparisMSSatirAciklamaAlanlari(8), labelText: getAciklamaLabel(8), onChanged: (value) => viewModel.kalemModel.aciklama8),
+                  CustomTextField(enabled: yetkiController.siparisMSSatirAciklamaAlanlari(9), labelText: getAciklamaLabel(9), onChanged: (value) => viewModel.kalemModel.aciklama9),
+                  CustomTextField(enabled: yetkiController.siparisMSSatirAciklamaAlanlari(10), labelText: getAciklamaLabel(10), onChanged: (value) => viewModel.kalemModel.aciklama10),
                   const SizedBox(height: 50),
                 ],
               ),
@@ -483,6 +495,8 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
       ],
     );
   }
+
+  String getAciklamaLabel(int index) => "${StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS"} $index";
 
   Future<void> getData() async {
     if (widget.stokListesiModel != null) {

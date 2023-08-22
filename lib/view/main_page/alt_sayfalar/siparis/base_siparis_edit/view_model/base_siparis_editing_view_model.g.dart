@@ -17,6 +17,22 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
               name: '_BaseSiparisEditingViewModelBase.getKalemCount'))
           .value;
 
+  late final _$pageIndexAtom = Atom(
+      name: '_BaseSiparisEditingViewModelBase.pageIndex', context: context);
+
+  @override
+  int get pageIndex {
+    _$pageIndexAtom.reportRead();
+    return super.pageIndex;
+  }
+
+  @override
+  set pageIndex(int value) {
+    _$pageIndexAtom.reportWrite(value, super.pageIndex, () {
+      super.pageIndex = value;
+    });
+  }
+
   late final _$isLastPageAtom = Atom(
       name: '_BaseSiparisEditingViewModelBase.isLastPage', context: context);
 
@@ -72,6 +88,18 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
           name: '_BaseSiparisEditingViewModelBase', context: context);
 
   @override
+  void changePageIndex(int value) {
+    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController
+        .startAction(name: '_BaseSiparisEditingViewModelBase.changePageIndex');
+    try {
+      return super.changePageIndex(value);
+    } finally {
+      _$_BaseSiparisEditingViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void changeIsLastPage(bool value) {
     final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController
         .startAction(name: '_BaseSiparisEditingViewModelBase.changeIsLastPage');
@@ -124,6 +152,7 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
   @override
   String toString() {
     return '''
+pageIndex: ${pageIndex},
 isLastPage: ${isLastPage},
 isBaseSiparisEmpty: ${isBaseSiparisEmpty},
 yeniKaydaHazirlaMi: ${yeniKaydaHazirlaMi},

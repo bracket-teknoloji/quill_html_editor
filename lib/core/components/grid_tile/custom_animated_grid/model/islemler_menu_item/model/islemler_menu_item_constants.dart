@@ -30,59 +30,59 @@ class IslemlerMenuItemConstants<T> {
   IslemlerMenuItemConstantsViewModel viewModel = IslemlerMenuItemConstantsViewModel();
   BottomSheetDialogManager bottomSheetDialogManager = BottomSheetDialogManager();
   IslemTipiEnum islemtipi;
-  List<GridItemModel?> islemler = [];
+  List<GridItemModel?> islemlerList = [];
   T? model;
   T? get model2 => model;
   IslemlerMenuItemConstants({required this.islemtipi, List<GridItemModel?>? raporlar, this.model}) {
     if (islemtipi == IslemTipiEnum.stok) {
-      islemler.add(stokKarti);
-      islemler.add(kopyala);
-      islemler.addAll(raporlar!);
+      islemlerList.add(stokKarti);
+      islemlerList.add(kopyala);
+      islemlerList.addAll(raporlar!);
     } else if (islemtipi == IslemTipiEnum.cari) {
       if (model is CariListesiModel) {
-        islemler.add(paylas);
-        islemler.add(kopyala);
-        islemler.add(cariHareketleri);
-        islemler.add(cariKoduDegistir);
-        islemler.addAll(raporlar!);
+        islemlerList.add(paylas);
+        islemlerList.add(kopyala);
+        islemlerList.add(cariHareketleri);
+        islemlerList.add(cariKoduDegistir);
+        islemlerList.addAll(raporlar!);
       }
     } else if (islemtipi == IslemTipiEnum.siparis) {
-      islemler.add(irsaliyeOlustur);
-      islemler.add(faturaOlustur);
-      islemler.add(belgeyiKapat);
-      islemler.add(siparisPDFGoruntule);
-      islemler.add(cariKoduDegistir);
-      islemler.add(belgeNoDegistir);
-      islemler.add(belgeyiKopyala);
-      // islemler.addAll(raporlar!);
+      islemlerList.add(irsaliyeOlustur);
+      islemlerList.add(faturaOlustur);
+      islemlerList.add(belgeyiKapat);
+      islemlerList.add(siparisPDFGoruntule);
+      islemlerList.add(cariKoduDegistir);
+      islemlerList.add(belgeNoDegistir);
+      islemlerList.add(belgeyiKopyala);
+      // islemlerList.addAll(raporlar!);
     }
     if (raporlar.ext.isNotNullOrEmpty) {
-      islemler.add(stokHareketleri);
+      islemlerList.add(stokHareketleri);
     }
   }
 
-  GridItemModel get cariHareketleri => GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Cari Hareketleri", onTap: () => Get.toNamed("mainPage/cariHareketleri", arguments: model));
+  GridItemModel? get cariHareketleri => GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Cari Hareketleri", onTap: () => Get.toNamed("mainPage/cariHareketleri", arguments: model));
 
   //* Genel
-  GridItemModel get stokHareketleri => GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Stok Hareketleri", onTap: () => Get.toNamed("mainPage/stokHareketleri", arguments: model));
-  GridItemModel get kopyala => GridItemModel.islemler(
+  GridItemModel? get stokHareketleri => GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Stok Hareketleri", onTap: () => Get.toNamed("mainPage/stokHareketleri", arguments: model));
+  GridItemModel? get kopyala => GridItemModel.islemler(
       title: "Kopyala",
       onTap: () => Get.toNamed(islemtipi == IslemTipiEnum.cari ? "/mainPage/cariEdit" : "/mainPage/stokEdit", arguments: BaseEditModel(model: model2, baseEditEnum: BaseEditEnum.kopyala)));
   //* Siparis
-  GridItemModel get irsaliyeOlustur => GridItemModel.islemler(title: "İrsaliye Oluştur", iconData: Icons.conveyor_belt);
-  GridItemModel get faturaOlustur => GridItemModel.islemler(title: "Fatura Oluştur (Siparişten)", iconData: Icons.conveyor_belt);
-  GridItemModel get belgeyiKapat => GridItemModel.islemler(title: "Belgeyi Kapat", iconData: Icons.lock_outline);
-  GridItemModel get belgeNoDegistir => GridItemModel.islemler(title: "Belge No Değiştir", iconData: Icons.edit_outlined);
-  GridItemModel get siparisPDFGoruntule => GridItemModel.islemler(title: "PDF Görüntüle", iconData: Icons.picture_as_pdf_outlined);
-  GridItemModel get belgeyiKopyala => GridItemModel.islemler(title: "Belgeyi Kopyala", iconData: Icons.copy_outlined);
+  GridItemModel? get irsaliyeOlustur => GridItemModel.islemler(title: "İrsaliye Oluştur", iconData: Icons.conveyor_belt);
+  GridItemModel? get faturaOlustur => GridItemModel.islemler(title: "Fatura Oluştur (Siparişten)", iconData: Icons.conveyor_belt);
+  GridItemModel? get belgeyiKapat => GridItemModel.islemler(title: "Belgeyi Kapat", iconData: Icons.lock_outline);
+  GridItemModel? get belgeNoDegistir => GridItemModel.islemler(title: "Belge No Değiştir", iconData: Icons.edit_outlined);
+  GridItemModel? get siparisPDFGoruntule => GridItemModel.islemler(title: "PDF Görüntüle", iconData: Icons.picture_as_pdf_outlined);
+  GridItemModel? get belgeyiKopyala => GridItemModel.islemler(title: "Belgeyi Kopyala", iconData: Icons.copy_outlined);
   //* Stok
-  GridItemModel get stokKarti => GridItemModel.islemler(
+  GridItemModel? get stokKarti => GridItemModel.islemler(
       title: "Stok Kartı",
       iconData: Icons.info_outline,
       onTap: () => Get.toNamed("/mainPage/stokEdit", arguments: BaseEditModel(model: (model as StokListesiModel), baseEditEnum: BaseEditEnum.duzenle)));
 
   //* Cari
-  GridItemModel get paylas => GridItemModel.islemler(
+  GridItemModel? get paylas => GridItemModel.islemler(
       title: "Paylaş",
       iconData: Icons.share_outlined,
       onTap: () async {
@@ -105,7 +105,7 @@ class IslemlerMenuItemConstants<T> {
         }
       });
 
-  GridItemModel get cariKoduDegistir => GridItemModel.islemler(
+  GridItemModel? get cariKoduDegistir => GridItemModel.islemler(
       title: "Cari Kodu Değiştir",
       iconData: Icons.people_alt_outlined,
       onTap: () async {

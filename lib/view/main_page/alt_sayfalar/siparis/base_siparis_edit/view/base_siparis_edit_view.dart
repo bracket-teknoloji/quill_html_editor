@@ -44,7 +44,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
 
   @override
   void initState() {
-    tabController = TabController(length: 4, vsync: this);
+    tabController = TabController(length: yetkiController.siparisDigerSekmesiGoster ? 4 : 3, vsync: this);
     tabController.addListener(() {
       if (tabController.indexIsChanging && tabController.previousIndex == 0) {
         var result = StaticVariables.instance.siparisGenelFormKey.currentState?.validate();
@@ -53,7 +53,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           tabController.animateTo(tabController.previousIndex);
         }
       }
-      if (tabController.index == 3 && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
+      if (tabController.index == (yetkiController.siparisDigerSekmesiGoster ? 3 : 2) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
         viewModel.changeIsLastPage(true);
       } else {
         viewModel.changeIsLastPage(false);
@@ -104,7 +104,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
   Widget build(BuildContext context) {
     return WillPopScope(
         child: DefaultTabController(
-          length: 4,
+          length: yetkiController.siparisDigerSekmesiGoster ? 4 : 3,
           child: Scaffold(
             appBar: AppBar(
               title: AppBarTitle(
@@ -171,17 +171,23 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
               ],
               bottom: TabBar(
                 controller: tabController,
-                tabs: const [Tab(child: Text("Genel")), Tab(child: Text("Diğer")), Tab(child: Text("Kalemler")), Tab(child: Text("Toplamlar"))],
+                tabs: [
+                  const Tab(child: Text("Genel")),
+                  yetkiController.siparisDigerSekmesiGoster ? const Tab(child: Text("Diğer")) : null,
+                  const Tab(child: Text("Kalemler")),
+                  const Tab(child: Text("Toplamlar"))
+                ].whereType<Widget>().toList(),
               ),
             ),
             body: TabBarView(
               controller: tabController,
+              
               children: [
                 Observer(builder: (_) => (viewModel.isBaseSiparisEmpty) ? const Center(child: CircularProgressIndicator.adaptive()) : BaseSiparislerGenelView(model: model)),
-                BaseSiparislerDigerView(model: model),
+                yetkiController.siparisDigerSekmesiGoster ? BaseSiparislerDigerView(model: model) : null,
                 BaseSiparisKalemlerView(model: model),
                 BaseSiparisToplamlarView(model: model),
-              ],
+              ].whereType<Widget>().toList(),
             ),
           ),
         ),

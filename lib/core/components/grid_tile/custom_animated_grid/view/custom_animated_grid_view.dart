@@ -37,7 +37,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
     // viewModel.setGridItemModel(result.getList().first.altMenuler?.where((element) => element.title == "Raporlar").first.altMenuler?.where((element) => element.yetkiKontrol == true).toList());
     if (islemMi) {
       IslemlerMenuItemConstants islemlerResult = IslemlerMenuItemConstants(islemtipi: widget.islemTipi, raporlar: getRaporList(widget.islemTipi), model: widget.cariListesiModel ?? widget.model);
-      viewModel.setGridItemModel(islemlerResult.islemler.cast<GridItemModel>());
+      viewModel.setGridItemModel(islemlerResult.islemlerList.whereType<GridItemModel>().toList());
     } else if (raporMu) {
       if (widget.islemTipi == IslemTipiEnum.cariRapor) {
         viewModel.setGridItemModel(getRaporList(IslemTipiEnum.cari)?.first.altMenuler);

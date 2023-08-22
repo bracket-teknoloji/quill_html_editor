@@ -19,9 +19,9 @@ class CustomTextField extends StatefulWidget {
   final String? controllerText;
   final List<TextInputFormatter>? inputFormatter;
   final Function()? onTap;
-  final String? Function(String?)? validator;
-  final Function(String)? onChanged;
-  final Function(String)? onSubmitted;
+  final String? Function(String? value)? validator;
+  final Function(String value)? onChanged;
+  final Function(String value)? onSubmitted;
   final bool? fitContent;
   final bool? suffixMore;
   const CustomTextField(

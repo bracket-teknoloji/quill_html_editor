@@ -186,6 +186,10 @@ class ParamModel {
   bool? bagliCariVar;
   @JsonKey(name: "ProjeUygulamasiAcik")
   bool? projeUygulamasiAcik;
+  @JsonKey(name: "SatisOzelKod1Aktif")
+  bool? satisOzelKod1Aktif;
+  @JsonKey(name: "SatisOzelKod2Aktif")
+  bool? satisOzelKod2Aktif;
   @JsonKey(name: "SatisEkAciklamalarAktif")
   bool? satisEkAciklamalarAktif;
   @JsonKey(name: "SatisEkAciklamaTanimi1")
@@ -220,10 +224,6 @@ class ParamModel {
   String? satisEkAciklamaTanimi15;
   @JsonKey(name: "SatisEkAciklamaTanimi16")
   String? satisEkAciklamaTanimi16;
-  @JsonKey(name: "SatisOzelKod1Aktif")
-  bool? satisOzelKod1Aktif;
-  @JsonKey(name: "SatisOzelKod2Aktif")
-  bool? satisOzelKod2Aktif;
   @JsonKey(name: "SatisSatirIsk1YuzdeSor")
   bool? satisSatirIsk1YuzdeSor;
   @JsonKey(name: "SatisKosulAktif")
