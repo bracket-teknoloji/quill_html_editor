@@ -46,15 +46,5 @@ class StokBottomSheetModel with NetworkManagerMixin {
 
   @override
   Map<String, dynamic> toJson() => _$StokBottomSheetModelToJson(this);
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StokBottomSheetModel &&
-          runtimeType == other.runtimeType &&
-          arrGrupKodu == other.arrGrupKodu &&
-          arrKod1 == other.arrKod1 &&
-          arrKod2 == other.arrKod2 &&
-          arrKod3 == other.arrKod3 &&
-          arrKod4 == other.arrKod4 &&
-          arrKod5 == other.arrKod5;
+
 }

@@ -220,10 +220,10 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
         left: details.globalSelectedRegion!.bottomLeft.dx,
         child: ElevatedButton(
           onPressed: () {
-            Clipboard.setData(ClipboardData(text: details.selectedText!));
+            Clipboard.setData(ClipboardData(text: details.selectedText ?? ""));
             dialogManager.showSnackBar("Kopyalandı");
             pdfViewerController.clearSelection();
-            overlayEntry!.remove();
+            overlayEntry?.remove();
           },
           child: const Text("Kopyala"),
         ),

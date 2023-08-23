@@ -15,15 +15,20 @@ class YetkiController {
 
   ProfilYetkiModel? yetkiModel = anaVeri?.userModel?.profilYetki;
 
-  bool isTrue(bool? value) {
-    return (value ?? false) || (userModel?.adminMi ?? false);
+  /// Verilen değer null ise false döndürür
+  ///
+  /// Eğer Admin ise true döndürür
+  ///
+  /// Bunu yapma sebebim null gelen verilerin admin sebepli mi yoksa yetki sebepli mi olduğunu anlamak
+  bool isTrue(bool? value, {bool skipAdmin = false}) {
+    return (value ?? false) || (skipAdmin ? false : (userModel?.adminMi ?? false));
   }
 
   //! GENEL
-  bool get projeUygulamasiAcikMi => isTrue(paramModel?.projeUygulamasiAcik);
-  bool get plasiyerUygulamasiAcikMi => isTrue(paramModel?.plasiyerUygulamasi);
-  bool get satisOzelKod1AktifMi => isTrue(paramModel?.satisOzelKod1Aktif);
-  bool get satisOzelKod2AktifMi => isTrue(paramModel?.satisOzelKod2Aktif);
+  bool get projeUygulamasiAcikMi => isTrue(paramModel?.projeUygulamasiAcik, skipAdmin: true);
+  bool get plasiyerUygulamasiAcikMi => isTrue(paramModel?.plasiyerUygulamasi, skipAdmin: true);
+  bool get satisOzelKod1AktifMi => isTrue(paramModel?.satisOzelKod1Aktif, skipAdmin: true);
+  bool get satisOzelKod2AktifMi => isTrue(paramModel?.satisOzelKod2Aktif, skipAdmin: true);
 
   //! CARİ
 
@@ -108,7 +113,6 @@ class YetkiController {
   bool get siparisMSSonFiyatGoster => isTrue(yetkiModel?.siparisMusteriSiparisiSonFiyatGoster);
   bool get siparisMSDigerSekmesiGoster => isTrue(yetkiModel?.siparisMusSipDigerSekmesiGoster);
 
-
   // bool get siparisMSbelgeKopyala => isTrue(yetkiModel?.siparisMusSipBelge);
   ///? Eğer içeriyorsa boş geçilecek
   bool siparisMSBosGecilecekAlanMi(String alan) => isTrue(yetkiModel?.siparisMusSipBosGecilmeyecekAlanlar?.contains(alan));
@@ -120,7 +124,7 @@ class YetkiController {
   bool siparisMSDegismeyecekAlanMi(String alan) => isTrue(yetkiModel?.siparisMusteriSiparisiDegismeyecekAlanlar?.contains(alan));
 
   ///? Eğer içeriyorsa gösterilecek (Sipariş için)
-   bool siparisMSAciklamaAlanlari(int index) => isTrue(yetkiModel?.siparisMusteriSiparisiAciklamaAlanlari?.contains(index));
+  bool siparisMSAciklamaAlanlari(int index) => isTrue(yetkiModel?.siparisMusteriSiparisiAciklamaAlanlari?.contains(index));
 
   ///? Eğer içeriyorsa gösterilecek (Kalemler İçin)
   bool siparisMSSatirAciklamaAlanlari(int index) => isTrue(yetkiModel?.siparisMusteriSiparisiSatirAciklamaAlanlari?.contains(index));

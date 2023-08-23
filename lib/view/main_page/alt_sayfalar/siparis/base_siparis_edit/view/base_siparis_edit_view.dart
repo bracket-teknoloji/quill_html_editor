@@ -181,7 +181,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
             ),
             body: TabBarView(
               controller: tabController,
-              
+              physics: const NeverScrollableScrollPhysics(),
               children: [
                 Observer(builder: (_) => (viewModel.isBaseSiparisEmpty) ? const Center(child: CircularProgressIndicator.adaptive()) : BaseSiparislerGenelView(model: model)),
                 yetkiController.siparisDigerSekmesiGoster ? BaseSiparislerDigerView(model: model) : null,

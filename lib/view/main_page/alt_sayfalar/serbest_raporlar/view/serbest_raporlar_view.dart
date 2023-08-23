@@ -1,14 +1,12 @@
 // ignore_for_file: use_build_context_synchronously
 
 import "package:flutter/material.dart";
-import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/model/base_grup_kodu_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -17,7 +15,6 @@ import "package:picker/view/main_page/model/param_model.dart";
 import "../../../../../core/base/state/base_state.dart";
 import "../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "../../../../../core/constants/ui_helper/ui_helper.dart";
-import "../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../core/init/network/login/api_urls.dart";
 import "../model/serbest_rapor_response_model.dart";
 import "../view_model/serbest_raporlar_view_model.dart";
@@ -106,22 +103,20 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                           .nullCheck ??
                       []),
             ),
-            Observer(builder: (_) {
-              return ElevatedButton(
-                  onPressed: () {
-                    //😳 Düzelt kanki
-                    if (viewModel.serbestRaporResponseModelList?.where((element) => element.bosGecilebilir == false).any((element) => viewModel.dicParams[element.adi ?? ""] == null) ?? false) {
-                      dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
-                    } else {
-                      viewModel.setFuture();
-                      viewModel.pdfModel.dizaynId = widget.dizaynList?.id;
-                      viewModel.pdfModel.etiketSayisi = widget.dizaynList?.kopyaSayisi;
+            ElevatedButton(
+                onPressed: () {
+                  //😳 Düzelt kanki
+                  if (viewModel.serbestRaporResponseModelList?.where((element) => element.bosGecilebilir == false).any((element) => viewModel.dicParams[element.adi ?? ""] == null) ?? false) {
+                    dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
+                  } else {
+                    viewModel.setFuture();
+                    viewModel.pdfModel.dizaynId = widget.dizaynList?.id;
+                    viewModel.pdfModel.etiketSayisi = widget.dizaynList?.kopyaSayisi;
 
-                      Get.back();
-                    }
-                  },
-                  child: const Text("Uygula"));
-            })
+                    Get.back();
+                  }
+                },
+                child: const Text("Uygula"))
           ],
         ).paddingAll(UIHelper.lowSize));
     return Future.value(viewModel.futureController.value);
@@ -134,10 +129,11 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
         viewModel.changeDicParams(model.adi ?? "", model.stokKoduMu ? result.stokKodu : result.cariKodu);
       }
     } else if (model.plasiyerKoduMu) {
-      List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? [];
-      var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-          title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", onTap: () => Get.back(result: e))).toList());
-      if (result != null && result is PlasiyerList) {
+      var result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
+      // List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? [];
+      // var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+      //     title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", onTap: () => Get.back(result: e))).toList());
+      if (result != null) {
         viewModel.changeDicParams(model.adi ?? "", result.plasiyerKodu ?? "");
       }
     } else if (model.grupKoduMu) {
@@ -156,9 +152,10 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
         viewModel.changeDicParams(model.adi ?? "", result.grupKodu ?? "");
       }
     } else if (model.dovizTipiMi) {
-      var dovizList = CacheManager.getAnaVeri()?.paramModel?.dovizList ?? [];
-      var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-          title: "Döviz Seçiniz", children: dovizList.map((e) => BottomSheetModel(title: e.dovizKodu.toStringIfNull ?? "", onTap: () => Get.back(result: e))).toList());
+      // var dovizList = CacheManager.getAnaVeri()?.paramModel?.dovizList ?? [];
+      //  = await bottomSheetDialogManager.showBottomSheetDialog(context,
+      //     title: "Döviz Seçiniz", children: dovizList.map((e) => BottomSheetModel(title: e.dovizKodu.toStringIfNull ?? "", onTap: () => Get.back(result: e))).toList());
+      var result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context);
       if (result != null) {
         viewModel.changeDicParams(model.adi ?? "", result.dovizKodu.toString());
       }

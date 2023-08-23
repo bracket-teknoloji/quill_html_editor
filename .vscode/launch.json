@@ -4,8 +4,6 @@
     // Daha fazla bilgi için şu adresi ziyaret edin: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
-
         {
             "name": "Picker",
             "request": "launch",
@@ -26,3 +24,4 @@
         }
     ]
 }
+// { "name": "Production(Debug)", "request": "launch", "flutterMode": "debug", "type": "dart", "program": "lib/main-production.dart", "args": [ "--flavor", "production", "--target", "lib/main-production.dart" ] }
