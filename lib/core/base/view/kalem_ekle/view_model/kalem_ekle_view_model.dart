@@ -49,6 +49,13 @@ abstract class _KalemEkleViewModelBase with Store {
   void setIskonto2(double value) => kalemModel = kalemModel.copyWith(iskonto2: value);
   @action
   void setIskonto3(double value) => kalemModel = kalemModel.copyWith(iskonto3: value);
+    @action
+  void setIskonto4(double value) => kalemModel = kalemModel.copyWith(iskonto4: value);
+  @action
+  void setIskonto5(double value) => kalemModel = kalemModel.copyWith(iskonto5: value);
+  @action
+  void setIskonto6(double value) => kalemModel = kalemModel.copyWith(iskonto6: value);
+
   @action
   void setIskonto1OranMi() => kalemModel = kalemModel.copyWith(iskonto1OranMi: !(kalemModel.iskonto1OranMi ?? false));
   @action

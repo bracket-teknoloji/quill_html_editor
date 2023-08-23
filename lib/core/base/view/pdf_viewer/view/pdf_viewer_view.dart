@@ -229,6 +229,8 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
         ),
       ),
     );
-    overlayState.insert(overlayEntry!);
+    if (overlayEntry != null) {
+      overlayState.insert(overlayEntry!);
+    }
   }
 }

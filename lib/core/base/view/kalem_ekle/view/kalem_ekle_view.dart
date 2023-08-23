@@ -50,6 +50,12 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   late final TextEditingController isk2YuzdeController;
   late final TextEditingController isk3TipiController;
   late final TextEditingController isk3YuzdeController;
+  late final TextEditingController isk4TipiController;
+  late final TextEditingController isk4YuzdeController;
+  late final TextEditingController isk5TipiController;
+  late final TextEditingController isk5YuzdeController;
+  late final TextEditingController isk6TipiController;
+  late final TextEditingController isk6YuzdeController;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -241,7 +247,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             viewModel.setKosul(result.kosulKodu ?? "");
                           }
                         },
-                      )),
+                      )).yetkiVarMi(yetkiController.siparisKosulSatirdaSor),
                     ],
                   ),
                   Row(
@@ -435,6 +441,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     children: [
                       Expanded(
                           child: CustomTextField(
+                              labelText: "İsk.2 %", keyboardType: TextInputType.number, controller: isk2YuzdeController, onChanged: (p0) => viewModel.setIskonto2(double.tryParse(p0) ?? 0))),
+                      Expanded(
+                          child: CustomTextField(
                         labelText: "İsk.Tipi 2",
                         readOnly: true,
                         suffixMore: true,
@@ -448,14 +457,14 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           }
                         },
                       )),
-                      Expanded(
-                          child: CustomTextField(
-                              labelText: "İsk.2 %", keyboardType: TextInputType.number, controller: isk2YuzdeController, onChanged: (p0) => viewModel.setIskonto2(double.tryParse(p0) ?? 0))),
                     ],
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Expanded(
+                          child: CustomTextField(
+                              labelText: "İsk.3 %", keyboardType: TextInputType.number, controller: isk3YuzdeController, onChanged: (p0) => viewModel.setIskonto3(double.tryParse(p0) ?? 0))),
                       Expanded(
                           child: CustomTextField(
                         labelText: "İsk.Tipi 3",
@@ -470,22 +479,85 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           }
                         },
                       )),
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                       Expanded(
                           child: CustomTextField(
-                              labelText: "İsk.3 %", keyboardType: TextInputType.number, controller: isk3YuzdeController, onChanged: (p0) => viewModel.setIskonto3(double.tryParse(p0) ?? 0))),
+                              labelText: "İsk.4 %", keyboardType: TextInputType.number, controller: isk3YuzdeController, onChanged: (p0) => viewModel.setIskonto3(double.tryParse(p0) ?? 0))),
+                      Expanded(
+                          child: CustomTextField(
+                        labelText: "İsk.Tipi 4",
+                        readOnly: true,
+                        suffixMore: true,
+                        controller: isk3TipiController,
+                        onTap: () async {
+                          var result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
+                          if (result != null) {
+                            viewModel.kalemModel.isk3Tipi = result.iskontoTipi;
+                            isk3TipiController.text = result.aciklama ?? "";
+                          }
+                        },
+                      )),
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                          child: CustomTextField(
+                              labelText: "İsk.5 %", keyboardType: TextInputType.number, controller: isk5YuzdeController, onChanged: (p0) => viewModel.setIskonto3(double.tryParse(p0) ?? 0))),
+                      Expanded(
+                          child: CustomTextField(
+                        labelText: "İsk.Tipi 5",
+                        readOnly: true,
+                        suffixMore: true,
+                        controller: isk5TipiController,
+                        onTap: () async {
+                          var result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
+                          if (result != null) {
+                            viewModel.kalemModel.isk5Tipi = result.iskontoTipi;
+                            isk3TipiController.text = result.aciklama ?? "";
+                          }
+                        },
+                      )),
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                          child: CustomTextField(
+                              labelText: "İsk.6 %", keyboardType: TextInputType.number, controller: isk6YuzdeController, onChanged: (p0) => viewModel.setIskonto3(double.tryParse(p0) ?? 0))),
+                      Expanded(
+                          child: CustomTextField(
+                        labelText: "İsk.Tipi 6",
+                        readOnly: true,
+                        suffixMore: true,
+                        controller: isk6TipiController,
+                        onTap: () async {
+                          var result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
+                          if (result != null) {
+                            viewModel.kalemModel.isk6Tipi = result.iskontoTipi;
+                            isk6TipiController.text = result.aciklama ?? "";
+                          }
+                        },
+                      )),
                     ],
                   ),
                   Text("Ek Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize)).paddingSymmetric(vertical: UIHelper.lowSize),
-                  CustomTextField(enabled: yetkiController.siparisMSSatirAciklamaAlanlari(1), labelText: getAciklamaLabel(1), onChanged: (value) => viewModel.kalemModel.aciklama1),
-                  CustomTextField(enabled: yetkiController.siparisMSSatirAciklamaAlanlari(2), labelText: getAciklamaLabel(2), onChanged: (value) => viewModel.kalemModel.aciklama2),
-                  CustomTextField(enabled: yetkiController.siparisMSSatirAciklamaAlanlari(3), labelText: getAciklamaLabel(3), onChanged: (value) => viewModel.kalemModel.aciklama3),
-                  CustomTextField(enabled: yetkiController.siparisMSSatirAciklamaAlanlari(4), labelText: getAciklamaLabel(4), onChanged: (value) => viewModel.kalemModel.aciklama4),
-                  CustomTextField(enabled: yetkiController.siparisMSSatirAciklamaAlanlari(5), labelText: getAciklamaLabel(5), onChanged: (value) => viewModel.kalemModel.aciklama5),
-                  CustomTextField(enabled: yetkiController.siparisMSSatirAciklamaAlanlari(6), labelText: getAciklamaLabel(6), onChanged: (value) => viewModel.kalemModel.aciklama6),
-                  CustomTextField(enabled: yetkiController.siparisMSSatirAciklamaAlanlari(7), labelText: getAciklamaLabel(7), onChanged: (value) => viewModel.kalemModel.aciklama7),
-                  CustomTextField(enabled: yetkiController.siparisMSSatirAciklamaAlanlari(8), labelText: getAciklamaLabel(8), onChanged: (value) => viewModel.kalemModel.aciklama8),
-                  CustomTextField(enabled: yetkiController.siparisMSSatirAciklamaAlanlari(9), labelText: getAciklamaLabel(9), onChanged: (value) => viewModel.kalemModel.aciklama9),
-                  CustomTextField(enabled: yetkiController.siparisMSSatirAciklamaAlanlari(10), labelText: getAciklamaLabel(10), onChanged: (value) => viewModel.kalemModel.aciklama10),
+                  CustomTextField(labelText: getAciklamaLabel(1), onChanged: (value) => viewModel.kalemModel.aciklama1).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(1)),
+                  CustomTextField(labelText: getAciklamaLabel(2), onChanged: (value) => viewModel.kalemModel.aciklama2).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(2)),
+                  CustomTextField(labelText: getAciklamaLabel(3), onChanged: (value) => viewModel.kalemModel.aciklama3).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(3)),
+                  CustomTextField(labelText: getAciklamaLabel(4), onChanged: (value) => viewModel.kalemModel.aciklama4).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(4)),
+                  CustomTextField(labelText: getAciklamaLabel(5), onChanged: (value) => viewModel.kalemModel.aciklama5).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(5)),
+                  CustomTextField(labelText: getAciklamaLabel(6), onChanged: (value) => viewModel.kalemModel.aciklama6).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(6)),
+                  CustomTextField(labelText: getAciklamaLabel(7), onChanged: (value) => viewModel.kalemModel.aciklama7).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(7)),
+                  CustomTextField(labelText: getAciklamaLabel(8), onChanged: (value) => viewModel.kalemModel.aciklama8).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(8)),
+                  CustomTextField(labelText: getAciklamaLabel(9), onChanged: (value) => viewModel.kalemModel.aciklama9).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(9)),
+                  CustomTextField(labelText: getAciklamaLabel(10), onChanged: (value) => viewModel.kalemModel.aciklama10).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(10)),
                   const SizedBox(height: 50),
                 ],
               ),
@@ -540,6 +612,12 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     isk2YuzdeController = TextEditingController();
     isk3TipiController = TextEditingController();
     isk3YuzdeController = TextEditingController();
+    isk4TipiController = TextEditingController();
+    isk4YuzdeController = TextEditingController();
+    isk5TipiController = TextEditingController();
+    isk5YuzdeController = TextEditingController();
+    isk6TipiController = TextEditingController();
+    isk6YuzdeController = TextEditingController();
   }
 
   void controllerFiller() {
@@ -566,7 +644,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     viewModel.kalemModel.kosulKodu = model.kosulKodu;
     viewModel.kalemModel.teslimTarihi = model.teslimTarihi;
     viewModel.setKosul(model.kosulKodu ?? "");
-    viewModel.setDepoKodu(model.cikisDepoKodu ?? 0);
+    viewModel.setDepoKodu(model.cikisDepoKodu ?? viewModel.model?.depoKodu ?? 0);
     viewModel.setProjeKodu(model.projeKodu ?? "");
     viewModel.setBrutFiyat(double.tryParse(fiyatController.text) ?? 0);
     viewModel.setMiktar(int.tryParse(miktarController.text) ?? 0);
@@ -577,6 +655,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     viewModel.setIskonto1(double.tryParse(isk1Controller.text) ?? 0);
     viewModel.setIskonto2(double.tryParse(isk2YuzdeController.text) ?? 0);
     viewModel.setIskonto3(double.tryParse(isk3YuzdeController.text) ?? 0);
+    viewModel.setIskonto4(double.tryParse(isk4YuzdeController.text) ?? 0);
+    viewModel.setIskonto5(double.tryParse(isk5YuzdeController.text) ?? 0);
+    viewModel.setIskonto6(double.tryParse(isk6YuzdeController.text) ?? 0);
   }
 
   void disposeControllers() {
@@ -602,5 +683,11 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     isk2YuzdeController.dispose();
     isk3TipiController.dispose();
     isk3YuzdeController.dispose();
+    isk4TipiController.dispose();
+    isk4YuzdeController.dispose();
+    isk5TipiController.dispose();
+    isk5YuzdeController.dispose();
+    isk6TipiController.dispose();
+    isk6YuzdeController.dispose();
   }
 }

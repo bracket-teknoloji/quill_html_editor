@@ -293,6 +293,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   @HiveField(116)
   @JsonKey(includeToJson: false, includeFromJson: false)
   String? uuid;
+  @HiveField(117)
+  int? faturalasanSayi;
   BaseSiparisEditModel(
       {this.duzeltmetarihi,
       this.kalemAdedi,
@@ -623,6 +625,19 @@ class KalemModel {
   double? malFazlasiMiktar;
   @HiveField(50)
   String? kosulKodu;
+  @HiveField(51)
+  int?isk4Tipi;
+  @HiveField(52)
+  double?iskonto4;
+  @HiveField(53)
+  int? isk5Tipi;
+  @HiveField(54)
+  double? iskonto5;
+  @HiveField(55)
+  int? isk6Tipi;
+  @HiveField(56)
+  double? iskonto6;
+  
 
   KalemModel(
       {this.iskonto1OranMi,
@@ -664,9 +679,15 @@ class KalemModel {
       this.isk1Tipi,
       this.isk2Tipi,
       this.isk3Tipi,
+      this.isk4Tipi,
+      this.isk5Tipi,
+      this.isk6Tipi,
       this.iskonto1,
       this.iskonto2,
       this.iskonto3,
+      this.iskonto4,
+      this.iskonto5,
+      this.iskonto6,
       this.malfazIskAdedi,
       this.miktar2,
       this.projeKodu,

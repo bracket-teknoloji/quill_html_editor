@@ -13,6 +13,13 @@ class StokBottomSheetModel with NetworkManagerMixin {
   String? resimleriGoster;
   String? siralama;
   String? searchText;
+  String? belgeNo;
+  String? belgeTarihi;
+  String? belgeTipi;
+  String? cariKodu;
+  String? ekranTipi;
+  int? faturaTipi;
+  String? resimGoster;
   List<BaseGrupKoduModel>? arrGrupKodu = [];
   List<BaseGrupKoduModel>? arrKod1 = [];
   List<BaseGrupKoduModel>? arrKod2 = [];
@@ -25,20 +32,26 @@ class StokBottomSheetModel with NetworkManagerMixin {
   static StokBottomSheetModel get instance => _instance;
   StokBottomSheetModel._init();
 
-  StokBottomSheetModel({
-    this.sayfa,
-    this.bakiyeDurumu,
-    this.menuKodu,
-    this.resimleriGoster,
-    this.siralama,
-    this.searchText,
-    this.arrGrupKodu,
-    this.arrKod1,
-    this.arrKod2,
-    this.arrKod3,
-    this.arrKod4,
-    this.arrKod5,
-  });
+  StokBottomSheetModel(
+      {this.sayfa,
+      this.bakiyeDurumu,
+      this.menuKodu,
+      this.resimleriGoster,
+      this.siralama,
+      this.searchText,
+      this.arrGrupKodu,
+      this.arrKod1,
+      this.arrKod2,
+      this.arrKod3,
+      this.arrKod4,
+      this.arrKod5,
+      this.belgeNo,
+      this.belgeTarihi,
+      this.belgeTipi,
+      this.cariKodu,
+      this.ekranTipi,
+      this.faturaTipi,
+      this.resimGoster});
   //setter for singleton
   void setSingleton(StokBottomSheetModel value) => _instance = value;
   @override
@@ -46,5 +59,4 @@ class StokBottomSheetModel with NetworkManagerMixin {
 
   @override
   Map<String, dynamic> toJson() => _$StokBottomSheetModelToJson(this);
-
 }

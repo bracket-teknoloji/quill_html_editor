@@ -6,25 +6,27 @@ part of 'base_grup_kodu_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-BaseGrupKoduModel _$BaseGrupKoduModelFromJson(Map<String, dynamic> json) =>
-    BaseGrupKoduModel()
-      ..modul = json['MODUL'] as String?
-      ..grupNo = json['GRUP_NO'] as int?
-      ..grupKodu = json['GRUP_KODU'] as String?
-      ..grupAdi = json['GRUP_ADI'] as String?
-      ..tip = json['TIP'] as String?
-      ..kod1 = json['KOD1'] as String?
-      ..kod2 = json['KOD2'] as String?
-      ..kod3 = json['KOD3'] as String?
-      ..kod4 = json['KOD4'] as String?
-      ..kod5 = json['KOD5'] as String?
-      ..kod1Adi = json['KOD1_ADI'] as String?
-      ..kod2Adi = json['KOD2_ADI'] as String?
-      ..kod3Adi = json['KOD3_ADI'] as String?
-      ..kod4Adi = json['KOD4_ADI'] as String?
-      ..kod5Adi = json['KOD5_ADI'] as String?;
+_$_BaseGrupKoduModel _$$_BaseGrupKoduModelFromJson(Map<String, dynamic> json) =>
+    _$_BaseGrupKoduModel(
+      modul: json['MODUL'] as String?,
+      grupNo: json['GRUP_NO'] as int?,
+      grupKodu: json['GRUP_KODU'] as String?,
+      grupAdi: json['GRUP_ADI'] as String?,
+      tip: json['TIP'] as String?,
+      kod1: json['KOD1'] as String?,
+      kod2: json['KOD2'] as String?,
+      kod3: json['KOD3'] as String?,
+      kod4: json['KOD4'] as String?,
+      kod5: json['KOD5'] as String?,
+      kod1Adi: json['KOD1_ADI'] as String?,
+      kod2Adi: json['KOD2_ADI'] as String?,
+      kod3Adi: json['KOD3_ADI'] as String?,
+      kod4Adi: json['KOD4_ADI'] as String?,
+      kod5Adi: json['KOD5_ADI'] as String?,
+    );
 
-Map<String, dynamic> _$BaseGrupKoduModelToJson(BaseGrupKoduModel instance) {
+Map<String, dynamic> _$$_BaseGrupKoduModelToJson(
+    _$_BaseGrupKoduModel instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

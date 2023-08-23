@@ -33,6 +33,13 @@ StokBottomSheetModel _$StokBottomSheetModelFromJson(
       arrKod5: (json['ArrKod5'] as List<dynamic>?)
           ?.map((e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      belgeNo: json['BelgeNo'] as String?,
+      belgeTarihi: json['BelgeTarihi'] as String?,
+      belgeTipi: json['BelgeTipi'] as String?,
+      cariKodu: json['CariKodu'] as String?,
+      ekranTipi: json['EkranTipi'] as String?,
+      faturaTipi: json['FaturaTipi'] as int?,
+      resimGoster: json['ResimGoster'] as String?,
     );
 
 Map<String, dynamic> _$StokBottomSheetModelToJson(
@@ -51,6 +58,13 @@ Map<String, dynamic> _$StokBottomSheetModelToJson(
   writeNotNull('ResimleriGoster', instance.resimleriGoster);
   writeNotNull('Siralama', instance.siralama);
   writeNotNull('SearchText', instance.searchText);
+  writeNotNull('BelgeNo', instance.belgeNo);
+  writeNotNull('BelgeTarihi', instance.belgeTarihi);
+  writeNotNull('BelgeTipi', instance.belgeTipi);
+  writeNotNull('CariKodu', instance.cariKodu);
+  writeNotNull('EkranTipi', instance.ekranTipi);
+  writeNotNull('FaturaTipi', instance.faturaTipi);
+  writeNotNull('ResimGoster', instance.resimGoster);
   writeNotNull(
       'ArrGrupKodu', instance.arrGrupKodu?.map((e) => e.toJson()).toList());
   writeNotNull('ArrKod1', instance.arrKod1?.map((e) => e.toJson()).toList());

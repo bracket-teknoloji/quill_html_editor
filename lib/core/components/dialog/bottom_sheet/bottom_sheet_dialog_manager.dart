@@ -7,12 +7,14 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/components/slide_controller/view/slide_controller_view.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/init/network/network_manager.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
 import "../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_kosullar_model.dart";
 import "../../../../view/main_page/alt_sayfalar/cari/cari_network_manager.dart";
+import "../../../base/model/base_grup_kodu_model.dart";
 import "../../../base/model/belge_tipi_model.dart";
 import "../../../base/model/generic_response_model.dart";
 import "../../../base/model/print_model.dart";
@@ -522,6 +524,16 @@ class BottomSheetDialogManager {
     plasiyerListesi = await showCheckBoxBottomSheetDialog(context,
         title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? e.plasiyerKodu ?? "", value: e)).toList());
     return plasiyerListesi;
+  }
+  Future<List<BaseGrupKoduModel?>?> showGrupKoduBottomSheetDialog({required GrupKoduEnum modul, required int grupKodu, bool? kullanimda}) async {
+    if (viewModel.grupKoduList.ext.isNullOrEmpty){
+      viewModel.changeGrupKoduList(await NetworkManager().getGrupKod(name: modul.name));
+    }
+    var result = await showCheckBoxBottomSheetDialog(Get.context!, title: "Grup Kodu Seçiniz", children: viewModel.grupKoduList?.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e)).toList());
+    if (result != null) {
+      return result;
+    }
+    return null;
   }
 
   Future<PlasiyerList?> showPlasiyerBottomSheetDialog(BuildContext context) async {

@@ -13,6 +13,7 @@ import "package:picker/core/base/model/delete_fatura_model.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/auth/model/login_model.dart";
@@ -218,12 +219,12 @@ class NetworkManager {
     return response;
   }
 
-  Future<List<BaseGrupKoduModel>> getGrupKod({required String name, required int grupNo, bool? kullanimda}) async {
+  Future<List<BaseGrupKoduModel>> getGrupKod({required String name, int? grupNo, bool? kullanimda}) async {
     var responseKod = await dioGet<BaseGrupKoduModel>(
         path: ApiUrls.getGrupKodlari,
         bodyModel: BaseGrupKoduModel(),
         addCKey: true,
-        headers: {"Modul": name, "GrupNo": grupNo.toString(), "Kullanimda": (kullanimda ?? true) ? "E" : "H"},
+        headers: {"Modul": name, "GrupNo": grupNo.toStringIfNull ?? "", "Kullanimda": (kullanimda ?? true) ? "E" : "H"},
         addQuery: true,
         addSirketBilgileri: true,
         queryParameters: {"Modul": name, "GrupNo": grupNo});

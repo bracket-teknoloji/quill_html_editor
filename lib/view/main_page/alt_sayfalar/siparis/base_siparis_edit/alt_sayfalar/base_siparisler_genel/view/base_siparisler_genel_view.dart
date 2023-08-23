@@ -15,6 +15,7 @@ import "../../../../../../../../core/constants/extensions/date_time_extensions.d
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../../../../core/init/network/login/api_urls.dart";
 import "../../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../../siparisler/model/siparis_edit_request_model.dart";
@@ -32,6 +33,7 @@ class BaseSiparislerGenelView extends StatefulWidget {
 class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
   BaseSiparislerGenelViewModel viewModel = BaseSiparislerGenelViewModel();
   BaseEditModel<SiparisEditRequestModel> get siparisModel => widget.model;
+  ParamModel? get paramModel => CacheManager.getAnaVeri()?.paramModel;
   bool get enable => siparisModel.enable;
   bool get isDuzenle => siparisModel.isDuzenle;
   bool get isEkle => siparisModel.isEkle;
@@ -130,22 +132,30 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
                     if (result != null && result is CariListesiModel) {
                       model.cariModel = result;
+                      model.cariAdi = result.cariAdi ?? "";
+                      model.cariKodu = result.cariKodu ?? "";
                       cariController.text = result.cariAdi ?? "";
+                      if (!yetkiController.siparisFarkliTeslimCariAktif) {
+                        teslimCariController.text = result.cariAdi ?? "";
+                        model.teslimCariAdi = result.cariAdi;
+                      }
                     }
                   }),
               CustomTextField(
-                  enabled: enable,
+                  enabled: enable && yetkiController.siparisFarkliTeslimCariAktif,
                   labelText: "Teslim Cari",
                   readOnly: true,
                   suffixMore: true,
                   controller: teslimCariController,
-                  onTap: () async {
-                    var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
-                    if (result != null && result is CariListesiModel) {
-                      model.cariKodu = result.cariKodu ?? "";
-                      teslimCariController.text = result.cariAdi ?? "";
-                    }
-                  }),
+                  onTap: !yetkiController.siparisFarkliTeslimCariAktif
+                      ? null
+                      : () async {
+                          var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
+                          if (result != null && result is CariListesiModel) {
+                            model.cariKodu = result.cariKodu ?? "";
+                            teslimCariController.text = result.cariAdi ?? "";
+                          }
+                        }),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -289,7 +299,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                               viewModel.setKosulKodu(result.kosulKodu);
                               kosulController.text = result.genelKosulAdi ?? result.kosulKodu ?? "";
                             }
-                          })),
+                          })).yetkiVarMi(yetkiController.siparisKosulAktifMi),
                 ],
               ),
               Row(
@@ -339,39 +349,38 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                   child: Column(
                     children: [
                       CustomTextField(
-                          enabled: enable && yetkiController.siparisMSAciklamaAlanlari(1),
-                          labelText: "Teslim Edilecek Kişi",
-                          onChanged: (p0) => changeAciklama(1, p0),
-                          controller: teslimEdilecekKisiController),
-                      CustomTextField(
-                          enabled: enable && yetkiController.siparisMSAciklamaAlanlari(2), labelText: "B2B Email", onChanged: (p0) => changeAciklama(2, p0), controller: b2bEmailController),
-                      CustomTextField(
-                          enabled: enable && yetkiController.siparisMSAciklamaAlanlari(3), labelText: "Masraf Kodu", onChanged: (p0) => changeAciklama(3, p0), controller: masrafKoduController),
-                      CustomTextField(
-                          enabled: enable && yetkiController.siparisMSAciklamaAlanlari(4), labelText: "Masraf Yeri", onChanged: (p0) => changeAciklama(4, p0), controller: masrafYeriController),
-                      CustomTextField(
-                          enabled: enable && yetkiController.siparisMSAciklamaAlanlari(5), labelText: "Sipariş Notu", onChanged: (p0) => changeAciklama(5, p0), controller: siparisNotuController),
-                      CustomTextField(enabled: enable && yetkiController.siparisMSAciklamaAlanlari(6), labelText: "S.A.S. No", onChanged: (p0) => changeAciklama(6, p0), controller: sASNoController),
-                      CustomTextField(
-                          enabled: enable && yetkiController.siparisMSAciklamaAlanlari(7), labelText: "B2B Sepet ID", onChanged: (p0) => changeAciklama(7, p0), controller: b2bSepetIDController),
-                      CustomTextField(
-                          enabled: enable && yetkiController.siparisMSAciklamaAlanlari(8), labelText: "Tam Teslimat", onChanged: (p0) => changeAciklama(8, p0), controller: tamTeslimatController),
-                      CustomTextField(
-                          enabled: enable && yetkiController.siparisMSAciklamaAlanlari(9), labelText: "Satış Açık. 9", onChanged: (p0) => changeAciklama(9, p0), controller: satisAcik9Controller),
-                      CustomTextField(
-                          enabled: enable && yetkiController.siparisMSAciklamaAlanlari(10), labelText: "Satış Açık. 10", onChanged: (p0) => changeAciklama(10, p0), controller: satisAcik10Controller),
-                      CustomTextField(
-                          enabled: enable && yetkiController.siparisMSAciklamaAlanlari(11), labelText: "Satış Açık. 11", onChanged: (p0) => changeAciklama(11, p0), controller: satisAcik11Controller),
-                      CustomTextField(
-                          enabled: enable && yetkiController.siparisMSAciklamaAlanlari(12), labelText: "Fiyat Grubu", onChanged: (p0) => changeAciklama(12, p0), controller: fiyatGrubuController),
-                      CustomTextField(
-                          enabled: enable && yetkiController.siparisMSAciklamaAlanlari(13), labelText: "Satış Açık. 13", onChanged: (p0) => changeAciklama(13, p0), controller: satisAcik13Controller),
-                      CustomTextField(
-                          enabled: enable && yetkiController.siparisMSAciklamaAlanlari(14), labelText: "Satış Açık. 14", onChanged: (p0) => changeAciklama(14, p0), controller: satisAcik14Controller),
-                      CustomTextField(
-                          enabled: enable && yetkiController.siparisMSAciklamaAlanlari(15), labelText: "Satış Açık. 15", onChanged: (p0) => changeAciklama(15, p0), controller: satisAcik15Controller),
-                      CustomTextField(
-                          enabled: enable && yetkiController.siparisMSAciklamaAlanlari(16), labelText: "Satış Açık. 16", onChanged: (p0) => changeAciklama(16, p0), controller: satisAcik16Controller),
+                              enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi1 ?? "Açıklama 1", onChanged: (p0) => changeAciklama(1, p0), controller: teslimEdilecekKisiController)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(1)),
+                      CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi2 ?? "Açıklama 2", onChanged: (p0) => changeAciklama(2, p0), controller: b2bEmailController)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(2)),
+                      CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi3 ?? "Açıklama 3", onChanged: (p0) => changeAciklama(3, p0), controller: masrafKoduController)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(3)),
+                      CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi4 ?? "Açıklama 4", onChanged: (p0) => changeAciklama(4, p0), controller: masrafYeriController)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(4)),
+                      CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi5 ?? "Açıklama 5", onChanged: (p0) => changeAciklama(5, p0), controller: siparisNotuController)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(5)),
+                      CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi6 ?? "Açıklama 6", onChanged: (p0) => changeAciklama(6, p0), controller: sASNoController)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(6)),
+                      CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi7 ?? "Açıklama 7", onChanged: (p0) => changeAciklama(7, p0), controller: b2bSepetIDController)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(7)),
+                      CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi8 ?? "Açıklama 8", onChanged: (p0) => changeAciklama(8, p0), controller: tamTeslimatController)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(8)),
+                      CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi9 ?? "Açıklama 9", onChanged: (p0) => changeAciklama(9, p0), controller: satisAcik9Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(9)),
+                      CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi10 ?? "Açıklama 10", onChanged: (p0) => changeAciklama(10, p0), controller: satisAcik10Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(10)),
+                      CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi11 ?? "Açıklama 11", onChanged: (p0) => changeAciklama(11, p0), controller: satisAcik11Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(11)),
+                      CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi12 ?? "Açıklama 12", onChanged: (p0) => changeAciklama(12, p0), controller: fiyatGrubuController)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(12)),
+                      CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi13 ?? "Açıklama 13", onChanged: (p0) => changeAciklama(13, p0), controller: satisAcik13Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(13)),
+                      CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi14 ?? "Açıklama 14", onChanged: (p0) => changeAciklama(14, p0), controller: satisAcik14Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(14)),
+                      CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi15 ?? "Açıklama 15", onChanged: (p0) => changeAciklama(15, p0), controller: satisAcik15Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(15)),
+                      CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi16 ?? "Açıklama 16", onChanged: (p0) => changeAciklama(16, p0), controller: satisAcik16Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(16)),
                     ],
                   ))
             ],

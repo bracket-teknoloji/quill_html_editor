@@ -1,10 +1,19 @@
 import "package:mobx/mobx.dart";
 
+import "../../../../base/model/base_grup_kodu_model.dart";
+
 part "bottom_sheet_state_manager.g.dart";
 
 class BottomSheetStateManager = _BottomSheetStateManagerBase with _$BottomSheetStateManager;
 
 abstract class _BottomSheetStateManagerBase with Store {
+  @observable
+  ObservableList<BaseGrupKoduModel>? grupKoduList = <BaseGrupKoduModel>[].asObservable();
+  
+  @action
+  void changeGrupKoduList(List<BaseGrupKoduModel> value) {
+    grupKoduList = value.asObservable();
+  }
   @observable
   String? radioGroupValue = "";
 

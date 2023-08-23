@@ -26,7 +26,6 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       ..erpParola = fields[6] as String?
       ..profilKodu = fields[7] as int?
       ..profilAdi = fields[8] as String?
-      ..kullaniciYetki = fields[10] as String?
       ..pickerYetkili = fields[11] as String?
       ..yetkiliSubelerJson = fields[12] as String?
       ..konumEnlem = fields[13] as double?
@@ -40,7 +39,7 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
   @override
   void write(BinaryWriter writer, UserModel obj) {
     writer
-      ..writeByte(18)
+      ..writeByte(17)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -59,8 +58,6 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       ..write(obj.profilKodu)
       ..writeByte(8)
       ..write(obj.profilAdi)
-      ..writeByte(10)
-      ..write(obj.kullaniciYetki)
       ..writeByte(11)
       ..write(obj.pickerYetkili)
       ..writeByte(12)
@@ -107,7 +104,9 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel()
   ..profilYetki = json['PROFIL_YETKI'] == null
       ? null
       : ProfilYetkiModel.fromJson(json['PROFIL_YETKI'] as String)
-  ..kullaniciYetki = json['KULLANICI_YETKI'] as String?
+  ..kullaniciYetki = json['KULLANICI_YETKI'] == null
+      ? null
+      : KullaniciYetkiModel.fromJson(json['KULLANICI_YETKI'] as String)
   ..pickerYetkili = json['PICKER_YETKILI'] as String?
   ..yetkiliSubelerJson = json['YETKILI_SUBELER_JSON'] as String?
   ..konumEnlem = (json['KONUM_ENLEM'] as num?)?.toDouble()
@@ -138,7 +137,7 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) {
   writeNotNull('PROFIL_KODU', instance.profilKodu);
   writeNotNull('PROFIL_ADI', instance.profilAdi);
   writeNotNull('PROFIL_YETKI', instance.profilYetki?.toJson());
-  writeNotNull('KULLANICI_YETKI', instance.kullaniciYetki);
+  writeNotNull('KULLANICI_YETKI', instance.kullaniciYetki?.toJson());
   writeNotNull('PICKER_YETKILI', instance.pickerYetkili);
   writeNotNull('YETKILI_SUBELER_JSON', instance.yetkiliSubelerJson);
   writeNotNull('KONUM_ENLEM', instance.konumEnlem);

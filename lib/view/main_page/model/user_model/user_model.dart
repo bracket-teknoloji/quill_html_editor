@@ -2,6 +2,7 @@ import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 
 import "../lang_model.dart";
+import "kullanici_yetki_model.dart";
 import "profil_yetki_model.dart";
 
 part "user_model.g.dart";
@@ -30,8 +31,8 @@ class UserModel {
   String? profilAdi;
   // @HiveField(9)
   ProfilYetkiModel? profilYetki;
-  @HiveField(10)
-  String? kullaniciYetki;
+  // @HiveField(10)
+  KullaniciYetkiModel? kullaniciYetki;
   @HiveField(11)
   String? pickerYetkili;
   @HiveField(12)

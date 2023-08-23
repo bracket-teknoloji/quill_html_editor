@@ -6,94 +6,131 @@ part "stok_listesi_model.g.dart";
 
 @JsonSerializable(explicitToJson: true)
 class StokListesiModel with NetworkManagerMixin {
+  StokListesiModel();
+
+  StokListesiModel._init();
+
+  bool? seriBakiyeKontrolu;
+  bool? seriCikislardaAcik;
+  bool? seriCikistaOtomatikMi;
+  bool? seriGirislerdeAcik;
+  bool? seriGiristeOtomatikMi;
+  bool? seriMiktarKadarSor;
+  DateTime? duzeltmetarihi;
+  double? alisFiat1;
+  double? alisFiat2;
+  double? alisFiat3;
+  double? alisFiat4;
+  double? alisKdv;
+  double? bakiye;
+  double? birimAgirlik;
+  double? dovAlisFiat;
+  double? dovSatisFiat;
+  double? olcuBirimi2Pay;
+  double? olcuBirimi2Payda;
+  double? olcuBirimi3Pay;
+  double? olcuBirimi3Payda;
+  double? satisFiat1;
+  double? satisFiat2;
+  double? satisFiat3;
+  double? satisFiat4;
+  double? satisKdv;
+  int? alisDovTip;
+  int? bulunanFiyat;
+  int? depoKodu;
+  int? fiatBirimi;
+  int? muhdetayKodu;
+  int? satDovTip;
+  int? subeKodu;
+  List<dynamic>? stokFiyatList;
+  List<StokList>? stokList;
+  String? alisDovizAdi;
+  String? barkod1;
+  String? barkod2;
+  String? barkod3;
+  String? duzeltmeyapankul;
+  String? grupKodu;
+  String? grupTanimi;
+  String? kayittarihi;
+  String? kayityapankul;
+  String? kilitAlis;
+  String? kilitGenel;
+  String? kilitMussip;
+  String? kilitSaticisip;
+  String? kilitSatis;
+  String? kod1;
+  String? kod1Tanimi;
+  String? kod2;
+  String? kod2Tanimi;
+  String? kod3;
+  String? kod3Tanimi;
+  String? kod4;
+  String? kod4Tanimi;
+  String? kod5;
+  String? kod5Tanimi;
+  String? muhdetayAdi;
+  String? olcuBirimi;
+  String? olcuBirimi2;
+  String? olcuBirimi3;
+  String? paketMi;
+  String? resimBase64;
+  String? resimUrl;
+  String? resimUrlKucuk;
+  String? satisDovizAdi;
+  String? stokAdi;
+  String? stokKodu;
+  String? ureticiKodu;
+  
+
   static StokListesiModel? _instance;
+
+  @override
+  fromJson(Map<String, dynamic> json) => _$StokListesiModelFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$StokListesiModelToJson(this);
+
   static StokListesiModel get instance {
     _instance ??= StokListesiModel._init()..stokList = [];
     return _instance!;
   }
 
-  StokListesiModel._init();
-  StokListesiModel();
   static void setInstance(StokListesiModel? instance) => _instance = instance;
 
-  String? stokKodu;
-  String? stokAdi;
-  int? depoKodu;
-  double? bakiye;
-  int? subeKodu;
-  String? muhdetayAdi;
-  String? resimUrl;
-  String? resimUrlKucuk;
-  String? resimBase64;
-  double? alisFiat1;
-  double? alisKdv;
-  double? satisKdv;
-  String? olcuBirimi;
-  String? olcuBirimi2;
-  double? olcuBirimi2Pay;
-  double? olcuBirimi2Payda;
-  String? olcuBirimi3;
-  double? olcuBirimi3Pay;
-  double? olcuBirimi3Payda;
-  String? kayityapankul;
-  String? kayittarihi;
-  String? grupKodu;
-  String? grupTanimi;
-  DateTime? duzeltmetarihi;
-  String? duzeltmeyapankul;
-  List<dynamic>? stokFiyatList;
-  List<dynamic>? stokList;
-  int? fiatBirimi;
-  String? kilitGenel;
-  String? kilitSaticisip;
-  String? kilitMussip;
-  String? kilitAlis;
-  String? kilitSatis;
-  double? birimAgirlik;
-  String? kod1;
-  String? kod1Tanimi;
-  String? barkod1;
-  int? satDovTip;
-  double? dovSatisFiat;
-  String? satisDovizAdi;
-  String? barkod2;
-  String? barkod3;
-  String? kod2;
-  String? kod3;
-  String? kod4;
-  bool? seriCikistaOtomatikMi;
-  bool? seriGiristeOtomatikMi;
-  int? alisDovTip;
-  String? alisDovizAdi;
-  String? ureticiKodu;
-  double? satisFiat1;
-  double? satisFiat2;
-  double? satisFiat3;
-  double? satisFiat4;
-  String? kod5;
-  double? alisFiat2;
-  double? alisFiat3;
-  double? alisFiat4;
-  String? kod2Tanimi;
-  String? kod3Tanimi;
-  String? kod4Tanimi;
-  String? kod5Tanimi;
-  bool? seriCikislardaAcik;
-  bool? seriGirislerdeAcik;
-  bool? seriMiktarKadarSor;
-  bool? seriBakiyeKontrolu;
-  int? muhdetayKodu;
-  double? dovAlisFiat;
-
   bool get dovizliMi => fiatBirimi != 0 && (satDovTip != null || alisDovTip != null);
+}
 
-  @override
-  fromJson(Map<String, dynamic> json) {
-    return _$StokListesiModelFromJson(json);
-  }
+@JsonSerializable(createFactory: true)
+class StokList {
+  StokList({
+    this.stokKodu,
+    this.stokAdi,
+    this.alisKdv,
+    this.satisKdv,
+    this.stokFiyatList,
+    this.stokList,
+    this.bulunanFiyat,
+    this.paketMi,
+    this.koliBilesenMiktari,
+    this.koliBilesenOrani,
+    this.koliBilesenFiyatorandan,
+    this.koliBilesenKolikdv,
+  });
 
-  @override
-  Map<String, dynamic> toJson() {
-    return _$StokListesiModelToJson(this);
-  }
+  factory StokList.fromJson(Map<String, dynamic> json) => _$StokListFromJson(json);
+
+  int? alisKdv;
+  int? bulunanFiyat;
+  String? koliBilesenFiyatorandan;
+  String? koliBilesenKolikdv;
+  int? koliBilesenMiktari;
+  int? koliBilesenOrani;
+  String? paketMi;
+  int? satisKdv;
+  String? stokAdi;
+  List<dynamic>? stokFiyatList;
+  String? stokKodu;
+  List<dynamic>? stokList;
+
+  Map<String, dynamic> toJson() => _$StokListToJson(this);
 }

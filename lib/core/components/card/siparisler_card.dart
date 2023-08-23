@@ -122,6 +122,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                 label: Text("Tamamlanmamış"),
                 backgroundColor: Colors.red,
               ).yetkiVarMi(widget.model.isNew == true),
+              Badge(label: Text("Fatura (${widget.model.faturalasanSayi})")).yetkiVarMi(widget.model.faturalasanSayi != null),
               const Badge(label: Text("Kapalı")).yetkiVarMi(widget.model.tipi == 1),
               const Badge(label: Text("Onayda")).yetkiVarMi(widget.model.tipi == 3),
               Badge(label: Text("İrsaliye (${widget.model.irslesenSayi ?? ""})")).yetkiVarMi(widget.model.irsaliyelesti == "E"),

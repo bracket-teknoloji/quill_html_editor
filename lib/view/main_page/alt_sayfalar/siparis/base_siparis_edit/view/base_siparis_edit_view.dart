@@ -125,17 +125,17 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                               onTap: () {
                                 Get.back();
                                 dialogManager.showCariGridViewDialog(BaseSiparisEditModel.instance.cariModel);
-                              }).yetkiKontrol(BaseSiparisEditModel.instance.cariModel == null),
+                              }).yetkiKontrol(BaseSiparisEditModel.instance.cariModel != null),
                           BottomSheetModel(title: "Toplu İskonto Girişi", iconWidget: Icons.add_outlined),
-                          BottomSheetModel(title: "Döviz Kurları", iconWidget: Icons.attach_money_outlined),
-                          BottomSheetModel(title: "Döviz Kurlarını Güncelle", iconWidget: Icons.attach_money_outlined),
+                          BottomSheetModel(title: "Döviz Kurları", iconWidget: Icons.attach_money_outlined).yetkiKontrol(BaseSiparisEditModel.instance.dovizTipi != null),
+                          BottomSheetModel(title: "Döviz Kurlarını Güncelle", iconWidget: Icons.attach_money_outlined).yetkiKontrol(BaseSiparisEditModel.instance.dovizTipi != null),
                           BottomSheetModel(
                               title: "Cari'ye Yapılan Son Satışlar",
                               iconWidget: Icons.info_outline_rounded,
                               onTap: () {
                                 Get.back();
                                 Get.toNamed("/mainPage/cariStokSatisOzeti", arguments: BaseSiparisEditModel.instance.cariModel);
-                              }).yetkiKontrol(BaseSiparisEditModel.instance.cariModel == null),
+                              }).yetkiKontrol(BaseSiparisEditModel.instance.cariModel != null),
                           BottomSheetModel(title: "Barkod Tanımla", iconWidget: Icons.qr_code_outlined),
                           BottomSheetModel(
                               title: "Ekranı Yeni Kayda Hazırla",

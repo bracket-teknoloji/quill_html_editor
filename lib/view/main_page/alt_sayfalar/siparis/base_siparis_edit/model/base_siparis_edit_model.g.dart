@@ -1449,11 +1449,23 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel isk3Tipi(int? isk3Tipi);
 
+  KalemModel isk4Tipi(int? isk4Tipi);
+
+  KalemModel isk5Tipi(int? isk5Tipi);
+
+  KalemModel isk6Tipi(int? isk6Tipi);
+
   KalemModel iskonto1(double? iskonto1);
 
   KalemModel iskonto2(double? iskonto2);
 
   KalemModel iskonto3(double? iskonto3);
+
+  KalemModel iskonto4(double? iskonto4);
+
+  KalemModel iskonto5(double? iskonto5);
+
+  KalemModel iskonto6(double? iskonto6);
 
   KalemModel malfazIskAdedi(double? malfazIskAdedi);
 
@@ -1519,9 +1531,15 @@ abstract class _$KalemModelCWProxy {
     int? isk1Tipi,
     int? isk2Tipi,
     int? isk3Tipi,
+    int? isk4Tipi,
+    int? isk5Tipi,
+    int? isk6Tipi,
     double? iskonto1,
     double? iskonto2,
     double? iskonto3,
+    double? iskonto4,
+    double? iskonto5,
+    double? iskonto6,
     double? malfazIskAdedi,
     double? miktar2,
     String? projeKodu,
@@ -1666,6 +1684,15 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel isk3Tipi(int? isk3Tipi) => this(isk3Tipi: isk3Tipi);
 
   @override
+  KalemModel isk4Tipi(int? isk4Tipi) => this(isk4Tipi: isk4Tipi);
+
+  @override
+  KalemModel isk5Tipi(int? isk5Tipi) => this(isk5Tipi: isk5Tipi);
+
+  @override
+  KalemModel isk6Tipi(int? isk6Tipi) => this(isk6Tipi: isk6Tipi);
+
+  @override
   KalemModel iskonto1(double? iskonto1) => this(iskonto1: iskonto1);
 
   @override
@@ -1673,6 +1700,15 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
 
   @override
   KalemModel iskonto3(double? iskonto3) => this(iskonto3: iskonto3);
+
+  @override
+  KalemModel iskonto4(double? iskonto4) => this(iskonto4: iskonto4);
+
+  @override
+  KalemModel iskonto5(double? iskonto5) => this(iskonto5: iskonto5);
+
+  @override
+  KalemModel iskonto6(double? iskonto6) => this(iskonto6: iskonto6);
 
   @override
   KalemModel malfazIskAdedi(double? malfazIskAdedi) =>
@@ -1752,9 +1788,15 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? isk1Tipi = const $CopyWithPlaceholder(),
     Object? isk2Tipi = const $CopyWithPlaceholder(),
     Object? isk3Tipi = const $CopyWithPlaceholder(),
+    Object? isk4Tipi = const $CopyWithPlaceholder(),
+    Object? isk5Tipi = const $CopyWithPlaceholder(),
+    Object? isk6Tipi = const $CopyWithPlaceholder(),
     Object? iskonto1 = const $CopyWithPlaceholder(),
     Object? iskonto2 = const $CopyWithPlaceholder(),
     Object? iskonto3 = const $CopyWithPlaceholder(),
+    Object? iskonto4 = const $CopyWithPlaceholder(),
+    Object? iskonto5 = const $CopyWithPlaceholder(),
+    Object? iskonto6 = const $CopyWithPlaceholder(),
     Object? malfazIskAdedi = const $CopyWithPlaceholder(),
     Object? miktar2 = const $CopyWithPlaceholder(),
     Object? projeKodu = const $CopyWithPlaceholder(),
@@ -1922,6 +1964,18 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.isk3Tipi
           // ignore: cast_nullable_to_non_nullable
           : isk3Tipi as int?,
+      isk4Tipi: isk4Tipi == const $CopyWithPlaceholder()
+          ? _value.isk4Tipi
+          // ignore: cast_nullable_to_non_nullable
+          : isk4Tipi as int?,
+      isk5Tipi: isk5Tipi == const $CopyWithPlaceholder()
+          ? _value.isk5Tipi
+          // ignore: cast_nullable_to_non_nullable
+          : isk5Tipi as int?,
+      isk6Tipi: isk6Tipi == const $CopyWithPlaceholder()
+          ? _value.isk6Tipi
+          // ignore: cast_nullable_to_non_nullable
+          : isk6Tipi as int?,
       iskonto1: iskonto1 == const $CopyWithPlaceholder()
           ? _value.iskonto1
           // ignore: cast_nullable_to_non_nullable
@@ -1934,6 +1988,18 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.iskonto3
           // ignore: cast_nullable_to_non_nullable
           : iskonto3 as double?,
+      iskonto4: iskonto4 == const $CopyWithPlaceholder()
+          ? _value.iskonto4
+          // ignore: cast_nullable_to_non_nullable
+          : iskonto4 as double?,
+      iskonto5: iskonto5 == const $CopyWithPlaceholder()
+          ? _value.iskonto5
+          // ignore: cast_nullable_to_non_nullable
+          : iskonto5 as double?,
+      iskonto6: iskonto6 == const $CopyWithPlaceholder()
+          ? _value.iskonto6
+          // ignore: cast_nullable_to_non_nullable
+          : iskonto6 as double?,
       malfazIskAdedi: malfazIskAdedi == const $CopyWithPlaceholder()
           ? _value.malfazIskAdedi
           // ignore: cast_nullable_to_non_nullable
@@ -2146,13 +2212,14 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       fYedek4: fields[114] as double?,
     )
       ..yeniKayit = fields[115] as bool?
-      ..uuid = fields[116] as String?;
+      ..uuid = fields[116] as String?
+      ..faturalasanSayi = fields[117] as int?;
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(117)
+      ..writeByte(118)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -2386,7 +2453,9 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(115)
       ..write(obj.yeniKayit)
       ..writeByte(116)
-      ..write(obj.uuid);
+      ..write(obj.uuid)
+      ..writeByte(117)
+      ..write(obj.faturalasanSayi);
   }
 
   @override
@@ -2450,9 +2519,15 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       isk1Tipi: fields[36] as int?,
       isk2Tipi: fields[37] as int?,
       isk3Tipi: fields[38] as int?,
+      isk4Tipi: fields[51] as int?,
+      isk5Tipi: fields[53] as int?,
+      isk6Tipi: fields[55] as int?,
       iskonto1: fields[39] as double?,
       iskonto2: fields[40] as double?,
       iskonto3: fields[41] as double?,
+      iskonto4: fields[52] as double?,
+      iskonto5: fields[54] as double?,
+      iskonto6: fields[56] as double?,
       malfazIskAdedi: fields[42] as double?,
       miktar2: fields[43] as double?,
       projeKodu: fields[44] as String?,
@@ -2468,7 +2543,7 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(51)
+      ..writeByte(57)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -2570,7 +2645,19 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(49)
       ..write(obj.malFazlasiMiktar)
       ..writeByte(50)
-      ..write(obj.kosulKodu);
+      ..write(obj.kosulKodu)
+      ..writeByte(51)
+      ..write(obj.isk4Tipi)
+      ..writeByte(52)
+      ..write(obj.iskonto4)
+      ..writeByte(53)
+      ..write(obj.isk5Tipi)
+      ..writeByte(54)
+      ..write(obj.iskonto5)
+      ..writeByte(55)
+      ..write(obj.isk6Tipi)
+      ..writeByte(56)
+      ..write(obj.iskonto6);
   }
 
   @override
@@ -2733,7 +2820,9 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       dovizTutari: (json['DOVIZ_TUTARI'] as num?)?.toDouble(),
       teslimCari: json['TESLIM_CARI'] as String?,
       fYedek4: (json['F_YEDEK4'] as num?)?.toDouble(),
-    )..yeniKayit = json['_YeniKayit'] as bool?;
+    )
+      ..yeniKayit = json['_YeniKayit'] as bool?
+      ..faturalasanSayi = json['FATURALASAN_SAYI'] as int?;
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
     BaseSiparisEditModel instance) {
@@ -2864,6 +2953,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('TESLIM_CARI', instance.teslimCari);
   writeNotNull('F_YEDEK4', instance.fYedek4);
   writeNotNull('_YeniKayit', instance.yeniKayit);
+  writeNotNull('FATURALASAN_SAYI', instance.faturalasanSayi);
   return val;
 }
 
@@ -2911,9 +3001,15 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       isk1Tipi: json['ISK1_TIPI'] as int?,
       isk2Tipi: json['ISK2_TIPI'] as int?,
       isk3Tipi: json['ISK3_TIPI'] as int?,
+      isk4Tipi: json['ISK4_TIPI'] as int?,
+      isk5Tipi: json['ISK5_TIPI'] as int?,
+      isk6Tipi: json['ISK6_TIPI'] as int?,
       iskonto1: (json['ISKONTO1'] as num?)?.toDouble(),
       iskonto2: (json['ISKONTO2'] as num?)?.toDouble(),
       iskonto3: (json['ISKONTO3'] as num?)?.toDouble(),
+      iskonto4: (json['ISKONTO4'] as num?)?.toDouble(),
+      iskonto5: (json['ISKONTO5'] as num?)?.toDouble(),
+      iskonto6: (json['ISKONTO6'] as num?)?.toDouble(),
       malfazIskAdedi: (json['MALFAZ_ISK_ADEDI'] as num?)?.toDouble(),
       miktar2: (json['MIKTAR2'] as num?)?.toDouble(),
       projeKodu: json['PROJE_KODU'] as String?,
@@ -2986,5 +3082,11 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('MALFAZ_CEVRIMLI_MIKTAR', instance.malfazCevrimliMiktar);
   writeNotNull('MAL_FAZLASI_MIKTAR', instance.malFazlasiMiktar);
   writeNotNull('KOSUL_KODU', instance.kosulKodu);
+  writeNotNull('ISK4_TIPI', instance.isk4Tipi);
+  writeNotNull('ISKONTO4', instance.iskonto4);
+  writeNotNull('ISK5_TIPI', instance.isk5Tipi);
+  writeNotNull('ISKONTO5', instance.iskonto5);
+  writeNotNull('ISK6_TIPI', instance.isk6Tipi);
+  writeNotNull('ISKONTO6', instance.iskonto6);
   return val;
 }

@@ -1,7 +1,11 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+import "../../../../constants/static_variables/static_variables.dart";
+import "../../../model/base_grup_kodu_model.dart";
 
 part "stok_rehberi_view_model.g.dart";
 
@@ -36,8 +40,20 @@ abstract class _StokRehberiViewModelBase with Store {
     }
   }
 
+  BaseSiparisEditModel get baseSiparisEditModel => BaseSiparisEditModel.instance;
+
   @observable
-  StokBottomSheetModel stokBottomSheetModel = StokBottomSheetModel(sayfa: 1, siralama: "AZ");
+  StokBottomSheetModel stokBottomSheetModel = StokBottomSheetModel(
+      sayfa: 1,
+      siralama: "AZ",
+      belgeNo: BaseSiparisEditModel.instance.belgeNo,
+      belgeTarihi: BaseSiparisEditModel.instance.tarih.toDateString,
+      belgeTipi: StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS",
+      ekranTipi: "R",
+      resimGoster: "H",
+      faturaTipi: 2,
+      cariKodu: BaseSiparisEditModel.instance.cariKodu,
+      menuKodu: "STOK_SREH");
 
   @action
   void increaseSayfa() => stokBottomSheetModel.sayfa = stokBottomSheetModel.sayfa! + 1;
@@ -47,6 +63,8 @@ abstract class _StokRehberiViewModelBase with Store {
   void setSiralama(String value) => stokBottomSheetModel.siralama = value;
   @action
   void setSearchText(String value) => stokBottomSheetModel.searchText = value;
+  @action
+  void setGrupKodu(List<BaseGrupKoduModel> value) => stokBottomSheetModel = stokBottomSheetModel..arrGrupKodu = value;
   @action
   void resetPage() {
     setStokListesi(null);
