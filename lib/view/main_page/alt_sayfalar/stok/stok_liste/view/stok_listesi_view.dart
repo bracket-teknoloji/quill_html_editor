@@ -679,7 +679,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     if (response.success ?? false) {
       Map<String, MemoryImage> imageMap = {};
       List<StokListesiModel>? liste = response.data.map((e) => e as StokListesiModel).toList().cast<StokListesiModel>();
-      if ((liste?.length ?? 0) < 25) {
+      if ((liste?.length ?? 0) < parametreModel.sabitSayfalamaOgeSayisi) {
         if (viewModel.bottomSheetModel != StokBottomSheetModel()) {
           viewModel.setDahaVarMi(false);
           viewModel.increaseSayfa();

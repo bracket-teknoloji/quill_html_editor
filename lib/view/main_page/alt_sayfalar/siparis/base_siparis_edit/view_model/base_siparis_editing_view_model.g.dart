@@ -33,6 +33,22 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
     });
   }
 
+  late final _$isValidAtom =
+      Atom(name: '_BaseSiparisEditingViewModelBase.isValid', context: context);
+
+  @override
+  bool get isValid {
+    _$isValidAtom.reportRead();
+    return super.isValid;
+  }
+
+  @override
+  set isValid(bool value) {
+    _$isValidAtom.reportWrite(value, super.isValid, () {
+      super.isValid = value;
+    });
+  }
+
   late final _$isLastPageAtom = Atom(
       name: '_BaseSiparisEditingViewModelBase.isLastPage', context: context);
 
@@ -86,6 +102,18 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
   late final _$_BaseSiparisEditingViewModelBaseActionController =
       ActionController(
           name: '_BaseSiparisEditingViewModelBase', context: context);
+
+  @override
+  void changeIsValid() {
+    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController
+        .startAction(name: '_BaseSiparisEditingViewModelBase.changeIsValid');
+    try {
+      return super.changeIsValid();
+    } finally {
+      _$_BaseSiparisEditingViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
 
   @override
   void changePageIndex(int value) {
@@ -153,6 +181,7 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
   String toString() {
     return '''
 pageIndex: ${pageIndex},
+isValid: ${isValid},
 isLastPage: ${isLastPage},
 isBaseSiparisEmpty: ${isBaseSiparisEmpty},
 yeniKaydaHazirlaMi: ${yeniKaydaHazirlaMi},

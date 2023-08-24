@@ -626,9 +626,9 @@ class KalemModel {
   @HiveField(50)
   String? kosulKodu;
   @HiveField(51)
-  int?isk4Tipi;
+  int? isk4Tipi;
   @HiveField(52)
-  double?iskonto4;
+  double? iskonto4;
   @HiveField(53)
   int? isk5Tipi;
   @HiveField(54)
@@ -637,7 +637,6 @@ class KalemModel {
   int? isk6Tipi;
   @HiveField(56)
   double? iskonto6;
-  
 
   KalemModel(
       {this.iskonto1OranMi,
@@ -720,6 +719,15 @@ class KalemModel {
       }
       if (iskonto3 != null && iskonto3 != 0) {
         result = result - result * ((iskonto3 ?? 0) / 100);
+      }
+      if (iskonto4 != null && iskonto4 != 0) {
+        result = result - result * ((iskonto4 ?? 0) / 100);
+      }
+      if (iskonto5 != null && iskonto5 != 0) {
+        result = result - result * ((iskonto5 ?? 0) / 100);
+      }
+      if (iskonto6 != null && iskonto6 != 0) {
+        result = result - result * ((iskonto6 ?? 0) / 100);
       }
       return ((miktar ?? 0) * (brutFiyat ?? 0)) - result;
     } else {

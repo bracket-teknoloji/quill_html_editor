@@ -392,8 +392,8 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                           );
                         }
                         return SiparislerCard(
-                          model: viewModel.musteriSiparisleriList![index]!,
-                          index: (viewModel.musteriSiparisleriList![index]?.isNew ?? false) ? index : null,
+                          model: viewModel.musteriSiparisleriList?[index] ?? BaseSiparisEditModel(),
+                          index: (viewModel.musteriSiparisleriList?[index]?.isNew ?? false) ? index : null,
                           siparisTipiEnum: widget.isSiparisler ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici,
                           onDeleted: () {
                             viewModel.setSiparislerList(null);
@@ -425,7 +425,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
         viewModel.setParamData(result.paramData?.map((key, value) => MapEntry(key, value.toString())) ?? {});
       }
       List<BaseSiparisEditModel?>? list = result.data.map((e) => e as BaseSiparisEditModel?).toList().cast<BaseSiparisEditModel?>();
-      if (list!.length < 25) {
+      if ((list?.length??0) < parametreModel.sabitSayfalamaOgeSayisi) {
         viewModel.setDahaVarMi(false);
       } else {
         viewModel.setDahaVarMi(true);

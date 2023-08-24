@@ -327,7 +327,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   var result = await networkManager.dioPost<AccountModel>(
                                       path: ApiUrls.saveUyeBilgileri, bodyModel: AccountModel(), showError: false, data: CacheManager.getHesapBilgileri?.toJson());
                                   if (result.success == true) {
-                                    log("Başarılı");
+                                    log("Session Başarılı");
                                   }
                                   // Get.toNamed("/mainPage");
                                   (response.message?.ext.isNotNullOrNoEmpty ?? false) ? dialogManager.showAlertDialog(response.message.toString()) : null;

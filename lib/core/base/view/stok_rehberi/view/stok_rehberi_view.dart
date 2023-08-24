@@ -291,7 +291,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
     viewModel.setDahaVarMi(false);
     GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: viewModel.stokBottomSheetModel, bodyModel: StokListesiModel());
     if (response.success == true && response.data is List) {
-      if (response.data?.length == 25) {
+      if (response.data?.length == parametreModel.sabitSayfalamaOgeSayisi) {
         viewModel.setDahaVarMi(true);
         viewModel.increaseSayfa();
       }

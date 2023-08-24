@@ -18,8 +18,8 @@ class ParamModel {
   MapCariKullSahalar? mapCariKullSahalar;
   @JsonKey(name: "MapCariEkAlanlar")
   List<MapEkAlanlar>? mapCariEkAlanlar;
-  @JsonKey(name: "sabitSayfalamaOgeSayisi")
-  int? sabitSayfalamaOgeSayisi;
+  @JsonKey(name: "sabitSayfalamaOgeSayisi", defaultValue: 25)
+  int sabitSayfalamaOgeSayisi = 25;
   @JsonKey(name: "_NetsisOndalikResponseModel")
   List<NetsisOndalikResponseModel>? netsisOndalikResponseModel;
   @JsonKey(name: "DepoList")
@@ -238,6 +238,8 @@ class ParamModel {
   bool? satisSatirKademeliIskontoAcik;
   @JsonKey(name: "SatisSatirKademeliIskontoSayisi")
   int? satisSatirKademeliIskontoSayisi;
+  @JsonKey(name: "SatisSatirdaKDVSor")
+  bool? satisSatirdaKdvSor;
   @JsonKey(name: "SatisGenIsk1Aktif")
   bool? satisGenIsk1Aktif;
   @JsonKey(name: "SatisGenIsk2Aktif")
@@ -256,8 +258,6 @@ class ParamModel {
   String? satisCariRiskTakibi;
   @JsonKey(name: "SatisDovizAktif")
   bool? satisDovizAktif;
-  @JsonKey(name: "SatisSatirdaKDVSor")
-  bool? satisSatirdaKdvSor;
   @JsonKey(name: "SatisSatirdaAciklamalarAktif")
   bool? satisSatirdaAciklamalarAktif;
   @JsonKey(name: "SatisSatirdaEkAlan2Aktif")

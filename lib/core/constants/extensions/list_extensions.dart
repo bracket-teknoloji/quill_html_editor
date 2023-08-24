@@ -41,3 +41,10 @@ extension NotNullExtension<T> on List<T> {
   }
 }
 
+extension ListGenericNullCheck<T> on List<T?> {
+  List<T> get nullCheckWithGeneric {
+    return whereType<T>().toList();
+  }
+}
+
+

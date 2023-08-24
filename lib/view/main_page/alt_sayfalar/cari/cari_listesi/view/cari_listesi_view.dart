@@ -80,7 +80,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
         // });
         if (viewModel.dahaVarMi) {
           List? a = await getData(sayfa: viewModel.sayfa + 1);
-          if (a?.length == 25) {
+          if (a?.length == parametreModel.sabitSayfalamaOgeSayisi) {
             viewModel.increaseSayfa();
           }
           viewModel.addCariListesi(a!);
@@ -554,7 +554,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
 
     if (mounted) {
       if (response.data != null) {
-        if (response.data.length < 25) {
+        if (response.data.length < parametreModel.sabitSayfalamaOgeSayisi) {
           viewModel.changeDahaVarMi(false);
         } else {
           viewModel.changeDahaVarMi(true);

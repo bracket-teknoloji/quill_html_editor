@@ -93,6 +93,17 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
+  void setFiyat(double value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setFiyat');
+    try {
+      return super.setFiyat(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setProjeKodu(String value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setProjeKodu');

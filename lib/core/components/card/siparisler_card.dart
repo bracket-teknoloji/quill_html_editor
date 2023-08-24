@@ -139,7 +139,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                   widget.model.kosulKodu != null ? Text("Koşul: ${widget.model.kosulKodu ?? ""}") : null,
                   Text("Ara Toplam: ${widget.model.getAraToplam.commaSeparatedWithFixedDigits} TL"),
                   Text("Genel Toplam: ${widget.model.genelToplam?.commaSeparatedWithFixedDigits ?? "0.00"} TL"),
-                ].nullCheck.cast<Widget>(),
+                ].nullCheckWithGeneric,
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,

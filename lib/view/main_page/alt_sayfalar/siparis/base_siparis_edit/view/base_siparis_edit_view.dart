@@ -127,15 +127,15 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                                 dialogManager.showCariGridViewDialog(BaseSiparisEditModel.instance.cariModel);
                               }).yetkiKontrol(BaseSiparisEditModel.instance.cariModel != null),
                           BottomSheetModel(title: "Toplu İskonto Girişi", iconWidget: Icons.add_outlined),
-                          BottomSheetModel(title: "Döviz Kurları", iconWidget: Icons.attach_money_outlined).yetkiKontrol(BaseSiparisEditModel.instance.dovizTipi != null),
-                          BottomSheetModel(title: "Döviz Kurlarını Güncelle", iconWidget: Icons.attach_money_outlined).yetkiKontrol(BaseSiparisEditModel.instance.dovizTipi != null),
+                          BottomSheetModel(title: "Döviz Kurları", iconWidget: Icons.attach_money_outlined),
+                          BottomSheetModel(title: "Döviz Kurlarını Güncelle", iconWidget: Icons.attach_money_outlined).yetkiKontrol(BaseSiparisEditModel.instance.dovizAdi != null),
                           BottomSheetModel(
                               title: "Cari'ye Yapılan Son Satışlar",
                               iconWidget: Icons.info_outline_rounded,
                               onTap: () {
                                 Get.back();
                                 Get.toNamed("/mainPage/cariStokSatisOzeti", arguments: BaseSiparisEditModel.instance.cariModel);
-                              }).yetkiKontrol(BaseSiparisEditModel.instance.cariModel != null),
+                              }).yetkiKontrol(yetkiController.cariRapStokSatisOzeti),
                           BottomSheetModel(title: "Barkod Tanımla", iconWidget: Icons.qr_code_outlined),
                           BottomSheetModel(
                               title: "Ekranı Yeni Kayda Hazırla",
@@ -179,16 +179,23 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                 ].whereType<Widget>().toList(),
               ),
             ),
-            body: TabBarView(
-              controller: tabController,
-              physics: const NeverScrollableScrollPhysics(),
-              children: [
-                Observer(builder: (_) => (viewModel.isBaseSiparisEmpty) ? const Center(child: CircularProgressIndicator.adaptive()) : BaseSiparislerGenelView(model: model)),
-                yetkiController.siparisDigerSekmesiGoster ? BaseSiparislerDigerView(model: model) : null,
-                BaseSiparisKalemlerView(model: model),
-                BaseSiparisToplamlarView(model: model),
-              ].whereType<Widget>().toList(),
-            ),
+            body: Observer(
+                builder: (_) => TabBarView(
+                      controller: tabController,
+                      physics: tabBarViewPhysics(),
+                      children: [
+                        Observer(builder: (_) {
+                          if ((viewModel.isBaseSiparisEmpty)) {
+                            return const Center(child: CircularProgressIndicator.adaptive());
+                          } else {
+                            return BaseSiparislerGenelView(model: model);
+                          }
+                        }),
+                        yetkiController.siparisDigerSekmesiGoster ? BaseSiparislerDigerView(model: model) : null,
+                        BaseSiparisKalemlerView(model: model),
+                        BaseSiparisToplamlarView(model: model),
+                      ].whereType<Widget>().toList(),
+                    )),
           ),
         ),
         onWillPop: () async {
@@ -202,6 +209,15 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           });
           return result;
         });
+  }
+
+  NeverScrollableScrollPhysics? tabBarViewPhysics() {
+    viewModel.changeIsValid();
+    if (viewModel.isValid) {
+      return null;
+    } else {
+      return const NeverScrollableScrollPhysics();
+    }
   }
 
   Future<void> getData() async {

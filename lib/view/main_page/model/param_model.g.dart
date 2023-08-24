@@ -88,7 +88,7 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..mapCariEkAlanlar = (json['MapCariEkAlanlar'] as List<dynamic>?)
       ?.map((e) => MapEkAlanlar.fromJson(e as Map<String, dynamic>))
       .toList()
-  ..sabitSayfalamaOgeSayisi = json['sabitSayfalamaOgeSayisi'] as int?
+  ..sabitSayfalamaOgeSayisi = json['sabitSayfalamaOgeSayisi'] as int? ?? 25
   ..netsisOndalikResponseModel = (json['_NetsisOndalikResponseModel']
           as List<dynamic>?)
       ?.map(
@@ -250,6 +250,7 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
       json['SatisSatirKademeliIskontoAcik'] as bool?
   ..satisSatirKademeliIskontoSayisi =
       json['SatisSatirKademeliIskontoSayisi'] as int?
+  ..satisSatirdaKdvSor = json['SatisSatirdaKDVSor'] as bool?
   ..satisGenIsk1Aktif = json['SatisGenIsk1Aktif'] as bool?
   ..satisGenIsk2Aktif = json['SatisGenIsk2Aktif'] as bool?
   ..satisGenIsk3Aktif = json['SatisGenIsk3Aktif'] as bool?
@@ -260,7 +261,6 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
       json['SatisFarkliOlcuBirimleriKullan'] as bool?
   ..satisCariRiskTakibi = json['SatisCariRiskTakibi'] as String?
   ..satisDovizAktif = json['SatisDovizAktif'] as bool?
-  ..satisSatirdaKdvSor = json['SatisSatirdaKDVSor'] as bool?
   ..satisSatirdaAciklamalarAktif = json['SatisSatirdaAciklamalarAktif'] as bool?
   ..satisSatirdaEkAlan2Aktif = json['SatisSatirdaEkAlan2Aktif'] as bool?
   ..satisEkMaliyet2Aktif = json['SatisEkMaliyet2Aktif'] as bool?
@@ -388,7 +388,7 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) {
   writeNotNull('MapCariKullSahalar', instance.mapCariKullSahalar?.toJson());
   writeNotNull('MapCariEkAlanlar',
       instance.mapCariEkAlanlar?.map((e) => e.toJson()).toList());
-  writeNotNull('sabitSayfalamaOgeSayisi', instance.sabitSayfalamaOgeSayisi);
+  val['sabitSayfalamaOgeSayisi'] = instance.sabitSayfalamaOgeSayisi;
   writeNotNull('_NetsisOndalikResponseModel',
       instance.netsisOndalikResponseModel?.map((e) => e.toJson()).toList());
   writeNotNull('DepoList', instance.depoList?.map((e) => e.toJson()).toList());
@@ -526,6 +526,7 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) {
       'SatisSatirKademeliIskontoAcik', instance.satisSatirKademeliIskontoAcik);
   writeNotNull('SatisSatirKademeliIskontoSayisi',
       instance.satisSatirKademeliIskontoSayisi);
+  writeNotNull('SatisSatirdaKDVSor', instance.satisSatirdaKdvSor);
   writeNotNull('SatisGenIsk1Aktif', instance.satisGenIsk1Aktif);
   writeNotNull('SatisGenIsk2Aktif', instance.satisGenIsk2Aktif);
   writeNotNull('SatisGenIsk3Aktif', instance.satisGenIsk3Aktif);
@@ -537,7 +538,6 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) {
       instance.satisFarkliOlcuBirimleriKullan);
   writeNotNull('SatisCariRiskTakibi', instance.satisCariRiskTakibi);
   writeNotNull('SatisDovizAktif', instance.satisDovizAktif);
-  writeNotNull('SatisSatirdaKDVSor', instance.satisSatirdaKdvSor);
   writeNotNull(
       'SatisSatirdaAciklamalarAktif', instance.satisSatirdaAciklamalarAktif);
   writeNotNull('SatisSatirdaEkAlan2Aktif', instance.satisSatirdaEkAlan2Aktif);

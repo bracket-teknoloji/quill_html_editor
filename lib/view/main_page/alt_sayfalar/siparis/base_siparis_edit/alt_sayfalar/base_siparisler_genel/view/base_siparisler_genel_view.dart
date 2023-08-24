@@ -284,7 +284,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                               viewModel.setOdemeKodu(result.odemeKodu);
                               odemeKoduController.text = result.aciklama ?? "";
                             }
-                          })),
+                          })).yetkiVarMi(yetkiController.siparisKosulAktifMi),
                   Expanded(
                       child: CustomTextField(
                           enabled: enable,
