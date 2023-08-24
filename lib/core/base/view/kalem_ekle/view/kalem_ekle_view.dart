@@ -46,6 +46,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   late final TextEditingController olcuBirimiController;
   late final TextEditingController kdvOraniController;
   late final TextEditingController fiyatController;
+  late final TextEditingController muhKoduController;
   TextEditingController? isk1Controller;
   TextEditingController? isk1TipiController;
   TextEditingController? isk2TipiController;
@@ -207,7 +208,21 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
               key: formKey,
               child: Column(
                 children: [
-                  CustomTextField(labelText: "Kalem Adı", controller: kalemAdiController, readOnly: true),
+                  Observer(builder: (_) {
+                    return Row(
+                      children: [
+                        Expanded(child: CustomTextField(labelText: "Kalem Adı", controller: kalemAdiController, readOnly: true)),
+                        Expanded(
+                            child: CustomTextField(
+                                labelText: "Muhasebe Kodu",
+                                suffixMore: true,
+                                readOnly: true,
+                                onTap: () async {
+                                  await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context);
+                                })).yetkiVarMi((viewModel.kalemModel.stokKodu?.startsWith("HIZ") ?? false) && yetkiController.siparisHizmetAktifMi),
+                      ],
+                    );
+                  }),
                   CustomTextField(labelText: "Ek Alan 1", onChanged: (p0) => viewModel.kalemModel.ekalan1 = p0),
                   CustomTextField(labelText: "Ek Alan 2", onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0),
                   Row(
@@ -324,6 +339,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     children: [
                       Expanded(
                           child: CustomTextField(
+                        enabled: widget.stokListesiModel?.paketMi != "K",
                         labelText: "Miktar",
                         isMust: true,
                         controller: miktarController,
@@ -418,6 +434,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             child: CustomTextField(
                                 labelText: "İsk.${index + 1}${index != 0 ? " %" : ""}",
                                 controller: iskontoController(index + 1),
+                                keyboardType: TextInputType.number,
                                 suffix: yetkiController.siparisMSISk1YuzdeSor && index == 0
                                     ? Observer(builder: (_) {
                                         return IconButton(
@@ -502,18 +519,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     olcuBirimiController = TextEditingController();
     kdvOraniController = TextEditingController();
     fiyatController = TextEditingController();
-    isk1Controller = TextEditingController();
-    isk1TipiController = TextEditingController();
-    isk2TipiController = TextEditingController();
-    isk2YuzdeController = TextEditingController();
-    isk3TipiController = TextEditingController();
-    isk3YuzdeController = TextEditingController();
-    isk4TipiController = TextEditingController();
-    isk4YuzdeController = TextEditingController();
-    isk5TipiController = TextEditingController();
-    isk5YuzdeController = TextEditingController();
-    isk6TipiController = TextEditingController();
-    isk6YuzdeController = TextEditingController();
+    muhKoduController = TextEditingController();
   }
 
   void controllerFiller() {
@@ -527,7 +533,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     malFazMiktarController.text = viewModel.kalemModel.malFazlasiMiktar?.toIntIfDouble.toStringIfNull ?? "";
     olcuBirimiController.text = widget.stokListesiModel?.olcuBirimi ?? widget.kalemModel?.olcuBirimAdi ?? "";
     kdvOraniController.text = (StaticVariables.instance.isMusteriSiparisleri ? (widget.stokListesiModel?.satisKdv ?? "") : (widget.stokListesiModel?.alisKdv ?? "")).toString();
-    depoController.text = (parametreModel.depoList?.where((element) => element.depoKodu == viewModel.model?.depoKodu).firstOrNull?.depoTanimi ?? "");
+    depoController.text = (parametreModel.depoList?.where((element) => element.depoKodu == (viewModel.model?.depoKodu ?? parametreModel.satisHizmetDepoKodu)).firstOrNull?.depoTanimi ?? "");
     teslimTarihiController.text = model.teslimTarihi.toDateString;
     kosulController.text = model.kosulKodu ?? BaseSiparisEditModel.instance.kosulKodu ?? "";
     projeController.text = model.projeKodu ?? BaseSiparisEditModel.instance.projeKodu ?? "";
@@ -584,6 +590,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     isk5YuzdeController?.dispose();
     isk6TipiController?.dispose();
     isk6YuzdeController?.dispose();
+    muhKoduController.dispose();
   }
 
   void iskontoFiller(int index, ListIskTip iskTip) {

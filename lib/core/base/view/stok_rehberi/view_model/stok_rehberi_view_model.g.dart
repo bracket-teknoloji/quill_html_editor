@@ -166,6 +166,17 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
   }
 
   @override
+  void setSelectedStokModel(String value) {
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
+        .startAction(name: '_StokRehberiViewModelBase.setSelectedStokModel');
+    try {
+      return super.setSelectedStokModel(value);
+    } finally {
+      _$_StokRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void resetPage() {
     final _$actionInfo = _$_StokRehberiViewModelBaseActionController
         .startAction(name: '_StokRehberiViewModelBase.resetPage');

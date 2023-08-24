@@ -14,6 +14,7 @@ import "package:picker/view/main_page/model/param_model.dart";
 
 import "../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_kosullar_model.dart";
 import "../../../../view/main_page/alt_sayfalar/cari/cari_network_manager.dart";
+import "../../../../view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
 import "../../../base/model/base_grup_kodu_model.dart";
 import "../../../base/model/belge_tipi_model.dart";
 import "../../../base/model/generic_response_model.dart";
@@ -525,22 +526,32 @@ class BottomSheetDialogManager {
         title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? e.plasiyerKodu ?? "", value: e)).toList());
     return plasiyerListesi;
   }
+
   Future<List<BaseGrupKoduModel?>?> showGrupKoduBottomSheetDialog({required GrupKoduEnum modul, required int grupKodu, bool? kullanimda}) async {
-    if (viewModel.grupKoduList.ext.isNullOrEmpty){
+    if (viewModel.grupKoduList.ext.isNullOrEmpty) {
       viewModel.changeGrupKoduList(await NetworkManager().getGrupKod(name: modul.name));
     }
-    var result = await showCheckBoxBottomSheetDialog(Get.context!, title: "Grup Kodu Seçiniz", children: viewModel.grupKoduList?.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e)).toList());
+    var result =
+        await showCheckBoxBottomSheetDialog(Get.context!, title: "Grup Kodu Seçiniz", children: viewModel.grupKoduList?.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e)).toList());
     if (result != null) {
       return result;
     }
     return null;
   }
 
+  Future<StokMuhasebeKoduModel?> showMuhasebeKoduBottomSheetDialog(BuildContext context) async {
+    if (viewModel.muhasebeKoduList.ext.isNullOrEmpty) {
+      viewModel.changeMuhasebeKoduList(await NetworkManager().getMuhasebeKodlari());
+    }
+    return await showBottomSheetDialog(context,
+        title: "Muhasebe Kodu Seçiniz",
+        children: viewModel.muhasebeKoduList?.map((e) => BottomSheetModel(title: e.adi ?? "", description: "ALIŞ: ${e.alisHesabi ?? ""}\nSATIŞ: ${e.satisHesabi ?? ""}", value: e)).toList());
+  }
+
   Future<PlasiyerList?> showPlasiyerBottomSheetDialog(BuildContext context) async {
     List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? [];
-    PlasiyerList? plasiyer =
-        await showRadioBottomSheetDialog(context, title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? e.plasiyerKodu ?? "", value: e)).toList());
-    return plasiyer;
+    return await showRadioBottomSheetDialog(context,
+        title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? e.plasiyerKodu ?? "", value: e)).toList());
   }
 
   Future<BaseProjeModel?> showProjeBottomSheetDialog(BuildContext context) async {

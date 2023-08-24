@@ -232,10 +232,10 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                 keyboardType: const TextInputType.numberWithOptions(decimal: true),
                 onChanged: (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
               ),
-            ).yetkiVarMi(yetkiController.siparisEkMaliyet1GizlenecekMi),
+            ).yetkiVarMi(!yetkiController.siparisMSEkMaliyet2AktifMi),
             Expanded(
               child: CustomTextField(
-                labelText: "Tevkifat",
+                labelText: yetkiController.siparisSatisEkMaliyet2Adi ?? "Tevkifat",
                 enabled: enable,
                 keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
                 controller: tevkifatController,
@@ -268,7 +268,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                 keyboardType: const TextInputType.numberWithOptions(decimal: true),
                 onChanged: (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
               ),
-            ).yetkiVarMi(yetkiController.siparisEkMaliyet3GizlenecekMi),
+            ).yetkiVarMi(!yetkiController.siparisMSEkMaliyet2AktifMi),
             Expanded(
               child: CustomTextField(
                 labelText: "Vade Günü",

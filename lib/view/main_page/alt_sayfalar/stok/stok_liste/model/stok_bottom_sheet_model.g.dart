@@ -40,6 +40,8 @@ StokBottomSheetModel _$StokBottomSheetModelFromJson(
       ekranTipi: json['EkranTipi'] as String?,
       faturaTipi: json['FaturaTipi'] as int?,
       resimGoster: json['ResimGoster'] as String?,
+      stokKodu: json['StokKodu'] as String?,
+      kisitYok: json['KisitYok'] as bool?,
     );
 
 Map<String, dynamic> _$StokBottomSheetModelToJson(
@@ -65,6 +67,8 @@ Map<String, dynamic> _$StokBottomSheetModelToJson(
   writeNotNull('EkranTipi', instance.ekranTipi);
   writeNotNull('FaturaTipi', instance.faturaTipi);
   writeNotNull('ResimGoster', instance.resimGoster);
+  writeNotNull('KisitYok', instance.kisitYok);
+  writeNotNull('StokKodu', instance.stokKodu);
   writeNotNull(
       'ArrGrupKodu', instance.arrGrupKodu?.map((e) => e.toJson()).toList());
   writeNotNull('ArrKod1', instance.arrKod1?.map((e) => e.toJson()).toList());

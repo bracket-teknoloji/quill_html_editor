@@ -19,6 +19,7 @@ import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/auth/model/login_model.dart";
 
 import "../../../view/add_company/model/account_response_model.dart";
+import "../../../view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
 import "../../base/model/base_empty_model.dart";
 import "../../base/model/base_grup_kodu_model.dart";
 import "../../base/model/base_pdf_model.dart";
@@ -302,6 +303,10 @@ class NetworkManager {
     } else {
       return GenericResponseModel(success: false);
     }
+  }
+    Future<List<StokMuhasebeKoduModel>> getMuhasebeKodlari() async {
+    GenericResponseModel result = await dioGet<StokMuhasebeKoduModel>(path: ApiUrls.getMuhasebeKodlari, bodyModel: StokMuhasebeKoduModel());
+    return result.data.map((e) => e as StokMuhasebeKoduModel).toList().cast<StokMuhasebeKoduModel>();
   }
 
   Future<String?> getSiradakiBelgeNo(SiradakiBelgeNoModel model) async {

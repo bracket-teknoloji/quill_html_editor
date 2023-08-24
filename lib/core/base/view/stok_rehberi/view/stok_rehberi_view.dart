@@ -246,13 +246,15 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 return Card(
                                   child: ListTile(
                                     onTap: () async {
+                                      StokListesiModel? stokModel;
                                       if (BaseSiparisEditModel.instance.kalemEkliMi(stok)) {
                                         var result = await dialogManager.showStokKayitliDialog(viewModel.stokListesi![index]);
                                         if (result != true) {
                                           return;
                                         }
                                       }
-                                      await Get.toNamed("/kalemEkle", arguments: stok);
+                                      stokModel = await getSelectedData(stok);
+                                      await Get.toNamed("/kalemEkle", arguments: stokModel ?? stok);
                                     },
                                     title: Text(stok?.stokKodu ?? "", textAlign: TextAlign.start, style: const TextStyle(fontWeight: FontWeight.bold)),
                                     subtitle: Column(
@@ -297,6 +299,15 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
       }
       viewModel.setStokListesi(response.data as List);
     }
+  }
+
+  Future<StokListesiModel?> getSelectedData(StokListesiModel? model) async {
+    viewModel.setSelectedStokModel(model?.stokKodu ?? "");
+    GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: viewModel.stokBottomSheetModel.toJson(), bodyModel: StokListesiModel());
+    if (response.success == true) {
+      return response.data.first;
+    }
+    return null;
   }
 
   void controllerInitializer() {

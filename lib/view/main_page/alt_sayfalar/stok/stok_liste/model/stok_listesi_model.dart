@@ -36,7 +36,7 @@ class StokListesiModel with NetworkManagerMixin {
   double? satisFiat4;
   double? satisKdv;
   int? alisDovTip;
-  int? bulunanFiyat;
+  double? bulunanFiyat;
   int? depoKodu;
   int? fiatBirimi;
   int? muhdetayKodu;
@@ -80,7 +80,6 @@ class StokListesiModel with NetworkManagerMixin {
   String? stokAdi;
   String? stokKodu;
   String? ureticiKodu;
-  
 
   static StokListesiModel? _instance;
 

@@ -34,6 +34,22 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
     });
   }
 
+  late final _$muhasebeKoduListAtom = Atom(
+      name: '_BottomSheetStateManagerBase.muhasebeKoduList', context: context);
+
+  @override
+  ObservableList<StokMuhasebeKoduModel>? get muhasebeKoduList {
+    _$muhasebeKoduListAtom.reportRead();
+    return super.muhasebeKoduList;
+  }
+
+  @override
+  set muhasebeKoduList(ObservableList<StokMuhasebeKoduModel>? value) {
+    _$muhasebeKoduListAtom.reportWrite(value, super.muhasebeKoduList, () {
+      super.muhasebeKoduList = value;
+    });
+  }
+
   late final _$radioGroupValueAtom = Atom(
       name: '_BottomSheetStateManagerBase.radioGroupValue', context: context);
 
@@ -273,6 +289,18 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
   }
 
   @override
+  void changeMuhasebeKoduList(List<StokMuhasebeKoduModel> value) {
+    final _$actionInfo =
+        _$_BottomSheetStateManagerBaseActionController.startAction(
+            name: '_BottomSheetStateManagerBase.changeMuhasebeKoduList');
+    try {
+      return super.changeMuhasebeKoduList(value);
+    } finally {
+      _$_BottomSheetStateManagerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void changeRadioGroupValue(String value) {
     final _$actionInfo =
         _$_BottomSheetStateManagerBaseActionController.startAction(
@@ -481,6 +509,7 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
   String toString() {
     return '''
 grupKoduList: ${grupKoduList},
+muhasebeKoduList: ${muhasebeKoduList},
 radioGroupValue: ${radioGroupValue},
 cariTipi: ${cariTipi},
 sehir: ${sehir},

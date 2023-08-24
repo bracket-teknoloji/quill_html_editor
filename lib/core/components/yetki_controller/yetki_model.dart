@@ -34,15 +34,15 @@ class ProfilResponseModel {
   static const String faturaGizlenecekAlanEkAlan1 = "ekalan1"; // apk 177
   static const String faturaGizlenecekAlanHizliUrunGirisi = "hizli_urun_girisi"; // apk 219
 
-  static const String fautraDegismeyecekAlanKdvOrani = "kdv_orani";
-  static const String fautraDegismeyecekAlanKdvDahilHaric = "kdv_dahil_haric";
-  static const String fautraDegismeyecekAlanKosul = "kosul";
-  static const String fautraDegismeyecekAlanIskontolar = "iskontolar";
-  static const String fautraDegismeyecekAlanVadeGunu = "vade_gunu";
-  static const String fautraDegismeyecekAlanKalemKosul = "kosul_kalem"; // değişmeyecek, gizlenecek alan olarak
+  static const String faturaDegismeyecekAlanKdvOrani = "kdv_orani";
+  static const String faturaDegismeyecekAlanKdvDahilHaric = "kdv_dahil_haric";
+  static const String faturaDegismeyecekAlanKosul = "kosul";
+  static const String faturaDegismeyecekAlanIskontolar = "iskontolar";
+  static const String faturaDegismeyecekAlanVadeGunu = "vade_gunu";
+  static const String faturaDegismeyecekAlanKalemKosul = "kosul_kalem"; // değişmeyecek, gizlenecek alan olarak
   // kullanılıyor. (apk 209)
   // apk 216 (değişmeyecek alan olarak eklendi.)
-  static const String fautraDegismeyecekAlanTarih = "tarih";
+  static const String faturaDegismeyecekAlanTarih = "tarih";
   static const String faturaDegismeyecekOzelKod1 = "ozelkod1";
   static const String faturaDegismeyecekOzelKod2 = "ozelkod2";
 }

@@ -20,6 +20,8 @@ class StokBottomSheetModel with NetworkManagerMixin {
   String? ekranTipi;
   int? faturaTipi;
   String? resimGoster;
+  bool? kisitYok;
+  String? stokKodu;
   List<BaseGrupKoduModel>? arrGrupKodu = [];
   List<BaseGrupKoduModel>? arrKod1 = [];
   List<BaseGrupKoduModel>? arrKod2 = [];
@@ -51,7 +53,9 @@ class StokBottomSheetModel with NetworkManagerMixin {
       this.cariKodu,
       this.ekranTipi,
       this.faturaTipi,
-      this.resimGoster});
+      this.resimGoster,
+      this.stokKodu,
+      this.kisitYok});
   //setter for singleton
   void setSingleton(StokBottomSheetModel value) => _instance = value;
   @override

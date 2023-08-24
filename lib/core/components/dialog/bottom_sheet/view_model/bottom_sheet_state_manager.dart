@@ -1,5 +1,6 @@
 import "package:mobx/mobx.dart";
 
+import "../../../../../view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
 import "../../../../base/model/base_grup_kodu_model.dart";
 
 part "bottom_sheet_state_manager.g.dart";
@@ -9,10 +10,15 @@ class BottomSheetStateManager = _BottomSheetStateManagerBase with _$BottomSheetS
 abstract class _BottomSheetStateManagerBase with Store {
   @observable
   ObservableList<BaseGrupKoduModel>? grupKoduList = <BaseGrupKoduModel>[].asObservable();
-  
+  @observable
+  ObservableList<StokMuhasebeKoduModel>? muhasebeKoduList = <StokMuhasebeKoduModel>[].asObservable();
   @action
   void changeGrupKoduList(List<BaseGrupKoduModel> value) {
     grupKoduList = value.asObservable();
+  }
+  @action
+  void changeMuhasebeKoduList(List<StokMuhasebeKoduModel> value) {
+    muhasebeKoduList = value.asObservable();
   }
   @observable
   String? radioGroupValue = "";

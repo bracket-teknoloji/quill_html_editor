@@ -94,6 +94,7 @@ class YetkiController {
   //! Sipariş
 
   //* Genel Sipariş Yetkileri
+  String? get siparisSatisEkMaliyet2Adi => _musteriSiparisiMi ? paramModel?.satisEkMaliyet2Adi : paramModel?.alisEkMaliyet2Adi;
   int get siparisSatirKademeliIskontoSayisi => _musteriSiparisiMi ? paramModel?.satisSatirKademeliIskontoSayisi ?? 0 : paramModel?.alisSatirKademeliIskontoSayisi ?? 0;
 
   bool get _musteriSiparisiMi => StaticVariables.instance.isMusteriSiparisleri;
@@ -114,6 +115,7 @@ class YetkiController {
   bool get siparisEkMaliyet1GizlenecekMi => siparisMSGizlenecekAlanMi(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet1);
   bool get siparisEkMaliyet2GizlenecekMi => siparisMSGizlenecekAlanMi(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet2);
   bool get siparisEkMaliyet3GizlenecekMi => siparisMSGizlenecekAlanMi(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet3);
+  bool get siparisHizmetAktifMi => _musteriSiparisiMi ? siparisMSSatisHizmetAktifMi : siparisSSSatisHizmetAktifMi;
 
   //* Müşteri Siparişi
   //😳SatisSatirKademeliIskontoSayisi => 0 ise kademeli iskonto yok demektir. Kaç tane varsa o kadar genisk ve geniskTipi gelecek
@@ -138,6 +140,8 @@ class YetkiController {
   bool get siparisMSMiktar2Sor => isTrue(paramModel?.satisMiktar2Sor, skipAdmin: true);
   bool get siparisMSISk1YuzdeSor => isTrue((paramModel?.satisSatirIsk1YuzdeSor ?? false) && StaticVariables.instance.isMusteriSiparisleri, skipAdmin: true);
   bool get siparisMSsatirdaKDVSor => isTrue(paramModel?.satisSatirdaKdvSor, skipAdmin: true);
+  bool get siparisMSSatisHizmetAktifMi => isTrue(paramModel?.satisHizmetAktif, skipAdmin: true);
+  bool get siparisMSEkMaliyet2AktifMi => isTrue(paramModel?.satisEkMaliyet2Aktif, skipAdmin: true);
 
   // bool get siparisMSbelgeKopyala => isTrue(yetkiModel?.siparisMusSipBelge);
   ///? Eğer içeriyorsa boş geçilecek
@@ -171,7 +175,7 @@ class YetkiController {
   bool get siparisSSKosulAktifMi => isTrue(paramModel?.alisKosulAktif, skipAdmin: true);
   bool get siparisSSFarkliTeslimCariAktif => isTrue(paramModel?.alisFarkliTeslimCariAktif, skipAdmin: true);
   bool get siparisSSmiktar2Sor => isTrue(paramModel?.alisMiktar2Sor, skipAdmin: true);
-
   bool get siparisSSsatirdaKDVSor => isTrue(paramModel?.alisSatirdaKdvSor, skipAdmin: true);
+  bool get siparisSSSatisHizmetAktifMi => isTrue(paramModel?.alisHizmetAktif, skipAdmin: true);
   // bool get siparisSSISk1YuzdeSor => isTrue(paramModel?.alisSatirIsk1YuzdeSor, skipAdmin: true);
 }

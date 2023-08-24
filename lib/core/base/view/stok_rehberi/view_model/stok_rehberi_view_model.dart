@@ -66,6 +66,13 @@ abstract class _StokRehberiViewModelBase with Store {
   @action
   void setGrupKodu(List<BaseGrupKoduModel> value) => stokBottomSheetModel = stokBottomSheetModel..arrGrupKodu = value;
   @action
+  void setSelectedStokModel(String value) {
+    stokBottomSheetModel.stokKodu = value;
+    stokBottomSheetModel.kisitYok = true;
+    
+  }
+
+  @action
   void resetPage() {
     setStokListesi(null);
     resetSayfa();
