@@ -97,7 +97,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     final response = await networkManager.dioGet<CompanyModel>(
       path: ApiUrls.veriTabanlari,
       bodyModel: CompanyModel(),
-      addTokenKey: true,
     );
     final data = response.data;
     for (CompanyModel element in data) {
@@ -128,9 +127,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     List list = [];
     final response = await networkManager.dioGet<IsletmeModel>(
       path: ApiUrls.isletmelerSubeler,
-      bodyModel: IsletmeModel(),
-      addTokenKey: true,
-      addQuery: true,
+      bodyModel: IsletmeModel(),      
       queryParameters: {"Veritabani": sirket},
     );
     final data = response.data;
@@ -308,7 +305,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                 response = await networkManager.dioPost<MainPageModel>(
                                     path: ApiUrls.createSession,
                                     bodyModel: MainPageModel(),
-                                    addTokenKey: true,
+                                    
                                     showError: false,
                                     data: model,
                                     headers: {

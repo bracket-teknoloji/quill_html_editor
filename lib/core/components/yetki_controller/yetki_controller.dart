@@ -1,3 +1,4 @@
+import "package:kartal/kartal.dart";
 import "package:picker/core/components/yetki_controller/yetki_model.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
 
@@ -158,8 +159,9 @@ class YetkiController {
       isTrue(isTrue((yetkiModel?.siparisMusteriSiparisiAciklamaAlanlari?.contains(index) ?? false), skipAdmin: true) && (paramModel?.satisEkAciklamalarAktif ?? false));
 
   ///? Eğer içeriyorsa gösterilecek (Kalemler İçin)
-  bool siparisMSSatirAciklamaAlanlari(int index) =>
-      isTrue((yetkiModel?.siparisMusteriSiparisiSatirAciklamaAlanlari?.contains(index) ?? false) && (paramModel?.satisSatirdaAciklamalarAktif ?? false), skipAdmin: true);
+  bool siparisMSSatirAciklamaAlanlari(int? index) => index == null
+      ? isTrue(yetkiModel?.siparisMusteriSiparisiSatirAciklamaAlanlari?.ext.isNotNullOrEmpty, skipAdmin: true)
+      : isTrue((yetkiModel?.siparisMusteriSiparisiSatirAciklamaAlanlari?.contains(index) ?? false) && (paramModel?.satisSatirdaAciklamalarAktif ?? false), skipAdmin: true);
 
   //* Satıcı Siparişi
   // bool get alisOzelKod1AktifMi => isTrue(paramModel?.alisO, skipAdmin: true);

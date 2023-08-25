@@ -51,36 +51,38 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
         body: SingleChildScrollView(
           child: Padding(
             padding: context.padding.normal,
-            child: Form(
-              key: formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  CustomWidgetWithLabel(
-                    text: "Firma E-Posta Adresi",
-                    child: CustomTextField(controller: emailController, keyboardType: TextInputType.emailAddress, isMust: true),
-                  ),
-                  Padding(
-                    padding: context.padding.verticalLow,
-                    child: CustomWidgetWithLabel(
-                      text: "Şifre",
-                      child: CustomTextField(keyboardType: TextInputType.visiblePassword, controller: passwordController, isMust: true),
+            child: AutofillGroup(
+              child: Form(
+                key: formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    CustomWidgetWithLabel(
+                      text: "Firma E-Posta Adresi",
+                      child: CustomTextField(controller: emailController, keyboardType: TextInputType.emailAddress, isMust: true),
                     ),
-                  ),
-                  const Wrap(
-                    direction: Axis.horizontal,
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    children: [Icon(Icons.question_mark_rounded), Text("Bilgileri girerken büyük-küçük uyumuna dikkat ediniz.", softWrap: true)],
-                  ),
-                  Padding(
-                    padding: context.padding.verticalLow,
-                    child: ElevatedButton(
-                        onPressed: () {
-                          _getQR(context);
-                        },
-                        child: const Text("BİLGİLERİ QR KOD'DAN AL")),
-                  )
-                ],
+                    Padding(
+                      padding: context.padding.verticalLow,
+                      child: CustomWidgetWithLabel(
+                        text: "Şifre",
+                        child: CustomTextField(keyboardType: TextInputType.visiblePassword, controller: passwordController, isMust: true),
+                      ),
+                    ),
+                    const Wrap(
+                      direction: Axis.horizontal,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [Icon(Icons.question_mark_rounded), Text("Bilgileri girerken büyük-küçük uyumuna dikkat ediniz.", softWrap: true)],
+                    ),
+                    Padding(
+                      padding: context.padding.verticalLow,
+                      child: ElevatedButton(
+                          onPressed: () {
+                            _getQR(context);
+                          },
+                          child: const Text("BİLGİLERİ QR KOD'DAN AL")),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
@@ -97,10 +99,10 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
       final response = await networkManager.getUyeBilgileri(emailController.text, getFromCache: false, password: encodedPassword);
       dialogManager.hideAlertDialog;
       if (response.success == true) {
-          CacheManager.setHesapBilgileri(AccountModel.instance);
-          Get.back(result: true);
-          Get.offAndToNamed("/addCompany");
-          dialogManager.showSnackBar("Başarılı");
+        CacheManager.setHesapBilgileri(AccountModel.instance);
+        Get.back(result: true);
+        Get.offAndToNamed("/addCompany");
+        dialogManager.showSnackBar("Başarılı");
       } else {
         dialogManager.showAlertDialog(response.message ?? "");
       }
@@ -129,7 +131,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
           for (AccountResponseModel item in response.data!) {
             if (!CacheManager.accountsBox.containsKey(item.email)) {
               Get.offAndToNamed("/addCompany");
-          CacheManager.setHesapBilgileri(AccountModel.instance);
+              CacheManager.setHesapBilgileri(AccountModel.instance);
               CacheManager.setAccounts(item);
               dialogManager.showSnackBar("Başarılı");
             } else {

@@ -543,7 +543,7 @@ class KalemModel {
   @HiveField(9)
   List<dynamic>? hucreList;
   @HiveField(10)
-  List<dynamic>? kalemModelHucreList;
+  List<StokList>? kalemModelHucreList;
   @HiveField(11)
   List<dynamic>? seriList;
   @HiveField(12)
@@ -637,6 +637,8 @@ class KalemModel {
   int? isk6Tipi;
   @HiveField(56)
   double? iskonto6;
+  @HiveField(57)
+  List<KalemModel>? kalemList;
 
   KalemModel(
       {this.iskonto1OranMi,
@@ -695,7 +697,7 @@ class KalemModel {
       this.dovizFiyati,
       this.malfazCevrimliMiktar,
       this.malFazlasiMiktar,
-      this.kosulKodu});
+      this.kosulKodu, this.kalemList});
 
   double get toplamKalemMiktari => (miktar ?? 0) + (malFazlasiMiktar ?? 0);
   double get brutTutar => ((miktar ?? 0) + (malFazlasiMiktar ?? 0)) * (brutFiyat ?? 0);

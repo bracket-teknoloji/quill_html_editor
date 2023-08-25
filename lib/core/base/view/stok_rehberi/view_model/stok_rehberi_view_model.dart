@@ -52,6 +52,7 @@ abstract class _StokRehberiViewModelBase with Store {
       ekranTipi: "R",
       resimGoster: "H",
       faturaTipi: 2,
+      okutuldu: true,
       cariKodu: BaseSiparisEditModel.instance.cariKodu,
       menuKodu: "STOK_SREH");
 
@@ -66,10 +67,9 @@ abstract class _StokRehberiViewModelBase with Store {
   @action
   void setGrupKodu(List<BaseGrupKoduModel> value) => stokBottomSheetModel = stokBottomSheetModel..arrGrupKodu = value;
   @action
-  void setSelectedStokModel(String value) {
+  void setSelectedStokModel(String? value) {
     stokBottomSheetModel.stokKodu = value;
-    stokBottomSheetModel.kisitYok = true;
-    
+    stokBottomSheetModel.kisitYok = value != null;
   }
 
   @action

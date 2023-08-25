@@ -107,18 +107,16 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
               child: CustomWidgetWithLabel(
                 isVertical: true,
                 text: "Şahıs Firması",
-                child: 
-                  Observer(
-                      builder: (_) => Switch.adaptive(
-                          value: viewModel.isSahisFirmasi,
-                          onChanged: enabled
-                              ? (value) {
-                                  viewModel.changeIsSahisFirmasi(value);
-                                  model?.sahisFirmasiMi = value;
-                                  viewModel.changeModel(model);
-                                }
-                              : null)),
-                
+                child: Observer(
+                    builder: (_) => Switch.adaptive(
+                        value: viewModel.isSahisFirmasi,
+                        onChanged: enabled
+                            ? (value) {
+                                viewModel.changeIsSahisFirmasi(value);
+                                model?.sahisFirmasiMi = value;
+                                viewModel.changeModel(model);
+                              }
+                            : null)),
               ),
             ),
             Observer(builder: (_) {
@@ -350,18 +348,19 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                                     ?..plasiyerAciklama = null
                                     ..plasiyerKodu = null))))),
               Expanded(
-                  child: CustomWidgetWithLabel(isVertical: true, text: "Dövizli", child: 
-                Observer(
-                    builder: (_) => Switch.adaptive(
-                        value: viewModel.isDovizli,
-                        onChanged: enabled
-                            ? (value) {
-                                viewModel.changeIsDovizli(value);
-                                model?.dovizli = value;
-                                viewModel.changeModel(model);
-                              }
-                            : null))
-              ))
+                  child: CustomWidgetWithLabel(
+                      isVertical: true,
+                      text: "Dövizli",
+                      child: Observer(
+                          builder: (_) => Switch.adaptive(
+                              value: viewModel.isDovizli,
+                              onChanged: enabled
+                                  ? (value) {
+                                      viewModel.changeIsDovizli(value);
+                                      model?.dovizli = value;
+                                      viewModel.changeModel(model);
+                                    }
+                                  : null))))
             ]),
             Observer(
                 builder: (_) => Visibility(
@@ -457,8 +456,8 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
       bodyModel: CariDetayModel(),
       addSirketBilgileri: true,
       addCKey: true,
-      addTokenKey: true,
-      // addQuery: true,
+
+      // ,
       queryParameters: {"CariKodu": query},
     );
     if (result.data != null && result.data!.isNotEmpty) {

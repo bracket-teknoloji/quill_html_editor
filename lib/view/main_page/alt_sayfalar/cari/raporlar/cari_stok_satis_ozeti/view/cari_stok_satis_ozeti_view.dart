@@ -217,12 +217,12 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                                   onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: [
                                     BottomSheetModel(
                                         title: "Cari Stok Satış Hareketleri",
-                                        iconWidget: Icons.inventory,
+                                        iconWidget: Icons.inventory_2_outlined,
                                         onTap: () {
                                           Get.back();
                                           return Get.toNamed("/mainPage/stokHareketleri", arguments: viewModel.modelList?[index].stokKodu);
                                         }),
-                                    BottomSheetModel(title: "Stok İşlemleri", iconWidget: Icons.inventory, onTap: () {}),
+                                    BottomSheetModel(title: "Stok İşlemleri", iconWidget: Icons.list_alt_outlined, onTap: () {}),
                                   ]),
                                 ),
                               );

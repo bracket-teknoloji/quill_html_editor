@@ -724,14 +724,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   void deleteStok(String stokKodu) {
     dialogManager.showAreYouSureDialog(() async {
       Get.back();
-      GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(
-        bodyModel: StokListesiModel(),
-        path: ApiUrls.deleteStok,
-        queryParameters: {"Kod": stokKodu},
-        addCKey: true,
-        addTokenKey: true,
-        addSirketBilgileri: true,
-      );
+      GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(bodyModel: StokListesiModel(), path: ApiUrls.deleteStok, queryParameters: {"Kod": stokKodu});
       if (response.success ?? false) {
         dialogManager.showSnackBar("Başarıyla Silindi");
         viewModel.resetSayfa();

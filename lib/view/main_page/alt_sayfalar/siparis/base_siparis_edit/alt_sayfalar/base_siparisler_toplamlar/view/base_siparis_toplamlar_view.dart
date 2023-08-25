@@ -307,6 +307,9 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
     ekMal1Controller = TextEditingController(text: model.ekMaliyet1Tutari?.dotSeparatedWithFixedDigits);
     tevkifatController = TextEditingController(text: model.ekMaliyet2Tutari?.dotSeparatedWithFixedDigits);
     ekMal3Controller = TextEditingController(text: model.ekMaliyet3Tutari?.dotSeparatedWithFixedDigits);
+    if (model.vadeGunu == null && model.vadeTarihi == null) {
+      viewModel.setVadeTarihi(DateTime.now());
+    }
     vadeGunuController = TextEditingController(text: model.vadeGunu.toStringIfNull ?? (model.vadeTarihi?.difference(DateTime.now()))?.inDays.toStringIfNull);
   }
 

@@ -307,9 +307,6 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                                 var result = await networkManager.dioPost<CariListesiModel>(
                                                   path: ApiUrls.deleteCari,
                                                   bodyModel: CariListesiModel(),
-                                                  addCKey: true,
-                                                  addSirketBilgileri: true,
-                                                  addTokenKey: true,
                                                   queryParameters: {"CariKodu": object.cariKodu ?? ""},
                                                 );
                                                 dialogManager.hideAlertDialog;
@@ -504,7 +501,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   //       bodyModel: CariGrupKoduModel(),
   //       addCKey: true,
   //       headers: {"Modul": "CARI", "GrupNo": "1"},
-  //       addQuery: true,
+  //        
   //       addSirketBilgileri: true,
   //       queryParameters: {"Modul": "CARI", "GrupNo": "-1"});
   //   return responseKod;

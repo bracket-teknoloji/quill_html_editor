@@ -95,7 +95,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
 
   AppBar appBar() {
     return AppBar(
-      title: AppBarTitle(title: "Kalem Ekle", subtitle: viewModel.model?.stokAdi ?? ""),
+      title: Observer(builder: (_) {
+        return AppBarTitle(title: "Kalem Ekle", subtitle: viewModel.model?.stokAdi ?? "");
+      }),
       actions: [
         IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
         IconButton(
@@ -211,7 +213,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   Observer(builder: (_) {
                     return Row(
                       children: [
-                        Expanded(child: CustomTextField(labelText: "Kalem Adı", controller: kalemAdiController, readOnly: true)),
+                        Expanded(child: CustomTextField(labelText: "Kalem Adı", controller: kalemAdiController, onChanged: (p0) => viewModel.kalemModel.stokAdi = p0)),
                         Expanded(
                             child: CustomTextField(
                                 labelText: "Muhasebe Kodu",
@@ -355,10 +357,31 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         labelText: "Miktar 2",
                         controller: miktar2Controller,
                         keyboardType: TextInputType.number,
-                        onChanged: (value) => viewModel.setMiktar2(int.tryParse(value) ?? 0),
+                        validator: (p0) => (p0 == "0" || p0 == null) ? "Lütfen miktar giriniz" : null,
+                        isMust: widget.stokListesiModel?.koliMi ?? false,
+                        onChanged: (value) {
+                          viewModel.setMiktar2(int.tryParse(value) ?? 0);
+                          if (widget.stokListesiModel?.koliMi ?? false) {
+                            viewModel.setMiktar(int.tryParse(value) ?? 0);
+                          }
+                        },
                         suffix: Wrap(children: [
-                          IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () => viewModel.decreaseMiktar2(miktar2Controller)),
-                          IconButton(icon: const Icon(Icons.add_outlined), onPressed: () => viewModel.increaseMiktar2(miktar2Controller)),
+                          IconButton(
+                              icon: const Icon(Icons.remove_outlined),
+                              onPressed: () {
+                                viewModel.decreaseMiktar2(miktar2Controller);
+                                if (widget.stokListesiModel?.koliMi ?? false) {
+                                  viewModel.decreaseMiktar(miktarController);
+                                }
+                              }),
+                          IconButton(
+                              icon: const Icon(Icons.add_outlined),
+                              onPressed: () {
+                                viewModel.increaseMiktar2(miktar2Controller);
+                                if (widget.stokListesiModel?.koliMi ?? false) {
+                                  viewModel.increaseMiktar(miktarController);
+                                }
+                              }),
                         ]),
                       )),
                     ],
@@ -406,14 +429,17 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         controller: kdvOraniController,
                         isMust: true,
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        onChanged: (p0) => viewModel.setKdvOrani(double.tryParse(p0.replaceAll(RegExp(r","), ".")) ?? 0),
+                        isFormattedString: true,
+                        onChanged: (p0) => viewModel.setKdvOrani(p0.toDoubleWithFormattedString),
                         suffix: IconButton(
                           icon: const Icon(Icons.more_horiz_outlined),
                           onPressed: () async {
                             var result = await bottomSheetDialogManager.showKdvOranlariBottomSheetDialog(context);
                             if (result != null) {
                               viewModel.setKdvOrani(result);
-                              kdvOraniController.text = result.toString();
+                              kdvOraniController.text = result.toIntIfDouble.toStringIfNull ?? "";
+                              // kdvOraniController.value = TextEditingValue(text: result.toIntIfDouble.toStringIfNull ?? "");
+                              // kdvOraniController.buildTextSpan(context: context, withComposing: true);
                             }
                           },
                         ),
@@ -423,7 +449,8 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               labelText: "Fiyat",
                               controller: fiyatController,
                               keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                              onChanged: (p0) => viewModel.setBrutFiyat(double.tryParse(p0.replaceAll(RegExp(r","), ".")) ?? 0))),
+                              isFormattedString: true,
+                              onChanged: (p0) => viewModel.setBrutFiyat(p0.toDoubleWithFormattedString))),
                     ],
                   ),
                   ...List.generate(yetkiController.siparisSatirKademeliIskontoSayisi > 6 ? 6 : yetkiController.siparisSatirKademeliIskontoSayisi, (index) {
@@ -460,7 +487,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       ],
                     ).yetkiVarMi(true);
                   }),
-                  Text("Ek Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize)).paddingSymmetric(vertical: UIHelper.lowSize),
+                  Text("Ek Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize)).paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(null)),
                   CustomTextField(labelText: getAciklamaLabel(1), onChanged: (value) => viewModel.kalemModel.aciklama1).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(1)),
                   CustomTextField(labelText: getAciklamaLabel(2), onChanged: (value) => viewModel.kalemModel.aciklama2).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(2)),
                   CustomTextField(labelText: getAciklamaLabel(3), onChanged: (value) => viewModel.kalemModel.aciklama3).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(3)),
@@ -523,11 +550,12 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   }
 
   void controllerFiller() {
+    viewModel.kalemModel.kalemModelHucreList = widget.stokListesiModel?.stokList;
     viewModel.kalemModel.stokKodu ??= widget.stokListesiModel?.stokKodu;
     kalemAdiController.text = widget.stokListesiModel?.stokAdi ?? widget.stokListesiModel?.stokKodu ?? widget.kalemModel?.stokAdi ?? widget.kalemModel?.stokKodu ?? "";
     ekAlan1Controller.text = widget.kalemModel?.ekalan1 ?? "";
     ekAlan2Controller.text = widget.kalemModel?.ekalan2 ?? "";
-    fiyatController.text = viewModel.model?.satisFiat1.toIntIfDouble.toStringIfNull ?? widget.kalemModel?.brutFiyat?.toStringIfNull ?? "";
+    fiyatController.text = viewModel.model?.bulunanFiyat.toIntIfDouble?.commaSeparated ?? "";
     // miktarController.text = viewModel.kalemModel.miktar?.toIntIfDouble.toStringIfNull ?? "";
     // miktar2Controller.text = viewModel.kalemModel.miktar2?.toIntIfDouble.toStringIfNull ?? "";
     malFazMiktarController.text = viewModel.kalemModel.malFazlasiMiktar?.toIntIfDouble.toStringIfNull ?? "";
@@ -545,9 +573,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     viewModel.kalemModel.teslimTarihi = model.teslimTarihi;
     viewModel.setKosul(model.kosulKodu ?? "");
     viewModel.setDepoKodu(model.cikisDepoKodu ?? viewModel.model?.depoKodu ?? 0);
-    viewModel.setFiyat(double.tryParse(fiyatController.text) ?? 0);
+    viewModel.setFiyat(fiyatController.text.toDoubleWithFormattedString);
     viewModel.setProjeKodu(model.projeKodu ?? "");
-    viewModel.setBrutFiyat(double.tryParse(fiyatController.text) ?? 0);
+    viewModel.setBrutFiyat(fiyatController.text.toDoubleWithFormattedString);
     viewModel.setMiktar(int.tryParse(miktarController.text) ?? 0);
     viewModel.setMiktar2(int.tryParse(miktar2Controller.text) ?? 0);
     viewModel.setMFMiktar(int.tryParse(malFazMiktarController.text) ?? 0);

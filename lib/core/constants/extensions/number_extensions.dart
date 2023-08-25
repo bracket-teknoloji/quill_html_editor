@@ -1,4 +1,6 @@
 // an extension on int to separate the digits with commas
+import "package:kartal/kartal.dart";
+
 extension NumExtension on num? {
   String get commaSeparated {
     if (this == null) return "0,00";
@@ -20,6 +22,16 @@ extension NumExtensionWithFixedDigitsAndComma on num? {
       return this!.toStringAsFixed(2).replaceAllMapped(RegExp(r"(\d{1,3})(?=(\d{3})+(?!\d))"), (Match m) => "${m[1]}.");
     } else {
       return "0,00";
+    }
+  }
+}
+
+extension NumExtensionWithFormattedStringToDouble on String? {
+  double get toDoubleWithFormattedString {
+    if (ext.isNotNullOrNoEmpty) {
+      return double.parse(this!.replaceAll(".", "").replaceAll(",", "."));
+    } else {
+      return 0;
     }
   }
 }

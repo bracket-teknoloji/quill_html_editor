@@ -21,14 +21,14 @@ abstract class _KalemEkleViewModelBase with Store {
   bool get dovizliMi => model?.dovizliMi ?? false;
 
   @computed
-  List<String> get olcuBirimiMap =>[model?.olcuBirimi, model?.olcuBirimi2, model?.olcuBirimi3].nullCheck.cast<String>();
+  List<String> get olcuBirimiMap => [model?.olcuBirimi, model?.olcuBirimi2, model?.olcuBirimi3].nullCheck.cast<String>();
 
   @observable
   KalemModel kalemModel = KalemModel();
   @action
   void setKalemModel(KalemModel? value) => kalemModel = value ?? KalemModel();
   @action
-  void setOlcuBirimi(MapEntry<String,int> value) => kalemModel = kalemModel.copyWith(olcuBirimKodu: value.value, olcuBirimAdi: value.key);
+  void setOlcuBirimi(MapEntry<String, int> value) => kalemModel = kalemModel.copyWith(olcuBirimKodu: value.value, olcuBirimAdi: value.key);
   @action
   void setFiyat(double value) => kalemModel = kalemModel.copyWith(satisFiyati: value);
   @action
@@ -51,13 +51,14 @@ abstract class _KalemEkleViewModelBase with Store {
   void setIskonto2(double value) => kalemModel = kalemModel.copyWith(iskonto2: value);
   @action
   void setIskonto3(double value) => kalemModel = kalemModel.copyWith(iskonto3: value);
-    @action
+  @action
   void setIskonto4(double value) => kalemModel = kalemModel.copyWith(iskonto4: value);
   @action
   void setIskonto5(double value) => kalemModel = kalemModel.copyWith(iskonto5: value);
   @action
   void setIskonto6(double value) => kalemModel = kalemModel.copyWith(iskonto6: value);
-
+  @action
+  void setKalemList(List<KalemModel>? list) => kalemModel = kalemModel.copyWith(kalemList: list);
   @action
   void setIskonto1OranMi() => kalemModel = kalemModel.copyWith(iskonto1OranMi: !(kalemModel.iskonto1OranMi ?? false));
   @action
@@ -103,7 +104,7 @@ abstract class _KalemEkleViewModelBase with Store {
   @action
   void decreaseMFMiktar(TextEditingController controller) {
     if ((kalemModel.malFazlasiMiktar ?? 0) > 0) {
-      kalemModel = kalemModel.copyWith(malFazlasiMiktar: (kalemModel.malFazlasiMiktar ?? 0) - 1);
+      kalemModel = kalemModel.copyWith(malFazlasiMiktar: (kalemModel.malFazlasiMiktar ?? 0) - 1, malfazIskAdedi: (kalemModel.malFazlasiMiktar ?? 0) - 1);
       controller.text = (kalemModel.malFazlasiMiktar ?? 0).toIntIfDouble.toString();
     }
   }

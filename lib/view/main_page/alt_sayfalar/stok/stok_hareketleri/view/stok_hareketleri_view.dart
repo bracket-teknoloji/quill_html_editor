@@ -302,6 +302,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                     // BottomSheetModel(title: "Belgeyi Göster"),
                                     BottomSheetModel(
                                         title: "Stok İşlemleri",
+                                        iconWidget: Icons.list_alt_outlined,
                                         onTap: () {
                                           Get.back();
                                           dialogManager.showStokGridViewDialog(widget.model);

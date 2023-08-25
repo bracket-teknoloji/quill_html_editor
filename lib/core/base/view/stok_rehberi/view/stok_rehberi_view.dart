@@ -255,6 +255,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                       }
                                       stokModel = await getSelectedData(stok);
                                       await Get.toNamed("/kalemEkle", arguments: stokModel ?? stok);
+                                      viewModel.setSelectedStokModel(null);
                                     },
                                     title: Text(stok?.stokKodu ?? "", textAlign: TextAlign.start, style: const TextStyle(fontWeight: FontWeight.bold)),
                                     subtitle: Column(
@@ -303,7 +304,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
 
   Future<StokListesiModel?> getSelectedData(StokListesiModel? model) async {
     viewModel.setSelectedStokModel(model?.stokKodu ?? "");
-    GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: viewModel.stokBottomSheetModel.toJson(), bodyModel: StokListesiModel());
+    GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: viewModel.stokBottomSheetModel.toJson(), bodyModel: StokListesiModel(), showLoading: true);
     if (response.success == true) {
       return response.data.first;
     }

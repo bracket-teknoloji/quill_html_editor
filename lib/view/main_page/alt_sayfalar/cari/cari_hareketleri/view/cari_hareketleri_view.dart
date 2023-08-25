@@ -352,7 +352,6 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
     var response = await networkManager.dioGet<CariHareketleriModel>(
       path: ApiUrls.getCariHareketleri,
       bodyModel: CariHareketleriModel(),
-      addTokenKey: true,
       queryParameters: {"SIRALAMA": viewModel.siralama, "EkranTipi": "L", "CariKodu": widget.cari?.cariKodu ?? ""},
       addSirketBilgileri: true,
     );

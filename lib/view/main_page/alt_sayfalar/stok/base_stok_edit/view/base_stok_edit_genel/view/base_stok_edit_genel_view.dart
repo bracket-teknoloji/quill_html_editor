@@ -591,7 +591,6 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
       bodyModel: BaseEditSiradakiKodModel(),
       addCKey: true,
       addSirketBilgileri: true,
-      addTokenKey: true,
       queryParameters: {
         "SonKoduGetir": "H",
         "Kod": kod ?? "",
@@ -623,7 +622,6 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
       bodyModel: StokOlcuBirimleriModel(),
       addCKey: true,
       addSirketBilgileri: true,
-      addTokenKey: true,
     );
     return result.data.map((e) => e as StokOlcuBirimleriModel).toList().cast<StokOlcuBirimleriModel>();
   }
@@ -650,7 +648,6 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
         bodyModel: StokOlcuBirimleriModel(),
         addCKey: true,
         addSirketBilgileri: true,
-        addTokenKey: true,
         data: {"BarkodSira": controller.toStringIfNull, "StokKodu": model?.stokKodu ?? stokKoduController?.text, "Seri": seriValue});
     return result.paramData!["URETILEN_BARKOD"];
   }

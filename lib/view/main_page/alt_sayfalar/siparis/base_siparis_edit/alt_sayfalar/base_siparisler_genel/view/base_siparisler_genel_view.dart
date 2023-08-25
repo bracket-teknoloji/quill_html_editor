@@ -313,10 +313,11 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     readOnly: true,
                     suffixMore: true,
                     controller: ozelKod1Controller,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod1 ?? "")),
                     onTap: () async {
                       ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context);
                       if (result != null) {
-                        model.ozelKod1 = result.kod;
+                        viewModel.setOzelKod1(result.kod);
                         ozelKod1Controller.text = result.aciklama ?? result.kod ?? "";
                       }
                       // var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Özel Kod 1");
@@ -433,7 +434,6 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
     projeController.text = model.projeAciklama ?? "";
     odemeKoduController.text = model.odemeKodu ?? "";
     kosulController.text = model.kosulKodu ?? "";
-    ozelKod1Controller.text = model.ozelKod1 ?? "";
     ozelKod2Controller.text = model.ozelKod2 ?? "";
     // teslimEdilecekKisiController.text = model.slkdfjs ?? "";
     teslimEdilecekKisiController.text = model.acik1 ?? "";
@@ -452,6 +452,12 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
     satisAcik14Controller.text = model.acik14 ?? "";
     satisAcik15Controller.text = model.acik15 ?? "";
     satisAcik16Controller.text = model.acik16 ?? "";
+    if (yetkiController.satisOzelKod1AktifMi && model.ozelKod1 == null) {
+      ozelKod1Controller.text = "T";
+      viewModel.setOzelKod1("T");
+    } else {
+      ozelKod1Controller.text = model.ozelKod1 ?? "";
+    }
   }
 
   void controllerInitializer() {

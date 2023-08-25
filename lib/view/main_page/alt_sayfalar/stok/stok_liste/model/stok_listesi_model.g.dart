@@ -3,6 +3,77 @@
 part of 'stok_listesi_model.dart';
 
 // **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class StokListAdapter extends TypeAdapter<StokList> {
+  @override
+  final int typeId = 2;
+
+  @override
+  StokList read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return StokList(
+      stokKodu: fields[10] as String?,
+      stokAdi: fields[8] as String?,
+      alisKdv: fields[0] as double?,
+      satisKdv: fields[7] as double?,
+      stokFiyatList: (fields[9] as List?)?.cast<dynamic>(),
+      stokList: (fields[11] as List?)?.cast<dynamic>(),
+      bulunanFiyat: fields[1] as double?,
+      paketMi: fields[6] as String?,
+      koliBilesenMiktari: fields[4] as double?,
+      koliBilesenOrani: fields[5] as double?,
+      koliBilesenFiyatorandan: fields[2] as String?,
+      koliBilesenKolikdv: fields[3] as String?,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, StokList obj) {
+    writer
+      ..writeByte(12)
+      ..writeByte(0)
+      ..write(obj.alisKdv)
+      ..writeByte(1)
+      ..write(obj.bulunanFiyat)
+      ..writeByte(2)
+      ..write(obj.koliBilesenFiyatorandan)
+      ..writeByte(3)
+      ..write(obj.koliBilesenKolikdv)
+      ..writeByte(4)
+      ..write(obj.koliBilesenMiktari)
+      ..writeByte(5)
+      ..write(obj.koliBilesenOrani)
+      ..writeByte(6)
+      ..write(obj.paketMi)
+      ..writeByte(7)
+      ..write(obj.satisKdv)
+      ..writeByte(8)
+      ..write(obj.stokAdi)
+      ..writeByte(9)
+      ..write(obj.stokFiyatList)
+      ..writeByte(10)
+      ..write(obj.stokKodu)
+      ..writeByte(11)
+      ..write(obj.stokList);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StokListAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
@@ -168,14 +239,14 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
 StokList _$StokListFromJson(Map<String, dynamic> json) => StokList(
       stokKodu: json['STOK_KODU'] as String?,
       stokAdi: json['STOK_ADI'] as String?,
-      alisKdv: json['ALIS_KDV'] as int?,
-      satisKdv: json['SATIS_KDV'] as int?,
+      alisKdv: (json['ALIS_KDV'] as num?)?.toDouble(),
+      satisKdv: (json['SATIS_KDV'] as num?)?.toDouble(),
       stokFiyatList: json['STOK_FIYAT_LIST'] as List<dynamic>?,
       stokList: json['STOK_LIST'] as List<dynamic>?,
-      bulunanFiyat: json['BULUNAN_FIYAT'] as int?,
+      bulunanFiyat: (json['BULUNAN_FIYAT'] as num?)?.toDouble(),
       paketMi: json['PAKET_MI'] as String?,
-      koliBilesenMiktari: json['KOLI_BILESEN_MIKTARI'] as int?,
-      koliBilesenOrani: json['KOLI_BILESEN_ORANI'] as int?,
+      koliBilesenMiktari: (json['KOLI_BILESEN_MIKTARI'] as num?)?.toDouble(),
+      koliBilesenOrani: (json['KOLI_BILESEN_ORANI'] as num?)?.toDouble(),
       koliBilesenFiyatorandan: json['KOLI_BILESEN_FIYATORANDAN'] as String?,
       koliBilesenKolikdv: json['KOLI_BILESEN_KOLIKDV'] as String?,
     );

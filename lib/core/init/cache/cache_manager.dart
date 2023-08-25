@@ -9,6 +9,7 @@ import "../../../view/auth/model/isletme_model.dart";
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_sehirler_model.dart";
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "../../../view/main_page/model/main_page_model.dart";
 import "../../../view/main_page/model/param_model.dart";
 import "../../../view/main_page/model/sirket_model.dart";
@@ -56,6 +57,7 @@ class CacheManager {
     Hive.registerAdapter(CariListesiModelAdapter());
     Hive.registerAdapter(SiparisTipiEnumAdapter());
     Hive.registerAdapter(ListSiparisEditModelAdapter());
+    Hive.registerAdapter(StokListAdapter());
     initHiveBoxes();
   }
 

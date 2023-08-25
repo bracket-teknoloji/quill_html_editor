@@ -247,6 +247,17 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
+  void setKalemList(List<KalemModel>? list) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setKalemList');
+    try {
+      return super.setKalemList(list);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setIskonto1OranMi() {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setIskonto1OranMi');

@@ -108,7 +108,6 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
     var response = await networkManager.dioPost<CariListesiModel>(
       path: ApiUrls.saveCari,
       bodyModel: CariListesiModel(),
-      addTokenKey: true,
       addCKey: true,
       showError: false,
       addSirketBilgileri: true,

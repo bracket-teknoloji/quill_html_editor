@@ -32,6 +32,11 @@ abstract class _BaseSiparislerGenelViewModelBase with Store {
     model = model.copyWith(kosulKodu: value);
     BaseSiparisEditModel.setInstance(model);
   }
+  @action
+  void setOzelKod1(String? value) {
+    model = model.copyWith(ozelKod1: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
 
   @action
   void setOdemeKodu(String? value) {

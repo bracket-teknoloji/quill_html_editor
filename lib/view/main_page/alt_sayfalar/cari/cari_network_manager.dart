@@ -15,10 +15,7 @@ class CariNetworkManager {
     var responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
         path: ApiUrls.getGrupKodlari,
         bodyModel: BaseGrupKoduModel(),
-        addCKey: true,
         headers: {"Modul": name?.name ?? "CARI", "GrupNo": "-1", "Kullanimda": "E"},
-        addQuery: true,
-        addSirketBilgileri: true,
         queryParameters: {"Modul": name?.name ?? "CARI", "GrupNo": "-1"});
     return responseKod;
   }
@@ -34,13 +31,13 @@ class CariNetworkManager {
   static Future<GenericResponseModel<NetworkManagerMixin>> getkosullar() async {
     Map<String, String> queryParams = {"Tarih": "", "KisitYok": "H", "BelgeTuru": "CARI"};
     var responseKosullar = await networkManager.dioGet<CariKosullarModel>(
-        path: ApiUrls.getKosullar, bodyModel: CariKosullarModel(), addCKey: true, addSirketBilgileri: true, addTokenKey: true, addQuery: true, queryParameters: queryParams);
+        path: ApiUrls.getKosullar, bodyModel: CariKosullarModel(),queryParameters: queryParams);
     return responseKosullar;
   }
 
   static Future<GenericResponseModel<NetworkManagerMixin>> getCariListesi() async {
     var responseKosullar =
-        await networkManager.dioGet<CariKosullarModel>(path: ApiUrls.getKosullar, bodyModel: CariKosullarModel(), addCKey: true, addSirketBilgileri: true, addTokenKey: true, addQuery: true);
+        await networkManager.dioGet<CariKosullarModel>(path: ApiUrls.getKosullar, bodyModel: CariKosullarModel());
     return responseKosullar;
   }
 
@@ -57,10 +54,6 @@ class CariNetworkManager {
     GenericResponseModel? result = await networkManager.dioGet<BaseEditSiradakiKodModel>(
       path: ApiUrls.getSiradakiKod,
       bodyModel: BaseEditSiradakiKodModel(),
-      addCKey: true,
-      addSirketBilgileri: true,
-      addTokenKey: true,
-      addQuery: true,
       queryParameters: queryParameters2,
     );
     DialogManager().hideAlertDialog;

@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
 
+import "../../constants/ui_helper/text_field_formatter_helper.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
 class CustomTextField extends StatefulWidget {
@@ -24,6 +25,7 @@ class CustomTextField extends StatefulWidget {
   final Function(String value)? onSubmitted;
   final bool? fitContent;
   final bool? suffixMore;
+  final bool? isFormattedString;
   const CustomTextField(
       {super.key,
       this.controller,
@@ -43,7 +45,9 @@ class CustomTextField extends StatefulWidget {
       this.validator,
       this.valueWidget,
       this.fitContent,
-      this.suffixMore, this.inputFormatter});
+      this.suffixMore,
+      this.inputFormatter,
+      this.isFormattedString});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -81,16 +85,17 @@ class _CustomTextFieldState extends State<CustomTextField> {
       child: MouseRegion(
         onExit: (event) => FocusManager.instance.primaryFocus?.unfocus(),
         child: TextFormField(
+          autofillHints: widget.keyboardType == TextInputType.emailAddress ? [AutofillHints.email] : null,
           textInputAction: TextInputAction.next,
           keyboardType: widget.keyboardType,
           focusNode: widget.focusNode,
           onTap: widget.onTap,
           onChanged: widget.onChanged,
           onFieldSubmitted: widget.onSubmitted,
-          inputFormatters: widget.inputFormatter,
+          inputFormatters: widget.isFormattedString == true ? [TextFieldFormatterHelper.turkishFormatter] : widget.inputFormatter,
           // onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
           maxLength: widget.maxLength,
-          validator: widget.validator ?? ((widget.isMust ?? false) ? validator : null),
+          validator: widget.validator ?? ((widget.enabled != false ? (widget.isMust ?? false) : false) ? validator : null),
           controller: controller,
           obscureText: widget.keyboardType == TextInputType.visiblePassword,
           readOnly: widget.readOnly ?? false,
@@ -106,7 +111,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         Text.rich(TextSpan(children: [
                           TextSpan(
                               text: widget.labelText ?? "",
-                              style: (widget.isMust ?? false)
+                              style: (widget.enabled != false ? (widget.isMust ?? false) : false)
                                   ? TextStyle(color: UIHelper.primaryColor)
                                   : ((widget.controller?.text == "") ? TextStyle(color: Colors.grey.withOpacity(0.6)) : TextStyle(color: Colors.grey.withOpacity(0.8)))),
                           TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: Colors.grey.withOpacity(0.3), fontSize: 12))

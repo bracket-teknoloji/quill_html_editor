@@ -1,6 +1,8 @@
+import "package:hive/hive.dart";
 import "package:json_annotation/json_annotation.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../core/init/cache/cache_manager.dart";
 
 part "stok_listesi_model.g.dart";
 
@@ -97,8 +99,10 @@ class StokListesiModel with NetworkManagerMixin {
   static void setInstance(StokListesiModel? instance) => _instance = instance;
 
   bool get dovizliMi => fiatBirimi != 0 && (satDovTip != null || alisDovTip != null);
+  bool get koliMi => paketMi == "K" && CacheManager.getAnaVeri()?.paramModel?.karmaKoliUyg == "E";
 }
 
+@HiveType(typeId: 2)
 @JsonSerializable(createFactory: true)
 class StokList {
   StokList({
@@ -118,18 +122,31 @@ class StokList {
 
   factory StokList.fromJson(Map<String, dynamic> json) => _$StokListFromJson(json);
 
-  int? alisKdv;
-  int? bulunanFiyat;
+  @HiveField(0)
+  double? alisKdv;
+  @HiveField(1)
+  double? bulunanFiyat;
+  @HiveField(2)
   String? koliBilesenFiyatorandan;
+  @HiveField(3)
   String? koliBilesenKolikdv;
-  int? koliBilesenMiktari;
-  int? koliBilesenOrani;
+  @HiveField(4)
+  double? koliBilesenMiktari;
+  @HiveField(5)
+  double? koliBilesenOrani;
+  @HiveField(6)
   String? paketMi;
-  int? satisKdv;
+  @HiveField(7)
+  double? satisKdv;
+  @HiveField(8)
   String? stokAdi;
+  @HiveField(9)
   List<dynamic>? stokFiyatList;
+  @HiveField(10)
   String? stokKodu;
+  @HiveField(11)
   List<dynamic>? stokList;
 
   Map<String, dynamic> toJson() => _$StokListToJson(this);
+  double get toplamTutar => (bulunanFiyat ?? 0) * (koliBilesenMiktari ?? 0);
 }

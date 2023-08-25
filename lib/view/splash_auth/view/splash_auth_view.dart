@@ -171,7 +171,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       ..aktifVeritabani = CacheManager.getVeriTabani()["Şirket"]
       ..aktifIsletmeKodu = CacheManager.getVeriTabani()["İşletme"]
       ..aktifSubeKodu = CacheManager.getVeriTabani()["Şube"];
-    final response = await networkManager.dioPost<MainPageModel>(path: ApiUrls.createSession, bodyModel: MainPageModel(), addTokenKey: true, data: AccountModel.instance, headers: {
+    final response = await networkManager.dioPost<MainPageModel>(path: ApiUrls.createSession, bodyModel: MainPageModel(), data: AccountModel.instance, headers: {
       "VERITABANI": CacheManager.getVeriTabani()["Şirket"].toString(),
       "ISLETME_KODU": CacheManager.getVeriTabani()["İşletme"].toString(),
       "SUBE_KODU": CacheManager.getVeriTabani()["Şube"].toString(),

@@ -83,6 +83,18 @@ mixin _$BaseSiparislerGenelViewModel
   }
 
   @override
+  void setOzelKod1(String? value) {
+    final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
+        .startAction(name: '_BaseSiparislerGenelViewModelBase.setOzelKod1');
+    try {
+      return super.setOzelKod1(value);
+    } finally {
+      _$_BaseSiparislerGenelViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setOdemeKodu(String? value) {
     final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
         .startAction(name: '_BaseSiparislerGenelViewModelBase.setOdemeKodu');
