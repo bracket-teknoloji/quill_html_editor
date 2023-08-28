@@ -95,6 +95,7 @@ class StokListesiModel with NetworkManagerMixin {
     _instance ??= StokListesiModel._init()..stokList = [];
     return _instance!;
   }
+ 
 
   static void setInstance(StokListesiModel? instance) => _instance = instance;
 
@@ -149,4 +150,5 @@ class StokList {
 
   Map<String, dynamic> toJson() => _$StokListToJson(this);
   double get toplamTutar => (bulunanFiyat ?? 0) * (koliBilesenMiktari ?? 0);
+
 }

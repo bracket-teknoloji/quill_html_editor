@@ -34,16 +34,16 @@ class _BaseStokEditFiyatListesiViewState extends State<BaseStokEditFiyatListesiV
                 Row(
                   children: [
                     Expanded(child: Text("Bitiş: ${model.fiyatList![index].bittar ?? ""}")),
-                    Expanded(child: Text("Fiyat 1: ${model.fiyatList![index].fiyat1.commaSeparated}")),
+                    Expanded(child: Text("Fiyat 1: ${model.fiyatList![index].fiyat1.commaSeparatedWithFixedDigits}")),
                   ],
                 ),
                 Row(
                   children: [
-                    Expanded(child: Text("Fiyat 2: ${model.fiyatList![index].fiyat2.commaSeparated}")),
-                    Expanded(child: Text("Fiyat 3: ${model.fiyatList![index].fiyat3.commaSeparated}")),
+                    Expanded(child: Text("Fiyat 2: ${model.fiyatList![index].fiyat2.commaSeparatedWithFixedDigits}")),
+                    Expanded(child: Text("Fiyat 3: ${model.fiyatList![index].fiyat3.commaSeparatedWithFixedDigits}")),
                   ],
                 ),
-                Text("Fiyat 4: ${model.fiyatList![index].fiyat4.commaSeparated}"),
+                Text("Fiyat 4: ${model.fiyatList![index].fiyat4.commaSeparatedWithFixedDigits}"),
               ]).paddingAll(UIHelper.lowSize),
             ),
           ).paddingAll(UIHelper.lowSize)

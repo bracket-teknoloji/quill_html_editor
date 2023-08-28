@@ -23,6 +23,12 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
           Computed<List<String>>(() => super.olcuBirimiMap,
               name: '_KalemEkleViewModelBase.olcuBirimiMap'))
       .value;
+  Computed<bool>? _$koliMiComputed;
+
+  @override
+  bool get koliMi => (_$koliMiComputed ??= Computed<bool>(() => super.koliMi,
+          name: '_KalemEkleViewModelBase.koliMi'))
+      .value;
 
   late final _$modelAtom =
       Atom(name: '_KalemEkleViewModelBase.model', context: context);
@@ -65,6 +71,28 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
         name: '_KalemEkleViewModelBase.setModel');
     try {
       return super.setModel(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setKoliMi() {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setKoliMi');
+    try {
+      return super.setKoliMi();
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setMiktarEnabled() {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setMiktarEnabled');
+    try {
+      return super.setMiktarEnabled();
     } finally {
       _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -362,7 +390,8 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
 model: ${model},
 kalemModel: ${kalemModel},
 dovizliMi: ${dovizliMi},
-olcuBirimiMap: ${olcuBirimiMap}
+olcuBirimiMap: ${olcuBirimiMap},
+koliMi: ${koliMi}
     ''';
   }
 }

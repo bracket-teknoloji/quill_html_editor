@@ -4,6 +4,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_grup_kodu_model.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -12,7 +13,6 @@ import "../../../../components/floating_action_button/custom_floating_action_but
 import "../../../../components/textfield/custom_text_field.dart";
 import "../../../../constants/enum/base_edit_enum.dart";
 import "../../../../constants/enum/grup_kodu_enums.dart";
-import "../../../../constants/extensions/number_extensions.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../../init/network/login/api_urls.dart";
 import "../../../model/base_edit_model.dart";
@@ -29,7 +29,8 @@ class StokRehberiView extends StatefulWidget {
 }
 
 class _StokRehberiViewState extends BaseState<StokRehberiView> {
-  late ScrollController _scrollController;
+  late final ScrollController _scrollController;
+  late final FocusNode focusNode;
   late final TextEditingController _searchTextController;
   late final TextEditingController grupKoduController;
   late final TextEditingController kod1Controller;
@@ -40,12 +41,14 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
   StokRehberiViewModel viewModel = StokRehberiViewModel();
   @override
   void initState() {
+    focusNode = FocusNode();
     controllerInitializer();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (widget.searchText != null) {
         viewModel.setSearchText(widget.searchText!);
         _searchTextController.text = widget.searchText!;
       }
+      FocusScope.of(context).requestFocus(focusNode);
       getData();
     });
     _scrollController.addListener(() async {
@@ -58,6 +61,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
       } else if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
         viewModel.changeIsScrolledDown(false);
       }
+      //focus to search textfield
     });
     super.initState();
   }
@@ -190,6 +194,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
       children: [
         CustomTextField(
           labelText: "Ara",
+          focusNode: focusNode,
           controller: _searchTextController,
           onSubmitted: (p0) {
             viewModel.setSearchText(p0);
@@ -271,7 +276,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                         Text(stok?.stokAdi ?? ""),
                                       ],
                                     ),
-                                    trailing: Text("${stok?.bakiye.commaSeparated ?? 0} ${stok?.olcuBirimi ?? ""}"),
+                                    trailing: Text("${stok?.bakiye?.commaSeparatedWithFixedDigits ?? 0} ${stok?.olcuBirimi ?? ""}"),
                                   ),
                                 );
                               }
@@ -304,7 +309,8 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
 
   Future<StokListesiModel?> getSelectedData(StokListesiModel? model) async {
     viewModel.setSelectedStokModel(model?.stokKodu ?? "");
-    GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: viewModel.stokBottomSheetModel.toJson(), bodyModel: StokListesiModel(), showLoading: true);
+    GenericResponseModel response =
+        await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: viewModel.stokBottomSheetModel.toJson(), bodyModel: StokListesiModel(), showLoading: true);
     if (response.success == true) {
       return response.data.first;
     }

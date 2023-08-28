@@ -81,16 +81,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        bool result = false;
-        await dialogManager.showAreYouSureDialog(() {
-          result = true;
-        });
-        return result;
-      },
-      child: Scaffold(appBar: appBar(), floatingActionButton: fab(), body: body(context)),
-    );
+    return Scaffold(appBar: appBar(), floatingActionButton: fab(), body: body(context));
   }
 
   AppBar appBar() {
@@ -104,7 +95,12 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
             onPressed: () {
               if (formKey.currentState!.validate()) {
                 BaseSiparisEditModel.instance.kalemList ??= [];
-                BaseSiparisEditModel.instance.kalemList?.add(viewModel.kalemModel);
+                if (BaseSiparisEditModel.instance.kalemList!.any((element) => element.stokKodu == viewModel.kalemModel.stokKodu)) {
+                  //replace
+                  BaseSiparisEditModel.instance.kalemList![BaseSiparisEditModel.instance.kalemList!.indexWhere((element) => element.stokKodu == viewModel.kalemModel.stokKodu)] = viewModel.kalemModel;
+                } else {
+                  BaseSiparisEditModel.instance.kalemList?.add(viewModel.kalemModel);
+                }
                 dialogManager.showSnackBar("Kalem Eklendi");
                 Get.back();
               } else {
@@ -339,51 +335,34 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(
-                          child: CustomTextField(
-                        enabled: widget.stokListesiModel?.paketMi != "K",
-                        labelText: "Miktar",
-                        isMust: true,
-                        controller: miktarController,
-                        keyboardType: TextInputType.number,
-                        onChanged: (value) => viewModel.setMiktar(int.tryParse(value) ?? 0),
-                        suffix: Wrap(children: [
-                          IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () => viewModel.decreaseMiktar(miktarController)),
-                          IconButton(icon: const Icon(Icons.add_outlined), onPressed: () => viewModel.increaseMiktar(miktarController)),
-                        ]),
-                      )),
-                      Expanded(
-                          child: CustomTextField(
-                        labelText: "Miktar 2",
-                        controller: miktar2Controller,
-                        keyboardType: TextInputType.number,
-                        validator: (p0) => (p0 == "0" || p0 == null) ? "Lütfen miktar giriniz" : null,
-                        isMust: widget.stokListesiModel?.koliMi ?? false,
-                        onChanged: (value) {
-                          viewModel.setMiktar2(int.tryParse(value) ?? 0);
-                          if (widget.stokListesiModel?.koliMi ?? false) {
-                            viewModel.setMiktar(int.tryParse(value) ?? 0);
-                          }
-                        },
-                        suffix: Wrap(children: [
-                          IconButton(
-                              icon: const Icon(Icons.remove_outlined),
-                              onPressed: () {
-                                viewModel.decreaseMiktar2(miktar2Controller);
-                                if (widget.stokListesiModel?.koliMi ?? false) {
-                                  viewModel.decreaseMiktar(miktarController);
-                                }
-                              }),
-                          IconButton(
-                              icon: const Icon(Icons.add_outlined),
-                              onPressed: () {
-                                viewModel.increaseMiktar2(miktar2Controller);
-                                if (widget.stokListesiModel?.koliMi ?? false) {
-                                  viewModel.increaseMiktar(miktarController);
-                                }
-                              }),
-                        ]),
-                      )),
+                      Expanded(child: Observer(builder: (_) {
+                        return CustomTextField(
+                          enabled: !viewModel.koliMi,
+                          labelText: "Miktar",
+                          isMust: true,
+                          controller: viewModel.koliMi ? null : miktarController,
+                          keyboardType: TextInputType.number,
+                          onChanged: (value) => viewModel.setMiktar(int.tryParse(value) ?? 0),
+                          suffix: Wrap(children: [
+                            IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () => viewModel.decreaseMiktar(miktarController)),
+                            IconButton(icon: const Icon(Icons.add_outlined), onPressed: () => viewModel.increaseMiktar(miktarController)),
+                          ]),
+                        );
+                      })),
+                      Expanded(child: Observer(builder: (_) {
+                        return CustomTextField(
+                          labelText: "Miktar 2",
+                          controller: miktar2Controller,
+                          keyboardType: TextInputType.number,
+                          validator: miktar2Validator,
+                          isMust: viewModel.model?.koliMi,
+                          onChanged: (value) => viewModel.setMiktar2(int.tryParse(value) ?? 0),
+                          suffix: Wrap(children: [
+                            IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () => viewModel.decreaseMiktar2(miktar2Controller)),
+                            IconButton(icon: const Icon(Icons.add_outlined), onPressed: () => viewModel.increaseMiktar2(miktar2Controller)),
+                          ]),
+                        );
+                      })),
                     ],
                   ),
                   Row(
@@ -508,11 +487,24 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     );
   }
 
+  String? miktar2Validator(p0) {
+    if (viewModel.model?.koliMi == true) {
+      if (p0 == "" || p0 == null) {
+        return "Lütfen miktar giriniz";
+      } else if (p0 == "0") {
+        return "Miktar Sıfır olamaz";
+      }
+    }
+    return null;
+  }
+
   String getAciklamaLabel(int index) => "${StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS"} $index";
 
   Future<void> getData() async {
     if (widget.stokListesiModel != null) {
       viewModel.setModel(widget.stokListesiModel!);
+    } else if (widget.kalemModel != null) {
+      viewModel.setKalemModel(widget.kalemModel!);
     } else {
       var result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
       if (result is StokListesiModel) {
@@ -550,19 +542,32 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   }
 
   void controllerFiller() {
-    viewModel.kalemModel.kalemModelHucreList = widget.stokListesiModel?.stokList;
+    viewModel.kalemModel.kalemModelHucreList ??= widget.stokListesiModel?.stokList;
     viewModel.kalemModel.stokKodu ??= widget.stokListesiModel?.stokKodu;
     kalemAdiController.text = widget.stokListesiModel?.stokAdi ?? widget.stokListesiModel?.stokKodu ?? widget.kalemModel?.stokAdi ?? widget.kalemModel?.stokKodu ?? "";
     ekAlan1Controller.text = widget.kalemModel?.ekalan1 ?? "";
     ekAlan2Controller.text = widget.kalemModel?.ekalan2 ?? "";
-    fiyatController.text = viewModel.model?.bulunanFiyat.toIntIfDouble?.commaSeparated ?? "";
-    // miktarController.text = viewModel.kalemModel.miktar?.toIntIfDouble.toStringIfNull ?? "";
-    // miktar2Controller.text = viewModel.kalemModel.miktar2?.toIntIfDouble.toStringIfNull ?? "";
+    isk1Controller?.text = widget.kalemModel?.iskonto1.toIntIfDouble.toStringIfNull ?? "";
+    isk1TipiController?.text = widget.kalemModel?.isk1Tipi.toIntIfDouble.toStringIfNull ?? "";
+    isk2TipiController?.text = widget.kalemModel?.iskonto2.toIntIfDouble.toStringIfNull ?? "";
+    isk2YuzdeController?.text = widget.kalemModel?.isk2Tipi.toIntIfDouble.toStringIfNull ?? "";
+    isk3TipiController?.text = widget.kalemModel?.iskonto3.toIntIfDouble.toStringIfNull ?? "";
+    isk3YuzdeController?.text = widget.kalemModel?.isk3Tipi.toIntIfDouble.toStringIfNull ?? "";
+    isk4TipiController?.text = widget.kalemModel?.iskonto4.toIntIfDouble.toStringIfNull ?? "";
+    isk4YuzdeController?.text = widget.kalemModel?.isk4Tipi.toIntIfDouble.toStringIfNull ?? "";
+    isk5TipiController?.text = widget.kalemModel?.iskonto5.toIntIfDouble.toStringIfNull ?? "";
+    isk5YuzdeController?.text = widget.kalemModel?.isk5Tipi.toIntIfDouble.toStringIfNull ?? "";
+    isk6TipiController?.text = widget.kalemModel?.iskonto6.toIntIfDouble.toStringIfNull ?? "";
+    isk6YuzdeController?.text = widget.kalemModel?.isk6Tipi.toIntIfDouble.toStringIfNull ?? "";
+    fiyatController.text = widget.kalemModel?.satisFiyati.toIntIfDouble.toStringIfNull ?? viewModel.model?.bulunanFiyat.toIntIfDouble?.commaSeparatedWithFixedDigits ?? "";
+    miktarController.text = viewModel.kalemModel.miktar?.toIntIfDouble.toStringIfNull ?? "";
+    miktar2Controller.text = viewModel.kalemModel.miktar2?.toIntIfDouble.toStringIfNull ?? "";
     malFazMiktarController.text = viewModel.kalemModel.malFazlasiMiktar?.toIntIfDouble.toStringIfNull ?? "";
     olcuBirimiController.text = widget.stokListesiModel?.olcuBirimi ?? widget.kalemModel?.olcuBirimAdi ?? "";
-    kdvOraniController.text = (StaticVariables.instance.isMusteriSiparisleri ? (widget.stokListesiModel?.satisKdv ?? "") : (widget.stokListesiModel?.alisKdv ?? "")).toString();
+    kdvOraniController.text = widget.kalemModel?.kdvOrani.toIntIfDouble.toStringIfNull ??
+        (StaticVariables.instance.isMusteriSiparisleri ? (widget.stokListesiModel?.satisKdv ?? "") : (widget.stokListesiModel?.alisKdv ?? "")).toString();
     depoController.text = (parametreModel.depoList?.where((element) => element.depoKodu == (viewModel.model?.depoKodu ?? parametreModel.satisHizmetDepoKodu)).firstOrNull?.depoTanimi ?? "");
-    teslimTarihiController.text = model.teslimTarihi.toDateString;
+    projeController.text = teslimTarihiController.text = model.teslimTarihi.toDateString;
     kosulController.text = model.kosulKodu ?? BaseSiparisEditModel.instance.kosulKodu ?? "";
     projeController.text = model.projeKodu ?? BaseSiparisEditModel.instance.projeKodu ?? "";
     viewModel.kalemModel.stokAdi = widget.stokListesiModel?.stokAdi ?? widget.stokListesiModel?.stokKodu ?? widget.kalemModel?.stokAdi ?? widget.kalemModel?.stokKodu ?? "";

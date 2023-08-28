@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 import "../../base/state/base_state.dart";
 import "../../constants/extensions/date_time_extensions.dart";
-import "../../constants/extensions/number_extensions.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../helper_widgets/custom_label_widget.dart";
 
@@ -46,11 +46,11 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                 ),
                 Column(
                   children: [
-                    Text("${widget.cariHareketleriModel.alacak?.dotSeparatedWithFixedDigits ?? widget.cariHareketleriModel.borc?.dotSeparatedWithFixedDigits} TL",
+                    Text("${widget.cariHareketleriModel.alacak?.commaSeparatedWithFixedDigits ?? widget.cariHareketleriModel.borc?.commaSeparatedWithFixedDigits} TL",
                         style: theme.textTheme.bodySmall?.copyWith(fontSize: 12)),
                     Visibility(
                         visible: widget.cariHareketleriModel.dovizliMi,
-                        child: Text("${widget.cariHareketleriModel.dovizBakiye.dotSeparatedWithFixedDigits} ${widget.cariHareketleriModel.dovizAdi ?? "TL"}",
+                        child: Text("${widget.cariHareketleriModel.dovizBakiye.commaSeparatedWithFixedDigits} ${widget.cariHareketleriModel.dovizAdi ?? "TL"}",
                             style: theme.textTheme.bodySmall?.copyWith(fontSize: 12)))
                   ],
                 ),

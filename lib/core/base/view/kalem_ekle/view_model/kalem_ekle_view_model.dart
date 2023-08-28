@@ -15,7 +15,10 @@ abstract class _KalemEkleViewModelBase with Store {
   StokListesiModel? model;
 
   @action
-  void setModel(StokListesiModel? value) => model = value;
+  void setModel(StokListesiModel? value) {
+    model = value;
+    setKoliMi();
+  }
 
   @computed
   bool get dovizliMi => model?.dovizliMi ?? false;
@@ -25,6 +28,23 @@ abstract class _KalemEkleViewModelBase with Store {
 
   @observable
   KalemModel kalemModel = KalemModel();
+  @action
+  void setKoliMi() {
+    kalemModel = kalemModel.copyWith(koliMi: model?.koliMi ?? false);
+  }
+
+  @computed
+  bool get koliMi => (model?.koliMi ?? false) || (kalemModel.koliMi ?? false) ;
+
+  @action
+  void setMiktarEnabled() {
+    // if ((model?.koliMi ?? false) || (kalemModel.koliMi ?? false)) {
+    //   koliMi = true;
+    // } else {
+    //   koliMi = false;
+    // }
+  }
+
   @action
   void setKalemModel(KalemModel? value) => kalemModel = value ?? KalemModel();
   @action

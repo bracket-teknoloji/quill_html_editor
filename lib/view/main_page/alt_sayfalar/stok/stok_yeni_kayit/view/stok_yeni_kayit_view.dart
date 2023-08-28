@@ -31,7 +31,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
   late TextEditingController tarihController = TextEditingController(text: widget.model?.stharTarih?.toDateString ?? viewModel.model.tarih.toDateString);
   late TextEditingController belgeNoController = TextEditingController(text: widget.model?.fisno ?? viewModel.model.belgeNo);
   late TextEditingController hareketTuruController = TextEditingController(text: widget.model?.hareketTuruAciklama ?? viewModel.model.hareketTuru);
-  late TextEditingController fiyatController = TextEditingController(text: widget.model?.stharNf.commaSeparated ?? viewModel.model.fiyat.toStringIfNull);
+  late TextEditingController fiyatController = TextEditingController(text: widget.model?.stharNf.commaSeparatedWithFixedDigits ?? viewModel.model.fiyat.toStringIfNull);
   late TextEditingController depoController = TextEditingController(text: widget.model?.depoKodu.toStringIfNull ?? viewModel.model.depoKodu.toStringIfNull);
   late TextEditingController miktarController = TextEditingController(text: widget.model?.stharGcmik.toStringIfNull ?? viewModel.model.miktar.toStringIfNull);
   late TextEditingController aciklamaController = TextEditingController(text: widget.model?.aciklama ?? viewModel.model.aciklama);
@@ -145,7 +145,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                 onSubmitted: (p0) {
                   if (p0.isNotEmpty) {
                     viewModel.model.fiyat = int.tryParse(p0);
-                    fiyatController.text = viewModel.model.fiyat.commaSeparated;
+                    fiyatController.text = viewModel.model.fiyat.commaSeparatedWithFixedDigits;
                   }
                 },
               ),

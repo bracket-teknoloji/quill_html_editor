@@ -143,6 +143,8 @@ class YetkiController {
   bool get siparisMSsatirdaKDVSor => isTrue(paramModel?.satisSatirdaKdvSor, skipAdmin: true);
   bool get siparisMSSatisHizmetAktifMi => isTrue(paramModel?.satisHizmetAktif, skipAdmin: true);
   bool get siparisMSEkMaliyet2AktifMi => isTrue(paramModel?.satisEkMaliyet2Aktif, skipAdmin: true);
+  bool get siparisMSEkAlan1AktifMi => isTrue(paramModel?.satisEkAlan1Aktif, skipAdmin: true);
+  bool get siparisMSSatirdaEkAlan2AktifMi => isTrue(paramModel?.satisSatirdaEkAlan2Aktif, skipAdmin: true);
 
   // bool get siparisMSbelgeKopyala => isTrue(yetkiModel?.siparisMusSipBelge);
   ///? Eğer içeriyorsa boş geçilecek

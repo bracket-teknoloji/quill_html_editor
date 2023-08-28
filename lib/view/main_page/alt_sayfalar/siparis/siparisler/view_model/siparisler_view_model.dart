@@ -53,7 +53,7 @@ abstract class _SiparislerViewModelBase with Store {
   @observable
   bool grupKodlariGoster = false;
   @observable
-  List<BaseSiparisEditModel?>? musteriSiparisleriList;
+  ObservableList<BaseSiparisEditModel?>? musteriSiparisleriList;
 
   @action
   void changeGrupKodlariGoster() => grupKodlariGoster = !grupKodlariGoster;
@@ -78,9 +78,13 @@ abstract class _SiparislerViewModelBase with Store {
   }
 
   @action
-  void setSiparislerList(List<BaseSiparisEditModel?>? value) => musteriSiparisleriList = value;
+  void setSiparislerList(List<BaseSiparisEditModel?>? value) => musteriSiparisleriList = value?.asObservable();
   @action
-  void addSiparislerList(List<BaseSiparisEditModel?>? value) => musteriSiparisleriList = musteriSiparisleriList! + value!;
+  void addSiparislerList(List<BaseSiparisEditModel?>? value) => musteriSiparisleriList = musteriSiparisleriList?..addAll(value!);
+  @action
+  void removeSiparislerList(int index) {
+    musteriSiparisleriList = musteriSiparisleriList?..removeAt(index);
+  }
 
   //*for model
   SiparislerRequestModel get musteriSiparisleriRequestModel => SiparislerRequestModel(

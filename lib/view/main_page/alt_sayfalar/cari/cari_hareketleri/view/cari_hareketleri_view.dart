@@ -314,7 +314,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                   const Text("Borç"),
                   Observer(builder: (_) {
                     return Text(
-                        "${widget.cari?.dovizli == true ? viewModel.dovizBorclarToplami.dotSeparatedWithFixedDigits : viewModel.borclarToplami.dotSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? "TL"}");
+                        "${widget.cari?.dovizli == true ? viewModel.dovizBorclarToplami.commaSeparatedWithFixedDigits : viewModel.borclarToplami.commaSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? "TL"}");
                   })
                 ])),
                 const VerticalDivider(thickness: 1, width: 1),
@@ -322,14 +322,14 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                     child: FooterButton(children: [
                   const Text("Alacak"),
                   Text(
-                      "${widget.cari?.dovizli == true ? viewModel.dovizAlacaklarToplami.dotSeparatedWithFixedDigits : viewModel.borclarToplami.dotSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? "TL"}")
+                      "${widget.cari?.dovizli == true ? viewModel.dovizAlacaklarToplami.commaSeparatedWithFixedDigits : viewModel.borclarToplami.commaSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? "TL"}")
                 ])),
                 const VerticalDivider(thickness: 1, width: 1),
                 Expanded(
                     child: FooterButton(children: [
                   const Text("Tahsil Edilecek"),
                   Text(
-                    "${(widget.cari?.dovizli == true ? viewModel.dovizBorclarToplami - viewModel.dovizAlacaklarToplami : viewModel.borclarToplami - viewModel.alacaklarToplami).dotSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? "TL"}",
+                    "${(widget.cari?.dovizli == true ? viewModel.dovizBorclarToplami - viewModel.dovizAlacaklarToplami : viewModel.borclarToplami - viewModel.alacaklarToplami).commaSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? "TL"}",
                     style: TextStyle(color: (viewModel.borclarToplami - viewModel.alacaklarToplami) < 0 ? Colors.red : Colors.green),
                   )
                 ]))

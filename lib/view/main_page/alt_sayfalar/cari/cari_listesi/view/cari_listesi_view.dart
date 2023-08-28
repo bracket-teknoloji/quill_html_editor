@@ -301,7 +301,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                             title: "Sil",
                                             iconWidget: Icons.delete_outline,
                                             onTap: () async {
-                                                Get.back();
+                                              Get.back();
                                               dialogManager.showAreYouSureDialog(() async {
                                                 dialogManager.showLoadingDialog("Cari Siliniyor...");
                                                 var result = await networkManager.dioPost<CariListesiModel>(
@@ -407,7 +407,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                               child: FooterButton(children: [
                             const Text("Tahsil Edilecek"),
                             Text(
-                              "${double.tryParse(paramData["TAHSIL_EDILECEK"].replaceAll(",", "."))?.toInt().commaSeparated} TL",
+                              "${double.tryParse(paramData["TAHSIL_EDILECEK"].replaceAll(",", "."))?.toInt().commaSeparatedWithFixedDigits} TL",
                               style: const TextStyle(color: Colors.green),
                             ),
                           ])),
@@ -415,7 +415,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                           Expanded(
                               child: FooterButton(children: [
                             const Text("Ödenecek"),
-                            Text("${(double.tryParse(paramData["ODENECEK"].replaceAll(",", "."))!.toInt() * -1).commaSeparated} TL", style: const TextStyle(color: Colors.red)),
+                            Text("${(double.tryParse(paramData["ODENECEK"].replaceAll(",", "."))!.toInt() * -1).commaSeparatedWithFixedDigits} TL", style: const TextStyle(color: Colors.red)),
                           ]))
                         ],
                       )
@@ -501,7 +501,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   //       bodyModel: CariGrupKoduModel(),
   //       addCKey: true,
   //       headers: {"Modul": "CARI", "GrupNo": "1"},
-  //        
+  //
   //       addSirketBilgileri: true,
   //       queryParameters: {"Modul": "CARI", "GrupNo": "-1"});
   //   return responseKod;

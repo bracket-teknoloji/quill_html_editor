@@ -125,7 +125,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
       contentPadding: UIHelper.lowPadding,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text(kalemModel?.stokAdi ?? kalemModel?.stokKodu ?? ""), const Icon(Icons.more_vert_outlined)],
+        children: [SizedBox(width: width * 0.7, child: Text(kalemModel?.stokAdi ?? kalemModel?.stokKodu ?? "", softWrap: true)), const Icon(Icons.more_vert_outlined)],
       ),
       subtitle: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -138,12 +138,11 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
               children: [
             Text("Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}"),
             Text("Miktar2: ${kalemModel?.miktar2.toIntIfDouble ?? ""}"),
-            Text("Teslim Miktar: ${kalemModel?.miktar ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}"),
+            Text("Teslim Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}"),
             Text("Mal Fazlası Miktar: ${kalemModel?.malFazlasiMiktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}"),
             Text("Satış İskontosu: ${kalemModel?.iskontoTutari.commaSeparatedWithFixedDigits ?? ""}"),
-            // Text("Miktar2: ${viewModel.kalemList[index].miktar ?? ""} ${viewModel.kalemList[index].olcuBirimAdi ?? ""}"),
             Text("Kalan Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}"),
-            Text("Fiyat: ${kalemModel?.brutFiyat.dotSeparatedWithFixedDigits ?? 0.00}"),
+            Text("Fiyat: ${kalemModel?.brutFiyat.commaSeparatedWithFixedDigits ?? 0.00}"),
             Text("Teslim Tarihi: ${kalemModel?.teslimTarihi.toDateStringIfNull() ?? ""}"),
           ].map((e) => SizedBox(width: width * 0.4, child: e)).toList()),
         ],
@@ -166,7 +165,12 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                 await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Hücre İşlemleri", children: [
                   BottomSheetModel(title: "Stok Etiketi Yazdır", iconWidget: Icons.print_outlined),
                   BottomSheetModel(
-                      title: "Stok İşlemleri", iconWidget: Icons.list_alt_outlined, onTap: () => dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = stokList?.stokKodu ?? "")),
+                      title: "Stok İşlemleri",
+                      iconWidget: Icons.list_alt_outlined,
+                      onTap: () {
+                        Get.back();
+                        dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = stokList?.stokKodu ?? "");
+                      }),
                 ]);
               },
               icon: const Icon(Icons.more_vert_outlined))
@@ -178,8 +182,8 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
         children: [
           Wrap(
               children: [
-            Text("Miktar: ${((stokList?.koliBilesenMiktari.toIntIfDouble ?? 0) * (kalemModel?.miktar.toIntIfDouble ?? 0)).toIntIfDouble.dotSeparatedWithFixedDigits}"),
-            Text("Fiyat: ${stokList?.bulunanFiyat.toIntIfDouble ?? ""}"),
+            Text("Miktar: ${((stokList?.koliBilesenMiktari.toIntIfDouble ?? 0) * (kalemModel?.miktar.toIntIfDouble ?? 0)).toIntIfDouble.toStringIfNull ?? ""}"),
+            Text("Fiyat: ${stokList?.bulunanFiyat.toIntIfDouble.commaSeparatedWithFixedDigits ?? ""}"),
             Text("KDV %: ${(StaticVariables.instance.isMusteriSiparisleri ? stokList?.satisKdv : stokList?.alisKdv).toIntIfDouble ?? ""}"),
             Text("Tutar: ${((stokList?.koliBilesenMiktari ?? 0) * (kalemModel?.genelToplamTutari ?? 0) * (stokList?.koliBilesenOrani ?? 0) / 100).commaSeparatedWithFixedDigits}"),
           ]

@@ -639,6 +639,9 @@ class KalemModel {
   double? iskonto6;
   @HiveField(57)
   List<KalemModel>? kalemList;
+  @HiveField(58)
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  bool? koliMi;
 
   KalemModel(
       {this.iskonto1OranMi,
@@ -697,12 +700,18 @@ class KalemModel {
       this.dovizFiyati,
       this.malfazCevrimliMiktar,
       this.malFazlasiMiktar,
-      this.kosulKodu, this.kalemList});
+      this.kosulKodu,
+      this.kalemList,
+      this.koliMi});
+  //koli mi
+  bool get isKoli => koliMi ?? false;
+  double get toplamKalemMiktari => (getSelectedMiktar ?? 0) + (malFazlasiMiktar ?? 0);
 
-  double get toplamKalemMiktari => (miktar ?? 0) + (malFazlasiMiktar ?? 0);
-  double get brutTutar => ((miktar ?? 0) + (malFazlasiMiktar ?? 0)) * (brutFiyat ?? 0);
+  double? get getSelectedMiktar => (isKoli ? miktar2 : miktar);
+  
+  double get brutTutar => ((getSelectedMiktar ?? 0) + (malFazlasiMiktar ?? 0)) * (brutFiyat ?? 0);
 
-  double get araToplamTutari => ((miktar ?? 0) * (brutFiyat ?? 0)) - iskontoTutari;
+  double get araToplamTutari => ((getSelectedMiktar ?? 0) * (brutFiyat ?? 0)) - iskontoTutari;
 
   double get genelToplamTutari => araToplamTutari + kdvTutari;
 
@@ -712,7 +721,7 @@ class KalemModel {
 
   double get iskontoTutari {
     if ((iskonto1OranMi ?? true)) {
-      double result = ((miktar ?? 0) * (brutFiyat ?? 0));
+      double result = ((getSelectedMiktar ?? 0) * (brutFiyat ?? 0));
       if (iskonto1 != null && iskonto1 != 0) {
         result = result - result * ((iskonto1 ?? 0) / 100);
       }
@@ -731,9 +740,9 @@ class KalemModel {
       if (iskonto6 != null && iskonto6 != 0) {
         result = result - result * ((iskonto6 ?? 0) / 100);
       }
-      return ((miktar ?? 0) * (brutFiyat ?? 0)) - result;
+      return ((getSelectedMiktar ?? 0) * (brutFiyat ?? 0)) - result;
     } else {
-      return (iskonto1 ?? 0) * (miktar ?? 0);
+      return (iskonto1 ?? 0) * (getSelectedMiktar ?? 0);
     }
   }
 

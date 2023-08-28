@@ -1487,6 +1487,8 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel kalemList(List<KalemModel>? kalemList);
 
+  KalemModel koliMi(bool? koliMi);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -1552,6 +1554,7 @@ abstract class _$KalemModelCWProxy {
     double? malFazlasiMiktar,
     String? kosulKodu,
     List<KalemModel>? kalemList,
+    bool? koliMi,
   });
 }
 
@@ -1748,6 +1751,9 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
       this(kalemList: kalemList);
 
   @override
+  KalemModel koliMi(bool? koliMi) => this(koliMi: koliMi);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1814,6 +1820,7 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? malFazlasiMiktar = const $CopyWithPlaceholder(),
     Object? kosulKodu = const $CopyWithPlaceholder(),
     Object? kalemList = const $CopyWithPlaceholder(),
+    Object? koliMi = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -2048,6 +2055,10 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.kalemList
           // ignore: cast_nullable_to_non_nullable
           : kalemList as List<KalemModel>?,
+      koliMi: koliMi == const $CopyWithPlaceholder()
+          ? _value.koliMi
+          // ignore: cast_nullable_to_non_nullable
+          : koliMi as bool?,
     );
   }
 }
@@ -2550,13 +2561,14 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       malFazlasiMiktar: fields[49] as double?,
       kosulKodu: fields[50] as String?,
       kalemList: (fields[57] as List?)?.cast<KalemModel>(),
+      koliMi: fields[58] as bool?,
     );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(58)
+      ..writeByte(59)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -2672,7 +2684,9 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(56)
       ..write(obj.iskonto6)
       ..writeByte(57)
-      ..write(obj.kalemList);
+      ..write(obj.kalemList)
+      ..writeByte(58)
+      ..write(obj.koliMi);
   }
 
   @override

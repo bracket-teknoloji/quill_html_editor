@@ -396,10 +396,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                           index: (viewModel.musteriSiparisleriList?[index]?.isNew ?? false) ? index : null,
                           siparisTipiEnum: widget.isSiparisler ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici,
                           onDeleted: () {
-                            viewModel.setSiparislerList(null);
-                            viewModel.setDahaVarMi(true);
-                            viewModel.resetSayfa();
-                            getData();
+                            viewModel.removeSiparislerList(index);
                           },
                         );
                       },
@@ -410,9 +407,9 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
   Observer bottomNavigationBar() {
     return Observer(
         builder: (_) => BottomBarWidget(isScrolledDown: viewModel.isScrolledDown, visible: viewModel.paramData.isNotEmpty, children: [
-              FooterButton(children: [const Text("KDV Hariç"), Text("${int.tryParse(viewModel.paramData["ARA_TOPLAM"]?.split(",").first ?? "").commaSeparated} TL")]),
-              FooterButton(children: [const Text("KDV"), Text("${int.tryParse(viewModel.paramData["KDV"]?.split(",").first ?? "").commaSeparated} TL")]),
-              FooterButton(children: [const Text("KDV Dahil"), Text("${int.tryParse(viewModel.paramData["GENEL_TOPLAM"]?.split(",").first ?? "").commaSeparated} TL")]),
+              FooterButton(children: [const Text("KDV Hariç"), Text("${int.tryParse(viewModel.paramData["ARA_TOPLAM"]?.split(",").first ?? "").commaSeparatedWithFixedDigits} TL")]),
+              FooterButton(children: [const Text("KDV"), Text("${int.tryParse(viewModel.paramData["KDV"]?.split(",").first ?? "").commaSeparatedWithFixedDigits} TL")]),
+              FooterButton(children: [const Text("KDV Dahil"), Text("${int.tryParse(viewModel.paramData["GENEL_TOPLAM"]?.split(",").first ?? "").commaSeparatedWithFixedDigits} TL")]),
             ]));
   }
 
@@ -425,7 +422,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
         viewModel.setParamData(result.paramData?.map((key, value) => MapEntry(key, value.toString())) ?? {});
       }
       List<BaseSiparisEditModel?>? list = result.data.map((e) => e as BaseSiparisEditModel?).toList().cast<BaseSiparisEditModel?>();
-      if ((list?.length??0) < parametreModel.sabitSayfalamaOgeSayisi) {
+      if ((list?.length ?? 0) < parametreModel.sabitSayfalamaOgeSayisi) {
         viewModel.setDahaVarMi(false);
       } else {
         viewModel.setDahaVarMi(true);

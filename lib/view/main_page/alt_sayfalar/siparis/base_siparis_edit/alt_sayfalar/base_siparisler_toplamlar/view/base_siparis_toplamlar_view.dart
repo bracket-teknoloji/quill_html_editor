@@ -71,7 +71,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               const Text.rich(TextSpan(children: [TextSpan(text: "Mal Ağırlığı\n", style: TextStyle(color: Colors.grey)), TextSpan(text: "0", style: TextStyle(fontWeight: FontWeight.bold))])),
               Text.rich(TextSpan(children: [
                 const TextSpan(text: "Brüt Tutar\n", style: TextStyle(color: Colors.grey)),
-                TextSpan(text: "${model.toplamBrutTutar.dotSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                TextSpan(text: "${model.toplamBrutTutar.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
               ])),
             ].map((e) => Expanded(child: e)).toList(),
           ),
@@ -80,11 +80,11 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
             children: [
               Text.rich(TextSpan(children: [
                 const TextSpan(text: "Mal. Faz. İsk.\n", style: TextStyle(color: Colors.grey)),
-                TextSpan(text: "${model.malFazlasiTutar.dotSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                TextSpan(text: "${model.malFazlasiTutar.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
               ])),
               Text.rich(TextSpan(children: [
                 const TextSpan(text: "Satır İsk.\n", style: TextStyle(color: Colors.grey)),
-                TextSpan(text: "${model.satirIskonto.dotSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                TextSpan(text: "${model.satirIskonto.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
               ])),
               Observer(builder: (_) {
                 return Text.rich(TextSpan(children: [
@@ -100,7 +100,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               Observer(builder: (_) {
                 return Text.rich(TextSpan(children: [
                   const TextSpan(text: "Ara Toplam\n", style: TextStyle(color: Colors.grey)),
-                  TextSpan(text: "${viewModel.model.getAraToplam.dotSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                  TextSpan(text: "${viewModel.model.getAraToplam.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
                 ]));
               }),
               Observer(builder: (_) {
@@ -112,7 +112,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               Observer(builder: (_) {
                 return Text.rich(TextSpan(children: [
                   const TextSpan(text: "Genel Toplam\n", style: TextStyle(color: Colors.grey)),
-                  TextSpan(text: "${viewModel.model.genelToplamTutar.dotSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                  TextSpan(text: "${viewModel.model.genelToplamTutar.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
                 ]));
               }),
             ].map((e) => Expanded(child: e)).toList(),
@@ -304,9 +304,9 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
     iskontoTipi1Controller = TextEditingController(text: model.genisk1Tipi?.toStringIfNull);
     iskontoTipi2Controller = TextEditingController(text: model.genisk2Tipi?.toStringIfNull);
     iskontoTipi3Controller = TextEditingController(text: model.genisk3Tipi?.toStringIfNull);
-    ekMal1Controller = TextEditingController(text: model.ekMaliyet1Tutari?.dotSeparatedWithFixedDigits);
-    tevkifatController = TextEditingController(text: model.ekMaliyet2Tutari?.dotSeparatedWithFixedDigits);
-    ekMal3Controller = TextEditingController(text: model.ekMaliyet3Tutari?.dotSeparatedWithFixedDigits);
+    ekMal1Controller = TextEditingController(text: model.ekMaliyet1Tutari?.commaSeparatedWithFixedDigits);
+    tevkifatController = TextEditingController(text: model.ekMaliyet2Tutari?.commaSeparatedWithFixedDigits);
+    ekMal3Controller = TextEditingController(text: model.ekMaliyet3Tutari?.commaSeparatedWithFixedDigits);
     if (model.vadeGunu == null && model.vadeTarihi == null) {
       viewModel.setVadeTarihi(DateTime.now());
     }
