@@ -95,6 +95,18 @@ mixin _$BaseSiparislerGenelViewModel
   }
 
   @override
+  void setOzelKod2(String? value) {
+    final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
+        .startAction(name: '_BaseSiparislerGenelViewModelBase.setOzelKod2');
+    try {
+      return super.setOzelKod2(value);
+    } finally {
+      _$_BaseSiparislerGenelViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setOdemeKodu(String? value) {
     final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
         .startAction(name: '_BaseSiparislerGenelViewModelBase.setOdemeKodu');
@@ -112,6 +124,19 @@ mixin _$BaseSiparislerGenelViewModel
         .startAction(name: '_BaseSiparislerGenelViewModelBase.setPlasiyer');
     try {
       return super.setPlasiyer(value);
+    } finally {
+      _$_BaseSiparislerGenelViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setTopluDepoKodu(int? value) {
+    final _$actionInfo =
+        _$_BaseSiparislerGenelViewModelBaseActionController.startAction(
+            name: '_BaseSiparislerGenelViewModelBase.setTopluDepoKodu');
+    try {
+      return super.setTopluDepoKodu(value);
     } finally {
       _$_BaseSiparislerGenelViewModelBaseActionController
           .endAction(_$actionInfo);

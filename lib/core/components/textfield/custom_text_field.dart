@@ -1,9 +1,12 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
 
 import "../../constants/ui_helper/text_field_formatter_helper.dart";
 import "../../constants/ui_helper/ui_helper.dart";
+import "custom_text_field_view_model.dart";
 
 class CustomTextField extends StatefulWidget {
   final TextEditingController? controller;
@@ -23,9 +26,11 @@ class CustomTextField extends StatefulWidget {
   final String? Function(String? value)? validator;
   final Function(String value)? onChanged;
   final Function(String value)? onSubmitted;
+  final Function()? onClear;
   final bool? fitContent;
   final bool? suffixMore;
   final bool? isFormattedString;
+  final bool? isDateTime;
   const CustomTextField(
       {super.key,
       this.controller,
@@ -47,16 +52,20 @@ class CustomTextField extends StatefulWidget {
       this.fitContent,
       this.suffixMore,
       this.inputFormatter,
-      this.isFormattedString});
+      this.isFormattedString,
+      this.onClear,
+      this.isDateTime});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
+  CustomTextFieldViewModel viewModel = CustomTextFieldViewModel();
   TextEditingController get controller => widget.controller ?? TextEditingController(text: widget.controllerText);
   @override
   void initState() {
+    controller.addListener(() => viewModel.setShowClearButton(controller.text != ""));
     super.initState();
   }
 
@@ -103,10 +112,54 @@ class _CustomTextFieldState extends State<CustomTextField> {
               enabled: widget.enabled ?? true,
               errorStyle: TextStyle(color: UIHelper.primaryColor, fontWeight: FontWeight.bold),
               errorBorder: OutlineInputBorder(borderSide: BorderSide(color: UIHelper.primaryColor.withOpacity(0.7), width: 2), borderRadius: BorderRadius.circular(10), gapPadding: 0),
-              suffixIcon: (widget.enabled ?? true ? (widget.suffixMore ?? false ? const Icon(Icons.more_horiz_outlined) : widget.suffix) : null),
+              suffixIcon: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  if (widget.onClear != null)
+                    Observer(builder: (_) {
+                      return Visibility(
+                        visible: (viewModel.showClearButton == true) && (widget.isMust != true),
+                        child: IconButton(
+                          padding: EdgeInsets.zero,
+                          onPressed: () {
+                            controller.clear();
+                            widget.onClear!();
+                            // viewModel.setShowClearButton(false);
+                          },
+                          icon: const Icon(Icons.close),
+                        ),
+                      );
+                    }),
+                  if (widget.suffix != null) widget.suffix!,
+                  if (widget.isDateTime != null)
+                    IconButton(
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                        onPressed: widget.onTap,
+                        icon: const Icon(Icons.date_range_outlined),
+                        style: ButtonStyle(
+                          padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                          splashFactory: NoSplash.splashFactory,
+                        )),
+                  if (widget.suffixMore == true)
+                    IconButton(
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                        onPressed: () {
+                          if (widget.onTap != null) widget.onTap!();
+                        },
+                        icon: const Icon(Icons.more_horiz_outlined),
+                        style: ButtonStyle(
+                          padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                          splashFactory: NoSplash.splashFactory,
+                        )),
+                ].nullCheckWithGeneric,
+              ),
               label: widget.labelText == null
                   ? null
                   : Wrap(
+                      direction: Axis.horizontal,
                       children: [
                         Text.rich(TextSpan(children: [
                           TextSpan(

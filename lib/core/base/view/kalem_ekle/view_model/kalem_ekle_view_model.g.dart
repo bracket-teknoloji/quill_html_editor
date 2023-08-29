@@ -99,6 +99,17 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
+  void setMuhasebeKodu(String? value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setMuhasebeKodu');
+    try {
+      return super.setMuhasebeKodu(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setKalemModel(KalemModel? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setKalemModel');
@@ -110,7 +121,7 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
-  void setOlcuBirimi(MapEntry<String, int> value) {
+  void setOlcuBirimi(MapEntry<String, int>? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setOlcuBirimi');
     try {
@@ -121,7 +132,7 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
-  void setFiyat(double value) {
+  void setFiyat(double? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setFiyat');
     try {
@@ -132,7 +143,7 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
-  void setProjeKodu(String value) {
+  void setProjeKodu(String? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setProjeKodu');
     try {
@@ -143,7 +154,7 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
-  void setDepoKodu(int value) {
+  void setDepoKodu(int? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setDepoKodu');
     try {
@@ -154,7 +165,7 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
-  void setKosul(String value) {
+  void setKosul(String? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setKosul');
     try {
@@ -165,7 +176,7 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
-  void setMiktar(int value) {
+  void setMiktar(int? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setMiktar');
     try {
@@ -176,7 +187,7 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
-  void setBrutFiyat(double value) {
+  void setBrutFiyat(double? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setBrutFiyat');
     try {
@@ -187,7 +198,7 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
-  void setMFTutari(double value) {
+  void setMFTutari(double? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setMFTutari');
     try {
@@ -198,7 +209,7 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
-  void setKdvOrani(double value) {
+  void setKdvOrani(double? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setKdvOrani');
     try {
@@ -209,7 +220,7 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
-  void setIskonto1(double value) {
+  void setIskonto1(double? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setIskonto1');
     try {
@@ -220,7 +231,7 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
-  void setIskonto2(double value) {
+  void setIskonto2(double? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setIskonto2');
     try {
@@ -231,7 +242,7 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
-  void setIskonto3(double value) {
+  void setIskonto3(double? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setIskonto3');
     try {
@@ -242,7 +253,7 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
-  void setIskonto4(double value) {
+  void setIskonto4(double? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setIskonto4');
     try {
@@ -253,7 +264,7 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
-  void setIskonto5(double value) {
+  void setIskonto5(double? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setIskonto5');
     try {
@@ -264,7 +275,7 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
-  void setIskonto6(double value) {
+  void setIskonto6(double? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setIskonto6');
     try {

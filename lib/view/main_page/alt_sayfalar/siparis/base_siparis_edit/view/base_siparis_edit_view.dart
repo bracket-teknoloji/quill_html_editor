@@ -182,7 +182,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
             body: Observer(
                 builder: (_) => TabBarView(
                       controller: tabController,
-                      physics: tabBarViewPhysics(),
+                      physics: viewModel.isValid ? null : const NeverScrollableScrollPhysics(),
                       children: [
                         Observer(builder: (_) {
                           if ((viewModel.isBaseSiparisEmpty)) {

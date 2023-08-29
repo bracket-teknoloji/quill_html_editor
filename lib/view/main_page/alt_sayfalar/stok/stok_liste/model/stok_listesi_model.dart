@@ -150,5 +150,6 @@ class StokList {
 
   Map<String, dynamic> toJson() => _$StokListToJson(this);
   double get toplamTutar => (bulunanFiyat ?? 0) * (koliBilesenMiktari ?? 0);
+  
 
 }

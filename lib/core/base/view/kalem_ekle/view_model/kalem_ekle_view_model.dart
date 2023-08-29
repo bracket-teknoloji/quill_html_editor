@@ -34,7 +34,7 @@ abstract class _KalemEkleViewModelBase with Store {
   }
 
   @computed
-  bool get koliMi => (model?.koliMi ?? false) || (kalemModel.koliMi ?? false) ;
+  bool get koliMi => (model?.koliMi ?? false) || (kalemModel.koliMi ?? false);
 
   @action
   void setMiktarEnabled() {
@@ -44,39 +44,40 @@ abstract class _KalemEkleViewModelBase with Store {
     //   koliMi = false;
     // }
   }
-
+  @action
+  void setMuhasebeKodu(String? value) => kalemModel = kalemModel.copyWith(muhasebeKodu: value);
   @action
   void setKalemModel(KalemModel? value) => kalemModel = value ?? KalemModel();
   @action
-  void setOlcuBirimi(MapEntry<String, int> value) => kalemModel = kalemModel.copyWith(olcuBirimKodu: value.value, olcuBirimAdi: value.key);
+  void setOlcuBirimi(MapEntry<String, int>? value) => kalemModel = kalemModel.copyWith(olcuBirimKodu: value?.value, olcuBirimAdi: value?.key);
   @action
-  void setFiyat(double value) => kalemModel = kalemModel.copyWith(satisFiyati: value);
+  void setFiyat(double? value) => kalemModel = kalemModel.copyWith(satisFiyati: value);
   @action
-  void setProjeKodu(String value) => kalemModel = kalemModel.copyWith(projeKodu: value);
+  void setProjeKodu(String? value) => kalemModel = kalemModel.copyWith(projeKodu: value);
   @action
-  void setDepoKodu(int value) => kalemModel = kalemModel.copyWith(depoKodu: value);
+  void setDepoKodu(int? value) => kalemModel = kalemModel.copyWith(depoKodu: value);
   @action
-  void setKosul(String value) => kalemModel = kalemModel.copyWith(kosulKodu: value);
+  void setKosul(String? value) => kalemModel = kalemModel.copyWith(kosulKodu: value);
   @action
-  void setMiktar(int value) => kalemModel = kalemModel.copyWith(miktar: value.toDouble());
+  void setMiktar(int? value) => kalemModel = kalemModel.copyWith(miktar: value?.toDouble());
   @action
-  void setBrutFiyat(double value) => kalemModel = kalemModel.copyWith(brutFiyat: value);
+  void setBrutFiyat(double? value) => kalemModel = kalemModel.copyWith(brutFiyat: value);
   @action
-  void setMFTutari(double value) => kalemModel = kalemModel.copyWith(malFazlasiMiktar: value);
+  void setMFTutari(double? value) => kalemModel = kalemModel.copyWith(malFazlasiMiktar: value);
   @action
-  void setKdvOrani(double value) => kalemModel = kalemModel.copyWith(kdvOrani: value);
+  void setKdvOrani(double? value) => kalemModel = kalemModel.copyWith(kdvOrani: value);
   @action
-  void setIskonto1(double value) => kalemModel = kalemModel.copyWith(iskonto1: value);
+  void setIskonto1(double? value) => kalemModel = kalemModel.copyWith(iskonto1: value);
   @action
-  void setIskonto2(double value) => kalemModel = kalemModel.copyWith(iskonto2: value);
+  void setIskonto2(double? value) => kalemModel = kalemModel.copyWith(iskonto2: value);
   @action
-  void setIskonto3(double value) => kalemModel = kalemModel.copyWith(iskonto3: value);
+  void setIskonto3(double? value) => kalemModel = kalemModel.copyWith(iskonto3: value);
   @action
-  void setIskonto4(double value) => kalemModel = kalemModel.copyWith(iskonto4: value);
+  void setIskonto4(double? value) => kalemModel = kalemModel.copyWith(iskonto4: value);
   @action
-  void setIskonto5(double value) => kalemModel = kalemModel.copyWith(iskonto5: value);
+  void setIskonto5(double? value) => kalemModel = kalemModel.copyWith(iskonto5: value);
   @action
-  void setIskonto6(double value) => kalemModel = kalemModel.copyWith(iskonto6: value);
+  void setIskonto6(double? value) => kalemModel = kalemModel.copyWith(iskonto6: value);
   @action
   void setKalemList(List<KalemModel>? list) => kalemModel = kalemModel.copyWith(kalemList: list);
   @action

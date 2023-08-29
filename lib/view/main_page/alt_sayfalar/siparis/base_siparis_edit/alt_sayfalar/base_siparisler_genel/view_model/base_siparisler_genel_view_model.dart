@@ -37,6 +37,11 @@ abstract class _BaseSiparislerGenelViewModelBase with Store {
     model = model.copyWith(ozelKod1: value);
     BaseSiparisEditModel.setInstance(model);
   }
+  @action
+  void setOzelKod2(String? value) {
+    model = model.copyWith(ozelKod2: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
 
   @action
   void setOdemeKodu(String? value) {
@@ -47,6 +52,11 @@ abstract class _BaseSiparislerGenelViewModelBase with Store {
   @action
   void setPlasiyer(PlasiyerList? value) {
     model = model.copyWith(plasiyerKodu: value?.plasiyerKodu, plasiyerAciklama: value?.plasiyerAciklama);
+    BaseSiparisEditModel.setInstance(model);
+  }
+  @action
+  void setTopluDepoKodu(int? value) {
+    model = model.copyWith(topluDepo: value);
     BaseSiparisEditModel.setInstance(model);
   }
 

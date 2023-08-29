@@ -110,42 +110,43 @@ class _LoginViewState extends BaseState<LoginView> {
                           ),
                         ),
                         CustomWidgetWithLabel(
-                            text: "Firma",
-                            child: TextFormField(
-                              readOnly: true,
-                              onTap: () async {
-                                var a = await dialogManager.selectCompanyDialog();
-                                a = a as LoginDialogModel?;
-                                if (a != null) {
-                                  textFieldData = a;
-                                  //*LoginDialogModel
-                                  if (textFieldData.account?.firma != null) {
-                                    companyController.text = textFieldData.account!.firma!;
-                                  }
-                                  if (textFieldData.username != null) {
-                                    emailController.text = textFieldData.username!;
-                                  }
-                                  if (textFieldData.password != null) {
-                                    passwordController.text = textFieldData.password ?? "";
-                                  }
-                                  if (textFieldData.account?.firma == "demo") {
-                                    AccountModel.instance.uyeEmail = "demo@netfect.com";
-                                    AccountModel.instance.uyeSifre = null;
-                                    textFieldData.account?.email = "demo@netfect.com";
-                                    textFieldData.account?.parola = null;
-                                  } else {
-                                    AccountModel.instance.uyeEmail = textFieldData.account?.email;
-                                    if (CacheManager.getHesapBilgileri?.qrData == null) {
-                                      AccountModel.instance.uyeSifre = textFieldData.account?.parola;
-                                    }
-                                  }
-                                  setState(() {});
+                          text: "Firma",
+                          child: TextFormField(
+                            readOnly: true,
+                            onTap: () async {
+                              var a = await dialogManager.selectCompanyDialog();
+                              a = a as LoginDialogModel?;
+                              if (a != null) {
+                                textFieldData = a;
+                                //*LoginDialogModel
+                                if (textFieldData.account?.firma != null) {
+                                  companyController.text = textFieldData.account!.firma!;
                                 }
-                              },
-                              decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz)),
-                              controller: companyController,
-                              textInputAction: TextInputAction.next,
-                            )),
+                                if (textFieldData.username != null) {
+                                  emailController.text = textFieldData.username!;
+                                }
+                                if (textFieldData.password != null) {
+                                  passwordController.text = textFieldData.password ?? "";
+                                }
+                                if (textFieldData.account?.firma == "demo") {
+                                  AccountModel.instance.uyeEmail = "demo@netfect.com";
+                                  AccountModel.instance.uyeSifre = null;
+                                  textFieldData.account?.email = "demo@netfect.com";
+                                  textFieldData.account?.parola = null;
+                                } else {
+                                  AccountModel.instance.uyeEmail = textFieldData.account?.email;
+                                  if (CacheManager.getHesapBilgileri?.qrData == null) {
+                                    AccountModel.instance.uyeSifre = textFieldData.account?.parola;
+                                  }
+                                }
+                                setState(() {});
+                              }
+                            },
+                            decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz)),
+                            controller: companyController,
+                            textInputAction: TextInputAction.next,
+                          ),
+                        ),
                         Padding(
                           padding: UIHelper.midPaddingOnlyTop,
                           child: CustomWidgetWithLabel(
@@ -159,22 +160,25 @@ class _LoginViewState extends BaseState<LoginView> {
                         Padding(
                           padding: UIHelper.midPaddingVertical,
                           child: CustomWidgetWithLabel(
-                              text: "Şifre",
-                              child: TextField(
-                                controller: passwordController,
-                                textInputAction: TextInputAction.done,
-                                obscureText: isObscure,
-                                decoration: InputDecoration(
-                                  suffixIcon: IconButton(
-                                    onPressed: () {
-                                      setState(() {
+                            text: "Şifre",
+                            child: TextField(
+                              controller: passwordController,
+                              textInputAction: TextInputAction.done,
+                              obscureText: isObscure,
+                              decoration: InputDecoration(
+                                suffixIcon: IconButton(
+                                  onPressed: () {
+                                    setState(
+                                      () {
                                         isObscure = !isObscure;
-                                      });
-                                    },
-                                    icon: isObscure ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
-                                  ),
+                                      },
+                                    );
+                                  },
+                                  icon: isObscure ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
                                 ),
-                              )),
+                              ),
+                            ),
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -236,9 +240,10 @@ class _LoginViewState extends BaseState<LoginView> {
     }
     var result = await networkManager.getUyeBilgileri(textFieldData.account?.email ?? "", password: textFieldData.account?.parola ?? "");
     if (result.success != true) {
+      print(result.ex);
       if (CacheManager.getIsLicenseVerified(textFieldData.account?.email ?? "") == false) {
         dialogManager.hideAlertDialog;
-        dialogManager.showAlertDialog(("${result.message ?? ""}\n${result.exceptionStackTrace ?? "Lisansınız bulunamadı. Lütfen lisansınızı kontrol ediniz."}"));
+        dialogManager.showAlertDialog(("${result.message ?? ""}\n${result.ex?["Message"] ?? result.errorDetails ?? "Lisansınız bulunamadı. Lütfen lisansınızı kontrol ediniz."}"));
         return;
       }
     }
@@ -246,42 +251,41 @@ class _LoginViewState extends BaseState<LoginView> {
     dialogManager.showLoadingDialog("Giriş Yapılıyor");
 
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-        final response = await networkManager.getToken(
-          path: ApiUrls.token,
-          queryParameters: {"deviceInfos": jsonEncode(a.toJson())},
-          data: {"grant_type": "password", "username": emailController.text, "password": passwordController.text},
-        );
-        if (response?.error == null) {
+      final response = await networkManager.getToken(
+        path: ApiUrls.token,
+        queryParameters: {"deviceInfos": jsonEncode(a.toJson())},
+        data: {"grant_type": "password", "username": emailController.text, "password": passwordController.text},
+      );
+      if (response?.error == null) {
         log(jsonEncode(a.toJson()), name: "sea");
-          a = a
-            ..isim = response?.userJson?.ad
-            ..soyadi = response?.userJson?.soyad
-            ..admin = response?.userJson?.admin;
-          CacheManager.setHesapBilgileri(a);
-          dialogManager.hideAlertDialog;
-          Hive.box("preferences").put(companyController.text, [
-            textFieldData.account?.firma,
-            emailController.text,
-            passwordController.text,
-          ]);
+        a = a
+          ..isim = response?.userJson?.ad
+          ..soyadi = response?.userJson?.soyad
+          ..admin = response?.userJson?.admin;
+        CacheManager.setHesapBilgileri(a);
+        dialogManager.hideAlertDialog;
+        Hive.box("preferences").put(companyController.text, [
+          textFieldData.account?.firma,
+          emailController.text,
+          passwordController.text,
+        ]);
 
-          if (context.mounted && response?.accessToken != null) {
-            CacheManager.setVerifiedUser(textFieldData
-              ..username = emailController.text
-              ..password = passwordController.text);
-            CacheManager.setToken(response!.accessToken.toString());
-            // final uyeBilgiResponse =
-            //     await networkManager.dioPost<AccountResponseModel>(bodyModel: AccountResponseModel(), data: AccountModel.instance, addTokenKey: false, path: ApiUrls.getUyeBilgileri);
-            // if (uyeBilgiResponse.success == true) {
-            //   CacheManager.setAccounts(uyeBilgiResponse.data.first);
-            // }
-            Get.toNamed("/entryCompany");
-          }
-        } else {
-          dialogManager.hideAlertDialog;
-          dialogManager.showAlertDialog(response?.errorDescription ?? response?.error ?? "Hata");
+        if (context.mounted && response?.accessToken != null) {
+          CacheManager.setVerifiedUser(textFieldData
+            ..username = emailController.text
+            ..password = passwordController.text);
+          CacheManager.setToken(response!.accessToken.toString());
+          // final uyeBilgiResponse =
+          //     await networkManager.dioPost<AccountResponseModel>(bodyModel: AccountResponseModel(), data: AccountModel.instance, addTokenKey: false, path: ApiUrls.getUyeBilgileri);
+          // if (uyeBilgiResponse.success == true) {
+          //   CacheManager.setAccounts(uyeBilgiResponse.data.first);
+          // }
+          Get.toNamed("/entryCompany");
         }
-      
+      } else {
+        dialogManager.hideAlertDialog;
+        dialogManager.showAlertDialog(response?.errorDescription ?? response?.error ?? "Hata");
+      }
     } else {
       Navigator.of(context, rootNavigator: true).pop();
       dialogManager.hideSnackBar;

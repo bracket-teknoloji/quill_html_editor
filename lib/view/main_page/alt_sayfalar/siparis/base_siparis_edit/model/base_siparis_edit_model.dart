@@ -642,6 +642,46 @@ class KalemModel {
   @HiveField(58)
   @JsonKey(includeToJson: false, includeFromJson: false)
   bool? koliMi;
+  @HiveField(59)
+  int? inckeyno;
+  @HiveField(60)
+  String? cariAdi;
+  @HiveField(61)
+  String? plasiyerKodu;
+  @HiveField(62)
+  String? kapali;
+  @HiveField(63)
+  double? stokSatisKdv;
+  @HiveField(64)
+  double? stokAlisKdv;
+  @HiveField(65)
+  double? netFiyat;
+  @HiveField(66)
+  List<dynamic>? zHucreList;
+  @HiveField(67)
+  double? kalan;
+  @HiveField(68)
+  String? paketMi;
+  @HiveField(69)
+  int? lYedek9;
+  @HiveField(70)
+  double? koliBilesenMiktari;
+  @HiveField(71)
+  double? koliBilesenOrani;
+  @HiveField(72)
+  String? koliBilesenFiyatorandan;
+  @HiveField(73)
+  String? koliBilesenKolikdv;
+  @HiveField(74)
+  int? stokSatDovTip;
+  @HiveField(75)
+  int? stokAlisDovTip;
+  @HiveField(76)
+  String? stokAlisDovizAdi;
+  @HiveField(77)
+  String? stokSatDovizAdi;
+  @HiveField(78)
+  String? muhasebeKodu;
 
   KalemModel(
       {this.iskonto1OranMi,
@@ -702,13 +742,33 @@ class KalemModel {
       this.malFazlasiMiktar,
       this.kosulKodu,
       this.kalemList,
-      this.koliMi});
+      this.koliMi,
+      this.inckeyno,
+      this.cariAdi,
+      this.plasiyerKodu,
+      this.kapali,
+      this.stokSatisKdv,
+      this.stokAlisKdv,
+      this.netFiyat,
+      this.zHucreList,
+      this.kalan,
+      this.paketMi,
+      this.lYedek9,
+      this.koliBilesenMiktari,
+      this.koliBilesenOrani,
+      this.koliBilesenFiyatorandan,
+      this.koliBilesenKolikdv,
+      this.stokSatDovTip,
+      this.stokAlisDovTip,
+      this.stokAlisDovizAdi,
+      this.stokSatDovizAdi,
+      this.muhasebeKodu});
   //koli mi
   bool get isKoli => koliMi ?? false;
   double get toplamKalemMiktari => (getSelectedMiktar ?? 0) + (malFazlasiMiktar ?? 0);
 
   double? get getSelectedMiktar => (isKoli ? miktar2 : miktar);
-  
+
   double get brutTutar => ((getSelectedMiktar ?? 0) + (malFazlasiMiktar ?? 0)) * (brutFiyat ?? 0);
 
   double get araToplamTutari => ((getSelectedMiktar ?? 0) * (brutFiyat ?? 0)) - iskontoTutari;
@@ -722,23 +782,30 @@ class KalemModel {
   double get iskontoTutari {
     if ((iskonto1OranMi ?? true)) {
       double result = ((getSelectedMiktar ?? 0) * (brutFiyat ?? 0));
+      double dovizResult = ((getSelectedMiktar ?? 0) * (dovizKuru ?? 0));
       if (iskonto1 != null && iskonto1 != 0) {
         result = result - result * ((iskonto1 ?? 0) / 100);
+        dovizResult = dovizResult - dovizResult * ((iskonto1 ?? 0) / 100);
       }
       if (iskonto2 != null && iskonto2 != 0) {
         result = result - result * ((iskonto2 ?? 0) / 100);
+        dovizResult = dovizResult - dovizResult * ((iskonto2 ?? 0) / 100);
       }
       if (iskonto3 != null && iskonto3 != 0) {
         result = result - result * ((iskonto3 ?? 0) / 100);
+        dovizResult = dovizResult - dovizResult * ((iskonto3 ?? 0) / 100);
       }
       if (iskonto4 != null && iskonto4 != 0) {
         result = result - result * ((iskonto4 ?? 0) / 100);
+        dovizResult = dovizResult - dovizResult * ((iskonto4 ?? 0) / 100);
       }
       if (iskonto5 != null && iskonto5 != 0) {
         result = result - result * ((iskonto5 ?? 0) / 100);
+        dovizResult = dovizResult - dovizResult * ((iskonto5 ?? 0) / 100);
       }
       if (iskonto6 != null && iskonto6 != 0) {
         result = result - result * ((iskonto6 ?? 0) / 100);
+        dovizResult = dovizResult - dovizResult * ((iskonto6 ?? 0) / 100);
       }
       return ((getSelectedMiktar ?? 0) * (brutFiyat ?? 0)) - result;
     } else {

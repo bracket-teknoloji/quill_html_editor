@@ -52,24 +52,25 @@ class AppThemeDark extends AppTheme {
       dividerTheme: DividerThemeData(space: 0, thickness: 1, color: colorManager.onPrimaryContainer.withOpacity(0.2), endIndent: UIHelper.highSize, indent: UIHelper.highSize),
       progressIndicatorTheme: ProgressIndicatorThemeData(color: UIHelper.primaryColor, linearTrackColor: Colors.transparent, circularTrackColor: Colors.transparent, linearMinHeight: 2),
       dropdownMenuTheme: DropdownMenuThemeData(
-          menuStyle: const MenuStyle(),
-          inputDecorationTheme: InputDecorationTheme(
-            errorStyle: const TextStyle(
-              fontSize: 12,
-            ),
-            errorBorder: OutlineInputBorder(
-              borderRadius: UIHelper.lowBorderRadius,
-            ),
-            border: OutlineInputBorder(
-              borderRadius: UIHelper.lowBorderRadius,
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: UIHelper.lowBorderRadius,
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: UIHelper.lowBorderRadius,
-            ),
-          )),
+        menuStyle: const MenuStyle(),
+        inputDecorationTheme: InputDecorationTheme(
+          errorStyle: const TextStyle(
+            fontSize: 12,
+          ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: UIHelper.lowBorderRadius,
+          ),
+          border: OutlineInputBorder(
+            borderRadius: UIHelper.lowBorderRadius,
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: UIHelper.lowBorderRadius,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: UIHelper.lowBorderRadius,
+          ),
+        ),
+      ),
       applyElevationOverlayColor: true,
       bottomSheetTheme: const BottomSheetThemeData(
         elevation: 1,

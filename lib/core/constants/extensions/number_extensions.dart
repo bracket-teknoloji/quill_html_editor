@@ -25,6 +25,16 @@ extension NumExtensionWithFixedDigits on num? {
     }
   }
 }
+extension NumExtensionWithFixedDigits2 on num? {
+  String commaSeparatedWithDecimalDigits(int decimalDigits) {
+    if (this != null) {
+    var f = NumberFormat.decimalPatternDigits(locale: Get.locale!.languageCode, decimalDigits: decimalDigits);
+      return f.format(this!);
+    } else {
+      return "0,00";
+    }
+  }
+}
 
 // an extension on num to seperate the digits with dots and after fixed number of digits with comma
 extension NumExtensionWithFixedDigitsAndComma on num? {

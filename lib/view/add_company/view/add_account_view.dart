@@ -11,7 +11,6 @@ import "../../../core/base/model/generic_response_model.dart";
 import "../../../core/base/state/base_state.dart";
 import "../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../core/init/cache/cache_manager.dart";
-import "../../../core/init/network/login/api_urls.dart";
 import "../model/account_model.dart";
 import "../model/account_response_model.dart";
 
@@ -111,23 +110,22 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
 
   Future<void> _getQR(BuildContext context) async {
     var barcode = await Get.toNamed("/qr");
-    var model = AccountModel.instance..qrData = barcode;
-    var data = model.toJson();
     GenericResponseModel<NetworkManagerMixin> response;
 
     if (barcode != null) {
-      response = await networkManager.dioPost<AccountResponseModel>(
-        bodyModel: AccountResponseModel(),
-        addTokenKey: false,
-        data: data,
-        path: ApiUrls.getUyeBilgileri,
-      );
+      AccountModel.instance.qrData = barcode;
+      response = await networkManager.getUyeBilgileri(null, getFromCache: false, isQR: true);
       AccountModel.instance.qrData = null;
+      // response = await networkManager.dioPost<AccountResponseModel>(
+      //   bodyModel: AccountResponseModel(),
+      //   addTokenKey: false,
+      //   data: data,
+      //   path: ApiUrls.getUyeBilgileri,
+      // );
       if (response.data != null) {
         if (response.success == true) {
-          AccountModel.instance
-            ..uyeEmail = response.data.first.email
-            ..qrData = response.data.first.parola;
+          AccountModel.instance.uyeEmail = response.data.first.email;
+          AccountModel.instance.qrData = response.data.first.parola;
           for (AccountResponseModel item in response.data!) {
             if (!CacheManager.accountsBox.containsKey(item.email)) {
               Get.offAndToNamed("/addCompany");

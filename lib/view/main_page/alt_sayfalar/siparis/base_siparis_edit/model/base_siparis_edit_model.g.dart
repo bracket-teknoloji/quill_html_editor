@@ -1489,6 +1489,46 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel koliMi(bool? koliMi);
 
+  KalemModel inckeyno(int? inckeyno);
+
+  KalemModel cariAdi(String? cariAdi);
+
+  KalemModel plasiyerKodu(String? plasiyerKodu);
+
+  KalemModel kapali(String? kapali);
+
+  KalemModel stokSatisKdv(double? stokSatisKdv);
+
+  KalemModel stokAlisKdv(double? stokAlisKdv);
+
+  KalemModel netFiyat(double? netFiyat);
+
+  KalemModel zHucreList(List<dynamic>? zHucreList);
+
+  KalemModel kalan(double? kalan);
+
+  KalemModel paketMi(String? paketMi);
+
+  KalemModel lYedek9(int? lYedek9);
+
+  KalemModel koliBilesenMiktari(double? koliBilesenMiktari);
+
+  KalemModel koliBilesenOrani(double? koliBilesenOrani);
+
+  KalemModel koliBilesenFiyatorandan(String? koliBilesenFiyatorandan);
+
+  KalemModel koliBilesenKolikdv(String? koliBilesenKolikdv);
+
+  KalemModel stokSatDovTip(int? stokSatDovTip);
+
+  KalemModel stokAlisDovTip(int? stokAlisDovTip);
+
+  KalemModel stokAlisDovizAdi(String? stokAlisDovizAdi);
+
+  KalemModel stokSatDovizAdi(String? stokSatDovizAdi);
+
+  KalemModel muhasebeKodu(String? muhasebeKodu);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -1555,6 +1595,26 @@ abstract class _$KalemModelCWProxy {
     String? kosulKodu,
     List<KalemModel>? kalemList,
     bool? koliMi,
+    int? inckeyno,
+    String? cariAdi,
+    String? plasiyerKodu,
+    String? kapali,
+    double? stokSatisKdv,
+    double? stokAlisKdv,
+    double? netFiyat,
+    List<dynamic>? zHucreList,
+    double? kalan,
+    String? paketMi,
+    int? lYedek9,
+    double? koliBilesenMiktari,
+    double? koliBilesenOrani,
+    String? koliBilesenFiyatorandan,
+    String? koliBilesenKolikdv,
+    int? stokSatDovTip,
+    int? stokAlisDovTip,
+    String? stokAlisDovizAdi,
+    String? stokSatDovizAdi,
+    String? muhasebeKodu,
   });
 }
 
@@ -1754,6 +1814,78 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel koliMi(bool? koliMi) => this(koliMi: koliMi);
 
   @override
+  KalemModel inckeyno(int? inckeyno) => this(inckeyno: inckeyno);
+
+  @override
+  KalemModel cariAdi(String? cariAdi) => this(cariAdi: cariAdi);
+
+  @override
+  KalemModel plasiyerKodu(String? plasiyerKodu) =>
+      this(plasiyerKodu: plasiyerKodu);
+
+  @override
+  KalemModel kapali(String? kapali) => this(kapali: kapali);
+
+  @override
+  KalemModel stokSatisKdv(double? stokSatisKdv) =>
+      this(stokSatisKdv: stokSatisKdv);
+
+  @override
+  KalemModel stokAlisKdv(double? stokAlisKdv) => this(stokAlisKdv: stokAlisKdv);
+
+  @override
+  KalemModel netFiyat(double? netFiyat) => this(netFiyat: netFiyat);
+
+  @override
+  KalemModel zHucreList(List<dynamic>? zHucreList) =>
+      this(zHucreList: zHucreList);
+
+  @override
+  KalemModel kalan(double? kalan) => this(kalan: kalan);
+
+  @override
+  KalemModel paketMi(String? paketMi) => this(paketMi: paketMi);
+
+  @override
+  KalemModel lYedek9(int? lYedek9) => this(lYedek9: lYedek9);
+
+  @override
+  KalemModel koliBilesenMiktari(double? koliBilesenMiktari) =>
+      this(koliBilesenMiktari: koliBilesenMiktari);
+
+  @override
+  KalemModel koliBilesenOrani(double? koliBilesenOrani) =>
+      this(koliBilesenOrani: koliBilesenOrani);
+
+  @override
+  KalemModel koliBilesenFiyatorandan(String? koliBilesenFiyatorandan) =>
+      this(koliBilesenFiyatorandan: koliBilesenFiyatorandan);
+
+  @override
+  KalemModel koliBilesenKolikdv(String? koliBilesenKolikdv) =>
+      this(koliBilesenKolikdv: koliBilesenKolikdv);
+
+  @override
+  KalemModel stokSatDovTip(int? stokSatDovTip) =>
+      this(stokSatDovTip: stokSatDovTip);
+
+  @override
+  KalemModel stokAlisDovTip(int? stokAlisDovTip) =>
+      this(stokAlisDovTip: stokAlisDovTip);
+
+  @override
+  KalemModel stokAlisDovizAdi(String? stokAlisDovizAdi) =>
+      this(stokAlisDovizAdi: stokAlisDovizAdi);
+
+  @override
+  KalemModel stokSatDovizAdi(String? stokSatDovizAdi) =>
+      this(stokSatDovizAdi: stokSatDovizAdi);
+
+  @override
+  KalemModel muhasebeKodu(String? muhasebeKodu) =>
+      this(muhasebeKodu: muhasebeKodu);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1821,6 +1953,26 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? kosulKodu = const $CopyWithPlaceholder(),
     Object? kalemList = const $CopyWithPlaceholder(),
     Object? koliMi = const $CopyWithPlaceholder(),
+    Object? inckeyno = const $CopyWithPlaceholder(),
+    Object? cariAdi = const $CopyWithPlaceholder(),
+    Object? plasiyerKodu = const $CopyWithPlaceholder(),
+    Object? kapali = const $CopyWithPlaceholder(),
+    Object? stokSatisKdv = const $CopyWithPlaceholder(),
+    Object? stokAlisKdv = const $CopyWithPlaceholder(),
+    Object? netFiyat = const $CopyWithPlaceholder(),
+    Object? zHucreList = const $CopyWithPlaceholder(),
+    Object? kalan = const $CopyWithPlaceholder(),
+    Object? paketMi = const $CopyWithPlaceholder(),
+    Object? lYedek9 = const $CopyWithPlaceholder(),
+    Object? koliBilesenMiktari = const $CopyWithPlaceholder(),
+    Object? koliBilesenOrani = const $CopyWithPlaceholder(),
+    Object? koliBilesenFiyatorandan = const $CopyWithPlaceholder(),
+    Object? koliBilesenKolikdv = const $CopyWithPlaceholder(),
+    Object? stokSatDovTip = const $CopyWithPlaceholder(),
+    Object? stokAlisDovTip = const $CopyWithPlaceholder(),
+    Object? stokAlisDovizAdi = const $CopyWithPlaceholder(),
+    Object? stokSatDovizAdi = const $CopyWithPlaceholder(),
+    Object? muhasebeKodu = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -2059,6 +2211,87 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.koliMi
           // ignore: cast_nullable_to_non_nullable
           : koliMi as bool?,
+      inckeyno: inckeyno == const $CopyWithPlaceholder()
+          ? _value.inckeyno
+          // ignore: cast_nullable_to_non_nullable
+          : inckeyno as int?,
+      cariAdi: cariAdi == const $CopyWithPlaceholder()
+          ? _value.cariAdi
+          // ignore: cast_nullable_to_non_nullable
+          : cariAdi as String?,
+      plasiyerKodu: plasiyerKodu == const $CopyWithPlaceholder()
+          ? _value.plasiyerKodu
+          // ignore: cast_nullable_to_non_nullable
+          : plasiyerKodu as String?,
+      kapali: kapali == const $CopyWithPlaceholder()
+          ? _value.kapali
+          // ignore: cast_nullable_to_non_nullable
+          : kapali as String?,
+      stokSatisKdv: stokSatisKdv == const $CopyWithPlaceholder()
+          ? _value.stokSatisKdv
+          // ignore: cast_nullable_to_non_nullable
+          : stokSatisKdv as double?,
+      stokAlisKdv: stokAlisKdv == const $CopyWithPlaceholder()
+          ? _value.stokAlisKdv
+          // ignore: cast_nullable_to_non_nullable
+          : stokAlisKdv as double?,
+      netFiyat: netFiyat == const $CopyWithPlaceholder()
+          ? _value.netFiyat
+          // ignore: cast_nullable_to_non_nullable
+          : netFiyat as double?,
+      zHucreList: zHucreList == const $CopyWithPlaceholder()
+          ? _value.zHucreList
+          // ignore: cast_nullable_to_non_nullable
+          : zHucreList as List<dynamic>?,
+      kalan: kalan == const $CopyWithPlaceholder()
+          ? _value.kalan
+          // ignore: cast_nullable_to_non_nullable
+          : kalan as double?,
+      paketMi: paketMi == const $CopyWithPlaceholder()
+          ? _value.paketMi
+          // ignore: cast_nullable_to_non_nullable
+          : paketMi as String?,
+      lYedek9: lYedek9 == const $CopyWithPlaceholder()
+          ? _value.lYedek9
+          // ignore: cast_nullable_to_non_nullable
+          : lYedek9 as int?,
+      koliBilesenMiktari: koliBilesenMiktari == const $CopyWithPlaceholder()
+          ? _value.koliBilesenMiktari
+          // ignore: cast_nullable_to_non_nullable
+          : koliBilesenMiktari as double?,
+      koliBilesenOrani: koliBilesenOrani == const $CopyWithPlaceholder()
+          ? _value.koliBilesenOrani
+          // ignore: cast_nullable_to_non_nullable
+          : koliBilesenOrani as double?,
+      koliBilesenFiyatorandan:
+          koliBilesenFiyatorandan == const $CopyWithPlaceholder()
+              ? _value.koliBilesenFiyatorandan
+              // ignore: cast_nullable_to_non_nullable
+              : koliBilesenFiyatorandan as String?,
+      koliBilesenKolikdv: koliBilesenKolikdv == const $CopyWithPlaceholder()
+          ? _value.koliBilesenKolikdv
+          // ignore: cast_nullable_to_non_nullable
+          : koliBilesenKolikdv as String?,
+      stokSatDovTip: stokSatDovTip == const $CopyWithPlaceholder()
+          ? _value.stokSatDovTip
+          // ignore: cast_nullable_to_non_nullable
+          : stokSatDovTip as int?,
+      stokAlisDovTip: stokAlisDovTip == const $CopyWithPlaceholder()
+          ? _value.stokAlisDovTip
+          // ignore: cast_nullable_to_non_nullable
+          : stokAlisDovTip as int?,
+      stokAlisDovizAdi: stokAlisDovizAdi == const $CopyWithPlaceholder()
+          ? _value.stokAlisDovizAdi
+          // ignore: cast_nullable_to_non_nullable
+          : stokAlisDovizAdi as String?,
+      stokSatDovizAdi: stokSatDovizAdi == const $CopyWithPlaceholder()
+          ? _value.stokSatDovizAdi
+          // ignore: cast_nullable_to_non_nullable
+          : stokSatDovizAdi as String?,
+      muhasebeKodu: muhasebeKodu == const $CopyWithPlaceholder()
+          ? _value.muhasebeKodu
+          // ignore: cast_nullable_to_non_nullable
+          : muhasebeKodu as String?,
     );
   }
 }
@@ -2562,13 +2795,33 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       kosulKodu: fields[50] as String?,
       kalemList: (fields[57] as List?)?.cast<KalemModel>(),
       koliMi: fields[58] as bool?,
+      inckeyno: fields[59] as int?,
+      cariAdi: fields[60] as String?,
+      plasiyerKodu: fields[61] as String?,
+      kapali: fields[62] as String?,
+      stokSatisKdv: fields[63] as double?,
+      stokAlisKdv: fields[64] as double?,
+      netFiyat: fields[65] as double?,
+      zHucreList: (fields[66] as List?)?.cast<dynamic>(),
+      kalan: fields[67] as double?,
+      paketMi: fields[68] as String?,
+      lYedek9: fields[69] as int?,
+      koliBilesenMiktari: fields[70] as double?,
+      koliBilesenOrani: fields[71] as double?,
+      koliBilesenFiyatorandan: fields[72] as String?,
+      koliBilesenKolikdv: fields[73] as String?,
+      stokSatDovTip: fields[74] as int?,
+      stokAlisDovTip: fields[75] as int?,
+      stokAlisDovizAdi: fields[76] as String?,
+      stokSatDovizAdi: fields[77] as String?,
+      muhasebeKodu: fields[78] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(59)
+      ..writeByte(79)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -2686,7 +2939,47 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(57)
       ..write(obj.kalemList)
       ..writeByte(58)
-      ..write(obj.koliMi);
+      ..write(obj.koliMi)
+      ..writeByte(59)
+      ..write(obj.inckeyno)
+      ..writeByte(60)
+      ..write(obj.cariAdi)
+      ..writeByte(61)
+      ..write(obj.plasiyerKodu)
+      ..writeByte(62)
+      ..write(obj.kapali)
+      ..writeByte(63)
+      ..write(obj.stokSatisKdv)
+      ..writeByte(64)
+      ..write(obj.stokAlisKdv)
+      ..writeByte(65)
+      ..write(obj.netFiyat)
+      ..writeByte(66)
+      ..write(obj.zHucreList)
+      ..writeByte(67)
+      ..write(obj.kalan)
+      ..writeByte(68)
+      ..write(obj.paketMi)
+      ..writeByte(69)
+      ..write(obj.lYedek9)
+      ..writeByte(70)
+      ..write(obj.koliBilesenMiktari)
+      ..writeByte(71)
+      ..write(obj.koliBilesenOrani)
+      ..writeByte(72)
+      ..write(obj.koliBilesenFiyatorandan)
+      ..writeByte(73)
+      ..write(obj.koliBilesenKolikdv)
+      ..writeByte(74)
+      ..write(obj.stokSatDovTip)
+      ..writeByte(75)
+      ..write(obj.stokAlisDovTip)
+      ..writeByte(76)
+      ..write(obj.stokAlisDovizAdi)
+      ..writeByte(77)
+      ..write(obj.stokSatDovizAdi)
+      ..writeByte(78)
+      ..write(obj.muhasebeKodu);
   }
 
   @override
@@ -3054,6 +3347,26 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       kalemList: (json['KALEM_LIST'] as List<dynamic>?)
           ?.map((e) => KalemModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      inckeyno: json['INCKEYNO'] as int?,
+      cariAdi: json['CARI_ADI'] as String?,
+      plasiyerKodu: json['PLASIYER_KODU'] as String?,
+      kapali: json['KAPALI'] as String?,
+      stokSatisKdv: (json['STOK_SATIS_KDV'] as num?)?.toDouble(),
+      stokAlisKdv: (json['STOK_ALIS_KDV'] as num?)?.toDouble(),
+      netFiyat: (json['NET_FIYAT'] as num?)?.toDouble(),
+      zHucreList: json['Z_HUCRE_LIST'] as List<dynamic>?,
+      kalan: (json['KALAN'] as num?)?.toDouble(),
+      paketMi: json['PAKET_MI'] as String?,
+      lYedek9: json['L_YEDEK9'] as int?,
+      koliBilesenMiktari: (json['KOLI_BILESEN_MIKTARI'] as num?)?.toDouble(),
+      koliBilesenOrani: (json['KOLI_BILESEN_ORANI'] as num?)?.toDouble(),
+      koliBilesenFiyatorandan: json['KOLI_BILESEN_FIYATORANDAN'] as String?,
+      koliBilesenKolikdv: json['KOLI_BILESEN_KOLIKDV'] as String?,
+      stokSatDovTip: json['STOK_SAT_DOV_TIP'] as int?,
+      stokAlisDovTip: json['STOK_ALIS_DOV_TIP'] as int?,
+      stokAlisDovizAdi: json['STOK_ALIS_DOVIZ_ADI'] as String?,
+      stokSatDovizAdi: json['STOK_SAT_DOVIZ_ADI'] as String?,
+      muhasebeKodu: json['MUHASEBE_KODU'] as String?,
     );
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
@@ -3125,5 +3438,25 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('ISKONTO6', instance.iskonto6);
   writeNotNull(
       'KALEM_LIST', instance.kalemList?.map((e) => e.toJson()).toList());
+  writeNotNull('INCKEYNO', instance.inckeyno);
+  writeNotNull('CARI_ADI', instance.cariAdi);
+  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
+  writeNotNull('KAPALI', instance.kapali);
+  writeNotNull('STOK_SATIS_KDV', instance.stokSatisKdv);
+  writeNotNull('STOK_ALIS_KDV', instance.stokAlisKdv);
+  writeNotNull('NET_FIYAT', instance.netFiyat);
+  writeNotNull('Z_HUCRE_LIST', instance.zHucreList);
+  writeNotNull('KALAN', instance.kalan);
+  writeNotNull('PAKET_MI', instance.paketMi);
+  writeNotNull('L_YEDEK9', instance.lYedek9);
+  writeNotNull('KOLI_BILESEN_MIKTARI', instance.koliBilesenMiktari);
+  writeNotNull('KOLI_BILESEN_ORANI', instance.koliBilesenOrani);
+  writeNotNull('KOLI_BILESEN_FIYATORANDAN', instance.koliBilesenFiyatorandan);
+  writeNotNull('KOLI_BILESEN_KOLIKDV', instance.koliBilesenKolikdv);
+  writeNotNull('STOK_SAT_DOV_TIP', instance.stokSatDovTip);
+  writeNotNull('STOK_ALIS_DOV_TIP', instance.stokAlisDovTip);
+  writeNotNull('STOK_ALIS_DOVIZ_ADI', instance.stokAlisDovizAdi);
+  writeNotNull('STOK_SAT_DOVIZ_ADI', instance.stokSatDovizAdi);
+  writeNotNull('MUHASEBE_KODU', instance.muhasebeKodu);
   return val;
 }

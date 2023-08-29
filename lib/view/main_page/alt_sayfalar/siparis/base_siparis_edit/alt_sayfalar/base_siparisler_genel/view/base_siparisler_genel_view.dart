@@ -183,6 +183,11 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     suffixMore: true,
                     controller: plasiyerController,
                     valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                    onClear: () {
+                      viewModel.setPlasiyer(null);
+                      model.cariModel?.plasiyerKodu = null;
+                      model.cariModel?.plasiyerAciklama = null;
+                    },
                     onTap: () async {
                       var result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
                       if (result != null) {
@@ -204,6 +209,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                           labelText: "Tarih",
                           isMust: true,
                           readOnly: true,
+                          isDateTime: true,
                           onTap: () async {
                             var result = await dialogManager.showDateTimePicker();
                             if (result != null) {
@@ -211,13 +217,13 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                               tarihController.text = result.toDateString;
                             }
                           },
-                          suffix: const Icon(Icons.date_range_outlined),
                           controller: tarihController)),
                   Expanded(
                       child: CustomTextField(
                           enabled: enable,
                           labelText: "Teslim Tarihi",
                           isMust: true,
+                          isDateTime: true,
                           readOnly: true,
                           onTap: () async {
                             var result = await dialogManager.showDateTimePicker();
@@ -226,7 +232,6 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                               teslimTarihController.text = result.toDateString;
                             }
                           },
-                          suffix: const Icon(Icons.date_range_outlined),
                           controller: teslimTarihController)),
                 ],
               ),
@@ -240,10 +245,12 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     readOnly: true,
                     suffixMore: true,
                     controller: topluDepoController,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNull ?? "")),
+                    onClear: () => viewModel.setTopluDepoKodu(null),
                     onTap: () async {
                       var result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context);
                       if (result != null) {
-                        model.topluDepo = result.depoKodu;
+                        viewModel.setTopluDepoKodu(result.depoKodu);
                         topluDepoController.text = result.depoTanimi ?? result.depoKodu.toStringIfNull ?? "";
                       }
                     },
@@ -313,6 +320,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     readOnly: true,
                     suffixMore: true,
                     controller: ozelKod1Controller,
+                    onClear: () => model.ozelKod2 = null,
                     valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod1 ?? "")),
                     onTap: () async {
                       ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context);
@@ -330,10 +338,12 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     readOnly: true,
                     suffixMore: true,
                     controller: ozelKod2Controller,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod2 ?? "")),
+                    onClear: () => viewModel.setOzelKod2(null),
                     onTap: () async {
                       ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context);
                       if (result != null) {
-                        model.ozelKod2 = result.kod;
+                        viewModel.setOzelKod2(result.kod);
                         ozelKod2Controller.text = result.aciklama ?? result.kod ?? "";
                       }
                     },
