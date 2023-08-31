@@ -147,7 +147,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                 children: [
                   Text("Kalem Adedi: ${widget.model.kalemAdedi ?? ""}"),
                   Text("Plasiyer: ${widget.model.plasiyerAciklama ?? ""}"),
-                  Text("KDV: ${widget.model.kdv ?? "0.00"} TL"),
+                  Text("KDV: ${widget.model.kdv.commaSeparatedWithFixedDigits} TL"),
                   widget.model.dovizAdi != null ? Text("Döviz Toplamı: ${widget.model.dovizTutari ?? ""} ${widget.model.dovizAdi ?? ""}") : null,
                 ].nullCheck.cast<Widget>(),
               ),

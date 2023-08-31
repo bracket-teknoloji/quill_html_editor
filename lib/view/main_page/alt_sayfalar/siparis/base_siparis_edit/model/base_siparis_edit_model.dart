@@ -499,6 +499,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   bool get isRemoteTempBelgeNull => remoteTempBelge == null;
 
   double get getToplamIskonto {
+    print(getAraToplam);
     return (malFazlasiTutar + satirIskonto) - (iskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0) - (araToplam ?? 0));
   }
 

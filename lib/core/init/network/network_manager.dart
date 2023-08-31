@@ -273,7 +273,7 @@ class NetworkManager {
     return jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]);
   }
 
-  Future<GenericResponseModel> getUyeBilgileri(String? email, {String? password, bool getFromCache = true, bool isQR =false}) async {
+  Future<GenericResponseModel> getUyeBilgileri(String? email, {String? password, bool getFromCache = true}) async {
     if (email == "demo@netfect.com") {
       return GenericResponseModel(success: true);
     }
@@ -282,11 +282,13 @@ class NetworkManager {
         showError: false,
         data: getFromCache ? (CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi)?.toJson() : AccountModel.instance.toJson(),
         addTokenKey: false,
+        addCKey: false,
+        addSirketBilgileri: false,
         path: ApiUrls.getUyeBilgileri);
     if (result.success == true) {
 
       CacheManager.setIsLicenseVerified(email ?? result.data.first.email, true);
-      if (!getFromCache ==!isQR) {
+      if (getFromCache==true) {
         CacheManager.setAccounts(result.data.first..parola = (password ?? CacheManager.getVerifiedUser.account?.parola));
       }
     } else {

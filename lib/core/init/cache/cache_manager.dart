@@ -168,6 +168,7 @@ class CacheManager {
   static void setProfilParametre(BaseProfilParametreModel value) => profilParametreBox.put("value", value.toJson());
 
 //* Clear and Remove
+static void resetVerifiedUser() => setVerifiedUser(LoginDialogModel(account: AccountResponseModel.demo(firma: "demo", email: "demo@netfect.com"), username: "demo", password: "demo"));
   static void clearBox(String boxName) => Hive.box(boxName).clear();
   static void removeFavoriler(String key) {
     if (favorilerBox.values.toList().indexWhere((element) => element.title == key) >= 0) {

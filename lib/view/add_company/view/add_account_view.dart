@@ -95,7 +95,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
       AccountModel.instance
         ..uyeEmail = emailController.text
         ..uyeSifre = encodedPassword;
-      final response = await networkManager.getUyeBilgileri(emailController.text, getFromCache: false, password: encodedPassword);
+      final response = await networkManager.getUyeBilgileri(emailController.text, password: encodedPassword);
       dialogManager.hideAlertDialog;
       if (response.success == true) {
         CacheManager.setHesapBilgileri(AccountModel.instance);
@@ -114,7 +114,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
 
     if (barcode != null) {
       AccountModel.instance.qrData = barcode;
-      response = await networkManager.getUyeBilgileri(null, getFromCache: false, isQR: true);
+      response = await networkManager.getUyeBilgileri(null, getFromCache: false);
       // response = await networkManager.dioPost<AccountResponseModel>(
       //   bodyModel: AccountResponseModel(),
       //   addTokenKey: false,
@@ -123,27 +123,28 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
       // );
       if (response.data != null) {
         if (response.success == true) {
+          String base64String = utf8.decode(base64.decode(response.data.first.parola));
+          String encodedPassword = passwordDecoder(base64String);
           AccountModel.instance.uyeEmail = response.data.first.email;
-          AccountModel.instance.uyeSifre = utf8.decode(base64.decode(response.data.first.parola));
+          AccountModel.instance.uyeSifre = encodedPassword;
           AccountModel.instance.qrData = null;
           for (AccountResponseModel item in response.data!) {
             if (!CacheManager.accountsBox.containsKey(item.email)) {
               Get.back(result: true);
               Get.offAndToNamed("/addCompany");
               CacheManager.setHesapBilgileri(AccountModel.instance);
-              CacheManager.setAccounts(item..parola = utf8.decode(base64.decode(item.parola ?? "")));
+              CacheManager.setAccounts(item..parola = encodedPassword);
               dialogManager.showSnackBar("Başarılı");
             } else {
               dialogManager.showSnackBar("${item.firmaKisaAdi} zaten kayıtlı");
             }
           }
+        }else{
+          dialogManager.showAlertDialog(response.message ?? "");
         }
       }
     }
   }
 
-  String passwordDecoder(String password) {
-    String password = md5.convert(utf8.encode(passwordController.text)).toString();
-    return password;
-  }
+  String passwordDecoder(String password) => md5.convert(utf8.encode(password)).toString();
 }

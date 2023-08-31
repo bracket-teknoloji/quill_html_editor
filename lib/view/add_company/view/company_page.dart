@@ -22,64 +22,71 @@ class _AccountsViewState extends BaseState<AccountsView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          dynamic refresh = await Get.toNamed("/addAccount");
-          if (refresh == null || refresh == true) {
-            setState(() {});
-          }
-        },
-        child: const Icon(Icons.add),
-      ),
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Get.toNamed("/");
+    return WillPopScope(
+      onWillPop: () async {
+        Get.offAndToNamed("/");
+        return false;
+      },
+      child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () async {
+            dynamic refresh = await Get.toNamed("/addAccount");
+            if (refresh == null || refresh == true) {
+              setState(() {});
+            }
           },
-          icon: const Icon(Icons.arrow_back),
+          child: const Icon(Icons.add),
         ),
-        title: const Text("Hesaplar"),
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Get.offAndToNamed("/");
+            },
+            icon: const Icon(Icons.arrow_back),
+          ),
+          title: const Text("Hesaplar"),
+        ),
+        body: getListLength == 0
+            ? const Center(child: Text("Hesap Bulunamadı"))
+            : Padding(
+                padding: UIHelper.midPadding,
+                child: ListView.builder(
+                    itemCount: getListLength == 0 ? 1 : getListLength,
+                    itemBuilder: (context, index) {
+                      AccountResponseModel account = Hive.box("accounts").getAt(index);
+                      return Card(
+                        child: ListTile(
+                          onTap: () {
+                            BottomSheetDialogManager().showBottomSheetDialog(context, title: account.firma.toString(), children: [
+                              BottomSheetModel(
+                                  icon: "CopKovasi",
+                                  iconWidget: Icons.delete_outline,
+                                  title: "Sil",
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                    dialogManager.showAreYouSureDialog(() {
+                                      CacheManager.removeAccounts(account.email ?? "");
+                                      CacheManager.resetVerifiedUser();
+                                      setState(() {});
+                                    });
+                                  }),
+                              BottomSheetModel(
+                                  icon: "Database",
+                                  iconWidget: Icons.storage_rounded,
+                                  title: "Sunucu Tercihi",
+                                  onTap: () {
+                                    //TODO Sunucu Tercihi Sayfasına Yönlendir
+                                  }),
+                            ]);
+                          },
+                          title: Text(account.firma.toString()),
+                          subtitle: Text(account.email.toString()),
+                          trailing: const Icon(Icons.more_vert),
+                        ),
+                      );
+                    }),
+              ),
       ),
-      body: getListLength == 0
-          ? const Center(child: Text("Hesap Bulunamadı"))
-          : Padding(
-              padding: UIHelper.midPadding,
-              child: ListView.builder(
-                  itemCount: getListLength == 0 ? 1 : getListLength,
-                  itemBuilder: (context, index) {
-                    AccountResponseModel account = Hive.box("accounts").getAt(index);
-                    return Card(
-                      child: ListTile(
-                        onTap: () {
-                          BottomSheetDialogManager().showBottomSheetDialog(context, title: account.firma.toString(), children: [
-                            BottomSheetModel(
-                                icon: "CopKovasi",
-                                iconWidget: Icons.delete_outline,
-                                title: "Sil",
-                                onTap: () {
-                                  Navigator.pop(context);
-                                  dialogManager.showAreYouSureDialog(() {
-                                    CacheManager.removeAccounts(account.email ?? "");
-                                    setState(() {});
-                                  });
-                                }),
-                            BottomSheetModel(
-                                icon: "Database",
-                                iconWidget: Icons.storage_rounded,
-                                title: "Sunucu Tercihi",
-                                onTap: () {
-                                  //TODO Sunucu Tercihi Sayfasına Yönlendir
-                                }),
-                          ]);
-                        },
-                        title: Text(account.firma.toString()),
-                        subtitle: Text(account.email.toString()),
-                        trailing: const Icon(Icons.more_vert),
-                      ),
-                    );
-                  }),
-            ),
     );
   }
 
@@ -107,6 +114,7 @@ class _AccountsViewState extends BaseState<AccountsView> {
                   Navigator.pop(context);
                   dialogManager.showAreYouSureDialog(() {
                     CacheManager.removeAccounts(firma);
+                    CacheManager.resetVerifiedUser();
                     setState(() {});
                   });
                 },

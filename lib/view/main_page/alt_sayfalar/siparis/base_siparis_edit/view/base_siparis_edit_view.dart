@@ -70,7 +70,18 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (BaseSiparisEditModel.instance.isEmpty && widget.model.baseEditEnum != BaseEditEnum.ekle) {
-        await getData();
+        var result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: widget.model.model?.toJson(), showLoading: true);
+        if (result.success == true) {
+          viewModel.changeFuture();
+          BaseSiparisEditModel.setInstance(result.data!.first);
+            BaseSiparisEditModel.instance.isNew = false;
+            BaseSiparisEditModel.instance.mevcutBelgeNo = BaseSiparisEditModel.instance.belgeNo;
+            BaseSiparisEditModel.instance.mevcutCariKodu = BaseSiparisEditModel.instance.cariKodu;
+          // if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
+          // }else if(widget.model.baseEditEnum == BaseEditEnum.kopyala){
+          //   BaseSiparisEditModel.instance.isNew = false;
+          // }
+        }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
         BaseSiparisEditModel.instance.isNew = true;

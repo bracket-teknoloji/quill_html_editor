@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/core/constants/static_variables/static_variables.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -48,6 +49,8 @@ abstract class _KalemEkleViewModelBase with Store {
   void setMuhasebeKodu(String? value) => kalemModel = kalemModel.copyWith(muhasebeKodu: value);
   @action
   void setKalemModel(KalemModel? value) => kalemModel = value ?? KalemModel();
+  @action
+  void setDovizAdi(String? value) => kalemModel = StaticVariables.instance.isMusteriSiparisleri? kalemModel.copyWith(stokSatDovizAdi: value) : kalemModel.copyWith(stokAlisDovizAdi: value);
   @action
   void setDovizFiyati(double? value) => kalemModel = kalemModel.copyWith(dovizFiyati: value);
   @action
