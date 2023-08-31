@@ -32,8 +32,8 @@ import "../../base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../model/siparis_edit_request_model.dart";
 
 class SiparislerView extends StatefulWidget {
-  final bool isSiparisler;
-  const SiparislerView({super.key, required this.isSiparisler});
+  final bool isMusteriSiparisi;
+  const SiparislerView({super.key, required this.isMusteriSiparisi});
 
   @override
   State<SiparislerView> createState() => _SiparislerViewState();
@@ -61,8 +61,8 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
 
   @override
   void initState() {
-    viewModel = SiparislerViewModel(pickerBelgeTuru: widget.isSiparisler ? "MS" : "SS");
-    StaticVariables.instance.isMusteriSiparisleri = widget.isSiparisler;
+    viewModel = SiparislerViewModel(pickerBelgeTuru: widget.isMusteriSiparisi ? "MS" : "SS");
+    StaticVariables.instance.isMusteriSiparisleri = widget.isMusteriSiparisi;
     scrollController = ScrollController();
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
@@ -142,7 +142,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                     getData();
                   },
                 )
-              : AppBarTitle(title: "${widget.isSiparisler ? "Müşteri" : "Satıcı"} Siparişleri", subtitle: viewModel.musteriSiparisleriList?.length.toString())),
+              : AppBarTitle(title: "${widget.isMusteriSiparisi ? "Müşteri" : "Satıcı"} Siparişleri", subtitle: viewModel.musteriSiparisleriList?.length.toString())),
       //*Actions
       actions: [
         IconButton(
@@ -363,7 +363,8 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
       builder: (_) => CustomFloatingActionButton(
           isScrolledDown: viewModel.isScrolledDown,
           onPressed: () => Get.toNamed("mainPage/siparisEdit",
-              arguments: BaseEditModel(model: SiparisEditRequestModel(), baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: widget.isSiparisler ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici))));
+              arguments:
+                  BaseEditModel(model: SiparisEditRequestModel(), baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: widget.isMusteriSiparisi ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici))));
 
   RefreshIndicator body() {
     return RefreshIndicator.adaptive(
@@ -394,7 +395,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                         return SiparislerCard(
                           model: viewModel.musteriSiparisleriList?[index] ?? BaseSiparisEditModel(),
                           index: (viewModel.musteriSiparisleriList?[index]?.isNew ?? false) ? index : null,
-                          siparisTipiEnum: widget.isSiparisler ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici,
+                          siparisTipiEnum: widget.isMusteriSiparisi ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici,
                           onDeleted: () {
                             viewModel.removeSiparislerList(index);
                           },
@@ -418,7 +419,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
     var result = await networkManager.dioGet<BaseSiparisEditModel>(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: viewModel.musteriSiparisleriRequestModel.toJson());
     if (result.data != null) {
       if (viewModel.sayfa == 1) {
-        viewModel.setSiparislerList(CacheManager.getSiparisEditLists(widget.isSiparisler ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici)?.toList().cast<BaseSiparisEditModel?>());
+        viewModel.setSiparislerList(CacheManager.getSiparisEditLists(widget.isMusteriSiparisi ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici)?.toList().cast<BaseSiparisEditModel?>());
         viewModel.setParamData(result.paramData?.map((key, value) => MapEntry(key, value.toString())) ?? {});
       }
       List<BaseSiparisEditModel?>? list = result.data.map((e) => e as BaseSiparisEditModel?).toList().cast<BaseSiparisEditModel?>();

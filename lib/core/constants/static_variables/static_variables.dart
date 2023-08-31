@@ -4,7 +4,6 @@ import "../../../view/add_company/model/account_model.dart";
 import "../../base/model/base_grup_kodu_model.dart";
 import "../../init/cache/cache_manager.dart";
 
-
 class StaticVariables {
   //singleton
   StaticVariables._init();

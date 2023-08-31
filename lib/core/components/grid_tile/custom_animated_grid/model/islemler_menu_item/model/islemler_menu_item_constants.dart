@@ -4,6 +4,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_edit_model.dart";
+import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/grid_tile/custom_animated_grid/model/islemler_menu_item/view_model/islemler_menu_item_constants_view_model.dart";
@@ -12,17 +13,21 @@ import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
+import "package:picker/core/constants/static_variables/static_variables.dart";
 import "package:picker/core/init/network/network_manager.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "package:picker/view/main_page/model/grid_item_model.dart";
+import "package:picker/view/main_page/model/param_model.dart";
 import "package:share_plus/share_plus.dart";
 
 import "../../../../../../../view/main_page/alt_sayfalar/cari/cari_network_manager.dart";
 import "../../../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../../../base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "../../../../../../constants/enum/base_edit_enum.dart";
 import "../../../../../../constants/enum/islem_tipi_enum.dart";
 import "../../../../../../constants/ui_helper/ui_helper.dart";
+import "../../../../../../init/cache/cache_manager.dart";
 import "../../../../../../init/network/login/api_urls.dart";
 import "../../../../../dialog/dialog_manager.dart";
 
@@ -32,7 +37,7 @@ class IslemlerMenuItemConstants<T> {
   IslemTipiEnum islemtipi;
   List<GridItemModel?> islemlerList = [];
   T? model;
-  T? get model2 => model;
+  // T? get model2 => model;
   IslemlerMenuItemConstants({required this.islemtipi, List<GridItemModel?>? raporlar, this.model}) {
     if (islemtipi == IslemTipiEnum.stok) {
       islemlerList.add(stokKarti);
@@ -47,8 +52,8 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.addAll(raporlar!);
       }
     } else if (islemtipi == IslemTipiEnum.siparis) {
-      islemlerList.add(irsaliyeOlustur);
-      islemlerList.add(faturaOlustur);
+      // islemlerList.add(irsaliyeOlustur);
+      // islemlerList.add(faturaOlustur);
       islemlerList.add(belgeyiKapat);
       islemlerList.add(siparisPDFGoruntule);
       islemlerList.add(cariKoduDegistir);
@@ -67,13 +72,32 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel? get stokHareketleri => GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Stok Hareketleri", onTap: () => Get.toNamed("mainPage/stokHareketleri", arguments: model));
   GridItemModel? get kopyala => GridItemModel.islemler(
       title: "Kopyala",
-      onTap: () => Get.toNamed(islemtipi == IslemTipiEnum.cari ? "/mainPage/cariEdit" : "/mainPage/stokEdit", arguments: BaseEditModel(model: model2, baseEditEnum: BaseEditEnum.kopyala)));
+      onTap: () => Get.toNamed(islemtipi == IslemTipiEnum.cari ? "/mainPage/cariEdit" : "/mainPage/stokEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.kopyala)));
   //* Siparis
   GridItemModel? get irsaliyeOlustur => GridItemModel.islemler(title: "İrsaliye Oluştur", iconData: Icons.conveyor_belt);
   GridItemModel? get faturaOlustur => GridItemModel.islemler(title: "Fatura Oluştur (Siparişten)", iconData: Icons.conveyor_belt);
   GridItemModel? get belgeyiKapat => GridItemModel.islemler(title: "Belgeyi Kapat", iconData: Icons.lock_outline);
   GridItemModel? get belgeNoDegistir => GridItemModel.islemler(title: "Belge No Değiştir", iconData: Icons.edit_outlined);
-  GridItemModel? get siparisPDFGoruntule => GridItemModel.islemler(title: "PDF Görüntüle", iconData: Icons.picture_as_pdf_outlined);
+  GridItemModel? get siparisPDFGoruntule => GridItemModel.islemler(
+      title: "PDF Görüntüle",
+      iconData: Icons.picture_as_pdf_outlined,
+      onTap: () async {
+        BaseSiparisEditModel? siparisModel = model as BaseSiparisEditModel?;
+        List<NetFectDizaynList> dizaynList =
+            (CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList ?? []).where((element) => element.ozelKod == (StaticVariables.instance.isMusteriSiparisleri ? "MusteriSiparisi" : "SaticiSiparisi")).whereType<NetFectDizaynList>().toList();
+        var result =
+            await bottomSheetDialogManager.showBottomSheetDialog(Get.context!, title: "PDF Görüntüle", children: dizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList());
+        if (result is NetFectDizaynList) {
+          Get.back();
+          Get.to(() => PDFViewerView(
+              title: result.dizaynAdi ?? "Serbest Raporlar",
+              pdfData: PdfModel(
+                  dizaynId: result.id,
+                  raporOzelKod: result.ozelKod,
+                  etiketSayisi: result.kopyaSayisi,
+                  dicParams: DicParams(belgeNo: siparisModel?.belgeNo, cariKodu: siparisModel?.cariKodu, belgeTipi: StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS"))));
+        }
+      });
   GridItemModel? get belgeyiKopyala => GridItemModel.islemler(title: "Belgeyi Kopyala", iconData: Icons.copy_outlined);
   //* Stok
   GridItemModel? get stokKarti => GridItemModel.islemler(
