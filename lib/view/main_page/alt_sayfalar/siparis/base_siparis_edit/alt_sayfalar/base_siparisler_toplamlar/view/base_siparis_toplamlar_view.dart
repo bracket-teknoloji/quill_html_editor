@@ -66,7 +66,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
             children: [
               Text.rich(TextSpan(children: [
                 const TextSpan(text: "Miktar\n", style: TextStyle(color: Colors.grey)),
-                TextSpan(text: BaseSiparisEditModel.instance.toplamKalemMiktari.toIntIfDouble.toStringIfNull ?? "0", style: const TextStyle(fontWeight: FontWeight.bold))
+                TextSpan(text: BaseSiparisEditModel.instance.toplamKalemMiktari().toIntIfDouble.toStringIfNull ?? "0", style: const TextStyle(fontWeight: FontWeight.bold))
               ])),
               const Text.rich(TextSpan(children: [TextSpan(text: "Mal Ağırlığı\n", style: TextStyle(color: Colors.grey)), TextSpan(text: "0", style: TextStyle(fontWeight: FontWeight.bold))])),
               Text.rich(TextSpan(children: [

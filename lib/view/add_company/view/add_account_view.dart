@@ -115,7 +115,6 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
     if (barcode != null) {
       AccountModel.instance.qrData = barcode;
       response = await networkManager.getUyeBilgileri(null, getFromCache: false, isQR: true);
-      AccountModel.instance.qrData = null;
       // response = await networkManager.dioPost<AccountResponseModel>(
       //   bodyModel: AccountResponseModel(),
       //   addTokenKey: false,
@@ -125,12 +124,14 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
       if (response.data != null) {
         if (response.success == true) {
           AccountModel.instance.uyeEmail = response.data.first.email;
-          AccountModel.instance.qrData = response.data.first.parola;
+          AccountModel.instance.uyeSifre = utf8.decode(base64.decode(response.data.first.parola));
+          AccountModel.instance.qrData = null;
           for (AccountResponseModel item in response.data!) {
             if (!CacheManager.accountsBox.containsKey(item.email)) {
+              Get.back(result: true);
               Get.offAndToNamed("/addCompany");
               CacheManager.setHesapBilgileri(AccountModel.instance);
-              CacheManager.setAccounts(item);
+              CacheManager.setAccounts(item..parola = utf8.decode(base64.decode(item.parola ?? "")));
               dialogManager.showSnackBar("Başarılı");
             } else {
               dialogManager.showSnackBar("${item.firmaKisaAdi} zaten kayıtlı");

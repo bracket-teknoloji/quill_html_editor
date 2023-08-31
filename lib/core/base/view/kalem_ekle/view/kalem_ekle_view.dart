@@ -151,7 +151,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               const TextSpan(text: "Brüt Tutar: "),
                               TextSpan(
                                   text:
-                                      "${viewModel.kalemModel.brutTutar.commaSeparatedWithFixedDigits} TL ${(viewModel.model?.dovizliMi ?? false) ? '\n(${(viewModel.kalemModel.brutTutar / (viewModel.kalemModel.dovizKuru ?? 1)).commaSeparatedWithFixedDigits} \$)' : ""}",
+                                      "${viewModel.kalemModel.brutTutar.commaSeparatedWithFixedDigits} TL ${(viewModel.model?.dovizliMi ?? false) ? '\n(${viewModel.kalemModel.dovizBrutTutar.commaSeparatedWithFixedDigits} \$)' : ""}",
                                   style: const TextStyle(fontWeight: FontWeight.bold))
                             ]));
                           })),
@@ -160,7 +160,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               const TextSpan(text: "MF. Tutarı: "),
                               TextSpan(
                                   text:
-                                      "${viewModel.kalemModel.mfTutari.commaSeparatedWithFixedDigits} TL ${(viewModel.model?.dovizliMi ?? false) ? '\n(${(viewModel.kalemModel.mfTutari / (viewModel.kalemModel.dovizKuru ?? 1)).commaSeparatedWithFixedDigits} \$)' : ""}",
+                                      "${viewModel.kalemModel.mfTutari.commaSeparatedWithFixedDigits} TL ${(viewModel.model?.dovizliMi ?? false) ? '\n(${viewModel.kalemModel.dovizMfTutari.commaSeparatedWithFixedDigits} \$)' : ""}",
                                   style: const TextStyle(fontWeight: FontWeight.bold))
                             ]));
                           })),
@@ -173,7 +173,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             const TextSpan(text: "İsk. Tutarı: "),
                             TextSpan(
                                 text:
-                                    "${viewModel.kalemModel.iskontoTutari.commaSeparatedWithFixedDigits} TL ${(viewModel.model?.dovizliMi ?? false) ? '\n(${(viewModel.kalemModel.iskontoTutari / (viewModel.kalemModel.dovizKuru ?? 1)).commaSeparatedWithFixedDigits} \$)' : ""}",
+                                    "${viewModel.kalemModel.iskontoTutari.commaSeparatedWithFixedDigits} TL ${(viewModel.model?.dovizliMi ?? false) ? '\n(${viewModel.kalemModel.dovizIskontoTutari.commaSeparatedWithFixedDigits} \$)' : ""}",
                                 style: const TextStyle(fontWeight: FontWeight.bold))
                           ]))),
                           Expanded(child: Observer(builder: (_) {
@@ -181,7 +181,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               const TextSpan(text: "Ara Toplam: "),
                               TextSpan(
                                   text:
-                                      "${viewModel.kalemModel.araToplamTutari.commaSeparatedWithFixedDigits} TL ${(viewModel.model?.dovizliMi ?? false) ? '\n(${(viewModel.kalemModel.araToplamTutari / (viewModel.kalemModel.dovizKuru ?? 1)).commaSeparatedWithFixedDigits} \$)' : ""}",
+                                      "${viewModel.kalemModel.araToplamTutari.commaSeparatedWithFixedDigits} TL ${(viewModel.model?.dovizliMi ?? false) ? '\n(${viewModel.kalemModel.dovizAraToplamTutari.commaSeparatedWithFixedDigits} \$)' : ""}",
                                   style: const TextStyle(fontWeight: FontWeight.bold))
                             ]));
                           })),
@@ -437,7 +437,13 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               controller: fiyatController,
                               keyboardType: const TextInputType.numberWithOptions(decimal: true),
                               isFormattedString: true,
-                              onChanged: (p0) => viewModel.setBrutFiyat(p0.toDoubleWithFormattedString))),
+                              onChanged: (p0) {
+                                viewModel.setBrutFiyat(p0.toDoubleWithFormattedString);
+                                if (viewModel.model?.dovizliMi ?? false) {
+                                  viewModel.setDovizFiyati((viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1));
+                                  dovizFiyatiController.text = viewModel.kalemModel.dovizFiyati.commaSeparatedWithFixedDigits;
+                                }
+                              })),
                     ],
                   ),
                   Row(
@@ -472,8 +478,13 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   CustomTextField(
                       labelText: "Döviz Fiyatı",
                       controller: dovizFiyatiController,
-                      keyboardType: TextInputType.number,
-                      onChanged: (p0) => viewModel.kalemModel.dovizFiyati = double.tryParse(p0)).yetkiVarMi(widget.stokListesiModel?.dovizliMi ?? false),
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                      isFormattedString: true,
+                      onChanged: (p0) {
+                        viewModel.setDovizFiyati(p0.toDoubleWithFormattedString);
+                        viewModel.setBrutFiyat((viewModel.kalemModel.dovizFiyati ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1));
+                        fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithFixedDigits;
+                      }).yetkiVarMi(widget.stokListesiModel?.dovizliMi ?? false),
                   ...List.generate(yetkiController.siparisSatirKademeliIskontoSayisi > 6 ? 6 : yetkiController.siparisSatirKademeliIskontoSayisi, (index) {
                     return Row(
                       crossAxisAlignment: CrossAxisAlignment.start,

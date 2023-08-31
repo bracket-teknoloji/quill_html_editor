@@ -49,6 +49,8 @@ abstract class _KalemEkleViewModelBase with Store {
   @action
   void setKalemModel(KalemModel? value) => kalemModel = value ?? KalemModel();
   @action
+  void setDovizFiyati(double? value) => kalemModel = kalemModel.copyWith(dovizFiyati: value);
+  @action
   void setOlcuBirimi(MapEntry<String, int>? value) => kalemModel = kalemModel.copyWith(olcuBirimKodu: value?.value, olcuBirimAdi: value?.key);
   @action
   void setFiyat(double? value) => kalemModel = kalemModel.copyWith(satisFiyati: value);

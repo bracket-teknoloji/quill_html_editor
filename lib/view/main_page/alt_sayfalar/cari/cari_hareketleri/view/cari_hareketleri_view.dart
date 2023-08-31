@@ -203,6 +203,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                       onTap: () {
                         List<BottomSheetModel> children2 = [
                           //TODO DÜZELT. ORJİNAL PİCKER'A BAK
+                          
                           // BottomSheetModel(
                           //     iconWidget: Icons.view_comfy_outlined,
                           //     title: "Görüntüle",
