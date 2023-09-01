@@ -22,23 +22,22 @@ class RaporFiltreDateTimeBottomSheetView extends StatefulWidget {
 }
 
 class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTimeBottomSheetView> {
-  ScrollController? scrollController;
+  late final ScrollController scrollController;
   RaporFiltreDateTimeBottomSheetViewModel viewModel = RaporFiltreDateTimeBottomSheetViewModel();
 
   @override
   void initState() {
     scrollController = ScrollController();
     Future.delayed(Duration.zero, () async {
-      await scrollController?.animateTo(30, duration: DurationHelper.durationLow, curve: Curves.easeIn);
-      await scrollController?.animateTo((scrollController?.positions.isNotEmpty ?? false) ? (scrollController?.position.minScrollExtent ?? 0) : 0,
-          duration: DurationHelper.durationLow, curve: Curves.easeInOut);
+      await scrollController.animateTo(30, duration: DurationHelper.durationLow, curve: Curves.easeIn);
+      await scrollController.animateTo((scrollController.positions.isNotEmpty) ? (scrollController.position.minScrollExtent) : 0, duration: DurationHelper.durationLow, curve: Curves.easeInOut);
     });
     super.initState();
   }
 
   @override
   void dispose() {
-    scrollController?.dispose();
+    scrollController.dispose();
     super.dispose();
   }
 
@@ -49,13 +48,13 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
           labelText: "Başlangıç Tarihi",
           readOnly: true,
           controller: widget.baslangicTarihiController,
-          suffix: const Icon(Icons.date_range_outlined),
+          isDateTime: true,
           onTap: () async => widget.baslangicOnTap ?? getDate(true).then((value) => widget.filterOnChanged(9))),
       CustomTextField(
         labelText: "Bitiş Tarihi",
         readOnly: true,
         controller: widget.bitisTarihiController,
-        suffix: const Icon(Icons.date_range_outlined),
+        isDateTime: true,
         onTap: () async => widget.bitisOnTap ?? getDate(false).then((value) => widget.filterOnChanged(9)),
       ),
     ];
@@ -90,7 +89,7 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
     );
   }
 
-  Future<void> getDate(bool isBaslangic) async {
+  Future<void>  getDate(bool isBaslangic) async {
     var result = await showDatePicker(
       context: context,
       initialDate: isBaslangic

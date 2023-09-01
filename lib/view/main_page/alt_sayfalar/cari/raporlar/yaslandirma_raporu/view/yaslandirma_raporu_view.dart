@@ -27,16 +27,16 @@ class YaslandirmaRaporuView extends StatefulWidget {
 class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
   YaslandirmaRaporuViewModel viewModel = YaslandirmaRaporuViewModel();
   List<BaseGrupKoduModel> grupKodList = [];
-  late TextEditingController? cariController;
-  late TextEditingController referansTarihController;
-  late TextEditingController plasiyerController;
-  late TextEditingController tarihTipiController;
-  late TextEditingController grupKoduController;
-  late TextEditingController kod1Controller;
-  late TextEditingController kod2Controller;
-  late TextEditingController kod3Controller;
-  late TextEditingController kod4Controller;
-  late TextEditingController kod5Controller;
+  late final TextEditingController cariController;
+  late final TextEditingController referansTarihController;
+  late final TextEditingController plasiyerController;
+  late final TextEditingController tarihTipiController;
+  late final TextEditingController grupKoduController;
+  late final TextEditingController kod1Controller;
+  late final TextEditingController kod2Controller;
+  late final TextEditingController kod3Controller;
+  late final TextEditingController kod4Controller;
+  late final TextEditingController kod5Controller;
 
   @override
   void initState() {
@@ -51,7 +51,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
     kod4Controller = TextEditingController();
     kod5Controller = TextEditingController();
     if (widget.model != null) {
-      cariController?.text = widget.model!.cariAdi ?? "";
+      cariController.text = widget.model!.cariAdi ?? "";
       viewModel.pdfModel.dicParams?.cariKodu = widget.model!.cariKodu ?? "";
     }
     super.initState();
@@ -59,7 +59,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
 
   @override
   void dispose() {
-    cariController?.dispose();
+    cariController.dispose();
     referansTarihController.dispose();
     plasiyerController.dispose();
     tarihTipiController.dispose();
@@ -109,7 +109,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                 onTap: () async {
                   var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                   if (result != null) {
-                    cariController!.text = result.cariAdi ?? "";
+                    cariController.text = result.cariAdi ?? "";
                     viewModel.pdfModel.dicParams?.cariKodu = result.cariKodu ?? "";
                   }
                 },

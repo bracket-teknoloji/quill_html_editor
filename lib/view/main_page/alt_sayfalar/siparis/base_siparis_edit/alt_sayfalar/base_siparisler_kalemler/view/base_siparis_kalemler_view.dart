@@ -79,7 +79,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                     }
                   },
                   icon: const Icon(Icons.qr_code_2_outlined)),
-            ),
+            ).paddingOnly(top: UIHelper.midSize),
           ),
           Expanded(
               child: Observer(
@@ -107,7 +107,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                                     return Column(
                                       children: [
                                         const Divider(),
-                                        hucreListTile(model).paddingOnly(left: UIHelper.highSize, top: UIHelper.lowSize),
+                                        hucreListTile(model, kalemModel).paddingOnly(left: UIHelper.highSize),
                                       ],
                                     );
                                   }),
@@ -149,7 +149,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
     );
   }
 
-  ListTile hucreListTile(KalemModel? kalemList) {
+  ListTile hucreListTile(KalemModel? kalemList, KalemModel? superKalemList) {
     return ListTile(
       contentPadding: UIHelper.lowPadding,
       title: Row(
@@ -186,7 +186,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
             // Text("KDV %: ${(kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
             Text("KDV %: ${((StaticVariables.instance.isMusteriSiparisleri ? kalemList?.stokSatisKdv : kalemList?.stokAlisKdv) ?? kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
 
-            Text("Tutar: ${((kalemList?.koliBilesenMiktari ?? 0) * (kalemList?.brutFiyat ?? 0) * (kalemList?.koliBilesenOrani ?? 0) / 100).commaSeparatedWithFixedDigits}"),
+            Text("Tutar: ${((kalemList?.koliBilesenMiktari ?? 0) * (superKalemList?.brutFiyat ?? 0) * (kalemList?.koliBilesenOrani ?? 0) / 100).commaSeparatedWithFixedDigits}"),
           ]
                   .map((e) => SizedBox(
                         width: width * 0.4,

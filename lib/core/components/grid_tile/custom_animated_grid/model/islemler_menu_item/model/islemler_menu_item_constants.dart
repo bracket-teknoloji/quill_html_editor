@@ -76,7 +76,7 @@ class IslemlerMenuItemConstants<T> {
   //* Siparis
   GridItemModel? get irsaliyeOlustur => GridItemModel.islemler(title: "İrsaliye Oluştur", iconData: Icons.conveyor_belt);
   GridItemModel? get faturaOlustur => GridItemModel.islemler(title: "Fatura Oluştur (Siparişten)", iconData: Icons.conveyor_belt);
-  GridItemModel? get belgeyiKapat => GridItemModel.islemler(title: "Belgeyi Kapat", iconData: Icons.lock_outline);
+  GridItemModel? get belgeyiKapat => GridItemModel.islemler(title: "Belgeyi Kapat", iconData: Icons.lock_outline, onTap: () => DialogManager().showAreYouSureDialog(() {},title: "Kiliti Kapatmak istediğinize emin misiniz?"));
   GridItemModel? get belgeNoDegistir => GridItemModel.islemler(title: "Belge No Değiştir", iconData: Icons.edit_outlined);
   GridItemModel? get siparisPDFGoruntule => GridItemModel.islemler(
       title: "PDF Görüntüle",

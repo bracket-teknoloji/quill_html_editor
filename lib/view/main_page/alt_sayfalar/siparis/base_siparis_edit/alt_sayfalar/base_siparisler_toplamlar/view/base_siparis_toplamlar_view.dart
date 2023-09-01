@@ -248,7 +248,6 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                               viewModel.tevkifatMap.length, (index) => BottomSheetModel(title: viewModel.tevkifatMap.keys.toList()[index], value: viewModel.tevkifatMap.values.toList()[index])));
                       if (result != null) {
                         viewModel.setTevkifat(result);
-                        print(-(result * viewModel.model.kdvTutari));
                         tevkifatController.text = (-result * viewModel.model.kdvTutari).toString();
                       }
                     },

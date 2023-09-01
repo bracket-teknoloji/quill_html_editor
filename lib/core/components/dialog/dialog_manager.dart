@@ -110,7 +110,7 @@ class DialogManager {
           ),
         ),
       ).show();
-  Future<void> showAreYouSureDialog(void Function() onYes) async => _areYouSureDialog(onYes).show();
+  Future<void> showAreYouSureDialog(void Function() onYes, {String? title}) async => _areYouSureDialog(onYes, title).show();
 
   void showInfoDialog(String? description) => _baseDialog(
         desc: description,
@@ -263,10 +263,10 @@ class DialogManager {
         behavior: SnackBarBehavior.fixed,
       );
 
-  AwesomeDialog _areYouSureDialog(void Function() onYes) {
+  AwesomeDialog _areYouSureDialog(void Function() onYes,String? desc) {
     return _baseDialog(
       title: "Uyarı",
-      desc: "Bu işlemi yapmak istediğinizden emin misiniz?",
+      desc: desc?? "Bu işlemi yapmak istediğinizden emin misiniz?",
       dialogType: DialogType.question,
       onOk: onYes,
       btnOkText: "Evet",

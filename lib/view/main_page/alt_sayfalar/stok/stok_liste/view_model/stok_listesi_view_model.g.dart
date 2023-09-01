@@ -58,13 +58,13 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
       Atom(name: '_StokListesiViewModelBase.imageMap', context: context);
 
   @override
-  Map<String, MemoryImage> get imageMap {
+  ObservableMap<String, MemoryImage> get imageMap {
     _$imageMapAtom.reportRead();
     return super.imageMap;
   }
 
   @override
-  set imageMap(Map<String, MemoryImage> value) {
+  set imageMap(ObservableMap<String, MemoryImage> value) {
     _$imageMapAtom.reportWrite(value, super.imageMap, () {
       super.imageMap = value;
     });

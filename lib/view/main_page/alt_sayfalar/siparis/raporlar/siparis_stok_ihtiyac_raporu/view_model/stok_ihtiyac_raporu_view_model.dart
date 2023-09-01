@@ -1,12 +1,11 @@
-import "package:mobx/mobx.dart";
+import 'package:mobx/mobx.dart';
 
 import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
+part 'stok_ihtiyac_raporu_view_model.g.dart';
 
-part "musteri_siparisi_durum_raporu_view_model.g.dart";
+class StokIhtiyacRaporuViewModel = _StokIhtiyacRaporuViewModelBase with _$StokIhtiyacRaporuViewModel;
 
-class MusteriSiparisiDurumRaporuViewModel = _MusteriSiparisiDurumRaporuViewModelBase with _$MusteriSiparisiDurumRaporuViewModel;
-
-abstract class _MusteriSiparisiDurumRaporuViewModelBase with Store {
+abstract class _StokIhtiyacRaporuViewModelBase with Store {
   //* Model
   //*
   @computed

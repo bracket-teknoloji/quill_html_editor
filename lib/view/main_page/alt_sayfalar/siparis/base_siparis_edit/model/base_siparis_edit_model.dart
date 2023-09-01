@@ -462,7 +462,10 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     return genelToplam ?? 0;
   }
 
-  double get getAraToplam => iskontoChecker(kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0);
+  double get getAraToplam {
+    araToplam= iskontoChecker(kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0);
+    return araToplam ?? 0;
+  }
 
   double iskontoChecker(double result) {
     araToplam = result;
@@ -498,10 +501,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   bool get isEmpty => this == BaseSiparisEditModel();
   bool get isRemoteTempBelgeNull => remoteTempBelge == null;
 
-  double get getToplamIskonto {
-    print(getAraToplam);
-    return (malFazlasiTutar + satirIskonto) - (iskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0) - (araToplam ?? 0));
-  }
+  double get getToplamIskonto =>
+      (malFazlasiTutar + satirIskonto) - (iskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0) - (araToplam ?? 0));
 
   double get getBrutTutar => kalemList?.map((e) => e.brutFiyat).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
 
@@ -685,6 +686,7 @@ class KalemModel {
   String? stokSatDovizAdi;
   @HiveField(78)
   String? muhasebeKodu;
+  
 
   KalemModel(
       {this.iskonto1OranMi,
@@ -848,6 +850,21 @@ class KalemModel {
   }
 
   factory KalemModel.fromJson(Map<String, dynamic> json) => _$KalemModelFromJson(json);
+
+  factory KalemModel.fromStokList(StokList model) {
+    return KalemModel(
+      brutFiyat: model.bulunanFiyat,
+      stokAlisKdv: model.alisKdv,
+      stokSatisKdv: model.satisKdv,
+      stokKodu: model.stokKodu,
+      stokAdi: model.stokAdi,
+      paketMi: model.paketMi,
+      koliBilesenMiktari: model.koliBilesenMiktari,
+      koliBilesenOrani: model.koliBilesenOrani,
+      koliBilesenFiyatorandan: model.koliBilesenFiyatorandan,
+      koliBilesenKolikdv: model.koliBilesenKolikdv
+    );
+  }
 
   Map<String, dynamic> toJson() => _$KalemModelToJson(this);
 }

@@ -15,8 +15,7 @@ abstract class _YaslandirmaRaporuViewModelBase with Store {
 
   @computed
   String get sureAraligiGroupValue => _sureAraligiGroupValue;
-  @observable
-  ObservableList<String> sureAraligivalue = ["G", "H", "2H", "3H", "A"].asObservable();
+  List<String> sureAraligivalue = ["G", "H", "2H", "3H", "A"];
 
   @action
   void changeSureAraligi(int? index) {

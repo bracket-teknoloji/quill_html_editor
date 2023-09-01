@@ -19,13 +19,14 @@ import "../../init/cache/cache_manager.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 class SiparislerCard extends StatefulWidget {
+  final bool? isGetData;
   final BaseSiparisEditModel model;
   final Function? onDeleted;
 
   ///Eğer Bu widget Cache'den çağırılıyorsa index verilmelidir.
   final int? index;
   final SiparisTipiEnum siparisTipiEnum;
-  const SiparislerCard({super.key, required this.model, this.onDeleted, required this.siparisTipiEnum, this.index});
+  const SiparislerCard({super.key, required this.model, this.onDeleted, required this.siparisTipiEnum, this.index, this.isGetData});
 
   @override
   State<SiparislerCard> createState() => _SiparislerCardState();
@@ -37,72 +38,75 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
     return Card(
         child: ListTile(
       onLongPress: widget.model.remoteTempBelgeEtiketi == null ? () => dialogManager.showSiparisGridViewDialog(widget.model) : null,
-      onTap: () async {
-        // var result =
-        await bottomSheetDialogManager.showBottomSheetDialog(context,
-            title: widget.model.belgeNo ?? "",
-            children: [
-              BottomSheetModel(
-                  title: "Görüntüle",
-                  iconWidget: Icons.search_outlined,
-                  onTap: () {
-                    Get.back();
-                    return Get.toNamed("mainPage/siparisEdit",
-                        arguments: BaseEditModel(model: SiparisEditRequestModel.fromSiparislerModel(widget.model), baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum));
-                  }),
-              BottomSheetModel(
-                  title: "Düzelt",
-                  iconWidget: Icons.edit_outlined,
-                  onTap: () {
-                    if (widget.model.isNew == true) {
-                      BaseSiparisEditModel.setInstance(widget.model);
-                    }
-                    Get.back();
-                    return Get.toNamed("mainPage/siparisEdit",
-                        arguments: BaseEditModel(
-                          model: SiparisEditRequestModel.fromSiparislerModel(widget.model),
-                          baseEditEnum: BaseEditEnum.duzenle,
-                          siparisTipiEnum: widget.siparisTipiEnum,
-                        ));
-                  }).yetkiKontrol(yetkiController.siparisDuzelt),
-              BottomSheetModel(
-                  title: "Sil",
-                  iconWidget: Icons.delete_outline,
-                  onTap: () {
-                    Get.back();
-                    return dialogManager.showAreYouSureDialog(() async {
-                      if (widget.model.isNew == true) {
-                        try {
-                          CacheManager.removeSiparisEditList(widget.index!);
-                          dialogManager.showSnackBar("Silindi");
-                          widget.onDeleted?.call();
-                        } catch (e) {
-                          dialogManager.showAlertDialog("Hata Oluştu.\n$e");
-                        }
-                        return;
-                      }
-                      var result = await networkManager.deleteFatura(const DeleteFaturaModel().fromJson(widget.model.toJson()));
-                      if (result.success == true) {
-                        dialogManager.showSnackBar("Silindi");
-                        widget.onDeleted?.call();
-                      }
-                    });
-                  }).yetkiKontrol(yetkiController.siparisSil || widget.model.isNew == true),
-              BottomSheetModel(title: "Yazdır", iconWidget: Icons.print_outlined).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
-              BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined, onTap: () => dialogManager.showSiparisGridViewDialog(widget.model))
-                  .yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
-              BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
-              BottomSheetModel(
-                  title: "Cari İşlemleri",
-                  iconWidget: Icons.person_outline_outlined,
-                  onTap: () {
-                    Get.back();
-                    dialogManager.showCariGridViewDialog(CariListesiModel()
-                      ..cariKodu = widget.model.cariKodu
-                      ..cariAdi = widget.model.cariAdi);
-                  }),
-            ].nullCheck.cast<BottomSheetModel>().toList());
-      },
+      onTap: widget.isGetData == true
+          ? () => Get.back(result: widget.model)
+          : () async {
+              // var result =
+              await bottomSheetDialogManager.showBottomSheetDialog(context,
+                  title: widget.model.belgeNo ?? "",
+                  children: [
+                    BottomSheetModel(
+                        title: "Görüntüle",
+                        iconWidget: Icons.search_outlined,
+                        onTap: () {
+                          Get.back();
+                          return Get.toNamed("mainPage/siparisEdit",
+                              arguments:
+                                  BaseEditModel(model: SiparisEditRequestModel.fromSiparislerModel(widget.model), baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum));
+                        }),
+                    BottomSheetModel(
+                        title: "Düzelt",
+                        iconWidget: Icons.edit_outlined,
+                        onTap: () {
+                          if (widget.model.isNew == true) {
+                            BaseSiparisEditModel.setInstance(widget.model);
+                          }
+                          Get.back();
+                          return Get.toNamed("mainPage/siparisEdit",
+                              arguments: BaseEditModel(
+                                model: SiparisEditRequestModel.fromSiparislerModel(widget.model),
+                                baseEditEnum: BaseEditEnum.duzenle,
+                                siparisTipiEnum: widget.siparisTipiEnum,
+                              ));
+                        }).yetkiKontrol(yetkiController.siparisDuzelt),
+                    BottomSheetModel(
+                        title: "Sil",
+                        iconWidget: Icons.delete_outline,
+                        onTap: () {
+                          Get.back();
+                          return dialogManager.showAreYouSureDialog(() async {
+                            if (widget.model.isNew == true) {
+                              try {
+                                CacheManager.removeSiparisEditList(widget.index!);
+                                dialogManager.showSnackBar("Silindi");
+                                widget.onDeleted?.call();
+                              } catch (e) {
+                                dialogManager.showAlertDialog("Hata Oluştu.\n$e");
+                              }
+                              return;
+                            }
+                            var result = await networkManager.deleteFatura(const DeleteFaturaModel().fromJson(widget.model.toJson()));
+                            if (result.success == true) {
+                              dialogManager.showSnackBar("Silindi");
+                              widget.onDeleted?.call();
+                            }
+                          });
+                        }).yetkiKontrol(yetkiController.siparisSil || widget.model.isNew == true),
+                    BottomSheetModel(title: "Yazdır", iconWidget: Icons.print_outlined).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
+                    BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined, onTap: () => dialogManager.showSiparisGridViewDialog(widget.model))
+                        .yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
+                    BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
+                    BottomSheetModel(
+                        title: "Cari İşlemleri",
+                        iconWidget: Icons.person_outline_outlined,
+                        onTap: () {
+                          Get.back();
+                          dialogManager.showCariGridViewDialog(CariListesiModel()
+                            ..cariKodu = widget.model.cariKodu
+                            ..cariAdi = widget.model.cariAdi);
+                        }),
+                  ].nullCheck.cast<BottomSheetModel>().toList());
+            },
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

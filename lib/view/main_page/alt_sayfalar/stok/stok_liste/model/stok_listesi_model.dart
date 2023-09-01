@@ -119,6 +119,8 @@ class StokList {
     this.koliBilesenOrani,
     this.koliBilesenFiyatorandan,
     this.koliBilesenKolikdv,
+    this.depoKodu,
+    this.bakiye,
   });
 
   factory StokList.fromJson(Map<String, dynamic> json) => _$StokListFromJson(json);
@@ -147,6 +149,124 @@ class StokList {
   String? stokKodu;
   @HiveField(11)
   List<dynamic>? stokList;
+  @HiveField(12)
+  int? depoKodu;
+  @HiveField(13)
+  double? bakiye;
+  @HiveField(14)
+  String? muhdetayAdi;
+  @HiveField(15)
+  double? alisFiat1;
+  @HiveField(16)
+  double? alisFiat2;
+  @HiveField(17)
+  double? alisFiat3;
+  @HiveField(18)
+  double? alisFiat4;
+  @HiveField(19)
+  double? satisFiat1;
+  @HiveField(20)
+  double? satisFiat2;
+  @HiveField(21)
+  double? satisFiat3;
+  @HiveField(22)
+  double? satisFiat4;
+  @HiveField(23)
+  String? olcuBirimi;
+  @HiveField(24)
+  String? olcuBirimi2;
+  @HiveField(25)
+  String? olcuBirimi3;
+  @HiveField(26)
+  double? olcuBirimi2Pay;
+  @HiveField(27)
+  double? olcuBirimi2Payda;
+  @HiveField(28)
+  double? olcuBirimi3Pay;
+  @HiveField(29)
+  double? olcuBirimi3Payda;
+  @HiveField(30)
+  String? barkod1;
+  @HiveField(31)
+  String? barkod2;
+  @HiveField(32)
+  String? barkod3;
+  @HiveField(33)
+  String? kayityapankul;
+  @HiveField(34)
+  DateTime? kayittarihi;
+  @HiveField(35)
+  String? grupKodu;
+  @HiveField(36)
+  String? grupTanimi;
+  @HiveField(37)
+  String? kod1;
+  @HiveField(38)
+  String? kod1Tanimi;
+  @HiveField(39)
+  String? kod2;
+  @HiveField(40)
+  String? kod2Tanimi;
+  @HiveField(41)
+  String? kod3;
+  @HiveField(42)
+  String? kod3Tanimi;
+  @HiveField(43)
+  String? kod4;
+  @HiveField(44)
+  String? kod4Tanimi;
+  @HiveField(45)
+  String? kod5;
+  @HiveField(46)
+  String? kod5Tanimi;
+  @HiveField(47)
+  bool? seriCikislardaAcik;
+  @HiveField(48)
+  bool? seriGirislerdeAcik;
+  @HiveField(49)
+  bool? seriMiktarKadarSor;
+  @HiveField(50)
+  bool? seriBakiyeKontrolu;
+  @HiveField(51)
+  bool? seriGiristeOtomatikMi;
+  @HiveField(52)
+  bool? seriCikistaOtomatikMi;
+  @HiveField(53)
+  DateTime? duzeltmetarihi;
+  @HiveField(54)
+  String? duzeltmeyapankul;
+  @HiveField(55)
+  int? fiatBirimi;
+  @HiveField(56)
+  String? kilitGenel;
+  @HiveField(57)
+  String? kilitSaticisip;
+  @HiveField(58)
+  String? kilitMussip;
+  @HiveField(59)
+  String? kilitAlis;
+  @HiveField(60)
+  String? kilitSatis;
+  @HiveField(61)
+  int? subeKodu;
+  @HiveField(62)
+  int? muhdetayKodu;
+  @HiveField(63)
+  int? alisDovTip;
+  @HiveField(64)
+  double? dovAlisFiat;
+  @HiveField(65)
+  String? alisDovizAdi;
+  @HiveField(66)
+  int? satDovTip;
+  @HiveField(67)
+  double? dovSatisFiat;
+  @HiveField(68)
+  String? satisDovizAdi;
+  @HiveField(69)
+  String? ureticiKodu;
+  @HiveField(70)
+  double? birimAgirlik;
 
   Map<String, dynamic> toJson() => _$StokListToJson(this);
   double get toplamTutar => (bulunanFiyat ?? 0) * (koliBilesenMiktari ?? 0);

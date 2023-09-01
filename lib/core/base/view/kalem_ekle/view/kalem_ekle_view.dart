@@ -94,12 +94,13 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
         IconButton(
             onPressed: () {
               if (formKey.currentState!.validate()) {
+                viewModel.kalemModel.kalemList?.map((e) => e.miktar = viewModel.kalemModel.miktar2).toList();
                 BaseSiparisEditModel.instance.kalemList ??= [];
                 if (BaseSiparisEditModel.instance.kalemList!.any((element) => element.stokKodu == viewModel.kalemModel.stokKodu)) {
                   //replace
-                  BaseSiparisEditModel.instance.kalemList![BaseSiparisEditModel.instance.kalemList!.indexWhere((element) => element.stokKodu == viewModel.kalemModel.stokKodu)] = viewModel.kalemModel;
+                  BaseSiparisEditModel.instance.kalemList![BaseSiparisEditModel.instance.kalemList!.indexWhere((element) => element.stokKodu == viewModel.kalemModel.stokKodu)] = viewModel.kalemModel..paketMi = widget.stokListesiModel?.paketMi;
                 } else {
-                  BaseSiparisEditModel.instance.kalemList?.add(viewModel.kalemModel);
+                  BaseSiparisEditModel.instance.kalemList?.add(viewModel.kalemModel..paketMi = widget.stokListesiModel?.paketMi);
                 }
                 dialogManager.showSnackBar("Kalem Eklendi");
                 Get.back();
@@ -613,7 +614,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   }
 
   Future<void> controllerFiller() async {
-    viewModel.kalemModel.kalemList ??= widget.stokListesiModel?.stokList?.map((e) => KalemModel.fromJson(e.toJson())).toList();
+    viewModel.kalemModel.kalemList ??= widget.stokListesiModel?.stokList?.map((e) => KalemModel.fromStokList(e)).toList();
     viewModel.kalemModel.stokKodu ??= widget.stokListesiModel?.stokKodu;
     viewModel.kalemModel.stokSatDovizAdi ??= widget.stokListesiModel?.satisDovizAdi;
     viewModel.kalemModel.stokAlisDovizAdi ??= widget.stokListesiModel?.alisDovizAdi;

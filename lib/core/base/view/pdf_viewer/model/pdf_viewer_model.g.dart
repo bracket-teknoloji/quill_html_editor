@@ -6,7 +6,7 @@ part of 'pdf_viewer_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PdfModel _$PdfModelFromJson(Map<String, dynamic> json) => PdfModel(
+_$_PdfModel _$$_PdfModelFromJson(Map<String, dynamic> json) => _$_PdfModel(
       raporOzelKod: json['RAPOR_OZEL_KOD'] as String?,
       standart: json['STANDART'] as bool?,
       dicParams: json['DIC_PARAMS'] == null
@@ -16,7 +16,7 @@ PdfModel _$PdfModelFromJson(Map<String, dynamic> json) => PdfModel(
       etiketSayisi: json['ETIKET_SAYISI'] as int?,
     );
 
-Map<String, dynamic> _$PdfModelToJson(PdfModel instance) {
+Map<String, dynamic> _$$_PdfModelToJson(_$_PdfModel instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -27,13 +27,13 @@ Map<String, dynamic> _$PdfModelToJson(PdfModel instance) {
 
   writeNotNull('RAPOR_OZEL_KOD', instance.raporOzelKod);
   writeNotNull('STANDART', instance.standart);
+  writeNotNull('DIC_PARAMS', instance.dicParams?.toJson());
   writeNotNull('DIZAYN_ID', instance.dizaynId);
   writeNotNull('ETIKET_SAYISI', instance.etiketSayisi);
-  writeNotNull('DIC_PARAMS', instance.dicParams?.toJson());
   return val;
 }
 
-DicParams _$DicParamsFromJson(Map<String, dynamic> json) => DicParams(
+_$_DicParams _$$_DicParamsFromJson(Map<String, dynamic> json) => _$_DicParams(
       cariKodu: json['CARI_KODU'] as String?,
       stokKodu: json['STOK_KODU'] as String?,
       sifirHaric: json['SIFIR_HARIC'] as String?,
@@ -54,6 +54,9 @@ DicParams _$DicParamsFromJson(Map<String, dynamic> json) => DicParams(
       kod3: json['KOD3'] as String?,
       kod4: json['KOD4'] as String?,
       kod5: json['KOD5'] as String?,
+      kapali: json['KAPALI'] as String?,
+      durum: json['DURUM'] as String?,
+      vergiNo: json['VERGI_NO'] as String?,
       plasiyerKodu: json['PLASIYER_KODU'] as String?,
       aralikTipi: json['ARALIK_TIPI'] as String?,
       sirala: json['SIRALA'] as String?,
@@ -66,7 +69,7 @@ DicParams _$DicParamsFromJson(Map<String, dynamic> json) => DicParams(
       kasaharInckey: json['KASAHAR_INCKEY'] as String?,
     );
 
-Map<String, dynamic> _$DicParamsToJson(DicParams instance) {
+Map<String, dynamic> _$$_DicParamsToJson(_$_DicParams instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -95,6 +98,9 @@ Map<String, dynamic> _$DicParamsToJson(DicParams instance) {
   writeNotNull('KOD3', instance.kod3);
   writeNotNull('KOD4', instance.kod4);
   writeNotNull('KOD5', instance.kod5);
+  writeNotNull('KAPALI', instance.kapali);
+  writeNotNull('DURUM', instance.durum);
+  writeNotNull('VERGI_NO', instance.vergiNo);
   writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
   writeNotNull('ARALIK_TIPI', instance.aralikTipi);
   writeNotNull('SIRALA', instance.sirala);

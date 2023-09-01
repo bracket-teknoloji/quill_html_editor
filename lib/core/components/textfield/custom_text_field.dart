@@ -132,7 +132,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       );
                     }),
                   if (widget.suffix != null) widget.suffix!,
-                  if (widget.isDateTime != null)
+                  if (widget.isDateTime == true)
                     IconButton(
                         padding: EdgeInsets.zero,
                         constraints: const BoxConstraints(),
@@ -146,9 +146,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     IconButton(
                         padding: EdgeInsets.zero,
                         constraints: const BoxConstraints(),
-                        onPressed: () {
-                          if (widget.onTap != null) widget.onTap!();
-                        },
+                        onPressed: widget.onTap,
                         icon: const Icon(Icons.more_horiz_outlined),
                         style: ButtonStyle(
                           padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
@@ -177,6 +175,39 @@ class _CustomTextFieldState extends State<CustomTextField> {
       ),
     );
   }
+  // Widget suffixCreator(){
+  //   if (widget.suffixMore == true){
+
+  //   }else if(viewModel.showClearButton == true) {
+
+  //   }
+  //   if (widget.onClear == null && (widget.suffixMore ??false)){
+  //     return IconButton(
+  //                       padding: EdgeInsets.zero,
+  //                       constraints: const BoxConstraints(),
+  //                       onPressed:widget.onTap,
+  //                       icon: const Icon(Icons.more_horiz_outlined),
+  //                       style: ButtonStyle(
+  //                         padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+  //                         splashFactory: NoSplash.splashFactory,
+  //                       ));
+  //   }else if (widget.onClear!=null){
+  //     return Observer(builder: (_) {
+  //                     return Visibility(
+  //                       visible: (viewModel.showClearButton == true) && (widget.isMust != true),
+  //                       child: IconButton(
+  //                         padding: EdgeInsets.zero,
+  //                         onPressed: () {
+  //                           controller.clear();
+  //                           widget.onClear!();
+  //                           // viewModel.setShowClearButton(false);
+  //                         },
+  //                         icon: const Icon(Icons.close),
+  //                       ),
+  //                     );
+  //                   });
+  //   }
+  // }
 
   String? validator(p0) {
     if (p0 == null || p0.isEmpty) {

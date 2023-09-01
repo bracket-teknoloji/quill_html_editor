@@ -42,23 +42,6 @@ mixin _$YaslandirmaRaporuViewModel on _YaslandirmaRaporuViewModelBase, Store {
     });
   }
 
-  late final _$sureAraligivalueAtom = Atom(
-      name: '_YaslandirmaRaporuViewModelBase.sureAraligivalue',
-      context: context);
-
-  @override
-  ObservableList<String> get sureAraligivalue {
-    _$sureAraligivalueAtom.reportRead();
-    return super.sureAraligivalue;
-  }
-
-  @override
-  set sureAraligivalue(ObservableList<String> value) {
-    _$sureAraligivalueAtom.reportWrite(value, super.sureAraligivalue, () {
-      super.sureAraligivalue = value;
-    });
-  }
-
   late final _$_odemeTipiGroupValueAtom = Atom(
       name: '_YaslandirmaRaporuViewModelBase._odemeTipiGroupValue',
       context: context);
@@ -177,7 +160,6 @@ mixin _$YaslandirmaRaporuViewModel on _YaslandirmaRaporuViewModelBase, Store {
   @override
   String toString() {
     return '''
-sureAraligivalue: ${sureAraligivalue},
 odemeTipiValue: ${odemeTipiValue},
 pdfModel: ${pdfModel},
 futureController: ${futureController},

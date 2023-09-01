@@ -74,9 +74,9 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
         if (result.success == true) {
           viewModel.changeFuture();
           BaseSiparisEditModel.setInstance(result.data!.first);
-            BaseSiparisEditModel.instance.isNew = false;
-            BaseSiparisEditModel.instance.mevcutBelgeNo = BaseSiparisEditModel.instance.belgeNo;
-            BaseSiparisEditModel.instance.mevcutCariKodu = BaseSiparisEditModel.instance.cariKodu;
+          BaseSiparisEditModel.instance.isNew = false;
+          BaseSiparisEditModel.instance.mevcutBelgeNo = BaseSiparisEditModel.instance.belgeNo;
+          BaseSiparisEditModel.instance.mevcutCariKodu = BaseSiparisEditModel.instance.cariKodu;
           // if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
           // }else if(widget.model.baseEditEnum == BaseEditEnum.kopyala){
           //   BaseSiparisEditModel.instance.isNew = false;
@@ -165,15 +165,17 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                     visible: viewModel.isLastPage,
                     child: IconButton(
                       onPressed: () async {
-                        if (await postData()) {
-                          await CacheManager.removeSiparisEditListWithUuid(BaseSiparisEditModel.instance.uuid);
-                          Get.back();
-                          if (viewModel.yeniKaydaHazirlaMi) {
-                            BaseSiparisEditModel.resetInstance();
-                            BaseSiparisEditModel.instance.isNew = true;
-                            Get.toNamed("/mainPage/siparisEdit", arguments: BaseEditModel<SiparisEditRequestModel>(baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: model.siparisTipiEnum));
+                        dialogManager.showAreYouSureDialog(() async {
+                          if (await postData()) {
+                            await CacheManager.removeSiparisEditListWithUuid(BaseSiparisEditModel.instance.uuid);
+                            Get.back();
+                            if (viewModel.yeniKaydaHazirlaMi) {
+                              BaseSiparisEditModel.resetInstance();
+                              BaseSiparisEditModel.instance.isNew = true;
+                              Get.toNamed("/mainPage/siparisEdit", arguments: BaseEditModel<SiparisEditRequestModel>(baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: model.siparisTipiEnum));
+                            }
                           }
-                        }
+                        });
                       },
                       icon: const Icon(Icons.save_outlined),
                     ),
@@ -245,7 +247,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
     }
     var uuid = const Uuid();
     var result = await networkManager.dioPost<BaseSiparisEditModel>(
-        path: ApiUrls.saveFatura, bodyModel: BaseSiparisEditModel(), data: (BaseSiparisEditModel.instance..islemId = uuid.v4()).toJson(), showLoading: true);
+        path: ApiUrls.saveFatura, bodyModel: BaseSiparisEditModel(), data: (BaseSiparisEditModel.instance..kalemAdedi= BaseSiparisEditModel.instance.kalemList?.length..islemId = uuid.v4()).toJson(), showLoading: true);
     if (result.success == true) {
       dialogManager.showSnackBar("Kayıt Başarılı");
       return true;

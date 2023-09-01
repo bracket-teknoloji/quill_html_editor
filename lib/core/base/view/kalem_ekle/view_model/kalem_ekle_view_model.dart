@@ -103,17 +103,19 @@ abstract class _KalemEkleViewModelBase with Store {
 
   @action
   void increaseMiktar2(TextEditingController controller) {
-    kalemModel = kalemModel.copyWith(miktar2: (kalemModel.miktar2 ?? 0) + 1);
+    kalemModel = kalemModel.copyWith(miktar2: (kalemModel.miktar2 ?? 0) + 1, miktar:(kalemModel.miktar2 ?? 0) + 1);
     controller.text = (kalemModel.miktar2 ?? 0).toIntIfDouble.toString();
   }
 
   @action
-  void setMiktar2(int value) => kalemModel = kalemModel.copyWith(miktar2: value.toDouble());
+  void setMiktar2(int value) {
+    kalemModel = kalemModel.copyWith(miktar2: value.toDouble(), miktar: value.toDouble());
+  }
 
   @action
   void decreaseMiktar2(TextEditingController controller) {
     if ((kalemModel.miktar2 ?? 0) > 0) {
-      kalemModel = kalemModel.copyWith(miktar2: (kalemModel.miktar2 ?? 0) - 1, malfazIskAdedi: (kalemModel.miktar2 ?? 0) - 1);
+      kalemModel = kalemModel.copyWith(miktar2: (kalemModel.miktar2 ?? 0) - 1, miktar: (kalemModel.miktar2 ?? 0) - 1);
       controller.text = (kalemModel.miktar2 ?? 0).toIntIfDouble.toString();
     }
   }

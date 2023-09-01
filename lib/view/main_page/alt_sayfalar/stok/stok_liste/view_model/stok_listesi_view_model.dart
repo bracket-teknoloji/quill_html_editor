@@ -11,10 +11,10 @@ class StokListesiViewModel = _StokListesiViewModelBase with _$StokListesiViewMod
 
 abstract class _StokListesiViewModelBase with Store {
   @observable
-  Map<String, MemoryImage> imageMap = {};
+  ObservableMap<String, MemoryImage> imageMap = <String, MemoryImage>{}.asObservable();
 
   @action
-  void setImageMap(Map<String, MemoryImage> value) => imageMap = value;
+  void setImageMap(Map<String, MemoryImage> value) => imageMap = value.asObservable();
 
   @action
   void addImageMap(Map<String, MemoryImage> value) => imageMap.addAll(value);
