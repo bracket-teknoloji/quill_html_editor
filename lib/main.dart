@@ -11,6 +11,7 @@ import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/raporlar/siparis_karlilik_raporu/view/siparis_karlilik_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/raporlar/siparis_musteri_siparisi_durum_raporu/view/musteri_siparisi_durum_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/raporlar/siparis_teslim_raporu/view/siparis_teslim_raporu_view.dart";
 
@@ -130,9 +131,9 @@ class PickerApp extends StatelessWidget {
             GetPage(name: "/siparisMusteriSiparisiDurumRaporu", page: () => MusteriSiparisiDurumRaporuView(model: Get.arguments)),
             // GetPage(name: "/siparisStokIhtiyacRaporu", page: () => StokIhtiyacRaporuView()),
             GetPage(name: "/siparisTeslimRaporu", page: () => SiparisTeslimRaporuView(siparisTipiEnum: Get.arguments)),
+            GetPage(name: "/siparisSiparisKarlikRaporu", page: () => const SiparisKarlilikRaporuView()),
 
             // GetPage(name: "/siparisSaticiSiparisiDurumRaporu", page: page),
-            // GetPage(name: "/siparisSiparisKarlikRaporu", page: page),
             // GetPage(name: "/siparisMusteriSiparisiTeslimRaporu", page: page),
             // GetPage(name: "/siparisSaticiSiparisiTeslimRaporu", page: page),
 

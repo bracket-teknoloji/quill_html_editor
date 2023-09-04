@@ -312,6 +312,8 @@ mixin _$DicParams {
   set dinamikParam(String? value) => throw _privateConstructorUsedError;
   String? get kasaharInckey => throw _privateConstructorUsedError;
   set kasaharInckey(String? value) => throw _privateConstructorUsedError;
+  String? get uretimFiyatiDahil => throw _privateConstructorUsedError;
+  set uretimFiyatiDahil(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -357,7 +359,8 @@ abstract class $DicParamsCopyWith<$Res> {
       String? belgeNo,
       String? isemriNo,
       String? dinamikParam,
-      String? kasaharInckey});
+      String? kasaharInckey,
+      String? uretimFiyatiDahil});
 }
 
 /// @nodoc
@@ -406,6 +409,7 @@ class _$DicParamsCopyWithImpl<$Res, $Val extends DicParams>
     Object? isemriNo = freezed,
     Object? dinamikParam = freezed,
     Object? kasaharInckey = freezed,
+    Object? uretimFiyatiDahil = freezed,
   }) {
     return _then(_value.copyWith(
       cariKodu: freezed == cariKodu
@@ -540,6 +544,10 @@ class _$DicParamsCopyWithImpl<$Res, $Val extends DicParams>
           ? _value.kasaharInckey
           : kasaharInckey // ignore: cast_nullable_to_non_nullable
               as String?,
+      uretimFiyatiDahil: freezed == uretimFiyatiDahil
+          ? _value.uretimFiyatiDahil
+          : uretimFiyatiDahil // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -584,7 +592,8 @@ abstract class _$$_DicParamsCopyWith<$Res> implements $DicParamsCopyWith<$Res> {
       String? belgeNo,
       String? isemriNo,
       String? dinamikParam,
-      String? kasaharInckey});
+      String? kasaharInckey,
+      String? uretimFiyatiDahil});
 }
 
 /// @nodoc
@@ -631,6 +640,7 @@ class __$$_DicParamsCopyWithImpl<$Res>
     Object? isemriNo = freezed,
     Object? dinamikParam = freezed,
     Object? kasaharInckey = freezed,
+    Object? uretimFiyatiDahil = freezed,
   }) {
     return _then(_$_DicParams(
       cariKodu: freezed == cariKodu
@@ -765,6 +775,10 @@ class __$$_DicParamsCopyWithImpl<$Res>
           ? _value.kasaharInckey
           : kasaharInckey // ignore: cast_nullable_to_non_nullable
               as String?,
+      uretimFiyatiDahil: freezed == uretimFiyatiDahil
+          ? _value.uretimFiyatiDahil
+          : uretimFiyatiDahil // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -806,7 +820,8 @@ class _$_DicParams implements _DicParams {
       this.belgeNo,
       this.isemriNo,
       this.dinamikParam,
-      this.kasaharInckey});
+      this.kasaharInckey,
+      this.uretimFiyatiDahil});
 
   factory _$_DicParams.fromJson(Map<String, dynamic> json) =>
       _$$_DicParamsFromJson(json);
@@ -877,10 +892,12 @@ class _$_DicParams implements _DicParams {
   String? dinamikParam;
   @override
   String? kasaharInckey;
+  @override
+  String? uretimFiyatiDahil;
 
   @override
   String toString() {
-    return 'DicParams(cariKodu: $cariKodu, stokKodu: $stokKodu, sifirHaric: $sifirHaric, maliyetTipi: $maliyetTipi, tlHarDokulsun: $tlHarDokulsun, depoKodlari: $depoKodlari, haricStokKodlari: $haricStokKodlari, haricStokGrupKodlari: $haricStokGrupKodlari, dovizTipi: $dovizTipi, bastar: $bastar, bittar: $bittar, grupKodu: $grupKodu, borcAlacak: $borcAlacak, refTarih: $refTarih, tarihTipi: $tarihTipi, kod1: $kod1, kod2: $kod2, kod3: $kod3, kod4: $kod4, kod5: $kod5, kapali: $kapali, durum: $durum, vergiNo: $vergiNo, plasiyerKodu: $plasiyerKodu, aralikTipi: $aralikTipi, sirala: $sirala, bakiyeDurumu: $bakiyeDurumu, caharInckey: $caharInckey, belgeTipi: $belgeTipi, belgeNo: $belgeNo, isemriNo: $isemriNo, dinamikParam: $dinamikParam, kasaharInckey: $kasaharInckey)';
+    return 'DicParams(cariKodu: $cariKodu, stokKodu: $stokKodu, sifirHaric: $sifirHaric, maliyetTipi: $maliyetTipi, tlHarDokulsun: $tlHarDokulsun, depoKodlari: $depoKodlari, haricStokKodlari: $haricStokKodlari, haricStokGrupKodlari: $haricStokGrupKodlari, dovizTipi: $dovizTipi, bastar: $bastar, bittar: $bittar, grupKodu: $grupKodu, borcAlacak: $borcAlacak, refTarih: $refTarih, tarihTipi: $tarihTipi, kod1: $kod1, kod2: $kod2, kod3: $kod3, kod4: $kod4, kod5: $kod5, kapali: $kapali, durum: $durum, vergiNo: $vergiNo, plasiyerKodu: $plasiyerKodu, aralikTipi: $aralikTipi, sirala: $sirala, bakiyeDurumu: $bakiyeDurumu, caharInckey: $caharInckey, belgeTipi: $belgeTipi, belgeNo: $belgeNo, isemriNo: $isemriNo, dinamikParam: $dinamikParam, kasaharInckey: $kasaharInckey, uretimFiyatiDahil: $uretimFiyatiDahil)';
   }
 
   @JsonKey(ignore: true)
@@ -931,7 +948,8 @@ abstract class _DicParams implements DicParams {
       String? belgeNo,
       String? isemriNo,
       String? dinamikParam,
-      String? kasaharInckey}) = _$_DicParams;
+      String? kasaharInckey,
+      String? uretimFiyatiDahil}) = _$_DicParams;
 
   factory _DicParams.fromJson(Map<String, dynamic> json) =
       _$_DicParams.fromJson;
@@ -1035,6 +1053,9 @@ abstract class _DicParams implements DicParams {
   @override
   String? get kasaharInckey;
   set kasaharInckey(String? value);
+  @override
+  String? get uretimFiyatiDahil;
+  set uretimFiyatiDahil(String? value);
   @override
   @JsonKey(ignore: true)
   _$$_DicParamsCopyWith<_$_DicParams> get copyWith =>

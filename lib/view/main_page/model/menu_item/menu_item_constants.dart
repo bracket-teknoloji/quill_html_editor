@@ -88,13 +88,15 @@ class MenuItemConstants {
     //* Sipariş
     //*
     GridItemModel.anamenu(name: "SIPA", title: "Sipariş", icon: "order", color: GridThemeManager.siparis, altMenuler: [
-      GridItemModel.item(name: "siparis_MusteriSiparisi", title: "Müşteri Siparişleri", route: "/mainPage/siparisMusteriSiparisi", arguments: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.musteri)),
-      GridItemModel.item(name: "siparis_SaticiSiparisi", title: "Satıcı Siparişleri", route: "/mainPage/siparisMusteriSiparisi", arguments: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.satici)),
+      GridItemModel.item(
+          name: "siparis_MusteriSiparisi", title: "Müşteri Siparişleri", route: "/mainPage/siparisMusteriSiparisi", arguments: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.musteri)),
+      GridItemModel.item(
+          name: "siparis_SaticiSiparisi", title: "Satıcı Siparişleri", route: "/mainPage/siparisMusteriSiparisi", arguments: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.satici)),
       GridItemModel.altmenu(name: "siparis_SaticiSiparisi_Raporlar", title: "Raporlar", altMenuler: [
         // GridItemModel.item(name: "siparis_MusteriSiparisi_DurumRaporu", title: "Müşteri Siparişi Durum Raporu"),
         GridItemModel.item(name: "siparis_MusteriSiparisi_DurumRaporu", title: "Müşteri Siparişi Durum Raporu", route: "/mainPage/siparisMusteriSiparisiDurumRaporu"),
         GridItemModel.item(name: "siparis_SaticiSiparisi_DurumRaporu", title: "Satıcı Sİparişi Durum Raporu"),
-        GridItemModel.item(name: "siparis_MusSip_KarlilikRaporu", title: "Sipariş Karlılık Raporu"),
+        GridItemModel.item(name: "siparis_MusSip_KarlilikRaporu", title: "Sipariş Karlılık Raporu", route: "/mainPage/siparisSiparisKarlikRaporu"),
         GridItemModel.item(name: "siparis_MusSip_TeslimRaporu", title: "Müşteri Siparişi Teslim Raporu", route: "/mainPage/siparisTeslimRaporu", arguments: SiparisTipiEnum.musteri),
         GridItemModel.item(name: "siparis_SaticiSip_TeslimRaporu", title: "Satıcı Siparişi Teslim Raporu", route: "/mainPage/siparisTeslimRaporu", arguments: SiparisTipiEnum.satici),
         GridItemModel.item(name: "siparis_SaticiSip_TeslimRaporu", title: "Stok İhtiyaç Raporu", route: "/mainPage/siparisStokIhtiyacRaporu"),

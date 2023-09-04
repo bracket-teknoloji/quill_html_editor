@@ -20,10 +20,10 @@ abstract class _AmbarMaliyetRaporuViewModelBase with Store {
   }
   List<BottomSheetModel> maliyetTipiList = [
     BottomSheetModel(title: "Son Giriş Net Fiyat", onTap: () => Get.back(result: "SGF")),
-    BottomSheetModel(title: "Alış Fİyatı 1", onTap: () => Get.back(result: "AF1")),
-    BottomSheetModel(title: "Alış Fİyatı 2", onTap: () => Get.back(result: "AF2")),
-    BottomSheetModel(title: "Alış Fİyatı 3", onTap: () => Get.back(result: "AF3")),
-    BottomSheetModel(title: "Alış Fİyatı 4", onTap: () => Get.back(result: "AF4")),
+    BottomSheetModel(title: "Alış Fiyatı 1", onTap: () => Get.back(result: "AF1")),
+    BottomSheetModel(title: "Alış Fiyatı 2", onTap: () => Get.back(result: "AF2")),
+    BottomSheetModel(title: "Alış Fiyatı 3", onTap: () => Get.back(result: "AF3")),
+    BottomSheetModel(title: "Alış Fiyatı 4", onTap: () => Get.back(result: "AF4")),
     BottomSheetModel(title: "Satış Fiyatı 1", onTap: () => Get.back(result: "SF1")),
     BottomSheetModel(title: "Satış Fiyatı 2", onTap: () => Get.back(result: "SF2")),
     BottomSheetModel(title: "Satış Fiyatı 3", onTap: () => Get.back(result: "SF3")),

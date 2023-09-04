@@ -67,6 +67,7 @@ _$_DicParams _$$_DicParamsFromJson(Map<String, dynamic> json) => _$_DicParams(
       isemriNo: json['ISEMRI_NO'] as String?,
       dinamikParam: json['DINAMIK_PARAM'] as String?,
       kasaharInckey: json['KASAHAR_INCKEY'] as String?,
+      uretimFiyatiDahil: json['URETIM_FIYATI_DAHIL'] as String?,
     );
 
 Map<String, dynamic> _$$_DicParamsToJson(_$_DicParams instance) {
@@ -111,5 +112,6 @@ Map<String, dynamic> _$$_DicParamsToJson(_$_DicParams instance) {
   writeNotNull('ISEMRI_NO', instance.isemriNo);
   writeNotNull('DINAMIK_PARAM', instance.dinamikParam);
   writeNotNull('KASAHAR_INCKEY', instance.kasaharInckey);
+  writeNotNull('URETIM_FIYATI_DAHIL', instance.uretimFiyatiDahil);
   return val;
 }

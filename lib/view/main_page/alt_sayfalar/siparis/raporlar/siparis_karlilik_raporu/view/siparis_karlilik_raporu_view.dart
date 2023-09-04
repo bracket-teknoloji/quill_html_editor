@@ -7,39 +7,39 @@ import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_widget_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../model/param_model.dart";
 import "../../../base_siparis_edit/model/base_siparis_edit_model.dart";
-import "../view_model/siparis_teslim_raporu_view_model.dart";
+import "../view_model/siparis_karlilik_raporu_view_model.dart";
 
-class SiparisTeslimRaporuView extends StatefulWidget {
-  final SiparisTipiEnum siparisTipiEnum;
-  const SiparisTeslimRaporuView({super.key, required this.siparisTipiEnum});
+class SiparisKarlilikRaporuView extends StatefulWidget {
+  const SiparisKarlilikRaporuView({super.key});
 
   @override
-  State<SiparisTeslimRaporuView> createState() => _YaslandirmaRaporuViewState();
+  State<SiparisKarlilikRaporuView> createState() => _YaslandirmaRaporuViewState();
 }
 
-class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
-  SiparisTipiEnum get siparisTipiEnum => widget.siparisTipiEnum;
-  late final SiparisTeslimRaporuViewModel viewModel;
+class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
+  late final SiparisKarlilikRaporuViewModel viewModel;
   late final TextEditingController belgeNoController;
   late final TextEditingController cariController;
   late final TextEditingController vergiNoController;
-  late final TextEditingController stokController;
+  late final TextEditingController plasiyerController;
+  late final TextEditingController maliyetTipiController;
   late final TextEditingController baslangicTarihiController;
   late final TextEditingController bitisTarihiController;
 
   @override
   void initState() {
-    viewModel = SiparisTeslimRaporuViewModel(siparisTipiEnum);
+    viewModel = SiparisKarlilikRaporuViewModel();
     belgeNoController = TextEditingController();
     cariController = TextEditingController();
     vergiNoController = TextEditingController();
-    stokController = TextEditingController();
+    plasiyerController = TextEditingController();
+    maliyetTipiController = TextEditingController();
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
     super.initState();
@@ -50,7 +50,8 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
     belgeNoController.dispose();
     cariController.dispose();
     vergiNoController.dispose();
-    stokController.dispose();
+    plasiyerController.dispose();
+    maliyetTipiController.dispose();
     baslangicTarihiController.dispose();
     bitisTarihiController.dispose();
     super.dispose();
@@ -58,7 +59,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
 
   @override
   Widget build(BuildContext context) {
-    return PDFViewerView(filterBottomSheet: filterBottomSheet, title: "${widget.siparisTipiEnum == SiparisTipiEnum.musteri ? "Müş.Sip." : "Sat. Sip."} Teslim Raporu", pdfData: viewModel.pdfModel);
+    return PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Sipariş Karlılık Raporu", pdfData: viewModel.pdfModel);
   }
 
   Future<bool> filterBottomSheet() async {
@@ -128,59 +129,38 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
               Row(
                 children: [
                   Expanded(
-                    child: CustomTextField(
-                      labelText: "Vergi No",
-                      readOnly: true,
-                      suffixMore: true,
-                      controller: vergiNoController,
-                      onClear: () {
-                        viewModel.setVergiNo(null);
-                        vergiNoController.clear();
-                      },
-                      onTap: () async {
-                        var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                        if (result is CariListesiModel) {
-                          vergiNoController.text = result.vergiNumarasi ?? "";
-                          viewModel.setVergiNo(result.vergiNumarasi);
-                        }
-                      },
-                    ),
-                  ),
+                      child: CustomTextField(
+                    labelText: "Plasiyer",
+                    readOnly: true,
+                    suffixMore: true,
+                    controller: plasiyerController,
+                    onTap: () async {
+                      PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
+                      if (result != null) {
+                        plasiyerController.text = result.plasiyerAciklama ?? "";
+                        viewModel.pdfModel.dicParams?.plasiyerKodu = result.plasiyerKodu ?? "";
+                      }
+                    },
+                  )),
                   Expanded(
-                    child: CustomTextField(
-                      labelText: "Stok",
-                      readOnly: true,
-                      suffixMore: true,
-                      controller: stokController,
-                      onClear: () {
-                        viewModel.setStokKodu(null);
-                        stokController.clear();
-                      },
-                      onTap: () async {
-                        var result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
-                        if (result is StokListesiModel) {
-                          stokController.text = result.stokAdi ?? "";
-                          viewModel.setStokKodu(result.stokKodu);
-                        }
-                      },
-                    ),
-                  ),
+                      child: CustomTextField(
+                    labelText: "Maliyet Tipi",
+                    readOnly: true,
+                    suffixMore: true,
+                    isMust: true,
+                    controller: maliyetTipiController,
+                    onTap: () {},
+                  )),
                 ],
               ),
-              Row(
-                children: [
-                  Expanded(
-                      child: CustomWidgetWithLabel(
-                          text: "Kapalılar Hariç",
-                          isVertical: true,
-                          child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kapaliMi, onChanged: (value) => viewModel.setKapali(value ? "E" : "H"))))),
-                  Expanded(
-                      child: CustomWidgetWithLabel(
-                          text: "Sadece Kalanlar",
-                          isVertical: true,
-                          child: Observer(builder: (_) => Switch.adaptive(value: viewModel.durum, onChanged: (value) => viewModel.setDurum(value ? "K" : null))))),
-                ],
+              CustomTextField(
+                labelText: "Hariç Stok Grup Kodları",
+                onTap: () {},
               ),
+              CustomWidgetWithLabel(
+                  text: "Üretim Fiyatı Dahil",
+                  isVertical: true,
+                  child: Observer(builder: (_) => Switch.adaptive(value: viewModel.uretimFiyatiDahilMi, onChanged: (value) => viewModel.setUretimFiyatiDahilMi(value ? "K" : null)))),
               ElevatedButton(
                   onPressed: () {
                     viewModel.setFuture();

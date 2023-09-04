@@ -43,10 +43,16 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
   }
 
   @override
+  dispose() {
+    pdfViewerController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     //* Açılıştaki dialog için
     Future.delayed(Duration.zero, () async {
-      bool result = widget.filterBottomSheet != null ? await widget.filterBottomSheet!() : true;
+      bool result = await widget.filterBottomSheet?.call() ?? true;
       if (result) {
         getData();
       }
@@ -78,8 +84,8 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
             icon: const Icon(Icons.share_outlined)),
         // IconButton(
         //     onPressed: () async {
-        //       //😳 await bottomSheetDialogManager.showBottomSheetDialog(context,
-        //       //😳     title: "Yazıcı", children: CacheManager.getAnaVeri()?.paramModel?.yaziciList?.map((e) => BottomSheetModel(title: e.yaziciAdi ?? "", onTap: () {})).toList());
+        //😳 await bottomSheetDialogManager.showBottomSheetDialog(context,
+        //😳     title: "Yazıcı", children: CacheManager.getAnaVeri()?.paramModel?.yaziciList?.map((e) => BottomSheetModel(title: e.yaziciAdi ?? "", onTap: () {})).toList());
         //     },
         //     icon: const Icon(Icons.more_vert_outlined)),
       ],
@@ -168,12 +174,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
           IconButton(onPressed: () => pdfViewerController.firstPage(), icon: const Icon(Icons.first_page_outlined)),
           IconButton(onPressed: () => pdfViewerController.previousPage(), icon: const Icon(Icons.arrow_back_outlined)),
           IconButton(onPressed: () => pdfViewerController.nextPage(), icon: const Icon(Icons.arrow_forward_outlined)),
-          Observer(
-              builder: (_) => IconButton(
-                  onPressed: () {
-                    pdfViewerController.lastPage();
-                  },
-                  icon: const Icon(Icons.last_page_outlined))),
+          Observer(builder: (_) => IconButton(onPressed: () => pdfViewerController.lastPage(), icon: const Icon(Icons.last_page_outlined))),
         ],
       ));
   Future getData() async {
