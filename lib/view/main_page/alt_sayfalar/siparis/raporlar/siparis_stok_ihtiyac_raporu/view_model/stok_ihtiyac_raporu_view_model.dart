@@ -1,7 +1,8 @@
-import 'package:mobx/mobx.dart';
+import "package:mobx/mobx.dart";
 
 import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
-part 'stok_ihtiyac_raporu_view_model.g.dart';
+
+part "stok_ihtiyac_raporu_view_model.g.dart";
 
 class StokIhtiyacRaporuViewModel = _StokIhtiyacRaporuViewModelBase with _$StokIhtiyacRaporuViewModel;
 

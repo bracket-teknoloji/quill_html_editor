@@ -6,16 +6,16 @@ part of 'siparisler_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-SiparislerRequestModel _$SiparislerRequestModelFromJson(
+_$_SiparislerRequestModel _$$_SiparislerRequestModelFromJson(
         Map<String, dynamic> json) =>
-    SiparislerRequestModel(
+    _$_SiparislerRequestModel(
       pickerBelgeTuru: json['PickerBelgeTuru'] as String?,
       iadeMi: json['IadeMi'] as bool?,
-      cariKodu: json['CariKodu'] as String?,
+      cariKodu: json['CariKodu'] as String? ?? "",
       ozelKod2: json['OzelKod2'] as String?,
       cariTipi: json['CariTipi'] as String?,
       miktarGetir: json['MiktarGetir'] as String?,
-      siralama: json['Siralama'] as String?,
+      siralama: json['SIRALAMA'] as String?,
       siparisKarsilanmaDurumu: json['SiparisKarsilanmaDurumu'] as String?,
       ozelKod1: json['OzelKod1'] as String?,
       kapaliBelgelerListelenmesin:
@@ -34,10 +34,13 @@ SiparislerRequestModel _$SiparislerRequestModelFromJson(
       baslamaTarihi: json['BaslamaTarihi'] as String?,
       bitisTarihi: json['BitisTarihi'] as String?,
       searchText: json['SearchText'] as String?,
+      belgeNo: json['BelgeNo'] as String? ?? "",
+      siparisDurumu: json['SiparisDurumu'] as String?,
+      referansStokKodu: json['ReferansStokKodu'] as String?,
     );
 
-Map<String, dynamic> _$SiparislerRequestModelToJson(
-    SiparislerRequestModel instance) {
+Map<String, dynamic> _$$_SiparislerRequestModelToJson(
+    _$_SiparislerRequestModel instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -52,7 +55,7 @@ Map<String, dynamic> _$SiparislerRequestModelToJson(
   writeNotNull('OzelKod2', instance.ozelKod2);
   writeNotNull('CariTipi', instance.cariTipi);
   writeNotNull('MiktarGetir', instance.miktarGetir);
-  writeNotNull('Siralama', instance.siralama);
+  writeNotNull('SIRALAMA', instance.siralama);
   writeNotNull('SiparisKarsilanmaDurumu', instance.siparisKarsilanmaDurumu);
   writeNotNull('OzelKod1', instance.ozelKod1);
   writeNotNull(
@@ -71,5 +74,8 @@ Map<String, dynamic> _$SiparislerRequestModelToJson(
   writeNotNull('BaslamaTarihi', instance.baslamaTarihi);
   writeNotNull('BitisTarihi', instance.bitisTarihi);
   writeNotNull('SearchText', instance.searchText);
+  writeNotNull('BelgeNo', instance.belgeNo);
+  writeNotNull('SiparisDurumu', instance.siparisDurumu);
+  writeNotNull('ReferansStokKodu', instance.referansStokKodu);
   return val;
 }

@@ -9,7 +9,7 @@ part "siparis_edit_request_model.g.dart";
 @unfreezed
 class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestModel {
   @JsonSerializable(fieldRename: FieldRename.pascal)
-   factory SiparisEditRequestModel({
+  factory SiparisEditRequestModel({
     @JsonKey(defaultValue: "D") String? ekranTipi,
     @Default(true) bool? kisitYok,
     @JsonKey(name: "BelgeTipi") String? belgeTipi,
@@ -37,9 +37,11 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
 
   factory SiparisEditRequestModel.fromJson(Map<String, Object?> json) => _$SiparisEditRequestModelFromJson(json);
 
+  factory SiparisEditRequestModel.fromKalemModel(KalemModel model) => SiparisEditRequestModel(belgeNo: model.belgeNo, cariKodu: model.cariKodu, belgeTuru: model.belgeTipi);
+
   factory SiparisEditRequestModel.fromSiparislerModel(BaseSiparisEditModel model) =>
       SiparisEditRequestModel(belgeNo: model.belgeNo, belgeTuru: model.belgeTuru, cariKodu: model.cariKodu, tempBelgeId: model.tempBelgeId);
-      
-        @override
-        fromJson(Map<String, dynamic> json) => SiparisEditRequestModel.fromJson(json);
+
+  @override
+  fromJson(Map<String, dynamic> json) => SiparisEditRequestModel.fromJson(json);
 }

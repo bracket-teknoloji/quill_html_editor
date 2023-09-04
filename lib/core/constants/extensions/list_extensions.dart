@@ -31,7 +31,7 @@ extension ListExtension3<T> on List<T>? {
 
 extension ListExtension4<T> on List? {
   List<T> cast(T model) {
-    return this!.map((e) => e).toList().cast<T>();
+    return this!.map((e) => e as T).toList().cast<T>();
   }
 }
 
@@ -46,5 +46,3 @@ extension ListGenericNullCheck<T> on List<T?> {
     return whereType<T>().toList();
   }
 }
-
-

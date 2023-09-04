@@ -525,7 +525,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 @CopyWith()
 @HiveType(typeId: 17)
 @JsonSerializable(createFactory: true)
-class KalemModel {
+class KalemModel with NetworkManagerMixin{
   @HiveField(0)
   bool? iskonto1OranMi;
   @HiveField(1)
@@ -865,6 +865,9 @@ class KalemModel {
       koliBilesenKolikdv: model.koliBilesenKolikdv
     );
   }
-
+  @override
   Map<String, dynamic> toJson() => _$KalemModelToJson(this);
+  
+  @override
+  fromJson(Map<String, dynamic> json) => _$KalemModelFromJson(json);
 }

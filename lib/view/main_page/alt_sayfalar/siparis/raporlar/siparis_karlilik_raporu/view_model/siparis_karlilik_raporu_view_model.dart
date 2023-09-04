@@ -1,7 +1,8 @@
-import 'package:mobx/mobx.dart';
+import "package:mobx/mobx.dart";
 
 import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
-part 'siparis_karlilik_raporu_view_model.g.dart';
+
+part "siparis_karlilik_raporu_view_model.g.dart";
 
 class SiparisKarlilikRaporuViewModel = _SiparisKarlilikRaporuViewModelBase with _$SiparisKarlilikRaporuViewModel;
 
@@ -19,11 +20,11 @@ abstract class _SiparisKarlilikRaporuViewModelBase with Store {
     "Satış Fiyatı 3": "SF3",
     "Satış Fiyatı 4": "SF4",
   };
-    @observable
+  @observable
   PdfModel pdfModel = PdfModel(raporOzelKod: "Rapor_SiparisKarlilik", standart: true, dicParams: DicParams());
   @observable
   bool uretimFiyatiDahilMi = false;
-  
+
   @action
   void setCariKodu(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(cariKodu: value);
   @action
@@ -37,10 +38,11 @@ abstract class _SiparisKarlilikRaporuViewModelBase with Store {
     uretimFiyatiDahilMi = value == "E";
     pdfModel.dicParams = pdfModel.dicParams?.copyWith(uretimFiyatiDahil: value);
   }
+
   @action
   void setBaslangicTarihi(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(bastar: value);
   @action
-  void setBitisTarihi(String? value) =>   pdfModel.dicParams = pdfModel.dicParams?.copyWith(bittar: value);
+  void setBitisTarihi(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(bittar: value);
   //* Future
   //*
   @observable
@@ -51,5 +53,4 @@ abstract class _SiparisKarlilikRaporuViewModelBase with Store {
 
   @action
   void resetFuture() => futureController = ObservableFuture.value(false);
-  
 }

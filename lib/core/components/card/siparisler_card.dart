@@ -157,27 +157,6 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
               ),
             ].map((e) => Expanded(child: e)).toList(),
           ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //   children: [
-          //     Text("Tipi: ${widget.model.tipi ?? ""}"),
-          //     Text("Kalem Adedi: ${widget.model.kalemAdedi ?? ""}"),
-          //   ],
-          // ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //   children: [
-          //     Text("Ara Toplam: ${widget.model.araToplam.commaSeparatedWithFixedDigits} TL"),
-          //     Text("Plasiyer: ${widget.model.plasiyerAciklama ?? ""}"),
-          //   ],
-          // ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //   children: [
-          //     Text("Genel Toplam: ${widget.model.genelToplam ?? ""} TL"),
-          //     Text("KDV: ${widget.model.kdv ?? ""} TL"),
-          //   ],
-          // ),
         ],
       ),
     ));
