@@ -131,7 +131,7 @@ class PickerApp extends StatelessWidget {
             GetPage(name: "/siparisMusteriSiparisiDurumRaporu", page: () => MusteriSiparisiDurumRaporuView(model: Get.arguments)),
             // GetPage(name: "/siparisStokIhtiyacRaporu", page: () => StokIhtiyacRaporuView()),
             GetPage(name: "/siparisTeslimRaporu", page: () => SiparisTeslimRaporuView(siparisTipiEnum: Get.arguments)),
-            GetPage(name: "/siparisSiparisKarlikRaporu", page: () => const SiparisKarlilikRaporuView()),
+            GetPage(name: "/siparisSiparisKarlilikRaporu", page: () => const SiparisKarlilikRaporuView()),
 
             // GetPage(name: "/siparisSaticiSiparisiDurumRaporu", page: page),
             // GetPage(name: "/siparisMusteriSiparisiTeslimRaporu", page: page),

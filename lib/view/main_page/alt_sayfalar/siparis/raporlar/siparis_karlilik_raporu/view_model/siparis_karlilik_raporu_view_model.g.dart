@@ -101,6 +101,19 @@ mixin _$SiparisKarlilikRaporuViewModel
   }
 
   @override
+  void setMaliyetTipi(String? value) {
+    final _$actionInfo =
+        _$_SiparisKarlilikRaporuViewModelBaseActionController.startAction(
+            name: '_SiparisKarlilikRaporuViewModelBase.setMaliyetTipi');
+    try {
+      return super.setMaliyetTipi(value);
+    } finally {
+      _$_SiparisKarlilikRaporuViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setUretimFiyatiDahilMi(String? value) {
     final _$actionInfo =
         _$_SiparisKarlilikRaporuViewModelBaseActionController.startAction(
