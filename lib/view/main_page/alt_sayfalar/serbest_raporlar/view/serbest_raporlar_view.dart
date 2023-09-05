@@ -70,7 +70,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                                   controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
                                   isMust: e.bosGecilebilir != true,
                                   readOnly: true,
-                                  suffix: const Icon(Icons.more_horiz_outlined),
+                                  suffixMore: true,
                                   onTap: () {
                                     getRehber(e);
                                   });

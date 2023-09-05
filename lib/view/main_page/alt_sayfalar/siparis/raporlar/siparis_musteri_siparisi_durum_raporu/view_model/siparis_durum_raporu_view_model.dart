@@ -23,6 +23,12 @@ abstract class _SiparisDurumRaporuViewModelBase with Store {
     "Stok Kodu (Artan)": "STOK_KODU_AZ",
     "Stok Kodu (Azalan)": "STOK_KODU_ZA",
   };
+  final Map<String, bool> gorunecekAlanlarMap = {
+    "Stok": true,
+    "Cari": true,
+    "Belge No": true,
+    "Tarih": true,
+  };
   final List<String?> karsilamaValueList = [null, "K", "A"];
   final List<String?> siparisValueList = [null, "K", "B"];
   late final SiparisTipiEnum siparisTipiEnum;

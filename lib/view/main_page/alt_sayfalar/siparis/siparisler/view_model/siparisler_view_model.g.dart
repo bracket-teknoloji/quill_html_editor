@@ -9,6 +9,48 @@ part of 'siparisler_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
+  Computed<bool>? _$grupKodList0Computed;
+
+  @override
+  bool get grupKodList0 =>
+      (_$grupKodList0Computed ??= Computed<bool>(() => super.grupKodList0,
+              name: '_SiparislerViewModelBase.grupKodList0'))
+          .value;
+  Computed<bool>? _$grupKodList1Computed;
+
+  @override
+  bool get grupKodList1 =>
+      (_$grupKodList1Computed ??= Computed<bool>(() => super.grupKodList1,
+              name: '_SiparislerViewModelBase.grupKodList1'))
+          .value;
+  Computed<bool>? _$grupKodList2Computed;
+
+  @override
+  bool get grupKodList2 =>
+      (_$grupKodList2Computed ??= Computed<bool>(() => super.grupKodList2,
+              name: '_SiparislerViewModelBase.grupKodList2'))
+          .value;
+  Computed<bool>? _$grupKodList3Computed;
+
+  @override
+  bool get grupKodList3 =>
+      (_$grupKodList3Computed ??= Computed<bool>(() => super.grupKodList3,
+              name: '_SiparislerViewModelBase.grupKodList3'))
+          .value;
+  Computed<bool>? _$grupKodList4Computed;
+
+  @override
+  bool get grupKodList4 =>
+      (_$grupKodList4Computed ??= Computed<bool>(() => super.grupKodList4,
+              name: '_SiparislerViewModelBase.grupKodList4'))
+          .value;
+  Computed<bool>? _$grupKodList5Computed;
+
+  @override
+  bool get grupKodList5 =>
+      (_$grupKodList5Computed ??= Computed<bool>(() => super.grupKodList5,
+              name: '_SiparislerViewModelBase.grupKodList5'))
+          .value;
   Computed<String>? _$getQueryParamsComputed;
 
   @override
@@ -81,6 +123,22 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     _$teslimatDurumuValueListAtom
         .reportWrite(value, super.teslimatDurumuValueList, () {
       super.teslimatDurumuValueList = value;
+    });
+  }
+
+  late final _$grupKodListAtom =
+      Atom(name: '_SiparislerViewModelBase.grupKodList', context: context);
+
+  @override
+  ObservableList<BaseGrupKoduModel> get grupKodList {
+    _$grupKodListAtom.reportRead();
+    return super.grupKodList;
+  }
+
+  @override
+  set grupKodList(ObservableList<BaseGrupKoduModel> value) {
+    _$grupKodListAtom.reportWrite(value, super.grupKodList, () {
+      super.grupKodList = value;
     });
   }
 
@@ -462,6 +520,17 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
       ActionController(name: '_SiparislerViewModelBase', context: context);
 
   @override
+  void changeGrupKodList(List<BaseGrupKoduModel> value) {
+    final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
+        name: '_SiparislerViewModelBase.changeGrupKodList');
+    try {
+      return super.changeGrupKodList(value);
+    } finally {
+      _$_SiparislerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setTeslimatDurumuGroupValue(int? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
         name: '_SiparislerViewModelBase.setTeslimatDurumuGroupValue');
@@ -762,6 +831,7 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   String toString() {
     return '''
 teslimatDurumuValueList: ${teslimatDurumuValueList},
+grupKodList: ${grupKodList},
 teslimatDurumuGroupValue: ${teslimatDurumuGroupValue},
 paramData: ${paramData},
 isScrolledDown: ${isScrolledDown},
@@ -785,6 +855,12 @@ cariKodu: ${cariKodu},
 cariTipi: ${cariTipi},
 baslamaTarihi: ${baslamaTarihi},
 bitisTarihi: ${bitisTarihi},
+grupKodList0: ${grupKodList0},
+grupKodList1: ${grupKodList1},
+grupKodList2: ${grupKodList2},
+grupKodList3: ${grupKodList3},
+grupKodList4: ${grupKodList4},
+grupKodList5: ${grupKodList5},
 getQueryParams: ${getQueryParams},
 getPlasiyer: ${getPlasiyer},
 getGrupKodlari: ${getGrupKodlari},

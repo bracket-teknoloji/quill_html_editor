@@ -93,12 +93,12 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
         IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
         IconButton(
             onPressed: () {
-              if (formKey.currentState!.validate()) {
+              if (formKey.currentState?.validate() ?? false) {
                 viewModel.kalemModel.kalemList?.map((e) => e.miktar = viewModel.kalemModel.miktar2).toList();
                 BaseSiparisEditModel.instance.kalemList ??= [];
-                if (BaseSiparisEditModel.instance.kalemList!.any((element) => element.stokKodu == viewModel.kalemModel.stokKodu)) {
+                if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.stokKodu == viewModel.kalemModel.stokKodu) ?? false) {
                   //replace
-                  BaseSiparisEditModel.instance.kalemList![BaseSiparisEditModel.instance.kalemList!.indexWhere((element) => element.stokKodu == viewModel.kalemModel.stokKodu)] = viewModel.kalemModel..paketMi = widget.stokListesiModel?.paketMi;
+                  BaseSiparisEditModel.instance.kalemList?[BaseSiparisEditModel.instance.kalemList?.indexWhere((element) => element.stokKodu == viewModel.kalemModel.stokKodu) ?? 0] = viewModel.kalemModel..paketMi = widget.stokListesiModel?.paketMi;
                 } else {
                   BaseSiparisEditModel.instance.kalemList?.add(viewModel.kalemModel..paketMi = widget.stokListesiModel?.paketMi);
                 }

@@ -180,7 +180,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                         setState(() {});
                       }
                     },
-                    suffix: const Icon(Icons.more_horiz_outlined),
+                    suffixMore: true,
                   );
                 }))
               ]);

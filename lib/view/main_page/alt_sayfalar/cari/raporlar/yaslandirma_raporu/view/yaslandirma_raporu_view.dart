@@ -51,8 +51,8 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
     kod4Controller = TextEditingController();
     kod5Controller = TextEditingController();
     if (widget.model != null) {
-      cariController.text = widget.model!.cariAdi ?? "";
-      viewModel.pdfModel.dicParams?.cariKodu = widget.model!.cariKodu ?? "";
+      cariController.text = widget.model?.cariAdi ?? "";
+      viewModel.pdfModel.dicParams?.cariKodu = widget.model?.cariKodu ?? "";
     }
     super.initState();
   }
@@ -105,7 +105,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                 labelText: "Cari",
                 controller: cariController,
                 readOnly: true,
-                suffix: const Icon(Icons.more_horiz_outlined),
+                suffixMore: true,
                 onTap: () async {
                   var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                   if (result != null) {
@@ -148,7 +148,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                         }
                       }
                     },
-                    suffix: const Icon(Icons.more_horiz_outlined),
+                    suffixMore: true,
                   )),
                 ],
               ),
@@ -160,7 +160,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                     isMust: true,
                     readOnly: true,
                     controller: tarihTipiController,
-                    suffix: const Icon(Icons.more_horiz_outlined),
+                    suffixMore: true,
                     onTap: () async {
                       var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Tarih Tipi", children: [
                         BottomSheetModel(title: "Vade Tarihi", onTap: () => Get.back(result: "Vade Tarihi")),
@@ -185,32 +185,16 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                 ],
               ),
               Row(children: [
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Grup Kodu",
-                        controller: grupKoduController,
-                        readOnly: true,
-                        suffix: const Icon(Icons.more_horiz_outlined),
-                        onTap: () async => await getGrupKodu(0, grupKoduController))),
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 1", controller: kod1Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(1, kod1Controller)))
+                Expanded(child: CustomTextField(labelText: "Grup Kodu", controller: grupKoduController, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(0, grupKoduController))),
+                Expanded(child: CustomTextField(labelText: "Kod 1", controller: kod1Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(1, kod1Controller)))
               ]),
               Row(children: [
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 2", controller: kod2Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(2, kod2Controller))),
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 3", controller: kod3Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(3, kod3Controller)))
+                Expanded(child: CustomTextField(labelText: "Kod 2", controller: kod2Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(2, kod2Controller))),
+                Expanded(child: CustomTextField(labelText: "Kod 3", controller: kod3Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(3, kod3Controller)))
               ]),
               Row(children: [
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 4", controller: kod4Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(4, kod4Controller))),
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(5, kod5Controller)))
+                Expanded(child: CustomTextField(labelText: "Kod 4", controller: kod4Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(4, kod4Controller))),
+                Expanded(child: CustomTextField(labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, kod5Controller)))
               ]),
               ElevatedButton(
                   onPressed: () {

@@ -99,7 +99,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: grupKoduController,
                                 readOnly: true,
                                 onTap: () async {
-                                  var result = await bottomSheetDialogManager.showGrupKoduBottomSheetDialog(modul: GrupKoduEnum.STOK, grupKodu: 0);
+                                  var result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context,modul: GrupKoduEnum.STOK, grupKodu: 0);
                                   if (result != null) {
                                     viewModel.setGrupKodu(result.whereType<BaseGrupKoduModel>().toList());
                                     grupKoduController.text = viewModel.stokBottomSheetModel.arrGrupKodu?.map((e) => e.grupAdi).join(",") ?? "";
@@ -112,7 +112,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: kod1Controller,
                                 readOnly: true,
                                 onTap: () async {
-                                  var result = await bottomSheetDialogManager.showGrupKoduBottomSheetDialog(modul: GrupKoduEnum.STOK, grupKodu: 1);
+                                  var result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context,modul: GrupKoduEnum.STOK, grupKodu: 1);
                                   if (result != null) {
                                     // viewModel
                                     resetData();
@@ -126,7 +126,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: kod2Controller,
                                 readOnly: true,
                                 onTap: () async {
-                                  var result = await bottomSheetDialogManager.showGrupKoduBottomSheetDialog(modul: GrupKoduEnum.STOK, grupKodu: 2);
+                                  var result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context,modul: GrupKoduEnum.STOK, grupKodu: 2);
                                 })),
                         Expanded(
                             child: CustomTextField(
@@ -134,7 +134,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: kod3Controller,
                                 readOnly: true,
                                 onTap: () async {
-                                  var result = await bottomSheetDialogManager.showGrupKoduBottomSheetDialog(modul: GrupKoduEnum.STOK, grupKodu: 3);
+                                  var result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context,modul: GrupKoduEnum.STOK, grupKodu: 3);
                                 }))
                       ]),
                       Row(children: [
@@ -144,7 +144,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: kod4Controller,
                                 readOnly: true,
                                 onTap: () async {
-                                  var result = await bottomSheetDialogManager.showGrupKoduBottomSheetDialog(modul: GrupKoduEnum.STOK, grupKodu: 4);
+                                  var result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context,modul: GrupKoduEnum.STOK, grupKodu: 4);
                                 })),
                         Expanded(
                             child: CustomTextField(
@@ -152,7 +152,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: kod5Controller,
                                 readOnly: true,
                                 onTap: () async {
-                                  var result = await bottomSheetDialogManager.showGrupKoduBottomSheetDialog(modul: GrupKoduEnum.STOK, grupKodu: 5);
+                                  var result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context,modul: GrupKoduEnum.STOK, grupKodu: 5);
                                 }))
                       ]),
                     ],

@@ -83,7 +83,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
                   labelText: "Grup No",
                   controller: grupNoController,
                   readOnly: true,
-                  suffix: const Icon(Icons.more_horiz_outlined),
+                  suffixMore: true,
                   onTap: () async {
                     var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Grup No", children: viewModel.grupNoBottomSheetList);
                     if (result != null) {
@@ -98,7 +98,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
                         labelText: "Cari",
                         controller: cariController,
                         readOnly: true,
-                        suffix: const Icon(Icons.more_horiz_outlined),
+                        suffixMore: true,
                         onTap: () async {
                           var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                           if (result != null) {
@@ -116,7 +116,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
                   labelText: "Plasiyer",
                   controller: plasiyerController,
                   readOnly: true,
-                  suffix: const Icon(Icons.more_horiz_outlined),
+                  suffixMore: true,
                   onTap: () async {
                     List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList;
                     if (plasiyerList != null) {
@@ -136,7 +136,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
                         labelText: "Proje",
                         controller: projeController,
                         readOnly: true,
-                        suffix: const Icon(Icons.more_horiz_outlined),
+                        suffixMore: true,
                         onTap: () async {
                           if (viewModel.projeList.isEmptyOrNull) {
                             var result = await networkManager.dioGet<BaseProjeModel>(path: ApiUrls.getProjeler, bodyModel: BaseProjeModel(), addCKey: true, addSirketBilgileri: true);
@@ -158,16 +158,15 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
                         })),
               ],
             ),
-            CustomWidgetWithLabel(child: 
-              Observer(
-                  builder: (_) => SwitchListTile(
-                      value: viewModel.irsDahilValue,
-                      onChanged: (value) {
-                        viewModel.setIrsDahilValue(value);
-                        getData();
-                      },
-                      title: const Text("İrsaliye Dahil")))
-            ),
+            CustomWidgetWithLabel(
+                child: Observer(
+                    builder: (_) => SwitchListTile(
+                        value: viewModel.irsDahilValue,
+                        onChanged: (value) {
+                          viewModel.setIrsDahilValue(value);
+                          getData();
+                        },
+                        title: const Text("İrsaliye Dahil")))),
             Observer(
                 builder: (_) => CustomPieChart(
                     pieChartValue: viewModel.modelList?.map((element) => element.netTutar ?? 0).toList().cast<double>() ?? [],

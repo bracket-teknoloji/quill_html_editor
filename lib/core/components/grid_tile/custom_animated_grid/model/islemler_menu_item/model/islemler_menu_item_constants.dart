@@ -59,7 +59,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(cariKoduDegistir);
       islemlerList.add(belgeNoDegistir);
       islemlerList.add(belgeyiKopyala);
-      // islemlerList.addAll(raporlar!);
+      islemlerList.addAll(raporlar!);
     }
     if (raporlar.ext.isNotNullOrEmpty) {
       islemlerList.add(stokHareketleri);
@@ -76,15 +76,18 @@ class IslemlerMenuItemConstants<T> {
   //* Siparis
   GridItemModel? get irsaliyeOlustur => GridItemModel.islemler(title: "İrsaliye Oluştur", iconData: Icons.conveyor_belt);
   GridItemModel? get faturaOlustur => GridItemModel.islemler(title: "Fatura Oluştur (Siparişten)", iconData: Icons.conveyor_belt);
-  GridItemModel? get belgeyiKapat => GridItemModel.islemler(title: "Belgeyi Kapat", iconData: Icons.lock_outline, onTap: () => DialogManager().showAreYouSureDialog(() {},title: "Kiliti Kapatmak istediğinize emin misiniz?"));
+  GridItemModel? get belgeyiKapat =>
+      GridItemModel.islemler(title: "Belgeyi Kapat", iconData: Icons.lock_outline, onTap: () => DialogManager().showAreYouSureDialog(() {}, title: "Kiliti Kapatmak istediğinize emin misiniz?"));
   GridItemModel? get belgeNoDegistir => GridItemModel.islemler(title: "Belge No Değiştir", iconData: Icons.edit_outlined);
   GridItemModel? get siparisPDFGoruntule => GridItemModel.islemler(
       title: "PDF Görüntüle",
       iconData: Icons.picture_as_pdf_outlined,
       onTap: () async {
         BaseSiparisEditModel? siparisModel = model as BaseSiparisEditModel?;
-        List<NetFectDizaynList> dizaynList =
-            (CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList ?? []).where((element) => element.ozelKod == (StaticVariables.instance.isMusteriSiparisleri ? "MusteriSiparisi" : "SaticiSiparisi")).whereType<NetFectDizaynList>().toList();
+        List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList ?? [])
+            .where((element) => element.ozelKod == (StaticVariables.instance.isMusteriSiparisleri ? "MusteriSiparisi" : "SaticiSiparisi"))
+            .whereType<NetFectDizaynList>()
+            .toList();
         var result =
             await bottomSheetDialogManager.showBottomSheetDialog(Get.context!, title: "PDF Görüntüle", children: dizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList());
         if (result is NetFectDizaynList) {

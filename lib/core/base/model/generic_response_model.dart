@@ -29,7 +29,7 @@ class GenericResponseModel<T extends NetworkManagerMixin> {
     if (json["Data"] is List) {
       data = json["Data"].map((e) => model?.fromJson(e)).toList();
     } else if (json["Data"] is Map<String, dynamic>) {
-      data = model!.fromJson(json["Data"]);
+      data = model?.fromJson(json["Data"]);
     } else {
       data = json["Data"];
     }

@@ -6,6 +6,7 @@ import "package:picker/core/components/button/elevated_buttons/bottom_appbar_but
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_widget_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -160,9 +161,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                   itemBuilder: (context, index) {
                     if (index != viewModel.kalemListComputed?.length) {
                       KalemModel? kalemModel = viewModel.kalemListComputed?[index];
-                      return Observer(builder: (_) {
-                        return siparisDurumListTile(kalemModel, context);
-                      });
+                      return siparisDurumListTile(kalemModel, context);
                     }
                     return Observer(builder: (_) {
                       return Visibility(visible: viewModel.dahaVarMi, child: const Center(child: CircularProgressIndicator.adaptive()));
@@ -174,17 +173,21 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
   Card siparisDurumListTile(KalemModel? kalemModel, BuildContext context) {
     return Card(
       child: ListTile(
-        title: Text(kalemModel?.stokAdi ?? ""),
+        title: Column(
+          children: [
+            Text(kalemModel?.stokAdi ?? ""),
+          ],
+        ),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(kalemModel?.cariAdi ?? ""),
-            Text(kalemModel?.belgeNo ?? ""),
-            Text("Stok kodu: ${kalemModel?.stokKodu ?? ""}"),
+            Text(kalemModel?.belgeNo ?? "").yetkiVarMi(viewModel.gorunecekAlanlarMap["Belge No"] ?? false),
+            Text("Stok kodu: ${kalemModel?.stokKodu ?? ""}").yetkiVarMi(viewModel.gorunecekAlanlarMap["Stok"] ?? false),
             Text(kalemModel?.cariKodu ?? ""),
             Wrap(
               children: [
-                Text("Cari kodu: ${kalemModel?.cariKodu ?? ""}"),
+                Text("Cari kodu: ${kalemModel?.cariKodu ?? ""}").yetkiVarMi(viewModel.gorunecekAlanlarMap["Cari"] ?? false),
                 Text("Net tutar: ${kalemModel?.netFiyat.commaSeparatedWithFixedDigits ?? "0,00"}"),
                 Text("Miktar: ${kalemModel?.miktar.toIntIfDouble ?? "0"}"),
                 Text("Kalan miktar: ${kalemModel?.kalan.toIntIfDouble ?? "0"}"),
@@ -194,22 +197,18 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
             )
           ],
         ),
-        onTap: () async {
-          var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: [
-            BottomSheetModel(
-                title: "Belgeyi Görüntüle",
-                iconWidget: Icons.search_outlined,
-                onTap: () {
-                  Get.back();
-                  return Get.toNamed("mainPage/siparisEdit",
-                      arguments: BaseEditModel(model: SiparisEditRequestModel.fromKalemModel(kalemModel!), baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum));
-                }),
-            BottomSheetModel(
-                title: "Stok İşlemleri", iconWidget: Icons.list_alt_outlined, onTap: () => dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = kalemModel?.stokKodu ?? "")),
-            BottomSheetModel(
-                title: "Cari İşlemleri", iconWidget: Icons.person_2_outlined, onTap: () => dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = kalemModel?.cariKodu ?? "")),
-          ]);
-        },
+        onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: [
+          BottomSheetModel(
+              title: "Belgeyi Görüntüle",
+              iconWidget: Icons.search_outlined,
+              onTap: () {
+                Get.back();
+                return Get.toNamed("mainPage/siparisEdit",
+                    arguments: BaseEditModel(model: SiparisEditRequestModel.fromKalemModel(kalemModel!), baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum));
+              }),
+          BottomSheetModel(title: "Stok İşlemleri", iconWidget: Icons.list_alt_outlined, onTap: () => dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = kalemModel?.stokKodu ?? "")),
+          BottomSheetModel(title: "Cari İşlemleri", iconWidget: Icons.person_2_outlined, onTap: () => dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = kalemModel?.cariKodu ?? "")),
+        ]),
         onLongPress: () => dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = kalemModel?.cariKodu ?? ""),
       ),
     );
@@ -309,6 +308,26 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                       readOnly: true,
                       suffixMore: true,
                       controller: gorunecekAlanlarController,
+                      onTap: () async {
+                        var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context,
+                            title: "Görünecek Alanlar",
+                            children: List.generate(viewModel.gorunecekAlanlarMap.length,
+                                (index) => BottomSheetModel(title: viewModel.gorunecekAlanlarMap.keys.toList()[index], value: viewModel.gorunecekAlanlarMap.keys.toList()[index])));
+                        if (result != null && result is List) {
+                          gorunecekAlanlarController.text = result.map((e) => e.toString()).join(", ");
+                          for (var item in result) {
+                            if (viewModel.gorunecekAlanlarMap.containsKey(item)) {
+                              //other values false
+                              for (var key in viewModel.gorunecekAlanlarMap.keys) {
+                                if (!result.contains(key)) {
+                                  viewModel.gorunecekAlanlarMap[key] = false;
+                                }
+                              }
+                              viewModel.gorunecekAlanlarMap[item] = true;
+                            }
+                          }
+                        }
+                      },
                     ),
                   ),
                 ],
@@ -333,6 +352,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
               }),
               ElevatedButton(
                   onPressed: () {
+                    viewModel.setKalemList(null);
                     getData();
                     Get.back();
                   },

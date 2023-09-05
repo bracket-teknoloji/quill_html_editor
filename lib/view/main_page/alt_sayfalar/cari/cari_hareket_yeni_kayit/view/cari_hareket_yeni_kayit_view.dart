@@ -152,7 +152,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                 validator: validator,
                 readOnly: true,
                 controller: hareketTuruController,
-                suffix: const Icon(Icons.more_horiz_outlined),
+                suffixMore: true,
                 onTap: () async {
                   Map? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Hareket Türü", children: [
                     BottomSheetModel(title: "Devir", description: "A", onTap: () => Get.back(result: {"title": "Devir", "value": "A"}))
@@ -239,7 +239,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                     isMust: true,
                     validator: validator,
                     controller: projeController,
-                    suffix: const Icon(Icons.more_horiz_outlined),
+                    suffixMore: true,
                     onTap: () async {
                       if (viewModel.projeList.isEmpty) {
                         viewModel.setProjeList(await getProjeData());

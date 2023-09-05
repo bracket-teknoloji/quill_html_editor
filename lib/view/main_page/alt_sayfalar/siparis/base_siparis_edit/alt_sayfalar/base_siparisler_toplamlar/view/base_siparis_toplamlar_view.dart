@@ -309,6 +309,9 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
     if (model.vadeGunu == null && model.vadeTarihi == null) {
       viewModel.setVadeTarihi(DateTime.now());
     }
+    if ((model.vadeTarihi?.difference(DateTime.now()).inDays?? 0) < 0){
+      viewModel.setVadeTarihi(DateTime.now());
+    }
     vadeGunuController = TextEditingController(text: model.vadeGunu.toStringIfNull ?? (model.vadeTarihi?.difference(DateTime.now()))?.inDays.toStringIfNull);
   }
 

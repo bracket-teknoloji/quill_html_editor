@@ -1,14 +1,14 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "../../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
-import "../../../../../../../core/constants/extensions/list_extensions.dart";
 
 import "../../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
 import "../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../model/param_model.dart";
@@ -49,8 +49,8 @@ class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
     kod4Controller = TextEditingController();
     kod5Controller = TextEditingController();
     if (widget.model != null) {
-      cariController.text = widget.model!.cariAdi ?? "";
-      viewModel.pdfModel.dicParams?.cariKodu = widget.model!.cariKodu ?? "";
+      cariController.text = widget.model?.cariAdi ?? "";
+      viewModel.pdfModel.dicParams?.cariKodu = widget.model?.cariKodu ?? "";
     }
     super.initState();
   }
@@ -95,7 +95,7 @@ class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
                   labelText: "Cari",
                   controller: cariController,
                   readOnly: true,
-                  suffix: const Icon(Icons.more_horiz_outlined),
+                  suffixMore: true,
                   onTap: () async {
                     var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                     if (result != null) {
@@ -123,14 +123,14 @@ class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
                           }
                         }
                       },
-                      suffix: const Icon(Icons.more_horiz_outlined),
+                      suffixMore: true,
                     )),
                     Expanded(
                         child: CustomTextField(
                             labelText: "Sırala",
                             controller: siralaController,
                             readOnly: true,
-                            suffix: const Icon(Icons.more_horiz_outlined),
+                            suffixMore: true,
                             onTap: () async {
                               String? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Sırala", children: viewModel.siralaBottomSheetList);
                               if (result != null) {
@@ -142,31 +142,16 @@ class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
                 ),
                 Row(children: [
                   Expanded(
-                      child: CustomTextField(
-                          labelText: "Grup Kodu",
-                          controller: grupKoduController,
-                          readOnly: true,
-                          suffix: const Icon(Icons.more_horiz_outlined),
-                          onTap: () async => await getGrupKodu(0, grupKoduController))),
-                  Expanded(
-                      child: CustomTextField(
-                          labelText: "Kod 1", controller: kod1Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(1, kod1Controller)))
+                      child: CustomTextField(labelText: "Grup Kodu", controller: grupKoduController, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(0, grupKoduController))),
+                  Expanded(child: CustomTextField(labelText: "Kod 1", controller: kod1Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(1, kod1Controller)))
                 ]),
                 Row(children: [
-                  Expanded(
-                      child: CustomTextField(
-                          labelText: "Kod 2", controller: kod2Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(2, kod2Controller))),
-                  Expanded(
-                      child: CustomTextField(
-                          labelText: "Kod 3", controller: kod3Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(3, kod3Controller)))
+                  Expanded(child: CustomTextField(labelText: "Kod 2", controller: kod2Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(2, kod2Controller))),
+                  Expanded(child: CustomTextField(labelText: "Kod 3", controller: kod3Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(3, kod3Controller)))
                 ]),
                 Row(children: [
-                  Expanded(
-                      child: CustomTextField(
-                          labelText: "Kod 4", controller: kod4Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(4, kod4Controller))),
-                  Expanded(
-                      child: CustomTextField(
-                          labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(5, kod5Controller)))
+                  Expanded(child: CustomTextField(labelText: "Kod 4", controller: kod4Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(4, kod4Controller))),
+                  Expanded(child: CustomTextField(labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, kod5Controller)))
                 ]),
                 Observer(builder: (_) {
                   return ElevatedButton(

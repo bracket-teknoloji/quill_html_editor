@@ -144,7 +144,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                   onTextSelectionChanged: (details) {
                     if ((Platform.isAndroid || Platform.isIOS)) {
                       if (details.selectedText == null && overlayEntry != null) {
-                        overlayEntry!.remove();
+                        overlayEntry?.remove();
                         overlayEntry = null;
                       } else if (details.selectedText != null && overlayEntry == null) {
                         showContextMenu(context, details);

@@ -347,21 +347,22 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                       return CustomWidgetWithLabel(
                         text: "Diğer",
                         child: CustomTextField(
-                            // valueText: viewModel.stokListesiModel?.subeKodu.toStringIfNull,
-                            readOnly: true,
-                            enabled: (enable && subeList.firstWhere((element) => element.subeKodu == veriTabani["Şube"]).merkezmi == "E") || widget.model == BaseEditEnum.ekle,
-                            labelText: "Şube",
-                            isMust: true,
-                            controller: subeController,
-                            onTap: () async {
-                              var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                  title: "Şube", children: subeList.map((e) => BottomSheetModel(title: "${e.subeAdi} ${e.subeKodu}", onTap: () => Get.back(result: e))).toList());
-                              if (result != null) {
-                                subeController?.text = "${result.subeAdi} ${result.subeKodu}";
-                                viewModel.stokListesiModel?.subeKodu = result.subeKodu;
-                              }
-                            },
-                            suffix: const Icon(Icons.more_horiz_outlined)),
+                          // valueText: viewModel.stokListesiModel?.subeKodu.toStringIfNull,
+                          readOnly: true,
+                          enabled: (enable && subeList.firstWhere((element) => element.subeKodu == veriTabani["Şube"]).merkezmi == "E") || widget.model == BaseEditEnum.ekle,
+                          labelText: "Şube",
+                          isMust: true,
+                          controller: subeController,
+                          onTap: () async {
+                            var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                title: "Şube", children: subeList.map((e) => BottomSheetModel(title: "${e.subeAdi} ${e.subeKodu}", onTap: () => Get.back(result: e))).toList());
+                            if (result != null) {
+                              subeController?.text = "${result.subeAdi} ${result.subeKodu}";
+                              viewModel.stokListesiModel?.subeKodu = result.subeKodu;
+                            }
+                          },
+                          suffixMore: true,
+                        ),
                       );
                     }),
                     CustomWidgetWithLabel(

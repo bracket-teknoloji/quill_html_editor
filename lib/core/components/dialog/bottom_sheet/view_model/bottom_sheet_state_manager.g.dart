@@ -34,6 +34,24 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
     });
   }
 
+  late final _$filteredGrupKoduListAtom = Atom(
+      name: '_BottomSheetStateManagerBase.filteredGrupKoduList',
+      context: context);
+
+  @override
+  ObservableList<BaseGrupKoduModel>? get filteredGrupKoduList {
+    _$filteredGrupKoduListAtom.reportRead();
+    return super.filteredGrupKoduList;
+  }
+
+  @override
+  set filteredGrupKoduList(ObservableList<BaseGrupKoduModel>? value) {
+    _$filteredGrupKoduListAtom.reportWrite(value, super.filteredGrupKoduList,
+        () {
+      super.filteredGrupKoduList = value;
+    });
+  }
+
   late final _$muhasebeKoduListAtom = Atom(
       name: '_BottomSheetStateManagerBase.muhasebeKoduList', context: context);
 
@@ -289,6 +307,18 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
   }
 
   @override
+  void filteredGrupKoduListFilter(int value) {
+    final _$actionInfo =
+        _$_BottomSheetStateManagerBaseActionController.startAction(
+            name: '_BottomSheetStateManagerBase.filteredGrupKoduListFilter');
+    try {
+      return super.filteredGrupKoduListFilter(value);
+    } finally {
+      _$_BottomSheetStateManagerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void changeMuhasebeKoduList(List<StokMuhasebeKoduModel> value) {
     final _$actionInfo =
         _$_BottomSheetStateManagerBaseActionController.startAction(
@@ -509,6 +539,7 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
   String toString() {
     return '''
 grupKoduList: ${grupKoduList},
+filteredGrupKoduList: ${filteredGrupKoduList},
 muhasebeKoduList: ${muhasebeKoduList},
 radioGroupValue: ${radioGroupValue},
 cariTipi: ${cariTipi},

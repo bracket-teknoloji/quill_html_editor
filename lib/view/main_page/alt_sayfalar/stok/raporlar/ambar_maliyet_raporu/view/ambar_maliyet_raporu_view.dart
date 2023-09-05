@@ -1,17 +1,17 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
-import "../../../../../../../core/constants/extensions/list_extensions.dart";
-import "../view_model/ambar_maliyet_raporu_view_model.dart";
 
 import "../../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../stok_liste/model/stok_listesi_model.dart";
+import "../view_model/ambar_maliyet_raporu_view_model.dart";
 
 class AmbarMaliyetRaporuView extends StatefulWidget {
   final StokListesiModel? model;
@@ -43,8 +43,8 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
     kod4Controller = TextEditingController();
     kod5Controller = TextEditingController();
     if (widget.model != null) {
-      stokController.text = widget.model!.stokKodu ?? "";
-      viewModel.pdfModel.dicParams?.stokKodu = widget.model!.stokKodu ?? "";
+      stokController.text = widget.model?.stokKodu ?? "";
+      viewModel.pdfModel.dicParams?.stokKodu = widget.model?.stokKodu ?? "";
     }
     super.initState();
   }
@@ -79,8 +79,7 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
               CustomWidgetWithLabel(
                 text: "Sıfır Tutar Hariç",
                 isVertical: true,
-                child: 
-                  Observer(builder: (_) => Switch.adaptive(value: viewModel.sifirHaricValue, onChanged: (value) => viewModel.setSifirHaric(value))),
+                child: Observer(builder: (_) => Switch.adaptive(value: viewModel.sifirHaricValue, onChanged: (value) => viewModel.setSifirHaric(value))),
               ),
               Row(
                 children: [
@@ -89,7 +88,7 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
                       labelText: "Stok",
                       controller: stokController,
                       readOnly: true,
-                      suffix: const Icon(Icons.more_horiz_outlined),
+                      suffixMore: true,
                       onTap: () async {
                         var result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
                         if (result != null) {
@@ -112,37 +111,21 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
                         viewModel.pdfModel.dicParams?.maliyetTipi = result ?? "";
                       }
                     },
-                    suffix: const Icon(Icons.more_horiz_outlined),
+                    suffixMore: true,
                   )),
                 ],
               ),
               Row(children: [
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Grup Kodu",
-                        controller: grupKoduController,
-                        readOnly: true,
-                        suffix: const Icon(Icons.more_horiz_outlined),
-                        onTap: () async => await getGrupKodu(0, grupKoduController))),
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 1", controller: kod1Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(1, kod1Controller)))
+                Expanded(child: CustomTextField(labelText: "Grup Kodu", controller: grupKoduController, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(0, grupKoduController))),
+                Expanded(child: CustomTextField(labelText: "Kod 1", controller: kod1Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(1, kod1Controller)))
               ]),
               Row(children: [
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 2", controller: kod2Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(2, kod2Controller))),
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 3", controller: kod3Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(3, kod3Controller)))
+                Expanded(child: CustomTextField(labelText: "Kod 2", controller: kod2Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(2, kod2Controller))),
+                Expanded(child: CustomTextField(labelText: "Kod 3", controller: kod3Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(3, kod3Controller)))
               ]),
               Row(children: [
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 4", controller: kod4Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(4, kod4Controller))),
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(5, kod5Controller)))
+                Expanded(child: CustomTextField(labelText: "Kod 4", controller: kod4Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(4, kod4Controller))),
+                Expanded(child: CustomTextField(labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, kod5Controller)))
               ]),
               Observer(builder: (_) {
                 return ElevatedButton(

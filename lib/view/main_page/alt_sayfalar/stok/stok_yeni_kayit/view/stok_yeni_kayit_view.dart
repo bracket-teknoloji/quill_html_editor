@@ -128,7 +128,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                 isMust: true,
                 readOnly: true,
                 controller: hareketTuruController,
-                suffix: const Icon(Icons.more_horiz_outlined),
+                suffixMore: true,
                 onTap: () async {
                   MapEntry? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                       title: "Hareket Türü", children: viewModel.hareketTurMap.entries.map((e) => BottomSheetModel(title: e.key, description: e.value, onTap: () => Get.back(result: e))).toList());
@@ -154,7 +154,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                 isMust: true,
                 readOnly: true,
                 controller: depoController,
-                suffix: const Icon(Icons.more_horiz_outlined),
+                suffixMore: true,
                 onTap: () async {
                   DepoList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                       title: "Depo",
@@ -205,7 +205,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                 isMust: true,
                 readOnly: true,
                 controller: plasiyerController,
-                suffix: const Icon(Icons.more_horiz_outlined),
+                suffixMore: true,
                 onTap: () async {
                   var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                       title: "Plasiyer",
@@ -235,7 +235,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                   },
                   readOnly: true,
                   controller: projeController,
-                  suffix: const Icon(Icons.more_horiz_outlined),
+                  suffixMore: true,
                   onTap: () async {
                     var result = viewModel.projeListesi ?? await getProjeData();
                     if (result != null) {

@@ -43,6 +43,8 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
         viewModel.setGridItemModel(getRaporList(IslemTipiEnum.cari)?.first.altMenuler);
       } else if (widget.islemTipi == IslemTipiEnum.stokRapor) {
         viewModel.setGridItemModel(getRaporList(IslemTipiEnum.stok)?.first.altMenuler);
+      }else if (widget.islemTipi == IslemTipiEnum.siparis){
+        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.siparis)?.first.altMenuler);
       }
     }
     super.initState();

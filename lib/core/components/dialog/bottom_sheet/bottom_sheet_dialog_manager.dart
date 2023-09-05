@@ -338,7 +338,7 @@ class BottomSheetDialogManager {
                     return CustomTextField(
                       labelText: "Plasiyer",
                       controller: plasiyerController,
-                      suffix: const Icon(Icons.more_horiz_outlined),
+                      suffixMore: true,
                       readOnly: true,
                       onTap: () async {
                         var data = CacheManager.getAnaVeri();
@@ -360,7 +360,7 @@ class BottomSheetDialogManager {
                       labelText: "Şehir",
                       readOnly: true,
                       controller: sehirController,
-                      suffix: const Icon(Icons.more_horiz_outlined),
+                      suffixMore: true,
                       onTap: () async {
                         var result = await showCheckBoxBottomSheetDialog(context,
                             title: "Şehir seç", children: List.generate(request["sehir"].length, (index) => BottomSheetModel(title: request["sehir"][index].sehirAdi)));
@@ -383,7 +383,7 @@ class BottomSheetDialogManager {
                     return CustomTextField(
                         labelText: "Tipi",
                         controller: TextEditingController(text: viewModel.cariTipi),
-                        suffix: const Icon(Icons.more_horiz_outlined),
+                        suffixMore: true,
                         readOnly: true,
                         onTap: () async {
                           var a = await showCariTipiBottomSheetDialog(context);
@@ -404,7 +404,7 @@ class BottomSheetDialogManager {
                         return CustomTextField(
                           labelText: title,
                           controller: controllers[index],
-                          suffix: const Icon(Icons.more_horiz_outlined),
+                          suffixMore: true,
                           readOnly: true,
                           onTap: () async {
                             var result =
@@ -521,18 +521,31 @@ class BottomSheetDialogManager {
       ]);
   Future<List<PlasiyerList?>?> showPlasiyerListesiBottomSheetDialog(BuildContext context) async {
     List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? <PlasiyerList>[];
-    List<PlasiyerList?> plasiyerListesi = [];
-    plasiyerListesi = await showCheckBoxBottomSheetDialog(context,
+    var result = await showCheckBoxBottomSheetDialog(context,
         title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? e.plasiyerKodu ?? "", value: e)).toList());
-    return plasiyerListesi;
+    return result.cast<PlasiyerList>();
   }
 
-  Future<List<BaseGrupKoduModel?>?> showGrupKoduBottomSheetDialog({required GrupKoduEnum modul, required int grupKodu, bool? kullanimda}) async {
+  Future<List<BaseGrupKoduModel?>?> showGrupKoduCheckBoxBottomSheetDialog(BuildContext context, {required GrupKoduEnum modul, required int grupKodu, bool? kullanimda}) async {
     if (viewModel.grupKoduList.ext.isNullOrEmpty) {
-      viewModel.changeGrupKoduList(await NetworkManager().getGrupKod(name: modul.name));
+      viewModel.changeGrupKoduList(await NetworkManager().getGrupKod(name: modul.name, grupNo: -1, kullanimda: kullanimda));
     }
+    viewModel.filteredGrupKoduListFilter(grupKodu);
     var result =
-        await showCheckBoxBottomSheetDialog(Get.context!, title: "Grup Kodu Seçiniz", children: viewModel.grupKoduList?.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e)).toList());
+        await showCheckBoxBottomSheetDialog(context, title: "Grup Kodu Seçiniz", children: viewModel.filteredGrupKoduList?.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e)).toList());
+    if (result != null) {
+      return result;
+    }
+    return null;
+  }
+
+  Future<BaseGrupKoduModel?> showGrupKoduBottomSheetDialog(BuildContext context, {required GrupKoduEnum modul, required int grupKodu, bool? kullanimda}) async {
+    if (viewModel.grupKoduList.ext.isNullOrEmpty) {
+      viewModel.changeGrupKoduList(await NetworkManager().getGrupKod(name: modul.name, grupNo: -1, kullanimda: kullanimda));
+    }
+    viewModel.filteredGrupKoduListFilter(grupKodu);
+    var result =
+        await showRadioBottomSheetDialog(context, title: "Grup Kodu Seçiniz", children: viewModel.filteredGrupKoduList?.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e)).toList());
     if (result != null) {
       return result;
     }

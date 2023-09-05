@@ -91,7 +91,7 @@ class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRaporuVie
                       labelText: "Stok",
                       controller: stokController,
                       readOnly: true,
-                      suffix: const Icon(Icons.more_horiz_outlined),
+                      suffixMore: true,
                       onTap: () async {
                         var result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
                         if (result != null) {
@@ -113,7 +113,7 @@ class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRaporuVie
                         viewModel.pdfModel.dicParams?.depoKodlari = result ?? "";
                       }
                     },
-                    suffix: const Icon(Icons.more_horiz_outlined),
+                    suffixMore: true,
                   )),
                 ],
               ),
@@ -137,31 +137,17 @@ class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRaporuVie
               ),
               Row(children: [
                 Expanded(
-                    child: CustomTextField(
-                        labelText: "Grup Kodu",
-                        controller: grupKodlariController,
-                        readOnly: true,
-                        suffix: const Icon(Icons.more_horiz_outlined),
-                        onTap: () async => await getGrupKodu(0, grupKodlariController))),
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 1", controller: kod1Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(1, kod1Controller)))
+                    child:
+                        CustomTextField(labelText: "Grup Kodu", controller: grupKodlariController, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(0, grupKodlariController))),
+                Expanded(child: CustomTextField(labelText: "Kod 1", controller: kod1Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(1, kod1Controller)))
               ]),
               Row(children: [
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 2", controller: kod2Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(2, kod2Controller))),
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 3", controller: kod3Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(3, kod3Controller)))
+                Expanded(child: CustomTextField(labelText: "Kod 2", controller: kod2Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(2, kod2Controller))),
+                Expanded(child: CustomTextField(labelText: "Kod 3", controller: kod3Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(3, kod3Controller)))
               ]),
               Row(children: [
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 4", controller: kod4Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(4, kod4Controller))),
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffix: const Icon(Icons.more_horiz_outlined), onTap: () async => await getGrupKodu(5, kod5Controller)))
+                Expanded(child: CustomTextField(labelText: "Kod 4", controller: kod4Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(4, kod4Controller))),
+                Expanded(child: CustomTextField(labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, kod5Controller)))
               ]),
               ElevatedButton(
                   onPressed: () {

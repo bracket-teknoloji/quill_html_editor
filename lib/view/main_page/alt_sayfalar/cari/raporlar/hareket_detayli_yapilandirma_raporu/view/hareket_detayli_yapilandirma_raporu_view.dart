@@ -68,7 +68,7 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
                 isMust: true,
                 controller: cariController,
                 readOnly: true,
-                suffix: const Icon(Icons.more_horiz_outlined),
+                suffixMore: true,
                 onTap: () async {
                   var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                   if (result != null) {

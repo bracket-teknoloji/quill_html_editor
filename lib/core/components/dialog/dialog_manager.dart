@@ -51,7 +51,6 @@ class DialogManager {
   }
 
   Future<void> showAlertDialog(String message) async {
-    String appData = "\nVersion: ${AppInfoModel.instance.version}\nTarih: ${DateTime.now().toDateTimeString()}\nE-mail: ${CacheManager.getHesapBilgileri?.uyeEmail ?? ""}";
     return _baseDialog(
       title: "Uyarı",
       desc: message,
@@ -70,7 +69,7 @@ class DialogManager {
           ),
           Padding(
             padding: UIHelper.midPaddingHorizontal,
-            child: Text(appData, style: TextStyle(color: Colors.grey.withOpacity(0.8), fontSize: 12), textAlign: TextAlign.center),
+            child: Text(getAppData, style: TextStyle(color: Colors.grey.withOpacity(0.8), fontSize: 12), textAlign: TextAlign.center),
           ).paddingOnly(top: UIHelper.highSize),
         ],
       ),
@@ -78,6 +77,8 @@ class DialogManager {
       onOk: () {},
     ).show();
   }
+
+  String get getAppData => "\nVersion: ${AppInfoModel.instance.version}\nTarih: ${DateTime.now().toDateTimeString()}\nE-mail: ${CacheManager.getHesapBilgileri?.uyeEmail ?? ""}";
 
   Future showEmptyFieldDialog(Iterable values, {void Function()? onOk}) =>
       _baseDialog(dialogType: DialogType.error, title: "Eksik var", btnOkText: "Tamam", desc: "${values.toList().join(", ")}\nLütfen zorunlu alanları doldurunuz. ", onOk: onOk ?? () {}).show();
@@ -97,7 +98,7 @@ class DialogManager {
             ),
             Padding(
               padding: UIHelper.midPaddingHorizontal,
-              child: Text("appData", style: TextStyle(color: Colors.grey.withOpacity(0.8)), textAlign: TextAlign.center),
+              child: Text(getAppData, style: TextStyle(color: Colors.grey.withOpacity(0.8)), textAlign: TextAlign.center),
             ).paddingOnly(top: UIHelper.highSize),
           ],
         ),

@@ -78,7 +78,7 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
                 controller: cariController,
                 isMust: true,
                 readOnly: true,
-                suffix: const Icon(Icons.more_horiz_outlined),
+                suffixMore: true,
                 onTap: () async {
                   var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                   if (result != null) {
@@ -93,7 +93,7 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
                 controller: dovizController,
                 isMust: true,
                 readOnly: true,
-                suffix: const Icon(Icons.more_horiz_outlined),
+                suffixMore: true,
                 onTap: () async {
                   List<DovizList>? dovizList = CacheManager.getAnaVeri()?.paramModel?.dovizList;
                   (dovizList?.any((element) => element.dovizKodu == -1) ?? false)

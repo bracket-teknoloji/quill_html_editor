@@ -143,19 +143,20 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                   children: [
                     Expanded(
                         child: CustomTextField(
-                            enabled: isEnabled,
-                            labelText: "Döviz Tipi",
-                            controller: alisDovizTipiController,
-                            readOnly: true,
-                            onTap: () async {
-                              MapEntry? result = await getDovizList();
-                              if (result != null) {
-                                stokDetayModel.stokList?.first.alisDovTip = result.key;
-                                stokDetayModel.stokList?.first.alisDovizAdi = result.value;
-                                alisDovizTipiController.text = result.value;
-                              }
-                            },
-                            suffix: const Icon(Icons.more_horiz_outlined))),
+                      enabled: isEnabled,
+                      labelText: "Döviz Tipi",
+                      controller: alisDovizTipiController,
+                      readOnly: true,
+                      onTap: () async {
+                        MapEntry? result = await getDovizList();
+                        if (result != null) {
+                          stokDetayModel.stokList?.first.alisDovTip = result.key;
+                          stokDetayModel.stokList?.first.alisDovizAdi = result.value;
+                          alisDovizTipiController.text = result.value;
+                        }
+                      },
+                      suffixMore: true,
+                    )),
                     Expanded(
                         child: CustomTextField(
                             enabled: isEnabled,
@@ -245,19 +246,20 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                   children: [
                     Expanded(
                         child: CustomTextField(
-                            enabled: isEnabled,
-                            labelText: "Döviz Tipi",
-                            controller: satisDovizTipiController,
-                            readOnly: true,
-                            onTap: () async {
-                              MapEntry? result = await getDovizList();
-                              if (result != null) {
-                                satisDovizTipiController.text = result.value;
-                                stokDetayModel.stokList?.first.satDovTip = result.key;
-                                stokListesiModel.satDovTip = result.key;
-                              }
-                            },
-                            suffix: const Icon(Icons.more_horiz_outlined))),
+                      enabled: isEnabled,
+                      labelText: "Döviz Tipi",
+                      controller: satisDovizTipiController,
+                      readOnly: true,
+                      onTap: () async {
+                        MapEntry? result = await getDovizList();
+                        if (result != null) {
+                          satisDovizTipiController.text = result.value;
+                          stokDetayModel.stokList?.first.satDovTip = result.key;
+                          stokListesiModel.satDovTip = result.key;
+                        }
+                      },
+                      suffixMore: true,
+                    )),
                     Expanded(
                         child: CustomTextField(
                             enabled: isEnabled,
@@ -279,8 +281,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
   }
 
   Future<void> getKdvOrani() async {
-    var result =
-        await networkManager.dioGet<BaseEmptyModel>(path: ApiUrls.getStokDigerBilgi, bodyModel: BaseEmptyModel(), queryParameters: {"BilgiTipi": "KDVGRUP"});
+    var result = await networkManager.dioGet<BaseEmptyModel>(path: ApiUrls.getStokDigerBilgi, bodyModel: BaseEmptyModel(), queryParameters: {"BilgiTipi": "KDVGRUP"});
     if (result.success == true) {
       viewModel.setKdvOraniList(jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]).cast<double>());
     } else {

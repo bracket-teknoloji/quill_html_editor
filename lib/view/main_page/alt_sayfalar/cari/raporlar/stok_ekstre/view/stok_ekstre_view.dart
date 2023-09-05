@@ -1,14 +1,14 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
-import "../view_model/stok_ekstre_view_model.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "../../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../cari_listesi/model/cari_listesi_model.dart";
+import "../view_model/stok_ekstre_view_model.dart";
 
 class StokEkstreView extends StatefulWidget {
   final CariListesiModel? model;
@@ -69,7 +69,7 @@ class _StokEkstreViewState extends BaseState<StokEkstreView> {
                 controller: cariController,
                 isMust: true,
                 readOnly: true,
-                suffix: const Icon(Icons.more_horiz_outlined),
+                suffixMore: true,
                 onTap: () async {
                   var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                   if (result != null) {

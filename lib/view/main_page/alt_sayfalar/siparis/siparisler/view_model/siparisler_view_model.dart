@@ -3,6 +3,7 @@ import "dart:convert";
 import "package:mobx/mobx.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
 
+import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "siparisler_view_model.g.dart";
@@ -12,7 +13,7 @@ class SiparislerViewModel = _SiparislerViewModelBase with _$SiparislerViewModel;
 abstract class _SiparislerViewModelBase with Store {
   _SiparislerViewModelBase({required this.pickerBelgeTuru});
   //*for view
-  Map<String, String> siralaMap = {
+  final Map<String, String> siralaMap = {
     "Belge No (A-Z)": "BELGE_NO_AZ",
     "Belge No (Z-A)": "BELGE_NO_ZA",
     "Tarih (A-Z)": "TARIH_AZ",
@@ -22,11 +23,39 @@ abstract class _SiparislerViewModelBase with Store {
     "Vade Günü (A-Z)": "VADE_GUNU_AZ",
     "Vade Günü (Z-A)": "VADE_GUNU_ZA",
   };
-  List<String> teslimatDurumu = const ["Tümü", "Beklemede", "Tamamlandı"];
+  Map<String, bool> ekstraAlanlarMap = {
+    "EK": false,
+    "MİK": false,
+    "VADE": false,
+  };
+  final List<String> teslimatDurumu = const ["Tümü", "Beklemede", "Tamamlandı"];
 
   @observable
   List<String?> teslimatDurumuValueList = const [null, "K", "B"];
 
+  @observable
+  ObservableList<BaseGrupKoduModel> grupKodList = <BaseGrupKoduModel>[].asObservable();
+
+  @action
+  void changeGrupKodList(List<BaseGrupKoduModel> value) => grupKodList = value.asObservable();
+
+  @computed
+  bool get grupKodList0 => grupKodList.where((element) => element.grupNo == 0).isNotEmpty;
+
+  @computed
+  bool get grupKodList1 => grupKodList.where((element) => element.grupNo == 1).isNotEmpty;
+
+  @computed
+  bool get grupKodList2 => grupKodList.where((element) => element.grupNo == 2).isNotEmpty;
+
+  @computed
+  bool get grupKodList3 => grupKodList.where((element) => element.grupNo == 3).isNotEmpty;
+
+  @computed
+  bool get grupKodList4 => grupKodList.where((element) => element.grupNo == 4).isNotEmpty;
+
+  @computed
+  bool get grupKodList5 => grupKodList.where((element) => element.grupNo == 5).isNotEmpty;
   @observable
   String? teslimatDurumuGroupValue;
 

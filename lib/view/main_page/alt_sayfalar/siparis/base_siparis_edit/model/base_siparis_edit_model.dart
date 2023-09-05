@@ -463,7 +463,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   }
 
   double get getAraToplam {
-    araToplam= iskontoChecker(kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0);
+    araToplam = iskontoChecker(kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0);
     return araToplam ?? 0;
   }
 
@@ -501,8 +501,13 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   bool get isEmpty => this == BaseSiparisEditModel();
   bool get isRemoteTempBelgeNull => remoteTempBelge == null;
 
-  double get getToplamIskonto =>
-      (malFazlasiTutar + satirIskonto) - (iskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0) - (araToplam ?? 0));
+  double get getToplamIskonto {
+    double result = (malFazlasiTutar + satirIskonto) - (iskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0) - getAraToplam);
+    if (result < 0) {
+      result = 0;
+    }
+    return result;
+  }
 
   double get getBrutTutar => kalemList?.map((e) => e.brutFiyat).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
 
@@ -525,7 +530,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 @CopyWith()
 @HiveType(typeId: 17)
 @JsonSerializable(createFactory: true)
-class KalemModel with NetworkManagerMixin{
+class KalemModel with NetworkManagerMixin {
   @HiveField(0)
   bool? iskonto1OranMi;
   @HiveField(1)
@@ -686,7 +691,6 @@ class KalemModel with NetworkManagerMixin{
   String? stokSatDovizAdi;
   @HiveField(78)
   String? muhasebeKodu;
-  
 
   KalemModel(
       {this.iskonto1OranMi,
@@ -853,21 +857,20 @@ class KalemModel with NetworkManagerMixin{
 
   factory KalemModel.fromStokList(StokList model) {
     return KalemModel(
-      brutFiyat: model.bulunanFiyat,
-      stokAlisKdv: model.alisKdv,
-      stokSatisKdv: model.satisKdv,
-      stokKodu: model.stokKodu,
-      stokAdi: model.stokAdi,
-      paketMi: model.paketMi,
-      koliBilesenMiktari: model.koliBilesenMiktari,
-      koliBilesenOrani: model.koliBilesenOrani,
-      koliBilesenFiyatorandan: model.koliBilesenFiyatorandan,
-      koliBilesenKolikdv: model.koliBilesenKolikdv
-    );
+        brutFiyat: model.bulunanFiyat,
+        stokAlisKdv: model.alisKdv,
+        stokSatisKdv: model.satisKdv,
+        stokKodu: model.stokKodu,
+        stokAdi: model.stokAdi,
+        paketMi: model.paketMi,
+        koliBilesenMiktari: model.koliBilesenMiktari,
+        koliBilesenOrani: model.koliBilesenOrani,
+        koliBilesenFiyatorandan: model.koliBilesenFiyatorandan,
+        koliBilesenKolikdv: model.koliBilesenKolikdv);
   }
   @override
   Map<String, dynamic> toJson() => _$KalemModelToJson(this);
-  
+
   @override
   fromJson(Map<String, dynamic> json) => _$KalemModelFromJson(json);
 }

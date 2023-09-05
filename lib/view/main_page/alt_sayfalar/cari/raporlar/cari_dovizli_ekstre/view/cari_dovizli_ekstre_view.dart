@@ -5,9 +5,9 @@ import "package:get/get.dart";
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "../../../../../../../core/components/textfield/custom_text_field.dart";
-import "../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../model/param_model.dart";
@@ -37,8 +37,8 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
     if (widget.model != null) {
-      cariController!.text = widget.model!.cariAdi ?? "";
-      viewModel.changeCariKodu(widget.model!.cariKodu ?? "");
+      cariController?.text = widget.model?.cariAdi ?? "";
+      viewModel.changeCariKodu(widget.model?.cariKodu ?? "");
     }
     super.initState();
   }
@@ -76,7 +76,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                 controller: cariController,
                 isMust: true,
                 readOnly: true,
-                suffix: const Icon(Icons.more_horiz_outlined),
+                suffixMore: true,
                 onTap: () async {
                   var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                   if (result != null) {
@@ -93,7 +93,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                       valueWidget: Observer(builder: (_) => Text(viewModel.dovizValue ?? "")),
                       controller: dovizController,
                       readOnly: true,
-                      suffix: const Icon(Icons.more_horiz_outlined),
+                      suffixMore: true,
                       onTap: () async {
                         List<DovizList>? dovizList = CacheManager.getAnaVeri()?.paramModel?.dovizList;
                         dovizList = dovizList?.where((element) => element.dovizTipi != 0).toList();
@@ -108,19 +108,16 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                     ),
                   ),
                   CustomWidgetWithLabel(
-                    text: "TL Hareketi Dökülsün",
-                    isVertical: true,
-                    child: 
-                      Observer(builder: (_) {
+                      text: "TL Hareketi Dökülsün",
+                      isVertical: true,
+                      child: Observer(builder: (_) {
                         return Switch.adaptive(
                             value: viewModel.tlHareketleriDokulsun,
                             onChanged: (value) {
                               viewModel.changeTlHareketleriDokulsun();
                               viewModel.pdfModel.dicParams?.tlHarDokulsun = value ? "E" : null;
                             });
-                      })
-                    
-                  )
+                      }))
                 ],
               ),
               Observer(builder: (_) {

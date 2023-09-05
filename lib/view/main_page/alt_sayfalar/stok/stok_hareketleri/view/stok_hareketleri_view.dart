@@ -121,20 +121,21 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                 )),
                             Observer(builder: (_) {
                               return CustomTextField(
-                                  labelText: "Hareket Türü",
-                                  readOnly: true,
-                                  controllerText: viewModel.arrHareketTuru?.join(", "),
-                                  onTap: () async {
-                                    bottomSheetDialogManager.clearSelectedData();
-                                    viewModel.clearArrHareketTuru();
-                                    List? result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context,
-                                        title: "Hareket Türü", children: viewModel.hareketTuruMap.entries.map((e) => BottomSheetModel(title: e.key)).toList());
-                                    if (result != null) {
-                                      viewModel.changeArrHareketTuru(result.map((e) => e as String).toList().cast<String>());
-                                      // setState(() {});
-                                    }
-                                  },
-                                  suffix: const Icon(Icons.more_horiz_outlined));
+                                labelText: "Hareket Türü",
+                                readOnly: true,
+                                controllerText: viewModel.arrHareketTuru?.join(", "),
+                                onTap: () async {
+                                  bottomSheetDialogManager.clearSelectedData();
+                                  viewModel.clearArrHareketTuru();
+                                  List? result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context,
+                                      title: "Hareket Türü", children: viewModel.hareketTuruMap.entries.map((e) => BottomSheetModel(title: e.key)).toList());
+                                  if (result != null) {
+                                    viewModel.changeArrHareketTuru(result.map((e) => e as String).toList().cast<String>());
+                                    // setState(() {});
+                                  }
+                                },
+                                suffixMore: true,
+                              );
                             }),
                             Observer(builder: (_) {
                               return CustomTextField(

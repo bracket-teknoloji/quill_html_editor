@@ -286,9 +286,8 @@ class NetworkManager {
         addSirketBilgileri: false,
         path: ApiUrls.getUyeBilgileri);
     if (result.success == true) {
-
       CacheManager.setIsLicenseVerified(email ?? result.data.first.email, true);
-      if (getFromCache==true) {
+      if (getFromCache == true) {
         CacheManager.setAccounts(result.data.first..parola = (password ?? CacheManager.getVerifiedUser.account?.parola));
       }
     } else {
@@ -307,7 +306,8 @@ class NetworkManager {
       return GenericResponseModel(success: false);
     }
   }
-    Future<List<StokMuhasebeKoduModel>> getMuhasebeKodlari() async {
+
+  Future<List<StokMuhasebeKoduModel>> getMuhasebeKodlari() async {
     GenericResponseModel result = await dioGet<StokMuhasebeKoduModel>(path: ApiUrls.getMuhasebeKodlari, bodyModel: StokMuhasebeKoduModel());
     return result.data.map((e) => e as StokMuhasebeKoduModel).toList().cast<StokMuhasebeKoduModel>();
   }

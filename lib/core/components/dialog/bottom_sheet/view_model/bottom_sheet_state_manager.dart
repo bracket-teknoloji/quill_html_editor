@@ -11,10 +11,16 @@ abstract class _BottomSheetStateManagerBase with Store {
   @observable
   ObservableList<BaseGrupKoduModel>? grupKoduList = <BaseGrupKoduModel>[].asObservable();
   @observable
+  ObservableList<BaseGrupKoduModel>? filteredGrupKoduList = <BaseGrupKoduModel>[].asObservable();
+  @observable
   ObservableList<StokMuhasebeKoduModel>? muhasebeKoduList = <StokMuhasebeKoduModel>[].asObservable();
   @action
   void changeGrupKoduList(List<BaseGrupKoduModel> value) {
     grupKoduList = value.asObservable();
+  }
+  @action
+  void filteredGrupKoduListFilter(int value){
+    filteredGrupKoduList = grupKoduList?.where((element) => element.grupNo == value).toList().asObservable();
   }
   @action
   void changeMuhasebeKoduList(List<StokMuhasebeKoduModel> value) {
