@@ -295,6 +295,10 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   String? uuid;
   @HiveField(117)
   int? faturalasanSayi;
+  @HiveField(118)
+  double? miktar;
+  @HiveField(119)
+  double? kalanMiktar;
   BaseSiparisEditModel(
       {this.duzeltmetarihi,
       this.kalemAdedi,
@@ -410,7 +414,9 @@ class BaseSiparisEditModel with NetworkManagerMixin {
       this.aciklama,
       this.dovizTutari,
       this.teslimCari,
-      this.fYedek4});
+      this.fYedek4,
+      this.miktar,
+      this.kalanMiktar});
 
   BaseSiparisEditModel._init();
 
@@ -434,16 +440,19 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   double iskontoCheckerEkMaliyetsiz(double result) {
     if (genIsk1O != null && genIsk1O != 0.0) {
       result = result - result * ((genIsk1O ?? 0) / 100);
+      genelIskonto1 = result * (genIsk1O ?? 0) / 100;
     } else {
       genelIskonto1 = 0;
     }
     if (genIsk2O != null && genIsk2O != 0.0) {
       result = result - result * ((genIsk2O ?? 0) / 100);
+      genelIskonto2 = result * (genIsk2O ?? 0) / 100;
     } else {
       genelIskonto2 = 0;
     }
     if (genIsk3O != null && genIsk3O != 0.0) {
       result = result - result * ((genIsk3O ?? 0) / 100);
+      genelIskonto3 = result * (genIsk3O ?? 0) / 100;
     } else {
       genelIskonto3 = 0;
     }
@@ -496,18 +505,15 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     return result + (ekMaliyet1Tutari ?? 0) + (ekMaliyet2Tutari ?? 0) + (ekMaliyet3Tutari ?? 0);
   }
 
-  bool get yurticiMi => tipi != 6;
   int get getKalemSayisi => kalemList?.length ?? (kalemAdedi ?? 0);
+
+  bool get yurticiMi => tipi != 6;
   bool get isEmpty => this == BaseSiparisEditModel();
   bool get isRemoteTempBelgeNull => remoteTempBelge == null;
 
-  double get getToplamIskonto {
-    double result = (malFazlasiTutar + satirIskonto) - (iskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0) - getAraToplam);
-    if (result < 0) {
-      result = 0;
-    }
-    return result;
-  }
+  double get getToplamIskonto => toplamBrutTutar - getAraToplam;
+
+  double get genelIskontoToplami => ((genIsk1T ?? 0) + (genIsk2T ?? 0) + (genIsk3T ?? 0));
 
   double get getBrutTutar => kalemList?.map((e) => e.brutFiyat).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
 

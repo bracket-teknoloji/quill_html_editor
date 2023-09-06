@@ -80,11 +80,11 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
             children: [
               Text.rich(TextSpan(children: [
                 const TextSpan(text: "Mal. Faz. İsk.\n", style: TextStyle(color: Colors.grey)),
-                TextSpan(text: "${model.malFazlasiTutar.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                TextSpan(text: "${viewModel.model.malFazlasiTutar.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
               ])),
               Text.rich(TextSpan(children: [
                 const TextSpan(text: "Satır İsk.\n", style: TextStyle(color: Colors.grey)),
-                TextSpan(text: "${model.satirIskonto.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                TextSpan(text: "${viewModel.model.satirIskonto.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
               ])),
               Observer(builder: (_) {
                 return Text.rich(TextSpan(children: [
@@ -309,7 +309,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
     if (model.vadeGunu == null && model.vadeTarihi == null) {
       viewModel.setVadeTarihi(DateTime.now());
     }
-    if ((model.vadeTarihi?.difference(DateTime.now()).inDays?? 0) < 0){
+    if ((model.vadeTarihi?.difference(DateTime.now()).inDays ?? 0) < 0) {
       viewModel.setVadeTarihi(DateTime.now());
     }
     vadeGunuController = TextEditingController(text: model.vadeGunu.toStringIfNull ?? (model.vadeTarihi?.difference(DateTime.now()))?.inDays.toStringIfNull);

@@ -645,7 +645,6 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
         (StaticVariables.instance.isMusteriSiparisleri ? (widget.stokListesiModel?.satisKdv ?? "") : (widget.stokListesiModel?.alisKdv ?? "")).toString();
     depoController.text = (parametreModel.depoList?.where((element) => element.depoKodu == (viewModel.model?.depoKodu ?? parametreModel.satisHizmetDepoKodu)).firstOrNull?.depoTanimi ?? "");
     viewModel.kalemModel.depoTanimi ??= depoController.text;
-
     projeController.text = teslimTarihiController.text = model.teslimTarihi.toDateString;
     kosulController.text = model.kosulKodu ?? BaseSiparisEditModel.instance.kosulKodu ?? "";
     projeController.text = model.projeKodu ?? BaseSiparisEditModel.instance.projeKodu ?? "";
@@ -657,15 +656,16 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     viewModel.kalemModel.projeKodu = model.projeKodu;
     viewModel.kalemModel.kosulKodu = model.kosulKodu;
     viewModel.kalemModel.teslimTarihi = model.teslimTarihi;
+    viewModel.setOlcuBirimi(MapEntry<String, int>(widget.stokListesiModel?.olcuBirimi ?? widget.kalemModel?.olcuBirimAdi ?? "", 0));
+    if (widget.kalemModel == null){
     viewModel.setKosul(model.kosulKodu ?? "");
     viewModel.setDepoKodu(model.cikisDepoKodu ?? viewModel.model?.depoKodu ?? 0);
-    viewModel.setFiyat(fiyatController.text.toDoubleWithFormattedString);
     viewModel.setProjeKodu(model.projeKodu ?? "");
+    viewModel.setFiyat(fiyatController.text.toDoubleWithFormattedString);
     viewModel.setBrutFiyat(fiyatController.text.toDoubleWithFormattedString);
     viewModel.setMiktar(int.tryParse(miktarController.text) ?? 0);
     viewModel.setMiktar2(int.tryParse(miktar2Controller.text) ?? 0);
     viewModel.setMFMiktar(int.tryParse(malFazMiktarController.text) ?? 0);
-    viewModel.setOlcuBirimi(MapEntry<String, int>(widget.stokListesiModel?.olcuBirimi ?? widget.kalemModel?.olcuBirimAdi ?? "", 0));
     viewModel.setKdvOrani(double.tryParse(kdvOraniController.text) ?? 0);
     viewModel.setIskonto1(double.tryParse(isk1Controller?.text ?? "") ?? 0);
     viewModel.setIskonto2(double.tryParse(isk2YuzdeController?.text ?? "") ?? 0);
@@ -673,6 +673,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     viewModel.setIskonto4(double.tryParse(isk4YuzdeController?.text ?? "") ?? 0);
     viewModel.setIskonto5(double.tryParse(isk5YuzdeController?.text ?? "") ?? 0);
     viewModel.setIskonto6(double.tryParse(isk6YuzdeController?.text ?? "") ?? 0);
+    }
     await getDovizData();
   }
 

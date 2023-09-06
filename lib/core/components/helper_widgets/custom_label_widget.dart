@@ -14,7 +14,7 @@ class CustomWidgetWithLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      direction: isVertical ?? false ? Axis.vertical : Axis.horizontal,
+      direction: (isVertical ?? false) ? Axis.vertical : Axis.horizontal,
       runSpacing: UIHelper.lowSize,
       children: [
         Text(text ?? "",

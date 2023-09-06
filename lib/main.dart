@@ -16,6 +16,7 @@ import "package:picker/view/main_page/alt_sayfalar/siparis/raporlar/siparis_must
 import "package:picker/view/main_page/alt_sayfalar/siparis/raporlar/siparis_stok_ihtiyac_raporu/view/stok_ihtiyac_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/raporlar/siparis_teslim_raporu/view/siparis_teslim_raporu_view.dart";
 
+import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
 import "core/base/view/kalem_ekle/model/kalem_ekle_model.dart";
 import "core/base/view/kalem_ekle/view/kalem_ekle_view.dart";
 import "core/base/view/stok_rehberi/view/stok_rehberi_view.dart";
@@ -103,6 +104,7 @@ class PickerApp extends StatelessWidget {
         GetPage(name: "/addCompany", page: () => const AccountsView()),
         GetPage(name: "/addAccount", page: () => const AddAccountView()),
         GetPage(name: "/qr", page: () => const QRScannerView()),
+        GetPage(name: "/dovizKurlari", page: () => const DovizKurlariView()),
         GetPage(
             name: "/kalemEkle", page: () => KalemEkleView(stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null, kalemModel: Get.arguments is KalemModel ? Get.arguments : null)),
         GetPage(

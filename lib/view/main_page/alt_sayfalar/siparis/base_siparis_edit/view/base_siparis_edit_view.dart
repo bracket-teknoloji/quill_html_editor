@@ -3,9 +3,11 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
@@ -137,8 +139,59 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                                 Get.back();
                                 dialogManager.showCariGridViewDialog(BaseSiparisEditModel.instance.cariModel);
                               }).yetkiKontrol(BaseSiparisEditModel.instance.cariModel != null),
-                          BottomSheetModel(title: "Toplu İskonto Girişi", iconWidget: Icons.add_outlined),
-                          BottomSheetModel(title: "Döviz Kurları", iconWidget: Icons.attach_money_outlined),
+                          BottomSheetModel(
+                              title: "Toplu İskonto Girişi",
+                              iconWidget: Icons.add_outlined,
+                              onTap: () async {
+                                var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                    title: "Toplu İskonto Girişi",
+                                    body: Column(
+                                      children: [
+                                        ...List.generate(BaseSiparisEditModel.instance.kalemList?.length ?? 0, (index) {
+                                          KalemModel? model = BaseSiparisEditModel.instance.kalemList?[index];
+                                          TextEditingController controller = TextEditingController(text: model?.iskonto1.toIntIfDouble.toStringIfNull);
+                                          return ListTile(
+                                              title: Row(
+                                            children: [
+                                              Flexible(child: Text(model?.stokAdi?.toString() ?? "", overflow: TextOverflow.fade)),
+                                              Expanded(
+                                                  child: CustomTextField(
+                                                labelText: "İsk. 1%",
+                                                controller: controller,
+                                              ))
+                                            ],
+                                          ));
+                                        }),
+                                        Row(
+                                          children: [
+                                            Expanded(
+                                              child: ElevatedButton(
+                                                  onPressed: () {
+                                                    Get.back();
+                                                  },
+                                                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
+                                                  child: const Text("İptal")),
+                                            ),
+                                            SizedBox(width: width * 0.02),
+                                            Expanded(
+                                              child: ElevatedButton(
+                                                  onPressed: () {
+                                                    Get.back();
+                                                  },
+                                                  child: const Text("Kaydet")),
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ));
+                              }),
+                          BottomSheetModel(
+                              title: "Döviz Kurları",
+                              iconWidget: Icons.attach_money_outlined,
+                              onTap: () {
+                                Get.back();
+                                Get.toNamed("/dovizKurlari");
+                              }),
                           BottomSheetModel(title: "Döviz Kurlarını Güncelle", iconWidget: Icons.attach_money_outlined).yetkiKontrol(BaseSiparisEditModel.instance.dovizAdi != null),
                           BottomSheetModel(
                               title: "Cari'ye Yapılan Son Satışlar",
@@ -247,7 +300,13 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
     }
     var uuid = const Uuid();
     var result = await networkManager.dioPost<BaseSiparisEditModel>(
-        path: ApiUrls.saveFatura, bodyModel: BaseSiparisEditModel(), data: (BaseSiparisEditModel.instance..kalemAdedi= BaseSiparisEditModel.instance.kalemList?.length..islemId = uuid.v4()).toJson(), showLoading: true);
+        path: ApiUrls.saveFatura,
+        bodyModel: BaseSiparisEditModel(),
+        data: (BaseSiparisEditModel.instance
+              ..kalemAdedi = BaseSiparisEditModel.instance.kalemList?.length
+              ..islemId = uuid.v4())
+            .toJson(),
+        showLoading: true);
     if (result.success == true) {
       dialogManager.showSnackBar("Kayıt Başarılı");
       return true;

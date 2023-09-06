@@ -111,7 +111,7 @@ class BottomSheetDialogManager {
                       : SafeArea(
                           child: Container(constraints: BoxConstraints(maxHeight: Get.height * 0.9), child: SingleChildScrollView(child: body)),
                         ),
-                  context.general.isKeyBoardOpen ? const ResponsiveBox() : Container(),
+                  context.general.isKeyBoardOpen && body == null ? const ResponsiveBox() : Container(),
                 ],
               ),
             ),

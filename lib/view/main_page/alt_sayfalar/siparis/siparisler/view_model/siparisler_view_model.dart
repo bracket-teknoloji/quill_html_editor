@@ -4,6 +4,7 @@ import "package:mobx/mobx.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
+import "../../../../../../core/init/cache/cache_manager.dart";
 import "../../base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "siparisler_view_model.g.dart";
@@ -23,13 +24,43 @@ abstract class _SiparislerViewModelBase with Store {
     "Vade Günü (A-Z)": "VADE_GUNU_AZ",
     "Vade Günü (Z-A)": "VADE_GUNU_ZA",
   };
-  Map<String, bool> ekstraAlanlarMap = {
-    "EK": false,
-    "MİK": false,
-    "VADE": false,
-  };
+  
   final List<String> teslimatDurumu = const ["Tümü", "Beklemede", "Tamamlandı"];
 
+  @observable
+  ObservableMap<String, bool> ekstraAlanlarMap = {
+    "EK": CacheManager.getProfilParametre.siparisEkAlan,
+    "MİK": CacheManager.getProfilParametre.siparisMiktar,
+    "VADE": CacheManager.getProfilParametre.siparisVade,
+  }.asObservable();
+  @action
+  void changeEkstraAlanlarMap(String key, bool value) {
+    ekstraAlanlarMap.remove(key);
+    switch (key) {
+      case "EK":
+    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisEkAlan: value));
+        ekstraAlanlarMap["EK"] = value;
+        break;
+      case "MİK":
+    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisMiktar: value));
+        ekstraAlanlarMap["MİK"] = value;
+        break;
+      case "VADE":
+    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisVade: value));
+        ekstraAlanlarMap["VADE"] = value;
+        break;
+    }
+    ekstraAlanlarMap[key] = value;
+  }
+  @action
+  void resetEkstraAlanlarMap() {
+    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisEkAlan: false, siparisMiktar: false, siparisVade: false));
+    ekstraAlanlarMap = {
+      "EK": false,
+      "MİK": false,
+      "VADE": false,
+    }.asObservable();
+  }
   @observable
   List<String?> teslimatDurumuValueList = const [null, "K", "B"];
 
@@ -138,7 +169,7 @@ abstract class _SiparislerViewModelBase with Store {
         iadeMi: false,
         siparisKarsilanmaDurumu: teslimatDurumuGroupValue,
         faturalasmaGoster: true,
-        miktarGetir: "H",
+        miktarGetir: (ekstraAlanlarMap["MİK"]??false) ? "E" : "H",
       );
 
   final String? pickerBelgeTuru;

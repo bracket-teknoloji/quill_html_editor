@@ -1,4 +1,3 @@
-import "package:get/get.dart";
 import "package:mobx/mobx.dart";
 
 import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
@@ -9,10 +8,10 @@ class StokIhtiyacRaporuViewModel = _StokIhtiyacRaporuViewModelBase with _$StokIh
 
 abstract class _StokIhtiyacRaporuViewModelBase with Store {
   final Map<String, String> siralaMap = {
-    "Stok Kodu" : "KODU",
-    "Stok Adı" : "ADI",
-    "İhtiyaç (Artan)" : "IHTIYAC",
-    "İhtiyaç (Azalan)" : "IHTIYAC_DESC",
+    "Stok Kodu": "KODU",
+    "Stok Adı": "ADI",
+    "İhtiyaç (Artan)": "IHTIYAC",
+    "İhtiyaç (Azalan)": "IHTIYAC_DESC",
   };
   @observable
   bool sadeceIhtiyaclarMi = false;
@@ -26,10 +25,11 @@ abstract class _StokIhtiyacRaporuViewModelBase with Store {
       pdfModel.dicParams = pdfModel.dicParams?.copyWith(sifirHaric: null);
     }
   }
+
   //* Model
   //*
   @observable
-  PdfModel  pdfModel = PdfModel(raporOzelKod: "Rapor_StokIhtiyac", standart: true, dicParams: DicParams(sirala: "IHTIYAC_DESC"));
+  PdfModel pdfModel = PdfModel(raporOzelKod: "Rapor_StokIhtiyac", standart: true, dicParams: DicParams(sirala: "IHTIYAC_DESC"));
 
   @action
   void setSirala(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(sirala: value);

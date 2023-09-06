@@ -8,6 +8,7 @@ import "package:picker/core/components/card/stok_fiyat_gecmisi_card.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_gecmisi/model/fiyat_gecmisi_response_model.dart";
+import "package:picker/view/main_page/model/param_model.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -187,7 +188,16 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                             controller: dizaynController,
                             readOnly: true,
                             suffixMore: true,
-                            onTap: () {},
+                            onTap: () async {
+                              List<NetFectDizaynList>? dizaynList = parametreModel.netFectDizaynList;
+                              var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                  title: "Dizayn",
+                                  children: List.generate(
+                                      dizaynList?.length ?? 0, (index) => BottomSheetModel(title: dizaynList?[index].dizaynAdi ?? "", onTap: () => Get.back(result: dizaynList?[index]))));
+                              if (result != null) {
+                                dizaynController.text = result.dizaynAdi ?? "";
+                              }
+                            },
                           )),
                           Expanded(
                               child: CustomTextField(

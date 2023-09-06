@@ -12,19 +12,22 @@ class ApiUrls {
   static const String print = "Print/Print";
   static const String getDizaynParametreleri = "Print/GetDizaynParametreleri";
   static const String getSiradakiBelgeNo = "General/GetSiradakiBelgeNo";
+  static const String getGrupKodlari = "General/GetGrupKodlari";
+  static const String getUlkeler = "General/GetUlkeler";
+  static const String getSiradakiKod = "General/GetSiradakiKod";
+  static const String getKosullar = "General/GetKosullar";
   static const String getDovizKurlari = "General/GetDovizKurlari";
+  static const String deleteDovizKuru = "General/DeleteDovizKuru";
+  static const String saveDovizKuru = "General/SaveDovizKuru";
+  static const String dovizKuruGuncelle = "General/DovizKuruGuncelle";
   //*Cariler
   static const String getCariler = "Cari/GetCariler";
   static const String getCariKayitliSehirler = "Cari/GetCariKayitliSehirler";
-  static const String getGrupKodlari = "General/GetGrupKodlari";
   static const String getAktiviteler = "Cari/GetAktiviteler";
   static const String getCariHareketleri = "Cari/GetCariHareketleri";
   static const String saveCariHareket = "Cari/SaveCariHareket";
-  static const String getUlkeler = "General/GetUlkeler";
   static const String saveCari = "Cari/SaveCari";
-  static const String getKosullar = "General/GetKosullar";
   static const String getCariDetay = "Cari/GetCariDetay";
-  static const String getSiradakiKod = "General/GetSiradakiKod";
   static const String deleteCari = "Cari/DeleteCari";
   static const String kodDegistir = "Cari/KodDegistir";
   //*Stoklar

@@ -6,19 +6,22 @@ part of 'doviz_kurlari_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-DovizKurlariModel _$DovizKurlariModelFromJson(Map<String, dynamic> json) =>
-    DovizKurlariModel()
-      ..tarih =
-          json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
-      ..sira = json['SIRA'] as int?
-      ..dovizTipi = json['DOVIZ_TIPI'] as int?
-      ..dovAlis = (json['DOV_ALIS'] as num?)?.toDouble()
-      ..dovSatis = (json['DOV_SATIS'] as num?)?.toDouble()
-      ..dovizAdi = json['DOVIZ_ADI'] as String?
-      ..effAlis = (json['EFF_ALIS'] as num?)?.toDouble()
-      ..effSatis = (json['EFF_SATIS'] as num?)?.toDouble();
+_$_DovizKurlariModel _$$_DovizKurlariModelFromJson(Map<String, dynamic> json) =>
+    _$_DovizKurlariModel(
+      tarih: json['TARIH'] == null
+          ? null
+          : DateTime.parse(json['TARIH'] as String),
+      sira: json['SIRA'] as int?,
+      dovizTipi: json['DOVIZ_TIPI'] as int?,
+      dovAlis: (json['DOV_ALIS'] as num?)?.toDouble(),
+      dovSatis: (json['DOV_SATIS'] as num?)?.toDouble(),
+      dovizAdi: json['DOVIZ_ADI'] as String?,
+      effAlis: (json['EFF_ALIS'] as num?)?.toDouble(),
+      effSatis: (json['EFF_SATIS'] as num?)?.toDouble(),
+    );
 
-Map<String, dynamic> _$DovizKurlariModelToJson(DovizKurlariModel instance) {
+Map<String, dynamic> _$$_DovizKurlariModelToJson(
+    _$_DovizKurlariModel instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -35,5 +38,41 @@ Map<String, dynamic> _$DovizKurlariModelToJson(DovizKurlariModel instance) {
   writeNotNull('DOVIZ_ADI', instance.dovizAdi);
   writeNotNull('EFF_ALIS', instance.effAlis);
   writeNotNull('EFF_SATIS', instance.effSatis);
+  return val;
+}
+
+_$_DovizKurlariRequestModel _$$_DovizKurlariRequestModelFromJson(
+        Map<String, dynamic> json) =>
+    _$_DovizKurlariRequestModel(
+      tarih: json['Tarih'] == null
+          ? null
+          : DateTime.parse(json['Tarih'] as String),
+      sira: json['Sira'] as int?,
+      dovizTipi: json['DovizTipi'] as int?,
+      alis: (json['Alis'] as num?)?.toDouble(),
+      satis: (json['Satis'] as num?)?.toDouble(),
+      dovizAdi: json['DovizAdi'] as String?,
+      eFAlis: (json['EFAlis'] as num?)?.toDouble(),
+      eFSatis: (json['EFSatis'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$$_DovizKurlariRequestModelToJson(
+    _$_DovizKurlariRequestModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('Tarih', instance.tarih?.toIso8601String());
+  writeNotNull('Sira', instance.sira);
+  writeNotNull('DovizTipi', instance.dovizTipi);
+  writeNotNull('Alis', instance.alis);
+  writeNotNull('Satis', instance.satis);
+  writeNotNull('DovizAdi', instance.dovizAdi);
+  writeNotNull('EFAlis', instance.eFAlis);
+  writeNotNull('EFSatis', instance.eFSatis);
   return val;
 }

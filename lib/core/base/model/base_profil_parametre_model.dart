@@ -9,6 +9,10 @@ part "base_profil_parametre_model.g.dart";
 abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, NetworkManagerMixin {
   factory BaseProfilParametreModel({
   @Default(true)  bool siparisYeniKaydaHazirla,
+  @Default(false)  bool siparisEkAlan,
+  @Default(false)  bool siparisMiktar,
+  @Default(false)  bool siparisVade,
+  @Default(false)  bool kurlariSilTekrarGuncelle,
   }) = _BaseProfilParametreModel;
   factory BaseProfilParametreModel.fromJson(Map<String, dynamic> json) => _$BaseProfilParametreModelFromJson(json);
   //Empty constructor

@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:kartal/kartal.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
@@ -24,13 +23,16 @@ import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 class SiparislerCard extends StatefulWidget {
   final bool? isGetData;
+  final bool? showEkAciklama;
+  final bool? showMiktar;
+  final bool? showVade;
   final BaseSiparisEditModel model;
   final Function? onDeleted;
 
   ///Eğer Bu widget Cache'den çağırılıyorsa index verilmelidir.
   final int? index;
   final SiparisTipiEnum siparisTipiEnum;
-  const SiparislerCard({super.key, required this.model, this.onDeleted, required this.siparisTipiEnum, this.index, this.isGetData});
+  const SiparislerCard({super.key, required this.model, this.onDeleted, required this.siparisTipiEnum, this.index, this.isGetData, this.showEkAciklama, this.showMiktar, this.showVade});
 
   @override
   State<SiparislerCard> createState() => _SiparislerCardState();
@@ -152,6 +154,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                   Text("Tipi: ${widget.model.yurticiMi ? "Yurtiçi" : "Yurtdışı"}"),
                   widget.model.kosulKodu != null ? Text("Koşul: ${widget.model.kosulKodu ?? ""}") : null,
                   Text("Plasiyer: ${widget.model.plasiyerAciklama ?? ""}"),
+                  Text("Plasiyer: ${widget.model.vadeGunu ?? "0"}").yetkiVarMi(widget.showVade == true),
                   Text("KDV: ${widget.model.kdv.commaSeparatedWithFixedDigits} TL"),
                   widget.model.dovizAdi != null ? Text("Döviz Toplamı: ${widget.model.dovizTutari ?? ""} ${widget.model.dovizAdi ?? ""}").yetkiVarMi(widget.model.dovizTutari != null) : null,
                 ].nullCheckWithGeneric,
@@ -167,7 +170,11 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
               ),
             ].map((e) => Expanded(child: e)).toList(),
           ),
-          const Divider().paddingAll(UIHelper.midSize).yetkiVarMi(aciklamaList().ext.isNotNullOrEmpty),
+          const Divider().paddingAll(UIHelper.midSize).yetkiVarMi(widget.showEkAciklama == true || widget.showMiktar == true || widget.showVade == true),
+          // Text("Miktar: ${widget.model.miktar?.commaSeparatedWithFixedDigits ?? ""}").yetkiVarMi(widget.showMiktar == true),
+          Text("Miktar: ${widget.model.miktar ?? ""}").yetkiVarMi(widget.showMiktar == true),
+          Text("Teslim Miktar: ${((widget.model.miktar ?? 0) - (widget.model.kalanMiktar ?? 0))}").yetkiVarMi(widget.showMiktar == true),
+          Text("Kalan Miktar: ${widget.model.kalanMiktar ?? ""}").yetkiVarMi(widget.showMiktar == true),
           ...aciklamaList(),
         ],
       ),
@@ -181,7 +188,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
         style: TextStyle(
           color: theme.colorScheme.onSurface.withOpacity(0.6),
         ),
-      ).yetkiVarMi(widget.model.toJson()["ACIK$index"] != null);
+      ).yetkiVarMi(widget.model.toJson()["ACIK$index"] != null && widget.showEkAciklama == true);
 
   ParamModel? get paramModel => CacheManager.getAnaVeri()?.paramModel;
 }

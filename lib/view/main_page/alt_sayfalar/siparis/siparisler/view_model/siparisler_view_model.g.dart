@@ -108,6 +108,22 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
               name: '_SiparislerViewModelBase.getKod5'))
           .value;
 
+  late final _$ekstraAlanlarMapAtom =
+      Atom(name: '_SiparislerViewModelBase.ekstraAlanlarMap', context: context);
+
+  @override
+  ObservableMap<String, bool> get ekstraAlanlarMap {
+    _$ekstraAlanlarMapAtom.reportRead();
+    return super.ekstraAlanlarMap;
+  }
+
+  @override
+  set ekstraAlanlarMap(ObservableMap<String, bool> value) {
+    _$ekstraAlanlarMapAtom.reportWrite(value, super.ekstraAlanlarMap, () {
+      super.ekstraAlanlarMap = value;
+    });
+  }
+
   late final _$teslimatDurumuValueListAtom = Atom(
       name: '_SiparislerViewModelBase.teslimatDurumuValueList',
       context: context);
@@ -520,6 +536,28 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
       ActionController(name: '_SiparislerViewModelBase', context: context);
 
   @override
+  void changeEkstraAlanlarMap(String key, bool value) {
+    final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
+        name: '_SiparislerViewModelBase.changeEkstraAlanlarMap');
+    try {
+      return super.changeEkstraAlanlarMap(key, value);
+    } finally {
+      _$_SiparislerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void resetEkstraAlanlarMap() {
+    final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
+        name: '_SiparislerViewModelBase.resetEkstraAlanlarMap');
+    try {
+      return super.resetEkstraAlanlarMap();
+    } finally {
+      _$_SiparislerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void changeGrupKodList(List<BaseGrupKoduModel> value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
         name: '_SiparislerViewModelBase.changeGrupKodList');
@@ -830,6 +868,7 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   @override
   String toString() {
     return '''
+ekstraAlanlarMap: ${ekstraAlanlarMap},
 teslimatDurumuValueList: ${teslimatDurumuValueList},
 grupKodList: ${grupKodList},
 teslimatDurumuGroupValue: ${teslimatDurumuGroupValue},

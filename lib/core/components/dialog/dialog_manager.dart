@@ -132,6 +132,7 @@ class DialogManager {
     ).show();
     return result;
   }
+  Future<void> showDialog({required Widget body, void Function()? onYes}) async=>await _baseDialog(body: body, onOk: onYes,onCancel: (){}, btnCancelText: "Hayır", btnOkText: onYes != null?"Evet": null, dialogType: DialogType.question).show();
 
   void showGridViewDialog(Widget body) => _baseDialog(body: body, onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 

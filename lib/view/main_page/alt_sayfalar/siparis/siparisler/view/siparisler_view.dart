@@ -418,29 +418,51 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
               await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: [
                 BottomSheetModel(
                     title: "Görünecek Ekstra Alanlar",
+                    iconWidget: Icons.add_circle_outline_outlined,
                     onTap: () async {
                       Get.back();
-                      var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context, title: "Görünecek Ekstra Alanlar", children: [
-                        BottomSheetModel(title: "Ek Açıklamalar", value: "EK"),
-                        BottomSheetModel(title: "Miktar", value: "MİK"),
-                        BottomSheetModel(title: "Vade", value: "VADE"),
-                      ]);
-                      if (result != null) {
-                        viewModel.ekstraAlanlarMap = {};
-                        for (var item in result) {
-                          switch (item) {
-                            case "EK":
-                              viewModel.ekstraAlanlarMap["EK"] = true;
-                              break;
-                            case "MİK":
-                              viewModel.ekstraAlanlarMap["MİK"] = true;
-                              break;
-                            case "VADE":
-                              viewModel.ekstraAlanlarMap["VADE"] = true;
-                              break;
-                          }
-                        }
-                      }
+                      await bottomSheetDialogManager.showBottomSheetDialog(context,
+                          title: "Görünecek Ekstra Alanlar",
+                          body: Column(
+                            children: [
+                              Observer(
+                                  builder: (_) => SwitchListTile.adaptive(
+                                      title: const Text("Ek Açıklamalar"), value: viewModel.ekstraAlanlarMap["EK"] ?? false, onChanged: (value) => viewModel.changeEkstraAlanlarMap("EK", value))),
+                              Observer(
+                                  builder: (_) => SwitchListTile.adaptive(
+                                      title: const Text("Miktar"), value: viewModel.ekstraAlanlarMap["MİK"] ?? false, onChanged: (value) {
+                                        viewModel.changeEkstraAlanlarMap("MİK", value);
+                                      })),
+                              Observer(
+                                  builder: (_) => SwitchListTile.adaptive(
+                                      title: const Text("Vade"), value: viewModel.ekstraAlanlarMap["VADE"] ?? false, onChanged: (value) => viewModel.changeEkstraAlanlarMap("VADE", value))),
+                            ],
+                          ));
+                      // var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context, title: "Görünecek Ekstra Alanlar", children: [
+                      //   BottomSheetModel(title: "Ek Açıklamalar", value: "EK"),
+                      //   BottomSheetModel(title: "Miktar", value: "MİK"),
+                      //   BottomSheetModel(title: "Vade", value: "VADE"),
+                      // ]);
+                      // if (result != null) {
+                      //   viewModel.resetEkstraAlanlarMap();
+                      //   for (var item in result) {
+                      //     switch (item) {
+                      //       case "EK":
+                      //       viewModel.changeEkstraAlanlarMap("EK", true);
+                      //         break;
+                      //       case "MİK":
+                      //       viewModel.changeEkstraAlanlarMap("MİK", true);
+                      //         break;
+                      //       case "VADE":
+                      //       viewModel.changeEkstraAlanlarMap("VADE", true);
+                      //         break;
+                      //     }
+                      //   }
+                      // }
+                      viewModel.resetSayfa();
+                      viewModel.setSiparislerList(null);
+                      viewModel.setDahaVarMi(true);
+                      getData();
                     }),
               ]);
             },
@@ -500,15 +522,18 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                             child: const Center(child: CircularProgressIndicator.adaptive()),
                           );
                         }
-                        return SiparislerCard(
-                          isGetData: widget.widgetModel.isGetData,
-                          model: viewModel.musteriSiparisleriList?[index] ?? BaseSiparisEditModel(),
-                          index: (viewModel.musteriSiparisleriList?[index]?.isNew ?? false) ? index : null,
-                          siparisTipiEnum: widget.widgetModel.siparisTipiEnum,
-                          onDeleted: () {
-                            viewModel.removeSiparislerList(index);
-                          },
-                        );
+                        return Observer(builder: (_) {
+                          return SiparislerCard(
+                            isGetData: widget.widgetModel.isGetData,
+                            showEkAciklama: viewModel.ekstraAlanlarMap["EK"] ?? false,
+                            showMiktar: viewModel.ekstraAlanlarMap["MİK"] ?? false,
+                            showVade: viewModel.ekstraAlanlarMap["VADE"] ?? false,
+                            model: viewModel.musteriSiparisleriList?[index] ?? BaseSiparisEditModel(),
+                            index: (viewModel.musteriSiparisleriList?[index]?.isNew ?? false) ? index : null,
+                            siparisTipiEnum: widget.widgetModel.siparisTipiEnum,
+                            onDeleted: () => viewModel.removeSiparislerList(index),
+                          );
+                        });
                       },
                     );
                   })));

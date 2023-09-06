@@ -51,8 +51,6 @@ class NetworkManager {
               print(e);
               if (e.type == DioExceptionType.connectionError) {
                 return handler.next(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error}"));
-              } else if (e.type == DioExceptionType.connectionTimeout) {
-                return handler.next(DioException(requestOptions: RequestOptions(), message: "Bağlantı zaman aşımına uğradı."));
               } else if (e.type == DioExceptionType.unknown) {
                 return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz."));
               } else if (e.type == DioExceptionType.receiveTimeout || e.type == DioExceptionType.sendTimeout || e.type == DioExceptionType.connectionTimeout) {
