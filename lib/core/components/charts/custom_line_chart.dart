@@ -43,9 +43,9 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                               fontWeight: FontWeight.w900,
                             ),
                             children: [
-                              const TextSpan(
-                                text: " TL",
-                                style: TextStyle(
+                              TextSpan(
+                                text: " $mainCurrency",
+                                style: const TextStyle(
                                   fontWeight: FontWeight.normal,
                                 ),
                               ),
@@ -177,6 +177,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
       fontSize: 8,
     );
     return RotationTransition(
-        turns: const AlwaysStoppedAnimation(340 / 360), child: Text(" ${(widget.lineChartValue![value.toInt()]).commaSeparatedWithFixedDigits} TL", style: style, textAlign: TextAlign.left));
+        turns: const AlwaysStoppedAnimation(340 / 360),
+        child: Text(" ${(widget.lineChartValue![value.toInt()]).commaSeparatedWithFixedDigits} $mainCurrency", style: style, textAlign: TextAlign.left));
   }
 }

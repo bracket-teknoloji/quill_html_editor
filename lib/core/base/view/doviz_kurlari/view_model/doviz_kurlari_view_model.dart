@@ -1,5 +1,5 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/init/cache/cache_manager.dart";
+import "../../../../init/cache/cache_manager.dart";
 
 import "../../../model/doviz_kurlari_model.dart";
 

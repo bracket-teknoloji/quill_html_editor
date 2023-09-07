@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:html_editor_enhanced/html_editor.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../model/base_siparis_edit_model.dart";
 
 import "../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../siparisler/model/siparis_edit_request_model.dart";

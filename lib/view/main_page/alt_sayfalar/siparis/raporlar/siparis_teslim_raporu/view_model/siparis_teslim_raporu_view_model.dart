@@ -1,5 +1,5 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
+import "../../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 
 import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 

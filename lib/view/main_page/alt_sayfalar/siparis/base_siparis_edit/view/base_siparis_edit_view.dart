@@ -129,7 +129,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
               actions: [
                 IconButton(
                   onPressed: () async {
-                    await bottomSheetDialogManager.showBottomSheetDialog(context,
+                    var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                         title: "Seçenekler",
                         children: [
                           BottomSheetModel(
@@ -139,52 +139,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                                 Get.back();
                                 dialogManager.showCariGridViewDialog(BaseSiparisEditModel.instance.cariModel);
                               }),
-                          BottomSheetModel(
-                              title: "Toplu İskonto Girişi",
-                              iconWidget: Icons.add_outlined,
-                              onTap: () async {
-                                var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                    title: "Toplu İskonto Girişi",
-                                    body: Column(
-                                      children: [
-                                        ...List.generate(BaseSiparisEditModel.instance.kalemList?.length ?? 0, (index) {
-                                          KalemModel? model = BaseSiparisEditModel.instance.kalemList?[index];
-                                          TextEditingController controller = TextEditingController(text: model?.iskonto1.toIntIfDouble.toStringIfNull);
-                                          return ListTile(
-                                              title: Row(
-                                            children: [
-                                              Flexible(child: Text(model?.stokAdi?.toString() ?? "", overflow: TextOverflow.fade)),
-                                              Expanded(
-                                                  child: CustomTextField(
-                                                labelText: "İsk. 1%",
-                                                controller: controller,
-                                              ))
-                                            ],
-                                          ));
-                                        }),
-                                        Row(
-                                          children: [
-                                            Expanded(
-                                              child: ElevatedButton(
-                                                  onPressed: () {
-                                                    Get.back();
-                                                  },
-                                                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
-                                                  child: const Text("İptal")),
-                                            ),
-                                            SizedBox(width: width * 0.02),
-                                            Expanded(
-                                              child: ElevatedButton(
-                                                  onPressed: () {
-                                                    Get.back();
-                                                  },
-                                                  child: const Text("Kaydet")),
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    ));
-                              }),
+                          topluIskontoBottomSheetModel(context),
                           BottomSheetModel(
                               title: "Döviz Kurları",
                               iconWidget: Icons.attach_money_outlined,
@@ -200,7 +155,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                                 Get.back();
                                 Get.toNamed("/mainPage/cariStokSatisOzeti", arguments: BaseSiparisEditModel.instance.cariModel);
                               }).yetkiKontrol(yetkiController.cariRapStokSatisOzeti),
-                          BottomSheetModel(title: "Barkod Tanımla", iconWidget: Icons.qr_code_outlined),
+                          // BottomSheetModel(title: "Barkod Tanımla", iconWidget: Icons.qr_code_outlined),
                           BottomSheetModel(
                               title: "Ekranı Yeni Kayda Hazırla",
                               description: "Belge kaydından sonra yeni belge giriş ekranını otomatik hazırla.",
@@ -210,6 +165,9 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                                 viewModel.changeYeniKaydaHazirlaMi();
                               }),
                         ].nullCheck.cast<BottomSheetModel>());
+                    if (result != null) {
+                      viewModel.changeUpdateKalemler();
+                    }
                   },
                   icon: const Icon(Icons.more_vert_outlined),
                 ),
@@ -258,7 +216,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                           }
                         }),
                         yetkiController.siparisDigerSekmesiGoster ? BaseSiparislerDigerView(model: model) : null,
-                        BaseSiparisKalemlerView(model: model),
+                        Observer(builder: (_) => BaseSiparisKalemlerView(model: model)),
                         BaseSiparisToplamlarView(model: model),
                       ].whereType<Widget>().toList(),
                     )),
@@ -275,6 +233,98 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           });
           return result;
         });
+  }
+
+  BottomSheetModel topluIskontoBottomSheetModel(BuildContext context) {
+    return BottomSheetModel(
+        title: "Toplu İskonto Girişi",
+        iconWidget: Icons.add_outlined,
+        onTap: viewModel.baseSiparisEditModel.kalemList.ext.isNullOrEmpty
+            ? () {
+                Get.back();
+                return dialogManager.showAlertDialog("Önce kalem girmeniz gerekiyor.");
+              }
+            : () async {
+                Get.back();
+                List<KalemModel>? kalemList = BaseSiparisEditModel.instance.kalemList;
+                List<double?>? iskontoList = kalemList?.map((e) => e.iskonto1).toList();
+                await bottomSheetDialogManager.showBottomSheetDialog(context,
+                    title: "Toplu İskonto Girişi",
+                    body: SafeArea(
+                      child: Column(
+                        children: [
+                          Container(
+                            constraints: BoxConstraints(maxHeight: height * 0.8),
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: kalemList?.length ?? 0,
+                              itemBuilder: (BuildContext context, int index) {
+                                KalemModel? model = kalemList?[index];
+                                TextEditingController controller = TextEditingController(text: (model?.iskonto1.toIntIfDouble ?? 0).toStringIfNull);
+                                return topluIskontoListTile(model, iskontoList, index, controller);
+                              },
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: ElevatedButton(
+                                    onPressed: () {
+                                      Get.back();
+                                    },
+                                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
+                                    child: const Text("İptal")),
+                              ),
+                              SizedBox(width: width * 0.02),
+                              Expanded(
+                                child: ElevatedButton(
+                                    onPressed: () {
+                                      kalemList?.forEach((element) {
+                                        element.iskonto1 = iskontoList?[kalemList.indexOf(element)];
+                                      });
+                                      viewModel.changeUpdateKalemler();
+                                      setState(() {});
+                                      Get.back();
+                                    },
+                                    child: const Text("Kaydet")),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ));
+              });
+  }
+
+  ListTile topluIskontoListTile(KalemModel? model, List<double?>? iskonto1, int index, TextEditingController controller) {
+    return ListTile(
+        title: Row(
+      children: [
+        Expanded(child: Text(model?.stokAdi?.toString() ?? "", overflow: TextOverflow.fade)),
+        Expanded(
+            child: CustomTextField(
+          labelText: "İsk. 1%",
+          controller: controller,
+          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+          suffix: Wrap(
+            children: [
+              IconButton(
+                  onPressed: () {
+                    iskonto1?[index] = (double.tryParse(controller.text) ?? 0) - 1;
+                    controller.text = (iskonto1?[index].toIntIfDouble ?? 0).toStringIfNull ?? "";
+                  },
+                  icon: const Icon(Icons.remove_outlined)),
+              IconButton(
+                  onPressed: () {
+                    iskonto1?[index] = (double.tryParse(controller.text) ?? 0) + 1;
+                    controller.text = (iskonto1?[index].toIntIfDouble ?? 0).toStringIfNull ?? "";
+                  },
+                  icon: const Icon(Icons.add_outlined))
+            ],
+          ),
+        ))
+      ],
+    ));
   }
 
   NeverScrollableScrollPhysics? tabBarViewPhysics() {
@@ -300,12 +350,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
     }
     var uuid = const Uuid();
     var result = await networkManager.dioPost<BaseSiparisEditModel>(
-        path: ApiUrls.saveFatura,
-        bodyModel: BaseSiparisEditModel(),
-        data: (BaseSiparisEditModel.instance
-              ..islemId = uuid.v4())
-            .toJson(),
-        showLoading: true);
+        path: ApiUrls.saveFatura, bodyModel: BaseSiparisEditModel(), data: (BaseSiparisEditModel.instance..islemId = uuid.v4()).toJson(), showLoading: true);
     if (result.success == true) {
       dialogManager.showSnackBar("Kayıt Başarılı");
       return true;

@@ -233,37 +233,38 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                 children: [
                                   Expanded(child: Observer(builder: (_) {
                                     return CustomTextField(
-                                        labelText: "Grup Kodu",
-                                        readOnly: true,
-                                        controller: grupKoduController,
-                                        onTap: () async {
-                                          await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
-                                            context,
-                                            title: "Grup Kodu",
-                                            children: viewModel.grupKodlari
-                                                .map((e) => BottomSheetModel(
-                                                      title: e.grupAdi ?? "",
-                                                      value: e.grupNo.toStringIfNull,
-                                                      onTap: () {
-                                                        if (viewModel.bottomSheetModel.arrGrupKodu?.contains(e) ?? false) {
-                                                          viewModel.bottomSheetModel.arrGrupKodu?.remove(e);
-                                                        } else {
-                                                          viewModel.bottomSheetModel.arrGrupKodu?.add(e);
-                                                        }
-                                                        debugPrint(viewModel.grupKodu);
-                                                      },
-                                                    ))
-                                                .toList(),
-                                          );
-                                          grupKoduController.text = viewModel.grupKodu;
-                                        },
-                                        suffix: const Icon(Icons.more_horiz));
+                                      labelText: "Grup Kodu",
+                                      readOnly: true,
+                                      controller: grupKoduController,
+                                      onTap: () async {
+                                        await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                          context,
+                                          title: "Grup Kodu",
+                                          children: viewModel.grupKodlari
+                                              .map((e) => BottomSheetModel(
+                                                    title: e.grupAdi ?? "",
+                                                    value: e.grupNo.toStringIfNull,
+                                                    onTap: () {
+                                                      if (viewModel.bottomSheetModel.arrGrupKodu?.contains(e) ?? false) {
+                                                        viewModel.bottomSheetModel.arrGrupKodu?.remove(e);
+                                                      } else {
+                                                        viewModel.bottomSheetModel.arrGrupKodu?.add(e);
+                                                      }
+                                                      debugPrint(viewModel.grupKodu);
+                                                    },
+                                                  ))
+                                              .toList(),
+                                        );
+                                        grupKoduController.text = viewModel.grupKodu;
+                                      },
+                                      suffixMore: true,
+                                    );
                                   })),
                                   Expanded(
                                       child: CustomTextField(
                                     labelText: "Kod 1",
                                     readOnly: true,
-                                    suffix: const Icon(Icons.more_horiz),
+                                    suffixMore: true,
                                     controller: kod1Controller,
                                     onTap: () async {
                                       List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 1).toList();
@@ -294,7 +295,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       child: CustomTextField(
                                     labelText: "Kod 2",
                                     readOnly: true,
-                                    suffix: const Icon(Icons.more_horiz),
+                                    suffixMore: true,
                                     controller: kod2Controller,
                                     onTap: () async {
                                       List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 2).toList();
@@ -321,7 +322,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       child: CustomTextField(
                                     labelText: "Kod 3",
                                     readOnly: true,
-                                    suffix: const Icon(Icons.more_horiz),
+                                    suffixMore: true,
                                     controller: kod3Controller,
                                     onTap: () async {
                                       List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 3).toList();
@@ -352,7 +353,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       child: CustomTextField(
                                     labelText: "Kod 4",
                                     readOnly: true,
-                                    suffix: const Icon(Icons.more_horiz),
+                                    suffixMore: true,
                                     controller: kod4Controller,
                                     onTap: () async {
                                       List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 4).toList();
@@ -379,7 +380,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       child: CustomTextField(
                                     labelText: "Kod 5",
                                     readOnly: true,
-                                    suffix: const Icon(Icons.more_horiz),
+                                    suffixMore: true,
                                     controller: kod5Controller,
                                     onTap: () async {
                                       List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 5).toList();
@@ -532,7 +533,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                           foregroundImage: viewModel.imageMap[stok.stokKodu],
                           child: Text((stok.stokAdi ?? "  ").substring(0, 1)),
                         ),
-                        trailing: Text("${stok.bakiye ?? 0} ${stok.olcuBirimi ?? ""}", style: context.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(stok.bakiye ?? 0))),
+                        trailing:
+                            Text("${(stok.bakiye ?? 0).commaSeparated} ${stok.olcuBirimi ?? ""}", style: context.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(stok.bakiye ?? 0))),
                         title: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,

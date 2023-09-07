@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
-import "package:picker/core/init/cache/cache_manager.dart";
+import "../../../core/init/cache/cache_manager.dart";
 
 import "../../../core/base/state/base_state.dart";
 import "../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";

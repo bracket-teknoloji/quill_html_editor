@@ -1,7 +1,7 @@
-import 'package:mobx/mobx.dart';
+import "package:mobx/mobx.dart";
 
 import "../../../model/doviz_kurlari_model.dart";
-part 'doviz_kuru_girisi_view_model.g.dart';
+part "doviz_kuru_girisi_view_model.g.dart";
 
 class DovizKuruGirisiViewModel = _DovizKuruGirisiViewModelBase with _$DovizKuruGirisiViewModel;
 

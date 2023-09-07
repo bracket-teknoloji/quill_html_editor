@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
+import "../../constants/extensions/number_extensions.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 import "../../base/state/base_state.dart";
@@ -46,11 +46,11 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                 ),
                 Column(
                   children: [
-                    Text("${widget.cariHareketleriModel.alacak?.commaSeparatedWithFixedDigits ?? widget.cariHareketleriModel.borc?.commaSeparatedWithFixedDigits} TL",
+                    Text("${widget.cariHareketleriModel.alacak?.commaSeparatedWithFixedDigits ?? widget.cariHareketleriModel.borc?.commaSeparatedWithFixedDigits} $mainCurrency",
                         style: theme.textTheme.bodySmall?.copyWith(fontSize: 12)),
                     Visibility(
                         visible: widget.cariHareketleriModel.dovizliMi,
-                        child: Text("${widget.cariHareketleriModel.dovizBakiye.commaSeparatedWithFixedDigits} ${widget.cariHareketleriModel.dovizAdi ?? "TL"}",
+                        child: Text("${widget.cariHareketleriModel.dovizBakiye.commaSeparatedWithFixedDigits} ${widget.cariHareketleriModel.dovizAdi ?? mainCurrency}",
                             style: theme.textTheme.bodySmall?.copyWith(fontSize: 12)))
                   ],
                 ),
@@ -80,7 +80,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
               Container(
                   alignment: Alignment.topRight,
                   width: width * 0.4,
-                  child: Text("Bakiye : ${dovizCheck.commaSeparatedWithFixedDigits} ${widget.dovizTipi ?? "TL"}",
+                  child: Text("Bakiye : ${dovizCheck.commaSeparatedWithFixedDigits} ${widget.dovizTipi ?? mainCurrency}",
                       style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(dovizCheck)))),
             ].map((e) => e.paddingAll(UIHelper.lowSize)).toList(),
           )

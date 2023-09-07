@@ -107,7 +107,7 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
                       title: "Döviz Tipi", children: dovizList!.map((e) => BottomSheetModel(title: e.isim ?? "", onTap: () => Get.back(result: e))).toList());
                   if (result != null) {
                     dovizController!.text = result.isim ?? "";
-                    viewModel.changeDovizTipi(result.isim != "TL" ? (result.dovizTipi ?? (result.dovizKodu ?? 0)) : 0);
+                    viewModel.changeDovizTipi(result.isim != mainCurrency ? (result.dovizTipi ?? (result.dovizKodu ?? 0)) : 0);
                     viewModel.changeDovizValue((result.dovizKodu ?? -1).toString());
                   }
                 },

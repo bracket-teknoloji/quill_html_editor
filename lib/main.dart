@@ -10,16 +10,17 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/raporlar/siparis_karlilik_raporu/view/siparis_karlilik_raporu_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/raporlar/siparis_musteri_siparisi_durum_raporu/view/siparis_durum_raporu_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/raporlar/siparis_stok_ihtiyac_raporu/view/stok_ihtiyac_raporu_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/raporlar/siparis_teslim_raporu/view/siparis_teslim_raporu_view.dart";
+import "view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "view/main_page/alt_sayfalar/siparis/raporlar/siparis_karlilik_raporu/view/siparis_karlilik_raporu_view.dart";
+import "view/main_page/alt_sayfalar/siparis/raporlar/siparis_musteri_siparisi_durum_raporu/view/siparis_durum_raporu_view.dart";
+import "view/main_page/alt_sayfalar/siparis/raporlar/siparis_stok_ihtiyac_raporu/view/stok_ihtiyac_raporu_view.dart";
+import "view/main_page/alt_sayfalar/siparis/raporlar/siparis_teslim_raporu/view/siparis_teslim_raporu_view.dart";
 
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
 import "core/base/view/kalem_ekle/model/kalem_ekle_model.dart";
 import "core/base/view/kalem_ekle/view/kalem_ekle_view.dart";
 import "core/base/view/stok_rehberi/view/stok_rehberi_view.dart";
+import "core/constants/enum/siparis_tipi_enum.dart";
 import "core/init/app_info/app_info.dart";
 import "core/init/cache/cache_manager.dart";
 import "core/init/dependency_injection/network_dependency_injection.dart";
@@ -131,8 +132,8 @@ class PickerApp extends StatelessWidget {
             //* Sipariş
             GetPage(name: "/siparisMusteriSiparisi", page: () => SiparislerView(widgetModel: Get.arguments)),
             GetPage(name: "/siparisEdit", page: () => BaseSiparisEditingView(model: Get.arguments)),
-            GetPage(name: "/siparisMusteriSiparisiDurumRaporu", page: () => SiparisDurumRaporuView(siparisTipiEnum: Get.arguments)),
-            GetPage(name: "/siparisSaticiSiparisiDurumRaporu", page: () => SiparisDurumRaporuView(siparisTipiEnum: Get.arguments)),
+            GetPage(name: "/siparisMusteriSiparisiDurumRaporu", page: () => const SiparisDurumRaporuView(siparisTipiEnum: SiparisTipiEnum.musteri)),
+            GetPage(name: "/siparisSaticiSiparisiDurumRaporu", page: () => const SiparisDurumRaporuView(siparisTipiEnum: SiparisTipiEnum.satici)),
             GetPage(name: "/siparisStokIhtiyacRaporu", page: () => StokIhtiyacRaporuView(model: Get.arguments as BaseSiparisEditModel?)),
             GetPage(name: "/siparisTeslimRaporu", page: () => SiparisTeslimRaporuView(siparisTipiEnum: Get.arguments)),
             GetPage(name: "/siparisSiparisKarlilikRaporu", page: () => const SiparisKarlilikRaporuView()),

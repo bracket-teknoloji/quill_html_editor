@@ -64,17 +64,17 @@ abstract class _KalemEkleViewModelBase with Store {
   @action
   void setKdvOrani(double? value) => kalemModel = kalemModel.copyWith(kdvOrani: value);
   @action
-  void setIskonto1(double? value) => kalemModel = kalemModel.copyWith(iskonto1: value);
+  void setIskonto1(double? value) => kalemModel = kalemModel.copyWith(iskonto1: value!= 0 ? value : null);
   @action
-  void setIskonto2(double? value) => kalemModel = kalemModel.copyWith(iskonto2: value);
+  void setIskonto2(double? value) => kalemModel = kalemModel.copyWith(iskonto2: value!= 0 ? value : null);
   @action
-  void setIskonto3(double? value) => kalemModel = kalemModel.copyWith(iskonto3: value);
+  void setIskonto3(double? value) => kalemModel = kalemModel.copyWith(iskonto3: value!= 0 ? value : null);
   @action
-  void setIskonto4(double? value) => kalemModel = kalemModel.copyWith(iskonto4: value);
+  void setIskonto4(double? value) => kalemModel = kalemModel.copyWith(iskonto4: value!= 0 ? value : null);
   @action
-  void setIskonto5(double? value) => kalemModel = kalemModel.copyWith(iskonto5: value);
+  void setIskonto5(double? value) => kalemModel = kalemModel.copyWith(iskonto5: value!= 0 ? value : null);
   @action
-  void setIskonto6(double? value) => kalemModel = kalemModel.copyWith(iskonto6: value);
+  void setIskonto6(double? value) => kalemModel = kalemModel.copyWith(iskonto6: value!= 0 ? value : null);
   @action
   void setKalemList(List<KalemModel>? list) => kalemModel = kalemModel.copyWith(kalemList: list);
   @action

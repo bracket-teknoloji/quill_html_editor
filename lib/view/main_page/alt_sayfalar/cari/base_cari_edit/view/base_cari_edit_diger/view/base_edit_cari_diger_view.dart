@@ -588,7 +588,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
 
   Widget iconSwitcher(TextEditingController? value) {
     if (value?.text == "") {
-      return const Icon(Icons.more_horiz_outlined);
+      return IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined));
     } else {
       return IconButton(
           onPressed: () {

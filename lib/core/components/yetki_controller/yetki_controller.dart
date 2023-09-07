@@ -1,6 +1,6 @@
 import "package:kartal/kartal.dart";
-import "package:picker/core/components/yetki_controller/yetki_model.dart";
-import "package:picker/core/constants/static_variables/static_variables.dart";
+import "yetki_model.dart";
+import "../../constants/static_variables/static_variables.dart";
 
 import "../../../view/main_page/model/main_page_model.dart";
 import "../../../view/main_page/model/param_model.dart";

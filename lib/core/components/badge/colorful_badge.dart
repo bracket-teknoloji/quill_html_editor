@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "../../constants/extensions/widget_extensions.dart";
 
 import "../../constants/enum/badge_color_enum.dart";
 

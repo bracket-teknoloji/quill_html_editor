@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+import "../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../stok/stok_liste/model/stok_listesi_model.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";

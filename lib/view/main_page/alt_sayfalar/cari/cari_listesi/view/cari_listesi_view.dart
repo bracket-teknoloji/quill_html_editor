@@ -373,8 +373,8 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                             trailing: Wrap(children: [
                               Text(
                                   (object.bakiye == null
-                                          ? "0.00 TL"
-                                          : "${formatter.format(object.bakiye)} TL"
+                                          ? "0.00 $mainCurrency"
+                                          : "${formatter.format(object.bakiye)} $mainCurrency"
                                               "\n")
                                       .toString(),
                                   style: TextStyle(color: UIHelper.getColorWithValue(object.bakiye ?? 0.0)))
@@ -407,7 +407,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                               child: FooterButton(children: [
                             const Text("Tahsil Edilecek"),
                             Text(
-                              "${double.tryParse(paramData["TAHSIL_EDILECEK"].replaceAll(",", "."))?.toInt().commaSeparatedWithFixedDigits} TL",
+                              "${double.tryParse(paramData["TAHSIL_EDILECEK"].replaceAll(",", "."))?.toInt().commaSeparatedWithFixedDigits} $mainCurrency",
                               style: const TextStyle(color: Colors.green),
                             ),
                           ])),
@@ -415,7 +415,8 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                           Expanded(
                               child: FooterButton(children: [
                             const Text("Ödenecek"),
-                            Text("${(double.tryParse(paramData["ODENECEK"].replaceAll(",", "."))!.toInt() * -1).commaSeparatedWithFixedDigits} TL", style: const TextStyle(color: Colors.red)),
+                            Text("${(double.tryParse(paramData["ODENECEK"].replaceAll(",", "."))!.toInt() * -1).commaSeparatedWithFixedDigits} $mainCurrency",
+                                style: const TextStyle(color: Colors.red)),
                           ]))
                         ],
                       )

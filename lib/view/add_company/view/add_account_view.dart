@@ -4,7 +4,7 @@ import "package:crypto/crypto.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
+import "../../../core/components/textfield/custom_text_field.dart";
 
 import "../../../core/base/model/base_network_mixin.dart";
 import "../../../core/base/model/generic_response_model.dart";

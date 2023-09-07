@@ -3,7 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_staggered_animations/flutter_staggered_animations.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/components/grid_tile/custom_animated_grid/model/islemler_menu_item/model/islemler_menu_item_constants.dart";
+import "../model/islemler_menu_item/model/islemler_menu_item_constants.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../../../view/main_page/model/grid_item_model.dart";

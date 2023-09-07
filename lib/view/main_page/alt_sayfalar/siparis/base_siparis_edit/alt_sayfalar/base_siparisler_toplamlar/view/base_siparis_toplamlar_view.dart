@@ -2,12 +2,12 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../model/base_siparis_edit_model.dart";
 
 import "../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../core/base/state/base_state.dart";
@@ -71,7 +71,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               const Text.rich(TextSpan(children: [TextSpan(text: "Mal Ağırlığı\n", style: TextStyle(color: Colors.grey)), TextSpan(text: "0", style: TextStyle(fontWeight: FontWeight.bold))])),
               Text.rich(TextSpan(children: [
                 const TextSpan(text: "Brüt Tutar\n", style: TextStyle(color: Colors.grey)),
-                TextSpan(text: "${model.toplamBrutTutar.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                TextSpan(text: "${model.toplamBrutTutar.commaSeparatedWithFixedDigits} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
               ])),
             ].map((e) => Expanded(child: e)).toList(),
           ),
@@ -80,16 +80,16 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
             children: [
               Text.rich(TextSpan(children: [
                 const TextSpan(text: "Mal. Faz. İsk.\n", style: TextStyle(color: Colors.grey)),
-                TextSpan(text: "${viewModel.model.malFazlasiTutar.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                TextSpan(text: "${viewModel.model.malFazlasiTutar.commaSeparatedWithFixedDigits} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
               ])),
               Text.rich(TextSpan(children: [
                 const TextSpan(text: "Satır İsk.\n", style: TextStyle(color: Colors.grey)),
-                TextSpan(text: "${viewModel.model.satirIskonto.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                TextSpan(text: "${viewModel.model.satirIskonto.commaSeparatedWithFixedDigits} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
               ])),
               Observer(builder: (_) {
                 return Text.rich(TextSpan(children: [
                   const TextSpan(text: "Toplam İskonto\n", style: TextStyle(color: Colors.grey)),
-                  TextSpan(text: "${viewModel.model.getToplamIskonto.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                  TextSpan(text: "${viewModel.model.getToplamIskonto.commaSeparatedWithFixedDigits} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
                 ]));
               }),
             ].map((e) => Expanded(child: e)).toList(),
@@ -100,19 +100,19 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               Observer(builder: (_) {
                 return Text.rich(TextSpan(children: [
                   const TextSpan(text: "Ara Toplam\n", style: TextStyle(color: Colors.grey)),
-                  TextSpan(text: "${viewModel.model.getAraToplam.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                  TextSpan(text: "${viewModel.model.getAraToplam.commaSeparatedWithFixedDigits} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
                 ]));
               }),
               Observer(builder: (_) {
                 return Text.rich(TextSpan(children: [
                   const TextSpan(text: "KDV Tutarı\n", style: TextStyle(color: Colors.grey)),
-                  TextSpan(text: "${viewModel.model.kdvTutari.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                  TextSpan(text: "${viewModel.model.kdvTutari.commaSeparatedWithFixedDigits} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
                 ]));
               }),
               Observer(builder: (_) {
                 return Text.rich(TextSpan(children: [
                   const TextSpan(text: "Genel Toplam\n", style: TextStyle(color: Colors.grey)),
-                  TextSpan(text: "${viewModel.model.genelToplamTutar.commaSeparatedWithFixedDigits} TL", style: const TextStyle(fontWeight: FontWeight.bold))
+                  TextSpan(text: "${viewModel.model.genelToplamTutar.commaSeparatedWithFixedDigits} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
                 ]));
               }),
             ].map((e) => Expanded(child: e)).toList(),
@@ -135,8 +135,9 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
               onChanged: (p0) => viewModel.setGenIsk1(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
               valueWidget: Observer(
-                  builder: (_) =>
-                      Text(viewModel.isGenIsk1T ? "%${(viewModel.model.genIsk1o ?? 0).toIntIfDouble?.toStringAsFixed(2)}" : "${(viewModel.model.genIsk1t ?? 0).commaSeparatedWithFixedDigits} TL")),
+                  builder: (_) => Text(viewModel.isGenIsk1T
+                      ? "%${(viewModel.model.genIsk1o ?? 0).toIntIfDouble?.toStringAsFixed(2)}"
+                      : "${(viewModel.model.genIsk1t ?? 0).commaSeparatedWithFixedDigits} $mainCurrency")),
               suffix: IconButton(
                   onPressed: () => viewModel.changeGenIsk1O(genelIskonto1Controller), icon: Observer(builder: (_) => Icon(viewModel.isGenIsk1T ? Icons.payments_outlined : Icons.percent_outlined))),
             ),
@@ -166,8 +167,9 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               enabled: enable && yetkiController.siparisGenIsk2AktifMi,
               controller: genelIskonto2Controller,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
-              valueWidget:
-                  Observer(builder: (_) => Text(viewModel.isGenIsk2T ? "%${(viewModel.model.genIsk2o ?? 0).toIntIfDouble}" : "${(viewModel.model.genIsk2t ?? 0).commaSeparatedWithFixedDigits} TL")),
+              valueWidget: Observer(
+                  builder: (_) =>
+                      Text(viewModel.isGenIsk2T ? "%${(viewModel.model.genIsk2o ?? 0).toIntIfDouble}" : "${(viewModel.model.genIsk2t ?? 0).commaSeparatedWithFixedDigits} $mainCurrency")),
               onChanged: (p0) => viewModel.setGenIsk2(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
               suffix: IconButton(
                   onPressed: () => viewModel.changeGenIsk2O(genelIskonto2Controller), icon: Observer(builder: (_) => Icon(viewModel.isGenIsk2T ? Icons.payments_outlined : Icons.percent_outlined))),
@@ -199,8 +201,9 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               controller: genelIskonto3Controller,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
               onChanged: (p0) => viewModel.setGenIsk3(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
-              valueWidget:
-                  Observer(builder: (_) => Text(viewModel.isGenIsk3T ? "%${(viewModel.model.genIsk3o ?? 0).toIntIfDouble}" : "${(viewModel.model.genIsk3t ?? 0).commaSeparatedWithFixedDigits} TL")),
+              valueWidget: Observer(
+                  builder: (_) =>
+                      Text(viewModel.isGenIsk3T ? "%${(viewModel.model.genIsk3o ?? 0).toIntIfDouble}" : "${(viewModel.model.genIsk3t ?? 0).commaSeparatedWithFixedDigits} $mainCurrency")),
               suffix: IconButton(
                   onPressed: () => viewModel.changeGenIsk3O(genelIskonto3Controller), icon: Observer(builder: (_) => Icon(viewModel.isGenIsk3T ? Icons.payments_outlined : Icons.percent_outlined))),
             ),

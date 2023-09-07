@@ -3,28 +3,28 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/base/model/base_edit_model.dart";
-import "package:picker/core/base/model/base_grup_kodu_model.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/appbar/appbar_prefered_sized_bottom.dart";
-import "package:picker/core/components/bottom_bar/bottom_bar.dart";
-import "package:picker/core/components/button/elevated_buttons/bottom_appbar_button.dart";
-import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
-import "package:picker/core/components/card/siparisler_card.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
-import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
-import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
-import "package:picker/core/components/slide_controller/view/slide_controller_view.dart";
-import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/static_variables/static_variables.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/view_model/siparisler_view_model.dart";
+import "../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../core/base/model/base_grup_kodu_model.dart";
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
+import "../../../../../../core/components/bottom_bar/bottom_bar.dart";
+import "../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart";
+import "../../../../../../core/components/button/elevated_buttons/footer_button.dart";
+import "../../../../../../core/components/card/siparisler_card.dart";
+import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../core/components/floating_action_button/custom_floating_action_button.dart";
+import "../../../../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
+import "../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
+import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
+import "../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../core/constants/static_variables/static_variables.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
+import "../view_model/siparisler_view_model.dart";
 
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/enum/siparis_tipi_enum.dart";
@@ -430,7 +430,9 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                       title: const Text("Ek Açıklamalar"), value: viewModel.ekstraAlanlarMap["EK"] ?? false, onChanged: (value) => viewModel.changeEkstraAlanlarMap("EK", value))),
                               Observer(
                                   builder: (_) => SwitchListTile.adaptive(
-                                      title: const Text("Miktar"), value: viewModel.ekstraAlanlarMap["MİK"] ?? false, onChanged: (value) {
+                                      title: const Text("Miktar"),
+                                      value: viewModel.ekstraAlanlarMap["MİK"] ?? false,
+                                      onChanged: (value) {
                                         viewModel.changeEkstraAlanlarMap("MİK", value);
                                       })),
                               Observer(
@@ -542,9 +544,9 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
   Observer bottomNavigationBar() {
     return Observer(
         builder: (_) => BottomBarWidget(isScrolledDown: viewModel.isScrolledDown, visible: viewModel.paramData.isNotEmpty, children: [
-              FooterButton(children: [const Text("KDV Hariç"), Text("${int.tryParse(viewModel.paramData["ARA_TOPLAM"]?.split(",").first ?? "").commaSeparatedWithFixedDigits} TL")]),
-              FooterButton(children: [const Text("KDV"), Text("${int.tryParse(viewModel.paramData["KDV"]?.split(",").first ?? "").commaSeparatedWithFixedDigits} TL")]),
-              FooterButton(children: [const Text("KDV Dahil"), Text("${int.tryParse(viewModel.paramData["GENEL_TOPLAM"]?.split(",").first ?? "").commaSeparatedWithFixedDigits} TL")]),
+              FooterButton(children: [const Text("KDV Hariç"), Text("${int.tryParse(viewModel.paramData["ARA_TOPLAM"]?.split(",").first ?? "").commaSeparatedWithFixedDigits} $mainCurrency")]),
+              FooterButton(children: [const Text("KDV"), Text("${int.tryParse(viewModel.paramData["KDV"]?.split(",").first ?? "").commaSeparatedWithFixedDigits} $mainCurrency")]),
+              FooterButton(children: [const Text("KDV Dahil"), Text("${int.tryParse(viewModel.paramData["GENEL_TOPLAM"]?.split(",").first ?? "").commaSeparatedWithFixedDigits} $mainCurrency")]),
             ]));
   }
 

@@ -98,7 +98,8 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 BaseSiparisEditModel.instance.kalemList ??= [];
                 if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.stokKodu == viewModel.kalemModel.stokKodu) ?? false) {
                   //replace
-                  BaseSiparisEditModel.instance.kalemList?[BaseSiparisEditModel.instance.kalemList?.indexWhere((element) => element.stokKodu == viewModel.kalemModel.stokKodu) ?? 0] = viewModel.kalemModel..paketMi = widget.stokListesiModel?.paketMi;
+                  BaseSiparisEditModel.instance.kalemList?[BaseSiparisEditModel.instance.kalemList?.indexWhere((element) => element.stokKodu == viewModel.kalemModel.stokKodu) ?? 0] =
+                      viewModel.kalemModel..paketMi = widget.stokListesiModel?.paketMi;
                 } else {
                   BaseSiparisEditModel.instance.kalemList?.add(viewModel.kalemModel..paketMi = widget.stokListesiModel?.paketMi);
                 }
@@ -213,7 +214,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       Card(
                           color: theme.colorScheme.primary.withOpacity(0.1),
                           child: Center(
-                            child: const Text.rich(TextSpan(children: [TextSpan(text: "Son Fiyat: "), TextSpan(text: "0.00 TL", style: TextStyle(fontWeight: FontWeight.bold))]))
+                            child:  Text.rich(TextSpan(children: [const TextSpan(text: "Son Fiyat: "), TextSpan(text: "0.00 $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))]))
                                 .paddingOnly(top: UIHelper.lowSize),
                           ))
                     ],
@@ -461,7 +462,6 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         onTap: () async {
                           var result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context);
                           if (result != null) {
-
                             viewModel.setDovizAdi(result.isim ?? "");
                             viewModel.kalemModel.dovizTipi = result.dovizKodu;
                             getDovizData();
@@ -657,22 +657,22 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     viewModel.kalemModel.kosulKodu = model.kosulKodu;
     viewModel.kalemModel.teslimTarihi = model.teslimTarihi;
     viewModel.setOlcuBirimi(MapEntry<String, int>(widget.stokListesiModel?.olcuBirimi ?? widget.kalemModel?.olcuBirimAdi ?? "", 0));
-    if (widget.kalemModel == null){
-    viewModel.setKosul(model.kosulKodu ?? "");
-    viewModel.setDepoKodu(model.cikisDepoKodu ?? viewModel.model?.depoKodu ?? 0);
-    viewModel.setProjeKodu(model.projeKodu ?? "");
-    viewModel.setFiyat(fiyatController.text.toDoubleWithFormattedString);
-    viewModel.setBrutFiyat(fiyatController.text.toDoubleWithFormattedString);
-    viewModel.setMiktar(int.tryParse(miktarController.text) ?? 0);
-    viewModel.setMiktar2(int.tryParse(miktar2Controller.text) ?? 0);
-    viewModel.setMFMiktar(int.tryParse(malFazMiktarController.text) ?? 0);
-    viewModel.setKdvOrani(double.tryParse(kdvOraniController.text) ?? 0);
-    viewModel.setIskonto1(double.tryParse(isk1Controller?.text ?? "") ?? 0);
-    viewModel.setIskonto2(double.tryParse(isk2YuzdeController?.text ?? "") ?? 0);
-    viewModel.setIskonto3(double.tryParse(isk3YuzdeController?.text ?? "") ?? 0);
-    viewModel.setIskonto4(double.tryParse(isk4YuzdeController?.text ?? "") ?? 0);
-    viewModel.setIskonto5(double.tryParse(isk5YuzdeController?.text ?? "") ?? 0);
-    viewModel.setIskonto6(double.tryParse(isk6YuzdeController?.text ?? "") ?? 0);
+    if (widget.kalemModel == null) {
+      viewModel.setKosul(model.kosulKodu ?? "");
+      viewModel.setDepoKodu(model.cikisDepoKodu ?? viewModel.model?.depoKodu ?? 0);
+      viewModel.setProjeKodu(model.projeKodu ?? "");
+      viewModel.setFiyat(fiyatController.text.toDoubleWithFormattedString);
+      viewModel.setBrutFiyat(fiyatController.text.toDoubleWithFormattedString);
+      viewModel.setMiktar(int.tryParse(miktarController.text) ?? 0);
+      viewModel.setMiktar2(int.tryParse(miktar2Controller.text) ?? 0);
+      viewModel.setMFMiktar(int.tryParse(malFazMiktarController.text) ?? 0);
+      viewModel.setKdvOrani(double.tryParse(kdvOraniController.text) ?? 0);
+      viewModel.setIskonto1(double.tryParse(isk1Controller?.text ?? "") ?? 0);
+      viewModel.setIskonto2(double.tryParse(isk2YuzdeController?.text ?? "") ?? 0);
+      viewModel.setIskonto3(double.tryParse(isk3YuzdeController?.text ?? "") ?? 0);
+      viewModel.setIskonto4(double.tryParse(isk4YuzdeController?.text ?? "") ?? 0);
+      viewModel.setIskonto5(double.tryParse(isk5YuzdeController?.text ?? "") ?? 0);
+      viewModel.setIskonto6(double.tryParse(isk6YuzdeController?.text ?? "") ?? 0);
     }
     await getDovizData();
   }

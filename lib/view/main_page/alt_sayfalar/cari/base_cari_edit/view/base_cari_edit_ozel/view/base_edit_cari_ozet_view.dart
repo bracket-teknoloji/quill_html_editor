@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:kartal/kartal.dart";
 
+import "../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
@@ -13,7 +14,7 @@ class BaseEditCariOzetView extends StatefulWidget {
   State<BaseEditCariOzetView> createState() => _BaseEditCariOzetViewState();
 }
 
-class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
+class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
   CariDetayModel? cariDetayModel = CariDetayModel.instance;
   List<BakiyeList>? bakiyeList = CariDetayModel.instance.bakiyeList ?? [];
   final formKey = GlobalKey<FormState>();
@@ -25,29 +26,30 @@ class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
     TextEditingController borcDolarController = TextEditingController(text: getBorc("Dolar"));
     TextEditingController alacakDolarController = TextEditingController(text: getAlacak("Dolar"));
     TextEditingController bakiyeDolarController = TextEditingController(text: getBakiye("Dolar"));
-    TextEditingController borcTLController = TextEditingController(text: getBorc("TL"));
-    TextEditingController alacakTLController = TextEditingController(text: getAlacak("TL"));
-    TextEditingController bakiyeTLController = TextEditingController(text: getBakiye("TL"));
-    TextEditingController borcToplamiController = TextEditingController(text: "${cariDetayModel?.riskBorcToplami?.commaSeparatedWithFixedDigits ?? "0.00"} TL");
-    TextEditingController alacakToplamiController = TextEditingController(text: "${cariDetayModel?.riskAlacakToplami?.commaSeparatedWithFixedDigits ?? "0.00"} TL");
-    TextEditingController bakiyeToplamiController = TextEditingController(text: "${cariDetayModel?.riskBakiye?.commaSeparatedWithFixedDigits ?? "0.00"} TL");
-    TextEditingController riskLimitiController = TextEditingController(text: "${cariDetayModel?.riskLimiti?.commaSeparatedWithFixedDigits ?? "0.00"} TL");
-    TextEditingController teminatController = TextEditingController(text: "${cariDetayModel?.teminatTutari?.commaSeparatedWithFixedDigits ?? "0.00"} TL");
-    TextEditingController senetAsilController = TextEditingController(text: "${cariDetayModel?.senetAsilRiski?.commaSeparatedWithFixedDigits ?? "0.00"} TL");
-    TextEditingController senetCiroController = TextEditingController(text: "${cariDetayModel?.senetCiroRiski?.commaSeparatedWithFixedDigits ?? "0.00"} TL");
-    TextEditingController cekAsilController = TextEditingController(text: "${cariDetayModel?.cekAsilRiski?.commaSeparatedWithFixedDigits ?? "0.00"} TL");
-    TextEditingController cekCiroController = TextEditingController(text: "${cariDetayModel?.cekCiroRiski?.commaSeparatedWithFixedDigits ?? "0.00"} TL");
-    TextEditingController siparisController = TextEditingController(text: "${cariDetayModel?.siparisRiski?.commaSeparatedWithFixedDigits ?? "0.00"} TL");
-    TextEditingController sevkController = TextEditingController(text: "${cariDetayModel?.sevkRiski?.commaSeparatedWithFixedDigits ?? "0.00"} TL");
-    TextEditingController yuklemelerController = TextEditingController(text: "${cariDetayModel?.yuklemeRiski?.commaSeparatedWithFixedDigits ?? "0.00"} TL");
-    TextEditingController irsaliyeController = TextEditingController(text: "${cariDetayModel?.irsaliyeRiski?.commaSeparatedWithFixedDigits ?? "0.00"} TL");
-    TextEditingController teminatRiskiController = TextEditingController(text: "${cariDetayModel?.teminatRiski?.commaSeparatedWithFixedDigits ?? "0.00"} TL");
-    TextEditingController toplamRiskController = TextEditingController(text: "${((cariDetayModel?.riskBorcToplami ?? 0) - (cariDetayModel?.riskAlacakToplami ?? 0)).commaSeparatedWithFixedDigits} TL");
+    TextEditingController borcTLController = TextEditingController(text: getBorc(mainCurrency));
+    TextEditingController alacakTLController = TextEditingController(text: getAlacak(mainCurrency));
+    TextEditingController bakiyeTLController = TextEditingController(text: getBakiye(mainCurrency));
+    TextEditingController borcToplamiController = TextEditingController(text: "${cariDetayModel?.riskBorcToplami?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
+    TextEditingController alacakToplamiController = TextEditingController(text: "${cariDetayModel?.riskAlacakToplami?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
+    TextEditingController bakiyeToplamiController = TextEditingController(text: "${cariDetayModel?.riskBakiye?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
+    TextEditingController riskLimitiController = TextEditingController(text: "${cariDetayModel?.riskLimiti?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
+    TextEditingController teminatController = TextEditingController(text: "${cariDetayModel?.teminatTutari?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
+    TextEditingController senetAsilController = TextEditingController(text: "${cariDetayModel?.senetAsilRiski?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
+    TextEditingController senetCiroController = TextEditingController(text: "${cariDetayModel?.senetCiroRiski?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
+    TextEditingController cekAsilController = TextEditingController(text: "${cariDetayModel?.cekAsilRiski?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
+    TextEditingController cekCiroController = TextEditingController(text: "${cariDetayModel?.cekCiroRiski?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
+    TextEditingController siparisController = TextEditingController(text: "${cariDetayModel?.siparisRiski?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
+    TextEditingController sevkController = TextEditingController(text: "${cariDetayModel?.sevkRiski?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
+    TextEditingController yuklemelerController = TextEditingController(text: "${cariDetayModel?.yuklemeRiski?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
+    TextEditingController irsaliyeController = TextEditingController(text: "${cariDetayModel?.irsaliyeRiski?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
+    TextEditingController teminatRiskiController = TextEditingController(text: "${cariDetayModel?.teminatRiski?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
+    TextEditingController toplamRiskController =
+        TextEditingController(text: "${((cariDetayModel?.riskBorcToplami ?? 0) - (cariDetayModel?.riskAlacakToplami ?? 0)).commaSeparatedWithFixedDigits} $mainCurrency");
     return SingleChildScrollView(
       child: Form(
           autovalidateMode: AutovalidateMode.onUserInteraction,
           child: Column(children: [
-            getBakiye("TL") == ""
+            getBakiye(mainCurrency) == ""
                 ? const Center(
                     child: Column(
                       children: [Icon(Icons.crisis_alert_outlined), Text("Kayıt Bulunamadı")],
@@ -90,7 +92,7 @@ class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
                               ),
                             )),
                         CustomWidgetWithLabel(
-                            text: "  TL",
+                            text: "  $mainCurrency",
                             isVertical: false,
                             child: SizedBox(
                               child: Row(
@@ -165,7 +167,7 @@ class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
 
   String getBakiye(String paraBirimi) {
     if (bakiyeList.ext.isNotNullOrEmpty) {
-      if (paraBirimi == "TL") {
+      if (paraBirimi == mainCurrency) {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
           return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.bakiye?.commaSeparatedWithFixedDigits ?? "";
         } else {
@@ -193,7 +195,7 @@ class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
 
   String getAlacak(String paraBirimi) {
     if (bakiyeList.ext.isNotNullOrEmpty) {
-      if (paraBirimi == "TL") {
+      if (paraBirimi == mainCurrency) {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
           return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.alacakToplami?.commaSeparatedWithFixedDigits ?? "";
         } else {
@@ -221,7 +223,7 @@ class _BaseEditCariOzetViewState extends State<BaseEditCariOzetView> {
 
   String getBorc(String paraBirimi) {
     if (bakiyeList.ext.isNotNullOrEmpty) {
-      if (paraBirimi == "TL") {
+      if (paraBirimi == mainCurrency) {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
           return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.borcToplami?.commaSeparatedWithFixedDigits ?? "";
         } else {

@@ -1,5 +1,5 @@
 import "package:json_annotation/json_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
+import "../../../../../../core/base/model/base_network_mixin.dart";
 
 part "fiyat_gecmisi_response_model.g.dart";
 

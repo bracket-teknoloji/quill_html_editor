@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
-import "package:picker/core/constants/extensions/list_extensions.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../../../../../core/constants/extensions/list_extensions.dart";
+import "../../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 
 import "../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";

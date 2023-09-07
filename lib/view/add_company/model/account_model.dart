@@ -6,13 +6,15 @@ import "package:app_tracking_transparency/app_tracking_transparency.dart";
 import "package:connectivity_plus/connectivity_plus.dart";
 import "package:device_info_plus/device_info_plus.dart";
 import "package:flutter/foundation.dart";
+import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
 import "package:package_info_plus/package_info_plus.dart";
-import "package:picker/core/init/cache/cache_manager.dart";
 
 import "../../../core/base/model/base_network_mixin.dart";
+import "../../../core/init/app_info/app_info.dart";
+import "../../../core/init/cache/cache_manager.dart";
 
 part "account_model.g.dart";
 
@@ -127,7 +129,7 @@ class AccountModel with NetworkManagerMixin {
     ///  [uygulamaSurumu = packageInfo.version;]
     ///* olarak değiştirilecek fakat API bu uygulamanın sürümünü kabul etmediği için manuel verdim.
     uygulamaSurumKodu = 229;
-    uygulamaSurumu = uygulamaSurumKodu.toString();
+    uygulamaSurumu = AppInfoModel.instance.version;
     requestVersion = 2;
     await PackageInfo.fromPlatform().then((value) => paketAdi = value.packageName);
 
@@ -162,7 +164,7 @@ class AccountModel with NetworkManagerMixin {
     cihazTimeZoneDakika = DateTime.now().timeZoneOffset.inMinutes;
     //* Cihaz ve Sim Bilgileri
     uygulamaDili = "tr";
-    cihazDili = "tr";
+    cihazDili = Get.locale?.languageCode ?? "tr";
     cihazSistemVersiyonu = "20";
     cihazTarihiUtc = DateTime.now().toUtc();
     final deviceInfo = DeviceInfoPlugin();

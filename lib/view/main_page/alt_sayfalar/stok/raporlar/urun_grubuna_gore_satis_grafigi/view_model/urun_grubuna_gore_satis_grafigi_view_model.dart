@@ -1,8 +1,8 @@
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_proje_model.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../../core/base/model/base_proje_model.dart";
+import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 import "../model/urun_grubuna_gore_satis_grafigi_model.dart";
 import "../model/urun_grubuna_gore_satis_grafigi_request_model.dart";

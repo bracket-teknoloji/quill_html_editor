@@ -4,11 +4,11 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/components/card/stok_fiyat_gecmisi_card.dart";
-import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_gecmisi/model/fiyat_gecmisi_response_model.dart";
-import "package:picker/view/main_page/model/param_model.dart";
+import "../../../../../../core/components/card/stok_fiyat_gecmisi_card.dart";
+import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../model/fiyat_gecmisi_response_model.dart";
+import "../../../../model/param_model.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";

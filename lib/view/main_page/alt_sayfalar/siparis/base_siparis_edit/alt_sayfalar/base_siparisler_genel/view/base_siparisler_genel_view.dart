@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/view/main_page/model/param_model.dart";
+import "../../../../../../../../core/constants/enum/siparis_tipi_enum.dart";
+import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../model/param_model.dart";
 
 import "../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../core/base/model/base_proje_model.dart";

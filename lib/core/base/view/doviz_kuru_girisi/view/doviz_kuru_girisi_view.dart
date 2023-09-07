@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
+import "../../../../components/textfield/custom_text_field.dart";
+import "../../../../constants/extensions/date_time_extensions.dart";
+import "../../../../constants/extensions/number_extensions.dart";
 
 import "../../../../init/network/login/api_urls.dart";
 import "../../../model/doviz_kurlari_model.dart";

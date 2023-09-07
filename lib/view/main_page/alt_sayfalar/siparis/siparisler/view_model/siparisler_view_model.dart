@@ -1,7 +1,7 @@
 import "dart:convert";
 
 import "package:mobx/mobx.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
+import "../model/siparisler_request_model.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";

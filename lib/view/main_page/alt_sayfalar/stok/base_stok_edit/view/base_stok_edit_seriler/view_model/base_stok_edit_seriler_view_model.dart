@@ -1,5 +1,5 @@
 import "package:mobx/mobx.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+import "../../../../stok_liste/model/stok_listesi_model.dart";
 
 import "../../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../model/stok_detay_model.dart";

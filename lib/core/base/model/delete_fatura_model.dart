@@ -1,5 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
+import "base_network_mixin.dart";
 
 part "delete_fatura_model.freezed.dart";
 part "delete_fatura_model.g.dart";

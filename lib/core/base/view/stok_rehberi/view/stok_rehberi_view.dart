@@ -3,8 +3,8 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/base/model/base_grup_kodu_model.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
+import "../../../model/base_grup_kodu_model.dart";
+import "../../../../constants/extensions/number_extensions.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";

@@ -19,7 +19,8 @@ import "../view_model/base_siparis_kalemler_view_model.dart";
 
 class BaseSiparisKalemlerView extends StatefulWidget {
   final BaseEditModel<SiparisEditRequestModel> model;
-  const BaseSiparisKalemlerView({super.key, required this.model});
+  final bool? updater;
+  const BaseSiparisKalemlerView({super.key, required this.model, this.updater});
 
   @override
   State<BaseSiparisKalemlerView> createState() => _BaseSiparisKalemlerViewState();
@@ -31,6 +32,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
   late final TextEditingController _searchTextController;
   @override
   void initState() {
+    debugPrint(widget.updater.toString());
     _searchTextController = TextEditingController();
     viewModel.updateKalemList();
     super.initState();
@@ -139,6 +141,18 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
             Text("Miktar2: ${kalemModel?.miktar2.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar2 != null),
             Text("Teslim Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),
             Text("Mal Fazlası Miktar: ${kalemModel?.malFazlasiMiktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.malFazlasiMiktar != null),
+            Text.rich(TextSpan(
+                    children: [
+              TextSpan(text: "Satış İskontosu: ${kalemModel?.iskontoTutari.commaSeparatedWithFixedDigits ?? ""} "),
+              kalemModel?.iskontoTutari != 0.0
+                  ? TextSpan(
+                      text:
+                          "(${kalemModel?.iskonto1.toIntIfDouble ?? ""}${kalemModel?.iskonto2 != null ? "+" : ""}${kalemModel?.iskonto2.toIntIfDouble ?? ""}${kalemModel?.iskonto3 != null ? "+" : ""}${kalemModel?.iskonto3.toIntIfDouble ?? ""}) ",
+                      style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor),
+                    )
+                  : null,
+            ].whereType<TextSpan>().toList()))
+                .yetkiVarMi(kalemModel?.kdvOrani != null),
             Text("Satış İskontosu: ${kalemModel?.iskontoTutari.commaSeparatedWithFixedDigits ?? ""}").yetkiVarMi(kalemModel?.iskontoTutari != null),
             Text("Kalan Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),
             Text("Fiyat: ${kalemModel?.brutFiyat.commaSeparatedWithFixedDigits ?? 0.00}").yetkiVarMi(kalemModel?.brutFiyat != null),

@@ -1,7 +1,7 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart";
+import "../../../../constants/extensions/date_time_extensions.dart";
+import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "../../../../constants/static_variables/static_variables.dart";

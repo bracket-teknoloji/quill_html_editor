@@ -9,6 +9,14 @@ part "base_siparis_editing_view_model.g.dart";
 class BaseSiparisEditingViewModel = _BaseSiparisEditingViewModelBase with _$BaseSiparisEditingViewModel;
 
 abstract class _BaseSiparisEditingViewModelBase with Store {
+  @computed
+  BaseSiparisEditModel get baseSiparisEditModel => BaseSiparisEditModel.instance;
+
+  @observable
+  bool updateKalemler = false;
+
+  @action
+  void changeUpdateKalemler() => updateKalemler = !updateKalemler;
   @observable
   int pageIndex = 0;
 

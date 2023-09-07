@@ -203,7 +203,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                       onTap: () {
                         List<BottomSheetModel> children2 = [
                           //TODO DÜZELT. ORJİNAL PİCKER'A BAK
-                          
+
                           // BottomSheetModel(
                           //     iconWidget: Icons.view_comfy_outlined,
                           //     title: "Görüntüle",
@@ -315,7 +315,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                   const Text("Borç"),
                   Observer(builder: (_) {
                     return Text(
-                        "${widget.cari?.dovizli == true ? viewModel.dovizBorclarToplami.commaSeparatedWithFixedDigits : viewModel.borclarToplami.commaSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? "TL"}");
+                        "${widget.cari?.dovizli == true ? viewModel.dovizBorclarToplami.commaSeparatedWithFixedDigits : viewModel.borclarToplami.commaSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? mainCurrency}");
                   })
                 ])),
                 const VerticalDivider(thickness: 1, width: 1),
@@ -323,14 +323,14 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                     child: FooterButton(children: [
                   const Text("Alacak"),
                   Text(
-                      "${widget.cari?.dovizli == true ? viewModel.dovizAlacaklarToplami.commaSeparatedWithFixedDigits : viewModel.borclarToplami.commaSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? "TL"}")
+                      "${widget.cari?.dovizli == true ? viewModel.dovizAlacaklarToplami.commaSeparatedWithFixedDigits : viewModel.borclarToplami.commaSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? mainCurrency}")
                 ])),
                 const VerticalDivider(thickness: 1, width: 1),
                 Expanded(
                     child: FooterButton(children: [
                   const Text("Tahsil Edilecek"),
                   Text(
-                    "${(widget.cari?.dovizli == true ? viewModel.dovizBorclarToplami - viewModel.dovizAlacaklarToplami : viewModel.borclarToplami - viewModel.alacaklarToplami).commaSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? "TL"}",
+                    "${(widget.cari?.dovizli == true ? viewModel.dovizBorclarToplami - viewModel.dovizAlacaklarToplami : viewModel.borclarToplami - viewModel.alacaklarToplami).commaSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? mainCurrency}",
                     style: TextStyle(color: (viewModel.borclarToplami - viewModel.alacaklarToplami) < 0 ? Colors.red : Colors.green),
                   )
                 ]))

@@ -59,7 +59,7 @@ class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
                       direction: Axis.vertical,
                       children: [
                         Text("Satış Fiyatı (${widget.model?.fiyatSirasi})", style: TextStyleHelper.captionWhite),
-                        Text("${widget.model?.fiyat?.commaSeparatedWithFixedDigits ?? ""} ${widget.model?.dovizAdi ?? "TL"}"),
+                        Text("${widget.model?.fiyat?.commaSeparatedWithFixedDigits ?? ""} ${widget.model?.dovizAdi ?? mainCurrency}"),
                       ],
                     ),
                     Wrap(

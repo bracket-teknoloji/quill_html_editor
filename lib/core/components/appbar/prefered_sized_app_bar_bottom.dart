@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/button/elevated_buttons/bottom_appbar_button.dart";
+import "../../base/state/base_state.dart";
+import "../button/elevated_buttons/bottom_appbar_button.dart";
 
 class PreferedSizedAppBarBottom extends StatefulWidget {
   final List<AppBarButton?> children;

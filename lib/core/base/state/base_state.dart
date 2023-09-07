@@ -15,6 +15,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   late final NetworkManager networkManager;
   late final YetkiController yetkiController;
   late final ParamModel parametreModel;
+   String get mainCurrency => parametreModel.paraBirimi ?? "TL";
   BaseState() {
     networkManager = NetworkManager();
     bottomSheetDialogManager = BottomSheetDialogManager();

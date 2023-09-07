@@ -2,13 +2,15 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../components/helper_widgets/custom_label_widget.dart";
+import "../../../../components/textfield/custom_text_field.dart";
+import "../../../../constants/extensions/date_time_extensions.dart";
+import "../../../../constants/extensions/number_extensions.dart";
+import "../../../../constants/ui_helper/ui_helper.dart";
+import "../../../../init/cache/cache_manager.dart";
 
+import "../../../../../view/main_page/model/param_model.dart";
 import "../../../../init/network/login/api_urls.dart";
 import "../../../model/doviz_kurlari_model.dart";
 import "../../../state/base_state.dart";
@@ -60,20 +62,13 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
               title: "Kur Girişi",
               iconWidget: Icons.add,
               onTap: () async {
-                List<BottomSheetModel> bottomSheetList = [];
-                if (viewModel.dovizKurlariList?.length != 2) {
-                  if (viewModel.dovizKurlariList?.any((element) => element.dovizTipi != 1) ?? false) {
-                    bottomSheetList.add(BottomSheetModel(title: "Dolar", iconWidget: Icons.add, value: 1));
-                  } else if (viewModel.dovizKurlariList?.any((element) => element.dovizTipi != 2) ?? false) {
-                    bottomSheetList.add(BottomSheetModel(title: "Euro", iconWidget: Icons.add, value: 2));
-                  }
-                  if (bottomSheetList.ext.isNotNullOrEmpty) {
-                    var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Döviz Tipi", children: bottomSheetList);
-                    if (result != null) {
-                      Get.back();
-                      await Get.to(() => DovizKuruGirisiView(dovizKurlariModel: DovizKurlariModel(tarih: DateTime.now(), dovizTipi: result, dovizAdi: result == 1 ? "\$" : "€")));
-                      getData();
-                    }
+                if (setDovizBottomSheetList.ext.isNotNullOrEmpty) {
+                  var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Döviz Tipi", children: setDovizBottomSheetList);
+                  if (result != null && result is DovizList) {
+                    Get.back();
+                    await Get.to(
+                        () => DovizKuruGirisiView(dovizKurlariModel: DovizKurlariModel(tarih: DateTime.now(), dovizTipi: result.dovizTipi, dovizAdi: result.isim ?? result.dovizKodu.toStringIfNull)));
+                    getData();
                   }
                 } else {
                   Get.back();
@@ -226,5 +221,16 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
         ],
       ),
     );
+  }
+
+  List<BottomSheetModel> get setDovizBottomSheetList {
+    List<DovizList>? dovizList = CacheManager.getAnaVeri()?.paramModel?.dovizList;
+    List<BottomSheetModel> bottomSheetList = [];
+    for (DovizList item in dovizList?.where((element) => element.dovizTipi != 0).toList() ?? []) {
+      if (viewModel.dovizKurlariList?.any((element) => element.dovizTipi != item.dovizTipi) ?? false) {
+        bottomSheetList.add(BottomSheetModel(title: item.isim ?? item.dovizTipi.toStringIfNull ?? "", iconWidget: Icons.add, value: item));
+      }
+    }
+    return bottomSheetList;
   }
 }

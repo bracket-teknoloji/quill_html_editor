@@ -3,7 +3,7 @@ import "dart:developer";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
+import "../../../core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
 
 import "../../../core/base/state/base_state.dart";

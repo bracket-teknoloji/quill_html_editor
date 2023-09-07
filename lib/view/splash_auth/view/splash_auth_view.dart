@@ -6,7 +6,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/base/model/generic_response_model.dart";
+import "../../../core/base/model/generic_response_model.dart";
 import "package:wave/config.dart";
 import "package:wave/wave.dart";
 

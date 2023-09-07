@@ -363,15 +363,15 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
   }
 
   Future<void> getData() async {
-    var result = await networkManager.dioGet(path: ApiUrls.getFaturaKalemleri, bodyModel: KalemModel(), queryParameters: viewModel.siparislerRequestModel.toJson());
+    var result = await networkManager.dioGet<KalemModel>(path: ApiUrls.getFaturaKalemleri, bodyModel: KalemModel(), queryParameters: viewModel.siparislerRequestModel.toJson());
     if (result.data != null && result.data is List) {
-      List<KalemModel?> list = result.data?.whereType<KalemModel>().toList();
+      List<KalemModel?> kalemList = result.data?.whereType<KalemModel>().toList();
       if (viewModel.siparislerRequestModel.sayfa == 1) {
-        viewModel.setKalemList(list);
+        viewModel.setKalemList(kalemList);
       } else {
-        viewModel.addKalemList(list);
+        viewModel.addKalemList(kalemList);
       }
-      if (list.length != 25) {
+      if (kalemList.length < 25) {
         viewModel.setDahaVarMi(false);
       } else {
         viewModel.increaseSayfa();

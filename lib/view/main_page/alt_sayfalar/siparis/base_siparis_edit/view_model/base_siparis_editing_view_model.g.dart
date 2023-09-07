@@ -9,6 +9,14 @@ part of 'base_siparis_editing_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
+  Computed<BaseSiparisEditModel>? _$baseSiparisEditModelComputed;
+
+  @override
+  BaseSiparisEditModel get baseSiparisEditModel =>
+      (_$baseSiparisEditModelComputed ??= Computed<BaseSiparisEditModel>(
+              () => super.baseSiparisEditModel,
+              name: '_BaseSiparisEditingViewModelBase.baseSiparisEditModel'))
+          .value;
   Computed<int>? _$getKalemCountComputed;
 
   @override
@@ -16,6 +24,23 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
       (_$getKalemCountComputed ??= Computed<int>(() => super.getKalemCount,
               name: '_BaseSiparisEditingViewModelBase.getKalemCount'))
           .value;
+
+  late final _$updateKalemlerAtom = Atom(
+      name: '_BaseSiparisEditingViewModelBase.updateKalemler',
+      context: context);
+
+  @override
+  bool get updateKalemler {
+    _$updateKalemlerAtom.reportRead();
+    return super.updateKalemler;
+  }
+
+  @override
+  set updateKalemler(bool value) {
+    _$updateKalemlerAtom.reportWrite(value, super.updateKalemler, () {
+      super.updateKalemler = value;
+    });
+  }
 
   late final _$pageIndexAtom = Atom(
       name: '_BaseSiparisEditingViewModelBase.pageIndex', context: context);
@@ -104,6 +129,19 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
           name: '_BaseSiparisEditingViewModelBase', context: context);
 
   @override
+  void changeUpdateKalemler() {
+    final _$actionInfo =
+        _$_BaseSiparisEditingViewModelBaseActionController.startAction(
+            name: '_BaseSiparisEditingViewModelBase.changeUpdateKalemler');
+    try {
+      return super.changeUpdateKalemler();
+    } finally {
+      _$_BaseSiparisEditingViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void changeIsValid() {
     final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController
         .startAction(name: '_BaseSiparisEditingViewModelBase.changeIsValid');
@@ -180,11 +218,13 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
   @override
   String toString() {
     return '''
+updateKalemler: ${updateKalemler},
 pageIndex: ${pageIndex},
 isValid: ${isValid},
 isLastPage: ${isLastPage},
 isBaseSiparisEmpty: ${isBaseSiparisEmpty},
 yeniKaydaHazirlaMi: ${yeniKaydaHazirlaMi},
+baseSiparisEditModel: ${baseSiparisEditModel},
 getKalemCount: ${getKalemCount}
     ''';
   }

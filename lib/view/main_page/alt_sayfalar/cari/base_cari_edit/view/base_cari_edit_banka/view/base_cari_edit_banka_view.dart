@@ -29,7 +29,7 @@ class _BaseCariEditBankaViewState extends BaseState<BaseCariEditBankaView> {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [Text(cariDetayModel.bankaList?[index].bankaAdi ?? ""), Badge(label: Text(cariDetayModel.bankaList?[index].dovizAdi ?? "TL"))],
+                    children: [Text(cariDetayModel.bankaList?[index].bankaAdi ?? ""), Badge(label: Text(cariDetayModel.bankaList?[index].dovizAdi ?? mainCurrency))],
                   ),
                   const Divider().paddingAll(UIHelper.lowSize),
                   Column(

@@ -1,13 +1,13 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/badge/colorful_badge.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/list_extensions.dart";
-import "package:picker/core/constants/extensions/model_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "../../base/state/base_state.dart";
+import "../badge/colorful_badge.dart";
+import "../../constants/extensions/date_time_extensions.dart";
+import "../../constants/extensions/list_extensions.dart";
+import "../../constants/extensions/model_extensions.dart";
+import "../../constants/extensions/number_extensions.dart";
+import "../../constants/extensions/widget_extensions.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -156,7 +156,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                   widget.model.kosulKodu != null ? Text("Koşul: ${widget.model.kosulKodu ?? ""}") : null,
                   Text("Plasiyer: ${widget.model.plasiyerAciklama ?? ""}"),
                   Text("Plasiyer: ${widget.model.vadeGunu ?? "0"}").yetkiVarMi(widget.showVade == true),
-                  Text("KDV: ${widget.model.kdv.commaSeparatedWithFixedDigits} TL"),
+                  Text("KDV: ${widget.model.kdv.commaSeparatedWithFixedDigits} $mainCurrency"),
                   widget.model.dovizAdi != null ? Text("Döviz Toplamı: ${widget.model.dovizTutari ?? ""} ${widget.model.dovizAdi ?? ""}").yetkiVarMi(widget.model.dovizTutari != null) : null,
                 ].nullCheckWithGeneric,
               ),
@@ -165,31 +165,29 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Kalem Adedi: ${widget.model.kalemAdedi ?? ""}"),
-                  Text("Ara Toplam: ${widget.model.getAraToplam.commaSeparatedWithFixedDigits} TL"),
-                  Text("Genel Toplam: ${widget.model.genelToplam?.commaSeparatedWithFixedDigits ?? "0.00"} TL"),
+                  Text("Ara Toplam: ${widget.model.getAraToplam.commaSeparatedWithFixedDigits} $mainCurrency"),
+                  Text("Genel Toplam: ${widget.model.genelToplam?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency"),
                 ].nullCheckWithGeneric,
               ),
             ].map((e) => Expanded(child: e)).toList(),
           ),
           const Divider().paddingAll(UIHelper.midSize).yetkiVarMi((widget.showEkAciklama == true && aciklamaList().ext.isNotNullOrEmpty) || widget.showMiktar == true || widget.showVade == true),
           // Text("Miktar: ${widget.model.miktar?.commaSeparatedWithFixedDigits ?? ""}").yetkiVarMi(widget.showMiktar == true),
-          Text("Miktar: ${widget.model.miktar ?? ""}").yetkiVarMi(widget.showMiktar == true),
-          Text("Teslim Miktar: ${((widget.model.miktar ?? 0) - (widget.model.kalanMiktar ?? 0))}").yetkiVarMi(widget.showMiktar == true),
-          Text("Kalan Miktar: ${widget.model.kalanMiktar ?? ""}").yetkiVarMi(widget.showMiktar == true),
+          Text("Miktar: ${widget.model.miktar ?? ""}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
+          Text("Teslim Miktar: ${((widget.model.miktar ?? 0) - (widget.model.kalanMiktar ?? 0))}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
+          Text("Kalan Miktar: ${widget.model.kalanMiktar ?? ""}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
           ...aciklamaList(),
         ],
       ),
     ));
   }
 
+  TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6));
+
   List<Widget> aciklamaList() => List.generate(16, (index) => aciklamaText(index + 1)).whereType<Text>().toList();
 
-  Widget aciklamaText(int? index) => Text(
-        "${paramModel?.toJson()["SatisEkAciklamaTanimi$index"] ?? "Açıklama $index"}: ${widget.model.toJson()["ACIK$index"]}",
-        style: TextStyle(
-          color: theme.colorScheme.onSurface.withOpacity(0.6),
-        ),
-      ).yetkiVarMi(widget.model.toJson()["ACIK$index"] != null && widget.showEkAciklama == true);
+  Widget aciklamaText(int? index) => Text("${paramModel?.toJson()["SatisEkAciklamaTanimi$index"] ?? "Açıklama $index"}: ${widget.model.toJson()["ACIK$index"]}", style: greyTextStyle)
+      .yetkiVarMi(widget.model.toJson()["ACIK$index"] != null && widget.showEkAciklama == true);
 
   ParamModel? get paramModel => CacheManager.getAnaVeri()?.paramModel;
 }

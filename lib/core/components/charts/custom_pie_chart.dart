@@ -1,11 +1,11 @@
 import "package:fl_chart/fl_chart.dart";
 import "package:flutter/material.dart";
 import "package:kartal/kartal.dart";
+
+import "../../base/state/base_state.dart";
 import "../../constants/extensions/number_extensions.dart";
 import "../../constants/ui_helper/duration_helper.dart";
 import "../../constants/ui_helper/ui_helper.dart";
-
-import "../../base/state/base_state.dart";
 
 class CustomPieChart extends StatefulWidget {
   final List<String>? pieChartTitle;
@@ -40,7 +40,7 @@ class _CustomPieChartState extends BaseState<CustomPieChart> {
                               touchedIndex = pieTouchResponse.touchedSection!.touchedSectionIndex;
                               if (touchedIndex >= 0) {
                                 dialogManager.showSnackBar(
-                                    "${widget.pieChartTitle?[pieTouchResponse.touchedSection!.touchedSectionIndex] ?? widget.pieChartSelectedValue?[pieTouchResponse.touchedSection!.touchedSectionIndex].toString() ?? ''}\n${widget.pieChartValue?[pieTouchResponse.touchedSection!.touchedSectionIndex].commaSeparatedWithFixedDigits} TL");
+                                    "${widget.pieChartTitle?[pieTouchResponse.touchedSection!.touchedSectionIndex] ?? widget.pieChartSelectedValue?[pieTouchResponse.touchedSection!.touchedSectionIndex].toString() ?? ''}\n${widget.pieChartValue?[pieTouchResponse.touchedSection!.touchedSectionIndex].commaSeparatedWithFixedDigits} $mainCurrency");
                               }
                             },
                           ),

@@ -177,10 +177,10 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                       return Column(
                         children: [
                           Text("Satışlar (Fatura)", style: TextStyleHelper.title),
-                          Observer(builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunSatis.commaSeparatedWithFixedDigits} TL"))),
-                          Observer(builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAySatis.commaSeparatedWithFixedDigits} TL"))),
-                          Observer(builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAySatis.commaSeparatedWithFixedDigits} TL"))),
-                          Observer(builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilSatis.commaSeparatedWithFixedDigits} TL"))),
+                          Observer(builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunSatis.commaSeparatedWithFixedDigits} $mainCurrency"))),
+                          Observer(builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAySatis.commaSeparatedWithFixedDigits} $mainCurrency"))),
+                          Observer(builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAySatis.commaSeparatedWithFixedDigits} $mainCurrency"))),
+                          Observer(builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilSatis.commaSeparatedWithFixedDigits} $mainCurrency"))),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -206,10 +206,10 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                         child: Column(
                       children: [
                         Text("Alışlar (Fatura)", style: TextStyleHelper.title),
-                        Observer(builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunAlis.commaSeparatedWithFixedDigits} TL"))),
-                        Observer(builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAyAlis.commaSeparatedWithFixedDigits} TL"))),
-                        Observer(builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAyAlis.commaSeparatedWithFixedDigits} TL"))),
-                        Observer(builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilAlis.commaSeparatedWithFixedDigits} TL"))),
+                        Observer(builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunAlis.commaSeparatedWithFixedDigits} $mainCurrency"))),
+                        Observer(builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAyAlis.commaSeparatedWithFixedDigits} $mainCurrency"))),
+                        Observer(builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAyAlis.commaSeparatedWithFixedDigits} $mainCurrency"))),
+                        Observer(builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilAlis.commaSeparatedWithFixedDigits} $mainCurrency"))),
                         Observer(builder: (_) {
                           return CustomLineChart(lineChartValue: viewModel.getAylikAlislar);
                         }),
@@ -219,10 +219,10 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                         child: Column(
                       children: [
                         Text("Müşteri Siparişleri", style: TextStyleHelper.title),
-                        Observer(builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunAlis.commaSeparatedWithFixedDigits} TL"))),
-                        Observer(builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAyAlis.commaSeparatedWithFixedDigits} TL"))),
-                        Observer(builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAyAlis.commaSeparatedWithFixedDigits} TL"))),
-                        Observer(builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilAlis.commaSeparatedWithFixedDigits} TL"))),
+                        Observer(builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunAlis.commaSeparatedWithFixedDigits} $mainCurrency"))),
+                        Observer(builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAyAlis.commaSeparatedWithFixedDigits} $mainCurrency"))),
+                        Observer(builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAyAlis.commaSeparatedWithFixedDigits} $mainCurrency"))),
+                        Observer(builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilAlis.commaSeparatedWithFixedDigits} $mainCurrency"))),
                         Observer(builder: (_) {
                           return CustomLineChart(lineChartValue: viewModel.getAylikSiparisler);
                         }),
@@ -232,10 +232,10 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                         child: Column(
                       children: [
                         Text("Tahsilatlar", style: TextStyleHelper.title),
-                        Observer(builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunTahsilatlar.commaSeparatedWithFixedDigits} TL"))),
-                        Observer(builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAyTahsilatlar.commaSeparatedWithFixedDigits} TL"))),
-                        Observer(builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAyTahsilatlar.commaSeparatedWithFixedDigits} TL"))),
-                        Observer(builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilTahsilatlar.commaSeparatedWithFixedDigits} TL"))),
+                        Observer(builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunTahsilatlar.commaSeparatedWithFixedDigits} $mainCurrency"))),
+                        Observer(builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAyTahsilatlar.commaSeparatedWithFixedDigits} $mainCurrency"))),
+                        Observer(builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAyTahsilatlar.commaSeparatedWithFixedDigits} $mainCurrency"))),
+                        Observer(builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilTahsilatlar.commaSeparatedWithFixedDigits} $mainCurrency"))),
                         Observer(builder: (_) {
                           return CustomLineChart(lineChartValue: viewModel.getAylikTahsilatlar);
                         }),
