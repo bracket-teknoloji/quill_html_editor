@@ -3,42 +3,44 @@ import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../../../../base/model/base_edit_model.dart";
-import "../../../../../../base/view/pdf_viewer/model/pdf_viewer_model.dart";
-import "../../../../../dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
-import "../../../../../dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "../view_model/islemler_menu_item_constants_view_model.dart";
-import "../../kod_degistir_model.dart";
-import "../../../../../helper_widgets/custom_label_widget.dart";
-import "../../../../../textfield/custom_text_field.dart";
-import "../../../../../../constants/extensions/list_extensions.dart";
-import "../../../../../../constants/extensions/model_extensions.dart";
-import "../../../../../../constants/static_variables/static_variables.dart";
-import "../../../../../../init/network/network_manager.dart";
+import "package:share_plus/share_plus.dart";
+
 import "../../../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../../../../../../view/main_page/alt_sayfalar/cari/cari_network_manager.dart";
+import "../../../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "../../../../../../../view/main_page/model/grid_item_model.dart";
 import "../../../../../../../view/main_page/model/param_model.dart";
-import "package:share_plus/share_plus.dart";
-
-import "../../../../../../../view/main_page/alt_sayfalar/cari/cari_network_manager.dart";
-import "../../../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../../../base/model/base_edit_model.dart";
+import "../../../../../../base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "../../../../../../base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "../../../../../../constants/enum/base_edit_enum.dart";
 import "../../../../../../constants/enum/islem_tipi_enum.dart";
+import "../../../../../../constants/enum/siparis_tipi_enum.dart";
+import "../../../../../../constants/extensions/list_extensions.dart";
+import "../../../../../../constants/extensions/model_extensions.dart";
+import "../../../../../../constants/static_variables/static_variables.dart";
 import "../../../../../../constants/ui_helper/ui_helper.dart";
 import "../../../../../../init/cache/cache_manager.dart";
 import "../../../../../../init/network/login/api_urls.dart";
+import "../../../../../../init/network/network_manager.dart";
+import "../../../../../dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
+import "../../../../../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../dialog/dialog_manager.dart";
+import "../../../../../helper_widgets/custom_label_widget.dart";
+import "../../../../../textfield/custom_text_field.dart";
+import "../../kod_degistir_model.dart";
+import "../view_model/islemler_menu_item_constants_view_model.dart";
 
 class IslemlerMenuItemConstants<T> {
   IslemlerMenuItemConstantsViewModel viewModel = IslemlerMenuItemConstantsViewModel();
   BottomSheetDialogManager bottomSheetDialogManager = BottomSheetDialogManager();
   IslemTipiEnum islemtipi;
+  SiparisTipiEnum? siparisTipi;
   List<GridItemModel?> islemlerList = [];
   T? model;
   // T? get model2 => model;
-  IslemlerMenuItemConstants({required this.islemtipi, List<GridItemModel?>? raporlar, this.model}) {
+  IslemlerMenuItemConstants({required this.islemtipi, List<GridItemModel?>? raporlar, this.model, this.siparisTipi}) {
     if (islemtipi == IslemTipiEnum.stok) {
       islemlerList.add(stokKarti);
       islemlerList.add(kopyala);

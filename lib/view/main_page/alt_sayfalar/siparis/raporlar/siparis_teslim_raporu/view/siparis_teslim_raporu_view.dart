@@ -1,23 +1,24 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
-import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_widget_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
+import "../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
+import "../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../../../stok/stok_liste/model/stok_listesi_model.dart";
 import "../../../base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../siparisler/model/siparisler_widget_model.dart";
 import "../view_model/siparis_teslim_raporu_view_model.dart";
 
 class SiparisTeslimRaporuView extends StatefulWidget {
   final SiparisTipiEnum siparisTipiEnum;
-  const SiparisTeslimRaporuView({super.key, required this.siparisTipiEnum});
+  final BaseSiparisEditModel? baseSiparisEditModel;
+  const SiparisTeslimRaporuView({super.key, required this.siparisTipiEnum, this.baseSiparisEditModel});
 
   @override
   State<SiparisTeslimRaporuView> createState() => _YaslandirmaRaporuViewState();
@@ -36,8 +37,10 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
   @override
   void initState() {
     viewModel = SiparisTeslimRaporuViewModel(siparisTipiEnum);
-    belgeNoController = TextEditingController();
-    cariController = TextEditingController();
+    viewModel.setBelgeNo(widget.baseSiparisEditModel?.belgeNo);
+    viewModel.setCariKodu(widget.baseSiparisEditModel?.cariKodu);
+    belgeNoController = TextEditingController(text: widget.baseSiparisEditModel?.belgeNo ?? "");
+    cariController = TextEditingController(text: widget.baseSiparisEditModel?.cariAdi ?? "");
     vergiNoController = TextEditingController();
     stokController = TextEditingController();
     baslangicTarihiController = TextEditingController();
@@ -58,7 +61,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
 
   @override
   Widget build(BuildContext context) {
-    return PDFViewerView(filterBottomSheet: filterBottomSheet, title: "${widget.siparisTipiEnum == SiparisTipiEnum.musteri ? "Müş.Sip." : "Sat. Sip."} Teslim Raporu", pdfData: viewModel.pdfModel);
+    return PDFViewerView(filterBottomSheet: filterBottomSheet, title: "${widget.siparisTipiEnum == SiparisTipiEnum.musteri ? "Müş. Sip." : "Sat. Sip."} Teslim Raporu", pdfData: viewModel.pdfModel);
   }
 
   Future<bool> filterBottomSheet() async {

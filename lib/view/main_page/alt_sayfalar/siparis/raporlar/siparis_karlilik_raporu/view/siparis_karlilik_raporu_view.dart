@@ -1,23 +1,24 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
-import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_widget_model.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
+import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
+import "../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../model/param_model.dart";
+import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../siparisler/model/siparisler_widget_model.dart";
 import "../view_model/siparis_karlilik_raporu_view_model.dart";
 
 class SiparisKarlilikRaporuView extends StatefulWidget {
-  const SiparisKarlilikRaporuView({super.key});
+  final BaseSiparisEditModel? model;
+  const SiparisKarlilikRaporuView({super.key, this.model});
 
   @override
   State<SiparisKarlilikRaporuView> createState() => _YaslandirmaRaporuViewState();
@@ -40,8 +41,10 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
   @override
   void initState() {
     viewModel = SiparisKarlilikRaporuViewModel();
-    belgeNoController = TextEditingController();
-    cariController = TextEditingController();
+    viewModel.setBelgeNo(widget.model?.belgeNo);
+    belgeNoController = TextEditingController(text: widget.model?.belgeNo ?? "");
+    viewModel.setCariKodu(widget.model?.cariKodu);
+    cariController = TextEditingController(text: widget.model?.cariAdi ?? "");
     vergiNoController = TextEditingController();
     plasiyerController = TextEditingController();
     maliyetTipiController = TextEditingController();

@@ -3,23 +3,25 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_staggered_animations/flutter_staggered_animations.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../model/islemler_menu_item/model/islemler_menu_item_constants.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../../../view/main_page/model/grid_item_model.dart";
 import "../../../../../view/main_page/model/menu_item/menu_item_constants.dart";
 import "../../../../base/state/base_state.dart";
 import "../../../../constants/enum/islem_tipi_enum.dart";
+import "../../../../constants/enum/siparis_tipi_enum.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../animated_islemler_grid_tile.dart";
+import "../model/islemler_menu_item/model/islemler_menu_item_constants.dart";
 import "../view_model/custom_animated_grid_view_model.dart";
 
 class CustomAnimatedGridView<T> extends StatefulWidget {
   final CariListesiModel? cariListesiModel;
   final IslemTipiEnum islemTipi;
+  final SiparisTipiEnum? siparisTipi;
   final T? model;
   final String? title;
-  const CustomAnimatedGridView({super.key, this.cariListesiModel, required this.islemTipi, this.model, this.title});
+  const CustomAnimatedGridView({super.key, this.cariListesiModel, required this.islemTipi, this.model, this.title, this.siparisTipi});
   @override
   State<CustomAnimatedGridView> createState() => _CustomAnimatedGridViewState();
 }
@@ -36,7 +38,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
   void initState() {
     // viewModel.setGridItemModel(result.getList().first.altMenuler?.where((element) => element.title == "Raporlar").first.altMenuler?.where((element) => element.yetkiKontrol == true).toList());
     if (islemMi) {
-      IslemlerMenuItemConstants islemlerResult = IslemlerMenuItemConstants(islemtipi: widget.islemTipi, raporlar: getRaporList(widget.islemTipi), model: widget.cariListesiModel ?? widget.model);
+      IslemlerMenuItemConstants islemlerResult = IslemlerMenuItemConstants(islemtipi: widget.islemTipi,  raporlar: getRaporList(widget.islemTipi), siparisTipi: widget.siparisTipi, model: widget.cariListesiModel ?? widget.model);
       viewModel.setGridItemModel(islemlerResult.islemlerList.whereType<GridItemModel>().toList());
     } else if (raporMu) {
       if (widget.islemTipi == IslemTipiEnum.cariRapor) {
@@ -44,7 +46,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
       } else if (widget.islemTipi == IslemTipiEnum.stokRapor) {
         viewModel.setGridItemModel(getRaporList(IslemTipiEnum.stok)?.first.altMenuler);
       }else if (widget.islemTipi == IslemTipiEnum.siparis){
-        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.siparis)?.first.altMenuler);
+        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.siparis)?.first.altMenuler?.where((element) => element.siparisTipi == widget.siparisTipi).toList());
       }
     }
     super.initState();

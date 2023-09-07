@@ -1,12 +1,12 @@
 import "package:collection/collection.dart";
 import "package:flutter/foundation.dart";
+
 import "../../../../core/constants/enum/serbest_rapor_detay_kod_enum.dart";
 import "../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../core/constants/extensions/widget_extensions.dart";
-import "../../alt_sayfalar/siparis/siparisler/model/siparisler_widget_model.dart";
-
 import "../../../../core/constants/grid_constants.dart";
 import "../../../../core/init/cache/cache_manager.dart";
+import "../../alt_sayfalar/siparis/siparisler/model/siparisler_widget_model.dart";
 import "../grid_item_model.dart";
 import "../main_page_model.dart";
 import "../param_model.dart";
@@ -94,11 +94,11 @@ class MenuItemConstants {
           name: "siparis_SaticiSiparisi", title: "Satıcı Siparişleri", route: "/mainPage/siparisMusteriSiparisi", arguments: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.satici)),
       GridItemModel.altmenu(name: "siparis_SaticiSiparisi_Raporlar", title: "Raporlar", altMenuler: [
         // GridItemModel.item(name: "siparis_MusteriSiparisi_DurumRaporu", title: "Müşteri Siparişi Durum Raporu"),
-        GridItemModel.item(name: "siparis_MusteriSiparisi_DurumRaporu", title: "Müşteri Siparişi Durum Raporu", route: "/mainPage/siparisMusteriSiparisiDurumRaporu"),
-        GridItemModel.item(name: "siparis_SaticiSiparisi_DurumRaporu", title: "Satıcı Sİparişi Durum Raporu", route: "/mainPage/siparisSaticiSiparisiDurumRaporu"),
-        GridItemModel.item(name: "siparis_MusSip_KarlilikRaporu", title: "Sipariş Karlılık Raporu", route: "/mainPage/siparisSiparisKarlilikRaporu"),
-        GridItemModel.item(name: "siparis_MusSip_TeslimRaporu", title: "Müşteri Siparişi Teslim Raporu", route: "/mainPage/siparisTeslimRaporu", arguments: SiparisTipiEnum.musteri),
-        GridItemModel.item(name: "siparis_SaticiSip_TeslimRaporu", title: "Satıcı Siparişi Teslim Raporu", route: "/mainPage/siparisTeslimRaporu", arguments: SiparisTipiEnum.satici),
+        GridItemModel.item(name: "siparis_MusteriSiparisi_DurumRaporu", title: "Müşteri Siparişi Durum Raporu",siparisTipi: SiparisTipiEnum.musteri, route: "/mainPage/siparisMusteriSiparisiDurumRaporu"),
+        GridItemModel.item(name: "siparis_SaticiSiparisi_DurumRaporu", title: "Satıcı Sİparişi Durum Raporu", siparisTipi: SiparisTipiEnum.satici, route: "/mainPage/siparisSaticiSiparisiDurumRaporu"),
+        GridItemModel.item(name: "siparis_MusSip_KarlilikRaporu", title: "Sipariş Karlılık Raporu",siparisTipi: SiparisTipiEnum.musteri, route: "/mainPage/siparisSiparisKarlilikRaporu"),
+        GridItemModel.item(name: "siparis_MusSip_TeslimRaporu", title: "Müşteri Siparişi Teslim Raporu",siparisTipi: SiparisTipiEnum.musteri, route: "/mainPage/siparisMusteriSiparisiTeslimRaporu"),
+        GridItemModel.item(name: "siparis_SaticiSip_TeslimRaporu", title: "Satıcı Siparişi Teslim Raporu",siparisTipi: SiparisTipiEnum.satici, route: "/mainPage/siparisSaticiSiparisiTeslimRaporu"),
         GridItemModel.item(name: "siparis_SaticiSip_TeslimRaporu", title: "Stok İhtiyaç Raporu", route: "/mainPage/siparisStokIhtiyacRaporu"),
         // GridItemModel.item(name: "siparis_SaticiSiparisi_DurumRaporu", title: "Satıcı Sİparişi Durum Raporu", route: "/mainPage/siparisSaticiSiparisiDurumRaporu"),
         // GridItemModel.item(name: "siparis_MusSip_KarlilikRaporu", title: "Sipariş Karlılık Raporu", route: "/mainPage/siparisSiparisKarlikRaporu"),

@@ -1,13 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../base/state/base_state.dart";
-import "../badge/colorful_badge.dart";
-import "../../constants/extensions/date_time_extensions.dart";
-import "../../constants/extensions/list_extensions.dart";
-import "../../constants/extensions/model_extensions.dart";
-import "../../constants/extensions/number_extensions.dart";
-import "../../constants/extensions/widget_extensions.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -15,11 +8,19 @@ import "../../../view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_ed
 import "../../../view/main_page/model/param_model.dart";
 import "../../base/model/base_edit_model.dart";
 import "../../base/model/delete_fatura_model.dart";
+import "../../base/state/base_state.dart";
 import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/enum/base_edit_enum.dart";
 import "../../constants/enum/siparis_tipi_enum.dart";
+import "../../constants/extensions/date_time_extensions.dart";
+import "../../constants/extensions/list_extensions.dart";
+import "../../constants/extensions/model_extensions.dart";
+import "../../constants/extensions/number_extensions.dart";
+import "../../constants/extensions/widget_extensions.dart";
+import "../../constants/static_variables/static_variables.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../../init/cache/cache_manager.dart";
+import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 class SiparislerCard extends StatefulWidget {
@@ -44,7 +45,9 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
   Widget build(BuildContext context) {
     return Card(
         child: ListTile(
-      onLongPress: widget.model.remoteTempBelgeEtiketi == null ? () => dialogManager.showSiparisGridViewDialog(widget.model) : null,
+      onLongPress: widget.model.remoteTempBelgeEtiketi == null
+          ? () => dialogManager.showSiparisGridViewDialog(widget.model, siparisTipi: StaticVariables.instance.isMusteriSiparisleri ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici)
+          : null,
       onTap: widget.isGetData == true
           ? () => Get.back(result: widget.model)
           : () async {

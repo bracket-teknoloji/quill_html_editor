@@ -7,15 +7,16 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:kartal/kartal.dart";
-import "../../constants/extensions/date_time_extensions.dart";
-import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 import "../../../view/add_company/model/account_model.dart";
 import "../../../view/add_company/model/account_response_model.dart";
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "../../base/model/login_dialog_model.dart";
 import "../../constants/enum/islem_tipi_enum.dart";
+import "../../constants/enum/siparis_tipi_enum.dart";
+import "../../constants/extensions/date_time_extensions.dart";
 import "../../constants/ui_helper/icon_helper.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../../init/app_info/app_info.dart";
@@ -132,7 +133,9 @@ class DialogManager {
     ).show();
     return result;
   }
-  Future<void> showDialog({required Widget body, void Function()? onYes}) async=>await _baseDialog(body: body, onOk: onYes,onCancel: (){}, btnCancelText: "Hayır", btnOkText: onYes != null?"Evet": null, dialogType: DialogType.question).show();
+
+  Future<void> showDialog({required Widget body, void Function()? onYes}) async =>
+      await _baseDialog(body: body, onOk: onYes, onCancel: () {}, btnCancelText: "Hayır", btnOkText: onYes != null ? "Evet" : null, dialogType: DialogType.question).show();
 
   void showGridViewDialog(Widget body) => _baseDialog(body: body, onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
@@ -143,8 +146,8 @@ class DialogManager {
   void showStokGridViewDialog(StokListesiModel? model, [IslemTipiEnum? tip]) =>
       _baseDialog(body: CustomAnimatedGridView<StokListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.stok), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
-  void showSiparisGridViewDialog(BaseSiparisEditModel? model, [IslemTipiEnum? tip]) => _baseDialog(
-          body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.siparis, title: model?.belgeNo),
+  void showSiparisGridViewDialog(BaseSiparisEditModel? model, {IslemTipiEnum? tip, SiparisTipiEnum? siparisTipi}) => _baseDialog(
+          body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.siparis, siparisTipi: siparisTipi, title: model?.belgeNo),
           onOk: () {},
           btnOkText: "İptal",
           dialogType: DialogType.noHeader)
@@ -265,10 +268,10 @@ class DialogManager {
         behavior: SnackBarBehavior.fixed,
       );
 
-  AwesomeDialog _areYouSureDialog(void Function() onYes,String? desc) {
+  AwesomeDialog _areYouSureDialog(void Function() onYes, String? desc) {
     return _baseDialog(
       title: "Uyarı",
-      desc: desc?? "Bu işlemi yapmak istediğinizden emin misiniz?",
+      desc: desc ?? "Bu işlemi yapmak istediğinizden emin misiniz?",
       dialogType: DialogType.question,
       onOk: onYes,
       btnOkText: "Evet",
