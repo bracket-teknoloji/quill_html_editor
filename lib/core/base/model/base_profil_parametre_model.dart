@@ -13,6 +13,7 @@ abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, Network
   @Default(false)  bool siparisMiktar,
   @Default(false)  bool siparisVade,
   @Default(false)  bool kurlariSilTekrarGuncelle,
+  @Default(false)  bool stokResimleriGoster,
   }) = _BaseProfilParametreModel;
   factory BaseProfilParametreModel.fromJson(Map<String, dynamic> json) => _$BaseProfilParametreModelFromJson(json);
   //Empty constructor

@@ -60,9 +60,4 @@ abstract class _BaseSiparislerGenelViewModelBase with Store {
     BaseSiparisEditModel.setInstance(model);
   }
 
-  // @action
-  // void setCariKodu(String? value) {
-  //   model = model.copyWith(cariKodu: value, cariModel: model.cariModel?..cariKodu = value);
-  //   BaseSiparisEditModel.setInstance(model);
-  // }
 }

@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
+import "../../../../../../core/init/cache/cache_manager.dart";
 import "../model/stok_bottom_sheet_model.dart";
 import "../model/stok_listesi_model.dart";
 
@@ -69,14 +70,16 @@ abstract class _StokListesiViewModelBase with Store {
   String get kod5 => bottomSheetModel.arrKod5?.map((e) => e.grupAdi).toList().join(", ") ?? "";
 
   @observable
-  String resimleriGoster = "H";
+  String resimleriGoster = CacheManager.getProfilParametre.stokResimleriGoster? "E": "H";
 
   @action
   void setResimleriGoster() {
     if (resimleriGoster == "H") {
       resimleriGoster = "E";
+      CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(stokResimleriGoster: true));
     } else {
       resimleriGoster = "H";
+      CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(stokResimleriGoster: false));
     }
   }
 

@@ -461,7 +461,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         onTap: () async {
                           var result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context);
                           if (result != null) {
-                            dovizTipiController.text = result.isim ?? "";
+
                             viewModel.setDovizAdi(result.isim ?? "");
                             viewModel.kalemModel.dovizTipi = result.dovizKodu;
                             getDovizData();

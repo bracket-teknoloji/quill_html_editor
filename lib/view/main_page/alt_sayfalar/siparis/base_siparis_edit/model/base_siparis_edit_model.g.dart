@@ -63,17 +63,17 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel genelToplam(double? genelToplam);
 
-  BaseSiparisEditModel genIsk1O(double? genIsk1O);
+  BaseSiparisEditModel genIsk1o(double? genIsk1o);
 
-  BaseSiparisEditModel genIsk1T(double? genIsk1T);
+  BaseSiparisEditModel genIsk1t(double? genIsk1t);
 
-  BaseSiparisEditModel genIsk2O(double? genIsk2O);
+  BaseSiparisEditModel genIsk2o(double? genIsk2o);
 
-  BaseSiparisEditModel genIsk2T(double? genIsk2T);
+  BaseSiparisEditModel genIsk2t(double? genIsk2t);
 
-  BaseSiparisEditModel genIsk3O(double? genIsk3O);
+  BaseSiparisEditModel genIsk3o(double? genIsk3o);
 
-  BaseSiparisEditModel genIsk3T(double? genIsk3T);
+  BaseSiparisEditModel genIsk3t(double? genIsk3t);
 
   BaseSiparisEditModel kdv(double? kdv);
 
@@ -276,12 +276,12 @@ abstract class _$BaseSiparisEditModelCWProxy {
     double? genelIskonto2,
     double? genelIskonto3,
     double? genelToplam,
-    double? genIsk1O,
-    double? genIsk1T,
-    double? genIsk2O,
-    double? genIsk2T,
-    double? genIsk3O,
-    double? genIsk3T,
+    double? genIsk1o,
+    double? genIsk1t,
+    double? genIsk2o,
+    double? genIsk2t,
+    double? genIsk3o,
+    double? genIsk3t,
     double? kdv,
     int? belgeTipi,
     int? cikisDepoKodu,
@@ -486,22 +486,22 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(genelToplam: genelToplam);
 
   @override
-  BaseSiparisEditModel genIsk1O(double? genIsk1O) => this(genIsk1O: genIsk1O);
+  BaseSiparisEditModel genIsk1o(double? genIsk1o) => this(genIsk1o: genIsk1o);
 
   @override
-  BaseSiparisEditModel genIsk1T(double? genIsk1T) => this(genIsk1T: genIsk1T);
+  BaseSiparisEditModel genIsk1t(double? genIsk1t) => this(genIsk1t: genIsk1t);
 
   @override
-  BaseSiparisEditModel genIsk2O(double? genIsk2O) => this(genIsk2O: genIsk2O);
+  BaseSiparisEditModel genIsk2o(double? genIsk2o) => this(genIsk2o: genIsk2o);
 
   @override
-  BaseSiparisEditModel genIsk2T(double? genIsk2T) => this(genIsk2T: genIsk2T);
+  BaseSiparisEditModel genIsk2t(double? genIsk2t) => this(genIsk2t: genIsk2t);
 
   @override
-  BaseSiparisEditModel genIsk3O(double? genIsk3O) => this(genIsk3O: genIsk3O);
+  BaseSiparisEditModel genIsk3o(double? genIsk3o) => this(genIsk3o: genIsk3o);
 
   @override
-  BaseSiparisEditModel genIsk3T(double? genIsk3T) => this(genIsk3T: genIsk3T);
+  BaseSiparisEditModel genIsk3t(double? genIsk3t) => this(genIsk3t: genIsk3t);
 
   @override
   BaseSiparisEditModel kdv(double? kdv) => this(kdv: kdv);
@@ -821,12 +821,12 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? genelIskonto2 = const $CopyWithPlaceholder(),
     Object? genelIskonto3 = const $CopyWithPlaceholder(),
     Object? genelToplam = const $CopyWithPlaceholder(),
-    Object? genIsk1O = const $CopyWithPlaceholder(),
-    Object? genIsk1T = const $CopyWithPlaceholder(),
-    Object? genIsk2O = const $CopyWithPlaceholder(),
-    Object? genIsk2T = const $CopyWithPlaceholder(),
-    Object? genIsk3O = const $CopyWithPlaceholder(),
-    Object? genIsk3T = const $CopyWithPlaceholder(),
+    Object? genIsk1o = const $CopyWithPlaceholder(),
+    Object? genIsk1t = const $CopyWithPlaceholder(),
+    Object? genIsk2o = const $CopyWithPlaceholder(),
+    Object? genIsk2t = const $CopyWithPlaceholder(),
+    Object? genIsk3o = const $CopyWithPlaceholder(),
+    Object? genIsk3t = const $CopyWithPlaceholder(),
     Object? kdv = const $CopyWithPlaceholder(),
     Object? belgeTipi = const $CopyWithPlaceholder(),
     Object? cikisDepoKodu = const $CopyWithPlaceholder(),
@@ -1025,30 +1025,30 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.genelToplam
           // ignore: cast_nullable_to_non_nullable
           : genelToplam as double?,
-      genIsk1O: genIsk1O == const $CopyWithPlaceholder()
-          ? _value.genIsk1O
+      genIsk1o: genIsk1o == const $CopyWithPlaceholder()
+          ? _value.genIsk1o
           // ignore: cast_nullable_to_non_nullable
-          : genIsk1O as double?,
-      genIsk1T: genIsk1T == const $CopyWithPlaceholder()
-          ? _value.genIsk1T
+          : genIsk1o as double?,
+      genIsk1t: genIsk1t == const $CopyWithPlaceholder()
+          ? _value.genIsk1t
           // ignore: cast_nullable_to_non_nullable
-          : genIsk1T as double?,
-      genIsk2O: genIsk2O == const $CopyWithPlaceholder()
-          ? _value.genIsk2O
+          : genIsk1t as double?,
+      genIsk2o: genIsk2o == const $CopyWithPlaceholder()
+          ? _value.genIsk2o
           // ignore: cast_nullable_to_non_nullable
-          : genIsk2O as double?,
-      genIsk2T: genIsk2T == const $CopyWithPlaceholder()
-          ? _value.genIsk2T
+          : genIsk2o as double?,
+      genIsk2t: genIsk2t == const $CopyWithPlaceholder()
+          ? _value.genIsk2t
           // ignore: cast_nullable_to_non_nullable
-          : genIsk2T as double?,
-      genIsk3O: genIsk3O == const $CopyWithPlaceholder()
-          ? _value.genIsk3O
+          : genIsk2t as double?,
+      genIsk3o: genIsk3o == const $CopyWithPlaceholder()
+          ? _value.genIsk3o
           // ignore: cast_nullable_to_non_nullable
-          : genIsk3O as double?,
-      genIsk3T: genIsk3T == const $CopyWithPlaceholder()
-          ? _value.genIsk3T
+          : genIsk3o as double?,
+      genIsk3t: genIsk3t == const $CopyWithPlaceholder()
+          ? _value.genIsk3t
           // ignore: cast_nullable_to_non_nullable
-          : genIsk3T as double?,
+          : genIsk3t as double?,
       kdv: kdv == const $CopyWithPlaceholder()
           ? _value.kdv
           // ignore: cast_nullable_to_non_nullable
@@ -2402,12 +2402,12 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       genelIskonto2: fields[25] as double?,
       genelIskonto3: fields[26] as double?,
       genelToplam: fields[27] as double?,
-      genIsk1O: fields[28] as double?,
-      genIsk1T: fields[29] as double?,
-      genIsk2O: fields[30] as double?,
-      genIsk2T: fields[31] as double?,
-      genIsk3O: fields[32] as double?,
-      genIsk3T: fields[33] as double?,
+      genIsk1o: fields[28] as double?,
+      genIsk1t: fields[29] as double?,
+      genIsk2o: fields[30] as double?,
+      genIsk2t: fields[31] as double?,
+      genIsk3o: fields[32] as double?,
+      genIsk3t: fields[33] as double?,
       kdv: fields[34] as double?,
       belgeTipi: fields[35] as int?,
       cikisDepoKodu: fields[36] as int?,
@@ -2558,17 +2558,17 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(27)
       ..write(obj.genelToplam)
       ..writeByte(28)
-      ..write(obj.genIsk1O)
+      ..write(obj.genIsk1o)
       ..writeByte(29)
-      ..write(obj.genIsk1T)
+      ..write(obj.genIsk1t)
       ..writeByte(30)
-      ..write(obj.genIsk2O)
+      ..write(obj.genIsk2o)
       ..writeByte(31)
-      ..write(obj.genIsk2T)
+      ..write(obj.genIsk2t)
       ..writeByte(32)
-      ..write(obj.genIsk3O)
+      ..write(obj.genIsk3o)
       ..writeByte(33)
-      ..write(obj.genIsk3T)
+      ..write(obj.genIsk3t)
       ..writeByte(34)
       ..write(obj.kdv)
       ..writeByte(35)
@@ -3078,14 +3078,14 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       genelIskonto2: (json['GENEL_ISKONTO2'] as num?)?.toDouble(),
       genelIskonto3: (json['GENEL_ISKONTO3'] as num?)?.toDouble(),
       genelToplam: (json['GENEL_TOPLAM'] as num?)?.toDouble(),
-      genIsk1O: (json['GEN_ISK1_O'] as num?)?.toDouble(),
-      genIsk1T: (json['GEN_ISK1_T'] as num?)?.toDouble(),
-      genIsk2O: (json['GEN_ISK2_O'] as num?)?.toDouble(),
-      genIsk2T: (json['GEN_ISK2_T'] as num?)?.toDouble(),
-      genIsk3O: (json['GEN_ISK3_O'] as num?)?.toDouble(),
-      genIsk3T: (json['GEN_ISK3_T'] as num?)?.toDouble(),
+      genIsk1o: (json['GEN_ISK1O'] as num?)?.toDouble(),
+      genIsk1t: (json['GEN_ISK1T'] as num?)?.toDouble(),
+      genIsk2o: (json['GEN_ISK2O'] as num?)?.toDouble(),
+      genIsk2t: (json['GEN_ISK2T'] as num?)?.toDouble(),
+      genIsk3o: (json['GEN_ISK3O'] as num?)?.toDouble(),
+      genIsk3t: (json['GEN_ISK3T'] as num?)?.toDouble(),
       kdv: (json['KDV'] as num?)?.toDouble(),
-      belgeTipi: json['BELGE_TIPI'] as int?,
+      belgeTipi: json['BelgeTipi'] as int?,
       cikisDepoKodu: json['CIKIS_DEPO_KODU'] as int?,
       genisk1Tipi: json['GENISK1_TIPI'] as int?,
       genisk2Tipi: json['GENISK2_TIPI'] as int?,
@@ -3127,22 +3127,22 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       belgeTuru: json['BELGE_TURU'] as String?,
       cariAdi: json['CARI_ADI'] as String?,
       cariKodu: json['CARI_KODU'] as String?,
-      ekAcik1: json['EK_ACIK1'] as String?,
-      ekAcik10: json['EK_ACIK10'] as String?,
-      ekAcik11: json['EK_ACIK11'] as String?,
-      ekAcik12: json['EK_ACIK12'] as String?,
-      ekAcik13: json['EK_ACIK13'] as String?,
-      ekAcik14: json['EK_ACIK14'] as String?,
-      ekAcik15: json['EK_ACIK15'] as String?,
-      ekAcik16: json['EK_ACIK16'] as String?,
-      ekAcik2: json['EK_ACIK2'] as String?,
-      ekAcik3: json['EK_ACIK3'] as String?,
-      ekAcik4: json['EK_ACIK4'] as String?,
-      ekAcik5: json['EK_ACIK5'] as String?,
-      ekAcik6: json['EK_ACIK6'] as String?,
-      ekAcik7: json['EK_ACIK7'] as String?,
-      ekAcik8: json['EK_ACIK8'] as String?,
-      ekAcik9: json['EK_ACIK9'] as String?,
+      ekAcik1: json['EK_ACIK_1'] as String?,
+      ekAcik10: json['EK_ACIK_10'] as String?,
+      ekAcik11: json['EK_ACIK_11'] as String?,
+      ekAcik12: json['EK_ACIK_12'] as String?,
+      ekAcik13: json['EK_ACIK_13'] as String?,
+      ekAcik14: json['EK_ACIK_14'] as String?,
+      ekAcik15: json['EK_ACIK_51'] as String?,
+      ekAcik16: json['EK_ACIK_16'] as String?,
+      ekAcik2: json['EK_ACIK_2'] as String?,
+      ekAcik3: json['EK_ACIK_3'] as String?,
+      ekAcik4: json['EK_ACIK_4'] as String?,
+      ekAcik5: json['EK_ACIK_5'] as String?,
+      ekAcik6: json['EK_ACIK_6'] as String?,
+      ekAcik7: json['EK_ACIK_7'] as String?,
+      ekAcik8: json['EK_ACIK_8'] as String?,
+      ekAcik9: json['EK_ACIK_9'] as String?,
       ekAciklama: json['EK_ACIKLAMA'] as String?,
       islemId: json['ISLEM_ID'] as String?,
       kayityapankul: json['KAYITYAPANKUL'] as String?,
@@ -3217,14 +3217,14 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('GENEL_ISKONTO2', instance.genelIskonto2);
   writeNotNull('GENEL_ISKONTO3', instance.genelIskonto3);
   writeNotNull('GENEL_TOPLAM', instance.genelToplam);
-  writeNotNull('GEN_ISK1_O', instance.genIsk1O);
-  writeNotNull('GEN_ISK1_T', instance.genIsk1T);
-  writeNotNull('GEN_ISK2_O', instance.genIsk2O);
-  writeNotNull('GEN_ISK2_T', instance.genIsk2T);
-  writeNotNull('GEN_ISK3_O', instance.genIsk3O);
-  writeNotNull('GEN_ISK3_T', instance.genIsk3T);
+  writeNotNull('GEN_ISK1O', instance.genIsk1o);
+  writeNotNull('GEN_ISK1T', instance.genIsk1t);
+  writeNotNull('GEN_ISK2O', instance.genIsk2o);
+  writeNotNull('GEN_ISK2T', instance.genIsk2t);
+  writeNotNull('GEN_ISK3O', instance.genIsk3o);
+  writeNotNull('GEN_ISK3T', instance.genIsk3t);
   writeNotNull('KDV', instance.kdv);
-  writeNotNull('BELGE_TIPI', instance.belgeTipi);
+  writeNotNull('BelgeTipi', instance.belgeTipi);
   writeNotNull('CIKIS_DEPO_KODU', instance.cikisDepoKodu);
   writeNotNull('GENISK1_TIPI', instance.genisk1Tipi);
   writeNotNull('GENISK2_TIPI', instance.genisk2Tipi);
@@ -3263,22 +3263,22 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('BELGE_TURU', instance.belgeTuru);
   writeNotNull('CARI_ADI', instance.cariAdi);
   writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('EK_ACIK1', instance.ekAcik1);
-  writeNotNull('EK_ACIK10', instance.ekAcik10);
-  writeNotNull('EK_ACIK11', instance.ekAcik11);
-  writeNotNull('EK_ACIK12', instance.ekAcik12);
-  writeNotNull('EK_ACIK13', instance.ekAcik13);
-  writeNotNull('EK_ACIK14', instance.ekAcik14);
-  writeNotNull('EK_ACIK15', instance.ekAcik15);
-  writeNotNull('EK_ACIK16', instance.ekAcik16);
-  writeNotNull('EK_ACIK2', instance.ekAcik2);
-  writeNotNull('EK_ACIK3', instance.ekAcik3);
-  writeNotNull('EK_ACIK4', instance.ekAcik4);
-  writeNotNull('EK_ACIK5', instance.ekAcik5);
-  writeNotNull('EK_ACIK6', instance.ekAcik6);
-  writeNotNull('EK_ACIK7', instance.ekAcik7);
-  writeNotNull('EK_ACIK8', instance.ekAcik8);
-  writeNotNull('EK_ACIK9', instance.ekAcik9);
+  writeNotNull('EK_ACIK_1', instance.ekAcik1);
+  writeNotNull('EK_ACIK_10', instance.ekAcik10);
+  writeNotNull('EK_ACIK_11', instance.ekAcik11);
+  writeNotNull('EK_ACIK_12', instance.ekAcik12);
+  writeNotNull('EK_ACIK_13', instance.ekAcik13);
+  writeNotNull('EK_ACIK_14', instance.ekAcik14);
+  writeNotNull('EK_ACIK_51', instance.ekAcik15);
+  writeNotNull('EK_ACIK_16', instance.ekAcik16);
+  writeNotNull('EK_ACIK_2', instance.ekAcik2);
+  writeNotNull('EK_ACIK_3', instance.ekAcik3);
+  writeNotNull('EK_ACIK_4', instance.ekAcik4);
+  writeNotNull('EK_ACIK_5', instance.ekAcik5);
+  writeNotNull('EK_ACIK_6', instance.ekAcik6);
+  writeNotNull('EK_ACIK_7', instance.ekAcik7);
+  writeNotNull('EK_ACIK_8', instance.ekAcik8);
+  writeNotNull('EK_ACIK_9', instance.ekAcik9);
   writeNotNull('EK_ACIKLAMA', instance.ekAciklama);
   writeNotNull('ISLEM_ID', instance.islemId);
   writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
@@ -3313,7 +3313,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
 }
 
 KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
-      iskonto1OranMi: json['ISKONTO1_ORAN_MI'] as bool?,
+      iskonto1OranMi: json['ISKONTO_1_ORAN_MI'] as bool? ?? true,
       tarih: json['TARIH'] == null
           ? null
           : DateTime.parse(json['TARIH'] as String),
@@ -3411,7 +3411,7 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
     }
   }
 
-  writeNotNull('ISKONTO1_ORAN_MI', instance.iskonto1OranMi);
+  writeNotNull('ISKONTO_1_ORAN_MI', instance.iskonto1OranMi);
   writeNotNull('TARIH', instance.tarih?.toIso8601String());
   writeNotNull('TESLIM_TARIHI', instance.teslimTarihi?.toIso8601String());
   writeNotNull('BRUT_FIYAT', instance.brutFiyat);

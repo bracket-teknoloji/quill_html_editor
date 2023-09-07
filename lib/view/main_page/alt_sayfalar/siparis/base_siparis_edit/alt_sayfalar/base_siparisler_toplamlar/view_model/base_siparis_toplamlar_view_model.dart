@@ -66,13 +66,13 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
   @action
   void setGenIsk1(double? value) {
     if (value == 0) {
-      model = model.copyWith(genIsk1O: 0);
+      model = model.copyWith(genIsk1o: 0);
       return;
     }
     if (isGenIsk1T) {
-      model = model.copyWith(genIsk1O: ((value ?? 0) / (model.araToplam != 0 ? (model.araToplam ?? 0) : 1) * 100));
+      model = model.copyWith(genIsk1o: ((value ?? 0) / (model.araToplam != 0 ? (model.araToplam ?? 0) : 1) * 100));
     } else {
-      model = model.copyWith(genIsk1O: value);
+      model = model.copyWith(genIsk1o: value);
     }
     BaseSiparisEditModel.setInstance(model);
   }
@@ -80,13 +80,13 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
   @action
   void setGenIsk2(double? value) {
     if (value == 0) {
-      model = model.copyWith(genIsk2O: 0);
+      model = model.copyWith(genIsk2o: 0);
       return;
     }
     if (isGenIsk2T) {
-      model = model.copyWith(genIsk2O: ((value ?? 0) / (model.getAraToplam != 0 ? (model.araToplam ?? 0) - (model.genIsk1T ?? 0) : 1) * 100));
+      model = model.copyWith(genIsk2o: ((value ?? 0) / (model.getAraToplam != 0 ? (model.araToplam ?? 0) - (model.genIsk1t ?? 0) : 1) * 100));
     } else {
-      model = model.copyWith(genIsk2O: value);
+      model = model.copyWith(genIsk2o: value);
     }
     BaseSiparisEditModel.setInstance(model);
   }
@@ -94,13 +94,13 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
   @action
   void setGenIsk3(double? value) {
     if (value == 0) {
-      model = model.copyWith(genIsk3O: 0);
+      model = model.copyWith(genIsk3o: 0);
       return;
     }
     if (isGenIsk3T) {
-      model = model.copyWith(genIsk3O: ((value ?? 0) / (model.getAraToplam != 0 ? model.getAraToplam : 1) * 100));
+      model = model.copyWith(genIsk3o: ((value ?? 0) / (model.getAraToplam != 0 ? model.getAraToplam : 1) * 100));
     } else {
-      model = model.copyWith(genIsk3O: value);
+      model = model.copyWith(genIsk3o: value);
     }
     BaseSiparisEditModel.setInstance(model);
   }
@@ -109,9 +109,9 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
   void changeGenIsk1O(TextEditingController controller) {
     isGenIsk1T = !isGenIsk1T;
     if (isGenIsk1T) {
-      controller.text = (model.genIsk1T ?? 0).toIntIfDouble.toString();
+      controller.text = (model.genIsk1t ?? 0).toIntIfDouble.toString();
     } else {
-      controller.text = (model.genIsk1O ?? 0).toIntIfDouble.toString();
+      controller.text = (model.genIsk1o ?? 0).toIntIfDouble.toString();
     }
     // model = model.copyWith(genisk1OranMi: isGenIsk1T);
   }
@@ -120,9 +120,9 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
   void changeGenIsk2O(TextEditingController controller) {
     isGenIsk2T = !isGenIsk2T;
     if (isGenIsk2T) {
-      controller.text = (model.genIsk2T ?? 0).toIntIfDouble.toString();
+      controller.text = (model.genIsk2t ?? 0).toIntIfDouble.toString();
     } else {
-      controller.text = (model.genIsk2O ?? 0).toIntIfDouble.toString();
+      controller.text = (model.genIsk2o ?? 0).toIntIfDouble.toString();
     }
   }
 
@@ -130,9 +130,9 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
   void changeGenIsk3O(TextEditingController controller) {
     isGenIsk3T = !isGenIsk3T;
     if (isGenIsk3T) {
-      controller.text = (model.genIsk3T ?? 0).toIntIfDouble.toString();
+      controller.text = (model.genIsk3t ?? 0).toIntIfDouble.toString();
     } else {
-      controller.text = (model.genIsk3O ?? 0).toIntIfDouble.toString();
+      controller.text = (model.genIsk3o ?? 0).toIntIfDouble.toString();
     }
   }
 

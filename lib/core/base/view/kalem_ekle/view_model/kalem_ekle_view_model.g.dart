@@ -88,17 +88,6 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
-  void setMiktarEnabled() {
-    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
-        name: '_KalemEkleViewModelBase.setMiktarEnabled');
-    try {
-      return super.setMiktarEnabled();
-    } finally {
-      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void setMuhasebeKodu(String? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setMuhasebeKodu');

@@ -26,6 +26,7 @@ mixin _$BaseProfilParametreModel {
   bool get siparisMiktar => throw _privateConstructorUsedError;
   bool get siparisVade => throw _privateConstructorUsedError;
   bool get kurlariSilTekrarGuncelle => throw _privateConstructorUsedError;
+  bool get stokResimleriGoster => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,7 +45,8 @@ abstract class $BaseProfilParametreModelCopyWith<$Res> {
       bool siparisEkAlan,
       bool siparisMiktar,
       bool siparisVade,
-      bool kurlariSilTekrarGuncelle});
+      bool kurlariSilTekrarGuncelle,
+      bool stokResimleriGoster});
 }
 
 /// @nodoc
@@ -66,6 +68,7 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
     Object? siparisMiktar = null,
     Object? siparisVade = null,
     Object? kurlariSilTekrarGuncelle = null,
+    Object? stokResimleriGoster = null,
   }) {
     return _then(_value.copyWith(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -88,6 +91,10 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
           ? _value.kurlariSilTekrarGuncelle
           : kurlariSilTekrarGuncelle // ignore: cast_nullable_to_non_nullable
               as bool,
+      stokResimleriGoster: null == stokResimleriGoster
+          ? _value.stokResimleriGoster
+          : stokResimleriGoster // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -106,7 +113,8 @@ abstract class _$$_BaseProfilParametreModelCopyWith<$Res>
       bool siparisEkAlan,
       bool siparisMiktar,
       bool siparisVade,
-      bool kurlariSilTekrarGuncelle});
+      bool kurlariSilTekrarGuncelle,
+      bool stokResimleriGoster});
 }
 
 /// @nodoc
@@ -126,6 +134,7 @@ class __$$_BaseProfilParametreModelCopyWithImpl<$Res>
     Object? siparisMiktar = null,
     Object? siparisVade = null,
     Object? kurlariSilTekrarGuncelle = null,
+    Object? stokResimleriGoster = null,
   }) {
     return _then(_$_BaseProfilParametreModel(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -148,6 +157,10 @@ class __$$_BaseProfilParametreModelCopyWithImpl<$Res>
           ? _value.kurlariSilTekrarGuncelle
           : kurlariSilTekrarGuncelle // ignore: cast_nullable_to_non_nullable
               as bool,
+      stokResimleriGoster: null == stokResimleriGoster
+          ? _value.stokResimleriGoster
+          : stokResimleriGoster // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -160,7 +173,8 @@ class _$_BaseProfilParametreModel extends _BaseProfilParametreModel {
       this.siparisEkAlan = false,
       this.siparisMiktar = false,
       this.siparisVade = false,
-      this.kurlariSilTekrarGuncelle = false})
+      this.kurlariSilTekrarGuncelle = false,
+      this.stokResimleriGoster = false})
       : super._();
 
   factory _$_BaseProfilParametreModel.fromJson(Map<String, dynamic> json) =>
@@ -181,6 +195,9 @@ class _$_BaseProfilParametreModel extends _BaseProfilParametreModel {
   @override
   @JsonKey()
   final bool kurlariSilTekrarGuncelle;
+  @override
+  @JsonKey()
+  final bool stokResimleriGoster;
 
   @JsonKey(ignore: true)
   @override
@@ -203,7 +220,8 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
       final bool siparisEkAlan,
       final bool siparisMiktar,
       final bool siparisVade,
-      final bool kurlariSilTekrarGuncelle}) = _$_BaseProfilParametreModel;
+      final bool kurlariSilTekrarGuncelle,
+      final bool stokResimleriGoster}) = _$_BaseProfilParametreModel;
   _BaseProfilParametreModel._() : super._();
 
   factory _BaseProfilParametreModel.fromJson(Map<String, dynamic> json) =
@@ -219,6 +237,8 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   bool get siparisVade;
   @override
   bool get kurlariSilTekrarGuncelle;
+  @override
+  bool get stokResimleriGoster;
   @override
   @JsonKey(ignore: true)
   _$$_BaseProfilParametreModelCopyWith<_$_BaseProfilParametreModel>

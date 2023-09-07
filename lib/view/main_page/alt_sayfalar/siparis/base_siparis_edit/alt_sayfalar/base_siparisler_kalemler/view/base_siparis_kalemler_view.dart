@@ -214,10 +214,12 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
       BottomSheetModel(
           title: "Sil",
           iconWidget: Icons.delete_outline_outlined,
-          onTap: () => dialogManager.showAreYouSureDialog(() {
-                Get.back();
-                viewModel.removeAtKalemList(index);
-              })),
+          onTap: () {
+            Get.back();
+            return dialogManager.showAreYouSureDialog(() {
+              viewModel.removeAtKalemList(index);
+            });
+          }),
       BottomSheetModel(
           title: "Stok İşlemleri",
           iconWidget: Icons.list_alt_outlined,

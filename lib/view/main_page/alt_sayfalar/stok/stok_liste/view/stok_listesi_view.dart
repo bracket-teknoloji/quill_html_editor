@@ -147,25 +147,27 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
               ? const SizedBox()
               : IconButton(
                   onPressed: () async {
-                    await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context, title: "Seçenekler", children: [
-                      BottomSheetModel(
-                          title: "Resimleri Göster",
-                          onTap: () {
-                            viewModel.setResimleriGoster();
-                            if (viewModel.resimleriGoster == "E") {
-                              viewModel.setStokListesi(null);
-                              viewModel.resetSayfa();
-                              getData();
-                              Get.back();
-                            } else {
-                              viewModel.setStokListesi(null);
-                              viewModel.setImageMap({});
-                              viewModel.resetSayfa();
-                              getData();
-                              Get.back();
-                            }
-                          })
-                    ]);
+                    await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", body: Observer(builder: (_) {
+                      return SwitchListTile.adaptive(
+                        title: const Text("Resimleri Göster"),
+                        value: viewModel.resimleriGoster == "E",
+                        onChanged: (value) {
+                          viewModel.setResimleriGoster();
+                          if (viewModel.resimleriGoster == "E") {
+                            viewModel.setStokListesi(null);
+                            viewModel.resetSayfa();
+                            getData();
+                            Get.back();
+                          } else {
+                            viewModel.setStokListesi(null);
+                            viewModel.setImageMap({});
+                            viewModel.resetSayfa();
+                            getData();
+                            Get.back();
+                          }
+                        },
+                      );
+                    }));
                   },
                   icon: const Icon(Icons.more_vert_outlined));
         })

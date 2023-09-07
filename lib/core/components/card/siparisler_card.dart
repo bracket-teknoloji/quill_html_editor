@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
@@ -170,7 +171,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
               ),
             ].map((e) => Expanded(child: e)).toList(),
           ),
-          const Divider().paddingAll(UIHelper.midSize).yetkiVarMi(widget.showEkAciklama == true || widget.showMiktar == true || widget.showVade == true),
+          const Divider().paddingAll(UIHelper.midSize).yetkiVarMi((widget.showEkAciklama == true && aciklamaList().ext.isNotNullOrEmpty) || widget.showMiktar == true || widget.showVade == true),
           // Text("Miktar: ${widget.model.miktar?.commaSeparatedWithFixedDigits ?? ""}").yetkiVarMi(widget.showMiktar == true),
           Text("Miktar: ${widget.model.miktar ?? ""}").yetkiVarMi(widget.showMiktar == true),
           Text("Teslim Miktar: ${((widget.model.miktar ?? 0) - (widget.model.kalanMiktar ?? 0))}").yetkiVarMi(widget.showMiktar == true),

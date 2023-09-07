@@ -127,16 +127,15 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                   isMust: true,
                   suffixMore: true,
                   controller: cariController,
-                  // valueWidget: Observer(builder: (_) => Text(viewModel.model.cariModel?.cariKodu ?? "")),
+                  // valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
                   onTap: () async {
                     var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
                     if (result != null && result is CariListesiModel) {
-                      model.cariModel = result;
                       model.cariAdi = result.cariAdi ?? "";
                       model.cariKodu = result.cariKodu ?? "";
                       cariController.text = result.cariAdi ?? "";
                       if (!yetkiController.siparisFarkliTeslimCariAktif) {
-                        teslimCariController.text = result.cariAdi ?? "";
+                        cariController.text = result.cariAdi ?? "";
                         model.teslimCariAdi = result.cariAdi;
                       }
                     }
@@ -152,8 +151,12 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                       : () async {
                           var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
                           if (result != null && result is CariListesiModel) {
-                            model.cariKodu = result.cariKodu ?? "";
+                            model.teslimCari = result.cariKodu;
+                            model.teslimCariAdi = result.cariAdi;
+                            model.plasiyerAciklama = result.plasiyerAciklama;
+                            model.plasiyerKodu = result.plasiyerKodu;
                             teslimCariController.text = result.cariAdi ?? "";
+                            plasiyerController.text = result.plasiyerAciklama ?? "";
                           }
                         }),
               Row(
@@ -185,15 +188,15 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                     onClear: () {
                       viewModel.setPlasiyer(null);
-                      model.cariModel?.plasiyerKodu = null;
-                      model.cariModel?.plasiyerAciklama = null;
+                      model.plasiyerKodu = null;
+                      model.plasiyerAciklama = null;
                     },
                     onTap: () async {
                       var result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
                       if (result != null) {
                         viewModel.setPlasiyer(result);
-                        model.cariModel?.plasiyerKodu = result.plasiyerKodu;
-                        model.cariModel?.plasiyerAciklama = result.plasiyerAciklama;
+                        model.plasiyerKodu = result.plasiyerKodu;
+                        model.plasiyerAciklama = result.plasiyerAciklama;
                         plasiyerController.text = result.plasiyerAciklama ?? "";
                       }
                     },
@@ -420,7 +423,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
     var result = await networkManager.dioGet<BaseSiparisEditModel>(
         path: ApiUrls.getSiradakiBelgeNo,
         bodyModel: BaseSiparisEditModel(),
-        queryParameters: {"Seri": belgeNoController.text, "BelgeTipi": widget.model.siparisTipiEnum!.rawValue, "EIrsaliye": "H", "CariKodu": model.cariModel?.cariKodu},
+        queryParameters: {"Seri": belgeNoController.text, "BelgeTipi": widget.model.siparisTipiEnum!.rawValue, "EIrsaliye": "H", "CariKodu": model.cariKodu},
         showLoading: true);
     if (result.success == true) {
       BaseSiparisEditModel.instance.belgeNo = result.data!.first.belgeNo;
@@ -434,10 +437,10 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
     model.tarih ??= DateTime.now();
     model.teslimTarihi ??= DateTime.now();
     belgeNoController.text = model.belgeNo ?? "";
-    cariController.text = model.cariModel?.cariAdi ?? "";
+    cariController.text = model.cariAdi ?? "";
     teslimCariController.text = model.teslimCariAdi ?? "";
     belgeTipiController.text = (model.tipi ?? 0) < 6 ? "Yurtiçi" : "Yurtdışı";
-    plasiyerController.text = model.cariModel?.plasiyerAciklama ?? "";
+    plasiyerController.text = model.plasiyerAciklama ?? "";
     tarihController.text = model.tarih.toDateString;
     teslimTarihController.text = model.teslimTarihi.toDateString;
     topluDepoController.text = model.topluDepo.toStringIfNull ?? "";
@@ -539,51 +542,67 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
     switch (sira) {
       case 1:
         model.acik1 = value;
+        model.ekAcik1 = value;
         break;
       case 2:
         model.acik2 = value;
+        model.ekAcik2 = value;
         break;
       case 3:
         model.acik3 = value;
+        model.ekAcik3 = value;
         break;
       case 4:
         model.acik4 = value;
+        model.ekAcik4 = value;
         break;
       case 5:
         model.acik5 = value;
+        model.ekAcik5 = value;
         break;
       case 6:
         model.acik6 = value;
+        model.ekAcik6 = value;
         break;
       case 7:
         model.acik7 = value;
+        model.ekAcik7 = value;
         break;
       case 8:
         model.acik8 = value;
+        model.ekAcik8 = value;
         break;
       case 9:
         model.acik9 = value;
+        model.ekAcik9 = value;
         break;
       case 10:
         model.acik10 = value;
+        model.ekAcik10 = value;
         break;
       case 11:
         model.acik11 = value;
+        model.ekAcik11 = value;
         break;
       case 12:
         model.acik12 = value;
+        model.ekAcik12 = value;
         break;
       case 13:
         model.acik13 = value;
+        model.ekAcik13 = value;
         break;
       case 14:
         model.acik14 = value;
+        model.ekAcik14 = value;
         break;
       case 15:
         model.acik15 = value;
+        model.ekAcik15 = value;
         break;
       case 16:
         model.acik16 = value;
+        model.ekAcik16 = value;
         break;
       default:
     }

@@ -92,13 +92,13 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           viewModel.changeIsBaseSiparisEmpty(true);
           BaseSiparisEditModel.instance.tag = "FaturaModel";
           BaseSiparisEditModel.instance.siparisTipi = model.siparisTipiEnum;
-          BaseSiparisEditModel.instance.cariModel = result;
+          BaseSiparisEditModel.instance.plasiyerAciklama = result.plasiyerAciklama;
+          BaseSiparisEditModel.instance.plasiyerKodu = result.plasiyerKodu;
           BaseSiparisEditModel.instance.cariAdi = result.cariAdi;
           BaseSiparisEditModel.instance.cariKodu = result.cariKodu;
           BaseSiparisEditModel.instance.kosulKodu = result.kosulKodu;
           BaseSiparisEditModel.instance.belgeTuru = widget.model.siparisTipiEnum?.rawValue;
           BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.siparisTipiEnum?.rawValue;
-
           BaseSiparisEditModel.instance.belgeTipi = int.tryParse(result.odemeTipi ?? "0");
         }
       }
@@ -138,7 +138,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                               onTap: () {
                                 Get.back();
                                 dialogManager.showCariGridViewDialog(BaseSiparisEditModel.instance.cariModel);
-                              }).yetkiKontrol(BaseSiparisEditModel.instance.cariModel != null),
+                              }),
                           BottomSheetModel(
                               title: "Toplu İskonto Girişi",
                               iconWidget: Icons.add_outlined,
@@ -303,7 +303,6 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
         path: ApiUrls.saveFatura,
         bodyModel: BaseSiparisEditModel(),
         data: (BaseSiparisEditModel.instance
-              ..kalemAdedi = BaseSiparisEditModel.instance.kalemList?.length
               ..islemId = uuid.v4())
             .toJson(),
         showLoading: true);

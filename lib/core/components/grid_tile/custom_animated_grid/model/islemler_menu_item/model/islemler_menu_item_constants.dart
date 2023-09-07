@@ -139,7 +139,7 @@ class IslemlerMenuItemConstants<T> {
         TextEditingController controller = TextEditingController();
         KodDegistirModel kodDegistirModel = KodDegistirModel()
           ..kaynakSil = "H"
-          ..kaynakCari = model is CariListesiModel ? (model as CariListesiModel).cariKodu : (model is BaseSiparisEditModel ? (model as BaseSiparisEditModel).cariModel?.cariKodu : null);
+          ..kaynakCari = model is CariListesiModel ? (model as CariListesiModel).cariKodu : (model is BaseSiparisEditModel ? (model as BaseSiparisEditModel).cariKodu : null);
         await bottomSheetDialogManager.showBottomSheetDialog(Get.context!,
             title: "Cari Kodu Değiştir",
             body: Column(

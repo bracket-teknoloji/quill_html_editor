@@ -36,15 +36,7 @@ abstract class _KalemEkleViewModelBase with Store {
 
   @computed
   bool get koliMi => (model?.koliMi ?? false) || (kalemModel.koliMi ?? false);
-
-  @action
-  void setMiktarEnabled() {
-    // if ((model?.koliMi ?? false) || (kalemModel.koliMi ?? false)) {
-    //   koliMi = true;
-    // } else {
-    //   koliMi = false;
-    // }
-  }
+ 
   @action
   void setMuhasebeKodu(String? value) => kalemModel = kalemModel.copyWith(muhasebeKodu: value);
   @action

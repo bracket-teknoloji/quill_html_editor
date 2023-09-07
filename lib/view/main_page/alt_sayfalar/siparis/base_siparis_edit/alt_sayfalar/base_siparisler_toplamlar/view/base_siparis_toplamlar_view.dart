@@ -136,7 +136,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               onChanged: (p0) => viewModel.setGenIsk1(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
               valueWidget: Observer(
                   builder: (_) =>
-                      Text(viewModel.isGenIsk1T ? "%${(viewModel.model.genIsk1O ?? 0).toIntIfDouble?.toStringAsFixed(2)}" : "${(viewModel.model.genIsk1T ?? 0).commaSeparatedWithFixedDigits} TL")),
+                      Text(viewModel.isGenIsk1T ? "%${(viewModel.model.genIsk1o ?? 0).toIntIfDouble?.toStringAsFixed(2)}" : "${(viewModel.model.genIsk1t ?? 0).commaSeparatedWithFixedDigits} TL")),
               suffix: IconButton(
                   onPressed: () => viewModel.changeGenIsk1O(genelIskonto1Controller), icon: Observer(builder: (_) => Icon(viewModel.isGenIsk1T ? Icons.payments_outlined : Icons.percent_outlined))),
             ),
@@ -167,7 +167,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               controller: genelIskonto2Controller,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
               valueWidget:
-                  Observer(builder: (_) => Text(viewModel.isGenIsk2T ? "%${(viewModel.model.genIsk2O ?? 0).toIntIfDouble}" : "${(viewModel.model.genIsk2T ?? 0).commaSeparatedWithFixedDigits} TL")),
+                  Observer(builder: (_) => Text(viewModel.isGenIsk2T ? "%${(viewModel.model.genIsk2o ?? 0).toIntIfDouble}" : "${(viewModel.model.genIsk2t ?? 0).commaSeparatedWithFixedDigits} TL")),
               onChanged: (p0) => viewModel.setGenIsk2(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
               suffix: IconButton(
                   onPressed: () => viewModel.changeGenIsk2O(genelIskonto2Controller), icon: Observer(builder: (_) => Icon(viewModel.isGenIsk2T ? Icons.payments_outlined : Icons.percent_outlined))),
@@ -200,7 +200,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
               onChanged: (p0) => viewModel.setGenIsk3(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
               valueWidget:
-                  Observer(builder: (_) => Text(viewModel.isGenIsk3T ? "%${(viewModel.model.genIsk3O ?? 0).toIntIfDouble}" : "${(viewModel.model.genIsk3T ?? 0).commaSeparatedWithFixedDigits} TL")),
+                  Observer(builder: (_) => Text(viewModel.isGenIsk3T ? "%${(viewModel.model.genIsk3o ?? 0).toIntIfDouble}" : "${(viewModel.model.genIsk3t ?? 0).commaSeparatedWithFixedDigits} TL")),
               suffix: IconButton(
                   onPressed: () => viewModel.changeGenIsk3O(genelIskonto3Controller), icon: Observer(builder: (_) => Icon(viewModel.isGenIsk3T ? Icons.payments_outlined : Icons.percent_outlined))),
             ),
@@ -297,9 +297,9 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
   }
 
   void initControllers() {
-    genelIskonto1Controller = TextEditingController(text: model.genIsk1O?.toIntIfDouble.toStringIfNull);
-    genelIskonto2Controller = TextEditingController(text: model.genIsk2O?.toIntIfDouble.toStringIfNull);
-    genelIskonto3Controller = TextEditingController(text: model.genIsk3O?.toIntIfDouble.toStringIfNull);
+    genelIskonto1Controller = TextEditingController(text: model.genIsk1o?.toIntIfDouble.toStringIfNull);
+    genelIskonto2Controller = TextEditingController(text: model.genIsk2o?.toIntIfDouble.toStringIfNull);
+    genelIskonto3Controller = TextEditingController(text: model.genIsk3o?.toIntIfDouble.toStringIfNull);
     iskontoTipi1Controller = TextEditingController(text: model.genisk1Tipi?.toStringIfNull);
     iskontoTipi2Controller = TextEditingController(text: model.genisk2Tipi?.toStringIfNull);
     iskontoTipi3Controller = TextEditingController(text: model.genisk3Tipi?.toStringIfNull);
