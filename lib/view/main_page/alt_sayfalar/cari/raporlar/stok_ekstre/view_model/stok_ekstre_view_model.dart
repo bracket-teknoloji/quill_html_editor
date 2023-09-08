@@ -17,7 +17,7 @@ abstract class _StokEkstreViewModelBase with Store {
   void changeCariKodu(value) => pdfModel.dicParams!.cariKodu = value;
 
   @action
-  void changeDovizTipi(int value) => pdfModel.dicParams!.dovizTipi = value.toStringIfNull;
+  void changeDovizTipi(int value) => pdfModel.dicParams!.dovizTipi = value.toStringIfNotNull;
 
   //* Future
   //*

@@ -3,6 +3,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
@@ -19,19 +20,18 @@ import "../../../../../../core/components/slide_controller/view/slide_controller
 import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
 import "../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
-import "../../../../../../core/init/network/login/api_urls.dart";
-import "../view_model/siparisler_view_model.dart";
-
-import "../../../../../../core/constants/enum/base_edit_enum.dart";
-import "../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
 import "../../base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../model/siparis_edit_request_model.dart";
 import "../model/siparisler_widget_model.dart";
+import "../view_model/siparisler_view_model.dart";
 
 class SiparislerView extends StatefulWidget {
   final SiparislerWidgetModel widgetModel;
@@ -534,6 +534,12 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                             index: (viewModel.musteriSiparisleriList?[index]?.isNew ?? false) ? index : null,
                             siparisTipiEnum: widget.widgetModel.siparisTipiEnum,
                             onDeleted: () => viewModel.removeSiparislerList(index),
+                            onUpdated: (value) {
+                              viewModel.setSiparislerList(null);
+                              viewModel.setDahaVarMi(true);
+                              viewModel.resetSayfa();
+                              getData();
+                            },
                           );
                         });
                       },

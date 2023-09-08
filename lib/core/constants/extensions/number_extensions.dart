@@ -6,7 +6,7 @@ import "package:kartal/kartal.dart";
 extension NumExtension on num? {
   String get commaSeparated {
     if (this != null) {
-    var f = NumberFormat.decimalPatternDigits(locale: Get.locale!.languageCode);
+      var f = NumberFormat.decimalPatternDigits(locale: Get.locale!.languageCode);
       return f.format(this!);
     } else {
       return "0,00";
@@ -18,17 +18,18 @@ extension NumExtension on num? {
 extension NumExtensionWithFixedDigits on num? {
   String get commaSeparatedWithFixedDigits {
     if (this != null) {
-    var f = NumberFormat.decimalPatternDigits(locale: Get.locale!.languageCode, decimalDigits: 2);
+      var f = NumberFormat.decimalPatternDigits(locale: Get.locale!.languageCode, decimalDigits: 2);
       return f.format(this!);
     } else {
       return "0,00";
     }
   }
 }
+
 extension NumExtensionWithFixedDigits2 on num? {
   String commaSeparatedWithDecimalDigits(int decimalDigits) {
     if (this != null) {
-    var f = NumberFormat.decimalPatternDigits(locale: Get.locale!.languageCode, decimalDigits: decimalDigits);
+      var f = NumberFormat.decimalPatternDigits(locale: Get.locale!.languageCode, decimalDigits: decimalDigits);
       return f.format(this!);
     } else {
       return "0,00";
@@ -59,7 +60,7 @@ extension NumExtensionWithFormattedStringToDouble on String? {
 
 //an extension on num to string if null return empty string
 extension NumExtensionToString on num? {
-  String? get toStringIfNull {
+  String? get toStringIfNotNull {
     return toString() == "null" ? null : toString();
   }
 }

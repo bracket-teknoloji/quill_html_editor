@@ -66,8 +66,8 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                   var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Döviz Tipi", children: setDovizBottomSheetList);
                   if (result != null && result is DovizList) {
                     Get.back();
-                    await Get.to(
-                        () => DovizKuruGirisiView(dovizKurlariModel: DovizKurlariModel(tarih: DateTime.now(), dovizTipi: result.dovizTipi, dovizAdi: result.isim ?? result.dovizKodu.toStringIfNull)));
+                    await Get.to(() =>
+                        DovizKuruGirisiView(dovizKurlariModel: DovizKurlariModel(tarih: DateTime.now(), dovizTipi: result.dovizTipi, dovizAdi: result.isim ?? result.dovizKodu.toStringIfNotNull)));
                     getData();
                   }
                 } else {
@@ -228,7 +228,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
     List<BottomSheetModel> bottomSheetList = [];
     for (DovizList item in dovizList?.where((element) => element.dovizTipi != 0).toList() ?? []) {
       if (viewModel.dovizKurlariList?.any((element) => element.dovizTipi != item.dovizTipi) ?? false) {
-        bottomSheetList.add(BottomSheetModel(title: item.isim ?? item.dovizTipi.toStringIfNull ?? "", iconWidget: Icons.add, value: item));
+        bottomSheetList.add(BottomSheetModel(title: item.isim ?? item.dovizTipi.toStringIfNotNull ?? "", iconWidget: Icons.add, value: item));
       }
     }
     return bottomSheetList;

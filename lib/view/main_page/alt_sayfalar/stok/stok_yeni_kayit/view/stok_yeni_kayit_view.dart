@@ -31,9 +31,9 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
   late TextEditingController tarihController = TextEditingController(text: widget.model?.stharTarih?.toDateString ?? viewModel.model.tarih.toDateString);
   late TextEditingController belgeNoController = TextEditingController(text: widget.model?.fisno ?? viewModel.model.belgeNo);
   late TextEditingController hareketTuruController = TextEditingController(text: widget.model?.hareketTuruAciklama ?? viewModel.model.hareketTuru);
-  late TextEditingController fiyatController = TextEditingController(text: widget.model?.stharNf.commaSeparatedWithFixedDigits ?? viewModel.model.fiyat.toStringIfNull);
-  late TextEditingController depoController = TextEditingController(text: widget.model?.depoKodu.toStringIfNull ?? viewModel.model.depoKodu.toStringIfNull);
-  late TextEditingController miktarController = TextEditingController(text: widget.model?.stharGcmik.toStringIfNull ?? viewModel.model.miktar.toStringIfNull);
+  late TextEditingController fiyatController = TextEditingController(text: widget.model?.stharNf.commaSeparatedWithFixedDigits ?? viewModel.model.fiyat.toStringIfNotNull);
+  late TextEditingController depoController = TextEditingController(text: widget.model?.depoKodu.toStringIfNotNull ?? viewModel.model.depoKodu.toStringIfNotNull);
+  late TextEditingController miktarController = TextEditingController(text: widget.model?.stharGcmik.toStringIfNotNull ?? viewModel.model.miktar.toStringIfNotNull);
   late TextEditingController aciklamaController = TextEditingController(text: widget.model?.aciklama ?? viewModel.model.aciklama);
   late TextEditingController plasiyerController = TextEditingController(text: widget.model?.plasiyerAciklama ?? viewModel.model.plasiyerKodu);
   late TextEditingController projeController = TextEditingController(text: widget.model?.projeKodu ?? viewModel.model.projeKodu);
@@ -159,7 +159,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                   DepoList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                       title: "Depo",
                       children: viewModel.anaVeri?.paramModel?.depoList
-                          ?.map((e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNull, onTap: () => Get.back(result: e)))
+                          ?.map((e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, onTap: () => Get.back(result: e)))
                           .toList());
                   if (result != null) {
                     depoController.text = result.depoTanimi ?? "";
@@ -182,14 +182,14 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                       IconButton(
                         onPressed: () {
                           viewModel.model.miktar = (viewModel.model.miktar!) + 1;
-                          miktarController.text = viewModel.model.miktar.toStringIfNull ?? "";
+                          miktarController.text = viewModel.model.miktar.toStringIfNotNull ?? "";
                         },
                         icon: const Icon(Icons.add),
                       ),
                       IconButton(
                         onPressed: () {
                           if (viewModel.model.miktar! > 0) viewModel.model.miktar = (viewModel.model.miktar!) - 1;
-                          miktarController.text = viewModel.model.miktar.toStringIfNull ?? "";
+                          miktarController.text = viewModel.model.miktar.toStringIfNotNull ?? "";
                         },
                         icon: const Icon(Icons.remove),
                       ),

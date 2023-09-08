@@ -135,7 +135,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
     if (data.cariAdi.ext.isNullOrEmpty) {
       map["Adı"] = 0;
     }
-    if (data.subeKodu.toStringIfNull.ext.isNullOrEmpty) {
+    if (data.subeKodu.toStringIfNotNull.ext.isNullOrEmpty) {
       map["Şube Kodu"] = 1;
     }
     if (data.kilit.ext.isNullOrEmpty) {

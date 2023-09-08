@@ -18,7 +18,7 @@ class GridItemModel {
   Color? color;
   List<GridItemModel>? altMenuler;
   String? route;
-  Function()? onTap;
+   Function()? onTap;
   dynamic arguments;
   SiparisTipiEnum? siparisTipi;
   late final String menuTipi;
@@ -34,18 +34,19 @@ class GridItemModel {
   GridItemModel.item({required this.name, required this.title, this.icon, this.color, this.route, this.arguments, this.siparisTipi}) {
     menuTipi = "I";
     if (route == null) {
-      onTap ??= () => DialogManager().showSnackBar("Yapım Aşamasında");
+      onTap ??= () async => DialogManager().showSnackBar("Yapım Aşamasında");
     } else {
-      onTap = () => Get.toNamed(route!, arguments: arguments);
+      onTap = () async => await Get.toNamed(route!, arguments: arguments);
     }
   }
   GridItemModel.islemler({required this.title, this.icon, this.color, this.onTap, this.iconData}) {
     menuTipi = "IS";
+    onTap ??= () async => DialogManager().showSnackBar("Yapım Aşamasında");
   }
   GridItemModel.serbestRaporlar({required this.title, this.arguments, this.color, this.name}) {
     menuTipi = "SR";
     route = "/mainPage/serbestRaporlar";
-    onTap = () => Get.toNamed("/mainPage/serbestRaporlar", arguments: arguments);
+    onTap = () async => await Get.toNamed("/mainPage/serbestRaporlar", arguments: arguments);
   }
 
   bool get yetkiKontrol {

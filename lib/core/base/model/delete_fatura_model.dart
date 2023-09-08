@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "base_network_mixin.dart";
 
 part "delete_fatura_model.freezed.dart";
@@ -25,6 +26,9 @@ class DeleteFaturaModel with NetworkManagerMixin, _$DeleteFaturaModel {
   }) = _DeleteFaturaModel;
 
   factory DeleteFaturaModel.fromJson(Map<String, Object?> json) => _$DeleteFaturaModelFromJson(json);
+
+  factory DeleteFaturaModel.fromSiparislerModel(BaseSiparisEditModel model) =>
+      DeleteFaturaModel(belgeNo: model.belgeNo, pickerBelgeTuru: model.belgeTuru, belgeTuru: model.belgeTuru, belgeTipi: model.belgeTipi, cariKodu: model.cariKodu, tipi: model.tipi, tempBelgeId: model.tempBelgeId); 
 
   @override
   fromJson(Map<String, dynamic> json) => _$DeleteFaturaModelFromJson(json);

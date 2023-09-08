@@ -12,11 +12,14 @@ import "package:uuid/uuid.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
+import "../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../model/param_model.dart";
 import "../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../siparisler/model/siparis_edit_request_model.dart";
 import "../alt_sayfalar/base_siparisler_diger/view/base_siparisler_diger_view.dart";
@@ -31,7 +34,7 @@ class BaseSiparisEditingView extends StatefulWidget {
   final String? appBarSubtitle;
   final bool? isSubTitleSmall;
   // final List<Widget>? actions;
-  final BaseEditModel<SiparisEditRequestModel> model;
+  final BaseEditModel model;
   const BaseSiparisEditingView({super.key, this.appBarTitle, this.appBarSubtitle, this.isSubTitleSmall, required this.model});
 
   @override
@@ -61,28 +64,37 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
         viewModel.changeIsLastPage(false);
       }
     });
-    model = widget.model;
-    if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
+
+    if (widget.model.model is BaseSiparisEditModel) {
+      model = BaseEditModel<SiparisEditRequestModel>()..model = SiparisEditRequestModel.fromSiparislerModel(widget.model.model as BaseSiparisEditModel);
+      model.baseEditEnum = widget.model.baseEditEnum;
+      model.siparisTipiEnum = widget.model.siparisTipiEnum;
+    } else if (widget.model.model is SiparisEditRequestModel) {
+      model = widget.model as BaseEditModel<SiparisEditRequestModel>;
+    }
+
+
+    if (widget.model.baseEditEnum == BaseEditEnum.duzenle || widget.model.baseEditEnum == BaseEditEnum.kopyala) {
       model.model?.kayitModu = "S";
     } else if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
       model.model?.kayitModu = "U";
     } else {
       model.model?.kayitModu = null;
     }
-
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (BaseSiparisEditModel.instance.isEmpty && widget.model.baseEditEnum != BaseEditEnum.ekle) {
-        var result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: widget.model.model?.toJson(), showLoading: true);
+        var result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
         if (result.success == true) {
           viewModel.changeFuture();
           BaseSiparisEditModel.setInstance(result.data!.first);
           BaseSiparisEditModel.instance.isNew = false;
           BaseSiparisEditModel.instance.mevcutBelgeNo = BaseSiparisEditModel.instance.belgeNo;
           BaseSiparisEditModel.instance.mevcutCariKodu = BaseSiparisEditModel.instance.cariKodu;
-          // if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
-          // }else if(widget.model.baseEditEnum == BaseEditEnum.kopyala){
-          //   BaseSiparisEditModel.instance.isNew = false;
-          // }
+          if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
+          } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
+            BaseSiparisEditModel.instance.isNew = true;
+            BaseSiparisEditModel.instance.belgeNo = null;
+          }
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
@@ -140,6 +152,30 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                                 dialogManager.showCariGridViewDialog(BaseSiparisEditModel.instance.cariModel);
                               }),
                           topluIskontoBottomSheetModel(context),
+                          BottomSheetModel(
+                              title: "PDF Görüntüle",
+                              iconWidget: Icons.picture_as_pdf_outlined,
+                              onTap: () async {
+                                List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList ?? [])
+                                    .where((element) => element.ozelKod == (StaticVariables.instance.isMusteriSiparisleri ? "MusteriSiparisi" : "SaticiSiparisi"))
+                                    .whereType<NetFectDizaynList>()
+                                    .toList();
+                                var result = await bottomSheetDialogManager.showBottomSheetDialog(Get.context!,
+                                    title: "PDF Görüntüle", children: dizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList());
+                                if (result is NetFectDizaynList) {
+                                  Get.back();
+                                  Get.to(() => PDFViewerView(
+                                      title: result.dizaynAdi ?? "Serbest Raporlar",
+                                      pdfData: PdfModel(
+                                          dizaynId: result.id,
+                                          raporOzelKod: result.ozelKod,
+                                          etiketSayisi: result.kopyaSayisi,
+                                          dicParams: DicParams(
+                                              belgeNo: BaseSiparisEditModel.instance.belgeNo,
+                                              cariKodu: BaseSiparisEditModel.instance.cariKodu,
+                                              belgeTipi: StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS"))));
+                                }
+                              }),
                           BottomSheetModel(
                               title: "Döviz Kurları",
                               iconWidget: Icons.attach_money_outlined,
@@ -216,7 +252,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                           }
                         }),
                         yetkiController.siparisDigerSekmesiGoster ? BaseSiparislerDigerView(model: model) : null,
-                        Observer(builder: (_) => BaseSiparisKalemlerView(model: model)),
+                        BaseSiparisKalemlerView(model: model),
                         BaseSiparisToplamlarView(model: model),
                       ].whereType<Widget>().toList(),
                     )),
@@ -260,7 +296,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                               itemCount: kalemList?.length ?? 0,
                               itemBuilder: (BuildContext context, int index) {
                                 KalemModel? model = kalemList?[index];
-                                TextEditingController controller = TextEditingController(text: (model?.iskonto1.toIntIfDouble ?? 0).toStringIfNull);
+                                TextEditingController controller = TextEditingController(text: (model?.iskonto1.toIntIfDouble ?? 0).toStringIfNotNull);
                                 return topluIskontoListTile(model, iskontoList, index, controller);
                               },
                             ),
@@ -311,13 +347,13 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
               IconButton(
                   onPressed: () {
                     iskonto1?[index] = (double.tryParse(controller.text) ?? 0) - 1;
-                    controller.text = (iskonto1?[index].toIntIfDouble ?? 0).toStringIfNull ?? "";
+                    controller.text = (iskonto1?[index].toIntIfDouble ?? 0).toStringIfNotNull ?? "";
                   },
                   icon: const Icon(Icons.remove_outlined)),
               IconButton(
                   onPressed: () {
                     iskonto1?[index] = (double.tryParse(controller.text) ?? 0) + 1;
-                    controller.text = (iskonto1?[index].toIntIfDouble ?? 0).toStringIfNull ?? "";
+                    controller.text = (iskonto1?[index].toIntIfDouble ?? 0).toStringIfNotNull ?? "";
                   },
                   icon: const Icon(Icons.add_outlined))
             ],

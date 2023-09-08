@@ -149,7 +149,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
     if (model.stokKodu.ext.isNullOrEmpty) {
       validate["Stok Kodu"] = 0;
     }
-    if (model.subeKodu.toStringIfNull.ext.isNullOrEmpty) {
+    if (model.subeKodu.toStringIfNotNull.ext.isNullOrEmpty) {
       validate["Şube Kodu"] = 0;
     }
     return validate;

@@ -141,7 +141,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               child: Text.rich(TextSpan(children: [
                             const TextSpan(text: "StkBakiye: "),
                             TextSpan(
-                                text: "${viewModel.model?.bakiye.toIntIfDouble.toStringIfNull ?? "0"} ${viewModel.model?.olcuBirimi ?? viewModel.kalemModel.olcuBirimAdi ?? ""}",
+                                text: "${viewModel.model?.bakiye.toIntIfDouble.toStringIfNotNull ?? "0"} ${viewModel.model?.olcuBirimi ?? viewModel.kalemModel.olcuBirimAdi ?? ""}",
                                 style: const TextStyle(fontWeight: FontWeight.bold))
                           ]))),
                         ],
@@ -214,7 +214,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       Card(
                           color: theme.colorScheme.primary.withOpacity(0.1),
                           child: Center(
-                            child:  Text.rich(TextSpan(children: [const TextSpan(text: "Son Fiyat: "), TextSpan(text: "0.00 $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))]))
+                            child: Text.rich(TextSpan(children: [const TextSpan(text: "Son Fiyat: "), TextSpan(text: "0.00 $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))]))
                                 .paddingOnly(top: UIHelper.lowSize),
                           ))
                     ],
@@ -311,11 +311,11 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         readOnly: true,
                         suffixMore: true,
                         onClear: () => viewModel.setDepoKodu(null),
-                        valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.depoKodu.toStringIfNull ?? "")),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.depoKodu.toStringIfNotNull ?? "")),
                         onTap: () async {
                           var result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context);
                           if (result != null) {
-                            depoController.text = result.depoTanimi ?? result.depoKodu.toStringIfNull ?? "";
+                            depoController.text = result.depoTanimi ?? result.depoKodu.toStringIfNotNull ?? "";
                             viewModel.kalemModel.depoTanimi = result.depoTanimi;
                             if (result.depoKodu != null) {
                               viewModel.setDepoKodu(result.depoKodu!);
@@ -392,7 +392,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               readOnly: true,
                               suffixMore: true,
                               controller: olcuBirimiController,
-                              valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.olcuBirimKodu.toStringIfNull ?? "")),
+                              valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.olcuBirimKodu.toStringIfNotNull ?? "")),
                               onClear: () => viewModel.setOlcuBirimi(null),
                               onTap: () async {
                                 var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
@@ -400,7 +400,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                     children: List.generate(
                                         viewModel.olcuBirimiMap.length,
                                         (index) => BottomSheetModel(
-                                            title: viewModel.olcuBirimiMap[index], description: index.toStringIfNull, value: MapEntry<String, int>(viewModel.olcuBirimiMap[index], index))));
+                                            title: viewModel.olcuBirimiMap[index], description: index.toStringIfNotNull, value: MapEntry<String, int>(viewModel.olcuBirimiMap[index], index))));
                                 if (result != null && result is MapEntry<String, int>) {
                                   viewModel.setOlcuBirimi(result);
                                   olcuBirimiController.text = result.key;
@@ -426,8 +426,8 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             var result = await bottomSheetDialogManager.showKdvOranlariBottomSheetDialog(context);
                             if (result != null) {
                               viewModel.setKdvOrani(result);
-                              kdvOraniController.text = result.toIntIfDouble.toStringIfNull ?? "";
-                              // kdvOraniController.value = TextEditingValue(text: result.toIntIfDouble.toStringIfNull ?? "");
+                              kdvOraniController.text = result.toIntIfDouble.toStringIfNotNull ?? "";
+                              // kdvOraniController.value = TextEditingValue(text: result.toIntIfDouble.toStringIfNotNull ?? "");
                               // kdvOraniController.buildTextSpan(context: context, withComposing: true);
                             }
                           },
@@ -624,24 +624,24 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     kalemAdiController.text = widget.stokListesiModel?.stokAdi ?? widget.stokListesiModel?.stokKodu ?? widget.kalemModel?.stokAdi ?? widget.kalemModel?.stokKodu ?? "";
     ekAlan1Controller.text = widget.kalemModel?.ekalan1 ?? "";
     ekAlan2Controller.text = widget.kalemModel?.ekalan2 ?? "";
-    isk1Controller?.text = widget.kalemModel?.iskonto1.toIntIfDouble.toStringIfNull ?? "";
-    isk1TipiController?.text = widget.kalemModel?.isk1Tipi.toIntIfDouble.toStringIfNull ?? "";
-    isk2YuzdeController?.text = widget.kalemModel?.iskonto2.toIntIfDouble.toStringIfNull ?? "";
-    isk2TipiController?.text = widget.kalemModel?.isk2Tipi.toIntIfDouble.toStringIfNull ?? "";
-    isk3YuzdeController?.text = widget.kalemModel?.iskonto3.toIntIfDouble.toStringIfNull ?? "";
-    isk3TipiController?.text = widget.kalemModel?.isk3Tipi.toIntIfDouble.toStringIfNull ?? "";
-    isk4YuzdeController?.text = widget.kalemModel?.iskonto4.toIntIfDouble.toStringIfNull ?? "";
-    isk4TipiController?.text = widget.kalemModel?.isk4Tipi.toIntIfDouble.toStringIfNull ?? "";
-    isk5YuzdeController?.text = widget.kalemModel?.iskonto5.toIntIfDouble.toStringIfNull ?? "";
-    isk5TipiController?.text = widget.kalemModel?.isk5Tipi.toIntIfDouble.toStringIfNull ?? "";
-    isk6YuzdeController?.text = widget.kalemModel?.iskonto6.toIntIfDouble.toStringIfNull ?? "";
-    isk6TipiController?.text = widget.kalemModel?.isk6Tipi.toIntIfDouble.toStringIfNull ?? "";
+    isk1Controller?.text = widget.kalemModel?.iskonto1.toIntIfDouble.toStringIfNotNull ?? "";
+    isk1TipiController?.text = widget.kalemModel?.isk1Tipi.toIntIfDouble.toStringIfNotNull ?? "";
+    isk2YuzdeController?.text = widget.kalemModel?.iskonto2.toIntIfDouble.toStringIfNotNull ?? "";
+    isk2TipiController?.text = widget.kalemModel?.isk2Tipi.toIntIfDouble.toStringIfNotNull ?? "";
+    isk3YuzdeController?.text = widget.kalemModel?.iskonto3.toIntIfDouble.toStringIfNotNull ?? "";
+    isk3TipiController?.text = widget.kalemModel?.isk3Tipi.toIntIfDouble.toStringIfNotNull ?? "";
+    isk4YuzdeController?.text = widget.kalemModel?.iskonto4.toIntIfDouble.toStringIfNotNull ?? "";
+    isk4TipiController?.text = widget.kalemModel?.isk4Tipi.toIntIfDouble.toStringIfNotNull ?? "";
+    isk5YuzdeController?.text = widget.kalemModel?.iskonto5.toIntIfDouble.toStringIfNotNull ?? "";
+    isk5TipiController?.text = widget.kalemModel?.isk5Tipi.toIntIfDouble.toStringIfNotNull ?? "";
+    isk6YuzdeController?.text = widget.kalemModel?.iskonto6.toIntIfDouble.toStringIfNotNull ?? "";
+    isk6TipiController?.text = widget.kalemModel?.isk6Tipi.toIntIfDouble.toStringIfNotNull ?? "";
     fiyatController.text = widget.kalemModel?.brutFiyat.toIntIfDouble.commaSeparatedWithFixedDigits ?? viewModel.model?.bulunanFiyat.toIntIfDouble?.commaSeparatedWithDecimalDigits(4) ?? "";
-    miktarController.text = viewModel.kalemModel.miktar?.toIntIfDouble.toStringIfNull ?? "";
-    miktar2Controller.text = viewModel.kalemModel.miktar2?.toIntIfDouble.toStringIfNull ?? "";
-    malFazMiktarController.text = viewModel.kalemModel.malFazlasiMiktar?.toIntIfDouble.toStringIfNull ?? "";
+    miktarController.text = viewModel.kalemModel.miktar?.toIntIfDouble.toStringIfNotNull ?? "";
+    miktar2Controller.text = viewModel.kalemModel.miktar2?.toIntIfDouble.toStringIfNotNull ?? "";
+    malFazMiktarController.text = viewModel.kalemModel.malFazlasiMiktar?.toIntIfDouble.toStringIfNotNull ?? "";
     olcuBirimiController.text = widget.stokListesiModel?.olcuBirimi ?? widget.kalemModel?.olcuBirimAdi ?? "";
-    kdvOraniController.text = widget.kalemModel?.kdvOrani.toIntIfDouble.toStringIfNull ??
+    kdvOraniController.text = widget.kalemModel?.kdvOrani.toIntIfDouble.toStringIfNotNull ??
         (StaticVariables.instance.isMusteriSiparisleri ? (widget.stokListesiModel?.satisKdv ?? "") : (widget.stokListesiModel?.alisKdv ?? "")).toString();
     depoController.text = (parametreModel.depoList?.where((element) => element.depoKodu == (viewModel.model?.depoKodu ?? parametreModel.satisHizmetDepoKodu)).firstOrNull?.depoTanimi ?? "");
     viewModel.kalemModel.depoTanimi ??= depoController.text;

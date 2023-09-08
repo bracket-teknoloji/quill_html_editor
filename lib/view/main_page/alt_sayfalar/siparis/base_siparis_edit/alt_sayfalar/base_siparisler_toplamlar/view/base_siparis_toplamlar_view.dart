@@ -2,17 +2,17 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+
+import "../../../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
-import "../../../model/base_siparis_edit_model.dart";
-
-import "../../../../../../../../core/base/model/base_edit_model.dart";
-import "../../../../../../../../core/base/state/base_state.dart";
-import "../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../siparisler/model/siparis_edit_request_model.dart";
+import "../../../model/base_siparis_edit_model.dart";
 import "../view_model/base_siparis_toplamlar_view_model.dart";
 
 class BaseSiparisToplamlarView extends StatefulWidget {
@@ -66,7 +66,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
             children: [
               Text.rich(TextSpan(children: [
                 const TextSpan(text: "Miktar\n", style: TextStyle(color: Colors.grey)),
-                TextSpan(text: BaseSiparisEditModel.instance.toplamKalemMiktari().toIntIfDouble.toStringIfNull ?? "0", style: const TextStyle(fontWeight: FontWeight.bold))
+                TextSpan(text: BaseSiparisEditModel.instance.toplamKalemMiktari().toIntIfDouble.toStringIfNotNull ?? "0", style: const TextStyle(fontWeight: FontWeight.bold))
               ])),
               const Text.rich(TextSpan(children: [TextSpan(text: "Mal Ağırlığı\n", style: TextStyle(color: Colors.grey)), TextSpan(text: "0", style: TextStyle(fontWeight: FontWeight.bold))])),
               Text.rich(TextSpan(children: [
@@ -148,7 +148,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               readOnly: true,
               suffixMore: true,
               controller: iskontoTipi1Controller,
-              valueWidget: Observer(builder: (_) => Text(viewModel.model.genisk1Tipi?.toStringIfNull ?? "")),
+              valueWidget: Observer(builder: (_) => Text(viewModel.model.genisk1Tipi?.toStringIfNotNull ?? "")),
               onTap: () async {
                 var result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
                 if (result != null) {
@@ -168,8 +168,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               controller: genelIskonto2Controller,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
               valueWidget: Observer(
-                  builder: (_) =>
-                      Text(viewModel.isGenIsk2T ? "%${(viewModel.model.genIsk2o ?? 0).toIntIfDouble}" : "${(viewModel.model.genIsk2t ?? 0).commaSeparatedWithFixedDigits} $mainCurrency")),
+                  builder: (_) => Text(viewModel.isGenIsk2T ? "%${(viewModel.model.genIsk2o ?? 0).toIntIfDouble}" : "${(viewModel.model.genIsk2t ?? 0).commaSeparatedWithFixedDigits} $mainCurrency")),
               onChanged: (p0) => viewModel.setGenIsk2(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
               suffix: IconButton(
                   onPressed: () => viewModel.changeGenIsk2O(genelIskonto2Controller), icon: Observer(builder: (_) => Icon(viewModel.isGenIsk2T ? Icons.payments_outlined : Icons.percent_outlined))),
@@ -180,7 +179,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               enabled: enable && yetkiController.siparisGenIsk2AktifMi,
               readOnly: true,
               suffixMore: true,
-              valueWidget: Observer(builder: (_) => Text(viewModel.model.genisk2Tipi?.toStringIfNull ?? "")),
+              valueWidget: Observer(builder: (_) => Text(viewModel.model.genisk2Tipi?.toStringIfNotNull ?? "")),
               controller: iskontoTipi2Controller,
               onTap: () async {
                 var result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
@@ -202,8 +201,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
               onChanged: (p0) => viewModel.setGenIsk3(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
               valueWidget: Observer(
-                  builder: (_) =>
-                      Text(viewModel.isGenIsk3T ? "%${(viewModel.model.genIsk3o ?? 0).toIntIfDouble}" : "${(viewModel.model.genIsk3t ?? 0).commaSeparatedWithFixedDigits} $mainCurrency")),
+                  builder: (_) => Text(viewModel.isGenIsk3T ? "%${(viewModel.model.genIsk3o ?? 0).toIntIfDouble}" : "${(viewModel.model.genIsk3t ?? 0).commaSeparatedWithFixedDigits} $mainCurrency")),
               suffix: IconButton(
                   onPressed: () => viewModel.changeGenIsk3O(genelIskonto3Controller), icon: Observer(builder: (_) => Icon(viewModel.isGenIsk3T ? Icons.payments_outlined : Icons.percent_outlined))),
             ),
@@ -214,7 +212,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               suffixMore: true,
               readOnly: true,
               controller: iskontoTipi3Controller,
-              valueWidget: Observer(builder: (_) => Text(viewModel.model.genisk3Tipi?.toStringIfNull ?? "")),
+              valueWidget: Observer(builder: (_) => Text(viewModel.model.genisk3Tipi?.toStringIfNotNull ?? "")),
               onTap: () async {
                 var result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
                 if (result != null) {
@@ -300,12 +298,12 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
   }
 
   void initControllers() {
-    genelIskonto1Controller = TextEditingController(text: model.genIsk1o?.toIntIfDouble.toStringIfNull);
-    genelIskonto2Controller = TextEditingController(text: model.genIsk2o?.toIntIfDouble.toStringIfNull);
-    genelIskonto3Controller = TextEditingController(text: model.genIsk3o?.toIntIfDouble.toStringIfNull);
-    iskontoTipi1Controller = TextEditingController(text: model.genisk1Tipi?.toStringIfNull);
-    iskontoTipi2Controller = TextEditingController(text: model.genisk2Tipi?.toStringIfNull);
-    iskontoTipi3Controller = TextEditingController(text: model.genisk3Tipi?.toStringIfNull);
+    genelIskonto1Controller = TextEditingController(text: model.genIsk1o?.toIntIfDouble.toStringIfNotNull);
+    genelIskonto2Controller = TextEditingController(text: model.genIsk2o?.toIntIfDouble.toStringIfNotNull);
+    genelIskonto3Controller = TextEditingController(text: model.genIsk3o?.toIntIfDouble.toStringIfNotNull);
+    iskontoTipi1Controller = TextEditingController(text: model.genisk1Tipi?.toStringIfNotNull);
+    iskontoTipi2Controller = TextEditingController(text: model.genisk2Tipi?.toStringIfNotNull);
+    iskontoTipi3Controller = TextEditingController(text: model.genisk3Tipi?.toStringIfNotNull);
     ekMal1Controller = TextEditingController(text: model.ekMaliyet1Tutari?.commaSeparatedWithFixedDigits);
     tevkifatController = TextEditingController(text: model.ekMaliyet2Tutari?.commaSeparatedWithFixedDigits);
     ekMal3Controller = TextEditingController(text: model.ekMaliyet3Tutari?.commaSeparatedWithFixedDigits);
@@ -315,7 +313,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
     if ((model.vadeTarihi?.difference(DateTime.now()).inDays ?? 0) < 0) {
       viewModel.setVadeTarihi(DateTime.now());
     }
-    vadeGunuController = TextEditingController(text: model.vadeGunu.toStringIfNull ?? (model.vadeTarihi?.difference(DateTime.now()))?.inDays.toStringIfNull);
+    vadeGunuController = TextEditingController(text: model.vadeGunu.toStringIfNotNull ?? (model.vadeTarihi?.difference(DateTime.now()))?.inDays.toStringIfNotNull);
   }
 
   void disposeControllers() {

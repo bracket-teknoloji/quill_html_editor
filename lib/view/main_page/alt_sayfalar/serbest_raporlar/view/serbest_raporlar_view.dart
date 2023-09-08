@@ -154,7 +154,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
     } else if (model.dovizTipiMi) {
       // var dovizList = CacheManager.getAnaVeri()?.paramModel?.dovizList ?? [];
       //  = await bottomSheetDialogManager.showBottomSheetDialog(context,
-      //     title: "Döviz Seçiniz", children: dovizList.map((e) => BottomSheetModel(title: e.dovizKodu.toStringIfNull ?? "", onTap: () => Get.back(result: e))).toList());
+      //     title: "Döviz Seçiniz", children: dovizList.map((e) => BottomSheetModel(title: e.dovizKodu.toStringIfNotNull ?? "", onTap: () => Get.back(result: e))).toList());
       var result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context);
       if (result != null) {
         viewModel.changeDicParams(model.adi ?? "", result.dovizKodu.toString());

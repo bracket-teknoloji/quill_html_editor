@@ -226,7 +226,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                   if (result!.length == 1) {
                                     pdfModel.dizaynId = result.first.id;
                                     pdfModel.etiketSayisi = result.first.kopyaSayisi;
-                                    pdfModel.dicParams?.caharInckey = viewModel.cariHareketleriList![index].inckeyno.toStringIfNull;
+                                    pdfModel.dicParams?.caharInckey = viewModel.cariHareketleriList![index].inckeyno.toStringIfNotNull;
                                     dizaynList = result.first;
                                   } else {
                                     dizaynList = await bottomSheetDialogManager.showBottomSheetDialog(context,
@@ -274,7 +274,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                 NetFectDizaynList? dizaynList;
                                 if (result.ext.isNotNullOrEmpty) {
                                   if (result!.length == 1) {
-                                    pdfModel.dicParams?.caharInckey = viewModel.cariHareketleriList![index].inckeyno.toStringIfNull;
+                                    pdfModel.dicParams?.caharInckey = viewModel.cariHareketleriList![index].inckeyno.toStringIfNotNull;
                                     pdfModel.dizaynId = result.first.id;
                                     //😳 Bunu sor kanka 👇🏼👇🏼
                                     pdfModel.dicParams?.kasaharInckey = viewModel.cariHareketleriList![index].kasaMi ? "1" : "0";
@@ -284,7 +284,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                     dizaynList = await bottomSheetDialogManager.showBottomSheetDialog(context,
                                         title: "Dizayn Seçiniz", children: result.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", onTap: () => Get.back(result: e))).toList());
                                     pdfModel.dizaynId = dizaynList?.id;
-                                    pdfModel.dicParams?.caharInckey = viewModel.cariHareketleriList![index].inckeyno.toStringIfNull;
+                                    pdfModel.dicParams?.caharInckey = viewModel.cariHareketleriList![index].inckeyno.toStringIfNotNull;
                                     pdfModel.dicParams?.kasaharInckey = viewModel.cariHareketleriList![index].kasaMi ? "1" : "0";
                                   }
                                   Get.to(() => PDFViewerView(title: dizaynList?.dizaynAdi ?? "", pdfData: pdfModel));

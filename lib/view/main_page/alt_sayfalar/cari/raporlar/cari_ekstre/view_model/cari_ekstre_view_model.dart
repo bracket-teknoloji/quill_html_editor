@@ -8,7 +8,6 @@ part "cari_ekstre_view_model.g.dart";
 class CariEkstreViewModel = _CariEkstreViewModelBase with _$CariEkstreViewModel;
 
 abstract class _CariEkstreViewModelBase with Store {
-
   //* Doviz Tipi
   //*
   @observable
@@ -23,11 +22,10 @@ abstract class _CariEkstreViewModelBase with Store {
   //* Cari Kodu
   //*
   @action
-  void changeCariKodu(value)=> pdfModel.dicParams!.cariKodu = value;
+  void changeCariKodu(value) => pdfModel.dicParams!.cariKodu = value;
 
   @action
-  void changeDovizTipi(int value)=> pdfModel.dicParams!.dovizTipi = value.toStringIfNull;
-
+  void changeDovizTipi(int value) => pdfModel.dicParams!.dovizTipi = value.toStringIfNotNull;
 
   //* Future
   //*
@@ -39,5 +37,4 @@ abstract class _CariEkstreViewModelBase with Store {
 
   @action
   void resetFuture() => futureController = ObservableFuture.value(false);
-
 }

@@ -125,20 +125,20 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                   children: [
                     Expanded(
                         child: CustomTextField(
-                            readOnly: true, labelText: "Senet Asıl Riski", valueText: "% ${CariDetayModel.instance.senetAsilRiskO?.toIntIfDouble.toStringIfNull}", controller: senetAsilController)),
+                            readOnly: true, labelText: "Senet Asıl Riski", valueText: "% ${CariDetayModel.instance.senetAsilRiskO?.toIntIfDouble.toStringIfNotNull}", controller: senetAsilController)),
                     Expanded(
                         child: CustomTextField(
-                            readOnly: true, labelText: "Senet Ciro Riski", valueText: "% ${CariDetayModel.instance.senetCiroRiskO?.toIntIfDouble.toStringIfNull}", controller: senetCiroController)),
+                            readOnly: true, labelText: "Senet Ciro Riski", valueText: "% ${CariDetayModel.instance.senetCiroRiskO?.toIntIfDouble.toStringIfNotNull}", controller: senetCiroController)),
                   ],
                 ),
                 Row(
                   children: [
                     Expanded(
                         child: CustomTextField(
-                            readOnly: true, labelText: "Çek Asıl Riski", valueText: "% ${CariDetayModel.instance.senetAsilRiskO?.toIntIfDouble.toStringIfNull}", controller: cekAsilController)),
+                            readOnly: true, labelText: "Çek Asıl Riski", valueText: "% ${CariDetayModel.instance.senetAsilRiskO?.toIntIfDouble.toStringIfNotNull}", controller: cekAsilController)),
                     Expanded(
                         child: CustomTextField(
-                            readOnly: true, labelText: "Çek Ciro Riski", valueText: "% ${CariDetayModel.instance.senetCiroRiskO?.toIntIfDouble.toStringIfNull}", controller: cekCiroController)),
+                            readOnly: true, labelText: "Çek Ciro Riski", valueText: "% ${CariDetayModel.instance.senetCiroRiskO?.toIntIfDouble.toStringIfNotNull}", controller: cekCiroController)),
                   ],
                 ),
                 Row(

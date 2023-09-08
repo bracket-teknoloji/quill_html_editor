@@ -7,10 +7,11 @@ class BaseEditModel<T> {
   String? siradakiKod;
   SiparisTipiEnum? siparisTipiEnum;
 
-  bool get enable => baseEditEnum == BaseEditEnum.ekle || baseEditEnum == BaseEditEnum.duzenle;
+  bool get enable => baseEditEnum == BaseEditEnum.ekle || baseEditEnum == BaseEditEnum.duzenle || baseEditEnum == BaseEditEnum.kopyala;
   bool get isDuzenle => baseEditEnum == BaseEditEnum.duzenle;
   bool get isGoruntule => baseEditEnum == BaseEditEnum.goruntule;
-  bool get isEkle => baseEditEnum == BaseEditEnum.ekle;
+  bool get isEkle => baseEditEnum == BaseEditEnum.ekle ;
+  bool get isKopyala => baseEditEnum == BaseEditEnum.kopyala;
 
   BaseEditModel({this.model, this.baseEditEnum, this.siradakiKod, this.siparisTipiEnum});
 

@@ -51,7 +51,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
         visible: !widget.model.isGoruntule,
         child: FloatingActionButton(
           onPressed: () async {
-            // bottomSheetDialogManager.showPrintDialog(context, DicParams(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi.toStringIfNull, cariKodu: model.cariKodu));
+            // bottomSheetDialogManager.showPrintDialog(context, DicParams(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi.toStringIfNotNull, cariKodu: model.cariKodu));
             await Get.toNamed("/mainPage/stokRehberi");
             viewModel.updateKalemList();
           },
@@ -195,7 +195,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
         children: [
           Wrap(
               children: [
-            Text("Miktar: ${((kalemList?.koliBilesenMiktari.toIntIfDouble ?? 0) * (kalemList?.miktar.toIntIfDouble ?? 0)).toIntIfDouble.toStringIfNull ?? ""}"),
+            Text("Miktar: ${((kalemList?.koliBilesenMiktari.toIntIfDouble ?? 0) * (kalemList?.miktar.toIntIfDouble ?? 0)).toIntIfDouble.toStringIfNotNull ?? ""}"),
             Text("Fiyat: ${kalemList?.brutFiyat.toIntIfDouble.commaSeparatedWithFixedDigits ?? ""}"),
             // Text("KDV %: ${(kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
             Text("KDV %: ${((StaticVariables.instance.isMusteriSiparisleri ? kalemList?.stokSatisKdv : kalemList?.stokAlisKdv) ?? kalemList?.kdvOrani).toIntIfDouble ?? ""}"),

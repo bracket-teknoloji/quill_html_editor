@@ -168,7 +168,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
       fontWeight: FontWeight.bold,
       fontSize: 8,
     );
-    return Text("${(value ~/ 1000).toStringIfNull ?? ""}k ", style: style, textAlign: TextAlign.left);
+    return Text("${(value ~/ 1000).toStringIfNotNull ?? ""}k ", style: style, textAlign: TextAlign.left);
   }
 
   Widget topTitleWidgets(double value, TitleMeta meta) {

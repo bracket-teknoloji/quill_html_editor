@@ -3,6 +3,7 @@ import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "package:share_plus/share_plus.dart";
 
 import "../../../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
@@ -12,6 +13,7 @@ import "../../../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/s
 import "../../../../../../../view/main_page/model/grid_item_model.dart";
 import "../../../../../../../view/main_page/model/param_model.dart";
 import "../../../../../../base/model/base_edit_model.dart";
+import "../../../../../../base/model/delete_fatura_model.dart";
 import "../../../../../../base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "../../../../../../base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "../../../../../../constants/enum/base_edit_enum.dart";
@@ -40,6 +42,8 @@ class IslemlerMenuItemConstants<T> {
   List<GridItemModel?> islemlerList = [];
   T? model;
   // T? get model2 => model;
+  DialogManager dialogManager = DialogManager();
+  NetworkManager networkManager = NetworkManager();
   IslemlerMenuItemConstants({required this.islemtipi, List<GridItemModel?>? raporlar, this.model, this.siparisTipi}) {
     if (islemtipi == IslemTipiEnum.stok) {
       islemlerList.add(stokKarti);
@@ -60,7 +64,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(siparisPDFGoruntule);
       islemlerList.add(cariKoduDegistir);
       islemlerList.add(belgeNoDegistir);
-      islemlerList.add(belgeyiKopyala);
+      islemlerList.add(kopyala);
       islemlerList.addAll(raporlar!);
     }
     if (raporlar.ext.isNotNullOrEmpty) {
@@ -68,18 +72,51 @@ class IslemlerMenuItemConstants<T> {
     }
   }
 
-  GridItemModel? get cariHareketleri => GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Cari Hareketleri", onTap: () => Get.toNamed("mainPage/cariHareketleri", arguments: model));
+  GridItemModel? get cariHareketleri =>
+      GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Cari Hareketleri", onTap: () async => Get.toNamed("mainPage/cariHareketleri", arguments: model));
 
   //* Genel
-  GridItemModel? get stokHareketleri => GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Stok Hareketleri", onTap: () => Get.toNamed("mainPage/stokHareketleri", arguments: model));
+  GridItemModel? get stokHareketleri =>
+      GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Stok Hareketleri", onTap: () async => Get.toNamed("mainPage/stokHareketleri", arguments: model));
   GridItemModel? get kopyala => GridItemModel.islemler(
-      title: "Kopyala",
-      onTap: () => Get.toNamed(islemtipi == IslemTipiEnum.cari ? "/mainPage/cariEdit" : "/mainPage/stokEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.kopyala)));
+      title: "Kopyala", iconData: Icons.copy_outlined, onTap: () async => Get.toNamed(islemtipi.route, arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.kopyala)));
   //* Siparis
   GridItemModel? get irsaliyeOlustur => GridItemModel.islemler(title: "İrsaliye Oluştur", iconData: Icons.conveyor_belt);
   GridItemModel? get faturaOlustur => GridItemModel.islemler(title: "Fatura Oluştur (Siparişten)", iconData: Icons.conveyor_belt);
-  GridItemModel? get belgeyiKapat =>
-      GridItemModel.islemler(title: "Belgeyi Kapat", iconData: Icons.lock_outline, onTap: () => DialogManager().showAreYouSureDialog(() {}, title: "Kiliti Kapatmak istediğinize emin misiniz?"));
+  GridItemModel? get belgeyiKapat {
+    if (model is BaseSiparisEditModel) {
+      BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+      if (siparisModel.tipi != 1) {
+        return GridItemModel.islemler(
+            title: "Belgeyi Kapat",
+            iconData: Icons.lock_outline,
+            onTap: () async {
+              var result = await dialogManager.showAreYouSureDialog(() async {
+                return await kilitRequest(siparisModel, 1);
+              }, title: "Kiliti kapatmak istediğinize emin misiniz?");
+              if (result != null) {
+                return result;
+              }
+            });
+      } else {
+        return GridItemModel.islemler(
+            title: "Belgeyi Aç",
+            iconData: Icons.lock_open_outlined,
+            onTap: () async => await dialogManager.showAreYouSureDialog(() async => await kilitRequest(siparisModel, 2), title: "Kiliti açmak istediğinize emin misiniz?"));
+      }
+    }
+    return null;
+  }
+
+  Future<void> kilitRequest(BaseSiparisEditModel siparisModel, int yeniTipi) async {
+    var result = await networkManager.dioPost<SiparisEditRequestModel>(
+        path: ApiUrls.belgeDurumunuDegistir, showLoading: true, bodyModel: SiparisEditRequestModel(), data: DeleteFaturaModel.fromSiparislerModel(siparisModel..tipi = yeniTipi).toJson());
+    if (result.success == true) {
+      DialogManager().showSnackBar("Başarılı");
+    }
+    return;
+  }
+
   GridItemModel? get belgeNoDegistir => GridItemModel.islemler(title: "Belge No Değiştir", iconData: Icons.edit_outlined);
   GridItemModel? get siparisPDFGoruntule => GridItemModel.islemler(
       title: "PDF Görüntüle",
@@ -108,7 +145,7 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel? get stokKarti => GridItemModel.islemler(
       title: "Stok Kartı",
       iconData: Icons.info_outline,
-      onTap: () => Get.toNamed("/mainPage/stokEdit", arguments: BaseEditModel(model: (model as StokListesiModel), baseEditEnum: BaseEditEnum.duzenle)));
+      onTap: () async => Get.toNamed("/mainPage/stokEdit", arguments: BaseEditModel(model: (model as StokListesiModel), baseEditEnum: BaseEditEnum.duzenle)));
 
   //* Cari
   GridItemModel? get paylas => GridItemModel.islemler(

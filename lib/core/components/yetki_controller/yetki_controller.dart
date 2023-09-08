@@ -117,6 +117,7 @@ class YetkiController {
   bool get siparisEkMaliyet2GizlenecekMi => siparisMSGizlenecekAlanMi(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet2);
   bool get siparisEkMaliyet3GizlenecekMi => siparisMSGizlenecekAlanMi(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet3);
   bool get siparisHizmetAktifMi => _musteriSiparisiMi ? siparisMSSatisHizmetAktifMi : siparisSSSatisHizmetAktifMi;
+  bool get siparisKontrolAciklamasiAktifMi => _musteriSiparisiMi ? siparisMSKontrolAciklamasiAktifMi : siparisSSKontrolAciklamasiAktifMi;
 
   //* Müşteri Siparişi
   //😳SatisSatirKademeliIskontoSayisi => 0 ise kademeli iskonto yok demektir. Kaç tane varsa o kadar genisk ve geniskTipi gelecek
@@ -152,6 +153,7 @@ class YetkiController {
 
   ///? Eğer içeriyorsa gizlenecek
   bool siparisMSGizlenecekAlanMi(String alan) => !isTrue(yetkiModel?.siparisMusteriSiparisiGizlenecekAlanlar?.contains(alan), skipAdmin: true);
+  bool get siparisMSKontrolAciklamasiAktifMi => isTrue(paramModel?.fatuKontrolAciklamasiAktif?.contains("MS"), skipAdmin: true);
 
   ///? Eğer içeriyorsa değiştirilemeyecek
   bool siparisMSDegismeyecekAlanMi(String alan) => !isTrue(yetkiModel?.siparisMusteriSiparisiDegismeyecekAlanlar?.contains(alan), skipAdmin: true);
@@ -181,5 +183,6 @@ class YetkiController {
   bool get siparisSSmiktar2Sor => isTrue(paramModel?.alisMiktar2Sor, skipAdmin: true);
   bool get siparisSSsatirdaKDVSor => isTrue(paramModel?.alisSatirdaKdvSor, skipAdmin: true);
   bool get siparisSSSatisHizmetAktifMi => isTrue(paramModel?.alisHizmetAktif, skipAdmin: true);
+  bool get siparisSSKontrolAciklamasiAktifMi => isTrue(paramModel?.fatuKontrolAciklamasiAktif?.contains("SS"), skipAdmin: true);
   // bool get siparisSSISk1YuzdeSor => isTrue(paramModel?.alisSatirIsk1YuzdeSor, skipAdmin: true);
 }

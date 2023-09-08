@@ -577,7 +577,7 @@ class BottomSheetDialogManager {
   Future<DovizList?> showDovizBottomSheetDialog(BuildContext context) async {
     List<DovizList> dovizList = CacheManager.getAnaVeri()?.paramModel?.dovizList ?? [];
     DovizList? doviz =
-        await showRadioBottomSheetDialog(context, title: "Döviz Seçiniz", children: dovizList.map((e) => BottomSheetModel(title: e.isim ?? e.dovizKodu.toStringIfNull ?? "", value: e)).toList());
+        await showRadioBottomSheetDialog(context, title: "Döviz Seçiniz", children: dovizList.map((e) => BottomSheetModel(title: e.isim ?? e.dovizKodu.toStringIfNotNull ?? "", value: e)).toList());
     return doviz;
   }
 
@@ -609,7 +609,7 @@ class BottomSheetDialogManager {
   Future<BelgeTipiModel?> showBelgeTipiBottomSheetDialog(BuildContext context) async {
     List<BelgeTipiModel> belgeTipiList = [BelgeTipiModel(belgeTipi: "Yurt İçi", belgeTipiId: 2), BelgeTipiModel(belgeTipi: "Yurt Dışı", belgeTipiId: 6)];
     return await showRadioBottomSheetDialog(context,
-        title: "Belge Tipi Seçiniz", children: belgeTipiList.map((e) => BottomSheetModel(title: e.belgeTipi ?? e.belgeTipiId.toStringIfNull ?? "", value: e)).toList());
+        title: "Belge Tipi Seçiniz", children: belgeTipiList.map((e) => BottomSheetModel(title: e.belgeTipi ?? e.belgeTipiId.toStringIfNotNull ?? "", value: e)).toList());
   }
 
   Future showOlcuBirimiBottomSheetDialog(BuildContext context) async {
@@ -621,7 +621,7 @@ class BottomSheetDialogManager {
   Future<ListIskTip?> showIskontoTipiBottomSheetDialog(BuildContext context) async {
     List<ListIskTip> iskontoTipiList = CacheManager.getAnaVeri()?.paramModel?.listIskTip ?? [];
     ListIskTip? iskontoTipi = await showRadioBottomSheetDialog(context,
-        title: "İskonto Tipi Seçiniz", children: iskontoTipiList.map((e) => BottomSheetModel(title: e.aciklama ?? e.iskontoTipi.toStringIfNull ?? "", value: e)).toList());
+        title: "İskonto Tipi Seçiniz", children: iskontoTipiList.map((e) => BottomSheetModel(title: e.aciklama ?? e.iskontoTipi.toStringIfNotNull ?? "", value: e)).toList());
     return iskontoTipi;
   }
 

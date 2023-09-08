@@ -217,7 +217,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
   Future filterBottomSheet() async {
     await bottomSheetDialogManager.showBottomSheetDialog(context,
         title: "Filtrele",
-        body: Padding(
+        body: Padding( 
           padding: EdgeInsets.all(UIHelper.lowSize),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,

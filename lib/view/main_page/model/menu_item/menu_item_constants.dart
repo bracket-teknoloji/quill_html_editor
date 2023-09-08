@@ -139,7 +139,7 @@ class MenuItemConstants {
     ]),
 
     //* Talep & Teklif
-    //*
+    //*∑
     GridItemModel.anamenu(name: "TEKL", title: "Talep & Teklif", icon: "offer", color: GridThemeManager.talepTeklif, altMenuler: [
       //😳GridItemModel.item(name: "taltek_STEK", title: "Satış Teklifi", icon: "offer"),
       //😳GridItemModel.item(name: "taltek_STAL", title: "Satın Alma Talebi", icon: "offer"),

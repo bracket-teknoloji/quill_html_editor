@@ -30,20 +30,21 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
   static StokDetayModel get stokDetayModel => StokDetayModel.instance;
   static StokListesiModel get stokListesiModel => StokListesiModel.instance;
   BaseStokEditFiyatViewModel viewModel = BaseStokEditFiyatViewModel();
-  TextEditingController alisKdvOraniController = TextEditingController(text: stokDetayModel.stokList?.first.alisKdv.toStringIfNull ?? stokListesiModel.alisKdv.toStringIfNull ?? "");
-  TextEditingController alisFiyat1Controller = TextEditingController(text: stokDetayModel.stokList?.first.alisFiat1.toStringIfNull ?? stokListesiModel.alisFiat1.toStringIfNull ?? "");
-  TextEditingController alisFiyat2Controller = TextEditingController(text: stokDetayModel.stokList?.first.alisFiat2.toStringIfNull ?? stokListesiModel.alisFiat2.toStringIfNull ?? "");
-  TextEditingController alisFiyat3Controller = TextEditingController(text: stokDetayModel.stokList?.first.alisFiat3.toStringIfNull ?? stokListesiModel.alisFiat3.toStringIfNull ?? "");
-  TextEditingController alisFiyat4Controller = TextEditingController(text: stokDetayModel.stokList?.first.alisFiat4.toStringIfNull ?? stokListesiModel.alisFiat4.toStringIfNull ?? "");
+  TextEditingController alisKdvOraniController = TextEditingController(text: stokDetayModel.stokList?.first.alisKdv.toStringIfNotNull ?? stokListesiModel.alisKdv.toStringIfNotNull ?? "");
+  TextEditingController alisFiyat1Controller = TextEditingController(text: stokDetayModel.stokList?.first.alisFiat1.toStringIfNotNull ?? stokListesiModel.alisFiat1.toStringIfNotNull ?? "");
+  TextEditingController alisFiyat2Controller = TextEditingController(text: stokDetayModel.stokList?.first.alisFiat2.toStringIfNotNull ?? stokListesiModel.alisFiat2.toStringIfNotNull ?? "");
+  TextEditingController alisFiyat3Controller = TextEditingController(text: stokDetayModel.stokList?.first.alisFiat3.toStringIfNotNull ?? stokListesiModel.alisFiat3.toStringIfNotNull ?? "");
+  TextEditingController alisFiyat4Controller = TextEditingController(text: stokDetayModel.stokList?.first.alisFiat4.toStringIfNotNull ?? stokListesiModel.alisFiat4.toStringIfNotNull ?? "");
   TextEditingController alisDovizTipiController = TextEditingController(text: stokDetayModel.stokList?.first.satisDovizAdi ?? stokListesiModel.alisDovizAdi ?? "");
-  TextEditingController alisDovizFiyatiController = TextEditingController(text: stokDetayModel.stokList?.first.dovAlisFiat.toStringIfNull ?? stokListesiModel.dovAlisFiat.toStringIfNull ?? "");
-  TextEditingController satisKdvOraniController = TextEditingController(text: stokDetayModel.stokList?.first.satisKdv.toStringIfNull ?? stokListesiModel.satisKdv.toStringIfNull ?? "");
-  TextEditingController satisFiyat1Controller = TextEditingController(text: stokDetayModel.stokList?.first.satisFiat1.toStringIfNull ?? stokListesiModel.satisFiat1.toStringIfNull ?? "");
-  TextEditingController satisFiyat2Controller = TextEditingController(text: stokDetayModel.stokList?.first.satisFiat2.toStringIfNull ?? stokListesiModel.satisFiat2.toStringIfNull ?? "");
-  TextEditingController satisFiyat3Controller = TextEditingController(text: stokDetayModel.stokList?.first.satisFiat3.toStringIfNull ?? stokListesiModel.satisFiat3.toStringIfNull ?? "");
-  TextEditingController satisFiyat4Controller = TextEditingController(text: stokDetayModel.stokList?.first.satisFiat4.toStringIfNull ?? stokListesiModel.satisFiat4.toStringIfNull ?? "");
+  TextEditingController alisDovizFiyatiController = TextEditingController(text: stokDetayModel.stokList?.first.dovAlisFiat.toStringIfNotNull ?? stokListesiModel.dovAlisFiat.toStringIfNotNull ?? "");
+  TextEditingController satisKdvOraniController = TextEditingController(text: stokDetayModel.stokList?.first.satisKdv.toStringIfNotNull ?? stokListesiModel.satisKdv.toStringIfNotNull ?? "");
+  TextEditingController satisFiyat1Controller = TextEditingController(text: stokDetayModel.stokList?.first.satisFiat1.toStringIfNotNull ?? stokListesiModel.satisFiat1.toStringIfNotNull ?? "");
+  TextEditingController satisFiyat2Controller = TextEditingController(text: stokDetayModel.stokList?.first.satisFiat2.toStringIfNotNull ?? stokListesiModel.satisFiat2.toStringIfNotNull ?? "");
+  TextEditingController satisFiyat3Controller = TextEditingController(text: stokDetayModel.stokList?.first.satisFiat3.toStringIfNotNull ?? stokListesiModel.satisFiat3.toStringIfNotNull ?? "");
+  TextEditingController satisFiyat4Controller = TextEditingController(text: stokDetayModel.stokList?.first.satisFiat4.toStringIfNotNull ?? stokListesiModel.satisFiat4.toStringIfNotNull ?? "");
   TextEditingController satisDovizTipiController = TextEditingController(text: stokDetayModel.stokList?.first.satisDovizAdi ?? stokListesiModel.satisDovizAdi ?? "");
-  TextEditingController satisDovizFiyatiController = TextEditingController(text: stokDetayModel.stokList?.first.dovSatisFiat.toStringIfNull ?? stokListesiModel.dovSatisFiat.toStringIfNull ?? "");
+  TextEditingController satisDovizFiyatiController =
+      TextEditingController(text: stokDetayModel.stokList?.first.dovSatisFiat.toStringIfNotNull ?? stokListesiModel.dovSatisFiat.toStringIfNotNull ?? "");
   @override
   void dispose() {
     alisKdvOraniController.dispose();
@@ -84,7 +85,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                       // ignore: use_build_context_synchronously
                       double? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                           title: "KDV Oranları",
-                          children: viewModel.kdvOraniList?.map((element) => BottomSheetModel(title: element.toStringIfNull ?? "", onTap: () => Get.back(result: element))).toList());
+                          children: viewModel.kdvOraniList?.map((element) => BottomSheetModel(title: element.toStringIfNotNull ?? "", onTap: () => Get.back(result: element))).toList());
                       if (result != null) {
                         alisKdvOraniController.text = result.toString();
                         stokDetayModel.stokList?.first.alisKdv = result;
@@ -186,7 +187,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                       // ignore: use_build_context_synchronously
                       double? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                           title: "KDV Oranları",
-                          children: viewModel.kdvOraniList?.map((element) => BottomSheetModel(title: element.toStringIfNull ?? "", onTap: () => Get.back(result: element))).toList());
+                          children: viewModel.kdvOraniList?.map((element) => BottomSheetModel(title: element.toStringIfNotNull ?? "", onTap: () => Get.back(result: element))).toList());
                       if (result != null) {
                         satisKdvOraniController.text = result.toString();
                         stokDetayModel.stokList?.first.satisKdv = result;

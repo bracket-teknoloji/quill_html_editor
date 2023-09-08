@@ -84,7 +84,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
     TextEditingController vergiNoController = TextEditingController(text: viewModel.model?.vergiNumarasi);
     TextEditingController dovizController = TextEditingController(text: viewModel.model?.dovizAdi);
     TextEditingController plasiyerController = TextEditingController(text: viewModel.model?.plasiyerAciklama);
-    TextEditingController vadeGunuController = TextEditingController(text: viewModel.model?.vadeGunu?.toStringIfNull ?? "");
+    TextEditingController vadeGunuController = TextEditingController(text: viewModel.model?.vadeGunu?.toStringIfNotNull ?? "");
     //! Hangi parametreyi alacak diye sor
     TextEditingController odemeGunController = TextEditingController(
         text: viewModel.model?.odemeTipi == "0"
@@ -398,7 +398,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                     child: CustomTextField(
                   enabled: enabled,
                   labelText: "Vade Günü",
-                  valueText: model?.dovizKodu?.toStringIfNull,
+                  valueText: model?.dovizKodu?.toStringIfNotNull,
                   controller: vadeGunuController,
                   onChanged: (p0) {
                     vadeGunuController.text = p0;

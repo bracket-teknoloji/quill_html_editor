@@ -30,11 +30,13 @@ class SiparislerCard extends StatefulWidget {
   final bool? showVade;
   final BaseSiparisEditModel model;
   final Function? onDeleted;
+  final ValueChanged<bool>? onUpdated;
 
   ///Eğer Bu widget Cache'den çağırılıyorsa index verilmelidir.
   final int? index;
   final SiparisTipiEnum siparisTipiEnum;
-  const SiparislerCard({super.key, required this.model, this.onDeleted, required this.siparisTipiEnum, this.index, this.isGetData, this.showEkAciklama, this.showMiktar, this.showVade});
+  const SiparislerCard(
+      {super.key, required this.model, this.onDeleted, required this.siparisTipiEnum, this.index, this.isGetData, this.showEkAciklama, this.showMiktar, this.showVade, this.onUpdated});
 
   @override
   State<SiparislerCard> createState() => _SiparislerCardState();
@@ -67,18 +69,19 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                     BottomSheetModel(
                         title: "Düzelt",
                         iconWidget: Icons.edit_outlined,
-                        onTap: () {
+                        onTap: () async {
                           if (widget.model.isNew == true) {
                             BaseSiparisEditModel.setInstance(widget.model);
                           }
                           Get.back();
-                          return Get.toNamed("mainPage/siparisEdit",
+                          await Get.toNamed("mainPage/siparisEdit",
                               arguments: BaseEditModel(
                                 model: SiparisEditRequestModel.fromSiparislerModel(widget.model),
                                 baseEditEnum: BaseEditEnum.duzenle,
                                 siparisTipiEnum: widget.siparisTipiEnum,
                               ));
-                        }).yetkiKontrol(yetkiController.siparisDuzelt),
+                          widget.onUpdated?.call(true);
+                        }).yetkiKontrol(yetkiController.siparisDuzelt && widget.model.tipi != 1),
                     BottomSheetModel(
                         title: "Sil",
                         iconWidget: Icons.delete_outline,
@@ -101,16 +104,20 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                               widget.onDeleted?.call();
                             }
                           });
-                        }).yetkiKontrol(yetkiController.siparisSil || widget.model.isNew == true),
+                        }).yetkiKontrol((yetkiController.siparisSil || widget.model.isNew == true) && widget.model.tipi != 1),
                     BottomSheetModel(title: "Yazdır", iconWidget: Icons.print_outlined).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
                     BottomSheetModel(
                         title: "İşlemler",
                         iconWidget: Icons.list_alt_outlined,
-                        onTap: () {
+                        onTap: () async {
                           Get.back();
-                          dialogManager.showSiparisGridViewDialog(widget.model);
+                          var result = await dialogManager.showSiparisGridViewDialog(widget.model);
+                          if (result != null) {
+                            widget.onUpdated?.call(true);
+                          }
                         }).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
-                    BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
+                    BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined)
+                        .yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null && yetkiController.siparisKontrolAciklamasiAktifMi && false),
                     BottomSheetModel(
                         title: "Cari İşlemleri",
                         iconWidget: Icons.person_outline_outlined,

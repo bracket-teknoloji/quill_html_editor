@@ -21,7 +21,8 @@ class CustomAnimatedGridView<T> extends StatefulWidget {
   final SiparisTipiEnum? siparisTipi;
   final T? model;
   final String? title;
-  const CustomAnimatedGridView({super.key, this.cariListesiModel, required this.islemTipi, this.model, this.title, this.siparisTipi});
+  final ValueChanged<T>? onSelected;
+  const CustomAnimatedGridView({super.key, this.cariListesiModel, required this.islemTipi, this.model, this.title, this.siparisTipi, this.onSelected});
   @override
   State<CustomAnimatedGridView> createState() => _CustomAnimatedGridViewState();
 }
@@ -38,14 +39,15 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
   void initState() {
     // viewModel.setGridItemModel(result.getList().first.altMenuler?.where((element) => element.title == "Raporlar").first.altMenuler?.where((element) => element.yetkiKontrol == true).toList());
     if (islemMi) {
-      IslemlerMenuItemConstants islemlerResult = IslemlerMenuItemConstants(islemtipi: widget.islemTipi,  raporlar: getRaporList(widget.islemTipi), siparisTipi: widget.siparisTipi, model: widget.cariListesiModel ?? widget.model);
+      IslemlerMenuItemConstants islemlerResult =
+          IslemlerMenuItemConstants(islemtipi: widget.islemTipi, raporlar: getRaporList(widget.islemTipi), siparisTipi: widget.siparisTipi, model: widget.cariListesiModel ?? widget.model);
       viewModel.setGridItemModel(islemlerResult.islemlerList.whereType<GridItemModel>().toList());
     } else if (raporMu) {
       if (widget.islemTipi == IslemTipiEnum.cariRapor) {
         viewModel.setGridItemModel(getRaporList(IslemTipiEnum.cari)?.first.altMenuler);
       } else if (widget.islemTipi == IslemTipiEnum.stokRapor) {
         viewModel.setGridItemModel(getRaporList(IslemTipiEnum.stok)?.first.altMenuler);
-      }else if (widget.islemTipi == IslemTipiEnum.siparis){
+      } else if (widget.islemTipi == IslemTipiEnum.siparis) {
         viewModel.setGridItemModel(getRaporList(IslemTipiEnum.siparis)?.first.altMenuler?.where((element) => element.siparisTipi == widget.siparisTipi).toList());
       }
     }
@@ -119,16 +121,20 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                                   color: item?.color,
                                   name: item?.name.toString(),
                                   title: item?.title.toString(),
-                                  onTap: () {
+                                  onTap: () async {
                                     if (item?.menuTipi == "S" || item?.menuTipi == "A") {
                                       viewModel.addReturnGridItemModel(viewModel.gridItemModelList);
                                       viewModel.setGridItemModel(item?.altMenuler);
                                     } else {
-                                      Get.back();
+                                      Get.back(result: true);
                                       if (item?.route != null && item?.menuTipi != "SR") {
                                         Get.toNamed(item?.route ?? "", arguments: widget.cariListesiModel ?? widget.model);
                                       } else {
-                                        item?.onTap?.call();
+                                        if (!(item?.altMenuVarMi ?? false)) {
+                                          await item?.onTap?.call();
+                                        } else {
+                                          item?.onTap?.call();
+                                        }
                                       }
                                       // call with arguments
                                     }

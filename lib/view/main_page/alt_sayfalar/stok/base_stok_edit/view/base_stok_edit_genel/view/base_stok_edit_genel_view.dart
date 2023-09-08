@@ -130,15 +130,15 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
             } else {
               stokKoduController = TextEditingController(text: viewModel.stokListesiModel?.stokKodu);
               stokAdiController = TextEditingController(text: viewModel.stokListesiModel?.stokAdi);
-              depoController = TextEditingController(text: model?.stokList?.first.depoKodu.toStringIfNull ?? viewModel.stokListesiModel?.depoKodu.toStringIfNull);
+              depoController = TextEditingController(text: model?.stokList?.first.depoKodu.toStringIfNotNull ?? viewModel.stokListesiModel?.depoKodu.toStringIfNotNull);
               muhasebeDetayKoduController = TextEditingController(text: model?.stokList?.first.muhdetayAdi ?? viewModel.stokListesiModel?.muhdetayAdi);
               olcuBirimi1Controller = TextEditingController(text: model?.stokList?.first.olcuBirimi ?? viewModel.stokListesiModel?.olcuBirimi);
               olcuBirimi2Controller = TextEditingController(text: model?.stokList?.first.olcuBirimi2 ?? viewModel.stokListesiModel?.olcuBirimi2);
-              olcuBirimi2PayController = TextEditingController(text: model?.stokList?.first.olcuBirimi2Pay.toStringIfNull ?? viewModel.stokListesiModel?.olcuBirimi2Pay.toStringIfNull);
-              olcuBirimi2PaydaController = TextEditingController(text: model?.stokList?.first.olcuBirimi2Payda.toStringIfNull ?? viewModel.stokListesiModel?.olcuBirimi2Payda.toStringIfNull);
+              olcuBirimi2PayController = TextEditingController(text: model?.stokList?.first.olcuBirimi2Pay.toStringIfNotNull ?? viewModel.stokListesiModel?.olcuBirimi2Pay.toStringIfNotNull);
+              olcuBirimi2PaydaController = TextEditingController(text: model?.stokList?.first.olcuBirimi2Payda.toStringIfNotNull ?? viewModel.stokListesiModel?.olcuBirimi2Payda.toStringIfNotNull);
               olcuBirimi3Controller = TextEditingController(text: model?.stokList?.first.olcuBirimi3 ?? viewModel.stokListesiModel?.olcuBirimi3);
-              olcuBirimi3PayController = TextEditingController(text: model?.stokList?.first.olcuBirimi3Pay.toStringIfNull ?? viewModel.stokListesiModel?.olcuBirimi3Pay.toStringIfNull);
-              olcuBirimi3PaydaController = TextEditingController(text: model?.stokList?.first.olcuBirimi3Payda.toStringIfNull ?? viewModel.stokListesiModel?.olcuBirimi3Payda.toStringIfNull);
+              olcuBirimi3PayController = TextEditingController(text: model?.stokList?.first.olcuBirimi3Pay.toStringIfNotNull ?? viewModel.stokListesiModel?.olcuBirimi3Pay.toStringIfNotNull);
+              olcuBirimi3PaydaController = TextEditingController(text: model?.stokList?.first.olcuBirimi3Payda.toStringIfNotNull ?? viewModel.stokListesiModel?.olcuBirimi3Payda.toStringIfNotNull);
               barkod1Controller = TextEditingController(text: model?.stokList?.first.barkod1 ?? viewModel.stokListesiModel?.barkod1);
               barkod2Controller = TextEditingController(text: model?.stokList?.first.barkod2 ?? viewModel.stokListesiModel?.barkod2);
               barkod3Controller = TextEditingController(text: model?.stokList?.first.barkod3 ?? viewModel.stokListesiModel?.barkod3);
@@ -223,10 +223,10 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                           DepoList? result = await bottomSheetDialogManager.showBottomSheetDialog(
                             context,
                             title: "Depo",
-                            children: list?.map((e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNull, onTap: () => Get.back(result: e))).toList(),
+                            children: list?.map((e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, onTap: () => Get.back(result: e))).toList(),
                           );
                           if (result != null) {
-                            depoController?.text = result.depoKodu.toStringIfNull ?? "";
+                            depoController?.text = result.depoKodu.toStringIfNotNull ?? "";
                             viewModel.stokListesiModel?.depoKodu = result.depoKodu;
                           }
                         },
@@ -242,11 +242,11 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                               StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                                   title: "Muhasebe Kodu",
                                   children: list
-                                      .map((e) =>
-                                          BottomSheetModel(title: "${e.adi ?? ""}\n${e.muhKodu.toStringIfNull}", description: "${e.alisHesabi} \n${e.satisHesabi}", onTap: () => Get.back(result: e)))
+                                      .map((e) => BottomSheetModel(
+                                          title: "${e.adi ?? ""}\n${e.muhKodu.toStringIfNotNull}", description: "${e.alisHesabi} \n${e.satisHesabi}", onTap: () => Get.back(result: e)))
                                       .toList());
                               if (result != null) {
-                                muhasebeDetayKoduController?.text = "${result.adi ?? ""} ${result.muhKodu.toStringIfNull}";
+                                muhasebeDetayKoduController?.text = "${result.adi ?? ""} ${result.muhKodu.toStringIfNotNull}";
                                 viewModel.stokListesiModel?.muhdetayAdi = result.adi;
                               }
                             },
@@ -347,7 +347,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                       return CustomWidgetWithLabel(
                         text: "Diğer",
                         child: CustomTextField(
-                          // valueText: viewModel.stokListesiModel?.subeKodu.toStringIfNull,
+                          // valueText: viewModel.stokListesiModel?.subeKodu.toStringIfNotNull,
                           readOnly: true,
                           enabled: (enable && subeList.firstWhere((element) => element.subeKodu == veriTabani["Şube"]).merkezmi == "E") || widget.model == BaseEditEnum.ekle,
                           labelText: "Şube",
@@ -535,7 +535,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
     // ignore: use_build_context_synchronously
     var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
         title: "Ölçü Birimi $controller",
-        children: filteredList?.map((e) => BottomSheetModel(title: e.olcuBirimi ?? "", description: e.birimNo.toStringIfNull, onTap: () => Get.back(result: e.olcuBirimi))).toList());
+        children: filteredList?.map((e) => BottomSheetModel(title: e.olcuBirimi ?? "", description: e.birimNo.toStringIfNotNull, onTap: () => Get.back(result: e.olcuBirimi))).toList());
     if (result != null) {
       if (controller == 1) {
         olcuBirimi1Controller?.text = result;
@@ -649,7 +649,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
         bodyModel: StokOlcuBirimleriModel(),
         addCKey: true,
         addSirketBilgileri: true,
-        data: {"BarkodSira": controller.toStringIfNull, "StokKodu": model?.stokKodu ?? stokKoduController?.text, "Seri": seriValue});
+        data: {"BarkodSira": controller.toStringIfNotNull, "StokKodu": model?.stokKodu ?? stokKoduController?.text, "Seri": seriValue});
     return result.paramData!["URETILEN_BARKOD"];
   }
 

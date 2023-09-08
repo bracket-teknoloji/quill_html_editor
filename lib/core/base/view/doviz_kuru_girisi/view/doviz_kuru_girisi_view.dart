@@ -72,7 +72,10 @@ class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
             children: [
               CustomTextField(labelText: "Tarih", readOnly: true, controller: tarihController),
               CustomTextField(
-                  labelText: "Döviz Tipi", readOnly: true, controller: dovizTipiController, valueWidget: Observer(builder: (_) => Text(viewModel.dovizKurlariModel?.dovizTipi.toStringIfNull ?? ""))),
+                  labelText: "Döviz Tipi",
+                  readOnly: true,
+                  controller: dovizTipiController,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.dovizKurlariModel?.dovizTipi.toStringIfNotNull ?? ""))),
               Row(
                 children: [
                   Expanded(

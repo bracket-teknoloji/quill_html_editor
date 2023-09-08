@@ -1,9 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "../../../../../../../../core/constants/enum/siparis_tipi_enum.dart";
-import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
-import "../../../../../../model/param_model.dart";
 
 import "../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../core/base/model/base_proje_model.dart";
@@ -11,12 +8,15 @@ import "../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../../../model/param_model.dart";
 import "../../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../../siparisler/model/siparis_edit_request_model.dart";
 import "../../../model/base_siparis_edit_model.dart";
@@ -36,7 +36,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
   ParamModel? get paramModel => CacheManager.getAnaVeri()?.paramModel;
   bool get enable => siparisModel.enable;
   bool get isDuzenle => siparisModel.isDuzenle;
-  bool get isEkle => siparisModel.isEkle;
+  bool get isEkle => siparisModel.isEkle || siparisModel.isKopyala;
   bool get isGoruntule => siparisModel.isGoruntule;
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   late final TextEditingController belgeNoController;
@@ -248,13 +248,13 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     readOnly: true,
                     suffixMore: true,
                     controller: topluDepoController,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNull ?? "")),
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
                     onClear: () => viewModel.setTopluDepoKodu(null),
                     onTap: () async {
                       var result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context);
                       if (result != null) {
                         viewModel.setTopluDepoKodu(result.depoKodu);
-                        topluDepoController.text = result.depoTanimi ?? result.depoKodu.toStringIfNull ?? "";
+                        topluDepoController.text = result.depoTanimi ?? result.depoKodu.toStringIfNotNull ?? "";
                       }
                     },
                   )),
@@ -423,10 +423,10 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
     var result = await networkManager.dioGet<BaseSiparisEditModel>(
         path: ApiUrls.getSiradakiBelgeNo,
         bodyModel: BaseSiparisEditModel(),
-        queryParameters: {"Seri": belgeNoController.text, "BelgeTipi": widget.model.siparisTipiEnum!.rawValue, "EIrsaliye": "H", "CariKodu": model.cariKodu},
+        queryParameters: {"Seri": belgeNoController.text, "BelgeTipi": widget.model.siparisTipiEnum?.rawValue, "EIrsaliye": "H", "CariKodu": model.cariKodu},
         showLoading: true);
     if (result.success == true) {
-      BaseSiparisEditModel.instance.belgeNo = result.data!.first.belgeNo;
+      BaseSiparisEditModel.instance.belgeNo = result.data?.first.belgeNo;
       belgeNoController.text = BaseSiparisEditModel.instance.belgeNo ?? "";
     }
 
@@ -443,7 +443,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
     plasiyerController.text = model.plasiyerAciklama ?? "";
     tarihController.text = model.tarih.toDateString;
     teslimTarihController.text = model.teslimTarihi.toDateString;
-    topluDepoController.text = model.topluDepo.toStringIfNull ?? "";
+    topluDepoController.text = model.topluDepo.toStringIfNotNull ??"";
     projeController.text = model.projeAciklama ?? "";
     odemeKoduController.text = model.odemeKodu ?? "";
     kosulController.text = model.kosulKodu ?? "";

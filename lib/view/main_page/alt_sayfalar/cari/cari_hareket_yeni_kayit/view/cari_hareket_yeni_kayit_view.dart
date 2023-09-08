@@ -56,7 +56,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
     belgeNoController = TextEditingController(text: model?.belgeNo);
     aciklamaController = TextEditingController(text: model?.aciklama);
     vadeTarihiController = TextEditingController(text: viewModel.model.vadeTarihi?.toDateString);
-    tutarController = TextEditingController(text: model?.borc.toStringIfNull ?? model?.alacak.toStringIfNull ?? "");
+    tutarController = TextEditingController(text: model?.borc.toStringIfNotNull ?? model?.alacak.toStringIfNotNull ?? "");
     plasiyerController = TextEditingController(text: model?.plasiyerAciklama);
     projeController = TextEditingController(text: model?.projeAciklama);
     if (widget.model?.baseEditEnum != BaseEditEnum.ekle) {

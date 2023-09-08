@@ -12,6 +12,7 @@ class ApiUrls {
   static const String print = "Print/Print";
   static const String getDizaynParametreleri = "Print/GetDizaynParametreleri";
   static const String getSiradakiBelgeNo = "General/GetSiradakiBelgeNo";
+  static const String getKullaniciAyarlari = "General/GetKullaniciAyarlari";
   static const String getGrupKodlari = "General/GetGrupKodlari";
   static const String getUlkeler = "General/GetUlkeler";
   static const String getSiradakiKod = "General/GetSiradakiKod";
@@ -49,6 +50,7 @@ class ApiUrls {
   static const String getStokFiyatOzeti = "Stok/GetStokFiyatOzeti";
 
   //*Fatura
+  static const String belgeDurumunuDegistir = "Fatura/BelgeDurumunuDegistir";
   static const String getFaturaKalemleri = "Fatura/GetFaturaKalemleri";
   static const String getFaturalar = "Fatura/GetFaturalar";
   static const String getFaturaDetay = "Fatura/GetFaturaDetay";

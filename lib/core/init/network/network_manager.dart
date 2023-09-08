@@ -223,7 +223,7 @@ class NetworkManager {
         path: ApiUrls.getGrupKodlari,
         bodyModel: BaseGrupKoduModel(),
         addCKey: true,
-        headers: {"Modul": name, "GrupNo": grupNo.toStringIfNull ?? "", "Kullanimda": (kullanimda ?? true) ? "E" : "H"},
+        headers: {"Modul": name, "GrupNo": grupNo.toStringIfNotNull ?? "", "Kullanimda": (kullanimda ?? true) ? "E" : "H"},
         addQuery: true,
         addSirketBilgileri: true,
         queryParameters: {"Modul": name, "GrupNo": grupNo});

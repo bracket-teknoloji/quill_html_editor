@@ -47,8 +47,8 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
   TextEditingController kod4Controller = TextEditingController(text: CariListesiModel.instance.kod4);
   TextEditingController kod5Controller = TextEditingController(text: CariListesiModel.instance.kod5);
   TextEditingController bilgiController = TextEditingController(text: CariListesiModel.instance.bilgi);
-  TextEditingController subeController = TextEditingController(text: CariListesiModel.instance.subeKodu.toStringIfNull);
-  TextEditingController konumController = TextEditingController(text: "${CariListesiModel.instance.enlem.toStringIfNull ?? ""}${CariListesiModel.instance.boylam.toStringIfNull ?? ""}");
+  TextEditingController subeController = TextEditingController(text: CariListesiModel.instance.subeKodu.toStringIfNotNull);
+  TextEditingController konumController = TextEditingController(text: "${CariListesiModel.instance.enlem.toStringIfNotNull ?? ""}${CariListesiModel.instance.boylam.toStringIfNotNull ?? ""}");
   TextEditingController kilitController = TextEditingController(text: CariListesiModel.instance.kilit);
   TextEditingController bagliCariController = TextEditingController(text: CariListesiModel.instance.bagliCariAdi);
   TextEditingController kosulKoduController = TextEditingController(text: CariListesiModel.instance.kosulKodu);
@@ -63,14 +63,14 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
   TextEditingController a6Controller = TextEditingController(text: CariListesiModel.instance.kull6s);
   TextEditingController a7Controller = TextEditingController(text: CariListesiModel.instance.kull7s);
   TextEditingController a8Controller = TextEditingController(text: CariListesiModel.instance.kull8s);
-  TextEditingController n1Controller = TextEditingController(text: CariListesiModel.instance.kull1n.toStringIfNull);
-  TextEditingController n2Controller = TextEditingController(text: CariListesiModel.instance.kull2n.toStringIfNull);
-  TextEditingController n3Controller = TextEditingController(text: CariListesiModel.instance.kull3n.toStringIfNull);
-  TextEditingController n4Controller = TextEditingController(text: CariListesiModel.instance.kull4n.toStringIfNull);
-  TextEditingController n5Controller = TextEditingController(text: CariListesiModel.instance.kull5n.toStringIfNull);
-  TextEditingController n6Controller = TextEditingController(text: CariListesiModel.instance.kull6n.toStringIfNull);
-  TextEditingController n7Controller = TextEditingController(text: CariListesiModel.instance.kull7n.toStringIfNull);
-  TextEditingController n8Controller = TextEditingController(text: CariListesiModel.instance.kull8n.toStringIfNull);
+  TextEditingController n1Controller = TextEditingController(text: CariListesiModel.instance.kull1n.toStringIfNotNull);
+  TextEditingController n2Controller = TextEditingController(text: CariListesiModel.instance.kull2n.toStringIfNotNull);
+  TextEditingController n3Controller = TextEditingController(text: CariListesiModel.instance.kull3n.toStringIfNotNull);
+  TextEditingController n4Controller = TextEditingController(text: CariListesiModel.instance.kull4n.toStringIfNotNull);
+  TextEditingController n5Controller = TextEditingController(text: CariListesiModel.instance.kull5n.toStringIfNotNull);
+  TextEditingController n6Controller = TextEditingController(text: CariListesiModel.instance.kull6n.toStringIfNotNull);
+  TextEditingController n7Controller = TextEditingController(text: CariListesiModel.instance.kull7n.toStringIfNotNull);
+  TextEditingController n8Controller = TextEditingController(text: CariListesiModel.instance.kull8n.toStringIfNotNull);
   @override
   void initState() {
     kilitController.text = "Kilitli Değil";
@@ -128,7 +128,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
   Widget build(BuildContext context) {
     CariListesiModel.instance.subeKodu = CariListesiModel.instance.subeKodu ?? 0;
     subeController.text = subeList.firstWhere((element) => (element).subeKodu == CariListesiModel.instance.subeKodu).subeAdi ?? "";
-    log(CariListesiModel.instance.subeKodu.toStringIfNull ?? "");
+    log(CariListesiModel.instance.subeKodu.toStringIfNotNull ?? "");
     bool enabled = widget.model?.baseEditEnum != BaseEditEnum.goruntule;
     return SingleChildScrollView(
       child: Form(
@@ -272,7 +272,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                   suffix: iconSwitcher(subeController),
                   isMust: true,
                   labelText: "Şube",
-                  valueText: (model.subeKodu.toStringIfNull).toString(),
+                  valueText: (model.subeKodu.toStringIfNotNull).toString(),
                   controller: subeController,
                   onTap: () async {
                     var children2 = List.generate(

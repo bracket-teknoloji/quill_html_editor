@@ -243,7 +243,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                           children: viewModel.grupKodlari
                                               .map((e) => BottomSheetModel(
                                                     title: e.grupAdi ?? "",
-                                                    value: e.grupNo.toStringIfNull,
+                                                    value: e.grupNo.toStringIfNotNull,
                                                     onTap: () {
                                                       if (viewModel.bottomSheetModel.arrGrupKodu?.contains(e) ?? false) {
                                                         viewModel.bottomSheetModel.arrGrupKodu?.remove(e);

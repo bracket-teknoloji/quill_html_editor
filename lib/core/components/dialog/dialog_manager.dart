@@ -112,7 +112,7 @@ class DialogManager {
           ),
         ),
       ).show();
-  Future<void> showAreYouSureDialog(void Function() onYes, {String? title}) async => _areYouSureDialog(onYes, title).show();
+  Future showAreYouSureDialog(void Function() onYes, {String? title}) async => _areYouSureDialog(onYes, title).show();
 
   void showInfoDialog(String? description) => _baseDialog(
         desc: description,
@@ -146,7 +146,7 @@ class DialogManager {
   void showStokGridViewDialog(StokListesiModel? model, [IslemTipiEnum? tip]) =>
       _baseDialog(body: CustomAnimatedGridView<StokListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.stok), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
-  void showSiparisGridViewDialog(BaseSiparisEditModel? model, {IslemTipiEnum? tip, SiparisTipiEnum? siparisTipi}) => _baseDialog(
+  Future<dynamic> showSiparisGridViewDialog(BaseSiparisEditModel? model, {IslemTipiEnum? tip, SiparisTipiEnum? siparisTipi}) async => await _baseDialog(
           body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.siparis, siparisTipi: siparisTipi, title: model?.belgeNo),
           onOk: () {},
           btnOkText: "İptal",

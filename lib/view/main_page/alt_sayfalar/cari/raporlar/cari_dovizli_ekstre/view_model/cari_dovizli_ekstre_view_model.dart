@@ -8,7 +8,6 @@ part "cari_dovizli_ekstre_view_model.g.dart";
 class CariDovizliEkstreViewModel = _CariDovizliEkstreViewModelBase with _$CariDovizliEkstreViewModel;
 
 abstract class _CariDovizliEkstreViewModelBase with Store {
-
   @observable
   bool tlHareketleriDokulsun = true;
 
@@ -16,7 +15,7 @@ abstract class _CariDovizliEkstreViewModelBase with Store {
   bool get getTlHareketleriDokulsun => tlHareketleriDokulsun;
 
   @action
-  void changeTlHareketleriDokulsun()=> tlHareketleriDokulsun = !tlHareketleriDokulsun;
+  void changeTlHareketleriDokulsun() => tlHareketleriDokulsun = !tlHareketleriDokulsun;
   //* Doviz Tipi
   //*
   @observable
@@ -34,7 +33,7 @@ abstract class _CariDovizliEkstreViewModelBase with Store {
   void changeCariKodu(value) => pdfModel.dicParams!.cariKodu = value;
 
   @action
-  void changeDovizTipi(int value) => pdfModel.dicParams!.dovizTipi = value.toStringIfNull;
+  void changeDovizTipi(int value) => pdfModel.dicParams!.dovizTipi = value.toStringIfNotNull;
 
   //* Future
   //*
