@@ -200,7 +200,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   @JsonKey(name: "EK_ACIK_1")
   String? ekAcik1;
   @HiveField(72)
-    @JsonKey(name: "EK_ACIK_10")
+  @JsonKey(name: "EK_ACIK_10")
   String? ekAcik10;
   @HiveField(73)
   @JsonKey(name: "EK_ACIK_11")
@@ -488,6 +488,10 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   double get getAraToplam {
     araToplam = iskontoChecker(kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + (b)) ?? 0);
     return araToplam ?? 0;
+  }
+
+  double get getAraToplam2 {
+    return (genelToplam ?? 0) - (kdv ?? 0);
   }
 
   double iskontoChecker(double result) {

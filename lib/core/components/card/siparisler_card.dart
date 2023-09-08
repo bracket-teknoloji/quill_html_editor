@@ -111,10 +111,9 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                         iconWidget: Icons.list_alt_outlined,
                         onTap: () async {
                           Get.back();
-                          var result = await dialogManager.showSiparisGridViewDialog(widget.model);
-                          if (result != null) {
+                          await dialogManager.showSiparisGridViewDialog(widget.model, onSelected: (value) {
                             widget.onUpdated?.call(true);
-                          }
+                          });
                         }).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
                     BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined)
                         .yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null && yetkiController.siparisKontrolAciklamasiAktifMi && false),
@@ -133,7 +132,14 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(widget.model.belgeNo ?? ""),
-          Text(widget.model.kayittarihi?.toDateString ?? ""),
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(text: widget.model.kayittarihi.toDateString),
+                TextSpan(text: "   ${widget.model.kayittarihi.toTimeString}", style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6), fontSize: 10)),
+              ],
+            ),
+          ),
         ],
       ),
       subtitle: Column(
@@ -165,7 +171,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                   Text("Tipi: ${widget.model.yurticiMi ? "Yurtiçi" : "Yurtdışı"}"),
                   widget.model.kosulKodu != null ? Text("Koşul: ${widget.model.kosulKodu ?? ""}") : null,
                   Text("Plasiyer: ${widget.model.plasiyerAciklama ?? ""}"),
-                  Text("Plasiyer: ${widget.model.vadeGunu ?? "0"}").yetkiVarMi(widget.showVade == true),
+                  Text("Vade Günü: ${widget.model.vadeGunu ?? "0"}").yetkiVarMi(widget.showVade == true),
                   Text("KDV: ${widget.model.kdv.commaSeparatedWithFixedDigits} $mainCurrency"),
                   widget.model.dovizAdi != null ? Text("Döviz Toplamı: ${widget.model.dovizTutari ?? ""} ${widget.model.dovizAdi ?? ""}").yetkiVarMi(widget.model.dovizTutari != null) : null,
                 ].nullCheckWithGeneric,
@@ -175,17 +181,17 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Kalem Adedi: ${widget.model.kalemAdedi ?? ""}"),
-                  Text("Ara Toplam: ${widget.model.getAraToplam.commaSeparatedWithFixedDigits} $mainCurrency"),
-                  Text("Genel Toplam: ${widget.model.genelToplam?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency"),
+                  Text("Ara Toplam: ${widget.model.getAraToplam2.commaSeparatedWithFixedDigits} $mainCurrency"),
+                  Text("Genel Toplam: ${widget.model.genelToplam?.commaSeparatedWithFixedDigits} $mainCurrency"),
                 ].nullCheckWithGeneric,
               ),
             ].map((e) => Expanded(child: e)).toList(),
           ),
           const Divider().paddingAll(UIHelper.midSize).yetkiVarMi((widget.showEkAciklama == true && aciklamaList().ext.isNotNullOrEmpty) || widget.showMiktar == true || widget.showVade == true),
           // Text("Miktar: ${widget.model.miktar?.commaSeparatedWithFixedDigits ?? ""}").yetkiVarMi(widget.showMiktar == true),
-          Text("Miktar: ${widget.model.miktar ?? ""}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
-          Text("Teslim Miktar: ${((widget.model.miktar ?? 0) - (widget.model.kalanMiktar ?? 0))}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
-          Text("Kalan Miktar: ${widget.model.kalanMiktar ?? ""}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
+          Text("Miktar: ${widget.model.miktar.commaSeparated}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
+          Text("Teslim Miktar: ${((widget.model.miktar ?? 0) - (widget.model.kalanMiktar ?? 0)).commaSeparated}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
+          Text("Kalan Miktar: ${widget.model.kalanMiktar.commaSeparated}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
           ...aciklamaList(),
         ],
       ),

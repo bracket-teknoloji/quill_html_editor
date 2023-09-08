@@ -91,10 +91,12 @@ class IslemlerMenuItemConstants<T> {
             title: "Belgeyi Kapat",
             iconData: Icons.lock_outline,
             onTap: () async {
-              var result = await dialogManager.showAreYouSureDialog(() async {
-                return await kilitRequest(siparisModel, 1);
+              bool? result;
+              await dialogManager.showAreYouSureDialog(() async {
+                result = true;
               }, title: "Kiliti kapatmak istediğinize emin misiniz?");
-              if (result != null) {
+              if (result == true) {
+                result = await kilitRequest(siparisModel, 1);
                 return result;
               }
             });
@@ -102,19 +104,30 @@ class IslemlerMenuItemConstants<T> {
         return GridItemModel.islemler(
             title: "Belgeyi Aç",
             iconData: Icons.lock_open_outlined,
-            onTap: () async => await dialogManager.showAreYouSureDialog(() async => await kilitRequest(siparisModel, 2), title: "Kiliti açmak istediğinize emin misiniz?"));
+            onTap: () async {
+              bool? result;
+              await dialogManager.showAreYouSureDialog(() async {
+                result = true;
+              }, title: "Kiliti açmak istediğinize emin misiniz?");
+              if (result == true) {
+                result = await kilitRequest(siparisModel, 2);
+                return result;
+              }
+            });
       }
     }
     return null;
   }
 
-  Future<void> kilitRequest(BaseSiparisEditModel siparisModel, int yeniTipi) async {
+  Future<bool> kilitRequest(BaseSiparisEditModel siparisModel, int yeniTipi) async {
     var result = await networkManager.dioPost<SiparisEditRequestModel>(
         path: ApiUrls.belgeDurumunuDegistir, showLoading: true, bodyModel: SiparisEditRequestModel(), data: DeleteFaturaModel.fromSiparislerModel(siparisModel..tipi = yeniTipi).toJson());
     if (result.success == true) {
       DialogManager().showSnackBar("Başarılı");
+      return result.success!;
+    } else {
+      return false;
     }
-    return;
   }
 
   GridItemModel? get belgeNoDegistir => GridItemModel.islemler(title: "Belge No Değiştir", iconData: Icons.edit_outlined);

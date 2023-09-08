@@ -21,7 +21,7 @@ class CustomAnimatedGridView<T> extends StatefulWidget {
   final SiparisTipiEnum? siparisTipi;
   final T? model;
   final String? title;
-  final ValueChanged<T>? onSelected;
+  final ValueChanged<bool>? onSelected;
   const CustomAnimatedGridView({super.key, this.cariListesiModel, required this.islemTipi, this.model, this.title, this.siparisTipi, this.onSelected});
   @override
   State<CustomAnimatedGridView> createState() => _CustomAnimatedGridViewState();
@@ -126,17 +126,16 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                                       viewModel.addReturnGridItemModel(viewModel.gridItemModelList);
                                       viewModel.setGridItemModel(item?.altMenuler);
                                     } else {
-                                      Get.back(result: true);
                                       if (item?.route != null && item?.menuTipi != "SR") {
+                                        Get.back();
                                         Get.toNamed(item?.route ?? "", arguments: widget.cariListesiModel ?? widget.model);
                                       } else {
-                                        if (!(item?.altMenuVarMi ?? false)) {
-                                          await item?.onTap?.call();
-                                        } else {
-                                          item?.onTap?.call();
+                                      Get.back();
+                                        var result =await item?.onTap?.call();
+                                        if (result != null && result is bool){
+                                        widget.onSelected?.call(result);
                                         }
                                       }
-                                      // call with arguments
                                     }
                                   }))));
                 },
