@@ -7,13 +7,13 @@ class OndalikUtils {
   static List<NetsisOndalikResponseModel>? get _ondalikResponseList => CacheManager.getAnaVeri()?.paramModel?.netsisOndalikResponseModel;
   static NetsisOndalikResponseModel? get baseModel => _ondalikResponseList?.firstWhereOrNull((element) => element.modul == "T");
 
-  static int get baseMiktar => baseModel?.miktar ?? 3;
-  static int get baseFiyat => baseModel?.fiyat ?? 3;
-  static int get baseTutar => baseModel?.tutar ?? 3;
-  static int get baseKur => baseModel?.kur ?? 3;
-  static int get baseOran => baseModel?.oran ?? 3;
-  static int get baseDovizTutari => baseModel?.doviz ?? 3;
-  static int get baseDovizFiyati => baseModel?.dovizFiyati ?? 3;
+  static int get baseMiktar => baseModel?.miktar ?? 2;
+  static int get baseFiyat => baseModel?.fiyat ?? 4;
+  static int get baseTutar => baseModel?.tutar ?? 2;
+  static int get baseKur => baseModel?.kur ?? 4;
+  static int get baseOran => baseModel?.oran ?? 2;
+  static int get baseDovizTutari => baseModel?.doviz ?? 2;
+  static int get baseDovizFiyati => baseModel?.dovizFiyati ?? 4;
 }
 
 enum OndalikEnum {

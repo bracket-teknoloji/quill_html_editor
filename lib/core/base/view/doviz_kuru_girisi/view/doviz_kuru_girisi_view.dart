@@ -5,6 +5,7 @@ import "package:get/get.dart";
 import "../../../../components/textfield/custom_text_field.dart";
 import "../../../../constants/extensions/date_time_extensions.dart";
 import "../../../../constants/extensions/number_extensions.dart";
+import "../../../../constants/ondalik_utils.dart";
 import "../../../../init/network/login/api_urls.dart";
 import "../../../model/doviz_kurlari_model.dart";
 import "../../../state/base_state.dart";
@@ -33,10 +34,10 @@ class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
     viewModel.changeDovizKurlariModel(widget.dovizKurlariModel);
     tarihController = TextEditingController(text: widget.dovizKurlariModel?.tarih.toDateString ?? "");
     dovizTipiController = TextEditingController(text: widget.dovizKurlariModel?.dovizAdi ?? "");
-    alisController = TextEditingController(text: widget.dovizKurlariModel?.dovAlis?.commaSeparated ?? "");
-    satisController = TextEditingController(text: widget.dovizKurlariModel?.dovSatis?.commaSeparated ?? "");
-    efektifAlisController = TextEditingController(text: widget.dovizKurlariModel?.effAlis?.commaSeparated ?? "");
-    efektifSatisController = TextEditingController(text: widget.dovizKurlariModel?.effSatis?.commaSeparated ?? "");
+    alisController = TextEditingController(text: widget.dovizKurlariModel?.dovAlis?.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "");
+    satisController = TextEditingController(text: widget.dovizKurlariModel?.dovSatis?.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "");
+    efektifAlisController = TextEditingController(text: widget.dovizKurlariModel?.effAlis?.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "");
+    efektifSatisController = TextEditingController(text: widget.dovizKurlariModel?.effSatis?.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "");
     super.initState();
   }
 

@@ -541,10 +541,12 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                             siparisTipiEnum: widget.widgetModel.siparisTipiEnum,
                             onDeleted: () => viewModel.removeSiparislerList(index),
                             onUpdated: (value) {
-                              viewModel.setSiparislerList(null);
-                              viewModel.setDahaVarMi(true);
-                              viewModel.resetSayfa();
-                              getData();
+                              if (value) {
+                                viewModel.setSiparislerList(null);
+                                viewModel.setDahaVarMi(true);
+                                viewModel.resetSayfa();
+                                getData();
+                              }
                             },
                           );
                         });

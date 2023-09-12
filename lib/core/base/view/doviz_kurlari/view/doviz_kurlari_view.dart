@@ -2,6 +2,9 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
+
+import "../../../../../view/main_page/model/param_model.dart";
 import "../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../components/helper_widgets/custom_label_widget.dart";
 import "../../../../components/textfield/custom_text_field.dart";
@@ -9,8 +12,6 @@ import "../../../../constants/extensions/date_time_extensions.dart";
 import "../../../../constants/extensions/number_extensions.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../../init/cache/cache_manager.dart";
-
-import "../../../../../view/main_page/model/param_model.dart";
 import "../../../../init/network/login/api_urls.dart";
 import "../../../model/doviz_kurlari_model.dart";
 import "../../../state/base_state.dart";
@@ -153,11 +154,11 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CustomWidgetWithLabel(isVertical: true, text: "Alış", child: Text(model.dovAlis.commaSeparated)),
-                            CustomWidgetWithLabel(isVertical: true, text: "Satış", child: Text(model.dovSatis.commaSeparated)),
-                            CustomWidgetWithLabel(isVertical: true, text: "Ef. Alış", child: Text(model.effAlis.commaSeparated)),
-                            CustomWidgetWithLabel(isVertical: true, text: "Ef. Satış", child: Text(model.effSatis.commaSeparated)),
-                          ],
+                            CustomWidgetWithLabel(isVertical: true, text: "Alış", child: Text(model.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati))),
+                            CustomWidgetWithLabel(isVertical: true, text: "Satış", child: Text(model.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati))),
+                            CustomWidgetWithLabel(isVertical: true, text: "Ef. Alış", child: Text(model.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati))),
+                            CustomWidgetWithLabel(isVertical: true, text: "Ef. Satış", child: Text(model.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati))),
+                          ].map((e) => Expanded(child: e)).toList(),
                         ),
                         onTap: () async {
                           await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: [

@@ -316,6 +316,10 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   double? miktar;
   @HiveField(119)
   double? kalanMiktar;
+  @HiveField(120)
+  String? yeniBelgeNo;
+  @HiveField(121)
+  int? islemKodu;
   BaseSiparisEditModel(
       {this.duzeltmetarihi,
       this.kalemAdedi,
@@ -433,7 +437,9 @@ class BaseSiparisEditModel with NetworkManagerMixin {
       this.teslimCari,
       this.fYedek4,
       this.miktar,
-      this.kalanMiktar});
+      this.kalanMiktar,
+      this.yeniBelgeNo,
+      this.islemKodu});
 
   BaseSiparisEditModel._init();
 

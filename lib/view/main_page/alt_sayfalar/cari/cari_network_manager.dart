@@ -1,3 +1,5 @@
+import "dart:developer";
+
 import "../../../../core/base/model/base_edit_siradaki_kod_model.dart";
 import "../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../core/base/model/base_network_mixin.dart";
@@ -30,33 +32,37 @@ class CariNetworkManager {
 
   static Future<GenericResponseModel<NetworkManagerMixin>> getkosullar() async {
     Map<String, String> queryParams = {"Tarih": "", "KisitYok": "H", "BelgeTuru": "CARI"};
-    var responseKosullar = await networkManager.dioGet<CariKosullarModel>(
-        path: ApiUrls.getKosullar, bodyModel: CariKosullarModel(),queryParameters: queryParams);
+    var responseKosullar = await networkManager.dioGet<CariKosullarModel>(path: ApiUrls.getKosullar, bodyModel: CariKosullarModel(), queryParameters: queryParams);
     return responseKosullar;
   }
 
   static Future<GenericResponseModel<NetworkManagerMixin>> getCariListesi() async {
-    var responseKosullar =
-        await networkManager.dioGet<CariKosullarModel>(path: ApiUrls.getKosullar, bodyModel: CariKosullarModel());
+    var responseKosullar = await networkManager.dioGet<CariKosullarModel>(path: ApiUrls.getKosullar, bodyModel: CariKosullarModel());
     return responseKosullar;
   }
 
-  static Future<String> getSiradakiKod({String? kod}) async {
-    DialogManager().showLoadingDialog("${kod ?? ""} Kod Getiriliyor...");
-    var queryParameters2 = {
-      "Kod": kod,
-      "SonKoduGetir": "H",
-      "Modul": "CARI",
-    };
-    if (kod == null) {
-      queryParameters2.addAll({"Kod": kod});
+  static Future<String?> getSiradakiKod({String? kod}) async {
+    try {
+      DialogManager().showLoadingDialog("${kod ?? ""} Kod Getiriliyor...");
+      var queryParameters2 = {
+        "Kod": kod,
+        "SonKoduGetir": "H",
+        "Modul": "CARI",
+      };
+      if (kod == null) {
+        queryParameters2.addAll({"Kod": kod});
+      }
+      GenericResponseModel? result = await networkManager.dioGet<BaseEditSiradakiKodModel>(
+        path: ApiUrls.getSiradakiKod,
+        bodyModel: BaseEditSiradakiKodModel(),
+        queryParameters: queryParameters2,
+      );
+      DialogManager().hideAlertDialog;
+      return result.paramData?["SIRADAKI_NO"];
+    } catch (e) {
+      DialogManager().hideAlertDialog;
+      log(e.toString());
+      return null;
     }
-    GenericResponseModel? result = await networkManager.dioGet<BaseEditSiradakiKodModel>(
-      path: ApiUrls.getSiradakiKod,
-      bodyModel: BaseEditSiradakiKodModel(),
-      queryParameters: queryParameters2,
-    );
-    DialogManager().hideAlertDialog;
-    return result.paramData?["SIRADAKI_NO"];
   }
 }

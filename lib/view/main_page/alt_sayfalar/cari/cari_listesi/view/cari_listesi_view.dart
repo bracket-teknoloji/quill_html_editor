@@ -245,7 +245,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       builder: (_) => CustomFloatingActionButton(
         isScrolledDown: !viewModel.isScrolledDown,
         onPressed: () async {
-          String siradakiKod = await CariNetworkManager.getSiradakiKod();
+          String? siradakiKod = await CariNetworkManager.getSiradakiKod();
           Get.toNamed("/mainPage/cariEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, model: CariListesiModel(), siradakiKod: siradakiKod));
         },
       ),

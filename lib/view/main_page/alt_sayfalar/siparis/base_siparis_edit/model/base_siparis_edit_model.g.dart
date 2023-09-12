@@ -241,6 +241,10 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel kalanMiktar(double? kalanMiktar);
 
+  BaseSiparisEditModel yeniBelgeNo(String? yeniBelgeNo);
+
+  BaseSiparisEditModel islemKodu(int? islemKodu);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -365,6 +369,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
     double? fYedek4,
     double? miktar,
     double? kalanMiktar,
+    String? yeniBelgeNo,
+    int? islemKodu,
   });
 }
 
@@ -785,6 +791,13 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(kalanMiktar: kalanMiktar);
 
   @override
+  BaseSiparisEditModel yeniBelgeNo(String? yeniBelgeNo) =>
+      this(yeniBelgeNo: yeniBelgeNo);
+
+  @override
+  BaseSiparisEditModel islemKodu(int? islemKodu) => this(islemKodu: islemKodu);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -910,6 +923,8 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? fYedek4 = const $CopyWithPlaceholder(),
     Object? miktar = const $CopyWithPlaceholder(),
     Object? kalanMiktar = const $CopyWithPlaceholder(),
+    Object? yeniBelgeNo = const $CopyWithPlaceholder(),
+    Object? islemKodu = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -1382,6 +1397,14 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.kalanMiktar
           // ignore: cast_nullable_to_non_nullable
           : kalanMiktar as double?,
+      yeniBelgeNo: yeniBelgeNo == const $CopyWithPlaceholder()
+          ? _value.yeniBelgeNo
+          // ignore: cast_nullable_to_non_nullable
+          : yeniBelgeNo as String?,
+      islemKodu: islemKodu == const $CopyWithPlaceholder()
+          ? _value.islemKodu
+          // ignore: cast_nullable_to_non_nullable
+          : islemKodu as int?,
     );
   }
 }
@@ -2491,6 +2514,8 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       fYedek4: fields[114] as double?,
       miktar: fields[118] as double?,
       kalanMiktar: fields[119] as double?,
+      yeniBelgeNo: fields[120] as String?,
+      islemKodu: fields[121] as int?,
     )
       ..yeniKayit = fields[115] as bool?
       ..uuid = fields[116] as String?
@@ -2500,7 +2525,7 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(120)
+      ..writeByte(122)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -2740,7 +2765,11 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(118)
       ..write(obj.miktar)
       ..writeByte(119)
-      ..write(obj.kalanMiktar);
+      ..write(obj.kalanMiktar)
+      ..writeByte(120)
+      ..write(obj.yeniBelgeNo)
+      ..writeByte(121)
+      ..write(obj.islemKodu);
   }
 
   @override
@@ -3173,6 +3202,8 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       fYedek4: (json['F_YEDEK4'] as num?)?.toDouble(),
       miktar: (json['MIKTAR'] as num?)?.toDouble(),
       kalanMiktar: (json['KALAN_MIKTAR'] as num?)?.toDouble(),
+      yeniBelgeNo: json['YENI_BELGE_NO'] as String?,
+      islemKodu: json['ISLEM_KODU'] as int?,
     )
       ..yeniKayit = json['_YeniKayit'] as bool?
       ..faturalasanSayi = json['FATURALASAN_SAYI'] as int?;
@@ -3309,6 +3340,8 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('FATURALASAN_SAYI', instance.faturalasanSayi);
   writeNotNull('MIKTAR', instance.miktar);
   writeNotNull('KALAN_MIKTAR', instance.kalanMiktar);
+  writeNotNull('YENI_BELGE_NO', instance.yeniBelgeNo);
+  writeNotNull('ISLEM_KODU', instance.islemKodu);
   return val;
 }
 

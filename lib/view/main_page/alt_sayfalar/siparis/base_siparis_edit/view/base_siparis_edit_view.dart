@@ -195,14 +195,14 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                                 Get.toNamed("/mainPage/cariStokSatisOzeti", arguments: BaseSiparisEditModel.instance.cariModel);
                               }).yetkiKontrol(yetkiController.cariRapStokSatisOzeti),
                           // BottomSheetModel(title: "Barkod Tanımla", iconWidget: Icons.qr_code_outlined),
-                          // BottomSheetModel(
-                          //     title: "Ekranı Yeni Kayda Hazırla",
-                          //     description: "Belge kaydından sonra yeni belge giriş ekranını otomatik hazırla.",
-                          //     iconWidget: viewModel.yeniKaydaHazirlaMi ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
-                          //     onTap: () {
-                          //       Get.back();
-                          //       viewModel.changeYeniKaydaHazirlaMi();
-                          //     }),
+                          BottomSheetModel(
+                              title: "Ekranı Yeni Kayda Hazırla",
+                              description: "Belge kaydından sonra yeni belge giriş ekranını otomatik hazırla.",
+                              iconWidget: viewModel.yeniKaydaHazirlaMi ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
+                              onTap: () {
+                                Get.back();
+                                viewModel.changeYeniKaydaHazirlaMi();
+                              }).yetkiKontrol(widget.model.isEkle),
                         ].nullCheck.cast<BottomSheetModel>());
                     if (result != null) {
                       viewModel.changeUpdateKalemler();
@@ -219,7 +219,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                           if (await postData()) {
                             await CacheManager.removeSiparisEditListWithUuid(BaseSiparisEditModel.instance.uuid);
                             Get.back();
-                            if (viewModel.yeniKaydaHazirlaMi) {
+                            if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
                               BaseSiparisEditModel.resetInstance();
                               BaseSiparisEditModel.instance.isNew = true;
                               Get.toNamed("/mainPage/siparisEdit", arguments: BaseEditModel<SiparisEditRequestModel>(baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: model.siparisTipiEnum));

@@ -100,7 +100,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                               }
                               return;
                             }
-                            var result = await networkManager.deleteFatura(const DeleteFaturaModel().fromJson(widget.model.toJson()));
+                            var result = await networkManager.deleteFatura(const EditFaturaModel().fromJson(widget.model.toJson()));
                             if (result.success == true) {
                               dialogManager.showSuccessSnackBar("Silindi");
                               widget.onDeleted?.call();
@@ -114,7 +114,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                         onTap: () async {
                           Get.back();
                           await dialogManager.showSiparisGridViewDialog(widget.model, onSelected: (value) {
-                            widget.onUpdated?.call(true);
+                            widget.onUpdated?.call(value);
                           });
                         }).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
                     BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined)
@@ -173,9 +173,9 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
               Text("Vade Günü: ${widget.model.vadeGunu ?? "0"}").yetkiVarMi(widget.showVade == true),
               widget.model.dovizAdi != null ? Text("Döviz Toplamı: ${widget.model.dovizTutari ?? ""} ${widget.model.dovizAdi ?? ""}").yetkiVarMi(widget.model.dovizTutari != null) : null,
               Text("Kalem Adedi: ${widget.model.kalemAdedi ?? ""}"),
-              Text("KDV: ${widget.model.kdv?.commaSeparatedWithDecimalDigits(OndalikEnum.oran)} $mainCurrency"),
+              Text("KDV: ${widget.model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
               Text("Ara Toplam: ${widget.model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-              Text("Genel Toplam: ${widget.model.genelToplam?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+              Text("Genel Toplam: ${widget.model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
             ].whereType<Widget>().map((e) => e is SizedBox ? null : SizedBox(width: width * 0.4, child: e)).whereType<Widget>().toList(),
           ),
           // Row(
@@ -211,11 +211,12 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Miktar: ${widget.model.miktar.commaSeparated}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
+              Text("Miktar: ${widget.model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
               const Flexible(child: Text("|")),
-              Text("Teslim Miktar: ${((widget.model.miktar ?? 0) - (widget.model.kalanMiktar ?? 0)).commaSeparated}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
+              Text("Teslim Miktar: ${((widget.model.miktar ?? 0) - (widget.model.kalanMiktar ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", style: greyTextStyle)
+                  .yetkiVarMi(widget.showMiktar == true),
               const Flexible(child: Text("|")),
-              Text("Kalan Miktar: ${widget.model.kalanMiktar.commaSeparated}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
+              Text("Kalan Miktar: ${widget.model.kalanMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
             ].map((e) => e is SizedBox ? null : e).whereType<Widget>().toList(),
           ),
           const Divider(

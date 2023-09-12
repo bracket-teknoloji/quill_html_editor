@@ -7,39 +7,17 @@ import "../ondalik_utils.dart";
 
 // an extension on num to seperate the digits with commas and after fixed number of digits
 extension NumExtensionWithFixedDigits on num? {
-  String get commaSeparated {
-    if (this != null) {
-      var f = NumberFormat.decimalPatternDigits(locale: Get.locale!.languageCode);
-      return f.format(this!);
-    } else {
-      return "0,00";
-    }
-  }
-
-  // String get commaSeparatedWithFixedDigits {
-  //   if (this != null) {
-  //     var f = NumberFormat.decimalPatternDigits(locale: Get.locale!.languageCode, decimalDigits: 2);
-  //     return f.format(this!);
-  //   } else {
-  //     return "0,00";
-  //   }
-  // }
-
   String commaSeparatedWithDecimalDigits(OndalikEnum decimalDigits) {
     if (this != null) {
-      var f = NumberFormat.decimalPatternDigits(locale: Get.locale!.languageCode, decimalDigits: decimalDigits.ondalik);
-      if (this! % 1 == 0) {
-        return toIntIfDouble!.toString();
-      } else {
+      var f = NumberFormat.decimalPatternDigits(locale: Get.locale!.languageCode, decimalDigits:this!%1==0?0: decimalDigits.ondalik);
         return f.format(this!);
-      }
     } else {
-      return "0,00";
+      return "0";
     }
   }
 
   String? get toStringIfNotNull {
-    return toString() == "null" ? null : toString();
+    return this == null ? null : toString();
   }
 
   String get dotSeparatedWithFixedDigits {
@@ -53,9 +31,9 @@ extension NumExtensionWithFixedDigits on num? {
   num? get toIntIfDouble {
     if (this != null) {
       if (this! % 1 == 0) {
-        return this!.toInt();
+        return this?.toInt();
       } else {
-        return this!;
+        return this;
       }
     } else {
       return null;

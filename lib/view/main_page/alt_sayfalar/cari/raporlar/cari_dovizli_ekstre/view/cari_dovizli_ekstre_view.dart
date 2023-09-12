@@ -108,7 +108,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                     ),
                   ),
                   CustomWidgetWithLabel(
-                      text: "TL Hareketi Dökülsün",
+                      text: "$mainCurrency Hareketi Dökülsün",
                       isVertical: true,
                       child: Observer(builder: (_) {
                         return Switch.adaptive(

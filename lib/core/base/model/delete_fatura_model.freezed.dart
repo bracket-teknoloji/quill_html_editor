@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-DeleteFaturaModel _$DeleteFaturaModelFromJson(Map<String, dynamic> json) {
-  return _DeleteFaturaModel.fromJson(json);
+EditFaturaModel _$EditFaturaModelFromJson(Map<String, dynamic> json) {
+  return _EditFaturaModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$DeleteFaturaModel {
+mixin _$EditFaturaModel {
   @JsonKey(name: "BelgeTipi")
   int? get belgeTipi => throw _privateConstructorUsedError;
   @JsonKey(name: "PickerBelgeTuru")
@@ -32,21 +32,23 @@ mixin _$DeleteFaturaModel {
   String? get cariKodu => throw _privateConstructorUsedError;
   String? get islemId => throw _privateConstructorUsedError;
   String? get mevcutBelgeNo => throw _privateConstructorUsedError;
+  String? get yeniBelgeNo => throw _privateConstructorUsedError;
   String? get mevcutCariKodu => throw _privateConstructorUsedError;
   String? get paramMap => throw _privateConstructorUsedError;
   String? get tag => throw _privateConstructorUsedError;
+  int? get islemKodu => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DeleteFaturaModelCopyWith<DeleteFaturaModel> get copyWith =>
+  $EditFaturaModelCopyWith<EditFaturaModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DeleteFaturaModelCopyWith<$Res> {
-  factory $DeleteFaturaModelCopyWith(
-          DeleteFaturaModel value, $Res Function(DeleteFaturaModel) then) =
-      _$DeleteFaturaModelCopyWithImpl<$Res, DeleteFaturaModel>;
+abstract class $EditFaturaModelCopyWith<$Res> {
+  factory $EditFaturaModelCopyWith(
+          EditFaturaModel value, $Res Function(EditFaturaModel) then) =
+      _$EditFaturaModelCopyWithImpl<$Res, EditFaturaModel>;
   @useResult
   $Res call(
       {@JsonKey(name: "BelgeTipi") int? belgeTipi,
@@ -59,15 +61,17 @@ abstract class $DeleteFaturaModelCopyWith<$Res> {
       String? cariKodu,
       String? islemId,
       String? mevcutBelgeNo,
+      String? yeniBelgeNo,
       String? mevcutCariKodu,
       String? paramMap,
-      String? tag});
+      String? tag,
+      int? islemKodu});
 }
 
 /// @nodoc
-class _$DeleteFaturaModelCopyWithImpl<$Res, $Val extends DeleteFaturaModel>
-    implements $DeleteFaturaModelCopyWith<$Res> {
-  _$DeleteFaturaModelCopyWithImpl(this._value, this._then);
+class _$EditFaturaModelCopyWithImpl<$Res, $Val extends EditFaturaModel>
+    implements $EditFaturaModelCopyWith<$Res> {
+  _$EditFaturaModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -87,9 +91,11 @@ class _$DeleteFaturaModelCopyWithImpl<$Res, $Val extends DeleteFaturaModel>
     Object? cariKodu = freezed,
     Object? islemId = freezed,
     Object? mevcutBelgeNo = freezed,
+    Object? yeniBelgeNo = freezed,
     Object? mevcutCariKodu = freezed,
     Object? paramMap = freezed,
     Object? tag = freezed,
+    Object? islemKodu = freezed,
   }) {
     return _then(_value.copyWith(
       belgeTipi: freezed == belgeTipi
@@ -132,6 +138,10 @@ class _$DeleteFaturaModelCopyWithImpl<$Res, $Val extends DeleteFaturaModel>
           ? _value.mevcutBelgeNo
           : mevcutBelgeNo // ignore: cast_nullable_to_non_nullable
               as String?,
+      yeniBelgeNo: freezed == yeniBelgeNo
+          ? _value.yeniBelgeNo
+          : yeniBelgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
       mevcutCariKodu: freezed == mevcutCariKodu
           ? _value.mevcutCariKodu
           : mevcutCariKodu // ignore: cast_nullable_to_non_nullable
@@ -144,16 +154,20 @@ class _$DeleteFaturaModelCopyWithImpl<$Res, $Val extends DeleteFaturaModel>
           ? _value.tag
           : tag // ignore: cast_nullable_to_non_nullable
               as String?,
+      islemKodu: freezed == islemKodu
+          ? _value.islemKodu
+          : islemKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_DeleteFaturaModelCopyWith<$Res>
-    implements $DeleteFaturaModelCopyWith<$Res> {
-  factory _$$_DeleteFaturaModelCopyWith(_$_DeleteFaturaModel value,
-          $Res Function(_$_DeleteFaturaModel) then) =
-      __$$_DeleteFaturaModelCopyWithImpl<$Res>;
+abstract class _$$_EditFaturaModelCopyWith<$Res>
+    implements $EditFaturaModelCopyWith<$Res> {
+  factory _$$_EditFaturaModelCopyWith(
+          _$_EditFaturaModel value, $Res Function(_$_EditFaturaModel) then) =
+      __$$_EditFaturaModelCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -167,17 +181,19 @@ abstract class _$$_DeleteFaturaModelCopyWith<$Res>
       String? cariKodu,
       String? islemId,
       String? mevcutBelgeNo,
+      String? yeniBelgeNo,
       String? mevcutCariKodu,
       String? paramMap,
-      String? tag});
+      String? tag,
+      int? islemKodu});
 }
 
 /// @nodoc
-class __$$_DeleteFaturaModelCopyWithImpl<$Res>
-    extends _$DeleteFaturaModelCopyWithImpl<$Res, _$_DeleteFaturaModel>
-    implements _$$_DeleteFaturaModelCopyWith<$Res> {
-  __$$_DeleteFaturaModelCopyWithImpl(
-      _$_DeleteFaturaModel _value, $Res Function(_$_DeleteFaturaModel) _then)
+class __$$_EditFaturaModelCopyWithImpl<$Res>
+    extends _$EditFaturaModelCopyWithImpl<$Res, _$_EditFaturaModel>
+    implements _$$_EditFaturaModelCopyWith<$Res> {
+  __$$_EditFaturaModelCopyWithImpl(
+      _$_EditFaturaModel _value, $Res Function(_$_EditFaturaModel) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -193,11 +209,13 @@ class __$$_DeleteFaturaModelCopyWithImpl<$Res>
     Object? cariKodu = freezed,
     Object? islemId = freezed,
     Object? mevcutBelgeNo = freezed,
+    Object? yeniBelgeNo = freezed,
     Object? mevcutCariKodu = freezed,
     Object? paramMap = freezed,
     Object? tag = freezed,
+    Object? islemKodu = freezed,
   }) {
-    return _then(_$_DeleteFaturaModel(
+    return _then(_$_EditFaturaModel(
       belgeTipi: freezed == belgeTipi
           ? _value.belgeTipi
           : belgeTipi // ignore: cast_nullable_to_non_nullable
@@ -238,6 +256,10 @@ class __$$_DeleteFaturaModelCopyWithImpl<$Res>
           ? _value.mevcutBelgeNo
           : mevcutBelgeNo // ignore: cast_nullable_to_non_nullable
               as String?,
+      yeniBelgeNo: freezed == yeniBelgeNo
+          ? _value.yeniBelgeNo
+          : yeniBelgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
       mevcutCariKodu: freezed == mevcutCariKodu
           ? _value.mevcutCariKodu
           : mevcutCariKodu // ignore: cast_nullable_to_non_nullable
@@ -250,14 +272,18 @@ class __$$_DeleteFaturaModelCopyWithImpl<$Res>
           ? _value.tag
           : tag // ignore: cast_nullable_to_non_nullable
               as String?,
+      islemKodu: freezed == islemKodu
+          ? _value.islemKodu
+          : islemKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_DeleteFaturaModel extends _DeleteFaturaModel {
-  const _$_DeleteFaturaModel(
+class _$_EditFaturaModel extends _EditFaturaModel {
+  const _$_EditFaturaModel(
       {@JsonKey(name: "BelgeTipi") this.belgeTipi,
       @JsonKey(name: "PickerBelgeTuru") this.pickerBelgeTuru,
       this.remoteTempBelge,
@@ -268,13 +294,15 @@ class _$_DeleteFaturaModel extends _DeleteFaturaModel {
       this.cariKodu,
       this.islemId,
       this.mevcutBelgeNo,
+      this.yeniBelgeNo,
       this.mevcutCariKodu,
       this.paramMap,
-      this.tag})
+      this.tag,
+      this.islemKodu})
       : super._();
 
-  factory _$_DeleteFaturaModel.fromJson(Map<String, dynamic> json) =>
-      _$$_DeleteFaturaModelFromJson(json);
+  factory _$_EditFaturaModel.fromJson(Map<String, dynamic> json) =>
+      _$$_EditFaturaModelFromJson(json);
 
   @override
   @JsonKey(name: "BelgeTipi")
@@ -299,29 +327,32 @@ class _$_DeleteFaturaModel extends _DeleteFaturaModel {
   @override
   final String? mevcutBelgeNo;
   @override
+  final String? yeniBelgeNo;
+  @override
   final String? mevcutCariKodu;
   @override
   final String? paramMap;
   @override
   final String? tag;
+  @override
+  final int? islemKodu;
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DeleteFaturaModelCopyWith<_$_DeleteFaturaModel> get copyWith =>
-      __$$_DeleteFaturaModelCopyWithImpl<_$_DeleteFaturaModel>(
-          this, _$identity);
+  _$$_EditFaturaModelCopyWith<_$_EditFaturaModel> get copyWith =>
+      __$$_EditFaturaModelCopyWithImpl<_$_EditFaturaModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DeleteFaturaModelToJson(
+    return _$$_EditFaturaModelToJson(
       this,
     );
   }
 }
 
-abstract class _DeleteFaturaModel extends DeleteFaturaModel {
-  const factory _DeleteFaturaModel(
+abstract class _EditFaturaModel extends EditFaturaModel {
+  const factory _EditFaturaModel(
       {@JsonKey(name: "BelgeTipi") final int? belgeTipi,
       @JsonKey(name: "PickerBelgeTuru") final String? pickerBelgeTuru,
       final bool? remoteTempBelge,
@@ -332,13 +363,15 @@ abstract class _DeleteFaturaModel extends DeleteFaturaModel {
       final String? cariKodu,
       final String? islemId,
       final String? mevcutBelgeNo,
+      final String? yeniBelgeNo,
       final String? mevcutCariKodu,
       final String? paramMap,
-      final String? tag}) = _$_DeleteFaturaModel;
-  const _DeleteFaturaModel._() : super._();
+      final String? tag,
+      final int? islemKodu}) = _$_EditFaturaModel;
+  const _EditFaturaModel._() : super._();
 
-  factory _DeleteFaturaModel.fromJson(Map<String, dynamic> json) =
-      _$_DeleteFaturaModel.fromJson;
+  factory _EditFaturaModel.fromJson(Map<String, dynamic> json) =
+      _$_EditFaturaModel.fromJson;
 
   @override
   @JsonKey(name: "BelgeTipi")
@@ -363,13 +396,17 @@ abstract class _DeleteFaturaModel extends DeleteFaturaModel {
   @override
   String? get mevcutBelgeNo;
   @override
+  String? get yeniBelgeNo;
+  @override
   String? get mevcutCariKodu;
   @override
   String? get paramMap;
   @override
   String? get tag;
   @override
+  int? get islemKodu;
+  @override
   @JsonKey(ignore: true)
-  _$$_DeleteFaturaModelCopyWith<_$_DeleteFaturaModel> get copyWith =>
+  _$$_EditFaturaModelCopyWith<_$_EditFaturaModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

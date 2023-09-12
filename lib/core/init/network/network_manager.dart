@@ -200,8 +200,8 @@ class NetworkManager {
     return responseModel;
   }
 
-  Future<GenericResponseModel> deleteFatura(DeleteFaturaModel model, {showError = true, showLoading = true}) {
-    return dioPost<DeleteFaturaModel>(path: ApiUrls.deleteFatura, bodyModel: const DeleteFaturaModel(), data: model.toJson(), showError: showError, showLoading: showLoading);
+  Future<GenericResponseModel> deleteFatura(EditFaturaModel model, {showError = true, showLoading = true}) {
+    return dioPost<EditFaturaModel>(path: ApiUrls.deleteFatura, bodyModel: const EditFaturaModel(), data: model.toJson(), showError: showError, showLoading: showLoading);
   }
 
   Future<MemoryImage> getImage(String path) async {

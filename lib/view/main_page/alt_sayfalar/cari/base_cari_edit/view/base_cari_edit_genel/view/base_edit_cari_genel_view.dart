@@ -143,8 +143,8 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                           icon: const Icon(Icons.more_horiz_outlined)),
                       IconButton(
                           onPressed: () async {
-                            String kod = await CariNetworkManager.getSiradakiKod(kod: kodController.text);
-                            kodController.text = kod;
+                            String? kod = await CariNetworkManager.getSiradakiKod(kod: kodController.text);
+                            kodController.text = kod ?? "";
                             model?.cariKodu = kod;
                             viewModel.changeModel(model);
                           },
