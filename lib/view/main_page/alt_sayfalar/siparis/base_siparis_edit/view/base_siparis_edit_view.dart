@@ -54,7 +54,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
       if (tabController.indexIsChanging && tabController.previousIndex == 0) {
         var result = StaticVariables.instance.siparisGenelFormKey.currentState?.validate();
         if (result == null || result == false) {
-          dialogManager.showSnackBar("Lütfen gerekli alanları doldurunuz.");
+          dialogManager.showErrorSnackBar("Lütfen gerekli alanları doldurunuz.");
           tabController.animateTo(tabController.previousIndex);
         }
       }
@@ -68,11 +68,10 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
     if (widget.model.model is BaseSiparisEditModel) {
       model = BaseEditModel<SiparisEditRequestModel>()..model = SiparisEditRequestModel.fromSiparislerModel(widget.model.model as BaseSiparisEditModel);
       model.baseEditEnum = widget.model.baseEditEnum;
-      model.siparisTipiEnum = widget.model.siparisTipiEnum;
+      model.siparisTipiEnum = widget.model.siparisTipiEnum ?? (StaticVariables.instance.isMusteriSiparisleri ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici);
     } else if (widget.model.model is SiparisEditRequestModel) {
       model = widget.model as BaseEditModel<SiparisEditRequestModel>;
     }
-
 
     if (widget.model.baseEditEnum == BaseEditEnum.duzenle || widget.model.baseEditEnum == BaseEditEnum.kopyala) {
       model.model?.kayitModu = "S";
@@ -94,6 +93,8 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
             BaseSiparisEditModel.instance.isNew = true;
             BaseSiparisEditModel.instance.belgeNo = null;
+            BaseSiparisEditModel.instance.belgeTuru = StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS";
+            BaseSiparisEditModel.instance.pickerBelgeTuru = StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS";
           }
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
@@ -109,11 +110,12 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           BaseSiparisEditModel.instance.cariAdi = result.cariAdi;
           BaseSiparisEditModel.instance.cariKodu = result.cariKodu;
           BaseSiparisEditModel.instance.kosulKodu = result.kosulKodu;
-          BaseSiparisEditModel.instance.belgeTuru = widget.model.siparisTipiEnum?.rawValue;
-          BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.siparisTipiEnum?.rawValue;
           BaseSiparisEditModel.instance.belgeTipi = int.tryParse(result.odemeTipi ?? "0");
         }
       }
+
+          BaseSiparisEditModel.instance.belgeTuru ??= widget.model.siparisTipiEnum?.rawValue;
+          BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.siparisTipiEnum?.rawValue;
       viewModel.changeIsBaseSiparisEmpty(false);
     });
     super.initState();
@@ -121,6 +123,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
 
   @override
   void dispose() {
+    BaseSiparisEditModel.resetInstance();
     tabController.dispose();
     super.dispose();
   }
@@ -192,14 +195,14 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                                 Get.toNamed("/mainPage/cariStokSatisOzeti", arguments: BaseSiparisEditModel.instance.cariModel);
                               }).yetkiKontrol(yetkiController.cariRapStokSatisOzeti),
                           // BottomSheetModel(title: "Barkod Tanımla", iconWidget: Icons.qr_code_outlined),
-                          BottomSheetModel(
-                              title: "Ekranı Yeni Kayda Hazırla",
-                              description: "Belge kaydından sonra yeni belge giriş ekranını otomatik hazırla.",
-                              iconWidget: viewModel.yeniKaydaHazirlaMi ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
-                              onTap: () {
-                                Get.back();
-                                viewModel.changeYeniKaydaHazirlaMi();
-                              }),
+                          // BottomSheetModel(
+                          //     title: "Ekranı Yeni Kayda Hazırla",
+                          //     description: "Belge kaydından sonra yeni belge giriş ekranını otomatik hazırla.",
+                          //     iconWidget: viewModel.yeniKaydaHazirlaMi ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
+                          //     onTap: () {
+                          //       Get.back();
+                          //       viewModel.changeYeniKaydaHazirlaMi();
+                          //     }),
                         ].nullCheck.cast<BottomSheetModel>());
                     if (result != null) {
                       viewModel.changeUpdateKalemler();
@@ -388,7 +391,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
     var result = await networkManager.dioPost<BaseSiparisEditModel>(
         path: ApiUrls.saveFatura, bodyModel: BaseSiparisEditModel(), data: (BaseSiparisEditModel.instance..islemId = uuid.v4()).toJson(), showLoading: true);
     if (result.success == true) {
-      dialogManager.showSnackBar("Kayıt Başarılı");
+      dialogManager.showSuccessSnackBar("Kayıt Başarılı");
       return true;
     } else {
       return false;

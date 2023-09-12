@@ -269,10 +269,10 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
     var result =
         await networkManager.dioPost<CariHareketleriModel>(path: ApiUrls.saveCariHareket, bodyModel: CariHareketleriModel(), data: viewModel.model.toJson(), addCKey: true, addSirketBilgileri: true);
     if (result.success ?? false) {
-      dialogManager.showSnackBar(result.message ?? "Kayıt Başarılı");
+      dialogManager.showSuccessSnackBar(result.message ?? "Kayıt Başarılı");
       Get.back(result: false);
     } else {
-      dialogManager.showSnackBar(result.message ?? "Kayıt Başarısız");
+      dialogManager.showErrorSnackBar(result.message ?? "Kayıt Başarısız");
     }
   }
 

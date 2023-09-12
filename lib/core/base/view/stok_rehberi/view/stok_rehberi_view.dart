@@ -3,8 +3,6 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../model/base_grup_kodu_model.dart";
-import "../../../../constants/extensions/number_extensions.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -13,9 +11,12 @@ import "../../../../components/floating_action_button/custom_floating_action_but
 import "../../../../components/textfield/custom_text_field.dart";
 import "../../../../constants/enum/base_edit_enum.dart";
 import "../../../../constants/enum/grup_kodu_enums.dart";
+import "../../../../constants/extensions/number_extensions.dart";
+import "../../../../constants/ondalik_utils.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../../init/network/login/api_urls.dart";
 import "../../../model/base_edit_model.dart";
+import "../../../model/base_grup_kodu_model.dart";
 import "../../../model/generic_response_model.dart";
 import "../../../state/base_state.dart";
 import "../view_model/stok_rehberi_view_model.dart";
@@ -99,7 +100,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: grupKoduController,
                                 readOnly: true,
                                 onTap: () async {
-                                  var result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context,modul: GrupKoduEnum.STOK, grupKodu: 0);
+                                  var result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.STOK, grupKodu: 0);
                                   if (result != null) {
                                     viewModel.setGrupKodu(result.whereType<BaseGrupKoduModel>().toList());
                                     grupKoduController.text = viewModel.stokBottomSheetModel.arrGrupKodu?.map((e) => e.grupAdi).join(",") ?? "";
@@ -112,7 +113,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: kod1Controller,
                                 readOnly: true,
                                 onTap: () async {
-                                  var result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context,modul: GrupKoduEnum.STOK, grupKodu: 1);
+                                  var result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.STOK, grupKodu: 1);
                                   if (result != null) {
                                     // viewModel
                                     resetData();
@@ -126,7 +127,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: kod2Controller,
                                 readOnly: true,
                                 onTap: () async {
-                                  var result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context,modul: GrupKoduEnum.STOK, grupKodu: 2);
+                                  var result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.STOK, grupKodu: 2);
                                 })),
                         Expanded(
                             child: CustomTextField(
@@ -134,7 +135,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: kod3Controller,
                                 readOnly: true,
                                 onTap: () async {
-                                  var result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context,modul: GrupKoduEnum.STOK, grupKodu: 3);
+                                  var result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.STOK, grupKodu: 3);
                                 }))
                       ]),
                       Row(children: [
@@ -144,7 +145,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: kod4Controller,
                                 readOnly: true,
                                 onTap: () async {
-                                  var result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context,modul: GrupKoduEnum.STOK, grupKodu: 4);
+                                  var result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.STOK, grupKodu: 4);
                                 })),
                         Expanded(
                             child: CustomTextField(
@@ -152,7 +153,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: kod5Controller,
                                 readOnly: true,
                                 onTap: () async {
-                                  var result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context,modul: GrupKoduEnum.STOK, grupKodu: 5);
+                                  var result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.STOK, grupKodu: 5);
                                 }))
                       ]),
                     ],
@@ -276,7 +277,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                         Text(stok?.stokAdi ?? ""),
                                       ],
                                     ),
-                                    trailing: Text("${stok?.bakiye?.commaSeparatedWithFixedDigits ?? 0} ${stok?.olcuBirimi ?? ""}"),
+                                    trailing: Text("${stok?.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? 0} ${stok?.olcuBirimi ?? ""}"),
                                   ),
                                 );
                               }

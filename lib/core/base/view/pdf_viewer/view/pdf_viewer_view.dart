@@ -149,8 +149,6 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                       } else if (details.selectedText != null && overlayEntry == null) {
                         showContextMenu(context, details);
                       }
-                      // Clipboard.setData(ClipboardData(text: details.selectedText!));
-                      // dialogManager.showSnackBar("Kopyalandı");
                     }
                   },
                   onDocumentLoaded: (details) => viewModel.changePageCounter(details.document.pages.count),
@@ -222,7 +220,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
         child: ElevatedButton(
           onPressed: () {
             Clipboard.setData(ClipboardData(text: details.selectedText ?? ""));
-            dialogManager.showSnackBar("Kopyalandı");
+            dialogManager.showSuccessSnackBar("Kopyalandı");
             pdfViewerController.clearSelection();
             overlayEntry?.remove();
           },

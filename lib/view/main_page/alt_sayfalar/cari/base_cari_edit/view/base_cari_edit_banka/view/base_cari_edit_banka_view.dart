@@ -46,7 +46,7 @@ class _BaseCariEditBankaViewState extends BaseState<BaseCariEditBankaView> {
                             ),
                             onPressed: () {
                               Clipboard.setData(ClipboardData(text: cariDetayModel.bankaList?[index].ibanno ?? ""));
-                              dialogManager.showSnackBar("IBAN numarası kopyalandı.");
+                              dialogManager.showInfoSnackBar("IBAN numarası kopyalandı.");
                             },
                             icon: const Icon(Icons.share_outlined),
                           )

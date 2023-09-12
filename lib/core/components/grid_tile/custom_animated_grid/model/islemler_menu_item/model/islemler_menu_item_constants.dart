@@ -67,9 +67,6 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(kopyala);
       islemlerList.addAll(raporlar!);
     }
-    if (raporlar.ext.isNotNullOrEmpty) {
-      islemlerList.add(stokHareketleri);
-    }
   }
 
   GridItemModel? get cariHareketleri =>
@@ -123,7 +120,7 @@ class IslemlerMenuItemConstants<T> {
     var result = await networkManager.dioPost<SiparisEditRequestModel>(
         path: ApiUrls.belgeDurumunuDegistir, showLoading: true, bodyModel: SiparisEditRequestModel(), data: DeleteFaturaModel.fromSiparislerModel(siparisModel..tipi = yeniTipi).toJson());
     if (result.success == true) {
-      DialogManager().showSnackBar("Başarılı");
+      DialogManager().showSuccessSnackBar("Başarılı");
       return result.success!;
     } else {
       return false;
@@ -254,7 +251,7 @@ class IslemlerMenuItemConstants<T> {
                                   var result = await NetworkManager().dioPost<KodDegistirModel>(path: ApiUrls.kodDegistir, bodyModel: KodDegistirModel(), data: kodDegistirModel.toJson());
                                   if (result.success == true) {
                                     Get.back();
-                                    DialogManager().showSnackBar("Başarılı");
+                                    DialogManager().showSuccessSnackBar("Başarılı");
                                   }
                                 });
                               } else {

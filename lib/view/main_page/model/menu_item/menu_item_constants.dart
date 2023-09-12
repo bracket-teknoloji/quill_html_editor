@@ -105,7 +105,7 @@ class MenuItemConstants {
         // GridItemModel.item(name: "siparis_MusSip_TeslimRaporu", title: "Müşteri Siparişi Teslim Raporu", route: "/mainPage/siparisMusteriSiparisiTeslimRaporu"),
         // GridItemModel.item(name: "siparis_SaticiSip_TeslimRaporu", title: "Satıcı Siparişi Teslim Raporu", route: "/mainPage/siparisSaticiSiparisiTeslimRaporu"),
       ]),
-    ]).isDebug(),
+    ]),
 
     //* Stok
     //*
@@ -168,7 +168,7 @@ class MenuItemConstants {
       ...groupBySerbestRaporList(),
       // ...List.generate(_serbestRapor?.length ?? 0, (index) => GridItemModel.serbestRaporlar(title: _serbestRapor?[index].dizaynAdi ?? "", arguments: _serbestRapor?[index])),
     ]),
-  ].where((e) => e != null).toList().cast<GridItemModel>();
+  ].whereType<GridItemModel>().toList();
 
   List<GridItemModel> getList() {
     if (kDebugMode) {

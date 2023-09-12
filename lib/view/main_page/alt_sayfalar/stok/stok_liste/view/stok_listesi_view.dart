@@ -730,7 +730,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
       Get.back();
       GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(bodyModel: StokListesiModel(), path: ApiUrls.deleteStok, queryParameters: {"Kod": stokKodu});
       if (response.success ?? false) {
-        dialogManager.showSnackBar("Başarıyla Silindi");
+        dialogManager.showSuccessSnackBar("Başarıyla Silindi");
         viewModel.resetSayfa();
         getData();
       }

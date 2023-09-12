@@ -5,6 +5,7 @@ import "../../constants/extensions/number_extensions.dart";
 import "../../../view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 import "../../base/state/base_state.dart";
 import "../../constants/extensions/date_time_extensions.dart";
+import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../helper_widgets/custom_label_widget.dart";
 
@@ -46,11 +47,11 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                 ),
                 Column(
                   children: [
-                    Text("${widget.cariHareketleriModel.alacak?.commaSeparatedWithFixedDigits ?? widget.cariHareketleriModel.borc?.commaSeparatedWithFixedDigits} $mainCurrency",
+                    Text("${widget.cariHareketleriModel.alacak?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? widget.cariHareketleriModel.borc?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                         style: theme.textTheme.bodySmall?.copyWith(fontSize: 12)),
                     Visibility(
                         visible: widget.cariHareketleriModel.dovizliMi,
-                        child: Text("${widget.cariHareketleriModel.dovizBakiye.commaSeparatedWithFixedDigits} ${widget.cariHareketleriModel.dovizAdi ?? mainCurrency}",
+                        child: Text("${widget.cariHareketleriModel.dovizBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cariHareketleriModel.dovizAdi ?? mainCurrency}",
                             style: theme.textTheme.bodySmall?.copyWith(fontSize: 12)))
                   ],
                 ),
@@ -80,7 +81,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
               Container(
                   alignment: Alignment.topRight,
                   width: width * 0.4,
-                  child: Text("Bakiye : ${dovizCheck.commaSeparatedWithFixedDigits} ${widget.dovizTipi ?? mainCurrency}",
+                  child: Text("Bakiye : ${dovizCheck.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.dovizTipi ?? mainCurrency}",
                       style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(dovizCheck)))),
             ].map((e) => e.paddingAll(UIHelper.lowSize)).toList(),
           )

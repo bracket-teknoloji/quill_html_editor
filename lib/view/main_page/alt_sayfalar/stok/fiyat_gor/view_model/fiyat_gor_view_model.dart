@@ -1,6 +1,7 @@
 import "package:mobx/mobx.dart";
-import "../../../../../../core/constants/extensions/number_extensions.dart";
 
+import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/ondalik_utils.dart";
 import "../model/fiyat_gor_model.dart";
 
 part "fiyat_gor_view_model.g.dart";
@@ -20,15 +21,15 @@ abstract class _FiyatGorViewModelBase with Store {
   String? getBilgi(int index, {bool isSatis = false}) {
     switch (index) {
       case 0:
-        return isSatis ? modelList?.last?.dovizTipi?.commaSeparatedWithFixedDigits : modelList?.first?.dovizTipi.commaSeparatedWithFixedDigits;
+        return (isSatis ? modelList?.last?.dovizTipi : modelList?.first?.dovizTipi).toStringIfNotNull;
       case 1:
-        return isSatis ? modelList?.last?.fiyat1.commaSeparatedWithFixedDigits : modelList?.first?.fiyat1.commaSeparatedWithFixedDigits;
+        return (isSatis ? modelList?.last?.fiyat1 : modelList?.first?.fiyat1).commaSeparatedWithDecimalDigits(OndalikEnum.tutar);
       case 2:
-        return isSatis ? modelList?.last?.fiyat2.commaSeparatedWithFixedDigits : modelList?.first?.fiyat2.commaSeparatedWithFixedDigits;
+        return (isSatis ? modelList?.last?.fiyat2 : modelList?.first?.fiyat2).commaSeparatedWithDecimalDigits(OndalikEnum.tutar);
       case 3:
-        return isSatis ? modelList?.last?.fiyat3.commaSeparatedWithFixedDigits : modelList?.first?.fiyat3.commaSeparatedWithFixedDigits;
+        return (isSatis ? modelList?.last?.fiyat3 : modelList?.first?.fiyat3).commaSeparatedWithDecimalDigits(OndalikEnum.tutar);
       case 4:
-        return isSatis ? modelList?.last?.fiyat4.commaSeparatedWithFixedDigits : modelList?.first?.fiyat4.commaSeparatedWithFixedDigits;
+        return (isSatis ? modelList?.last?.fiyat4 : modelList?.first?.fiyat4).commaSeparatedWithDecimalDigits(OndalikEnum.tutar);
       default:
         return null;
     }

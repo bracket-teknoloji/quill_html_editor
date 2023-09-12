@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+
 import "../../../../components/textfield/custom_text_field.dart";
 import "../../../../constants/extensions/date_time_extensions.dart";
 import "../../../../constants/extensions/number_extensions.dart";
-
 import "../../../../init/network/login/api_urls.dart";
 import "../../../model/doviz_kurlari_model.dart";
 import "../../../state/base_state.dart";
@@ -125,10 +125,10 @@ class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
     var result = await networkManager
         .dioPost(path: ApiUrls.saveDovizKuru, showLoading: true, bodyModel: DovizKurlariModel(), data: [DovizKurlariRequestModel.fromDovizKurlariModel(viewModel.dovizKurlariModel!)]);
     if (result.success == true) {
-      dialogManager.showSnackBar("Başarıyla Kaydedildi");
+      dialogManager.showSuccessSnackBar("Başarıyla Kaydedildi");
       Get.back();
     } else {
-      dialogManager.showSnackBar("Kaydedilirken bir hata oluştu\n${result.message ?? result.errorDetails}");
+      dialogManager.showErrorSnackBar("Kaydedilirken bir hata oluştu\n${result.message ?? result.errorDetails}");
     }
   }
 }

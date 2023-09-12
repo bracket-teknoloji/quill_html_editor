@@ -50,6 +50,7 @@ class AppThemeDark extends AppTheme {
       tooltipTheme:
           const TooltipThemeData(decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.all(Radius.circular(50))), textStyle: TextStyle(color: Colors.white, fontSize: 12)),
       dividerTheme: DividerThemeData(space: 0, thickness: 1, color: colorManager.onPrimaryContainer.withOpacity(0.2), endIndent: UIHelper.highSize, indent: UIHelper.highSize),
+      
       progressIndicatorTheme: ProgressIndicatorThemeData(color: UIHelper.primaryColor, linearTrackColor: Colors.transparent, circularTrackColor: Colors.transparent, linearMinHeight: 2),
       dropdownMenuTheme: DropdownMenuThemeData(
         menuStyle: const MenuStyle(),

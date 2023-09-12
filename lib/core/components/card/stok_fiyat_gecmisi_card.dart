@@ -8,6 +8,7 @@ import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_gecmisi/model/fiya
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 import "../../base/state/base_state.dart";
+import "../../constants/ondalik_utils.dart";
 
 class StokFiyatGecmisiCard extends StatefulWidget {
   final FiyatGecmisiResponseModel? model;
@@ -59,7 +60,7 @@ class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
                       direction: Axis.vertical,
                       children: [
                         Text("Satış Fiyatı (${widget.model?.fiyatSirasi})", style: TextStyleHelper.captionWhite),
-                        Text("${widget.model?.fiyat?.commaSeparatedWithFixedDigits ?? ""} ${widget.model?.dovizAdi ?? mainCurrency}"),
+                        Text("${widget.model?.fiyat?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${widget.model?.dovizAdi ?? mainCurrency}"),
                       ],
                     ),
                     Wrap(

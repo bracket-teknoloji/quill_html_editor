@@ -5,19 +5,20 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_slidable/flutter_slidable.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
 import "../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart";
 import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
 import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
 import "../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
 import "../../../cari/cari_listesi/model/cari_listesi_model.dart";
@@ -259,10 +260,10 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                       addSirketBilgileri: true,
                                       queryParameters: {"INCKEYNO": model.inckeyno.toString()});
                                   if (result.success == true) {
-                                    dialogManager.showSnackBar("Stok Hareket Kaydı Silindi.");
+                                    dialogManager.showSuccessSnackBar("Stok Hareket Kaydı Silindi.");
                                     viewModel.setStokHareketleri(await getData()!);
                                   } else {
-                                    dialogManager.showSnackBar("Lütfen daha sonra tekrar deneyiniz.\n ${result.exceptionName}");
+                                    dialogManager.showErrorSnackBar("Lütfen daha sonra tekrar deneyiniz.\n ${result.exceptionName}");
                                   }
                                 });
                               },
@@ -357,14 +358,14 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                           ),
                                           Row(
                                             children: [
-                                              Expanded(child: Text("Net Fiyat: ${(model.stharNf ?? 0).commaSeparatedWithFixedDigits}")),
-                                              Expanded(child: Text("Brüt Fiyat: ${(model.stharBf ?? 0).commaSeparatedWithFixedDigits}")),
+                                              Expanded(child: Text("Net Fiyat: ${(model.stharNf ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}")),
+                                              Expanded(child: Text("Brüt Fiyat: ${(model.stharBf ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}")),
                                             ],
                                           ),
                                           Row(
                                             children: [
-                                              Expanded(child: Text("Net Tutar: ${((model.stharNf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithFixedDigits}")),
-                                              Expanded(child: Text("Brüt Tutar: ${((model.stharBf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithFixedDigits}")),
+                                              Expanded(child: Text("Net Tutar: ${((model.stharNf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}")),
+                                              Expanded(child: Text("Brüt Tutar: ${((model.stharBf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}")),
                                             ],
                                           ),
                                         ],

@@ -10,7 +10,9 @@ import "../../../../../../../../core/components/textfield/custom_text_field.dart
 import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../model/param_model.dart";
 import "../../../../siparisler/model/siparis_edit_request_model.dart";
 import "../../../model/base_siparis_edit_model.dart";
 import "../view_model/base_siparis_toplamlar_view_model.dart";
@@ -71,7 +73,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               const Text.rich(TextSpan(children: [TextSpan(text: "Mal Ağırlığı\n", style: TextStyle(color: Colors.grey)), TextSpan(text: "0", style: TextStyle(fontWeight: FontWeight.bold))])),
               Text.rich(TextSpan(children: [
                 const TextSpan(text: "Brüt Tutar\n", style: TextStyle(color: Colors.grey)),
-                TextSpan(text: "${model.toplamBrutTutar.commaSeparatedWithFixedDigits} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
+                TextSpan(text: "${model.toplamBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
               ])),
             ].map((e) => Expanded(child: e)).toList(),
           ),
@@ -80,16 +82,16 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
             children: [
               Text.rich(TextSpan(children: [
                 const TextSpan(text: "Mal. Faz. İsk.\n", style: TextStyle(color: Colors.grey)),
-                TextSpan(text: "${viewModel.model.malFazlasiTutar.commaSeparatedWithFixedDigits} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
+                TextSpan(text: "${viewModel.model.malFazlasiTutar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
               ])),
               Text.rich(TextSpan(children: [
                 const TextSpan(text: "Satır İsk.\n", style: TextStyle(color: Colors.grey)),
-                TextSpan(text: "${viewModel.model.satirIskonto.commaSeparatedWithFixedDigits} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
+                TextSpan(text: "${viewModel.model.satirIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
               ])),
               Observer(builder: (_) {
                 return Text.rich(TextSpan(children: [
                   const TextSpan(text: "Toplam İskonto\n", style: TextStyle(color: Colors.grey)),
-                  TextSpan(text: "${viewModel.model.getToplamIskonto.commaSeparatedWithFixedDigits} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
+                  TextSpan(text: "${viewModel.model.getToplamIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
                 ]));
               }),
             ].map((e) => Expanded(child: e)).toList(),
@@ -100,19 +102,19 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               Observer(builder: (_) {
                 return Text.rich(TextSpan(children: [
                   const TextSpan(text: "Ara Toplam\n", style: TextStyle(color: Colors.grey)),
-                  TextSpan(text: "${viewModel.model.getAraToplam.commaSeparatedWithFixedDigits} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
+                  TextSpan(text: "${viewModel.model.getAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
                 ]));
               }),
               Observer(builder: (_) {
                 return Text.rich(TextSpan(children: [
                   const TextSpan(text: "KDV Tutarı\n", style: TextStyle(color: Colors.grey)),
-                  TextSpan(text: "${viewModel.model.kdvTutari.commaSeparatedWithFixedDigits} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
+                  TextSpan(text: "${viewModel.model.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
                 ]));
               }),
               Observer(builder: (_) {
                 return Text.rich(TextSpan(children: [
                   const TextSpan(text: "Genel Toplam\n", style: TextStyle(color: Colors.grey)),
-                  TextSpan(text: "${viewModel.model.genelToplamTutar.commaSeparatedWithFixedDigits} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
+                  TextSpan(text: "${viewModel.model.genelToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
                 ]));
               }),
             ].map((e) => Expanded(child: e)).toList(),
@@ -136,8 +138,8 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               onChanged: (p0) => viewModel.setGenIsk1(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
               valueWidget: Observer(
                   builder: (_) => Text(viewModel.isGenIsk1T
-                      ? "%${(viewModel.model.genIsk1o ?? 0).toIntIfDouble?.toStringAsFixed(2)}"
-                      : "${(viewModel.model.genIsk1t ?? 0).commaSeparatedWithFixedDigits} $mainCurrency")),
+                      ? "%${(viewModel.model.genIsk1o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"
+                      : "${(viewModel.model.genIsk1t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
               suffix: IconButton(
                   onPressed: () => viewModel.changeGenIsk1O(genelIskonto1Controller), icon: Observer(builder: (_) => Icon(viewModel.isGenIsk1T ? Icons.payments_outlined : Icons.percent_outlined))),
             ),
@@ -168,7 +170,9 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               controller: genelIskonto2Controller,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
               valueWidget: Observer(
-                  builder: (_) => Text(viewModel.isGenIsk2T ? "%${(viewModel.model.genIsk2o ?? 0).toIntIfDouble}" : "${(viewModel.model.genIsk2t ?? 0).commaSeparatedWithFixedDigits} $mainCurrency")),
+                  builder: (_) => Text(viewModel.isGenIsk2T
+                      ? "%${(viewModel.model.genIsk2o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"
+                      : "${(viewModel.model.genIsk2t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
               onChanged: (p0) => viewModel.setGenIsk2(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
               suffix: IconButton(
                   onPressed: () => viewModel.changeGenIsk2O(genelIskonto2Controller), icon: Observer(builder: (_) => Icon(viewModel.isGenIsk2T ? Icons.payments_outlined : Icons.percent_outlined))),
@@ -201,7 +205,9 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
               onChanged: (p0) => viewModel.setGenIsk3(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
               valueWidget: Observer(
-                  builder: (_) => Text(viewModel.isGenIsk3T ? "%${(viewModel.model.genIsk3o ?? 0).toIntIfDouble}" : "${(viewModel.model.genIsk3t ?? 0).commaSeparatedWithFixedDigits} $mainCurrency")),
+                  builder: (_) => Text(viewModel.isGenIsk3T
+                      ? "%${(viewModel.model.genIsk3o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"
+                      : "${(viewModel.model.genIsk3t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
               suffix: IconButton(
                   onPressed: () => viewModel.changeGenIsk3O(genelIskonto3Controller), icon: Observer(builder: (_) => Icon(viewModel.isGenIsk3T ? Icons.payments_outlined : Icons.percent_outlined))),
             ),
@@ -304,9 +310,15 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
     iskontoTipi1Controller = TextEditingController(text: model.genisk1Tipi?.toStringIfNotNull);
     iskontoTipi2Controller = TextEditingController(text: model.genisk2Tipi?.toStringIfNotNull);
     iskontoTipi3Controller = TextEditingController(text: model.genisk3Tipi?.toStringIfNotNull);
-    ekMal1Controller = TextEditingController(text: model.ekMaliyet1Tutari?.commaSeparatedWithFixedDigits);
-    tevkifatController = TextEditingController(text: model.ekMaliyet2Tutari?.commaSeparatedWithFixedDigits);
-    ekMal3Controller = TextEditingController(text: model.ekMaliyet3Tutari?.commaSeparatedWithFixedDigits);
+    ekMal1Controller = TextEditingController(text: model.ekMaliyet1Tutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
+    tevkifatController = TextEditingController(text: model.ekMaliyet2Tutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
+    ekMal3Controller = TextEditingController(text: model.ekMaliyet3Tutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
+    List<ListIskTip?>? iskList = parametreModel.listIskTip;
+    if (iskList != null) {
+      iskontoTipi1Controller.text = iskList.firstWhereOrNull((element) => element?.iskontoTipi == model.genisk1Tipi)?.aciklama ?? "";
+      iskontoTipi2Controller.text = iskList.firstWhereOrNull((element) => element?.iskontoTipi == model.genisk2Tipi)?.aciklama ?? "";
+      iskontoTipi3Controller.text = iskList.firstWhereOrNull((element) => element?.iskontoTipi == model.genisk3Tipi)?.aciklama ?? "";
+    }
     if (model.vadeGunu == null && model.vadeTarihi == null) {
       viewModel.setVadeTarihi(DateTime.now());
     }

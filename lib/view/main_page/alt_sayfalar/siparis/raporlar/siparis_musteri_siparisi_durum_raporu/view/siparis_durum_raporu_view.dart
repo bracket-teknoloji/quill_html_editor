@@ -18,6 +18,7 @@ import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sh
 import "../../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "../../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
 import "../../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
 import "../../../base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -188,10 +189,10 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
             Wrap(
               children: [
                 Text("Cari kodu: ${kalemModel?.cariKodu ?? ""}").yetkiVarMi(viewModel.gorunecekAlanlarMap["Cari"] ?? false),
-                Text("Net tutar: ${kalemModel?.netFiyat.commaSeparatedWithFixedDigits ?? "0,00"}"),
+                Text("Net tutar: ${kalemModel?.netFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
                 Text("Miktar: ${kalemModel?.miktar.toIntIfDouble ?? "0"}"),
                 Text("Kalan miktar: ${kalemModel?.kalan.toIntIfDouble ?? "0"}"),
-                Text("Döviz kuru: ${kalemModel?.dovizKuru.commaSeparatedWithFixedDigits ?? "0,00"}"),
+                Text("Döviz kuru: ${kalemModel?.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
                 Text("Döviz cinsi: ${(kalemModel?.miktar ?? 0) - (kalemModel?.kalan ?? 0)}"),
               ].map((e) => SizedBox(width: width / 2.4, child: e)).toList(),
             )
@@ -217,7 +218,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
   Future filterBottomSheet() async {
     await bottomSheetDialogManager.showBottomSheetDialog(context,
         title: "Filtrele",
-        body: Padding( 
+        body: Padding(
           padding: EdgeInsets.all(UIHelper.lowSize),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,

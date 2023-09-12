@@ -4,12 +4,12 @@ import "package:crypto/crypto.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../core/components/textfield/custom_text_field.dart";
 
 import "../../../core/base/model/base_network_mixin.dart";
 import "../../../core/base/model/generic_response_model.dart";
 import "../../../core/base/state/base_state.dart";
 import "../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../core/components/textfield/custom_text_field.dart";
 import "../../../core/init/cache/cache_manager.dart";
 import "../model/account_model.dart";
 import "../model/account_response_model.dart";
@@ -101,7 +101,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
         CacheManager.setHesapBilgileri(AccountModel.instance);
         Get.back(result: true);
         Get.offAndToNamed("/addCompany");
-        dialogManager.showSnackBar("Başarılı");
+        dialogManager.showSuccessSnackBar("Başarılı");
       } else {
         dialogManager.showAlertDialog(response.message ?? "");
       }
@@ -134,12 +134,12 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
               Get.offAndToNamed("/addCompany");
               CacheManager.setHesapBilgileri(AccountModel.instance);
               CacheManager.setAccounts(item..parola = encodedPassword);
-              dialogManager.showSnackBar("Başarılı");
+              dialogManager.showSuccessSnackBar("Başarılı");
             } else {
-              dialogManager.showSnackBar("${item.firmaKisaAdi} zaten kayıtlı");
+              dialogManager.showErrorSnackBar("${item.firmaKisaAdi} zaten kayıtlı");
             }
           }
-        }else{
+        } else {
           dialogManager.showAlertDialog(response.message ?? "");
         }
       }

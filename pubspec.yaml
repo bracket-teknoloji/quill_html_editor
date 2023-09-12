@@ -104,7 +104,7 @@ dependencies:
   uuid: ^3.0.7
   number_text_input_formatter: ^1.0.0+7
 
-flutter_icons:
+flutter_launcher_icons:
   image_path: "assets/splash/pickerLogoTuruncu.png"
   android: true
   ios: true
@@ -115,7 +115,7 @@ flutter_icons:
   windows:
     generate: true
     image_path: "assets/splash/pickerLogoTuruncu.png"
-    icon_size: 48 # min:48, max:256, default: 48
+    icon_size: 48
   macos:
     generate: true
     image_path: "assets/splash/pickerLogoTuruncu.png"

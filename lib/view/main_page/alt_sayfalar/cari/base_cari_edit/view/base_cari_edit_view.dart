@@ -76,7 +76,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
             // tabController?.animateTo(value);
             //   } else {
             //     tabController?.animateTo(tabController!.previousIndex);
-            //     dialogManager.showSnackBar("Lütfen zorunlu alanları doldurunuz.");
+            //     dialogManager.showErrorSnackBar("Lütfen zorunlu alanları doldurunuz.");
             //   }
             // },
           ),
@@ -118,7 +118,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
       dialogManager.showAlertDialog("Eksik bilgi var\n${response.message}");
     } else {
       dialogManager.hideAlertDialog;
-      dialogManager.showSnackBar("Kayıt başarılı");
+      dialogManager.showSuccessSnackBar("Kayıt başarılı");
       Get.back();
     }
   }

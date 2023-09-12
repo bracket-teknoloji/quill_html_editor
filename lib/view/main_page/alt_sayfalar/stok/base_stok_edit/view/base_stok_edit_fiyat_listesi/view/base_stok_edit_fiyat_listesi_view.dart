@@ -4,6 +4,7 @@ import "package:kartal/kartal.dart";
 
 import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../model/stok_detay_model.dart";
 
@@ -34,16 +35,16 @@ class _BaseStokEditFiyatListesiViewState extends State<BaseStokEditFiyatListesiV
                 Row(
                   children: [
                     Expanded(child: Text("Bitiş: ${model.fiyatList![index].bittar ?? ""}")),
-                    Expanded(child: Text("Fiyat 1: ${model.fiyatList![index].fiyat1.commaSeparatedWithFixedDigits}")),
+                    Expanded(child: Text("Fiyat 1: ${model.fiyatList![index].fiyat1.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}")),
                   ],
                 ),
                 Row(
                   children: [
-                    Expanded(child: Text("Fiyat 2: ${model.fiyatList![index].fiyat2.commaSeparatedWithFixedDigits}")),
-                    Expanded(child: Text("Fiyat 3: ${model.fiyatList![index].fiyat3.commaSeparatedWithFixedDigits}")),
+                    Expanded(child: Text("Fiyat 2: ${model.fiyatList![index].fiyat2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}")),
+                    Expanded(child: Text("Fiyat 3: ${model.fiyatList![index].fiyat3.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}")),
                   ],
                 ),
-                Text("Fiyat 4: ${model.fiyatList![index].fiyat4.commaSeparatedWithFixedDigits}"),
+                Text("Fiyat 4: ${model.fiyatList![index].fiyat4.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
               ]).paddingAll(UIHelper.lowSize),
             ),
           ).paddingAll(UIHelper.lowSize)

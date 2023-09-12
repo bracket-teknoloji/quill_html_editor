@@ -178,7 +178,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                                     var result = await networkManager.dioPost<DovizKurlariModel>(
                                         path: ApiUrls.deleteDovizKuru, bodyModel: DovizKurlariModel(), data: {"DovizTipi": model.dovizTipi, "Tarih": model.tarih.toDateString});
                                     if (result.success == true) {
-                                      dialogManager.showSnackBar("Başarıyla Silindi");
+                                      dialogManager.showSuccessSnackBar("Başarıyla Silindi");
                                       getData();
                                     }
                                   });
@@ -207,7 +207,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
         var result = await networkManager.dioPost<DovizKurlariModel>(
             showLoading: true, path: ApiUrls.dovizKuruGuncelle, bodyModel: DovizKurlariModel(), data: {"SilGuncelle": viewModel.kurlariSilTekrarGuncelle, "Tarih": viewModel.tarih.toDateString});
         if (result.success == true) {
-          dialogManager.showSnackBar("Başarıyla Güncellendi");
+          dialogManager.showSuccessSnackBar("Başarıyla Güncellendi");
           getData();
         }
       },

@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 import "../../../view/main_page/model/param_model.dart";
 import "../../components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
 import "../../components/dialog/dialog_manager.dart";
-import "../../components/yetki_controller/yetki_controller.dart";
+import "../../constants/yetki_controller/yetki_controller.dart";
 import "../../init/app_info/app_info.dart";
 import "../../init/cache/cache_manager.dart";
 import "../../init/network/network_manager.dart";
@@ -15,7 +15,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   late final NetworkManager networkManager;
   late final YetkiController yetkiController;
   late final ParamModel parametreModel;
-   String get mainCurrency => parametreModel.paraBirimi ?? "TL";
+  String get mainCurrency => parametreModel.paraBirimi ?? "TL";
   BaseState() {
     networkManager = NetworkManager();
     bottomSheetDialogManager = BottomSheetDialogManager();

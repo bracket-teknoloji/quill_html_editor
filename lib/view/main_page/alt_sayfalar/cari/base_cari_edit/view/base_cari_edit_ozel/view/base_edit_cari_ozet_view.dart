@@ -5,6 +5,7 @@ import "../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../cari_listesi/model/cari_detay_model.dart";
 
 class BaseEditCariOzetView extends StatefulWidget {
@@ -29,22 +30,22 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
     TextEditingController borcTLController = TextEditingController(text: getBorc(mainCurrency));
     TextEditingController alacakTLController = TextEditingController(text: getAlacak(mainCurrency));
     TextEditingController bakiyeTLController = TextEditingController(text: getBakiye(mainCurrency));
-    TextEditingController borcToplamiController = TextEditingController(text: "${cariDetayModel?.riskBorcToplami?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
-    TextEditingController alacakToplamiController = TextEditingController(text: "${cariDetayModel?.riskAlacakToplami?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
-    TextEditingController bakiyeToplamiController = TextEditingController(text: "${cariDetayModel?.riskBakiye?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
-    TextEditingController riskLimitiController = TextEditingController(text: "${cariDetayModel?.riskLimiti?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
-    TextEditingController teminatController = TextEditingController(text: "${cariDetayModel?.teminatTutari?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
-    TextEditingController senetAsilController = TextEditingController(text: "${cariDetayModel?.senetAsilRiski?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
-    TextEditingController senetCiroController = TextEditingController(text: "${cariDetayModel?.senetCiroRiski?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
-    TextEditingController cekAsilController = TextEditingController(text: "${cariDetayModel?.cekAsilRiski?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
-    TextEditingController cekCiroController = TextEditingController(text: "${cariDetayModel?.cekCiroRiski?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
-    TextEditingController siparisController = TextEditingController(text: "${cariDetayModel?.siparisRiski?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
-    TextEditingController sevkController = TextEditingController(text: "${cariDetayModel?.sevkRiski?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
-    TextEditingController yuklemelerController = TextEditingController(text: "${cariDetayModel?.yuklemeRiski?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
-    TextEditingController irsaliyeController = TextEditingController(text: "${cariDetayModel?.irsaliyeRiski?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
-    TextEditingController teminatRiskiController = TextEditingController(text: "${cariDetayModel?.teminatRiski?.commaSeparatedWithFixedDigits ?? "0.00"} $mainCurrency");
+    TextEditingController borcToplamiController = TextEditingController(text: "${cariDetayModel?.riskBorcToplami?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController alacakToplamiController = TextEditingController(text: "${cariDetayModel?.riskAlacakToplami?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController bakiyeToplamiController = TextEditingController(text: "${cariDetayModel?.riskBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController riskLimitiController = TextEditingController(text: "${cariDetayModel?.riskLimiti?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController teminatController = TextEditingController(text: "${cariDetayModel?.teminatTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController senetAsilController = TextEditingController(text: "${cariDetayModel?.senetAsilRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController senetCiroController = TextEditingController(text: "${cariDetayModel?.senetCiroRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController cekAsilController = TextEditingController(text: "${cariDetayModel?.cekAsilRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController cekCiroController = TextEditingController(text: "${cariDetayModel?.cekCiroRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController siparisController = TextEditingController(text: "${cariDetayModel?.siparisRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController sevkController = TextEditingController(text: "${cariDetayModel?.sevkRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController yuklemelerController = TextEditingController(text: "${cariDetayModel?.yuklemeRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController irsaliyeController = TextEditingController(text: "${cariDetayModel?.irsaliyeRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController teminatRiskiController = TextEditingController(text: "${cariDetayModel?.teminatRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
     TextEditingController toplamRiskController =
-        TextEditingController(text: "${((cariDetayModel?.riskBorcToplami ?? 0) - (cariDetayModel?.riskAlacakToplami ?? 0)).commaSeparatedWithFixedDigits} $mainCurrency");
+        TextEditingController(text: "${((cariDetayModel?.riskBorcToplami ?? 0) - (cariDetayModel?.riskAlacakToplami ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency");
     return SingleChildScrollView(
       child: Form(
           autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -169,19 +170,19 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
     if (bakiyeList.ext.isNotNullOrEmpty) {
       if (paraBirimi == mainCurrency) {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
-          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.bakiye?.commaSeparatedWithFixedDigits ?? "";
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "0";
         }
       } else if (paraBirimi == "Dolar") {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 1) != null) {
-          return bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 1)?.bakiye?.commaSeparatedWithFixedDigits ?? "";
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 1)?.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "0";
         }
       } else if (paraBirimi == "Euro") {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 2) != null) {
-          return bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 2)?.bakiye?.commaSeparatedWithFixedDigits ?? "";
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 2)?.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "0";
         }
@@ -197,19 +198,19 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
     if (bakiyeList.ext.isNotNullOrEmpty) {
       if (paraBirimi == mainCurrency) {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
-          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.alacakToplami?.commaSeparatedWithFixedDigits ?? "";
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.alacakToplami?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "0";
         }
       } else if (paraBirimi == "Dolar") {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$") != null) {
-          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$")?.alacakToplami?.commaSeparatedWithFixedDigits ?? "";
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$")?.alacakToplami?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "0";
         }
       } else if (paraBirimi == "Euro") {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€") != null) {
-          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€")?.alacakToplami?.commaSeparatedWithFixedDigits ?? "";
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€")?.alacakToplami?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "0";
         }
@@ -225,19 +226,19 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
     if (bakiyeList.ext.isNotNullOrEmpty) {
       if (paraBirimi == mainCurrency) {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
-          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.borcToplami?.commaSeparatedWithFixedDigits ?? "";
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.borcToplami?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "";
         }
       } else if (paraBirimi == "Dolar") {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$") != null) {
-          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$")?.borcToplami?.commaSeparatedWithFixedDigits ?? "";
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$")?.borcToplami?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "";
         }
       } else if (paraBirimi == "Euro") {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€") != null) {
-          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€")?.borcToplami?.commaSeparatedWithFixedDigits ?? "";
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€")?.borcToplami?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "";
         }

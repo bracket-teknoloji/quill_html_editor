@@ -17,6 +17,7 @@ import "../../constants/extensions/list_extensions.dart";
 import "../../constants/extensions/model_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
 import "../../constants/extensions/widget_extensions.dart";
+import "../../constants/ondalik_utils.dart";
 import "../../constants/static_variables/static_variables.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../../init/cache/cache_manager.dart";
@@ -47,6 +48,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
   Widget build(BuildContext context) {
     return Card(
         child: ListTile(
+      // contentPadding: EdgeInsets.zero,
       onLongPress: widget.model.remoteTempBelgeEtiketi == null
           ? () => dialogManager.showSiparisGridViewDialog(widget.model, siparisTipi: StaticVariables.instance.isMusteriSiparisleri ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici)
           : null,
@@ -91,7 +93,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                             if (widget.model.isNew == true) {
                               try {
                                 CacheManager.removeSiparisEditList(widget.index!);
-                                dialogManager.showSnackBar("Silindi");
+                                dialogManager.showSuccessSnackBar("Silindi");
                                 widget.onDeleted?.call();
                               } catch (e) {
                                 dialogManager.showAlertDialog("Hata Oluştu.\n$e");
@@ -100,7 +102,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                             }
                             var result = await networkManager.deleteFatura(const DeleteFaturaModel().fromJson(widget.model.toJson()));
                             if (result.success == true) {
-                              dialogManager.showSnackBar("Silindi");
+                              dialogManager.showSuccessSnackBar("Silindi");
                               widget.onDeleted?.call();
                             }
                           });
@@ -148,7 +150,6 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
         children: [
           Row(
             children: [
-              const ColorfulBadge(),
               ColorfulBadge(label: Text(widget.model.remoteTempBelgeEtiketi ?? "")).yetkiVarMi(widget.model.remoteTempBelgeEtiketi != null),
               ColorfulBadge(
                 label: Text("Dövizli ${widget.model.dovizAdi ?? ""}"),
@@ -162,36 +163,65 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
             ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
           ),
           Text(widget.model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Wrap(
+            // mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: WrapCrossAlignment.start,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Tipi: ${widget.model.yurticiMi ? "Yurtiçi" : "Yurtdışı"}"),
-                  widget.model.kosulKodu != null ? Text("Koşul: ${widget.model.kosulKodu ?? ""}") : null,
-                  Text("Plasiyer: ${widget.model.plasiyerAciklama ?? ""}"),
-                  Text("Vade Günü: ${widget.model.vadeGunu ?? "0"}").yetkiVarMi(widget.showVade == true),
-                  Text("KDV: ${widget.model.kdv.commaSeparatedWithFixedDigits} $mainCurrency"),
-                  widget.model.dovizAdi != null ? Text("Döviz Toplamı: ${widget.model.dovizTutari ?? ""} ${widget.model.dovizAdi ?? ""}").yetkiVarMi(widget.model.dovizTutari != null) : null,
-                ].nullCheckWithGeneric,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Kalem Adedi: ${widget.model.kalemAdedi ?? ""}"),
-                  Text("Ara Toplam: ${widget.model.getAraToplam2.commaSeparatedWithFixedDigits} $mainCurrency"),
-                  Text("Genel Toplam: ${widget.model.genelToplam?.commaSeparatedWithFixedDigits} $mainCurrency"),
-                ].nullCheckWithGeneric,
-              ),
-            ].map((e) => Expanded(child: e)).toList(),
+              Text("Tipi: ${widget.model.yurticiMi ? "Yurtiçi" : "Yurtdışı"}"),
+              widget.model.kosulKodu != null ? Text("Koşul: ${widget.model.kosulKodu ?? ""}") : null,
+              Text("Plasiyer: ${widget.model.plasiyerAciklama ?? ""}", overflow: TextOverflow.ellipsis, maxLines: 1),
+              Text("Vade Günü: ${widget.model.vadeGunu ?? "0"}").yetkiVarMi(widget.showVade == true),
+              widget.model.dovizAdi != null ? Text("Döviz Toplamı: ${widget.model.dovizTutari ?? ""} ${widget.model.dovizAdi ?? ""}").yetkiVarMi(widget.model.dovizTutari != null) : null,
+              Text("Kalem Adedi: ${widget.model.kalemAdedi ?? ""}"),
+              Text("KDV: ${widget.model.kdv?.commaSeparatedWithDecimalDigits(OndalikEnum.oran)} $mainCurrency"),
+              Text("Ara Toplam: ${widget.model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+              Text("Genel Toplam: ${widget.model.genelToplam?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+            ].whereType<Widget>().map((e) => e is SizedBox ? null : SizedBox(width: width * 0.4, child: e)).whereType<Widget>().toList(),
           ),
-          const Divider().paddingAll(UIHelper.midSize).yetkiVarMi((widget.showEkAciklama == true && aciklamaList().ext.isNotNullOrEmpty) || widget.showMiktar == true || widget.showVade == true),
+          // Row(
+          //   crossAxisAlignment: CrossAxisAlignment.start,
+          //   children: [
+          //     Column(
+          //       crossAxisAlignment: CrossAxisAlignment.start,
+          //       children: [
+          //         Text("Tipi: ${widget.model.yurticiMi ? "Yurtiçi" : "Yurtdışı"}"),
+          //         widget.model.kosulKodu != null ? Text("Koşul: ${widget.model.kosulKodu ?? ""}") : null,
+          //         Text("Plasiyer: ${widget.model.plasiyerAciklama ?? ""}"),
+          //         Text("Vade Günü: ${widget.model.vadeGunu ?? "0"}").yetkiVarMi(widget.showVade == true),
+          //         Text("KDV: ${widget.model.kdv.commaSeparatedWithFixedDigits} $mainCurrency"),
+          //         widget.model.dovizAdi != null ? Text("Döviz Toplamı: ${widget.model.dovizTutari ?? ""} ${widget.model.dovizAdi ?? ""}").yetkiVarMi(widget.model.dovizTutari != null) : null,
+          //       ].nullCheckWithGeneric,
+          //     ),
+          //     Column(
+          //       mainAxisAlignment: MainAxisAlignment.start,
+          //       crossAxisAlignment: CrossAxisAlignment.start,
+          //       children: [
+          //         Text("Kalem Adedi: ${widget.model.kalemAdedi ?? ""}"),
+          //         Text("Ara Toplam: ${widget.model.getAraToplam2.commaSeparatedWithFixedDigits} $mainCurrency"),
+          //         Text("Genel Toplam: ${widget.model.genelToplam?.commaSeparatedWithFixedDigits} $mainCurrency"),
+          //       ].nullCheckWithGeneric,
+          //     ),
+          //   ].map((e) => Expanded(child: e)).toList(),
+          // ),
+          const Divider(
+            indent: 0,
+            endIndent: 0,
+          ).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi(widget.showMiktar == true || widget.showVade == true),
           // Text("Miktar: ${widget.model.miktar?.commaSeparatedWithFixedDigits ?? ""}").yetkiVarMi(widget.showMiktar == true),
-          Text("Miktar: ${widget.model.miktar.commaSeparated}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
-          Text("Teslim Miktar: ${((widget.model.miktar ?? 0) - (widget.model.kalanMiktar ?? 0)).commaSeparated}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
-          Text("Kalan Miktar: ${widget.model.kalanMiktar.commaSeparated}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("Miktar: ${widget.model.miktar.commaSeparated}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
+              const Flexible(child: Text("|")),
+              Text("Teslim Miktar: ${((widget.model.miktar ?? 0) - (widget.model.kalanMiktar ?? 0)).commaSeparated}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
+              const Flexible(child: Text("|")),
+              Text("Kalan Miktar: ${widget.model.kalanMiktar.commaSeparated}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
+            ].map((e) => e is SizedBox ? null : e).whereType<Widget>().toList(),
+          ),
+          const Divider(
+            indent: 0,
+            endIndent: 0,
+          ).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi((widget.showEkAciklama == true && aciklamaList().ext.isNotNullOrEmpty)),
           ...aciklamaList(),
         ],
       ),

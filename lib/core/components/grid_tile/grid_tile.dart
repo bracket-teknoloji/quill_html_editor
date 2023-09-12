@@ -50,13 +50,13 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
             icon = const Icon(Icons.star_border, size: 20);
             CacheManager.removeFavoriler(widget.title.toString());
             dialogManager.hideSnackBar;
-            dialogManager.showSnackBar("Favorilerden çıkarıldı");
+            dialogManager.showInfoSnackBar("Favorilerden çıkarıldı");
           } else {
             icon = const Icon(Icons.star, size: 20);
             CacheManager.setFavoriler(
                 FavoritesModel(name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments, menuTipi: widget.menuTipi));
             dialogManager.hideSnackBar;
-            dialogManager.showSnackBar("Favorilere eklendi");
+            dialogManager.showInfoSnackBar("Favorilere eklendi");
           }
           setState(() {});
         }
@@ -76,13 +76,13 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                           icon = const Icon(Icons.star_border, size: 20);
                           CacheManager.removeFavoriler(widget.title.toString());
                           dialogManager.hideSnackBar;
-                          dialogManager.showSnackBar("Favorilerden çıkarıldı");
+                          dialogManager.showInfoSnackBar("Favorilerden çıkarıldı");
                         } else {
                           icon = const Icon(Icons.star, size: 20);
                           CacheManager.setFavoriler(FavoritesModel(
                               name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments, menuTipi: widget.menuTipi));
                           dialogManager.hideSnackBar;
-                          dialogManager.showSnackBar("Favorilere eklendi");
+                          dialogManager.showInfoSnackBar("Favorilere eklendi");
                         }
                         setState(() {});
                       },

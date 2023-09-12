@@ -289,7 +289,7 @@ class _LoginViewState extends BaseState<LoginView> {
     } else {
       Navigator.of(context, rootNavigator: true).pop();
       dialogManager.hideSnackBar;
-      dialogManager.showSnackBar("Lütfen boş alan bırakmayınız.");
+      dialogManager.showErrorSnackBar("Lütfen boş alan bırakmayınız.");
     }
   }
 

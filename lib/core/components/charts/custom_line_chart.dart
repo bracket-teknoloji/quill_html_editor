@@ -4,6 +4,7 @@ import "package:kartal/kartal.dart";
 
 import "../../base/state/base_state.dart";
 import "../../constants/extensions/number_extensions.dart";
+import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/duration_helper.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
@@ -37,7 +38,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                         return touchedBarSpots.map((barSpot) {
                           final flSpot = barSpot;
                           return LineTooltipItem(
-                            flSpot.y.commaSeparatedWithFixedDigits,
+                            flSpot.y.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
                             TextStyle(
                               color: flSpot.bar.color,
                               fontWeight: FontWeight.w900,
@@ -178,6 +179,6 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
     );
     return RotationTransition(
         turns: const AlwaysStoppedAnimation(340 / 360),
-        child: Text(" ${(widget.lineChartValue![value.toInt()]).commaSeparatedWithFixedDigits} $mainCurrency", style: style, textAlign: TextAlign.left));
+        child: Text(" ${(widget.lineChartValue![value.toInt()]).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: style, textAlign: TextAlign.left));
   }
 }

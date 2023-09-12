@@ -11,6 +11,7 @@ import "../../../../components/wrap/appbar_title.dart";
 import "../../../../constants/extensions/date_time_extensions.dart";
 import "../../../../constants/extensions/number_extensions.dart";
 import "../../../../constants/extensions/widget_extensions.dart";
+import "../../../../constants/ondalik_utils.dart";
 import "../../../../constants/static_variables/static_variables.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../../init/network/login/api_urls.dart";
@@ -103,10 +104,10 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 } else {
                   BaseSiparisEditModel.instance.kalemList?.add(viewModel.kalemModel..paketMi = widget.stokListesiModel?.paketMi);
                 }
-                dialogManager.showSnackBar("Kalem Eklendi");
+                dialogManager.showSuccessSnackBar("Kalem Eklendi");
                 Get.back();
               } else {
-                dialogManager.showSnackBar("Lütfen gerekli alanları doldurunuz");
+                dialogManager.showErrorSnackBar("Lütfen gerekli alanları doldurunuz");
               }
             },
             icon: const Icon(Icons.save_outlined)),
@@ -153,7 +154,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               const TextSpan(text: "Brüt Tutar: "),
                               TextSpan(
                                   text:
-                                      "${viewModel.kalemModel.brutTutar.commaSeparatedWithFixedDigits} TL ${(viewModel.model?.dovizliMi ?? false) ? '\n(${viewModel.kalemModel.dovizBrutTutar.commaSeparatedWithFixedDigits} $getDovizAdi)' : ""}",
+                                      "${viewModel.kalemModel.brutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} TL ${(viewModel.model?.dovizliMi ?? false) ? '\n(${viewModel.kalemModel.dovizBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $getDovizAdi)' : ""}",
                                   style: const TextStyle(fontWeight: FontWeight.bold))
                             ]));
                           })),
@@ -162,7 +163,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               const TextSpan(text: "MF. Tutarı: "),
                               TextSpan(
                                   text:
-                                      "${viewModel.kalemModel.mfTutari.commaSeparatedWithFixedDigits} TL ${(viewModel.model?.dovizliMi ?? false) ? '\n(${viewModel.kalemModel.dovizMfTutari.commaSeparatedWithFixedDigits} $getDovizAdi)' : ""}",
+                                      "${viewModel.kalemModel.mfTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} TL ${(viewModel.model?.dovizliMi ?? false) ? '\n(${viewModel.kalemModel.dovizMfTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $getDovizAdi)' : ""}",
                                   style: const TextStyle(fontWeight: FontWeight.bold))
                             ]));
                           })),
@@ -175,7 +176,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             const TextSpan(text: "İsk. Tutarı: "),
                             TextSpan(
                                 text:
-                                    "${viewModel.kalemModel.iskontoTutari.commaSeparatedWithFixedDigits} TL ${(viewModel.model?.dovizliMi ?? false) ? '\n(${viewModel.kalemModel.dovizIskontoTutari.commaSeparatedWithFixedDigits} $getDovizAdi)' : ""}",
+                                    "${viewModel.kalemModel.iskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} TL ${(viewModel.model?.dovizliMi ?? false) ? '\n(${viewModel.kalemModel.dovizIskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $getDovizAdi)' : ""}",
                                 style: const TextStyle(fontWeight: FontWeight.bold))
                           ]))),
                           Expanded(child: Observer(builder: (_) {
@@ -183,7 +184,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               const TextSpan(text: "Ara Toplam: "),
                               TextSpan(
                                   text:
-                                      "${viewModel.kalemModel.araToplamTutari.commaSeparatedWithFixedDigits} TL ${(viewModel.model?.dovizliMi ?? false) ? '\n(${viewModel.kalemModel.dovizAraToplamTutari.commaSeparatedWithFixedDigits} $getDovizAdi $getDovizAdi)' : ""}",
+                                      "${viewModel.kalemModel.araToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} TL ${(viewModel.model?.dovizliMi ?? false) ? '\n(${viewModel.kalemModel.dovizAraToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $getDovizAdi $getDovizAdi)' : ""}",
                                   style: const TextStyle(fontWeight: FontWeight.bold))
                             ]));
                           })),
@@ -196,7 +197,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               const TextSpan(text: "KDV Tutarı: "),
                               TextSpan(
                                   text:
-                                      "${viewModel.kalemModel.kdvTutari.commaSeparatedWithFixedDigits} TL ${(viewModel.model?.dovizliMi ?? false) ? '\n(${(viewModel.kalemModel.kdvTutari / (viewModel.kalemModel.dovizKuru ?? 1)).commaSeparatedWithFixedDigits} $getDovizAdi)' : ""}",
+                                      "${viewModel.kalemModel.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} TL ${(viewModel.model?.dovizliMi ?? false) ? '\n(${(viewModel.kalemModel.kdvTutari / (viewModel.kalemModel.dovizKuru ?? 1)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $getDovizAdi)' : ""}",
                                   style: const TextStyle(fontWeight: FontWeight.bold))
                             ]));
                           })),
@@ -205,7 +206,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               const TextSpan(text: "Genel Toplam: "),
                               TextSpan(
                                   text:
-                                      "${viewModel.kalemModel.genelToplamTutari.commaSeparatedWithFixedDigits} TL ${(viewModel.model?.dovizliMi ?? false) ? '\n(${(viewModel.kalemModel.genelToplamTutari / (viewModel.kalemModel.dovizKuru ?? 1)).commaSeparatedWithFixedDigits} $getDovizAdi)' : ""}",
+                                      "${viewModel.kalemModel.genelToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} TL ${(viewModel.model?.dovizliMi ?? false) ? '\n(${(viewModel.kalemModel.genelToplamTutari / (viewModel.kalemModel.dovizKuru ?? 1)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $getDovizAdi)' : ""}",
                                   style: const TextStyle(fontWeight: FontWeight.bold))
                             ]));
                           })),
@@ -254,8 +255,8 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       ],
                     );
                   }),
-                  CustomTextField(labelText: "Ek Alan 1", onChanged: (p0) => viewModel.kalemModel.ekalan1 = p0),
-                  CustomTextField(labelText: "Ek Alan 2", onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0),
+                  CustomTextField(labelText: "Ek Alan 1", onChanged: (p0) => viewModel.kalemModel.ekalan1 = p0).yetkiVarMi(yetkiController.siparisEkAlan1AktifMi),
+                  CustomTextField(labelText: "Ek Alan 2", onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0).yetkiVarMi(yetkiController.siparisSatirdaEkAlan2AktifMi),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -413,46 +414,6 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     children: [
                       Expanded(
                           child: CustomTextField(
-                        enabled: yetkiController.siparisSatirdaKDVSor,
-                        labelText: "KDV Oranı",
-                        controller: kdvOraniController,
-                        isMust: true,
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        isFormattedString: true,
-                        onChanged: (p0) => viewModel.setKdvOrani(p0.toDoubleWithFormattedString),
-                        suffix: IconButton(
-                          icon: const Icon(Icons.more_horiz_outlined),
-                          onPressed: () async {
-                            var result = await bottomSheetDialogManager.showKdvOranlariBottomSheetDialog(context);
-                            if (result != null) {
-                              viewModel.setKdvOrani(result);
-                              kdvOraniController.text = result.toIntIfDouble.toStringIfNotNull ?? "";
-                              // kdvOraniController.value = TextEditingValue(text: result.toIntIfDouble.toStringIfNotNull ?? "");
-                              // kdvOraniController.buildTextSpan(context: context, withComposing: true);
-                            }
-                          },
-                        ),
-                      )),
-                      Expanded(
-                          child: CustomTextField(
-                              labelText: "Fiyat",
-                              controller: fiyatController,
-                              keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                              isFormattedString: true,
-                              onChanged: (p0) {
-                                viewModel.setBrutFiyat(p0.toDoubleWithFormattedString);
-                                if (viewModel.model?.dovizliMi ?? false) {
-                                  viewModel.setDovizFiyati((viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1));
-                                  dovizFiyatiController.text = viewModel.kalemModel.dovizFiyati.commaSeparatedWithDecimalDigits(4);
-                                }
-                              })),
-                    ],
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                          child: CustomTextField(
                         labelText: "Döviz Tipi",
                         controller: dovizTipiController,
                         isMust: true,
@@ -485,8 +446,48 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       onChanged: (p0) {
                         viewModel.setDovizFiyati(p0.toDoubleWithFormattedString);
                         viewModel.setBrutFiyat((viewModel.kalemModel.dovizFiyati ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1));
-                        fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(4);
+                        fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
                       }).yetkiVarMi(widget.stokListesiModel?.dovizliMi ?? false),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                          child: CustomTextField(
+                        enabled: yetkiController.siparisSatirdaKDVSor,
+                        labelText: "KDV Oranı",
+                        controller: kdvOraniController,
+                        isMust: true,
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        isFormattedString: true,
+                        onChanged: (p0) => viewModel.setKdvOrani(p0.toDoubleWithFormattedString),
+                        suffix: IconButton(
+                          icon: const Icon(Icons.more_horiz_outlined),
+                          onPressed: () async {
+                            var result = await bottomSheetDialogManager.showKdvOranlariBottomSheetDialog(context);
+                            if (result != null) {
+                              viewModel.setKdvOrani(result);
+                              kdvOraniController.text = result.toIntIfDouble.toStringIfNotNull ?? "";
+                              // kdvOraniController.value = TextEditingValue(text: result.toIntIfDouble.toStringIfNotNull ?? "");
+                              // kdvOraniController.buildTextSpan(context: context, withComposing: true);
+                            }
+                          },
+                        ),
+                      )),
+                      Expanded(
+                          child: CustomTextField(
+                              labelText: "Fiyat",
+                              controller: fiyatController,
+                              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                              isFormattedString: true,
+                              onChanged: (p0) {
+                                viewModel.setBrutFiyat(p0.toDoubleWithFormattedString);
+                                if (viewModel.model?.dovizliMi ?? false) {
+                                  viewModel.setDovizFiyati((viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1));
+                                  dovizFiyatiController.text = viewModel.kalemModel.dovizFiyati.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
+                                }
+                              })),
+                    ],
+                  ),
                   ...List.generate(yetkiController.siparisSatirKademeliIskontoSayisi > 6 ? 6 : yetkiController.siparisSatirKademeliIskontoSayisi, (index) {
                     return Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -580,9 +581,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
         var result = list.firstWhereOrNull((element) => element.dovizTipi == viewModel.kalemModel.dovizTipi);
         if (result != null) {
           viewModel.kalemModel.dovizKuru = result.effSatis;
-          dovizKuruController.text = viewModel.kalemModel.dovizKuru.commaSeparatedWithDecimalDigits(4);
+          dovizKuruController.text = viewModel.kalemModel.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
           viewModel.kalemModel.dovizFiyati = (viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1);
-          dovizFiyatiController.text = viewModel.kalemModel.dovizFiyati.commaSeparatedWithDecimalDigits(4);
+          dovizFiyatiController.text = viewModel.kalemModel.dovizFiyati.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari);
         } else {
           viewModel.kalemModel.dovizKuru = null;
           viewModel.kalemModel.dovizFiyati = null;
@@ -625,31 +626,31 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     ekAlan1Controller.text = widget.kalemModel?.ekalan1 ?? "";
     ekAlan2Controller.text = widget.kalemModel?.ekalan2 ?? "";
     isk1Controller?.text = widget.kalemModel?.iskonto1.toIntIfDouble.toStringIfNotNull ?? "";
-    isk1TipiController?.text = widget.kalemModel?.isk1Tipi.toIntIfDouble.toStringIfNotNull ?? "";
+    isk1TipiController?.text = getIskTipiAciklama(widget.kalemModel?.isk1Tipi.toIntIfDouble);
     isk2YuzdeController?.text = widget.kalemModel?.iskonto2.toIntIfDouble.toStringIfNotNull ?? "";
-    isk2TipiController?.text = widget.kalemModel?.isk2Tipi.toIntIfDouble.toStringIfNotNull ?? "";
+    isk2TipiController?.text = getIskTipiAciklama(widget.kalemModel?.isk2Tipi.toIntIfDouble);
     isk3YuzdeController?.text = widget.kalemModel?.iskonto3.toIntIfDouble.toStringIfNotNull ?? "";
-    isk3TipiController?.text = widget.kalemModel?.isk3Tipi.toIntIfDouble.toStringIfNotNull ?? "";
+    isk3TipiController?.text = getIskTipiAciklama(widget.kalemModel?.isk3Tipi.toIntIfDouble);
     isk4YuzdeController?.text = widget.kalemModel?.iskonto4.toIntIfDouble.toStringIfNotNull ?? "";
-    isk4TipiController?.text = widget.kalemModel?.isk4Tipi.toIntIfDouble.toStringIfNotNull ?? "";
+    isk4TipiController?.text = getIskTipiAciklama(widget.kalemModel?.isk4Tipi.toIntIfDouble);
     isk5YuzdeController?.text = widget.kalemModel?.iskonto5.toIntIfDouble.toStringIfNotNull ?? "";
-    isk5TipiController?.text = widget.kalemModel?.isk5Tipi.toIntIfDouble.toStringIfNotNull ?? "";
+    isk5TipiController?.text = getIskTipiAciklama(widget.kalemModel?.isk5Tipi.toIntIfDouble);
     isk6YuzdeController?.text = widget.kalemModel?.iskonto6.toIntIfDouble.toStringIfNotNull ?? "";
-    isk6TipiController?.text = widget.kalemModel?.isk6Tipi.toIntIfDouble.toStringIfNotNull ?? "";
-    fiyatController.text = widget.kalemModel?.brutFiyat.toIntIfDouble.commaSeparatedWithFixedDigits ?? viewModel.model?.bulunanFiyat.toIntIfDouble?.commaSeparatedWithDecimalDigits(4) ?? "";
+    isk6TipiController?.text = getIskTipiAciklama(widget.kalemModel?.isk6Tipi.toIntIfDouble);
+    fiyatController.text = (widget.kalemModel?.brutFiyat.toIntIfDouble ?? viewModel.model?.bulunanFiyat.toIntIfDouble)?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
     miktarController.text = viewModel.kalemModel.miktar?.toIntIfDouble.toStringIfNotNull ?? "";
     miktar2Controller.text = viewModel.kalemModel.miktar2?.toIntIfDouble.toStringIfNotNull ?? "";
     malFazMiktarController.text = viewModel.kalemModel.malFazlasiMiktar?.toIntIfDouble.toStringIfNotNull ?? "";
     olcuBirimiController.text = widget.stokListesiModel?.olcuBirimi ?? widget.kalemModel?.olcuBirimAdi ?? "";
-    kdvOraniController.text = widget.kalemModel?.kdvOrani.toIntIfDouble.toStringIfNotNull ??
-        (StaticVariables.instance.isMusteriSiparisleri ? (widget.stokListesiModel?.satisKdv ?? "") : (widget.stokListesiModel?.alisKdv ?? "")).toString();
+    kdvOraniController.text = widget.kalemModel?.kdvOrani.commaSeparatedWithDecimalDigits(OndalikEnum.oran) ??
+        (StaticVariables.instance.isMusteriSiparisleri ? (widget.stokListesiModel?.satisKdv ?? 0) : (widget.stokListesiModel?.alisKdv ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.oran);
     depoController.text = (parametreModel.depoList?.where((element) => element.depoKodu == (viewModel.model?.depoKodu ?? parametreModel.satisHizmetDepoKodu)).firstOrNull?.depoTanimi ?? "");
     viewModel.kalemModel.depoTanimi ??= depoController.text;
     projeController.text = teslimTarihiController.text = model.teslimTarihi.toDateString;
     kosulController.text = model.kosulKodu ?? BaseSiparisEditModel.instance.kosulKodu ?? "";
     projeController.text = model.projeKodu ?? BaseSiparisEditModel.instance.projeKodu ?? "";
     dovizTipiController.text = (StaticVariables.instance.isMusteriSiparisleri ? viewModel.model?.satisDovizAdi : viewModel.model?.alisDovizAdi) ?? "";
-    dovizFiyatiController.text = viewModel.kalemModel.dovizFiyati.commaSeparatedWithDecimalDigits(4);
+    dovizFiyatiController.text = viewModel.kalemModel.dovizFiyati.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari);
     viewModel.kalemModel.stokAdi = widget.stokListesiModel?.stokAdi ?? widget.stokListesiModel?.stokKodu ?? widget.kalemModel?.stokAdi ?? widget.kalemModel?.stokKodu ?? "";
     viewModel.kalemModel.stokKodu = widget.stokListesiModel?.stokKodu ?? widget.kalemModel?.stokKodu ?? "";
     viewModel.kalemModel.depoKodu = model.cikisDepoKodu;
@@ -708,6 +709,8 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     isk6YuzdeController?.dispose();
     muhKoduController.dispose();
   }
+
+  String getIskTipiAciklama(num? value) => parametreModel.listIskTip?.firstWhereOrNull((element) => element.iskontoTipi == value)?.aciklama ?? "";
 
   void iskontoFiller(int index, ListIskTip? iskTip) {
     switch (index) {

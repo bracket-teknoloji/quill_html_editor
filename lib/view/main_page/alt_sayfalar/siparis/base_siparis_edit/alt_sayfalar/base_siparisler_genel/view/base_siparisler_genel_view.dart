@@ -406,31 +406,23 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
 
   Future<void> init() async {
     controllerFiller();
-    if (BaseSiparisEditModel.instance.belgeNo == null) {
+
+    if (BaseSiparisEditModel.instance.belgeNo == null || widget.model.isKopyala) {
       await getBelgeNo();
     }
+    controllerFiller();
   }
-
-  // Future<void> getData() async {
-  //   var result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: widget.model.model?.toJson(), showLoading: true);
-  //   if (result.success == true) {
-  //     BaseSiparisEditModel.setInstance(result.data.first as BaseSiparisEditModel);
-  //     controllerFiller();
-  //   }
-  // }
 
   Future<void> getBelgeNo() async {
     var result = await networkManager.dioGet<BaseSiparisEditModel>(
         path: ApiUrls.getSiradakiBelgeNo,
         bodyModel: BaseSiparisEditModel(),
-        queryParameters: {"Seri": belgeNoController.text, "BelgeTipi": widget.model.siparisTipiEnum?.rawValue, "EIrsaliye": "H", "CariKodu": model.cariKodu},
+        queryParameters: {"Seri": belgeNoController.text, "BelgeTipi": widget.model.siparisTipiEnum?.rawValue, "EIrsaliye": "H", "CariKodu": model.cariKodu ?? ""},
         showLoading: true);
     if (result.success == true) {
       BaseSiparisEditModel.instance.belgeNo = result.data?.first.belgeNo;
       belgeNoController.text = BaseSiparisEditModel.instance.belgeNo ?? "";
     }
-
-    controllerFiller();
   }
 
   void controllerFiller() {
@@ -443,12 +435,11 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
     plasiyerController.text = model.plasiyerAciklama ?? "";
     tarihController.text = model.tarih.toDateString;
     teslimTarihController.text = model.teslimTarihi.toDateString;
-    topluDepoController.text = model.topluDepo.toStringIfNotNull ??"";
+    topluDepoController.text = model.topluDepo.toStringIfNotNull ?? "";
     projeController.text = model.projeAciklama ?? "";
     odemeKoduController.text = model.odemeKodu ?? "";
     kosulController.text = model.kosulKodu ?? "";
     ozelKod2Controller.text = model.ozelKod2 ?? "";
-    // teslimEdilecekKisiController.text = model.slkdfjs ?? "";
     teslimEdilecekKisiController.text = model.acik1 ?? "";
     b2bEmailController.text = model.acik2 ?? "";
     masrafKoduController.text = model.acik3 ?? "";
@@ -470,6 +461,12 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
       viewModel.setOzelKod1("T");
     } else {
       ozelKod1Controller.text = model.ozelKod1 ?? "";
+    }
+    if (model.topluDepo != null) {
+      topluDepoController.text = parametreModel.depoList?.firstWhere((element) => element.depoKodu == model.topluDepo).depoTanimi ?? "";
+    }
+    if (model.ozelKod2 != null) {
+      ozelKod2Controller.text = parametreModel.listOzelKodTum?.firstWhere((element) => element.kod == model.ozelKod2).aciklama ?? "";
     }
   }
 

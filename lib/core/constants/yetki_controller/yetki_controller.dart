@@ -1,12 +1,12 @@
 import "package:kartal/kartal.dart";
-import "yetki_model.dart";
-import "../../constants/static_variables/static_variables.dart";
 
 import "../../../view/main_page/model/main_page_model.dart";
 import "../../../view/main_page/model/param_model.dart";
 import "../../../view/main_page/model/user_model/profil_yetki_model.dart";
 import "../../../view/main_page/model/user_model/user_model.dart";
 import "../../init/cache/cache_manager.dart";
+import "../static_variables/static_variables.dart";
+import "yetki_model.dart";
 
 class YetkiController {
   YetkiController();
@@ -118,6 +118,8 @@ class YetkiController {
   bool get siparisEkMaliyet3GizlenecekMi => siparisMSGizlenecekAlanMi(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet3);
   bool get siparisHizmetAktifMi => _musteriSiparisiMi ? siparisMSSatisHizmetAktifMi : siparisSSSatisHizmetAktifMi;
   bool get siparisKontrolAciklamasiAktifMi => _musteriSiparisiMi ? siparisMSKontrolAciklamasiAktifMi : siparisSSKontrolAciklamasiAktifMi;
+  bool get siparisSatirdaEkAlan2AktifMi => _musteriSiparisiMi ? siparisMSSatirdaEkAlan2AktifMi : siparisSSsatirdaEkAlan2AktifMi;
+  bool get siparisEkAlan1AktifMi => _musteriSiparisiMi ? siparisMSEkAlan1AktifMi : false;
 
   //* Müşteri Siparişi
   //😳SatisSatirKademeliIskontoSayisi => 0 ise kademeli iskonto yok demektir. Kaç tane varsa o kadar genisk ve geniskTipi gelecek
@@ -184,5 +186,6 @@ class YetkiController {
   bool get siparisSSsatirdaKDVSor => isTrue(paramModel?.alisSatirdaKdvSor, skipAdmin: true);
   bool get siparisSSSatisHizmetAktifMi => isTrue(paramModel?.alisHizmetAktif, skipAdmin: true);
   bool get siparisSSKontrolAciklamasiAktifMi => isTrue(paramModel?.fatuKontrolAciklamasiAktif?.contains("SS"), skipAdmin: true);
+  bool get siparisSSsatirdaEkAlan2AktifMi => isTrue(paramModel?.alisSatirdaEkAlan2Aktif, skipAdmin: true);
   // bool get siparisSSISk1YuzdeSor => isTrue(paramModel?.alisSatirIsk1YuzdeSor, skipAdmin: true);
 }

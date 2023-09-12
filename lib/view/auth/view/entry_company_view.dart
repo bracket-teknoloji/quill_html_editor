@@ -3,9 +3,9 @@ import "dart:developer";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
 
+import "../../../core/base/model/base_network_mixin.dart";
 import "../../../core/base/state/base_state.dart";
 import "../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
 import "../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -127,7 +127,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     List list = [];
     final response = await networkManager.dioGet<IsletmeModel>(
       path: ApiUrls.isletmelerSubeler,
-      bodyModel: IsletmeModel(),      
+      bodyModel: IsletmeModel(),
       queryParameters: {"Veritabani": sirket},
     );
     final data = response.data;
@@ -302,18 +302,12 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                 // ..gCid = "/Y5TBF72qY7bnZl3+NOYvUtln/g5FJPl4jQ9i59td5M=";
                                 dialogManager.showLoadingDialog("${selected["Şirket"]} şirketine giriş yapılıyor.");
                                 GenericResponseModel<NetworkManagerMixin> response;
-                                response = await networkManager.dioPost<MainPageModel>(
-                                    path: ApiUrls.createSession,
-                                    bodyModel: MainPageModel(),
-                                    
-                                    showError: false,
-                                    data: model,
-                                    headers: {
-                                      "VERITABANI": selected["Şirket"].toString(),
-                                      "ISLETME_KODU": selected["İşletme"].toString(),
-                                      "SUBE_KODU": selected["Şube"].toString(),
-                                      "content-type": "application/json"
-                                    });
+                                response = await networkManager.dioPost<MainPageModel>(path: ApiUrls.createSession, bodyModel: MainPageModel(), showError: false, data: model, headers: {
+                                  "VERITABANI": selected["Şirket"].toString(),
+                                  "ISLETME_KODU": selected["İşletme"].toString(),
+                                  "SUBE_KODU": selected["Şube"].toString(),
+                                  "content-type": "application/json"
+                                });
                                 if (response.data != null) {
                                   MainPageModel model = response.data[0];
                                   CacheManager.setAnaVeri(model);
@@ -333,7 +327,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   dialogManager.showAlertDialog(response.message.toString());
                                 }
                               } else {
-                                dialogManager.showSnackBar("Boş bırakmayınız.");
+                                dialogManager.showErrorSnackBar("Boş bırakmayınız.");
                               }
                             },
                             child: const Text("Giriş"),

@@ -227,7 +227,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
   void deleteData(int id, int islemKodu) async {
     var result = await networkManager.dioPost<FiyatGecmisiResponseModel>(path: ApiUrls.savestokFiyatGecmisi, bodyModel: FiyatGecmisiResponseModel(), data: {"ID": id, "ISLEM_KODU": islemKodu});
     if (result.success == true) {
-      dialogManager.showSnackBar("Silindi");
+      dialogManager.showSuccessSnackBar("Silindi");
       getData();
     }
   }

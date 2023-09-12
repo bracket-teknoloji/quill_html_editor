@@ -134,11 +134,11 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
       dialogManager.hideAlertDialog;
       SaveStokModel.setInstance(SaveStokModel());
       if (result.success == true) {
-        dialogManager.showSnackBar("Başarılı");
+        dialogManager.showSuccessSnackBar("Başarılı");
         Get.back(result: BaseEditModel());
       } else {
         dialogManager.hideAlertDialog;
-        dialogManager.showSnackBar(result.message ?? "Hata oluştu");
+        dialogManager.showErrorSnackBar(result.message ?? "Hata oluştu");
       }
     }
   }

@@ -27,6 +27,7 @@ import "../../../../../../core/constants/enum/islem_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../core/constants/extensions/model_extensions.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
 import "../../../../../add_company/model/account_model.dart";
@@ -311,12 +312,12 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                                 );
                                                 dialogManager.hideAlertDialog;
                                                 if (result.success ?? false) {
-                                                  dialogManager.showSnackBar("${object.cariAdi} adlı cari silindi");
+                                                  dialogManager.showSuccessSnackBar("${object.cariAdi} adlı cari silindi");
                                                   getData(sayfa: 1).then((value) {
                                                     viewModel.changeCariListesi(value);
                                                   });
                                                 } else {
-                                                  dialogManager.showSnackBar(result.message ?? "");
+                                                  dialogManager.showErrorSnackBar(result.message ?? "");
                                                 }
                                               });
                                             },
@@ -407,7 +408,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                               child: FooterButton(children: [
                             const Text("Tahsil Edilecek"),
                             Text(
-                              "${double.tryParse(paramData["TAHSIL_EDILECEK"].replaceAll(",", "."))?.toInt().commaSeparatedWithFixedDigits} $mainCurrency",
+                              "${double.tryParse(paramData["TAHSIL_EDILECEK"].replaceAll(",", "."))?.toInt().commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                               style: const TextStyle(color: Colors.green),
                             ),
                           ])),
@@ -415,7 +416,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                           Expanded(
                               child: FooterButton(children: [
                             const Text("Ödenecek"),
-                            Text("${(double.tryParse(paramData["ODENECEK"].replaceAll(",", "."))!.toInt() * -1).commaSeparatedWithFixedDigits} $mainCurrency",
+                            Text("${(double.tryParse(paramData["ODENECEK"].replaceAll(",", "."))!.toInt() * -1).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                                 style: const TextStyle(color: Colors.red)),
                           ]))
                         ],

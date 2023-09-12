@@ -20,6 +20,7 @@ import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/enum/islem_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
@@ -315,7 +316,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                   const Text("Borç"),
                   Observer(builder: (_) {
                     return Text(
-                        "${widget.cari?.dovizli == true ? viewModel.dovizBorclarToplami.commaSeparatedWithFixedDigits : viewModel.borclarToplami.commaSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? mainCurrency}");
+                        "${(widget.cari?.dovizli == true ? viewModel.dovizBorclarToplami : viewModel.borclarToplami).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}");
                   })
                 ])),
                 const VerticalDivider(thickness: 1, width: 1),
@@ -323,14 +324,14 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                     child: FooterButton(children: [
                   const Text("Alacak"),
                   Text(
-                      "${widget.cari?.dovizli == true ? viewModel.dovizAlacaklarToplami.commaSeparatedWithFixedDigits : viewModel.borclarToplami.commaSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? mainCurrency}")
+                      "${(widget.cari?.dovizli == true ? viewModel.dovizAlacaklarToplami : viewModel.borclarToplami).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}")
                 ])),
                 const VerticalDivider(thickness: 1, width: 1),
                 Expanded(
                     child: FooterButton(children: [
                   const Text("Tahsil Edilecek"),
                   Text(
-                    "${(widget.cari?.dovizli == true ? viewModel.dovizBorclarToplami - viewModel.dovizAlacaklarToplami : viewModel.borclarToplami - viewModel.alacaklarToplami).commaSeparatedWithFixedDigits} ${widget.cari?.dovizAdi ?? mainCurrency}",
+                    "${(widget.cari?.dovizli == true ? viewModel.dovizBorclarToplami - viewModel.dovizAlacaklarToplami : viewModel.borclarToplami - viewModel.alacaklarToplami).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}",
                     style: TextStyle(color: (viewModel.borclarToplami - viewModel.alacaklarToplami) < 0 ? Colors.red : Colors.green),
                   )
                 ]))

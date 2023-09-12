@@ -10,6 +10,7 @@ import "../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../stok/stok_liste/model/stok_listesi_model.dart";
@@ -143,7 +144,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
             Text("Mal Fazlası Miktar: ${kalemModel?.malFazlasiMiktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.malFazlasiMiktar != null),
             Text.rich(TextSpan(
                     children: [
-              TextSpan(text: "Satış İskontosu: ${kalemModel?.iskontoTutari.commaSeparatedWithFixedDigits ?? ""} "),
+              TextSpan(text: "Satış İskontosu: ${kalemModel?.iskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} "),
               kalemModel?.iskontoTutari != 0.0
                   ? TextSpan(
                       text:
@@ -153,9 +154,9 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                   : null,
             ].whereType<TextSpan>().toList()))
                 .yetkiVarMi(kalemModel?.kdvOrani != null),
-            Text("Satış İskontosu: ${kalemModel?.iskontoTutari.commaSeparatedWithFixedDigits ?? ""}").yetkiVarMi(kalemModel?.iskontoTutari != null),
+            Text("Satış İskontosu: ${kalemModel?.iskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""}").yetkiVarMi(kalemModel?.iskontoTutari != null),
             Text("Kalan Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),
-            Text("Fiyat: ${kalemModel?.brutFiyat.commaSeparatedWithFixedDigits ?? 0.00}").yetkiVarMi(kalemModel?.brutFiyat != null),
+            Text("Fiyat: ${kalemModel?.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? 0.00}").yetkiVarMi(kalemModel?.brutFiyat != null),
             Text("Teslim Tarihi: ${kalemModel?.teslimTarihi.toDateStringIfNull() ?? ""}").yetkiVarMi(kalemModel?.teslimTarihi != null),
           ].map((e) => SizedBox(width: width * 0.4, child: e)).toList()),
         ],
@@ -189,26 +190,20 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
               icon: const Icon(Icons.more_vert_outlined))
         ],
       ),
-      subtitle: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Wrap(
-              children: [
-            Text("Miktar: ${((kalemList?.koliBilesenMiktari.toIntIfDouble ?? 0) * (kalemList?.miktar.toIntIfDouble ?? 0)).toIntIfDouble.toStringIfNotNull ?? ""}"),
-            Text("Fiyat: ${kalemList?.brutFiyat.toIntIfDouble.commaSeparatedWithFixedDigits ?? ""}"),
-            // Text("KDV %: ${(kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
-            Text("KDV %: ${((StaticVariables.instance.isMusteriSiparisleri ? kalemList?.stokSatisKdv : kalemList?.stokAlisKdv) ?? kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
+      subtitle: Wrap(
+          children: [
+        Text("Miktar: ${((kalemList?.koliBilesenMiktari.toIntIfDouble ?? 0) * (kalemList?.miktar.toIntIfDouble ?? 0)).toIntIfDouble.toStringIfNotNull ?? ""}"),
+        Text("Fiyat: ${kalemList?.brutFiyat.toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""}"),
+        // Text("KDV %: ${(kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
+        Text("KDV %: ${((StaticVariables.instance.isMusteriSiparisleri ? kalemList?.stokSatisKdv : kalemList?.stokAlisKdv) ?? kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
 
-            Text("Tutar: ${((kalemList?.koliBilesenMiktari ?? 0) * (superKalemList?.brutFiyat ?? 0) * (kalemList?.koliBilesenOrani ?? 0) / 100).commaSeparatedWithFixedDigits}"),
-          ]
-                  .map((e) => SizedBox(
-                        width: width * 0.4,
-                        child: e,
-                      ))
-                  .toList()),
-        ],
-      ),
+        Text("Tutar: ${((kalemList?.koliBilesenMiktari ?? 0) * (superKalemList?.brutFiyat ?? 0) * (kalemList?.koliBilesenOrani ?? 0) / 100).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
+      ]
+              .map((e) => SizedBox(
+                    width: width * 0.4,
+                    child: e,
+                  ))
+              .toList()),
       // title: Text("${stokList?.stokKodu ?? ""}-${stokList?.stokAdi ?? ""}"),
       // subtitle: Text("${viewModel.kalemList?[index].kalemList?[index].miktar ?? ""} ${viewModel.kalemList?[index].kalemList?[index].olcuBirimAdi ?? ""}"),
       // trailing: IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
