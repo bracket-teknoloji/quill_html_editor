@@ -9,43 +9,48 @@ part of 'stok_listesi_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
-  Computed<String>? _$grupKoduComputed;
+  Computed<List<BaseGrupKoduModel>?>? _$grupKoduComputed;
 
   @override
-  String get grupKodu =>
-      (_$grupKoduComputed ??= Computed<String>(() => super.grupKodu,
+  List<BaseGrupKoduModel>? get grupKodu => (_$grupKoduComputed ??=
+          Computed<List<BaseGrupKoduModel>?>(() => super.grupKodu,
               name: '_StokListesiViewModelBase.grupKodu'))
+      .value;
+  Computed<List<BaseGrupKoduModel>?>? _$kod1Computed;
+
+  @override
+  List<BaseGrupKoduModel>? get kod1 =>
+      (_$kod1Computed ??= Computed<List<BaseGrupKoduModel>?>(() => super.kod1,
+              name: '_StokListesiViewModelBase.kod1'))
           .value;
-  Computed<String>? _$kod1Computed;
+  Computed<List<BaseGrupKoduModel>?>? _$kod2Computed;
 
   @override
-  String get kod1 => (_$kod1Computed ??= Computed<String>(() => super.kod1,
-          name: '_StokListesiViewModelBase.kod1'))
-      .value;
-  Computed<String>? _$kod2Computed;
+  List<BaseGrupKoduModel>? get kod2 =>
+      (_$kod2Computed ??= Computed<List<BaseGrupKoduModel>?>(() => super.kod2,
+              name: '_StokListesiViewModelBase.kod2'))
+          .value;
+  Computed<List<BaseGrupKoduModel>?>? _$kod3Computed;
 
   @override
-  String get kod2 => (_$kod2Computed ??= Computed<String>(() => super.kod2,
-          name: '_StokListesiViewModelBase.kod2'))
-      .value;
-  Computed<String>? _$kod3Computed;
+  List<BaseGrupKoduModel>? get kod3 =>
+      (_$kod3Computed ??= Computed<List<BaseGrupKoduModel>?>(() => super.kod3,
+              name: '_StokListesiViewModelBase.kod3'))
+          .value;
+  Computed<List<BaseGrupKoduModel>?>? _$kod4Computed;
 
   @override
-  String get kod3 => (_$kod3Computed ??= Computed<String>(() => super.kod3,
-          name: '_StokListesiViewModelBase.kod3'))
-      .value;
-  Computed<String>? _$kod4Computed;
+  List<BaseGrupKoduModel>? get kod4 =>
+      (_$kod4Computed ??= Computed<List<BaseGrupKoduModel>?>(() => super.kod4,
+              name: '_StokListesiViewModelBase.kod4'))
+          .value;
+  Computed<List<BaseGrupKoduModel>?>? _$kod5Computed;
 
   @override
-  String get kod4 => (_$kod4Computed ??= Computed<String>(() => super.kod4,
-          name: '_StokListesiViewModelBase.kod4'))
-      .value;
-  Computed<String>? _$kod5Computed;
-
-  @override
-  String get kod5 => (_$kod5Computed ??= Computed<String>(() => super.kod5,
-          name: '_StokListesiViewModelBase.kod5'))
-      .value;
+  List<BaseGrupKoduModel>? get kod5 =>
+      (_$kod5Computed ??= Computed<List<BaseGrupKoduModel>?>(() => super.kod5,
+              name: '_StokListesiViewModelBase.kod5'))
+          .value;
   Computed<String?>? _$bakiyeComputed;
 
   @override
@@ -321,22 +326,77 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
   }
 
   @override
-  void resetBottomSheetModel() {
+  void resetSelectedArr() {
     final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.resetBottomSheetModel');
+        .startAction(name: '_StokListesiViewModelBase.resetSelectedArr');
     try {
-      return super.resetBottomSheetModel();
+      return super.resetSelectedArr();
     } finally {
       _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setBottomSheetModel(StokBottomSheetModel value) {
+  void changeArrGrupKodu(List<BaseGrupKoduModel> value) {
     final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.setBottomSheetModel');
+        .startAction(name: '_StokListesiViewModelBase.changeArrGrupKodu');
     try {
-      return super.setBottomSheetModel(value);
+      return super.changeArrGrupKodu(value);
+    } finally {
+      _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeArrKod1(List<BaseGrupKoduModel> value) {
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController
+        .startAction(name: '_StokListesiViewModelBase.changeArrKod1');
+    try {
+      return super.changeArrKod1(value);
+    } finally {
+      _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeArrKod2(List<BaseGrupKoduModel> value) {
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController
+        .startAction(name: '_StokListesiViewModelBase.changeArrKod2');
+    try {
+      return super.changeArrKod2(value);
+    } finally {
+      _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeArrKod3(List<BaseGrupKoduModel> value) {
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController
+        .startAction(name: '_StokListesiViewModelBase.changeArrKod3');
+    try {
+      return super.changeArrKod3(value);
+    } finally {
+      _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeArrKod4(List<BaseGrupKoduModel> value) {
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController
+        .startAction(name: '_StokListesiViewModelBase.changeArrKod4');
+    try {
+      return super.changeArrKod4(value);
+    } finally {
+      _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeArrKod5(List<BaseGrupKoduModel> value) {
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController
+        .startAction(name: '_StokListesiViewModelBase.changeArrKod5');
+    try {
+      return super.changeArrKod5(value);
     } finally {
       _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
     }

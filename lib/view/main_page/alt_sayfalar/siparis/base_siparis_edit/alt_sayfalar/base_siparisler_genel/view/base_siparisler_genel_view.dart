@@ -128,6 +128,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                   suffixMore: true,
                   controller: cariController,
                   // valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
+                  
                   onTap: () async {
                     var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
                     if (result != null && result is CariListesiModel) {
@@ -146,6 +147,19 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                   readOnly: true,
                   suffixMore: true,
                   controller: teslimCariController,
+                  suffix: IconButton(onPressed: () async {
+                    var result = await Get.toNamed("mainPage/cariRehberi", arguments: model.cariKodu ?? "");
+                    if (result != null && result is CariListesiModel) {
+                      model.teslimCari = result.cariKodu;
+                      model.teslimCariAdi = result.cariAdi;
+                      teslimCariController.text = result.cariAdi ?? "";
+                    }
+                  }, icon: const Icon(Icons.hub_outlined)),
+                  onClear: (){
+                    model.teslimCari = null;
+                    model.teslimCariAdi = null;
+                    teslimCariController.text = "";
+                  },
                   onTap: !yetkiController.siparisFarkliTeslimCariAktif
                       ? null
                       : () async {

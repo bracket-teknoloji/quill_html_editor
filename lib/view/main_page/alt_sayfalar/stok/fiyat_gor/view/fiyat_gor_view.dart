@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_gor/model/fiyat_gor_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_gor/view_model/fiyat_gor_view_model.dart";
+import "../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../model/fiyat_gor_model.dart";
+import "../view_model/fiyat_gor_view_model.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";

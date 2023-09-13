@@ -78,7 +78,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   @override
   void dispose() {
     bottomSheetDialogManager.clearSelectedData();
-    viewModel.setBottomSheetModel(StokBottomSheetModel());
+    // viewModel.setBottomSheetModel(StokBottomSheetModel());
     scrollController.dispose();
     super.dispose();
     grupKoduController.dispose();
@@ -94,7 +94,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     if (viewModel.searchBar && widget.searchText != null) {
       FocusScope.of(context).unfocus();
     }
-    kod5Controller.text = viewModel.kod5;
+    kod5Controller.text = viewModel.kod5?.map((e) => e.grupAdi).join(", ") ?? "";
     return Scaffold(
       resizeToAvoidBottomInset: true,
       // floatingActionButton: Observer(builder: (_) {
@@ -238,25 +238,21 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       readOnly: true,
                                       controller: grupKoduController,
                                       onTap: () async {
-                                        await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                        var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                           context,
                                           title: "Grup Kodu",
                                           children: viewModel.grupKodlari
                                               .map((e) => BottomSheetModel(
                                                     title: e.grupAdi ?? "",
-                                                    value: e.grupNo.toStringIfNotNull,
-                                                    onTap: () {
-                                                      if (viewModel.bottomSheetModel.arrGrupKodu?.contains(e) ?? false) {
-                                                        viewModel.bottomSheetModel.arrGrupKodu?.remove(e);
-                                                      } else {
-                                                        viewModel.bottomSheetModel.arrGrupKodu?.add(e);
-                                                      }
-                                                      debugPrint(viewModel.grupKodu);
-                                                    },
+                                                    value: e,
+                                                    
                                                   ))
                                               .toList(),
                                         );
-                                        grupKoduController.text = viewModel.grupKodu;
+                                        if (result != null && result is List) {
+                                          viewModel.changeArrGrupKodu(result.whereType<BaseGrupKoduModel>().toList());
+                                          grupKoduController.text = viewModel.grupKodu?.map((e) => e.grupAdi).join(", ") ?? "";
+                                        }
                                       },
                                       suffixMore: true,
                                     );
@@ -269,23 +265,20 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                     controller: kod1Controller,
                                     onTap: () async {
                                       List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 1).toList();
-                                      await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                      var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                         context,
                                         title: "Kod 1",
                                         children: grupKodlari
                                             .map((e) => BottomSheetModel(
                                                   title: e.grupAdi ?? "",
-                                                  onTap: () {
-                                                    if (viewModel.bottomSheetModel.arrKod1?.contains(e) ?? false) {
-                                                      viewModel.bottomSheetModel.arrKod1?.remove(e);
-                                                    } else {
-                                                      viewModel.bottomSheetModel.arrKod1?.add(e);
-                                                    }
-                                                  },
+                                                  value: e
                                                 ))
                                             .toList(),
                                       );
-                                      kod1Controller.text = viewModel.kod1;
+                                      if (result != null && result is List){
+                                        viewModel.changeArrKod1(result.whereType<BaseGrupKoduModel>().toList());
+                                        kod1Controller.text = viewModel.kod1?.map((e) => e.grupAdi).join(", ") ?? "";
+                                      }
                                     },
                                   ))
                                 ],
@@ -300,23 +293,20 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                     controller: kod2Controller,
                                     onTap: () async {
                                       List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 2).toList();
-                                      await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                      var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                         context,
                                         title: "Kod 2",
                                         children: grupKodlari
                                             .map((e) => BottomSheetModel(
                                                   title: e.grupAdi ?? "",
-                                                  onTap: () {
-                                                    if (viewModel.bottomSheetModel.arrKod2?.contains(e) ?? false) {
-                                                      viewModel.bottomSheetModel.arrKod2?.remove(e);
-                                                    } else {
-                                                      viewModel.bottomSheetModel.arrKod2?.add(e);
-                                                    }
-                                                  },
+                                                  value: e
                                                 ))
                                             .toList(),
                                       );
-                                      kod2Controller.text = viewModel.kod2;
+                                      if (result != null && result is List){
+                                        viewModel.changeArrKod2(result.whereType<BaseGrupKoduModel>().toList());
+                                        kod2Controller.text = viewModel.kod2?.map((e) => e.grupAdi).join(", ") ?? "";
+                                      }
                                     },
                                   )),
                                   Expanded(
@@ -327,23 +317,19 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                     controller: kod3Controller,
                                     onTap: () async {
                                       List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 3).toList();
-                                      await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                      var result =await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                         context,
                                         title: "Kod 3",
                                         children: grupKodlari
                                             .map((e) => BottomSheetModel(
-                                                  title: e.grupAdi ?? "",
-                                                  onTap: () {
-                                                    if (viewModel.bottomSheetModel.arrKod3?.contains(e) ?? false) {
-                                                      viewModel.bottomSheetModel.arrKod3?.remove(e);
-                                                    } else {
-                                                      viewModel.bottomSheetModel.arrKod3?.add(e);
-                                                    }
-                                                  },
+                                                  title: e.grupAdi ?? "", value: e
                                                 ))
                                             .toList(),
                                       );
-                                      kod3Controller.text = viewModel.kod3;
+                                      if (result != null && result is List){
+                                        viewModel.changeArrKod3(result.whereType<BaseGrupKoduModel>().toList());
+                                        kod3Controller.text = viewModel.kod3?.map((e) => e.grupAdi).join(", ") ?? "";
+                                      }
                                     },
                                   ))
                                 ],
@@ -358,7 +344,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                     controller: kod4Controller,
                                     onTap: () async {
                                       List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 4).toList();
-                                      await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                      var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                         context,
                                         title: "Kod 4",
                                         children: grupKodlari
@@ -374,7 +360,10 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                                 ))
                                             .toList(),
                                       );
-                                      kod4Controller.text = viewModel.kod4;
+                                      if (result != null && result is List){
+                                        viewModel.changeArrKod4(result.whereType<BaseGrupKoduModel>().toList());
+                                        kod4Controller.text = viewModel.kod4?.map((e) => e.grupAdi).join(", ") ?? "";
+                                      }
                                     },
                                   )),
                                   Expanded(
@@ -385,7 +374,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                     controller: kod5Controller,
                                     onTap: () async {
                                       List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 5).toList();
-                                      await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                      var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                         context,
                                         title: "Kod 5",
                                         children: grupKodlari
@@ -401,7 +390,10 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                                 ))
                                             .toList(),
                                       );
-                                      kod5Controller.text = viewModel.kod5;
+                                      if (result != null && result is List){
+                                        viewModel.changeArrKod5(result.whereType<BaseGrupKoduModel>().toList());
+                                        kod5Controller.text = viewModel.kod5?.map((e) => e.grupAdi).join(", ") ?? "";
+                                      }
                                     },
                                   ))
                                 ],
@@ -417,11 +409,11 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                             kod3Controller.text = "";
                                             kod4Controller.text = "";
                                             kod5Controller.text = "";
-                                            viewModel.setBottomSheetModel(StokBottomSheetModel());
+                                            // viewModel.setBottomSheetModel(StokBottomSheetModel());
                                             viewModel.resetSayfa();
                                             viewModel.setStokListesi(null);
                                             viewModel.resetSelected();
-                                            bottomSheetDialogManager.clearSelectedData();
+                                            viewModel.resetSelectedArr();
                                             getData();
                                             Get.back();
                                           },
@@ -715,7 +707,6 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     } else {
       viewModel.setStokListesi(<StokListesiModel>[]);
     }
-    setState(() {});
 
     if (scrollController.positions.isNotEmpty && (scrollController.position.pixels == scrollController.position.maxScrollExtent)) {
       viewModel.changeIsScrolledDown(true);

@@ -2,14 +2,14 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
@@ -47,19 +47,27 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: Visibility(
-        visible: !widget.model.isGoruntule,
-        child: FloatingActionButton(
-          onPressed: () async {
-            // bottomSheetDialogManager.showPrintDialog(context, DicParams(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi.toStringIfNotNull, cariKodu: model.cariKodu));
-            await Get.toNamed("/mainPage/stokRehberi");
-            viewModel.updateKalemList();
-          },
-          child: const Icon(Icons.add),
-        ),
+    return Scaffold(floatingActionButton: fab(), body: body());
+  }
+
+  Visibility fab() {
+    return Visibility(
+      visible: !widget.model.isGoruntule,
+      child: FloatingActionButton(
+        onPressed: () async {
+          // bottomSheetDialogManager.showPrintDialog(context, DicParams(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi.toStringIfNotNull, cariKodu: model.cariKodu));
+          await Get.toNamed("/mainPage/stokRehberi");
+          viewModel.updateKalemList();
+        },
+        child: const Icon(Icons.add),
       ),
-      body: Column(
+    );
+  }
+
+  Padding body() {
+    return Padding(
+      padding: UIHelper.lowPadding,
+      child: Column(
         children: [
           Visibility(
             visible: !widget.model.isGoruntule,
@@ -82,7 +90,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                     }
                   },
                   icon: const Icon(Icons.qr_code_2_outlined)),
-            ).paddingOnly(top: UIHelper.midSize),
+            ).paddingOnly(top: UIHelper.lowSize),
           ),
           Expanded(
               child: Observer(
@@ -97,8 +105,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                         ))
                       : Observer(
                           builder: (_) => ListView.builder(
-                              primary: false,
-                              padding: UIHelper.lowPadding,
+                              primary: true,
                               itemCount: viewModel.kalemList?.length ?? 0,
                               itemBuilder: (context, index) {
                                 KalemModel? kalemModel = viewModel.kalemList?[index];

@@ -100,6 +100,61 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
   }
 
   @override
+  void changeArrKod1(List<BaseGrupKoduModel> value) {
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
+        .startAction(name: '_StokRehberiViewModelBase.changeArrKod1');
+    try {
+      return super.changeArrKod1(value);
+    } finally {
+      _$_StokRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeArrKod2(List<BaseGrupKoduModel> value) {
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
+        .startAction(name: '_StokRehberiViewModelBase.changeArrKod2');
+    try {
+      return super.changeArrKod2(value);
+    } finally {
+      _$_StokRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeArrKod3(List<BaseGrupKoduModel> value) {
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
+        .startAction(name: '_StokRehberiViewModelBase.changeArrKod3');
+    try {
+      return super.changeArrKod3(value);
+    } finally {
+      _$_StokRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeArrKod4(List<BaseGrupKoduModel> value) {
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
+        .startAction(name: '_StokRehberiViewModelBase.changeArrKod4');
+    try {
+      return super.changeArrKod4(value);
+    } finally {
+      _$_StokRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeArrKod5(List<BaseGrupKoduModel> value) {
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
+        .startAction(name: '_StokRehberiViewModelBase.changeArrKod5');
+    try {
+      return super.changeArrKod5(value);
+    } finally {
+      _$_StokRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setStokListesi(List<dynamic>? value) {
     final _$actionInfo = _$_StokRehberiViewModelBaseActionController
         .startAction(name: '_StokRehberiViewModelBase.setStokListesi');

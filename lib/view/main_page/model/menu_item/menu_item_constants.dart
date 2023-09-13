@@ -3,7 +3,6 @@ import "package:flutter/foundation.dart";
 
 import "../../../../core/constants/enum/serbest_rapor_detay_kod_enum.dart";
 import "../../../../core/constants/enum/siparis_tipi_enum.dart";
-import "../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../core/constants/grid_constants.dart";
 import "../../../../core/init/cache/cache_manager.dart";
 import "../../alt_sayfalar/siparis/siparisler/model/siparisler_widget_model.dart";
@@ -55,7 +54,9 @@ class MenuItemConstants {
     ]),
     //*Finans
     //*
-    GridItemModel.anamenu(name: "YONE", title: "Finans", icon: "wallet", color: GridThemeManager.finans, altMenuler: []),
+    GridItemModel.anamenu(name: "YONE", title: "Finans", icon: "wallet", color: GridThemeManager.finans, altMenuler: [
+      GridItemModel.item(name: "cari_Raporlar", title: "Kasa Listesi", route: "/mainPage/cariRehberi"),
+    ]),
 
     //* Genel
     //*

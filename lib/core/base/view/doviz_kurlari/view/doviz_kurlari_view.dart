@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
+import "../../../../constants/ondalik_utils.dart";
 
 import "../../../../../view/main_page/model/param_model.dart";
 import "../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart";

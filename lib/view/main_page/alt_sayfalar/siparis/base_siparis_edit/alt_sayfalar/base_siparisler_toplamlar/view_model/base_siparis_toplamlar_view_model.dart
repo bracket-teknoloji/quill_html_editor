@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/init/cache/cache_manager.dart";
+import "../../../../../../../../core/init/cache/cache_manager.dart";
 
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../../core/constants/static_variables/static_variables.dart";

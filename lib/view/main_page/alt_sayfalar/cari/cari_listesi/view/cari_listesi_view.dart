@@ -6,9 +6,7 @@ import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:intl/intl.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
@@ -30,8 +28,8 @@ import "../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
-import "../../../../../add_company/model/account_model.dart";
 import "../../cari_network_manager.dart";
+import "../model/cari_listesi_model.dart";
 import "../model/cari_secenekler_model.dart";
 import "../view_model/cari_listesi_view_model.dart";
 
@@ -47,7 +45,6 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   CariListesiViewModel viewModel = CariListesiViewModel();
   late final ScrollController _scrollController;
   BottomSheetResponseModel? bottomSheetResponseModel;
-  var formatter = NumberFormat("#,##0.00", "tr_TR");
   bool isLoading = false;
   Map? filterData;
   Map<String, dynamic> paramData = {};
@@ -375,7 +372,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                               Text(
                                   (object.bakiye == null
                                           ? "0.00 $mainCurrency"
-                                          : "${formatter.format(object.bakiye)} $mainCurrency"
+                                          : "${object.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"
                                               "\n")
                                       .toString(),
                                   style: TextStyle(color: UIHelper.getColorWithValue(object.bakiye ?? 0.0)))
@@ -536,20 +533,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
         queryParameters2["FILTER_BAKIYE"] = b;
       }
     }
-    final response = await networkManager.dioGet<CariListesiModel>(
-        path: ApiUrls.getCariler,
-        queryParameters: queryParameters2,
-        addCKey: true,
-        headers: {
-          "Host": "95.70.216.35:7575",
-          "VERITABANI": AccountModel.instance.aktifVeritabani.toString(),
-          "ISLETME_KODU": AccountModel.instance.aktifIsletmeKodu.toString(),
-          "SUBE_KODU": AccountModel.instance.aktifSubeKodu.toString(),
-          "Platform": "android",
-          "X-App-Version": "226",
-          "UserHostAddress": AccountModel.instance.localIp.toString()
-        },
-        bodyModel: CariListesiModel());
+    final response = await networkManager.dioGet<CariListesiModel>(path: ApiUrls.getCariler, queryParameters: queryParameters2, bodyModel: CariListesiModel());
 
     if (mounted) {
       if (response.data != null) {

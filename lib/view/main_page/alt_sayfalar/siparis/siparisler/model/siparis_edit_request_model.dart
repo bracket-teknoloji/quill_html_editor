@@ -1,5 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/extensions/number_extensions.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../base_siparis_edit/model/base_siparis_edit_model.dart";

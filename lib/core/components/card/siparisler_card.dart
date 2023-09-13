@@ -50,7 +50,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
         child: ListTile(
       // contentPadding: EdgeInsets.zero,
       onLongPress: widget.model.remoteTempBelgeEtiketi == null
-          ? () => dialogManager.showSiparisGridViewDialog(widget.model, siparisTipi: StaticVariables.instance.isMusteriSiparisleri ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici)
+          ? () => dialogManager.showSiparisGridViewDialog(context,model: widget.model, siparisTipi: StaticVariables.instance.isMusteriSiparisleri ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici)
           : null,
       onTap: widget.isGetData == true
           ? () => Get.back(result: widget.model)
@@ -113,7 +113,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                         iconWidget: Icons.list_alt_outlined,
                         onTap: () async {
                           Get.back();
-                          await dialogManager.showSiparisGridViewDialog(widget.model, onSelected: (value) {
+                          await dialogManager.showSiparisGridViewDialog(context,model: widget.model, onSelected: (value) {
                             widget.onUpdated?.call(value);
                           });
                         }).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),

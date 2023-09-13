@@ -1,5 +1,5 @@
 import "package:get/get.dart";
-import "package:picker/core/init/cache/cache_manager.dart";
+import "../init/cache/cache_manager.dart";
 
 import "../../view/main_page/model/param_model.dart";
 

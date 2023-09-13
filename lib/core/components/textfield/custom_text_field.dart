@@ -2,8 +2,8 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "../../constants/extensions/list_extensions.dart";
 
+import "../../constants/extensions/list_extensions.dart";
 import "../../constants/ui_helper/text_field_formatter_helper.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "custom_text_field_view_model.dart";
@@ -65,13 +65,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
   TextEditingController get controller => widget.controller ?? TextEditingController(text: widget.controllerText);
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
     controller.addListener(() => viewModel.setShowClearButton(controller.text != ""));
+    });
     super.initState();
   }
 
   @override
   void dispose() {
-    if (widget.focusNode != null) widget.focusNode!.dispose();
     super.dispose();
   }
 

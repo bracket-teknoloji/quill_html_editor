@@ -24,6 +24,24 @@ abstract class _StokRehberiViewModelBase with Store {
   @action
   void changeIsScrolledDown(bool value) => isScrolledDown = value;
 
+
+
+  @action
+  void changeArrKod1(List<BaseGrupKoduModel> value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod1: value);
+
+  @action
+  void changeArrKod2(List<BaseGrupKoduModel> value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod2: value);
+
+  @action
+  void changeArrKod3(List<BaseGrupKoduModel> value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod3: value);
+
+  @action
+  void changeArrKod4(List<BaseGrupKoduModel> value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod4: value);
+
+  @action
+  void changeArrKod5(List<BaseGrupKoduModel> value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod5: value);
+  
+
   @observable
   List<StokListesiModel>? stokListesi;
 
@@ -57,19 +75,18 @@ abstract class _StokRehberiViewModelBase with Store {
       menuKodu: "STOK_SREH");
 
   @action
-  void increaseSayfa() => stokBottomSheetModel.sayfa = stokBottomSheetModel.sayfa! + 1;
+  void increaseSayfa() => stokBottomSheetModel = stokBottomSheetModel.copyWith(sayfa: stokBottomSheetModel.sayfa! + 1);
   @action
-  void resetSayfa() => stokBottomSheetModel.sayfa = 1;
+  void resetSayfa() => stokBottomSheetModel = stokBottomSheetModel.copyWith(sayfa: 1);
   @action
-  void setSiralama(String value) => stokBottomSheetModel.siralama = value;
+  void setSiralama(String value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(siralama: value);
   @action
-  void setSearchText(String value) => stokBottomSheetModel.searchText = value;
+  void setSearchText(String value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(searchText: value);
   @action
-  void setGrupKodu(List<BaseGrupKoduModel> value) => stokBottomSheetModel = stokBottomSheetModel..arrGrupKodu = value;
+  void setGrupKodu(List<BaseGrupKoduModel> value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrGrupKodu: value);
   @action
   void setSelectedStokModel(String? value) {
-    stokBottomSheetModel.stokKodu = value;
-    stokBottomSheetModel.kisitYok = value != null;
+    stokBottomSheetModel = stokBottomSheetModel.copyWith(stokKodu: value, kisitYok: value != null);
   }
 
   @action

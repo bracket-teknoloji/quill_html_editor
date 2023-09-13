@@ -534,7 +534,7 @@ class BottomSheetDialogManager {
     var result =
         await showCheckBoxBottomSheetDialog(context, title: "Grup Kodu Seçiniz", children: viewModel.filteredGrupKoduList?.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e)).toList());
     if (result != null) {
-      return result;
+      return result.cast<BaseGrupKoduModel>();
     }
     return null;
   }

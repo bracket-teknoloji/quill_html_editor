@@ -36,41 +36,64 @@ abstract class _StokListesiViewModelBase with Store {
   @action
   void setSearchValue(String value) => searchValue = value;
   @observable
-  StokBottomSheetModel bottomSheetModel = StokBottomSheetModel.instance;
+  StokBottomSheetModel bottomSheetModel = StokBottomSheetModel();
 
-  @action
-  void resetBottomSheetModel() => bottomSheetModel.setSingleton(StokBottomSheetModel());
+  // @action
+  // void resetBottomSheetModel() => bottomSheetModel.setSingleton(StokBottomSheetModel());
 
+  // @action
+  // void setBottomSheetModel(StokBottomSheetModel value) {
+
+  //   bottomSheetModel.arrGrupKodu = [];
+  //   bottomSheetModel.arrKod1 = [];
+  //   bottomSheetModel.arrKod2 = [];
+  //   bottomSheetModel.arrKod3 = [];
+  //   bottomSheetModel.arrKod4 = [];
+  //   bottomSheetModel.arrKod5 = [];
+  // }
   @action
-  void setBottomSheetModel(StokBottomSheetModel value) {
-    bottomSheetModel.arrGrupKodu = [];
-    bottomSheetModel.arrKod1 = [];
-    bottomSheetModel.arrKod2 = [];
-    bottomSheetModel.arrKod3 = [];
-    bottomSheetModel.arrKod4 = [];
-    bottomSheetModel.arrKod5 = [];
+  void resetSelectedArr(){
+    bottomSheetModel = bottomSheetModel.copyWith(arrGrupKodu: null,arrKod1: null,arrKod2: null,arrKod3: null,arrKod4: null,arrKod5: null);
   }
+  @computed
+  List<BaseGrupKoduModel>? get grupKodu => bottomSheetModel.arrGrupKodu;
+
+  @action
+  void changeArrGrupKodu(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrGrupKodu: value);
 
   @computed
-  String get grupKodu => bottomSheetModel.arrGrupKodu?.map((e) => e.grupAdi).toList().join(", ") ?? "";
+  List<BaseGrupKoduModel>? get kod1 => bottomSheetModel.arrKod1;
+
+  @action
+  void changeArrKod1(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod1: value);
 
   @computed
-  String get kod1 => bottomSheetModel.arrKod1?.map((e) => e.grupAdi).toList().join(", ") ?? "";
+  List<BaseGrupKoduModel>? get kod2 => bottomSheetModel.arrKod2;
+
+  @action
+  void changeArrKod2(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod2: value);
 
   @computed
-  String get kod2 => bottomSheetModel.arrKod2?.map((e) => e.grupAdi).toList().join(", ") ?? "";
+  List<BaseGrupKoduModel>? get kod3 => bottomSheetModel.arrKod3;
+
+  @action
+  void changeArrKod3(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod3: value);
 
   @computed
-  String get kod3 => bottomSheetModel.arrKod3?.map((e) => e.grupAdi).toList().join(", ") ?? "";
+  List<BaseGrupKoduModel>? get kod4 => bottomSheetModel.arrKod4;
+
+  @action
+  void changeArrKod4(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod4: value);
 
   @computed
-  String get kod4 => bottomSheetModel.arrKod4?.map((e) => e.grupAdi).toList().join(", ") ?? "";
+  List<BaseGrupKoduModel>? get kod5 => bottomSheetModel.arrKod5;
 
-  @computed
-  String get kod5 => bottomSheetModel.arrKod5?.map((e) => e.grupAdi).toList().join(", ") ?? "";
+  @action
+  void changeArrKod5(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod5: value);
+
 
   @observable
-  String resimleriGoster = CacheManager.getProfilParametre.stokResimleriGoster? "E": "H";
+  String resimleriGoster = CacheManager.getProfilParametre.stokResimleriGoster ? "E" : "H";
 
   @action
   void setResimleriGoster() {
@@ -152,3 +175,5 @@ abstract class _StokListesiViewModelBase with Store {
     return null;
   }
 }
+      
+                           

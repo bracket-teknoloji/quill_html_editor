@@ -169,7 +169,7 @@ class NetworkManager {
       bool showError = true}) async {
     dynamic response;
     if (showLoading) {
-      DialogManager().showLoadingDialog("Yükleniyor...");
+      DialogManager().showLoadingDialog("Lütfen Bekleyiniz...");
     }
     try {
       Map<String, String> head = getStandardHeader(addTokenKey, addSirketBilgileri, addCKey);

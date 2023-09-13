@@ -154,7 +154,7 @@ class DialogManager {
   void showStokGridViewDialog(StokListesiModel? model, [IslemTipiEnum? tip]) =>
       _baseDialog(body: CustomAnimatedGridView<StokListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.stok), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
-  Future<dynamic> showSiparisGridViewDialog(BaseSiparisEditModel? model, {IslemTipiEnum? tip, SiparisTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
+  Future<dynamic> showSiparisGridViewDialog(BuildContext context,{BaseSiparisEditModel? model, IslemTipiEnum? tip, SiparisTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
           body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.siparis, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
           onOk: () {},
           btnOkText: "İptal",
@@ -185,7 +185,7 @@ class DialogManager {
 
   AlertDialog loadingDialog() {
     return AlertDialog(
-      title: Text("Yükleniyor...", style: context.theme.textTheme.titleMedium),
+      title: Text("Lütfen Bekleyiniz...", style: context.theme.textTheme.titleMedium),
       content: const SizedBox(
           height: 5,
           width: 50,

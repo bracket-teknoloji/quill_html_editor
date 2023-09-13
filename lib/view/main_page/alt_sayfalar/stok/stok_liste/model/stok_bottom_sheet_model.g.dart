@@ -6,33 +6,15 @@ part of 'stok_bottom_sheet_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-StokBottomSheetModel _$StokBottomSheetModelFromJson(
+_$_StokBottomSheetModel _$$_StokBottomSheetModelFromJson(
         Map<String, dynamic> json) =>
-    StokBottomSheetModel(
+    _$_StokBottomSheetModel(
       sayfa: json['Sayfa'] as int?,
       bakiyeDurumu: json['BakiyeDurumu'] as String?,
       menuKodu: json['MenuKodu'] as String?,
       resimleriGoster: json['ResimleriGoster'] as String?,
       siralama: json['Siralama'] as String?,
       searchText: json['SearchText'] as String?,
-      arrGrupKodu: (json['ArrGrupKodu'] as List<dynamic>?)
-          ?.map((e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      arrKod1: (json['ArrKod1'] as List<dynamic>?)
-          ?.map((e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      arrKod2: (json['ArrKod2'] as List<dynamic>?)
-          ?.map((e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      arrKod3: (json['ArrKod3'] as List<dynamic>?)
-          ?.map((e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      arrKod4: (json['ArrKod4'] as List<dynamic>?)
-          ?.map((e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      arrKod5: (json['ArrKod5'] as List<dynamic>?)
-          ?.map((e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
       belgeNo: json['BelgeNo'] as String?,
       belgeTarihi: json['BelgeTarihi'] as String?,
       belgeTipi: json['BelgeTipi'] as String?,
@@ -40,13 +22,43 @@ StokBottomSheetModel _$StokBottomSheetModelFromJson(
       ekranTipi: json['EkranTipi'] as String?,
       faturaTipi: json['FaturaTipi'] as int?,
       resimGoster: json['ResimGoster'] as String?,
-      stokKodu: json['StokKodu'] as String?,
       kisitYok: json['KisitYok'] as bool?,
+      stokKodu: json['StokKodu'] as String?,
       okutuldu: json['Okutuldu'] as bool?,
+      arrGrupKodu: (json['ArrGrupKodu'] as List<dynamic>?)
+              ?.map(
+                  (e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      arrKod1: (json['ArrKod1'] as List<dynamic>?)
+              ?.map(
+                  (e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      arrKod2: (json['ArrKod2'] as List<dynamic>?)
+              ?.map(
+                  (e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      arrKod3: (json['ArrKod3'] as List<dynamic>?)
+              ?.map(
+                  (e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      arrKod4: (json['ArrKod4'] as List<dynamic>?)
+              ?.map(
+                  (e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      arrKod5: (json['ArrKod5'] as List<dynamic>?)
+              ?.map(
+                  (e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
-Map<String, dynamic> _$StokBottomSheetModelToJson(
-    StokBottomSheetModel instance) {
+Map<String, dynamic> _$$_StokBottomSheetModelToJson(
+    _$_StokBottomSheetModel instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
-import "package:picker/core/components/helper_widgets/scrollable_widget.dart";
+import "../../base/state/base_state.dart";
+import "../button/elevated_buttons/footer_button.dart";
+import "../helper_widgets/scrollable_widget.dart";
 
 class BottomBarWidget extends StatefulWidget {
   final bool isScrolledDown;

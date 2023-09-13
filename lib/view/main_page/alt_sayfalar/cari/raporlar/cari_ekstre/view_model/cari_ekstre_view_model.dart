@@ -1,7 +1,7 @@
 import "package:mobx/mobx.dart";
-import "../../../../../../../core/constants/extensions/number_extensions.dart";
 
 import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
+import "../../../../../../../core/constants/extensions/number_extensions.dart";
 
 part "cari_ekstre_view_model.g.dart";
 
