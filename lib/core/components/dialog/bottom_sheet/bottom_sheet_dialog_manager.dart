@@ -25,6 +25,7 @@ import "../../../constants/ui_helper/ui_helper.dart";
 import "../../../init/cache/cache_manager.dart";
 import "../../button/toggle_buttons/toggle_button.dart";
 import "../../helper_widgets/responsive_height_box.dart";
+import "../dialog_manager.dart";
 import "model/bottom_sheet_model.dart";
 import "model/bottom_sheet_response_model.dart";
 import "view_model/bottom_sheet_state_manager.dart";
@@ -645,7 +646,7 @@ class BottomSheetDialogManager {
     return await showRadioBottomSheetDialog(context, title: "Özel Kod Seçiniz", children: list.map((e) => BottomSheetModel(title: e.aciklama ?? e.kod ?? "", value: e)).toList());
   }
 
-  Future<PrintModel?> showPrintBottomSheetDialog(BuildContext context, PrintModel printModel) async {
+  Future<bool?> showPrintBottomSheetDialog(BuildContext context, PrintModel printModel, bool? askMiktar) async {
     if (printModel.yaziciAdi == null) {
       List<YaziciList?>? yaziciListe = CacheManager.getAnaVeri()?.paramModel?.yaziciList;
       if (yaziciListe?.length == 1) {
@@ -654,30 +655,57 @@ class BottomSheetDialogManager {
         var yaziciList = await showYaziciBottomSheetDialog(context);
         if (yaziciList != null) {
           printModel = printModel.copyWith(yaziciAdi: yaziciList.yaziciAdi, yaziciTipi: yaziciList.yaziciTipi);
+        }else{
+          return null;
         }
       }
     }
     if (printModel.dizaynId == null) {
-      List<NetFectDizaynList?>? dizaynListe = CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList;
+      List<NetFectDizaynList?>? dizaynListe = CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == printModel.raporOzelKod).toList();
       if (dizaynListe?.length == 1) {
         printModel = printModel.copyWith(dizaynId: dizaynListe?.first?.id);
       } else {
         var dizaynList = await showDizaynBottomSheetDialog(context);
         if (dizaynList != null) {
           printModel = printModel.copyWith(dizaynId: dizaynList.id);
+        }else{
+          return null;
         }
       }
     }
-    await showBottomSheetDialog(context,
-        title: "",
-        body: Column(
-          children: [
-            const CustomTextField(labelText: "Dizayn", isMust: true),
-            const CustomTextField(labelText: "Yazıcı", isMust: true),
-            const CustomTextField(labelText: "Kopya Sayısı", isMust: true),
-            ElevatedButton(onPressed: () {}, child: const Text("Yazdır"))
-          ],
-        ));
+    if (askMiktar == true) {
+      TextEditingController dizaynController = TextEditingController(text: printModel.dizaynId.toStringIfNotNull);
+      TextEditingController yaziciController = TextEditingController(text: printModel.yaziciAdi);
+      TextEditingController kopyaController = TextEditingController(text: printModel.etiketSayisi.toStringIfNotNull);
+      await showBottomSheetDialog(context,
+          title: "",
+          body: Column(
+            children: [
+              CustomTextField(labelText: "Dizayn", isMust: true, controller: dizaynController, readOnly: true),
+              CustomTextField(labelText: "Yazıcı", isMust: true, controller: yaziciController, readOnly: true),
+              CustomTextField(labelText: "Kopya Sayısı", isMust: true, controller: kopyaController, readOnly: true),
+              ElevatedButton(
+                  onPressed: () async {
+                    var result = await NetworkManager().postPrint(context, model: printModel);
+                    if (result.success == true) {
+                      DialogManager().showSuccessSnackBar("Yazdırıldı.");
+                    } else {
+                      DialogManager().showErrorSnackBar(result.message ?? "Yazdırma işlemi başarısız.");
+                    }
+                    Get.back();
+                  },
+                  child: const Text("Yazdır"))
+            ],
+          ));
+    } else {
+      var result = await NetworkManager().postPrint(context, model: printModel, );
+      if (result.success == true) {
+        DialogManager().showSuccessSnackBar("Yazdırıldı.");
+        return true;
+      } else {
+        DialogManager().showErrorSnackBar(result.message ?? "Yazdırma işlemi başarısız.");
+      }
+    }
     return null;
   }
 }

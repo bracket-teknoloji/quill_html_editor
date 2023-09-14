@@ -11,7 +11,6 @@ import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/delete_fatura_model.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
-import "package:picker/core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
@@ -297,12 +296,9 @@ class NetworkManager {
   }
 
   Future<GenericResponseModel> postPrint(BuildContext context, {required PrintModel model}) async {
-    var result = await BottomSheetDialogManager().showPrintBottomSheetDialog(context, model);
-    if (result != null) {
-      return dioPost<PrintModel>(path: ApiUrls.print, bodyModel: PrintModel(), data: model.toJson());
-    } else {
-      return GenericResponseModel(success: false);
-    }
+    //SırakadiBelgeNoModel koyma sebebim boş bir modele ihtiyacımın olması.
+    //Sadece succes döndürüyor.
+    return await dioPost<SiradakiBelgeNoModel>(path: ApiUrls.print, bodyModel: SiradakiBelgeNoModel(), data: model.toJson(), showLoading: true);
   }
 
   Future<List<StokMuhasebeKoduModel>> getMuhasebeKodlari() async {

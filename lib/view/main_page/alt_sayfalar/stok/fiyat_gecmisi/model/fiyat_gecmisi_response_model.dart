@@ -19,6 +19,9 @@ class FiyatGecmisiResponseModel with NetworkManagerMixin {
   String? fiyatTipi;
   String? dovizAdi;
   String? yapkod;
+  String? yazdirankul;
+  DateTime? yazdirmatarihi;
+  String? yazdirildi;
   @override
   fromJson(Map<String, dynamic> json) => _$FiyatGecmisiResponseModelFromJson(json);
 

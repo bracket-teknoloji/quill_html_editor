@@ -152,11 +152,22 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
   }
 
   @override
-  void setYaziciAdi(String? value) {
+  void setYaziciAdi(YaziciList? value) {
     final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController
         .startAction(name: '_FiyatGecmisiViewModelBase.setYaziciAdi');
     try {
       return super.setYaziciAdi(value);
+    } finally {
+      _$_FiyatGecmisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDicParams(DicParams? value) {
+    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController
+        .startAction(name: '_FiyatGecmisiViewModelBase.setDicParams');
+    try {
+      return super.setDicParams(value);
     } finally {
       _$_FiyatGecmisiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -168,6 +179,17 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
         .startAction(name: '_FiyatGecmisiViewModelBase.filterModelList');
     try {
       return super.filterModelList(value);
+    } finally {
+      _$_FiyatGecmisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void replaceModelList(FiyatGecmisiResponseModel? value) {
+    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController
+        .startAction(name: '_FiyatGecmisiViewModelBase.replaceModelList');
+    try {
+      return super.replaceModelList(value);
     } finally {
       _$_FiyatGecmisiViewModelBaseActionController.endAction(_$actionInfo);
     }

@@ -2,7 +2,9 @@ import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
 
 import "../../../../../../core/base/model/print_model.dart";
+import "../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../model/param_model.dart";
 import "../model/fiyat_gecmisi_model.dart";
 import "../model/fiyat_gecmisi_response_model.dart";
 
@@ -21,15 +23,16 @@ abstract class _FiyatGecmisiViewModelBase with Store {
   ObservableList<FiyatGecmisiResponseModel?>? filteredModelList;
 
   @observable
-  PrintModel printModel = PrintModel(
-                                raporOzelKod: "StokEtiket",
-                                yazdir: true,);
+  PrintModel printModel = PrintModel(raporOzelKod: "StokEtiket", yazdir: true);
 
   @action
   void setDizaynId(int? value) => printModel = printModel.copyWith(dizaynId: value);
 
   @action
-  void setYaziciAdi(String? value) => printModel = printModel.copyWith(yaziciAdi: value);
+  void setYaziciAdi(YaziciList? value) => printModel = printModel.copyWith(yaziciAdi: value?.yaziciAdi, yaziciTipi: value?.yaziciTipi);
+
+  @action
+  void setDicParams(DicParams? value) => printModel = printModel.copyWith(dicParams: value);
 
   @action
   void filterModelList(String value) {
@@ -40,6 +43,16 @@ abstract class _FiyatGecmisiViewModelBase with Store {
           ?.where((element) => (element?.stokAdi?.toLowerCase().contains(value.toLowerCase()) ?? false) || (element?.stokKodu?.toLowerCase().contains(value.toLowerCase()) ?? false))
           .toList()
           .asObservable();
+    }
+  }
+  @action
+  void replaceModelList(FiyatGecmisiResponseModel? value) {
+    if (value == null) {
+      return;
+    }
+    final index = modelList?.indexWhere((element) => element?.id == value.id);
+    if (index != null && index != -1) {
+      filteredModelList = filteredModelList?..[index] = value;
     }
   }
 
@@ -79,8 +92,8 @@ abstract class _FiyatGecmisiViewModelBase with Store {
 
   final Map<String, dynamic> alisSatisDurumuMap = {
     "Tümü": "",
-    "Alış": "1",
-    "Satış": "2",
+    "Alış": "A",
+    "Satış": "S",
   };
 
   @observable
@@ -94,8 +107,8 @@ abstract class _FiyatGecmisiViewModelBase with Store {
 
   final Map<String, dynamic> yazdirmaDurumuMap = {
     "Tümü": "",
-    "Yazdırılmış": "1",
-    "Yazdırılmadı": "2",
+    "Yazdırılmış": "E",
+    "Yazdırılmadı": "H",
   };
   @observable
   String fiyatTipiGroupValue = "";

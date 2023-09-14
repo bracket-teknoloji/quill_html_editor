@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/badge/colorful_badge.dart";
+import "package:picker/core/constants/enum/badge_color_enum.dart";
 
 import "../../../view/main_page/alt_sayfalar/stok/fiyat_gecmisi/model/fiyat_gecmisi_response_model.dart";
 import "../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -25,6 +27,7 @@ class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
+        color: widget.model?.yazdirildi == "E" ? Colors.green.withOpacity(0.4) : null,
         child: ListTile(
             onTap: () {
               widget.onTap?.call();
@@ -47,7 +50,7 @@ class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(widget.model?.stokAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
-                Visibility(visible: widget.model?.dovizAdi != null, child: Badge(label: Text("Dövizli ${widget.model?.dovizAdi}"))),
+                Visibility(visible: widget.model?.dovizAdi != null, child: ColorfulBadge(label: Text("Dövizli ${widget.model?.dovizAdi}"), badgeColorEnum: BadgeColorEnum.dovizli)),
                 Wrap(
                   direction: Axis.horizontal,
                   children: [

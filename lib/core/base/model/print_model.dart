@@ -45,7 +45,7 @@ class PrintModel with _$PrintModel, NetworkManagerMixin {
   factory PrintModel({
     int? dizaynId,
     int? etiketSayisi,
-    String? raporOzelKod,
+    required String raporOzelKod,
     @Default(true) bool? yazdir,
     String? yaziciAdi,
     String? yaziciTipi,

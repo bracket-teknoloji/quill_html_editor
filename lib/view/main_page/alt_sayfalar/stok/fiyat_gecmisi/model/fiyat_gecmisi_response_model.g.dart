@@ -23,7 +23,12 @@ FiyatGecmisiResponseModel _$FiyatGecmisiResponseModelFromJson(
           json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
       ..fiyatTipi = json['FIYAT_TIPI'] as String?
       ..dovizAdi = json['DOVIZ_ADI'] as String?
-      ..yapkod = json['YAPKOD'] as String?;
+      ..yapkod = json['YAPKOD'] as String?
+      ..yazdirankul = json['YAZDIRANKUL'] as String?
+      ..yazdirmatarihi = json['YAZDIRMATARIHI'] == null
+          ? null
+          : DateTime.parse(json['YAZDIRMATARIHI'] as String)
+      ..yazdirildi = json['YAZDIRILDI'] as String?;
 
 Map<String, dynamic> _$FiyatGecmisiResponseModelToJson(
     FiyatGecmisiResponseModel instance) {
@@ -49,5 +54,8 @@ Map<String, dynamic> _$FiyatGecmisiResponseModelToJson(
   writeNotNull('FIYAT_TIPI', instance.fiyatTipi);
   writeNotNull('DOVIZ_ADI', instance.dovizAdi);
   writeNotNull('YAPKOD', instance.yapkod);
+  writeNotNull('YAZDIRANKUL', instance.yazdirankul);
+  writeNotNull('YAZDIRMATARIHI', instance.yazdirmatarihi?.toIso8601String());
+  writeNotNull('YAZDIRILDI', instance.yazdirildi);
   return val;
 }

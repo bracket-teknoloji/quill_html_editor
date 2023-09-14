@@ -109,8 +109,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                 icon: Icons.print_outlined,
                 child: const Text("Yazdır"),
                 onPressed: () async {
-                  List<YaziciList>? yaziciList = CacheManager.getAnaVeri()?.paramModel?.yaziciList;
-                  await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Yazıcı", children: yaziciList!.map((e) => BottomSheetModel(title: e.yaziciAdi ?? "", onTap: () {})).toList());
+                  // var result = await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, false);
                 }),
             AppBarButton(
                 icon: Icons.picture_as_pdf_outlined,
