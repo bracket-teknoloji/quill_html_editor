@@ -87,9 +87,6 @@
 //       data["ArrKod5"] = jsonEncode(data["ArrKod5"]);
 //     }
 //     return data;
-
-import "dart:convert";
-
 //   }
 // }
 import "package:freezed_annotation/freezed_annotation.dart";

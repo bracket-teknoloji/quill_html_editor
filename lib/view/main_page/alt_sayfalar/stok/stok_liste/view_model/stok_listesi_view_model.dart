@@ -38,19 +38,6 @@ abstract class _StokListesiViewModelBase with Store {
   @observable
   StokBottomSheetModel bottomSheetModel = StokBottomSheetModel();
 
-  // @action
-  // void resetBottomSheetModel() => bottomSheetModel.setSingleton(StokBottomSheetModel());
-
-  // @action
-  // void setBottomSheetModel(StokBottomSheetModel value) {
-
-  //   bottomSheetModel.arrGrupKodu = [];
-  //   bottomSheetModel.arrKod1 = [];
-  //   bottomSheetModel.arrKod2 = [];
-  //   bottomSheetModel.arrKod3 = [];
-  //   bottomSheetModel.arrKod4 = [];
-  //   bottomSheetModel.arrKod5 = [];
-  // }
   @action
   void resetSelectedArr(){
     bottomSheetModel = bottomSheetModel.copyWith(arrGrupKodu: null,arrKod1: null,arrKod2: null,arrKod3: null,arrKod4: null,arrKod5: null);
@@ -175,5 +162,3 @@ abstract class _StokListesiViewModelBase with Store {
     return null;
   }
 }
-      
-                           

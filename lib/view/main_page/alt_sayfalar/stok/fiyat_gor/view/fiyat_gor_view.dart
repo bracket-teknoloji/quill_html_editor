@@ -18,16 +18,21 @@ class FiyatGorView extends StatefulWidget {
 
 class _FiyatGorViewState extends BaseState<FiyatGorView> {
   FiyatGorViewModel viewModel = FiyatGorViewModel();
-  late TextEditingController controller;
+  late final TextEditingController controller;
+  late final FocusNode focusNode;
   @override
   void initState() {
+    focusNode = FocusNode();
     controller = TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      focusNode.requestFocus();
+    });
     super.initState();
   }
 
   @override
   void dispose() {
-    controller = TextEditingController();
+    focusNode.dispose();
     controller.dispose();
     super.dispose();
   }
@@ -44,6 +49,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
             CustomTextField(
               labelText: "Stok/Barkod giriniz",
               controller: controller,
+              focusNode: focusNode,
               suffix: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
