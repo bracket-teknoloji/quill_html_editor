@@ -296,7 +296,7 @@ class NetworkManager {
     return result;
   }
 
-  Future<GenericResponseModel> postPrint(BuildContext context, {required DicParams model}) async {
+  Future<GenericResponseModel> postPrint(BuildContext context, {required PrintModel model}) async {
     var result = await BottomSheetDialogManager().showPrintBottomSheetDialog(context, model);
     if (result != null) {
       return dioPost<PrintModel>(path: ApiUrls.print, bodyModel: PrintModel(), data: model.toJson());

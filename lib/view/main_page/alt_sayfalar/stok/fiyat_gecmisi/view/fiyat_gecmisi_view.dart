@@ -4,19 +4,21 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../../../../core/components/card/stok_fiyat_gecmisi_card.dart";
-import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
-import "../../../../../../core/components/wrap/appbar_title.dart";
-import "../model/fiyat_gecmisi_response_model.dart";
-import "../../../../model/param_model.dart";
 
+import "../../../../../../core/base/model/print_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
+import "../../../../../../core/components/card/stok_fiyat_gecmisi_card.dart";
 import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
+import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
 import "../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../model/param_model.dart";
 import "../model/fiyat_gecmisi_model.dart";
+import "../model/fiyat_gecmisi_response_model.dart";
 import "../view_model/fiyat_gecmisi_view_model.dart";
 
 class FiyatGecmisiView extends StatefulWidget {
@@ -175,43 +177,74 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                   : const Center(
                       child: CircularProgressIndicator.adaptive(),
                     )
-              : ListView.builder(
-                  itemCount: (viewModel.filteredModelList?.length ?? 0) + 1,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    if (index == 0) {
-                      return Row(
-                        children: [
-                          Expanded(
-                              child: CustomTextField(
-                            labelText: "Dizayn",
-                            controller: dizaynController,
-                            readOnly: true,
-                            suffixMore: true,
-                            onTap: () async {
-                              List<NetFectDizaynList>? dizaynList = parametreModel.netFectDizaynList;
-                              var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                  title: "Dizayn",
-                                  children: List.generate(
-                                      dizaynList?.length ?? 0, (index) => BottomSheetModel(title: dizaynList?[index].dizaynAdi ?? "", onTap: () => Get.back(result: dizaynList?[index]))));
-                              if (result != null) {
-                                dizaynController.text = result.dizaynAdi ?? "";
-                              }
+              : Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                            child: CustomTextField(
+                          labelText: "Dizayn",
+                          controller: dizaynController,
+                          readOnly: true,
+                          suffixMore: true,
+                          onClear: () => viewModel.setDizaynId(null),
+                          onTap: () async {
+                            List<NetFectDizaynList>? dizaynList = parametreModel.netFectDizaynList;
+                            var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                title: "Dizayn", children: List.generate(dizaynList?.length ?? 0, (index) => BottomSheetModel(title: dizaynList?[index].dizaynAdi ?? "", value: dizaynList?[index])));
+                            if (result != null) {
+                              dizaynController.text = result.dizaynAdi ?? "";
+                              viewModel.setDizaynId(result.dizaynId);
+                            }
+                          },
+                        )),
+                        Expanded(
+                            child: CustomTextField(
+                          labelText: "Yazıcı",
+                          controller: yaziciController,
+                          suffixMore: true,
+                          readOnly: true,
+                          onC
+                          onTap: () async {
+                            List<YaziciList>? yaziciList = parametreModel.yaziciList;
+                            var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                title: "Yazıcı",
+                                children: List.generate(
+                                  yaziciList?.length ?? 0,
+                                  (index) => BottomSheetModel(title: yaziciList?[index].yaziciAdi ?? "", value: yaziciList?[index]),
+                                ));
+                            if (result != null) {
+                              yaziciController.text = result.yaziciAdi ?? "";
+                            }
+                          },
+                        ))
+                      ],
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: (viewModel.filteredModelList?.length ?? 0) + 1,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          FiyatGecmisiResponseModel? model = viewModel.filteredModelList?[index];
+                          return StokFiyatGecmisiCard(
+                            model: model,
+                            onPrint: () async {
+                              PrintModel printModel = PrintModel(
+                                dizaynId: 2013,
+                                raporOzelKod: "StokEtiket",
+                                yazdir: true,
+                                yaziciAdi: viewModel.model.alisSatis,
+                                dicParams: DicParams(
+                                  stokKodu: model?.stokKodu,
+                                ),
+                              );
+                              await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel);
                             },
-                          )),
-                          Expanded(
-                              child: CustomTextField(
-                            labelText: "Yazıcı",
-                            controller: yaziciController,
-                            suffixMore: true,
-                            readOnly: true,
-                            onTap: () {},
-                          ))
-                        ],
-                      );
-                    }
-                    return StokFiyatGecmisiCard(model: viewModel.modelList?[index - 1]);
-                  },
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 );
         }));
   }

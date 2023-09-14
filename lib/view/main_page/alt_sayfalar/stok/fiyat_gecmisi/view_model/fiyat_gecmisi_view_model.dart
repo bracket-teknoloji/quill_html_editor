@@ -1,6 +1,7 @@
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
 
+import "../../../../../../core/base/model/print_model.dart";
 import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../model/fiyat_gecmisi_model.dart";
 import "../model/fiyat_gecmisi_response_model.dart";
@@ -18,6 +19,17 @@ abstract class _FiyatGecmisiViewModelBase with Store {
 
   @observable
   ObservableList<FiyatGecmisiResponseModel?>? filteredModelList;
+
+  @observable
+  PrintModel printModel = PrintModel(
+                                raporOzelKod: "StokEtiket",
+                                yazdir: true,);
+
+  @action
+  void setDizaynId(int? value) => printModel = printModel.copyWith(dizaynId: value);
+
+  @action
+  void setYaziciAdi(String? value) => printModel = printModel.copyWith(yaziciAdi: value);
 
   @action
   void filterModelList(String value) {

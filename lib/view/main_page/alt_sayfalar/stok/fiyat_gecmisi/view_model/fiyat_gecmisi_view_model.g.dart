@@ -57,6 +57,22 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
     });
   }
 
+  late final _$printModelAtom =
+      Atom(name: '_FiyatGecmisiViewModelBase.printModel', context: context);
+
+  @override
+  PrintModel get printModel {
+    _$printModelAtom.reportRead();
+    return super.printModel;
+  }
+
+  @override
+  set printModel(PrintModel value) {
+    _$printModelAtom.reportWrite(value, super.printModel, () {
+      super.printModel = value;
+    });
+  }
+
   late final _$searchBarAtom =
       Atom(name: '_FiyatGecmisiViewModelBase.searchBar', context: context);
 
@@ -123,6 +139,28 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
 
   late final _$_FiyatGecmisiViewModelBaseActionController =
       ActionController(name: '_FiyatGecmisiViewModelBase', context: context);
+
+  @override
+  void setDizaynId(int? value) {
+    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController
+        .startAction(name: '_FiyatGecmisiViewModelBase.setDizaynId');
+    try {
+      return super.setDizaynId(value);
+    } finally {
+      _$_FiyatGecmisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setYaziciAdi(String? value) {
+    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController
+        .startAction(name: '_FiyatGecmisiViewModelBase.setYaziciAdi');
+    try {
+      return super.setYaziciAdi(value);
+    } finally {
+      _$_FiyatGecmisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void filterModelList(String value) {
@@ -196,6 +234,7 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
 model: ${model},
 modelList: ${modelList},
 filteredModelList: ${filteredModelList},
+printModel: ${printModel},
 searchBar: ${searchBar},
 alisSatisGroupValue: ${alisSatisGroupValue},
 yazdirmaGroupValue: ${yazdirmaGroupValue},

@@ -19,7 +19,6 @@ import "../../../base/model/base_grup_kodu_model.dart";
 import "../../../base/model/belge_tipi_model.dart";
 import "../../../base/model/generic_response_model.dart";
 import "../../../base/model/print_model.dart";
-import "../../../base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "../../../constants/extensions/list_extensions.dart";
 import "../../../constants/ui_helper/icon_helper.dart";
 import "../../../constants/ui_helper/ui_helper.dart";
@@ -531,8 +530,8 @@ class BottomSheetDialogManager {
       viewModel.changeGrupKoduList(await NetworkManager().getGrupKod(name: modul.name, grupNo: -1, kullanimda: kullanimda));
     }
     viewModel.filteredGrupKoduListFilter(grupKodu);
-    var result =
-        await showCheckBoxBottomSheetDialog(context, title: "Grup Kodu Seçiniz", children: viewModel.filteredGrupKoduList?.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e)).toList());
+    var result = await showCheckBoxBottomSheetDialog(context,
+        title: "Grup Kodu($grupKodu) Seçiniz", children: viewModel.filteredGrupKoduList?.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e)).toList());
     if (result != null) {
       return result.cast<BaseGrupKoduModel>();
     }
@@ -646,16 +645,28 @@ class BottomSheetDialogManager {
     return await showRadioBottomSheetDialog(context, title: "Özel Kod Seçiniz", children: list.map((e) => BottomSheetModel(title: e.aciklama ?? e.kod ?? "", value: e)).toList());
   }
 
-  Future<PrintModel?> showPrintBottomSheetDialog(BuildContext context, DicParams dicParams) async {
-    PrintModel printModel = PrintModel(yazdir: true, dicParams: dicParams, etiketSayisi: 1);
-    var yaziciList = await showYaziciBottomSheetDialog(context);
-    if (yaziciList != null) {
-      printModel.yaziciAdi = yaziciList.yaziciAdi;
-      printModel.yaziciTipi = yaziciList.yaziciTipi;
+  Future<PrintModel?> showPrintBottomSheetDialog(BuildContext context, PrintModel printModel) async {
+    if (printModel.yaziciAdi == null) {
+      List<YaziciList?>? yaziciListe = CacheManager.getAnaVeri()?.paramModel?.yaziciList;
+      if (yaziciListe?.length == 1) {
+        printModel = printModel.copyWith(yaziciAdi: yaziciListe?.first?.yaziciAdi, yaziciTipi: yaziciListe?.first?.yaziciTipi);
+      } else {
+        var yaziciList = await showYaziciBottomSheetDialog(context);
+        if (yaziciList != null) {
+          printModel = printModel.copyWith(yaziciAdi: yaziciList.yaziciAdi, yaziciTipi: yaziciList.yaziciTipi);
+        }
+      }
     }
-    var dizaynList = await showDizaynBottomSheetDialog(context);
-    if (dizaynList != null) {
-      printModel.dizaynId = dizaynList.id;
+    if (printModel.dizaynId == null) {
+      List<NetFectDizaynList?>? dizaynListe = CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList;
+      if (dizaynListe?.length == 1) {
+        printModel = printModel.copyWith(dizaynId: dizaynListe?.first?.id);
+      } else {
+        var dizaynList = await showDizaynBottomSheetDialog(context);
+        if (dizaynList != null) {
+          printModel = printModel.copyWith(dizaynId: dizaynList.id);
+        }
+      }
     }
     await showBottomSheetDialog(context,
         title: "",

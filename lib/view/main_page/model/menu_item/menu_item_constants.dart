@@ -115,12 +115,9 @@ class MenuItemConstants {
       //😳GridItemModel.item(name: "stok_BarkodTanimlama", title: "Barkod Tanımla"),
       GridItemModel.item(name: "stok_FiyatGorEkrani", title: "Fiyat Gör", route: "/mainPage/stokFiyatGor"),
       GridItemModel.item(name: "stok_FiyatGecmisi", title: "Fiyat Geçmişi", route: "/mainPage/stokFiyatGecmisi"),
-
-      //😳 TODO [name] Değiştir
       //😳GridItemModel.item(name: "stok_StokListesi", title: "Yazdır"),
       //😳GridItemModel.altmenu(name: "stok_StokListesi", title: "Seri İşlemleri", icon: "inventory", altMenuler: [
       //😳  GridItemModel.item(name: "stok_SeriHar", title: "Seri Hareketleri"),
-      //😳  // TODO [name] Değiştir
       //😳  GridItemModel.item(name: "stok_StokListesi", title: "Seri Etiketi Yazdır"),
       //😳]),
       //😳GridItemModel.item(name: "stok_StokListesi", title: "Paketleme"),
@@ -135,7 +132,6 @@ class MenuItemConstants {
     //* Tahsilat & Ödeme
     //*
     GridItemModel.anamenu(name: "TAHS", title: "Tahsilat & Ödeme", icon: "atm_dollar", color: GridThemeManager.tahsilatOdeme, altMenuler: [
-      //TODO [taltek_STEK] sonradan kaldır
       //😳 GridItemModel.item(name: "TAHS_STEK", title: "Satış Teklifi", icon: "atm_dollar"),
     ]),
 
@@ -143,8 +139,7 @@ class MenuItemConstants {
     //*∑
     GridItemModel.anamenu(name: "TEKL", title: "Talep & Teklif", icon: "offer", color: GridThemeManager.talepTeklif, altMenuler: [
       //😳GridItemModel.item(name: "taltek_STEK", title: "Satış Teklifi", icon: "offer"),
-      //😳GridItemModel.item(name: "taltek_STAL", title: "Satın Alma Talebi", icon: "offer"),
-      //😳 TODO [name] Değiştir
+      //😳GridItemModel.item(name: "taltek_STAL", title: "Satın Alma Talebi", icon: "offer")
       //😳GridItemModel.item(name: "taltek_STAL", title: "Satış Talebi", icon: "offer"),
     ]),
 

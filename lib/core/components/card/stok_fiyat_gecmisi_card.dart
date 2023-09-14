@@ -1,20 +1,21 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "../../constants/extensions/date_time_extensions.dart";
-import "../../constants/extensions/number_extensions.dart";
-import "../../constants/ui_helper/text_style_helper.dart";
-import "../../constants/ui_helper/ui_helper.dart";
+
 import "../../../view/main_page/alt_sayfalar/stok/fiyat_gecmisi/model/fiyat_gecmisi_response_model.dart";
 import "../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
-
 import "../../base/state/base_state.dart";
+import "../../constants/extensions/date_time_extensions.dart";
+import "../../constants/extensions/number_extensions.dart";
 import "../../constants/ondalik_utils.dart";
+import "../../constants/ui_helper/text_style_helper.dart";
+import "../../constants/ui_helper/ui_helper.dart";
 
 class StokFiyatGecmisiCard extends StatefulWidget {
   final FiyatGecmisiResponseModel? model;
   final void Function()? onTap;
   final void Function()? onLongPress;
-  const StokFiyatGecmisiCard({super.key, this.model, this.onTap, this.onLongPress});
+  final void Function()? onPrint;
+  const StokFiyatGecmisiCard({super.key, this.model, this.onTap, this.onLongPress, this.onPrint});
 
   @override
   State<StokFiyatGecmisiCard> createState() => StokFiyatGecmisiCardState();
@@ -33,6 +34,7 @@ class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
             trailing: IconButton(
               icon: Icon(Icons.print_outlined, color: UIHelper.primaryColor),
               onPressed: () async {
+                widget.onPrint?.call();
                 // var result = await Get.toNamed("/qr");
                 // if (result != null) {
                 //   controller.text = result.toString();
