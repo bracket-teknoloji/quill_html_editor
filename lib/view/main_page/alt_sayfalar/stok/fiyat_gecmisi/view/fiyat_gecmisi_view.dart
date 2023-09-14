@@ -238,9 +238,17 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                               return StokFiyatGecmisiCard(
                                 model: model,
                                 onPrint: () async {
+                                  if (dizaynController.text.ext.isNullOrEmpty) {
+                                    dialogManager.showErrorSnackBar("Lütfen Dizayn Seçiniz");
+                                    return;
+                                  }
+                                  if (yaziciController.text.ext.isNullOrEmpty) {
+                                    dialogManager.showErrorSnackBar("Lütfen Yazıcı Seçiniz");
+                                    return;
+                                  }
                                   DicParams dicParams = DicParams(stokKodu: model?.stokKodu, fiyatTipi: model?.fiyatTipi, tblnfStokfiyatgecmisiId: model?.id.toStringIfNotNull);
                                   viewModel.setDicParams(dicParams);
-                                  var result = await bottomSheetDialogManager.showPrintBottomSheetDialog(context, viewModel.printModel,null, null);
+                                  var result = await bottomSheetDialogManager.showPrintBottomSheetDialog(context, viewModel.printModel, null, null);
                                   if (result == true) {
                                     getData();
                                   }

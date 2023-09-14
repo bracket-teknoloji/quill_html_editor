@@ -40,10 +40,12 @@ class DialogManager {
     hideSnackBar;
     ScaffoldMessenger.of(context).showSnackBar(snackBarError(message));
   }
+
   void showInfoSnackBar(String message) {
     hideSnackBar;
     ScaffoldMessenger.of(context).showSnackBar(snackBarInfo(message));
   }
+
   void showSuccessSnackBar(String message) {
     hideSnackBar;
     ScaffoldMessenger.of(context).showSnackBar(snackBarSuccess(message));
@@ -154,12 +156,13 @@ class DialogManager {
   void showStokGridViewDialog(StokListesiModel? model, [IslemTipiEnum? tip]) =>
       _baseDialog(body: CustomAnimatedGridView<StokListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.stok), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
-  Future<dynamic> showSiparisGridViewDialog(BuildContext context,{BaseSiparisEditModel? model, IslemTipiEnum? tip, SiparisTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
-          body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.siparis, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
-          onOk: () {},
-          btnOkText: "İptal",
-          dialogType: DialogType.noHeader)
-      .show();
+  Future<dynamic> showSiparisGridViewDialog(BuildContext context, {BaseSiparisEditModel? model, IslemTipiEnum? tip, SiparisTipiEnum? siparisTipi, Function(bool)? onSelected}) async =>
+      await _baseDialog(
+              body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.siparis, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
+              onOk: () {},
+              btnOkText: "İptal",
+              dialogType: DialogType.noHeader)
+          .show();
 
   void showExitDialog() => _baseDialog(
         title: "Uyarı",
@@ -271,7 +274,7 @@ class DialogManager {
     );
   }
 
-  SnackBar snackBarError(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed);
+  SnackBar snackBarError(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: Colors.red);
 
   SnackBar snackBarSuccess(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: Colors.green);
 

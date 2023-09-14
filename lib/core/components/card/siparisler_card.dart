@@ -112,7 +112,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                     BottomSheetModel(title: "Yazdır", iconWidget: Icons.print_outlined, onTap: ()async{
                       Get.back();
                       PrintModel printModel = PrintModel(raporOzelKod: widget.siparisTipiEnum.getPrintValue , etiketSayisi: 1, dicParams: DicParams(belgeNo: widget.model.belgeNo, belgeTipi: widget.model.siparisTipi?.rawValue, cariKodu: widget.model.cariKodu));
-                      await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, false);
+                      await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true);
                     }).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
                     BottomSheetModel(
                         title: "İşlemler",

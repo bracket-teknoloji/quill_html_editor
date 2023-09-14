@@ -2,6 +2,8 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/core/constants/extensions/model_extensions.dart";
 
 import "../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../core/base/state/base_state.dart";
@@ -184,7 +186,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
           IconButton(
               onPressed: () async {
                 await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Hücre İşlemleri", children: [
-                  BottomSheetModel(title: "Stok Etiketi Yazdır", iconWidget: Icons.print_outlined),
+                  BottomSheetModel(title: "Stok Etiketi Yazdır", iconWidget: Icons.print_outlined).yetkiKontrol(false),
                   BottomSheetModel(
                       title: "Stok İşlemleri",
                       iconWidget: Icons.list_alt_outlined,
@@ -192,7 +194,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                         Get.back();
                         dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = kalemList?.stokKodu ?? "");
                       }),
-                ]);
+                ].nullCheckWithGeneric);
               },
               icon: const Icon(Icons.more_vert_outlined))
         ],

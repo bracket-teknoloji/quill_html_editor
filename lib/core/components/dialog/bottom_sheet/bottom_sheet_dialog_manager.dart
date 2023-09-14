@@ -667,7 +667,7 @@ class BottomSheetDialogManager {
       List<NetFectDizaynList?> dizaynListe = CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == printModel.raporOzelKod).toList() ?? [];
       if (dizaynListe.length == 1) {
         printModel = printModel.copyWith(dizaynId: dizaynListe.first?.id);
-      }else if (dizaynListe.length > 1){
+      } else if (dizaynListe.length > 1) {
         await showBottomSheetDialog(context, title: "Dizayn Seçiniz", children: dizaynListe.map((e) => BottomSheetModel(title: e?.dizaynAdi ?? "", value: e)).toList());
         printModel = printModel.copyWith(dizaynId: dizaynListe.first?.id);
       } else {
@@ -686,19 +686,54 @@ class BottomSheetDialogManager {
       await showBottomSheetDialog(context,
           title: "",
           body: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              CustomTextField(labelText: "Dizayn", isMust: true, controller: dizaynController, readOnly: true),
-              CustomTextField(labelText: "Yazıcı", isMust: true, controller: yaziciController, readOnly: true),
-              CustomTextField(labelText: "Kopya Sayısı", isMust: true, controller: kopyaController, readOnly: true),
+              CustomTextField(labelText: "Dizayn", isMust: true, controller: dizaynController, readOnly: true, suffixMore: true, onTap: () async {}),
+              CustomTextField(labelText: "Yazıcı", isMust: true, controller: yaziciController, readOnly: true, suffixMore: true, onTap: () async {}),
+              CustomTextField(
+                labelText: "Kopya Sayısı",
+                isMust: true,
+                controller: kopyaController,
+                keyboardType: TextInputType.number,
+                onChanged: (value) {
+                  int kopya = int.tryParse(value) ?? 0;
+                  if ((int.tryParse(value) ?? 0) <= 0) {
+                    kopya = 1;
+
+                    return;
+                  }
+                  kopyaController.text = kopya.toString();
+                  printModel = printModel.copyWith(etiketSayisi: 1);
+                },
+                suffix: Wrap(
+                  children: [
+                    IconButton(
+                        onPressed: () {
+                          printModel = printModel.copyWith(etiketSayisi: (printModel.etiketSayisi ?? 0) - 1);
+                          kopyaController.text = printModel.etiketSayisi.toStringIfNotNull ?? "";
+                        },
+                        icon: const Icon(Icons.remove)),
+                    IconButton(
+                        onPressed: () {
+                          printModel = printModel.copyWith(etiketSayisi: (printModel.etiketSayisi ?? 0) + 1);
+                          kopyaController.text = printModel.etiketSayisi.toStringIfNotNull ?? "";
+                        },
+                        icon: const Icon(Icons.add)),
+                  ],
+                ),
+              ),
               ElevatedButton(
                   onPressed: () async {
                     var result = await NetworkManager().postPrint(context, model: printModel);
                     if (result.success == true) {
                       DialogManager().showSuccessSnackBar("Yazdırıldı.");
                     } else {
-                      DialogManager().showErrorSnackBar(result.message ?? "Yazdırma işlemi başarısız.");
+                      DialogManager().showAlertDialog(result.message ?? "Yazdırma işlemi başarısız.");
                     }
                     Get.back();
+                    dizaynController.dispose();
+                    yaziciController.dispose();
+                    kopyaController.dispose();
                   },
                   child: const Text("Yazdır"))
             ],

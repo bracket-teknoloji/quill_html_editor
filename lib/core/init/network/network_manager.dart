@@ -179,6 +179,9 @@ class NetworkManager {
       response = await dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
     } catch (e) {
       if (showError) {
+        if (showLoading) {
+          DialogManager().hideAlertDialog;
+        }
         await DialogManager().showAlertDialog(e.toString());
       }
       return GenericResponseModel<T>(success: false, message: e.toString());
@@ -298,7 +301,7 @@ class NetworkManager {
   Future<GenericResponseModel> postPrint(BuildContext context, {required PrintModel model}) async {
     //SırakadiBelgeNoModel koyma sebebim boş bir modele ihtiyacımın olması.
     //Sadece succes döndürüyor.
-    return await dioPost<SiradakiBelgeNoModel>(path: ApiUrls.print, bodyModel: SiradakiBelgeNoModel(), data: model.toJson(), showLoading: true, showError: false);
+    return await dioPost<SiradakiBelgeNoModel>(path: ApiUrls.print, bodyModel: SiradakiBelgeNoModel(), data: model.toJson(), showLoading: true);
   }
 
   Future<List<StokMuhasebeKoduModel>> getMuhasebeKodlari() async {
