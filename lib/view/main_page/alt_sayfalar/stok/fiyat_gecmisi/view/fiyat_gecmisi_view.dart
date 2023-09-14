@@ -240,7 +240,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                 onPrint: () async {
                                   DicParams dicParams = DicParams(stokKodu: model?.stokKodu, fiyatTipi: model?.fiyatTipi, tblnfStokfiyatgecmisiId: model?.id.toStringIfNotNull);
                                   viewModel.setDicParams(dicParams);
-                                  var result = await bottomSheetDialogManager.showPrintBottomSheetDialog(context, viewModel.printModel, null);
+                                  var result = await bottomSheetDialogManager.showPrintBottomSheetDialog(context, viewModel.printModel,null, null);
                                   if (result == true) {
                                     getData();
                                   }

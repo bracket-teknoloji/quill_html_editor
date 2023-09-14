@@ -50,6 +50,7 @@ class PrintModel with _$PrintModel, NetworkManagerMixin {
     String? yaziciAdi,
     String? yaziciTipi,
     DicParams? dicParams,
+    bool? standart,
   }) = _PrintModel;
 
   factory PrintModel.fromJson(Map<String, dynamic> json) => _$PrintModelFromJson(json);

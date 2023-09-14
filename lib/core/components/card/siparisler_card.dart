@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -8,6 +9,7 @@ import "../../../view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_ed
 import "../../../view/main_page/model/param_model.dart";
 import "../../base/model/base_edit_model.dart";
 import "../../base/model/delete_fatura_model.dart";
+import "../../base/model/print_model.dart";
 import "../../base/state/base_state.dart";
 import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/enum/base_edit_enum.dart";
@@ -107,7 +109,11 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                             }
                           });
                         }).yetkiKontrol((yetkiController.siparisSil || widget.model.isNew == true) && widget.model.tipi != 1),
-                    BottomSheetModel(title: "Yazdır", iconWidget: Icons.print_outlined).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
+                    BottomSheetModel(title: "Yazdır", iconWidget: Icons.print_outlined, onTap: ()async{
+                      Get.back();
+                      PrintModel printModel = PrintModel(raporOzelKod: widget.siparisTipiEnum.getPrintValue , etiketSayisi: 1, dicParams: DicParams(belgeNo: widget.model.belgeNo, belgeTipi: widget.model.siparisTipi?.rawValue, cariKodu: widget.model.cariKodu));
+                      await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, false);
+                    }).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
                     BottomSheetModel(
                         title: "İşlemler",
                         iconWidget: Icons.list_alt_outlined,

@@ -17,6 +17,7 @@ _$_PrintModel _$$_PrintModelFromJson(Map<String, dynamic> json) =>
       dicParams: json['DIC_PARAMS'] == null
           ? null
           : DicParams.fromJson(json['DIC_PARAMS'] as Map<String, dynamic>),
+      standart: json['STANDART'] as bool?,
     );
 
 Map<String, dynamic> _$$_PrintModelToJson(_$_PrintModel instance) {
@@ -35,5 +36,6 @@ Map<String, dynamic> _$$_PrintModelToJson(_$_PrintModel instance) {
   writeNotNull('YAZICI_ADI', instance.yaziciAdi);
   writeNotNull('YAZICI_TIPI', instance.yaziciTipi);
   writeNotNull('DIC_PARAMS', instance.dicParams?.toJson());
+  writeNotNull('STANDART', instance.standart);
   return val;
 }

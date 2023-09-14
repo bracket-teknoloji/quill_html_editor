@@ -27,4 +27,12 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
         return "Satıcı Siparişi";
     }
   }
+  String get getPrintValue {
+    switch (this) {
+      case SiparisTipiEnum.musteri:
+        return "MusteriSiparisi";
+      case SiparisTipiEnum.satici:
+        return "SaticiSiparisi";
+    }
+  }
 }

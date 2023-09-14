@@ -298,7 +298,7 @@ class NetworkManager {
   Future<GenericResponseModel> postPrint(BuildContext context, {required PrintModel model}) async {
     //SırakadiBelgeNoModel koyma sebebim boş bir modele ihtiyacımın olması.
     //Sadece succes döndürüyor.
-    return await dioPost<SiradakiBelgeNoModel>(path: ApiUrls.print, bodyModel: SiradakiBelgeNoModel(), data: model.toJson(), showLoading: true);
+    return await dioPost<SiradakiBelgeNoModel>(path: ApiUrls.print, bodyModel: SiradakiBelgeNoModel(), data: model.toJson(), showLoading: true, showError: false);
   }
 
   Future<List<StokMuhasebeKoduModel>> getMuhasebeKodlari() async {

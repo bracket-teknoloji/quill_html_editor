@@ -646,29 +646,35 @@ class BottomSheetDialogManager {
     return await showRadioBottomSheetDialog(context, title: "Özel Kod Seçiniz", children: list.map((e) => BottomSheetModel(title: e.aciklama ?? e.kod ?? "", value: e)).toList());
   }
 
-  Future<bool?> showPrintBottomSheetDialog(BuildContext context, PrintModel printModel, bool? askMiktar) async {
+  Future<bool?> showPrintBottomSheetDialog(BuildContext context, PrintModel printModel, bool? askDizayn, bool? askMiktar) async {
     if (printModel.yaziciAdi == null) {
-      List<YaziciList?>? yaziciListe = CacheManager.getAnaVeri()?.paramModel?.yaziciList;
-      if (yaziciListe?.length == 1) {
-        printModel = printModel.copyWith(yaziciAdi: yaziciListe?.first?.yaziciAdi, yaziciTipi: yaziciListe?.first?.yaziciTipi);
+      List<YaziciList?> yaziciListe = CacheManager.getAnaVeri()?.paramModel?.yaziciList ?? [];
+      if (yaziciListe.length == 1) {
+        printModel = printModel.copyWith(yaziciAdi: yaziciListe.first?.yaziciAdi, yaziciTipi: yaziciListe.first?.yaziciTipi);
+      } else if (yaziciListe.length > 1) {
+        await showBottomSheetDialog(context, title: "Yazıcı Seçiniz", children: yaziciListe.map((e) => BottomSheetModel(title: e?.yaziciAdi ?? "", value: e)).toList());
+        printModel = printModel.copyWith(yaziciAdi: yaziciListe.first?.yaziciAdi, yaziciTipi: yaziciListe.first?.yaziciTipi);
       } else {
         var yaziciList = await showYaziciBottomSheetDialog(context);
         if (yaziciList != null) {
           printModel = printModel.copyWith(yaziciAdi: yaziciList.yaziciAdi, yaziciTipi: yaziciList.yaziciTipi);
-        }else{
+        } else {
           return null;
         }
       }
     }
-    if (printModel.dizaynId == null) {
-      List<NetFectDizaynList?>? dizaynListe = CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == printModel.raporOzelKod).toList();
-      if (dizaynListe?.length == 1) {
-        printModel = printModel.copyWith(dizaynId: dizaynListe?.first?.id);
+    if (askDizayn == true) {
+      List<NetFectDizaynList?> dizaynListe = CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == printModel.raporOzelKod).toList() ?? [];
+      if (dizaynListe.length == 1) {
+        printModel = printModel.copyWith(dizaynId: dizaynListe.first?.id);
+      }else if (dizaynListe.length > 1){
+        await showBottomSheetDialog(context, title: "Dizayn Seçiniz", children: dizaynListe.map((e) => BottomSheetModel(title: e?.dizaynAdi ?? "", value: e)).toList());
+        printModel = printModel.copyWith(dizaynId: dizaynListe.first?.id);
       } else {
         var dizaynList = await showDizaynBottomSheetDialog(context);
         if (dizaynList != null) {
           printModel = printModel.copyWith(dizaynId: dizaynList.id);
-        }else{
+        } else {
           return null;
         }
       }
@@ -698,7 +704,10 @@ class BottomSheetDialogManager {
             ],
           ));
     } else {
-      var result = await NetworkManager().postPrint(context, model: printModel, );
+      var result = await NetworkManager().postPrint(
+        context,
+        model: printModel,
+      );
       if (result.success == true) {
         DialogManager().showSuccessSnackBar("Yazdırıldı.");
         return true;
