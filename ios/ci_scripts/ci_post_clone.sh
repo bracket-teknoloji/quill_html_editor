@@ -3,7 +3,7 @@
 # by default, the execution directory of this script is the ci_scripts directory
 # CI_WORKSPACE is the directory of your cloned repo
 echo "🟩 Navigate from ($PWD) to ($CI_WORKSPACE)"
-cd $CI_WORKSPACE
+cd $CI_WORKSPACE/ios
 
 echo "🟩 Install Flutter"
 time git clone -b 3.10.6 https://github.com/flutter/flutter.git ~/flutter
