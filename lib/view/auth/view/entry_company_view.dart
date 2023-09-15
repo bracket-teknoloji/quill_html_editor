@@ -3,9 +3,9 @@ import "dart:developer";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../core/base/model/generic_response_model.dart";
 
 import "../../../core/base/model/base_network_mixin.dart";
+import "../../../core/base/model/generic_response_model.dart";
 import "../../../core/base/state/base_state.dart";
 import "../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
 import "../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -29,12 +29,12 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   // Map<String, dynamic> selected = {"Şirket": "", "İşletme": null, "Şube": null};
   Map userData = {"Şirket": "", "İşletme": null, "Şube": null};
   List<CompanyModel>? sirket;
-  List? isletme;
-  List? sube;
-  FocusNode? focusNode;
-  TextEditingController? controller1;
-  TextEditingController? controller2;
-  TextEditingController? controller3;
+  List<IsletmeModel>? isletme;
+  List<IsletmeModel>? sube;
+  late final FocusNode focusNode;
+  late final TextEditingController controller1;
+  late final TextEditingController controller2;
+  late final TextEditingController controller3;
 
   @override
   void initState() {
@@ -52,40 +52,40 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
 
   @override
   dispose() {
-    focusNode!.dispose();
-    controller1!.dispose();
-    controller2!.dispose();
-    controller3!.dispose();
+    focusNode.dispose();
+    controller1.dispose();
+    controller2.dispose();
+    controller3.dispose();
     super.dispose();
   }
 
   dioGetData() async {
     sirket = await getSirket();
 
-    if (sirket!.length == 1 && mounted) {
-      controller1!.text = sirket![0].company!;
-    } else if (sirket!.length != 1 && controller1?.text == "") {
+    if (sirket?.length == 1 && mounted) {
+      controller1.text = sirket?[0].company ?? "";
+    } else if (sirket?.length != 1 && controller1.text == "") {
       await sirketDialog(context);
     }
     if (selected["Şirket"] != "" || selected["Şirket"] != null) {
       sube = await getSube(selected["Şirket"]);
       if (!mounted) return;
       isletme = await getIsletme();
-      if (isletme!.length == 1 && controller1?.text != "") {
-        controller2!.text = isletme![0].isletmeAdi!;
+      if (isletme!.length == 1 && controller1.text != "") {
+        controller2.text = isletme![0].isletmeAdi!;
         selected["İşletme"] = isletme![0].isletmeKodu;
         userData["İşletme"] = isletme![0].isletmeAdi;
-        focusNode!.requestFocus();
-      } else if (controller2?.text == "" && controller1?.text != "") {
+        focusNode.requestFocus();
+      } else if (controller2.text == "" && controller1.text != "") {
         if (!mounted) return;
         await isletmeDialog(context);
       }
-      if (sube!.length == 1 && controller2?.text != "") {
-        controller3!.text = sube![0].subeAdi!;
+      if (sube!.length == 1 && controller2.text != "") {
+        controller3.text = sube![0].subeAdi!;
         selected["Şube"] = sube![0].subeKodu;
         userData["Şube"] = sube![0].subeAdi;
-        focusNode!.requestFocus();
-      } else if (controller3?.text == "" && controller1?.text != "") {
+        focusNode.requestFocus();
+      } else if (controller3.text == "" && controller1.text != "") {
         if (!mounted) return;
         await subeDialog(context);
       }
@@ -106,12 +106,12 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
       selected["Şirket"] = list[0].company;
       userData["Şirket"] = list[0].company;
     }
-    focusNode!.requestFocus();
+    focusNode.requestFocus();
     return list;
   }
 
-  Future<List> getIsletme() async {
-    List data = [];
+  Future<List<IsletmeModel>?> getIsletme() async {
+    List<IsletmeModel> data = [];
     for (var element in sube!) {
       if (data.any((element) => element.isletmeKodu == element.isletmeKodu)) {
         continue;
@@ -122,9 +122,9 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     return data;
   }
 
-  Future<List> getSube(String? sirket) async {
+  Future<List<IsletmeModel>?> getSube(String? sirket) async {
     if (sirket == null || sirket == "") return [];
-    List list = [];
+    List<IsletmeModel> list = [];
     final response = await networkManager.dioGet<IsletmeModel>(
       path: ApiUrls.isletmelerSubeler,
       bodyModel: IsletmeModel(),
@@ -355,7 +355,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   }
 
   subeDialog(BuildContext context) {
-    controller3!.text = "";
+    controller3.text = "";
     BottomSheetDialogManager().showRadioBottomSheetDialog(context,
         title: "Şube Seçiniz",
         children: List.generate(
@@ -366,7 +366,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
               title: sube![index].subeAdi!,
               onTap: () {
                 setState(() {
-                  controller3!.text = "${sube![index].subeAdi} ${sube![index].subeKodu ?? 0}";
+                  controller3.text = "${sube![index].subeAdi} ${sube![index].subeKodu ?? 0}";
                   selected["Şube"] = sube![index].subeKodu ?? 0;
                   userData["Şube"] = sube![index].subeAdi;
                 });
@@ -378,7 +378,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   }
 
   sirketDialog(BuildContext context) {
-    controller2!.text = "";
+    controller2.text = "";
 
     BottomSheetDialogManager().showRadioBottomSheetDialog(context,
         title: "Şirket Seçiniz",
@@ -391,7 +391,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
               title: sirket![index].company!,
               onTap: () {
                 setState(() {
-                  controller1!.text = sirket![index].company!;
+                  controller1.text = sirket![index].company!;
                   selected["Şirket"] = sirket![index].company;
                   userData["Şirket"] = sirket![index].company;
                   selected["İşletme"] = null;
@@ -416,7 +416,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
               title: isletme![index].isletmeAdi!,
               onTap: () {
                 setState(() {
-                  controller2!.text = "${isletme![index].isletmeAdi} ${isletme![index].isletmeKodu ?? 0}";
+                  controller2.text = "${isletme![index].isletmeAdi} ${isletme![index].isletmeKodu ?? 0}";
                   selected["İşletme"] = isletme![index].isletmeKodu ?? 0;
                   userData["İşletme"] = isletme![index].isletmeAdi;
                   selected["Şube"] = null;
