@@ -1,8 +1,7 @@
-import 'package:mobx/mobx.dart';
-part 'entry_company_view_model.g.dart';
+import "package:mobx/mobx.dart";
+
+part "entry_company_view_model.g.dart";
 
 class EntryCompanyViewModel = _EntryCompanyViewModelBase with _$EntryCompanyViewModel;
 
-abstract class _EntryCompanyViewModelBase with Store {
-  
-}
+abstract class _EntryCompanyViewModelBase with Store {}
