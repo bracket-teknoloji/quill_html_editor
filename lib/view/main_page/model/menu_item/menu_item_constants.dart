@@ -54,9 +54,7 @@ class MenuItemConstants {
     ]),
     //*Finans
     //*
-    GridItemModel.anamenu(name: "YONE", title: "Finans", icon: "wallet", color: GridThemeManager.finans, altMenuler: [
-      GridItemModel.item(name: "cari_Raporlar", title: "Kasa Listesi", route: "/mainPage/cariRehberi"),
-    ]),
+    GridItemModel.anamenu(name: "YONE", title: "Finans", icon: "wallet", color: GridThemeManager.finans, altMenuler: []),
 
     //* Genel
     //*
@@ -95,11 +93,12 @@ class MenuItemConstants {
           name: "siparis_SaticiSiparisi", title: "Satıcı Siparişleri", route: "/mainPage/siparisMusteriSiparisi", arguments: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.satici)),
       GridItemModel.altmenu(name: "siparis_SaticiSiparisi_Raporlar", title: "Raporlar", altMenuler: [
         // GridItemModel.item(name: "siparis_MusteriSiparisi_DurumRaporu", title: "Müşteri Siparişi Durum Raporu"),
-        GridItemModel.item(name: "siparis_MusteriSiparisi_DurumRaporu", title: "Müşteri Siparişi Durum Raporu",siparisTipi: SiparisTipiEnum.musteri, route: "/mainPage/siparisMusteriSiparisiDurumRaporu"),
+        GridItemModel.item(
+            name: "siparis_MusteriSiparisi_DurumRaporu", title: "Müşteri Siparişi Durum Raporu", siparisTipi: SiparisTipiEnum.musteri, route: "/mainPage/siparisMusteriSiparisiDurumRaporu"),
         GridItemModel.item(name: "siparis_SaticiSiparisi_DurumRaporu", title: "Satıcı Sİparişi Durum Raporu", siparisTipi: SiparisTipiEnum.satici, route: "/mainPage/siparisSaticiSiparisiDurumRaporu"),
-        GridItemModel.item(name: "siparis_MusSip_KarlilikRaporu", title: "Sipariş Karlılık Raporu",siparisTipi: SiparisTipiEnum.musteri, route: "/mainPage/siparisSiparisKarlilikRaporu"),
-        GridItemModel.item(name: "siparis_MusSip_TeslimRaporu", title: "Müşteri Siparişi Teslim Raporu",siparisTipi: SiparisTipiEnum.musteri, route: "/mainPage/siparisMusteriSiparisiTeslimRaporu"),
-        GridItemModel.item(name: "siparis_SaticiSip_TeslimRaporu", title: "Satıcı Siparişi Teslim Raporu",siparisTipi: SiparisTipiEnum.satici, route: "/mainPage/siparisSaticiSiparisiTeslimRaporu"),
+        GridItemModel.item(name: "siparis_MusSip_KarlilikRaporu", title: "Sipariş Karlılık Raporu", siparisTipi: SiparisTipiEnum.musteri, route: "/mainPage/siparisSiparisKarlilikRaporu"),
+        GridItemModel.item(name: "siparis_MusSip_TeslimRaporu", title: "Müşteri Siparişi Teslim Raporu", siparisTipi: SiparisTipiEnum.musteri, route: "/mainPage/siparisMusteriSiparisiTeslimRaporu"),
+        GridItemModel.item(name: "siparis_SaticiSip_TeslimRaporu", title: "Satıcı Siparişi Teslim Raporu", siparisTipi: SiparisTipiEnum.satici, route: "/mainPage/siparisSaticiSiparisiTeslimRaporu"),
         GridItemModel.item(name: "siparis_SaticiSip_TeslimRaporu", title: "Stok İhtiyaç Raporu", route: "/mainPage/siparisStokIhtiyacRaporu"),
         // GridItemModel.item(name: "siparis_SaticiSiparisi_DurumRaporu", title: "Satıcı Sİparişi Durum Raporu", route: "/mainPage/siparisSaticiSiparisiDurumRaporu"),
         // GridItemModel.item(name: "siparis_MusSip_KarlilikRaporu", title: "Sipariş Karlılık Raporu", route: "/mainPage/siparisSiparisKarlikRaporu"),
