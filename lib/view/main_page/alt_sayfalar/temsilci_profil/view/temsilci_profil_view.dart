@@ -174,37 +174,35 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                         )
                       ],
                     ).paddingAll(UIHelper.lowSize)),
-                    Card(child: Observer(builder: (_) {
-                      return Column(
-                        children: [
-                          Text("Satışlar (Fatura)", style: TextStyleHelper.title),
-                          Observer(builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
-                          Observer(builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
-                          Observer(
-                              builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
-                          Observer(
-                              builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("Satış Performansı", style: TextStyleHelper.title),
-                              OutlinedButton.icon(
-                                  onPressed: () async {
-                                    var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                        title: "Dönem", children: viewModel.aylar.map((e) => BottomSheetModel(title: e, onTap: () => Get.back(result: e))).toList());
-                                    if (result != null) {
-                                      viewModel.setDonemKodu(viewModel.aylar.indexOf(result) + 1);
-                                    }
-                                  },
-                                  icon: const Icon(Icons.more_horiz_outlined),
-                                  label: Observer(builder: (_) => Text(viewModel.donem)))
-                            ],
-                          ),
-                          Observer(builder: (_) => CustomPieChart(pieChartTitle: viewModel.getPlasiyerTitle, pieChartValue: viewModel.getPlasiyerToplam)),
-                          Observer(builder: (_) => CustomLineChart(lineChartValue: viewModel.getAylikSatislar)),
-                        ],
-                      ).paddingAll(UIHelper.lowSize);
-                    })),
+                    Card(child: Column(
+                      children: [
+                        Text("Satışlar (Fatura)", style: TextStyleHelper.title),
+                        Observer(builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
+                        Observer(builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
+                        Observer(
+                            builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
+                        Observer(
+                            builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Satış Performansı", style: TextStyleHelper.title),
+                            OutlinedButton.icon(
+                                onPressed: () async {
+                                  var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                      title: "Dönem", children: viewModel.aylar.map((e) => BottomSheetModel(title: e, onTap: () => Get.back(result: e))).toList());
+                                  if (result != null) {
+                                    viewModel.setDonemKodu(viewModel.aylar.indexOf(result) + 1);
+                                  }
+                                },
+                                icon: const Icon(Icons.more_horiz_outlined),
+                                label: Observer(builder: (_) => Text(viewModel.donem)))
+                          ],
+                        ),
+                        Observer(builder: (_) => CustomPieChart(pieChartTitle: viewModel.getPlasiyerTitle, pieChartValue: viewModel.getPlasiyerToplam)),
+                        Observer(builder: (_) => CustomLineChart(lineChartValue: viewModel.getAylikSatislar)),
+                      ],
+                    ).paddingAll(UIHelper.lowSize)),
                     Card(
                         child: Column(
                       children: [

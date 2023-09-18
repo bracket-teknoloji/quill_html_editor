@@ -3,14 +3,13 @@ import "dart:developer";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
 
 import "../../../core/base/model/base_network_mixin.dart";
 import "../../../core/base/model/generic_response_model.dart";
 import "../../../core/base/state/base_state.dart";
+import "../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
 import "../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../core/components/helper_widgets/custom_label_widget.dart";
-import "../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../core/init/cache/cache_manager.dart";
 import "../../../core/init/network/login/api_urls.dart";
 import "../../add_company/model/account_model.dart";
@@ -27,57 +26,66 @@ class EntryCompanyView extends StatefulWidget {
 
 class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   Map selected = {"Şirket": "", "İşletme": null, "Şube": null};
+  // Map<String, dynamic> selected = {"Şirket": "", "İşletme": null, "Şube": null};
   Map userData = {"Şirket": "", "İşletme": null, "Şube": null};
   List<CompanyModel>? sirket;
   List<IsletmeModel>? isletme;
   List<IsletmeModel>? sube;
-  late final TextEditingController sirketController;
-  late final TextEditingController isletmeController;
-  late final TextEditingController subeController;
+  late final FocusNode focusNode;
+  late final TextEditingController controller1;
+  late final TextEditingController controller2;
+  late final TextEditingController controller3;
 
   @override
   void initState() {
-    sirketController = TextEditingController();
-    isletmeController = TextEditingController();
-    subeController = TextEditingController();
-    selected = CacheManager.getVeriTabani();
-    userData = CacheManager.getIsletmeSube;
     super.initState();
+    controller1 = TextEditingController();
+    controller2 = TextEditingController();
+    controller3 = TextEditingController();
+    selected = CacheManager.getVeriTabani();
+    // controller1?.text = CacheManager.getVeriTabani()?["Şirket"] ?? "";
+    // controller2?.text = CacheManager.getIsletmeSube()?["İşletme"] ?? "";
+    // controller3?.text = "${CacheManager.getIsletmeSube()?["Şube"] ?? ""} ${CacheManager.getVeriTabani()?["Şube"] ?? ""}";
+    userData = CacheManager.getIsletmeSube;
+    focusNode = FocusNode();
   }
 
   @override
   dispose() {
-    sirketController.dispose();
-    isletmeController.dispose();
-    subeController.dispose();
+    focusNode.dispose();
+    controller1.dispose();
+    controller2.dispose();
+    controller3.dispose();
     super.dispose();
   }
 
-  Future<void> dioGetData() async {
+  dioGetData() async {
     sirket = await getSirket();
 
     if (sirket?.length == 1 && mounted) {
-      sirketController.text = sirket?.first.company ?? "";
-    } else if (sirket?.length != 1 && sirketController.text == "") {
+      controller1.text = sirket?[0].company ?? "";
+    } else if (sirket?.length != 1 && controller1.text == "") {
       await sirketDialog(context);
     }
     if (selected["Şirket"] != "" || selected["Şirket"] != null) {
       sube = await getSube(selected["Şirket"]);
       if (!mounted) return;
       isletme = await getIsletme();
-      if (isletme?.length == 1 && sirketController.text != "") {
-        isletmeController.text = isletme?.first.isletmeAdi ?? "";
-        selected["İşletme"] = isletme?.first.isletmeKodu;
-        userData["İşletme"] = isletme?.first.isletmeAdi;
-      } else if (isletmeController.text == "" && sirketController.text != "") {
+      if (isletme!.length == 1 && controller1.text != "") {
+        controller2.text = isletme![0].isletmeAdi!;
+        selected["İşletme"] = isletme![0].isletmeKodu;
+        userData["İşletme"] = isletme![0].isletmeAdi;
+        focusNode.requestFocus();
+      } else if (controller2.text == "" && controller1.text != "") {
         if (!mounted) return;
         await isletmeDialog(context);
       }
-      if (sube?.length == 1 && isletmeController.text != "") {
-        subeController.text = sube?.first.subeAdi ?? "";
-        selected["Şube"] = sube?.first.subeKodu;
-        userData["Şube"] = sube?.first.subeAdi;
-      } else if (subeController.text == "" && sirketController.text != "") {
+      if (sube!.length == 1 && controller2.text != "") {
+        controller3.text = sube![0].subeAdi!;
+        selected["Şube"] = sube![0].subeKodu;
+        userData["Şube"] = sube![0].subeAdi;
+        focusNode.requestFocus();
+      } else if (controller3.text == "" && controller1.text != "") {
         if (!mounted) return;
         await subeDialog(context);
       }
@@ -95,15 +103,16 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
       list.add(element);
     }
     if (list.length == 1) {
-      selected["Şirket"] = list.first.company;
-      userData["Şirket"] = list.first.company;
+      selected["Şirket"] = list[0].company;
+      userData["Şirket"] = list[0].company;
     }
+    focusNode.requestFocus();
     return list;
   }
 
   Future<List<IsletmeModel>?> getIsletme() async {
     List<IsletmeModel> data = [];
-    for (var element in sube ?? []) {
+    for (var element in sube!) {
       if (data.any((element) => element.isletmeKodu == element.isletmeKodu)) {
         continue;
       } else {
@@ -114,78 +123,218 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   }
 
   Future<List<IsletmeModel>?> getSube(String? sirket) async {
-    List<IsletmeModel> isletmeList = [];
-    if (sirket.ext.isNullOrEmpty) {
-      return isletmeList;
-    } else {
-      final response = await networkManager.dioGet<IsletmeModel>(path: ApiUrls.isletmelerSubeler, bodyModel: IsletmeModel(), queryParameters: {"Veritabani": sirket});
-      if (response.data != null && response.data is List) {
-        final List<IsletmeModel> data = response.data.whereType<IsletmeModel>().toList();
-        for (IsletmeModel element in data) {
-          element.subeKodu == null ? isletmeList.add(element..subeKodu = 0) : isletmeList.add(element);
-        }
-        CacheManager.setSubeListesi(data);
+    if (sirket == null || sirket == "") return [];
+    List<IsletmeModel> list = [];
+    final response = await networkManager.dioGet<IsletmeModel>(
+      path: ApiUrls.isletmelerSubeler,
+      bodyModel: IsletmeModel(),
+      queryParameters: {"Veritabani": sirket},
+    );
+    final data = response.data;
+    if (data != null) {
+      for (IsletmeModel element in data) {
+        element.subeKodu == null ? list.add(element..subeKodu = 0) : list.add(element);
       }
-      return isletmeList;
+      CacheManager.setSubeListesi(data);
     }
+    return list;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Şirkete Giriş")),
+      appBar: AppBar(
+        centerTitle: false,
+        title: const Text("Şirkete Giriş"),
+      ),
       body: FutureBuilder(
         future: dioGetData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             return SingleChildScrollView(
               child: Padding(
-                  padding: UIHelper.midPadding,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      CustomWidgetWithLabel(text: "Şirket", child: CustomTextField(readOnly: true, controller: sirketController, suffixMore: true, onTap: () => sirketDialog(context))),
-                      CustomWidgetWithLabel(text: "İşletme Kodu", child: CustomTextField(readOnly: true, controller: isletmeController, suffixMore: true, onTap: () => isletmeDialog(context))),
-                      CustomWidgetWithLabel(text: "Şube Kodu", child: CustomTextField(readOnly: true, controller: subeController, suffixMore: true, onTap: () => subeDialog(context))),
-                      ElevatedButton(
-                        onPressed: () async {
-                          if (!selected.values.contains(null)) {
-                            final model = AccountModel.instance
-                              ..aktifVeritabani = selected["Şirket"]
-                              ..aktifIsletmeKodu = selected["İşletme"]
-                              ..aktifSubeKodu = selected["Şube"];
-                            dialogManager.showLoadingDialog("${selected["Şirket"]} şirketine giriş yapılıyor.");
-                            GenericResponseModel<NetworkManagerMixin> response;
-                            response = await networkManager.dioPost<MainPageModel>(path: ApiUrls.createSession, bodyModel: MainPageModel(), showError: false, data: model, headers: {
-                              "VERITABANI": selected["Şirket"].toString(),
-                              "ISLETME_KODU": selected["İşletme"].toString(),
-                              "SUBE_KODU": selected["Şube"].toString(),
-                              "content-type": "application/json"
-                            });
-                            if (response.data != null) {
-                              MainPageModel model = response.data.first;
-                              CacheManager.setAnaVeri(model);
-                              CacheManager.setVeriTabani(selected);
-                              CacheManager.setIsletmeSube(userData);
-                              CacheManager.setLogout(true);
-                              Get.offAndToNamed("/mainPage");
-                              var result = await networkManager.dioPost<AccountModel>(
-                                  path: ApiUrls.saveUyeBilgileri, bodyModel: AccountModel(), showError: false, data: CacheManager.getHesapBilgileri?.toJson());
-                              if (result.success == true) {
-                                log("Session Başarılı");
+                  padding: context.padding.normal,
+                  child: Center(
+                    child: Container(
+                      constraints: const BoxConstraints(maxWidth: 500),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                CustomWidgetWithLabel(
+                                  text: "Şirket",
+                                  child: TextFormField(
+                                    decoration: const InputDecoration(
+                                      suffixIcon: Icon(Icons.more_horiz_outlined),
+                                    ),
+                                    controller: controller1,
+                                    readOnly: true,
+                                    autofocus: true,
+                                    focusNode: focusNode,
+                                    textInputAction: TextInputAction.next,
+                                    onTap: () {
+                                      sirketDialog(context);
+                                    },
+                                  ),
+                                ),
+                                CustomWidgetWithLabel(
+                                    text: "İşletme Kodu",
+                                    child: TextFormField(
+                                      controller: controller2,
+                                      enabled: isletme?.ext.isNotNullOrEmpty,
+                                      readOnly: true,
+                                      onTap: () {
+                                        isletmeDialog(context);
+                                      },
+                                      decoration: const InputDecoration(
+                                        suffixIcon: Icon(Icons.more_horiz_outlined),
+                                      ),
+                                    )),
+                                CustomWidgetWithLabel(
+                                    text: "Şube Kodu",
+                                    child: TextFormField(
+                                      controller: controller3,
+                                      enabled: sube?.ext.isNotNullOrEmpty,
+                                      readOnly: true,
+                                      onTap: () {
+                                        subeDialog(context);
+                                      },
+                                      decoration: const InputDecoration(
+                                        suffixIcon: Icon(Icons.more_horiz_outlined),
+                                      ),
+                                    )),
+                                // CustomWidgetWithLabel(
+                                //   text: "Şirket",
+                                //   children: [
+                                //     DropdownButtonFormField(
+                                //       autofocus: true,
+                                //       decoration: const InputDecoration(
+                                //         hoverColor: Colors.transparent,
+                                //       ),
+                                //       isExpanded: true,
+                                //       validator: validator,
+                                //       focusNode: focusNode,
+                                //       items: sirket?.toSet().map((e) => DropdownMenuItem(value: e, child: Text(e.company!.toString()))).toList(),
+                                //       onChanged: (value) {
+                                //         if (value is CompanyModel) {
+                                //           setState(() {
+                                //             selected["Şirket"] = value.company;
+                                //             userData["Şirket"] = value.company;
+                                //             selected["İşletme"] = null;
+                                //             selected["Şube"] = null;
+                                //             focusNode!.requestFocus();
+                                //           });
+                                //         }
+                                //         log(selected.toString(), name: "Şirket");
+                                //       },
+                                //     )
+                                //   ],
+                                // ),
+                                // CustomWidgetWithLabel(
+                                //   text: "İşletme Kodu",
+                                //   children: [
+                                //     DropdownButtonFormField(
+                                //       isExpanded: true,
+                                //       validator: validator,
+                                //       focusNode: focusNode,
+                                //       //items: isletme değişkenindeki unique değerler
+                                //       items: isletme!.toSet().map((e) => DropdownMenuItem(value: e, child: Text("${e.isletmeAdi} ${e.isletmeKodu ?? 0}"))).toList(),
+                                //       onChanged: (value) {
+                                //         if (value is IsletmeModel) {
+                                //           selected["İşletme"] = value.isletmeKodu;
+                                //           userData["İşletme"] = value.isletmeAdi;
+                                //           log(userData.toString(), name: "İşletmeler");
+                                //           focusNode?.requestFocus();
+                                //         }
+                                //       },
+                                //     )
+                                //   ],
+                                // ),
+                                // CustomWidgetWithLabel(
+                                //   text: "Şube Kodu ",
+                                //   children: [
+                                //     DropdownButtonFormField(
+                                //       isExpanded: true,
+                                //       validator: validator,
+                                //       key: formKey,
+                                //       focusNode: focusNode,
+                                //       items: sube?.map((e) => DropdownMenuItem(value: e, child: Text("${e.subeAdi} ${e.subeKodu ?? 0}"))).toList(),
+                                //       onChanged: (value) {
+                                //         if (value is IsletmeModel) {
+                                //           selected["Şube"] = value.subeKodu ?? 0;
+                                //           userData["Şube"] = value.subeAdi;
+                                //           log(selected.toString(), name: "Şube");
+                                //           log(value.toString(), name: "Şube");
+                                //           log(sube!.length.toString(), name: "Şube");
+                                //           focusNode?.unfocus();
+                                //         }
+                                //       },
+                                //     )
+                                //   ],
+                                // ),
+                              ]
+                                  .map((widget) => Padding(
+                                        padding: context.padding.onlyBottomLow,
+                                        child: widget,
+                                      ))
+                                  .toList()),
+                          context.sized.emptySizedHeightBoxLow,
+                          ElevatedButton(
+                            onPressed: () async {
+                              if (!selected.values.contains(null)) {
+                                /// var [model] = {
+                                ///   "AKTIF_ISLETME_KODU": selected["İşletme"].toString(),
+                                ///  "AKTIF_VERITABANI": selected["Şirket"].toString(),
+                                ///   "G_CID": "/Y5TBF72qY7bnZl3+NOYvUtln/g5FJPl4jQ9i59td5M=",
+                                ///   "UYE_EMAIL": "destek@netfect.com",
+                                ///   "OZEL_CIHAZ_KIMLIGI": "4b0f40f3caabceaa7e6a60d5ba133d3323741f0644c2dbb6b74b40152f9aeaf7",
+                                /// };
+                                final model = AccountModel.instance
+                                  // ..admin = CacheManager.getAnaVeri()?.userModel?.admin
+                                  ..aktifVeritabani = selected["Şirket"]
+                                  ..aktifIsletmeKodu = selected["İşletme"]
+                                  ..aktifSubeKodu = selected["Şube"];
+
+                                ///!!!!!!!!!!!!!!!!!!!! --> TODO BUNU EKLE
+                                // ..gCid = "/Y5TBF72qY7bnZl3+NOYvUtln/g5FJPl4jQ9i59td5M=";
+                                dialogManager.showLoadingDialog("${selected["Şirket"]} şirketine giriş yapılıyor.");
+                                GenericResponseModel<NetworkManagerMixin> response;
+                                response = await networkManager.dioPost<MainPageModel>(path: ApiUrls.createSession, bodyModel: MainPageModel(), showError: false, data: model, headers: {
+                                  "VERITABANI": selected["Şirket"].toString(),
+                                  "ISLETME_KODU": selected["İşletme"].toString(),
+                                  "SUBE_KODU": selected["Şube"].toString(),
+                                  "content-type": "application/json"
+                                });
+                                if (response.data != null) {
+                                  MainPageModel model = response.data[0];
+                                  CacheManager.setAnaVeri(model);
+                                  CacheManager.setVeriTabani(selected);
+                                  CacheManager.setIsletmeSube(userData);
+                                  CacheManager.setLogout(true);
+                                  Get.offAndToNamed("/mainPage");
+                                  var result = await networkManager.dioPost<AccountModel>(
+                                      path: ApiUrls.saveUyeBilgileri, bodyModel: AccountModel(), showError: false, data: CacheManager.getHesapBilgileri?.toJson());
+                                  if (result.success == true) {
+                                    log("Session Başarılı");
+                                  }
+                                  // Get.toNamed("/mainPage");
+                                  (response.message?.ext.isNotNullOrNoEmpty ?? false) ? dialogManager.showAlertDialog(response.message.toString()) : null;
+                                } else {
+                                  dialogManager.hideAlertDialog;
+                                  dialogManager.showAlertDialog(response.message.toString());
+                                }
+                              } else {
+                                dialogManager.showErrorSnackBar("Boş bırakmayınız.");
                               }
-                              (response.message?.ext.isNotNullOrNoEmpty ?? false) ? dialogManager.showAlertDialog(response.message.toString()) : null;
-                            } else {
-                              dialogManager.hideAlertDialog;
-                              dialogManager.showAlertDialog(response.message ?? "Bir hata oluştu. Lütfen tekrar deneyiniz.");
-                            }
-                          } else {
-                            dialogManager.showErrorSnackBar("Boş bırakmayınız.");
-                          }
-                        },
-                        child: const Text("Giriş"),
-                      ).paddingOnly(top: UIHelper.midSize).paddingSymmetric(horizontal: UIHelper.lowSize),
-                    ],
+                            },
+                            child: const Text("Giriş"),
+                          ),
+                        ],
+                      ),
+                    ),
                   )),
             );
           } else {
@@ -205,43 +354,77 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     );
   }
 
-  Future<void> subeDialog(BuildContext context) async {
-    var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
-        title: "Şube Seçiniz", children: List.generate(sube?.length ?? 0, (index) => BottomSheetModel(title: sube?[index].subeAdi ?? "", value: sube?[index])));
-    if (result != null) {
-      setState(() {
-        subeController.text = "${result.subeAdi} ${result.subeKodu ?? 0}";
-        selected["Şube"] = result.subeKodu ?? 0;
-        userData["Şube"] = result.subeAdi;
-      });
-    }
+  subeDialog(BuildContext context) {
+    controller3.text = "";
+    BottomSheetDialogManager().showRadioBottomSheetDialog(context,
+        title: "Şube Seçiniz",
+        children: List.generate(
+          sube?.length ?? 0,
+          (index) {
+            return BottomSheetModel(
+              icon: "Saat",
+              title: sube![index].subeAdi!,
+              onTap: () {
+                setState(() {
+                  controller3.text = "${sube![index].subeAdi} ${sube![index].subeKodu ?? 0}";
+                  selected["Şube"] = sube![index].subeKodu ?? 0;
+                  userData["Şube"] = sube![index].subeAdi;
+                });
+                Get.back();
+              },
+            );
+          },
+        ));
   }
 
-  Future<void> sirketDialog(BuildContext context) async {
-    var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
-        title: "Şirket Seçiniz", children: List.generate(sirket?.length ?? 0, (index) => BottomSheetModel(title: sirket![index].company ?? "", value: sirket?[index])));
-    if (result != null) {
-      setState(() {
-        isletmeController.text = "";
-        sirketController.text = result.company ?? "";
-        selected["Şirket"] = result.company;
-        userData["Şirket"] = result.company;
-        selected["İşletme"] = null;
-        selected["Şube"] = null;
-      });
-    }
+  sirketDialog(BuildContext context) {
+    controller2.text = "";
+
+    BottomSheetDialogManager().showRadioBottomSheetDialog(context,
+        title: "Şirket Seçiniz",
+        children: List.generate(
+          sirket?.length ?? 0,
+          (index) {
+            return BottomSheetModel(
+              icon: "Saat",
+              iconWidget: Icons.storage_outlined,
+              title: sirket![index].company!,
+              onTap: () {
+                setState(() {
+                  controller1.text = sirket![index].company!;
+                  selected["Şirket"] = sirket![index].company;
+                  userData["Şirket"] = sirket![index].company;
+                  selected["İşletme"] = null;
+                  selected["Şube"] = null;
+                });
+                Get.back();
+              },
+            );
+          },
+        ));
   }
 
-  Future<void> isletmeDialog(BuildContext context) async {
-    var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
-        title: "İşletme Seçiniz", children: List.generate(isletme?.length ?? 0, (index) => BottomSheetModel(title: isletme![index].isletmeAdi ?? "", value: isletme?[index])));
-    if (result != null) {
-      setState(() {
-        isletmeController.text = "${result.isletmeAdi} ${result.isletmeKodu ?? 0}";
-        selected["İşletme"] = result.isletmeKodu ?? 0;
-        userData["İşletme"] = result.isletmeAdi;
-        selected["Şube"] = null;
-      });
-    }
+  isletmeDialog(BuildContext context) {
+    BottomSheetDialogManager().showRadioBottomSheetDialog(context,
+        title: "İşletme Seçiniz",
+        children: List.generate(
+          isletme?.length ?? 0,
+          (index) {
+            return BottomSheetModel(
+              icon: "Saat",
+              iconWidget: Icons.data_array_outlined,
+              title: isletme![index].isletmeAdi!,
+              onTap: () {
+                setState(() {
+                  controller2.text = "${isletme![index].isletmeAdi} ${isletme![index].isletmeKodu ?? 0}";
+                  selected["İşletme"] = isletme![index].isletmeKodu ?? 0;
+                  userData["İşletme"] = isletme![index].isletmeAdi;
+                  selected["Şube"] = null;
+                });
+                Get.back();
+              },
+            );
+          },
+        ));
   }
 }

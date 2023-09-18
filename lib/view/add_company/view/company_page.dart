@@ -59,7 +59,6 @@ class _AccountsViewState extends BaseState<AccountsView> {
                           onTap: () {
                             BottomSheetDialogManager().showBottomSheetDialog(context, title: account.firma.toString(), children: [
                               BottomSheetModel(
-                                  icon: "CopKovasi",
                                   iconWidget: Icons.delete_outline,
                                   title: "Sil",
                                   onTap: () {
@@ -70,13 +69,8 @@ class _AccountsViewState extends BaseState<AccountsView> {
                                       setState(() {});
                                     });
                                   }),
-                              BottomSheetModel(
-                                  icon: "Database",
-                                  iconWidget: Icons.storage_rounded,
-                                  title: "Sunucu Tercihi",
-                                  onTap: () {
-                                    //TODO Sunucu Tercihi Sayfasına Yönlendir
-                                  }),
+                              //TODO Sunucu Tercihi Sayfasına Yönlendir
+                              BottomSheetModel(iconWidget: Icons.storage_rounded, title: "Sunucu Tercihi", onTap: () {}),
                             ]);
                           },
                           title: Text(account.firma.toString()),

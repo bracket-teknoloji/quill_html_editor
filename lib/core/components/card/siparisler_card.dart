@@ -52,7 +52,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
         child: ListTile(
       // contentPadding: EdgeInsets.zero,
       onLongPress: widget.model.remoteTempBelgeEtiketi == null
-          ? () => dialogManager.showSiparisGridViewDialog(context,model: widget.model, siparisTipi: StaticVariables.instance.isMusteriSiparisleri ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici)
+          ? () => dialogManager.showSiparisGridViewDialog(context, model: widget.model, siparisTipi: StaticVariables.instance.isMusteriSiparisleri ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici)
           : null,
       onTap: widget.isGetData == true
           ? () => Get.back(result: widget.model)
@@ -109,17 +109,23 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                             }
                           });
                         }).yetkiKontrol((yetkiController.siparisSil || widget.model.isNew == true) && widget.model.tipi != 1),
-                    BottomSheetModel(title: "Yazdır", iconWidget: Icons.print_outlined, onTap: ()async{
-                      Get.back();
-                      PrintModel printModel = PrintModel(raporOzelKod: widget.siparisTipiEnum.getPrintValue , etiketSayisi: 1, dicParams: DicParams(belgeNo: widget.model.belgeNo, belgeTipi: widget.model.siparisTipi?.rawValue, cariKodu: widget.model.cariKodu));
-                      await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true);
-                    }).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
+                    BottomSheetModel(
+                        title: "Yazdır",
+                        iconWidget: Icons.print_outlined,
+                        onTap: () async {
+                          Get.back();
+                          PrintModel printModel = PrintModel(
+                              raporOzelKod: widget.siparisTipiEnum.getPrintValue,
+                              etiketSayisi: 1,
+                              dicParams: DicParams(belgeNo: widget.model.belgeNo, belgeTipi: widget.model.siparisTipi?.rawValue, cariKodu: widget.model.cariKodu));
+                          await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true);
+                        }).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
                     BottomSheetModel(
                         title: "İşlemler",
                         iconWidget: Icons.list_alt_outlined,
                         onTap: () async {
                           Get.back();
-                          await dialogManager.showSiparisGridViewDialog(context,model: widget.model, onSelected: (value) {
+                          await dialogManager.showSiparisGridViewDialog(context, model: widget.model, onSelected: (value) {
                             widget.onUpdated?.call(value);
                           });
                         }).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
@@ -217,14 +223,13 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Miktar: ${widget.model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
+              Text("Miktar: ${widget.model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", style: greyTextStyle),
               const Flexible(child: Text("|")),
-              Text("Teslim Miktar: ${((widget.model.miktar ?? 0) - (widget.model.kalanMiktar ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", style: greyTextStyle)
-                  .yetkiVarMi(widget.showMiktar == true),
+              Text("Teslim Miktar: ${((widget.model.miktar ?? 0) - (widget.model.kalanMiktar ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", style: greyTextStyle),
               const Flexible(child: Text("|")),
-              Text("Kalan Miktar: ${widget.model.kalanMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", style: greyTextStyle).yetkiVarMi(widget.showMiktar == true),
+              Text("Kalan Miktar: ${widget.model.kalanMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", style: greyTextStyle),
             ].map((e) => e is SizedBox ? null : e).whereType<Widget>().toList(),
-          ),
+          ).yetkiVarMi(widget.showMiktar == true),
           const Divider(
             indent: 0,
             endIndent: 0,
