@@ -13,6 +13,11 @@ class KalemEkleViewModel = _KalemEkleViewModelBase with _$KalemEkleViewModel;
 
 abstract class _KalemEkleViewModelBase with Store {
   @observable
+  bool showDovizBilgileri = true;
+
+  @action
+  void setShowDovizBilgileri(bool value) => showDovizBilgileri = value;
+  @observable
   StokListesiModel? model;
 
   @action
@@ -23,6 +28,9 @@ abstract class _KalemEkleViewModelBase with Store {
 
   @computed
   bool get dovizliMi => model?.dovizliMi ?? false;
+
+  @computed
+  String get dovizAdi => StaticVariables.instance.isMusteriSiparisleri ? kalemModel.stokSatDovizAdi ?? "" : kalemModel.stokAlisDovizAdi ?? "";
 
   @computed
   List<String> get olcuBirimiMap => [model?.olcuBirimi, model?.olcuBirimi2, model?.olcuBirimi3].nullCheck.cast<String>();
@@ -36,13 +44,13 @@ abstract class _KalemEkleViewModelBase with Store {
 
   @computed
   bool get koliMi => (model?.koliMi ?? false) || (kalemModel.koliMi ?? false);
- 
+
   @action
   void setMuhasebeKodu(String? value) => kalemModel = kalemModel.copyWith(muhasebeKodu: value);
   @action
   void setKalemModel(KalemModel? value) => kalemModel = value ?? KalemModel();
   @action
-  void setDovizAdi(String? value) => kalemModel = StaticVariables.instance.isMusteriSiparisleri? kalemModel.copyWith(stokSatDovizAdi: value) : kalemModel.copyWith(stokAlisDovizAdi: value);
+  void setDovizAdi(String? value) => kalemModel = StaticVariables.instance.isMusteriSiparisleri ? kalemModel.copyWith(stokSatDovizAdi: value) : kalemModel.copyWith(stokAlisDovizAdi: value);
   @action
   void setDovizFiyati(double? value) => kalemModel = kalemModel.copyWith(dovizFiyati: value);
   @action
@@ -64,17 +72,17 @@ abstract class _KalemEkleViewModelBase with Store {
   @action
   void setKdvOrani(double? value) => kalemModel = kalemModel.copyWith(kdvOrani: value);
   @action
-  void setIskonto1(double? value) => kalemModel = kalemModel.copyWith(iskonto1: value!= 0 ? value : null);
+  void setIskonto1(double? value) => kalemModel = kalemModel.copyWith(iskonto1: value != 0 ? value : null);
   @action
-  void setIskonto2(double? value) => kalemModel = kalemModel.copyWith(iskonto2: value!= 0 ? value : null);
+  void setIskonto2(double? value) => kalemModel = kalemModel.copyWith(iskonto2: value != 0 ? value : null);
   @action
-  void setIskonto3(double? value) => kalemModel = kalemModel.copyWith(iskonto3: value!= 0 ? value : null);
+  void setIskonto3(double? value) => kalemModel = kalemModel.copyWith(iskonto3: value != 0 ? value : null);
   @action
-  void setIskonto4(double? value) => kalemModel = kalemModel.copyWith(iskonto4: value!= 0 ? value : null);
+  void setIskonto4(double? value) => kalemModel = kalemModel.copyWith(iskonto4: value != 0 ? value : null);
   @action
-  void setIskonto5(double? value) => kalemModel = kalemModel.copyWith(iskonto5: value!= 0 ? value : null);
+  void setIskonto5(double? value) => kalemModel = kalemModel.copyWith(iskonto5: value != 0 ? value : null);
   @action
-  void setIskonto6(double? value) => kalemModel = kalemModel.copyWith(iskonto6: value!= 0 ? value : null);
+  void setIskonto6(double? value) => kalemModel = kalemModel.copyWith(iskonto6: value != 0 ? value : null);
   @action
   void setKalemList(List<KalemModel>? list) => kalemModel = kalemModel.copyWith(kalemList: list);
   @action
@@ -95,7 +103,7 @@ abstract class _KalemEkleViewModelBase with Store {
 
   @action
   void increaseMiktar2(TextEditingController controller) {
-    kalemModel = kalemModel.copyWith(miktar2: (kalemModel.miktar2 ?? 0) + 1, miktar:(kalemModel.miktar2 ?? 0) + 1);
+    kalemModel = kalemModel.copyWith(miktar2: (kalemModel.miktar2 ?? 0) + 1, miktar: (kalemModel.miktar2 ?? 0) + 1);
     controller.text = (kalemModel.miktar2 ?? 0).toIntIfDouble.toString();
   }
 

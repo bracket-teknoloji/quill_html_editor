@@ -16,6 +16,13 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
       (_$dovizliMiComputed ??= Computed<bool>(() => super.dovizliMi,
               name: '_KalemEkleViewModelBase.dovizliMi'))
           .value;
+  Computed<String>? _$dovizAdiComputed;
+
+  @override
+  String get dovizAdi =>
+      (_$dovizAdiComputed ??= Computed<String>(() => super.dovizAdi,
+              name: '_KalemEkleViewModelBase.dovizAdi'))
+          .value;
   Computed<List<String>>? _$olcuBirimiMapComputed;
 
   @override
@@ -29,6 +36,22 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   bool get koliMi => (_$koliMiComputed ??= Computed<bool>(() => super.koliMi,
           name: '_KalemEkleViewModelBase.koliMi'))
       .value;
+
+  late final _$showDovizBilgileriAtom = Atom(
+      name: '_KalemEkleViewModelBase.showDovizBilgileri', context: context);
+
+  @override
+  bool get showDovizBilgileri {
+    _$showDovizBilgileriAtom.reportRead();
+    return super.showDovizBilgileri;
+  }
+
+  @override
+  set showDovizBilgileri(bool value) {
+    _$showDovizBilgileriAtom.reportWrite(value, super.showDovizBilgileri, () {
+      super.showDovizBilgileri = value;
+    });
+  }
 
   late final _$modelAtom =
       Atom(name: '_KalemEkleViewModelBase.model', context: context);
@@ -64,6 +87,17 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
 
   late final _$_KalemEkleViewModelBaseActionController =
       ActionController(name: '_KalemEkleViewModelBase', context: context);
+
+  @override
+  void setShowDovizBilgileri(bool value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setShowDovizBilgileri');
+    try {
+      return super.setShowDovizBilgileri(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setModel(StokListesiModel? value) {
@@ -409,9 +443,11 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   @override
   String toString() {
     return '''
+showDovizBilgileri: ${showDovizBilgileri},
 model: ${model},
 kalemModel: ${kalemModel},
 dovizliMi: ${dovizliMi},
+dovizAdi: ${dovizAdi},
 olcuBirimiMap: ${olcuBirimiMap},
 koliMi: ${koliMi}
     ''';

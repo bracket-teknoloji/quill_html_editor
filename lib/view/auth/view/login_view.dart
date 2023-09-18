@@ -240,7 +240,7 @@ class _LoginViewState extends BaseState<LoginView> {
     }
     var result = await networkManager.getUyeBilgileri(textFieldData.account?.email ?? "", password: textFieldData.account?.parola);
     if (result.success != true) {
-      print(result.ex);
+      log(result.ex.toString());
       if (CacheManager.getIsLicenseVerified(textFieldData.account?.email ?? "") == false) {
         dialogManager.hideAlertDialog;
         dialogManager.showAlertDialog(("${result.message ?? ""}\n${result.ex?["Message"] ?? result.errorDetails ?? "Lisansınız bulunamadı. Lütfen lisansınızı kontrol ediniz."}"));
