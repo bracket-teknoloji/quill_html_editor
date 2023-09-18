@@ -1,0 +1,110 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'ambar_maliyet_raporu_view_model.dart';
+
+// **************************************************************************
+// StoreGenerator
+// **************************************************************************
+
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
+
+mixin _$AmbarMaliyetRaporuViewModel on _AmbarMaliyetRaporuViewModelBase, Store {
+  late final _$pdfModelAtom =
+      Atom(name: '_AmbarMaliyetRaporuViewModelBase.pdfModel', context: context);
+
+  @override
+  PdfModel get pdfModel {
+    _$pdfModelAtom.reportRead();
+    return super.pdfModel;
+  }
+
+  @override
+  set pdfModel(PdfModel value) {
+    _$pdfModelAtom.reportWrite(value, super.pdfModel, () {
+      super.pdfModel = value;
+    });
+  }
+
+  late final _$sifirHaricValueAtom = Atom(
+      name: '_AmbarMaliyetRaporuViewModelBase.sifirHaricValue',
+      context: context);
+
+  @override
+  bool get sifirHaricValue {
+    _$sifirHaricValueAtom.reportRead();
+    return super.sifirHaricValue;
+  }
+
+  @override
+  set sifirHaricValue(bool value) {
+    _$sifirHaricValueAtom.reportWrite(value, super.sifirHaricValue, () {
+      super.sifirHaricValue = value;
+    });
+  }
+
+  late final _$futureControllerAtom = Atom(
+      name: '_AmbarMaliyetRaporuViewModelBase.futureController',
+      context: context);
+
+  @override
+  ObservableFuture<bool?> get futureController {
+    _$futureControllerAtom.reportRead();
+    return super.futureController;
+  }
+
+  @override
+  set futureController(ObservableFuture<bool?> value) {
+    _$futureControllerAtom.reportWrite(value, super.futureController, () {
+      super.futureController = value;
+    });
+  }
+
+  late final _$_AmbarMaliyetRaporuViewModelBaseActionController =
+      ActionController(
+          name: '_AmbarMaliyetRaporuViewModelBase', context: context);
+
+  @override
+  void setSifirHaric(bool value) {
+    final _$actionInfo = _$_AmbarMaliyetRaporuViewModelBaseActionController
+        .startAction(name: '_AmbarMaliyetRaporuViewModelBase.setSifirHaric');
+    try {
+      return super.setSifirHaric(value);
+    } finally {
+      _$_AmbarMaliyetRaporuViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setFuture() {
+    final _$actionInfo = _$_AmbarMaliyetRaporuViewModelBaseActionController
+        .startAction(name: '_AmbarMaliyetRaporuViewModelBase.setFuture');
+    try {
+      return super.setFuture();
+    } finally {
+      _$_AmbarMaliyetRaporuViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void resetFuture() {
+    final _$actionInfo = _$_AmbarMaliyetRaporuViewModelBaseActionController
+        .startAction(name: '_AmbarMaliyetRaporuViewModelBase.resetFuture');
+    try {
+      return super.resetFuture();
+    } finally {
+      _$_AmbarMaliyetRaporuViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String toString() {
+    return '''
+pdfModel: ${pdfModel},
+sifirHaricValue: ${sifirHaricValue},
+futureController: ${futureController}
+    ''';
+  }
+}

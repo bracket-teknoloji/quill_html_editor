@@ -1,0 +1,21 @@
+import "package:json_annotation/json_annotation.dart";
+
+import "base_network_mixin.dart";
+
+part "base_edit_siradaki_kod_model.g.dart";
+
+@JsonSerializable()
+class BaseEditSiradakiKodModel with NetworkManagerMixin {
+  BaseEditSiradakiKodModel();
+  String? siradakiKod;
+
+  @override
+  fromJson(Map<String, dynamic> json) {
+    return _$BaseEditSiradakiKodModelFromJson(json);
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$BaseEditSiradakiKodModelToJson(this);
+  }
+}
