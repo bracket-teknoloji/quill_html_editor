@@ -27,25 +27,35 @@ import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 class SiparislerCard extends StatefulWidget {
-  final bool? isGetData;
-  final bool? showEkAciklama;
-  final bool? showMiktar;
-  final bool? showVade;
-  final BaseSiparisEditModel model;
-  final Function? onDeleted;
-  final ValueChanged<bool>? onUpdated;
+  const SiparislerCard(
+      {super.key, required this.model, this.onDeleted, required this.siparisTipiEnum, this.index, this.isGetData, this.showEkAciklama, this.showMiktar, this.showVade, this.onUpdated});
 
   ///Eğer Bu widget Cache'den çağırılıyorsa index verilmelidir.
   final int? index;
+
+  final bool? isGetData;
+  final BaseSiparisEditModel model;
+  final Function? onDeleted;
+  final ValueChanged<bool>? onUpdated;
+  final bool? showEkAciklama;
+  final bool? showMiktar;
+  final bool? showVade;
   final SiparisTipiEnum siparisTipiEnum;
-  const SiparislerCard(
-      {super.key, required this.model, this.onDeleted, required this.siparisTipiEnum, this.index, this.isGetData, this.showEkAciklama, this.showMiktar, this.showVade, this.onUpdated});
 
   @override
   State<SiparislerCard> createState() => _SiparislerCardState();
 }
 
 class _SiparislerCardState extends BaseState<SiparislerCard> {
+  TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6));
+
+  List<Widget> aciklamaList() => List.generate(16, (index) => aciklamaText(index + 1)).whereType<Text>().toList();
+
+  Widget aciklamaText(int? index) => Text("${paramModel?.toJson()["SatisEkAciklamaTanimi$index"] ?? "Açıklama $index"}: ${widget.model.toJson()["ACIK$index"]}", style: greyTextStyle)
+      .yetkiVarMi(widget.model.toJson()["ACIK$index"] != null && widget.showEkAciklama == true);
+
+  ParamModel? get paramModel => CacheManager.getAnaVeri()?.paramModel;
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -239,13 +249,4 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
       ),
     ));
   }
-
-  TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6));
-
-  List<Widget> aciklamaList() => List.generate(16, (index) => aciklamaText(index + 1)).whereType<Text>().toList();
-
-  Widget aciklamaText(int? index) => Text("${paramModel?.toJson()["SatisEkAciklamaTanimi$index"] ?? "Açıklama $index"}: ${widget.model.toJson()["ACIK$index"]}", style: greyTextStyle)
-      .yetkiVarMi(widget.model.toJson()["ACIK$index"] != null && widget.showEkAciklama == true);
-
-  ParamModel? get paramModel => CacheManager.getAnaVeri()?.paramModel;
 }

@@ -1,0 +1,208 @@
+import "package:collection/collection.dart";
+import "package:flutter/foundation.dart";
+
+import "../../../../core/constants/enum/serbest_rapor_detay_kod_enum.dart";
+import "../../../../core/constants/enum/siparis_tipi_enum.dart";
+import "../../../../core/constants/grid_constants.dart";
+import "../../../../core/init/cache/cache_manager.dart";
+import "../../alt_sayfalar/siparis/siparisler/model/siparisler_widget_model.dart";
+import "../grid_item_model.dart";
+import "../main_page_model.dart";
+import "../param_model.dart";
+
+class MenuItemConstants {
+  static final MainPageModel? _anaVeri = CacheManager.getAnaVeri();
+  static final List<NetFectDizaynList>? _serbestRapor = _anaVeri?.paramModel?.netFectDizaynList!.where((element) => element.ozelKod == "Serbest").toList();
+
+  static List<GridItemModel> get getGridItemModel =>
+      _serbestRapor!.map((e) => GridItemModel.serbestRaporlar(name: e.detayKod, title: e.dizaynAdi ?? "", color: GridThemeManager.serbestRaporlar, arguments: e)).toList();
+
+  static List<GridItemModel> _getSerbestRapor(SerbestRaporDetayKodEnum detayKod) {
+    List<NetFectDizaynList>? serbestRaporList = _serbestRapor?.where((element) => element.detayKod == detayKod.value).toList();
+    return List.generate(
+      _serbestRapor?.where((element) => element.detayKod == detayKod.value).length ?? 0,
+      (index) => GridItemModel.serbestRaporlar(title: serbestRaporList![index].dizaynAdi ?? "", arguments: serbestRaporList[index], color: GridThemeManager.serbestRaporlar),
+    );
+  }
+
+  final List<GridItemModel> _gridItemModel = [
+    //*Cari
+    //*
+    GridItemModel.anamenu(name: "CARI", title: "Cari", icon: "supervisor", color: GridThemeManager.cari, altMenuler: [
+      GridItemModel.item(name: "cari_CariListesi", title: "Cari Listesi", route: "/mainPage/cariListesi", arguments: false),
+      //😳 GridItemModel.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları"),
+      GridItemModel.altmenu(name: "cari_Raporlar", title: "Raporlar", icon: "monitoring", altMenuler: [
+        GridItemModel.item(name: "cari_Rap_Ekstre", title: "Cari Ekstre", route: "/mainPage/cariEkstre"),
+        GridItemModel.item(name: "cari_Rap_DovizliEkstre", title: "Cari Dövizli Ekstre", route: "/mainPage/cariDovizliEkstre"),
+        GridItemModel.item(name: "cari_Rap_StokEkstre", title: "Stok Ekstresi", route: "/mainPage/cariStokEkstre"),
+        GridItemModel.item(name: "cari_Rap_Yaslandirma", title: "Yaşlandırma Raporu", route: "/mainPage/cariYaslandirmaRaporu"),
+        GridItemModel.item(name: "cari_Rap_DovizBakiye", title: "Döviz Bakiye Raporu", route: "/mainPage/cariDovizBakiyeRaporu"),
+        GridItemModel.item(name: "cari_Rap_Hareket", title: "Cari Hareket Raporu", route: "/mainPage/cariHareketRaporu"),
+        GridItemModel.item(name: "cari_Rap_HarDetayliYaslandir", title: "Hareket Detaylı Yaşlandırma Rap.", route: "/mainPage/cariHareketDetayliYaslandirmaRaporu"),
+        GridItemModel.item(name: "cari_Rap_StokSatisOzeti", title: "Cari Stok Satış Özeti", route: "/mainPage/cariStokSatisOzeti"),
+        GridItemModel.item(name: "cari_Raporlar", title: "Ürün Grubuna Göre Satış Grafiği", route: "/mainPage/urunGrubunaGoreSatisGrafigi"),
+        ..._getSerbestRapor(SerbestRaporDetayKodEnum.cari),
+      ])
+    ]),
+    //*E-Belge
+    //*
+    GridItemModel.anamenu(name: "EBEL", title: "E-Belge", icon: "e_belge", color: GridThemeManager.eBelge, altMenuler: [
+      //! UNUTMA BUNU AÇMAYI
+      //😳GridItemModel.item(name: "ebelge_EIrsaliyeGelenKutusu", title: "Gelen Kutusu"), // onTap: () => Get.to(PDFViewerView())),
+      //😳GridItemModel.item(name: "ebelge_EIrsaliyeGidenKutusu", title: "Giden Kutusu"),
+      //😳GridItemModel.item(name: "ebelge_EFatCariGuncelle", title: "E-Fatura Carilerini Güncelle ")
+    ]),
+    //*Finans
+    //*
+    GridItemModel.anamenu(name: "YONE", title: "Finans", icon: "wallet", color: GridThemeManager.finans, altMenuler: []),
+
+    //* Genel
+    //*
+    GridItemModel.anamenu(name: "GNEL", title: "Genel", icon: "settings", color: GridThemeManager.genel, altMenuler: []),
+
+    //* Hücre Takibi
+    //*
+    GridItemModel.anamenu(name: "HTAK", title: "Hücre Takibi", icon: "shelves", color: GridThemeManager.hucreTakibi, altMenuler: []),
+
+    //* Mal Kabul
+    //*
+    GridItemModel.anamenu(name: "MKBL", title: "Mal Kabul", icon: "pallet", color: GridThemeManager.malKabul, altMenuler: [
+      //😳GridItemModel.item(name: "malKabul_AlisFaturasi", title: "Alış Faturası"),
+      //😳GridItemModel.item(name: "mkbl_MalKabul", title: "Alış İrsaliyesi"),
+      //😳GridItemModel.item(name: "malKabul_Mustahsil", title: "Müstahsil Makbuzu"),
+      //😳GridItemModel.altmenu(name: "malKabul_AlisIrs_Raporlar", title: "Raporlar", icon: "monitoring", altMenuler: [
+      //😳  GridItemModel.item(name: "malKabul_AlisIrs_KalemRaporu", title: "Alış İrs. Kalem Raporu"),
+      //😳  GridItemModel.item(name: "malKabul_AlisFat_KalemRaporu", title: "Alış Fat. Kalem Raporu"),
+      //😳]),
+    ]),
+
+    //* Sayım
+    //*
+    GridItemModel.anamenu(name: "SYIM", title: "Sayım", icon: "counter", color: GridThemeManager.sayim, altMenuler: []),
+
+    //* Sevkiyat
+    //*
+    GridItemModel.anamenu(name: "SEVK", title: "Sevkiyat", icon: "forklift", color: GridThemeManager.sevkiyat, altMenuler: []),
+
+    //* Sipariş
+    //*
+    GridItemModel.anamenu(name: "SIPA", title: "Sipariş", icon: "order", color: GridThemeManager.siparis, altMenuler: [
+      GridItemModel.item(
+          name: "siparis_MusteriSiparisi", title: "Müşteri Siparişleri", route: "/mainPage/siparisMusteriSiparisi", arguments: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.musteri)),
+      GridItemModel.item(
+          name: "siparis_SaticiSiparisi", title: "Satıcı Siparişleri", route: "/mainPage/siparisMusteriSiparisi", arguments: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.satici)),
+      GridItemModel.altmenu(name: "siparis_SaticiSiparisi_Raporlar", title: "Raporlar", altMenuler: [
+        // GridItemModel.item(name: "siparis_MusteriSiparisi_DurumRaporu", title: "Müşteri Siparişi Durum Raporu"),
+        GridItemModel.item(
+            name: "siparis_MusteriSiparisi_DurumRaporu", title: "Müşteri Siparişi Durum Raporu", siparisTipi: SiparisTipiEnum.musteri, route: "/mainPage/siparisMusteriSiparisiDurumRaporu"),
+        GridItemModel.item(name: "siparis_SaticiSiparisi_DurumRaporu", title: "Satıcı Sİparişi Durum Raporu", siparisTipi: SiparisTipiEnum.satici, route: "/mainPage/siparisSaticiSiparisiDurumRaporu"),
+        GridItemModel.item(name: "siparis_MusSip_KarlilikRaporu", title: "Sipariş Karlılık Raporu", siparisTipi: SiparisTipiEnum.musteri, route: "/mainPage/siparisSiparisKarlilikRaporu"),
+        GridItemModel.item(name: "siparis_MusSip_TeslimRaporu", title: "Müşteri Siparişi Teslim Raporu", siparisTipi: SiparisTipiEnum.musteri, route: "/mainPage/siparisMusteriSiparisiTeslimRaporu"),
+        GridItemModel.item(name: "siparis_SaticiSip_TeslimRaporu", title: "Satıcı Siparişi Teslim Raporu", siparisTipi: SiparisTipiEnum.satici, route: "/mainPage/siparisSaticiSiparisiTeslimRaporu"),
+        GridItemModel.item(name: "siparis_SaticiSip_TeslimRaporu", title: "Stok İhtiyaç Raporu", route: "/mainPage/siparisStokIhtiyacRaporu"),
+        // GridItemModel.item(name: "siparis_SaticiSiparisi_DurumRaporu", title: "Satıcı Sİparişi Durum Raporu", route: "/mainPage/siparisSaticiSiparisiDurumRaporu"),
+        // GridItemModel.item(name: "siparis_MusSip_KarlilikRaporu", title: "Sipariş Karlılık Raporu", route: "/mainPage/siparisSiparisKarlikRaporu"),
+        // GridItemModel.item(name: "siparis_MusSip_TeslimRaporu", title: "Müşteri Siparişi Teslim Raporu", route: "/mainPage/siparisMusteriSiparisiTeslimRaporu"),
+        // GridItemModel.item(name: "siparis_SaticiSip_TeslimRaporu", title: "Satıcı Siparişi Teslim Raporu", route: "/mainPage/siparisSaticiSiparisiTeslimRaporu"),
+      ]),
+    ]),
+
+    //* Stok
+    //*
+    GridItemModel.anamenu(name: "STOK", title: "Stok", icon: "inventory", color: GridThemeManager.stok, altMenuler: [
+      GridItemModel.item(name: "stok_StokListesi", title: "Stok Listesi", route: "/mainPage/stokListesi"),
+      //😳GridItemModel.item(name: "stok_BarkodTanimlama", title: "Barkod Tanımla"),
+      GridItemModel.item(name: "stok_FiyatGorEkrani", title: "Fiyat Gör", route: "/mainPage/stokFiyatGor"),
+      GridItemModel.item(name: "stok_FiyatGecmisi", title: "Fiyat Geçmişi", route: "/mainPage/stokFiyatGecmisi"),
+      //😳GridItemModel.item(name: "stok_StokListesi", title: "Yazdır"),
+      //😳GridItemModel.altmenu(name: "stok_StokListesi", title: "Seri İşlemleri", icon: "inventory", altMenuler: [
+      //😳  GridItemModel.item(name: "stok_SeriHar", title: "Seri Hareketleri"),
+      //😳  GridItemModel.item(name: "stok_StokListesi", title: "Seri Etiketi Yazdır"),
+      //😳]),
+      //😳GridItemModel.item(name: "stok_StokListesi", title: "Paketleme"),
+      GridItemModel.altmenu(name: "stok_Raporlar", title: "Raporlar", icon: "monitoring", altMenuler: [
+        GridItemModel.item(name: "stok_Rap_AmbarMaliyet", title: "Ambar Maliyet Raporu", route: "/mainPage/stokAmbarMaliyetRaporu"),
+        GridItemModel.item(name: "stok_Rap_LokalDepoBakiye", title: "Lokal Depo Bakiye Raporu", route: "/mainPage/stokLokalDepoBakiyeRaporu"),
+        GridItemModel.item(name: "stok_Rap_UrunGrubunaGoreSatis", title: "Ürün Grubuna Göre Satış Grafiği", route: "/mainPage/urunGrubunaGoreSatisGrafigi"),
+        ..._getSerbestRapor(SerbestRaporDetayKodEnum.stok)
+      ])
+    ]),
+
+    //* Tahsilat & Ödeme
+    //*
+    GridItemModel.anamenu(name: "TAHS", title: "Tahsilat & Ödeme", icon: "atm_dollar", color: GridThemeManager.tahsilatOdeme, altMenuler: [
+      //😳 GridItemModel.item(name: "TAHS_STEK", title: "Satış Teklifi", icon: "atm_dollar"),
+    ]),
+
+    //* Talep & Teklif
+    //*∑
+    GridItemModel.anamenu(name: "TEKL", title: "Talep & Teklif", icon: "offer", color: GridThemeManager.talepTeklif, altMenuler: [
+      //😳GridItemModel.item(name: "taltek_STEK", title: "Satış Teklifi", icon: "offer"),
+      //😳GridItemModel.item(name: "taltek_STAL", title: "Satın Alma Talebi", icon: "offer")
+      //😳GridItemModel.item(name: "taltek_STAL", title: "Satış Talebi", icon: "offer"),
+    ]),
+
+    //* Temsilci
+    //*
+    GridItemModel.anamenu(name: "TEMS", title: "Profilim", icon: "profile", color: GridThemeManager.temsilci, altMenuler: [
+      //? anamenünün onTap'i olmadığı için tek item verdim. Tek item verince direkt onu açıyor. O yüzden parametrelerin bir anlamı yok.
+      GridItemModel.item(name: "temsilci_Profil", title: "Profilim", icon: "profile", route: "/mainPage/temsilciProfil"),
+    ]),
+
+    //* Transfer
+    //*
+    GridItemModel.anamenu(name: "TRNS", title: "Transfer", icon: "trolley", color: GridThemeManager.transfer, altMenuler: [
+      // GridItemModel.item(name: "", title: "Depo Transferi", icon: ""),
+      // GridItemModel.item(name: "", title: "Stok Transfer Raporu", icon: ""),
+    ]),
+
+    //* Üretim
+    //*
+    GridItemModel.anamenu(name: "URET", title: "Üretim", icon: "factory", color: GridThemeManager.uretim, altMenuler: []),
+    GridItemModel.anamenu(name: "GNEL_SRAP", title: "Serbest Raporlar", icon: "monitoring", color: GridThemeManager.serbestRaporlar, altMenuler: [
+      ...groupBySerbestRaporList(),
+      // ...List.generate(_serbestRapor?.length ?? 0, (index) => GridItemModel.serbestRaporlar(title: _serbestRapor?[index].dizaynAdi ?? "", arguments: _serbestRapor?[index])),
+    ]),
+  ].whereType<GridItemModel>().toList();
+
+  List<GridItemModel> getList() {
+    if (kDebugMode) {
+      return _gridItemModel;
+    } else {
+      //grid items içindeki yetkiKontrol true olanları döndür
+      return _gridItemModel.where((element) => element.yetkiKontrol).toList();
+    }
+  }
+
+  List<GridItemModel?> getAltMenuList(String name) {
+    return getGridItemModel.where((element) => element.name == name).toList();
+  }
+
+  static List<GridItemModel> groupBySerbestRaporList() {
+    if (_serbestRapor!.length >= 16) {
+      Map<String?, GridItemModel> result = groupBy(
+        _serbestRapor!,
+        (obj) => obj.detayKod,
+      ).map((key, value) {
+        if (value.length != 1) {
+          return MapEntry(
+              key,
+              GridItemModel.altmenu(
+                  name: "stok_Raporlar",
+                  title: key ?? "",
+                  altMenuler: List.generate(value.length, (index) => GridItemModel.serbestRaporlar(title: value[index].dizaynAdi ?? "", arguments: value[index]))));
+        } else {
+          return MapEntry(
+              key,
+              GridItemModel.serbestRaporlar(
+                title: value[0].dizaynAdi ?? "",
+                arguments: value[0],
+              ));
+        }
+      });
+      return result.values.sortedBy((element) => element.menuTipi).toList();
+    } else {
+      return getGridItemModel;
+    }
+  }
+}
