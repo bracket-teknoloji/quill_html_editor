@@ -20,7 +20,6 @@ import "../../constants/extensions/model_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
 import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ondalik_utils.dart";
-import "../../constants/static_variables/static_variables.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../../init/cache/cache_manager.dart";
 import "../badge/colorful_badge.dart";
@@ -62,7 +61,11 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
         child: ListTile(
       // contentPadding: EdgeInsets.zero,
       onLongPress: widget.model.remoteTempBelgeEtiketi == null
-          ? () => dialogManager.showSiparisGridViewDialog(context, model: widget.model, siparisTipi: StaticVariables.instance.isMusteriSiparisleri ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici)
+          ? () async {
+              await dialogManager.showSiparisGridViewDialog(context, model: widget.model, onSelected: (value) {
+                widget.onUpdated?.call(value);
+              });
+            }
           : null,
       onTap: widget.isGetData == true
           ? () => Get.back(result: widget.model)

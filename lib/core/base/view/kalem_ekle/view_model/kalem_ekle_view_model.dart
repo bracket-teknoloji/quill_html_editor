@@ -16,7 +16,10 @@ abstract class _KalemEkleViewModelBase with Store {
   bool showDovizBilgileri = true;
 
   @action
-  void setShowDovizBilgileri(bool value) => showDovizBilgileri = value;
+  void setShowDovizBilgileri(bool value) {
+    showDovizBilgileri = value;
+    
+  }
   @observable
   StokListesiModel? model;
 
