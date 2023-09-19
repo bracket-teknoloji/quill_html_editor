@@ -51,7 +51,7 @@ class GridItemModel {
 
   bool get yetkiKontrol {
     if (menuTipi == "A") {
-      if (menuList!.contains(name) && altMenuVarMi) {
+      if ((menuList?.contains(name)?? false) && altMenuVarMi) {
         int sayac = 0;
         for (var element in altMenuler!) {
           if (element.yetkiKontrol) {
@@ -62,10 +62,10 @@ class GridItemModel {
       } else {
         return false;
       }
-    } else if (cacheManager!.adminMi != null && cacheManager!.adminMi!) {
+    } else if (cacheManager?.adminMi != null && (cacheManager?.adminMi ?? false)) {
       return true;
     } else if (menuTipi == "S") {
-      int sayac = altMenuler!.length;
+      int sayac = altMenuler?.length ?? 0;
       var result = sayac != 0 ? cacheManager?.profilYetki?.toJson()[name] : false;
       return result;
     } else if (menuTipi == "SR") {
@@ -78,7 +78,7 @@ class GridItemModel {
 
   bool get altMenuVarMi {
     if (menuTipi == "A" || menuTipi == "S") {
-      return altMenuler!.ext.isNotNullOrEmpty; //&& altMenuler!.any((element) => element.altMenuler?.isNotEmpty ?? false);
+      return altMenuler.ext.isNotNullOrEmpty; //&& altMenuler!.any((element) => element.altMenuler?.isNotEmpty ?? false);
     } else {
       return false;
     }

@@ -1,5 +1,6 @@
 import "package:collection/collection.dart";
 import "package:flutter/foundation.dart";
+import "package:flutter/material.dart";
 
 import "../../../../core/constants/enum/serbest_rapor_detay_kod_enum.dart";
 import "../../../../core/constants/enum/siparis_tipi_enum.dart";
@@ -54,7 +55,51 @@ class MenuItemConstants {
     ]),
     //*Finans
     //*
-    GridItemModel.anamenu(name: "YONE", title: "Finans", icon: "wallet", color: GridThemeManager.finans, altMenuler: []),
+    GridItemModel.anamenu(name: "YONE", title: "Finans", icon: "wallet", color: GridThemeManager.finans, altMenuler: [
+      GridItemModel.altmenu(name: "Banka", title: "Banka", iconData: Icons.account_balance_outlined, altMenuler: [
+        GridItemModel.item(name: "", title: "Banka Listesi"),
+        GridItemModel.item(name: "", title: "İşlemler"),
+      ]),
+      GridItemModel.altmenu(name: "Banka", title: "Kasa", iconData: Icons.point_of_sale_outlined, altMenuler: [
+        GridItemModel.item(name: "", title: "Kasa Listesi", route: "/mainPage/kasaListesi"),
+        GridItemModel.item(name: "", title: "İşlemler"),
+        GridItemModel.item(name: "", title: "Kasa Transferi"),
+        GridItemModel.altmenu(name: "", title: "Raporlar",icon: "monitoring", altMenuler: [
+          GridItemModel.item(name: "", title: "Kasa Ekstre"),
+          ..._getSerbestRapor(SerbestRaporDetayKodEnum.kasa),
+        ])
+      ]),
+      GridItemModel.item(name: "Banka", title: "Dekontlar"),
+      GridItemModel.altmenu(name: "Banka", title: "Çek", altMenuler: [
+        GridItemModel.item(name: "", title: "Müşteri Çekleri"),
+        GridItemModel.item(name: "", title: "Borç Çekleri"),
+        GridItemModel.altmenu(name: "", title: "Raporlar",icon: "monitoring", altMenuler: [
+          ..._getSerbestRapor(SerbestRaporDetayKodEnum.cek),
+        ])
+      ]),
+      GridItemModel.altmenu(name: "Banka", title: "Senet", altMenuler: [
+        GridItemModel.item(name: "", title: "Müşteri Senetleri"),
+        GridItemModel.item(name: "", title: "Borç Senetleri"),
+      ]),
+      GridItemModel.item(name: "Banka", title: "Tahsilat & Ödeme Kayıtları"),
+      GridItemModel.item(name: "Banka", title: "Hızlı Tahsilat Kayıtları"),
+      GridItemModel.altmenu(name: "Banka", title: "Hızlı İşlemler",iconData: Icons.tune_outlined, altMenuler: [
+        GridItemModel.item(name: "", title: "Kredi Kartı Tahsilatı"),
+        GridItemModel.item(name: "", title: "Nakit Tahsilat"),
+        GridItemModel.item(name: "", title: "Senet Tahsilatı"),
+        GridItemModel.item(name: "", title: "Çek Tahsilatı"),
+        GridItemModel.item(name: "", title: "Muhtelif Nakit Tahsilat"),
+        GridItemModel.item(name: "", title: "Muhtelif Nakit Ödeme"),
+        GridItemModel.item(name: "", title: "Nakit Ödeme"),
+      ]),
+      GridItemModel.item(name: "Banka", title: "Ortalama Vade Tarihi Hesaplama"),
+      GridItemModel.altmenu(name: "Banka", title: "Raporlar",icon: "monitoring", altMenuler: [
+        GridItemModel.item(name: "", title: "Özet Rapor"),
+        GridItemModel.item(name: "", title: "Finansal Durum Raporu"),
+        GridItemModel.item(name: "", title: "Aylık Mizan Raporu"),
+        ..._getSerbestRapor(SerbestRaporDetayKodEnum.finans),
+      ]),
+    ]),
 
     //* Genel
     //*

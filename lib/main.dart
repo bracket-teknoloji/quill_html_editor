@@ -11,6 +11,8 @@ import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/view/kasa_dekontlar_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_listesi/view/kasa_listesi_view.dart";
 
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
 import "core/base/view/kalem_ekle/model/kalem_ekle_model.dart";
@@ -130,6 +132,10 @@ class PickerApp extends StatelessWidget {
             GetPage(name: "/cariHareketRaporu", page: () => CariHareketRaporuView(model: Get.arguments)),
             GetPage(name: "/cariHareketDetayliYaslandirmaRaporu", page: () => HareketDetayliYaslandirmaRaporuView(model: Get.arguments)),
             GetPage(name: "/cariStokSatisOzeti", page: () => CariStokSatisOzetiView(model: Get.arguments)),
+
+            //* Finans
+            GetPage(name: "/kasaListesi", page: () => const KasaListesiView()),
+            GetPage(name: "/kasaDekontlari", page: () => const KasaDekontlarView()),
 
             //* Sipariş
             GetPage(name: "/siparisMusteriSiparisi", page: () => SiparislerView(widgetModel: Get.arguments)),

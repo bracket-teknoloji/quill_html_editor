@@ -97,7 +97,7 @@ dependencies:
   firebase_messaging: ^14.6.6
 
   #HTML Editor
-  html_editor_enhanced: ^2.5.1
+  # html_editor_enhanced: ^2.5.1
   freezed_annotation: ^2.4.1
   injectable: ^2.2.0
   get_it: ^7.6.0
