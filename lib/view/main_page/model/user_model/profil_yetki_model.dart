@@ -969,6 +969,8 @@ class ProfilYetkiModel {
   bool? siparisMusteriSiparisiKapatmaIslemi;
   @JsonKey(name: "siparis_MusSip_OnayIslemleri")
   bool? siparisMusSipOnayIslemleri;
+  @JsonKey(name: "siparis_MusSip_StokIhtiyacRaporu")
+  bool? siparisMusSipStokIhtiyacRaporu;
   @JsonKey(name: "siparis_MusteriSiparisi_SonFiyatGoster")
   bool? siparisMusteriSiparisiSonFiyatGoster;
   @JsonKey(name: "siparis_MusSip_DigerSekmesiGoster")

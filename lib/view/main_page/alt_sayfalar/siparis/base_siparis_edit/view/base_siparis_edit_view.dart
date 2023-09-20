@@ -2,20 +2,20 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "../../../../../../core/components/textfield/custom_text_field.dart";
-import "../../../../../../core/constants/enum/siparis_tipi_enum.dart";
-import "../../../../../../core/constants/extensions/list_extensions.dart";
-import "../../../../../../core/constants/extensions/model_extensions.dart";
-import "../../../../../../core/constants/extensions/number_extensions.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
+import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../core/constants/enum/siparis_tipi_enum.dart";
+import "../../../../../../core/constants/extensions/list_extensions.dart";
+import "../../../../../../core/constants/extensions/model_extensions.dart";
+import "../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
@@ -71,6 +71,8 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
       model.siparisTipiEnum = widget.model.siparisTipiEnum ?? (StaticVariables.instance.isMusteriSiparisleri ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici);
     } else if (widget.model.model is SiparisEditRequestModel) {
       model = widget.model as BaseEditModel<SiparisEditRequestModel>;
+    }else{
+    model ??= BaseEditModel<SiparisEditRequestModel>()..model = SiparisEditRequestModel();
     }
 
     if (widget.model.baseEditEnum == BaseEditEnum.duzenle || widget.model.baseEditEnum == BaseEditEnum.kopyala) {
@@ -114,8 +116,8 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
         }
       }
 
-          BaseSiparisEditModel.instance.belgeTuru ??= widget.model.siparisTipiEnum?.rawValue;
-          BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.siparisTipiEnum?.rawValue;
+      BaseSiparisEditModel.instance.belgeTuru ??= widget.model.siparisTipiEnum?.rawValue;
+      BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.siparisTipiEnum?.rawValue;
       viewModel.changeIsBaseSiparisEmpty(false);
     });
     super.initState();

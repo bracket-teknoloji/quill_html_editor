@@ -67,7 +67,7 @@ class GridItemModel {
     } else if (menuTipi == "S") {
       int sayac = altMenuler?.length ?? 0;
       var result = sayac != 0 ? cacheManager?.profilYetki?.toJson()[name] : false;
-      return result;
+      return result ?? false;
     } else if (menuTipi == "SR") {
       return true;
     } else {

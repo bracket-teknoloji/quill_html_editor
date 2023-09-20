@@ -494,15 +494,18 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
   }
 
   Observer fab() => Observer(
-      builder: (_) => CustomFloatingActionButton(
-          isScrolledDown: viewModel.isScrolledDown,
-          onPressed: () async {
-            await Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: SiparisEditRequestModel(), baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: widget.widgetModel.siparisTipiEnum));
-            viewModel.setSiparislerList(null);
-            viewModel.setDahaVarMi(true);
-            viewModel.resetSayfa();
-            getData();
-          }));
+      builder: (_) => Visibility(
+        visible: viewModel.musteriSiparisleriList != null,
+        child: CustomFloatingActionButton(
+            isScrolledDown: viewModel.isScrolledDown,
+            onPressed: () async {
+              await Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: SiparisEditRequestModel(), baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: widget.widgetModel.siparisTipiEnum));
+              viewModel.setSiparislerList(null);
+              viewModel.setDahaVarMi(true);
+              viewModel.resetSayfa();
+              getData();
+            }),
+      ));
 
   RefreshIndicator body() {
     return RefreshIndicator.adaptive(
