@@ -153,7 +153,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                             ..cariKodu = widget.model.cariKodu
                             ..cariAdi = widget.model.cariAdi);
                         }),
-                  ].nullCheck.cast<BottomSheetModel>().toList());
+                  ].nullCheckWithGeneric);
             },
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -271,7 +271,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                         topluDepoController.text = result.depoTanimi ?? result.depoKodu.toStringIfNotNull ?? "";
                       }
                     },
-                  )),
+                  )).yetkiVarMi(yetkiController.lokalDepoUygulamasiAcikMi),
                   Expanded(
                       child: CustomTextField(
                     enabled: enable,
@@ -449,7 +449,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
     plasiyerController.text = model.plasiyerAciklama ?? "";
     tarihController.text = model.tarih.toDateString;
     teslimTarihController.text = model.teslimTarihi.toDateString;
-    topluDepoController.text = model.topluDepo.toStringIfNotNull ?? "";
+    topluDepoController.text = yetkiController.lokalDepoUygulamasiAcikMi? model.topluDepo.toStringIfNotNull??"" : "";
     projeController.text = model.projeAciklama ?? "";
     odemeKoduController.text = model.odemeKodu ?? "";
     kosulController.text = model.kosulKodu ?? "";

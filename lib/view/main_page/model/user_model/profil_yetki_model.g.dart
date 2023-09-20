@@ -893,6 +893,8 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           json['siparis_MusteriSiparisi_KapatmaIslemi'] as bool?
       ..siparisMusSipOnayIslemleri =
           json['siparis_MusSip_OnayIslemleri'] as bool?
+      ..siparisMusSipStokIhtiyacRaporu =
+          json['siparis_MusSip_StokIhtiyacRaporu'] as bool?
       ..siparisMusteriSiparisiSonFiyatGoster =
           json['siparis_MusteriSiparisi_SonFiyatGoster'] as bool?
       ..siparisMusSipDigerSekmesiGoster =
@@ -2331,6 +2333,8 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
       instance.siparisMusteriSiparisiKapatmaIslemi);
   writeNotNull(
       'siparis_MusSip_OnayIslemleri', instance.siparisMusSipOnayIslemleri);
+  writeNotNull('siparis_MusSip_StokIhtiyacRaporu',
+      instance.siparisMusSipStokIhtiyacRaporu);
   writeNotNull('siparis_MusteriSiparisi_SonFiyatGoster',
       instance.siparisMusteriSiparisiSonFiyatGoster);
   writeNotNull('siparis_MusSip_DigerSekmesiGoster',

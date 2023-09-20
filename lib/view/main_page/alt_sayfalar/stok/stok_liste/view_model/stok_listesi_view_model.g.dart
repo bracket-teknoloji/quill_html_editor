@@ -159,13 +159,13 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
       Atom(name: '_StokListesiViewModelBase.stokListesi', context: context);
 
   @override
-  List<StokListesiModel>? get stokListesi {
+  ObservableList<StokListesiModel>? get stokListesi {
     _$stokListesiAtom.reportRead();
     return super.stokListesi;
   }
 
   @override
-  set stokListesi(List<StokListesiModel>? value) {
+  set stokListesi(ObservableList<StokListesiModel>? value) {
     _$stokListesiAtom.reportWrite(value, super.stokListesi, () {
       super.stokListesi = value;
     });

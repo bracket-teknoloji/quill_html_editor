@@ -120,7 +120,7 @@ class BottomSheetDialogManager {
   }
 
   showRadioBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel?>? children}) {
-    children = children?.nullCheck.cast<BottomSheetModel>();
+    children = children?.nullCheckWithGeneric;
     //FocusScope.of(context).unfocus();
     return showModalBottomSheet(
         context: context,

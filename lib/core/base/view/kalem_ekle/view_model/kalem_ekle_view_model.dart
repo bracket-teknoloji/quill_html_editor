@@ -36,7 +36,7 @@ abstract class _KalemEkleViewModelBase with Store {
   String get dovizAdi => StaticVariables.instance.isMusteriSiparisleri ? kalemModel.stokSatDovizAdi ?? "" : kalemModel.stokAlisDovizAdi ?? "";
 
   @computed
-  List<String> get olcuBirimiMap => [model?.olcuBirimi, model?.olcuBirimi2, model?.olcuBirimi3].nullCheck.cast<String>();
+  List<String> get olcuBirimiMap => [model?.olcuBirimi, model?.olcuBirimi2, model?.olcuBirimi3].nullCheckWithGeneric;
 
   @observable
   KalemModel kalemModel = KalemModel();

@@ -100,10 +100,10 @@ abstract class _StokListesiViewModelBase with Store {
   void setGrupKodlari(List<BaseGrupKoduModel> value) => grupKodlari = value.asObservable();
 
   @observable
-  List<StokListesiModel>? stokListesi;
+  ObservableList<StokListesiModel>? stokListesi;
 
   @action
-  void setStokListesi(List<StokListesiModel>? value) => stokListesi = value;
+  void setStokListesi(List<StokListesiModel>? value) => stokListesi = value?.asObservable();
 
   @action
   void addStokListesi(List<StokListesiModel> value) {

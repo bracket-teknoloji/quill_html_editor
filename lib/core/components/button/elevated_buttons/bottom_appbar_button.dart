@@ -36,6 +36,6 @@ class AppBarButton extends StatelessWidget {
                     )
                   : null,
               child
-            ].nullCheck.cast<Widget>()));
+            ].nullCheckWithGeneric));
   }
 }

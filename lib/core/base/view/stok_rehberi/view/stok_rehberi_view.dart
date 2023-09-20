@@ -3,12 +3,15 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+import "../../../../components/badge/colorful_badge.dart";
 import "../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../components/floating_action_button/custom_floating_action_button.dart";
 import "../../../../components/textfield/custom_text_field.dart";
+import "../../../../constants/enum/badge_color_enum.dart";
 import "../../../../constants/enum/base_edit_enum.dart";
 import "../../../../constants/enum/grup_kodu_enums.dart";
 import "../../../../constants/extensions/number_extensions.dart";
@@ -300,8 +303,9 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                           Wrap(
                                             spacing: UIHelper.lowSize,
                                             children: [
-                                              (stok?.seriCikislardaAcik ?? false) ? const Badge(label: Text("Seri")) : const SizedBox(),
-                                              (stok?.satDovTip != null || stok?.alisDovTip != null) ? Badge(label: Text("Dövizli ${stok?.satisDovizAdi ?? ""}")) : const SizedBox()
+                                              const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(stok?.seriCikislardaAcik == true),
+                                              const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(stok?.satDovTip != null || stok?.alisDovTip != null),
+                                              const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap).yetkiVarMi(stok?.yapilandirmaAktif == true),
                                             ],
                                           ),
                                           Text(stok?.stokAdi ?? ""),

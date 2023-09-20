@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/badge/colorful_badge.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -15,6 +16,7 @@ import "../../../../../../core/components/floating_action_button/custom_floating
 import "../../../../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
 import "../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../core/constants/enum/badge_color_enum.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/enum/grup_kodu_enums.dart";
 import "../../../../../../core/constants/enum/islem_tipi_enum.dart";
@@ -245,7 +247,6 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                               .map((e) => BottomSheetModel(
                                                     title: e.grupAdi ?? "",
                                                     value: e,
-                                                    
                                                   ))
                                               .toList(),
                                         );
@@ -268,14 +269,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                         context,
                                         title: "Kod 1",
-                                        children: grupKodlari
-                                            .map((e) => BottomSheetModel(
-                                                  title: e.grupAdi ?? "",
-                                                  value: e
-                                                ))
-                                            .toList(),
+                                        children: grupKodlari.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e)).toList(),
                                       );
-                                      if (result != null && result is List){
+                                      if (result != null && result is List) {
                                         viewModel.changeArrKod1(result.whereType<BaseGrupKoduModel>().toList());
                                         kod1Controller.text = viewModel.kod1?.map((e) => e.grupAdi).join(", ") ?? "";
                                       }
@@ -296,14 +292,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                         context,
                                         title: "Kod 2",
-                                        children: grupKodlari
-                                            .map((e) => BottomSheetModel(
-                                                  title: e.grupAdi ?? "",
-                                                  value: e
-                                                ))
-                                            .toList(),
+                                        children: grupKodlari.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e)).toList(),
                                       );
-                                      if (result != null && result is List){
+                                      if (result != null && result is List) {
                                         viewModel.changeArrKod2(result.whereType<BaseGrupKoduModel>().toList());
                                         kod2Controller.text = viewModel.kod2?.map((e) => e.grupAdi).join(", ") ?? "";
                                       }
@@ -317,16 +308,12 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                     controller: kod3Controller,
                                     onTap: () async {
                                       List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 3).toList();
-                                      var result =await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                      var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                         context,
                                         title: "Kod 3",
-                                        children: grupKodlari
-                                            .map((e) => BottomSheetModel(
-                                                  title: e.grupAdi ?? "", value: e
-                                                ))
-                                            .toList(),
+                                        children: grupKodlari.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e)).toList(),
                                       );
-                                      if (result != null && result is List){
+                                      if (result != null && result is List) {
                                         viewModel.changeArrKod3(result.whereType<BaseGrupKoduModel>().toList());
                                         kod3Controller.text = viewModel.kod3?.map((e) => e.grupAdi).join(", ") ?? "";
                                       }
@@ -360,7 +347,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                                 ))
                                             .toList(),
                                       );
-                                      if (result != null && result is List){
+                                      if (result != null && result is List) {
                                         viewModel.changeArrKod4(result.whereType<BaseGrupKoduModel>().toList());
                                         kod4Controller.text = viewModel.kod4?.map((e) => e.grupAdi).join(", ") ?? "";
                                       }
@@ -390,7 +377,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                                 ))
                                             .toList(),
                                       );
-                                      if (result != null && result is List){
+                                      if (result != null && result is List) {
                                         viewModel.changeArrKod5(result.whereType<BaseGrupKoduModel>().toList());
                                         kod5Controller.text = viewModel.kod5?.map((e) => e.grupAdi).join(", ") ?? "";
                                       }
@@ -504,7 +491,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
               primary: false,
               controller: scrollController,
               padding: UIHelper.lowPadding,
-              itemCount: (stokListesi?.length ?? 0) + 1,
+              itemCount: (viewModel.stokListesi?.length ?? 0) + 1,
               itemBuilder: (context, index) {
                 if (index < (viewModel.stokListesi?.length ?? 0)) {
                   StokListesiModel stok = stokListesi![index];
@@ -526,8 +513,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                           foregroundImage: viewModel.imageMap[stok.stokKodu],
                           child: Text((stok.stokAdi ?? "  ").substring(0, 1)),
                         ),
-                        trailing:
-                            Text("${(stok.bakiye ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${stok.olcuBirimi ?? ""}", style: context.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(stok.bakiye ?? 0))),
+                        trailing: Text("${(stok.bakiye ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${stok.olcuBirimi ?? ""}",
+                            style: context.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(stok.bakiye ?? 0))),
                         title: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -543,8 +530,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                             Wrap(
                               spacing: UIHelper.lowSize,
                               children: [
-                                (stok.seriCikislardaAcik ?? false) ? const Badge(label: Text("Seri")) : const SizedBox(),
-                                (stok.satDovTip != null || stok.alisDovTip != null) ? const Badge(label: Text("Dövizli")) : const SizedBox()
+                                const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(stok.seriCikislardaAcik == true),
+                                const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(stok.alisDovTip != null || stok.satDovTip != null),
+                                const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap).yetkiVarMi(stok.yapilandirmaAktif == true)
                               ],
                             )
                           ],
@@ -600,7 +588,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                 ];
                                 children2.insert(
                                     2, BottomSheetModel(title: "Sil", iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? "")).yetkiKontrol(yetkiController.stokKartiSilme));
-                                List<BottomSheetModel>? newResult = children2.nullCheck.cast<BottomSheetModel>();
+                                List<BottomSheetModel>? newResult = children2.nullCheckWithGeneric;
                                 BaseEditModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: stok.stokKodu ?? "", children: newResult);
                                 if (result != null) {
                                   await Get.toNamed("/mainPage/stokEdit", arguments: result);
@@ -701,8 +689,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
             imageMap[stokKaydi.stokKodu ?? ""] = await getImage(stokKaydi.resimUrlKucuk ?? "");
           }
         }
-        viewModel.addStokListesi(liste ?? <StokListesiModel>[]);
         viewModel.addImageMap(imageMap);
+        viewModel.addStokListesi(liste ?? <StokListesiModel>[]);
       }
     } else {
       viewModel.setStokListesi(<StokListesiModel>[]);

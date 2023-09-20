@@ -157,15 +157,12 @@ class IslemlerMenuItemConstants<T> {
                     },
                     suffix: IconButton(
                         onPressed: () async {
-                          var result = await networkManager.dioGet<BaseSiparisEditModel>(
-                              path: ApiUrls.getSiradakiBelgeNo,
-                              bodyModel: BaseSiparisEditModel(),
-                              queryParameters: {
-                                "Seri": controller.text,
-                                "BelgeTipi": StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS",
-                                "EIrsaliye": "H",
-                                "CariKodu": siparisModel?.cariKodu ?? ""
-                              });
+                          var result = await networkManager.dioGet<BaseSiparisEditModel>(path: ApiUrls.getSiradakiBelgeNo, bodyModel: BaseSiparisEditModel(), queryParameters: {
+                            "Seri": controller.text,
+                            "BelgeTipi": StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS",
+                            "EIrsaliye": "H",
+                            "CariKodu": siparisModel?.cariKodu ?? ""
+                          });
                           if (result.success == true) {
                             controller.text = result.data?.first.belgeNo ?? "";
                           }
@@ -194,7 +191,7 @@ class IslemlerMenuItemConstants<T> {
                               if (result.success == true) {
                                 updatePage = true;
                                 DialogManager().showSuccessSnackBar("Başarılı");
-                              Get.back();
+                                Get.back();
                                 return;
                               }
                             }
@@ -253,7 +250,7 @@ class IslemlerMenuItemConstants<T> {
               BottomSheetModel(title: "Telefon", value: (model as CariListesiModel).cariTel).yetkiKontrol((model as CariListesiModel).cariTel != null),
               BottomSheetModel(title: "Web Sitesi", value: (model as CariListesiModel).web).yetkiKontrol((model as CariListesiModel).web != null),
               BottomSheetModel(title: "Mail", value: (model as CariListesiModel).email).yetkiKontrol((model as CariListesiModel).email != null),
-            ].nullCheck.cast<BottomSheetModel>());
+            ].nullCheckWithGeneric);
         if ((result as List?).ext.isNotNullOrEmpty) {
           Clipboard.setData(ClipboardData(text: result!.join("\n")));
           Share.share(result.join("\n"));

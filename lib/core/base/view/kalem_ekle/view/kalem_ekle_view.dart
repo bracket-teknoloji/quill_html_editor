@@ -100,6 +100,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
         IconButton(
             onPressed: () {
               if (formKey.currentState?.validate() ?? false) {
+                if (yetkiController.lokalDepoUygulamasiAcikMi != true){
+                  viewModel.kalemModel.depoKodu = 0;
+                }
                 if (!viewModel.dovizliMi) {
                   viewModel.kalemModel.dovizKuru = null;
                   viewModel.kalemModel.dovizFiyati = null;
@@ -294,7 +297,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                         }
                                       },
                                       icon: const Icon(Icons.calendar_today_outlined))
-                                ]))),
+                                ]))).yetkiVarMi(yetkiController.siparisSatirdaTeslimTarihiSor),
                         Expanded(
                             child: CustomTextField(
                           labelText: "Koşul",
@@ -334,7 +337,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               }
                             }
                           },
-                        )),
+                        )).yetkiVarMi(yetkiController.lokalDepoUygulamasiAcikMi),
                         Expanded(
                             child: CustomTextField(
                           labelText: "Proje",
@@ -692,7 +695,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     viewModel.kalemModel.stokAdi = widget.stokListesiModel?.stokAdi ?? widget.stokListesiModel?.stokKodu ?? widget.kalemModel?.stokAdi ?? widget.kalemModel?.stokKodu ?? "";
     viewModel.kalemModel.stokKodu = widget.stokListesiModel?.stokKodu ?? widget.kalemModel?.stokKodu ?? "";
     viewModel.kalemModel.kosulKodu = model.kosulKodu;
-    viewModel.kalemModel.teslimTarihi = model.teslimTarihi;
+    viewModel.kalemModel.teslimTarihi = yetkiController.siparisSatirdaTeslimTarihiSor? BaseSiparisEditModel.instance.teslimTarihi : null;
     viewModel.setShowDovizBilgileri(widget.stokListesiModel?.dovizliMi ?? false);
     viewModel.setOlcuBirimi(MapEntry<String, int>(widget.stokListesiModel?.olcuBirimi ?? widget.kalemModel?.olcuBirimAdi ?? "", 0));
     if (widget.kalemModel == null) {

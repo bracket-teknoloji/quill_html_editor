@@ -205,7 +205,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                                 Get.back();
                                 viewModel.changeYeniKaydaHazirlaMi();
                               }).yetkiKontrol(widget.model.isEkle),
-                        ].nullCheck.cast<BottomSheetModel>());
+                        ].nullCheckWithGeneric);
                     if (result != null) {
                       viewModel.changeUpdateKalemler();
                     }

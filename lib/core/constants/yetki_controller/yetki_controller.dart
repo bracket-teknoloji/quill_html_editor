@@ -31,6 +31,7 @@ class YetkiController {
   bool get projeUygulamasiAcikMi => isTrue(paramModel?.projeUygulamasiAcik, skipAdmin: true);
   bool get plasiyerUygulamasiAcikMi => isTrue(paramModel?.plasiyerUygulamasi, skipAdmin: true);
   bool get cariRapStokSatisOzeti => isTrue(yetkiModel?.cariRapStokSatisOzeti, skipAdmin: true);
+  bool get lokalDepoUygulamasiAcikMi => isTrue(paramModel?.lokalDepoUygulamasiAcik, skipAdmin: true);
   //! CARİ
 
   bool get cariListesi => isTrue(yetkiModel?.cariCariListesi);
@@ -104,6 +105,7 @@ class YetkiController {
   bool get siparisGenIsk2AktifMi => (_musteriSiparisiMi ? siparisMSGenIsk2AktifMi : siparisSSGenIsk2AktifMi) && siparisMSDegismeyecekAlanMi(ProfilResponseModel.faturaGizlenecekAlanGenIsk2);
   bool get siparisGenIsk3AktifMi => (_musteriSiparisiMi ? siparisMSGenIsk3AktifMi : siparisSSGenIsk3AktifMi) && siparisMSDegismeyecekAlanMi(ProfilResponseModel.faturaGizlenecekAlanGenIsk3);
   bool get siparisDuzelt => _musteriSiparisiMi ? siparisMSDuzelt : siparisSSDuzelt;
+  bool get siparisKaydet => _musteriSiparisiMi ? siparisMSKaydet : siparisSSKaydet;
   bool get siparisSil => _musteriSiparisiMi ? siparisMSSil : siparisSSSil;
   bool get siparisKapalilarListelenmesin => _musteriSiparisiMi ? siparisMSKapalilarListelenmesin : siparisSSKapalilarListelenmesin;
   bool get siparisBirim1denKaydet => _musteriSiparisiMi ? siparisMSBirim1denKaydet : siparisSSBirim1denKaydet;
@@ -111,15 +113,16 @@ class YetkiController {
   bool get siparisKosulAktifMi => _musteriSiparisiMi ? siparisMSKosulAktifMi : siparisSSKosulAktifMi;
   bool get siparisKosulSatirdaSor => _musteriSiparisiMi ? (siparisMSKosulAktifMi && siparisMSKosulSatirdaSor) : (siparisSSKosulAktifMi);
   bool get siparisFarkliTeslimCariAktif => _musteriSiparisiMi ? siparisMSFarkliTeslimCariAktif : siparisSSFarkliTeslimCariAktif;
-  bool get siparisMiktar2Sor => _musteriSiparisiMi ? siparisMSMiktar2Sor : siparisSSmiktar2Sor;
+  bool get siparisMiktar2Sor => _musteriSiparisiMi ? siparisMSMiktar2Sor : siparisSSMiktar2Sor;
   bool get siparisSatirdaKDVSor => _musteriSiparisiMi ? siparisMSsatirdaKDVSor : siparisSSsatirdaKDVSor;
   bool get siparisEkMaliyet1GizlenecekMi => siparisMSGizlenecekAlanMi(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet1);
   bool get siparisEkMaliyet2GizlenecekMi => siparisMSGizlenecekAlanMi(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet2);
   bool get siparisEkMaliyet3GizlenecekMi => siparisMSGizlenecekAlanMi(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet3);
   bool get siparisHizmetAktifMi => _musteriSiparisiMi ? siparisMSSatisHizmetAktifMi : siparisSSSatisHizmetAktifMi;
   bool get siparisKontrolAciklamasiAktifMi => _musteriSiparisiMi ? siparisMSKontrolAciklamasiAktifMi : siparisSSKontrolAciklamasiAktifMi;
-  bool get siparisSatirdaEkAlan2AktifMi => _musteriSiparisiMi ? siparisMSSatirdaEkAlan2AktifMi : siparisSSsatirdaEkAlan2AktifMi;
+  bool get siparisSatirdaEkAlan2AktifMi => _musteriSiparisiMi ? siparisMSSatirdaEkAlan2AktifMi : siparisSSSatirdaEkAlan2AktifMi;
   bool get siparisEkAlan1AktifMi => _musteriSiparisiMi ? siparisMSEkAlan1AktifMi : false;
+  bool get siparisSatirdaTeslimTarihiSor => _musteriSiparisiMi ? siparisMSsatirdaTeslimTarihiSor : siparisSSSatirdaTeslimTarihiSor;
 
   //* Müşteri Siparişi
   //😳SatisSatirKademeliIskontoSayisi => 0 ise kademeli iskonto yok demektir. Kaç tane varsa o kadar genisk ve geniskTipi gelecek
@@ -129,6 +132,7 @@ class YetkiController {
   bool get siparisMSGenIsk2AktifMi => isTrue(paramModel?.satisGenIsk2Aktif, skipAdmin: true);
   bool get siparisMSGenIsk3AktifMi => isTrue(paramModel?.satisGenIsk3Aktif, skipAdmin: true);
   bool get siparisMSDuzelt => isTrue(yetkiModel?.siparisMusteriSiparisiDuzelt);
+  bool get siparisMSKaydet => isTrue(yetkiModel?.siparisMusteriSiparisiKaydet);
   bool get siparisMSSil => isTrue(yetkiModel?.siparisMusteriSiparisiSil);
   bool get siparisMSCariKoduDegistir => isTrue(yetkiModel?.siparisMusSipCariKoduDegistir);
   bool get siparisMSOtoPdfGor => isTrue(yetkiModel?.siparisMusSipOtoPdfGor);
@@ -148,7 +152,8 @@ class YetkiController {
   bool get siparisMSEkMaliyet2AktifMi => isTrue(paramModel?.satisEkMaliyet2Aktif, skipAdmin: true);
   bool get siparisMSEkAlan1AktifMi => isTrue(paramModel?.satisEkAlan1Aktif, skipAdmin: true);
   bool get siparisMSSatirdaEkAlan2AktifMi => isTrue(paramModel?.satisSatirdaEkAlan2Aktif, skipAdmin: true);
-  bool get siparisMsSatirIsk1YuzdeSor => isTrue(paramModel?.satisSatirIsk1YuzdeSor, skipAdmin: true);
+  bool get siparisMSSatirIsk1YuzdeSor => isTrue(paramModel?.satisSatirIsk1YuzdeSor, skipAdmin: true);
+  bool get siparisMSsatirdaTeslimTarihiSor => isTrue(paramModel?.satisSatirdaTeslimTarihiSor, skipAdmin: true);
 
   // bool get siparisMSbelgeKopyala => isTrue(yetkiModel?.siparisMusSipBelge);
   ///? Eğer içeriyorsa boş geçilecek
@@ -177,16 +182,18 @@ class YetkiController {
   bool get siparisSSGenIsk2AktifMi => isTrue(paramModel?.alisGenIsk2Aktif, skipAdmin: true);
   bool get siparisSSGenIsk3AktifMi => isTrue(paramModel?.alisGenIsk3Aktif, skipAdmin: true);
   bool get siparisSSDuzelt => isTrue(yetkiModel?.siparisSaticiSiparisiDuzelt);
+  bool get siparisSSKaydet => isTrue(yetkiModel?.siparisSaticiSiparisiKaydet);
   bool get siparisSSSil => isTrue(yetkiModel?.siparisSaticiSiparisiSil);
   bool get siparisSSKapalilarListelenmesin => isTrue(yetkiModel?.siparisSaticiSiparisiKapalilarListelenmesin);
   bool get siparisSSBirim1denKaydet => isTrue(yetkiModel?.siparisSaticiSipBirim1denKaydet);
   bool get siparisSSDigerSekmesiGoster => isTrue(yetkiModel?.siparisSaticiSipDigerSekmesiGoster);
   bool get siparisSSKosulAktifMi => isTrue(paramModel?.alisKosulAktif, skipAdmin: true);
   bool get siparisSSFarkliTeslimCariAktif => isTrue(paramModel?.alisFarkliTeslimCariAktif, skipAdmin: true);
-  bool get siparisSSmiktar2Sor => isTrue(paramModel?.alisMiktar2Sor, skipAdmin: true);
+  bool get siparisSSMiktar2Sor => isTrue(paramModel?.alisMiktar2Sor, skipAdmin: true);
   bool get siparisSSsatirdaKDVSor => isTrue(paramModel?.alisSatirdaKdvSor, skipAdmin: true);
   bool get siparisSSSatisHizmetAktifMi => isTrue(paramModel?.alisHizmetAktif, skipAdmin: true);
   bool get siparisSSKontrolAciklamasiAktifMi => isTrue(paramModel?.fatuKontrolAciklamasiAktif?.contains("SS"), skipAdmin: true);
-  bool get siparisSSsatirdaEkAlan2AktifMi => isTrue(paramModel?.alisSatirdaEkAlan2Aktif, skipAdmin: true);
+  bool get siparisSSSatirdaEkAlan2AktifMi => isTrue(paramModel?.alisSatirdaEkAlan2Aktif, skipAdmin: true);
+  bool get siparisSSSatirdaTeslimTarihiSor => isTrue(paramModel?.alisSatirdaTeslimTarihiSor, skipAdmin: true);
   // bool get siparisSSISk1YuzdeSor => isTrue(paramModel?.alisSatirIsk1YuzdeSor, skipAdmin: true);
 }

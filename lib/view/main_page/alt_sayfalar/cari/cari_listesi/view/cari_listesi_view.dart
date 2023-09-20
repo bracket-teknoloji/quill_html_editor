@@ -335,7 +335,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                                 Get.back();
                                                 dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipiEnum.cariRapor));
                                               }),
-                                        ].nullCheck.cast<BottomSheetModel>());
+                                        ].nullCheckWithGeneric);
                                     if (pageName != null) {
                                       BaseEditEnum? baseEditEnum;
                                       if (pageName is CariSeceneklerModel) {

@@ -5,6 +5,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_slidable/flutter_slidable.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
@@ -347,7 +348,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                           Row(
                                             children: [
                                               Expanded(child: Text("Miktar: ${model.stharGcmik?.toInt() ?? 0}")),
-                                              Expanded(child: Text("Depo: ${model.depoKodu ?? ""} (${model.depoAdi ?? ""})")),
+                                              Expanded(child: Text("Depo: ${model.depoKodu ?? ""} (${model.depoAdi ?? ""})")).yetkiVarMi(yetkiController.lokalDepoUygulamasiAcikMi),
                                             ],
                                           ),
                                           Row(

@@ -329,7 +329,8 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
       ..satisDovizAdi = json['SATIS_DOVIZ_ADI'] as String?
       ..stokAdi = json['STOK_ADI'] as String?
       ..stokKodu = json['STOK_KODU'] as String?
-      ..ureticiKodu = json['URETICI_KODU'] as String?;
+      ..ureticiKodu = json['URETICI_KODU'] as String?
+      ..yapilandirmaAktif = json['YAPILANDIRMA_AKTIF'] as bool?;
 
 Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
   final val = <String, dynamic>{};
@@ -410,6 +411,7 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
   writeNotNull('STOK_ADI', instance.stokAdi);
   writeNotNull('STOK_KODU', instance.stokKodu);
   writeNotNull('URETICI_KODU', instance.ureticiKodu);
+  writeNotNull('YAPILANDIRMA_AKTIF', instance.yapilandirmaAktif);
   return val;
 }
 
