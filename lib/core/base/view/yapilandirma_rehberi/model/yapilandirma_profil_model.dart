@@ -12,6 +12,7 @@ class YapilandirmaProfilModel with _$YapilandirmaProfilModel, NetworkManagerMixi
         int? sira,
         String? ozellikKodu,
         String? aciklama,
+        String? deger,      
     }) = _YapilandirmaProfilModel;
 
     factory YapilandirmaProfilModel.fromJson(Map<String, dynamic> json) => _$YapilandirmaProfilModelFromJson(json);

@@ -10,6 +10,21 @@ part of 'yapilandirma_rehberi_view_model.dart';
 
 mixin _$YapilandirmaRehberiViewModel
     on _YapilandirmaRehberiViewModelBase, Store {
+  Computed<YapilandirmaProfilModel?>? _$yapilandirmaProfilModelComputed;
+
+  @override
+  YapilandirmaProfilModel? get yapilandirmaProfilModel =>
+      (_$yapilandirmaProfilModelComputed ??= Computed<YapilandirmaProfilModel?>(
+              () => super.yapilandirmaProfilModel,
+              name:
+                  '_YapilandirmaRehberiViewModelBase.yapilandirmaProfilModel'))
+          .value;
+  Computed<Color>? _$colorComputed;
+
+  @override
+  Color get color => (_$colorComputed ??= Computed<Color>(() => super.color,
+          name: '_YapilandirmaRehberiViewModelBase.color'))
+      .value;
   Computed<int?>? _$countComputed;
 
   @override
@@ -29,6 +44,16 @@ mixin _$YapilandirmaRehberiViewModel
   int? get maxPage => (_$maxPageComputed ??= Computed<int?>(() => super.maxPage,
           name: '_YapilandirmaRehberiViewModelBase.maxPage'))
       .value;
+  Computed<YapilandirmaRehberiModel?>? _$yapilandirmaRehberiModelComputed;
+
+  @override
+  YapilandirmaRehberiModel? get yapilandirmaRehberiModel =>
+      (_$yapilandirmaRehberiModelComputed ??= Computed<
+                  YapilandirmaRehberiModel?>(
+              () => super.yapilandirmaRehberiModel,
+              name:
+                  '_YapilandirmaRehberiViewModelBase.yapilandirmaRehberiModel'))
+          .value;
   Computed<String>? _$titleComputed;
 
   @override
@@ -146,6 +171,20 @@ mixin _$YapilandirmaRehberiViewModel
   }
 
   @override
+  void setYapilandirmaRehberiModel(YapilandirmaRehberiModel? value) {
+    final _$actionInfo =
+        _$_YapilandirmaRehberiViewModelBaseActionController.startAction(
+            name:
+                '_YapilandirmaRehberiViewModelBase.setYapilandirmaRehberiModel');
+    try {
+      return super.setYapilandirmaRehberiModel(value);
+    } finally {
+      _$_YapilandirmaRehberiViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void incrementPage() {
     final _$actionInfo = _$_YapilandirmaRehberiViewModelBaseActionController
         .startAction(name: '_YapilandirmaRehberiViewModelBase.incrementPage');
@@ -203,9 +242,12 @@ stokListesiModel: ${stokListesiModel},
 yapilandirmaList: ${yapilandirmaList},
 yapilandirmaProfilList: ${yapilandirmaProfilList},
 filteredList: ${filteredList},
+yapilandirmaProfilModel: ${yapilandirmaProfilModel},
+color: ${color},
 count: ${count},
 isLastPage: ${isLastPage},
 maxPage: ${maxPage},
+yapilandirmaRehberiModel: ${yapilandirmaRehberiModel},
 title: ${title}
     ''';
   }

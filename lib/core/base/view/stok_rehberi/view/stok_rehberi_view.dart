@@ -299,10 +299,10 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                           var result = await Get.toNamed("/mainPage/yapilandirmaRehberi", arguments: stok);
                                           if (result is YapilandirmaRehberiModel) {
                                             stokModel?.yapkod = result.yapkod;
-                                            stokModel?.yapkodAciklama = result.yapacik;
                                           } else {
                                             return;
                                           }
+                                            stokModel?.yapkodAciklama = result.yapacik;
                                         }
                                         await Get.toNamed("/kalemEkle", arguments: stokModel ?? stok);
                                         viewModel.setSelectedStokModel(null);

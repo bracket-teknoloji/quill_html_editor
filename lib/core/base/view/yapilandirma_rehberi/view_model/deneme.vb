@@ -119,13 +119,6 @@ Public Class Uc_YapilandirmaSecimi
     Dim Item As DevExpress.XtraEditors.TileItem
     If ListeSecim.Count > 0 Then
       Item = New DevExpress.XtraEditors.TileItem
-      'Item.Text = "Geri"
-      Item.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True
-      Item.AppearanceItem.Normal.BackColor = System.Drawing.Color.DimGray
-      Item.AppearanceItem.Normal.BorderColor = System.Drawing.Color.DimGray
-      Item.ImageOptions.SvgImage = My.Resources.actions_arrow2left
-      Item.ImageOptions.SvgImageSize = New System.Drawing.Size(64, 64)
-      Item.ImageAlignment = TileItemContentAlignment.MiddleCenter
       AddHandler Item.ItemClick, Sub()
                        SecilenYapKod = String.Empty : SecilenYapAcik = String.Empty
                        For X As Integer = ListeSecim.Count - 1 To 0 Step -1
@@ -207,27 +200,7 @@ Public Class Uc_YapilandirmaSecimi
     Next
     Call TC_ItemCheckedChanged()
   End Sub
-
-  Private Function RenkPaleti() As List(Of System.Drawing.Color)
-    Dim ListeRenk As New List(Of System.Drawing.Color)
-    With ListeRenk
-      Call .Add(System.Drawing.Color.FromArgb(CType(CType(84, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(212, Byte), Integer)))
-      Call .Add(System.Drawing.Color.FromArgb(CType(CType(9, Byte), Integer), CType(CType(93, Byte), Integer), CType(CType(21, Byte), Integer)))
-      Call .Add(System.Drawing.Color.FromArgb(CType(CType(203, Byte), Integer), CType(CType(82, Byte), Integer), CType(CType(17, Byte), Integer)))
-      Call .Add(System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(1, Byte), Integer), CType(CType(106, Byte), Integer)))
-      Call .Add(System.Drawing.Color.FromArgb(CType(CType(65, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(61, Byte), Integer)))
-    End With
-    Return ListeRenk
-  End Function
-
-  Private Function RenkVer() As System.Drawing.Color
-    If ListeSecim.Count + 1 > RenkPaleti.Count Then
-      Return RenkPaleti(RenkPaleti.Count - 1)
-    Else
-      Return RenkPaleti(ListeSecim.Count)
-    End If
-  End Function
-
+  
   Private Sub WUP_ButonTiklandi(Buton As IButton) Handles WUP.ButonTiklandi
     If Buton Is WUP.Butonlar(NetFectUIButtonPanel.EButonlar.Kaydet) Then
       CObj(Me.ParentForm).DialogResult = DialogResult.OK

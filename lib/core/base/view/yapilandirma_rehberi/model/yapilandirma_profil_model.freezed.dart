@@ -27,6 +27,8 @@ mixin _$YapilandirmaProfilModel {
   set ozellikKodu(String? value) => throw _privateConstructorUsedError;
   String? get aciklama => throw _privateConstructorUsedError;
   set aciklama(String? value) => throw _privateConstructorUsedError;
+  String? get deger => throw _privateConstructorUsedError;
+  set deger(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,7 +42,7 @@ abstract class $YapilandirmaProfilModelCopyWith<$Res> {
           $Res Function(YapilandirmaProfilModel) then) =
       _$YapilandirmaProfilModelCopyWithImpl<$Res, YapilandirmaProfilModel>;
   @useResult
-  $Res call({int? sira, String? ozellikKodu, String? aciklama});
+  $Res call({int? sira, String? ozellikKodu, String? aciklama, String? deger});
 }
 
 /// @nodoc
@@ -60,6 +62,7 @@ class _$YapilandirmaProfilModelCopyWithImpl<$Res,
     Object? sira = freezed,
     Object? ozellikKodu = freezed,
     Object? aciklama = freezed,
+    Object? deger = freezed,
   }) {
     return _then(_value.copyWith(
       sira: freezed == sira
@@ -74,6 +77,10 @@ class _$YapilandirmaProfilModelCopyWithImpl<$Res,
           ? _value.aciklama
           : aciklama // ignore: cast_nullable_to_non_nullable
               as String?,
+      deger: freezed == deger
+          ? _value.deger
+          : deger // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -86,7 +93,7 @@ abstract class _$$_YapilandirmaProfilModelCopyWith<$Res>
       __$$_YapilandirmaProfilModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? sira, String? ozellikKodu, String? aciklama});
+  $Res call({int? sira, String? ozellikKodu, String? aciklama, String? deger});
 }
 
 /// @nodoc
@@ -104,6 +111,7 @@ class __$$_YapilandirmaProfilModelCopyWithImpl<$Res>
     Object? sira = freezed,
     Object? ozellikKodu = freezed,
     Object? aciklama = freezed,
+    Object? deger = freezed,
   }) {
     return _then(_$_YapilandirmaProfilModel(
       sira: freezed == sira
@@ -118,6 +126,10 @@ class __$$_YapilandirmaProfilModelCopyWithImpl<$Res>
           ? _value.aciklama
           : aciklama // ignore: cast_nullable_to_non_nullable
               as String?,
+      deger: freezed == deger
+          ? _value.deger
+          : deger // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -125,7 +137,8 @@ class __$$_YapilandirmaProfilModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_YapilandirmaProfilModel extends _YapilandirmaProfilModel {
-  _$_YapilandirmaProfilModel({this.sira, this.ozellikKodu, this.aciklama})
+  _$_YapilandirmaProfilModel(
+      {this.sira, this.ozellikKodu, this.aciklama, this.deger})
       : super._();
 
   factory _$_YapilandirmaProfilModel.fromJson(Map<String, dynamic> json) =>
@@ -137,6 +150,8 @@ class _$_YapilandirmaProfilModel extends _YapilandirmaProfilModel {
   String? ozellikKodu;
   @override
   String? aciklama;
+  @override
+  String? deger;
 
   @JsonKey(ignore: true)
   @override
@@ -158,7 +173,8 @@ abstract class _YapilandirmaProfilModel extends YapilandirmaProfilModel {
   factory _YapilandirmaProfilModel(
       {int? sira,
       String? ozellikKodu,
-      String? aciklama}) = _$_YapilandirmaProfilModel;
+      String? aciklama,
+      String? deger}) = _$_YapilandirmaProfilModel;
   _YapilandirmaProfilModel._() : super._();
 
   factory _YapilandirmaProfilModel.fromJson(Map<String, dynamic> json) =
@@ -173,6 +189,9 @@ abstract class _YapilandirmaProfilModel extends YapilandirmaProfilModel {
   @override
   String? get aciklama;
   set aciklama(String? value);
+  @override
+  String? get deger;
+  set deger(String? value);
   @override
   @JsonKey(ignore: true)
   _$$_YapilandirmaProfilModelCopyWith<_$_YapilandirmaProfilModel>

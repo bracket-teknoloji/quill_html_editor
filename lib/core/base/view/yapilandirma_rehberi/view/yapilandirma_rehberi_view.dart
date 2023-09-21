@@ -91,10 +91,12 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
                                               ),
                                             )
                                           : Card(
+                                              color: viewModel.color,
                                               shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
                                               child: InkWell(
                                                 onTap: () async {
                                                   if (!viewModel.isLastPage) {
+                                                    viewModel.setYapilandirmaRehberiModel(item);
                                                     viewModel.resetFilteredList();
                                                     await Future.delayed(const Duration(milliseconds: 50));
                                                     viewModel.incrementPage();
