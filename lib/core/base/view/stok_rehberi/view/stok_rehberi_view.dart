@@ -3,6 +3,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/view/yapilandirma_rehberi/model/yapilandirma_rehberi_model.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -292,7 +293,17 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                             return;
                                           }
                                         }
+
                                         stokModel = await getSelectedData(stok);
+                                        if (stok?.yapilandirmaAktif == true) {
+                                          var result = await Get.toNamed("/mainPage/yapilandirmaRehberi", arguments: stok);
+                                          if (result is YapilandirmaRehberiModel) {
+                                            stokModel?.yapkod = result.yapkod;
+                                            stokModel?.yapkodAciklama = result.yapacik;
+                                          } else {
+                                            return;
+                                          }
+                                        }
                                         await Get.toNamed("/kalemEkle", arguments: stokModel ?? stok);
                                         viewModel.setSelectedStokModel(null);
                                       },

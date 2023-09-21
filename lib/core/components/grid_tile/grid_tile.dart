@@ -131,12 +131,5 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
     );
   }
 
-  // Icon yetkiKontrolIcon(String title) {
-  //   if (CacheManager.getFavoriler().containsKey(title.toString())) {
-  //     return const Icon(Icons.star, size: 20);
-  //   } else {
-  //     CacheManager.removeFavoriler(title.toString());
-  //     return const Icon(Icons.star_border, size: 20);
-  //   }
-  // }
+  //
 }

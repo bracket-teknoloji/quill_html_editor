@@ -22,7 +22,7 @@ abstract class _CariRehberiViewModelBase with Store, BaseScrolledViewModelMixin 
     "Kayıt Tarihi (Önce Yeni)": "KAYITTAR_ASC",
     "Kayıt Tarihi (Önce Eski)": "KAYITTAR_DESC",
     "Konum (En Yakın)": "KONUM_AZ",
-    "Konum (En Uzak)": "KOUM_ZA",
+    "Konum (En Uzak)": "KONUM_ZA",
   };
   final Map<String, dynamic> tipiMap = {
     "Alıcı": "A",

@@ -48,6 +48,8 @@ class ApiUrls {
   static const String getStokFiyatGecmisi = "Stok/GetStokFiyatGecmisi";
   static const String savestokFiyatGecmisi = "Stok/SaveStokFiyatGecmisi";
   static const String getStokFiyatOzeti = "Stok/GetStokFiyatOzeti";
+  static const String getYapilandirmaProfili = "Stok/GetYapilandirmaProfili";
+  static const String getYapilandirmaListesi = "Stok/GetYapilandirmaListesi";
 
   //* Finans
   static const String getKasalar = "Finans/GetKasalar";

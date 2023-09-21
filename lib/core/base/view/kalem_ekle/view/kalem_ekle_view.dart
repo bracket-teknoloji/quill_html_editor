@@ -17,6 +17,7 @@ import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../../init/network/login/api_urls.dart";
 import "../../../model/doviz_kurlari_model.dart";
 import "../../../state/base_state.dart";
+import "../../yapilandirma_rehberi/model/yapilandirma_rehberi_model.dart";
 import "../view_model/kalem_ekle_view_model.dart";
 
 class KalemEkleView extends StatefulWidget {
@@ -34,6 +35,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   late final TextEditingController kalemAdiController;
   late final TextEditingController ekAlan1Controller;
   late final TextEditingController ekAlan2Controller;
+  late final TextEditingController yapKodController;
   late final TextEditingController teslimTarihiController;
   late final TextEditingController kosulController;
   late final TextEditingController depoController;
@@ -100,7 +102,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
         IconButton(
             onPressed: () {
               if (formKey.currentState?.validate() ?? false) {
-                if (yetkiController.lokalDepoUygulamasiAcikMi != true){
+                if (yetkiController.lokalDepoUygulamasiAcikMi != true) {
                   viewModel.kalemModel.depoKodu = 0;
                 }
                 if (!viewModel.dovizliMi) {
@@ -271,6 +273,24 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     }),
                     CustomTextField(labelText: "Ek Alan 1", onChanged: (p0) => viewModel.kalemModel.ekalan1 = p0).yetkiVarMi(yetkiController.siparisEkAlan1AktifMi),
                     CustomTextField(labelText: "Ek Alan 2", onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0).yetkiVarMi(yetkiController.siparisSatirdaEkAlan2AktifMi),
+                    CustomTextField(
+                        labelText: "Yapılandırma Kodu",
+                        valueWidget: Observer(
+                          builder: (_) => Text(viewModel.kalemModel.yapkod ?? ""),
+                        ),
+                        isMust: true,
+                        readOnly: true,
+                        suffixMore: true,
+                        controller: yapKodController,
+                        onTap: () async {
+                          var result = await Get.toNamed("/mainPage/yapilandirmaRehberi",
+                              arguments: widget.stokListesiModel ?? viewModel.model ?? StokListesiModel()
+                                ..stokKodu = viewModel.kalemModel.stokKodu);
+                          if (result is YapilandirmaRehberiModel) {
+                            yapKodController.text = result.yapacik ?? "";
+                            viewModel.setYapKod(result.yapkod);
+                          }
+                        }).yetkiVarMi(widget.stokListesiModel?.yapkod != null || widget.kalemModel?.yapkod != null),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -638,6 +658,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     kalemAdiController = TextEditingController();
     ekAlan1Controller = TextEditingController();
     ekAlan2Controller = TextEditingController();
+    yapKodController = TextEditingController();
     teslimTarihiController = TextEditingController();
     kosulController = TextEditingController();
     depoController = TextEditingController();
@@ -656,15 +677,17 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
 
   Future<void> controllerFiller() async {
     viewModel.kalemModel.kalemList ??= widget.stokListesiModel?.stokList?.map((e) => KalemModel.fromStokList(e)).toList();
-    viewModel.kalemModel.stokKodu ??= widget.stokListesiModel?.stokKodu;
-    viewModel.kalemModel.stokSatDovizAdi ??= widget.stokListesiModel?.satisDovizAdi;
-    viewModel.kalemModel.stokAlisDovizAdi ??= widget.stokListesiModel?.alisDovizAdi;
-    viewModel.kalemModel.stokSatDovTip ??= widget.stokListesiModel?.satDovTip;
+    viewModel.kalemModel.stokKodu ??= widget.stokListesiModel?.stokKodu ?? widget.kalemModel?.stokKodu;
+    viewModel.kalemModel.stokSatDovizAdi ??= widget.stokListesiModel?.satisDovizAdi ?? widget.kalemModel?.stokSatDovizAdi;
+    viewModel.kalemModel.stokAlisDovizAdi ??= widget.stokListesiModel?.alisDovizAdi ?? widget.kalemModel?.stokAlisDovizAdi;
+    viewModel.kalemModel.stokSatDovTip ??= widget.stokListesiModel?.satDovTip ?? viewModel.model?.satDovTip;
+    viewModel.setYapKod(widget.stokListesiModel?.yapkod ?? widget.kalemModel?.yapkod);
     viewModel.kalemModel.stokAlisDovTip ??= widget.stokListesiModel?.alisDovTip;
     viewModel.kalemModel.dovizTipi ??= StaticVariables.instance.isMusteriSiparisleri ? viewModel.model?.satDovTip : viewModel.model?.alisDovTip;
     kalemAdiController.text = widget.stokListesiModel?.stokAdi ?? widget.stokListesiModel?.stokKodu ?? widget.kalemModel?.stokAdi ?? widget.kalemModel?.stokKodu ?? "";
     ekAlan1Controller.text = widget.kalemModel?.ekalan1 ?? "";
     ekAlan2Controller.text = widget.kalemModel?.ekalan2 ?? "";
+    yapKodController.text = widget.stokListesiModel?.yapkodAciklama ?? widget.stokListesiModel?.yapkod ?? widget.kalemModel?.yapkod ?? "";
     isk1Controller?.text = widget.kalemModel?.iskonto1.toIntIfDouble.toStringIfNotNull ?? "";
     isk1TipiController?.text = getIskTipiAciklama(widget.kalemModel?.isk1Tipi.toIntIfDouble);
     isk2YuzdeController?.text = widget.kalemModel?.iskonto2.toIntIfDouble.toStringIfNotNull ?? "";
@@ -688,20 +711,20 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     kosulController.text = model.kosulKodu ?? BaseSiparisEditModel.instance.kosulKodu ?? "";
     dovizTipiController.text = (StaticVariables.instance.isMusteriSiparisleri ? viewModel.model?.satisDovizAdi : viewModel.model?.alisDovizAdi) ?? "";
     dovizFiyatiController.text = viewModel.kalemModel.dovizFiyati.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari);
-    if (yetkiController.projeUygulamasiAcikMi){
-    projeController.text = BaseSiparisEditModel.instance.projeAciklama?? "";
-    viewModel.kalemModel.projeKodu = model.projeKodu;
+    if (yetkiController.projeUygulamasiAcikMi) {
+      projeController.text = BaseSiparisEditModel.instance.projeAciklama ?? "";
+      viewModel.kalemModel.projeKodu = model.projeKodu;
     }
     viewModel.kalemModel.stokAdi = widget.stokListesiModel?.stokAdi ?? widget.stokListesiModel?.stokKodu ?? widget.kalemModel?.stokAdi ?? widget.kalemModel?.stokKodu ?? "";
     viewModel.kalemModel.stokKodu = widget.stokListesiModel?.stokKodu ?? widget.kalemModel?.stokKodu ?? "";
     viewModel.kalemModel.kosulKodu = model.kosulKodu;
-    viewModel.kalemModel.teslimTarihi = yetkiController.siparisSatirdaTeslimTarihiSor? BaseSiparisEditModel.instance.teslimTarihi : null;
+    viewModel.kalemModel.teslimTarihi = yetkiController.siparisSatirdaTeslimTarihiSor ? BaseSiparisEditModel.instance.teslimTarihi : null;
     viewModel.setShowDovizBilgileri(widget.stokListesiModel?.dovizliMi ?? false);
     viewModel.setOlcuBirimi(MapEntry<String, int>(widget.stokListesiModel?.olcuBirimi ?? widget.kalemModel?.olcuBirimAdi ?? "", 0));
     if (widget.kalemModel == null) {
       viewModel.setKosul(model.kosulKodu ?? "");
-      if (yetkiController.projeUygulamasiAcikMi){
-      viewModel.setProjeKodu(model.projeKodu ?? "");
+      if (yetkiController.projeUygulamasiAcikMi) {
+        viewModel.setProjeKodu(model.projeKodu ?? "");
       }
       viewModel.setFiyat(fiyatController.text.toDoubleWithFormattedString);
       viewModel.setBrutFiyat(fiyatController.text.toDoubleWithFormattedString);
@@ -727,6 +750,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     kalemAdiController.dispose();
     ekAlan1Controller.dispose();
     ekAlan2Controller.dispose();
+    yapKodController.dispose();
     teslimTarihiController.dispose();
     kosulController.dispose();
     depoController.dispose();

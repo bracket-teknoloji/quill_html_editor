@@ -55,6 +55,8 @@ abstract class _KalemEkleViewModelBase with Store {
   @action
   void setDovizAdi(String? value) => kalemModel = StaticVariables.instance.isMusteriSiparisleri ? kalemModel.copyWith(stokSatDovizAdi: value) : kalemModel.copyWith(stokAlisDovizAdi: value);
   @action
+  void setYapKod(String? value) => kalemModel = kalemModel.copyWith(yapkod: value);
+  @action
   void setDovizFiyati(double? value) => kalemModel = kalemModel.copyWith(dovizFiyati: value);
   @action
   void setOlcuBirimi(MapEntry<String, int>? value) => kalemModel = kalemModel.copyWith(olcuBirimKodu: value?.value, olcuBirimAdi: value?.key);

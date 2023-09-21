@@ -83,6 +83,8 @@ class StokListesiModel with NetworkManagerMixin {
   String? stokKodu;
   String? ureticiKodu;
   bool? yapilandirmaAktif;
+  String? yapkod;
+  String? yapkodAciklama;
 
   static StokListesiModel? _instance;
 

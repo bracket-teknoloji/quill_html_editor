@@ -18,6 +18,7 @@ import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
 import "core/base/view/kalem_ekle/model/kalem_ekle_model.dart";
 import "core/base/view/kalem_ekle/view/kalem_ekle_view.dart";
 import "core/base/view/stok_rehberi/view/stok_rehberi_view.dart";
+import "core/base/view/yapilandirma_rehberi/view/yapilandirma_rehberi_view.dart";
 import "core/constants/enum/siparis_tipi_enum.dart";
 import "core/init/app_info/app_info.dart";
 import "core/init/cache/cache_manager.dart";
@@ -162,6 +163,7 @@ class PickerApp extends StatelessWidget {
 
             GetPage(name: "/stokEdit", page: () => BaseStokEditingView(model: Get.arguments)),
             GetPage(name: "/stokRehberi", page: () => StokRehberiView(searchText: Get.arguments)),
+            GetPage(name: "/yapilandirmaRehberi", page: () => YapilandirmaRehberiView(model: Get.arguments)),
             GetPage(
               name: "/stokHareketleri",
               page: () => StokHareketleriView(
