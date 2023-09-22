@@ -41,6 +41,22 @@ mixin _$LoginViewModel on _LoginViewModelBase, Store {
     });
   }
 
+  late final _$baseUrlAtom =
+      Atom(name: '_LoginViewModelBase.baseUrl', context: context);
+
+  @override
+  String get baseUrl {
+    _$baseUrlAtom.reportRead();
+    return super.baseUrl;
+  }
+
+  @override
+  set baseUrl(String value) {
+    _$baseUrlAtom.reportWrite(value, super.baseUrl, () {
+      super.baseUrl = value;
+    });
+  }
+
   late final _$_LoginViewModelBaseActionController =
       ActionController(name: '_LoginViewModelBase', context: context);
 
@@ -70,7 +86,8 @@ mixin _$LoginViewModel on _LoginViewModelBase, Store {
   String toString() {
     return '''
 showPassword: ${showPassword},
-isDebug: ${isDebug}
+isDebug: ${isDebug},
+baseUrl: ${baseUrl}
     ''';
   }
 }

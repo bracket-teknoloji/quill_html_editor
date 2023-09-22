@@ -103,7 +103,7 @@ class _LoginViewState extends BaseState<LoginView> {
                               children: [
                                 Text("Picker", style: context.theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w500)),
                                 Text("Mobil Veri Toplama Çözümleri", style: context.theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w300)),
-                                Text(networkManager.getBaseUrl).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi(viewModel.isDebug)
+                                Text(viewModel.baseUrl).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi(viewModel.isDebug)
                               ],
                             );
                           }),
@@ -134,8 +134,9 @@ class _LoginViewState extends BaseState<LoginView> {
                                     AccountModel.instance.uyeSifre = selectedUser.account?.parola;
                                   }
                                 }
+
+                                viewModel.checkDebug();
                               }
-                              viewModel.checkDebug();
                             },
                             decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz)),
                             controller: companyController,
@@ -201,15 +202,14 @@ class _LoginViewState extends BaseState<LoginView> {
   void login() async {
     dialogManager.showLoadingDialog("Yükleniyor...");
 
-    AccountModel instance = AccountModel.instance;
-    var a = instance
+    var instance = AccountModel.instance
       ..kullaniciAdi = emailController.text
       ..uyeEmail = selectedUser.account?.email;
-    if (a.uyeEmail == "demo@netfect.com") {
-      a.uyeSifre = null;
+    if (instance.uyeEmail == "demo@netfect.com") {
+      instance.uyeSifre = null;
     } else {
-      if (a.qrData == null) {
-        a.uyeSifre = selectedUser.account?.parola;
+      if (instance.qrData == null) {
+        instance.uyeSifre = selectedUser.account?.parola;
       }
     }
     var result = await networkManager.getUyeBilgileri(selectedUser.account?.email ?? "", password: selectedUser.account?.parola);
@@ -227,16 +227,17 @@ class _LoginViewState extends BaseState<LoginView> {
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
       final response = await networkManager.getToken(
         path: ApiUrls.token,
-        queryParameters: {"deviceInfos": jsonEncode(a.toJson())},
+        queryParameters: {"deviceInfos": jsonEncode(instance.toJson())},
         data: {"grant_type": "password", "username": emailController.text, "password": passwordController.text},
       );
       if (response?.error == null) {
-        log(jsonEncode(a.toJson()), name: "sea");
-        a = a
+        log(jsonEncode(instance.toJson()), name: "sea");
+        instance = instance
           ..isim = response?.userJson?.ad
           ..soyadi = response?.userJson?.soyad
           ..admin = response?.userJson?.admin;
-        CacheManager.setHesapBilgileri(a);
+        CacheManager.setHesapBilgileri(instance);
+        viewModel.checkDebug();
         dialogManager.hideAlertDialog;
         Hive.box("preferences").put(companyController.text, [
           selectedUser.account?.firma,
