@@ -212,7 +212,7 @@ class _LoginViewState extends BaseState<LoginView> {
         instance.uyeSifre = selectedUser.account?.parola;
       }
     }
-    var result = await networkManager.getUyeBilgileri(selectedUser.account?.email ?? "", password: selectedUser.account?.parola);
+    var result = await networkManager.getUyeBilgileri(selectedUser.account?.email ?? "", password: selectedUser.account?.parola, getFromCache: false);
     if (result.success != true) {
       log(result.ex.toString());
       if (CacheManager.getIsLicenseVerified(selectedUser.account?.email ?? "") == false) {

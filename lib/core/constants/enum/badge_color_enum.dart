@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 
-enum BadgeColorEnum { dovizli, kapali, fatura, tamamlanmamis, merkezeGonderildi,seri , esYap}
+enum BadgeColorEnum { dovizli, kapali, fatura, tamamlanmamis, merkezeGonderildi, seri, esYap , konum}
 
 extension BadgeColorExtensions on BadgeColorEnum {
-  MaterialColor? get getColor {
+  MaterialColor get getColor {
     switch (this) {
       case BadgeColorEnum.dovizli:
         return Colors.blue;
@@ -13,14 +13,14 @@ extension BadgeColorExtensions on BadgeColorEnum {
         return Colors.green;
       case BadgeColorEnum.tamamlanmamis:
         return Colors.red;
-        case BadgeColorEnum.merkezeGonderildi:
+      case BadgeColorEnum.merkezeGonderildi:
         return Colors.purple;
-        case BadgeColorEnum.seri:
+      case BadgeColorEnum.seri || BadgeColorEnum.konum:
         return Colors.orange;
-        case BadgeColorEnum.esYap:
+      case BadgeColorEnum.esYap:
         return Colors.lightGreen;
       default:
-        return null;
+        return Colors.orange;
     }
   }
 }

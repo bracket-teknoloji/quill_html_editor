@@ -99,13 +99,16 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
       ..kosulKodu = fields[80] as String?
       ..fiyatGrubu = fields[81] as String?
       ..kull1S = fields[82] as String?
-      ..kull2S = fields[83] as String?;
+      ..kull2S = fields[83] as String?
+      ..dovBorcToplami = fields[84] as double?
+      ..dovAlacakToplami = fields[85] as double?
+      ..dovBakiye = fields[86] as double?;
   }
 
   @override
   void write(BinaryWriter writer, CariListesiModel obj) {
     writer
-      ..writeByte(83)
+      ..writeByte(86)
       ..writeByte(0)
       ..write(obj.cariKodu)
       ..writeByte(1)
@@ -271,7 +274,13 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
       ..writeByte(82)
       ..write(obj.kull1S)
       ..writeByte(83)
-      ..write(obj.kull2S);
+      ..write(obj.kull2S)
+      ..writeByte(84)
+      ..write(obj.dovBorcToplami)
+      ..writeByte(85)
+      ..write(obj.dovAlacakToplami)
+      ..writeByte(86)
+      ..write(obj.dovBakiye);
   }
 
   @override
@@ -372,7 +381,10 @@ CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
       ..kosulKodu = json['KOSUL_KODU'] as String?
       ..fiyatGrubu = json['FIYAT_GRUBU'] as String?
       ..kull1S = json['KULL1_S'] as String?
-      ..kull2S = json['KULL2_S'] as String?;
+      ..kull2S = json['KULL2_S'] as String?
+      ..dovBorcToplami = (json['DOV_BORC_TOPLAMI'] as num?)?.toDouble()
+      ..dovAlacakToplami = (json['DOV_ALACAK_TOPLAMI'] as num?)?.toDouble()
+      ..dovBakiye = (json['DOV_BAKIYE'] as num?)?.toDouble();
 
 Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) {
   final val = <String, dynamic>{};
@@ -465,6 +477,9 @@ Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) {
   writeNotNull('FIYAT_GRUBU', instance.fiyatGrubu);
   writeNotNull('KULL1_S', instance.kull1S);
   writeNotNull('KULL2_S', instance.kull2S);
+  writeNotNull('DOV_BORC_TOPLAMI', instance.dovBorcToplami);
+  writeNotNull('DOV_ALACAK_TOPLAMI', instance.dovAlacakToplami);
+  writeNotNull('DOV_BAKIYE', instance.dovBakiye);
   return val;
 }
 

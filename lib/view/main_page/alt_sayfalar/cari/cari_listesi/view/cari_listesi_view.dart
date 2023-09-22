@@ -365,36 +365,54 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                 Row(
                                   children: [
                                     const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(object.efaturaMi == true),
-                                    const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(object.boylam != null),
-                                    ColorfulBadge(label: Text("Dövizli ${object.dovizAdi}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(object.dovizli != null),
+                                    ColorfulBadge(label: Text("Dövizli ${object.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(object.dovizli == true),
+                                    const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum).yetkiVarMi(object.boylam != null),
                                     // object.boylam != null && object.enlem != null ? const Badge(label: Text(("Konum"))) : const SizedBox(),
                                     // object.dovizAdi != null ? Badge(label: Text(("Dövizli ${object.dovizAdi}"))) : const SizedBox(),
                                   ]
                                       .map(
-                                        (e) => e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize),
+                                        (e) => e is! SizedBox? ? e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize) : null,
                                       )
-                                      .toList(),
+                                      .toList()
+                                      .nullCheckWithGeneric,
                                 ),
                               ],
                             ),
                             trailing: Wrap(children: [
-                              Text(
-                                  (object.bakiye == null
-                                          ? "0.00 $mainCurrency"
-                                          : "${object.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"
-                                              "\n")
-                                      .toString(),
-                                  style: TextStyle(color: UIHelper.getColorWithValue(object.bakiye ?? 0.0)))
+                              Text.rich(
+                                  TextSpan(
+                                      children: [
+                                    TextSpan(
+                                        text: object.bakiye == null
+                                            ? "0,00 $mainCurrency"
+                                            : "${object.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"
+                                                "\n",
+                                        style: TextStyle(color: UIHelper.getColorWithValue(object.bakiye ?? 0.0))),
+                                    object.bakiye != null
+                                        ? TextSpan(text: "${((object.bakiye ?? 0) > 0) ? "Tahsil Edilecek" : "Ödenecek"}\n", style: const TextStyle(fontStyle: FontStyle.italic))
+                                        : null,
+                                    object.dovizli == true
+                                        ? TextSpan(
+                                            text: "${object.dovBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${object.dovizAdi ?? ""}",
+                                            style: TextStyle(color: UIHelper.getColorWithValue(object.bakiye ?? 0.0)))
+                                        : null,
+                                  ].nullCheckWithGeneric),
+                                  textAlign: TextAlign.center),
                             ]),
                           ),
                         ),
                       );
                     } else {
-                      return AnimatedContainer(
-                        duration: const Duration(milliseconds: 150),
-                        height: viewModel.dahaVarMi || (viewModel.cariListesi?.isEmpty ?? false) ? 50 : 0,
-                        child: const Center(child: CircularProgressIndicator.adaptive()),
-                      );
+                      return Observer(builder: (_) {
+                        return Visibility(
+                          visible: viewModel.dahaVarMi,
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 150),
+                            height: viewModel.dahaVarMi || (viewModel.cariListesi?.isEmpty ?? false) ? 50 : 0,
+                            child: const Center(child: CircularProgressIndicator.adaptive()),
+                          ),
+                        );
+                      });
                     }
                   },
                 )),

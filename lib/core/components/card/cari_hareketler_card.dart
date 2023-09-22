@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "../../constants/extensions/number_extensions.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 import "../../base/state/base_state.dart";
 import "../../constants/extensions/date_time_extensions.dart";
+import "../../constants/extensions/number_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../helper_widgets/custom_label_widget.dart";
@@ -47,7 +47,8 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                 ),
                 Column(
                   children: [
-                    Text("${widget.cariHareketleriModel.alacak?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? widget.cariHareketleriModel.borc?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                    Text(
+                        "${widget.cariHareketleriModel.alacak?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? widget.cariHareketleriModel.borc?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                         style: theme.textTheme.bodySmall?.copyWith(fontSize: 12)),
                     Visibility(
                         visible: widget.cariHareketleriModel.dovizliMi,
@@ -72,18 +73,12 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               //Açıklama
-              SizedBox(
-                width: width * 0.5,
-                child: Text(widget.cariHareketleriModel.aciklama ?? "",
-                    overflow: TextOverflow.ellipsis, softWrap: true, maxLines: 2, style: theme.textTheme.bodySmall?.copyWith(color: Colors.grey, fontStyle: FontStyle.italic)),
-              ),
+              Text(widget.cariHareketleriModel.aciklama ?? "",
+                  overflow: TextOverflow.ellipsis, softWrap: true, maxLines: 2, style: theme.textTheme.bodySmall?.copyWith(color: Colors.grey, fontStyle: FontStyle.italic)),
               //YuruyenBakiye
-              Container(
-                  alignment: Alignment.topRight,
-                  width: width * 0.4,
-                  child: Text("Bakiye : ${dovizCheck.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.dovizTipi ?? mainCurrency}",
-                      style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(dovizCheck)))),
-            ].map((e) => e.paddingAll(UIHelper.lowSize)).toList(),
+              Text("Bakiye : ${dovizCheck.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.dovizTipi ?? mainCurrency}",
+                  style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(dovizCheck))),
+            ].map((e) => e.paddingAll(UIHelper.highSize)).toList(),
           )
         ],
       ).paddingAll(UIHelper.lowSize),

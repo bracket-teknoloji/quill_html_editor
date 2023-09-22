@@ -192,6 +192,12 @@ class CariListesiModel with NetworkManagerMixin {
   String? kull1S;
   @HiveField(83)
   String? kull2S;
+  @HiveField(84)
+  double? dovBorcToplami;
+  @HiveField(85)
+  double? dovAlacakToplami;
+  @HiveField(86)
+  double? dovBakiye;
 
   factory CariListesiModel.fromJson(Map<String, dynamic> json) => _$CariListesiModelFromJson(json);
   @override

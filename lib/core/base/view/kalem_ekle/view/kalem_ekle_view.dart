@@ -231,7 +231,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         Card(
                             color: theme.colorScheme.primary.withOpacity(0.1),
                             child: Center(
-                              child: Text.rich(TextSpan(children: [const TextSpan(text: "Son Fiyat: "), TextSpan(text: "0.00 $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))]))
+                              child: Text.rich(TextSpan(children: [const TextSpan(text: "Son Fiyat: "), TextSpan(text: "0.,00 $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))]))
                                   .paddingOnly(top: UIHelper.lowSize),
                             ))
                       ],

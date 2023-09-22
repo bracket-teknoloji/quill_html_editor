@@ -90,10 +90,11 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
       AccountModel.instance
         ..uyeEmail = emailController.text
         ..uyeSifre = encodedPassword;
-      final response = await networkManager.getUyeBilgileri(emailController.text, password: encodedPassword);
+      final response = await networkManager.getUyeBilgileri(emailController.text, password: encodedPassword, getFromCache: false);
       dialogManager.hideAlertDialog;
       if (response.success == true) {
         CacheManager.setHesapBilgileri(AccountModel.instance);
+        CacheManager.setAccounts(response.data!.first..parola = encodedPassword);
         Get.back(result: true);
         Get.offAndToNamed("/addCompany");
         dialogManager.showSuccessSnackBar("Başarılı");

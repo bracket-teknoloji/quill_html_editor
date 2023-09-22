@@ -65,7 +65,9 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     if (sirket?.length == 1 && mounted) {
       controller1.text = sirket?[0].company ?? "";
     } else if (sirket?.length != 1 && controller1.text == "") {
+      if (mounted){
       await sirketDialog(context);
+      }
     }
     if (selected["Şirket"] != "" || selected["Şirket"] != null) {
       sube = await getSube(selected["Şirket"]);

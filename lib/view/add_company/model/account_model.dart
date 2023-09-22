@@ -29,6 +29,7 @@ class AccountModel with NetworkManagerMixin {
   }
   static AccountModel instance = AccountModel.getValue();
 
+
   static setFromAccountResponseModel(AccountResponseModel? model){
     instance.uyeEmail = model?.email;
     instance.uyeSifre = model?.parola;

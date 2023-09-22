@@ -599,11 +599,17 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                     ),
                   );
                 } else {
-                  return AnimatedContainer(
-                    duration: const Duration(milliseconds: 150),
-                    height: (viewModel.dahaVarMi) ? 50 : 0,
-                    child: const Center(child: CircularProgressIndicator.adaptive()),
-                  );
+                  return Observer(builder: (_) {
+                    double height = viewModel.dahaVarMi ? 50 : 0;
+                    return Visibility(
+                      visible: viewModel.dahaVarMi,
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 150),
+                        height: height,
+                        child: const Center(child: CircularProgressIndicator.adaptive()),
+                      ),
+                    );
+                  });
                 }
               },
             );
@@ -611,7 +617,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   }
 
   Future<void> getData() async {
-    viewModel.setDahaVarMi(false);
+    viewModel.dahaVarMi = false;
     var data2 = {"MenuKodu": "STOK_STOK", "ResimGoster": viewModel.resimleriGoster, "Siralama": viewModel.siralama, "Sayfa": viewModel.sayfa, "BakiyeDurumu": viewModel.bakiye ?? ""};
     if (!viewModel.bottomSheetModel.arrGrupKodu.isEmptyOrNull) {
       List<String> liste = [];
@@ -669,16 +675,16 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
             imageMap[stokKaydi.stokKodu ?? ""] = await getImage(stokKaydi.resimUrlKucuk ?? "");
           }
         }
-        viewModel.addImageMap(imageMap);
         viewModel.setStokListesi(liste);
+        viewModel.addImageMap(imageMap);
       } else {
         for (var stokKaydi in liste ?? <StokListesiModel>[]) {
           if (stokKaydi.resimUrlKucuk != null && viewModel.resimleriGoster == "E") {
             imageMap[stokKaydi.stokKodu ?? ""] = await getImage(stokKaydi.resimUrlKucuk ?? "");
           }
         }
-        viewModel.addImageMap(imageMap);
         viewModel.addStokListesi(liste ?? <StokListesiModel>[]);
+        viewModel.addImageMap(imageMap);
       }
       if ((liste?.length ?? 0) < parametreModel.sabitSayfalamaOgeSayisi) {
         if (viewModel.bottomSheetModel != StokBottomSheetModel()) {

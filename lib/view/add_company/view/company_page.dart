@@ -43,14 +43,16 @@ class _AccountsViewState extends BaseState<AccountsView> {
   FloatingActionButton fab() {
     return FloatingActionButton(
       onPressed: () async {
-        await Get.toNamed("/addAccount");
-        setState(() {});
+        var result = await Get.toNamed("/addAccount");
+        if (result != null) {
+          setState(() {});
+        }
       },
       child: const Icon(Icons.add),
     );
   }
 
-  SingleChildRenderObjectWidget body() {
+  Widget body() {
     return getListLength == 0
         ? const Center(child: Text("Hesap Bulunamadı"))
         : Padding(

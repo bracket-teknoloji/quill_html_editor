@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
-import "../../constants/extensions/widget_extensions.dart";
 
 import "../../constants/enum/badge_color_enum.dart";
+import "../../constants/extensions/widget_extensions.dart";
 
 class ColorfulBadge extends StatefulWidget {
   final Widget? label;
@@ -18,7 +18,7 @@ class _ColorfulBadgeState extends State<ColorfulBadge> {
     return Badge(
       label: widget.label,
       textColor: Colors.white,
-      backgroundColor: widget.badgeColorEnum?.getColor?[700],
+      backgroundColor: widget.badgeColorEnum?.getColor[700],
     ).yetkiVarMi(widget.label != null);
   }
 }
