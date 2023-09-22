@@ -25,8 +25,35 @@ mixin _$LoginViewModel on _LoginViewModelBase, Store {
     });
   }
 
+  late final _$isDebugAtom =
+      Atom(name: '_LoginViewModelBase.isDebug', context: context);
+
+  @override
+  bool get isDebug {
+    _$isDebugAtom.reportRead();
+    return super.isDebug;
+  }
+
+  @override
+  set isDebug(bool value) {
+    _$isDebugAtom.reportWrite(value, super.isDebug, () {
+      super.isDebug = value;
+    });
+  }
+
   late final _$_LoginViewModelBaseActionController =
       ActionController(name: '_LoginViewModelBase', context: context);
+
+  @override
+  void checkDebug() {
+    final _$actionInfo = _$_LoginViewModelBaseActionController.startAction(
+        name: '_LoginViewModelBase.checkDebug');
+    try {
+      return super.checkDebug();
+    } finally {
+      _$_LoginViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void changeShowPassword() {
@@ -42,7 +69,8 @@ mixin _$LoginViewModel on _LoginViewModelBase, Store {
   @override
   String toString() {
     return '''
-showPassword: ${showPassword}
+showPassword: ${showPassword},
+isDebug: ${isDebug}
     ''';
   }
 }

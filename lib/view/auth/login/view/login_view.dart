@@ -10,6 +10,7 @@ import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/login_dialog_model.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:wave/config.dart";
 import "package:wave/wave.dart";
 
@@ -95,15 +96,18 @@ class _LoginViewState extends BaseState<LoginView> {
                         ).paddingOnly(bottom: context.sized.dynamicHeight(0.02), top: context.sized.dynamicHeight(0.04)),
                         Padding(
                           padding: UIHelper.midPaddingVertical,
-                          child: Column(
-                            children: [
-                              Text(
-                                "Picker",
-                                style: context.theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w500),
-                              ),
-                              Text("Mobil Veri Toplama Çözümleri", style: context.theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w300)),
-                            ],
-                          ),
+                          child: Observer(builder: (_) {
+                            return Column(
+                              children: [
+                                Text(
+                                  "Picker",
+                                  style: context.theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w500),
+                                ),
+                                Text("Mobil Veri Toplama Çözümleri", style: context.theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w300)),
+                                Text(networkManager.getBaseUrl).yetkiVarMi(viewModel.isDebug)
+                              ],
+                            );
+                          }),
                         ),
                         CustomWidgetWithLabel(
                           text: "Firma",
@@ -132,6 +136,7 @@ class _LoginViewState extends BaseState<LoginView> {
                                   }
                                 }
                               }
+                              viewModel.checkDebug();
                             },
                             decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz)),
                             controller: companyController,

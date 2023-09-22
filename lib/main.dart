@@ -17,6 +17,7 @@ import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_listesi/view
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
 import "core/base/view/kalem_ekle/model/kalem_ekle_model.dart";
 import "core/base/view/kalem_ekle/view/kalem_ekle_view.dart";
+import "core/base/view/qr/view/qr_view.dart";
 import "core/base/view/stok_rehberi/view/stok_rehberi_view.dart";
 import "core/base/view/yapilandirma_rehberi/view/yapilandirma_rehberi_view.dart";
 import "core/constants/enum/siparis_tipi_enum.dart";
@@ -28,9 +29,8 @@ import "firebase_options.dart";
 import "view/add_company/model/account_model.dart";
 import "view/add_company/view/add_account_view.dart";
 import "view/add_company/view/company_page.dart";
-import "view/add_company/view/qr_view.dart";
-import "view/auth/view/entry_company_view.dart";
 import "view/auth/login/view/login_view.dart";
+import "view/auth/view/entry_company_view.dart";
 import "view/main_page/alt_sayfalar/cari/base_cari_edit/view/base_cari_edit_view.dart";
 import "view/main_page/alt_sayfalar/cari/cari_hareket_yeni_kayit/view/cari_hareket_yeni_kayit_view.dart";
 import "view/main_page/alt_sayfalar/cari/cari_hareketleri/view/cari_hareketleri_view.dart";

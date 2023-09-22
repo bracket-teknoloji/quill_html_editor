@@ -17,9 +17,9 @@ class LoginDialogModelAdapter extends TypeAdapter<LoginDialogModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return LoginDialogModel(
-      account: fields[0] as AccountResponseModel,
-      username: fields[1] as String,
-      password: fields[2] as String,
+      account: fields[0] as AccountResponseModel?,
+      username: fields[1] as String?,
+      password: fields[2] as String?,
     );
   }
 

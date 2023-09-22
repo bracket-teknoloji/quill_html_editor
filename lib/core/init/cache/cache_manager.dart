@@ -80,9 +80,9 @@ class CacheManager {
     siparisEditListBox = await Hive.openBox<ListSiparisEditModel>("siparisEditList");
     profilParametreBox = await Hive.openBox<Map>("profilParametre");
     // profilParametreBox.clear();
-    await verifiedUsersBox.clear();
-    await hesapBilgileriBox.clear();
-    await accountsBox.clear();
+    // await verifiedUsersBox.clear();
+    // await hesapBilgileriBox.clear();
+    // await accountsBox.clear();
     if (profilParametreBox.isEmpty) {
       await profilParametreBox.put("value", BaseProfilParametreModel().toJson());
     }
