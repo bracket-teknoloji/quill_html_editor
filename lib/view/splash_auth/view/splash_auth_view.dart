@@ -152,14 +152,14 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
     final response = await networkManager.dioPost<AccountResponseModel>(
         bodyModel: AccountResponseModel(), showError: false, data: CacheManager.getHesapBilgileri?.toJson(), addTokenKey: false, path: ApiUrls.getUyeBilgileri);
     if (response.success == true) {
-      CacheManager.setAccounts(response.data.first..parola = CacheManager.getVerifiedUser.account?.parola);
+      CacheManager.setAccounts(response.data.first..parola = CacheManager.getVerifiedUser.account.parola);
     }
     return response;
   }
 
   Future<void> getSession() async {
-    GenericResponseModel lisansResponse = await networkManager.getUyeBilgileri(CacheManager.getVerifiedUser.account?.email ?? "");
-    if (CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "") == false) {
+    GenericResponseModel lisansResponse = await networkManager.getUyeBilgileri(CacheManager.getVerifiedUser.account.email ?? "");
+    if (CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account.email ?? "") == false) {
       viewModel.setTitle("${lisansResponse.message}\n ${lisansResponse.ex?["Message"]}\nLisans bilgileri alınamadı. Lütfen internet bağlantınızı kontrol edin.");
       viewModel.setIsError(true);
       return;

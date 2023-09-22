@@ -80,17 +80,20 @@ class CacheManager {
     siparisEditListBox = await Hive.openBox<ListSiparisEditModel>("siparisEditList");
     profilParametreBox = await Hive.openBox<Map>("profilParametre");
     // profilParametreBox.clear();
+    await verifiedUsersBox.clear();
+    await hesapBilgileriBox.clear();
+    await accountsBox.clear();
     if (profilParametreBox.isEmpty) {
-      profilParametreBox.put("value", BaseProfilParametreModel().toJson());
+      await profilParametreBox.put("value", BaseProfilParametreModel().toJson());
     }
     if (isLicenseVerifiedBox.isEmpty) {
-      isLicenseVerifiedBox.put("value", false);
+      await isLicenseVerifiedBox.put("value", false);
     }
     if (verifiedUsersBox.isEmpty) {
-      verifiedUsersBox.put("data", LoginDialogModel(account: AccountResponseModel.demo(firma: "demo", email: "demo@netfect.com"), username: "demo", password: "demo"));
+      await verifiedUsersBox.put("data", LoginDialogModel(account: AccountResponseModel.demo(firma: "demo", email: "demo@netfect.com"), username: "demo", password: "demo"));
     }
     if (hesapBilgileriBox.isEmpty) {
-      hesapBilgileriBox.put("value", AccountModel.instance);
+      await hesapBilgileriBox.put("value", AccountModel.instance);
     }
   }
 
@@ -168,7 +171,7 @@ class CacheManager {
   static void setProfilParametre(BaseProfilParametreModel value) => profilParametreBox.put("value", value.toJson());
 
 //* Clear and Remove
-static void resetVerifiedUser() => setVerifiedUser(LoginDialogModel(account: AccountResponseModel.demo(firma: "demo", email: "demo@netfect.com"), username: "demo", password: "demo"));
+  static void resetVerifiedUser() => setVerifiedUser(LoginDialogModel(account: AccountResponseModel.demo(firma: "demo", email: "demo@netfect.com"), username: "demo", password: "demo"));
   static void clearBox(String boxName) => Hive.box(boxName).clear();
   static void removeFavoriler(String key) {
     if (favorilerBox.values.toList().indexWhere((element) => element.title == key) >= 0) {

@@ -7,6 +7,9 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/badge/colorful_badge.dart";
+import "package:picker/core/constants/enum/badge_color_enum.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
@@ -361,10 +364,16 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                 object.cariIl != null ? Text("${object.cariIl}/${object.cariIlce}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))) : const SizedBox(),
                                 Row(
                                   children: [
-                                    object.efaturaMi == true ? const Badge(label: Text(("E-Fatura"))) : const SizedBox(),
-                                    object.boylam != null && object.enlem != null ? const Badge(label: Text(("Konum"))) : const SizedBox(),
-                                    object.dovizli == true ? Badge(label: Text(("Dövizli ${object.dovizAdi}"))) : const SizedBox(),
-                                  ].map((e) => e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize)).toList(),
+                                    const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(object.efaturaMi == true),
+                                    const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(object.boylam != null),
+                                    ColorfulBadge(label: Text("Dövizli ${object.dovizAdi}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(object.dovizAdi != null),
+                                    // object.boylam != null && object.enlem != null ? const Badge(label: Text(("Konum"))) : const SizedBox(),
+                                    // object.dovizAdi != null ? Badge(label: Text(("Dövizli ${object.dovizAdi}"))) : const SizedBox(),
+                                  ]
+                                      .map(
+                                        (e) => e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize),
+                                      )
+                                      .toList(),
                                 ),
                               ],
                             ),
@@ -402,20 +411,40 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     ? Row(
                         children: [
                           Expanded(
-                              child: FooterButton(children: [
-                            const Text("Tahsil Edilecek"),
-                            Text(
-                              "${double.tryParse(paramData["TAHSIL_EDILECEK"].replaceAll(",", "."))?.toInt().commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                              style: const TextStyle(color: Colors.green),
-                            ),
-                          ])),
+                              child: FooterButton(
+                                  children: [
+                                const Text("Tahsil Edilecek"),
+                                Text(
+                                  "${double.tryParse(paramData["TAHSIL_EDILECEK"].replaceAll(",", "."))?.toInt().commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                                  style: const TextStyle(color: Colors.green),
+                                ),
+                              ],
+                                  onPressed: () async {
+                                    viewModel.changeArama("");
+                                    viewModel.resetSayfa();
+                                    viewModel.changeCariListesi(null);
+                                    var result = await getData(sayfa: 1, filterBakiye: "T");
+                                    if (result is List) {
+                                      viewModel.changeCariListesi(result);
+                                    }
+                                  })),
                           const VerticalDivider(thickness: 1, width: 1),
                           Expanded(
-                              child: FooterButton(children: [
-                            const Text("Ödenecek"),
-                            Text("${(double.tryParse(paramData["ODENECEK"].replaceAll(",", "."))!.toInt() * -1).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                                style: const TextStyle(color: Colors.red)),
-                          ]))
+                              child: FooterButton(
+                                  children: [
+                                const Text("Ödenecek"),
+                                Text("${(double.tryParse(paramData["ODENECEK"].replaceAll(",", "."))!.toInt() * -1).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                                    style: const TextStyle(color: Colors.red)),
+                              ],
+                                  onPressed: () async {
+                                    viewModel.changeArama("");
+                                    viewModel.resetSayfa();
+                                    viewModel.changeCariListesi(null);
+                                    var result = await getData(sayfa: 1, filterBakiye: "Ö");
+                                    if (result is List) {
+                                      viewModel.changeCariListesi(result);
+                                    }
+                                  }))
                         ],
                       )
                     : null,
@@ -461,52 +490,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
     });
   }
 
-  // ElevatedButton footerButton(Color color, List<Widget> child) {
-  //   return ElevatedButton(
-  //     style: ButtonStyle(
-  //       padding: MaterialStateProperty.all(EdgeInsets.zero),
-  //       backgroundColor: MaterialStateProperty.all(color),
-  //       foregroundColor: MaterialStateProperty.all(Colors.white),
-  //       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-  //         RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
-  //       ),
-  //     ),
-  //     onPressed: () {},
-  //     child: Column(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       crossAxisAlignment: CrossAxisAlignment.center,
-  //       children: child,
-  //     ),
-  //   );
-  // }
-
-  // Future<GenericResponseModel<NetworkManagerMixin>> getFilterData() async {
-  //   GenericResponseModel<NetworkManagerMixin> responseSehirler;
-  //   responseSehirler = await networkManager.dioGet<CariSehirlerModel>(path: ApiUrls.getCariKayitliSehirler, bodyModel: CariSehirlerModel(), addTokenKey: true, headers: {
-  //     "VERITABANI": AccountModel.instance.aktifVeritabani.toString(),
-  //     "ISLETME_KODU": AccountModel.instance.aktifIsletmeKodu.toString(),
-  //     "SUBE_KODU": AccountModel.instance.aktifSubeKodu.toString(),
-  //     "Modul": "CARI",
-  //     "GrupNo": "-1",
-  //     "Kullanimda": "E"
-  //   });
-
-  //   return responseSehirler;
-  // }
-
-  // Future<GenericResponseModel<NetworkManagerMixin>> getKod() async {
-  //   var responseKod = await networkManager.dioGet<CariGrupKoduModel>(
-  //       path: ApiUrls.getGrupKodlari,
-  //       bodyModel: CariGrupKoduModel(),
-  //       addCKey: true,
-  //       headers: {"Modul": "CARI", "GrupNo": "1"},
-  //
-  //       addSirketBilgileri: true,
-  //       queryParameters: {"Modul": "CARI", "GrupNo": "-1"});
-  //   return responseKod;
-  // }
-
-  Future<List?> getData({required int sayfa, String? sort1}) async {
+  Future<List?> getData({required int sayfa, String? sort1, String? filterBakiye}) async {
     viewModel.changeDahaVarMi(false);
     var queryParameters2 = {
       "EFaturaGoster": "true",
@@ -516,6 +500,9 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       "FilterText": viewModel.arama,
       "Kod": "",
     };
+    if (filterBakiye != null) {
+      queryParameters2["FILTER_BAKIYE"] = filterBakiye;
+    }
     if (bottomSheetResponseModel != null) {
       nullChecker("arrPlasiyer", queryParameters2);
       nullChecker("arrSehir", queryParameters2);
@@ -527,6 +514,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       nullChecker("arrKod5", queryParameters2);
       nullChecker("ilce", queryParameters2);
       nullChecker("cariTipi", queryParameters2);
+
       if (bottomSheetResponseModel!.filterBakiye!.ext.isNotNullOrNoEmpty) {
         String a = bottomSheetResponseModel!.filterBakiye ?? "";
         String b = a == "Tümü" ? "" : a[0];

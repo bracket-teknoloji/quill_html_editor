@@ -4,7 +4,7 @@ import "dart:convert";
 import "dart:developer";
 
 import "package:flutter/material.dart";
-import "package:flutter/scheduler.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
@@ -13,13 +13,14 @@ import "package:picker/core/base/model/login_dialog_model.dart";
 import "package:wave/config.dart";
 import "package:wave/wave.dart";
 
-import "../../../core/base/state/base_state.dart";
-import "../../../core/components/helper_widgets/custom_label_widget.dart";
-import "../../../core/constants/ui_helper/ui_helper.dart";
-import "../../../core/init/app_info/app_info.dart";
-import "../../../core/init/cache/cache_manager.dart";
-import "../../../core/init/network/login/api_urls.dart";
-import "../../add_company/model/account_model.dart";
+import "../../../../core/base/state/base_state.dart";
+import "../../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../core/init/app_info/app_info.dart";
+import "../../../../core/init/cache/cache_manager.dart";
+import "../../../../core/init/network/login/api_urls.dart";
+import "../../../add_company/model/account_model.dart";
+import "../view_model/login_view_model.dart";
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -29,8 +30,8 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends BaseState<LoginView> {
-  bool isObscure = true;
-  late LoginDialogModel textFieldData;
+  LoginViewModel viewModel = LoginViewModel();
+  late LoginDialogModel verifiedUser;
   late final TextEditingController emailController;
   late final TextEditingController companyController;
   late final TextEditingController passwordController;
@@ -41,17 +42,12 @@ class _LoginViewState extends BaseState<LoginView> {
     emailController = TextEditingController();
     companyController = TextEditingController();
     passwordController = TextEditingController();
-    textFieldData = CacheManager.getVerifiedUser;
-    if (textFieldData.account?.firma != null) {
-      companyController.text = textFieldData.account!.firma!;
+    verifiedUser = CacheManager.getVerifiedUser;
+    if (verifiedUser.account.firma != null) {
+      companyController.text = verifiedUser.account.firma!;
     }
-    if (textFieldData.username != null) {
-      emailController.text = textFieldData.username!;
-    }
-    if (textFieldData.password != null) {
-      passwordController.text = textFieldData.password!;
-    }
-    // autoLogin();
+    emailController.text = verifiedUser.username;
+    passwordController.text = verifiedUser.password;
   }
 
   @override
@@ -76,7 +72,7 @@ class _LoginViewState extends BaseState<LoginView> {
               duration: 200,
               backgroundColor: theme.scaffoldBackgroundColor),
           Scaffold(
-            appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent, automaticallyImplyLeading: false),
+            // appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent, automaticallyImplyLeading: false),
             floatingActionButton: !context.general.isKeyBoardOpen ? Text("V ${AppInfoModel.instance.version}").paddingOnly(bottom: 20) : null,
             floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerDocked,
             primary: true,
@@ -114,32 +110,27 @@ class _LoginViewState extends BaseState<LoginView> {
                           child: TextFormField(
                             readOnly: true,
                             onTap: () async {
-                              var a = await dialogManager.selectCompanyDialog();
-                              a = a as LoginDialogModel?;
-                              if (a != null) {
-                                textFieldData = a;
+                              var selectedFirma = await dialogManager.selectCompanyDialog();
+                              if (selectedFirma != null) {
+                                selectedFirma = selectedFirma as LoginDialogModel;
+                                verifiedUser = selectedFirma;
                                 //*LoginDialogModel
-                                if (textFieldData.account?.firma != null) {
-                                  companyController.text = textFieldData.account!.firma!;
+                                if (verifiedUser.account.firma != null) {
+                                  companyController.text = verifiedUser.account.firma!;
                                 }
-                                if (textFieldData.username != null) {
-                                  emailController.text = textFieldData.username!;
-                                }
-                                if (textFieldData.password != null) {
-                                  passwordController.text = textFieldData.password ?? "";
-                                }
-                                if (textFieldData.account?.firma == "demo") {
+                                emailController.text = verifiedUser.username;
+                                passwordController.text = verifiedUser.password ?? "";
+                                if (verifiedUser.account.firma == "demo") {
                                   AccountModel.instance.uyeEmail = "demo@netfect.com";
                                   AccountModel.instance.uyeSifre = null;
-                                  textFieldData.account?.email = "demo@netfect.com";
-                                  textFieldData.account?.parola = null;
+                                  verifiedUser.account.email = "demo@netfect.com";
+                                  verifiedUser.account.parola = null;
                                 } else {
-                                  AccountModel.instance.uyeEmail = textFieldData.account?.email;
+                                  AccountModel.instance.uyeEmail = verifiedUser.account.email;
                                   if (CacheManager.getHesapBilgileri?.qrData == null) {
-                                    AccountModel.instance.uyeSifre = textFieldData.account?.parola;
+                                    AccountModel.instance.uyeSifre = verifiedUser.account.parola;
                                   }
                                 }
-                                setState(() {});
                               }
                             },
                             decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz)),
@@ -161,23 +152,19 @@ class _LoginViewState extends BaseState<LoginView> {
                           padding: UIHelper.midPaddingVertical,
                           child: CustomWidgetWithLabel(
                             text: "Şifre",
-                            child: TextField(
-                              controller: passwordController,
-                              textInputAction: TextInputAction.done,
-                              obscureText: isObscure,
-                              decoration: InputDecoration(
-                                suffixIcon: IconButton(
-                                  onPressed: () {
-                                    setState(
-                                      () {
-                                        isObscure = !isObscure;
-                                      },
-                                    );
-                                  },
-                                  icon: isObscure ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
+                            child: Observer(builder: (_) {
+                              return TextField(
+                                controller: passwordController,
+                                textInputAction: TextInputAction.done,
+                                obscureText: viewModel.showPassword,
+                                decoration: InputDecoration(
+                                  suffixIcon: IconButton(
+                                    onPressed: () => viewModel.changeShowPassword(),
+                                    icon: viewModel.showPassword ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
+                                  ),
                                 ),
-                              ),
-                            ),
+                              );
+                            }),
                           ),
                         ),
                         Padding(
@@ -196,32 +183,15 @@ class _LoginViewState extends BaseState<LoginView> {
     );
   }
 
-  void autoLogin() async {
-    SchedulerBinding.instance.addPostFrameCallback((_) {
-      if (AccountModel.instance.ozelCihazKimligi.ext.isNotNullOrNoEmpty) {
-        bool? a = CacheManager.getLogout;
-        if (a != null && a) {
-          login();
-        }
-      }
-    });
-  }
-
   ElevatedButton get elevatedButton {
-    return ElevatedButton(
-        onPressed: () async {
-          // await AppTrackingTransparency.requestTrackingAuthorization();
-          // if ((await AppTrackingTransparency.trackingAuthorizationStatus != TrackingStatus.authorized) && Platform.isIOS) {
-          //   await dialogManager.showAlertDialog(
-          //       "Cihaz bilgilerinizin toplanması için izin vermeniz gerekmektedir. Ayarlar'dan lütfen cihazın \n\"Takip Etmeye İzin Ver\"\nayarını açınız.\n\nAyarlar sayfasına yönlendiriliyorsunuz.");
-          //   await AppSettings.openAppSettings();
-          // } else {
-          // }
-          login();
-        },
-        child: const Text(
-          "Giriş",
-        ));
+    // await AppTrackingTransparency.requestTrackingAuthorization();
+    // if ((await AppTrackingTransparency.trackingAuthorizationStatus != TrackingStatus.authorized) && Platform.isIOS) {
+    //   await dialogManager.showAlertDialog(
+    //       "Cihaz bilgilerinizin toplanması için izin vermeniz gerekmektedir. Ayarlar'dan lütfen cihazın \n\"Takip Etmeye İzin Ver\"\nayarını açınız.\n\nAyarlar sayfasına yönlendiriliyorsunuz.");
+    //   await AppSettings.openAppSettings();
+    // } else {
+    // }
+    return ElevatedButton(onPressed: () async => login(), child: const Text("Giriş"));
   }
 
   void login() async {
@@ -230,18 +200,18 @@ class _LoginViewState extends BaseState<LoginView> {
     AccountModel instance = AccountModel.instance;
     var a = instance
       ..kullaniciAdi = emailController.text
-      ..uyeEmail = textFieldData.account?.email;
+      ..uyeEmail = verifiedUser.account.email;
     if (a.uyeEmail == "demo@netfect.com") {
       a.uyeSifre = null;
     } else {
       if (a.qrData == null) {
-        a.uyeSifre = textFieldData.account?.parola;
+        a.uyeSifre = verifiedUser.account.parola;
       }
     }
-    var result = await networkManager.getUyeBilgileri(textFieldData.account?.email ?? "", password: textFieldData.account?.parola);
+    var result = await networkManager.getUyeBilgileri(verifiedUser.account.email ?? "", password: verifiedUser.account.parola);
     if (result.success != true) {
       log(result.ex.toString());
-      if (CacheManager.getIsLicenseVerified(textFieldData.account?.email ?? "") == false) {
+      if (CacheManager.getIsLicenseVerified(verifiedUser.account.email ?? "") == false) {
         dialogManager.hideAlertDialog;
         dialogManager.showAlertDialog(("${result.message ?? ""}\n${result.ex?["Message"] ?? result.errorDetails ?? "Lisansınız bulunamadı. Lütfen lisansınızı kontrol ediniz."}"));
         return;
@@ -265,13 +235,13 @@ class _LoginViewState extends BaseState<LoginView> {
         CacheManager.setHesapBilgileri(a);
         dialogManager.hideAlertDialog;
         Hive.box("preferences").put(companyController.text, [
-          textFieldData.account?.firma,
+          verifiedUser.account.firma,
           emailController.text,
           passwordController.text,
         ]);
 
         if (context.mounted && response?.accessToken != null) {
-          CacheManager.setVerifiedUser(textFieldData
+          CacheManager.setVerifiedUser(verifiedUser
             ..username = emailController.text
             ..password = passwordController.text);
           CacheManager.setToken(response!.accessToken.toString());
@@ -297,16 +267,16 @@ class _LoginViewState extends BaseState<LoginView> {
   //   final result = await networkManager.dioPost<AccountResponseModel>(
   //       bodyModel: AccountResponseModel(), showError: false, data: AccountModel.instance.toJson(), addTokenKey: false, path: ApiUrls.getUyeBilgileri);
   //   if (result.success == true) {
-  //     CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "", true);
-  //     CacheManager.setAccounts(result.data.first..parola = textFieldData.account?.parola);
+  //     CacheManager.setIsLicenseVerified(verifiedUser.account?.email ?? "", true);
+  //     CacheManager.setAccounts(result.data.first..parola = verifiedUser.account?.parola);
   //   } else {
   //     if (result.errorCode == 5) {
-  //       CacheManager.setIsLicenseVerified(textFieldData.account?.email ?? "", false);
+  //       CacheManager.setIsLicenseVerified(verifiedUser.account?.email ?? "", false);
   //     }
   //     dialogManager.hideAlertDialog;
   //     dialogManager.showAlertDialog(result.message ?? "");
   //   }
-  //   if (CacheManager.getIsLicenseVerified(textFieldData.account?.email ?? "") == false) {
+  //   if (CacheManager.getIsLicenseVerified(verifiedUser.account?.email ?? "") == false) {
   //     dialogManager.hideAlertDialog;
   //     dialogManager.showAlertDialog("Lisansınızın yenilenmesi gerekiyor.");
   //   }

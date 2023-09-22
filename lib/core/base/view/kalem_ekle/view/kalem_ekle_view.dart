@@ -476,7 +476,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             isMust: true,
                             controller: dovizKuruController,
                             isFormattedString: true,
-                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                            keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
                             onChanged: (value) {
                               viewModel.kalemModel.dovizKuru = value.toDoubleWithFormattedString;
                               viewModel.setBrutFiyat((viewModel.kalemModel.dovizFiyati ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1));
@@ -491,7 +491,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             labelText: "Döviz Fiyatı",
                             isMust: true,
                             controller: dovizFiyatiController,
-                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                            keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
                             isFormattedString: true,
                             onChanged: (p0) {
                               viewModel.setDovizFiyati(p0.toDoubleWithFormattedString);
@@ -507,7 +507,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           labelText: "KDV Oranı",
                           controller: kdvOraniController,
                           isMust: true,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
                           isFormattedString: true,
                           onChanged: (p0) => viewModel.setKdvOrani(p0.toDoubleWithFormattedString),
                           suffix: IconButton(
@@ -527,7 +527,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             child: CustomTextField(
                                 labelText: "Fiyat",
                                 controller: fiyatController,
-                                keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                                keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
                                 isFormattedString: true,
                                 onChanged: (p0) {
                                   viewModel.setBrutFiyat(p0.toDoubleWithFormattedString);

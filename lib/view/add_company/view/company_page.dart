@@ -90,22 +90,22 @@ class _AccountsViewState extends BaseState<AccountsView> {
         useSafeArea: true,
         context: context,
         builder: (context) => Column(mainAxisSize: MainAxisSize.min, children: [
-              ListTile(
-                leading: const Icon(Icons.edit_outlined),
-                title: Text(
-                  "Düzelt",
-                  style: theme.textTheme.bodyLarge,
-                ),
-                onTap: () {
-                  //TODO Düzenleme Sayfasına Yönlendir
-                },
-              ),
+              // ListTile(
+              //   leading: const Icon(Icons.edit_outlined),
+              //   title: Text(
+              //     "Düzelt",
+              //     style: theme.textTheme.bodyLarge,
+              //   ),
+              //   onTap: () {
+              //     //TODO Düzenleme Sayfasına Yönlendir
+              //   },
+              // ),
               const Divider(),
               ListTile(
                 leading: const Icon(Icons.delete_outline),
                 title: Text("Sil", style: theme.textTheme.bodyLarge),
                 onTap: () {
-                  Navigator.pop(context);
+                  Get.back();
                   dialogManager.showAreYouSureDialog(() {
                     CacheManager.removeAccounts(firma);
                     CacheManager.resetVerifiedUser();
@@ -113,11 +113,11 @@ class _AccountsViewState extends BaseState<AccountsView> {
                   });
                 },
               ),
-              const Divider(),
-              ListTile(
-                leading: const Icon(Icons.workspaces_outlined),
-                title: Text("Sunucu Tercihi", style: theme.textTheme.bodyLarge),
-              )
+              // const Divider(),
+              // ListTile(
+              //   leading: const Icon(Icons.workspaces_outlined),
+              //   title: Text("Sunucu Tercihi", style: theme.textTheme.bodyLarge),
+              // )
             ]));
   }
 }

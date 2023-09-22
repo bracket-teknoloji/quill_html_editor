@@ -16,6 +16,9 @@ class CustomWidgetWithLabel extends StatelessWidget {
     return Wrap(
       direction: (isVertical ?? false) ? Axis.vertical : Axis.horizontal,
       runSpacing: UIHelper.lowSize,
+      crossAxisAlignment: WrapCrossAlignment.start,
+      runAlignment: WrapAlignment.start,
+      alignment: WrapAlignment.start,
       children: [
         Text(text ?? "",
                 style: (isTitleSmall ?? false)
@@ -24,7 +27,7 @@ class CustomWidgetWithLabel extends StatelessWidget {
                           color: (isMust ?? false) ? UIHelper.primaryColor : null,
                         )
                     : null)
-            .paddingOnly(left: UIHelper.lowSize),
+            .paddingOnly(right: UIHelper.lowSize),
         child,
       ],
     );

@@ -15,7 +15,7 @@ import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/add_company/model/account_model.dart";
-import "package:picker/view/auth/model/login_model.dart";
+import "package:picker/view/auth/login/model/login_model.dart";
 
 import "../../../view/add_company/model/account_response_model.dart";
 import "../../../view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
@@ -95,7 +95,7 @@ class NetworkManager {
   Future<TokenModel?> getToken({required String path, Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
     FormData formData = FormData.fromMap(data);
     log(AccountModel.instance.toString());
-    log(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.firma ?? "")?.wsWan ?? "");
+    log(CacheManager.getAccounts(CacheManager.getVerifiedUser.account.firma ?? "")?.wsWan ?? "");
     var response = await dio.request(path,
         queryParameters: queryParameters,
         cancelToken: CancelToken(),
@@ -288,7 +288,7 @@ class NetworkManager {
     if (result.success == true) {
       CacheManager.setIsLicenseVerified(email ?? result.data.first.email, true);
       if (getFromCache == true) {
-        CacheManager.setAccounts(result.data.first..parola = (password ?? CacheManager.getVerifiedUser.account?.parola));
+        CacheManager.setAccounts(result.data.first..parola = (password ?? CacheManager.getVerifiedUser.account.parola));
       }
     } else {
       if (result.errorCode == 5) {

@@ -30,7 +30,7 @@ import "view/add_company/view/add_account_view.dart";
 import "view/add_company/view/company_page.dart";
 import "view/add_company/view/qr_view.dart";
 import "view/auth/view/entry_company_view.dart";
-import "view/auth/view/login_view.dart";
+import "view/auth/login/view/login_view.dart";
 import "view/main_page/alt_sayfalar/cari/base_cari_edit/view/base_cari_edit_view.dart";
 import "view/main_page/alt_sayfalar/cari/cari_hareket_yeni_kayit/view/cari_hareket_yeni_kayit_view.dart";
 import "view/main_page/alt_sayfalar/cari/cari_hareketleri/view/cari_hareketleri_view.dart";

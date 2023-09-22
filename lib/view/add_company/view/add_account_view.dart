@@ -5,7 +5,6 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 
-import "../../../core/base/model/base_network_mixin.dart";
 import "../../../core/base/model/generic_response_model.dart";
 import "../../../core/base/state/base_state.dart";
 import "../../../core/components/helper_widgets/custom_label_widget.dart";
@@ -64,7 +63,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
                       padding: context.padding.verticalLow,
                       child: CustomWidgetWithLabel(
                         text: "Şifre",
-                        child: CustomTextField(keyboardType: TextInputType.visiblePassword, controller: passwordController, isMust: true),
+                        child: CustomTextField(keyboardType: TextInputType.visiblePassword, controller: passwordController, isMust: true, onSubmitted: (value) => loginMethod),
                       ),
                     ),
                     const Wrap(
@@ -74,11 +73,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
                     ),
                     Padding(
                       padding: context.padding.verticalLow,
-                      child: ElevatedButton(
-                          onPressed: () {
-                            _getQR(context);
-                          },
-                          child: const Text("BİLGİLERİ QR KOD'DAN AL")),
+                      child: ElevatedButton(onPressed: () => _getQR(context), child: const Text("BİLGİLERİ QR KOD'DAN AL")),
                     )
                   ],
                 ),
@@ -89,7 +84,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
   }
 
   Future<void> loginMethod() async {
-    if (formKey.currentState!.validate()) {
+    if (formKey.currentState?.validate() ?? false) {
       String encodedPassword = passwordDecoder(passwordController.text);
       dialogManager.showLoadingDialog("Yükleniyor...");
       AccountModel.instance
@@ -110,7 +105,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
 
   Future<void> _getQR(BuildContext context) async {
     var barcode = await Get.toNamed("/qr");
-    GenericResponseModel<NetworkManagerMixin> response;
+    GenericResponseModel response;
 
     if (barcode != null) {
       AccountModel.instance.qrData = barcode;
@@ -121,27 +116,24 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
       //   data: data,
       //   path: ApiUrls.getUyeBilgileri,
       // );
-      if (response.data != null) {
-        if (response.success == true) {
-          String base64String = utf8.decode(base64.decode(response.data.first.parola));
-          String encodedPassword = passwordDecoder(base64String);
-          AccountModel.instance.uyeEmail = response.data.first.email;
-          AccountModel.instance.uyeSifre = encodedPassword;
-          AccountModel.instance.qrData = null;
-          for (AccountResponseModel item in response.data!) {
-            if (!CacheManager.accountsBox.containsKey(item.email)) {
-              Get.back(result: true);
-              Get.offAndToNamed("/addCompany");
-              CacheManager.setHesapBilgileri(AccountModel.instance);
-              CacheManager.setAccounts(item..parola = encodedPassword);
-              dialogManager.showSuccessSnackBar("Başarılı");
-            } else {
-              dialogManager.showErrorSnackBar("${item.firmaKisaAdi} zaten kayıtlı");
-            }
+      if (response.success == true) {
+        String encodedPassword = passwordDecoder(utf8.decode(base64.decode(response.data.first.parola)));
+        AccountModel.instance.uyeEmail = response.data.first.email;
+        AccountModel.instance.uyeSifre = encodedPassword;
+        AccountModel.instance.qrData = null;
+        for (AccountResponseModel item in response.data!) {
+          if (!CacheManager.accountsBox.containsKey(item.email)) {
+            Get.back(result: true);
+            Get.offAndToNamed("/addCompany");
+            CacheManager.setHesapBilgileri(AccountModel.instance);
+            CacheManager.setAccounts(item..parola = encodedPassword);
+            dialogManager.showSuccessSnackBar("Başarılı");
+          } else {
+            dialogManager.showErrorSnackBar("${item.firmaKisaAdi} zaten kayıtlı");
           }
-        } else {
-          dialogManager.showAlertDialog(response.message ?? "");
         }
+      } else {
+        dialogManager.showAlertDialog(response.message ?? "");
       }
     }
   }
