@@ -1,4 +1,4 @@
-import "../../../button/toggle_buttons/toggle_button.dart";
+import '../../../button/toggle_buttons/view/toggle_button.dart';
 
 class BottomSheetResponseModel {
   //Sİngleton

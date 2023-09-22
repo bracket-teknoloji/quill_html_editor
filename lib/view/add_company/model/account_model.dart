@@ -15,6 +15,7 @@ import "package:package_info_plus/package_info_plus.dart";
 import "../../../core/base/model/base_network_mixin.dart";
 import "../../../core/init/app_info/app_info.dart";
 import "../../../core/init/cache/cache_manager.dart";
+import "account_response_model.dart";
 
 part "account_model.g.dart";
 
@@ -27,6 +28,11 @@ class AccountModel with NetworkManagerMixin {
     uyeSifre = CacheManager.getHesapBilgileri?.uyeSifre;
   }
   static AccountModel instance = AccountModel.getValue();
+
+  static setFromAccountResponseModel(AccountResponseModel? model){
+    instance.uyeEmail = model?.email;
+    instance.uyeSifre = model?.parola;
+  }
 
   //setter for instance
   static setInstance(AccountModel value) => instance = value;

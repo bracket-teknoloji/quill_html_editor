@@ -32,7 +32,7 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends BaseState<LoginView> {
   LoginViewModel viewModel = LoginViewModel();
-  late LoginDialogModel verifiedUser;
+  late LoginDialogModel selectedUser;
   late final TextEditingController emailController;
   late final TextEditingController companyController;
   late final TextEditingController passwordController;
@@ -43,12 +43,14 @@ class _LoginViewState extends BaseState<LoginView> {
     emailController = TextEditingController();
     companyController = TextEditingController();
     passwordController = TextEditingController();
-    verifiedUser = CacheManager.getVerifiedUser;
-    if (verifiedUser.account?.firma != null) {
-      companyController.text = verifiedUser.account!.firma!;
+    selectedUser = CacheManager.getVerifiedUser;
+    AccountModel.setFromAccountResponseModel(selectedUser.account);
+    viewModel.checkDebug();
+    if (selectedUser.account?.firma != null) {
+      companyController.text = selectedUser.account!.firma!;
     }
-    emailController.text = verifiedUser.username ?? "";
-    passwordController.text = verifiedUser.password ?? "";
+    emailController.text = selectedUser.username ?? "";
+    passwordController.text = selectedUser.password ?? "";
   }
 
   @override
@@ -99,12 +101,9 @@ class _LoginViewState extends BaseState<LoginView> {
                           child: Observer(builder: (_) {
                             return Column(
                               children: [
-                                Text(
-                                  "Picker",
-                                  style: context.theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w500),
-                                ),
+                                Text("Picker", style: context.theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w500)),
                                 Text("Mobil Veri Toplama Çözümleri", style: context.theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w300)),
-                                Text(networkManager.getBaseUrl).yetkiVarMi(viewModel.isDebug)
+                                Text(networkManager.getBaseUrl).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi(viewModel.isDebug)
                               ],
                             );
                           }),
@@ -117,22 +116,22 @@ class _LoginViewState extends BaseState<LoginView> {
                               var selectedFirma = await dialogManager.selectCompanyDialog();
                               if (selectedFirma != null) {
                                 selectedFirma = selectedFirma as LoginDialogModel;
-                                verifiedUser = selectedFirma;
+                                selectedUser = selectedFirma;
                                 //*LoginDialogModel
-                                if (verifiedUser.account?.firma != null) {
-                                  companyController.text = verifiedUser.account!.firma!;
+                                if (selectedUser.account?.firma != null) {
+                                  companyController.text = selectedUser.account!.firma!;
                                 }
-                                emailController.text = verifiedUser.username ?? "";
-                                passwordController.text = verifiedUser.password ?? "";
-                                if (verifiedUser.account?.firma == "demo") {
+                                emailController.text = selectedUser.username ?? "";
+                                passwordController.text = selectedUser.password ?? "";
+                                if (selectedUser.account?.firma == "demo") {
                                   AccountModel.instance.uyeEmail = "demo@netfect.com";
                                   AccountModel.instance.uyeSifre = null;
-                                  verifiedUser.account?.email = "demo@netfect.com";
-                                  verifiedUser.account?.parola = null;
+                                  selectedUser.account?.email = "demo@netfect.com";
+                                  selectedUser.account?.parola = null;
                                 } else {
-                                  AccountModel.instance.uyeEmail = verifiedUser.account?.email;
+                                  AccountModel.instance.uyeEmail = selectedUser.account?.email;
                                   if (CacheManager.getHesapBilgileri?.qrData == null) {
-                                    AccountModel.instance.uyeSifre = verifiedUser.account?.parola;
+                                    AccountModel.instance.uyeSifre = selectedUser.account?.parola;
                                   }
                                 }
                               }
@@ -205,18 +204,18 @@ class _LoginViewState extends BaseState<LoginView> {
     AccountModel instance = AccountModel.instance;
     var a = instance
       ..kullaniciAdi = emailController.text
-      ..uyeEmail = verifiedUser.account?.email;
+      ..uyeEmail = selectedUser.account?.email;
     if (a.uyeEmail == "demo@netfect.com") {
       a.uyeSifre = null;
     } else {
       if (a.qrData == null) {
-        a.uyeSifre = verifiedUser.account?.parola;
+        a.uyeSifre = selectedUser.account?.parola;
       }
     }
-    var result = await networkManager.getUyeBilgileri(verifiedUser.account?.email ?? "", password: verifiedUser.account?.parola);
+    var result = await networkManager.getUyeBilgileri(selectedUser.account?.email ?? "", password: selectedUser.account?.parola);
     if (result.success != true) {
       log(result.ex.toString());
-      if (CacheManager.getIsLicenseVerified(verifiedUser.account?.email ?? "") == false) {
+      if (CacheManager.getIsLicenseVerified(selectedUser.account?.email ?? "") == false) {
         dialogManager.hideAlertDialog;
         dialogManager.showAlertDialog(("${result.message ?? ""}\n${result.ex?["Message"] ?? result.errorDetails ?? "Lisansınız bulunamadı. Lütfen lisansınızı kontrol ediniz."}"));
         return;
@@ -240,13 +239,13 @@ class _LoginViewState extends BaseState<LoginView> {
         CacheManager.setHesapBilgileri(a);
         dialogManager.hideAlertDialog;
         Hive.box("preferences").put(companyController.text, [
-          verifiedUser.account?.firma,
+          selectedUser.account?.firma,
           emailController.text,
           passwordController.text,
         ]);
 
         if (context.mounted && response?.accessToken != null) {
-          CacheManager.setVerifiedUser(verifiedUser
+          CacheManager.setVerifiedUser(selectedUser
             ..username = emailController.text
             ..password = passwordController.text);
           CacheManager.setToken(response!.accessToken.toString());
