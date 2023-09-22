@@ -392,6 +392,8 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
               onTap: () {
                 setState(() {
                   controller1.text = sirket![index].company!;
+                  controller2.text = "";
+                  controller3.text = "";
                   selected["Şirket"] = sirket![index].company;
                   userData["Şirket"] = sirket![index].company;
                   selected["İşletme"] = null;
@@ -417,6 +419,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
               onTap: () {
                 setState(() {
                   controller2.text = "${isletme![index].isletmeAdi} ${isletme![index].isletmeKodu ?? 0}";
+                  controller3.text = "";
                   selected["İşletme"] = isletme![index].isletmeKodu ?? 0;
                   userData["İşletme"] = isletme![index].isletmeAdi;
                   selected["Şube"] = null;

@@ -15,7 +15,7 @@ class StaticVariables {
 
   static List<BaseGrupKoduModel> grupKodlari = [];
 
-  static String get getSiparisString => "${CacheManager.getVerifiedUser.account.email ?? ""}-${AccountModel.instance.aktifVeritabani ?? ""}-${AccountModel.instance.aktifSubeKodu ?? ""}";
+  static String get getSiparisString => "${CacheManager.getVerifiedUser.account?.email ?? ""}-${AccountModel.instance.aktifVeritabani ?? ""}-${AccountModel.instance.aktifSubeKodu ?? ""}";
 
   //* Cari Kartı
   bool get isCariKartiValid => (cariKartiGenelFormKey.currentState?.validate() ?? false) || (cariKartiDigerFormKey.currentState?.validate() ?? false);

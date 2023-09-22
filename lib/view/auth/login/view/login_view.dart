@@ -43,11 +43,11 @@ class _LoginViewState extends BaseState<LoginView> {
     companyController = TextEditingController();
     passwordController = TextEditingController();
     verifiedUser = CacheManager.getVerifiedUser;
-    if (verifiedUser.account.firma != null) {
-      companyController.text = verifiedUser.account.firma!;
+    if (verifiedUser.account?.firma != null) {
+      companyController.text = verifiedUser.account!.firma!;
     }
-    emailController.text = verifiedUser.username;
-    passwordController.text = verifiedUser.password;
+    emailController.text = verifiedUser.username ?? "";
+    passwordController.text = verifiedUser.password ?? "";
   }
 
   @override
@@ -99,9 +99,9 @@ class _LoginViewState extends BaseState<LoginView> {
                             children: [
                               Text(
                                 "Picker",
-                                style: context.theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w500),
+                                style: context.theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w500),
                               ),
-                              Text("Mobil Veri Toplama Çözümleri", style: context.theme.textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w300)),
+                              Text("Mobil Veri Toplama Çözümleri", style: context.theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w300)),
                             ],
                           ),
                         ),
@@ -115,20 +115,20 @@ class _LoginViewState extends BaseState<LoginView> {
                                 selectedFirma = selectedFirma as LoginDialogModel;
                                 verifiedUser = selectedFirma;
                                 //*LoginDialogModel
-                                if (verifiedUser.account.firma != null) {
-                                  companyController.text = verifiedUser.account.firma!;
+                                if (verifiedUser.account?.firma != null) {
+                                  companyController.text = verifiedUser.account!.firma!;
                                 }
-                                emailController.text = verifiedUser.username;
+                                emailController.text = verifiedUser.username ?? "";
                                 passwordController.text = verifiedUser.password ?? "";
-                                if (verifiedUser.account.firma == "demo") {
+                                if (verifiedUser.account?.firma == "demo") {
                                   AccountModel.instance.uyeEmail = "demo@netfect.com";
                                   AccountModel.instance.uyeSifre = null;
-                                  verifiedUser.account.email = "demo@netfect.com";
-                                  verifiedUser.account.parola = null;
+                                  verifiedUser.account?.email = "demo@netfect.com";
+                                  verifiedUser.account?.parola = null;
                                 } else {
-                                  AccountModel.instance.uyeEmail = verifiedUser.account.email;
+                                  AccountModel.instance.uyeEmail = verifiedUser.account?.email;
                                   if (CacheManager.getHesapBilgileri?.qrData == null) {
-                                    AccountModel.instance.uyeSifre = verifiedUser.account.parola;
+                                    AccountModel.instance.uyeSifre = verifiedUser.account?.parola;
                                   }
                                 }
                               }
@@ -200,18 +200,18 @@ class _LoginViewState extends BaseState<LoginView> {
     AccountModel instance = AccountModel.instance;
     var a = instance
       ..kullaniciAdi = emailController.text
-      ..uyeEmail = verifiedUser.account.email;
+      ..uyeEmail = verifiedUser.account?.email;
     if (a.uyeEmail == "demo@netfect.com") {
       a.uyeSifre = null;
     } else {
       if (a.qrData == null) {
-        a.uyeSifre = verifiedUser.account.parola;
+        a.uyeSifre = verifiedUser.account?.parola;
       }
     }
-    var result = await networkManager.getUyeBilgileri(verifiedUser.account.email ?? "", password: verifiedUser.account.parola);
+    var result = await networkManager.getUyeBilgileri(verifiedUser.account?.email ?? "", password: verifiedUser.account?.parola);
     if (result.success != true) {
       log(result.ex.toString());
-      if (CacheManager.getIsLicenseVerified(verifiedUser.account.email ?? "") == false) {
+      if (CacheManager.getIsLicenseVerified(verifiedUser.account?.email ?? "") == false) {
         dialogManager.hideAlertDialog;
         dialogManager.showAlertDialog(("${result.message ?? ""}\n${result.ex?["Message"] ?? result.errorDetails ?? "Lisansınız bulunamadı. Lütfen lisansınızı kontrol ediniz."}"));
         return;
@@ -235,7 +235,7 @@ class _LoginViewState extends BaseState<LoginView> {
         CacheManager.setHesapBilgileri(a);
         dialogManager.hideAlertDialog;
         Hive.box("preferences").put(companyController.text, [
-          verifiedUser.account.firma,
+          verifiedUser.account?.firma,
           emailController.text,
           passwordController.text,
         ]);

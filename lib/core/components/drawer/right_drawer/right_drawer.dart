@@ -29,7 +29,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
           children: [
             Expanded(child: LottieBuilder.network("https://assets9.lottiefiles.com/packages/lf20_yMpiqXia1k.json")),
             Text(CacheManager.getAnaVeri()!.userModel?.adSoyad ?? "", style: theme.textTheme.bodyLarge),
-            Text(CacheManager.getVerifiedUser.account.firma ?? "", style: theme.textTheme.bodyMedium),
+            Text(CacheManager.getVerifiedUser.account?.firma ?? "", style: theme.textTheme.bodyMedium),
             Text("Profil", style: theme.textTheme.bodySmall).marginOnly(top: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

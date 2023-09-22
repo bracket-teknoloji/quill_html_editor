@@ -95,7 +95,7 @@ class NetworkManager {
   Future<TokenModel?> getToken({required String path, Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
     FormData formData = FormData.fromMap(data);
     log(AccountModel.instance.toString());
-    log(CacheManager.getAccounts(CacheManager.getVerifiedUser.account.firma ?? "")?.wsWan ?? "");
+    log(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.firma ?? "")?.wsWan ?? "");
     var response = await dio.request(path,
         queryParameters: queryParameters,
         cancelToken: CancelToken(),
@@ -288,7 +288,7 @@ class NetworkManager {
     if (result.success == true) {
       CacheManager.setIsLicenseVerified(email ?? result.data.first.email, true);
       if (getFromCache == true) {
-        CacheManager.setAccounts(result.data.first..parola = (password ?? CacheManager.getVerifiedUser.account.parola));
+        CacheManager.setAccounts(result.data.first..parola = (password ?? CacheManager.getVerifiedUser.account?.parola));
       }
     } else {
       if (result.errorCode == 5) {
