@@ -63,9 +63,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     scrollController.addListener(() async {
       if (scrollController.position.pixels == scrollController.position.maxScrollExtent && viewModel.dahaVarMi) {
         if (viewModel.dahaVarMi) {
-          Future.delayed(const Duration(milliseconds: 500), () {
-            getData();
-          });
+          await getData();
         }
       }
       if (scrollController.position.userScrollDirection == ScrollDirection.forward) {
@@ -136,9 +134,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
               ? CustomAppBarTextField(
                   controller: TextEditingController(text: viewModel.searchValue),
                   onFieldSubmitted: (value) {
+                    viewModel.resetSayfa();
                     viewModel.setSearchValue(value);
                     viewModel.setStokListesi(null);
-                    viewModel.resetSayfa();
                     getData();
                   },
                 )
@@ -459,9 +457,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
         onPressed: () {
           viewModel.setSearchBar();
           if (!viewModel.searchBar) {
+            viewModel.resetSayfa();
             viewModel.setSearchValue("");
             viewModel.setStokListesi(null);
-            viewModel.resetSayfa();
             getData();
           }
         },
@@ -614,7 +612,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
 
   Future<void> getData() async {
     viewModel.setDahaVarMi(false);
-    var data2 = {"MenuKodu": "STOK_STOK", "ResimGoster": viewModel.resimleriGoster, "Siralama": viewModel.siralama, "Sayfa": viewModel.sayfa + 1, "BakiyeDurumu": viewModel.bakiye ?? ""};
+    var data2 = {"MenuKodu": "STOK_STOK", "ResimGoster": viewModel.resimleriGoster, "Siralama": viewModel.siralama, "Sayfa": viewModel.sayfa, "BakiyeDurumu": viewModel.bakiye ?? ""};
     if (!viewModel.bottomSheetModel.arrGrupKodu.isEmptyOrNull) {
       List<String> liste = [];
       viewModel.bottomSheetModel.arrGrupKodu?.forEach((element) {
@@ -664,17 +662,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     if (response.success ?? false) {
       Map<String, MemoryImage> imageMap = {};
       List<StokListesiModel>? liste = response.data.map((e) => e as StokListesiModel).toList().cast<StokListesiModel>();
-      if ((liste?.length ?? 0) < parametreModel.sabitSayfalamaOgeSayisi) {
-        if (viewModel.bottomSheetModel != StokBottomSheetModel()) {
-          viewModel.setDahaVarMi(false);
-          viewModel.increaseSayfa();
-        } else if ((liste?.length ?? 0) == 0) {
-          viewModel.setDahaVarMi(false);
-        }
-      } else {
-        viewModel.increaseSayfa();
-        viewModel.setDahaVarMi(true);
-      }
+
       if (viewModel.sayfa == 1) {
         for (var stokKaydi in liste ?? <StokListesiModel>[]) {
           if (stokKaydi.resimUrlKucuk != null && viewModel.resimleriGoster == "E") {
@@ -691,6 +679,17 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
         }
         viewModel.addImageMap(imageMap);
         viewModel.addStokListesi(liste ?? <StokListesiModel>[]);
+      }
+      if ((liste?.length ?? 0) < parametreModel.sabitSayfalamaOgeSayisi) {
+        if (viewModel.bottomSheetModel != StokBottomSheetModel()) {
+          viewModel.setDahaVarMi(false);
+          viewModel.increaseSayfa();
+        } else if ((liste?.length ?? 0) == 0) {
+          viewModel.setDahaVarMi(false);
+        }
+      } else {
+        viewModel.increaseSayfa();
+        viewModel.setDahaVarMi(true);
       }
     } else {
       viewModel.setStokListesi(<StokListesiModel>[]);

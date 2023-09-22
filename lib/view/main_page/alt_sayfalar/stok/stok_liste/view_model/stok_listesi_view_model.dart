@@ -117,13 +117,13 @@ abstract class _StokListesiViewModelBase with Store {
   void changeIsScrolledDown(bool value) => isScrolledDown = value;
 
   @observable
-  int sayfa = 0;
+  int sayfa = 1;
 
   @action
   void increaseSayfa() => sayfa++;
 
   @action
-  void resetSayfa() => sayfa = 0;
+  void resetSayfa() => sayfa = 1;
 
   @observable
   bool dahaVarMi = true;
