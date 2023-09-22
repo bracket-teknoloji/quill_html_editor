@@ -1,6 +1,9 @@
 import "package:mobx/mobx.dart";
 import "package:picker/core/init/network/network_manager.dart";
 import "package:picker/view/add_company/model/account_model.dart";
+import "package:picker/view/add_company/model/account_response_model.dart";
+
+import "../../../../core/init/cache/cache_manager.dart";
 
 part "login_view_model.g.dart";
 
@@ -18,7 +21,7 @@ abstract class _LoginViewModelBase with Store {
 
   @action
   void checkDebug() {
-    isDebug = AccountModel.instance.uyeEmail == "destek@netfect.com";
+    isDebug = CacheManager.accountsBox.values.any((element) => (element as AccountResponseModel?)?.email == "destek@netfect.com");
     baseUrl = NetworkManager().getBaseUrl;
   }
 

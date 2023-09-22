@@ -1,12 +1,10 @@
 import "package:flutter/material.dart";
-import "package:flutter_mobx/flutter_mobx.dart";
 import "package:kartal/kartal.dart";
 import "package:permission_handler/permission_handler.dart";
 import "package:qr_code_scanner/qr_code_scanner.dart";
 
 import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../state/base_state.dart";
-import "../view_model/qr_view_model.dart";
 
 class QRScannerView extends StatefulWidget {
   const QRScannerView({super.key});
@@ -16,16 +14,18 @@ class QRScannerView extends StatefulWidget {
 }
 
 class _QRScannerState extends BaseState<QRScannerView> {
-  QRViewModel viewModel = QRViewModel();
   final qrKey = GlobalKey(debugLabel: "QR");
-  late final QRViewController qrViewController;
+  QRViewController? qrViewController;
   Barcode? barcode;
   String result = "Scan a code";
   @override
   void dispose() {
     super.dispose();
-    qrViewController.dispose();
+    qrViewController?.dispose();
   }
+
+  bool isFlash = false;
+  bool isCameraReverse = false;
 
   @override
   Widget build(BuildContext context) {
@@ -34,27 +34,23 @@ class _QRScannerState extends BaseState<QRScannerView> {
         appBar: AppBar(
           title: const Text("QR Kod Okuyucu"),
           actions: [
-            Observer(builder: (_) {
-              return IconButton(
-                  onPressed: () {
-                    viewModel.changeFlash();
-                    qrViewController.toggleFlash();
-                  },
-                  icon: Icon(Icons.flash_on, color: viewModel.isFlashOpen ? Colors.amber : Colors.white));
-            }),
-            Observer(builder: (_) {
-              return IconButton(
-                  isSelected: false,
-                  onPressed: () {
-                    if (viewModel.isFlashOpen){
-                      viewModel.changeFlash();
-                      qrViewController.toggleFlash();
-                    }
-                    viewModel.changeCameraReverse();
-                    qrViewController.flipCamera();
-                  },
-                  icon: Icon(Icons.flip_camera_ios, color: viewModel.isCameraReverse ? Colors.amber : Colors.white));
-            }),
+            IconButton(
+                onPressed: () {
+                  setState(() {
+                    isFlash = !isFlash;
+                  });
+                  qrViewController?.toggleFlash();
+                },
+                icon: Icon(Icons.flash_on, color: isFlash ? Colors.amber : Colors.white)),
+            IconButton(
+                isSelected: false,
+                onPressed: () {
+                  setState(() {
+                    isCameraReverse = !isCameraReverse;
+                  });
+                  qrViewController?.flipCamera();
+                },
+                icon: Icon(Icons.flip_camera_ios, color: isCameraReverse ? Colors.amber : Colors.white)),
           ],
         ),
         body: Stack(
@@ -77,11 +73,14 @@ class _QRScannerState extends BaseState<QRScannerView> {
     if (status.isDenied) {
       await Permission.camera.request();
     }
-    qrViewController.scannedDataStream.listen((scanData) {
-      if (barcode?.code != null) {
-        qrViewController.pauseCamera();
-        Navigator.pop(context, barcode?.code);
-      }
+    qrViewController?.scannedDataStream.listen((scanData) {
+      setState(() {
+        barcode = scanData;
+        if (barcode?.code != null) {
+          qrViewController?.pauseCamera();
+          Navigator.pop(context, barcode?.code);
+        }
+      });
     });
   }
 
@@ -91,7 +90,7 @@ class _QRScannerState extends BaseState<QRScannerView> {
         alignment: Alignment.bottomCenter,
         padding: UIHelper.highPaddingHorizontal,
         margin: UIHelper.highPaddingVertical,
-        child: Text(barcode?.code ?? "QR Kodu Okutunuz", style: context.general.appTheme.textTheme.titleLarge!.copyWith(color: Colors.white)),
+        child: Text("QR Kodu Okutunuz", style: context.general.appTheme.textTheme.titleLarge!.copyWith(color: Colors.white)),
       ),
     );
   }

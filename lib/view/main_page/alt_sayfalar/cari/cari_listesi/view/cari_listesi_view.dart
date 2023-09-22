@@ -366,7 +366,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                   children: [
                                     const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(object.efaturaMi == true),
                                     const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(object.boylam != null),
-                                    ColorfulBadge(label: Text("Dövizli ${object.dovizAdi}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(object.dovizAdi != null),
+                                    ColorfulBadge(label: Text("Dövizli ${object.dovizAdi}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(object.dovizli != null),
                                     // object.boylam != null && object.enlem != null ? const Badge(label: Text(("Konum"))) : const SizedBox(),
                                     // object.dovizAdi != null ? Badge(label: Text(("Dövizli ${object.dovizAdi}"))) : const SizedBox(),
                                   ]

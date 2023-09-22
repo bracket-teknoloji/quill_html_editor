@@ -17,7 +17,7 @@ class AccountsView extends StatefulWidget {
 
 class _AccountsViewState extends BaseState<AccountsView> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  int get getListLength => Hive.box("accounts").length;
+  int get getListLength => CacheManager.accountsBox.length;
 
   @override
   Widget build(BuildContext context) {
