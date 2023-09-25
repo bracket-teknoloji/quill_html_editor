@@ -56,7 +56,8 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                                   controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
                                   isMust: e.bosGecilebilir != true,
                                   readOnly: true,
-                                  suffix: const Icon(Icons.calendar_today),
+                                  isDateTime: true,
+                                  // suffix: const Icon(Icons.calendar_today),
                                   onTap: () async {
                                     DateTime? result = await dialogManager.showDateTimePicker();
                                     if (result != null) {

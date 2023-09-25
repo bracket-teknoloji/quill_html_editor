@@ -96,6 +96,94 @@ mixin _$BaseCariGenelEditViewModel on _BaseCariGenelEditViewModelBase, Store {
   }
 
   @override
+  void setModel(CariListesiModel? value) {
+    final _$actionInfo = _$_BaseCariGenelEditViewModelBaseActionController
+        .startAction(name: '_BaseCariGenelEditViewModelBase.setModel');
+    try {
+      return super.setModel(value);
+    } finally {
+      _$_BaseCariGenelEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeSiradakiKod(String? value) {
+    final _$actionInfo = _$_BaseCariGenelEditViewModelBaseActionController
+        .startAction(name: '_BaseCariGenelEditViewModelBase.changeSiradakiKod');
+    try {
+      return super.changeSiradakiKod(value);
+    } finally {
+      _$_BaseCariGenelEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeKodu(String value) {
+    final _$actionInfo = _$_BaseCariGenelEditViewModelBaseActionController
+        .startAction(name: '_BaseCariGenelEditViewModelBase.changeKodu');
+    try {
+      return super.changeKodu(value);
+    } finally {
+      _$_BaseCariGenelEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeCariTipi(BaseBottomSheetResponseModel value) {
+    final _$actionInfo = _$_BaseCariGenelEditViewModelBaseActionController
+        .startAction(name: '_BaseCariGenelEditViewModelBase.changeCariTipi');
+    try {
+      return super.changeCariTipi(value);
+    } finally {
+      _$_BaseCariGenelEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changePlasiyer(PlasiyerList? value) {
+    final _$actionInfo = _$_BaseCariGenelEditViewModelBaseActionController
+        .startAction(name: '_BaseCariGenelEditViewModelBase.changePlasiyer');
+    try {
+      return super.changePlasiyer(value);
+    } finally {
+      _$_BaseCariGenelEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeOdemeTipi(String? value) {
+    final _$actionInfo = _$_BaseCariGenelEditViewModelBaseActionController
+        .startAction(name: '_BaseCariGenelEditViewModelBase.changeOdemeTipi');
+    try {
+      return super.changeOdemeTipi(value);
+    } finally {
+      _$_BaseCariGenelEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeUlke(BaseBottomSheetResponseModel? value) {
+    final _$actionInfo = _$_BaseCariGenelEditViewModelBaseActionController
+        .startAction(name: '_BaseCariGenelEditViewModelBase.changeUlke');
+    try {
+      return super.changeUlke(value);
+    } finally {
+      _$_BaseCariGenelEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeAdi(String value) {
+    final _$actionInfo = _$_BaseCariGenelEditViewModelBaseActionController
+        .startAction(name: '_BaseCariGenelEditViewModelBase.changeAdi');
+    try {
+      return super.changeAdi(value);
+    } finally {
+      _$_BaseCariGenelEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 isSahisFirmasi: ${isSahisFirmasi},

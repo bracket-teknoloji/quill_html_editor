@@ -42,11 +42,13 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     controller1 = TextEditingController();
     controller2 = TextEditingController();
     controller3 = TextEditingController();
+    if (CacheManager.getLogout == true){
     selected = CacheManager.getVeriTabani();
+    userData = CacheManager.getIsletmeSube;
+    } 
     // controller1?.text = CacheManager.getVeriTabani()?["Şirket"] ?? "";
     // controller2?.text = CacheManager.getIsletmeSube()?["İşletme"] ?? "";
     // controller3?.text = "${CacheManager.getIsletmeSube()?["Şube"] ?? ""} ${CacheManager.getVeriTabani()?["Şube"] ?? ""}";
-    userData = CacheManager.getIsletmeSube;
     focusNode = FocusNode();
   }
 
@@ -59,89 +61,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     super.dispose();
   }
 
-  dioGetData() async {
-    sirket = await getSirket();
-
-    if (sirket?.length == 1 && mounted) {
-      controller1.text = sirket?[0].company ?? "";
-    } else if (sirket?.length != 1 && controller1.text == "") {
-      if (mounted){
-      await sirketDialog(context);
-      }
-    }
-    if (selected["Şirket"] != "" || selected["Şirket"] != null) {
-      sube = await getSube(selected["Şirket"]);
-      if (!mounted) return;
-      isletme = await getIsletme();
-      if (isletme!.length == 1 && controller1.text != "") {
-        controller2.text = isletme![0].isletmeAdi!;
-        selected["İşletme"] = isletme![0].isletmeKodu;
-        userData["İşletme"] = isletme![0].isletmeAdi;
-        focusNode.requestFocus();
-      } else if (controller2.text == "" && controller1.text != "") {
-        if (!mounted) return;
-        await isletmeDialog(context);
-      }
-      if (sube!.length == 1 && controller2.text != "") {
-        controller3.text = sube![0].subeAdi!;
-        selected["Şube"] = sube![0].subeKodu;
-        userData["Şube"] = sube![0].subeAdi;
-        focusNode.requestFocus();
-      } else if (controller3.text == "" && controller1.text != "") {
-        if (!mounted) return;
-        await subeDialog(context);
-      }
-    }
-  }
-
-  Future<List<CompanyModel>?> getSirket({String? name}) async {
-    List<CompanyModel> list = [];
-    final response = await networkManager.dioGet<CompanyModel>(
-      path: ApiUrls.veriTabanlari,
-      bodyModel: CompanyModel(),
-    );
-    final data = response.data;
-    for (CompanyModel element in data) {
-      list.add(element);
-    }
-    if (list.length == 1) {
-      selected["Şirket"] = list[0].company;
-      userData["Şirket"] = list[0].company;
-    }
-    focusNode.requestFocus();
-    return list;
-  }
-
-  Future<List<IsletmeModel>?> getIsletme() async {
-    List<IsletmeModel> data = [];
-    for (var element in sube!) {
-      if (data.any((element) => element.isletmeKodu == element.isletmeKodu)) {
-        continue;
-      } else {
-        data.add(element);
-      }
-    }
-    return data;
-  }
-
-  Future<List<IsletmeModel>?> getSube(String? sirket) async {
-    if (sirket == null || sirket == "") return [];
-    List<IsletmeModel> list = [];
-    final response = await networkManager.dioGet<IsletmeModel>(
-      path: ApiUrls.isletmelerSubeler,
-      bodyModel: IsletmeModel(),
-      queryParameters: {"Veritabani": sirket},
-    );
-    final data = response.data;
-    if (data != null) {
-      for (IsletmeModel element in data) {
-        element.subeKodu == null ? list.add(element..subeKodu = 0) : list.add(element);
-      }
-      CacheManager.setSubeListesi(data);
-    }
-    return list;
-  }
-
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -208,75 +128,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                         suffixIcon: Icon(Icons.more_horiz_outlined),
                                       ),
                                     )),
-                                // CustomWidgetWithLabel(
-                                //   text: "Şirket",
-                                //   children: [
-                                //     DropdownButtonFormField(
-                                //       autofocus: true,
-                                //       decoration: const InputDecoration(
-                                //         hoverColor: Colors.transparent,
-                                //       ),
-                                //       isExpanded: true,
-                                //       validator: validator,
-                                //       focusNode: focusNode,
-                                //       items: sirket?.toSet().map((e) => DropdownMenuItem(value: e, child: Text(e.company!.toString()))).toList(),
-                                //       onChanged: (value) {
-                                //         if (value is CompanyModel) {
-                                //           setState(() {
-                                //             selected["Şirket"] = value.company;
-                                //             userData["Şirket"] = value.company;
-                                //             selected["İşletme"] = null;
-                                //             selected["Şube"] = null;
-                                //             focusNode!.requestFocus();
-                                //           });
-                                //         }
-                                //         log(selected.toString(), name: "Şirket");
-                                //       },
-                                //     )
-                                //   ],
-                                // ),
-                                // CustomWidgetWithLabel(
-                                //   text: "İşletme Kodu",
-                                //   children: [
-                                //     DropdownButtonFormField(
-                                //       isExpanded: true,
-                                //       validator: validator,
-                                //       focusNode: focusNode,
-                                //       //items: isletme değişkenindeki unique değerler
-                                //       items: isletme!.toSet().map((e) => DropdownMenuItem(value: e, child: Text("${e.isletmeAdi} ${e.isletmeKodu ?? 0}"))).toList(),
-                                //       onChanged: (value) {
-                                //         if (value is IsletmeModel) {
-                                //           selected["İşletme"] = value.isletmeKodu;
-                                //           userData["İşletme"] = value.isletmeAdi;
-                                //           log(userData.toString(), name: "İşletmeler");
-                                //           focusNode?.requestFocus();
-                                //         }
-                                //       },
-                                //     )
-                                //   ],
-                                // ),
-                                // CustomWidgetWithLabel(
-                                //   text: "Şube Kodu ",
-                                //   children: [
-                                //     DropdownButtonFormField(
-                                //       isExpanded: true,
-                                //       validator: validator,
-                                //       key: formKey,
-                                //       focusNode: focusNode,
-                                //       items: sube?.map((e) => DropdownMenuItem(value: e, child: Text("${e.subeAdi} ${e.subeKodu ?? 0}"))).toList(),
-                                //       onChanged: (value) {
-                                //         if (value is IsletmeModel) {
-                                //           selected["Şube"] = value.subeKodu ?? 0;
-                                //           userData["Şube"] = value.subeAdi;
-                                //           log(selected.toString(), name: "Şube");
-                                //           log(value.toString(), name: "Şube");
-                                //           log(sube!.length.toString(), name: "Şube");
-                                //           focusNode?.unfocus();
-                                //         }
-                                //       },
-                                //     )
-                                //   ],
-                                // ),
                               ]
                                   .map((widget) => Padding(
                                         padding: context.padding.onlyBottomLow,
@@ -287,21 +138,10 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                           ElevatedButton(
                             onPressed: () async {
                               if (!selected.values.contains(null)) {
-                                /// var [model] = {
-                                ///   "AKTIF_ISLETME_KODU": selected["İşletme"].toString(),
-                                ///  "AKTIF_VERITABANI": selected["Şirket"].toString(),
-                                ///   "G_CID": "/Y5TBF72qY7bnZl3+NOYvUtln/g5FJPl4jQ9i59td5M=",
-                                ///   "UYE_EMAIL": "destek@netfect.com",
-                                ///   "OZEL_CIHAZ_KIMLIGI": "4b0f40f3caabceaa7e6a60d5ba133d3323741f0644c2dbb6b74b40152f9aeaf7",
-                                /// };
                                 final model = AccountModel.instance
-                                  // ..admin = CacheManager.getAnaVeri()?.userModel?.admin
                                   ..aktifVeritabani = selected["Şirket"]
                                   ..aktifIsletmeKodu = selected["İşletme"]
                                   ..aktifSubeKodu = selected["Şube"];
-
-                                ///!!!!!!!!!!!!!!!!!!!! --> TODO BUNU EKLE
-                                // ..gCid = "/Y5TBF72qY7bnZl3+NOYvUtln/g5FJPl4jQ9i59td5M=";
                                 dialogManager.showLoadingDialog("${selected["Şirket"]} şirketine giriş yapılıyor.");
                                 GenericResponseModel<NetworkManagerMixin> response;
                                 response = await networkManager.dioPost<MainPageModel>(path: ApiUrls.createSession, bodyModel: MainPageModel(), showError: false, data: model, headers: {
@@ -431,5 +271,87 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
             );
           },
         ));
+  } dioGetData() async {
+    sirket = await getSirket();
+
+    if (sirket?.length == 1 && mounted) {
+      controller1.text = sirket?[0].company ?? "";
+    } else if (sirket?.length != 1 && controller1.text == "") {
+      if (mounted){
+      await sirketDialog(context);
+      }
+    }
+    if (selected["Şirket"] != "" || selected["Şirket"] != null) {
+      sube = await getSube(selected["Şirket"]);
+      if (!mounted) return;
+      isletme = await getIsletme();
+      if (isletme!.length == 1 && controller1.text != "") {
+        controller2.text = isletme![0].isletmeAdi!;
+        selected["İşletme"] = isletme![0].isletmeKodu;
+        userData["İşletme"] = isletme![0].isletmeAdi;
+        focusNode.requestFocus();
+      } else if (controller2.text == "" && controller1.text != "") {
+        if (!mounted) return;
+        await isletmeDialog(context);
+      }
+      if (sube!.length == 1 && controller2.text != "") {
+        controller3.text = sube![0].subeAdi!;
+        selected["Şube"] = sube![0].subeKodu;
+        userData["Şube"] = sube![0].subeAdi;
+        focusNode.requestFocus();
+      } else if (controller3.text == "" && controller1.text != "") {
+        if (!mounted) return;
+        await subeDialog(context);
+      }
+    }
   }
+
+  Future<List<CompanyModel>?> getSirket({String? name}) async {
+    List<CompanyModel> list = [];
+    final response = await networkManager.dioGet<CompanyModel>(
+      path: ApiUrls.veriTabanlari,
+      bodyModel: CompanyModel(),
+    );
+    final data = response.data;
+    for (CompanyModel element in data) {
+      list.add(element);
+    }
+    if (list.length == 1) {
+      selected["Şirket"] = list[0].company;
+      userData["Şirket"] = list[0].company;
+    }
+    focusNode.requestFocus();
+    return list;
+  }
+
+  Future<List<IsletmeModel>?> getIsletme() async {
+    List<IsletmeModel> data = [];
+    for (var element in sube!) {
+      if (data.any((element) => element.isletmeKodu == element.isletmeKodu)) {
+        continue;
+      } else {
+        data.add(element);
+      }
+    }
+    return data;
+  }
+
+  Future<List<IsletmeModel>?> getSube(String? sirket) async {
+    if (sirket == null || sirket == "") return [];
+    List<IsletmeModel> list = [];
+    final response = await networkManager.dioGet<IsletmeModel>(
+      path: ApiUrls.isletmelerSubeler,
+      bodyModel: IsletmeModel(),
+      queryParameters: {"Veritabani": sirket},
+    );
+    final data = response.data;
+    if (data != null) {
+      for (IsletmeModel element in data) {
+        element.subeKodu == null ? list.add(element..subeKodu = 0) : list.add(element);
+      }
+      CacheManager.setSubeListesi(data);
+    }
+    return list;
+  }
+
 }

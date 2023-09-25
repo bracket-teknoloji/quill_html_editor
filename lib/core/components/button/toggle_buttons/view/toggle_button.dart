@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-import '../../../../base/state/base_state.dart';
-import '../../../../constants/ui_helper/ui_helper.dart';
+import "../../../../base/state/base_state.dart";
+import "../../../../constants/ui_helper/ui_helper.dart";
 import "../view_model/toggle_button_view_model.dart";
 
 class ToggleButton extends StatefulWidget {
@@ -40,11 +40,7 @@ class _ToggleButtonState extends BaseState<ToggleButton> {
       }),
       onPressed: (index) {
         viewModel.changeIsSelected(index);
-        // setState(() {
-        //   for (int i = 0; i < viewModel.isSelected.length; i++) {
-        //     isSelected2[i] = i == index;
-        //   }
-        // });
+       
         ToggleButton.selected = viewModel.title[index];
       },
     );

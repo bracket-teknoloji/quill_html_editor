@@ -273,14 +273,15 @@ class NetworkManager {
     return jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]);
   }
 
-  Future<GenericResponseModel> getUyeBilgileri(String? email, {String? password, bool getFromCache = true}) async {
+  Future<GenericResponseModel> getUyeBilgileri(String? email, {String? password, bool getFromCache = true, bool? isDebug}) async {
     if (email == "demo@netfect.com") {
       return GenericResponseModel(success: true);
     }
+    var data2 = getFromCache ? (CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi)?.toJson() : AccountModel.instance.toJson();
     var result = await dioPost<AccountResponseModel>(
         bodyModel: AccountResponseModel(),
         showError: false,
-        data: getFromCache ? (CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi)?.toJson() : AccountModel.instance.toJson(),
+        data: data2,
         addTokenKey: false,
         addCKey: false,
         addSirketBilgileri: false,

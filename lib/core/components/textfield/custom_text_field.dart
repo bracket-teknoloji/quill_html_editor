@@ -66,7 +66,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    controller.addListener(() => viewModel.setShowClearButton(controller.text != ""));
+      // if (controller.)
+      controller.addListener(() => viewModel.setShowClearButton(controller.text != ""));
     });
     super.initState();
   }

@@ -1,3 +1,4 @@
+import "package:copy_with_extension/copy_with_extension.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 
@@ -5,10 +6,10 @@ import "../../../../../../core/base/model/base_network_mixin.dart";
 
 part "cari_listesi_model.g.dart";
 
+
+@CopyWith()
 @HiveType(typeId: 195)
-@JsonSerializable(
-  explicitToJson: true,
-)
+@JsonSerializable(explicitToJson: true)
 class CariListesiModel with NetworkManagerMixin {
   //singleton
   static CariListesiModel? _instance;
@@ -22,7 +23,95 @@ class CariListesiModel with NetworkManagerMixin {
   //setter for singleton
   static void setInstance(CariListesiModel? instance) => _instance = instance;
 
-  CariListesiModel();
+  CariListesiModel({
+    this.cariKodu,
+    this.cariAdi,
+    this.bagliCari,
+    this.bagliCariAdi,
+    this.cariTip,
+    this.cariTipAciklama,
+    this.kilit,
+    this.vadeGunu,
+    this.odemeTipi,
+    this.hesaptutmasekli,
+    this.plasiyerKodu,
+    this.plasiyerAciklama,
+    this.borcToplami,
+    this.bakiyeList,
+    this.alacakToplami,
+    this.genisk1Orani,
+    this.ulkeKodu,
+    this.ulkeAdi,
+    this.cariIl,
+    this.cariIlce,
+    this.cariTel,
+    this.postakodu,
+    this.email,
+    this.web,
+    this.cariAdres,
+    this.vergiDairesi,
+    this.vergiNumarasi,
+    this.grupKodu,
+    this.grupTanimi,
+    this.bilgi,
+    this.aciklama1,
+    this.aciklama2,
+    this.aciklama3,
+    this.kodu,
+    this.kod1,
+    this.kod1Tanimi,
+    this.kod2,
+    this.kod2Tanimi,
+    this.kod3,
+    this.kod3Tanimi,
+    this.kod4,
+    this.kod4Tanimi,
+    this.kod5,
+    this.kod5Tanimi,
+    this.kayityapankul,
+    this.kayittarihi,
+    this.duzeltmeyapankul,
+    this.duzeltmetarihi,
+    this.efaturaMi,
+    this.efaturaTipi,
+    this.efatGecisTarihi,
+    this.efatAktif,
+    this.riskTakibi,
+    this.efaturaCarisi,
+    this.bakiye,
+    this.enlem,
+    this.boylam,
+    this.kull1s,
+    this.kull2s,
+    this.kull3s,
+    this.kull4s,
+    this.kull5s,
+    this.kull6s,
+    this.kull7s,
+    this.kull8s,
+    this.kull1n,
+    this.kull2n,
+    this.kull3n,
+    this.kull4n,
+    this.kull5n,
+    this.kull6n,
+    this.kull7n,
+    this.kull8n,
+    this.fax,
+    this.sahisFirmasiMi,
+    this.dovizli,
+    this.dovizKodu,
+    this.dovizAdi,
+    this.subeKodu,
+    this.kosulKodu,
+    this.fiyatGrubu,
+    this.kull1S,
+    this.kull2S,
+    this.dovBorcToplami,
+    this.dovAlacakToplami,
+    this.dovBakiye,
+    
+     });
 
   @HiveField(0)
   String? cariKodu;

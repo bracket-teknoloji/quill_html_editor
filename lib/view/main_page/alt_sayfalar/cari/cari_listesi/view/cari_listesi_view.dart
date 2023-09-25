@@ -68,6 +68,11 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
               viewModel.changeArama("");
             }
             viewModel.changeCariListesi(value);
+            if ((value?.length ?? 0) < parametreModel.sabitSayfalamaOgeSayisi) {
+              viewModel.changeDahaVarMi(false);
+            } else {
+              viewModel.changeDahaVarMi(true);
+            }
             // cariListesi = value;
           })
         : null;
@@ -85,6 +90,11 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
             viewModel.increaseSayfa();
           }
           viewModel.addCariListesi(a!);
+          if ((a.length ?? 0) < parametreModel.sabitSayfalamaOgeSayisi) {
+            viewModel.changeDahaVarMi(false);
+          } else {
+            viewModel.changeDahaVarMi(true);
+          }
         } // cariListesi!.addAll(a);
       }
       // when scroll down change isScrolledDown to true
@@ -181,6 +191,11 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     List? data = await getData(sayfa: 1);
                     if (data.ext.isNotNullOrEmpty) {
                       viewModel.changeCariListesi(data);
+                      if ((data?.length ?? 0) < parametreModel.sabitSayfalamaOgeSayisi) {
+                        viewModel.changeDahaVarMi(false);
+                      } else {
+                        viewModel.changeDahaVarMi(true);
+                      }
                     } else {
                       viewModel.changeCariListesi([]);
                     }
@@ -210,13 +225,21 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     viewModel.changeCariListesi(null);
                     getData(sayfa: 1).then((value) {
                       viewModel.changeCariListesi(value);
+                      if ((value?.length ?? 0) < parametreModel.sabitSayfalamaOgeSayisi) {
+                        viewModel.changeDahaVarMi(false);
+                      } else {
+                        viewModel.changeDahaVarMi(true);
+                      }
                     });
                   }
                 },
                 child: const Text("Sırala"),
               ),
               AppBarButton(
-                onPressed: () {},
+                onPressed: () async {
+                  await bottomSheetDialogManager.showBottomSheetDialog(context,
+                      title: "Seçenekler", children: [BottomSheetModel(title: "Raporlar", iconWidget: Icons.area_chart_outlined, onTap: () => dialogManager.showCariRaporlarGridViewDialog())]);
+                },
                 child: const Icon(Icons.more_horiz_outlined),
               ),
             ].map((e) => e.paddingAll(5)).toList(),
@@ -258,6 +281,11 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
           viewModel.changeCariListesi(null);
           return getData(sayfa: 1).then((value) {
             viewModel.changeCariListesi(value);
+            if ((value?.length ?? 0) < parametreModel.sabitSayfalamaOgeSayisi) {
+              viewModel.changeDahaVarMi(false);
+            } else {
+              viewModel.changeDahaVarMi(true);
+            }
           });
         },
         child: Observer(
@@ -315,6 +343,11 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                                   dialogManager.showSuccessSnackBar("${object.cariAdi} adlı cari silindi");
                                                   getData(sayfa: 1).then((value) {
                                                     viewModel.changeCariListesi(value);
+                                                    if ((value?.length ?? 0) < parametreModel.sabitSayfalamaOgeSayisi) {
+                                                      viewModel.changeDahaVarMi(false);
+                                                    } else {
+                                                      viewModel.changeDahaVarMi(true);
+                                                    }
                                                   });
                                                 } else {
                                                   dialogManager.showErrorSnackBar(result.message ?? "");
@@ -367,6 +400,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                     const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(object.efaturaMi == true),
                                     ColorfulBadge(label: Text("Dövizli ${object.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(object.dovizli == true),
                                     const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum).yetkiVarMi(object.boylam != null),
+                                    const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli).yetkiVarMi(object.kilit == "E")
                                     // object.boylam != null && object.enlem != null ? const Badge(label: Text(("Konum"))) : const SizedBox(),
                                     // object.dovizAdi != null ? Badge(label: Text(("Dövizli ${object.dovizAdi}"))) : const SizedBox(),
                                   ]
@@ -383,17 +417,14 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                   TextSpan(
                                       children: [
                                     TextSpan(
-                                        text: object.bakiye == null
-                                            ? "0,00 $mainCurrency"
-                                            : "${object.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"
-                                                "\n",
+                                        text: object.bakiye == null ? "0,00 $mainCurrency" : "${object.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency \n",
                                         style: TextStyle(color: UIHelper.getColorWithValue(object.bakiye ?? 0.0))),
                                     object.bakiye != null
                                         ? TextSpan(text: "${((object.bakiye ?? 0) > 0) ? "Tahsil Edilecek" : "Ödenecek"}\n", style: const TextStyle(fontStyle: FontStyle.italic))
                                         : null,
-                                    object.dovizli == true
+                                    (object.dovizli == true && object.dovBakiye != null)
                                         ? TextSpan(
-                                            text: "${object.dovBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${object.dovizAdi ?? ""}",
+                                            text: "${object.dovBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${object.dovizAdi ?? ""}",
                                             style: TextStyle(color: UIHelper.getColorWithValue(object.bakiye ?? 0.0)))
                                         : null,
                                   ].nullCheckWithGeneric),
@@ -444,6 +475,11 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                     var result = await getData(sayfa: 1, filterBakiye: "T");
                                     if (result is List) {
                                       viewModel.changeCariListesi(result);
+                                      if ((result.length) < parametreModel.sabitSayfalamaOgeSayisi) {
+                                        viewModel.changeDahaVarMi(false);
+                                      } else {
+                                        viewModel.changeDahaVarMi(true);
+                                      }
                                     }
                                   })),
                           const VerticalDivider(thickness: 1, width: 1),
@@ -461,6 +497,11 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                     var result = await getData(sayfa: 1, filterBakiye: "Ö");
                                     if (result is List) {
                                       viewModel.changeCariListesi(result);
+                                      if ((result.length) < parametreModel.sabitSayfalamaOgeSayisi) {
+                                        viewModel.changeDahaVarMi(false);
+                                      } else {
+                                        viewModel.changeDahaVarMi(true);
+                                      }
                                     }
                                   }))
                         ],
@@ -492,6 +533,11 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
           viewModel.changeCariListesi(null);
           getData(sayfa: 1).then((value) {
             viewModel.changeCariListesi(value);
+            if ((value?.length ?? 0) < parametreModel.sabitSayfalamaOgeSayisi) {
+              viewModel.changeDahaVarMi(false);
+            } else {
+              viewModel.changeDahaVarMi(true);
+            }
           });
         }
       },
@@ -505,11 +551,16 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
     viewModel.changeCariListesi(null);
     getData(sayfa: viewModel.sayfa).then((value) {
       viewModel.changeCariListesi(value);
+      if ((value?.length ?? 0) < parametreModel.sabitSayfalamaOgeSayisi) {
+        viewModel.changeDahaVarMi(false);
+      } else {
+        viewModel.changeDahaVarMi(true);
+      }
     });
   }
 
   Future<List?> getData({required int sayfa, String? sort1, String? filterBakiye}) async {
-    viewModel.changeDahaVarMi(false);
+    // viewModel.changeDahaVarMi(false);
     var queryParameters2 = {
       "EFaturaGoster": "true",
       "SIRALAMA": sort1 ?? sort,
@@ -541,25 +592,22 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
     }
     final response = await networkManager.dioGet<CariListesiModel>(path: ApiUrls.getCariler, queryParameters: queryParameters2, bodyModel: CariListesiModel());
 
-    if (mounted) {
-      if (response.data != null) {
-        if (response.data.length < parametreModel.sabitSayfalamaOgeSayisi) {
-          viewModel.changeDahaVarMi(false);
-        } else {
-          viewModel.changeDahaVarMi(true);
-        }
-      }
-    }
+    // if (mounted) {
+    //   if (response.data != null) {
+    //     if (response.data.length < parametreModel.sabitSayfalamaOgeSayisi) {
+    //       viewModel.changeDahaVarMi(false);
+    //     } else {
+    //       viewModel.changeDahaVarMi(true);
+    //     }
+    //   }
+    // }
     if (response.paramData != null) {
-      paramData = response.paramData!;
+      paramData = response.paramData ?? {};
       log("yeni param data : $paramData");
     } else {
       log("$paramData");
     }
     log("Sayfa : $sayfa");
-    if (mounted) {
-      setState(() {});
-    }
 
     return response.data;
   }

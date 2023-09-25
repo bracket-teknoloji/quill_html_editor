@@ -159,11 +159,11 @@ mixin _$YapilandirmaRehberiViewModel
           name: '_YapilandirmaRehberiViewModelBase', context: context);
 
   @override
-  void filterList() {
+  void altKodlariGetir() {
     final _$actionInfo = _$_YapilandirmaRehberiViewModelBaseActionController
-        .startAction(name: '_YapilandirmaRehberiViewModelBase.filterList');
+        .startAction(name: '_YapilandirmaRehberiViewModelBase.altKodlariGetir');
     try {
-      return super.filterList();
+      return super.altKodlariGetir();
     } finally {
       _$_YapilandirmaRehberiViewModelBaseActionController
           .endAction(_$actionInfo);

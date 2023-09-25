@@ -1,6 +1,7 @@
 import "dart:developer";
 
 import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 
@@ -78,8 +79,12 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
     viewModel.changeModel(model);
     StaticVariables.instance.cariKartiDigerFormKey.currentState?.activate();
     super.initState();
-    dataChecker();
-    subeChecker();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await dataChecker();
+      await subeChecker();
+      CariListesiModel.instance.subeKodu ??= 0;
+      subeController.text = subeList.firstWhereOrNull((element) => (element).subeKodu == CariListesiModel.instance.subeKodu)?.subeAdi ?? "";
+    });
   }
 
   @override
@@ -126,8 +131,6 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
 
   @override
   Widget build(BuildContext context) {
-    CariListesiModel.instance.subeKodu = CariListesiModel.instance.subeKodu ?? 0;
-    subeController.text = subeList.firstWhere((element) => (element).subeKodu == CariListesiModel.instance.subeKodu).subeAdi ?? "";
     log(CariListesiModel.instance.subeKodu.toStringIfNotNull ?? "");
     bool enabled = widget.model?.baseEditEnum != BaseEditEnum.goruntule;
     return SingleChildScrollView(
@@ -142,7 +145,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                   CustomTextField(
                     enabled: enabled,
                     readOnly: true,
-                    suffix: iconSwitcher(grupKoduController),
+                    suffixMore: true,
                     labelText: "Grup Kodu",
                     controller: grupKoduController,
                     onTap: () async {
@@ -160,25 +163,30 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                       }
                     },
                   ),
-                  CustomTextField(
-                    enabled: enabled,
-                    readOnly: true,
-                    suffix: iconSwitcher(kod1Controller),
-                    labelText: "Kod 1",
-                    controller: kod1Controller,
-                    onTap: () async {
-                      var liste = list?.where((element) => element.grupNo == 1).toList();
-                      var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                          aramaVarMi: true,
-                          title: "Kod 1",
-                          children:
-                              List.generate(liste!.length, (index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index].modul, onTap: () => Get.back(result: liste[index]))));
-                      if (result != null) {
-                        kod1Controller.text = result.grupAdi;
-                        viewModel.changeModel(model..kod1 = result.grupKodu);
-                      }
-                    },
-                  ),
+                  Observer(builder: (_) {
+                    return CustomTextField(
+                      enabled: enabled,
+                      readOnly: true,
+                      suffixMore: true,
+                      labelText: "Kod 1",
+                      controller: kod1Controller,
+                      onClear: () {
+                        viewModel.changeModel(model..kod1 = null);
+                      },
+                      onTap: () async {
+                        var liste = list?.where((element) => element.grupNo == 1).toList();
+                        var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                            aramaVarMi: true,
+                            title: "Kod 1",
+                            children:
+                                List.generate(liste!.length, (index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index].modul, onTap: () => Get.back(result: liste[index]))));
+                        if (result != null) {
+                          kod1Controller.text = result.grupAdi;
+                          viewModel.changeModel(model..kod1 = result.grupKodu);
+                        }
+                      },
+                    );
+                  }),
                 ],
               ).withExpanded,
               Row(
@@ -187,7 +195,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                   CustomTextField(
                       enabled: enabled,
                       readOnly: true,
-                      suffix: iconSwitcher(kod2Controller),
+                      suffixMore: true,
                       labelText: "Kod 2",
                       controller: kod2Controller,
                       onTap: () async {
@@ -205,7 +213,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                   CustomTextField(
                       enabled: enabled,
                       readOnly: true,
-                      suffix: iconSwitcher(kod3Controller),
+                      suffixMore: true,
                       labelText: "Kod 3",
                       controller: kod3Controller,
                       onTap: () async {
@@ -229,7 +237,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                       enabled: enabled,
                       labelText: "Kod 4",
                       readOnly: true,
-                      suffix: iconSwitcher(kod4Controller),
+                      suffixMore: true,
                       controller: kod4Controller,
                       onTap: () async {
                         var liste = list?.where((element) => element.grupNo == 4).toList();
@@ -248,7 +256,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                       enabled: enabled,
                       labelText: "Kod 5",
                       readOnly: true,
-                      suffix: iconSwitcher(kod5Controller),
+                      suffixMore: true,
                       controller: kod5Controller,
                       onTap: () async {
                         var liste = list?.where((element) => element.grupNo == 5).toList();
@@ -267,9 +275,9 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               ).withExpanded,
               CustomTextField(enabled: enabled, labelText: "Bilgi", controller: bilgiController),
               CustomTextField(
-                  enabled: (enabled && subeList.firstWhere((element) => element.subeKodu == veriTabani["Şube"]).merkezmi == "E") || widget.model?.baseEditEnum == BaseEditEnum.ekle,
+                  enabled: (enabled && subeList.firstWhereOrNull((element) => element.subeKodu == veriTabani["Şube"])?.merkezmi == "E") || widget.model?.baseEditEnum == BaseEditEnum.ekle,
                   readOnly: true,
-                  suffix: iconSwitcher(subeController),
+                  suffixMore: true,
                   isMust: true,
                   labelText: "Şube",
                   valueText: (model.subeKodu.toStringIfNotNull).toString(),
@@ -285,11 +293,17 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                       setState(() {});
                     }
                   }),
-              CustomTextField(enabled: enabled, readOnly: true, suffix: iconSwitcher(konumController), labelText: "Konum", controller: konumController),
               CustomTextField(
                 enabled: enabled,
                 readOnly: true,
-                suffix: iconSwitcher(kilitController),
+                suffixMore: true,
+                labelText: "Konum",
+                controller: konumController,
+              ),
+              CustomTextField(
+                enabled: enabled,
+                readOnly: true,
+                suffixMore: true,
                 isMust: true,
                 labelText: "Kilit",
                 valueText: model.kilit ?? "",
@@ -310,7 +324,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               CustomTextField(
                 enabled: enabled,
                 readOnly: true,
-                suffix: iconSwitcher(bagliCariController),
+                suffixMore: true,
                 labelText: "Bağlı Cari",
                 valueText: model.bagliCari ?? "",
                 controller: bagliCariController,
@@ -327,7 +341,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               CustomTextField(
                 enabled: enabled,
                 readOnly: true,
-                suffix: iconSwitcher(kosulKoduController),
+                suffixMore: true,
                 labelText: "Koşul Kodu",
                 valueText: model.kosulKodu ?? "",
                 controller: kosulKoduController,
@@ -566,7 +580,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
     );
   }
 
-  void dataChecker() async {
+  Future<void> dataChecker() async {
     if (list.ext.isNullOrEmpty && StaticVariables.grupKodlari.ext.isNullOrEmpty) {
       GenericResponseModel data = await CariNetworkManager.getKod();
       list = data.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
@@ -578,7 +592,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
     list = StaticVariables.grupKodlari;
   }
 
-  void subeChecker() {
+  Future<void> subeChecker() async {
     List result = CacheManager.getSubeListesi();
     subeList = result.map((e) => e as IsletmeModel).toList().cast<IsletmeModel>();
     if (subeList.any((element) => element.subeAdi != "Şubelerde Ortak")) {

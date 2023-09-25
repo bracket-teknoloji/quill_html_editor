@@ -129,7 +129,8 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                 readOnly: true,
                 validator: validator,
                 controller: tarihController,
-                suffix: const Icon(Icons.calendar_month_outlined),
+                isDateTime: true,
+                // suffix: const Icon(Icons.calendar_month_outlined),
                 onTap: () {
                   showDatePicker(
                     context: context,
@@ -178,7 +179,8 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                     readOnly: true,
                     validator: validator,
                     controller: vadeTarihiController,
-                    suffix: const Icon(Icons.calendar_month_outlined),
+                    isDateTime: true,
+                    // suffix: const Icon(Icons.calendar_month_outlined),
                     onTap: () {
                       showDatePicker(
                         context: context,

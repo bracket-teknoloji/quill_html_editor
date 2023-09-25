@@ -50,7 +50,6 @@ class AppThemeDark extends AppTheme {
       tooltipTheme:
           const TooltipThemeData(decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.all(Radius.circular(50))), textStyle: TextStyle(color: Colors.white, fontSize: 12)),
       dividerTheme: DividerThemeData(space: 0, thickness: 1, color: colorManager.onPrimaryContainer.withOpacity(0.2), endIndent: UIHelper.highSize, indent: UIHelper.highSize),
-      
       progressIndicatorTheme: ProgressIndicatorThemeData(color: UIHelper.primaryColor, linearTrackColor: Colors.transparent, circularTrackColor: Colors.transparent, linearMinHeight: 2),
       dropdownMenuTheme: DropdownMenuThemeData(
         menuStyle: const MenuStyle(),
@@ -133,14 +132,14 @@ class AppThemeDark extends AppTheme {
       )),
       snackBarTheme: SnackBarThemeData(
         showCloseIcon: true,
-        closeIconColor: colorManager.onPrimaryContainer,
+        closeIconColor: Colors.white,
         backgroundColor: UIHelper.primaryColor,
-        contentTextStyle: TextStyle(color: colorManager.onPrimaryContainer),
+        contentTextStyle: const TextStyle(color: Colors.white),
         insetPadding: UIHelper.lowPadding,
         shape: RoundedRectangleBorder(
           borderRadius: UIHelper.lowBorderRadius,
         ),
-        behavior: SnackBarBehavior.fixed,
+        behavior: SnackBarBehavior.floating,
       ),
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),

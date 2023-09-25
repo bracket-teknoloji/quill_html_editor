@@ -77,7 +77,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
             }),
             Expanded(
                 child: SizedBox(
-                    child: Text(widget.title ?? widget.cariListesiModel?.cariKodu ?? widget.model.stokKodu, style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis))
+                    child: Text(widget.title ?? widget.cariListesiModel?.cariKodu ?? widget.model?.stokKodu ?? "", style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis))
                         .paddingOnly(left: UIHelper.midSize)))
           ],
         ),
@@ -122,18 +122,20 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                                   name: item?.name.toString(),
                                   title: item?.title.toString(),
                                   onTap: () async {
-                                    if (item?.menuTipi == "S" || item?.menuTipi == "A") {
+                                    if (item?.altMenuVarMi == true) {
                                       viewModel.addReturnGridItemModel(viewModel.gridItemModelList);
+                                      viewModel.setGridItemModel(null);
+                                      // await Future.delayed(const Duration(milliseconds: 500));
                                       viewModel.setGridItemModel(item?.altMenuler);
                                     } else {
                                       if (item?.route != null && item?.menuTipi != "SR") {
                                         Get.back();
                                         Get.toNamed(item?.route ?? "", arguments: widget.cariListesiModel ?? widget.model);
                                       } else {
-                                      Get.back();
-                                        var result =await item?.onTap?.call();
-                                        if (result != null && result is bool){
-                                        widget.onSelected?.call(result);
+                                        Get.back();
+                                        var result = await item?.onTap?.call();
+                                        if (result != null && result is bool) {
+                                          widget.onSelected?.call(result);
                                         }
                                       }
                                     }

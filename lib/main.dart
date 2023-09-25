@@ -13,6 +13,7 @@ import "package:get/get.dart";
 import "package:picker/core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/view/kasa_dekontlar_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_listesi/view/kasa_listesi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_widget_model.dart";
 
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
 import "core/base/view/kalem_ekle/model/kalem_ekle_model.dart";
@@ -139,7 +140,8 @@ class PickerApp extends StatelessWidget {
             GetPage(name: "/kasaDekontlari", page: () => const KasaDekontlarView()),
 
             //* Sipariş
-            GetPage(name: "/siparisMusteriSiparisi", page: () => SiparislerView(widgetModel: Get.arguments)),
+            GetPage(name: "/siparisMusteriSiparisi", page: () => SiparislerView(widgetModel: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.musteri, isGetData: Get.arguments))),
+            GetPage(name: "/siparisSaticiSiparisi", page: () => SiparislerView(widgetModel: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.satici, isGetData: Get.arguments))),
             GetPage(name: "/siparisEdit", page: () => BaseSiparisEditingView(model: Get.arguments)),
             GetPage(name: "/siparisMusteriSiparisiDurumRaporu", page: () => const SiparisDurumRaporuView(siparisTipiEnum: SiparisTipiEnum.musteri)),
             GetPage(name: "/siparisSaticiSiparisiDurumRaporu", page: () => const SiparisDurumRaporuView(siparisTipiEnum: SiparisTipiEnum.satici)),
@@ -171,7 +173,7 @@ class PickerApp extends StatelessWidget {
                   stokKodu: Get.arguments is String ? Get.arguments : null,
                   cariModel: Get.arguments is CariListesiModel ? Get.arguments : null),
             ),
-            GetPage(name: "/stokYeniKayit", page: () => StokYeniKayitView(model: Get.arguments)),
+            GetPage(name: "/StokYeniKayitView", page: () => StokYeniKayitView(model: Get.arguments)),
 
             //* Stok Raporları
             GetPage(name: "/stokAmbarMaliyetRaporu", page: () => AmbarMaliyetRaporuView(model: Get.arguments)),
@@ -197,7 +199,7 @@ class PickerApp extends StatelessWidget {
 }
 
 Future<void> firebaseInitialized() async {
-  if (kIsWeb || kDebugMode) return;
+  if (kIsWeb|| Platform.isWindows || kDebugMode) return;
   if (!Platform.isWindows && (await AppTrackingTransparency.requestTrackingAuthorization() == TrackingStatus.authorized || !Platform.isIOS || !Platform.isMacOS)) {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
     FirebaseMessaging messaging = FirebaseMessaging.instance;

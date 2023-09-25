@@ -130,12 +130,19 @@ class _LoginViewState extends BaseState<LoginView> {
                                   selectedUser.account?.parola = null;
                                 } else {
                                   AccountModel.instance.uyeEmail = selectedUser.account?.email;
-                                  if (CacheManager.getHesapBilgileri?.qrData == null) {
-                                    AccountModel.instance.uyeSifre = selectedUser.account?.parola;
-                                  }
+                                  AccountModel.instance.uyeSifre = selectedUser.account?.parola;
                                 }
 
                                 viewModel.checkDebug();
+                              } else {
+                                selectedUser = CacheManager.getVerifiedUser;
+                                AccountModel.setFromAccountResponseModel(selectedUser.account);
+                                viewModel.checkDebug();
+                                if (selectedUser.account?.firma != null) {
+                                  companyController.text = selectedUser.account!.firma!;
+                                }
+                                emailController.text = selectedUser.username ?? "";
+                                passwordController.text = selectedUser.password ?? "";
                               }
                             },
                             decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz)),
@@ -161,11 +168,11 @@ class _LoginViewState extends BaseState<LoginView> {
                               return TextField(
                                 controller: passwordController,
                                 textInputAction: TextInputAction.done,
-                                obscureText: viewModel.showPassword,
+                                obscureText: viewModel.obscurePassword,
                                 decoration: InputDecoration(
                                   suffixIcon: IconButton(
                                     onPressed: () => viewModel.changeShowPassword(),
-                                    icon: viewModel.showPassword ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
+                                    icon: viewModel.obscurePassword ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
                                   ),
                                 ),
                               );
@@ -200,7 +207,7 @@ class _LoginViewState extends BaseState<LoginView> {
   }
 
   void login() async {
-    dialogManager.showLoadingDialog("Yükleniyor...");
+    // dialogManager.showLoadingDialog("Yükleniyor...");
 
     var instance = AccountModel.instance
       ..kullaniciAdi = emailController.text
@@ -216,12 +223,12 @@ class _LoginViewState extends BaseState<LoginView> {
     if (result.success != true) {
       log(result.ex.toString());
       if (CacheManager.getIsLicenseVerified(selectedUser.account?.email ?? "") == false) {
-        dialogManager.hideAlertDialog;
+        // dialogManager.hideAlertDialog;
         dialogManager.showAlertDialog(("${result.message ?? ""}\n${result.ex?["Message"] ?? result.errorDetails ?? "Lisansınız bulunamadı. Lütfen lisansınızı kontrol ediniz."}"));
         return;
       }
     }
-    dialogManager.hideAlertDialog;
+    // dialogManager.hideAlertDialog;
     dialogManager.showLoadingDialog("Giriş Yapılıyor");
 
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {

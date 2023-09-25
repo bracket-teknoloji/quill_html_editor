@@ -87,17 +87,24 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
     if (formKey.currentState?.validate() ?? false) {
       String encodedPassword = passwordDecoder(passwordController.text);
       dialogManager.showLoadingDialog("Yükleniyor...");
+
       AccountModel.instance
         ..uyeEmail = emailController.text
         ..uyeSifre = encodedPassword;
       final response = await networkManager.getUyeBilgileri(emailController.text, password: encodedPassword, getFromCache: false);
       dialogManager.hideAlertDialog;
       if (response.success == true) {
-        CacheManager.setHesapBilgileri(AccountModel.instance);
-        CacheManager.setAccounts(response.data!.first..parola = encodedPassword);
-        Get.back(result: true);
-        Get.offAndToNamed("/addCompany");
-        dialogManager.showSuccessSnackBar("Başarılı");
+        for (AccountResponseModel item in response.data) {
+          if (!CacheManager.accountsBox.containsKey(item.email)) {
+            CacheManager.setHesapBilgileri(AccountModel.instance);
+            CacheManager.setAccounts(response.data!.first..parola = encodedPassword);
+            Get.back(result: true);
+            Get.offAndToNamed("/addCompany");
+            dialogManager.showSuccessSnackBar("Başarılı");
+          } else {
+            dialogManager.showErrorSnackBar("${item.firmaKisaAdi ?? item.firma} zaten kayıtlı");
+          }
+        }
       } else {
         dialogManager.showAlertDialog(response.message ?? "");
       }

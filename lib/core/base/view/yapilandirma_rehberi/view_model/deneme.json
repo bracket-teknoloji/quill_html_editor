@@ -1,0 +1,86 @@
+{
+  "Success": true,
+  "Data": [
+    {
+      "DEGER_ACIKLAMA": "BEYAZ",
+      "DEGER": "01",
+      "KOD_ACIKLAMA": "RENK",
+      "KOD": "01",
+      "OZELLIK_SIRA": 1,
+      "YAPACIK": "ERKEK, M, BEYAZ",
+      "YAPKOD": "75824187"
+    },
+    {
+      "DEGER_ACIKLAMA": "M",
+      "DEGER": "09",
+      "KOD_ACIKLAMA": "BEDEN",
+      "KOD": "02",
+      "OZELLIK_SIRA": 2,
+      "YAPACIK": "ERKEK, M, BEYAZ",
+      "YAPKOD": "75824187"
+    },
+    {
+      "DEGER_ACIKLAMA": "ERKEK",
+      "DEGER": "01",
+      "KOD_ACIKLAMA": "CİNS",
+      "KOD": "03",
+      "OZELLIK_SIRA": 3,
+      "YAPACIK": "ERKEK, M, BEYAZ",
+      "YAPKOD": "75824187"
+    },
+    {
+      "DEGER_ACIKLAMA": "SARI",
+      "DEGER": "02",
+      "KOD_ACIKLAMA": "RENK",
+      "KOD": "01",
+      "OZELLIK_SIRA": 1,
+      "YAPACIK": "ERKEK, M, SARI",
+      "YAPKOD": "76646906"
+    },
+    {
+      "DEGER_ACIKLAMA": "M",
+      "DEGER": "09",
+      "KOD_ACIKLAMA": "BEDEN",
+      "KOD": "02",
+      "OZELLIK_SIRA": 2,
+      "YAPACIK": "ERKEK, M, SARI",
+      "YAPKOD": "76646906"
+    },
+    {
+      "DEGER_ACIKLAMA": "ERKEK",
+      "DEGER": "01",
+      "KOD_ACIKLAMA": "CİNS",
+      "KOD": "03",
+      "OZELLIK_SIRA": 3,
+      "YAPACIK": "ERKEK, M, SARI",
+      "YAPKOD": "76646906"
+    },
+    {
+      "YAPKOD": "76647015",
+      "YAPACIK": "KADIN, S, SARI",
+      "KOD": "01",
+      "KOD_ACIKLAMA": "RENK",
+      "DEGER": "02",
+      "DEGER_ACIKLAMA": "SARI",
+      "OZELLIK_SIRA": 1
+    },
+    {
+      "YAPKOD": "76647015",
+      "YAPACIK": "KADIN, S, SARI",
+      "KOD": "02",
+      "KOD_ACIKLAMA": "BEDEN",
+      "DEGER": "08",
+      "DEGER_ACIKLAMA": "S",
+      "OZELLIK_SIRA": 2
+    },
+    {
+      "YAPKOD": "76647015",
+      "YAPACIK": "KADIN, S, SARI",
+      "KOD": "03",
+      "KOD_ACIKLAMA": "CİNS",
+      "DEGER": "02",
+      "DEGER_ACIKLAMA": "KADIN",
+      "OZELLIK_SIRA": 3
+    }
+  ]
+}

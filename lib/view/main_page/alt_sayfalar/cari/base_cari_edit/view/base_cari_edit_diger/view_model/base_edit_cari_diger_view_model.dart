@@ -6,4 +6,6 @@ class BaseEditCariDigerViewModel = _BaseEditCariDigerViewModelBase with _$BaseEd
 
 abstract class _BaseEditCariDigerViewModelBase with Store {
   
+
+  
 }

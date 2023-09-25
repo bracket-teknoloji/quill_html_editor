@@ -50,14 +50,18 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, BaseScrolledViewMod
 
   @computed
   YapilandirmaRehberiModel? get yapilandirmaRehberiModel {
-    for (var item in yapilandirmaList ?? []) {}
+    for (var i = 0; i < (yapilandirmaProfilList?.length ?? 0); i++) {
+      if (yapilandirmaList?[i].deger == yapilandirmaProfilModel?.deger) {
+        return yapilandirmaList?[i];
+      }
+    }
     return null;
   }
 
   @observable
   ObservableList<YapilandirmaRehberiModel>? filteredList;
   @action
-  void filterList() {
+  void altKodlariGetir() {
     var list = yapilandirmaList?.where((element) => element.kod == yapilandirmaProfilModel?.ozellikKodu).toList().asObservable();
     List<YapilandirmaRehberiModel> list2 = [];
     list?.forEach((element) {
@@ -78,7 +82,7 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, BaseScrolledViewMod
   @action
   void incrementPage() {
     page++;
-    filterList();
+    altKodlariGetir();
   }
 
   @action
@@ -86,7 +90,7 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, BaseScrolledViewMod
     yapilandirmaProfilList?[page - 1].deger = null;
     yapilandirmaProfilList?[page - 2].deger = null;
     page--;
-    filterList();
+    altKodlariGetir();
   }
 
   @action
@@ -112,7 +116,7 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, BaseScrolledViewMod
       ObservableList<YapilandirmaRehberiModel> list = <YapilandirmaRehberiModel>[].asObservable();
       list.addAll(result.data.whereType<YapilandirmaRehberiModel>().toList());
       yapilandirmaList = list;
-      filterList();
+      altKodlariGetir();
     }
   }
 }

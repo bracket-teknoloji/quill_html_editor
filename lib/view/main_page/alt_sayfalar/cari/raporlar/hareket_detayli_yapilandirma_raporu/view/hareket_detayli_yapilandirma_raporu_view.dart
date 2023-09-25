@@ -82,7 +82,8 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
                 isMust: true,
                 controller: referansTarihController,
                 readOnly: true,
-                suffix: const Icon(Icons.calendar_today_outlined),
+                isDateTime: true,
+                // suffix: const Icon(Icons.calendar_today_outlined),
                 onTap: () async {
                   var result = await dialogManager.showDateTimePicker();
                   if (result != null) {

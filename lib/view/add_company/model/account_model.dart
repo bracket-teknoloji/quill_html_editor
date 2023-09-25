@@ -24,13 +24,12 @@ part "account_model.g.dart";
 class AccountModel with NetworkManagerMixin {
   AccountModel.getValue() {
     init();
-    uyeEmail = CacheManager.getHesapBilgileri?.uyeEmail;
-    uyeSifre = CacheManager.getHesapBilgileri?.uyeSifre;
+    // uyeEmail = CacheManager.getHesapBilgileri?.uyeEmail;
+    // uyeSifre = CacheManager.getHesapBilgileri?.uyeSifre;
   }
   static AccountModel instance = AccountModel.getValue();
 
-
-  static setFromAccountResponseModel(AccountResponseModel? model){
+  static setFromAccountResponseModel(AccountResponseModel? model) {
     instance.uyeEmail = model?.email;
     instance.uyeSifre = model?.parola;
   }
@@ -127,8 +126,15 @@ class AccountModel with NetworkManagerMixin {
   String? wifidenBagli;
   @HiveField(43)
   String? qrData;
+  @HiveField(44)
+  bool? debugMu;
 
   Future<void> init() async {
+    if (isDebug && !kDebugMode) {
+      debugMu = isDebug;
+    } else {
+      debugMu = null;
+    }
     // aktifIsletmeKodu = CacheManager.getVeriTabani()["İşletme"];
     // aktifSubeKodu = CacheManager.getVeriTabani()["Şube"];
     // aktifVeritabani = CacheManager.getVeriTabani()["Şirket"];
@@ -252,6 +258,8 @@ class AccountModel with NetworkManagerMixin {
   }
 
   String get getKonumTarihi => "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day} ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}";
+
+  bool get isDebug => CacheManager.accountsBox.values.any((element) => (element as AccountResponseModel?)?.email == "destek@netfect.com") || kDebugMode;
 
   @override
   fromJson(Map<String, dynamic> json) {

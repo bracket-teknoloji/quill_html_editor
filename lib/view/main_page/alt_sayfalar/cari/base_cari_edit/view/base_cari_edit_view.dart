@@ -113,7 +113,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
       addSirketBilgileri: true,
       data: model.toJson(),
     );
-    if (!(response.success ?? false)) {
+    if (!(response.success == true)) {
       dialogManager.hideAlertDialog;
       dialogManager.showAlertDialog("Eksik bilgi var\n${response.message}");
     } else {

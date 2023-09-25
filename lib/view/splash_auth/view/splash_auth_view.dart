@@ -123,6 +123,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
     if (CacheManager.getVerifiedUser.username == null) {
       Get.offAllNamed("/login");
     } else if (CacheManager.getLogout == true) {
+      AccountModel.setFromAccountResponseModel(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.email ?? ""));
       final response = await networkManager.getToken(path: ApiUrls.token, queryParameters: {
         "deviceInfos": jsonEncode((CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi)?.toJson())
       }, data: {

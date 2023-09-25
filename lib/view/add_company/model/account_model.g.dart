@@ -60,13 +60,14 @@ class AccountModelAdapter extends TypeAdapter<AccountModel> {
       ..uygulamaSurumKodu = fields[40] as int?
       ..uzakErisim = fields[41] as String?
       ..wifidenBagli = fields[42] as String?
-      ..qrData = fields[43] as String?;
+      ..qrData = fields[43] as String?
+      ..debugMu = fields[44] as bool?;
   }
 
   @override
   void write(BinaryWriter writer, AccountModel obj) {
     writer
-      ..writeByte(44)
+      ..writeByte(45)
       ..writeByte(0)
       ..write(obj.isim)
       ..writeByte(1)
@@ -154,7 +155,9 @@ class AccountModelAdapter extends TypeAdapter<AccountModel> {
       ..writeByte(42)
       ..write(obj.wifidenBagli)
       ..writeByte(43)
-      ..write(obj.qrData);
+      ..write(obj.qrData)
+      ..writeByte(44)
+      ..write(obj.debugMu);
   }
 
   @override
@@ -222,7 +225,8 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) => AccountModel()
   ..uygulamaSurumKodu = json['UYGULAMA_SURUM_KODU'] as int?
   ..uzakErisim = json['UZAK_ERISIM'] as String?
   ..wifidenBagli = json['WIFIDEN_BAGLI'] as String?
-  ..qrData = json['QR_DATA'] as String?;
+  ..qrData = json['QR_DATA'] as String?
+  ..debugMu = json['DEBUG_MU'] as bool?;
 
 Map<String, dynamic> _$AccountModelToJson(AccountModel instance) {
   final val = <String, dynamic>{};
@@ -278,6 +282,7 @@ Map<String, dynamic> _$AccountModelToJson(AccountModel instance) {
   writeNotNull('UZAK_ERISIM', instance.uzakErisim);
   writeNotNull('WIFIDEN_BAGLI', instance.wifidenBagli);
   writeNotNull('QR_DATA', instance.qrData);
+  writeNotNull('DEBUG_MU', instance.debugMu);
   return val;
 }
 

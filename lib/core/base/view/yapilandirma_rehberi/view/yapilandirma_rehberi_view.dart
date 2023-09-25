@@ -37,10 +37,9 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
           title: AppBarTitle(title: "Yapılandırma Rehberi", subtitle: "${widget.model.stokAdi} - ${widget.model.stokKodu}"),
         ),
         body: Observer(builder: (_) {
-          if (viewModel.yapilandirmaProfilList == null) {
+          if (viewModel.yapilandirmaList == null) {
             return const Center(child: CircularProgressIndicator());
-          }
-          if (viewModel.yapilandirmaList?.isEmpty ?? true) {
+          } else if (viewModel.yapilandirmaList!.isEmpty) {
             return Center(child: Text("${viewModel.stokListesiModel?.stokKodu ?? ""} ürünü için özellik tanımları bulunamadı!"));
           }
           return Column(

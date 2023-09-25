@@ -122,7 +122,8 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                     isMust: true,
                     readOnly: true,
                     controller: referansTarihController,
-                    suffix: const Icon(Icons.calendar_today_outlined),
+                    isDateTime: true,
+                    // suffix: const Icon(Icons.calendar_today_outlined),
                     onTap: () async {
                       DateTime? result = await dialogManager.showDateTimePicker();
                       if (result != null) {

@@ -98,6 +98,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                   isMust: true,
                   readOnly: true,
                   controller: tarihController,
+                  isDateTime: true,
                   onTap: () {
                     showDatePicker(
                       context: context,
@@ -110,11 +111,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                         tarihController.text = viewModel.model.tarih.toDateString;
                       }
                     });
-                  },
-                  suffix: const IconButton(
-                    onPressed: null,
-                    icon: Icon(Icons.calendar_today),
-                  )),
+                  }),
               CustomTextField(
                 labelText: "Belge No",
                 controller: belgeNoController,
