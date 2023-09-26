@@ -5,6 +5,8 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_slidable/flutter_slidable.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/badge/colorful_badge.dart";
+import "package:picker/core/constants/enum/badge_color_enum.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
@@ -325,8 +327,9 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                               Expanded(
                                                 child: Wrap(
                                                   children: [
-                                                    Text(model.stharTarih.toDateString),
-                                                    model.dovizTipi == 1 ? const Badge(label: Text("Dövizli")) : Container(),
+                                                    Text(model.stharTarih.toDateString).paddingOnly(right: UIHelper.lowSize).yetkiVarMi(model.stharTarih != null),
+                                                    const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizTipi == 1)
+                                                    // model.dovizTipi == 1 ? const Badge(label: Text("Dövizli")) : Container(),
                                                   ],
                                                 ),
                                               ),

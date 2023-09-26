@@ -7,7 +7,6 @@ import "../../../../core/constants/enum/serbest_rapor_detay_kod_enum.dart";
 import "../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../core/constants/grid_constants.dart";
 import "../../../../core/init/cache/cache_manager.dart";
-import "../../alt_sayfalar/siparis/siparisler/model/siparisler_widget_model.dart";
 import "../grid_item_model.dart";
 import "../main_page_model.dart";
 import "../param_model.dart";
@@ -160,7 +159,7 @@ class MenuItemConstants {
       //😳GridItemModel.item(name: "stok_BarkodTanimlama", title: "Barkod Tanımla"),
       GridItemModel.item(name: "stok_FiyatGorEkrani", title: "Fiyat Gör", route: "/mainPage/stokFiyatGor"),
       GridItemModel.item(name: "stok_FiyatGecmisi", title: "Fiyat Geçmişi", route: "/mainPage/stokFiyatGecmisi"),
-      //😳GridItemModel.item(name: "stok_StokListesi", title: "Yazdır"),
+      GridItemModel.item(name: "stok_StokListesi", title: "Yazdır", route: "/mainPage/stokYazdir"),
       //😳GridItemModel.altmenu(name: "stok_StokListesi", title: "Seri İşlemleri", icon: "inventory", altMenuler: [
       //😳  GridItemModel.item(name: "stok_SeriHar", title: "Seri Hareketleri"),
       //😳  GridItemModel.item(name: "stok_StokListesi", title: "Seri Etiketi Yazdır"),

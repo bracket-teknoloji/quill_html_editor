@@ -90,7 +90,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
             viewModel.increaseSayfa();
           }
           viewModel.addCariListesi(a!);
-          if ((a.length ?? 0) < parametreModel.sabitSayfalamaOgeSayisi) {
+          if (a.length < parametreModel.sabitSayfalamaOgeSayisi) {
             viewModel.changeDahaVarMi(false);
           } else {
             viewModel.changeDahaVarMi(true);
@@ -417,7 +417,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                   TextSpan(
                                       children: [
                                     TextSpan(
-                                        text: object.bakiye == null ? "0,00 $mainCurrency" : "${object.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency \n",
+                                        text: object.bakiye == null ? "0,00 $mainCurrency\n" : "${object.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency\n",
                                         style: TextStyle(color: UIHelper.getColorWithValue(object.bakiye ?? 0.0))),
                                     object.bakiye != null
                                         ? TextSpan(text: "${((object.bakiye ?? 0) > 0) ? "Tahsil Edilecek" : "Ödenecek"}\n", style: const TextStyle(fontStyle: FontStyle.italic))
@@ -428,7 +428,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                             style: TextStyle(color: UIHelper.getColorWithValue(object.bakiye ?? 0.0)))
                                         : null,
                                   ].nullCheckWithGeneric),
-                                  textAlign: TextAlign.center),
+                                  textAlign: TextAlign.right),
                             ]),
                           ),
                         ),

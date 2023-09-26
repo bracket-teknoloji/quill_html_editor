@@ -27,6 +27,7 @@ mixin _$BaseProfilParametreModel {
   bool get siparisVade => throw _privateConstructorUsedError;
   bool get kurlariSilTekrarGuncelle => throw _privateConstructorUsedError;
   bool get stokResimleriGoster => throw _privateConstructorUsedError;
+  bool get stokSecildigindeYazdir => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,7 +47,8 @@ abstract class $BaseProfilParametreModelCopyWith<$Res> {
       bool siparisMiktar,
       bool siparisVade,
       bool kurlariSilTekrarGuncelle,
-      bool stokResimleriGoster});
+      bool stokResimleriGoster,
+      bool stokSecildigindeYazdir});
 }
 
 /// @nodoc
@@ -69,6 +71,7 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
     Object? siparisVade = null,
     Object? kurlariSilTekrarGuncelle = null,
     Object? stokResimleriGoster = null,
+    Object? stokSecildigindeYazdir = null,
   }) {
     return _then(_value.copyWith(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -95,6 +98,10 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
           ? _value.stokResimleriGoster
           : stokResimleriGoster // ignore: cast_nullable_to_non_nullable
               as bool,
+      stokSecildigindeYazdir: null == stokSecildigindeYazdir
+          ? _value.stokSecildigindeYazdir
+          : stokSecildigindeYazdir // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -114,7 +121,8 @@ abstract class _$$_BaseProfilParametreModelCopyWith<$Res>
       bool siparisMiktar,
       bool siparisVade,
       bool kurlariSilTekrarGuncelle,
-      bool stokResimleriGoster});
+      bool stokResimleriGoster,
+      bool stokSecildigindeYazdir});
 }
 
 /// @nodoc
@@ -135,6 +143,7 @@ class __$$_BaseProfilParametreModelCopyWithImpl<$Res>
     Object? siparisVade = null,
     Object? kurlariSilTekrarGuncelle = null,
     Object? stokResimleriGoster = null,
+    Object? stokSecildigindeYazdir = null,
   }) {
     return _then(_$_BaseProfilParametreModel(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -161,6 +170,10 @@ class __$$_BaseProfilParametreModelCopyWithImpl<$Res>
           ? _value.stokResimleriGoster
           : stokResimleriGoster // ignore: cast_nullable_to_non_nullable
               as bool,
+      stokSecildigindeYazdir: null == stokSecildigindeYazdir
+          ? _value.stokSecildigindeYazdir
+          : stokSecildigindeYazdir // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -174,7 +187,8 @@ class _$_BaseProfilParametreModel extends _BaseProfilParametreModel {
       this.siparisMiktar = false,
       this.siparisVade = false,
       this.kurlariSilTekrarGuncelle = false,
-      this.stokResimleriGoster = false})
+      this.stokResimleriGoster = false,
+      this.stokSecildigindeYazdir = false})
       : super._();
 
   factory _$_BaseProfilParametreModel.fromJson(Map<String, dynamic> json) =>
@@ -198,6 +212,9 @@ class _$_BaseProfilParametreModel extends _BaseProfilParametreModel {
   @override
   @JsonKey()
   final bool stokResimleriGoster;
+  @override
+  @JsonKey()
+  final bool stokSecildigindeYazdir;
 
   @JsonKey(ignore: true)
   @override
@@ -221,7 +238,8 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
       final bool siparisMiktar,
       final bool siparisVade,
       final bool kurlariSilTekrarGuncelle,
-      final bool stokResimleriGoster}) = _$_BaseProfilParametreModel;
+      final bool stokResimleriGoster,
+      final bool stokSecildigindeYazdir}) = _$_BaseProfilParametreModel;
   _BaseProfilParametreModel._() : super._();
 
   factory _BaseProfilParametreModel.fromJson(Map<String, dynamic> json) =
@@ -239,6 +257,8 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   bool get kurlariSilTekrarGuncelle;
   @override
   bool get stokResimleriGoster;
+  @override
+  bool get stokSecildigindeYazdir;
   @override
   @JsonKey(ignore: true)
   _$$_BaseProfilParametreModelCopyWith<_$_BaseProfilParametreModel>

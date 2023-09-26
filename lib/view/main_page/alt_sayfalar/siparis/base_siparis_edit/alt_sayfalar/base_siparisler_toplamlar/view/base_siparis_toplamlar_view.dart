@@ -54,8 +54,11 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-        child: Column(
-      children: [toplamlarCard().paddingAll(UIHelper.lowSize), textFields()],
+        child: Padding(
+      padding: UIHelper.lowPaddingOnlyTop,
+      child: Column(
+        children: [toplamlarCard().paddingAll(UIHelper.lowSize), textFields()],
+      ),
     ));
   }
 

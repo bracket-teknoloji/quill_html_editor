@@ -40,7 +40,7 @@ class CariHareketleriView extends StatefulWidget {
 class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
   CariHareketleriViewModel viewModel = CariHareketleriViewModel();
   ScrollController? scrollController;
-  TextEditingController? searchController;
+  late final TextEditingController searchController;
   @override
   void initState() {
     super.initState();
@@ -53,7 +53,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
   void dispose() {
     super.dispose();
     scrollController?.dispose();
-    searchController?.dispose();
+    searchController.dispose();
   }
 
   void init() async {

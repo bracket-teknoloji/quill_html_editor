@@ -17,6 +17,8 @@ _$_BaseProfilParametreModel _$$_BaseProfilParametreModelFromJson(
       kurlariSilTekrarGuncelle:
           json['KURLARI_SIL_TEKRAR_GUNCELLE'] as bool? ?? false,
       stokResimleriGoster: json['STOK_RESIMLERI_GOSTER'] as bool? ?? false,
+      stokSecildigindeYazdir:
+          json['STOK_SECILDIGINDE_YAZDIR'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$_BaseProfilParametreModelToJson(
@@ -28,4 +30,5 @@ Map<String, dynamic> _$$_BaseProfilParametreModelToJson(
       'SIPARIS_VADE': instance.siparisVade,
       'KURLARI_SIL_TEKRAR_GUNCELLE': instance.kurlariSilTekrarGuncelle,
       'STOK_RESIMLERI_GOSTER': instance.stokResimleriGoster,
+      'STOK_SECILDIGINDE_YAZDIR': instance.stokSecildigindeYazdir,
     };

@@ -32,15 +32,15 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
   CariHareketleriModel? get model => widget.model?.model ?? CariHareketleriModel();
   bool get enable => widget.model?.baseEditEnum != BaseEditEnum.goruntule;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  TextEditingController? cariKoduController;
-  TextEditingController? tarihController;
-  TextEditingController? hareketTuruController;
-  TextEditingController? belgeNoController;
-  TextEditingController? aciklamaController;
-  TextEditingController? vadeTarihiController;
-  TextEditingController? tutarController;
-  TextEditingController? plasiyerController;
-  TextEditingController? projeController;
+  late final TextEditingController cariKoduController;
+  late final TextEditingController tarihController;
+  late final TextEditingController hareketTuruController;
+  late final TextEditingController belgeNoController;
+  late final TextEditingController aciklamaController;
+  late final TextEditingController vadeTarihiController;
+  late final TextEditingController tutarController;
+  late final TextEditingController plasiyerController;
+  late final TextEditingController projeController;
   MainPageModel? mainPageModel = CacheManager.getAnaVeri();
 
   @override
@@ -68,15 +68,15 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
 
   @override
   void dispose() {
-    cariKoduController?.dispose();
-    tarihController?.dispose();
-    hareketTuruController?.dispose();
-    belgeNoController?.dispose();
-    aciklamaController?.dispose();
-    vadeTarihiController?.dispose();
-    tutarController?.dispose();
-    plasiyerController?.dispose();
-    projeController?.dispose();
+    cariKoduController.dispose();
+    tarihController.dispose();
+    hareketTuruController.dispose();
+    belgeNoController.dispose();
+    aciklamaController.dispose();
+    vadeTarihiController.dispose();
+    tutarController.dispose();
+    plasiyerController.dispose();
+    projeController.dispose();
     super.dispose();
   }
 
@@ -140,7 +140,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                   ).then((value) {
                     if (value != null) {
                       viewModel.model.tarih = value;
-                      tarihController?.text = value.toDateString;
+                      tarihController.text = value.toDateString;
                     }
                   });
                 }),
@@ -159,7 +159,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                     BottomSheetModel(title: "Devir", description: "A", onTap: () => Get.back(result: {"title": "Devir", "value": "A"}))
                   ]);
                   if (result != null) {
-                    hareketTuruController?.text = result["title"];
+                    hareketTuruController.text = result["title"];
                     viewModel.setModelHareketKodu(result["value"]);
                   }
                 },
@@ -190,7 +190,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                       ).then((value) {
                         if (value != null) {
                           viewModel.model.vadeTarihi = value;
-                          vadeTarihiController?.text = value.toDateString;
+                          vadeTarihiController.text = value.toDateString;
                         }
                       });
                     },
@@ -227,7 +227,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                                   BottomSheetModel(title: e.plasiyerAciklama ?? "", description: e.plasiyerKodu, onTap: () => Get.back(result: {"title": e.plasiyerAciklama, "value": e.plasiyerKodu})))
                               .toList());
                       if (result != null) {
-                        plasiyerController?.text = result["title"];
+                        plasiyerController.text = result["title"];
                         viewModel.model.plasiyerKodu = result["value"];
                       }
                     },
@@ -253,7 +253,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                               .map((e) => BottomSheetModel(title: e.projeAciklama ?? "", description: e.projeKodu, onTap: () => Get.back(result: {"title": e.projeAciklama, "value": e.projeKodu})))
                               .toList());
                       if (result != null) {
-                        projeController?.text = result["title"];
+                        projeController.text = result["title"];
                         viewModel.model.projeKodu = result["value"];
                       }
                     },

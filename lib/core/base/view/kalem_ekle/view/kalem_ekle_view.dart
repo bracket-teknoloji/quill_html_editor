@@ -640,7 +640,6 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
           } else if (parametreModel.satisDovizTakipHangiDeger == 4) {
             viewModel.kalemModel.dovizKuru = result.effSatis;
           }
-          //TODO EFEKTİF Mİ DEĞİL Mİ ? NEYE GÖRE YAPACAĞINI ZEKİ ABİ'YE SOR
           dovizKuruController.text = viewModel.kalemModel.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
           viewModel.kalemModel.dovizFiyati = (viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1);
           dovizFiyatiController.text = viewModel.kalemModel.dovizFiyati.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari);

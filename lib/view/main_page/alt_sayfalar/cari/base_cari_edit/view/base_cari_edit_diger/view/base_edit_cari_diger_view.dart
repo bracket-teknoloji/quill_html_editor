@@ -1,7 +1,6 @@
 import "dart:developer";
 
 import "package:flutter/material.dart";
-import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 
@@ -163,30 +162,28 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                       }
                     },
                   ),
-                  Observer(builder: (_) {
-                    return CustomTextField(
-                      enabled: enabled,
-                      readOnly: true,
-                      suffixMore: true,
-                      labelText: "Kod 1",
-                      controller: kod1Controller,
-                      onClear: () {
-                        viewModel.changeModel(model..kod1 = null);
-                      },
-                      onTap: () async {
-                        var liste = list?.where((element) => element.grupNo == 1).toList();
-                        var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                            aramaVarMi: true,
-                            title: "Kod 1",
-                            children:
-                                List.generate(liste!.length, (index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index].modul, onTap: () => Get.back(result: liste[index]))));
-                        if (result != null) {
-                          kod1Controller.text = result.grupAdi;
-                          viewModel.changeModel(model..kod1 = result.grupKodu);
-                        }
-                      },
-                    );
-                  }),
+                  CustomTextField(
+                    enabled: enabled,
+                    readOnly: true,
+                    suffixMore: true,
+                    labelText: "Kod 1",
+                    controller: kod1Controller,
+                    onClear: () {
+                      viewModel.changeModel(model..kod1 = null);
+                    },
+                    onTap: () async {
+                      var liste = list?.where((element) => element.grupNo == 1).toList();
+                      var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                          aramaVarMi: true,
+                          title: "Kod 1",
+                          children:
+                              List.generate(liste!.length, (index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index].modul, onTap: () => Get.back(result: liste[index]))));
+                      if (result != null) {
+                        kod1Controller.text = result.grupAdi;
+                        viewModel.changeModel(model..kod1 = result.grupKodu);
+                      }
+                    },
+                  ),
                 ],
               ).withExpanded,
               Row(

@@ -34,22 +34,27 @@ class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
               dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = widget.model?.stokKodu ?? "");
             },
             onLongPress: () {},
-            trailing: IconButton(
-              icon: Icon(Icons.print_outlined, color: UIHelper.primaryColor),
-              onPressed: () async {
-                widget.onPrint?.call();
-                // var result = await Get.toNamed("/qr");
-                // if (result != null) {
-                //   controller.text = result.toString();
-                // }
-                // getData();
-              },
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(widget.model?.stokAdi ?? ""),
+                IconButton(
+                  icon: Icon(Icons.print_outlined, color: UIHelper.primaryColor),
+                  onPressed: () async {
+                    widget.onPrint?.call();
+                    // var result = await Get.toNamed("/qr");
+                    // if (result != null) {
+                    //   controller.text = result.toString();
+                    // }
+                    // getData();
+                  },
+                ),
+              ],
             ),
-            title: Column(
+            subtitle: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(widget.model?.stokAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
                 Visibility(visible: widget.model?.dovizAdi != null, child: ColorfulBadge(label: Text("Dövizli ${widget.model?.dovizAdi}"), badgeColorEnum: BadgeColorEnum.dovizli)),
                 Wrap(
                   direction: Axis.horizontal,
@@ -75,7 +80,7 @@ class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
                         Text(widget.model?.tarih?.toDateString ?? ""),
                       ],
                     ),
-                  ].map((e) => SizedBox(width: width * 0.25, child: e)).toList(),
+                  ].map((e) => SizedBox(width: width * 0.4, child: e).paddingOnly(bottom: UIHelper.lowSize)).toList(),
                 )
               ],
             )));

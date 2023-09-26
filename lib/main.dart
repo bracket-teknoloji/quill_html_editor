@@ -14,6 +14,7 @@ import "package:picker/core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/view/kasa_dekontlar_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_listesi/view/kasa_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_widget_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/yazdir/view/stok_yazdir_view.dart";
 
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
 import "core/base/view/kalem_ekle/model/kalem_ekle_model.dart";
@@ -161,6 +162,7 @@ class PickerApp extends StatelessWidget {
                     isGetData: Get.arguments is bool ? Get.arguments : (Get.arguments is KalemEkleModel ? Get.arguments.getArguments : null),
                     searchText: Get.arguments is KalemEkleModel ? Get.arguments.searchText : null)),
             GetPage(name: "/stokFiyatGor", page: () => const FiyatGorView()),
+            GetPage(name: "/stokYazdir", page: () => StokYazdirView(model: Get.arguments)),
             GetPage(name: "/stokFiyatGecmisi", page: () => const FiyatGecmisiView()),
 
             GetPage(name: "/stokEdit", page: () => BaseStokEditingView(model: Get.arguments)),

@@ -62,7 +62,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
 
   @override
   void initState() {
-    StaticVariables.instance.cariKartiGenelFormKey.currentState?.activate();
+    // StaticVariables.instance.cariKartiGenelFormKey.currentState?.activate();
     if (widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != BaseEditEnum.kopyala) {
       getCariDetay(model?.cariKodu ?? "");
     }
@@ -116,7 +116,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Form(
-        autovalidateMode: AutovalidateMode.onUserInteraction,
+        // autovalidateMode: AutovalidateMode.onUserInteraction,
         key: StaticVariables.instance.cariKartiGenelFormKey,
         child: Column(
           children: [

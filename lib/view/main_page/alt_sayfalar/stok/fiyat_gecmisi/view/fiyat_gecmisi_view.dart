@@ -30,12 +30,12 @@ class FiyatGecmisiView extends StatefulWidget {
 
 class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
   FiyatGecmisiViewModel viewModel = FiyatGecmisiViewModel();
-  late TextEditingController searchBarController;
-  late TextEditingController dizaynController;
-  late TextEditingController yaziciController;
-  late TextEditingController baslangicTarihiController;
-  late TextEditingController bitisTarihiController;
-  late TextEditingController fiyatTipiController;
+  late final TextEditingController searchBarController;
+  late final TextEditingController dizaynController;
+  late final TextEditingController yaziciController;
+  late final TextEditingController baslangicTarihiController;
+  late final TextEditingController bitisTarihiController;
+  late final TextEditingController fiyatTipiController;
 
   @override
   void initState() {

@@ -49,12 +49,12 @@ dependencies:
   copy_with_extension: ^5.0.3
   flutter_animate: ^4.1.1+1
   flutter_svg: ^2.0.5
-  google_fonts: ^5.1.0
+  google_fonts: ^6.1.0
   path: ^1.8.3
   kartal: ^3.2.0
   path_provider: ^2.0.15
   open_file_plus: ^3.4.1
-  permission_handler: ^10.3.0
+  permission_handler: ^11.0.0
   share_plus: ^7.0.2
 
   # Component  Dependencies
@@ -86,7 +86,7 @@ dependencies:
 
   flutter_image_compress: ^2.0.3
   timezone: ^0.9.1
-  syncfusion_flutter_pdfviewer: ^22.1.39
+  syncfusion_flutter_pdfviewer: ^23.1.38
   collection: ^1.17.1
   app_tracking_transparency: ^2.0.4
   app_settings: ^5.0.0
@@ -98,6 +98,7 @@ dependencies:
 
   #HTML Editor
   # html_editor_enhanced: ^2.5.1
+  quill_html_editor: ^2.2.6
   freezed_annotation: ^2.4.1
   injectable: ^2.2.0
   get_it: ^7.6.0
