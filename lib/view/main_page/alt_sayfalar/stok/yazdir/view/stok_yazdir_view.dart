@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/print_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
@@ -35,8 +34,8 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
     if (widget.model != null) {
       viewModel.setStokKodu(widget.model?.stokKodu);
       stokController = TextEditingController(text: widget.model?.stokAdi);
-    }else{
-    stokController = TextEditingController(text: viewModel.printModel.dicParams?.stokKodu);
+    } else {
+      stokController = TextEditingController(text: viewModel.printModel.dicParams?.stokKodu);
     }
     yapilandirmaKoduController = TextEditingController();
     dizaynController = TextEditingController(text: viewModel.printModel.dizaynId.toStringIfNotNull ?? "");
@@ -46,7 +45,9 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await setDizayn();
-      await setYazici();
+      if (viewModel.printModel.dizaynId != null) {
+        await setYazici();
+      }
     });
     super.initState();
   }

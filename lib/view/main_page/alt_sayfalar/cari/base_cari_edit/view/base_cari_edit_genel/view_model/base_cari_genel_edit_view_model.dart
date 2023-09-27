@@ -38,6 +38,7 @@ abstract class _BaseCariGenelEditViewModelBase with Store {
   @action
   void setModel(CariListesiModel? value) {
     model = value;
+    CariListesiModel.setInstance(value);
   }
 
   @action

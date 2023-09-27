@@ -131,5 +131,11 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
     );
   }
 
-  double get dovizCheck => dovizliMi ? (widget.cariHareketleriModel.dovYuruyenBakiye ?? 0) : (widget.cariHareketleriModel.yuruyenBakiye ?? 0);
+  double get dovizCheck {
+    if (dovizliMi) {
+      return (widget.cariHareketleriModel.dovYuruyenBakiye ?? widget.cariHareketleriModel.yuruyenBakiye ?? 0);
+    } else {
+      return (widget.cariHareketleriModel.yuruyenBakiye ?? 0);
+    }
+  }
 }

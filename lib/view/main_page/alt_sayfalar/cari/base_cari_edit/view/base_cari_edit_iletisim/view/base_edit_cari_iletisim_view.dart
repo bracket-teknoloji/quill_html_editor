@@ -18,6 +18,11 @@ class _BaseCariEditIletisimViewState extends State<BaseCariEditIletisimView> {
     return ListView.builder(
       itemCount: _cariDetayModel.irtibatList?.length ?? 0,
       itemBuilder: (context, index) {
+        if (_cariDetayModel.irtibatList == null || _cariDetayModel.irtibatList!.isEmpty) {
+          return const Center(
+            child: Text("İletişim bilgisi bulunamadı"),
+          );
+        }
         return Card(
           child: SizedBox(
             child: Column(

@@ -204,7 +204,6 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                         child: CariHareketlerCard(
                           dovizTipi: widget.cari?.dovizAdi,
                           cariHareketleriModel: viewModel.cariHareketleriList![index],
-                          
                           onTap: () {
                             List<BottomSheetModel> children2 = [
                               //TODO DÜZELT. ORJİNAL PİCKER'A BAK
@@ -330,12 +329,12 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                     child: FooterButton(children: [
                   const Text("Alacak"),
                   Text(
-                      "${(widget.cari?.dovizli == true ? viewModel.dovizAlacaklarToplami : viewModel.borclarToplami).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}")
+                      "${(widget.cari?.dovizli == true ? viewModel.dovizAlacaklarToplami : viewModel.alacaklarToplami).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}")
                 ])),
                 const VerticalDivider(thickness: 1, width: 1),
                 Expanded(
                     child: FooterButton(children: [
-                  const Text("Tahsil Edilecek"),
+                  Text((viewModel.borclarToplami - viewModel.alacaklarToplami) < 0 ? "Ödenecek" : "Tahsil Edilecek"),
                   Text(
                     "${(widget.cari?.dovizli == true ? viewModel.dovizBorclarToplami - viewModel.dovizAlacaklarToplami : viewModel.borclarToplami - viewModel.alacaklarToplami).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}",
                     style: TextStyle(color: (viewModel.borclarToplami - viewModel.alacaklarToplami) < 0 ? Colors.red : Colors.green),

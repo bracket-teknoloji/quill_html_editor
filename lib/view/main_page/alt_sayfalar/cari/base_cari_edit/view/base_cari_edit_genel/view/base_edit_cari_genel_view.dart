@@ -103,6 +103,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
         kodController.text = widget.model?.siradakiKod ?? "";
       }
     });
+    // viewModel.changeModel(viewModel.model);
     super.initState();
   }
 

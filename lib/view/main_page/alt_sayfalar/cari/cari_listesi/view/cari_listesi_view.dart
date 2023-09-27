@@ -265,12 +265,15 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
 
   Widget fab() {
     return Observer(
-      builder: (_) => CustomFloatingActionButton(
-        isScrolledDown: !viewModel.isScrolledDown,
-        onPressed: () async {
-          String? siradakiKod = await CariNetworkManager.getSiradakiKod();
-          Get.toNamed("/mainPage/cariEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, model: CariListesiModel(), siradakiKod: siradakiKod));
-        },
+      builder: (_) => Visibility(
+        visible: viewModel.cariListesi?.isNotEmpty ?? false,
+        child: CustomFloatingActionButton(
+          isScrolledDown: !viewModel.isScrolledDown,
+          onPressed: () async {
+            String? siradakiKod = await CariNetworkManager.getSiradakiKod();
+            Get.toNamed("/mainPage/cariEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, model: CariListesiModel(), siradakiKod: siradakiKod));
+          },
+        ),
       ),
     );
   }

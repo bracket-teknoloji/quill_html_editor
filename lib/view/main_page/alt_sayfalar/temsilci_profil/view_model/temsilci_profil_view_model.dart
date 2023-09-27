@@ -257,7 +257,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
         // list.add(value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
       }
     }
-    while (list.last == 0) {
+    while (list.lastOrNull == 0) {
       list.removeLast();
     }
     return list;
@@ -277,7 +277,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
       }
     }
     if (list.ext.isNotNullOrEmpty) {
-      while (list.last == 0) {
+      while (list.lastOrNull == 0) {
         list.removeLast();
       }
     }
@@ -298,7 +298,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
             list[i > 12 ? DateTime.now().month - 1 : i - 1] + (value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))?.toDouble() ?? 0);
       }
     }
-    while (list.last == 0) {
+    while (list.lastOrNull == 0) {
       list.removeLast();
     }
     return list;
@@ -318,7 +318,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
             list[i > 12 ? DateTime.now().month - 1 : i - 1] + (value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))?.toDouble() ?? 0);
       }
     }
-    while (list.last == 0) {
+    while (list.lastOrNull == 0) {
       list.removeLast();
     }
     return list;

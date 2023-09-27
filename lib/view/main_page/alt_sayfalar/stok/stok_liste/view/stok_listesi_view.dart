@@ -470,12 +470,15 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
 
   Observer? fab() {
     return Observer(builder: (_) {
-      return CustomFloatingActionButton(
-          isScrolledDown: viewModel.isScrolledDown,
-          onPressed: () {
-            BaseEditModel result = BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.ekle, model: StokListesiModel());
-            Get.toNamed("/mainPage/stokEdit", arguments: result);
-          }).yetkiVarMi(yetkiController.stokKartiYeniKayit);
+      return Visibility(
+        visible: viewModel.stokListesi?.isNotEmpty ?? false,
+        child: CustomFloatingActionButton(
+            isScrolledDown: viewModel.isScrolledDown,
+            onPressed: () {
+              BaseEditModel result = BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.ekle, model: StokListesiModel());
+              Get.toNamed("/mainPage/stokEdit", arguments: result);
+            }).yetkiVarMi(yetkiController.stokKartiYeniKayit),
+      );
     });
   }
 
