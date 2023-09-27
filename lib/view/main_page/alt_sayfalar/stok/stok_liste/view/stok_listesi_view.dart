@@ -603,13 +603,11 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                   );
                 } else {
                   return Observer(builder: (_) {
-                    double height = viewModel.dahaVarMi ? 50 : 0;
                     return Visibility(
                       visible: viewModel.dahaVarMi,
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 150),
-                        height: height,
-                        child: const Center(child: CircularProgressIndicator.adaptive()),
+                      child: const SizedBox(
+                        height: 50,
+                        child: Center(child: CircularProgressIndicator.adaptive()),
                       ),
                     );
                   });
@@ -620,7 +618,6 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   }
 
   Future<void> getData() async {
-    viewModel.dahaVarMi = false;
     var data2 = {"MenuKodu": "STOK_STOK", "ResimGoster": viewModel.resimleriGoster, "Siralama": viewModel.siralama, "Sayfa": viewModel.sayfa, "BakiyeDurumu": viewModel.bakiye ?? ""};
     if (!viewModel.bottomSheetModel.arrGrupKodu.isEmptyOrNull) {
       List<String> liste = [];

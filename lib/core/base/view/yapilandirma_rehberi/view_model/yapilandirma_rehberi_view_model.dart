@@ -31,7 +31,7 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, BaseScrolledViewMod
   ObservableList<YapilandirmaRehberiModel>? yapilandirmaList;
 
   @observable
-  ObservableList<YapilandirmaProfilModel>? yapilandirmaProfilList;
+  ObservableList<YapilandirmaProfilModel?>? yapilandirmaProfilList;
 
   @computed
   YapilandirmaProfilModel? get yapilandirmaProfilModel => yapilandirmaProfilList?[page - 1];
@@ -50,45 +50,66 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, BaseScrolledViewMod
 
   @computed
   YapilandirmaRehberiModel? get yapilandirmaRehberiModel {
-    for (var i = 0; i < (yapilandirmaProfilList?.length ?? 0); i++) {
-      if (yapilandirmaList?[i].deger == yapilandirmaProfilModel?.deger) {
-        return yapilandirmaList?[i];
-      }
-    }
-    return null;
+    return yapilandirmaList?[page - 1];
   }
+
+  List<List<YapilandirmaRehberiModel>> denemeList = <List<YapilandirmaRehberiModel>>[];
 
   @observable
   ObservableList<YapilandirmaRehberiModel>? filteredList;
+
+  @observable
+  ObservableList<YapilandirmaRehberiModel>? filteredList2;
   @action
-  void altKodlariGetir() {
-    var list = yapilandirmaList?.where((element) => element.kod == yapilandirmaProfilModel?.ozellikKodu).toList().asObservable();
+  Future<void> altKodlariGetir() async {
+    var list = denemeList[page - 1];
     List<YapilandirmaRehberiModel> list2 = [];
-    list?.forEach((element) {
-      if (!list2.any((element2) => element2.degerAciklama == element.degerAciklama)) {
-        if (!(yapilandirmaProfilList?.any((element2) => element2.deger == element.deger) ?? true)) {
-          list2.add(element);
+    for (YapilandirmaRehberiModel item in list) {
+      if (item.kod != yapilandirmaProfilModel?.ozellikKodu) {
+        continue;
+      }
+      if (page == 1) {
+        if (!list2.any((element) => element.degerAciklama == item.degerAciklama)) {
+          list2.add(item);
+        }
+      } else if (page > 1) {
+        // check item in every item in yapilandirmaProfilList
+        if (yapilandirmaProfilList?[page - 2]?.deger?.any((element) => element?.yapkod == item.yapkod) ?? false) {
+          if (!list2.any((element) => element.degerAciklama == item.degerAciklama)) {
+            list2.add(item);
+          }
         }
       }
-    });
-    filteredList = list2.asObservable();
+      filteredList = list2.asObservable();
+      filteredList2 = list2.asObservable();
+    }
   }
 
   @computed
-  String get title => yapilandirmaProfilList?[page - 1].aciklama ?? "";
+  String get title => yapilandirmaProfilList?[page - 1]?.aciklama ?? "";
 
   @action
-  void setYapilandirmaRehberiModel(YapilandirmaRehberiModel? value) => yapilandirmaProfilList?[page - 1].deger = value?.deger;
+  void setYapilandirmaRehberiModel(YapilandirmaRehberiModel? value) {
+    // altKodlariGetir();
+    yapilandirmaProfilList?[page - 1]?.deger =
+        yapilandirmaList?.where((element) => element.yapacik == value?.yapacik || (element.ozellikSira == value?.ozellikSira && element.deger == value?.deger)).toList();
+  }
+
+  // yapilandirmaProfilList?[page - 1]?.copyWith(deger: yapilandirmaList?.where((element) => element.degerAciklama == value?.degerAciklama && element.deger == value?.deger).toList());
   @action
-  void incrementPage() {
+  Future<void> incrementPage() async {
+    resetFilteredList();
+    await Future.delayed(const Duration(milliseconds: 50));
+    // yapilandirmaProfilList?[page - 1] = yapilandirmaProfilList?[page - 1]
+    //     ?.copyWith(deger: [...yapilandirmaProfilList?[page - 1]?.deger ?? [], ...yapilandirmaList?.where((element) => element.kod == yapilandirmaProfilList?[page - 1]?.ozellikKodu).toList() ?? []]);
     page++;
     altKodlariGetir();
   }
 
   @action
   void decrementPage() {
-    yapilandirmaProfilList?[page - 1].deger = null;
-    yapilandirmaProfilList?[page - 2].deger = null;
+    yapilandirmaProfilList?[page - 1]?.deger = [];
+    yapilandirmaProfilList?[page - 2]?.deger = [];
     page--;
     altKodlariGetir();
   }
@@ -116,7 +137,13 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, BaseScrolledViewMod
       ObservableList<YapilandirmaRehberiModel> list = <YapilandirmaRehberiModel>[].asObservable();
       list.addAll(result.data.whereType<YapilandirmaRehberiModel>().toList());
       yapilandirmaList = list;
-      altKodlariGetir();
+
+      for (var i = 0; i < (yapilandirmaProfilList?.length ?? 0); i++) {
+        if (yapilandirmaList?.where((element) => element.kod == yapilandirmaProfilList?[i]?.ozellikKodu).toList() != null) {
+          denemeList.add(yapilandirmaList!.where((element) => element.kod == yapilandirmaProfilList?[i]?.ozellikKodu).toList());
+        }
+      }
+      await altKodlariGetir();
     }
   }
 }

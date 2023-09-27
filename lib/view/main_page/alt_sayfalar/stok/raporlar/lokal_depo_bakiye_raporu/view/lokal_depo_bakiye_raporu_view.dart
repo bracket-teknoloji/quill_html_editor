@@ -24,16 +24,16 @@ class LokalDepoBakiyeRaporuView extends StatefulWidget {
 class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRaporuView> {
   LokalDepoBakiyeRaporuViewModel viewModel = LokalDepoBakiyeRaporuViewModel();
   List<BaseGrupKoduModel> grupKodList = [];
-  late TextEditingController stokController;
-  late TextEditingController depoController;
-  late TextEditingController haricStokGrupKodlariController;
-  late TextEditingController haricStokKodlariController;
-  late TextEditingController grupKodlariController;
-  late TextEditingController kod1Controller;
-  late TextEditingController kod2Controller;
-  late TextEditingController kod3Controller;
-  late TextEditingController kod4Controller;
-  late TextEditingController kod5Controller;
+  late final TextEditingController stokController;
+  late final TextEditingController depoController;
+  late final TextEditingController haricStokGrupKodlariController;
+  late final TextEditingController haricStokKodlariController;
+  late final TextEditingController grupKodlariController;
+  late final TextEditingController kod1Controller;
+  late final TextEditingController kod2Controller;
+  late final TextEditingController kod3Controller;
+  late final TextEditingController kod4Controller;
+  late final TextEditingController kod5Controller;
 
   @override
   void initState() {

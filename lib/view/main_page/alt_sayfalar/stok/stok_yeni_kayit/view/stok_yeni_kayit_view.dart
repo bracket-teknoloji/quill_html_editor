@@ -28,16 +28,16 @@ class StokYeniKayitView extends StatefulWidget {
 
 class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
   late StokYeniKayitViewModel viewModel = StokYeniKayitViewModel()..isSelected = (widget.model?.cikisIslemi ?? false) ? [false, true].asObservable() : ([true, false]).asObservable();
-  late TextEditingController stokKoduController = TextEditingController(text: widget.model?.stokKodu ?? "");
-  late TextEditingController tarihController = TextEditingController(text: widget.model?.stharTarih?.toDateString ?? viewModel.model.tarih.toDateString);
-  late TextEditingController belgeNoController = TextEditingController(text: widget.model?.fisno ?? viewModel.model.belgeNo);
-  late TextEditingController hareketTuruController = TextEditingController(text: widget.model?.hareketTuruAciklama ?? viewModel.model.hareketTuru);
-  late TextEditingController fiyatController = TextEditingController(text: widget.model?.stharNf.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? viewModel.model.fiyat.toStringIfNotNull);
-  late TextEditingController depoController = TextEditingController(text: widget.model?.depoKodu.toStringIfNotNull ?? viewModel.model.depoKodu.toStringIfNotNull);
-  late TextEditingController miktarController = TextEditingController(text: widget.model?.stharGcmik.toStringIfNotNull ?? viewModel.model.miktar.toStringIfNotNull);
-  late TextEditingController aciklamaController = TextEditingController(text: widget.model?.aciklama ?? viewModel.model.aciklama);
-  late TextEditingController plasiyerController = TextEditingController(text: widget.model?.plasiyerAciklama ?? viewModel.model.plasiyerKodu);
-  late TextEditingController projeController = TextEditingController(text: widget.model?.projeKodu ?? viewModel.model.projeKodu);
+  late final TextEditingController stokKoduController = TextEditingController(text: widget.model?.stokKodu ?? "");
+  late final TextEditingController tarihController = TextEditingController(text: widget.model?.stharTarih?.toDateString ?? viewModel.model.tarih.toDateString);
+  late final TextEditingController belgeNoController = TextEditingController(text: widget.model?.fisno ?? viewModel.model.belgeNo);
+  late final TextEditingController hareketTuruController = TextEditingController(text: widget.model?.hareketTuruAciklama ?? viewModel.model.hareketTuru);
+  late final TextEditingController fiyatController = TextEditingController(text: widget.model?.stharNf.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? viewModel.model.fiyat.toStringIfNotNull);
+  late final TextEditingController depoController = TextEditingController(text: widget.model?.depoKodu.toStringIfNotNull ?? viewModel.model.depoKodu.toStringIfNotNull);
+  late final TextEditingController miktarController = TextEditingController(text: widget.model?.stharGcmik.toStringIfNotNull ?? viewModel.model.miktar.toStringIfNotNull);
+  late final TextEditingController aciklamaController = TextEditingController(text: widget.model?.aciklama ?? viewModel.model.aciklama);
+  late final TextEditingController plasiyerController = TextEditingController(text: widget.model?.plasiyerAciklama ?? viewModel.model.plasiyerKodu);
+  late final TextEditingController projeController = TextEditingController(text: widget.model?.projeKodu ?? viewModel.model.projeKodu);
   final GlobalKey key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {

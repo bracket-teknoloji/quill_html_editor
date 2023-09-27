@@ -34,6 +34,9 @@ abstract class _StokYazdirViewModelBase with Store {
   void setPrintModel(PrintModel? model) => printModel = model ?? PrintModel(raporOzelKod: "StokEtiket", dicParams: DicParams());
 
   @action
+  void setYapilandirmaKodu(String? yapilandirmaKodu) => printModel = printModel.copyWith(dicParams: printModel.dicParams?.copyWith(yapkod: yapilandirmaKodu));
+
+  @action
   void setDizaynId(int? dizaynId) => printModel = printModel.copyWith(dizaynId: dizaynId);
 
   @action

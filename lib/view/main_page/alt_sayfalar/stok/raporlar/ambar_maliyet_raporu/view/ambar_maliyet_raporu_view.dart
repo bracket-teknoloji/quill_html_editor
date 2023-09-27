@@ -24,14 +24,14 @@ class AmbarMaliyetRaporuView extends StatefulWidget {
 class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
   AmbarMaliyetRaporuViewModel viewModel = AmbarMaliyetRaporuViewModel();
   List<BaseGrupKoduModel> grupKodList = [];
-  late TextEditingController stokController;
-  late TextEditingController maliyetTipiController;
-  late TextEditingController grupKoduController;
-  late TextEditingController kod1Controller;
-  late TextEditingController kod2Controller;
-  late TextEditingController kod3Controller;
-  late TextEditingController kod4Controller;
-  late TextEditingController kod5Controller;
+  late final TextEditingController stokController;
+  late final TextEditingController maliyetTipiController;
+  late final TextEditingController grupKoduController;
+  late final TextEditingController kod1Controller;
+  late final TextEditingController kod2Controller;
+  late final TextEditingController kod3Controller;
+  late final TextEditingController kod4Controller;
+  late final TextEditingController kod5Controller;
   @override
   void initState() {
     stokController = TextEditingController();

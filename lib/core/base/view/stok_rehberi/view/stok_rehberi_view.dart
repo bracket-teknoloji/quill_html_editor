@@ -279,7 +279,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 if (index == viewModel.stokListesi?.length) {
                                   return Visibility(
                                     visible: viewModel.dahaVarMi,
-                                    child: const Center(child: CircularProgressIndicator.adaptive()),
+                                    child: const SafeArea(child: Center(child: CircularProgressIndicator.adaptive())),
                                   );
                                 } else {
                                   StokListesiModel? stok = viewModel.stokListesi?[index];
@@ -302,7 +302,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                           } else {
                                             return;
                                           }
-                                            stokModel?.yapkodAciklama = result.yapacik;
+                                          stokModel?.yapkodAciklama = result.yapacik;
                                         }
                                         await Get.toNamed("/kalemEkle", arguments: stokModel ?? stok);
                                         viewModel.setSelectedStokModel(null);
@@ -317,7 +317,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                               const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(stok?.seriCikislardaAcik == true),
                                               const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(stok?.satDovTip != null || stok?.alisDovTip != null),
                                               const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap).yetkiVarMi(stok?.yapilandirmaAktif == true),
-                                            ],
+                                            ].whereType<ColorfulBadge>().toList(),
                                           ),
                                           Text(stok?.stokAdi ?? ""),
                                         ],

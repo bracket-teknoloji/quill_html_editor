@@ -116,13 +116,13 @@ mixin _$YapilandirmaRehberiViewModel
       context: context);
 
   @override
-  ObservableList<YapilandirmaProfilModel>? get yapilandirmaProfilList {
+  ObservableList<YapilandirmaProfilModel?>? get yapilandirmaProfilList {
     _$yapilandirmaProfilListAtom.reportRead();
     return super.yapilandirmaProfilList;
   }
 
   @override
-  set yapilandirmaProfilList(ObservableList<YapilandirmaProfilModel>? value) {
+  set yapilandirmaProfilList(ObservableList<YapilandirmaProfilModel?>? value) {
     _$yapilandirmaProfilListAtom
         .reportWrite(value, super.yapilandirmaProfilList, () {
       super.yapilandirmaProfilList = value;
@@ -145,6 +145,41 @@ mixin _$YapilandirmaRehberiViewModel
     });
   }
 
+  late final _$filteredList2Atom = Atom(
+      name: '_YapilandirmaRehberiViewModelBase.filteredList2',
+      context: context);
+
+  @override
+  ObservableList<YapilandirmaRehberiModel>? get filteredList2 {
+    _$filteredList2Atom.reportRead();
+    return super.filteredList2;
+  }
+
+  @override
+  set filteredList2(ObservableList<YapilandirmaRehberiModel>? value) {
+    _$filteredList2Atom.reportWrite(value, super.filteredList2, () {
+      super.filteredList2 = value;
+    });
+  }
+
+  late final _$altKodlariGetirAsyncAction = AsyncAction(
+      '_YapilandirmaRehberiViewModelBase.altKodlariGetir',
+      context: context);
+
+  @override
+  Future<void> altKodlariGetir() {
+    return _$altKodlariGetirAsyncAction.run(() => super.altKodlariGetir());
+  }
+
+  late final _$incrementPageAsyncAction = AsyncAction(
+      '_YapilandirmaRehberiViewModelBase.incrementPage',
+      context: context);
+
+  @override
+  Future<void> incrementPage() {
+    return _$incrementPageAsyncAction.run(() => super.incrementPage());
+  }
+
   late final _$getDataAsyncAction = AsyncAction(
       '_YapilandirmaRehberiViewModelBase.getData',
       context: context);
@@ -159,18 +194,6 @@ mixin _$YapilandirmaRehberiViewModel
           name: '_YapilandirmaRehberiViewModelBase', context: context);
 
   @override
-  void altKodlariGetir() {
-    final _$actionInfo = _$_YapilandirmaRehberiViewModelBaseActionController
-        .startAction(name: '_YapilandirmaRehberiViewModelBase.altKodlariGetir');
-    try {
-      return super.altKodlariGetir();
-    } finally {
-      _$_YapilandirmaRehberiViewModelBaseActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void setYapilandirmaRehberiModel(YapilandirmaRehberiModel? value) {
     final _$actionInfo =
         _$_YapilandirmaRehberiViewModelBaseActionController.startAction(
@@ -178,18 +201,6 @@ mixin _$YapilandirmaRehberiViewModel
                 '_YapilandirmaRehberiViewModelBase.setYapilandirmaRehberiModel');
     try {
       return super.setYapilandirmaRehberiModel(value);
-    } finally {
-      _$_YapilandirmaRehberiViewModelBaseActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void incrementPage() {
-    final _$actionInfo = _$_YapilandirmaRehberiViewModelBaseActionController
-        .startAction(name: '_YapilandirmaRehberiViewModelBase.incrementPage');
-    try {
-      return super.incrementPage();
     } finally {
       _$_YapilandirmaRehberiViewModelBaseActionController
           .endAction(_$actionInfo);
@@ -242,6 +253,7 @@ stokListesiModel: ${stokListesiModel},
 yapilandirmaList: ${yapilandirmaList},
 yapilandirmaProfilList: ${yapilandirmaProfilList},
 filteredList: ${filteredList},
+filteredList2: ${filteredList2},
 yapilandirmaProfilModel: ${yapilandirmaProfilModel},
 color: ${color},
 count: ${count},

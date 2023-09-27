@@ -1,90 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-	<dict>
-		<key>NSAppTransportSecurity</key>
-		<dict>
-			<key>NSAllowsLocalNetworking</key>
-			<true />
-		</dict>
-		<key>CADisableMinimumFrameDurationOnPhone</key>
-		<true />
-		<key>CFBundleDevelopmentRegion</key>
-		<string>$(DEVELOPMENT_LANGUAGE)</string>
-		<key>CFBundleDisplayName</key>
-		<string>Picker</string>
-		<key>CFBundleDocumentTypes</key>
-		<array>
-			<dict>
-				<key>CFBundleTypeName</key>
-				<string>Picker</string>
-				<key>LSHandlerRank</key>
-				<string>Default</string>
-			</dict>
-		</array>
-		<key>CFBundleExecutable</key>
-		<string>$(EXECUTABLE_NAME)</string>
-		<key>CFBundleGetInfoString</key>
-		<string></string>
-		<key>CFBundleIdentifier</key>
-		<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-		<key>CFBundleInfoDictionaryVersion</key>
-		<string>6.0</string>
-		<key>CFBundleName</key>
-		<string>picker</string>
-		<key>CFBundlePackageType</key>
-		<string>APPL</string>
-		<key>CFBundleShortVersionString</key>
-		<string>$(MARKETING_VERSION)</string>
-		<key>CFBundleSignature</key>
-		<string>????</string>
-		<key>CFBundleVersion</key>
-		<string>1</string>
-		<key>FirebaseAppDelegateProxyEnabled</key>
-		<false />
-		<key>ITSAppUsesNonExemptEncryption</key>
-		<false />
-		<key>LSApplicationCategoryType</key>
-		<string>public.app-category.business</string>
-		<key>LSRequiresIPhoneOS</key>
-		<true />
-		<key>LSSupportsOpeningDocumentsInPlace</key>
-		<true />
-		<key>NSCameraUsageDescription</key>
-		<string>QR kodu okutabilmek için lütfen bunu onaylayın.</string>
-		<key>NSHumanReadableCopyright</key>
-		<string></string>
-		<key>NSPhotoLibraryUsageDescription</key>
-		<string>Fotoğraflarınıza erişmek için lütfen bunu onaylayın.</string>
-		<key>NSUserTrackingUsageDescription</key>
-		<string>Uygulama herhangi bir hata aldığında bize haber vermesi için bunu onaylayın.</string>
-		<key>UIApplicationSupportsIndirectInputEvents</key>
-		<true />
-		<key>UIBackgroundModes</key>
-		<array>
-			<string>fetch</string>
-			<string>remote-notification</string>
-		</array>
-		<key>UILaunchStoryboardName</key>
-		<string>LaunchScreen</string>
-		<key>UIMainStoryboardFile</key>
-		<string>Main</string>
-		<key>UISupportedInterfaceOrientations</key>
-		<array>
-			<string>UIInterfaceOrientationPortrait</string>
-			<string>UIInterfaceOrientationLandscapeLeft</string>
-			<string>UIInterfaceOrientationLandscapeRight</string>
-		</array>
-		<key>UISupportedInterfaceOrientations~ipad</key>
-		<array>
-			<string>UIInterfaceOrientationPortrait</string>
-			<string>UIInterfaceOrientationPortraitUpsideDown</string>
-			<string>UIInterfaceOrientationLandscapeLeft</string>
-			<string>UIInterfaceOrientationLandscapeRight</string>
-		</array>
-		<key>UISupportsDocumentBrowser</key>
-		<true />
-		<key>UIViewControllerBasedStatusBarAppearance</key>
-		<false />
-	</dict>
+<dict>
+	<key>CLIENT_ID</key>
+	<string>9609536428-t6vi28fbgma6pi36m4sl9dus3le6d8bp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.9609536428-t6vi28fbgma6pi36m4sl9dus3le6d8bp</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCxbZwOpp9ufLwjqnlBFvrBQGG0efF-ftI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>9609536428</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.bracket23.picker</string>
+	<key>PROJECT_ID</key>
+	<string>flutter-picker</string>
+	<key>STORAGE_BUCKET</key>
+	<string>flutter-picker.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:9609536428:ios:533cdc2b1a920cd3579009</string>
+</dict>
 </plist>

@@ -27,15 +27,15 @@ class DovizBakiyeRaporuView extends StatefulWidget {
 class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
   DovizBakiyeRaporuViewModel viewModel = DovizBakiyeRaporuViewModel();
   List<BaseGrupKoduModel> grupKodList = [];
-  late TextEditingController cariController;
-  late TextEditingController plasiyerController;
-  late TextEditingController siralaController;
-  late TextEditingController grupKoduController;
-  late TextEditingController kod1Controller;
-  late TextEditingController kod2Controller;
-  late TextEditingController kod3Controller;
-  late TextEditingController kod4Controller;
-  late TextEditingController kod5Controller;
+  late final TextEditingController cariController;
+  late final TextEditingController plasiyerController;
+  late final TextEditingController siralaController;
+  late final TextEditingController grupKoduController;
+  late final TextEditingController kod1Controller;
+  late final TextEditingController kod2Controller;
+  late final TextEditingController kod3Controller;
+  late final TextEditingController kod4Controller;
+  late final TextEditingController kod5Controller;
 
   @override
   void initState() {

@@ -89,6 +89,20 @@ Public Class Uc_YapilandirmaSecimi
       End With
     Next
 
+    'If (DtOzellik.Rows.Count - 1) = ListeSecim.Count Then
+    '  Dim Liste2 As New List(Of ComboBoxKodTanimClassStr)
+    '  For Each item In Liste
+    '    Do While True
+    '      If item.O1.Count > 1 Then
+    '        Call Liste2.Add(New ComboBoxKodTanimClassStr(item.Kod, item.Tanim) With {.O1 = New List(Of ComboBoxKodTanimClassStr) From {New ComboBoxKodTanimClassStr(item.O1(item.O1.Count - 1).Kod, item.O1(item.O1.Count - 1).Tanim)}})
+    '        Call item.O1.Remove(item.O1(item.O1.Count - 1))
+    '      Else
+    '        Exit Do
+    '      End If
+    '    Loop
+    '  Next
+    '  If Liste2.Count > 0 Then Call Liste.AddRange(Liste2)
+    ' End If
     Return Liste
   End Function
 
@@ -119,6 +133,13 @@ Public Class Uc_YapilandirmaSecimi
     Dim Item As DevExpress.XtraEditors.TileItem
     If ListeSecim.Count > 0 Then
       Item = New DevExpress.XtraEditors.TileItem
+      'Item.Text = "Geri"
+      Item.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True
+      Item.AppearanceItem.Normal.BackColor = System.Drawing.Color.DimGray
+      Item.AppearanceItem.Normal.BorderColor = System.Drawing.Color.DimGray
+      Item.ImageOptions.SvgImage = My.Resources.actions_arrow2left
+      Item.ImageOptions.SvgImageSize = New System.Drawing.Size(64, 64)
+      Item.ImageAlignment = TileItemContentAlignment.MiddleCenter
       AddHandler Item.ItemClick, Sub()
                        SecilenYapKod = String.Empty : SecilenYapAcik = String.Empty
                        For X As Integer = ListeSecim.Count - 1 To 0 Step -1
@@ -129,92 +150,3 @@ Public Class Uc_YapilandirmaSecimi
                      End Sub
       Call TG.Items.Add(Item)
     End If
-    Dim ListeTekOlan As List(Of ComboBoxKodTanimClassStr)
-    For Each listeYap In AltKodlariGetir()
-      Item = New DevExpress.XtraEditors.TileItem
-      Item.Tag = listeYap
-      If Not String.IsNullOrEmpty(listeYap.Tanim) Then
-        Item.Text = listeYap.Tanim
-      Else
-        Item.Text = listeYap.Kod
-      End If
-      Item.ItemSize = DevExpress.XtraEditors.TileItemSize.Medium
-      Item.AppearanceItem.Normal.BackColor = RenkVer()
-      Item.AppearanceItem.Normal.BorderColor = RenkVer()
-      ListeTekOlan = New List(Of ComboBoxKodTanimClassStr)
-      For Each i In CType(listeYap.O1, List(Of ComboBoxKodTanimClassStr))
-        DtYap.DefaultView.RowFilter = "YAPKOD = " & SqlGuvenlik(i.Kod)
-        If DtYap.DefaultView.Count = 1 Then Call ListeTekOlan.Add(i)
-      Next
-
-      Dim Secilebilir As Boolean = False
-      If CType(listeYap.O1, List(Of ComboBoxKodTanimClassStr)).Count = 1 Then
-        DtYap.DefaultView.RowFilter = "YAPKOD = " & SqlGuvenlik(CType(listeYap.O1, List(Of ComboBoxKodTanimClassStr))(0).Kod)
-        If DtYap.DefaultView.Count = ListeSecim.Count + 1 Then Item.Text &= vbCrLf & vbCrLf & CType(listeYap.O1, List(Of ComboBoxKodTanimClassStr))(0).Kod : Secilebilir = True
-      ElseIf ListeTekOlan.Count = 1 Then
-        Item.Text &= vbCrLf & vbCrLf & ListeTekOlan(0).Kod
-        Secilebilir = True
-      End If
-
-      If CType(listeYap.O1, List(Of ComboBoxKodTanimClassStr)).Count > 1 Then
-        Item.ImageOptions.SvgImage = My.Resources.actions_arrow2right
-        Item.ImageAlignment = TileItemContentAlignment.BottomRight
-      ElseIf Not Secilebilir AndAlso ListeSecim.Count < DtOzellik.Rows.Count Then
-        Item.ImageOptions.SvgImage = My.Resources.actions_arrow2right
-        Item.ImageAlignment = TileItemContentAlignment.BottomRight
-      End If
-
-      AddHandler Item.ItemClick, Sub(sender As Object, e As DevExpress.XtraEditors.TileItemEventArgs)
-      SecilenYapKod = String.Empty : SecilenYapAcik = String.Empty
-      For Each n In e.Item.Group.Items
-        If n Is e.Item Then Continue For
-        If n.Checked Then n.Checked = False
-        Next
-        Call TC_ItemCheckedChanged()
-
-                       Dim Tag As ComboBoxKodTanimClassStr = CType(e.Item.Tag, ComboBoxKodTanimClassStr)
-                       Dim ListeKod As List(Of ComboBoxKodTanimClassStr) = Tag.O1
-                       Call ListeOzellikEkle(Tag.Kod)
-
-                       ListeTekOlan = New List(Of ComboBoxKodTanimClassStr)
-                       For Each i In ListeKod
-                         DtYap.DefaultView.RowFilter = "YAPKOD = " & SqlGuvenlik(i.Kod)
-                         If DtYap.DefaultView.Count = 1 Then Call ListeTekOlan.Add(i)
-                       Next
-                       If ListeKod.Count = 1 Then
-                         DtYap.DefaultView.RowFilter = "YAPKOD = " & SqlGuvenlik(ListeKod(0).Kod)
-                         If DtYap.DefaultView.Count > ListeSecim.Count Then
-                           Call Doldur()
-                         Else
-                           If Not e.Item.Checked Then e.Item.Checked = True
-                           SecilenYapKod = ListeKod(0).Kod : SecilenYapAcik = ListeKod(0).Tanim : Call TC_ItemCheckedChanged()
-                         End If
-                       ElseIf ListeTekOlan.Count = 1 Then
-                         If Not e.Item.Checked Then e.Item.Checked = True
-                         SecilenYapKod = ListeTekOlan(0).Kod : SecilenYapAcik = ListeTekOlan(0).Tanim : Call TC_ItemCheckedChanged()
-                       Else
-                         Call Doldur()
-                       End If
-                     End Sub
-      Call TG.Items.Add(Item)
-    Next
-    Call TC_ItemCheckedChanged()
-  End Sub
-  
-  Private Sub WUP_ButonTiklandi(Buton As IButton) Handles WUP.ButonTiklandi
-    If Buton Is WUP.Butonlar(NetFectUIButtonPanel.EButonlar.Kaydet) Then
-      CObj(Me.ParentForm).DialogResult = DialogResult.OK
-    Else
-      CObj(Me.ParentForm).DialogResult = DialogResult.Cancel
-    End If
-  End Sub
-
-  Private Sub TC_ItemCheckedChanged() Handles TC.ItemCheckedChanged, MyBase.Load
-    Dim Sayi As Integer = 0
-    For Each i In TG.Items
-      If i.Checked Then Sayi += 1
-    Next
-
-    WUP.ButtonEnable(NetFectUIButtonPanel.EButonlar.Kaydet) = Sayi > 0
-  End Sub
-End Class

@@ -1,5 +1,6 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/view/yapilandirma_rehberi/model/yapilandirma_rehberi_model.dart";
 
 part "yapilandirma_profil_model.freezed.dart";
 part "yapilandirma_profil_model.g.dart";
@@ -12,7 +13,7 @@ class YapilandirmaProfilModel with _$YapilandirmaProfilModel, NetworkManagerMixi
         int? sira,
         String? ozellikKodu,
         String? aciklama,
-        String? deger,      
+        List<YapilandirmaRehberiModel?>? deger,      
     }) = _YapilandirmaProfilModel;
 
     factory YapilandirmaProfilModel.fromJson(Map<String, dynamic> json) => _$YapilandirmaProfilModelFromJson(json);

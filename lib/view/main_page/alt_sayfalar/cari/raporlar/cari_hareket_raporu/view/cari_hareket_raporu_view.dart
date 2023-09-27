@@ -27,17 +27,17 @@ class CariHareketRaporuView extends StatefulWidget {
 class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
   CariHareketRaporuViewModel viewModel = CariHareketRaporuViewModel();
   List<BaseGrupKoduModel> grupKodList = [];
-  late TextEditingController baslangicTarihiController;
-  late TextEditingController bitisTarihiController;
-  late TextEditingController cariController;
-  late TextEditingController plasiyerController;
-  late TextEditingController siralaController;
-  late TextEditingController grupKoduController;
-  late TextEditingController kod1Controller;
-  late TextEditingController kod2Controller;
-  late TextEditingController kod3Controller;
-  late TextEditingController kod4Controller;
-  late TextEditingController kod5Controller;
+  late final TextEditingController baslangicTarihiController;
+  late final TextEditingController bitisTarihiController;
+  late final TextEditingController cariController;
+  late final TextEditingController plasiyerController;
+  late final TextEditingController siralaController;
+  late final TextEditingController grupKoduController;
+  late final TextEditingController kod1Controller;
+  late final TextEditingController kod2Controller;
+  late final TextEditingController kod3Controller;
+  late final TextEditingController kod4Controller;
+  late final TextEditingController kod5Controller;
   @override
   void initState() {
     baslangicTarihiController = TextEditingController();

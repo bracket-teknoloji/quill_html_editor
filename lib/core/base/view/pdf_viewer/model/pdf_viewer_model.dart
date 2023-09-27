@@ -143,6 +143,7 @@ class DicParams with _$DicParams {
       String? fiyatTipi,
       String? tblnfStokfiyatgecmisiId,
       int? miktar,
+      String? yapkod,
       }) = _DicParams;
   factory DicParams.fromJson(Map<String, dynamic> json) => _$DicParamsFromJson(json);
 }

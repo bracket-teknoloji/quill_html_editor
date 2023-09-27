@@ -22,8 +22,8 @@ class StokEkstreView extends StatefulWidget {
 class _StokEkstreViewState extends BaseState<StokEkstreView> {
   StokEkstreViewModel viewModel = StokEkstreViewModel();
   TextEditingController? cariController;
-  late TextEditingController baslangicTarihiController;
-  late TextEditingController bitisTarihiController;
+  late final TextEditingController baslangicTarihiController;
+  late final TextEditingController bitisTarihiController;
 
   @override
   void initState() {

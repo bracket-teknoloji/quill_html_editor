@@ -96,16 +96,15 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
                                                 onTap: () async {
                                                   if (!viewModel.isLastPage) {
                                                     viewModel.setYapilandirmaRehberiModel(item);
-                                                    viewModel.resetFilteredList();
-                                                    await Future.delayed(const Duration(milliseconds: 50));
-                                                    viewModel.incrementPage();
+                                                    
+                                                    await viewModel.incrementPage();
                                                   } else {
                                                     Get.back(result: item);
                                                   }
                                                 },
                                                 child: GridTile(
                                                   header: Text(item?.degerAciklama ?? ""),
-                                                  footer: Text(item?.deger ?? ""),
+                                                  footer: Text(viewModel.isLastPage? (item?.yapkod??"") : ""),
                                                   child: Visibility(
                                                     visible: !viewModel.isLastPage,
                                                     child: Container(

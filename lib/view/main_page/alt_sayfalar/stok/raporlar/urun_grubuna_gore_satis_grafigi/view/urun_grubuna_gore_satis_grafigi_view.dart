@@ -1,19 +1,19 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
-import "../../../../../../../core/constants/extensions/list_extensions.dart";
-import "../../../../../../../core/init/network/login/api_urls.dart";
-import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 
 import "../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/charts/custom_pie_chart.dart";
 import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../../core/init/cache/cache_manager.dart";
+import "../../../../../../../core/init/network/login/api_urls.dart";
 import "../../../../../model/param_model.dart";
+import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../model/urun_grubuna_gore_satis_grafigi_model.dart";
 import "../view_model/urun_grubuna_gore_satis_grafigi_view_model.dart";
 
@@ -27,12 +27,12 @@ class UrunGrubunaGoreSatisGrafigiView extends StatefulWidget {
 
 class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSatisGrafigiView> {
   UrunGrubunaGoreSatisGrafigiViewModel viewModel = UrunGrubunaGoreSatisGrafigiViewModel();
-  late TextEditingController baslangicTarihiController;
-  late TextEditingController bitisTarihiController;
-  late TextEditingController grupNoController;
-  late TextEditingController cariController;
-  late TextEditingController plasiyerController;
-  late TextEditingController projeController;
+  late final TextEditingController baslangicTarihiController;
+  late final TextEditingController bitisTarihiController;
+  late final TextEditingController grupNoController;
+  late final TextEditingController cariController;
+  late final TextEditingController plasiyerController;
+  late final TextEditingController projeController;
 
   @override
   void initState() {

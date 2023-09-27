@@ -71,6 +71,7 @@ _$_DicParams _$$_DicParamsFromJson(Map<String, dynamic> json) => _$_DicParams(
       fiyatTipi: json['FIYAT_TIPI'] as String?,
       tblnfStokfiyatgecmisiId: json['TBLNF_STOKFIYATGECMISI_ID'] as String?,
       miktar: json['MIKTAR'] as int?,
+      yapkod: json['YAPKOD'] as String?,
     );
 
 Map<String, dynamic> _$$_DicParamsToJson(_$_DicParams instance) {
@@ -119,5 +120,6 @@ Map<String, dynamic> _$$_DicParamsToJson(_$_DicParams instance) {
   writeNotNull('FIYAT_TIPI', instance.fiyatTipi);
   writeNotNull('TBLNF_STOKFIYATGECMISI_ID', instance.tblnfStokfiyatgecmisiId);
   writeNotNull('MIKTAR', instance.miktar);
+  writeNotNull('YAPKOD', instance.yapkod);
   return val;
 }

@@ -43,21 +43,21 @@ class SiparislerView extends StatefulWidget {
 }
 
 class _SiparislerViewState extends BaseState<SiparislerView> {
-  late ScrollController scrollController;
-  late TextEditingController baslangicTarihiController;
-  late TextEditingController bitisTarihiController;
-  late TextEditingController cariController;
-  late TextEditingController cariTipiController;
-  late TextEditingController plasiyerController;
-  late TextEditingController projeController;
-  late TextEditingController ozelKod1Controller;
-  late TextEditingController ozelKod2Controller;
-  late TextEditingController grupKoduController;
-  late TextEditingController kod1Controller;
-  late TextEditingController kod2Controller;
-  late TextEditingController kod3Controller;
-  late TextEditingController kod4Controller;
-  late TextEditingController kod5Controller;
+  late final ScrollController scrollController;
+  late final TextEditingController baslangicTarihiController;
+  late final TextEditingController bitisTarihiController;
+  late final TextEditingController cariController;
+  late final TextEditingController cariTipiController;
+  late final TextEditingController plasiyerController;
+  late final TextEditingController projeController;
+  late final TextEditingController ozelKod1Controller;
+  late final TextEditingController ozelKod2Controller;
+  late final TextEditingController grupKoduController;
+  late final TextEditingController kod1Controller;
+  late final TextEditingController kod2Controller;
+  late final TextEditingController kod3Controller;
+  late final TextEditingController kod4Controller;
+  late final TextEditingController kod5Controller;
   late SiparislerViewModel viewModel;
   List<BaseSiparisEditModel?>? get musteriSiparisleriList => viewModel.musteriSiparisleriList;
 

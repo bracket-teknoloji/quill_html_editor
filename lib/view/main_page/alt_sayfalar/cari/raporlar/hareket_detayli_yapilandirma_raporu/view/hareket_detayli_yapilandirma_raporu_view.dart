@@ -22,8 +22,8 @@ class HareketDetayliYaslandirmaRaporuView extends StatefulWidget {
 
 class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayliYaslandirmaRaporuView> {
   HareketDetayliYaslandirmaRaporuViewModel viewModel = HareketDetayliYaslandirmaRaporuViewModel();
-  late TextEditingController cariController;
-  late TextEditingController referansTarihController;
+  late final TextEditingController cariController;
+  late final TextEditingController referansTarihController;
 
   @override
   void initState() {

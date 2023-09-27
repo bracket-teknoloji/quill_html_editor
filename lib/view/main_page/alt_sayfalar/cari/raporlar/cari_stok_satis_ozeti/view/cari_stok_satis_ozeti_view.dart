@@ -4,19 +4,19 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+
+import "../../../../../../../core/base/model/base_grup_kodu_model.dart";
+import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "../../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
+import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../cari_listesi/model/cari_listesi_model.dart";
-
-import "../../../../../../../core/base/model/base_grup_kodu_model.dart";
-import "../../../../../../../core/base/state/base_state.dart";
-import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
+import "../../../cari_listesi/model/cari_listesi_model.dart";
 import "../model/cari_stok_satis_ozeti_model.dart";
 import "../view_model/cari_stok_satis_ozeti_view_model.dart";
 
@@ -32,15 +32,15 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
   CariStokSatisOzetiViewModel viewModel = CariStokSatisOzetiViewModel();
 
   List<BaseGrupKoduModel> grupKodList = [];
-  late TextEditingController cariController;
-  late TextEditingController baslangicTarihiController;
-  late TextEditingController bitisTarihiController;
-  late TextEditingController stokGrupKoduController;
-  late TextEditingController stokKodu1Controller;
-  late TextEditingController stokKodu2Controller;
-  late TextEditingController stokKodu3Controller;
-  late TextEditingController stokKodu4Controller;
-  late TextEditingController stokKodu5Controller;
+  late final TextEditingController cariController;
+  late final TextEditingController baslangicTarihiController;
+  late final TextEditingController bitisTarihiController;
+  late final TextEditingController stokGrupKoduController;
+  late final TextEditingController stokKodu1Controller;
+  late final TextEditingController stokKodu2Controller;
+  late final TextEditingController stokKodu3Controller;
+  late final TextEditingController stokKodu4Controller;
+  late final TextEditingController stokKodu5Controller;
 
   @override
   void initState() {

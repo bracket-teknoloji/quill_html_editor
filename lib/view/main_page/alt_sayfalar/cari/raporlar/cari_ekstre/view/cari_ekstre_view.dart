@@ -25,8 +25,8 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
   CariEkstreViewModel viewModel = CariEkstreViewModel();
   TextEditingController? cariController;
   TextEditingController? dovizController;
-  late TextEditingController baslangicTarihiController;
-  late TextEditingController bitisTarihiController;
+  late final TextEditingController baslangicTarihiController;
+  late final TextEditingController bitisTarihiController;
 
   @override
   void initState() {

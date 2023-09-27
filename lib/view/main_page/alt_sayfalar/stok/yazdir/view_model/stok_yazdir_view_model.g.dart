@@ -109,6 +109,17 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
   }
 
   @override
+  void setYapilandirmaKodu(String? yapilandirmaKodu) {
+    final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
+        name: '_StokYazdirViewModelBase.setYapilandirmaKodu');
+    try {
+      return super.setYapilandirmaKodu(yapilandirmaKodu);
+    } finally {
+      _$_StokYazdirViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setDizaynId(int? dizaynId) {
     final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
         name: '_StokYazdirViewModelBase.setDizaynId');

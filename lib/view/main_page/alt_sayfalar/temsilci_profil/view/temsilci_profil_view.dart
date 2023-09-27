@@ -29,9 +29,9 @@ class TemsilciProfilView extends StatefulWidget {
 
 class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
   TemsilciProfilViewModel viewModel = TemsilciProfilViewModel();
-  late TextEditingController plasiyerController;
-  late TextEditingController cariController;
-  late TextEditingController cariVKNController;
+  late final TextEditingController plasiyerController;
+  late final TextEditingController cariController;
+  late final TextEditingController cariVKNController;
 
   @override
   void initState() {
@@ -174,15 +174,15 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                         )
                       ],
                     ).paddingAll(UIHelper.lowSize)),
-                    Card(child: Column(
+                    Card(
+                        child: Column(
                       children: [
                         Text("Satışlar (Fatura)", style: TextStyleHelper.title),
                         Observer(builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
                         Observer(builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
                         Observer(
                             builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
-                        Observer(
-                            builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
+                        Observer(builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [

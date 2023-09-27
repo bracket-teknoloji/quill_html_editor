@@ -91,6 +91,10 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                 if (result is StokListesiModel) {
                   // viewModel.setStokListesiModel(result);
                   // barkodKontroller.text = result.stokKodu.toString();
+                  if (parametreModel.esnekYapilandir == true && result.yapilandirmaAktif != null) {
+                    yapilandirmaKoduController.text = result.stokAdi ?? "";
+                    viewModel.setYapilandirmaKodu(result.yapkod);
+                  }
                   stokController.text = result.stokAdi.toString();
                   viewModel.setStokKodu(result.stokKodu);
                   if (viewModel.stokSecildigindeYazdir) {
@@ -107,13 +111,18 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                     }
                   }),
             ),
-            CustomTextField(
-              labelText: "Yapılandırma Kodu",
-              controller: yapilandirmaKoduController,
-              readOnly: true,
-              // isMust: true,
-              suffixMore: true,
-            ),
+            Observer(builder: (_) {
+              return Visibility(
+                visible: viewModel.printModel.dicParams?.yapkod != null,
+                child: CustomTextField(
+                  labelText: "Yapılandırma Kodu",
+                  controller: yapilandirmaKoduController,
+                  readOnly: true,
+                  // isMust: true,
+                  suffixMore: true,
+                ),
+              );
+            }),
             Row(
               children: [
                 Expanded(
@@ -143,7 +152,6 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                     child: CustomTextField(
                   labelText: "Miktar/Bakiye",
                   controller: miktarBakiyeController,
-                  valueWidget: Observer(builder: (_) => const Text("")),
                   suffix: Wrap(
                     children: [
                       IconButton(
@@ -205,9 +213,13 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
   }
 
   Future<void> setDizayn() async {
-    List<NetFectDizaynList>? dizaynList = parametreModel.netFectDizaynList?.where((element) => element.ozelKod == "StokEtiket").toList();
+    List<NetFectDizaynList>? dizaynList = parametreModel.netFectDizaynList
+        ?.where((element) => element.ozelKod == "StokEtiket" && (profilYetkiModel.yazdirmaDizaynStokEtiketi?.any((element2) => (element.id == element2)) ?? true))
+        .toList();
     var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-        title: "Dizayn", children: List.generate(dizaynList?.length ?? 0, (index) => BottomSheetModel(title: dizaynList?[index].dizaynAdi ?? "", value: dizaynList?[index])));
+        title: "Dizayn",
+        children: List.generate(
+            dizaynList?.length ?? 0, (index) => BottomSheetModel(title: dizaynList?[index].dizaynAdi ?? "", value: dizaynList?[index], description: dizaynList?[index].id.toStringIfNotNull ?? "")));
     if (result is NetFectDizaynList) {
       dizaynController.text = result.dizaynAdi ?? "";
       viewModel.setDizaynId(result.id);
@@ -217,15 +229,18 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
   }
 
   Future<void> setYazici() async {
-    List<YaziciList>? yaziciList = parametreModel.yaziciList;
+    List<YaziciList>? yaziciList = parametreModel.yaziciList?.where((element) => profilYetkiModel.yazdirmaStokEtiketiYazicilari?.any((element2) => element2 == element.yaziciAdi) ?? true).toList();
     var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
         title: "Yazıcı",
         children: List.generate(
           yaziciList?.length ?? 0,
-          (index) => BottomSheetModel(title: yaziciList?[index].yaziciAdi ?? "", value: yaziciList?[index]),
+          (index) => BottomSheetModel(
+              title: yaziciList?[index].aciklama ?? yaziciList?[index].yaziciAdi ?? "",
+              value: yaziciList?[index],
+              description: yaziciList?[index].aciklama != null ? (yaziciList?[index].yaziciAdi ?? "") : null),
         ));
     if (result is YaziciList) {
-      yaziciController.text = result.yaziciAdi ?? "";
+      yaziciController.text = result.aciklama ?? result.yaziciAdi ?? "";
       viewModel.setYaziciAdi(result.yaziciAdi);
     } else {
       return;
