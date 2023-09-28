@@ -2,8 +2,6 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/components/badge/colorful_badge.dart";
-import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
 

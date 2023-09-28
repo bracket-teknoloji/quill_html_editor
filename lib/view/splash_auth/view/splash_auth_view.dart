@@ -6,10 +6,10 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../core/base/model/generic_response_model.dart";
 import "package:wave/config.dart";
 import "package:wave/wave.dart";
 
+import "../../../core/base/model/generic_response_model.dart";
 import "../../../core/base/state/base_state.dart";
 import "../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../core/init/app_info/app_info.dart";

@@ -605,10 +605,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                   return Observer(builder: (_) {
                     return Visibility(
                       visible: viewModel.dahaVarMi,
-                      child: const SizedBox(
-                        height: 50,
-                        child: Center(child: CircularProgressIndicator.adaptive()),
-                      ),
+                      child: const Center(child: CircularProgressIndicator.adaptive()),
                     );
                   });
                 }
@@ -687,12 +684,12 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
         viewModel.addImageMap(imageMap);
       }
       if ((liste?.length ?? 0) < parametreModel.sabitSayfalamaOgeSayisi) {
+        viewModel.setDahaVarMi(false);
         if (viewModel.bottomSheetModel != StokBottomSheetModel()) {
-          viewModel.setDahaVarMi(false);
           viewModel.increaseSayfa();
-        } else if ((liste?.length ?? 0) == 0) {
-          viewModel.setDahaVarMi(false);
         }
+      } else if ((liste?.length ?? 0) == 0) {
+        viewModel.setDahaVarMi(false);
       } else {
         viewModel.increaseSayfa();
         viewModel.setDahaVarMi(true);

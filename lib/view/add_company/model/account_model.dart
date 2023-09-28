@@ -2,6 +2,7 @@ import "dart:convert";
 import "dart:developer";
 import "dart:io";
 
+import "package:android_id/android_id.dart";
 import "package:app_tracking_transparency/app_tracking_transparency.dart";
 import "package:connectivity_plus/connectivity_plus.dart";
 import "package:device_info_plus/device_info_plus.dart";
@@ -135,12 +136,9 @@ class AccountModel with NetworkManagerMixin {
     } else {
       debugMu = null;
     }
-    // aktifIsletmeKodu = CacheManager.getVeriTabani()["İşletme"];
-    // aktifSubeKodu = CacheManager.getVeriTabani()["Şube"];
-    // aktifVeritabani = CacheManager.getVeriTabani()["Şirket"];
     //* Uygulama Bilgileri
     ///  [uygulamaSurumu = packageInfo.version;]
-    ///* olarak değiştirilecek fakat API bu uygulamanın sürümünü kabul etmediği için manuel verdim.
+    //* olarak değiştirilecek fakat API bu uygulamanın sürümünü kabul etmediği için manuel verdim.
     uygulamaSurumKodu = 229;
     uygulamaSurumu = AppInfoModel.instance.version;
     requestVersion = 2;
@@ -194,7 +192,11 @@ class AccountModel with NetworkManagerMixin {
       cihazSistemVersiyonu = androidInfo.version.sdkInt.toString();
       cihazMarkasi = androidInfo.brand;
       cihazModeli = androidInfo.model;
-      ozelCihazKimligi = androidInfo.id;
+      //? Cihaz kimliği için android_id kullanıyoruz. Tarih: 28/09/2023 1.1.7 Sürümünde değiştirildi.
+      //* eski hali --------> ozelCihazKimligi = androidInfo.id;
+      const androidIdPlugin = AndroidId();
+      final String? androidId = await androidIdPlugin.getId();
+      ozelCihazKimligi = androidId ?? androidInfo.id;
       if (ozelCihazKimligi.ext.isNotNullOrNoEmpty) {
         cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
         log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");

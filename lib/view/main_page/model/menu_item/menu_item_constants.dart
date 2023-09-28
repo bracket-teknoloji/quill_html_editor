@@ -103,7 +103,9 @@ class MenuItemConstants {
 
     //* Genel
     //*
-    GridItemModel.anamenu(name: "GNEL", title: "Genel", icon: "settings", color: GridThemeManager.genel, altMenuler: []),
+    GridItemModel.anamenu(name: "GNEL", title: "Genel", icon: "settings", color: GridThemeManager.genel, altMenuler: [
+      // GridItemModel.item(name: "", title: "Firmalar", route: "/addCompany"),
+    ]),
 
     //* Hücre Takibi
     //*
@@ -214,8 +216,8 @@ class MenuItemConstants {
     if (kDebugMode) {
       return _gridItemModel;
     } else {
-    //grid items içindeki yetkiKontrol true olanları döndür
-    return _gridItemModel.where((element) => element.yetkiKontrol).toList();
+      //grid items içindeki yetkiKontrol true olanları döndür
+      return _gridItemModel.where((element) => element.yetkiKontrol).toList();
     }
   }
 

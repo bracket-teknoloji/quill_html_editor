@@ -191,7 +191,9 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                             suffixMore: true,
                             onClear: () => viewModel.setDizaynId(null),
                             onTap: () async {
-                              List<NetFectDizaynList>? dizaynList = parametreModel.netFectDizaynList?.where((element) => element.ozelKod == "StokEtiket").toList();
+                              List<NetFectDizaynList>? dizaynList = parametreModel.netFectDizaynList
+                                  ?.where((element) => element.ozelKod == "StokEtiket" && (profilYetkiModel.yazdirmaDizaynStokEtiketi?.any((element2) => (element.id == element2)) ?? true))
+                                  .toList();
                               var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                                   title: "Dizayn", children: List.generate(dizaynList?.length ?? 0, (index) => BottomSheetModel(title: dizaynList?[index].dizaynAdi ?? "", value: dizaynList?[index])));
                               if (result != null && result is NetFectDizaynList) {
@@ -203,7 +205,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                             },
                           )),
                           Expanded(
-                              //BUG
+                              
                               child: CustomTextField(
                             labelText: "Yazıcı",
                             controller: yaziciController,
@@ -211,7 +213,8 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                             readOnly: true,
                             onClear: () => viewModel.setYaziciAdi(null),
                             onTap: () async {
-                              List<YaziciList>? yaziciList = parametreModel.yaziciList;
+                              List<YaziciList>? yaziciList =
+                                  parametreModel.yaziciList?.where((element) => profilYetkiModel.yazdirmaStokEtiketiYazicilari?.any((element2) => element2 == element.yaziciAdi) ?? true).toList();
                               var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                                   title: "Yazıcı",
                                   children: List.generate(
