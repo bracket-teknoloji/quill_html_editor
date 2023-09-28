@@ -1,5 +1,6 @@
 import "dart:ui";
 
+import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view/yapilandirma_rehberi/model/yapilandirma_rehberi_model.dart";
 
@@ -45,8 +46,11 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, BaseScrolledViewMod
   @computed
   bool get isLastPage => page == maxPage;
 
-  @computed
-  int? get maxPage => yapilandirmaProfilList?.length;
+  @observable
+  int? maxPage;
+
+  @action
+  void setMaxPage(int? value) => maxPage = value;
 
   @computed
   YapilandirmaRehberiModel? get yapilandirmaRehberiModel {
@@ -68,18 +72,22 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, BaseScrolledViewMod
       if (item.kod != yapilandirmaProfilModel?.ozellikKodu) {
         continue;
       }
-      if (page == 1) {
+      if (yapilandirmaProfilList?.every((element) => element?.deger?.any((element) => element?.yapkod == item.yapkod) ?? true) ?? false) {
         if (!list2.any((element) => element.degerAciklama == item.degerAciklama)) {
           list2.add(item);
         }
-      } else if (page > 1) {
-        // check item in every item in yapilandirmaProfilList
-        if (yapilandirmaProfilList?[page - 2]?.deger?.any((element) => element?.yapkod == item.yapkod) ?? false) {
-          if (!list2.any((element) => element.degerAciklama == item.degerAciklama)) {
-            list2.add(item);
-          }
-        }
       }
+      // if (page == 1) {
+      //   if (!list2.any((element) => element.degerAciklama == item.degerAciklama)) {
+      //     list2.add(item);
+      //   }
+      // } else if (page > 1) {
+      //    if (yapilandirmaProfilList?.every((element) => element?.deger?.any((element) => element?.yapkod == item.yapkod) ?? true) ?? false) {
+      //   if (!list2.any((element) => element.degerAciklama == item.degerAciklama)) {
+      //     list2.add(item);
+      //   }
+      // }
+      // }
       filteredList = list2.asObservable();
       filteredList2 = list2.asObservable();
     }
@@ -91,8 +99,7 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, BaseScrolledViewMod
   @action
   void setYapilandirmaRehberiModel(YapilandirmaRehberiModel? value) {
     // altKodlariGetir();
-    yapilandirmaProfilList?[page - 1]?.deger =
-        yapilandirmaList?.where((element) => element.yapacik == value?.yapacik || (element.ozellikSira == value?.ozellikSira && element.deger == value?.deger)).toList();
+    yapilandirmaProfilList?[page - 1]?.deger = yapilandirmaList?.where((element) => (element.ozellikSira == value?.ozellikSira && element.deger == value?.deger)).toList();
   }
 
   // yapilandirmaProfilList?[page - 1]?.copyWith(deger: yapilandirmaList?.where((element) => element.degerAciklama == value?.degerAciklama && element.deger == value?.deger).toList());
@@ -108,8 +115,8 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, BaseScrolledViewMod
 
   @action
   void decrementPage() {
-    yapilandirmaProfilList?[page - 1]?.deger = [];
-    yapilandirmaProfilList?[page - 2]?.deger = [];
+    yapilandirmaProfilList?[page - 1]?.deger = null;
+    yapilandirmaProfilList?[page - 2]?.deger = null;
     page--;
     altKodlariGetir();
   }
@@ -143,7 +150,9 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, BaseScrolledViewMod
           denemeList.add(yapilandirmaList!.where((element) => element.kod == yapilandirmaProfilList?[i]?.ozellikKodu).toList());
         }
       }
-      await altKodlariGetir();
+      if (denemeList.ext.isNotNullOrEmpty) {
+        await altKodlariGetir();
+      }
     }
   }
 }

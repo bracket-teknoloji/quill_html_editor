@@ -38,7 +38,7 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
         ),
         body: Observer(builder: (_) {
           if (viewModel.yapilandirmaList == null) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator.adaptive());
           } else if (viewModel.yapilandirmaList!.isEmpty) {
             return Center(child: Text("${viewModel.stokListesiModel?.stokKodu ?? ""} ürünü için özellik tanımları bulunamadı!"));
           }
@@ -51,7 +51,7 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
               Expanded(
                 child: Observer(builder: (_) {
                   return Visibility(
-                    visible: viewModel.filteredList.ext.isNotNullOrEmpty && viewModel.filteredList!.isNotEmpty,
+                    visible: viewModel.filteredList.ext.isNotNullOrEmpty,
                     child: AnimationLimiter(
                       child: GridView.builder(
                         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
@@ -94,9 +94,14 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
                                               shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
                                               child: InkWell(
                                                 onTap: () async {
+                                                  var sonuc = viewModel.yapilandirmaList
+                                                      ?.where((element) => element.yapkod == item?.yapkod)
+                                                      .map((element) => element.ozellikSira)
+                                                      .fold(0, (previousValue, element) => ((element ?? 0) > previousValue) ? element ?? 0 : previousValue);
+                                                  viewModel.setMaxPage(sonuc);
                                                   if (!viewModel.isLastPage) {
                                                     viewModel.setYapilandirmaRehberiModel(item);
-                                                    
+
                                                     await viewModel.incrementPage();
                                                   } else {
                                                     Get.back(result: item);
@@ -104,7 +109,7 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
                                                 },
                                                 child: GridTile(
                                                   header: Text(item?.degerAciklama ?? ""),
-                                                  footer: Text(viewModel.isLastPage? (item?.yapkod??"") : ""),
+                                                  footer: Text(viewModel.isLastPage ? (item?.yapkod ?? "") : ""),
                                                   child: Visibility(
                                                     visible: !viewModel.isLastPage,
                                                     child: Container(

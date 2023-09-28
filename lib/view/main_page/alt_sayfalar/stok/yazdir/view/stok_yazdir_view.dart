@@ -2,10 +2,12 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/base/view/yapilandirma_rehberi/model/yapilandirma_rehberi_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/yazdir/view_model/stok_yazdir_view_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
@@ -32,7 +34,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
   void initState() {
     viewModel.init();
     if (widget.model != null) {
-      viewModel.setStokKodu(widget.model?.stokKodu);
+      viewModel.setStokKodu(widget.model);
       stokController = TextEditingController(text: widget.model?.stokAdi);
     } else {
       stokController = TextEditingController(text: viewModel.printModel.dicParams?.stokKodu);
@@ -82,21 +84,26 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
             CustomTextField(
               labelText: "Stok",
               controller: stokController,
-              readOnly: true,
+              readOnly: false,
               isMust: true,
               suffixMore: true,
+              onSubmitted: (value) => getStok(value),
               valueWidget: Observer(builder: (_) => Text(viewModel.printModel.dicParams?.stokKodu ?? "")),
               onTap: () async {
                 var result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
                 if (result is StokListesiModel) {
-                  // viewModel.setStokListesiModel(result);
-                  // barkodKontroller.text = result.stokKodu.toString();
+                  result = await getStok(result.stokKodu);
+                  viewModel.setStokKodu(result);
+                  stokController.text = result.stokKodu.toString();
                   if (parametreModel.esnekYapilandir == true && result.yapilandirmaAktif != null) {
-                    yapilandirmaKoduController.text = result.stokAdi ?? "";
-                    viewModel.setYapilandirmaKodu(result.yapkod);
+                    var stokYapilandirmaKodu = await Get.toNamed("/mainPage/yapilandirmaRehberi", arguments: result);
+                    if (stokYapilandirmaKodu is YapilandirmaRehberiModel) {
+                      viewModel.setYapilandirmaKodu(stokYapilandirmaKodu.yapkod);
+                      yapilandirmaKoduController.text = stokYapilandirmaKodu.yapacik ?? "";
+                    }
                   }
                   stokController.text = result.stokAdi.toString();
-                  viewModel.setStokKodu(result.stokKodu);
+                  viewModel.setStokKodu(result);
                   if (viewModel.stokSecildigindeYazdir) {
                     postPrint();
                   }
@@ -113,14 +120,20 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
             ),
             Observer(builder: (_) {
               return Visibility(
-                visible: viewModel.printModel.dicParams?.yapkod != null,
+                visible: viewModel.stokListesiModel != null && viewModel.showYapilandirma,
                 child: CustomTextField(
-                  labelText: "Yapılandırma Kodu",
-                  controller: yapilandirmaKoduController,
-                  readOnly: true,
-                  // isMust: true,
-                  suffixMore: true,
-                ),
+                    labelText: "Yapılandırma Kodu",
+                    controller: yapilandirmaKoduController,
+                    readOnly: true,
+                    suffixMore: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.printModel.dicParams?.yapkod ?? "")),
+                    onTap: () async {
+                      var result = await Get.toNamed("/mainPage/yapilandirmaRehberi", arguments: viewModel.stokListesiModel);
+                      if (result is YapilandirmaRehberiModel) {
+                        viewModel.setYapilandirmaKodu(result.yapkod);
+                        yapilandirmaKoduController.text = result.yapacik ?? "";
+                      }
+                    }),
               );
             }),
             Row(
@@ -252,5 +265,14 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
       var result = await networkManager.postPrint(context, model: viewModel.printModel);
       if (result.success == true) {}
     }
+  }
+
+  Future<StokListesiModel?> getStok(String? stokKodu) async {
+    var result = await networkManager
+        .dioPost<StokListesiModel>(path: ApiUrls.getStoklar, bodyModel: StokListesiModel(), data: {"StokKodu": stokKodu, "EkranTipi": "D", "Okutuldu": true, "MenuKodu": "STOK_ETIK"});
+    if (result.data != null) {
+      return result.data.firstWhere((element) => element.stokKodu == stokKodu);
+    }
+    return null;
   }
 }

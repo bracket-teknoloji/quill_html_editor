@@ -2,6 +2,8 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/badge/colorful_badge.dart";
+import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
 
@@ -168,7 +170,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
             Text("Fiyat: ${kalemModel?.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}").yetkiVarMi(kalemModel?.brutFiyat != null),
             Text("Teslim Tarihi: ${kalemModel?.teslimTarihi.toDateStringIfNull() ?? ""}").yetkiVarMi(kalemModel?.teslimTarihi != null),
           ].map((e) => SizedBox(width: width * 0.4, child: e)).toList()),
-        ],
+        ].nullCheckWithGeneric,
       ),
     );
   }
@@ -185,16 +187,18 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
           ),
           IconButton(
               onPressed: () async {
-                await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Hücre İşlemleri", children: [
-                  BottomSheetModel(title: "Stok Etiketi Yazdır", iconWidget: Icons.print_outlined).yetkiKontrol(false),
-                  BottomSheetModel(
-                      title: "Stok İşlemleri",
-                      iconWidget: Icons.list_alt_outlined,
-                      onTap: () {
-                        Get.back();
-                        dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = kalemList?.stokKodu ?? "");
-                      }),
-                ].nullCheckWithGeneric);
+                await bottomSheetDialogManager.showBottomSheetDialog(context,
+                    title: "Hücre İşlemleri",
+                    children: [
+                      BottomSheetModel(title: "Stok Etiketi Yazdır", iconWidget: Icons.print_outlined).yetkiKontrol(false),
+                      BottomSheetModel(
+                          title: "Stok İşlemleri",
+                          iconWidget: Icons.list_alt_outlined,
+                          onTap: () {
+                            Get.back();
+                            dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = kalemList?.stokKodu ?? "");
+                          }),
+                    ].nullCheckWithGeneric);
               },
               icon: const Icon(Icons.more_vert_outlined))
         ],

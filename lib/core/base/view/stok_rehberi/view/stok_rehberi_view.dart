@@ -5,6 +5,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/yapilandirma_rehberi/model/yapilandirma_rehberi_model.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/static_variables/static_variables.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -315,8 +316,12 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                             spacing: UIHelper.lowSize,
                                             children: [
                                               const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(stok?.seriCikislardaAcik == true),
-                                              const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(stok?.satDovTip != null || stok?.alisDovTip != null),
+                                              ColorfulBadge(
+                                                      label: Text("Dövizli ${(StaticVariables.instance.isMusteriSiparisleri ? stok?.satisDovizAdi : stok?.alisDovizAdi) ?? ""}"),
+                                                      badgeColorEnum: BadgeColorEnum.dovizli)
+                                                  .yetkiVarMi(stok?.satDovTip != null || stok?.alisDovTip != null),
                                               const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap).yetkiVarMi(stok?.yapilandirmaAktif == true),
+                                              const ColorfulBadge(label: Text("Kilitli (Genel)"), badgeColorEnum: BadgeColorEnum.kilitli).yetkiVarMi(stok?.kilitGenel == "E"),
                                             ].whereType<ColorfulBadge>().toList(),
                                           ),
                                           Text(stok?.stokAdi ?? ""),

@@ -45,6 +45,38 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
     });
   }
 
+  late final _$showYapilandirmaAtom =
+      Atom(name: '_StokYazdirViewModelBase.showYapilandirma', context: context);
+
+  @override
+  bool get showYapilandirma {
+    _$showYapilandirmaAtom.reportRead();
+    return super.showYapilandirma;
+  }
+
+  @override
+  set showYapilandirma(bool value) {
+    _$showYapilandirmaAtom.reportWrite(value, super.showYapilandirma, () {
+      super.showYapilandirma = value;
+    });
+  }
+
+  late final _$stokListesiModelAtom =
+      Atom(name: '_StokYazdirViewModelBase.stokListesiModel', context: context);
+
+  @override
+  StokListesiModel? get stokListesiModel {
+    _$stokListesiModelAtom.reportRead();
+    return super.stokListesiModel;
+  }
+
+  @override
+  set stokListesiModel(StokListesiModel? value) {
+    _$stokListesiModelAtom.reportWrite(value, super.stokListesiModel, () {
+      super.stokListesiModel = value;
+    });
+  }
+
   late final _$printModelAtom =
       Atom(name: '_StokYazdirViewModelBase.printModel', context: context);
 
@@ -219,11 +251,11 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
   }
 
   @override
-  void setStokKodu(String? stokKodu) {
+  void setStokKodu(StokListesiModel? model) {
     final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
         name: '_StokYazdirViewModelBase.setStokKodu');
     try {
-      return super.setStokKodu(stokKodu);
+      return super.setStokKodu(model);
     } finally {
       _$_StokYazdirViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -234,6 +266,8 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
     return '''
 stokSecildigindeYazdir: ${stokSecildigindeYazdir},
 yaziciVeDizayniHatirla: ${yaziciVeDizayniHatirla},
+showYapilandirma: ${showYapilandirma},
+stokListesiModel: ${stokListesiModel},
 printModel: ${printModel}
     ''';
   }

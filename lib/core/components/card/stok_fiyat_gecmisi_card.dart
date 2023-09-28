@@ -38,7 +38,7 @@ class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(widget.model?.stokAdi ?? ""),
+                SizedBox(width: width * 0.6, child: Text(widget.model?.stokAdi ?? "", overflow: TextOverflow.ellipsis)),
                 IconButton(
                   icon: Icon(Icons.print_outlined, color: UIHelper.primaryColor),
                   onPressed: () async {

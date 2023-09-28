@@ -428,7 +428,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                     (object.dovizli == true && object.dovBakiye != null)
                                         ? TextSpan(
                                             text: "${object.dovBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${object.dovizAdi ?? ""}",
-                                            style: TextStyle(color: UIHelper.getColorWithValue(object.bakiye ?? 0.0)))
+                                            style: TextStyle(color: UIHelper.getColorWithValue(object.dovBakiye ?? 0.0)))
                                         : null,
                                   ].nullCheckWithGeneric),
                                   textAlign: TextAlign.right),

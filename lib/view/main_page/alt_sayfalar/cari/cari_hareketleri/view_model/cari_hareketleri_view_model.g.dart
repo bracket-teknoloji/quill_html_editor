@@ -23,6 +23,13 @@ mixin _$CariHareketleriViewModel on _CariHareketleriViewModelBase, Store {
           Computed<double>(() => super.alacaklarToplami,
               name: '_CariHareketleriViewModelBase.alacaklarToplami'))
       .value;
+  Computed<double>? _$toplamBakiyeComputed;
+
+  @override
+  double get toplamBakiye =>
+      (_$toplamBakiyeComputed ??= Computed<double>(() => super.toplamBakiye,
+              name: '_CariHareketleriViewModelBase.toplamBakiye'))
+          .value;
   Computed<double>? _$dovizBorclarToplamiComputed;
 
   @override
@@ -160,6 +167,7 @@ siralama: ${siralama},
 isSearchBarOpened: ${isSearchBarOpened},
 borclarToplami: ${borclarToplami},
 alacaklarToplami: ${alacaklarToplami},
+toplamBakiye: ${toplamBakiye},
 dovizBorclarToplami: ${dovizBorclarToplami},
 dovizAlacaklarToplami: ${dovizAlacaklarToplami}
     ''';

@@ -534,7 +534,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                 const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(stok.seriCikislardaAcik == true),
                                 const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(stok.alisDovTip != null || stok.satDovTip != null),
                                 const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap).yetkiVarMi(stok.yapilandirmaAktif == true)
-                              ],
+                              ].whereType<ColorfulBadge>().toList(),
                             )
                           ],
                         ),

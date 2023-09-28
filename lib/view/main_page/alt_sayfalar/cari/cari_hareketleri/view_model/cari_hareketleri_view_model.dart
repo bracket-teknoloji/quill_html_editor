@@ -63,6 +63,12 @@ abstract class _CariHareketleriViewModelBase with Store {
     }
   }
   @computed
+  double get toplamBakiye {
+    //get latest tarih from cariHareketleriList
+    return cariHareketleriList?.where((element) => element.tarih == cariHareketleriList?.map((e) => e.tarih).reduce((value, element) => value!.isAfter(element!) ? value : element)).first.yuruyenBakiye ?? 0.0;
+  }
+
+  @computed
   double get dovizBorclarToplami {
     var data = cariHareketleriList?.where((element) => element.dovizBorc != null);
     if (data?.isNotEmpty ?? false) {

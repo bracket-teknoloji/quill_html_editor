@@ -15,6 +15,7 @@ class GridItemModel {
   String title;
   String? icon;
   IconData? iconData;
+  List<bool?>? yetkiListesi;
   Color? color;
   List<GridItemModel>? altMenuler;
   String? route;
@@ -23,7 +24,7 @@ class GridItemModel {
   SiparisTipiEnum? siparisTipi;
   late final String menuTipi;
 
-  GridItemModel.anamenu({required this.name, required this.title, required this.icon, required this.color, required this.altMenuler, this.iconData}) {
+  GridItemModel.anamenu({required this.name, required this.title, required this.icon, required this.color, required this.altMenuler, this.iconData, this.yetkiListesi}) {
     menuTipi = "A";
   }
 
@@ -51,8 +52,8 @@ class GridItemModel {
 
   bool get yetkiKontrol {
     if (menuTipi == "A") {
-      if ((menuList?.contains(name)?? false) && altMenuVarMi) {
-        int sayac = 0;
+      int sayac = 0;
+      if ((menuList?.contains(name) ?? false) && altMenuVarMi && (yetkiListesi != null ? !(yetkiListesi?.any((element) => element == false) ?? false) : true)) {
         for (var element in altMenuler!) {
           if (element.yetkiKontrol) {
             sayac++;

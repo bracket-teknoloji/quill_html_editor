@@ -38,12 +38,6 @@ mixin _$YapilandirmaRehberiViewModel
       (_$isLastPageComputed ??= Computed<bool>(() => super.isLastPage,
               name: '_YapilandirmaRehberiViewModelBase.isLastPage'))
           .value;
-  Computed<int?>? _$maxPageComputed;
-
-  @override
-  int? get maxPage => (_$maxPageComputed ??= Computed<int?>(() => super.maxPage,
-          name: '_YapilandirmaRehberiViewModelBase.maxPage'))
-      .value;
   Computed<YapilandirmaRehberiModel?>? _$yapilandirmaRehberiModelComputed;
 
   @override
@@ -129,6 +123,22 @@ mixin _$YapilandirmaRehberiViewModel
     });
   }
 
+  late final _$maxPageAtom =
+      Atom(name: '_YapilandirmaRehberiViewModelBase.maxPage', context: context);
+
+  @override
+  int? get maxPage {
+    _$maxPageAtom.reportRead();
+    return super.maxPage;
+  }
+
+  @override
+  set maxPage(int? value) {
+    _$maxPageAtom.reportWrite(value, super.maxPage, () {
+      super.maxPage = value;
+    });
+  }
+
   late final _$filteredListAtom = Atom(
       name: '_YapilandirmaRehberiViewModelBase.filteredList', context: context);
 
@@ -194,6 +204,18 @@ mixin _$YapilandirmaRehberiViewModel
           name: '_YapilandirmaRehberiViewModelBase', context: context);
 
   @override
+  void setMaxPage(int? value) {
+    final _$actionInfo = _$_YapilandirmaRehberiViewModelBaseActionController
+        .startAction(name: '_YapilandirmaRehberiViewModelBase.setMaxPage');
+    try {
+      return super.setMaxPage(value);
+    } finally {
+      _$_YapilandirmaRehberiViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setYapilandirmaRehberiModel(YapilandirmaRehberiModel? value) {
     final _$actionInfo =
         _$_YapilandirmaRehberiViewModelBaseActionController.startAction(
@@ -252,13 +274,13 @@ page: ${page},
 stokListesiModel: ${stokListesiModel},
 yapilandirmaList: ${yapilandirmaList},
 yapilandirmaProfilList: ${yapilandirmaProfilList},
+maxPage: ${maxPage},
 filteredList: ${filteredList},
 filteredList2: ${filteredList2},
 yapilandirmaProfilModel: ${yapilandirmaProfilModel},
 color: ${color},
 count: ${count},
 isLastPage: ${isLastPage},
-maxPage: ${maxPage},
 yapilandirmaRehberiModel: ${yapilandirmaRehberiModel},
 title: ${title}
     ''';

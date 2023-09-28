@@ -64,7 +64,7 @@ class MenuItemConstants {
         GridItemModel.item(name: "finans_Kasa_Listesi", title: "Kasa Listesi", route: "/mainPage/kasaListesi"),
         GridItemModel.item(name: "finans_Kasa_Islemleri", title: "İşlemler"),
         GridItemModel.item(name: "finans_KasalarArasiTransfer", title: "Kasa Transferi"),
-        GridItemModel.altmenu(name: "finans_Raporlar_KasaEkstre", title: "Raporlar",icon: "monitoring", altMenuler: [
+        GridItemModel.altmenu(name: "finans_Raporlar_KasaEkstre", title: "Raporlar", icon: "monitoring", altMenuler: [
           GridItemModel.item(name: "finans_Raporlar_KasaEkstre", title: "Kasa Ekstre"),
           ..._getSerbestRapor(SerbestRaporDetayKodEnum.kasa),
         ])
@@ -73,7 +73,7 @@ class MenuItemConstants {
       GridItemModel.altmenu(name: "Banka", title: "Çek", altMenuler: [
         GridItemModel.item(name: "", title: "Müşteri Çekleri"),
         GridItemModel.item(name: "", title: "Borç Çekleri"),
-        GridItemModel.altmenu(name: "", title: "Raporlar",icon: "monitoring", altMenuler: [
+        GridItemModel.altmenu(name: "", title: "Raporlar", icon: "monitoring", altMenuler: [
           ..._getSerbestRapor(SerbestRaporDetayKodEnum.cek),
         ])
       ]),
@@ -83,7 +83,7 @@ class MenuItemConstants {
       ]),
       GridItemModel.item(name: "Banka", title: "Tahsilat & Ödeme Kayıtları"),
       GridItemModel.item(name: "Banka", title: "Hızlı Tahsilat Kayıtları"),
-      GridItemModel.altmenu(name: "Banka", title: "Hızlı İşlemler",iconData: Icons.tune_outlined, altMenuler: [
+      GridItemModel.altmenu(name: "Banka", title: "Hızlı İşlemler", iconData: Icons.tune_outlined, altMenuler: [
         GridItemModel.item(name: "", title: "Kredi Kartı Tahsilatı"),
         GridItemModel.item(name: "", title: "Nakit Tahsilat"),
         GridItemModel.item(name: "", title: "Senet Tahsilatı"),
@@ -93,7 +93,7 @@ class MenuItemConstants {
         GridItemModel.item(name: "", title: "Nakit Ödeme"),
       ]),
       GridItemModel.item(name: "Banka", title: "Ortalama Vade Tarihi Hesaplama"),
-      GridItemModel.altmenu(name: "Banka", title: "Raporlar",icon: "monitoring", altMenuler: [
+      GridItemModel.altmenu(name: "Banka", title: "Raporlar", icon: "monitoring", altMenuler: [
         GridItemModel.item(name: "", title: "Özet Rapor"),
         GridItemModel.item(name: "", title: "Finansal Durum Raporu"),
         GridItemModel.item(name: "", title: "Aylık Mizan Raporu"),
@@ -132,10 +132,8 @@ class MenuItemConstants {
     //* Sipariş
     //*
     GridItemModel.anamenu(name: "SIPA", title: "Sipariş", icon: "order", color: GridThemeManager.siparis, altMenuler: [
-      GridItemModel.item(
-          name: "siparis_MusteriSiparisi", title: "Müşteri Siparişleri", route: "/mainPage/siparisMusteriSiparisi"),
-      GridItemModel.item(
-          name: "siparis_SaticiSiparisi", title: "Satıcı Siparişleri", route: "/mainPage/siparisSaticiSiparisi"),
+      GridItemModel.item(name: "siparis_MusteriSiparisi", title: "Müşteri Siparişleri", route: "/mainPage/siparisMusteriSiparisi"),
+      GridItemModel.item(name: "siparis_SaticiSiparisi", title: "Satıcı Siparişleri", route: "/mainPage/siparisSaticiSiparisi"),
       GridItemModel.altmenu(name: "siparis_SaticiSiparisi_Raporlar", title: "Raporlar", altMenuler: [
         // GridItemModel.item(name: "siparis_MusteriSiparisi_DurumRaporu", title: "Müşteri Siparişi Durum Raporu"),
         GridItemModel.item(
@@ -192,6 +190,8 @@ class MenuItemConstants {
     GridItemModel.anamenu(name: "TEMS", title: "Profilim", icon: "profile", color: GridThemeManager.temsilci, altMenuler: [
       //? anamenünün onTap'i olmadığı için tek item verdim. Tek item verince direkt onu açıyor. O yüzden parametrelerin bir anlamı yok.
       GridItemModel.item(name: "temsilci_Profil", title: "Profilim", icon: "profile", route: "/mainPage/temsilciProfil"),
+    ], yetkiListesi: [
+      CacheManager.getAnaVeri()?.paramModel?.plasiyerUygulamasi == true
     ]),
 
     //* Transfer
@@ -214,8 +214,8 @@ class MenuItemConstants {
     if (kDebugMode) {
       return _gridItemModel;
     } else {
-      //grid items içindeki yetkiKontrol true olanları döndür
-      return _gridItemModel.where((element) => element.yetkiKontrol).toList();
+    //grid items içindeki yetkiKontrol true olanları döndür
+    return _gridItemModel.where((element) => element.yetkiKontrol).toList();
     }
   }
 

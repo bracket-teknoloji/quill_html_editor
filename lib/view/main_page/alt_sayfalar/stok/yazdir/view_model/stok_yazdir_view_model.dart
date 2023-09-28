@@ -2,6 +2,7 @@ import "package:mobx/mobx.dart";
 import "package:picker/core/base/model/print_model.dart";
 import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 part "stok_yazdir_view_model.g.dart";
 
@@ -16,6 +17,13 @@ abstract class _StokYazdirViewModelBase with Store {
 
   @observable
   bool yaziciVeDizayniHatirla = false;
+
+  @observable
+  bool showYapilandirma = false;
+
+  @observable
+  StokListesiModel? stokListesiModel;
+  
 
   @action
   void changeStokSecildigindeYazdir(bool value) {
@@ -34,7 +42,14 @@ abstract class _StokYazdirViewModelBase with Store {
   void setPrintModel(PrintModel? model) => printModel = model ?? PrintModel(raporOzelKod: "StokEtiket", dicParams: DicParams());
 
   @action
-  void setYapilandirmaKodu(String? yapilandirmaKodu) => printModel = printModel.copyWith(dicParams: printModel.dicParams?.copyWith(yapkod: yapilandirmaKodu));
+  void setYapilandirmaKodu(String? yapilandirmaKodu) {
+    printModel = printModel.copyWith(dicParams: printModel.dicParams?.copyWith(yapkod: yapilandirmaKodu));
+    if (yapilandirmaKodu == null) {
+      showYapilandirma = false;
+    } else {
+      showYapilandirma = true;
+    }
+  }
 
   @action
   void setDizaynId(int? dizaynId) => printModel = printModel.copyWith(dizaynId: dizaynId);
@@ -70,5 +85,8 @@ abstract class _StokYazdirViewModelBase with Store {
   }
 
   @action
-  void setStokKodu(String? stokKodu) => printModel = printModel.copyWith(dicParams: printModel.dicParams?.copyWith(stokKodu: stokKodu));
+  void setStokKodu(StokListesiModel? model) {
+    printModel = printModel.copyWith(dicParams: printModel.dicParams?.copyWith(stokKodu: model?.stokKodu));
+    stokListesiModel = model;
+  }
 }
