@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+
 import "../../base/state/base_state.dart";
 import "../button/elevated_buttons/footer_button.dart";
 import "../helper_widgets/scrollable_widget.dart";

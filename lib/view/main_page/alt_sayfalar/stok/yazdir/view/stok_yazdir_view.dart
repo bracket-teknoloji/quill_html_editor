@@ -7,6 +7,7 @@ import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_mo
 import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/yazdir/view_model/stok_yazdir_view_model.dart";
@@ -44,10 +45,18 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
     yaziciController = TextEditingController(text: viewModel.printModel.yaziciAdi);
     miktarBakiyeController = TextEditingController(text: viewModel.printModel.dicParams?.miktar.toStringIfNotNull ?? "");
     kopyaSayisiController = TextEditingController(text: viewModel.printModel.etiketSayisi.toStringIfNotNull ?? "");
+    viewModel.changeStokSecildigindeYazdir(CacheManager.getProfilParametre.stokYazdirDizaynVeYaziciHatirla);
+    if (viewModel.stokSecildigindeYazdir) {
+      viewModel.changeYaziciVeDizayniHatirla(true);
+      viewModel.setDizaynId(CacheManager.getProfilParametre.netFectDizaynList?.id);
+      viewModel.setYaziciAdi(CacheManager.getProfilParametre.yaziciList?.yaziciAdi);
+      dizaynController.text = CacheManager.getProfilParametre.netFectDizaynList?.dizaynAdi ?? "";
+      yaziciController.text = CacheManager.getProfilParametre.yaziciList?.aciklama ?? CacheManager.getProfilParametre.yaziciList?.yaziciAdi ?? "";
+    }
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await setDizayn();
-      if (viewModel.printModel.dizaynId != null) {
+      if (viewModel.printModel.dizaynId == null) await setDizayn();
+      if (viewModel.printModel.dizaynId != null && viewModel.printModel.yaziciAdi == null) {
         await setYazici();
       }
     });
@@ -215,7 +224,17 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                 Expanded(
                     child: CustomWidgetWithLabel(
                   text: "Yazıcı ve Dizaynı Hatırla",
-                  child: Observer(builder: (_) => Switch(value: viewModel.yaziciVeDizayniHatirla, onChanged: (value) => viewModel.changeYaziciVeDizayniHatirla(value))),
+                  child: Observer(
+                      builder: (_) => Switch(
+                          value: viewModel.yaziciVeDizayniHatirla,
+                          onChanged: (value) {
+                            viewModel.changeYaziciVeDizayniHatirla(value);
+                            if (value == true) {
+                              CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(stokYazdirDizaynVeYaziciHatirla: true));
+                            } else {
+                              CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(stokYazdirDizaynVeYaziciHatirla: false, yaziciList: null, netFectDizaynList: null));
+                            }
+                          })),
                 )),
               ],
             ),
@@ -236,6 +255,11 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
     if (result is NetFectDizaynList) {
       dizaynController.text = result.dizaynAdi ?? "";
       viewModel.setDizaynId(result.id);
+      if (viewModel.yaziciVeDizayniHatirla) {
+        CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(netFectDizaynList: result));
+      } else {
+        CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(netFectDizaynList: null));
+      }
     } else {
       return;
     }
@@ -255,6 +279,11 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
     if (result is YaziciList) {
       yaziciController.text = result.aciklama ?? result.yaziciAdi ?? "";
       viewModel.setYaziciAdi(result.yaziciAdi);
+      if (viewModel.yaziciVeDizayniHatirla) {
+        CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(yaziciList: result));
+      } else {
+        CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(yaziciList: null));
+      }
     } else {
       return;
     }

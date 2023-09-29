@@ -1,7 +1,6 @@
 import "package:collection/collection.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../core/constants/enum/serbest_rapor_detay_kod_enum.dart";
 import "../../../../core/constants/enum/siparis_tipi_enum.dart";
@@ -62,7 +61,7 @@ class MenuItemConstants {
       ]),
       GridItemModel.altmenu(name: "finans_Kasa_Listesi", title: "Kasa", iconData: Icons.point_of_sale_outlined, altMenuler: [
         GridItemModel.item(name: "finans_Kasa_Listesi", title: "Kasa Listesi", route: "/mainPage/kasaListesi"),
-        GridItemModel.item(name: "finans_Kasa_Islemleri", title: "İşlemler"),
+        GridItemModel.item(name: "finans_Kasa_Islemleri", title: "İşlemler", route: "/mainPage/kasaIslemleri"),
         GridItemModel.item(name: "finans_KasalarArasiTransfer", title: "Kasa Transferi"),
         GridItemModel.altmenu(name: "finans_Raporlar_KasaEkstre", title: "Raporlar", icon: "monitoring", altMenuler: [
           GridItemModel.item(name: "finans_Raporlar_KasaEkstre", title: "Kasa Ekstre"),
@@ -99,7 +98,7 @@ class MenuItemConstants {
         GridItemModel.item(name: "", title: "Aylık Mizan Raporu"),
         ..._getSerbestRapor(SerbestRaporDetayKodEnum.finans),
       ]),
-    ]).isDebug(),
+    ])g,
 
     //* Genel
     //*

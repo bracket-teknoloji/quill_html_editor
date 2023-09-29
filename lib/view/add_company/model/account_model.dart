@@ -196,7 +196,7 @@ class AccountModel with NetworkManagerMixin {
       //* eski hali --------> ozelCihazKimligi = androidInfo.id;
       const androidIdPlugin = AndroidId();
       final String? androidId = await androidIdPlugin.getId();
-      ozelCihazKimligi = androidId ?? androidInfo.id;
+      ozelCihazKimligi = androidId;
       if (ozelCihazKimligi.ext.isNotNullOrNoEmpty) {
         cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
         log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");

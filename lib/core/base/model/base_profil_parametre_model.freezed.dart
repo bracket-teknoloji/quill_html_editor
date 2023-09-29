@@ -27,7 +27,12 @@ mixin _$BaseProfilParametreModel {
   bool get siparisVade => throw _privateConstructorUsedError;
   bool get kurlariSilTekrarGuncelle => throw _privateConstructorUsedError;
   bool get stokResimleriGoster => throw _privateConstructorUsedError;
+  bool get stokYazdirDizaynVeYaziciHatirla =>
+      throw _privateConstructorUsedError;
   bool get stokSecildigindeYazdir => throw _privateConstructorUsedError;
+  NetFectDizaynList? get netFectDizaynList =>
+      throw _privateConstructorUsedError;
+  YaziciList? get yaziciList => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,7 +53,10 @@ abstract class $BaseProfilParametreModelCopyWith<$Res> {
       bool siparisVade,
       bool kurlariSilTekrarGuncelle,
       bool stokResimleriGoster,
-      bool stokSecildigindeYazdir});
+      bool stokYazdirDizaynVeYaziciHatirla,
+      bool stokSecildigindeYazdir,
+      NetFectDizaynList? netFectDizaynList,
+      YaziciList? yaziciList});
 }
 
 /// @nodoc
@@ -71,7 +79,10 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
     Object? siparisVade = null,
     Object? kurlariSilTekrarGuncelle = null,
     Object? stokResimleriGoster = null,
+    Object? stokYazdirDizaynVeYaziciHatirla = null,
     Object? stokSecildigindeYazdir = null,
+    Object? netFectDizaynList = freezed,
+    Object? yaziciList = freezed,
   }) {
     return _then(_value.copyWith(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -98,10 +109,22 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
           ? _value.stokResimleriGoster
           : stokResimleriGoster // ignore: cast_nullable_to_non_nullable
               as bool,
+      stokYazdirDizaynVeYaziciHatirla: null == stokYazdirDizaynVeYaziciHatirla
+          ? _value.stokYazdirDizaynVeYaziciHatirla
+          : stokYazdirDizaynVeYaziciHatirla // ignore: cast_nullable_to_non_nullable
+              as bool,
       stokSecildigindeYazdir: null == stokSecildigindeYazdir
           ? _value.stokSecildigindeYazdir
           : stokSecildigindeYazdir // ignore: cast_nullable_to_non_nullable
               as bool,
+      netFectDizaynList: freezed == netFectDizaynList
+          ? _value.netFectDizaynList
+          : netFectDizaynList // ignore: cast_nullable_to_non_nullable
+              as NetFectDizaynList?,
+      yaziciList: freezed == yaziciList
+          ? _value.yaziciList
+          : yaziciList // ignore: cast_nullable_to_non_nullable
+              as YaziciList?,
     ) as $Val);
   }
 }
@@ -122,7 +145,10 @@ abstract class _$$_BaseProfilParametreModelCopyWith<$Res>
       bool siparisVade,
       bool kurlariSilTekrarGuncelle,
       bool stokResimleriGoster,
-      bool stokSecildigindeYazdir});
+      bool stokYazdirDizaynVeYaziciHatirla,
+      bool stokSecildigindeYazdir,
+      NetFectDizaynList? netFectDizaynList,
+      YaziciList? yaziciList});
 }
 
 /// @nodoc
@@ -143,7 +169,10 @@ class __$$_BaseProfilParametreModelCopyWithImpl<$Res>
     Object? siparisVade = null,
     Object? kurlariSilTekrarGuncelle = null,
     Object? stokResimleriGoster = null,
+    Object? stokYazdirDizaynVeYaziciHatirla = null,
     Object? stokSecildigindeYazdir = null,
+    Object? netFectDizaynList = freezed,
+    Object? yaziciList = freezed,
   }) {
     return _then(_$_BaseProfilParametreModel(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -170,10 +199,22 @@ class __$$_BaseProfilParametreModelCopyWithImpl<$Res>
           ? _value.stokResimleriGoster
           : stokResimleriGoster // ignore: cast_nullable_to_non_nullable
               as bool,
+      stokYazdirDizaynVeYaziciHatirla: null == stokYazdirDizaynVeYaziciHatirla
+          ? _value.stokYazdirDizaynVeYaziciHatirla
+          : stokYazdirDizaynVeYaziciHatirla // ignore: cast_nullable_to_non_nullable
+              as bool,
       stokSecildigindeYazdir: null == stokSecildigindeYazdir
           ? _value.stokSecildigindeYazdir
           : stokSecildigindeYazdir // ignore: cast_nullable_to_non_nullable
               as bool,
+      netFectDizaynList: freezed == netFectDizaynList
+          ? _value.netFectDizaynList
+          : netFectDizaynList // ignore: cast_nullable_to_non_nullable
+              as NetFectDizaynList?,
+      yaziciList: freezed == yaziciList
+          ? _value.yaziciList
+          : yaziciList // ignore: cast_nullable_to_non_nullable
+              as YaziciList?,
     ));
   }
 }
@@ -188,7 +229,10 @@ class _$_BaseProfilParametreModel extends _BaseProfilParametreModel {
       this.siparisVade = false,
       this.kurlariSilTekrarGuncelle = false,
       this.stokResimleriGoster = false,
-      this.stokSecildigindeYazdir = false})
+      this.stokYazdirDizaynVeYaziciHatirla = false,
+      this.stokSecildigindeYazdir = false,
+      this.netFectDizaynList,
+      this.yaziciList})
       : super._();
 
   factory _$_BaseProfilParametreModel.fromJson(Map<String, dynamic> json) =>
@@ -214,7 +258,14 @@ class _$_BaseProfilParametreModel extends _BaseProfilParametreModel {
   final bool stokResimleriGoster;
   @override
   @JsonKey()
+  final bool stokYazdirDizaynVeYaziciHatirla;
+  @override
+  @JsonKey()
   final bool stokSecildigindeYazdir;
+  @override
+  final NetFectDizaynList? netFectDizaynList;
+  @override
+  final YaziciList? yaziciList;
 
   @JsonKey(ignore: true)
   @override
@@ -239,7 +290,10 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
       final bool siparisVade,
       final bool kurlariSilTekrarGuncelle,
       final bool stokResimleriGoster,
-      final bool stokSecildigindeYazdir}) = _$_BaseProfilParametreModel;
+      final bool stokYazdirDizaynVeYaziciHatirla,
+      final bool stokSecildigindeYazdir,
+      final NetFectDizaynList? netFectDizaynList,
+      final YaziciList? yaziciList}) = _$_BaseProfilParametreModel;
   _BaseProfilParametreModel._() : super._();
 
   factory _BaseProfilParametreModel.fromJson(Map<String, dynamic> json) =
@@ -258,7 +312,13 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   @override
   bool get stokResimleriGoster;
   @override
+  bool get stokYazdirDizaynVeYaziciHatirla;
+  @override
   bool get stokSecildigindeYazdir;
+  @override
+  NetFectDizaynList? get netFectDizaynList;
+  @override
+  YaziciList? get yaziciList;
   @override
   @JsonKey(ignore: true)
   _$$_BaseProfilParametreModelCopyWith<_$_BaseProfilParametreModel>

@@ -205,7 +205,6 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                             },
                           )),
                           Expanded(
-                              
                               child: CustomTextField(
                             labelText: "Yazıcı",
                             controller: yaziciController,

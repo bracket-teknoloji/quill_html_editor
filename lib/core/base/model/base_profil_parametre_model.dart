@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/view/main_page/model/param_model.dart";
 
 import "base_network_mixin.dart";
 
@@ -14,7 +15,10 @@ abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, Network
   @Default(false)  bool siparisVade,
   @Default(false)  bool kurlariSilTekrarGuncelle,
   @Default(false)  bool stokResimleriGoster,
+  @Default(false)  bool stokYazdirDizaynVeYaziciHatirla,
   @Default(false)  bool stokSecildigindeYazdir,
+  NetFectDizaynList? netFectDizaynList,
+  YaziciList? yaziciList,
   }) = _BaseProfilParametreModel;
   factory BaseProfilParametreModel.fromJson(Map<String, dynamic> json) => _$BaseProfilParametreModelFromJson(json);
   //Empty constructor

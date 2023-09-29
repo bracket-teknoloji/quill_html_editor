@@ -21,6 +21,9 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
 
   @override
   void initState() {
+      if (widget.childrenTitleList.length != widget.childrenValueList.length) {
+        throw Exception("childrenTitleList ve childrenValueList uzunlukları eşit olmalıdır");
+      }
     scrollController = ScrollController();
     Future.delayed(Duration.zero, () async {
       if (widget.scroll ?? false) {

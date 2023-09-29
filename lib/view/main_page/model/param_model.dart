@@ -904,8 +904,8 @@ class NetFectDizaynList {
   @HiveField(11)
   String? detayKod;
 
-  factory NetFectDizaynList.fromJson(Map<String, dynamic> json) {
-    return _$NetFectDizaynListFromJson(json);
+  factory NetFectDizaynList.fromJson(Map<dynamic, dynamic> json) {
+    return _$NetFectDizaynListFromJson(json as Map<String, dynamic>);
   }
   Map<String, dynamic> toJson() {
     return _$NetFectDizaynListToJson(this);
@@ -1121,16 +1121,20 @@ class TalTekParam {
   }
 }
 
+@HiveType(typeId: 48)
 @JsonSerializable(createFactory: true)
 class YaziciList {
   YaziciList();
 
+  @HiveField(0)
   String? yaziciAdi;
+  @HiveField(1)
   String? yaziciTipi;
+  @HiveField(2)
   String? aciklama;
 
-  factory YaziciList.fromJson(Map<String, dynamic> json) {
-    return _$YaziciListFromJson(json);
+  factory YaziciList.fromJson(Map<dynamic, dynamic> json) {
+    return _$YaziciListFromJson(json as Map<String, dynamic>);
   }
   Map<String, dynamic> toJson() {
     return _$YaziciListToJson(this);

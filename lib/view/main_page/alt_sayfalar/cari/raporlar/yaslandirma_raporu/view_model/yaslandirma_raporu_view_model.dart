@@ -10,12 +10,12 @@ abstract class _YaslandirmaRaporuViewModelBase with Store {
   //* Süre Aralığı
   //*
   final List<String> sureAraligiList = ["Günlük", "Haftalık", "2 Hafta", "3 Hafta", "Aylık"];
+  final List<String> sureAraligivalue = ["G", "H", "2H", "3H", "A"];
   @observable
   String _sureAraligiGroupValue = "G";
 
   @computed
   String get sureAraligiGroupValue => _sureAraligiGroupValue;
-  List<String> sureAraligivalue = ["G", "H", "2H", "3H", "A"];
 
   @action
   void changeSureAraligi(int? index) {

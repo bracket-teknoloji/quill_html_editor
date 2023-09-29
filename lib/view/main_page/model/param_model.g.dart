@@ -72,6 +72,45 @@ class NetFectDizaynListAdapter extends TypeAdapter<NetFectDizaynList> {
           typeId == other.typeId;
 }
 
+class YaziciListAdapter extends TypeAdapter<YaziciList> {
+  @override
+  final int typeId = 48;
+
+  @override
+  YaziciList read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return YaziciList()
+      ..yaziciAdi = fields[0] as String?
+      ..yaziciTipi = fields[1] as String?
+      ..aciklama = fields[2] as String?;
+  }
+
+  @override
+  void write(BinaryWriter writer, YaziciList obj) {
+    writer
+      ..writeByte(3)
+      ..writeByte(0)
+      ..write(obj.yaziciAdi)
+      ..writeByte(1)
+      ..write(obj.yaziciTipi)
+      ..writeByte(2)
+      ..write(obj.aciklama);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is YaziciListAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

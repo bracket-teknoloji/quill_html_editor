@@ -6,14 +6,14 @@ import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_
 import "../../../../constants/static_variables/static_variables.dart";
 import "../../../../init/network/login/api_urls.dart";
 import "../../../model/base_grup_kodu_model.dart";
-import "../../../view_model/base_scrolled_view_model.dart";
+import "../../../view_model/mobx_network_mixin.dart";
 import "../model/cari_listesi_request_model.dart";
 
 part "cari_rehberi_view_model.g.dart";
 
 class CariRehberiViewModel = _CariRehberiViewModelBase with _$CariRehberiViewModel;
 
-abstract class _CariRehberiViewModelBase with Store, BaseScrolledViewModelMixin {
+abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
   final Map<String, dynamic> siralaMap = {
     "Cari Adı (A-Z)": "AZ",
     "Cari Adı (Z-A)": "ZA",

@@ -128,7 +128,8 @@ class CacheManager {
   static List<BaseSiparisEditModel>? getSiparisEditLists(SiparisTipiEnum siparisTipi) =>
       siparisEditListBox.get(StaticVariables.getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel>();
 
-  static BaseProfilParametreModel get getProfilParametre => BaseProfilParametreModel.fromJson((profilParametreBox.get("value") ?? {}).cast<String, dynamic>());
+  static BaseProfilParametreModel get getProfilParametre => BaseProfilParametreModel.fromJson(
+      (profilParametreBox.get("value") ?? {}).cast<String, dynamic>().map((key, value) => value is Map ? MapEntry(key, value.cast<String, dynamic>()) : MapEntry(key, value)));
   // static String get getSirketAdi => _sirketAdiBox.get("value") ?? "";
 
   //* Setters

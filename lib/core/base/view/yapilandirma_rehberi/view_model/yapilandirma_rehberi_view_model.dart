@@ -6,14 +6,14 @@ import "package:picker/core/base/view/yapilandirma_rehberi/model/yapilandirma_re
 
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "../../../../init/network/login/api_urls.dart";
-import "../../../view_model/base_scrolled_view_model.dart";
+import "../../../view_model/mobx_network_mixin.dart";
 import "../model/yapilandirma_profil_model.dart";
 
 part "yapilandirma_rehberi_view_model.g.dart";
 
 class YapilandirmaRehberiViewModel = _YapilandirmaRehberiViewModelBase with _$YapilandirmaRehberiViewModel;
 
-abstract class _YapilandirmaRehberiViewModelBase with Store, BaseScrolledViewModelMixin {
+abstract class _YapilandirmaRehberiViewModelBase with Store, MobxNetworkMixin {
   final List<Color> colors = <Color>[
     const Color.fromRGBO(84, 141, 212, 1),
     const Color.fromRGBO(849, 93, 21, 1),
