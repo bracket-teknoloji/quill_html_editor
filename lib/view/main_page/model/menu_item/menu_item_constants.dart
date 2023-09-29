@@ -98,7 +98,7 @@ class MenuItemConstants {
         GridItemModel.item(name: "", title: "Aylık Mizan Raporu"),
         ..._getSerbestRapor(SerbestRaporDetayKodEnum.finans),
       ]),
-    ])g,
+    ]),
 
     //* Genel
     //*
