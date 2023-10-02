@@ -88,6 +88,17 @@ mixin _$StokYeniKayitViewModel on _StokYeniKayitViewModelBase, Store {
   }
 
   @override
+  void setStokKodu(String? value) {
+    final _$actionInfo = _$_StokYeniKayitViewModelBaseActionController
+        .startAction(name: '_StokYeniKayitViewModelBase.setStokKodu');
+    try {
+      return super.setStokKodu(value);
+    } finally {
+      _$_StokYeniKayitViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void changeIsSelected(int index) {
     final _$actionInfo = _$_StokYeniKayitViewModelBaseActionController
         .startAction(name: '_StokYeniKayitViewModelBase.changeIsSelected');

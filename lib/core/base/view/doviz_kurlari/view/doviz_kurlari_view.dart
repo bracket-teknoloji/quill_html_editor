@@ -196,7 +196,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
 
   Future<void> getData() async {
     viewModel.changeDovizKurlariList(null);
-    var result = await networkManager.dioGet(path: ApiUrls.getDovizKurlari, bodyModel: DovizKurlariModel(), queryParameters: {"EkranTipi": "L", "SabitTarih": viewModel.tarih.toDateString});
+    var result = await networkManager.dioGet<DovizKurlariModel>(path: ApiUrls.getDovizKurlari, bodyModel: DovizKurlariModel(), queryParameters: {"EkranTipi": "L", "SabitTarih": viewModel.tarih.toDateString});
     if (result.success == true && result.data is List) {
       viewModel.changeDovizKurlariList(result.data.whereType<DovizKurlariModel>().toList());
     }

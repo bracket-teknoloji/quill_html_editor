@@ -646,6 +646,11 @@ class BottomSheetDialogManager {
     return await showRadioBottomSheetDialog(context, title: "Özel Kod Seçiniz", children: list.map((e) => BottomSheetModel(title: e.aciklama ?? e.kod ?? "", value: e)).toList());
   }
 
+  Future<KasaList?> showKasaBottomSheetDialog(BuildContext context) async {
+    List<KasaList> list = CacheManager.getAnaVeri()?.paramModel?.kasaList ?? [];
+    return await showRadioBottomSheetDialog(context, title: "Kasa Seçiniz", children: list.map((e) => BottomSheetModel(title: e.kasaTanimi ?? e.kasaKodu ?? "", value: e)).toList());
+  }
+
   Future<bool?> showPrintBottomSheetDialog(BuildContext context, PrintModel printModel, bool? askDizayn, bool? askMiktar) async {
     if (printModel.yaziciAdi == null) {
       List<YaziciList?> yaziciListe = CacheManager.getAnaVeri()?.paramModel?.yaziciList ?? [];

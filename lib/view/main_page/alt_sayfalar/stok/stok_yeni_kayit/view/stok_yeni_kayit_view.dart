@@ -51,7 +51,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                 if ((key.currentState as FormState).validate()) {
                   dialogManager.showAreYouSureDialog(() async {
                     dialogManager.showLoadingDialog("Kaydediliyor");
-                    viewModel.model.stokKodu = stokKoduController.text;
+                    viewModel.setStokKodu(stokKoduController.text);
                     GenericResponseModel result = await networkManager.dioPost<StokYeniKayitModel>(
                         path: ApiUrls.saveStokHareket, bodyModel: StokYeniKayitModel(), addCKey: true, addSirketBilgileri: true, data: viewModel.model.toJson());
                     dialogManager.hideAlertDialog;

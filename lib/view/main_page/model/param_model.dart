@@ -1,5 +1,6 @@
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
 
 part "param_model.g.dart";
 
@@ -544,7 +545,7 @@ class DovizList {
 }
 
 @JsonSerializable(createFactory: true)
-class KasaList {
+class KasaList with NetworkManagerMixin{
   KasaList();
 
   @JsonKey(name: "KASA_KODU")
@@ -585,6 +586,12 @@ class KasaList {
   factory KasaList.fromJson(Map<String, dynamic> json) {
     return _$KasaListFromJson(json);
   }
+
+  @override
+  KasaList fromJson(Map<String, dynamic> json) {
+    return _$KasaListFromJson(json);
+  }
+  @override
   Map<String, dynamic> toJson() {
     return _$KasaListToJson(this);
   }

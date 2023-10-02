@@ -17,9 +17,10 @@ abstract class _StokYeniKayitViewModelBase with Store {
   @observable
   MainPageModel? anaVeri = CacheManager.getAnaVeri();
   @observable
-  StokYeniKayitModel model = StokYeniKayitModel()
-    ..miktar = 0
-    ..tarih = DateTime.now();
+  StokYeniKayitModel model = StokYeniKayitModel(miktar: 0, tarih: DateTime.now());
+
+  @action
+  void setStokKodu(String? value) => model = model.copyWith(stokKodu: value);
 
   @observable
   ObservableList<bool> isSelected = [true, false].asObservable();
