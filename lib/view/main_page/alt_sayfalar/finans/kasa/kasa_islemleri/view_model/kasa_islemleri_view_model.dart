@@ -93,7 +93,7 @@ abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
   @action
   void setHesapTipi(String? value) {
     hesapTipiGroupValue = value;
-    kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(hesapTipi: value);
+    kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(hesapTipi: value, gc: value);
   }
 
   @action
@@ -104,7 +104,6 @@ abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setPlasiyerKodu(PlasiyerList? value) => kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(plasiyerKodu: value?.plasiyerKodu);
-
 
   @action
   void clearFilters() {

@@ -15,6 +15,7 @@ class KasaIslemleriRequestModel with _$KasaIslemleriRequestModel {
     String? hesapTipi,
     String? hesapKodu,
     String? kasaKodu,
+    String? gc,
   }) = _KasaIslemleriRequestModel;
 
   factory KasaIslemleriRequestModel.fromJson(Map<String, dynamic> json) => _$KasaIslemleriRequestModelFromJson(json);

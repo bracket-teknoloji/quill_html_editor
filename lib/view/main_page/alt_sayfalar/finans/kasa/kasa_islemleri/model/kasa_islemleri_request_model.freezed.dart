@@ -37,6 +37,8 @@ mixin _$KasaIslemleriRequestModel {
   set hesapKodu(String? value) => throw _privateConstructorUsedError;
   String? get kasaKodu => throw _privateConstructorUsedError;
   set kasaKodu(String? value) => throw _privateConstructorUsedError;
+  String? get gc => throw _privateConstructorUsedError;
+  set gc(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -58,7 +60,8 @@ abstract class $KasaIslemleriRequestModelCopyWith<$Res> {
       String? plasiyerKodu,
       String? hesapTipi,
       String? hesapKodu,
-      String? kasaKodu});
+      String? kasaKodu,
+      String? gc});
 }
 
 /// @nodoc
@@ -83,6 +86,7 @@ class _$KasaIslemleriRequestModelCopyWithImpl<$Res,
     Object? hesapTipi = freezed,
     Object? hesapKodu = freezed,
     Object? kasaKodu = freezed,
+    Object? gc = freezed,
   }) {
     return _then(_value.copyWith(
       baslamaTarihi: freezed == baslamaTarihi
@@ -117,6 +121,10 @@ class _$KasaIslemleriRequestModelCopyWithImpl<$Res,
           ? _value.kasaKodu
           : kasaKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      gc: freezed == gc
+          ? _value.gc
+          : gc // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -138,7 +146,8 @@ abstract class _$$_KasaIslemleriRequestModelCopyWith<$Res>
       String? plasiyerKodu,
       String? hesapTipi,
       String? hesapKodu,
-      String? kasaKodu});
+      String? kasaKodu,
+      String? gc});
 }
 
 /// @nodoc
@@ -162,6 +171,7 @@ class __$$_KasaIslemleriRequestModelCopyWithImpl<$Res>
     Object? hesapTipi = freezed,
     Object? hesapKodu = freezed,
     Object? kasaKodu = freezed,
+    Object? gc = freezed,
   }) {
     return _then(_$_KasaIslemleriRequestModel(
       baslamaTarihi: freezed == baslamaTarihi
@@ -196,6 +206,10 @@ class __$$_KasaIslemleriRequestModelCopyWithImpl<$Res>
           ? _value.kasaKodu
           : kasaKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      gc: freezed == gc
+          ? _value.gc
+          : gc // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -212,7 +226,8 @@ class _$_KasaIslemleriRequestModel implements _KasaIslemleriRequestModel {
       this.plasiyerKodu,
       this.hesapTipi,
       this.hesapKodu,
-      this.kasaKodu});
+      this.kasaKodu,
+      this.gc});
 
   factory _$_KasaIslemleriRequestModel.fromJson(Map<String, dynamic> json) =>
       _$$_KasaIslemleriRequestModelFromJson(json);
@@ -233,10 +248,12 @@ class _$_KasaIslemleriRequestModel implements _KasaIslemleriRequestModel {
   String? hesapKodu;
   @override
   String? kasaKodu;
+  @override
+  String? gc;
 
   @override
   String toString() {
-    return 'KasaIslemleriRequestModel(baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, menuKodu: $menuKodu, sayfa: $sayfa, plasiyerKodu: $plasiyerKodu, hesapTipi: $hesapTipi, hesapKodu: $hesapKodu, kasaKodu: $kasaKodu)';
+    return 'KasaIslemleriRequestModel(baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, menuKodu: $menuKodu, sayfa: $sayfa, plasiyerKodu: $plasiyerKodu, hesapTipi: $hesapTipi, hesapKodu: $hesapKodu, kasaKodu: $kasaKodu, gc: $gc)';
   }
 
   @JsonKey(ignore: true)
@@ -263,7 +280,8 @@ abstract class _KasaIslemleriRequestModel implements KasaIslemleriRequestModel {
       String? plasiyerKodu,
       String? hesapTipi,
       String? hesapKodu,
-      String? kasaKodu}) = _$_KasaIslemleriRequestModel;
+      String? kasaKodu,
+      String? gc}) = _$_KasaIslemleriRequestModel;
 
   factory _KasaIslemleriRequestModel.fromJson(Map<String, dynamic> json) =
       _$_KasaIslemleriRequestModel.fromJson;
@@ -292,6 +310,9 @@ abstract class _KasaIslemleriRequestModel implements KasaIslemleriRequestModel {
   @override
   String? get kasaKodu;
   set kasaKodu(String? value);
+  @override
+  String? get gc;
+  set gc(String? value);
   @override
   @JsonKey(ignore: true)
   _$$_KasaIslemleriRequestModelCopyWith<_$_KasaIslemleriRequestModel>

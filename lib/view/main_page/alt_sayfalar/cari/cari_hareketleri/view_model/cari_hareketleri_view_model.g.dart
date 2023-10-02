@@ -45,6 +45,22 @@ mixin _$CariHareketleriViewModel on _CariHareketleriViewModelBase, Store {
               name: '_CariHareketleriViewModelBase.dovizAlacaklarToplami'))
       .value;
 
+  late final _$cariListesiModelAtom = Atom(
+      name: '_CariHareketleriViewModelBase.cariListesiModel', context: context);
+
+  @override
+  CariListesiModel? get cariListesiModel {
+    _$cariListesiModelAtom.reportRead();
+    return super.cariListesiModel;
+  }
+
+  @override
+  set cariListesiModel(CariListesiModel? value) {
+    _$cariListesiModelAtom.reportWrite(value, super.cariListesiModel, () {
+      super.cariListesiModel = value;
+    });
+  }
+
   late final _$isScrollDownAtom = Atom(
       name: '_CariHareketleriViewModelBase.isScrollDown', context: context);
 
@@ -148,6 +164,17 @@ mixin _$CariHareketleriViewModel on _CariHareketleriViewModelBase, Store {
   }
 
   @override
+  void setCariListesiModel(CariListesiModel? value) {
+    final _$actionInfo = _$_CariHareketleriViewModelBaseActionController
+        .startAction(name: '_CariHareketleriViewModelBase.setCariListesiModel');
+    try {
+      return super.setCariListesiModel(value);
+    } finally {
+      _$_CariHareketleriViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void changeSearchBar() {
     final _$actionInfo = _$_CariHareketleriViewModelBaseActionController
         .startAction(name: '_CariHareketleriViewModelBase.changeSearchBar');
@@ -161,6 +188,7 @@ mixin _$CariHareketleriViewModel on _CariHareketleriViewModelBase, Store {
   @override
   String toString() {
     return '''
+cariListesiModel: ${cariListesiModel},
 isScrollDown: ${isScrollDown},
 cariHareketleriList: ${cariHareketleriList},
 siralama: ${siralama},

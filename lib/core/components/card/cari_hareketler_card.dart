@@ -65,8 +65,10 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                                 children: [
                                   Row(
                                     children: [
-                                      Text("${widget.cariHareketleriModel.tarih?.toDateString ?? ""} (${widget.cariHareketleriModel.hareketKodu ?? ""}) "),
-                                      const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(widget.cariHareketleriModel.dovizliMi)
+                                      Text(
+                                          "${widget.cariHareketleriModel.tarih?.toDateString ?? ""} (${widget.cariHareketleriModel.borc != null && widget.cariHareketleriModel.dovizBorc != null ? "B" : "A"}) "),
+                                      const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli)
+                                          .yetkiVarMi(widget.cariHareketleriModel.dovizAlacak != null || widget.cariHareketleriModel.dovizBorc != null)
                                       // widget.cariHareketleriModel.dovizliMi ? const Badge(label: Text("Dövizli")) : Container(),
                                     ],
                                   ),
@@ -103,9 +105,9 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                           children: [
                             //Açıklama
                             SizedBox(
-                              width: width * 0.3,
+                              width: width * 0.4,
                               child: Text((widget.cariHareketleriModel.aciklama ?? ""),
-                                  overflow: TextOverflow.ellipsis, softWrap: true, maxLines: 2, style: theme.textTheme.bodySmall?.copyWith(color: Colors.grey, fontStyle: FontStyle.italic)),
+                                  overflow: TextOverflow.ellipsis, softWrap: true, maxLines: 3, style: theme.textTheme.bodySmall?.copyWith(color: Colors.grey, fontStyle: FontStyle.italic)),
                             ),
                             //YuruyenBakiye
                             Container(

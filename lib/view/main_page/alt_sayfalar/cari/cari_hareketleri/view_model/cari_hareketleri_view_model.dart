@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
 import "../model/cari_hareketleri_model.dart";
 
@@ -7,6 +8,8 @@ part "cari_hareketleri_view_model.g.dart";
 class CariHareketleriViewModel = _CariHareketleriViewModelBase with _$CariHareketleriViewModel;
 
 abstract class _CariHareketleriViewModelBase with Store {
+  @observable
+  CariListesiModel? cariListesiModel;
   @observable
   bool isScrollDown = true;
 
@@ -39,15 +42,22 @@ abstract class _CariHareketleriViewModelBase with Store {
   bool isSearchBarOpened = false;
 
   @action
+  void setCariListesiModel(CariListesiModel? value) => cariListesiModel = value;
+
+  @action
   void changeSearchBar() {
     isSearchBarOpened = !isSearchBarOpened;
   }
 
   @computed
   double get borclarToplami {
-    var data = cariHareketleriList?.where((element) => element.borc != null);
+    var data = cariHareketleriList?.where((element) => element.dovizTuru == cariListesiModel?.dovizKodu && element.borc != null);
     if (data?.isNotEmpty ?? false) {
-      return data!.map((e) => e.borc!).reduce((value, element) => value + element);
+      if (cariListesiModel?.dovizKodu != null) {
+        return data!.map((e) => e.dovizTuru == cariListesiModel?.dovizKodu ? e.dovizBorc ?? 0 : 0.0).reduce((value, element) => value + element);
+      } else {
+        return data!.map((e) => e.borc ?? 0).reduce((value, element) => value + element);
+      }
     } else {
       return 0.0;
     }
@@ -57,15 +67,25 @@ abstract class _CariHareketleriViewModelBase with Store {
   double get alacaklarToplami {
     var data = cariHareketleriList?.where((element) => element.alacak != null);
     if (data?.isNotEmpty ?? false) {
-      return data!.map((e) => e.alacak!).reduce((value, element) => value + element);
+      if (cariListesiModel?.dovizKodu != null) {
+        return data!.map((e) => e.dovizTuru == cariListesiModel?.dovizKodu ? e.dovizAlacak ?? 0 : 0.0).reduce((value, element) => value + element);
+      } else {
+        return data!.map((e) => e.alacak ?? 0).reduce((value, element) => value + element);
+      }
     } else {
       return 0.0;
     }
   }
+
   @computed
   double get toplamBakiye {
-    //get latest tarih from cariHareketleriList
-    return cariHareketleriList?.where((element) => element.tarih == cariHareketleriList?.map((e) => e.tarih).reduce((value, element) => value!.isAfter(element!) ? value : element)).first.yuruyenBakiye ?? 0.0;
+    CariHareketleriModel? model =
+        cariHareketleriList?.where((element) => element.tarih == cariHareketleriList?.map((e) => e.tarih).reduce((value, element) => value!.isAfter(element!) ? value : element)).firstOrNull;
+    if (cariListesiModel?.dovizKodu != null) {
+      return model?.dovYuruyenBakiye ?? 0.0;
+    } else {
+      return model?.yuruyenBakiye ?? 0.0;
+    }
   }
 
   @computed

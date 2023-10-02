@@ -39,11 +39,12 @@ class CariHareketleriView extends StatefulWidget {
 
 class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
   CariHareketleriViewModel viewModel = CariHareketleriViewModel();
-  ScrollController? scrollController;
+  late final ScrollController scrollController;
   late final TextEditingController searchController;
   @override
   void initState() {
     super.initState();
+    viewModel.setCariListesiModel(widget.cari);
     scrollController = ScrollController();
     searchController = TextEditingController();
     init();
@@ -52,20 +53,20 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
   @override
   void dispose() {
     super.dispose();
-    scrollController?.dispose();
+    scrollController.dispose();
     searchController.dispose();
   }
 
   void init() async {
     viewModel.setCariHareketleri(await getData());
-    scrollController?.addListener(() {
-      if (scrollController!.position.userScrollDirection == ScrollDirection.forward) {
+    scrollController.addListener(() {
+      if (scrollController.position.userScrollDirection == ScrollDirection.forward) {
         viewModel.changeScrollDown(true);
       }
-      if (scrollController!.position.userScrollDirection == ScrollDirection.reverse) {
+      if (scrollController.position.userScrollDirection == ScrollDirection.reverse) {
         viewModel.changeScrollDown(false);
       }
-      if (scrollController?.position.pixels == scrollController!.position.maxScrollExtent) {
+      if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
         viewModel.changeScrollDown(true);
       }
     });

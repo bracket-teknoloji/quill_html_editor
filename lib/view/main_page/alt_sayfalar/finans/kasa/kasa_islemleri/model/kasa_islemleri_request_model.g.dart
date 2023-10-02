@@ -17,6 +17,7 @@ _$_KasaIslemleriRequestModel _$$_KasaIslemleriRequestModelFromJson(
       hesapTipi: json['HesapTipi'] as String?,
       hesapKodu: json['HesapKodu'] as String?,
       kasaKodu: json['KasaKodu'] as String?,
+      gc: json['Gc'] as String?,
     );
 
 Map<String, dynamic> _$$_KasaIslemleriRequestModelToJson(
@@ -37,5 +38,6 @@ Map<String, dynamic> _$$_KasaIslemleriRequestModelToJson(
   writeNotNull('HesapTipi', instance.hesapTipi);
   writeNotNull('HesapKodu', instance.hesapKodu);
   writeNotNull('KasaKodu', instance.kasaKodu);
+  writeNotNull('Gc', instance.gc);
   return val;
 }
