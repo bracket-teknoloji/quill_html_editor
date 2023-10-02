@@ -296,7 +296,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                         }
 
                                         stokModel = await getSelectedData(stok);
-                                        if (stok?.yapilandirmaAktif == true) {
+                                        if (stok?.yapilandirmaAktif == true && parametreModel.esnekYapilandir == true) {
                                           var result = await Get.toNamed("/mainPage/yapilandirmaRehberi", arguments: stok);
                                           if (result is YapilandirmaRehberiModel) {
                                             stokModel?.yapkod = result.yapkod;

@@ -64,7 +64,7 @@ class MenuItemConstants {
         GridItemModel.item(name: "finans_Kasa_Islemleri", title: "İşlemler", route: "/mainPage/kasaIslemleri"),
         GridItemModel.item(name: "finans_KasalarArasiTransfer", title: "Kasa Transferi"),
         GridItemModel.altmenu(name: "finans_Raporlar_KasaEkstre", title: "Raporlar", icon: "monitoring", altMenuler: [
-          GridItemModel.item(name: "finans_Raporlar_KasaEkstre", title: "Kasa Ekstre"),
+          GridItemModel.item(name: "finans_Raporlar_KasaEkstre", title: "Kasa Ekstre", route: "/mainPage/kasaKasaEkstreRaporu"),
           ..._getSerbestRapor(SerbestRaporDetayKodEnum.kasa),
         ])
       ]),

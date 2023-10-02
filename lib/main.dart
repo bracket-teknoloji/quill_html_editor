@@ -14,6 +14,7 @@ import "package:picker/core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/view/kasa_dekontlar_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/view/kasa_islemleri_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_listesi/view/kasa_listesi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/kasa/raporlar/kasa_ekstre_raporu/view/kasa_ekstre_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_widget_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/yazdir/view/stok_yazdir_view.dart";
 
@@ -142,6 +143,7 @@ class PickerApp extends StatelessWidget {
             GetPage(name: "/kasaDekontlari", page: () => const KasaDekontlarView()),
             GetPage(name: "/kasaIslemleri", page: () => const KasaIslemleriView()),
 
+            GetPage(name: "/kasaKasaEkstreRaporu", page: () => const KasaEkstreRaporuView()),
 
             //* Sipariş
             GetPage(name: "/siparisMusteriSiparisi", page: () => SiparislerView(widgetModel: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.musteri, isGetData: Get.arguments))),
@@ -204,7 +206,7 @@ class PickerApp extends StatelessWidget {
 }
 
 Future<void> firebaseInitialized() async {
-  if (kIsWeb|| Platform.isWindows || kDebugMode) return;
+  if (kIsWeb || Platform.isWindows || kDebugMode) return;
   if (!Platform.isWindows && (await AppTrackingTransparency.requestTrackingAuthorization() == TrackingStatus.authorized || !Platform.isIOS || !Platform.isMacOS)) {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
     FirebaseMessaging messaging = FirebaseMessaging.instance;

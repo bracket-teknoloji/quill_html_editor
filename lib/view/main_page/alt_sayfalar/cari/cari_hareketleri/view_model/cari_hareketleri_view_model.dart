@@ -51,7 +51,7 @@ abstract class _CariHareketleriViewModelBase with Store {
 
   @computed
   double get borclarToplami {
-    var data = cariHareketleriList?.where((element) => element.dovizTuru == cariListesiModel?.dovizKodu && element.borc != null);
+    var data = cariHareketleriList?.where((element) => element.borc != null);
     if (data?.isNotEmpty ?? false) {
       if (cariListesiModel?.dovizKodu != null) {
         return data!.map((e) => e.dovizTuru == cariListesiModel?.dovizKodu ? e.dovizBorc ?? 0 : 0.0).reduce((value, element) => value + element);
