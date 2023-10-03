@@ -189,7 +189,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
         log("Başarısız");
       }
     } else {
-      Get.offAllNamed("/entryCompany");
+      Get.offAllNamed("/entryCompany", arguments: true);
     }
   }
 }

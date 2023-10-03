@@ -272,7 +272,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               ).withExpanded,
               CustomTextField(enabled: enabled, labelText: "Bilgi", controller: bilgiController),
               CustomTextField(
-                  enabled: (enabled && subeList.firstWhereOrNull((element) => element.subeKodu == veriTabani["Şube"])?.merkezmi == "E") || widget.model?.baseEditEnum == BaseEditEnum.ekle,
+                  enabled: (enabled && subeList.firstWhereOrNull((element) => element.subeKodu == veriTabani["Şube"])?.merkezmi == "E") || widget.model?.baseEditEnum != BaseEditEnum.goruntule,
                   readOnly: true,
                   suffixMore: true,
                   isMust: true,

@@ -157,7 +157,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
   Observer body(BuildContext context) {
     return Observer(builder: (_) {
       return viewModel.temsilciProfilList == null
-          ? const Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator.adaptive())
           : viewModel.temsilciProfilList!.isEmpty
               ? const Center(child: Text("Kayıt Bulunamadı"))
               : SingleChildScrollView(

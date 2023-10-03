@@ -49,17 +49,17 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
   void initState() {
     focusNode = FocusNode();
     controllerInitializer();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (widget.searchText != null) {
         viewModel.setSearchText(widget.searchText!);
         _searchTextController.text = widget.searchText!;
       }
       FocusScope.of(context).requestFocus(focusNode);
-      getData();
+      await getData();
     });
     _scrollController.addListener(() async {
       if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent && viewModel.dahaVarMi) {
-        await Future.delayed(const Duration(milliseconds: 500), () => getData());
+        await Future.delayed(const Duration(milliseconds: 500), () async => await getData());
         viewModel.changeIsScrolledDown(true);
       }
       if (_scrollController.position.userScrollDirection == ScrollDirection.forward) {
@@ -263,7 +263,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                 viewModel.resetSayfa();
                 viewModel.setDahaVarMi(true);
                 viewModel.setStokListesi(null);
-                return getData();
+                return await getData();
               },
               child: Observer(
                   builder: (_) => viewModel.stokListesi.ext.isNullOrEmpty
@@ -347,7 +347,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
     getData();
   }
 
-  void getData() async {
+  Future<void> getData() async {
     viewModel.setDahaVarMi(false);
     GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: viewModel.stokBottomSheetModel.toJsonWithList(), bodyModel: StokListesiModel());
     if (response.success == true && response.data is List) {

@@ -25,8 +25,8 @@ class CariDovizliEkstreView extends StatefulWidget {
 
 class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
   CariDovizliEkstreViewModel viewModel = CariDovizliEkstreViewModel();
-  TextEditingController? cariController;
-  TextEditingController? dovizController;
+  late final TextEditingController cariController;
+  late final TextEditingController dovizController;
   late final TextEditingController baslangicTarihiController;
   late final TextEditingController bitisTarihiController;
 
@@ -37,7 +37,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
     if (widget.model != null) {
-      cariController?.text = widget.model?.cariAdi ?? "";
+      cariController.text = widget.model?.cariAdi ?? "";
       viewModel.changeCariKodu(widget.model?.cariKodu ?? "");
     }
     super.initState();
@@ -45,8 +45,8 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
 
   @override
   void dispose() {
-    cariController?.dispose();
-    dovizController?.dispose();
+    cariController.dispose();
+    dovizController.dispose();
     baslangicTarihiController.dispose();
     bitisTarihiController.dispose();
     super.dispose();
@@ -80,7 +80,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                 onTap: () async {
                   var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                   if (result != null) {
-                    cariController!.text = result.cariAdi ?? "";
+                    cariController.text = result.cariAdi ?? "";
                     viewModel.changeCariKodu(result.cariKodu ?? "");
                   }
                 },
@@ -100,7 +100,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                         DovizList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                             title: "Döviz Tipi", children: dovizList!.map((e) => BottomSheetModel(title: e.isim ?? "", onTap: () => Get.back(result: e))).toList());
                         if (result != null) {
-                          dovizController!.text = result.isim ?? "";
+                          dovizController.text = result.isim ?? "";
                           viewModel.changeDovizTipi(result.isim != mainCurrency ? (result.dovizTipi ?? (result.dovizKodu ?? 0)) : 0);
                           viewModel.changeDovizValue((result.dovizKodu ?? -1).toString());
                         }

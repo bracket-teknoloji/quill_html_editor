@@ -43,7 +43,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
     dovizKuruController = TextEditingController();
     dovizTutariController = TextEditingController();
     projeController = TextEditingController();
-    aciklamaController = TextEditingController(text: "Transfer => ");
+    aciklamaController = TextEditingController(text: viewModel.aciklamaString);
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getSiradakiKod();
@@ -230,11 +230,14 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                   }
                 },
               ),
-              CustomTextField(
-                labelText: "Kasa Hareketi Açıklama",
-                controller: aciklamaController,
-                onChanged: (value) => viewModel.setAciklama(value),
-              ),
+              Observer(builder: (_) {
+                aciklamaController.text = viewModel.aciklamaString;
+                return CustomTextField(
+                  labelText: "Kasa Hareketi Açıklama",
+                  controller: aciklamaController,
+                  onChanged: (value) => viewModel.setAciklama(value),
+                );
+              }),
             ],
           ),
         ));

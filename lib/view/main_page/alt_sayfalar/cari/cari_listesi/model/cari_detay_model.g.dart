@@ -131,7 +131,7 @@ BankaList _$BankaListFromJson(Map<String, dynamic> json) => BankaList()
   ..bankahesno = json['BANKAHESNO'] as String?
   ..bankaAdi = json['BANKA_ADI'] as String?
   ..subeAdi = json['SUBE_ADI'] as String?
-  ..dovizTipi = json['DOVIZ_TIPI'] as String?
+  ..dovizTipi = json['DOVIZ_TIPI'] as int?
   ..dovizAdi = json['DOVIZ_ADI'] as String?;
 
 Map<String, dynamic> _$BankaListToJson(BankaList instance) {

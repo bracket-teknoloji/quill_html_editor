@@ -97,6 +97,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                         ? "Senet"
                         : "");
     enabled = widget.model?.baseEditEnum != BaseEditEnum.goruntule;
+      CariListesiModel.instance.subeKodu ??= 0;
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       if (model?.cariKodu == null || model?.cariKodu == "") {
         viewModel.changeSiradakiKod(widget.model?.siradakiKod);

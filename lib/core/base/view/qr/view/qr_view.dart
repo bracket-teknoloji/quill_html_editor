@@ -78,10 +78,10 @@ class _QRScannerState extends BaseState<QRScannerView> {
       await Permission.camera.request();
     }
     qrViewController.scannedDataStream.listen((scanData) {
-        if (scanData.code != null) {
-          qrViewController.pauseCamera();
-          Navigator.pop(context, barcode?.code);
-        }
+      if (scanData.code != null) {
+        qrViewController.pauseCamera();
+        Navigator.pop(context, scanData.code);
+      }
       // setState(() {
       // });
     });
@@ -93,7 +93,7 @@ class _QRScannerState extends BaseState<QRScannerView> {
         alignment: Alignment.bottomCenter,
         padding: UIHelper.highPaddingHorizontal,
         margin: UIHelper.highPaddingVertical,
-        child: Text(barcode?.code ?? "QR Kodu Okutunuz", style: context.general.appTheme.textTheme.titleLarge!.copyWith(color: Colors.white)),
+        child: Text("QR Kodu Okutunuz", style: context.general.appTheme.textTheme.titleLarge!.copyWith(color: Colors.white)),
       ),
     );
   }

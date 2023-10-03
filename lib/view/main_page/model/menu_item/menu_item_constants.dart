@@ -140,7 +140,7 @@ class MenuItemConstants {
         // GridItemModel.item(name: "siparis_MusteriSiparisi_DurumRaporu", title: "Müşteri Siparişi Durum Raporu"),
         GridItemModel.item(
             name: "siparis_MusteriSiparisi_DurumRaporu", title: "Müşteri Siparişi Durum Raporu", siparisTipi: SiparisTipiEnum.musteri, route: "/mainPage/siparisMusteriSiparisiDurumRaporu"),
-        GridItemModel.item(name: "siparis_SaticiSiparisi_DurumRaporu", title: "Satıcı Sİparişi Durum Raporu", siparisTipi: SiparisTipiEnum.satici, route: "/mainPage/siparisSaticiSiparisiDurumRaporu"),
+        GridItemModel.item(name: "siparis_SaticiSiparisi_DurumRaporu", title: "Satıcı Siparişi Durum Raporu", siparisTipi: SiparisTipiEnum.satici, route: "/mainPage/siparisSaticiSiparisiDurumRaporu"),
         GridItemModel.item(name: "siparis_MusSip_KarlilikRaporu", title: "Sipariş Karlılık Raporu", siparisTipi: SiparisTipiEnum.musteri, route: "/mainPage/siparisSiparisKarlilikRaporu"),
         GridItemModel.item(name: "siparis_MusSip_TeslimRaporu", title: "Müşteri Siparişi Teslim Raporu", siparisTipi: SiparisTipiEnum.musteri, route: "/mainPage/siparisMusteriSiparisiTeslimRaporu"),
         GridItemModel.item(name: "siparis_SaticiSip_TeslimRaporu", title: "Satıcı Siparişi Teslim Raporu", siparisTipi: SiparisTipiEnum.satici, route: "/mainPage/siparisSaticiSiparisiTeslimRaporu"),

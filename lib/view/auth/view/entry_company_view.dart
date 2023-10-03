@@ -18,7 +18,8 @@ import "../model/companies.dart";
 import "../model/isletme_model.dart";
 
 class EntryCompanyView extends StatefulWidget {
-  const EntryCompanyView({super.key});
+  final bool? isSplash;
+  const EntryCompanyView({super.key, this.isSplash});
 
   @override
   State<EntryCompanyView> createState() => _EntryCompanyViewState();
@@ -42,10 +43,10 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     controller1 = TextEditingController();
     controller2 = TextEditingController();
     controller3 = TextEditingController();
-    if (CacheManager.getLogout == true){
-    selected = CacheManager.getVeriTabani();
-    userData = CacheManager.getIsletmeSube;
-    } 
+    if (CacheManager.getLogout == true) {
+      selected = CacheManager.getVeriTabani();
+      userData = CacheManager.getIsletmeSube;
+    }
     // controller1?.text = CacheManager.getVeriTabani()?["Şirket"] ?? "";
     // controller2?.text = CacheManager.getIsletmeSube()?["İşletme"] ?? "";
     // controller3?.text = "${CacheManager.getIsletmeSube()?["Şube"] ?? ""} ${CacheManager.getVeriTabani()?["Şube"] ?? ""}";
@@ -61,12 +62,20 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     super.dispose();
   }
 
- 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
+        leading: IconButton(
+            onPressed: () {
+              if (widget.isSplash ?? false) {
+                Get.offAndToNamed("/login");
+              } else {
+                Get.back();
+              }
+            },
+            icon: const Icon(Icons.arrow_back_outlined)),
         title: const Text("Şirkete Giriş"),
       ),
       body: FutureBuilder(
@@ -197,7 +206,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   }
 
   subeDialog(BuildContext context) {
-    controller3.text = "";
     BottomSheetDialogManager().showRadioBottomSheetDialog(context,
         title: "Şube Seçiniz",
         children: List.generate(
@@ -220,8 +228,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   }
 
   sirketDialog(BuildContext context) {
-    controller2.text = "";
-
     BottomSheetDialogManager().showRadioBottomSheetDialog(context,
         title: "Şirket Seçiniz",
         children: List.generate(
@@ -271,14 +277,16 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
             );
           },
         ));
-  } dioGetData() async {
+  }
+
+  dioGetData() async {
     sirket = await getSirket();
 
     if (sirket?.length == 1 && mounted) {
       controller1.text = sirket?[0].company ?? "";
     } else if (sirket?.length != 1 && controller1.text == "") {
-      if (mounted){
-      await sirketDialog(context);
+      if (mounted) {
+        await sirketDialog(context);
       }
     }
     if (selected["Şirket"] != "" || selected["Şirket"] != null) {
@@ -353,5 +361,4 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     }
     return list;
   }
-
 }

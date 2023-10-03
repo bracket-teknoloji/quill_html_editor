@@ -110,7 +110,7 @@ class PickerApp extends StatelessWidget {
       home: const SplashAuthView(),
       getPages: [
         GetPage(name: "/login", page: () => const LoginView()),
-        GetPage(name: "/entryCompany", page: () => const EntryCompanyView()),
+        GetPage(name: "/entryCompany", page: () => EntryCompanyView(isSplash: Get.arguments)),
         GetPage(name: "/addCompany", page: () => const AccountsView()),
         GetPage(name: "/addAccount", page: () => const AddAccountView()),
         GetPage(name: "/qr", page: () => const QRScannerView()),
@@ -124,7 +124,6 @@ class PickerApp extends StatelessWidget {
             //* Cari
             GetPage(name: "/cariListesi", page: () => CariListesiView(isGetData: Get.arguments)),
             GetPage(name: "/cariRehberi", page: () => CariRehberiView(cariKodu: Get.arguments)),
-            // GetPage(name: "/cariAktivite", page: () => const CariAktiviteView()),
             GetPage(name: "/cariEdit", page: () => BaseCariEditingView(model: Get.arguments)),
             GetPage(name: "/cariHareketleri", page: () => CariHareketleriView(cari: Get.arguments)),
             GetPage(name: "/cariYeniKayit", page: () => CariYeniKayitView(model: Get.arguments)),
@@ -157,10 +156,6 @@ class PickerApp extends StatelessWidget {
             GetPage(name: "/siparisMusteriSiparisiTeslimRaporu", page: () => SiparisTeslimRaporuView(siparisTipiEnum: SiparisTipiEnum.musteri, baseSiparisEditModel: Get.arguments)),
             GetPage(name: "/siparisSaticiSiparisiTeslimRaporu", page: () => SiparisTeslimRaporuView(siparisTipiEnum: SiparisTipiEnum.satici, baseSiparisEditModel: Get.arguments)),
             GetPage(name: "/siparisSiparisKarlilikRaporu", page: () => SiparisKarlilikRaporuView(model: Get.arguments)),
-
-            // GetPage(name: "/siparisSaticiSiparisiDurumRaporu", page: page),
-            // GetPage(name: "/siparisMusteriSiparisiTeslimRaporu", page: page),
-            // GetPage(name: "/siparisSaticiSiparisiTeslimRaporu", page: page),
 
             //* Stok
             GetPage(

@@ -199,7 +199,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                           ),
                         )
                       : const Center(child: Text("Sonuç Bulunamadı")))
-                  : const Center(child: CircularProgressIndicator()),
+                  : const Center(child: CircularProgressIndicator.adaptive()),
             ],
           );
         }),

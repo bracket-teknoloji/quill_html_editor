@@ -107,7 +107,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                 icon: Icons.print_outlined,
                 child: const Text("Yazdır"),
                 onPressed: () async {
-                  PrintModel printModel = PrintModel(raporOzelKod: widget.pdfData?.raporOzelKod ?? "",standart: true, etiketSayisi: 1, dicParams: widget.pdfData?.dicParams);
+                  PrintModel printModel = PrintModel(raporOzelKod: widget.pdfData?.raporOzelKod ?? "", standart: true, etiketSayisi: 1, dicParams: widget.pdfData?.dicParams);
                   await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, false, false);
                 }),
             AppBarButton(
@@ -153,7 +153,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                   onPageChanged: (details) => viewModel.changeCurrentPage(details.newPageNumber - 1),
                 ));
       } else if (viewModel.futureController.value == null) {
-        return const Center(child: CircularProgressIndicator());
+        return const Center(child: CircularProgressIndicator.adaptive());
       } else {
         return const Center();
       }

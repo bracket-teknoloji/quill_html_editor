@@ -21,6 +21,9 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
   KasaList? cikisKasa;
 
   @computed
+  String get aciklamaString => "Transfer ${girisKasa?.kasaTanimi ?? ""} => ${cikisKasa?.kasaTanimi ?? ""}";
+
+  @computed
   StokYeniKayitModel get getStokYeniKayitModel {
     var uuid = const Uuid();
     return model.copyWith(guid: uuid.v4());

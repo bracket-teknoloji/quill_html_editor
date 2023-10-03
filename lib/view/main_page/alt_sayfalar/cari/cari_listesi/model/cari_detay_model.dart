@@ -89,7 +89,7 @@ class BankaList {
   String? bankahesno;
   String? bankaAdi;
   String? subeAdi;
-  String? dovizTipi;
+  int? dovizTipi;
   String? dovizAdi;
 
   factory BankaList.fromJson(Map<String, dynamic> json) => _$BankaListFromJson(json);
