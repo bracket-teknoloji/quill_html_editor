@@ -161,7 +161,8 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
           : viewModel.temsilciProfilList!.isEmpty
               ? const Center(child: Text("Kayıt Bulunamadı"))
               : SingleChildScrollView(
-                  child: Column(
+                  child: Wrap(
+                  direction: context.isLandscape ? Axis.horizontal : Axis.vertical,
                   children: [
                     Card(
                         child: Column(
