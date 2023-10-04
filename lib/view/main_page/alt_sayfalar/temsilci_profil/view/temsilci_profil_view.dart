@@ -70,17 +70,33 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
               await bottomSheetDialogManager.showBottomSheetDialog(context,
                   title: "Filtrele",
                   body: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                    Row(
-                      children: [
-                        Expanded(
-                            child: CustomWidgetWithLabel(
-                                text: "KDV Dahil", child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kdvDahil, onChanged: (value) => viewModel.setKDVDahil(value))))),
-                        Expanded(
-                            child: CustomWidgetWithLabel(
-                                text: "İrsaliyeler Dahil",
-                                child: Observer(builder: (_) => Switch.adaptive(value: viewModel.irsaliyelerDahil, onChanged: (value) => viewModel.setIrsaliyelerDahil(value))))),
-                      ],
-                    ),
+                    Observer(
+                        builder: (_) => SlideControllerWidget(
+                            title: "İade Durumu",
+                            childrenTitleList: const ["Hariç", "Dahil", "Sadece İadeler"],
+                            filterOnChanged: (value) => viewModel.setIadeDurumuValueList(value ?? 0),
+                            childrenValueList: viewModel.iadeDurumuValueList,
+                            groupValue: viewModel.iadeDurumuValueList.firstWhere((element) => element))),
+                    Observer(
+                        builder: (_) => SlideControllerWidget(
+                            title: "Dönem",
+                            childrenTitleList: ["Şirket Yılı (${DateTime.now().year})", "Bu Yıl (${DateTime.now().year})", "Geçen Yıl (${DateTime.now().year - 1})"],
+                            filterOnChanged: (value) => viewModel.setDonemValueList(value ?? 0),
+                            childrenValueList: viewModel.donemValueList,
+                            groupValue: viewModel.donemValueList.firstWhere((element) => element))),
+                    CustomTextField(
+                        labelText: "Cari VKN",
+                        controller: cariVKNController,
+                        suffix: IconButton(
+                            onPressed: () async {
+                              var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                              if (result != null) {
+                                viewModel.temsilciProfilRequestModel.cariKodu = result.vergiNumarasi;
+                                cariVKNController.text = result.vergiNumarasi ?? "";
+                              }
+                            },
+                            icon: const Icon(Icons.more_horiz_outlined)),
+                        onChanged: (p0) => viewModel.temsilciProfilRequestModel.cariVKN = p0),
                     Row(
                       children: [
                         Expanded(
@@ -114,40 +130,26 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                         )),
                       ],
                     ),
-                    CustomTextField(
-                        labelText: "Cari VKN",
-                        controller: cariVKNController,
-                        suffix: IconButton(
-                            onPressed: () async {
-                              var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                              if (result != null) {
-                                viewModel.temsilciProfilRequestModel.cariKodu = result.vergiNumarasi;
-                                cariVKNController.text = result.vergiNumarasi ?? "";
-                              }
-                            },
-                            icon: const Icon(Icons.more_horiz_outlined)),
-                        onChanged: (p0) => viewModel.temsilciProfilRequestModel.cariVKN = p0),
-                    Observer(
-                        builder: (_) => SlideControllerWidget(
-                            title: "İade Durumu",
-                            childrenTitleList: const ["Hariç", "Dahil", "Sadece İadeler"],
-                            filterOnChanged: (value) => viewModel.setIadeDurumuValueList(value ?? 0),
-                            childrenValueList: viewModel.iadeDurumuValueList,
-                            groupValue: viewModel.iadeDurumuValueList.firstWhere((element) => element))),
-                    Observer(
-                        builder: (_) => SlideControllerWidget(
-                            title: "Dönem",
-                            childrenTitleList: ["Şirket Yılı (${DateTime.now().year})", "Bu Yıl (${DateTime.now().year})", "Geçen Yıl (${DateTime.now().year - 1})"],
-                            filterOnChanged: (value) => viewModel.setDonemValueList(value ?? 0),
-                            childrenValueList: viewModel.donemValueList,
-                            groupValue: viewModel.donemValueList.firstWhere((element) => element))),
+                    Row(
+                      children: [
+                        Expanded(
+                            child: CustomWidgetWithLabel(
+                                isVertical: true, text: "KDV Dahil", child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kdvDahil, onChanged: (value) => viewModel.setKDVDahil(value))))),
+                        Expanded(
+                            child: CustomWidgetWithLabel(
+                                isVertical: true,
+                                text: "İrsaliyeler Dahil",
+                                child: Observer(builder: (_) => Switch.adaptive(value: viewModel.irsaliyelerDahil, onChanged: (value) => viewModel.setIrsaliyelerDahil(value))))),
+                      ],
+                    ),
                     ElevatedButton(
-                        onPressed: () {
-                          getData();
-                          Get.back();
-                        },
-                        child: const Text("Uygula"))
-                  ]));
+                            onPressed: () {
+                              getData();
+                              Get.back();
+                            },
+                            child: const Text("Uygula"))
+                        .paddingAll(UIHelper.lowSize)
+                  ]).paddingAll(UIHelper.lowSize));
             },
             icon: const Icon(Icons.filter_alt_outlined))
       ],

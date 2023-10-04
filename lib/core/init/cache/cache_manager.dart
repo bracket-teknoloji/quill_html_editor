@@ -2,6 +2,7 @@ import "dart:developer";
 
 import "package:flutter/material.dart";
 import "package:hive_flutter/hive_flutter.dart";
+import "package:sqflite/sqflite.dart";
 
 import "../../../view/add_company/model/account_model.dart";
 import "../../../view/add_company/model/account_response_model.dart";
@@ -37,6 +38,7 @@ class CacheManager {
   static late Box<BaseSiparisEditModel> siparisEditBox;
   static late Box<ListSiparisEditModel> siparisEditListBox;
   static late Box<Map> profilParametreBox;
+  static late Database db;
 
   static final CacheManager _instance = CacheManager._init();
   static CacheManager get instance => _instance;
@@ -62,6 +64,9 @@ class CacheManager {
   }
 
   Future<void> initHiveBoxes() async {
+    db = await openDatabase("picker/picker.db");
+    
+        
     await Hive.initFlutter("picker/hive");
     preferencesBox = await Hive.openBox("preferences");
     companiesBox = await Hive.openBox("companies");
