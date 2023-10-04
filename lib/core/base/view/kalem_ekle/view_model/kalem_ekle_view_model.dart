@@ -18,8 +18,8 @@ abstract class _KalemEkleViewModelBase with Store {
   @action
   void setShowDovizBilgileri(bool value) {
     showDovizBilgileri = value;
-    
   }
+
   @observable
   StokListesiModel? model;
 
@@ -42,11 +42,11 @@ abstract class _KalemEkleViewModelBase with Store {
   KalemModel kalemModel = KalemModel();
   @action
   void setKoliMi() {
-    kalemModel = kalemModel.copyWith(koliMi: model?.koliMi ?? false);
+    kalemModel = kalemModel.copyWith(koliMi: model?.koliMi ?? false || kalemModel.kalemList != null);
   }
 
   @computed
-  bool get koliMi => (model?.koliMi ?? false) || (kalemModel.koliMi ?? false);
+  bool get koliMi => (model?.koliMi ?? false) || (kalemModel.koliMi ?? false) || (kalemModel.kalemList?.isNotEmpty ?? false);
 
   @action
   void setMuhasebeKodu(String? value) => kalemModel = kalemModel.copyWith(muhasebeKodu: value);

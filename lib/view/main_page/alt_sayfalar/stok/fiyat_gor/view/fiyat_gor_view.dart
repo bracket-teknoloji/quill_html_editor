@@ -72,7 +72,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                           onPressed: () async {
                             var result = await Get.toNamed("/qr");
                             if (result != null) {
-                              barkodKontroller.text = result.toString();
+                              barkodKontroller.text = result ?? "";
                             }
                             getData();
                           }),
@@ -82,8 +82,8 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                             var result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
                             if (result is StokListesiModel) {
                               viewModel.setStokListesiModel(result);
-                              barkodKontroller.text = result.stokKodu.toString();
-                              stokController.text = result.stokAdi.toString();
+                              barkodKontroller.text = result.stokKodu ?? " ";
+                              stokController.text = result.stokAdi ?? " ";
                               getData();
                             }
                           })

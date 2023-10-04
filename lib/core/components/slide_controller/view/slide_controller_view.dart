@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
 
 import "../../../base/state/base_state.dart";
 import "../../helper_widgets/custom_label_widget.dart";
@@ -21,9 +23,9 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
 
   @override
   void initState() {
-      if (widget.childrenTitleList.length != widget.childrenValueList.length) {
-        throw Exception("childrenTitleList ve childrenValueList uzunlukları eşit olmalıdır");
-      }
+    if (widget.childrenTitleList.length != widget.childrenValueList.length) {
+      throw Exception("childrenTitleList ve childrenValueList uzunlukları eşit olmalıdır");
+    }
     scrollController = ScrollController();
     Future.delayed(Duration.zero, () async {
       if (widget.scroll ?? false) {
@@ -56,6 +58,9 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
                   itemExtent: widget.childrenTitleList.length < 3 ? width / widget.childrenTitleList.length : null,
                   itemCount: widget.childrenTitleList.length,
                   itemBuilder: (context, listTileIndex) => RadioMenuButton(
+                        style: ButtonStyle(
+                          padding: MaterialStateProperty.all(UIHelper.lowPadding),
+                        ),
                         value: widget.childrenValueList[listTileIndex],
                         groupValue: widget.groupValue,
                         onChanged: (index) {
@@ -65,6 +70,6 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
                       )))
         ],
       ),
-    );
+    ).paddingAll(UIHelper.lowSize);
   }
 }

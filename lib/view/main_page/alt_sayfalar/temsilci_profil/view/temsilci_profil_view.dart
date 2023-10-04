@@ -161,8 +161,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
           : viewModel.temsilciProfilList!.isEmpty
               ? const Center(child: Text("Kayıt Bulunamadı"))
               : SingleChildScrollView(
-                  child: Wrap(
-                  direction: context.isLandscape ? Axis.horizontal : Axis.vertical,
+                  child: Column(
                   children: [
                     Card(
                         child: Column(
@@ -179,6 +178,10 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                         child: Column(
                       children: [
                         Text("Satışlar (Fatura)", style: TextStyleHelper.title),
+                        // Observer(builder: (_) => Row(children: [const Text("Bugün"), Text("${viewModel.getBugunSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
+                        // Observer(builder: (_) => Row(children: [const Text("Bu Ay"), Text("${viewModel.getBuAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
+                        // Observer(builder: (_) => Row(children: [const Text("Geçen Ay"), Text("${viewModel.getGecenAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
+                        // Observer(builder: (_) => Row(children: [const Text("Bu Yıl"), Text("${viewModel.getBuYilSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
                         Observer(builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
                         Observer(builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
                         Observer(
@@ -200,7 +203,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                                 label: Observer(builder: (_) => Text(viewModel.donem)))
                           ],
                         ),
-                        Observer(builder: (_) => CustomPieChart(pieChartTitle: viewModel.getPlasiyerTitle, pieChartValue: viewModel.getPlasiyerToplam)),
+                        Observer(builder: (_) => SizedBox(height: height * 0.3, child: CustomPieChart(pieChartTitle: viewModel.getPlasiyerTitle, pieChartValue: viewModel.getPlasiyerToplam))),
                         Observer(builder: (_) => CustomLineChart(lineChartValue: viewModel.getAylikSatislar)),
                       ],
                     ).paddingAll(UIHelper.lowSize)),
@@ -227,9 +230,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                         Observer(
                             builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAyAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
                         Observer(builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
-                        Observer(builder: (_) {
-                          return CustomLineChart(lineChartValue: viewModel.getAylikSiparisler);
-                        }),
+                        Observer(builder: (_) => CustomLineChart(lineChartValue: viewModel.getAylikSiparisler)),
                       ],
                     ).paddingAll(UIHelper.lowSize)),
                     Card(
@@ -245,9 +246,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                                 ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAyTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
                         Observer(
                             builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
-                        Observer(builder: (_) {
-                          return CustomLineChart(lineChartValue: viewModel.getAylikTahsilatlar);
-                        }),
+                        Observer(builder: (_) => CustomLineChart(lineChartValue: viewModel.getAylikTahsilatlar)),
                       ],
                     ).paddingAll(UIHelper.lowSize))
                   ],

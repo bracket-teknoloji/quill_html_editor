@@ -71,6 +71,10 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
       model.siparisTipiEnum = widget.model.siparisTipiEnum ?? (StaticVariables.instance.isMusteriSiparisleri ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici);
     } else if (widget.model.model is SiparisEditRequestModel) {
       model = widget.model as BaseEditModel<SiparisEditRequestModel>;
+    }else{
+      model = BaseEditModel<SiparisEditRequestModel>()..model = SiparisEditRequestModel();
+      model.baseEditEnum = widget.model.baseEditEnum;
+      model.siparisTipiEnum = widget.model.siparisTipiEnum ?? (StaticVariables.instance.isMusteriSiparisleri ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici);
     }
 
     if (widget.model.baseEditEnum == BaseEditEnum.duzenle || widget.model.baseEditEnum == BaseEditEnum.kopyala) {

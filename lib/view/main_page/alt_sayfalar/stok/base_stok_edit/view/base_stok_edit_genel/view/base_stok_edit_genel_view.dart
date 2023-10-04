@@ -10,6 +10,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:image_picker/image_picker.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../../../../core/base/model/base_edit_siradaki_kod_model.dart";
 import "../../../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -192,7 +193,8 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                 }
                               },
                               icon: const Icon(Icons.add)),
-                        ),
+                          //TODO resim göstermeyi ekleyince aç
+                        ).yetkiVarMi(false),
                         Expanded(
                           flex: 4,
                           child: CustomTextField(
@@ -211,7 +213,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                     icon: const Icon(Icons.add))
                               ].map((e) => SizedBox(width: 35, child: e)).toList())),
                         ),
-                      ],
+                      ].whereType<Expanded>().toList(),
                     ),
                     CustomTextField(enabled: enable, labelText: "Adı", controller: stokAdiController, onChanged: (p0) => viewModel.stokListesiModel?.stokAdi = p0),
                     CustomTextField(
@@ -343,28 +345,26 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                             ),
                           ),
                         ])),
-                    Observer(builder: (_) {
-                      return CustomWidgetWithLabel(
-                        text: "Diğer",
-                        child: CustomTextField(
-                          // valueText: viewModel.stokListesiModel?.subeKodu.toStringIfNotNull,
-                          readOnly: true,
-                          enabled: (enable && subeList.firstWhere((element) => element.subeKodu == veriTabani["Şube"]).merkezmi == "E") || widget.model == BaseEditEnum.ekle,
-                          labelText: "Şube",
-                          isMust: true,
-                          controller: subeController,
-                          onTap: () async {
-                            var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                title: "Şube", children: subeList.map((e) => BottomSheetModel(title: "${e.subeAdi} ${e.subeKodu}", onTap: () => Get.back(result: e))).toList());
-                            if (result != null) {
-                              subeController?.text = "${result.subeAdi} ${result.subeKodu}";
-                              viewModel.stokListesiModel?.subeKodu = result.subeKodu;
-                            }
-                          },
-                          suffixMore: true,
-                        ),
-                      );
-                    }),
+                    CustomWidgetWithLabel(
+                      text: "Diğer",
+                      child: CustomTextField(
+                        // valueText: viewModel.stokListesiModel?.subeKodu.toStringIfNotNull,
+                        readOnly: true,
+                        enabled: (enable && subeList.firstWhere((element) => element.subeKodu == veriTabani["Şube"]).merkezmi == "E") || widget.model == BaseEditEnum.ekle,
+                        labelText: "Şube",
+                        isMust: true,
+                        controller: subeController,
+                        onTap: () async {
+                          var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                              title: "Şube", children: subeList.map((e) => BottomSheetModel(title: "${e.subeAdi} ${e.subeKodu}", onTap: () => Get.back(result: e))).toList());
+                          if (result != null) {
+                            subeController?.text = "${result.subeAdi} ${result.subeKodu}";
+                            viewModel.stokListesiModel?.subeKodu = result.subeKodu;
+                          }
+                        },
+                        suffixMore: true,
+                      ),
+                    ),
                     CustomWidgetWithLabel(
                         text: "Rapor Kodları",
                         child: Wrap(

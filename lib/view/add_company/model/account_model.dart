@@ -131,11 +131,12 @@ class AccountModel with NetworkManagerMixin {
   bool? debugMu;
 
   Future<void> init() async {
-    if (isDebug && !kDebugMode) {
+    if (isDebug) {
       debugMu = isDebug;
     } else {
       debugMu = null;
     }
+    // debugMu = null;
     //* Uygulama Bilgileri
     ///  [uygulamaSurumu = packageInfo.version;]
     //* olarak değiştirilecek fakat API bu uygulamanın sürümünü kabul etmediği için manuel verdim.

@@ -7,7 +7,6 @@ import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
 import "../../stok_liste/model/stok_listesi_model.dart";
 import "../model/save_stok_model.dart";
@@ -84,62 +83,60 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
   }
 
   void postData() async {
-    if (StaticVariables.instance.isStokKartiValid) {
-      StokListesiModel model = StokListesiModel.instance;
-      SaveStokModel saveStokModel = SaveStokModel().fromJson(model.toJson());
-      saveStokModel.adi = model.stokAdi;
-      saveStokModel.kodu = model.stokKodu;
-      saveStokModel.alisFiyati1 = model.alisFiat1;
-      saveStokModel.alisDovizTipi = model.alisDovTip;
-      saveStokModel.satisDovizTipi = model.satDovTip;
-      saveStokModel.alisFiyati2 = model.alisFiat2;
-      // saveStokModel.subeKodu = model.subeKodu;
-      saveStokModel.alisFiyati3 = model.alisFiat3;
-      saveStokModel.alisFiyati4 = model.alisFiat4;
-      saveStokModel.olcuBirimi1 = model.olcuBirimi;
-      saveStokModel.seriGiristeAktif = model.seriGirislerdeAcik;
-      saveStokModel.seriCikistaAktif = model.seriCikislardaAcik;
-      saveStokModel.seriGiristeOtomatik = model.seriGiristeOtomatikMi;
-      saveStokModel.seriCikistaOtomatik = model.seriCikistaOtomatikMi;
-      saveStokModel.seriMiktarKadar = model.seriMiktarKadarSor;
-      saveStokModel.alisKdvOrani = model.alisKdv;
-      saveStokModel.satisKdvOrani = model.satisKdv;
-      saveStokModel.alisDovizFiyati = model.dovAlisFiat;
-      saveStokModel.satisDovizFiyati = model.dovSatisFiat;
-      saveStokModel.muhdetayKodu = model.muhdetayKodu;
-      saveStokModel.islemKodu = widget.model?.baseEditEnum == BaseEditEnum.ekle ? 1 : 2;
-      saveStokModel.yeniKayit = saveStokModel.islemKodu == 1 ? true : false;
-      saveStokModel.satisFiyati1 = model.satisFiat1;
-      saveStokModel.satisFiyati2 = model.satisFiat2;
-      saveStokModel.satisFiyati3 = model.satisFiat3;
-      saveStokModel.satisFiyati4 = model.satisFiat4;
-      saveStokModel.alisFiyati1 = model.alisFiat1;
-      saveStokModel.alisFiyati2 = model.alisFiat2;
-      saveStokModel.alisFiyati3 = model.alisFiat3;
-      saveStokModel.alisFiyati4 = model.alisFiat4;
-      saveStokModel.satisKdvOrani = model.satisKdv;
-      saveStokModel.alisKdvOrani = model.alisKdv;
-      saveStokModel.satisDovizFiyati = model.dovSatisFiat;
-      saveStokModel.alisDovizFiyati = model.dovAlisFiat;
-      saveStokModel.alisDovizTipi = model.alisDovTip;
-      saveStokModel.satisDovizTipi = model.satDovTip;
-      dialogManager.showLoadingDialog("Kaydediliyor..");
-      var result = await networkManager.dioPost<SaveStokModel>(
-        path: ApiUrls.saveStok,
-        bodyModel: SaveStokModel(),
-        addCKey: true,
-        addSirketBilgileri: true,
-        data: saveStokModel.toJson(),
-      );
+    StokListesiModel model = StokListesiModel.instance;
+    SaveStokModel saveStokModel = SaveStokModel().fromJson(model.toJson());
+    saveStokModel.adi = model.stokAdi;
+    saveStokModel.kodu = model.stokKodu;
+    saveStokModel.alisFiyati1 = model.alisFiat1;
+    saveStokModel.alisDovizTipi = model.alisDovTip;
+    saveStokModel.satisDovizTipi = model.satDovTip;
+    saveStokModel.alisFiyati2 = model.alisFiat2;
+    // saveStokModel.subeKodu = model.subeKodu;
+    saveStokModel.alisFiyati3 = model.alisFiat3;
+    saveStokModel.alisFiyati4 = model.alisFiat4;
+    saveStokModel.olcuBirimi1 = model.olcuBirimi;
+    saveStokModel.seriGiristeAktif = model.seriGirislerdeAcik;
+    saveStokModel.seriCikistaAktif = model.seriCikislardaAcik;
+    saveStokModel.seriGiristeOtomatik = model.seriGiristeOtomatikMi;
+    saveStokModel.seriCikistaOtomatik = model.seriCikistaOtomatikMi;
+    saveStokModel.seriMiktarKadar = model.seriMiktarKadarSor;
+    saveStokModel.alisKdvOrani = model.alisKdv;
+    saveStokModel.satisKdvOrani = model.satisKdv;
+    saveStokModel.alisDovizFiyati = model.dovAlisFiat;
+    saveStokModel.satisDovizFiyati = model.dovSatisFiat;
+    saveStokModel.muhdetayKodu = model.muhdetayKodu;
+    saveStokModel.islemKodu = widget.model?.baseEditEnum == BaseEditEnum.ekle ? 1 : 2;
+    saveStokModel.yeniKayit = saveStokModel.islemKodu == 1 ? true : false;
+    saveStokModel.satisFiyati1 = model.satisFiat1;
+    saveStokModel.satisFiyati2 = model.satisFiat2;
+    saveStokModel.satisFiyati3 = model.satisFiat3;
+    saveStokModel.satisFiyati4 = model.satisFiat4;
+    saveStokModel.alisFiyati1 = model.alisFiat1;
+    saveStokModel.alisFiyati2 = model.alisFiat2;
+    saveStokModel.alisFiyati3 = model.alisFiat3;
+    saveStokModel.alisFiyati4 = model.alisFiat4;
+    saveStokModel.satisKdvOrani = model.satisKdv;
+    saveStokModel.alisKdvOrani = model.alisKdv;
+    saveStokModel.satisDovizFiyati = model.dovSatisFiat;
+    saveStokModel.alisDovizFiyati = model.dovAlisFiat;
+    saveStokModel.alisDovizTipi = model.alisDovTip;
+    saveStokModel.satisDovizTipi = model.satDovTip;
+    dialogManager.showLoadingDialog("Kaydediliyor..");
+    var result = await networkManager.dioPost<SaveStokModel>(
+      path: ApiUrls.saveStok,
+      bodyModel: SaveStokModel(),
+      addCKey: true,
+      addSirketBilgileri: true,
+      data: saveStokModel.toJson(),
+    );
+    dialogManager.hideAlertDialog;
+    SaveStokModel.setInstance(SaveStokModel());
+    if (result.success == true) {
+      dialogManager.showSuccessSnackBar("Başarılı");
+      Get.back(result: BaseEditModel());
+    } else {
       dialogManager.hideAlertDialog;
-      SaveStokModel.setInstance(SaveStokModel());
-      if (result.success == true) {
-        dialogManager.showSuccessSnackBar("Başarılı");
-        Get.back(result: BaseEditModel());
-      } else {
-        dialogManager.hideAlertDialog;
-        dialogManager.showErrorSnackBar(result.message ?? "Hata oluştu");
-      }
+      dialogManager.showErrorSnackBar(result.message ?? "Hata oluştu");
     }
   }
 

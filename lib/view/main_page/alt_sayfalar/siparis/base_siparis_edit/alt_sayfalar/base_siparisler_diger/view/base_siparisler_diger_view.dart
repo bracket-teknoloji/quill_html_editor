@@ -36,7 +36,9 @@ class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerView> {
 
   @override
   void dispose() {
-    controller.dispose();
+    if (controller.isEnable) {
+      controller.dispose();
+    }
     // _htmlController.disable();
     super.dispose();
   }
@@ -66,10 +68,7 @@ class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerView> {
                 }
               },
               loadingBuilder: (context) {
-                return const Center(
-                    child: CircularProgressIndicator.adaptive(
-                  strokeWidth: 0.4,
-                ));
+                return const Center(child: CircularProgressIndicator.adaptive());
               },
             ),
           ).paddingSymmetric(vertical: UIHelper.midSize, horizontal: UIHelper.lowSize),

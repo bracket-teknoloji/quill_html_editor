@@ -3,6 +3,7 @@ import "dart:convert";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 
 import "../../../../../../../../core/base/model/base_empty_model.dart";
 import "../../../../../../../../core/base/state/base_state.dart";
@@ -30,21 +31,35 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
   static StokDetayModel get stokDetayModel => StokDetayModel.instance;
   static StokListesiModel get stokListesiModel => StokListesiModel.instance;
   BaseStokEditFiyatViewModel viewModel = BaseStokEditFiyatViewModel();
-  TextEditingController alisKdvOraniController = TextEditingController(text: stokDetayModel.stokList?.first.alisKdv.toStringIfNotNull ?? stokListesiModel.alisKdv.toStringIfNotNull ?? "");
-  TextEditingController alisFiyat1Controller = TextEditingController(text: stokDetayModel.stokList?.first.alisFiat1.toStringIfNotNull ?? stokListesiModel.alisFiat1.toStringIfNotNull ?? "");
-  TextEditingController alisFiyat2Controller = TextEditingController(text: stokDetayModel.stokList?.first.alisFiat2.toStringIfNotNull ?? stokListesiModel.alisFiat2.toStringIfNotNull ?? "");
-  TextEditingController alisFiyat3Controller = TextEditingController(text: stokDetayModel.stokList?.first.alisFiat3.toStringIfNotNull ?? stokListesiModel.alisFiat3.toStringIfNotNull ?? "");
-  TextEditingController alisFiyat4Controller = TextEditingController(text: stokDetayModel.stokList?.first.alisFiat4.toStringIfNotNull ?? stokListesiModel.alisFiat4.toStringIfNotNull ?? "");
+  TextEditingController alisKdvOraniController = TextEditingController(
+      text: stokDetayModel.stokList?.first.alisKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.alisKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+  TextEditingController alisFiyat1Controller = TextEditingController(
+      text: stokDetayModel.stokList?.first.alisFiat1.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.alisFiat1.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+  TextEditingController alisFiyat2Controller = TextEditingController(
+      text: stokDetayModel.stokList?.first.alisFiat2.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.alisFiat2.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+  TextEditingController alisFiyat3Controller = TextEditingController(
+      text: stokDetayModel.stokList?.first.alisFiat3.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.alisFiat3.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+  TextEditingController alisFiyat4Controller = TextEditingController(
+      text: stokDetayModel.stokList?.first.alisFiat4.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.alisFiat4.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
   TextEditingController alisDovizTipiController = TextEditingController(text: stokDetayModel.stokList?.first.satisDovizAdi ?? stokListesiModel.alisDovizAdi ?? "");
-  TextEditingController alisDovizFiyatiController = TextEditingController(text: stokDetayModel.stokList?.first.dovAlisFiat.toStringIfNotNull ?? stokListesiModel.dovAlisFiat.toStringIfNotNull ?? "");
-  TextEditingController satisKdvOraniController = TextEditingController(text: stokDetayModel.stokList?.first.satisKdv.toStringIfNotNull ?? stokListesiModel.satisKdv.toStringIfNotNull ?? "");
-  TextEditingController satisFiyat1Controller = TextEditingController(text: stokDetayModel.stokList?.first.satisFiat1.toStringIfNotNull ?? stokListesiModel.satisFiat1.toStringIfNotNull ?? "");
-  TextEditingController satisFiyat2Controller = TextEditingController(text: stokDetayModel.stokList?.first.satisFiat2.toStringIfNotNull ?? stokListesiModel.satisFiat2.toStringIfNotNull ?? "");
-  TextEditingController satisFiyat3Controller = TextEditingController(text: stokDetayModel.stokList?.first.satisFiat3.toStringIfNotNull ?? stokListesiModel.satisFiat3.toStringIfNotNull ?? "");
-  TextEditingController satisFiyat4Controller = TextEditingController(text: stokDetayModel.stokList?.first.satisFiat4.toStringIfNotNull ?? stokListesiModel.satisFiat4.toStringIfNotNull ?? "");
+  TextEditingController alisDovizFiyatiController = TextEditingController(
+      text:
+          stokDetayModel.stokList?.first.dovAlisFiat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.dovAlisFiat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+  TextEditingController satisKdvOraniController = TextEditingController(
+      text:
+          stokDetayModel.stokList?.first.satisKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.satisKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "");
+  TextEditingController satisFiyat1Controller = TextEditingController(
+      text: stokDetayModel.stokList?.first.satisFiat1.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.satisFiat1.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+  TextEditingController satisFiyat2Controller = TextEditingController(
+      text: stokDetayModel.stokList?.first.satisFiat2.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.satisFiat2.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+  TextEditingController satisFiyat3Controller = TextEditingController(
+      text: stokDetayModel.stokList?.first.satisFiat3.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.satisFiat3.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+  TextEditingController satisFiyat4Controller = TextEditingController(
+      text: stokDetayModel.stokList?.first.satisFiat4.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.satisFiat4.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
   TextEditingController satisDovizTipiController = TextEditingController(text: stokDetayModel.stokList?.first.satisDovizAdi ?? stokListesiModel.satisDovizAdi ?? "");
-  TextEditingController satisDovizFiyatiController =
-      TextEditingController(text: stokDetayModel.stokList?.first.dovSatisFiat.toStringIfNotNull ?? stokListesiModel.dovSatisFiat.toStringIfNotNull ?? "");
+  TextEditingController satisDovizFiyatiController = TextEditingController(
+      text: stokDetayModel.stokList?.first.dovSatisFiat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
+          stokListesiModel.dovSatisFiat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
   @override
   void dispose() {
     alisKdvOraniController.dispose();

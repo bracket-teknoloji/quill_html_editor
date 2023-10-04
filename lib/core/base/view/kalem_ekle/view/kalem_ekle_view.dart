@@ -109,6 +109,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   viewModel.kalemModel.dovizKuru = null;
                   viewModel.kalemModel.dovizFiyati = null;
                 }
+                // viewModel.kalemModel.brutTutar = viewModel.;
                 viewModel.kalemModel.kalemList?.map((e) => e.miktar = viewModel.kalemModel.miktar2).toList();
                 BaseSiparisEditModel.instance.kalemList ??= [];
                 if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.stokKodu == viewModel.kalemModel.stokKodu) ?? false) {

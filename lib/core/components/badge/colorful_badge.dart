@@ -18,7 +18,7 @@ class _ColorfulBadgeState extends State<ColorfulBadge> {
     return Badge(
       label: widget.label,
       textColor: Colors.white,
-      backgroundColor: widget.badgeColorEnum?.getColor[700],
+      backgroundColor: widget.badgeColorEnum?.getColor,
     ).yetkiVarMi(widget.label != null);
   }
 }

@@ -2,6 +2,8 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/badge/colorful_badge.dart";
+import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
 
@@ -142,14 +144,14 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Badge(label: Text("Karma Koli")).yetkiVarMi(kalemModel?.kalemList.ext.isNotNullOrEmpty ?? false),
+          const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli).yetkiVarMi(kalemModel?.kalemList.ext.isNotNullOrEmpty ?? false),
           Text(kalemModel?.stokKodu ?? ""),
           Text("${kalemModel?.depoKodu ?? ""} - ${kalemModel?.depoTanimi ?? ""}").paddingOnly(bottom: UIHelper.lowSize),
           Wrap(
               children: [
-            Text("Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null || kalemModel?.miktar != 0.0),
+            Text("Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(!(kalemModel?.miktar == null || kalemModel?.miktar == 0.0)),
             Text("Miktar2: ${kalemModel?.miktar2.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar2 != null),
-            Text("Teslim Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),
+            Text("KDV: %${kalemModel?.kdvOrani.toIntIfDouble ?? ""}").yetkiVarMi(kalemModel?.kdvOrani != null),
             Text("Mal Fazlası Miktar: ${kalemModel?.malFazlasiMiktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.malFazlasiMiktar != null),
             Text.rich(TextSpan(
                     children: [
@@ -163,11 +165,13 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                   : null,
             ].whereType<TextSpan>().toList()))
                 .yetkiVarMi(kalemModel?.kdvOrani != null),
-            Text("Satış İskontosu: ${kalemModel?.iskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""}").yetkiVarMi(kalemModel?.iskontoTutari != null),
-            Text("Kalan Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),
             Text("Fiyat: ${kalemModel?.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}").yetkiVarMi(kalemModel?.brutFiyat != null),
+            Text("Tutar: ${kalemModel?.koliTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}").yetkiVarMi(kalemModel?.brutFiyat != null),
+            Text("Proje: ${kalemModel?.projeKodu}").yetkiVarMi(kalemModel?.projeKodu != null && parametreModel.projeUygulamasiAcik == true),
+            Text("Teslim Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),
+            Text("Kalan Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),
             Text("Teslim Tarihi: ${kalemModel?.teslimTarihi.toDateStringIfNull() ?? ""}").yetkiVarMi(kalemModel?.teslimTarihi != null),
-          ].map((e) => SizedBox(width: width * 0.4, child: e)).toList()),
+          ].map((e) => e is! SizedBox ? SizedBox(width: width * 0.4, child: e) : null).toList().nullCheckWithGeneric),
         ].nullCheckWithGeneric,
       ),
     );
@@ -203,12 +207,12 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
       ),
       subtitle: Wrap(
           children: [
-        Text("Miktar: ${((kalemList?.koliBilesenMiktari.toIntIfDouble ?? 0) * (kalemList?.miktar.toIntIfDouble ?? 0)).toIntIfDouble.toStringIfNotNull ?? ""}"),
+        Text("Miktar: ${((kalemList?.kalan.toIntIfDouble ?? 0)).toIntIfDouble.toStringIfNotNull ?? ""}"),
         Text("Fiyat: ${kalemList?.brutFiyat.toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""}"),
         // Text("KDV %: ${(kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
         Text("KDV %: ${((StaticVariables.instance.isMusteriSiparisleri ? kalemList?.stokSatisKdv : kalemList?.stokAlisKdv) ?? kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
 
-        Text("Tutar: ${((kalemList?.koliBilesenMiktari ?? 0) * (superKalemList?.brutFiyat ?? 0) * (kalemList?.koliBilesenOrani ?? 0) / 100).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
+        Text("Tutar: ${kalemList?.araToplamTutari.toIntIfDouble ?? 0}"),
       ]
               .map((e) => SizedBox(
                     width: width * 0.4,

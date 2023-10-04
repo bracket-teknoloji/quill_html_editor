@@ -130,71 +130,73 @@ class BottomSheetDialogManager {
         useSafeArea: true,
         isScrollControlled: true,
         builder: (context) {
-          return Wrap(
-            children: [
-              ListTile(
-                contentPadding: UIHelper.lowPadding,
-                title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
-                trailing: IconButton(icon: const Icon(Icons.close), onPressed: () => Get.back()),
-                splashColor: Colors.transparent,
-              ).paddingSymmetric(vertical: 10),
-              const Divider(
-                thickness: 2,
-                endIndent: 0,
-                indent: 0,
-              ),
-              body == null
-                  ? SizedBox(
-                      // if children are not fit to screen, it will be scrollable
-                      height: children!.length * 50 < Get.height * 0.9 ? children.length * 50 : Get.height * 0.9,
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: SingleChildScrollView(
-                              child: Wrap(
-                                children: [
-                                  ...List.generate(
-                                    children.length,
-                                    (index) => Wrap(
-                                      children: [
-                                        RadioListTile(
-                                          activeColor: UIHelper.primaryColor,
-                                          onChanged: (value) {
-                                            viewModel.changeRadioGroupValue(title);
-                                            if (children?[index]?.onTap != null) {
-                                              children?[index]?.onTap!();
-                                            } else {
-                                              Get.back(result: children![index]?.value);
-                                            }
-                                          },
-                                          value: children?[index]?.title,
-                                          groupValue: viewModel.radioGroupValue,
-                                          title: Text(children![index]!.title),
-                                        ),
-                                        index != children.length - 1
-                                            ? Padding(
-                                                padding: UIHelper.lowPaddingVertical,
-                                                child: const Divider(),
-                                              )
-                                            : Container()
-                                      ],
+          return SafeArea(
+            child: Wrap(
+              children: [
+                ListTile(
+                  contentPadding: UIHelper.lowPadding,
+                  title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
+                  trailing: IconButton(icon: const Icon(Icons.close), onPressed: () => Get.back()),
+                  splashColor: Colors.transparent,
+                ).paddingSymmetric(vertical: 10),
+                const Divider(
+                  thickness: 2,
+                  endIndent: 0,
+                  indent: 0,
+                ),
+                body == null
+                    ? SizedBox(
+                        // if children are not fit to screen, it will be scrollable
+                        height: children!.length * 50 < Get.height * 0.9 ? children.length * 50 : Get.height * 0.9,
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: SingleChildScrollView(
+                                child: Wrap(
+                                  children: [
+                                    ...List.generate(
+                                      children.length,
+                                      (index) => Wrap(
+                                        children: [
+                                          RadioListTile(
+                                            activeColor: UIHelper.primaryColor,
+                                            onChanged: (value) {
+                                              viewModel.changeRadioGroupValue(title);
+                                              if (children?[index]?.onTap != null) {
+                                                children?[index]?.onTap!();
+                                              } else {
+                                                Get.back(result: children![index]?.value);
+                                              }
+                                            },
+                                            value: children?[index]?.title,
+                                            groupValue: viewModel.radioGroupValue,
+                                            title: Text(children![index]!.title),
+                                          ),
+                                          index != children.length - 1
+                                              ? Padding(
+                                                  padding: UIHelper.lowPaddingVertical,
+                                                  child: const Divider(),
+                                                )
+                                              : Container()
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ).paddingOnly(bottom: 10),
+                                  ],
+                                ).paddingOnly(bottom: 10),
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    )
-                  : WillPopScope(
-                      child: SingleChildScrollView(child: body),
-                      onWillPop: () async {
-                        var result = body;
-                        Get.back(result: result);
-                        return true;
-                      }),
-            ],
+                          ],
+                        ),
+                      )
+                    : WillPopScope(
+                        child: SingleChildScrollView(child: body),
+                        onWillPop: () async {
+                          var result = body;
+                          Get.back(result: result);
+                          return true;
+                        }),
+              ],
+            ),
           );
         });
   }
@@ -323,142 +325,144 @@ class BottomSheetDialogManager {
     List controllers = List.generate(onayliGrupNo.length, (index) => TextEditingController(text: viewModel.getKodControllerText![index]));
     BottomSheetResponseModel bottomSheetResponseModel = BottomSheetResponseModel.instance;
     const childrenValueList2 = ["", "T", "O", "S", "B"];
-    return showBottomSheetDialog(context,
-        title: "Filtrele",
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const SliderWidget(title: "Bakiye Durumu", childrenValueList2: childrenValueList2),
-            Center(
-              child: Wrap(
-                runAlignment: WrapAlignment.spaceAround,
-                alignment: WrapAlignment.start,
-                children: [
-                  Observer(builder: (_) {
-                    return CustomTextField(
-                      labelText: "Plasiyer",
-                      controller: plasiyerController,
-                      suffixMore: true,
-                      readOnly: true,
-                      onTap: () async {
-                        var data = CacheManager.getAnaVeri();
+    return showBottomSheetDialog(
+      context,
+      title: "Filtrele",
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const SliderWidget(title: "Bakiye Durumu", childrenValueList2: childrenValueList2),
+          Center(
+            child: Wrap(
+              runAlignment: WrapAlignment.spaceAround,
+              alignment: WrapAlignment.start,
+              children: [
+                Observer(builder: (_) {
+                  return CustomTextField(
+                    labelText: "Plasiyer",
+                    controller: plasiyerController,
+                    suffixMore: true,
+                    readOnly: true,
+                    onTap: () async {
+                      var data = CacheManager.getAnaVeri();
 
-                        var result = await showCheckBoxBottomSheetDialog(context,
-                            title: "Plasiyer seç",
-                            children: List.generate(data?.paramModel?.plasiyerList?.length ?? 0, (index) => BottomSheetModel(title: data?.paramModel?.plasiyerList![index].plasiyerAciklama ?? "")));
-                        if (result != null) {
-                          var plasiyerKoduList = data?.paramModel?.plasiyerList?.where((element) => result.contains(element.plasiyerAciklama)).map((e) => e.plasiyerKodu).toList();
-                          bottomSheetResponseModel.arrPlasiyer = plasiyerKoduList;
-                          plasiyerController.text = result.join(", ");
-                          viewModel.changePlasiyer(result.join(", "));
-                        }
-                      },
-                    );
-                  }),
-                  Observer(builder: (_) {
-                    return CustomTextField(
-                      labelText: "Şehir",
-                      readOnly: true,
-                      controller: sehirController,
-                      suffixMore: true,
-                      onTap: () async {
-                        var result = await showCheckBoxBottomSheetDialog(context,
-                            title: "Şehir seç", children: List.generate(request["sehir"].length, (index) => BottomSheetModel(title: request["sehir"][index].sehirAdi)));
-                        if (result != null) {
-                          bottomSheetResponseModel.arrSehir = result;
-                          viewModel.changeSehir(result.join(", "));
-                          sehirController.text = viewModel.sehir ?? "";
-                        }
-                      },
-                    );
-                  }),
-                  CustomTextField(
-                    labelText: "İlçe",
-                    controller: ilceController,
-                    onChanged: (value) {
-                      viewModel.changeIlce(value);
+                      var result = await showCheckBoxBottomSheetDialog(context,
+                          title: "Plasiyer seç",
+                          children: List.generate(data?.paramModel?.plasiyerList?.length ?? 0, (index) => BottomSheetModel(title: data?.paramModel?.plasiyerList![index].plasiyerAciklama ?? "")));
+                      if (result != null) {
+                        var plasiyerKoduList = data?.paramModel?.plasiyerList?.where((element) => result.contains(element.plasiyerAciklama)).map((e) => e.plasiyerKodu).toList();
+                        bottomSheetResponseModel.arrPlasiyer = plasiyerKoduList;
+                        plasiyerController.text = result.join(", ");
+                        viewModel.changePlasiyer(result.join(", "));
+                      }
                     },
-                  ),
-                  Observer(builder: (_) {
-                    return CustomTextField(
-                        labelText: "Tipi",
-                        controller: TextEditingController(text: viewModel.cariTipi),
+                  );
+                }),
+                Observer(builder: (_) {
+                  return CustomTextField(
+                    labelText: "Şehir",
+                    readOnly: true,
+                    controller: sehirController,
+                    suffixMore: true,
+                    onTap: () async {
+                      var result = await showCheckBoxBottomSheetDialog(context,
+                          title: "Şehir seç", children: List.generate(request["sehir"].length, (index) => BottomSheetModel(title: request["sehir"][index].sehirAdi)));
+                      if (result != null) {
+                        bottomSheetResponseModel.arrSehir = result;
+                        viewModel.changeSehir(result.join(", "));
+                        sehirController.text = viewModel.sehir ?? "";
+                      }
+                    },
+                  );
+                }),
+                CustomTextField(
+                  labelText: "İlçe",
+                  controller: ilceController,
+                  onChanged: (value) {
+                    viewModel.changeIlce(value);
+                  },
+                ),
+                Observer(builder: (_) {
+                  return CustomTextField(
+                      labelText: "Tipi",
+                      controller: TextEditingController(text: viewModel.cariTipi),
+                      suffixMore: true,
+                      readOnly: true,
+                      onTap: () async {
+                        var a = await showCariTipiBottomSheetDialog(context);
+                        if (a != null) {
+                          var result = a != "Komisyoncu" ? a[0] : "I";
+                          viewModel.cariTipi = a;
+                          bottomSheetResponseModel.cariTipi = result;
+                        }
+                      });
+                }),
+                ...List.generate(
+                  onayliGrupNo.length,
+                  (index) {
+                    String title = onayliGrupNo[index] != 0 ? "Kod ${onayliGrupNo[index]}" : "Grup Kodu";
+                    List data = items[index];
+
+                    return Observer(builder: (_) {
+                      return CustomTextField(
+                        labelText: title,
+                        controller: controllers[index],
                         suffixMore: true,
                         readOnly: true,
                         onTap: () async {
-                          var a = await showCariTipiBottomSheetDialog(context);
-                          if (a != null) {
-                            var result = a != "Komisyoncu" ? a[0] : "I";
-                            viewModel.cariTipi = a;
-                            bottomSheetResponseModel.cariTipi = result;
-                          }
-                        });
-                  }),
-                  ...List.generate(
-                    onayliGrupNo.length,
-                    (index) {
-                      String title = onayliGrupNo[index] != 0 ? "Kod ${onayliGrupNo[index]}" : "Grup Kodu";
-                      List data = items[index];
-
-                      return Observer(builder: (_) {
-                        return CustomTextField(
-                          labelText: title,
-                          controller: controllers[index],
-                          suffixMore: true,
-                          readOnly: true,
-                          onTap: () async {
-                            var result =
-                                await showCheckBoxBottomSheetDialog(context, title: "$title seç", children: List.generate(data.length, (index2) => BottomSheetModel(title: data[index2].grupAdi)));
-                            if (result != null) {
-                              if (result is String) {
-                                controllers[index].text = result;
-                              } else {
-                                controllers[index].text = result.join(", ");
-                              }
-                              var a = data.where((element) => result.contains(element.grupAdi)).map((e) => e.grupKodu).toList();
-                              arrKodFinder(index, bottomSheetResponseModel, a);
+                          var result =
+                              await showCheckBoxBottomSheetDialog(context, title: "$title seç", children: List.generate(data.length, (index2) => BottomSheetModel(title: data[index2].grupAdi)));
+                          if (result != null) {
+                            if (result is String) {
+                              controllers[index].text = result;
+                            } else {
+                              controllers[index].text = result.join(", ");
                             }
-                          },
-                        );
-                      });
-                    },
-                  ),
-                ],
-              ),
-            ),
-            Row(
-              children: [
-                Expanded(
-                    child: Observer(builder: (_) {
-                  return ElevatedButton(
-                      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
-                      onPressed: () {
-                        ToggleButton.selected = "";
-                        viewModel.changeSehir("");
-                        viewModel.changeCariTipi("");
-                        viewModel.changePlasiyer("");
-                        viewModel.changeKodControllerTextList([...controllers.map((e) => e.text = "").toList()]);
-                        viewModel.deleteIsSelectedListMap();
-                        bottomSheetResponseModel.clear();
-                        Get.back(result: bottomSheetResponseModel);
-                      },
-                      child: const Text("Filtreyi Temizle"));
-                }).paddingOnly(right: UIHelper.lowSize)),
-                Expanded(child: Observer(builder: (_) {
-                  return ElevatedButton(
-                      onPressed: () {
-                        viewModel.changeKodControllerTextList([...controllers.map((e) => e.text).toList()]);
-                        var a = bottomSheetResponseModel..filterBakiye = ToggleButton.selected;
-                        a.ilce = viewModel.ilce;
-                        Get.back(result: a);
-                      },
-                      child: const Text("Uygula"));
-                })),
+                            var a = data.where((element) => result.contains(element.grupAdi)).map((e) => e.grupKodu).toList();
+                            arrKodFinder(index, bottomSheetResponseModel, a);
+                          }
+                        },
+                      );
+                    });
+                  },
+                ),
               ],
-            ).paddingAll(UIHelper.lowSize),
-            const ResponsiveBox(),
-          ],
-        ));
+            ),
+          ),
+          Row(
+            children: [
+              Expanded(
+                  child: Observer(builder: (_) {
+                return ElevatedButton(
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
+                    onPressed: () {
+                      ToggleButton.selected = "";
+                      viewModel.changeSehir("");
+                      viewModel.changeCariTipi("");
+                      viewModel.changePlasiyer("");
+                      viewModel.changeKodControllerTextList([...controllers.map((e) => e.text = "").toList()]);
+                      viewModel.deleteIsSelectedListMap();
+                      bottomSheetResponseModel.clear();
+                      Get.back(result: bottomSheetResponseModel);
+                    },
+                    child: const Text("Filtreyi Temizle"));
+              }).paddingOnly(right: UIHelper.lowSize)),
+              Expanded(child: Observer(builder: (_) {
+                return ElevatedButton(
+                    onPressed: () {
+                      viewModel.changeKodControllerTextList([...controllers.map((e) => e.text).toList()]);
+                      var a = bottomSheetResponseModel..filterBakiye = ToggleButton.selected;
+                      a.ilce = viewModel.ilce;
+                      Get.back(result: a);
+                    },
+                    child: const Text("Uygula"));
+              })),
+            ],
+          ).paddingAll(UIHelper.lowSize),
+          const ResponsiveBox(),
+        ],
+      ).paddingAll(UIHelper.lowSize),
+    );
   }
 
   static void arrKodFinder(int index, BottomSheetResponseModel bottomSheetResponseModel, result) {

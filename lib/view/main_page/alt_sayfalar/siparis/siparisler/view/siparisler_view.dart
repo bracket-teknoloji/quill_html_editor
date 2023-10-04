@@ -462,10 +462,10 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                       //     }
                       //   }
                       // }
-                      viewModel.resetSayfa();
-                      viewModel.setSiparislerList(null);
-                      viewModel.setDahaVarMi(true);
-                      getData();
+                      // viewModel.resetSayfa();
+                      // viewModel.setSiparislerList(null);
+                      // viewModel.setDahaVarMi(true);
+                      // getData();
                     }),
               ]);
             },

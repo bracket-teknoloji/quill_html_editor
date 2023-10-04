@@ -27,7 +27,7 @@ class CustomWidgetWithLabel extends StatelessWidget {
                           color: (isMust ?? false) ? UIHelper.primaryColor : null,
                         )
                     : null)
-            .paddingOnly(right: UIHelper.lowSize),
+            .paddingOnly(left: UIHelper.lowSize),
         child,
       ],
     );
