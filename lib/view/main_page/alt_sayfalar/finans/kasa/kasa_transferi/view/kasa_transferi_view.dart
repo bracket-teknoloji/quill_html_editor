@@ -120,6 +120,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
             onChanged: (value) => viewModel.setBelgeNo(value),
           ),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                   child: CustomTextField(
@@ -155,6 +156,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
             ],
           ),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                   child: CustomTextField(
@@ -187,6 +189,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
           ),
           Observer(builder: (_) {
             return Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                     child: CustomTextField(
@@ -213,6 +216,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
           }),
           Observer(builder: (_) {
             return Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                     child: CustomTextField(
@@ -246,6 +250,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
             );
           }),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                   child: CustomTextField(
