@@ -20,34 +20,52 @@ BankaIslemleriModel _$BankaIslemleriModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BankaIslemleriModel {
+// int? inckeyno,
+// int? caharInckeyno,
+// String? kasaKodu,
+// String? kasaAdi,
+// String? belgeNo,
+// DateTime? tarih,
+// String? tip,
+// String? tipAciklama,
+// String? hedefAciklama,
+// double? tutar,
+// String? cariMuh,
+// String? gc,
+// String? kod,
+// String? cariKodu,
+// String? cariAdi,
+// String? hesapAdi,
+// double? dovizTutari,
+// double? dovizKuru,
+// String? plasiyerKodu,
+// String? plasiyerAdi,
+// String? projeKodu,
+// String? projeAdi,
+// String? aciklama,
+// String? refkey,
+// DateTime? kasaDevirTarihi,
+// double? kasaDevirTutari,
+// double? kasaDovizDevirTutari,
+// int? kasaDovizTipi,
   int? get inckeyno => throw _privateConstructorUsedError;
-  int? get caharInckeyno => throw _privateConstructorUsedError;
-  String? get kasaKodu => throw _privateConstructorUsedError;
-  String? get kasaAdi => throw _privateConstructorUsedError;
-  String? get belgeNo => throw _privateConstructorUsedError;
+  String? get netheskodu => throw _privateConstructorUsedError;
   DateTime? get tarih => throw _privateConstructorUsedError;
-  String? get tip => throw _privateConstructorUsedError;
-  String? get tipAciklama => throw _privateConstructorUsedError;
-  String? get hedefAciklama => throw _privateConstructorUsedError;
+  int? get harturu => throw _privateConstructorUsedError;
+  String? get ba => throw _privateConstructorUsedError;
   double? get tutar => throw _privateConstructorUsedError;
-  String? get cariMuh => throw _privateConstructorUsedError;
-  String? get gc => throw _privateConstructorUsedError;
-  String? get kod => throw _privateConstructorUsedError;
-  String? get cariKodu => throw _privateConstructorUsedError;
-  String? get cariAdi => throw _privateConstructorUsedError;
-  String? get hesapAdi => throw _privateConstructorUsedError;
-  double? get dovizTutari => throw _privateConstructorUsedError;
-  double? get dovizKuru => throw _privateConstructorUsedError;
-  String? get plasiyerKodu => throw _privateConstructorUsedError;
-  String? get plasiyerAdi => throw _privateConstructorUsedError;
-  String? get projeKodu => throw _privateConstructorUsedError;
-  String? get projeAdi => throw _privateConstructorUsedError;
+  String? get belgeno => throw _privateConstructorUsedError;
   String? get aciklama => throw _privateConstructorUsedError;
-  String? get refkey => throw _privateConstructorUsedError;
-  DateTime? get kasaDevirTarihi => throw _privateConstructorUsedError;
-  double? get kasaDevirTutari => throw _privateConstructorUsedError;
-  double? get kasaDovizDevirTutari => throw _privateConstructorUsedError;
-  int? get kasaDovizTipi => throw _privateConstructorUsedError;
+  String? get entegrefkey => throw _privateConstructorUsedError;
+  int? get dovizTipi => throw _privateConstructorUsedError;
+  double? get dovizTutari => throw _privateConstructorUsedError;
+  int? get hareketTipi => throw _privateConstructorUsedError;
+  String? get hesapAdi => throw _privateConstructorUsedError;
+  String? get hareketAciklama => throw _privateConstructorUsedError;
+  String? get bankaKodu => throw _privateConstructorUsedError;
+  String? get bankaAdi => throw _privateConstructorUsedError;
+  String? get bankasubeKodu => throw _privateConstructorUsedError;
+  String? get subeAdi => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -63,33 +81,23 @@ abstract class $BankaIslemleriModelCopyWith<$Res> {
   @useResult
   $Res call(
       {int? inckeyno,
-      int? caharInckeyno,
-      String? kasaKodu,
-      String? kasaAdi,
-      String? belgeNo,
+      String? netheskodu,
       DateTime? tarih,
-      String? tip,
-      String? tipAciklama,
-      String? hedefAciklama,
+      int? harturu,
+      String? ba,
       double? tutar,
-      String? cariMuh,
-      String? gc,
-      String? kod,
-      String? cariKodu,
-      String? cariAdi,
-      String? hesapAdi,
-      double? dovizTutari,
-      double? dovizKuru,
-      String? plasiyerKodu,
-      String? plasiyerAdi,
-      String? projeKodu,
-      String? projeAdi,
+      String? belgeno,
       String? aciklama,
-      String? refkey,
-      DateTime? kasaDevirTarihi,
-      double? kasaDevirTutari,
-      double? kasaDovizDevirTutari,
-      int? kasaDovizTipi});
+      String? entegrefkey,
+      int? dovizTipi,
+      double? dovizTutari,
+      int? hareketTipi,
+      String? hesapAdi,
+      String? hareketAciklama,
+      String? bankaKodu,
+      String? bankaAdi,
+      String? bankasubeKodu,
+      String? subeAdi});
 }
 
 /// @nodoc
@@ -106,147 +114,97 @@ class _$BankaIslemleriModelCopyWithImpl<$Res, $Val extends BankaIslemleriModel>
   @override
   $Res call({
     Object? inckeyno = freezed,
-    Object? caharInckeyno = freezed,
-    Object? kasaKodu = freezed,
-    Object? kasaAdi = freezed,
-    Object? belgeNo = freezed,
+    Object? netheskodu = freezed,
     Object? tarih = freezed,
-    Object? tip = freezed,
-    Object? tipAciklama = freezed,
-    Object? hedefAciklama = freezed,
+    Object? harturu = freezed,
+    Object? ba = freezed,
     Object? tutar = freezed,
-    Object? cariMuh = freezed,
-    Object? gc = freezed,
-    Object? kod = freezed,
-    Object? cariKodu = freezed,
-    Object? cariAdi = freezed,
-    Object? hesapAdi = freezed,
-    Object? dovizTutari = freezed,
-    Object? dovizKuru = freezed,
-    Object? plasiyerKodu = freezed,
-    Object? plasiyerAdi = freezed,
-    Object? projeKodu = freezed,
-    Object? projeAdi = freezed,
+    Object? belgeno = freezed,
     Object? aciklama = freezed,
-    Object? refkey = freezed,
-    Object? kasaDevirTarihi = freezed,
-    Object? kasaDevirTutari = freezed,
-    Object? kasaDovizDevirTutari = freezed,
-    Object? kasaDovizTipi = freezed,
+    Object? entegrefkey = freezed,
+    Object? dovizTipi = freezed,
+    Object? dovizTutari = freezed,
+    Object? hareketTipi = freezed,
+    Object? hesapAdi = freezed,
+    Object? hareketAciklama = freezed,
+    Object? bankaKodu = freezed,
+    Object? bankaAdi = freezed,
+    Object? bankasubeKodu = freezed,
+    Object? subeAdi = freezed,
   }) {
     return _then(_value.copyWith(
       inckeyno: freezed == inckeyno
           ? _value.inckeyno
           : inckeyno // ignore: cast_nullable_to_non_nullable
               as int?,
-      caharInckeyno: freezed == caharInckeyno
-          ? _value.caharInckeyno
-          : caharInckeyno // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kasaKodu: freezed == kasaKodu
-          ? _value.kasaKodu
-          : kasaKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kasaAdi: freezed == kasaAdi
-          ? _value.kasaAdi
-          : kasaAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
+      netheskodu: freezed == netheskodu
+          ? _value.netheskodu
+          : netheskodu // ignore: cast_nullable_to_non_nullable
               as String?,
       tarih: freezed == tarih
           ? _value.tarih
           : tarih // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      tip: freezed == tip
-          ? _value.tip
-          : tip // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tipAciklama: freezed == tipAciklama
-          ? _value.tipAciklama
-          : tipAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hedefAciklama: freezed == hedefAciklama
-          ? _value.hedefAciklama
-          : hedefAciklama // ignore: cast_nullable_to_non_nullable
+      harturu: freezed == harturu
+          ? _value.harturu
+          : harturu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      ba: freezed == ba
+          ? _value.ba
+          : ba // ignore: cast_nullable_to_non_nullable
               as String?,
       tutar: freezed == tutar
           ? _value.tutar
           : tutar // ignore: cast_nullable_to_non_nullable
               as double?,
-      cariMuh: freezed == cariMuh
-          ? _value.cariMuh
-          : cariMuh // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gc: freezed == gc
-          ? _value.gc
-          : gc // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod: freezed == kod
-          ? _value.kod
-          : kod // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariAdi: freezed == cariAdi
-          ? _value.cariAdi
-          : cariAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hesapAdi: freezed == hesapAdi
-          ? _value.hesapAdi
-          : hesapAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dovizTutari: freezed == dovizTutari
-          ? _value.dovizTutari
-          : dovizTutari // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovizKuru: freezed == dovizKuru
-          ? _value.dovizKuru
-          : dovizKuru // ignore: cast_nullable_to_non_nullable
-              as double?,
-      plasiyerKodu: freezed == plasiyerKodu
-          ? _value.plasiyerKodu
-          : plasiyerKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      plasiyerAdi: freezed == plasiyerAdi
-          ? _value.plasiyerAdi
-          : plasiyerAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      projeKodu: freezed == projeKodu
-          ? _value.projeKodu
-          : projeKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      projeAdi: freezed == projeAdi
-          ? _value.projeAdi
-          : projeAdi // ignore: cast_nullable_to_non_nullable
+      belgeno: freezed == belgeno
+          ? _value.belgeno
+          : belgeno // ignore: cast_nullable_to_non_nullable
               as String?,
       aciklama: freezed == aciklama
           ? _value.aciklama
           : aciklama // ignore: cast_nullable_to_non_nullable
               as String?,
-      refkey: freezed == refkey
-          ? _value.refkey
-          : refkey // ignore: cast_nullable_to_non_nullable
+      entegrefkey: freezed == entegrefkey
+          ? _value.entegrefkey
+          : entegrefkey // ignore: cast_nullable_to_non_nullable
               as String?,
-      kasaDevirTarihi: freezed == kasaDevirTarihi
-          ? _value.kasaDevirTarihi
-          : kasaDevirTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      kasaDevirTutari: freezed == kasaDevirTutari
-          ? _value.kasaDevirTutari
-          : kasaDevirTutari // ignore: cast_nullable_to_non_nullable
-              as double?,
-      kasaDovizDevirTutari: freezed == kasaDovizDevirTutari
-          ? _value.kasaDovizDevirTutari
-          : kasaDovizDevirTutari // ignore: cast_nullable_to_non_nullable
-              as double?,
-      kasaDovizTipi: freezed == kasaDovizTipi
-          ? _value.kasaDovizTipi
-          : kasaDovizTipi // ignore: cast_nullable_to_non_nullable
+      dovizTipi: freezed == dovizTipi
+          ? _value.dovizTipi
+          : dovizTipi // ignore: cast_nullable_to_non_nullable
               as int?,
+      dovizTutari: freezed == dovizTutari
+          ? _value.dovizTutari
+          : dovizTutari // ignore: cast_nullable_to_non_nullable
+              as double?,
+      hareketTipi: freezed == hareketTipi
+          ? _value.hareketTipi
+          : hareketTipi // ignore: cast_nullable_to_non_nullable
+              as int?,
+      hesapAdi: freezed == hesapAdi
+          ? _value.hesapAdi
+          : hesapAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hareketAciklama: freezed == hareketAciklama
+          ? _value.hareketAciklama
+          : hareketAciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bankaKodu: freezed == bankaKodu
+          ? _value.bankaKodu
+          : bankaKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bankaAdi: freezed == bankaAdi
+          ? _value.bankaAdi
+          : bankaAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bankasubeKodu: freezed == bankasubeKodu
+          ? _value.bankasubeKodu
+          : bankasubeKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subeAdi: freezed == subeAdi
+          ? _value.subeAdi
+          : subeAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -261,33 +219,23 @@ abstract class _$$_BankaIslemleriModelCopyWith<$Res>
   @useResult
   $Res call(
       {int? inckeyno,
-      int? caharInckeyno,
-      String? kasaKodu,
-      String? kasaAdi,
-      String? belgeNo,
+      String? netheskodu,
       DateTime? tarih,
-      String? tip,
-      String? tipAciklama,
-      String? hedefAciklama,
+      int? harturu,
+      String? ba,
       double? tutar,
-      String? cariMuh,
-      String? gc,
-      String? kod,
-      String? cariKodu,
-      String? cariAdi,
-      String? hesapAdi,
-      double? dovizTutari,
-      double? dovizKuru,
-      String? plasiyerKodu,
-      String? plasiyerAdi,
-      String? projeKodu,
-      String? projeAdi,
+      String? belgeno,
       String? aciklama,
-      String? refkey,
-      DateTime? kasaDevirTarihi,
-      double? kasaDevirTutari,
-      double? kasaDovizDevirTutari,
-      int? kasaDovizTipi});
+      String? entegrefkey,
+      int? dovizTipi,
+      double? dovizTutari,
+      int? hareketTipi,
+      String? hesapAdi,
+      String? hareketAciklama,
+      String? bankaKodu,
+      String? bankaAdi,
+      String? bankasubeKodu,
+      String? subeAdi});
 }
 
 /// @nodoc
@@ -302,147 +250,97 @@ class __$$_BankaIslemleriModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? inckeyno = freezed,
-    Object? caharInckeyno = freezed,
-    Object? kasaKodu = freezed,
-    Object? kasaAdi = freezed,
-    Object? belgeNo = freezed,
+    Object? netheskodu = freezed,
     Object? tarih = freezed,
-    Object? tip = freezed,
-    Object? tipAciklama = freezed,
-    Object? hedefAciklama = freezed,
+    Object? harturu = freezed,
+    Object? ba = freezed,
     Object? tutar = freezed,
-    Object? cariMuh = freezed,
-    Object? gc = freezed,
-    Object? kod = freezed,
-    Object? cariKodu = freezed,
-    Object? cariAdi = freezed,
-    Object? hesapAdi = freezed,
-    Object? dovizTutari = freezed,
-    Object? dovizKuru = freezed,
-    Object? plasiyerKodu = freezed,
-    Object? plasiyerAdi = freezed,
-    Object? projeKodu = freezed,
-    Object? projeAdi = freezed,
+    Object? belgeno = freezed,
     Object? aciklama = freezed,
-    Object? refkey = freezed,
-    Object? kasaDevirTarihi = freezed,
-    Object? kasaDevirTutari = freezed,
-    Object? kasaDovizDevirTutari = freezed,
-    Object? kasaDovizTipi = freezed,
+    Object? entegrefkey = freezed,
+    Object? dovizTipi = freezed,
+    Object? dovizTutari = freezed,
+    Object? hareketTipi = freezed,
+    Object? hesapAdi = freezed,
+    Object? hareketAciklama = freezed,
+    Object? bankaKodu = freezed,
+    Object? bankaAdi = freezed,
+    Object? bankasubeKodu = freezed,
+    Object? subeAdi = freezed,
   }) {
     return _then(_$_BankaIslemleriModel(
       inckeyno: freezed == inckeyno
           ? _value.inckeyno
           : inckeyno // ignore: cast_nullable_to_non_nullable
               as int?,
-      caharInckeyno: freezed == caharInckeyno
-          ? _value.caharInckeyno
-          : caharInckeyno // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kasaKodu: freezed == kasaKodu
-          ? _value.kasaKodu
-          : kasaKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kasaAdi: freezed == kasaAdi
-          ? _value.kasaAdi
-          : kasaAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
+      netheskodu: freezed == netheskodu
+          ? _value.netheskodu
+          : netheskodu // ignore: cast_nullable_to_non_nullable
               as String?,
       tarih: freezed == tarih
           ? _value.tarih
           : tarih // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      tip: freezed == tip
-          ? _value.tip
-          : tip // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tipAciklama: freezed == tipAciklama
-          ? _value.tipAciklama
-          : tipAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hedefAciklama: freezed == hedefAciklama
-          ? _value.hedefAciklama
-          : hedefAciklama // ignore: cast_nullable_to_non_nullable
+      harturu: freezed == harturu
+          ? _value.harturu
+          : harturu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      ba: freezed == ba
+          ? _value.ba
+          : ba // ignore: cast_nullable_to_non_nullable
               as String?,
       tutar: freezed == tutar
           ? _value.tutar
           : tutar // ignore: cast_nullable_to_non_nullable
               as double?,
-      cariMuh: freezed == cariMuh
-          ? _value.cariMuh
-          : cariMuh // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gc: freezed == gc
-          ? _value.gc
-          : gc // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kod: freezed == kod
-          ? _value.kod
-          : kod // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariKodu: freezed == cariKodu
-          ? _value.cariKodu
-          : cariKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariAdi: freezed == cariAdi
-          ? _value.cariAdi
-          : cariAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hesapAdi: freezed == hesapAdi
-          ? _value.hesapAdi
-          : hesapAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dovizTutari: freezed == dovizTutari
-          ? _value.dovizTutari
-          : dovizTutari // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovizKuru: freezed == dovizKuru
-          ? _value.dovizKuru
-          : dovizKuru // ignore: cast_nullable_to_non_nullable
-              as double?,
-      plasiyerKodu: freezed == plasiyerKodu
-          ? _value.plasiyerKodu
-          : plasiyerKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      plasiyerAdi: freezed == plasiyerAdi
-          ? _value.plasiyerAdi
-          : plasiyerAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      projeKodu: freezed == projeKodu
-          ? _value.projeKodu
-          : projeKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      projeAdi: freezed == projeAdi
-          ? _value.projeAdi
-          : projeAdi // ignore: cast_nullable_to_non_nullable
+      belgeno: freezed == belgeno
+          ? _value.belgeno
+          : belgeno // ignore: cast_nullable_to_non_nullable
               as String?,
       aciklama: freezed == aciklama
           ? _value.aciklama
           : aciklama // ignore: cast_nullable_to_non_nullable
               as String?,
-      refkey: freezed == refkey
-          ? _value.refkey
-          : refkey // ignore: cast_nullable_to_non_nullable
+      entegrefkey: freezed == entegrefkey
+          ? _value.entegrefkey
+          : entegrefkey // ignore: cast_nullable_to_non_nullable
               as String?,
-      kasaDevirTarihi: freezed == kasaDevirTarihi
-          ? _value.kasaDevirTarihi
-          : kasaDevirTarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      kasaDevirTutari: freezed == kasaDevirTutari
-          ? _value.kasaDevirTutari
-          : kasaDevirTutari // ignore: cast_nullable_to_non_nullable
-              as double?,
-      kasaDovizDevirTutari: freezed == kasaDovizDevirTutari
-          ? _value.kasaDovizDevirTutari
-          : kasaDovizDevirTutari // ignore: cast_nullable_to_non_nullable
-              as double?,
-      kasaDovizTipi: freezed == kasaDovizTipi
-          ? _value.kasaDovizTipi
-          : kasaDovizTipi // ignore: cast_nullable_to_non_nullable
+      dovizTipi: freezed == dovizTipi
+          ? _value.dovizTipi
+          : dovizTipi // ignore: cast_nullable_to_non_nullable
               as int?,
+      dovizTutari: freezed == dovizTutari
+          ? _value.dovizTutari
+          : dovizTutari // ignore: cast_nullable_to_non_nullable
+              as double?,
+      hareketTipi: freezed == hareketTipi
+          ? _value.hareketTipi
+          : hareketTipi // ignore: cast_nullable_to_non_nullable
+              as int?,
+      hesapAdi: freezed == hesapAdi
+          ? _value.hesapAdi
+          : hesapAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hareketAciklama: freezed == hareketAciklama
+          ? _value.hareketAciklama
+          : hareketAciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bankaKodu: freezed == bankaKodu
+          ? _value.bankaKodu
+          : bankaKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bankaAdi: freezed == bankaAdi
+          ? _value.bankaAdi
+          : bankaAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bankasubeKodu: freezed == bankasubeKodu
+          ? _value.bankasubeKodu
+          : bankasubeKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subeAdi: freezed == subeAdi
+          ? _value.subeAdi
+          : subeAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -452,94 +350,92 @@ class __$$_BankaIslemleriModelCopyWithImpl<$Res>
 class _$_BankaIslemleriModel extends _BankaIslemleriModel {
   _$_BankaIslemleriModel(
       {this.inckeyno,
-      this.caharInckeyno,
-      this.kasaKodu,
-      this.kasaAdi,
-      this.belgeNo,
+      this.netheskodu,
       this.tarih,
-      this.tip,
-      this.tipAciklama,
-      this.hedefAciklama,
+      this.harturu,
+      this.ba,
       this.tutar,
-      this.cariMuh,
-      this.gc,
-      this.kod,
-      this.cariKodu,
-      this.cariAdi,
-      this.hesapAdi,
-      this.dovizTutari,
-      this.dovizKuru,
-      this.plasiyerKodu,
-      this.plasiyerAdi,
-      this.projeKodu,
-      this.projeAdi,
+      this.belgeno,
       this.aciklama,
-      this.refkey,
-      this.kasaDevirTarihi,
-      this.kasaDevirTutari,
-      this.kasaDovizDevirTutari,
-      this.kasaDovizTipi})
+      this.entegrefkey,
+      this.dovizTipi,
+      this.dovizTutari,
+      this.hareketTipi,
+      this.hesapAdi,
+      this.hareketAciklama,
+      this.bankaKodu,
+      this.bankaAdi,
+      this.bankasubeKodu,
+      this.subeAdi})
       : super._();
 
   factory _$_BankaIslemleriModel.fromJson(Map<String, dynamic> json) =>
       _$$_BankaIslemleriModelFromJson(json);
 
+// int? inckeyno,
+// int? caharInckeyno,
+// String? kasaKodu,
+// String? kasaAdi,
+// String? belgeNo,
+// DateTime? tarih,
+// String? tip,
+// String? tipAciklama,
+// String? hedefAciklama,
+// double? tutar,
+// String? cariMuh,
+// String? gc,
+// String? kod,
+// String? cariKodu,
+// String? cariAdi,
+// String? hesapAdi,
+// double? dovizTutari,
+// double? dovizKuru,
+// String? plasiyerKodu,
+// String? plasiyerAdi,
+// String? projeKodu,
+// String? projeAdi,
+// String? aciklama,
+// String? refkey,
+// DateTime? kasaDevirTarihi,
+// double? kasaDevirTutari,
+// double? kasaDovizDevirTutari,
+// int? kasaDovizTipi,
   @override
   final int? inckeyno;
   @override
-  final int? caharInckeyno;
-  @override
-  final String? kasaKodu;
-  @override
-  final String? kasaAdi;
-  @override
-  final String? belgeNo;
+  final String? netheskodu;
   @override
   final DateTime? tarih;
   @override
-  final String? tip;
+  final int? harturu;
   @override
-  final String? tipAciklama;
-  @override
-  final String? hedefAciklama;
+  final String? ba;
   @override
   final double? tutar;
   @override
-  final String? cariMuh;
-  @override
-  final String? gc;
-  @override
-  final String? kod;
-  @override
-  final String? cariKodu;
-  @override
-  final String? cariAdi;
-  @override
-  final String? hesapAdi;
-  @override
-  final double? dovizTutari;
-  @override
-  final double? dovizKuru;
-  @override
-  final String? plasiyerKodu;
-  @override
-  final String? plasiyerAdi;
-  @override
-  final String? projeKodu;
-  @override
-  final String? projeAdi;
+  final String? belgeno;
   @override
   final String? aciklama;
   @override
-  final String? refkey;
+  final String? entegrefkey;
   @override
-  final DateTime? kasaDevirTarihi;
+  final int? dovizTipi;
   @override
-  final double? kasaDevirTutari;
+  final double? dovizTutari;
   @override
-  final double? kasaDovizDevirTutari;
+  final int? hareketTipi;
   @override
-  final int? kasaDovizTipi;
+  final String? hesapAdi;
+  @override
+  final String? hareketAciklama;
+  @override
+  final String? bankaKodu;
+  @override
+  final String? bankaAdi;
+  @override
+  final String? bankasubeKodu;
+  @override
+  final String? subeAdi;
 
   @JsonKey(ignore: true)
   @override
@@ -559,94 +455,91 @@ class _$_BankaIslemleriModel extends _BankaIslemleriModel {
 abstract class _BankaIslemleriModel extends BankaIslemleriModel {
   factory _BankaIslemleriModel(
       {final int? inckeyno,
-      final int? caharInckeyno,
-      final String? kasaKodu,
-      final String? kasaAdi,
-      final String? belgeNo,
+      final String? netheskodu,
       final DateTime? tarih,
-      final String? tip,
-      final String? tipAciklama,
-      final String? hedefAciklama,
+      final int? harturu,
+      final String? ba,
       final double? tutar,
-      final String? cariMuh,
-      final String? gc,
-      final String? kod,
-      final String? cariKodu,
-      final String? cariAdi,
-      final String? hesapAdi,
-      final double? dovizTutari,
-      final double? dovizKuru,
-      final String? plasiyerKodu,
-      final String? plasiyerAdi,
-      final String? projeKodu,
-      final String? projeAdi,
+      final String? belgeno,
       final String? aciklama,
-      final String? refkey,
-      final DateTime? kasaDevirTarihi,
-      final double? kasaDevirTutari,
-      final double? kasaDovizDevirTutari,
-      final int? kasaDovizTipi}) = _$_BankaIslemleriModel;
+      final String? entegrefkey,
+      final int? dovizTipi,
+      final double? dovizTutari,
+      final int? hareketTipi,
+      final String? hesapAdi,
+      final String? hareketAciklama,
+      final String? bankaKodu,
+      final String? bankaAdi,
+      final String? bankasubeKodu,
+      final String? subeAdi}) = _$_BankaIslemleriModel;
   _BankaIslemleriModel._() : super._();
 
   factory _BankaIslemleriModel.fromJson(Map<String, dynamic> json) =
       _$_BankaIslemleriModel.fromJson;
 
-  @override
+  @override // int? inckeyno,
+// int? caharInckeyno,
+// String? kasaKodu,
+// String? kasaAdi,
+// String? belgeNo,
+// DateTime? tarih,
+// String? tip,
+// String? tipAciklama,
+// String? hedefAciklama,
+// double? tutar,
+// String? cariMuh,
+// String? gc,
+// String? kod,
+// String? cariKodu,
+// String? cariAdi,
+// String? hesapAdi,
+// double? dovizTutari,
+// double? dovizKuru,
+// String? plasiyerKodu,
+// String? plasiyerAdi,
+// String? projeKodu,
+// String? projeAdi,
+// String? aciklama,
+// String? refkey,
+// DateTime? kasaDevirTarihi,
+// double? kasaDevirTutari,
+// double? kasaDovizDevirTutari,
+// int? kasaDovizTipi,
   int? get inckeyno;
   @override
-  int? get caharInckeyno;
-  @override
-  String? get kasaKodu;
-  @override
-  String? get kasaAdi;
-  @override
-  String? get belgeNo;
+  String? get netheskodu;
   @override
   DateTime? get tarih;
   @override
-  String? get tip;
+  int? get harturu;
   @override
-  String? get tipAciklama;
-  @override
-  String? get hedefAciklama;
+  String? get ba;
   @override
   double? get tutar;
   @override
-  String? get cariMuh;
-  @override
-  String? get gc;
-  @override
-  String? get kod;
-  @override
-  String? get cariKodu;
-  @override
-  String? get cariAdi;
-  @override
-  String? get hesapAdi;
-  @override
-  double? get dovizTutari;
-  @override
-  double? get dovizKuru;
-  @override
-  String? get plasiyerKodu;
-  @override
-  String? get plasiyerAdi;
-  @override
-  String? get projeKodu;
-  @override
-  String? get projeAdi;
+  String? get belgeno;
   @override
   String? get aciklama;
   @override
-  String? get refkey;
+  String? get entegrefkey;
   @override
-  DateTime? get kasaDevirTarihi;
+  int? get dovizTipi;
   @override
-  double? get kasaDevirTutari;
+  double? get dovizTutari;
   @override
-  double? get kasaDovizDevirTutari;
+  int? get hareketTipi;
   @override
-  int? get kasaDovizTipi;
+  String? get hesapAdi;
+  @override
+  String? get hareketAciklama;
+  @override
+  String? get bankaKodu;
+  @override
+  String? get bankaAdi;
+  @override
+  String? get bankasubeKodu;
+  @override
+  String? get subeAdi;
   @override
   @JsonKey(ignore: true)
   _$$_BankaIslemleriModelCopyWith<_$_BankaIslemleriModel> get copyWith =>

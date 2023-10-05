@@ -1,12 +1,12 @@
 import "dart:convert";
 
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/model/kasa_islemleri_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/model/kasa_islemleri_request_model.dart";
-import "package:picker/view/main_page/model/param_model.dart";
+import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
+import "../model/kasa_islemleri_model.dart";
+import "../model/kasa_islemleri_request_model.dart";
+import "../../../../../model/param_model.dart";
 
 part "kasa_islemleri_view_model.g.dart";
 

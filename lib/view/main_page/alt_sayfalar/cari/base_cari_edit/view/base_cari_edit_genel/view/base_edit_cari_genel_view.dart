@@ -3,7 +3,7 @@ import "dart:developer";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/view/main_page/model/param_model.dart";
+import "../../../../../../model/param_model.dart";
 
 import "../../../../../../../../core/base/model/base_bottom_sheet_response_model.dart";
 import "../../../../../../../../core/base/model/base_edit_model.dart";

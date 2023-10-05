@@ -9,6 +9,32 @@ part of 'banka_islemleri_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
+  Computed<double>? _$gelenTutarComputed;
+
+  @override
+  double get gelenTutar =>
+      (_$gelenTutarComputed ??= Computed<double>(() => super.gelenTutar,
+              name: '_BankaIslemleriViewModelBase.gelenTutar'))
+          .value;
+  Computed<double>? _$gidenTutarComputed;
+
+  @override
+  double get gidenTutar =>
+      (_$gidenTutarComputed ??= Computed<double>(() => super.gidenTutar,
+              name: '_BankaIslemleriViewModelBase.gidenTutar'))
+          .value;
+  Computed<ObservableList<BankaIslemleriModel>?>?
+      _$getBankaIslemleriListesiComputed;
+
+  @override
+  ObservableList<BankaIslemleriModel>? get getBankaIslemleriListesi =>
+      (_$getBankaIslemleriListesiComputed ??=
+              Computed<ObservableList<BankaIslemleriModel>?>(
+                  () => super.getBankaIslemleriListesi,
+                  name:
+                      '_BankaIslemleriViewModelBase.getBankaIslemleriListesi'))
+          .value;
+
   late final _$bankaIslemleriRequestModelAtom = Atom(
       name: '_BankaIslemleriViewModelBase.bankaIslemleriRequestModel',
       context: context);
@@ -27,39 +53,6 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
     });
   }
 
-  late final _$hesapTipiGroupValueAtom = Atom(
-      name: '_BankaIslemleriViewModelBase.hesapTipiGroupValue',
-      context: context);
-
-  @override
-  String? get hesapTipiGroupValue {
-    _$hesapTipiGroupValueAtom.reportRead();
-    return super.hesapTipiGroupValue;
-  }
-
-  @override
-  set hesapTipiGroupValue(String? value) {
-    _$hesapTipiGroupValueAtom.reportWrite(value, super.hesapTipiGroupValue, () {
-      super.hesapTipiGroupValue = value;
-    });
-  }
-
-  late final _$paramDataAtom =
-      Atom(name: '_BankaIslemleriViewModelBase.paramData', context: context);
-
-  @override
-  ObservableMap<String, dynamic>? get paramData {
-    _$paramDataAtom.reportRead();
-    return super.paramData;
-  }
-
-  @override
-  set paramData(ObservableMap<String, dynamic>? value) {
-    _$paramDataAtom.reportWrite(value, super.paramData, () {
-      super.paramData = value;
-    });
-  }
-
   late final _$isScrollDownAtom =
       Atom(name: '_BankaIslemleriViewModelBase.isScrollDown', context: context);
 
@@ -73,22 +66,6 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
   set isScrollDown(bool value) {
     _$isScrollDownAtom.reportWrite(value, super.isScrollDown, () {
       super.isScrollDown = value;
-    });
-  }
-
-  late final _$dahaVarMiAtom =
-      Atom(name: '_BankaIslemleriViewModelBase.dahaVarMi', context: context);
-
-  @override
-  bool get dahaVarMi {
-    _$dahaVarMiAtom.reportRead();
-    return super.dahaVarMi;
-  }
-
-  @override
-  set dahaVarMi(bool value) {
-    _$dahaVarMiAtom.reportWrite(value, super.dahaVarMi, () {
-      super.dahaVarMi = value;
     });
   }
 
@@ -162,17 +139,6 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
       ActionController(name: '_BankaIslemleriViewModelBase', context: context);
 
   @override
-  void setDahaVarMi(bool value) {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
-        .startAction(name: '_BankaIslemleriViewModelBase.setDahaVarMi');
-    try {
-      return super.setDahaVarMi(value);
-    } finally {
-      _$_BankaIslemleriViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void setIsScrollDown(bool value) {
     final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
         .startAction(name: '_BankaIslemleriViewModelBase.setIsScrollDown');
@@ -200,28 +166,6 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
         .startAction(name: '_BankaIslemleriViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
-    } finally {
-      _$_BankaIslemleriViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void incrementSayfa() {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
-        .startAction(name: '_BankaIslemleriViewModelBase.incrementSayfa');
-    try {
-      return super.incrementSayfa();
-    } finally {
-      _$_BankaIslemleriViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void resetSayfa() {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
-        .startAction(name: '_BankaIslemleriViewModelBase.resetSayfa');
-    try {
-      return super.resetSayfa();
     } finally {
       _$_BankaIslemleriViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -274,50 +218,6 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
   }
 
   @override
-  void setHesapTipi(String? value) {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
-        .startAction(name: '_BankaIslemleriViewModelBase.setHesapTipi');
-    try {
-      return super.setHesapTipi(value);
-    } finally {
-      _$_BankaIslemleriViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setKasaKodu(KasaList? value) {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
-        .startAction(name: '_BankaIslemleriViewModelBase.setKasaKodu');
-    try {
-      return super.setKasaKodu(value);
-    } finally {
-      _$_BankaIslemleriViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setCariKodu(CariListesiModel? value) {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
-        .startAction(name: '_BankaIslemleriViewModelBase.setCariKodu');
-    try {
-      return super.setCariKodu(value);
-    } finally {
-      _$_BankaIslemleriViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setPlasiyerKodu(PlasiyerList? value) {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
-        .startAction(name: '_BankaIslemleriViewModelBase.setPlasiyerKodu');
-    try {
-      return super.setPlasiyerKodu(value);
-    } finally {
-      _$_BankaIslemleriViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void clearFilters() {
     final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
         .startAction(name: '_BankaIslemleriViewModelBase.clearFilters');
@@ -332,13 +232,13 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
   String toString() {
     return '''
 bankaIslemleriRequestModel: ${bankaIslemleriRequestModel},
-hesapTipiGroupValue: ${hesapTipiGroupValue},
-paramData: ${paramData},
 isScrollDown: ${isScrollDown},
-dahaVarMi: ${dahaVarMi},
 searchBar: ${searchBar},
 bankaIslemleriListesi: ${bankaIslemleriListesi},
-searchText: ${searchText}
+searchText: ${searchText},
+gelenTutar: ${gelenTutar},
+gidenTutar: ${gidenTutar},
+getBankaIslemleriListesi: ${getBankaIslemleriListesi}
     ''';
   }
 }

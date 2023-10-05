@@ -3,7 +3,7 @@ import "dart:convert";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
+import "../../../../../../../../core/constants/ondalik_utils.dart";
 
 import "../../../../../../../../core/base/model/base_empty_model.dart";
 import "../../../../../../../../core/base/state/base_state.dart";

@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "../../constants/ui_helper/ui_helper.dart";
 
 import "../../base/state/base_state.dart";
 import "../../constants/extensions/list_extensions.dart";

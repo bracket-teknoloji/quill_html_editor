@@ -1,6 +1,6 @@
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
+import "../../../core/base/model/base_network_mixin.dart";
 
 part "param_model.g.dart";
 

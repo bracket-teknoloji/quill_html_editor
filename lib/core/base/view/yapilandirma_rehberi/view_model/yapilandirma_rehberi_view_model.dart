@@ -2,7 +2,7 @@ import "dart:ui";
 
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view/yapilandirma_rehberi/model/yapilandirma_rehberi_model.dart";
+import "../model/yapilandirma_rehberi_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "../../../../init/network/login/api_urls.dart";

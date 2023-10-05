@@ -1,8 +1,8 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/print_model.dart";
-import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
-import "package:picker/core/init/cache/cache_manager.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+import "../../../../../../core/base/model/print_model.dart";
+import "../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
+import "../../../../../../core/init/cache/cache_manager.dart";
+import "../../stok_liste/model/stok_listesi_model.dart";
 
 part "stok_yazdir_view_model.g.dart";
 

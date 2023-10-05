@@ -12,12 +12,8 @@ _$_BankaIslemleriRequestModel _$$_BankaIslemleriRequestModelFromJson(
       baslamaTarihi: json['BaslamaTarihi'] as String?,
       bitisTarihi: json['BitisTarihi'] as String?,
       menuKodu: json['MenuKodu'] as String?,
-      sayfa: json['Sayfa'] as int?,
-      plasiyerKodu: json['PlasiyerKodu'] as String?,
       hesapTipi: json['HesapTipi'] as String?,
       hesapKodu: json['HesapKodu'] as String?,
-      kasaKodu: json['KasaKodu'] as String?,
-      gc: json['Gc'] as String?,
     );
 
 Map<String, dynamic> _$$_BankaIslemleriRequestModelToJson(
@@ -33,11 +29,7 @@ Map<String, dynamic> _$$_BankaIslemleriRequestModelToJson(
   writeNotNull('BaslamaTarihi', instance.baslamaTarihi);
   writeNotNull('BitisTarihi', instance.bitisTarihi);
   writeNotNull('MenuKodu', instance.menuKodu);
-  writeNotNull('Sayfa', instance.sayfa);
-  writeNotNull('PlasiyerKodu', instance.plasiyerKodu);
   writeNotNull('HesapTipi', instance.hesapTipi);
   writeNotNull('HesapKodu', instance.hesapKodu);
-  writeNotNull('KasaKodu', instance.kasaKodu);
-  writeNotNull('Gc', instance.gc);
   return val;
 }

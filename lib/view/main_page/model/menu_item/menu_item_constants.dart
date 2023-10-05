@@ -1,7 +1,7 @@
 import "package:collection/collection.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "../../../../core/constants/extensions/widget_extensions.dart";
 
 import "../../../../core/constants/enum/serbest_rapor_detay_kod_enum.dart";
 import "../../../../core/constants/enum/siparis_tipi_enum.dart";

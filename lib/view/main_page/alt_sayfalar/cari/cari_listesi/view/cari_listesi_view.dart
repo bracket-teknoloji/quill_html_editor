@@ -7,9 +7,9 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/components/badge/colorful_badge.dart";
-import "package:picker/core/constants/enum/badge_color_enum.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "../../../../../../core/components/badge/colorful_badge.dart";
+import "../../../../../../core/constants/enum/badge_color_enum.dart";
+import "../../../../../../core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";

@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 
 import "../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";

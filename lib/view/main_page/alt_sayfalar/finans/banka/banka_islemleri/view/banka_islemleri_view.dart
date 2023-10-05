@@ -3,24 +3,20 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/base/state/base_state.dart";
+import "../../../../../../../core/base/state/base_state.dart";
 import "package:picker/core/components/bottom_bar/bottom_bar.dart";
 import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
 import "package:picker/core/components/card/banka_islemleri_card.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
-import "package:picker/core/components/slide_controller/view/slide_controller_view.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_islemleri/model/banka_islemleri_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_islemleri/view_model/banka_islemleri_view_model.dart";
-import "package:picker/view/main_page/model/param_model.dart";
 
 class BankaIslemleriView extends StatefulWidget {
   const BankaIslemleriView({super.key});
@@ -32,20 +28,18 @@ class BankaIslemleriView extends StatefulWidget {
 class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
   BankaIslemleriViewModel viewModel = BankaIslemleriViewModel();
   late final ScrollController _scrollController;
+  late final TextEditingController hesapController;
+  late final TextEditingController hesapTipiController;
   late final TextEditingController baslangicTarihiController;
   late final TextEditingController bitisTarihiController;
-  late final TextEditingController kasaController;
-  late final TextEditingController cariController;
-  late final TextEditingController plasiyerController;
 
   @override
   void initState() {
     _scrollController = ScrollController();
+    hesapController = TextEditingController();
+    hesapTipiController = TextEditingController();
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
-    kasaController = TextEditingController();
-    cariController = TextEditingController();
-    plasiyerController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getData();
       _scrollController.addListener(() async {
@@ -55,13 +49,20 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
         if (_scrollController.position.userScrollDirection == ScrollDirection.forward) {
           viewModel.setIsScrollDown(true);
         }
-        if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent && viewModel.dahaVarMi) {
-          await viewModel.getData();
+        if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
           viewModel.setIsScrollDown(true);
         }
       });
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    hesapController.dispose();
+    hesapTipiController.dispose();
+    super.dispose();
   }
 
   @override
@@ -130,18 +131,14 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
                             primary: false,
                             controller: _scrollController,
                             shrinkWrap: true,
-                            itemCount: viewModel.getBankaIslemleriListesi != null ? ((viewModel.getBankaIslemleriListesi?.length ?? 0) + (viewModel.dahaVarMi ? 1 : 0)) : 0,
+                            itemCount: viewModel.getBankaIslemleriListesi?.length ?? 0,
                             itemBuilder: (context, index) {
-                              if (index == (viewModel.getBankaIslemleriListesi?.length ?? 0)) {
-                                return const Center(child: CircularProgressIndicator.adaptive());
-                              } else {
-                                BankaIslemleriModel? item = viewModel.getBankaIslemleriListesi?[index];
-                                return BankaIslemleriCard(
-                                    bankaIslemleriModel: item,
-                                    onDeleted: (deneme) {
-                                      viewModel.resetPage();
-                                    });
-                              }
+                              BankaIslemleriModel? item = viewModel.getBankaIslemleriListesi?[index];
+                              return BankaIslemleriCard(
+                                  bankaIslemleriModel: item,
+                                  onDeleted: (deneme) {
+                                    viewModel.resetPage();
+                                  });
                             },
                           );
               }),
@@ -155,14 +152,11 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
       return BottomBarWidget(isScrolledDown: viewModel.isScrollDown, children: [
         FooterButton(children: [
           const Text("Gelir"),
-          Observer(
-              builder: (_) =>
-                  Text("${(viewModel.paramData?["TOPLAM_GELIR"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.green)))
+          Observer(builder: (_) => Text("${viewModel.gelenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.green)))
         ]),
         FooterButton(children: [
           const Text("Gider"),
-          Observer(
-              builder: (_) => Text("${(viewModel.paramData?["TOPLAM_GIDER"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red)))
+          Observer(builder: (_) => Text("${viewModel.gidenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red)))
         ]),
       ]);
     });
@@ -173,68 +167,29 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
         title: "Filtrele",
         body: Column(
           children: [
-            Observer(builder: (_) {
-              return SlideControllerWidget(
-                  childrenTitleList: viewModel.hesapTipiMap.keys.toList(),
-                  filterOnChanged: (index) {
-                    viewModel.setHesapTipi(viewModel.hesapTipiMap.values.toList()[index ?? 0]);
-                  },
-                  childrenValueList: viewModel.hesapTipiMap.values.toList(),
-                  groupValue: viewModel.hesapTipiGroupValue);
-            }),
             CustomTextField(
-              labelText: "Kasa",
-              controller: kasaController,
+              labelText: "Hesap",
+              controller: hesapController,
               readOnly: true,
               suffixMore: true,
-              valueWidget: Observer(builder: (_) => Text(viewModel.bankaIslemleriRequestModel.kasaKodu ?? "")),
               onTap: () async {
-                List<KasaList>? kasaList = parametreModel.kasaList;
-                var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                    title: "Kasa Seçiniz", children: List.generate(kasaList?.length ?? 0, (index) => BottomSheetModel(title: kasaList?[index].kasaTanimi ?? "", value: kasaList?[index])));
-                if (result is KasaList) {
-                  viewModel.setKasaKodu(result);
-                  kasaController.text = result.kasaTanimi ?? "";
+                var result = await Get.toNamed("/mainPage/kasaListesi", arguments: true);
+                if (result != null) {
+                  hesapController.text = result.kasaAdi ?? "";
+                  // viewModel.changeKasaKodu(result.kasaKodu ?? "");
                 }
               },
             ),
             CustomTextField(
-              labelText: "Cari",
-              controller: cariController,
+              labelText: "Hesap Tipi",
+              controller: hesapTipiController,
               readOnly: true,
               suffixMore: true,
-              valueWidget: Observer(builder: (_) => Text(viewModel.bankaIslemleriRequestModel.hesapKodu ?? "")),
-              suffix: IconButton(
-                  onPressed: () {
-                    if (viewModel.bankaIslemleriRequestModel.hesapKodu != null) {
-                      dialogManager.showCariGridViewDialog(CariListesiModel(cariKodu: viewModel.bankaIslemleriRequestModel.hesapKodu));
-                    } else {
-                      dialogManager.showInfoDialog("Cari kodu boş olduğu için bu işlem gerçekleştirilemiyor.");
-                    }
-                  },
-                  icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor)),
               onTap: () async {
                 var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                if (result is CariListesiModel) {
-                  viewModel.setCariKodu(result);
-                  cariController.text = result.cariAdi ?? "";
-                }
-              },
-            ),
-            CustomTextField(
-              labelText: "Plasiyer",
-              controller: plasiyerController,
-              readOnly: true,
-              suffixMore: true,
-              valueWidget: Observer(builder: (_) => Text(viewModel.bankaIslemleriRequestModel.plasiyerKodu ?? "")),
-              onTap: () async {
-                List<PlasiyerList>? plasiyerList = parametreModel.plasiyerList;
-                var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                    title: "Plasiyer Seçiniz",
-                    children: List.generate(plasiyerList?.length ?? 0, (index) => BottomSheetModel(title: plasiyerList?[index].plasiyerAciklama ?? "", value: plasiyerList?[index])));
-                if (result is PlasiyerList) {
-                  viewModel.setPlasiyerKodu(result);
-                  plasiyerController.text = result.plasiyerAciklama ?? "";
+                if (result != null) {
+                  hesapTipiController.text = result.cariAdi ?? "";
+                  // viewModel.changeCariKodu(result.cariKodu ?? "");
                 }
               },
             ),

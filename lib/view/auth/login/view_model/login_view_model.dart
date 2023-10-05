@@ -1,6 +1,6 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/init/network/network_manager.dart";
-import "package:picker/view/add_company/model/account_model.dart";
+import "../../../../core/init/network/network_manager.dart";
+import "../../../add_company/model/account_model.dart";
 
 part "login_view_model.g.dart";
 

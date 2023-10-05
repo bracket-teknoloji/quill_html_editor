@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
 
 import "../view_model/kasa_dekontlar_view_model.dart";
 

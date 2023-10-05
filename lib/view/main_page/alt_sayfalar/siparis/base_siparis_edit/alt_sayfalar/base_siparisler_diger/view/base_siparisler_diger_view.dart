@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "package:quill_html_editor/quill_html_editor.dart";
 
 import "../../../../../../../../core/base/model/base_edit_model.dart";

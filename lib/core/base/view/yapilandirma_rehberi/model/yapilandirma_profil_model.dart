@@ -1,6 +1,6 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/view/yapilandirma_rehberi/model/yapilandirma_rehberi_model.dart";
+import "../../../model/base_network_mixin.dart";
+import "yapilandirma_rehberi_model.dart";
 
 part "yapilandirma_profil_model.freezed.dart";
 part "yapilandirma_profil_model.g.dart";

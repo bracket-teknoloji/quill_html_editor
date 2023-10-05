@@ -10,12 +10,8 @@ class BankaIslemleriRequestModel with _$BankaIslemleriRequestModel {
     String? baslamaTarihi,
     String? bitisTarihi,
     String? menuKodu,
-    int? sayfa,
-    String? plasiyerKodu,
     String? hesapTipi,
     String? hesapKodu,
-    String? kasaKodu,
-    String? gc,
   }) = _BankaIslemleriRequestModel;
 
   factory BankaIslemleriRequestModel.fromJson(Map<String, dynamic> json) => _$BankaIslemleriRequestModelFromJson(json);

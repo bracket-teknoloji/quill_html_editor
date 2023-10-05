@@ -1,5 +1,5 @@
 import "package:mobx/mobx.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_network_manager.dart";
+import "../../../../../view/main_page/alt_sayfalar/cari/cari_network_manager.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_sehirler_model.dart";

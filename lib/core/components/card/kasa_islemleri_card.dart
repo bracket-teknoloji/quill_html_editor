@@ -1,11 +1,11 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/badge/colorful_badge.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/constants/enum/badge_color_enum.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/list_extensions.dart";
+import "../../base/state/base_state.dart";
+import "../badge/colorful_badge.dart";
+import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../constants/enum/badge_color_enum.dart";
+import "../../constants/extensions/date_time_extensions.dart";
+import "../../constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";

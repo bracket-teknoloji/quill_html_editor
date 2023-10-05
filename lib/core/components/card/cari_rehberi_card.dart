@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
+import "../../constants/extensions/number_extensions.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../base/state/base_state.dart";

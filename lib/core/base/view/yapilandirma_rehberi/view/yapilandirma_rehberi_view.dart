@@ -3,9 +3,9 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_staggered_animations/flutter_staggered_animations.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/base/view/yapilandirma_rehberi/view_model/yapilandirma_rehberi_view_model.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "../view_model/yapilandirma_rehberi_view_model.dart";
+import "../../../../components/wrap/appbar_title.dart";
+import "../../../../constants/ui_helper/ui_helper.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "../../../state/base_state.dart";

@@ -2,9 +2,9 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_widget_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../../siparisler/model/siparisler_widget_model.dart";
+import "../../../../stok/stok_liste/model/stok_listesi_model.dart";
 
 import "../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";

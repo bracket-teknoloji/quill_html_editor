@@ -27,18 +27,10 @@ mixin _$BankaIslemleriRequestModel {
   set bitisTarihi(String? value) => throw _privateConstructorUsedError;
   String? get menuKodu => throw _privateConstructorUsedError;
   set menuKodu(String? value) => throw _privateConstructorUsedError;
-  int? get sayfa => throw _privateConstructorUsedError;
-  set sayfa(int? value) => throw _privateConstructorUsedError;
-  String? get plasiyerKodu => throw _privateConstructorUsedError;
-  set plasiyerKodu(String? value) => throw _privateConstructorUsedError;
   String? get hesapTipi => throw _privateConstructorUsedError;
   set hesapTipi(String? value) => throw _privateConstructorUsedError;
   String? get hesapKodu => throw _privateConstructorUsedError;
   set hesapKodu(String? value) => throw _privateConstructorUsedError;
-  String? get kasaKodu => throw _privateConstructorUsedError;
-  set kasaKodu(String? value) => throw _privateConstructorUsedError;
-  String? get gc => throw _privateConstructorUsedError;
-  set gc(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -57,12 +49,8 @@ abstract class $BankaIslemleriRequestModelCopyWith<$Res> {
       {String? baslamaTarihi,
       String? bitisTarihi,
       String? menuKodu,
-      int? sayfa,
-      String? plasiyerKodu,
       String? hesapTipi,
-      String? hesapKodu,
-      String? kasaKodu,
-      String? gc});
+      String? hesapKodu});
 }
 
 /// @nodoc
@@ -82,12 +70,8 @@ class _$BankaIslemleriRequestModelCopyWithImpl<$Res,
     Object? baslamaTarihi = freezed,
     Object? bitisTarihi = freezed,
     Object? menuKodu = freezed,
-    Object? sayfa = freezed,
-    Object? plasiyerKodu = freezed,
     Object? hesapTipi = freezed,
     Object? hesapKodu = freezed,
-    Object? kasaKodu = freezed,
-    Object? gc = freezed,
   }) {
     return _then(_value.copyWith(
       baslamaTarihi: freezed == baslamaTarihi
@@ -102,14 +86,6 @@ class _$BankaIslemleriRequestModelCopyWithImpl<$Res,
           ? _value.menuKodu
           : menuKodu // ignore: cast_nullable_to_non_nullable
               as String?,
-      sayfa: freezed == sayfa
-          ? _value.sayfa
-          : sayfa // ignore: cast_nullable_to_non_nullable
-              as int?,
-      plasiyerKodu: freezed == plasiyerKodu
-          ? _value.plasiyerKodu
-          : plasiyerKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
       hesapTipi: freezed == hesapTipi
           ? _value.hesapTipi
           : hesapTipi // ignore: cast_nullable_to_non_nullable
@@ -117,14 +93,6 @@ class _$BankaIslemleriRequestModelCopyWithImpl<$Res,
       hesapKodu: freezed == hesapKodu
           ? _value.hesapKodu
           : hesapKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kasaKodu: freezed == kasaKodu
-          ? _value.kasaKodu
-          : kasaKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gc: freezed == gc
-          ? _value.gc
-          : gc // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -143,12 +111,8 @@ abstract class _$$_BankaIslemleriRequestModelCopyWith<$Res>
       {String? baslamaTarihi,
       String? bitisTarihi,
       String? menuKodu,
-      int? sayfa,
-      String? plasiyerKodu,
       String? hesapTipi,
-      String? hesapKodu,
-      String? kasaKodu,
-      String? gc});
+      String? hesapKodu});
 }
 
 /// @nodoc
@@ -167,12 +131,8 @@ class __$$_BankaIslemleriRequestModelCopyWithImpl<$Res>
     Object? baslamaTarihi = freezed,
     Object? bitisTarihi = freezed,
     Object? menuKodu = freezed,
-    Object? sayfa = freezed,
-    Object? plasiyerKodu = freezed,
     Object? hesapTipi = freezed,
     Object? hesapKodu = freezed,
-    Object? kasaKodu = freezed,
-    Object? gc = freezed,
   }) {
     return _then(_$_BankaIslemleriRequestModel(
       baslamaTarihi: freezed == baslamaTarihi
@@ -187,14 +147,6 @@ class __$$_BankaIslemleriRequestModelCopyWithImpl<$Res>
           ? _value.menuKodu
           : menuKodu // ignore: cast_nullable_to_non_nullable
               as String?,
-      sayfa: freezed == sayfa
-          ? _value.sayfa
-          : sayfa // ignore: cast_nullable_to_non_nullable
-              as int?,
-      plasiyerKodu: freezed == plasiyerKodu
-          ? _value.plasiyerKodu
-          : plasiyerKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
       hesapTipi: freezed == hesapTipi
           ? _value.hesapTipi
           : hesapTipi // ignore: cast_nullable_to_non_nullable
@@ -202,14 +154,6 @@ class __$$_BankaIslemleriRequestModelCopyWithImpl<$Res>
       hesapKodu: freezed == hesapKodu
           ? _value.hesapKodu
           : hesapKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kasaKodu: freezed == kasaKodu
-          ? _value.kasaKodu
-          : kasaKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gc: freezed == gc
-          ? _value.gc
-          : gc // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -223,12 +167,8 @@ class _$_BankaIslemleriRequestModel implements _BankaIslemleriRequestModel {
       {this.baslamaTarihi,
       this.bitisTarihi,
       this.menuKodu,
-      this.sayfa,
-      this.plasiyerKodu,
       this.hesapTipi,
-      this.hesapKodu,
-      this.kasaKodu,
-      this.gc});
+      this.hesapKodu});
 
   factory _$_BankaIslemleriRequestModel.fromJson(Map<String, dynamic> json) =>
       _$$_BankaIslemleriRequestModelFromJson(json);
@@ -240,21 +180,13 @@ class _$_BankaIslemleriRequestModel implements _BankaIslemleriRequestModel {
   @override
   String? menuKodu;
   @override
-  int? sayfa;
-  @override
-  String? plasiyerKodu;
-  @override
   String? hesapTipi;
   @override
   String? hesapKodu;
-  @override
-  String? kasaKodu;
-  @override
-  String? gc;
 
   @override
   String toString() {
-    return 'BankaIslemleriRequestModel(baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, menuKodu: $menuKodu, sayfa: $sayfa, plasiyerKodu: $plasiyerKodu, hesapTipi: $hesapTipi, hesapKodu: $hesapKodu, kasaKodu: $kasaKodu, gc: $gc)';
+    return 'BankaIslemleriRequestModel(baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, menuKodu: $menuKodu, hesapTipi: $hesapTipi, hesapKodu: $hesapKodu)';
   }
 
   @JsonKey(ignore: true)
@@ -278,12 +210,8 @@ abstract class _BankaIslemleriRequestModel
       {String? baslamaTarihi,
       String? bitisTarihi,
       String? menuKodu,
-      int? sayfa,
-      String? plasiyerKodu,
       String? hesapTipi,
-      String? hesapKodu,
-      String? kasaKodu,
-      String? gc}) = _$_BankaIslemleriRequestModel;
+      String? hesapKodu}) = _$_BankaIslemleriRequestModel;
 
   factory _BankaIslemleriRequestModel.fromJson(Map<String, dynamic> json) =
       _$_BankaIslemleriRequestModel.fromJson;
@@ -298,23 +226,11 @@ abstract class _BankaIslemleriRequestModel
   String? get menuKodu;
   set menuKodu(String? value);
   @override
-  int? get sayfa;
-  set sayfa(int? value);
-  @override
-  String? get plasiyerKodu;
-  set plasiyerKodu(String? value);
-  @override
   String? get hesapTipi;
   set hesapTipi(String? value);
   @override
   String? get hesapKodu;
   set hesapKodu(String? value);
-  @override
-  String? get kasaKodu;
-  set kasaKodu(String? value);
-  @override
-  String? get gc;
-  set gc(String? value);
   @override
   @JsonKey(ignore: true)
   _$$_BankaIslemleriRequestModelCopyWith<_$_BankaIslemleriRequestModel>

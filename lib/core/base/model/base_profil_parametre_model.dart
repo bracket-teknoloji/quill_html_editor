@@ -1,5 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/view/main_page/model/param_model.dart";
+import "../../../view/main_page/model/param_model.dart";
 
 import "base_network_mixin.dart";
 

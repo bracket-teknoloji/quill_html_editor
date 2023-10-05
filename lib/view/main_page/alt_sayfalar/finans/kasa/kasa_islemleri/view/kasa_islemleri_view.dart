@@ -65,6 +65,17 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
   }
 
   @override
+  void dispose() {
+    _scrollController.dispose();
+    baslangicTarihiController.dispose();
+    bitisTarihiController.dispose();
+    kasaController.dispose();
+    cariController.dispose();
+    plasiyerController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,

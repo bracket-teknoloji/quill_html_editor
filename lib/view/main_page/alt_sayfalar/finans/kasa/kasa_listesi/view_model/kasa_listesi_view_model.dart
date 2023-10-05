@@ -1,7 +1,7 @@
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_listesi/model/kasa_listesi_model.dart";
+import "../../../../../../../core/init/network/login/api_urls.dart";
+import "../model/kasa_listesi_model.dart";
 
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 

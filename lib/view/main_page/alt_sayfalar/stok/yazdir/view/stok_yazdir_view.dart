@@ -1,18 +1,18 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/base/view/yapilandirma_rehberi/model/yapilandirma_rehberi_model.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/core/init/cache/cache_manager.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/yazdir/view_model/stok_yazdir_view_model.dart";
-import "package:picker/view/main_page/model/param_model.dart";
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/base/view/yapilandirma_rehberi/model/yapilandirma_rehberi_model.dart";
+import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../core/init/cache/cache_manager.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
+import "../../stok_liste/model/stok_listesi_model.dart";
+import "../view_model/stok_yazdir_view_model.dart";
+import "../../../../model/param_model.dart";
 
 class StokYazdirView extends StatefulWidget {
   final StokListesiModel? model;

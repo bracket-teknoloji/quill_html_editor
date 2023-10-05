@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter_slidable/flutter_slidable.dart";
 import "package:get/get.dart";
-import "package:picker/core/components/badge/colorful_badge.dart";
-import "package:picker/core/constants/enum/badge_color_enum.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "../badge/colorful_badge.dart";
+import "../../constants/enum/badge_color_enum.dart";
+import "../../constants/extensions/widget_extensions.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 import "../../base/state/base_state.dart";

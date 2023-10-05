@@ -9,7 +9,7 @@ import "package:flutter_image_compress/flutter_image_compress.dart";
 import "package:get/get.dart";
 import "package:image_picker/image_picker.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../../../../core/base/model/base_edit_siradaki_kod_model.dart";
 import "../../../../../../../../core/base/model/base_grup_kodu_model.dart";
