@@ -172,11 +172,13 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                     aciklamaController.text = viewModel.aciklamaString;
                     if (result.dovizli == "E" && result.dovizTipi != 0) {
                       dovizTipiController.text = result.dovizAdi ?? " ";
-                    } else {
-                      dovizTipiController.text = "";
-                    }
-                    if (result.dovizli == "E") {
                       await getDovizDialog();
+                    } else {
+                      viewModel.setDovizTutari(null);
+                      viewModel.setDovizTipi(null);
+                      dovizTipiController.text = "";
+                      dovizKuruController.text = "";
+                      dovizTutariController.text = "";
                     }
                   }
                 },
@@ -234,8 +236,10 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                   isFormattedString: true,
                   onChanged: (value) {
                     viewModel.setTutar(value.toDoubleWithFormattedString);
-                    viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / dovizKuruController.text.toDoubleWithFormattedString);
-                    dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                    if (viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null) {
+                      viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / dovizKuruController.text.toDoubleWithFormattedString);
+                      dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                    }
                   },
                 )),
               ],
@@ -291,6 +295,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
   Future<void> getDovizDialog() async {
     dovizKuruController.text = "";
     dovizTutariController.text = "";
+
     await viewModel.getDovizler();
     if (viewModel.dovizKurlariListesi.ext.isNotNullOrEmpty) {
       // ignore: use_build_context_synchronously
@@ -314,6 +319,13 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
       ]);
       if (result is double) {
         dovizKuruController.text = result.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
+        if (tutarController.text != "") {
+          viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / dovizKuruController.text.toDoubleWithFormattedString);
+          dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+        } else if (dovizTutariController.text != "") {
+          viewModel.setTutar((viewModel.model.dovizTutari ?? 0) * (dovizKuruController.text.toDoubleWithFormattedString));
+          tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+        }
       }
     }
   }

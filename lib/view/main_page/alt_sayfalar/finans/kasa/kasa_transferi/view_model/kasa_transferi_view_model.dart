@@ -16,7 +16,7 @@ class KasaTransferiViewModel = _KasaTransferiViewModelBase with _$KasaTransferiV
 
 abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
   @observable
-  StokYeniKayitModel model = StokYeniKayitModel(tahsilatmi: true, yeniKayit: true,gc: "C", tag: "TahsilatModel", pickerBelgeTuru: "KAT", hesapTipi: "T");
+  StokYeniKayitModel model = StokYeniKayitModel(tahsilatmi: true, yeniKayit: true, gc: "C", tag: "TahsilatModel", pickerBelgeTuru: "KAT", hesapTipi: "T");
 
   @observable
   KasaList? girisKasa;
@@ -35,12 +35,14 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
     var uuid = const Uuid();
     return model.copyWith(guid: uuid.v4());
   }
+
   @action
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
     if (value != null) {
       dovizKurlariListesi = value.asObservable();
     }
   }
+
   @action
   void setBelgeNo(String? value) => model = model.copyWith(belgeNo: value);
 
@@ -49,9 +51,10 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> setGirisKasa(KasaList value) async {
-    girisKasa = value;
     if (value.dovizli == "E") {
       girisKasa = await getKasalar(value.kasaKodu);
+    } else {
+      girisKasa = value;
     }
     model = model.copyWith(hesapKodu: value.kasaKodu, dovizTipi: value.dovizTipi);
   }
@@ -97,14 +100,17 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
     }
     return null;
   }
+
   @action
   Future<void> getDovizler() async {
-    var result = await networkManager.dioGet<DovizKurlariModel>(path: ApiUrls.getDovizKurlari, bodyModel: DovizKurlariModel(), showLoading: true, queryParameters: {"EkranTipi": "D", "DovizKodu": model.dovizTipi, "tarih": model.tarih.toDateString});
+    var result = await networkManager.dioGet<DovizKurlariModel>(
+        path: ApiUrls.getDovizKurlari, bodyModel: DovizKurlariModel(), showLoading: true, queryParameters: {"EkranTipi": "D", "DovizKodu": model.dovizTipi, "tarih": model.tarih.toDateString});
     if (result.data is List) {
       setDovizKurlariListesi(result.data.cast<DovizKurlariModel>());
     }
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() async => await networkManager.dioPost<DovizKurlariModel>(path: ApiUrls.saveTahsilat, bodyModel: DovizKurlariModel(), showLoading: true, data: getStokYeniKayitModel.toJson());
+  Future<GenericResponseModel<NetworkManagerMixin>> postData() async =>
+      await networkManager.dioPost<DovizKurlariModel>(path: ApiUrls.saveTahsilat, bodyModel: DovizKurlariModel(), showLoading: true, data: getStokYeniKayitModel.toJson());
 }
