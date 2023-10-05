@@ -1,14 +1,15 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+
+import "../../../view/main_page/alt_sayfalar/finans/banka/banka_islemleri/model/banka_islemleri_model.dart";
 import "../../base/state/base_state.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_islemleri/model/banka_islemleri_model.dart";
+import "../../constants/extensions/date_time_extensions.dart";
+import "../../constants/extensions/number_extensions.dart";
+import "../../constants/extensions/widget_extensions.dart";
+import "../../constants/ondalik_utils.dart";
+import "../../constants/ui_helper/ui_helper.dart";
+import "../../init/network/login/api_urls.dart";
+import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 class BankaIslemleriCard extends StatefulWidget {
   final BankaIslemleriModel? bankaIslemleriModel;
@@ -25,7 +26,7 @@ class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
-        await bottomSheetDialogManager.showBottomSheetDialog(context, title: model?.aciklama ?? model?.bankaAdi ?? "", children: [
+        await bottomSheetDialogManager.showBottomSheetDialog(context, title: model?.hesapAdi ?? "", children: [
           BottomSheetModel(title: "Sil", onTap: deleteData, iconWidget: Icons.delete_outline_outlined),
         ]);
       },
@@ -75,13 +76,11 @@ class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
 
   void deleteData() async {
     Get.back();
-    var result =
-        await networkManager.dioPost<BankaIslemleriModel>(path: ApiUrls.deleteKasaHareket, bodyModel: BankaIslemleriModel(), queryParameters: {"INCKEYNO": model?.inckeyno}, showLoading: true);
-    if (result.success == true) {
-      widget.onDeleted?.call(model?.inckeyno);
-      dialogManager.showSuccessSnackBar(result.message ?? "");
-    } else {
-      dialogManager.showErrorSnackBar(result.message ?? "");
-    }
+    dialogManager.showAreYouSureDialog(() async {
+      var result = await networkManager.dioPost<BankaIslemleriModel>(path: ApiUrls.deleteBankaHareket, bodyModel: BankaIslemleriModel(), data: {"INCKEYNO": model?.inckeyno}, showLoading: true);
+      if (result.success == true) {
+        widget.onDeleted?.call(model?.inckeyno);
+      }
+    }, title: "Bu kaydı sildiğinizde cari, kasa, banka, dekont gibi bağlantılı işlemler silinebilir. Onaylıyor musunuz?");
   }
 }

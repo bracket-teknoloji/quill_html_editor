@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
@@ -34,12 +35,8 @@ abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
   double get gidenTutar => bankaIslemleriListesi?.where((element) => element.ba == "A").map((e) => e.tutar ?? 0).fold(0, (previousValue, element) => (previousValue ?? 0) + element) ?? 0;
 
   @computed
-  ObservableList<BankaIslemleriModel>? get getBankaIslemleriListesi => (searchText != null && searchText != "") 
-      ? bankaIslemleriListesi
-          ?.where((element) =>
-              (element.aciklama?.contains(searchText ?? "") ?? false) || (element.bankaAdi?.contains(searchText ?? "") ?? false) || (element.hesapAdi?.contains(searchText ?? "") ?? false))
-          .toList()
-          .asObservable()
+  ObservableList<BankaIslemleriModel>? get getBankaIslemleriListesi => (searchText != null && searchText != "")
+      ? bankaIslemleriListesi?.where((element) => element.belgeno != null && element.belgeno!.toLowerCase().contains(searchText!.toLowerCase())).toList().asObservable()
       : bankaIslemleriListesi;
 
   //* Actions

@@ -1,10 +1,10 @@
 import "package:collection/collection.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
-import "../../../../core/constants/extensions/widget_extensions.dart";
 
 import "../../../../core/constants/enum/serbest_rapor_detay_kod_enum.dart";
 import "../../../../core/constants/enum/siparis_tipi_enum.dart";
+import "../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../core/constants/grid_constants.dart";
 import "../../../../core/init/cache/cache_manager.dart";
 import "../grid_item_model.dart";
@@ -57,7 +57,7 @@ class MenuItemConstants {
     //*
     GridItemModel.anamenu(name: "YONE", title: "Finans", icon: "wallet", color: GridThemeManager.finans, altMenuler: [
       GridItemModel.altmenu(name: "yonetici_Banka_Banka_Litesi", title: "Banka", iconData: Icons.account_balance_outlined, altMenuler: [
-        GridItemModel.item(name: "yonetici_Banka_Banka_Litesi", title: "Banka Listesi", route: "/mainPage/bankaListesi"),
+        GridItemModel.item(name: "yonetici_Banka_Banka_Litesi", title: "Banka Listesi"),
         GridItemModel.item(name: "yonetici_Banka_Islemleri", title: "İşlemler", route: "/mainPage/bankaIslemleri"),
       ]),
       GridItemModel.altmenu(name: "finans_Kasa_Listesi", title: "Kasa", iconData: Icons.point_of_sale_outlined, altMenuler: [
@@ -83,7 +83,7 @@ class MenuItemConstants {
       ]),
       GridItemModel.item(name: "Banka", title: "Tahsilat & Ödeme Kayıtları"),
       GridItemModel.item(name: null, title: "Hızlı Tahsilat Kayıtları"),
-      GridItemModel.altmenu(name:null, title: "Hızlı İşlemler", iconData: Icons.tune_outlined, altMenuler: [
+      GridItemModel.altmenu(name: null, title: "Hızlı İşlemler", iconData: Icons.tune_outlined, altMenuler: [
         GridItemModel.item(name: "finans_KKartiTahsilati", title: "Kredi Kartı Tahsilatı"),
         GridItemModel.item(name: "finans_Kasa_NakitTahsilat", title: "Nakit Tahsilat"),
         GridItemModel.item(name: "finans_Kasa_SenetTahsilati", title: "Senet Tahsilatı"),
