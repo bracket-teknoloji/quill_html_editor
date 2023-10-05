@@ -266,7 +266,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   Widget fab() {
     return Observer(
       builder: (_) => Visibility(
-        visible: viewModel.cariListesi?.isNotEmpty ?? false,
+        visible: viewModel.cariListesi != null,
         child: CustomFloatingActionButton(
           isScrolledDown: !viewModel.isScrolledDown,
           onPressed: () async {
@@ -450,66 +450,69 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     }
                   },
                 )),
-        ));
+        ).paddingAll(UIHelper.lowSize));
   }
 
   Widget? bottomButtonBar() {
     return Observer(
-        builder: (_) => ScrollableWidget(
-              isScrolledDown: !viewModel.isScrolledDown,
-              child: SizedBox(
-                height: context.isPortrait ? (height * 0.07) : (height * 0.1 < 60 ? 60 : height * 0.1),
-                child: paramData.keys.isNotEmpty
-                    ? Row(
-                        children: [
-                          Expanded(
-                              child: FooterButton(
-                                  children: [
-                                const Text("Tahsil Edilecek"),
-                                Text(
-                                  "${double.tryParse(paramData["TAHSIL_EDILECEK"].replaceAll(",", "."))?.toInt().commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                                  style: const TextStyle(color: Colors.green),
-                                ),
-                              ],
-                                  onPressed: () async {
-                                    viewModel.changeArama("");
-                                    viewModel.resetSayfa();
-                                    viewModel.changeCariListesi(null);
-                                    var result = await getData(sayfa: 1, filterBakiye: "T");
-                                    if (result is List) {
-                                      viewModel.changeCariListesi(result);
-                                      if ((result.length) < parametreModel.sabitSayfalamaOgeSayisi) {
-                                        viewModel.changeDahaVarMi(false);
-                                      } else {
-                                        viewModel.changeDahaVarMi(true);
+        builder: (_) => Visibility(
+              visible: viewModel.cariListesi != null,
+              child: ScrollableWidget(
+                isScrolledDown: !viewModel.isScrolledDown,
+                child: SizedBox(
+                  height: context.isPortrait ? (height * 0.07) : (height * 0.1 < 60 ? 60 : height * 0.1),
+                  child: paramData.keys.isNotEmpty
+                      ? Row(
+                          children: [
+                            Expanded(
+                                child: FooterButton(
+                                    children: [
+                                  const Text("Tahsil Edilecek"),
+                                  Text(
+                                    "${double.tryParse(paramData["TAHSIL_EDILECEK"].replaceAll(",", "."))?.toInt().commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                                    style: const TextStyle(color: Colors.green),
+                                  ),
+                                ],
+                                    onPressed: () async {
+                                      viewModel.changeArama("");
+                                      viewModel.resetSayfa();
+                                      viewModel.changeCariListesi(null);
+                                      var result = await getData(sayfa: 1, filterBakiye: "T");
+                                      if (result is List) {
+                                        viewModel.changeCariListesi(result);
+                                        if ((result.length) < parametreModel.sabitSayfalamaOgeSayisi) {
+                                          viewModel.changeDahaVarMi(false);
+                                        } else {
+                                          viewModel.changeDahaVarMi(true);
+                                        }
                                       }
-                                    }
-                                  })),
-                          const VerticalDivider(thickness: 1, width: 1),
-                          Expanded(
-                              child: FooterButton(
-                                  children: [
-                                const Text("Ödenecek"),
-                                Text("${(double.tryParse(paramData["ODENECEK"].replaceAll(",", "."))!.toInt() * -1).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                                    style: const TextStyle(color: Colors.red)),
-                              ],
-                                  onPressed: () async {
-                                    viewModel.changeArama("");
-                                    viewModel.resetSayfa();
-                                    viewModel.changeCariListesi(null);
-                                    var result = await getData(sayfa: 1, filterBakiye: "Ö");
-                                    if (result is List) {
-                                      viewModel.changeCariListesi(result);
-                                      if ((result.length) < parametreModel.sabitSayfalamaOgeSayisi) {
-                                        viewModel.changeDahaVarMi(false);
-                                      } else {
-                                        viewModel.changeDahaVarMi(true);
+                                    })),
+                            const VerticalDivider(thickness: 1, width: 1),
+                            Expanded(
+                                child: FooterButton(
+                                    children: [
+                                  const Text("Ödenecek"),
+                                  Text("${(double.tryParse(paramData["ODENECEK"].replaceAll(",", "."))!.toInt() * -1).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                                      style: const TextStyle(color: Colors.red)),
+                                ],
+                                    onPressed: () async {
+                                      viewModel.changeArama("");
+                                      viewModel.resetSayfa();
+                                      viewModel.changeCariListesi(null);
+                                      var result = await getData(sayfa: 1, filterBakiye: "Ö");
+                                      if (result is List) {
+                                        viewModel.changeCariListesi(result);
+                                        if ((result.length) < parametreModel.sabitSayfalamaOgeSayisi) {
+                                          viewModel.changeDahaVarMi(false);
+                                        } else {
+                                          viewModel.changeDahaVarMi(true);
+                                        }
                                       }
-                                    }
-                                  }))
-                        ],
-                      )
-                    : null,
+                                    }))
+                          ],
+                        )
+                      : null,
+                ),
               ),
             ));
   }

@@ -129,15 +129,16 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
               ]),
               Observer(builder: (_) {
                 return ElevatedButton(
-                    onPressed: () {
-                      if (viewModel.pdfModel.dicParams?.maliyetTipi != null) {
-                        viewModel.setFuture();
-                        Get.back();
-                      } else {
-                        dialogManager.showAlertDialog("Maliyet Tipi Seçiniz");
-                      }
-                    },
-                    child: const Text("Uygula"));
+                        onPressed: () {
+                          if (viewModel.pdfModel.dicParams?.maliyetTipi != null) {
+                            viewModel.setFuture();
+                            Get.back();
+                          } else {
+                            dialogManager.showAlertDialog("Maliyet Tipi Seçiniz");
+                          }
+                        },
+                        child: const Text("Uygula"))
+                    .paddingAll(UIHelper.lowSize);
               })
             ],
           ),

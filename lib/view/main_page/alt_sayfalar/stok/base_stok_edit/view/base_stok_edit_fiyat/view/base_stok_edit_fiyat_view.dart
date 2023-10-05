@@ -47,7 +47,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
           stokDetayModel.stokList?.first.dovAlisFiat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.dovAlisFiat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
   TextEditingController satisKdvOraniController = TextEditingController(
       text:
-          stokDetayModel.stokList?.first.satisKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.satisKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "");
+          stokDetayModel.stokList?.first.satisKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.satisKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
   TextEditingController satisFiyat1Controller = TextEditingController(
       text: stokDetayModel.stokList?.first.satisFiat1.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.satisFiat1.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
   TextEditingController satisFiyat2Controller = TextEditingController(

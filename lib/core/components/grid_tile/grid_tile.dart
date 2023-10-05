@@ -96,6 +96,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                     textAlign: TextAlign.center,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
+                    softWrap: true ,
                     style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
                   ))
                 : Column(

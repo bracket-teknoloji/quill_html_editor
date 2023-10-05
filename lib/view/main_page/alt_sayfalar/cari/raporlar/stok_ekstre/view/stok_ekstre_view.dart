@@ -54,47 +54,45 @@ class _StokEkstreViewState extends BaseState<StokEkstreView> {
     viewModel.resetFuture();
     await bottomSheetDialogManager.showBottomSheetDialog(context,
         title: "Filtrele",
-        body: Padding(
-          padding: EdgeInsets.all(UIHelper.lowSize),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              RaporFiltreDateTimeBottomSheetView(
-                filterOnChanged: filterOnChanged,
-                baslangicTarihiController: baslangicTarihiController,
-                bitisTarihiController: bitisTarihiController,
-              ),
-              CustomTextField(
-                labelText: "Cari",
-                controller: cariController,
-                isMust: true,
-                readOnly: true,
-                suffixMore: true,
-                onTap: () async {
-                  var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                  if (result != null) {
-                    cariController!.text = result.cariAdi ?? "";
-                    viewModel.changeCariKodu(result.cariKodu ?? "");
-                  }
-                },
-              ),
-              Observer(builder: (_) {
-                return ElevatedButton(
-                    onPressed: () {
-                      if (viewModel.pdfModel.dicParams?.cariKodu == null) {
-                        dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
-                      } else {
-                        viewModel.pdfModel.dicParams?.bastar = baslangicTarihiController.text != "" ? baslangicTarihiController.text : null;
-                        viewModel.pdfModel.dicParams?.bittar = bitisTarihiController.text != "" ? bitisTarihiController.text : null;
-                        viewModel.setFuture();
-                        Get.back();
-                      }
-                    },
-                    child: const Text("Uygula"));
-              })
-            ],
-          ),
-        ));
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            RaporFiltreDateTimeBottomSheetView(
+              filterOnChanged: filterOnChanged,
+              baslangicTarihiController: baslangicTarihiController,
+              bitisTarihiController: bitisTarihiController,
+            ),
+            CustomTextField(
+              labelText: "Cari",
+              controller: cariController,
+              isMust: true,
+              readOnly: true,
+              suffixMore: true,
+              onTap: () async {
+                var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                if (result != null) {
+                  cariController!.text = result.cariAdi ?? "";
+                  viewModel.changeCariKodu(result.cariKodu ?? "");
+                }
+              },
+            ),
+            Observer(builder: (_) {
+              return ElevatedButton(
+                      onPressed: () {
+                        if (viewModel.pdfModel.dicParams?.cariKodu == null) {
+                          dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
+                        } else {
+                          viewModel.pdfModel.dicParams?.bastar = baslangicTarihiController.text != "" ? baslangicTarihiController.text : null;
+                          viewModel.pdfModel.dicParams?.bittar = bitisTarihiController.text != "" ? bitisTarihiController.text : null;
+                          viewModel.setFuture();
+                          Get.back();
+                        }
+                      },
+                      child: const Text("Uygula"))
+                  .paddingAll(UIHelper.lowSize);
+            })
+          ],
+        ).paddingAll(UIHelper.lowSize));
     return Future.value(viewModel.futureController.value);
   }
 

@@ -73,6 +73,23 @@ mixin _$KasaTransferiViewModel on _KasaTransferiViewModelBase, Store {
     });
   }
 
+  late final _$dovizKurlariListesiAtom = Atom(
+      name: '_KasaTransferiViewModelBase.dovizKurlariListesi',
+      context: context);
+
+  @override
+  ObservableList<DovizKurlariModel>? get dovizKurlariListesi {
+    _$dovizKurlariListesiAtom.reportRead();
+    return super.dovizKurlariListesi;
+  }
+
+  @override
+  set dovizKurlariListesi(ObservableList<DovizKurlariModel>? value) {
+    _$dovizKurlariListesiAtom.reportWrite(value, super.dovizKurlariListesi, () {
+      super.dovizKurlariListesi = value;
+    });
+  }
+
   late final _$setGirisKasaAsyncAction =
       AsyncAction('_KasaTransferiViewModelBase.setGirisKasa', context: context);
 
@@ -106,8 +123,36 @@ mixin _$KasaTransferiViewModel on _KasaTransferiViewModelBase, Store {
     return _$getKasalarAsyncAction.run(() => super.getKasalar(kasaKodu));
   }
 
+  late final _$getDovizlerAsyncAction =
+      AsyncAction('_KasaTransferiViewModelBase.getDovizler', context: context);
+
+  @override
+  Future<void> getDovizler() {
+    return _$getDovizlerAsyncAction.run(() => super.getDovizler());
+  }
+
+  late final _$postDataAsyncAction =
+      AsyncAction('_KasaTransferiViewModelBase.postData', context: context);
+
+  @override
+  Future<GenericResponseModel<NetworkManagerMixin>> postData() {
+    return _$postDataAsyncAction.run(() => super.postData());
+  }
+
   late final _$_KasaTransferiViewModelBaseActionController =
       ActionController(name: '_KasaTransferiViewModelBase', context: context);
+
+  @override
+  void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
+    final _$actionInfo =
+        _$_KasaTransferiViewModelBaseActionController.startAction(
+            name: '_KasaTransferiViewModelBase.setDovizKurlariListesi');
+    try {
+      return super.setDovizKurlariListesi(value);
+    } finally {
+      _$_KasaTransferiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setBelgeNo(String? value) {
@@ -154,6 +199,17 @@ mixin _$KasaTransferiViewModel on _KasaTransferiViewModelBase, Store {
   }
 
   @override
+  void setDovizTutari(double? value) {
+    final _$actionInfo = _$_KasaTransferiViewModelBaseActionController
+        .startAction(name: '_KasaTransferiViewModelBase.setDovizTutari');
+    try {
+      return super.setDovizTutari(value);
+    } finally {
+      _$_KasaTransferiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setProjekodu(String? value) {
     final _$actionInfo = _$_KasaTransferiViewModelBaseActionController
         .startAction(name: '_KasaTransferiViewModelBase.setProjekodu');
@@ -192,6 +248,7 @@ mixin _$KasaTransferiViewModel on _KasaTransferiViewModelBase, Store {
 model: ${model},
 girisKasa: ${girisKasa},
 cikisKasa: ${cikisKasa},
+dovizKurlariListesi: ${dovizKurlariListesi},
 aciklamaString: ${aciklamaString},
 getStokYeniKayitModel: ${getStokYeniKayitModel}
     ''';

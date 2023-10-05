@@ -190,7 +190,8 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
     if (await getFile != null) {
       Share.shareXFiles([XFile((await getFile)!.path)], subject: "Pdf Paylaşımı");
     } else {
-      dialogManager.snackBarError("Dosya bulunamadı. Lütfen tekrar deneyiniz.");
+      
+      dialogManager.showErrorSnackBar("Dosya bulunamadı. Lütfen tekrar deneyiniz.");
     }
   }
 

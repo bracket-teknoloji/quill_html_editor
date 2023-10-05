@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../constants/ui_helper/ui_helper.dart";
 
@@ -27,6 +28,7 @@ class CustomWidgetWithLabel extends StatelessWidget {
                           color: (isMust ?? false) ? UIHelper.primaryColor : null,
                         )
                     : null)
+            .yetkiVarMi(text != null)
             .paddingOnly(left: UIHelper.lowSize),
         child,
       ],

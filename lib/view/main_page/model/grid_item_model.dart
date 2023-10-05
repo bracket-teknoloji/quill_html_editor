@@ -67,7 +67,15 @@ class GridItemModel {
       return true;
     } else if (menuTipi == "S") {
       int sayac = altMenuler?.length ?? 0;
+      altMenuler?.forEach((element) {
+        if (!element.yetkiKontrol) {
+          sayac--;
+        }
+      });
       var result = sayac != 0 ? cacheManager?.profilYetki?.toJson()[name] : false;
+      if (name == null) {
+        return sayac != 0;
+      }
       return result ?? false;
     } else if (menuTipi == "SR") {
       return true;

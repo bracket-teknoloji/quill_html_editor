@@ -7,6 +7,7 @@ import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_mo
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -14,7 +15,6 @@ import "package:picker/view/main_page/model/param_model.dart";
 
 import "../../../../../core/base/state/base_state.dart";
 import "../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
-import "../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../core/init/network/login/api_urls.dart";
 import "../model/serbest_rapor_response_model.dart";
 import "../view_model/serbest_raporlar_view_model.dart";
@@ -40,86 +40,86 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
   Future<bool> filterBottomSheet() async {
     await getData();
     viewModel.resetFuture();
-    await bottomSheetDialogManager.showBottomSheetDialog(context,
-        title: "Filtrele",
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Center(
-              child: Wrap(
-                  children: viewModel.serbestRaporResponseModelList
-                          ?.map((e) {
-                            if (e.tipi == "Date") {
-                              return CustomTextField(
-                                  fitContent: true,
-                                  labelText: e.adi ?? "",
-                                  controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
-                                  isMust: e.bosGecilebilir != true,
-                                  readOnly: true,
-                                  isDateTime: true,
-                                  // suffix: const Icon(Icons.calendar_today),
-                                  onTap: () async {
-                                    DateTime? result = await dialogManager.showDateTimePicker();
-                                    if (result != null) {
-                                      viewModel.changeDicParams(e.adi ?? "", result.toDateString);
-                                    }
-                                  });
-                            } else if (e.rehberTipi != null) {
-                              return CustomTextField(
-                                  fitContent: true,
-                                  labelText: e.adi ?? "",
-                                  controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
-                                  isMust: e.bosGecilebilir != true,
-                                  readOnly: true,
-                                  suffixMore: true,
-                                  onTap: () {
-                                    getRehber(e);
-                                  });
-                            } else {
-                              return CustomTextField(
-                                  fitContent: true,
-                                  labelText: e.adi ?? "",
-                                  readOnly: e.paramMap != null ? true : null,
-                                  controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList!.indexOf(e)],
-                                  isMust: e.bosGecilebilir != true,
-                                  suffix: e.paramMap != null ? const Icon(Icons.more_horiz_outlined) : null,
-                                  onTap: e.paramMap == null
-                                      ? null
-                                      : () async {
-                                          var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                              title: "Seçiniz", children: e.paramMap?.values.map((value) => BottomSheetModel(title: value, onTap: () => Get.back(result: e))).toList());
-                                          if (result != null) {
-                                            viewModel.changeDicParams(e.adi ?? "", result.adi);
-                                          }
-                                        },
-                                  onChanged: (value) {
-                                    viewModel.changeDicParams(e.adi ?? "", value, false);
-                                  });
-                            }
-                          })
-                          .toList()
-                          .nullCheck
-                          .toList()
-                          .cast<Widget>()
-                          .nullCheck ??
-                      []),
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  //😳 Düzelt kanki
-                  if (viewModel.serbestRaporResponseModelList?.where((element) => element.bosGecilebilir == false).any((element) => viewModel.dicParams[element.adi ?? ""] == null) ?? false) {
-                    dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
-                  } else {
-                    viewModel.setFuture();
-                    viewModel.pdfModel.dizaynId = widget.dizaynList?.id;
-                    viewModel.pdfModel.etiketSayisi = widget.dizaynList?.kopyaSayisi;
+    await bottomSheetDialogManager.showBottomSheetDialog(
+      context,
+      title: "Filtrele",
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Center(
+            child: Wrap(
+                children: viewModel.serbestRaporResponseModelList
+                        ?.map((e) {
+                          if (e.tipi == "Date") {
+                            return CustomTextField(
+                                fitContent: true,
+                                labelText: e.adi ?? "",
+                                controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
+                                isMust: e.bosGecilebilir != true,
+                                readOnly: true,
+                                isDateTime: true,
+                                // suffix: const Icon(Icons.calendar_today),
+                                onTap: () async {
+                                  DateTime? result = await dialogManager.showDateTimePicker();
+                                  if (result != null) {
+                                    viewModel.changeDicParams(e.adi ?? "", result.toDateString);
+                                  }
+                                });
+                          } else if (e.rehberTipi != null) {
+                            return CustomTextField(
+                                fitContent: true,
+                                labelText: e.adi ?? "",
+                                controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
+                                isMust: e.bosGecilebilir != true,
+                                readOnly: true,
+                                suffixMore: true,
+                                onTap: () {
+                                  getRehber(e);
+                                });
+                          } else {
+                            return CustomTextField(
+                                fitContent: true,
+                                labelText: e.adi ?? "",
+                                readOnly: e.paramMap != null ? true : null,
+                                controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList!.indexOf(e)],
+                                isMust: e.bosGecilebilir != true,
+                                suffix: e.paramMap != null ? const Icon(Icons.more_horiz_outlined) : null,
+                                onTap: e.paramMap == null
+                                    ? null
+                                    : () async {
+                                        var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                            title: "Seçiniz", children: e.paramMap?.values.map((value) => BottomSheetModel(title: value, onTap: () => Get.back(result: e))).toList());
+                                        if (result != null) {
+                                          viewModel.changeDicParams(e.adi ?? "", result.adi);
+                                        }
+                                      },
+                                onChanged: (value) {
+                                  viewModel.changeDicParams(e.adi ?? "", value, false);
+                                });
+                          }
+                        })
+                        .toList()
+                        .nullCheckWithGeneric ??
+                    []),
+          ),
+          ElevatedButton(
+                  onPressed: () {
+                    //😳 Düzelt kanki
+                    if (viewModel.serbestRaporResponseModelList?.where((element) => element.bosGecilebilir == false).any((element) => viewModel.dicParams[element.adi ?? ""] == null) ?? false) {
+                      dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
+                    } else {
+                      viewModel.setFuture();
+                      viewModel.pdfModel.dizaynId = widget.dizaynList?.id;
+                      viewModel.pdfModel.etiketSayisi = widget.dizaynList?.kopyaSayisi;
 
-                    Get.back();
-                  }
-                },
-                child: const Text("Uygula"))
-          ],
-        ).paddingAll(UIHelper.lowSize));
+                      Get.back();
+                    }
+                  },
+                  child: const Text("Uygula"))
+              .paddingAll(UIHelper.midSize)
+        ],
+      ).paddingAll(UIHelper.lowSize),
+    );
     return Future.value(viewModel.futureController.value);
   }
 

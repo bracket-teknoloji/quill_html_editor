@@ -11,19 +11,19 @@ import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/model/kasa_islemleri_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_islemleri/model/banka_islemleri_model.dart";
 
-class KasaIslemleriCard extends StatefulWidget {
-  final KasaIslemleriModel? kasaIslemleriModel;
+class BankaIslemleriCard extends StatefulWidget {
+  final BankaIslemleriModel? bankaIslemleriModel;
   final ValueChanged? onDeleted;
-  const KasaIslemleriCard({super.key, this.kasaIslemleriModel, this.onDeleted});
+  const BankaIslemleriCard({super.key, this.bankaIslemleriModel, this.onDeleted});
 
   @override
-  State<KasaIslemleriCard> createState() => _KasaIslemleriCardState();
+  State<BankaIslemleriCard> createState() => _BankaIslemleriCardState();
 }
 
-class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
-  KasaIslemleriModel? get model => widget.kasaIslemleriModel;
+class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
+  BankaIslemleriModel? get model => widget.bankaIslemleriModel;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -99,7 +99,8 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
 
   void deleteData() async {
     Get.back();
-    var result = await networkManager.dioPost<KasaIslemleriModel>(path: ApiUrls.deleteKasaHareket, bodyModel: KasaIslemleriModel(), queryParameters: {"INCKEYNO": model?.inckeyno}, showLoading: true);
+    var result =
+        await networkManager.dioPost<BankaIslemleriModel>(path: ApiUrls.deleteKasaHareket, bodyModel: BankaIslemleriModel(), queryParameters: {"INCKEYNO": model?.inckeyno}, showLoading: true);
     if (result.success == true) {
       widget.onDeleted?.call(model?.inckeyno);
       dialogManager.showSuccessSnackBar(result.message ?? "");

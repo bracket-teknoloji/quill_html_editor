@@ -38,17 +38,17 @@ class DialogManager {
   ///
   void showErrorSnackBar(String message) {
     hideSnackBar;
-    ScaffoldMessenger.of(context).showSnackBar(snackBarError(message));
+    ScaffoldMessenger.of(context).showSnackBar(_snackBarError(message));
   }
 
   void showInfoSnackBar(String message) {
     hideSnackBar;
-    ScaffoldMessenger.of(context).showSnackBar(snackBarInfo(message));
+    ScaffoldMessenger.of(context).showSnackBar(_snackBarInfo(message));
   }
 
   void showSuccessSnackBar(String message) {
     hideSnackBar;
-    ScaffoldMessenger.of(context).showSnackBar(snackBarSuccess(message));
+    ScaffoldMessenger.of(context).showSnackBar(_snackBarSuccess(message));
   }
 
   Future<DateTime?> showDateTimePicker() async {
@@ -277,11 +277,11 @@ class DialogManager {
     );
   }
 
-  SnackBar snackBarError(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: Colors.red);
+  SnackBar _snackBarError(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.floating, backgroundColor: Colors.red);
 
-  SnackBar snackBarSuccess(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: Colors.green);
+  SnackBar _snackBarSuccess(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.floating, backgroundColor: Colors.green);
 
-  SnackBar snackBarInfo(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: Colors.blueAccent);
+  SnackBar _snackBarInfo(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.floating, backgroundColor: Colors.blueAccent);
 
   AwesomeDialog _areYouSureDialog(void Function() onYes, String? desc) {
     return _baseDialog(

@@ -2,11 +2,6 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart";
-import "../../../../../../../core/components/textfield/custom_text_field.dart";
-import "../../../../../../../core/constants/enum/siparis_tipi_enum.dart";
-import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_widget_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -14,10 +9,15 @@ import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_li
 import "../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
+import "../../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart";
 import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "../../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
+import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../../core/constants/enum/siparis_tipi_enum.dart";
+import "../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
@@ -352,12 +352,13 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                 );
               }),
               ElevatedButton(
-                  onPressed: () {
-                    viewModel.setKalemList(null);
-                    getData();
-                    Get.back();
-                  },
-                  child: const Text("Uygula"))
+                      onPressed: () {
+                        viewModel.setKalemList(null);
+                        getData();
+                        Get.back();
+                      },
+                      child: const Text("Uygula"))
+                  .paddingAll(UIHelper.lowSize)
             ],
           ),
         ));

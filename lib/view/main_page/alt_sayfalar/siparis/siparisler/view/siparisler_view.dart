@@ -162,6 +162,8 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
             onPressed: () async => await bottomSheetDialogManager.showBottomSheetDialog(context,
                 title: "Filtrele",
                 body: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     RaporFiltreDateTimeBottomSheetView(
                       filterOnChanged: (index) {
@@ -260,21 +262,20 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                       text: "Kapalı Belgeler Listelenmesin",
                       child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kapaliBelgelerListelenmesin, onChanged: (value) => viewModel.setKapaliBelgelerListelenmesin(value))),
                     ),
-                    CustomWidgetWithLabel(
-                        text: "Teslimat Durumu",
-                        child: Observer(
-                            builder: (_) => SlideControllerWidget(
-                                scroll: false,
-                                childrenTitleList: viewModel.teslimatDurumu,
-                                filterOnChanged: (x) => viewModel.setTeslimatDurumuGroupValue(x),
-                                childrenValueList: viewModel.teslimatDurumuValueList,
-                                groupValue: viewModel.teslimatDurumuGroupValue))),
+                    Observer(
+                        builder: (_) => SlideControllerWidget(
+                            scroll: false,
+                            title: "Teslimat Durumu",
+                            childrenTitleList: viewModel.teslimatDurumu,
+                            filterOnChanged: (x) => viewModel.setTeslimatDurumuGroupValue(x),
+                            childrenValueList: viewModel.teslimatDurumuValueList,
+                            groupValue: viewModel.teslimatDurumuGroupValue)),
                     InkWell(
                       onTap: () => viewModel.changeGrupKodlariGoster(),
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [Text("Cari Rapor Kodları"), Icon(Icons.arrow_drop_down)],
-                      ),
+                      ).paddingAll(UIHelper.lowSize),
                     ),
                     // viewModel.musteriSiparisleriList.first.o
                     Observer(
@@ -393,9 +394,9 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                 },
                                 child: const Text("Kaydet"))),
                       ],
-                    )
+                    ).paddingAll(UIHelper.lowSize)
                   ],
-                )),
+                ).paddingAll(UIHelper.lowSize)),
             child: const Text("Filtrele"),
           ),
           AppBarButton(

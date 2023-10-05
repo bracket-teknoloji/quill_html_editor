@@ -150,11 +150,12 @@ class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRaporuVie
                 Expanded(child: CustomTextField(labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, kod5Controller)))
               ]),
               ElevatedButton(
-                  onPressed: () {
-                    viewModel.setFuture();
-                    Get.back();
-                  },
-                  child: const Text("Uygula"))
+                      onPressed: () {
+                        viewModel.setFuture();
+                        Get.back();
+                      },
+                      child: const Text("Uygula"))
+                  .paddingAll(UIHelper.lowSize)
             ],
           ),
         ));

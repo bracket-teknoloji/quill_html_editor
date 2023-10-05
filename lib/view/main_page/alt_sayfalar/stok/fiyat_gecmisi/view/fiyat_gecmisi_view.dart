@@ -6,6 +6,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/card/stok_fiyat_gecmisi_card.dart";
@@ -261,7 +262,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                         }),
                       ),
                     ],
-                  );
+                  ).paddingAll(UIHelper.lowSize);
           }),
         ));
   }

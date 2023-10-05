@@ -6,7 +6,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/bottom_bar/bottom_bar.dart";
 import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
-import "package:picker/core/components/card/kasa_islemleri_card.dart";
+import "package:picker/core/components/card/banka_islemleri_card.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
@@ -18,19 +18,19 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/model/kasa_islemleri_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/view_model/kasa_islemleri_view_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_islemleri/model/banka_islemleri_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_islemleri/view_model/banka_islemleri_view_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
-class KasaIslemleriView extends StatefulWidget {
-  const KasaIslemleriView({super.key});
+class BankaIslemleriView extends StatefulWidget {
+  const BankaIslemleriView({super.key});
 
   @override
-  State<KasaIslemleriView> createState() => _KasaIslemleriViewState();
+  State<BankaIslemleriView> createState() => _BankaIslemleriViewState();
 }
 
-class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
-  KasaIslemleriViewModel viewModel = KasaIslemleriViewModel();
+class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
+  BankaIslemleriViewModel viewModel = BankaIslemleriViewModel();
   late final ScrollController _scrollController;
   late final TextEditingController baslangicTarihiController;
   late final TextEditingController bitisTarihiController;
@@ -84,7 +84,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
               onChanged: (value) => viewModel.setSearchText(value),
             );
           } else {
-            return AppBarTitle(title: "Kasa İşlemleri", subtitle: "${viewModel.getKasaIslemleriListesi?.length ?? 0}");
+            return AppBarTitle(title: "Banka İşlemleri", subtitle: "${viewModel.getBankaIslemleriListesi?.length ?? 0}");
           }
         }),
         actions: [
@@ -121,23 +121,23 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
             child: RefreshIndicator.adaptive(
               onRefresh: () async => await viewModel.resetPage(),
               child: Observer(builder: (_) {
-                return viewModel.getKasaIslemleriListesi == null
+                return viewModel.getBankaIslemleriListesi == null
                     ? const Center(child: CircularProgressIndicator.adaptive())
-                    : viewModel.getKasaIslemleriListesi.ext.isNullOrEmpty
+                    : viewModel.getBankaIslemleriListesi.ext.isNullOrEmpty
                         ? const Center(child: Text("Veri bulunamadı"))
                         : ListView.builder(
                             padding: UIHelper.lowPadding,
                             primary: false,
                             controller: _scrollController,
                             shrinkWrap: true,
-                            itemCount: viewModel.getKasaIslemleriListesi != null ? ((viewModel.getKasaIslemleriListesi?.length ?? 0) + (viewModel.dahaVarMi ? 1 : 0)) : 0,
+                            itemCount: viewModel.getBankaIslemleriListesi != null ? ((viewModel.getBankaIslemleriListesi?.length ?? 0) + (viewModel.dahaVarMi ? 1 : 0)) : 0,
                             itemBuilder: (context, index) {
-                              if (index == (viewModel.getKasaIslemleriListesi?.length ?? 0)) {
+                              if (index == (viewModel.getBankaIslemleriListesi?.length ?? 0)) {
                                 return const Center(child: CircularProgressIndicator.adaptive());
                               } else {
-                                KasaIslemleriModel? item = viewModel.getKasaIslemleriListesi?[index];
-                                return KasaIslemleriCard(
-                                    kasaIslemleriModel: item,
+                                BankaIslemleriModel? item = viewModel.getBankaIslemleriListesi?[index];
+                                return BankaIslemleriCard(
+                                    bankaIslemleriModel: item,
                                     onDeleted: (deneme) {
                                       viewModel.resetPage();
                                     });
@@ -187,7 +187,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
               controller: kasaController,
               readOnly: true,
               suffixMore: true,
-              valueWidget: Observer(builder: (_) => Text(viewModel.kasaIslemleriRequestModel.kasaKodu ?? "")),
+              valueWidget: Observer(builder: (_) => Text(viewModel.bankaIslemleriRequestModel.kasaKodu ?? "")),
               onTap: () async {
                 List<KasaList>? kasaList = parametreModel.kasaList;
                 var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
@@ -203,11 +203,11 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
               controller: cariController,
               readOnly: true,
               suffixMore: true,
-              valueWidget: Observer(builder: (_) => Text(viewModel.kasaIslemleriRequestModel.hesapKodu ?? "")),
+              valueWidget: Observer(builder: (_) => Text(viewModel.bankaIslemleriRequestModel.hesapKodu ?? "")),
               suffix: IconButton(
                   onPressed: () {
-                    if (viewModel.kasaIslemleriRequestModel.hesapKodu != null) {
-                      dialogManager.showCariGridViewDialog(CariListesiModel(cariKodu: viewModel.kasaIslemleriRequestModel.hesapKodu));
+                    if (viewModel.bankaIslemleriRequestModel.hesapKodu != null) {
+                      dialogManager.showCariGridViewDialog(CariListesiModel(cariKodu: viewModel.bankaIslemleriRequestModel.hesapKodu));
                     } else {
                       dialogManager.showInfoDialog("Cari kodu boş olduğu için bu işlem gerçekleştirilemiyor.");
                     }
@@ -226,7 +226,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
               controller: plasiyerController,
               readOnly: true,
               suffixMore: true,
-              valueWidget: Observer(builder: (_) => Text(viewModel.kasaIslemleriRequestModel.plasiyerKodu ?? "")),
+              valueWidget: Observer(builder: (_) => Text(viewModel.bankaIslemleriRequestModel.plasiyerKodu ?? "")),
               onTap: () async {
                 List<PlasiyerList>? plasiyerList = parametreModel.plasiyerList;
                 var result = await bottomSheetDialogManager.showBottomSheetDialog(context,

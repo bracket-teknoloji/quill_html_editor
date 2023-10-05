@@ -7,6 +7,7 @@ import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_mo
 import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -239,7 +240,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
               ],
             ),
           ],
-        ),
+        ).paddingAll(UIHelper.lowSize),
       ),
     );
   }

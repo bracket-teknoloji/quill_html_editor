@@ -1,5 +1,9 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/model/doviz_kurlari_model.dart";
+import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_yeni_kayit/model/stok_yeni_kayit_model.dart";
@@ -12,13 +16,16 @@ class KasaTransferiViewModel = _KasaTransferiViewModelBase with _$KasaTransferiV
 
 abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
   @observable
-  StokYeniKayitModel model = StokYeniKayitModel(tahsilatmi: true, yeniKayit: true, tag: "TahsilatModel", pickerBelgeTuru: "KAT", hesapTipi: "T");
+  StokYeniKayitModel model = StokYeniKayitModel(tahsilatmi: true, yeniKayit: true,gc: "C", tag: "TahsilatModel", pickerBelgeTuru: "KAT", hesapTipi: "T");
 
   @observable
   KasaList? girisKasa;
 
   @observable
   KasaList? cikisKasa;
+
+  @observable
+  ObservableList<DovizKurlariModel>? dovizKurlariListesi;
 
   @computed
   String get aciklamaString => "Transfer ${girisKasa?.kasaTanimi ?? ""} => ${cikisKasa?.kasaTanimi ?? ""}";
@@ -28,7 +35,12 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
     var uuid = const Uuid();
     return model.copyWith(guid: uuid.v4());
   }
-
+  @action
+  void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
+    if (value != null) {
+      dovizKurlariListesi = value.asObservable();
+    }
+  }
   @action
   void setBelgeNo(String? value) => model = model.copyWith(belgeNo: value);
 
@@ -41,16 +53,13 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
     if (value.dovizli == "E") {
       girisKasa = await getKasalar(value.kasaKodu);
     }
-    model = model.copyWith(gc: value.dovizAdi, hesapKodu: value.kasaKodu, dovizTipi: value.dovizTipi);
+    model = model.copyWith(hesapKodu: value.kasaKodu, dovizTipi: value.dovizTipi);
   }
 
   @action
   Future<void> setCikisKasa(KasaList value) async {
     cikisKasa = value;
-    if (value.dovizli == "E") {
-      cikisKasa = await getKasalar(value.kasaKodu);
-    }
-    model = model.copyWith(gc: value.dovizAdi, kasaKodu: value.kasaKodu, dovizTipi: value.dovizTipi);
+    model = model.copyWith(kasaKodu: value.kasaKodu);
   }
 
   @action
@@ -58,6 +67,9 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setTutar(double? value) => model = model.copyWith(tutar: value);
+
+  @action
+  void setDovizTutari(double? value) => model = model.copyWith(dovizTutari: value);
 
   @action
   void setProjekodu(String? value) => model = model.copyWith(projeKodu: value);
@@ -85,4 +97,14 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
     }
     return null;
   }
+  @action
+  Future<void> getDovizler() async {
+    var result = await networkManager.dioGet<DovizKurlariModel>(path: ApiUrls.getDovizKurlari, bodyModel: DovizKurlariModel(), showLoading: true, queryParameters: {"EkranTipi": "D", "DovizKodu": model.dovizTipi, "tarih": model.tarih.toDateString});
+    if (result.data is List) {
+      setDovizKurlariListesi(result.data.cast<DovizKurlariModel>());
+    }
+  }
+
+  @action
+  Future<GenericResponseModel<NetworkManagerMixin>> postData() async => await networkManager.dioPost<DovizKurlariModel>(path: ApiUrls.saveTahsilat, bodyModel: DovizKurlariModel(), showLoading: true, data: getStokYeniKayitModel.toJson());
 }

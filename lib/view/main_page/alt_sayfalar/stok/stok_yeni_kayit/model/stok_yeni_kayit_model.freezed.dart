@@ -34,7 +34,9 @@ mixin _$StokYeniKayitModel {
   set hesapTipi(String? value) => throw _privateConstructorUsedError;
   String? get kasaKodu => throw _privateConstructorUsedError;
   set kasaKodu(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "PickerBelgeTuru")
   String? get pickerBelgeTuru => throw _privateConstructorUsedError;
+  @JsonKey(name: "PickerBelgeTuru")
   set pickerBelgeTuru(String? value) => throw _privateConstructorUsedError;
   String? get plasiyerKodu => throw _privateConstructorUsedError;
   set plasiyerKodu(String? value) => throw _privateConstructorUsedError;
@@ -87,7 +89,7 @@ abstract class $StokYeniKayitModelCopyWith<$Res> {
       String? hesapKodu,
       String? hesapTipi,
       String? kasaKodu,
-      String? pickerBelgeTuru,
+      @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
       String? plasiyerKodu,
       String? projeKodu,
       String? tag,
@@ -249,7 +251,7 @@ abstract class _$$_StokYeniKayitModelCopyWith<$Res>
       String? hesapKodu,
       String? hesapTipi,
       String? kasaKodu,
-      String? pickerBelgeTuru,
+      @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
       String? plasiyerKodu,
       String? projeKodu,
       String? tag,
@@ -404,7 +406,7 @@ class _$_StokYeniKayitModel extends _StokYeniKayitModel {
       this.hesapKodu,
       this.hesapTipi,
       this.kasaKodu,
-      this.pickerBelgeTuru,
+      @JsonKey(name: "PickerBelgeTuru") this.pickerBelgeTuru,
       this.plasiyerKodu,
       this.projeKodu,
       this.tag,
@@ -439,6 +441,7 @@ class _$_StokYeniKayitModel extends _StokYeniKayitModel {
   @override
   String? kasaKodu;
   @override
+  @JsonKey(name: "PickerBelgeTuru")
   String? pickerBelgeTuru;
   @override
   String? plasiyerKodu;
@@ -494,7 +497,7 @@ abstract class _StokYeniKayitModel extends StokYeniKayitModel {
       String? hesapKodu,
       String? hesapTipi,
       String? kasaKodu,
-      String? pickerBelgeTuru,
+      @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
       String? plasiyerKodu,
       String? projeKodu,
       String? tag,
@@ -536,7 +539,9 @@ abstract class _StokYeniKayitModel extends StokYeniKayitModel {
   String? get kasaKodu;
   set kasaKodu(String? value);
   @override
+  @JsonKey(name: "PickerBelgeTuru")
   String? get pickerBelgeTuru;
+  @JsonKey(name: "PickerBelgeTuru")
   set pickerBelgeTuru(String? value);
   @override
   String? get plasiyerKodu;

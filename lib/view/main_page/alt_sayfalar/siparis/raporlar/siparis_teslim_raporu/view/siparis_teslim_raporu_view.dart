@@ -185,11 +185,12 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
                 ],
               ),
               ElevatedButton(
-                  onPressed: () {
-                    viewModel.setFuture();
-                    Get.back();
-                  },
-                  child: const Text("Uygula"))
+                      onPressed: () {
+                        viewModel.setFuture();
+                        Get.back();
+                      },
+                      child: const Text("Uygula"))
+                  .paddingAll(UIHelper.lowSize)
             ],
           ),
         ));

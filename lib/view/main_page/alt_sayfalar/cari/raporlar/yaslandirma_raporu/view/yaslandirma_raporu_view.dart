@@ -198,15 +198,16 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                 Expanded(child: CustomTextField(labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, kod5Controller)))
               ]),
               ElevatedButton(
-                  onPressed: () {
-                    if (viewModel.pdfModel.dicParams?.refTarih == null || viewModel.pdfModel.dicParams?.tarihTipi == null) {
-                      dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
-                    } else {
-                      viewModel.setFuture();
-                      Get.back();
-                    }
-                  },
-                  child: const Text("Uygula"))
+                      onPressed: () {
+                        if (viewModel.pdfModel.dicParams?.refTarih == null || viewModel.pdfModel.dicParams?.tarihTipi == null) {
+                          dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
+                        } else {
+                          viewModel.setFuture();
+                          Get.back();
+                        }
+                      },
+                      child: const Text("Uygula"))
+                  .paddingAll(UIHelper.lowSize)
             ],
           ),
         ));

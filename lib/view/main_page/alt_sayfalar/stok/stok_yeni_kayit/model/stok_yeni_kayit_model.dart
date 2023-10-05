@@ -48,7 +48,7 @@ class StokYeniKayitModel with _$StokYeniKayitModel, NetworkManagerMixin {
     String? hesapKodu,
     String? hesapTipi,
     String? kasaKodu,
-    String? pickerBelgeTuru,
+    @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
     String? plasiyerKodu,
     String? projeKodu,
     String? tag,

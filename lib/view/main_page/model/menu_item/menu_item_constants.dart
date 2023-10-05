@@ -57,8 +57,8 @@ class MenuItemConstants {
     //*
     GridItemModel.anamenu(name: "YONE", title: "Finans", icon: "wallet", color: GridThemeManager.finans, altMenuler: [
       GridItemModel.altmenu(name: "yonetici_Banka_Banka_Litesi", title: "Banka", iconData: Icons.account_balance_outlined, altMenuler: [
-        GridItemModel.item(name: "yonetici_Banka_Banka_Litesi", title: "Banka Listesi"),
-        GridItemModel.item(name: "yonetici_Banka_Islemleri", title: "İşlemler"),
+        GridItemModel.item(name: "yonetici_Banka_Banka_Litesi", title: "Banka Listesi", route: "/mainPage/bankaListesi"),
+        GridItemModel.item(name: "yonetici_Banka_Islemleri", title: "İşlemler", route: "/mainPage/bankaIslemleri"),
       ]),
       GridItemModel.altmenu(name: "finans_Kasa_Listesi", title: "Kasa", iconData: Icons.point_of_sale_outlined, altMenuler: [
         GridItemModel.item(name: "finans_Kasa_Listesi", title: "Kasa Listesi", route: "/mainPage/kasaListesi"),
@@ -69,34 +69,34 @@ class MenuItemConstants {
           ..._getSerbestRapor(SerbestRaporDetayKodEnum.kasa),
         ])
       ]),
-      GridItemModel.item(name: "Banka", title: "Dekontlar"),
-      GridItemModel.altmenu(name: "Banka", title: "Çek", altMenuler: [
-        GridItemModel.item(name: "", title: "Müşteri Çekleri"),
-        GridItemModel.item(name: "", title: "Borç Çekleri"),
+      GridItemModel.item(name: "dekont_Listesi", title: "Dekontlar"),
+      GridItemModel.altmenu(name: null, title: "Çek", altMenuler: [
+        GridItemModel.item(name: "finans_Cek_Musteri", title: "Müşteri Çekleri"),
+        GridItemModel.item(name: "finans_Cek_Borc", title: "Borç Çekleri"),
         GridItemModel.altmenu(name: "", title: "Raporlar", icon: "monitoring", altMenuler: [
           ..._getSerbestRapor(SerbestRaporDetayKodEnum.cek),
         ])
       ]),
-      GridItemModel.altmenu(name: "Banka", title: "Senet", altMenuler: [
-        GridItemModel.item(name: "", title: "Müşteri Senetleri"),
-        GridItemModel.item(name: "", title: "Borç Senetleri"),
+      GridItemModel.altmenu(name: null, title: "Senet", altMenuler: [
+        GridItemModel.item(name: "finans_Senet_Musteri", title: "Müşteri Senetleri"),
+        GridItemModel.item(name: "finans_Senet_Borc", title: "Borç Senetleri"),
       ]),
       GridItemModel.item(name: "Banka", title: "Tahsilat & Ödeme Kayıtları"),
-      GridItemModel.item(name: "Banka", title: "Hızlı Tahsilat Kayıtları"),
-      GridItemModel.altmenu(name: "Banka", title: "Hızlı İşlemler", iconData: Icons.tune_outlined, altMenuler: [
-        GridItemModel.item(name: "", title: "Kredi Kartı Tahsilatı"),
-        GridItemModel.item(name: "", title: "Nakit Tahsilat"),
-        GridItemModel.item(name: "", title: "Senet Tahsilatı"),
-        GridItemModel.item(name: "", title: "Çek Tahsilatı"),
-        GridItemModel.item(name: "", title: "Muhtelif Nakit Tahsilat"),
-        GridItemModel.item(name: "", title: "Muhtelif Nakit Ödeme"),
-        GridItemModel.item(name: "", title: "Nakit Ödeme"),
+      GridItemModel.item(name: null, title: "Hızlı Tahsilat Kayıtları"),
+      GridItemModel.altmenu(name:null, title: "Hızlı İşlemler", iconData: Icons.tune_outlined, altMenuler: [
+        GridItemModel.item(name: "finans_KKartiTahsilati", title: "Kredi Kartı Tahsilatı"),
+        GridItemModel.item(name: "finans_Kasa_NakitTahsilat", title: "Nakit Tahsilat"),
+        GridItemModel.item(name: "finans_Kasa_SenetTahsilati", title: "Senet Tahsilatı"),
+        GridItemModel.item(name: "finans_Kasa_CekTahsilati", title: "Çek Tahsilatı"),
+        GridItemModel.item(name: "finans_Kasa_MuhtelifTahsilat", title: "Muhtelif Nakit Tahsilat"),
+        GridItemModel.item(name: "finans_Kasa_MuhtelifOdeme", title: "Muhtelif Nakit Ödeme"),
+        GridItemModel.item(name: "finans_Kasa_NakitOdeme", title: "Nakit Ödeme"),
       ]),
-      GridItemModel.item(name: "Banka", title: "Ortalama Vade Tarihi Hesaplama"),
-      GridItemModel.altmenu(name: "Banka", title: "Raporlar", icon: "monitoring", altMenuler: [
-        GridItemModel.item(name: "", title: "Özet Rapor"),
-        GridItemModel.item(name: "", title: "Finansal Durum Raporu"),
-        GridItemModel.item(name: "", title: "Aylık Mizan Raporu"),
+      GridItemModel.item(name: "finans_OrtalamaVadeTarihiHesaplama", title: "Ortalama Vade Tarihi Hesaplama"),
+      GridItemModel.altmenu(name: null, title: "Raporlar", icon: "monitoring", altMenuler: [
+        GridItemModel.item(name: "finans_OzetRapor", title: "Özet Rapor"),
+        GridItemModel.item(name: "finans_Raporlar_FinansalDurum", title: "Finansal Durum Raporu"),
+        GridItemModel.item(name: "finans_Raporlar_AylikMizan", title: "Aylık Mizan Raporu"),
         ..._getSerbestRapor(SerbestRaporDetayKodEnum.finans),
       ]),
     ]).isDebug(),

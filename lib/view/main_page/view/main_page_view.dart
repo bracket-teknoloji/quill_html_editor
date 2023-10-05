@@ -65,7 +65,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
                 Expanded(
                   flex: 9,
                   child: Padding(
-                    padding: UIHelper.midPadding,
+                    padding: UIHelper.lowPadding,
                     child: AnimationLimiter(
                       child: GridView.builder(
                         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),

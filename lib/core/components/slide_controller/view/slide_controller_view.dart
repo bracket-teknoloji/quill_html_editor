@@ -70,6 +70,6 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
                       )))
         ],
       ),
-    ).paddingAll(UIHelper.lowSize);
+    ).paddingSymmetric(vertical: UIHelper.lowSize);
   }
 }

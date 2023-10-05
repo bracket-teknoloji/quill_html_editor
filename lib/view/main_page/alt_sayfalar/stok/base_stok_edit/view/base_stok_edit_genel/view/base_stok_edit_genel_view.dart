@@ -6,7 +6,6 @@ import "dart:ui" as ui;
 
 import "package:flutter/material.dart";
 import "package:flutter_image_compress/flutter_image_compress.dart";
-import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:image_picker/image_picker.dart";
 import "package:kartal/kartal.dart";
