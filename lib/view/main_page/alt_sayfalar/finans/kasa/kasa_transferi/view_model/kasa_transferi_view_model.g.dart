@@ -16,11 +16,11 @@ mixin _$KasaTransferiViewModel on _KasaTransferiViewModelBase, Store {
       (_$aciklamaStringComputed ??= Computed<String>(() => super.aciklamaString,
               name: '_KasaTransferiViewModelBase.aciklamaString'))
           .value;
-  Computed<StokYeniKayitModel>? _$getStokYeniKayitModelComputed;
+  Computed<TahsilatRequestModel>? _$getStokYeniKayitModelComputed;
 
   @override
-  StokYeniKayitModel get getStokYeniKayitModel =>
-      (_$getStokYeniKayitModelComputed ??= Computed<StokYeniKayitModel>(
+  TahsilatRequestModel get getStokYeniKayitModel =>
+      (_$getStokYeniKayitModelComputed ??= Computed<TahsilatRequestModel>(
               () => super.getStokYeniKayitModel,
               name: '_KasaTransferiViewModelBase.getStokYeniKayitModel'))
           .value;
@@ -29,13 +29,13 @@ mixin _$KasaTransferiViewModel on _KasaTransferiViewModelBase, Store {
       Atom(name: '_KasaTransferiViewModelBase.model', context: context);
 
   @override
-  StokYeniKayitModel get model {
+  TahsilatRequestModel get model {
     _$modelAtom.reportRead();
     return super.model;
   }
 
   @override
-  set model(StokYeniKayitModel value) {
+  set model(TahsilatRequestModel value) {
     _$modelAtom.reportWrite(value, super.model, () {
       super.model = value;
     });

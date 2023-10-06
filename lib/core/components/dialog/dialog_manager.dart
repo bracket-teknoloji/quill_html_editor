@@ -7,6 +7,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/model/kasa_islemleri_model.dart";
 
 import "../../../view/add_company/model/account_model.dart";
 import "../../../view/add_company/model/account_response_model.dart";
@@ -63,26 +64,29 @@ class DialogManager {
 
   Future<void> showAlertDialog(String message) async {
     return _baseDialog(
-      title: "Uyarı",
-      desc: message,
       dialogType: DialogType.error,
       btnOkText: "Tamam",
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(bottom: 10),
-            child: Text("Uyarı", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+      body: SizedBox(
+        height: Get.height * 0.4,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(bottom: 10),
+                child: Text("Uyarı", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+              ),
+              Padding(
+                padding: UIHelper.midPaddingHorizontal,
+                child: SelectableText(message, textAlign: TextAlign.center),
+              ),
+              Padding(
+                padding: UIHelper.midPaddingHorizontal,
+                child: Text(getAppData, style: TextStyle(color: Colors.grey.withOpacity(0.8), fontSize: 12), textAlign: TextAlign.center),
+              ).paddingOnly(top: UIHelper.highSize),
+            ],
           ),
-          Padding(
-            padding: UIHelper.midPaddingHorizontal,
-            child: SelectableText(message, textAlign: TextAlign.center),
-          ),
-          Padding(
-            padding: UIHelper.midPaddingHorizontal,
-            child: Text(getAppData, style: TextStyle(color: Colors.grey.withOpacity(0.8), fontSize: 12), textAlign: TextAlign.center),
-          ).paddingOnly(top: UIHelper.highSize),
-        ],
+        ),
       ),
       // onOk is rootNavigator true without Get
       onOk: () {},
@@ -152,6 +156,10 @@ class DialogManager {
   void showCariGridViewDialog(CariListesiModel? model, [IslemTipiEnum? tip]) => _baseDialog(
           body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: tip ?? IslemTipiEnum.cari), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader)
       .show();
+
+  void showKasaGridViewDialog([IslemTipiEnum? tip]) =>
+      _baseDialog(body: CustomAnimatedGridView<KasaIslemleriModel>(islemTipi: tip ?? IslemTipiEnum.kasa, title: "Kasa İşlemleri"), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader)
+          .show();
 
   void showCariRaporlarGridViewDialog() =>
       _baseDialog(body: const CustomAnimatedGridView(title: "Raporlar", islemTipi: IslemTipiEnum.cariRapor), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();

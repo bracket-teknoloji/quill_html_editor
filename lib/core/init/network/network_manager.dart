@@ -273,6 +273,8 @@ class NetworkManager {
     return jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]);
   }
 
+
+
   Future<GenericResponseModel> getUyeBilgileri(String? email, {String? password, bool getFromCache = true, bool? isDebug}) async {
     if (email == "demo@netfect.com") {
       return GenericResponseModel(success: true);

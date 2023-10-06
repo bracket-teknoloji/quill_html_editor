@@ -84,7 +84,7 @@ class MenuItemConstants {
       GridItemModel.item(name: "Banka", title: "Tahsilat & Ödeme Kayıtları"),
       GridItemModel.item(name: null, title: "Hızlı Tahsilat Kayıtları"),
       GridItemModel.altmenu(name: null, title: "Hızlı İşlemler", iconData: Icons.tune_outlined, altMenuler: [
-        GridItemModel.item(name: "finans_KKartiTahsilati", title: "Kredi Kartı Tahsilatı"),
+        GridItemModel.item(name: "finans_KKartiTahsilati", title: "Kredi Kartı Tahsilatı", route: "/mainPage/krediKartiTahsilati"),
         GridItemModel.item(name: "finans_Kasa_NakitTahsilat", title: "Nakit Tahsilat"),
         GridItemModel.item(name: "finans_Kasa_SenetTahsilati", title: "Senet Tahsilatı"),
         GridItemModel.item(name: "finans_Kasa_CekTahsilati", title: "Çek Tahsilatı"),

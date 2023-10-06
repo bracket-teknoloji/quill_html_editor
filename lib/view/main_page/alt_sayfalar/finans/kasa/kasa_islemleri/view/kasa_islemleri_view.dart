@@ -113,7 +113,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
   Observer fab() => Observer(builder: (_) {
         return CustomFloatingActionButton(
           isScrolledDown: viewModel.isScrollDown,
-          onPressed: () {},
+          onPressed: () => dialogManager.showKasaGridViewDialog(),
         );
       });
 

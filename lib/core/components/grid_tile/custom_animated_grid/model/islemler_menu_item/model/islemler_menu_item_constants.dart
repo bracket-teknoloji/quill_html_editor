@@ -42,8 +42,8 @@ class IslemlerMenuItemConstants<T> {
   List<GridItemModel?> islemlerList = [];
   T? model;
   // T? get model2 => model;
-  DialogManager dialogManager = DialogManager();
-  NetworkManager networkManager = NetworkManager();
+  DialogManager get _dialogManager => DialogManager();
+  NetworkManager get _networkManager => NetworkManager();
   IslemlerMenuItemConstants({required this.islemtipi, List<GridItemModel?>? raporlar, this.model, this.siparisTipi}) {
     if (islemtipi == IslemTipiEnum.stok) {
       islemlerList.add(stokKarti);
@@ -68,6 +68,14 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(belgeNoDegistir);
       islemlerList.add(kopyala);
       islemlerList.addAll(raporlar!);
+    } else if (islemtipi == IslemTipiEnum.kasa) {
+      islemlerList.add(kasaTransferi);
+      islemlerList.add(nakitTahsilat);
+      islemlerList.add(bankaKasaTransferi);
+      islemlerList.add(nakitOdeme);
+      islemlerList.add(krediKartiTahsilati);
+      islemlerList.add(muhtelifTahsilat);
+      islemlerList.add(muhtelifOdeme);
     }
   }
 
@@ -91,7 +99,7 @@ class IslemlerMenuItemConstants<T> {
             iconData: Icons.lock_outline,
             onTap: () async {
               bool? result;
-              await dialogManager.showAreYouSureDialog(() async {
+              await _dialogManager.showAreYouSureDialog(() async {
                 result = true;
               }, title: "Kiliti kapatmak istediğinize emin misiniz?");
               if (result == true) {
@@ -105,7 +113,7 @@ class IslemlerMenuItemConstants<T> {
             iconData: Icons.lock_open_outlined,
             onTap: () async {
               bool? result;
-              await dialogManager.showAreYouSureDialog(() async {
+              await _dialogManager.showAreYouSureDialog(() async {
                 result = true;
               }, title: "Kiliti açmak istediğinize emin misiniz?");
               if (result == true) {
@@ -119,7 +127,7 @@ class IslemlerMenuItemConstants<T> {
   }
 
   Future<bool> kilitRequest(BaseSiparisEditModel siparisModel, int yeniTipi) async {
-    var result = await networkManager.dioPost<SiparisEditRequestModel>(
+    var result = await _networkManager.dioPost<SiparisEditRequestModel>(
         path: ApiUrls.belgeDurumunuDegistir, showLoading: true, bodyModel: SiparisEditRequestModel(), data: EditFaturaModel.fromSiparislerModel(siparisModel..tipi = yeniTipi).toJson());
     if (result.success == true) {
       DialogManager().showSuccessSnackBar("Başarılı");
@@ -159,7 +167,7 @@ class IslemlerMenuItemConstants<T> {
                     },
                     suffix: IconButton(
                         onPressed: () async {
-                          var result = await networkManager.dioGet<BaseSiparisEditModel>(path: ApiUrls.getSiradakiBelgeNo, bodyModel: BaseSiparisEditModel(), queryParameters: {
+                          var result = await _networkManager.dioGet<BaseSiparisEditModel>(path: ApiUrls.getSiradakiBelgeNo, bodyModel: BaseSiparisEditModel(), queryParameters: {
                             "Seri": controller.text,
                             "BelgeTipi": StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS",
                             "EIrsaliye": "H",
@@ -343,4 +351,13 @@ class IslemlerMenuItemConstants<T> {
               ],
             ).paddingAll(UIHelper.lowSize));
       });
+
+  //* Kasa
+  GridItemModel? get kasaTransferi => GridItemModel.islemler(title: "Kasa Transferi", iconData: Icons.list_alt_rounded, onTap: () => Get.toNamed("/mainPage/kasaTransferi"));
+  GridItemModel? get krediKartiTahsilati => GridItemModel.islemler(title: "Kredi Kartı Tahsilatı", iconData: Icons.list_alt_rounded, onTap: () => Get.toNamed("/mainPage/krediKartiTahsilati"));
+  GridItemModel? get nakitTahsilat => GridItemModel.islemler(title: "Nakit Tahsilat", iconData: Icons.list_alt_rounded, onTap: () {});
+  GridItemModel? get bankaKasaTransferi => GridItemModel.islemler(title: "Banka-Kasa Transferi", iconData: Icons.list_alt_rounded, onTap: () {});
+  GridItemModel? get nakitOdeme => GridItemModel.islemler(title: "Nakit Ödeme", iconData: Icons.list_alt_rounded, onTap: () {});
+  GridItemModel? get muhtelifTahsilat => GridItemModel.islemler(title: "Muhtelif Tahsilat", iconData: Icons.list_alt_rounded, onTap: () {});
+  GridItemModel? get muhtelifOdeme => GridItemModel.islemler(title: "Muhtelif Ödeme", iconData: Icons.list_alt_rounded, onTap: () {});
 }

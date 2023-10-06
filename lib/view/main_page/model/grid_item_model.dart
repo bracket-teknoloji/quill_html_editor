@@ -8,8 +8,8 @@ import "../../../core/init/cache/cache_manager.dart";
 import "user_model/user_model.dart";
 
 class GridItemModel {
-  UserModel? cacheManager = CacheManager.getAnaVeri()?.userModel;
-  List<String>? menuList = CacheManager.getAnaVeri()?.menuList;
+  UserModel? get _cacheManager => CacheManager.getAnaVeri()?.userModel;
+  List<String>? get _menuList => CacheManager.getAnaVeri()?.menuList;
 
   String? name;
   String title;
@@ -53,17 +53,17 @@ class GridItemModel {
   bool get yetkiKontrol {
     if (menuTipi == "A") {
       int sayac = 0;
-      if ((menuList?.contains(name) ?? false) && altMenuVarMi && (yetkiListesi != null ? !(yetkiListesi?.any((element) => element == false) ?? false) : true)) {
+      if ((_menuList?.contains(name) ?? false) && altMenuVarMi && (yetkiListesi != null ? !(yetkiListesi?.any((element) => element == false) ?? false) : true)) {
         for (var element in altMenuler!) {
           if (element.yetkiKontrol) {
             sayac++;
           }
         }
-        return sayac != 0 ? menuList!.contains(name) : false;
+        return sayac != 0 ? _menuList!.contains(name) : false;
       } else {
         return false;
       }
-    } else if (cacheManager?.adminMi != null && (cacheManager?.adminMi ?? false)) {
+    } else if (_cacheManager?.adminMi != null && (_cacheManager?.adminMi ?? false)) {
       return true;
     } else if (menuTipi == "S") {
       int sayac = altMenuler?.length ?? 0;
@@ -72,7 +72,7 @@ class GridItemModel {
           sayac--;
         }
       });
-      var result = sayac != 0 ? cacheManager?.profilYetki?.toJson()[name] : false;
+      var result = sayac != 0 ? _cacheManager?.profilYetki?.toJson()[name] : false;
       if (name == null) {
         return sayac != 0;
       }
@@ -80,7 +80,7 @@ class GridItemModel {
     } else if (menuTipi == "SR") {
       return true;
     } else {
-      var result = cacheManager?.profilYetki?.toJson()[name] ?? false;
+      var result = _cacheManager?.profilYetki?.toJson()[name] ?? false;
       return result;
     }
   }

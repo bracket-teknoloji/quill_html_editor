@@ -4,6 +4,7 @@ class ApiUrls {
   static const String veriTabanlari = "General/GetVeritabanlari";
   static const String isletmelerSubeler = "General/GetIsletmelerSubeler";
   static const String createSession = "General/CreateSessionV3";
+  static const String getMuhaRefList = "General/GetMuhaRefList";
   static const String getUyeBilgileri = "https://storews.netfect.com/api/Picker/GetUyeBilgileri";
   static const String saveUyeBilgileri = "https://storews.netfect.com/api/Picker/SaveUyeBilgileri";
   // static const String getUyeBilgileri = "http://192.168.3.54/netstore/api/Picker/GetUyeBilgileri";
@@ -54,10 +55,13 @@ class ApiUrls {
   //* Finans
   static const String deleteBankaHareket = "Banka/DeleteBankaHar";
   static const String getBankaHareketleri = "Banka/GetBankaHareketleri";
+  static const String getBankaHesaplari = "Banka/GetBankaHesaplari";
   static const String getKasalar = "Finans/GetKasalar";
   static const String getKasaHareketleri = "Finans/GetKasaHareketleri";
   static const String deleteKasaHareket = "Finans/DeleteKasaHareket";
   static const String saveTahsilat = "Finans/SaveTahsilat";
+  static const String getDekontSeriler = "Finans/GetDekontSeriler";
+  static const String getBankaSozlesmeleri = "Finans/GetBankaSozlesmeleri";
 
   //*Fatura
   static const String belgeDurumunuDegistir = "Fatura/BelgeDurumunuDegistir";

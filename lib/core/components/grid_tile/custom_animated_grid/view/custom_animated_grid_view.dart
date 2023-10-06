@@ -3,6 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_staggered_animations/flutter_staggered_animations.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../../../view/main_page/model/grid_item_model.dart";
@@ -29,20 +30,17 @@ class CustomAnimatedGridView<T> extends StatefulWidget {
 
 class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
   CustomAnimatedGridViewModel viewModel = CustomAnimatedGridViewModel();
-  bool get islemMi => widget.islemTipi == IslemTipiEnum.cari || widget.islemTipi == IslemTipiEnum.stok || widget.islemTipi == IslemTipiEnum.siparis;
+  // bool get islemMi => widget.islemTipi == IslemTipiEnum.cari || widget.islemTipi == IslemTipiEnum.stok || widget.islemTipi == IslemTipiEnum.siparis;
   bool get cariMi => widget.islemTipi == IslemTipiEnum.cari;
   bool get stokMu => widget.islemTipi == IslemTipiEnum.stok;
   bool get siparisMi => widget.islemTipi == IslemTipiEnum.siparis;
+  bool get kasaMi => widget.islemTipi == IslemTipiEnum.kasa;
   bool get raporMu => widget.islemTipi == IslemTipiEnum.cariRapor || widget.islemTipi == IslemTipiEnum.stokRapor;
   List<GridItemModel> result = MenuItemConstants().getList();
   @override
   void initState() {
     // viewModel.setGridItemModel(result.getList().first.altMenuler?.where((element) => element.title == "Raporlar").first.altMenuler?.where((element) => element.yetkiKontrol == true).toList());
-    if (islemMi) {
-      IslemlerMenuItemConstants islemlerResult =
-          IslemlerMenuItemConstants(islemtipi: widget.islemTipi, raporlar: getRaporList(widget.islemTipi), siparisTipi: widget.siparisTipi, model: widget.cariListesiModel ?? widget.model);
-      viewModel.setGridItemModel(islemlerResult.islemlerList.whereType<GridItemModel>().toList());
-    } else if (raporMu) {
+    if (raporMu) {
       if (widget.islemTipi == IslemTipiEnum.cariRapor) {
         viewModel.setGridItemModel(getRaporList(IslemTipiEnum.cari)?.first.altMenuler);
       } else if (widget.islemTipi == IslemTipiEnum.stokRapor) {
@@ -50,6 +48,10 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
       } else if (widget.islemTipi == IslemTipiEnum.siparis) {
         viewModel.setGridItemModel(getRaporList(IslemTipiEnum.siparis)?.first.altMenuler?.where((element) => element.siparisTipi == widget.siparisTipi).toList());
       }
+    } else {
+      IslemlerMenuItemConstants islemlerResult =
+          IslemlerMenuItemConstants(islemtipi: widget.islemTipi, raporlar: getRaporList(widget.islemTipi), siparisTipi: widget.siparisTipi, model: widget.cariListesiModel ?? widget.model);
+      viewModel.setGridItemModel(islemlerResult.islemlerList.nullCheckWithGeneric);
     }
     super.initState();
   }

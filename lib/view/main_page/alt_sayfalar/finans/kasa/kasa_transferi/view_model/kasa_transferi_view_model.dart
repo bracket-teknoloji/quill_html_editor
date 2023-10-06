@@ -1,4 +1,8 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/model/tahsilat_request_model.dart";
+import "package:picker/view/main_page/model/param_model.dart";
+import "package:uuid/uuid.dart";
+
 import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/doviz_kurlari_model.dart";
 import "../../../../../../../core/base/model/generic_response_model.dart";
@@ -6,9 +10,6 @@ import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
 import "../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_yeni_kayit/model/stok_yeni_kayit_model.dart";
-import "package:picker/view/main_page/model/param_model.dart";
-import "package:uuid/uuid.dart";
 
 part "kasa_transferi_view_model.g.dart";
 
@@ -16,7 +17,7 @@ class KasaTransferiViewModel = _KasaTransferiViewModelBase with _$KasaTransferiV
 
 abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
   @observable
-  StokYeniKayitModel model = StokYeniKayitModel(tahsilatmi: true, yeniKayit: true, gc: "C", tag: "TahsilatModel", pickerBelgeTuru: "KAT", hesapTipi: "T");
+  TahsilatRequestModel model = TahsilatRequestModel(tahsilatmi: true, yeniKayit: true, gc: "C", tag: "TahsilatModel", pickerBelgeTuru: "KAT", hesapTipi: "T");
 
   @observable
   KasaList? girisKasa;
@@ -31,7 +32,7 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
   String get aciklamaString => "Transfer ${girisKasa?.kasaTanimi ?? ""} => ${cikisKasa?.kasaTanimi ?? ""}";
 
   @computed
-  StokYeniKayitModel get getStokYeniKayitModel {
+  TahsilatRequestModel get getStokYeniKayitModel {
     var uuid = const Uuid();
     return model.copyWith(guid: uuid.v4());
   }

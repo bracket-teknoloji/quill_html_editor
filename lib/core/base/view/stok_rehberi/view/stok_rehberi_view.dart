@@ -3,9 +3,6 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../yapilandirma_rehberi/model/yapilandirma_rehberi_model.dart";
-import "../../../../constants/extensions/widget_extensions.dart";
-import "../../../../constants/static_variables/static_variables.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -17,13 +14,16 @@ import "../../../../constants/enum/badge_color_enum.dart";
 import "../../../../constants/enum/base_edit_enum.dart";
 import "../../../../constants/enum/grup_kodu_enums.dart";
 import "../../../../constants/extensions/number_extensions.dart";
+import "../../../../constants/extensions/widget_extensions.dart";
 import "../../../../constants/ondalik_utils.dart";
+import "../../../../constants/static_variables/static_variables.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../../init/network/login/api_urls.dart";
 import "../../../model/base_edit_model.dart";
 import "../../../model/base_grup_kodu_model.dart";
 import "../../../model/generic_response_model.dart";
 import "../../../state/base_state.dart";
+import "../../yapilandirma_rehberi/model/yapilandirma_rehberi_model.dart";
 import "../view_model/stok_rehberi_view_model.dart";
 
 class StokRehberiView extends StatefulWidget {
@@ -184,13 +184,14 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 }))
                       ]),
                       ElevatedButton(
-                          onPressed: () {
-                            Get.back();
-                            resetData();
-                          },
-                          child: const Text("Filtrele"))
+                              onPressed: () {
+                                Get.back();
+                                resetData();
+                              },
+                              child: const Text("Filtrele"))
+                          .paddingAll(UIHelper.lowSize)
                     ],
-                  ));
+                  ).paddingAll(UIHelper.lowSize));
             },
             icon: const Icon(Icons.filter_alt_outlined)),
         IconButton(

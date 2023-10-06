@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../base/view/pdf_viewer/model/pdf_viewer_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -11,6 +10,7 @@ import "../../base/model/base_edit_model.dart";
 import "../../base/model/delete_fatura_model.dart";
 import "../../base/model/print_model.dart";
 import "../../base/state/base_state.dart";
+import "../../base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/enum/base_edit_enum.dart";
 import "../../constants/enum/siparis_tipi_enum.dart";
@@ -175,7 +175,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
         children: [
           Row(
             children: [
-              ColorfulBadge(label: Text(widget.model.remoteTempBelgeEtiketi ?? "")).yetkiVarMi(widget.model.remoteTempBelgeEtiketi != null),
+              ColorfulBadge(label: Text(widget.model.remoteTempBelgeEtiketi ?? ""), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(widget.model.remoteTempBelgeEtiketi != null),
               ColorfulBadge(label: Text("Dövizli ${widget.model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(widget.model.dovizAdi != null),
               const ColorfulBadge(label: Text("Tamamlanmamış"), badgeColorEnum: BadgeColorEnum.tamamlanmamis).yetkiVarMi(widget.model.isNew == true),
               ColorfulBadge(label: Text("Fatura (${widget.model.faturalasanSayi})"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(widget.model.faturalasanSayi != null),

@@ -147,42 +147,47 @@ class BottomSheetDialogManager {
                 body == null
                     ? SizedBox(
                         // if children are not fit to screen, it will be scrollable
-                        height: children!.length * 50 < Get.height * 0.9 ? children.length * 50 : Get.height * 0.9,
+                        height: children!.length * 50 < Get.height * 0.8 ? children.length * 50 : Get.height * 0.8,
                         child: Column(
                           children: [
                             Expanded(
                               child: SingleChildScrollView(
-                                child: Wrap(
-                                  children: [
-                                    ...List.generate(
-                                      children.length,
-                                      (index) => Wrap(
-                                        children: [
-                                          RadioListTile(
-                                            activeColor: UIHelper.primaryColor,
-                                            onChanged: (value) {
-                                              viewModel.changeRadioGroupValue(title);
-                                              if (children?[index]?.onTap != null) {
-                                                children?[index]?.onTap!();
-                                              } else {
-                                                Get.back(result: children![index]?.value);
-                                              }
-                                            },
-                                            value: children?[index]?.title,
-                                            groupValue: viewModel.radioGroupValue,
-                                            title: Text(children![index]!.title),
-                                          ),
-                                          index != children.length - 1
-                                              ? Padding(
-                                                  padding: UIHelper.lowPaddingVertical,
-                                                  child: const Divider(),
-                                                )
-                                              : Container()
-                                        ],
+                                child: SafeArea(
+                                  child: Wrap(
+                                    children: [
+                                      ...List.generate(
+                                        children.length,
+                                        (index) => Wrap(
+                                          children: [
+                                            RadioListTile(
+                                              activeColor: UIHelper.primaryColor,
+                                              onChanged: (value) {
+                                                viewModel.changeRadioGroupValue(title);
+                                                if (children?[index]?.onTap != null) {
+                                                  children?[index]?.onTap!();
+                                                } else {
+                                                  Get.back(result: children![index]?.value);
+                                                }
+                                              },
+                                              value: children?[index]?.title,
+                                              groupValue: viewModel.radioGroupValue,
+                                              title: Text(children![index]!.title),
+                                              subtitle: children[index]?.description != null
+                                                  ? Text(children[index]!.description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withOpacity(0.6)))
+                                                  : null,
+                                            ),
+                                            index != children.length - 1
+                                                ? Padding(
+                                                    padding: UIHelper.lowPaddingVertical,
+                                                    child: const Divider(),
+                                                  )
+                                                : Container()
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ).paddingOnly(bottom: 10),
+                                    ],
+                                  ).paddingOnly(bottom: 10),
+                                ),
                               ),
                             ),
                           ],
@@ -568,13 +573,13 @@ class BottomSheetDialogManager {
   Future<PlasiyerList?> showPlasiyerBottomSheetDialog(BuildContext context) async {
     List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? [];
     return await showRadioBottomSheetDialog(context,
-        title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? e.plasiyerKodu ?? "", value: e)).toList());
+        title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? e.plasiyerKodu ?? "", description: e.plasiyerKodu, value: e)).toList());
   }
 
   Future<BaseProjeModel?> showProjeBottomSheetDialog(BuildContext context) async {
     List<BaseProjeModel> projeList = await NetworkManager().getProjeData() ?? [];
-    BaseProjeModel? proje =
-        await showRadioBottomSheetDialog(context, title: "Proje Seçiniz", children: projeList.map((e) => BottomSheetModel(title: e.projeAciklama ?? e.projeKodu ?? "", value: e)).toList());
+    BaseProjeModel? proje = await showRadioBottomSheetDialog(context,
+        title: "Proje Seçiniz", children: projeList.map((e) => BottomSheetModel(title: e.projeAciklama ?? e.projeKodu ?? "", description: e.projeKodu, value: e)).toList());
     return proje;
   }
 

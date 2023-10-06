@@ -27,11 +27,6 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
     parametreModel = CacheManager.getAnaVeri()?.paramModel ?? ParamModel();
     profilYetkiModel = CacheManager.getAnaVeri()?.userModel?.profilYetki ?? ProfilYetkiModel();
   }
-  @override
-  void initState() => super.initState();
-  @override
-  void dispose() => super.dispose();
-
   double get width => MediaQuery.sizeOf(context).width;
   double get height => MediaQuery.sizeOf(context).height;
   ThemeData get theme => Theme.of(context);
