@@ -1,9 +1,13 @@
 import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
+import "package:picker/core/components/bottom_bar/bottom_bar.dart";
+import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
@@ -58,73 +62,141 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Observer(builder: (_) {
-          return AppBarTitle(title: "Kasa Hareketleri (${viewModel.kasaIslemleriListesi?.length ?? 0})", subtitle: widget.model?.kasaKodu);
-        }),
-      ),
-      body: RefreshIndicator.adaptive(
-        onRefresh: () async => await viewModel.resetPage(),
-        child: Observer(builder: (_) {
-          if (viewModel.kasaIslemleriListesi.ext.isNullOrEmpty) {
-            if (viewModel.kasaIslemleriListesi != null) {
-              return const Center(child: Text("Kasa hareketi bulunamadı."));
-            } else {
-              return const Center(child: CircularProgressIndicator.adaptive());
-            }
-          }
-          return Observer(builder: (_) {
-            return ListView.builder(
-              padding: UIHelper.lowPadding,
-              primary: false,
-              controller: _scrollController,
-              shrinkWrap: false,
-              physics: const BouncingScrollPhysics(
-                parent: AlwaysScrollableScrollPhysics(),
-              ),
-              itemCount: viewModel.kasaIslemleriListesi != null ? ((viewModel.kasaIslemleriListesi?.length ?? 0) + (viewModel.dahaVarMi ? 1 : 0)) : 0,
-              itemBuilder: (context, index) {
-                if (index == (viewModel.kasaIslemleriListesi?.length ?? 0)) {
+      resizeToAvoidBottomInset: true,
+      extendBody: true,
+      extendBodyBehindAppBar: false,
+      appBar: appBar(),
+      bottomNavigationBar: bottomBar(),
+      body: body(),
+    );
+  }
+
+  AppBar appBar() {
+    return AppBar(
+      title: Observer(builder: (_) {
+        return AppBarTitle(title: "Kasa Hareketleri (${viewModel.kasaIslemleriListesi?.length ?? 0})", subtitle: widget.model?.kasaKodu);
+      }),
+    );
+  }
+
+  Column body() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Card(
+          color: UIHelper.primaryColor,
+          child: Text("Devir Tutarı: ${widget.model?.devirTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency").paddingAll(UIHelper.lowSize).paddingOnly(left: UIHelper.midSize),
+        ).paddingSymmetric(horizontal: UIHelper.lowSize),
+        Expanded(
+          child: RefreshIndicator.adaptive(
+            onRefresh: () async => await viewModel.resetPage(),
+            child: Observer(builder: (_) {
+              if (viewModel.kasaIslemleriListesi.ext.isNullOrEmpty) {
+                if (viewModel.kasaIslemleriListesi != null) {
+                  return const Center(child: Text("Kasa hareketi bulunamadı."));
+                } else {
                   return const Center(child: CircularProgressIndicator.adaptive());
                 }
-                var item = viewModel.kasaIslemleriListesi?[index];
-                return Card(
-                  child: ListTile(
-                    title: Column(
-                      children: [
-                        Row(
+              }
+              return Observer(builder: (_) {
+                return ListView.builder(
+                  padding: UIHelper.lowPadding,
+                  primary: false,
+                  controller: _scrollController,
+                  shrinkWrap: false,
+                  physics: const BouncingScrollPhysics(
+                    parent: AlwaysScrollableScrollPhysics(),
+                  ),
+                  itemCount: viewModel.kasaIslemleriListesi != null ? ((viewModel.kasaIslemleriListesi?.length ?? 0) + (viewModel.dahaVarMi ? 1 : 0)) : 0,
+                  itemBuilder: (context, index) {
+                    if (index == (viewModel.kasaIslemleriListesi?.length ?? 0)) {
+                      return const Center(child: CircularProgressIndicator.adaptive());
+                    }
+                    var item = viewModel.kasaIslemleriListesi?[index];
+                    return Card(
+                      child: ListTile(
+                        onTap: () async {
+                          await bottomSheetDialogManager.showBottomSheetDialog(context, title: item?.tipAciklama ?? "", children: [
+                            BottomSheetModel(
+                                title: "Sil",
+                                iconWidget: Icons.delete_outline_outlined,
+                                onTap: () {
+                                  Get.back();
+                                  dialogManager.showAreYouSureDialog(() async {
+                                    var result = await viewModel.deleteData(item?.inckeyno);
+                                    if (result.success == true) {
+                                      dialogManager.showSuccessSnackBar("${(result.message) ?? "Başarılı"} ${item?.inckeyno}");
+                                      viewModel.kasaIslemleriListesi?.remove(item);
+                                    } else {
+                                      dialogManager.showErrorSnackBar(result.message ?? "Başarısız");
+                                    }
+                                  });
+                                }),
+                          ]);
+                        },
+                        title: Column(
                           children: [
-                            Text("${item?.tarih.toDateString ?? ""} "),
-                            ColorfulBadge(
-                              label: Text((item?.tipAciklama ?? "")),
-                              badgeColorEnum: BadgeColorEnum.tipAciklama,
-                            ).yetkiVarMi(item?.tipAciklama != null),
+                            Row(
+                              children: [
+                                Text("${item?.tarih.toDateString ?? ""} "),
+                                ColorfulBadge(
+                                  label: Text((item?.tipAciklama ?? "")),
+                                  badgeColorEnum: BadgeColorEnum.tipAciklama,
+                                ).yetkiVarMi(item?.tipAciklama != null),
+                              ],
+                            ),
                           ],
                         ),
-                      ],
-                    ),
-                    subtitle: Wrap(
-                      children: [
-                        Text("Kasa: ${item?.kasaKodu ?? ""}").yetkiVarMi(item?.kasaKodu != null),
-                        Text("Belge No: ${item?.belgeNo ?? ""}").yetkiVarMi(item?.belgeNo != null),
-                        Text("Hesap Kodu: ${item?.cariKodu ?? ""}").yetkiVarMi(item?.cariKodu != null),
-                        Text("Hesap Adı: ${item?.cariAdi ?? ""}").yetkiVarMi(item?.cariAdi != null),
-                        Text("Proje: ${item?.projeKodu ?? ""}").yetkiVarMi(item?.projeKodu != null),
-                        Text("Plasiyer: ${item?.plasiyerKodu ?? ""}").yetkiVarMi(item?.plasiyerKodu != null),
-                        Text("Açıklama: ${item?.aciklama ?? ""}").yetkiVarMi(item?.aciklama != null),
-                      ].whereType<Text>().toList().map((e) => SizedBox(width: width * 0.5, child: e)).toList(),
-                    ),
-                    trailing: Text(
-                      "${item?.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} $mainCurrency",
-                      style: TextStyle(color: item?.gc == "G" ? Colors.green : Colors.red),
-                    ),
-                  ),
+                        subtitle: Wrap(
+                          children: [
+                            Text("Kasa: ${item?.kasaKodu ?? ""}", style: const TextStyle(color: Colors.grey)).yetkiVarMi(item?.kasaKodu != null),
+                            Text("Belge No: ${item?.belgeNo ?? ""}", style: const TextStyle(color: Colors.grey)).yetkiVarMi(item?.belgeNo != null),
+                            Text("Hesap Kodu: ${item?.cariKodu ?? ""}").yetkiVarMi(item?.cariKodu != null),
+                            Text("Hesap Adı: ${item?.cariAdi ?? ""}").yetkiVarMi(item?.cariAdi != null),
+                            Text("Proje: ${item?.projeKodu ?? ""}").yetkiVarMi(item?.projeKodu != null),
+                            Text("Plasiyer: ${item?.plasiyerKodu ?? ""}").yetkiVarMi(item?.plasiyerKodu != null),
+                            Text("Açıklama: ${item?.aciklama ?? ""}").yetkiVarMi(item?.aciklama != null),
+                          ].whereType<Text>().toList().map((e) => SizedBox(width: width * 0.5, child: e)).toList(),
+                        ),
+                        trailing: Text(
+                          "${item?.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} $mainCurrency",
+                          style: TextStyle(color: item?.gc == "G" ? Colors.green : Colors.red),
+                        ),
+                      ),
+                    );
+                  },
                 );
-              },
-            );
-          });
-        }),
-      ),
+              });
+            }),
+          ),
+        ),
+      ],
     );
+  }
+
+  Observer bottomBar() {
+    return Observer(
+        builder: (_) => BottomBarWidget(isScrolledDown: viewModel.isScrollDown, children: [
+              FooterButton(children: [
+                const Text("Gelir"),
+                Observer(
+                    builder: (_) => Text(
+                        "${((viewModel.paramData?["TOPLAM_GELIR"] as double? ?? 0) + (widget.model?.devirTutari ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                        style: const TextStyle(color: Colors.green)))
+              ]),
+              FooterButton(children: [
+                const Text("Gider"),
+                Observer(
+                    builder: (_) =>
+                        Text("${(viewModel.paramData?["TOPLAM_GIDER"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red)))
+              ]),
+              FooterButton(children: [
+                const Text("Bakiye"),
+                Observer(
+                    builder: (_) => Text(
+                        "${((viewModel.paramData?["TOPLAM_GELIR"] as double? ?? 0) + (widget.model?.devirTutari ?? 0) - (viewModel.paramData?["TOPLAM_GIDER"] as double? ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                        style: const TextStyle(color: Colors.grey)))
+              ])
+            ]));
   }
 }

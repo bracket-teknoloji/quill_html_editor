@@ -1,11 +1,11 @@
 import "dart:convert";
 
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/model/kasa_islemleri_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/model/kasa_islemleri_request_model.dart";
-import "package:picker/view/main_page/model/param_model.dart";
 
 part "kasa_hareketleri_view_model.g.dart";
 
@@ -28,6 +28,9 @@ abstract class _KasaHareketleriViewModelBase with Store, MobxNetworkMixin {
   @observable
   ObservableList<KasaIslemleriModel>? kasaIslemleriListesi;
 
+  @computed
+  double get toplamDevirTutari => kasaIslemleriListesi?.first.kasaDevirTutari ?? 0;
+
   //* Actions
   @action
   void setDahaVarMi(bool value) => dahaVarMi = value;
@@ -49,13 +52,20 @@ abstract class _KasaHareketleriViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void addKasaIslemleriListesi(List<KasaIslemleriModel>? value) => kasaIslemleriListesi?.addAll(value ?? []);
-  
+
   @action
   Future<void> resetPage() async {
     resetSayfa();
     kasaIslemleriListesi = null;
     await getData();
   }
+
+  @action
+  Future<GenericResponseModel> deleteData(int? inckeyNo) async {
+    return  await networkManager.dioPost<KasaIslemleriModel>(path: ApiUrls.deleteKasaHareket, bodyModel: KasaIslemleriModel(), queryParameters: {"INCKEYNO": inckeyNo});
+    
+  }
+
   @action
   Future<void> getData() async {
     var result = await networkManager

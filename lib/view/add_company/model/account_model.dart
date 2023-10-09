@@ -133,12 +133,13 @@ class AccountModel with NetworkManagerMixin {
   Future<void> init() async {
     if (isDebug) {
       debugMu = isDebug;
+      debugMu = null;
     } else {
       debugMu = null;
     }
     // debugMu = null;
     //* Uygulama Bilgileri
-    
+
     ///  [uygulamaSurumu = packageInfo.version;]
     //* olarak değiştirilecek fakat API bu uygulamanın sürümünü kabul etmediği için manuel verdim.
     uygulamaSurumKodu = 229;
