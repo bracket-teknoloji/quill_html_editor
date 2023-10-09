@@ -14,6 +14,8 @@ import "package:picker/core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_islemleri/view/banka_islemleri_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/view/kasa_dekontlar_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/hizli_islemler/kredi_karti_tahsilati/view/kredi_karti_tahsilati_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/hizli_islemler/nakit_tahsilat/view/nakit_tahsilat_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_hareketleri/view/kasa_hareketleri_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/view/kasa_islemleri_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_listesi/view/kasa_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_transferi/view/kasa_transferi_view.dart";
@@ -147,6 +149,7 @@ class PickerApp extends StatelessWidget {
             GetPage(name: "/bankaIslemleri", page: () => const BankaIslemleriView()),
 
             //* * Kasa
+            GetPage(name: "/kasaHareketleri", page: () =>  KasaHareketleriView(model: Get.arguments)),
             GetPage(name: "/kasaListesi", page: () => const KasaListesiView()),
             GetPage(name: "/kasaDekontlari", page: () => const KasaDekontlarView()),
             GetPage(name: "/kasaIslemleri", page: () => const KasaIslemleriView()),
@@ -155,6 +158,7 @@ class PickerApp extends StatelessWidget {
 
             //* * Hızlı İşlemler
             GetPage(name: "/krediKartiTahsilati", page: () => const KrediKartiTahsilatiView()),
+            GetPage(name: "/nakitTahsilat", page: () => const NakitTahsilatView()),
 
 
             //* Sipariş

@@ -138,6 +138,7 @@ class AccountModel with NetworkManagerMixin {
     }
     // debugMu = null;
     //* Uygulama Bilgileri
+    
     ///  [uygulamaSurumu = packageInfo.version;]
     //* olarak değiştirilecek fakat API bu uygulamanın sürümünü kabul etmediği için manuel verdim.
     uygulamaSurumKodu = 229;

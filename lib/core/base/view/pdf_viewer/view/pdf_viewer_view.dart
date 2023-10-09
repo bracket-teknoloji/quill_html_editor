@@ -6,7 +6,6 @@ import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:open_file_plus/open_file_plus.dart";
 import "package:path_provider/path_provider.dart";
-import "../../../model/print_model.dart";
 import "package:share_plus/share_plus.dart";
 import "package:syncfusion_flutter_pdfviewer/pdfviewer.dart";
 
@@ -14,6 +13,7 @@ import "../../../../components/appbar/appbar_prefered_sized_bottom.dart";
 import "../../../../components/button/elevated_buttons/bottom_appbar_button.dart";
 import "../../../../constants/extensions/date_time_extensions.dart";
 import "../../../model/base_pdf_model.dart";
+import "../../../model/print_model.dart";
 import "../../../state/base_state.dart";
 import "../model/pdf_viewer_model.dart";
 import "../view_model/pdf_viewer_view_model.dart";
@@ -190,7 +190,6 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
     if (await getFile != null) {
       Share.shareXFiles([XFile((await getFile)!.path)], subject: "Pdf Paylaşımı");
     } else {
-      
       dialogManager.showErrorSnackBar("Dosya bulunamadı. Lütfen tekrar deneyiniz.");
     }
   }

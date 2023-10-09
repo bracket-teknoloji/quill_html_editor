@@ -69,6 +69,9 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(kopyala);
       islemlerList.addAll(raporlar!);
     } else if (islemtipi == IslemTipiEnum.kasa) {
+      if (model != null){
+      islemlerList.add(kasaHareketleri);
+      }
       islemlerList.add(kasaTransferi);
       islemlerList.add(nakitTahsilat);
       islemlerList.add(bankaKasaTransferi);
@@ -76,6 +79,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(krediKartiTahsilati);
       islemlerList.add(muhtelifTahsilat);
       islemlerList.add(muhtelifOdeme);
+      islemlerList.addAll(raporlar ?? []);
     }
   }
 
@@ -355,9 +359,10 @@ class IslemlerMenuItemConstants<T> {
   //* Kasa
   GridItemModel? get kasaTransferi => GridItemModel.islemler(title: "Kasa Transferi", iconData: Icons.list_alt_rounded, onTap: () => Get.toNamed("/mainPage/kasaTransferi"));
   GridItemModel? get krediKartiTahsilati => GridItemModel.islemler(title: "Kredi Kartı Tahsilatı", iconData: Icons.list_alt_rounded, onTap: () => Get.toNamed("/mainPage/krediKartiTahsilati"));
-  GridItemModel? get nakitTahsilat => GridItemModel.islemler(title: "Nakit Tahsilat", iconData: Icons.list_alt_rounded, onTap: () {});
+  GridItemModel? get nakitTahsilat => GridItemModel.islemler(title: "Nakit Tahsilat", iconData: Icons.list_alt_rounded, onTap: () => Get.toNamed("/mainPage/nakitTahsilat"));
   GridItemModel? get bankaKasaTransferi => GridItemModel.islemler(title: "Banka-Kasa Transferi", iconData: Icons.list_alt_rounded, onTap: () {});
   GridItemModel? get nakitOdeme => GridItemModel.islemler(title: "Nakit Ödeme", iconData: Icons.list_alt_rounded, onTap: () {});
   GridItemModel? get muhtelifTahsilat => GridItemModel.islemler(title: "Muhtelif Tahsilat", iconData: Icons.list_alt_rounded, onTap: () {});
   GridItemModel? get muhtelifOdeme => GridItemModel.islemler(title: "Muhtelif Ödeme", iconData: Icons.list_alt_rounded, onTap: () {});
+  GridItemModel? get kasaHareketleri => GridItemModel.islemler(title: "Kasa Hareketleri", iconData: Icons.sync_alt_outlined, onTap: () => Get.toNamed("/mainPage/kasaHareketleri", arguments: model));
 }

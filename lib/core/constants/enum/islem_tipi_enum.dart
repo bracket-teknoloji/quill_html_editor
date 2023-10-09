@@ -17,8 +17,10 @@ extension IslemTipiEnumExtension on IslemTipiEnum {
       return "/mainPage/stokEdit";
     } else if (this == IslemTipiEnum.siparis) {
       return "/mainPage/siparisEdit";
+    } else if (this == IslemTipiEnum.kasa) {
+      return "/mainPage/kasaEdit";
     } else {
-      return "/mainPage/raporEdit";
+      return "/mainPage/rapor";
     }
   }
 }

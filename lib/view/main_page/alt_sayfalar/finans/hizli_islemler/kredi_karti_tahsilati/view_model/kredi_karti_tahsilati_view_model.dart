@@ -40,7 +40,7 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<MuhasebeReferansModel>? muhaRefList;
 
   @observable
-  TahsilatRequestModel model = TahsilatRequestModel(tahsilatmi: true, yeniKayit: true, gc: "G", tag: "TahsilatModel", pickerBelgeTuru: "KAT", hesapTipi: "T");
+  TahsilatRequestModel model = TahsilatRequestModel(tahsilatmi: true, yeniKayit: true, gc: "G", tag: "TahsilatModel", pickerBelgeTuru: "KKT", hesapTipi: "T");
 
   @computed
   String? get getCariBakiye => cariBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.oran);

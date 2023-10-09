@@ -2,21 +2,21 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/card/banka_listesi_card.dart";
+
+import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
 import "../../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart";
+import "../../../../../../../core/components/button/elevated_buttons/footer_button.dart";
 import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
 import "../../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
 import "../../../../../../../core/components/wrap/appbar_title.dart";
-import "../../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../model/kasa_listesi_model.dart";
 import "../view_model/kasa_listesi_view_model.dart";
-
-import "../../../../../../../core/base/state/base_state.dart";
-import "../../../../../../../core/components/button/elevated_buttons/footer_button.dart";
 
 class KasaListesiView extends StatefulWidget {
   const KasaListesiView({super.key});
@@ -73,14 +73,8 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
         )
       ],
       bottom: AppBarPreferedSizedBottom(children: [
-        AppBarButton(
-            icon: Icons.filter_alt_outlined,
-            onPressed: filtrele,
-            child: const Text("Filtrele")),
-        AppBarButton(
-            icon: Icons.sort_by_alpha_outlined,
-            onPressed: sirala,
-            child: const Text("Sırala")),
+        AppBarButton(icon: Icons.filter_alt_outlined, onPressed: filtrele, child: const Text("Filtrele")),
+        AppBarButton(icon: Icons.sort_by_alpha_outlined, onPressed: sirala, child: const Text("Sırala")),
         AppBarButton(
             icon: Icons.refresh_outlined,
             onPressed: () async {
@@ -92,7 +86,6 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
     );
   }
 
- 
   Widget body() => RefreshIndicator.adaptive(
         onRefresh: () async {
           viewModel.setKasaListesi(null);
@@ -111,29 +104,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
                             itemCount: viewModel.getKasaListesi?.length ?? 0,
                             itemBuilder: (context, index) {
                               KasaListesiModel? item = viewModel.getKasaListesi?[index];
-                              return Card(
-                                child: ListTile(
-                                    leading: CircleAvatar(
-                                      child: Text(item?.kasaTanimi?[0] ?? ""),
-                                    ),
-                                    title: Text("${item?.kasaKodu != null ? '${item?.kasaKodu} - ' : ''}${item?.kasaTanimi ?? ""}"),
-                                    subtitle: Text(
-                                        "Devir Tutarı: ${(item?.dovizli == "E" ? item?.dovizDevirTutari : item?.devirTutari).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${item?.dovizli == "E" ? (item?.dovizAdi ?? "") : mainCurrency}"),
-                                    trailing: Text.rich(
-                                      TextSpan(
-                                          children: [
-                                        TextSpan(
-                                            style: TextStyle(
-                                                color: ((item?.dovizli == "E" ? (item?.devirliDovizBakiye ?? item?.dovizDevirTutari ?? 0) : item?.devirliBakiye ?? 0) < 0) ? Colors.red : Colors.green),
-                                            text:
-                                                "${(item?.dovizli == "E" ? (item?.devirliDovizBakiye ?? item?.dovizDevirTutari) : item?.devirliBakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${item?.dovizli == "E" ? (item?.dovizAdi ?? "") : mainCurrency}\n"),
-                                        item?.dovizli == "E"
-                                            ? TextSpan(text: "${(item?.dovizli == "E" ? item?.devirliBakiye : item?.bakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")
-                                            : null
-                                      ].nullCheckWithGeneric),
-                                      textAlign: TextAlign.end,
-                                    )),
-                              );
+                              return KasaListesiCard(item: item);
                             });
                       })),
       );
@@ -170,53 +141,54 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
         ]))
       ],
     ));
-  } sirala() async {
-            var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                title: "Sırala",
-                children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])));
-            if (result != null) {
-              viewModel.setSirala(result);
-              viewModel.setKasaListesi(null);
-              viewModel.getData();
-            }
-          }
+  }
+
+  sirala() async {
+    var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+        title: "Sırala",
+        children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])));
+    if (result != null) {
+      viewModel.setSirala(result);
+      viewModel.setKasaListesi(null);
+      viewModel.getData();
+    }
+  }
 
   filtrele() async {
-            await bottomSheetDialogManager.showBottomSheetDialog(context,
-                title: "Filtrele",
-                body: Column(
-                  children: [
-                    Observer(builder: (_) {
-                      return SlideControllerWidget(
-                          childrenTitleList: viewModel.filtreleMap.keys.toList(),
-                          childrenValueList: viewModel.filtreleMap.values.toList(),
-                          filterOnChanged: (index) => viewModel.setFiltreGroupValue(index ?? 0),
-                          groupValue: viewModel.filtreGroupValue);
-                    }),
-                    Row(
-                      children: [
-                        Expanded(
-                            child: ElevatedButton(
-                                style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
-                                onPressed: () {
-                                  Get.back();
-                                  viewModel.setFiltreGroupValue(0);
-                                  viewModel.getData();
-                                },
-                                child: const Text("Sıfırla"))),
-                        const SizedBox(width: 10),
-                        Expanded(
-                            child: ElevatedButton(
-                                onPressed: () {
-                                  Get.back();
-                                  viewModel.setKasaListesi(null);
-                                  viewModel.getData();
-                                },
-                                child: const Text("Uygula")))
-                      ],
-                    )
-                  ],
-                ));
-          }
-
+    await bottomSheetDialogManager.showBottomSheetDialog(context,
+        title: "Filtrele",
+        body: Column(
+          children: [
+            Observer(builder: (_) {
+              return SlideControllerWidget(
+                  childrenTitleList: viewModel.filtreleMap.keys.toList(),
+                  childrenValueList: viewModel.filtreleMap.values.toList(),
+                  filterOnChanged: (index) => viewModel.setFiltreGroupValue(index ?? 0),
+                  groupValue: viewModel.filtreGroupValue);
+            }),
+            Row(
+              children: [
+                Expanded(
+                    child: ElevatedButton(
+                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
+                        onPressed: () {
+                          Get.back();
+                          viewModel.setFiltreGroupValue(0);
+                          viewModel.getData();
+                        },
+                        child: const Text("Sıfırla"))),
+                const SizedBox(width: 10),
+                Expanded(
+                    child: ElevatedButton(
+                        onPressed: () {
+                          Get.back();
+                          viewModel.setKasaListesi(null);
+                          viewModel.getData();
+                        },
+                        child: const Text("Uygula")))
+              ],
+            ).paddingAll(UIHelper.lowSize)
+          ],
+        ).paddingAll(UIHelper.lowSize));
+  }
 }

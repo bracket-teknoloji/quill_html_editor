@@ -68,7 +68,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
       await getCari();
       if (viewModel.model.kktYontemi == "D") {
         await getSeri();
-        viewModel.setPickerBelgeTuru("KKT");
+        // viewModel.setPickerBelgeTuru("KKT");
         await getBankaHesaplari();
       }
       if (viewModel.model.kktYontemi == "K" || viewModel.model.kktYontemi == "H") {
@@ -342,6 +342,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
       _cariController.text = result.cariAdi ?? "";
       viewModel.setAciklama(result.cariAdi);
       viewModel.setCariKodu(result.cariKodu);
+      viewModel.setHesapKodu(result.cariKodu);
       viewModel.setCariBakiye(result.bakiye);
     }
   }
