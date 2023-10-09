@@ -133,7 +133,6 @@ class AccountModel with NetworkManagerMixin {
   Future<void> init() async {
     if (isDebug) {
       debugMu = isDebug;
-      debugMu = null;
     } else {
       debugMu = null;
     }
