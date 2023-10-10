@@ -130,12 +130,12 @@ class _$KasaIslemleriRequestModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_KasaIslemleriRequestModelCopyWith<$Res>
+abstract class _$$KasaIslemleriRequestModelImplCopyWith<$Res>
     implements $KasaIslemleriRequestModelCopyWith<$Res> {
-  factory _$$_KasaIslemleriRequestModelCopyWith(
-          _$_KasaIslemleriRequestModel value,
-          $Res Function(_$_KasaIslemleriRequestModel) then) =
-      __$$_KasaIslemleriRequestModelCopyWithImpl<$Res>;
+  factory _$$KasaIslemleriRequestModelImplCopyWith(
+          _$KasaIslemleriRequestModelImpl value,
+          $Res Function(_$KasaIslemleriRequestModelImpl) then) =
+      __$$KasaIslemleriRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -151,13 +151,13 @@ abstract class _$$_KasaIslemleriRequestModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_KasaIslemleriRequestModelCopyWithImpl<$Res>
+class __$$KasaIslemleriRequestModelImplCopyWithImpl<$Res>
     extends _$KasaIslemleriRequestModelCopyWithImpl<$Res,
-        _$_KasaIslemleriRequestModel>
-    implements _$$_KasaIslemleriRequestModelCopyWith<$Res> {
-  __$$_KasaIslemleriRequestModelCopyWithImpl(
-      _$_KasaIslemleriRequestModel _value,
-      $Res Function(_$_KasaIslemleriRequestModel) _then)
+        _$KasaIslemleriRequestModelImpl>
+    implements _$$KasaIslemleriRequestModelImplCopyWith<$Res> {
+  __$$KasaIslemleriRequestModelImplCopyWithImpl(
+      _$KasaIslemleriRequestModelImpl _value,
+      $Res Function(_$KasaIslemleriRequestModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -173,7 +173,7 @@ class __$$_KasaIslemleriRequestModelCopyWithImpl<$Res>
     Object? kasaKodu = freezed,
     Object? gc = freezed,
   }) {
-    return _then(_$_KasaIslemleriRequestModel(
+    return _then(_$KasaIslemleriRequestModelImpl(
       baslamaTarihi: freezed == baslamaTarihi
           ? _value.baslamaTarihi
           : baslamaTarihi // ignore: cast_nullable_to_non_nullable
@@ -217,8 +217,8 @@ class __$$_KasaIslemleriRequestModelCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class _$_KasaIslemleriRequestModel implements _KasaIslemleriRequestModel {
-  _$_KasaIslemleriRequestModel(
+class _$KasaIslemleriRequestModelImpl implements _KasaIslemleriRequestModel {
+  _$KasaIslemleriRequestModelImpl(
       {this.baslamaTarihi,
       this.bitisTarihi,
       this.menuKodu,
@@ -229,8 +229,8 @@ class _$_KasaIslemleriRequestModel implements _KasaIslemleriRequestModel {
       this.kasaKodu,
       this.gc});
 
-  factory _$_KasaIslemleriRequestModel.fromJson(Map<String, dynamic> json) =>
-      _$$_KasaIslemleriRequestModelFromJson(json);
+  factory _$KasaIslemleriRequestModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$KasaIslemleriRequestModelImplFromJson(json);
 
   @override
   String? baslamaTarihi;
@@ -259,13 +259,13 @@ class _$_KasaIslemleriRequestModel implements _KasaIslemleriRequestModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_KasaIslemleriRequestModelCopyWith<_$_KasaIslemleriRequestModel>
-      get copyWith => __$$_KasaIslemleriRequestModelCopyWithImpl<
-          _$_KasaIslemleriRequestModel>(this, _$identity);
+  _$$KasaIslemleriRequestModelImplCopyWith<_$KasaIslemleriRequestModelImpl>
+      get copyWith => __$$KasaIslemleriRequestModelImplCopyWithImpl<
+          _$KasaIslemleriRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_KasaIslemleriRequestModelToJson(
+    return _$$KasaIslemleriRequestModelImplToJson(
       this,
     );
   }
@@ -281,10 +281,10 @@ abstract class _KasaIslemleriRequestModel implements KasaIslemleriRequestModel {
       String? hesapTipi,
       String? hesapKodu,
       String? kasaKodu,
-      String? gc}) = _$_KasaIslemleriRequestModel;
+      String? gc}) = _$KasaIslemleriRequestModelImpl;
 
   factory _KasaIslemleriRequestModel.fromJson(Map<String, dynamic> json) =
-      _$_KasaIslemleriRequestModel.fromJson;
+      _$KasaIslemleriRequestModelImpl.fromJson;
 
   @override
   String? get baslamaTarihi;
@@ -315,6 +315,6 @@ abstract class _KasaIslemleriRequestModel implements KasaIslemleriRequestModel {
   set gc(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$_KasaIslemleriRequestModelCopyWith<_$_KasaIslemleriRequestModel>
+  _$$KasaIslemleriRequestModelImplCopyWith<_$KasaIslemleriRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

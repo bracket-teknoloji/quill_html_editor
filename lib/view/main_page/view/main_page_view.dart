@@ -43,7 +43,8 @@ class _MainPageViewState extends BaseState<MainPageView> {
           });
           return false;
         } else {
-          if (scaffoldKey.currentState!.isDrawerOpen || scaffoldKey.currentState!.isEndDrawerOpen) {
+          if (scaffoldKey.currentState!.isDrawerOpen ||
+              scaffoldKey.currentState!.isEndDrawerOpen) {
             scaffoldKey.currentState!.closeDrawer();
             scaffoldKey.currentState!.closeEndDrawer();
             dialogManager.showExitDialog();
@@ -68,9 +69,13 @@ class _MainPageViewState extends BaseState<MainPageView> {
                     padding: UIHelper.lowPadding,
                     child: AnimationLimiter(
                       child: GridView.builder(
-                        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                        physics: const BouncingScrollPhysics(
+                            parent: AlwaysScrollableScrollPhysics()),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: MediaQuery.of(context).size.width ~/ 90 > 10 ? 10 : MediaQuery.of(context).size.width ~/ 90,
+                          crossAxisCount:
+                              MediaQuery.of(context).size.width ~/ 90 > 10
+                                  ? 10
+                                  : MediaQuery.of(context).size.width ~/ 90,
                           childAspectRatio: 0.9,
                         ),
                         itemCount: items.length,
@@ -98,16 +103,23 @@ class _MainPageViewState extends BaseState<MainPageView> {
                                           onTap: () {
                                             if (item.altMenuVarMi) {
                                               item.altMenuler?.length == 1
-                                                  ? item.altMenuler?.first.onTap?.call()
+                                                  ? item.altMenuler?.first.onTap
+                                                      ?.call()
                                                   : setState(() {
                                                       lastItems.add(items);
-                                                      title2.add(item.title.toString());
-                                                      items = item.altMenuler!.where((element) {
-                                                        element.color ??= item.color;
-                                                        if (element.icon.ext.isNullOrEmpty) {
-                                                          element.icon = item.icon;
+                                                      title2.add(item.title
+                                                          .toString());
+                                                      items = item.altMenuler!
+                                                          .where((element) {
+                                                        element.color ??=
+                                                            item.color;
+                                                        if (element.icon.ext
+                                                            .isNullOrEmpty) {
+                                                          element.icon =
+                                                              item.icon;
                                                         }
-                                                        return element.yetkiKontrol;
+                                                        return element
+                                                            .yetkiKontrol;
                                                       }).toList();
                                                     });
                                             } else {
@@ -131,9 +143,19 @@ class _MainPageViewState extends BaseState<MainPageView> {
                           },
                           child: Row(
                             children: [
-                              (CacheManager.getAnaVeri()!.userModel!.admin == "E" ? Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20) : IconHelper.smallIcon("User-Account"))
+                              (CacheManager.getAnaVeri()!.userModel!.admin ==
+                                          "E"
+                                      ? Icon(Icons.local_police_outlined,
+                                          color: UIHelper.primaryColor,
+                                          size: 20)
+                                      : IconHelper.smallIcon("User-Account"))
                                   .marginOnly(right: 5),
-                              Text(CacheManager.getAnaVeri()!.userModel!.kuladi.toString(), style: theme.textTheme.bodyMedium),
+                              Text(
+                                  CacheManager.getAnaVeri()!
+                                      .userModel!
+                                      .kuladi
+                                      .toString(),
+                                  style: theme.textTheme.bodyMedium),
                             ],
                           ),
                         ),
@@ -143,8 +165,12 @@ class _MainPageViewState extends BaseState<MainPageView> {
                           },
                           child: Row(
                             children: [
-                              Icon(Icons.storage_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: 5),
-                              Text("${CacheManager.getVeriTabani()["Şirket"]} (${CacheManager.getVeriTabani()["Şube"]})", style: theme.textTheme.bodyMedium),
+                              Icon(Icons.storage_outlined,
+                                      color: UIHelper.primaryColor, size: 20)
+                                  .marginOnly(right: 5),
+                              Text(
+                                  "${CacheManager.getVeriTabani()["Şirket"]} (${CacheManager.getVeriTabani()["Şube"]})",
+                                  style: theme.textTheme.bodyMedium),
                             ],
                           ),
                         ),

@@ -6,9 +6,9 @@ part of 'tahsilat_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TahsilatRequestModel _$$_TahsilatRequestModelFromJson(
+_$TahsilatRequestModelImpl _$$TahsilatRequestModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_TahsilatRequestModel(
+    _$TahsilatRequestModelImpl(
       aciklama: json['ACIKLAMA'] as String?,
       belgeNo: json['BELGE_NO'] as String?,
       gc: json['GC'] as String?,
@@ -42,8 +42,8 @@ _$_TahsilatRequestModel _$$_TahsilatRequestModelFromJson(
       hedefAciklama: json['HEDEF_ACIKLAMA'] as String?,
     );
 
-Map<String, dynamic> _$$_TahsilatRequestModelToJson(
-    _$_TahsilatRequestModel instance) {
+Map<String, dynamic> _$$TahsilatRequestModelImplToJson(
+    _$TahsilatRequestModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

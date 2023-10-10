@@ -12,7 +12,11 @@ class CustomPieChart extends StatefulWidget {
   final List<String>? pieChartTitle;
   final List<double>? pieChartSelectedValue;
   final List<double>? pieChartValue;
-  const CustomPieChart({super.key, this.pieChartValue, this.pieChartTitle, this.pieChartSelectedValue});
+  const CustomPieChart(
+      {super.key,
+      this.pieChartValue,
+      this.pieChartTitle,
+      this.pieChartSelectedValue});
 
   @override
   State<CustomPieChart> createState() => _CustomPieChartState();
@@ -32,20 +36,24 @@ class _CustomPieChartState extends BaseState<CustomPieChart> {
                       PieChartData(
                           pieTouchData: PieTouchData(
                             touchCallback: (event, pieTouchResponse) {
-                              if (event.isInterestedForInteractions || pieTouchResponse == null || pieTouchResponse.touchedSection == null) {
+                              if (event.isInterestedForInteractions ||
+                                  pieTouchResponse == null ||
+                                  pieTouchResponse.touchedSection == null) {
                                 setState(() {
                                   touchedIndex = -1;
                                 });
                                 return;
                               }
-                              touchedIndex = pieTouchResponse.touchedSection!.touchedSectionIndex;
+                              touchedIndex = pieTouchResponse
+                                  .touchedSection!.touchedSectionIndex;
                               if (touchedIndex >= 0) {
                                 dialogManager.showInfoDialog(
                                     "${widget.pieChartTitle?[pieTouchResponse.touchedSection!.touchedSectionIndex] ?? widget.pieChartSelectedValue?[pieTouchResponse.touchedSection!.touchedSectionIndex].toString() ?? ''}\n${widget.pieChartValue?[pieTouchResponse.touchedSection!.touchedSectionIndex].commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency");
                               }
                             },
                           ),
-                          sections: List.generate(widget.pieChartValue?.length ?? 0, (index) {
+                          sections: List.generate(
+                              widget.pieChartValue?.length ?? 0, (index) {
                             final isTouched = index == touchedIndex;
                             final fontSize = isTouched ? 16.0 : null;
                             final radius = isTouched ? 40.0 : 35.0;
@@ -54,8 +62,11 @@ class _CustomPieChartState extends BaseState<CustomPieChart> {
                               titlePositionPercentageOffset: 0.5,
                               showTitle: true,
                               value: widget.pieChartValue?[index] ?? 0,
-                              title: widget.pieChartTitle?[index] ?? widget.pieChartValue?[index].toString() ?? "",
-                              titleStyle: theme.textTheme.labelSmall?.copyWith(fontSize: fontSize),
+                              title: widget.pieChartTitle?[index] ??
+                                  widget.pieChartValue?[index].toString() ??
+                                  "",
+                              titleStyle: theme.textTheme.labelSmall
+                                  ?.copyWith(fontSize: fontSize),
                               radius: radius,
                             );
                           })),

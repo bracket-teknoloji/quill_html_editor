@@ -72,22 +72,24 @@ class _$MuhasebeReferansModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_MuhasebeReferansModelCopyWith<$Res>
+abstract class _$$MuhasebeReferansModelImplCopyWith<$Res>
     implements $MuhasebeReferansModelCopyWith<$Res> {
-  factory _$$_MuhasebeReferansModelCopyWith(_$_MuhasebeReferansModel value,
-          $Res Function(_$_MuhasebeReferansModel) then) =
-      __$$_MuhasebeReferansModelCopyWithImpl<$Res>;
+  factory _$$MuhasebeReferansModelImplCopyWith(
+          _$MuhasebeReferansModelImpl value,
+          $Res Function(_$MuhasebeReferansModelImpl) then) =
+      __$$MuhasebeReferansModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? kodu, String? tanimi});
 }
 
 /// @nodoc
-class __$$_MuhasebeReferansModelCopyWithImpl<$Res>
-    extends _$MuhasebeReferansModelCopyWithImpl<$Res, _$_MuhasebeReferansModel>
-    implements _$$_MuhasebeReferansModelCopyWith<$Res> {
-  __$$_MuhasebeReferansModelCopyWithImpl(_$_MuhasebeReferansModel _value,
-      $Res Function(_$_MuhasebeReferansModel) _then)
+class __$$MuhasebeReferansModelImplCopyWithImpl<$Res>
+    extends _$MuhasebeReferansModelCopyWithImpl<$Res,
+        _$MuhasebeReferansModelImpl>
+    implements _$$MuhasebeReferansModelImplCopyWith<$Res> {
+  __$$MuhasebeReferansModelImplCopyWithImpl(_$MuhasebeReferansModelImpl _value,
+      $Res Function(_$MuhasebeReferansModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -96,7 +98,7 @@ class __$$_MuhasebeReferansModelCopyWithImpl<$Res>
     Object? kodu = freezed,
     Object? tanimi = freezed,
   }) {
-    return _then(_$_MuhasebeReferansModel(
+    return _then(_$MuhasebeReferansModelImpl(
       kodu: freezed == kodu
           ? _value.kodu
           : kodu // ignore: cast_nullable_to_non_nullable
@@ -111,11 +113,11 @@ class __$$_MuhasebeReferansModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MuhasebeReferansModel extends _MuhasebeReferansModel {
-  _$_MuhasebeReferansModel({this.kodu, this.tanimi}) : super._();
+class _$MuhasebeReferansModelImpl extends _MuhasebeReferansModel {
+  _$MuhasebeReferansModelImpl({this.kodu, this.tanimi}) : super._();
 
-  factory _$_MuhasebeReferansModel.fromJson(Map<String, dynamic> json) =>
-      _$$_MuhasebeReferansModelFromJson(json);
+  factory _$MuhasebeReferansModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MuhasebeReferansModelImplFromJson(json);
 
   @override
   String? kodu;
@@ -125,13 +127,13 @@ class _$_MuhasebeReferansModel extends _MuhasebeReferansModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MuhasebeReferansModelCopyWith<_$_MuhasebeReferansModel> get copyWith =>
-      __$$_MuhasebeReferansModelCopyWithImpl<_$_MuhasebeReferansModel>(
-          this, _$identity);
+  _$$MuhasebeReferansModelImplCopyWith<_$MuhasebeReferansModelImpl>
+      get copyWith => __$$MuhasebeReferansModelImplCopyWithImpl<
+          _$MuhasebeReferansModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MuhasebeReferansModelToJson(
+    return _$$MuhasebeReferansModelImplToJson(
       this,
     );
   }
@@ -139,11 +141,11 @@ class _$_MuhasebeReferansModel extends _MuhasebeReferansModel {
 
 abstract class _MuhasebeReferansModel extends MuhasebeReferansModel {
   factory _MuhasebeReferansModel({String? kodu, String? tanimi}) =
-      _$_MuhasebeReferansModel;
+      _$MuhasebeReferansModelImpl;
   _MuhasebeReferansModel._() : super._();
 
   factory _MuhasebeReferansModel.fromJson(Map<String, dynamic> json) =
-      _$_MuhasebeReferansModel.fromJson;
+      _$MuhasebeReferansModelImpl.fromJson;
 
   @override
   String? get kodu;
@@ -153,6 +155,6 @@ abstract class _MuhasebeReferansModel extends MuhasebeReferansModel {
   set tanimi(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$_MuhasebeReferansModelCopyWith<_$_MuhasebeReferansModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$MuhasebeReferansModelImplCopyWith<_$MuhasebeReferansModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

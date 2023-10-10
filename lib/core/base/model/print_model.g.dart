@@ -6,8 +6,8 @@ part of 'print_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PrintModel _$$_PrintModelFromJson(Map<String, dynamic> json) =>
-    _$_PrintModel(
+_$PrintModelImpl _$$PrintModelImplFromJson(Map<String, dynamic> json) =>
+    _$PrintModelImpl(
       dizaynId: json['DIZAYN_ID'] as int?,
       etiketSayisi: json['ETIKET_SAYISI'] as int?,
       raporOzelKod: json['RAPOR_OZEL_KOD'] as String,
@@ -20,7 +20,7 @@ _$_PrintModel _$$_PrintModelFromJson(Map<String, dynamic> json) =>
       standart: json['STANDART'] as bool?,
     );
 
-Map<String, dynamic> _$$_PrintModelToJson(_$_PrintModel instance) {
+Map<String, dynamic> _$$PrintModelImplToJson(_$PrintModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

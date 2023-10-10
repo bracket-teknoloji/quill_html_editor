@@ -1,8 +1,6 @@
-
-
 import "package:flutter/material.dart";
 
-class BaseEditingModel{
+class BaseEditingModel {
   List<Tab>? tabs;
   List<Widget>? tabViews;
 

@@ -53,7 +53,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
     tipiController = TextEditingController();
     kod1Controller = TextEditingController();
     kod2Controller = TextEditingController();
-    kod3Controller = TextEditingController(); 
+    kod3Controller = TextEditingController();
     kod4Controller = TextEditingController();
     kod5Controller = TextEditingController();
     scrollController = ScrollController();
@@ -63,12 +63,15 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
       viewModel.changeBagliCariKodu(widget.cariKodu);
       viewModel.getCariListesi();
       scrollController.addListener(() {
-        if (scrollController.position.userScrollDirection == ScrollDirection.reverse) {
+        if (scrollController.position.userScrollDirection ==
+            ScrollDirection.reverse) {
           viewModel.changeIsScrollDown(false);
-        } else if (scrollController.position.userScrollDirection == ScrollDirection.forward) {
+        } else if (scrollController.position.userScrollDirection ==
+            ScrollDirection.forward) {
           viewModel.changeIsScrollDown(true);
         }
-        if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+        if (scrollController.position.pixels ==
+            scrollController.position.maxScrollExtent) {
           viewModel.getCariListesi();
         }
       });
@@ -93,7 +96,8 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: appBar(), floatingActionButton: fab(), body: body());
+    return Scaffold(
+        appBar: appBar(), floatingActionButton: fab(), body: body());
   }
 
   AppBar appBar() => AppBar(
@@ -105,7 +109,9 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                     controller: searchController,
                     onSubmitted: (value) => viewModel.changeFilterText(value),
                     onClear: () => viewModel.changeFilterText(""))
-                : AppBarTitle(title: "Cari Rehberi", subtitle: "${widget.cariKodu} Koduna Bağlı Cariler")),
+                : AppBarTitle(
+                    title: "Cari Rehberi",
+                    subtitle: "${widget.cariKodu} Koduna Bağlı Cariler")),
         actions: [
           IconButton(
               onPressed: () {
@@ -116,7 +122,10 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                   viewModel.changeFilterText("");
                 }
               },
-              icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined))),
+              icon: Observer(
+                  builder: (_) => Icon(viewModel.searchBar
+                      ? Icons.search_off_outlined
+                      : Icons.search_outlined))),
         ],
         bottom: AppBarPreferedSizedBottom(children: [
           filtreleButton(),
@@ -129,7 +138,11 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
             isScrolledDown: viewModel.isScrollDown,
             onPressed: () async {
               String? siradakiKod = await CariNetworkManager.getSiradakiKod();
-              Get.toNamed("/mainPage/cariEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, model: CariListesiModel(), siradakiKod: siradakiKod));
+              Get.toNamed("/mainPage/cariEdit",
+                  arguments: BaseEditModel(
+                      baseEditEnum: BaseEditEnum.ekle,
+                      model: CariListesiModel(),
+                      siradakiKod: siradakiKod));
             });
       });
 
@@ -150,10 +163,15 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
             //* Eğer cariListesi boş veya null değilse
             return ListView.builder(
                 controller: scrollController,
-                itemCount: viewModel.cariListesi != null ? (viewModel.cariListesi!.length + 1) : 0,
+                itemCount: viewModel.cariListesi != null
+                    ? (viewModel.cariListesi!.length + 1)
+                    : 0,
                 itemBuilder: (context, index) {
                   if (index == viewModel.cariListesi!.length) {
-                    return Visibility(visible: viewModel.dahaVarMi, child: const Center(child: CircularProgressIndicator.adaptive()));
+                    return Visibility(
+                        visible: viewModel.dahaVarMi,
+                        child: const Center(
+                            child: CircularProgressIndicator.adaptive()));
                   }
                   CariListesiModel item = viewModel.cariListesi![index];
                   return CariRehberiCard(model: item);
@@ -166,9 +184,14 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
       icon: Icons.sort_by_alpha_outlined,
       child: const Text("Sırala"),
       onPressed: () async {
-        var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+        var result = await bottomSheetDialogManager.showBottomSheetDialog(
+            context,
             title: "Sırala",
-            children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])));
+            children: List.generate(
+                viewModel.siralaMap.length,
+                (index) => BottomSheetModel(
+                    title: viewModel.siralaMap.keys.toList()[index],
+                    value: viewModel.siralaMap.values.toList()[index])));
         if (result != null) {
           viewModel.changeSiralama(result);
         }
@@ -178,7 +201,8 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
       child: const Text("Filtrele"),
       onPressed: () async {
         await viewModel.getGrupKodlari();
-        await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Filtrele", body: Observer(builder: (_) {
+        await bottomSheetDialogManager.showBottomSheetDialog(context,
+            title: "Filtrele", body: Observer(builder: (_) {
           return Padding(
             padding: UIHelper.lowPadding,
             child: Column(
@@ -201,10 +225,17 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                             if (viewModel.sehirler == null) {
                               await viewModel.getSehirBilgileri();
                             }
-                            var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                title: "Şehir Seçiniz",
-                                children: List.generate(
-                                    viewModel.sehirler?.length ?? 0, (index) => BottomSheetModel(title: viewModel.sehirler?[index].sehirAdi ?? "", value: viewModel.sehirler?[index].sehirAdi)));
+                            var result = await bottomSheetDialogManager
+                                .showBottomSheetDialog(context,
+                                    title: "Şehir Seçiniz",
+                                    children: List.generate(
+                                        viewModel.sehirler?.length ?? 0,
+                                        (index) => BottomSheetModel(
+                                            title: viewModel.sehirler?[index]
+                                                    .sehirAdi ??
+                                                "",
+                                            value: viewModel
+                                                .sehirler?[index].sehirAdi)));
                             if (result != null) {
                               viewModel.changeSehir(result);
                               sehirController.text = result;
@@ -237,10 +268,16 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                         tipiController.clear();
                       },
                       onTap: () async {
-                        var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                            title: "Tipi Seçiniz",
-                            children:
-                                List.generate(viewModel.tipiMap.length, (index) => BottomSheetModel(title: viewModel.tipiMap.keys.toList()[index], value: viewModel.tipiMap.values.toList()[index])));
+                        var result = await bottomSheetDialogManager
+                            .showBottomSheetDialog(context,
+                                title: "Tipi Seçiniz",
+                                children: List.generate(
+                                    viewModel.tipiMap.length,
+                                    (index) => BottomSheetModel(
+                                        title: viewModel.tipiMap.keys
+                                            .toList()[index],
+                                        value: viewModel.tipiMap.values
+                                            .toList()[index])));
                         if (result != null) {
                           viewModel.changeTipi(result);
                           tipiController.text = result;
@@ -254,12 +291,20 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                       suffixMore: true,
                       controller: kod1Controller,
                       onTap: () async {
-                        var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context,
-                            title: "Kod 1 Seçiniz",
-                            children: List.generate(
-                                viewModel.grupKodlari1?.length ?? 0, (index) => BottomSheetModel(title: viewModel.grupKodlari1?[index].grupAdi ?? "", value: viewModel.grupKodlari1?[index].grupKodu)));
+                        var result = await bottomSheetDialogManager
+                            .showCheckBoxBottomSheetDialog(context,
+                                title: "Kod 1 Seçiniz",
+                                children: List.generate(
+                                    viewModel.grupKodlari1?.length ?? 0,
+                                    (index) => BottomSheetModel(
+                                        title: viewModel
+                                                .grupKodlari1?[index].grupAdi ??
+                                            "",
+                                        value: viewModel
+                                            .grupKodlari1?[index].grupKodu)));
                         if (result is List && result.ext.isNotNullOrEmpty) {
-                          viewModel.changeKod1(result.whereType<String>().toList());
+                          viewModel
+                              .changeKod1(result.whereType<String>().toList());
                           kod1Controller.text = result.join(", ");
                         } else {
                           viewModel.changeKod1(null);
@@ -278,12 +323,20 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                       suffixMore: true,
                       controller: kod2Controller,
                       onTap: () async {
-                        var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context,
-                            title: "Kod 2 Seçiniz",
-                            children: List.generate(
-                                viewModel.grupKodlari2?.length ?? 0, (index) => BottomSheetModel(title: viewModel.grupKodlari2?[index].grupAdi ?? "", value: viewModel.grupKodlari2?[index].grupKodu)));
+                        var result = await bottomSheetDialogManager
+                            .showCheckBoxBottomSheetDialog(context,
+                                title: "Kod 2 Seçiniz",
+                                children: List.generate(
+                                    viewModel.grupKodlari2?.length ?? 0,
+                                    (index) => BottomSheetModel(
+                                        title: viewModel
+                                                .grupKodlari2?[index].grupAdi ??
+                                            "",
+                                        value: viewModel
+                                            .grupKodlari2?[index].grupKodu)));
                         if (result is List && result.ext.isNotNullOrEmpty) {
-                          viewModel.changeKod2(result.whereType<String>().toList());
+                          viewModel
+                              .changeKod2(result.whereType<String>().toList());
                           kod2Controller.text = result.join(", ");
                         } else {
                           viewModel.changeKod2(null);
@@ -298,12 +351,20 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                       suffixMore: true,
                       controller: kod3Controller,
                       onTap: () async {
-                        var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context,
-                            title: "Kod 3 Seçiniz",
-                            children: List.generate(
-                                viewModel.grupKodlari3?.length ?? 0, (index) => BottomSheetModel(title: viewModel.grupKodlari3?[index].grupAdi ?? "", value: viewModel.grupKodlari3?[index].grupKodu)));
+                        var result = await bottomSheetDialogManager
+                            .showCheckBoxBottomSheetDialog(context,
+                                title: "Kod 3 Seçiniz",
+                                children: List.generate(
+                                    viewModel.grupKodlari3?.length ?? 0,
+                                    (index) => BottomSheetModel(
+                                        title: viewModel
+                                                .grupKodlari3?[index].grupAdi ??
+                                            "",
+                                        value: viewModel
+                                            .grupKodlari3?[index].grupKodu)));
                         if (result is List && result.ext.isNotNullOrEmpty) {
-                          viewModel.changeKod3(result.whereType<String>().toList());
+                          viewModel
+                              .changeKod3(result.whereType<String>().toList());
                           kod3Controller.text = result.join(", ");
                         } else {
                           viewModel.changeKod3(null);
@@ -322,12 +383,20 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                       suffixMore: true,
                       controller: kod4Controller,
                       onTap: () async {
-                        var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context,
-                            title: "Kod 4 Seçiniz",
-                            children: List.generate(
-                                viewModel.grupKodlari4?.length ?? 0, (index) => BottomSheetModel(title: viewModel.grupKodlari4?[index].grupAdi ?? "", value: viewModel.grupKodlari4?[index].grupKodu)));
+                        var result = await bottomSheetDialogManager
+                            .showCheckBoxBottomSheetDialog(context,
+                                title: "Kod 4 Seçiniz",
+                                children: List.generate(
+                                    viewModel.grupKodlari4?.length ?? 0,
+                                    (index) => BottomSheetModel(
+                                        title: viewModel
+                                                .grupKodlari4?[index].grupAdi ??
+                                            "",
+                                        value: viewModel
+                                            .grupKodlari4?[index].grupKodu)));
                         if (result is List && result.ext.isNotNullOrEmpty) {
-                          viewModel.changeKod4(result.whereType<String>().toList());
+                          viewModel
+                              .changeKod4(result.whereType<String>().toList());
                           kod4Controller.text = result.join(", ");
                         } else {
                           viewModel.changeKod4(null);
@@ -342,12 +411,20 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                       suffixMore: true,
                       controller: kod5Controller,
                       onTap: () async {
-                        var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context,
-                            title: "Kod 5 Seçiniz",
-                            children: List.generate(
-                                viewModel.grupKodlari5?.length ?? 0, (index) => BottomSheetModel(title: viewModel.grupKodlari5?[index].grupAdi ?? "", value: viewModel.grupKodlari5?[index].grupKodu)));
+                        var result = await bottomSheetDialogManager
+                            .showCheckBoxBottomSheetDialog(context,
+                                title: "Kod 5 Seçiniz",
+                                children: List.generate(
+                                    viewModel.grupKodlari5?.length ?? 0,
+                                    (index) => BottomSheetModel(
+                                        title: viewModel
+                                                .grupKodlari5?[index].grupAdi ??
+                                            "",
+                                        value: viewModel
+                                            .grupKodlari5?[index].grupKodu)));
                         if (result is List && result.ext.isNotNullOrEmpty) {
-                          viewModel.changeKod5(result.whereType<String>().toList());
+                          viewModel
+                              .changeKod5(result.whereType<String>().toList());
                           kod5Controller.text = result.join(", ");
                         } else {
                           viewModel.changeKod5(null);

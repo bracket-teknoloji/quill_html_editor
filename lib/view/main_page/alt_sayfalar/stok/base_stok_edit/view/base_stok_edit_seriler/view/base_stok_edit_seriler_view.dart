@@ -9,7 +9,8 @@ class BaseStokEditSerilerView extends StatefulWidget {
   const BaseStokEditSerilerView({super.key, this.model});
 
   @override
-  State<BaseStokEditSerilerView> createState() => _BaseStokEditSerilerViewState();
+  State<BaseStokEditSerilerView> createState() =>
+      _BaseStokEditSerilerViewState();
 }
 
 class _BaseStokEditSerilerViewState extends State<BaseStokEditSerilerView> {

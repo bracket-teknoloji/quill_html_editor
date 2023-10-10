@@ -105,11 +105,11 @@ class _$BankaSozlesmesiModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_BankaSozlesmesiModelCopyWith<$Res>
+abstract class _$$BankaSozlesmesiModelImplCopyWith<$Res>
     implements $BankaSozlesmesiModelCopyWith<$Res> {
-  factory _$$_BankaSozlesmesiModelCopyWith(_$_BankaSozlesmesiModel value,
-          $Res Function(_$_BankaSozlesmesiModel) then) =
-      __$$_BankaSozlesmesiModelCopyWithImpl<$Res>;
+  factory _$$BankaSozlesmesiModelImplCopyWith(_$BankaSozlesmesiModelImpl value,
+          $Res Function(_$BankaSozlesmesiModelImpl) then) =
+      __$$BankaSozlesmesiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -122,11 +122,11 @@ abstract class _$$_BankaSozlesmesiModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_BankaSozlesmesiModelCopyWithImpl<$Res>
-    extends _$BankaSozlesmesiModelCopyWithImpl<$Res, _$_BankaSozlesmesiModel>
-    implements _$$_BankaSozlesmesiModelCopyWith<$Res> {
-  __$$_BankaSozlesmesiModelCopyWithImpl(_$_BankaSozlesmesiModel _value,
-      $Res Function(_$_BankaSozlesmesiModel) _then)
+class __$$BankaSozlesmesiModelImplCopyWithImpl<$Res>
+    extends _$BankaSozlesmesiModelCopyWithImpl<$Res, _$BankaSozlesmesiModelImpl>
+    implements _$$BankaSozlesmesiModelImplCopyWith<$Res> {
+  __$$BankaSozlesmesiModelImplCopyWithImpl(_$BankaSozlesmesiModelImpl _value,
+      $Res Function(_$BankaSozlesmesiModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -139,7 +139,7 @@ class __$$_BankaSozlesmesiModelCopyWithImpl<$Res>
     Object? baslamaTarihi = freezed,
     Object? bitisTarihi = freezed,
   }) {
-    return _then(_$_BankaSozlesmesiModel(
+    return _then(_$BankaSozlesmesiModelImpl(
       sozlesmeKodu: freezed == sozlesmeKodu
           ? _value.sozlesmeKodu
           : sozlesmeKodu // ignore: cast_nullable_to_non_nullable
@@ -170,8 +170,8 @@ class __$$_BankaSozlesmesiModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_BankaSozlesmesiModel extends _BankaSozlesmesiModel {
-  _$_BankaSozlesmesiModel(
+class _$BankaSozlesmesiModelImpl extends _BankaSozlesmesiModel {
+  _$BankaSozlesmesiModelImpl(
       {this.sozlesmeKodu,
       this.sozlesmeAdi,
       this.krediKartiTanimi,
@@ -180,8 +180,8 @@ class _$_BankaSozlesmesiModel extends _BankaSozlesmesiModel {
       this.bitisTarihi})
       : super._();
 
-  factory _$_BankaSozlesmesiModel.fromJson(Map<String, dynamic> json) =>
-      _$$_BankaSozlesmesiModelFromJson(json);
+  factory _$BankaSozlesmesiModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BankaSozlesmesiModelImplFromJson(json);
 
   @override
   String? sozlesmeKodu;
@@ -199,13 +199,14 @@ class _$_BankaSozlesmesiModel extends _BankaSozlesmesiModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BankaSozlesmesiModelCopyWith<_$_BankaSozlesmesiModel> get copyWith =>
-      __$$_BankaSozlesmesiModelCopyWithImpl<_$_BankaSozlesmesiModel>(
-          this, _$identity);
+  _$$BankaSozlesmesiModelImplCopyWith<_$BankaSozlesmesiModelImpl>
+      get copyWith =>
+          __$$BankaSozlesmesiModelImplCopyWithImpl<_$BankaSozlesmesiModelImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BankaSozlesmesiModelToJson(
+    return _$$BankaSozlesmesiModelImplToJson(
       this,
     );
   }
@@ -218,11 +219,11 @@ abstract class _BankaSozlesmesiModel extends BankaSozlesmesiModel {
       String? krediKartiTanimi,
       String? bankaTanimi,
       DateTime? baslamaTarihi,
-      DateTime? bitisTarihi}) = _$_BankaSozlesmesiModel;
+      DateTime? bitisTarihi}) = _$BankaSozlesmesiModelImpl;
   _BankaSozlesmesiModel._() : super._();
 
   factory _BankaSozlesmesiModel.fromJson(Map<String, dynamic> json) =
-      _$_BankaSozlesmesiModel.fromJson;
+      _$BankaSozlesmesiModelImpl.fromJson;
 
   @override
   String? get sozlesmeKodu;
@@ -244,6 +245,6 @@ abstract class _BankaSozlesmesiModel extends BankaSozlesmesiModel {
   set bitisTarihi(DateTime? value);
   @override
   @JsonKey(ignore: true)
-  _$$_BankaSozlesmesiModelCopyWith<_$_BankaSozlesmesiModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$BankaSozlesmesiModelImplCopyWith<_$BankaSozlesmesiModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

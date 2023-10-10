@@ -6,9 +6,9 @@ part of 'yapilandirma_profil_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_YapilandirmaProfilModel _$$_YapilandirmaProfilModelFromJson(
+_$YapilandirmaProfilModelImpl _$$YapilandirmaProfilModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_YapilandirmaProfilModel(
+    _$YapilandirmaProfilModelImpl(
       sira: json['SIRA'] as int?,
       ozellikKodu: json['OZELLIK_KODU'] as String?,
       aciklama: json['ACIKLAMA'] as String?,
@@ -19,8 +19,8 @@ _$_YapilandirmaProfilModel _$$_YapilandirmaProfilModelFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$_YapilandirmaProfilModelToJson(
-    _$_YapilandirmaProfilModel instance) {
+Map<String, dynamic> _$$YapilandirmaProfilModelImplToJson(
+    _$YapilandirmaProfilModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

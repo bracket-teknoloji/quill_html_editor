@@ -207,11 +207,12 @@ class _$CariListesiRequestModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CariListesiRequestModelCopyWith<$Res>
+abstract class _$$CariListesiRequestModelImplCopyWith<$Res>
     implements $CariListesiRequestModelCopyWith<$Res> {
-  factory _$$_CariListesiRequestModelCopyWith(_$_CariListesiRequestModel value,
-          $Res Function(_$_CariListesiRequestModel) then) =
-      __$$_CariListesiRequestModelCopyWithImpl<$Res>;
+  factory _$$CariListesiRequestModelImplCopyWith(
+          _$CariListesiRequestModelImpl value,
+          $Res Function(_$CariListesiRequestModelImpl) then) =
+      __$$CariListesiRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -239,12 +240,13 @@ abstract class _$$_CariListesiRequestModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CariListesiRequestModelCopyWithImpl<$Res>
+class __$$CariListesiRequestModelImplCopyWithImpl<$Res>
     extends _$CariListesiRequestModelCopyWithImpl<$Res,
-        _$_CariListesiRequestModel>
-    implements _$$_CariListesiRequestModelCopyWith<$Res> {
-  __$$_CariListesiRequestModelCopyWithImpl(_$_CariListesiRequestModel _value,
-      $Res Function(_$_CariListesiRequestModel) _then)
+        _$CariListesiRequestModelImpl>
+    implements _$$CariListesiRequestModelImplCopyWith<$Res> {
+  __$$CariListesiRequestModelImplCopyWithImpl(
+      _$CariListesiRequestModelImpl _value,
+      $Res Function(_$CariListesiRequestModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -272,7 +274,7 @@ class __$$_CariListesiRequestModelCopyWithImpl<$Res>
     Object? teslimCari = freezed,
     Object? sehir = freezed,
   }) {
-    return _then(_$_CariListesiRequestModel(
+    return _then(_$CariListesiRequestModelImpl(
       eFaturaGoster: freezed == eFaturaGoster
           ? _value.eFaturaGoster
           : eFaturaGoster // ignore: cast_nullable_to_non_nullable
@@ -364,8 +366,8 @@ class __$$_CariListesiRequestModelCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal, createToJson: true)
-class _$_CariListesiRequestModel extends _CariListesiRequestModel {
-  _$_CariListesiRequestModel(
+class _$CariListesiRequestModelImpl extends _CariListesiRequestModel {
+  _$CariListesiRequestModelImpl(
       {this.eFaturaGoster,
       @JsonKey(name: "SIRALAMA") this.siralama,
       this.sayfa,
@@ -397,8 +399,8 @@ class _$_CariListesiRequestModel extends _CariListesiRequestModel {
         _arrGrupKodu = arrGrupKodu,
         super._();
 
-  factory _$_CariListesiRequestModel.fromJson(Map<String, dynamic> json) =>
-      _$$_CariListesiRequestModelFromJson(json);
+  factory _$CariListesiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CariListesiRequestModelImplFromJson(json);
 
   @override
   final bool? eFaturaGoster;
@@ -515,14 +517,13 @@ class _$_CariListesiRequestModel extends _CariListesiRequestModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CariListesiRequestModelCopyWith<_$_CariListesiRequestModel>
-      get copyWith =>
-          __$$_CariListesiRequestModelCopyWithImpl<_$_CariListesiRequestModel>(
-              this, _$identity);
+  _$$CariListesiRequestModelImplCopyWith<_$CariListesiRequestModelImpl>
+      get copyWith => __$$CariListesiRequestModelImplCopyWithImpl<
+          _$CariListesiRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CariListesiRequestModelToJson(
+    return _$$CariListesiRequestModelImplToJson(
       this,
     );
   }
@@ -550,11 +551,11 @@ abstract class _CariListesiRequestModel extends CariListesiRequestModel {
       final String? bagliCariKodu,
       final String? belgeTuru,
       final String? teslimCari,
-      final String? sehir}) = _$_CariListesiRequestModel;
+      final String? sehir}) = _$CariListesiRequestModelImpl;
   _CariListesiRequestModel._() : super._();
 
   factory _CariListesiRequestModel.fromJson(Map<String, dynamic> json) =
-      _$_CariListesiRequestModel.fromJson;
+      _$CariListesiRequestModelImpl.fromJson;
 
   @override
   bool? get eFaturaGoster;
@@ -602,6 +603,6 @@ abstract class _CariListesiRequestModel extends CariListesiRequestModel {
   String? get sehir;
   @override
   @JsonKey(ignore: true)
-  _$$_CariListesiRequestModelCopyWith<_$_CariListesiRequestModel>
+  _$$CariListesiRequestModelImplCopyWith<_$CariListesiRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

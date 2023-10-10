@@ -130,12 +130,12 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_BaseProfilParametreModelCopyWith<$Res>
+abstract class _$$BaseProfilParametreModelImplCopyWith<$Res>
     implements $BaseProfilParametreModelCopyWith<$Res> {
-  factory _$$_BaseProfilParametreModelCopyWith(
-          _$_BaseProfilParametreModel value,
-          $Res Function(_$_BaseProfilParametreModel) then) =
-      __$$_BaseProfilParametreModelCopyWithImpl<$Res>;
+  factory _$$BaseProfilParametreModelImplCopyWith(
+          _$BaseProfilParametreModelImpl value,
+          $Res Function(_$BaseProfilParametreModelImpl) then) =
+      __$$BaseProfilParametreModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -152,12 +152,13 @@ abstract class _$$_BaseProfilParametreModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_BaseProfilParametreModelCopyWithImpl<$Res>
+class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
     extends _$BaseProfilParametreModelCopyWithImpl<$Res,
-        _$_BaseProfilParametreModel>
-    implements _$$_BaseProfilParametreModelCopyWith<$Res> {
-  __$$_BaseProfilParametreModelCopyWithImpl(_$_BaseProfilParametreModel _value,
-      $Res Function(_$_BaseProfilParametreModel) _then)
+        _$BaseProfilParametreModelImpl>
+    implements _$$BaseProfilParametreModelImplCopyWith<$Res> {
+  __$$BaseProfilParametreModelImplCopyWithImpl(
+      _$BaseProfilParametreModelImpl _value,
+      $Res Function(_$BaseProfilParametreModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -174,7 +175,7 @@ class __$$_BaseProfilParametreModelCopyWithImpl<$Res>
     Object? netFectDizaynList = freezed,
     Object? yaziciList = freezed,
   }) {
-    return _then(_$_BaseProfilParametreModel(
+    return _then(_$BaseProfilParametreModelImpl(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
           ? _value.siparisYeniKaydaHazirla
           : siparisYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
@@ -221,8 +222,8 @@ class __$$_BaseProfilParametreModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_BaseProfilParametreModel extends _BaseProfilParametreModel {
-  _$_BaseProfilParametreModel(
+class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
+  _$BaseProfilParametreModelImpl(
       {this.siparisYeniKaydaHazirla = true,
       this.siparisEkAlan = false,
       this.siparisMiktar = false,
@@ -235,8 +236,8 @@ class _$_BaseProfilParametreModel extends _BaseProfilParametreModel {
       this.yaziciList})
       : super._();
 
-  factory _$_BaseProfilParametreModel.fromJson(Map<String, dynamic> json) =>
-      _$$_BaseProfilParametreModelFromJson(json);
+  factory _$BaseProfilParametreModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BaseProfilParametreModelImplFromJson(json);
 
   @override
   @JsonKey()
@@ -270,13 +271,13 @@ class _$_BaseProfilParametreModel extends _BaseProfilParametreModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BaseProfilParametreModelCopyWith<_$_BaseProfilParametreModel>
-      get copyWith => __$$_BaseProfilParametreModelCopyWithImpl<
-          _$_BaseProfilParametreModel>(this, _$identity);
+  _$$BaseProfilParametreModelImplCopyWith<_$BaseProfilParametreModelImpl>
+      get copyWith => __$$BaseProfilParametreModelImplCopyWithImpl<
+          _$BaseProfilParametreModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BaseProfilParametreModelToJson(
+    return _$$BaseProfilParametreModelImplToJson(
       this,
     );
   }
@@ -293,11 +294,11 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
       final bool stokYazdirDizaynVeYaziciHatirla,
       final bool stokSecildigindeYazdir,
       final NetFectDizaynList? netFectDizaynList,
-      final YaziciList? yaziciList}) = _$_BaseProfilParametreModel;
+      final YaziciList? yaziciList}) = _$BaseProfilParametreModelImpl;
   _BaseProfilParametreModel._() : super._();
 
   factory _BaseProfilParametreModel.fromJson(Map<String, dynamic> json) =
-      _$_BaseProfilParametreModel.fromJson;
+      _$BaseProfilParametreModelImpl.fromJson;
 
   @override
   bool get siparisYeniKaydaHazirla;
@@ -321,6 +322,6 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   YaziciList? get yaziciList;
   @override
   @JsonKey(ignore: true)
-  _$$_BaseProfilParametreModelCopyWith<_$_BaseProfilParametreModel>
+  _$$BaseProfilParametreModelImplCopyWith<_$BaseProfilParametreModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

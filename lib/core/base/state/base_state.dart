@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:picker/view/main_page/model/user_model/profil_yetki_model.dart";
+import "../../../view/main_page/model/user_model/profil_yetki_model.dart";
 
 import "../../../view/main_page/model/param_model.dart";
 import "../../components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
@@ -25,7 +25,8 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
     appInfoModel = AppInfoModel.instance;
     yetkiController = YetkiController();
     parametreModel = CacheManager.getAnaVeri()?.paramModel ?? ParamModel();
-    profilYetkiModel = CacheManager.getAnaVeri()?.userModel?.profilYetki ?? ProfilYetkiModel();
+    profilYetkiModel =
+        CacheManager.getAnaVeri()?.userModel?.profilYetki ?? ProfilYetkiModel();
   }
   double get width => MediaQuery.sizeOf(context).width;
   double get height => MediaQuery.sizeOf(context).height;

@@ -22,22 +22,28 @@ class FavoritesModel {
   @HiveField(6)
   String? menuTipi;
 
-  
   UserModel? get cacheManager => CacheManager.getAnaVeri()?.userModel;
   bool get yetkiKontrol {
     if (menuTipi == "SR") {
       return true;
-    } else if(cacheManager?.adminMi == true) {
+    } else if (cacheManager?.adminMi == true) {
       return true;
-    }else if (menuTipi == "I") {
+    } else if (menuTipi == "I") {
       var result = cacheManager?.profilYetki?.toJson()[name] ?? false;
       return result;
-    }else {
+    } else {
       return true;
     }
   }
 
-  FavoritesModel({this.name, this.title, this.icon, this.onTap, this.color, this.arguments, this.menuTipi});
+  FavoritesModel(
+      {this.name,
+      this.title,
+      this.icon,
+      this.onTap,
+      this.color,
+      this.arguments,
+      this.menuTipi});
 
   @override
   String toString() {

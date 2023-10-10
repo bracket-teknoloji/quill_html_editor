@@ -5,7 +5,8 @@ import "../model/stok_hareketleri_model.dart";
 
 part "stok_hareketleri_view_model.g.dart";
 
-class StokHareketleriViewModel = _StokHareketleriViewModelBase with _$StokHareketleriViewModel;
+class StokHareketleriViewModel = _StokHareketleriViewModelBase
+    with _$StokHareketleriViewModel;
 
 abstract class _StokHareketleriViewModelBase with Store {
   @observable
@@ -108,11 +109,16 @@ abstract class _StokHareketleriViewModelBase with Store {
   }
 
   @action
-  void addStokHareketleri(StokHareketleriModel value) => stokHareketleri?.add(value);
+  void addStokHareketleri(StokHareketleriModel value) =>
+      stokHareketleri?.add(value);
 
   @observable
   List<StokHareketleriModel>? filteredStokHareketleri = [];
 
   @action
-  void filterStokHareketleri(String value) => filteredStokHareketleri = stokHareketleri?.where((element) => element.fisno!.toLowerCase().contains(value.toLowerCase())).toList();
+  void filterStokHareketleri(String value) =>
+      filteredStokHareketleri = stokHareketleri
+          ?.where((element) =>
+              element.fisno!.toLowerCase().contains(value.toLowerCase()))
+          .toList();
 }

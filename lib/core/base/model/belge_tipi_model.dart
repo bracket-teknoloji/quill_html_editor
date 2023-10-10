@@ -1,5 +1,3 @@
-
-
 class BelgeTipiModel {
   String? belgeTipi;
   int? belgeTipiId;

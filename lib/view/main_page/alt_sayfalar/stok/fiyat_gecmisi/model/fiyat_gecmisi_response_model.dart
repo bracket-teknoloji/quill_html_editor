@@ -23,7 +23,8 @@ class FiyatGecmisiResponseModel with NetworkManagerMixin {
   DateTime? yazdirmatarihi;
   String? yazdirildi;
   @override
-  fromJson(Map<String, dynamic> json) => _$FiyatGecmisiResponseModelFromJson(json);
+  fromJson(Map<String, dynamic> json) =>
+      _$FiyatGecmisiResponseModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$FiyatGecmisiResponseModelToJson(this);

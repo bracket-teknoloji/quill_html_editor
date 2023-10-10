@@ -54,7 +54,8 @@ class CariDetayModel with NetworkManagerMixin {
   @JsonKey(name: "BakiyeList")
   List<BakiyeList>? bakiyeList;
 
-  factory CariDetayModel.fromJson(Map<String, dynamic> json) => _$CariDetayModelFromJson(json);
+  factory CariDetayModel.fromJson(Map<String, dynamic> json) =>
+      _$CariDetayModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$CariDetayModelToJson(this);
@@ -75,7 +76,8 @@ class BakiyeList {
   double? bakiye;
   String? dovizAdi;
 
-  factory BakiyeList.fromJson(Map<String, dynamic> json) => _$BakiyeListFromJson(json);
+  factory BakiyeList.fromJson(Map<String, dynamic> json) =>
+      _$BakiyeListFromJson(json);
   Map<String, dynamic> toJson() => _$BakiyeListToJson(this);
 }
 
@@ -92,7 +94,8 @@ class BankaList {
   int? dovizTipi;
   String? dovizAdi;
 
-  factory BankaList.fromJson(Map<String, dynamic> json) => _$BankaListFromJson(json);
+  factory BankaList.fromJson(Map<String, dynamic> json) =>
+      _$BankaListFromJson(json);
   Map<String, dynamic> toJson() => _$BankaListToJson(this);
 }
 
@@ -146,7 +149,8 @@ class CariList {
   String? efaturaCarisi;
   List<int>? depoKodlari;
 
-  factory CariList.fromJson(Map<String, dynamic> json) => _$CariListFromJson(json);
+  factory CariList.fromJson(Map<String, dynamic> json) =>
+      _$CariListFromJson(json);
   Map<String, dynamic> toJson() => _$CariListToJson(this);
 }
 
@@ -160,6 +164,7 @@ class IrtibatList {
   String? emailSplit;
   bool? aktif;
 
-  factory IrtibatList.fromJson(Map<String, dynamic> json) => _$IrtibatListFromJson(json);
+  factory IrtibatList.fromJson(Map<String, dynamic> json) =>
+      _$IrtibatListFromJson(json);
   Map<String, dynamic> toJson() => _$IrtibatListToJson(this);
 }

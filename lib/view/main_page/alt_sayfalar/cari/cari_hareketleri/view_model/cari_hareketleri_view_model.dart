@@ -5,7 +5,8 @@ import "../model/cari_hareketleri_model.dart";
 
 part "cari_hareketleri_view_model.g.dart";
 
-class CariHareketleriViewModel = _CariHareketleriViewModelBase with _$CariHareketleriViewModel;
+class CariHareketleriViewModel = _CariHareketleriViewModelBase
+    with _$CariHareketleriViewModel;
 
 abstract class _CariHareketleriViewModelBase with Store {
   @observable
@@ -54,9 +55,15 @@ abstract class _CariHareketleriViewModelBase with Store {
     var data = cariHareketleriList?.where((element) => element.borc != null);
     if (data?.isNotEmpty ?? false) {
       if (cariListesiModel?.dovizKodu != null) {
-        return data!.map((e) => e.dovizTuru == cariListesiModel?.dovizKodu ? e.dovizBorc ?? 0 : 0.0).reduce((value, element) => value + element);
+        return data!
+            .map((e) => e.dovizTuru == cariListesiModel?.dovizKodu
+                ? e.dovizBorc ?? 0
+                : 0.0)
+            .reduce((value, element) => value + element);
       } else {
-        return data!.map((e) => e.borc ?? 0).reduce((value, element) => value + element);
+        return data!
+            .map((e) => e.borc ?? 0)
+            .reduce((value, element) => value + element);
       }
     } else {
       return 0.0;
@@ -68,9 +75,15 @@ abstract class _CariHareketleriViewModelBase with Store {
     var data = cariHareketleriList?.where((element) => element.alacak != null);
     if (data?.isNotEmpty ?? false) {
       if (cariListesiModel?.dovizKodu != null) {
-        return data!.map((e) => e.dovizTuru == cariListesiModel?.dovizKodu ? e.dovizAlacak ?? 0 : 0.0).reduce((value, element) => value + element);
+        return data!
+            .map((e) => e.dovizTuru == cariListesiModel?.dovizKodu
+                ? e.dovizAlacak ?? 0
+                : 0.0)
+            .reduce((value, element) => value + element);
       } else {
-        return data!.map((e) => e.alacak ?? 0).reduce((value, element) => value + element);
+        return data!
+            .map((e) => e.alacak ?? 0)
+            .reduce((value, element) => value + element);
       }
     } else {
       return 0.0;
@@ -79,8 +92,12 @@ abstract class _CariHareketleriViewModelBase with Store {
 
   @computed
   double get toplamBakiye {
-    CariHareketleriModel? model =
-        cariHareketleriList?.where((element) => element.tarih == cariHareketleriList?.map((e) => e.tarih).reduce((value, element) => value!.isAfter(element!) ? value : element)).firstOrNull;
+    CariHareketleriModel? model = cariHareketleriList
+        ?.where((element) =>
+            element.tarih ==
+            cariHareketleriList?.map((e) => e.tarih).reduce(
+                (value, element) => value!.isAfter(element!) ? value : element))
+        .firstOrNull;
     if (cariListesiModel?.dovizKodu != null) {
       return model?.dovYuruyenBakiye ?? 0.0;
     } else {
@@ -90,9 +107,12 @@ abstract class _CariHareketleriViewModelBase with Store {
 
   @computed
   double get dovizBorclarToplami {
-    var data = cariHareketleriList?.where((element) => element.dovizBorc != null);
+    var data =
+        cariHareketleriList?.where((element) => element.dovizBorc != null);
     if (data?.isNotEmpty ?? false) {
-      return data!.map((e) => e.dovizBorc!).reduce((value, element) => value + element);
+      return data!
+          .map((e) => e.dovizBorc!)
+          .reduce((value, element) => value + element);
     } else {
       return 0.0;
     }
@@ -100,9 +120,12 @@ abstract class _CariHareketleriViewModelBase with Store {
 
   @computed
   double get dovizAlacaklarToplami {
-    var data = cariHareketleriList?.where((element) => element.dovizAlacak != null);
+    var data =
+        cariHareketleriList?.where((element) => element.dovizAlacak != null);
     if (data?.isNotEmpty ?? false) {
-      return data!.map((e) => e.dovizAlacak!).reduce((value, element) => value + element);
+      return data!
+          .map((e) => e.dovizAlacak!)
+          .reduce((value, element) => value + element);
     } else {
       return 0.0;
     }

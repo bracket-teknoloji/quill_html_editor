@@ -8,7 +8,7 @@ part "base_grup_kodu_model.g.dart";
 @unfreezed
 class BaseGrupKoduModel with _$BaseGrupKoduModel, NetworkManagerMixin {
   @JsonSerializable(createFactory: true)
-   factory BaseGrupKoduModel({
+  factory BaseGrupKoduModel({
     String? modul,
     int? grupNo,
     String? grupKodu,
@@ -27,7 +27,8 @@ class BaseGrupKoduModel with _$BaseGrupKoduModel, NetworkManagerMixin {
   }) = _BaseGrupKoduModel;
 
   BaseGrupKoduModel._();
-  factory BaseGrupKoduModel.fromJson(Map<String, Object?> json) => _$BaseGrupKoduModelFromJson(json);
+  factory BaseGrupKoduModel.fromJson(Map<String, Object?> json) =>
+      _$BaseGrupKoduModelFromJson(json);
 
   @override
   fromJson(Map<String, dynamic> json) => _$BaseGrupKoduModelFromJson(json);

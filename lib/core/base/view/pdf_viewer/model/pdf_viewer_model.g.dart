@@ -6,7 +6,8 @@ part of 'pdf_viewer_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PdfModel _$$_PdfModelFromJson(Map<String, dynamic> json) => _$_PdfModel(
+_$PdfModelImpl _$$PdfModelImplFromJson(Map<String, dynamic> json) =>
+    _$PdfModelImpl(
       raporOzelKod: json['RAPOR_OZEL_KOD'] as String?,
       standart: json['STANDART'] as bool?,
       dicParams: json['DIC_PARAMS'] == null
@@ -16,7 +17,7 @@ _$_PdfModel _$$_PdfModelFromJson(Map<String, dynamic> json) => _$_PdfModel(
       etiketSayisi: json['ETIKET_SAYISI'] as int?,
     );
 
-Map<String, dynamic> _$$_PdfModelToJson(_$_PdfModel instance) {
+Map<String, dynamic> _$$PdfModelImplToJson(_$PdfModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -33,7 +34,8 @@ Map<String, dynamic> _$$_PdfModelToJson(_$_PdfModel instance) {
   return val;
 }
 
-_$_DicParams _$$_DicParamsFromJson(Map<String, dynamic> json) => _$_DicParams(
+_$DicParamsImpl _$$DicParamsImplFromJson(Map<String, dynamic> json) =>
+    _$DicParamsImpl(
       cariKodu: json['CARI_KODU'] as String?,
       stokKodu: json['STOK_KODU'] as String?,
       sifirHaric: json['SIFIR_HARIC'] as String?,
@@ -75,7 +77,7 @@ _$_DicParams _$$_DicParamsFromJson(Map<String, dynamic> json) => _$_DicParams(
       kasaKodu: json['KASA_KODU'] as String?,
     );
 
-Map<String, dynamic> _$$_DicParamsToJson(_$_DicParams instance) {
+Map<String, dynamic> _$$DicParamsImplToJson(_$DicParamsImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

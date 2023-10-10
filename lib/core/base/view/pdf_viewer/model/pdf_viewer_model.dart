@@ -8,7 +8,8 @@ part "pdf_viewer_model.g.dart";
 @unfreezed
 abstract class PdfModel with _$PdfModel, NetworkManagerMixin {
   PdfModel._();
-  @JsonSerializable(createFactory: true, explicitToJson: true, createToJson: true)
+  @JsonSerializable(
+      createFactory: true, explicitToJson: true, createToJson: true)
   factory PdfModel({
     String? raporOzelKod,
     bool? standart,
@@ -22,10 +23,11 @@ abstract class PdfModel with _$PdfModel, NetworkManagerMixin {
   // int? etiketSayisi;
   // @JsonKey(includeToJson: true)
   // DicParams? dicParams;
-  factory PdfModel.fromJson(Map<String, dynamic> json) => _$PdfModelFromJson(json);
+  factory PdfModel.fromJson(Map<String, dynamic> json) =>
+      _$PdfModelFromJson(json);
   @override
   fromJson(Map<String, dynamic> json) => _$PdfModelFromJson(json);
-  
+
   @override
   toString() => toJson().toString();
 }
@@ -104,47 +106,49 @@ abstract class PdfModel with _$PdfModel, NetworkManagerMixin {
 // }
 @unfreezed
 class DicParams with _$DicParams {
-  @JsonSerializable(createFactory: true, explicitToJson: true, createToJson: true)
-  factory DicParams(
-      {String? cariKodu,
-      String? stokKodu,
-      String? sifirHaric,
-      String? maliyetTipi,
-      String? tlHarDokulsun,
-      String? depoKodlari,
-      String? haricStokKodlari,
-      String? haricStokGrupKodlari,
-      String? dovizTipi,
-      String? bastar,
-      String? bittar,
-      String? grupKodu,
-      String? borcAlacak,
-      String? refTarih,
-      String? tarihTipi,
-      String? kod1,
-      String? kod2,
-      String? kod3,
-      String? kod4,
-      String? kod5,
-      String? kapali,
-      String? durum,
-      String? vergiNo,
-      String? plasiyerKodu,
-      String? aralikTipi,
-      String? sirala,
-      String? bakiyeDurumu,
-      String? caharInckey,
-      String? belgeTipi,
-      String? belgeNo,
-      String? isemriNo,
-      String? dinamikParam,
-      String? kasaharInckey,
-      String? uretimFiyatiDahil,
-      String? fiyatTipi,
-      String? tblnfStokfiyatgecmisiId,
-      int? miktar,
-      String? yapkod,
-      String? kasaKodu,
-      }) = _DicParams;
-  factory DicParams.fromJson(Map<String, dynamic> json) => _$DicParamsFromJson(json);
+  @JsonSerializable(
+      createFactory: true, explicitToJson: true, createToJson: true)
+  factory DicParams({
+    String? cariKodu,
+    String? stokKodu,
+    String? sifirHaric,
+    String? maliyetTipi,
+    String? tlHarDokulsun,
+    String? depoKodlari,
+    String? haricStokKodlari,
+    String? haricStokGrupKodlari,
+    String? dovizTipi,
+    String? bastar,
+    String? bittar,
+    String? grupKodu,
+    String? borcAlacak,
+    String? refTarih,
+    String? tarihTipi,
+    String? kod1,
+    String? kod2,
+    String? kod3,
+    String? kod4,
+    String? kod5,
+    String? kapali,
+    String? durum,
+    String? vergiNo,
+    String? plasiyerKodu,
+    String? aralikTipi,
+    String? sirala,
+    String? bakiyeDurumu,
+    String? caharInckey,
+    String? belgeTipi,
+    String? belgeNo,
+    String? isemriNo,
+    String? dinamikParam,
+    String? kasaharInckey,
+    String? uretimFiyatiDahil,
+    String? fiyatTipi,
+    String? tblnfStokfiyatgecmisiId,
+    int? miktar,
+    String? yapkod,
+    String? kasaKodu,
+  }) = _DicParams;
+  factory DicParams.fromJson(Map<String, dynamic> json) =>
+      _$DicParamsFromJson(json);
 }

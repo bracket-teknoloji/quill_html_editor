@@ -1,4 +1,4 @@
-enum SerbestRaporDetayKodEnum { cari, stok, kasa ,cek, finans}
+enum SerbestRaporDetayKodEnum { cari, stok, kasa, cek, finans }
 
 extension SerbestRaporDetayKodEnumExtension on SerbestRaporDetayKodEnum {
   String get value {

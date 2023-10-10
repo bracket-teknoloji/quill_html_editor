@@ -64,5 +64,6 @@ class CariHareketleriModel with NetworkManagerMixin {
 
   @override
   // ignore: hash_and_equals
-  operator ==(other) => other is CariHareketleriModel && other.inckeyno == inckeyno;
+  operator ==(other) =>
+      other is CariHareketleriModel && other.inckeyno == inckeyno;
 }

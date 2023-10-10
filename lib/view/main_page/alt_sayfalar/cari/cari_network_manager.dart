@@ -13,31 +13,53 @@ import "cari_listesi/model/cari_sehirler_model.dart";
 
 class CariNetworkManager {
   static NetworkManager networkManager = NetworkManager();
-  static Future<GenericResponseModel<NetworkManagerMixin>> getKod({GrupKoduEnum? name}) async {
+  static Future<GenericResponseModel<NetworkManagerMixin>> getKod(
+      {GrupKoduEnum? name}) async {
     var responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
         path: ApiUrls.getGrupKodlari,
         bodyModel: BaseGrupKoduModel(),
-        headers: {"Modul": name?.name ?? "CARI", "GrupNo": "-1", "Kullanimda": "E"},
-        queryParameters: {"Modul": name?.name ?? "CARI", "GrupNo": "-1"});
+        headers: {
+          "Modul": name?.name ?? "CARI",
+          "GrupNo": "-1",
+          "Kullanimda": "E"
+        },
+        queryParameters: {
+          "Modul": name?.name ?? "CARI",
+          "GrupNo": "-1"
+        });
     return responseKod;
   }
 
-  static Future<GenericResponseModel<NetworkManagerMixin>> getFilterData() async {
+  static Future<GenericResponseModel<NetworkManagerMixin>>
+      getFilterData() async {
     GenericResponseModel<NetworkManagerMixin> responseSehirler;
     responseSehirler = await networkManager.dioGet<CariSehirlerModel>(
-        path: ApiUrls.getCariKayitliSehirler, bodyModel: CariSehirlerModel(), addTokenKey: true, addSirketBilgileri: true, headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"});
+        path: ApiUrls.getCariKayitliSehirler,
+        bodyModel: CariSehirlerModel(),
+        addTokenKey: true,
+        addSirketBilgileri: true,
+        headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"});
 
     return responseSehirler;
   }
 
   static Future<GenericResponseModel<NetworkManagerMixin>> getkosullar() async {
-    Map<String, String> queryParams = {"Tarih": "", "KisitYok": "H", "BelgeTuru": "CARI"};
-    var responseKosullar = await networkManager.dioGet<CariKosullarModel>(path: ApiUrls.getKosullar, bodyModel: CariKosullarModel(), queryParameters: queryParams);
+    Map<String, String> queryParams = {
+      "Tarih": "",
+      "KisitYok": "H",
+      "BelgeTuru": "CARI"
+    };
+    var responseKosullar = await networkManager.dioGet<CariKosullarModel>(
+        path: ApiUrls.getKosullar,
+        bodyModel: CariKosullarModel(),
+        queryParameters: queryParams);
     return responseKosullar;
   }
 
-  static Future<GenericResponseModel<NetworkManagerMixin>> getCariListesi() async {
-    var responseKosullar = await networkManager.dioGet<CariKosullarModel>(path: ApiUrls.getKosullar, bodyModel: CariKosullarModel());
+  static Future<GenericResponseModel<NetworkManagerMixin>>
+      getCariListesi() async {
+    var responseKosullar = await networkManager.dioGet<CariKosullarModel>(
+        path: ApiUrls.getKosullar, bodyModel: CariKosullarModel());
     return responseKosullar;
   }
 
@@ -52,7 +74,8 @@ class CariNetworkManager {
       if (kod == null) {
         queryParameters2.addAll({"Kod": kod});
       }
-      GenericResponseModel? result = await networkManager.dioGet<BaseEditSiradakiKodModel>(
+      GenericResponseModel? result =
+          await networkManager.dioGet<BaseEditSiradakiKodModel>(
         path: ApiUrls.getSiradakiKod,
         bodyModel: BaseEditSiradakiKodModel(),
         queryParameters: queryParameters2,

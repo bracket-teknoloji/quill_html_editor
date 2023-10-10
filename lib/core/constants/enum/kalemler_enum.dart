@@ -1,4 +1,1 @@
-
-enum KalemlerEnum{
-  duzenle, ekle, listedenSec
-}
+enum KalemlerEnum { duzenle, ekle, listedenSec }

@@ -17,11 +17,14 @@ class HareketDetayliYaslandirmaRaporuView extends StatefulWidget {
   const HareketDetayliYaslandirmaRaporuView({super.key, this.model});
 
   @override
-  State<HareketDetayliYaslandirmaRaporuView> createState() => _HareketDetayliYaslandirmaRaporuViewState();
+  State<HareketDetayliYaslandirmaRaporuView> createState() =>
+      _HareketDetayliYaslandirmaRaporuViewState();
 }
 
-class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayliYaslandirmaRaporuView> {
-  HareketDetayliYaslandirmaRaporuViewModel viewModel = HareketDetayliYaslandirmaRaporuViewModel();
+class _HareketDetayliYaslandirmaRaporuViewState
+    extends BaseState<HareketDetayliYaslandirmaRaporuView> {
+  HareketDetayliYaslandirmaRaporuViewModel viewModel =
+      HareketDetayliYaslandirmaRaporuViewModel();
   late final TextEditingController cariController;
   late final TextEditingController referansTarihController;
 
@@ -45,7 +48,10 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
 
   @override
   Widget build(BuildContext context) {
-    return PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Hareket Detaylı Yaşlandırma Raporu", pdfData: viewModel.pdfModel);
+    return PDFViewerView(
+        filterBottomSheet: filterBottomSheet,
+        title: "Hareket Detaylı Yaşlandırma Raporu",
+        pdfData: viewModel.pdfModel);
   }
 
   Future<bool> filterBottomSheet() async {
@@ -60,7 +66,8 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
               Observer(
                   builder: (_) => SlideControllerWidget(
                       childrenTitleList: viewModel.bakiyeDurumuTitleList,
-                      filterOnChanged: (index) => viewModel.changeBakiyeDurumu(index),
+                      filterOnChanged: (index) =>
+                          viewModel.changeBakiyeDurumu(index),
                       childrenValueList: viewModel.bakiyeDurumuListValue,
                       groupValue: viewModel.bakiyeDurumuGroupValue)),
               CustomTextField(
@@ -70,10 +77,12 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
                 readOnly: true,
                 suffixMore: true,
                 onTap: () async {
-                  var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                  var result = await Get.toNamed("/mainPage/cariListesi",
+                      arguments: true);
                   if (result != null) {
                     cariController.text = result.cariAdi ?? "";
-                    viewModel.pdfModel.dicParams?.cariKodu = result.cariKodu ?? "";
+                    viewModel.pdfModel.dicParams?.cariKodu =
+                        result.cariKodu ?? "";
                   }
                 },
               ),
@@ -87,15 +96,18 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
                 onTap: () async {
                   var result = await dialogManager.showDateTimePicker();
                   if (result != null) {
-                    viewModel.pdfModel.dicParams?.refTarih = result.toDateStringIfNull();
+                    viewModel.pdfModel.dicParams?.refTarih =
+                        result.toDateStringIfNull();
                     referansTarihController.text = result.toDateString;
                   }
                 },
               ),
               ElevatedButton(
                   onPressed: () {
-                    if (viewModel.pdfModel.dicParams?.refTarih == null || viewModel.pdfModel.dicParams?.cariKodu == null) {
-                      dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
+                    if (viewModel.pdfModel.dicParams?.refTarih == null ||
+                        viewModel.pdfModel.dicParams?.cariKodu == null) {
+                      dialogManager
+                          .showAlertDialog("Lütfen tüm alanları doldurunuz");
                     } else {
                       viewModel.setFuture();
                       Get.back();

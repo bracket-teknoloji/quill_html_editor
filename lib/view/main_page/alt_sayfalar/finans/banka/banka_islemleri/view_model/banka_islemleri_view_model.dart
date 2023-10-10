@@ -8,12 +8,17 @@ import "../model/banka_islemleri_request_model.dart";
 
 part "banka_islemleri_view_model.g.dart";
 
-class BankaIslemleriViewModel = _BankaIslemleriViewModelBase with _$BankaIslemleriViewModel;
+class BankaIslemleriViewModel = _BankaIslemleriViewModelBase
+    with _$BankaIslemleriViewModel;
 
 abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
   //* Observables
   @observable
-  BankaIslemleriRequestModel bankaIslemleriRequestModel = BankaIslemleriRequestModel(menuKodu: "YONE_BISL", baslamaTarihi: DateTime.now().toDateString, bitisTarihi: DateTime.now().toDateString);
+  BankaIslemleriRequestModel bankaIslemleriRequestModel =
+      BankaIslemleriRequestModel(
+          menuKodu: "YONE_BISL",
+          baslamaTarihi: DateTime.now().toDateString,
+          bitisTarihi: DateTime.now().toDateString);
 
   @observable
   bool isScrollDown = true;
@@ -29,15 +34,35 @@ abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
   //* Computed
 
   @computed
-  double get gelenTutar => bankaIslemleriListesi?.where((element) => element.ba == "B").map((e) => e.tutar ?? 0).fold(0, (previousValue, element) => (previousValue ?? 0) + element) ?? 0;
+  double get gelenTutar =>
+      bankaIslemleriListesi
+          ?.where((element) => element.ba == "B")
+          .map((e) => e.tutar ?? 0)
+          .fold(
+              0, (previousValue, element) => (previousValue ?? 0) + element) ??
+      0;
 
   @computed
-  double get gidenTutar => bankaIslemleriListesi?.where((element) => element.ba == "A").map((e) => e.tutar ?? 0).fold(0, (previousValue, element) => (previousValue ?? 0) + element) ?? 0;
+  double get gidenTutar =>
+      bankaIslemleriListesi
+          ?.where((element) => element.ba == "A")
+          .map((e) => e.tutar ?? 0)
+          .fold(
+              0, (previousValue, element) => (previousValue ?? 0) + element) ??
+      0;
 
   @computed
-  ObservableList<BankaIslemleriModel>? get getBankaIslemleriListesi => (searchText != null && searchText != "")
-      ? bankaIslemleriListesi?.where((element) => element.belgeno != null && element.belgeno!.toLowerCase().contains(searchText!.toLowerCase())).toList().asObservable()
-      : bankaIslemleriListesi;
+  ObservableList<BankaIslemleriModel>? get getBankaIslemleriListesi =>
+      (searchText != null && searchText != "")
+          ? bankaIslemleriListesi
+              ?.where((element) =>
+                  element.belgeno != null &&
+                  element.belgeno!
+                      .toLowerCase()
+                      .contains(searchText!.toLowerCase()))
+              .toList()
+              .asObservable()
+          : bankaIslemleriListesi;
 
   //* Actions
   @action
@@ -52,20 +77,25 @@ abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
   @action
   void setSearchText(String? value) => searchText = value;
   @action
-  void setBaslamaTarihi(String? value) => bankaIslemleriRequestModel = bankaIslemleriRequestModel.copyWith(baslamaTarihi: value);
+  void setBaslamaTarihi(String? value) => bankaIslemleriRequestModel =
+      bankaIslemleriRequestModel.copyWith(baslamaTarihi: value);
 
   @action
-  void setBitisTarihi(String? value) => bankaIslemleriRequestModel = bankaIslemleriRequestModel.copyWith(bitisTarihi: value);
+  void setBitisTarihi(String? value) => bankaIslemleriRequestModel =
+      bankaIslemleriRequestModel.copyWith(bitisTarihi: value);
 
   @action
-  void setBankaIslemleriListesi(List<BankaIslemleriModel>? value) => bankaIslemleriListesi = value?.asObservable();
+  void setBankaIslemleriListesi(List<BankaIslemleriModel>? value) =>
+      bankaIslemleriListesi = value?.asObservable();
 
   @action
-  void addBankaIslemleriListesi(List<BankaIslemleriModel>? value) => bankaIslemleriListesi?.addAll(value ?? []);
+  void addBankaIslemleriListesi(List<BankaIslemleriModel>? value) =>
+      bankaIslemleriListesi?.addAll(value ?? []);
 
   @action
   void clearFilters() {
-    bankaIslemleriRequestModel = bankaIslemleriRequestModel.copyWith(hesapKodu: null, hesapTipi: null);
+    bankaIslemleriRequestModel =
+        bankaIslemleriRequestModel.copyWith(hesapKodu: null, hesapTipi: null);
   }
 
   @action
@@ -76,7 +106,10 @@ abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    var result = await networkManager.dioGet<BankaIslemleriModel>(path: ApiUrls.getBankaHareketleri, bodyModel: BankaIslemleriModel(), queryParameters: bankaIslemleriRequestModel.toJson());
+    var result = await networkManager.dioGet<BankaIslemleriModel>(
+        path: ApiUrls.getBankaHareketleri,
+        bodyModel: BankaIslemleriModel(),
+        queryParameters: bankaIslemleriRequestModel.toJson());
     if (result.data is List) {
       List<BankaIslemleriModel> list = result.data.cast<BankaIslemleriModel>();
       setBankaIslemleriListesi(list);

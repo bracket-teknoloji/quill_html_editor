@@ -1,14 +1,13 @@
 import "package:flutter/material.dart";
-import "../../../../../../../core/components/textfield/custom_text_field.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
+import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../siparis_stok_ihtiyac_raporu/view_model/stok_ihtiyac_raporu_view_model.dart";
 
 class StokIhtiyacRaporu extends StatefulWidget {
-
   final BaseSiparisEditModel? model;
   const StokIhtiyacRaporu({super.key, this.model});
 
@@ -41,7 +40,7 @@ class _StokIhtiyacRaporuViewState extends BaseState<StokIhtiyacRaporu> {
     haricStokGrupKodlariController = TextEditingController();
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
-    if (widget.model != null){
+    if (widget.model != null) {
       cariController.text = widget.model?.cariAdi ?? "";
       viewModel.setCariKodu(widget.model?.cariKodu ?? "");
       belgeNoController.text = widget.model?.belgeNo ?? "";
@@ -65,7 +64,10 @@ class _StokIhtiyacRaporuViewState extends BaseState<StokIhtiyacRaporu> {
 
   @override
   Widget build(BuildContext context) {
-    return PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Stok İhtiyaç Raporu", pdfData: viewModel.pdfModel);
+    return PDFViewerView(
+        filterBottomSheet: filterBottomSheet,
+        title: "Stok İhtiyaç Raporu",
+        pdfData: viewModel.pdfModel);
   }
 
   Future<bool> filterBottomSheet() async {
@@ -79,10 +81,22 @@ class _StokIhtiyacRaporuViewState extends BaseState<StokIhtiyacRaporu> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const Row(children: [Expanded(child: CustomTextField()), Expanded(child: CustomTextField())]),
-                const Row(children: [Expanded(child: CustomTextField()), Expanded(child: CustomTextField())]),
-                const Row(children: [Expanded(child: CustomTextField()), Expanded(child: CustomTextField())]),
-                const Row(children: [Expanded(child: CustomTextField()), Expanded(child: CustomTextField())]),
+                const Row(children: [
+                  Expanded(child: CustomTextField()),
+                  Expanded(child: CustomTextField())
+                ]),
+                const Row(children: [
+                  Expanded(child: CustomTextField()),
+                  Expanded(child: CustomTextField())
+                ]),
+                const Row(children: [
+                  Expanded(child: CustomTextField()),
+                  Expanded(child: CustomTextField())
+                ]),
+                const Row(children: [
+                  Expanded(child: CustomTextField()),
+                  Expanded(child: CustomTextField())
+                ]),
                 Row(children: [
                   const Expanded(child: CustomTextField()),
                   Expanded(

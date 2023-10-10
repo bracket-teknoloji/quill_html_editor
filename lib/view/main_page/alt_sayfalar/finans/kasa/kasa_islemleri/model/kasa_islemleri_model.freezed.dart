@@ -21,33 +21,61 @@ KasaIslemleriModel _$KasaIslemleriModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$KasaIslemleriModel {
   int? get inckeyno => throw _privateConstructorUsedError;
+  set inckeyno(int? value) => throw _privateConstructorUsedError;
   int? get caharInckeyno => throw _privateConstructorUsedError;
+  set caharInckeyno(int? value) => throw _privateConstructorUsedError;
   String? get kasaKodu => throw _privateConstructorUsedError;
+  set kasaKodu(String? value) => throw _privateConstructorUsedError;
   String? get kasaAdi => throw _privateConstructorUsedError;
+  set kasaAdi(String? value) => throw _privateConstructorUsedError;
   String? get belgeNo => throw _privateConstructorUsedError;
+  set belgeNo(String? value) => throw _privateConstructorUsedError;
   DateTime? get tarih => throw _privateConstructorUsedError;
+  set tarih(DateTime? value) => throw _privateConstructorUsedError;
   String? get tip => throw _privateConstructorUsedError;
+  set tip(String? value) => throw _privateConstructorUsedError;
   String? get tipAciklama => throw _privateConstructorUsedError;
+  set tipAciklama(String? value) => throw _privateConstructorUsedError;
   String? get hedefAciklama => throw _privateConstructorUsedError;
+  set hedefAciklama(String? value) => throw _privateConstructorUsedError;
   double? get tutar => throw _privateConstructorUsedError;
+  set tutar(double? value) => throw _privateConstructorUsedError;
   String? get cariMuh => throw _privateConstructorUsedError;
+  set cariMuh(String? value) => throw _privateConstructorUsedError;
   String? get gc => throw _privateConstructorUsedError;
+  set gc(String? value) => throw _privateConstructorUsedError;
   String? get kod => throw _privateConstructorUsedError;
+  set kod(String? value) => throw _privateConstructorUsedError;
   String? get cariKodu => throw _privateConstructorUsedError;
+  set cariKodu(String? value) => throw _privateConstructorUsedError;
   String? get cariAdi => throw _privateConstructorUsedError;
+  set cariAdi(String? value) => throw _privateConstructorUsedError;
   String? get hesapAdi => throw _privateConstructorUsedError;
+  set hesapAdi(String? value) => throw _privateConstructorUsedError;
   double? get dovizTutari => throw _privateConstructorUsedError;
+  set dovizTutari(double? value) => throw _privateConstructorUsedError;
   double? get dovizKuru => throw _privateConstructorUsedError;
+  set dovizKuru(double? value) => throw _privateConstructorUsedError;
   String? get plasiyerKodu => throw _privateConstructorUsedError;
+  set plasiyerKodu(String? value) => throw _privateConstructorUsedError;
   String? get plasiyerAdi => throw _privateConstructorUsedError;
+  set plasiyerAdi(String? value) => throw _privateConstructorUsedError;
   String? get projeKodu => throw _privateConstructorUsedError;
+  set projeKodu(String? value) => throw _privateConstructorUsedError;
   String? get projeAdi => throw _privateConstructorUsedError;
+  set projeAdi(String? value) => throw _privateConstructorUsedError;
   String? get aciklama => throw _privateConstructorUsedError;
+  set aciklama(String? value) => throw _privateConstructorUsedError;
   String? get refkey => throw _privateConstructorUsedError;
+  set refkey(String? value) => throw _privateConstructorUsedError;
   DateTime? get kasaDevirTarihi => throw _privateConstructorUsedError;
+  set kasaDevirTarihi(DateTime? value) => throw _privateConstructorUsedError;
   double? get kasaDevirTutari => throw _privateConstructorUsedError;
+  set kasaDevirTutari(double? value) => throw _privateConstructorUsedError;
   double? get kasaDovizDevirTutari => throw _privateConstructorUsedError;
+  set kasaDovizDevirTutari(double? value) => throw _privateConstructorUsedError;
   int? get kasaDovizTipi => throw _privateConstructorUsedError;
+  set kasaDovizTipi(int? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -252,11 +280,11 @@ class _$KasaIslemleriModelCopyWithImpl<$Res, $Val extends KasaIslemleriModel>
 }
 
 /// @nodoc
-abstract class _$$_KasaIslemleriModelCopyWith<$Res>
+abstract class _$$KasaIslemleriModelImplCopyWith<$Res>
     implements $KasaIslemleriModelCopyWith<$Res> {
-  factory _$$_KasaIslemleriModelCopyWith(_$_KasaIslemleriModel value,
-          $Res Function(_$_KasaIslemleriModel) then) =
-      __$$_KasaIslemleriModelCopyWithImpl<$Res>;
+  factory _$$KasaIslemleriModelImplCopyWith(_$KasaIslemleriModelImpl value,
+          $Res Function(_$KasaIslemleriModelImpl) then) =
+      __$$KasaIslemleriModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -291,11 +319,11 @@ abstract class _$$_KasaIslemleriModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_KasaIslemleriModelCopyWithImpl<$Res>
-    extends _$KasaIslemleriModelCopyWithImpl<$Res, _$_KasaIslemleriModel>
-    implements _$$_KasaIslemleriModelCopyWith<$Res> {
-  __$$_KasaIslemleriModelCopyWithImpl(
-      _$_KasaIslemleriModel _value, $Res Function(_$_KasaIslemleriModel) _then)
+class __$$KasaIslemleriModelImplCopyWithImpl<$Res>
+    extends _$KasaIslemleriModelCopyWithImpl<$Res, _$KasaIslemleriModelImpl>
+    implements _$$KasaIslemleriModelImplCopyWith<$Res> {
+  __$$KasaIslemleriModelImplCopyWithImpl(_$KasaIslemleriModelImpl _value,
+      $Res Function(_$KasaIslemleriModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -330,7 +358,7 @@ class __$$_KasaIslemleriModelCopyWithImpl<$Res>
     Object? kasaDovizDevirTutari = freezed,
     Object? kasaDovizTipi = freezed,
   }) {
-    return _then(_$_KasaIslemleriModel(
+    return _then(_$KasaIslemleriModelImpl(
       inckeyno: freezed == inckeyno
           ? _value.inckeyno
           : inckeyno // ignore: cast_nullable_to_non_nullable
@@ -449,8 +477,8 @@ class __$$_KasaIslemleriModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_KasaIslemleriModel extends _KasaIslemleriModel {
-  _$_KasaIslemleriModel(
+class _$KasaIslemleriModelImpl extends _KasaIslemleriModel {
+  _$KasaIslemleriModelImpl(
       {this.inckeyno,
       this.caharInckeyno,
       this.kasaKodu,
@@ -481,76 +509,76 @@ class _$_KasaIslemleriModel extends _KasaIslemleriModel {
       this.kasaDovizTipi})
       : super._();
 
-  factory _$_KasaIslemleriModel.fromJson(Map<String, dynamic> json) =>
-      _$$_KasaIslemleriModelFromJson(json);
+  factory _$KasaIslemleriModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$KasaIslemleriModelImplFromJson(json);
 
   @override
-  final int? inckeyno;
+  int? inckeyno;
   @override
-  final int? caharInckeyno;
+  int? caharInckeyno;
   @override
-  final String? kasaKodu;
+  String? kasaKodu;
   @override
-  final String? kasaAdi;
+  String? kasaAdi;
   @override
-  final String? belgeNo;
+  String? belgeNo;
   @override
-  final DateTime? tarih;
+  DateTime? tarih;
   @override
-  final String? tip;
+  String? tip;
   @override
-  final String? tipAciklama;
+  String? tipAciklama;
   @override
-  final String? hedefAciklama;
+  String? hedefAciklama;
   @override
-  final double? tutar;
+  double? tutar;
   @override
-  final String? cariMuh;
+  String? cariMuh;
   @override
-  final String? gc;
+  String? gc;
   @override
-  final String? kod;
+  String? kod;
   @override
-  final String? cariKodu;
+  String? cariKodu;
   @override
-  final String? cariAdi;
+  String? cariAdi;
   @override
-  final String? hesapAdi;
+  String? hesapAdi;
   @override
-  final double? dovizTutari;
+  double? dovizTutari;
   @override
-  final double? dovizKuru;
+  double? dovizKuru;
   @override
-  final String? plasiyerKodu;
+  String? plasiyerKodu;
   @override
-  final String? plasiyerAdi;
+  String? plasiyerAdi;
   @override
-  final String? projeKodu;
+  String? projeKodu;
   @override
-  final String? projeAdi;
+  String? projeAdi;
   @override
-  final String? aciklama;
+  String? aciklama;
   @override
-  final String? refkey;
+  String? refkey;
   @override
-  final DateTime? kasaDevirTarihi;
+  DateTime? kasaDevirTarihi;
   @override
-  final double? kasaDevirTutari;
+  double? kasaDevirTutari;
   @override
-  final double? kasaDovizDevirTutari;
+  double? kasaDovizDevirTutari;
   @override
-  final int? kasaDovizTipi;
+  int? kasaDovizTipi;
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_KasaIslemleriModelCopyWith<_$_KasaIslemleriModel> get copyWith =>
-      __$$_KasaIslemleriModelCopyWithImpl<_$_KasaIslemleriModel>(
+  _$$KasaIslemleriModelImplCopyWith<_$KasaIslemleriModelImpl> get copyWith =>
+      __$$KasaIslemleriModelImplCopyWithImpl<_$KasaIslemleriModelImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_KasaIslemleriModelToJson(
+    return _$$KasaIslemleriModelImplToJson(
       this,
     );
   }
@@ -558,97 +586,125 @@ class _$_KasaIslemleriModel extends _KasaIslemleriModel {
 
 abstract class _KasaIslemleriModel extends KasaIslemleriModel {
   factory _KasaIslemleriModel(
-      {final int? inckeyno,
-      final int? caharInckeyno,
-      final String? kasaKodu,
-      final String? kasaAdi,
-      final String? belgeNo,
-      final DateTime? tarih,
-      final String? tip,
-      final String? tipAciklama,
-      final String? hedefAciklama,
-      final double? tutar,
-      final String? cariMuh,
-      final String? gc,
-      final String? kod,
-      final String? cariKodu,
-      final String? cariAdi,
-      final String? hesapAdi,
-      final double? dovizTutari,
-      final double? dovizKuru,
-      final String? plasiyerKodu,
-      final String? plasiyerAdi,
-      final String? projeKodu,
-      final String? projeAdi,
-      final String? aciklama,
-      final String? refkey,
-      final DateTime? kasaDevirTarihi,
-      final double? kasaDevirTutari,
-      final double? kasaDovizDevirTutari,
-      final int? kasaDovizTipi}) = _$_KasaIslemleriModel;
+      {int? inckeyno,
+      int? caharInckeyno,
+      String? kasaKodu,
+      String? kasaAdi,
+      String? belgeNo,
+      DateTime? tarih,
+      String? tip,
+      String? tipAciklama,
+      String? hedefAciklama,
+      double? tutar,
+      String? cariMuh,
+      String? gc,
+      String? kod,
+      String? cariKodu,
+      String? cariAdi,
+      String? hesapAdi,
+      double? dovizTutari,
+      double? dovizKuru,
+      String? plasiyerKodu,
+      String? plasiyerAdi,
+      String? projeKodu,
+      String? projeAdi,
+      String? aciklama,
+      String? refkey,
+      DateTime? kasaDevirTarihi,
+      double? kasaDevirTutari,
+      double? kasaDovizDevirTutari,
+      int? kasaDovizTipi}) = _$KasaIslemleriModelImpl;
   _KasaIslemleriModel._() : super._();
 
   factory _KasaIslemleriModel.fromJson(Map<String, dynamic> json) =
-      _$_KasaIslemleriModel.fromJson;
+      _$KasaIslemleriModelImpl.fromJson;
 
   @override
   int? get inckeyno;
+  set inckeyno(int? value);
   @override
   int? get caharInckeyno;
+  set caharInckeyno(int? value);
   @override
   String? get kasaKodu;
+  set kasaKodu(String? value);
   @override
   String? get kasaAdi;
+  set kasaAdi(String? value);
   @override
   String? get belgeNo;
+  set belgeNo(String? value);
   @override
   DateTime? get tarih;
+  set tarih(DateTime? value);
   @override
   String? get tip;
+  set tip(String? value);
   @override
   String? get tipAciklama;
+  set tipAciklama(String? value);
   @override
   String? get hedefAciklama;
+  set hedefAciklama(String? value);
   @override
   double? get tutar;
+  set tutar(double? value);
   @override
   String? get cariMuh;
+  set cariMuh(String? value);
   @override
   String? get gc;
+  set gc(String? value);
   @override
   String? get kod;
+  set kod(String? value);
   @override
   String? get cariKodu;
+  set cariKodu(String? value);
   @override
   String? get cariAdi;
+  set cariAdi(String? value);
   @override
   String? get hesapAdi;
+  set hesapAdi(String? value);
   @override
   double? get dovizTutari;
+  set dovizTutari(double? value);
   @override
   double? get dovizKuru;
+  set dovizKuru(double? value);
   @override
   String? get plasiyerKodu;
+  set plasiyerKodu(String? value);
   @override
   String? get plasiyerAdi;
+  set plasiyerAdi(String? value);
   @override
   String? get projeKodu;
+  set projeKodu(String? value);
   @override
   String? get projeAdi;
+  set projeAdi(String? value);
   @override
   String? get aciklama;
+  set aciklama(String? value);
   @override
   String? get refkey;
+  set refkey(String? value);
   @override
   DateTime? get kasaDevirTarihi;
+  set kasaDevirTarihi(DateTime? value);
   @override
   double? get kasaDevirTutari;
+  set kasaDevirTutari(double? value);
   @override
   double? get kasaDovizDevirTutari;
+  set kasaDovizDevirTutari(double? value);
   @override
   int? get kasaDovizTipi;
+  set kasaDovizTipi(int? value);
   @override
   @JsonKey(ignore: true)
-  _$$_KasaIslemleriModelCopyWith<_$_KasaIslemleriModel> get copyWith =>
+  _$$KasaIslemleriModelImplCopyWith<_$KasaIslemleriModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -232,11 +232,12 @@ class _$SiparisEditRequestModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_SiparisEditRequestModelCopyWith<$Res>
+abstract class _$$SiparisEditRequestModelImplCopyWith<$Res>
     implements $SiparisEditRequestModelCopyWith<$Res> {
-  factory _$$_SiparisEditRequestModelCopyWith(_$_SiparisEditRequestModel value,
-          $Res Function(_$_SiparisEditRequestModel) then) =
-      __$$_SiparisEditRequestModelCopyWithImpl<$Res>;
+  factory _$$SiparisEditRequestModelImplCopyWith(
+          _$SiparisEditRequestModelImpl value,
+          $Res Function(_$SiparisEditRequestModelImpl) then) =
+      __$$SiparisEditRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -264,12 +265,13 @@ abstract class _$$_SiparisEditRequestModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SiparisEditRequestModelCopyWithImpl<$Res>
+class __$$SiparisEditRequestModelImplCopyWithImpl<$Res>
     extends _$SiparisEditRequestModelCopyWithImpl<$Res,
-        _$_SiparisEditRequestModel>
-    implements _$$_SiparisEditRequestModelCopyWith<$Res> {
-  __$$_SiparisEditRequestModelCopyWithImpl(_$_SiparisEditRequestModel _value,
-      $Res Function(_$_SiparisEditRequestModel) _then)
+        _$SiparisEditRequestModelImpl>
+    implements _$$SiparisEditRequestModelImplCopyWith<$Res> {
+  __$$SiparisEditRequestModelImplCopyWithImpl(
+      _$SiparisEditRequestModelImpl _value,
+      $Res Function(_$SiparisEditRequestModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -297,7 +299,7 @@ class __$$_SiparisEditRequestModelCopyWithImpl<$Res>
     Object? stokKodu = freezed,
     Object? tag = freezed,
   }) {
-    return _then(_$_SiparisEditRequestModel(
+    return _then(_$SiparisEditRequestModelImpl(
       ekranTipi: freezed == ekranTipi
           ? _value.ekranTipi
           : ekranTipi // ignore: cast_nullable_to_non_nullable
@@ -389,8 +391,8 @@ class __$$_SiparisEditRequestModelCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class _$_SiparisEditRequestModel extends _SiparisEditRequestModel {
-  _$_SiparisEditRequestModel(
+class _$SiparisEditRequestModelImpl extends _SiparisEditRequestModel {
+  _$SiparisEditRequestModelImpl(
       {@JsonKey(defaultValue: "D") this.ekranTipi,
       this.kisitYok = true,
       @JsonKey(name: "BelgeTipi") this.belgeTipi,
@@ -414,8 +416,8 @@ class _$_SiparisEditRequestModel extends _SiparisEditRequestModel {
       this.tag})
       : super._();
 
-  factory _$_SiparisEditRequestModel.fromJson(Map<String, dynamic> json) =>
-      _$$_SiparisEditRequestModelFromJson(json);
+  factory _$SiparisEditRequestModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SiparisEditRequestModelImplFromJson(json);
 
   @override
   @JsonKey(defaultValue: "D")
@@ -467,14 +469,13 @@ class _$_SiparisEditRequestModel extends _SiparisEditRequestModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SiparisEditRequestModelCopyWith<_$_SiparisEditRequestModel>
-      get copyWith =>
-          __$$_SiparisEditRequestModelCopyWithImpl<_$_SiparisEditRequestModel>(
-              this, _$identity);
+  _$$SiparisEditRequestModelImplCopyWith<_$SiparisEditRequestModelImpl>
+      get copyWith => __$$SiparisEditRequestModelImplCopyWithImpl<
+          _$SiparisEditRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SiparisEditRequestModelToJson(
+    return _$$SiparisEditRequestModelImplToJson(
       this,
     );
   }
@@ -502,11 +503,11 @@ abstract class _SiparisEditRequestModel extends SiparisEditRequestModel {
       String? paramMap,
       String? resimGoster,
       String? stokKodu,
-      String? tag}) = _$_SiparisEditRequestModel;
+      String? tag}) = _$SiparisEditRequestModelImpl;
   _SiparisEditRequestModel._() : super._();
 
   factory _SiparisEditRequestModel.fromJson(Map<String, dynamic> json) =
-      _$_SiparisEditRequestModel.fromJson;
+      _$SiparisEditRequestModelImpl.fromJson;
 
   @override
   @JsonKey(defaultValue: "D")
@@ -579,6 +580,6 @@ abstract class _SiparisEditRequestModel extends SiparisEditRequestModel {
   set tag(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$_SiparisEditRequestModelCopyWith<_$_SiparisEditRequestModel>
+  _$$SiparisEditRequestModelImplCopyWith<_$SiparisEditRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

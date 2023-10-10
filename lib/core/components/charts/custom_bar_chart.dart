@@ -1,5 +1,3 @@
-
-
 import "package:fl_chart/fl_chart.dart";
 import "package:flutter/material.dart";
 
@@ -15,12 +13,6 @@ class CustomBarWidget extends StatefulWidget {
 class _CustomBarWidgetState extends BaseState<CustomBarWidget> {
   @override
   Widget build(BuildContext context) {
-    return BarChart(
-      BarChartData(
-        barGroups: [
-          
-        ]
-      )
-    );
+    return BarChart(BarChartData(barGroups: []));
   }
 }

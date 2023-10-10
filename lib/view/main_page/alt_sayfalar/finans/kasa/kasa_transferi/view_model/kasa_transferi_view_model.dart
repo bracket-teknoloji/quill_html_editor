@@ -1,6 +1,6 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/tahsilat_request_model.dart";
-import "package:picker/view/main_page/model/param_model.dart";
+import "../../../../../../../core/base/model/tahsilat_request_model.dart";
+import "../../../../../model/param_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/model/base_network_mixin.dart";
@@ -13,11 +13,18 @@ import "../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart
 
 part "kasa_transferi_view_model.g.dart";
 
-class KasaTransferiViewModel = _KasaTransferiViewModelBase with _$KasaTransferiViewModel;
+class KasaTransferiViewModel = _KasaTransferiViewModelBase
+    with _$KasaTransferiViewModel;
 
 abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
   @observable
-  TahsilatRequestModel model = TahsilatRequestModel(tahsilatmi: true, yeniKayit: true, gc: "C", tag: "TahsilatModel", pickerBelgeTuru: "KAT", hesapTipi: "T");
+  TahsilatRequestModel model = TahsilatRequestModel(
+      tahsilatmi: true,
+      yeniKayit: true,
+      gc: "C",
+      tag: "TahsilatModel",
+      pickerBelgeTuru: "KAT",
+      hesapTipi: "T");
 
   @observable
   KasaList? girisKasa;
@@ -29,7 +36,8 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<DovizKurlariModel>? dovizKurlariListesi;
 
   @computed
-  String get aciklamaString => "Transfer ${girisKasa?.kasaTanimi ?? ""} => ${cikisKasa?.kasaTanimi ?? ""}";
+  String get aciklamaString =>
+      "Transfer ${girisKasa?.kasaTanimi ?? ""} => ${cikisKasa?.kasaTanimi ?? ""}";
 
   @computed
   TahsilatRequestModel get getStokYeniKayitModel {
@@ -57,7 +65,8 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
     } else {
       girisKasa = value;
     }
-    model = model.copyWith(hesapKodu: value.kasaKodu, dovizTipi: value.dovizTipi);
+    model =
+        model.copyWith(hesapKodu: value.kasaKodu, dovizTipi: value.dovizTipi);
   }
 
   @action
@@ -73,13 +82,15 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
   void setTutar(double? value) => model = model.copyWith(tutar: value);
 
   @action
-  void setDovizTutari(double? value) => model = model.copyWith(dovizTutari: value);
+  void setDovizTutari(double? value) =>
+      model = model.copyWith(dovizTutari: value);
 
   @action
   void setProjekodu(String? value) => model = model.copyWith(projeKodu: value);
 
   @action
-  void setPlasiyerKodu(PlasiyerList? value) => model = model.copyWith(plasiyerKodu: value?.plasiyerKodu);
+  void setPlasiyerKodu(PlasiyerList? value) =>
+      model = model.copyWith(plasiyerKodu: value?.plasiyerKodu);
 
   @action
   void setDovizTipi(int? value) => model = model.copyWith(dovizTipi: value);
@@ -87,7 +98,14 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getSiradakiKod() async {
     var result = await networkManager.dioGet<BaseSiparisEditModel>(
-        path: ApiUrls.getSiradakiBelgeNo, bodyModel: BaseSiparisEditModel(), showLoading: true, queryParameters: {"Seri": model.belgeNo ?? "", "BelgeTipi": "TH", "EIrsaliye": "H"});
+        path: ApiUrls.getSiradakiBelgeNo,
+        bodyModel: BaseSiparisEditModel(),
+        showLoading: true,
+        queryParameters: {
+          "Seri": model.belgeNo ?? "",
+          "BelgeTipi": "TH",
+          "EIrsaliye": "H"
+        });
     if (result.data is List) {
       setBelgeNo((result.data.first as BaseSiparisEditModel).belgeNo);
     }
@@ -95,7 +113,11 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<KasaList?> getKasalar(String? kasaKodu) async {
-    var result = await networkManager.dioGet<KasaList>(path: ApiUrls.getKasalar, bodyModel: KasaList(), showLoading: true, queryParameters: {"KisitYok": true, "KasaKodu": kasaKodu});
+    var result = await networkManager.dioGet<KasaList>(
+        path: ApiUrls.getKasalar,
+        bodyModel: KasaList(),
+        showLoading: true,
+        queryParameters: {"KisitYok": true, "KasaKodu": kasaKodu});
     if (result.data is List) {
       return result.data.first as KasaList;
     }
@@ -105,7 +127,14 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getDovizler() async {
     var result = await networkManager.dioGet<DovizKurlariModel>(
-        path: ApiUrls.getDovizKurlari, bodyModel: DovizKurlariModel(), showLoading: true, queryParameters: {"EkranTipi": "D", "DovizKodu": model.dovizTipi, "tarih": model.tarih.toDateString});
+        path: ApiUrls.getDovizKurlari,
+        bodyModel: DovizKurlariModel(),
+        showLoading: true,
+        queryParameters: {
+          "EkranTipi": "D",
+          "DovizKodu": model.dovizTipi,
+          "tarih": model.tarih.toDateString
+        });
     if (result.data is List) {
       setDovizKurlariListesi(result.data.cast<DovizKurlariModel>());
     }
@@ -113,5 +142,9 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> postData() async =>
-      await networkManager.dioPost<DovizKurlariModel>(path: ApiUrls.saveTahsilat, bodyModel: DovizKurlariModel(), showLoading: true, data: getStokYeniKayitModel.toJson());
+      await networkManager.dioPost<DovizKurlariModel>(
+          path: ApiUrls.saveTahsilat,
+          bodyModel: DovizKurlariModel(),
+          showLoading: true,
+          data: getStokYeniKayitModel.toJson());
 }

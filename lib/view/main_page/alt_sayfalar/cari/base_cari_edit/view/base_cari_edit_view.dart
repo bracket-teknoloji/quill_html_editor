@@ -23,43 +23,76 @@ class BaseCariEditingView extends StatefulWidget {
   final bool? isSubTitleSmall;
   // final List<Widget>? actions;
   final BaseEditModel? model;
-  const BaseCariEditingView({super.key, this.appBarTitle, this.appBarSubtitle, this.isSubTitleSmall, this.model});
+  const BaseCariEditingView(
+      {super.key,
+      this.appBarTitle,
+      this.appBarSubtitle,
+      this.isSubTitleSmall,
+      this.model});
 
   @override
   State<BaseCariEditingView> createState() => _BasCariEditingViewState();
 }
 
-class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with TickerProviderStateMixin {
+class _BasCariEditingViewState extends BaseState<BaseCariEditingView>
+    with TickerProviderStateMixin {
   TabController? tabController;
   CariListesiModel get cariListesiModel => CariListesiModel.instance;
-  List<Tab>? get addTabs => widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null && widget.model?.baseEditEnum != BaseEditEnum.kopyala
-      ? [const Tab(child: Text("Özet")), const Tab(child: Text("Banka")), const Tab(child: Text("İletişim"))]
+  List<Tab>? get addTabs => widget.model?.baseEditEnum != BaseEditEnum.ekle &&
+          widget.model?.baseEditEnum != null &&
+          widget.model?.baseEditEnum != BaseEditEnum.kopyala
+      ? [
+          const Tab(child: Text("Özet")),
+          const Tab(child: Text("Banka")),
+          const Tab(child: Text("İletişim"))
+        ]
       : [];
-  List<Widget>? get addBody => widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null && widget.model?.baseEditEnum != BaseEditEnum.kopyala
-      ? [const BaseEditCariOzetView(), const BaseCariEditBankaView(), const BaseCariEditIletisimView()]
-      : [];
-  Widget? get addSaveButton => widget.model?.baseEditEnum != BaseEditEnum.goruntule
+  List<Widget>? get addBody =>
+      widget.model?.baseEditEnum != BaseEditEnum.ekle &&
+              widget.model?.baseEditEnum != null &&
+              widget.model?.baseEditEnum != BaseEditEnum.kopyala
+          ? [
+              const BaseEditCariOzetView(),
+              const BaseCariEditBankaView(),
+              const BaseCariEditIletisimView()
+            ]
+          : [];
+  Widget? get addSaveButton => widget.model?.baseEditEnum !=
+          BaseEditEnum.goruntule
       ? IconButton(
           onPressed: () async {
             if (validate.isEmpty) {
               dialogManager.showAreYouSureDialog(() async => await postData());
             } else {
-              await dialogManager.showEmptyFieldDialog(validate.keys.toList(), onOk: () => tabController?.animateTo(validate.values.first));
+              await dialogManager.showEmptyFieldDialog(validate.keys.toList(),
+                  onOk: () => tabController?.animateTo(validate.values.first));
             }
           },
           icon: const Icon(Icons.save_outlined))
       : null;
   @override
   Widget build(BuildContext context) {
-    var tabs = [const Tab(child: Text("Genel")), const Tab(child: Text("Diğer")), ...?addTabs];
-    var views = [BaseEditCariGenelView(model: widget.model), CariEditDigerView(model: widget.model), ...?addBody];
+    var tabs = [
+      const Tab(child: Text("Genel")),
+      const Tab(child: Text("Diğer")),
+      ...?addTabs
+    ];
+    var views = [
+      BaseEditCariGenelView(model: widget.model),
+      CariEditDigerView(model: widget.model),
+      ...?addBody
+    ];
     tabController = TabController(length: tabs.length, vsync: this);
     return DefaultTabController(
       length: tabs.length,
       child: Scaffold(
         // bottomNavigationBar: NavigationBar(destinations: const [Tab(child: Text("Genel")), Tab(child: Text("Diğer"))]),
         appBar: AppBar(
-          title: AppBarTitle(title: (widget.appBarTitle ?? "Cari Kartı"), subtitle: (widget.model?.baseEditEnum?.name ?? BaseEditEnum.ekle.name), isSubTitleSmall: widget.isSubTitleSmall),
+          title: AppBarTitle(
+              title: (widget.appBarTitle ?? "Cari Kartı"),
+              subtitle:
+                  (widget.model?.baseEditEnum?.name ?? BaseEditEnum.ekle.name),
+              isSubTitleSmall: widget.isSubTitleSmall),
           actions: [
             IconButton(
               onPressed: () {},

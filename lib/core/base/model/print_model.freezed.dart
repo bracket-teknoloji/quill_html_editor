@@ -126,11 +126,11 @@ class _$PrintModelCopyWithImpl<$Res, $Val extends PrintModel>
 }
 
 /// @nodoc
-abstract class _$$_PrintModelCopyWith<$Res>
+abstract class _$$PrintModelImplCopyWith<$Res>
     implements $PrintModelCopyWith<$Res> {
-  factory _$$_PrintModelCopyWith(
-          _$_PrintModel value, $Res Function(_$_PrintModel) then) =
-      __$$_PrintModelCopyWithImpl<$Res>;
+  factory _$$PrintModelImplCopyWith(
+          _$PrintModelImpl value, $Res Function(_$PrintModelImpl) then) =
+      __$$PrintModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -148,11 +148,11 @@ abstract class _$$_PrintModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PrintModelCopyWithImpl<$Res>
-    extends _$PrintModelCopyWithImpl<$Res, _$_PrintModel>
-    implements _$$_PrintModelCopyWith<$Res> {
-  __$$_PrintModelCopyWithImpl(
-      _$_PrintModel _value, $Res Function(_$_PrintModel) _then)
+class __$$PrintModelImplCopyWithImpl<$Res>
+    extends _$PrintModelCopyWithImpl<$Res, _$PrintModelImpl>
+    implements _$$PrintModelImplCopyWith<$Res> {
+  __$$PrintModelImplCopyWithImpl(
+      _$PrintModelImpl _value, $Res Function(_$PrintModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -167,7 +167,7 @@ class __$$_PrintModelCopyWithImpl<$Res>
     Object? dicParams = freezed,
     Object? standart = freezed,
   }) {
-    return _then(_$_PrintModel(
+    return _then(_$PrintModelImpl(
       dizaynId: freezed == dizaynId
           ? _value.dizaynId
           : dizaynId // ignore: cast_nullable_to_non_nullable
@@ -206,8 +206,8 @@ class __$$_PrintModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PrintModel extends _PrintModel {
-  _$_PrintModel(
+class _$PrintModelImpl extends _PrintModel {
+  _$PrintModelImpl(
       {this.dizaynId,
       this.etiketSayisi,
       required this.raporOzelKod,
@@ -218,8 +218,8 @@ class _$_PrintModel extends _PrintModel {
       this.standart})
       : super._();
 
-  factory _$_PrintModel.fromJson(Map<String, dynamic> json) =>
-      _$$_PrintModelFromJson(json);
+  factory _$PrintModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PrintModelImplFromJson(json);
 
   @override
   final int? dizaynId;
@@ -242,12 +242,12 @@ class _$_PrintModel extends _PrintModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PrintModelCopyWith<_$_PrintModel> get copyWith =>
-      __$$_PrintModelCopyWithImpl<_$_PrintModel>(this, _$identity);
+  _$$PrintModelImplCopyWith<_$PrintModelImpl> get copyWith =>
+      __$$PrintModelImplCopyWithImpl<_$PrintModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PrintModelToJson(
+    return _$$PrintModelImplToJson(
       this,
     );
   }
@@ -262,11 +262,11 @@ abstract class _PrintModel extends PrintModel {
       final String? yaziciAdi,
       final String? yaziciTipi,
       final DicParams? dicParams,
-      final bool? standart}) = _$_PrintModel;
+      final bool? standart}) = _$PrintModelImpl;
   _PrintModel._() : super._();
 
   factory _PrintModel.fromJson(Map<String, dynamic> json) =
-      _$_PrintModel.fromJson;
+      _$PrintModelImpl.fromJson;
 
   @override
   int? get dizaynId;
@@ -286,6 +286,6 @@ abstract class _PrintModel extends PrintModel {
   bool? get standart;
   @override
   @JsonKey(ignore: true)
-  _$$_PrintModelCopyWith<_$_PrintModel> get copyWith =>
+  _$$PrintModelImplCopyWith<_$PrintModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,5 +1,1 @@
-
-
-class StokRehberiRequestModel {
-  
-}
+class StokRehberiRequestModel {}

@@ -6,9 +6,9 @@ part of 'siparisler_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SiparislerRequestModel _$$_SiparislerRequestModelFromJson(
+_$SiparislerRequestModelImpl _$$SiparislerRequestModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_SiparislerRequestModel(
+    _$SiparislerRequestModelImpl(
       pickerBelgeTuru: json['PickerBelgeTuru'] as String?,
       iadeMi: json['IadeMi'] as bool?,
       cariKodu: json['CariKodu'] as String? ?? "",
@@ -39,8 +39,8 @@ _$_SiparislerRequestModel _$$_SiparislerRequestModelFromJson(
       referansStokKodu: json['ReferansStokKodu'] as String?,
     );
 
-Map<String, dynamic> _$$_SiparislerRequestModelToJson(
-    _$_SiparislerRequestModel instance) {
+Map<String, dynamic> _$$SiparislerRequestModelImplToJson(
+    _$SiparislerRequestModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

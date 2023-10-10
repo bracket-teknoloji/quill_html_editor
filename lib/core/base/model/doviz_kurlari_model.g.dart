@@ -6,8 +6,9 @@ part of 'doviz_kurlari_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_DovizKurlariModel _$$_DovizKurlariModelFromJson(Map<String, dynamic> json) =>
-    _$_DovizKurlariModel(
+_$DovizKurlariModelImpl _$$DovizKurlariModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$DovizKurlariModelImpl(
       tarih: json['TARIH'] == null
           ? null
           : DateTime.parse(json['TARIH'] as String),
@@ -20,8 +21,8 @@ _$_DovizKurlariModel _$$_DovizKurlariModelFromJson(Map<String, dynamic> json) =>
       effSatis: (json['EFF_SATIS'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$_DovizKurlariModelToJson(
-    _$_DovizKurlariModel instance) {
+Map<String, dynamic> _$$DovizKurlariModelImplToJson(
+    _$DovizKurlariModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -41,9 +42,9 @@ Map<String, dynamic> _$$_DovizKurlariModelToJson(
   return val;
 }
 
-_$_DovizKurlariRequestModel _$$_DovizKurlariRequestModelFromJson(
+_$DovizKurlariRequestModelImpl _$$DovizKurlariRequestModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_DovizKurlariRequestModel(
+    _$DovizKurlariRequestModelImpl(
       tarih: json['Tarih'] == null
           ? null
           : DateTime.parse(json['Tarih'] as String),
@@ -56,8 +57,8 @@ _$_DovizKurlariRequestModel _$$_DovizKurlariRequestModelFromJson(
       eFSatis: (json['EFSatis'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$_DovizKurlariRequestModelToJson(
-    _$_DovizKurlariRequestModel instance) {
+Map<String, dynamic> _$$DovizKurlariRequestModelImplToJson(
+    _$DovizKurlariRequestModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

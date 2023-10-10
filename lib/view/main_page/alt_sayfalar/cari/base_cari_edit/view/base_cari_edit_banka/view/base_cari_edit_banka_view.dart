@@ -29,7 +29,13 @@ class _BaseCariEditBankaViewState extends BaseState<BaseCariEditBankaView> {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [Text(cariDetayModel.bankaList?[index].bankaAdi ?? ""), Badge(label: Text(cariDetayModel.bankaList?[index].dovizAdi ?? mainCurrency))],
+                    children: [
+                      Text(cariDetayModel.bankaList?[index].bankaAdi ?? ""),
+                      Badge(
+                          label: Text(
+                              cariDetayModel.bankaList?[index].dovizAdi ??
+                                  mainCurrency))
+                    ],
                   ),
                   const Divider().paddingAll(UIHelper.lowSize),
                   Column(
@@ -38,22 +44,38 @@ class _BaseCariEditBankaViewState extends BaseState<BaseCariEditBankaView> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
-                            children: [const Text("IBAN").paddingOnly(right: UIHelper.midSize), Text(cariDetayModel.bankaList?[index].ibanno ?? "")],
+                            children: [
+                              const Text("IBAN")
+                                  .paddingOnly(right: UIHelper.midSize),
+                              Text(
+                                  cariDetayModel.bankaList?[index].ibanno ?? "")
+                            ],
                           ),
                           IconButton(
                             style: ButtonStyle(
-                              padding: MaterialStateProperty.all(EdgeInsets.zero),
+                              padding:
+                                  MaterialStateProperty.all(EdgeInsets.zero),
                             ),
                             onPressed: () {
-                              Clipboard.setData(ClipboardData(text: cariDetayModel.bankaList?[index].ibanno ?? ""));
-                              dialogManager.showInfoSnackBar("IBAN numarası kopyalandı.");
+                              Clipboard.setData(ClipboardData(
+                                  text:
+                                      cariDetayModel.bankaList?[index].ibanno ??
+                                          ""));
+                              dialogManager.showInfoSnackBar(
+                                  "IBAN numarası kopyalandı.");
                             },
                             icon: const Icon(Icons.share_outlined),
                           )
                         ],
                       ),
-                      Row(children: [const Text("IBAN").paddingOnly(right: UIHelper.midSize), Text(cariDetayModel.bankaList?[index].subeAdi ?? "")]),
-                      Row(children: [const Text("Şube").paddingOnly(right: UIHelper.midSize), Text(cariDetayModel.bankaList?[index].bankahesno ?? "")]),
+                      Row(children: [
+                        const Text("IBAN").paddingOnly(right: UIHelper.midSize),
+                        Text(cariDetayModel.bankaList?[index].subeAdi ?? "")
+                      ]),
+                      Row(children: [
+                        const Text("Şube").paddingOnly(right: UIHelper.midSize),
+                        Text(cariDetayModel.bankaList?[index].bankahesno ?? "")
+                      ]),
                     ],
                   ),
                 ],

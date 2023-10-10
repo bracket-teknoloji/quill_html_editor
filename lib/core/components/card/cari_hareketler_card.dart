@@ -18,14 +18,19 @@ class CariHareketlerCard extends StatefulWidget {
   final CariHareketleriModel cariHareketleriModel;
   final dynamic Function()? onTap;
 
-  const CariHareketlerCard({super.key, this.onTap, required this.cariHareketleriModel, this.dovizTipi});
+  const CariHareketlerCard(
+      {super.key,
+      this.onTap,
+      required this.cariHareketleriModel,
+      this.dovizTipi});
 
   @override
   State<CariHareketlerCard> createState() => _CariHareketlerCardState();
 }
 
 class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
-  bool get dovizliMi => widget.cariHareketleriModel.dovizliMi || widget.dovizTipi != null;
+  bool get dovizliMi =>
+      widget.cariHareketleriModel.dovizliMi || widget.dovizTipi != null;
   @override
   Widget build(BuildContext context) {
     return Slidable(
@@ -40,7 +45,8 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
               backgroundColor: theme.cardColor,
               foregroundColor: theme.colorScheme.primary,
               label: "Belgeye Git",
-            ).yetkiVarMi(widget.cariHareketleriModel.hareketAciklama != "Dekont")
+            ).yetkiVarMi(
+                widget.cariHareketleriModel.hareketAciklama != "Dekont")
           ].whereType<SlidableAction>().toList()),
       child: Stack(
         alignment: Alignment.centerRight,
@@ -65,12 +71,25 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                                   children: [
                                     Text(
                                         "${widget.cariHareketleriModel.tarih?.toDateString ?? ""} (${widget.cariHareketleriModel.borc != null && widget.cariHareketleriModel.dovizBorc != null ? "B" : "A"}) "),
-                                    const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli)
-                                        .yetkiVarMi(widget.cariHareketleriModel.dovizAlacak != null || widget.cariHareketleriModel.dovizBorc != null)
+                                    const ColorfulBadge(
+                                            label: Text("Dövizli"),
+                                            badgeColorEnum:
+                                                BadgeColorEnum.dovizli)
+                                        .yetkiVarMi(widget.cariHareketleriModel
+                                                    .dovizAlacak !=
+                                                null ||
+                                            widget.cariHareketleriModel
+                                                    .dovizBorc !=
+                                                null)
                                     // widget.cariHareketleriModel.dovizliMi ? const Badge(label: Text("Dövizli")) : Container(),
                                   ],
                                 ),
-                                Text(widget.cariHareketleriModel.hareketAciklama ?? "", style: TextStyle(color: UIHelper.primaryColor)),
+                                Text(
+                                    widget.cariHareketleriModel
+                                            .hareketAciklama ??
+                                        "",
+                                    style: TextStyle(
+                                        color: UIHelper.primaryColor)),
                               ],
                             ),
                             Column(
@@ -78,11 +97,15 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                               children: [
                                 Text(
                                     "${widget.cariHareketleriModel.alacak?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? widget.cariHareketleriModel.borc?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                                    style: theme.textTheme.bodySmall?.copyWith(fontSize: 12)),
+                                    style: theme.textTheme.bodySmall
+                                        ?.copyWith(fontSize: 12)),
                                 Visibility(
-                                    visible: widget.cariHareketleriModel.dovizliMi,
-                                    child: Text("${widget.cariHareketleriModel.dovizBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cariHareketleriModel.dovizAdi ?? mainCurrency}",
-                                        style: theme.textTheme.bodySmall?.copyWith(fontSize: 10)))
+                                    visible:
+                                        widget.cariHareketleriModel.dovizliMi,
+                                    child: Text(
+                                        "${widget.cariHareketleriModel.dovizBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cariHareketleriModel.dovizAdi ?? mainCurrency}",
+                                        style: theme.textTheme.bodySmall
+                                            ?.copyWith(fontSize: 10)))
                               ],
                             ),
                           ],
@@ -90,11 +113,47 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                         subtitle: Wrap(
                           runAlignment: WrapAlignment.spaceBetween,
                           children: [
-                            CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Belge No", child: Text(widget.cariHareketleriModel.belgeNo ?? "")),
-                            CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Vade Tarihi", child: Text(widget.cariHareketleriModel.vadeTarihi?.toDateString ?? "")),
-                            CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Plasiyer", child: Text(widget.cariHareketleriModel.plasiyerAciklama ?? "")),
-                            CustomWidgetWithLabel(isVertical: true, isTitleSmall: true, text: "Şube", child: Text("${widget.cariHareketleriModel.subeKodu ?? 0}"))
-                          ].map((e) => SizedBox(width: width * 0.33, child: e).paddingOnly(bottom: UIHelper.lowSize)).toList(),
+                            CustomWidgetWithLabel(
+                                isVertical: true,
+                                isTitleSmall: true,
+                                text: "Belge No",
+                                width: width * 0.33,
+                                child: Text(
+                                    widget.cariHareketleriModel.belgeNo ?? "",
+                                    overflow: TextOverflow.ellipsis)),
+                            CustomWidgetWithLabel(
+                                isVertical: true,
+                                isTitleSmall: true,
+                                text: "Vade Tarihi",
+                                width: width * 0.33,
+                                child: Text(
+                                    widget.cariHareketleriModel.vadeTarihi
+                                            ?.toDateString ??
+                                        "",
+                                    overflow: TextOverflow.ellipsis)),
+                            CustomWidgetWithLabel(
+                                isVertical: true,
+                                isTitleSmall: true,
+                                text: "Plasiyer",
+                                width: width * 0.33,
+                                child: Text(
+                                    widget.cariHareketleriModel
+                                            .plasiyerAciklama ??
+                                        "",
+                                    overflow: TextOverflow.ellipsis)),
+                            CustomWidgetWithLabel(
+                                isVertical: true,
+                                isTitleSmall: true,
+                                text: "Şube",
+                                width: width * 0.33,
+                                child: Text(
+                                    "${widget.cariHareketleriModel.subeKodu ?? 0}",
+                                    overflow: TextOverflow.ellipsis))
+                          ]
+                              .map((e) =>
+                                  SizedBox(width: width * 0.33, child: e)
+                                      .paddingOnly(bottom: UIHelper.lowSize))
+                              .toList(),
                         ),
                       ),
                       const Divider(),
@@ -104,16 +163,29 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                           //Açıklama
                           SizedBox(
                             width: width * 0.4,
-                            child: Text((widget.cariHareketleriModel.aciklama ?? ""),
-                                overflow: TextOverflow.ellipsis, softWrap: true, maxLines: 3, style: theme.textTheme.bodySmall?.copyWith(color: Colors.grey, fontStyle: FontStyle.italic)),
+                            child: Text(
+                                (widget.cariHareketleriModel.aciklama ?? ""),
+                                overflow: TextOverflow.ellipsis,
+                                softWrap: true,
+                                maxLines: 3,
+                                style: theme.textTheme.bodySmall?.copyWith(
+                                    color: Colors.grey,
+                                    fontStyle: FontStyle.italic)),
                           ),
                           //YuruyenBakiye
                           Container(
                             alignment: Alignment.centerRight,
-                            child: Text("Bakiye : ${dovizCheck.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.dovizTipi ?? mainCurrency}",
-                                style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(dovizCheck))),
+                            child: Text(
+                                "Bakiye : ${dovizCheck.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.dovizTipi ?? mainCurrency}",
+                                style: theme.textTheme.bodySmall?.copyWith(
+                                    color: UIHelper.getColorWithValue(
+                                        dovizCheck))),
                           ),
-                        ].map((e) => e.paddingSymmetric(vertical: UIHelper.midSize, horizontal: UIHelper.highSize)).toList(),
+                        ]
+                            .map((e) => e.paddingSymmetric(
+                                vertical: UIHelper.midSize,
+                                horizontal: UIHelper.highSize))
+                            .toList(),
                       )
                     ],
                   ).paddingAll(UIHelper.lowSize),
@@ -123,7 +195,11 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
           ).paddingSymmetric(horizontal: UIHelper.lowSize),
           Align(
             alignment: Alignment.centerRight,
-            child: Visibility(visible: widget.cariHareketleriModel.hareketAciklama != "Dekont", child: Icon(Icons.chevron_right_outlined, color: theme.colorScheme.primary)),
+            child: Visibility(
+                visible:
+                    widget.cariHareketleriModel.hareketAciklama != "Dekont",
+                child: Icon(Icons.chevron_right_outlined,
+                    color: theme.colorScheme.primary)),
           ).paddingOnly(right: UIHelper.lowSize)
         ],
       ),
@@ -132,7 +208,9 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
 
   double get dovizCheck {
     if (dovizliMi) {
-      return (widget.cariHareketleriModel.dovYuruyenBakiye ?? widget.cariHareketleriModel.yuruyenBakiye ?? 0);
+      return (widget.cariHareketleriModel.dovYuruyenBakiye ??
+          widget.cariHareketleriModel.yuruyenBakiye ??
+          0);
     } else {
       return (widget.cariHareketleriModel.yuruyenBakiye ?? 0);
     }

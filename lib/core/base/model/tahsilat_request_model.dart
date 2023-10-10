@@ -1,5 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
+import "base_network_mixin.dart";
 
 part "tahsilat_request_model.freezed.dart";
 part "tahsilat_request_model.g.dart";
@@ -39,7 +39,8 @@ class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
     String? hedefAciklama,
   }) = _TahsilatRequestModel;
 
-  factory TahsilatRequestModel.fromJson(Map<String, dynamic> json) => _$TahsilatRequestModelFromJson(json);
+  factory TahsilatRequestModel.fromJson(Map<String, dynamic> json) =>
+      _$TahsilatRequestModelFromJson(json);
 
   @override
   fromJson(Map<String, dynamic> json) {

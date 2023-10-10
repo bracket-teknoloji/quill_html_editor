@@ -17,13 +17,25 @@ class AnimatedIslemlerGridTile extends StatefulWidget {
   final IconData? iconWidget;
   final bool? altMenuVarMi;
 
-  const AnimatedIslemlerGridTile({super.key, this.name, this.title, this.icon, this.color, this.onTap, this.altMenuler, this.menuTipi, this.iconWidget, this.altMenuVarMi});
+  const AnimatedIslemlerGridTile(
+      {super.key,
+      this.name,
+      this.title,
+      this.icon,
+      this.color,
+      this.onTap,
+      this.altMenuler,
+      this.menuTipi,
+      this.iconWidget,
+      this.altMenuVarMi});
 
   @override
-  AnimatedIslemlerGridTileState createState() => AnimatedIslemlerGridTileState();
+  AnimatedIslemlerGridTileState createState() =>
+      AnimatedIslemlerGridTileState();
 }
 
-class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> {
+class AnimatedIslemlerGridTileState
+    extends BaseState<AnimatedIslemlerGridTile> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -32,15 +44,21 @@ class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> 
       splashColor: theme.primaryColor,
       onTap: widget.onTap,
       child: GridTile(
-          footer: (widget.altMenuVarMi ?? false) ? const Icon(Icons.expand_more, size: 15) : const SizedBox(),
+          footer: (widget.altMenuVarMi ?? false)
+              ? const Icon(Icons.expand_more, size: 15)
+              : const SizedBox(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               widget.iconWidget == null
-                  ? IconHelper.middleMenuIcon(widget.icon ?? "", color: UIHelper.primaryColor)
+                  ? IconHelper.middleMenuIcon(widget.icon ?? "",
+                      color: UIHelper.primaryColor)
                   : IconTheme(
-                      data: IconThemeData(weight: 0.1, size: 20, color: widget.color ?? UIHelper.primaryColor),
+                      data: IconThemeData(
+                          weight: 0.1,
+                          size: 20,
+                          color: widget.color ?? UIHelper.primaryColor),
                       child: Icon(
                         widget.iconWidget,
                         size: 20,
@@ -52,7 +70,8 @@ class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> 
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: theme.textTheme.bodySmall?.copyWith(color: Colors.white, fontSize: 10),
+                style: theme.textTheme.bodySmall
+                    ?.copyWith(color: Colors.white, fontSize: 10),
               ),
               // Flexible(child: (widget.altMenuVarMi ?? false) ? const Icon(Icons.expand_more, size: 15) : const SizedBox())
             ],

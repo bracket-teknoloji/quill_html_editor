@@ -3,7 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_staggered_animations/flutter_staggered_animations.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/constants/extensions/list_extensions.dart";
+import "../../../../constants/extensions/list_extensions.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../../../view/main_page/model/grid_item_model.dart";
@@ -23,7 +23,14 @@ class CustomAnimatedGridView<T> extends StatefulWidget {
   final T? model;
   final String? title;
   final ValueChanged<bool>? onSelected;
-  const CustomAnimatedGridView({super.key, this.cariListesiModel, required this.islemTipi, this.model, this.title, this.siparisTipi, this.onSelected});
+  const CustomAnimatedGridView(
+      {super.key,
+      this.cariListesiModel,
+      required this.islemTipi,
+      this.model,
+      this.title,
+      this.siparisTipi,
+      this.onSelected});
   @override
   State<CustomAnimatedGridView> createState() => _CustomAnimatedGridViewState();
 }
@@ -35,23 +42,35 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
   bool get stokMu => widget.islemTipi == IslemTipiEnum.stok;
   bool get siparisMi => widget.islemTipi == IslemTipiEnum.siparis;
   bool get kasaMi => widget.islemTipi == IslemTipiEnum.kasa;
-  bool get raporMu => widget.islemTipi == IslemTipiEnum.cariRapor || widget.islemTipi == IslemTipiEnum.stokRapor;
+  bool get raporMu =>
+      widget.islemTipi == IslemTipiEnum.cariRapor ||
+      widget.islemTipi == IslemTipiEnum.stokRapor;
   List<GridItemModel> result = MenuItemConstants().getList();
   @override
   void initState() {
     // viewModel.setGridItemModel(result.getList().first.altMenuler?.where((element) => element.title == "Raporlar").first.altMenuler?.where((element) => element.yetkiKontrol == true).toList());
     if (raporMu) {
       if (widget.islemTipi == IslemTipiEnum.cariRapor) {
-        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.cari)?.first.altMenuler);
+        viewModel.setGridItemModel(
+            getRaporList(IslemTipiEnum.cari)?.first.altMenuler);
       } else if (widget.islemTipi == IslemTipiEnum.stokRapor) {
-        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.stok)?.first.altMenuler);
+        viewModel.setGridItemModel(
+            getRaporList(IslemTipiEnum.stok)?.first.altMenuler);
       } else if (widget.islemTipi == IslemTipiEnum.siparis) {
-        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.siparis)?.first.altMenuler?.where((element) => element.siparisTipi == widget.siparisTipi).toList());
+        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.siparis)
+            ?.first
+            .altMenuler
+            ?.where((element) => element.siparisTipi == widget.siparisTipi)
+            .toList());
       }
     } else {
-      IslemlerMenuItemConstants islemlerResult =
-          IslemlerMenuItemConstants(islemtipi: widget.islemTipi, raporlar: getRaporList(widget.islemTipi), siparisTipi: widget.siparisTipi, model: widget.cariListesiModel ?? widget.model);
-      viewModel.setGridItemModel(islemlerResult.islemlerList.nullCheckWithGeneric);
+      IslemlerMenuItemConstants islemlerResult = IslemlerMenuItemConstants(
+          islemtipi: widget.islemTipi,
+          raporlar: getRaporList(widget.islemTipi),
+          siparisTipi: widget.siparisTipi,
+          model: widget.cariListesiModel ?? widget.model);
+      viewModel
+          .setGridItemModel(islemlerResult.islemlerList.nullCheckWithGeneric);
     }
     super.initState();
   }
@@ -70,16 +89,24 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                 visible: viewModel.returnGridItemModel.isNotEmpty,
                 child: IconButton(
                   onPressed: () {
-                    viewModel.setGridItemModel(viewModel.returnGridItemModel.last.toList());
+                    viewModel.setGridItemModel(
+                        viewModel.returnGridItemModel.last.toList());
                     viewModel.deleteLastReturnGridItemModel();
                   },
-                  icon: Icon(Icons.arrow_back_outlined, color: theme.colorScheme.primary),
+                  icon: Icon(Icons.arrow_back_outlined,
+                      color: theme.colorScheme.primary),
                 ),
               );
             }),
             Expanded(
                 child: SizedBox(
-                    child: Text(widget.title ?? widget.cariListesiModel?.cariKodu ?? widget.model?.stokKodu ?? "", style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis))
+                    child: Text(
+                            widget.title ??
+                                widget.cariListesiModel?.cariKodu ??
+                                widget.model?.stokKodu ??
+                                "",
+                            style: theme.appBarTheme.titleTextStyle
+                                ?.copyWith(overflow: TextOverflow.ellipsis))
                         .paddingOnly(left: UIHelper.midSize)))
           ],
         ),
@@ -100,7 +127,9 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                 shrinkWrap: true,
                 // physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: MediaQuery.of(context).size.width ~/ 85 > 6 ? 6 : MediaQuery.of(context).size.width ~/ 85,
+                  crossAxisCount: MediaQuery.of(context).size.width ~/ 85 > 6
+                      ? 6
+                      : MediaQuery.of(context).size.width ~/ 85,
                   childAspectRatio: context.isLandscape ? 1.2 : 0.9,
                 ),
                 itemCount: viewModel.gridItemModelList?.length ?? 0,
@@ -125,18 +154,24 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                                   title: item?.title.toString(),
                                   onTap: () async {
                                     if (item?.altMenuVarMi == true) {
-                                      viewModel.addReturnGridItemModel(viewModel.gridItemModelList);
+                                      viewModel.addReturnGridItemModel(
+                                          viewModel.gridItemModelList);
                                       viewModel.setGridItemModel(null);
                                       // await Future.delayed(const Duration(milliseconds: 500));
-                                      viewModel.setGridItemModel(item?.altMenuler);
+                                      viewModel
+                                          .setGridItemModel(item?.altMenuler);
                                     } else {
-                                      if (item?.route != null && item?.menuTipi != "SR") {
+                                      if (item?.route != null &&
+                                          item?.menuTipi != "SR") {
                                         Get.back();
-                                        Get.toNamed(item?.route ?? "", arguments: widget.cariListesiModel ?? widget.model);
+                                        Get.toNamed(item?.route ?? "",
+                                            arguments:
+                                                widget.cariListesiModel ??
+                                                    widget.model);
                                       } else {
                                         Get.back();
                                         var result = await item?.onTap?.call();
-                                        if (result != null && result is bool) {
+                                        if (result is bool) {
                                           widget.onSelected?.call(result);
                                         }
                                       }
@@ -156,6 +191,11 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
     if (!result.any((element) => element.title == menu.value)) {
       return null;
     }
-    return result.where((element) => element.title == menu.value).first.altMenuler?.where((element) => element.title == "Raporlar").toList();
+    return result
+        .where((element) => element.title == menu.value)
+        .first
+        .altMenuler
+        ?.where((element) => element.title == "Raporlar")
+        .toList();
   }
 }

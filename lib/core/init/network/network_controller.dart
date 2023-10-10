@@ -19,7 +19,8 @@ class NetworkController extends GetxController {
       connectivityResult = result;
       DialogManager().internetConnectionDialog();
       isOffline = true;
-    } else if (result == ConnectivityResult.mobile || result == ConnectivityResult.wifi) {
+    } else if (result == ConnectivityResult.mobile ||
+        result == ConnectivityResult.wifi) {
       connectivityResult = result;
       if (isOffline) {
         DialogManager().hideAlertDialog;

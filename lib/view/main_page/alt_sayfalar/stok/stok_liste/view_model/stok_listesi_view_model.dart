@@ -8,14 +8,17 @@ import "../model/stok_listesi_model.dart";
 
 part "stok_listesi_view_model.g.dart";
 
-class StokListesiViewModel = _StokListesiViewModelBase with _$StokListesiViewModel;
+class StokListesiViewModel = _StokListesiViewModelBase
+    with _$StokListesiViewModel;
 
 abstract class _StokListesiViewModelBase with Store {
   @observable
-  ObservableMap<String, MemoryImage> imageMap = <String, MemoryImage>{}.asObservable();
+  ObservableMap<String, MemoryImage> imageMap =
+      <String, MemoryImage>{}.asObservable();
 
   @action
-  void setImageMap(Map<String, MemoryImage> value) => imageMap = value.asObservable();
+  void setImageMap(Map<String, MemoryImage> value) =>
+      imageMap = value.asObservable();
 
   @action
   void addImageMap(Map<String, MemoryImage> value) => imageMap.addAll(value);
@@ -39,71 +42,89 @@ abstract class _StokListesiViewModelBase with Store {
   StokBottomSheetModel bottomSheetModel = StokBottomSheetModel();
 
   @action
-  void resetSelectedArr(){
-    bottomSheetModel = bottomSheetModel.copyWith(arrGrupKodu: null,arrKod1: null,arrKod2: null,arrKod3: null,arrKod4: null,arrKod5: null);
+  void resetSelectedArr() {
+    bottomSheetModel = bottomSheetModel.copyWith(
+        arrGrupKodu: null,
+        arrKod1: null,
+        arrKod2: null,
+        arrKod3: null,
+        arrKod4: null,
+        arrKod5: null);
   }
+
   @computed
   List<BaseGrupKoduModel>? get grupKodu => bottomSheetModel.arrGrupKodu;
 
   @action
-  void changeArrGrupKodu(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrGrupKodu: value);
+  void changeArrGrupKodu(List<BaseGrupKoduModel> value) =>
+      bottomSheetModel = bottomSheetModel.copyWith(arrGrupKodu: value);
 
   @computed
   List<BaseGrupKoduModel>? get kod1 => bottomSheetModel.arrKod1;
 
   @action
-  void changeArrKod1(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod1: value);
+  void changeArrKod1(List<BaseGrupKoduModel> value) =>
+      bottomSheetModel = bottomSheetModel.copyWith(arrKod1: value);
 
   @computed
   List<BaseGrupKoduModel>? get kod2 => bottomSheetModel.arrKod2;
 
   @action
-  void changeArrKod2(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod2: value);
+  void changeArrKod2(List<BaseGrupKoduModel> value) =>
+      bottomSheetModel = bottomSheetModel.copyWith(arrKod2: value);
 
   @computed
   List<BaseGrupKoduModel>? get kod3 => bottomSheetModel.arrKod3;
 
   @action
-  void changeArrKod3(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod3: value);
+  void changeArrKod3(List<BaseGrupKoduModel> value) =>
+      bottomSheetModel = bottomSheetModel.copyWith(arrKod3: value);
 
   @computed
   List<BaseGrupKoduModel>? get kod4 => bottomSheetModel.arrKod4;
 
   @action
-  void changeArrKod4(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod4: value);
+  void changeArrKod4(List<BaseGrupKoduModel> value) =>
+      bottomSheetModel = bottomSheetModel.copyWith(arrKod4: value);
 
   @computed
   List<BaseGrupKoduModel>? get kod5 => bottomSheetModel.arrKod5;
 
   @action
-  void changeArrKod5(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod5: value);
-
+  void changeArrKod5(List<BaseGrupKoduModel> value) =>
+      bottomSheetModel = bottomSheetModel.copyWith(arrKod5: value);
 
   @observable
-  String resimleriGoster = CacheManager.getProfilParametre.stokResimleriGoster ? "E" : "H";
+  String resimleriGoster =
+      CacheManager.getProfilParametre.stokResimleriGoster ? "E" : "H";
 
   @action
   void setResimleriGoster() {
     if (resimleriGoster == "H") {
       resimleriGoster = "E";
-      CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(stokResimleriGoster: true));
+      CacheManager.setProfilParametre(
+          CacheManager.getProfilParametre.copyWith(stokResimleriGoster: true));
     } else {
       resimleriGoster = "H";
-      CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(stokResimleriGoster: false));
+      CacheManager.setProfilParametre(
+          CacheManager.getProfilParametre.copyWith(stokResimleriGoster: false));
     }
   }
 
   @observable
-  ObservableList<BaseGrupKoduModel> grupKodlari = <BaseGrupKoduModel>[].asObservable();
+  ObservableList<BaseGrupKoduModel> grupKodlari =
+      <BaseGrupKoduModel>[].asObservable();
 
   @action
-  void setGrupKodlari(List<BaseGrupKoduModel> value) => grupKodlari = value.asObservable();
+  void setGrupKodlari(List<BaseGrupKoduModel> value) =>
+      grupKodlari = value.asObservable();
 
   @observable
   ObservableList<StokListesiModel>? stokListesi;
 
   @action
-  void setStokListesi(List<StokListesiModel>? value) => stokListesi = value?.asObservable();
+  void setStokListesi(List<StokListesiModel>? value) =>
+      stokListesi = value?.asObservable();
 
   @action
   void addStokListesi(List<StokListesiModel> value) {
@@ -138,7 +159,8 @@ abstract class _StokListesiViewModelBase with Store {
   void setSiralama(String value) => siralama = value;
 
   @observable
-  ObservableList<bool> selected = [true, false, false, false, false].asObservable();
+  ObservableList<bool> selected =
+      [true, false, false, false, false].asObservable();
 
   @action
   void setSelectedWithIndex(int index) {
@@ -147,10 +169,12 @@ abstract class _StokListesiViewModelBase with Store {
   }
 
   @action
-  void resetSelected() => selected = [true, false, false, false, false].asObservable();
+  void resetSelected() =>
+      selected = [true, false, false, false, false].asObservable();
 
   @observable
-  ObservableList selectedList = ["Tümü", "Artı", "Eksi", "Sıfır", "Bakiyeli"].asObservable();
+  ObservableList selectedList =
+      ["Tümü", "Artı", "Eksi", "Sıfır", "Bakiyeli"].asObservable();
 
   @computed
   String? get bakiye {

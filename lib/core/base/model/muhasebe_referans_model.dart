@@ -1,5 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
+import "base_network_mixin.dart";
 
 part "muhasebe_referans_model.freezed.dart";
 part "muhasebe_referans_model.g.dart";
@@ -12,7 +12,8 @@ class MuhasebeReferansModel with _$MuhasebeReferansModel, NetworkManagerMixin {
     String? tanimi,
   }) = _MuhasebeReferansModel;
 
-  factory MuhasebeReferansModel.fromJson(Map<String, dynamic> json) => _$MuhasebeReferansModelFromJson(json);
+  factory MuhasebeReferansModel.fromJson(Map<String, dynamic> json) =>
+      _$MuhasebeReferansModelFromJson(json);
 
   @override
   fromJson(Map<String, dynamic> json) {

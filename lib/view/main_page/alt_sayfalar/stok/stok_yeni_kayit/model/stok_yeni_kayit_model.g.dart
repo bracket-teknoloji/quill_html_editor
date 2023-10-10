@@ -6,9 +6,9 @@ part of 'stok_yeni_kayit_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_StokYeniKayitModel _$$_StokYeniKayitModelFromJson(
+_$StokYeniKayitModelImpl _$$StokYeniKayitModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_StokYeniKayitModel(
+    _$StokYeniKayitModelImpl(
       aciklama: json['ACIKLAMA'] as String?,
       belgeNo: json['BELGE_NO'] as String?,
       gc: json['GC'] as String?,
@@ -35,8 +35,8 @@ _$_StokYeniKayitModel _$$_StokYeniKayitModelFromJson(
       yeniKayit: json['_YeniKayit'] as bool?,
     );
 
-Map<String, dynamic> _$$_StokYeniKayitModelToJson(
-    _$_StokYeniKayitModel instance) {
+Map<String, dynamic> _$$StokYeniKayitModelImplToJson(
+    _$StokYeniKayitModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

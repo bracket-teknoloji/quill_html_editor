@@ -175,11 +175,11 @@ class _$KasaListesiModelCopyWithImpl<$Res, $Val extends KasaListesiModel>
 }
 
 /// @nodoc
-abstract class _$$_KasaListesiModelCopyWith<$Res>
+abstract class _$$KasaListesiModelImplCopyWith<$Res>
     implements $KasaListesiModelCopyWith<$Res> {
-  factory _$$_KasaListesiModelCopyWith(
-          _$_KasaListesiModel value, $Res Function(_$_KasaListesiModel) then) =
-      __$$_KasaListesiModelCopyWithImpl<$Res>;
+  factory _$$KasaListesiModelImplCopyWith(_$KasaListesiModelImpl value,
+          $Res Function(_$KasaListesiModelImpl) then) =
+      __$$KasaListesiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -203,11 +203,11 @@ abstract class _$$_KasaListesiModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_KasaListesiModelCopyWithImpl<$Res>
-    extends _$KasaListesiModelCopyWithImpl<$Res, _$_KasaListesiModel>
-    implements _$$_KasaListesiModelCopyWith<$Res> {
-  __$$_KasaListesiModelCopyWithImpl(
-      _$_KasaListesiModel _value, $Res Function(_$_KasaListesiModel) _then)
+class __$$KasaListesiModelImplCopyWithImpl<$Res>
+    extends _$KasaListesiModelCopyWithImpl<$Res, _$KasaListesiModelImpl>
+    implements _$$KasaListesiModelImplCopyWith<$Res> {
+  __$$KasaListesiModelImplCopyWithImpl(_$KasaListesiModelImpl _value,
+      $Res Function(_$KasaListesiModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -231,7 +231,7 @@ class __$$_KasaListesiModelCopyWithImpl<$Res>
     Object? dovizDevirTutari = freezed,
     Object? dovizAdi = freezed,
   }) {
-    return _then(_$_KasaListesiModel(
+    return _then(_$KasaListesiModelImpl(
       kasaKodu: freezed == kasaKodu
           ? _value.kasaKodu
           : kasaKodu // ignore: cast_nullable_to_non_nullable
@@ -306,8 +306,8 @@ class __$$_KasaListesiModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_KasaListesiModel extends _KasaListesiModel {
-  _$_KasaListesiModel(
+class _$KasaListesiModelImpl extends _KasaListesiModel {
+  _$KasaListesiModelImpl(
       {this.kasaKodu,
       this.kasaTanimi,
       this.subeKodu,
@@ -327,8 +327,8 @@ class _$_KasaListesiModel extends _KasaListesiModel {
       this.dovizAdi})
       : super._();
 
-  factory _$_KasaListesiModel.fromJson(Map<String, dynamic> json) =>
-      _$$_KasaListesiModelFromJson(json);
+  factory _$KasaListesiModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$KasaListesiModelImplFromJson(json);
 
   @override
   final String? kasaKodu;
@@ -368,12 +368,13 @@ class _$_KasaListesiModel extends _KasaListesiModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_KasaListesiModelCopyWith<_$_KasaListesiModel> get copyWith =>
-      __$$_KasaListesiModelCopyWithImpl<_$_KasaListesiModel>(this, _$identity);
+  _$$KasaListesiModelImplCopyWith<_$KasaListesiModelImpl> get copyWith =>
+      __$$KasaListesiModelImplCopyWithImpl<_$KasaListesiModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_KasaListesiModelToJson(
+    return _$$KasaListesiModelImplToJson(
       this,
     );
   }
@@ -397,11 +398,11 @@ abstract class _KasaListesiModel extends KasaListesiModel {
       final double? dovizBakiye,
       final double? devirliDovizBakiye,
       final double? dovizDevirTutari,
-      final String? dovizAdi}) = _$_KasaListesiModel;
+      final String? dovizAdi}) = _$KasaListesiModelImpl;
   _KasaListesiModel._() : super._();
 
   factory _KasaListesiModel.fromJson(Map<String, dynamic> json) =
-      _$_KasaListesiModel.fromJson;
+      _$KasaListesiModelImpl.fromJson;
 
   @override
   String? get kasaKodu;
@@ -439,6 +440,6 @@ abstract class _KasaListesiModel extends KasaListesiModel {
   String? get dovizAdi;
   @override
   @JsonKey(ignore: true)
-  _$$_KasaListesiModelCopyWith<_$_KasaListesiModel> get copyWith =>
+  _$$KasaListesiModelImplCopyWith<_$KasaListesiModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

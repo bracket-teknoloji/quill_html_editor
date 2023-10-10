@@ -6,8 +6,9 @@ part of 'kasa_listesi_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_KasaListesiModel _$$_KasaListesiModelFromJson(Map<String, dynamic> json) =>
-    _$_KasaListesiModel(
+_$KasaListesiModelImpl _$$KasaListesiModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$KasaListesiModelImpl(
       kasaKodu: json['KASA_KODU'] as String?,
       kasaTanimi: json['KASA_TANIMI'] as String?,
       subeKodu: json['SUBE_KODU'] as int?,
@@ -27,7 +28,8 @@ _$_KasaListesiModel _$$_KasaListesiModelFromJson(Map<String, dynamic> json) =>
       dovizAdi: json['DOVIZ_ADI'] as String?,
     );
 
-Map<String, dynamic> _$$_KasaListesiModelToJson(_$_KasaListesiModel instance) {
+Map<String, dynamic> _$$KasaListesiModelImplToJson(
+    _$KasaListesiModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

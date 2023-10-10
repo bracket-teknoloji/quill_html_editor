@@ -21,17 +21,20 @@ class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
     return Scaffold(
         appBar: AppBar(
           title: const Text("Cari Aktiviteleri ()"),
-          actions: [IconButton(onPressed: () => CariAktiviteFiltreDialogManager.showAktiviteDialog(context), icon: const Icon(Icons.filter_alt_outlined))],
+          actions: [
+            IconButton(
+                onPressed: () =>
+                    CariAktiviteFiltreDialogManager.showAktiviteDialog(context),
+                icon: const Icon(Icons.filter_alt_outlined))
+          ],
           bottom: PreferredSize(
               preferredSize: Size.fromHeight(height * 0.1),
               child: const CustomWidgetWithLabel(
-                text: "Ara",
-                child: 
-                  TextField(
-                    decoration: InputDecoration(suffixIcon: Icon(Icons.search_outlined)),
-                  )
-                
-              ).paddingAll(UIHelper.midSize)),
+                  text: "Ara",
+                  child: TextField(
+                    decoration: InputDecoration(
+                        suffixIcon: Icon(Icons.search_outlined)),
+                  )).paddingAll(UIHelper.midSize)),
         ),
         body: SizedBox(
           height: height * 0.07,

@@ -200,11 +200,11 @@ class _$BankaHesaplariModelCopyWithImpl<$Res, $Val extends BankaHesaplariModel>
 }
 
 /// @nodoc
-abstract class _$$_BankaHesaplariModelCopyWith<$Res>
+abstract class _$$BankaHesaplariModelImplCopyWith<$Res>
     implements $BankaHesaplariModelCopyWith<$Res> {
-  factory _$$_BankaHesaplariModelCopyWith(_$_BankaHesaplariModel value,
-          $Res Function(_$_BankaHesaplariModel) then) =
-      __$$_BankaHesaplariModelCopyWithImpl<$Res>;
+  factory _$$BankaHesaplariModelImplCopyWith(_$BankaHesaplariModelImpl value,
+          $Res Function(_$BankaHesaplariModelImpl) then) =
+      __$$BankaHesaplariModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -229,11 +229,11 @@ abstract class _$$_BankaHesaplariModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_BankaHesaplariModelCopyWithImpl<$Res>
-    extends _$BankaHesaplariModelCopyWithImpl<$Res, _$_BankaHesaplariModel>
-    implements _$$_BankaHesaplariModelCopyWith<$Res> {
-  __$$_BankaHesaplariModelCopyWithImpl(_$_BankaHesaplariModel _value,
-      $Res Function(_$_BankaHesaplariModel) _then)
+class __$$BankaHesaplariModelImplCopyWithImpl<$Res>
+    extends _$BankaHesaplariModelCopyWithImpl<$Res, _$BankaHesaplariModelImpl>
+    implements _$$BankaHesaplariModelImplCopyWith<$Res> {
+  __$$BankaHesaplariModelImplCopyWithImpl(_$BankaHesaplariModelImpl _value,
+      $Res Function(_$BankaHesaplariModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -258,7 +258,7 @@ class __$$_BankaHesaplariModelCopyWithImpl<$Res>
     Object? dovizAdi = freezed,
     Object? hesapNo = freezed,
   }) {
-    return _then(_$_BankaHesaplariModel(
+    return _then(_$BankaHesaplariModelImpl(
       bankaKodu: freezed == bankaKodu
           ? _value.bankaKodu
           : bankaKodu // ignore: cast_nullable_to_non_nullable
@@ -337,8 +337,8 @@ class __$$_BankaHesaplariModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_BankaHesaplariModel extends _BankaHesaplariModel {
-  _$_BankaHesaplariModel(
+class _$BankaHesaplariModelImpl extends _BankaHesaplariModel {
+  _$BankaHesaplariModelImpl(
       {this.bankaKodu,
       this.bankasubeKodu,
       this.hesapKodu,
@@ -359,8 +359,8 @@ class _$_BankaHesaplariModel extends _BankaHesaplariModel {
       this.hesapNo})
       : super._();
 
-  factory _$_BankaHesaplariModel.fromJson(Map<String, dynamic> json) =>
-      _$$_BankaHesaplariModelFromJson(json);
+  factory _$BankaHesaplariModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BankaHesaplariModelImplFromJson(json);
 
   @override
   String? bankaKodu;
@@ -402,13 +402,13 @@ class _$_BankaHesaplariModel extends _BankaHesaplariModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BankaHesaplariModelCopyWith<_$_BankaHesaplariModel> get copyWith =>
-      __$$_BankaHesaplariModelCopyWithImpl<_$_BankaHesaplariModel>(
+  _$$BankaHesaplariModelImplCopyWith<_$BankaHesaplariModelImpl> get copyWith =>
+      __$$BankaHesaplariModelImplCopyWithImpl<_$BankaHesaplariModelImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BankaHesaplariModelToJson(
+    return _$$BankaHesaplariModelImplToJson(
       this,
     );
   }
@@ -433,11 +433,11 @@ abstract class _BankaHesaplariModel extends BankaHesaplariModel {
       String? baglihesapKodu,
       String? muhasebeHesapTipi,
       String? dovizAdi,
-      String? hesapNo}) = _$_BankaHesaplariModel;
+      String? hesapNo}) = _$BankaHesaplariModelImpl;
   _BankaHesaplariModel._() : super._();
 
   factory _BankaHesaplariModel.fromJson(Map<String, dynamic> json) =
-      _$_BankaHesaplariModel.fromJson;
+      _$BankaHesaplariModelImpl.fromJson;
 
   @override
   String? get bankaKodu;
@@ -495,6 +495,6 @@ abstract class _BankaHesaplariModel extends BankaHesaplariModel {
   set hesapNo(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$_BankaHesaplariModelCopyWith<_$_BankaHesaplariModel> get copyWith =>
+  _$$BankaHesaplariModelImplCopyWith<_$BankaHesaplariModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

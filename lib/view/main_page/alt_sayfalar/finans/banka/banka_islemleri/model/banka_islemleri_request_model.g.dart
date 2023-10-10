@@ -6,9 +6,9 @@ part of 'banka_islemleri_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_BankaIslemleriRequestModel _$$_BankaIslemleriRequestModelFromJson(
+_$BankaIslemleriRequestModelImpl _$$BankaIslemleriRequestModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_BankaIslemleriRequestModel(
+    _$BankaIslemleriRequestModelImpl(
       baslamaTarihi: json['BaslamaTarihi'] as String?,
       bitisTarihi: json['BitisTarihi'] as String?,
       menuKodu: json['MenuKodu'] as String?,
@@ -16,8 +16,8 @@ _$_BankaIslemleriRequestModel _$$_BankaIslemleriRequestModelFromJson(
       hesapKodu: json['HesapKodu'] as String?,
     );
 
-Map<String, dynamic> _$$_BankaIslemleriRequestModelToJson(
-    _$_BankaIslemleriRequestModel instance) {
+Map<String, dynamic> _$$BankaIslemleriRequestModelImplToJson(
+    _$BankaIslemleriRequestModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

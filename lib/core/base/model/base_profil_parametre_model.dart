@@ -7,22 +7,25 @@ part "base_profil_parametre_model.freezed.dart";
 part "base_profil_parametre_model.g.dart";
 
 @freezed
-abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, NetworkManagerMixin {
+abstract class BaseProfilParametreModel
+    with _$BaseProfilParametreModel, NetworkManagerMixin {
   factory BaseProfilParametreModel({
-  @Default(true)  bool siparisYeniKaydaHazirla,
-  @Default(false)  bool siparisEkAlan,
-  @Default(false)  bool siparisMiktar,
-  @Default(false)  bool siparisVade,
-  @Default(false)  bool kurlariSilTekrarGuncelle,
-  @Default(false)  bool stokResimleriGoster,
-  @Default(false)  bool stokYazdirDizaynVeYaziciHatirla,
-  @Default(false)  bool stokSecildigindeYazdir,
-  NetFectDizaynList? netFectDizaynList,
-  YaziciList? yaziciList,
+    @Default(true) bool siparisYeniKaydaHazirla,
+    @Default(false) bool siparisEkAlan,
+    @Default(false) bool siparisMiktar,
+    @Default(false) bool siparisVade,
+    @Default(false) bool kurlariSilTekrarGuncelle,
+    @Default(false) bool stokResimleriGoster,
+    @Default(false) bool stokYazdirDizaynVeYaziciHatirla,
+    @Default(false) bool stokSecildigindeYazdir,
+    NetFectDizaynList? netFectDizaynList,
+    YaziciList? yaziciList,
   }) = _BaseProfilParametreModel;
-  factory BaseProfilParametreModel.fromJson(Map<String, dynamic> json) => _$BaseProfilParametreModelFromJson(json);
+  factory BaseProfilParametreModel.fromJson(Map<String, dynamic> json) =>
+      _$BaseProfilParametreModelFromJson(json);
   //Empty constructor
   BaseProfilParametreModel._();
   @override
-  fromJson(Map<String, dynamic> json) => _$BaseProfilParametreModelFromJson(json);
+  fromJson(Map<String, dynamic> json) =>
+      _$BaseProfilParametreModelFromJson(json);
 }

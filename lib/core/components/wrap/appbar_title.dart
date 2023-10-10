@@ -5,13 +5,20 @@ class AppBarTitle extends StatelessWidget {
   final String? subtitle;
   final bool? isCentered;
   final bool? isSubTitleSmall;
-  const AppBarTitle({super.key, this.title, this.subtitle, this.isSubTitleSmall, this.isCentered});
+  const AppBarTitle(
+      {super.key,
+      this.title,
+      this.subtitle,
+      this.isSubTitleSmall,
+      this.isCentered});
 
   @override
   Widget build(BuildContext context) {
     return Wrap(
       direction: Axis.vertical,
-      alignment: isCentered != null && (isCentered ?? false) ? WrapAlignment.center : WrapAlignment.start,
+      alignment: isCentered != null && (isCentered ?? false)
+          ? WrapAlignment.center
+          : WrapAlignment.start,
       runAlignment: WrapAlignment.center,
       children: [
         Text(title ?? ""),
@@ -21,7 +28,12 @@ class AppBarTitle extends StatelessWidget {
                 child: Text(
                   subtitle ?? "",
                   overflow: TextOverflow.ellipsis,
-                  style: (isSubTitleSmall != null && (isSubTitleSmall ?? false)) ? Theme.of(context).textTheme.labelSmall : Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 14),
+                  style: (isSubTitleSmall != null && (isSubTitleSmall ?? false))
+                      ? Theme.of(context).textTheme.labelSmall
+                      : Theme.of(context)
+                          .textTheme
+                          .labelMedium
+                          ?.copyWith(fontSize: 14),
                 ),
               )
             : const SizedBox(),

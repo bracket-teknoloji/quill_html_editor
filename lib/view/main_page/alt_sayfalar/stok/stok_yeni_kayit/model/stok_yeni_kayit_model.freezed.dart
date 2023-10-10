@@ -236,11 +236,11 @@ class _$StokYeniKayitModelCopyWithImpl<$Res, $Val extends StokYeniKayitModel>
 }
 
 /// @nodoc
-abstract class _$$_StokYeniKayitModelCopyWith<$Res>
+abstract class _$$StokYeniKayitModelImplCopyWith<$Res>
     implements $StokYeniKayitModelCopyWith<$Res> {
-  factory _$$_StokYeniKayitModelCopyWith(_$_StokYeniKayitModel value,
-          $Res Function(_$_StokYeniKayitModel) then) =
-      __$$_StokYeniKayitModelCopyWithImpl<$Res>;
+  factory _$$StokYeniKayitModelImplCopyWith(_$StokYeniKayitModelImpl value,
+          $Res Function(_$StokYeniKayitModelImpl) then) =
+      __$$StokYeniKayitModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -269,11 +269,11 @@ abstract class _$$_StokYeniKayitModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_StokYeniKayitModelCopyWithImpl<$Res>
-    extends _$StokYeniKayitModelCopyWithImpl<$Res, _$_StokYeniKayitModel>
-    implements _$$_StokYeniKayitModelCopyWith<$Res> {
-  __$$_StokYeniKayitModelCopyWithImpl(
-      _$_StokYeniKayitModel _value, $Res Function(_$_StokYeniKayitModel) _then)
+class __$$StokYeniKayitModelImplCopyWithImpl<$Res>
+    extends _$StokYeniKayitModelCopyWithImpl<$Res, _$StokYeniKayitModelImpl>
+    implements _$$StokYeniKayitModelImplCopyWith<$Res> {
+  __$$StokYeniKayitModelImplCopyWithImpl(_$StokYeniKayitModelImpl _value,
+      $Res Function(_$StokYeniKayitModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -302,7 +302,7 @@ class __$$_StokYeniKayitModelCopyWithImpl<$Res>
     Object? dovizTipi = freezed,
     Object? yeniKayit = freezed,
   }) {
-    return _then(_$_StokYeniKayitModel(
+    return _then(_$StokYeniKayitModelImpl(
       aciklama: freezed == aciklama
           ? _value.aciklama
           : aciklama // ignore: cast_nullable_to_non_nullable
@@ -397,8 +397,8 @@ class __$$_StokYeniKayitModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_StokYeniKayitModel extends _StokYeniKayitModel {
-  _$_StokYeniKayitModel(
+class _$StokYeniKayitModelImpl extends _StokYeniKayitModel {
+  _$StokYeniKayitModelImpl(
       {this.aciklama,
       this.belgeNo,
       this.gc,
@@ -423,8 +423,8 @@ class _$_StokYeniKayitModel extends _StokYeniKayitModel {
       @JsonKey(name: "_YeniKayit") this.yeniKayit})
       : super._();
 
-  factory _$_StokYeniKayitModel.fromJson(Map<String, dynamic> json) =>
-      _$$_StokYeniKayitModelFromJson(json);
+  factory _$StokYeniKayitModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StokYeniKayitModelImplFromJson(json);
 
   @override
   String? aciklama;
@@ -476,13 +476,13 @@ class _$_StokYeniKayitModel extends _StokYeniKayitModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StokYeniKayitModelCopyWith<_$_StokYeniKayitModel> get copyWith =>
-      __$$_StokYeniKayitModelCopyWithImpl<_$_StokYeniKayitModel>(
+  _$$StokYeniKayitModelImplCopyWith<_$StokYeniKayitModelImpl> get copyWith =>
+      __$$StokYeniKayitModelImplCopyWithImpl<_$StokYeniKayitModelImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_StokYeniKayitModelToJson(
+    return _$$StokYeniKayitModelImplToJson(
       this,
     );
   }
@@ -511,11 +511,11 @@ abstract class _StokYeniKayitModel extends StokYeniKayitModel {
       int? fiyat,
       double? dovizTutari,
       int? dovizTipi,
-      @JsonKey(name: "_YeniKayit") bool? yeniKayit}) = _$_StokYeniKayitModel;
+      @JsonKey(name: "_YeniKayit") bool? yeniKayit}) = _$StokYeniKayitModelImpl;
   _StokYeniKayitModel._() : super._();
 
   factory _StokYeniKayitModel.fromJson(Map<String, dynamic> json) =
-      _$_StokYeniKayitModel.fromJson;
+      _$StokYeniKayitModelImpl.fromJson;
 
   @override
   String? get aciklama;
@@ -589,6 +589,6 @@ abstract class _StokYeniKayitModel extends StokYeniKayitModel {
   set yeniKayit(bool? value);
   @override
   @JsonKey(ignore: true)
-  _$$_StokYeniKayitModelCopyWith<_$_StokYeniKayitModel> get copyWith =>
+  _$$StokYeniKayitModelImplCopyWith<_$StokYeniKayitModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

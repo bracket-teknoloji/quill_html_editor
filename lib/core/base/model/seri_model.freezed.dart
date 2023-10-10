@@ -67,21 +67,22 @@ class _$SeriModelCopyWithImpl<$Res, $Val extends SeriModel>
 }
 
 /// @nodoc
-abstract class _$$_SeriModelCopyWith<$Res> implements $SeriModelCopyWith<$Res> {
-  factory _$$_SeriModelCopyWith(
-          _$_SeriModel value, $Res Function(_$_SeriModel) then) =
-      __$$_SeriModelCopyWithImpl<$Res>;
+abstract class _$$SeriModelImplCopyWith<$Res>
+    implements $SeriModelCopyWith<$Res> {
+  factory _$$SeriModelImplCopyWith(
+          _$SeriModelImpl value, $Res Function(_$SeriModelImpl) then) =
+      __$$SeriModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? seriNo, String? aciklama});
 }
 
 /// @nodoc
-class __$$_SeriModelCopyWithImpl<$Res>
-    extends _$SeriModelCopyWithImpl<$Res, _$_SeriModel>
-    implements _$$_SeriModelCopyWith<$Res> {
-  __$$_SeriModelCopyWithImpl(
-      _$_SeriModel _value, $Res Function(_$_SeriModel) _then)
+class __$$SeriModelImplCopyWithImpl<$Res>
+    extends _$SeriModelCopyWithImpl<$Res, _$SeriModelImpl>
+    implements _$$SeriModelImplCopyWith<$Res> {
+  __$$SeriModelImplCopyWithImpl(
+      _$SeriModelImpl _value, $Res Function(_$SeriModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -90,7 +91,7 @@ class __$$_SeriModelCopyWithImpl<$Res>
     Object? seriNo = freezed,
     Object? aciklama = freezed,
   }) {
-    return _then(_$_SeriModel(
+    return _then(_$SeriModelImpl(
       seriNo: freezed == seriNo
           ? _value.seriNo
           : seriNo // ignore: cast_nullable_to_non_nullable
@@ -105,11 +106,11 @@ class __$$_SeriModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SeriModel extends _SeriModel {
-  _$_SeriModel({this.seriNo, this.aciklama}) : super._();
+class _$SeriModelImpl extends _SeriModel {
+  _$SeriModelImpl({this.seriNo, this.aciklama}) : super._();
 
-  factory _$_SeriModel.fromJson(Map<String, dynamic> json) =>
-      _$$_SeriModelFromJson(json);
+  factory _$SeriModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SeriModelImplFromJson(json);
 
   @override
   final String? seriNo;
@@ -119,12 +120,12 @@ class _$_SeriModel extends _SeriModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SeriModelCopyWith<_$_SeriModel> get copyWith =>
-      __$$_SeriModelCopyWithImpl<_$_SeriModel>(this, _$identity);
+  _$$SeriModelImplCopyWith<_$SeriModelImpl> get copyWith =>
+      __$$SeriModelImplCopyWithImpl<_$SeriModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SeriModelToJson(
+    return _$$SeriModelImplToJson(
       this,
     );
   }
@@ -132,11 +133,11 @@ class _$_SeriModel extends _SeriModel {
 
 abstract class _SeriModel extends SeriModel {
   factory _SeriModel({final String? seriNo, final String? aciklama}) =
-      _$_SeriModel;
+      _$SeriModelImpl;
   _SeriModel._() : super._();
 
   factory _SeriModel.fromJson(Map<String, dynamic> json) =
-      _$_SeriModel.fromJson;
+      _$SeriModelImpl.fromJson;
 
   @override
   String? get seriNo;
@@ -144,6 +145,6 @@ abstract class _SeriModel extends SeriModel {
   String? get aciklama;
   @override
   @JsonKey(ignore: true)
-  _$$_SeriModelCopyWith<_$_SeriModel> get copyWith =>
+  _$$SeriModelImplCopyWith<_$SeriModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

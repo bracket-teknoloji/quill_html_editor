@@ -120,11 +120,11 @@ class _$DovizKurlariModelCopyWithImpl<$Res, $Val extends DovizKurlariModel>
 }
 
 /// @nodoc
-abstract class _$$_DovizKurlariModelCopyWith<$Res>
+abstract class _$$DovizKurlariModelImplCopyWith<$Res>
     implements $DovizKurlariModelCopyWith<$Res> {
-  factory _$$_DovizKurlariModelCopyWith(_$_DovizKurlariModel value,
-          $Res Function(_$_DovizKurlariModel) then) =
-      __$$_DovizKurlariModelCopyWithImpl<$Res>;
+  factory _$$DovizKurlariModelImplCopyWith(_$DovizKurlariModelImpl value,
+          $Res Function(_$DovizKurlariModelImpl) then) =
+      __$$DovizKurlariModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -139,11 +139,11 @@ abstract class _$$_DovizKurlariModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DovizKurlariModelCopyWithImpl<$Res>
-    extends _$DovizKurlariModelCopyWithImpl<$Res, _$_DovizKurlariModel>
-    implements _$$_DovizKurlariModelCopyWith<$Res> {
-  __$$_DovizKurlariModelCopyWithImpl(
-      _$_DovizKurlariModel _value, $Res Function(_$_DovizKurlariModel) _then)
+class __$$DovizKurlariModelImplCopyWithImpl<$Res>
+    extends _$DovizKurlariModelCopyWithImpl<$Res, _$DovizKurlariModelImpl>
+    implements _$$DovizKurlariModelImplCopyWith<$Res> {
+  __$$DovizKurlariModelImplCopyWithImpl(_$DovizKurlariModelImpl _value,
+      $Res Function(_$DovizKurlariModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -158,7 +158,7 @@ class __$$_DovizKurlariModelCopyWithImpl<$Res>
     Object? effAlis = freezed,
     Object? effSatis = freezed,
   }) {
-    return _then(_$_DovizKurlariModel(
+    return _then(_$DovizKurlariModelImpl(
       tarih: freezed == tarih
           ? _value.tarih
           : tarih // ignore: cast_nullable_to_non_nullable
@@ -198,8 +198,8 @@ class __$$_DovizKurlariModelCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(createFactory: true, explicitToJson: true, createToJson: true)
-class _$_DovizKurlariModel extends _DovizKurlariModel {
-  _$_DovizKurlariModel(
+class _$DovizKurlariModelImpl extends _DovizKurlariModel {
+  _$DovizKurlariModelImpl(
       {this.tarih,
       this.sira,
       this.dovizTipi,
@@ -210,8 +210,8 @@ class _$_DovizKurlariModel extends _DovizKurlariModel {
       this.effSatis})
       : super._();
 
-  factory _$_DovizKurlariModel.fromJson(Map<String, dynamic> json) =>
-      _$$_DovizKurlariModelFromJson(json);
+  factory _$DovizKurlariModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DovizKurlariModelImplFromJson(json);
 
   @override
   DateTime? tarih;
@@ -233,13 +233,13 @@ class _$_DovizKurlariModel extends _DovizKurlariModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DovizKurlariModelCopyWith<_$_DovizKurlariModel> get copyWith =>
-      __$$_DovizKurlariModelCopyWithImpl<_$_DovizKurlariModel>(
+  _$$DovizKurlariModelImplCopyWith<_$DovizKurlariModelImpl> get copyWith =>
+      __$$DovizKurlariModelImplCopyWithImpl<_$DovizKurlariModelImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DovizKurlariModelToJson(
+    return _$$DovizKurlariModelImplToJson(
       this,
     );
   }
@@ -254,11 +254,11 @@ abstract class _DovizKurlariModel extends DovizKurlariModel {
       double? dovSatis,
       String? dovizAdi,
       double? effAlis,
-      double? effSatis}) = _$_DovizKurlariModel;
+      double? effSatis}) = _$DovizKurlariModelImpl;
   _DovizKurlariModel._() : super._();
 
   factory _DovizKurlariModel.fromJson(Map<String, dynamic> json) =
-      _$_DovizKurlariModel.fromJson;
+      _$DovizKurlariModelImpl.fromJson;
 
   @override
   DateTime? get tarih;
@@ -286,7 +286,7 @@ abstract class _DovizKurlariModel extends DovizKurlariModel {
   set effSatis(double? value);
   @override
   @JsonKey(ignore: true)
-  _$$_DovizKurlariModelCopyWith<_$_DovizKurlariModel> get copyWith =>
+  _$$DovizKurlariModelImplCopyWith<_$DovizKurlariModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -398,12 +398,12 @@ class _$DovizKurlariRequestModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_DovizKurlariRequestModelCopyWith<$Res>
+abstract class _$$DovizKurlariRequestModelImplCopyWith<$Res>
     implements $DovizKurlariRequestModelCopyWith<$Res> {
-  factory _$$_DovizKurlariRequestModelCopyWith(
-          _$_DovizKurlariRequestModel value,
-          $Res Function(_$_DovizKurlariRequestModel) then) =
-      __$$_DovizKurlariRequestModelCopyWithImpl<$Res>;
+  factory _$$DovizKurlariRequestModelImplCopyWith(
+          _$DovizKurlariRequestModelImpl value,
+          $Res Function(_$DovizKurlariRequestModelImpl) then) =
+      __$$DovizKurlariRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -418,12 +418,13 @@ abstract class _$$_DovizKurlariRequestModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DovizKurlariRequestModelCopyWithImpl<$Res>
+class __$$DovizKurlariRequestModelImplCopyWithImpl<$Res>
     extends _$DovizKurlariRequestModelCopyWithImpl<$Res,
-        _$_DovizKurlariRequestModel>
-    implements _$$_DovizKurlariRequestModelCopyWith<$Res> {
-  __$$_DovizKurlariRequestModelCopyWithImpl(_$_DovizKurlariRequestModel _value,
-      $Res Function(_$_DovizKurlariRequestModel) _then)
+        _$DovizKurlariRequestModelImpl>
+    implements _$$DovizKurlariRequestModelImplCopyWith<$Res> {
+  __$$DovizKurlariRequestModelImplCopyWithImpl(
+      _$DovizKurlariRequestModelImpl _value,
+      $Res Function(_$DovizKurlariRequestModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -438,7 +439,7 @@ class __$$_DovizKurlariRequestModelCopyWithImpl<$Res>
     Object? eFAlis = freezed,
     Object? eFSatis = freezed,
   }) {
-    return _then(_$_DovizKurlariRequestModel(
+    return _then(_$DovizKurlariRequestModelImpl(
       tarih: freezed == tarih
           ? _value.tarih
           : tarih // ignore: cast_nullable_to_non_nullable
@@ -482,8 +483,8 @@ class __$$_DovizKurlariRequestModelCopyWithImpl<$Res>
     explicitToJson: true,
     createToJson: true,
     fieldRename: FieldRename.pascal)
-class _$_DovizKurlariRequestModel extends _DovizKurlariRequestModel {
-  _$_DovizKurlariRequestModel(
+class _$DovizKurlariRequestModelImpl extends _DovizKurlariRequestModel {
+  _$DovizKurlariRequestModelImpl(
       {this.tarih,
       this.sira,
       this.dovizTipi,
@@ -494,8 +495,8 @@ class _$_DovizKurlariRequestModel extends _DovizKurlariRequestModel {
       this.eFSatis})
       : super._();
 
-  factory _$_DovizKurlariRequestModel.fromJson(Map<String, dynamic> json) =>
-      _$$_DovizKurlariRequestModelFromJson(json);
+  factory _$DovizKurlariRequestModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DovizKurlariRequestModelImplFromJson(json);
 
   @override
   DateTime? tarih;
@@ -517,13 +518,13 @@ class _$_DovizKurlariRequestModel extends _DovizKurlariRequestModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DovizKurlariRequestModelCopyWith<_$_DovizKurlariRequestModel>
-      get copyWith => __$$_DovizKurlariRequestModelCopyWithImpl<
-          _$_DovizKurlariRequestModel>(this, _$identity);
+  _$$DovizKurlariRequestModelImplCopyWith<_$DovizKurlariRequestModelImpl>
+      get copyWith => __$$DovizKurlariRequestModelImplCopyWithImpl<
+          _$DovizKurlariRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DovizKurlariRequestModelToJson(
+    return _$$DovizKurlariRequestModelImplToJson(
       this,
     );
   }
@@ -538,11 +539,11 @@ abstract class _DovizKurlariRequestModel extends DovizKurlariRequestModel {
       double? satis,
       String? dovizAdi,
       double? eFAlis,
-      double? eFSatis}) = _$_DovizKurlariRequestModel;
+      double? eFSatis}) = _$DovizKurlariRequestModelImpl;
   _DovizKurlariRequestModel._() : super._();
 
   factory _DovizKurlariRequestModel.fromJson(Map<String, dynamic> json) =
-      _$_DovizKurlariRequestModel.fromJson;
+      _$DovizKurlariRequestModelImpl.fromJson;
 
   @override
   DateTime? get tarih;
@@ -570,6 +571,6 @@ abstract class _DovizKurlariRequestModel extends DovizKurlariRequestModel {
   set eFSatis(double? value);
   @override
   @JsonKey(ignore: true)
-  _$$_DovizKurlariRequestModelCopyWith<_$_DovizKurlariRequestModel>
+  _$$DovizKurlariRequestModelImplCopyWith<_$DovizKurlariRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

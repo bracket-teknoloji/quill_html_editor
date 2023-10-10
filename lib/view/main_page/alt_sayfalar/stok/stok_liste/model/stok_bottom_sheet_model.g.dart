@@ -6,9 +6,9 @@ part of 'stok_bottom_sheet_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_StokBottomSheetModel _$$_StokBottomSheetModelFromJson(
+_$StokBottomSheetModelImpl _$$StokBottomSheetModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_StokBottomSheetModel(
+    _$StokBottomSheetModelImpl(
       sayfa: json['Sayfa'] as int?,
       bakiyeDurumu: json['BakiyeDurumu'] as String?,
       menuKodu: json['MenuKodu'] as String?,
@@ -57,8 +57,8 @@ _$_StokBottomSheetModel _$$_StokBottomSheetModelFromJson(
           const [],
     );
 
-Map<String, dynamic> _$$_StokBottomSheetModelToJson(
-    _$_StokBottomSheetModel instance) {
+Map<String, dynamic> _$$StokBottomSheetModelImplToJson(
+    _$StokBottomSheetModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

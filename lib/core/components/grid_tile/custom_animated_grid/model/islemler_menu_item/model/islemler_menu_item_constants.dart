@@ -35,8 +35,10 @@ import "../../kod_degistir_model.dart";
 import "../view_model/islemler_menu_item_constants_view_model.dart";
 
 class IslemlerMenuItemConstants<T> {
-  IslemlerMenuItemConstantsViewModel viewModel = IslemlerMenuItemConstantsViewModel();
-  BottomSheetDialogManager bottomSheetDialogManager = BottomSheetDialogManager();
+  IslemlerMenuItemConstantsViewModel viewModel =
+      IslemlerMenuItemConstantsViewModel();
+  BottomSheetDialogManager bottomSheetDialogManager =
+      BottomSheetDialogManager();
   IslemTipiEnum islemtipi;
   SiparisTipiEnum? siparisTipi;
   List<GridItemModel?> islemlerList = [];
@@ -44,7 +46,11 @@ class IslemlerMenuItemConstants<T> {
   // T? get model2 => model;
   DialogManager get _dialogManager => DialogManager();
   NetworkManager get _networkManager => NetworkManager();
-  IslemlerMenuItemConstants({required this.islemtipi, List<GridItemModel?>? raporlar, this.model, this.siparisTipi}) {
+  IslemlerMenuItemConstants(
+      {required this.islemtipi,
+      List<GridItemModel?>? raporlar,
+      this.model,
+      this.siparisTipi}) {
     if (islemtipi == IslemTipiEnum.stok) {
       islemlerList.add(stokKarti);
       islemlerList.add(kopyala);
@@ -69,8 +75,8 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(kopyala);
       islemlerList.addAll(raporlar!);
     } else if (islemtipi == IslemTipiEnum.kasa) {
-      if (model != null){
-      islemlerList.add(kasaHareketleri);
+      if (model != null) {
+        islemlerList.add(kasaHareketleri);
       }
       islemlerList.add(kasaTransferi);
       islemlerList.add(nakitTahsilat);
@@ -83,17 +89,29 @@ class IslemlerMenuItemConstants<T> {
     }
   }
 
-  GridItemModel? get cariHareketleri =>
-      GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Cari Hareketleri", onTap: () async => Get.toNamed("mainPage/cariHareketleri", arguments: model));
+  GridItemModel? get cariHareketleri => GridItemModel.islemler(
+      iconData: Icons.sync_alt_outlined,
+      title: "Cari Hareketleri",
+      onTap: () async =>
+          Get.toNamed("mainPage/cariHareketleri", arguments: model));
 
   //* Genel
-  GridItemModel? get stokHareketleri =>
-      GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Stok Hareketleri", onTap: () async => Get.toNamed("mainPage/stokHareketleri", arguments: model));
+  GridItemModel? get stokHareketleri => GridItemModel.islemler(
+      iconData: Icons.sync_alt_outlined,
+      title: "Stok Hareketleri",
+      onTap: () async =>
+          Get.toNamed("mainPage/stokHareketleri", arguments: model));
   GridItemModel? get kopyala => GridItemModel.islemler(
-      title: "Kopyala", iconData: Icons.copy_outlined, onTap: () async => Get.toNamed(islemtipi.route, arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.kopyala)));
+      title: "Kopyala",
+      iconData: Icons.copy_outlined,
+      onTap: () async => Get.toNamed(islemtipi.route,
+          arguments:
+              BaseEditModel(model: model, baseEditEnum: BaseEditEnum.kopyala)));
   //* Siparis
-  GridItemModel? get irsaliyeOlustur => GridItemModel.islemler(title: "İrsaliye Oluştur", iconData: Icons.conveyor_belt);
-  GridItemModel? get faturaOlustur => GridItemModel.islemler(title: "Fatura Oluştur (Siparişten)", iconData: Icons.conveyor_belt);
+  GridItemModel? get irsaliyeOlustur => GridItemModel.islemler(
+      title: "İrsaliye Oluştur", iconData: Icons.conveyor_belt);
+  GridItemModel? get faturaOlustur => GridItemModel.islemler(
+      title: "Fatura Oluştur (Siparişten)", iconData: Icons.conveyor_belt);
   GridItemModel? get belgeyiKapat {
     if (model is BaseSiparisEditModel) {
       BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
@@ -130,9 +148,14 @@ class IslemlerMenuItemConstants<T> {
     return null;
   }
 
-  Future<bool> kilitRequest(BaseSiparisEditModel siparisModel, int yeniTipi) async {
+  Future<bool> kilitRequest(
+      BaseSiparisEditModel siparisModel, int yeniTipi) async {
     var result = await _networkManager.dioPost<SiparisEditRequestModel>(
-        path: ApiUrls.belgeDurumunuDegistir, showLoading: true, bodyModel: SiparisEditRequestModel(), data: EditFaturaModel.fromSiparislerModel(siparisModel..tipi = yeniTipi).toJson());
+        path: ApiUrls.belgeDurumunuDegistir,
+        showLoading: true,
+        bodyModel: SiparisEditRequestModel(),
+        data: EditFaturaModel.fromSiparislerModel(siparisModel..tipi = yeniTipi)
+            .toJson());
     if (result.success == true) {
       DialogManager().showSuccessSnackBar("Başarılı");
       return result.success!;
@@ -171,12 +194,19 @@ class IslemlerMenuItemConstants<T> {
                     },
                     suffix: IconButton(
                         onPressed: () async {
-                          var result = await _networkManager.dioGet<BaseSiparisEditModel>(path: ApiUrls.getSiradakiBelgeNo, bodyModel: BaseSiparisEditModel(), queryParameters: {
-                            "Seri": controller.text,
-                            "BelgeTipi": StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS",
-                            "EIrsaliye": "H",
-                            "CariKodu": siparisModel?.cariKodu ?? ""
-                          });
+                          var result = await _networkManager
+                              .dioGet<BaseSiparisEditModel>(
+                                  path: ApiUrls.getSiradakiBelgeNo,
+                                  bodyModel: BaseSiparisEditModel(),
+                                  queryParameters: {
+                                "Seri": controller.text,
+                                "BelgeTipi": StaticVariables
+                                        .instance.isMusteriSiparisleri
+                                    ? "MS"
+                                    : "SS",
+                                "EIrsaliye": "H",
+                                "CariKodu": siparisModel?.cariKodu ?? ""
+                              });
                           if (result.success == true) {
                             controller.text = result.data?.first.belgeNo ?? "";
                           }
@@ -186,22 +216,29 @@ class IslemlerMenuItemConstants<T> {
               Row(
                 children: [
                   Expanded(
-                      child: ElevatedButton(onPressed: () => Get.back(), style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))), child: const Text("İptal"))),
+                      child: ElevatedButton(
+                          onPressed: () => Get.back(),
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                  Colors.white.withOpacity(0.1))),
+                          child: const Text("İptal"))),
                   SizedBox(width: Get.width * 0.02),
                   Expanded(
                       child: ElevatedButton(
                           onPressed: () async {
                             if (formKey.currentState?.validate() ?? false) {
-                              var result = await NetworkManager().dioPost<SiparisEditRequestModel>(
-                                  path: ApiUrls.saveFatura,
-                                  showLoading: true,
-                                  bodyModel: SiparisEditRequestModel(),
-                                  data: EditFaturaModel.fromSiparislerModel(siparisModel!
-                                        ..yeniBelgeNo = controller.text
-                                        ..islemKodu = 10
-                                        ..tag = "FaturaModel"
-                                        ..belgeTipi = siparisModel.tipi)
-                                      .toJson());
+                              var result = await NetworkManager()
+                                  .dioPost<SiparisEditRequestModel>(
+                                      path: ApiUrls.saveFatura,
+                                      showLoading: true,
+                                      bodyModel: SiparisEditRequestModel(),
+                                      data: EditFaturaModel.fromSiparislerModel(
+                                              siparisModel!
+                                                ..yeniBelgeNo = controller.text
+                                                ..islemKodu = 10
+                                                ..tag = "FaturaModel"
+                                                ..belgeTipi = siparisModel.tipi)
+                                          .toJson());
                               if (result.success == true) {
                                 updatePage = true;
                                 DialogManager().showSuccessSnackBar("Başarılı");
@@ -223,12 +260,22 @@ class IslemlerMenuItemConstants<T> {
       iconData: Icons.picture_as_pdf_outlined,
       onTap: () async {
         BaseSiparisEditModel? siparisModel = model as BaseSiparisEditModel?;
-        List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList ?? [])
-            .where((element) => element.ozelKod == (StaticVariables.instance.isMusteriSiparisleri ? "MusteriSiparisi" : "SaticiSiparisi"))
-            .whereType<NetFectDizaynList>()
-            .toList();
-        var result =
-            await bottomSheetDialogManager.showBottomSheetDialog(context, title: "PDF Görüntüle", children: dizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList());
+        List<NetFectDizaynList> dizaynList =
+            (CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList ?? [])
+                .where((element) =>
+                    element.ozelKod ==
+                    (StaticVariables.instance.isMusteriSiparisleri
+                        ? "MusteriSiparisi"
+                        : "SaticiSiparisi"))
+                .whereType<NetFectDizaynList>()
+                .toList();
+        var result = await bottomSheetDialogManager.showBottomSheetDialog(
+            context,
+            title: "PDF Görüntüle",
+            children: dizaynList
+                .map(
+                    (e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e))
+                .toList());
         if (result is NetFectDizaynList) {
           Get.back();
           Get.to(() => PDFViewerView(
@@ -237,35 +284,80 @@ class IslemlerMenuItemConstants<T> {
                   dizaynId: result.id,
                   raporOzelKod: result.ozelKod,
                   etiketSayisi: result.kopyaSayisi,
-                  dicParams: DicParams(belgeNo: siparisModel?.belgeNo, cariKodu: siparisModel?.cariKodu, belgeTipi: StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS"))));
+                  dicParams: DicParams(
+                      belgeNo: siparisModel?.belgeNo,
+                      cariKodu: siparisModel?.cariKodu,
+                      belgeTipi: StaticVariables.instance.isMusteriSiparisleri
+                          ? "MS"
+                          : "SS"))));
         }
       });
-  GridItemModel? get belgeyiKopyala => GridItemModel.islemler(title: "Belgeyi Kopyala", iconData: Icons.copy_outlined);
+  GridItemModel? get belgeyiKopyala => GridItemModel.islemler(
+      title: "Belgeyi Kopyala", iconData: Icons.copy_outlined);
   //* Stok
   GridItemModel? get stokKarti => GridItemModel.islemler(
       title: "Stok Kartı",
       iconData: Icons.info_outline,
-      onTap: () async => Get.toNamed("/mainPage/stokEdit", arguments: BaseEditModel(model: (model as StokListesiModel), baseEditEnum: BaseEditEnum.duzenle)));
-  GridItemModel? get stokYazdir => GridItemModel.islemler(title: "Yazdır", iconData: Icons.print_outlined, onTap: () async => Get.toNamed("/mainPage/stokYazdir", arguments: model));
-  GridItemModel? get fiyatGor => GridItemModel.islemler(title: "Fiyat Gör", iconData: Icons.monetization_on_outlined, onTap: () async => Get.toNamed("/mainPage/stokFiyatGecmisi", arguments: model));
+      onTap: () async => Get.toNamed("/mainPage/stokEdit",
+          arguments: BaseEditModel(
+              model: (model as StokListesiModel),
+              baseEditEnum: BaseEditEnum.duzenle)));
+  GridItemModel? get stokYazdir => GridItemModel.islemler(
+      title: "Yazdır",
+      iconData: Icons.print_outlined,
+      onTap: () async => Get.toNamed("/mainPage/stokYazdir", arguments: model));
+  GridItemModel? get fiyatGor => GridItemModel.islemler(
+      title: "Fiyat Gör",
+      iconData: Icons.monetization_on_outlined,
+      onTap: () async =>
+          Get.toNamed("/mainPage/stokFiyatGecmisi", arguments: model));
   //* Cari
   GridItemModel? get paylas => GridItemModel.islemler(
       title: "Paylaş",
       iconData: Icons.share_outlined,
       onTap: () async {
-        var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context,
-            title: "Paylaş",
-            children: [
-              BottomSheetModel(title: "Ünvan", value: (model as CariListesiModel).cariAdi).yetkiKontrol((model as CariListesiModel).cariAdi != null),
-              BottomSheetModel(title: "Adres", value: (model as CariListesiModel).cariAdres).yetkiKontrol((model as CariListesiModel).cariAdres != null),
-              BottomSheetModel(title: "İl/ İlçe", value: "${(model as CariListesiModel).cariIl ?? ""} / ${(model as CariListesiModel).cariIlce ?? ""}")
-                  .yetkiKontrol((model as CariListesiModel).cariIl != null || (model as CariListesiModel).cariIlce != null),
-              BottomSheetModel(title: "Vergi Bilgileri", value: "${(model as CariListesiModel).vergiDairesi ?? ""} ${(model as CariListesiModel).vergiNumarasi ?? ""}")
-                  .yetkiKontrol((model as CariListesiModel).vergiDairesi != null || (model as CariListesiModel).vergiNumarasi != null),
-              BottomSheetModel(title: "Telefon", value: (model as CariListesiModel).cariTel).yetkiKontrol((model as CariListesiModel).cariTel != null),
-              BottomSheetModel(title: "Web Sitesi", value: (model as CariListesiModel).web).yetkiKontrol((model as CariListesiModel).web != null),
-              BottomSheetModel(title: "Mail", value: (model as CariListesiModel).email).yetkiKontrol((model as CariListesiModel).email != null),
-            ].nullCheckWithGeneric);
+        var result = await bottomSheetDialogManager
+            .showCheckBoxBottomSheetDialog(context,
+                title: "Paylaş",
+                children: [
+                  BottomSheetModel(
+                          title: "Ünvan",
+                          value: (model as CariListesiModel).cariAdi)
+                      .yetkiKontrol(
+                          (model as CariListesiModel).cariAdi != null),
+                  BottomSheetModel(
+                          title: "Adres",
+                          value: (model as CariListesiModel).cariAdres)
+                      .yetkiKontrol(
+                          (model as CariListesiModel).cariAdres != null),
+                  BottomSheetModel(
+                          title: "İl/ İlçe",
+                          value:
+                              "${(model as CariListesiModel).cariIl ?? ""} / ${(model as CariListesiModel).cariIlce ?? ""}")
+                      .yetkiKontrol(
+                          (model as CariListesiModel).cariIl != null ||
+                              (model as CariListesiModel).cariIlce != null),
+                  BottomSheetModel(
+                          title: "Vergi Bilgileri",
+                          value:
+                              "${(model as CariListesiModel).vergiDairesi ?? ""} ${(model as CariListesiModel).vergiNumarasi ?? ""}")
+                      .yetkiKontrol((model as CariListesiModel).vergiDairesi !=
+                              null ||
+                          (model as CariListesiModel).vergiNumarasi != null),
+                  BottomSheetModel(
+                          title: "Telefon",
+                          value: (model as CariListesiModel).cariTel)
+                      .yetkiKontrol(
+                          (model as CariListesiModel).cariTel != null),
+                  BottomSheetModel(
+                          title: "Web Sitesi",
+                          value: (model as CariListesiModel).web)
+                      .yetkiKontrol((model as CariListesiModel).web != null),
+                  BottomSheetModel(
+                          title: "Mail",
+                          value: (model as CariListesiModel).email)
+                      .yetkiKontrol((model as CariListesiModel).email != null),
+                ].nullCheckWithGeneric);
         if ((result as List?).ext.isNotNullOrEmpty) {
           Clipboard.setData(ClipboardData(text: result!.join("\n")));
           Share.share(result.join("\n"));
@@ -279,7 +371,11 @@ class IslemlerMenuItemConstants<T> {
         TextEditingController controller = TextEditingController();
         KodDegistirModel kodDegistirModel = KodDegistirModel()
           ..kaynakSil = "H"
-          ..kaynakCari = model is CariListesiModel ? (model as CariListesiModel).cariKodu : (model is BaseSiparisEditModel ? (model as BaseSiparisEditModel).cariKodu : null);
+          ..kaynakCari = model is CariListesiModel
+              ? (model as CariListesiModel).cariKodu
+              : (model is BaseSiparisEditModel
+                  ? (model as BaseSiparisEditModel).cariKodu
+                  : null);
         await bottomSheetDialogManager.showBottomSheetDialog(context,
             title: "Cari Kodu Değiştir",
             body: Column(
@@ -290,7 +386,9 @@ class IslemlerMenuItemConstants<T> {
                   labelText: "Cari",
                   readOnly: true,
                   isMust: true,
-                  controllerText: model is CariListesiModel ? (model as CariListesiModel).cariAdi : null,
+                  controllerText: model is CariListesiModel
+                      ? (model as CariListesiModel).cariAdi
+                      : null,
                 ),
                 CustomTextField(
                     labelText: "Yeni Cari Kodu",
@@ -301,17 +399,23 @@ class IslemlerMenuItemConstants<T> {
                       children: [
                         IconButton(
                           onPressed: () async {
-                            String? kod = await CariNetworkManager.getSiradakiKod(kod: kodDegistirModel.hedefCari);
+                            String? kod =
+                                await CariNetworkManager.getSiradakiKod(
+                                    kod: kodDegistirModel.hedefCari);
                             kodDegistirModel.hedefCari = kod;
                             controller.text = kod ?? "";
                           },
-                          icon: const Icon(Icons.format_list_numbered_rtl_outlined),
+                          icon: const Icon(
+                              Icons.format_list_numbered_rtl_outlined),
                         ),
                         IconButton(
                             onPressed: () async {
-                              var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
+                              var result = await Get.toNamed(
+                                  "mainPage/cariListesi",
+                                  arguments: true);
                               if (result != null) {
-                                kodDegistirModel.hedefCari = (result as CariListesiModel).cariKodu;
+                                kodDegistirModel.hedefCari =
+                                    (result as CariListesiModel).cariKodu;
                                 controller.text = (result).cariKodu ?? "";
                               }
                             },
@@ -332,21 +436,32 @@ class IslemlerMenuItemConstants<T> {
                 Row(
                   children: [
                     Expanded(
-                        child: ElevatedButton(onPressed: () => Get.back(), style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))), child: const Text("İptal"))),
+                        child: ElevatedButton(
+                            onPressed: () => Get.back(),
+                            style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                    Colors.white.withOpacity(0.1))),
+                            child: const Text("İptal"))),
                     SizedBox(width: Get.width * 0.02),
                     Expanded(
                         child: ElevatedButton(
                             onPressed: () {
                               if (controller.text != "") {
                                 DialogManager().showAreYouSureDialog(() async {
-                                  var result = await NetworkManager().dioPost<KodDegistirModel>(path: ApiUrls.kodDegistir, bodyModel: KodDegistirModel(), data: kodDegistirModel.toJson());
+                                  var result = await NetworkManager()
+                                      .dioPost<KodDegistirModel>(
+                                          path: ApiUrls.kodDegistir,
+                                          bodyModel: KodDegistirModel(),
+                                          data: kodDegistirModel.toJson());
                                   if (result.success == true) {
                                     Get.back();
-                                    DialogManager().showSuccessSnackBar("Başarılı");
+                                    DialogManager()
+                                        .showSuccessSnackBar("Başarılı");
                                   }
                                 });
                               } else {
-                                DialogManager().showAlertDialog("Lütfen Cari Kodu Giriniz");
+                                DialogManager().showAlertDialog(
+                                    "Lütfen Cari Kodu Giriniz");
                               }
                             },
                             child: const Text("Kaydet"))),
@@ -357,12 +472,33 @@ class IslemlerMenuItemConstants<T> {
       });
 
   //* Kasa
-  GridItemModel? get kasaTransferi => GridItemModel.islemler(title: "Kasa Transferi", iconData: Icons.list_alt_rounded, onTap: () => Get.toNamed("/mainPage/kasaTransferi"));
-  GridItemModel? get krediKartiTahsilati => GridItemModel.islemler(title: "Kredi Kartı Tahsilatı", iconData: Icons.list_alt_rounded, onTap: () => Get.toNamed("/mainPage/krediKartiTahsilati"));
-  GridItemModel? get nakitTahsilat => GridItemModel.islemler(title: "Nakit Tahsilat", iconData: Icons.list_alt_rounded, onTap: () => Get.toNamed("/mainPage/nakitTahsilat"));
-  GridItemModel? get bankaKasaTransferi => GridItemModel.islemler(title: "Banka-Kasa Transferi", iconData: Icons.list_alt_rounded, onTap: () {});
-  GridItemModel? get nakitOdeme => GridItemModel.islemler(title: "Nakit Ödeme", iconData: Icons.list_alt_rounded, onTap: () {});
-  GridItemModel? get muhtelifTahsilat => GridItemModel.islemler(title: "Muhtelif Tahsilat", iconData: Icons.list_alt_rounded, onTap: () {});
-  GridItemModel? get muhtelifOdeme => GridItemModel.islemler(title: "Muhtelif Ödeme", iconData: Icons.list_alt_rounded, onTap: () {});
-  GridItemModel? get kasaHareketleri => GridItemModel.islemler(title: "Kasa Hareketleri", iconData: Icons.sync_alt_outlined, onTap: () => Get.toNamed("/mainPage/kasaHareketleri", arguments: model));
+  GridItemModel? get kasaTransferi => GridItemModel.islemler(
+      title: "Kasa Transferi",
+      iconData: Icons.list_alt_rounded,
+      onTap: () async => await Get.toNamed("/mainPage/kasaTransferi"));
+  GridItemModel? get krediKartiTahsilati => GridItemModel.islemler(
+      title: "Kredi Kartı Tahsilatı",
+      iconData: Icons.list_alt_rounded,
+      onTap: () async => await Get.toNamed("/mainPage/krediKartiTahsilati"));
+  GridItemModel? get nakitTahsilat => GridItemModel.islemler(
+      title: "Nakit Tahsilat",
+      iconData: Icons.list_alt_rounded,
+      onTap: () async => await Get.toNamed("/mainPage/nakitTahsilat"));
+  GridItemModel? get bankaKasaTransferi => GridItemModel.islemler(
+      title: "Banka-Kasa Transferi",
+      iconData: Icons.list_alt_rounded,
+      onTap: () {});
+  GridItemModel? get nakitOdeme => GridItemModel.islemler(
+      title: "Nakit Ödeme", iconData: Icons.list_alt_rounded, onTap: () {});
+  GridItemModel? get muhtelifTahsilat => GridItemModel.islemler(
+      title: "Muhtelif Tahsilat",
+      iconData: Icons.list_alt_rounded,
+      onTap: () {});
+  GridItemModel? get muhtelifOdeme => GridItemModel.islemler(
+      title: "Muhtelif Ödeme", iconData: Icons.list_alt_rounded, onTap: () {});
+  GridItemModel? get kasaHareketleri => GridItemModel.islemler(
+      title: "Kasa Hareketleri",
+      iconData: Icons.sync_alt_outlined,
+      onTap: () async =>
+          await Get.toNamed("/mainPage/kasaHareketleri", arguments: model));
 }

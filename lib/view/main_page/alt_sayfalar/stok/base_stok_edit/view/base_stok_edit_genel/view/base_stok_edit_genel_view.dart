@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import "dart:convert";
 import "dart:developer";
 import "dart:io";
@@ -9,7 +11,6 @@ import "package:flutter_image_compress/flutter_image_compress.dart";
 import "package:get/get.dart";
 import "package:image_picker/image_picker.dart";
 import "package:kartal/kartal.dart";
-import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../../../../core/base/model/base_edit_siradaki_kod_model.dart";
 import "../../../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -20,6 +21,7 @@ import "../../../../../../../../core/components/helper_widgets/custom_label_widg
 import "../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../../core/init/cache/cache_manager.dart";
@@ -239,7 +241,6 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                         suffix: IconButton(
                             onPressed: () async {
                               List<StokMuhasebeKoduModel>? list = await getMuhasebeKodlari();
-                              // ignore: use_build_context_synchronously
                               StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                                   title: "Muhasebe Kodu",
                                   children: list
@@ -386,7 +387,6 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                             viewModel.changeGrupKoduListesi(0, await networkManager.getGrupKod(name: "STOK", grupNo: 0));
                                             dialogManager.hideAlertDialog;
                                           }
-                                          // ignore: use_build_context_synchronously
                                           BaseGrupKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                                               title: "Grup Kodu",
                                               children:
@@ -407,7 +407,6 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                             dialogManager.hideAlertDialog;
                                           }
                                           BaseGrupKoduModel? result =
-                                              // ignore: use_build_context_synchronously
                                               await bottomSheetDialogManager.showBottomSheetDialog(context,
                                                   title: "Kod 1",
                                                   children:
@@ -433,7 +432,6 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                             dialogManager.hideAlertDialog;
                                           }
                                           BaseGrupKoduModel? result =
-                                              // ignore: use_build_context_synchronously
                                               await bottomSheetDialogManager.showBottomSheetDialog(context,
                                                   title: "Kod 2",
                                                   children:
@@ -455,7 +453,6 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                             dialogManager.hideAlertDialog;
                                           }
                                           BaseGrupKoduModel? result =
-                                              // ignore: use_build_context_synchronously
                                               await bottomSheetDialogManager.showBottomSheetDialog(context,
                                                   title: "Kod 3",
                                                   children:
@@ -480,7 +477,6 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                             dialogManager.hideAlertDialog;
                                           }
                                           BaseGrupKoduModel? result =
-                                              // ignore: use_build_context_synchronously
                                               await bottomSheetDialogManager.showBottomSheetDialog(context,
                                                   title: "Kod 4",
                                                   children:
@@ -503,7 +499,6 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                             dialogManager.hideAlertDialog;
                                           }
                                           BaseGrupKoduModel? result =
-                                              // ignore: use_build_context_synchronously
                                               await bottomSheetDialogManager.showBottomSheetDialog(context,
                                                   title: "Kod 5",
                                                   children:
@@ -531,7 +526,6 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
     olcuBirimleriList ??= await getOlcuBirimleri();
     dialogManager.hideAlertDialog;
     filteredList = olcuBirimleriList?.where((element) => element.birimNo == controller).toList();
-    // ignore: use_build_context_synchronously
     var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
         title: "Ölçü Birimi $controller",
         children: filteredList?.map((e) => BottomSheetModel(title: e.olcuBirimi ?? "", description: e.birimNo.toStringIfNotNull, onTap: () => Get.back(result: e.olcuBirimi))).toList());

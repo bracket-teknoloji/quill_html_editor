@@ -5,7 +5,8 @@ import "../../constants/ui_helper/duration_helper.dart";
 class ScrollableWidget extends StatefulWidget {
   final Widget child;
   final bool isScrolledDown;
-  const ScrollableWidget({super.key, required this.child, required this.isScrolledDown});
+  const ScrollableWidget(
+      {super.key, required this.child, required this.isScrolledDown});
 
   @override
   State<ScrollableWidget> createState() => _ScrollableWidgetState();

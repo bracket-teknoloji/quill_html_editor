@@ -163,11 +163,11 @@ class _$EditFaturaModelCopyWithImpl<$Res, $Val extends EditFaturaModel>
 }
 
 /// @nodoc
-abstract class _$$_EditFaturaModelCopyWith<$Res>
+abstract class _$$EditFaturaModelImplCopyWith<$Res>
     implements $EditFaturaModelCopyWith<$Res> {
-  factory _$$_EditFaturaModelCopyWith(
-          _$_EditFaturaModel value, $Res Function(_$_EditFaturaModel) then) =
-      __$$_EditFaturaModelCopyWithImpl<$Res>;
+  factory _$$EditFaturaModelImplCopyWith(_$EditFaturaModelImpl value,
+          $Res Function(_$EditFaturaModelImpl) then) =
+      __$$EditFaturaModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -189,11 +189,11 @@ abstract class _$$_EditFaturaModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EditFaturaModelCopyWithImpl<$Res>
-    extends _$EditFaturaModelCopyWithImpl<$Res, _$_EditFaturaModel>
-    implements _$$_EditFaturaModelCopyWith<$Res> {
-  __$$_EditFaturaModelCopyWithImpl(
-      _$_EditFaturaModel _value, $Res Function(_$_EditFaturaModel) _then)
+class __$$EditFaturaModelImplCopyWithImpl<$Res>
+    extends _$EditFaturaModelCopyWithImpl<$Res, _$EditFaturaModelImpl>
+    implements _$$EditFaturaModelImplCopyWith<$Res> {
+  __$$EditFaturaModelImplCopyWithImpl(
+      _$EditFaturaModelImpl _value, $Res Function(_$EditFaturaModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -215,7 +215,7 @@ class __$$_EditFaturaModelCopyWithImpl<$Res>
     Object? tag = freezed,
     Object? islemKodu = freezed,
   }) {
-    return _then(_$_EditFaturaModel(
+    return _then(_$EditFaturaModelImpl(
       belgeTipi: freezed == belgeTipi
           ? _value.belgeTipi
           : belgeTipi // ignore: cast_nullable_to_non_nullable
@@ -282,8 +282,8 @@ class __$$_EditFaturaModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_EditFaturaModel extends _EditFaturaModel {
-  const _$_EditFaturaModel(
+class _$EditFaturaModelImpl extends _EditFaturaModel {
+  const _$EditFaturaModelImpl(
       {@JsonKey(name: "BelgeTipi") this.belgeTipi,
       @JsonKey(name: "PickerBelgeTuru") this.pickerBelgeTuru,
       this.remoteTempBelge,
@@ -301,8 +301,8 @@ class _$_EditFaturaModel extends _EditFaturaModel {
       this.islemKodu})
       : super._();
 
-  factory _$_EditFaturaModel.fromJson(Map<String, dynamic> json) =>
-      _$$_EditFaturaModelFromJson(json);
+  factory _$EditFaturaModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EditFaturaModelImplFromJson(json);
 
   @override
   @JsonKey(name: "BelgeTipi")
@@ -340,12 +340,13 @@ class _$_EditFaturaModel extends _EditFaturaModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EditFaturaModelCopyWith<_$_EditFaturaModel> get copyWith =>
-      __$$_EditFaturaModelCopyWithImpl<_$_EditFaturaModel>(this, _$identity);
+  _$$EditFaturaModelImplCopyWith<_$EditFaturaModelImpl> get copyWith =>
+      __$$EditFaturaModelImplCopyWithImpl<_$EditFaturaModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EditFaturaModelToJson(
+    return _$$EditFaturaModelImplToJson(
       this,
     );
   }
@@ -367,11 +368,11 @@ abstract class _EditFaturaModel extends EditFaturaModel {
       final String? mevcutCariKodu,
       final String? paramMap,
       final String? tag,
-      final int? islemKodu}) = _$_EditFaturaModel;
+      final int? islemKodu}) = _$EditFaturaModelImpl;
   const _EditFaturaModel._() : super._();
 
   factory _EditFaturaModel.fromJson(Map<String, dynamic> json) =
-      _$_EditFaturaModel.fromJson;
+      _$EditFaturaModelImpl.fromJson;
 
   @override
   @JsonKey(name: "BelgeTipi")
@@ -407,6 +408,6 @@ abstract class _EditFaturaModel extends EditFaturaModel {
   int? get islemKodu;
   @override
   @JsonKey(ignore: true)
-  _$$_EditFaturaModelCopyWith<_$_EditFaturaModel> get copyWith =>
+  _$$EditFaturaModelImplCopyWith<_$EditFaturaModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

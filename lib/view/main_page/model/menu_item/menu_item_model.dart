@@ -9,7 +9,6 @@ class MenuItemModel {
   String? route;
   CustomGridTile? gridTile;
 
-
   get getTitle => title;
 
   set setTitle(title) => this.title = title;

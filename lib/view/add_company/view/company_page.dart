@@ -60,25 +60,29 @@ class _AccountsViewState extends BaseState<AccountsView> {
             child: ListView.builder(
                 itemCount: getListLength == 0 ? 1 : getListLength,
                 itemBuilder: (context, index) {
-                  AccountResponseModel account = Hive.box("accounts").getAt(index);
+                  AccountResponseModel account =
+                      Hive.box("accounts").getAt(index);
                   return Card(
                     child: ListTile(
                       onTap: () {
-                        bottomSheetDialogManager.showBottomSheetDialog(context, title: account.firma.toString(), children: [
-                          BottomSheetModel(
-                              iconWidget: Icons.delete_outline,
-                              title: "Sil",
-                              onTap: () {
-                                Get.back();
-                                dialogManager.showAreYouSureDialog(() {
-                                  CacheManager.removeAccounts(account.email ?? "");
-                                  CacheManager.resetVerifiedUser();
-                                  setState(() {});
-                                });
-                              }),
-                          //TODO Sunucu Tercihi Sayfasına Yönlendir
-                          // BottomSheetModel(iconWidget: Icons.storage_rounded, title: "Sunucu Tercihi", onTap: () {}),
-                        ]);
+                        bottomSheetDialogManager.showBottomSheetDialog(context,
+                            title: account.firma.toString(),
+                            children: [
+                              BottomSheetModel(
+                                  iconWidget: Icons.delete_outline,
+                                  title: "Sil",
+                                  onTap: () {
+                                    Get.back();
+                                    dialogManager.showAreYouSureDialog(() {
+                                      CacheManager.removeAccounts(
+                                          account.email ?? "");
+                                      CacheManager.resetVerifiedUser();
+                                      setState(() {});
+                                    });
+                                  }),
+                              //TODO Sunucu Tercihi Sayfasına Yönlendir
+                              // BottomSheetModel(iconWidget: Icons.storage_rounded, title: "Sunucu Tercihi", onTap: () {}),
+                            ]);
                       },
                       title: Text(account.firma.toString()),
                       subtitle: Text(account.email.toString()),

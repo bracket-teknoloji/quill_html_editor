@@ -1,10 +1,11 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+
 import "../../../../../../../core/base/model/base_network_mixin.dart";
 
 part "kasa_islemleri_model.freezed.dart";
 part "kasa_islemleri_model.g.dart";
 
-@freezed
+@unfreezed
 class KasaIslemleriModel with _$KasaIslemleriModel, NetworkManagerMixin {
   KasaIslemleriModel._();
   factory KasaIslemleriModel({

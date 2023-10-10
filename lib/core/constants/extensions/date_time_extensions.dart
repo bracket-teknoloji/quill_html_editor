@@ -5,6 +5,7 @@ extension DateTimeExtension on DateTime? {
     if (this == null) return "";
     return DateFormat("dd.MM.yyyy").format(this ?? DateTime.now());
   }
+
   String get toTimeString {
     if (this == null) return "";
     return DateFormat("HH:mm").format(this ?? DateTime.now());

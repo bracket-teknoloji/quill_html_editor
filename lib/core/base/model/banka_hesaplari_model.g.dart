@@ -6,9 +6,9 @@ part of 'banka_hesaplari_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_BankaHesaplariModel _$$_BankaHesaplariModelFromJson(
+_$BankaHesaplariModelImpl _$$BankaHesaplariModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_BankaHesaplariModel(
+    _$BankaHesaplariModelImpl(
       bankaKodu: json['BANKA_KODU'] as String?,
       bankasubeKodu: json['BANKASUBE_KODU'] as String?,
       hesapKodu: json['HESAP_KODU'] as String?,
@@ -29,8 +29,8 @@ _$_BankaHesaplariModel _$$_BankaHesaplariModelFromJson(
       hesapNo: json['HESAP_NO'] as String?,
     );
 
-Map<String, dynamic> _$$_BankaHesaplariModelToJson(
-    _$_BankaHesaplariModel instance) {
+Map<String, dynamic> _$$BankaHesaplariModelImplToJson(
+    _$BankaHesaplariModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

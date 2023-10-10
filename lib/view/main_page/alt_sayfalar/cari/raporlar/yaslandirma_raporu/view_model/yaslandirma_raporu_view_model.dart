@@ -4,12 +4,19 @@ import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.da
 
 part "yaslandirma_raporu_view_model.g.dart";
 
-class YaslandirmaRaporuViewModel = _YaslandirmaRaporuViewModelBase with _$YaslandirmaRaporuViewModel;
+class YaslandirmaRaporuViewModel = _YaslandirmaRaporuViewModelBase
+    with _$YaslandirmaRaporuViewModel;
 
 abstract class _YaslandirmaRaporuViewModelBase with Store {
   //* Süre Aralığı
   //*
-  final List<String> sureAraligiList = ["Günlük", "Haftalık", "2 Hafta", "3 Hafta", "Aylık"];
+  final List<String> sureAraligiList = [
+    "Günlük",
+    "Haftalık",
+    "2 Hafta",
+    "3 Hafta",
+    "Aylık"
+  ];
   final List<String> sureAraligivalue = ["G", "H", "2H", "3H", "A"];
   @observable
   String _sureAraligiGroupValue = "G";
@@ -43,13 +50,16 @@ abstract class _YaslandirmaRaporuViewModelBase with Store {
   //* Model
   //*
   @observable
-  PdfModel pdfModel = PdfModel(raporOzelKod: "Rapor_CariYaslandirma", standart: true, dicParams: DicParams());
+  PdfModel pdfModel = PdfModel(
+      raporOzelKod: "Rapor_CariYaslandirma",
+      standart: true,
+      dicParams: DicParams());
 
-  
   //* Future
   //*
   @observable
-  ObservableFuture<bool?> futureController = ObservableFuture(Future.error(false));
+  ObservableFuture<bool?> futureController =
+      ObservableFuture(Future.error(false));
 
   @action
   void setFuture() => futureController = ObservableFuture.value(true);

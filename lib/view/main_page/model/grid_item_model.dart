@@ -24,36 +24,63 @@ class GridItemModel {
   SiparisTipiEnum? siparisTipi;
   late final String menuTipi;
 
-  GridItemModel.anamenu({required this.name, required this.title, required this.icon, required this.color, required this.altMenuler, this.iconData, this.yetkiListesi}) {
+  GridItemModel.anamenu(
+      {required this.name,
+      required this.title,
+      required this.icon,
+      required this.color,
+      required this.altMenuler,
+      this.iconData,
+      this.yetkiListesi}) {
     menuTipi = "A";
   }
 
-  GridItemModel.altmenu({required this.name, required this.title, this.icon, required this.altMenuler, this.iconData}) {
+  GridItemModel.altmenu(
+      {required this.name,
+      required this.title,
+      this.icon,
+      required this.altMenuler,
+      this.iconData}) {
     //😳 Sub menu yani alt menü o yüzden "S"
     menuTipi = "S";
   }
-  GridItemModel.item({required this.name, required this.title, this.icon, this.color, this.route, this.arguments, this.siparisTipi}) {
+  GridItemModel.item(
+      {required this.name,
+      required this.title,
+      this.icon,
+      this.color,
+      this.route,
+      this.arguments,
+      this.siparisTipi}) {
     menuTipi = "I";
     if (route == null) {
-      onTap ??= () async => DialogManager().showInfoSnackBar("Yapım Aşamasında");
+      onTap ??=
+          () async => DialogManager().showInfoSnackBar("Yapım Aşamasında");
     } else {
       onTap = () async => await Get.toNamed(route!, arguments: arguments);
     }
   }
-  GridItemModel.islemler({required this.title, this.icon, this.color, this.onTap, this.iconData}) {
+  GridItemModel.islemler(
+      {required this.title, this.icon, this.color, this.onTap, this.iconData}) {
     menuTipi = "IS";
     onTap ??= () async => DialogManager().showErrorSnackBar("Yapım Aşamasında");
   }
-  GridItemModel.serbestRaporlar({required this.title, this.arguments, this.color, this.name}) {
+  GridItemModel.serbestRaporlar(
+      {required this.title, this.arguments, this.color, this.name}) {
     menuTipi = "SR";
     route = "/mainPage/serbestRaporlar";
-    onTap = () async => await Get.toNamed("/mainPage/serbestRaporlar", arguments: arguments);
+    onTap = () async =>
+        await Get.toNamed("/mainPage/serbestRaporlar", arguments: arguments);
   }
 
   bool get yetkiKontrol {
     if (menuTipi == "A") {
       int sayac = 0;
-      if ((_menuList?.contains(name) ?? false) && altMenuVarMi && (yetkiListesi != null ? !(yetkiListesi?.any((element) => element == false) ?? false) : true)) {
+      if ((_menuList?.contains(name) ?? false) &&
+          altMenuVarMi &&
+          (yetkiListesi != null
+              ? !(yetkiListesi?.any((element) => element == false) ?? false)
+              : true)) {
         for (var element in altMenuler!) {
           if (element.yetkiKontrol) {
             sayac++;
@@ -63,7 +90,8 @@ class GridItemModel {
       } else {
         return false;
       }
-    } else if (_cacheManager?.adminMi != null && (_cacheManager?.adminMi ?? false)) {
+    } else if (_cacheManager?.adminMi != null &&
+        (_cacheManager?.adminMi ?? false)) {
       return true;
     } else if (menuTipi == "S") {
       int sayac = altMenuler?.length ?? 0;
@@ -72,7 +100,8 @@ class GridItemModel {
           sayac--;
         }
       });
-      var result = sayac != 0 ? _cacheManager?.profilYetki?.toJson()[name] : false;
+      var result =
+          sayac != 0 ? _cacheManager?.profilYetki?.toJson()[name] : false;
       if (name == null) {
         return sayac != 0;
       }
@@ -87,7 +116,8 @@ class GridItemModel {
 
   bool get altMenuVarMi {
     if (menuTipi == "A" || menuTipi == "S") {
-      return altMenuler.ext.isNotNullOrEmpty; //&& altMenuler!.any((element) => element.altMenuler?.isNotEmpty ?? false);
+      return altMenuler.ext
+          .isNotNullOrEmpty; //&& altMenuler!.any((element) => element.altMenuler?.isNotEmpty ?? false);
     } else {
       return false;
     }

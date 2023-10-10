@@ -17,7 +17,20 @@ class CustomLineChart extends StatefulWidget {
 }
 
 class _CustomLineChartState extends BaseState<CustomLineChart> {
-  final List<String> months = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+  final List<String> months = [
+    "Ocak",
+    "Şubat",
+    "Mart",
+    "Nisan",
+    "Mayıs",
+    "Haziran",
+    "Temmuz",
+    "Ağustos",
+    "Eylül",
+    "Ekim",
+    "Kasım",
+    "Aralık"
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +51,8 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                         return touchedBarSpots.map((barSpot) {
                           final flSpot = barSpot;
                           return LineTooltipItem(
-                            flSpot.y.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+                            flSpot.y.commaSeparatedWithDecimalDigits(
+                                OndalikEnum.tutar),
                             TextStyle(
                               color: flSpot.bar.color,
                               fontWeight: FontWeight.w900,
@@ -64,10 +78,21 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                   ),
                   titlesData: FlTitlesData(
                     show: true,
-                    topTitles: AxisTitles(sideTitles: SideTitles(showTitles: true, getTitlesWidget: topTitleWidgets, interval: 1)),
-                    bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: true, getTitlesWidget: bottomTitleWidgets, interval: 1)),
+                    topTitles: AxisTitles(
+                        sideTitles: SideTitles(
+                            showTitles: true,
+                            getTitlesWidget: topTitleWidgets,
+                            interval: 1)),
+                    bottomTitles: AxisTitles(
+                        sideTitles: SideTitles(
+                            showTitles: true,
+                            getTitlesWidget: bottomTitleWidgets,
+                            interval: 1)),
                     rightTitles: const AxisTitles(axisNameWidget: Text("")),
-                    leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: true, getTitlesWidget: leftTitleWidgets)),
+                    leftTitles: AxisTitles(
+                        sideTitles: SideTitles(
+                            showTitles: true,
+                            getTitlesWidget: leftTitleWidgets)),
                   ),
                   minX: 0,
                   maxX: (widget.lineChartValue?.length.toDouble() ?? 0) - 1,
@@ -75,7 +100,10 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                   lineBarsData: [
                     LineChartBarData(
                         spots: widget.lineChartValue.ext.isNotNullOrEmpty
-                            ? List.generate(widget.lineChartValue?.length ?? 0, (index) => FlSpot(index.toDouble(), widget.lineChartValue?[index] ?? 0))
+                            ? List.generate(
+                                widget.lineChartValue?.length ?? 0,
+                                (index) => FlSpot(index.toDouble(),
+                                    widget.lineChartValue?[index] ?? 0))
                             : [],
                         show: true,
                         preventCurveOverShooting: true,
@@ -86,20 +114,29 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                         gradient: LinearGradient(
                           begin: Alignment.centerLeft,
                           end: Alignment.centerRight,
-                          colors: Colors.primaries.sublist(0, widget.lineChartValue?.length ?? 0),
+                          colors: Colors.primaries
+                              .sublist(0, widget.lineChartValue?.length ?? 0),
                         ),
                         isStrokeCapRound: true,
                         dotData: FlDotData(
                             show: true,
-                            getDotPainter: (FlSpot spot, double xPercentage, LineChartBarData bar, int index) {
-                              return FlDotCirclePainter(radius: 4, color: Colors.transparent, strokeWidth: 2, strokeColor: Colors.primaries[index]);
+                            getDotPainter: (FlSpot spot, double xPercentage,
+                                LineChartBarData bar, int index) {
+                              return FlDotCirclePainter(
+                                  radius: 4,
+                                  color: Colors.transparent,
+                                  strokeWidth: 2,
+                                  strokeColor: Colors.primaries[index]);
                             }),
                         belowBarData: BarAreaData(
                           show: true,
                           gradient: LinearGradient(
                             begin: Alignment.centerLeft,
                             end: Alignment.topRight,
-                            colors: Colors.primaries.sublist(0, widget.lineChartValue?.length ?? 0).map((e) => e.withOpacity(0.3)).toList(),
+                            colors: Colors.primaries
+                                .sublist(0, widget.lineChartValue?.length ?? 0)
+                                .map((e) => e.withOpacity(0.3))
+                                .toList(),
                           ),
                         ))
                   ]),
@@ -169,7 +206,8 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
       fontWeight: FontWeight.bold,
       fontSize: 8,
     );
-    return Text("${(value ~/ 1000).toStringIfNotNull ?? ""}k ", style: style, textAlign: TextAlign.left);
+    return Text("${(value ~/ 1000).toStringIfNotNull ?? ""}k ",
+        style: style, textAlign: TextAlign.left);
   }
 
   Widget topTitleWidgets(double value, TitleMeta meta) {
@@ -179,6 +217,9 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
     );
     return RotationTransition(
         turns: const AlwaysStoppedAnimation(340 / 360),
-        child: Text(" ${(widget.lineChartValue![value.toInt()]).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: style, textAlign: TextAlign.left));
+        child: Text(
+            " ${(widget.lineChartValue![value.toInt()]).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            style: style,
+            textAlign: TextAlign.left));
   }
 }

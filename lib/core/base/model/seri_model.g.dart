@@ -6,12 +6,13 @@ part of 'seri_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SeriModel _$$_SeriModelFromJson(Map<String, dynamic> json) => _$_SeriModel(
+_$SeriModelImpl _$$SeriModelImplFromJson(Map<String, dynamic> json) =>
+    _$SeriModelImpl(
       seriNo: json['SERI_NO'] as String?,
       aciklama: json['ACIKLAMA'] as String?,
     );
 
-Map<String, dynamic> _$$_SeriModelToJson(_$_SeriModel instance) {
+Map<String, dynamic> _$$SeriModelImplToJson(_$SeriModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

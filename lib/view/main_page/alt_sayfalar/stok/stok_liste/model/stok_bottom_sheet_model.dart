@@ -126,7 +126,8 @@ class StokBottomSheetModel with _$StokBottomSheetModel, NetworkManagerMixin {
     @Default([]) List<BaseGrupKoduModel>? arrKod5,
   }) = _StokBottomSheetModel;
 
-  factory StokBottomSheetModel.fromJson(Map<String, dynamic> json) => _$StokBottomSheetModelFromJson(json);
+  factory StokBottomSheetModel.fromJson(Map<String, dynamic> json) =>
+      _$StokBottomSheetModelFromJson(json);
 
   @override
   fromJson(Map<String, dynamic> json) => _$StokBottomSheetModelFromJson(json);
@@ -134,22 +135,23 @@ class StokBottomSheetModel with _$StokBottomSheetModel, NetworkManagerMixin {
   Map<String, dynamic> toJsonWithList() {
     final data = toJson();
     if (data["ArrGrupKodu"] != null) {
-      data["ArrGrupKodu"] = data["ArrGrupKodu"].map((e)=>e["GRUP_KODU"]).toList();
+      data["ArrGrupKodu"] =
+          data["ArrGrupKodu"].map((e) => e["GRUP_KODU"]).toList();
     }
     if (data["ArrKod1"] != null) {
-      data["ArrKod1"] = data["ArrKod1"].map((e)=>e["GRUP_KODU"]).toList();
+      data["ArrKod1"] = data["ArrKod1"].map((e) => e["GRUP_KODU"]).toList();
     }
     if (data["ArrKod2"] != null) {
-      data["ArrKod2"] = data["ArrKod2"].map((e)=>e["GRUP_KODU"]).toList();
+      data["ArrKod2"] = data["ArrKod2"].map((e) => e["GRUP_KODU"]).toList();
     }
     if (data["ArrKod3"] != null) {
-      data["ArrKod3"] = data["ArrKod3"].map((e)=>e["GRUP_KODU"]).toList();
+      data["ArrKod3"] = data["ArrKod3"].map((e) => e["GRUP_KODU"]).toList();
     }
     if (data["ArrKod4"] != null) {
-      data["ArrKod4"] = data["ArrKod4"].map((e)=>e["GRUP_KODU"]).toList();
+      data["ArrKod4"] = data["ArrKod4"].map((e) => e["GRUP_KODU"]).toList();
     }
     if (data["ArrKod5"] != null) {
-      data["ArrKod5"] = data["ArrKod5"].map((e)=>e["GRUP_KODU"]).toList();
+      data["ArrKod5"] = data["ArrKod5"].map((e) => e["GRUP_KODU"]).toList();
     }
     return data;
   }

@@ -6,7 +6,6 @@ import "../../../../../../core/base/model/base_network_mixin.dart";
 
 part "cari_listesi_model.g.dart";
 
-
 @CopyWith()
 @HiveType(typeId: 195)
 @JsonSerializable(explicitToJson: true)
@@ -110,8 +109,7 @@ class CariListesiModel with NetworkManagerMixin {
     this.dovBorcToplami,
     this.dovAlacakToplami,
     this.dovBakiye,
-    
-     });
+  });
 
   @HiveField(0)
   String? cariKodu;
@@ -288,7 +286,8 @@ class CariListesiModel with NetworkManagerMixin {
   @HiveField(86)
   double? dovBakiye;
 
-  factory CariListesiModel.fromJson(Map<String, dynamic> json) => _$CariListesiModelFromJson(json);
+  factory CariListesiModel.fromJson(Map<String, dynamic> json) =>
+      _$CariListesiModelFromJson(json);
   @override
   fromJson(Map<String, dynamic> json) {
     // bakiyeList = json['BAKIYE_LIST'] != null ? (json['BAKIYE_LIST'] as List).map((i) => BakiyeModel.fromJson(i)).toList() : null;

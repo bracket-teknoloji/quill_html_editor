@@ -109,10 +109,11 @@ class _$PdfModelCopyWithImpl<$Res, $Val extends PdfModel>
 }
 
 /// @nodoc
-abstract class _$$_PdfModelCopyWith<$Res> implements $PdfModelCopyWith<$Res> {
-  factory _$$_PdfModelCopyWith(
-          _$_PdfModel value, $Res Function(_$_PdfModel) then) =
-      __$$_PdfModelCopyWithImpl<$Res>;
+abstract class _$$PdfModelImplCopyWith<$Res>
+    implements $PdfModelCopyWith<$Res> {
+  factory _$$PdfModelImplCopyWith(
+          _$PdfModelImpl value, $Res Function(_$PdfModelImpl) then) =
+      __$$PdfModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -127,11 +128,11 @@ abstract class _$$_PdfModelCopyWith<$Res> implements $PdfModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PdfModelCopyWithImpl<$Res>
-    extends _$PdfModelCopyWithImpl<$Res, _$_PdfModel>
-    implements _$$_PdfModelCopyWith<$Res> {
-  __$$_PdfModelCopyWithImpl(
-      _$_PdfModel _value, $Res Function(_$_PdfModel) _then)
+class __$$PdfModelImplCopyWithImpl<$Res>
+    extends _$PdfModelCopyWithImpl<$Res, _$PdfModelImpl>
+    implements _$$PdfModelImplCopyWith<$Res> {
+  __$$PdfModelImplCopyWithImpl(
+      _$PdfModelImpl _value, $Res Function(_$PdfModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -143,7 +144,7 @@ class __$$_PdfModelCopyWithImpl<$Res>
     Object? dizaynId = freezed,
     Object? etiketSayisi = freezed,
   }) {
-    return _then(_$_PdfModel(
+    return _then(_$PdfModelImpl(
       raporOzelKod: freezed == raporOzelKod
           ? _value.raporOzelKod
           : raporOzelKod // ignore: cast_nullable_to_non_nullable
@@ -171,8 +172,8 @@ class __$$_PdfModelCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(createFactory: true, explicitToJson: true, createToJson: true)
-class _$_PdfModel extends _PdfModel {
-  _$_PdfModel(
+class _$PdfModelImpl extends _PdfModel {
+  _$PdfModelImpl(
       {this.raporOzelKod,
       this.standart,
       this.dicParams,
@@ -180,8 +181,8 @@ class _$_PdfModel extends _PdfModel {
       this.etiketSayisi})
       : super._();
 
-  factory _$_PdfModel.fromJson(Map<String, dynamic> json) =>
-      _$$_PdfModelFromJson(json);
+  factory _$PdfModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PdfModelImplFromJson(json);
 
   @override
   String? raporOzelKod;
@@ -197,12 +198,12 @@ class _$_PdfModel extends _PdfModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PdfModelCopyWith<_$_PdfModel> get copyWith =>
-      __$$_PdfModelCopyWithImpl<_$_PdfModel>(this, _$identity);
+  _$$PdfModelImplCopyWith<_$PdfModelImpl> get copyWith =>
+      __$$PdfModelImplCopyWithImpl<_$PdfModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PdfModelToJson(
+    return _$$PdfModelImplToJson(
       this,
     );
   }
@@ -214,10 +215,11 @@ abstract class _PdfModel extends PdfModel {
       bool? standart,
       DicParams? dicParams,
       int? dizaynId,
-      int? etiketSayisi}) = _$_PdfModel;
+      int? etiketSayisi}) = _$PdfModelImpl;
   _PdfModel._() : super._();
 
-  factory _PdfModel.fromJson(Map<String, dynamic> json) = _$_PdfModel.fromJson;
+  factory _PdfModel.fromJson(Map<String, dynamic> json) =
+      _$PdfModelImpl.fromJson;
 
   @override
   String? get raporOzelKod;
@@ -236,7 +238,7 @@ abstract class _PdfModel extends PdfModel {
   set etiketSayisi(int? value);
   @override
   @JsonKey(ignore: true)
-  _$$_PdfModelCopyWith<_$_PdfModel> get copyWith =>
+  _$$PdfModelImplCopyWith<_$PdfModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -594,10 +596,11 @@ class _$DicParamsCopyWithImpl<$Res, $Val extends DicParams>
 }
 
 /// @nodoc
-abstract class _$$_DicParamsCopyWith<$Res> implements $DicParamsCopyWith<$Res> {
-  factory _$$_DicParamsCopyWith(
-          _$_DicParams value, $Res Function(_$_DicParams) then) =
-      __$$_DicParamsCopyWithImpl<$Res>;
+abstract class _$$DicParamsImplCopyWith<$Res>
+    implements $DicParamsCopyWith<$Res> {
+  factory _$$DicParamsImplCopyWith(
+          _$DicParamsImpl value, $Res Function(_$DicParamsImpl) then) =
+      __$$DicParamsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -643,11 +646,11 @@ abstract class _$$_DicParamsCopyWith<$Res> implements $DicParamsCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_DicParamsCopyWithImpl<$Res>
-    extends _$DicParamsCopyWithImpl<$Res, _$_DicParams>
-    implements _$$_DicParamsCopyWith<$Res> {
-  __$$_DicParamsCopyWithImpl(
-      _$_DicParams _value, $Res Function(_$_DicParams) _then)
+class __$$DicParamsImplCopyWithImpl<$Res>
+    extends _$DicParamsCopyWithImpl<$Res, _$DicParamsImpl>
+    implements _$$DicParamsImplCopyWith<$Res> {
+  __$$DicParamsImplCopyWithImpl(
+      _$DicParamsImpl _value, $Res Function(_$DicParamsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -693,7 +696,7 @@ class __$$_DicParamsCopyWithImpl<$Res>
     Object? yapkod = freezed,
     Object? kasaKodu = freezed,
   }) {
-    return _then(_$_DicParams(
+    return _then(_$DicParamsImpl(
       cariKodu: freezed == cariKodu
           ? _value.cariKodu
           : cariKodu // ignore: cast_nullable_to_non_nullable
@@ -857,8 +860,8 @@ class __$$_DicParamsCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(createFactory: true, explicitToJson: true, createToJson: true)
-class _$_DicParams implements _DicParams {
-  _$_DicParams(
+class _$DicParamsImpl implements _DicParams {
+  _$DicParamsImpl(
       {this.cariKodu,
       this.stokKodu,
       this.sifirHaric,
@@ -899,8 +902,8 @@ class _$_DicParams implements _DicParams {
       this.yapkod,
       this.kasaKodu});
 
-  factory _$_DicParams.fromJson(Map<String, dynamic> json) =>
-      _$$_DicParamsFromJson(json);
+  factory _$DicParamsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DicParamsImplFromJson(json);
 
   @override
   String? cariKodu;
@@ -989,12 +992,12 @@ class _$_DicParams implements _DicParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DicParamsCopyWith<_$_DicParams> get copyWith =>
-      __$$_DicParamsCopyWithImpl<_$_DicParams>(this, _$identity);
+  _$$DicParamsImplCopyWith<_$DicParamsImpl> get copyWith =>
+      __$$DicParamsImplCopyWithImpl<_$DicParamsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DicParamsToJson(
+    return _$$DicParamsImplToJson(
       this,
     );
   }
@@ -1040,10 +1043,10 @@ abstract class _DicParams implements DicParams {
       String? tblnfStokfiyatgecmisiId,
       int? miktar,
       String? yapkod,
-      String? kasaKodu}) = _$_DicParams;
+      String? kasaKodu}) = _$DicParamsImpl;
 
   factory _DicParams.fromJson(Map<String, dynamic> json) =
-      _$_DicParams.fromJson;
+      _$DicParamsImpl.fromJson;
 
   @override
   String? get cariKodu;
@@ -1164,6 +1167,6 @@ abstract class _DicParams implements DicParams {
   set kasaKodu(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$_DicParamsCopyWith<_$_DicParams> get copyWith =>
+  _$$DicParamsImplCopyWith<_$DicParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

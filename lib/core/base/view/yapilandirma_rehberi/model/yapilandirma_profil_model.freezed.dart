@@ -92,11 +92,12 @@ class _$YapilandirmaProfilModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_YapilandirmaProfilModelCopyWith<$Res>
+abstract class _$$YapilandirmaProfilModelImplCopyWith<$Res>
     implements $YapilandirmaProfilModelCopyWith<$Res> {
-  factory _$$_YapilandirmaProfilModelCopyWith(_$_YapilandirmaProfilModel value,
-          $Res Function(_$_YapilandirmaProfilModel) then) =
-      __$$_YapilandirmaProfilModelCopyWithImpl<$Res>;
+  factory _$$YapilandirmaProfilModelImplCopyWith(
+          _$YapilandirmaProfilModelImpl value,
+          $Res Function(_$YapilandirmaProfilModelImpl) then) =
+      __$$YapilandirmaProfilModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -107,12 +108,13 @@ abstract class _$$_YapilandirmaProfilModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_YapilandirmaProfilModelCopyWithImpl<$Res>
+class __$$YapilandirmaProfilModelImplCopyWithImpl<$Res>
     extends _$YapilandirmaProfilModelCopyWithImpl<$Res,
-        _$_YapilandirmaProfilModel>
-    implements _$$_YapilandirmaProfilModelCopyWith<$Res> {
-  __$$_YapilandirmaProfilModelCopyWithImpl(_$_YapilandirmaProfilModel _value,
-      $Res Function(_$_YapilandirmaProfilModel) _then)
+        _$YapilandirmaProfilModelImpl>
+    implements _$$YapilandirmaProfilModelImplCopyWith<$Res> {
+  __$$YapilandirmaProfilModelImplCopyWithImpl(
+      _$YapilandirmaProfilModelImpl _value,
+      $Res Function(_$YapilandirmaProfilModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -123,7 +125,7 @@ class __$$_YapilandirmaProfilModelCopyWithImpl<$Res>
     Object? aciklama = freezed,
     Object? deger = freezed,
   }) {
-    return _then(_$_YapilandirmaProfilModel(
+    return _then(_$YapilandirmaProfilModelImpl(
       sira: freezed == sira
           ? _value.sira
           : sira // ignore: cast_nullable_to_non_nullable
@@ -146,13 +148,13 @@ class __$$_YapilandirmaProfilModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_YapilandirmaProfilModel extends _YapilandirmaProfilModel {
-  _$_YapilandirmaProfilModel(
+class _$YapilandirmaProfilModelImpl extends _YapilandirmaProfilModel {
+  _$YapilandirmaProfilModelImpl(
       {this.sira, this.ozellikKodu, this.aciklama, this.deger})
       : super._();
 
-  factory _$_YapilandirmaProfilModel.fromJson(Map<String, dynamic> json) =>
-      _$$_YapilandirmaProfilModelFromJson(json);
+  factory _$YapilandirmaProfilModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$YapilandirmaProfilModelImplFromJson(json);
 
   @override
   int? sira;
@@ -166,14 +168,13 @@ class _$_YapilandirmaProfilModel extends _YapilandirmaProfilModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_YapilandirmaProfilModelCopyWith<_$_YapilandirmaProfilModel>
-      get copyWith =>
-          __$$_YapilandirmaProfilModelCopyWithImpl<_$_YapilandirmaProfilModel>(
-              this, _$identity);
+  _$$YapilandirmaProfilModelImplCopyWith<_$YapilandirmaProfilModelImpl>
+      get copyWith => __$$YapilandirmaProfilModelImplCopyWithImpl<
+          _$YapilandirmaProfilModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_YapilandirmaProfilModelToJson(
+    return _$$YapilandirmaProfilModelImplToJson(
       this,
     );
   }
@@ -184,11 +185,11 @@ abstract class _YapilandirmaProfilModel extends YapilandirmaProfilModel {
       {int? sira,
       String? ozellikKodu,
       String? aciklama,
-      List<YapilandirmaRehberiModel?>? deger}) = _$_YapilandirmaProfilModel;
+      List<YapilandirmaRehberiModel?>? deger}) = _$YapilandirmaProfilModelImpl;
   _YapilandirmaProfilModel._() : super._();
 
   factory _YapilandirmaProfilModel.fromJson(Map<String, dynamic> json) =
-      _$_YapilandirmaProfilModel.fromJson;
+      _$YapilandirmaProfilModelImpl.fromJson;
 
   @override
   int? get sira;
@@ -204,6 +205,6 @@ abstract class _YapilandirmaProfilModel extends YapilandirmaProfilModel {
   set deger(List<YapilandirmaRehberiModel?>? value);
   @override
   @JsonKey(ignore: true)
-  _$$_YapilandirmaProfilModelCopyWith<_$_YapilandirmaProfilModel>
+  _$$YapilandirmaProfilModelImplCopyWith<_$YapilandirmaProfilModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

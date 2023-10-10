@@ -6,9 +6,9 @@ part of 'kullanici_yetki_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_KullaniciYetkiModel _$$_KullaniciYetkiModelFromJson(
+_$KullaniciYetkiModelImpl _$$KullaniciYetkiModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_KullaniciYetkiModel(
+    _$KullaniciYetkiModelImpl(
       bagliPlasiyerler: json['bagliPlasiyerler'] as List<dynamic>?,
       eIrsOnEki: json['eIrsOnEki'] as String?,
       eIrsAmbarOnEki: json['eIrsAmbarOnEki'] as String?,
@@ -33,8 +33,8 @@ _$_KullaniciYetkiModel _$$_KullaniciYetkiModelFromJson(
           json['transfer_DAT_VarsayilanGirisDepo'] as int?,
     );
 
-Map<String, dynamic> _$$_KullaniciYetkiModelToJson(
-    _$_KullaniciYetkiModel instance) {
+Map<String, dynamic> _$$KullaniciYetkiModelImplToJson(
+    _$KullaniciYetkiModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

@@ -42,19 +42,6 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Wrap(
-        direction: Axis.vertical,
-        alignment: WrapAlignment.center,
-        crossAxisAlignment: WrapCrossAlignment.center,
-        children: [
-          Text.rich(TextSpan(children: [
-            TextSpan(text: "Powered by ", style: TextStyle(color: theme.colorScheme.primary.withOpacity(0.8))),
-            const TextSpan(text: "Bracket Teknoloji\n", style: TextStyle(fontWeight: FontWeight.bold)),
-          ])),
-          Text(AppInfoModel.instance.version ?? "")
-        ],
-      ).paddingAll(UIHelper.lowSize),
       body: Stack(
         children: [
           WaveWidget(
@@ -64,20 +51,13 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
               wavePhase: 0,
               duration: 200,
               backgroundColor: theme.scaffoldBackgroundColor),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Wrap(
+              direction: Axis.vertical,
+              alignment: WrapAlignment.center,
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
-                Column(
-                  children: [
-                    SvgPicture.asset("assets/splash/PickerLogoTuruncu.svg", height: height * 0.1),
-                    const Text("Picker\nVeri Toplama Çözümleri", overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center).paddingAll(UIHelper.lowSize),
-                  ],
-                ),
-                SizedBox(
-                    width: width * 0.6,
-                    child: Observer(builder: (_) => Visibility(visible: viewModel.isError, child: Text(viewModel.title, overflow: TextOverflow.ellipsis, maxLines: 10, textAlign: TextAlign.center)))),
                 Wrap(
                   alignment: WrapAlignment.center,
                   crossAxisAlignment: WrapCrossAlignment.center,
@@ -108,7 +88,34 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
                       );
                     })
                   ],
-                )
+                ).paddingOnly(bottom: UIHelper.highSize * 7),
+                Text.rich(TextSpan(children: [
+                  TextSpan(text: "Powered by ", style: TextStyle(color: theme.colorScheme.primary.withOpacity(0.8))),
+                  const TextSpan(text: "Bracket Teknoloji\n", style: TextStyle(fontWeight: FontWeight.bold)),
+                ])),
+              ],
+            ).paddingOnly(bottom: UIHelper.midSize),
+          ),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset("assets/splash/PickerLogoTuruncu.svg", height: height * 0.1),
+                    const Text("Picker\nVeri Toplama Çözümleri", overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center).paddingAll(UIHelper.lowSize),
+                    Text(AppInfoModel.instance.version ?? "").paddingOnly(bottom: UIHelper.highSize)
+                  ],
+                ),
+                Observer(builder: (_) {
+                  return Visibility(
+                    visible: viewModel.isError,
+                    child: SizedBox(width: width * 0.6, child: Text(viewModel.title, overflow: TextOverflow.ellipsis, maxLines: 10, textAlign: TextAlign.center)),
+                  );
+                }),
               ],
             ),
           )
@@ -140,7 +147,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
           Get.offAllNamed("/login");
         }
       } else {
-        viewModel.setTitle("Hata\n\n${response?.errorDescription ?? response?.error ?? "Bağlantı kurulamadı. Lütfen internet bağlantınızı kontrol edin."}");
+        viewModel.setTitle("\n\n${response?.errorDescription ?? response?.error ?? "Bağlantı kurulamadı. Lütfen internet bağlantınızı kontrol edin."}");
         viewModel.setIsError(true);
       }
     } else {

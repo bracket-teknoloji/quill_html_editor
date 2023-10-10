@@ -38,9 +38,8 @@ part "stok_yeni_kayit_model.g.dart";
 
 @unfreezed
 class StokYeniKayitModel with _$StokYeniKayitModel, NetworkManagerMixin {
-
   StokYeniKayitModel._();
-   factory StokYeniKayitModel({
+  factory StokYeniKayitModel({
     String? aciklama,
     String? belgeNo,
     String? gc,
@@ -65,7 +64,8 @@ class StokYeniKayitModel with _$StokYeniKayitModel, NetworkManagerMixin {
     @JsonKey(name: "_YeniKayit") bool? yeniKayit,
   }) = _StokYeniKayitModel;
 
-  factory StokYeniKayitModel.fromJson(Map<String, dynamic> json) => _$StokYeniKayitModelFromJson(json);
+  factory StokYeniKayitModel.fromJson(Map<String, dynamic> json) =>
+      _$StokYeniKayitModelFromJson(json);
 
   @override
   fromJson(Map<String, dynamic> json) => _$StokYeniKayitModelFromJson(json);

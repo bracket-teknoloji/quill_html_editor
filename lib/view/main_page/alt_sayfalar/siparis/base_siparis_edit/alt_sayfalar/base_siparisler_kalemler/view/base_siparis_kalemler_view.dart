@@ -2,16 +2,16 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../../../../../../core/components/badge/colorful_badge.dart";
-import "../../../../../../../../core/constants/enum/badge_color_enum.dart";
-import "../../../../../../../../core/constants/extensions/list_extensions.dart";
-import "../../../../../../../../core/constants/extensions/model_extensions.dart";
 
 import "../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../core/components/badge/colorful_badge.dart";
 import "../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../../core/constants/enum/badge_color_enum.dart";
 import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../../core/constants/extensions/list_extensions.dart";
+import "../../../../../../../../core/constants/extensions/model_extensions.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../core/constants/ondalik_utils.dart";
@@ -28,7 +28,8 @@ class BaseSiparisKalemlerView extends StatefulWidget {
   const BaseSiparisKalemlerView({super.key, required this.model, this.updater});
 
   @override
-  State<BaseSiparisKalemlerView> createState() => _BaseSiparisKalemlerViewState();
+  State<BaseSiparisKalemlerView> createState() =>
+      _BaseSiparisKalemlerViewState();
 }
 
 class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
@@ -89,7 +90,8 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                     var result = await Get.toNamed("/qr");
                     if (result != null) {
                       _searchTextController.text = result;
-                      await Get.toNamed("/mainPage/stokRehberi", arguments: result);
+                      await Get.toNamed("/mainPage/stokRehberi",
+                          arguments: result);
                       viewModel.updateKalemList();
                     }
                   },
@@ -103,8 +105,11 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                           child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.manage_search_outlined, size: 50, color: theme.colorScheme.primary),
-                            const Text("Kalem bulunamadı.\nLütfen Kalem Ekleyin.", textAlign: TextAlign.center),
+                            Icon(Icons.manage_search_outlined,
+                                size: 50, color: theme.colorScheme.primary),
+                            const Text(
+                                "Kalem bulunamadı.\nLütfen Kalem Ekleyin.",
+                                textAlign: TextAlign.center),
                           ],
                         ))
                       : Observer(
@@ -112,16 +117,22 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                               primary: true,
                               itemCount: viewModel.kalemList?.length ?? 0,
                               itemBuilder: (context, index) {
-                                KalemModel? kalemModel = viewModel.kalemList?[index];
+                                KalemModel? kalemModel =
+                                    viewModel.kalemList?[index];
                                 return Card(
                                     child: Column(children: [
                                   kalemListTile(context, index, kalemModel),
-                                  ...List.generate((kalemModel?.kalemList?.length ?? 0), (index2) {
-                                    KalemModel? model = kalemModel?.kalemList?[index2];
+                                  ...List.generate(
+                                      (kalemModel?.kalemList?.length ?? 0),
+                                      (index2) {
+                                    KalemModel? model =
+                                        kalemModel?.kalemList?[index2];
                                     return Column(
                                       children: [
                                         const Divider(),
-                                        hucreListTile(model, kalemModel).paddingOnly(left: UIHelper.highSize),
+                                        hucreListTile(model, kalemModel)
+                                            .paddingOnly(
+                                                left: UIHelper.highSize),
                                       ],
                                     );
                                   }),
@@ -132,46 +143,77 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
     );
   }
 
-  ListTile kalemListTile(BuildContext context, int index, KalemModel? kalemModel) {
+  ListTile kalemListTile(
+      BuildContext context, int index, KalemModel? kalemModel) {
     return ListTile(
       onTap: () async => await listTileBottomSheet(context, index),
       contentPadding: UIHelper.lowPadding,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [SizedBox(width: width * 0.7, child: Text(kalemModel?.stokAdi ?? kalemModel?.stokKodu ?? "", softWrap: true)), const Icon(Icons.more_vert_outlined)],
+        children: [
+          SizedBox(
+              width: width * 0.7,
+              child: Text(kalemModel?.stokAdi ?? kalemModel?.stokKodu ?? "",
+                  softWrap: true)),
+          const Icon(Icons.more_vert_outlined)
+        ],
       ),
       subtitle: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli).yetkiVarMi(kalemModel?.kalemList.ext.isNotNullOrEmpty ?? false),
+          const ColorfulBadge(
+                  label: Text("Karma Koli"),
+                  badgeColorEnum: BadgeColorEnum.karmaKoli)
+              .yetkiVarMi(kalemModel?.kalemList.ext.isNotNullOrEmpty ?? false),
           Text(kalemModel?.stokKodu ?? ""),
-          Text("${kalemModel?.depoKodu ?? ""} - ${kalemModel?.depoTanimi ?? ""}").paddingOnly(bottom: UIHelper.lowSize),
+          Text("${kalemModel?.depoKodu ?? ""} - ${kalemModel?.depoTanimi ?? ""}")
+              .paddingOnly(bottom: UIHelper.lowSize),
           Wrap(
               children: [
-            Text("Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(!(kalemModel?.miktar == null || kalemModel?.miktar == 0.0)),
-            Text("Miktar2: ${kalemModel?.miktar2.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar2 != null),
-            Text("KDV: %${kalemModel?.kdvOrani.toIntIfDouble ?? ""}").yetkiVarMi(kalemModel?.kdvOrani != null),
-            Text("Mal Fazlası Miktar: ${kalemModel?.malFazlasiMiktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.malFazlasiMiktar != null),
+            Text("Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}")
+                .yetkiVarMi(
+                    !(kalemModel?.miktar == null || kalemModel?.miktar == 0.0)),
+            Text("Miktar2: ${kalemModel?.miktar2.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}")
+                .yetkiVarMi(kalemModel?.miktar2 != null),
+            Text("KDV: %${kalemModel?.kdvOrani.toIntIfDouble ?? ""}")
+                .yetkiVarMi(kalemModel?.kdvOrani != null),
+            Text("Mal Fazlası Miktar: ${kalemModel?.malFazlasiMiktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}")
+                .yetkiVarMi(kalemModel?.malFazlasiMiktar != null),
             Text.rich(TextSpan(
                     children: [
-              TextSpan(text: "Satış İskontosu: ${kalemModel?.iskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} "),
+              TextSpan(
+                  text:
+                      "Satış İskontosu: ${kalemModel?.iskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} "),
               kalemModel?.iskontoTutari != 0.0
                   ? TextSpan(
                       text:
                           "(${kalemModel?.iskonto1.toIntIfDouble ?? ""}${kalemModel?.iskonto2 != null ? "+" : ""}${kalemModel?.iskonto2.toIntIfDouble ?? ""}${kalemModel?.iskonto3 != null ? "+" : ""}${kalemModel?.iskonto3.toIntIfDouble ?? ""}) ",
-                      style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor),
+                      style: theme.textTheme.bodySmall
+                          ?.copyWith(color: UIHelper.primaryColor),
                     )
                   : null,
             ].whereType<TextSpan>().toList()))
                 .yetkiVarMi(kalemModel?.kdvOrani != null),
-            Text("Fiyat: ${kalemModel?.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}").yetkiVarMi(kalemModel?.brutFiyat != null),
-            Text("Tutar: ${kalemModel?.koliTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}").yetkiVarMi(kalemModel?.brutFiyat != null),
-            Text("Proje: ${kalemModel?.projeKodu}").yetkiVarMi(kalemModel?.projeKodu != null && parametreModel.projeUygulamasiAcik == true),
-            Text("Teslim Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),
-            Text("Kalan Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),
-            Text("Teslim Tarihi: ${kalemModel?.teslimTarihi.toDateStringIfNull() ?? ""}").yetkiVarMi(kalemModel?.teslimTarihi != null),
-          ].map((e) => e is! SizedBox ? SizedBox(width: width * 0.4, child: e) : null).toList().nullCheckWithGeneric),
+            Text("Fiyat: ${kalemModel?.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}")
+                .yetkiVarMi(kalemModel?.brutFiyat != null),
+            Text("Tutar: ${kalemModel?.koliTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}")
+                .yetkiVarMi(kalemModel?.brutFiyat != null),
+            Text("Proje: ${kalemModel?.projeKodu}").yetkiVarMi(
+                kalemModel?.projeKodu != null &&
+                    parametreModel.projeUygulamasiAcik == true),
+            Text("Teslim Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}")
+                .yetkiVarMi(kalemModel?.miktar != null),
+            Text("Kalan Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}")
+                .yetkiVarMi(kalemModel?.miktar != null),
+            Text("Teslim Tarihi: ${kalemModel?.teslimTarihi.toDateStringIfNull() ?? ""}")
+                .yetkiVarMi(kalemModel?.teslimTarihi != null),
+          ]
+                  .map((e) => e is! SizedBox
+                      ? SizedBox(width: width * 0.4, child: e)
+                      : null)
+                  .toList()
+                  .nullCheckWithGeneric),
         ].nullCheckWithGeneric,
       ),
     );
@@ -185,20 +227,28 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
         children: [
           SizedBox(
             width: width * 0.7,
-            child: Text("${kalemList?.stokKodu ?? ""} - ${kalemList?.stokAdi ?? ""}", softWrap: true).paddingOnly(bottom: UIHelper.lowSize),
+            child: Text(
+                    "${kalemList?.stokKodu ?? ""} - ${kalemList?.stokAdi ?? ""}",
+                    softWrap: true)
+                .paddingOnly(bottom: UIHelper.lowSize),
           ),
           IconButton(
               onPressed: () async {
                 await bottomSheetDialogManager.showBottomSheetDialog(context,
                     title: "Hücre İşlemleri",
                     children: [
-                      BottomSheetModel(title: "Stok Etiketi Yazdır", iconWidget: Icons.print_outlined).yetkiKontrol(false),
+                      BottomSheetModel(
+                              title: "Stok Etiketi Yazdır",
+                              iconWidget: Icons.print_outlined)
+                          .yetkiKontrol(false),
                       BottomSheetModel(
                           title: "Stok İşlemleri",
                           iconWidget: Icons.list_alt_outlined,
                           onTap: () {
                             Get.back();
-                            dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = kalemList?.stokKodu ?? "");
+                            dialogManager.showStokGridViewDialog(
+                                StokListesiModel()
+                                  ..stokKodu = kalemList?.stokKodu ?? "");
                           }),
                     ].nullCheckWithGeneric);
               },
@@ -207,10 +257,13 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
       ),
       subtitle: Wrap(
           children: [
-        Text("Miktar: ${((kalemList?.kalan.toIntIfDouble ?? 0)).toIntIfDouble.toStringIfNotNull ?? ""}"),
-        Text("Fiyat: ${kalemList?.brutFiyat.toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""}"),
+        Text(
+            "Miktar: ${((kalemList?.kalan.toIntIfDouble ?? 0)).toIntIfDouble.toStringIfNotNull ?? ""}"),
+        Text(
+            "Fiyat: ${kalemList?.brutFiyat.toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""}"),
         // Text("KDV %: ${(kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
-        Text("KDV %: ${((StaticVariables.instance.isMusteriSiparisleri ? kalemList?.stokSatisKdv : kalemList?.stokAlisKdv) ?? kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
+        Text(
+            "KDV %: ${((StaticVariables.instance.isMusteriSiparisleri ? kalemList?.stokSatisKdv : kalemList?.stokAlisKdv) ?? kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
 
         Text("Tutar: ${kalemList?.araToplamTutari.toIntIfDouble ?? 0}"),
       ]
@@ -226,31 +279,35 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
   }
 
   listTileBottomSheet(BuildContext context, int index) {
-    bottomSheetDialogManager.showBottomSheetDialog(context, title: viewModel.kalemList?[index].stokAdi ?? "", children: [
-      BottomSheetModel(
-          title: "Düzelt",
-          iconWidget: Icons.edit_outlined,
-          onTap: () async {
-            Get.back();
-            await Get.toNamed("/kalemEkle", arguments: viewModel.kalemList?[index]);
-            viewModel.updateKalemList();
-          }),
-      BottomSheetModel(
-          title: "Sil",
-          iconWidget: Icons.delete_outline_outlined,
-          onTap: () {
-            Get.back();
-            return dialogManager.showAreYouSureDialog(() {
-              viewModel.removeAtKalemList(index);
-            });
-          }),
-      BottomSheetModel(
-          title: "Stok İşlemleri",
-          iconWidget: Icons.list_alt_outlined,
-          onTap: () {
-            Get.back();
-            return dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = viewModel.kalemList?[index].stokKodu ?? "");
-          }),
-    ]);
+    bottomSheetDialogManager.showBottomSheetDialog(context,
+        title: viewModel.kalemList?[index].stokAdi ?? "",
+        children: [
+          BottomSheetModel(
+              title: "Düzelt",
+              iconWidget: Icons.edit_outlined,
+              onTap: () async {
+                Get.back();
+                await Get.toNamed("/kalemEkle",
+                    arguments: viewModel.kalemList?[index]);
+                viewModel.updateKalemList();
+              }),
+          BottomSheetModel(
+              title: "Sil",
+              iconWidget: Icons.delete_outline_outlined,
+              onTap: () {
+                Get.back();
+                return dialogManager.showAreYouSureDialog(() {
+                  viewModel.removeAtKalemList(index);
+                });
+              }),
+          BottomSheetModel(
+              title: "Stok İşlemleri",
+              iconWidget: Icons.list_alt_outlined,
+              onTap: () {
+                Get.back();
+                return dialogManager.showStokGridViewDialog(StokListesiModel()
+                  ..stokKodu = viewModel.kalemList?[index].stokKodu ?? "");
+              }),
+        ]);
   }
 }

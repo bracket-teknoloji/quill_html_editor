@@ -1,8 +1,22 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/init/theme/app_theme_dark.dart";
+import "../../init/theme/app_theme_dark.dart";
 
-enum BadgeColorEnum { dovizli, kapali, fatura, tamamlanmamis, merkezeGonderildi, seri, esYap, konum, kilitli, irsaliye, tipAciklama, karmaKoli }
+enum BadgeColorEnum {
+  dovizli,
+  kapali,
+  cari,
+  fatura,
+  tamamlanmamis,
+  merkezeGonderildi,
+  seri,
+  esYap,
+  konum,
+  kilitli,
+  irsaliye,
+  tipAciklama,
+  karmaKoli
+}
 
 extension BadgeColorExtensions on BadgeColorEnum {
   Color get getColor {
@@ -22,6 +36,7 @@ extension BadgeColorExtensions on BadgeColorEnum {
         return Colors.purple;
       case BadgeColorEnum.seri:
       case BadgeColorEnum.konum:
+      case BadgeColorEnum.cari:
         return Colors.orange;
       case BadgeColorEnum.esYap:
         return Colors.lightGreen;
@@ -36,7 +51,8 @@ extension BadgeColorExtensions on BadgeColorEnum {
   Color get getFontColor {
     bool isDarkMode = Get.isDarkMode;
     if (isDarkMode) {
-      return AppThemeDark.instance?.theme.colorScheme.background ?? Colors.white;
+      return AppThemeDark.instance?.theme.colorScheme.background ??
+          Colors.white;
     } else {
       return Colors.white;
     }

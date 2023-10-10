@@ -105,6 +105,14 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
     });
   }
 
+  late final _$getDataAsyncAction =
+      AsyncAction('_CariListesiViewModelBase.getData', context: context);
+
+  @override
+  Future<void> getData() {
+    return _$getDataAsyncAction.run(() => super.getData());
+  }
+
   late final _$_CariListesiViewModelBaseActionController =
       ActionController(name: '_CariListesiViewModelBase', context: context);
 
@@ -191,6 +199,17 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
         .startAction(name: '_CariListesiViewModelBase.changeDahaVarMi');
     try {
       return super.changeDahaVarMi(value);
+    } finally {
+      _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeSiralama(String value) {
+    final _$actionInfo = _$_CariListesiViewModelBaseActionController
+        .startAction(name: '_CariListesiViewModelBase.changeSiralama');
+    try {
+      return super.changeSiralama(value);
     } finally {
       _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
     }

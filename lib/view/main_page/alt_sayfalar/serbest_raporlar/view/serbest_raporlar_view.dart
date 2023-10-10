@@ -23,7 +23,11 @@ class SerbestRaporlarView extends StatefulWidget {
   final NetFectDizaynList? dizaynList;
   final CariListesiModel? cariListesiModel;
   final StokListesiModel? stokListesiModel;
-  const SerbestRaporlarView({super.key, this.dizaynList, this.cariListesiModel, this.stokListesiModel});
+  const SerbestRaporlarView(
+      {super.key,
+      this.dizaynList,
+      this.cariListesiModel,
+      this.stokListesiModel});
 
   @override
   State<SerbestRaporlarView> createState() => _SerbestRaporlarViewState();
@@ -34,7 +38,10 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
 
   @override
   Widget build(BuildContext context) {
-    return PDFViewerView(filterBottomSheet: filterBottomSheet, title: widget.dizaynList?.dizaynAdi ?? "Serbest Raporlar", pdfData: viewModel.pdfModel);
+    return PDFViewerView(
+        filterBottomSheet: filterBottomSheet,
+        title: widget.dizaynList?.dizaynAdi ?? "Serbest Raporlar",
+        pdfData: viewModel.pdfModel);
   }
 
   Future<bool> filterBottomSheet() async {
@@ -54,22 +61,32 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                             return CustomTextField(
                                 fitContent: true,
                                 labelText: e.adi ?? "",
-                                controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
+                                controller:
+                                    viewModel.textEditingControllerList?[
+                                        viewModel.serbestRaporResponseModelList
+                                                ?.indexOf(e) ??
+                                            0],
                                 isMust: e.bosGecilebilir != true,
                                 readOnly: true,
                                 isDateTime: true,
                                 // suffix: const Icon(Icons.calendar_today),
                                 onTap: () async {
-                                  DateTime? result = await dialogManager.showDateTimePicker();
+                                  DateTime? result =
+                                      await dialogManager.showDateTimePicker();
                                   if (result != null) {
-                                    viewModel.changeDicParams(e.adi ?? "", result.toDateString);
+                                    viewModel.changeDicParams(
+                                        e.adi ?? "", result.toDateString);
                                   }
                                 });
                           } else if (e.rehberTipi != null) {
                             return CustomTextField(
                                 fitContent: true,
                                 labelText: e.adi ?? "",
-                                controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
+                                controller:
+                                    viewModel.textEditingControllerList?[
+                                        viewModel.serbestRaporResponseModelList
+                                                ?.indexOf(e) ??
+                                            0],
                                 isMust: e.bosGecilebilir != true,
                                 readOnly: true,
                                 suffixMore: true,
@@ -81,20 +98,39 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                                 fitContent: true,
                                 labelText: e.adi ?? "",
                                 readOnly: e.paramMap != null ? true : null,
-                                controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList!.indexOf(e)],
+                                controller:
+                                    viewModel.textEditingControllerList?[
+                                        viewModel.serbestRaporResponseModelList!
+                                            .indexOf(e)],
                                 isMust: e.bosGecilebilir != true,
-                                suffix: e.paramMap != null ? const Icon(Icons.more_horiz_outlined) : null,
+                                suffix: e.paramMap != null
+                                    ? const Icon(Icons.more_horiz_outlined)
+                                    : null,
                                 onTap: e.paramMap == null
                                     ? null
                                     : () async {
-                                        var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                            title: "Seçiniz", children: e.paramMap?.values.map((value) => BottomSheetModel(title: value, onTap: () => Get.back(result: e))).toList());
+                                        var result =
+                                            await bottomSheetDialogManager
+                                                .showBottomSheetDialog(context,
+                                                    title: "Seçiniz",
+                                                    children: e
+                                                        .paramMap?.values
+                                                        .map((value) =>
+                                                            BottomSheetModel(
+                                                                title: value,
+                                                                onTap: () =>
+                                                                    Get.back(
+                                                                        result:
+                                                                            e)))
+                                                        .toList());
                                         if (result != null) {
-                                          viewModel.changeDicParams(e.adi ?? "", result.adi);
+                                          viewModel.changeDicParams(
+                                              e.adi ?? "", result.adi);
                                         }
                                       },
                                 onChanged: (value) {
-                                  viewModel.changeDicParams(e.adi ?? "", value, false);
+                                  viewModel.changeDicParams(
+                                      e.adi ?? "", value, false);
                                 });
                           }
                         })
@@ -105,12 +141,20 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
           ElevatedButton(
                   onPressed: () {
                     //😳 Düzelt kanki
-                    if (viewModel.serbestRaporResponseModelList?.where((element) => element.bosGecilebilir == false).any((element) => viewModel.dicParams[element.adi ?? ""] == null) ?? false) {
-                      dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
+                    if (viewModel.serbestRaporResponseModelList
+                            ?.where(
+                                (element) => element.bosGecilebilir == false)
+                            .any((element) =>
+                                viewModel.dicParams[element.adi ?? ""] ==
+                                null) ??
+                        false) {
+                      dialogManager
+                          .showAlertDialog("Lütfen tüm alanları doldurunuz");
                     } else {
                       viewModel.setFuture();
                       viewModel.pdfModel.dizaynId = widget.dizaynList?.id;
-                      viewModel.pdfModel.etiketSayisi = widget.dizaynList?.kopyaSayisi;
+                      viewModel.pdfModel.etiketSayisi =
+                          widget.dizaynList?.kopyaSayisi;
 
                       Get.back();
                     }
@@ -125,12 +169,16 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
 
   void getRehber(SerbestRaporResponseModel model) async {
     if (model.stokKoduMu || model.cariKoduMu) {
-      var result = await Get.toNamed("/mainPage/${model.rehberTipi?.toLowerCase()}Listesi", arguments: true);
+      var result = await Get.toNamed(
+          "/mainPage/${model.rehberTipi?.toLowerCase()}Listesi",
+          arguments: true);
       if (result != null) {
-        viewModel.changeDicParams(model.adi ?? "", model.stokKoduMu ? result.stokKodu : result.cariKodu);
+        viewModel.changeDicParams(model.adi ?? "",
+            model.stokKoduMu ? result.stokKodu : result.cariKodu);
       }
     } else if (model.plasiyerKoduMu) {
-      var result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
+      var result =
+          await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
       // List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? [];
       // var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
       //     title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", onTap: () => Get.back(result: e))).toList());
@@ -138,17 +186,28 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
         viewModel.changeDicParams(model.adi ?? "", result.plasiyerKodu ?? "");
       }
     } else if (model.grupKoduMu) {
-      var grupKodList = await networkManager.getGrupKod(name: model.rehberTipi?.split("_").first ?? "", grupNo: 0);
+      var grupKodList = await networkManager.getGrupKod(
+          name: model.rehberTipi?.split("_").first ?? "", grupNo: 0);
       var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-          title: "Grup Kodu Seçiniz", children: grupKodList.map((e) => BottomSheetModel(title: e.grupAdi ?? "", onTap: () => Get.back(result: e))).toList());
+          title: "Grup Kodu Seçiniz",
+          children: grupKodList
+              .map((e) => BottomSheetModel(
+                  title: e.grupAdi ?? "", onTap: () => Get.back(result: e)))
+              .toList());
       if (result != null && result is BaseGrupKoduModel) {
         viewModel.changeDicParams(model.adi ?? "", result.grupKodu ?? "");
         viewModel.changeControllerText(model.adi ?? "", result.grupAdi ?? "");
       }
     } else if (model.numaraliGrupKoduMu) {
-      var grupKodList = await networkManager.getGrupKod(name: model.rehberTipi?.split("_").first ?? "", grupNo: int.tryParse(model.rehberTipi!.split("").last) ?? 0);
+      var grupKodList = await networkManager.getGrupKod(
+          name: model.rehberTipi?.split("_").first ?? "",
+          grupNo: int.tryParse(model.rehberTipi!.split("").last) ?? 0);
       var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-          title: "Grup Kodu Seçiniz", children: grupKodList.map((e) => BottomSheetModel(title: e.grupKodu ?? "", onTap: () => Get.back(result: e))).toList());
+          title: "Grup Kodu Seçiniz",
+          children: grupKodList
+              .map((e) => BottomSheetModel(
+                  title: e.grupKodu ?? "", onTap: () => Get.back(result: e)))
+              .toList());
       if (result != null) {
         viewModel.changeDicParams(model.adi ?? "", result.grupKodu ?? "");
       }
@@ -156,14 +215,22 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
       // var dovizList = CacheManager.getAnaVeri()?.paramModel?.dovizList ?? [];
       //  = await bottomSheetDialogManager.showBottomSheetDialog(context,
       //     title: "Döviz Seçiniz", children: dovizList.map((e) => BottomSheetModel(title: e.dovizKodu.toStringIfNotNull ?? "", onTap: () => Get.back(result: e))).toList());
-      var result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context);
+      var result =
+          await bottomSheetDialogManager.showDovizBottomSheetDialog(context);
       if (result != null) {
         viewModel.changeDicParams(model.adi ?? "", result.dovizKodu.toString());
       }
     } else if (model.muhasebeKoduMu) {
-      var muhasebeList = await networkManager.dioGet<StokMuhasebeKoduModel>(path: ApiUrls.getMuhasebeKodlari, bodyModel: StokMuhasebeKoduModel());
+      var muhasebeList = await networkManager.dioGet<StokMuhasebeKoduModel>(
+          path: ApiUrls.getMuhasebeKodlari, bodyModel: StokMuhasebeKoduModel());
       var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-          title: "Muhasebe Kodu Seçiniz", children: muhasebeList.data.map((e) => BottomSheetModel(title: e.muhKodu.toString(), onTap: () => Get.back(result: e))).toList().cast<BottomSheetModel>());
+          title: "Muhasebe Kodu Seçiniz",
+          children: muhasebeList.data
+              .map((e) => BottomSheetModel(
+                  title: e.muhKodu.toString(),
+                  onTap: () => Get.back(result: e)))
+              .toList()
+              .cast<BottomSheetModel>());
       if (result != null) {
         viewModel.changeDicParams(model.adi ?? "", result.muhKodu.toString());
       }
@@ -177,9 +244,15 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
 
   Future<void> getData() async {
     // dialogManager.showLoadingDialog("Lütfen Bekleyiniz");
-    var result = await networkManager.dioGet<SerbestRaporResponseModel>(path: ApiUrls.getDizaynParametreleri, bodyModel: SerbestRaporResponseModel(), queryParameters: {"ID": widget.dizaynList?.id});
+    var result = await networkManager.dioGet<SerbestRaporResponseModel>(
+        path: ApiUrls.getDizaynParametreleri,
+        bodyModel: SerbestRaporResponseModel(),
+        queryParameters: {"ID": widget.dizaynList?.id});
     if (result.success == true) {
-      viewModel.changeSerbestRaporResponseModelList(result.data.map((e) => e as SerbestRaporResponseModel).toList().cast<SerbestRaporResponseModel>());
+      viewModel.changeSerbestRaporResponseModelList(result.data
+          .map((e) => e as SerbestRaporResponseModel)
+          .toList()
+          .cast<SerbestRaporResponseModel>());
     }
     // dialogManager.hideAlertDialog;
   }

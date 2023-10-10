@@ -545,7 +545,7 @@ class DovizList {
 }
 
 @JsonSerializable(createFactory: true)
-class KasaList with NetworkManagerMixin{
+class KasaList with NetworkManagerMixin {
   KasaList();
 
   @JsonKey(name: "KASA_KODU")
@@ -591,6 +591,7 @@ class KasaList with NetworkManagerMixin{
   KasaList fromJson(Map<String, dynamic> json) {
     return _$KasaListFromJson(json);
   }
+
   @override
   Map<String, dynamic> toJson() {
     return _$KasaListToJson(this);

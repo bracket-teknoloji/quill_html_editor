@@ -1,12 +1,12 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "package:quill_html_editor/quill_html_editor.dart";
 
 import "../../../../../../../../core/base/model/base_edit_model.dart";
 // import "package:get/get.dart";
 // import "package:html_editor_enhanced/html_editor.dart";
 import "../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../siparisler/model/siparis_edit_request_model.dart";
 // import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../model/base_siparis_edit_model.dart";
@@ -17,7 +17,8 @@ class BaseSiparislerDigerView extends StatefulWidget {
   const BaseSiparislerDigerView({super.key, required this.model});
 
   @override
-  State<BaseSiparislerDigerView> createState() => _BaseSiparislerDigerViewState();
+  State<BaseSiparislerDigerView> createState() =>
+      _BaseSiparislerDigerViewState();
 }
 
 class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerView> {
@@ -61,17 +62,20 @@ class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerView> {
               inputAction: InputAction.newline,
               textStyle: const TextStyle(color: Colors.white),
               backgroundColor: theme.colorScheme.background,
-              onTextChanged: (text) => text != "" ? model.ekAciklama = text : null,
+              onTextChanged: (text) =>
+                  text != "" ? model.ekAciklama = text : null,
               onEditorCreated: () async {
                 if (model.ekAciklama != null) {
                   await controller.insertText(model.ekAciklama ?? "");
                 }
               },
               loadingBuilder: (context) {
-                return const Center(child: CircularProgressIndicator.adaptive());
+                return const Center(
+                    child: CircularProgressIndicator.adaptive());
               },
             ),
-          ).paddingSymmetric(vertical: UIHelper.midSize, horizontal: UIHelper.lowSize),
+          ).paddingSymmetric(
+              vertical: UIHelper.midSize, horizontal: UIHelper.lowSize),
         ),
         SafeArea(
           child: Visibility(
@@ -101,7 +105,8 @@ class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerView> {
                   ToolBarStyle.image,
                 ],
               ),
-            ).paddingSymmetric(vertical: UIHelper.midSize, horizontal: UIHelper.lowSize),
+            ).paddingSymmetric(
+                vertical: UIHelper.midSize, horizontal: UIHelper.lowSize),
           ),
         ),
       ],

@@ -5,19 +5,21 @@ import "yapilandirma_rehberi_model.dart";
 part "yapilandirma_profil_model.freezed.dart";
 part "yapilandirma_profil_model.g.dart";
 
-
 @unfreezed
-class YapilandirmaProfilModel with _$YapilandirmaProfilModel, NetworkManagerMixin {
-     YapilandirmaProfilModel._();
-     factory YapilandirmaProfilModel({
-        int? sira,
-        String? ozellikKodu,
-        String? aciklama,
-        List<YapilandirmaRehberiModel?>? deger,      
-    }) = _YapilandirmaProfilModel;
+class YapilandirmaProfilModel
+    with _$YapilandirmaProfilModel, NetworkManagerMixin {
+  YapilandirmaProfilModel._();
+  factory YapilandirmaProfilModel({
+    int? sira,
+    String? ozellikKodu,
+    String? aciklama,
+    List<YapilandirmaRehberiModel?>? deger,
+  }) = _YapilandirmaProfilModel;
 
-    factory YapilandirmaProfilModel.fromJson(Map<String, dynamic> json) => _$YapilandirmaProfilModelFromJson(json);
+  factory YapilandirmaProfilModel.fromJson(Map<String, dynamic> json) =>
+      _$YapilandirmaProfilModelFromJson(json);
 
-    @override
-    fromJson(Map<String, dynamic> json) => _$YapilandirmaProfilModelFromJson(json);
+  @override
+  fromJson(Map<String, dynamic> json) =>
+      _$YapilandirmaProfilModelFromJson(json);
 }

@@ -200,11 +200,11 @@ class _$KullaniciYetkiModelCopyWithImpl<$Res, $Val extends KullaniciYetkiModel>
 }
 
 /// @nodoc
-abstract class _$$_KullaniciYetkiModelCopyWith<$Res>
+abstract class _$$KullaniciYetkiModelImplCopyWith<$Res>
     implements $KullaniciYetkiModelCopyWith<$Res> {
-  factory _$$_KullaniciYetkiModelCopyWith(_$_KullaniciYetkiModel value,
-          $Res Function(_$_KullaniciYetkiModel) then) =
-      __$$_KullaniciYetkiModelCopyWithImpl<$Res>;
+  factory _$$KullaniciYetkiModelImplCopyWith(_$KullaniciYetkiModelImpl value,
+          $Res Function(_$KullaniciYetkiModelImpl) then) =
+      __$$KullaniciYetkiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -233,11 +233,11 @@ abstract class _$$_KullaniciYetkiModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_KullaniciYetkiModelCopyWithImpl<$Res>
-    extends _$KullaniciYetkiModelCopyWithImpl<$Res, _$_KullaniciYetkiModel>
-    implements _$$_KullaniciYetkiModelCopyWith<$Res> {
-  __$$_KullaniciYetkiModelCopyWithImpl(_$_KullaniciYetkiModel _value,
-      $Res Function(_$_KullaniciYetkiModel) _then)
+class __$$KullaniciYetkiModelImplCopyWithImpl<$Res>
+    extends _$KullaniciYetkiModelCopyWithImpl<$Res, _$KullaniciYetkiModelImpl>
+    implements _$$KullaniciYetkiModelImplCopyWith<$Res> {
+  __$$KullaniciYetkiModelImplCopyWithImpl(_$KullaniciYetkiModelImpl _value,
+      $Res Function(_$KullaniciYetkiModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -261,7 +261,7 @@ class __$$_KullaniciYetkiModelCopyWithImpl<$Res>
     Object? transferDATVarsayilanCikisDepo = freezed,
     Object? transferDATVarsayilanGirisDepo = freezed,
   }) {
-    return _then(_$_KullaniciYetkiModel(
+    return _then(_$KullaniciYetkiModelImpl(
       bagliPlasiyerler: freezed == bagliPlasiyerler
           ? _value._bagliPlasiyerler
           : bagliPlasiyerler // ignore: cast_nullable_to_non_nullable
@@ -337,8 +337,8 @@ class __$$_KullaniciYetkiModelCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(createFactory: true)
-class _$_KullaniciYetkiModel implements _KullaniciYetkiModel {
-  const _$_KullaniciYetkiModel(
+class _$KullaniciYetkiModelImpl implements _KullaniciYetkiModel {
+  const _$KullaniciYetkiModelImpl(
       {@JsonKey(name: "bagliPlasiyerler") final List<dynamic>? bagliPlasiyerler,
       @JsonKey(name: "eIrsOnEki") this.eIrsOnEki,
       @JsonKey(name: "eIrsAmbarOnEki") this.eIrsAmbarOnEki,
@@ -369,8 +369,8 @@ class _$_KullaniciYetkiModel implements _KullaniciYetkiModel {
         _hizliTahsilatSozlesmeKodlari = hizliTahsilatSozlesmeKodlari,
         _siparisMusSipEkstraAlanlar = siparisMusSipEkstraAlanlar;
 
-  factory _$_KullaniciYetkiModel.fromJson(Map<String, dynamic> json) =>
-      _$$_KullaniciYetkiModelFromJson(json);
+  factory _$KullaniciYetkiModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$KullaniciYetkiModelImplFromJson(json);
 
   final List<dynamic>? _bagliPlasiyerler;
   @override
@@ -493,7 +493,7 @@ class _$_KullaniciYetkiModel implements _KullaniciYetkiModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_KullaniciYetkiModel &&
+            other is _$KullaniciYetkiModelImpl &&
             const DeepCollectionEquality()
                 .equals(other._bagliPlasiyerler, _bagliPlasiyerler) &&
             (identical(other.eIrsOnEki, eIrsOnEki) ||
@@ -562,13 +562,13 @@ class _$_KullaniciYetkiModel implements _KullaniciYetkiModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_KullaniciYetkiModelCopyWith<_$_KullaniciYetkiModel> get copyWith =>
-      __$$_KullaniciYetkiModelCopyWithImpl<_$_KullaniciYetkiModel>(
+  _$$KullaniciYetkiModelImplCopyWith<_$KullaniciYetkiModelImpl> get copyWith =>
+      __$$KullaniciYetkiModelImplCopyWithImpl<_$KullaniciYetkiModelImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_KullaniciYetkiModelToJson(
+    return _$$KullaniciYetkiModelImplToJson(
       this,
     );
   }
@@ -597,10 +597,10 @@ abstract class _KullaniciYetkiModel implements KullaniciYetkiModel {
       @JsonKey(name: "transfer_DAT_VarsayilanCikisDepo")
       final int? transferDATVarsayilanCikisDepo,
       @JsonKey(name: "transfer_DAT_VarsayilanGirisDepo")
-      final int? transferDATVarsayilanGirisDepo}) = _$_KullaniciYetkiModel;
+      final int? transferDATVarsayilanGirisDepo}) = _$KullaniciYetkiModelImpl;
 
   factory _KullaniciYetkiModel.fromJson(Map<String, dynamic> json) =
-      _$_KullaniciYetkiModel.fromJson;
+      _$KullaniciYetkiModelImpl.fromJson;
 
   @override
   @JsonKey(name: "bagliPlasiyerler")
@@ -655,6 +655,6 @@ abstract class _KullaniciYetkiModel implements KullaniciYetkiModel {
   int? get transferDATVarsayilanGirisDepo;
   @override
   @JsonKey(ignore: true)
-  _$$_KullaniciYetkiModelCopyWith<_$_KullaniciYetkiModel> get copyWith =>
+  _$$KullaniciYetkiModelImplCopyWith<_$KullaniciYetkiModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -210,11 +210,11 @@ class _$BankaIslemleriModelCopyWithImpl<$Res, $Val extends BankaIslemleriModel>
 }
 
 /// @nodoc
-abstract class _$$_BankaIslemleriModelCopyWith<$Res>
+abstract class _$$BankaIslemleriModelImplCopyWith<$Res>
     implements $BankaIslemleriModelCopyWith<$Res> {
-  factory _$$_BankaIslemleriModelCopyWith(_$_BankaIslemleriModel value,
-          $Res Function(_$_BankaIslemleriModel) then) =
-      __$$_BankaIslemleriModelCopyWithImpl<$Res>;
+  factory _$$BankaIslemleriModelImplCopyWith(_$BankaIslemleriModelImpl value,
+          $Res Function(_$BankaIslemleriModelImpl) then) =
+      __$$BankaIslemleriModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -239,11 +239,11 @@ abstract class _$$_BankaIslemleriModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_BankaIslemleriModelCopyWithImpl<$Res>
-    extends _$BankaIslemleriModelCopyWithImpl<$Res, _$_BankaIslemleriModel>
-    implements _$$_BankaIslemleriModelCopyWith<$Res> {
-  __$$_BankaIslemleriModelCopyWithImpl(_$_BankaIslemleriModel _value,
-      $Res Function(_$_BankaIslemleriModel) _then)
+class __$$BankaIslemleriModelImplCopyWithImpl<$Res>
+    extends _$BankaIslemleriModelCopyWithImpl<$Res, _$BankaIslemleriModelImpl>
+    implements _$$BankaIslemleriModelImplCopyWith<$Res> {
+  __$$BankaIslemleriModelImplCopyWithImpl(_$BankaIslemleriModelImpl _value,
+      $Res Function(_$BankaIslemleriModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -268,7 +268,7 @@ class __$$_BankaIslemleriModelCopyWithImpl<$Res>
     Object? bankasubeKodu = freezed,
     Object? subeAdi = freezed,
   }) {
-    return _then(_$_BankaIslemleriModel(
+    return _then(_$BankaIslemleriModelImpl(
       inckeyno: freezed == inckeyno
           ? _value.inckeyno
           : inckeyno // ignore: cast_nullable_to_non_nullable
@@ -347,8 +347,8 @@ class __$$_BankaIslemleriModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_BankaIslemleriModel extends _BankaIslemleriModel {
-  _$_BankaIslemleriModel(
+class _$BankaIslemleriModelImpl extends _BankaIslemleriModel {
+  _$BankaIslemleriModelImpl(
       {this.inckeyno,
       this.netheskodu,
       this.tarih,
@@ -369,8 +369,8 @@ class _$_BankaIslemleriModel extends _BankaIslemleriModel {
       this.subeAdi})
       : super._();
 
-  factory _$_BankaIslemleriModel.fromJson(Map<String, dynamic> json) =>
-      _$$_BankaIslemleriModelFromJson(json);
+  factory _$BankaIslemleriModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BankaIslemleriModelImplFromJson(json);
 
 // int? inckeyno,
 // int? caharInckeyno,
@@ -440,13 +440,13 @@ class _$_BankaIslemleriModel extends _BankaIslemleriModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BankaIslemleriModelCopyWith<_$_BankaIslemleriModel> get copyWith =>
-      __$$_BankaIslemleriModelCopyWithImpl<_$_BankaIslemleriModel>(
+  _$$BankaIslemleriModelImplCopyWith<_$BankaIslemleriModelImpl> get copyWith =>
+      __$$BankaIslemleriModelImplCopyWithImpl<_$BankaIslemleriModelImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BankaIslemleriModelToJson(
+    return _$$BankaIslemleriModelImplToJson(
       this,
     );
   }
@@ -471,11 +471,11 @@ abstract class _BankaIslemleriModel extends BankaIslemleriModel {
       final String? bankaKodu,
       final String? bankaAdi,
       final String? bankasubeKodu,
-      final String? subeAdi}) = _$_BankaIslemleriModel;
+      final String? subeAdi}) = _$BankaIslemleriModelImpl;
   _BankaIslemleriModel._() : super._();
 
   factory _BankaIslemleriModel.fromJson(Map<String, dynamic> json) =
-      _$_BankaIslemleriModel.fromJson;
+      _$BankaIslemleriModelImpl.fromJson;
 
   @override // int? inckeyno,
 // int? caharInckeyno,
@@ -542,6 +542,6 @@ abstract class _BankaIslemleriModel extends BankaIslemleriModel {
   String? get subeAdi;
   @override
   @JsonKey(ignore: true)
-  _$$_BankaIslemleriModelCopyWith<_$_BankaIslemleriModel> get copyWith =>
+  _$$BankaIslemleriModelImplCopyWith<_$BankaIslemleriModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,9 +1,9 @@
-
 import "package:mobx/mobx.dart";
 
 part "cari_aktivite_view_model.g.dart";
 
-class CariAktiviteViewModel = _CariAktiviteViewModelBase with _$CariAktiviteViewModel;
+class CariAktiviteViewModel = _CariAktiviteViewModelBase
+    with _$CariAktiviteViewModel;
 
 abstract class _CariAktiviteViewModelBase with Store {
   @observable
@@ -13,5 +13,4 @@ abstract class _CariAktiviteViewModelBase with Store {
   void changeSearch() {
     isSearch = !isSearch;
   }
-  
 }

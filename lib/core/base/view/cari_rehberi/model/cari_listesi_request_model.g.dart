@@ -6,9 +6,9 @@ part of 'cari_listesi_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CariListesiRequestModel _$$_CariListesiRequestModelFromJson(
+_$CariListesiRequestModelImpl _$$CariListesiRequestModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CariListesiRequestModel(
+    _$CariListesiRequestModelImpl(
       eFaturaGoster: json['EFaturaGoster'] as bool?,
       siralama: json['SIRALAMA'] as String?,
       sayfa: json['Sayfa'] as int?,
@@ -43,8 +43,8 @@ _$_CariListesiRequestModel _$$_CariListesiRequestModelFromJson(
       sehir: json['Sehir'] as String?,
     );
 
-Map<String, dynamic> _$$_CariListesiRequestModelToJson(
-    _$_CariListesiRequestModel instance) {
+Map<String, dynamic> _$$CariListesiRequestModelImplToJson(
+    _$CariListesiRequestModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

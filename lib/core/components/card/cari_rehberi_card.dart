@@ -24,22 +24,42 @@ class _CariRehberiCardState extends BaseState<CariRehberiCard> {
       child: ListTile(
         isThreeLine: true,
         contentPadding: UIHelper.midPadding,
-        onTap: () => widget.onPressed != null ? widget.onPressed!(model) : Get.back(result: widget.model),
+        onTap: () => widget.onPressed != null
+            ? widget.onPressed!(model)
+            : Get.back(result: widget.model),
         onLongPress: () => dialogManager.showCariGridViewDialog(model),
-        leading: CircleAvatar(backgroundColor: UIHelper.getColorWithValue(model.bakiye ?? 0.0), child: Text(model.cariAdi?.substring(0, 1) ?? "")),
+        leading: CircleAvatar(
+            backgroundColor: UIHelper.getColorWithValue(model.bakiye ?? 0.0),
+            child: Text(model.cariAdi?.substring(0, 1) ?? "")),
         title: Text(model.cariAdi ?? ""),
         subtitle: Wrap(
           direction: Axis.vertical,
           alignment: WrapAlignment.spaceBetween,
           children: [
-            Text("${model.cariKodu}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))),
-            model.cariIl != null ? Text("${model.cariIl}/${model.cariIlce}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))) : const SizedBox(),
+            Text("${model.cariKodu}",
+                style: TextStyle(
+                    color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))),
+            model.cariIl != null
+                ? Text("${model.cariIl}/${model.cariIlce}",
+                    style: TextStyle(
+                        color:
+                            theme.textTheme.bodySmall?.color?.withOpacity(0.5)))
+                : const SizedBox(),
             Row(
               children: [
-                model.efaturaMi == true ? const Badge(label: Text(("E-Fatura"))) : const SizedBox(),
-                model.boylam != null && model.enlem != null ? const Badge(label: Text(("Konum"))) : const SizedBox(),
-                model.dovizli == true ? Badge(label: Text(("Dövizli ${model.dovizAdi}"))) : const SizedBox(),
-              ].map((e) => e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize)).toList(),
+                model.efaturaMi == true
+                    ? const Badge(label: Text(("E-Fatura")))
+                    : const SizedBox(),
+                model.boylam != null && model.enlem != null
+                    ? const Badge(label: Text(("Konum")))
+                    : const SizedBox(),
+                model.dovizli == true
+                    ? Badge(label: Text(("Dövizli ${model.dovizAdi}")))
+                    : const SizedBox(),
+              ]
+                  .map((e) => e.paddingOnly(
+                      top: UIHelper.lowSize, right: UIHelper.lowSize))
+                  .toList(),
             ),
           ],
         ),
@@ -50,7 +70,8 @@ class _CariRehberiCardState extends BaseState<CariRehberiCard> {
                       : "${model.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"
                           "\n")
                   .toString(),
-              style: TextStyle(color: UIHelper.getColorWithValue(model.bakiye ?? 0.0)))
+              style: TextStyle(
+                  color: UIHelper.getColorWithValue(model.bakiye ?? 0.0)))
         ]),
       ),
     );

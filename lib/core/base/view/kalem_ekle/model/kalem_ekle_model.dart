@@ -7,5 +7,6 @@ class KalemEkleModel {
   String? searchText;
   StokListesiModel? stokListesiModel;
 
-  KalemEkleModel({required this.kalemEditEnum,this.searchText, this.stokListesiModel});
+  KalemEkleModel(
+      {required this.kalemEditEnum, this.searchText, this.stokListesiModel});
 }

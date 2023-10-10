@@ -6,9 +6,9 @@ part of 'banka_sozlesmesi_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_BankaSozlesmesiModel _$$_BankaSozlesmesiModelFromJson(
+_$BankaSozlesmesiModelImpl _$$BankaSozlesmesiModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_BankaSozlesmesiModel(
+    _$BankaSozlesmesiModelImpl(
       sozlesmeKodu: json['SOZLESME_KODU'] as String?,
       sozlesmeAdi: json['SOZLESME_ADI'] as String?,
       krediKartiTanimi: json['KREDI_KARTI_TANIMI'] as String?,
@@ -21,8 +21,8 @@ _$_BankaSozlesmesiModel _$$_BankaSozlesmesiModelFromJson(
           : DateTime.parse(json['BITIS_TARIHI'] as String),
     );
 
-Map<String, dynamic> _$$_BankaSozlesmesiModelToJson(
-    _$_BankaSozlesmesiModel instance) {
+Map<String, dynamic> _$$BankaSozlesmesiModelImplToJson(
+    _$BankaSozlesmesiModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

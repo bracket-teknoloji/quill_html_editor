@@ -42,7 +42,10 @@ extension YetkiExtension on Widget {
 
 extension YetkiExtension2 on dynamic {
   Object? isDebug() {
-    return (CacheManager.getHesapBilgileri?.uyeEmail == "destek@netfect.com" || kDebugMode) ? this : null;
+    return (CacheManager.getHesapBilgileri?.uyeEmail == "destek@netfect.com" ||
+            kDebugMode)
+        ? this
+        : null;
   }
 }
 

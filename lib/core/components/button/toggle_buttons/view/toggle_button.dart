@@ -28,7 +28,10 @@ class _ToggleButtonState extends BaseState<ToggleButton> {
   Widget build(BuildContext context) {
     return ToggleButtons(
       direction: Axis.horizontal,
-      constraints: BoxConstraints(minWidth: ((context.isPortrait ? width : 600) * 0.2) / viewModel.title.length, minHeight: height * 0.05),
+      constraints: BoxConstraints(
+          minWidth: ((context.isPortrait ? width : 600) * 0.2) /
+              viewModel.title.length,
+          minHeight: height * 0.05),
       isSelected: viewModel.isSelected,
       children: List.generate(viewModel.title.length, (index) {
         return Padding(
@@ -40,7 +43,7 @@ class _ToggleButtonState extends BaseState<ToggleButton> {
       }),
       onPressed: (index) {
         viewModel.changeIsSelected(index);
-       
+
         ToggleButton.selected = viewModel.title[index];
       },
     );

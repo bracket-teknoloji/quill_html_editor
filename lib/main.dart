@@ -10,18 +10,18 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_islemleri/view/banka_islemleri_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/view/kasa_dekontlar_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/hizli_islemler/kredi_karti_tahsilati/view/kredi_karti_tahsilati_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/hizli_islemler/nakit_tahsilat/view/nakit_tahsilat_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_hareketleri/view/kasa_hareketleri_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/view/kasa_islemleri_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_listesi/view/kasa_listesi_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_transferi/view/kasa_transferi_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/kasa/raporlar/kasa_ekstre_raporu/view/kasa_ekstre_raporu_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_widget_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/yazdir/view/stok_yazdir_view.dart";
+import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
+import "view/main_page/alt_sayfalar/finans/banka/banka_islemleri/view/banka_islemleri_view.dart";
+import "view/main_page/alt_sayfalar/finans/dekontlar/view/kasa_dekontlar_view.dart";
+import "view/main_page/alt_sayfalar/finans/hizli_islemler/kredi_karti_tahsilati/view/kredi_karti_tahsilati_view.dart";
+import "view/main_page/alt_sayfalar/finans/hizli_islemler/nakit_tahsilat/view/nakit_tahsilat_view.dart";
+import "view/main_page/alt_sayfalar/finans/kasa/kasa_hareketleri/view/kasa_hareketleri_view.dart";
+import "view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/view/kasa_islemleri_view.dart";
+import "view/main_page/alt_sayfalar/finans/kasa/kasa_listesi/view/kasa_listesi_view.dart";
+import "view/main_page/alt_sayfalar/finans/kasa/kasa_transferi/view/kasa_transferi_view.dart";
+import "view/main_page/alt_sayfalar/finans/kasa/raporlar/kasa_ekstre_raporu/view/kasa_ekstre_raporu_view.dart";
+import "view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_widget_model.dart";
+import "view/main_page/alt_sayfalar/stok/yazdir/view/stok_yazdir_view.dart";
 
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
 import "core/base/view/kalem_ekle/model/kalem_ekle_model.dart";
@@ -83,10 +83,15 @@ void main() async {
   //* AccountModel'i splashAuthView'da init ediyoruz.
   // await AccountModel.instance.init();
   //* Firebase Crashlytics
-  WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) async => await firebaseInitialized());
+  WidgetsFlutterBinding.ensureInitialized()
+      .addPostFrameCallback((timeStamp) async => await firebaseInitialized());
 
   //* Screen Orientation
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]).then((_) {
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.landscapeRight,
+    DeviceOrientation.landscapeLeft
+  ]).then((_) {
     runApp(const PickerApp());
     //* Network Dependency Injection (Uygulamanın internet bağlantısı olup olmadığını kontrol ediyoruz.)
     NetworkDependencyInjection.init();
@@ -106,110 +111,232 @@ class PickerApp extends StatelessWidget {
       locale: Get.deviceLocale,
       fallbackLocale: const Locale("en"),
       supportedLocales: const [Locale("tr"), Locale("en")],
-      localizationsDelegates: const [GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate, GlobalMaterialLocalizations.delegate],
-      scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: {PointerDeviceKind.touch, PointerDeviceKind.mouse, PointerDeviceKind.stylus, PointerDeviceKind.unknown}),
+      localizationsDelegates: const [
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate
+      ],
+      scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+        PointerDeviceKind.stylus,
+        PointerDeviceKind.unknown
+      }),
       opaqueRoute: false,
       darkTheme: AppThemeDark.instance?.theme,
       themeMode: ThemeMode.dark,
       home: const SplashAuthView(),
       getPages: [
         GetPage(name: "/login", page: () => const LoginView()),
-        GetPage(name: "/entryCompany", page: () => EntryCompanyView(isSplash: Get.arguments)),
+        GetPage(
+            name: "/entryCompany",
+            page: () => EntryCompanyView(isSplash: Get.arguments)),
         GetPage(name: "/addCompany", page: () => const AccountsView()),
         GetPage(name: "/addAccount", page: () => const AddAccountView()),
         GetPage(name: "/qr", page: () => const QRScannerView()),
         GetPage(name: "/dovizKurlari", page: () => const DovizKurlariView()),
         GetPage(
-            name: "/kalemEkle", page: () => KalemEkleView(stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null, kalemModel: Get.arguments is KalemModel ? Get.arguments : null)),
+            name: "/kalemEkle",
+            page: () => KalemEkleView(
+                stokListesiModel:
+                    Get.arguments is StokListesiModel ? Get.arguments : null,
+                kalemModel:
+                    Get.arguments is KalemModel ? Get.arguments : null)),
         GetPage(
           name: "/mainPage",
           page: () => const MainPageView(),
           children: [
             //* Cari
-            GetPage(name: "/cariListesi", page: () => CariListesiView(isGetData: Get.arguments)),
-            GetPage(name: "/cariRehberi", page: () => CariRehberiView(cariKodu: Get.arguments)),
-            GetPage(name: "/cariEdit", page: () => BaseCariEditingView(model: Get.arguments)),
-            GetPage(name: "/cariHareketleri", page: () => CariHareketleriView(cari: Get.arguments)),
-            GetPage(name: "/cariYeniKayit", page: () => CariYeniKayitView(model: Get.arguments)),
+            GetPage(
+                name: "/cariListesi",
+                page: () => CariListesiView(isGetData: Get.arguments)),
+            GetPage(
+                name: "/cariRehberi",
+                page: () => CariRehberiView(cariKodu: Get.arguments)),
+            GetPage(
+                name: "/cariEdit",
+                page: () => BaseCariEditingView(model: Get.arguments)),
+            GetPage(
+                name: "/cariHareketleri",
+                page: () => CariHareketleriView(cari: Get.arguments)),
+            GetPage(
+                name: "/cariYeniKayit",
+                page: () => CariYeniKayitView(model: Get.arguments)),
 
             //* Cari Raporları
-            GetPage(name: "/cariEkstre", page: () => CariEkstreView(model: Get.arguments)),
-            GetPage(name: "/cariDovizliEkstre", page: () => CariDovizliEkstreView(model: Get.arguments)),
-            GetPage(name: "/cariStokEkstre", page: () => StokEkstreView(model: Get.arguments)),
-            GetPage(name: "/cariYaslandirmaRaporu", page: () => YaslandirmaRaporuView(model: Get.arguments)),
-            GetPage(name: "/cariDovizBakiyeRaporu", page: () => DovizBakiyeRaporuView(model: Get.arguments)),
-            GetPage(name: "/cariHareketRaporu", page: () => CariHareketRaporuView(model: Get.arguments)),
-            GetPage(name: "/cariHareketDetayliYaslandirmaRaporu", page: () => HareketDetayliYaslandirmaRaporuView(model: Get.arguments)),
-            GetPage(name: "/cariStokSatisOzeti", page: () => CariStokSatisOzetiView(model: Get.arguments)),
+            GetPage(
+                name: "/cariEkstre",
+                page: () => CariEkstreView(model: Get.arguments)),
+            GetPage(
+                name: "/cariDovizliEkstre",
+                page: () => CariDovizliEkstreView(model: Get.arguments)),
+            GetPage(
+                name: "/cariStokEkstre",
+                page: () => StokEkstreView(model: Get.arguments)),
+            GetPage(
+                name: "/cariYaslandirmaRaporu",
+                page: () => YaslandirmaRaporuView(model: Get.arguments)),
+            GetPage(
+                name: "/cariDovizBakiyeRaporu",
+                page: () => DovizBakiyeRaporuView(model: Get.arguments)),
+            GetPage(
+                name: "/cariHareketRaporu",
+                page: () => CariHareketRaporuView(model: Get.arguments)),
+            GetPage(
+                name: "/cariHareketDetayliYaslandirmaRaporu",
+                page: () =>
+                    HareketDetayliYaslandirmaRaporuView(model: Get.arguments)),
+            GetPage(
+                name: "/cariStokSatisOzeti",
+                page: () => CariStokSatisOzetiView(model: Get.arguments)),
 
             //* Finans
-            
+
             // * * Banka
             // GetPage(name: "/bankaListesi", page: () => const BankaListesiView()),
-            GetPage(name: "/bankaIslemleri", page: () => const BankaIslemleriView()),
+            GetPage(
+                name: "/bankaIslemleri",
+                page: () => const BankaIslemleriView()),
 
             //* * Kasa
-            GetPage(name: "/kasaHareketleri", page: () =>  KasaHareketleriView(model: Get.arguments)),
+            GetPage(
+                name: "/kasaHareketleri",
+                page: () => KasaHareketleriView(model: Get.arguments)),
             GetPage(name: "/kasaListesi", page: () => const KasaListesiView()),
-            GetPage(name: "/kasaDekontlari", page: () => const KasaDekontlarView()),
-            GetPage(name: "/kasaIslemleri", page: () => const KasaIslemleriView()),
-            GetPage(name: "/kasaTransferi", page: () => const KasaTransferiView()),
-            GetPage(name: "/kasaKasaEkstreRaporu", page: () => const KasaEkstreRaporuView()),
+            GetPage(
+                name: "/kasaDekontlari", page: () => const KasaDekontlarView()),
+            GetPage(
+                name: "/kasaIslemleri", page: () => const KasaIslemleriView()),
+            GetPage(
+                name: "/kasaTransferi", page: () => const KasaTransferiView()),
+            GetPage(
+                name: "/kasaKasaEkstreRaporu",
+                page: () => const KasaEkstreRaporuView()),
 
             //* * Hızlı İşlemler
-            GetPage(name: "/krediKartiTahsilati", page: () => const KrediKartiTahsilatiView()),
-            GetPage(name: "/nakitTahsilat", page: () => const NakitTahsilatView()),
-
+            GetPage(
+                name: "/krediKartiTahsilati",
+                page: () => const KrediKartiTahsilatiView()),
+            GetPage(
+                name: "/nakitTahsilat", page: () => const NakitTahsilatView()),
 
             //* Sipariş
-            GetPage(name: "/siparisMusteriSiparisi", page: () => SiparislerView(widgetModel: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.musteri, isGetData: Get.arguments))),
-            GetPage(name: "/siparisSaticiSiparisi", page: () => SiparislerView(widgetModel: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.satici, isGetData: Get.arguments))),
-            GetPage(name: "/siparisEdit", page: () => BaseSiparisEditingView(model: Get.arguments)),
-            GetPage(name: "/siparisMusteriSiparisiDurumRaporu", page: () => const SiparisDurumRaporuView(siparisTipiEnum: SiparisTipiEnum.musteri)),
-            GetPage(name: "/siparisSaticiSiparisiDurumRaporu", page: () => const SiparisDurumRaporuView(siparisTipiEnum: SiparisTipiEnum.satici)),
-            GetPage(name: "/siparisStokIhtiyacRaporu", page: () => StokIhtiyacRaporuView(model: Get.arguments as BaseSiparisEditModel?)),
-            GetPage(name: "/siparisMusteriSiparisiTeslimRaporu", page: () => SiparisTeslimRaporuView(siparisTipiEnum: SiparisTipiEnum.musteri, baseSiparisEditModel: Get.arguments)),
-            GetPage(name: "/siparisSaticiSiparisiTeslimRaporu", page: () => SiparisTeslimRaporuView(siparisTipiEnum: SiparisTipiEnum.satici, baseSiparisEditModel: Get.arguments)),
-            GetPage(name: "/siparisSiparisKarlilikRaporu", page: () => SiparisKarlilikRaporuView(model: Get.arguments)),
+            GetPage(
+                name: "/siparisMusteriSiparisi",
+                page: () => SiparislerView(
+                    widgetModel: SiparislerWidgetModel(
+                        siparisTipiEnum: SiparisTipiEnum.musteri,
+                        isGetData: Get.arguments))),
+            GetPage(
+                name: "/siparisSaticiSiparisi",
+                page: () => SiparislerView(
+                    widgetModel: SiparislerWidgetModel(
+                        siparisTipiEnum: SiparisTipiEnum.satici,
+                        isGetData: Get.arguments))),
+            GetPage(
+                name: "/siparisEdit",
+                page: () => BaseSiparisEditingView(model: Get.arguments)),
+            GetPage(
+                name: "/siparisMusteriSiparisiDurumRaporu",
+                page: () => const SiparisDurumRaporuView(
+                    siparisTipiEnum: SiparisTipiEnum.musteri)),
+            GetPage(
+                name: "/siparisSaticiSiparisiDurumRaporu",
+                page: () => const SiparisDurumRaporuView(
+                    siparisTipiEnum: SiparisTipiEnum.satici)),
+            GetPage(
+                name: "/siparisStokIhtiyacRaporu",
+                page: () => StokIhtiyacRaporuView(
+                    model: Get.arguments as BaseSiparisEditModel?)),
+            GetPage(
+                name: "/siparisMusteriSiparisiTeslimRaporu",
+                page: () => SiparisTeslimRaporuView(
+                    siparisTipiEnum: SiparisTipiEnum.musteri,
+                    baseSiparisEditModel: Get.arguments)),
+            GetPage(
+                name: "/siparisSaticiSiparisiTeslimRaporu",
+                page: () => SiparisTeslimRaporuView(
+                    siparisTipiEnum: SiparisTipiEnum.satici,
+                    baseSiparisEditModel: Get.arguments)),
+            GetPage(
+                name: "/siparisSiparisKarlilikRaporu",
+                page: () => SiparisKarlilikRaporuView(model: Get.arguments)),
 
             //* Stok
             GetPage(
                 name: "/stokListesi",
                 page: () => StokListesiView(
-                    isGetData: Get.arguments is bool ? Get.arguments : (Get.arguments is KalemEkleModel ? Get.arguments.getArguments : null),
-                    searchText: Get.arguments is KalemEkleModel ? Get.arguments.searchText : null)),
+                    isGetData: Get.arguments is bool
+                        ? Get.arguments
+                        : (Get.arguments is KalemEkleModel
+                            ? Get.arguments.getArguments
+                            : null),
+                    searchText: Get.arguments is KalemEkleModel
+                        ? Get.arguments.searchText
+                        : null)),
             GetPage(name: "/stokFiyatGor", page: () => const FiyatGorView()),
-            GetPage(name: "/stokYazdir", page: () => StokYazdirView(model: Get.arguments)),
-            GetPage(name: "/stokFiyatGecmisi", page: () => const FiyatGecmisiView()),
+            GetPage(
+                name: "/stokYazdir",
+                page: () => StokYazdirView(model: Get.arguments)),
+            GetPage(
+                name: "/stokFiyatGecmisi",
+                page: () => const FiyatGecmisiView()),
 
-            GetPage(name: "/stokEdit", page: () => BaseStokEditingView(model: Get.arguments)),
-            GetPage(name: "/stokRehberi", page: () => StokRehberiView(searchText: Get.arguments)),
-            GetPage(name: "/yapilandirmaRehberi", page: () => YapilandirmaRehberiView(model: Get.arguments)),
+            GetPage(
+                name: "/stokEdit",
+                page: () => BaseStokEditingView(model: Get.arguments)),
+            GetPage(
+                name: "/stokRehberi",
+                page: () => StokRehberiView(searchText: Get.arguments)),
+            GetPage(
+                name: "/yapilandirmaRehberi",
+                page: () => YapilandirmaRehberiView(model: Get.arguments)),
             GetPage(
               name: "/stokHareketleri",
               page: () => StokHareketleriView(
-                  model: Get.arguments is StokListesiModel ? Get.arguments : null,
+                  model:
+                      Get.arguments is StokListesiModel ? Get.arguments : null,
                   stokKodu: Get.arguments is String ? Get.arguments : null,
-                  cariModel: Get.arguments is CariListesiModel ? Get.arguments : null),
+                  cariModel:
+                      Get.arguments is CariListesiModel ? Get.arguments : null),
             ),
-            GetPage(name: "/StokYeniKayitView", page: () => StokYeniKayitView(model: Get.arguments)),
+            GetPage(
+                name: "/StokYeniKayitView",
+                page: () => StokYeniKayitView(model: Get.arguments)),
 
             //* Stok Raporları
-            GetPage(name: "/stokAmbarMaliyetRaporu", page: () => AmbarMaliyetRaporuView(model: Get.arguments)),
-            GetPage(name: "/stokLokalDepoBakiyeRaporu", page: () => LokalDepoBakiyeRaporuView(model: Get.arguments)),
-            GetPage(name: "/urunGrubunaGoreSatisGrafigi", page: () => UrunGrubunaGoreSatisGrafigiView(model: Get.arguments is CariListesiModel ? Get.arguments : null)),
+            GetPage(
+                name: "/stokAmbarMaliyetRaporu",
+                page: () => AmbarMaliyetRaporuView(model: Get.arguments)),
+            GetPage(
+                name: "/stokLokalDepoBakiyeRaporu",
+                page: () => LokalDepoBakiyeRaporuView(model: Get.arguments)),
+            GetPage(
+                name: "/urunGrubunaGoreSatisGrafigi",
+                page: () => UrunGrubunaGoreSatisGrafigiView(
+                    model: Get.arguments is CariListesiModel
+                        ? Get.arguments
+                        : null)),
 
             //* Profil
-            GetPage(name: "/temsilciProfil", page: () => const TemsilciProfilView()),
+            GetPage(
+                name: "/temsilciProfil",
+                page: () => const TemsilciProfilView()),
 
             //* Serbest Raporlar
             //*
             GetPage(
                 name: "/serbestRaporlar",
                 page: () => SerbestRaporlarView(
-                    dizaynList: Get.arguments is NetFectDizaynList ? Get.arguments : null,
-                    cariListesiModel: Get.arguments is CariListesiModel ? Get.arguments : null,
-                    stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null)),
+                    dizaynList: Get.arguments is NetFectDizaynList
+                        ? Get.arguments
+                        : null,
+                    cariListesiModel: Get.arguments is CariListesiModel
+                        ? Get.arguments
+                        : null,
+                    stokListesiModel: Get.arguments is StokListesiModel
+                        ? Get.arguments
+                        : null)),
           ],
         ),
       ],
@@ -219,19 +346,30 @@ class PickerApp extends StatelessWidget {
 
 Future<void> firebaseInitialized() async {
   if (kIsWeb || Platform.isWindows || kDebugMode) return;
-  if (!Platform.isWindows && (await AppTrackingTransparency.requestTrackingAuthorization() == TrackingStatus.authorized || !Platform.isIOS || !Platform.isMacOS)) {
-    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  if (!Platform.isWindows &&
+      (await AppTrackingTransparency.requestTrackingAuthorization() ==
+              TrackingStatus.authorized ||
+          !Platform.isIOS ||
+          !Platform.isMacOS)) {
+    await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform);
     FirebaseMessaging messaging = FirebaseMessaging.instance;
     await messaging.requestPermission();
-    messaging.setForegroundNotificationPresentationOptions(sound: true, alert: true, badge: true);
+    messaging.setForegroundNotificationPresentationOptions(
+        sound: true, alert: true, badge: true);
     // FirebaseMessaging.onMessageOpenedApp.listen((event) => print(event.toMap().toString()));
     // messaging.getNotificationSettings().then((value) => print(value.authorizationStatus));
     // FirebaseMessaging.onBackgroundMessage((message) async => print(message));
-    FirebaseCrashlytics.instance.setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");
-    FlutterError.onError = (errorDetails) => FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+    FirebaseCrashlytics.instance
+        .setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");
+    FlutterError.onError = (errorDetails) =>
+        FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
     PlatformDispatcher.instance.onError = (error, stack) {
-      AccountModel.instance.toJson().forEach((key, value) => value != null ? FirebaseCrashlytics.instance.setCustomKey(key, value) : null);
-      FirebaseCrashlytics.instance.setCustomKey("new version", AppInfoModel.instance.version ?? "");
+      AccountModel.instance.toJson().forEach((key, value) => value != null
+          ? FirebaseCrashlytics.instance.setCustomKey(key, value)
+          : null);
+      FirebaseCrashlytics.instance
+          .setCustomKey("new version", AppInfoModel.instance.version ?? "");
       FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
       return true;
     };

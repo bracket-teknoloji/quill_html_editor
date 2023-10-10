@@ -4,13 +4,13 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "../../../../../../../core/base/state/base_state.dart";
-import "package:picker/core/components/bottom_bar/bottom_bar.dart";
-import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
-import "package:picker/core/components/card/banka_islemleri_card.dart";
-import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
-import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
-import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
+import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";
+import "../../../../../../../core/components/button/elevated_buttons/footer_button.dart";
+import "../../../../../../../core/components/card/banka_islemleri_card.dart";
+import "../../../../../../../core/components/floating_action_button/custom_floating_action_button.dart";
+import "../../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
+import "../../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
+import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
@@ -43,13 +43,16 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getData();
       _scrollController.addListener(() async {
-        if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
+        if (_scrollController.position.userScrollDirection ==
+            ScrollDirection.reverse) {
           viewModel.setIsScrollDown(false);
         }
-        if (_scrollController.position.userScrollDirection == ScrollDirection.forward) {
+        if (_scrollController.position.userScrollDirection ==
+            ScrollDirection.forward) {
           viewModel.setIsScrollDown(true);
         }
-        if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+        if (_scrollController.position.pixels ==
+            _scrollController.position.maxScrollExtent) {
           viewModel.setIsScrollDown(true);
         }
       });
@@ -85,13 +88,18 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
               onChanged: (value) => viewModel.setSearchText(value),
             );
           } else {
-            return AppBarTitle(title: "Banka İşlemleri", subtitle: "${viewModel.getBankaIslemleriListesi?.length ?? 0}");
+            return AppBarTitle(
+                title: "Banka İşlemleri",
+                subtitle: "${viewModel.getBankaIslemleriListesi?.length ?? 0}");
           }
         }),
         actions: [
           IconButton(
             onPressed: () => viewModel.changeSearchBar(),
-            icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)),
+            icon: Observer(
+                builder: (_) => Icon(viewModel.searchBar
+                    ? Icons.search_off_outlined
+                    : Icons.search_outlined)),
           ),
           IconButton(
             onPressed: filter,
@@ -131,9 +139,11 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
                             primary: false,
                             controller: _scrollController,
                             shrinkWrap: true,
-                            itemCount: viewModel.getBankaIslemleriListesi?.length ?? 0,
+                            itemCount:
+                                viewModel.getBankaIslemleriListesi?.length ?? 0,
                             itemBuilder: (context, index) {
-                              BankaIslemleriModel? item = viewModel.getBankaIslemleriListesi?[index];
+                              BankaIslemleriModel? item =
+                                  viewModel.getBankaIslemleriListesi?[index];
                               return BankaIslemleriCard(
                                   bankaIslemleriModel: item,
                                   onDeleted: (deneme) {
@@ -152,11 +162,17 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
       return BottomBarWidget(isScrolledDown: viewModel.isScrollDown, children: [
         FooterButton(children: [
           const Text("Gelir"),
-          Observer(builder: (_) => Text("${viewModel.gelenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.green)))
+          Observer(
+              builder: (_) => Text(
+                  "${viewModel.gelenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                  style: const TextStyle(color: Colors.green)))
         ]),
         FooterButton(children: [
           const Text("Gider"),
-          Observer(builder: (_) => Text("${viewModel.gidenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red)))
+          Observer(
+              builder: (_) => Text(
+                  "${viewModel.gidenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                  style: const TextStyle(color: Colors.red)))
         ]),
       ]);
     });
@@ -173,7 +189,8 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
               readOnly: true,
               suffixMore: true,
               onTap: () async {
-                var result = await Get.toNamed("/mainPage/kasaListesi", arguments: true);
+                var result =
+                    await Get.toNamed("/mainPage/kasaListesi", arguments: true);
                 if (result != null) {
                   hesapController.text = result.kasaAdi ?? "";
                   // viewModel.changeKasaKodu(result.kasaKodu ?? "");
@@ -186,7 +203,8 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
               readOnly: true,
               suffixMore: true,
               onTap: () async {
-                var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                var result =
+                    await Get.toNamed("/mainPage/cariListesi", arguments: true);
                 if (result != null) {
                   hesapTipiController.text = result.cariAdi ?? "";
                   // viewModel.changeCariKodu(result.cariKodu ?? "");
@@ -197,7 +215,9 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
               children: [
                 Expanded(
                     child: ElevatedButton(
-                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                                Colors.white.withOpacity(0.1))),
                         onPressed: () {
                           viewModel.clearFilters();
                           Get.back();

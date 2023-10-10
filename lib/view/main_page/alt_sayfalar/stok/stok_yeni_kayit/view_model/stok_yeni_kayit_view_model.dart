@@ -7,7 +7,8 @@ import "../model/stok_yeni_kayit_model.dart";
 
 part "stok_yeni_kayit_view_model.g.dart";
 
-class StokYeniKayitViewModel = _StokYeniKayitViewModelBase with _$StokYeniKayitViewModel;
+class StokYeniKayitViewModel = _StokYeniKayitViewModelBase
+    with _$StokYeniKayitViewModel;
 
 abstract class _StokYeniKayitViewModelBase with Store {
   @observable
@@ -17,7 +18,8 @@ abstract class _StokYeniKayitViewModelBase with Store {
   @observable
   MainPageModel? anaVeri = CacheManager.getAnaVeri();
   @observable
-  StokYeniKayitModel model = StokYeniKayitModel(miktar: 0, tarih: DateTime.now());
+  StokYeniKayitModel model =
+      StokYeniKayitModel(miktar: 0, tarih: DateTime.now());
 
   @action
   void setStokKodu(String? value) => model = model.copyWith(stokKodu: value);

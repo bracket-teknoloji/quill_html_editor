@@ -114,12 +114,12 @@ class _$YapilandirmaRehberiModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_YapilandirmaRehberiModelCopyWith<$Res>
+abstract class _$$YapilandirmaRehberiModelImplCopyWith<$Res>
     implements $YapilandirmaRehberiModelCopyWith<$Res> {
-  factory _$$_YapilandirmaRehberiModelCopyWith(
-          _$_YapilandirmaRehberiModel value,
-          $Res Function(_$_YapilandirmaRehberiModel) then) =
-      __$$_YapilandirmaRehberiModelCopyWithImpl<$Res>;
+  factory _$$YapilandirmaRehberiModelImplCopyWith(
+          _$YapilandirmaRehberiModelImpl value,
+          $Res Function(_$YapilandirmaRehberiModelImpl) then) =
+      __$$YapilandirmaRehberiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -133,12 +133,13 @@ abstract class _$$_YapilandirmaRehberiModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_YapilandirmaRehberiModelCopyWithImpl<$Res>
+class __$$YapilandirmaRehberiModelImplCopyWithImpl<$Res>
     extends _$YapilandirmaRehberiModelCopyWithImpl<$Res,
-        _$_YapilandirmaRehberiModel>
-    implements _$$_YapilandirmaRehberiModelCopyWith<$Res> {
-  __$$_YapilandirmaRehberiModelCopyWithImpl(_$_YapilandirmaRehberiModel _value,
-      $Res Function(_$_YapilandirmaRehberiModel) _then)
+        _$YapilandirmaRehberiModelImpl>
+    implements _$$YapilandirmaRehberiModelImplCopyWith<$Res> {
+  __$$YapilandirmaRehberiModelImplCopyWithImpl(
+      _$YapilandirmaRehberiModelImpl _value,
+      $Res Function(_$YapilandirmaRehberiModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -152,7 +153,7 @@ class __$$_YapilandirmaRehberiModelCopyWithImpl<$Res>
     Object? degerAciklama = freezed,
     Object? ozellikSira = freezed,
   }) {
-    return _then(_$_YapilandirmaRehberiModel(
+    return _then(_$YapilandirmaRehberiModelImpl(
       yapkod: freezed == yapkod
           ? _value.yapkod
           : yapkod // ignore: cast_nullable_to_non_nullable
@@ -187,8 +188,8 @@ class __$$_YapilandirmaRehberiModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_YapilandirmaRehberiModel extends _YapilandirmaRehberiModel {
-  _$_YapilandirmaRehberiModel(
+class _$YapilandirmaRehberiModelImpl extends _YapilandirmaRehberiModel {
+  _$YapilandirmaRehberiModelImpl(
       {this.yapkod,
       this.yapacik,
       this.kod,
@@ -198,8 +199,8 @@ class _$_YapilandirmaRehberiModel extends _YapilandirmaRehberiModel {
       this.ozellikSira})
       : super._();
 
-  factory _$_YapilandirmaRehberiModel.fromJson(Map<String, dynamic> json) =>
-      _$$_YapilandirmaRehberiModelFromJson(json);
+  factory _$YapilandirmaRehberiModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$YapilandirmaRehberiModelImplFromJson(json);
 
   @override
   String? yapkod;
@@ -219,13 +220,13 @@ class _$_YapilandirmaRehberiModel extends _YapilandirmaRehberiModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_YapilandirmaRehberiModelCopyWith<_$_YapilandirmaRehberiModel>
-      get copyWith => __$$_YapilandirmaRehberiModelCopyWithImpl<
-          _$_YapilandirmaRehberiModel>(this, _$identity);
+  _$$YapilandirmaRehberiModelImplCopyWith<_$YapilandirmaRehberiModelImpl>
+      get copyWith => __$$YapilandirmaRehberiModelImplCopyWithImpl<
+          _$YapilandirmaRehberiModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_YapilandirmaRehberiModelToJson(
+    return _$$YapilandirmaRehberiModelImplToJson(
       this,
     );
   }
@@ -239,11 +240,11 @@ abstract class _YapilandirmaRehberiModel extends YapilandirmaRehberiModel {
       String? kodAciklama,
       String? deger,
       String? degerAciklama,
-      int? ozellikSira}) = _$_YapilandirmaRehberiModel;
+      int? ozellikSira}) = _$YapilandirmaRehberiModelImpl;
   _YapilandirmaRehberiModel._() : super._();
 
   factory _YapilandirmaRehberiModel.fromJson(Map<String, dynamic> json) =
-      _$_YapilandirmaRehberiModel.fromJson;
+      _$YapilandirmaRehberiModelImpl.fromJson;
 
   @override
   String? get yapkod;
@@ -268,6 +269,6 @@ abstract class _YapilandirmaRehberiModel extends YapilandirmaRehberiModel {
   set ozellikSira(int? value);
   @override
   @JsonKey(ignore: true)
-  _$$_YapilandirmaRehberiModelCopyWith<_$_YapilandirmaRehberiModel>
+  _$$YapilandirmaRehberiModelImplCopyWith<_$YapilandirmaRehberiModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

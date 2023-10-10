@@ -20,7 +20,8 @@ class PrintModel with _$PrintModel, NetworkManagerMixin {
     bool? standart,
   }) = _PrintModel;
 
-  factory PrintModel.fromJson(Map<String, dynamic> json) => _$PrintModelFromJson(json);
+  factory PrintModel.fromJson(Map<String, dynamic> json) =>
+      _$PrintModelFromJson(json);
 
   @override
   fromJson(Map<String, dynamic> json) => _$PrintModelFromJson(json);

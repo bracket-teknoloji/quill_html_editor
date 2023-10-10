@@ -32,7 +32,9 @@ class CompanyModel with NetworkManagerMixin {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is CompanyModel && other.company == company && other.year == year;
+    return other is CompanyModel &&
+        other.company == company &&
+        other.year == year;
   }
 
   @override

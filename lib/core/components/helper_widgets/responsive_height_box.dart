@@ -6,8 +6,10 @@ class ResponsiveBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(duration: Duration.zero, height: heightController(context));
+    return AnimatedContainer(
+        duration: Duration.zero, height: heightController(context));
   }
 
-  double heightController(BuildContext context) => context.general.isKeyBoardOpen ? context.sized.dynamicHeight(0.3) : 0;
+  double heightController(BuildContext context) =>
+      context.general.isKeyBoardOpen ? context.sized.dynamicHeight(0.3) : 0;
 }

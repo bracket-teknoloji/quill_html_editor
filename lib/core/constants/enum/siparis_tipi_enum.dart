@@ -19,6 +19,7 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
         return "SS";
     }
   }
+
   String get getName {
     switch (this) {
       case SiparisTipiEnum.musteri:
@@ -27,6 +28,7 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
         return "Satıcı Siparişi";
     }
   }
+
   String get getPrintValue {
     switch (this) {
       case SiparisTipiEnum.musteri:

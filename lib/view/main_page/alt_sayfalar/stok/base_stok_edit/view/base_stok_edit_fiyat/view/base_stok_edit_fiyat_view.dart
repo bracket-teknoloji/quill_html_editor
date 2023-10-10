@@ -3,7 +3,6 @@ import "dart:convert";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../../../../../../core/constants/ondalik_utils.dart";
 
 import "../../../../../../../../core/base/model/base_empty_model.dart";
 import "../../../../../../../../core/base/state/base_state.dart";
@@ -12,6 +11,7 @@ import "../../../../../../../../core/components/helper_widgets/custom_label_widg
 import "../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../../core/init/network/login/api_urls.dart";
 import "../../../../stok_liste/model/stok_listesi_model.dart";
@@ -32,34 +32,73 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
   static StokListesiModel get stokListesiModel => StokListesiModel.instance;
   BaseStokEditFiyatViewModel viewModel = BaseStokEditFiyatViewModel();
   TextEditingController alisKdvOraniController = TextEditingController(
-      text: stokDetayModel.stokList?.first.alisKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.alisKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+      text: stokDetayModel.stokList?.first.alisKdv
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
+          stokListesiModel.alisKdv
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
   TextEditingController alisFiyat1Controller = TextEditingController(
-      text: stokDetayModel.stokList?.first.alisFiat1.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.alisFiat1.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+      text: stokDetayModel.stokList?.first.alisFiat1
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
+          stokListesiModel.alisFiat1
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
   TextEditingController alisFiyat2Controller = TextEditingController(
-      text: stokDetayModel.stokList?.first.alisFiat2.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.alisFiat2.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+      text: stokDetayModel.stokList?.first.alisFiat2
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
+          stokListesiModel.alisFiat2
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
   TextEditingController alisFiyat3Controller = TextEditingController(
-      text: stokDetayModel.stokList?.first.alisFiat3.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.alisFiat3.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+      text: stokDetayModel.stokList?.first.alisFiat3
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
+          stokListesiModel.alisFiat3
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
   TextEditingController alisFiyat4Controller = TextEditingController(
-      text: stokDetayModel.stokList?.first.alisFiat4.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.alisFiat4.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
-  TextEditingController alisDovizTipiController = TextEditingController(text: stokDetayModel.stokList?.first.satisDovizAdi ?? stokListesiModel.alisDovizAdi ?? "");
+      text: stokDetayModel.stokList?.first.alisFiat4
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
+          stokListesiModel.alisFiat4
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+  TextEditingController alisDovizTipiController = TextEditingController(
+      text: stokDetayModel.stokList?.first.satisDovizAdi ??
+          stokListesiModel.alisDovizAdi ??
+          "");
   TextEditingController alisDovizFiyatiController = TextEditingController(
-      text:
-          stokDetayModel.stokList?.first.dovAlisFiat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.dovAlisFiat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+      text: stokDetayModel.stokList?.first.dovAlisFiat
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
+          stokListesiModel.dovAlisFiat
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
   TextEditingController satisKdvOraniController = TextEditingController(
-      text:
-          stokDetayModel.stokList?.first.satisKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.satisKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+      text: stokDetayModel.stokList?.first.satisKdv
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
+          stokListesiModel.satisKdv
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
   TextEditingController satisFiyat1Controller = TextEditingController(
-      text: stokDetayModel.stokList?.first.satisFiat1.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.satisFiat1.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+      text: stokDetayModel.stokList?.first.satisFiat1
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
+          stokListesiModel.satisFiat1
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
   TextEditingController satisFiyat2Controller = TextEditingController(
-      text: stokDetayModel.stokList?.first.satisFiat2.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.satisFiat2.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+      text: stokDetayModel.stokList?.first.satisFiat2
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
+          stokListesiModel.satisFiat2
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
   TextEditingController satisFiyat3Controller = TextEditingController(
-      text: stokDetayModel.stokList?.first.satisFiat3.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.satisFiat3.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+      text: stokDetayModel.stokList?.first.satisFiat3
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
+          stokListesiModel.satisFiat3
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
   TextEditingController satisFiyat4Controller = TextEditingController(
-      text: stokDetayModel.stokList?.first.satisFiat4.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.satisFiat4.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
-  TextEditingController satisDovizTipiController = TextEditingController(text: stokDetayModel.stokList?.first.satisDovizAdi ?? stokListesiModel.satisDovizAdi ?? "");
+      text: stokDetayModel.stokList?.first.satisFiat4
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
+          stokListesiModel.satisFiat4
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+  TextEditingController satisDovizTipiController = TextEditingController(
+      text: stokDetayModel.stokList?.first.satisDovizAdi ??
+          stokListesiModel.satisDovizAdi ??
+          "");
   TextEditingController satisDovizFiyatiController = TextEditingController(
-      text: stokDetayModel.stokList?.first.dovSatisFiat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
-          stokListesiModel.dovSatisFiat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+      text: stokDetayModel.stokList?.first.dovSatisFiat
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
+          stokListesiModel.dovSatisFiat
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
   @override
   void dispose() {
     alisKdvOraniController.dispose();
@@ -98,9 +137,14 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                         await getKdvOrani();
                       }
                       // ignore: use_build_context_synchronously
-                      double? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                          title: "KDV Oranları",
-                          children: viewModel.kdvOraniList?.map((element) => BottomSheetModel(title: element.toStringIfNotNull ?? "", onTap: () => Get.back(result: element))).toList());
+                      double? result = await bottomSheetDialogManager
+                          .showBottomSheetDialog(context,
+                              title: "KDV Oranları",
+                              children: viewModel.kdvOraniList
+                                  ?.map((element) => BottomSheetModel(
+                                      title: element.toStringIfNotNull ?? "",
+                                      onTap: () => Get.back(result: element)))
+                                  .toList());
                       if (result != null) {
                         alisKdvOraniController.text = result.toString();
                         stokDetayModel.stokList?.first.alisKdv = result;
@@ -116,7 +160,8 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                             controller: alisFiyat1Controller,
                             keyboardType: TextInputType.number,
                             onChanged: (p0) {
-                              stokDetayModel.stokList?.first.alisFiat1 = double.tryParse(p0);
+                              stokDetayModel.stokList?.first.alisFiat1 =
+                                  double.tryParse(p0);
                               stokListesiModel.alisFiat1 = double.tryParse(p0);
                             })),
                     Expanded(
@@ -126,7 +171,8 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                             controller: alisFiyat2Controller,
                             keyboardType: TextInputType.number,
                             onChanged: (p0) {
-                              stokDetayModel.stokList?.first.alisFiat2 = double.tryParse(p0);
+                              stokDetayModel.stokList?.first.alisFiat2 =
+                                  double.tryParse(p0);
                               stokListesiModel.alisFiat2 = double.tryParse(p0);
                             })),
                   ],
@@ -140,7 +186,8 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                             controller: alisFiyat3Controller,
                             keyboardType: TextInputType.number,
                             onChanged: (p0) {
-                              stokDetayModel.stokList?.first.alisFiat3 = double.tryParse(p0);
+                              stokDetayModel.stokList?.first.alisFiat3 =
+                                  double.tryParse(p0);
                               stokListesiModel.alisFiat3 = double.tryParse(p0);
                             })),
                     Expanded(
@@ -150,7 +197,8 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                             controller: alisFiyat4Controller,
                             keyboardType: TextInputType.number,
                             onChanged: (p0) {
-                              stokDetayModel.stokList?.first.alisFiat4 = double.tryParse(p0);
+                              stokDetayModel.stokList?.first.alisFiat4 =
+                                  double.tryParse(p0);
                               stokListesiModel.alisFiat4 = double.tryParse(p0);
                             })),
                   ],
@@ -166,8 +214,10 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                       onTap: () async {
                         MapEntry? result = await getDovizList();
                         if (result != null) {
-                          stokDetayModel.stokList?.first.alisDovTip = result.key;
-                          stokDetayModel.stokList?.first.alisDovizAdi = result.value;
+                          stokDetayModel.stokList?.first.alisDovTip =
+                              result.key;
+                          stokDetayModel.stokList?.first.alisDovizAdi =
+                              result.value;
                           alisDovizTipiController.text = result.value;
                         }
                       },
@@ -180,8 +230,10 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                             controller: alisDovizFiyatiController,
                             keyboardType: TextInputType.number,
                             onChanged: (p0) {
-                              stokDetayModel.stokList?.first.dovAlisFiat = double.tryParse(p0);
-                              stokListesiModel.dovAlisFiat = double.tryParse(p0);
+                              stokDetayModel.stokList?.first.dovAlisFiat =
+                                  double.tryParse(p0);
+                              stokListesiModel.dovAlisFiat =
+                                  double.tryParse(p0);
                             })),
                   ],
                 ),
@@ -200,9 +252,14 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                         await getKdvOrani();
                       }
                       // ignore: use_build_context_synchronously
-                      double? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                          title: "KDV Oranları",
-                          children: viewModel.kdvOraniList?.map((element) => BottomSheetModel(title: element.toStringIfNotNull ?? "", onTap: () => Get.back(result: element))).toList());
+                      double? result = await bottomSheetDialogManager
+                          .showBottomSheetDialog(context,
+                              title: "KDV Oranları",
+                              children: viewModel.kdvOraniList
+                                  ?.map((element) => BottomSheetModel(
+                                      title: element.toStringIfNotNull ?? "",
+                                      onTap: () => Get.back(result: element)))
+                                  .toList());
                       if (result != null) {
                         satisKdvOraniController.text = result.toString();
                         stokDetayModel.stokList?.first.satisKdv = result;
@@ -219,7 +276,8 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                             labelText: "Fiyat 1",
                             controller: satisFiyat1Controller,
                             onChanged: (p0) {
-                              stokDetayModel.stokList?.first.satisFiat1 = double.tryParse(p0);
+                              stokDetayModel.stokList?.first.satisFiat1 =
+                                  double.tryParse(p0);
                               stokListesiModel.satisFiat1 = double.tryParse(p0);
                             })),
                     Expanded(
@@ -229,7 +287,8 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                             labelText: "Fiyat 2",
                             controller: satisFiyat2Controller,
                             onChanged: (p0) {
-                              stokDetayModel.stokList?.first.satisFiat2 = double.tryParse(p0);
+                              stokDetayModel.stokList?.first.satisFiat2 =
+                                  double.tryParse(p0);
                               stokListesiModel.satisFiat2 = double.tryParse(p0);
                             })),
                   ],
@@ -243,7 +302,8 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                             labelText: "Fiyat 3",
                             controller: satisFiyat3Controller,
                             onChanged: (p0) {
-                              stokDetayModel.stokList?.first.satisFiat3 = double.tryParse(p0);
+                              stokDetayModel.stokList?.first.satisFiat3 =
+                                  double.tryParse(p0);
                               stokListesiModel.satisFiat3 = double.tryParse(p0);
                             })),
                     Expanded(
@@ -253,7 +313,8 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                             labelText: "Fiyat 4",
                             controller: satisFiyat4Controller,
                             onChanged: (p0) {
-                              stokDetayModel.stokList?.first.satisFiat4 = double.tryParse(p0);
+                              stokDetayModel.stokList?.first.satisFiat4 =
+                                  double.tryParse(p0);
                               stokListesiModel.satisFiat4 = double.tryParse(p0);
                             })),
                   ],
@@ -283,8 +344,10 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                             controller: satisDovizFiyatiController,
                             keyboardType: TextInputType.number,
                             onChanged: (p0) {
-                              stokDetayModel.stokList?.first.dovSatisFiat = double.tryParse(p0);
-                              stokListesiModel.dovSatisFiat = double.tryParse(p0);
+                              stokDetayModel.stokList?.first.dovSatisFiat =
+                                  double.tryParse(p0);
+                              stokListesiModel.dovSatisFiat =
+                                  double.tryParse(p0);
                             })),
                   ],
                 ),
@@ -297,25 +360,31 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
   }
 
   Future<void> getKdvOrani() async {
-    var result = await networkManager.dioGet<BaseEmptyModel>(path: ApiUrls.getStokDigerBilgi, bodyModel: BaseEmptyModel(), queryParameters: {"BilgiTipi": "KDVGRUP"});
+    var result = await networkManager.dioGet<BaseEmptyModel>(
+        path: ApiUrls.getStokDigerBilgi,
+        bodyModel: BaseEmptyModel(),
+        queryParameters: {"BilgiTipi": "KDVGRUP"});
     if (result.success == true) {
-      viewModel.setKdvOraniList(jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]).cast<double>());
+      viewModel.setKdvOraniList(
+          jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]).cast<double>());
     } else {
-      dialogManager.showAlertDialog("KDV listesine erişilemedi.${result.message ?? ""}");
+      dialogManager
+          .showAlertDialog("KDV listesine erişilemedi.${result.message ?? ""}");
     }
   }
 
   Future<MapEntry?> getDovizList() async {
-    MapEntry? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
-        title: "Döviz Tipi",
-        children: viewModel.dovizList.entries
-            .map((e) => BottomSheetModel(
-                  title: e.value,
-                  onTap: () {
-                    Get.back(result: e);
-                  },
-                ))
-            .toList());
+    MapEntry? result =
+        await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
+            title: "Döviz Tipi",
+            children: viewModel.dovizList.entries
+                .map((e) => BottomSheetModel(
+                      title: e.value,
+                      onTap: () {
+                        Get.back(result: e);
+                      },
+                    ))
+                .toList());
     return result;
   }
 }

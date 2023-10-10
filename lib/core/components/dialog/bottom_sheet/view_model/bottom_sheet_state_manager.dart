@@ -5,27 +5,37 @@ import "../../../../base/model/base_grup_kodu_model.dart";
 
 part "bottom_sheet_state_manager.g.dart";
 
-class BottomSheetStateManager = _BottomSheetStateManagerBase with _$BottomSheetStateManager;
+class BottomSheetStateManager = _BottomSheetStateManagerBase
+    with _$BottomSheetStateManager;
 
 abstract class _BottomSheetStateManagerBase with Store {
   @observable
-  ObservableList<BaseGrupKoduModel>? grupKoduList = <BaseGrupKoduModel>[].asObservable();
+  ObservableList<BaseGrupKoduModel>? grupKoduList =
+      <BaseGrupKoduModel>[].asObservable();
   @observable
-  ObservableList<BaseGrupKoduModel>? filteredGrupKoduList = <BaseGrupKoduModel>[].asObservable();
+  ObservableList<BaseGrupKoduModel>? filteredGrupKoduList =
+      <BaseGrupKoduModel>[].asObservable();
   @observable
-  ObservableList<StokMuhasebeKoduModel>? muhasebeKoduList = <StokMuhasebeKoduModel>[].asObservable();
+  ObservableList<StokMuhasebeKoduModel>? muhasebeKoduList =
+      <StokMuhasebeKoduModel>[].asObservable();
   @action
   void changeGrupKoduList(List<BaseGrupKoduModel> value) {
     grupKoduList = value.asObservable();
   }
+
   @action
-  void filteredGrupKoduListFilter(int value){
-    filteredGrupKoduList = grupKoduList?.where((element) => element.grupNo == value).toList().asObservable();
+  void filteredGrupKoduListFilter(int value) {
+    filteredGrupKoduList = grupKoduList
+        ?.where((element) => element.grupNo == value)
+        .toList()
+        .asObservable();
   }
+
   @action
   void changeMuhasebeKoduList(List<StokMuhasebeKoduModel> value) {
     muhasebeKoduList = value.asObservable();
   }
+
   @observable
   String? radioGroupValue = "";
 

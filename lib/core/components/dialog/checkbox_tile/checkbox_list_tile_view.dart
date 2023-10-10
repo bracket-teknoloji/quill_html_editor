@@ -53,7 +53,6 @@ class _CheckBoxListTileDialogState extends BaseState<CheckBoxListTileDialog> {
     final response = await networkManager.dioGet<CariSehirlerModel>(
         path: ApiUrls.getCariKayitliSehirler,
         bodyModel: CariSehirlerModel(),
-        
         headers: {
           // "VERITABANI": AccountModel.instance.aktifVeritabani.toString(),
           // "ISLETME_KODU": AccountModel.instance.aktifIsletmeKodu.toString(),

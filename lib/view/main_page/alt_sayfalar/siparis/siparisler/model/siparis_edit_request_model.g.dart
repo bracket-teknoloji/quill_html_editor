@@ -6,9 +6,9 @@ part of 'siparis_edit_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SiparisEditRequestModel _$$_SiparisEditRequestModelFromJson(
+_$SiparisEditRequestModelImpl _$$SiparisEditRequestModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_SiparisEditRequestModel(
+    _$SiparisEditRequestModelImpl(
       ekranTipi: json['EkranTipi'] as String? ?? 'D',
       kisitYok: json['KisitYok'] as bool? ?? true,
       belgeTipi: json['BelgeTipi'] as String?,
@@ -32,8 +32,8 @@ _$_SiparisEditRequestModel _$$_SiparisEditRequestModelFromJson(
       tag: json['Tag'] as String?,
     );
 
-Map<String, dynamic> _$$_SiparisEditRequestModelToJson(
-    _$_SiparisEditRequestModel instance) {
+Map<String, dynamic> _$$SiparisEditRequestModelImplToJson(
+    _$SiparisEditRequestModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

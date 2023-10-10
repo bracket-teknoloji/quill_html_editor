@@ -1,4 +1,13 @@
-enum IslemTipiEnum { stok, cari, stokRapor, cariRapor, stokSerbest, cariSerbest, siparis, kasa}
+enum IslemTipiEnum {
+  stok,
+  cari,
+  stokRapor,
+  cariRapor,
+  stokSerbest,
+  cariSerbest,
+  siparis,
+  kasa
+}
 
 extension IslemTipiEnumExtension on IslemTipiEnum {
   String get value {
@@ -13,7 +22,7 @@ extension IslemTipiEnumExtension on IslemTipiEnum {
   String get route {
     if (this == IslemTipiEnum.cari) {
       return "/mainPage/cariEdit";
-    }else if (this == IslemTipiEnum.stok){
+    } else if (this == IslemTipiEnum.stok) {
       return "/mainPage/stokEdit";
     } else if (this == IslemTipiEnum.siparis) {
       return "/mainPage/siparisEdit";

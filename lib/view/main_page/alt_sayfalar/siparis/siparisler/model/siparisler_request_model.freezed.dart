@@ -278,11 +278,12 @@ class _$SiparislerRequestModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_SiparislerRequestModelCopyWith<$Res>
+abstract class _$$SiparislerRequestModelImplCopyWith<$Res>
     implements $SiparislerRequestModelCopyWith<$Res> {
-  factory _$$_SiparislerRequestModelCopyWith(_$_SiparislerRequestModel value,
-          $Res Function(_$_SiparislerRequestModel) then) =
-      __$$_SiparislerRequestModelCopyWithImpl<$Res>;
+  factory _$$SiparislerRequestModelImplCopyWith(
+          _$SiparislerRequestModelImpl value,
+          $Res Function(_$SiparislerRequestModelImpl) then) =
+      __$$SiparislerRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -316,12 +317,13 @@ abstract class _$$_SiparislerRequestModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SiparislerRequestModelCopyWithImpl<$Res>
+class __$$SiparislerRequestModelImplCopyWithImpl<$Res>
     extends _$SiparislerRequestModelCopyWithImpl<$Res,
-        _$_SiparislerRequestModel>
-    implements _$$_SiparislerRequestModelCopyWith<$Res> {
-  __$$_SiparislerRequestModelCopyWithImpl(_$_SiparislerRequestModel _value,
-      $Res Function(_$_SiparislerRequestModel) _then)
+        _$SiparislerRequestModelImpl>
+    implements _$$SiparislerRequestModelImplCopyWith<$Res> {
+  __$$SiparislerRequestModelImplCopyWithImpl(
+      _$SiparislerRequestModelImpl _value,
+      $Res Function(_$SiparislerRequestModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -355,7 +357,7 @@ class __$$_SiparislerRequestModelCopyWithImpl<$Res>
     Object? siparisDurumu = freezed,
     Object? referansStokKodu = freezed,
   }) {
-    return _then(_$_SiparislerRequestModel(
+    return _then(_$SiparislerRequestModelImpl(
       pickerBelgeTuru: freezed == pickerBelgeTuru
           ? _value.pickerBelgeTuru
           : pickerBelgeTuru // ignore: cast_nullable_to_non_nullable
@@ -471,8 +473,8 @@ class __$$_SiparislerRequestModelCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class _$_SiparislerRequestModel implements _SiparislerRequestModel {
-  _$_SiparislerRequestModel(
+class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
+  _$SiparislerRequestModelImpl(
       {this.pickerBelgeTuru,
       this.iadeMi,
       this.cariKodu = "",
@@ -501,8 +503,8 @@ class _$_SiparislerRequestModel implements _SiparislerRequestModel {
       this.siparisDurumu,
       this.referansStokKodu});
 
-  factory _$_SiparislerRequestModel.fromJson(Map<String, dynamic> json) =>
-      _$$_SiparislerRequestModelFromJson(json);
+  factory _$SiparislerRequestModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SiparislerRequestModelImplFromJson(json);
 
   @override
   String? pickerBelgeTuru;
@@ -570,13 +572,13 @@ class _$_SiparislerRequestModel implements _SiparislerRequestModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SiparislerRequestModelCopyWith<_$_SiparislerRequestModel> get copyWith =>
-      __$$_SiparislerRequestModelCopyWithImpl<_$_SiparislerRequestModel>(
-          this, _$identity);
+  _$$SiparislerRequestModelImplCopyWith<_$SiparislerRequestModelImpl>
+      get copyWith => __$$SiparislerRequestModelImplCopyWithImpl<
+          _$SiparislerRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SiparislerRequestModelToJson(
+    return _$$SiparislerRequestModelImplToJson(
       this,
     );
   }
@@ -610,10 +612,10 @@ abstract class _SiparislerRequestModel implements SiparislerRequestModel {
       String? searchText,
       String? belgeNo,
       String? siparisDurumu,
-      String? referansStokKodu}) = _$_SiparislerRequestModel;
+      String? referansStokKodu}) = _$SiparislerRequestModelImpl;
 
   factory _SiparislerRequestModel.fromJson(Map<String, dynamic> json) =
-      _$_SiparislerRequestModel.fromJson;
+      _$SiparislerRequestModelImpl.fromJson;
 
   @override
   String? get pickerBelgeTuru;
@@ -700,6 +702,6 @@ abstract class _SiparislerRequestModel implements SiparislerRequestModel {
   set referansStokKodu(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$_SiparislerRequestModelCopyWith<_$_SiparislerRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SiparislerRequestModelImplCopyWith<_$SiparislerRequestModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

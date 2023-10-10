@@ -6,9 +6,9 @@ part of 'base_profil_parametre_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_BaseProfilParametreModel _$$_BaseProfilParametreModelFromJson(
+_$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_BaseProfilParametreModel(
+    _$BaseProfilParametreModelImpl(
       siparisYeniKaydaHazirla:
           json['SIPARIS_YENI_KAYDA_HAZIRLA'] as bool? ?? true,
       siparisEkAlan: json['SIPARIS_EK_ALAN'] as bool? ?? false,
@@ -30,8 +30,8 @@ _$_BaseProfilParametreModel _$$_BaseProfilParametreModelFromJson(
           : YaziciList.fromJson(json['YAZICI_LIST'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_BaseProfilParametreModelToJson(
-    _$_BaseProfilParametreModel instance) {
+Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
+    _$BaseProfilParametreModelImpl instance) {
   final val = <String, dynamic>{
     'SIPARIS_YENI_KAYDA_HAZIRLA': instance.siparisYeniKaydaHazirla,
     'SIPARIS_EK_ALAN': instance.siparisEkAlan,

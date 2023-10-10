@@ -7,11 +7,13 @@ import "../../../siparisler/model/siparisler_request_model.dart";
 
 part "siparis_durum_raporu_view_model.g.dart";
 
-class SiparisDurumRaporuViewModel = _SiparisDurumRaporuViewModelBase with _$SiparisDurumRaporuViewModel;
+class SiparisDurumRaporuViewModel = _SiparisDurumRaporuViewModelBase
+    with _$SiparisDurumRaporuViewModel;
 
 abstract class _SiparisDurumRaporuViewModelBase with Store {
   _SiparisDurumRaporuViewModelBase(this.siparisTipiEnum) {
-    siparislerRequestModel = siparislerRequestModel.copyWith(pickerBelgeTuru: pickerBelgeTuru);
+    siparislerRequestModel =
+        siparislerRequestModel.copyWith(pickerBelgeTuru: pickerBelgeTuru);
   }
   final Map<String, String> siralaMap = {
     "Belge No (Artan)": "AZ",
@@ -49,7 +51,8 @@ abstract class _SiparisDurumRaporuViewModelBase with Store {
   @action
   void setKarsilanmaGroupValue(int value) {
     karsilanmaGroupValue = value + 1;
-    siparislerRequestModel = siparislerRequestModel.copyWith(siparisKarsilanmaDurumu: karsilamaValueList[value]);
+    siparislerRequestModel = siparislerRequestModel.copyWith(
+        siparisKarsilanmaDurumu: karsilamaValueList[value]);
   }
 
   @observable
@@ -57,41 +60,63 @@ abstract class _SiparisDurumRaporuViewModelBase with Store {
   @action
   void setDurumGroupValue(int value) {
     durumGroupValue = value + 1;
-    siparislerRequestModel = siparislerRequestModel.copyWith(siparisDurumu: siparisValueList[value]);
+    siparislerRequestModel =
+        siparislerRequestModel.copyWith(siparisDurumu: siparisValueList[value]);
   }
 
   @computed
   String get pickerBelgeTuru => siparisTipiEnum.rawValue;
   @observable
-  SiparislerRequestModel siparislerRequestModel =
-      SiparislerRequestModel(sayfa: 1, ekranTipi: "R", baslamaTarihi: DateTime.now().toDateString, bitisTarihi: DateTime.now().toDateString, siralama: "TARIH_ZA");
+  SiparislerRequestModel siparislerRequestModel = SiparislerRequestModel(
+      sayfa: 1,
+      ekranTipi: "R",
+      baslamaTarihi: DateTime.now().toDateString,
+      bitisTarihi: DateTime.now().toDateString,
+      siralama: "TARIH_ZA");
 
   @observable
   ObservableList<KalemModel?>? kalemList;
 
   @computed
-  ObservableList<KalemModel?>? get kalemListComputed => kalemList?.where((element) => element?.stokAdi?.toUpperCase().contains(searchKey?.toUpperCase() ?? "") ?? false).toList().asObservable();
+  ObservableList<KalemModel?>? get kalemListComputed => kalemList
+      ?.where((element) =>
+          element?.stokAdi
+              ?.toUpperCase()
+              .contains(searchKey?.toUpperCase() ?? "") ??
+          false)
+      .toList()
+      .asObservable();
 
   @action
-  void setKalemList(List<KalemModel?>? value) => kalemList = value?.asObservable();
+  void setKalemList(List<KalemModel?>? value) =>
+      kalemList = value?.asObservable();
 
   @action
-  void addKalemList(List<KalemModel?>? value) => kalemList = (kalemList! + value!.asObservable()) as ObservableList<KalemModel?>?;
+  void addKalemList(List<KalemModel?>? value) => kalemList =
+      (kalemList! + value!.asObservable()) as ObservableList<KalemModel?>?;
 
   @action
-  void setSiralama(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(siralama: value);
+  void setSiralama(String? value) =>
+      siparislerRequestModel = siparislerRequestModel.copyWith(siralama: value);
   @action
-  void setStokKodu(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(referansStokKodu: value);
+  void setStokKodu(String? value) => siparislerRequestModel =
+      siparislerRequestModel.copyWith(referansStokKodu: value);
   @action
-  void setCariKodu(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(cariKodu: value);
+  void setCariKodu(String? value) =>
+      siparislerRequestModel = siparislerRequestModel.copyWith(cariKodu: value);
   @action
-  void setBelgeNo(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(belgeNo: value);
+  void setBelgeNo(String? value) =>
+      siparislerRequestModel = siparislerRequestModel.copyWith(belgeNo: value);
   @action
-  void setBaslamaTarihi(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(baslamaTarihi: value);
+  void setBaslamaTarihi(String? value) => siparislerRequestModel =
+      siparislerRequestModel.copyWith(baslamaTarihi: value);
   @action
-  void setBitisTarihi(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(bitisTarihi: value);
+  void setBitisTarihi(String? value) => siparislerRequestModel =
+      siparislerRequestModel.copyWith(bitisTarihi: value);
   @action
-  void increaseSayfa() => siparislerRequestModel = siparislerRequestModel.copyWith(sayfa: siparislerRequestModel.sayfa! + 1);
+  void increaseSayfa() => siparislerRequestModel =
+      siparislerRequestModel.copyWith(sayfa: siparislerRequestModel.sayfa! + 1);
   @action
-  void resetSayfa() => siparislerRequestModel = siparislerRequestModel.copyWith(sayfa: 1);
+  void resetSayfa() =>
+      siparislerRequestModel = siparislerRequestModel.copyWith(sayfa: 1);
 }

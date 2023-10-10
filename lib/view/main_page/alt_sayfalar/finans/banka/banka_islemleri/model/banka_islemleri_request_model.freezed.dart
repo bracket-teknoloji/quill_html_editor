@@ -99,12 +99,12 @@ class _$BankaIslemleriRequestModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_BankaIslemleriRequestModelCopyWith<$Res>
+abstract class _$$BankaIslemleriRequestModelImplCopyWith<$Res>
     implements $BankaIslemleriRequestModelCopyWith<$Res> {
-  factory _$$_BankaIslemleriRequestModelCopyWith(
-          _$_BankaIslemleriRequestModel value,
-          $Res Function(_$_BankaIslemleriRequestModel) then) =
-      __$$_BankaIslemleriRequestModelCopyWithImpl<$Res>;
+  factory _$$BankaIslemleriRequestModelImplCopyWith(
+          _$BankaIslemleriRequestModelImpl value,
+          $Res Function(_$BankaIslemleriRequestModelImpl) then) =
+      __$$BankaIslemleriRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -116,13 +116,13 @@ abstract class _$$_BankaIslemleriRequestModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_BankaIslemleriRequestModelCopyWithImpl<$Res>
+class __$$BankaIslemleriRequestModelImplCopyWithImpl<$Res>
     extends _$BankaIslemleriRequestModelCopyWithImpl<$Res,
-        _$_BankaIslemleriRequestModel>
-    implements _$$_BankaIslemleriRequestModelCopyWith<$Res> {
-  __$$_BankaIslemleriRequestModelCopyWithImpl(
-      _$_BankaIslemleriRequestModel _value,
-      $Res Function(_$_BankaIslemleriRequestModel) _then)
+        _$BankaIslemleriRequestModelImpl>
+    implements _$$BankaIslemleriRequestModelImplCopyWith<$Res> {
+  __$$BankaIslemleriRequestModelImplCopyWithImpl(
+      _$BankaIslemleriRequestModelImpl _value,
+      $Res Function(_$BankaIslemleriRequestModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -134,7 +134,7 @@ class __$$_BankaIslemleriRequestModelCopyWithImpl<$Res>
     Object? hesapTipi = freezed,
     Object? hesapKodu = freezed,
   }) {
-    return _then(_$_BankaIslemleriRequestModel(
+    return _then(_$BankaIslemleriRequestModelImpl(
       baslamaTarihi: freezed == baslamaTarihi
           ? _value.baslamaTarihi
           : baslamaTarihi // ignore: cast_nullable_to_non_nullable
@@ -162,16 +162,17 @@ class __$$_BankaIslemleriRequestModelCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class _$_BankaIslemleriRequestModel implements _BankaIslemleriRequestModel {
-  _$_BankaIslemleriRequestModel(
+class _$BankaIslemleriRequestModelImpl implements _BankaIslemleriRequestModel {
+  _$BankaIslemleriRequestModelImpl(
       {this.baslamaTarihi,
       this.bitisTarihi,
       this.menuKodu,
       this.hesapTipi,
       this.hesapKodu});
 
-  factory _$_BankaIslemleriRequestModel.fromJson(Map<String, dynamic> json) =>
-      _$$_BankaIslemleriRequestModelFromJson(json);
+  factory _$BankaIslemleriRequestModelImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$BankaIslemleriRequestModelImplFromJson(json);
 
   @override
   String? baslamaTarihi;
@@ -192,13 +193,13 @@ class _$_BankaIslemleriRequestModel implements _BankaIslemleriRequestModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BankaIslemleriRequestModelCopyWith<_$_BankaIslemleriRequestModel>
-      get copyWith => __$$_BankaIslemleriRequestModelCopyWithImpl<
-          _$_BankaIslemleriRequestModel>(this, _$identity);
+  _$$BankaIslemleriRequestModelImplCopyWith<_$BankaIslemleriRequestModelImpl>
+      get copyWith => __$$BankaIslemleriRequestModelImplCopyWithImpl<
+          _$BankaIslemleriRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BankaIslemleriRequestModelToJson(
+    return _$$BankaIslemleriRequestModelImplToJson(
       this,
     );
   }
@@ -211,10 +212,10 @@ abstract class _BankaIslemleriRequestModel
       String? bitisTarihi,
       String? menuKodu,
       String? hesapTipi,
-      String? hesapKodu}) = _$_BankaIslemleriRequestModel;
+      String? hesapKodu}) = _$BankaIslemleriRequestModelImpl;
 
   factory _BankaIslemleriRequestModel.fromJson(Map<String, dynamic> json) =
-      _$_BankaIslemleriRequestModel.fromJson;
+      _$BankaIslemleriRequestModelImpl.fromJson;
 
   @override
   String? get baslamaTarihi;
@@ -233,6 +234,6 @@ abstract class _BankaIslemleriRequestModel
   set hesapKodu(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$_BankaIslemleriRequestModelCopyWith<_$_BankaIslemleriRequestModel>
+  _$$BankaIslemleriRequestModelImplCopyWith<_$BankaIslemleriRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

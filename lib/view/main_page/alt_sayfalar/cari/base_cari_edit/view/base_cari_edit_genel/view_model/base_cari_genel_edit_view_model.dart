@@ -6,7 +6,8 @@ import "../../../../cari_listesi/model/cari_listesi_model.dart";
 
 part "base_cari_genel_edit_view_model.g.dart";
 
-class BaseCariGenelEditViewModel = _BaseCariGenelEditViewModelBase with _$BaseCariGenelEditViewModel;
+class BaseCariGenelEditViewModel = _BaseCariGenelEditViewModelBase
+    with _$BaseCariGenelEditViewModel;
 
 abstract class _BaseCariGenelEditViewModelBase with Store {
   @observable
@@ -59,13 +60,18 @@ abstract class _BaseCariGenelEditViewModelBase with Store {
     // model = model?.copyWith.cariTipAciklama(value.title);
     CariListesiModel.instance;
     model = model?.copyWith(cariTip: value.value, cariTipAciklama: value.title);
-    changeModel(model?.copyWith(cariTip: value.value, cariTipAciklama: value.title));
+    changeModel(
+        model?.copyWith(cariTip: value.value, cariTipAciklama: value.title));
   }
 
   @action
   void changePlasiyer(PlasiyerList? value) {
-    model = model?.copyWith(plasiyerKodu: value?.plasiyerKodu, plasiyerAciklama: value?.plasiyerAciklama);
-    changeModel(model?.copyWith(plasiyerKodu: value?.plasiyerKodu, plasiyerAciklama: value?.plasiyerAciklama));
+    model = model?.copyWith(
+        plasiyerKodu: value?.plasiyerKodu,
+        plasiyerAciklama: value?.plasiyerAciklama);
+    changeModel(model?.copyWith(
+        plasiyerKodu: value?.plasiyerKodu,
+        plasiyerAciklama: value?.plasiyerAciklama));
   }
 
   @action

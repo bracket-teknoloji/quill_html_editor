@@ -1,5 +1,3 @@
-
-
 class AppbarToggleButtonClass {
   static List<AppBarButtonModel> liste = [
     AppBarButtonModel("Tümü", () {}),
@@ -13,9 +11,6 @@ class AppbarToggleButtonClass {
     AppBarButtonModel("Özel", () {}),
   ];
 }
-
-
-
 
 class AppBarButtonModel {
   final String title;

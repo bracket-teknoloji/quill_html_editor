@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+
 part "splash_auth_view_model.g.dart";
 
 class SplashAuthViewModel = _SplashAuthViewModelBase with _$SplashAuthViewModel;

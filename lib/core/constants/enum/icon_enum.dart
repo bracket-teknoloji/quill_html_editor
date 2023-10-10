@@ -1,6 +1,14 @@
 // ignore_for_file: constant_identifier_names
 
-enum IconMenuEnum { Cari, Cuzdan, ElSikisma, Kamyon, MalKabul, Transpalet, Banka }
+enum IconMenuEnum {
+  Cari,
+  Cuzdan,
+  ElSikisma,
+  Kamyon,
+  MalKabul,
+  Transpalet,
+  Banka
+}
 
 extension GetPath on IconMenuEnum {
   String get path {

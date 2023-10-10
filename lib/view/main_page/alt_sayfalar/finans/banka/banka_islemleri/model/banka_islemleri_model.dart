@@ -36,28 +36,29 @@ class BankaIslemleriModel with _$BankaIslemleriModel, NetworkManagerMixin {
     // double? kasaDevirTutari,
     // double? kasaDovizDevirTutari,
     // int? kasaDovizTipi,
-    
-        int? inckeyno,
-        String? netheskodu,
-        DateTime? tarih,
-        int? harturu,
-        String? ba,
-        double? tutar,
-        String? belgeno,
-        String? aciklama,
-        String? entegrefkey,
-        int? dovizTipi,
-        double? dovizTutari,
-        int? hareketTipi,
-        String? hesapAdi,
-        String? hareketAciklama,
-        String? bankaKodu,
-        String? bankaAdi,
-        String? bankasubeKodu,
-        String? subeAdi,
+
+    int? inckeyno,
+    String? netheskodu,
+    DateTime? tarih,
+    int? harturu,
+    String? ba,
+    double? tutar,
+    String? belgeno,
+    String? aciklama,
+    String? entegrefkey,
+    int? dovizTipi,
+    double? dovizTutari,
+    int? hareketTipi,
+    String? hesapAdi,
+    String? hareketAciklama,
+    String? bankaKodu,
+    String? bankaAdi,
+    String? bankasubeKodu,
+    String? subeAdi,
   }) = _BankaIslemleriModel;
 
-  factory BankaIslemleriModel.fromJson(Map<String, dynamic> json) => _$BankaIslemleriModelFromJson(json);
+  factory BankaIslemleriModel.fromJson(Map<String, dynamic> json) =>
+      _$BankaIslemleriModelFromJson(json);
 
   @override
   fromJson(Map<String, dynamic> json) => _$BankaIslemleriModelFromJson(json);

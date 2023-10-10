@@ -29,9 +29,6 @@
 //     return _instance!;
 //   }
 
-
-
-
 //   factory DenemeModel(
 //     DateTime? duzeltmetarihi,
 //     int? kalemAdedi,

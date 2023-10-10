@@ -32,12 +32,26 @@ class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
   @override
   void initState() {
     viewModel.changeDovizKurlariModel(widget.dovizKurlariModel);
-    tarihController = TextEditingController(text: widget.dovizKurlariModel?.tarih.toDateString ?? "");
-    dovizTipiController = TextEditingController(text: widget.dovizKurlariModel?.dovizAdi ?? "");
-    alisController = TextEditingController(text: widget.dovizKurlariModel?.dovAlis?.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "");
-    satisController = TextEditingController(text: widget.dovizKurlariModel?.dovSatis?.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "");
-    efektifAlisController = TextEditingController(text: widget.dovizKurlariModel?.effAlis?.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "");
-    efektifSatisController = TextEditingController(text: widget.dovizKurlariModel?.effSatis?.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "");
+    tarihController = TextEditingController(
+        text: widget.dovizKurlariModel?.tarih.toDateString ?? "");
+    dovizTipiController =
+        TextEditingController(text: widget.dovizKurlariModel?.dovizAdi ?? "");
+    alisController = TextEditingController(
+        text: widget.dovizKurlariModel?.dovAlis
+                ?.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
+            "");
+    satisController = TextEditingController(
+        text: widget.dovizKurlariModel?.dovSatis
+                ?.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
+            "");
+    efektifAlisController = TextEditingController(
+        text: widget.dovizKurlariModel?.effAlis
+                ?.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
+            "");
+    efektifSatisController = TextEditingController(
+        text: widget.dovizKurlariModel?.effSatis
+                ?.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
+            "");
     super.initState();
   }
 
@@ -71,12 +85,18 @@ class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
           key: _formKey,
           child: Column(
             children: [
-              CustomTextField(labelText: "Tarih", readOnly: true, controller: tarihController),
+              CustomTextField(
+                  labelText: "Tarih",
+                  readOnly: true,
+                  controller: tarihController),
               CustomTextField(
                   labelText: "Döviz Tipi",
                   readOnly: true,
                   controller: dovizTipiController,
-                  valueWidget: Observer(builder: (_) => Text(viewModel.dovizKurlariModel?.dovizTipi.toStringIfNotNull ?? ""))),
+                  valueWidget: Observer(
+                      builder: (_) => Text(viewModel
+                              .dovizKurlariModel?.dovizTipi.toStringIfNotNull ??
+                          ""))),
               Row(
                 children: [
                   Expanded(
@@ -85,16 +105,20 @@ class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
                           isMust: true,
                           isFormattedString: true,
                           controller: alisController,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          onChanged: (value) => viewModel.changeAlis(value.toDoubleWithFormattedString))),
+                          keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true),
+                          onChanged: (value) => viewModel
+                              .changeAlis(value.toDoubleWithFormattedString))),
                   Expanded(
                       child: CustomTextField(
                           labelText: "Efektif Alış",
                           isMust: true,
                           isFormattedString: true,
                           controller: efektifAlisController,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          onChanged: (value) => viewModel.changeEfektifAlis(value.toDoubleWithFormattedString))),
+                          keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true),
+                          onChanged: (value) => viewModel.changeEfektifAlis(
+                              value.toDoubleWithFormattedString))),
                 ],
               ),
               Row(
@@ -105,16 +129,20 @@ class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
                           isMust: true,
                           isFormattedString: true,
                           controller: satisController,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          onChanged: (value) => viewModel.changeSatis(value.toDoubleWithFormattedString))),
+                          keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true),
+                          onChanged: (value) => viewModel
+                              .changeSatis(value.toDoubleWithFormattedString))),
                   Expanded(
                       child: CustomTextField(
                           labelText: "Efektif Satış",
                           isMust: true,
                           isFormattedString: true,
                           controller: efektifSatisController,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          onChanged: (value) => viewModel.changeEfektifSatis(value.toDoubleWithFormattedString))),
+                          keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true),
+                          onChanged: (value) => viewModel.changeEfektifSatis(
+                              value.toDoubleWithFormattedString))),
                 ],
               ),
             ],
@@ -123,13 +151,20 @@ class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
   }
 
   Future<void> postData() async {
-    var result = await networkManager
-        .dioPost(path: ApiUrls.saveDovizKuru, showLoading: true, bodyModel: DovizKurlariModel(), data: [DovizKurlariRequestModel.fromDovizKurlariModel(viewModel.dovizKurlariModel!)]);
+    var result = await networkManager.dioPost(
+        path: ApiUrls.saveDovizKuru,
+        showLoading: true,
+        bodyModel: DovizKurlariModel(),
+        data: [
+          DovizKurlariRequestModel.fromDovizKurlariModel(
+              viewModel.dovizKurlariModel!)
+        ]);
     if (result.success == true) {
       dialogManager.showSuccessSnackBar("Başarıyla Kaydedildi");
       Get.back();
     } else {
-      dialogManager.showErrorSnackBar("Kaydedilirken bir hata oluştu\n${result.message ?? result.errorDetails}");
+      dialogManager.showErrorSnackBar(
+          "Kaydedilirken bir hata oluştu\n${result.message ?? result.errorDetails}");
     }
   }
 }

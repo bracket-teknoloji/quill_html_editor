@@ -293,11 +293,11 @@ class _$TahsilatRequestModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_TahsilatRequestModelCopyWith<$Res>
+abstract class _$$TahsilatRequestModelImplCopyWith<$Res>
     implements $TahsilatRequestModelCopyWith<$Res> {
-  factory _$$_TahsilatRequestModelCopyWith(_$_TahsilatRequestModel value,
-          $Res Function(_$_TahsilatRequestModel) then) =
-      __$$_TahsilatRequestModelCopyWithImpl<$Res>;
+  factory _$$TahsilatRequestModelImplCopyWith(_$TahsilatRequestModelImpl value,
+          $Res Function(_$TahsilatRequestModelImpl) then) =
+      __$$TahsilatRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -333,11 +333,11 @@ abstract class _$$_TahsilatRequestModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TahsilatRequestModelCopyWithImpl<$Res>
-    extends _$TahsilatRequestModelCopyWithImpl<$Res, _$_TahsilatRequestModel>
-    implements _$$_TahsilatRequestModelCopyWith<$Res> {
-  __$$_TahsilatRequestModelCopyWithImpl(_$_TahsilatRequestModel _value,
-      $Res Function(_$_TahsilatRequestModel) _then)
+class __$$TahsilatRequestModelImplCopyWithImpl<$Res>
+    extends _$TahsilatRequestModelCopyWithImpl<$Res, _$TahsilatRequestModelImpl>
+    implements _$$TahsilatRequestModelImplCopyWith<$Res> {
+  __$$TahsilatRequestModelImplCopyWithImpl(_$TahsilatRequestModelImpl _value,
+      $Res Function(_$TahsilatRequestModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -373,7 +373,7 @@ class __$$_TahsilatRequestModelCopyWithImpl<$Res>
     Object? krediKartNo = freezed,
     Object? hedefAciklama = freezed,
   }) {
-    return _then(_$_TahsilatRequestModel(
+    return _then(_$TahsilatRequestModelImpl(
       aciklama: freezed == aciklama
           ? _value.aciklama
           : aciklama // ignore: cast_nullable_to_non_nullable
@@ -496,8 +496,8 @@ class __$$_TahsilatRequestModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TahsilatRequestModel extends _TahsilatRequestModel {
-  _$_TahsilatRequestModel(
+class _$TahsilatRequestModelImpl extends _TahsilatRequestModel {
+  _$TahsilatRequestModelImpl(
       {this.aciklama,
       this.belgeNo,
       this.gc,
@@ -529,8 +529,8 @@ class _$_TahsilatRequestModel extends _TahsilatRequestModel {
       this.hedefAciklama})
       : super._();
 
-  factory _$_TahsilatRequestModel.fromJson(Map<String, dynamic> json) =>
-      _$$_TahsilatRequestModelFromJson(json);
+  factory _$TahsilatRequestModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TahsilatRequestModelImplFromJson(json);
 
   @override
   String? aciklama;
@@ -596,13 +596,14 @@ class _$_TahsilatRequestModel extends _TahsilatRequestModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TahsilatRequestModelCopyWith<_$_TahsilatRequestModel> get copyWith =>
-      __$$_TahsilatRequestModelCopyWithImpl<_$_TahsilatRequestModel>(
-          this, _$identity);
+  _$$TahsilatRequestModelImplCopyWith<_$TahsilatRequestModelImpl>
+      get copyWith =>
+          __$$TahsilatRequestModelImplCopyWithImpl<_$TahsilatRequestModelImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TahsilatRequestModelToJson(
+    return _$$TahsilatRequestModelImplToJson(
       this,
     );
   }
@@ -638,11 +639,11 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
       String? cariKodu,
       String? sozlesmeKodu,
       String? krediKartNo,
-      String? hedefAciklama}) = _$_TahsilatRequestModel;
+      String? hedefAciklama}) = _$TahsilatRequestModelImpl;
   _TahsilatRequestModel._() : super._();
 
   factory _TahsilatRequestModel.fromJson(Map<String, dynamic> json) =
-      _$_TahsilatRequestModel.fromJson;
+      _$TahsilatRequestModelImpl.fromJson;
 
   @override
   String? get aciklama;
@@ -737,6 +738,6 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
   set hedefAciklama(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$_TahsilatRequestModelCopyWith<_$_TahsilatRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TahsilatRequestModelImplCopyWith<_$TahsilatRequestModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
