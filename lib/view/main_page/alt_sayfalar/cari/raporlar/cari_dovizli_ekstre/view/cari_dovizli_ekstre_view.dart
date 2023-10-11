@@ -54,10 +54,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
 
   @override
   Widget build(BuildContext context) {
-    return PDFViewerView(
-        filterBottomSheet: filterBottomSheet,
-        title: "Cari Dövizli Ekstre",
-        pdfData: viewModel.pdfModel);
+    return PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Cari Dövizli Ekstre", pdfData: viewModel.pdfModel);
   }
 
   Future<bool> filterBottomSheet() async {
@@ -81,8 +78,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                 readOnly: true,
                 suffixMore: true,
                 onTap: () async {
-                  var result = await Get.toNamed("/mainPage/cariListesi",
-                      arguments: true);
+                  var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                   if (result != null) {
                     cariController.text = result.cariAdi ?? "";
                     viewModel.changeCariKodu(result.cariKodu ?? "");
@@ -94,70 +90,50 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                   Expanded(
                     child: CustomTextField(
                       labelText: "Döviz Tipi",
-                      valueWidget: Observer(
-                          builder: (_) => Text(viewModel.dovizValue ?? "")),
+                      valueWidget: Observer(builder: (_) => Text(viewModel.dovizValue ?? "")),
                       controller: dovizController,
                       readOnly: true,
                       suffixMore: true,
                       onTap: () async {
-                        List<DovizList>? dovizList =
-                            CacheManager.getAnaVeri()?.paramModel?.dovizList;
-                        dovizList = dovizList
-                            ?.where((element) => element.dovizTipi != 0)
-                            .toList();
-                        DovizList? result = await bottomSheetDialogManager
-                            .showBottomSheetDialog(context,
-                                title: "Döviz Tipi",
-                                children: dovizList!
-                                    .map((e) => BottomSheetModel(
-                                        title: e.isim ?? "",
-                                        onTap: () => Get.back(result: e)))
-                                    .toList());
+                        List<DovizList>? dovizList = CacheManager.getAnaVeri()?.paramModel?.dovizList;
+                        dovizList = dovizList?.where((element) => element.dovizTipi != 0).toList();
+                        DovizList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                            title: "Döviz Tipi", children: dovizList!.map((e) => BottomSheetModel(title: e.isim ?? "", onTap: () => Get.back(result: e))).toList());
                         if (result != null) {
                           dovizController.text = result.isim ?? "";
-                          viewModel.changeDovizTipi(result.isim != mainCurrency
-                              ? (result.dovizTipi ?? (result.dovizKodu ?? 0))
-                              : 0);
-                          viewModel.changeDovizValue(
-                              (result.dovizKodu ?? -1).toString());
+                          viewModel.changeDovizTipi(result.isim != mainCurrency ? (result.dovizTipi ?? (result.dovizKodu ?? 0)) : 0);
+                          viewModel.changeDovizValue((result.dovizKodu ?? -1).toString());
                         }
                       },
                     ),
                   ),
-                  CustomWidgetWithLabel(
-                      text: "$mainCurrency Hareketi Dökülsün",
-                      isVertical: true,
-                      child: Observer(builder: (_) {
-                        return Switch.adaptive(
-                            value: viewModel.tlHareketleriDokulsun,
-                            onChanged: (value) {
-                              viewModel.changeTlHareketleriDokulsun();
-                              viewModel.pdfModel.dicParams?.tlHarDokulsun =
-                                  value ? "E" : null;
-                            });
-                      }))
                 ],
               ),
+              CustomWidgetWithLabel(
+                  text: "$mainCurrency Hareketi Dökülsün",
+                  isVertical: true,
+                  child: Observer(builder: (_) {
+                    return Switch.adaptive(
+                        value: viewModel.tlHareketleriDokulsun,
+                        onChanged: (value) {
+                          viewModel.changeTlHareketleriDokulsun();
+                          viewModel.pdfModel.dicParams?.tlHarDokulsun = value ? "E" : null;
+                        });
+                  })).paddingAll(UIHelper.lowSize),
               Observer(builder: (_) {
                 return ElevatedButton(
-                    onPressed: () {
-                      if (viewModel.pdfModel.dicParams?.cariKodu == null) {
-                        dialogManager
-                            .showAlertDialog("Lütfen tüm alanları doldurunuz");
-                      } else {
-                        viewModel.pdfModel.dicParams?.bastar =
-                            baslangicTarihiController.text != ""
-                                ? baslangicTarihiController.text
-                                : null;
-                        viewModel.pdfModel.dicParams?.bittar =
-                            bitisTarihiController.text != ""
-                                ? bitisTarihiController.text
-                                : null;
-                        viewModel.setFuture();
-                        Get.back();
-                      }
-                    },
-                    child: const Text("Uygula"));
+                        onPressed: () {
+                          if (viewModel.pdfModel.dicParams?.cariKodu == null) {
+                            dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
+                          } else {
+                            viewModel.pdfModel.dicParams?.bastar = baslangicTarihiController.text != "" ? baslangicTarihiController.text : null;
+                            viewModel.pdfModel.dicParams?.bittar = bitisTarihiController.text != "" ? bitisTarihiController.text : null;
+                            viewModel.setFuture();
+                            Get.back();
+                          }
+                        },
+                        child: const Text("Uygula"))
+                    .paddingAll(UIHelper.lowSize);
               })
             ],
           ),

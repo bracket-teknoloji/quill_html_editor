@@ -312,7 +312,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                   value: viewModel.kapaliBelgelerListelenmesin,
                                   onChanged: (value) => viewModel
                                       .setKapaliBelgelerListelenmesin(value))),
-                        ),
+                        ).paddingAll(UIHelper.lowSize),
                         Observer(
                             builder: (_) => SlideControllerWidget(
                                 scroll: false,

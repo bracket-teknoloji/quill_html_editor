@@ -125,8 +125,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Observer(builder: (_) {
-                    if (widget.onClear != null) {
+                  if (widget.onClear != null)
+                    Observer(builder: (_) {
                       return Visibility(
                         visible: (viewModel.showClearButton == true) && (widget.isMust != true),
                         child: IconButton(
@@ -139,10 +139,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           icon: const Icon(Icons.close),
                         ),
                       );
-                    } else {
-                      return const SizedBox();
-                    }
-                  }),
+                    }),
                   if (widget.suffix != null) widget.suffix!,
                   if (widget.isDateTime == true)
                     IconButton(

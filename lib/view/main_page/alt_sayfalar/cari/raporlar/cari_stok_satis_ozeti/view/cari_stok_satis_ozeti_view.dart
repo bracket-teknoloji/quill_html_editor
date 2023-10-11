@@ -80,20 +80,13 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
     return Scaffold(
       appBar: AppBar(
         title: Observer(builder: (_) {
-          return viewModel.searchBar
-              ? const CustomAppBarTextField()
-              : const Text("Cari Stok Satış Özeti");
+          return viewModel.searchBar ? const CustomAppBarTextField() : const Text("Cari Stok Satış Özeti");
         }),
         actions: [
-          IconButton(
-              onPressed: () async => viewModel.setSearchBar(),
-              icon: const Icon(Icons.search_outlined)),
+          IconButton(onPressed: () async => viewModel.setSearchBar(), icon: const Icon(Icons.search_outlined)),
           IconButton(
               onPressed: () async {
-                viewModel.setSirala(await bottomSheetDialogManager
-                    .showBottomSheetDialog(context,
-                        title: "Sırala",
-                        children: viewModel.bottomSheetModelList));
+                viewModel.setSirala(await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Sırala", children: viewModel.bottomSheetModelList));
                 getData();
               },
               icon: const Icon(Icons.sort_by_alpha_outlined)),
@@ -103,71 +96,35 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                     title: "Filtrele",
                     body: Column(children: [
                       CustomWidgetWithLabel(
-                          text: "İrsaliyeler Dahil",
-                          isVertical: true,
-                          child: Observer(
-                              builder: (_) => Switch.adaptive(
-                                  value: viewModel.irsDahil,
-                                  onChanged: (value) =>
-                                      viewModel.setIrsDahil(value)))),
+                          text: "İrsaliyeler Dahil", isVertical: true, child: Observer(builder: (_) => Switch.adaptive(value: viewModel.irsDahil, onChanged: (value) => viewModel.setIrsDahil(value)))),
                       Row(
                         children: [
                           Expanded(
                               child: CustomTextField(
-                                  labelText: "Stok Grup Kodu",
-                                  controller: stokGrupKoduController,
-                                  readOnly: true,
-                                  suffixMore: true,
-                                  onTap: () async => await getGrupKodu(
-                                      0, stokGrupKoduController))),
+                                  labelText: "Stok Grup Kodu", controller: stokGrupKoduController, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(0, stokGrupKoduController))),
                           Expanded(
                               child: CustomTextField(
-                                  labelText: "Stok Kod 1",
-                                  controller: stokKodu1Controller,
-                                  readOnly: true,
-                                  suffixMore: true,
-                                  onTap: () async => await getGrupKodu(
-                                      1, stokKodu1Controller))),
+                                  labelText: "Stok Kod 1", controller: stokKodu1Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(1, stokKodu1Controller))),
                         ],
                       ),
                       Row(
                         children: [
                           Expanded(
                               child: CustomTextField(
-                                  labelText: "Stok Kod 2",
-                                  controller: stokKodu2Controller,
-                                  readOnly: true,
-                                  suffixMore: true,
-                                  onTap: () async => await getGrupKodu(
-                                      2, stokKodu2Controller))),
+                                  labelText: "Stok Kod 2", controller: stokKodu2Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(2, stokKodu2Controller))),
                           Expanded(
                               child: CustomTextField(
-                                  labelText: "Stok Kod 3",
-                                  controller: stokKodu3Controller,
-                                  readOnly: true,
-                                  suffixMore: true,
-                                  onTap: () async => await getGrupKodu(
-                                      3, stokKodu3Controller))),
+                                  labelText: "Stok Kod 3", controller: stokKodu3Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(3, stokKodu3Controller))),
                         ],
                       ),
                       Row(
                         children: [
                           Expanded(
                               child: CustomTextField(
-                                  labelText: "Stok Kod 4",
-                                  controller: stokKodu4Controller,
-                                  readOnly: true,
-                                  suffixMore: true,
-                                  onTap: () async => await getGrupKodu(
-                                      4, stokKodu4Controller))),
+                                  labelText: "Stok Kod 4", controller: stokKodu4Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(4, stokKodu4Controller))),
                           Expanded(
                               child: CustomTextField(
-                                  labelText: "Stok Kod 5",
-                                  controller: stokKodu5Controller,
-                                  readOnly: true,
-                                  suffixMore: true,
-                                  onTap: () async => await getGrupKodu(
-                                      5, stokKodu5Controller))),
+                                  labelText: "Stok Kod 5", controller: stokKodu5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, stokKodu5Controller))),
                         ],
                       ),
                       Row(
@@ -219,7 +176,10 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                   readOnly: true,
                   controller: cariController,
                   suffixMore: true,
-                  onTap: () => getData()),
+                  onTap: () async {
+                    viewModel.model = null;
+                    getData();
+                  }),
               viewModel.modelList != null
                   ? (viewModel.modelList!.isNotEmpty
                       ? SizedBox(
@@ -230,37 +190,19 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                             itemBuilder: (context, index) {
                               return Card(
                                 child: ListTile(
-                                  title: Text(
-                                      viewModel.modelList?[index].stokAdi ??
-                                          ""),
-                                  subtitle: Text(
-                                      "Stok Kodu: ${viewModel.modelList?[index].stokKodu ?? ""}"),
-                                  trailing: Text(viewModel.modelList?[index]
-                                          .miktar.toStringIfNotNull ??
-                                      ""),
-                                  onTap: () async =>
-                                      await bottomSheetDialogManager
-                                          .showBottomSheetDialog(context,
-                                              title: "Seçenekler",
-                                              children: [
-                                        BottomSheetModel(
-                                            title:
-                                                "Cari Stok Satış Hareketleri",
-                                            iconWidget:
-                                                Icons.inventory_2_outlined,
-                                            onTap: () {
-                                              Get.back();
-                                              return Get.toNamed(
-                                                  "/mainPage/stokHareketleri",
-                                                  arguments: viewModel
-                                                      .modelList?[index]
-                                                      .stokKodu);
-                                            }),
-                                        BottomSheetModel(
-                                            title: "Stok İşlemleri",
-                                            iconWidget: Icons.list_alt_outlined,
-                                            onTap: () {}),
-                                      ]),
+                                  title: Text(viewModel.modelList?[index].stokAdi ?? ""),
+                                  subtitle: Text("Stok Kodu: ${viewModel.modelList?[index].stokKodu ?? ""}"),
+                                  trailing: Text(viewModel.modelList?[index].miktar.toStringIfNotNull ?? ""),
+                                  onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: [
+                                    BottomSheetModel(
+                                        title: "Cari Stok Satış Hareketleri",
+                                        iconWidget: Icons.inventory_2_outlined,
+                                        onTap: () {
+                                          Get.back();
+                                          return Get.toNamed("/mainPage/stokHareketleri", arguments: viewModel.modelList?[index].stokKodu);
+                                        }),
+                                    BottomSheetModel(title: "Stok İşlemleri", iconWidget: Icons.list_alt_outlined, onTap: () {}),
+                                  ]),
                                 ),
                               );
                             },
@@ -269,18 +211,14 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                       : const Center(child: Text("Sonuç Bulunamadı")))
                   : const Center(child: CircularProgressIndicator.adaptive()),
             ],
-          );
+          ).paddingAll(UIHelper.lowSize);
         }),
       ),
     );
   }
 
   void getData() async {
-    viewModel.model == null
-        ? viewModel.setModel(
-            await Get.toNamed("mainPage/cariListesi", arguments: true)
-                as CariListesiModel?)
-        : null;
+    viewModel.model == null ? viewModel.setModel(await Get.toNamed("mainPage/cariListesi", arguments: true) as CariListesiModel?) : null;
     if (viewModel.model != null) {
       cariController.text = viewModel.model?.cariAdi ?? "";
       var map = {
@@ -302,21 +240,14 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
         "ArrStokKod5": jsonEncode(viewModel.arrStokKod5.toList()),
       };
       map.removeWhere((key, value) => value == null || value == "[]");
-      var result = await networkManager.dioGet<CariStokSatisOzetiModel>(
-          path: ApiUrls.getFaturaKalemleri,
-          bodyModel: CariStokSatisOzetiModel(),
-          queryParameters: map);
+      var result = await networkManager.dioGet<CariStokSatisOzetiModel>(path: ApiUrls.getFaturaKalemleri, bodyModel: CariStokSatisOzetiModel(), queryParameters: map);
       if (result.data != null) {
-        viewModel.setModelList(result.data
-            .map((e) => e as CariStokSatisOzetiModel)
-            .toList()
-            .cast<CariStokSatisOzetiModel>());
+        viewModel.setModelList(result.data.map((e) => e as CariStokSatisOzetiModel).toList().cast<CariStokSatisOzetiModel>());
       }
     }
   }
 
-  Future<String?> getGrupKodu(
-      int grupNo, TextEditingController? controller) async {
+  Future<String?> getGrupKodu(int grupNo, TextEditingController? controller) async {
     if (grupKodList.isEmptyOrNull) {
       dialogManager.loadingDialog();
       grupKodList = await networkManager.getGrupKod(name: "STOK", grupNo: -1);
@@ -326,15 +257,11 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
         .where((e) => e.grupNo == grupNo)
         .toList()
         .cast<BaseGrupKoduModel>()
-        .map((e) => BottomSheetModel(
-            title: e.grupAdi ?? "",
-            description: e.grupKodu ?? "",
-            onTap: () => Get.back(result: e)))
+        .map((e) => BottomSheetModel(title: e.grupAdi ?? "", description: e.grupKodu ?? "", onTap: () => Get.back(result: e)))
         .toList()
         .cast<BottomSheetModel>();
     // ignore: use_build_context_synchronously
-    var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-        title: "Grup Kodu", children: bottomSheetList);
+    var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Grup Kodu", children: bottomSheetList);
     if (result != null) {
       controller?.text = result.grupKodu ?? "";
       switch (grupNo) {

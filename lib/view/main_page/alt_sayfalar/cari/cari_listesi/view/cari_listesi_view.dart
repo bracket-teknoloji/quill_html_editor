@@ -527,7 +527,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     childrenValueList: viewModel.bakiyeMap.values.toList(),
                     groupValue: viewModel.bakiyeGroupValue);
               }),
-            ).paddingAll(UIHelper.lowSize),
+            ),
             Row(
               children: [
                 Expanded(
@@ -585,25 +585,24 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                   controller: ilceController,
                   onChanged: (value) => viewModel.changeIlce(value),
                 )),
-                Expanded(child: Observer(builder: (_) {
-                  return CustomTextField(
-                    labelText: "Tipi",
-                    controller: tipiController,
-                    suffixMore: true,
-                    readOnly: true,
-                    onClear: () {
-                      tipiController.text = "";
-                      viewModel.changeCariTipi(null);
-                    },
-                    onTap: () async {
-                      var result = await bottomSheetDialogManager.showCariTipiBottomSheetDialog(context);
-                      if (result != null) {
-                        tipiController.text = result;
-                        viewModel.changeCariTipi(result != "Komisyoncu" ? result[0] : "I");
-                      }
-                    },
-                  );
-                })),
+                Expanded(
+                    child: CustomTextField(
+                  labelText: "Tipi",
+                  controller: tipiController,
+                  suffixMore: true,
+                  readOnly: true,
+                  onClear: () {
+                    tipiController.text = "";
+                    viewModel.changeCariTipi(null);
+                  },
+                  onTap: () async {
+                    var result = await bottomSheetDialogManager.showCariTipiBottomSheetDialog(context);
+                    if (result != null) {
+                      tipiController.text = result;
+                      viewModel.changeCariTipi(result != "Komisyoncu" ? result[0] : "I");
+                    }
+                  },
+                )),
               ],
             ),
             InkWell(
@@ -611,7 +610,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [const Text("Cari Rapor Kodları"), Observer(builder: (_) => Icon(viewModel.kodlariGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down))],
-              ).paddingAll(UIHelper.lowSize),
+              ),
             ).paddingAll(UIHelper.lowSize),
             Observer(builder: (_) {
               return Visibility(
@@ -729,34 +728,32 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
             }),
             Row(
               children: [
-                Expanded(child: Observer(builder: (_) {
-                  return ElevatedButton(
-                      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
-                      onPressed: () {
-                        Get.back();
-                        viewModel.resetFilter();
-                        plasiyerController.text = "";
-                        sehirController.text = "";
-                        ilceController.text = "";
-                        tipiController.text = "";
-                        kod1Controller.text = "";
-                        kod2Controller.text = "";
-                        kod3Controller.text = "";
-                        kod4Controller.text = "";
-                        kod5Controller.text = "";
-                        viewModel.resetPage();
-                      },
-                      child: const Text("Filtreyi Temizle"));
-                })),
+                Expanded(
+                    child: ElevatedButton(
+                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
+                        onPressed: () {
+                          Get.back();
+                          viewModel.resetFilter();
+                          plasiyerController.text = "";
+                          sehirController.text = "";
+                          ilceController.text = "";
+                          tipiController.text = "";
+                          kod1Controller.text = "";
+                          kod2Controller.text = "";
+                          kod3Controller.text = "";
+                          kod4Controller.text = "";
+                          kod5Controller.text = "";
+                          viewModel.resetPage();
+                        },
+                        child: const Text("Filtreyi Temizle"))),
                 SizedBox(width: UIHelper.midSize),
-                Expanded(child: Observer(builder: (_) {
-                  return ElevatedButton(
-                      onPressed: () async {
-                        Get.back();
-                        await viewModel.resetPage();
-                      },
-                      child: const Text("Uygula"));
-                })),
+                Expanded(
+                    child: ElevatedButton(
+                        onPressed: () async {
+                          Get.back();
+                          await viewModel.resetPage();
+                        },
+                        child: const Text("Uygula"))),
               ],
             ).paddingAll(UIHelper.lowSize),
           ],

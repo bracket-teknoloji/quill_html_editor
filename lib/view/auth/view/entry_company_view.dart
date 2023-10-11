@@ -3,6 +3,7 @@ import "dart:developer";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
 
 import "../../../core/base/model/base_network_mixin.dart";
 import "../../../core/base/model/generic_response_model.dart";
@@ -84,7 +85,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
           if (snapshot.connectionState == ConnectionState.done) {
             return SingleChildScrollView(
               child: Padding(
-                  padding: context.padding.normal,
+                  padding: UIHelper.midPadding,
                   child: Center(
                     child: Container(
                       constraints: const BoxConstraints(maxWidth: 500),
@@ -99,8 +100,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   text: "Şirket",
                                   child: TextFormField(
                                     decoration: const InputDecoration(
-                                      suffixIcon:
-                                          Icon(Icons.more_horiz_outlined),
+                                      suffixIcon: Icon(Icons.more_horiz_outlined),
                                     ),
                                     controller: controller1,
                                     readOnly: true,
@@ -122,8 +122,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                         isletmeDialog(context);
                                       },
                                       decoration: const InputDecoration(
-                                        suffixIcon:
-                                            Icon(Icons.more_horiz_outlined),
+                                        suffixIcon: Icon(Icons.more_horiz_outlined),
                                       ),
                                     )),
                                 CustomWidgetWithLabel(
@@ -136,8 +135,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                         subeDialog(context);
                                       },
                                       decoration: const InputDecoration(
-                                        suffixIcon:
-                                            Icon(Icons.more_horiz_outlined),
+                                        suffixIcon: Icon(Icons.more_horiz_outlined),
                                       ),
                                     )),
                               ]
@@ -154,24 +152,14 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   ..aktifVeritabani = selected["Şirket"]
                                   ..aktifIsletmeKodu = selected["İşletme"]
                                   ..aktifSubeKodu = selected["Şube"];
-                                dialogManager.showLoadingDialog(
-                                    "${selected["Şirket"]} şirketine giriş yapılıyor.");
-                                GenericResponseModel<NetworkManagerMixin>
-                                    response;
-                                response = await networkManager
-                                    .dioPost<MainPageModel>(
-                                        path: ApiUrls.createSession,
-                                        bodyModel: MainPageModel(),
-                                        showError: false,
-                                        data: model,
-                                        headers: {
-                                      "VERITABANI":
-                                          selected["Şirket"].toString(),
-                                      "ISLETME_KODU":
-                                          selected["İşletme"].toString(),
-                                      "SUBE_KODU": selected["Şube"].toString(),
-                                      "content-type": "application/json"
-                                    });
+                                dialogManager.showLoadingDialog("${selected["Şirket"]} şirketine giriş yapılıyor.");
+                                GenericResponseModel<NetworkManagerMixin> response;
+                                response = await networkManager.dioPost<MainPageModel>(path: ApiUrls.createSession, bodyModel: MainPageModel(), showError: false, data: model, headers: {
+                                  "VERITABANI": selected["Şirket"].toString(),
+                                  "ISLETME_KODU": selected["İşletme"].toString(),
+                                  "SUBE_KODU": selected["Şube"].toString(),
+                                  "content-type": "application/json"
+                                });
                                 if (response.data != null) {
                                   MainPageModel model = response.data[0];
                                   CacheManager.setAnaVeri(model);
@@ -179,30 +167,19 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   CacheManager.setIsletmeSube(userData);
                                   CacheManager.setLogout(true);
                                   Get.offAndToNamed("/mainPage");
-                                  var result = await networkManager
-                                      .dioPost<AccountModel>(
-                                          path: ApiUrls.saveUyeBilgileri,
-                                          bodyModel: AccountModel(),
-                                          showError: false,
-                                          data: CacheManager.getHesapBilgileri
-                                              ?.toJson());
+                                  var result = await networkManager.dioPost<AccountModel>(
+                                      path: ApiUrls.saveUyeBilgileri, bodyModel: AccountModel(), showError: false, data: CacheManager.getHesapBilgileri?.toJson());
                                   if (result.success == true) {
                                     log("Session Başarılı");
                                   }
                                   // Get.toNamed("/mainPage");
-                                  (response.message?.ext.isNotNullOrNoEmpty ??
-                                          false)
-                                      ? dialogManager.showAlertDialog(
-                                          response.message.toString())
-                                      : null;
+                                  (response.message?.ext.isNotNullOrNoEmpty ?? false) ? dialogManager.showAlertDialog(response.message.toString()) : null;
                                 } else {
                                   dialogManager.hideAlertDialog;
-                                  dialogManager.showAlertDialog(
-                                      response.message.toString());
+                                  dialogManager.showAlertDialog(response.message.toString());
                                 }
                               } else {
-                                dialogManager
-                                    .showErrorSnackBar("Boş bırakmayınız.");
+                                dialogManager.showErrorSnackBar("Boş bırakmayınız.");
                               }
                             },
                             child: const Text("Giriş"),
@@ -240,8 +217,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
               title: sube![index].subeAdi!,
               onTap: () {
                 setState(() {
-                  controller3.text =
-                      "${sube![index].subeAdi} ${sube![index].subeKodu ?? 0}";
+                  controller3.text = "${sube![index].subeAdi} ${sube![index].subeKodu ?? 0}";
                   selected["Şube"] = sube![index].subeKodu ?? 0;
                   userData["Şube"] = sube![index].subeAdi;
                 });
@@ -291,8 +267,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
               title: isletme![index].isletmeAdi!,
               onTap: () {
                 setState(() {
-                  controller2.text =
-                      "${isletme![index].isletmeAdi} ${isletme![index].isletmeKodu ?? 0}";
+                  controller2.text = "${isletme![index].isletmeAdi} ${isletme![index].isletmeKodu ?? 0}";
                   controller3.text = "";
                   selected["İşletme"] = isletme![index].isletmeKodu ?? 0;
                   userData["İşletme"] = isletme![index].isletmeAdi;
@@ -381,9 +356,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     final data = response.data;
     if (data != null) {
       for (IsletmeModel element in data) {
-        element.subeKodu == null
-            ? list.add(element..subeKodu = 0)
-            : list.add(element);
+        element.subeKodu == null ? list.add(element..subeKodu = 0) : list.add(element);
       }
       CacheManager.setSubeListesi(data);
     }

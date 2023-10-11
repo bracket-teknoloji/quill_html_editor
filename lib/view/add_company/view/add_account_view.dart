@@ -3,7 +3,7 @@ import "dart:convert";
 import "package:crypto/crypto.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:kartal/kartal.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
 
 import "../../../core/base/model/generic_response_model.dart";
 import "../../../core/base/state/base_state.dart";
@@ -44,13 +44,11 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
         appBar: AppBar(
           title: const Text("Firmalar"),
           centerTitle: false,
-          actions: [
-            IconButton(onPressed: loginMethod, icon: const Icon(Icons.save))
-          ],
+          actions: [IconButton(onPressed: loginMethod, icon: const Icon(Icons.save))],
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: context.padding.normal,
+            padding: UIHelper.lowPadding,
             child: AutofillGroup(
               child: Form(
                 key: formKey,
@@ -59,38 +57,23 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
                   children: [
                     CustomWidgetWithLabel(
                       text: "Firma E-Posta Adresi",
-                      child: CustomTextField(
-                          controller: emailController,
-                          keyboardType: TextInputType.emailAddress,
-                          isMust: true),
+                      onlyLabelpaddingLeft: UIHelper.lowSize,
+                      child: CustomTextField(controller: emailController, keyboardType: TextInputType.emailAddress, isMust: true),
                     ),
                     Padding(
-                      padding: context.padding.verticalLow,
+                      padding: UIHelper.lowPaddingVertical,
                       child: CustomWidgetWithLabel(
                         text: "Şifre",
-                        child: CustomTextField(
-                            keyboardType: TextInputType.visiblePassword,
-                            controller: passwordController,
-                            isMust: true,
-                            onSubmitted: (value) => loginMethod),
+                        onlyLabelpaddingLeft: UIHelper.lowSize,
+                        child: CustomTextField(keyboardType: TextInputType.visiblePassword, controller: passwordController, isMust: true, onSubmitted: (value) => loginMethod),
                       ),
                     ),
                     const Wrap(
                       direction: Axis.horizontal,
                       crossAxisAlignment: WrapCrossAlignment.center,
-                      children: [
-                        Icon(Icons.question_mark_rounded),
-                        Text(
-                            "Bilgileri girerken büyük-küçük uyumuna dikkat ediniz.",
-                            softWrap: true)
-                      ],
+                      children: [Icon(Icons.question_mark_rounded), Text("Bilgileri girerken büyük-küçük uyumuna dikkat ediniz.", softWrap: true)],
                     ),
-                    Padding(
-                      padding: context.padding.verticalLow,
-                      child: ElevatedButton(
-                          onPressed: () => _getQR(context),
-                          child: const Text("BİLGİLERİ QR KOD'DAN AL")),
-                    )
+                    ElevatedButton(onPressed: () => _getQR(context), child: const Text("BİLGİLERİ QR KOD'DAN AL")).paddingAll(UIHelper.lowSize)
                   ],
                 ),
               ),
@@ -107,23 +90,18 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
       AccountModel.instance
         ..uyeEmail = emailController.text
         ..uyeSifre = encodedPassword;
-      final response = await networkManager.getUyeBilgileri(
-          emailController.text,
-          password: encodedPassword,
-          getFromCache: false);
+      final response = await networkManager.getUyeBilgileri(emailController.text, password: encodedPassword, getFromCache: false);
       dialogManager.hideAlertDialog;
       if (response.success == true) {
         for (AccountResponseModel item in response.data) {
           if (!CacheManager.accountsBox.containsKey(item.email)) {
             CacheManager.setHesapBilgileri(AccountModel.instance);
-            CacheManager.setAccounts(
-                response.data!.first..parola = encodedPassword);
+            CacheManager.setAccounts(response.data!.first..parola = encodedPassword);
             Get.back(result: true);
             Get.offAndToNamed("/addCompany");
             dialogManager.showSuccessSnackBar("Başarılı");
           } else {
-            dialogManager.showErrorSnackBar(
-                "${item.firmaKisaAdi ?? item.firma} zaten kayıtlı");
+            dialogManager.showErrorSnackBar("${item.firmaKisaAdi ?? item.firma} zaten kayıtlı");
           }
         }
       } else {
@@ -138,8 +116,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
 
     if (barcode != null) {
       AccountModel.instance.qrData = barcode;
-      response =
-          await networkManager.getUyeBilgileri(null, getFromCache: false);
+      response = await networkManager.getUyeBilgileri(null, getFromCache: false);
       // response = await networkManager.dioPost<AccountResponseModel>(
       //   bodyModel: AccountResponseModel(),
       //   addTokenKey: false,
@@ -147,8 +124,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
       //   path: ApiUrls.getUyeBilgileri,
       // );
       if (response.success == true) {
-        String encodedPassword = passwordDecoder(
-            utf8.decode(base64.decode(response.data.first.parola)));
+        String encodedPassword = passwordDecoder(utf8.decode(base64.decode(response.data.first.parola)));
         AccountModel.instance.uyeEmail = response.data.first.email;
         AccountModel.instance.uyeSifre = encodedPassword;
         AccountModel.instance.qrData = null;
@@ -160,8 +136,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
             CacheManager.setAccounts(item..parola = encodedPassword);
             dialogManager.showSuccessSnackBar("Başarılı");
           } else {
-            dialogManager
-                .showErrorSnackBar("${item.firmaKisaAdi} zaten kayıtlı");
+            dialogManager.showErrorSnackBar("${item.firmaKisaAdi} zaten kayıtlı");
           }
         }
       } else {
@@ -170,6 +145,5 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
     }
   }
 
-  String passwordDecoder(String password) =>
-      md5.convert(utf8.encode(password)).toString();
+  String passwordDecoder(String password) => md5.convert(utf8.encode(password)).toString();
 }

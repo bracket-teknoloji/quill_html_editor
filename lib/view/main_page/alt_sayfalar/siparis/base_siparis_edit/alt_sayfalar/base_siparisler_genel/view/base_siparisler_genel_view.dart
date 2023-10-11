@@ -27,8 +27,7 @@ class BaseSiparislerGenelView extends StatefulWidget {
   const BaseSiparislerGenelView({super.key, required this.model});
 
   @override
-  State<BaseSiparislerGenelView> createState() =>
-      _BaseSiparislerGenelViewState();
+  State<BaseSiparislerGenelView> createState() => _BaseSiparislerGenelViewState();
 }
 
 class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
@@ -118,8 +117,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                           onPressed: () async {
                             await getBelgeNo();
                           },
-                          icon: const Icon(
-                              Icons.format_list_numbered_rtl_outlined)),
+                          icon: const Icon(Icons.format_list_numbered_rtl_outlined)),
                       onChanged: (value) {
                         model.belgeNo = value;
                       },
@@ -134,8 +132,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     // valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
 
                     onTap: () async {
-                      var result = await Get.toNamed("mainPage/cariListesi",
-                          arguments: true);
+                      var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
                       if (result != null && result is CariListesiModel) {
                         model.cariAdi = result.cariAdi ?? "";
                         model.cariKodu = result.cariKodu ?? "";
@@ -147,16 +144,14 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                       }
                     }),
                 CustomTextField(
-                    enabled:
-                        enable && yetkiController.siparisFarkliTeslimCariAktif,
+                    enabled: enable && yetkiController.siparisFarkliTeslimCariAktif,
                     labelText: "Teslim Cari",
                     readOnly: true,
                     suffixMore: true,
                     controller: teslimCariController,
                     suffix: IconButton(
                         onPressed: () async {
-                          var result = await Get.toNamed("mainPage/cariRehberi",
-                              arguments: model.cariKodu ?? "");
+                          var result = await Get.toNamed("mainPage/cariRehberi", arguments: model.cariKodu ?? "");
                           if (result != null && result is CariListesiModel) {
                             model.teslimCari = result.cariKodu;
                             model.teslimCariAdi = result.cariAdi;
@@ -172,17 +167,14 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     onTap: !yetkiController.siparisFarkliTeslimCariAktif
                         ? null
                         : () async {
-                            var result = await Get.toNamed(
-                                "mainPage/cariListesi",
-                                arguments: true);
+                            var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
                             if (result != null && result is CariListesiModel) {
                               model.teslimCari = result.cariKodu;
                               model.teslimCariAdi = result.cariAdi;
                               model.plasiyerAciklama = result.plasiyerAciklama;
                               model.plasiyerKodu = result.plasiyerKodu;
                               teslimCariController.text = result.cariAdi ?? "";
-                              plasiyerController.text =
-                                  result.plasiyerAciklama ?? "";
+                              plasiyerController.text = result.plasiyerAciklama ?? "";
                             }
                           }),
                 Row(
@@ -197,12 +189,10 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                             suffixMore: true,
                             controller: belgeTipiController,
                             onTap: () async {
-                              var result = await bottomSheetDialogManager
-                                  .showBelgeTipiBottomSheetDialog(context);
+                              var result = await bottomSheetDialogManager.showBelgeTipiBottomSheetDialog(context);
                               if (result != null) {
                                 model.belgeTipi = result.belgeTipiId;
-                                belgeTipiController.text =
-                                    result.belgeTipi ?? "";
+                                belgeTipiController.text = result.belgeTipi ?? "";
                               }
                             })),
                     Expanded(
@@ -213,23 +203,19 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                       readOnly: true,
                       suffixMore: true,
                       controller: plasiyerController,
-                      valueWidget: Observer(
-                          builder: (_) =>
-                              Text(viewModel.model.plasiyerKodu ?? "")),
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                       onClear: () {
                         viewModel.setPlasiyer(null);
                         model.plasiyerKodu = null;
                         model.plasiyerAciklama = null;
                       },
                       onTap: () async {
-                        var result = await bottomSheetDialogManager
-                            .showPlasiyerBottomSheetDialog(context);
+                        var result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
                         if (result != null) {
                           viewModel.setPlasiyer(result);
                           model.plasiyerKodu = result.plasiyerKodu;
                           model.plasiyerAciklama = result.plasiyerAciklama;
-                          plasiyerController.text =
-                              result.plasiyerAciklama ?? "";
+                          plasiyerController.text = result.plasiyerAciklama ?? "";
                         }
                       },
                     )).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
@@ -246,8 +232,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                             readOnly: true,
                             isDateTime: true,
                             onTap: () async {
-                              var result =
-                                  await dialogManager.showDateTimePicker();
+                              var result = await dialogManager.showDateTimePicker();
                               if (result != null) {
                                 model.tarih = result;
                                 tarihController.text = result.toDateString;
@@ -262,12 +247,10 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                             isDateTime: true,
                             readOnly: true,
                             onTap: () async {
-                              var result =
-                                  await dialogManager.showDateTimePicker();
+                              var result = await dialogManager.showDateTimePicker();
                               if (result != null) {
                                 model.teslimTarihi = result;
-                                teslimTarihController.text =
-                                    result.toDateString;
+                                teslimTarihController.text = result.toDateString;
                               }
                             },
                             controller: teslimTarihController)),
@@ -283,19 +266,13 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                       readOnly: true,
                       suffixMore: true,
                       controller: topluDepoController,
-                      valueWidget: Observer(
-                          builder: (_) => Text(
-                              viewModel.model.topluDepo.toStringIfNotNull ??
-                                  "")),
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
                       onClear: () => viewModel.setTopluDepoKodu(null),
                       onTap: () async {
-                        var result = await bottomSheetDialogManager
-                            .showDepoBottomSheetDialog(context);
+                        var result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context);
                         if (result != null) {
                           viewModel.setTopluDepoKodu(result.depoKodu);
-                          topluDepoController.text = result.depoTanimi ??
-                              result.depoKodu.toStringIfNotNull ??
-                              "";
+                          topluDepoController.text = result.depoTanimi ?? result.depoKodu.toStringIfNotNull ?? "";
                         }
                       },
                     )).yetkiVarMi(yetkiController.lokalDepoUygulamasiAcikMi),
@@ -307,16 +284,12 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                       readOnly: true,
                       suffixMore: true,
                       controller: projeController,
-                      valueWidget: Observer(
-                          builder: (_) =>
-                              Text(viewModel.model.projeKodu ?? "")),
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                       onTap: () async {
-                        BaseProjeModel? result = await bottomSheetDialogManager
-                            .showProjeBottomSheetDialog(context);
+                        BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
                         if (result != null) {
                           viewModel.setProjeKodu(result);
-                          projeController.text =
-                              result.projeAciklama ?? result.projeKodu ?? "";
+                          projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
                         }
                       },
                     )).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
@@ -332,16 +305,12 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                             readOnly: true,
                             suffixMore: true,
                             controller: odemeKoduController,
-                            valueWidget: Observer(
-                                builder: (_) =>
-                                    Text(viewModel.model.odemeKodu ?? "")),
+                            valueWidget: Observer(builder: (_) => Text(viewModel.model.odemeKodu ?? "")),
                             onTap: () async {
-                              var result = await bottomSheetDialogManager
-                                  .showOdemeKoduBottomSheetDialog(context);
+                              var result = await bottomSheetDialogManager.showOdemeKoduBottomSheetDialog(context);
                               if (result != null) {
                                 viewModel.setOdemeKodu(result.odemeKodu);
-                                odemeKoduController.text =
-                                    result.aciklama ?? "";
+                                odemeKoduController.text = result.aciklama ?? "";
                               }
                             })).yetkiVarMi(yetkiController.siparisKosulAktifMi),
                     Expanded(
@@ -351,17 +320,12 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                             readOnly: true,
                             suffixMore: true,
                             controller: kosulController,
-                            valueWidget: Observer(
-                                builder: (_) =>
-                                    Text(viewModel.model.kosulKodu ?? "")),
+                            valueWidget: Observer(builder: (_) => Text(viewModel.model.kosulKodu ?? "")),
                             onTap: () async {
-                              var result = await bottomSheetDialogManager
-                                  .showKosullarBottomSheetDialog(context);
+                              var result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context);
                               if (result != null) {
                                 viewModel.setKosulKodu(result.kosulKodu);
-                                kosulController.text = result.genelKosulAdi ??
-                                    result.kosulKodu ??
-                                    "";
+                                kosulController.text = result.genelKosulAdi ?? result.kosulKodu ?? "";
                               }
                             })).yetkiVarMi(yetkiController.siparisKosulAktifMi),
                   ],
@@ -378,15 +342,12 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                       suffixMore: true,
                       controller: ozelKod1Controller,
                       onClear: () => model.ozelKod2 = null,
-                      valueWidget: Observer(
-                          builder: (_) => Text(viewModel.model.ozelKod1 ?? "")),
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod1 ?? "")),
                       onTap: () async {
-                        ListOzelKodTum? result = await bottomSheetDialogManager
-                            .showOzelKod1BottomSheetDialog(context);
+                        ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context);
                         if (result != null) {
                           viewModel.setOzelKod1(result.kod);
-                          ozelKod1Controller.text =
-                              result.aciklama ?? result.kod ?? "";
+                          ozelKod1Controller.text = result.aciklama ?? result.kod ?? "";
                         }
                         // var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Özel Kod 1");
                       },
@@ -398,170 +359,63 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                       readOnly: true,
                       suffixMore: true,
                       controller: ozelKod2Controller,
-                      valueWidget: Observer(
-                          builder: (_) => Text(viewModel.model.ozelKod2 ?? "")),
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod2 ?? "")),
                       onClear: () => viewModel.setOzelKod2(null),
                       onTap: () async {
-                        ListOzelKodTum? result = await bottomSheetDialogManager
-                            .showOzelKod2BottomSheetDialog(context);
+                        ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context);
                         if (result != null) {
                           viewModel.setOzelKod2(result.kod);
-                          ozelKod2Controller.text =
-                              result.aciklama ?? result.kod ?? "";
+                          ozelKod2Controller.text = result.aciklama ?? result.kod ?? "";
                         }
                       },
                     )).yetkiVarMi(yetkiController.satisOzelKod2AktifMi),
                   ],
                 ),
                 CustomWidgetWithLabel(
-                    text: "KDV Dahil",
-                    isVertical: true,
-                    child: Observer(
-                        builder: (_) => Switch.adaptive(
-                            value: viewModel.kdvDahil,
-                            onChanged: widget.model.baseEditEnum !=
-                                    BaseEditEnum.goruntule
-                                ? (value) => viewModel.changeKdvDahil(value)
-                                : null))),
+                        text: "KDV Dahil",
+                        isVertical: true,
+                        child: Observer(
+                            builder: (_) =>
+                                Switch.adaptive(value: viewModel.kdvDahil, onChanged: widget.model.baseEditEnum != BaseEditEnum.goruntule ? (value) => viewModel.changeKdvDahil(value) : null)))
+                    .paddingAll(UIHelper.lowSize),
                 CustomWidgetWithLabel(
                     text: "Ek Açıklamalar",
+                    onlyLabelpaddingLeft: UIHelper.lowSize,
                     child: Column(
                       children: [
                         CustomTextField(
-                                enabled: enable,
-                                labelText: paramModel?.satisEkAciklamaTanimi1 ??
-                                    "Açıklama 1",
-                                onChanged: (p0) => changeAciklama(1, p0),
-                                controller: teslimEdilecekKisiController)
-                            .yetkiVarMi(
-                                yetkiController.siparisMSAciklamaAlanlari(1)),
-                        CustomTextField(
-                                enabled: enable,
-                                labelText: paramModel?.satisEkAciklamaTanimi2 ??
-                                    "Açıklama 2",
-                                onChanged: (p0) => changeAciklama(2, p0),
-                                controller: b2bEmailController)
-                            .yetkiVarMi(
-                                yetkiController.siparisMSAciklamaAlanlari(2)),
-                        CustomTextField(
-                                enabled: enable,
-                                labelText: paramModel?.satisEkAciklamaTanimi3 ??
-                                    "Açıklama 3",
-                                onChanged: (p0) => changeAciklama(3, p0),
-                                controller: masrafKoduController)
-                            .yetkiVarMi(
-                                yetkiController.siparisMSAciklamaAlanlari(3)),
-                        CustomTextField(
-                                enabled: enable,
-                                labelText: paramModel?.satisEkAciklamaTanimi4 ??
-                                    "Açıklama 4",
-                                onChanged: (p0) => changeAciklama(4, p0),
-                                controller: masrafYeriController)
-                            .yetkiVarMi(
-                                yetkiController.siparisMSAciklamaAlanlari(4)),
-                        CustomTextField(
-                                enabled: enable,
-                                labelText: paramModel?.satisEkAciklamaTanimi5 ??
-                                    "Açıklama 5",
-                                onChanged: (p0) => changeAciklama(5, p0),
-                                controller: siparisNotuController)
-                            .yetkiVarMi(
-                                yetkiController.siparisMSAciklamaAlanlari(5)),
-                        CustomTextField(
-                                enabled: enable,
-                                labelText: paramModel?.satisEkAciklamaTanimi6 ??
-                                    "Açıklama 6",
-                                onChanged: (p0) => changeAciklama(6, p0),
-                                controller: sASNoController)
-                            .yetkiVarMi(
-                                yetkiController.siparisMSAciklamaAlanlari(6)),
-                        CustomTextField(
-                                enabled: enable,
-                                labelText: paramModel?.satisEkAciklamaTanimi7 ??
-                                    "Açıklama 7",
-                                onChanged: (p0) => changeAciklama(7, p0),
-                                controller: b2bSepetIDController)
-                            .yetkiVarMi(
-                                yetkiController.siparisMSAciklamaAlanlari(7)),
-                        CustomTextField(
-                                enabled: enable,
-                                labelText: paramModel?.satisEkAciklamaTanimi8 ??
-                                    "Açıklama 8",
-                                onChanged: (p0) => changeAciklama(8, p0),
-                                controller: tamTeslimatController)
-                            .yetkiVarMi(
-                                yetkiController.siparisMSAciklamaAlanlari(8)),
-                        CustomTextField(
-                                enabled: enable,
-                                labelText: paramModel?.satisEkAciklamaTanimi9 ??
-                                    "Açıklama 9",
-                                onChanged: (p0) => changeAciklama(9, p0),
-                                controller: satisAcik9Controller)
-                            .yetkiVarMi(
-                                yetkiController.siparisMSAciklamaAlanlari(9)),
-                        CustomTextField(
-                                enabled: enable,
-                                labelText:
-                                    paramModel?.satisEkAciklamaTanimi10 ??
-                                        "Açıklama 10",
-                                onChanged: (p0) => changeAciklama(10, p0),
-                                controller: satisAcik10Controller)
-                            .yetkiVarMi(
-                                yetkiController.siparisMSAciklamaAlanlari(10)),
-                        CustomTextField(
-                                enabled: enable,
-                                labelText:
-                                    paramModel?.satisEkAciklamaTanimi11 ??
-                                        "Açıklama 11",
-                                onChanged: (p0) => changeAciklama(11, p0),
-                                controller: satisAcik11Controller)
-                            .yetkiVarMi(
-                                yetkiController.siparisMSAciklamaAlanlari(11)),
-                        CustomTextField(
-                                enabled: enable,
-                                labelText:
-                                    paramModel?.satisEkAciklamaTanimi12 ??
-                                        "Açıklama 12",
-                                onChanged: (p0) => changeAciklama(12, p0),
-                                controller: fiyatGrubuController)
-                            .yetkiVarMi(
-                                yetkiController.siparisMSAciklamaAlanlari(12)),
-                        CustomTextField(
-                                enabled: enable,
-                                labelText:
-                                    paramModel?.satisEkAciklamaTanimi13 ??
-                                        "Açıklama 13",
-                                onChanged: (p0) => changeAciklama(13, p0),
-                                controller: satisAcik13Controller)
-                            .yetkiVarMi(
-                                yetkiController.siparisMSAciklamaAlanlari(13)),
-                        CustomTextField(
-                                enabled: enable,
-                                labelText:
-                                    paramModel?.satisEkAciklamaTanimi14 ??
-                                        "Açıklama 14",
-                                onChanged: (p0) => changeAciklama(14, p0),
-                                controller: satisAcik14Controller)
-                            .yetkiVarMi(
-                                yetkiController.siparisMSAciklamaAlanlari(14)),
-                        CustomTextField(
-                                enabled: enable,
-                                labelText:
-                                    paramModel?.satisEkAciklamaTanimi15 ??
-                                        "Açıklama 15",
-                                onChanged: (p0) => changeAciklama(15, p0),
-                                controller: satisAcik15Controller)
-                            .yetkiVarMi(
-                                yetkiController.siparisMSAciklamaAlanlari(15)),
-                        CustomTextField(
-                                enabled: enable,
-                                labelText:
-                                    paramModel?.satisEkAciklamaTanimi16 ??
-                                        "Açıklama 16",
-                                onChanged: (p0) => changeAciklama(16, p0),
-                                controller: satisAcik16Controller)
-                            .yetkiVarMi(
-                                yetkiController.siparisMSAciklamaAlanlari(16)),
+                                enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi1 ?? "Açıklama 1", onChanged: (p0) => changeAciklama(1, p0), controller: teslimEdilecekKisiController)
+                            .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(1)),
+                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi2 ?? "Açıklama 2", onChanged: (p0) => changeAciklama(2, p0), controller: b2bEmailController)
+                            .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(2)),
+                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi3 ?? "Açıklama 3", onChanged: (p0) => changeAciklama(3, p0), controller: masrafKoduController)
+                            .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(3)),
+                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi4 ?? "Açıklama 4", onChanged: (p0) => changeAciklama(4, p0), controller: masrafYeriController)
+                            .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(4)),
+                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi5 ?? "Açıklama 5", onChanged: (p0) => changeAciklama(5, p0), controller: siparisNotuController)
+                            .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(5)),
+                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi6 ?? "Açıklama 6", onChanged: (p0) => changeAciklama(6, p0), controller: sASNoController)
+                            .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(6)),
+                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi7 ?? "Açıklama 7", onChanged: (p0) => changeAciklama(7, p0), controller: b2bSepetIDController)
+                            .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(7)),
+                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi8 ?? "Açıklama 8", onChanged: (p0) => changeAciklama(8, p0), controller: tamTeslimatController)
+                            .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(8)),
+                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi9 ?? "Açıklama 9", onChanged: (p0) => changeAciklama(9, p0), controller: satisAcik9Controller)
+                            .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(9)),
+                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi10 ?? "Açıklama 10", onChanged: (p0) => changeAciklama(10, p0), controller: satisAcik10Controller)
+                            .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(10)),
+                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi11 ?? "Açıklama 11", onChanged: (p0) => changeAciklama(11, p0), controller: satisAcik11Controller)
+                            .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(11)),
+                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi12 ?? "Açıklama 12", onChanged: (p0) => changeAciklama(12, p0), controller: fiyatGrubuController)
+                            .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(12)),
+                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi13 ?? "Açıklama 13", onChanged: (p0) => changeAciklama(13, p0), controller: satisAcik13Controller)
+                            .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(13)),
+                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi14 ?? "Açıklama 14", onChanged: (p0) => changeAciklama(14, p0), controller: satisAcik14Controller)
+                            .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(14)),
+                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi15 ?? "Açıklama 15", onChanged: (p0) => changeAciklama(15, p0), controller: satisAcik15Controller)
+                            .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(15)),
+                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi16 ?? "Açıklama 16", onChanged: (p0) => changeAciklama(16, p0), controller: satisAcik16Controller)
+                            .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(16)),
                       ],
                     ))
               ],
@@ -575,8 +429,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
   Future<void> init() async {
     controllerFiller();
 
-    if (BaseSiparisEditModel.instance.belgeNo == null ||
-        widget.model.isKopyala) {
+    if (BaseSiparisEditModel.instance.belgeNo == null || widget.model.isKopyala) {
       await getBelgeNo();
     }
     controllerFiller();
@@ -586,12 +439,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
     var result = await networkManager.dioGet<BaseSiparisEditModel>(
         path: ApiUrls.getSiradakiBelgeNo,
         bodyModel: BaseSiparisEditModel(),
-        queryParameters: {
-          "Seri": belgeNoController.text,
-          "BelgeTipi": widget.model.siparisTipiEnum?.rawValue,
-          "EIrsaliye": "H",
-          "CariKodu": model.cariKodu ?? ""
-        },
+        queryParameters: {"Seri": belgeNoController.text, "BelgeTipi": widget.model.siparisTipiEnum?.rawValue, "EIrsaliye": "H", "CariKodu": model.cariKodu ?? ""},
         showLoading: true);
     if (result.success == true) {
       BaseSiparisEditModel.instance.belgeNo = result.data?.first.belgeNo;
@@ -609,9 +457,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
     plasiyerController.text = model.plasiyerAciklama ?? "";
     tarihController.text = model.tarih.toDateString;
     teslimTarihController.text = model.teslimTarihi.toDateString;
-    topluDepoController.text = yetkiController.lokalDepoUygulamasiAcikMi
-        ? model.topluDepo.toStringIfNotNull ?? ""
-        : "";
+    topluDepoController.text = yetkiController.lokalDepoUygulamasiAcikMi ? model.topluDepo.toStringIfNotNull ?? "" : "";
     projeController.text = model.projeAciklama ?? "";
     odemeKoduController.text = model.odemeKodu ?? "";
     kosulController.text = model.kosulKodu ?? "";
@@ -639,16 +485,10 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
       ozelKod1Controller.text = model.ozelKod1 ?? "";
     }
     if (model.topluDepo != null) {
-      topluDepoController.text = parametreModel.depoList
-              ?.firstWhere((element) => element.depoKodu == model.topluDepo)
-              .depoTanimi ??
-          "";
+      topluDepoController.text = parametreModel.depoList?.firstWhere((element) => element.depoKodu == model.topluDepo).depoTanimi ?? "";
     }
     if (model.ozelKod2 != null) {
-      ozelKod2Controller.text = parametreModel.listOzelKodTum
-              ?.firstWhere((element) => element.kod == model.ozelKod2)
-              .aciklama ??
-          "";
+      ozelKod2Controller.text = parametreModel.listOzelKodTum?.firstWhere((element) => element.kod == model.ozelKod2).aciklama ?? "";
     }
   }
 
