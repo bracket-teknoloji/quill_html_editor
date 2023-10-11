@@ -25,8 +25,7 @@ class KrediKartiTahsilatiView extends StatefulWidget {
   const KrediKartiTahsilatiView({super.key});
 
   @override
-  State<KrediKartiTahsilatiView> createState() =>
-      _KrediKartiTahsilatiViewState();
+  State<KrediKartiTahsilatiView> createState() => _KrediKartiTahsilatiViewState();
 }
 
 class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
@@ -72,8 +71,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
         // viewModel.setPickerBelgeTuru("KKT");
         await getBankaHesaplari();
       }
-      if (viewModel.model.kktYontemi == "K" ||
-          viewModel.model.kktYontemi == "H") {
+      if (viewModel.model.kktYontemi == "K" || viewModel.model.kktYontemi == "H") {
         viewModel.setHesapTipi("C");
         await viewModel.getSiradakiKod();
         await getKasa();
@@ -117,9 +115,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
 
   AppBar appBar() {
     return AppBar(
-      title: Observer(
-          builder: (_) => AppBarTitle(
-              title: "K.Kartı Tahsilatı", subtitle: viewModel.appBarSubTitle)),
+      title: Observer(builder: (_) => AppBarTitle(title: "K.Kartı Tahsilatı", subtitle: viewModel.appBarSubTitle)),
       actions: [
         IconButton(
           onPressed: () async {
@@ -127,8 +123,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
               var result = await viewModel.postData();
               if (result.success == true) {
                 Get.back(result: true);
-                dialogManager
-                    .showSuccessSnackBar(result.message ?? "Kayıt başarılı");
+                dialogManager.showSuccessSnackBar(result.message ?? "Kayıt başarılı");
               }
             }
           },
@@ -142,250 +137,206 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
     return SingleChildScrollView(
       child: Form(
         key: formKey,
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Observer(
-                  builder: (_) => CustomTextField(
-                      labelText: "Belge No",
-                      controller: _belgeNoController,
-                      maxLength: 15,
-                      onChanged: (value) => viewModel.setBelgeNo(value),
-                      suffix: IconButton(
-                        onPressed: () async {
-                          await viewModel.getSiradakiKod();
-                          _belgeNoController.text =
-                              viewModel.model.belgeNo ?? "";
-                        },
-                        icon: const Icon(Icons.add_outlined),
-                      )).yetkiVarMi(viewModel.model.kktYontemi != "D")),
-              CustomTextField(
-                labelText: "Tarih",
-                controller: _tarihController,
-                isMust: true,
-                isDateTime: true,
-                readOnly: true,
-                onTap: () async {
-                  var result = await showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime(2000),
-                      lastDate: DateTime(2100));
-                  if (result != null) {
-                    _tarihController.text = result.toDateString;
+        child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Observer(
+              builder: (_) => CustomTextField(
+                  labelText: "Belge No",
+                  controller: _belgeNoController,
+                  maxLength: 15,
+                  onChanged: (value) => viewModel.setBelgeNo(value),
+                  suffix: IconButton(
+                    onPressed: () async {
+                      await viewModel.getSiradakiKod();
+                      _belgeNoController.text = viewModel.model.belgeNo ?? "";
+                    },
+                    icon: const Icon(Icons.add_outlined),
+                  )).yetkiVarMi(viewModel.model.kktYontemi != "D")),
+          CustomTextField(
+            labelText: "Tarih",
+            controller: _tarihController,
+            isMust: true,
+            isDateTime: true,
+            readOnly: true,
+            onTap: () async {
+              var result = await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime(2100));
+              if (result != null) {
+                _tarihController.text = result.toDateString;
+              }
+            },
+          ),
+          CustomTextField(
+              labelText: "Cari",
+              controller: _cariController,
+              isMust: true,
+              readOnly: true,
+              suffixMore: true,
+              valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
+              onTap: () async => await getCari(),
+              suffix: IconButton(
+                onPressed: () async {
+                  if (viewModel.model.cariKodu != null) {
+                    dialogManager.showCariGridViewDialog(CariListesiModel(cariKodu: viewModel.model.cariKodu));
+                  } else {
+                    dialogManager.showErrorSnackBar("Cari seçiniz");
                   }
                 },
+                icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+              )),
+          Observer(
+              builder: (_) => Text(
+                    (viewModel.getCariBakiye ?? "") + ((viewModel.cariBakiye ?? 0) > 0 ? " (Tahsil Edilecek)" : " (Ödenecek)"),
+                    style: TextStyle(color: (viewModel.cariBakiye ?? 0) > 0 ? Colors.green : Colors.red),
+                  ).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.getCariBakiye != null)),
+          Observer(builder: (_) {
+            return Row(
+              children: [
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Kasa",
+                    controller: _kasaController,
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.kasaKodu ?? "")),
+                    onTap: () async => await getKasa(),
+                  ),
+                ).yetkiVarMi(viewModel.model.kktYontemi == "K" || viewModel.model.kktYontemi == "H"),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Sözleşme",
+                    controller: _sozlesmeController,
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.sozlesmeKodu ?? "")),
+                    onTap: () async => await getBankaSozlesmesi(),
+                  ),
+                ).yetkiVarMi(viewModel.model.kktYontemi == "H")
+              ],
+            );
+          }),
+          Observer(builder: (_) {
+            return Row(
+              children: [
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Seri",
+                    controller: _seriController,
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.dekontSeri ?? "")),
+                    onTap: () async => await getSeri(),
+                  ),
+                ),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Hesap",
+                    controller: _hesapController,
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.hesapKodu ?? "")),
+                    onTap: () async => await getBankaHesaplari(),
+                  ),
+                ),
+              ],
+            ).yetkiVarMi(viewModel.model.kktYontemi == "D");
+          }),
+          Observer(builder: (_) {
+            return CustomTextField(
+              labelText: "Kredi Kartı No",
+              controller: _krediKartiNoController,
+              keyboardType: TextInputType.number,
+              maxLength: 16,
+              onChanged: (value) => viewModel.setKrediKartiNo(value),
+            ).yetkiVarMi(viewModel.model.kktYontemi == "H");
+          }),
+          Row(
+            children: [
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Tutar",
+                  controller: _tutarController,
+                  isMust: true,
+                  isFormattedString: true,
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                  onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
+                ),
               ),
-              CustomTextField(
-                  labelText: "Cari",
-                  controller: _cariController,
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Plasiyer",
+                  controller: _plasiyerController,
                   isMust: true,
                   readOnly: true,
                   suffixMore: true,
-                  valueWidget: Observer(
-                      builder: (_) => Text(viewModel.model.cariKodu ?? "")),
-                  onTap: () async => await getCari(),
-                  suffix: IconButton(
-                    onPressed: () async {
-                      if (viewModel.model.cariKodu != null) {
-                        dialogManager.showCariGridViewDialog(CariListesiModel(
-                            cariKodu: viewModel.model.cariKodu));
-                      } else {
-                        dialogManager.showErrorSnackBar("Cari seçiniz");
-                      }
-                    },
-                    icon: Icon(Icons.open_in_new_outlined,
-                        color: UIHelper.primaryColor),
-                  )),
-              Observer(
-                  builder: (_) => Text(
-                        (viewModel.getCariBakiye ?? "") +
-                            ((viewModel.cariBakiye ?? 0) > 0
-                                ? " (Tahsil Edilecek)"
-                                : " (Ödenecek)"),
-                        style: TextStyle(
-                            color: (viewModel.cariBakiye ?? 0) > 0
-                                ? Colors.green
-                                : Colors.red),
-                      )
-                          .paddingAll(UIHelper.lowSize)
-                          .yetkiVarMi(viewModel.getCariBakiye != null)),
-              Observer(builder: (_) {
-                return Row(
-                  children: [
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Kasa",
-                        controller: _kasaController,
-                        isMust: true,
-                        readOnly: true,
-                        suffixMore: true,
-                        valueWidget: Observer(
-                            builder: (_) =>
-                                Text(viewModel.model.kasaKodu ?? "")),
-                        onTap: () async => await getKasa(),
-                      ),
-                    ).yetkiVarMi(viewModel.model.kktYontemi == "K" ||
-                        viewModel.model.kktYontemi == "H"),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Sözleşme",
-                        controller: _sozlesmeController,
-                        isMust: true,
-                        readOnly: true,
-                        suffixMore: true,
-                        valueWidget: Observer(
-                            builder: (_) =>
-                                Text(viewModel.model.sozlesmeKodu ?? "")),
-                        onTap: () async => await getBankaSozlesmesi(),
-                      ),
-                    ).yetkiVarMi(viewModel.model.kktYontemi == "H")
-                  ],
-                );
-              }),
-              Observer(builder: (_) {
-                return Row(
-                  children: [
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Seri",
-                        controller: _seriController,
-                        isMust: true,
-                        readOnly: true,
-                        suffixMore: true,
-                        valueWidget: Observer(
-                            builder: (_) =>
-                                Text(viewModel.model.dekontSeri ?? "")),
-                        onTap: () async => await getSeri(),
-                      ),
-                    ),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Hesap",
-                        controller: _hesapController,
-                        isMust: true,
-                        readOnly: true,
-                        suffixMore: true,
-                        valueWidget: Observer(
-                            builder: (_) =>
-                                Text(viewModel.model.hesapKodu ?? "")),
-                        onTap: () async => await getBankaHesaplari(),
-                      ),
-                    ),
-                  ],
-                ).yetkiVarMi(viewModel.model.kktYontemi == "D");
-              }),
-              Observer(builder: (_) {
-                return CustomTextField(
-                  labelText: "Kredi Kartı No",
-                  controller: _krediKartiNoController,
-                  keyboardType: TextInputType.number,
-                  maxLength: 16,
-                  onChanged: (value) => viewModel.setKrediKartiNo(value),
-                ).yetkiVarMi(viewModel.model.kktYontemi == "H");
-              }),
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Tutar",
-                      controller: _tutarController,
-                      isMust: true,
-                      isFormattedString: true,
-                      keyboardType:
-                          const TextInputType.numberWithOptions(decimal: true),
-                      onChanged: (value) =>
-                          viewModel.setTutar(value.toDoubleWithFormattedString),
-                    ),
-                  ),
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Plasiyer",
-                      controller: _plasiyerController,
-                      isMust: true,
-                      readOnly: true,
-                      suffixMore: true,
-                      valueWidget: Observer(
-                          builder: (_) =>
-                              Text(viewModel.model.plasiyerKodu ?? "")),
-                      onTap: () async {
-                        var result = await bottomSheetDialogManager
-                            .showPlasiyerBottomSheetDialog(context);
-                        if (result is PlasiyerList) {
-                          _plasiyerController.text =
-                              result.plasiyerAciklama ?? "";
-                          viewModel.setPlasiyerKodu(result);
-                        }
-                      },
-                    ),
-                  ),
-                ],
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                  onTap: () async {
+                    var result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
+                    if (result is PlasiyerList) {
+                      _plasiyerController.text = result.plasiyerAciklama ?? "";
+                      viewModel.setPlasiyerKodu(result);
+                    }
+                  },
+                ),
               ),
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Proje",
-                      controller: _projekoduController,
-                      isMust: true,
-                      readOnly: true,
-                      suffixMore: true,
-                      valueWidget: Observer(
-                          builder: (_) =>
-                              Text(viewModel.model.projeKodu ?? "")),
-                      onTap: () async {
-                        var result = await bottomSheetDialogManager
-                            .showProjeBottomSheetDialog(context);
-                        if (result is BaseProjeModel) {
-                          _projekoduController.text =
-                              result.projeAciklama ?? "";
-                          viewModel.setProjekodu(result.projeKodu);
-                        }
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Referans Kodu",
-                      controller: _referansKoduController,
-                      isMust: true,
-                      readOnly: true,
-                      suffixMore: true,
-                      valueWidget: Observer(
-                          builder: (_) => Text(viewModel.model.refKod ?? "")),
-                      onTap: () async {
-                        if (viewModel.muhaRefList.ext.isNullOrEmpty) {
-                          await viewModel.getMuhaRefList();
-                        }
-                        var result = await bottomSheetDialogManager
-                            .showRadioBottomSheetDialog(context,
-                                title: "Referans Kodu",
-                                children: viewModel.muhaRefList!
-                                    .map((e) => BottomSheetModel(
-                                        title: e.tanimi ?? "", value: e))
-                                    .toList());
-                        if (result is MuhasebeReferansModel) {
-                          _referansKoduController.text = result.tanimi ?? "";
-                          viewModel.setReferansKodu(result.kodu);
-                        }
-                      },
-                    ),
-                  ),
-                ],
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Proje",
+                  controller: _projekoduController,
+                  isMust: true,
+                  readOnly: true,
+                  suffixMore: true,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                  onTap: () async {
+                    var result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
+                    if (result is BaseProjeModel) {
+                      _projekoduController.text = result.projeAciklama ?? "";
+                      viewModel.setProjekodu(result.projeKodu);
+                    }
+                  },
+                ),
               ),
-              CustomTextField(
-                labelText: "Açıklama",
-                controller: _aciklamaController,
-                onChanged: (value) => viewModel.setAciklama(value),
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Referans Kodu",
+                  controller: _referansKoduController,
+                  isMust: true,
+                  readOnly: true,
+                  suffixMore: true,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.refKod ?? "")),
+                  onTap: () async {
+                    if (viewModel.muhaRefList.ext.isNullOrEmpty) {
+                      await viewModel.getMuhaRefList();
+                    }
+                    var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
+                        title: "Referans Kodu", children: viewModel.muhaRefList!.map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e)).toList());
+                    if (result is MuhasebeReferansModel) {
+                      _referansKoduController.text = result.tanimi ?? "";
+                      viewModel.setReferansKodu(result.kodu);
+                    }
+                  },
+                ),
               ),
-            ]).paddingAll(UIHelper.lowSize),
+            ],
+          ),
+          CustomTextField(
+            labelText: "Açıklama",
+            controller: _aciklamaController,
+            onChanged: (value) => viewModel.setAciklama(value),
+          ),
+        ]).paddingAll(UIHelper.lowSize),
       ),
     );
   }
 
   Future<void> getCari() async {
-    var result = await Get.toNamed("/mainPage/cariListesi");
+    var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
     if (result is CariListesiModel) {
       _aciklamaController.text = result.cariAdi ?? "";
       _cariController.text = result.cariAdi ?? "";
@@ -397,10 +348,8 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
   }
 
   Future<void> tahsilatYontemiDialog() async {
-    var result = await bottomSheetDialogManager
-        .showBottomSheetDialog(context, title: "Tahsilat Yöntemi", children: [
-      BottomSheetModel(
-          title: "Hızlı Tahsilat Modülü", value: "Hızlı Tahsilat Modülü"),
+    var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Tahsilat Yöntemi", children: [
+      BottomSheetModel(title: "Hızlı Tahsilat Modülü", value: "Hızlı Tahsilat Modülü"),
       BottomSheetModel(title: "Dekont", value: "Dekont"),
       BottomSheetModel(title: "Kasa", value: "Kasa"),
     ]);
@@ -411,8 +360,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
   }
 
   Future<void> getKasa() async {
-    KasaList? result =
-        await bottomSheetDialogManager.showKasaBottomSheetDialog(context);
+    KasaList? result = await bottomSheetDialogManager.showKasaBottomSheetDialog(context);
     if (result != null) {
       _kasaController.text = result.kasaTanimi ?? "";
       viewModel.setKasaKodu(result.kasaKodu);
@@ -424,15 +372,8 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
       await viewModel.getBankaSozlesmesi();
     }
     if (viewModel.bankaSozlesmesiList.ext.isNotNullOrEmpty) {
-      var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-          context,
-          title: "Banka Sözleşmesi",
-          children: viewModel.bankaSozlesmesiList!
-              .map((e) => BottomSheetModel(
-                  title: e.sozlesmeAdi ?? "",
-                  description: e.bankaTanimi,
-                  value: e))
-              .toList());
+      var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
+          title: "Banka Sözleşmesi", children: viewModel.bankaSozlesmesiList!.map((e) => BottomSheetModel(title: e.sozlesmeAdi ?? "", description: e.bankaTanimi, value: e)).toList());
       if (result is BankaSozlesmesiModel) {
         _sozlesmeController.text = result.sozlesmeAdi ?? "";
         viewModel.setSozlesmeKodu(result.sozlesmeKodu);
@@ -445,13 +386,8 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
       await viewModel.getBankaHesaplari();
     }
     if (viewModel.bankaHesaplariList.ext.isNotNullOrEmpty) {
-      var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-          context,
-          title: "Banka Hesapları",
-          children: viewModel.bankaHesaplariList!
-              .map((e) => BottomSheetModel(
-                  title: e.hesapAdi ?? "", description: e.hesapKodu, value: e))
-              .toList());
+      var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
+          title: "Banka Hesapları", children: viewModel.bankaHesaplariList!.map((e) => BottomSheetModel(title: e.hesapAdi ?? "", description: e.hesapKodu, value: e)).toList());
       if (result is BankaHesaplariModel) {
         _hesapController.text = result.hesapAdi ?? "";
         viewModel.setHesapKodu(result.hesapKodu);
@@ -466,13 +402,8 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
       await viewModel.getSeri();
     }
     if (viewModel.seriList.ext.isNotNullOrEmpty) {
-      var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-          context,
-          title: "Seri",
-          children: viewModel.seriList!
-              .map((e) => BottomSheetModel(
-                  title: e.aciklama ?? "", description: e.seriNo, value: e))
-              .toList());
+      var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
+          title: "Seri", children: viewModel.seriList!.map((e) => BottomSheetModel(title: e.aciklama ?? "", description: e.seriNo, value: e)).toList());
       if (result != null) {
         _seriController.text = (result as SeriModel).aciklama ?? "";
         viewModel.setSeri(result);

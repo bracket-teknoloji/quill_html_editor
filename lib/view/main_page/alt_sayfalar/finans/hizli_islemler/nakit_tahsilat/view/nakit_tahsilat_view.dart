@@ -397,7 +397,7 @@ class _NakitTahsilatViewState extends BaseState<NakitTahsilatView> {
   }
 
   Future<void> getCari() async {
-    var result = await Get.toNamed("/mainPage/cariListesi");
+    var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
     if (result is CariListesiModel) {
       _cariHareketiAciklamaController.text = result.cariAdi ?? "";
       _cariController.text = result.cariAdi ?? "";
