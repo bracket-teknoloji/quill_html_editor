@@ -20,30 +20,46 @@ CariRequestModel _$CariRequestModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CariRequestModel {
+  String? get filterText => throw _privateConstructorUsedError;
+  set filterText(String? value) => throw _privateConstructorUsedError;
+  List<String>? get kod => throw _privateConstructorUsedError;
+  set kod(List<String>? value) => throw _privateConstructorUsedError;
   int? get sayfa => throw _privateConstructorUsedError;
   set sayfa(int? value) => throw _privateConstructorUsedError;
   String? get ilce => throw _privateConstructorUsedError;
   set ilce(String? value) => throw _privateConstructorUsedError;
   String? get cariTipi => throw _privateConstructorUsedError;
   set cariTipi(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "SIRALAMA")
   String? get siralama => throw _privateConstructorUsedError;
+  @JsonKey(name: "SIRALAMA")
   set siralama(String? value) => throw _privateConstructorUsedError;
   String? get menuKodu => throw _privateConstructorUsedError;
   set menuKodu(String? value) => throw _privateConstructorUsedError;
-  String? get filterText => throw _privateConstructorUsedError;
-  set filterText(String? value) => throw _privateConstructorUsedError;
   bool? get eFaturaGoster => throw _privateConstructorUsedError;
   set eFaturaGoster(bool? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "FILTER_BAKIYE")
   String? get filterBakiye => throw _privateConstructorUsedError;
+  @JsonKey(name: "FILTER_BAKIYE")
   set filterBakiye(String? value) => throw _privateConstructorUsedError;
-  List<String>? get kod => throw _privateConstructorUsedError;
-  set kod(List<String>? value) => throw _privateConstructorUsedError;
-  List<String>? get arrKod5 => throw _privateConstructorUsedError;
-  set arrKod5(List<String>? value) => throw _privateConstructorUsedError;
-  List<String>? get arrSehir => throw _privateConstructorUsedError;
-  set arrSehir(List<String>? value) => throw _privateConstructorUsedError;
-  List<String>? get arrPlasiyerKodu => throw _privateConstructorUsedError;
-  set arrPlasiyerKodu(List<String>? value) =>
+  List<String?>? get arrGrupKodu => throw _privateConstructorUsedError;
+  set arrGrupKodu(List<String?>? value) => throw _privateConstructorUsedError;
+  List<String?>? get arrKod1 => throw _privateConstructorUsedError;
+  set arrKod1(List<String?>? value) => throw _privateConstructorUsedError;
+  List<String?>? get arrKod2 => throw _privateConstructorUsedError;
+  set arrKod2(List<String?>? value) => throw _privateConstructorUsedError;
+  List<String?>? get arrKod3 => throw _privateConstructorUsedError;
+  set arrKod3(List<String?>? value) => throw _privateConstructorUsedError;
+  List<String?>? get arrKod4 => throw _privateConstructorUsedError;
+  set arrKod4(List<String?>? value) => throw _privateConstructorUsedError;
+  List<String?>? get arrKod5 => throw _privateConstructorUsedError;
+  set arrKod5(List<String?>? value) => throw _privateConstructorUsedError;
+  List<String?>? get arrSehir => throw _privateConstructorUsedError;
+  set arrSehir(List<String?>? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "ArrPlasiyerKodu")
+  List<String?>? get arrPlasiyerKodu => throw _privateConstructorUsedError;
+  @JsonKey(name: "ArrPlasiyerKodu")
+  set arrPlasiyerKodu(List<String?>? value) =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -59,18 +75,23 @@ abstract class $CariRequestModelCopyWith<$Res> {
       _$CariRequestModelCopyWithImpl<$Res, CariRequestModel>;
   @useResult
   $Res call(
-      {int? sayfa,
+      {String? filterText,
+      List<String>? kod,
+      int? sayfa,
       String? ilce,
       String? cariTipi,
-      String? siralama,
+      @JsonKey(name: "SIRALAMA") String? siralama,
       String? menuKodu,
-      String? filterText,
       bool? eFaturaGoster,
-      String? filterBakiye,
-      List<String>? kod,
-      List<String>? arrKod5,
-      List<String>? arrSehir,
-      List<String>? arrPlasiyerKodu});
+      @JsonKey(name: "FILTER_BAKIYE") String? filterBakiye,
+      List<String?>? arrGrupKodu,
+      List<String?>? arrKod1,
+      List<String?>? arrKod2,
+      List<String?>? arrKod3,
+      List<String?>? arrKod4,
+      List<String?>? arrKod5,
+      List<String?>? arrSehir,
+      @JsonKey(name: "ArrPlasiyerKodu") List<String?>? arrPlasiyerKodu});
 }
 
 /// @nodoc
@@ -86,20 +107,33 @@ class _$CariRequestModelCopyWithImpl<$Res, $Val extends CariRequestModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? filterText = freezed,
+    Object? kod = freezed,
     Object? sayfa = freezed,
     Object? ilce = freezed,
     Object? cariTipi = freezed,
     Object? siralama = freezed,
     Object? menuKodu = freezed,
-    Object? filterText = freezed,
     Object? eFaturaGoster = freezed,
     Object? filterBakiye = freezed,
-    Object? kod = freezed,
+    Object? arrGrupKodu = freezed,
+    Object? arrKod1 = freezed,
+    Object? arrKod2 = freezed,
+    Object? arrKod3 = freezed,
+    Object? arrKod4 = freezed,
     Object? arrKod5 = freezed,
     Object? arrSehir = freezed,
     Object? arrPlasiyerKodu = freezed,
   }) {
     return _then(_value.copyWith(
+      filterText: freezed == filterText
+          ? _value.filterText
+          : filterText // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kod: freezed == kod
+          ? _value.kod
+          : kod // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       sayfa: freezed == sayfa
           ? _value.sayfa
           : sayfa // ignore: cast_nullable_to_non_nullable
@@ -120,10 +154,6 @@ class _$CariRequestModelCopyWithImpl<$Res, $Val extends CariRequestModel>
           ? _value.menuKodu
           : menuKodu // ignore: cast_nullable_to_non_nullable
               as String?,
-      filterText: freezed == filterText
-          ? _value.filterText
-          : filterText // ignore: cast_nullable_to_non_nullable
-              as String?,
       eFaturaGoster: freezed == eFaturaGoster
           ? _value.eFaturaGoster
           : eFaturaGoster // ignore: cast_nullable_to_non_nullable
@@ -132,22 +162,38 @@ class _$CariRequestModelCopyWithImpl<$Res, $Val extends CariRequestModel>
           ? _value.filterBakiye
           : filterBakiye // ignore: cast_nullable_to_non_nullable
               as String?,
-      kod: freezed == kod
-          ? _value.kod
-          : kod // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+      arrGrupKodu: freezed == arrGrupKodu
+          ? _value.arrGrupKodu
+          : arrGrupKodu // ignore: cast_nullable_to_non_nullable
+              as List<String?>?,
+      arrKod1: freezed == arrKod1
+          ? _value.arrKod1
+          : arrKod1 // ignore: cast_nullable_to_non_nullable
+              as List<String?>?,
+      arrKod2: freezed == arrKod2
+          ? _value.arrKod2
+          : arrKod2 // ignore: cast_nullable_to_non_nullable
+              as List<String?>?,
+      arrKod3: freezed == arrKod3
+          ? _value.arrKod3
+          : arrKod3 // ignore: cast_nullable_to_non_nullable
+              as List<String?>?,
+      arrKod4: freezed == arrKod4
+          ? _value.arrKod4
+          : arrKod4 // ignore: cast_nullable_to_non_nullable
+              as List<String?>?,
       arrKod5: freezed == arrKod5
           ? _value.arrKod5
           : arrKod5 // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String?>?,
       arrSehir: freezed == arrSehir
           ? _value.arrSehir
           : arrSehir // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String?>?,
       arrPlasiyerKodu: freezed == arrPlasiyerKodu
           ? _value.arrPlasiyerKodu
           : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String?>?,
     ) as $Val);
   }
 }
@@ -161,18 +207,23 @@ abstract class _$$CariRequestModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int? sayfa,
+      {String? filterText,
+      List<String>? kod,
+      int? sayfa,
       String? ilce,
       String? cariTipi,
-      String? siralama,
+      @JsonKey(name: "SIRALAMA") String? siralama,
       String? menuKodu,
-      String? filterText,
       bool? eFaturaGoster,
-      String? filterBakiye,
-      List<String>? kod,
-      List<String>? arrKod5,
-      List<String>? arrSehir,
-      List<String>? arrPlasiyerKodu});
+      @JsonKey(name: "FILTER_BAKIYE") String? filterBakiye,
+      List<String?>? arrGrupKodu,
+      List<String?>? arrKod1,
+      List<String?>? arrKod2,
+      List<String?>? arrKod3,
+      List<String?>? arrKod4,
+      List<String?>? arrKod5,
+      List<String?>? arrSehir,
+      @JsonKey(name: "ArrPlasiyerKodu") List<String?>? arrPlasiyerKodu});
 }
 
 /// @nodoc
@@ -186,20 +237,33 @@ class __$$CariRequestModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? filterText = freezed,
+    Object? kod = freezed,
     Object? sayfa = freezed,
     Object? ilce = freezed,
     Object? cariTipi = freezed,
     Object? siralama = freezed,
     Object? menuKodu = freezed,
-    Object? filterText = freezed,
     Object? eFaturaGoster = freezed,
     Object? filterBakiye = freezed,
-    Object? kod = freezed,
+    Object? arrGrupKodu = freezed,
+    Object? arrKod1 = freezed,
+    Object? arrKod2 = freezed,
+    Object? arrKod3 = freezed,
+    Object? arrKod4 = freezed,
     Object? arrKod5 = freezed,
     Object? arrSehir = freezed,
     Object? arrPlasiyerKodu = freezed,
   }) {
     return _then(_$CariRequestModelImpl(
+      filterText: freezed == filterText
+          ? _value.filterText
+          : filterText // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kod: freezed == kod
+          ? _value.kod
+          : kod // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       sayfa: freezed == sayfa
           ? _value.sayfa
           : sayfa // ignore: cast_nullable_to_non_nullable
@@ -220,10 +284,6 @@ class __$$CariRequestModelImplCopyWithImpl<$Res>
           ? _value.menuKodu
           : menuKodu // ignore: cast_nullable_to_non_nullable
               as String?,
-      filterText: freezed == filterText
-          ? _value.filterText
-          : filterText // ignore: cast_nullable_to_non_nullable
-              as String?,
       eFaturaGoster: freezed == eFaturaGoster
           ? _value.eFaturaGoster
           : eFaturaGoster // ignore: cast_nullable_to_non_nullable
@@ -232,47 +292,73 @@ class __$$CariRequestModelImplCopyWithImpl<$Res>
           ? _value.filterBakiye
           : filterBakiye // ignore: cast_nullable_to_non_nullable
               as String?,
-      kod: freezed == kod
-          ? _value.kod
-          : kod // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+      arrGrupKodu: freezed == arrGrupKodu
+          ? _value.arrGrupKodu
+          : arrGrupKodu // ignore: cast_nullable_to_non_nullable
+              as List<String?>?,
+      arrKod1: freezed == arrKod1
+          ? _value.arrKod1
+          : arrKod1 // ignore: cast_nullable_to_non_nullable
+              as List<String?>?,
+      arrKod2: freezed == arrKod2
+          ? _value.arrKod2
+          : arrKod2 // ignore: cast_nullable_to_non_nullable
+              as List<String?>?,
+      arrKod3: freezed == arrKod3
+          ? _value.arrKod3
+          : arrKod3 // ignore: cast_nullable_to_non_nullable
+              as List<String?>?,
+      arrKod4: freezed == arrKod4
+          ? _value.arrKod4
+          : arrKod4 // ignore: cast_nullable_to_non_nullable
+              as List<String?>?,
       arrKod5: freezed == arrKod5
           ? _value.arrKod5
           : arrKod5 // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String?>?,
       arrSehir: freezed == arrSehir
           ? _value.arrSehir
           : arrSehir // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String?>?,
       arrPlasiyerKodu: freezed == arrPlasiyerKodu
           ? _value.arrPlasiyerKodu
           : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String?>?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.pascal)
 class _$CariRequestModelImpl extends _CariRequestModel {
   _$CariRequestModelImpl(
-      {this.sayfa,
+      {this.filterText,
+      this.kod,
+      this.sayfa,
       this.ilce,
       this.cariTipi,
-      this.siralama,
+      @JsonKey(name: "SIRALAMA") this.siralama,
       this.menuKodu,
-      this.filterText,
       this.eFaturaGoster,
-      this.filterBakiye,
-      this.kod,
+      @JsonKey(name: "FILTER_BAKIYE") this.filterBakiye,
+      this.arrGrupKodu,
+      this.arrKod1,
+      this.arrKod2,
+      this.arrKod3,
+      this.arrKod4,
       this.arrKod5,
       this.arrSehir,
-      this.arrPlasiyerKodu})
+      @JsonKey(name: "ArrPlasiyerKodu") this.arrPlasiyerKodu})
       : super._();
 
   factory _$CariRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CariRequestModelImplFromJson(json);
 
+  @override
+  String? filterText;
+  @override
+  List<String>? kod;
   @override
   int? sayfa;
   @override
@@ -280,23 +366,32 @@ class _$CariRequestModelImpl extends _CariRequestModel {
   @override
   String? cariTipi;
   @override
+  @JsonKey(name: "SIRALAMA")
   String? siralama;
   @override
   String? menuKodu;
   @override
-  String? filterText;
-  @override
   bool? eFaturaGoster;
   @override
+  @JsonKey(name: "FILTER_BAKIYE")
   String? filterBakiye;
   @override
-  List<String>? kod;
+  List<String?>? arrGrupKodu;
   @override
-  List<String>? arrKod5;
+  List<String?>? arrKod1;
   @override
-  List<String>? arrSehir;
+  List<String?>? arrKod2;
   @override
-  List<String>? arrPlasiyerKodu;
+  List<String?>? arrKod3;
+  @override
+  List<String?>? arrKod4;
+  @override
+  List<String?>? arrKod5;
+  @override
+  List<String?>? arrSehir;
+  @override
+  @JsonKey(name: "ArrPlasiyerKodu")
+  List<String?>? arrPlasiyerKodu;
 
   @JsonKey(ignore: true)
   @override
@@ -315,23 +410,35 @@ class _$CariRequestModelImpl extends _CariRequestModel {
 
 abstract class _CariRequestModel extends CariRequestModel {
   factory _CariRequestModel(
-      {int? sayfa,
-      String? ilce,
-      String? cariTipi,
-      String? siralama,
-      String? menuKodu,
-      String? filterText,
-      bool? eFaturaGoster,
-      String? filterBakiye,
-      List<String>? kod,
-      List<String>? arrKod5,
-      List<String>? arrSehir,
-      List<String>? arrPlasiyerKodu}) = _$CariRequestModelImpl;
+          {String? filterText,
+          List<String>? kod,
+          int? sayfa,
+          String? ilce,
+          String? cariTipi,
+          @JsonKey(name: "SIRALAMA") String? siralama,
+          String? menuKodu,
+          bool? eFaturaGoster,
+          @JsonKey(name: "FILTER_BAKIYE") String? filterBakiye,
+          List<String?>? arrGrupKodu,
+          List<String?>? arrKod1,
+          List<String?>? arrKod2,
+          List<String?>? arrKod3,
+          List<String?>? arrKod4,
+          List<String?>? arrKod5,
+          List<String?>? arrSehir,
+          @JsonKey(name: "ArrPlasiyerKodu") List<String?>? arrPlasiyerKodu}) =
+      _$CariRequestModelImpl;
   _CariRequestModel._() : super._();
 
   factory _CariRequestModel.fromJson(Map<String, dynamic> json) =
       _$CariRequestModelImpl.fromJson;
 
+  @override
+  String? get filterText;
+  set filterText(String? value);
+  @override
+  List<String>? get kod;
+  set kod(List<String>? value);
   @override
   int? get sayfa;
   set sayfa(int? value);
@@ -342,32 +449,47 @@ abstract class _CariRequestModel extends CariRequestModel {
   String? get cariTipi;
   set cariTipi(String? value);
   @override
+  @JsonKey(name: "SIRALAMA")
   String? get siralama;
+  @JsonKey(name: "SIRALAMA")
   set siralama(String? value);
   @override
   String? get menuKodu;
   set menuKodu(String? value);
   @override
-  String? get filterText;
-  set filterText(String? value);
-  @override
   bool? get eFaturaGoster;
   set eFaturaGoster(bool? value);
   @override
+  @JsonKey(name: "FILTER_BAKIYE")
   String? get filterBakiye;
+  @JsonKey(name: "FILTER_BAKIYE")
   set filterBakiye(String? value);
   @override
-  List<String>? get kod;
-  set kod(List<String>? value);
+  List<String?>? get arrGrupKodu;
+  set arrGrupKodu(List<String?>? value);
   @override
-  List<String>? get arrKod5;
-  set arrKod5(List<String>? value);
+  List<String?>? get arrKod1;
+  set arrKod1(List<String?>? value);
   @override
-  List<String>? get arrSehir;
-  set arrSehir(List<String>? value);
+  List<String?>? get arrKod2;
+  set arrKod2(List<String?>? value);
   @override
-  List<String>? get arrPlasiyerKodu;
-  set arrPlasiyerKodu(List<String>? value);
+  List<String?>? get arrKod3;
+  set arrKod3(List<String?>? value);
+  @override
+  List<String?>? get arrKod4;
+  set arrKod4(List<String?>? value);
+  @override
+  List<String?>? get arrKod5;
+  set arrKod5(List<String?>? value);
+  @override
+  List<String?>? get arrSehir;
+  set arrSehir(List<String?>? value);
+  @override
+  @JsonKey(name: "ArrPlasiyerKodu")
+  List<String?>? get arrPlasiyerKodu;
+  @JsonKey(name: "ArrPlasiyerKodu")
+  set arrPlasiyerKodu(List<String?>? value);
   @override
   @JsonKey(ignore: true)
   _$$CariRequestModelImplCopyWith<_$CariRequestModelImpl> get copyWith =>

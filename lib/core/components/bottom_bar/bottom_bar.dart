@@ -16,15 +16,21 @@ class BottomBarWidget extends StatefulWidget {
 }
 
 class _BottomBarWidgetState extends BaseState<BottomBarWidget> {
+  List<Widget> list = [];
+
   @override
-  Widget build(BuildContext context) {
-    // ignore: unnecessary_cast
-    List<Widget> list = widget.children.map((e) => e).toList().cast<Widget>();
+  void initState() {
+    list.addAll(widget.children);
     for (int i = 0; i < widget.children.length; i++) {
       if (i * 2 + 1 < list.length) {
         list.insert(i * 2 + 1, const VerticalDivider(width: 1, thickness: 1));
       }
     }
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return ScrollableWidget(
       isScrolledDown: widget.isScrolledDown,
       child: Container(

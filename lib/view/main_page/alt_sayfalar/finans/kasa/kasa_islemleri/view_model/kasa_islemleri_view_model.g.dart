@@ -27,6 +27,22 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
     });
   }
 
+  late final _$paramDataAtom =
+      Atom(name: '_KasaIslemleriViewModelBase.paramData', context: context);
+
+  @override
+  ObservableMap<String, dynamic>? get paramData {
+    _$paramDataAtom.reportRead();
+    return super.paramData;
+  }
+
+  @override
+  set paramData(ObservableMap<String, dynamic>? value) {
+    _$paramDataAtom.reportWrite(value, super.paramData, () {
+      super.paramData = value;
+    });
+  }
+
   late final _$hesapTipiGroupValueAtom = Atom(
       name: '_KasaIslemleriViewModelBase.hesapTipiGroupValue',
       context: context);
@@ -41,22 +57,6 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
   set hesapTipiGroupValue(String? value) {
     _$hesapTipiGroupValueAtom.reportWrite(value, super.hesapTipiGroupValue, () {
       super.hesapTipiGroupValue = value;
-    });
-  }
-
-  late final _$paramDataAtom =
-      Atom(name: '_KasaIslemleriViewModelBase.paramData', context: context);
-
-  @override
-  ObservableMap<String, dynamic>? get paramData {
-    _$paramDataAtom.reportRead();
-    return super.paramData;
-  }
-
-  @override
-  set paramData(ObservableMap<String, dynamic>? value) {
-    _$paramDataAtom.reportWrite(value, super.paramData, () {
-      super.paramData = value;
     });
   }
 
@@ -92,22 +92,6 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
     });
   }
 
-  late final _$searchBarAtom =
-      Atom(name: '_KasaIslemleriViewModelBase.searchBar', context: context);
-
-  @override
-  bool get searchBar {
-    _$searchBarAtom.reportRead();
-    return super.searchBar;
-  }
-
-  @override
-  set searchBar(bool value) {
-    _$searchBarAtom.reportWrite(value, super.searchBar, () {
-      super.searchBar = value;
-    });
-  }
-
   late final _$kasaIslemleriListesiAtom = Atom(
       name: '_KasaIslemleriViewModelBase.kasaIslemleriListesi',
       context: context);
@@ -123,6 +107,22 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
     _$kasaIslemleriListesiAtom.reportWrite(value, super.kasaIslemleriListesi,
         () {
       super.kasaIslemleriListesi = value;
+    });
+  }
+
+  late final _$searchBarAtom =
+      Atom(name: '_KasaIslemleriViewModelBase.searchBar', context: context);
+
+  @override
+  bool get searchBar {
+    _$searchBarAtom.reportRead();
+    return super.searchBar;
+  }
+
+  @override
+  set searchBar(bool value) {
+    _$searchBarAtom.reportWrite(value, super.searchBar, () {
+      super.searchBar = value;
     });
   }
 
@@ -332,12 +332,12 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
   String toString() {
     return '''
 kasaIslemleriRequestModel: ${kasaIslemleriRequestModel},
-hesapTipiGroupValue: ${hesapTipiGroupValue},
 paramData: ${paramData},
+hesapTipiGroupValue: ${hesapTipiGroupValue},
 isScrollDown: ${isScrollDown},
 dahaVarMi: ${dahaVarMi},
-searchBar: ${searchBar},
 kasaIslemleriListesi: ${kasaIslemleriListesi},
+searchBar: ${searchBar},
 searchText: ${searchText}
     ''';
   }

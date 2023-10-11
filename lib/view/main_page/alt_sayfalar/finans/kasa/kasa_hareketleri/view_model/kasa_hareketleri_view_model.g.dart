@@ -101,6 +101,14 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
     return _$resetPageAsyncAction.run(() => super.resetPage());
   }
 
+  late final _$deleteDataAsyncAction =
+      AsyncAction('_KasaHareketleriViewModelBase.deleteData', context: context);
+
+  @override
+  Future<GenericResponseModel<NetworkManagerMixin>> deleteData(int? inckeyNo) {
+    return _$deleteDataAsyncAction.run(() => super.deleteData(inckeyNo));
+  }
+
   late final _$getDataAsyncAction =
       AsyncAction('_KasaHareketleriViewModelBase.getData', context: context);
 

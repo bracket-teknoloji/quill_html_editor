@@ -30,7 +30,7 @@ class CariNetworkManager {
     return responseKod;
   }
 
-  static Future<GenericResponseModel<NetworkManagerMixin>>
+  static Future<List<CariSehirlerModel>?>
       getFilterData() async {
     GenericResponseModel<NetworkManagerMixin> responseSehirler;
     responseSehirler = await networkManager.dioGet<CariSehirlerModel>(
@@ -40,7 +40,7 @@ class CariNetworkManager {
         addSirketBilgileri: true,
         headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"});
 
-    return responseSehirler;
+    return responseSehirler.data?.cast<CariSehirlerModel>();
   }
 
   static Future<GenericResponseModel<NetworkManagerMixin>> getkosullar() async {

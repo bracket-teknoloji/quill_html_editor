@@ -62,14 +62,12 @@ class CustomTextField extends StatefulWidget {
 
 class _CustomTextFieldState extends State<CustomTextField> {
   CustomTextFieldViewModel viewModel = CustomTextFieldViewModel();
-  TextEditingController get controller =>
-      widget.controller ?? TextEditingController(text: widget.controllerText);
+  TextEditingController get controller => widget.controller ?? TextEditingController(text: widget.controllerText);
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       // if (controller.)
-      controller.addListener(
-          () => viewModel.setShowClearButton(controller.text != ""));
+      controller.addListener(() => viewModel.setShowClearButton(controller.text != ""));
     });
     super.initState();
   }
@@ -94,37 +92,28 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget get textFormField {
     return TextFieldTapRegion(
       onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
-      onTapInside: (event) => SelectableText.rich(
-          TextSpan(children: [TextSpan(text: controller.text)])),
+      onTapInside: (event) => SelectableText.rich(TextSpan(children: [TextSpan(text: controller.text)])),
       child: MouseRegion(
         onExit: (event) => FocusManager.instance.primaryFocus?.unfocus(),
         child: TextFormField(
-          autofillHints: widget.keyboardType == TextInputType.emailAddress
-              ? [AutofillHints.email]
-              : null,
+          autofillHints: widget.keyboardType == TextInputType.emailAddress ? [AutofillHints.email] : null,
           textInputAction: TextInputAction.next,
           keyboardType: widget.keyboardType,
           focusNode: widget.focusNode,
           onTap: widget.onTap,
           onChanged: widget.onChanged,
           onFieldSubmitted: widget.onSubmitted,
-          inputFormatters: widget.isFormattedString == true
-              ? [TextFieldFormatterHelper.turkishFormatter]
-              : widget.inputFormatter,
+          inputFormatters: widget.isFormattedString == true ? [TextFieldFormatterHelper.turkishFormatter] : widget.inputFormatter,
           // onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
           maxLength: widget.maxLength,
-          validator: widget.validator ??
-              ((widget.enabled != false ? (widget.isMust ?? false) : false)
-                  ? validator
-                  : null),
+          validator: widget.validator ?? ((widget.enabled != false ? (widget.isMust ?? false) : false) ? validator : null),
           controller: controller,
           obscureText: widget.keyboardType == TextInputType.visiblePassword,
           readOnly: widget.readOnly ?? false,
           enableSuggestions: true,
           decoration: InputDecoration(
               enabled: widget.enabled ?? true,
-              errorStyle: TextStyle(
-                  color: UIHelper.primaryColor, fontWeight: FontWeight.bold),
+              errorStyle: TextStyle(color: UIHelper.primaryColor, fontWeight: FontWeight.bold),
               errorBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: UIHelper.primaryColor.withOpacity(0.7),
@@ -136,11 +125,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  if (widget.onClear != null)
-                    Observer(builder: (_) {
+                  Observer(builder: (_) {
+                    if (widget.onClear != null) {
                       return Visibility(
-                        visible: (viewModel.showClearButton == true) &&
-                            (widget.isMust != true),
+                        visible: (viewModel.showClearButton == true) && (widget.isMust != true),
                         child: IconButton(
                           padding: EdgeInsets.zero,
                           onPressed: () {
@@ -151,7 +139,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           icon: const Icon(Icons.close),
                         ),
                       );
-                    }),
+                    } else {
+                      return const SizedBox();
+                    }
+                  }),
                   if (widget.suffix != null) widget.suffix!,
                   if (widget.isDateTime == true)
                     IconButton(
@@ -160,8 +151,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         onPressed: widget.onTap,
                         icon: const Icon(Icons.date_range_outlined),
                         style: ButtonStyle(
-                          padding: MaterialStateProperty.all(
-                              const EdgeInsets.all(0)),
+                          padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
                           splashFactory: NoSplash.splashFactory,
                         )),
                   if (widget.suffixMore == true)
@@ -171,8 +161,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         onPressed: widget.onTap,
                         icon: const Icon(Icons.more_horiz_outlined),
                         style: ButtonStyle(
-                          padding: MaterialStateProperty.all(
-                              const EdgeInsets.all(0)),
+                          padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
                           splashFactory: NoSplash.splashFactory,
                         )),
                 ].nullCheckWithGeneric,
@@ -185,24 +174,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         Text.rich(TextSpan(children: [
                           TextSpan(
                               text: widget.labelText ?? "",
-                              style: (widget.enabled != false
-                                      ? (widget.isMust ?? false)
-                                      : false)
+                              style: (widget.enabled != false ? (widget.isMust ?? false) : false)
                                   ? TextStyle(color: UIHelper.primaryColor)
-                                  : ((widget.controller?.text == "")
-                                      ? TextStyle(
-                                          color: Colors.grey.withOpacity(0.6))
-                                      : TextStyle(
-                                          color:
-                                              Colors.grey.withOpacity(0.8)))),
-                          TextSpan(
-                              text: " ${widget.valueText ?? ""}",
-                              style: TextStyle(
-                                  color: Colors.grey.withOpacity(0.3),
-                                  fontSize: 12))
+                                  : ((widget.controller?.text == "") ? TextStyle(color: Colors.grey.withOpacity(0.6)) : TextStyle(color: Colors.grey.withOpacity(0.8)))),
+                          TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: Colors.grey.withOpacity(0.3), fontSize: 12))
                         ])),
-                        if (widget.valueWidget != null)
-                          SizedBox(width: UIHelper.lowSize),
+                        if (widget.valueWidget != null) SizedBox(width: UIHelper.lowSize),
                         if (widget.valueWidget != null) widget.valueWidget!,
                       ],
                     )),
@@ -216,17 +193,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
       return "${widget.labelText ?? ""} boş bırakılamaz";
     } else if (widget.maxLength != null && p0.length > widget.maxLength!) {
       return "${widget.labelText ?? ""} en fazla ${widget.maxLength ?? ""} karakter olabilir";
-    } else if (widget.keyboardType == TextInputType.emailAddress &&
-        !GetUtils.isEmail(p0)) {
+    } else if (widget.keyboardType == TextInputType.emailAddress && !GetUtils.isEmail(p0)) {
       return "Geçerli bir e-posta adresi giriniz";
-    } else if (widget.keyboardType == TextInputType.number &&
-        !GetUtils.isNumericOnly(p0)) {
+    } else if (widget.keyboardType == TextInputType.number && !GetUtils.isNumericOnly(p0)) {
       return "Sadece rakam giriniz";
-    } else if (widget.keyboardType == TextInputType.phone &&
-        !GetUtils.isPhoneNumber(p0)) {
+    } else if (widget.keyboardType == TextInputType.phone && !GetUtils.isPhoneNumber(p0)) {
       return "Geçerli bir telefon numarası giriniz";
-    } else if (widget.keyboardType == TextInputType.url &&
-        !GetUtils.isURL(p0)) {
+    } else if (widget.keyboardType == TextInputType.url && !GetUtils.isURL(p0)) {
       return "Geçerli bir url giriniz";
       // } else if (widget.keyboardType == TextInputType.visiblePassword && !GetUtils.isLengthGreaterOrEqual(p0, 6)) {
       //   return "Şifre en az 6 karakter olmalıdır";
