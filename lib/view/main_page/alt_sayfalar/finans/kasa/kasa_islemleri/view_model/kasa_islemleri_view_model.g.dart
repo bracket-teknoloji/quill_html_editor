@@ -9,6 +9,24 @@ part of 'kasa_islemleri_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
+  Computed<ObservableList<KasaIslemleriModel>?>?
+      _$getKasaIslemleriListesiComputed;
+
+  @override
+  ObservableList<KasaIslemleriModel>? get getKasaIslemleriListesi =>
+      (_$getKasaIslemleriListesiComputed ??=
+              Computed<ObservableList<KasaIslemleriModel>?>(
+                  () => super.getKasaIslemleriListesi,
+                  name: '_KasaIslemleriViewModelBase.getKasaIslemleriListesi'))
+          .value;
+  Computed<bool>? _$getAnyFilterComputed;
+
+  @override
+  bool get getAnyFilter =>
+      (_$getAnyFilterComputed ??= Computed<bool>(() => super.getAnyFilter,
+              name: '_KasaIslemleriViewModelBase.getAnyFilter'))
+          .value;
+
   late final _$kasaIslemleriRequestModelAtom = Atom(
       name: '_KasaIslemleriViewModelBase.kasaIslemleriRequestModel',
       context: context);
@@ -338,7 +356,9 @@ isScrollDown: ${isScrollDown},
 dahaVarMi: ${dahaVarMi},
 kasaIslemleriListesi: ${kasaIslemleriListesi},
 searchBar: ${searchBar},
-searchText: ${searchText}
+searchText: ${searchText},
+getKasaIslemleriListesi: ${getKasaIslemleriListesi},
+getAnyFilter: ${getAnyFilter}
     ''';
   }
 }

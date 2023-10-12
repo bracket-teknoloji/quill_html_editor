@@ -46,6 +46,7 @@ abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
   String? searchText;
 
   //* Computed
+  @computed
   ObservableList<KasaIslemleriModel>? get getKasaIslemleriListesi => searchText != null
       ? kasaIslemleriListesi
           ?.where(
@@ -53,6 +54,9 @@ abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
           .toList()
           .asObservable()
       : kasaIslemleriListesi;
+
+      @computed
+      bool get getAnyFilter => kasaIslemleriRequestModel.hesapKodu != null || kasaIslemleriRequestModel.plasiyerKodu != null || kasaIslemleriRequestModel.hesapTipi != null;
 
   //* Actions
   @action

@@ -3,6 +3,10 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/model/kasa_islemleri_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/view_model/kasa_islemleri_view_model.dart";
+import "package:picker/view/main_page/model/param_model.dart";
+
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";
 import "../../../../../../../core/components/button/elevated_buttons/footer_button.dart";
@@ -18,9 +22,6 @@ import "../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/model/kasa_islemleri_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/view_model/kasa_islemleri_view_model.dart";
-import "package:picker/view/main_page/model/param_model.dart";
 
 class KasaIslemleriView extends StatefulWidget {
   const KasaIslemleriView({super.key});
@@ -105,7 +106,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
           ),
           IconButton(
             onPressed: filter,
-            icon: const Icon(Icons.filter_alt_outlined),
+            icon: Observer(builder: (_) => Icon(Icons.filter_alt_outlined, color: viewModel.getAnyFilter ? UIHelper.primaryColor : null)),
           )
         ],
       );
@@ -169,17 +170,38 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
   Observer bottomAppBar() {
     return Observer(builder: (_) {
       return BottomBarWidget(isScrolledDown: viewModel.isScrollDown, children: [
-        FooterButton(children: [
-          const Text("Gelir"),
-          Observer(
-              builder: (_) =>
-                  Text("${(viewModel.paramData?["TOPLAM_GELIR"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.green)))
-        ]),
-        FooterButton(children: [
-          const Text("Gider"),
-          Observer(
-              builder: (_) => Text("${(viewModel.paramData?["TOPLAM_GIDER"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red)))
-        ]),
+        FooterButton(
+          children: [
+            const Text("Gelir"),
+            Observer(
+                builder: (_) =>
+                    Text("${(viewModel.paramData?["TOPLAM_GELIR"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.green)))
+          ],
+          onPressed: () {
+            if (viewModel.hesapTipiGroupValue == "G") {
+              viewModel.setHesapTipi(null);
+            } else {
+              viewModel.setHesapTipi("G");
+            }
+            viewModel.resetPage();
+          },
+        ),
+        FooterButton(
+          children: [
+            const Text("Gider"),
+            Observer(
+                builder: (_) =>
+                    Text("${(viewModel.paramData?["TOPLAM_GIDER"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red)))
+          ],
+          onPressed: () {
+            if (viewModel.hesapTipiGroupValue == "C") {
+              viewModel.setHesapTipi(null);
+            } else {
+              viewModel.setHesapTipi("C");
+            }
+            viewModel.resetPage();
+          },
+        ),
       ]);
     });
   }
