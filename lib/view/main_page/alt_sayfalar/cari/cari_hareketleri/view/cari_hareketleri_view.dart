@@ -486,7 +486,6 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
       },
       addSirketBilgileri: true,
     );
-    // setState(() {});
     return (response.data)
         .map((e) => e as CariHareketleriModel)
         .toList()

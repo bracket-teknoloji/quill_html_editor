@@ -10,6 +10,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/raporlar/finans_finansal_durum_raporu/view/finansal_durum_raporu_view.dart";
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "view/main_page/alt_sayfalar/finans/banka/banka_islemleri/view/banka_islemleri_view.dart";
 import "view/main_page/alt_sayfalar/finans/dekontlar/view/kasa_dekontlar_view.dart";
@@ -220,6 +221,10 @@ class PickerApp extends StatelessWidget {
             GetPage(
                 name: "/nakitTahsilat", page: () => const NakitTahsilatView()),
 
+                //* * Finans Raporları
+            GetPage(
+                name: "/finansalDurumRaporu",
+                page: () => const FinansalDurumRaporuView()),
             //* Sipariş
             GetPage(
                 name: "/siparisMusteriSiparisi",

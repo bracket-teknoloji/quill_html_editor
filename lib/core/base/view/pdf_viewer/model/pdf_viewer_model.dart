@@ -145,6 +145,7 @@ class DicParams with _$DicParams {
     String? uretimFiyatiDahil,
     String? fiyatTipi,
     String? tblnfStokfiyatgecmisiId,
+    String? gorunecekAlanlar,
     int? miktar,
     String? yapkod,
     String? kasaKodu,

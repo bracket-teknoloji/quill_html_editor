@@ -5,7 +5,6 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
-import "package:picker/core/components/slide_controller/view/slide_controller_view.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
@@ -23,7 +22,6 @@ import "../../../constants/extensions/list_extensions.dart";
 import "../../../constants/ui_helper/icon_helper.dart";
 import "../../../constants/ui_helper/ui_helper.dart";
 import "../../../init/cache/cache_manager.dart";
-import "../../button/toggle_buttons/view/toggle_button.dart";
 import "../../helper_widgets/responsive_height_box.dart";
 import "../dialog_manager.dart";
 import "model/bottom_sheet_model.dart";
@@ -307,7 +305,6 @@ class BottomSheetDialogManager {
     }
     return list;
   }
-  
 
   static void arrKodFinder(int index, BottomSheetResponseModel bottomSheetResponseModel, result) {
     switch (index) {
@@ -614,30 +611,5 @@ class BottomSheetDialogManager {
       }
     }
     return null;
-  }
-}
-
-class SliderWidget extends StatefulWidget {
-  final String title;
-  final List<String> childrenValueList2;
-  const SliderWidget({super.key, required this.childrenValueList2, required this.title});
-
-  @override
-  State<SliderWidget> createState() => _SliderWidgetState();
-}
-
-class _SliderWidgetState extends State<SliderWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return SlideControllerWidget(
-        title: widget.title,
-        childrenTitleList: const ["Tümü", "Tahsil Edilecek", "Ödeme Yapılacak", "Sıfır Bakiye", "Bakiyeli"],
-        childrenValueList: widget.childrenValueList2,
-        groupValue: ToggleButton.selected,
-        filterOnChanged: (index) {
-          setState(() {
-            ToggleButton.selected = widget.childrenValueList2[index ?? 0];
-          });
-        });
   }
 }

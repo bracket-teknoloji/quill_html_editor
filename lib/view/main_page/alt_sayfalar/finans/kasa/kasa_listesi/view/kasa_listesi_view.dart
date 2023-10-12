@@ -2,12 +2,13 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../../../../../core/components/card/banka_listesi_card.dart";
+import "package:picker/core/components/bottom_bar/bottom_bar.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
 import "../../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart";
 import "../../../../../../../core/components/button/elevated_buttons/footer_button.dart";
+import "../../../../../../../core/components/card/banka_listesi_card.dart";
 import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
 import "../../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
@@ -64,30 +65,26 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
             onChanged: (value) => viewModel.setSearchText(value),
           );
         }
-        return Observer(
-            builder: (_) => AppBarTitle(
-                title: "Kasa Listesi",
-                subtitle:
-                    viewModel.getKasaListesi?.length.toStringIfNotNull ?? ""));
+        return Observer(builder: (_) => AppBarTitle(title: "Kasa Listesi", subtitle: viewModel.getKasaListesi?.length.toStringIfNotNull ?? ""));
       }),
       actions: [
         IconButton(
           onPressed: () => viewModel.setSearchBar(),
-          icon: Observer(
-              builder: (_) => Icon(viewModel.searchBar
-                  ? Icons.search_off_outlined
-                  : Icons.search_outlined)),
+          icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)),
         )
       ],
       bottom: AppBarPreferedSizedBottom(children: [
         AppBarButton(
-            icon: Icons.filter_alt_outlined,
+            iconWidget: Observer(
+                builder: (_) => Icon(
+                      Icons.filter_alt_outlined,
+                      size: 20,
+                      fill: 1,
+                      color: viewModel.filtreGroupValue != "T" ? UIHelper.primaryColor : null,
+                    )),
             onPressed: filtrele,
             child: const Text("Filtrele")),
-        AppBarButton(
-            icon: Icons.sort_by_alpha_outlined,
-            onPressed: sirala,
-            child: const Text("Sırala")),
+        AppBarButton(icon: Icons.sort_by_alpha_outlined, onPressed: sirala, child: const Text("Sırala")),
         AppBarButton(
             icon: Icons.refresh_outlined,
             onPressed: () async {
@@ -116,8 +113,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
                             padding: UIHelper.lowPadding,
                             itemCount: viewModel.getKasaListesi?.length ?? 0,
                             itemBuilder: (context, index) {
-                              KasaListesiModel? item =
-                                  viewModel.getKasaListesi?[index];
+                              KasaListesiModel? item = viewModel.getKasaListesi?[index];
                               return KasaListesiCard(
                                   item: item,
                                   onSelected: (p0) async {
@@ -130,52 +126,59 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
                       })),
       );
 
-  BottomAppBar bottomAppBar() {
-    return BottomAppBar(
-        child: Row(
+  BottomBarWidget bottomAppBar() {
+    return BottomBarWidget(
+      isScrolledDown: viewModel.isScrollDown,
       children: [
-        Expanded(
-            child: FooterButton(children: [
-          const Text("Gelir"),
-          Observer(builder: (_) {
-            return Text(
-              "${viewModel.getGelir.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-              style: const TextStyle(color: Colors.green),
-            );
-          }),
-        ])),
-        const VerticalDivider(),
-        Expanded(
-            child: FooterButton(children: [
-          const Text("Gider"),
-          Observer(builder: (_) {
-            return Text(
-                "${viewModel.getGider.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                style: const TextStyle(color: Colors.red));
-          }),
-        ])),
-        const VerticalDivider(),
-        Expanded(
-            child: FooterButton(children: [
+        FooterButton(
+            children: [
+              const Text("Gelir"),
+              Observer(builder: (_) {
+                return Text(
+                  "${viewModel.getGelir.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                  style: const TextStyle(color: Colors.green),
+                );
+              }),
+            ],
+            onPressed: () {
+              if (viewModel.filtreGroupValue != "A") {
+                viewModel.setFiltreGroupValue(3);
+              } else {
+                viewModel.setFiltreGroupValue(0);
+              }
+              viewModel.setKasaListesi(null);
+              viewModel.getData();
+            }),
+        FooterButton(
+            children: [
+              const Text("Gider"),
+              Observer(builder: (_) {
+                return Text("${viewModel.getGider.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red));
+              }),
+            ],
+            onPressed: () {
+              if (viewModel.filtreGroupValue != "E") {
+                viewModel.setFiltreGroupValue(2);
+              } else {
+                viewModel.setFiltreGroupValue(0);
+              }
+              viewModel.setKasaListesi(null);
+              viewModel.getData();
+            }),
+        FooterButton(children: [
           const Text("Bakiye"),
           Observer(builder: (_) {
-            return Text(
-                "${viewModel.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                style: const TextStyle(color: Colors.grey));
+            return Text("${viewModel.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.grey));
           }),
-        ]))
+        ])
       ],
-    ));
+    );
   }
 
   sirala() async {
     var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
         title: "Sırala",
-        children: List.generate(
-            viewModel.siralaMap.length,
-            (index) => BottomSheetModel(
-                title: viewModel.siralaMap.keys.toList()[index],
-                value: viewModel.siralaMap.values.toList()[index])));
+        children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])));
     if (result != null) {
       viewModel.setSirala(result);
       viewModel.setKasaListesi(null);
@@ -192,17 +195,14 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
               return SlideControllerWidget(
                   childrenTitleList: viewModel.filtreleMap.keys.toList(),
                   childrenValueList: viewModel.filtreleMap.values.toList(),
-                  filterOnChanged: (index) =>
-                      viewModel.setFiltreGroupValue(index ?? 0),
+                  filterOnChanged: (index) => viewModel.setFiltreGroupValue(index ?? 0),
                   groupValue: viewModel.filtreGroupValue);
             }),
             Row(
               children: [
                 Expanded(
                     child: ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                                Colors.white.withOpacity(0.1))),
+                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
                         onPressed: () {
                           Get.back();
                           viewModel.setFiltreGroupValue(0);
