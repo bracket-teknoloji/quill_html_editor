@@ -73,22 +73,6 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
               name: '_CariListesiViewModelBase.hasAnyFilters'))
           .value;
 
-  late final _$bakiyeGroupValueAtom = Atom(
-      name: '_CariListesiViewModelBase.bakiyeGroupValue', context: context);
-
-  @override
-  String get bakiyeGroupValue {
-    _$bakiyeGroupValueAtom.reportRead();
-    return super.bakiyeGroupValue;
-  }
-
-  @override
-  set bakiyeGroupValue(String value) {
-    _$bakiyeGroupValueAtom.reportWrite(value, super.bakiyeGroupValue, () {
-      super.bakiyeGroupValue = value;
-    });
-  }
-
   late final _$paramDataAtom =
       Atom(name: '_CariListesiViewModelBase.paramData', context: context);
 
@@ -551,7 +535,6 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   @override
   String toString() {
     return '''
-bakiyeGroupValue: ${bakiyeGroupValue},
 paramData: ${paramData},
 dahaVarMi: ${dahaVarMi},
 isScrolledDown: ${isScrolledDown},

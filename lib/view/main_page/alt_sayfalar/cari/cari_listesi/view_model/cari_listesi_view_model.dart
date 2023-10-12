@@ -31,8 +31,6 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
     "Konum (En Yakın)": "KONUM_AZ",
     "Konum (En Uzak)": "KONUM_ZA",
   };
-  @observable
-  String bakiyeGroupValue = "";
 
   @observable
   ObservableMap<String, dynamic>? paramData;
@@ -147,10 +145,7 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
   void changeFilterText(String? value) => cariRequestModel = cariRequestModel.copyWith(filterText: value ?? "");
 
   @action
-  void changeFilterBakiye(String? value) {
-    bakiyeGroupValue = value ?? "";
-    cariRequestModel = cariRequestModel.copyWith(filterBakiye: value ?? "");
-  }
+  void changeFilterBakiye(String? value) => cariRequestModel = cariRequestModel.copyWith(filterBakiye: value ?? "");
 
   @action
   void changeArrPlasiyerKodu(List<String?>? value) => cariRequestModel = cariRequestModel.copyWith(arrPlasiyerKodu: value);
@@ -186,22 +181,8 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
   void changeCariTipi(String? value) => cariRequestModel = cariRequestModel.copyWith(cariTipi: value);
 
   @action
-  void resetFilter() {
-    bakiyeGroupValue = "";
-    cariRequestModel = cariRequestModel.copyWith(
-      filterText: "",
-      arrGrupKodu: null,
-      arrKod1: null,
-      arrKod2: null,
-      arrKod3: null,
-      arrKod4: null,
-      arrKod5: null,
-      arrSehir: null,
-      arrPlasiyerKodu: null,
-      ilce: null,
-      filterBakiye: "",
-    );
-  }
+  void resetFilter() => cariRequestModel = cariRequestModel.copyWith(
+      filterText: "", arrGrupKodu: null, arrKod1: null, arrKod2: null, arrKod3: null, arrKod4: null, arrKod5: null, arrSehir: null, arrPlasiyerKodu: null, ilce: null, filterBakiye: "");
 
   @action
   Future<void> resetPage() async {

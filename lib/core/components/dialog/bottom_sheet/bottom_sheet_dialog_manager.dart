@@ -29,7 +29,7 @@ import "model/bottom_sheet_response_model.dart";
 import "view_model/bottom_sheet_state_manager.dart";
 
 class BottomSheetDialogManager {
-  static final BottomSheetStateManager viewModel = BottomSheetStateManager();
+    BottomSheetStateManager viewModel = BottomSheetStateManager();
   showBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel>? children, bool aramaVarMi = false}) {
     List<BottomSheetModel>? children2 = children;
     //if keyboard is open, close it
@@ -306,50 +306,10 @@ class BottomSheetDialogManager {
     return list;
   }
 
-  static void arrKodFinder(int index, BottomSheetResponseModel bottomSheetResponseModel, result) {
-    switch (index) {
-      case 0:
-        bottomSheetResponseModel.arrGrupKodu = result;
-        viewModel.changeKod0(result.join(", "));
-        break;
-      case 1:
-        bottomSheetResponseModel.arrKod1 = result;
-        viewModel.changeKod1(result.join(", "));
-        break;
-      case 2:
-        bottomSheetResponseModel.arrKod2 = result;
-        viewModel.changeKod2(result.join(", "));
-        break;
-      case 3:
-        bottomSheetResponseModel.arrKod3 = result;
-        viewModel.changeKod3(result.join(", "));
-        break;
-      case 4:
-        bottomSheetResponseModel.arrKod4 = result;
-        viewModel.changeKod4(result.join(", "));
-        break;
-      case 5:
-        bottomSheetResponseModel.arrKod5 = result;
-        viewModel.changeKod5(result.join(", "));
-        break;
-      default:
-        "";
-    }
-  }
-
   void clearSelectedData() {
     viewModel.deleteIsSelectedListMap();
   }
 
-  //  Future<GenericResponseModel<NetworkManagerMixin>> getData() async {
-  //   GenericResponseModel<NetworkManagerMixin> response;
-  //   response = await NetworkManager().dioGet<CariSehirlerModel>(path: ApiUrls.getCariKayitliSehirler, bodyModel: CariSehirlerModel(), addTokenKey: true, headers: {
-  //     "VERITABANI": AccountModel.instance.aktifVeritabani.toString(),
-  //     "ISLETME_KODU": AccountModel.instance.aktifIsletmeKodu.toString(),
-  //     "SUBE_KODU": AccountModel.instance.aktifSubeKodu.toString(),
-  //   });
-  //   return response;
-  // }
   Future<DepoList?> showDepoBottomSheetDialog(BuildContext context) async => await showRadioBottomSheetDialog(context,
       title: "Depo seç", children: CacheManager.getAnaVeri()?.paramModel?.depoList?.map((e) => BottomSheetModel(title: e.depoTanimi ?? "", value: e)).toList());
 
@@ -405,7 +365,7 @@ class BottomSheetDialogManager {
     }
     return await showBottomSheetDialog(context,
         title: "Muhasebe Kodu Seçiniz",
-        children: viewModel.muhasebeKoduList?.map((e) => BottomSheetModel(title: e.adi ?? "", description: "ALIŞ: ${e.alisHesabi ?? ""}\nSATIŞ: ${e.satisHesabi ?? ""}", value: e)).toList());
+        children: viewModel.muhasebeKoduList?.map((e) => BottomSheetModel(title: e.adi ?? e.muhKodu.toStringIfNotNull ?? "", description: "ALIŞ: ${e.alisHesabi ?? ""}\nSATIŞ: ${e.satisHesabi ?? ""}", value: e)).toList());
   }
 
   Future<PlasiyerList?> showPlasiyerBottomSheetDialog(BuildContext context) async {

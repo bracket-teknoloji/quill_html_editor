@@ -536,7 +536,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     childrenTitleList: viewModel.bakiyeMap.keys.toList(),
                     filterOnChanged: (index) => viewModel.changeFilterBakiye(viewModel.bakiyeMap.values.toList()[index ?? 0]),
                     childrenValueList: viewModel.bakiyeMap.values.toList(),
-                    groupValue: viewModel.bakiyeGroupValue);
+                    groupValue: viewModel.cariRequestModel.filterBakiye,);
               }),
             ),
             Row(

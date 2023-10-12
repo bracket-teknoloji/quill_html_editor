@@ -1,0 +1,83 @@
+import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/raporlar/finans_aylik_mizan_raporu/view_model/aylik_mizan_raporu_view_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
+
+import "../../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
+import "../../../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+
+class AylikMizanRaporuView extends StatefulWidget {
+  const AylikMizanRaporuView({super.key});
+
+  @override
+  State<AylikMizanRaporuView> createState() => _AylikMizanRaporuViewState();
+}
+
+class _AylikMizanRaporuViewState extends BaseState<AylikMizanRaporuView> {
+  AylikMizanRaporuViewModel viewModel = AylikMizanRaporuViewModel();
+  late final TextEditingController muhasebeKoduController;
+  final formKey = GlobalKey<FormState>();
+  @override
+  void initState() {
+    muhasebeKoduController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    muhasebeKoduController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Aylık Mizan Raporu", pdfData: viewModel.pdfModel);
+  }
+
+  Future<bool> filterBottomSheet() async {
+    viewModel.resetFuture();
+    await bottomSheetDialogManager.showBottomSheetDialog(context,
+        title: "Filtrele",
+        body: Padding(
+          padding: EdgeInsets.all(UIHelper.lowSize),
+          child: Form(
+            key: formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                CustomTextField(
+                  labelText: "Muhasebe Kodu",
+                  isMust: true,
+                  controller: muhasebeKoduController,
+                  readOnly: true,
+                  suffixMore: true,
+                  onTap: () async {
+                    var result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context);
+                    if (result is StokMuhasebeKoduModel) {
+                      viewModel.changeMuhasebeKodu(result.muhKodu.toStringIfNotNull);
+                      muhasebeKoduController.text = result.adi ?? result.muhKodu.toStringIfNotNull ?? "";
+                    }
+                  },
+                ),
+                Observer(builder: (_) {
+                  return ElevatedButton(
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              viewModel.setFuture();
+                              Get.back();
+                            }
+                          },
+                          child: const Text("Uygula"))
+                      .paddingAll(UIHelper.lowSize);
+                })
+              ],
+            ),
+          ),
+        ));
+    return Future.value(viewModel.futureController.value);
+  }
+}

@@ -95,8 +95,8 @@ class MenuItemConstants {
       GridItemModel.item(name: "finans_OrtalamaVadeTarihiHesaplama", title: "Ortalama Vade Tarihi Hesaplama"),
       GridItemModel.altmenu(name: null, title: "Raporlar", icon: "monitoring", altMenuler: [
         GridItemModel.item(name: "finans_OzetRapor", title: "Özet Rapor"),
-        GridItemModel.item(name: "finans_Raporlar_FinansalDurum", title: "Finansal Durum Raporu", route: "/mainPage/finansalDurumRaporu"),
-        GridItemModel.item(name: "finans_Raporlar_AylikMizan", title: "Aylık Mizan Raporu"),
+        GridItemModel.item(name: "finans_Raporlar_FinansalDurum", title: "Finansal Durum Raporu", route: "/mainPage/finansFinansalDurumRaporu"),
+        GridItemModel.item(name: "finans_Raporlar_AylikMizan", title: "Aylık Mizan Raporu", route: "/mainPage/finansAylikMizanRaporu"),
         ..._getSerbestRapor(SerbestRaporDetayKodEnum.finans),
       ]),
     ]).isDebug(),
