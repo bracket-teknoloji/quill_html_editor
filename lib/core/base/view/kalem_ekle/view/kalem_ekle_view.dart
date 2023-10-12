@@ -66,6 +66,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
 
   @override
   void initState() {
+    viewModel.kalemModel.iskonto1OranMi = widget.kalemModel?.iskonto1OranMi ?? true;
     initControllers();
     viewModel.setKalemModel(widget.kalemModel);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
