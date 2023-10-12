@@ -1,7 +1,5 @@
 import "package:flutter/material.dart";
-import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/raporlar/finans_aylik_mizan_raporu/view_model/aylik_mizan_raporu_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
 
@@ -56,24 +54,22 @@ class _AylikMizanRaporuViewState extends BaseState<AylikMizanRaporuView> {
                   readOnly: true,
                   suffixMore: true,
                   onTap: () async {
-                    var result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context);
+                    var result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context);
                     if (result is StokMuhasebeKoduModel) {
-                      viewModel.changeMuhasebeKodu(result.muhKodu.toStringIfNotNull);
-                      muhasebeKoduController.text = result.adi ?? result.muhKodu.toStringIfNotNull ?? "";
+                      viewModel.changeMuhasebeKodu(result.hesapKodu);
+                      muhasebeKoduController.text = result.hesapAdi ?? result.hesapKodu ?? "";
                     }
                   },
                 ),
-                Observer(builder: (_) {
-                  return ElevatedButton(
-                          onPressed: () {
-                            if (formKey.currentState!.validate()) {
-                              viewModel.setFuture();
-                              Get.back();
-                            }
-                          },
-                          child: const Text("Uygula"))
-                      .paddingAll(UIHelper.lowSize);
-                })
+                ElevatedButton(
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            viewModel.setFuture();
+                            Get.back();
+                          }
+                        },
+                        child: const Text("Uygula"))
+                    .paddingAll(UIHelper.lowSize)
               ],
             ),
           ),

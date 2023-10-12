@@ -25,11 +25,10 @@ import "../../../init/cache/cache_manager.dart";
 import "../../helper_widgets/responsive_height_box.dart";
 import "../dialog_manager.dart";
 import "model/bottom_sheet_model.dart";
-import "model/bottom_sheet_response_model.dart";
 import "view_model/bottom_sheet_state_manager.dart";
 
 class BottomSheetDialogManager {
-    BottomSheetStateManager viewModel = BottomSheetStateManager();
+  BottomSheetStateManager viewModel = BottomSheetStateManager();
   showBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel>? children, bool aramaVarMi = false}) {
     List<BottomSheetModel>? children2 = children;
     //if keyboard is open, close it
@@ -359,13 +358,23 @@ class BottomSheetDialogManager {
     return null;
   }
 
-  Future<StokMuhasebeKoduModel?> showMuhasebeKoduBottomSheetDialog(BuildContext context) async {
+  Future<StokMuhasebeKoduModel?> showMuhasebeKoduBottomSheetDialog(BuildContext context, {bool? stokMu}) async {
     if (viewModel.muhasebeKoduList.ext.isNullOrEmpty) {
       viewModel.changeMuhasebeKoduList(await NetworkManager().getMuhasebeKodlari());
     }
     return await showBottomSheetDialog(context,
         title: "Muhasebe Kodu Seçiniz",
-        children: viewModel.muhasebeKoduList?.map((e) => BottomSheetModel(title: e.adi ?? e.muhKodu.toStringIfNotNull ?? "", description: "ALIŞ: ${e.alisHesabi ?? ""}\nSATIŞ: ${e.satisHesabi ?? ""}", value: e)).toList());
+        children: viewModel.muhasebeKoduList
+            ?.map((e) => BottomSheetModel(title: e.adi ?? e.muhKodu.toStringIfNotNull ?? "", description: "ALIŞ: ${e.alisHesabi ?? ""}\nSATIŞ: ${e.satisHesabi ?? ""}", value: e))
+            .toList());
+  }
+
+  Future<StokMuhasebeKoduModel?> showMuhasebeMuhasebeKoduBottomSheetDialog(BuildContext context, {bool? stokMu}) async {
+    if (viewModel.muhasebeKoduList.ext.isNullOrEmpty) {
+      viewModel.changeMuhasebeKoduList(await NetworkManager().getMuhasebeKodlari(stokMu: stokMu));
+    }
+    return await showBottomSheetDialog(context,
+        title: "Muhasebe Kodu Seçiniz", children: viewModel.muhasebeKoduList?.map((e) => BottomSheetModel(title: e.hesapAdi ?? e.hesapKodu ?? "", description: e.hesapKodu, value: e)).toList());
   }
 
   Future<PlasiyerList?> showPlasiyerBottomSheetDialog(BuildContext context) async {

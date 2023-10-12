@@ -222,7 +222,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
       }
     } else if (model.muhasebeKoduMu) {
       var muhasebeList = await networkManager.dioGet<StokMuhasebeKoduModel>(
-          path: ApiUrls.getMuhasebeKodlari, bodyModel: StokMuhasebeKoduModel());
+          path: ApiUrls.getStokMuhasebeKodlari, bodyModel: StokMuhasebeKoduModel());
       var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
           title: "Muhasebe Kodu Seçiniz",
           children: muhasebeList.data
