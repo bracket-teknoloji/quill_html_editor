@@ -8,7 +8,9 @@ class AppBarButton extends StatelessWidget {
   final Widget? child;
   final Function()? onPressed;
   final IconData? icon;
-  const AppBarButton({super.key, this.child, this.onPressed, this.icon});
+  final Widget? iconWidget;
+  final bool? hasFilter;
+  const AppBarButton({super.key, this.child, this.onPressed, this.icon, this.hasFilter, this.iconWidget});
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +35,10 @@ class AppBarButton extends StatelessWidget {
                       icon,
                       size: 20,
                       fill: 1,
+                      color: (hasFilter ?? false) ? UIHelper.primaryColor : null,
                     )
                   : null,
+              iconWidget ?? const SizedBox(),
               child
             ].nullCheckWithGeneric));
   }

@@ -17,6 +17,14 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
               () => super.getCariRequestModel,
               name: '_CariListesiViewModelBase.getCariRequestModel'))
           .value;
+  Computed<ObservableList<BaseGrupKoduModel>?>? _$getGrupKod0Computed;
+
+  @override
+  ObservableList<BaseGrupKoduModel>? get getGrupKod0 =>
+      (_$getGrupKod0Computed ??= Computed<ObservableList<BaseGrupKoduModel>?>(
+              () => super.getGrupKod0,
+              name: '_CariListesiViewModelBase.getGrupKod0'))
+          .value;
   Computed<ObservableList<BaseGrupKoduModel>?>? _$getGrupKod1Computed;
 
   @override
@@ -56,6 +64,13 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
       (_$getGrupKod5Computed ??= Computed<ObservableList<BaseGrupKoduModel>?>(
               () => super.getGrupKod5,
               name: '_CariListesiViewModelBase.getGrupKod5'))
+          .value;
+  Computed<bool>? _$hasAnyFiltersComputed;
+
+  @override
+  bool get hasAnyFilters =>
+      (_$hasAnyFiltersComputed ??= Computed<bool>(() => super.hasAnyFilters,
+              name: '_CariListesiViewModelBase.hasAnyFilters'))
           .value;
 
   late final _$bakiyeGroupValueAtom = Atom(
@@ -435,6 +450,17 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
+  void changeArrKod0(List<String?>? value) {
+    final _$actionInfo = _$_CariListesiViewModelBaseActionController
+        .startAction(name: '_CariListesiViewModelBase.changeArrKod0');
+    try {
+      return super.changeArrKod0(value);
+    } finally {
+      _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void changeArrKod1(List<String?>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
         .startAction(name: '_CariListesiViewModelBase.changeArrKod1');
@@ -537,11 +563,13 @@ grupKodlari: ${grupKodlari},
 sehirler: ${sehirler},
 cariRequestModel: ${cariRequestModel},
 getCariRequestModel: ${getCariRequestModel},
+getGrupKod0: ${getGrupKod0},
 getGrupKod1: ${getGrupKod1},
 getGrupKod2: ${getGrupKod2},
 getGrupKod3: ${getGrupKod3},
 getGrupKod4: ${getGrupKod4},
-getGrupKod5: ${getGrupKod5}
+getGrupKod5: ${getGrupKod5},
+hasAnyFilters: ${hasAnyFilters}
     ''';
   }
 }

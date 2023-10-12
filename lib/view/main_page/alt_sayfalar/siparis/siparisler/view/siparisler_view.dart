@@ -272,9 +272,14 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                             groupValue: viewModel.teslimatDurumuGroupValue)),
                     InkWell(
                       onTap: () => viewModel.changeGrupKodlariGoster(),
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text("Cari Rapor Kodları"), Icon(Icons.arrow_drop_down)],
+                        children: [
+                          const Text("Cari Rapor Kodları"),
+                          Observer(builder: (_) {
+                            return Icon(viewModel.grupKodlariGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down_outlined);
+                          })
+                        ],
                       ).paddingAll(UIHelper.lowSize),
                     ),
                     // viewModel.musteriSiparisleriList.first.o
@@ -442,31 +447,6 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                       title: const Text("Vade"), value: viewModel.ekstraAlanlarMap["VADE"] ?? false, onChanged: (value) => viewModel.changeEkstraAlanlarMap("VADE", value))),
                             ],
                           ));
-                      // var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context, title: "Görünecek Ekstra Alanlar", children: [
-                      //   BottomSheetModel(title: "Ek Açıklamalar", value: "EK"),
-                      //   BottomSheetModel(title: "Miktar", value: "MİK"),
-                      //   BottomSheetModel(title: "Vade", value: "VADE"),
-                      // ]);
-                      // if (result != null) {
-                      //   viewModel.resetEkstraAlanlarMap();
-                      //   for (var item in result) {
-                      //     switch (item) {
-                      //       case "EK":
-                      //       viewModel.changeEkstraAlanlarMap("EK", true);
-                      //         break;
-                      //       case "MİK":
-                      //       viewModel.changeEkstraAlanlarMap("MİK", true);
-                      //         break;
-                      //       case "VADE":
-                      //       viewModel.changeEkstraAlanlarMap("VADE", true);
-                      //         break;
-                      //     }
-                      //   }
-                      // }
-                      // viewModel.resetSayfa();
-                      // viewModel.setSiparislerList(null);
-                      // viewModel.setDahaVarMi(true);
-                      // getData();
                     }),
               ]);
             },

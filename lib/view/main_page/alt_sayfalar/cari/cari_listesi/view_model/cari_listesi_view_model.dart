@@ -64,6 +64,9 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
   Map<String, dynamic> get getCariRequestModel => cariRequestModel.toJson().map((key, value) => MapEntry(key, value is List ? jsonEncode(value) : value));
 
   @computed
+  ObservableList<BaseGrupKoduModel>? get getGrupKod0 => grupKodlari?.where((element) => element.grupNo == 0).toList().asObservable();
+
+  @computed
   ObservableList<BaseGrupKoduModel>? get getGrupKod1 => grupKodlari?.where((element) => element.grupNo == 1).toList().asObservable();
 
   @computed
@@ -77,6 +80,20 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
 
   @computed
   ObservableList<BaseGrupKoduModel>? get getGrupKod5 => grupKodlari?.where((element) => element.grupNo == 5).toList().asObservable();
+
+  @computed
+  bool get hasAnyFilters =>
+      cariRequestModel.arrGrupKodu != null ||
+      cariRequestModel.arrKod1 != null ||
+      cariRequestModel.arrKod2 != null ||
+      cariRequestModel.arrKod3 != null ||
+      cariRequestModel.arrKod4 != null ||
+      cariRequestModel.arrKod5 != null ||
+      cariRequestModel.arrSehir != null ||
+      cariRequestModel.arrPlasiyerKodu != null ||
+      cariRequestModel.ilce != null ||
+      cariRequestModel.cariTipi != null ||
+      (cariRequestModel.filterBakiye != "" && cariRequestModel.filterBakiye != null);
 
   //* SAYFA
 
@@ -143,6 +160,9 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void changeArrSehir(List<String?>? value) => cariRequestModel = cariRequestModel.copyWith(arrSehir: value);
+
+  @action
+  void changeArrKod0(List<String?>? value) => cariRequestModel = cariRequestModel.copyWith(arrGrupKodu: value);
 
   @action
   void changeArrKod1(List<String?>? value) => cariRequestModel = cariRequestModel.copyWith(arrKod1: value);
