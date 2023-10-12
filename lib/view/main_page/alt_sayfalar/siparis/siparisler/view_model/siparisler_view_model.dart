@@ -38,18 +38,15 @@ abstract class _SiparislerViewModelBase with Store {
     ekstraAlanlarMap.remove(key);
     switch (key) {
       case "EK":
-        CacheManager.setProfilParametre(
-            CacheManager.getProfilParametre.copyWith(siparisEkAlan: value));
+        CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisEkAlan: value));
         ekstraAlanlarMap["EK"] = value;
         break;
       case "MİK":
-        CacheManager.setProfilParametre(
-            CacheManager.getProfilParametre.copyWith(siparisMiktar: value));
+        CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisMiktar: value));
         ekstraAlanlarMap["MİK"] = value;
         break;
       case "VADE":
-        CacheManager.setProfilParametre(
-            CacheManager.getProfilParametre.copyWith(siparisVade: value));
+        CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisVade: value));
         ekstraAlanlarMap["VADE"] = value;
         break;
     }
@@ -58,8 +55,7 @@ abstract class _SiparislerViewModelBase with Store {
 
   @action
   void resetEkstraAlanlarMap() {
-    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(
-        siparisEkAlan: false, siparisMiktar: false, siparisVade: false));
+    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisEkAlan: false, siparisMiktar: false, siparisVade: false));
     ekstraAlanlarMap = {
       "EK": false,
       "MİK": false,
@@ -71,36 +67,28 @@ abstract class _SiparislerViewModelBase with Store {
   List<String?> teslimatDurumuValueList = const [null, "K", "B"];
 
   @observable
-  ObservableList<BaseGrupKoduModel> grupKodList =
-      <BaseGrupKoduModel>[].asObservable();
+  ObservableList<BaseGrupKoduModel> grupKodList = <BaseGrupKoduModel>[].asObservable();
 
   @action
-  void changeGrupKodList(List<BaseGrupKoduModel> value) =>
-      grupKodList = value.asObservable();
+  void changeGrupKodList(List<BaseGrupKoduModel> value) => grupKodList = value.asObservable();
 
   @computed
-  bool get grupKodList0 =>
-      grupKodList.where((element) => element.grupNo == 0).isNotEmpty;
+  bool get grupKodList0 => grupKodList.where((element) => element.grupNo == 0).isNotEmpty;
 
   @computed
-  bool get grupKodList1 =>
-      grupKodList.where((element) => element.grupNo == 1).isNotEmpty;
+  bool get grupKodList1 => grupKodList.where((element) => element.grupNo == 1).isNotEmpty;
 
   @computed
-  bool get grupKodList2 =>
-      grupKodList.where((element) => element.grupNo == 2).isNotEmpty;
+  bool get grupKodList2 => grupKodList.where((element) => element.grupNo == 2).isNotEmpty;
 
   @computed
-  bool get grupKodList3 =>
-      grupKodList.where((element) => element.grupNo == 3).isNotEmpty;
+  bool get grupKodList3 => grupKodList.where((element) => element.grupNo == 3).isNotEmpty;
 
   @computed
-  bool get grupKodList4 =>
-      grupKodList.where((element) => element.grupNo == 4).isNotEmpty;
+  bool get grupKodList4 => grupKodList.where((element) => element.grupNo == 4).isNotEmpty;
 
   @computed
-  bool get grupKodList5 =>
-      grupKodList.where((element) => element.grupNo == 5).isNotEmpty;
+  bool get grupKodList5 => grupKodList.where((element) => element.grupNo == 5).isNotEmpty;
   @observable
   String? teslimatDurumuGroupValue;
 
@@ -110,7 +98,7 @@ abstract class _SiparislerViewModelBase with Store {
   }
 
   @observable
-  Map<String, String> paramData = {};
+  ObservableMap<String, dynamic>? paramData;
 
   @observable
   bool isScrolledDown = true;
@@ -120,7 +108,7 @@ abstract class _SiparislerViewModelBase with Store {
   @observable
   bool searchBar = false;
   @action
-  void setParamData(Map<String, String> value) => paramData = value;
+  void setParamData(Map<String, dynamic> value) => paramData = value.asObservable();
 
   @observable
   bool dahaVarMi = true;
@@ -152,19 +140,16 @@ abstract class _SiparislerViewModelBase with Store {
   }
 
   @action
-  void setSiparislerList(List<BaseSiparisEditModel?>? value) =>
-      musteriSiparisleriList = value?.asObservable();
+  void setSiparislerList(List<BaseSiparisEditModel?>? value) => musteriSiparisleriList = value?.asObservable();
   @action
-  void addSiparislerList(List<BaseSiparisEditModel?>? value) =>
-      musteriSiparisleriList = musteriSiparisleriList?..addAll(value!);
+  void addSiparislerList(List<BaseSiparisEditModel?>? value) => musteriSiparisleriList = musteriSiparisleriList?..addAll(value!);
   @action
   void removeSiparislerList(int index) {
     musteriSiparisleriList = musteriSiparisleriList?..removeAt(index);
   }
 
   //*for model
-  SiparislerRequestModel get musteriSiparisleriRequestModel =>
-      SiparislerRequestModel(
+  SiparislerRequestModel get musteriSiparisleriRequestModel => SiparislerRequestModel(
         pickerBelgeTuru: pickerBelgeTuru,
         kapaliBelgelerListelenmesin: kapaliBelgelerListelenmesin ? "E" : "H",
         sayfa: sayfa,
@@ -243,8 +228,7 @@ abstract class _SiparislerViewModelBase with Store {
   void setSiralama(String value) => siralama = value;
 
   @action
-  void setKapaliBelgelerListelenmesin(bool value) =>
-      kapaliBelgelerListelenmesin = value;
+  void setKapaliBelgelerListelenmesin(bool value) => kapaliBelgelerListelenmesin = value;
   @action
   void setSearchText(String? value) => searchText = value;
   @action
@@ -296,16 +280,13 @@ abstract class _SiparislerViewModelBase with Store {
 
   //* getters
   @computed
-  String get getQueryParams =>
-      jsonEncode(musteriSiparisleriRequestModel.toJson());
+  String get getQueryParams => jsonEncode(musteriSiparisleriRequestModel.toJson());
 
   @computed
-  String? get getPlasiyer =>
-      arrPlasiyerKodu != null ? jsonEncode(arrPlasiyerKodu) : null;
+  String? get getPlasiyer => arrPlasiyerKodu != null ? jsonEncode(arrPlasiyerKodu) : null;
 
   @computed
-  String? get getGrupKodlari =>
-      arrGrupKodu != null ? jsonEncode(arrGrupKodu) : null;
+  String? get getGrupKodlari => arrGrupKodu != null ? jsonEncode(arrGrupKodu) : null;
 
   @computed
   String? get getKod1 => arrKod1 != null ? jsonEncode(arrKod1) : null;

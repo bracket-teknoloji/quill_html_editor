@@ -180,13 +180,13 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
       Atom(name: '_SiparislerViewModelBase.paramData', context: context);
 
   @override
-  Map<String, String> get paramData {
+  ObservableMap<String, dynamic>? get paramData {
     _$paramDataAtom.reportRead();
     return super.paramData;
   }
 
   @override
-  set paramData(Map<String, String> value) {
+  set paramData(ObservableMap<String, dynamic>? value) {
     _$paramDataAtom.reportWrite(value, super.paramData, () {
       super.paramData = value;
     });
@@ -591,7 +591,7 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   }
 
   @override
-  void setParamData(Map<String, String> value) {
+  void setParamData(Map<String, dynamic> value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
         name: '_SiparislerViewModelBase.setParamData');
     try {

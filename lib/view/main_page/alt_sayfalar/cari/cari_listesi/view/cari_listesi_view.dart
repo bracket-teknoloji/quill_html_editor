@@ -1,4 +1,3 @@
-import "dart:developer";
 import "dart:ui";
 
 import "package:flutter/material.dart";
@@ -64,7 +63,6 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   BottomSheetResponseModel? bottomSheetResponseModel;
   bool isLoading = false;
   Map? filterData;
-  Map<String, dynamic> paramData = {};
   @override
   void initState() {
     _scrollController = ScrollController();
@@ -124,7 +122,6 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
 
   @override
   Widget build(BuildContext context) {
-    log(paramData.toString());
     return Scaffold(
       resizeToAvoidBottomInset: true,
       extendBody: true,
