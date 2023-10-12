@@ -9,6 +9,14 @@ part of 'kasa_hareketleri_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
+  Computed<double>? _$bakiyeComputed;
+
+  @override
+  double get bakiye =>
+      (_$bakiyeComputed ??= Computed<double>(() => super.bakiye,
+              name: '_KasaHareketleriViewModelBase.bakiye'))
+          .value;
+
   late final _$kasaIslemleriRequestModelAtom = Atom(
       name: '_KasaHareketleriViewModelBase.kasaIslemleriRequestModel',
       context: context);
@@ -93,6 +101,22 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
     });
   }
 
+  late final _$dovizAdiAtom =
+      Atom(name: '_KasaHareketleriViewModelBase.dovizAdi', context: context);
+
+  @override
+  String? get dovizAdi {
+    _$dovizAdiAtom.reportRead();
+    return super.dovizAdi;
+  }
+
+  @override
+  set dovizAdi(String? value) {
+    _$dovizAdiAtom.reportWrite(value, super.dovizAdi, () {
+      super.dovizAdi = value;
+    });
+  }
+
   late final _$resetPageAsyncAction =
       AsyncAction('_KasaHareketleriViewModelBase.resetPage', context: context);
 
@@ -119,6 +143,17 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
 
   late final _$_KasaHareketleriViewModelBaseActionController =
       ActionController(name: '_KasaHareketleriViewModelBase', context: context);
+
+  @override
+  void setDovizAdi(String? value) {
+    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController
+        .startAction(name: '_KasaHareketleriViewModelBase.setDovizAdi');
+    try {
+      return super.setDovizAdi(value);
+    } finally {
+      _$_KasaHareketleriViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setDahaVarMi(bool value) {
@@ -206,7 +241,9 @@ kasaIslemleriRequestModel: ${kasaIslemleriRequestModel},
 paramData: ${paramData},
 isScrollDown: ${isScrollDown},
 dahaVarMi: ${dahaVarMi},
-kasaIslemleriListesi: ${kasaIslemleriListesi}
+kasaIslemleriListesi: ${kasaIslemleriListesi},
+dovizAdi: ${dovizAdi},
+bakiye: ${bakiye}
     ''';
   }
 }

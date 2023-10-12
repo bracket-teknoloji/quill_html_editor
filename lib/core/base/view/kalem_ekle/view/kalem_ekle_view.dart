@@ -66,11 +66,11 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
 
   @override
   void initState() {
-    viewModel.kalemModel.iskonto1OranMi = widget.kalemModel?.iskonto1OranMi ?? true;
     initControllers();
     viewModel.setKalemModel(widget.kalemModel);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await getData();
+      viewModel.setIskonto1OranMi(widget.kalemModel?.iskonto1OranMi ?? true);
       controllerFiller();
     });
 
@@ -553,7 +553,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                   suffix: yetkiController.siparisMSISk1YuzdeSor && index == 0
                                       ? Observer(builder: (_) {
                                           return IconButton(
-                                              onPressed: () => viewModel.setIskonto1OranMi(),
+                                              onPressed: () => viewModel.changeIskonto1OranMi(),
                                               icon: Icon((viewModel.kalemModel.iskonto1OranMi ?? false) ? Icons.percent_outlined : Icons.payments_outlined));
                                         })
                                       : null,

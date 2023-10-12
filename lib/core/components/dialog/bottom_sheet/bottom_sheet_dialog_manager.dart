@@ -7,6 +7,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/enum/grup_kodu_enums.dart";
+import "package:picker/core/constants/enum/muhasebe_kodu_belge_tipi_enum.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/init/network/network_manager.dart";
 import "package:picker/view/main_page/model/param_model.dart";
@@ -369,9 +370,10 @@ class BottomSheetDialogManager {
             .toList());
   }
 
-  Future<StokMuhasebeKoduModel?> showMuhasebeMuhasebeKoduBottomSheetDialog(BuildContext context, {bool? stokMu}) async {
+  Future<StokMuhasebeKoduModel?> showMuhasebeMuhasebeKoduBottomSheetDialog(BuildContext context, {MuhasebeBelgeTipiEnum? belgeTipi, String? hesapTipi}) async {
     if (viewModel.muhasebeKoduList.ext.isNullOrEmpty) {
-      viewModel.changeMuhasebeKoduList(await NetworkManager().getMuhasebeKodlari(stokMu: stokMu));
+      Map<String, dynamic> queryparams = {"BelgeTipi": belgeTipi.value, "HesapTipi": hesapTipi ??"A", "MuhRefKodGelsin": "H", "EkranTipi": "R"};
+      viewModel.changeMuhasebeKoduList(await NetworkManager().getMuhasebeKodlari(stokMu: false, queryParams: queryparams));
     }
     return await showBottomSheetDialog(context,
         title: "Muhasebe Kodu Seçiniz", children: viewModel.muhasebeKoduList?.map((e) => BottomSheetModel(title: e.hesapAdi ?? e.hesapKodu ?? "", description: e.hesapKodu, value: e)).toList());

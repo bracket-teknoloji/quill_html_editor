@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "../../../../model/param_model.dart";
 
@@ -232,7 +233,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                       }
                     },
                   ),
-                ),
+                ).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
                 Expanded(
                   child: CustomTextField(
                     enabled: enable,
@@ -254,7 +255,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                       }
                     },
                   ),
-                ),
+                ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
               ],
             ),
           ],

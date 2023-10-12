@@ -88,9 +88,9 @@ class MenuItemConstants {
         GridItemModel.item(name: "finans_Kasa_NakitTahsilat", title: "Nakit Tahsilat", route: "/mainPage/nakitTahsilat"),
         GridItemModel.item(name: "finans_Kasa_SenetTahsilati", title: "Senet Tahsilatı"),
         GridItemModel.item(name: "finans_Kasa_CekTahsilati", title: "Çek Tahsilatı"),
-        GridItemModel.item(name: "finans_Kasa_MuhtelifTahsilat", title: "Muhtelif Nakit Tahsilat"),
-        GridItemModel.item(name: "finans_Kasa_MuhtelifOdeme", title: "Muhtelif Nakit Ödeme"),
-        GridItemModel.item(name: "finans_Kasa_NakitOdeme", title: "Nakit Ödeme"),
+        GridItemModel.item(name: "finans_Kasa_MuhtelifTahsilat", title: "Muhtelif Nakit Tahsilat", route: "/mainPage/muhtelifTahsilat"),
+        GridItemModel.item(name: "finans_Kasa_MuhtelifOdeme", title: "Muhtelif Nakit Ödeme", route: "/mainPage/muhtelifOdeme"),
+        GridItemModel.item(name: "finans_Kasa_NakitOdeme", title: "Nakit Ödeme", route: "/mainPage/nakitOdeme"),
       ]),
       GridItemModel.item(name: "finans_OrtalamaVadeTarihiHesaplama", title: "Ortalama Vade Tarihi Hesaplama"),
       GridItemModel.altmenu(name: null, title: "Raporlar", icon: "monitoring", altMenuler: [

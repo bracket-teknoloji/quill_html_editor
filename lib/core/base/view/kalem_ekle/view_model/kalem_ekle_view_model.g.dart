@@ -353,11 +353,22 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
-  void setIskonto1OranMi() {
+  void setIskonto1OranMi(bool? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setIskonto1OranMi');
     try {
-      return super.setIskonto1OranMi();
+      return super.setIskonto1OranMi(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeIskonto1OranMi() {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.changeIskonto1OranMi');
+    try {
+      return super.changeIskonto1OranMi();
     } finally {
       _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
     }

@@ -280,7 +280,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                     }
                   },
                 ),
-              ),
+              ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
             ],
           ),
           Row(
@@ -301,7 +301,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                     }
                   },
                 ),
-              ),
+              ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
               Expanded(
                 child: CustomTextField(
                   labelText: "Referans Kodu",

@@ -34,6 +34,7 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
   @override
   void initState() {
     _scrollController = ScrollController();
+    viewModel.setDovizAdi(widget.model?.dovizli == "E" ? widget.model?.dovizAdi : mainCurrency);
     viewModel.setKasaKodu(widget.model?.kasaKodu);
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
@@ -86,7 +87,12 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
       children: [
         Card(
           color: UIHelper.primaryColor,
-          child: Text("Devir Tutarı: ${widget.model?.devirTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency").paddingAll(UIHelper.lowSize).paddingOnly(left: UIHelper.midSize),
+          child: Observer(builder: (_) {
+            return Text(
+                    "Devir Tutarı: ${(widget.model?.dovizli == "E" ? widget.model?.dovizDevirTutari : widget.model?.devirTutari).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}")
+                .paddingAll(UIHelper.lowSize)
+                .paddingOnly(left: UIHelper.midSize);
+          }),
         ).paddingSymmetric(horizontal: UIHelper.lowSize),
         Expanded(
           child: RefreshIndicator.adaptive(
@@ -160,7 +166,7 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                           ].whereType<Text>().toList().map((e) => SizedBox(width: width * 0.5, child: e)).toList(),
                         ),
                         trailing: Text(
-                          "${item?.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} $mainCurrency",
+                          "${item?.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${viewModel.dovizAdi}",
                           style: TextStyle(color: item?.gc == "G" ? Colors.green : Colors.red),
                         ),
                       ),
@@ -180,23 +186,34 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
         builder: (_) => BottomBarWidget(isScrolledDown: viewModel.isScrollDown, children: [
               FooterButton(children: [
                 const Text("Gelir"),
-                Observer(
-                    builder: (_) => Text(
-                        "${((viewModel.paramData?["TOPLAM_GELIR"] as double? ?? 0) + (widget.model?.devirTutari ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                        style: const TextStyle(color: Colors.green)))
+                Observer(builder: (_) {
+                  if (widget.model?.dovizli == "E") {
+                    return Text(
+                        "${((viewModel.paramData?["TOPLAM_GELIR_DOVIZ"] as double? ?? 0) + (widget.model?.dovizDevirTutari ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}",
+                        style: const TextStyle(color: Colors.green));
+                  } else {
+                    return Text("${((viewModel.paramData?["TOPLAM_GELIR"] as double? ?? 0) + (widget.model?.devirTutari ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                        style: const TextStyle(color: Colors.green));
+                  }
+                })
               ]),
               FooterButton(children: [
                 const Text("Gider"),
-                Observer(
-                    builder: (_) =>
-                        Text("${(viewModel.paramData?["TOPLAM_GIDER"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red)))
+                Observer(builder: (_) {
+                  if (widget.model?.dovizli == "E") {
+                    return Text("${(viewModel.paramData?["TOPLAM_GIDER_DOVIZ"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}",
+                        style: const TextStyle(color: Colors.red));
+                  } else {
+                    return Text("${(viewModel.paramData?["TOPLAM_GIDER"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red));
+                  }
+                })
               ]),
               FooterButton(children: [
                 const Text("Bakiye"),
                 Observer(
                     builder: (_) => Text(
-                        "${((viewModel.paramData?["TOPLAM_GELIR"] as double? ?? 0) + (widget.model?.devirTutari ?? 0) - (viewModel.paramData?["TOPLAM_GIDER"] as double? ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                        style: const TextStyle(color: Colors.grey)))
+                        "${(widget.model?.dovizli == "E" ? widget.model?.devirliDovizBakiye : widget.model?.devirliBakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}",
+                        style: TextStyle(color: UIHelper.getColorWithValue((widget.model?.dovizli == "E" ? widget.model?.devirliDovizBakiye : widget.model?.devirliBakiye) ?? 0))))
               ])
             ]));
   }

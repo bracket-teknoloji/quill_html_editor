@@ -303,7 +303,8 @@ class NetworkManager {
     GenericResponseModel result = await dioGet<StokMuhasebeKoduModel>(
         path: stokMu == true ? ApiUrls.getStokMuhasebeKodlari : ApiUrls.getMuhasebeMuhasebeKodlari,
         bodyModel: StokMuhasebeKoduModel(),
-        queryParameters: stokMu == true ? null : {"BelgeTipi": "Rapor_FinansAylikMizan", "HesapTipi": "A", "MuhRefKodGelsin": "H", "EkranTipi": "R"});
+        showLoading: true,
+        queryParameters: queryParams);
     return result.data.map((e) => e as StokMuhasebeKoduModel).toList().cast<StokMuhasebeKoduModel>();
   }
 

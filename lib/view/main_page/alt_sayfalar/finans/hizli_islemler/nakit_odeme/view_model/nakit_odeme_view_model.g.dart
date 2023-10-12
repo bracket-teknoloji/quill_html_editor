@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'nakit_tahsilat_view_model.dart';
+part of 'nakit_odeme_view_model.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,18 +8,18 @@ part of 'nakit_tahsilat_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$NakitTahsilatViewModel on _NakitTahsilatViewModelBase, Store {
+mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   Computed<TahsilatRequestModel>? _$getStokYeniKayitModelComputed;
 
   @override
   TahsilatRequestModel get getStokYeniKayitModel =>
       (_$getStokYeniKayitModelComputed ??= Computed<TahsilatRequestModel>(
               () => super.getStokYeniKayitModel,
-              name: '_NakitTahsilatViewModelBase.getStokYeniKayitModel'))
+              name: '_NakitOdemeViewModelBase.getStokYeniKayitModel'))
           .value;
 
   late final _$modelAtom =
-      Atom(name: '_NakitTahsilatViewModelBase.model', context: context);
+      Atom(name: '_NakitOdemeViewModelBase.model', context: context);
 
   @override
   TahsilatRequestModel get model {
@@ -35,8 +35,7 @@ mixin _$NakitTahsilatViewModel on _NakitTahsilatViewModelBase, Store {
   }
 
   late final _$dovizKurlariListesiAtom = Atom(
-      name: '_NakitTahsilatViewModelBase.dovizKurlariListesi',
-      context: context);
+      name: '_NakitOdemeViewModelBase.dovizKurlariListesi', context: context);
 
   @override
   ObservableList<DovizKurlariModel>? get dovizKurlariListesi {
@@ -52,7 +51,7 @@ mixin _$NakitTahsilatViewModel on _NakitTahsilatViewModelBase, Store {
   }
 
   late final _$muhaRefListAtom =
-      Atom(name: '_NakitTahsilatViewModelBase.muhaRefList', context: context);
+      Atom(name: '_NakitOdemeViewModelBase.muhaRefList', context: context);
 
   @override
   ObservableList<MuhasebeReferansModel>? get muhaRefList {
@@ -67,9 +66,8 @@ mixin _$NakitTahsilatViewModel on _NakitTahsilatViewModelBase, Store {
     });
   }
 
-  late final _$getSiradakiKodAsyncAction = AsyncAction(
-      '_NakitTahsilatViewModelBase.getSiradakiKod',
-      context: context);
+  late final _$getSiradakiKodAsyncAction =
+      AsyncAction('_NakitOdemeViewModelBase.getSiradakiKod', context: context);
 
   @override
   Future<void> getSiradakiKod() {
@@ -77,16 +75,15 @@ mixin _$NakitTahsilatViewModel on _NakitTahsilatViewModelBase, Store {
   }
 
   late final _$getKasalarAsyncAction =
-      AsyncAction('_NakitTahsilatViewModelBase.getKasalar', context: context);
+      AsyncAction('_NakitOdemeViewModelBase.getKasalar', context: context);
 
   @override
   Future<KasaList?> getKasalar(String? kasaKodu) {
     return _$getKasalarAsyncAction.run(() => super.getKasalar(kasaKodu));
   }
 
-  late final _$getMuhaRefListAsyncAction = AsyncAction(
-      '_NakitTahsilatViewModelBase.getMuhaRefList',
-      context: context);
+  late final _$getMuhaRefListAsyncAction =
+      AsyncAction('_NakitOdemeViewModelBase.getMuhaRefList', context: context);
 
   @override
   Future<void> getMuhaRefList() {
@@ -94,7 +91,7 @@ mixin _$NakitTahsilatViewModel on _NakitTahsilatViewModelBase, Store {
   }
 
   late final _$getDovizlerAsyncAction =
-      AsyncAction('_NakitTahsilatViewModelBase.getDovizler', context: context);
+      AsyncAction('_NakitOdemeViewModelBase.getDovizler', context: context);
 
   @override
   Future<void> getDovizler() {
@@ -102,190 +99,200 @@ mixin _$NakitTahsilatViewModel on _NakitTahsilatViewModelBase, Store {
   }
 
   late final _$postDataAsyncAction =
-      AsyncAction('_NakitTahsilatViewModelBase.postData', context: context);
+      AsyncAction('_NakitOdemeViewModelBase.postData', context: context);
 
   @override
   Future<GenericResponseModel<NetworkManagerMixin>> postData() {
     return _$postDataAsyncAction.run(() => super.postData());
   }
 
-  late final _$_NakitTahsilatViewModelBaseActionController =
-      ActionController(name: '_NakitTahsilatViewModelBase', context: context);
+  late final _$_NakitOdemeViewModelBaseActionController =
+      ActionController(name: '_NakitOdemeViewModelBase', context: context);
 
   @override
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
-    final _$actionInfo =
-        _$_NakitTahsilatViewModelBaseActionController.startAction(
-            name: '_NakitTahsilatViewModelBase.setDovizKurlariListesi');
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setDovizKurlariListesi');
     try {
       return super.setDovizKurlariListesi(value);
     } finally {
-      _$_NakitTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setTahsilatmi(bool? value) {
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setTahsilatmi');
+    try {
+      return super.setTahsilatmi(value);
+    } finally {
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setBelgeNo(String? value) {
-    final _$actionInfo = _$_NakitTahsilatViewModelBaseActionController
-        .startAction(name: '_NakitTahsilatViewModelBase.setBelgeNo');
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setBelgeNo');
     try {
       return super.setBelgeNo(value);
     } finally {
-      _$_NakitTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setTarih(DateTime? value) {
-    final _$actionInfo = _$_NakitTahsilatViewModelBaseActionController
-        .startAction(name: '_NakitTahsilatViewModelBase.setTarih');
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setTarih');
     try {
       return super.setTarih(value);
     } finally {
-      _$_NakitTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setKasa(KasaList? value) {
-    final _$actionInfo = _$_NakitTahsilatViewModelBaseActionController
-        .startAction(name: '_NakitTahsilatViewModelBase.setKasa');
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setKasa');
     try {
       return super.setKasa(value);
     } finally {
-      _$_NakitTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setAciklama(String? value) {
-    final _$actionInfo = _$_NakitTahsilatViewModelBaseActionController
-        .startAction(name: '_NakitTahsilatViewModelBase.setAciklama');
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setAciklama');
     try {
       return super.setAciklama(value);
     } finally {
-      _$_NakitTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setTutar(double? value) {
-    final _$actionInfo = _$_NakitTahsilatViewModelBaseActionController
-        .startAction(name: '_NakitTahsilatViewModelBase.setTutar');
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setTutar');
     try {
       return super.setTutar(value);
     } finally {
-      _$_NakitTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setDovizTutari(double? value) {
-    final _$actionInfo = _$_NakitTahsilatViewModelBaseActionController
-        .startAction(name: '_NakitTahsilatViewModelBase.setDovizTutari');
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setDovizTutari');
     try {
       return super.setDovizTutari(value);
     } finally {
-      _$_NakitTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setProjekodu(String? value) {
-    final _$actionInfo = _$_NakitTahsilatViewModelBaseActionController
-        .startAction(name: '_NakitTahsilatViewModelBase.setProjekodu');
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setProjekodu');
     try {
       return super.setProjekodu(value);
     } finally {
-      _$_NakitTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setPlasiyerKodu(PlasiyerList? value) {
-    final _$actionInfo = _$_NakitTahsilatViewModelBaseActionController
-        .startAction(name: '_NakitTahsilatViewModelBase.setPlasiyerKodu');
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setPlasiyerKodu');
     try {
       return super.setPlasiyerKodu(value);
     } finally {
-      _$_NakitTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setKasaKodu(String? value) {
-    final _$actionInfo = _$_NakitTahsilatViewModelBaseActionController
-        .startAction(name: '_NakitTahsilatViewModelBase.setKasaKodu');
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setKasaKodu');
     try {
       return super.setKasaKodu(value);
     } finally {
-      _$_NakitTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setDovizTipi(int? value) {
-    final _$actionInfo = _$_NakitTahsilatViewModelBaseActionController
-        .startAction(name: '_NakitTahsilatViewModelBase.setDovizTipi');
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setDovizTipi');
     try {
       return super.setDovizTipi(value);
     } finally {
-      _$_NakitTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setCariKodu(String? value) {
-    final _$actionInfo = _$_NakitTahsilatViewModelBaseActionController
-        .startAction(name: '_NakitTahsilatViewModelBase.setCariKodu');
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setCariKodu');
     try {
       return super.setCariKodu(value);
     } finally {
-      _$_NakitTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setHesapKodu(String? value) {
-    final _$actionInfo = _$_NakitTahsilatViewModelBaseActionController
-        .startAction(name: '_NakitTahsilatViewModelBase.setHesapKodu');
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setHesapKodu');
     try {
       return super.setHesapKodu(value);
     } finally {
-      _$_NakitTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setHedefAciklama(String? value) {
-    final _$actionInfo = _$_NakitTahsilatViewModelBaseActionController
-        .startAction(name: '_NakitTahsilatViewModelBase.setHedefAciklama');
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setHedefAciklama');
     try {
       return super.setHedefAciklama(value);
     } finally {
-      _$_NakitTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setMuhaRefList(List<MuhasebeReferansModel>? value) {
-    final _$actionInfo = _$_NakitTahsilatViewModelBaseActionController
-        .startAction(name: '_NakitTahsilatViewModelBase.setMuhaRefList');
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setMuhaRefList');
     try {
       return super.setMuhaRefList(value);
     } finally {
-      _$_NakitTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setReferansKodu(String? value) {
-    final _$actionInfo = _$_NakitTahsilatViewModelBaseActionController
-        .startAction(name: '_NakitTahsilatViewModelBase.setReferansKodu');
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setReferansKodu');
     try {
       return super.setReferansKodu(value);
     } finally {
-      _$_NakitTahsilatViewModelBaseActionController.endAction(_$actionInfo);
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 

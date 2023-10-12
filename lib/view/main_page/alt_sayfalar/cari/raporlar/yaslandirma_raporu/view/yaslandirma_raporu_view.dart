@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";
@@ -168,7 +169,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                       }
                     },
                     suffixMore: true,
-                  )),
+                  )).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
                 ],
               ),
               Row(

@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 
@@ -76,25 +75,23 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
         SizedBox(
           height: 50,
           width: double.infinity,
-          child: Observer(builder: (_) {
-            return ListView.builder(
-                controller: scrollController,
-                scrollDirection: Axis.horizontal,
-                itemCount: viewModel.childrenTitleList.length,
-                itemBuilder: (context, listTileIndex) => RadioMenuButton(
-                        style: ButtonStyle(padding: MaterialStateProperty.all(EdgeInsets.zero)),
-                        value: listTileIndex,
-                        groupValue: viewModel.groupValue,
-                        onChanged: (index) {
-                          widget.baslangicTarihiController.text = viewModel.startDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull() ?? "";
-                          widget.bitisTarihiController.text = index != 0 ? viewModel.finishDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull() ?? "" : "";
-                          widget.filterOnChanged(index);
-                          viewModel.changeGroupValue(index ?? 0);
-                          setState(() {});
-                        },
-                        child: Text(viewModel.childrenTitleList[listTileIndex]))
-                    .paddingOnly(right: UIHelper.highSize));
-          }),
+          child: ListView.builder(
+              controller: scrollController,
+              scrollDirection: Axis.horizontal,
+              itemCount: viewModel.childrenTitleList.length,
+              itemBuilder: (context, listTileIndex) => RadioMenuButton(
+                      style: ButtonStyle(padding: MaterialStateProperty.all(EdgeInsets.zero)),
+                      value: listTileIndex,
+                      groupValue: viewModel.groupValue,
+                      onChanged: (index) {
+                        widget.baslangicTarihiController.text = viewModel.startDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull() ?? "";
+                        widget.bitisTarihiController.text = index != 0 ? viewModel.finishDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull() ?? "" : "";
+                        widget.filterOnChanged(index);
+                        viewModel.changeGroupValue(index ?? 0);
+                        setState(() {});
+                      },
+                      child: Text(viewModel.childrenTitleList[listTileIndex]))
+                  .paddingOnly(right: UIHelper.highSize)),
         ).paddingOnly(left: UIHelper.lowSize),
         Row(
           children: children2.map((e) => Expanded(child: e)).toList(),

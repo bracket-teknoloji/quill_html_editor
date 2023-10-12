@@ -45,7 +45,7 @@ abstract class _KalemEkleViewModelBase with Store {
       ].nullCheckWithGeneric;
 
   @observable
-  KalemModel kalemModel = KalemModel();
+  KalemModel kalemModel = KalemModel(iskonto1OranMi: true);
   @action
   void setKoliMi() {
     kalemModel = kalemModel.copyWith(
@@ -123,7 +123,11 @@ abstract class _KalemEkleViewModelBase with Store {
   void setKalemList(List<KalemModel>? list) =>
       kalemModel = kalemModel.copyWith(kalemList: list);
   @action
-  void setIskonto1OranMi() => kalemModel = kalemModel.copyWith(
+  void setIskonto1OranMi(bool? value) => kalemModel = kalemModel.copyWith(
+      iskonto1OranMi: value);
+
+      @action
+      void changeIskonto1OranMi()=>  kalemModel = kalemModel.copyWith(
       iskonto1OranMi: !(kalemModel.iskonto1OranMi ?? false));
   @action
   void increaseMiktar(TextEditingController controller) {

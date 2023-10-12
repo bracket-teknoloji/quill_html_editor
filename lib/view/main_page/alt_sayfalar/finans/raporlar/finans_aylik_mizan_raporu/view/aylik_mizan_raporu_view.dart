@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/enum/muhasebe_kodu_belge_tipi_enum.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/raporlar/finans_aylik_mizan_raporu/view_model/aylik_mizan_raporu_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
 
@@ -54,7 +55,7 @@ class _AylikMizanRaporuViewState extends BaseState<AylikMizanRaporuView> {
                   readOnly: true,
                   suffixMore: true,
                   onTap: () async {
-                    var result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context);
+                    var result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, belgeTipi: MuhasebeBelgeTipiEnum.aylikMizan);
                     if (result is StokMuhasebeKoduModel) {
                       viewModel.changeMuhasebeKodu(result.hesapKodu);
                       muhasebeKoduController.text = result.hesapAdi ?? result.hesapKodu ?? "";

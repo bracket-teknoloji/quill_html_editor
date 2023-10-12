@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../core/base/model/generic_response_model.dart";
@@ -220,7 +221,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                     viewModel.model.plasiyerKodu = result.plasiyerKodu;
                   }
                 },
-              ),
+              ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
               CustomTextField(
                   labelText: "Proje",
                   valueText: viewModel.model.projeKodu ?? "",
@@ -252,7 +253,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                         viewModel.model.projeKodu = dialogResult.projeKodu;
                       }
                     }
-                  }),
+                  }).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
             ].map((e) => e.paddingOnly(bottom: UIHelper.lowSize)).toList(),
           ),
         ),

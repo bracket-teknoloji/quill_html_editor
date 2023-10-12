@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../core/base/state/base_state.dart";
 import "../../../../../core/components/charts/custom_line_chart.dart";
@@ -113,7 +114,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                                   if (result != null) {
                                     plasiyerController.text = result.plasiyerAciklama ?? "";
                                   }
-                                })),
+                                })).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                         Expanded(
                             child: CustomTextField(
                           labelText: "Cari",

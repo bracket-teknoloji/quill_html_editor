@@ -208,10 +208,19 @@ abstract class _KasaHareketleriViewModelBase with Store, MobxNetworkMixin {
   @observable
   ObservableList<KasaIslemleriModel>? kasaIslemleriListesi;
 
+  @observable
+  String? dovizAdi;
+
   // @computed
   // double get toplamDevirTutari => kasaIslemleriListesi?.first.kasaDevirTutari ?? 0;
 
+  @computed
+  double get bakiye => (paramData?["TOPLAM_GELIR"] as double? ?? 0) - (paramData?["TOPLAM_GIDER"] as double? ?? 0);
+
   // //* Actions
+  @action
+  void setDovizAdi(String? value) => dovizAdi = value;
+
   @action
   void setDahaVarMi(bool value) => dahaVarMi = value;
 

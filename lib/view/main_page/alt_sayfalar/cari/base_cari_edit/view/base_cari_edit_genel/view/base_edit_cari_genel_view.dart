@@ -3,6 +3,7 @@ import "dart:developer";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../../../../core/base/model/base_bottom_sheet_response_model.dart";
 import "../../../../../../../../core/base/model/base_edit_model.dart";
@@ -408,7 +409,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                     viewModel.changePlasiyer(result);
                   }
                 },
-              )),
+              )).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
               Expanded(
                   child: CustomWidgetWithLabel(
                       isVertical: true,

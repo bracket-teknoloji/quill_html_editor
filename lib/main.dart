@@ -10,21 +10,11 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/hizli_islemler/muhtelif_odeme/view/muhtelif_odeme_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/raporlar/finans_aylik_mizan_raporu/view/aylik_mizan_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/raporlar/finans_finansal_durum_raporu/view/finansal_durum_raporu_view.dart";
-import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
-import "view/main_page/alt_sayfalar/finans/banka/banka_islemleri/view/banka_islemleri_view.dart";
-import "view/main_page/alt_sayfalar/finans/dekontlar/view/kasa_dekontlar_view.dart";
-import "view/main_page/alt_sayfalar/finans/hizli_islemler/kredi_karti_tahsilati/view/kredi_karti_tahsilati_view.dart";
-import "view/main_page/alt_sayfalar/finans/hizli_islemler/nakit_tahsilat/view/nakit_tahsilat_view.dart";
-import "view/main_page/alt_sayfalar/finans/kasa/kasa_hareketleri/view/kasa_hareketleri_view.dart";
-import "view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/view/kasa_islemleri_view.dart";
-import "view/main_page/alt_sayfalar/finans/kasa/kasa_listesi/view/kasa_listesi_view.dart";
-import "view/main_page/alt_sayfalar/finans/kasa/kasa_transferi/view/kasa_transferi_view.dart";
-import "view/main_page/alt_sayfalar/finans/kasa/raporlar/kasa_ekstre_raporu/view/kasa_ekstre_raporu_view.dart";
-import "view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_widget_model.dart";
-import "view/main_page/alt_sayfalar/stok/yazdir/view/stok_yazdir_view.dart";
 
+import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
 import "core/base/view/kalem_ekle/model/kalem_ekle_model.dart";
 import "core/base/view/kalem_ekle/view/kalem_ekle_view.dart";
@@ -55,6 +45,15 @@ import "view/main_page/alt_sayfalar/cari/raporlar/doviz_bakiye_raporu/view/doviz
 import "view/main_page/alt_sayfalar/cari/raporlar/hareket_detayli_yapilandirma_raporu/view/hareket_detayli_yapilandirma_raporu_view.dart";
 import "view/main_page/alt_sayfalar/cari/raporlar/stok_ekstre/view/stok_ekstre_view.dart";
 import "view/main_page/alt_sayfalar/cari/raporlar/yaslandirma_raporu/view/yaslandirma_raporu_view.dart";
+import "view/main_page/alt_sayfalar/finans/banka/banka_islemleri/view/banka_islemleri_view.dart";
+import "view/main_page/alt_sayfalar/finans/dekontlar/view/kasa_dekontlar_view.dart";
+import "view/main_page/alt_sayfalar/finans/hizli_islemler/kredi_karti_tahsilati/view/kredi_karti_tahsilati_view.dart";
+import "view/main_page/alt_sayfalar/finans/hizli_islemler/nakit_odeme/view/nakit_odeme_view.dart";
+import "view/main_page/alt_sayfalar/finans/kasa/kasa_hareketleri/view/kasa_hareketleri_view.dart";
+import "view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/view/kasa_islemleri_view.dart";
+import "view/main_page/alt_sayfalar/finans/kasa/kasa_listesi/view/kasa_listesi_view.dart";
+import "view/main_page/alt_sayfalar/finans/kasa/kasa_transferi/view/kasa_transferi_view.dart";
+import "view/main_page/alt_sayfalar/finans/kasa/raporlar/kasa_ekstre_raporu/view/kasa_ekstre_raporu_view.dart";
 import "view/main_page/alt_sayfalar/serbest_raporlar/view/serbest_raporlar_view.dart";
 import "view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "view/main_page/alt_sayfalar/siparis/base_siparis_edit/view/base_siparis_edit_view.dart";
@@ -62,6 +61,7 @@ import "view/main_page/alt_sayfalar/siparis/raporlar/siparis_karlilik_raporu/vie
 import "view/main_page/alt_sayfalar/siparis/raporlar/siparis_musteri_siparisi_durum_raporu/view/siparis_durum_raporu_view.dart";
 import "view/main_page/alt_sayfalar/siparis/raporlar/siparis_stok_ihtiyac_raporu/view/stok_ihtiyac_raporu_view.dart";
 import "view/main_page/alt_sayfalar/siparis/raporlar/siparis_teslim_raporu/view/siparis_teslim_raporu_view.dart";
+import "view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_widget_model.dart";
 import "view/main_page/alt_sayfalar/siparis/siparisler/view/siparisler_view.dart";
 import "view/main_page/alt_sayfalar/stok/base_stok_edit/view/base_stok_edit_view.dart";
 import "view/main_page/alt_sayfalar/stok/fiyat_gecmisi/view/fiyat_gecmisi_view.dart";
@@ -73,6 +73,7 @@ import "view/main_page/alt_sayfalar/stok/stok_hareketleri/view/stok_hareketleri_
 import "view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "view/main_page/alt_sayfalar/stok/stok_liste/view/stok_listesi_view.dart";
 import "view/main_page/alt_sayfalar/stok/stok_yeni_kayit/view/stok_yeni_kayit_view.dart";
+import "view/main_page/alt_sayfalar/stok/yazdir/view/stok_yazdir_view.dart";
 import "view/main_page/alt_sayfalar/temsilci_profil/view/temsilci_profil_view.dart";
 import "view/main_page/model/param_model.dart";
 import "view/main_page/view/main_page_view.dart";
@@ -160,7 +161,10 @@ class PickerApp extends StatelessWidget {
 
             //* * Hızlı İşlemler
             GetPage(name: "/krediKartiTahsilati", page: () => const KrediKartiTahsilatiView()),
-            GetPage(name: "/nakitTahsilat", page: () => const NakitTahsilatView()),
+            GetPage(name: "/nakitTahsilat", page: () => const NakitOdemeView(tahsilatMi: true)),
+            GetPage(name: "/nakitOdeme", page: () => const NakitOdemeView()),
+            GetPage(name: "/muhtelifTahsilat", page: () => const MuhtelifOdemeView(tahsilatMi: true)),
+            GetPage(name: "/muhtelifOdeme", page: () => const MuhtelifOdemeView()),
 
             //* * Finans Raporları
             GetPage(name: "/finansFinansalDurumRaporu", page: () => const FinansalDurumRaporuView()),

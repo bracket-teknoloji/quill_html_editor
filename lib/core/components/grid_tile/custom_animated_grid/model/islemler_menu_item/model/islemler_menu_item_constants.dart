@@ -80,8 +80,8 @@ class IslemlerMenuItemConstants<T> {
       }
       islemlerList.add(kasaTransferi);
       islemlerList.add(nakitTahsilat);
-      islemlerList.add(bankaKasaTransferi);
       islemlerList.add(nakitOdeme);
+      islemlerList.add(bankaKasaTransferi);
       islemlerList.add(krediKartiTahsilati);
       islemlerList.add(muhtelifTahsilat);
       islemlerList.add(muhtelifOdeme);
@@ -489,13 +489,13 @@ class IslemlerMenuItemConstants<T> {
       iconData: Icons.list_alt_rounded,
       onTap: () {});
   GridItemModel? get nakitOdeme => GridItemModel.islemler(
-      title: "Nakit Ödeme", iconData: Icons.list_alt_rounded, onTap: () {});
+      title: "Nakit Ödeme", iconData: Icons.list_alt_rounded, onTap: ()async => await Get.toNamed("/mainPage/nakitOdeme"));
   GridItemModel? get muhtelifTahsilat => GridItemModel.islemler(
       title: "Muhtelif Tahsilat",
       iconData: Icons.list_alt_rounded,
-      onTap: () {});
+      onTap: () async => await Get.toNamed("/mainPage/muhtelifTahsilat"));
   GridItemModel? get muhtelifOdeme => GridItemModel.islemler(
-      title: "Muhtelif Ödeme", iconData: Icons.list_alt_rounded, onTap: () {});
+      title: "Muhtelif Ödeme", iconData: Icons.list_alt_rounded, onTap:() async => await Get.toNamed("/mainPage/muhtelifOdeme"));
   GridItemModel? get kasaHareketleri => GridItemModel.islemler(
       title: "Kasa Hareketleri",
       iconData: Icons.sync_alt_outlined,

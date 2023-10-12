@@ -231,7 +231,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
 
                                     viewModel.setArrPlasiyerKodu(result.map((e) => e?.plasiyerKodu.toString()).toList().cast<String>());
                                   }
-                                })),
+                                })).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                         Expanded(
                             child: CustomTextField(
                                 labelText: "Proje",
@@ -248,7 +248,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                     projeController.text = result.projeAciklama ?? "";
                                     viewModel.setProjeKodu(result.projeKodu);
                                   }
-                                })),
+                                })).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
                       ],
                     ),
                     Row(
