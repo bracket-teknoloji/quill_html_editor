@@ -130,6 +130,22 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
     });
   }
 
+  late final _$showReferansKoduAtom = Atom(
+      name: '_MuhtelifOdemeViewModelBase.showReferansKodu', context: context);
+
+  @override
+  String? get showReferansKodu {
+    _$showReferansKoduAtom.reportRead();
+    return super.showReferansKodu;
+  }
+
+  @override
+  set showReferansKodu(String? value) {
+    _$showReferansKoduAtom.reportWrite(value, super.showReferansKodu, () {
+      super.showReferansKodu = value;
+    });
+  }
+
   late final _$getMuhaRefListAsyncAction = AsyncAction(
       '_MuhtelifOdemeViewModelBase.getMuhaRefList',
       context: context);
@@ -158,6 +174,17 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
 
   late final _$_MuhtelifOdemeViewModelBaseActionController =
       ActionController(name: '_MuhtelifOdemeViewModelBase', context: context);
+
+  @override
+  void setShowReferansKodu(String? value) {
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
+        .startAction(name: '_MuhtelifOdemeViewModelBase.setShowReferansKodu');
+    try {
+      return super.setShowReferansKodu(value);
+    } finally {
+      _$_MuhtelifOdemeViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setCariBakiye(double? value) {
@@ -312,6 +339,7 @@ bankaSozlesmesiList: ${bankaSozlesmesiList},
 bankaHesaplariList: ${bankaHesaplariList},
 muhaRefList: ${muhaRefList},
 model: ${model},
+showReferansKodu: ${showReferansKodu},
 getCariBakiye: ${getCariBakiye}
     ''';
   }

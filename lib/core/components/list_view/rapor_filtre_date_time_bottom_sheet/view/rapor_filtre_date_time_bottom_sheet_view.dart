@@ -12,10 +12,10 @@ class RaporFiltreDateTimeBottomSheetView extends StatefulWidget {
   final void Function(int? index) filterOnChanged;
   final dynamic Function()? baslangicOnTap;
   final dynamic Function()? bitisOnTap;
-  final bool? showFirstBugun;
+  final bool? showBugunFirst;
 
   const RaporFiltreDateTimeBottomSheetView(
-      {super.key, required this.filterOnChanged, required this.baslangicTarihiController, required this.bitisTarihiController, this.baslangicOnTap, this.bitisOnTap, this.showFirstBugun});
+      {super.key, required this.filterOnChanged, required this.baslangicTarihiController, required this.bitisTarihiController, this.baslangicOnTap, this.bitisOnTap, this.showBugunFirst});
 
   @override
   State<RaporFiltreDateTimeBottomSheetView> createState() => _RaporFiltreDateTimeBottomSheetViewState();
@@ -28,11 +28,15 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
   @override
   void initState() {
     scrollController = ScrollController();
-    if (widget.showFirstBugun == true) {
-      viewModel.changeGroupValue(1);
+    if (widget.showBugunFirst ?? false) {
       widget.baslangicTarihiController.text = DateTime.now().toDateString;
-      widget.bitisTarihiController.text = DateTime.now().add(const Duration(days: 1)).toDateString;
+      widget.bitisTarihiController.text = DateTime.now().toDateString;
+      viewModel.changeGroupValue(1);
     }
+    Future.delayed(Duration.zero, () async {
+      // await scrollController.animateTo(30, duration: DurationHelper.durationLow, curve: Curves.easeIn);
+      // await scrollController.animateTo((scrollController.positions.isNotEmpty) ? (scrollController.position.minScrollExtent) : 0, duration: DurationHelper.durationLow, curve: Curves.easeInOut);
+    });
     super.initState();
   }
 
@@ -112,7 +116,7 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
       lastDate: (isBaslangic ? (widget.bitisTarihiController.text != "" ? widget.bitisTarihiController.text.toDateTimeDDMMYYYY() : DateTime.now()) : DateTime.now()),
       // currentDate: DateFormat("dd.MM.yyyy").parse(baslangicTarihiController?.text ?? DateTime.now().toDateString),
     );
-    if (result != null) {
+    if (result is DateTime) {
       isBaslangic ? widget.baslangicTarihiController.text = result.toDateString : widget.bitisTarihiController.text = result.toDateString;
       viewModel.resetGroupValue();
     }

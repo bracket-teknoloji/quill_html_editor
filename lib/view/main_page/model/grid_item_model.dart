@@ -90,8 +90,7 @@ class GridItemModel {
       } else {
         return false;
       }
-    } else if (_cacheManager?.adminMi != null &&
-        (_cacheManager?.adminMi ?? false)) {
+    } else if (_cacheManager?.adminMi == true) {
       return true;
     } else if (menuTipi == "S") {
       int sayac = altMenuler?.length ?? 0;
@@ -109,8 +108,8 @@ class GridItemModel {
     } else if (menuTipi == "SR") {
       return true;
     } else {
-      var result = _cacheManager?.profilYetki?.toJson()[name] ?? false;
-      return result;
+      var result =route != null ? _cacheManager?.profilYetki?.toJson()[name] : false;
+      return result ?? false;
     }
   }
 

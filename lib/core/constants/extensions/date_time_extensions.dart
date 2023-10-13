@@ -10,6 +10,11 @@ extension DateTimeExtension on DateTime? {
     if (this == null) return "";
     return DateFormat("HH:mm").format(this ?? DateTime.now());
   }
+
+  DateTime? get dateTimeWithoutTime {
+    if (this == null) return null;
+    return DateTime(this!.year, this!.month, this!.day);
+  }
 }
 
 extension DateTimeExtensionWithHypen on DateTime? {

@@ -41,8 +41,14 @@ abstract class _MuhtelifOdemeViewModelBase with Store, MobxNetworkMixin {
   @observable
   TahsilatRequestModel model = TahsilatRequestModel(yeniKayit: true, gc: "C", tag: "TahsilatModel", pickerBelgeTuru: "MUO", hesapTipi: "M");
 
+  @observable
+  String? showReferansKodu;
+
   @computed
   String? get getCariBakiye => cariBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
+
+  @action
+  void setShowReferansKodu(String? value) => showReferansKodu = value;
 
   @action
   void setCariBakiye(double? value) => cariBakiye = value;
@@ -69,7 +75,7 @@ abstract class _MuhtelifOdemeViewModelBase with Store, MobxNetworkMixin {
   void setTutar(double? value) => model = model.copyWith(tutar: value);
 
   @action
-  void setTahsilatMi(bool? value) => model = model.copyWith(tahsilatmi: value, gc: value == true ? "G" : "C");
+  void setTahsilatMi(bool? value) => model = model.copyWith(tahsilatmi: value, gc: value == true ? "G" : "C", pickerBelgeTuru: value == true ? "MUT" : "MUO");
   @action
   void setPlasiyerKodu(PlasiyerList? value) => model = model.copyWith(plasiyerKodu: value?.plasiyerKodu);
 

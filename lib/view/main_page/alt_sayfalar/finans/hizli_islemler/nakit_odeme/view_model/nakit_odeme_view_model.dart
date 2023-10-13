@@ -1,4 +1,6 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/model/base_network_mixin.dart";
@@ -17,6 +19,11 @@ part "nakit_odeme_view_model.g.dart";
 class NakitOdemeViewModel = _NakitOdemeViewModelBase with _$NakitOdemeViewModel;
 
 abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
+
+    @observable
+  double? cariBakiye;
+
+
   @observable
   TahsilatRequestModel model = TahsilatRequestModel(tahsilatmi: true, yeniKayit: true, gc: "G", tag: "TahsilatModel", pickerBelgeTuru: "NAT", hesapTipi: "C");
 
@@ -25,6 +32,9 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
 
   @observable
   ObservableList<MuhasebeReferansModel>? muhaRefList;
+
+  @observable
+  KasaList? kasa;
 
   @observable
   bool? showReferansKodu = false;
@@ -38,6 +48,13 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
     return model.copyWith(guid: uuid.v4());
   }
 
+    @computed
+  String? get getCariBakiye => cariBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
+
+  @action
+  void setCariBakiye(double? value) => cariBakiye = value;
+
+
   @action
   void setShowReferansKodu(bool? value) => showReferansKodu = value;
 
@@ -49,7 +66,7 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  void setTahsilatmi(bool? value) => model = model.copyWith(tahsilatmi: value, gc: value == true ? "G" : "C");
+  void setTahsilatmi(bool? value) => model = model.copyWith(tahsilatmi: value, gc: value == true ? "G" : "C", pickerBelgeTuru: value == true ? "NAT" : "NAO");
 
   @action
   void setBelgeNo(String? value) => model = model.copyWith(belgeNo: value);
@@ -58,7 +75,10 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
   void setTarih(DateTime? value) => model = model.copyWith(tarih: value);
 
   @action
-  void setKasa(KasaList? value) => model = model.copyWith(kasaKodu: value?.kasaKodu);
+  void setKasa(KasaList? value) {
+    kasa = value;
+    model = model.copyWith(kasaKodu: value?.kasaKodu);
+  }
 
   @action
   void setAciklama(String? value) => model = model.copyWith(aciklama: value);
@@ -89,6 +109,8 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setHedefAciklama(String? value) => model = model.copyWith(hedefAciklama: value);
+
+
 
   @action
   void setMuhaRefList(List<MuhasebeReferansModel>? value) => muhaRefList = value?.asObservable();

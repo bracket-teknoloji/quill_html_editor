@@ -42,9 +42,16 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(model?.tarih.toDateString ?? ""),
-                      Text(
-                        "${model?.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} $mainCurrency",
-                        style: TextStyle(color: model?.gc == "G" ? Colors.green : Colors.red),
+                      Row(
+                        children: [
+                          Text(model?.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari) ?? "", style: const TextStyle(color: Colors.grey))
+                              .paddingOnly(right: UIHelper.lowSize)
+                              .yetkiVarMi(model?.dovizTutari != null && model?.dovizTutari != 0),
+                          Text(
+                            "${model?.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} $mainCurrency",
+                            style: TextStyle(color: model?.gc == "G" ? Colors.green : Colors.red),
+                          ),
+                        ],
                       )
                     ],
                   ),

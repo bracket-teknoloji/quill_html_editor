@@ -1,10 +1,9 @@
 import "package:collection/collection.dart";
-import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../core/constants/enum/serbest_rapor_detay_kod_enum.dart";
 import "../../../../core/constants/enum/siparis_tipi_enum.dart";
-import "../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../core/constants/grid_constants.dart";
 import "../../../../core/init/cache/cache_manager.dart";
 import "../grid_item_model.dart";
@@ -56,11 +55,11 @@ class MenuItemConstants {
     //*Finans
     //*
     GridItemModel.anamenu(name: "YONE", title: "Finans", icon: "wallet", color: GridThemeManager.finans, altMenuler: [
-      GridItemModel.altmenu(name: "yonetici_Banka_Banka_Litesi", title: "Banka", iconData: Icons.account_balance_outlined, altMenuler: [
+      GridItemModel.altmenu(name: null, title: "Banka", iconData: Icons.account_balance_outlined, altMenuler: [
         GridItemModel.item(name: "yonetici_Banka_Banka_Litesi", title: "Banka Listesi"),
-        GridItemModel.item(name: "yonetici_Banka_Islemleri", title: "İşlemler", route: "/mainPage/bankaIslemleri"),
-      ]),
-      GridItemModel.altmenu(name: "finans_Kasa_Listesi", title: "Kasa", iconData: Icons.point_of_sale_outlined, altMenuler: [
+        GridItemModel.item(name: "yonetici_Banka_Islemleri", title: "İşlemler", route: "/mainPage/bankaIslemleri").isDebug(),
+      ].whereType<GridItemModel>().toList()),
+      GridItemModel.altmenu(name: null, title: "Kasa", iconData: Icons.point_of_sale_outlined, altMenuler: [
         GridItemModel.item(name: "finans_Kasa_Listesi", title: "Kasa Listesi", route: "/mainPage/kasaListesi"),
         GridItemModel.item(name: "finans_Kasa_Islemleri", title: "İşlemler", route: "/mainPage/kasaIslemleri"),
         GridItemModel.item(name: "finans_KasalarArasiTransfer", title: "Kasa Transferi", route: "/mainPage/kasaTransferi"),
@@ -73,7 +72,7 @@ class MenuItemConstants {
       GridItemModel.altmenu(name: null, title: "Çek", altMenuler: [
         GridItemModel.item(name: "finans_Cek_Musteri", title: "Müşteri Çekleri"),
         GridItemModel.item(name: "finans_Cek_Borc", title: "Borç Çekleri"),
-        GridItemModel.altmenu(name: "", title: "Raporlar", icon: "monitoring", altMenuler: [
+        GridItemModel.altmenu(name: null, title: "Raporlar", icon: "monitoring", altMenuler: [
           ..._getSerbestRapor(SerbestRaporDetayKodEnum.cek),
         ])
       ]),
@@ -94,12 +93,12 @@ class MenuItemConstants {
       ]),
       GridItemModel.item(name: "finans_OrtalamaVadeTarihiHesaplama", title: "Ortalama Vade Tarihi Hesaplama"),
       GridItemModel.altmenu(name: null, title: "Raporlar", icon: "monitoring", altMenuler: [
-        GridItemModel.item(name: "finans_OzetRapor", title: "Özet Rapor"),
+        // GridItemModel.item(name: "finans_OzetRapor", title: "Özet Rapor"),
         GridItemModel.item(name: "finans_Raporlar_FinansalDurum", title: "Finansal Durum Raporu", route: "/mainPage/finansFinansalDurumRaporu"),
         GridItemModel.item(name: "finans_Raporlar_AylikMizan", title: "Aylık Mizan Raporu", route: "/mainPage/finansAylikMizanRaporu"),
         ..._getSerbestRapor(SerbestRaporDetayKodEnum.finans),
       ]),
-    ]).isDebug(),
+    ]),
 
     //* Genel
     //*
@@ -136,7 +135,7 @@ class MenuItemConstants {
     GridItemModel.anamenu(name: "SIPA", title: "Sipariş", icon: "order", color: GridThemeManager.siparis, altMenuler: [
       GridItemModel.item(name: "siparis_MusteriSiparisi", title: "Müşteri Siparişleri", route: "/mainPage/siparisMusteriSiparisi"),
       GridItemModel.item(name: "siparis_SaticiSiparisi", title: "Satıcı Siparişleri", route: "/mainPage/siparisSaticiSiparisi"),
-      GridItemModel.altmenu(name: "siparis_SaticiSiparisi_Raporlar", title: "Raporlar", altMenuler: [
+      GridItemModel.altmenu(name: null, title: "Raporlar", altMenuler: [
         // GridItemModel.item(name: "siparis_MusteriSiparisi_DurumRaporu", title: "Müşteri Siparişi Durum Raporu"),
         GridItemModel.item(
             name: "siparis_MusteriSiparisi_DurumRaporu", title: "Müşteri Siparişi Durum Raporu", siparisTipi: SiparisTipiEnum.musteri, route: "/mainPage/siparisMusteriSiparisiDurumRaporu"),
@@ -213,12 +212,12 @@ class MenuItemConstants {
   ].whereType<GridItemModel>().toList();
 
   List<GridItemModel> getList() {
-    if (kDebugMode) {
-      return _gridItemModel;
-    } else {
-      //grid items içindeki yetkiKontrol true olanları döndür
       return _gridItemModel.where((element) => element.yetkiKontrol).toList();
-    }
+    // if (kDebugMode) {
+    //   return _gridItemModel;
+    // } else {
+    //   //grid items içindeki yetkiKontrol true olanları döndür
+    // }
   }
 
   List<GridItemModel?> getAltMenuList(String name) {

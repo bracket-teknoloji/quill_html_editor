@@ -66,7 +66,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
       await getKasa();
       await viewModel.getSiradakiKod();
       _belgeNoController.text = viewModel.model.belgeNo ?? "";
-      viewModel.setTarih(DateTime.now());
+      viewModel.setTarih(DateTime.now().dateTimeWithoutTime);
       _tarihController.text = viewModel.model.tarih?.toDateString ?? "";
     });
 
@@ -100,15 +100,13 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
           IconButton(
             onPressed: () async {
               if (_formKey.currentState!.validate()) {
+                viewModel.setAciklama(_kasaHareketiAciklamaController.text);
                 await dialogManager.showAreYouSureDialog(() async {
-
-                var result = await viewModel.postData();
-                if (result.success == true) {
-                  Get.back(result: true);
-                  dialogManager.showSuccessSnackBar(result.message ?? "");
-                } else {
-                  dialogManager.showAlertDialog(result.message ?? "");
-                }
+                  var result = await viewModel.postData();
+                  if (result.success == true) {
+                    Get.back(result: true);
+                    dialogManager.showSuccessSnackBar(result.message ?? "Kayıt başarılı");
+                  }
                 });
               }
             },
@@ -148,6 +146,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                           var result = await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime(2100));
                           if (result != null) {
                             _tarihController.text = result.toDateString;
+                            viewModel.setTarih(result.dateTimeWithoutTime);
                           }
                         },
                       ),
@@ -183,11 +182,11 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                       },
                       icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                     )),
-                // Observer(
-                //     builder: (_) => Text(
-                //           (viewModel.getCariBakiye ?? "") + ((viewModel.cariBakiye ?? 0) > 0 ? " (Tahsil Edilecek)" : " (Ödenecek)"),
-                //           style: TextStyle(color: (viewModel.cariBakiye ?? 0) > 0 ? Colors.green : Colors.red),
-                //         ).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.getCariBakiye != null)),
+                Observer(
+                    builder: (_) => Text(
+                          (viewModel.getCariBakiye ?? "") + ((viewModel.cariBakiye ?? 0) > 0 ? " (Tahsil Edilecek)" : " (Ödenecek)"),
+                          style: TextStyle(color: (viewModel.cariBakiye ?? 0) > 0 ? Colors.green : Colors.red),
+                        ).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.getCariBakiye != null)),
                 Observer(builder: (_) {
                   return Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -198,62 +197,76 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                           controller: _dovizTipiController,
                           isMust: true,
                           readOnly: true,
-                          suffixMore: true,
-                          // valueWidget: Observer(builder: (_) => Text(viewModel.model.dekontSeri ?? "")),
+                          suffixMore: viewModel.kasa?.dovizli != "E",
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.dovizTipi.toStringIfNotNull ?? "")),
+                          onTap: () async {
+                            if (viewModel.kasa?.dovizli == "E") {
+                              return;
+                            }
+                            var result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context);
+                            if (result is DovizList) {
+                              _dovizTipiController.text = result.isim ?? "";
+                              viewModel.setDovizTipi(result.dovizTipi);
+                              await getDovizDialog();
+                            }
+                          },
                           // onTap: () async => await getSeri(),
                         ),
-                      ),
+                      ).yetkiVarMi(viewModel.model.dovizTipi != null),
                       Expanded(
                         child: CustomTextField(
                           labelText: "Döviz Kuru",
                           controller: _dovizKuruController,
                           isMust: true,
-                          readOnly: true,
                           suffixMore: true,
-                          onTap: () async {},
+                          onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
+                        ),
+                      ).yetkiVarMi(viewModel.model.dovizTipi != null && viewModel.model.dovizTipi != 0),
+                    ],
+                  );
+                }),
+                Observer(builder: (_) {
+                  return Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Döviz Tutarı",
+                          controller: _dovizTutariController,
+                          isMust: true,
+                          isFormattedString: true,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          onChanged: (value) {
+                            viewModel.setDovizTutari(value.toDoubleWithFormattedString);
+                            viewModel.setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
+                            _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                          },
+                          // onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
+                        ),
+                      ).yetkiVarMi(viewModel.model.dovizTipi != null && viewModel.model.dovizTipi != 0),
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Tutar",
+                          controller: _tutarController,
+                          isMust: true,
+                          isFormattedString: true,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          onChanged: (value) {
+                            viewModel.setTutar(value.toDoubleWithFormattedString);
+                            if (_dovizKuruController.text != "") {
+                              viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString);
+                              _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                            } else {
+                              viewModel.setDovizTutari(null);
+                              _dovizTutariController.text = "";
+                            }
+                          },
+                          // onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
                         ),
                       ),
                     ],
-                  ).yetkiVarMi(viewModel.model.dovizTipi != null && viewModel.model.dovizTipi != 0);
+                  );
                 }),
-
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Döviz Tutarı",
-                        controller: _dovizTutariController,
-                        isMust: true,
-                        isFormattedString: true,
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        onChanged: (value) {
-                          viewModel.setDovizTutari(value.toDoubleWithFormattedString);
-                          viewModel.setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
-                          _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
-                        },
-                        // onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
-                      ),
-                    ).yetkiVarMi(viewModel.model.dovizTipi != null && viewModel.model.dovizTipi != 0),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Tutar",
-                        controller: _tutarController,
-                        isMust: true,
-                        isFormattedString: true,
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        onChanged: (value) {
-                          viewModel.setTutar(value.toDoubleWithFormattedString);
-                          if (_dovizKuruController.text != "") {
-                            viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString);
-                            _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
-                          }
-                        },
-                        // onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
-                      ),
-                    ),
-                  ],
-                ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -334,17 +347,21 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
       viewModel.setKasa(result);
       _kasaController.text = result.kasaTanimi ?? "";
       _cariHareketiAciklamaController.text = "Nakit ${viewModel.formTipi} (${result.kasaKodu ?? ""})";
-      if (result.dovizli == "E" && result.dovizTipi != 0) {
+      if (result.dovizli == "E") {
         _dovizTipiController.text = result.dovizAdi ?? " ";
         viewModel.setHedefAciklama(_cariHareketiAciklamaController.text);
-        viewModel.setDovizTipi(result.dovizTipi);
-        await getDovizDialog();
+        viewModel.setDovizTipi(result.dovizli == "E" ? result.dovizTipi ?? 0 : null);
+        _dovizTipiController.text = result.dovizli == "E" ? result.dovizAdi ?? mainCurrency : "";
+        if (result.dovizAdi != null) {
+          await getDovizDialog();
+        }
       } else {
-        viewModel.setDovizTutari(null);
-        viewModel.setDovizTipi(null);
-        _dovizTipiController.text = "";
-        _dovizKuruController.text = "";
-        _dovizTutariController.text = "";
+        if (viewModel.model.dovizTipi != null || viewModel.model.dovizTipi != 0) {
+          viewModel.setDovizTipi(0);
+          _dovizTipiController.text = mainCurrency;
+          _dovizKuruController.text = "";
+          _dovizTutariController.text = "";
+        }
       }
     }
   }
@@ -359,15 +376,28 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
       viewModel.setAciklama(_kasaHareketiAciklamaController.text);
       viewModel.setHedefAciklama(result.cariAdi);
       viewModel.setHesapKodu(result.cariKodu);
+      if (result.dovizli == true) {
+        if (viewModel.kasa?.dovizli != "E") {
+          viewModel.setDovizTipi(result.dovizKodu);
+          _dovizTipiController.text = result.dovizAdi ?? "";
+          await getDovizDialog();
+        } else {
+          if (viewModel.kasa?.dovizTipi != result.dovizKodu) {
+            viewModel.setDovizTipi(result.dovizKodu);
+            _dovizTipiController.text = result.dovizAdi ?? "";
+            await getDovizDialog();
+          }
+        }
+      }
+      viewModel.setCariBakiye(result.bakiye);
     }
   }
 
   Future<void> getDovizDialog() async {
-    _dovizKuruController.text = "";
-    _dovizTutariController.text = "";
-
     await viewModel.getDovizler();
     if (viewModel.dovizKurlariListesi.ext.isNotNullOrEmpty) {
+      _dovizKuruController.text = "";
+      _dovizTutariController.text = "";
       var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Döviz Kuru", children: [
         BottomSheetModel(
             title: "Alış: ${viewModel.dovizKurlariListesi?.first.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",

@@ -163,7 +163,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       return;
     }
 
-    viewModel.setTitle("${CacheManager.getVeriTabani()["Şirket"] ?? ""} şirketi için oturum açılıyor...");
+    viewModel.setTitle("${CacheManager.getVeriTabani()["Şirket"] ?? ""} şirketi için\noturum açılıyor...");
     AccountModel.instance
       ..kullaniciAdi = CacheManager.getVerifiedUser.username
       ..aktifVeritabani = CacheManager.getVeriTabani()["Şirket"]

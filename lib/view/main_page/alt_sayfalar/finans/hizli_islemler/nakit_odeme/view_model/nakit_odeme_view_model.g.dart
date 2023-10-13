@@ -24,6 +24,29 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
               () => super.getStokYeniKayitModel,
               name: '_NakitOdemeViewModelBase.getStokYeniKayitModel'))
           .value;
+  Computed<String?>? _$getCariBakiyeComputed;
+
+  @override
+  String? get getCariBakiye =>
+      (_$getCariBakiyeComputed ??= Computed<String?>(() => super.getCariBakiye,
+              name: '_NakitOdemeViewModelBase.getCariBakiye'))
+          .value;
+
+  late final _$cariBakiyeAtom =
+      Atom(name: '_NakitOdemeViewModelBase.cariBakiye', context: context);
+
+  @override
+  double? get cariBakiye {
+    _$cariBakiyeAtom.reportRead();
+    return super.cariBakiye;
+  }
+
+  @override
+  set cariBakiye(double? value) {
+    _$cariBakiyeAtom.reportWrite(value, super.cariBakiye, () {
+      super.cariBakiye = value;
+    });
+  }
 
   late final _$modelAtom =
       Atom(name: '_NakitOdemeViewModelBase.model', context: context);
@@ -70,6 +93,22 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   set muhaRefList(ObservableList<MuhasebeReferansModel>? value) {
     _$muhaRefListAtom.reportWrite(value, super.muhaRefList, () {
       super.muhaRefList = value;
+    });
+  }
+
+  late final _$kasaAtom =
+      Atom(name: '_NakitOdemeViewModelBase.kasa', context: context);
+
+  @override
+  KasaList? get kasa {
+    _$kasaAtom.reportRead();
+    return super.kasa;
+  }
+
+  @override
+  set kasa(KasaList? value) {
+    _$kasaAtom.reportWrite(value, super.kasa, () {
+      super.kasa = value;
     });
   }
 
@@ -131,6 +170,17 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
 
   late final _$_NakitOdemeViewModelBaseActionController =
       ActionController(name: '_NakitOdemeViewModelBase', context: context);
+
+  @override
+  void setCariBakiye(double? value) {
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setCariBakiye');
+    try {
+      return super.setCariBakiye(value);
+    } finally {
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setShowReferansKodu(bool? value) {
@@ -333,12 +383,15 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   @override
   String toString() {
     return '''
+cariBakiye: ${cariBakiye},
 model: ${model},
 dovizKurlariListesi: ${dovizKurlariListesi},
 muhaRefList: ${muhaRefList},
+kasa: ${kasa},
 showReferansKodu: ${showReferansKodu},
 formTipi: ${formTipi},
-getStokYeniKayitModel: ${getStokYeniKayitModel}
+getStokYeniKayitModel: ${getStokYeniKayitModel},
+getCariBakiye: ${getCariBakiye}
     ''';
   }
 }

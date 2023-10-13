@@ -68,16 +68,7 @@ class _LoginViewState extends BaseState<LoginView> {
       child: Stack(
         children: [
           WaveWidget(
-              config: CustomConfig(durations: [
-                8000,
-                10000
-              ], heightPercentages: [
-                0.78,
-                0.8
-              ], colors: [
-                const Color.fromRGBO(70, 59, 57, 26),
-                Colors.black.withOpacity(0.3)
-              ]),
+              config: CustomConfig(durations: [8000, 10000], heightPercentages: [0.78, 0.8], colors: [const Color.fromRGBO(70, 59, 57, 26), Colors.black.withOpacity(0.3)]),
               size: const Size(double.infinity, double.infinity),
               waveAmplitude: 2,
               wavePhase: 0,
@@ -85,13 +76,10 @@ class _LoginViewState extends BaseState<LoginView> {
               backgroundColor: theme.scaffoldBackgroundColor),
           Scaffold(
             // appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent, automaticallyImplyLeading: false),
-            floatingActionButton: !context.general.isKeyBoardOpen
-                ? Text("V ${AppInfoModel.instance.version}")
-                    .paddingOnly(bottom: 20)
-                : null,
-            floatingActionButtonLocation: context.isLandscape
-                ? FloatingActionButtonLocation.endFloat
-                : FloatingActionButtonLocation.centerDocked,
+
+            //TODO BUNU FAB'DAN ÇIKART. SPLASH'E BAK.
+            floatingActionButton: !context.general.isKeyBoardOpen ? Text("V ${AppInfoModel.instance.version}") : null,
+            floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerDocked,
             primary: true,
             backgroundColor: Colors.transparent,
             extendBodyBehindAppBar: true,
@@ -107,31 +95,17 @@ class _LoginViewState extends BaseState<LoginView> {
                       children: [
                         AnimatedContainer(
                           duration: const Duration(milliseconds: 200),
-                          height: context.general.isKeyBoardOpen
-                              ? context.sized.dynamicHeight(0.06)
-                              : context.sized.dynamicHeight(0.12),
-                          child: SvgPicture.asset(
-                              "assets/splash/PickerLogoTuruncu.svg"),
-                        ).paddingOnly(
-                            bottom: context.sized.dynamicHeight(0.02),
-                            top: context.sized.dynamicHeight(0.04)),
+                          height: context.general.isKeyBoardOpen ? context.sized.dynamicHeight(0.06) : context.sized.dynamicHeight(0.12),
+                          child: SvgPicture.asset("assets/splash/PickerLogoTuruncu.svg"),
+                        ).paddingOnly(bottom: context.sized.dynamicHeight(0.02), top: context.sized.dynamicHeight(0.04)),
                         Padding(
                           padding: UIHelper.midPaddingVertical,
                           child: Observer(builder: (_) {
                             return Column(
                               children: [
-                                Text("Picker",
-                                    style: context.theme.textTheme.titleLarge
-                                        ?.copyWith(
-                                            fontWeight: FontWeight.w500)),
-                                Text("Mobil Veri Toplama Çözümleri",
-                                    style: context.theme.textTheme.titleSmall
-                                        ?.copyWith(
-                                            fontWeight: FontWeight.w300)),
-                                Text(viewModel.baseUrl)
-                                    .paddingSymmetric(
-                                        vertical: UIHelper.midSize)
-                                    .yetkiVarMi(viewModel.isDebug)
+                                Text("Picker", style: context.theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w500)),
+                                Text("Mobil Veri Toplama Çözümleri", style: context.theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w300)),
+                                Text(viewModel.baseUrl).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi(viewModel.isDebug)
                               ],
                             );
                           }),
@@ -141,53 +115,39 @@ class _LoginViewState extends BaseState<LoginView> {
                           child: TextFormField(
                             readOnly: true,
                             onTap: () async {
-                              var selectedFirma =
-                                  await dialogManager.selectCompanyDialog();
+                              var selectedFirma = await dialogManager.selectCompanyDialog();
                               if (selectedFirma != null) {
-                                selectedFirma =
-                                    selectedFirma as LoginDialogModel;
+                                selectedFirma = selectedFirma as LoginDialogModel;
                                 selectedUser = selectedFirma;
                                 //*LoginDialogModel
                                 if (selectedUser.account?.firma != null) {
-                                  companyController.text =
-                                      selectedUser.account!.firma!;
+                                  companyController.text = selectedUser.account!.firma!;
                                 }
-                                emailController.text =
-                                    selectedUser.username ?? "";
-                                passwordController.text =
-                                    selectedUser.password ?? "";
+                                emailController.text = selectedUser.username ?? "";
+                                passwordController.text = selectedUser.password ?? "";
                                 if (selectedUser.account?.firma == "demo") {
-                                  AccountModel.instance.uyeEmail =
-                                      "demo@netfect.com";
+                                  AccountModel.instance.uyeEmail = "demo@netfect.com";
                                   AccountModel.instance.uyeSifre = null;
-                                  selectedUser.account?.email =
-                                      "demo@netfect.com";
+                                  selectedUser.account?.email = "demo@netfect.com";
                                   selectedUser.account?.parola = null;
                                 } else {
-                                  AccountModel.instance.uyeEmail =
-                                      selectedUser.account?.email;
-                                  AccountModel.instance.uyeSifre =
-                                      selectedUser.account?.parola;
+                                  AccountModel.instance.uyeEmail = selectedUser.account?.email;
+                                  AccountModel.instance.uyeSifre = selectedUser.account?.parola;
                                 }
 
                                 viewModel.checkDebug();
                               } else {
                                 selectedUser = CacheManager.getVerifiedUser;
-                                AccountModel.setFromAccountResponseModel(
-                                    selectedUser.account);
+                                AccountModel.setFromAccountResponseModel(selectedUser.account);
                                 viewModel.checkDebug();
                                 if (selectedUser.account?.firma != null) {
-                                  companyController.text =
-                                      selectedUser.account!.firma!;
+                                  companyController.text = selectedUser.account!.firma!;
                                 }
-                                emailController.text =
-                                    selectedUser.username ?? "";
-                                passwordController.text =
-                                    selectedUser.password ?? "";
+                                emailController.text = selectedUser.username ?? "";
+                                passwordController.text = selectedUser.password ?? "";
                               }
                             },
-                            decoration: const InputDecoration(
-                                suffixIcon: Icon(Icons.more_horiz)),
+                            decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz)),
                             controller: companyController,
                             textInputAction: TextInputAction.next,
                           ),
@@ -213,11 +173,8 @@ class _LoginViewState extends BaseState<LoginView> {
                                 obscureText: viewModel.obscurePassword,
                                 decoration: InputDecoration(
                                   suffixIcon: IconButton(
-                                    onPressed: () =>
-                                        viewModel.changeShowPassword(),
-                                    icon: viewModel.obscurePassword
-                                        ? const Icon(Icons.visibility)
-                                        : const Icon(Icons.visibility_off),
+                                    onPressed: () => viewModel.changeShowPassword(),
+                                    icon: viewModel.obscurePassword ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
                                   ),
                                 ),
                               );
@@ -248,8 +205,7 @@ class _LoginViewState extends BaseState<LoginView> {
     //   await AppSettings.openAppSettings();
     // } else {
     // }
-    return ElevatedButton(
-        onPressed: () async => login(), child: const Text("Giriş"));
+    return ElevatedButton(onPressed: () async => login(), child: const Text("Giriş"));
   }
 
   void login() async {
@@ -265,18 +221,12 @@ class _LoginViewState extends BaseState<LoginView> {
         instance.uyeSifre = selectedUser.account?.parola;
       }
     }
-    var result = await networkManager.getUyeBilgileri(
-        selectedUser.account?.email ?? "",
-        password: selectedUser.account?.parola,
-        getFromCache: false);
+    var result = await networkManager.getUyeBilgileri(selectedUser.account?.email ?? "", password: selectedUser.account?.parola, getFromCache: false);
     if (result.success != true) {
       log(result.ex.toString());
-      if (CacheManager.getIsLicenseVerified(
-              selectedUser.account?.email ?? "") ==
-          false) {
+      if (CacheManager.getIsLicenseVerified(selectedUser.account?.email ?? "") == false) {
         // dialogManager.hideAlertDialog;
-        dialogManager.showAlertDialog(
-            ("${result.message ?? ""}\n${result.ex?["Message"] ?? result.errorDetails ?? "Lisansınız bulunamadı. Lütfen lisansınızı kontrol ediniz."}"));
+        dialogManager.showAlertDialog(("${result.message ?? ""}\n${result.ex?["Message"] ?? result.errorDetails ?? "Lisansınız bulunamadı. Lütfen lisansınızı kontrol ediniz."}"));
         return;
       }
     }
@@ -287,11 +237,7 @@ class _LoginViewState extends BaseState<LoginView> {
       final response = await networkManager.getToken(
         path: ApiUrls.token,
         queryParameters: {"deviceInfos": jsonEncode(instance.toJson())},
-        data: {
-          "grant_type": "password",
-          "username": emailController.text,
-          "password": passwordController.text
-        },
+        data: {"grant_type": "password", "username": emailController.text, "password": passwordController.text},
       );
       if (response?.error == null) {
         log(jsonEncode(instance.toJson()), name: "sea");
@@ -322,8 +268,7 @@ class _LoginViewState extends BaseState<LoginView> {
         }
       } else {
         dialogManager.hideAlertDialog;
-        dialogManager.showAlertDialog(
-            response?.errorDescription ?? response?.error ?? "Hata");
+        dialogManager.showAlertDialog(response?.errorDescription ?? response?.error ?? "Hata");
       }
     } else {
       Navigator.of(context, rootNavigator: true).pop();

@@ -24,7 +24,7 @@ abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
   //* Observables
   @observable
   KasaIslemleriRequestModel kasaIslemleriRequestModel =
-      KasaIslemleriRequestModel(sayfa: 1, menuKodu: "YONE_KISL", baslamaTarihi: DateTime.now().toDateString, bitisTarihi: DateTime.now().add(const Duration(days: 1)).toDateString);
+      KasaIslemleriRequestModel(sayfa: 1, menuKodu: "YONE_KISL", baslamaTarihi: DateTime.now().toDateString, bitisTarihi: DateTime.now().toDateString);
 
   @observable
   ObservableMap<String, dynamic>? paramData;

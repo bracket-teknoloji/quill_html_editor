@@ -48,7 +48,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
   @override
   void initState() {
     _belgeNoController = TextEditingController();
-    _tarihController = TextEditingController(text: DateTime.now().toDateString);
+    _tarihController = TextEditingController(text: DateTime.now().dateTimeWithoutTime.toDateString);
     _cariController = TextEditingController();
     _kasaController = TextEditingController();
     _sozlesmeController = TextEditingController();
@@ -61,7 +61,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
     _projekoduController = TextEditingController();
     _aciklamaController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      viewModel.setTarih(DateTime.now());
+      viewModel.setTarih(DateTime.now().dateTimeWithoutTime);
       while (viewModel.model.kktYontemi == null) {
         await tahsilatYontemiDialog();
       }
@@ -120,14 +120,12 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
         IconButton(
           onPressed: () async {
             if (formKey.currentState!.validate()) {
+              viewModel.setAciklama(_aciklamaController.text);
               await dialogManager.showAreYouSureDialog(() async {
-
               var result = await viewModel.postData();
               if (result.success == true) {
                 Get.back(result: true);
                 dialogManager.showSuccessSnackBar(result.message ?? "Kayıt başarılı");
-              } else {
-                dialogManager.showErrorSnackBar(result.message ?? "Kayıt başarısız");
               }
               });
             }
@@ -166,6 +164,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
               var result = await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime(2100));
               if (result != null) {
                 _tarihController.text = result.toDateString;
+                        viewModel.setTarih(result.dateTimeWithoutTime);
               }
             },
           ),

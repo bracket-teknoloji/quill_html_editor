@@ -44,8 +44,10 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
 
   @override
   void initState() {
+      viewModel.setTahsilatMi(widget.tahsilatMi);
+      viewModel.setTarih(DateTime.now().dateTimeWithoutTime);
     _belgeNoController = TextEditingController();
-    _tarihController = TextEditingController(text: DateTime.now().toDateString);
+    _tarihController = TextEditingController(text: viewModel.model.tarih?.toDateString);
     _kasaController = TextEditingController();
     _sozlesmeController = TextEditingController();
     _seriController = TextEditingController();
@@ -57,8 +59,6 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
     _projekoduController = TextEditingController();
     _aciklamaController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      viewModel.setTarih(DateTime.now());
-      viewModel.setTahsilatMi(widget.tahsilatMi ?? false);
       await getKasa();
       await getMuhKodu();
       // await getSeri();
@@ -66,7 +66,6 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
       // viewModel.setPickerBelgeTuru("KKT");
       await viewModel.getSiradakiKod();
       _belgeNoController.text = viewModel.model.belgeNo ?? "";
-      viewModel.setTarih(DateTime.now());
       _tarihController.text = viewModel.model.tarih?.toDateString ?? "";
     });
     super.initState();
@@ -105,13 +104,12 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
         IconButton(
           onPressed: () async {
             if (formKey.currentState!.validate()) {
+              viewModel.setAciklama(_aciklamaController.text);
               await dialogManager.showAreYouSureDialog(() async {
                 var result = await viewModel.postData();
                 if (result.success == true) {
                   Get.back(result: true);
                   dialogManager.showSuccessSnackBar(result.message ?? "Kayıt başarılı");
-                } else {
-                  dialogManager.showErrorSnackBar(result.message ?? "Kayıt başarısız");
                 }
               });
             }
@@ -153,6 +151,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                       var result = await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime(2100));
                       if (result != null) {
                         _tarihController.text = result.toDateString;
+                        viewModel.setTarih(result.dateTimeWithoutTime);
                       }
                     },
                   ),
@@ -238,7 +237,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                       }
                     },
                   ),
-                ).yetkiVarMi(yetkiController.referansKodu(viewModel.model.hesapTipi))
+                ).yetkiVarMi(yetkiController.referansKodu(viewModel.showReferansKodu))
               ],
             );
           }),
@@ -256,7 +255,8 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
     var result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, belgeTipi: MuhasebeBelgeTipiEnum.muo, hesapTipi: viewModel.model.hesapTipi);
     if (result is StokMuhasebeKoduModel) {
       _hesapController.text = result.hesapAdi ?? result.hesapKodu ?? "";
-      viewModel.setHesapTipi(result.hesapTipi);
+      viewModel.setHesapTipi(result.agm);
+      viewModel.setShowReferansKodu(result.hesapTipi);
       viewModel.setHesapKodu(result.hesapKodu);
     }
   }

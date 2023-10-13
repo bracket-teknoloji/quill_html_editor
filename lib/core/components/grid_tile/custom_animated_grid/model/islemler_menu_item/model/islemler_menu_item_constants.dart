@@ -81,7 +81,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(kasaTransferi);
       islemlerList.add(nakitTahsilat);
       islemlerList.add(nakitOdeme);
-      islemlerList.add(bankaKasaTransferi);
+      // islemlerList.add(bankaKasaTransferi);
       islemlerList.add(krediKartiTahsilati);
       islemlerList.add(muhtelifTahsilat);
       islemlerList.add(muhtelifOdeme);

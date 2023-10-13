@@ -126,7 +126,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
   Column body() => Column(
         children: [
           RaporFiltreDateTimeBottomSheetView(
-            showFirstBugun: true,
+                  showBugunFirst: true,
                   filterOnChanged: (index) async {
                     viewModel.setBaslamaTarihi(baslangicTarihiController.text);
                     viewModel.setBitisTarihi(bitisTarihiController.text);
@@ -146,6 +146,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                         : ListView.builder(
                             padding: UIHelper.lowPadding,
                             primary: false,
+                            physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                             controller: _scrollController,
                             shrinkWrap: true,
                             itemCount: viewModel.getKasaIslemleriListesi != null ? ((viewModel.getKasaIslemleriListesi?.length ?? 0) + (viewModel.dahaVarMi ? 1 : 0)) : 0,

@@ -219,12 +219,11 @@ mixin _$KrediKartiTahsilatiViewModel
           name: '_KrediKartiTahsilatiViewModelBase', context: context);
 
   @override
-  void setShowReferansKodu(bool? value) {
-    final _$actionInfo =
-        _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
-            name: '_KrediKartiTahsilatiViewModelBase.setShowReferansKodu');
+  void setCariBakiye(double? value) {
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
+        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setCariBakiye');
     try {
-      return super.setShowReferansKodu(value);
+      return super.setCariBakiye(value);
     } finally {
       _$_KrediKartiTahsilatiViewModelBaseActionController
           .endAction(_$actionInfo);
@@ -232,11 +231,12 @@ mixin _$KrediKartiTahsilatiViewModel
   }
 
   @override
-  void setCariBakiye(double? value) {
-    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setCariBakiye');
+  void setShowReferansKodu(bool? value) {
+    final _$actionInfo =
+        _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+            name: '_KrediKartiTahsilatiViewModelBase.setShowReferansKodu');
     try {
-      return super.setCariBakiye(value);
+      return super.setShowReferansKodu(value);
     } finally {
       _$_KrediKartiTahsilatiViewModelBaseActionController
           .endAction(_$actionInfo);

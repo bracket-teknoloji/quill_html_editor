@@ -54,7 +54,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getSiradakiKod();
       belgeNoController.text = viewModel.model.belgeNo ?? "";
-      viewModel.setTarih(DateTime.now());
+      viewModel.setTarih(DateTime.now().dateTimeWithoutTime);
       tarihController.text = viewModel.model.tarih?.toDateString ?? "";
     });
     super.initState();
@@ -88,13 +88,14 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
         IconButton(
             onPressed: () async {
               if (formKey.currentState!.validate()) {
-                var result = await viewModel.postData();
-                if (result.success == true) {
-                  Get.back(result: true);
-                  dialogManager.showSuccessSnackBar(result.message ?? "Kayıt Başarılı");
-                } else {
-                  dialogManager.showAlertDialog(result.message ?? "Kayıt Başarısız");
-                }
+                viewModel.setAciklama(aciklamaController.text);
+                await dialogManager.showAreYouSureDialog(() async {
+                  var result = await viewModel.postData();
+                  if (result.success == true) {
+                    Get.back(result: true);
+                    dialogManager.showSuccessSnackBar(result.message ?? "Kayıt Başarılı");
+                  }
+                });
               }
             },
             icon: const Icon(Icons.save_outlined))
@@ -133,7 +134,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                         onTap: () async {
                           var result = await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime(2100));
                           if (result != null) {
-                            viewModel.setTarih(result);
+                            viewModel.setTarih(result.dateTimeWithoutTime);
                             tarihController.text = result.toDateString;
                           }
                         })),
@@ -244,7 +245,10 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                       if (viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null) {
                         viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / dovizKuruController.text.toDoubleWithFormattedString);
                         dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
-                      }
+                      }else {
+                              viewModel.setDovizTutari(null);
+                              dovizTutariController.text = "";
+                            }
                     },
                   )),
                 ],
@@ -300,11 +304,11 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
   }
 
   Future<void> getDovizDialog() async {
-    dovizKuruController.text = "";
-    dovizTutariController.text = "";
 
     await viewModel.getDovizler();
     if (viewModel.dovizKurlariListesi.ext.isNotNullOrEmpty) {
+    dovizKuruController.text = "";
+    dovizTutariController.text = "";
       // ignore: use_build_context_synchronously
       var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Döviz Kuru", children: [
         BottomSheetModel(

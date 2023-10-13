@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 
 import "../../../view/main_page/model/grid_item_model.dart";
 import "../../base/state/base_state.dart";
@@ -20,18 +21,7 @@ class CustomGridTile extends StatefulWidget {
   final String? menuTipi;
   final IconData? iconWidget;
 
-  const CustomGridTile(
-      {super.key,
-      this.name,
-      this.title,
-      this.icon,
-      this.color,
-      this.onTap,
-      this.altMenuler,
-      this.menuTipi,
-      this.iconWidget,
-      this.route,
-      this.arguments});
+  const CustomGridTile({super.key, this.name, this.title, this.icon, this.color, this.onTap, this.altMenuler, this.menuTipi, this.iconWidget, this.route, this.arguments});
 
   @override
   CustomGridTileState createState() => CustomGridTileState();
@@ -41,9 +31,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
   @override
   Widget build(BuildContext context) {
     Icon yetkiKontrol() {
-      if (CacheManager.getFavoriler()
-          .values
-          .any((element) => element.title == widget.title)) {
+      if (CacheManager.getFavoriler().values.any((element) => element.title == widget.title)) {
         return const Icon(Icons.star, size: 20);
       } else {
         return const Icon(Icons.star_border, size: 20);
@@ -66,14 +54,8 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
             dialogManager.showInfoSnackBar("Favorilerden çıkarıldı");
           } else {
             icon = const Icon(Icons.star, size: 20);
-            CacheManager.setFavoriler(FavoritesModel(
-                name: widget.name,
-                title: widget.title,
-                icon: widget.icon,
-                onTap: widget.route,
-                color: widget.color?.value,
-                arguments: widget.arguments,
-                menuTipi: widget.menuTipi));
+            CacheManager.setFavoriler(
+                FavoritesModel(name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments, menuTipi: widget.menuTipi));
             dialogManager.hideSnackBar;
             dialogManager.showInfoSnackBar("Favorilere eklendi");
           }
@@ -95,18 +77,11 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                           icon = const Icon(Icons.star_border, size: 20);
                           CacheManager.removeFavoriler(widget.title.toString());
                           dialogManager.hideSnackBar;
-                          dialogManager
-                              .showInfoSnackBar("Favorilerden çıkarıldı");
+                          dialogManager.showInfoSnackBar("Favorilerden çıkarıldı");
                         } else {
                           icon = const Icon(Icons.star, size: 20);
                           CacheManager.setFavoriler(FavoritesModel(
-                              name: widget.name,
-                              title: widget.title,
-                              icon: widget.icon,
-                              onTap: widget.route,
-                              color: widget.color?.value,
-                              arguments: widget.arguments,
-                              menuTipi: widget.menuTipi));
+                              name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments, menuTipi: widget.menuTipi));
                           dialogManager.hideSnackBar;
                           dialogManager.showInfoSnackBar("Favorilere eklendi");
                         }
@@ -114,9 +89,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                       },
                     ))
                 : null,
-            footer: (widget.menuTipi == "S" && widget.altMenuler!.length > 1)
-                ? const Icon(Icons.expand_more, size: 15)
-                : const SizedBox(),
+            footer: (widget.menuTipi == "S" && widget.altMenuler.ext.isNotNullOrEmpty) ? const Icon(Icons.expand_more, size: 15) : const SizedBox(),
             child: widget.menuTipi == "I"
                 ? Center(
                     child: Text(
@@ -125,8 +98,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     softWrap: true,
-                    style: theme.textTheme.bodySmall
-                        ?.copyWith(color: Colors.white),
+                    style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
                   ))
                 : Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -139,10 +111,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                                       widget.icon ?? "",
                                     )
                                   : IconTheme(
-                                      data: const IconThemeData(
-                                          weight: 0.1,
-                                          size: 30,
-                                          color: Colors.white),
+                                      data: const IconThemeData(weight: 0.1, size: 30, color: Colors.white),
                                       child: Icon(
                                         widget.iconWidget,
                                         size: 30,
@@ -156,8 +125,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         // softWrap: true,
-                        style: theme.textTheme.bodySmall
-                            ?.copyWith(color: Colors.white),
+                        style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
                       ),
                     ],
                   )),
