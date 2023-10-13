@@ -95,11 +95,13 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Observer(builder: (_) => Text("Nakit ${viewModel.model.tahsilatmi == true ? "Tahsilat" : "Ödeme"}")),
+        title: Observer(builder: (_) => Text("Nakit ${viewModel.formTipi}")),
         actions: [
           IconButton(
             onPressed: () async {
               if (_formKey.currentState!.validate()) {
+                await dialogManager.showAreYouSureDialog(() async {
+
                 var result = await viewModel.postData();
                 if (result.success == true) {
                   Get.back(result: true);
@@ -107,6 +109,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                 } else {
                   dialogManager.showAlertDialog(result.message ?? "");
                 }
+                });
               }
             },
             icon: const Icon(Icons.save_outlined),
@@ -308,7 +311,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                       viewModel.setReferansKodu(result.kodu);
                     }
                   },
-                ),
+                ).yetkiVarMi(viewModel.showReferansKodu == true),
                 CustomTextField(
                   labelText: "Kasa Hareketi Açıklama",
                   controller: _kasaHareketiAciklamaController,
@@ -330,7 +333,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
     if (result is KasaList) {
       viewModel.setKasa(result);
       _kasaController.text = result.kasaTanimi ?? "";
-      _cariHareketiAciklamaController.text = "Nakit Tahsilat (${result.kasaKodu ?? ""})";
+      _cariHareketiAciklamaController.text = "Nakit ${viewModel.formTipi} (${result.kasaKodu ?? ""})";
       if (result.dovizli == "E" && result.dovizTipi != 0) {
         _dovizTipiController.text = result.dovizAdi ?? " ";
         viewModel.setHedefAciklama(_cariHareketiAciklamaController.text);
@@ -349,6 +352,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
   Future<void> getCari() async {
     var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
     if (result is CariListesiModel) {
+      viewModel.setShowReferansKodu(yetkiController.referansKodu(result.muhHesapTipi));
       _cariHareketiAciklamaController.text = result.cariAdi ?? "";
       _cariController.text = result.cariAdi ?? "";
       _kasaHareketiAciklamaController.text = "${result.cariAdi ?? ""} .KODU: ${result.cariKodu ?? ""}";

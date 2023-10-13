@@ -40,6 +40,9 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
   @observable
   ObservableList<MuhasebeReferansModel>? muhaRefList;
 
+    @observable
+  bool? showReferansKodu = false;
+
   @observable
   TahsilatRequestModel model = TahsilatRequestModel(
       tahsilatmi: true,
@@ -52,6 +55,9 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
   @computed
   String? get getCariBakiye =>
       cariBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
+
+      @action
+  void setShowReferansKodu(bool? value) => showReferansKodu = value;
 
   @action
   void setCariBakiye(double? value) => cariBakiye = value;

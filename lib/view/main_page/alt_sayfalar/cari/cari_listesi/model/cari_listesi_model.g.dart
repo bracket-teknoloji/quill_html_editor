@@ -179,6 +179,14 @@ abstract class _$CariListesiModelCWProxy {
 
   CariListesiModel dovBakiye(double? dovBakiye);
 
+  CariListesiModel muhKodu(String? muhKodu);
+
+  CariListesiModel muhHesapTipi(String? muhHesapTipi);
+
+  CariListesiModel iadeMiktarGirebilir(bool? iadeMiktarGirebilir);
+
+  CariListesiModel sunucuTarihi(DateTime? sunucuTarihi);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CariListesiModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -272,6 +280,10 @@ abstract class _$CariListesiModelCWProxy {
     double? dovBorcToplami,
     double? dovAlacakToplami,
     double? dovBakiye,
+    String? muhKodu,
+    String? muhHesapTipi,
+    bool? iadeMiktarGirebilir,
+    DateTime? sunucuTarihi,
   });
 }
 
@@ -569,6 +581,21 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel dovBakiye(double? dovBakiye) => this(dovBakiye: dovBakiye);
 
   @override
+  CariListesiModel muhKodu(String? muhKodu) => this(muhKodu: muhKodu);
+
+  @override
+  CariListesiModel muhHesapTipi(String? muhHesapTipi) =>
+      this(muhHesapTipi: muhHesapTipi);
+
+  @override
+  CariListesiModel iadeMiktarGirebilir(bool? iadeMiktarGirebilir) =>
+      this(iadeMiktarGirebilir: iadeMiktarGirebilir);
+
+  @override
+  CariListesiModel sunucuTarihi(DateTime? sunucuTarihi) =>
+      this(sunucuTarihi: sunucuTarihi);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CariListesiModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -663,6 +690,10 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
     Object? dovBorcToplami = const $CopyWithPlaceholder(),
     Object? dovAlacakToplami = const $CopyWithPlaceholder(),
     Object? dovBakiye = const $CopyWithPlaceholder(),
+    Object? muhKodu = const $CopyWithPlaceholder(),
+    Object? muhHesapTipi = const $CopyWithPlaceholder(),
+    Object? iadeMiktarGirebilir = const $CopyWithPlaceholder(),
+    Object? sunucuTarihi = const $CopyWithPlaceholder(),
   }) {
     return CariListesiModel(
       cariKodu: cariKodu == const $CopyWithPlaceholder()
@@ -1009,6 +1040,22 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
           ? _value.dovBakiye
           // ignore: cast_nullable_to_non_nullable
           : dovBakiye as double?,
+      muhKodu: muhKodu == const $CopyWithPlaceholder()
+          ? _value.muhKodu
+          // ignore: cast_nullable_to_non_nullable
+          : muhKodu as String?,
+      muhHesapTipi: muhHesapTipi == const $CopyWithPlaceholder()
+          ? _value.muhHesapTipi
+          // ignore: cast_nullable_to_non_nullable
+          : muhHesapTipi as String?,
+      iadeMiktarGirebilir: iadeMiktarGirebilir == const $CopyWithPlaceholder()
+          ? _value.iadeMiktarGirebilir
+          // ignore: cast_nullable_to_non_nullable
+          : iadeMiktarGirebilir as bool?,
+      sunucuTarihi: sunucuTarihi == const $CopyWithPlaceholder()
+          ? _value.sunucuTarihi
+          // ignore: cast_nullable_to_non_nullable
+          : sunucuTarihi as DateTime?,
     );
   }
 }
@@ -1120,13 +1167,17 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
       dovBorcToplami: fields[84] as double?,
       dovAlacakToplami: fields[85] as double?,
       dovBakiye: fields[86] as double?,
+      muhKodu: fields[87] as String?,
+      muhHesapTipi: fields[88] as String?,
+      iadeMiktarGirebilir: fields[89] as bool?,
+      sunucuTarihi: fields[90] as DateTime?,
     );
   }
 
   @override
   void write(BinaryWriter writer, CariListesiModel obj) {
     writer
-      ..writeByte(86)
+      ..writeByte(90)
       ..writeByte(0)
       ..write(obj.cariKodu)
       ..writeByte(1)
@@ -1298,7 +1349,15 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
       ..writeByte(85)
       ..write(obj.dovAlacakToplami)
       ..writeByte(86)
-      ..write(obj.dovBakiye);
+      ..write(obj.dovBakiye)
+      ..writeByte(87)
+      ..write(obj.muhKodu)
+      ..writeByte(88)
+      ..write(obj.muhHesapTipi)
+      ..writeByte(89)
+      ..write(obj.iadeMiktarGirebilir)
+      ..writeByte(90)
+      ..write(obj.sunucuTarihi);
   }
 
   @override
@@ -1403,6 +1462,12 @@ CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
       dovBorcToplami: (json['DOV_BORC_TOPLAMI'] as num?)?.toDouble(),
       dovAlacakToplami: (json['DOV_ALACAK_TOPLAMI'] as num?)?.toDouble(),
       dovBakiye: (json['DOV_BAKIYE'] as num?)?.toDouble(),
+      muhKodu: json['MUH_KODU'] as String?,
+      muhHesapTipi: json['MUH_HESAP_TIPI'] as String?,
+      iadeMiktarGirebilir: json['IADE_MIKTAR_GIREBILIR'] as bool?,
+      sunucuTarihi: json['SUNUCU_TARIHI'] == null
+          ? null
+          : DateTime.parse(json['SUNUCU_TARIHI'] as String),
     );
 
 Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) {
@@ -1499,6 +1564,10 @@ Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) {
   writeNotNull('DOV_BORC_TOPLAMI', instance.dovBorcToplami);
   writeNotNull('DOV_ALACAK_TOPLAMI', instance.dovAlacakToplami);
   writeNotNull('DOV_BAKIYE', instance.dovBakiye);
+  writeNotNull('MUH_KODU', instance.muhKodu);
+  writeNotNull('MUH_HESAP_TIPI', instance.muhHesapTipi);
+  writeNotNull('IADE_MIKTAR_GIREBILIR', instance.iadeMiktarGirebilir);
+  writeNotNull('SUNUCU_TARIHI', instance.sunucuTarihi?.toIso8601String());
   return val;
 }
 

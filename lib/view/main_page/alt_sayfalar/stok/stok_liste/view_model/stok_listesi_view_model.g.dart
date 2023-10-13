@@ -59,6 +59,22 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
               name: '_StokListesiViewModelBase.bakiye'))
           .value;
 
+  late final _$bakiyeGroupValueAtom = Atom(
+      name: '_StokListesiViewModelBase.bakiyeGroupValue', context: context);
+
+  @override
+  String? get bakiyeGroupValue {
+    _$bakiyeGroupValueAtom.reportRead();
+    return super.bakiyeGroupValue;
+  }
+
+  @override
+  set bakiyeGroupValue(String? value) {
+    _$bakiyeGroupValueAtom.reportWrite(value, super.bakiyeGroupValue, () {
+      super.bakiyeGroupValue = value;
+    });
+  }
+
   late final _$imageMapAtom =
       Atom(name: '_StokListesiViewModelBase.imageMap', context: context);
 
@@ -235,33 +251,17 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
     });
   }
 
-  late final _$selectedAtom =
-      Atom(name: '_StokListesiViewModelBase.selected', context: context);
-
-  @override
-  ObservableList<bool> get selected {
-    _$selectedAtom.reportRead();
-    return super.selected;
-  }
-
-  @override
-  set selected(ObservableList<bool> value) {
-    _$selectedAtom.reportWrite(value, super.selected, () {
-      super.selected = value;
-    });
-  }
-
   late final _$selectedListAtom =
       Atom(name: '_StokListesiViewModelBase.selectedList', context: context);
 
   @override
-  ObservableList<dynamic> get selectedList {
+  ObservableList<String> get selectedList {
     _$selectedListAtom.reportRead();
     return super.selectedList;
   }
 
   @override
-  set selectedList(ObservableList<dynamic> value) {
+  set selectedList(ObservableList<String> value) {
     _$selectedListAtom.reportWrite(value, super.selectedList, () {
       super.selectedList = value;
     });
@@ -513,19 +513,9 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
   }
 
   @override
-  void resetSelected() {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.resetSelected');
-    try {
-      return super.resetSelected();
-    } finally {
-      _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
+bakiyeGroupValue: ${bakiyeGroupValue},
 imageMap: ${imageMap},
 searchBar: ${searchBar},
 searchValue: ${searchValue},
@@ -537,7 +527,6 @@ isScrolledDown: ${isScrolledDown},
 sayfa: ${sayfa},
 dahaVarMi: ${dahaVarMi},
 siralama: ${siralama},
-selected: ${selected},
 selectedList: ${selectedList},
 grupKodu: ${grupKodu},
 kod1: ${kod1},

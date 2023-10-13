@@ -1,12 +1,14 @@
 import "dart:convert";
 
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
+
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../../model/param_model.dart";
 import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../model/kasa_islemleri_model.dart";
 import "../model/kasa_islemleri_request_model.dart";
-import "../../../../../model/param_model.dart";
 
 part "kasa_islemleri_view_model.g.dart";
 
@@ -21,7 +23,8 @@ abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
 
   //* Observables
   @observable
-  KasaIslemleriRequestModel kasaIslemleriRequestModel = KasaIslemleriRequestModel(sayfa: 1, menuKodu: "YONE_KISL");
+  KasaIslemleriRequestModel kasaIslemleriRequestModel =
+      KasaIslemleriRequestModel(sayfa: 1, menuKodu: "YONE_KISL", baslamaTarihi: DateTime.now().toDateString, bitisTarihi: DateTime.now().add(const Duration(days: 1)).toDateString);
 
   @observable
   ObservableMap<String, dynamic>? paramData;
@@ -35,13 +38,12 @@ abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
   @observable
   bool dahaVarMi = true;
 
-
   @observable
   ObservableList<KasaIslemleriModel>? kasaIslemleriListesi;
 
   @observable
   bool searchBar = false;
-  
+
   @observable
   String? searchText;
 
@@ -55,8 +57,8 @@ abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
           .asObservable()
       : kasaIslemleriListesi;
 
-      @computed
-      bool get getAnyFilter => kasaIslemleriRequestModel.hesapKodu != null || kasaIslemleriRequestModel.plasiyerKodu != null || kasaIslemleriRequestModel.hesapTipi != null;
+  @computed
+  bool get getAnyFilter => kasaIslemleriRequestModel.hesapKodu != null || kasaIslemleriRequestModel.plasiyerKodu != null || kasaIslemleriRequestModel.hesapTipi != null;
 
   //* Actions
   @action

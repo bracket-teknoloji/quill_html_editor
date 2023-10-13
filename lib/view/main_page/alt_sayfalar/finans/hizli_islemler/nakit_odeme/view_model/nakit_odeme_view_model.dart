@@ -26,11 +26,20 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
   @observable
   ObservableList<MuhasebeReferansModel>? muhaRefList;
 
+  @observable
+  bool? showReferansKodu = false;
+
+  @computed
+  String get formTipi => model.tahsilatmi == true ? "Tahsilat" : "Ödeme";
+
   @computed
   TahsilatRequestModel get getStokYeniKayitModel {
     var uuid = const Uuid();
     return model.copyWith(guid: uuid.v4());
   }
+
+  @action
+  void setShowReferansKodu(bool? value) => showReferansKodu = value;
 
   @action
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) {

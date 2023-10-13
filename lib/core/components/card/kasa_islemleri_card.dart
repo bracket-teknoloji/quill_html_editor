@@ -36,6 +36,7 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
       child: Card(
           child: ListTile(
               title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

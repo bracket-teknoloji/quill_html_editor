@@ -574,7 +574,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             },
                           )),
                         ],
-                      ).yetkiVarMi(true);
+                      );
                     }),
                     Text("Ek Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize)).paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(null)),
                     CustomTextField(labelText: getAciklamaLabel(1), onChanged: (value) => viewModel.kalemModel.aciklama1).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(1)),

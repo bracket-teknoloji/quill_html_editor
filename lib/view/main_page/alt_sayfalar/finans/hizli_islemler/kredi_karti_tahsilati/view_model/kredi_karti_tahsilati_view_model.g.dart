@@ -117,6 +117,23 @@ mixin _$KrediKartiTahsilatiViewModel
     });
   }
 
+  late final _$showReferansKoduAtom = Atom(
+      name: '_KrediKartiTahsilatiViewModelBase.showReferansKodu',
+      context: context);
+
+  @override
+  bool? get showReferansKodu {
+    _$showReferansKoduAtom.reportRead();
+    return super.showReferansKodu;
+  }
+
+  @override
+  set showReferansKodu(bool? value) {
+    _$showReferansKoduAtom.reportWrite(value, super.showReferansKodu, () {
+      super.showReferansKodu = value;
+    });
+  }
+
   late final _$modelAtom =
       Atom(name: '_KrediKartiTahsilatiViewModelBase.model', context: context);
 
@@ -200,6 +217,19 @@ mixin _$KrediKartiTahsilatiViewModel
   late final _$_KrediKartiTahsilatiViewModelBaseActionController =
       ActionController(
           name: '_KrediKartiTahsilatiViewModelBase', context: context);
+
+  @override
+  void setShowReferansKodu(bool? value) {
+    final _$actionInfo =
+        _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+            name: '_KrediKartiTahsilatiViewModelBase.setShowReferansKodu');
+    try {
+      return super.setShowReferansKodu(value);
+    } finally {
+      _$_KrediKartiTahsilatiViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setCariBakiye(double? value) {
@@ -515,6 +545,7 @@ seriList: ${seriList},
 bankaSozlesmesiList: ${bankaSozlesmesiList},
 bankaHesaplariList: ${bankaHesaplariList},
 muhaRefList: ${muhaRefList},
+showReferansKodu: ${showReferansKodu},
 model: ${model},
 getCariBakiye: ${getCariBakiye}
     ''';

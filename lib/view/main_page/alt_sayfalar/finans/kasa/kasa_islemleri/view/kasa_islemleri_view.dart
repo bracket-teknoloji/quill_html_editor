@@ -126,6 +126,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
   Column body() => Column(
         children: [
           RaporFiltreDateTimeBottomSheetView(
+            showFirstBugun: true,
                   filterOnChanged: (index) async {
                     viewModel.setBaslamaTarihi(baslangicTarihiController.text);
                     viewModel.setBitisTarihi(bitisTarihiController.text);

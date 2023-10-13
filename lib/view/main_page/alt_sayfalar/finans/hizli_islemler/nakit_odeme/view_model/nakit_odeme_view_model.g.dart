@@ -9,6 +9,13 @@ part of 'nakit_odeme_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
+  Computed<String>? _$formTipiComputed;
+
+  @override
+  String get formTipi =>
+      (_$formTipiComputed ??= Computed<String>(() => super.formTipi,
+              name: '_NakitOdemeViewModelBase.formTipi'))
+          .value;
   Computed<TahsilatRequestModel>? _$getStokYeniKayitModelComputed;
 
   @override
@@ -66,6 +73,22 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
     });
   }
 
+  late final _$showReferansKoduAtom =
+      Atom(name: '_NakitOdemeViewModelBase.showReferansKodu', context: context);
+
+  @override
+  bool? get showReferansKodu {
+    _$showReferansKoduAtom.reportRead();
+    return super.showReferansKodu;
+  }
+
+  @override
+  set showReferansKodu(bool? value) {
+    _$showReferansKoduAtom.reportWrite(value, super.showReferansKodu, () {
+      super.showReferansKodu = value;
+    });
+  }
+
   late final _$getSiradakiKodAsyncAction =
       AsyncAction('_NakitOdemeViewModelBase.getSiradakiKod', context: context);
 
@@ -108,6 +131,17 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
 
   late final _$_NakitOdemeViewModelBaseActionController =
       ActionController(name: '_NakitOdemeViewModelBase', context: context);
+
+  @override
+  void setShowReferansKodu(bool? value) {
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setShowReferansKodu');
+    try {
+      return super.setShowReferansKodu(value);
+    } finally {
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
@@ -302,6 +336,8 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
 model: ${model},
 dovizKurlariListesi: ${dovizKurlariListesi},
 muhaRefList: ${muhaRefList},
+showReferansKodu: ${showReferansKodu},
+formTipi: ${formTipi},
 getStokYeniKayitModel: ${getStokYeniKayitModel}
     ''';
   }

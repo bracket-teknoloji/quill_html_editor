@@ -16,7 +16,6 @@ import "../../../core/init/app_info/app_info.dart";
 import "../../../core/init/cache/cache_manager.dart";
 import "../../../core/init/network/login/api_urls.dart";
 import "../../add_company/model/account_model.dart";
-import "../../add_company/model/account_response_model.dart";
 import "../../main_page/model/main_page_model.dart";
 import "../view_model/splash_auth_view_model.dart";
 
@@ -125,7 +124,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
   }
 
   void login() async {
-    viewModel.setTitle("Giriş yapılıyor...");
+    viewModel.setTitle("Giriş Yapılıyor...");
     viewModel.setIsError(false);
     if (CacheManager.getVerifiedUser.username == null) {
       Get.offAllNamed("/login");
@@ -155,17 +154,8 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
     }
   }
 
-  Future<GenericResponseModel> getUyeBilgileri() async {
-    viewModel.setTitle("Lisans bilgileri alınıyor...");
-    final response = await networkManager.dioPost<AccountResponseModel>(
-        bodyModel: AccountResponseModel(), showError: false, data: CacheManager.getHesapBilgileri?.toJson(), addTokenKey: false, path: ApiUrls.getUyeBilgileri);
-    if (response.success == true) {
-      CacheManager.setAccounts(response.data.first..parola = CacheManager.getVerifiedUser.account?.parola);
-    }
-    return response;
-  }
-
   Future<void> getSession() async {
+    viewModel.setTitle("Lisans bilgileri alınıyor...");
     GenericResponseModel lisansResponse = await networkManager.getUyeBilgileri(CacheManager.getVerifiedUser.account?.email ?? "");
     if (CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "") == false) {
       viewModel.setTitle("${lisansResponse.message}\n ${lisansResponse.ex?["Message"]}\nLisans bilgileri alınamadı. Lütfen internet bağlantınızı kontrol edin.");
@@ -200,3 +190,26 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
     }
   }
 }
+// if (_paramModel.MuhasebeEntegre && _paramModel.MuhFislerdeRefKodSorulsun && !cariResponseModel.MuhKodu.isEmpty()) {
+//             b.layoutMuhaRef.visibleIf((cariResponseModel.MuhHesapTipi.equals("A") && _paramModel.MuhFislerdeRefKodSorulsun_Aktif) ||
+//                                               (cariResponseModel.MuhHesapTipi.equals("P") && _paramModel.MuhFislerdeRefKodSorulsun_Pasif) ||
+//                                               (cariResponseModel.MuhHesapTipi.equals("G") && _paramModel.MuhFislerdeRefKodSorulsun_Gelir) ||
+//                                               (cariResponseModel.MuhHesapTipi.equals("I") && _paramModel.MuhFislerdeRefKodSorulsun_Gider) ||
+//                                               (cariResponseModel.MuhHesapTipi.equals("N") && _paramModel.MuhFislerdeRefKodSorulsun_Nazim));
+
+//             if (b.layoutMuhaRef.isVisible()) {
+//                 KullaniciYetkiResponseModel kulYetki = PrefManager.getInstance().getKullaniciYetkiResponseModel();
+//                 if (kulYetki != null && !kulYetki.varsayilan_MuhasebeReferansKodu.isEmpty()) {
+//                     b.layoutMuhaRef.setKeyValue(kulYetki.varsayilan_MuhasebeReferansKodu, kulYetki.varsayilan_MuhasebeReferansTanimi);
+//                     b.layoutMuhaRef.setViewEnable(_profilModel.kullanici_AdminMi);
+//                 } else {
+//                     b.layoutMuhaRef.clearKeyValue();
+//                 }
+//             } else {
+//                 b.layoutMuhaRef.clearKeyValue();
+//             }
+
+//         } else {
+//             b.layoutMuhaRef.visibleIf(false);
+//             b.layoutMuhaRef.clearKeyValue();
+//         }

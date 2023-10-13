@@ -12,6 +12,10 @@ class StokListesiViewModel = _StokListesiViewModelBase
     with _$StokListesiViewModel;
 
 abstract class _StokListesiViewModelBase with Store {
+
+  @observable
+  String? bakiyeGroupValue = "Tümü";
+
   @observable
   ObservableMap<String, MemoryImage> imageMap =
       <String, MemoryImage>{}.asObservable();
@@ -158,31 +162,14 @@ abstract class _StokListesiViewModelBase with Store {
   @action
   void setSiralama(String value) => siralama = value;
 
-  @observable
-  ObservableList<bool> selected =
-      [true, false, false, false, false].asObservable();
-
+  
   @action
-  void setSelectedWithIndex(int index) {
-    selected = [false, false, false, false, false].asObservable();
-    selected[index] = true;
-  }
-
-  @action
-  void resetSelected() =>
-      selected = [true, false, false, false, false].asObservable();
-
+  void setSelectedWithIndex(int index) => bakiyeGroupValue = selectedList[index];
+ 
   @observable
-  ObservableList selectedList =
+  ObservableList<String> selectedList =
       ["Tümü", "Artı", "Eksi", "Sıfır", "Bakiyeli"].asObservable();
 
   @computed
-  String? get bakiye {
-    for (int i = 0; i < selected.length; i++) {
-      if (selected[i]) {
-        return (selectedList[i] as String).substring(0, 1);
-      }
-    }
-    return null;
-  }
+  String? get bakiye => bakiyeGroupValue?.substring(0, 1);
 }

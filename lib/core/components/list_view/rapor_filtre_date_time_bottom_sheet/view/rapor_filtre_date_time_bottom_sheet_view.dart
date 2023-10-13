@@ -12,9 +12,10 @@ class RaporFiltreDateTimeBottomSheetView extends StatefulWidget {
   final void Function(int? index) filterOnChanged;
   final dynamic Function()? baslangicOnTap;
   final dynamic Function()? bitisOnTap;
+  final bool? showFirstBugun;
 
   const RaporFiltreDateTimeBottomSheetView(
-      {super.key, required this.filterOnChanged, required this.baslangicTarihiController, required this.bitisTarihiController, this.baslangicOnTap, this.bitisOnTap});
+      {super.key, required this.filterOnChanged, required this.baslangicTarihiController, required this.bitisTarihiController, this.baslangicOnTap, this.bitisOnTap, this.showFirstBugun});
 
   @override
   State<RaporFiltreDateTimeBottomSheetView> createState() => _RaporFiltreDateTimeBottomSheetViewState();
@@ -27,10 +28,11 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
   @override
   void initState() {
     scrollController = ScrollController();
-    Future.delayed(Duration.zero, () async {
-      // await scrollController.animateTo(30, duration: DurationHelper.durationLow, curve: Curves.easeIn);
-      // await scrollController.animateTo((scrollController.positions.isNotEmpty) ? (scrollController.position.minScrollExtent) : 0, duration: DurationHelper.durationLow, curve: Curves.easeInOut);
-    });
+    if (widget.showFirstBugun == true) {
+      viewModel.changeGroupValue(1);
+      widget.baslangicTarihiController.text = DateTime.now().toDateString;
+      widget.bitisTarihiController.text = DateTime.now().add(const Duration(days: 1)).toDateString;
+    }
     super.initState();
   }
 

@@ -120,11 +120,16 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
         IconButton(
           onPressed: () async {
             if (formKey.currentState!.validate()) {
+              await dialogManager.showAreYouSureDialog(() async {
+
               var result = await viewModel.postData();
               if (result.success == true) {
                 Get.back(result: true);
                 dialogManager.showSuccessSnackBar(result.message ?? "Kayıt başarılı");
+              } else {
+                dialogManager.showErrorSnackBar(result.message ?? "Kayıt başarısız");
               }
+              });
             }
           },
           icon: const Icon(Icons.save_outlined),
@@ -322,7 +327,8 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                     }
                   },
                 ),
-              ),
+                //TODO : Yetki eklenecek
+              ).yetkiVarMi(yetkiController.cariAktivite),
             ],
           ),
           CustomTextField(
@@ -338,6 +344,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
   Future<void> getCari() async {
     var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
     if (result is CariListesiModel) {
+      viewModel.setShowReferansKodu(yetkiController.referansKodu(result.muhHesapTipi));
       _aciklamaController.text = result.cariAdi ?? "";
       _cariController.text = result.cariAdi ?? "";
       viewModel.setAciklama(result.cariAdi);

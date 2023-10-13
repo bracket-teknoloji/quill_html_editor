@@ -473,7 +473,7 @@ class IslemlerMenuItemConstants<T> {
 
   //* Kasa
   GridItemModel? get kasaTransferi => GridItemModel.islemler(
-      title: "Kasa Transferi",
+      title: "Kasalar Arası Transferi",
       iconData: Icons.list_alt_rounded,
       onTap: () async => await Get.toNamed("/mainPage/kasaTransferi"));
   GridItemModel? get krediKartiTahsilati => GridItemModel.islemler(

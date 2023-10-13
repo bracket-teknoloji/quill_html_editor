@@ -105,11 +105,15 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
         IconButton(
           onPressed: () async {
             if (formKey.currentState!.validate()) {
-              var result = await viewModel.postData();
-              if (result.success == true) {
-                Get.back(result: true);
-                dialogManager.showSuccessSnackBar(result.message ?? "Kayıt başarılı");
-              }
+              await dialogManager.showAreYouSureDialog(() async {
+                var result = await viewModel.postData();
+                if (result.success == true) {
+                  Get.back(result: true);
+                  dialogManager.showSuccessSnackBar(result.message ?? "Kayıt başarılı");
+                } else {
+                  dialogManager.showErrorSnackBar(result.message ?? "Kayıt başarısız");
+                }
+              });
             }
           },
           icon: const Icon(Icons.save_outlined),
@@ -123,19 +127,18 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
       child: Form(
         key: formKey,
         child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Observer(
-              builder: (_) => CustomTextField(
-                  labelText: "Belge No",
-                  controller: _belgeNoController,
-                  maxLength: 15,
-                  onChanged: (value) => viewModel.setBelgeNo(value),
-                  suffix: IconButton(
-                    onPressed: () async {
-                      await viewModel.getSiradakiKod();
-                      _belgeNoController.text = viewModel.model.belgeNo ?? "";
-                    },
-                    icon: const Icon(Icons.add_outlined),
-                  ))),
+          CustomTextField(
+              labelText: "Belge No",
+              controller: _belgeNoController,
+              maxLength: 15,
+              onChanged: (value) => viewModel.setBelgeNo(value),
+              suffix: IconButton(
+                onPressed: () async {
+                  await viewModel.getSiradakiKod();
+                  _belgeNoController.text = viewModel.model.belgeNo ?? "";
+                },
+                icon: const Icon(Icons.add_outlined),
+              )),
           Observer(builder: (_) {
             return Row(
               children: [
@@ -195,48 +198,50 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
               ],
             );
           }),
-          Row(
-            children: [
-              Expanded(
-                child: CustomTextField(
-                  labelText: "Plasiyer",
-                  controller: _plasiyerController,
-                  isMust: true,
-                  readOnly: true,
-                  suffixMore: true,
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                  onTap: () async {
-                    var result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
-                    if (result is PlasiyerList) {
-                      _plasiyerController.text = result.plasiyerAciklama ?? "";
-                      viewModel.setPlasiyerKodu(result);
-                    }
-                  },
-                ),
-              ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi ==true),
-              Expanded(
-                child: CustomTextField(
-                  labelText: "Referans Kodu",
-                  controller: _referansKoduController,
-                  isMust: true,
-                  readOnly: true,
-                  suffixMore: true,
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model.refKod ?? "")),
-                  onTap: () async {
-                    if (viewModel.muhaRefList.ext.isNullOrEmpty) {
-                      await viewModel.getMuhaRefList();
-                    }
-                    var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
-                        title: "Referans Kodu", children: viewModel.muhaRefList!.map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e)).toList());
-                    if (result is MuhasebeReferansModel) {
-                      _referansKoduController.text = result.tanimi ?? "";
-                      viewModel.setReferansKodu(result.kodu);
-                    }
-                  },
-                ),
-              )
-            ],
-          ),
+          Observer(builder: (_) {
+            return Row(
+              children: [
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Plasiyer",
+                    controller: _plasiyerController,
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                    onTap: () async {
+                      var result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
+                      if (result is PlasiyerList) {
+                        _plasiyerController.text = result.plasiyerAciklama ?? "";
+                        viewModel.setPlasiyerKodu(result);
+                      }
+                    },
+                  ),
+                ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi == true),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Referans Kodu",
+                    controller: _referansKoduController,
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.refKod ?? "")),
+                    onTap: () async {
+                      if (viewModel.muhaRefList.ext.isNullOrEmpty) {
+                        await viewModel.getMuhaRefList();
+                      }
+                      var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
+                          title: "Referans Kodu", children: viewModel.muhaRefList!.map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e)).toList());
+                      if (result is MuhasebeReferansModel) {
+                        _referansKoduController.text = result.tanimi ?? "";
+                        viewModel.setReferansKodu(result.kodu);
+                      }
+                    },
+                  ),
+                ).yetkiVarMi(yetkiController.referansKodu(viewModel.model.hesapTipi))
+              ],
+            );
+          }),
           CustomTextField(
             labelText: "Kasa Har. Açıklama",
             controller: _aciklamaController,
@@ -251,7 +256,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
     var result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, belgeTipi: MuhasebeBelgeTipiEnum.muo, hesapTipi: viewModel.model.hesapTipi);
     if (result is StokMuhasebeKoduModel) {
       _hesapController.text = result.hesapAdi ?? result.hesapKodu ?? "";
-      viewModel.setHesapTipi(result.agm);
+      viewModel.setHesapTipi(result.hesapTipi);
       viewModel.setHesapKodu(result.hesapKodu);
     }
   }

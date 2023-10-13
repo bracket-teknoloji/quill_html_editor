@@ -425,6 +425,35 @@ class ParamModel {
   List<dynamic>? kontrolluBelgeAktarimBelgeNoGoster;
   @JsonKey(name: "EMustahsilAktif")
   bool? eMustahsilAktif;
+  @JsonKey(name: "MuhasebeEntegre")
+  bool? muhasebeEntegre;
+  @JsonKey(name: "MuhFislerdeRefKodSorulsun")
+  bool? muhFislerdeRefKodSorulsun;
+  @JsonKey(name: "MuhFislerdeRefKodSorulsun_Aktif")
+  bool? muhFislerdeRefKodSorulsunAktif;
+  @JsonKey(name: "MuhFislerdeRefKodSorulsun_Pasif")
+  bool? muhFislerdeRefKodSorulsunPasif;
+  @JsonKey(name: "MuhFislerdeRefKodSorulsun_Gelir")
+  bool? muhFislerdeRefKodSorulsunGelir;
+  @JsonKey(name: "MuhFislerdeRefKodSorulsun_Gider")
+  bool? muhFislerdeRefKodSorulsunGider;
+
+  @JsonKey(name: "MuhFislerdeRefKodSorulsun_Nazim")
+  bool? muhFislerdeRefKodSorulsunNazim;
+    @JsonKey(name: "AlisOzelKod2Aktif")
+    bool? alisOzelKod2Aktif;
+    @JsonKey(name: "AlisOzelKod2Tablodan")
+    bool? alisOzelKod2Tablodan;
+    @JsonKey(name: "AlisMiktar1Gelsin")
+    bool? alisMiktar1Gelsin;
+    @JsonKey(name: "SatisOzelKod2Tablodan")
+    bool? satisOzelKod2Tablodan;
+    @JsonKey(name: "SeriCikislardaOtomatik")
+    bool? seriCikislardaOtomatik;
+    @JsonKey(name: "SerideSaatOlsun")
+    bool? serideSaatOlsun;
+    @JsonKey(name: "SeriEIrsaliyeYanit")
+    String? seriEIrsaliyeYanit;
   factory ParamModel.fromJson(Map<String, dynamic> json) {
     return _$ParamModelFromJson(json);
   }

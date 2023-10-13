@@ -109,6 +109,10 @@ class CariListesiModel with NetworkManagerMixin {
     this.dovBorcToplami,
     this.dovAlacakToplami,
     this.dovBakiye,
+    this.muhKodu,
+    this.muhHesapTipi,
+    this.iadeMiktarGirebilir,
+    this.sunucuTarihi,
   });
 
   @HiveField(0)
@@ -285,9 +289,16 @@ class CariListesiModel with NetworkManagerMixin {
   double? dovAlacakToplami;
   @HiveField(86)
   double? dovBakiye;
+  @HiveField(87)
+  String? muhKodu;
+  @HiveField(88)
+  String? muhHesapTipi;
+  @HiveField(89)
+  bool? iadeMiktarGirebilir;
+  @HiveField(90)
+  DateTime? sunucuTarihi;
 
-  factory CariListesiModel.fromJson(Map<String, dynamic> json) =>
-      _$CariListesiModelFromJson(json);
+  factory CariListesiModel.fromJson(Map<String, dynamic> json) => _$CariListesiModelFromJson(json);
   @override
   fromJson(Map<String, dynamic> json) {
     // bakiyeList = json['BAKIYE_LIST'] != null ? (json['BAKIYE_LIST'] as List).map((i) => BakiyeModel.fromJson(i)).toList() : null;

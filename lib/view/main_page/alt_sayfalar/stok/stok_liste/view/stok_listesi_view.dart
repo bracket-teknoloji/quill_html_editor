@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/slide_controller/view/slide_controller_view.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -216,21 +217,32 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                       body: Column(children: [
                         Wrap(
                           children: [
-                            Center(
+                            CustomWidgetWithLabel(
+                              text: "Bakiye Durumu",
+                              onlyLabelpaddingLeft: UIHelper.lowSize,
                               child: Observer(builder: (_) {
-                                return CustomWidgetWithLabel(
-                                  text: "Bakiye",
-                                  child: ToggleButtons(
-                                    constraints: BoxConstraints(minWidth: ((context.isPortrait ? width : 600) * 0.9) / 5, minHeight: height * 0.05),
-                                    isSelected: viewModel.selected.toList(),
-                                    children: viewModel.selectedList.map((e) => Text(e)).toList(),
-                                    onPressed: (index) {
-                                      viewModel.setSelectedWithIndex(index);
-                                    },
-                                  ),
-                                );
+                                return SlideControllerWidget(
+                                    childrenTitleList: viewModel.selectedList,
+                                    filterOnChanged: (index) => viewModel.setSelectedWithIndex(index ?? 0),
+                                    childrenValueList: viewModel.selectedList,
+                                    groupValue: viewModel.bakiyeGroupValue);
                               }),
                             ),
+                            // Center(
+                            //   child: Observer(builder: (_) {
+                            //     return CustomWidgetWithLabel(
+                            //       text: "Bakiye",
+                            //       child: ToggleButtons(
+                            //         constraints: BoxConstraints(minWidth: ((context.isPortrait ? width : 600) * 0.9) / 5, minHeight: height * 0.05),
+                            //         isSelected: viewModel.selected.toList(),
+                            //         children: viewModel.selectedList.map((e) => Text(e)).toList(),
+                            //         onPressed: (index) {
+                            //           viewModel.setSelectedWithIndex(index);
+                            //         },
+                            //       ),
+                            //     );
+                            //   }),
+                            // ),
                             Row(
                               children: [
                                 Expanded(child: Observer(builder: (_) {
@@ -398,7 +410,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                           // viewModel.setBottomSheetModel(StokBottomSheetModel());
                                           viewModel.resetSayfa();
                                           viewModel.setStokListesi(null);
-                                          viewModel.resetSelected();
+                                          viewModel.setSelectedWithIndex(0);
                                           viewModel.resetSelectedArr();
                                           getData();
                                           Get.back();
@@ -563,8 +575,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       onTap: () async {
                                         dialogManager.showStokGridViewDialog(stok, IslemTipiEnum.stokRapor);
                                       }),
-                                  //😳 BottomSheetModel(title: "Depo Bakiye Durumu", iconWidget: Icons.list_alt),
-                                  // !!BottomSheetModel(
+                                  //TODO BottomSheetModel(title: "Depo Bakiye Durumu", iconWidget: Icons.list_alt),
+                                  //TODO !!BottomSheetModel(
                                   // !!  title: "Yazdır",
                                   //   iconWidget: Icons.print,
                                   //   onTap: () async {
