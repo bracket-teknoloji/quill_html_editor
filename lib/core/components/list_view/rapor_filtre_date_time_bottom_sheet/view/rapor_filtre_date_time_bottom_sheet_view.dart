@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/ui_helper/duration_helper.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 
 import "../../../../constants/extensions/date_time_extensions.dart";
@@ -34,8 +35,8 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
       viewModel.changeGroupValue(1);
     }
     Future.delayed(Duration.zero, () async {
-      // await scrollController.animateTo(30, duration: DurationHelper.durationLow, curve: Curves.easeIn);
-      // await scrollController.animateTo((scrollController.positions.isNotEmpty) ? (scrollController.position.minScrollExtent) : 0, duration: DurationHelper.durationLow, curve: Curves.easeInOut);
+      await scrollController.animateTo(30, duration: DurationHelper.durationLow, curve: Curves.easeIn);
+      await scrollController.animateTo((scrollController.positions.isNotEmpty) ? (scrollController.position.minScrollExtent) : 0, duration: DurationHelper.durationLow, curve: Curves.easeInOut);
     });
     super.initState();
   }

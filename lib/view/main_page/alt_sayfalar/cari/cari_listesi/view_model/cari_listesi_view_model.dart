@@ -219,7 +219,9 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
     }
     final result = await networkManager.dioGet<CariListesiModel>(path: ApiUrls.getCariler, queryParameters: body, bodyModel: CariListesiModel());
     if (result.data is List) {
-      paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
+      if (cariRequestModel.sayfa == 1) {
+        paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
+      }
       List<CariListesiModel> list = result.data.cast<CariListesiModel>();
       if ((cariRequestModel.sayfa ?? 0) < 2) {
         changeCariListesi(list);

@@ -285,6 +285,9 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                         style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
                         onPressed: () {
                           viewModel.clearFilters();
+                          plasiyerController.text = "";
+                          cariController.text = "";
+                          kasaController.text = "";
                           Get.back();
                           viewModel.resetPage();
                         },
