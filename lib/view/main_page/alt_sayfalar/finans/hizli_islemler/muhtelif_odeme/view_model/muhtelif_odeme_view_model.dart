@@ -2,12 +2,14 @@ import "package:mobx/mobx.dart";
 import "package:picker/core/base/model/banka_hesaplari_model.dart";
 import "package:picker/core/base/model/banka_sozlesmesi_model.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/doviz_kurlari_model.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/model/muhasebe_referans_model.dart";
 import "package:picker/core/base/model/seri_model.dart";
 import "package:picker/core/base/model/tahsilat_request_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
@@ -27,10 +29,16 @@ abstract class _MuhtelifOdemeViewModelBase with Store, MobxNetworkMixin {
   String? appBarSubTitle;
 
   @observable
+  KasaList? kasa;
+
+  @observable
   ObservableList<SeriModel>? seriList;
 
   @observable
   ObservableList<BankaSozlesmesiModel>? bankaSozlesmesiList;
+
+  @observable
+  ObservableList<DovizKurlariModel>? dovizKurlariListesi;
 
   @observable
   ObservableList<BankaHesaplariModel>? bankaHesaplariList;
@@ -66,7 +74,10 @@ abstract class _MuhtelifOdemeViewModelBase with Store, MobxNetworkMixin {
   void setAciklama(String? value) => model = model.copyWith(aciklama: value);
 
   @action
-  void setKasaKodu(String? value) => model = model.copyWith(kasaKodu: value);
+  void setKasaKodu(KasaList? value) {
+    kasa = value;
+    model = model.copyWith(kasaKodu: value?.kasaKodu);
+  }
 
   @action
   void setHesapKodu(String? value) => model = model.copyWith(hesapKodu: value);
@@ -76,8 +87,18 @@ abstract class _MuhtelifOdemeViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setTahsilatMi(bool? value) => model = model.copyWith(tahsilatmi: value, gc: value == true ? "G" : "C", pickerBelgeTuru: value == true ? "MUT" : "MUO");
+
   @action
   void setPlasiyerKodu(PlasiyerList? value) => model = model.copyWith(plasiyerKodu: value?.plasiyerKodu);
+
+  @action
+  void setProjeKodu(BaseProjeModel? value) => model = model.copyWith(projeKodu: value?.projeKodu);
+
+  @action
+  void setDovizTipi(int? value) => model = model.copyWith(dovizTipi: value);
+
+  @action
+  void setDovizTutari(double? value) => model = model.copyWith(dovizTutari: value);
 
   @action
   void setHesapTipi(String? value) => model = model.copyWith(hesapTipi: value);
@@ -87,6 +108,13 @@ abstract class _MuhtelifOdemeViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setMuhaRefList(List<MuhasebeReferansModel>? value) => muhaRefList = value?.asObservable();
+
+  @action
+  void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
+    if (value != null) {
+      dovizKurlariListesi = value.asObservable();
+    }
+  }
 
   @action
   Future<void> getMuhaRefList() async {
@@ -102,6 +130,15 @@ abstract class _MuhtelifOdemeViewModelBase with Store, MobxNetworkMixin {
         path: ApiUrls.getSiradakiBelgeNo, bodyModel: BaseSiparisEditModel(), showLoading: true, queryParameters: {"Seri": model.belgeNo ?? "", "BelgeTipi": "TH", "EIrsaliye": "H"});
     if (result.data is List) {
       setBelgeNo((result.data.first as BaseSiparisEditModel).belgeNo);
+    }
+  }
+
+  @action
+  Future<void> getDovizler() async {
+    var result = await networkManager.dioGet<DovizKurlariModel>(
+        path: ApiUrls.getDovizKurlari, bodyModel: DovizKurlariModel(), showLoading: true, queryParameters: {"EkranTipi": "D", "DovizKodu": model.dovizTipi, "tarih": model.tarih.toDateString});
+    if (result.data is List) {
+      setDovizKurlariListesi(result.data.cast<DovizKurlariModel>());
     }
   }
 

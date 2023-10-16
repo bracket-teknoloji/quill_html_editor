@@ -491,11 +491,11 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel? get nakitOdeme => GridItemModel.islemler(
       title: "Nakit Ödeme", iconData: Icons.list_alt_rounded, onTap: ()async => await Get.toNamed("/mainPage/nakitOdeme"));
   GridItemModel? get muhtelifTahsilat => GridItemModel.islemler(
-      title: "Muhtelif Tahsilat",
+      title: "Muhtelif\nTahsilat",
       iconData: Icons.list_alt_rounded,
       onTap: () async => await Get.toNamed("/mainPage/muhtelifTahsilat"));
   GridItemModel? get muhtelifOdeme => GridItemModel.islemler(
-      title: "Muhtelif Ödeme", iconData: Icons.list_alt_rounded, onTap:() async => await Get.toNamed("/mainPage/muhtelifOdeme"));
+      title: "Muhtelif\nÖdeme", iconData: Icons.list_alt_rounded, onTap:() async => await Get.toNamed("/mainPage/muhtelifOdeme"));
   GridItemModel? get kasaHareketleri => GridItemModel.islemler(
       title: "Kasa Hareketleri",
       iconData: Icons.sync_alt_outlined,

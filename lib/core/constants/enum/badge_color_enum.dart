@@ -24,7 +24,6 @@ extension BadgeColorExtensions on BadgeColorEnum {
       case BadgeColorEnum.dovizli:
         return Colors.blue;
       case BadgeColorEnum.kapali:
-      case BadgeColorEnum.tipAciklama:
         return Colors.grey;
       case BadgeColorEnum.fatura:
       case BadgeColorEnum.irsaliye:
@@ -37,6 +36,7 @@ extension BadgeColorExtensions on BadgeColorEnum {
       case BadgeColorEnum.seri:
       case BadgeColorEnum.konum:
       case BadgeColorEnum.cari:
+      case BadgeColorEnum.tipAciklama:
         return Colors.orange;
       case BadgeColorEnum.esYap:
         return Colors.lightGreen;

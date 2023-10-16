@@ -1,5 +1,11 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
+import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
+import "package:picker/core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
+import "package:picker/core/constants/extensions/model_extensions.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
+import "package:picker/view/main_page/model/param_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/model/kasa_islemleri_model.dart";
 import "../../base/state/base_state.dart";
@@ -25,13 +31,20 @@ class KasaIslemleriCard extends StatefulWidget {
 
 class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
   KasaIslemleriModel? get model => widget.kasaIslemleriModel;
+  bool get isCari => model?.tip == "C";
+  bool get isTahsilat => isCari && model?.gc == "G";
+  bool get isOdeme => isCari && model?.gc == "C";
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
-        await bottomSheetDialogManager.showBottomSheetDialog(context, title: model?.aciklama ?? model?.cariAdi ?? model?.kasaAdi ?? "", children: [
-          BottomSheetModel(title: "Sil", onTap: deleteData, iconWidget: Icons.delete_outline_outlined),
-        ]);
+        await bottomSheetDialogManager.showBottomSheetDialog(context,
+            title: model?.aciklama ?? model?.cariAdi ?? model?.kasaAdi ?? "",
+            children: [
+              BottomSheetModel(title: "Tahsilat Makbuzu", onTap: () async => showMakbuz(true), iconWidget: Icons.delete_outline_outlined).yetkiKontrol(isTahsilat),
+              BottomSheetModel(title: "Ödeme Makbuzu", onTap: () async => showMakbuz(false), iconWidget: Icons.delete_outline_outlined).yetkiKontrol(isOdeme),
+              BottomSheetModel(title: "Sil", onTap: deleteData, iconWidget: Icons.delete_outline_outlined),
+            ].nullCheckWithGeneric);
       },
       child: Card(
           child: ListTile(
@@ -40,27 +53,14 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(model?.tarih.toDateString ?? ""),
-                      Row(
-                        children: [
-                          Text(model?.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari) ?? "", style: const TextStyle(color: Colors.grey))
-                              .paddingOnly(right: UIHelper.lowSize)
-                              .yetkiVarMi(model?.dovizTutari != null && model?.dovizTutari != 0),
-                          Text(
-                            "${model?.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} $mainCurrency",
-                            style: TextStyle(color: model?.gc == "G" ? Colors.green : Colors.red),
-                          ),
-                        ],
-                      )
-                    ],
+                    children: [Text(model?.tarih.toDateString ?? ""), bakiyeText],
                   ),
                   Text(model?.cariAdi ?? "").yetkiVarMi(model?.cariAdi != null),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(model?.belgeNo ?? ""),
-                      ColorfulBadge(label: Text(model?.tipAciklama ?? ""), badgeColorEnum: BadgeColorEnum.cari),
+                      ColorfulBadge(label: Text(model?.tipAciklama ?? ""), badgeColorEnum: BadgeColorEnum.tipAciklama),
                     ],
                   ),
                 ],
@@ -120,6 +120,56 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
         }
       },
       title: "Bu kasa kaydını silmek istediğinizden emin misiniz?",
+    );
+  }
+
+  void showMakbuz(bool tahsilatMi) async {
+    Get.back();
+    PdfModel pdfModel = PdfModel(raporOzelKod: tahsilatMi ? "TahsilatMakbuzu" : "OdemeMakbuzu", dicParams: DicParams());
+    var anaVeri = CacheManager.getAnaVeri();
+    var result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == (tahsilatMi ? "TahsilatMakbuzu" : "OdemeMakbuzu")).toList();
+    NetFectDizaynList? dizaynList;
+    if (result.ext.isNotNullOrEmpty) {
+      pdfModel.dicParams?.caharInckey = model?.caharInckeyno.toStringIfNotNull;
+      pdfModel.dicParams?.kasaharInckey = model?.inckeyno.toStringIfNotNull;
+      pdfModel.dicParams?.belgeNo = model?.belgeNo;
+      if (result!.length == 1) {
+        pdfModel.dizaynId = result.first.id;
+        dizaynList = result.first;
+      } else {
+        dizaynList =
+            await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Dizayn Seçiniz", children: result.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList());
+        pdfModel.dizaynId = dizaynList?.id;
+      }
+      if (dizaynList != null) {
+        Get.back();
+        Get.to(() => PDFViewerView(title: dizaynList?.dizaynAdi ?? "", pdfData: pdfModel));
+      }
+    } else {
+      Get.back();
+      dialogManager.showErrorSnackBar("Dizayn bulunamadı");
+    }
+  }
+
+  RichText get bakiyeText {
+    bool dovizliMi = model?.dovizAdi != null;
+    return RichText(
+      text: TextSpan(
+        children: [
+          TextSpan(
+            text: dovizliMi
+                ? (model?.tutar != 0 ? " ${model?.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} $mainCurrency" : "")
+                : (model?.dovizTutari != 0 ? " ${model?.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${model?.dovizAdi ?? ""}" : ""),
+            style: TextStyle(color: Colors.grey, fontSize: UIHelper.midSize),
+          ),
+          TextSpan(
+            text: dovizliMi
+                ? (model?.dovizTutari != 0 ? " ${model?.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${model?.dovizAdi ?? ""}" : "")
+                : (model?.tutar != 0 ? " ${model?.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} $mainCurrency" : ""),
+            style: TextStyle(color: model?.gc == "G" ? Colors.green : Colors.red),
+          ),
+        ],
+      ),
     );
   }
 }

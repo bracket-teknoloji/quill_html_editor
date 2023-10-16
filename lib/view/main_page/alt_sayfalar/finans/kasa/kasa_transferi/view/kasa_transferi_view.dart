@@ -206,13 +206,24 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                   )).yetkiVarMi(viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null),
                   Expanded(
                       child: CustomTextField(
-                    labelText: "Döviz Kuru",
-                    controller: dovizKuruController,
-                    isMust: true,
-                    keyboardType: const TextInputType.numberWithOptions(signed: true),
-                    isFormattedString: true,
-                    onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
-                  )).yetkiVarMi(viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null),
+                          labelText: "Döviz Kuru",
+                          controller: dovizKuruController,
+                          isMust: true,
+                          keyboardType: const TextInputType.numberWithOptions(signed: true),
+                          isFormattedString: true,
+                          onChanged: (value) {
+                            if (dovizKuruController.text != "") {
+                              viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / dovizKuruController.text.toDoubleWithFormattedString);
+                              dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                            } else {
+                              viewModel.setDovizTutari(null);
+                              dovizTutariController.text = "";
+                            }
+                          },
+                          suffix: IconButton(
+                            onPressed: () async => await getDovizDialog(),
+                            icon: const Icon(Icons.more_horiz_outlined),
+                          ))).yetkiVarMi(viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null),
                 ],
               );
             }),
@@ -245,10 +256,10 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                       if (viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null) {
                         viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / dovizKuruController.text.toDoubleWithFormattedString);
                         dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
-                      }else {
-                              viewModel.setDovizTutari(null);
-                              dovizTutariController.text = "";
-                            }
+                      } else {
+                        viewModel.setDovizTutari(null);
+                        dovizTutariController.text = "";
+                      }
                     },
                   )),
                 ],
@@ -304,11 +315,10 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
   }
 
   Future<void> getDovizDialog() async {
-
     await viewModel.getDovizler();
     if (viewModel.dovizKurlariListesi.ext.isNotNullOrEmpty) {
-    dovizKuruController.text = "";
-    dovizTutariController.text = "";
+      dovizKuruController.text = "";
+      dovizTutariController.text = "";
       // ignore: use_build_context_synchronously
       var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Döviz Kuru", children: [
         BottomSheetModel(

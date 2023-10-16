@@ -215,12 +215,22 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                       ).yetkiVarMi(viewModel.model.dovizTipi != null),
                       Expanded(
                         child: CustomTextField(
-                          labelText: "Döviz Kuru",
-                          controller: _dovizKuruController,
-                          isMust: true,
-                          suffixMore: true,
-                          onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
-                        ),
+                            labelText: "Döviz Kuru",
+                            controller: _dovizKuruController,
+                            isMust: true,
+                            onChanged: (value) {
+                              if (_dovizKuruController.text != "") {
+                                viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString);
+                                _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                              } else {
+                                viewModel.setDovizTutari(null);
+                                _dovizTutariController.text = "";
+                              }
+                            },
+                            suffix: IconButton(
+                              onPressed: () async => await getDovizDialog(),
+                              icon: const Icon(Icons.more_horiz_outlined),
+                            )),
                       ).yetkiVarMi(viewModel.model.dovizTipi != null && viewModel.model.dovizTipi != 0),
                     ],
                   );

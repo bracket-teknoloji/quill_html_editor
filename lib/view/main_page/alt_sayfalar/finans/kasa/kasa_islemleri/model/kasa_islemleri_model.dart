@@ -37,6 +37,9 @@ class KasaIslemleriModel with _$KasaIslemleriModel, NetworkManagerMixin {
     double? kasaDevirTutari,
     double? kasaDovizDevirTutari,
     int? kasaDovizTipi,
+    String? saat,
+    double? kdvOrani,
+    String? dovizAdi,
   }) = _KasaIslemleriModel;
 
   factory KasaIslemleriModel.fromJson(Map<String, dynamic> json) => _$KasaIslemleriModelFromJson(json);

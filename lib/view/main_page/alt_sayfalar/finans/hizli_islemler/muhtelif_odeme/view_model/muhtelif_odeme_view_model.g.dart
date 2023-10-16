@@ -49,6 +49,22 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
     });
   }
 
+  late final _$kasaAtom =
+      Atom(name: '_MuhtelifOdemeViewModelBase.kasa', context: context);
+
+  @override
+  KasaList? get kasa {
+    _$kasaAtom.reportRead();
+    return super.kasa;
+  }
+
+  @override
+  set kasa(KasaList? value) {
+    _$kasaAtom.reportWrite(value, super.kasa, () {
+      super.kasa = value;
+    });
+  }
+
   late final _$seriListAtom =
       Atom(name: '_MuhtelifOdemeViewModelBase.seriList', context: context);
 
@@ -79,6 +95,23 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
   set bankaSozlesmesiList(ObservableList<BankaSozlesmesiModel>? value) {
     _$bankaSozlesmesiListAtom.reportWrite(value, super.bankaSozlesmesiList, () {
       super.bankaSozlesmesiList = value;
+    });
+  }
+
+  late final _$dovizKurlariListesiAtom = Atom(
+      name: '_MuhtelifOdemeViewModelBase.dovizKurlariListesi',
+      context: context);
+
+  @override
+  ObservableList<DovizKurlariModel>? get dovizKurlariListesi {
+    _$dovizKurlariListesiAtom.reportRead();
+    return super.dovizKurlariListesi;
+  }
+
+  @override
+  set dovizKurlariListesi(ObservableList<DovizKurlariModel>? value) {
+    _$dovizKurlariListesiAtom.reportWrite(value, super.dovizKurlariListesi, () {
+      super.dovizKurlariListesi = value;
     });
   }
 
@@ -164,6 +197,14 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
     return _$getSiradakiKodAsyncAction.run(() => super.getSiradakiKod());
   }
 
+  late final _$getDovizlerAsyncAction =
+      AsyncAction('_MuhtelifOdemeViewModelBase.getDovizler', context: context);
+
+  @override
+  Future<void> getDovizler() {
+    return _$getDovizlerAsyncAction.run(() => super.getDovizler());
+  }
+
   late final _$postDataAsyncAction =
       AsyncAction('_MuhtelifOdemeViewModelBase.postData', context: context);
 
@@ -242,7 +283,7 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
   }
 
   @override
-  void setKasaKodu(String? value) {
+  void setKasaKodu(KasaList? value) {
     final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
         .startAction(name: '_MuhtelifOdemeViewModelBase.setKasaKodu');
     try {
@@ -297,6 +338,39 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
   }
 
   @override
+  void setProjeKodu(BaseProjeModel? value) {
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
+        .startAction(name: '_MuhtelifOdemeViewModelBase.setProjeKodu');
+    try {
+      return super.setProjeKodu(value);
+    } finally {
+      _$_MuhtelifOdemeViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDovizTipi(int? value) {
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
+        .startAction(name: '_MuhtelifOdemeViewModelBase.setDovizTipi');
+    try {
+      return super.setDovizTipi(value);
+    } finally {
+      _$_MuhtelifOdemeViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDovizTutari(double? value) {
+    final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
+        .startAction(name: '_MuhtelifOdemeViewModelBase.setDovizTutari');
+    try {
+      return super.setDovizTutari(value);
+    } finally {
+      _$_MuhtelifOdemeViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setHesapTipi(String? value) {
     final _$actionInfo = _$_MuhtelifOdemeViewModelBaseActionController
         .startAction(name: '_MuhtelifOdemeViewModelBase.setHesapTipi');
@@ -330,12 +404,26 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
   }
 
   @override
+  void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
+    final _$actionInfo =
+        _$_MuhtelifOdemeViewModelBaseActionController.startAction(
+            name: '_MuhtelifOdemeViewModelBase.setDovizKurlariListesi');
+    try {
+      return super.setDovizKurlariListesi(value);
+    } finally {
+      _$_MuhtelifOdemeViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 cariBakiye: ${cariBakiye},
 appBarSubTitle: ${appBarSubTitle},
+kasa: ${kasa},
 seriList: ${seriList},
 bankaSozlesmesiList: ${bankaSozlesmesiList},
+dovizKurlariListesi: ${dovizKurlariListesi},
 bankaHesaplariList: ${bankaHesaplariList},
 muhaRefList: ${muhaRefList},
 model: ${model},

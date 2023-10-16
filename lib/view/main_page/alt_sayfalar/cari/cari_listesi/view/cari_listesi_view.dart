@@ -365,6 +365,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                 } else {
                   viewModel.changeFilterBakiye("T");
                 }
+                viewModel.changeSiralama("BAKIYE_ZA");
                 await viewModel.resetPage();
               }),
           FooterButton(
@@ -380,6 +381,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
               } else {
                 viewModel.changeFilterBakiye("Ö");
               }
+                viewModel.changeSiralama("BAKIYE_AZ");
               await viewModel.resetPage();
             },
           ),

@@ -42,6 +42,9 @@ _$KasaIslemleriModelImpl _$$KasaIslemleriModelImplFromJson(
       kasaDovizDevirTutari:
           (json['KASA_DOVIZ_DEVIR_TUTARI'] as num?)?.toDouble(),
       kasaDovizTipi: json['KASA_DOVIZ_TIPI'] as int?,
+      saat: json['SAAT'] as String?,
+      kdvOrani: (json['KDV_ORANI'] as num?)?.toDouble(),
+      dovizAdi: json['DOVIZ_ADI'] as String?,
     );
 
 Map<String, dynamic> _$$KasaIslemleriModelImplToJson(
@@ -83,5 +86,8 @@ Map<String, dynamic> _$$KasaIslemleriModelImplToJson(
   writeNotNull('KASA_DEVIR_TUTARI', instance.kasaDevirTutari);
   writeNotNull('KASA_DOVIZ_DEVIR_TUTARI', instance.kasaDovizDevirTutari);
   writeNotNull('KASA_DOVIZ_TIPI', instance.kasaDovizTipi);
+  writeNotNull('SAAT', instance.saat);
+  writeNotNull('KDV_ORANI', instance.kdvOrani);
+  writeNotNull('DOVIZ_ADI', instance.dovizAdi);
   return val;
 }

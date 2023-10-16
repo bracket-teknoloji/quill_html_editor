@@ -76,6 +76,12 @@ mixin _$KasaIslemleriModel {
   set kasaDovizDevirTutari(double? value) => throw _privateConstructorUsedError;
   int? get kasaDovizTipi => throw _privateConstructorUsedError;
   set kasaDovizTipi(int? value) => throw _privateConstructorUsedError;
+  String? get saat => throw _privateConstructorUsedError;
+  set saat(String? value) => throw _privateConstructorUsedError;
+  double? get kdvOrani => throw _privateConstructorUsedError;
+  set kdvOrani(double? value) => throw _privateConstructorUsedError;
+  String? get dovizAdi => throw _privateConstructorUsedError;
+  set dovizAdi(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -117,7 +123,10 @@ abstract class $KasaIslemleriModelCopyWith<$Res> {
       DateTime? kasaDevirTarihi,
       double? kasaDevirTutari,
       double? kasaDovizDevirTutari,
-      int? kasaDovizTipi});
+      int? kasaDovizTipi,
+      String? saat,
+      double? kdvOrani,
+      String? dovizAdi});
 }
 
 /// @nodoc
@@ -161,6 +170,9 @@ class _$KasaIslemleriModelCopyWithImpl<$Res, $Val extends KasaIslemleriModel>
     Object? kasaDevirTutari = freezed,
     Object? kasaDovizDevirTutari = freezed,
     Object? kasaDovizTipi = freezed,
+    Object? saat = freezed,
+    Object? kdvOrani = freezed,
+    Object? dovizAdi = freezed,
   }) {
     return _then(_value.copyWith(
       inckeyno: freezed == inckeyno
@@ -275,6 +287,18 @@ class _$KasaIslemleriModelCopyWithImpl<$Res, $Val extends KasaIslemleriModel>
           ? _value.kasaDovizTipi
           : kasaDovizTipi // ignore: cast_nullable_to_non_nullable
               as int?,
+      saat: freezed == saat
+          ? _value.saat
+          : saat // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kdvOrani: freezed == kdvOrani
+          ? _value.kdvOrani
+          : kdvOrani // ignore: cast_nullable_to_non_nullable
+              as double?,
+      dovizAdi: freezed == dovizAdi
+          ? _value.dovizAdi
+          : dovizAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -315,7 +339,10 @@ abstract class _$$KasaIslemleriModelImplCopyWith<$Res>
       DateTime? kasaDevirTarihi,
       double? kasaDevirTutari,
       double? kasaDovizDevirTutari,
-      int? kasaDovizTipi});
+      int? kasaDovizTipi,
+      String? saat,
+      double? kdvOrani,
+      String? dovizAdi});
 }
 
 /// @nodoc
@@ -357,6 +384,9 @@ class __$$KasaIslemleriModelImplCopyWithImpl<$Res>
     Object? kasaDevirTutari = freezed,
     Object? kasaDovizDevirTutari = freezed,
     Object? kasaDovizTipi = freezed,
+    Object? saat = freezed,
+    Object? kdvOrani = freezed,
+    Object? dovizAdi = freezed,
   }) {
     return _then(_$KasaIslemleriModelImpl(
       inckeyno: freezed == inckeyno
@@ -471,6 +501,18 @@ class __$$KasaIslemleriModelImplCopyWithImpl<$Res>
           ? _value.kasaDovizTipi
           : kasaDovizTipi // ignore: cast_nullable_to_non_nullable
               as int?,
+      saat: freezed == saat
+          ? _value.saat
+          : saat // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kdvOrani: freezed == kdvOrani
+          ? _value.kdvOrani
+          : kdvOrani // ignore: cast_nullable_to_non_nullable
+              as double?,
+      dovizAdi: freezed == dovizAdi
+          ? _value.dovizAdi
+          : dovizAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -506,7 +548,10 @@ class _$KasaIslemleriModelImpl extends _KasaIslemleriModel {
       this.kasaDevirTarihi,
       this.kasaDevirTutari,
       this.kasaDovizDevirTutari,
-      this.kasaDovizTipi})
+      this.kasaDovizTipi,
+      this.saat,
+      this.kdvOrani,
+      this.dovizAdi})
       : super._();
 
   factory _$KasaIslemleriModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -568,6 +613,12 @@ class _$KasaIslemleriModelImpl extends _KasaIslemleriModel {
   double? kasaDovizDevirTutari;
   @override
   int? kasaDovizTipi;
+  @override
+  String? saat;
+  @override
+  double? kdvOrani;
+  @override
+  String? dovizAdi;
 
   @JsonKey(ignore: true)
   @override
@@ -613,7 +664,10 @@ abstract class _KasaIslemleriModel extends KasaIslemleriModel {
       DateTime? kasaDevirTarihi,
       double? kasaDevirTutari,
       double? kasaDovizDevirTutari,
-      int? kasaDovizTipi}) = _$KasaIslemleriModelImpl;
+      int? kasaDovizTipi,
+      String? saat,
+      double? kdvOrani,
+      String? dovizAdi}) = _$KasaIslemleriModelImpl;
   _KasaIslemleriModel._() : super._();
 
   factory _KasaIslemleriModel.fromJson(Map<String, dynamic> json) =
@@ -703,6 +757,15 @@ abstract class _KasaIslemleriModel extends KasaIslemleriModel {
   @override
   int? get kasaDovizTipi;
   set kasaDovizTipi(int? value);
+  @override
+  String? get saat;
+  set saat(String? value);
+  @override
+  double? get kdvOrani;
+  set kdvOrani(double? value);
+  @override
+  String? get dovizAdi;
+  set dovizAdi(String? value);
   @override
   @JsonKey(ignore: true)
   _$$KasaIslemleriModelImplCopyWith<_$KasaIslemleriModelImpl> get copyWith =>
