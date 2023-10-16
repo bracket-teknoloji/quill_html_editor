@@ -381,7 +381,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
               } else {
                 viewModel.changeFilterBakiye("Ö");
               }
-                viewModel.changeSiralama("BAKIYE_AZ");
+              viewModel.changeSiralama("BAKIYE_AZ");
               await viewModel.resetPage();
             },
           ),
@@ -653,8 +653,8 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                   kod0Controller.text = list.map((e) => e?.grupAdi).join(", ");
                                   viewModel.resetPage();
                                 }
-                              }).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 0) ?? false),
-                        ),
+                              }),
+                        ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 0) ?? false),
                         Expanded(
                           child: CustomTextField(
                               labelText: "Kod 1",
@@ -672,8 +672,8 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                   kod1Controller.text = list.map((e) => e?.grupAdi).join(", ");
                                   viewModel.resetPage();
                                 }
-                              }).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 1) ?? false),
-                        ),
+                              }),
+                        ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 1) ?? false),
                       ],
                     ),
                     Row(
@@ -699,8 +699,8 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                   kod2Controller.text = list.map((e) => e?.grupAdi).join(", ");
                                   viewModel.resetPage();
                                 }
-                              }).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 2) ?? false),
-                        ),
+                              }),
+                        ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 2) ?? false),
                         Expanded(
                           child: CustomTextField(
                               labelText: "Kod 3",
@@ -722,8 +722,8 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                   kod3Controller.text = list.map((e) => e?.grupAdi).join(", ");
                                   viewModel.resetPage();
                                 }
-                              }).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 3) ?? false),
-                        ),
+                              }),
+                        ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 3) ?? false),
                       ],
                     ),
                     Row(
@@ -749,8 +749,8 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                   kod4Controller.text = list.map((e) => e?.grupAdi).join(", ");
                                   viewModel.resetPage();
                                 }
-                              }).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 4) ?? false),
-                        ),
+                              }),
+                        ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 4) ?? false),
                         Expanded(
                           child: CustomTextField(
                               labelText: "Kod 5",
@@ -772,8 +772,8 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                   kod5Controller.text = list.map((e) => e?.grupAdi).join(", ");
                                   viewModel.resetPage();
                                 }
-                              }).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 5) ?? false),
-                        ),
+                              }),
+                        ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 5) ?? false),
                       ],
                     ),
                   ],

@@ -320,6 +320,16 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   String? yeniBelgeNo;
   @HiveField(121)
   int? islemKodu;
+    String? resmiBelgeNo;
+    String? cikisYeri;
+    String? hareketTuru;
+    String? kasaKodu;
+    String? efaturaDurumu;
+    String? efaturaTipi;
+    String? earsivDurumu;
+    int? genIsk1O;
+    double? genIsk2O;
+    double? genIsk3O;
   BaseSiparisEditModel({
     this.duzeltmetarihi,
     this.kalemAdedi,
@@ -440,6 +450,16 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.kalanMiktar,
     this.yeniBelgeNo,
     this.islemKodu,
+        this.resmiBelgeNo,
+        this.cikisYeri,
+        this.hareketTuru,
+        this.kasaKodu,
+        this.efaturaDurumu,
+        this.efaturaTipi,
+        this.earsivDurumu,
+        this.genIsk1O,
+        this.genIsk2O,
+        this.genIsk3O,
   });
 
   BaseSiparisEditModel._init();

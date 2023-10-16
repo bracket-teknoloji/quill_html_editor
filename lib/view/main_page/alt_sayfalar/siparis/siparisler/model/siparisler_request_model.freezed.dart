@@ -63,6 +63,8 @@ mixin _$SiparislerRequestModel {
   set arrPlasiyerKodu(String? value) => throw _privateConstructorUsedError;
   String? get arrKod1 => throw _privateConstructorUsedError;
   set arrKod1(String? value) => throw _privateConstructorUsedError;
+  String? get arrBelgeTipi => throw _privateConstructorUsedError;
+  set arrBelgeTipi(String? value) => throw _privateConstructorUsedError;
   String? get ekranTipi => throw _privateConstructorUsedError;
   set ekranTipi(String? value) => throw _privateConstructorUsedError;
   int? get sayfa => throw _privateConstructorUsedError;
@@ -112,6 +114,7 @@ abstract class $SiparislerRequestModelCopyWith<$Res> {
       String? arrKod2,
       String? arrPlasiyerKodu,
       String? arrKod1,
+      String? arrBelgeTipi,
       String? ekranTipi,
       int? sayfa,
       String? baslamaTarihi,
@@ -155,6 +158,7 @@ class _$SiparislerRequestModelCopyWithImpl<$Res,
     Object? arrKod2 = freezed,
     Object? arrPlasiyerKodu = freezed,
     Object? arrKod1 = freezed,
+    Object? arrBelgeTipi = freezed,
     Object? ekranTipi = freezed,
     Object? sayfa = freezed,
     Object? baslamaTarihi = freezed,
@@ -241,6 +245,10 @@ class _$SiparislerRequestModelCopyWithImpl<$Res,
           ? _value.arrKod1
           : arrKod1 // ignore: cast_nullable_to_non_nullable
               as String?,
+      arrBelgeTipi: freezed == arrBelgeTipi
+          ? _value.arrBelgeTipi
+          : arrBelgeTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
       ekranTipi: freezed == ekranTipi
           ? _value.ekranTipi
           : ekranTipi // ignore: cast_nullable_to_non_nullable
@@ -306,6 +314,7 @@ abstract class _$$SiparislerRequestModelImplCopyWith<$Res>
       String? arrKod2,
       String? arrPlasiyerKodu,
       String? arrKod1,
+      String? arrBelgeTipi,
       String? ekranTipi,
       int? sayfa,
       String? baslamaTarihi,
@@ -348,6 +357,7 @@ class __$$SiparislerRequestModelImplCopyWithImpl<$Res>
     Object? arrKod2 = freezed,
     Object? arrPlasiyerKodu = freezed,
     Object? arrKod1 = freezed,
+    Object? arrBelgeTipi = freezed,
     Object? ekranTipi = freezed,
     Object? sayfa = freezed,
     Object? baslamaTarihi = freezed,
@@ -434,6 +444,10 @@ class __$$SiparislerRequestModelImplCopyWithImpl<$Res>
           ? _value.arrKod1
           : arrKod1 // ignore: cast_nullable_to_non_nullable
               as String?,
+      arrBelgeTipi: freezed == arrBelgeTipi
+          ? _value.arrBelgeTipi
+          : arrBelgeTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
       ekranTipi: freezed == ekranTipi
           ? _value.ekranTipi
           : ekranTipi // ignore: cast_nullable_to_non_nullable
@@ -494,6 +508,7 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
       this.arrKod2,
       this.arrPlasiyerKodu,
       this.arrKod1,
+      this.arrBelgeTipi,
       this.ekranTipi,
       this.sayfa,
       this.baslamaTarihi,
@@ -547,6 +562,8 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
   @override
   String? arrKod1;
   @override
+  String? arrBelgeTipi;
+  @override
   String? ekranTipi;
   @override
   int? sayfa;
@@ -566,7 +583,7 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
 
   @override
   String toString() {
-    return 'SiparislerRequestModel(pickerBelgeTuru: $pickerBelgeTuru, iadeMi: $iadeMi, cariKodu: $cariKodu, ozelKod2: $ozelKod2, cariTipi: $cariTipi, miktarGetir: $miktarGetir, siralama: $siralama, siparisKarsilanmaDurumu: $siparisKarsilanmaDurumu, ozelKod1: $ozelKod1, kapaliBelgelerListelenmesin: $kapaliBelgelerListelenmesin, projeKodu: $projeKodu, faturalasmaGoster: $faturalasmaGoster, arrKod5: $arrKod5, arrGrupKodu: $arrGrupKodu, arrKod4: $arrKod4, arrKod3: $arrKod3, arrKod2: $arrKod2, arrPlasiyerKodu: $arrPlasiyerKodu, arrKod1: $arrKod1, ekranTipi: $ekranTipi, sayfa: $sayfa, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, searchText: $searchText, belgeNo: $belgeNo, siparisDurumu: $siparisDurumu, referansStokKodu: $referansStokKodu)';
+    return 'SiparislerRequestModel(pickerBelgeTuru: $pickerBelgeTuru, iadeMi: $iadeMi, cariKodu: $cariKodu, ozelKod2: $ozelKod2, cariTipi: $cariTipi, miktarGetir: $miktarGetir, siralama: $siralama, siparisKarsilanmaDurumu: $siparisKarsilanmaDurumu, ozelKod1: $ozelKod1, kapaliBelgelerListelenmesin: $kapaliBelgelerListelenmesin, projeKodu: $projeKodu, faturalasmaGoster: $faturalasmaGoster, arrKod5: $arrKod5, arrGrupKodu: $arrGrupKodu, arrKod4: $arrKod4, arrKod3: $arrKod3, arrKod2: $arrKod2, arrPlasiyerKodu: $arrPlasiyerKodu, arrKod1: $arrKod1, arrBelgeTipi: $arrBelgeTipi, ekranTipi: $ekranTipi, sayfa: $sayfa, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, searchText: $searchText, belgeNo: $belgeNo, siparisDurumu: $siparisDurumu, referansStokKodu: $referansStokKodu)';
   }
 
   @JsonKey(ignore: true)
@@ -605,6 +622,7 @@ abstract class _SiparislerRequestModel implements SiparislerRequestModel {
       String? arrKod2,
       String? arrPlasiyerKodu,
       String? arrKod1,
+      String? arrBelgeTipi,
       String? ekranTipi,
       int? sayfa,
       String? baslamaTarihi,
@@ -676,6 +694,9 @@ abstract class _SiparislerRequestModel implements SiparislerRequestModel {
   @override
   String? get arrKod1;
   set arrKod1(String? value);
+  @override
+  String? get arrBelgeTipi;
+  set arrBelgeTipi(String? value);
   @override
   String? get ekranTipi;
   set ekranTipi(String? value);

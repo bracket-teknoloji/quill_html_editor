@@ -29,6 +29,7 @@ _$SiparislerRequestModelImpl _$$SiparislerRequestModelImplFromJson(
       arrKod2: json['ArrKod2'] as String?,
       arrPlasiyerKodu: json['ArrPlasiyerKodu'] as String?,
       arrKod1: json['ArrKod1'] as String?,
+      arrBelgeTipi: json['ArrBelgeTipi'] as String?,
       ekranTipi: json['EkranTipi'] as String?,
       sayfa: json['Sayfa'] as int?,
       baslamaTarihi: json['BaslamaTarihi'] as String?,
@@ -69,6 +70,7 @@ Map<String, dynamic> _$$SiparislerRequestModelImplToJson(
   writeNotNull('ArrKod2', instance.arrKod2);
   writeNotNull('ArrPlasiyerKodu', instance.arrPlasiyerKodu);
   writeNotNull('ArrKod1', instance.arrKod1);
+  writeNotNull('ArrBelgeTipi', instance.arrBelgeTipi);
   writeNotNull('EkranTipi', instance.ekranTipi);
   writeNotNull('Sayfa', instance.sayfa);
   writeNotNull('BaslamaTarihi', instance.baslamaTarihi);

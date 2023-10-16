@@ -13,6 +13,7 @@ import "package:get/get.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/hizli_islemler/muhtelif_odeme/view/muhtelif_odeme_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/raporlar/finans_aylik_mizan_raporu/view/aylik_mizan_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/raporlar/finans_finansal_durum_raporu/view/finansal_durum_raporu_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/sevkiyat/faturalar/view/faturalar_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
@@ -206,6 +207,10 @@ class PickerApp extends StatelessWidget {
             GetPage(name: "/stokAmbarMaliyetRaporu", page: () => AmbarMaliyetRaporuView(model: Get.arguments)),
             GetPage(name: "/stokLokalDepoBakiyeRaporu", page: () => LokalDepoBakiyeRaporuView(model: Get.arguments)),
             GetPage(name: "/urunGrubunaGoreSatisGrafigi", page: () => UrunGrubunaGoreSatisGrafigiView(model: Get.arguments is CariListesiModel ? Get.arguments : null)),
+
+            //* Sevkiyat
+            GetPage(name: "/sevkiyatSatisFaturasi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.satisFatura)),
+            GetPage(name: "/sevkiyatSatisIrsaliyesi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.satisIrsaliye)),
 
             //* Profil
             GetPage(name: "/temsilciProfil", page: () => const TemsilciProfilView()),

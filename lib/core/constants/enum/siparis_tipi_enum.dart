@@ -7,7 +7,11 @@ enum SiparisTipiEnum {
   @HiveField(0)
   musteri,
   @HiveField(1)
-  satici
+  satici,
+  @HiveField(2)
+  satisFatura,
+  @HiveField(3)
+  satisIrsaliye
 }
 
 extension SiparisTipiEnumExtension on SiparisTipiEnum {
@@ -17,6 +21,10 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
         return "MS";
       case SiparisTipiEnum.satici:
         return "SS";
+      case SiparisTipiEnum.satisFatura:
+        return "SF";
+      case SiparisTipiEnum.satisIrsaliye:
+        return "SI";
     }
   }
 
@@ -26,6 +34,10 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
         return "Müşteri Siparişi";
       case SiparisTipiEnum.satici:
         return "Satıcı Siparişi";
+      case SiparisTipiEnum.satisFatura:
+        return "Satış Faturası";
+      case SiparisTipiEnum.satisIrsaliye:
+        return "Satış İrsaliyesi";
     }
   }
 
@@ -35,6 +47,10 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
         return "MusteriSiparisi";
       case SiparisTipiEnum.satici:
         return "SaticiSiparisi";
+      case SiparisTipiEnum.satisFatura:
+        return "SatisFaturasi";
+      case SiparisTipiEnum.satisIrsaliye:
+        return "SatisIrsaliyesi";
     }
   }
 }

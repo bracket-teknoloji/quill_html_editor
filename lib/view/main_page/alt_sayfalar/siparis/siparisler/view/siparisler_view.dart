@@ -253,15 +253,44 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                     ),
                     Row(
                       children: [
-                        Expanded(child: CustomTextField(labelText: "Özel Kod 1", controller: ozelKod1Controller, suffixMore: true)),
-                        Expanded(child: CustomTextField(labelText: "Özel Kod 2", controller: ozelKod2Controller, suffixMore: true)),
+                        Expanded(
+                            child: CustomTextField(
+                                labelText: "Özel Kod 1",
+                                controller: ozelKod1Controller,
+                                onChanged: (value) => viewModel.setOzelKod1(value),
+                                suffix: IconButton(
+                                  onPressed: () async {
+                                    var result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context);
+                                    if (result != null) {
+                                      ozelKod1Controller.text = result.kod ?? "";
+                                      viewModel.setOzelKod1(result.kod);
+                                    }
+                                  },
+                                  icon: const Icon(Icons.more_horiz_outlined),
+                                ))),
+                        Expanded(
+                            child: CustomTextField(
+                                labelText: "Özel Kod 2",
+                                controller: ozelKod2Controller,
+                                onChanged: (value) => viewModel.setOzelKod2(value),
+                                suffix: IconButton(
+                                  onPressed: () async {
+                                    var result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context);
+                                    if (result != null) {
+                                      ozelKod2Controller.text = result.kod ?? "";
+                                      viewModel.setOzelKod2(result.kod);
+                                    }
+                                  },
+                                  icon: const Icon(Icons.more_horiz_outlined),
+                                ))),
                       ],
                     ),
                     CustomWidgetWithLabel(
                       isVertical: true,
+                      onlyLabelpaddingLeft: UIHelper.lowSize,
                       text: "Kapalı Belgeler Listelenmesin",
                       child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kapaliBelgelerListelenmesin, onChanged: (value) => viewModel.setKapaliBelgelerListelenmesin(value))),
-                    ).paddingAll(UIHelper.lowSize),
+                    ),
                     Observer(
                         builder: (_) => SlideControllerWidget(
                             scroll: false,

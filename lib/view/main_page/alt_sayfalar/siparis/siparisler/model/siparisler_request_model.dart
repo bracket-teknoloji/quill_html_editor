@@ -26,6 +26,7 @@ class SiparislerRequestModel with _$SiparislerRequestModel {
       String? arrKod2,
       String? arrPlasiyerKodu,
       String? arrKod1,
+      String? arrBelgeTipi,
       String? ekranTipi,
       int? sayfa,
       String? baslamaTarihi,

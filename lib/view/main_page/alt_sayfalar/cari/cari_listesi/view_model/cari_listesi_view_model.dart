@@ -37,12 +37,16 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
 
   @observable
   bool dahaVarMi = true;
+
   @observable
   bool isScrolledDown = false;
+  
   @observable
   bool searchBar = false;
+
   @observable
   String arama = "";
+  
   @observable
   List? cariListesi;
 
@@ -57,6 +61,9 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
 
   @observable
   CariRequestModel cariRequestModel = CariRequestModel(eFaturaGoster: true, siralama: "AZ", sayfa: 1, menuKodu: "CARI_CARI", filterText: "");
+
+
+  //* Computed
 
   @computed
   Map<String, dynamic> get getCariRequestModel => cariRequestModel.toJson().map((key, value) => MapEntry(key, value is List ? jsonEncode(value) : value));

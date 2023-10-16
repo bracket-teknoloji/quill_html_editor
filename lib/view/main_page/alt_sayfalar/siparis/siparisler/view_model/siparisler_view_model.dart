@@ -1,11 +1,11 @@
 import "dart:convert";
 
 import "package:mobx/mobx.dart";
-import "../model/siparisler_request_model.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
 import "../../base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../model/siparisler_request_model.dart";
 
 part "siparisler_view_model.g.dart";
 
@@ -123,6 +123,12 @@ abstract class _SiparislerViewModelBase with Store {
   void setDahaVarMi(bool value) => dahaVarMi = value;
 
   @action
+  void setOzelKod1(String? value) => ozelKod1 = value;
+
+  @action
+  void setOzelKod2(String? value) => ozelKod2 = value;
+
+  @action
   void increaseSayfa() => sayfa++;
 
   @action
@@ -163,6 +169,8 @@ abstract class _SiparislerViewModelBase with Store {
         arrKod3: getKod3,
         arrKod4: getKod4,
         arrKod5: getKod5,
+        ozelKod1: ozelKod1,
+        ozelKod2: ozelKod2,
         cariKodu: cariKodu ?? "",
         ekranTipi: "L",
         cariTipi: cariTipi,
@@ -178,6 +186,12 @@ abstract class _SiparislerViewModelBase with Store {
 
   @observable
   bool kapaliBelgelerListelenmesin = false;
+
+  @observable
+  String? ozelKod1;
+
+  @observable
+  String? ozelKod2;
 
   @observable
   int sayfa = 1;

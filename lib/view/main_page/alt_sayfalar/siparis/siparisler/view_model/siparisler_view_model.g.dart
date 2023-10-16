@@ -292,6 +292,38 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
     });
   }
 
+  late final _$ozelKod1Atom =
+      Atom(name: '_SiparislerViewModelBase.ozelKod1', context: context);
+
+  @override
+  String? get ozelKod1 {
+    _$ozelKod1Atom.reportRead();
+    return super.ozelKod1;
+  }
+
+  @override
+  set ozelKod1(String? value) {
+    _$ozelKod1Atom.reportWrite(value, super.ozelKod1, () {
+      super.ozelKod1 = value;
+    });
+  }
+
+  late final _$ozelKod2Atom =
+      Atom(name: '_SiparislerViewModelBase.ozelKod2', context: context);
+
+  @override
+  String? get ozelKod2 {
+    _$ozelKod2Atom.reportRead();
+    return super.ozelKod2;
+  }
+
+  @override
+  set ozelKod2(String? value) {
+    _$ozelKod2Atom.reportWrite(value, super.ozelKod2, () {
+      super.ozelKod2 = value;
+    });
+  }
+
   late final _$sayfaAtom =
       Atom(name: '_SiparislerViewModelBase.sayfa', context: context);
 
@@ -624,6 +656,28 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   }
 
   @override
+  void setOzelKod1(String? value) {
+    final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
+        name: '_SiparislerViewModelBase.setOzelKod1');
+    try {
+      return super.setOzelKod1(value);
+    } finally {
+      _$_SiparislerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setOzelKod2(String? value) {
+    final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
+        name: '_SiparislerViewModelBase.setOzelKod2');
+    try {
+      return super.setOzelKod2(value);
+    } finally {
+      _$_SiparislerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void increaseSayfa() {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
         name: '_SiparislerViewModelBase.increaseSayfa');
@@ -879,6 +933,8 @@ dahaVarMi: ${dahaVarMi},
 grupKodlariGoster: ${grupKodlariGoster},
 musteriSiparisleriList: ${musteriSiparisleriList},
 kapaliBelgelerListelenmesin: ${kapaliBelgelerListelenmesin},
+ozelKod1: ${ozelKod1},
+ozelKod2: ${ozelKod2},
 sayfa: ${sayfa},
 siralama: ${siralama},
 searchText: ${searchText},

@@ -245,6 +245,26 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel islemKodu(int? islemKodu);
 
+  BaseSiparisEditModel resmiBelgeNo(String? resmiBelgeNo);
+
+  BaseSiparisEditModel cikisYeri(String? cikisYeri);
+
+  BaseSiparisEditModel hareketTuru(String? hareketTuru);
+
+  BaseSiparisEditModel kasaKodu(String? kasaKodu);
+
+  BaseSiparisEditModel efaturaDurumu(String? efaturaDurumu);
+
+  BaseSiparisEditModel efaturaTipi(String? efaturaTipi);
+
+  BaseSiparisEditModel earsivDurumu(String? earsivDurumu);
+
+  BaseSiparisEditModel genIsk1O(int? genIsk1O);
+
+  BaseSiparisEditModel genIsk2O(double? genIsk2O);
+
+  BaseSiparisEditModel genIsk3O(double? genIsk3O);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -371,6 +391,16 @@ abstract class _$BaseSiparisEditModelCWProxy {
     double? kalanMiktar,
     String? yeniBelgeNo,
     int? islemKodu,
+    String? resmiBelgeNo,
+    String? cikisYeri,
+    String? hareketTuru,
+    String? kasaKodu,
+    String? efaturaDurumu,
+    String? efaturaTipi,
+    String? earsivDurumu,
+    int? genIsk1O,
+    double? genIsk2O,
+    double? genIsk3O,
   });
 }
 
@@ -798,6 +828,42 @@ class _$BaseSiparisEditModelCWProxyImpl
   BaseSiparisEditModel islemKodu(int? islemKodu) => this(islemKodu: islemKodu);
 
   @override
+  BaseSiparisEditModel resmiBelgeNo(String? resmiBelgeNo) =>
+      this(resmiBelgeNo: resmiBelgeNo);
+
+  @override
+  BaseSiparisEditModel cikisYeri(String? cikisYeri) =>
+      this(cikisYeri: cikisYeri);
+
+  @override
+  BaseSiparisEditModel hareketTuru(String? hareketTuru) =>
+      this(hareketTuru: hareketTuru);
+
+  @override
+  BaseSiparisEditModel kasaKodu(String? kasaKodu) => this(kasaKodu: kasaKodu);
+
+  @override
+  BaseSiparisEditModel efaturaDurumu(String? efaturaDurumu) =>
+      this(efaturaDurumu: efaturaDurumu);
+
+  @override
+  BaseSiparisEditModel efaturaTipi(String? efaturaTipi) =>
+      this(efaturaTipi: efaturaTipi);
+
+  @override
+  BaseSiparisEditModel earsivDurumu(String? earsivDurumu) =>
+      this(earsivDurumu: earsivDurumu);
+
+  @override
+  BaseSiparisEditModel genIsk1O(int? genIsk1O) => this(genIsk1O: genIsk1O);
+
+  @override
+  BaseSiparisEditModel genIsk2O(double? genIsk2O) => this(genIsk2O: genIsk2O);
+
+  @override
+  BaseSiparisEditModel genIsk3O(double? genIsk3O) => this(genIsk3O: genIsk3O);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -925,6 +991,16 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? kalanMiktar = const $CopyWithPlaceholder(),
     Object? yeniBelgeNo = const $CopyWithPlaceholder(),
     Object? islemKodu = const $CopyWithPlaceholder(),
+    Object? resmiBelgeNo = const $CopyWithPlaceholder(),
+    Object? cikisYeri = const $CopyWithPlaceholder(),
+    Object? hareketTuru = const $CopyWithPlaceholder(),
+    Object? kasaKodu = const $CopyWithPlaceholder(),
+    Object? efaturaDurumu = const $CopyWithPlaceholder(),
+    Object? efaturaTipi = const $CopyWithPlaceholder(),
+    Object? earsivDurumu = const $CopyWithPlaceholder(),
+    Object? genIsk1O = const $CopyWithPlaceholder(),
+    Object? genIsk2O = const $CopyWithPlaceholder(),
+    Object? genIsk3O = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -1405,6 +1481,46 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.islemKodu
           // ignore: cast_nullable_to_non_nullable
           : islemKodu as int?,
+      resmiBelgeNo: resmiBelgeNo == const $CopyWithPlaceholder()
+          ? _value.resmiBelgeNo
+          // ignore: cast_nullable_to_non_nullable
+          : resmiBelgeNo as String?,
+      cikisYeri: cikisYeri == const $CopyWithPlaceholder()
+          ? _value.cikisYeri
+          // ignore: cast_nullable_to_non_nullable
+          : cikisYeri as String?,
+      hareketTuru: hareketTuru == const $CopyWithPlaceholder()
+          ? _value.hareketTuru
+          // ignore: cast_nullable_to_non_nullable
+          : hareketTuru as String?,
+      kasaKodu: kasaKodu == const $CopyWithPlaceholder()
+          ? _value.kasaKodu
+          // ignore: cast_nullable_to_non_nullable
+          : kasaKodu as String?,
+      efaturaDurumu: efaturaDurumu == const $CopyWithPlaceholder()
+          ? _value.efaturaDurumu
+          // ignore: cast_nullable_to_non_nullable
+          : efaturaDurumu as String?,
+      efaturaTipi: efaturaTipi == const $CopyWithPlaceholder()
+          ? _value.efaturaTipi
+          // ignore: cast_nullable_to_non_nullable
+          : efaturaTipi as String?,
+      earsivDurumu: earsivDurumu == const $CopyWithPlaceholder()
+          ? _value.earsivDurumu
+          // ignore: cast_nullable_to_non_nullable
+          : earsivDurumu as String?,
+      genIsk1O: genIsk1O == const $CopyWithPlaceholder()
+          ? _value.genIsk1O
+          // ignore: cast_nullable_to_non_nullable
+          : genIsk1O as int?,
+      genIsk2O: genIsk2O == const $CopyWithPlaceholder()
+          ? _value.genIsk2O
+          // ignore: cast_nullable_to_non_nullable
+          : genIsk2O as double?,
+      genIsk3O: genIsk3O == const $CopyWithPlaceholder()
+          ? _value.genIsk3O
+          // ignore: cast_nullable_to_non_nullable
+          : genIsk3O as double?,
     );
   }
 }
@@ -3218,6 +3334,16 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       kalanMiktar: (json['KALAN_MIKTAR'] as num?)?.toDouble(),
       yeniBelgeNo: json['YENI_BELGE_NO'] as String?,
       islemKodu: json['ISLEM_KODU'] as int?,
+      resmiBelgeNo: json['RESMI_BELGE_NO'] as String?,
+      cikisYeri: json['CIKIS_YERI'] as String?,
+      hareketTuru: json['HAREKET_TURU'] as String?,
+      kasaKodu: json['KASA_KODU'] as String?,
+      efaturaDurumu: json['EFATURA_DURUMU'] as String?,
+      efaturaTipi: json['EFATURA_TIPI'] as String?,
+      earsivDurumu: json['EARSIV_DURUMU'] as String?,
+      genIsk1O: json['GEN_ISK1_O'] as int?,
+      genIsk2O: (json['GEN_ISK2_O'] as num?)?.toDouble(),
+      genIsk3O: (json['GEN_ISK3_O'] as num?)?.toDouble(),
     )
       ..yeniKayit = json['_YeniKayit'] as bool?
       ..faturalasanSayi = json['FATURALASAN_SAYI'] as int?;
@@ -3356,6 +3482,16 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('KALAN_MIKTAR', instance.kalanMiktar);
   writeNotNull('YENI_BELGE_NO', instance.yeniBelgeNo);
   writeNotNull('ISLEM_KODU', instance.islemKodu);
+  writeNotNull('RESMI_BELGE_NO', instance.resmiBelgeNo);
+  writeNotNull('CIKIS_YERI', instance.cikisYeri);
+  writeNotNull('HAREKET_TURU', instance.hareketTuru);
+  writeNotNull('KASA_KODU', instance.kasaKodu);
+  writeNotNull('EFATURA_DURUMU', instance.efaturaDurumu);
+  writeNotNull('EFATURA_TIPI', instance.efaturaTipi);
+  writeNotNull('EARSIV_DURUMU', instance.earsivDurumu);
+  writeNotNull('GEN_ISK1_O', instance.genIsk1O);
+  writeNotNull('GEN_ISK2_O', instance.genIsk2O);
+  writeNotNull('GEN_ISK3_O', instance.genIsk3O);
   return val;
 }
 

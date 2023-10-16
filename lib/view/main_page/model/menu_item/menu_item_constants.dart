@@ -55,10 +55,14 @@ class MenuItemConstants {
     //*Finans
     //*
     GridItemModel.anamenu(name: "YONE", title: "Finans", icon: "wallet", color: GridThemeManager.finans, altMenuler: [
-      GridItemModel.altmenu(name: null, title: "Banka", iconData: Icons.account_balance_outlined, altMenuler: [
-        GridItemModel.item(name: "yonetici_Banka_Banka_Litesi", title: "Banka Listesi"),
-        GridItemModel.item(name: "yonetici_Banka_Islemleri", title: "İşlemler", route: "/mainPage/bankaIslemleri").isDebug(),
-      ].whereType<GridItemModel>().toList()),
+      GridItemModel.altmenu(
+          name: null,
+          title: "Banka",
+          iconData: Icons.account_balance_outlined,
+          altMenuler: [
+            GridItemModel.item(name: "yonetici_Banka_Banka_Litesi", title: "Banka Listesi"),
+            GridItemModel.item(name: "yonetici_Banka_Islemleri", title: "İşlemler", route: "/mainPage/bankaIslemleri").isDebug(),
+          ].whereType<GridItemModel>().toList()),
       GridItemModel.altmenu(name: null, title: "Kasa", iconData: Icons.point_of_sale_outlined, altMenuler: [
         GridItemModel.item(name: "finans_Kasa_Listesi", title: "Kasa Listesi", route: "/mainPage/kasaListesi"),
         GridItemModel.item(name: "finans_Kasa_Islemleri", title: "İşlemler", route: "/mainPage/kasaIslemleri"),
@@ -128,7 +132,11 @@ class MenuItemConstants {
 
     //* Sevkiyat
     //*
-    GridItemModel.anamenu(name: "SEVK", title: "Sevkiyat", icon: "forklift", color: GridThemeManager.sevkiyat, altMenuler: []),
+    GridItemModel.anamenu(name: "SEVK", title: "Sevkiyat", icon: "forklift", color: GridThemeManager.sevkiyat, altMenuler: [
+      GridItemModel.item(name: "sevkiyat_SatisFat", title: "Satış Faturaları", route: "/mainPage/sevkiyatSatisFaturasi"),
+      GridItemModel.item(name: "sevkiyat_SatisIrsaliyesi", title: "Satış İrsaliyesi", route: "/mainPage/sevkiyatSatisIrsaliyesi"),
+      GridItemModel.item(name: "sevkemri_MalToplama", title: "Mal Toplama"),
+    ]).isDebug(),
 
     //* Sipariş
     //*
@@ -212,7 +220,7 @@ class MenuItemConstants {
   ].whereType<GridItemModel>().toList();
 
   List<GridItemModel> getList() {
-      return _gridItemModel.where((element) => element.yetkiKontrol).toList();
+    return _gridItemModel.where((element) => element.yetkiKontrol).toList();
     // if (kDebugMode) {
     //   return _gridItemModel;
     // } else {
