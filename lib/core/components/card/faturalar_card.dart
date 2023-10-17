@@ -54,6 +54,12 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali).yetkiVarMi(model.tipi == 1),
                 const ColorfulBadge(label: Text("Onayda")).yetkiVarMi(model.tipi == 3),
                 ColorfulBadge(label: Text("İrsaliye (${model.irslesenSayi ?? ""})"), badgeColorEnum: BadgeColorEnum.irsaliye).yetkiVarMi(model.irsaliyelesti == "E"),
+                const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.eFatura).yetkiVarMi(model.efaturaMi == "E"),
+                dialogInkWell(const ColorfulBadge(label: Text("Hata"), badgeColorEnum: BadgeColorEnum.hata)).yetkiVarMi(model.efaturaDurumu == "HAT" && model.efaturaMi == "E"),
+                dialogInkWell(const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.taslak)).yetkiVarMi(model.efaturaDurumu == "TAS" && model.efaturaMi == "E"),
+                dialogInkWell(const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari)).yetkiVarMi(model.efaturaDurumu == "BEK" && model.efaturaMi == "E"),
+                // const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi(model.efaturaDurumu == "BEK" && model.efaturaMi == "E"),
+                dialogInkWell(const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili)).yetkiVarMi(model.efaturaMi == "E" && model.efaturaGibDurumKodu == 1300),
               ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
             ),
             Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
@@ -104,4 +110,20 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
       ),
     );
   }
+
+  InkWell dialogInkWell(Widget badge) => InkWell(
+        onTap: () {
+          switch (model.efaturaDurumu) {
+            case "BEK":
+            case "HAT":
+              dialogManager.showErrorSnackBar("Durum Kodu: ${model.efaturaGibDurumKodu ?? 0}\n${model.efaturaDurumAciklama ?? ""}");
+            case "TAS":
+            case "TMM":
+              dialogManager.showInfoSnackBar("Durum Kodu: ${model.efaturaGibDurumKodu ?? 0}\n${model.efaturaDurumAciklama ?? ""}");
+              break;
+            default:
+          }
+        },
+        child: badge,
+      );
 }

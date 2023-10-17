@@ -265,6 +265,18 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel genIsk3O(double? genIsk3O);
 
+  BaseSiparisEditModel cariDovizli(bool? cariDovizli);
+
+  BaseSiparisEditModel efaturaMi(String? efaturaMi);
+
+  BaseSiparisEditModel efatOnayDurumKodu(String? efatOnayDurumKodu);
+
+  BaseSiparisEditModel efatOnayAciklama(String? efatOnayAciklama);
+
+  BaseSiparisEditModel efaturaGibDurumKodu(int? efaturaGibDurumKodu);
+
+  BaseSiparisEditModel efaturaDurumAciklama(String? efaturaDurumAciklama);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -401,6 +413,12 @@ abstract class _$BaseSiparisEditModelCWProxy {
     int? genIsk1O,
     double? genIsk2O,
     double? genIsk3O,
+    bool? cariDovizli,
+    String? efaturaMi,
+    String? efatOnayDurumKodu,
+    String? efatOnayAciklama,
+    int? efaturaGibDurumKodu,
+    String? efaturaDurumAciklama,
   });
 }
 
@@ -864,6 +882,30 @@ class _$BaseSiparisEditModelCWProxyImpl
   BaseSiparisEditModel genIsk3O(double? genIsk3O) => this(genIsk3O: genIsk3O);
 
   @override
+  BaseSiparisEditModel cariDovizli(bool? cariDovizli) =>
+      this(cariDovizli: cariDovizli);
+
+  @override
+  BaseSiparisEditModel efaturaMi(String? efaturaMi) =>
+      this(efaturaMi: efaturaMi);
+
+  @override
+  BaseSiparisEditModel efatOnayDurumKodu(String? efatOnayDurumKodu) =>
+      this(efatOnayDurumKodu: efatOnayDurumKodu);
+
+  @override
+  BaseSiparisEditModel efatOnayAciklama(String? efatOnayAciklama) =>
+      this(efatOnayAciklama: efatOnayAciklama);
+
+  @override
+  BaseSiparisEditModel efaturaGibDurumKodu(int? efaturaGibDurumKodu) =>
+      this(efaturaGibDurumKodu: efaturaGibDurumKodu);
+
+  @override
+  BaseSiparisEditModel efaturaDurumAciklama(String? efaturaDurumAciklama) =>
+      this(efaturaDurumAciklama: efaturaDurumAciklama);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1001,6 +1043,12 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? genIsk1O = const $CopyWithPlaceholder(),
     Object? genIsk2O = const $CopyWithPlaceholder(),
     Object? genIsk3O = const $CopyWithPlaceholder(),
+    Object? cariDovizli = const $CopyWithPlaceholder(),
+    Object? efaturaMi = const $CopyWithPlaceholder(),
+    Object? efatOnayDurumKodu = const $CopyWithPlaceholder(),
+    Object? efatOnayAciklama = const $CopyWithPlaceholder(),
+    Object? efaturaGibDurumKodu = const $CopyWithPlaceholder(),
+    Object? efaturaDurumAciklama = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -1521,6 +1569,30 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.genIsk3O
           // ignore: cast_nullable_to_non_nullable
           : genIsk3O as double?,
+      cariDovizli: cariDovizli == const $CopyWithPlaceholder()
+          ? _value.cariDovizli
+          // ignore: cast_nullable_to_non_nullable
+          : cariDovizli as bool?,
+      efaturaMi: efaturaMi == const $CopyWithPlaceholder()
+          ? _value.efaturaMi
+          // ignore: cast_nullable_to_non_nullable
+          : efaturaMi as String?,
+      efatOnayDurumKodu: efatOnayDurumKodu == const $CopyWithPlaceholder()
+          ? _value.efatOnayDurumKodu
+          // ignore: cast_nullable_to_non_nullable
+          : efatOnayDurumKodu as String?,
+      efatOnayAciklama: efatOnayAciklama == const $CopyWithPlaceholder()
+          ? _value.efatOnayAciklama
+          // ignore: cast_nullable_to_non_nullable
+          : efatOnayAciklama as String?,
+      efaturaGibDurumKodu: efaturaGibDurumKodu == const $CopyWithPlaceholder()
+          ? _value.efaturaGibDurumKodu
+          // ignore: cast_nullable_to_non_nullable
+          : efaturaGibDurumKodu as int?,
+      efaturaDurumAciklama: efaturaDurumAciklama == const $CopyWithPlaceholder()
+          ? _value.efaturaDurumAciklama
+          // ignore: cast_nullable_to_non_nullable
+          : efaturaDurumAciklama as String?,
     );
   }
 }
@@ -2643,6 +2715,22 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       kalanMiktar: fields[119] as double?,
       yeniBelgeNo: fields[120] as String?,
       islemKodu: fields[121] as int?,
+      resmiBelgeNo: fields[122] as String?,
+      cikisYeri: fields[123] as String?,
+      hareketTuru: fields[124] as String?,
+      kasaKodu: fields[125] as String?,
+      efaturaDurumu: fields[126] as String?,
+      efaturaTipi: fields[127] as String?,
+      earsivDurumu: fields[128] as String?,
+      genIsk1O: fields[129] as int?,
+      genIsk2O: fields[130] as double?,
+      genIsk3O: fields[131] as double?,
+      cariDovizli: fields[132] as bool?,
+      efaturaMi: fields[133] as String?,
+      efatOnayDurumKodu: fields[134] as String?,
+      efatOnayAciklama: fields[135] as String?,
+      efaturaGibDurumKodu: fields[136] as int?,
+      efaturaDurumAciklama: fields[137] as String?,
     )
       ..yeniKayit = fields[115] as bool?
       ..uuid = fields[116] as String?
@@ -2652,7 +2740,7 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(122)
+      ..writeByte(138)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -2896,7 +2984,39 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(120)
       ..write(obj.yeniBelgeNo)
       ..writeByte(121)
-      ..write(obj.islemKodu);
+      ..write(obj.islemKodu)
+      ..writeByte(122)
+      ..write(obj.resmiBelgeNo)
+      ..writeByte(123)
+      ..write(obj.cikisYeri)
+      ..writeByte(124)
+      ..write(obj.hareketTuru)
+      ..writeByte(125)
+      ..write(obj.kasaKodu)
+      ..writeByte(126)
+      ..write(obj.efaturaDurumu)
+      ..writeByte(127)
+      ..write(obj.efaturaTipi)
+      ..writeByte(128)
+      ..write(obj.earsivDurumu)
+      ..writeByte(129)
+      ..write(obj.genIsk1O)
+      ..writeByte(130)
+      ..write(obj.genIsk2O)
+      ..writeByte(131)
+      ..write(obj.genIsk3O)
+      ..writeByte(132)
+      ..write(obj.cariDovizli)
+      ..writeByte(133)
+      ..write(obj.efaturaMi)
+      ..writeByte(134)
+      ..write(obj.efatOnayDurumKodu)
+      ..writeByte(135)
+      ..write(obj.efatOnayAciklama)
+      ..writeByte(136)
+      ..write(obj.efaturaGibDurumKodu)
+      ..writeByte(137)
+      ..write(obj.efaturaDurumAciklama);
   }
 
   @override
@@ -3344,6 +3464,12 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       genIsk1O: json['GEN_ISK1_O'] as int?,
       genIsk2O: (json['GEN_ISK2_O'] as num?)?.toDouble(),
       genIsk3O: (json['GEN_ISK3_O'] as num?)?.toDouble(),
+      cariDovizli: json['CARI_DOVIZLI'] as bool?,
+      efaturaMi: json['EFATURA_MI'] as String?,
+      efatOnayDurumKodu: json['EFAT_ONAY_DURUM_KODU'] as String?,
+      efatOnayAciklama: json['EFAT_ONAY_ACIKLAMA'] as String?,
+      efaturaGibDurumKodu: json['EFATURA_GIB_DURUM_KODU'] as int?,
+      efaturaDurumAciklama: json['EFATURA_DURUM_ACIKLAMA'] as String?,
     )
       ..yeniKayit = json['_YeniKayit'] as bool?
       ..faturalasanSayi = json['FATURALASAN_SAYI'] as int?;
@@ -3492,6 +3618,12 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('GEN_ISK1_O', instance.genIsk1O);
   writeNotNull('GEN_ISK2_O', instance.genIsk2O);
   writeNotNull('GEN_ISK3_O', instance.genIsk3O);
+  writeNotNull('CARI_DOVIZLI', instance.cariDovizli);
+  writeNotNull('EFATURA_MI', instance.efaturaMi);
+  writeNotNull('EFAT_ONAY_DURUM_KODU', instance.efatOnayDurumKodu);
+  writeNotNull('EFAT_ONAY_ACIKLAMA', instance.efatOnayAciklama);
+  writeNotNull('EFATURA_GIB_DURUM_KODU', instance.efaturaGibDurumKodu);
+  writeNotNull('EFATURA_DURUM_ACIKLAMA', instance.efaturaDurumAciklama);
   return val;
 }
 

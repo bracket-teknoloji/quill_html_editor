@@ -320,16 +320,38 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   String? yeniBelgeNo;
   @HiveField(121)
   int? islemKodu;
-    String? resmiBelgeNo;
-    String? cikisYeri;
-    String? hareketTuru;
-    String? kasaKodu;
-    String? efaturaDurumu;
-    String? efaturaTipi;
-    String? earsivDurumu;
-    int? genIsk1O;
-    double? genIsk2O;
-    double? genIsk3O;
+  @HiveField(122)
+  String? resmiBelgeNo;
+  @HiveField(123)
+  String? cikisYeri;
+  @HiveField(124)
+  String? hareketTuru;
+  @HiveField(125)
+  String? kasaKodu;
+  @HiveField(126)
+  String? efaturaDurumu;
+  @HiveField(127)
+  String? efaturaTipi;
+  @HiveField(128)
+  String? earsivDurumu;
+  @HiveField(129)
+  int? genIsk1O;
+  @HiveField(130)
+  double? genIsk2O;
+  @HiveField(131)
+  double? genIsk3O;
+  @HiveField(132)
+  bool? cariDovizli;
+  @HiveField(133)
+  String? efaturaMi;
+  @HiveField(134)
+  String? efatOnayDurumKodu;
+  @HiveField(135)
+  String? efatOnayAciklama;
+  @HiveField(136)
+  int? efaturaGibDurumKodu;
+  @HiveField(137)
+  String? efaturaDurumAciklama;
   BaseSiparisEditModel({
     this.duzeltmetarihi,
     this.kalemAdedi,
@@ -450,16 +472,22 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.kalanMiktar,
     this.yeniBelgeNo,
     this.islemKodu,
-        this.resmiBelgeNo,
-        this.cikisYeri,
-        this.hareketTuru,
-        this.kasaKodu,
-        this.efaturaDurumu,
-        this.efaturaTipi,
-        this.earsivDurumu,
-        this.genIsk1O,
-        this.genIsk2O,
-        this.genIsk3O,
+    this.resmiBelgeNo,
+    this.cikisYeri,
+    this.hareketTuru,
+    this.kasaKodu,
+    this.efaturaDurumu,
+    this.efaturaTipi,
+    this.earsivDurumu,
+    this.genIsk1O,
+    this.genIsk2O,
+    this.genIsk3O,
+    this.cariDovizli,
+    this.efaturaMi,
+    this.efatOnayDurumKodu,
+    this.efatOnayAciklama,
+    this.efaturaGibDurumKodu,
+    this.efaturaDurumAciklama,
   });
 
   BaseSiparisEditModel._init();
