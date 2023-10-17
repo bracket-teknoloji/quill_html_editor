@@ -39,4 +39,5 @@ class StaticVariables {
   GlobalKey<FormState> siparisGenelFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> siparisDigerFormKey = GlobalKey<FormState>();
   bool isMusteriSiparisleri = false;
+  bool isSatisFaturasi = false;
 }

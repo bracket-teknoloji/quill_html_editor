@@ -14,17 +14,13 @@ abstract class _BaseCariGenelEditViewModelBase with Store {
   bool isSahisFirmasi = false;
 
   @action
-  void changeIsSahisFirmasi(bool value) {
-    isSahisFirmasi = value;
-  }
+  void changeIsSahisFirmasi(bool value) => isSahisFirmasi = value;
 
   @observable
   bool isDovizli = false;
 
   @action
-  void changeIsDovizli(bool value) {
-    isDovizli = value;
-  }
+  void changeIsDovizli(bool value) => isDovizli = value;
 
   @observable
   CariListesiModel? model;

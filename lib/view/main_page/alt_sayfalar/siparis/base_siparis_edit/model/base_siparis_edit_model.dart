@@ -352,6 +352,9 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   int? efaturaGibDurumKodu;
   @HiveField(137)
   String? efaturaDurumAciklama;
+    String? earsivMi;
+    String? earsivDurumAciklama;
+    int? earsivGibDurumKodu;
   BaseSiparisEditModel({
     this.duzeltmetarihi,
     this.kalemAdedi,

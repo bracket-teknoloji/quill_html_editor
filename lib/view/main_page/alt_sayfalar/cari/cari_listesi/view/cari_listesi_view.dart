@@ -255,7 +255,9 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
         child: Observer(
           builder: (_) => (viewModel.cariListesi.ext.isNullOrEmpty
               ? (viewModel.cariListesi?.isEmpty ?? false)
-                  ? const Center(child: Text("Cari Bulunamadı"))
+                  ? Center(child: Observer(builder: (_) {
+                      return Text(viewModel.errorText != null ? (viewModel.errorText ?? "") : "Cari Bulunamadı");
+                    }))
                   : const Center(child: CircularProgressIndicator.adaptive())
               : ListView.builder(
                   primary: false,
@@ -389,72 +391,6 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       );
     });
   }
-
-  // Future<List?> getData({String? sort1, String? filterBakiye}) async {
-  //   // viewModel.changeDahaVarMi(false);
-  //   var queryParameters2 = {
-  //     "EFaturaGoster": "true",
-  //     "SIRALAMA": viewModel.cariRequestModel.siralama ?? "AZ",
-  //     "Sayfa": viewModel.cariRequestModel.sayfa.toString(),
-  //     "MenuKodu": "CARI_CARI",
-  //     "FilterText": viewModel.arama,
-  //     "Kod": "",
-  //   };
-  //   if (filterBakiye != null) {
-  //     queryParameters2["FILTER_BAKIYE"] = filterBakiye;
-  //   }
-  //   if (bottomSheetResponseModel != null) {
-  //     nullChecker("arrPlasiyer", queryParameters2);
-  //     nullChecker("arrSehir", queryParameters2);
-  //     nullChecker("arrGrupKodu", queryParameters2);
-  //     nullChecker("arrKod1", queryParameters2);
-  //     nullChecker("arrKod2", queryParameters2);
-  //     nullChecker("arrKod3", queryParameters2);
-  //     nullChecker("arrKod4", queryParameters2);
-  //     nullChecker("arrKod5", queryParameters2);
-  //     nullChecker("ilce", queryParameters2);
-  //     nullChecker("cariTipi", queryParameters2);
-
-  //     if (bottomSheetResponseModel!.filterBakiye!.ext.isNotNullOrNoEmpty) {
-  //       String a = bottomSheetResponseModel!.filterBakiye ?? "";
-  //       String b = a == "Tümü" ? "" : a[0];
-  //       queryParameters2["FILTER_BAKIYE"] = b;
-  //     }
-  //   }
-  //   final response = await networkManager.dioGet<CariListesiModel>(path: ApiUrls.getCariler, queryParameters: queryParameters2, bodyModel: CariListesiModel());
-
-  //   // if (mounted) {
-  //   //   if (response.data != null) {
-  //   //     if (response.data.length < parametreModel.sabitSayfalamaOgeSayisi) {
-  //   //       viewModel.changeDahaVarMi(false);
-  //   //     } else {
-  //   //       viewModel.changeDahaVarMi(true);
-  //   //     }
-  //   //   }
-  //   // }
-  //   if (response.paramData != null) {
-  //     paramData = response.paramData ?? {};
-  //     log("yeni param data : $paramData");
-  //   } else {
-  //     log("$paramData");
-  //   }
-  //   log("Sayfa : ${viewModel.cariRequestModel.sayfa}");
-
-  //   return response.data;
-  // }
-
-  // void nullChecker(String parametre, Map<String, String> map, {String? isim}) {
-  //   dynamic selected = bottomSheetResponseModel!.toJson()[parametre];
-  //   String parametreIsim = isim ?? parametre[0].toUpperCase() + parametre.substring(1);
-  //   if (selected != null) {
-  //     if (selected.isEmpty) return;
-  //     if (selected is List) {
-  //       map[parametreIsim] = jsonEncode(selected);
-  //     } else {
-  //       map[parametreIsim] = selected;
-  //     }
-  //   }
-  // }
 
   String getPaymentInfo(double bakiye) {
     if (bakiye > 0) {

@@ -15,8 +15,7 @@ class YapilandirmaRehberiView extends StatefulWidget {
   const YapilandirmaRehberiView({super.key, required this.model});
 
   @override
-  State<YapilandirmaRehberiView> createState() =>
-      _YapilandirmaRehberiViewState();
+  State<YapilandirmaRehberiView> createState() => _YapilandirmaRehberiViewState();
 }
 
 class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
@@ -35,24 +34,19 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: AppBarTitle(
-              title: "Yapılandırma Rehberi",
-              subtitle: "${widget.model.stokAdi} - ${widget.model.stokKodu}"),
+          title: AppBarTitle(title: "Yapılandırma Rehberi", subtitle: "${widget.model.stokAdi} - ${widget.model.stokKodu}"),
         ),
         body: Observer(builder: (_) {
           if (viewModel.yapilandirmaList == null) {
             return const Center(child: CircularProgressIndicator.adaptive());
           } else if (viewModel.yapilandirmaList!.isEmpty) {
-            return Center(
-                child: Text(
-                    "${viewModel.stokListesiModel?.stokKodu ?? ""} ürünü için özellik tanımları bulunamadı!"));
+            return Center(child: Text("${viewModel.stokListesiModel?.stokKodu ?? ""} ürünü için özellik tanımları bulunamadı!"));
           }
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Observer(builder: (_) => Text(viewModel.title))
-                  .paddingAll(UIHelper.highSize),
+              Observer(builder: (_) => Text(viewModel.title)).paddingAll(UIHelper.highSize),
               const Divider(),
               Expanded(
                 child: Observer(builder: (_) {
@@ -60,118 +54,72 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
                     visible: viewModel.filteredList.ext.isNotNullOrEmpty,
                     child: AnimationLimiter(
                       child: GridView.builder(
-                        physics: const BouncingScrollPhysics(
-                            parent: AlwaysScrollableScrollPhysics()),
+                        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount:
-                              MediaQuery.of(context).size.width ~/ 90 > 10
-                                  ? 10
-                                  : MediaQuery.of(context).size.width ~/ 90,
+                          crossAxisCount: MediaQuery.of(context).size.width ~/ 90 > 10 ? 10 : MediaQuery.of(context).size.width ~/ 90,
                           childAspectRatio: 0.9,
                         ),
-                        itemCount: (viewModel.filteredList?.length ?? 0) +
-                            (viewModel.page != 1 ? 1 : 0),
+                        itemCount: (viewModel.filteredList?.length ?? 0) + (viewModel.page != 1 ? 1 : 0),
                         itemBuilder: (context, index) {
-                          var item = viewModel.filteredList?[
-                              (viewModel.page != 1 ? index - 1 : index) < 0
-                                  ? 0
-                                  : (viewModel.page != 1 ? index - 1 : index)];
+                          var item = viewModel.filteredList?[(viewModel.page != 1 ? index - 1 : index) < 0 ? 0 : (viewModel.page != 1 ? index - 1 : index)];
                           return AnimationConfiguration.staggeredList(
                               position: index,
-                              duration: const Duration(milliseconds: 900),
+                              duration: const Duration(milliseconds: 500),
                               delay: const Duration(milliseconds: 50),
-                              child: ScaleAnimation(
-                                  curve: Curves.fastLinearToSlowEaseIn,
-                                  duration: const Duration(milliseconds: 900),
-                                  child: FadeInAnimation(
-                                      child: viewModel.page != 1 && index == 0
-                                          ? Card(
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      UIHelper.lowBorderRadius),
-                                              child: InkWell(
-                                                onTap: () async {
-                                                  viewModel.resetFilteredList();
-                                                  await Future.delayed(
-                                                      const Duration(
-                                                          milliseconds: 50));
-                                                  viewModel.decrementPage();
-                                                },
-                                                child: GridTile(
-                                                  child: Center(
-                                                    child: Icon(
-                                                      Icons.arrow_back_ios,
-                                                      size: UIHelper.highSize,
-                                                    ),
-                                                  ),
+                              child: FadeInAnimation(
+                                  child: viewModel.page != 1 && index == 0
+                                      ? Card(
+                                          shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
+                                          child: InkWell(
+                                            onTap: () async {
+                                              viewModel.resetFilteredList();
+                                              await Future.delayed(const Duration(milliseconds: 50));
+                                              viewModel.decrementPage();
+                                            },
+                                            child: GridTile(
+                                              child: Center(
+                                                child: Icon(
+                                                  Icons.arrow_back_ios,
+                                                  size: UIHelper.highSize,
                                                 ),
                                               ),
-                                            )
-                                          : Card(
-                                              color: viewModel.color,
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      UIHelper.lowBorderRadius),
-                                              child: InkWell(
-                                                onTap: () async {
-                                                  var sonuc = viewModel
-                                                      .yapilandirmaList
-                                                      ?.where((element) =>
-                                                          element.yapkod ==
-                                                          item?.yapkod)
-                                                      .map((element) =>
-                                                          element.ozellikSira)
-                                                      .fold(
-                                                          0,
-                                                          (previousValue,
-                                                                  element) =>
-                                                              ((element ?? 0) >
-                                                                      previousValue)
-                                                                  ? element ?? 0
-                                                                  : previousValue);
-                                                  viewModel.setMaxPage(sonuc);
-                                                  if (!viewModel.isLastPage) {
-                                                    viewModel
-                                                        .setYapilandirmaRehberiModel(
-                                                            item);
+                                            ),
+                                          ),
+                                        )
+                                      : Card(
+                                          color: viewModel.color,
+                                          shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
+                                          child: InkWell(
+                                            onTap: () async {
+                                              var sonuc = viewModel.yapilandirmaList
+                                                  ?.where((element) => element.yapkod == item?.yapkod)
+                                                  .map((element) => element.ozellikSira)
+                                                  .fold(0, (previousValue, element) => ((element ?? 0) > previousValue) ? element ?? 0 : previousValue);
+                                              viewModel.setMaxPage(sonuc);
+                                              if (!viewModel.isLastPage) {
+                                                viewModel.setYapilandirmaRehberiModel(item);
 
-                                                    await viewModel
-                                                        .incrementPage();
-                                                  } else {
-                                                    Get.back(result: item);
-                                                  }
-                                                },
-                                                child: GridTile(
-                                                  header: Text(
-                                                          item?.degerAciklama ??
-                                                              "")
-                                                      .paddingAll(
-                                                          UIHelper.lowSize),
-                                                  footer: Text(
-                                                          viewModel.isLastPage
-                                                              ? (item?.yapkod ??
-                                                                  "")
-                                                              : "",
-                                                          style: TextStyle(
-                                                              fontSize: UIHelper
-                                                                  .midSize))
-                                                      .paddingAll(
-                                                          UIHelper.lowSize),
-                                                  child: Visibility(
-                                                    visible:
-                                                        !viewModel.isLastPage,
-                                                    child: Container(
-                                                      alignment:
-                                                          Alignment.centerRight,
-                                                      child: Icon(
-                                                        Icons.arrow_forward_ios,
-                                                        size: UIHelper.highSize,
-                                                      ),
-                                                    ),
+                                                await viewModel.incrementPage();
+                                              } else {
+                                                Get.back(result: item);
+                                              }
+                                            },
+                                            child: GridTile(
+                                              header: Text(item?.degerAciklama ?? "").paddingAll(UIHelper.lowSize),
+                                              footer: Text(viewModel.isLastPage ? (item?.yapkod ?? "") : "", style: TextStyle(fontSize: UIHelper.midSize)).paddingAll(UIHelper.lowSize),
+                                              child: Visibility(
+                                                visible: !viewModel.isLastPage,
+                                                child: Container(
+                                                  alignment: Alignment.centerRight,
+                                                  child: Icon(
+                                                    Icons.arrow_forward_ios,
+                                                    size: UIHelper.highSize,
                                                   ),
                                                 ),
                                               ),
-                                            ))));
+                                            ),
+                                          ),
+                                        )));
                         },
                       ).paddingAll(UIHelper.highSize),
                     ),

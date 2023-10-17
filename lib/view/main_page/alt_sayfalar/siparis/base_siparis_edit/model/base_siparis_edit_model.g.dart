@@ -3472,7 +3472,10 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       efaturaDurumAciklama: json['EFATURA_DURUM_ACIKLAMA'] as String?,
     )
       ..yeniKayit = json['_YeniKayit'] as bool?
-      ..faturalasanSayi = json['FATURALASAN_SAYI'] as int?;
+      ..faturalasanSayi = json['FATURALASAN_SAYI'] as int?
+      ..earsivMi = json['EARSIV_MI'] as String?
+      ..earsivDurumAciklama = json['EARSIV_DURUM_ACIKLAMA'] as String?
+      ..earsivGibDurumKodu = json['EARSIV_GIB_DURUM_KODU'] as int?;
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
     BaseSiparisEditModel instance) {
@@ -3624,6 +3627,9 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('EFAT_ONAY_ACIKLAMA', instance.efatOnayAciklama);
   writeNotNull('EFATURA_GIB_DURUM_KODU', instance.efaturaGibDurumKodu);
   writeNotNull('EFATURA_DURUM_ACIKLAMA', instance.efaturaDurumAciklama);
+  writeNotNull('EARSIV_MI', instance.earsivMi);
+  writeNotNull('EARSIV_DURUM_ACIKLAMA', instance.earsivDurumAciklama);
+  writeNotNull('EARSIV_GIB_DURUM_KODU', instance.earsivGibDurumKodu);
   return val;
 }
 

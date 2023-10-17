@@ -79,41 +79,38 @@ class _MainPageViewState extends BaseState<MainPageView> {
                           var item = items[index];
                           return AnimationConfiguration.staggeredList(
                               position: index,
-                              duration: const Duration(milliseconds: 900),
+                              duration: const Duration(milliseconds: 500),
                               delay: const Duration(milliseconds: 50),
-                              child: ScaleAnimation(
-                                  curve: Curves.fastLinearToSlowEaseIn,
-                                  duration: const Duration(milliseconds: 900),
-                                  child: FadeInAnimation(
-                                      child: CustomGridTile(
-                                          iconWidget: item.iconData,
-                                          menuTipi: item.menuTipi,
-                                          route: item.route,
-                                          arguments: item.arguments,
-                                          altMenuler: item.altMenuler,
-                                          color: item.color,
-                                          icon: item.icon,
-                                          name: item.name.toString(),
-                                          title: item.title.toString(),
-                                          onTap: () {
-                                            if (item.altMenuVarMi) {
-                                              item.altMenuler?.length == 1
-                                                  ? item.altMenuler?.first.onTap?.call()
-                                                  : setState(() {
-                                                      lastItems.add(items);
-                                                      title2.add(item.title.toString());
-                                                      items = item.altMenuler!.where((element) {
-                                                        element.color ??= item.color;
-                                                        if (element.icon.ext.isNullOrEmpty) {
-                                                          element.icon = item.icon;
-                                                        }
-                                                        return element.yetkiKontrol;
-                                                      }).toList();
-                                                    });
-                                            } else {
-                                              items[index].onTap?.call();
-                                            }
-                                          }))));
+                              child: FadeInAnimation(
+                                  child: CustomGridTile(
+                                      iconWidget: item.iconData,
+                                      menuTipi: item.menuTipi,
+                                      route: item.route,
+                                      arguments: item.arguments,
+                                      altMenuler: item.altMenuler,
+                                      color: item.color,
+                                      icon: item.icon,
+                                      name: item.name.toString(),
+                                      title: item.title.toString(),
+                                      onTap: () {
+                                        if (item.altMenuVarMi) {
+                                          item.altMenuler?.length == 1
+                                              ? item.altMenuler?.first.onTap?.call()
+                                              : setState(() {
+                                                  lastItems.add(items);
+                                                  title2.add(item.title.toString());
+                                                  items = item.altMenuler!.where((element) {
+                                                    element.color ??= item.color;
+                                                    if (element.icon.ext.isNullOrEmpty) {
+                                                      element.icon = item.icon;
+                                                    }
+                                                    return element.yetkiKontrol;
+                                                  }).toList();
+                                                });
+                                        } else {
+                                          items[index].onTap?.call();
+                                        }
+                                      })));
                         },
                       ),
                     ),

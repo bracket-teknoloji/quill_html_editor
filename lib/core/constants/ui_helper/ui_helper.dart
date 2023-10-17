@@ -13,23 +13,15 @@ class UIHelper {
   static EdgeInsets get lowPadding => EdgeInsets.all(lowSize);
   static EdgeInsets get zeroPadding => const EdgeInsets.all(0);
 
-  static EdgeInsets get highPaddingVertical =>
-      EdgeInsets.symmetric(vertical: highSize);
-  static EdgeInsets get midPaddingVertical =>
-      EdgeInsets.symmetric(vertical: midSize);
-  static EdgeInsets get lowPaddingVertical =>
-      EdgeInsets.symmetric(vertical: lowSize);
-  static EdgeInsets get zeroPaddingVertical =>
-      const EdgeInsets.symmetric(vertical: 0);
+  static EdgeInsets get highPaddingVertical => EdgeInsets.symmetric(vertical: highSize);
+  static EdgeInsets get midPaddingVertical => EdgeInsets.symmetric(vertical: midSize);
+  static EdgeInsets get lowPaddingVertical => EdgeInsets.symmetric(vertical: lowSize);
+  static EdgeInsets get zeroPaddingVertical => const EdgeInsets.symmetric(vertical: 0);
 
-  static EdgeInsets get highPaddingHorizontal =>
-      EdgeInsets.symmetric(horizontal: highSize);
-  static EdgeInsets get midPaddingHorizontal =>
-      EdgeInsets.symmetric(horizontal: midSize);
-  static EdgeInsets get lowPaddingHorizontal =>
-      EdgeInsets.symmetric(horizontal: lowSize);
-  static EdgeInsets get zeroPaddingHorizontal =>
-      const EdgeInsets.symmetric(horizontal: 0);
+  static EdgeInsets get highPaddingHorizontal => EdgeInsets.symmetric(horizontal: highSize);
+  static EdgeInsets get midPaddingHorizontal => EdgeInsets.symmetric(horizontal: midSize);
+  static EdgeInsets get lowPaddingHorizontal => EdgeInsets.symmetric(horizontal: lowSize);
+  static EdgeInsets get zeroPaddingHorizontal => const EdgeInsets.symmetric(horizontal: 0);
 
   static EdgeInsets get midPaddingOnlyTop => EdgeInsets.only(top: midSize);
   static EdgeInsets get highPaddingOnlyTop => EdgeInsets.only(top: highSize);

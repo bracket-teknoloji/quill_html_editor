@@ -198,7 +198,6 @@ class YetkiController {
   // bool get siparisSSISk1YuzdeSor => isTrue(paramModel?.alisSatirIsk1YuzdeSor, skipAdmin: true);
 
   //! FİNANS
-
   bool referansKodu(String? hesapTipi) {
     if ((paramModel?.muhasebeEntegre ?? false) && (paramModel?.muhFislerdeRefKodSorulsun ?? false) && hesapTipi != null) {
       if (hesapTipi == "A") {
@@ -220,4 +219,14 @@ class YetkiController {
   //* Kasa
   bool get kasaListesi => isTrue(yetkiModel?.finansKasaListesi);
   bool get finansKasaIslemleriSil => isTrue(yetkiModel?.finansKasaIslemleriSil);
+
+  //! SEVKİYAT
+
+
+  bool get sevkiyatDigerSekmesiGoster => StaticVariables.instance.isSatisFaturasi ? satisFatDigerSekmesiGelsin : satisIrsDigerSekmesiGelsin;
+
+
+  bool get satisFatDigerSekmesiGelsin => isTrue(yetkiModel?.sevkiyatSatisFatDigerSekmesiGoster);
+  bool get satisIrsDigerSekmesiGelsin => isTrue(yetkiModel?.sevkiyatSatisIrsDigerSekmesiGoster);
+  // bool get satisFatEkle => isTrue(yetkiModel?.ekle);
 }

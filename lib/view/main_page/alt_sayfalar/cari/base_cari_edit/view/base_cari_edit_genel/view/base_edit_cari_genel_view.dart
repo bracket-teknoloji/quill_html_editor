@@ -41,7 +41,6 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   CariSaveRequestModel requestModel = CariSaveRequestModel.instance;
   FocusNode focusNode = FocusNode();
-  List<CariDetayModel>? cariDetayListesi;
   late final TextEditingController kodController;
   late final TextEditingController cariTipiController;
   late final TextEditingController adController;
@@ -63,37 +62,25 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
 
   @override
   void initState() {
-    // StaticVariables.instance.cariKartiGenelFormKey.currentState?.activate();
-    if (widget.model?.baseEditEnum != BaseEditEnum.ekle &&
-        widget.model?.baseEditEnum != BaseEditEnum.kopyala) {
-      getCariDetay(model?.cariKodu ?? "");
-    }
+    enabled = widget.model?.baseEditEnum != BaseEditEnum.goruntule;
+    // StaticVariables.instance.cariKartiGenelFormKey.currentState?.activate();kodController = TextEditingController(text: viewModel.model?.cariKodu);
     viewModel.setModel(model);
-    viewModel.changeIsSahisFirmasi(model?.sahisFirmasiMi ?? false);
-    viewModel.changeIsDovizli(model?.dovizli ?? false);
-
     kodController = TextEditingController(text: viewModel.model?.cariKodu);
-    cariTipiController =
-        TextEditingController(text: viewModel.model?.cariTipAciklama);
+    cariTipiController = TextEditingController(text: viewModel.model?.cariTipAciklama);
     adController = TextEditingController(text: viewModel.model?.cariAdi);
     ulkeController = TextEditingController(text: viewModel.model?.ulkeAdi);
     ilController = TextEditingController(text: viewModel.model?.cariIl);
     ilceCOntroller = TextEditingController(text: viewModel.model?.cariIlce);
-    postaKoduController =
-        TextEditingController(text: viewModel.model?.postakodu);
+    postaKoduController = TextEditingController(text: viewModel.model?.postakodu);
     adresController = TextEditingController(text: viewModel.model?.cariAdres);
     telefonController = TextEditingController(text: viewModel.model?.cariTel);
     ePostaController = TextEditingController(text: viewModel.model?.email);
     webController = TextEditingController(text: viewModel.model?.web);
-    vergiDairesiController =
-        TextEditingController(text: viewModel.model?.vergiDairesi);
-    vergiNoController =
-        TextEditingController(text: viewModel.model?.vergiNumarasi);
+    vergiDairesiController = TextEditingController(text: viewModel.model?.vergiDairesi);
+    vergiNoController = TextEditingController(text: viewModel.model?.vergiNumarasi);
     dovizController = TextEditingController(text: viewModel.model?.dovizAdi);
-    plasiyerController =
-        TextEditingController(text: viewModel.model?.plasiyerAciklama);
-    vadeGunuController = TextEditingController(
-        text: viewModel.model?.vadeGunu?.toStringIfNotNull ?? "");
+    plasiyerController = TextEditingController(text: viewModel.model?.plasiyerAciklama);
+    vadeGunuController = TextEditingController(text: viewModel.model?.vadeGunu?.toStringIfNotNull ?? "");
     odemeTipiController = TextEditingController(
         text: viewModel.model?.odemeTipi == "0"
             ? "Peşin"
@@ -104,9 +91,14 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                     : viewModel.model?.odemeTipi == "3"
                         ? "Senet"
                         : "");
-    enabled = widget.model?.baseEditEnum != BaseEditEnum.goruntule;
-    CariListesiModel.instance.subeKodu ??= 0;
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    // if (widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != BaseEditEnum.kopyala) {
+    //   getCariDetay(model?.cariKodu ?? "");
+    // }
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      viewModel.changeIsSahisFirmasi(model?.sahisFirmasiMi ?? false);
+      viewModel.changeIsDovizli(model?.dovizli ?? false);
+
+      CariListesiModel.instance.subeKodu ??= 0;
       if (model?.cariKodu == null || model?.cariKodu == "") {
         viewModel.changeSiradakiKod(widget.model?.siradakiKod);
         kodController.text = widget.model?.siradakiKod ?? "";
@@ -150,11 +142,8 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
             Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Expanded(
                   child: CustomTextField(
-                enabled: enabled &&
-                    (widget.model?.baseEditEnum == BaseEditEnum.ekle ||
-                        widget.model?.baseEditEnum == BaseEditEnum.kopyala),
-                readOnly: widget.model?.baseEditEnum != BaseEditEnum.ekle &&
-                    widget.model?.baseEditEnum != BaseEditEnum.kopyala,
+                enabled: enabled && (widget.model?.baseEditEnum == BaseEditEnum.ekle || widget.model?.baseEditEnum == BaseEditEnum.kopyala),
+                readOnly: widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != BaseEditEnum.kopyala,
                 isMust: true,
                 labelText: "Kodu",
                 controller: kodController,
@@ -162,9 +151,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                   children: [
                     IconButton(
                         onPressed: () async {
-                          var result = await Get.toNamed(
-                              "/mainPage/cariListesi",
-                              arguments: true);
+                          var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                           if (result != null && result is CariListesiModel) {
                             kodController.text = result.cariKodu ?? "";
                             viewModel.model?.cariKodu = result.cariKodu ?? "";
@@ -175,14 +162,12 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                         icon: const Icon(Icons.more_horiz_outlined)),
                     IconButton(
                         onPressed: () async {
-                          String? kod = await CariNetworkManager.getSiradakiKod(
-                              kod: kodController.text);
+                          String? kod = await CariNetworkManager.getSiradakiKod(kod: kodController.text);
                           kodController.text = kod ?? "";
                           viewModel.model?.cariKodu = kod;
                           viewModel.changeModel(viewModel.model);
                         },
-                        icon:
-                            const Icon(Icons.format_list_numbered_rtl_outlined))
+                        icon: const Icon(Icons.format_list_numbered_rtl_outlined))
                   ].map((e) => SizedBox(width: 35, child: e)).toList(),
                 ),
               )),
@@ -191,59 +176,20 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                 enabled: enabled,
                 isMust: true,
                 labelText: "Cari Tipi",
-                valueWidget: Observer(
-                    builder: (_) => Text(viewModel.model?.cariTip ?? "")),
+                valueWidget: Observer(builder: (_) => Text(viewModel.model?.cariTip ?? "")),
                 readOnly: true,
                 controller: cariTipiController,
                 suffixMore: true,
                 onTap: () async {
-                  var result = await bottomSheetDialogManager
-                      .showBottomSheetDialog(context,
-                          title: "Cari Tipi",
-                          children: [
-                        BottomSheetModel(
-                            title: "Alıcı",
-                            value: "A",
-                            onTap: () => Get.back(
-                                result: BaseBottomSheetResponseModel(
-                                    title: "Alıcı", value: "A"))),
-                        BottomSheetModel(
-                            title: "Satıcı",
-                            value: "S",
-                            onTap: () => Get.back(
-                                result: BaseBottomSheetResponseModel(
-                                    title: "Satıcı", value: "S"))),
-                        BottomSheetModel(
-                            title: "Toptancı",
-                            value: "T",
-                            onTap: () => Get.back(
-                                result: BaseBottomSheetResponseModel(
-                                    title: "Toptancı", value: "T"))),
-                        BottomSheetModel(
-                            title: "Kefil",
-                            value: "K",
-                            onTap: () => Get.back(
-                                result: BaseBottomSheetResponseModel(
-                                    title: "Kefil", value: "K"))),
-                        BottomSheetModel(
-                            title: "Müstahsil",
-                            value: "M",
-                            onTap: () => Get.back(
-                                result: BaseBottomSheetResponseModel(
-                                    title: "Müstahsil", value: "M"))),
-                        BottomSheetModel(
-                            title: "Diğer",
-                            value: "D",
-                            onTap: () => Get.back(
-                                result: BaseBottomSheetResponseModel(
-                                    title: "Diğer", value: "D"))),
-                        BottomSheetModel(
-                            title: "Komisyoncu",
-                            value: "I",
-                            onTap: () => Get.back(
-                                result: BaseBottomSheetResponseModel(
-                                    title: "Komisyoncu", value: "I"))),
-                      ]);
+                  var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Cari Tipi", children: [
+                    BottomSheetModel(title: "Alıcı", value: "A", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Alıcı", value: "A"))),
+                    BottomSheetModel(title: "Satıcı", value: "S", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Satıcı", value: "S"))),
+                    BottomSheetModel(title: "Toptancı", value: "T", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Toptancı", value: "T"))),
+                    BottomSheetModel(title: "Kefil", value: "K", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Kefil", value: "K"))),
+                    BottomSheetModel(title: "Müstahsil", value: "M", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Müstahsil", value: "M"))),
+                    BottomSheetModel(title: "Diğer", value: "D", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Diğer", value: "D"))),
+                    BottomSheetModel(title: "Komisyoncu", value: "I", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Komisyoncu", value: "I"))),
+                  ]);
                   if (result != null) {
                     cariTipiController.text = result.title;
                     viewModel.changeCariTipi(result);
@@ -268,28 +214,22 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
               enabled: enabled,
               labelText: "Ülke",
               readOnly: true,
-              valueWidget: Observer(
-                  builder: (_) => Text(viewModel.model?.ulkeKodu ?? "")),
+              valueWidget: Observer(builder: (_) => Text(viewModel.model?.ulkeKodu ?? "")),
               controller: ulkeController,
               suffixMore: true,
               onClear: () => viewModel.changeUlke(null),
               onTap: () async {
                 ulkeler ??= await getUlkeData();
                 if (mounted) {
-                  BaseBottomSheetResponseModel? result =
-                      await bottomSheetDialogManager.showBottomSheetDialog(
-                          context,
-                          title: "Ülkeler",
-                          children: List.generate(
-                              ulkeler!.length,
-                              (index) => BottomSheetModel(
-                                  title: ulkeler?[index].ulkeAdi ?? "",
-                                  value: ulkeler?[index].ulkeKodu,
-                                  description: ulkeler?[index].ulkeKodu,
-                                  onTap: () => Get.back(
-                                      result: BaseBottomSheetResponseModel(
-                                          title: ulkeler?[index].ulkeAdi,
-                                          value: ulkeler?[index].ulkeKodu)))));
+                  BaseBottomSheetResponseModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                      title: "Ülkeler",
+                      children: List.generate(
+                          ulkeler!.length,
+                          (index) => BottomSheetModel(
+                              title: ulkeler?[index].ulkeAdi ?? "",
+                              value: ulkeler?[index].ulkeKodu,
+                              description: ulkeler?[index].ulkeKodu,
+                              onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: ulkeler?[index].ulkeAdi, value: ulkeler?[index].ulkeKodu)))));
                   if (result != null) {
                     ulkeController.text = result.title ?? "";
                     viewModel.changeUlke(result);
@@ -383,27 +323,17 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                 enabled: enabled,
                 labelText: "Plasiyer",
                 readOnly: true,
-                valueWidget: Observer(
-                    builder: (_) => Text(viewModel.model?.plasiyerKodu ?? "")),
+                valueWidget: Observer(builder: (_) => Text(viewModel.model?.plasiyerKodu ?? "")),
                 controller: plasiyerController,
                 suffixMore: true,
                 onClear: () {
                   viewModel.changePlasiyer(null);
                 },
                 onTap: () async {
-                  PlasiyerList? result = await bottomSheetDialogManager
-                      .showBottomSheetDialog(context,
-                          title: "Plasiyer",
-                          children: List.generate(
-                              anaVeri?.paramModel?.plasiyerList?.length ?? 0,
-                              (index) => BottomSheetModel(
-                                  title: anaVeri
-                                          ?.paramModel
-                                          ?.plasiyerList?[index]
-                                          .plasiyerAciklama ??
-                                      "",
-                                  value: anaVeri
-                                      ?.paramModel?.plasiyerList?[index])));
+                  PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                      title: "Plasiyer",
+                      children: List.generate(anaVeri?.paramModel?.plasiyerList?.length ?? 0,
+                          (index) => BottomSheetModel(title: anaVeri?.paramModel?.plasiyerList?[index].plasiyerAciklama ?? "", value: anaVeri?.paramModel?.plasiyerList?[index])));
                   if (result != null) {
                     plasiyerController.text = result.plasiyerAciklama ?? "";
                     viewModel.changePlasiyer(result);
@@ -431,35 +361,26 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                     child: CustomTextField(
                       enabled: enabled,
                       labelText: "Döviz Tipi",
-                      valueText: viewModel.model?.dovizKodu == null
-                          ? ""
-                          : viewModel.model?.dovizKodu.toString(),
+                      valueText: viewModel.model?.dovizKodu == null ? "" : viewModel.model?.dovizKodu.toString(),
                       controller: dovizController,
                       readOnly: true,
                       suffix: IconButton(
                           onPressed: () async {
                             var dovizList = anaVeri?.paramModel?.dovizList;
-                            await bottomSheetDialogManager
-                                .showBottomSheetDialog(context,
-                                    title: "Döviz Tipi",
-                                    children: List.generate(
-                                        dovizList!.length,
-                                        (index) => BottomSheetModel(
-                                            title: dovizList[index].isim!,
-                                            value: dovizList[index]
-                                                .dovizKodu
-                                                .toString(),
-                                            onTap: () {
-                                              dovizController.text =
-                                                  dovizList[index].isim ?? "";
-                                              viewModel.model?.dovizAdi =
-                                                  dovizList[index].isim;
-                                              viewModel.model?.dovizKodu =
-                                                  dovizList[index].dovizKodu;
-                                              viewModel
-                                                  .changeModel(viewModel.model);
-                                              Get.back();
-                                            })));
+                            await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                title: "Döviz Tipi",
+                                children: List.generate(
+                                    dovizList!.length,
+                                    (index) => BottomSheetModel(
+                                        title: dovizList[index].isim!,
+                                        value: dovizList[index].dovizKodu.toString(),
+                                        onTap: () {
+                                          dovizController.text = dovizList[index].isim ?? "";
+                                          viewModel.model?.dovizAdi = dovizList[index].isim;
+                                          viewModel.model?.dovizKodu = dovizList[index].dovizKodu;
+                                          viewModel.changeModel(viewModel.model);
+                                          Get.back();
+                                        })));
                           },
                           icon: const Icon(Icons.more_horiz_outlined)),
                     ))),
@@ -484,38 +405,18 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                   readOnly: true,
                   labelText: "Ödeme Tipi",
                   controller: odemeTipiController,
-                  valueWidget: Observer(
-                      builder: (_) => Text(viewModel.model?.odemeTipi ?? "")),
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model?.odemeTipi ?? "")),
                   suffixMore: true,
                   onClear: () {
                     viewModel.changeOdemeTipi(null);
                     viewModel.changeModel(viewModel.model?..odemeTipi = null);
                   },
                   onTap: () async {
-                    BaseBottomSheetResponseModel? result =
-                        await bottomSheetDialogManager
-                            .showRadioBottomSheetDialog(context,
-                                title: "Ödeme Tipi",
-                                children: [
-                          BottomSheetModel(
-                              title: "Nakit",
-                              value: "0",
-                              onTap: () => Get.back(
-                                  result: BaseBottomSheetResponseModel(
-                                      title: "Nakit", value: "0"))),
-                          BottomSheetModel(
-                              title: "Havale",
-                              value: "1",
-                              onTap: () => Get.back(
-                                  result: BaseBottomSheetResponseModel(
-                                      title: "Havale", value: "1"))),
-                          BottomSheetModel(
-                              title: "Çek",
-                              value: "2",
-                              onTap: () => Get.back(
-                                  result: BaseBottomSheetResponseModel(
-                                      title: "Çek", value: "2"))),
-                        ]);
+                    BaseBottomSheetResponseModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Ödeme Tipi", children: [
+                      BottomSheetModel(title: "Nakit", value: "0", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Nakit", value: "0"))),
+                      BottomSheetModel(title: "Havale", value: "1", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Havale", value: "1"))),
+                      BottomSheetModel(title: "Çek", value: "2", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Çek", value: "2"))),
+                    ]);
                     if (result != null) {
                       odemeTipiController.text = result.title ?? "";
                       viewModel.changeOdemeTipi(result.value);
@@ -531,26 +432,30 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
   }
 
   Future<List<UlkeModel>?> getUlkeData() async {
-    var response = await networkManager.dioGet<UlkeModel>(
-        path: ApiUrls.getUlkeler,
-        bodyModel: UlkeModel(),
-        addCKey: true,
-        addSirketBilgileri: true,
-        addTokenKey: true);
+    var response = await networkManager.dioGet<UlkeModel>(path: ApiUrls.getUlkeler, bodyModel: UlkeModel(), addCKey: true, addSirketBilgileri: true, addTokenKey: true);
     return response.data?.map((e) => e as UlkeModel).toList().cast<UlkeModel>();
   }
 
-  Future<void> getCariDetay(String query) async {
-    var result = await networkManager.dioGet<CariDetayModel>(
-        path: ApiUrls.getCariDetay,
-        bodyModel: CariDetayModel(),
-        queryParameters: {"CariKodu": query});
-    if (result.data != null && result.data!.isNotEmpty) {
-      CariDetayModel.setInstance(result.data[0]);
-      cariDetayListesi = result.data
-          .map((e) => e as CariDetayModel)
-          .toList()
-          .cast<CariDetayModel>();
-    }
+  void getCariDetay(String query) {
+    // var result = await networkManager.dioGet<CariDetayModel>(path: ApiUrls.getCariDetay, bodyModel: CariDetayModel(),showLoading: true, queryParameters: {"CariKodu": query});
+    // if (result.data != null && result.data!.isNotEmpty) {
+    //   CariDetayModel.setInstance(result.data[0]);
+    CariList? model = CariDetayModel.instance.cariList?[0];
+    cariTipiController.text = model?.cariTipAciklama ?? "";
+    adController.text = model?.cariAdi ?? "";
+    ulkeController.text = model?.ulkeAdi ?? "";
+    ilController.text = model?.cariIl ?? "";
+    ilceCOntroller.text = model?.cariIlce ?? "";
+    postaKoduController.text = model?.postakodu ?? "";
+    adresController.text = model?.cariAdres ?? "";
+    telefonController.text = model?.cariTel ?? "";
+    ePostaController.text = model?.email ?? "";
+    webController.text = model?.web ?? "";
+    vergiDairesiController.text = model?.vergiDairesi ?? "";
+    vergiNoController.text = model?.vergiNumarasi ?? "";
+    // dovizController.text = model?.dov ?? "";
+    plasiyerController.text = model?.plasiyerAciklama ?? "";
+    vadeGunuController.text = model?.vadeGunu.toStringIfNotNull ?? "";
+    odemeTipiController.text = model?.odemeTipi ?? "";
   }
 }

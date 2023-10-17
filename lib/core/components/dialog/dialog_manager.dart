@@ -37,6 +37,12 @@ class DialogManager {
   ///
   /// [Dialog Controllers] dialogların kontrolü için kullanılır.
   ///
+  ///
+  void showColorfulSnackBar(String message, Color color) {
+    hideSnackBar;
+    ScaffoldMessenger.of(context).showSnackBar(_snackBarColorful(message, color));
+  }
+
   void showErrorSnackBar(String message) {
     hideSnackBar;
     ScaffoldMessenger.of(context).showSnackBar(_snackBarError(message));
@@ -291,6 +297,8 @@ class DialogManager {
       ],
     );
   }
+
+  SnackBar _snackBarColorful(String message, Color color) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: color);
 
   SnackBar _snackBarError(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: Colors.red);
 

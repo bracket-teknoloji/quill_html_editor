@@ -16,6 +16,7 @@ class _ColorfulBadgeState extends State<ColorfulBadge> {
   @override
   Widget build(BuildContext context) {
     return Badge(
+      textStyle: const TextStyle(fontSize: 10),
       label: widget.label,
       textColor: widget.badgeColorEnum?.getFontColor,
       backgroundColor: widget.badgeColorEnum?.getColor,

@@ -5,7 +5,7 @@ import "../../init/theme/app_theme_dark.dart";
 
 enum BadgeColorEnum { dovizli, kapali, cari, fatura, tamamlanmamis, merkezeGonderildi, seri, esYap, konum, kilitli, irsaliye, tipAciklama, karmaKoli, eFatura, basarili, taslak, uyari, hata }
 
-extension BadgeColorExtensions on BadgeColorEnum {
+extension BadgeColorExtensions on BadgeColorEnum? {
   Color get getColor {
     switch (this) {
       case BadgeColorEnum.eFatura:

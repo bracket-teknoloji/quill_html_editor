@@ -36,17 +36,20 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
   ObservableMap<String, dynamic>? paramData;
 
   @observable
+  String? errorText;
+
+  @observable
   bool dahaVarMi = true;
 
   @observable
   bool isScrolledDown = false;
-  
+
   @observable
   bool searchBar = false;
 
   @observable
   String arama = "";
-  
+
   @observable
   List? cariListesi;
 
@@ -61,7 +64,6 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
 
   @observable
   CariRequestModel cariRequestModel = CariRequestModel(eFaturaGoster: true, siralama: "AZ", sayfa: 1, menuKodu: "CARI_CARI", filterText: "");
-
 
   //* Computed
 
@@ -225,6 +227,14 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
       body["Kod"] = "";
     }
     final result = await networkManager.dioGet<CariListesiModel>(path: ApiUrls.getCariler, queryParameters: body, bodyModel: CariListesiModel());
+    if (result.success != true) {
+      errorText = result.message;
+      changeCariListesi([]);
+      return;
+    } else {
+      errorText = null;
+    }
+
     if (result.data is List) {
       if (cariRequestModel.sayfa == 1) {
         paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();

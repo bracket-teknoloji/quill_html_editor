@@ -186,6 +186,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                                     title: const Text("Vade"), value: viewModel.ekstraAlanlarMap["VADE"] ?? false, onChanged: (value) => viewModel.changeEkstraAlanlarMap("VADE", value))),
                           ],
                         ));
+                    viewModel.resetPage();
                   }),
             ]);
           },
@@ -195,14 +196,13 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
     );
   }
 
-  Observer fab() => Observer(builder: (_) {
-        return Visibility(
-          child: CustomFloatingActionButton(
-            isScrolledDown: viewModel.isScrolledDown,
-            onPressed: () {},
-          ),
-        );
-      });
+  Observer fab() => Observer(
+      builder: (_) => Visibility(
+            child: CustomFloatingActionButton(
+              isScrolledDown: viewModel.isScrolledDown,
+              onPressed: () {},
+            ),
+          ).yetkiVarMi(viewModel.faturaList.ext.isNotNullOrEmpty));
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
         onRefresh: () async => viewModel.resetPage(),
@@ -223,7 +223,8 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                           return const Center(child: CircularProgressIndicator.adaptive());
                         } else {
                           BaseSiparisEditModel item = viewModel.faturaList?[index] ?? BaseSiparisEditModel();
-                          return FaturalarCard(model: item);
+                          return FaturalarCard(
+                              model: item, showEkAciklama: viewModel.ekstraAlanlarMap["EK"], showMiktar: viewModel.ekstraAlanlarMap["MİK"], showVade: viewModel.ekstraAlanlarMap["VADE"]);
                         }
                       },
                     );
@@ -564,7 +565,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                       },
                       child: const Text("Kaydet"))),
             ],
-          )
+          ).paddingAll(UIHelper.lowSize)
         ],
       ).paddingAll(UIHelper.lowSize));
 
