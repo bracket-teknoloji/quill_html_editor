@@ -189,22 +189,24 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
             ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
           ),
           Text(widget.model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
-          Wrap(
-            // mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: WrapCrossAlignment.start,
-            children: [
-              Text("Tipi: ${widget.model.yurticiMi ? "Yurtiçi" : "Yurtdışı"}"),
-              Text("Kalem Adedi: ${widget.model.kalemAdedi ?? ""}"),
-              Text("Cari Kodu: ${widget.model.cariKodu ?? ""}"),
-              Text("Koşul: ${widget.model.kosulKodu ?? ""}").yetkiVarMi(widget.model.kosulKodu != null),
-              Text("Plasiyer: ${widget.model.plasiyerAciklama ?? ""}", overflow: TextOverflow.ellipsis, maxLines: 1),
-              Text("Vade Günü: ${widget.model.vadeGunu ?? "0"}").yetkiVarMi(widget.showVade == true),
-              Text("Döviz Toplamı: ${widget.model.dovizTutari ?? ""} ${widget.model.dovizAdi ?? ""}").yetkiVarMi(widget.model.dovizTutari != null && widget.model.dovizAdi != null),
-              Text("KDV: ${widget.model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-              Text("Ara Toplam: ${widget.model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-              Text("Genel Toplam: ${widget.model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-            ].whereType<Widget>().map((e) => e is SizedBox ? null : SizedBox(width: width * 0.4, child: e)).whereType<Widget>().toList(),
-          ),
+          LayoutBuilder(builder: (context, constrains) {
+            return Wrap(
+              // mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: WrapCrossAlignment.start,
+              children: [
+                Text("Tipi: ${widget.model.yurticiMi ? "Yurtiçi" : "Yurtdışı"}"),
+                Text("Kalem Adedi: ${widget.model.kalemAdedi ?? ""}"),
+                Text("Cari Kodu: ${widget.model.cariKodu ?? ""}"),
+                Text("Koşul: ${widget.model.kosulKodu ?? ""}").yetkiVarMi(widget.model.kosulKodu != null),
+                Text("Plasiyer: ${widget.model.plasiyerAciklama ?? ""}", overflow: TextOverflow.ellipsis, maxLines: 1),
+                Text("Vade Günü: ${widget.model.vadeGunu ?? "0"}").yetkiVarMi(widget.showVade == true),
+                Text("Döviz Toplamı: ${widget.model.dovizTutari ?? ""} ${widget.model.dovizAdi ?? ""}").yetkiVarMi(widget.model.dovizTutari != null && widget.model.dovizAdi != null),
+                Text("KDV: ${widget.model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                Text("Ara Toplam: ${widget.model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                Text("Genel Toplam: ${widget.model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+              ].whereType<Widget>().map((e) => e is SizedBox ? null : SizedBox(width: constrains.maxWidth / 2, child: e)).whereType<Widget>().toList(),
+            );
+          }),
           // Row(
           //   crossAxisAlignment: CrossAxisAlignment.start,
           //   children: [
@@ -233,7 +235,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
           const Divider(
             indent: 0,
             endIndent: 0,
-          ).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi(widget.showMiktar == true || widget.showVade == true),
+          ).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi(widget.showMiktar == true),
           // Text("Miktar: ${widget.model.miktar?.commaSeparatedWithFixedDigits ?? ""}").yetkiVarMi(widget.showMiktar == true),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
