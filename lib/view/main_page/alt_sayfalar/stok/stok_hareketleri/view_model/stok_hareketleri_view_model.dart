@@ -57,7 +57,7 @@ abstract class _StokHareketleriViewModelBase with Store {
     "Açık Fatura": "J",
     "Muhtelif Fatura": "K",
     "İade Fatura": "L",
-    "Zayi İrade Fatura": "M",
+    "Zayi İade Fatura": "M",
   };
 
   @observable

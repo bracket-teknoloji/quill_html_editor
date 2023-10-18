@@ -23,11 +23,10 @@ class YetkiController {
   /// Bunu yapma sebebim `null` gelen verilerin admin sebepli mi yoksa yetki sebepli mi olduğunu anlamak
   ///
   /// ! EĞER ParamModel'den geliyorsa skipAdmin: true yapılmalı, YetkiModel'den geliyorsa skipAdmin: false kalmalı
-  bool isTrue(bool? value, {bool skipAdmin = false}) {
-    return (value ?? false) || (skipAdmin ? false : (userModel?.adminMi ?? false));
-  }
+  bool isTrue(bool? value, {bool skipAdmin = false}) => (value ?? false) || (skipAdmin ? false : (userModel?.adminMi ?? false));
 
   //! GENEL
+
   bool get projeUygulamasiAcikMi => isTrue(paramModel?.projeUygulamasiAcik, skipAdmin: true);
   bool get plasiyerUygulamasiAcikMi => isTrue(paramModel?.plasiyerUygulamasi, skipAdmin: true);
   bool get cariRapStokSatisOzeti => isTrue(yetkiModel?.cariRapStokSatisOzeti, skipAdmin: true);
@@ -167,9 +166,9 @@ class YetkiController {
   bool siparisMSDegismeyecekAlanMi(String alan) => !isTrue(yetkiModel?.siparisMusteriSiparisiDegismeyecekAlanlar?.contains(alan), skipAdmin: true);
 
   ///? Eğer içeriyorsa gösterilecek (Sipariş için)
-  bool siparisMSAciklamaAlanlari(int? index) =>
-  (index == null ? isTrue(yetkiModel?.siparisMusteriSiparisiAciklamaAlanlari?.ext.isNotNullOrEmpty, skipAdmin: true) :
-      isTrue(isTrue((yetkiModel?.siparisMusteriSiparisiAciklamaAlanlari?.contains(index) ?? false), skipAdmin: true)) && (paramModel?.satisEkAciklamalarAktif ?? false));
+  bool siparisMSAciklamaAlanlari(int? index) => (index == null
+      ? isTrue(yetkiModel?.siparisMusteriSiparisiAciklamaAlanlari?.ext.isNotNullOrEmpty, skipAdmin: true)
+      : isTrue(isTrue((yetkiModel?.siparisMusteriSiparisiAciklamaAlanlari?.contains(index) ?? false), skipAdmin: true)) && (paramModel?.satisEkAciklamalarAktif ?? false));
 
   ///? Eğer içeriyorsa gösterilecek (Kalemler İçin)
   bool siparisMSSatirAciklamaAlanlari(int? index) => index == null
@@ -223,12 +222,12 @@ class YetkiController {
 
   //! SEVKİYAT
 
-
   bool get sevkiyatDigerSekmesiGoster => StaticVariables.instance.isSatisFaturasi ? satisFatDigerSekmesiGelsin : satisIrsDigerSekmesiGelsin;
 
+  // bool sevkiyatIrsAciklamaAlanlari(int? index) => isTrue(!isTrue((yetkiModel?.sevkiyatSatisFatGizlenecekAlanlar?.contains(index) ?? false), skipAdmin: true));
+  bool sevkiyatIrsAciklamaAlanlari(String? index) => isTrue(!isTrue((yetkiModel?.sevkiyatSatisFatGizlenecekAlanlar?.contains(index) ?? false), skipAdmin: true));
 
-  bool sevkiyatIrsAciklamaAlanlari(int? index) =>
-      isTrue(isTrue((yetkiModel?.sevkiyatSatisIrsaliyesiGizlenecekAlanlar?.contains(index) ?? false), skipAdmin: true) && (paramModel?.satisEkAciklamalarAktif ?? false));
+  bool sevkiyatIrsDegistirilmeyecekAlanlar(String? index) => isTrue(!isTrue((yetkiModel?.sevkiyatSatisFatDegismeyecekAlanlar?.contains(index) ?? false), skipAdmin: true));
 
   bool get satisFatDigerSekmesiGelsin => isTrue(yetkiModel?.sevkiyatSatisFatDigerSekmesiGoster);
   bool get satisIrsDigerSekmesiGelsin => isTrue(yetkiModel?.sevkiyatSatisIrsDigerSekmesiGoster);

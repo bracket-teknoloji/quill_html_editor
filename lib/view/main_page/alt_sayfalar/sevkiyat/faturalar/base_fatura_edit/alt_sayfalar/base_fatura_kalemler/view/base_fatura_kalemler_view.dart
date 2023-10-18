@@ -2,38 +2,37 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/base_edit_model.dart";
+import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/components/badge/colorful_badge.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/constants/enum/badge_color_enum.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/core/constants/extensions/model_extensions.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
+import "package:picker/core/constants/static_variables/static_variables.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/view/main_page/alt_sayfalar/sevkiyat/faturalar/base_fatura_edit/alt_sayfalar/base_fatura_kalemler/view_model/base_fatura_kalemler_view_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
-import "../../../../../../../../core/base/model/base_edit_model.dart";
-import "../../../../../../../../core/base/state/base_state.dart";
-import "../../../../../../../../core/components/badge/colorful_badge.dart";
-import "../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "../../../../../../../../core/components/textfield/custom_text_field.dart";
-import "../../../../../../../../core/constants/enum/badge_color_enum.dart";
-import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
-import "../../../../../../../../core/constants/extensions/list_extensions.dart";
-import "../../../../../../../../core/constants/extensions/model_extensions.dart";
-import "../../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
-import "../../../../../../../../core/constants/ondalik_utils.dart";
-import "../../../../../../../../core/constants/static_variables/static_variables.dart";
-import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
-import "../../../../../stok/stok_liste/model/stok_listesi_model.dart";
-import "../../../../siparisler/model/siparis_edit_request_model.dart";
-import "../../../model/base_siparis_edit_model.dart";
-import "../view_model/base_siparis_kalemler_view_model.dart";
-
-class BaseSiparisKalemlerView extends StatefulWidget {
+class BaseFaturaKalemlerView extends StatefulWidget {
   final BaseEditModel<SiparisEditRequestModel> model;
   final bool? updater;
-  const BaseSiparisKalemlerView({super.key, required this.model, this.updater});
+  const BaseFaturaKalemlerView({super.key, required this.model, this.updater});
 
   @override
-  State<BaseSiparisKalemlerView> createState() => _BaseSiparisKalemlerViewState();
+  State<BaseFaturaKalemlerView> createState() => _BaseFaturaKalemlerViewState();
 }
 
-class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
+class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
-  BaseSiparisKalemlerViewModel viewModel = BaseSiparisKalemlerViewModel();
+  BaseFaturaKalemlerViewModel viewModel = BaseFaturaKalemlerViewModel();
   late final TextEditingController _searchTextController;
   @override
   void initState() {
@@ -240,7 +239,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
           BottomSheetModel(
               title: "Sil",
               iconWidget: Icons.delete_outline_outlined,
-              onTap: () { 
+              onTap: () {
                 Get.back();
                 return dialogManager.showAreYouSureDialog(() {
                   viewModel.removeAtKalemList(index);

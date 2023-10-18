@@ -21,6 +21,7 @@ import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/sevkiyat/faturalar/base_fatura_edit/alt_sayfalar/base_fatura_diger/view/base_fatura_diger_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sevkiyat/faturalar/base_fatura_edit/alt_sayfalar/base_fatura_genel/view/base_fatura_genel_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/sevkiyat/faturalar/base_fatura_edit/alt_sayfalar/base_fatura_kalemler/view/base_fatura_kalemler_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sevkiyat/faturalar/base_fatura_edit/alt_sayfalar/base_fatura_toplamlar/view/base_fatura_toplamlar_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sevkiyat/faturalar/base_fatura_edit/view_model/base_fatura_edit_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -248,7 +249,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                             child: CircularProgressIndicator.adaptive(),
                           )),
                 BaseFaturaDigerView(model: model).yetkiVarMi(yetkiController.sevkiyatDigerSekmesiGoster),
-                Container(),
+                BaseFaturaKalemlerView(model: model),
                 BaseFaturaToplamlarView(model: model),
               ].where((element) => element is! SizedBox).toList().nullCheckWithGeneric,
             ),

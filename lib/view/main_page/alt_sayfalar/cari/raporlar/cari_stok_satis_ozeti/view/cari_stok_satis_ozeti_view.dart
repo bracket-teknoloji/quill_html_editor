@@ -94,9 +94,9 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
               onPressed: () async {
                 await bottomSheetDialogManager.showBottomSheetDialog(context,
                     title: "Filtrele",
-                    body: Column(children: [
+                    body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                       CustomWidgetWithLabel(
-                          text: "İrsaliyeler Dahil", isVertical: true, child: Observer(builder: (_) => Switch.adaptive(value: viewModel.irsDahil, onChanged: (value) => viewModel.setIrsDahil(value)))),
+                          text: "İrsaliyeler Dahil",onlyLabelpaddingLeft: UIHelper.lowSize, isVertical: true, child: Observer(builder: (_) => Switch.adaptive(value: viewModel.irsDahil, onChanged: (value) => viewModel.setIrsDahil(value)))),
                       Row(
                         children: [
                           Expanded(
@@ -131,19 +131,20 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                         children: [
                           Expanded(
                               child: ElevatedButton(
-                                      onPressed: () {
-                                        viewModel.deleteAllArr();
-                                        stokGrupKoduController.clear();
-                                        stokKodu1Controller.clear();
-                                        stokKodu2Controller.clear();
-                                        stokKodu3Controller.clear();
-                                        stokKodu4Controller.clear();
-                                        stokKodu5Controller.clear();
-                                        getData();
-                                        Get.back();
-                                      },
-                                      child: const Text("Temizle"))
-                                  .paddingOnly(right: UIHelper.lowSize)),
+                                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
+                                  onPressed: () {
+                                    viewModel.deleteAllArr();
+                                    stokGrupKoduController.clear();
+                                    stokKodu1Controller.clear();
+                                    stokKodu2Controller.clear();
+                                    stokKodu3Controller.clear();
+                                    stokKodu4Controller.clear();
+                                    stokKodu5Controller.clear();
+                                    getData();
+                                    Get.back();
+                                  },
+                                  child: const Text("Temizle"))),
+                          SizedBox(width: UIHelper.midSize),
                           Expanded(
                               child: ElevatedButton(
                                   onPressed: () {
@@ -152,8 +153,8 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                                   },
                                   child: const Text("Tamam"))),
                         ],
-                      )
-                    ]));
+                      ).paddingAll(UIHelper.lowSize)
+                    ]).paddingAll(UIHelper.lowSize));
               },
               icon: const Icon(Icons.filter_alt_outlined)),
         ],

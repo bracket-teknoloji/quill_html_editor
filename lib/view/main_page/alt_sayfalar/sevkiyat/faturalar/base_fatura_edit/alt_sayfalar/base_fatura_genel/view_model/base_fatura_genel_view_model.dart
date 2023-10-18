@@ -1,0 +1,59 @@
+import "package:mobx/mobx.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "package:picker/view/main_page/model/param_model.dart";
+
+part "base_fatura_genel_view_model.g.dart";
+
+class BaseFaturaGenelViewModel = _BaseFaturaGenelViewModelBase with _$BaseFaturaGenelViewModel;
+
+abstract class _BaseFaturaGenelViewModelBase with Store {
+  final Map<String, int> belgeTipi = {
+    "Kapalı": 1,
+    "Açık": 2,
+    "İade": 3,
+    "Zayi İade": 4,
+    "İhracat": 5,
+  };
+
+  @observable
+  bool kdvDahil = BaseSiparisEditModel.instance.kdvDahil == "E" ? true : false;
+
+  @observable
+  BaseSiparisEditModel model = BaseSiparisEditModel.instance;
+
+  @action
+  void changeKdvDahil(bool value) {
+    kdvDahil = value;
+    BaseSiparisEditModel.instance.kdvDahil = value ? "E" : "H";
+  }
+
+  @action
+  void setBelgeTipi(int? value) {
+    model = model.copyWith(belgeTipi: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setOzelKod2(String? value) {
+    model = model.copyWith(ozelKod2: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setPlasiyer(PlasiyerList? value) {
+    model = model.copyWith(plasiyerKodu: value?.plasiyerKodu, plasiyerAciklama: value?.plasiyerAciklama);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setTarih(DateTime? value) {
+    model = model.copyWith(tarih: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setTopluDepoKodu(int? value) {
+    model = model.copyWith(topluDepo: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+}

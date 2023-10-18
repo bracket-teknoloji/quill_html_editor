@@ -16,7 +16,6 @@ import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/mod
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
-
 class BaseFaturaToplamlarView extends StatefulWidget {
   final BaseEditModel<SiparisEditRequestModel> model;
   const BaseFaturaToplamlarView({super.key, required this.model});
@@ -39,6 +38,9 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
   late final TextEditingController ekMal3Controller;
   late final TextEditingController tevkifatController;
   late final TextEditingController vadeGunuController;
+  late final TextEditingController eFaturaSenaryoController;
+  late final TextEditingController istisnaKoduController;
+
   @override
   void initState() {
     initControllers();
@@ -304,6 +306,76 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
               )
             ],
           ),
+          Row(
+            children: [
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Ek Mal. 1",
+                  enabled: enable,
+                  controller: ekMal1Controller,
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                  onChanged: (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
+                ),
+              ).yetkiVarMi(!yetkiController.siparisMSEkMaliyet2AktifMi),
+              Expanded(
+                child: CustomTextField(
+                  labelText: yetkiController.siparisSatisEkMaliyet2Adi ?? "Tevkifat",
+                  enabled: enable,
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
+                  controller: tevkifatController,
+                  inputFormatter: [FilteringTextInputFormatter.allow(RegExp(r"[\d+\-\.]"))],
+                  suffix: IconButton(
+                      onPressed: () async {
+                        var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                            title: "Tevkifat Oranı",
+                            children: List.generate(
+                                viewModel.tevkifatMap.length, (index) => BottomSheetModel(title: viewModel.tevkifatMap.keys.toList()[index], value: viewModel.tevkifatMap.values.toList()[index])));
+                        if (result != null) {
+                          viewModel.setTevkifat(result);
+                          tevkifatController.text = (-result * viewModel.model.kdvTutari).toString();
+                        }
+                      },
+                      icon: const Icon(Icons.more_horiz_outlined)),
+                  // onChanged: (value) => model.ekMaliyet2Tutari = double.tryParse(value),
+                ),
+              ).yetkiVarMi(yetkiController.siparisEkMaliyet2GizlenecekMi),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: CustomTextField(
+                  labelText: "İstisna Kodu",
+                  enabled: enable,
+                  controller: istisnaKoduController,
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                  onChanged: (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
+                ),
+              ),
+              Expanded(
+                child: CustomTextField(
+                  labelText: "E-Fatura Senaryo",
+                  enabled: enable,
+                  isMust: true,
+                  controller: eFaturaSenaryoController,
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) => model.vadeGunu = int.tryParse(value),
+                  suffix: IconButton(
+                    onPressed: () async {
+                      final date = await showDatePicker(
+                          context: context, initialDate: model.vadeTarihi ?? DateTime.now(), firstDate: model.tarih ?? DateTime.now(), lastDate: DateTime.now().add(const Duration(days: 365)));
+                      if (date != null) {
+                        model.vadeGunu = ((model.tarih?.difference(date).inDays ?? 0) * -1);
+                        viewModel.setVadeTarihi(date);
+                        vadeGunuController.text = model.vadeGunu.toString();
+                      }
+                    },
+                    icon: const Icon(Icons.calendar_today),
+                  ),
+                ),
+              )
+            ],
+          ),
         ],
       ),
     );
@@ -316,6 +388,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
     iskontoTipi1Controller = TextEditingController(text: model.genisk1Tipi?.toStringIfNotNull);
     iskontoTipi2Controller = TextEditingController(text: model.genisk2Tipi?.toStringIfNotNull);
     iskontoTipi3Controller = TextEditingController(text: model.genisk3Tipi?.toStringIfNotNull);
+
     ekMal1Controller = TextEditingController(text: model.ekMaliyet1Tutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
     tevkifatController = TextEditingController(text: model.ekMaliyet2Tutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
     ekMal3Controller = TextEditingController(text: model.ekMaliyet3Tutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
@@ -332,6 +405,8 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
       viewModel.setVadeTarihi(DateTime.now());
     }
     vadeGunuController = TextEditingController(text: model.vadeGunu.toStringIfNotNull ?? (model.vadeTarihi?.difference(DateTime.now()))?.inDays.toStringIfNotNull);
+    eFaturaSenaryoController = TextEditingController(text: model.efaturaTipi);
+    istisnaKoduController = TextEditingController();
   }
 
   void disposeControllers() {
@@ -345,5 +420,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
     tevkifatController.dispose();
     ekMal3Controller.dispose();
     vadeGunuController.dispose();
+    eFaturaSenaryoController.dispose();
+    istisnaKoduController.dispose();
   }
 }

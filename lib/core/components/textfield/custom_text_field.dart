@@ -3,6 +3,7 @@ import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../constants/extensions/list_extensions.dart";
 import "../../constants/ui_helper/text_field_formatter_helper.dart";
@@ -158,32 +159,28 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     color: UIHelper.primaryColor.withOpacity(0.7),
                     width: 2,
                   ),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(UIHelper.midSize),
                   gapPadding: 0),
-              suffixIcon: suffixList.ext.isNotNullOrEmpty
-                  ? Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: suffixList.nullCheckWithGeneric,
-                    )
-                  : null,
-              label: widget.labelText == null
-                  ? null
-                  : Wrap(
-                      direction: Axis.horizontal,
-                      children: [
-                        Text.rich(TextSpan(children: [
-                          TextSpan(
-                              text: widget.labelText ?? "",
-                              style: (widget.enabled != false ? (widget.isMust ?? false) : false)
-                                  ? TextStyle(color: UIHelper.primaryColor)
-                                  : ((widget.controller?.text == "") ? TextStyle(color: Colors.grey.withOpacity(0.6)) : TextStyle(color: Colors.grey.withOpacity(0.8)))),
-                          TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: Colors.grey.withOpacity(0.3), fontSize: 12))
-                        ])),
-                        if (widget.valueWidget != null) SizedBox(width: UIHelper.lowSize),
-                        if (widget.valueWidget != null) widget.valueWidget!,
-                      ],
-                    )),
+              suffixIcon: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: suffixList.nullCheckWithGeneric,
+              ).yetkiVarMi(suffixList.ext.isNotNullOrEmpty),
+              label: Wrap(
+                direction: Axis.horizontal,
+                children: [
+                  Text.rich(TextSpan(children: [
+                    TextSpan(
+                        text: widget.labelText ?? "",
+                        style: (widget.enabled != false ? (widget.isMust ?? false) : false)
+                            ? TextStyle(color: UIHelper.primaryColor)
+                            : ((widget.controller?.text == "") ? TextStyle(color: Colors.grey.withOpacity(0.6)) : TextStyle(color: Colors.grey.withOpacity(0.8)))),
+                    TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: Colors.grey.withOpacity(0.3), fontSize: 12))
+                  ])),
+                  if (widget.valueWidget != null) SizedBox(width: UIHelper.lowSize),
+                  if (widget.valueWidget != null) widget.valueWidget!,
+                ],
+              ).yetkiVarMi(widget.labelText != null)),
         ).paddingAll(UIHelper.lowSize),
       ),
     );
