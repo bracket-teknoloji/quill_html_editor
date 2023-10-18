@@ -270,7 +270,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
               controller: _cariController,
               suffix: IconButton(
                   onPressed: () async {
-                    if (viewModel.faturaRequestModel.cariKodu != null) {
+                    if (viewModel.faturaRequestModel.cariKodu != null && viewModel.faturaRequestModel.cariKodu != "") {
                       Get.back();
                       dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = viewModel.faturaRequestModel.cariKodu);
                     } else {

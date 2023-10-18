@@ -25,6 +25,22 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
     });
   }
 
+  late final _$isLoadedAtom =
+      Atom(name: '_BaseFaturaEditViewModelBase.isLoaded', context: context);
+
+  @override
+  bool get isLoaded {
+    _$isLoadedAtom.reportRead();
+    return super.isLoaded;
+  }
+
+  @override
+  set isLoaded(bool value) {
+    _$isLoadedAtom.reportWrite(value, super.isLoaded, () {
+      super.isLoaded = value;
+    });
+  }
+
   late final _$_BaseFaturaEditViewModelBaseActionController =
       ActionController(name: '_BaseFaturaEditViewModelBase', context: context);
 
@@ -40,9 +56,21 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
   }
 
   @override
+  void changeIsLoaded(bool value) {
+    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController
+        .startAction(name: '_BaseFaturaEditViewModelBase.changeIsLoaded');
+    try {
+      return super.changeIsLoaded(value);
+    } finally {
+      _$_BaseFaturaEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-isLastPage: ${isLastPage}
+isLastPage: ${isLastPage},
+isLoaded: ${isLoaded}
     ''';
   }
 }

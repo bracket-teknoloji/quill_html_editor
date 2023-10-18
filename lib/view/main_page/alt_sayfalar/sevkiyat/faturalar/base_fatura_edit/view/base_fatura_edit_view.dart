@@ -79,6 +79,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
       if (BaseSiparisEditModel.instance.isEmpty && widget.model.baseEditEnum != BaseEditEnum.ekle) {
         var result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
         if (result.success == true) {
+          viewModel.changeIsLoaded(true);
           // viewModel.changeFuture();
           BaseSiparisEditModel.setInstance(result.data!.first);
           BaseSiparisEditModel.instance.isNew = false;
@@ -88,8 +89,8 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
             BaseSiparisEditModel.instance.isNew = true;
             BaseSiparisEditModel.instance.belgeNo = null;
-            BaseSiparisEditModel.instance.belgeTuru = StaticVariables.instance.isSatisFaturasi ? "MS" : "SS";
-            BaseSiparisEditModel.instance.pickerBelgeTuru = StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS";
+            BaseSiparisEditModel.instance.belgeTuru = StaticVariables.instance.isSatisFaturasi ? "SF" : "SI";
+            BaseSiparisEditModel.instance.pickerBelgeTuru = StaticVariables.instance.isSatisFaturasi ? "SF" : "SI";
           }
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
@@ -171,7 +172,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                                           dicParams: DicParams(
                                               belgeNo: BaseSiparisEditModel.instance.belgeNo,
                                               cariKodu: BaseSiparisEditModel.instance.cariKodu,
-                                              belgeTipi: StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS"))));
+                                              belgeTipi: StaticVariables.instance.isSatisFaturasi ? "SF" : "SI"))));
                                 }
                               }),
                           BottomSheetModel(
@@ -230,7 +231,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                 controller: tabController,
                 tabs: [
                   const Tab(child: Text("Genel")),
-                  yetkiController.siparisDigerSekmesiGoster ? const Tab(child: Text("Diğer")) : null,
+                  yetkiController.sevkiyatDigerSekmesiGoster ? const Tab(child: Text("Diğer")) : null,
                   const Tab(child: Text("Kalemler")),
                   const Tab(child: Text("Toplamlar"))
                 ].whereType<Widget>().toList(),
@@ -240,11 +241,16 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
               controller: tabController,
               physics: const NeverScrollableScrollPhysics(),
               children: [
-                BaseFaturaGenelView(model: model),
-                BaseFaturaDigerView(model: model).yetkiVarMi(yetkiController.siparisDigerSekmesiGoster),
+                Observer(
+                    builder: (_) => viewModel.isLoaded
+                        ? BaseFaturaGenelView(model: model)
+                        : const Center(
+                            child: CircularProgressIndicator.adaptive(),
+                          )),
+                BaseFaturaDigerView(model: model).yetkiVarMi(yetkiController.sevkiyatDigerSekmesiGoster),
                 Container(),
                 BaseFaturaToplamlarView(model: model),
-              ].nullCheckWithGeneric,
+              ].where((element) => element is! SizedBox).toList().nullCheckWithGeneric,
             ),
           ),
         ),

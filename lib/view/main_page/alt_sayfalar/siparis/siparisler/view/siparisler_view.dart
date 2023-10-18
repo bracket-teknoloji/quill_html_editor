@@ -63,7 +63,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
 
   @override
   void initState() {
-    viewModel = SiparislerViewModel(pickerBelgeTuru: widget.widgetModel.siparisTipiEnum == SiparisTipiEnum.musteri ? "MS" : "SS");
+    viewModel = SiparislerViewModel(pickerBelgeTuru: widget.widgetModel.siparisTipiEnum.rawValue);
     StaticVariables.instance.isMusteriSiparisleri = widget.widgetModel.siparisTipiEnum == SiparisTipiEnum.musteri;
     scrollController = ScrollController();
     baslangicTarihiController = TextEditingController();

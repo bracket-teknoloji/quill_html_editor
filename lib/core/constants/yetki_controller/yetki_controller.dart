@@ -167,8 +167,9 @@ class YetkiController {
   bool siparisMSDegismeyecekAlanMi(String alan) => !isTrue(yetkiModel?.siparisMusteriSiparisiDegismeyecekAlanlar?.contains(alan), skipAdmin: true);
 
   ///? Eğer içeriyorsa gösterilecek (Sipariş için)
-  bool siparisMSAciklamaAlanlari(int index) =>
-      isTrue(isTrue((yetkiModel?.siparisMusteriSiparisiAciklamaAlanlari?.contains(index) ?? false), skipAdmin: true) && (paramModel?.satisEkAciklamalarAktif ?? false));
+  bool siparisMSAciklamaAlanlari(int? index) =>
+  (index == null ? isTrue(yetkiModel?.siparisMusteriSiparisiAciklamaAlanlari?.ext.isNotNullOrEmpty, skipAdmin: true) :
+      isTrue(isTrue((yetkiModel?.siparisMusteriSiparisiAciklamaAlanlari?.contains(index) ?? false), skipAdmin: true)) && (paramModel?.satisEkAciklamalarAktif ?? false));
 
   ///? Eğer içeriyorsa gösterilecek (Kalemler İçin)
   bool siparisMSSatirAciklamaAlanlari(int? index) => index == null
@@ -225,6 +226,9 @@ class YetkiController {
 
   bool get sevkiyatDigerSekmesiGoster => StaticVariables.instance.isSatisFaturasi ? satisFatDigerSekmesiGelsin : satisIrsDigerSekmesiGelsin;
 
+
+  bool sevkiyatIrsAciklamaAlanlari(int? index) =>
+      isTrue(isTrue((yetkiModel?.sevkiyatSatisIrsaliyesiGizlenecekAlanlar?.contains(index) ?? false), skipAdmin: true) && (paramModel?.satisEkAciklamalarAktif ?? false));
 
   bool get satisFatDigerSekmesiGelsin => isTrue(yetkiModel?.sevkiyatSatisFatDigerSekmesiGoster);
   bool get satisIrsDigerSekmesiGelsin => isTrue(yetkiModel?.sevkiyatSatisIrsDigerSekmesiGoster);

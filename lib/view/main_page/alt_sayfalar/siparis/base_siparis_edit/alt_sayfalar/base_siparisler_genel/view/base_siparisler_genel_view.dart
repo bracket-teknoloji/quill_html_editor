@@ -14,7 +14,6 @@ import "../../../../../../../../core/constants/extensions/number_extensions.dart
 import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
-import "../../../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../../../../core/init/network/login/api_urls.dart";
 import "../../../../../../model/param_model.dart";
 import "../../../../../cari/cari_listesi/model/cari_listesi_model.dart";
@@ -33,7 +32,6 @@ class BaseSiparislerGenelView extends StatefulWidget {
 class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
   BaseSiparislerGenelViewModel viewModel = BaseSiparislerGenelViewModel();
   BaseEditModel<SiparisEditRequestModel> get siparisModel => widget.model;
-  ParamModel? get paramModel => CacheManager.getAnaVeri()?.paramModel;
   bool get enable => siparisModel.enable;
   bool get isDuzenle => siparisModel.isDuzenle;
   bool get isEkle => siparisModel.isEkle || siparisModel.isKopyala;
@@ -384,40 +382,47 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     child: Column(
                       children: [
                         CustomTextField(
-                                enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi1 ?? "Açıklama 1", onChanged: (p0) => changeAciklama(1, p0), controller: teslimEdilecekKisiController)
+                                enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi1 ?? "Açıklama 1", onChanged: (p0) => changeAciklama(1, p0), controller: teslimEdilecekKisiController)
                             .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(1)),
-                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi2 ?? "Açıklama 2", onChanged: (p0) => changeAciklama(2, p0), controller: b2bEmailController)
+                        CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi2 ?? "Açıklama 2", onChanged: (p0) => changeAciklama(2, p0), controller: b2bEmailController)
                             .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(2)),
-                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi3 ?? "Açıklama 3", onChanged: (p0) => changeAciklama(3, p0), controller: masrafKoduController)
+                        CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi3 ?? "Açıklama 3", onChanged: (p0) => changeAciklama(3, p0), controller: masrafKoduController)
                             .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(3)),
-                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi4 ?? "Açıklama 4", onChanged: (p0) => changeAciklama(4, p0), controller: masrafYeriController)
+                        CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi4 ?? "Açıklama 4", onChanged: (p0) => changeAciklama(4, p0), controller: masrafYeriController)
                             .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(4)),
-                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi5 ?? "Açıklama 5", onChanged: (p0) => changeAciklama(5, p0), controller: siparisNotuController)
+                        CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi5 ?? "Açıklama 5", onChanged: (p0) => changeAciklama(5, p0), controller: siparisNotuController)
                             .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(5)),
-                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi6 ?? "Açıklama 6", onChanged: (p0) => changeAciklama(6, p0), controller: sASNoController)
+                        CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi6 ?? "Açıklama 6", onChanged: (p0) => changeAciklama(6, p0), controller: sASNoController)
                             .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(6)),
-                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi7 ?? "Açıklama 7", onChanged: (p0) => changeAciklama(7, p0), controller: b2bSepetIDController)
+                        CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi7 ?? "Açıklama 7", onChanged: (p0) => changeAciklama(7, p0), controller: b2bSepetIDController)
                             .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(7)),
-                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi8 ?? "Açıklama 8", onChanged: (p0) => changeAciklama(8, p0), controller: tamTeslimatController)
+                        CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi8 ?? "Açıklama 8", onChanged: (p0) => changeAciklama(8, p0), controller: tamTeslimatController)
                             .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(8)),
-                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi9 ?? "Açıklama 9", onChanged: (p0) => changeAciklama(9, p0), controller: satisAcik9Controller)
+                        CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi9 ?? "Açıklama 9", onChanged: (p0) => changeAciklama(9, p0), controller: satisAcik9Controller)
                             .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(9)),
-                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi10 ?? "Açıklama 10", onChanged: (p0) => changeAciklama(10, p0), controller: satisAcik10Controller)
+                        CustomTextField(
+                                enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi10 ?? "Açıklama 10", onChanged: (p0) => changeAciklama(10, p0), controller: satisAcik10Controller)
                             .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(10)),
-                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi11 ?? "Açıklama 11", onChanged: (p0) => changeAciklama(11, p0), controller: satisAcik11Controller)
+                        CustomTextField(
+                                enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi11 ?? "Açıklama 11", onChanged: (p0) => changeAciklama(11, p0), controller: satisAcik11Controller)
                             .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(11)),
-                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi12 ?? "Açıklama 12", onChanged: (p0) => changeAciklama(12, p0), controller: fiyatGrubuController)
+                        CustomTextField(
+                                enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi12 ?? "Açıklama 12", onChanged: (p0) => changeAciklama(12, p0), controller: fiyatGrubuController)
                             .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(12)),
-                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi13 ?? "Açıklama 13", onChanged: (p0) => changeAciklama(13, p0), controller: satisAcik13Controller)
+                        CustomTextField(
+                                enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi13 ?? "Açıklama 13", onChanged: (p0) => changeAciklama(13, p0), controller: satisAcik13Controller)
                             .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(13)),
-                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi14 ?? "Açıklama 14", onChanged: (p0) => changeAciklama(14, p0), controller: satisAcik14Controller)
+                        CustomTextField(
+                                enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi14 ?? "Açıklama 14", onChanged: (p0) => changeAciklama(14, p0), controller: satisAcik14Controller)
                             .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(14)),
-                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi15 ?? "Açıklama 15", onChanged: (p0) => changeAciklama(15, p0), controller: satisAcik15Controller)
+                        CustomTextField(
+                                enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi15 ?? "Açıklama 15", onChanged: (p0) => changeAciklama(15, p0), controller: satisAcik15Controller)
                             .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(15)),
-                        CustomTextField(enabled: enable, labelText: paramModel?.satisEkAciklamaTanimi16 ?? "Açıklama 16", onChanged: (p0) => changeAciklama(16, p0), controller: satisAcik16Controller)
+                        CustomTextField(
+                                enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi16 ?? "Açıklama 16", onChanged: (p0) => changeAciklama(16, p0), controller: satisAcik16Controller)
                             .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(16)),
                       ],
-                    ))
+                    )).yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(null))
               ],
             ).paddingAll(UIHelper.lowSize),
           ),

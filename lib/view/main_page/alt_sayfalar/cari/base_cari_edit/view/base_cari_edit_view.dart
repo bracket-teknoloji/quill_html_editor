@@ -61,8 +61,8 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
       if (widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != BaseEditEnum.kopyala) {
         var result = await networkManager
             .dioGet<CariDetayModel>(path: ApiUrls.getCariDetay, bodyModel: CariDetayModel(), showError: false, showLoading: true, queryParameters: {"CariKodu": widget.model?.model.cariKodu});
-        viewModel.changeIsDownloadCompletedSuccesfully(result.success == null);
-        if (result.data != null && result.data!.isNotEmpty && result.success == null) {
+        viewModel.changeIsDownloadCompletedSuccesfully(result.success);
+        if (result.data != null && result.data!.isNotEmpty && result.success != null) {
           CariDetayModel.setInstance(result.data[0]);
         } else {
           await dialogManager.showAlertDialog(result.message ?? result.messageDetail ?? result.errorDetails ?? "Bilinmeyen bir hata oluştu");
