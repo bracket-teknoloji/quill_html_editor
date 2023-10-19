@@ -72,7 +72,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
     } else if (widget.model?.baseEditEnum == BaseEditEnum.duzenle) {
       viewModel.changeIslemKodu(2);
     }
-    / viewModel.changeIslemKodu();
+    // viewModel.changeIslemKodu();
     viewModel.changeIsSahisFirmasi(viewModel.model?.sahisFirmasi ?? model?.sahisFirmasiMi ?? false);
     viewModel.changeIsDovizli(viewModel.model?.dovizli == "E" || model?.dovizli == true);
     viewModel.changeAdi(viewModel.model?.adi ?? model?.cariAdi);
