@@ -1,6 +1,7 @@
 import "package:copy_with_extension/copy_with_extension.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_detay_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 
@@ -20,7 +21,12 @@ class CariListesiModel with NetworkManagerMixin {
   CariListesiModel._init();
 
   //setter for singleton
-  static void setInstance(CariListesiModel? instance) => _instance = instance;
+  static void setInstance(CariListesiModel? instance) {
+    _instance = instance;
+    if (instance != null) {
+      CariDetayModel.setInstance(CariDetayModel.instance..cariList = [instance]);
+    }
+  }
 
   CariListesiModel({
     this.cariKodu,
@@ -113,6 +119,21 @@ class CariListesiModel with NetworkManagerMixin {
     this.muhHesapTipi,
     this.iadeMiktarGirebilir,
     this.sunucuTarihi,
+    this.adi,
+    this.adres,
+    this.efaturaSenaryo,
+    this.eposta,
+    this.ilce,
+    this.islemKodu,
+    this.kurfarkialacakKodu,
+    this.kurfarkiborcKodu,
+    this.muhasebeKodu,
+    this.requestVersion,
+    this.sehir,
+    this.telefon,
+    this.tipi,
+    this.vergiNo,
+    this.website,
   });
 
   @HiveField(0)
@@ -297,18 +318,49 @@ class CariListesiModel with NetworkManagerMixin {
   bool? iadeMiktarGirebilir;
   @HiveField(90)
   DateTime? sunucuTarihi;
+  @HiveField(91)
+  String? adi;
+  @HiveField(92)
+  String? adres;
+  @HiveField(93)
+  String? efaturaSenaryo;
+  @HiveField(94)
+  String? eposta;
+  @HiveField(95)
+  String? ilce;
+  @HiveField(96)
+  int? islemKodu;
+  @HiveField(97)
+  String? kurfarkialacakKodu;
+  @HiveField(98)
+  String? kurfarkiborcKodu;
+  @HiveField(99)
+  String? muhasebeKodu;
+  @HiveField(100)
+  int? requestVersion;
+  @HiveField(101)
+  String? sehir;
+  @HiveField(102)
+  String? telefon;
+  @HiveField(103)
+  String? tipi;
+  @HiveField(104)
+  String? vergiNo;
+  @HiveField(105)
+  String? website;
+  @HiveField(106)
+  List<int>? depoKodlari;
+  @HiveField(107)
+  int? idx;
+  
 
   factory CariListesiModel.fromJson(Map<String, dynamic> json) => _$CariListesiModelFromJson(json);
-  @override
-  fromJson(Map<String, dynamic> json) {
-    // bakiyeList = json['BAKIYE_LIST'] != null ? (json['BAKIYE_LIST'] as List).map((i) => BakiyeModel.fromJson(i)).toList() : null;
-    return _$CariListesiModelFromJson(json);
-  }
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$CariListesiModelToJson(this);
-  }
+  fromJson(Map<String, dynamic> json) => _$CariListesiModelFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$CariListesiModelToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)

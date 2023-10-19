@@ -454,7 +454,10 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
         baseEditEnum = pageName.baseEditEnum;
         pageName = pageName.path;
         BaseEditModel editModel = BaseEditModel(baseEditEnum: baseEditEnum, model: object);
-        Get.toNamed(pageName, arguments: editModel);
+        var result = await Get.toNamed(pageName, arguments: editModel);
+        if (result != null) {
+          await viewModel.resetPage();
+        }
       } else {
         Get.toNamed(pageName, arguments: object);
       }

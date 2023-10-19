@@ -89,6 +89,17 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
   }
 
   @override
+  void setProje(BaseProjeModel? value) {
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
+        .startAction(name: '_BaseFaturaGenelViewModelBase.setProje');
+    try {
+      return super.setProje(value);
+    } finally {
+      _$_BaseFaturaGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setTarih(DateTime? value) {
     final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
         .startAction(name: '_BaseFaturaGenelViewModelBase.setTarih');

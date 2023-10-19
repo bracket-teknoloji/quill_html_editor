@@ -268,7 +268,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                       onClear: () => viewModel.setTopluDepoKodu(null),
                       onTap: () async {
                         var result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context);
-                        if (result != null) {
+                        if (result is DepoList) {
                           viewModel.setTopluDepoKodu(result.depoKodu);
                           topluDepoController.text = result.depoTanimi ?? result.depoKodu.toStringIfNotNull ?? "";
                         }
@@ -285,7 +285,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                       onTap: () async {
                         BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
-                        if (result != null) {
+                        if (result is BaseProjeModel) {
                           viewModel.setProjeKodu(result);
                           projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
                         }
@@ -306,7 +306,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                             valueWidget: Observer(builder: (_) => Text(viewModel.model.odemeKodu ?? "")),
                             onTap: () async {
                               var result = await bottomSheetDialogManager.showOdemeKoduBottomSheetDialog(context);
-                              if (result != null) {
+                              if (result is ListCariOdemeKodu) {
                                 viewModel.setOdemeKodu(result.odemeKodu);
                                 odemeKoduController.text = result.aciklama ?? "";
                               }

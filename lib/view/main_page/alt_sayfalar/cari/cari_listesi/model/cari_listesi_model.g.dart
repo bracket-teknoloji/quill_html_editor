@@ -187,6 +187,36 @@ abstract class _$CariListesiModelCWProxy {
 
   CariListesiModel sunucuTarihi(DateTime? sunucuTarihi);
 
+  CariListesiModel adi(String? adi);
+
+  CariListesiModel adres(String? adres);
+
+  CariListesiModel efaturaSenaryo(String? efaturaSenaryo);
+
+  CariListesiModel eposta(String? eposta);
+
+  CariListesiModel ilce(String? ilce);
+
+  CariListesiModel islemKodu(int? islemKodu);
+
+  CariListesiModel kurfarkialacakKodu(String? kurfarkialacakKodu);
+
+  CariListesiModel kurfarkiborcKodu(String? kurfarkiborcKodu);
+
+  CariListesiModel muhasebeKodu(String? muhasebeKodu);
+
+  CariListesiModel requestVersion(int? requestVersion);
+
+  CariListesiModel sehir(String? sehir);
+
+  CariListesiModel telefon(String? telefon);
+
+  CariListesiModel tipi(String? tipi);
+
+  CariListesiModel vergiNo(String? vergiNo);
+
+  CariListesiModel website(String? website);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CariListesiModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -284,6 +314,21 @@ abstract class _$CariListesiModelCWProxy {
     String? muhHesapTipi,
     bool? iadeMiktarGirebilir,
     DateTime? sunucuTarihi,
+    String? adi,
+    String? adres,
+    String? efaturaSenaryo,
+    String? eposta,
+    String? ilce,
+    int? islemKodu,
+    String? kurfarkialacakKodu,
+    String? kurfarkiborcKodu,
+    String? muhasebeKodu,
+    int? requestVersion,
+    String? sehir,
+    String? telefon,
+    String? tipi,
+    String? vergiNo,
+    String? website,
   });
 }
 
@@ -596,6 +641,56 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
       this(sunucuTarihi: sunucuTarihi);
 
   @override
+  CariListesiModel adi(String? adi) => this(adi: adi);
+
+  @override
+  CariListesiModel adres(String? adres) => this(adres: adres);
+
+  @override
+  CariListesiModel efaturaSenaryo(String? efaturaSenaryo) =>
+      this(efaturaSenaryo: efaturaSenaryo);
+
+  @override
+  CariListesiModel eposta(String? eposta) => this(eposta: eposta);
+
+  @override
+  CariListesiModel ilce(String? ilce) => this(ilce: ilce);
+
+  @override
+  CariListesiModel islemKodu(int? islemKodu) => this(islemKodu: islemKodu);
+
+  @override
+  CariListesiModel kurfarkialacakKodu(String? kurfarkialacakKodu) =>
+      this(kurfarkialacakKodu: kurfarkialacakKodu);
+
+  @override
+  CariListesiModel kurfarkiborcKodu(String? kurfarkiborcKodu) =>
+      this(kurfarkiborcKodu: kurfarkiborcKodu);
+
+  @override
+  CariListesiModel muhasebeKodu(String? muhasebeKodu) =>
+      this(muhasebeKodu: muhasebeKodu);
+
+  @override
+  CariListesiModel requestVersion(int? requestVersion) =>
+      this(requestVersion: requestVersion);
+
+  @override
+  CariListesiModel sehir(String? sehir) => this(sehir: sehir);
+
+  @override
+  CariListesiModel telefon(String? telefon) => this(telefon: telefon);
+
+  @override
+  CariListesiModel tipi(String? tipi) => this(tipi: tipi);
+
+  @override
+  CariListesiModel vergiNo(String? vergiNo) => this(vergiNo: vergiNo);
+
+  @override
+  CariListesiModel website(String? website) => this(website: website);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CariListesiModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -694,6 +789,21 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
     Object? muhHesapTipi = const $CopyWithPlaceholder(),
     Object? iadeMiktarGirebilir = const $CopyWithPlaceholder(),
     Object? sunucuTarihi = const $CopyWithPlaceholder(),
+    Object? adi = const $CopyWithPlaceholder(),
+    Object? adres = const $CopyWithPlaceholder(),
+    Object? efaturaSenaryo = const $CopyWithPlaceholder(),
+    Object? eposta = const $CopyWithPlaceholder(),
+    Object? ilce = const $CopyWithPlaceholder(),
+    Object? islemKodu = const $CopyWithPlaceholder(),
+    Object? kurfarkialacakKodu = const $CopyWithPlaceholder(),
+    Object? kurfarkiborcKodu = const $CopyWithPlaceholder(),
+    Object? muhasebeKodu = const $CopyWithPlaceholder(),
+    Object? requestVersion = const $CopyWithPlaceholder(),
+    Object? sehir = const $CopyWithPlaceholder(),
+    Object? telefon = const $CopyWithPlaceholder(),
+    Object? tipi = const $CopyWithPlaceholder(),
+    Object? vergiNo = const $CopyWithPlaceholder(),
+    Object? website = const $CopyWithPlaceholder(),
   }) {
     return CariListesiModel(
       cariKodu: cariKodu == const $CopyWithPlaceholder()
@@ -1056,6 +1166,66 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
           ? _value.sunucuTarihi
           // ignore: cast_nullable_to_non_nullable
           : sunucuTarihi as DateTime?,
+      adi: adi == const $CopyWithPlaceholder()
+          ? _value.adi
+          // ignore: cast_nullable_to_non_nullable
+          : adi as String?,
+      adres: adres == const $CopyWithPlaceholder()
+          ? _value.adres
+          // ignore: cast_nullable_to_non_nullable
+          : adres as String?,
+      efaturaSenaryo: efaturaSenaryo == const $CopyWithPlaceholder()
+          ? _value.efaturaSenaryo
+          // ignore: cast_nullable_to_non_nullable
+          : efaturaSenaryo as String?,
+      eposta: eposta == const $CopyWithPlaceholder()
+          ? _value.eposta
+          // ignore: cast_nullable_to_non_nullable
+          : eposta as String?,
+      ilce: ilce == const $CopyWithPlaceholder()
+          ? _value.ilce
+          // ignore: cast_nullable_to_non_nullable
+          : ilce as String?,
+      islemKodu: islemKodu == const $CopyWithPlaceholder()
+          ? _value.islemKodu
+          // ignore: cast_nullable_to_non_nullable
+          : islemKodu as int?,
+      kurfarkialacakKodu: kurfarkialacakKodu == const $CopyWithPlaceholder()
+          ? _value.kurfarkialacakKodu
+          // ignore: cast_nullable_to_non_nullable
+          : kurfarkialacakKodu as String?,
+      kurfarkiborcKodu: kurfarkiborcKodu == const $CopyWithPlaceholder()
+          ? _value.kurfarkiborcKodu
+          // ignore: cast_nullable_to_non_nullable
+          : kurfarkiborcKodu as String?,
+      muhasebeKodu: muhasebeKodu == const $CopyWithPlaceholder()
+          ? _value.muhasebeKodu
+          // ignore: cast_nullable_to_non_nullable
+          : muhasebeKodu as String?,
+      requestVersion: requestVersion == const $CopyWithPlaceholder()
+          ? _value.requestVersion
+          // ignore: cast_nullable_to_non_nullable
+          : requestVersion as int?,
+      sehir: sehir == const $CopyWithPlaceholder()
+          ? _value.sehir
+          // ignore: cast_nullable_to_non_nullable
+          : sehir as String?,
+      telefon: telefon == const $CopyWithPlaceholder()
+          ? _value.telefon
+          // ignore: cast_nullable_to_non_nullable
+          : telefon as String?,
+      tipi: tipi == const $CopyWithPlaceholder()
+          ? _value.tipi
+          // ignore: cast_nullable_to_non_nullable
+          : tipi as String?,
+      vergiNo: vergiNo == const $CopyWithPlaceholder()
+          ? _value.vergiNo
+          // ignore: cast_nullable_to_non_nullable
+          : vergiNo as String?,
+      website: website == const $CopyWithPlaceholder()
+          ? _value.website
+          // ignore: cast_nullable_to_non_nullable
+          : website as String?,
     );
   }
 }
@@ -1171,13 +1341,30 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
       muhHesapTipi: fields[88] as String?,
       iadeMiktarGirebilir: fields[89] as bool?,
       sunucuTarihi: fields[90] as DateTime?,
-    );
+      adi: fields[91] as String?,
+      adres: fields[92] as String?,
+      efaturaSenaryo: fields[93] as String?,
+      eposta: fields[94] as String?,
+      ilce: fields[95] as String?,
+      islemKodu: fields[96] as int?,
+      kurfarkialacakKodu: fields[97] as String?,
+      kurfarkiborcKodu: fields[98] as String?,
+      muhasebeKodu: fields[99] as String?,
+      requestVersion: fields[100] as int?,
+      sehir: fields[101] as String?,
+      telefon: fields[102] as String?,
+      tipi: fields[103] as String?,
+      vergiNo: fields[104] as String?,
+      website: fields[105] as String?,
+    )
+      ..depoKodlari = (fields[106] as List?)?.cast<int>()
+      ..idx = fields[107] as int?;
   }
 
   @override
   void write(BinaryWriter writer, CariListesiModel obj) {
     writer
-      ..writeByte(90)
+      ..writeByte(107)
       ..writeByte(0)
       ..write(obj.cariKodu)
       ..writeByte(1)
@@ -1357,7 +1544,41 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
       ..writeByte(89)
       ..write(obj.iadeMiktarGirebilir)
       ..writeByte(90)
-      ..write(obj.sunucuTarihi);
+      ..write(obj.sunucuTarihi)
+      ..writeByte(91)
+      ..write(obj.adi)
+      ..writeByte(92)
+      ..write(obj.adres)
+      ..writeByte(93)
+      ..write(obj.efaturaSenaryo)
+      ..writeByte(94)
+      ..write(obj.eposta)
+      ..writeByte(95)
+      ..write(obj.ilce)
+      ..writeByte(96)
+      ..write(obj.islemKodu)
+      ..writeByte(97)
+      ..write(obj.kurfarkialacakKodu)
+      ..writeByte(98)
+      ..write(obj.kurfarkiborcKodu)
+      ..writeByte(99)
+      ..write(obj.muhasebeKodu)
+      ..writeByte(100)
+      ..write(obj.requestVersion)
+      ..writeByte(101)
+      ..write(obj.sehir)
+      ..writeByte(102)
+      ..write(obj.telefon)
+      ..writeByte(103)
+      ..write(obj.tipi)
+      ..writeByte(104)
+      ..write(obj.vergiNo)
+      ..writeByte(105)
+      ..write(obj.website)
+      ..writeByte(106)
+      ..write(obj.depoKodlari)
+      ..writeByte(107)
+      ..write(obj.idx);
   }
 
   @override
@@ -1468,7 +1689,26 @@ CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
       sunucuTarihi: json['SUNUCU_TARIHI'] == null
           ? null
           : DateTime.parse(json['SUNUCU_TARIHI'] as String),
-    );
+      adi: json['ADI'] as String?,
+      adres: json['ADRES'] as String?,
+      efaturaSenaryo: json['EFATURA_SENARYO'] as String?,
+      eposta: json['EPOSTA'] as String?,
+      ilce: json['ILCE'] as String?,
+      islemKodu: json['ISLEM_KODU'] as int?,
+      kurfarkialacakKodu: json['KURFARKIALACAK_KODU'] as String?,
+      kurfarkiborcKodu: json['KURFARKIBORC_KODU'] as String?,
+      muhasebeKodu: json['MUHASEBE_KODU'] as String?,
+      requestVersion: json['REQUEST_VERSION'] as int?,
+      sehir: json['SEHIR'] as String?,
+      telefon: json['TELEFON'] as String?,
+      tipi: json['TIPI'] as String?,
+      vergiNo: json['VERGI_NO'] as String?,
+      website: json['WEBSITE'] as String?,
+    )
+      ..depoKodlari = (json['DEPO_KODLARI'] as List<dynamic>?)
+          ?.map((e) => e as int)
+          .toList()
+      ..idx = json['IDX'] as int?;
 
 Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) {
   final val = <String, dynamic>{};
@@ -1568,6 +1808,23 @@ Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) {
   writeNotNull('MUH_HESAP_TIPI', instance.muhHesapTipi);
   writeNotNull('IADE_MIKTAR_GIREBILIR', instance.iadeMiktarGirebilir);
   writeNotNull('SUNUCU_TARIHI', instance.sunucuTarihi?.toIso8601String());
+  writeNotNull('ADI', instance.adi);
+  writeNotNull('ADRES', instance.adres);
+  writeNotNull('EFATURA_SENARYO', instance.efaturaSenaryo);
+  writeNotNull('EPOSTA', instance.eposta);
+  writeNotNull('ILCE', instance.ilce);
+  writeNotNull('ISLEM_KODU', instance.islemKodu);
+  writeNotNull('KURFARKIALACAK_KODU', instance.kurfarkialacakKodu);
+  writeNotNull('KURFARKIBORC_KODU', instance.kurfarkiborcKodu);
+  writeNotNull('MUHASEBE_KODU', instance.muhasebeKodu);
+  writeNotNull('REQUEST_VERSION', instance.requestVersion);
+  writeNotNull('SEHIR', instance.sehir);
+  writeNotNull('TELEFON', instance.telefon);
+  writeNotNull('TIPI', instance.tipi);
+  writeNotNull('VERGI_NO', instance.vergiNo);
+  writeNotNull('WEBSITE', instance.website);
+  writeNotNull('DEPO_KODLARI', instance.depoKodlari);
+  writeNotNull('IDX', instance.idx);
   return val;
 }
 

@@ -33,6 +33,7 @@ class YetkiController {
   bool get lokalDepoUygulamasiAcikMi => isTrue(paramModel?.lokalDepoUygulamasiAcik, skipAdmin: true);
   //! CARİ
 
+
   bool get cariListesi => isTrue(yetkiModel?.cariCariListesi);
   bool get cariListesiRiskGorebilir => isTrue(yetkiModel?.cariCariListesiRiskGorebilir);
 

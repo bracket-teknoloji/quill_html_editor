@@ -9,7 +9,7 @@ extension BadgeColorExtensions on BadgeColorEnum? {
   Color get getColor {
     switch (this) {
       case BadgeColorEnum.eFatura:
-        return const Color.fromRGBO(56, 157, 236, 1);
+        return const Color.fromARGB(255, 170, 56, 236);
       case BadgeColorEnum.dovizli:
         return Colors.blue;
       case BadgeColorEnum.kapali:

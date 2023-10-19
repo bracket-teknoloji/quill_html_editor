@@ -1,5 +1,8 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
 
 import "../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
@@ -21,69 +24,31 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    TextEditingController borcEuroController =
-        TextEditingController(text: getBorc("Euro"));
-    TextEditingController alacakEuroController =
-        TextEditingController(text: getAlacak("Euro"));
-    TextEditingController bakiyeEuroController =
-        TextEditingController(text: getBakiye("Euro"));
-    TextEditingController borcDolarController =
-        TextEditingController(text: getBorc("Dolar"));
-    TextEditingController alacakDolarController =
-        TextEditingController(text: getAlacak("Dolar"));
-    TextEditingController bakiyeDolarController =
-        TextEditingController(text: getBakiye("Dolar"));
-    TextEditingController borcTLController =
-        TextEditingController(text: getBorc(mainCurrency));
-    TextEditingController alacakTLController =
-        TextEditingController(text: getAlacak(mainCurrency));
-    TextEditingController bakiyeTLController =
-        TextEditingController(text: getBakiye(mainCurrency));
-    TextEditingController borcToplamiController = TextEditingController(
-        text:
-            "${cariDetayModel?.riskBorcToplami?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    TextEditingController alacakToplamiController = TextEditingController(
-        text:
-            "${cariDetayModel?.riskAlacakToplami?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    TextEditingController bakiyeToplamiController = TextEditingController(
-        text:
-            "${cariDetayModel?.riskBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    TextEditingController riskLimitiController = TextEditingController(
-        text:
-            "${cariDetayModel?.riskLimiti?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    TextEditingController teminatController = TextEditingController(
-        text:
-            "${cariDetayModel?.teminatTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    TextEditingController senetAsilController = TextEditingController(
-        text:
-            "${cariDetayModel?.senetAsilRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    TextEditingController senetCiroController = TextEditingController(
-        text:
-            "${cariDetayModel?.senetCiroRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    TextEditingController cekAsilController = TextEditingController(
-        text:
-            "${cariDetayModel?.cekAsilRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    TextEditingController cekCiroController = TextEditingController(
-        text:
-            "${cariDetayModel?.cekCiroRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    TextEditingController siparisController = TextEditingController(
-        text:
-            "${cariDetayModel?.siparisRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    TextEditingController sevkController = TextEditingController(
-        text:
-            "${cariDetayModel?.sevkRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    TextEditingController yuklemelerController = TextEditingController(
-        text:
-            "${cariDetayModel?.yuklemeRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    TextEditingController irsaliyeController = TextEditingController(
-        text:
-            "${cariDetayModel?.irsaliyeRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    TextEditingController teminatRiskiController = TextEditingController(
-        text:
-            "${cariDetayModel?.teminatRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    TextEditingController toplamRiskController = TextEditingController(
-        text:
-            "${((cariDetayModel?.riskBorcToplami ?? 0) - (cariDetayModel?.riskAlacakToplami ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency");
+    TextEditingController borcEuroController = TextEditingController(text: getBorc("Euro"));
+    TextEditingController alacakEuroController = TextEditingController(text: getAlacak("Euro"));
+    TextEditingController bakiyeEuroController = TextEditingController(text: getBakiye("Euro"));
+    TextEditingController borcDolarController = TextEditingController(text: getBorc("Dolar"));
+    TextEditingController alacakDolarController = TextEditingController(text: getAlacak("Dolar"));
+    TextEditingController bakiyeDolarController = TextEditingController(text: getBakiye("Dolar"));
+    TextEditingController borcTLController = TextEditingController(text: getBorc(mainCurrency));
+    TextEditingController alacakTLController = TextEditingController(text: getAlacak(mainCurrency));
+    TextEditingController bakiyeTLController = TextEditingController(text: getBakiye(mainCurrency));
+    TextEditingController borcToplamiController = TextEditingController(text: "${cariDetayModel?.riskBorcToplami?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController alacakToplamiController = TextEditingController(text: "${cariDetayModel?.riskAlacakToplami?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController bakiyeToplamiController = TextEditingController(text: "${cariDetayModel?.riskBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController riskLimitiController = TextEditingController(text: "${cariDetayModel?.riskLimiti?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController teminatController = TextEditingController(text: "${cariDetayModel?.teminatTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController senetAsilController = TextEditingController(text: "${cariDetayModel?.senetAsilRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController senetCiroController = TextEditingController(text: "${cariDetayModel?.senetCiroRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController cekAsilController = TextEditingController(text: "${cariDetayModel?.cekAsilRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController cekCiroController = TextEditingController(text: "${cariDetayModel?.cekCiroRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController siparisController = TextEditingController(text: "${cariDetayModel?.siparisRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController sevkController = TextEditingController(text: "${cariDetayModel?.sevkRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController yuklemelerController = TextEditingController(text: "${cariDetayModel?.yuklemeRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController irsaliyeController = TextEditingController(text: "${cariDetayModel?.irsaliyeRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController teminatRiskiController = TextEditingController(text: "${cariDetayModel?.teminatRiski?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
+    TextEditingController toplamRiskController =
+        TextEditingController(text: "${((cariDetayModel?.riskBorcToplami ?? 0) - (cariDetayModel?.riskAlacakToplami ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency");
     return SingleChildScrollView(
       child: Form(
           autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -91,131 +56,78 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
             getBakiye(mainCurrency) == ""
                 ? const Center(
                     child: Column(
-                      children: [
-                        Icon(Icons.crisis_alert_outlined),
-                        Text("Kayıt Bulunamadı")
-                      ],
+                      children: [Icon(Icons.crisis_alert_outlined), Text("Kayıt Bulunamadı")],
                     ),
                   )
                 : CustomWidgetWithLabel(
                     text: "Döviz Bakiyeleri",
+                    onlyLabelpaddingLeft: UIHelper.lowSize,
                     child: Wrap(
                       children: [
                         const Divider(),
                         const Row(
                           children: [
-                            Expanded(child: Text("  Borç")),
-                            Expanded(child: Text("  Alacak")),
-                            Expanded(child: Text("  Bakiye")),
+                            Expanded(child: Text("Borç")),
+                            Expanded(child: Text("Alacak")),
+                            Expanded(child: Text("Bakiye")),
                           ],
-                        ),
+                        ).paddingAll(UIHelper.lowSize),
                         CustomWidgetWithLabel(
-                            text: "  €",
+                            text: "€",
+                            onlyLabelpaddingLeft: UIHelper.lowSize,
                             isVertical: false,
                             child: SizedBox(
                               child: Row(
                                 children: [
-                                  Expanded(
-                                      child: CustomTextField(
-                                          readOnly: true,
-                                          labelText: "Borç",
-                                          controller: borcEuroController)),
-                                  Expanded(
-                                      child: CustomTextField(
-                                          readOnly: true,
-                                          labelText: "Alacak",
-                                          controller: alacakEuroController)),
-                                  Expanded(
-                                      child: CustomTextField(
-                                          readOnly: true,
-                                          labelText: "Bakiye",
-                                          controller: bakiyeEuroController)),
+                                  Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcEuroController)),
+                                  Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakEuroController)),
+                                  Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeEuroController)),
                                 ],
                               ),
-                            )),
+                            )).yetkiVarMi(cariDetayModel?.bakiyeList?.any((element) => element.dovizTipi == 2) ?? false),
                         CustomWidgetWithLabel(
-                            text: "  \$",
+                            text: "\$",
+                            onlyLabelpaddingLeft: UIHelper.lowSize,
                             isVertical: false,
                             child: SizedBox(
                               child: Row(
                                 children: [
-                                  Expanded(
-                                      child: CustomTextField(
-                                          readOnly: true,
-                                          labelText: "Borç",
-                                          controller: borcDolarController)),
-                                  Expanded(
-                                      child: CustomTextField(
-                                          readOnly: true,
-                                          labelText: "Alacak",
-                                          controller: alacakDolarController)),
-                                  Expanded(
-                                      child: CustomTextField(
-                                          readOnly: true,
-                                          labelText: "Bakiye",
-                                          controller: bakiyeDolarController)),
+                                  Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcDolarController)),
+                                  Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakDolarController)),
+                                  Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeDolarController)),
                                 ],
                               ),
-                            )),
+                            )).yetkiVarMi(cariDetayModel?.bakiyeList?.any((element) => element.dovizTipi == 1) ?? false),
                         CustomWidgetWithLabel(
-                            text: "  $mainCurrency",
+                            text: mainCurrency,
+                            onlyLabelpaddingLeft: UIHelper.lowSize,
                             isVertical: false,
                             child: SizedBox(
                               child: Row(
                                 children: [
-                                  Expanded(
-                                      child: CustomTextField(
-                                          readOnly: true,
-                                          labelText: "Borç",
-                                          controller: borcTLController)),
-                                  Expanded(
-                                      child: CustomTextField(
-                                          readOnly: true,
-                                          labelText: "Alacak",
-                                          controller: alacakTLController)),
-                                  Expanded(
-                                      child: CustomTextField(
-                                          readOnly: true,
-                                          labelText: "Bakiye",
-                                          controller: bakiyeTLController)),
+                                  Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcTLController)),
+                                  Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakTLController)),
+                                  Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeTLController)),
                                 ],
                               ),
-                            )),
+                            )).yetkiVarMi(cariDetayModel?.bakiyeList?.any((element) => element.dovizTipi == 0) ?? false),
                       ],
                     )),
             CustomWidgetWithLabel(
               text: "Risk Bilgileri",
+              onlyLabelpaddingLeft: UIHelper.lowSize,
               child: Wrap(children: [
                 Row(
                   children: [
-                    Expanded(
-                        child: CustomTextField(
-                            readOnly: true,
-                            labelText: "Borç Toplamı",
-                            controller: borcToplamiController)),
-                    Expanded(
-                        child: CustomTextField(
-                            readOnly: true,
-                            labelText: "Alacak Toplamı",
-                            controller: alacakToplamiController)),
+                    Expanded(child: CustomTextField(readOnly: true, labelText: "Borç Toplamı", controller: borcToplamiController)),
+                    Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak Toplamı", controller: alacakToplamiController)),
                   ],
                 ),
-                CustomTextField(
-                    readOnly: true,
-                    labelText: "Bakiye",
-                    controller: bakiyeToplamiController),
+                CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeToplamiController),
                 Row(
                   children: [
-                    Expanded(
-                        child: CustomTextField(
-                            readOnly: true,
-                            labelText: "Risk Limiti",
-                            controller: riskLimitiController)),
-                    Expanded(
-                        child: CustomTextField(
-                            readOnly: true,
-                            labelText: "Teminat",
-                            controller: teminatController)),
+                    Expanded(child: CustomTextField(readOnly: true, labelText: "Risk Limiti", controller: riskLimitiController)),
+                    Expanded(child: CustomTextField(readOnly: true, labelText: "Teminat", controller: teminatController)),
                   ],
                 ),
                 Row(
@@ -224,15 +136,13 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                         child: CustomTextField(
                             readOnly: true,
                             labelText: "Senet Asıl Riski",
-                            valueText:
-                                "% ${CariDetayModel.instance.senetAsilRiskO?.toIntIfDouble.toStringIfNotNull ?? ""}",
+                            valueText: "% ${CariDetayModel.instance.senetAsilRiskO?.toIntIfDouble.toStringIfNotNull ?? ""}",
                             controller: senetAsilController)),
                     Expanded(
                         child: CustomTextField(
                             readOnly: true,
                             labelText: "Senet Ciro Riski",
-                            valueText:
-                                "% ${CariDetayModel.instance.senetCiroRiskO?.toIntIfDouble.toStringIfNotNull ?? ""}",
+                            valueText: "% ${CariDetayModel.instance.senetCiroRiskO?.toIntIfDouble.toStringIfNotNull ?? ""}",
                             controller: senetCiroController)),
                   ],
                 ),
@@ -242,58 +152,32 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                         child: CustomTextField(
                             readOnly: true,
                             labelText: "Çek Asıl Riski",
-                            valueText:
-                                "% ${CariDetayModel.instance.senetAsilRiskO?.toIntIfDouble.toStringIfNotNull ?? ""}",
+                            valueText: "% ${CariDetayModel.instance.senetAsilRiskO?.toIntIfDouble.toStringIfNotNull ?? ""}",
                             controller: cekAsilController)),
                     Expanded(
                         child: CustomTextField(
                             readOnly: true,
                             labelText: "Çek Ciro Riski",
-                            valueText:
-                                "% ${CariDetayModel.instance.senetCiroRiskO?.toIntIfDouble.toStringIfNotNull ?? ""}",
+                            valueText: "% ${CariDetayModel.instance.senetCiroRiskO?.toIntIfDouble.toStringIfNotNull ?? ""}",
                             controller: cekCiroController)),
                   ],
                 ),
                 Row(
                   children: [
-                    Expanded(
-                        child: CustomTextField(
-                            readOnly: true,
-                            labelText: "Sipariş Riski",
-                            controller: siparisController)),
-                    Expanded(
-                        child: CustomTextField(
-                            readOnly: true,
-                            labelText: "Sevk Riski",
-                            controller: sevkController)),
+                    Expanded(child: CustomTextField(readOnly: true, labelText: "Sipariş Riski", controller: siparisController)),
+                    Expanded(child: CustomTextField(readOnly: true, labelText: "Sevk Riski", controller: sevkController)),
                   ],
                 ),
                 Row(
                   children: [
-                    Expanded(
-                        child: CustomTextField(
-                            readOnly: true,
-                            labelText: "Yükleme Riski",
-                            controller: yuklemelerController)),
-                    Expanded(
-                        child: CustomTextField(
-                            readOnly: true,
-                            labelText: "İrsaliye Riski",
-                            controller: irsaliyeController)),
+                    Expanded(child: CustomTextField(readOnly: true, labelText: "Yükleme Riski", controller: yuklemelerController)),
+                    Expanded(child: CustomTextField(readOnly: true, labelText: "İrsaliye Riski", controller: irsaliyeController)),
                   ],
                 ),
                 Row(
                   children: [
-                    Expanded(
-                        child: CustomTextField(
-                            readOnly: true,
-                            labelText: "Teminat Riski",
-                            controller: teminatRiskiController)),
-                    Expanded(
-                        child: CustomTextField(
-                            readOnly: true,
-                            labelText: "Toplam Risk",
-                            controller: toplamRiskController)),
+                    Expanded(child: CustomTextField(readOnly: true, labelText: "Teminat Riski", controller: teminatRiskiController)),
+                    Expanded(child: CustomTextField(readOnly: true, labelText: "Toplam Risk", controller: toplamRiskController)),
                   ],
                 ),
               ]),
@@ -305,36 +189,20 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
   String getBakiye(String paraBirimi) {
     if (bakiyeList.ext.isNotNullOrEmpty) {
       if (paraBirimi == mainCurrency) {
-        if (bakiyeList
-                ?.firstWhereOrNull((element) => element.dovizAdi == null) !=
-            null) {
-          return bakiyeList
-                  ?.firstWhereOrNull((element) => element.dovizAdi == null)
-                  ?.bakiye
-                  ?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
-              "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "0";
         }
       } else if (paraBirimi == "Dolar") {
-        if (bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 1) !=
-            null) {
-          return bakiyeList
-                  ?.firstWhereOrNull((element) => element.dovizTipi == 1)
-                  ?.bakiye
-                  ?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
-              "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 1) != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 1)?.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "0";
         }
       } else if (paraBirimi == "Euro") {
-        if (bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 2) !=
-            null) {
-          return bakiyeList
-                  ?.firstWhereOrNull((element) => element.dovizTipi == 2)
-                  ?.bakiye
-                  ?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
-              "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 2) != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 2)?.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "0";
         }
@@ -349,38 +217,20 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
   String getAlacak(String paraBirimi) {
     if (bakiyeList.ext.isNotNullOrEmpty) {
       if (paraBirimi == mainCurrency) {
-        if (bakiyeList
-                ?.firstWhereOrNull((element) => element.dovizAdi == null) !=
-            null) {
-          return bakiyeList
-                  ?.firstWhereOrNull((element) => element.dovizAdi == null)
-                  ?.alacakToplami
-                  ?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
-              "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.alacakToplami?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "0";
         }
       } else if (paraBirimi == "Dolar") {
-        if (bakiyeList
-                ?.firstWhereOrNull((element) => element.dovizAdi == "\$") !=
-            null) {
-          return bakiyeList
-                  ?.firstWhereOrNull((element) => element.dovizAdi == "\$")
-                  ?.alacakToplami
-                  ?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
-              "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$") != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$")?.alacakToplami?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "0";
         }
       } else if (paraBirimi == "Euro") {
-        if (bakiyeList
-                ?.firstWhereOrNull((element) => element.dovizAdi == "€") !=
-            null) {
-          return bakiyeList
-                  ?.firstWhereOrNull((element) => element.dovizAdi == "€")
-                  ?.alacakToplami
-                  ?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
-              "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€") != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€")?.alacakToplami?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "0";
         }
@@ -395,38 +245,20 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
   String getBorc(String paraBirimi) {
     if (bakiyeList.ext.isNotNullOrEmpty) {
       if (paraBirimi == mainCurrency) {
-        if (bakiyeList
-                ?.firstWhereOrNull((element) => element.dovizAdi == null) !=
-            null) {
-          return bakiyeList
-                  ?.firstWhereOrNull((element) => element.dovizAdi == null)
-                  ?.borcToplami
-                  ?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
-              "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.borcToplami?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "";
         }
       } else if (paraBirimi == "Dolar") {
-        if (bakiyeList
-                ?.firstWhereOrNull((element) => element.dovizAdi == "\$") !=
-            null) {
-          return bakiyeList
-                  ?.firstWhereOrNull((element) => element.dovizAdi == "\$")
-                  ?.borcToplami
-                  ?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
-              "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$") != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$")?.borcToplami?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "";
         }
       } else if (paraBirimi == "Euro") {
-        if (bakiyeList
-                ?.firstWhereOrNull((element) => element.dovizAdi == "€") !=
-            null) {
-          return bakiyeList
-                  ?.firstWhereOrNull((element) => element.dovizAdi == "€")
-                  ?.borcToplami
-                  ?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
-              "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€") != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€")?.borcToplami?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "";
         }

@@ -2,7 +2,6 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:kartal/kartal.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../constants/extensions/list_extensions.dart";
@@ -69,6 +68,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       // if (controller.)
+      viewModel.setShowClearButton(controller.text != "");
       controller.addListener(() => viewModel.setShowClearButton(controller.text != ""));
     });
     super.initState();
@@ -92,44 +92,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
   }
 
   Widget get textFormField {
-    var suffixList = [
-      if (widget.onClear != null)
-        Observer(builder: (_) {
-          return Visibility(
-            visible: (viewModel.showClearButton == true) && (widget.isMust != true),
-            child: IconButton(
-              padding: EdgeInsets.zero,
-              onPressed: () {
-                controller.clear();
-                widget.onClear!();
-                // viewModel.setShowClearButton(false);
-              },
-              icon: const Icon(Icons.close),
-            ),
-          );
-        }),
-      if (widget.suffix != null) widget.suffix!,
-      if (widget.isDateTime == true)
-        IconButton(
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(),
-            onPressed: widget.onTap,
-            icon: const Icon(Icons.date_range_outlined),
-            style: ButtonStyle(
-              padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
-              splashFactory: NoSplash.splashFactory,
-            )),
-      if (widget.suffixMore == true)
-        IconButton(
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(),
-            onPressed: widget.onTap,
-            icon: const Icon(Icons.more_horiz_outlined),
-            style: ButtonStyle(
-              padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
-              splashFactory: NoSplash.splashFactory,
-            )),
-    ];
     return TextFieldTapRegion(
       onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
       onTapInside: (event) => SelectableText.rich(TextSpan(children: [TextSpan(text: controller.text)])),
@@ -161,11 +123,49 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   ),
                   borderRadius: BorderRadius.circular(UIHelper.midSize),
                   gapPadding: 0),
-              suffixIcon: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: suffixList.nullCheckWithGeneric,
-              ).yetkiVarMi(suffixList.ext.isNotNullOrEmpty),
+              suffixIcon: widget.suffix != null || widget.isDateTime == true || widget.suffixMore == true
+                  ? Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Observer(builder: (_) {
+                          return Visibility(
+                            visible: (viewModel.showClearButton == true) && (widget.isMust != true),
+                            child: IconButton(
+                              padding: EdgeInsets.zero,
+                              onPressed: () {
+                                controller.clear();
+                                widget.onClear!();
+                                // viewModel.setShowClearButton(false);
+                              },
+                              icon: const Icon(Icons.close),
+                            ),
+                          );
+                        }).yetkiVarMi(widget.onClear != null),
+                        if (widget.suffix != null) widget.suffix!,
+                        if (widget.isDateTime == true)
+                          IconButton(
+                              padding: EdgeInsets.zero,
+                              constraints: const BoxConstraints(),
+                              onPressed: widget.onTap,
+                              icon: const Icon(Icons.date_range_outlined),
+                              style: ButtonStyle(
+                                padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                                splashFactory: NoSplash.splashFactory,
+                              )),
+                        if (widget.suffixMore == true)
+                          IconButton(
+                              padding: EdgeInsets.zero,
+                              constraints: const BoxConstraints(),
+                              onPressed: widget.onTap,
+                              icon: const Icon(Icons.more_horiz_outlined),
+                              style: ButtonStyle(
+                                padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                                splashFactory: NoSplash.splashFactory,
+                              )),
+                      ].where((element) => element is! SizedBox).toList().nullCheckWithGeneric,
+                    )
+                  : null,
               label: Wrap(
                 direction: Axis.horizontal,
                 children: [

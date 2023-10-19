@@ -359,7 +359,7 @@ class BottomSheetDialogManager {
     return null;
   }
 
-  Future<StokMuhasebeKoduModel?> showMuhasebeKoduBottomSheetDialog(BuildContext context, {bool? stokMu}) async {
+  Future<StokMuhasebeKoduModel?> showMuhasebeKoduBottomSheetDialog(BuildContext context, {bool? stokMu }) async {
     if (viewModel.muhasebeKoduList.ext.isNullOrEmpty) {
       viewModel.changeMuhasebeKoduList(await NetworkManager().getMuhasebeKodlari());
     }

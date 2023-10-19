@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/model/base_edit_model.dart";
+import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
@@ -161,21 +162,44 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       _teslimCariController.text = result.cariAdi ?? "";
                     }
                   }).yetkiVarMi(yetkiController.sevkiyatIrsAciklamaAlanlari("teslim_cari")),
-              CustomTextField(
-                  labelText: "Plasiyer",
-                  readOnly: true,
-                  isMust: true,
-                  suffixMore: true,
-                  controller: _plasiyerController,
-                  enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("plasiyer"),
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                  onTap: () async {
-                    var result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
-                    if (result != null) {
-                      _plasiyerController.text = result.plasiyerAciklama ?? "";
-                      viewModel.setPlasiyer(result);
-                    }
-                  }).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi && yetkiController.sevkiyatIrsAciklamaAlanlari("plasiyer")),
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomTextField(
+                        labelText: "Proje",
+                        readOnly: true,
+                        isMust: true,
+                        suffixMore: true,
+                        controller: _plasiyerController,
+                        enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("proje"),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                        onTap: () async {
+                          var result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
+                          if (result is BaseProjeModel) {
+                            _plasiyerController.text = result.projeAciklama ?? "";
+                            viewModel.setProje(result);
+                          }
+                        }).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && yetkiController.sevkiyatIrsAciklamaAlanlari("proje")),
+                  ),
+                  Expanded(
+                    child: CustomTextField(
+                        labelText: "Plasiyer",
+                        readOnly: true,
+                        isMust: true,
+                        suffixMore: true,
+                        controller: _plasiyerController,
+                        enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("plasiyer"),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                        onTap: () async {
+                          var result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
+                          if (result != null) {
+                            _plasiyerController.text = result.plasiyerAciklama ?? "";
+                            viewModel.setPlasiyer(result);
+                          }
+                        }).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi && yetkiController.sevkiyatIrsAciklamaAlanlari("plasiyer")),
+                  ),
+                ],
+              ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

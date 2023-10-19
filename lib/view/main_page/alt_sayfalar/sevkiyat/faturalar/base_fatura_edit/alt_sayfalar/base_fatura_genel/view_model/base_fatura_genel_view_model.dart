@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
@@ -42,6 +43,12 @@ abstract class _BaseFaturaGenelViewModelBase with Store {
   @action
   void setPlasiyer(PlasiyerList? value) {
     model = model.copyWith(plasiyerKodu: value?.plasiyerKodu, plasiyerAciklama: value?.plasiyerAciklama);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+    @action
+  void setProje(BaseProjeModel? value) {
+    model = model.copyWith(projeAciklama: value?.projeAciklama, projeKodu: value?.projeKodu);
     BaseSiparisEditModel.setInstance(model);
   }
 
