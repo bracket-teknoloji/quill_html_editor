@@ -159,7 +159,9 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as int)
               .toList()
       ..malKabulAlisIrsGizlenecekAlanlar =
-          json['malKabul_AlisIrs_GizlenecekAlanlar'] as List<dynamic>?
+          (json['malKabul_AlisIrs_GizlenecekAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
       ..malKabulAlisIrsAciklamaAlanlari =
           (json['malKabul_AlisIrs_AciklamaAlanlari'] as List<dynamic>?)
               ?.map((e) => e as int)
@@ -1103,7 +1105,9 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String)
               .toList()
       ..cariCariKartiGizlenecekAlanlar =
-          json['cari_CariKarti_GizlenecekAlanlar'] as List<dynamic>?
+          (json['cari_CariKarti_GizlenecekAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
       ..cariCariHareketleri = json['cari_CariHareketleri'] as bool?
       ..cariCariHarKaydet = json['cari_CariHar_Kaydet'] as bool?
       ..cariCariHarDuzelt = json['cari_CariHar_Duzelt'] as bool?

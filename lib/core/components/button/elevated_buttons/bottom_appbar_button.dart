@@ -13,8 +13,7 @@ class AppBarButton extends StatelessWidget {
   const AppBarButton({super.key, this.child, this.onPressed, this.icon, this.hasFilter, this.iconWidget});
 
   @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
+  Widget build(BuildContext context) => ElevatedButton(
         style: ElevatedButton.styleFrom(
           alignment: Alignment.center,
           padding: UIHelper.zeroPadding,
@@ -29,17 +28,14 @@ class AppBarButton extends StatelessWidget {
             runAlignment: WrapAlignment.start,
             crossAxisAlignment: WrapCrossAlignment.center,
             direction: context.isPortrait ? Axis.vertical : Axis.horizontal,
-            children: [
-              icon != null
-                  ? Icon(
+            children: <Widget?>[
+              if (icon != null) Icon(
                       icon,
                       size: 20,
                       fill: 1,
                       color: (hasFilter ?? false) ? UIHelper.primaryColor : null,
-                    )
-                  : null,
+                    ) else null,
               iconWidget ?? const SizedBox(),
               child
             ].nullCheckWithGeneric));
-  }
 }

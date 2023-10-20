@@ -1,3 +1,3 @@
 class DurationHelper {
-  static const durationLow = Duration(milliseconds: 300);
+  static const Duration durationLow = Duration(milliseconds: 300);
 }

@@ -4,11 +4,10 @@ import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.da
 
 part "stok_ihtiyac_raporu_view_model.g.dart";
 
-class StokIhtiyacRaporuViewModel = _StokIhtiyacRaporuViewModelBase
-    with _$StokIhtiyacRaporuViewModel;
+class StokIhtiyacRaporuViewModel = _StokIhtiyacRaporuViewModelBase with _$StokIhtiyacRaporuViewModel;
 
 abstract class _StokIhtiyacRaporuViewModelBase with Store {
-  final Map<String, String> siralaMap = {
+  final Map<String, String> siralaMap = <String, String>{
     "Stok Kodu": "KODU",
     "Stok Adı": "ADI",
     "İhtiyaç (Artan)": "IHTIYAC",
@@ -30,28 +29,20 @@ abstract class _StokIhtiyacRaporuViewModelBase with Store {
   //* Model
   //*
   @observable
-  PdfModel pdfModel = PdfModel(
-      raporOzelKod: "Rapor_StokIhtiyac",
-      standart: true,
-      dicParams: DicParams(sirala: "IHTIYAC_DESC"));
+  PdfModel pdfModel = PdfModel(raporOzelKod: "Rapor_StokIhtiyac", standart: true, dicParams: DicParams(sirala: "IHTIYAC_DESC"));
 
   @action
-  void setSirala(String? value) =>
-      pdfModel.dicParams = pdfModel.dicParams?.copyWith(sirala: value);
+  void setSirala(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(sirala: value);
   @action
-  void setStokKodu(String? value) =>
-      pdfModel.dicParams = pdfModel.dicParams?.copyWith(stokKodu: value);
+  void setStokKodu(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(stokKodu: value);
   @action
-  void setCariKodu(String? value) =>
-      pdfModel.dicParams = pdfModel.dicParams?.copyWith(cariKodu: value);
+  void setCariKodu(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(cariKodu: value);
   @action
-  void setBelgeNo(String? value) =>
-      pdfModel.dicParams = pdfModel.dicParams?.copyWith(belgeNo: value);
+  void setBelgeNo(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(belgeNo: value);
   //* Future
   //*
   @observable
-  ObservableFuture<bool?> futureController =
-      ObservableFuture(Future.error(false));
+  ObservableFuture<bool?> futureController = ObservableFuture(Future.error(false));
 
   @action
   void setFuture() => futureController = ObservableFuture.value(true);

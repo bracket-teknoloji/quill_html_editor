@@ -5,8 +5,7 @@ import "../model/stok_hareketleri_model.dart";
 
 part "stok_hareketleri_view_model.g.dart";
 
-class StokHareketleriViewModel = _StokHareketleriViewModelBase
-    with _$StokHareketleriViewModel;
+class StokHareketleriViewModel = _StokHareketleriViewModelBase with _$StokHareketleriViewModel;
 
 abstract class _StokHareketleriViewModelBase with Store {
   @observable
@@ -16,7 +15,7 @@ abstract class _StokHareketleriViewModelBase with Store {
   void setCariListesiModel(CariListesiModel? model) => cariListesiModel = model;
 
   @observable
-  ObservableList<int> isSelected = [0, 1, 2].asObservable();
+  ObservableList<int> isSelected = <int>[0, 1, 2].asObservable();
 
   // @action
   // void resetIsSelected() => isSelected = [true, false, false].asObservable();
@@ -44,7 +43,7 @@ abstract class _StokHareketleriViewModelBase with Store {
           : "C";
 
   @observable
-  Map<String, String> hareketTuruMap = {
+  Map<String, String> hareketTuruMap = <String, String>{
     "Devir": "A",
     "Depo Transferi": "B",
     "Üretim": "C",
@@ -61,9 +60,9 @@ abstract class _StokHareketleriViewModelBase with Store {
   };
 
   @observable
-  List<String> hareketYonuList = ["Tümü", "Giriş", "Çıkış"];
+  List<String> hareketYonuList = <String>["Tümü", "Giriş", "Çıkış"];
   @observable
-  List<String>? arrHareketTuru = [];
+  List<String>? arrHareketTuru = <String>[];
 
   @action
   void addArrHareketTuru(String value) => arrHareketTuru?.add(value);
@@ -72,7 +71,7 @@ abstract class _StokHareketleriViewModelBase with Store {
   @computed
   String get getArrHareketTuru => arrHareketTuru!.join(", ");
   @action
-  void clearArrHareketTuru() => arrHareketTuru = [];
+  void clearArrHareketTuru() => arrHareketTuru = <String>[];
   @observable
   bool dovizliFiyat = false;
 
@@ -101,7 +100,7 @@ abstract class _StokHareketleriViewModelBase with Store {
   }
 
   @observable
-  List<StokHareketleriModel>? stokHareketleri = [];
+  List<StokHareketleriModel>? stokHareketleri = <StokHareketleriModel>[];
 
   @action
   void setStokHareketleri(List<StokHareketleriModel> value) {
@@ -109,16 +108,11 @@ abstract class _StokHareketleriViewModelBase with Store {
   }
 
   @action
-  void addStokHareketleri(StokHareketleriModel value) =>
-      stokHareketleri?.add(value);
+  void addStokHareketleri(StokHareketleriModel value) => stokHareketleri?.add(value);
 
   @observable
-  List<StokHareketleriModel>? filteredStokHareketleri = [];
+  List<StokHareketleriModel>? filteredStokHareketleri = <StokHareketleriModel>[];
 
   @action
-  void filterStokHareketleri(String value) =>
-      filteredStokHareketleri = stokHareketleri
-          ?.where((element) =>
-              element.fisno!.toLowerCase().contains(value.toLowerCase()))
-          .toList();
+  void filterStokHareketleri(String value) => filteredStokHareketleri = stokHareketleri?.where((StokHareketleriModel element) => element.fisno!.toLowerCase().contains(value.toLowerCase())).toList();
 }

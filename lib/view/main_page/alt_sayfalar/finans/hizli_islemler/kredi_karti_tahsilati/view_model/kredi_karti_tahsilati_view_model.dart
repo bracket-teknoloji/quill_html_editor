@@ -1,4 +1,6 @@
 import "package:mobx/mobx.dart";
+import "package:uuid/uuid.dart";
+
 import "../../../../../../../core/base/model/banka_hesaplari_model.dart";
 import "../../../../../../../core/base/model/banka_sozlesmesi_model.dart";
 import "../../../../../../../core/base/model/base_network_mixin.dart";
@@ -12,9 +14,8 @@ import "../../../../../../../core/constants/extensions/date_time_extensions.dart
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../../model/param_model.dart";
 import "../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/model/param_model.dart";
-import "package:uuid/uuid.dart";
 
 part "kredi_karti_tahsilati_view_model.g.dart";
 
@@ -46,7 +47,7 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
   TahsilatRequestModel model = TahsilatRequestModel(tahsilatmi: true, yeniKayit: true, gc: "G", tag: "TahsilatModel", pickerBelgeTuru: "KKT", hesapTipi: "T");
 
   @computed
-  String? get getCariBakiye => cariBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
+  String? get getCariBakiye => cariBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
 
   @action
   void setCariBakiye(double? value) => cariBakiye = value;
@@ -132,8 +133,8 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getSiradakiKod() async {
-    var result = await networkManager.dioGet<BaseSiparisEditModel>(
-        path: ApiUrls.getSiradakiBelgeNo, bodyModel: BaseSiparisEditModel(), showLoading: true, queryParameters: {"Seri": model.belgeNo ?? "", "BelgeTipi": "TH", "EIrsaliye": "H"});
+    final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<BaseSiparisEditModel>(
+        path: ApiUrls.getSiradakiBelgeNo, bodyModel: BaseSiparisEditModel(), showLoading: true, queryParameters: <String, dynamic>{"Seri": model.belgeNo ?? "", "BelgeTipi": "TH", "EIrsaliye": "H"});
     if (result.data is List) {
       setBelgeNo((result.data.first as BaseSiparisEditModel).belgeNo);
     }
@@ -141,8 +142,8 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getBankaSozlesmesi() async {
-    var result = await networkManager
-        .dioGet<BankaSozlesmesiModel>(path: ApiUrls.getBankaSozlesmeleri, bodyModel: BankaSozlesmesiModel(), showLoading: true, queryParameters: {"Tarih": model.tarih.toDateString, "EkranTipi": "R"});
+    final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<BankaSozlesmesiModel>(
+        path: ApiUrls.getBankaSozlesmeleri, bodyModel: BankaSozlesmesiModel(), showLoading: true, queryParameters: <String, dynamic>{"Tarih": model.tarih.toDateString, "EkranTipi": "R"});
     if (result.data is List) {
       setBankaSozlesmesiList(result.data.cast<BankaSozlesmesiModel>());
     }
@@ -150,7 +151,7 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getMuhaRefList() async {
-    var result = await networkManager.dioGet<MuhasebeReferansModel>(path: ApiUrls.getMuhaRefList, bodyModel: MuhasebeReferansModel(), showLoading: true);
+    final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<MuhasebeReferansModel>(path: ApiUrls.getMuhaRefList, bodyModel: MuhasebeReferansModel(), showLoading: true);
     if (result.data is List) {
       setMuhaRefList(result.data.cast<MuhasebeReferansModel>());
     }
@@ -158,7 +159,7 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getSeri() async {
-    var result = await networkManager.dioGet<SeriModel>(path: ApiUrls.getDekontSeriler, bodyModel: SeriModel());
+    final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<SeriModel>(path: ApiUrls.getDekontSeriler, bodyModel: SeriModel());
     if (result.data is List) {
       setSeriList(result.data.cast<SeriModel>());
     }
@@ -166,7 +167,7 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getBankaHesaplari() async {
-    var result = await networkManager.dioGet<BankaHesaplariModel>(path: ApiUrls.getBankaHesaplari, bodyModel: BankaHesaplariModel());
+    final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<BankaHesaplariModel>(path: ApiUrls.getBankaHesaplari, bodyModel: BankaHesaplariModel());
     if (result.data is List) {
       setBankaHesaplariList(result.data.cast<BankaHesaplariModel>());
     }
@@ -174,7 +175,8 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<KasaList?> getKasalar(String? kasaKodu) async {
-    var result = await networkManager.dioGet<KasaList>(path: ApiUrls.getKasalar, bodyModel: KasaList(), showLoading: true, queryParameters: {"KisitYok": true, "KasaKodu": kasaKodu});
+    final GenericResponseModel<NetworkManagerMixin> result =
+        await networkManager.dioGet<KasaList>(path: ApiUrls.getKasalar, bodyModel: KasaList(), showLoading: true, queryParameters: <String, dynamic>{"KisitYok": true, "KasaKodu": kasaKodu});
     if (result.data is List) {
       return result.data.first as KasaList;
     }

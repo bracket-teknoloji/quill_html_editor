@@ -3,12 +3,12 @@ import "package:flutter/material.dart";
 import "ui_helper/ui_helper.dart";
 
 class LoginConstants {
-  static var loginFormKey = GlobalKey<FormState>();
-  static var linearGradient = LinearGradient(
+  static GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  static LinearGradient linearGradient = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomRight,
-    stops: const [0.2, 0.8],
-    colors: [
+    stops: const <double>[0.2, 0.8],
+    colors: <Color>[
       Colors.black,
       UIHelper.primaryColor,
     ],

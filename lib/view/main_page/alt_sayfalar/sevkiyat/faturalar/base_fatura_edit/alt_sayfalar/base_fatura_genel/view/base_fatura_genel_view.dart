@@ -1,19 +1,22 @@
+import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/base_edit_model.dart";
-import "package:picker/core/base/model/base_proje_model.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/sevkiyat/faturalar/base_fatura_edit/alt_sayfalar/base_fatura_genel/view_model/base_fatura_genel_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
+
+import "../../../../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../../../../core/base/model/base_proje_model.dart";
+import "../../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../../model/param_model.dart";
+import "../../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../../../siparis/siparisler/model/siparis_edit_request_model.dart";
+import "../view_model/base_fatura_genel_view_model.dart";
 
 class BaseFaturaGenelView extends StatefulWidget {
   final BaseEditModel<SiparisEditRequestModel> model;
@@ -63,7 +66,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     _cariController = TextEditingController(text: model.cariAdi);
     _teslimCariController = TextEditingController(text: model.teslimCariAdi);
     _plasiyerController = TextEditingController(text: model.plasiyerAciklama);
-    _belgeTipiController = TextEditingController(text: viewModel.belgeTipi.keys.firstWhere((element) => viewModel.belgeTipi[element] == model.tipi));
+    _belgeTipiController = TextEditingController(text: viewModel.belgeTipi.keys.firstWhereOrNull((String element) => viewModel.belgeTipi[element] == model.tipi));
     _tarihController = TextEditingController(text: model.tarih.toDateString);
     _topluDepoController = TextEditingController(text: model.topluDepo.toStringIfNotNull);
     _ozelKod2Controller = TextEditingController(text: model.ozelKod2);
@@ -118,208 +121,207 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: UIHelper.lowPadding,
-      child: SingleChildScrollView(
-        child: Form(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Card(
-                  color: theme.colorScheme.background,
-                  child: ListTile(
-                    leading: const Icon(Icons.info_outline),
-                    title: Text("E-Fatura Taslağı (${model.resmiBelgeNo})"),
-                  )).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.efaturaMi == "E"),
-              CustomTextField(labelText: "Belge No", isMust: true, controller: _belgeNoController, enabled: enable, maxLength: 15, onTap: () {}),
-              CustomTextField(labelText: "Resmi Belge No", isMust: true, controller: _resmiBelgeNoController, enabled: enable, maxLength: 16, onTap: () {}),
-              CustomTextField(
-                  labelText: "Cari",
-                  readOnly: true,
-                  isMust: true,
-                  suffixMore: true,
-                  controller: _cariController,
-                  enabled: isEkle,
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
-                  onTap: () async {
-                    var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                    if (result != null) {
-                      _cariController.text = result.cariAdi ?? "";
-                    }
-                  }),
-              CustomTextField(
-                  labelText: "Teslim Cari",
-                  readOnly: true,
-                  isMust: true,
-                  suffixMore: true,
-                  controller: _teslimCariController,
-                  enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("teslim_cari"),
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model.teslimCari ?? "")),
-                  onTap: () async {
-                    var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                    if (result != null) {
-                      _teslimCariController.text = result.cariAdi ?? "";
-                    }
-                  }).yetkiVarMi(yetkiController.sevkiyatIrsAciklamaAlanlari("teslim_cari")),
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomTextField(
-                        labelText: "Proje",
-                        readOnly: true,
-                        isMust: true,
-                        suffixMore: true,
-                        controller: _plasiyerController,
-                        enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("proje"),
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                        onTap: () async {
-                          var result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
-                          if (result is BaseProjeModel) {
-                            _plasiyerController.text = result.projeAciklama ?? "";
-                            viewModel.setProje(result);
-                          }
-                        }).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && yetkiController.sevkiyatIrsAciklamaAlanlari("proje")),
-                  ),
-                  Expanded(
-                    child: CustomTextField(
-                        labelText: "Plasiyer",
-                        readOnly: true,
-                        isMust: true,
-                        suffixMore: true,
-                        controller: _plasiyerController,
-                        enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("plasiyer"),
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                        onTap: () async {
-                          var result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
-                          if (result != null) {
-                            _plasiyerController.text = result.plasiyerAciklama ?? "";
-                            viewModel.setPlasiyer(result);
-                          }
-                        }).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi && yetkiController.sevkiyatIrsAciklamaAlanlari("plasiyer")),
-                  ),
-                ],
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
+  Widget build(BuildContext context) => Padding(
+        padding: UIHelper.lowPadding,
+        child: SingleChildScrollView(
+          child: Form(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Card(
+                    color: theme.colorScheme.background,
+                    child: ListTile(
+                      leading: const Icon(Icons.info_outline),
+                      title: Text("E-Fatura Taslağı (${model.resmiBelgeNo})"),
+                    )).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.efaturaMi == "E"),
+                CustomTextField(labelText: "Belge No", isMust: true, controller: _belgeNoController, enabled: enable, maxLength: 15, onTap: () {}),
+                CustomTextField(labelText: "Resmi Belge No", isMust: true, controller: _resmiBelgeNoController, enabled: enable, maxLength: 16, onTap: () {}),
+                CustomTextField(
+                    labelText: "Cari",
+                    readOnly: true,
+                    isMust: true,
+                    suffixMore: true,
+                    controller: _cariController,
+                    enabled: isEkle,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
+                    onTap: () async {
+                      final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                      if (result != null) {
+                        _cariController.text = result.cariAdi ?? "";
+                      }
+                    }),
+                CustomTextField(
+                    labelText: "Teslim Cari",
+                    readOnly: true,
+                    isMust: true,
+                    suffixMore: true,
+                    controller: _teslimCariController,
+                    enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("teslim_cari"),
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.teslimCari ?? "")),
+                    onTap: () async {
+                      final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                      if (result != null) {
+                        _teslimCariController.text = result.cariAdi ?? "";
+                      }
+                    }).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("teslim_cari")),
+                Row(
+                  children: <Widget>[
+                    Expanded(
                       child: CustomTextField(
-                          labelText: "Belge Tipi",
+                          labelText: "Proje",
                           readOnly: true,
                           isMust: true,
                           suffixMore: true,
-                          controller: _belgeTipiController,
-                          enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("belge_tipi"),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.tipi.toStringIfNotNull ?? "")),
+                          controller: _plasiyerController,
+                          enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("proje"),
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                           onTap: () async {
-                            var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                title: "Belge Tipi",
-                                children: List.generate(
-                                    viewModel.belgeTipi.length,
-                                    (index) => BottomSheetModel(
-                                        title: viewModel.belgeTipi.keys.toList()[index],
-                                        description: viewModel.belgeTipi.values.toList()[index].toStringIfNotNull,
-                                        value: viewModel.belgeTipi.entries.toList()[index])));
-                            if (result is MapEntry) {
-                              _belgeTipiController.text = result.key ?? "";
-                              viewModel.setBelgeTipi(result.value);
+                            final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
+                            if (result is BaseProjeModel) {
+                              _plasiyerController.text = result.projeAciklama ?? "";
+                              viewModel.setProje(result);
                             }
-                          })).yetkiVarMi(yetkiController.sevkiyatIrsAciklamaAlanlari("belge_tipi")),
-                  Expanded(
+                          }).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && yetkiController.sevkiyatSatisFatGizlenecekAlanlar("proje")),
+                    ),
+                    Expanded(
                       child: CustomTextField(
-                          labelText: "Tarih",
+                          labelText: "Plasiyer",
                           readOnly: true,
                           isMust: true,
-                          isDateTime: true,
-                          controller: _tarihController,
-                          enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("teslim_cari"),
+                          suffixMore: true,
+                          controller: _plasiyerController,
+                          enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("plasiyer"),
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                           onTap: () async {
-                            DateTime? result = await dialogManager.showDateTimePicker();
+                            final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
                             if (result != null) {
-                              _tarihController.text = result.toDateString;
-                              viewModel.setTarih(result);
+                              _plasiyerController.text = result.plasiyerAciklama ?? "";
+                              viewModel.setPlasiyer(result);
                             }
-                          })),
-                ],
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                          child: CustomTextField(
-                              labelText: "Toplu Depo",
-                              readOnly: true,
-                              suffixMore: true,
-                              controller: _topluDepoController,
-                              enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("toplu_depo"),
-                              valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo?.toStringIfNotNull ?? "")),
-                              onTap: () {}))
-                      .yetkiVarMi(yetkiController.sevkiyatIrsAciklamaAlanlari("toplu_depo")),
-                  Expanded(
-                      child: CustomTextField(
-                    labelText: "Özel Kod 2",
-                    readOnly: true,
-                    suffixMore: true,
-                    controller: _ozelKod2Controller,
-                    enabled: enable,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod2 ?? "")),
-                    onTap: () {},
-                  )),
-                ],
-              ),
-              CustomWidgetWithLabel(
-                  text: "KDV Dahil",
-                  isVertical: true,
-                  onlyLabelpaddingLeft: UIHelper.lowSize,
-                  child: Observer(builder: (_) {
-                    return Switch.adaptive(
-                        value: viewModel.kdvDahil, onChanged: (enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("kdv_dahil_haric")) ? (value) => viewModel.changeKdvDahil(value) : null);
-                  })).yetkiVarMi(yetkiController.sevkiyatIrsAciklamaAlanlari("kdv_dahil_haric")),
-              CustomWidgetWithLabel(
-                text: "Ek Açıklamalar",
-                onlyLabelpaddingLeft: UIHelper.lowSize,
-                child: Column(
-                  children: [
-                    CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi1 ?? "Açıklama 1", controller: _aciklama1Controller)
-                        .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(1)),
-                    CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi2 ?? "Açıklama 2", controller: _aciklama2Controller)
-                        .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(2)),
-                    CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi3 ?? "Açıklama 3", controller: _aciklama3Controller)
-                        .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(3)),
-                    CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi4 ?? "Açıklama 4", controller: _aciklama4Controller)
-                        .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(4)),
-                    CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi5 ?? "Açıklama 5", controller: _aciklama5Controller)
-                        .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(5)),
-                    CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi6 ?? "Açıklama 6", controller: _aciklama6Controller)
-                        .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(6)),
-                    CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi7 ?? "Açıklama 7", controller: _aciklama7Controller)
-                        .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(7)),
-                    CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi8 ?? "Açıklama 8", controller: _aciklama8Controller)
-                        .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(8)),
-                    CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi9 ?? "Açıklama 9", controller: _aciklama9Controller)
-                        .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(9)),
-                    CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi10 ?? "Açıklama 10", controller: _aciklama10Controller)
-                        .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(10)),
-                    CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi11 ?? "Açıklama 11", controller: _aciklama11Controller)
-                        .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(11)),
-                    CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi12 ?? "Açıklama 12", controller: _aciklama12Controller)
-                        .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(12)),
-                    CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi13 ?? "Açıklama 13", controller: _aciklama13Controller)
-                        .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(13)),
-                    CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi14 ?? "Açıklama 14", controller: _aciklama14Controller)
-                        .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(14)),
-                    CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi15 ?? "Açıklama 15", controller: _aciklama15Controller)
-                        .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(15)),
-                    CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi16 ?? "Açıklama 16", controller: _aciklama16Controller)
-                        .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(16)),
+                          }).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi && yetkiController.sevkiyatSatisFatGizlenecekAlanlar("plasiyer")),
+                    ),
                   ],
                 ),
-              )
-            ],
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(
+                        child: CustomTextField(
+                            labelText: "Belge Tipi",
+                            readOnly: true,
+                            isMust: true,
+                            suffixMore: true,
+                            controller: _belgeTipiController,
+                            enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("belge_tipi"),
+                            valueWidget: Observer(builder: (_) => Text(viewModel.model.tipi.toStringIfNotNull ?? "")),
+                            onTap: () async {
+                              final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                  title: "Belge Tipi",
+                                  children: List.generate(
+                                      viewModel.belgeTipi.length,
+                                      (int index) => BottomSheetModel(
+                                          title: viewModel.belgeTipi.keys.toList()[index],
+                                          description: viewModel.belgeTipi.values.toList()[index].toStringIfNotNull,
+                                          value: viewModel.belgeTipi.entries.toList()[index])));
+                              if (result is MapEntry) {
+                                _belgeTipiController.text = result.key ?? "";
+                                viewModel.setBelgeTipi(result.value);
+                              }
+                            })).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("belge_tipi")),
+                    Expanded(
+                        child: CustomTextField(
+                            labelText: "Tarih",
+                            readOnly: true,
+                            isMust: true,
+                            isDateTime: true,
+                            controller: _tarihController,
+                            enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("teslim_cari"),
+                            onTap: () async {
+                              final DateTime? result = await dialogManager.showDateTimePicker();
+                              if (result != null) {
+                                _tarihController.text = result.toDateString;
+                                viewModel.setTarih(result);
+                              }
+                            })),
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(
+                            child: CustomTextField(
+                                labelText: "Toplu Depo",
+                                readOnly: true,
+                                suffixMore: true,
+                                controller: _topluDepoController,
+                                enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("toplu_depo"),
+                                valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
+                                onTap: () {}))
+                        .yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("toplu_depo")),
+                    Expanded(
+                        child: CustomTextField(
+                      labelText: "Özel Kod 2",
+                      readOnly: true,
+                      suffixMore: true,
+                      controller: _ozelKod2Controller,
+                      enabled: enable,
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod2 ?? "")),
+                      onTap: () {},
+                    )),
+                  ],
+                ),
+                CustomWidgetWithLabel(
+                        text: "KDV Dahil",
+                        isVertical: true,
+                        onlyLabelpaddingLeft: UIHelper.lowSize,
+                        child: Observer(
+                            builder: (_) => Switch.adaptive(
+                                value: viewModel.kdvDahil,
+                                onChanged: (enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("kdv_dahil_haric")) ? (bool value) => viewModel.changeKdvDahil(value) : null)))
+                    .yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("kdv_dahil_haric")),
+                CustomWidgetWithLabel(
+                  text: "Ek Açıklamalar",
+                  onlyLabelpaddingLeft: UIHelper.lowSize,
+                  child: Column(
+                    children: <Widget>[
+                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi1 ?? "Açıklama 1", controller: _aciklama1Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(1)),
+                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi2 ?? "Açıklama 2", controller: _aciklama2Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(2)),
+                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi3 ?? "Açıklama 3", controller: _aciklama3Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(3)),
+                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi4 ?? "Açıklama 4", controller: _aciklama4Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(4)),
+                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi5 ?? "Açıklama 5", controller: _aciklama5Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(5)),
+                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi6 ?? "Açıklama 6", controller: _aciklama6Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(6)),
+                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi7 ?? "Açıklama 7", controller: _aciklama7Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(7)),
+                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi8 ?? "Açıklama 8", controller: _aciklama8Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(8)),
+                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi9 ?? "Açıklama 9", controller: _aciklama9Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(9)),
+                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi10 ?? "Açıklama 10", controller: _aciklama10Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(10)),
+                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi11 ?? "Açıklama 11", controller: _aciklama11Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(11)),
+                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi12 ?? "Açıklama 12", controller: _aciklama12Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(12)),
+                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi13 ?? "Açıklama 13", controller: _aciklama13Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(13)),
+                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi14 ?? "Açıklama 14", controller: _aciklama14Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(14)),
+                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi15 ?? "Açıklama 15", controller: _aciklama15Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(15)),
+                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi16 ?? "Açıklama 16", controller: _aciklama16Controller)
+                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(16)),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
-      ),
-    );
-  }
+      );
 }

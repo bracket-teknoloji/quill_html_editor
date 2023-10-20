@@ -53,9 +53,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Cari Dövizli Ekstre", pdfData: viewModel.pdfModel);
-  }
+  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Cari Dövizli Ekstre", pdfData: viewModel.pdfModel);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -65,7 +63,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
           padding: EdgeInsets.all(UIHelper.lowSize),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
+            children: <Widget>[
               RaporFiltreDateTimeBottomSheetView(
                 filterOnChanged: filterOnChanged,
                 baslangicTarihiController: baslangicTarihiController,
@@ -78,7 +76,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                 readOnly: true,
                 suffixMore: true,
                 onTap: () async {
-                  var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                  final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                   if (result != null) {
                     cariController.text = result.cariAdi ?? "";
                     viewModel.changeCariKodu(result.cariKodu ?? "");
@@ -86,7 +84,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                 },
               ),
               Row(
-                children: [
+                children: <Widget>[
                   Expanded(
                     child: CustomTextField(
                       labelText: "Döviz Tipi",
@@ -96,9 +94,9 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                       suffixMore: true,
                       onTap: () async {
                         List<DovizList>? dovizList = CacheManager.getAnaVeri()?.paramModel?.dovizList;
-                        dovizList = dovizList?.where((element) => element.dovizTipi != 0).toList();
-                        DovizList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                            title: "Döviz Tipi", children: dovizList!.map((e) => BottomSheetModel(title: e.isim ?? "", onTap: () => Get.back(result: e))).toList());
+                        dovizList = dovizList?.where((DovizList element) => element.dovizTipi != 0).toList();
+                        final DovizList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                            title: "Döviz Tipi", children: dovizList!.map((DovizList e) => BottomSheetModel(title: e.isim ?? "", onTap: () => Get.back(result: e))).toList());
                         if (result != null) {
                           dovizController.text = result.isim ?? "";
                           viewModel.changeDovizTipi(result.isim != mainCurrency ? (result.dovizTipi ?? (result.dovizKodu ?? 0)) : 0);
@@ -112,16 +110,13 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
               CustomWidgetWithLabel(
                   text: "$mainCurrency Hareketi Dökülsün",
                   isVertical: true,
-                  child: Observer(builder: (_) {
-                    return Switch.adaptive(
+                  child: Observer(builder: (_) => Switch.adaptive(
                         value: viewModel.tlHareketleriDokulsun,
-                        onChanged: (value) {
+                        onChanged: (bool value) {
                           viewModel.changeTlHareketleriDokulsun();
                           viewModel.pdfModel.dicParams?.tlHarDokulsun = value ? "E" : null;
-                        });
-                  })).paddingAll(UIHelper.lowSize),
-              Observer(builder: (_) {
-                return ElevatedButton(
+                        }))).paddingAll(UIHelper.lowSize),
+              Observer(builder: (_) => ElevatedButton(
                         onPressed: () {
                           if (viewModel.pdfModel.dicParams?.cariKodu == null) {
                             dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
@@ -133,8 +128,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                           }
                         },
                         child: const Text("Uygula"))
-                    .paddingAll(UIHelper.lowSize);
-              })
+                    .paddingAll(UIHelper.lowSize))
             ],
           ),
         ));

@@ -6,13 +6,10 @@ class BaseCariEditCariSecView extends StatefulWidget {
   const BaseCariEditCariSecView({super.key});
 
   @override
-  State<BaseCariEditCariSecView> createState() =>
-      _BaseCariEditCariSecViewState();
+  State<BaseCariEditCariSecView> createState() => _BaseCariEditCariSecViewState();
 }
 
 class _BaseCariEditCariSecViewState extends BaseState<BaseCariEditCariSecView> {
   @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
+  Widget build(BuildContext context) => Container();
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: discarded_futures
+
 import "dart:developer";
 import "dart:io";
 
@@ -14,6 +16,8 @@ import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listes
 import "../../../view/main_page/alt_sayfalar/finans/kasa/kasa_listesi/model/kasa_listesi_model.dart";
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+import "../../base/model/base_network_mixin.dart";
+import "../../base/model/generic_response_model.dart";
 import "../../base/model/login_dialog_model.dart";
 import "../../constants/enum/islem_tipi_enum.dart";
 import "../../constants/enum/siparis_tipi_enum.dart";
@@ -58,29 +62,26 @@ class DialogManager {
     ScaffoldMessenger.of(context).showSnackBar(_snackBarSuccess(message));
   }
 
-  Future<DateTime?> showDateTimePicker() async {
-    return await showDatePicker(
+  Future<DateTime?> showDateTimePicker() async => await showDatePicker(
       context: context,
       locale: Get.locale,
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime(2100),
     );
-  }
 
-  Future<void> showAlertDialog(String message) async {
-    return _baseDialog(
+  Future<void> showAlertDialog(String message) async => _baseDialog(
       dialogType: DialogType.error,
       btnOkText: "Tamam",
       body: Column(
-        children: [
+        children: <Widget>[
           Container(
             constraints: BoxConstraints(maxHeight: Get.height * 0.5),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
+                children: <Widget>[
                   const Padding(
                     padding: EdgeInsets.only(bottom: 10),
                     child: Text("Uyarı", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
@@ -102,7 +103,6 @@ class DialogManager {
       // onOk is rootNavigator true without Get
       onOk: () {},
     ).show();
-  }
 
   String get getAppData => "\nVersion: ${AppInfoModel.instance.version}\nTarih: ${DateTime.now().toDateTimeString()}\nE-mail: ${CacheManager.getHesapBilgileri?.uyeEmail ?? ""}";
 
@@ -113,7 +113,7 @@ class DialogManager {
         customHeader: const CircularProgressIndicator.adaptive(),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
             const Padding(
               padding: EdgeInsets.only(bottom: 10),
               child: Text("Uyarı"),
@@ -133,7 +133,7 @@ class DialogManager {
   void showLoadingDialog(String loadText) => _baseDialog(
         body: Center(
           child: Column(
-            children: [const CircularProgressIndicator.adaptive(), context.sized.emptySizedHeightBoxLow, Text(loadText, style: context.theme.textTheme.labelSmall)],
+            children: <Widget>[const CircularProgressIndicator.adaptive(), context.sized.emptySizedHeightBoxLow, Text(loadText, style: context.theme.textTheme.labelSmall)],
           ),
         ),
       ).show();
@@ -164,8 +164,11 @@ class DialogManager {
 
   void showGridViewDialog(Widget body) => _baseDialog(body: body, onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
-  void showCariGridViewDialog(CariListesiModel? model, [IslemTipiEnum? tip]) => _baseDialog(
-          body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: tip ?? IslemTipiEnum.cari), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader)
+  Future<dynamic> showCariGridViewDialog(CariListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async => await _baseDialog(
+          body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: tip ?? IslemTipiEnum.cari, onSelected: onSelected),
+          onOk: () {},
+          btnOkText: "İptal",
+          dialogType: DialogType.noHeader)
       .show();
 
   Future<dynamic> showKasaGridViewDialog(KasaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async => await _baseDialog(
@@ -193,12 +196,12 @@ class DialogManager {
         desc: "Çıkmak istediğinize emin misiniz?",
         dialogType: DialogType.question,
         onOk: () async {
-          final response = await NetworkManager().dioPost<LogoutModel>(path: ApiUrls.logoutUser, bodyModel: LogoutModel(), data: AccountModel.instance.toJson());
+          final GenericResponseModel<NetworkManagerMixin> response = await NetworkManager().dioPost<LogoutModel>(path: ApiUrls.logoutUser, bodyModel: LogoutModel(), data: AccountModel.instance.toJson());
           if (response.success ?? false) {
             showLoadingDialog("Çıkış yapılıyor...");
             log("Çıkış yapılıyor...");
-            CacheManager.setLogout(false);
-            Get.offAndToNamed("/login");
+            await CacheManager.setLogout(false);
+            await Get.offAndToNamed("/login");
           }
         },
         btnOkText: "Evet",
@@ -210,8 +213,7 @@ class DialogManager {
 
   void get hideAlertDialog => Get.back(closeOverlays: true);
 
-  AlertDialog loadingDialog() {
-    return AlertDialog(
+  AlertDialog loadingDialog() => AlertDialog(
       title: Text("Lütfen Bekleyiniz...", style: context.theme.textTheme.titleMedium),
       content: const SizedBox(
           height: 5,
@@ -220,11 +222,10 @@ class DialogManager {
             color: Colors.red,
           )),
     );
-  }
 
   AlertDialog listTileDialog({required String title}) {
-    Box box = Hive.box("accounts");
-    Box preferences = Hive.box("preferences");
+    final Box box = Hive.box("accounts");
+    final Box preferences = Hive.box("preferences");
     return AlertDialog(
       contentPadding: const EdgeInsets.all(0),
       actionsOverflowButtonSpacing: 0,
@@ -234,25 +235,25 @@ class DialogManager {
       ),
       iconColor: Colors.black,
       title: Text(title),
-      content: Column(mainAxisSize: MainAxisSize.min, children: [
+      content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
         ListTile(
             title: const Text("DEMO"),
             subtitle: const Text("demo"),
             leading: IconHelper.smallIcon("User-Account"),
             onTap: () {
-              Get.back(result: {"company": "DEMO", "user": "demo", "password": "demo"});
+              Get.back(result: <String, String>{"company": "DEMO", "user": "demo", "password": "demo"});
             }),
         ...List.generate(
           box.length,
-          (index) {
-            var title = box.getAt(index).firma.toString();
+          (int index) {
+            final String title = box.getAt(index).firma.toString();
             log(box.getAt(index).toString());
             return ListTile(
                 title: Text(title),
                 subtitle: Text(box.getAt(index).kullanici.toString()),
                 leading: IconHelper.smallIcon("User-Account"),
                 onTap: () {
-                  Get.back(result: {
+                  Get.back(result: <String, dynamic>{
                     "company": title,
                     "user": preferences.get(title)?[1] ?? "",
                     "password": preferences.get(title)?[2] ?? "",
@@ -261,7 +262,7 @@ class DialogManager {
           },
         ),
       ]),
-      actions: [
+      actions: <Widget>[
         Divider(
           color: UIHelper.primaryColor.withOpacity(0.3),
           thickness: 1,
@@ -270,7 +271,7 @@ class DialogManager {
           padding: UIHelper.lowPaddingVertical,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            children: <Widget>[
               Expanded(
                 child: TextButton(
                     onPressed: () {
@@ -283,7 +284,7 @@ class DialogManager {
               Expanded(
                 child: TextButton(
                     onPressed: () {
-                      dynamic result = {};
+                      final dynamic result = <dynamic,dynamic >{};
                       Get.back(result: result);
                     },
                     child: const Text(
@@ -306,8 +307,7 @@ class DialogManager {
 
   SnackBar _snackBarInfo(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: Colors.blueAccent);
 
-  AwesomeDialog _areYouSureDialog(void Function() onYes, String? desc) {
-    return _baseDialog(
+  AwesomeDialog _areYouSureDialog(void Function() onYes, String? desc) => _baseDialog(
       title: "Uyarı",
       desc: desc ?? "Bu işlemi yapmak istediğinizden emin misiniz?",
       dialogType: DialogType.question,
@@ -316,10 +316,9 @@ class DialogManager {
       onCancel: () {},
       btnCancelText: "Hayır",
     );
-  }
 
   Future selectCompanyDialog() {
-    Box preferences = CacheManager.preferencesBox;
+    final Box preferences = CacheManager.preferencesBox;
     return _baseDialog(
         btnOkText: "Firmaları Düzenle",
         btnCancelText: "Vazgeç",
@@ -329,7 +328,7 @@ class DialogManager {
           );
         },
         onCancel: () {},
-        body: Column(mainAxisSize: MainAxisSize.min, children: [
+        body: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
           Text("Şirket Seçiniz", style: Theme.of(context).textTheme.titleLarge),
           ListTile(
               title: const Text("demo"),
@@ -345,8 +344,8 @@ class DialogManager {
               }),
           ...List.generate(
             CacheManager.accountsBox.length,
-            (index) {
-              var title = (CacheManager.accountsBox.getAt(index)?.firma ?? "").toString();
+            (int index) {
+              final String title = (CacheManager.accountsBox.getAt(index)?.firma ?? "").toString();
               log(CacheManager.accountsBox.getAt(index).toString());
               return ListTile(
                   title: Text(title),
@@ -375,8 +374,7 @@ class DialogManager {
       Color? btnOkColor,
       Color? btnCancelColor,
       Widget? customHeader,
-      Widget? body}) {
-    return AwesomeDialog(
+      Widget? body}) => AwesomeDialog(
         keyboardAware: true,
         //* Standardı 15 olduğu için ve null kabul etmediği için 15 verdim.
         bodyHeaderDistance: dialogType != DialogType.noHeader ? 15 : UIHelper.lowSize,
@@ -392,7 +390,7 @@ class DialogManager {
                 : null,
         customHeader: customHeader,
         alignment: Alignment.center,
-        onDismissCallback: (type) {},
+        onDismissCallback: (DismissType type) {},
         reverseBtnOrder: false,
         barrierColor: Colors.black.withOpacity(0.9),
         dialogBorderRadius: UIHelper.lowBorderRadius,
@@ -419,5 +417,4 @@ class DialogManager {
         dismissOnBackKeyPress: false,
         dismissOnTouchOutside: false,
         body: body);
-  }
 }

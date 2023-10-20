@@ -23,17 +23,16 @@ class _BaseCariEditIletisimViewState extends State<BaseCariEditIletisimView> {
     }
     return ListView.builder(
       itemCount: _cariDetayModel.irtibatList?.length ?? 0,
-      itemBuilder: (context, index) {
-        return Card(
+      itemBuilder: (BuildContext context, int index) => Card(
           child: SizedBox(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 Text(_cariDetayModel.irtibatList?[index].yetkiliKisi ?? "", style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
                 Text(_cariDetayModel.irtibatList?[index].gorev ?? ""),
                 Row(
-                  children: [
+                  children: <Widget>[
                     Expanded(flex: 1, child: Text("Tel 1:", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey.withOpacity(0.5)))),
                     Expanded(flex: 3, child: Text(_cariDetayModel.irtibatList?[index].sabitTel1 ?? "")),
                   ],
@@ -41,7 +40,7 @@ class _BaseCariEditIletisimViewState extends State<BaseCariEditIletisimView> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+                  children: <Widget>[
                     Expanded(flex: 1, child: Text("E-Posta:", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey.withOpacity(0.5)))),
                     Expanded(flex: 3, child: Text(_cariDetayModel.irtibatList?[index].emailSplit?.replaceAll(";", "\n") ?? "")),
                   ],
@@ -49,8 +48,7 @@ class _BaseCariEditIletisimViewState extends State<BaseCariEditIletisimView> {
               ],
             ),
           ).paddingAll(UIHelper.lowSize),
-        );
-      },
+        ),
     );
   }
 }

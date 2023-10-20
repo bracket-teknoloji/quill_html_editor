@@ -13,9 +13,7 @@ class BaseScaffold extends StatefulWidget {
 
 class _BaseScaffoldState extends BaseState<BaseScaffold> {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       body: widget.builder(context, widget.viewModel),
     );
-  }
 }

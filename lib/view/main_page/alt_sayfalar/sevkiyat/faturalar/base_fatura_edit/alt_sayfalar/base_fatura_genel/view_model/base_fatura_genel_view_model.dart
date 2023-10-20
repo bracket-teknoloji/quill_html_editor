@@ -1,14 +1,15 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_proje_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/model/param_model.dart";
+
+import "../../../../../../../../../core/base/model/base_proje_model.dart";
+import "../../../../../../../model/param_model.dart";
+import "../../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "base_fatura_genel_view_model.g.dart";
 
 class BaseFaturaGenelViewModel = _BaseFaturaGenelViewModelBase with _$BaseFaturaGenelViewModel;
 
 abstract class _BaseFaturaGenelViewModelBase with Store {
-  final Map<String, int> belgeTipi = {
+  final Map<String, int> belgeTipi = <String, int>{
     "Kapalı": 1,
     "Açık": 2,
     "İade": 3,
@@ -46,7 +47,7 @@ abstract class _BaseFaturaGenelViewModelBase with Store {
     BaseSiparisEditModel.setInstance(model);
   }
 
-    @action
+  @action
   void setProje(BaseProjeModel? value) {
     model = model.copyWith(projeAciklama: value?.projeAciklama, projeKodu: value?.projeKodu);
     BaseSiparisEditModel.setInstance(model);

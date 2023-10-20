@@ -1,4 +1,5 @@
 import "package:json_annotation/json_annotation.dart";
+
 import "../../../../../../core/base/model/base_network_mixin.dart";
 
 part "fiyat_gecmisi_response_model.g.dart";
@@ -23,8 +24,7 @@ class FiyatGecmisiResponseModel with NetworkManagerMixin {
   DateTime? yazdirmatarihi;
   String? yazdirildi;
   @override
-  fromJson(Map<String, dynamic> json) =>
-      _$FiyatGecmisiResponseModelFromJson(json);
+  fromJson(Map<String, dynamic> json) => _$FiyatGecmisiResponseModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$FiyatGecmisiResponseModelToJson(this);

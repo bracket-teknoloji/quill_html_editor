@@ -5,19 +5,15 @@ import "../../../../base/model/base_grup_kodu_model.dart";
 
 part "bottom_sheet_state_manager.g.dart";
 
-class BottomSheetStateManager = _BottomSheetStateManagerBase
-    with _$BottomSheetStateManager;
+class BottomSheetStateManager = _BottomSheetStateManagerBase with _$BottomSheetStateManager;
 
 abstract class _BottomSheetStateManagerBase with Store {
   @observable
-  ObservableList<BaseGrupKoduModel>? grupKoduList =
-      <BaseGrupKoduModel>[].asObservable();
+  ObservableList<BaseGrupKoduModel>? grupKoduList = <BaseGrupKoduModel>[].asObservable();
   @observable
-  ObservableList<BaseGrupKoduModel>? filteredGrupKoduList =
-      <BaseGrupKoduModel>[].asObservable();
+  ObservableList<BaseGrupKoduModel>? filteredGrupKoduList = <BaseGrupKoduModel>[].asObservable();
   @observable
-  ObservableList<StokMuhasebeKoduModel>? muhasebeKoduList =
-      <StokMuhasebeKoduModel>[].asObservable();
+  ObservableList<StokMuhasebeKoduModel>? muhasebeKoduList = <StokMuhasebeKoduModel>[].asObservable();
   @action
   void changeGrupKoduList(List<BaseGrupKoduModel> value) {
     grupKoduList = value.asObservable();
@@ -25,10 +21,7 @@ abstract class _BottomSheetStateManagerBase with Store {
 
   @action
   void filteredGrupKoduListFilter(int value) {
-    filteredGrupKoduList = grupKoduList
-        ?.where((element) => element.grupNo == value)
-        .toList()
-        .asObservable();
+    filteredGrupKoduList = grupKoduList?.where((BaseGrupKoduModel element) => element.grupNo == value).toList().asObservable();
   }
 
   @action
@@ -133,7 +126,7 @@ abstract class _BottomSheetStateManagerBase with Store {
   }
 
   @observable
-  Map<String, List<bool>?>? isSelectedListMap = {};
+  Map<String, List<bool>?>? isSelectedListMap = <String, List<bool>?>{};
 
   @action
   void changeIsSelectedListMap(String key, List<bool>? value) {
@@ -146,7 +139,7 @@ abstract class _BottomSheetStateManagerBase with Store {
   }
 
   @action
-  void deleteIsSelectedListMap() => isSelectedListMap = {};
+  void deleteIsSelectedListMap() => isSelectedListMap = <String, List<bool>?>{};
 
   @observable
   ObservableList<String>? kodControllerText = <String>[].asObservable();

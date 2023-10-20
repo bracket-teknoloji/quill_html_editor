@@ -13,17 +13,7 @@ class GenericResponseModel<T extends NetworkManagerMixin> {
   String? serviceVersion;
   int? errorCode;
   Map<String, dynamic>? ex;
-  GenericResponseModel(
-      {this.message,
-      this.messageDetail,
-      this.success,
-      this.exceptionName,
-      this.errorDetails,
-      this.exceptionStackTrace,
-      this.paramData,
-      this.serviceVersion,
-      this.errorCode,
-      this.ex});
+  GenericResponseModel({this.message, this.messageDetail, this.success, this.exceptionName, this.errorDetails, this.exceptionStackTrace, this.paramData, this.serviceVersion, this.errorCode, this.ex});
 
   GenericResponseModel.fromJson(Map<String, dynamic> json, this.model) {
     message = json["Message"];

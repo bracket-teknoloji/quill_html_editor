@@ -9,7 +9,5 @@ class FinansOzetRaporuView extends StatefulWidget {
 
 class _FinansOzetRaporuViewState extends State<FinansOzetRaporuView> {
   @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
+  Widget build(BuildContext context) => Container();
 }

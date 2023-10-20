@@ -10,10 +10,8 @@ extension MobxWidgetExtension on Widget {
   // Widget get reaction {
   //   return reaction((_) => this, (_) => this);
   // }
-  Widget get reactionBuilder {
-    return ReactionBuilder(
-      builder: (context) => reaction((_) => this, (_) => this),
+  Widget get reactionBuilder => ReactionBuilder(
+      builder: (BuildContext context) => reaction((_) => this, (_) => this),
       child: this,
     );
-  }
 }

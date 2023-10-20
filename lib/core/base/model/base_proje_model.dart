@@ -12,12 +12,8 @@ class BaseProjeModel with NetworkManagerMixin {
 
   get projeAdi => null;
   @override
-  fromJson(Map<String, dynamic> json) {
-    return _$BaseProjeModelFromJson(json);
-  }
+  fromJson(Map<String, dynamic> json) => _$BaseProjeModelFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$BaseProjeModelToJson(this);
-  }
+  Map<String, dynamic> toJson() => _$BaseProjeModelToJson(this);
 }

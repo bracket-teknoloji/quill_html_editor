@@ -8,8 +8,7 @@ part "cari_listesi_request_model.freezed.dart";
 part "cari_listesi_request_model.g.dart";
 
 @freezed
-class CariListesiRequestModel
-    with _$CariListesiRequestModel, NetworkManagerMixin {
+class CariListesiRequestModel with _$CariListesiRequestModel, NetworkManagerMixin {
   CariListesiRequestModel._();
   @JsonSerializable(fieldRename: FieldRename.pascal, createToJson: true)
   factory CariListesiRequestModel({
@@ -36,15 +35,13 @@ class CariListesiRequestModel
     String? sehir,
   }) = _CariListesiRequestModel;
 
-  factory CariListesiRequestModel.fromJson(Map<String, dynamic> json) =>
-      _$CariListesiRequestModelFromJson(json);
+  factory CariListesiRequestModel.fromJson(Map<String, dynamic> json) => _$CariListesiRequestModelFromJson(json);
 
   @override
-  CariListesiRequestModel? fromJson(Map<String, dynamic> json) =>
-      _$CariListesiRequestModelFromJson(json);
+  CariListesiRequestModel? fromJson(Map<String, dynamic> json) => _$CariListesiRequestModelFromJson(json);
 
   Map<String, dynamic> toJsonWithList() {
-    var map = toJson();
+    final Map<String, dynamic> map = toJson();
     // replace list items with json
     if (map["ArrPlasiyer"] != null) {
       map["ArrPlasiyer"] = jsonEncode(map["ArrPlasiyer"]);

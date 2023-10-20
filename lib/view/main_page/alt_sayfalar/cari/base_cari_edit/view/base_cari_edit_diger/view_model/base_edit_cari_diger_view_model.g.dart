@@ -52,7 +52,7 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
   }
 
   @override
-  void changeBagliCari(String? value) {
+  void changeBagliCari(CariListesiModel? value) {
     final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
         .startAction(name: '_BaseEditCariDigerViewModelBase.changeBagliCari');
     try {
@@ -74,7 +74,7 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
   }
 
   @override
-  void changeMuhaseKodu(String? value) {
+  void changeMuhaseKodu(StokMuhasebeKoduModel? value) {
     final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
         .startAction(name: '_BaseEditCariDigerViewModelBase.changeMuhaseKodu');
     try {
@@ -85,7 +85,7 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
   }
 
   @override
-  void changeKurFarkiBorc(String? value) {
+  void changeKurFarkiBorc(StokMuhasebeKoduModel? value) {
     final _$actionInfo =
         _$_BaseEditCariDigerViewModelBaseActionController.startAction(
             name: '_BaseEditCariDigerViewModelBase.changeKurFarkiBorc');
@@ -97,7 +97,7 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
   }
 
   @override
-  void changeKurFarkiAlacak(String? value) {
+  void changeKurFarkiAlacak(StokMuhasebeKoduModel? value) {
     final _$actionInfo =
         _$_BaseEditCariDigerViewModelBaseActionController.startAction(
             name: '_BaseEditCariDigerViewModelBase.changeKurFarkiAlacak');
@@ -131,7 +131,7 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
   }
 
   @override
-  void changeKosul(String? value) {
+  void changeKosul(CariKosullarModel? value) {
     final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
         .startAction(name: '_BaseEditCariDigerViewModelBase.changeKosul');
     try {

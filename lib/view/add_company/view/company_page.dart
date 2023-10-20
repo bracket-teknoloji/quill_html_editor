@@ -20,16 +20,13 @@ class _AccountsViewState extends BaseState<AccountsView> {
   int get getListLength => CacheManager.accountsBox.length;
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       floatingActionButton: fab(),
       appBar: appBar(),
       body: body(),
     );
-  }
 
-  AppBar appBar() {
-    return AppBar(
+  AppBar appBar() => AppBar(
       leading: IconButton(
         onPressed: () {
           Get.offAndToNamed("/");
@@ -38,51 +35,43 @@ class _AccountsViewState extends BaseState<AccountsView> {
       ),
       title: const Text("Hesaplar"),
     );
-  }
 
-  FloatingActionButton fab() {
-    return FloatingActionButton(
+  FloatingActionButton fab() => FloatingActionButton(
       onPressed: () async {
-        var result = await Get.toNamed("/addAccount");
+        final result = await Get.toNamed("/addAccount");
         if (result != null) {
           setState(() {});
         }
       },
       child: const Icon(Icons.add),
     );
-  }
 
-  Widget body() {
-    return getListLength == 0
+  Widget body() => getListLength == 0
         ? const Center(child: Text("Hesap Bulunamadı"))
         : Padding(
             padding: UIHelper.midPadding,
             child: ListView.builder(
                 itemCount: getListLength == 0 ? 1 : getListLength,
-                itemBuilder: (context, index) {
-                  AccountResponseModel account =
-                      Hive.box("accounts").getAt(index);
+                itemBuilder: (BuildContext context, int index) {
+                  final AccountResponseModel account = Hive.box("accounts").getAt(index);
                   return Card(
                     child: ListTile(
                       onTap: () {
-                        bottomSheetDialogManager.showBottomSheetDialog(context,
-                            title: account.firma.toString(),
-                            children: [
-                              BottomSheetModel(
-                                  iconWidget: Icons.delete_outline,
-                                  title: "Sil",
-                                  onTap: () {
-                                    Get.back();
-                                    dialogManager.showAreYouSureDialog(() {
-                                      CacheManager.removeAccounts(
-                                          account.email ?? "");
-                                      CacheManager.resetVerifiedUser();
-                                      setState(() {});
-                                    });
-                                  }),
-                              //TODO Sunucu Tercihi Sayfasına Yönlendir
-                              // BottomSheetModel(iconWidget: Icons.storage_rounded, title: "Sunucu Tercihi", onTap: () {}),
-                            ]);
+                        bottomSheetDialogManager.showBottomSheetDialog(context, title: account.firma.toString(), children: <BottomSheetModel>[
+                          BottomSheetModel(
+                              iconWidget: Icons.delete_outline,
+                              title: "Sil",
+                              onTap: () {
+                                Get.back();
+                                dialogManager.showAreYouSureDialog(() {
+                                  CacheManager.removeAccounts(account.email ?? "");
+                                  CacheManager.resetVerifiedUser();
+                                  setState(() {});
+                                });
+                              }),
+                          //TODO Sunucu Tercihi Sayfasına Yönlendir
+                          // BottomSheetModel(iconWidget: Icons.storage_rounded, title: "Sunucu Tercihi", onTap: () {}),
+                        ]);
                       },
                       title: Text(account.firma.toString()),
                       subtitle: Text(account.email.toString()),
@@ -91,5 +80,4 @@ class _AccountsViewState extends BaseState<AccountsView> {
                   );
                 }),
           );
-  }
 }

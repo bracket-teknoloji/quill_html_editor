@@ -187,6 +187,7 @@ import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/model/kasa_islemleri_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/model/kasa_islemleri_request_model.dart";
+
 part "kasa_hareketleri_view_model.g.dart";
 
 class KasaHareketleriViewModel = _KasaHareketleriViewModelBase with _$KasaHareketleriViewModel;
@@ -240,7 +241,7 @@ abstract class _KasaHareketleriViewModelBase with Store, MobxNetworkMixin {
   void setKasaIslemleriListesi(List<KasaIslemleriModel>? value) => kasaIslemleriListesi = value?.asObservable();
 
   @action
-  void addKasaIslemleriListesi(List<KasaIslemleriModel>? value) => kasaIslemleriListesi?.addAll(value ?? []);
+  void addKasaIslemleriListesi(List<KasaIslemleriModel>? value) => kasaIslemleriListesi?.addAll(value ?? <KasaIslemleriModel>[]);
 
   @action
   Future<void> resetPage() async {
@@ -250,19 +251,16 @@ abstract class _KasaHareketleriViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> deleteData(int? inckeyNo) async {
-    // return GenericResponseModel(success: true);
-    return await networkManager.dioPost<KasaIslemleriModel>(path: ApiUrls.deleteKasaHareket, bodyModel: KasaIslemleriModel(), queryParameters: {"INCKEYNO": inckeyNo});
-  }
+  Future<GenericResponseModel<NetworkManagerMixin>> deleteData(int? inckeyNo) async => await networkManager.dioPost<KasaIslemleriModel>(path: ApiUrls.deleteKasaHareket, bodyModel: KasaIslemleriModel(), queryParameters: <String, int?>{"INCKEYNO": inckeyNo});
 
   @action
   Future<void> getData() async {
-    var result = await networkManager
-        .dioGet<KasaIslemleriModel>(path: ApiUrls.getKasaHareketleri, bodyModel: KasaIslemleriModel(), queryParameters: {"FilterModel": jsonEncode(kasaIslemleriRequestModel.toJson())});
+    final GenericResponseModel<NetworkManagerMixin> result = await networkManager
+        .dioGet<KasaIslemleriModel>(path: ApiUrls.getKasaHareketleri, bodyModel: KasaIslemleriModel(), queryParameters: <String, String>{"FilterModel": jsonEncode(kasaIslemleriRequestModel.toJson())});
     if (result.data is List) {
-      List<KasaIslemleriModel> list = result.data.cast<KasaIslemleriModel>();
+      final List<KasaIslemleriModel> list = result.data.cast<KasaIslemleriModel>();
       if ((kasaIslemleriRequestModel.sayfa ?? 0) < 2) {
-        paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
+        paramData = result.paramData?.map((String key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
         setKasaIslemleriListesi(list);
       } else {
         addKasaIslemleriListesi(list);

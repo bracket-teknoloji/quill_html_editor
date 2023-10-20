@@ -17,8 +17,7 @@ abstract class _CariEkstreViewModelBase with Store {
   void changeDovizValue(String value) => dovizValue = value;
 
   @observable
-  PdfModel pdfModel = PdfModel(
-      raporOzelKod: "Rapor_CariEkstre", standart: true, dicParams: DicParams());
+  PdfModel pdfModel = PdfModel(raporOzelKod: "Rapor_CariEkstre", standart: true, dicParams: DicParams());
 
   //* Cari Kodu
   //*
@@ -26,14 +25,12 @@ abstract class _CariEkstreViewModelBase with Store {
   void changeCariKodu(value) => pdfModel.dicParams!.cariKodu = value;
 
   @action
-  void changeDovizTipi(int value) =>
-      pdfModel.dicParams!.dovizTipi = value.toStringIfNotNull;
+  void changeDovizTipi(int value) => pdfModel.dicParams!.dovizTipi = value.toStringIfNotNull;
 
   //* Future
   //*
   @observable
-  ObservableFuture<bool?> futureController =
-      ObservableFuture(Future.error(false));
+  ObservableFuture<bool?> futureController = ObservableFuture(Future.error(false));
 
   @action
   void setFuture() => futureController = ObservableFuture.value(true);

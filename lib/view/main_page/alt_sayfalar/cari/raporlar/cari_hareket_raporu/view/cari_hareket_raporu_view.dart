@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";
@@ -10,6 +9,7 @@ import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sh
 import "../../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/constants/extensions/list_extensions.dart";
+import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../model/param_model.dart";
@@ -27,7 +27,7 @@ class CariHareketRaporuView extends StatefulWidget {
 
 class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
   CariHareketRaporuViewModel viewModel = CariHareketRaporuViewModel();
-  List<BaseGrupKoduModel> grupKodList = [];
+  List<BaseGrupKoduModel> grupKodList = <BaseGrupKoduModel>[];
   late final TextEditingController baslangicTarihiController;
   late final TextEditingController bitisTarihiController;
   late final TextEditingController cariController;
@@ -76,9 +76,7 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Cari Hareket Raporu", pdfData: viewModel.pdfModel);
-  }
+  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Cari Hareket Raporu", pdfData: viewModel.pdfModel);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -88,18 +86,16 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
           padding: EdgeInsets.all(UIHelper.lowSize),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Observer(builder: (_) {
-                return RaporFiltreDateTimeBottomSheetView(
-                    filterOnChanged: (index) => viewModel.pdfModel.dicParams?.aralikTipi, baslangicTarihiController: baslangicTarihiController, bitisTarihiController: bitisTarihiController);
-              }),
+            children: <Widget>[
+              Observer(builder: (_) => RaporFiltreDateTimeBottomSheetView(
+                    filterOnChanged: (int? index) => viewModel.pdfModel.dicParams?.aralikTipi, baslangicTarihiController: baslangicTarihiController, bitisTarihiController: bitisTarihiController)),
               CustomTextField(
                 labelText: "Cari",
                 controller: cariController,
                 readOnly: true,
                 suffixMore: true,
                 onTap: () async {
-                  var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                  final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                   if (result != null) {
                     cariController.text = result.cariAdi ?? "";
                     viewModel.pdfModel.dicParams?.cariKodu = result.cariKodu ?? "";
@@ -107,18 +103,18 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
                 },
               ),
               Row(
-                children: [
+                children: <Widget>[
                   Expanded(
                       child: CustomTextField(
                     labelText: "Plasiyer",
                     controller: plasiyerController,
                     readOnly: true,
                     onTap: () async {
-                      List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList;
+                      final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList;
                       if (plasiyerList != null) {
-                        PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                        final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                             title: "Plasiyer",
-                            children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e.plasiyerKodu ?? "", onTap: () => Get.back(result: e))).toList());
+                            children: plasiyerList.map((PlasiyerList e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e.plasiyerKodu ?? "", onTap: () => Get.back(result: e))).toList());
                         if (result != null) {
                           plasiyerController.text = result.plasiyerAciklama ?? "";
                           viewModel.pdfModel.dicParams?.plasiyerKodu = result.plasiyerKodu ?? "";
@@ -134,7 +130,7 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
                           readOnly: true,
                           suffixMore: true,
                           onTap: () async {
-                            String? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Sırala", children: viewModel.siralaBottomSheetList);
+                            final String? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Sırala", children: viewModel.siralaBottomSheetList);
                             if (result != null) {
                               siralaController.text = result;
                               viewModel.pdfModel.dicParams?.sirala = result;
@@ -142,27 +138,25 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
                           })),
                 ],
               ),
-              Row(children: [
+              Row(children: <Widget>[
                 Expanded(child: CustomTextField(labelText: "Grup Kodu", controller: grupKoduController, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(0, grupKoduController))),
                 Expanded(child: CustomTextField(labelText: "Kod 1", controller: kod1Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(1, kod1Controller)))
               ]),
-              Row(children: [
+              Row(children: <Widget>[
                 Expanded(child: CustomTextField(labelText: "Kod 2", controller: kod2Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(2, kod2Controller))),
                 Expanded(child: CustomTextField(labelText: "Kod 3", controller: kod3Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(3, kod3Controller)))
               ]),
-              Row(children: [
+              Row(children: <Widget>[
                 Expanded(child: CustomTextField(labelText: "Kod 4", controller: kod4Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(4, kod4Controller))),
                 Expanded(child: CustomTextField(labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, kod5Controller)))
               ]),
-              Observer(builder: (_) {
-                return ElevatedButton(
+              Observer(builder: (_) => ElevatedButton(
                         onPressed: () {
                           viewModel.setFuture();
                           Get.back();
                         },
                         child: const Text("Uygula"))
-                    .paddingAll(UIHelper.lowSize);
-              })
+                    .paddingAll(UIHelper.lowSize))
             ],
           ),
         ));
@@ -173,36 +167,30 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: "CARI", grupNo: -1);
     }
-    List<BottomSheetModel>? bottomSheetList = grupKodList
-        .where((e) => e.grupNo == grupNo)
+    final List<BottomSheetModel> bottomSheetList = grupKodList
+        .where((BaseGrupKoduModel e) => e.grupNo == grupNo)
         .toList()
         .cast<BaseGrupKoduModel>()
-        .map((e) => BottomSheetModel(title: e.grupKodu ?? "", onTap: () => Get.back(result: e)))
+        .map((BaseGrupKoduModel e) => BottomSheetModel(title: e.grupKodu ?? "", onTap: () => Get.back(result: e)))
         .toList()
         .cast<BottomSheetModel>();
     // ignore: use_build_context_synchronously
-    var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Grup Kodu", children: bottomSheetList);
+    final result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Grup Kodu", children: bottomSheetList);
     if (result != null) {
       controller?.text = result.grupKodu ?? "";
       switch (grupNo) {
         case 0:
           viewModel.pdfModel.dicParams?.grupKodu = result.grupKodu ?? "";
-          break;
         case 1:
           viewModel.pdfModel.dicParams?.kod1 = result.grupKodu ?? "";
-          break;
         case 2:
           viewModel.pdfModel.dicParams?.kod2 = result.grupKodu ?? "";
-          break;
         case 3:
           viewModel.pdfModel.dicParams?.kod3 = result.grupKodu ?? "";
-          break;
         case 4:
           viewModel.pdfModel.dicParams?.kod4 = result.grupKodu ?? "";
-          break;
         case 5:
           viewModel.pdfModel.dicParams?.kod5 = result.grupKodu ?? "";
-          break;
       }
     }
     return null;

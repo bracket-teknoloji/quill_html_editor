@@ -18,94 +18,73 @@ class LeftDrawer extends StatefulWidget {
 class _LeftDrawerState extends BaseState<LeftDrawer> {
   bool isEditing = false;
   List<FavoritesModel> list = CacheManager.getFavoriler().values.toList();
-  List get liste => list.where((element) => element.yetkiKontrol).toList();
+  List get liste => list.where((FavoritesModel element) => element.yetkiKontrol).toList();
   @override
-  Widget build(BuildContext context) {
-    return Drawer(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-          ListTile(
-            titleAlignment: ListTileTitleAlignment.bottom,
-            title: Text("Favoriler", style: theme.textTheme.titleMedium),
-            trailing: IconButton(
-                onPressed: () {
-                  setState(() {
-                    isEditing = !isEditing;
-                  });
-                },
-                icon: Icon(
-                    isEditing ? Icons.edit_off_outlined : Icons.edit_outlined)),
-            contentPadding:
-                const EdgeInsets.only(left: 12, top: 10, bottom: 10),
-          ),
-          const Divider(),
-          list.ext.isNullOrEmpty
-              ? Expanded(
-                  flex: 2,
-                  child: Column(
-                    children: [
-                      IconHelper.bigIcon("Yildiz",
-                              color: Colors.white.withOpacity(0.5))
-                          .marginSymmetric(vertical: 20),
-                      Text("Favori menü yok.",
-                          style: theme.textTheme.bodyMedium),
-                      Padding(
-                        padding: UIHelper.midPadding,
-                        child: Text(
-                            "Eklemek için menü öğelerinde favori simgesine dokunun.",
-                            textAlign: TextAlign.center,
-                            style: theme.textTheme.bodyMedium),
-                      ),
-                    ],
-                  ),
-                )
-              : Expanded(
-                  child: ReorderableListView.builder(
-                      onReorder: (oldIndex, newIndex) {
-                        setState(() {
-                          if (newIndex > oldIndex) {
-                            newIndex -= 1;
-                          }
-                          final item = list.elementAt(oldIndex);
-                          final item2 = list.elementAt(newIndex);
-                          list.removeAt(oldIndex);
-                          list.insert(newIndex, item);
-                          CacheManager.setFavorilerSira(oldIndex, item2);
-                          CacheManager.setFavorilerSira(newIndex, item);
-                        });
-                      },
-                      key: const Key("Favoriler"),
-                      itemBuilder: (context, index) {
-                        var value = list[index];
-                        return ListTile(
-                          key: ValueKey(index),
-                          enabled: liste.contains(value),
-                          title: Text(
-                            value.title.toString(),
-                          ),
-                          leading: IconHelper.smallMenuIcon(
-                              value.icon.toString(),
-                              color: Color(value.color!)),
-                          trailing: isEditing
-                              ? IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      list.removeAt(index);
-                                      CacheManager.setFavorilerList(
-                                          list.map((e) => e).toList());
-                                    });
-                                  },
-                                  icon: const Icon(Icons.delete_outline))
-                              : const Icon(Icons.drag_handle),
-                          onTap: value.arguments != null
-                              ? () => Get.toNamed(value.onTap.toString(),
-                                  arguments: value.arguments)
-                              : () => Get.toNamed(value.onTap.toString()),
-                        );
-                      },
-                      itemCount: list.length)),
-        ]));
-  }
+  Widget build(BuildContext context) => Drawer(
+          child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.stretch, children: <Widget>[
+        ListTile(
+          titleAlignment: ListTileTitleAlignment.bottom,
+          title: Text("Favoriler", style: theme.textTheme.titleMedium),
+          trailing: IconButton(
+              onPressed: () {
+                setState(() {
+                  isEditing = !isEditing;
+                });
+              },
+              icon: Icon(isEditing ? Icons.edit_off_outlined : Icons.edit_outlined)),
+          contentPadding: const EdgeInsets.only(left: 12, top: 10, bottom: 10),
+        ),
+        const Divider(),
+        if (list.ext.isNullOrEmpty) Expanded(
+                flex: 2,
+                child: Column(
+                  children: <Widget>[
+                    IconHelper.bigIcon("Yildiz", color: Colors.white.withOpacity(0.5)).marginSymmetric(vertical: 20),
+                    Text("Favori menü yok.", style: theme.textTheme.bodyMedium),
+                    Padding(
+                      padding: UIHelper.midPadding,
+                      child: Text("Eklemek için menü öğelerinde favori simgesine dokunun.", textAlign: TextAlign.center, style: theme.textTheme.bodyMedium),
+                    ),
+                  ],
+                ),
+              ) else Expanded(
+                child: ReorderableListView.builder(
+                    onReorder: (int oldIndex, int newIndex) {
+                      setState(() {
+                        if (newIndex > oldIndex) {
+                          newIndex -= 1;
+                        }
+                        final FavoritesModel item = list.elementAt(oldIndex);
+                        final FavoritesModel item2 = list.elementAt(newIndex);
+                        list.removeAt(oldIndex);
+                        list.insert(newIndex, item);
+                        CacheManager.setFavorilerSira(oldIndex, item2);
+                        CacheManager.setFavorilerSira(newIndex, item);
+                      });
+                    },
+                    key: const Key("Favoriler"),
+                    itemBuilder: (BuildContext context, int index) {
+                      final FavoritesModel value = list[index];
+                      return ListTile(
+                        key: ValueKey(index),
+                        enabled: liste.contains(value),
+                        title: Text(
+                          value.title.toString(),
+                        ),
+                        leading: IconHelper.smallMenuIcon(value.icon.toString(), color: Color(value.color!)),
+                        trailing: isEditing
+                            ? IconButton(
+                                onPressed: () {
+                                  setState(() async {
+                                    list.removeAt(index);
+                                    await CacheManager.setFavorilerList(list.map((FavoritesModel e) => e).toList());
+                                  });
+                                },
+                                icon: const Icon(Icons.delete_outline))
+                            : const Icon(Icons.drag_handle),
+                        onTap: () async => Get.toNamed(value.onTap.toString(), arguments: value.arguments),
+                      );
+                    },
+                    itemCount: list.length)),
+      ]));
 }

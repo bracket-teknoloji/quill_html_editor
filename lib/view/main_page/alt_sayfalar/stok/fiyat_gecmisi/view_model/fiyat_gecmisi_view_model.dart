@@ -10,8 +10,7 @@ import "../model/fiyat_gecmisi_response_model.dart";
 
 part "fiyat_gecmisi_view_model.g.dart";
 
-class FiyatGecmisiViewModel = _FiyatGecmisiViewModelBase
-    with _$FiyatGecmisiViewModel;
+class FiyatGecmisiViewModel = _FiyatGecmisiViewModelBase with _$FiyatGecmisiViewModel;
 
 abstract class _FiyatGecmisiViewModelBase with Store {
   @observable
@@ -27,16 +26,13 @@ abstract class _FiyatGecmisiViewModelBase with Store {
   PrintModel printModel = PrintModel(raporOzelKod: "StokEtiket", yazdir: true);
 
   @action
-  void setDizaynId(int? value) =>
-      printModel = printModel.copyWith(dizaynId: value);
+  void setDizaynId(int? value) => printModel = printModel.copyWith(dizaynId: value);
 
   @action
-  void setYaziciAdi(YaziciList? value) => printModel = printModel.copyWith(
-      yaziciAdi: value?.yaziciAdi, yaziciTipi: value?.yaziciTipi);
+  void setYaziciAdi(YaziciList? value) => printModel = printModel.copyWith(yaziciAdi: value?.yaziciAdi, yaziciTipi: value?.yaziciTipi);
 
   @action
-  void setDicParams(DicParams? value) =>
-      printModel = printModel.copyWith(dicParams: value);
+  void setDicParams(DicParams? value) => printModel = printModel.copyWith(dicParams: value);
 
   @action
   void filterModelList(String value) {
@@ -44,11 +40,8 @@ abstract class _FiyatGecmisiViewModelBase with Store {
       filteredModelList = modelList;
     } else {
       filteredModelList = modelList
-          ?.where((element) =>
-              (element?.stokAdi?.toLowerCase().contains(value.toLowerCase()) ??
-                  false) ||
-              (element?.stokKodu?.toLowerCase().contains(value.toLowerCase()) ??
-                  false))
+          ?.where((FiyatGecmisiResponseModel? element) =>
+              (element?.stokAdi?.toLowerCase().contains(value.toLowerCase()) ?? false) || (element?.stokKodu?.toLowerCase().contains(value.toLowerCase()) ?? false))
           .toList()
           .asObservable();
     }
@@ -59,7 +52,7 @@ abstract class _FiyatGecmisiViewModelBase with Store {
     if (value == null) {
       return;
     }
-    final index = modelList?.indexWhere((element) => element?.id == value.id);
+    final int? index = modelList?.indexWhere((FiyatGecmisiResponseModel? element) => element?.id == value.id);
     if (index != null && index != -1) {
       filteredModelList = filteredModelList?..[index] = value;
     }
@@ -80,13 +73,11 @@ abstract class _FiyatGecmisiViewModelBase with Store {
     filterModelList("");
   }
 
-  final List<BottomSheetModel> siralaTitleList = [
+  final List<BottomSheetModel> siralaTitleList = <BottomSheetModel>[
     BottomSheetModel(title: "Kayıt Tarihi (A-Z)", value: "TARIH_AZ"),
     BottomSheetModel(title: "Kayıt Tarihi (Z-A)", value: "TARIH_ZA"),
-    BottomSheetModel(
-        title: "Yazdırma Tarihi (A-Z)", value: "YAZDIRMA_TARIHI_AZ"),
-    BottomSheetModel(
-        title: "Yazdırma Tarihi (Z-A)", value: "YAZDIRMA_TARIHI_ZA"),
+    BottomSheetModel(title: "Yazdırma Tarihi (A-Z)", value: "YAZDIRMA_TARIHI_AZ"),
+    BottomSheetModel(title: "Yazdırma Tarihi (Z-A)", value: "YAZDIRMA_TARIHI_ZA"),
     BottomSheetModel(title: "Stok Kodu (A-Z)", value: "STOK_KODU_AZ"),
     BottomSheetModel(title: "Stok Kodu (Z-A)", value: "STOK_KODU_ZA"),
     BottomSheetModel(title: "Stok Adı (A-Z)", value: "STOK_ADI_AZ"),
@@ -101,7 +92,7 @@ abstract class _FiyatGecmisiViewModelBase with Store {
     model.alisSatis = alisSatisDurumuMap.values.toList()[value];
   }
 
-  final Map<String, dynamic> alisSatisDurumuMap = {
+  final Map<String, dynamic> alisSatisDurumuMap = <String, dynamic>{
     "Tümü": "",
     "Alış": "A",
     "Satış": "S",
@@ -116,7 +107,7 @@ abstract class _FiyatGecmisiViewModelBase with Store {
     model.yazdirildi = yazdirmaDurumuMap.values.toList()[value];
   }
 
-  final Map<String, dynamic> yazdirmaDurumuMap = {
+  final Map<String, dynamic> yazdirmaDurumuMap = <String, dynamic>{
     "Tümü": "",
     "Yazdırılmış": "E",
     "Yazdırılmadı": "H",
@@ -130,7 +121,7 @@ abstract class _FiyatGecmisiViewModelBase with Store {
     model.fiyatTipi = fiyatTipiMap.values.toList()[value];
   }
 
-  final Map<String, dynamic> fiyatTipiMap = {
+  final Map<String, dynamic> fiyatTipiMap = <String, dynamic>{
     "Satış Fiyatı": "S",
     "Satış Fiyatı 1": "S1",
     "Satış Fiyatı 2": "S2",

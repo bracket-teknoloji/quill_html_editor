@@ -59,6 +59,16 @@ mixin _$DovizKurlariViewModel on _DovizKurlariViewModelBase, Store {
     });
   }
 
+  late final _$changeKurlariSilTekrarGuncelleAsyncAction = AsyncAction(
+      '_DovizKurlariViewModelBase.changeKurlariSilTekrarGuncelle',
+      context: context);
+
+  @override
+  Future<void> changeKurlariSilTekrarGuncelle() {
+    return _$changeKurlariSilTekrarGuncelleAsyncAction
+        .run(() => super.changeKurlariSilTekrarGuncelle());
+  }
+
   late final _$_DovizKurlariViewModelBaseActionController =
       ActionController(name: '_DovizKurlariViewModelBase', context: context);
 
@@ -101,18 +111,6 @@ mixin _$DovizKurlariViewModel on _DovizKurlariViewModelBase, Store {
         .startAction(name: '_DovizKurlariViewModelBase.changeTarihYesterday');
     try {
       return super.changeTarihYesterday();
-    } finally {
-      _$_DovizKurlariViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void changeKurlariSilTekrarGuncelle() {
-    final _$actionInfo =
-        _$_DovizKurlariViewModelBaseActionController.startAction(
-            name: '_DovizKurlariViewModelBase.changeKurlariSilTekrarGuncelle');
-    try {
-      return super.changeKurlariSilTekrarGuncelle();
     } finally {
       _$_DovizKurlariViewModelBaseActionController.endAction(_$actionInfo);
     }

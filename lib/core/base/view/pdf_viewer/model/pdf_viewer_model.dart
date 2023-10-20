@@ -8,8 +8,7 @@ part "pdf_viewer_model.g.dart";
 @unfreezed
 abstract class PdfModel with _$PdfModel, NetworkManagerMixin {
   PdfModel._();
-  @JsonSerializable(
-      createFactory: true, explicitToJson: true, createToJson: true)
+  @JsonSerializable(createFactory: true, explicitToJson: true, createToJson: true)
   factory PdfModel({
     String? raporOzelKod,
     bool? standart,
@@ -23,8 +22,7 @@ abstract class PdfModel with _$PdfModel, NetworkManagerMixin {
   // int? etiketSayisi;
   // @JsonKey(includeToJson: true)
   // DicParams? dicParams;
-  factory PdfModel.fromJson(Map<String, dynamic> json) =>
-      _$PdfModelFromJson(json);
+  factory PdfModel.fromJson(Map<String, dynamic> json) => _$PdfModelFromJson(json);
   @override
   fromJson(Map<String, dynamic> json) => _$PdfModelFromJson(json);
 
@@ -106,8 +104,7 @@ abstract class PdfModel with _$PdfModel, NetworkManagerMixin {
 // }
 @unfreezed
 class DicParams with _$DicParams {
-  @JsonSerializable(
-      createFactory: true, explicitToJson: true, createToJson: true)
+  @JsonSerializable(createFactory: true, explicitToJson: true, createToJson: true)
   factory DicParams({
     String? cariKodu,
     String? stokKodu,
@@ -151,6 +148,5 @@ class DicParams with _$DicParams {
     String? kasaKodu,
     String? muhasebeKodu,
   }) = _DicParams;
-  factory DicParams.fromJson(Map<String, dynamic> json) =>
-      _$DicParamsFromJson(json);
+  factory DicParams.fromJson(Map<String, dynamic> json) => _$DicParamsFromJson(json);
 }

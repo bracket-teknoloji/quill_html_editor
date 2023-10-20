@@ -42,7 +42,7 @@ extension BadgeColorExtensions on BadgeColorEnum? {
   }
 
   Color get getFontColor {
-    bool isDarkMode = Get.isDarkMode;
+    final bool isDarkMode = Get.isDarkMode;
     if (isDarkMode) {
       return AppThemeDark.instance?.theme.colorScheme.background ?? Colors.white;
     } else {

@@ -3,7 +3,6 @@ import "dart:developer";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
 
 import "../../../core/base/model/base_network_mixin.dart";
 import "../../../core/base/model/generic_response_model.dart";
@@ -11,6 +10,7 @@ import "../../../core/base/state/base_state.dart";
 import "../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
 import "../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../core/init/cache/cache_manager.dart";
 import "../../../core/init/network/login/api_urls.dart";
 import "../../add_company/model/account_model.dart";
@@ -27,9 +27,9 @@ class EntryCompanyView extends StatefulWidget {
 }
 
 class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
-  Map selected = {"Şirket": "", "İşletme": null, "Şube": null};
+  Map selected = <String, String?>{"Şirket": "", "İşletme": null, "Şube": null};
   // Map<String, dynamic> selected = {"Şirket": "", "İşletme": null, "Şube": null};
-  Map userData = {"Şirket": "", "İşletme": null, "Şube": null};
+  Map userData = <String, String?>{"Şirket": "", "İşletme": null, "Şube": null};
   List<CompanyModel>? sirket;
   List<IsletmeModel>? isletme;
   List<IsletmeModel>? sube;
@@ -64,167 +64,168 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: false,
-        leading: IconButton(
-            onPressed: () {
-              if (widget.isSplash ?? false) {
-                Get.offAndToNamed("/login");
-              } else {
-                Get.back();
-              }
-            },
-            icon: const Icon(Icons.arrow_back_outlined)),
-        title: const Text("Şirkete Giriş"),
-      ),
-      body: FutureBuilder(
-        future: dioGetData(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return SingleChildScrollView(
-              child: Padding(
-                  padding: UIHelper.midPadding,
-                  child: Center(
-                    child: Container(
-                      constraints: const BoxConstraints(maxWidth: 500),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                CustomWidgetWithLabel(
-                                  text: "Şirket",
-                                  child: TextFormField(
-                                    decoration: const InputDecoration(
-                                      suffixIcon: Icon(Icons.more_horiz_outlined),
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          centerTitle: false,
+          leading: IconButton(
+              onPressed: () {
+                if (widget.isSplash ?? false) {
+                  Get.offAndToNamed("/login");
+                } else {
+                  Get.back();
+                }
+              },
+              icon: const Icon(Icons.arrow_back_outlined)),
+          title: const Text("Şirkete Giriş"),
+        ),
+        body: FutureBuilder(
+          future: dioGetData(),
+          builder: (BuildContext context, AsyncSnapshot<Object?> snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return SingleChildScrollView(
+                child: Padding(
+                    padding: UIHelper.midPadding,
+                    child: Center(
+                      child: Container(
+                        constraints: const BoxConstraints(maxWidth: 500),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[
+                            Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisSize: MainAxisSize.max,
+                                children: <CustomWidgetWithLabel>[
+                                  CustomWidgetWithLabel(
+                                    text: "Şirket",
+                                    child: TextFormField(
+                                      decoration: const InputDecoration(
+                                        suffixIcon: Icon(Icons.more_horiz_outlined),
+                                      ),
+                                      controller: controller1,
+                                      readOnly: true,
+                                      autofocus: true,
+                                      focusNode: focusNode,
+                                      textInputAction: TextInputAction.next,
+                                      onTap: () {
+                                        sirketDialog(context);
+                                      },
                                     ),
-                                    controller: controller1,
-                                    readOnly: true,
-                                    autofocus: true,
-                                    focusNode: focusNode,
-                                    textInputAction: TextInputAction.next,
-                                    onTap: () {
-                                      sirketDialog(context);
-                                    },
                                   ),
-                                ),
-                                CustomWidgetWithLabel(
-                                    text: "İşletme Kodu",
-                                    child: TextFormField(
-                                      controller: controller2,
-                                      enabled: isletme?.ext.isNotNullOrEmpty,
-                                      readOnly: true,
-                                      onTap: () {
-                                        isletmeDialog(context);
-                                      },
-                                      decoration: const InputDecoration(
-                                        suffixIcon: Icon(Icons.more_horiz_outlined),
-                                      ),
-                                    )),
-                                CustomWidgetWithLabel(
-                                    text: "Şube Kodu",
-                                    child: TextFormField(
-                                      controller: controller3,
-                                      enabled: sube?.ext.isNotNullOrEmpty,
-                                      readOnly: true,
-                                      onTap: () {
-                                        subeDialog(context);
-                                      },
-                                      decoration: const InputDecoration(
-                                        suffixIcon: Icon(Icons.more_horiz_outlined),
-                                      ),
-                                    )),
-                              ]
-                                  .map((widget) => Padding(
-                                        padding: context.padding.onlyBottomLow,
-                                        child: widget,
-                                      ))
-                                  .toList()),
-                          context.sized.emptySizedHeightBoxLow,
-                          ElevatedButton(
-                            onPressed: () async {
-                              if (!selected.values.contains(null)) {
-                                final model = AccountModel.instance
-                                  ..aktifVeritabani = selected["Şirket"]
-                                  ..aktifIsletmeKodu = selected["İşletme"]
-                                  ..aktifSubeKodu = selected["Şube"];
-                                dialogManager.showLoadingDialog("${selected["Şirket"]} şirketine giriş yapılıyor.");
-                                GenericResponseModel<NetworkManagerMixin> response;
-                                response = await networkManager.dioPost<MainPageModel>(path: ApiUrls.createSession, bodyModel: MainPageModel(), showError: false, data: model, headers: {
-                                  "VERITABANI": selected["Şirket"].toString(),
-                                  "ISLETME_KODU": selected["İşletme"].toString(),
-                                  "SUBE_KODU": selected["Şube"].toString(),
-                                  "content-type": "application/json"
-                                });
-                                if (response.data != null) {
-                                  MainPageModel model = response.data[0];
-                                  CacheManager.setAnaVeri(model);
-                                  CacheManager.setVeriTabani(selected);
-                                  CacheManager.setIsletmeSube(userData);
-                                  CacheManager.setLogout(true);
-                                  Get.offAndToNamed("/mainPage");
-                                  var result = await networkManager.dioPost<AccountModel>(
-                                      path: ApiUrls.saveUyeBilgileri, bodyModel: AccountModel(), showError: false, data: CacheManager.getHesapBilgileri?.toJson());
-                                  if (result.success == true) {
-                                    log("Session Başarılı");
+                                  CustomWidgetWithLabel(
+                                      text: "İşletme Kodu",
+                                      child: TextFormField(
+                                        controller: controller2,
+                                        enabled: isletme?.ext.isNotNullOrEmpty,
+                                        readOnly: true,
+                                        onTap: () {
+                                          isletmeDialog(context);
+                                        },
+                                        decoration: const InputDecoration(
+                                          suffixIcon: Icon(Icons.more_horiz_outlined),
+                                        ),
+                                      )),
+                                  CustomWidgetWithLabel(
+                                      text: "Şube Kodu",
+                                      child: TextFormField(
+                                        controller: controller3,
+                                        enabled: sube?.ext.isNotNullOrEmpty,
+                                        readOnly: true,
+                                        onTap: () {
+                                          subeDialog(context);
+                                        },
+                                        decoration: const InputDecoration(
+                                          suffixIcon: Icon(Icons.more_horiz_outlined),
+                                        ),
+                                      )),
+                                ]
+                                    .map((CustomWidgetWithLabel widget) => Padding(
+                                          padding: context.padding.onlyBottomLow,
+                                          child: widget,
+                                        ))
+                                    .toList()),
+                            context.sized.emptySizedHeightBoxLow,
+                            ElevatedButton(
+                              onPressed: () async {
+                                if (!selected.values.contains(null)) {
+                                  final AccountModel model = AccountModel.instance
+                                    ..aktifVeritabani = selected["Şirket"]
+                                    ..aktifIsletmeKodu = selected["İşletme"]
+                                    ..aktifSubeKodu = selected["Şube"];
+                                  dialogManager.showLoadingDialog("${selected["Şirket"]} şirketine giriş yapılıyor.");
+                                  GenericResponseModel<NetworkManagerMixin> response;
+                                  response = await networkManager.dioPost<MainPageModel>(
+                                      path: ApiUrls.createSession,
+                                      bodyModel: MainPageModel(),
+                                      showError: false,
+                                      data: model,
+                                      headers: <String, String>{
+                                        "VERITABANI": selected["Şirket"].toString(),
+                                        "ISLETME_KODU": selected["İşletme"].toString(),
+                                        "SUBE_KODU": selected["Şube"].toString(),
+                                        "content-type": "application/json"
+                                      });
+                                  if (response.data != null) {
+                                    final MainPageModel model = response.data[0];
+                                    await CacheManager.setAnaVeri(model);
+                                    await CacheManager.setVeriTabani(selected);
+                                    await CacheManager.setIsletmeSube(userData);
+                                    await CacheManager.setLogout(true);
+                                    await Get.offAndToNamed("/mainPage");
+                                    final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioPost<AccountModel>(
+                                        path: ApiUrls.saveUyeBilgileri, bodyModel: AccountModel(), showError: false, data: CacheManager.getHesapBilgileri?.toJson());
+                                    if (result.success == true) {
+                                      log("Session Başarılı");
+                                    }
+                                    // Get.toNamed("/mainPage");
+                                    (response.message?.ext.isNotNullOrNoEmpty ?? false) ? await dialogManager.showAlertDialog(response.message.toString()) : null;
+                                  } else {
+                                    dialogManager.hideAlertDialog;
+                                    await dialogManager.showAlertDialog(response.message.toString());
                                   }
-                                  // Get.toNamed("/mainPage");
-                                  (response.message?.ext.isNotNullOrNoEmpty ?? false) ? dialogManager.showAlertDialog(response.message.toString()) : null;
                                 } else {
-                                  dialogManager.hideAlertDialog;
-                                  dialogManager.showAlertDialog(response.message.toString());
+                                  dialogManager.showErrorSnackBar("Boş bırakmayınız.");
                                 }
-                              } else {
-                                dialogManager.showErrorSnackBar("Boş bırakmayınız.");
-                              }
-                            },
-                            child: const Text("Giriş"),
-                          ),
-                        ],
+                              },
+                              child: const Text("Giriş"),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  )),
-            );
-          } else {
-            return Center(
-                child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const CircularProgressIndicator.adaptive(),
-                context.sized.emptySizedHeightBoxLow,
-                Text("Şirketler yükleniyor.", style: theme.textTheme.bodySmall),
-              ],
-            ));
-          }
-        },
-      ),
-    );
-  }
+                    )),
+              );
+            } else {
+              return Center(
+                  child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  const CircularProgressIndicator.adaptive(),
+                  context.sized.emptySizedHeightBoxLow,
+                  Text("Şirketler yükleniyor.", style: theme.textTheme.bodySmall),
+                ],
+              ));
+            }
+          },
+        ),
+      );
 
   subeDialog(BuildContext context) {
     BottomSheetDialogManager().showRadioBottomSheetDialog(context,
         title: "Şube Seçiniz",
         children: List.generate(
           sube?.length ?? 0,
-          (index) {
-            return BottomSheetModel(
-              icon: "Saat",
-              title: sube![index].subeAdi!,
-              onTap: () {
-                setState(() {
-                  controller3.text = "${sube![index].subeAdi} ${sube![index].subeKodu ?? 0}";
-                  selected["Şube"] = sube![index].subeKodu ?? 0;
-                  userData["Şube"] = sube![index].subeAdi;
-                });
-                Get.back();
-              },
-            );
-          },
+          (int index) => BottomSheetModel(
+            icon: "Saat",
+            title: sube![index].subeAdi!,
+            onTap: () {
+              setState(() {
+                controller3.text = "${sube![index].subeAdi} ${sube![index].subeKodu ?? 0}";
+                selected["Şube"] = sube![index].subeKodu ?? 0;
+                userData["Şube"] = sube![index].subeAdi;
+              });
+              Get.back();
+            },
+          ),
         ));
   }
 
@@ -233,25 +234,23 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
         title: "Şirket Seçiniz",
         children: List.generate(
           sirket?.length ?? 0,
-          (index) {
-            return BottomSheetModel(
-              icon: "Saat",
-              iconWidget: Icons.storage_outlined,
-              title: sirket![index].company!,
-              onTap: () {
-                setState(() {
-                  controller1.text = sirket![index].company!;
-                  controller2.text = "";
-                  controller3.text = "";
-                  selected["Şirket"] = sirket![index].company;
-                  userData["Şirket"] = sirket![index].company;
-                  selected["İşletme"] = null;
-                  selected["Şube"] = null;
-                });
-                Get.back();
-              },
-            );
-          },
+          (int index) => BottomSheetModel(
+            icon: "Saat",
+            iconWidget: Icons.storage_outlined,
+            title: sirket![index].company!,
+            onTap: () {
+              setState(() {
+                controller1.text = sirket![index].company!;
+                controller2.text = "";
+                controller3.text = "";
+                selected["Şirket"] = sirket![index].company;
+                userData["Şirket"] = sirket![index].company;
+                selected["İşletme"] = null;
+                selected["Şube"] = null;
+              });
+              Get.back();
+            },
+          ),
         ));
   }
 
@@ -260,23 +259,21 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
         title: "İşletme Seçiniz",
         children: List.generate(
           isletme?.length ?? 0,
-          (index) {
-            return BottomSheetModel(
-              icon: "Saat",
-              iconWidget: Icons.data_array_outlined,
-              title: isletme![index].isletmeAdi!,
-              onTap: () {
-                setState(() {
-                  controller2.text = "${isletme![index].isletmeAdi} ${isletme![index].isletmeKodu ?? 0}";
-                  controller3.text = "";
-                  selected["İşletme"] = isletme![index].isletmeKodu ?? 0;
-                  userData["İşletme"] = isletme![index].isletmeAdi;
-                  selected["Şube"] = null;
-                });
-                Get.back();
-              },
-            );
-          },
+          (int index) => BottomSheetModel(
+            icon: "Saat",
+            iconWidget: Icons.data_array_outlined,
+            title: isletme![index].isletmeAdi!,
+            onTap: () {
+              setState(() {
+                controller2.text = "${isletme![index].isletmeAdi} ${isletme![index].isletmeKodu ?? 0}";
+                controller3.text = "";
+                selected["İşletme"] = isletme![index].isletmeKodu ?? 0;
+                userData["İşletme"] = isletme![index].isletmeAdi;
+                selected["Şube"] = null;
+              });
+              Get.back();
+            },
+          ),
         ));
   }
 
@@ -316,8 +313,8 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   }
 
   Future<List<CompanyModel>?> getSirket({String? name}) async {
-    List<CompanyModel> list = [];
-    final response = await networkManager.dioGet<CompanyModel>(
+    final List<CompanyModel> list = <CompanyModel>[];
+    final GenericResponseModel<NetworkManagerMixin> response = await networkManager.dioGet<CompanyModel>(
       path: ApiUrls.veriTabanlari,
       bodyModel: CompanyModel(),
     );
@@ -334,9 +331,9 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   }
 
   Future<List<IsletmeModel>?> getIsletme() async {
-    List<IsletmeModel> data = [];
-    for (var element in sube!) {
-      if (data.any((element) => element.isletmeKodu == element.isletmeKodu)) {
+    final List<IsletmeModel> data = <IsletmeModel>[];
+    for (IsletmeModel element in sube!) {
+      if (data.any((IsletmeModel element) => element.isletmeKodu == element.isletmeKodu)) {
         continue;
       } else {
         data.add(element);
@@ -346,19 +343,19 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   }
 
   Future<List<IsletmeModel>?> getSube(String? sirket) async {
-    if (sirket == null || sirket == "") return [];
-    List<IsletmeModel> list = [];
-    final response = await networkManager.dioGet<IsletmeModel>(
+    if (sirket == null || sirket == "") return <IsletmeModel>[];
+    final List<IsletmeModel> list = <IsletmeModel>[];
+    final GenericResponseModel<NetworkManagerMixin> response = await networkManager.dioGet<IsletmeModel>(
       path: ApiUrls.isletmelerSubeler,
       bodyModel: IsletmeModel(),
-      queryParameters: {"Veritabani": sirket},
+      queryParameters: <String, dynamic>{"Veritabani": sirket},
     );
     final data = response.data;
     if (data != null) {
       for (IsletmeModel element in data) {
         element.subeKodu == null ? list.add(element..subeKodu = 0) : list.add(element);
       }
-      CacheManager.setSubeListesi(data);
+      await CacheManager.setSubeListesi(data);
     }
     return list;
   }

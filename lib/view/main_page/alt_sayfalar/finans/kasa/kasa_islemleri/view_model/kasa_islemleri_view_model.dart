@@ -1,9 +1,11 @@
 import "dart:convert";
 
 import "package:mobx/mobx.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/model/generic_response_model.dart";
 
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
 import "../../../../../model/param_model.dart";
 import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
@@ -15,7 +17,7 @@ part "kasa_islemleri_view_model.g.dart";
 class KasaIslemleriViewModel = _KasaIslemleriViewModelBase with _$KasaIslemleriViewModel;
 
 abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
-  Map<String, dynamic> hesapTipiMap = {
+  Map<String, dynamic> hesapTipiMap = <String, dynamic>{
     "Tümü": null,
     "Gelir": "G",
     "Gider": "C",
@@ -51,8 +53,8 @@ abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
   @computed
   ObservableList<KasaIslemleriModel>? get getKasaIslemleriListesi => searchText != null
       ? kasaIslemleriListesi
-          ?.where(
-              (element) => (element.belgeNo?.contains(searchText ?? "") ?? false) || (element.cariAdi?.contains(searchText ?? "") ?? false) || (element.cariKodu?.contains(searchText ?? "") ?? false))
+          ?.where((KasaIslemleriModel element) =>
+              (element.belgeNo?.contains(searchText ?? "") ?? false) || (element.cariAdi?.contains(searchText ?? "") ?? false) || (element.cariKodu?.contains(searchText ?? "") ?? false))
           .toList()
           .asObservable()
       : kasaIslemleriListesi;
@@ -91,7 +93,7 @@ abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
   void setKasaIslemleriListesi(List<KasaIslemleriModel>? value) => kasaIslemleriListesi = value?.asObservable();
 
   @action
-  void addKasaIslemleriListesi(List<KasaIslemleriModel>? value) => kasaIslemleriListesi?.addAll(value ?? []);
+  void addKasaIslemleriListesi(List<KasaIslemleriModel>? value) => kasaIslemleriListesi?.addAll(value ?? <KasaIslemleriModel>[]);
 
   @action
   void setHesapTipi(String? value) {
@@ -122,12 +124,12 @@ abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    var result = await networkManager
-        .dioGet<KasaIslemleriModel>(path: ApiUrls.getKasaHareketleri, bodyModel: KasaIslemleriModel(), queryParameters: {"FilterModel": jsonEncode(kasaIslemleriRequestModel.toJson())});
+    final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<KasaIslemleriModel>(
+        path: ApiUrls.getKasaHareketleri, bodyModel: KasaIslemleriModel(), queryParameters: <String, dynamic>{"FilterModel": jsonEncode(kasaIslemleriRequestModel.toJson())});
     if (result.data is List) {
-      List<KasaIslemleriModel> list = result.data.cast<KasaIslemleriModel>();
+      final List<KasaIslemleriModel> list = result.data.cast<KasaIslemleriModel>();
       if ((kasaIslemleriRequestModel.sayfa ?? 0) < 2) {
-        paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
+        paramData = result.paramData?.map((String key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
         setKasaIslemleriListesi(list);
       } else {
         addKasaIslemleriListesi(list);

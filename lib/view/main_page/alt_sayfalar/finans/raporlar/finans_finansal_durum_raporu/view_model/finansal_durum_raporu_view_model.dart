@@ -1,12 +1,12 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
+import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 
 part "finansal_durum_raporu_view_model.g.dart";
 
 class FinansalDurumRaporuViewModel = _FinansalDurumRaporuViewModelBase with _$FinansalDurumRaporuViewModel;
 
 abstract class _FinansalDurumRaporuViewModelBase with Store {
-  final Map<String, String> gorunecekAlanlarMap = {
+  final Map<String, String> gorunecekAlanlarMap = <String, String>{
     "Kasa": "KASA",
     "Banka": "BANKA",
     "Çek": "CEK",

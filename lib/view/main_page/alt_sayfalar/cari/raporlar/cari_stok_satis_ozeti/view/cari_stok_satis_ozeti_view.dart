@@ -4,6 +4,8 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/model/generic_response_model.dart";
 
 import "../../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";
@@ -31,7 +33,7 @@ class CariStokSatisOzetiView extends StatefulWidget {
 class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
   CariStokSatisOzetiViewModel viewModel = CariStokSatisOzetiViewModel();
 
-  List<BaseGrupKoduModel> grupKodList = [];
+  List<BaseGrupKoduModel> grupKodList = <BaseGrupKoduModel>[];
   late final TextEditingController cariController;
   late final TextEditingController baslangicTarihiController;
   late final TextEditingController bitisTarihiController;
@@ -55,9 +57,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
     stokKodu5Controller = TextEditingController();
     viewModel.setModel(widget.model);
     cariController.text = widget.model?.cariKodu ?? "";
-    Future.delayed(Duration.zero, () {
-      getData();
-    });
+    Future.delayed(Duration.zero, getData);
     super.initState();
   }
 
@@ -76,29 +76,29 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
-        title: Observer(builder: (_) {
-          return viewModel.searchBar ? const CustomAppBarTextField() : const Text("Cari Stok Satış Özeti");
-        }),
-        actions: [
+        title: Observer(builder: (_) => viewModel.searchBar ? const CustomAppBarTextField() : const Text("Cari Stok Satış Özeti")),
+        actions: <Widget>[
           IconButton(onPressed: () async => viewModel.setSearchBar(), icon: const Icon(Icons.search_outlined)),
           IconButton(
               onPressed: () async {
                 viewModel.setSirala(await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Sırala", children: viewModel.bottomSheetModelList));
-                getData();
+                await getData();
               },
               icon: const Icon(Icons.sort_by_alpha_outlined)),
           IconButton(
               onPressed: () async {
                 await bottomSheetDialogManager.showBottomSheetDialog(context,
                     title: "Filtrele",
-                    body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
                       CustomWidgetWithLabel(
-                          text: "İrsaliyeler Dahil",onlyLabelpaddingLeft: UIHelper.lowSize, isVertical: true, child: Observer(builder: (_) => Switch.adaptive(value: viewModel.irsDahil, onChanged: (value) => viewModel.setIrsDahil(value)))),
+                          text: "İrsaliyeler Dahil",
+                          onlyLabelpaddingLeft: UIHelper.lowSize,
+                          isVertical: true,
+                          child: Observer(builder: (_) => Switch.adaptive(value: viewModel.irsDahil, onChanged: (bool value) => viewModel.setIrsDahil(value)))),
                       Row(
-                        children: [
+                        children: <Widget>[
                           Expanded(
                               child: CustomTextField(
                                   labelText: "Stok Grup Kodu", controller: stokGrupKoduController, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(0, stokGrupKoduController))),
@@ -108,7 +108,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                         ],
                       ),
                       Row(
-                        children: [
+                        children: <Widget>[
                           Expanded(
                               child: CustomTextField(
                                   labelText: "Stok Kod 2", controller: stokKodu2Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(2, stokKodu2Controller))),
@@ -118,7 +118,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                         ],
                       ),
                       Row(
-                        children: [
+                        children: <Widget>[
                           Expanded(
                               child: CustomTextField(
                                   labelText: "Stok Kod 4", controller: stokKodu4Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(4, stokKodu4Controller))),
@@ -128,7 +128,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                         ],
                       ),
                       Row(
-                        children: [
+                        children: <Widget>[
                           Expanded(
                               child: ElevatedButton(
                                   style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
@@ -160,11 +160,10 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Observer(builder: (_) {
-          return Column(
-            children: [
+        child: Observer(builder: (_) => Column(
+            children: <Widget>[
               RaporFiltreDateTimeBottomSheetView(
-                  filterOnChanged: (value) {
+                  filterOnChanged: (int? value) {
                     viewModel.setDonemTipiIndex(value ?? 0);
                     getData();
                   },
@@ -179,22 +178,20 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                   suffixMore: true,
                   onTap: () async {
                     viewModel.model = null;
-                    getData();
+                    await getData();
                   }),
-              viewModel.modelList != null
-                  ? (viewModel.modelList!.isNotEmpty
+              if (viewModel.modelList != null) viewModel.modelList!.isNotEmpty
                       ? SizedBox(
                           height: context.sized.dynamicHeight(0.8),
                           child: ListView.builder(
                             shrinkWrap: true,
                             itemCount: viewModel.modelList?.length,
-                            itemBuilder: (context, index) {
-                              return Card(
+                            itemBuilder: (BuildContext context, int index) => Card(
                                 child: ListTile(
                                   title: Text(viewModel.modelList?[index].stokAdi ?? ""),
                                   subtitle: Text("Stok Kodu: ${viewModel.modelList?[index].stokKodu ?? ""}"),
                                   trailing: Text(viewModel.modelList?[index].miktar.toStringIfNotNull ?? ""),
-                                  onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: [
+                                  onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: <BottomSheetModel>[
                                     BottomSheetModel(
                                         title: "Cari Stok Satış Hareketleri",
                                         iconWidget: Icons.inventory_2_outlined,
@@ -205,24 +202,20 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                                     BottomSheetModel(title: "Stok İşlemleri", iconWidget: Icons.list_alt_outlined, onTap: () {}),
                                   ]),
                                 ),
-                              );
-                            },
+                              ),
                           ),
                         )
-                      : const Center(child: Text("Sonuç Bulunamadı")))
-                  : const Center(child: CircularProgressIndicator.adaptive()),
+                      : const Center(child: Text("Sonuç Bulunamadı")) else const Center(child: CircularProgressIndicator.adaptive()),
             ],
-          ).paddingAll(UIHelper.lowSize);
-        }),
+          ).paddingAll(UIHelper.lowSize)),
       ),
     );
-  }
 
-  void getData() async {
+  Future<void> getData() async {
     viewModel.model == null ? viewModel.setModel(await Get.toNamed("mainPage/cariListesi", arguments: true) as CariListesiModel?) : null;
     if (viewModel.model != null) {
       cariController.text = viewModel.model?.cariAdi ?? "";
-      var map = {
+      final Map<String, Object?> map = <String, Object?>{
         "CariKodu": viewModel.model?.cariKodu,
         "SIRALAMA": viewModel.sirala,
         "EkranTipi": "L",
@@ -240,8 +233,8 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
         "ArrStokKod4": jsonEncode(viewModel.arrStokKod4.toList()),
         "ArrStokKod5": jsonEncode(viewModel.arrStokKod5.toList()),
       };
-      map.removeWhere((key, value) => value == null || value == "[]");
-      var result = await networkManager.dioGet<CariStokSatisOzetiModel>(path: ApiUrls.getFaturaKalemleri, bodyModel: CariStokSatisOzetiModel(), queryParameters: map);
+      map.removeWhere((String key, Object? value) => value == null || value == "[]");
+      final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<CariStokSatisOzetiModel>(path: ApiUrls.getFaturaKalemleri, bodyModel: CariStokSatisOzetiModel(), queryParameters: map);
       if (result.data != null) {
         viewModel.setModelList(result.data.map((e) => e as CariStokSatisOzetiModel).toList().cast<CariStokSatisOzetiModel>());
       }
@@ -254,42 +247,36 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
       grupKodList = await networkManager.getGrupKod(name: "STOK", grupNo: -1);
       dialogManager.hideAlertDialog;
     }
-    List<BottomSheetModel>? bottomSheetList = grupKodList
-        .where((e) => e.grupNo == grupNo)
+    final List<BottomSheetModel> bottomSheetList = grupKodList
+        .where((BaseGrupKoduModel e) => e.grupNo == grupNo)
         .toList()
         .cast<BaseGrupKoduModel>()
-        .map((e) => BottomSheetModel(title: e.grupAdi ?? "", description: e.grupKodu ?? "", onTap: () => Get.back(result: e)))
+        .map((BaseGrupKoduModel e) => BottomSheetModel(title: e.grupAdi ?? "", description: e.grupKodu ?? "", onTap: () => Get.back(result: e)))
         .toList()
         .cast<BottomSheetModel>();
     // ignore: use_build_context_synchronously
-    var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Grup Kodu", children: bottomSheetList);
+    final result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Grup Kodu", children: bottomSheetList);
     if (result != null) {
       controller?.text = result.grupKodu ?? "";
       switch (grupNo) {
         case 0:
           stokGrupKoduController.text = result.grupKodu ?? "";
           viewModel.setArrStokGrupKodu(result.grupKodu ?? "");
-          break;
         case 1:
           stokKodu1Controller.text = result.grupKodu ?? "";
           viewModel.setArrStokKod1(result.grupKodu ?? "");
-          break;
         case 2:
           stokKodu2Controller.text = result.grupKodu ?? "";
           viewModel.setArrStokKod2(result.grupKodu ?? "");
-          break;
         case 3:
           stokKodu3Controller.text = result.grupKodu ?? "";
           viewModel.setArrStokKod3(result.grupKodu ?? "");
-          break;
         case 4:
           stokKodu4Controller.text = result.grupKodu ?? "";
           viewModel.setArrStokKod4(result.grupKodu ?? "");
-          break;
         case 5:
           stokKodu5Controller.text = result.grupKodu ?? "";
           viewModel.setArrStokKod5(result.grupKodu ?? "");
-          break;
       }
     }
     return null;

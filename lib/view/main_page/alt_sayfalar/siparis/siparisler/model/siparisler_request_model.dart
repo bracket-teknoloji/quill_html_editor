@@ -36,6 +36,5 @@ class SiparislerRequestModel with _$SiparislerRequestModel {
       String? siparisDurumu,
       String? referansStokKodu}) = _SiparislerRequestModel;
 
-  factory SiparislerRequestModel.fromJson(Map<String, dynamic> json) =>
-      _$SiparislerRequestModelFromJson(json);
+  factory SiparislerRequestModel.fromJson(Map<String, dynamic> json) => _$SiparislerRequestModelFromJson(json);
 }

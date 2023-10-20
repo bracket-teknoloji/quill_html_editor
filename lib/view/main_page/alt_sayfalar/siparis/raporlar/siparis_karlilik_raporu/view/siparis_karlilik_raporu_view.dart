@@ -21,8 +21,7 @@ class SiparisKarlilikRaporuView extends StatefulWidget {
   const SiparisKarlilikRaporuView({super.key, this.model});
 
   @override
-  State<SiparisKarlilikRaporuView> createState() =>
-      _YaslandirmaRaporuViewState();
+  State<SiparisKarlilikRaporuView> createState() => _YaslandirmaRaporuViewState();
 }
 
 class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
@@ -37,14 +36,13 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
   late final TextEditingController bitisTarihiController;
 
   //create a form key
-  final _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     viewModel = SiparisKarlilikRaporuViewModel();
     viewModel.setBelgeNo(widget.model?.belgeNo);
-    belgeNoController =
-        TextEditingController(text: widget.model?.belgeNo ?? "");
+    belgeNoController = TextEditingController(text: widget.model?.belgeNo ?? "");
     viewModel.setCariKodu(widget.model?.cariKodu);
     cariController = TextEditingController(text: widget.model?.cariAdi ?? "");
     vergiNoController = TextEditingController();
@@ -70,12 +68,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return PDFViewerView(
-        filterBottomSheet: filterBottomSheet,
-        title: "Sipariş Karlılık Raporu",
-        pdfData: viewModel.pdfModel);
-  }
+  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Sipariş Karlılık Raporu", pdfData: viewModel.pdfModel);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -87,16 +80,11 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
             key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
+              children: <Widget>[
                 RaporFiltreDateTimeBottomSheetView(
-                    filterOnChanged: (value) {
-                      viewModel.setBaslangicTarihi(
-                          baslangicTarihiController.text != ""
-                              ? baslangicTarihiController.text
-                              : null);
-                      viewModel.setBitisTarihi(bitisTarihiController.text != ""
-                          ? bitisTarihiController.text
-                          : null);
+                    filterOnChanged: (int? value) {
+                      viewModel.setBaslangicTarihi(baslangicTarihiController.text != "" ? baslangicTarihiController.text : null);
+                      viewModel.setBitisTarihi(bitisTarihiController.text != "" ? bitisTarihiController.text : null);
                     },
                     baslangicTarihiController: baslangicTarihiController,
                     bitisTarihiController: bitisTarihiController),
@@ -110,11 +98,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                     belgeNoController.clear();
                   },
                   onTap: () async {
-                    var result = await Get.toNamed(
-                        "/mainPage/siparisMusteriSiparisi",
-                        arguments: SiparislerWidgetModel(
-                            siparisTipiEnum: SiparisTipiEnum.musteri,
-                            isGetData: true));
+                    final result = await Get.toNamed("/mainPage/siparisMusteriSiparisi", arguments: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.musteri, isGetData: true));
                     if (result is BaseSiparisEditModel) {
                       belgeNoController.text = result.belgeNo ?? "";
                       viewModel.setBelgeNo(result.belgeNo);
@@ -133,22 +117,19 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                   suffix: IconButton(
                     onPressed: () {
                       if (viewModel.pdfModel.dicParams?.cariKodu != null) {
-                        dialogManager.showCariGridViewDialog(CariListesiModel()
-                          ..cariKodu = viewModel.pdfModel.dicParams?.cariKodu!);
+                        dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = viewModel.pdfModel.dicParams?.cariKodu!);
                       } else {
                         dialogManager.showAlertDialog("Cari Kodu Boş Olamaz");
                       }
                     },
-                    icon: Icon(Icons.data_exploration_outlined,
-                        color: UIHelper.primaryColor),
+                    icon: Icon(Icons.data_exploration_outlined, color: UIHelper.primaryColor),
                   ),
                   onClear: () {
                     viewModel.setCariKodu(null);
                     cariController.clear();
                   },
                   onTap: () async {
-                    var result = await Get.toNamed("/mainPage/cariListesi",
-                        arguments: true);
+                    final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                     if (result is CariListesiModel) {
                       cariController.text = result.cariAdi ?? "";
                       viewModel.setCariKodu(result.cariKodu);
@@ -157,7 +138,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: <Widget>[
                     Expanded(
                         child: CustomTextField(
                       labelText: "Plasiyer",
@@ -169,11 +150,9 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                         plasiyerController.clear();
                       },
                       onTap: () async {
-                        PlasiyerList? result = await bottomSheetDialogManager
-                            .showPlasiyerBottomSheetDialog(context);
+                        final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
                         if (result != null) {
-                          plasiyerController.text =
-                              result.plasiyerAciklama ?? "";
+                          plasiyerController.text = result.plasiyerAciklama ?? "";
                           viewModel.setPlasiyer(result.plasiyerKodu);
                         }
                       },
@@ -186,16 +165,10 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                       isMust: true,
                       controller: maliyetTipiController,
                       onTap: () async {
-                        var result = await bottomSheetDialogManager
-                            .showBottomSheetDialog(context,
-                                title: "Maliyet Tipi",
-                                children: List.generate(
-                                    viewModel.maliyetTipiList.length,
-                                    (index) => BottomSheetModel(
-                                        title: viewModel.maliyetTipiList.keys
-                                            .toList()[index],
-                                        value: viewModel.maliyetTipiList.values
-                                            .toList()[index])));
+                        final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                            title: "Maliyet Tipi",
+                            children: List.generate(viewModel.maliyetTipiList.length,
+                                (int index) => BottomSheetModel(title: viewModel.maliyetTipiList.keys.toList()[index], value: viewModel.maliyetTipiList.values.toList()[index])));
                         if (result != null) {
                           maliyetTipiController.text = result ?? "";
                           viewModel.setMaliyetTipi(result ?? "");
@@ -207,20 +180,14 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                 CustomTextField(
                   labelText: "Hariç Stok Grup Kodları",
                   suffix: IconButton(
-                      onPressed: () => dialogManager.showInfoDialog(
-                          "Kodları noktalı virgül (;) ile ayırarak, aralaında boşluk bırakmadan yazınız.\n\nÖrnek: 01;02;02"),
-                      icon: Icon(Icons.info_outline,
-                          color: UIHelper.primaryColor)),
+                      onPressed: () => dialogManager.showInfoDialog("Kodları noktalı virgül (;) ile ayırarak, aralaında boşluk bırakmadan yazınız.\n\nÖrnek: 01;02;02"),
+                      icon: Icon(Icons.info_outline, color: UIHelper.primaryColor)),
                   controller: haricStokGrupKodlariController,
                 ),
                 CustomWidgetWithLabel(
                     text: "Üretim Fiyatı Dahil",
                     isVertical: true,
-                    child: Observer(
-                        builder: (_) => Switch.adaptive(
-                            value: viewModel.uretimFiyatiDahilMi,
-                            onChanged: (value) => viewModel
-                                .setUretimFiyatiDahilMi(value ? "E" : "H")))),
+                    child: Observer(builder: (_) => Switch.adaptive(value: viewModel.uretimFiyatiDahilMi, onChanged: (bool value) => viewModel.setUretimFiyatiDahilMi(value ? "E" : "H")))),
                 ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState?.validate() ?? false) {

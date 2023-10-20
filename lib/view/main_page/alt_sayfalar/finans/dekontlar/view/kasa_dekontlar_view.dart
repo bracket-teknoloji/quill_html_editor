@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
-import "../../../../../../core/components/wrap/appbar_title.dart";
 
+import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../view_model/kasa_dekontlar_view_model.dart";
 
 class KasaDekontlarView extends StatefulWidget {
@@ -13,8 +13,7 @@ class KasaDekontlarView extends StatefulWidget {
 class _KasaDekontlarViewState extends State<KasaDekontlarView> {
   KasaDekontlarViewModel viewModel = KasaDekontlarViewModel();
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
         title: const AppBarTitle(title: "Dekontlar", subtitle: "(25)"),
       ),
@@ -24,5 +23,4 @@ class _KasaDekontlarViewState extends State<KasaDekontlarView> {
       ),
       body: ListView(),
     );
-  }
 }

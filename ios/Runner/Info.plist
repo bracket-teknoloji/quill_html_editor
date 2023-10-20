@@ -45,14 +45,14 @@
 		<true/>
 		<key>LSSupportsOpeningDocumentsInPlace</key>
 		<true/>
-		<key>NSCameraUsageDescription</key>
-		<string>QR kodu okutabilmek için lütfen bunu onaylayın.</string>
 		<key>NSHumanReadableCopyright</key>
 		<string></string>
+		<key>NSCameraUsageDescription</key>
+		<string>QR kodu okutabilmek için lütfen bunu onaylayın.</string>
 		<key>NSPhotoLibraryUsageDescription</key>
 		<string>Fotoğraflarınıza erişmek için lütfen bunu onaylayın.</string>
 		<key>NSUserTrackingUsageDescription</key>
-		<string>Uygulama herhangi bir hata aldığında bize haber vermesi için bunu onaylayın.</string>
+		<string>Uygulama herhangi bir hata aldığında bize haber vermesi için lütfen bunu onaylayın.</string>
 		<key>UIApplicationSupportsIndirectInputEvents</key>
 		<true/>
 		<key>UIBackgroundModes</key>

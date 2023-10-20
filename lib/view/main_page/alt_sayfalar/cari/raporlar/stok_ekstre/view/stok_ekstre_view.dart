@@ -46,12 +46,7 @@ class _StokEkstreViewState extends BaseState<StokEkstreView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return PDFViewerView(
-        filterBottomSheet: filterBottomSheet,
-        title: "Stok Ekstre",
-        pdfData: viewModel.pdfModel);
-  }
+  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Stok Ekstre", pdfData: viewModel.pdfModel);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -59,7 +54,7 @@ class _StokEkstreViewState extends BaseState<StokEkstreView> {
         title: "Filtrele",
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
+          children: <Widget>[
             RaporFiltreDateTimeBottomSheetView(
               filterOnChanged: filterOnChanged,
               baslangicTarihiController: baslangicTarihiController,
@@ -72,36 +67,26 @@ class _StokEkstreViewState extends BaseState<StokEkstreView> {
               readOnly: true,
               suffixMore: true,
               onTap: () async {
-                var result =
-                    await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                 if (result != null) {
                   cariController!.text = result.cariAdi ?? "";
                   viewModel.changeCariKodu(result.cariKodu ?? "");
                 }
               },
             ),
-            Observer(builder: (_) {
-              return ElevatedButton(
+            Observer(builder: (_) => ElevatedButton(
                       onPressed: () {
                         if (viewModel.pdfModel.dicParams?.cariKodu == null) {
-                          dialogManager.showAlertDialog(
-                              "Lütfen tüm alanları doldurunuz");
+                          dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
                         } else {
-                          viewModel.pdfModel.dicParams?.bastar =
-                              baslangicTarihiController.text != ""
-                                  ? baslangicTarihiController.text
-                                  : null;
-                          viewModel.pdfModel.dicParams?.bittar =
-                              bitisTarihiController.text != ""
-                                  ? bitisTarihiController.text
-                                  : null;
+                          viewModel.pdfModel.dicParams?.bastar = baslangicTarihiController.text != "" ? baslangicTarihiController.text : null;
+                          viewModel.pdfModel.dicParams?.bittar = bitisTarihiController.text != "" ? bitisTarihiController.text : null;
                           viewModel.setFuture();
                           Get.back();
                         }
                       },
                       child: const Text("Uygula"))
-                  .paddingAll(UIHelper.lowSize);
-            })
+                  .paddingAll(UIHelper.lowSize))
           ],
         ).paddingAll(UIHelper.lowSize));
     return Future.value(viewModel.futureController.value);

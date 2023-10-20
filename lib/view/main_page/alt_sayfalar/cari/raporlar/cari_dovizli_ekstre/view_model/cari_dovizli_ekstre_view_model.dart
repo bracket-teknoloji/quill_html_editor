@@ -5,8 +5,7 @@ import "../../../../../../../core/constants/extensions/number_extensions.dart";
 
 part "cari_dovizli_ekstre_view_model.g.dart";
 
-class CariDovizliEkstreViewModel = _CariDovizliEkstreViewModelBase
-    with _$CariDovizliEkstreViewModel;
+class CariDovizliEkstreViewModel = _CariDovizliEkstreViewModelBase with _$CariDovizliEkstreViewModel;
 
 abstract class _CariDovizliEkstreViewModelBase with Store {
   @observable
@@ -16,8 +15,7 @@ abstract class _CariDovizliEkstreViewModelBase with Store {
   bool get getTlHareketleriDokulsun => tlHareketleriDokulsun;
 
   @action
-  void changeTlHareketleriDokulsun() =>
-      tlHareketleriDokulsun = !tlHareketleriDokulsun;
+  void changeTlHareketleriDokulsun() => tlHareketleriDokulsun = !tlHareketleriDokulsun;
   //* Doviz Tipi
   //*
   @observable
@@ -27,10 +25,7 @@ abstract class _CariDovizliEkstreViewModelBase with Store {
   void changeDovizValue(String value) => dovizValue = value;
 
   @observable
-  PdfModel pdfModel = PdfModel(
-      raporOzelKod: "Rapor_CariDovizEkstre",
-      standart: true,
-      dicParams: DicParams());
+  PdfModel pdfModel = PdfModel(raporOzelKod: "Rapor_CariDovizEkstre", standart: true, dicParams: DicParams());
 
   //* Cari Kodu
   //*
@@ -38,14 +33,12 @@ abstract class _CariDovizliEkstreViewModelBase with Store {
   void changeCariKodu(value) => pdfModel.dicParams!.cariKodu = value;
 
   @action
-  void changeDovizTipi(int value) =>
-      pdfModel.dicParams!.dovizTipi = value.toStringIfNotNull;
+  void changeDovizTipi(int value) => pdfModel.dicParams!.dovizTipi = value.toStringIfNotNull;
 
   //* Future
   //*
   @observable
-  ObservableFuture<bool?> futureController =
-      ObservableFuture(Future.error(false));
+  ObservableFuture<bool?> futureController = ObservableFuture(Future.error(false));
 
   @action
   void setFuture() => futureController = ObservableFuture.value(true);

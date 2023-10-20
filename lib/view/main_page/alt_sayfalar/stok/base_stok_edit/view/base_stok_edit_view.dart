@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/model/generic_response_model.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
@@ -21,73 +23,47 @@ class BaseStokEditingView extends StatefulWidget {
   final bool? isSubTitleSmall;
   // final List<Widget>? actions;
   final BaseEditModel? model;
-  const BaseStokEditingView(
-      {super.key,
-      this.appBarTitle,
-      this.appBarSubtitle,
-      this.isSubTitleSmall,
-      this.model});
+  const BaseStokEditingView({super.key, this.appBarTitle, this.appBarSubtitle, this.isSubTitleSmall, this.model});
 
   @override
   State<BaseStokEditingView> createState() => _BaseStokEditingViewState();
 }
 
-class _BaseStokEditingViewState extends BaseState<BaseStokEditingView>
-    with TickerProviderStateMixin {
+class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with TickerProviderStateMixin {
   TabController? tabController;
-  List<Tab>? get tabs => (widget.model!.baseEditEnum != BaseEditEnum.ekle &&
-          widget.model!.baseEditEnum != BaseEditEnum.kopyala)
-      ? [const Tab(child: Text("Fiyat Listesi"))]
-      : [];
-  List<Widget>? get views => (widget.model!.baseEditEnum != BaseEditEnum.ekle &&
-          widget.model!.baseEditEnum != BaseEditEnum.kopyala)
-      ? [const BaseStokEditFiyatListesiView()]
-      : [];
+  List<Tab>? get tabs => (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala) ? <Tab>[const Tab(child: Text("Fiyat Listesi"))] : <Tab>[];
+  List<Widget>? get views => (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala) ? <Widget>[const BaseStokEditFiyatListesiView()] : <Widget>[];
 
   @override
   Widget build(BuildContext context) {
     StokListesiModel.setInstance(widget.model?.model);
-    List<Tab> tabList = [
-      const Tab(child: Text("Genel")),
-      ...?tabs,
-      const Tab(child: Text("Fiyat")),
-      const Tab(child: Text("Seriler"))
-    ];
-    List<Widget> viewList = [
+    final List<Tab> tabList = <Tab>[const Tab(child: Text("Genel")), ...?tabs, const Tab(child: Text("Fiyat")), const Tab(child: Text("Seriler"))];
+    final List<Widget> viewList = <Widget>[
       BaseStokEditGenelView(model: widget.model?.baseEditEnum),
       ...?views,
       BaseStokEditFiyatView(model: widget.model?.baseEditEnum),
       BaseStokEditSerilerView(model: widget.model?.baseEditEnum)
     ];
     tabController = TabController(length: tabList.length, vsync: this);
-    return WillPopScope(
-      onWillPop: () async {
-        return true;
         //TODO! BURAYA BAK
-      },
+    return WillPopScope(
+      onWillPop: () async => true,
       child: DefaultTabController(
         length: tabList.length,
         child: Scaffold(
           appBar: AppBar(
-            title: AppBarTitle(
-                title: widget.appBarTitle ?? "Stok Detayları",
-                subtitle: widget.appBarSubtitle ??
-                    widget.model?.model?.stokAdi ??
-                    ""),
-            actions: [
+            title: AppBarTitle(title: widget.appBarTitle ?? "Stok Detayları", subtitle: widget.appBarSubtitle ?? widget.model?.model?.stokAdi ?? ""),
+            actions: <Widget>[
               Visibility(
                   visible: widget.model?.baseEditEnum != BaseEditEnum.goruntule,
                   child: IconButton(
                       onPressed: () async {
                         if (validate.isEmpty) {
-                          dialogManager.showAreYouSureDialog(() {
-                            postData();
-                          });
+                          await dialogManager.showAreYouSureDialog(postData);
                         } else {
-                          dialogManager.showEmptyFieldDialog(
+                          await dialogManager.showEmptyFieldDialog(
                             validate.keys,
-                            onOk: () =>
-                                tabController?.animateTo(validate.values.first),
+                            onOk: () => tabController?.animateTo(validate.values.first),
                           );
                         }
                       },
@@ -104,9 +80,9 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView>
     );
   }
 
-  void postData() async {
-    StokListesiModel model = StokListesiModel.instance;
-    SaveStokModel saveStokModel = SaveStokModel().fromJson(model.toJson());
+  Future<void> postData() async {
+    final StokListesiModel model = StokListesiModel.instance;
+    final SaveStokModel saveStokModel = SaveStokModel().fromJson(model.toJson());
     saveStokModel.adi = model.stokAdi;
     saveStokModel.kodu = model.stokKodu;
     saveStokModel.alisFiyati1 = model.alisFiat1;
@@ -127,8 +103,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView>
     saveStokModel.alisDovizFiyati = model.dovAlisFiat;
     saveStokModel.satisDovizFiyati = model.dovSatisFiat;
     saveStokModel.muhdetayKodu = model.muhdetayKodu;
-    saveStokModel.islemKodu =
-        widget.model?.baseEditEnum == BaseEditEnum.ekle ? 1 : 2;
+    saveStokModel.islemKodu = widget.model?.baseEditEnum == BaseEditEnum.ekle ? 1 : 2;
     saveStokModel.yeniKayit = saveStokModel.islemKodu == 1 ? true : false;
     saveStokModel.satisFiyati1 = model.satisFiat1;
     saveStokModel.satisFiyati2 = model.satisFiat2;
@@ -145,7 +120,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView>
     saveStokModel.alisDovizTipi = model.alisDovTip;
     saveStokModel.satisDovizTipi = model.satDovTip;
     dialogManager.showLoadingDialog("Kaydediliyor..");
-    var result = await networkManager.dioPost<SaveStokModel>(
+    final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioPost<SaveStokModel>(
       path: ApiUrls.saveStok,
       bodyModel: SaveStokModel(),
       addCKey: true,
@@ -164,8 +139,8 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView>
   }
 
   Map<String, int> get validate {
-    StokListesiModel model = StokListesiModel.instance;
-    Map<String, int> validate = {};
+    final StokListesiModel model = StokListesiModel.instance;
+    final Map<String, int> validate = <String, int>{};
     if (model.stokKodu.ext.isNullOrEmpty) {
       validate["Stok Kodu"] = 0;
     }

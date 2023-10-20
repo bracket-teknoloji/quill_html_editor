@@ -18,14 +18,12 @@ class LokalDepoBakiyeRaporuView extends StatefulWidget {
   const LokalDepoBakiyeRaporuView({super.key, this.model});
 
   @override
-  State<LokalDepoBakiyeRaporuView> createState() =>
-      _LokalDepoBakiyeRaporuViewState();
+  State<LokalDepoBakiyeRaporuView> createState() => _LokalDepoBakiyeRaporuViewState();
 }
 
-class _LokalDepoBakiyeRaporuViewState
-    extends BaseState<LokalDepoBakiyeRaporuView> {
+class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRaporuView> {
   LokalDepoBakiyeRaporuViewModel viewModel = LokalDepoBakiyeRaporuViewModel();
-  List<BaseGrupKoduModel> grupKodList = [];
+  List<BaseGrupKoduModel> grupKodList = <BaseGrupKoduModel>[];
   late final TextEditingController stokController;
   late final TextEditingController depoController;
   late final TextEditingController haricStokGrupKodlariController;
@@ -68,12 +66,7 @@ class _LokalDepoBakiyeRaporuViewState
   }
 
   @override
-  Widget build(BuildContext context) {
-    return PDFViewerView(
-        filterBottomSheet: filterBottomSheet,
-        title: "Lokal Depo Bakiye Raporu",
-        pdfData: viewModel.pdfModel);
-  }
+  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Lokal Depo Bakiye Raporu", pdfData: viewModel.pdfModel);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -83,17 +76,14 @@ class _LokalDepoBakiyeRaporuViewState
           padding: EdgeInsets.all(UIHelper.lowSize),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
+            children: <Widget>[
               CustomWidgetWithLabel(
                 text: "Sıfır Tutar Hariç",
                 isVertical: true,
-                child: Observer(
-                    builder: (_) => Switch.adaptive(
-                        value: viewModel.sifirHaricValue,
-                        onChanged: (value) => viewModel.setSifirHaric(value))),
+                child: Observer(builder: (_) => Switch.adaptive(value: viewModel.sifirHaricValue, onChanged: (bool value) => viewModel.setSifirHaric(value))),
               ),
               Row(
-                children: [
+                children: <Widget>[
                   Expanded(
                     child: CustomTextField(
                       labelText: "Stok",
@@ -101,12 +91,10 @@ class _LokalDepoBakiyeRaporuViewState
                       readOnly: true,
                       suffixMore: true,
                       onTap: () async {
-                        var result = await Get.toNamed("/mainPage/stokListesi",
-                            arguments: true);
+                        final result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
                         if (result != null) {
                           stokController.text = result.stokKodu ?? "";
-                          viewModel.pdfModel.dicParams?.stokKodu =
-                              result.stokKodu ?? "";
+                          viewModel.pdfModel.dicParams?.stokKodu = result.stokKodu ?? "";
                         }
                       },
                     ),
@@ -117,14 +105,10 @@ class _LokalDepoBakiyeRaporuViewState
                     controller: depoController,
                     readOnly: true,
                     onTap: () async {
-                      var result = await bottomSheetDialogManager
-                          .showBottomSheetDialog(context,
-                              title: "Depo",
-                              children: viewModel.bottomSheetList);
+                      final result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Depo", children: viewModel.bottomSheetList);
                       if (result != null) {
                         depoController.text = result ?? "";
-                        viewModel.pdfModel.dicParams?.depoKodlari =
-                            result ?? "";
+                        viewModel.pdfModel.dicParams?.depoKodlari = result ?? "";
                       }
                     },
                     suffixMore: true,
@@ -138,8 +122,7 @@ class _LokalDepoBakiyeRaporuViewState
                   icon: const Icon(Icons.info_outline),
                   onPressed: infoDialog,
                 ),
-                onChanged: (p0) =>
-                    viewModel.pdfModel.dicParams?.haricStokGrupKodlari = p0,
+                onChanged: (String p0) => viewModel.pdfModel.dicParams?.haricStokGrupKodlari = p0,
               ),
               CustomTextField(
                 labelText: "Hariç Stok Kodları",
@@ -148,62 +131,21 @@ class _LokalDepoBakiyeRaporuViewState
                   icon: const Icon(Icons.info_outline),
                   onPressed: infoDialog,
                 ),
-                onChanged: (p0) =>
-                    viewModel.pdfModel.dicParams?.haricStokKodlari = p0,
+                onChanged: (String p0) => viewModel.pdfModel.dicParams?.haricStokKodlari = p0,
               ),
-              Row(children: [
+              Row(children: <Widget>[
                 Expanded(
-                    child: CustomTextField(
-                        labelText: "Grup Kodu",
-                        controller: grupKodlariController,
-                        readOnly: true,
-                        suffixMore: true,
-                        onTap: () async =>
-                            await getGrupKodu(0, grupKodlariController))),
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 1",
-                        controller: kod1Controller,
-                        readOnly: true,
-                        suffixMore: true,
-                        onTap: () async =>
-                            await getGrupKodu(1, kod1Controller)))
+                    child:
+                        CustomTextField(labelText: "Grup Kodu", controller: grupKodlariController, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(0, grupKodlariController))),
+                Expanded(child: CustomTextField(labelText: "Kod 1", controller: kod1Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(1, kod1Controller)))
               ]),
-              Row(children: [
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 2",
-                        controller: kod2Controller,
-                        readOnly: true,
-                        suffixMore: true,
-                        onTap: () async =>
-                            await getGrupKodu(2, kod2Controller))),
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 3",
-                        controller: kod3Controller,
-                        readOnly: true,
-                        suffixMore: true,
-                        onTap: () async =>
-                            await getGrupKodu(3, kod3Controller)))
+              Row(children: <Widget>[
+                Expanded(child: CustomTextField(labelText: "Kod 2", controller: kod2Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(2, kod2Controller))),
+                Expanded(child: CustomTextField(labelText: "Kod 3", controller: kod3Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(3, kod3Controller)))
               ]),
-              Row(children: [
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 4",
-                        controller: kod4Controller,
-                        readOnly: true,
-                        suffixMore: true,
-                        onTap: () async =>
-                            await getGrupKodu(4, kod4Controller))),
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 5",
-                        controller: kod5Controller,
-                        readOnly: true,
-                        suffixMore: true,
-                        onTap: () async =>
-                            await getGrupKodu(5, kod5Controller)))
+              Row(children: <Widget>[
+                Expanded(child: CustomTextField(labelText: "Kod 4", controller: kod4Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(4, kod4Controller))),
+                Expanded(child: CustomTextField(labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, kod5Controller)))
               ]),
               ElevatedButton(
                       onPressed: () {
@@ -218,46 +160,36 @@ class _LokalDepoBakiyeRaporuViewState
     return Future.value(viewModel.futureController.value);
   }
 
-  void infoDialog() => dialogManager.showInfoDialog(
-      "Kodları noktalı Virgül (' ; ') ile ayırarak, aralarında boşluk bırakmadan yazınız.\nÖrnek: 01;02;03");
+  void infoDialog() => dialogManager.showInfoDialog("Kodları noktalı Virgül (' ; ') ile ayırarak, aralarında boşluk bırakmadan yazınız.\nÖrnek: 01;02;03");
 
-  Future<String?> getGrupKodu(
-      int grupNo, TextEditingController? controller) async {
+  Future<String?> getGrupKodu(int grupNo, TextEditingController? controller) async {
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: "STOK", grupNo: -1);
     }
-    List<BottomSheetModel>? bottomSheetList = grupKodList
-        .where((e) => e.grupNo == grupNo)
+    final List<BottomSheetModel> bottomSheetList = grupKodList
+        .where((BaseGrupKoduModel e) => e.grupNo == grupNo)
         .toList()
         .cast<BaseGrupKoduModel>()
-        .map((e) => BottomSheetModel(
-            title: e.grupKodu ?? "", onTap: () => Get.back(result: e)))
+        .map((BaseGrupKoduModel e) => BottomSheetModel(title: e.grupKodu ?? "", onTap: () => Get.back(result: e)))
         .toList()
         .cast<BottomSheetModel>();
     // ignore: use_build_context_synchronously
-    var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-        title: "Grup Kodu", children: bottomSheetList);
+    final result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Grup Kodu", children: bottomSheetList);
     if (result != null) {
       controller?.text = result.grupKodu ?? "";
       switch (grupNo) {
         case 0:
           viewModel.pdfModel.dicParams?.grupKodu = result.grupKodu ?? "";
-          break;
         case 1:
           viewModel.pdfModel.dicParams?.kod1 = result.grupKodu ?? "";
-          break;
         case 2:
           viewModel.pdfModel.dicParams?.kod2 = result.grupKodu ?? "";
-          break;
         case 3:
           viewModel.pdfModel.dicParams?.kod3 = result.grupKodu ?? "";
-          break;
         case 4:
           viewModel.pdfModel.dicParams?.kod4 = result.grupKodu ?? "";
-          break;
         case 5:
           viewModel.pdfModel.dicParams?.kod5 = result.grupKodu ?? "";
-          break;
       }
     }
     return null;

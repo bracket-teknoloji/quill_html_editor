@@ -4,6 +4,8 @@ import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
+import "../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
@@ -20,7 +22,7 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
   }
 
   //*for view
-  final Map<String, String> siralaMap = {
+  final Map<String, String> siralaMap = <String, String>{
     "Belge No (A-Z)": "BELGE_NO_AZ",
     "Belge No (Z-A)": "BELGE_NO_ZA",
     "Tarih (A-Z)": "TARIH_AZ",
@@ -31,7 +33,7 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
     "Vade Günü (Z-A)": "VADE_GUNU_ZA",
   };
 
-  final Map<String, dynamic> tipiMap = {
+  final Map<String, String> tipiMap = <String, String>{
     "Alıcı": "A",
     "Satıcı": "S",
     "Toptancı": "T",
@@ -41,13 +43,13 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
     "Komisyoncu": "I",
   };
 
-  final List<String> tipiList = ["T", "H", "N", "D"];
+  final List<String> tipiList = <String>["T", "H", "N", "D"];
 
   @observable
   bool kodlariGoster = false;
 
   @observable
-  ObservableMap<String, bool> ekstraAlanlarMap = {
+  ObservableMap<String, bool> ekstraAlanlarMap = <String, bool>{
     "EK": CacheManager.getProfilParametre.siparisEkAlan,
     "MİK": CacheManager.getProfilParametre.siparisMiktar,
     "VADE": CacheManager.getProfilParametre.siparisVade,
@@ -75,54 +77,51 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
   ObservableList<BaseSiparisEditModel?>? faturaList;
 
   @action
-  void changeEkstraAlanlarMap(String key, bool value) {
+  Future<void> changeEkstraAlanlarMap(String key, bool value) async {
     ekstraAlanlarMap.remove(key);
     switch (key) {
       case "EK":
-        CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisEkAlan: value));
+        await CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisEkAlan: value));
         ekstraAlanlarMap["EK"] = value;
-        break;
       case "MİK":
-        CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisMiktar: value));
+        await CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisMiktar: value));
         ekstraAlanlarMap["MİK"] = value;
-        break;
       case "VADE":
-        CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisVade: value));
+        await CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisVade: value));
         ekstraAlanlarMap["VADE"] = value;
-        break;
     }
     ekstraAlanlarMap[key] = value;
   }
 
   @action
-  void resetEkstraAlanlarMap() {
-    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisEkAlan: false, siparisMiktar: false, siparisVade: false));
-    ekstraAlanlarMap = {"EK": false, "MİK": false, "VADE": false}.asObservable();
+  Future<void> resetEkstraAlanlarMap() async {
+    await CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisEkAlan: false, siparisMiktar: false, siparisVade: false));
+    ekstraAlanlarMap = <String, bool>{"EK": false, "MİK": false, "VADE": false}.asObservable();
   }
 
   @observable
-  List<String?> teslimatDurumuValueList = const [null, "K", "B"];
+  List<String?> teslimatDurumuValueList = const <String?>[null, "K", "B"];
 
   @observable
   List<BaseGrupKoduModel>? grupKodList;
 
   @computed
-  ObservableList<BaseGrupKoduModel>? get getGrupKod0 => grupKodList?.where((element) => element.grupNo == 0).toList().asObservable();
+  ObservableList<BaseGrupKoduModel>? get getGrupKod0 => grupKodList?.where((BaseGrupKoduModel element) => element.grupNo == 0).toList().asObservable();
 
   @computed
-  ObservableList<BaseGrupKoduModel>? get getGrupKod1 => grupKodList?.where((element) => element.grupNo == 1).toList().asObservable();
+  ObservableList<BaseGrupKoduModel>? get getGrupKod1 => grupKodList?.where((BaseGrupKoduModel element) => element.grupNo == 1).toList().asObservable();
 
   @computed
-  ObservableList<BaseGrupKoduModel>? get getGrupKod2 => grupKodList?.where((element) => element.grupNo == 2).toList().asObservable();
+  ObservableList<BaseGrupKoduModel>? get getGrupKod2 => grupKodList?.where((BaseGrupKoduModel element) => element.grupNo == 2).toList().asObservable();
 
   @computed
-  ObservableList<BaseGrupKoduModel>? get getGrupKod3 => grupKodList?.where((element) => element.grupNo == 3).toList().asObservable();
+  ObservableList<BaseGrupKoduModel>? get getGrupKod3 => grupKodList?.where((BaseGrupKoduModel element) => element.grupNo == 3).toList().asObservable();
 
   @computed
-  ObservableList<BaseGrupKoduModel>? get getGrupKod4 => grupKodList?.where((element) => element.grupNo == 4).toList().asObservable();
+  ObservableList<BaseGrupKoduModel>? get getGrupKod4 => grupKodList?.where((BaseGrupKoduModel element) => element.grupNo == 4).toList().asObservable();
 
   @computed
-  ObservableList<BaseGrupKoduModel>? get getGrupKod5 => grupKodList?.where((element) => element.grupNo == 5).toList().asObservable();
+  ObservableList<BaseGrupKoduModel>? get getGrupKod5 => grupKodList?.where((BaseGrupKoduModel element) => element.grupNo == 5).toList().asObservable();
 
   @action
   void changeArrKod0(List<String?> value) => faturaRequestModel = faturaRequestModel.copyWith(arrGrupKodu: jsonEncode(value));
@@ -255,8 +254,11 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getKod() async {
-    var responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
-        path: ApiUrls.getGrupKodlari, bodyModel: BaseGrupKoduModel(), headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"}, queryParameters: {"Modul": "CARI", "GrupNo": "-1"});
+    final GenericResponseModel<NetworkManagerMixin> responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
+        path: ApiUrls.getGrupKodlari,
+        bodyModel: BaseGrupKoduModel(),
+        headers: <String, String>{"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"},
+        queryParameters: <String, dynamic>{"Modul": "CARI", "GrupNo": "-1"});
     if (responseKod.data is List) {
       changeGrupKodList(responseKod.data.cast<BaseGrupKoduModel>());
     }
@@ -264,11 +266,12 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    var result = await networkManager.dioGet<BaseSiparisEditModel>(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: faturaRequestModel.toJson());
+    final GenericResponseModel<NetworkManagerMixin> result =
+        await networkManager.dioGet<BaseSiparisEditModel>(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: faturaRequestModel.toJson());
     if (result.data is List) {
-      List<BaseSiparisEditModel> list = result.data.cast<BaseSiparisEditModel>();
+      final List<BaseSiparisEditModel> list = result.data.cast<BaseSiparisEditModel>();
       if ((faturaRequestModel.sayfa ?? 0) < 2) {
-        paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
+        paramData = result.paramData?.map((String key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
         setFaturaList(list);
       } else {
         addFaturaList(list);

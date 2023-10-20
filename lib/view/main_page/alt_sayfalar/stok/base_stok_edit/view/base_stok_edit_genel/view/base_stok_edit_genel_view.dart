@@ -11,6 +11,7 @@ import "package:flutter_image_compress/flutter_image_compress.dart";
 import "package:get/get.dart";
 import "package:image_picker/image_picker.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
 
 import "../../../../../../../../core/base/model/base_edit_siradaki_kod_model.dart";
 import "../../../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -46,7 +47,7 @@ class BaseStokEditGenelView extends StatefulWidget {
 class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
   // StokListesiModel? get widgetModel => StokListesiModel.instance
   Map veriTabani = CacheManager.getVeriTabani();
-  List<IsletmeModel> subeList = [];
+  List<IsletmeModel> subeList = <IsletmeModel>[];
   BaseStokEditGenelViewModel viewModel = BaseStokEditGenelViewModel();
   TextEditingController? stokKoduController;
   TextEditingController? stokAdiController;
@@ -122,8 +123,8 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
       key: StaticVariables.instance.stokKartiGenelFormKey,
       child: FutureBuilder(
           future: stokDetayModel,
-          builder: (context, snapshot) {
-            var isletmeModel = IsletmeModel(subeKodu: -1, subeAdi: "Şubelerde Ortak");
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            final IsletmeModel isletmeModel = IsletmeModel(subeKodu: -1, subeAdi: "Şubelerde Ortak");
             if (viewModel.stokListesiModel?.stokKodu != null) {
               viewModel.stokListesiModel?.subeKodu = isletmeModel.subeKodu;
             }
@@ -146,7 +147,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
               barkod3Controller = TextEditingController(text: model?.stokList?.first.barkod3 ?? viewModel.stokListesiModel?.barkod3);
               subeController = TextEditingController(
                   text: subeList.ext.isNotNullOrEmpty
-                      ? subeList.where((element) => element.subeKodu == model?.stokList?.first.subeKodu || element.subeKodu == viewModel.stokListesiModel?.subeKodu).firstOrNull?.subeAdi
+                      ? subeList.where((IsletmeModel element) => element.subeKodu == model?.stokList?.first.subeKodu || element.subeKodu == viewModel.stokListesiModel?.subeKodu).firstOrNull?.subeAdi
                       : "${isletmeModel.subeAdi} ${isletmeModel.subeKodu}"); //text: model?.stokAdi
               ureticiKoduController = TextEditingController(text: model?.stokList?.first.ureticiKodu ?? viewModel.stokListesiModel?.ureticiKodu); //text: model?.stokAdi
               grupKoduController = TextEditingController(text: model?.stokList?.first.grupKodu ?? viewModel.stokListesiModel?.grupKodu);
@@ -161,20 +162,20 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
               }
               return SingleChildScrollView(
                 child: Column(
-                  children: [
+                  children: <Widget>[
                     Row(
-                      children: [
+                      children: <Widget>[
                         Expanded(
                           flex: 1,
                           child: IconButton(
                               onPressed: () async {
-                                var sourceType = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Kaynak tipi", children: [
+                                final sourceType = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Kaynak tipi", children: <BottomSheetModel>[
                                   BottomSheetModel(title: "Galeri", iconWidget: Icons.photo_library_outlined, onTap: () => Get.back(result: ImageSource.gallery)),
                                   BottomSheetModel(title: "Kamera", iconWidget: Icons.camera_alt_outlined, onTap: () => Get.back(result: ImageSource.camera)),
                                 ]);
                                 //image picker
                                 if (sourceType != null) {
-                                  ImagePicker picker = ImagePicker();
+                                  final ImagePicker picker = ImagePicker();
                                   final XFile? result = await picker.pickImage(source: sourceType, imageQuality: 30);
                                   if (result != null) {
                                     setState(() => image = File(result.path));
@@ -187,7 +188,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                         compressedImage =
                                             await FlutterImageCompress.compressWithFile(image!.path, format: CompressFormat.heic, numberOfRetries: 10, keepExif: true, autoCorrectionAngle: true);
                                       }
-                                      var base64 = base64Encode(compressedImage!.toList());
+                                      final String base64 = base64Encode(compressedImage!.toList());
                                       viewModel.stokListesiModel?.resimBase64 = base64;
                                     }
                                   }
@@ -204,7 +205,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                               isMust: true,
                               controller: stokKoduController,
                               suffix: Wrap(
-                                  children: [
+                                  children: <IconButton>[
                                 IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)),
                                 IconButton(
                                     onPressed: () async {
@@ -212,21 +213,21 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                       viewModel.stokListesiModel?.stokKodu = stokKoduController?.text;
                                     },
                                     icon: const Icon(Icons.add))
-                              ].map((e) => SizedBox(width: 35, child: e)).toList())),
+                              ].map((IconButton e) => SizedBox(width: 35, child: e)).toList())),
                         ),
                       ].whereType<Expanded>().toList(),
                     ),
-                    CustomTextField(enabled: enable, labelText: "Adı", controller: stokAdiController, onChanged: (p0) => viewModel.stokListesiModel?.stokAdi = p0),
+                    CustomTextField(enabled: enable, labelText: "Adı", controller: stokAdiController, onChanged: (String p0) => viewModel.stokListesiModel?.stokAdi = p0),
                     CustomTextField(
                         enabled: enable,
                         readOnly: true,
                         onTap: () async {
-                          MainPageModel? mainPageModel = CacheManager.getAnaVeri();
-                          List<DepoList>? list = mainPageModel?.paramModel?.depoList;
-                          DepoList? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                          final MainPageModel? mainPageModel = CacheManager.getAnaVeri();
+                          final List<DepoList>? list = mainPageModel?.paramModel?.depoList;
+                          final DepoList? result = await bottomSheetDialogManager.showBottomSheetDialog(
                             context,
                             title: "Depo",
-                            children: list?.map((e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, onTap: () => Get.back(result: e))).toList(),
+                            children: list?.map((DepoList e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, onTap: () => Get.back(result: e))).toList(),
                           );
                           if (result != null) {
                             depoController?.text = result.depoKodu.toStringIfNotNull ?? "";
@@ -240,11 +241,11 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                         enabled: enable,
                         suffix: IconButton(
                             onPressed: () async {
-                              List<StokMuhasebeKoduModel>? list = await getMuhasebeKodlari();
-                              StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                              final List<StokMuhasebeKoduModel> list = await getMuhasebeKodlari();
+                              final StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                                   title: "Muhasebe Kodu",
                                   children: list
-                                      .map((e) => BottomSheetModel(
+                                      .map((StokMuhasebeKoduModel e) => BottomSheetModel(
                                           title: "${e.adi ?? ""}\n${e.muhKodu.toStringIfNotNull}", description: "${e.alisHesabi} \n${e.satisHesabi}", onTap: () => Get.back(result: e)))
                                       .toList());
                               if (result != null) {
@@ -275,7 +276,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                             icon: const Icon(Icons.more_horiz_outlined)),
                         labelText: "Ölçü Birimi 2",
                         controller: olcuBirimi2Controller),
-                    Row(children: [
+                    Row(children: <Widget>[
                       Expanded(child: CustomTextField(enabled: enable, keyboardType: TextInputType.number, labelText: "Ölçü Br.2 Pay", controller: olcuBirimi2PayController)),
                       Expanded(child: CustomTextField(enabled: enable, keyboardType: TextInputType.number, labelText: "Ölçü Br.2 Payda", controller: olcuBirimi2PaydaController))
                     ]),
@@ -289,20 +290,20 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                             icon: const Icon(Icons.more_horiz_outlined)),
                         labelText: "Ölçü Birimi 3",
                         controller: olcuBirimi3Controller),
-                    Row(children: [
+                    Row(children: <Widget>[
                       Expanded(child: CustomTextField(enabled: enable, keyboardType: TextInputType.number, labelText: "Ölçü Br.3 Pay", controller: olcuBirimi3PayController)),
                       Expanded(child: CustomTextField(enabled: enable, keyboardType: TextInputType.number, labelText: "Ölçü Br.3 Payda", controller: olcuBirimi3PaydaController))
                     ]),
                     CustomWidgetWithLabel(
                         text: "Barkod",
-                        child: Wrap(children: [
+                        child: Wrap(children: <Widget>[
                           CustomTextField(
                             enabled: enable,
                             labelText: "Barkod 1",
                             maxLength: 35,
                             controller: barkod1Controller,
                             suffix: Wrap(
-                              children: [
+                              children: <Widget>[
                                 IconButton(
                                     onPressed: () {
                                       baseBarkodUretController(controller: 1);
@@ -318,7 +319,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                             controller: barkod2Controller,
                             maxLength: 35,
                             suffix: Wrap(
-                              children: [
+                              children: <Widget>[
                                 IconButton(
                                     onPressed: () {
                                       baseBarkodUretController(controller: 2);
@@ -334,7 +335,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                             controller: barkod3Controller,
                             maxLength: 35,
                             suffix: Wrap(
-                              children: [
+                              children: <Widget>[
                                 IconButton(
                                     onPressed: () {
                                       baseBarkodUretController(controller: 3);
@@ -350,13 +351,13 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                       child: CustomTextField(
                         // valueText: viewModel.stokListesiModel?.subeKodu.toStringIfNotNull,
                         readOnly: true,
-                        enabled: (enable && subeList.firstWhere((element) => element.subeKodu == veriTabani["Şube"]).merkezmi == "E") || widget.model == BaseEditEnum.ekle,
+                        enabled: (enable && subeList.firstWhereOrNull((IsletmeModel element) => element.subeKodu == veriTabani["Şube"])?.merkezmi == "E") || widget.model == BaseEditEnum.ekle,
                         labelText: "Şube",
                         isMust: true,
                         controller: subeController,
                         onTap: () async {
-                          var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                              title: "Şube", children: subeList.map((e) => BottomSheetModel(title: "${e.subeAdi} ${e.subeKodu}", onTap: () => Get.back(result: e))).toList());
+                          final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                              title: "Şube", children: subeList.map((IsletmeModel e) => BottomSheetModel(title: "${e.subeAdi} ${e.subeKodu}", onTap: () => Get.back(result: e))).toList());
                           if (result != null) {
                             subeController?.text = "${result.subeAdi} ${result.subeKodu}";
                             viewModel.stokListesiModel?.subeKodu = result.subeKodu;
@@ -368,13 +369,13 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                     CustomWidgetWithLabel(
                         text: "Rapor Kodları",
                         child: Wrap(
-                          children: [
+                          children: <Widget>[
                             CustomTextField(
                               enabled: enable,
                               labelText: "Üretici Kodu",
                             ),
                             Row(
-                              children: [
+                              children: <Widget>[
                                 Expanded(
                                     child: CustomTextField(
                                         enabled: enable,
@@ -387,10 +388,10 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                             viewModel.changeGrupKoduListesi(0, await networkManager.getGrupKod(name: "STOK", grupNo: 0));
                                             dialogManager.hideAlertDialog;
                                           }
-                                          BaseGrupKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                          final BaseGrupKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                                               title: "Grup Kodu",
                                               children:
-                                                  viewModel.grupKodlariMap?[0]?.map((e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? []);
+                                                  viewModel.grupKodlariMap?[0]?.map((BaseGrupKoduModel e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? <BottomSheetModel>[]);
                                           grupKoduController?.text = result?.grupAdi ?? "";
                                           viewModel.stokListesiModel?.grupKodu = result?.grupKodu;
                                         },
@@ -406,11 +407,10 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                             viewModel.changeGrupKoduListesi(1, await networkManager.getGrupKod(name: "STOK", grupNo: 1));
                                             dialogManager.hideAlertDialog;
                                           }
-                                          BaseGrupKoduModel? result =
-                                              await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                                  title: "Kod 1",
-                                                  children:
-                                                      viewModel.grupKodlariMap?[1]?.map((e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? []);
+                                          final BaseGrupKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                              title: "Kod 1",
+                                              children:
+                                                  viewModel.grupKodlariMap?[1]?.map((BaseGrupKoduModel e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? <BottomSheetModel>[]);
                                           kod1Controller?.text = result?.grupKodu ?? "";
                                           viewModel.stokListesiModel?.kod1 = result?.grupAdi;
                                         },
@@ -419,7 +419,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                               ],
                             ),
                             Row(
-                              children: [
+                              children: <Widget>[
                                 Expanded(
                                     child: CustomTextField(
                                         enabled: enable,
@@ -431,11 +431,10 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                             viewModel.changeGrupKoduListesi(2, await networkManager.getGrupKod(name: "STOK", grupNo: 2));
                                             dialogManager.hideAlertDialog;
                                           }
-                                          BaseGrupKoduModel? result =
-                                              await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                                  title: "Kod 2",
-                                                  children:
-                                                      viewModel.grupKodlariMap?[2]?.map((e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? []);
+                                          final BaseGrupKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                              title: "Kod 2",
+                                              children:
+                                                  viewModel.grupKodlariMap?[2]?.map((BaseGrupKoduModel e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? <BottomSheetModel>[]);
                                           kod2Controller?.text = result?.grupKodu ?? "";
                                           viewModel.stokListesiModel?.kod2 = result?.grupAdi;
                                         },
@@ -452,11 +451,10 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                             viewModel.changeGrupKoduListesi(3, await networkManager.getGrupKod(name: "STOK", grupNo: 3));
                                             dialogManager.hideAlertDialog;
                                           }
-                                          BaseGrupKoduModel? result =
-                                              await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                                  title: "Kod 3",
-                                                  children:
-                                                      viewModel.grupKodlariMap?[3]?.map((e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? []);
+                                          final BaseGrupKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                              title: "Kod 3",
+                                              children:
+                                                  viewModel.grupKodlariMap?[3]?.map((BaseGrupKoduModel e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? <BottomSheetModel>[]);
                                           kod3Controller?.text = result?.grupKodu ?? "";
                                           viewModel.stokListesiModel?.kod3 = result?.grupAdi;
                                         },
@@ -465,7 +463,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                               ],
                             ),
                             Row(
-                              children: [
+                              children: <Widget>[
                                 Expanded(
                                     child: CustomTextField(
                                         enabled: enable,
@@ -476,11 +474,10 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                             viewModel.changeGrupKoduListesi(4, await networkManager.getGrupKod(name: "STOK", grupNo: 4));
                                             dialogManager.hideAlertDialog;
                                           }
-                                          BaseGrupKoduModel? result =
-                                              await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                                  title: "Kod 4",
-                                                  children:
-                                                      viewModel.grupKodlariMap?[4]?.map((e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? []);
+                                          final BaseGrupKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                              title: "Kod 4",
+                                              children:
+                                                  viewModel.grupKodlariMap?[4]?.map((BaseGrupKoduModel e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? <BottomSheetModel>[]);
                                           kod4Controller?.text = result?.grupKodu ?? "";
                                           viewModel.stokListesiModel?.kod4 = result?.grupAdi;
                                         },
@@ -498,11 +495,10 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                             viewModel.changeGrupKoduListesi(5, await networkManager.getGrupKod(name: "STOK", grupNo: 5));
                                             dialogManager.hideAlertDialog;
                                           }
-                                          BaseGrupKoduModel? result =
-                                              await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                                  title: "Kod 5",
-                                                  children:
-                                                      viewModel.grupKodlariMap?[5]?.map((e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? []);
+                                          final BaseGrupKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                              title: "Kod 5",
+                                              children:
+                                                  viewModel.grupKodlariMap?[5]?.map((BaseGrupKoduModel e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? <BottomSheetModel>[]);
                                           kod5Controller?.text = result?.grupKodu ?? "";
                                           viewModel.stokListesiModel?.kod5 = result?.grupAdi;
                                         },
@@ -522,13 +518,13 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
 
   Future<void> baseOlcuBirimleriController({int? controller}) async {
     dialogManager.showLoadingDialog("Ölçü Birimleri Yükleniyor...");
-    List<StokOlcuBirimleriModel>? filteredList = [];
+    List<StokOlcuBirimleriModel>? filteredList = <StokOlcuBirimleriModel>[];
     olcuBirimleriList ??= await getOlcuBirimleri();
     dialogManager.hideAlertDialog;
-    filteredList = olcuBirimleriList?.where((element) => element.birimNo == controller).toList();
-    var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
+    filteredList = olcuBirimleriList?.where((StokOlcuBirimleriModel element) => element.birimNo == controller).toList();
+    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
         title: "Ölçü Birimi $controller",
-        children: filteredList?.map((e) => BottomSheetModel(title: e.olcuBirimi ?? "", description: e.birimNo.toStringIfNotNull, onTap: () => Get.back(result: e.olcuBirimi))).toList());
+        children: filteredList?.map((StokOlcuBirimleriModel e) => BottomSheetModel(title: e.olcuBirimi ?? "", description: e.birimNo.toStringIfNotNull, onTap: () => Get.back(result: e.olcuBirimi))).toList());
     if (result != null) {
       if (controller == 1) {
         olcuBirimi1Controller?.text = result;
@@ -543,9 +539,9 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
     }
   }
 
-  void baseBarkodUretController({int? controller}) async {
+  Future<void> baseBarkodUretController({int? controller}) async {
     dialogManager.showLoadingDialog("Barkod Üretiliyor...");
-    var result = await getBarkod(controller);
+    final String result = await getBarkod(controller);
     dialogManager.hideAlertDialog;
     if (controller == 1) {
       barkod1Controller?.text = result;
@@ -560,12 +556,12 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
   }
 
   Future<StokDetayModel> getData() async {
-    GenericResponseModel result = await networkManager.dioGet<StokDetayModel>(
+    final GenericResponseModel result = await networkManager.dioGet<StokDetayModel>(
       path: ApiUrls.getStokDetay,
       bodyModel: StokDetayModel(),
       addCKey: true,
       addSirketBilgileri: true,
-      queryParameters: {
+      queryParameters: <String, dynamic>{
         "stokKodu": StokListesiModel.instance.stokKodu ?? "",
       },
     );
@@ -580,12 +576,12 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
     // if (isOnBuild == true) {
     //   dialogManager.showLoadingDialog("Sıradaki Kod Getiriliyor...");
     // }
-    var result = await networkManager.dioGet<BaseEditSiradakiKodModel>(
+    final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<BaseEditSiradakiKodModel>(
       path: ApiUrls.getSiradakiKod,
       bodyModel: BaseEditSiradakiKodModel(),
       addCKey: true,
       addSirketBilgileri: true,
-      queryParameters: {
+      queryParameters: <String, dynamic>{
         "SonKoduGetir": "H",
         "Kod": kod ?? "",
         "Modul": "STOK",
@@ -606,12 +602,12 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
   }
 
   Future<List<StokMuhasebeKoduModel>> getMuhasebeKodlari() async {
-    GenericResponseModel result = await networkManager.dioGet<StokMuhasebeKoduModel>(path: ApiUrls.getStokMuhasebeKodlari, bodyModel: StokMuhasebeKoduModel());
+    final GenericResponseModel result = await networkManager.dioGet<StokMuhasebeKoduModel>(path: ApiUrls.getStokMuhasebeKodlari, bodyModel: StokMuhasebeKoduModel());
     return result.data.map((e) => e as StokMuhasebeKoduModel).toList().cast<StokMuhasebeKoduModel>();
   }
 
   Future<List<StokOlcuBirimleriModel>> getOlcuBirimleri() async {
-    GenericResponseModel result = await networkManager.dioGet<StokOlcuBirimleriModel>(
+    final GenericResponseModel result = await networkManager.dioGet<StokOlcuBirimleriModel>(
       path: ApiUrls.getOlcuBirimleri,
       bodyModel: StokOlcuBirimleriModel(),
       addCKey: true,
@@ -621,7 +617,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
   }
 
   void subeChecker() {
-    List result = CacheManager.getSubeListesi();
+    final List result = CacheManager.getSubeListesi();
     if (!result.any((element) => element.subeKodu == -1)) {
       result.insert(0, IsletmeModel(subeKodu: -1, subeAdi: "Şubelerde Ortak"));
     }
@@ -637,12 +633,12 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
     } else if (controller == 3) {
       seriValue = barkod3Controller?.text ?? "";
     }
-    GenericResponseModel result = await networkManager.dioPost<StokOlcuBirimleriModel>(
+    final GenericResponseModel result = await networkManager.dioPost<StokOlcuBirimleriModel>(
         path: ApiUrls.barkodUret,
         bodyModel: StokOlcuBirimleriModel(),
         addCKey: true,
         addSirketBilgileri: true,
-        data: {"BarkodSira": controller.toStringIfNotNull, "StokKodu": model?.stokKodu ?? stokKoduController?.text, "Seri": seriValue});
+        data: <String, String?>{"BarkodSira": controller.toStringIfNotNull, "StokKodu": model?.stokKodu ?? stokKoduController?.text, "Seri": seriValue});
     return result.paramData!["URETILEN_BARKOD"];
   }
 

@@ -1,8 +1,8 @@
 import "package:copy_with_extension/copy_with_extension.dart";
 import "package:json_annotation/json_annotation.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
+import "cari_listesi_model.dart";
 
 part "cari_detay_model.g.dart";
 
@@ -96,9 +96,7 @@ class CariDetayModel with NetworkManagerMixin {
   Map<String, dynamic> toJson() => _$CariDetayModelToJson(this);
 
   @override
-  fromJson(Map<String, dynamic> json) {
-    return CariDetayModel.fromJson(json);
-  }
+  fromJson(Map<String, dynamic> json) => CariDetayModel.fromJson(json);
 }
 
 @JsonSerializable(createFactory: true)

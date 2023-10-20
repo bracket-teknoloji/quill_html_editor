@@ -29,32 +29,32 @@ _$StokBottomSheetModelImpl _$$StokBottomSheetModelImplFromJson(
               ?.map(
                   (e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
-          const [],
+          const <BaseGrupKoduModel>[],
       arrKod1: (json['ArrKod1'] as List<dynamic>?)
               ?.map(
                   (e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
-          const [],
+          const <BaseGrupKoduModel>[],
       arrKod2: (json['ArrKod2'] as List<dynamic>?)
               ?.map(
                   (e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
-          const [],
+          const <BaseGrupKoduModel>[],
       arrKod3: (json['ArrKod3'] as List<dynamic>?)
               ?.map(
                   (e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
-          const [],
+          const <BaseGrupKoduModel>[],
       arrKod4: (json['ArrKod4'] as List<dynamic>?)
               ?.map(
                   (e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
-          const [],
+          const <BaseGrupKoduModel>[],
       arrKod5: (json['ArrKod5'] as List<dynamic>?)
               ?.map(
                   (e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
-          const [],
+          const <BaseGrupKoduModel>[],
     );
 
 Map<String, dynamic> _$$StokBottomSheetModelImplToJson(

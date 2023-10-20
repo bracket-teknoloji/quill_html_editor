@@ -10,11 +10,6 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/hizli_islemler/muhtelif_odeme/view/muhtelif_odeme_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/raporlar/finans_aylik_mizan_raporu/view/aylik_mizan_raporu_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/raporlar/finans_finansal_durum_raporu/view/finansal_durum_raporu_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/sevkiyat/faturalar/base_fatura_edit/view/base_fatura_edit_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/sevkiyat/faturalar/view/faturalar_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
@@ -50,13 +45,18 @@ import "view/main_page/alt_sayfalar/cari/raporlar/yaslandirma_raporu/view/yaslan
 import "view/main_page/alt_sayfalar/finans/banka/banka_islemleri/view/banka_islemleri_view.dart";
 import "view/main_page/alt_sayfalar/finans/dekontlar/view/kasa_dekontlar_view.dart";
 import "view/main_page/alt_sayfalar/finans/hizli_islemler/kredi_karti_tahsilati/view/kredi_karti_tahsilati_view.dart";
+import "view/main_page/alt_sayfalar/finans/hizli_islemler/muhtelif_odeme/view/muhtelif_odeme_view.dart";
 import "view/main_page/alt_sayfalar/finans/hizli_islemler/nakit_odeme/view/nakit_odeme_view.dart";
 import "view/main_page/alt_sayfalar/finans/kasa/kasa_hareketleri/view/kasa_hareketleri_view.dart";
 import "view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/view/kasa_islemleri_view.dart";
 import "view/main_page/alt_sayfalar/finans/kasa/kasa_listesi/view/kasa_listesi_view.dart";
 import "view/main_page/alt_sayfalar/finans/kasa/kasa_transferi/view/kasa_transferi_view.dart";
 import "view/main_page/alt_sayfalar/finans/kasa/raporlar/kasa_ekstre_raporu/view/kasa_ekstre_raporu_view.dart";
+import "view/main_page/alt_sayfalar/finans/raporlar/finans_aylik_mizan_raporu/view/aylik_mizan_raporu_view.dart";
+import "view/main_page/alt_sayfalar/finans/raporlar/finans_finansal_durum_raporu/view/finansal_durum_raporu_view.dart";
 import "view/main_page/alt_sayfalar/serbest_raporlar/view/serbest_raporlar_view.dart";
+import "view/main_page/alt_sayfalar/sevkiyat/faturalar/base_fatura_edit/view/base_fatura_edit_view.dart";
+import "view/main_page/alt_sayfalar/sevkiyat/faturalar/view/faturalar_view.dart";
 import "view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "view/main_page/alt_sayfalar/siparis/base_siparis_edit/view/base_siparis_edit_view.dart";
 import "view/main_page/alt_sayfalar/siparis/raporlar/siparis_karlilik_raporu/view/siparis_karlilik_raporu_view.dart";
@@ -88,10 +88,10 @@ void main() async {
   //* AccountModel'i splashAuthView'da init ediyoruz.
   // await AccountModel.instance.init();
   //* Firebase Crashlytics
-  WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) async => await firebaseInitialized());
+  WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((Duration timeStamp) async => await firebaseInitialized());
 
   //* Screen Orientation
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]).then((_) {
+  await SystemChrome.setPreferredOrientations(<DeviceOrientation>[DeviceOrientation.portraitUp, DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]).then((_) {
     runApp(const PickerApp());
     //* Network Dependency Injection (Uygulamanın internet bağlantısı olup olmadığını kontrol ediyoruz.)
     NetworkDependencyInjection.init();
@@ -102,22 +102,21 @@ class PickerApp extends StatelessWidget {
   const PickerApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
+  Widget build(BuildContext context) => GetMaterialApp(
       title: "Picker",
       defaultTransition: Transition.rightToLeft,
       popGesture: true,
       debugShowCheckedModeBanner: false,
       locale: Get.deviceLocale,
       fallbackLocale: const Locale("en"),
-      supportedLocales: const [Locale("tr"), Locale("en")],
-      localizationsDelegates: const [GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate, GlobalMaterialLocalizations.delegate],
-      scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: {PointerDeviceKind.touch, PointerDeviceKind.mouse, PointerDeviceKind.stylus, PointerDeviceKind.unknown}),
+      supportedLocales: const <Locale>[Locale("tr"), Locale("en")],
+      localizationsDelegates: const <LocalizationsDelegate>[GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate, GlobalMaterialLocalizations.delegate],
+      scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: <PointerDeviceKind>{PointerDeviceKind.touch, PointerDeviceKind.mouse, PointerDeviceKind.stylus, PointerDeviceKind.unknown}),
       opaqueRoute: false,
       darkTheme: AppThemeDark.instance?.theme,
       themeMode: ThemeMode.dark,
       home: const SplashAuthView(),
-      getPages: [
+      getPages: <GetPage>[
         GetPage(name: "/login", page: () => const LoginView()),
         GetPage(name: "/entryCompany", page: () => EntryCompanyView(isSplash: Get.arguments)),
         GetPage(name: "/addCompany", page: () => const AccountsView()),
@@ -129,7 +128,7 @@ class PickerApp extends StatelessWidget {
         GetPage(
           name: "/mainPage",
           page: () => const MainPageView(),
-          children: [
+          children: <GetPage>[
             //* Cari
             GetPage(name: "/cariListesi", page: () => CariListesiView(isGetData: Get.arguments)),
             GetPage(name: "/cariRehberi", page: () => CariRehberiView(cariKodu: Get.arguments)),
@@ -209,10 +208,14 @@ class PickerApp extends StatelessWidget {
             GetPage(name: "/stokLokalDepoBakiyeRaporu", page: () => LokalDepoBakiyeRaporuView(model: Get.arguments)),
             GetPage(name: "/urunGrubunaGoreSatisGrafigi", page: () => UrunGrubunaGoreSatisGrafigiView(model: Get.arguments is CariListesiModel ? Get.arguments : null)),
 
+            //* Mal Kabul
+            GetPage(name: "/malKabulAlisFaturasi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.alisFatura)),
+            GetPage(name: "/malKabulAlisIrsaliyesi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.alisIrsaliye)),
+
             //* Sevkiyat
             GetPage(name: "/sevkiyatSatisFaturasi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.satisFatura)),
             GetPage(name: "/sevkiyatSatisIrsaliyesi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.satisIrsaliye)),
-            GetPage(name: "/sevkiyatEdit", page: () =>  BaseFaturaEditView(model: Get.arguments)),
+            GetPage(name: "/sevkiyatEdit", page: () => BaseFaturaEditView(model: Get.arguments)),
 
             //* Profil
             GetPage(name: "/temsilciProfil", page: () => const TemsilciProfilView()),
@@ -229,23 +232,22 @@ class PickerApp extends StatelessWidget {
         ),
       ],
     );
-  }
 }
 
 Future<void> firebaseInitialized() async {
   if (kIsWeb || Platform.isWindows || kDebugMode) return;
   if (!Platform.isWindows && (await AppTrackingTransparency.requestTrackingAuthorization() == TrackingStatus.authorized || !Platform.isIOS || !Platform.isMacOS)) {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-    FirebaseMessaging messaging = FirebaseMessaging.instance;
+    final FirebaseMessaging messaging = FirebaseMessaging.instance;
     await messaging.requestPermission();
-    messaging.setForegroundNotificationPresentationOptions(sound: true, alert: true, badge: true);
+    await messaging.setForegroundNotificationPresentationOptions(sound: true, alert: true, badge: true);
     // FirebaseMessaging.onMessageOpenedApp.listen((event) => print(event.toMap().toString()));
     // messaging.getNotificationSettings().then((value) => print(value.authorizationStatus));
     // FirebaseMessaging.onBackgroundMessage((message) async => print(message));
-    FirebaseCrashlytics.instance.setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");
-    FlutterError.onError = (errorDetails) => FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
-    PlatformDispatcher.instance.onError = (error, stack) {
-      AccountModel.instance.toJson().forEach((key, value) => value != null ? FirebaseCrashlytics.instance.setCustomKey(key, value) : null);
+    await FirebaseCrashlytics.instance.setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");
+    FlutterError.onError = (FlutterErrorDetails errorDetails) => FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+    PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
+      AccountModel.instance.toJson().forEach((String key, value) => value != null ? FirebaseCrashlytics.instance.setCustomKey(key, value) : null);
       FirebaseCrashlytics.instance.setCustomKey("new version", AppInfoModel.instance.version ?? "");
       FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
       return true;

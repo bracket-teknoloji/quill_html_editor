@@ -24,14 +24,14 @@ class MainPageView extends StatefulWidget {
 
 class _MainPageViewState extends BaseState<MainPageView> {
   List<GridItemModel> items = MenuItemConstants().getList();
-  List<List<GridItemModel>> lastItems = [];
+  List<List<GridItemModel>> lastItems = <List<GridItemModel>>[];
   bool? yetkiVarMi;
   MainPageModel? model = CacheManager.getAnaVeri();
-  List<String> title2 = ["Picker"];
+  List<String> title2 = <String>["Picker"];
 
   @override
   Widget build(BuildContext context) {
-    GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
     return WillPopScope(
       onWillPop: () async {
         if (lastItems.isNotEmpty) {
@@ -61,7 +61,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
           endDrawer: const SafeArea(child: EndDrawer()),
           body: SafeArea(
             child: Column(
-              children: [
+              children: <Widget>[
                 Expanded(
                   flex: 9,
                   child: Padding(
@@ -74,9 +74,9 @@ class _MainPageViewState extends BaseState<MainPageView> {
                           childAspectRatio: 0.9,
                         ),
                         itemCount: items.length,
-                        itemBuilder: (context, index) {
+                        itemBuilder: (BuildContext context, int index) {
                           //* indexteki itemi burada alıyoruz
-                          var item = items[index];
+                          final GridItemModel item = items[index];
                           return AnimationConfiguration.staggeredList(
                               position: index,
                               duration: const Duration(milliseconds: 500),
@@ -99,7 +99,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
                                               : setState(() {
                                                   lastItems.add(items);
                                                   title2.add(item.title.toString());
-                                                  items = item.altMenuler!.where((element) {
+                                                  items = item.altMenuler!.where((GridItemModel element) {
                                                     element.color ??= item.color;
                                                     if (element.icon.ext.isNullOrEmpty) {
                                                       element.icon = item.icon;
@@ -121,13 +121,13 @@ class _MainPageViewState extends BaseState<MainPageView> {
                     alignment: Alignment.bottomCenter,
                     child: ButtonBar(
                       alignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                      children: <Widget>[
                         TextButton(
                           onPressed: () {
                             scaffoldKey.currentState!.openEndDrawer();
                           },
                           child: Row(
-                            children: [
+                            children: <Widget>[
                               (CacheManager.getAnaVeri()!.userModel!.admin == "E" ? Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20) : IconHelper.smallIcon("User-Account"))
                                   .marginOnly(right: 5),
                               Text(CacheManager.getAnaVeri()!.userModel!.kuladi.toString(), style: theme.textTheme.bodyMedium),
@@ -135,11 +135,9 @@ class _MainPageViewState extends BaseState<MainPageView> {
                           ),
                         ),
                         TextButton(
-                          onPressed: () {
-                            Get.toNamed("/entryCompany");
-                          },
+                          onPressed: () async => Get.toNamed("/entryCompany"),
                           child: Row(
-                            children: [
+                            children: <Widget>[
                               Icon(Icons.storage_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: 5),
                               Text("${CacheManager.getVeriTabani()["Şirket"]} (${CacheManager.getVeriTabani()["Şube"]})", style: theme.textTheme.bodyMedium),
                             ],
@@ -193,8 +191,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
     // );
   }
 
-  AppBar appBar(GlobalKey<ScaffoldState> scaffoldKey, BuildContext context) {
-    return AppBar(
+  AppBar appBar(GlobalKey<ScaffoldState> scaffoldKey, BuildContext context) => AppBar(
       title: AppBarTitle(title: title2.last),
       centerTitle: true,
       leading: anaSayfaMi
@@ -218,7 +215,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
                 }
               },
             ),
-      actions: [
+      actions: <Widget>[
         IconButton(
             onPressed: () {
               scaffoldKey.currentState!.openEndDrawer();
@@ -226,11 +223,8 @@ class _MainPageViewState extends BaseState<MainPageView> {
             icon: const Icon(Icons.person_outline_outlined)),
       ],
     );
-  }
 
-  bool get anaSayfaMi => items.any((element) {
-        return element.menuTipi != "A";
-      });
+  bool get anaSayfaMi => items.any((GridItemModel element) => element.menuTipi != "A");
   // Icon yetkiKontrolIcon(String name) {
   //   if (CacheManager.getFavoriler().values.any((element) => element.title == name)) {
   //     return const Icon(Icons.star, size: 20);

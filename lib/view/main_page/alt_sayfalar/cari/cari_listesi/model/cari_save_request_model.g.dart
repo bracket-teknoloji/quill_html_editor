@@ -131,6 +131,22 @@ abstract class _$CariSaveRequestModelCWProxy {
 
   CariSaveRequestModel postakodu(String? postakodu);
 
+  CariSaveRequestModel muhasebeKoduAciklama(String? muhasebeKoduAciklama);
+
+  CariSaveRequestModel kurFarkiBorcKoduAciklama(
+      String? kurFarkiBorcKoduAciklama);
+
+  CariSaveRequestModel kurFarkiAlacakKoduAciklama(
+      String? kurFarkiAlacakKoduAciklama);
+
+  CariSaveRequestModel bagliCariAciklama(String? bagliCariAciklama);
+
+  CariSaveRequestModel kosulKoduAciklama(String? kosulKoduAciklama);
+
+  CariSaveRequestModel ulkeKoduAciklama(String? ulkeKoduAciklama);
+
+  CariSaveRequestModel dovizKoduAciklama(String? dovizKoduAciklama);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CariSaveRequestModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -200,6 +216,13 @@ abstract class _$CariSaveRequestModelCWProxy {
     String? aciklama2,
     String? aciklama3,
     String? postakodu,
+    String? muhasebeKoduAciklama,
+    String? kurFarkiBorcKoduAciklama,
+    String? kurFarkiAlacakKoduAciklama,
+    String? bagliCariAciklama,
+    String? kosulKoduAciklama,
+    String? ulkeKoduAciklama,
+    String? dovizKoduAciklama,
   });
 }
 
@@ -416,6 +439,36 @@ class _$CariSaveRequestModelCWProxyImpl
       this(postakodu: postakodu);
 
   @override
+  CariSaveRequestModel muhasebeKoduAciklama(String? muhasebeKoduAciklama) =>
+      this(muhasebeKoduAciklama: muhasebeKoduAciklama);
+
+  @override
+  CariSaveRequestModel kurFarkiBorcKoduAciklama(
+          String? kurFarkiBorcKoduAciklama) =>
+      this(kurFarkiBorcKoduAciklama: kurFarkiBorcKoduAciklama);
+
+  @override
+  CariSaveRequestModel kurFarkiAlacakKoduAciklama(
+          String? kurFarkiAlacakKoduAciklama) =>
+      this(kurFarkiAlacakKoduAciklama: kurFarkiAlacakKoduAciklama);
+
+  @override
+  CariSaveRequestModel bagliCariAciklama(String? bagliCariAciklama) =>
+      this(bagliCariAciklama: bagliCariAciklama);
+
+  @override
+  CariSaveRequestModel kosulKoduAciklama(String? kosulKoduAciklama) =>
+      this(kosulKoduAciklama: kosulKoduAciklama);
+
+  @override
+  CariSaveRequestModel ulkeKoduAciklama(String? ulkeKoduAciklama) =>
+      this(ulkeKoduAciklama: ulkeKoduAciklama);
+
+  @override
+  CariSaveRequestModel dovizKoduAciklama(String? dovizKoduAciklama) =>
+      this(dovizKoduAciklama: dovizKoduAciklama);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CariSaveRequestModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -486,6 +539,13 @@ class _$CariSaveRequestModelCWProxyImpl
     Object? aciklama2 = const $CopyWithPlaceholder(),
     Object? aciklama3 = const $CopyWithPlaceholder(),
     Object? postakodu = const $CopyWithPlaceholder(),
+    Object? muhasebeKoduAciklama = const $CopyWithPlaceholder(),
+    Object? kurFarkiBorcKoduAciklama = const $CopyWithPlaceholder(),
+    Object? kurFarkiAlacakKoduAciklama = const $CopyWithPlaceholder(),
+    Object? bagliCariAciklama = const $CopyWithPlaceholder(),
+    Object? kosulKoduAciklama = const $CopyWithPlaceholder(),
+    Object? ulkeKoduAciklama = const $CopyWithPlaceholder(),
+    Object? dovizKoduAciklama = const $CopyWithPlaceholder(),
   }) {
     return CariSaveRequestModel(
       requestVersion: requestVersion == const $CopyWithPlaceholder()
@@ -736,6 +796,36 @@ class _$CariSaveRequestModelCWProxyImpl
           ? _value.postakodu
           // ignore: cast_nullable_to_non_nullable
           : postakodu as String?,
+      muhasebeKoduAciklama: muhasebeKoduAciklama == const $CopyWithPlaceholder()
+          ? _value.muhasebeKoduAciklama
+          // ignore: cast_nullable_to_non_nullable
+          : muhasebeKoduAciklama as String?,
+      kurFarkiBorcKoduAciklama:
+          kurFarkiBorcKoduAciklama == const $CopyWithPlaceholder()
+              ? _value.kurFarkiBorcKoduAciklama
+              // ignore: cast_nullable_to_non_nullable
+              : kurFarkiBorcKoduAciklama as String?,
+      kurFarkiAlacakKoduAciklama:
+          kurFarkiAlacakKoduAciklama == const $CopyWithPlaceholder()
+              ? _value.kurFarkiAlacakKoduAciklama
+              // ignore: cast_nullable_to_non_nullable
+              : kurFarkiAlacakKoduAciklama as String?,
+      bagliCariAciklama: bagliCariAciklama == const $CopyWithPlaceholder()
+          ? _value.bagliCariAciklama
+          // ignore: cast_nullable_to_non_nullable
+          : bagliCariAciklama as String?,
+      kosulKoduAciklama: kosulKoduAciklama == const $CopyWithPlaceholder()
+          ? _value.kosulKoduAciklama
+          // ignore: cast_nullable_to_non_nullable
+          : kosulKoduAciklama as String?,
+      ulkeKoduAciklama: ulkeKoduAciklama == const $CopyWithPlaceholder()
+          ? _value.ulkeKoduAciklama
+          // ignore: cast_nullable_to_non_nullable
+          : ulkeKoduAciklama as String?,
+      dovizKoduAciklama: dovizKoduAciklama == const $CopyWithPlaceholder()
+          ? _value.dovizKoduAciklama
+          // ignore: cast_nullable_to_non_nullable
+          : dovizKoduAciklama as String?,
     );
   }
 }

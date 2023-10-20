@@ -53,14 +53,7 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Observer(builder: (_) {
-      return PDFViewerView(
-          filterBottomSheet: filterBottomSheet,
-          title: "Cari Ekstre",
-          pdfData: viewModel.pdfModel);
-    });
-  }
+  Widget build(BuildContext context) => Observer(builder: (_) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Cari Ekstre", pdfData: viewModel.pdfModel));
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -68,7 +61,7 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
         title: "Filtrele",
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
+          children: <Widget>[
             RaporFiltreDateTimeBottomSheetView(
               filterOnChanged: filterOnChanged,
               baslangicTarihiController: baslangicTarihiController,
@@ -81,8 +74,7 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
               readOnly: true,
               suffixMore: true,
               onTap: () async {
-                var result =
-                    await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                 if (result != null) {
                   cariController!.text = result.cariAdi ?? "";
                   viewModel.changeCariKodu(result.cariKodu ?? "");
@@ -91,63 +83,42 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
             ),
             CustomTextField(
               labelText: "Döviz Tipi",
-              valueWidget:
-                  Observer(builder: (_) => Text(viewModel.dovizValue ?? "")),
+              valueWidget: Observer(builder: (_) => Text(viewModel.dovizValue ?? "")),
               controller: dovizController,
               isMust: true,
               readOnly: true,
               suffixMore: true,
               onTap: () async {
-                List<DovizList>? dovizList =
-                    CacheManager.getAnaVeri()?.paramModel?.dovizList;
-                (dovizList?.any((element) => element.dovizKodu == -1) ?? false)
+                final List<DovizList>? dovizList = CacheManager.getAnaVeri()?.paramModel?.dovizList;
+                (dovizList?.any((DovizList element) => element.dovizKodu == -1) ?? false)
                     ? null
                     : dovizList?.insert(
                         0,
                         DovizList()
                           ..isim = "Tümü"
                           ..dovizKodu = -1);
-                DovizList? result = await bottomSheetDialogManager
-                    .showBottomSheetDialog(context,
-                        title: "Döviz Tipi",
-                        children: dovizList!
-                            .map((e) => BottomSheetModel(
-                                title: e.isim ?? "",
-                                onTap: () => Get.back(result: e)))
-                            .toList());
+                final DovizList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                    title: "Döviz Tipi", children: dovizList!.map((DovizList e) => BottomSheetModel(title: e.isim ?? "", onTap: () => Get.back(result: e))).toList());
                 if (result != null) {
                   dovizController!.text = result.isim ?? "";
-                  viewModel.changeDovizTipi(result.isim != mainCurrency
-                      ? (result.dovizTipi ?? (result.dovizKodu ?? 0))
-                      : 0);
-                  viewModel
-                      .changeDovizValue((result.dovizKodu ?? -1).toString());
+                  viewModel.changeDovizTipi(result.isim != mainCurrency ? (result.dovizTipi ?? (result.dovizKodu ?? 0)) : 0);
+                  viewModel.changeDovizValue((result.dovizKodu ?? -1).toString());
                 }
               },
             ),
-            Observer(builder: (_) {
-              return ElevatedButton(
+            Observer(builder: (_) => ElevatedButton(
                       onPressed: () {
-                        if (viewModel.pdfModel.dicParams?.cariKodu == null ||
-                            viewModel.pdfModel.dicParams?.dovizTipi == null) {
-                          dialogManager.showAlertDialog(
-                              "Lütfen tüm alanları doldurunuz");
+                        if (viewModel.pdfModel.dicParams?.cariKodu == null || viewModel.pdfModel.dicParams?.dovizTipi == null) {
+                          dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
                         } else {
-                          viewModel.pdfModel.dicParams?.bastar =
-                              baslangicTarihiController.text != ""
-                                  ? baslangicTarihiController.text
-                                  : null;
-                          viewModel.pdfModel.dicParams?.bittar =
-                              bitisTarihiController.text != ""
-                                  ? bitisTarihiController.text
-                                  : null;
+                          viewModel.pdfModel.dicParams?.bastar = baslangicTarihiController.text != "" ? baslangicTarihiController.text : null;
+                          viewModel.pdfModel.dicParams?.bittar = bitisTarihiController.text != "" ? bitisTarihiController.text : null;
                           viewModel.setFuture();
                           Get.back();
                         }
                       },
                       child: const Text("Uygula"))
-                  .paddingAll(UIHelper.lowSize);
-            })
+                  .paddingAll(UIHelper.lowSize))
           ],
         ).paddingAll(UIHelper.lowSize));
     return Future.value(viewModel.futureController.value);

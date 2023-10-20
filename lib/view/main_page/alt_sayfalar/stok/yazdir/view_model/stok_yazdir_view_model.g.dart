@@ -93,6 +93,16 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
     });
   }
 
+  late final _$changeStokSecildigindeYazdirAsyncAction = AsyncAction(
+      '_StokYazdirViewModelBase.changeStokSecildigindeYazdir',
+      context: context);
+
+  @override
+  Future<void> changeStokSecildigindeYazdir(bool value) {
+    return _$changeStokSecildigindeYazdirAsyncAction
+        .run(() => super.changeStokSecildigindeYazdir(value));
+  }
+
   late final _$_StokYazdirViewModelBaseActionController =
       ActionController(name: '_StokYazdirViewModelBase', context: context);
 
@@ -102,17 +112,6 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
         name: '_StokYazdirViewModelBase.init');
     try {
       return super.init();
-    } finally {
-      _$_StokYazdirViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void changeStokSecildigindeYazdir(bool value) {
-    final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
-        name: '_StokYazdirViewModelBase.changeStokSecildigindeYazdir');
-    try {
-      return super.changeStokSecildigindeYazdir(value);
     } finally {
       _$_StokYazdirViewModelBaseActionController.endAction(_$actionInfo);
     }

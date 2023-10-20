@@ -1,10 +1,11 @@
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/static_variables/static_variables.dart";
-import "package:picker/core/init/cache/cache_manager.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/model/param_model.dart";
+
+import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../../core/constants/static_variables/static_variables.dart";
+import "../../../../../../../../../core/init/cache/cache_manager.dart";
+import "../../../../../../../model/param_model.dart";
+import "../../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "base_fatura_toplamlar_view_model.g.dart";
 
@@ -73,7 +74,7 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
       return;
     }
     if (isGenIsk1T) {
-      model = model.copyWith(genIsk1o: ((value ?? 0) / (model.araToplam != 0 ? (model.araToplam ?? 0) : 1) * 100));
+      model = model.copyWith(genIsk1o: (value ?? 0) / (model.araToplam != 0 ? (model.araToplam ?? 0) : 1) * 100);
     } else {
       model = model.copyWith(genIsk1o: value);
     }
@@ -87,7 +88,7 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
       return;
     }
     if (isGenIsk2T) {
-      model = model.copyWith(genIsk2o: ((value ?? 0) / (model.getAraToplam != 0 ? (model.araToplam ?? 0) - (model.genIsk1t ?? 0) : 1) * 100));
+      model = model.copyWith(genIsk2o: (value ?? 0) / (model.getAraToplam != 0 ? (model.araToplam ?? 0) - (model.genIsk1t ?? 0) : 1) * 100);
     } else {
       model = model.copyWith(genIsk2o: value);
     }
@@ -101,7 +102,7 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
       return;
     }
     if (isGenIsk3T) {
-      model = model.copyWith(genIsk3o: ((value ?? 0) / (model.getAraToplam != 0 ? model.getAraToplam : 1) * 100));
+      model = model.copyWith(genIsk3o: (value ?? 0) / (model.getAraToplam != 0 ? model.getAraToplam : 1) * 100);
     } else {
       model = model.copyWith(genIsk3o: value);
     }
@@ -139,7 +140,7 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
     }
   }
 
-  Map<String, double> get tevkifatMap => {
+  Map<String, double> get tevkifatMap => <String, double>{
         "$getTevkifatPay/$getTevkifatPayda (Varsayılan)": getTevkifatOranlari,
         "1/10": 0.1,
         "2/10": 0.2,

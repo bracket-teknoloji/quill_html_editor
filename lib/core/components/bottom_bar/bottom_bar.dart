@@ -16,7 +16,7 @@ class BottomBarWidget extends StatefulWidget {
 }
 
 class _BottomBarWidgetState extends BaseState<BottomBarWidget> {
-  List<Widget> list = [];
+  List<Widget> list = <Widget>[];
 
   @override
   void initState() {
@@ -30,18 +30,16 @@ class _BottomBarWidgetState extends BaseState<BottomBarWidget> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return ScrollableWidget(
+  Widget build(BuildContext context) => ScrollableWidget(
       isScrolledDown: widget.isScrolledDown,
       child: Container(
         color: theme.primaryColor,
         height: context.isPortrait ? (height * 0.07) : (height * 0.1 < 60 ? 60 : height * 0.1),
         child: widget.visible && widget.children.isNotEmpty
             ? Row(
-                children: list.map((e) => e.runtimeType != FooterButton ? e : Expanded(child: e)).toList(),
+                children: list.map((Widget e) => e.runtimeType != FooterButton ? e : Expanded(child: e)).toList(),
               )
             : null,
       ),
     );
-  }
 }

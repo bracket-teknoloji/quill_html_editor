@@ -1,12 +1,17 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_save_request_model.dart";
+
+import "../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
+import "../../../../cari_listesi/model/cari_kosullar_model.dart";
+import "../../../../cari_listesi/model/cari_listesi_model.dart";
+import "../../../../cari_listesi/model/cari_save_request_model.dart";
 
 part "base_edit_cari_diger_view_model.g.dart";
 
 class BaseEditCariDigerViewModel = _BaseEditCariDigerViewModelBase with _$BaseEditCariDigerViewModel;
 
 abstract class _BaseEditCariDigerViewModelBase with Store {
+  final Map<String, String> kilitMap = <String, String>{"Kilitli Değil": "H", "Kilitli (Fatura)": "F", "Kilitli (Tüm İşlemler)": "T"};
   @observable
   CariSaveRequestModel? model;
 
@@ -22,8 +27,8 @@ abstract class _BaseEditCariDigerViewModelBase with Store {
   }
 
   @action
-  void changeBagliCari(String? value) {
-    model = model?.copyWith(bagliCari: value);
+  void changeBagliCari(CariListesiModel? value) {
+    model = model?.copyWith(bagliCari: value?.cariKodu, bagliCariAciklama: value?.cariAdi);
     CariSaveRequestModel.setInstance(model);
   }
 
@@ -34,20 +39,20 @@ abstract class _BaseEditCariDigerViewModelBase with Store {
   }
 
   @action
-  void changeMuhaseKodu(String? value) {
-    model = model?.copyWith(muhasebeKodu: value);
+  void changeMuhaseKodu(StokMuhasebeKoduModel? value) {
+    model = model?.copyWith(muhasebeKodu: value?.hesapKodu, muhasebeKoduAciklama: value?.adi);
     CariSaveRequestModel.setInstance(model);
   }
 
   @action
-  void changeKurFarkiBorc(String? value) {
-    model = model?.copyWith(kurfarkiborcKodu: value);
+  void changeKurFarkiBorc(StokMuhasebeKoduModel? value) {
+    model = model?.copyWith(kurfarkiborcKodu: value?.hesapKodu, kurFarkiBorcKoduAciklama: value?.adi);
     CariSaveRequestModel.setInstance(model);
   }
 
   @action
-  void changeKurFarkiAlacak(String? value) {
-    model = model?.copyWith(kurfarkialacakKodu: value);
+  void changeKurFarkiAlacak(StokMuhasebeKoduModel? value) {
+    model = model?.copyWith(kurfarkialacakKodu: value?.hesapKodu, kurFarkiAlacakKoduAciklama: value?.adi);
     CariSaveRequestModel.setInstance(model);
   }
 
@@ -64,8 +69,8 @@ abstract class _BaseEditCariDigerViewModelBase with Store {
   }
 
   @action
-  void changeKosul(String? value) {
-    model = model?.copyWith(kosulKodu: value);
+  void changeKosul(CariKosullarModel? value) {
+    model = model?.copyWith(kosulKodu: value?.kosulKodu, kosulKoduAciklama: value?.genelKosulAdi);
     CariSaveRequestModel.setInstance(model);
   }
 
@@ -149,7 +154,7 @@ abstract class _BaseEditCariDigerViewModelBase with Store {
 
   @action
   void changeKullN(int index, String? value) {
-    double? val = double.tryParse(value ?? "0");
+    final double? val = double.tryParse(value ?? "0");
     switch (index) {
       case 1:
         model = model?.copyWith(kull1n: val);

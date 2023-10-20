@@ -73,6 +73,22 @@ mixin _$BaseCariGenelEditViewModel on _BaseCariGenelEditViewModelBase, Store {
     });
   }
 
+  late final _$ulkelerAtom =
+      Atom(name: '_BaseCariGenelEditViewModelBase.ulkeler', context: context);
+
+  @override
+  List<UlkeModel>? get ulkeler {
+    _$ulkelerAtom.reportRead();
+    return super.ulkeler;
+  }
+
+  @override
+  set ulkeler(List<UlkeModel>? value) {
+    _$ulkelerAtom.reportWrite(value, super.ulkeler, () {
+      super.ulkeler = value;
+    });
+  }
+
   late final _$getFilterDataAsyncAction = AsyncAction(
       '_BaseCariGenelEditViewModelBase.getFilterData',
       context: context);
@@ -80,6 +96,15 @@ mixin _$BaseCariGenelEditViewModel on _BaseCariGenelEditViewModelBase, Store {
   @override
   Future<void> getFilterData() {
     return _$getFilterDataAsyncAction.run(() => super.getFilterData());
+  }
+
+  late final _$getUlkeDataAsyncAction = AsyncAction(
+      '_BaseCariGenelEditViewModelBase.getUlkeData',
+      context: context);
+
+  @override
+  Future<void> getUlkeData() {
+    return _$getUlkeDataAsyncAction.run(() => super.getUlkeData());
   }
 
   late final _$_BaseCariGenelEditViewModelBaseActionController =
@@ -137,17 +162,6 @@ mixin _$BaseCariGenelEditViewModel on _BaseCariGenelEditViewModelBase, Store {
         .startAction(name: '_BaseCariGenelEditViewModelBase.setModel');
     try {
       return super.setModel(value);
-    } finally {
-      _$_BaseCariGenelEditViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void changeSiradakiKod(String? value) {
-    final _$actionInfo = _$_BaseCariGenelEditViewModelBaseActionController
-        .startAction(name: '_BaseCariGenelEditViewModelBase.changeSiradakiKod');
-    try {
-      return super.changeSiradakiKod(value);
     } finally {
       _$_BaseCariGenelEditViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -276,7 +290,7 @@ mixin _$BaseCariGenelEditViewModel on _BaseCariGenelEditViewModelBase, Store {
   }
 
   @override
-  dynamic changeDovizTipi(int? value) {
+  dynamic changeDovizTipi(DovizList? value) {
     final _$actionInfo = _$_BaseCariGenelEditViewModelBaseActionController
         .startAction(name: '_BaseCariGenelEditViewModelBase.changeDovizTipi');
     try {
@@ -369,7 +383,8 @@ mixin _$BaseCariGenelEditViewModel on _BaseCariGenelEditViewModelBase, Store {
 model: ${model},
 isDovizli: ${isDovizli},
 isSahisFirmasi: ${isSahisFirmasi},
-sehirler: ${sehirler}
+sehirler: ${sehirler},
+ulkeler: ${ulkeler}
     ''';
   }
 }

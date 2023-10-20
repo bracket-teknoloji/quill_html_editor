@@ -2,9 +2,9 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../constants/extensions/list_extensions.dart";
+import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ui_helper/text_field_formatter_helper.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "custom_text_field_view_model.dart";
@@ -66,7 +66,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   TextEditingController get controller => widget.controller ?? TextEditingController(text: widget.controllerText);
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) {
       // if (controller.)
       viewModel.setShowClearButton(controller.text != "");
       controller.addListener(() => viewModel.setShowClearButton(controller.text != ""));
@@ -91,21 +91,20 @@ class _CustomTextFieldState extends State<CustomTextField> {
     }
   }
 
-  Widget get textFormField {
-    return TextFieldTapRegion(
-      onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
-      onTapInside: (event) => SelectableText.rich(TextSpan(children: [TextSpan(text: controller.text)])),
+  Widget get textFormField => TextFieldTapRegion(
+      onTapOutside: (PointerDownEvent event) => FocusManager.instance.primaryFocus?.unfocus(),
+      onTapInside: (PointerDownEvent event) => SelectableText.rich(TextSpan(children: <InlineSpan>[TextSpan(text: controller.text)])),
       child: MouseRegion(
-        onExit: (event) => FocusManager.instance.primaryFocus?.unfocus(),
+        onExit: (PointerExitEvent event) => FocusManager.instance.primaryFocus?.unfocus(),
         child: TextFormField(
-          autofillHints: widget.keyboardType == TextInputType.emailAddress ? [AutofillHints.email] : null,
+          autofillHints: widget.keyboardType == TextInputType.emailAddress ? <String>[AutofillHints.email] : null,
           textInputAction: TextInputAction.next,
           keyboardType: widget.keyboardType,
           focusNode: widget.focusNode,
           onTap: widget.onTap,
           onChanged: widget.onChanged,
           onFieldSubmitted: widget.onSubmitted,
-          inputFormatters: widget.isFormattedString == true ? [TextFieldFormatterHelper.turkishFormatter] : widget.inputFormatter,
+          inputFormatters: widget.isFormattedString == true ? <TextInputFormatter>[TextFieldFormatterHelper.turkishFormatter] : widget.inputFormatter,
           // onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
           maxLength: widget.maxLength,
           validator: widget.validator ?? ((widget.enabled != false ? (widget.isMust ?? false) : false) ? validator : null),
@@ -127,12 +126,16 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   ? Row(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Observer(builder: (_) {
-                          return Visibility(
-                            visible: (viewModel.showClearButton == true) && (widget.isMust != true),
+                      children: <Widget>[
+                        Observer(builder: (_) => Visibility(
+                            visible: (viewModel.showClearButton) && (widget.isMust != true),
                             child: IconButton(
+                              style: ButtonStyle(
+                                padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                                splashFactory: NoSplash.splashFactory,
+                              ),
                               padding: EdgeInsets.zero,
+                              constraints: const BoxConstraints(),
                               onPressed: () {
                                 controller.clear();
                                 widget.onClear!();
@@ -140,8 +143,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                               },
                               icon: const Icon(Icons.close),
                             ),
-                          );
-                        }).yetkiVarMi(widget.onClear != null),
+                          )).yetkiVarMi(widget.onClear != null),
                         if (widget.suffix != null) widget.suffix!,
                         if (widget.isDateTime == true)
                           IconButton(
@@ -163,13 +165,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
                                 padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
                                 splashFactory: NoSplash.splashFactory,
                               )),
-                      ].where((element) => element is! SizedBox).toList().nullCheckWithGeneric,
+                      ].where((Widget element) => element is! SizedBox).toList().nullCheckWithGeneric,
                     )
                   : null,
               label: Wrap(
                 direction: Axis.horizontal,
-                children: [
-                  Text.rich(TextSpan(children: [
+                children: <Widget>[
+                  Text.rich(TextSpan(children: <InlineSpan>[
                     TextSpan(
                         text: widget.labelText ?? "",
                         style: (widget.enabled != false ? (widget.isMust ?? false) : false)
@@ -184,7 +186,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ).paddingAll(UIHelper.lowSize),
       ),
     );
-  }
 
   String? validator(p0) {
     if (p0 == null || p0.isEmpty) {

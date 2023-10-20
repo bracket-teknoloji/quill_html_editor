@@ -4,20 +4,12 @@ import "../view/toggle_button.dart";
 
 part "toggle_button_view_model.g.dart";
 
-class ToggleButtonViewModel = _ToggleButtonViewModelBase
-    with _$ToggleButtonViewModel;
+class ToggleButtonViewModel = _ToggleButtonViewModelBase with _$ToggleButtonViewModel;
 
 abstract class _ToggleButtonViewModelBase with Store {
-  final List<String> title = [
-    "Tümü",
-    "Tahsil Edilecek",
-    "Ödeme Yapılacak",
-    "Sıfır Bakiye",
-    "Bakiyeli"
-  ];
+  final List<String> title = <String>["Tümü", "Tahsil Edilecek", "Ödeme Yapılacak", "Sıfır Bakiye", "Bakiyeli"];
   @observable
-  ObservableList<bool> isSelected =
-      [false, false, false, false, false].asObservable();
+  ObservableList<bool> isSelected = <bool>[false, false, false, false, false].asObservable();
 
   @action
   void initializeIsSelected() {
@@ -27,7 +19,7 @@ abstract class _ToggleButtonViewModelBase with Store {
       }
     }
     if (ToggleButton.selected == "" || ToggleButton.selected == "Tümü") {
-      isSelected = [true, false, false, false, false].asObservable();
+      isSelected = <bool>[true, false, false, false, false].asObservable();
     }
   }
 
@@ -40,6 +32,6 @@ abstract class _ToggleButtonViewModelBase with Store {
 
   @action
   void resetSelectedList() {
-    isSelected = [true, false, false, false, false].asObservable();
+    isSelected = <bool>[true, false, false, false, false].asObservable();
   }
 }

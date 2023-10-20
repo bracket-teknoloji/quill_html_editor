@@ -1,16 +1,23 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_detay_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_save_request_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_sehirler_model.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/model/generic_response_model.dart";
+
+import "../../../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../../../model/param_model.dart";
+import "../../../../cari_listesi/model/cari_detay_model.dart";
+import "../../../../cari_listesi/model/cari_save_request_model.dart";
+import "../../../../cari_listesi/model/cari_sehirler_model.dart";
+import "../model/ulke_model.dart";
 
 part "base_cari_genel_edit_view_model.g.dart";
 
 class BaseCariGenelEditViewModel = _BaseCariGenelEditViewModelBase with _$BaseCariGenelEditViewModel;
 
 abstract class _BaseCariGenelEditViewModelBase with Store, MobxNetworkMixin {
+  final Map<String, String> cariTipiMap = <String, String>{"Alıcı": "A", "Satıcı": "S", "Toptancı": "T", "Kefil": "K", "Müstahsil": "M", "Diğer": "D", "Komisyoncu": "I"};
+
   @observable
   CariSaveRequestModel? model;
   @observable
@@ -19,7 +26,8 @@ abstract class _BaseCariGenelEditViewModelBase with Store, MobxNetworkMixin {
   bool isSahisFirmasi = false;
   @observable
   List<CariSehirlerModel>? sehirler;
-
+  @observable
+  List<UlkeModel>? ulkeler;
 
   @action
   void changeIslemKodu(int? value) {
@@ -55,12 +63,6 @@ abstract class _BaseCariGenelEditViewModelBase with Store, MobxNetworkMixin {
     model?.kilit ??= CariDetayModel.instance.cariList?.first.kilit ?? "H";
     model?.subeKodu ??= CariDetayModel.instance.cariList?.first.subeKodu.toStringIfNotNull ?? "-1";
     CariSaveRequestModel.setInstance(value);
-  }
-
-  @action
-  void changeSiradakiKod(String? value) {
-    model = model?.copyWith(kodu: value);
-    CariSaveRequestModel.setInstance(model);
   }
 
   @action
@@ -130,8 +132,8 @@ abstract class _BaseCariGenelEditViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  changeDovizTipi(int? value) {
-    model = model?.copyWith(dovizKodu: value);
+  changeDovizTipi(DovizList? value) {
+    model = model?.copyWith(dovizKodu: value?.dovizKodu, dovizKoduAciklama: value?.isim);
     CariSaveRequestModel.setInstance(model);
   }
 
@@ -177,12 +179,18 @@ abstract class _BaseCariGenelEditViewModelBase with Store, MobxNetworkMixin {
     CariSaveRequestModel.setInstance(model);
   }
 
-    @action
+  @action
   Future<void> getFilterData() async {
-    var result = await networkManager.dioGet<CariSehirlerModel>(
-        path: ApiUrls.getCariKayitliSehirler, bodyModel: CariSehirlerModel(), addTokenKey: true, addSirketBilgileri: true, headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"});
+    final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<CariSehirlerModel>(
+        path: ApiUrls.getCariKayitliSehirler, bodyModel: CariSehirlerModel(), addTokenKey: true, addSirketBilgileri: true, headers: <String, String>{"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"});
     if (result.data is List) {
       sehirler = result.data.cast<CariSehirlerModel>();
     }
+  }
+
+  @action
+  Future<void> getUlkeData() async {
+    final GenericResponseModel<NetworkManagerMixin> response = await networkManager.dioGet<UlkeModel>(path: ApiUrls.getUlkeler, bodyModel: UlkeModel(), addCKey: true, addSirketBilgileri: true, addTokenKey: true);
+    ulkeler = response.data?.map((e) => e as UlkeModel).toList().cast<UlkeModel>();
   }
 }

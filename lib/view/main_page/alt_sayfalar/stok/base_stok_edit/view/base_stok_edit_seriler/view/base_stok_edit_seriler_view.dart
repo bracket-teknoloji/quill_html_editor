@@ -9,28 +9,23 @@ class BaseStokEditSerilerView extends StatefulWidget {
   const BaseStokEditSerilerView({super.key, this.model});
 
   @override
-  State<BaseStokEditSerilerView> createState() =>
-      _BaseStokEditSerilerViewState();
+  State<BaseStokEditSerilerView> createState() => _BaseStokEditSerilerViewState();
 }
 
 class _BaseStokEditSerilerViewState extends State<BaseStokEditSerilerView> {
   BaseStokEditSerilerViewModel viewModel = BaseStokEditSerilerViewModel();
   @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
+  Widget build(BuildContext context) => ListView.builder(
       itemCount: 6,
-      itemBuilder: (context, index) {
-        return Card(
+      itemBuilder: (BuildContext context, int index) => Card(
             child: Observer(
                 builder: (_) => SwitchListTile.adaptive(
                     value: viewModel.switchValueList[index],
                     onChanged: widget.model == BaseEditEnum.goruntule
                         ? null
-                        : (value) {
+                        : (bool value) {
                             viewModel.changeSwitchValue(index);
                           },
-                    title: Text(viewModel.labelList[index]))));
-      },
+                    title: Text(viewModel.labelList[index])))),
     );
-  }
 }

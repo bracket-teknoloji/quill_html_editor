@@ -20,8 +20,7 @@ abstract class _PdfViewerViewModelBase with Store {
   void changePdfFile(File? value) => pdfFile = value;
 
   @observable
-  ObservableFuture<bool?> futureController =
-      ObservableFuture(Future.value(false));
+  ObservableFuture<bool?> futureController = ObservableFuture(Future.value(false));
 
   @computed
   String get getPageCounter => "Sayfa: ${currentPage + 1} / $pageCounter";

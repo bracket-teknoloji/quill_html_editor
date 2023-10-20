@@ -6,15 +6,14 @@ import "../../../../../../model/param_model.dart";
 
 part "base_stok_edit_fiyat_view_model.g.dart";
 
-class BaseStokEditFiyatViewModel = _BaseStokEditFiyatViewModelBase
-    with _$BaseStokEditFiyatViewModel;
+class BaseStokEditFiyatViewModel = _BaseStokEditFiyatViewModelBase with _$BaseStokEditFiyatViewModel;
 
 abstract class _BaseStokEditFiyatViewModelBase with Store {
   MainPageModel? get mainPageModel => CacheManager.getAnaVeri();
   @computed
   Map<int, String> get dovizList {
-    Map<int, String> map = {};
-    for (DovizList element in mainPageModel?.paramModel?.dovizList ?? []) {
+    final Map<int, String> map = <int, String>{};
+    for (DovizList element in mainPageModel?.paramModel?.dovizList ?? <DovizList>[]) {
       map[element.dovizTipi ?? 0] = element.isim ?? "";
     }
     return map;
@@ -24,6 +23,5 @@ abstract class _BaseStokEditFiyatViewModelBase with Store {
   ObservableList<double>? kdvOraniList;
 
   @action
-  void setKdvOraniList(List<double> value) =>
-      kdvOraniList = value.asObservable();
+  void setKdvOraniList(List<double> value) => kdvOraniList = value.asObservable();
 }

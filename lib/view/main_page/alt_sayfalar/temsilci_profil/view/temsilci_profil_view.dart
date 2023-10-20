@@ -1,8 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 
+import "../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../core/base/state/base_state.dart";
 import "../../../../../core/components/charts/custom_line_chart.dart";
 import "../../../../../core/components/charts/custom_pie_chart.dart";
@@ -12,6 +13,7 @@ import "../../../../../core/components/slide_controller/view/slide_controller_vi
 import "../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../core/constants/ui_helper/text_style_helper.dart";
 import "../../../../../core/constants/ui_helper/ui_helper.dart";
@@ -39,7 +41,9 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
     plasiyerController = TextEditingController();
     cariController = TextEditingController();
     cariVKNController = TextEditingController();
-    getData();
+    WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
+      await getData();
+    });
     super.initState();
   }
 
@@ -52,128 +56,124 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar(context),
-      body: body(context),
-    );
-  }
+  Widget build(BuildContext context) => Scaffold(
+        appBar: appBar(context),
+        body: body(context),
+      );
 
-  AppBar appBar(BuildContext context) {
-    return AppBar(
-      title: const AppBarTitle(
-        title: "Profilim",
-        subtitle: "Tüm Temsilciler",
-      ),
-      actions: [
-        IconButton(
-            onPressed: () async {
-              await bottomSheetDialogManager.showBottomSheetDialog(context,
-                  title: "Filtrele",
-                  body: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                    Observer(
-                        builder: (_) => SlideControllerWidget(
-                            title: "İade Durumu",
-                            childrenTitleList: const ["Hariç", "Dahil", "Sadece İadeler"],
-                            filterOnChanged: (value) => viewModel.setIadeDurumuValueList(value ?? 0),
-                            childrenValueList: viewModel.iadeDurumuValueList,
-                            groupValue: viewModel.iadeDurumuValueList.firstWhere((element) => element))),
-                    Observer(
-                        builder: (_) => SlideControllerWidget(
-                            title: "Dönem",
-                            childrenTitleList: ["Şirket Yılı (${DateTime.now().year})", "Bu Yıl (${DateTime.now().year})", "Geçen Yıl (${DateTime.now().year - 1})"],
-                            filterOnChanged: (value) => viewModel.setDonemValueList(value ?? 0),
-                            childrenValueList: viewModel.donemValueList,
-                            groupValue: viewModel.donemValueList.firstWhere((element) => element))),
-                    CustomTextField(
-                        labelText: "Cari VKN",
-                        controller: cariVKNController,
-                        suffix: IconButton(
-                            onPressed: () async {
-                              var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+  AppBar appBar(BuildContext context) => AppBar(
+        title: const AppBarTitle(
+          title: "Profilim",
+          subtitle: "Tüm Temsilciler",
+        ),
+        actions: <Widget>[
+          IconButton(
+              onPressed: () async {
+                await bottomSheetDialogManager.showBottomSheetDialog(context,
+                    title: "Filtrele",
+                    body: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: <Widget>[
+                      Observer(
+                          builder: (_) => SlideControllerWidget(
+                              title: "İade Durumu",
+                              childrenTitleList: const <String>["Hariç", "Dahil", "Sadece İadeler"],
+                              filterOnChanged: (int? value) => viewModel.setIadeDurumuValueList(value ?? 0),
+                              childrenValueList: viewModel.iadeDurumuValueList,
+                              groupValue: viewModel.iadeDurumuValueList.firstWhereOrNull((bool element) => element))),
+                      Observer(
+                          builder: (_) => SlideControllerWidget(
+                              title: "Dönem",
+                              childrenTitleList: <String>["Şirket Yılı (${DateTime.now().year})", "Bu Yıl (${DateTime.now().year})", "Geçen Yıl (${DateTime.now().year - 1})"],
+                              filterOnChanged: (int? value) => viewModel.setDonemValueList(value ?? 0),
+                              childrenValueList: viewModel.donemValueList,
+                              groupValue: viewModel.donemValueList.firstWhereOrNull((bool element) => element))),
+                      CustomTextField(
+                          labelText: "Cari VKN",
+                          controller: cariVKNController,
+                          suffix: IconButton(
+                              onPressed: () async {
+                                final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                                if (result != null) {
+                                  viewModel.temsilciProfilRequestModel.cariKodu = result.vergiNumarasi;
+                                  cariVKNController.text = result.vergiNumarasi ?? "";
+                                }
+                              },
+                              icon: const Icon(Icons.more_horiz_outlined)),
+                          onChanged: (String p0) => viewModel.temsilciProfilRequestModel.cariVKN = p0),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                              child: CustomTextField(
+                                  labelText: "Plasiyer",
+                                  controller: plasiyerController,
+                                  readOnly: true,
+                                  suffixMore: true,
+                                  onTap: () async {
+                                    final List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? <PlasiyerList>[];
+                                    final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                        title: "Plasiyer Seçiniz",
+                                        children:
+                                            plasiyerList.map((PlasiyerList e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e.plasiyerKodu, onTap: () => Get.back(result: e))).toList());
+                                    if (result != null) {
+                                      plasiyerController.text = result.plasiyerAciklama ?? "";
+                                    }
+                                  })).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
+                          Expanded(
+                              child: CustomTextField(
+                            labelText: "Cari",
+                            controller: cariController,
+                            readOnly: true,
+                            suffixMore: true,
+                            onTap: () async {
+                              final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                               if (result != null) {
-                                viewModel.temsilciProfilRequestModel.cariKodu = result.vergiNumarasi;
-                                cariVKNController.text = result.vergiNumarasi ?? "";
+                                viewModel.temsilciProfilRequestModel.cariKodu = result.cariKodu;
+                                cariController.text = result.cariKodu ?? "";
                               }
                             },
-                            icon: const Icon(Icons.more_horiz_outlined)),
-                        onChanged: (p0) => viewModel.temsilciProfilRequestModel.cariVKN = p0),
-                    Row(
-                      children: [
-                        Expanded(
-                            child: CustomTextField(
-                                labelText: "Plasiyer",
-                                controller: plasiyerController,
-                                readOnly: true,
-                                suffixMore: true,
-                                onTap: () async {
-                                  List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? [];
-                                  var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                      title: "Plasiyer Seçiniz",
-                                      children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e.plasiyerKodu, onTap: () => Get.back(result: e))).toList());
-                                  if (result != null) {
-                                    plasiyerController.text = result.plasiyerAciklama ?? "";
-                                  }
-                                })).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
-                        Expanded(
-                            child: CustomTextField(
-                          labelText: "Cari",
-                          controller: cariController,
-                          readOnly: true,
-                          suffixMore: true,
-                          onTap: () async {
-                            var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                            if (result != null) {
-                              viewModel.temsilciProfilRequestModel.cariKodu = result.cariKodu;
-                              cariController.text = result.cariKodu ?? "";
-                            }
-                          },
-                        )),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                            child: CustomWidgetWithLabel(
-                                isVertical: true,
-                                text: "KDV Dahil",
-                                child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kdvDahil, onChanged: (value) => viewModel.setKDVDahil(value)))).paddingAll(UIHelper.lowSize)),
-                        Expanded(
-                            child: CustomWidgetWithLabel(
-                                    isVertical: true,
-                                    text: "İrsaliyeler Dahil",
-                                    child: Observer(builder: (_) => Switch.adaptive(value: viewModel.irsaliyelerDahil, onChanged: (value) => viewModel.setIrsaliyelerDahil(value))))
-                                .paddingAll(UIHelper.lowSize)),
-                      ],
-                    ),
-                    ElevatedButton(
-                            onPressed: () {
-                              getData();
-                              Get.back();
-                            },
-                            child: const Text("Uygula"))
-                        .paddingAll(UIHelper.lowSize)
-                  ]).paddingAll(UIHelper.lowSize));
-            },
-            icon: const Icon(Icons.filter_alt_outlined))
-      ],
-    );
-  }
+                          )),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                              child: CustomWidgetWithLabel(
+                                  isVertical: true,
+                                  text: "KDV Dahil",
+                                  child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kdvDahil, onChanged: (bool value) => viewModel.setKDVDahil(value)))).paddingAll(UIHelper.lowSize)),
+                          Expanded(
+                              child: CustomWidgetWithLabel(
+                                      isVertical: true,
+                                      text: "İrsaliyeler Dahil",
+                                      child: Observer(builder: (_) => Switch.adaptive(value: viewModel.irsaliyelerDahil, onChanged: (bool value) => viewModel.setIrsaliyelerDahil(value))))
+                                  .paddingAll(UIHelper.lowSize)),
+                        ],
+                      ),
+                      ElevatedButton(
+                              onPressed: () {
+                                getData();
+                                Get.back();
+                              },
+                              child: const Text("Uygula"))
+                          .paddingAll(UIHelper.lowSize)
+                    ]).paddingAll(UIHelper.lowSize));
+              },
+              icon: const Icon(Icons.filter_alt_outlined))
+        ],
+      );
 
-  Observer body(BuildContext context) {
-    return Observer(builder: (_) {
-      return viewModel.temsilciProfilList == null
+  Observer body(BuildContext context) => Observer(
+      builder: (_) => viewModel.temsilciProfilList == null
           ? const Center(child: CircularProgressIndicator.adaptive())
           : viewModel.temsilciProfilList!.isEmpty
               ? const Center(child: Text("Kayıt Bulunamadı"))
               : SingleChildScrollView(
                   child: Column(
-                  children: [
+                  children: <Widget>[
                     Card(
                         child: Column(
-                      children: [
+                      children: <Widget>[
                         Row(
-                          children: [
+                          children: <Widget>[
                             const Icon(Icons.info_outline),
                             Observer(builder: (_) => Text(" ${viewModel.aciklama ?? ""}")),
                           ],
@@ -182,7 +182,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                     ).paddingAll(UIHelper.lowSize)),
                     Card(
                         child: Column(
-                      children: [
+                      children: <Widget>[
                         Text("Satışlar (Fatura)", style: TextStyleHelper.title),
                         // Observer(builder: (_) => Row(children: [const Text("Bugün"), Text("${viewModel.getBugunSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
                         // Observer(builder: (_) => Row(children: [const Text("Bu Ay"), Text("${viewModel.getBuAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
@@ -195,12 +195,12 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                         Observer(builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
+                          children: <Widget>[
                             Text("Satış Performansı", style: TextStyleHelper.title),
                             OutlinedButton.icon(
                                 onPressed: () async {
-                                  var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                      title: "Dönem", children: viewModel.aylar.map((e) => BottomSheetModel(title: e, onTap: () => Get.back(result: e))).toList());
+                                  final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                                      title: "Dönem", children: viewModel.aylar.map((String e) => BottomSheetModel(title: e, value: e)).toList());
                                   if (result != null) {
                                     viewModel.setDonemKodu(viewModel.aylar.indexOf(result) + 1);
                                   }
@@ -215,21 +215,19 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                     ).paddingAll(UIHelper.lowSize)),
                     Card(
                         child: Column(
-                      children: [
+                      children: <Widget>[
                         Text("Alışlar (Fatura)", style: TextStyleHelper.title),
                         Observer(builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
                         Observer(builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAyAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
                         Observer(
                             builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAyAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
                         Observer(builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
-                        Observer(builder: (_) {
-                          return CustomLineChart(lineChartValue: viewModel.getAylikAlislar);
-                        }),
+                        Observer(builder: (_) => CustomLineChart(lineChartValue: viewModel.getAylikAlislar)),
                       ],
                     ).paddingAll(UIHelper.lowSize)),
                     Card(
                         child: Column(
-                      children: [
+                      children: <Widget>[
                         Text("Müşteri Siparişleri", style: TextStyleHelper.title),
                         Observer(builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
                         Observer(builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAyAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
@@ -241,7 +239,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                     ).paddingAll(UIHelper.lowSize)),
                     Card(
                         child: Column(
-                      children: [
+                      children: <Widget>[
                         Text("Tahsilatlar", style: TextStyleHelper.title),
                         Observer(
                             builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))),
@@ -256,12 +254,10 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                       ],
                     ).paddingAll(UIHelper.lowSize))
                   ],
-                ).paddingAll(UIHelper.lowSize));
-    });
-  }
+                ).paddingAll(UIHelper.lowSize)));
 
   Future<void> getData() async {
-    var result =
+    final GenericResponseModel<NetworkManagerMixin> result =
         await networkManager.dioGet<TemsilciProfilModel>(path: ApiUrls.getPlasiyerOzetRaporu, bodyModel: TemsilciProfilModel(), queryParameters: viewModel.temsilciProfilRequestModel.toJson());
     if (result.data != null) {
       viewModel.setAciklama(result.paramData?["ACIKLAMA"]);

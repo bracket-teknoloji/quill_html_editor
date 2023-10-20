@@ -1,7 +1,7 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "base_network_mixin.dart";
 
 import "../view/pdf_viewer/model/pdf_viewer_model.dart";
+import "base_network_mixin.dart";
 
 part "print_model.freezed.dart";
 part "print_model.g.dart";
@@ -20,8 +20,7 @@ class PrintModel with _$PrintModel, NetworkManagerMixin {
     bool? standart,
   }) = _PrintModel;
 
-  factory PrintModel.fromJson(Map<String, dynamic> json) =>
-      _$PrintModelFromJson(json);
+  factory PrintModel.fromJson(Map<String, dynamic> json) => _$PrintModelFromJson(json);
 
   @override
   fromJson(Map<String, dynamic> json) => _$PrintModelFromJson(json);

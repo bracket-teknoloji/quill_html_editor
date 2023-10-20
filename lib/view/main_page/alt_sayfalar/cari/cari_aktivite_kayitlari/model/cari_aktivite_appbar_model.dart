@@ -1,5 +1,5 @@
 class AppbarToggleButtonClass {
-  static List<AppBarButtonModel> liste = [
+  static List<AppBarButtonModel> liste = <AppBarButtonModel>[
     AppBarButtonModel("Tümü", () {}),
     AppBarButtonModel("Bugün", () {}),
     AppBarButtonModel("Dün", () {}),

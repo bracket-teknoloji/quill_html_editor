@@ -159,6 +159,32 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
     });
   }
 
+  late final _$changeSiralamaAsyncAction =
+      AsyncAction('_CariRehberiViewModelBase.changeSiralama', context: context);
+
+  @override
+  Future<void> changeSiralama(String? value) {
+    return _$changeSiralamaAsyncAction.run(() => super.changeSiralama(value));
+  }
+
+  late final _$changeFilterTextAsyncAction = AsyncAction(
+      '_CariRehberiViewModelBase.changeFilterText',
+      context: context);
+
+  @override
+  Future<void> changeFilterText(String? value) {
+    return _$changeFilterTextAsyncAction
+        .run(() => super.changeFilterText(value));
+  }
+
+  late final _$resetAllAsyncAction =
+      AsyncAction('_CariRehberiViewModelBase.resetAll', context: context);
+
+  @override
+  Future<void> resetAll() {
+    return _$resetAllAsyncAction.run(() => super.resetAll());
+  }
+
   late final _$getCariListesiAsyncAction =
       AsyncAction('_CariRehberiViewModelBase.getCariListesi', context: context);
 
@@ -336,39 +362,6 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
         .startAction(name: '_CariRehberiViewModelBase.changeKod5');
     try {
       return super.changeKod5(value);
-    } finally {
-      _$_CariRehberiViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void changeSiralama(String? value) {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
-        .startAction(name: '_CariRehberiViewModelBase.changeSiralama');
-    try {
-      return super.changeSiralama(value);
-    } finally {
-      _$_CariRehberiViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void changeFilterText(String? value) {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
-        .startAction(name: '_CariRehberiViewModelBase.changeFilterText');
-    try {
-      return super.changeFilterText(value);
-    } finally {
-      _$_CariRehberiViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void resetAll() {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
-        .startAction(name: '_CariRehberiViewModelBase.resetAll');
-    try {
-      return super.resetAll();
     } finally {
       _$_CariRehberiViewModelBaseActionController.endAction(_$actionInfo);
     }

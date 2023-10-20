@@ -15,8 +15,7 @@ class CustomWidgetWithLabel extends StatelessWidget {
   const CustomWidgetWithLabel({super.key, this.text, required this.child, this.isVertical, this.isTitleSmall, this.isMust, this.width, this.onlyLabelpaddingLeft});
 
   @override
-  Widget build(BuildContext context) {
-    return SizedBox(
+  Widget build(BuildContext context) => SizedBox(
       width: width,
       child: Wrap(
         direction: (isVertical ?? false) ? Axis.vertical : Axis.horizontal,
@@ -24,7 +23,7 @@ class CustomWidgetWithLabel extends StatelessWidget {
         crossAxisAlignment: WrapCrossAlignment.start,
         runAlignment: WrapAlignment.start,
         alignment: WrapAlignment.start,
-        children: [
+        children: <Widget>[
           Text(text ?? "",
                   style: (isTitleSmall ?? false)
                       ? Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -38,5 +37,4 @@ class CustomWidgetWithLabel extends StatelessWidget {
         ],
       ),
     );
-  }
 }

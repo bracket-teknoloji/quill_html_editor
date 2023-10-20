@@ -1,20 +1,19 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/base_edit_model.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "package:quill_html_editor/quill_html_editor.dart";
 
+import "../../../../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../../../siparis/siparisler/model/siparis_edit_request_model.dart";
 
 class BaseFaturaDigerView extends StatefulWidget {
   final BaseEditModel<SiparisEditRequestModel> model;
   const BaseFaturaDigerView({super.key, required this.model});
 
   @override
-  State<BaseFaturaDigerView> createState() =>
-      _BaseFaturaDigerViewState();
+  State<BaseFaturaDigerView> createState() => _BaseFaturaDigerViewState();
 }
 
 class _BaseFaturaDigerViewState extends BaseState<BaseFaturaDigerView> {
@@ -37,9 +36,8 @@ class _BaseFaturaDigerViewState extends BaseState<BaseFaturaDigerView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
+  Widget build(BuildContext context) => Column(
+      children: <Widget>[
         Expanded(
           child: Card(
             elevation: UIHelper.highSize,
@@ -54,20 +52,15 @@ class _BaseFaturaDigerViewState extends BaseState<BaseFaturaDigerView> {
               inputAction: InputAction.newline,
               textStyle: const TextStyle(color: Colors.white),
               backgroundColor: theme.colorScheme.background,
-              onTextChanged: (text) =>
-                  text != "" ? model.ekAciklama = text : null,
+              onTextChanged: (String text) => text != "" ? model.ekAciklama = text : null,
               onEditorCreated: () async {
                 if (model.ekAciklama != null) {
                   await controller.insertText(model.ekAciklama ?? "");
                 }
               },
-              loadingBuilder: (context) {
-                return const Center(
-                    child: CircularProgressIndicator.adaptive());
-              },
+              loadingBuilder: (BuildContext context) => const Center(child: CircularProgressIndicator.adaptive()),
             ),
-          ).paddingSymmetric(
-              vertical: UIHelper.midSize, horizontal: UIHelper.lowSize),
+          ).paddingSymmetric(vertical: UIHelper.midSize, horizontal: UIHelper.lowSize),
         ),
         SafeArea(
           child: Visibility(
@@ -80,7 +73,7 @@ class _BaseFaturaDigerViewState extends BaseState<BaseFaturaDigerView> {
                 padding: UIHelper.midPadding,
                 iconSize: 20,
                 controller: controller,
-                toolBarConfig: const [
+                toolBarConfig: const <ToolBarStyle>[
                   ToolBarStyle.align,
                   ToolBarStyle.bold,
                   ToolBarStyle.italic,
@@ -97,31 +90,9 @@ class _BaseFaturaDigerViewState extends BaseState<BaseFaturaDigerView> {
                   ToolBarStyle.image,
                 ],
               ),
-            ).paddingSymmetric(
-                vertical: UIHelper.midSize, horizontal: UIHelper.lowSize),
+            ).paddingSymmetric(vertical: UIHelper.midSize, horizontal: UIHelper.lowSize),
           ),
         ),
       ],
     );
-    // return SingleChildScrollView(
-    //   child: HtmlEditor(
-    //       controller: _htmlController,
-    //       callbacks: Callbacks(onInit: onPageLoad, onChangeContent: (value) => model.ekAciklama = value),
-    //       otherOptions: OtherOptions(decoration: BoxDecoration(color: theme.colorScheme.background, borderRadius: const BorderRadius.all(Radius.circular(4)))),
-    //       htmlEditorOptions:
-    //           HtmlEditorOptions(hint: !enable ? "" : "Eklemek istediğiniz notları buraya yazınız.", disabled: !enable, spellCheck: true, shouldEnsureVisible: true, autoAdjustHeight: false),
-    //       htmlToolbarOptions: const HtmlToolbarOptions(
-    //         toolbarPosition: ToolbarPosition.aboveEditor,
-    //         separatorWidget: SizedBox(width: 10),
-    //         toolbarType: ToolbarType.nativeScrollable,
-    //         renderBorder: true,
-    //         defaultToolbarButtons: [
-    //           StyleButtons(),
-    //           FontButtons(superscript: false, subscript: false),
-    //           ColorButtons(),
-    //           InsertButtons(video: false, audio: false, hr: false, otherFile: false, picture: false),
-    //         ],
-    //       )).paddingAll(UIHelper.lowSize),
-    // );
-  }
 }

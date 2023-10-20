@@ -44,9 +44,7 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
   }
 
   @override
-  Widget build(BuildContext context) {
-    return PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Hareket Detaylı Yaşlandırma Raporu", pdfData: viewModel.pdfModel);
-  }
+  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Hareket Detaylı Yaşlandırma Raporu", pdfData: viewModel.pdfModel);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -56,11 +54,11 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
           padding: EdgeInsets.all(UIHelper.lowSize),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
+            children: <Widget>[
               Observer(
                   builder: (_) => SlideControllerWidget(
                       childrenTitleList: viewModel.bakiyeDurumuTitleList,
-                      filterOnChanged: (index) => viewModel.changeBakiyeDurumu(index),
+                      filterOnChanged: (int? index) => viewModel.changeBakiyeDurumu(index),
                       childrenValueList: viewModel.bakiyeDurumuListValue,
                       groupValue: viewModel.bakiyeDurumuGroupValue)),
               CustomTextField(
@@ -70,7 +68,7 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
                 readOnly: true,
                 suffixMore: true,
                 onTap: () async {
-                  var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                  final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                   if (result != null) {
                     cariController.text = result.cariAdi ?? "";
                     viewModel.pdfModel.dicParams?.cariKodu = result.cariKodu ?? "";
@@ -85,7 +83,7 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
                 isDateTime: true,
                 // suffix: const Icon(Icons.calendar_today_outlined),
                 onTap: () async {
-                  var result = await dialogManager.showDateTimePicker();
+                  final DateTime? result = await dialogManager.showDateTimePicker();
                   if (result != null) {
                     viewModel.pdfModel.dicParams?.refTarih = result.toDateStringIfNull();
                     referansTarihController.text = result.toDateString;

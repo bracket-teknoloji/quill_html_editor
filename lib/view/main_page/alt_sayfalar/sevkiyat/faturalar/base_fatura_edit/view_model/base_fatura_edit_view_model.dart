@@ -15,5 +15,5 @@ abstract class _BaseFaturaEditViewModelBase with Store {
   void changeIsLastPage(bool value) => isLastPage = value;
 
   @action
-  void changeIsLoaded(bool value) => isLoaded = value;  
+  void changeIsLoaded(bool value) => isLoaded = value;
 }

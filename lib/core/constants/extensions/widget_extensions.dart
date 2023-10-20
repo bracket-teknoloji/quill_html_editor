@@ -12,7 +12,7 @@ extension WidgetExtension on Widget {
 }
 
 extension RowExtension on Row {
-  Row get withExpanded => Row(children: children.map((e) => Expanded(child: e)).toList());
+  Row get withExpanded => Row(children: children.map((Widget e) => Expanded(child: e)).toList());
 }
 
 extension YetkiExtension2 on dynamic {

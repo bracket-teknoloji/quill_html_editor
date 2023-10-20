@@ -1,9 +1,9 @@
 import "package:copy_with_extension/copy_with_extension.dart";
 import "package:json_annotation/json_annotation.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "cari_listesi_model.dart";
 
 part "cari_save_request_model.g.dart";
 
@@ -84,6 +84,13 @@ class CariSaveRequestModel with NetworkManagerMixin {
     this.aciklama2,
     this.aciklama3,
     this.postakodu,
+    this.muhasebeKoduAciklama,
+    this.kurFarkiBorcKoduAciklama,
+    this.kurFarkiAlacakKoduAciklama,
+    this.bagliCariAciklama,
+    this.kosulKoduAciklama,
+    this.ulkeKoduAciklama,
+    this.dovizKoduAciklama,
   });
   int? requestVersion;
   int? islemKodu;
@@ -148,77 +155,91 @@ class CariSaveRequestModel with NetworkManagerMixin {
   String? aciklama2;
   String? aciklama3;
   String? postakodu;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? muhasebeKoduAciklama;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? kurFarkiBorcKoduAciklama;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? kurFarkiAlacakKoduAciklama;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? bagliCariAciklama;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? kosulKoduAciklama;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? ulkeKoduAciklama;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? dovizKoduAciklama;
 
   @override
-  fromJson(Map<String, dynamic> json) {
-    return _$CariSaveRequestModelFromJson(json);
-  }
+  fromJson(Map<String, dynamic> json) => _$CariSaveRequestModelFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$CariSaveRequestModelToJson(this);
-  }
+  Map<String, dynamic> toJson() => _$CariSaveRequestModelToJson(this);
 
-  fromCariListesiModel(CariListesiModel? model) {
-    return CariSaveRequestModel(
-      requestVersion: 6,
-      sahisFirmasi: model?.sahisFirmasiMi,
-      subeKodu: model?.subeKodu.toStringIfNotNull,
-      kodu: model?.cariKodu,
-      tipi: model?.cariTip,
-      adi: model?.cariAdi,
-      ulkeKodu: model?.ulkeKodu,
-      sehir: model?.cariIl,
-      ilce: model?.cariIlce,
-      adres: model?.cariAdres,
-      telefon: model?.cariTel,
-      eposta: model?.email,
-      enlem: model?.enlem,
-      boylam: model?.boylam,
-      postaKodu: model?.postakodu,
-      website: model?.web,
-      vergiDairesi: model?.vergiDairesi,
-      vergiNo: model?.vergiNumarasi,
-      grupKodu: model?.grupKodu,
-      kod1: model?.kod1,
-      kod2: model?.kod2,
-      kod3: model?.kod3,
-      kod4: model?.kod4,
-      kod5: model?.kod5,
-      bilgi: model?.bilgi,
-      kilit: model?.kilit,
-      bagliCari: model?.bagliCari,
-      kosulKodu: model?.kosulKodu,
-      muhasebeKodu: model?.muhKodu,
-      kurfarkiborcKodu: model?.kurfarkiborcKodu,
-      kurfarkialacakKodu: model?.kurfarkialacakKodu,
-      vadeGunu: model?.vadeGunu.toStringIfNotNull,
-      odemeTipi: model?.odemeTipi,
-      efaturaSenaryo: model?.efaturaTipi,
-      kull1s: model?.kull1s,
-      kull2s: model?.kull2s,
-      kull3s: model?.kull3s,
-      kull4s: model?.kull4s,
-      kull5s: model?.kull5s,
-      kull6s: model?.kull6s,
-      kull7s: model?.kull7s,
-      kull8s: model?.kull8s,
-      kull1n: model?.kull1n,
-      kull2n: model?.kull2n,
-      kull3n: model?.kull3n,
-      kull4n: model?.kull4n,
-      kull5n: model?.kull5n,
-      kull6n: model?.kull6n,
-      kull7n: model?.kull7n,
-      kull8n: model?.kull8n,
-      aciklama1: model?.aciklama1,
-      aciklama2: model?.aciklama2,
-      aciklama3: model?.aciklama3,
-      postakodu: model?.postakodu,
-      dovizli:  model?.dovizli == true ? "E" : "H",
-      dovizKodu: model?.dovizKodu,
-      plasiyerKodu: model?.plasiyerKodu,
-      
-    );
-  }
+  fromCariListesiModel(CariListesiModel? model) => CariSaveRequestModel(
+        requestVersion: 6,
+        sahisFirmasi: model?.sahisFirmasiMi,
+        subeKodu: model?.subeKodu.toStringIfNotNull,
+        kodu: model?.cariKodu,
+        tipi: model?.cariTip,
+        adi: model?.cariAdi,
+        ulkeKodu: model?.ulkeKodu,
+        sehir: model?.cariIl,
+        ilce: model?.cariIlce,
+        adres: model?.cariAdres,
+        telefon: model?.cariTel,
+        eposta: model?.email,
+        enlem: model?.enlem,
+        boylam: model?.boylam,
+        postaKodu: model?.postakodu,
+        website: model?.web,
+        vergiDairesi: model?.vergiDairesi,
+        vergiNo: model?.vergiNumarasi,
+        grupKodu: model?.grupKodu,
+        kod1: model?.kod1,
+        kod2: model?.kod2,
+        kod3: model?.kod3,
+        kod4: model?.kod4,
+        kod5: model?.kod5,
+        bilgi: model?.bilgi,
+        kilit: model?.kilit,
+        bagliCari: model?.bagliCari,
+        kosulKodu: model?.kosulKodu,
+        muhasebeKodu: model?.muhKodu,
+        kurfarkiborcKodu: model?.kurfarkiborcKodu,
+        kurfarkialacakKodu: model?.kurfarkialacakKodu,
+        vadeGunu: model?.vadeGunu.toStringIfNotNull,
+        odemeTipi: model?.odemeTipi,
+        efaturaSenaryo: model?.efaturaTipi,
+        kull1s: model?.kull1s,
+        kull2s: model?.kull2s,
+        kull3s: model?.kull3s,
+        kull4s: model?.kull4s,
+        kull5s: model?.kull5s,
+        kull6s: model?.kull6s,
+        kull7s: model?.kull7s,
+        kull8s: model?.kull8s,
+        kull1n: model?.kull1n,
+        kull2n: model?.kull2n,
+        kull3n: model?.kull3n,
+        kull4n: model?.kull4n,
+        kull5n: model?.kull5n,
+        kull6n: model?.kull6n,
+        kull7n: model?.kull7n,
+        kull8n: model?.kull8n,
+        aciklama1: model?.aciklama1,
+        aciklama2: model?.aciklama2,
+        aciklama3: model?.aciklama3,
+        postakodu: model?.postakodu,
+        dovizli: model?.dovizli == true ? "E" : "H",
+        dovizKodu: model?.dovizKodu,
+        plasiyerKodu: model?.plasiyerKodu,
+        muhasebeKoduAciklama: model?.muhKodu,
+        kurFarkiBorcKoduAciklama: model?.kurfarkiborcKodu,
+        kurFarkiAlacakKoduAciklama: model?.kurfarkialacakKodu,
+        bagliCariAciklama: model?.bagliCariAdi,
+        kosulKoduAciklama: model?.kosulKodu,
+        ulkeKoduAciklama: model?.ulkeAdi,
+        dovizKoduAciklama: model?.dovizAdi,
+      );
 }

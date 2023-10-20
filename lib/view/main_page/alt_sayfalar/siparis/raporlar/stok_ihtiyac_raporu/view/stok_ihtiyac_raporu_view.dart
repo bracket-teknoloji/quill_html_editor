@@ -27,7 +27,7 @@ class _StokIhtiyacRaporuViewState extends BaseState<StokIhtiyacRaporu> {
   late final TextEditingController bitisTarihiController;
 
   //create a form key
-  final _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -63,12 +63,7 @@ class _StokIhtiyacRaporuViewState extends BaseState<StokIhtiyacRaporu> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return PDFViewerView(
-        filterBottomSheet: filterBottomSheet,
-        title: "Stok İhtiyaç Raporu",
-        pdfData: viewModel.pdfModel);
-  }
+  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Stok İhtiyaç Raporu", pdfData: viewModel.pdfModel);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -80,29 +75,17 @@ class _StokIhtiyacRaporuViewState extends BaseState<StokIhtiyacRaporu> {
             key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const Row(children: [
-                  Expanded(child: CustomTextField()),
-                  Expanded(child: CustomTextField())
-                ]),
-                const Row(children: [
-                  Expanded(child: CustomTextField()),
-                  Expanded(child: CustomTextField())
-                ]),
-                const Row(children: [
-                  Expanded(child: CustomTextField()),
-                  Expanded(child: CustomTextField())
-                ]),
-                const Row(children: [
-                  Expanded(child: CustomTextField()),
-                  Expanded(child: CustomTextField())
-                ]),
-                Row(children: [
+              children: <Widget>[
+                const Row(children: <Widget>[Expanded(child: CustomTextField()), Expanded(child: CustomTextField())]),
+                const Row(children: <Widget>[Expanded(child: CustomTextField()), Expanded(child: CustomTextField())]),
+                const Row(children: <Widget>[Expanded(child: CustomTextField()), Expanded(child: CustomTextField())]),
+                const Row(children: <Widget>[Expanded(child: CustomTextField()), Expanded(child: CustomTextField())]),
+                Row(children: <Widget>[
                   const Expanded(child: CustomTextField()),
                   Expanded(
                       child: Switch.adaptive(
                     value: false,
-                    onChanged: (value) {},
+                    onChanged: (bool value) {},
                   ))
                 ]),
               ],
