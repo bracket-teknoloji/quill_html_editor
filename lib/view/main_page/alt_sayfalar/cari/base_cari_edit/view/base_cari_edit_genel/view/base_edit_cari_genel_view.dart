@@ -36,7 +36,7 @@ class BaseEditCariGenelView extends StatefulWidget {
 }
 
 class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
-  static BaseCariGenelEditViewModel viewModel = BaseCariGenelEditViewModel();
+   BaseCariGenelEditViewModel viewModel = BaseCariGenelEditViewModel();
   MainPageModel? anaVeri = CacheManager.getAnaVeri();
   CariListesiModel? get model => CariDetayModel.instance.cariList?.first;
   List<UlkeModel>? ulkeler;
@@ -80,21 +80,21 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
     viewModel.changeCariTipi(viewModel.model?.tipi ?? model?.cariTip);
     viewModel.changeKodu(viewModel.model?.kodu ?? model?.cariKodu);
     kodController = TextEditingController(text: model?.cariKodu);
-    cariTipiController = TextEditingController(text: viewModel.model?.tipi ?? model?.cariTip);
-    adController = TextEditingController(text: viewModel.model?.adi ?? model?.cariAdi);
-    ulkeController = TextEditingController(text: viewModel.model?.ulkeKodu ?? model?.ulkeAdi);
-    ilController = TextEditingController(text: viewModel.model?.sehir ?? model?.cariIl);
-    ilceCOntroller = TextEditingController(text: viewModel.model?.ilce ?? model?.cariIlce);
-    postaKoduController = TextEditingController(text: viewModel.model?.postakodu ?? model?.postakodu);
-    adresController = TextEditingController(text: viewModel.model?.adres ?? model?.cariAdres);
-    telefonController = TextEditingController(text: viewModel.model?.telefon ?? model?.cariTel);
-    ePostaController = TextEditingController(text: viewModel.model?.eposta ?? model?.email);
-    webController = TextEditingController(text: viewModel.model?.website ?? model?.web);
-    vergiDairesiController = TextEditingController(text: viewModel.model?.vergiDairesi ?? model?.vergiDairesi);
-    vergiNoController = TextEditingController(text: viewModel.model?.vergiNo ?? model?.vergiNumarasi);
-    dovizController = TextEditingController(text: viewModel.model?.dovizKodu.toStringIfNotNull ?? model?.dovizAdi);
-    plasiyerController = TextEditingController(text: viewModel.model?.plasiyerKodu ?? model?.plasiyerKodu);
-    vadeGunuController = TextEditingController(text: viewModel.model?.vadeGunu ?? model?.vadeGunu.toStringIfNotNull ?? "");
+    cariTipiController = TextEditingController(text: viewModel.model?.tipi);
+    adController = TextEditingController(text: viewModel.model?.adi);
+    ulkeController = TextEditingController(text: viewModel.model?.ulkeKodu);
+    ilController = TextEditingController(text: viewModel.model?.sehir);
+    ilceCOntroller = TextEditingController(text: viewModel.model?.ilce);
+    postaKoduController = TextEditingController(text: viewModel.model?.postakodu);
+    adresController = TextEditingController(text: viewModel.model?.adres);
+    telefonController = TextEditingController(text: viewModel.model?.telefon);
+    ePostaController = TextEditingController(text: viewModel.model?.eposta);
+    webController = TextEditingController(text: viewModel.model?.website);
+    vergiDairesiController = TextEditingController(text: viewModel.model?.vergiDairesi);
+    vergiNoController = TextEditingController(text: viewModel.model?.vergiNo);
+    dovizController = TextEditingController(text: viewModel.model?.dovizKodu.toStringIfNotNull);
+    plasiyerController = TextEditingController(text: viewModel.model?.plasiyerKodu);
+    vadeGunuController = TextEditingController(text: viewModel.model?.vadeGunu ?? "");
     odemeTipiController = TextEditingController(
         text: model?.odemeTipi == "0"
             ? "Peşin"
@@ -255,9 +255,12 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
               Expanded(
                   child: CustomTextField(
                 enabled: enabled,
-                labelText: "İl",
+                labelText: "Şehir",
                 controller: ilController,
-                onChanged: (p0) async {
+                readOnly: true,
+                suffixMore: true,
+                onClear: () => viewModel.changeIl(null),
+                onTap: () async {
                   if (viewModel.sehirler == null) {
                     await viewModel.getFilterData();
                   }
@@ -265,10 +268,9 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                   var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
                       title: "Şehirler",
                       children: List.generate(viewModel.sehirler?.length ?? 0, (index) => BottomSheetModel(title: viewModel.sehirler?[index].sehirAdi ?? "", value: viewModel.sehirler?[index])));
-                  if (result is List) {
-                    List<CariSehirlerModel?>? list = result.cast<CariSehirlerModel?>().toList();
-                    ilController.text = list.map((e) => e?.sehirAdi).join(", ");
-                    viewModel.changeIl(p0);
+                  if (result is CariSehirlerModel) {
+                    ilController.text = result.sehirAdi ?? "";
+                    viewModel.changeIl(result.sehirAdi);
                   }
                 },
               )),

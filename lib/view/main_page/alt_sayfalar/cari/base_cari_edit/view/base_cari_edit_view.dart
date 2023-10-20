@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/base_cari_edit/view_model/base_cari_edit_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_detay_model.dart";
 
@@ -33,14 +33,26 @@ class BaseCariEditingView extends StatefulWidget {
 }
 
 class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with TickerProviderStateMixin {
+  bool get goruntulenecekMi => widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null && widget.model?.baseEditEnum != BaseEditEnum.kopyala;
   BaseCariEditViewModel viewModel = BaseCariEditViewModel();
   TabController? tabController;
-  List<Tab>? get addTabs => widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null && widget.model?.baseEditEnum != BaseEditEnum.kopyala
-      ? [const Tab(child: Text("Özet")), const Tab(child: Text("Banka")), const Tab(child: Text("İletişim"))]
-      : [];
-  List<Widget>? get addBody => widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null && widget.model?.baseEditEnum != BaseEditEnum.kopyala
-      ? [const BaseEditCariOzetView(), const BaseCariEditBankaView(), const BaseCariEditIletisimView()]
-      : [];
+  List<Tab> get tabs => [
+        const Tab(child: Text("Genel")),
+        const Tab(child: Text("Diğer")),
+        const Tab(child: Text("Özet")).yetkiVarMi(goruntulenecekMi),
+        const Tab(child: Text("Banka")).yetkiVarMi(goruntulenecekMi),
+        const Tab(child: Text("İletişim")).yetkiVarMi(goruntulenecekMi),
+      ].whereType<Tab>().toList();
+
+  List<Widget> get views => [
+        Observer(builder: (_) {
+          return viewModel.isDownloadCompletedSuccesfully == true ? BaseEditCariGenelView(model: widget.model) : Center(child: Text(viewModel.message ?? ""));
+        }),
+        CariEditDigerView(model: widget.model),
+        const BaseEditCariOzetView().yetkiVarMi(goruntulenecekMi),
+        const BaseCariEditBankaView().yetkiVarMi(goruntulenecekMi),
+        const BaseCariEditIletisimView().yetkiVarMi(goruntulenecekMi),
+      ];
   Widget? get addSaveButton => widget.model?.baseEditEnum != BaseEditEnum.goruntule
       ? IconButton(
           onPressed: () async {
@@ -72,27 +84,24 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
         CariDetayModel.setInstance(CariDetayModel());
       }
     });
+
+    tabController = TabController(length: tabs.length, vsync: this);
+    // tabController?.addListener(() {
+    //   if (tabController.indexIsChanging) {
+    //     FocusScope.of(context).unfocus();
+    //   }
+    // });
     super.initState();
   }
 
   @override
   void dispose() {
     CariSaveRequestModel.setInstance(null);
-    BaseEditCariGenelViewState.viewModel.model = null;
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    var tabs = [const Tab(child: Text("Genel")), const Tab(child: Text("Diğer")), ...?addTabs];
-    var views = [
-      Observer(builder: (_) {
-        return viewModel.isDownloadCompletedSuccesfully == true ? BaseEditCariGenelView(model: widget.model) : Center(child: Text(viewModel.message ?? ""));
-      }),
-      CariEditDigerView(model: widget.model),
-      ...?addBody
-    ];
-    tabController = TabController(length: tabs.length, vsync: this);
     return WillPopScope(
       onWillPop: () async {
         bool result = false;
@@ -102,18 +111,30 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
       child: Scaffold(
         // bottomNavigationBar: NavigationBar(destinations: const [Tab(child: Text("Genel")), Tab(child: Text("Diğer"))]),
         appBar: AppBar(
-          title: AppBarTitle(title: (widget.appBarTitle ?? "Cari Kartı"), subtitle: ((widget.model?.baseEditEnum ?? BaseEditEnum.ekle).name), isSubTitleSmall: widget.isSubTitleSmall),
+          title: AppBarTitle(
+            title: (widget.appBarTitle ?? "Cari Kartı"),
+            subtitle: ((widget.model?.baseEditEnum ?? BaseEditEnum.ekle).name),
+            isSubTitleSmall: widget.isSubTitleSmall,
+          ),
           actions: [
+            // IconButton(
+            //   onPressed: () {},
+            //   icon: const Icon(Icons.more_vert_outlined),
+            // ),
             IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.more_vert_outlined),
-            ),
-            addSaveButton,
-          ].nullCheckWithGeneric,
+                    onPressed: () async {
+                      if (validate.isEmpty) {
+                        dialogManager.showAreYouSureDialog(() async => await postData());
+                      } else {
+                        await dialogManager.showEmptyFieldDialog(validate.keys.toList(), onOk: () => tabController?.animateTo(validate.values.first));
+                      }
+                    },
+                    icon: const Icon(Icons.save_outlined))
+                .yetkiVarMi(widget.model?.baseEditEnum != BaseEditEnum.goruntule),
+          ],
           bottom: TabBar(
             tabs: tabs,
             controller: tabController,
-            // onTap: (value) => tabController?.animateTo(value),
           ),
         ),
         body: Observer(builder: (_) {
