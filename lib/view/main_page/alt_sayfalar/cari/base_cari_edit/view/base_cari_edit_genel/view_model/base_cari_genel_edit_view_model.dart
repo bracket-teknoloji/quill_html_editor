@@ -1,19 +1,25 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_detay_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_save_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_sehirler_model.dart";
 
 part "base_cari_genel_edit_view_model.g.dart";
 
 class BaseCariGenelEditViewModel = _BaseCariGenelEditViewModelBase with _$BaseCariGenelEditViewModel;
 
-abstract class _BaseCariGenelEditViewModelBase with Store {
+abstract class _BaseCariGenelEditViewModelBase with Store, MobxNetworkMixin {
   @observable
   CariSaveRequestModel? model;
   @observable
   bool isDovizli = false;
   @observable
   bool isSahisFirmasi = false;
+  @observable
+  List<CariSehirlerModel>? sehirler;
+
 
   @action
   void changeIslemKodu(int? value) {
@@ -169,5 +175,14 @@ abstract class _BaseCariGenelEditViewModelBase with Store {
   void changeKosul(String? value) {
     model = model?.copyWith(kosulKodu: value);
     CariSaveRequestModel.setInstance(model);
+  }
+
+    @action
+  Future<void> getFilterData() async {
+    var result = await networkManager.dioGet<CariSehirlerModel>(
+        path: ApiUrls.getCariKayitliSehirler, bodyModel: CariSehirlerModel(), addTokenKey: true, addSirketBilgileri: true, headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"});
+    if (result.data is List) {
+      sehirler = result.data.cast<CariSehirlerModel>();
+    }
   }
 }

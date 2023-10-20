@@ -6,6 +6,7 @@ import "package:get/get.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_detay_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_sehirler_model.dart";
 
 import "../../../../../../../../core/base/model/base_bottom_sheet_response_model.dart";
 import "../../../../../../../../core/base/model/base_edit_model.dart";
@@ -72,7 +73,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
     } else if (widget.model?.baseEditEnum == BaseEditEnum.duzenle) {
       viewModel.changeIslemKodu(2);
     }
-    / viewModel.changeIslemKodu();
+    // viewModel.changeIslemKodu();
     viewModel.changeIsSahisFirmasi(viewModel.model?.sahisFirmasi ?? model?.sahisFirmasiMi ?? false);
     viewModel.changeIsDovizli(viewModel.model?.dovizli == "E" || model?.dovizli == true);
     viewModel.changeAdi(viewModel.model?.adi ?? model?.cariAdi);
@@ -256,7 +257,20 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                 enabled: enabled,
                 labelText: "İl",
                 controller: ilController,
-                onChanged: (p0) => viewModel.changeIl(p0),
+                onChanged: (p0) async {
+                  if (viewModel.sehirler == null) {
+                    await viewModel.getFilterData();
+                  }
+                  // ignore: use_build_context_synchronously
+                  var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
+                      title: "Şehirler",
+                      children: List.generate(viewModel.sehirler?.length ?? 0, (index) => BottomSheetModel(title: viewModel.sehirler?[index].sehirAdi ?? "", value: viewModel.sehirler?[index])));
+                  if (result is List) {
+                    List<CariSehirlerModel?>? list = result.cast<CariSehirlerModel?>().toList();
+                    ilController.text = list.map((e) => e?.sehirAdi).join(", ");
+                    viewModel.changeIl(p0);
+                  }
+                },
               )),
               Expanded(
                   child: CustomTextField(
