@@ -1,24 +1,45 @@
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
-
 import "../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+
 import "../model/urun_grubuna_gore_satis_grafigi_model.dart";
 import "../model/urun_grubuna_gore_satis_grafigi_request_model.dart";
 
 part "urun_grubuna_gore_satis_grafigi_view_model.g.dart";
 
-class UrunGrubunaGoreSatisGrafigiViewModel = _UrunGrubunaGoreSatisGrafigiViewModelBase with _$UrunGrubunaGoreSatisGrafigiViewModel;
+class UrunGrubunaGoreSatisGrafigiViewModel = _UrunGrubunaGoreSatisGrafigiViewModelBase
+    with _$UrunGrubunaGoreSatisGrafigiViewModel;
 
 abstract class _UrunGrubunaGoreSatisGrafigiViewModelBase with Store {
-  final List<String> donemTipiList = <String>["TUMU", "BUGUN", "DUN", "BU_HAFTA", "BU_AY", "GECEN_AY", "SON_3_AY", "BU_YIL", "GECEN_YIL", "OZEL"];
+  final List<String> donemTipiList = [
+    "TUMU",
+    "BUGUN",
+    "DUN",
+    "BU_HAFTA",
+    "BU_AY",
+    "GECEN_AY",
+    "SON_3_AY",
+    "BU_YIL",
+    "GECEN_YIL",
+    "OZEL"
+  ];
 
-  List<BottomSheetModel> grupNoBottomSheetList = <String>["Stok Grup Kodu", "Stok Kod 1", "Stok Kod 2", "Stok Kod 3", "Stok Kod 4", "Stok Kod 5"]
-      .mapIndexed((int index, String element) => BottomSheetModel(title: element, onTap: () => Get.back(result: element)))
+  List<BottomSheetModel> grupNoBottomSheetList = [
+    "Stok Grup Kodu",
+    "Stok Kod 1",
+    "Stok Kod 2",
+    "Stok Kod 3",
+    "Stok Kod 4",
+    "Stok Kod 5"
+  ]
+      .mapIndexed((index, element) => BottomSheetModel(
+          title: element, onTap: () => Get.back(result: element)))
       .toList();
   @observable
-  UrunGrubunaGoreSatisGrafigiRequestModel model = UrunGrubunaGoreSatisGrafigiRequestModel();
+  UrunGrubunaGoreSatisGrafigiRequestModel model =
+      UrunGrubunaGoreSatisGrafigiRequestModel();
 
   @observable
   List<BaseProjeModel>? projeList;
@@ -42,5 +63,6 @@ abstract class _UrunGrubunaGoreSatisGrafigiViewModelBase with Store {
   ObservableList<UrunGrubunaGoreSatisGrafigiModel>? modelList;
 
   @action
-  void setModelList(List<UrunGrubunaGoreSatisGrafigiModel>? value) => modelList = value?.asObservable();
+  void setModelList(List<UrunGrubunaGoreSatisGrafigiModel>? value) =>
+      modelList = value?.asObservable();
 }

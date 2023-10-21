@@ -12,5 +12,7 @@ class CustomBarWidget extends StatefulWidget {
 
 class _CustomBarWidgetState extends BaseState<CustomBarWidget> {
   @override
-  Widget build(BuildContext context) => BarChart(BarChartData(barGroups: <BarChartGroupData>[]));
+  Widget build(BuildContext context) {
+    return BarChart(BarChartData(barGroups: []));
+  }
 }

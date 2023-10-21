@@ -7,7 +7,8 @@ import "../model/stok_yeni_kayit_model.dart";
 
 part "stok_yeni_kayit_view_model.g.dart";
 
-class StokYeniKayitViewModel = _StokYeniKayitViewModelBase with _$StokYeniKayitViewModel;
+class StokYeniKayitViewModel = _StokYeniKayitViewModelBase
+    with _$StokYeniKayitViewModel;
 
 abstract class _StokYeniKayitViewModelBase with Store {
   @observable
@@ -17,13 +18,14 @@ abstract class _StokYeniKayitViewModelBase with Store {
   @observable
   MainPageModel? anaVeri = CacheManager.getAnaVeri();
   @observable
-  StokYeniKayitModel model = StokYeniKayitModel(miktar: 0, tarih: DateTime.now());
+  StokYeniKayitModel model =
+      StokYeniKayitModel(miktar: 0, tarih: DateTime.now());
 
   @action
   void setStokKodu(String? value) => model = model.copyWith(stokKodu: value);
 
   @observable
-  ObservableList<bool> isSelected = <bool>[true, false].asObservable();
+  ObservableList<bool> isSelected = [true, false].asObservable();
 
   @action
   void changeIsSelected(int index) {
@@ -36,8 +38,8 @@ abstract class _StokYeniKayitViewModelBase with Store {
     }
   }
 
-  ObservableList<String> toggleButtonName = <String>["Giriş", "Çıkış"].asObservable();
-  Map<String, String> hareketTurMap = <String, String>{
+  ObservableList<String> toggleButtonName = ["Giriş", "Çıkış"].asObservable();
+  Map<String, String> hareketTurMap = {
     "Devir": "A",
     "Depo Transferi": "B",
     "Üretim": "C",

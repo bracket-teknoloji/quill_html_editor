@@ -13,5 +13,6 @@ class LoginDialogModel {
   @HiveField(2)
   String? password;
 
-  LoginDialogModel({required this.account, required this.username, required this.password});
+  LoginDialogModel(
+      {required this.account, required this.username, required this.password});
 }

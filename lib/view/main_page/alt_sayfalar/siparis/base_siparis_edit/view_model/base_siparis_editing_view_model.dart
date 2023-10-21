@@ -6,11 +6,13 @@ import "../model/base_siparis_edit_model.dart";
 
 part "base_siparis_editing_view_model.g.dart";
 
-class BaseSiparisEditingViewModel = _BaseSiparisEditingViewModelBase with _$BaseSiparisEditingViewModel;
+class BaseSiparisEditingViewModel = _BaseSiparisEditingViewModelBase
+    with _$BaseSiparisEditingViewModel;
 
 abstract class _BaseSiparisEditingViewModelBase with Store {
   @computed
-  BaseSiparisEditModel get baseSiparisEditModel => BaseSiparisEditModel.instance;
+  BaseSiparisEditModel get baseSiparisEditModel =>
+      BaseSiparisEditModel.instance;
 
   @observable
   bool updateKalemler = false;
@@ -21,10 +23,14 @@ abstract class _BaseSiparisEditingViewModelBase with Store {
   int pageIndex = 0;
 
   @observable
-  bool isValid = StaticVariables.instance.siparisGenelFormKey.currentState?.validate() ?? false;
+  bool isValid =
+      (StaticVariables.instance.siparisGenelFormKey.currentState?.validate() ??
+          false);
 
   @action
-  void changeIsValid() => isValid = StaticVariables.instance.siparisGenelFormKey.currentState?.validate() ?? false;
+  void changeIsValid() => isValid =
+      StaticVariables.instance.siparisGenelFormKey.currentState?.validate() ??
+          false;
 
   @action
   void changePageIndex(int value) => pageIndex = value;
@@ -48,11 +54,13 @@ abstract class _BaseSiparisEditingViewModelBase with Store {
   }
 
   @observable
-  bool yeniKaydaHazirlaMi = CacheManager.getProfilParametre.siparisYeniKaydaHazirla;
+  bool yeniKaydaHazirlaMi =
+      CacheManager.getProfilParametre.siparisYeniKaydaHazirla;
 
   @action
   void changeYeniKaydaHazirlaMi() {
     yeniKaydaHazirlaMi = !yeniKaydaHazirlaMi;
-    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisYeniKaydaHazirla: yeniKaydaHazirlaMi));
+    CacheManager.setProfilParametre(CacheManager.getProfilParametre
+        .copyWith(siparisYeniKaydaHazirla: yeniKaydaHazirlaMi));
   }
 }

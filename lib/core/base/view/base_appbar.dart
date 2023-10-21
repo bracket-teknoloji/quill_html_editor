@@ -1,3 +1,5 @@
+
+
 import "package:flutter/material.dart";
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -12,15 +14,17 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
 
   @override
-  Widget build(BuildContext context) => SafeArea(
+  Widget build(BuildContext context) {
+    return SafeArea(
       child: AppBar(
         title: Text(title ?? ""),
         leading: leading,
-        actions: <Widget>[
+        actions: [
           ...?actions,
         ],
       ),
     );
+  }
 
   @override
   Size get preferredSize => const Size.fromHeight(kBottomNavigationBarHeight);

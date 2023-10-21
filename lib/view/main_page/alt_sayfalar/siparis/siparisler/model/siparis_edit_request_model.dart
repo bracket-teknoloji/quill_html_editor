@@ -8,7 +8,8 @@ part "siparis_edit_request_model.freezed.dart";
 part "siparis_edit_request_model.g.dart";
 
 @unfreezed
-class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestModel {
+class SiparisEditRequestModel
+    with NetworkManagerMixin, _$SiparisEditRequestModel {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory SiparisEditRequestModel({
     @JsonKey(defaultValue: "D") String? ekranTipi,
@@ -36,18 +37,25 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
 
   SiparisEditRequestModel._();
 
-  factory SiparisEditRequestModel.fromJson(Map<String, Object?> json) => _$SiparisEditRequestModelFromJson(json);
+  factory SiparisEditRequestModel.fromJson(Map<String, Object?> json) =>
+      _$SiparisEditRequestModelFromJson(json);
 
-  factory SiparisEditRequestModel.fromKalemModel(KalemModel model) => SiparisEditRequestModel(belgeNo: model.belgeNo, cariKodu: model.cariKodu, belgeTuru: model.belgeTipi);
+  factory SiparisEditRequestModel.fromKalemModel(KalemModel model) =>
+      SiparisEditRequestModel(
+          belgeNo: model.belgeNo,
+          cariKodu: model.cariKodu,
+          belgeTuru: model.belgeTipi);
 
-  factory SiparisEditRequestModel.fromSiparislerModel(BaseSiparisEditModel model) => SiparisEditRequestModel(
-      belgeNo: model.belgeNo,
-      pickerBelgeTuru: model.belgeTuru,
-      belgeTuru: model.belgeTuru,
-      belgeTipi: model.belgeTipi.toStringIfNotNull,
-      cariKodu: model.cariKodu,
-      tipi: model.tipi,
-      tempBelgeId: model.tempBelgeId);
+  factory SiparisEditRequestModel.fromSiparislerModel(
+          BaseSiparisEditModel model) =>
+      SiparisEditRequestModel(
+          belgeNo: model.belgeNo,
+          pickerBelgeTuru: model.belgeTuru,
+          belgeTuru: model.belgeTuru,
+          belgeTipi: model.belgeTipi.toStringIfNotNull,
+          cariKodu: model.cariKodu,
+          tipi: model.tipi,
+          tempBelgeId: model.tempBelgeId);
 
   @override
   fromJson(Map<String, dynamic> json) => SiparisEditRequestModel.fromJson(json);

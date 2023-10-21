@@ -392,12 +392,12 @@ class _$StokBottomSheetModelImpl extends _StokBottomSheetModel {
       this.kisitYok,
       this.stokKodu,
       this.okutuldu,
-      final List<BaseGrupKoduModel>? arrGrupKodu = const <BaseGrupKoduModel>[],
-      final List<BaseGrupKoduModel>? arrKod1 = const <BaseGrupKoduModel>[],
-      final List<BaseGrupKoduModel>? arrKod2 = const <BaseGrupKoduModel>[],
-      final List<BaseGrupKoduModel>? arrKod3 = const <BaseGrupKoduModel>[],
-      final List<BaseGrupKoduModel>? arrKod4 = const <BaseGrupKoduModel>[],
-      final List<BaseGrupKoduModel>? arrKod5 = const <BaseGrupKoduModel>[]})
+      final List<BaseGrupKoduModel>? arrGrupKodu = const [],
+      final List<BaseGrupKoduModel>? arrKod1 = const [],
+      final List<BaseGrupKoduModel>? arrKod2 = const [],
+      final List<BaseGrupKoduModel>? arrKod3 = const [],
+      final List<BaseGrupKoduModel>? arrKod4 = const [],
+      final List<BaseGrupKoduModel>? arrKod5 = const []})
       : _arrGrupKodu = arrGrupKodu,
         _arrKod1 = arrKod1,
         _arrKod2 = arrKod2,

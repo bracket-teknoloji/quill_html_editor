@@ -7,7 +7,8 @@ part "base_profil_parametre_model.freezed.dart";
 part "base_profil_parametre_model.g.dart";
 
 @freezed
-abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, NetworkManagerMixin {
+abstract class BaseProfilParametreModel
+    with _$BaseProfilParametreModel, NetworkManagerMixin {
   factory BaseProfilParametreModel({
     @Default(true) bool siparisYeniKaydaHazirla,
     @Default(false) bool siparisEkAlan,
@@ -20,9 +21,11 @@ abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, Network
     NetFectDizaynList? netFectDizaynList,
     YaziciList? yaziciList,
   }) = _BaseProfilParametreModel;
-  factory BaseProfilParametreModel.fromJson(Map<String, dynamic> json) => _$BaseProfilParametreModelFromJson(json);
+  factory BaseProfilParametreModel.fromJson(Map<String, dynamic> json) =>
+      _$BaseProfilParametreModelFromJson(json);
   //Empty constructor
   BaseProfilParametreModel._();
   @override
-  fromJson(Map<String, dynamic> json) => _$BaseProfilParametreModelFromJson(json);
+  fromJson(Map<String, dynamic> json) =>
+      _$BaseProfilParametreModelFromJson(json);
 }

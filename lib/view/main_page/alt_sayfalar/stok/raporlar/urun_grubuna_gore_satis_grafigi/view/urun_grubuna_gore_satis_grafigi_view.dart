@@ -2,9 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 
-import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/base_proje_model.dart";
-import "../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/charts/custom_pie_chart.dart";
 import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -26,11 +24,14 @@ class UrunGrubunaGoreSatisGrafigiView extends StatefulWidget {
   const UrunGrubunaGoreSatisGrafigiView({super.key, this.model});
 
   @override
-  State<UrunGrubunaGoreSatisGrafigiView> createState() => _UrunGrubunaGoreSatisGrafigiViewState();
+  State<UrunGrubunaGoreSatisGrafigiView> createState() =>
+      _UrunGrubunaGoreSatisGrafigiViewState();
 }
 
-class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSatisGrafigiView> {
-  UrunGrubunaGoreSatisGrafigiViewModel viewModel = UrunGrubunaGoreSatisGrafigiViewModel();
+class _UrunGrubunaGoreSatisGrafigiViewState
+    extends BaseState<UrunGrubunaGoreSatisGrafigiView> {
+  UrunGrubunaGoreSatisGrafigiViewModel viewModel =
+      UrunGrubunaGoreSatisGrafigiViewModel();
   late final TextEditingController baslangicTarihiController;
   late final TextEditingController bitisTarihiController;
   late final TextEditingController grupNoController;
@@ -64,24 +65,26 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration.zero, () async => await getData());
+    Future.delayed(Duration.zero, () => getData());
     return Scaffold(
       appBar: AppBar(title: const Text("Ürün Grubuna Göre Satış Grafiği")),
       body: SingleChildScrollView(
         child: Column(
-          children: <Widget>[
+          children: [
             RaporFiltreDateTimeBottomSheetView(
-                filterOnChanged: (int? value) {
+                filterOnChanged: (value) {
                   viewModel.donemTipiIndex = value ?? 0;
-                  viewModel.model.donemTipi = viewModel.donemTipiList[viewModel.donemTipiIndex];
-                  viewModel.model.baslamaTarihi = baslangicTarihiController.text;
+                  viewModel.model.donemTipi =
+                      viewModel.donemTipiList[viewModel.donemTipiIndex];
+                  viewModel.model.baslamaTarihi =
+                      baslangicTarihiController.text;
                   viewModel.model.bitisTarihi = bitisTarihiController.text;
                   getData();
                 },
                 baslangicTarihiController: baslangicTarihiController,
                 bitisTarihiController: bitisTarihiController),
             Row(
-              children: <Widget>[
+              children: [
                 Expanded(
                     child: CustomTextField(
                   labelText: "Grup No",
@@ -89,11 +92,15 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
                   readOnly: true,
                   suffixMore: true,
                   onTap: () async {
-                    final result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Grup No", children: viewModel.grupNoBottomSheetList);
+                    var result = await bottomSheetDialogManager
+                        .showBottomSheetDialog(context,
+                            title: "Grup No",
+                            children: viewModel.grupNoBottomSheetList);
                     if (result != null) {
                       grupNoController.text = result;
-                      viewModel.model.grupNo = int.tryParse(result.split("").last);
-                      await getData();
+                      viewModel.model.grupNo =
+                          int.tryParse(result.split("").last);
+                      getData();
                     }
                   },
                 )),
@@ -104,17 +111,20 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
                         readOnly: true,
                         suffixMore: true,
                         onTap: () async {
-                          final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                          var result = await Get.toNamed(
+                              "/mainPage/cariListesi",
+                              arguments: true);
                           if (result != null) {
-                            cariController.text = (result as CariListesiModel).cariKodu ?? "";
+                            cariController.text =
+                                (result as CariListesiModel).cariKodu ?? "";
                             viewModel.model.cariKodu = result.cariKodu ?? "";
-                            await getData();
+                            getData();
                           }
                         })),
               ],
             ),
             Row(
-              children: <Widget>[
+              children: [
                 Expanded(
                     child: CustomTextField(
                   labelText: "Plasiyer",
@@ -122,15 +132,24 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
                   readOnly: true,
                   suffixMore: true,
                   onTap: () async {
-                    final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList;
+                    List<PlasiyerList>? plasiyerList =
+                        CacheManager.getAnaVeri()?.paramModel?.plasiyerList;
                     if (plasiyerList != null) {
-                      final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                          title: "Plasiyer",
-                          children: plasiyerList.map((PlasiyerList e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e.plasiyerKodu ?? "", onTap: () => Get.back(result: e))).toList());
+                      PlasiyerList? result = await bottomSheetDialogManager
+                          .showBottomSheetDialog(context,
+                              title: "Plasiyer",
+                              children: plasiyerList
+                                  .map((e) => BottomSheetModel(
+                                      title: e.plasiyerAciklama ?? "",
+                                      value: e.plasiyerKodu ?? "",
+                                      onTap: () => Get.back(result: e)))
+                                  .toList());
                       if (result != null) {
                         plasiyerController.text = result.plasiyerAciklama ?? "";
-                        viewModel.model.arrPlasiyerKodu = <String>[result.plasiyerKodu ?? ""];
-                        await getData();
+                        viewModel.model.arrPlasiyerKodu = [
+                          result.plasiyerKodu ?? ""
+                        ];
+                        getData();
                       }
                     }
                   },
@@ -143,20 +162,35 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
                         suffixMore: true,
                         onTap: () async {
                           if (viewModel.projeList.isEmptyOrNull) {
-                            final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<BaseProjeModel>(path: ApiUrls.getProjeler, bodyModel: BaseProjeModel(), addCKey: true, addSirketBilgileri: true);
+                            var result =
+                                await networkManager.dioGet<BaseProjeModel>(
+                                    path: ApiUrls.getProjeler,
+                                    bodyModel: BaseProjeModel(),
+                                    addCKey: true,
+                                    addSirketBilgileri: true);
                             if (result.success == true) {
-                              viewModel.setProjeList(result.data.map((e) => e as BaseProjeModel).toList().cast<BaseProjeModel>());
+                              viewModel.setProjeList(result.data
+                                  .map((e) => e as BaseProjeModel)
+                                  .toList()
+                                  .cast<BaseProjeModel>());
                             }
                           }
                           if (viewModel.projeList != null) {
                             // ignore: use_build_context_synchronously
-                            final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                title: "Proje",
-                                children: viewModel.projeList?.map((BaseProjeModel e) => BottomSheetModel(title: e.projeAciklama ?? "", value: e.projeKodu ?? "", onTap: () => Get.back(result: e))).toList());
+                            var result = await bottomSheetDialogManager
+                                .showBottomSheetDialog(context,
+                                    title: "Proje",
+                                    children: viewModel.projeList
+                                        ?.map((e) => BottomSheetModel(
+                                            title: e.projeAciklama ?? "",
+                                            value: e.projeKodu ?? "",
+                                            onTap: () => Get.back(result: e)))
+                                        .toList());
                             if (result != null) {
                               projeController.text = result.projeAciklama ?? "";
-                              viewModel.model.projeKodu = result.projeKodu ?? "";
-                              await getData();
+                              viewModel.model.projeKodu =
+                                  result.projeKodu ?? "";
+                              getData();
                             }
                           }
                         })).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
@@ -167,26 +201,40 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
                     builder: (_) => SwitchListTile(
                         contentPadding: UIHelper.midPadding,
                         value: viewModel.irsDahilValue,
-                        onChanged: (bool value) {
+                        onChanged: (value) {
                           viewModel.setIrsDahilValue(value);
                           getData();
                         },
                         title: const Text("İrsaliye Dahil")))),
             Observer(
                 builder: (_) => CustomPieChart(
-                    pieChartValue: viewModel.modelList?.map((UrunGrubunaGoreSatisGrafigiModel element) => element.netTutar ?? 0).toList().cast<double>() ?? <double>[],
-                    pieChartTitle: viewModel.modelList?.map((UrunGrubunaGoreSatisGrafigiModel element) => "${element.grupAdi ?? element.grupKodu} %${element.oran}").toList().cast<String>() ?? <String>[])),
+                    pieChartValue: viewModel.modelList
+                            ?.map((element) => element.netTutar ?? 0)
+                            .toList()
+                            .cast<double>() ??
+                        [],
+                    pieChartTitle: viewModel.modelList
+                            ?.map((element) =>
+                                "${element.grupAdi ?? element.grupKodu} %${element.oran}")
+                            .toList()
+                            .cast<String>() ??
+                        [])),
           ],
         ).paddingAll(UIHelper.lowSize),
       ),
     );
   }
 
-  Future<void> getData() async {
-    final GenericResponseModel<NetworkManagerMixin> result =
-        await networkManager.dioPost<UrunGrubunaGoreSatisGrafigiModel>(path: ApiUrls.getUrunGrubunaGoreSatisGrafigi, bodyModel: UrunGrubunaGoreSatisGrafigiModel(), data: viewModel.model.toJson());
+  void getData() async {
+    var result = await networkManager.dioPost<UrunGrubunaGoreSatisGrafigiModel>(
+        path: ApiUrls.getUrunGrubunaGoreSatisGrafigi,
+        bodyModel: UrunGrubunaGoreSatisGrafigiModel(),
+        data: viewModel.model.toJson());
     if (result.success == true) {
-      viewModel.setModelList(result.data.map((e) => e as UrunGrubunaGoreSatisGrafigiModel).toList().cast<UrunGrubunaGoreSatisGrafigiModel>());
+      viewModel.setModelList(result.data
+          .map((e) => e as UrunGrubunaGoreSatisGrafigiModel)
+          .toList()
+          .cast<UrunGrubunaGoreSatisGrafigiModel>());
     }
   }
 }

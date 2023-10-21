@@ -12,7 +12,7 @@ class AppInfoModel {
   AppInfoModel._init();
 
   Future<void> init() async {
-    final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    final packageInfo = await PackageInfo.fromPlatform();
     appName = packageInfo.buildSignature;
     packageName = packageInfo.packageName;
     version = packageInfo.version;

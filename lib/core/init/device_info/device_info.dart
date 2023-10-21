@@ -9,9 +9,9 @@ class DeviceInfoModel {
   String? serial;
 
   Future<void> init() async {
-    final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    final deviceInfo = DeviceInfoPlugin();
     if (Platform.isAndroid) {
-      final AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+      final androidInfo = await deviceInfo.androidInfo;
       model = androidInfo.model;
       brand = androidInfo.brand;
 
@@ -20,7 +20,7 @@ class DeviceInfoModel {
       log("Running on ${androidInfo.data.toString()}");
       log("Running on ${Platform.operatingSystem}");
     } else if (Platform.isIOS) {
-      final IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
+      final iosInfo = await deviceInfo.iosInfo;
       log("Running on ${iosInfo.utsname.machine}");
     }
   }

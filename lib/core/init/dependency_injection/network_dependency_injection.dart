@@ -1,5 +1,4 @@
 import "package:get/get.dart";
-
 import "../network/network_controller.dart";
 
 class NetworkDependencyInjection {

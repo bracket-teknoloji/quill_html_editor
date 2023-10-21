@@ -9,7 +9,8 @@ import "../../../model/base_siparis_edit_model.dart";
 
 part "base_siparis_toplamlar_view_model.g.dart";
 
-class BaseSiparisToplamlarViewModel = _BaseSiparisToplamlarViewModelBase with _$BaseSiparisToplamlarViewModel;
+class BaseSiparisToplamlarViewModel = _BaseSiparisToplamlarViewModelBase
+    with _$BaseSiparisToplamlarViewModel;
 
 abstract class _BaseSiparisToplamlarViewModelBase with Store {
   static ParamModel? get paramModel => CacheManager.getAnaVeri()?.paramModel;
@@ -33,7 +34,9 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
 
   @action
   void setTevkifat(double? value) {
-    model = model.copyWith(ekMaliyet2Tutari: model.kdvTutari != 0 ? (-model.kdvTutari) * (value ?? 0) : 0);
+    model = model.copyWith(
+        ekMaliyet2Tutari:
+            model.kdvTutari != 0 ? (-model.kdvTutari) * (value ?? 0) : 0);
     BaseSiparisEditModel.setInstance(model);
   }
 
@@ -74,7 +77,10 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
       return;
     }
     if (isGenIsk1T) {
-      model = model.copyWith(genIsk1o: (value ?? 0) / (model.araToplam != 0 ? (model.araToplam ?? 0) : 1) * 100);
+      model = model.copyWith(
+          genIsk1o: ((value ?? 0) /
+              (model.araToplam != 0 ? (model.araToplam ?? 0) : 1) *
+              100));
     } else {
       model = model.copyWith(genIsk1o: value);
     }
@@ -88,7 +94,12 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
       return;
     }
     if (isGenIsk2T) {
-      model = model.copyWith(genIsk2o: (value ?? 0) / (model.getAraToplam != 0 ? (model.araToplam ?? 0) - (model.genIsk1t ?? 0) : 1) * 100);
+      model = model.copyWith(
+          genIsk2o: ((value ?? 0) /
+              (model.getAraToplam != 0
+                  ? (model.araToplam ?? 0) - (model.genIsk1t ?? 0)
+                  : 1) *
+              100));
     } else {
       model = model.copyWith(genIsk2o: value);
     }
@@ -102,7 +113,10 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
       return;
     }
     if (isGenIsk3T) {
-      model = model.copyWith(genIsk3o: (value ?? 0) / (model.getAraToplam != 0 ? model.getAraToplam : 1) * 100);
+      model = model.copyWith(
+          genIsk3o: ((value ?? 0) /
+              (model.getAraToplam != 0 ? model.getAraToplam : 1) *
+              100));
     } else {
       model = model.copyWith(genIsk3o: value);
     }
@@ -140,7 +154,7 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
     }
   }
 
-  Map<String, double> get tevkifatMap => <String, double>{
+  Map<String, double> get tevkifatMap => {
         "$getTevkifatPay/$getTevkifatPayda (Varsayılan)": getTevkifatOranlari,
         "1/10": 0.1,
         "2/10": 0.2,
@@ -152,7 +166,11 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
         "8/10": 0.8,
         "9/10": 0.9,
       };
-  int get getTevkifatPay => StaticVariables.instance.isMusteriSiparisleri ? (paramModel?.satisTevkifatPay ?? 0) : (paramModel?.alisTevkifatPay ?? 0);
-  int get getTevkifatPayda => StaticVariables.instance.isMusteriSiparisleri ? (paramModel?.satisTevkifatPayda ?? 0) : (paramModel?.alisTevkifatPayda ?? 0);
+  int get getTevkifatPay => StaticVariables.instance.isMusteriSiparisleri
+      ? (paramModel?.satisTevkifatPay ?? 0)
+      : (paramModel?.alisTevkifatPay ?? 0);
+  int get getTevkifatPayda => StaticVariables.instance.isMusteriSiparisleri
+      ? (paramModel?.satisTevkifatPayda ?? 0)
+      : (paramModel?.alisTevkifatPayda ?? 0);
   double get getTevkifatOranlari => getTevkifatPay / getTevkifatPayda;
 }

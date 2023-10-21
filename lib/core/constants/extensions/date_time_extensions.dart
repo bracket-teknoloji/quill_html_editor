@@ -18,7 +18,9 @@ extension DateTimeExtension on DateTime? {
 }
 
 extension DateTimeExtensionWithHypen on DateTime? {
-  String toDateTimeHypenString() => DateFormat("dd_MM_yyyy_HH_mm_ss").format(this ?? DateTime.now());
+  String toDateTimeHypenString() {
+    return DateFormat("dd_MM_yyyy_HH_mm_ss").format(this ?? DateTime.now());
+  }
 }
 
 extension DateTimeExtensionWithTime2 on DateTime? {
@@ -29,19 +31,23 @@ extension DateTimeExtensionWithTime2 on DateTime? {
 }
 
 extension DateTimeExtensionWithTime on DateTime {
-  String? toDateTimeString() => DateFormat("dd.MM.yyyy HH:mm:ss").format(this);
+  String? toDateTimeString() {
+    return DateFormat("dd.MM.yyyy HH:mm:ss").format(this);
+  }
 }
 
 // am extension for String dd.MM.yyyy to DateTime
 extension StringExtension on String? {
-  DateTime toDateTimeDDMMYYYY() => DateFormat("dd.MM.yyyy").parse(this!, true);
+  DateTime toDateTimeDDMMYYYY() {
+    return DateFormat("dd.MM.yyyy").parse(this!, true);
+  }
 }
 
 // an extension for get monday to today
 extension DateTimeExtensionMonday on DateTime {
   DateTime getMonday() {
-    final DateTime now = DateTime.now();
-    final DateTime monday = now.subtract(Duration(days: now.weekday - 1));
+    var now = DateTime.now();
+    var monday = now.subtract(Duration(days: now.weekday - 1));
     return monday;
   }
 }

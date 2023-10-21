@@ -1,4 +1,4 @@
-enum MuhasebeBelgeTipiEnum { aylikMizan, muo, cari }
+enum MuhasebeBelgeTipiEnum { aylikMizan, muo, cari}
 
 extension MuhasebeBelgeExtensions on MuhasebeBelgeTipiEnum? {
   String get value {

@@ -8,10 +8,13 @@ import "app_theme.dart";
 
 class AppThemeDark extends AppTheme {
   static AppThemeDark? _instance;
-  static AppThemeDark? get instance => _instance ??= AppThemeDark._init();
+  static AppThemeDark? get instance {
+    _instance ??= AppThemeDark._init();
+    return _instance;
+  }
 
   AppThemeDark._init();
-  ColorScheme colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark);
+  var colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark);
   @override
   ThemeData get theme => ThemeData(
       platform: GetPlatform.isIOS ? TargetPlatform.iOS : TargetPlatform.android,
@@ -19,7 +22,7 @@ class AppThemeDark extends AppTheme {
       radioTheme: RadioThemeData(fillColor: MaterialStateProperty.all(UIHelper.primaryColor), overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.1))),
       useMaterial3: true,
       colorSchemeSeed: UIHelper.primaryColor,
-      actionIconTheme: ActionIconThemeData(backButtonIconBuilder: (BuildContext context) => const Icon(Icons.arrow_back_outlined)),
+      actionIconTheme: ActionIconThemeData(backButtonIconBuilder: (context) => const Icon(Icons.arrow_back_outlined)),
       tabBarTheme: TabBarTheme(
         indicatorColor: UIHelper.primaryColor,
         indicatorSize: TabBarIndicatorSize.tab,

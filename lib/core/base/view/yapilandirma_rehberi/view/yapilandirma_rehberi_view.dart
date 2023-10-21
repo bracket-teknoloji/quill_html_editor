@@ -8,7 +8,6 @@ import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_li
 import "../../../../components/wrap/appbar_title.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../state/base_state.dart";
-import "../model/yapilandirma_rehberi_model.dart";
 import "../view_model/yapilandirma_rehberi_view_model.dart";
 
 class YapilandirmaRehberiView extends StatefulWidget {
@@ -25,14 +24,15 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
   @override
   void initState() {
     viewModel.setStokListesiModel(widget.model);
-    WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
-      await viewModel.getData();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      viewModel.getData();
     });
     super.initState();
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) {
+    return Scaffold(
         appBar: AppBar(
           title: AppBarTitle(title: "Yapılandırma Rehberi", subtitle: "${widget.model.stokAdi} - ${widget.model.stokKodu}"),
         ),
@@ -45,11 +45,12 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
+            children: [
               Observer(builder: (_) => Text(viewModel.title)).paddingAll(UIHelper.highSize),
               const Divider(),
               Expanded(
-                child: Observer(builder: (_) => Visibility(
+                child: Observer(builder: (_) {
+                  return Visibility(
                     visible: viewModel.filteredList.ext.isNotNullOrEmpty,
                     child: AnimationLimiter(
                       child: GridView.builder(
@@ -59,8 +60,8 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
                           childAspectRatio: 0.9,
                         ),
                         itemCount: (viewModel.filteredList?.length ?? 0) + (viewModel.page != 1 ? 1 : 0),
-                        itemBuilder: (BuildContext context, int index) {
-                          final YapilandirmaRehberiModel? item = viewModel.filteredList?[(viewModel.page != 1 ? index - 1 : index) < 0 ? 0 : (viewModel.page != 1 ? index - 1 : index)];
+                        itemBuilder: (context, index) {
+                          var item = viewModel.filteredList?[(viewModel.page != 1 ? index - 1 : index) < 0 ? 0 : (viewModel.page != 1 ? index - 1 : index)];
                           return AnimationConfiguration.staggeredList(
                               position: index,
                               duration: const Duration(milliseconds: 500),
@@ -73,7 +74,7 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
                                             onTap: () async {
                                               viewModel.resetFilteredList();
                                               await Future.delayed(const Duration(milliseconds: 50));
-                                              await viewModel.decrementPage();
+                                              viewModel.decrementPage();
                                             },
                                             child: GridTile(
                                               child: Center(
@@ -90,10 +91,10 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
                                           shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
                                           child: InkWell(
                                             onTap: () async {
-                                              final int? sonuc = viewModel.yapilandirmaList
-                                                  ?.where((YapilandirmaRehberiModel element) => element.yapkod == item?.yapkod)
-                                                  .map((YapilandirmaRehberiModel element) => element.ozellikSira)
-                                                  .fold(0, (previousValue, element) => ((element ?? 0) > (previousValue ??0)) ? element ?? 0 : previousValue);
+                                              var sonuc = viewModel.yapilandirmaList
+                                                  ?.where((element) => element.yapkod == item?.yapkod)
+                                                  .map((element) => element.ozellikSira)
+                                                  .fold(0, (previousValue, element) => ((element ?? 0) > previousValue) ? element ?? 0 : previousValue);
                                               viewModel.setMaxPage(sonuc);
                                               if (!viewModel.isLastPage) {
                                                 viewModel.setYapilandirmaRehberiModel(item);
@@ -122,9 +123,11 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
                         },
                       ).paddingAll(UIHelper.highSize),
                     ),
-                  )),
+                  );
+                }),
               ),
             ],
           );
         }));
+  }
 }

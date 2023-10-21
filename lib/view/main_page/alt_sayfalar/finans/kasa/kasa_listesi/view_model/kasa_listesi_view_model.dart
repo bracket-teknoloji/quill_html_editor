@@ -1,25 +1,24 @@
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/generic_response_model.dart";
-
-import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
 import "../model/kasa_listesi_model.dart";
 
+import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
+
 part "kasa_listesi_view_model.g.dart";
 
-class KasaListesiViewModel = _KasaListesiViewModelBase with _$KasaListesiViewModel;
+class KasaListesiViewModel = _KasaListesiViewModelBase
+    with _$KasaListesiViewModel;
 
 abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin {
-  final Map<String, dynamic> siralaMap = <String, dynamic>{
+  final Map<String, dynamic> siralaMap = {
     "Kasa Kodu (A-Z)": "KOD_AZ",
     "Kasa Kodu (Z-A)": "KOD_ZA",
     "Kasa Adı (A-Z)": "ADI_AZ",
     "Kasa Adı (Z-A)": "ADI_ZA",
   };
 
-  final Map<String, String> filtreleMap = <String, String>{
+  final Map<String, String> filtreleMap = {
     "Tümü": "T",
     "Bakiyeli": "B",
     "Eksi": "E",
@@ -50,7 +49,7 @@ abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin {
   double get getGelir {
     // Bütün kasaların toplam giriş tutarını hesaplar
     double toplamGiris = 0;
-    kasaListesi?.forEach((KasaListesiModel element) {
+    kasaListesi?.forEach((element) {
       toplamGiris += element.toplamGiris ?? 0;
     });
     return toplamGiris;
@@ -60,7 +59,7 @@ abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin {
   double get getGider {
     // Bütün kasaların toplam çıkış tutarını hesaplar
     double toplamCikis = 0;
-    kasaListesi?.forEach((KasaListesiModel element) {
+    kasaListesi?.forEach((element) {
       toplamCikis += element.toplamCikis ?? 0;
     });
     return toplamCikis;
@@ -73,7 +72,14 @@ abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<KasaListesiModel>? get getKasaListesi {
     // Arama çubuğuna yazılan değere göre filtreleme yapar
     if (searchText.ext.isNotNullOrNoEmpty) {
-      return kasaListesi?.where((KasaListesiModel element) => element.kasaTanimi?.toLowerCase().contains(searchText!.toLowerCase()) ?? false).toList().asObservable();
+      return kasaListesi
+          ?.where((element) =>
+              element.kasaTanimi
+                  ?.toLowerCase()
+                  .contains(searchText!.toLowerCase()) ??
+              false)
+          .toList()
+          .asObservable();
     }
     return kasaListesi;
   }
@@ -82,7 +88,8 @@ abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin {
 
   //* Actions
   @action
-  void setFiltreGroupValue(int? value) => filtreGroupValue = filtreleMap.values.toList()[value ?? 0];
+  void setFiltreGroupValue(int? value) =>
+      filtreGroupValue = filtreleMap.values.toList()[value ?? 0];
 
   @action
   void setSirala(String value) => sirala = value;
@@ -102,12 +109,19 @@ abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin {
   void setIsScrollDown(bool value) => isScrollDown = value;
 
   @action
-  void setKasaListesi(List<KasaListesiModel>? value) => kasaListesi = value?.asObservable();
+  void setKasaListesi(List<KasaListesiModel>? value) =>
+      kasaListesi = value?.asObservable();
 
   @action
   Future<void> getData() async {
-    final GenericResponseModel<NetworkManagerMixin> result = await networkManager
-        .dioGet<KasaListesiModel>(path: ApiUrls.getKasalar, bodyModel: KasaListesiModel(), queryParameters: <String, dynamic>{"MenuKodu": "YONE_KASA", "Sirala": sirala, "Bakiye": filtreGroupValue});
+    var result = await networkManager.dioGet<KasaListesiModel>(
+        path: ApiUrls.getKasalar,
+        bodyModel: KasaListesiModel(),
+        queryParameters: {
+          "MenuKodu": "YONE_KASA",
+          "Sirala": sirala,
+          "Bakiye": filtreGroupValue
+        });
     if (result.data is List) {
       setKasaListesi(result.data.cast<KasaListesiModel>());
     }

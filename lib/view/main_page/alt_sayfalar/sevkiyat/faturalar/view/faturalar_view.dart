@@ -269,7 +269,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                   onPressed: () async {
                     if (viewModel.faturaRequestModel.cariKodu != null && viewModel.faturaRequestModel.cariKodu != "") {
                       Get.back();
-                      await dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = viewModel.faturaRequestModel.cariKodu);
+                       dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = viewModel.faturaRequestModel.cariKodu);
                     } else {
                       await dialogManager.showAlertDialog("Cari Seçiniz");
                     }

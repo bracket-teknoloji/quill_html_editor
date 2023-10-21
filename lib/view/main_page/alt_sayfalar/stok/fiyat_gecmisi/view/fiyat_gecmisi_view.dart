@@ -4,8 +4,6 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/generic_response_model.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
@@ -64,77 +62,137 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) {
+    return Scaffold(
         appBar: AppBar(
-          title: Observer(builder: (_) => viewModel.searchBar
-                ? CustomAppBarTextField(controller: searchBarController, onChanged: (String p0) => viewModel.filterModelList(p0))
-                : AppBarTitle(title: "Fiyat Geçmişi", subtitle: "${viewModel.modelList?.length ?? 0} kayıt")),
-          actions: <Widget>[
-            IconButton(icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)), onPressed: () => viewModel.setSearchBar()),
-            Observer(builder: (_) => viewModel.searchBar
+          title: Observer(builder: (_) {
+            return viewModel.searchBar
+                ? CustomAppBarTextField(
+                    controller: searchBarController,
+                    onChanged: (p0) => viewModel.filterModelList(p0))
+                : AppBarTitle(
+                    title: "Fiyat Geçmişi",
+                    subtitle: "${viewModel.modelList?.length ?? 0} kayıt");
+          }),
+          actions: [
+            IconButton(
+                icon: Observer(
+                    builder: (_) => Icon(viewModel.searchBar
+                        ? Icons.search_off_outlined
+                        : Icons.search_outlined)),
+                onPressed: () => viewModel.setSearchBar()),
+            Observer(builder: (_) {
+              return viewModel.searchBar
                   ? const SizedBox()
                   : IconButton(
                       icon: const Icon(Icons.sort_by_alpha_outlined),
                       onPressed: () async {
-                        final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                            title: "Sırala",
-                            children: List.generate(viewModel.siralaTitleList.length,
-                                (int index) => BottomSheetModel(title: viewModel.siralaTitleList[index].title, onTap: () => Get.back(result: viewModel.siralaTitleList[index].value))));
+                        var result = await bottomSheetDialogManager
+                            .showBottomSheetDialog(context,
+                                title: "Sırala",
+                                children: List.generate(
+                                    viewModel.siralaTitleList.length,
+                                    (index) => BottomSheetModel(
+                                        title: viewModel
+                                            .siralaTitleList[index].title,
+                                        onTap: () => Get.back(
+                                            result: viewModel
+                                                .siralaTitleList[index]
+                                                .value))));
                         if (result != null) {
                           viewModel.model.sirala = result;
-                          await getData();
+                          getData();
                         }
-                      })),
+                      });
+            }),
             Observer(
                 builder: (_) => viewModel.searchBar
                     ? const SizedBox()
                     : IconButton(
                         icon: const Icon(Icons.filter_alt_outlined),
                         onPressed: () async {
-                          await bottomSheetDialogManager.showBottomSheetDialog(context,
+                          await bottomSheetDialogManager.showBottomSheetDialog(
+                              context,
                               title: "Filtrele",
                               body: Column(
-                                children: <Widget>[
+                                children: [
                                   RaporFiltreDateTimeBottomSheetView(
-                                      filterOnChanged: (int? index) => log(""), baslangicTarihiController: baslangicTarihiController, bitisTarihiController: bitisTarihiController),
-                                  Observer(builder: (_) => SlideControllerWidget(
+                                      filterOnChanged: (index) => log(""),
+                                      baslangicTarihiController:
+                                          baslangicTarihiController,
+                                      bitisTarihiController:
+                                          bitisTarihiController),
+                                  Observer(builder: (_) {
+                                    return SlideControllerWidget(
                                       title: "Yazdırma Durumu",
-                                      childrenTitleList: viewModel.yazdirmaDurumuMap.keys.toList(),
-                                      childrenValueList: viewModel.yazdirmaDurumuMap.values.toList(),
-                                      filterOnChanged: (int? index) => viewModel.setYazdirmaGroupValue(index ?? 0),
+                                      childrenTitleList: viewModel
+                                          .yazdirmaDurumuMap.keys
+                                          .toList(),
+                                      childrenValueList: viewModel
+                                          .yazdirmaDurumuMap.values
+                                          .toList(),
+                                      filterOnChanged: (index) => viewModel
+                                          .setYazdirmaGroupValue(index ?? 0),
                                       groupValue: viewModel.yazdirmaGroupValue,
-                                    )),
-                                  Observer(builder: (_) => SlideControllerWidget(
+                                    );
+                                  }),
+                                  Observer(builder: (_) {
+                                    return SlideControllerWidget(
                                       title: "Alış/Satış Fiyat Tipi",
-                                      childrenTitleList: viewModel.alisSatisDurumuMap.keys.toList(),
-                                      childrenValueList: viewModel.alisSatisDurumuMap.values.toList(),
-                                      filterOnChanged: (int? index) => viewModel.setAlisSatisGroupValue(index ?? 0),
+                                      childrenTitleList: viewModel
+                                          .alisSatisDurumuMap.keys
+                                          .toList(),
+                                      childrenValueList: viewModel
+                                          .alisSatisDurumuMap.values
+                                          .toList(),
+                                      filterOnChanged: (index) => viewModel
+                                          .setAlisSatisGroupValue(index ?? 0),
                                       groupValue: viewModel.alisSatisGroupValue,
-                                    )),
+                                    );
+                                  }),
                                   CustomTextField(
                                     labelText: "Fiyat Tipi",
                                     readOnly: true,
                                     controller: fiyatTipiController,
                                     suffixMore: true,
                                     onTap: () async {
-                                      final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                          title: "Fiyat Tipi",
-                                          children: List.generate(
-                                              viewModel.fiyatTipiMap.length,
-                                              (int index) =>
-                                                  BottomSheetModel(title: viewModel.fiyatTipiMap.keys.toList()[index], onTap: () => Get.back(result: viewModel.fiyatTipiMap.values.toList()[index]))));
+                                      var result = await bottomSheetDialogManager
+                                          .showBottomSheetDialog(context,
+                                              title: "Fiyat Tipi",
+                                              children: List.generate(
+                                                  viewModel.fiyatTipiMap.length,
+                                                  (index) => BottomSheetModel(
+                                                      title: viewModel
+                                                          .fiyatTipiMap.keys
+                                                          .toList()[index],
+                                                      onTap: () => Get.back(
+                                                          result: viewModel
+                                                                  .fiyatTipiMap
+                                                                  .values
+                                                                  .toList()[
+                                                              index]))));
                                       if (result != null) {
                                         viewModel.model.fiyatTipi = result;
-                                        fiyatTipiController.text = viewModel.fiyatTipiMap.keys.toList()[viewModel.fiyatTipiMap.values.toList().indexOf(result)];
+                                        fiyatTipiController.text = viewModel
+                                                .fiyatTipiMap.keys
+                                                .toList()[
+                                            viewModel.fiyatTipiMap.values
+                                                .toList()
+                                                .indexOf(result)];
                                       }
                                     },
                                   ),
-                                  Row(children: <Widget>[
+                                  Row(children: [
                                     Expanded(
                                       child: ElevatedButton(
-                                          style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
+                                          style: ButtonStyle(
+                                              backgroundColor:
+                                                  MaterialStateProperty.all(
+                                                      Colors.white
+                                                          .withOpacity(0.1))),
                                           onPressed: () {
-                                            viewModel.model = FiyatGecmisiModel();
+                                            viewModel.model =
+                                                FiyatGecmisiModel();
                                             baslangicTarihiController.clear();
                                             bitisTarihiController.clear();
                                             fiyatTipiController.clear();
@@ -151,8 +209,10 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                     Expanded(
                                       child: ElevatedButton(
                                           onPressed: () {
-                                            viewModel.model.baslamaTarihi = baslangicTarihiController.text;
-                                            viewModel.model.bitisTarihi = bitisTarihiController.text;
+                                            viewModel.model.baslamaTarihi =
+                                                baslangicTarihiController.text;
+                                            viewModel.model.bitisTarihi =
+                                                bitisTarihiController.text;
                                             getData();
                                             Get.back();
                                           },
@@ -166,16 +226,17 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
         ),
         body: RefreshIndicator.adaptive(
           onRefresh: () async => getData(),
-          child: Observer(builder: (_) => viewModel.modelList.ext.isNullOrEmpty
+          child: Observer(builder: (_) {
+            return viewModel.modelList.ext.isNullOrEmpty
                 ? (viewModel.modelList?.isEmpty ?? false)
                     ? const Center(child: Text("Kayıt Bulunamadı"))
                     : const Center(
                         child: CircularProgressIndicator.adaptive(),
                       )
                 : Column(
-                    children: <Widget>[
+                    children: [
                       Row(
-                        children: <Widget>[
+                        children: [
                           Expanded(
                               child: CustomTextField(
                             labelText: "Dizayn",
@@ -184,12 +245,29 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                             suffixMore: true,
                             onClear: () => viewModel.setDizaynId(null),
                             onTap: () async {
-                              final List<NetFectDizaynList>? dizaynList = parametreModel.netFectDizaynList
-                                  ?.where((NetFectDizaynList element) => element.ozelKod == "StokEtiket" && (profilYetkiModel.yazdirmaDizaynStokEtiketi?.any((int element2) => element.id == element2) ?? true))
-                                  .toList();
-                              final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                  title: "Dizayn", children: List.generate(dizaynList?.length ?? 0, (int index) => BottomSheetModel(title: dizaynList?[index].dizaynAdi ?? "", value: dizaynList?[index])));
-                              if (result != null && result is NetFectDizaynList) {
+                              List<NetFectDizaynList>? dizaynList =
+                                  parametreModel.netFectDizaynList
+                                      ?.where((element) =>
+                                          element.ozelKod == "StokEtiket" &&
+                                          (profilYetkiModel
+                                                  .yazdirmaDizaynStokEtiketi
+                                                  ?.any((element2) => (element
+                                                          .id ==
+                                                      element2)) ??
+                                              true))
+                                      .toList();
+                              var result = await bottomSheetDialogManager
+                                  .showBottomSheetDialog(context,
+                                      title: "Dizayn",
+                                      children: List.generate(
+                                          dizaynList?.length ?? 0,
+                                          (index) => BottomSheetModel(
+                                              title: dizaynList?[index]
+                                                      .dizaynAdi ??
+                                                  "",
+                                              value: dizaynList?[index])));
+                              if (result != null &&
+                                  result is NetFectDizaynList) {
                                 dizaynController.text = result.dizaynAdi ?? "";
                                 viewModel.setDizaynId(result.id);
                               } else {
@@ -205,14 +283,26 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                             readOnly: true,
                             onClear: () => viewModel.setYaziciAdi(null),
                             onTap: () async {
-                              final List<YaziciList>? yaziciList =
-                                  parametreModel.yaziciList?.where((YaziciList element) => profilYetkiModel.yazdirmaStokEtiketiYazicilari?.any((String element2) => element2 == element.yaziciAdi) ?? true).toList();
-                              final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                  title: "Yazıcı",
-                                  children: List.generate(
-                                    yaziciList?.length ?? 0,
-                                    (int index) => BottomSheetModel(title: yaziciList?[index].yaziciAdi ?? "", value: yaziciList?[index]),
-                                  ));
+                              List<YaziciList>? yaziciList = parametreModel
+                                  .yaziciList
+                                  ?.where((element) =>
+                                      profilYetkiModel
+                                          .yazdirmaStokEtiketiYazicilari
+                                          ?.any((element2) =>
+                                              element2 == element.yaziciAdi) ??
+                                      true)
+                                  .toList();
+                              var result = await bottomSheetDialogManager
+                                  .showBottomSheetDialog(context,
+                                      title: "Yazıcı",
+                                      children: List.generate(
+                                        yaziciList?.length ?? 0,
+                                        (index) => BottomSheetModel(
+                                            title:
+                                                yaziciList?[index].yaziciAdi ??
+                                                    "",
+                                            value: yaziciList?[index]),
+                                      ));
                               if (result != null) {
                                 yaziciController.text = result.yaziciAdi ?? "";
                                 viewModel.setYaziciAdi(result);
@@ -224,50 +314,73 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                         ],
                       ),
                       Expanded(
-                        child: Observer(builder: (_) => ListView.builder(
-                            itemCount: viewModel.filteredModelList?.length ?? 0,
+                        child: Observer(builder: (_) {
+                          return ListView.builder(
+                            itemCount:
+                                (viewModel.filteredModelList?.length ?? 0),
                             shrinkWrap: true,
-                            itemBuilder: (BuildContext context, int index) {
-                              final FiyatGecmisiResponseModel? model = viewModel.filteredModelList?[index];
+                            itemBuilder: (context, index) {
+                              FiyatGecmisiResponseModel? model =
+                                  viewModel.filteredModelList?[index];
                               return StokFiyatGecmisiCard(
                                 model: model,
                                 onPrint: () async {
                                   if (dizaynController.text.ext.isNullOrEmpty) {
-                                    dialogManager.showErrorSnackBar("Lütfen Dizayn Seçiniz");
+                                    dialogManager.showErrorSnackBar(
+                                        "Lütfen Dizayn Seçiniz");
                                     return;
                                   }
                                   if (yaziciController.text.ext.isNullOrEmpty) {
-                                    dialogManager.showErrorSnackBar("Lütfen Yazıcı Seçiniz");
+                                    dialogManager.showErrorSnackBar(
+                                        "Lütfen Yazıcı Seçiniz");
                                     return;
                                   }
-                                  final DicParams dicParams = DicParams(stokKodu: model?.stokKodu, fiyatTipi: model?.fiyatTipi, tblnfStokfiyatgecmisiId: model?.id.toStringIfNotNull);
+                                  DicParams dicParams = DicParams(
+                                      stokKodu: model?.stokKodu,
+                                      fiyatTipi: model?.fiyatTipi,
+                                      tblnfStokfiyatgecmisiId:
+                                          model?.id.toStringIfNotNull);
                                   viewModel.setDicParams(dicParams);
-                                  final bool? result = await bottomSheetDialogManager.showPrintBottomSheetDialog(context, viewModel.printModel, null, null);
+                                  var result = await bottomSheetDialogManager
+                                      .showPrintBottomSheetDialog(context,
+                                          viewModel.printModel, null, null);
                                   if (result == true) {
-                                    await getData();
+                                    getData();
                                   }
                                 },
                               );
                             },
-                          )),
+                          );
+                        }),
                       ),
                     ],
-                  ).paddingAll(UIHelper.lowSize)),
+                  ).paddingAll(UIHelper.lowSize);
+          }),
         ));
+  }
 
-  Future<void> getData() async {
+  void getData() async {
     viewModel.setModelList(null);
-    final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioPost<FiyatGecmisiResponseModel>(path: ApiUrls.getStokFiyatGecmisi, bodyModel: FiyatGecmisiResponseModel(), data: viewModel.model.toJson());
+    var result = await networkManager.dioPost<FiyatGecmisiResponseModel>(
+        path: ApiUrls.getStokFiyatGecmisi,
+        bodyModel: FiyatGecmisiResponseModel(),
+        data: viewModel.model.toJson());
     if (result.success == true) {
-      viewModel.setModelList(result.data.map((e) => e as FiyatGecmisiResponseModel).toList().cast<FiyatGecmisiResponseModel>());
+      viewModel.setModelList(result.data
+          .map((e) => e as FiyatGecmisiResponseModel)
+          .toList()
+          .cast<FiyatGecmisiResponseModel>());
     }
   }
 
-  Future<void> deleteData(int id, int islemKodu) async {
-    final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioPost<FiyatGecmisiResponseModel>(path: ApiUrls.savestokFiyatGecmisi, bodyModel: FiyatGecmisiResponseModel(), data: <String, int>{"ID": id, "ISLEM_KODU": islemKodu});
+  void deleteData(int id, int islemKodu) async {
+    var result = await networkManager.dioPost<FiyatGecmisiResponseModel>(
+        path: ApiUrls.savestokFiyatGecmisi,
+        bodyModel: FiyatGecmisiResponseModel(),
+        data: {"ID": id, "ISLEM_KODU": islemKodu});
     if (result.success == true) {
       dialogManager.showSuccessSnackBar("Silindi");
-      await getData();
+      getData();
     }
   }
 }

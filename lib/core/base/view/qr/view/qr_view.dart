@@ -17,7 +17,7 @@ class QRScannerView extends StatefulWidget {
 
 class _QRScannerState extends BaseState<QRScannerView> {
   QRViewModel viewModel = QRViewModel();
-  final GlobalKey<State<StatefulWidget>> qrKey = GlobalKey(debugLabel: "QR");
+  final qrKey = GlobalKey(debugLabel: "QR");
   late final QRViewController qrViewController;
   Barcode? barcode;
   String result = "Scan a code";
@@ -28,50 +28,66 @@ class _QRScannerState extends BaseState<QRScannerView> {
   }
 
   @override
-  Widget build(BuildContext context) => SafeArea(
+  Widget build(BuildContext context) {
+    return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           title: const Text("QR Kod Okuyucu"),
-          actions: <Widget>[
-            Observer(builder: (_) => IconButton(
-                  onPressed: () async {
+          actions: [
+            Observer(builder: (_) {
+              return IconButton(
+                  onPressed: () {
                     viewModel.changeFlash();
-                    await qrViewController.toggleFlash();
+                    qrViewController.toggleFlash();
                   },
-                  icon: Icon(Icons.flash_on, color: viewModel.isFlashOpen ? Colors.amber : Colors.white))),
-            Observer(builder: (_) => IconButton(
+                  icon: Icon(Icons.flash_on,
+                      color:
+                          viewModel.isFlashOpen ? Colors.amber : Colors.white));
+            }),
+            Observer(builder: (_) {
+              return IconButton(
                   isSelected: false,
-                  onPressed: () async {
+                  onPressed: () {
                     if (viewModel.isFlashOpen) {
                       viewModel.changeFlash();
-                      await qrViewController.toggleFlash();
+                      qrViewController.toggleFlash();
                     }
                     viewModel.changeCameraReverse();
-                    await qrViewController.flipCamera();
+                    qrViewController.flipCamera();
                   },
-                  icon: Icon(Icons.flip_camera_ios, color: viewModel.isCameraReverse ? Colors.amber : Colors.white))),
+                  icon: Icon(Icons.flip_camera_ios,
+                      color: viewModel.isCameraReverse
+                          ? Colors.amber
+                          : Colors.white));
+            }),
           ],
         ),
         body: Stack(
-          children: <Widget>[buildQrView(context), buildResult()],
+          children: [buildQrView(context), buildResult()],
         ),
       ),
     );
+  }
 
   Widget buildQrView(BuildContext context) => QRView(
-        overlay: QrScannerOverlayShape(borderColor: UIHelper.primaryColor, borderRadius: 10, borderWidth: 20, cutOutSize: width * 0.7, overlayColor: Colors.black.withOpacity(0.7)),
+        overlay: QrScannerOverlayShape(
+            borderColor: UIHelper.primaryColor,
+            borderRadius: 10,
+            borderWidth: 20,
+            cutOutSize: width * 0.7,
+            overlayColor: Colors.black.withOpacity(0.7)),
         key: qrKey,
         onQRViewCreated: _onQRViewCreated,
         cameraFacing: CameraFacing.back,
       );
-  Future<void> _onQRViewCreated(QRViewController controller) async {
-    final PermissionStatus status = await Permission.camera.status;
+  void _onQRViewCreated(QRViewController controller) async {
+    PermissionStatus status = await Permission.camera.status;
     qrViewController = controller;
 
     if (status.isDenied) {
       await Permission.camera.request();
     }
-    qrViewController.scannedDataStream.listen((Barcode scanData) {
+    qrViewController.scannedDataStream.listen((scanData) {
       if (scanData.code != null) {
         qrViewController.pauseCamera();
         Navigator.pop(context, scanData.code);
@@ -81,12 +97,16 @@ class _QRScannerState extends BaseState<QRScannerView> {
     });
   }
 
-  Widget buildResult() => Center(
+  Widget buildResult() {
+    return Center(
       child: Container(
         alignment: Alignment.bottomCenter,
         padding: UIHelper.highPaddingHorizontal,
         margin: UIHelper.highPaddingVertical,
-        child: Text("QR Kodu Okutunuz", style: context.general.appTheme.textTheme.titleLarge!.copyWith(color: Colors.white)),
+        child: Text("QR Kodu Okutunuz",
+            style: context.general.appTheme.textTheme.titleLarge!
+                .copyWith(color: Colors.white)),
       ),
     );
+  }
 }

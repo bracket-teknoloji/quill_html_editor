@@ -1,5 +1,4 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-
 import "base_network_mixin.dart";
 
 part "banka_hesaplari_model.freezed.dart";
@@ -29,8 +28,11 @@ class BankaHesaplariModel with _$BankaHesaplariModel, NetworkManagerMixin {
     String? hesapNo,
   }) = _BankaHesaplariModel;
 
-  factory BankaHesaplariModel.fromJson(Map<String, dynamic> json) => _$BankaHesaplariModelFromJson(json);
+  factory BankaHesaplariModel.fromJson(Map<String, dynamic> json) =>
+      _$BankaHesaplariModelFromJson(json);
 
   @override
-  fromJson(Map<String, dynamic> json) => _$BankaHesaplariModelFromJson(json);
+  fromJson(Map<String, dynamic> json) {
+    return _$BankaHesaplariModelFromJson(json);
+  }
 }

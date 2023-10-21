@@ -20,23 +20,37 @@ abstract class _FiyatGorViewModelBase with Store {
   void setStokListesiModel(StokListesiModel? model) => stokListesiModel = model;
 
   @action
-  void setModelList(List<FiyatGorModel?>? modelList) => this.modelList = modelList;
+  void setModelList(List<FiyatGorModel?>? modelList) =>
+      this.modelList = modelList;
 
-  final List<String> titleList = <String>["Döviz Fiyatı", "Fiyat 1", "Fiyat 2", "Fiyat 3", "Fiyat 4"];
+  final List<String> titleList = [
+    "Döviz Fiyatı",
+    "Fiyat 1",
+    "Fiyat 2",
+    "Fiyat 3",
+    "Fiyat 4"
+  ];
 
   @action
   String? getBilgi(int index, {bool isSatis = false}) {
     switch (index) {
       case 0:
-        return (isSatis ? modelList?.last?.dovizTipi : modelList?.first?.dovizTipi).toStringIfNotNull;
+        return (isSatis
+                ? modelList?.last?.dovizTipi
+                : modelList?.first?.dovizTipi)
+            .toStringIfNotNull;
       case 1:
-        return (isSatis ? modelList?.last?.fiyat1 : modelList?.first?.fiyat1).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
+        return (isSatis ? modelList?.last?.fiyat1 : modelList?.first?.fiyat1)
+            .commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
       case 2:
-        return (isSatis ? modelList?.last?.fiyat2 : modelList?.first?.fiyat2).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
+        return (isSatis ? modelList?.last?.fiyat2 : modelList?.first?.fiyat2)
+            .commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
       case 3:
-        return (isSatis ? modelList?.last?.fiyat3 : modelList?.first?.fiyat3).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
+        return (isSatis ? modelList?.last?.fiyat3 : modelList?.first?.fiyat3)
+            .commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
       case 4:
-        return (isSatis ? modelList?.last?.fiyat4 : modelList?.first?.fiyat4).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
+        return (isSatis ? modelList?.last?.fiyat4 : modelList?.first?.fiyat4)
+            .commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
       default:
         return null;
     }

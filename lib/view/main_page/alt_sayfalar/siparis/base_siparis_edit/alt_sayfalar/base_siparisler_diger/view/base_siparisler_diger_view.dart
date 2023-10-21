@@ -17,7 +17,8 @@ class BaseSiparislerDigerView extends StatefulWidget {
   const BaseSiparislerDigerView({super.key, required this.model});
 
   @override
-  State<BaseSiparislerDigerView> createState() => _BaseSiparislerDigerViewState();
+  State<BaseSiparislerDigerView> createState() =>
+      _BaseSiparislerDigerViewState();
 }
 
 class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerView> {
@@ -44,8 +45,9 @@ class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerView> {
   }
 
   @override
-  Widget build(BuildContext context) => Column(
-      children: <Widget>[
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
         Expanded(
           child: Card(
             elevation: UIHelper.highSize,
@@ -60,15 +62,20 @@ class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerView> {
               inputAction: InputAction.newline,
               textStyle: const TextStyle(color: Colors.white),
               backgroundColor: theme.colorScheme.background,
-              onTextChanged: (String text) => text != "" ? model.ekAciklama = text : null,
+              onTextChanged: (text) =>
+                  text != "" ? model.ekAciklama = text : null,
               onEditorCreated: () async {
                 if (model.ekAciklama != null) {
                   await controller.insertText(model.ekAciklama ?? "");
                 }
               },
-              loadingBuilder: (BuildContext context) => const Center(child: CircularProgressIndicator.adaptive()),
+              loadingBuilder: (context) {
+                return const Center(
+                    child: CircularProgressIndicator.adaptive());
+              },
             ),
-          ).paddingSymmetric(vertical: UIHelper.midSize, horizontal: UIHelper.lowSize),
+          ).paddingSymmetric(
+              vertical: UIHelper.midSize, horizontal: UIHelper.lowSize),
         ),
         SafeArea(
           child: Visibility(
@@ -81,7 +88,7 @@ class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerView> {
                 padding: UIHelper.midPadding,
                 iconSize: 20,
                 controller: controller,
-                toolBarConfig: const <ToolBarStyle>[
+                toolBarConfig: const [
                   ToolBarStyle.align,
                   ToolBarStyle.bold,
                   ToolBarStyle.italic,
@@ -98,9 +105,31 @@ class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerView> {
                   ToolBarStyle.image,
                 ],
               ),
-            ).paddingSymmetric(vertical: UIHelper.midSize, horizontal: UIHelper.lowSize),
+            ).paddingSymmetric(
+                vertical: UIHelper.midSize, horizontal: UIHelper.lowSize),
           ),
         ),
       ],
     );
+    // return SingleChildScrollView(
+    //   child: HtmlEditor(
+    //       controller: _htmlController,
+    //       callbacks: Callbacks(onInit: onPageLoad, onChangeContent: (value) => model.ekAciklama = value),
+    //       otherOptions: OtherOptions(decoration: BoxDecoration(color: theme.colorScheme.background, borderRadius: const BorderRadius.all(Radius.circular(4)))),
+    //       htmlEditorOptions:
+    //           HtmlEditorOptions(hint: !enable ? "" : "Eklemek istediğiniz notları buraya yazınız.", disabled: !enable, spellCheck: true, shouldEnsureVisible: true, autoAdjustHeight: false),
+    //       htmlToolbarOptions: const HtmlToolbarOptions(
+    //         toolbarPosition: ToolbarPosition.aboveEditor,
+    //         separatorWidget: SizedBox(width: 10),
+    //         toolbarType: ToolbarType.nativeScrollable,
+    //         renderBorder: true,
+    //         defaultToolbarButtons: [
+    //           StyleButtons(),
+    //           FontButtons(superscript: false, subscript: false),
+    //           ColorButtons(),
+    //           InsertButtons(video: false, audio: false, hr: false, otherFile: false, picture: false),
+    //         ],
+    //       )).paddingAll(UIHelper.lowSize),
+    // );
+  }
 }

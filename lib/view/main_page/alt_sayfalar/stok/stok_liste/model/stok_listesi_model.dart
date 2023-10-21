@@ -95,14 +95,17 @@ class StokListesiModel with NetworkManagerMixin {
   Map<String, dynamic> toJson() => _$StokListesiModelToJson(this);
 
   static StokListesiModel get instance {
-    _instance ??= StokListesiModel._init()..stokList = <StokList>[];
+    _instance ??= StokListesiModel._init()..stokList = [];
     return _instance!;
   }
 
   static void setInstance(StokListesiModel? instance) => _instance = instance;
 
-  bool get dovizliMi => fiatBirimi != 0 && (satDovTip != null || alisDovTip != null);
-  bool get koliMi => paketMi == "K" && CacheManager.getAnaVeri()?.paramModel?.karmaKoliUyg == "E";
+  bool get dovizliMi =>
+      fiatBirimi != 0 && (satDovTip != null || alisDovTip != null);
+  bool get koliMi =>
+      paketMi == "K" &&
+      CacheManager.getAnaVeri()?.paramModel?.karmaKoliUyg == "E";
 }
 
 @HiveType(typeId: 2)
@@ -125,7 +128,8 @@ class StokList {
     this.bakiye,
   });
 
-  factory StokList.fromJson(Map<String, dynamic> json) => _$StokListFromJson(json);
+  factory StokList.fromJson(Map<String, dynamic> json) =>
+      _$StokListFromJson(json);
 
   @HiveField(0)
   double? alisKdv;

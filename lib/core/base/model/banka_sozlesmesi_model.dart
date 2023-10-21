@@ -17,7 +17,8 @@ class BankaSozlesmesiModel with _$BankaSozlesmesiModel, NetworkManagerMixin {
     DateTime? bitisTarihi,
   }) = _BankaSozlesmesiModel;
 
-  factory BankaSozlesmesiModel.fromJson(Map<String, dynamic> json) => _$BankaSozlesmesiModelFromJson(json);
+  factory BankaSozlesmesiModel.fromJson(Map<String, dynamic> json) =>
+      _$BankaSozlesmesiModelFromJson(json);
 
   @override
   fromJson(Map<String, dynamic> json) => _$BankaSozlesmesiModelFromJson(json);

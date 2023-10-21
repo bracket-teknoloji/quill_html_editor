@@ -27,18 +27,20 @@ class EditFaturaModel with NetworkManagerMixin, _$EditFaturaModel {
       String? tag,
       int? islemKodu}) = _EditFaturaModel;
 
-  factory EditFaturaModel.fromJson(Map<String, Object?> json) => _$EditFaturaModelFromJson(json);
+  factory EditFaturaModel.fromJson(Map<String, Object?> json) =>
+      _$EditFaturaModelFromJson(json);
 
-  factory EditFaturaModel.fromSiparislerModel(BaseSiparisEditModel model) => EditFaturaModel(
-      belgeNo: model.belgeNo,
-      pickerBelgeTuru: model.belgeTuru,
-      belgeTuru: model.belgeTuru,
-      belgeTipi: model.belgeTipi,
-      cariKodu: model.cariKodu,
-      tipi: model.tipi,
-      tempBelgeId: model.tempBelgeId,
-      islemKodu: model.islemKodu,
-      yeniBelgeNo: model.yeniBelgeNo);
+  factory EditFaturaModel.fromSiparislerModel(BaseSiparisEditModel model) =>
+      EditFaturaModel(
+          belgeNo: model.belgeNo,
+          pickerBelgeTuru: model.belgeTuru,
+          belgeTuru: model.belgeTuru,
+          belgeTipi: model.belgeTipi,
+          cariKodu: model.cariKodu,
+          tipi: model.tipi,
+          tempBelgeId: model.tempBelgeId,
+          islemKodu: model.islemKodu,
+          yeniBelgeNo: model.yeniBelgeNo);
 
   @override
   fromJson(Map<String, dynamic> json) => _$EditFaturaModelFromJson(json);

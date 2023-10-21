@@ -1,6 +1,4 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/generic_response_model.dart";
 
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
@@ -31,14 +29,14 @@ abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
   //* Computed
 
   @computed
-  double get gelenTutar => bankaIslemleriListesi?.where((BankaIslemleriModel element) => element.ba == "B").map((BankaIslemleriModel e) => e.tutar ?? 0).fold(0, (double? previousValue, double element) => (previousValue ?? 0) + element) ?? 0;
+  double get gelenTutar => bankaIslemleriListesi?.where((element) => element.ba == "B").map((e) => e.tutar ?? 0).fold(0, (previousValue, element) => (previousValue ?? 0) + element) ?? 0;
 
   @computed
-  double get gidenTutar => bankaIslemleriListesi?.where((BankaIslemleriModel element) => element.ba == "A").map((BankaIslemleriModel e) => e.tutar ?? 0).fold(0, (double? previousValue, double element) => (previousValue ?? 0) + element) ?? 0;
+  double get gidenTutar => bankaIslemleriListesi?.where((element) => element.ba == "A").map((e) => e.tutar ?? 0).fold(0, (previousValue, element) => (previousValue ?? 0) + element) ?? 0;
 
   @computed
   ObservableList<BankaIslemleriModel>? get getBankaIslemleriListesi => (searchText != null && searchText != "")
-      ? bankaIslemleriListesi?.where((BankaIslemleriModel element) => element.belgeno != null && element.belgeno!.toLowerCase().contains(searchText!.toLowerCase())).toList().asObservable()
+      ? bankaIslemleriListesi?.where((element) => element.belgeno != null && element.belgeno!.toLowerCase().contains(searchText!.toLowerCase())).toList().asObservable()
       : bankaIslemleriListesi;
 
   //* Actions
@@ -63,7 +61,7 @@ abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
   void setBankaIslemleriListesi(List<BankaIslemleriModel>? value) => bankaIslemleriListesi = value?.asObservable();
 
   @action
-  void addBankaIslemleriListesi(List<BankaIslemleriModel>? value) => bankaIslemleriListesi?.addAll(value ?? <BankaIslemleriModel>[]);
+  void addBankaIslemleriListesi(List<BankaIslemleriModel>? value) => bankaIslemleriListesi?.addAll(value ?? []);
 
   @action
   void clearFilters() {
@@ -78,9 +76,9 @@ abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<BankaIslemleriModel>(path: ApiUrls.getBankaHareketleri, bodyModel: BankaIslemleriModel(), queryParameters: bankaIslemleriRequestModel.toJson());
+    var result = await networkManager.dioGet<BankaIslemleriModel>(path: ApiUrls.getBankaHareketleri, bodyModel: BankaIslemleriModel(), queryParameters: bankaIslemleriRequestModel.toJson());
     if (result.data is List) {
-      final List<BankaIslemleriModel> list = result.data.cast<BankaIslemleriModel>();
+      List<BankaIslemleriModel> list = result.data.cast<BankaIslemleriModel>();
       setBankaIslemleriListesi(list);
     }
   }

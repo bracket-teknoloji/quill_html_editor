@@ -103,135 +103,137 @@ class PickerApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => GetMaterialApp(
-      title: "Picker",
-      defaultTransition: Transition.rightToLeft,
-      popGesture: true,
-      debugShowCheckedModeBanner: false,
-      locale: Get.deviceLocale,
-      fallbackLocale: const Locale("en"),
-      supportedLocales: const <Locale>[Locale("tr"), Locale("en")],
-      localizationsDelegates: const <LocalizationsDelegate>[GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate, GlobalMaterialLocalizations.delegate],
-      scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: <PointerDeviceKind>{PointerDeviceKind.touch, PointerDeviceKind.mouse, PointerDeviceKind.stylus, PointerDeviceKind.unknown}),
-      opaqueRoute: false,
-      darkTheme: AppThemeDark.instance?.theme,
-      themeMode: ThemeMode.dark,
-      home: const SplashAuthView(),
-      getPages: <GetPage>[
-        GetPage(name: "/login", page: () => const LoginView()),
-        GetPage(name: "/entryCompany", page: () => EntryCompanyView(isSplash: Get.arguments)),
-        GetPage(name: "/addCompany", page: () => const AccountsView()),
-        GetPage(name: "/addAccount", page: () => const AddAccountView()),
-        GetPage(name: "/qr", page: () => const QRScannerView()),
-        GetPage(name: "/dovizKurlari", page: () => const DovizKurlariView()),
-        GetPage(
-            name: "/kalemEkle", page: () => KalemEkleView(stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null, kalemModel: Get.arguments is KalemModel ? Get.arguments : null)),
-        GetPage(
-          name: "/mainPage",
-          page: () => const MainPageView(),
-          children: <GetPage>[
-            //* Cari
-            GetPage(name: "/cariListesi", page: () => CariListesiView(isGetData: Get.arguments)),
-            GetPage(name: "/cariRehberi", page: () => CariRehberiView(cariKodu: Get.arguments)),
-            GetPage(name: "/cariEdit", page: () => BaseCariEditingView(model: Get.arguments)),
-            GetPage(name: "/cariHareketleri", page: () => CariHareketleriView(cari: Get.arguments)),
-            GetPage(name: "/cariYeniKayit", page: () => CariYeniKayitView(model: Get.arguments)),
+        title: "Picker",
+        defaultTransition: Transition.rightToLeft,
+        popGesture: true,
+        debugShowCheckedModeBanner: false,
+        locale: Get.deviceLocale,
+        fallbackLocale: const Locale("en"),
+        supportedLocales: const <Locale>[Locale("tr"), Locale("en")],
+        localizationsDelegates: const <LocalizationsDelegate>[GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate, GlobalMaterialLocalizations.delegate],
+        scrollBehavior:
+            const MaterialScrollBehavior().copyWith(dragDevices: <PointerDeviceKind>{PointerDeviceKind.touch, PointerDeviceKind.mouse, PointerDeviceKind.stylus, PointerDeviceKind.unknown}),
+        opaqueRoute: false,
+        darkTheme: AppThemeDark.instance?.theme,
+        themeMode: ThemeMode.dark,
+        home: const SplashAuthView(),
+        getPages: <GetPage>[
+          GetPage(name: "/login", page: () => const LoginView()),
+          GetPage(name: "/entryCompany", page: () => EntryCompanyView(isSplash: Get.arguments)),
+          GetPage(name: "/addCompany", page: () => const AccountsView()),
+          GetPage(name: "/addAccount", page: () => const AddAccountView()),
+          GetPage(name: "/qr", page: () => const QRScannerView()),
+          GetPage(name: "/dovizKurlari", page: () => const DovizKurlariView()),
+          GetPage(
+              name: "/kalemEkle",
+              page: () => KalemEkleView(stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null, kalemModel: Get.arguments is KalemModel ? Get.arguments : null)),
+          GetPage(
+            name: "/mainPage",
+            page: () => const MainPageView(),
+            children: <GetPage>[
+              //* Cari
+              GetPage(name: "/cariListesi", page: () => CariListesiView(isGetData: Get.arguments)),
+              GetPage(name: "/cariRehberi", page: () => CariRehberiView(cariKodu: Get.arguments)),
+              GetPage(name: "/cariEdit", page: () => BaseCariEditingView(model: Get.arguments)),
+              GetPage(name: "/cariHareketleri", page: () => CariHareketleriView(cari: Get.arguments)),
+              GetPage(name: "/cariYeniKayit", page: () => CariYeniKayitView(model: Get.arguments)),
 
-            //* Cari Raporları
-            GetPage(name: "/cariEkstre", page: () => CariEkstreView(model: Get.arguments)),
-            GetPage(name: "/cariDovizliEkstre", page: () => CariDovizliEkstreView(model: Get.arguments)),
-            GetPage(name: "/cariStokEkstre", page: () => StokEkstreView(model: Get.arguments)),
-            GetPage(name: "/cariYaslandirmaRaporu", page: () => YaslandirmaRaporuView(model: Get.arguments)),
-            GetPage(name: "/cariDovizBakiyeRaporu", page: () => DovizBakiyeRaporuView(model: Get.arguments)),
-            GetPage(name: "/cariHareketRaporu", page: () => CariHareketRaporuView(model: Get.arguments)),
-            GetPage(name: "/cariHareketDetayliYaslandirmaRaporu", page: () => HareketDetayliYaslandirmaRaporuView(model: Get.arguments)),
-            GetPage(name: "/cariStokSatisOzeti", page: () => CariStokSatisOzetiView(model: Get.arguments)),
+              //* Cari Raporları
+              GetPage(name: "/cariEkstre", page: () => CariEkstreView(model: Get.arguments)),
+              GetPage(name: "/cariDovizliEkstre", page: () => CariDovizliEkstreView(model: Get.arguments)),
+              GetPage(name: "/cariStokEkstre", page: () => StokEkstreView(model: Get.arguments)),
+              GetPage(name: "/cariYaslandirmaRaporu", page: () => YaslandirmaRaporuView(model: Get.arguments)),
+              GetPage(name: "/cariDovizBakiyeRaporu", page: () => DovizBakiyeRaporuView(model: Get.arguments)),
+              GetPage(name: "/cariHareketRaporu", page: () => CariHareketRaporuView(model: Get.arguments)),
+              GetPage(name: "/cariHareketDetayliYaslandirmaRaporu", page: () => HareketDetayliYaslandirmaRaporuView(model: Get.arguments)),
+              GetPage(name: "/cariStokSatisOzeti", page: () => CariStokSatisOzetiView(model: Get.arguments)),
 
-            //* Finans
+              //* Finans
 
-            // * * Banka
-            // GetPage(name: "/bankaListesi", page: () => const BankaListesiView()),
-            GetPage(name: "/bankaIslemleri", page: () => const BankaIslemleriView()),
+              // * * Banka
+              // GetPage(name: "/bankaListesi", page: () => const BankaListesiView()),
+              GetPage(name: "/bankaIslemleri", page: () => const BankaIslemleriView()),
 
-            //* * Kasa
-            GetPage(name: "/kasaHareketleri", page: () => KasaHareketleriView(model: Get.arguments)),
-            GetPage(name: "/kasaListesi", page: () => const KasaListesiView()),
-            GetPage(name: "/kasaDekontlari", page: () => const KasaDekontlarView()),
-            GetPage(name: "/kasaIslemleri", page: () => const KasaIslemleriView()),
-            GetPage(name: "/kasaTransferi", page: () => const KasaTransferiView()),
-            GetPage(name: "/kasaKasaEkstreRaporu", page: () => const KasaEkstreRaporuView()),
+              //* * Kasa
+              GetPage(name: "/kasaHareketleri", page: () => KasaHareketleriView(model: Get.arguments)),
+              GetPage(name: "/kasaListesi", page: () => const KasaListesiView()),
+              GetPage(name: "/kasaDekontlari", page: () => const KasaDekontlarView()),
+              GetPage(name: "/kasaIslemleri", page: () => const KasaIslemleriView()),
+              GetPage(name: "/kasaTransferi", page: () => const KasaTransferiView()),
+              GetPage(name: "/kasaKasaEkstreRaporu", page: () => const KasaEkstreRaporuView()),
 
-            //* * Hızlı İşlemler
-            GetPage(name: "/krediKartiTahsilati", page: () => const KrediKartiTahsilatiView()),
-            GetPage(name: "/nakitTahsilat", page: () => const NakitOdemeView(tahsilatMi: true)),
-            GetPage(name: "/nakitOdeme", page: () => const NakitOdemeView()),
-            GetPage(name: "/muhtelifTahsilat", page: () => const MuhtelifOdemeView(tahsilatMi: true)),
-            GetPage(name: "/muhtelifOdeme", page: () => const MuhtelifOdemeView()),
+              //* * Hızlı İşlemler
+              GetPage(name: "/krediKartiTahsilati", page: () => const KrediKartiTahsilatiView()),
+              GetPage(name: "/nakitTahsilat", page: () => const NakitOdemeView(tahsilatMi: true)),
+              GetPage(name: "/nakitOdeme", page: () => const NakitOdemeView()),
+              GetPage(name: "/muhtelifTahsilat", page: () => const MuhtelifOdemeView(tahsilatMi: true)),
+              GetPage(name: "/muhtelifOdeme", page: () => const MuhtelifOdemeView()),
 
-            //* * Finans Raporları
-            GetPage(name: "/finansFinansalDurumRaporu", page: () => const FinansalDurumRaporuView()),
-            GetPage(name: "/finansAylikMizanRaporu", page: () => const AylikMizanRaporuView()),
-            //* Sipariş
-            GetPage(name: "/siparisMusteriSiparisi", page: () => SiparislerView(widgetModel: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.musteri, isGetData: Get.arguments))),
-            GetPage(name: "/siparisSaticiSiparisi", page: () => SiparislerView(widgetModel: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.satici, isGetData: Get.arguments))),
-            GetPage(name: "/siparisEdit", page: () => BaseSiparisEditingView(model: Get.arguments)),
-            GetPage(name: "/siparisMusteriSiparisiDurumRaporu", page: () => const SiparisDurumRaporuView(siparisTipiEnum: SiparisTipiEnum.musteri)),
-            GetPage(name: "/siparisSaticiSiparisiDurumRaporu", page: () => const SiparisDurumRaporuView(siparisTipiEnum: SiparisTipiEnum.satici)),
-            GetPage(name: "/siparisStokIhtiyacRaporu", page: () => StokIhtiyacRaporuView(model: Get.arguments as BaseSiparisEditModel?)),
-            GetPage(name: "/siparisMusteriSiparisiTeslimRaporu", page: () => SiparisTeslimRaporuView(siparisTipiEnum: SiparisTipiEnum.musteri, baseSiparisEditModel: Get.arguments)),
-            GetPage(name: "/siparisSaticiSiparisiTeslimRaporu", page: () => SiparisTeslimRaporuView(siparisTipiEnum: SiparisTipiEnum.satici, baseSiparisEditModel: Get.arguments)),
-            GetPage(name: "/siparisSiparisKarlilikRaporu", page: () => SiparisKarlilikRaporuView(model: Get.arguments)),
+              //* * Finans Raporları
+              GetPage(name: "/finansFinansalDurumRaporu", page: () => const FinansalDurumRaporuView()),
+              GetPage(name: "/finansAylikMizanRaporu", page: () => const AylikMizanRaporuView()),
+              //* Sipariş
+              GetPage(name: "/siparisMusteriSiparisi", page: () => SiparislerView(widgetModel: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.musteri, isGetData: Get.arguments))),
+              GetPage(name: "/siparisSaticiSiparisi", page: () => SiparislerView(widgetModel: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.satici, isGetData: Get.arguments))),
+              GetPage(name: "/siparisEdit", page: () => BaseSiparisEditingView(model: Get.arguments)),
+              GetPage(name: "/siparisMusteriSiparisiDurumRaporu", page: () => const SiparisDurumRaporuView(siparisTipiEnum: SiparisTipiEnum.musteri)),
+              GetPage(name: "/siparisSaticiSiparisiDurumRaporu", page: () => const SiparisDurumRaporuView(siparisTipiEnum: SiparisTipiEnum.satici)),
+              GetPage(name: "/siparisStokIhtiyacRaporu", page: () => StokIhtiyacRaporuView(model: Get.arguments as BaseSiparisEditModel?)),
+              GetPage(name: "/siparisMusteriSiparisiTeslimRaporu", page: () => SiparisTeslimRaporuView(siparisTipiEnum: SiparisTipiEnum.musteri, baseSiparisEditModel: Get.arguments)),
+              GetPage(name: "/siparisSaticiSiparisiTeslimRaporu", page: () => SiparisTeslimRaporuView(siparisTipiEnum: SiparisTipiEnum.satici, baseSiparisEditModel: Get.arguments)),
+              GetPage(name: "/siparisSiparisKarlilikRaporu", page: () => SiparisKarlilikRaporuView(model: Get.arguments)),
 
-            //* Stok
-            GetPage(
-                name: "/stokListesi",
-                page: () => StokListesiView(
-                    isGetData: Get.arguments is bool ? Get.arguments : (Get.arguments is KalemEkleModel ? Get.arguments.getArguments : null),
-                    searchText: Get.arguments is KalemEkleModel ? Get.arguments.searchText : null)),
-            GetPage(name: "/stokFiyatGor", page: () => const FiyatGorView()),
-            GetPage(name: "/stokYazdir", page: () => StokYazdirView(model: Get.arguments)),
-            GetPage(name: "/stokFiyatGecmisi", page: () => const FiyatGecmisiView()),
+              //* Stok
+              GetPage(
+                  name: "/stokListesi",
+                  page: () => StokListesiView(
+                      isGetData: Get.arguments is bool ? Get.arguments : (Get.arguments is KalemEkleModel ? Get.arguments.getArguments : null),
+                      searchText: Get.arguments is KalemEkleModel ? Get.arguments.searchText : null)),
+              GetPage(name: "/stokFiyatGor", page: () => const FiyatGorView()),
+              GetPage(name: "/stokYazdir", page: () => StokYazdirView(model: Get.arguments)),
+              GetPage(name: "/stokFiyatGecmisi", page: () => const FiyatGecmisiView()),
 
-            GetPage(name: "/stokEdit", page: () => BaseStokEditingView(model: Get.arguments)),
-            GetPage(name: "/stokRehberi", page: () => StokRehberiView(searchText: Get.arguments)),
-            GetPage(name: "/yapilandirmaRehberi", page: () => YapilandirmaRehberiView(model: Get.arguments)),
-            GetPage(
-              name: "/stokHareketleri",
-              page: () => StokHareketleriView(
-                  model: Get.arguments is StokListesiModel ? Get.arguments : null,
-                  stokKodu: Get.arguments is String ? Get.arguments : null,
-                  cariModel: Get.arguments is CariListesiModel ? Get.arguments : null),
-            ),
-            GetPage(name: "/StokYeniKayitView", page: () => StokYeniKayitView(model: Get.arguments)),
+              GetPage(name: "/stokEdit", page: () => BaseStokEditingView(model: Get.arguments)),
+              GetPage(name: "/stokRehberi", page: () => StokRehberiView(searchText: Get.arguments)),
+              GetPage(name: "/yapilandirmaRehberi", page: () => YapilandirmaRehberiView(model: Get.arguments)),
+              GetPage(
+                name: "/stokHareketleri",
+                page: () => StokHareketleriView(
+                    model: Get.arguments is StokListesiModel ? Get.arguments : null,
+                    stokKodu: Get.arguments is String ? Get.arguments : null,
+                    cariModel: Get.arguments is CariListesiModel ? Get.arguments : null),
+              ),
+              GetPage(name: "/StokYeniKayitView", page: () => StokYeniKayitView(model: Get.arguments)),
 
-            //* Stok Raporları
-            GetPage(name: "/stokAmbarMaliyetRaporu", page: () => AmbarMaliyetRaporuView(model: Get.arguments)),
-            GetPage(name: "/stokLokalDepoBakiyeRaporu", page: () => LokalDepoBakiyeRaporuView(model: Get.arguments)),
-            GetPage(name: "/urunGrubunaGoreSatisGrafigi", page: () => UrunGrubunaGoreSatisGrafigiView(model: Get.arguments is CariListesiModel ? Get.arguments : null)),
+              //* Stok Raporları
+              GetPage(name: "/stokAmbarMaliyetRaporu", page: () => AmbarMaliyetRaporuView(model: Get.arguments)),
+              GetPage(name: "/stokLokalDepoBakiyeRaporu", page: () => LokalDepoBakiyeRaporuView(model: Get.arguments)),
+              GetPage(name: "/urunGrubunaGoreSatisGrafigi", page: () => UrunGrubunaGoreSatisGrafigiView(model: Get.arguments is CariListesiModel ? Get.arguments : null)),
 
-            //* Mal Kabul
-            GetPage(name: "/malKabulAlisFaturasi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.alisFatura)),
-            GetPage(name: "/malKabulAlisIrsaliyesi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.alisIrsaliye)),
+              //* Mal Kabul
+              GetPage(name: "/malKabulAlisFaturasi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.alisFatura)),
+              GetPage(name: "/malKabulAlisIrsaliyesi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.alisIrsaliye)),
 
-            //* Sevkiyat
-            GetPage(name: "/sevkiyatSatisFaturasi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.satisFatura)),
-            GetPage(name: "/sevkiyatSatisIrsaliyesi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.satisIrsaliye)),
-            GetPage(name: "/sevkiyatEdit", page: () => BaseFaturaEditView(model: Get.arguments)),
+              //* Sevkiyat
+              GetPage(name: "/sevkiyatSatisFaturasi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.satisFatura)),
+              GetPage(name: "/sevkiyatSatisIrsaliyesi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.satisIrsaliye)),
+              GetPage(name: "/sevkiyatEdit", page: () => BaseFaturaEditView(model: Get.arguments)),
 
-            //* Profil
-            GetPage(name: "/temsilciProfil", page: () => const TemsilciProfilView()),
+              //* Profil
+              GetPage(name: "/temsilciProfil", page: () => const TemsilciProfilView()),
 
-            //* Serbest Raporlar
-            //*
-            GetPage(
-                name: "/serbestRaporlar",
-                page: () => SerbestRaporlarView(
-                    dizaynList: Get.arguments is NetFectDizaynList ? Get.arguments : null,
-                    cariListesiModel: Get.arguments is CariListesiModel ? Get.arguments : null,
-                    stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null)),
-          ],
-        ),
-      ],
-    );
+              //* Serbest Raporlar
+              //*
+              GetPage(
+                  name: "/serbestRaporlar",
+                  page: () => SerbestRaporlarView(
+                      dizaynList: Get.arguments is NetFectDizaynList ? Get.arguments : null,
+                      cariListesiModel: Get.arguments is CariListesiModel ? Get.arguments : null,
+                      stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null)),
+            ],
+          ),
+        ],
+      );
 }
 
 Future<void> firebaseInitialized() async {

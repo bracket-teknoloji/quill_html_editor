@@ -190,15 +190,6 @@ mixin _$YapilandirmaRehberiViewModel
     return _$incrementPageAsyncAction.run(() => super.incrementPage());
   }
 
-  late final _$decrementPageAsyncAction = AsyncAction(
-      '_YapilandirmaRehberiViewModelBase.decrementPage',
-      context: context);
-
-  @override
-  Future<void> decrementPage() {
-    return _$decrementPageAsyncAction.run(() => super.decrementPage());
-  }
-
   late final _$getDataAsyncAction = AsyncAction(
       '_YapilandirmaRehberiViewModelBase.getData',
       context: context);
@@ -232,6 +223,18 @@ mixin _$YapilandirmaRehberiViewModel
                 '_YapilandirmaRehberiViewModelBase.setYapilandirmaRehberiModel');
     try {
       return super.setYapilandirmaRehberiModel(value);
+    } finally {
+      _$_YapilandirmaRehberiViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void decrementPage() {
+    final _$actionInfo = _$_YapilandirmaRehberiViewModelBaseActionController
+        .startAction(name: '_YapilandirmaRehberiViewModelBase.decrementPage');
+    try {
+      return super.decrementPage();
     } finally {
       _$_YapilandirmaRehberiViewModelBaseActionController
           .endAction(_$actionInfo);

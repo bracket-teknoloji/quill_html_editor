@@ -12,8 +12,11 @@ class SeriModel with _$SeriModel, NetworkManagerMixin {
     String? aciklama,
   }) = _SeriModel;
 
-  factory SeriModel.fromJson(Map<String, dynamic> json) => _$SeriModelFromJson(json);
+  factory SeriModel.fromJson(Map<String, dynamic> json) =>
+      _$SeriModelFromJson(json);
 
   @override
-  fromJson(Map<String, dynamic> json) => _$SeriModelFromJson(json);
+  fromJson(Map<String, dynamic> json) {
+    return _$SeriModelFromJson(json);
+  }
 }

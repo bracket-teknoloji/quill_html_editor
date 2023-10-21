@@ -14,7 +14,7 @@ class SiparislerViewModel = _SiparislerViewModelBase with _$SiparislerViewModel;
 abstract class _SiparislerViewModelBase with Store {
   _SiparislerViewModelBase({required this.pickerBelgeTuru});
   //*for view
-  final Map<String, String> siralaMap = <String, String>{
+  final Map<String, String> siralaMap = {
     "Belge No (A-Z)": "BELGE_NO_AZ",
     "Belge No (Z-A)": "BELGE_NO_ZA",
     "Tarih (A-Z)": "TARIH_AZ",
@@ -25,10 +25,10 @@ abstract class _SiparislerViewModelBase with Store {
     "Vade Günü (Z-A)": "VADE_GUNU_ZA",
   };
 
-  final List<String> teslimatDurumu = const <String>["Tümü", "Beklemede", "Tamamlandı"];
+  final List<String> teslimatDurumu = const ["Tümü", "Beklemede", "Tamamlandı"];
 
   @observable
-  ObservableMap<String, bool> ekstraAlanlarMap = <String, bool>{
+  ObservableMap<String, bool> ekstraAlanlarMap = {
     "EK": CacheManager.getProfilParametre.siparisEkAlan,
     "MİK": CacheManager.getProfilParametre.siparisMiktar,
     "VADE": CacheManager.getProfilParametre.siparisVade,
@@ -40,12 +40,15 @@ abstract class _SiparislerViewModelBase with Store {
       case "EK":
         CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisEkAlan: value));
         ekstraAlanlarMap["EK"] = value;
+        break;
       case "MİK":
         CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisMiktar: value));
         ekstraAlanlarMap["MİK"] = value;
+        break;
       case "VADE":
         CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisVade: value));
         ekstraAlanlarMap["VADE"] = value;
+        break;
     }
     ekstraAlanlarMap[key] = value;
   }
@@ -53,7 +56,7 @@ abstract class _SiparislerViewModelBase with Store {
   @action
   void resetEkstraAlanlarMap() {
     CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisEkAlan: false, siparisMiktar: false, siparisVade: false));
-    ekstraAlanlarMap = <String, bool>{
+    ekstraAlanlarMap = {
       "EK": false,
       "MİK": false,
       "VADE": false,
@@ -61,7 +64,7 @@ abstract class _SiparislerViewModelBase with Store {
   }
 
   @observable
-  List<String?> teslimatDurumuValueList = const <String?>[null, "K", "B"];
+  List<String?> teslimatDurumuValueList = const [null, "K", "B"];
 
   @observable
   ObservableList<BaseGrupKoduModel> grupKodList = <BaseGrupKoduModel>[].asObservable();
@@ -70,22 +73,22 @@ abstract class _SiparislerViewModelBase with Store {
   void changeGrupKodList(List<BaseGrupKoduModel> value) => grupKodList = value.asObservable();
 
   @computed
-  bool get grupKodList0 => grupKodList.where((BaseGrupKoduModel element) => element.grupNo == 0).isNotEmpty;
+  bool get grupKodList0 => grupKodList.where((element) => element.grupNo == 0).isNotEmpty;
 
   @computed
-  bool get grupKodList1 => grupKodList.where((BaseGrupKoduModel element) => element.grupNo == 1).isNotEmpty;
+  bool get grupKodList1 => grupKodList.where((element) => element.grupNo == 1).isNotEmpty;
 
   @computed
-  bool get grupKodList2 => grupKodList.where((BaseGrupKoduModel element) => element.grupNo == 2).isNotEmpty;
+  bool get grupKodList2 => grupKodList.where((element) => element.grupNo == 2).isNotEmpty;
 
   @computed
-  bool get grupKodList3 => grupKodList.where((BaseGrupKoduModel element) => element.grupNo == 3).isNotEmpty;
+  bool get grupKodList3 => grupKodList.where((element) => element.grupNo == 3).isNotEmpty;
 
   @computed
-  bool get grupKodList4 => grupKodList.where((BaseGrupKoduModel element) => element.grupNo == 4).isNotEmpty;
+  bool get grupKodList4 => grupKodList.where((element) => element.grupNo == 4).isNotEmpty;
 
   @computed
-  bool get grupKodList5 => grupKodList.where((BaseGrupKoduModel element) => element.grupNo == 5).isNotEmpty;
+  bool get grupKodList5 => grupKodList.where((element) => element.grupNo == 5).isNotEmpty;
   @observable
   String? teslimatDurumuGroupValue;
 

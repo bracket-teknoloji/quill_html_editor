@@ -2,24 +2,22 @@ import "dart:convert";
 import "dart:developer";
 
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/generic_response_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_sehirler_model.dart";
-
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
-import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
 import "../model/cari_listesi_model.dart";
 import "../model/cari_request_model.dart";
+import "../model/cari_sehirler_model.dart";
+
+import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
 
 part "cari_listesi_view_model.g.dart";
 
 class CariListesiViewModel = _CariListesiViewModelBase with _$CariListesiViewModel;
 
 abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
-  final Map<String, String> bakiyeMap = <String, String>{"Tümü": "", "Tahsil Edilecek": "T", "Ödenecek": "Ö", "Sıfır Bakiye": "S", "Bakiyeli": "B"};
+  final Map<String, String> bakiyeMap = {"Tümü": "", "Tahsil Edilecek": "T", "Ödenecek": "Ö", "Sıfır Bakiye": "S", "Bakiyeli": "B"};
 
-  final Map<String, String> siralaMap = <String, String>{
+  final Map<String, String> siralaMap = {
     "Cari Adı (A-Z)": "AZ",
     "Cari Adı (Z-A)": "ZA",
     "Bakiye (0-9)": "BAKIYE_AZ",
@@ -70,25 +68,25 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
   //* Computed
 
   @computed
-  Map<String, dynamic> get getCariRequestModel => cariRequestModel.toJson().map((String key, value) => MapEntry(key, value is List ? jsonEncode(value) : value));
+  Map<String, dynamic> get getCariRequestModel => cariRequestModel.toJson().map((key, value) => MapEntry(key, value is List ? jsonEncode(value) : value));
 
   @computed
-  ObservableList<BaseGrupKoduModel>? get getGrupKod0 => grupKodlari?.where((BaseGrupKoduModel element) => element.grupNo == 0).toList().asObservable();
+  ObservableList<BaseGrupKoduModel>? get getGrupKod0 => grupKodlari?.where((element) => element.grupNo == 0).toList().asObservable();
 
   @computed
-  ObservableList<BaseGrupKoduModel>? get getGrupKod1 => grupKodlari?.where((BaseGrupKoduModel element) => element.grupNo == 1).toList().asObservable();
+  ObservableList<BaseGrupKoduModel>? get getGrupKod1 => grupKodlari?.where((element) => element.grupNo == 1).toList().asObservable();
 
   @computed
-  ObservableList<BaseGrupKoduModel>? get getGrupKod2 => grupKodlari?.where((BaseGrupKoduModel element) => element.grupNo == 2).toList().asObservable();
+  ObservableList<BaseGrupKoduModel>? get getGrupKod2 => grupKodlari?.where((element) => element.grupNo == 2).toList().asObservable();
 
   @computed
-  ObservableList<BaseGrupKoduModel>? get getGrupKod3 => grupKodlari?.where((BaseGrupKoduModel element) => element.grupNo == 3).toList().asObservable();
+  ObservableList<BaseGrupKoduModel>? get getGrupKod3 => grupKodlari?.where((element) => element.grupNo == 3).toList().asObservable();
 
   @computed
-  ObservableList<BaseGrupKoduModel>? get getGrupKod4 => grupKodlari?.where((BaseGrupKoduModel element) => element.grupNo == 4).toList().asObservable();
+  ObservableList<BaseGrupKoduModel>? get getGrupKod4 => grupKodlari?.where((element) => element.grupNo == 4).toList().asObservable();
 
   @computed
-  ObservableList<BaseGrupKoduModel>? get getGrupKod5 => grupKodlari?.where((BaseGrupKoduModel element) => element.grupNo == 5).toList().asObservable();
+  ObservableList<BaseGrupKoduModel>? get getGrupKod5 => grupKodlari?.where((element) => element.grupNo == 5).toList().asObservable();
 
   @computed
   bool get hasAnyFilters =>
@@ -205,11 +203,8 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getKod() async {
-    final GenericResponseModel<NetworkManagerMixin> responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
-        path: ApiUrls.getGrupKodlari,
-        bodyModel: BaseGrupKoduModel(),
-        headers: <String, String>{"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"},
-        queryParameters: <String, dynamic>{"Modul": "CARI", "GrupNo": "-1"});
+    var responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
+        path: ApiUrls.getGrupKodlari, bodyModel: BaseGrupKoduModel(), headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"}, queryParameters: {"Modul": "CARI", "GrupNo": "-1"});
     if (responseKod.data is List) {
       grupKodlari = responseKod.data.cast<BaseGrupKoduModel>();
     }
@@ -217,12 +212,8 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getFilterData() async {
-    final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<CariSehirlerModel>(
-        path: ApiUrls.getCariKayitliSehirler,
-        bodyModel: CariSehirlerModel(),
-        addTokenKey: true,
-        addSirketBilgileri: true,
-        headers: <String, String>{"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"});
+    var result = await networkManager.dioGet<CariSehirlerModel>(
+        path: ApiUrls.getCariKayitliSehirler, bodyModel: CariSehirlerModel(), addTokenKey: true, addSirketBilgileri: true, headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"});
     if (result.data is List) {
       sehirler = result.data.cast<CariSehirlerModel>();
     }
@@ -231,11 +222,11 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getData() async {
     log(getCariRequestModel.toString());
-    final Map<String, dynamic> body = getCariRequestModel;
+    Map<String, dynamic> body = getCariRequestModel;
     if (cariRequestModel.kod == null || cariRequestModel.kod!.isEmpty) {
       body["Kod"] = "";
     }
-    final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<CariListesiModel>(path: ApiUrls.getCariler, queryParameters: body, bodyModel: CariListesiModel());
+    final result = await networkManager.dioGet<CariListesiModel>(path: ApiUrls.getCariler, queryParameters: body, bodyModel: CariListesiModel());
     if (result.success != true) {
       errorText = result.message;
       changeCariListesi([]);
@@ -246,9 +237,9 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
 
     if (result.data is List) {
       if (cariRequestModel.sayfa == 1) {
-        paramData = result.paramData?.map((String key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
+        paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
       }
-      final List<CariListesiModel> list = result.data.cast<CariListesiModel>();
+      List<CariListesiModel> list = result.data.cast<CariListesiModel>();
       if ((cariRequestModel.sayfa ?? 0) < 2) {
         changeCariListesi(list);
       } else {

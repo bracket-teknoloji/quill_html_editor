@@ -62,6 +62,7 @@ class CacheManager {
   }
 
   Future<void> initHiveBoxes() async {
+
     await Hive.initFlutter("picker/hive");
     preferencesBox = await Hive.openBox("preferences");
     companiesBox = await Hive.openBox("companies");
@@ -77,20 +78,28 @@ class CacheManager {
     subeListesiBox = await Hive.openBox<List>("cariListesi");
     isLicenseVerifiedBox = await Hive.openBox<bool>("isLicenseVerified");
     siparisEditBox = await Hive.openBox<BaseSiparisEditModel>("siparisEdit");
-    siparisEditListBox = await Hive.openBox<ListSiparisEditModel>("siparisEditList");
+    siparisEditListBox =
+        await Hive.openBox<ListSiparisEditModel>("siparisEditList");
     profilParametreBox = await Hive.openBox<Map>("profilParametre");
     // profilParametreBox.clear();
     // await verifiedUsersBox.clear();
     // await hesapBilgileriBox.clear();
     // await accountsBox.clear();
     if (profilParametreBox.isEmpty) {
-      await profilParametreBox.put("value", BaseProfilParametreModel().toJson());
+      await profilParametreBox.put(
+          "value", BaseProfilParametreModel().toJson());
     }
     if (isLicenseVerifiedBox.isEmpty) {
       await isLicenseVerifiedBox.put("value", false);
     }
     if (verifiedUsersBox.isEmpty) {
-      await verifiedUsersBox.put("data", LoginDialogModel(account: AccountResponseModel.demo(firma: "demo", email: "demo@netfect.com"), username: "demo", password: "demo"));
+      await verifiedUsersBox.put(
+          "data",
+          LoginDialogModel(
+              account: AccountResponseModel.demo(
+                  firma: "demo", email: "demo@netfect.com"),
+              username: "demo",
+              password: "demo"));
     }
     if (hesapBilgileriBox.isEmpty) {
       await hesapBilgileriBox.put("value", AccountModel.instance);
@@ -103,17 +112,24 @@ class CacheManager {
   static String getToken() => tokenBox.get("token");
   static String getPref(String query) => preferencesBox.get(query);
   static String getCompanies(String query) => companiesBox.get(query);
-  static AccountResponseModel? getAccounts(String query) => accountsBox.get(query);
+  static AccountResponseModel? getAccounts(String query) =>
+      accountsBox.get(query);
 
   static MainPageModel? getAnaVeri() => anaVeriBox.get("data");
   static LoginDialogModel get getVerifiedUser => verifiedUsersBox.get("data");
-  static Map getVeriTabani() => veriTabaniBox.get(getVerifiedUser.username) ?? {};
-  static Map get getIsletmeSube => isletmeSubeBox.get(getVerifiedUser.username) ?? {};
-  static Map<String, FavoritesModel> getFavoriler() => favorilerBox.toMap().cast<String, FavoritesModel>();
-  static AccountModel? get getHesapBilgileri => hesapBilgileriBox.get("value") ?? AccountModel();
+  static Map getVeriTabani() =>
+      veriTabaniBox.get(getVerifiedUser.username) ?? {};
+  static Map get getIsletmeSube =>
+      isletmeSubeBox.get(getVerifiedUser.username) ?? {};
+  static Map<String, FavoritesModel> getFavoriler() =>
+      favorilerBox.toMap().cast<String, FavoritesModel>();
+  static AccountModel? get getHesapBilgileri =>
+      hesapBilgileriBox.get("value") ?? AccountModel();
   static CariSehirlerModel getCariSehirler() => cariSehirBox.get("value");
   static List getSubeListesi() => subeListesiBox.get("value") ?? [];
-  static bool getIsLicenseVerified(String key) => key == "demo@netfect.com" ? true : (isLicenseVerifiedBox.get(key) ?? false);
+  static bool getIsLicenseVerified(String key) => key == "demo@netfect.com"
+      ? true
+      : (isLicenseVerifiedBox.get(key) ?? false);
 
   /// Cari Kodu ile arayacaksın
   /// ```dart
@@ -121,84 +137,138 @@ class CacheManager {
   /// BaseSiparisEditModel.instance.cariKodu
   /// ```
   /// {@end-tool}
-  static BaseSiparisEditModel? getSiparisEdit(String key) => siparisEditBox.get(key);
-  static List<BaseSiparisEditModel?> getSiparisEditList(SiparisTipiEnum siparisTipi) =>
-      siparisEditBox.values.where((BaseSiparisEditModel element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel?>();
+  static BaseSiparisEditModel? getSiparisEdit(String key) =>
+      siparisEditBox.get(key);
+  static List<BaseSiparisEditModel?> getSiparisEditList(
+          SiparisTipiEnum siparisTipi) =>
+      siparisEditBox.values
+          .where((element) => element.siparisTipi == siparisTipi)
+          .toList()
+          .cast<BaseSiparisEditModel?>();
 
-  static List<BaseSiparisEditModel>? getSiparisEditLists(SiparisTipiEnum siparisTipi) =>
-      siparisEditListBox.get(StaticVariables.getSiparisString)?.list?.where((BaseSiparisEditModel element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel>();
+  static List<BaseSiparisEditModel>? getSiparisEditLists(
+          SiparisTipiEnum siparisTipi) =>
+      siparisEditListBox
+          .get(StaticVariables.getSiparisString)
+          ?.list
+          ?.where((element) => element.siparisTipi == siparisTipi)
+          .toList()
+          .cast<BaseSiparisEditModel>();
 
-  static BaseProfilParametreModel get getProfilParametre => BaseProfilParametreModel.fromJson(
-      (profilParametreBox.get("value") ?? {}).cast<String, dynamic>().map((String key, value) => value is Map ? MapEntry(key, value.cast<String, dynamic>()) : MapEntry(key, value)));
+  static BaseProfilParametreModel get getProfilParametre =>
+      BaseProfilParametreModel.fromJson((profilParametreBox.get("value") ?? {})
+          .cast<String, dynamic>()
+          .map((key, value) => value is Map
+              ? MapEntry(key, value.cast<String, dynamic>())
+              : MapEntry(key, value)));
   // static String get getSirketAdi => _sirketAdiBox.get("value") ?? "";
 
   //* Setters
-  static Future<void> setLogout(bool value) async => preferencesBox.put("logout", value);
-  static Future<void> setToken(String token) async => tokenBox.put("token", token);
-  static Future<void> setPref(String key, String value) async => preferencesBox.put(key, value);
-  static Future<void> setCompanies(String key, String value) async => companiesBox.put(key, value);
-  static Future<void> setAnaVeri(MainPageModel value) async => anaVeriBox.put("data", value);
-  static Future<void> setAccounts(AccountResponseModel value) async => accountsBox.put(value.email, value);
-  static Future<void> setHesapBilgileri(AccountModel value) async => hesapBilgileriBox.put("value", value);
+  static void setLogout(bool value) => preferencesBox.put("logout", value);
+  static void setToken(String token) => tokenBox.put("token", token);
+  static void setPref(String key, String value) =>
+      preferencesBox.put(key, value);
+  static void setCompanies(String key, String value) =>
+      companiesBox.put(key, value);
+  static void setAnaVeri(MainPageModel value) => anaVeriBox.put("data", value);
+  static void setAccounts(AccountResponseModel value) =>
+      accountsBox.put(value.email, value);
+  static void setHesapBilgileri(AccountModel value) =>
+      hesapBilgileriBox.put("value", value);
 
   ///? `[TODO DÜZELT]`
-  static Future<void> setVerifiedUser(LoginDialogModel value) => verifiedUsersBox.put("data", value);
-  static Future<void> setVeriTabani(Map value) => veriTabaniBox.put(getVerifiedUser.username, value);
-  static Future<void> setIsletmeSube(Map value) => isletmeSubeBox.put(getVerifiedUser.username, value);
-  static Future<void> setFavoriler(FavoritesModel value) => favorilerBox.add(value);
-  static Future<void> setFavorilerSira(int index, FavoritesModel value) => favorilerBox.putAt(index, value);
+  static void setVerifiedUser(LoginDialogModel value) =>
+      verifiedUsersBox.put("data", value);
+  static void setVeriTabani(Map value) =>
+      veriTabaniBox.put(getVerifiedUser.username, value);
+  static void setIsletmeSube(Map value) =>
+      isletmeSubeBox.put(getVerifiedUser.username, value);
+  static void setFavoriler(FavoritesModel value) => favorilerBox.add(value);
+  static void setFavorilerSira(int index, FavoritesModel value) =>
+      favorilerBox.putAt(index, value);
   static Future<void> setFavorilerList(List<FavoritesModel> value) async {
     await favorilerBox.clear();
-    await favorilerBox.putAll({for (FavoritesModel e in value) e.title: e});
+    favorilerBox.putAll({for (var e in value) e.title: e});
   }
 
-  static Future<void> setCariSehirler(CariSehirlerModel value)async => cariSehirBox.put("value", value);
-  static Future<void> setSubeListesi(List value) async => subeListesiBox.put("value", value);
-  static Future<void> setIsLicenseVerified(String key, bool value) async => isLicenseVerifiedBox.put(key, value);
+  static void setCariSehirler(CariSehirlerModel value) =>
+      cariSehirBox.put("value", value);
+  static void setSubeListesi(List value) => subeListesiBox.put("value", value);
+  static void setIsLicenseVerified(String key, bool value) =>
+      isLicenseVerifiedBox.put(key, value);
 
-  static Future<void> setSiparisEdit(BaseSiparisEditModel value) async => siparisEditBox.put(value.belgeNo, value);
-  static Future<void> addSiparisEditListItem(BaseSiparisEditModel value) async {
+  static void setSiparisEdit(BaseSiparisEditModel value) =>
+      siparisEditBox.put(value.belgeNo, value);
+  static void addSiparisEditListItem(BaseSiparisEditModel value) {
     if (siparisEditListBox.get(StaticVariables.getSiparisString) == null) {
-      await siparisEditListBox.put(StaticVariables.getSiparisString, ListSiparisEditModel());
+      siparisEditListBox.put(
+          StaticVariables.getSiparisString, ListSiparisEditModel());
     }
-    if (siparisEditListBox.get(StaticVariables.getSiparisString)?.list?.any((BaseSiparisEditModel element) => element.belgeNo == value.belgeNo) ?? false) {
-      await siparisEditListBox.put(StaticVariables.getSiparisString,
-          ListSiparisEditModel(list: siparisEditListBox.get(StaticVariables.getSiparisString)?.list?.map((BaseSiparisEditModel e) => e.belgeNo == value.belgeNo ? value : e).toList()));
+    if (siparisEditListBox
+            .get(StaticVariables.getSiparisString)
+            ?.list
+            ?.any((element) => element.belgeNo == value.belgeNo) ??
+        false) {
+      siparisEditListBox.put(
+          StaticVariables.getSiparisString,
+          ListSiparisEditModel(
+              list: siparisEditListBox
+                  .get(StaticVariables.getSiparisString)
+                  ?.list
+                  ?.map((e) => e.belgeNo == value.belgeNo ? value : e)
+                  .toList()));
     } else {
-      await siparisEditListBox.put(StaticVariables.getSiparisString, ListSiparisEditModel(list: <BaseSiparisEditModel>[...?siparisEditListBox.get(StaticVariables.getSiparisString)?.list, value]));
+      siparisEditListBox.put(
+          StaticVariables.getSiparisString,
+          ListSiparisEditModel(list: [
+            ...?siparisEditListBox.get(StaticVariables.getSiparisString)?.list,
+            value
+          ]));
     }
   }
 
-  static Future<void> setProfilParametre(BaseProfilParametreModel value) async => profilParametreBox.put("value", value.toJson());
+  static void setProfilParametre(BaseProfilParametreModel value) =>
+      profilParametreBox.put("value", value.toJson());
 
 //* Clear and Remove
-  static Future<void> resetVerifiedUser() async => setVerifiedUser(LoginDialogModel(account: AccountResponseModel.demo(firma: "demo", email: "demo@netfect.com"), username: "demo", password: "demo"));
-  static Future<void> clearBox(String boxName) async => Hive.box(boxName).clear();
-  static Future<void> removeFavoriler(String key) async {
-    if (favorilerBox.values.toList().indexWhere((element) => element.title == key) >= 0) {
-      await favorilerBox.deleteAt(favorilerBox.values.toList().indexWhere((element) => element.title == key));
+  static void resetVerifiedUser() => setVerifiedUser(LoginDialogModel(
+      account:
+          AccountResponseModel.demo(firma: "demo", email: "demo@netfect.com"),
+      username: "demo",
+      password: "demo"));
+  static void clearBox(String boxName) => Hive.box(boxName).clear();
+  static void removeFavoriler(String key) {
+    if (favorilerBox.values
+            .toList()
+            .indexWhere((element) => element.title == key) >=
+        0) {
+      favorilerBox.deleteAt(favorilerBox.values
+          .toList()
+          .indexWhere((element) => element.title == key));
     } else {
       log("Favorilerde böyle bir key yok");
     }
   }
 
-  static Future<void> removeAccounts(String key) async => accountsBox.delete(key);
-  static Future<void> removeFavoriWithIndex(int index) async => favorilerBox.deleteAt(index);
-  static Future<void> removeSiparisEdit(String key) async => siparisEditBox.delete(key);
-  static Future<void> removeSiparisEditList(int index) async {
-    final List<BaseSiparisEditModel>? list = siparisEditListBox.get(StaticVariables.getSiparisString)?.list;
+  static void removeAccounts(String key) => accountsBox.delete(key);
+  static void removeFavoriWithIndex(int index) => favorilerBox.deleteAt(index);
+  static void removeSiparisEdit(String key) => siparisEditBox.delete(key);
+  static void removeSiparisEditList(int index) {
+    var list = siparisEditListBox.get(StaticVariables.getSiparisString)?.list;
     if (list != null) {
       list.removeAt(index);
     }
-    await siparisEditListBox.put(StaticVariables.getSiparisString, ListSiparisEditModel(list: list));
+    siparisEditListBox.put(
+        StaticVariables.getSiparisString, ListSiparisEditModel(list: list));
   }
 
   static Future<bool> removeSiparisEditListWithUuid(String? uuid) async {
-    final List<BaseSiparisEditModel>? list = siparisEditListBox.get(StaticVariables.getSiparisString)?.list;
+    var list = siparisEditListBox.get(StaticVariables.getSiparisString)?.list;
     if (list != null) {
-      list.removeWhere((BaseSiparisEditModel element) => element.uuid == uuid);
+      list.removeWhere((element) => element.uuid == uuid);
     }
-    await siparisEditListBox.put(StaticVariables.getSiparisString, ListSiparisEditModel(list: list));
+    await siparisEditListBox.put(
+        StaticVariables.getSiparisString, ListSiparisEditModel(list: list));
     return true;
   }
 

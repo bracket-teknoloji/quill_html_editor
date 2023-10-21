@@ -30,10 +30,14 @@ class StokDetayModel with NetworkManagerMixin {
   StokDetayModel();
 
   @override
-  fromJson(Map<String, dynamic> json) => _$StokDetayModelFromJson(json);
+  fromJson(Map<String, dynamic> json) {
+    return _$StokDetayModelFromJson(json);
+  }
 
   @override
-  Map<String, dynamic> toJson() => _$StokDetayModelToJson(this);
+  Map<String, dynamic> toJson() {
+    return _$StokDetayModelToJson(this);
+  }
 }
 
 @JsonSerializable(explicitToJson: true, createFactory: true)
@@ -51,7 +55,8 @@ class FiyatList {
   double? fiyat3;
   double? fiyat4;
 
-  factory FiyatList.fromJson(Map<String, dynamic> json) => _$FiyatListFromJson(json);
+  factory FiyatList.fromJson(Map<String, dynamic> json) =>
+      _$FiyatListFromJson(json);
 
   toJson() => _$FiyatListToJson(this);
 }

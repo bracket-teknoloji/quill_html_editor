@@ -29,15 +29,24 @@ class FavoritesModel {
     } else if (cacheManager?.adminMi == true) {
       return true;
     } else if (menuTipi == "I") {
-      final result = cacheManager?.profilYetki?.toJson()[name] ?? false;
+      var result = cacheManager?.profilYetki?.toJson()[name] ?? false;
       return result;
     } else {
       return true;
     }
   }
 
-  FavoritesModel({this.name, this.title, this.icon, this.onTap, this.color, this.arguments, this.menuTipi});
+  FavoritesModel(
+      {this.name,
+      this.title,
+      this.icon,
+      this.onTap,
+      this.color,
+      this.arguments,
+      this.menuTipi});
 
   @override
-  String toString() => "FavoritesModel{name: $name, title: $title, icon: $icon, onTap: $onTap, color: $color, arguments: $arguments}";
+  String toString() {
+    return "FavoritesModel{name: $name, title: $title, icon: $icon, onTap: $onTap, color: $color, arguments: $arguments}";
+  }
 }

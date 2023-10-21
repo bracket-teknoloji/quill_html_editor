@@ -3,10 +3,6 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_islemleri/model/banka_islemleri_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_islemleri/view_model/banka_islemleri_view_model.dart";
-
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";
 import "../../../../../../../core/components/button/elevated_buttons/footer_button.dart";
@@ -18,6 +14,9 @@ import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
+import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../model/banka_islemleri_model.dart";
+import "../view_model/banka_islemleri_view_model.dart";
 
 class BankaIslemleriView extends StatefulWidget {
   const BankaIslemleriView({super.key});
@@ -41,16 +40,19 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
     hesapTipiController = TextEditingController();
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
-    WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getData();
       _scrollController.addListener(() async {
-        if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
+        if (_scrollController.position.userScrollDirection ==
+            ScrollDirection.reverse) {
           viewModel.setIsScrollDown(false);
         }
-        if (_scrollController.position.userScrollDirection == ScrollDirection.forward) {
+        if (_scrollController.position.userScrollDirection ==
+            ScrollDirection.forward) {
           viewModel.setIsScrollDown(true);
         }
-        if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+        if (_scrollController.position.pixels ==
+            _scrollController.position.maxScrollExtent) {
           viewModel.setIsScrollDown(true);
         }
       });
@@ -67,7 +69,8 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) {
+    return Scaffold(
       resizeToAvoidBottomInset: true,
       extendBody: true,
       extendBodyBehindAppBar: false,
@@ -76,21 +79,27 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
       body: body(),
       bottomNavigationBar: bottomAppBar(),
     );
+  }
 
   AppBar appBar() => AppBar(
         title: Observer(builder: (_) {
           if (viewModel.searchBar) {
             return CustomAppBarTextField(
-              onChanged: (String value) => viewModel.setSearchText(value),
+              onChanged: (value) => viewModel.setSearchText(value),
             );
           } else {
-            return AppBarTitle(title: "Banka İşlemleri", subtitle: "${viewModel.getBankaIslemleriListesi?.length ?? 0}");
+            return AppBarTitle(
+                title: "Banka İşlemleri",
+                subtitle: "${viewModel.getBankaIslemleriListesi?.length ?? 0}");
           }
         }),
-        actions: <Widget>[
+        actions: [
           IconButton(
             onPressed: () => viewModel.changeSearchBar(),
-            icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)),
+            icon: Observer(
+                builder: (_) => Icon(viewModel.searchBar
+                    ? Icons.search_off_outlined
+                    : Icons.search_outlined)),
           ),
           IconButton(
             onPressed: filter,
@@ -99,15 +108,17 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
         ],
       );
 
-  Observer fab() => Observer(builder: (_) => CustomFloatingActionButton(
+  Observer fab() => Observer(builder: (_) {
+        return CustomFloatingActionButton(
           isScrolledDown: viewModel.isScrollDown,
           onPressed: () {},
-        ));
+        );
+      });
 
   Column body() => Column(
-        children: <Widget>[
+        children: [
           RaporFiltreDateTimeBottomSheetView(
-                  filterOnChanged: (int? index) async {
+                  filterOnChanged: (index) async {
                     viewModel.setBaslamaTarihi(baslangicTarihiController.text);
                     viewModel.setBitisTarihi(bitisTarihiController.text);
                     await viewModel.resetPage();
@@ -118,7 +129,8 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
           Expanded(
             child: RefreshIndicator.adaptive(
               onRefresh: () async => await viewModel.resetPage(),
-              child: Observer(builder: (_) => viewModel.getBankaIslemleriListesi == null
+              child: Observer(builder: (_) {
+                return viewModel.getBankaIslemleriListesi == null
                     ? const Center(child: CircularProgressIndicator.adaptive())
                     : viewModel.getBankaIslemleriListesi.ext.isNullOrEmpty
                         ? const Center(child: Text("Veri bulunamadı"))
@@ -127,44 +139,58 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
                             primary: false,
                             controller: _scrollController,
                             shrinkWrap: true,
-                            itemCount: viewModel.getBankaIslemleriListesi?.length ?? 0,
-                            itemBuilder: (BuildContext context, int index) {
-                              final BankaIslemleriModel? item = viewModel.getBankaIslemleriListesi?[index];
+                            itemCount:
+                                viewModel.getBankaIslemleriListesi?.length ?? 0,
+                            itemBuilder: (context, index) {
+                              BankaIslemleriModel? item =
+                                  viewModel.getBankaIslemleriListesi?[index];
                               return BankaIslemleriCard(
                                   bankaIslemleriModel: item,
                                   onDeleted: (deneme) {
                                     viewModel.resetPage();
                                   });
                             },
-                          )),
+                          );
+              }),
             ),
           ),
         ],
       );
 
-  Observer bottomAppBar() => Observer(builder: (_) => BottomBarWidget(isScrolledDown: viewModel.isScrollDown, children: <FooterButton>[
-        FooterButton(children: <Widget>[
+  Observer bottomAppBar() {
+    return Observer(builder: (_) {
+      return BottomBarWidget(isScrolledDown: viewModel.isScrollDown, children: [
+        FooterButton(children: [
           const Text("Gelir"),
-          Observer(builder: (_) => Text("${viewModel.gelenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.green)))
+          Observer(
+              builder: (_) => Text(
+                  "${viewModel.gelenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                  style: const TextStyle(color: Colors.green)))
         ]),
-        FooterButton(children: <Widget>[
+        FooterButton(children: [
           const Text("Gider"),
-          Observer(builder: (_) => Text("${viewModel.gidenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red)))
+          Observer(
+              builder: (_) => Text(
+                  "${viewModel.gidenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                  style: const TextStyle(color: Colors.red)))
         ]),
-      ]));
+      ]);
+    });
+  }
 
   Future<void> filter() async {
     await bottomSheetDialogManager.showBottomSheetDialog(context,
         title: "Filtrele",
         body: Column(
-          children: <Widget>[
+          children: [
             CustomTextField(
               labelText: "Hesap",
               controller: hesapController,
               readOnly: true,
               suffixMore: true,
               onTap: () async {
-                final result = await Get.toNamed("/mainPage/kasaListesi", arguments: true);
+                var result =
+                    await Get.toNamed("/mainPage/kasaListesi", arguments: true);
                 if (result != null) {
                   hesapController.text = result.kasaAdi ?? "";
                   // viewModel.changeKasaKodu(result.kasaKodu ?? "");
@@ -177,7 +203,8 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
               readOnly: true,
               suffixMore: true,
               onTap: () async {
-                final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                var result =
+                    await Get.toNamed("/mainPage/cariListesi", arguments: true);
                 if (result != null) {
                   hesapTipiController.text = result.cariAdi ?? "";
                   // viewModel.changeCariKodu(result.cariKodu ?? "");
@@ -185,10 +212,12 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
               },
             ),
             Row(
-              children: <Widget>[
+              children: [
                 Expanded(
                     child: ElevatedButton(
-                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                                Colors.white.withOpacity(0.1))),
                         onPressed: () {
                           viewModel.clearFilters();
                           Get.back();

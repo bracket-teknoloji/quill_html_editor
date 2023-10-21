@@ -1,5 +1,4 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-
 import "../../../../../../../core/base/model/base_network_mixin.dart";
 
 part "kasa_listesi_model.freezed.dart";
@@ -28,7 +27,8 @@ class KasaListesiModel with _$KasaListesiModel, NetworkManagerMixin {
     String? dovizAdi,
   }) = _KasaListesiModel;
 
-  factory KasaListesiModel.fromJson(Map<String, dynamic> json) => _$KasaListesiModelFromJson(json);
+  factory KasaListesiModel.fromJson(Map<String, dynamic> json) =>
+      _$KasaListesiModelFromJson(json);
 
   @override
   fromJson(Map<String, dynamic> json) => _$KasaListesiModelFromJson(json);

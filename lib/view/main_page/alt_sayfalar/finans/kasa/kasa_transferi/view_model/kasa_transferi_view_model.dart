@@ -33,7 +33,7 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
 
   @computed
   TahsilatRequestModel get getStokYeniKayitModel {
-    const Uuid uuid = Uuid();
+    var uuid = const Uuid();
     return model.copyWith(guid: uuid.v4());
   }
 
@@ -86,8 +86,8 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getSiradakiKod() async {
-    final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<BaseSiparisEditModel>(
-        path: ApiUrls.getSiradakiBelgeNo, bodyModel: BaseSiparisEditModel(), showLoading: true, queryParameters: <String, dynamic>{"Seri": model.belgeNo ?? "", "BelgeTipi": "TH", "EIrsaliye": "H"});
+    var result = await networkManager.dioGet<BaseSiparisEditModel>(
+        path: ApiUrls.getSiradakiBelgeNo, bodyModel: BaseSiparisEditModel(), showLoading: true, queryParameters: {"Seri": model.belgeNo ?? "", "BelgeTipi": "TH", "EIrsaliye": "H"});
     if (result.data is List) {
       setBelgeNo((result.data.first as BaseSiparisEditModel).belgeNo);
     }
@@ -95,8 +95,7 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<KasaList?> getKasalar(String? kasaKodu) async {
-    final GenericResponseModel<NetworkManagerMixin> result =
-        await networkManager.dioGet<KasaList>(path: ApiUrls.getKasalar, bodyModel: KasaList(), showLoading: true, queryParameters: <String, dynamic>{"KisitYok": true, "KasaKodu": kasaKodu});
+    var result = await networkManager.dioGet<KasaList>(path: ApiUrls.getKasalar, bodyModel: KasaList(), showLoading: true, queryParameters: {"KisitYok": true, "KasaKodu": kasaKodu});
     if (result.data is List) {
       return result.data.first as KasaList;
     }
@@ -105,11 +104,8 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getDovizler() async {
-    final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<DovizKurlariModel>(
-        path: ApiUrls.getDovizKurlari,
-        bodyModel: DovizKurlariModel(),
-        showLoading: true,
-        queryParameters: <String, dynamic>{"EkranTipi": "D", "DovizKodu": model.dovizTipi, "tarih": model.tarih.toDateString});
+    var result = await networkManager.dioGet<DovizKurlariModel>(
+        path: ApiUrls.getDovizKurlari, bodyModel: DovizKurlariModel(), showLoading: true, queryParameters: {"EkranTipi": "D", "DovizKodu": model.dovizTipi, "tarih": model.tarih.toDateString});
     if (result.data is List) {
       setDovizKurlariListesi(result.data.cast<DovizKurlariModel>());
     }

@@ -267,16 +267,6 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
     });
   }
 
-  late final _$setResimleriGosterAsyncAction = AsyncAction(
-      '_StokListesiViewModelBase.setResimleriGoster',
-      context: context);
-
-  @override
-  Future<void> setResimleriGoster() {
-    return _$setResimleriGosterAsyncAction
-        .run(() => super.setResimleriGoster());
-  }
-
   late final _$_StokListesiViewModelBaseActionController =
       ActionController(name: '_StokListesiViewModelBase', context: context);
 
@@ -407,6 +397,17 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
         .startAction(name: '_StokListesiViewModelBase.changeArrKod5');
     try {
       return super.changeArrKod5(value);
+    } finally {
+      _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setResimleriGoster() {
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController
+        .startAction(name: '_StokListesiViewModelBase.setResimleriGoster');
+    try {
+      return super.setResimleriGoster();
     } finally {
       _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
     }

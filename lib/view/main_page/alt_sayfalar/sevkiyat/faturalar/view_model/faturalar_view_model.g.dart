@@ -236,26 +236,6 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
     });
   }
 
-  late final _$changeEkstraAlanlarMapAsyncAction = AsyncAction(
-      '_FaturalarViewModelBase.changeEkstraAlanlarMap',
-      context: context);
-
-  @override
-  Future<void> changeEkstraAlanlarMap(String key, bool value) {
-    return _$changeEkstraAlanlarMapAsyncAction
-        .run(() => super.changeEkstraAlanlarMap(key, value));
-  }
-
-  late final _$resetEkstraAlanlarMapAsyncAction = AsyncAction(
-      '_FaturalarViewModelBase.resetEkstraAlanlarMap',
-      context: context);
-
-  @override
-  Future<void> resetEkstraAlanlarMap() {
-    return _$resetEkstraAlanlarMapAsyncAction
-        .run(() => super.resetEkstraAlanlarMap());
-  }
-
   late final _$changeSearchBarAsyncAction =
       AsyncAction('_FaturalarViewModelBase.changeSearchBar', context: context);
 
@@ -290,6 +270,28 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
 
   late final _$_FaturalarViewModelBaseActionController =
       ActionController(name: '_FaturalarViewModelBase', context: context);
+
+  @override
+  void changeEkstraAlanlarMap(String key, bool value) {
+    final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
+        name: '_FaturalarViewModelBase.changeEkstraAlanlarMap');
+    try {
+      return super.changeEkstraAlanlarMap(key, value);
+    } finally {
+      _$_FaturalarViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void resetEkstraAlanlarMap() {
+    final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
+        name: '_FaturalarViewModelBase.resetEkstraAlanlarMap');
+    try {
+      return super.resetEkstraAlanlarMap();
+    } finally {
+      _$_FaturalarViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void changeArrKod0(List<String?> value) {

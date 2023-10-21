@@ -5,11 +5,12 @@ import "../model/cari_hareket_yeni_kayit_model.dart";
 
 part "cari_hareket_yeni_kayit_view_model.g.dart";
 
-class CariHareketYeniKayitViewModel = _CariHareketYeniKayitViewModelBase with _$CariHareketYeniKayitViewModel;
+class CariHareketYeniKayitViewModel = _CariHareketYeniKayitViewModelBase
+    with _$CariHareketYeniKayitViewModel;
 
 abstract class _CariHareketYeniKayitViewModelBase with Store {
   @observable
-  List<BaseProjeModel> projeList = <BaseProjeModel>[];
+  List<BaseProjeModel> projeList = [];
 
   @action
   void setProjeList(List<BaseProjeModel>? value) {
@@ -30,11 +31,11 @@ abstract class _CariHareketYeniKayitViewModelBase with Store {
   }
 
   @observable
-  List<bool> isSelected = <bool>[true, false];
+  List<bool> isSelected = [true, false];
 
   @action
   void setIsSelected(int index) {
-    isSelected = <bool>[false, false];
+    isSelected = [false, false];
     isSelected[index] = true;
     if (index == 0) {
       model.borc ??= model.alacak;
@@ -45,5 +46,5 @@ abstract class _CariHareketYeniKayitViewModelBase with Store {
     }
   }
 
-  List<String> get toggleButtonLabelList => <String>["Borç", "Alacak"];
+  List<String> get toggleButtonLabelList => ["Borç", "Alacak"];
 }

@@ -2,7 +2,8 @@ import "../../../button/toggle_buttons/view/toggle_button.dart";
 
 class BottomSheetResponseModel {
   //Sİngleton
-  static final BottomSheetResponseModel _instance = BottomSheetResponseModel._init();
+  static final BottomSheetResponseModel _instance =
+      BottomSheetResponseModel._init();
   static BottomSheetResponseModel get instance => _instance;
   BottomSheetResponseModel._init();
 

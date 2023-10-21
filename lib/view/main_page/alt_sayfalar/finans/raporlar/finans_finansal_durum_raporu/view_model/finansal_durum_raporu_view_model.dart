@@ -6,7 +6,7 @@ part "finansal_durum_raporu_view_model.g.dart";
 class FinansalDurumRaporuViewModel = _FinansalDurumRaporuViewModelBase with _$FinansalDurumRaporuViewModel;
 
 abstract class _FinansalDurumRaporuViewModelBase with Store {
-  final Map<String, String> gorunecekAlanlarMap = <String, String>{
+  final Map<String, String> gorunecekAlanlarMap = {
     "Kasa": "KASA",
     "Banka": "BANKA",
     "Çek": "CEK",

@@ -31,7 +31,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
   @override
   Widget build(BuildContext context) {
     Icon yetkiKontrol() {
-      if (CacheManager.getFavoriler().values.any((FavoritesModel element) => element.title == widget.title)) {
+      if (CacheManager.getFavoriler().values.any((element) => element.title == widget.title)) {
         return const Icon(Icons.star, size: 20);
       } else {
         return const Icon(Icons.star_border, size: 20);
@@ -45,16 +45,16 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
       splashFactory: InkRipple.splashFactory,
       splashColor: theme.primaryColor,
       onTap: widget.onTap,
-      onLongPress: () async {
+      onLongPress: () {
         if (widget.menuTipi == "I" || widget.menuTipi == "SR") {
           if (icon.icon == Icons.star) {
             icon = const Icon(Icons.star_border, size: 20);
-            await CacheManager.removeFavoriler(widget.title.toString());
+            CacheManager.removeFavoriler(widget.title.toString());
             dialogManager.hideSnackBar;
             dialogManager.showInfoSnackBar("Favorilerden çıkarıldı");
           } else {
             icon = const Icon(Icons.star, size: 20);
-            await CacheManager.setFavoriler(
+            CacheManager.setFavoriler(
                 FavoritesModel(name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments, menuTipi: widget.menuTipi));
             dialogManager.hideSnackBar;
             dialogManager.showInfoSnackBar("Favorilere eklendi");
@@ -72,15 +72,15 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                     alignment: Alignment.centerRight,
                     child: InkWell(
                       child: yetkiKontrol(),
-                      onTap: () async {
+                      onTap: () {
                         if (icon.icon == Icons.star) {
                           icon = const Icon(Icons.star_border, size: 20);
-                          await CacheManager.removeFavoriler(widget.title.toString());
+                          CacheManager.removeFavoriler(widget.title.toString());
                           dialogManager.hideSnackBar;
                           dialogManager.showInfoSnackBar("Favorilerden çıkarıldı");
                         } else {
                           icon = const Icon(Icons.star, size: 20);
-                          await CacheManager.setFavoriler(FavoritesModel(
+                          CacheManager.setFavoriler(FavoritesModel(
                               name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments, menuTipi: widget.menuTipi));
                           dialogManager.hideSnackBar;
                           dialogManager.showInfoSnackBar("Favorilere eklendi");
@@ -103,7 +103,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                 : Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
+                    children: [
                       AnimatedContainer(
                               duration: const Duration(milliseconds: 500),
                               child: widget.iconWidget == null

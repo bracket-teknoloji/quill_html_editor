@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-
-import "../../../../constants/extensions/date_time_extensions.dart";
 import "../../../../constants/ui_helper/duration_helper.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";
+
+import "../../../../constants/extensions/date_time_extensions.dart";
 import "../../../textfield/custom_text_field.dart";
 import "../view_model/rapor_filtre_date_time_bottom_sheet_view_model.dart";
 
@@ -49,7 +49,7 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
 
   @override
   Widget build(BuildContext context) {
-    final List<CustomTextField> children2 = <CustomTextField>[
+    var children2 = [
       CustomTextField(
           labelText: "Başlangıç Tarihi",
           readOnly: true,
@@ -65,7 +65,7 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
       ),
     ];
     return Column(
-      children: <Widget>[
+      children: [
         // Observer(builder: (_) {
         //   return SlideControllerWidget(
         //     childrenTitleList: viewModel.childrenTitleList,
@@ -86,11 +86,11 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
               controller: scrollController,
               scrollDirection: Axis.horizontal,
               itemCount: viewModel.childrenTitleList.length,
-              itemBuilder: (BuildContext context, int listTileIndex) => RadioMenuButton(
+              itemBuilder: (context, listTileIndex) => RadioMenuButton(
                       style: ButtonStyle(padding: MaterialStateProperty.all(EdgeInsets.zero)),
                       value: listTileIndex,
                       groupValue: viewModel.groupValue,
-                      onChanged: (int? index) {
+                      onChanged: (index) {
                         widget.baslangicTarihiController.text = viewModel.startDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull() ?? "";
                         widget.bitisTarihiController.text = index != 0 ? viewModel.finishDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull() ?? "" : "";
                         widget.filterOnChanged(index);
@@ -101,14 +101,14 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
                   .paddingOnly(right: UIHelper.highSize)),
         ).paddingOnly(left: UIHelper.lowSize),
         Row(
-          children: children2.map((CustomTextField e) => Expanded(child: e)).toList(),
+          children: children2.map((e) => Expanded(child: e)).toList(),
         )
       ],
     );
   }
 
   Future<void> getDate(bool isBaslangic) async {
-    final DateTime? result = await showDatePicker(
+    var result = await showDatePicker(
       context: context,
       initialDate: isBaslangic
           ? (widget.baslangicTarihiController.text != "" ? widget.baslangicTarihiController.text.toDateTimeDDMMYYYY() : DateTime.now())

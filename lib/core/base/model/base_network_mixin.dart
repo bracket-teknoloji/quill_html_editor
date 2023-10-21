@@ -3,12 +3,14 @@ mixin NetworkManagerMixin on Object {
   fromJson(Map<String, dynamic> json);
 
   @override
-  String toString() => toJson().toString();
+  String toString() {
+    return toJson().toString();
+  }
 
   @override
   operator ==(Object other) {
     if (other is NetworkManagerMixin) {
-      final bool result = other.toJson().toString() == toJson().toString();
+      bool result = other.toJson().toString() == toJson().toString();
       return result;
     } else {
       return false;

@@ -18,7 +18,8 @@ import "../view_model/siparis_teslim_raporu_view_model.dart";
 class SiparisTeslimRaporuView extends StatefulWidget {
   final SiparisTipiEnum siparisTipiEnum;
   final BaseSiparisEditModel? baseSiparisEditModel;
-  const SiparisTeslimRaporuView({super.key, required this.siparisTipiEnum, this.baseSiparisEditModel});
+  const SiparisTeslimRaporuView(
+      {super.key, required this.siparisTipiEnum, this.baseSiparisEditModel});
 
   @override
   State<SiparisTeslimRaporuView> createState() => _YaslandirmaRaporuViewState();
@@ -39,8 +40,10 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
     viewModel = SiparisTeslimRaporuViewModel(siparisTipiEnum);
     viewModel.setBelgeNo(widget.baseSiparisEditModel?.belgeNo);
     viewModel.setCariKodu(widget.baseSiparisEditModel?.cariKodu);
-    belgeNoController = TextEditingController(text: widget.baseSiparisEditModel?.belgeNo ?? "");
-    cariController = TextEditingController(text: widget.baseSiparisEditModel?.cariAdi ?? "");
+    belgeNoController =
+        TextEditingController(text: widget.baseSiparisEditModel?.belgeNo ?? "");
+    cariController =
+        TextEditingController(text: widget.baseSiparisEditModel?.cariAdi ?? "");
     vergiNoController = TextEditingController();
     stokController = TextEditingController();
     baslangicTarihiController = TextEditingController();
@@ -60,7 +63,13 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
   }
 
   @override
-  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "${widget.siparisTipiEnum == SiparisTipiEnum.musteri ? "Müş. Sip." : "Sat. Sip."} Teslim Raporu", pdfData: viewModel.pdfModel);
+  Widget build(BuildContext context) {
+    return PDFViewerView(
+        filterBottomSheet: filterBottomSheet,
+        title:
+            "${widget.siparisTipiEnum == SiparisTipiEnum.musteri ? "Müş. Sip." : "Sat. Sip."} Teslim Raporu",
+        pdfData: viewModel.pdfModel);
+  }
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -70,11 +79,16 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
           padding: EdgeInsets.all(UIHelper.lowSize),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
+            children: [
               RaporFiltreDateTimeBottomSheetView(
-                  filterOnChanged: (int? value) {
-                    viewModel.setBaslangicTarihi(baslangicTarihiController.text != "" ? baslangicTarihiController.text : null);
-                    viewModel.setBitisTarihi(bitisTarihiController.text != "" ? bitisTarihiController.text : null);
+                  filterOnChanged: (value) {
+                    viewModel.setBaslangicTarihi(
+                        baslangicTarihiController.text != ""
+                            ? baslangicTarihiController.text
+                            : null);
+                    viewModel.setBitisTarihi(bitisTarihiController.text != ""
+                        ? bitisTarihiController.text
+                        : null);
                   },
                   baslangicTarihiController: baslangicTarihiController,
                   bitisTarihiController: bitisTarihiController),
@@ -88,7 +102,11 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
                   belgeNoController.clear();
                 },
                 onTap: () async {
-                  final result = await Get.toNamed("/mainPage/siparisMusteriSiparisi", arguments: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.musteri, isGetData: true));
+                  var result = await Get.toNamed(
+                      "/mainPage/siparisMusteriSiparisi",
+                      arguments: SiparislerWidgetModel(
+                          siparisTipiEnum: SiparisTipiEnum.musteri,
+                          isGetData: true));
                   if (result is BaseSiparisEditModel) {
                     belgeNoController.text = result.belgeNo ?? "";
                     viewModel.setBelgeNo(result.belgeNo);
@@ -107,19 +125,22 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
                 suffix: IconButton(
                   onPressed: () {
                     if (viewModel.pdfModel.dicParams?.cariKodu != null) {
-                      dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = viewModel.pdfModel.dicParams?.cariKodu!);
+                      dialogManager.showCariGridViewDialog(CariListesiModel()
+                        ..cariKodu = viewModel.pdfModel.dicParams?.cariKodu!);
                     } else {
                       dialogManager.showAlertDialog("Cari Kodu Boş Olamaz");
                     }
                   },
-                  icon: Icon(Icons.data_exploration_outlined, color: UIHelper.primaryColor),
+                  icon: Icon(Icons.data_exploration_outlined,
+                      color: UIHelper.primaryColor),
                 ),
                 onClear: () {
                   viewModel.setCariKodu(null);
                   cariController.clear();
                 },
                 onTap: () async {
-                  final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                  var result = await Get.toNamed("/mainPage/cariListesi",
+                      arguments: true);
                   if (result is CariListesiModel) {
                     cariController.text = result.cariAdi ?? "";
                     viewModel.setCariKodu(result.cariKodu);
@@ -127,7 +148,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
                 },
               ),
               Row(
-                children: <Widget>[
+                children: [
                   Expanded(
                     child: CustomTextField(
                       labelText: "Vergi No",
@@ -139,7 +160,8 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
                         vergiNoController.clear();
                       },
                       onTap: () async {
-                        final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                        var result = await Get.toNamed("/mainPage/cariListesi",
+                            arguments: true);
                         if (result is CariListesiModel) {
                           vergiNoController.text = result.vergiNumarasi ?? "";
                           viewModel.setVergiNo(result.vergiNumarasi);
@@ -158,7 +180,8 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
                         stokController.clear();
                       },
                       onTap: () async {
-                        final result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
+                        var result = await Get.toNamed("/mainPage/stokListesi",
+                            arguments: true);
                         if (result is StokListesiModel) {
                           stokController.text = result.stokAdi ?? "";
                           viewModel.setStokKodu(result.stokKodu);
@@ -169,17 +192,25 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
                 ],
               ),
               Row(
-                children: <Widget>[
+                children: [
                   Expanded(
                       child: CustomWidgetWithLabel(
                           text: "Kapalılar Hariç",
                           isVertical: true,
-                          child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kapaliMi, onChanged: (bool value) => viewModel.setKapali(value ? "E" : "H"))))),
+                          child: Observer(
+                              builder: (_) => Switch.adaptive(
+                                  value: viewModel.kapaliMi,
+                                  onChanged: (value) => viewModel
+                                      .setKapali(value ? "E" : "H"))))),
                   Expanded(
                       child: CustomWidgetWithLabel(
                           text: "Sadece Kalanlar",
                           isVertical: true,
-                          child: Observer(builder: (_) => Switch.adaptive(value: viewModel.durum, onChanged: (bool value) => viewModel.setDurum(value ? "K" : null))))),
+                          child: Observer(
+                              builder: (_) => Switch.adaptive(
+                                  value: viewModel.durum,
+                                  onChanged: (value) => viewModel
+                                      .setDurum(value ? "K" : null))))),
                 ],
               ),
               ElevatedButton(

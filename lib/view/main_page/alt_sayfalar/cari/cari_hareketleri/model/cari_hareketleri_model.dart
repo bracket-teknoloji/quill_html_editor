@@ -31,7 +31,9 @@ class CariHareketleriModel with NetworkManagerMixin {
   bool? bordroMu;
   double? dovizAlacak;
   int? subeKodu;
-  bool get borcHareketiMi => borc! > 0;
+  bool get borcHareketiMi {
+    return (borc! > 0);
+  }
 
   bool get devirMi => hareketKodu == "A";
 
@@ -62,5 +64,6 @@ class CariHareketleriModel with NetworkManagerMixin {
 
   @override
   // ignore: hash_and_equals
-  operator ==(Object other) => other is CariHareketleriModel && other.inckeyno == inckeyno;
+  operator ==(other) =>
+      other is CariHareketleriModel && other.inckeyno == inckeyno;
 }

@@ -148,7 +148,7 @@ class ProfilYetkiModel {
   @JsonKey(name: "malKabul_AlisIrs_BelgeTipleri")
   List<int>? malKabulAlisIrsBelgeTipleri;
   @JsonKey(name: "malKabul_AlisIrs_GizlenecekAlanlar")
-  List<String>? malKabulAlisIrsGizlenecekAlanlar;
+  List<dynamic>? malKabulAlisIrsGizlenecekAlanlar;
   @JsonKey(name: "malKabul_AlisIrs_AciklamaAlanlari")
   List<int>? malKabulAlisIrsAciklamaAlanlari;
   @JsonKey(name: "malKabul_SatinAlma")
@@ -1216,7 +1216,7 @@ class ProfilYetkiModel {
   @JsonKey(name: "cari_CariKarti_DegismeyecekAlanlar")
   List<String>? cariCariKartiDegismeyecekAlanlar;
   @JsonKey(name: "cari_CariKarti_GizlenecekAlanlar")
-  List<String>? cariCariKartiGizlenecekAlanlar;
+  List<dynamic>? cariCariKartiGizlenecekAlanlar;
   @JsonKey(name: "cari_CariHareketleri")
   bool? cariCariHareketleri;
   @JsonKey(name: "cari_CariHar_Kaydet")
@@ -1762,12 +1762,16 @@ class ProfilYetkiModel {
   @JsonKey(name: "entegrasyon_UETDSESYA_Iptal")
   bool? entegrasyonUETDSESYAIptal;
 
-  factory ProfilYetkiModel.fromJson(String json) => _$ProfilYetkiModelFromJson(jsonDecode(json));
+  factory ProfilYetkiModel.fromJson(String json) {
+    return _$ProfilYetkiModelFromJson(jsonDecode(json));
+  }
 
   Map<String, dynamic> toJson() => _$ProfilYetkiModelToJson(this);
 
   @override
-  String toString() => toJson().toString();
+  String toString() {
+    return toJson().toString();
+  }
 }
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
@@ -1777,7 +1781,8 @@ class SevkemriMalKontrolTipi {
 
   SevkemriMalKontrolTipi();
 
-  factory SevkemriMalKontrolTipi.fromJson(Map<String, dynamic> json) => _$SevkemriMalKontrolTipiFromJson(json);
+  factory SevkemriMalKontrolTipi.fromJson(Map<String, dynamic> json) =>
+      _$SevkemriMalKontrolTipiFromJson(json);
 
   Map<String, dynamic> toJson() => _$SevkemriMalKontrolTipiToJson(this);
 }

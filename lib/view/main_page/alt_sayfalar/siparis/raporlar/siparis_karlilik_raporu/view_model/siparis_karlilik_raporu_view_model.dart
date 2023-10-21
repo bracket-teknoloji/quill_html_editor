@@ -4,10 +4,11 @@ import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.da
 
 part "siparis_karlilik_raporu_view_model.g.dart";
 
-class SiparisKarlilikRaporuViewModel = _SiparisKarlilikRaporuViewModelBase with _$SiparisKarlilikRaporuViewModel;
+class SiparisKarlilikRaporuViewModel = _SiparisKarlilikRaporuViewModelBase
+    with _$SiparisKarlilikRaporuViewModel;
 
 abstract class _SiparisKarlilikRaporuViewModelBase with Store {
-  final Map<String, String> maliyetTipiList = <String, String>{
+  final Map<String, String> maliyetTipiList = {
     "Son Giriş Net Fiyat": "SGF",
     "İlgili Tarihteki Giriş Fiyatı": "TGF",
     "Alış Fiyatını Bulmaya Çalış": "AGF",
@@ -21,18 +22,25 @@ abstract class _SiparisKarlilikRaporuViewModelBase with Store {
     "Satış Fiyatı 4": "SF4",
   };
   @observable
-  PdfModel pdfModel = PdfModel(raporOzelKod: "Rapor_SiparisKarlilik", standart: true, dicParams: DicParams());
+  PdfModel pdfModel = PdfModel(
+      raporOzelKod: "Rapor_SiparisKarlilik",
+      standart: true,
+      dicParams: DicParams());
   @observable
   bool uretimFiyatiDahilMi = false;
 
   @action
-  void setCariKodu(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(cariKodu: value);
+  void setCariKodu(String? value) =>
+      pdfModel.dicParams = pdfModel.dicParams?.copyWith(cariKodu: value);
   @action
-  void setBelgeNo(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(belgeNo: value);
+  void setBelgeNo(String? value) =>
+      pdfModel.dicParams = pdfModel.dicParams?.copyWith(belgeNo: value);
   @action
-  void setPlasiyer(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(plasiyerKodu: value);
+  void setPlasiyer(String? value) =>
+      pdfModel.dicParams = pdfModel.dicParams?.copyWith(plasiyerKodu: value);
   @action
-  void setMaliyetTipi(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(maliyetTipi: value);
+  void setMaliyetTipi(String? value) =>
+      pdfModel.dicParams = pdfModel.dicParams?.copyWith(maliyetTipi: value);
   @action
   void setUretimFiyatiDahilMi(String? value) {
     uretimFiyatiDahilMi = value == "E";
@@ -40,13 +48,16 @@ abstract class _SiparisKarlilikRaporuViewModelBase with Store {
   }
 
   @action
-  void setBaslangicTarihi(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(bastar: value);
+  void setBaslangicTarihi(String? value) =>
+      pdfModel.dicParams = pdfModel.dicParams?.copyWith(bastar: value);
   @action
-  void setBitisTarihi(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(bittar: value);
+  void setBitisTarihi(String? value) =>
+      pdfModel.dicParams = pdfModel.dicParams?.copyWith(bittar: value);
   //* Future
   //*
   @observable
-  ObservableFuture<bool?> futureController = ObservableFuture(Future.error(false));
+  ObservableFuture<bool?> futureController =
+      ObservableFuture(Future.error(false));
 
   @action
   void setFuture() => futureController = ObservableFuture.value(true);

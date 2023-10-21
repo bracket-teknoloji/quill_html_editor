@@ -132,7 +132,7 @@ class AccountModel with NetworkManagerMixin {
 
   Future<void> init() async {
     if (isDebug) {
-      debugMu = isDebug;
+      // debugMu = isDebug;
     } else {
       debugMu = null;
     }
@@ -144,7 +144,8 @@ class AccountModel with NetworkManagerMixin {
     uygulamaSurumKodu = 229;
     uygulamaSurumu = AppInfoModel.instance.version;
     requestVersion = 1;
-    await PackageInfo.fromPlatform().then((PackageInfo value) => paketAdi = value.packageName);
+    await PackageInfo.fromPlatform()
+        .then((value) => paketAdi = value.packageName);
 
     log(toJson().toString(), name: runtimeType.toString());
     //* Network Bilgileri (Connectivity Plus)
@@ -153,9 +154,10 @@ class AccountModel with NetworkManagerMixin {
       platform = "Web";
     } else {
       platform = Platform.operatingSystem;
-      final List<NetworkInterface> list = await NetworkInterface.list(includeLoopback: true, type: InternetAddressType.IPv4);
-      for (NetworkInterface interface in list) {
-        for (int i = 0; i < interface.addresses.length; i++) {
+      var list = await NetworkInterface.list(
+          includeLoopback: true, type: InternetAddressType.IPv4);
+      for (var interface in list) {
+        for (var i = 0; i < interface.addresses.length; i++) {
           if (interface.addresses[i].address != "") {
             localIp = interface.addresses[i].address;
           }
@@ -165,10 +167,12 @@ class AccountModel with NetworkManagerMixin {
     konumDate = DateTime.now();
     konumTarihi = getKonumTarihi;
 
-    uygulamaGuncellemeTarihi = "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}";
+    uygulamaGuncellemeTarihi =
+        "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}";
     if (kIsWeb) {
       wifidenBagli = "E";
-    } else if (await Connectivity().checkConnectivity() == ConnectivityResult.wifi) {
+    } else if (await Connectivity().checkConnectivity() ==
+        ConnectivityResult.wifi) {
       wifidenBagli = "E";
     } else {
       wifidenBagli = "H";
@@ -180,37 +184,39 @@ class AccountModel with NetworkManagerMixin {
     cihazDili = Get.locale?.languageCode ?? "tr";
     cihazSistemVersiyonu = "20";
     cihazTarihiUtc = DateTime.now().toUtc();
-    final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    final deviceInfo = DeviceInfoPlugin();
     //!WEB
     if (kIsWeb) {
-      final WebBrowserInfo webInfo = await deviceInfo.webBrowserInfo;
+      final webInfo = await deviceInfo.webBrowserInfo;
       cihazMarkasi = webInfo.vendor;
       cihazModeli = webInfo.userAgent;
       ozelCihazKimligi = webInfo.userAgent;
-      cihazKimligi = base64Encode(utf8.encode("$cihazMarkasi:$cihazModeli:$ozelCihazKimligi:"));
+      cihazKimligi = base64Encode(
+          utf8.encode("$cihazMarkasi:$cihazModeli:$ozelCihazKimligi:"));
     } //! ANDROID
     else if (Platform.isAndroid) {
-      final AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+      final androidInfo = await deviceInfo.androidInfo;
       cihazSistemVersiyonu = androidInfo.version.sdkInt.toString();
       cihazMarkasi = androidInfo.brand;
       cihazModeli = androidInfo.model;
       //? Cihaz kimliği için android_id kullanıyoruz. Tarih: 28/09/2023 1.1.7 Sürümünde değiştirildi.
       //* eski hali --------> ozelCihazKimligi = androidInfo.id;
-      const AndroidId androidIdPlugin = AndroidId();
+      const androidIdPlugin = AndroidId();
       final String? androidId = await androidIdPlugin.getId();
       ozelCihazKimligi = androidId;
       if (ozelCihazKimligi.ext.isNotNullOrNoEmpty) {
         cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
         log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");
       } else {
-        cihazKimligi = base64Encode(utf8.encode("$cihazMarkasi:$cihazModeli:${androidInfo.serialNumber}:"));
+        cihazKimligi = base64Encode(utf8
+            .encode("$cihazMarkasi:$cihazModeli:${androidInfo.serialNumber}:"));
       }
       // androidInfo.serialNumber;
     }
     //! IOS
     else if (Platform.isIOS) {
       // while (await AppTrackingTransparency.trackingAuthorizationStatus != TrackingStatus.authorized) {
-      final IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
+      final iosInfo = await deviceInfo.iosInfo;
       cihazSistemVersiyonu = iosInfo.systemVersion.split(".").first;
       cihazMarkasi = iosInfo.name;
       cihazModeli = iosInfo.utsname.machine;
@@ -223,7 +229,7 @@ class AccountModel with NetworkManagerMixin {
     //!DESKTOP
     else if (Platform.isWindows) {
       platform = Platform.operatingSystem;
-      final WindowsDeviceInfo desktopInfo = await deviceInfo.windowsInfo;
+      final desktopInfo = await deviceInfo.windowsInfo;
       cihazSistemVersiyonu = Platform.operatingSystemVersion;
       cihazMarkasi = desktopInfo.productName;
       cihazModeli = desktopInfo.productId;
@@ -232,12 +238,13 @@ class AccountModel with NetworkManagerMixin {
         log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");
       } else {
         //* Bilgisayar adını gönderiyoruz. Bilgisayar adı aynı olduğunda ağda problem olacağı için böyle yapıyoruz.
-        ozelCihazKimligi = base64Encode(utf8.encode("win_${desktopInfo.computerName}"));
+        ozelCihazKimligi =
+            base64Encode(utf8.encode("win_${desktopInfo.computerName}"));
         cihazKimligi = ozelCihazKimligi;
       }
     } else if (Platform.isMacOS) {
       platform = Platform.operatingSystem;
-      final MacOsDeviceInfo desktopInfo = await deviceInfo.macOsInfo;
+      final desktopInfo = await deviceInfo.macOsInfo;
       cihazSistemVersiyonu = Platform.operatingSystemVersion;
       cihazMarkasi = desktopInfo.computerName;
       cihazModeli = desktopInfo.model;
@@ -247,7 +254,7 @@ class AccountModel with NetworkManagerMixin {
       }
     } else if (Platform.isLinux) {
       platform = Platform.operatingSystem;
-      final LinuxDeviceInfo desktopInfo = await deviceInfo.linuxInfo;
+      final desktopInfo = await deviceInfo.linuxInfo;
       cihazSistemVersiyonu = Platform.operatingSystemVersion;
       cihazMarkasi = desktopInfo.name;
       cihazModeli = desktopInfo.prettyName;
@@ -255,21 +262,30 @@ class AccountModel with NetworkManagerMixin {
         cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
         log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");
       } else {
-        ozelCihazKimligi = base64Encode(utf8.encode("linux_${desktopInfo.name}"));
+        ozelCihazKimligi =
+            base64Encode(utf8.encode("linux_${desktopInfo.name}"));
         cihazKimligi = ozelCihazKimligi;
       }
     }
   }
 
-  String get getKonumTarihi => "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day} ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}";
+  String get getKonumTarihi =>
+      "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day} ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}";
 
-  bool get isDebug => CacheManager.accountsBox.values.any((element) => (element as AccountResponseModel?)?.email == "destek@netfect.com") || kDebugMode;
+  bool get isDebug =>
+      CacheManager.accountsBox.values.any((element) =>
+          (element as AccountResponseModel?)?.email == "destek@netfect.com") ||
+      kDebugMode;
 
   @override
-  fromJson(Map<String, dynamic> json) => _$AccountModelFromJson(json);
+  fromJson(Map<String, dynamic> json) {
+    return _$AccountModelFromJson(json);
+  }
 
   @override
-  Map<String, dynamic> toJson() => _$AccountModelToJson(this);
+  Map<String, dynamic> toJson() {
+    return _$AccountModelToJson(this);
+  }
 }
 
 @JsonSerializable()
@@ -277,8 +293,12 @@ class ParamMap with NetworkManagerMixin {
   ParamMap();
 
   @override
-  fromJson(Map<String, dynamic> json) => _$ParamMapFromJson(json);
+  fromJson(Map<String, dynamic> json) {
+    return _$ParamMapFromJson(json);
+  }
 
   @override
-  Map<String, dynamic> toJson() => _$ParamMapToJson(this);
+  Map<String, dynamic> toJson() {
+    return _$ParamMapToJson(this);
+  }
 }

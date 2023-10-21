@@ -5,6 +5,7 @@ import "../../../base/state/base_state.dart";
 import "../../../constants/ui_helper/ui_helper.dart";
 import "../../helper_widgets/custom_label_widget.dart";
 
+
 /// merhaba ben volkan konak
 class SlideControllerWidget extends StatefulWidget {
   final String? title;
@@ -44,7 +45,8 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
   }
 
   @override
-  Widget build(BuildContext context) => CustomWidgetWithLabel(
+  Widget build(BuildContext context) {
+    return CustomWidgetWithLabel(
       text: widget.title,
       child: SizedBox(
           height: 50,
@@ -54,7 +56,7 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
               scrollDirection: Axis.horizontal,
               itemExtent: widget.childrenTitleList.length < 3 ? width / widget.childrenTitleList.length : null,
               itemCount: widget.childrenTitleList.length,
-              itemBuilder: (BuildContext context, int listTileIndex) => RadioMenuButton(
+              itemBuilder: (context, listTileIndex) => RadioMenuButton(
                     style: ButtonStyle(
                       padding: MaterialStateProperty.all(EdgeInsets.zero),
                     ),
@@ -64,4 +66,5 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
                     child: Text(widget.childrenTitleList[listTileIndex]),
                   ).paddingOnly(right: UIHelper.highSize))),
     ).paddingAll(UIHelper.lowSize);
+  }
 }

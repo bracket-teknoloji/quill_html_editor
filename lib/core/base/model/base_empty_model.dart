@@ -5,5 +5,7 @@ class BaseEmptyModel with NetworkManagerMixin {
   fromJson(Map<String, dynamic> json) {}
 
   @override
-  Map<String, dynamic> toJson() => <String, dynamic>{};
+  Map<String, dynamic> toJson() {
+    return {};
+  }
 }

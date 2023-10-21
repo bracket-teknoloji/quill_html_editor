@@ -7,7 +7,8 @@ class FooterButton extends StatelessWidget {
   const FooterButton({super.key, this.color, required this.children, this.onPressed});
 
   @override
-  Widget build(BuildContext context) => ElevatedButton(
+  Widget build(BuildContext context) {
+    return ElevatedButton(
       style: ButtonStyle(
         elevation: MaterialStateProperty.all(0),
         padding: MaterialStateProperty.all(EdgeInsets.zero),
@@ -21,4 +22,5 @@ class FooterButton extends StatelessWidget {
         children: children,
       ),
     );
+  }
 }

@@ -15,8 +15,12 @@ class StokMuhasebeKoduModel with NetworkManagerMixin {
   String? agm;
   String? hesapTipi;
   @override
-  fromJson(Map<String, dynamic> json) => _$StokMuhasebeKoduModelFromJson(json);
+  fromJson(Map<String, dynamic> json) {
+    return _$StokMuhasebeKoduModelFromJson(json);
+  }
 
   @override
-  Map<String, dynamic> toJson() => _$StokMuhasebeKoduModelToJson(this);
+  Map<String, dynamic> toJson() {
+    return _$StokMuhasebeKoduModelToJson(this);
+  }
 }

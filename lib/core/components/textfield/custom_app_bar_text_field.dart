@@ -5,7 +5,8 @@ class CustomAppBarTextField extends StatefulWidget {
   final void Function(String)? onFieldSubmitted;
   final void Function(String)? onChanged;
   final TextEditingController? controller;
-  const CustomAppBarTextField({super.key, this.onFieldSubmitted, this.controller, this.onChanged});
+  const CustomAppBarTextField(
+      {super.key, this.onFieldSubmitted, this.controller, this.onChanged});
 
   @override
   State<CustomAppBarTextField> createState() => _CustomAppBarTextFieldState();
@@ -13,10 +14,11 @@ class CustomAppBarTextField extends StatefulWidget {
 
 class _CustomAppBarTextFieldState extends State<CustomAppBarTextField> {
   @override
-  Widget build(BuildContext context) => SizedBox(
+  Widget build(BuildContext context) {
+    return SizedBox(
       height: kToolbarHeight * 0.9,
       child: TextFieldTapRegion(
-        onTapOutside: (PointerDownEvent x) {
+        onTapOutside: (x) {
           FocusScope.of(context).unfocus();
         },
         child: TextFormField(
@@ -39,4 +41,5 @@ class _CustomAppBarTextFieldState extends State<CustomAppBarTextField> {
             .marginAll(5),
       ),
     );
+  }
 }

@@ -36,7 +36,8 @@ class KalemListModel {
 
   KalemListModel();
 
-  factory KalemListModel.fromJson(Map<String, dynamic> json) => _$KalemListModelFromJson(json);
+  factory KalemListModel.fromJson(Map<String, dynamic> json) =>
+      _$KalemListModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$KalemListModelToJson(this);
 }
