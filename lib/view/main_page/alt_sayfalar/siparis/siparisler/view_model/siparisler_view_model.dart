@@ -40,15 +40,12 @@ abstract class _SiparislerViewModelBase with Store {
       case "EK":
         CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisEkAlan: value));
         ekstraAlanlarMap["EK"] = value;
-        break;
       case "MİK":
         CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisMiktar: value));
         ekstraAlanlarMap["MİK"] = value;
-        break;
       case "VADE":
         CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisVade: value));
         ekstraAlanlarMap["VADE"] = value;
-        break;
     }
     ekstraAlanlarMap[key] = value;
   }

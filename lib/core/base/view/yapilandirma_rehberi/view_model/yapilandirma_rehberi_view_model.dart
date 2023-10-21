@@ -71,8 +71,8 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<YapilandirmaRehberiModel>? filteredList2;
   @action
   Future<void> altKodlariGetir() async {
-    var list = denemeList[page - 1];
-    List<YapilandirmaRehberiModel> list2 = [];
+    final list = denemeList[page - 1];
+    final List<YapilandirmaRehberiModel> list2 = [];
     for (YapilandirmaRehberiModel item in list) {
       if (item.kod != yapilandirmaProfilModel?.ozellikKodu) {
         continue;
@@ -110,8 +110,8 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, MobxNetworkMixin {
   void setYapilandirmaRehberiModel(YapilandirmaRehberiModel? value) {
     // altKodlariGetir();
     yapilandirmaProfilList?[page - 1]?.deger = yapilandirmaList
-        ?.where((element) => (element.ozellikSira == value?.ozellikSira &&
-            element.deger == value?.deger))
+        ?.where((element) => element.ozellikSira == value?.ozellikSira &&
+            element.deger == value?.deger)
         .toList();
   }
 
@@ -144,25 +144,25 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    var yapilandirmaListesi = await networkManager
+    final yapilandirmaListesi = await networkManager
         .dioGet<YapilandirmaProfilModel>(
             path: ApiUrls.getYapilandirmaProfili,
             bodyModel: YapilandirmaProfilModel(),
             queryParameters: {"stokKodu": stokListesiModel?.stokKodu});
     if (yapilandirmaListesi.data != null && yapilandirmaListesi.data is List) {
-      ObservableList<YapilandirmaProfilModel> list =
+      final ObservableList<YapilandirmaProfilModel> list =
           <YapilandirmaProfilModel>[].asObservable();
       list.addAll(yapilandirmaListesi.data
           .whereType<YapilandirmaProfilModel>()
           .toList());
       yapilandirmaProfilList = list;
     }
-    var result = await networkManager.dioGet<YapilandirmaRehberiModel>(
+    final result = await networkManager.dioGet<YapilandirmaRehberiModel>(
         path: ApiUrls.getYapilandirmaListesi,
         bodyModel: YapilandirmaRehberiModel(),
         queryParameters: {"stokKodu": stokListesiModel?.stokKodu});
     if (result.data != null && result.data is List) {
-      ObservableList<YapilandirmaRehberiModel> list =
+      final ObservableList<YapilandirmaRehberiModel> list =
           <YapilandirmaRehberiModel>[].asObservable();
       list.addAll(result.data.whereType<YapilandirmaRehberiModel>().toList());
       yapilandirmaList = list;

@@ -114,7 +114,7 @@ class IslemlerMenuItemConstants<T> {
       title: "Fatura Oluştur (Siparişten)", iconData: Icons.conveyor_belt);
   GridItemModel? get belgeyiKapat {
     if (model is BaseSiparisEditModel) {
-      BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+      final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
       if (siparisModel.tipi != 1) {
         return GridItemModel.islemler(
             title: "Belgeyi Kapat",
@@ -150,7 +150,7 @@ class IslemlerMenuItemConstants<T> {
 
   Future<bool> kilitRequest(
       BaseSiparisEditModel siparisModel, int yeniTipi) async {
-    var result = await _networkManager.dioPost<SiparisEditRequestModel>(
+    final result = await _networkManager.dioPost<SiparisEditRequestModel>(
         path: ApiUrls.belgeDurumunuDegistir,
         showLoading: true,
         bodyModel: SiparisEditRequestModel(),
@@ -168,11 +168,11 @@ class IslemlerMenuItemConstants<T> {
       title: "Belge No Değiştir",
       iconData: Icons.edit_outlined,
       onTap: () async {
-        TextEditingController controller = TextEditingController();
+        final TextEditingController controller = TextEditingController();
         if (model is BaseSiparisEditModel) {
           controller.text = (model as BaseSiparisEditModel).belgeNo ?? "";
         }
-        BaseSiparisEditModel? siparisModel = model as BaseSiparisEditModel?;
+        final BaseSiparisEditModel? siparisModel = model as BaseSiparisEditModel?;
         final formKey = GlobalKey<FormState>();
         var updatePage = false;
         await bottomSheetDialogManager.showBottomSheetDialog(context,
@@ -194,7 +194,7 @@ class IslemlerMenuItemConstants<T> {
                     },
                     suffix: IconButton(
                         onPressed: () async {
-                          var result = await _networkManager
+                          final result = await _networkManager
                               .dioGet<BaseSiparisEditModel>(
                                   path: ApiUrls.getSiradakiBelgeNo,
                                   bodyModel: BaseSiparisEditModel(),
@@ -217,7 +217,7 @@ class IslemlerMenuItemConstants<T> {
                 children: [
                   Expanded(
                       child: ElevatedButton(
-                          onPressed: () => Get.back(),
+                          onPressed: Get.back,
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(
                                   Colors.white.withOpacity(0.1))),
@@ -227,7 +227,7 @@ class IslemlerMenuItemConstants<T> {
                       child: ElevatedButton(
                           onPressed: () async {
                             if (formKey.currentState?.validate() ?? false) {
-                              var result = await NetworkManager()
+                              final result = await NetworkManager()
                                   .dioPost<SiparisEditRequestModel>(
                                       path: ApiUrls.saveFatura,
                                       showLoading: true,
@@ -259,8 +259,8 @@ class IslemlerMenuItemConstants<T> {
       title: "PDF Görüntüle",
       iconData: Icons.picture_as_pdf_outlined,
       onTap: () async {
-        BaseSiparisEditModel? siparisModel = model as BaseSiparisEditModel?;
-        List<NetFectDizaynList> dizaynList =
+        final BaseSiparisEditModel? siparisModel = model as BaseSiparisEditModel?;
+        final List<NetFectDizaynList> dizaynList =
             (CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList ?? [])
                 .where((element) =>
                     element.ozelKod ==
@@ -269,7 +269,7 @@ class IslemlerMenuItemConstants<T> {
                         : "SaticiSiparisi"))
                 .whereType<NetFectDizaynList>()
                 .toList();
-        var result = await bottomSheetDialogManager.showBottomSheetDialog(
+        final result = await bottomSheetDialogManager.showBottomSheetDialog(
             context,
             title: "PDF Görüntüle",
             children: dizaynList
@@ -300,7 +300,7 @@ class IslemlerMenuItemConstants<T> {
       iconData: Icons.info_outline,
       onTap: () async => Get.toNamed("/mainPage/stokEdit",
           arguments: BaseEditModel(
-              model: (model as StokListesiModel),
+              model: model as StokListesiModel,
               baseEditEnum: BaseEditEnum.duzenle)));
   GridItemModel? get stokYazdir => GridItemModel.islemler(
       title: "Yazdır",
@@ -316,7 +316,7 @@ class IslemlerMenuItemConstants<T> {
       title: "Paylaş",
       iconData: Icons.share_outlined,
       onTap: () async {
-        var result = await bottomSheetDialogManager
+        final result = await bottomSheetDialogManager
             .showCheckBoxBottomSheetDialog(context,
                 title: "Paylaş",
                 children: [
@@ -368,8 +368,8 @@ class IslemlerMenuItemConstants<T> {
       title: "Cari Kodu Değiştir",
       iconData: Icons.people_alt_outlined,
       onTap: () async {
-        TextEditingController controller = TextEditingController();
-        KodDegistirModel kodDegistirModel = KodDegistirModel()
+        final TextEditingController controller = TextEditingController();
+        final KodDegistirModel kodDegistirModel = KodDegistirModel()
           ..kaynakSil = "H"
           ..kaynakCari = model is CariListesiModel
               ? (model as CariListesiModel).cariKodu
@@ -399,7 +399,7 @@ class IslemlerMenuItemConstants<T> {
                       children: [
                         IconButton(
                           onPressed: () async {
-                            String? kod =
+                            final String? kod =
                                 await CariNetworkManager.getSiradakiKod(
                                     kod: kodDegistirModel.hedefCari);
                             kodDegistirModel.hedefCari = kod;
@@ -410,13 +410,13 @@ class IslemlerMenuItemConstants<T> {
                         ),
                         IconButton(
                             onPressed: () async {
-                              var result = await Get.toNamed(
+                              final result = await Get.toNamed(
                                   "mainPage/cariListesi",
                                   arguments: true);
                               if (result != null) {
                                 kodDegistirModel.hedefCari =
                                     (result as CariListesiModel).cariKodu;
-                                controller.text = (result).cariKodu ?? "";
+                                controller.text = result.cariKodu ?? "";
                               }
                             },
                             icon: const Icon(Icons.more_horiz_outlined)),
@@ -437,7 +437,7 @@ class IslemlerMenuItemConstants<T> {
                   children: [
                     Expanded(
                         child: ElevatedButton(
-                            onPressed: () => Get.back(),
+                            onPressed: Get.back,
                             style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(
                                     Colors.white.withOpacity(0.1))),
@@ -448,7 +448,7 @@ class IslemlerMenuItemConstants<T> {
                             onPressed: () {
                               if (controller.text != "") {
                                 DialogManager().showAreYouSureDialog(() async {
-                                  var result = await NetworkManager()
+                                  final result = await NetworkManager()
                                       .dioPost<KodDegistirModel>(
                                           path: ApiUrls.kodDegistir,
                                           bodyModel: KodDegistirModel(),

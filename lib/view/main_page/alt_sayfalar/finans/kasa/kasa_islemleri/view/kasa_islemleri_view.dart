@@ -154,7 +154,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                               if (index == (viewModel.getKasaIslemleriListesi?.length ?? 0)) {
                                 return const Center(child: CircularProgressIndicator.adaptive());
                               } else {
-                                KasaIslemleriModel? item = viewModel.getKasaIslemleriListesi?[index];
+                                final KasaIslemleriModel? item = viewModel.getKasaIslemleriListesi?[index];
                                 return KasaIslemleriCard(
                                     kasaIslemleriModel: item,
                                     onDeleted: (deneme) {
@@ -229,8 +229,8 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
               suffixMore: true,
               valueWidget: Observer(builder: (_) => Text(viewModel.kasaIslemleriRequestModel.kasaKodu ?? "")),
               onTap: () async {
-                List<KasaList>? kasaList = parametreModel.kasaList;
-                var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                final List<KasaList>? kasaList = parametreModel.kasaList;
+                final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                     title: "Kasa Seçiniz", children: List.generate(kasaList?.length ?? 0, (index) => BottomSheetModel(title: kasaList?[index].kasaTanimi ?? "", value: kasaList?[index])));
                 if (result is KasaList) {
                   viewModel.setKasaKodu(result);
@@ -254,7 +254,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                   },
                   icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor)),
               onTap: () async {
-                var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                 if (result is CariListesiModel) {
                   viewModel.setCariKodu(result);
                   cariController.text = result.cariAdi ?? "";
@@ -268,8 +268,8 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
               suffixMore: true,
               valueWidget: Observer(builder: (_) => Text(viewModel.kasaIslemleriRequestModel.plasiyerKodu ?? "")),
               onTap: () async {
-                List<PlasiyerList>? plasiyerList = parametreModel.plasiyerList;
-                var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                final List<PlasiyerList>? plasiyerList = parametreModel.plasiyerList;
+                final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                     title: "Plasiyer Seçiniz",
                     children: List.generate(plasiyerList?.length ?? 0, (index) => BottomSheetModel(title: plasiyerList?[index].plasiyerAciklama ?? "", value: plasiyerList?[index])));
                 if (result is PlasiyerList) {

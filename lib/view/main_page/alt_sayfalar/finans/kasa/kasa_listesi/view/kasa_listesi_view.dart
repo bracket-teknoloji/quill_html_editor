@@ -113,11 +113,11 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
                             padding: UIHelper.lowPadding,
                             itemCount: viewModel.getKasaListesi?.length ?? 0,
                             itemBuilder: (context, index) {
-                              KasaListesiModel? item = viewModel.getKasaListesi?[index];
+                              final KasaListesiModel? item = viewModel.getKasaListesi?[index];
                               return KasaListesiCard(
                                   item: item,
                                   onSelected: (p0) async {
-                                    if (p0 == true) {
+                                    if (p0) {
                                       viewModel.setKasaListesi(null);
                                       await viewModel.getData();
                                     }
@@ -176,7 +176,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
   }
 
   sirala() async {
-    var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+    final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
         title: "Sırala",
         children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])));
     if (result != null) {

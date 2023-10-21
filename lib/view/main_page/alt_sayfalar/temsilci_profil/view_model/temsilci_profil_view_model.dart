@@ -395,7 +395,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
   @computed
   List<double> get getPlasiyerToplam {
     //her plasiyerin toplam satışı
-    Set<String> uniquePlasiyer = <String>{};
+    final Set<String> uniquePlasiyer = <String>{};
     for (TemsilciProfilModel element in temsilciProfilList ?? []) {
       if (element.plasiyerAciklama != null &&
           element.kayitTipi == "SF" &&
@@ -403,7 +403,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
         uniquePlasiyer.add(element.plasiyerAciklama!);
       }
     }
-    List<double> list = List.generate(uniquePlasiyer.length, (index) => 0);
+    final List<double> list = List.generate(uniquePlasiyer.length, (index) => 0);
     if (list.ext.isNotNullOrEmpty) {
       temsilciProfilList
           ?.where((element) =>
@@ -420,7 +420,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
   @computed
   List<String> get getPlasiyerTitle {
     if (temsilciProfilList.ext.isNotNullOrEmpty) {
-      Set<String> uniquePlasiyer = <String>{};
+      final Set<String> uniquePlasiyer = <String>{};
       for (TemsilciProfilModel element in temsilciProfilList ?? []) {
         if (element.plasiyerAciklama != null &&
             element.kayitTipi == "SF" &&
@@ -435,17 +435,17 @@ abstract class _TemsilciProfilViewModelBase with Store {
 
   @computed
   List<double> get getAylikSatislar {
-    int biggestMonth = temsilciProfilList
+    final int biggestMonth = temsilciProfilList
             ?.map((element) => element.ayKodu)
             .toList()
             .reduce((value, element) => value! > element! ? value : element) ??
         0;
-    List<double> list = List.generate(biggestMonth, (index) => 0);
+    final List<double> list = List.generate(biggestMonth, (index) => 0);
     if (list.length == 13) {
       list.removeLast();
     }
     for (int i = 1; i <= biggestMonth; i++) {
-      var value = temsilciProfilList
+      final value = temsilciProfilList
           ?.where((element) =>
               element.tabloTipi == "SATIS" &&
               element.ayKodu == i &&
@@ -453,11 +453,11 @@ abstract class _TemsilciProfilViewModelBase with Store {
           .map((e) => e.tutar)
           .toList();
       if (value.ext.isNotNullOrEmpty) {
-        list[i > 12 ? DateTime.now().month - 1 : i - 1] += (value
+        list[i > 12 ? DateTime.now().month - 1 : i - 1] += value
                 ?.toList()
                 .reduce((value, element) => (value ?? 0) + (element ?? 0))
                 ?.toDouble() ??
-            0);
+            0;
         // list.add(value?.toList().reduce((value, element) => (value ?? 0) + (element ?? 0))!.toDouble() ?? 0);
       }
     }
@@ -469,17 +469,17 @@ abstract class _TemsilciProfilViewModelBase with Store {
 
   @computed
   List<double> get getAylikAlislar {
-    int biggestMonth = temsilciProfilList
+    final int biggestMonth = temsilciProfilList
             ?.map((element) => element.ayKodu)
             .toList()
             .reduce((value, element) => value! > element! ? value : element) ??
         0;
-    List<double> list = List.generate(biggestMonth, (index) => 0);
+    final List<double> list = List.generate(biggestMonth, (index) => 0);
     if (list.length == 13) {
       list.removeLast();
     }
     for (int i = 1; i <= biggestMonth; i++) {
-      var value = temsilciProfilList
+      final value = temsilciProfilList
           ?.where((element) =>
               element.tabloTipi == "ALIS" &&
               element.ayKodu == i &&
@@ -487,11 +487,11 @@ abstract class _TemsilciProfilViewModelBase with Store {
           .map((e) => e.tutar)
           .toList();
       if (value.ext.isNotNullOrEmpty) {
-        list[i > 12 ? DateTime.now().month - 1 : i - 1] += (value
+        list[i > 12 ? DateTime.now().month - 1 : i - 1] += value
                 ?.toList()
                 .reduce((value, element) => (value ?? 0) + (element ?? 0))
                 ?.toDouble() ??
-            0);
+            0;
       }
     }
     if (list.ext.isNotNullOrEmpty) {
@@ -504,17 +504,17 @@ abstract class _TemsilciProfilViewModelBase with Store {
 
   @computed
   List<double> get getAylikSiparisler {
-    int biggestMonth = temsilciProfilList
+    final int biggestMonth = temsilciProfilList
             ?.map((element) => element.ayKodu)
             .toList()
             .reduce((value, element) => value! > element! ? value : element) ??
         0;
-    List<double> list = List.generate(biggestMonth, (index) => 0);
+    final List<double> list = List.generate(biggestMonth, (index) => 0);
     if (list.length == 13) {
       list.removeLast();
     }
     for (int i = 1; i <= biggestMonth; i++) {
-      var value = temsilciProfilList
+      final value = temsilciProfilList
           ?.where((element) =>
               element.tabloTipi == "SIPARIS" &&
               element.ayKodu == i &&
@@ -540,17 +540,17 @@ abstract class _TemsilciProfilViewModelBase with Store {
 
   @computed
   List<double> get getAylikTahsilatlar {
-    int biggestMonth = temsilciProfilList
+    final int biggestMonth = temsilciProfilList
             ?.map((element) => element.ayKodu)
             .toList()
             .reduce((value, element) => value! > element! ? value : element) ??
         0;
-    List<double> list = List.generate(biggestMonth, (index) => 0);
+    final List<double> list = List.generate(biggestMonth, (index) => 0);
     if (list.length == 13) {
       list.removeLast();
     }
     for (int i = 1; i <= biggestMonth; i++) {
-      var value = temsilciProfilList
+      final value = temsilciProfilList
           ?.where((element) =>
               element.tabloTipi == "TAHSILAT" &&
               element.ayKodu == i &&

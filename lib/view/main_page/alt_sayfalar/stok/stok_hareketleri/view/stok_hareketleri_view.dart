@@ -130,7 +130,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                 onTap: () async {
                                   bottomSheetDialogManager.clearSelectedData();
                                   viewModel.clearArrHareketTuru();
-                                  List? result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context,
+                                  final List? result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context,
                                       title: "Hareket Türü", children: viewModel.hareketTuruMap.entries.map((e) => BottomSheetModel(title: e.key)).toList());
                                   if (result != null) {
                                     viewModel.changeArrHareketTuru(result.map((e) => e as String).toList().cast<String>());
@@ -161,7 +161,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                         )),
                                     IconButton(
                                         onPressed: () async {
-                                          var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                                          final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                                           if (result != null) {
                                             viewModel.setCariListesiModel(result);
                                           }
@@ -202,7 +202,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                 icon: Icons.sort_by_alpha_outlined,
                 child: const Text("Sırala"),
                 onPressed: () async {
-                  String? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Sırala", children: [
+                  final String? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Sırala", children: [
                     BottomSheetModel(title: "Tarih (Artan)", onTap: () => Get.back(result: "TARIH_AZ")),
                     BottomSheetModel(title: "Tarih (Azalan)", onTap: () => Get.back(result: "TARIH_ZA")),
                     BottomSheetModel(title: "Stok Kodu (A-Z)", onTap: () => Get.back(result: "KOD_AZ")),
@@ -249,13 +249,13 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                         padding: UIHelper.lowPadding,
                         itemCount: viewModel.stokHareketleri?.length ?? 0,
                         itemBuilder: (context, index) {
-                          StokHareketleriModel model = viewModel.stokHareketleri![index];
-                          List<Widget> children2 = [];
+                          final StokHareketleriModel model = viewModel.stokHareketleri![index];
+                          final List<Widget> children2 = [];
                           if (model.hareketTuruAciklama == "Devir") {
-                            Widget? slidableAction = SlidableAction(
+                            final Widget slidableAction = SlidableAction(
                               onPressed: (context) async {
                                 dialogManager.showAreYouSureDialog(() async {
-                                  var result = await networkManager.dioPost<StokHareketleriModel>(
+                                  final result = await networkManager.dioPost<StokHareketleriModel>(
                                       path: ApiUrls.deleteStokHareket,
                                       bodyModel: StokHareketleriModel(),
                                       addCKey: true,
@@ -394,17 +394,17 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
   Future<List<StokHareketleriModel>>? getData() async {
     viewModel.setFuture(null);
     setState(() {});
-    Map<String, dynamic> queryParameters = {
+    final Map<String, dynamic> queryParameters = {
       "FilterModel":
           '{"EkranTipi": "L", "siralama": "${viewModel.siralama}", "stokKodu": "${widget.model?.stokKodu ?? widget.stokKodu ?? ""}", "GC": "${viewModel.getIsSelected}", "CariKodu": "${viewModel.cariListesiModel?.cariKodu ?? ""}", "ArrHareketTuru": ${jsonEncode(viewModel.arrHareketTuru)}}'
     };
     // if (viewModel.arrHareketTuru.ext.isNotNullOrEmpty) {
     //   queryParameters["FilterModel"] = "\"ArrHareketTuru\":${jsonEncode(viewModel.arrHareketTuru)}, ${queryParameters["FilterModel"]!}";
     // }
-    var result = await networkManager.dioGet<StokHareketleriModel>(
+    final result = await networkManager.dioGet<StokHareketleriModel>(
         path: ApiUrls.getStokHareketleri, bodyModel: StokHareketleriModel(), addCKey: true, addSirketBilgileri: true, queryParameters: queryParameters);
     viewModel.setFuture(Future.value(result.data));
-    List<StokHareketleriModel> list = result.data.map((e) => e as StokHareketleriModel).toList().cast<StokHareketleriModel>();
+    final List<StokHareketleriModel> list = result.data.map((e) => e as StokHareketleriModel).toList().cast<StokHareketleriModel>();
     viewModel.setStokHareketleri(list);
     setState(() {});
 

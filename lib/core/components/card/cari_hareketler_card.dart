@@ -164,7 +164,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                           SizedBox(
                             width: width * 0.4,
                             child: Text(
-                                (widget.cariHareketleriModel.aciklama ?? ""),
+                                widget.cariHareketleriModel.aciklama ?? "",
                                 overflow: TextOverflow.ellipsis,
                                 softWrap: true,
                                 maxLines: 3,
@@ -208,11 +208,11 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
 
   double get dovizCheck {
     if (dovizliMi) {
-      return (widget.cariHareketleriModel.dovYuruyenBakiye ??
+      return widget.cariHareketleriModel.dovYuruyenBakiye ??
           widget.cariHareketleriModel.yuruyenBakiye ??
-          0);
+          0;
     } else {
-      return (widget.cariHareketleriModel.yuruyenBakiye ?? 0);
+      return widget.cariHareketleriModel.yuruyenBakiye ?? 0;
     }
   }
 }

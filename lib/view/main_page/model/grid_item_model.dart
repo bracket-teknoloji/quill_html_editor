@@ -99,7 +99,7 @@ class GridItemModel {
           sayac--;
         }
       });
-      var result =
+      final result =
           sayac != 0 ? _cacheManager?.profilYetki?.toJson()[name] : false;
       if (name == null) {
         return sayac != 0;
@@ -108,7 +108,7 @@ class GridItemModel {
     } else if (menuTipi == "SR") {
       return true;
     } else {
-      var result =route != null ? _cacheManager?.profilYetki?.toJson()[name] : false;
+      final result =route != null ? _cacheManager?.profilYetki?.toJson()[name] : false;
       return result ?? false;
     }
   }

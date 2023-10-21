@@ -142,7 +142,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
                             itemCount:
                                 viewModel.getBankaIslemleriListesi?.length ?? 0,
                             itemBuilder: (context, index) {
-                              BankaIslemleriModel? item =
+                              final BankaIslemleriModel? item =
                                   viewModel.getBankaIslemleriListesi?[index];
                               return BankaIslemleriCard(
                                   bankaIslemleriModel: item,
@@ -189,7 +189,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
               readOnly: true,
               suffixMore: true,
               onTap: () async {
-                var result =
+                final result =
                     await Get.toNamed("/mainPage/kasaListesi", arguments: true);
                 if (result != null) {
                   hesapController.text = result.kasaAdi ?? "";
@@ -203,7 +203,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
               readOnly: true,
               suffixMore: true,
               onTap: () async {
-                var result =
+                final result =
                     await Get.toNamed("/mainPage/cariListesi", arguments: true);
                 if (result != null) {
                   hesapTipiController.text = result.cariAdi ?? "";

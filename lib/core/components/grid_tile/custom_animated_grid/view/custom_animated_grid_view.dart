@@ -49,7 +49,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
         viewModel.setGridItemModel(getRaporList(IslemTipiEnum.siparis)?.first.altMenuler?.where((element) => element.siparisTipi == widget.siparisTipi).toList());
       }
     } else {
-      IslemlerMenuItemConstants islemlerResult =
+      final IslemlerMenuItemConstants islemlerResult =
           IslemlerMenuItemConstants(islemtipi: widget.islemTipi, raporlar: getRaporList(widget.islemTipi), siparisTipi: widget.siparisTipi, model: widget.cariListesiModel ?? widget.model);
       viewModel.setGridItemModel(islemlerResult.islemlerList.nullCheckWithGeneric);
     }
@@ -105,7 +105,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                 ),
                 itemCount: viewModel.gridItemModelList?.length ?? 0,
                 itemBuilder: (context, index) {
-                  var item = viewModel.gridItemModelList?[index];
+                  final item = viewModel.gridItemModelList?[index];
                   return AnimationConfiguration.staggeredList(
                       position: index,
                       duration: const Duration(milliseconds: 900),
@@ -134,7 +134,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                                       Get.toNamed(item?.route ?? "", arguments: widget.cariListesiModel ?? widget.model);
                                     } else {
                                       Get.back();
-                                      var result = await item?.onTap?.call();
+                                      final result = await item?.onTap?.call();
                                       if (result is bool) {
                                         widget.onSelected?.call(result);
                                       }

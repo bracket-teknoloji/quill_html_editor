@@ -68,7 +68,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
               scrollController.position.maxScrollExtent &&
           viewModel.dahaVarMi) {
         await Future.delayed(
-            const Duration(milliseconds: 500), () => getData());
+            const Duration(milliseconds: 500), getData);
       }
     });
     WidgetsBinding.instance
@@ -129,13 +129,13 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
       bottom: AppBarPreferedSizedBottom(
         children: [
           AppBarButton(
+            onPressed: filterBottomSheet,
             child: const Text("Filtrele"),
-            onPressed: () => filterBottomSheet(),
           ),
           AppBarButton(
             child: const Text("Sırala"),
             onPressed: () async {
-              var result = await bottomSheetDialogManager.showBottomSheetDialog(
+              final result = await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
                   title: "Sırala",
                   children: List.generate(
@@ -177,7 +177,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                   itemCount: (viewModel.kalemListComputed?.length ?? 0) + 1,
                   itemBuilder: (context, index) {
                     if (index != viewModel.kalemListComputed?.length) {
-                      KalemModel? kalemModel =
+                      final KalemModel? kalemModel =
                           viewModel.kalemListComputed?[index];
                       return siparisDurumListTile(kalemModel, context);
                     }
@@ -288,7 +288,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                           builder: (_) => Text(
                               viewModel.siparislerRequestModel.belgeNo ?? "")),
                       onTap: () async {
-                        var result = await Get.toNamed(
+                        final result = await Get.toNamed(
                             "/mainPage/siparisMusteriSiparisi",
                             arguments: SiparislerWidgetModel(
                                 siparisTipiEnum: SiparisTipiEnum.musteri,
@@ -315,7 +315,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                         stokController.clear();
                       },
                       onTap: () async {
-                        var result = await Get.toNamed("/mainPage/stokListesi",
+                        final result = await Get.toNamed("/mainPage/stokListesi",
                             arguments: true);
                         if (result is StokListesiModel) {
                           stokController.text = result.stokAdi ?? "";
@@ -358,7 +358,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                         cariController.clear();
                       },
                       onTap: () async {
-                        var result = await Get.toNamed("/mainPage/cariListesi",
+                        final result = await Get.toNamed("/mainPage/cariListesi",
                             arguments: true);
                         if (result is CariListesiModel) {
                           cariController.text = result.cariAdi ?? "";
@@ -374,7 +374,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                       suffixMore: true,
                       controller: gorunecekAlanlarController,
                       onTap: () async {
-                        var result = await bottomSheetDialogManager
+                        final result = await bottomSheetDialogManager
                             .showCheckBoxBottomSheetDialog(context,
                                 title: "Görünecek Alanlar",
                                 children: List.generate(
@@ -446,12 +446,12 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
   }
 
   Future<void> getData() async {
-    var result = await networkManager.dioGet<KalemModel>(
+    final result = await networkManager.dioGet<KalemModel>(
         path: ApiUrls.getFaturaKalemleri,
         bodyModel: KalemModel(),
         queryParameters: viewModel.siparislerRequestModel.toJson());
     if (result.data != null && result.data is List) {
-      List<KalemModel?> kalemList =
+      final List<KalemModel?> kalemList =
           result.data?.whereType<KalemModel>().toList();
       if (viewModel.siparislerRequestModel.sayfa == 1) {
         viewModel.setKalemList(kalemList);

@@ -61,7 +61,7 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
                         ),
                         itemCount: (viewModel.filteredList?.length ?? 0) + (viewModel.page != 1 ? 1 : 0),
                         itemBuilder: (context, index) {
-                          var item = viewModel.filteredList?[(viewModel.page != 1 ? index - 1 : index) < 0 ? 0 : (viewModel.page != 1 ? index - 1 : index)];
+                          final item = viewModel.filteredList?[(viewModel.page != 1 ? index - 1 : index) < 0 ? 0 : (viewModel.page != 1 ? index - 1 : index)];
                           return AnimationConfiguration.staggeredList(
                               position: index,
                               duration: const Duration(milliseconds: 500),
@@ -91,7 +91,7 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
                                           shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
                                           child: InkWell(
                                             onTap: () async {
-                                              var sonuc = viewModel.yapilandirmaList
+                                              final sonuc = viewModel.yapilandirmaList
                                                   ?.where((element) => element.yapkod == item?.yapkod)
                                                   .map((element) => element.ozellikSira)
                                                   .fold(0, (previousValue, element) => ((element ?? 0) > previousValue) ? element ?? 0 : previousValue);

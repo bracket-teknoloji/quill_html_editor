@@ -110,7 +110,7 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
     Get.back();
     await dialogManager.showAreYouSureDialog(
       () async {
-        var result =
+        final result =
             await networkManager.dioPost<KasaIslemleriModel>(path: ApiUrls.deleteKasaHareket, bodyModel: KasaIslemleriModel(), queryParameters: {"INCKEYNO": model?.inckeyno}, showLoading: true);
         if (result.success == true) {
           widget.onDeleted?.call(model?.inckeyno);
@@ -125,9 +125,9 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
 
   void showMakbuz(bool tahsilatMi) async {
     Get.back();
-    PdfModel pdfModel = PdfModel(raporOzelKod: tahsilatMi ? "TahsilatMakbuzu" : "OdemeMakbuzu", dicParams: DicParams());
-    var anaVeri = CacheManager.getAnaVeri();
-    var result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == (tahsilatMi ? "TahsilatMakbuzu" : "OdemeMakbuzu")).toList();
+    final PdfModel pdfModel = PdfModel(raporOzelKod: tahsilatMi ? "TahsilatMakbuzu" : "OdemeMakbuzu", dicParams: DicParams());
+    final anaVeri = CacheManager.getAnaVeri();
+    final result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == (tahsilatMi ? "TahsilatMakbuzu" : "OdemeMakbuzu")).toList();
     NetFectDizaynList? dizaynList;
     if (result.ext.isNotNullOrEmpty) {
       pdfModel.dicParams?.caharInckey = model?.caharInckeyno.toStringIfNotNull;
@@ -152,7 +152,7 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
   }
 
   RichText get bakiyeText {
-    bool dovizliMi = model?.dovizAdi != null;
+    final bool dovizliMi = model?.dovizAdi != null;
     return RichText(
       text: TextSpan(
         children: [

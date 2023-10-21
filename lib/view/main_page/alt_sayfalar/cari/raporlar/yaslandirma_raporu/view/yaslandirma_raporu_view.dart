@@ -113,7 +113,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                 readOnly: true,
                 suffixMore: true,
                 onTap: () async {
-                  var result = await Get.toNamed("/mainPage/cariListesi",
+                  final result = await Get.toNamed("/mainPage/cariListesi",
                       arguments: true);
                   if (result != null) {
                     cariController.text = result.cariAdi ?? "";
@@ -133,7 +133,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                     isDateTime: true,
                     // suffix: const Icon(Icons.calendar_today_outlined),
                     onTap: () async {
-                      DateTime? result =
+                      final DateTime? result =
                           await dialogManager.showDateTimePicker();
                       if (result != null) {
                         referansTarihController.text = result.toDateString;
@@ -148,10 +148,10 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                     readOnly: true,
                     controller: plasiyerController,
                     onTap: () async {
-                      List<PlasiyerList>? plasiyerList =
+                      final List<PlasiyerList>? plasiyerList =
                           CacheManager.getAnaVeri()?.paramModel?.plasiyerList;
                       if (plasiyerList != null) {
-                        PlasiyerList? result = await bottomSheetDialogManager
+                        final PlasiyerList? result = await bottomSheetDialogManager
                             .showBottomSheetDialog(context,
                                 title: "Plasiyer",
                                 children: plasiyerList
@@ -182,7 +182,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                     controller: tarihTipiController,
                     suffixMore: true,
                     onTap: () async {
-                      var result = await bottomSheetDialogManager
+                      final result = await bottomSheetDialogManager
                           .showBottomSheetDialog(context,
                               title: "Tarih Tipi",
                               children: [
@@ -290,7 +290,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: "CARI", grupNo: -1);
     }
-    List<BottomSheetModel>? bottomSheetList = grupKodList
+    final List<BottomSheetModel> bottomSheetList = grupKodList
         .where((e) => e.grupNo == grupNo)
         .toList()
         .cast<BaseGrupKoduModel>()
@@ -299,29 +299,23 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
         .toList()
         .cast<BottomSheetModel>();
     // ignore: use_build_context_synchronously
-    var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+    final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
         title: "Grup Kodu", children: bottomSheetList);
     if (result != null) {
       controller?.text = result.grupKodu ?? "";
       switch (grupNo) {
         case 0:
           viewModel.pdfModel.dicParams?.grupKodu = result.grupKodu ?? "";
-          break;
         case 1:
           viewModel.pdfModel.dicParams?.kod1 = result.grupKodu ?? "";
-          break;
         case 2:
           viewModel.pdfModel.dicParams?.kod2 = result.grupKodu ?? "";
-          break;
         case 3:
           viewModel.pdfModel.dicParams?.kod3 = result.grupKodu ?? "";
-          break;
         case 4:
           viewModel.pdfModel.dicParams?.kod4 = result.grupKodu ?? "";
-          break;
         case 5:
           viewModel.pdfModel.dicParams?.kod5 = result.grupKodu ?? "";
-          break;
       }
     }
     return null;

@@ -43,7 +43,7 @@ class _AccountsViewState extends BaseState<AccountsView> {
   FloatingActionButton fab() {
     return FloatingActionButton(
       onPressed: () async {
-        var result = await Get.toNamed("/addAccount");
+        final result = await Get.toNamed("/addAccount");
         if (result != null) {
           setState(() {});
         }
@@ -60,7 +60,7 @@ class _AccountsViewState extends BaseState<AccountsView> {
             child: ListView.builder(
                 itemCount: getListLength == 0 ? 1 : getListLength,
                 itemBuilder: (context, index) {
-                  AccountResponseModel account =
+                  final AccountResponseModel account =
                       Hive.box("accounts").getAt(index);
                   return Card(
                     child: ListTile(

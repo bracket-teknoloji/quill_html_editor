@@ -151,7 +151,7 @@ class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
   }
 
   Future<void> postData() async {
-    var result = await networkManager.dioPost(
+    final result = await networkManager.dioPost(
         path: ApiUrls.saveDovizKuru,
         showLoading: true,
         bodyModel: DovizKurlariModel(),

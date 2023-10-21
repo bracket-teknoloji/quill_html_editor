@@ -162,7 +162,7 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
         queryParameters: cariListesiRequestModel?.toJsonWithList(),
         bodyModel: CariListesiModel());
     if (response.data != null && response.data is List) {
-      List<CariListesiModel> list =
+      final List<CariListesiModel> list =
           response.data.whereType<CariListesiModel>().toList();
       if (cariListesi == null) {
         changeCariListesi(list);
@@ -181,12 +181,12 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getSehirBilgileri() async {
-    var result = await networkManager.dioGet<CariSehirlerModel>(
+    final result = await networkManager.dioGet<CariSehirlerModel>(
         path: ApiUrls.getCariKayitliSehirler,
         bodyModel: CariSehirlerModel(),
         showLoading: true);
     if (result.data != null && result.data is List) {
-      List<CariSehirlerModel> list =
+      final List<CariSehirlerModel> list =
           result.data.whereType<CariSehirlerModel>().toList();
       sehirler = list.asObservable();
     }
@@ -194,9 +194,9 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getGrupKodlari() async {
-    var result = await CariNetworkManager.getKod();
+    final result = await CariNetworkManager.getKod();
     if (result.data != null) {
-      List<BaseGrupKoduModel> list =
+      final List<BaseGrupKoduModel> list =
           result.data.whereType<BaseGrupKoduModel>().toList();
       grupKodlari = list.asObservable();
     }

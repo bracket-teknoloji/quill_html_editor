@@ -112,7 +112,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: grupKoduController,
                                 readOnly: true,
                                 onTap: () async {
-                                  var result = await bottomSheetDialogManager
+                                  final result = await bottomSheetDialogManager
                                       .showGrupKoduCheckBoxBottomSheetDialog(
                                           context,
                                           modul: GrupKoduEnum.STOK,
@@ -135,7 +135,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: kod1Controller,
                                 readOnly: true,
                                 onTap: () async {
-                                  var result = await bottomSheetDialogManager
+                                  final result = await bottomSheetDialogManager
                                       .showGrupKoduCheckBoxBottomSheetDialog(
                                           context,
                                           modul: GrupKoduEnum.STOK,
@@ -160,7 +160,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: kod2Controller,
                                 readOnly: true,
                                 onTap: () async {
-                                  var result = await bottomSheetDialogManager
+                                  final result = await bottomSheetDialogManager
                                       .showGrupKoduCheckBoxBottomSheetDialog(
                                           context,
                                           modul: GrupKoduEnum.STOK,
@@ -183,7 +183,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: kod3Controller,
                                 readOnly: true,
                                 onTap: () async {
-                                  var result = await bottomSheetDialogManager
+                                  final result = await bottomSheetDialogManager
                                       .showGrupKoduCheckBoxBottomSheetDialog(
                                           context,
                                           modul: GrupKoduEnum.STOK,
@@ -208,7 +208,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: kod4Controller,
                                 readOnly: true,
                                 onTap: () async {
-                                  var result = await bottomSheetDialogManager
+                                  final result = await bottomSheetDialogManager
                                       .showGrupKoduCheckBoxBottomSheetDialog(
                                           context,
                                           modul: GrupKoduEnum.STOK,
@@ -231,7 +231,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: kod5Controller,
                                 readOnly: true,
                                 onTap: () async {
-                                  var result = await bottomSheetDialogManager
+                                  final result = await bottomSheetDialogManager
                                       .showGrupKoduCheckBoxBottomSheetDialog(
                                           context,
                                           modul: GrupKoduEnum.STOK,
@@ -261,7 +261,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
             icon: const Icon(Icons.filter_alt_outlined)),
         IconButton(
             onPressed: () async {
-              var result = await bottomSheetDialogManager.showBottomSheetDialog(
+              final result = await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
                   title: "Sırala",
                   children: List.generate(
@@ -290,7 +290,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
         builder: (_) => CustomFloatingActionButton(
             isScrolledDown: viewModel.isScrolledDown,
             onPressed: () async {
-              var result = await Get.toNamed("/mainPage/stokEdit",
+              final result = await Get.toNamed("/mainPage/stokEdit",
                   arguments: BaseEditModel(
                       baseEditEnum: BaseEditEnum.ekle,
                       model: StokListesiModel()));
@@ -324,7 +324,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                 IconButton(
                     icon: const Icon(Icons.qr_code_2_outlined),
                     onPressed: () async {
-                      var result = await Get.toNamed("/qr");
+                      final result = await Get.toNamed("/qr");
                       if (result != null) {
                         _searchTextController.text = result;
                         viewModel.setSearchText(result);
@@ -366,7 +366,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                                 .adaptive())),
                                   );
                                 } else {
-                                  StokListesiModel? stok =
+                                  final StokListesiModel? stok =
                                       viewModel.stokListesi?[index];
                                   return Card(
                                     child: ListTile(
@@ -374,7 +374,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                         StokListesiModel? stokModel;
                                         if (BaseSiparisEditModel.instance
                                             .kalemEkliMi(stok)) {
-                                          var result = await dialogManager
+                                          final result = await dialogManager
                                               .showStokKayitliDialog(viewModel
                                                   .stokListesi![index]);
                                           if (result != true) {
@@ -386,7 +386,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                         if (stok?.yapilandirmaAktif == true &&
                                             parametreModel.esnekYapilandir ==
                                                 true) {
-                                          var result = await Get.toNamed(
+                                          final result = await Get.toNamed(
                                               "/mainPage/yapilandirmaRehberi",
                                               arguments: stok);
                                           if (result
@@ -474,7 +474,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
 
   Future<void> getData() async {
     viewModel.setDahaVarMi(false);
-    GenericResponseModel response =
+    final GenericResponseModel response =
         await networkManager.dioPost<StokListesiModel>(
             path: ApiUrls.getStoklar,
             data: viewModel.stokBottomSheetModel.toJsonWithList(),
@@ -490,7 +490,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
 
   Future<StokListesiModel?> getSelectedData(StokListesiModel? model) async {
     viewModel.setSelectedStokModel(model?.stokKodu ?? "");
-    GenericResponseModel response =
+    final GenericResponseModel response =
         await networkManager.dioPost<StokListesiModel>(
             path: ApiUrls.getStoklar,
             data: viewModel.stokBottomSheetModel.toJsonWithList(),

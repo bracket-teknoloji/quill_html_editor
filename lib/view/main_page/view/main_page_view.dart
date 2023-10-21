@@ -31,7 +31,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
 
   @override
   Widget build(BuildContext context) {
-    GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
     return WillPopScope(
       onWillPop: () async {
         if (lastItems.isNotEmpty) {
@@ -76,7 +76,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
                         itemCount: items.length,
                         itemBuilder: (context, index) {
                           //* indexteki itemi burada alıyoruz
-                          var item = items[index];
+                          final item = items[index];
                           return AnimationConfiguration.staggeredList(
                               position: index,
                               duration: const Duration(milliseconds: 500),

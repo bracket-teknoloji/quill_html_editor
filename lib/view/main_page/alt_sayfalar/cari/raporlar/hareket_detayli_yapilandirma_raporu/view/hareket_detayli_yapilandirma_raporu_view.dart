@@ -70,7 +70,7 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
                 readOnly: true,
                 suffixMore: true,
                 onTap: () async {
-                  var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                  final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                   if (result != null) {
                     cariController.text = result.cariAdi ?? "";
                     viewModel.pdfModel.dicParams?.cariKodu = result.cariKodu ?? "";
@@ -85,7 +85,7 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
                 isDateTime: true,
                 // suffix: const Icon(Icons.calendar_today_outlined),
                 onTap: () async {
-                  var result = await dialogManager.showDateTimePicker();
+                  final result = await dialogManager.showDateTimePicker();
                   if (result != null) {
                     viewModel.pdfModel.dicParams?.refTarih = result.toDateStringIfNull();
                     referansTarihController.text = result.toDateString;

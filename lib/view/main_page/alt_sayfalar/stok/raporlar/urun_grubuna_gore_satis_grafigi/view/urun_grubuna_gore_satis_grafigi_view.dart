@@ -65,7 +65,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration.zero, () => getData());
+    Future.delayed(Duration.zero, getData);
     return Scaffold(
       appBar: AppBar(title: const Text("Ürün Grubuna Göre Satış Grafiği")),
       body: SingleChildScrollView(
@@ -92,7 +92,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState
                   readOnly: true,
                   suffixMore: true,
                   onTap: () async {
-                    var result = await bottomSheetDialogManager
+                    final result = await bottomSheetDialogManager
                         .showBottomSheetDialog(context,
                             title: "Grup No",
                             children: viewModel.grupNoBottomSheetList);
@@ -111,7 +111,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState
                         readOnly: true,
                         suffixMore: true,
                         onTap: () async {
-                          var result = await Get.toNamed(
+                          final result = await Get.toNamed(
                               "/mainPage/cariListesi",
                               arguments: true);
                           if (result != null) {
@@ -132,10 +132,10 @@ class _UrunGrubunaGoreSatisGrafigiViewState
                   readOnly: true,
                   suffixMore: true,
                   onTap: () async {
-                    List<PlasiyerList>? plasiyerList =
+                    final List<PlasiyerList>? plasiyerList =
                         CacheManager.getAnaVeri()?.paramModel?.plasiyerList;
                     if (plasiyerList != null) {
-                      PlasiyerList? result = await bottomSheetDialogManager
+                      final PlasiyerList? result = await bottomSheetDialogManager
                           .showBottomSheetDialog(context,
                               title: "Plasiyer",
                               children: plasiyerList
@@ -162,7 +162,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState
                         suffixMore: true,
                         onTap: () async {
                           if (viewModel.projeList.isEmptyOrNull) {
-                            var result =
+                            final result =
                                 await networkManager.dioGet<BaseProjeModel>(
                                     path: ApiUrls.getProjeler,
                                     bodyModel: BaseProjeModel(),
@@ -177,7 +177,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState
                           }
                           if (viewModel.projeList != null) {
                             // ignore: use_build_context_synchronously
-                            var result = await bottomSheetDialogManager
+                            final result = await bottomSheetDialogManager
                                 .showBottomSheetDialog(context,
                                     title: "Proje",
                                     children: viewModel.projeList
@@ -226,7 +226,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState
   }
 
   void getData() async {
-    var result = await networkManager.dioPost<UrunGrubunaGoreSatisGrafigiModel>(
+    final result = await networkManager.dioPost<UrunGrubunaGoreSatisGrafigiModel>(
         path: ApiUrls.getUrunGrubunaGoreSatisGrafigi,
         bodyModel: UrunGrubunaGoreSatisGrafigiModel(),
         data: viewModel.model.toJson());

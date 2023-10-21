@@ -44,7 +44,7 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
 
   @computed
   TahsilatRequestModel get getStokYeniKayitModel {
-    var uuid = const Uuid();
+    const uuid = Uuid();
     return model.copyWith(guid: uuid.v4());
   }
 
@@ -120,7 +120,7 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getSiradakiKod() async {
-    var result = await networkManager.dioGet<BaseSiparisEditModel>(
+    final result = await networkManager.dioGet<BaseSiparisEditModel>(
         path: ApiUrls.getSiradakiBelgeNo, bodyModel: BaseSiparisEditModel(), showLoading: true, queryParameters: {"Seri": model.belgeNo ?? "", "BelgeTipi": "TH", "EIrsaliye": "H"});
     if (result.data is List) {
       setBelgeNo((result.data.first as BaseSiparisEditModel).belgeNo);
@@ -129,7 +129,7 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<KasaList?> getKasalar(String? kasaKodu) async {
-    var result = await networkManager.dioGet<KasaList>(path: ApiUrls.getKasalar, bodyModel: KasaList(), showLoading: true, queryParameters: {"KisitYok": true, "KasaKodu": kasaKodu});
+    final result = await networkManager.dioGet<KasaList>(path: ApiUrls.getKasalar, bodyModel: KasaList(), showLoading: true, queryParameters: {"KisitYok": true, "KasaKodu": kasaKodu});
     if (result.data is List) {
       return result.data.first as KasaList;
     }
@@ -138,7 +138,7 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getMuhaRefList() async {
-    var result = await networkManager.dioGet<MuhasebeReferansModel>(path: ApiUrls.getMuhaRefList, bodyModel: MuhasebeReferansModel(), showLoading: true);
+    final result = await networkManager.dioGet<MuhasebeReferansModel>(path: ApiUrls.getMuhaRefList, bodyModel: MuhasebeReferansModel(), showLoading: true);
     if (result.data is List) {
       setMuhaRefList(result.data.cast<MuhasebeReferansModel>());
     }
@@ -146,7 +146,7 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getDovizler() async {
-    var result = await networkManager.dioGet<DovizKurlariModel>(
+    final result = await networkManager.dioGet<DovizKurlariModel>(
         path: ApiUrls.getDovizKurlari, bodyModel: DovizKurlariModel(), showLoading: true, queryParameters: {"EkranTipi": "D", "DovizKodu": model.dovizTipi, "tarih": model.tarih.toDateString});
     if (result.data is List) {
       setDovizKurlariListesi(result.data.cast<DovizKurlariModel>());

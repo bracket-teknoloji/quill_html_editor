@@ -49,7 +49,7 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
 
   @override
   Widget build(BuildContext context) {
-    var children2 = [
+    final children2 = [
       CustomTextField(
           labelText: "Başlangıç Tarihi",
           readOnly: true,
@@ -108,7 +108,7 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
   }
 
   Future<void> getDate(bool isBaslangic) async {
-    var result = await showDatePicker(
+    final result = await showDatePicker(
       context: context,
       initialDate: isBaslangic
           ? (widget.baslangicTarihiController.text != "" ? widget.baslangicTarihiController.text.toDateTimeDDMMYYYY() : DateTime.now())

@@ -66,7 +66,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
               iconWidget: Icons.add,
               onTap: () async {
                 if (setDovizBottomSheetList.ext.isNotNullOrEmpty) {
-                  var result = await bottomSheetDialogManager
+                  final result = await bottomSheetDialogManager
                       .showBottomSheetDialog(context,
                           title: "Döviz Tipi",
                           children: setDovizBottomSheetList);
@@ -120,7 +120,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
               controller: _controller,
               isDateTime: true,
               onTap: () async {
-                var result = await dialogManager.showDateTimePicker();
+                final result = await dialogManager.showDateTimePicker();
                 if (result != null) {
                   viewModel.changeTarih(result);
                   _controller.text = viewModel.tarih.toDateString;
@@ -152,7 +152,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                 : ListView.builder(
                     itemCount: viewModel.dovizKurlariList?.length ?? 0,
                     itemBuilder: (context, index) {
-                      DovizKurlariModel model =
+                      final DovizKurlariModel model =
                           viewModel.dovizKurlariList?[index] ??
                               DovizKurlariModel();
                       return Card(
@@ -216,7 +216,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                                       Get.back();
                                       dialogManager
                                           .showAreYouSureDialog(() async {
-                                        var result = await networkManager
+                                        final result = await networkManager
                                             .dioPost<DovizKurlariModel>(
                                                 path: ApiUrls.deleteDovizKuru,
                                                 bodyModel: DovizKurlariModel(),
@@ -243,7 +243,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
 
   Future<void> getData() async {
     viewModel.changeDovizKurlariList(null);
-    var result = await networkManager.dioGet<DovizKurlariModel>(
+    final result = await networkManager.dioGet<DovizKurlariModel>(
         path: ApiUrls.getDovizKurlari,
         bodyModel: DovizKurlariModel(),
         queryParameters: {
@@ -259,7 +259,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
   Future<void> dovizKuruGuncelle() async {
     await dialogManager.showDialog(
       onYes: () async {
-        var result = await networkManager.dioPost<DovizKurlariModel>(
+        final result = await networkManager.dioPost<DovizKurlariModel>(
             showLoading: true,
             path: ApiUrls.dovizKuruGuncelle,
             bodyModel: DovizKurlariModel(),
@@ -289,9 +289,9 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
   }
 
   List<BottomSheetModel> get setDovizBottomSheetList {
-    List<DovizList>? dovizList =
+    final List<DovizList>? dovizList =
         CacheManager.getAnaVeri()?.paramModel?.dovizList;
-    List<BottomSheetModel> bottomSheetList = [];
+    final List<BottomSheetModel> bottomSheetList = [];
     for (DovizList item
         in dovizList?.where((element) => element.dovizTipi != 0).toList() ??
             []) {

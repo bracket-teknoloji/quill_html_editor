@@ -24,8 +24,8 @@ abstract class _BaseSiparisEditingViewModelBase with Store {
 
   @observable
   bool isValid =
-      (StaticVariables.instance.siparisGenelFormKey.currentState?.validate() ??
-          false);
+      StaticVariables.instance.siparisGenelFormKey.currentState?.validate() ??
+          false;
 
   @action
   void changeIsValid() => isValid =

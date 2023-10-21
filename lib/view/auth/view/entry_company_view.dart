@@ -161,13 +161,13 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   "content-type": "application/json"
                                 });
                                 if (response.data != null) {
-                                  MainPageModel model = response.data[0];
+                                  final MainPageModel model = response.data[0];
                                   CacheManager.setAnaVeri(model);
                                   CacheManager.setVeriTabani(selected);
                                   CacheManager.setIsletmeSube(userData);
                                   CacheManager.setLogout(true);
                                   Get.offAndToNamed("/mainPage");
-                                  var result = await networkManager.dioPost<AccountModel>(
+                                  final result = await networkManager.dioPost<AccountModel>(
                                       path: ApiUrls.saveUyeBilgileri, bodyModel: AccountModel(), showError: false, data: CacheManager.getHesapBilgileri?.toJson());
                                   if (result.success == true) {
                                     log("Session Başarılı");
@@ -316,7 +316,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   }
 
   Future<List<CompanyModel>?> getSirket({String? name}) async {
-    List<CompanyModel> list = [];
+    final List<CompanyModel> list = [];
     final response = await networkManager.dioGet<CompanyModel>(
       path: ApiUrls.veriTabanlari,
       bodyModel: CompanyModel(),
@@ -334,7 +334,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   }
 
   Future<List<IsletmeModel>?> getIsletme() async {
-    List<IsletmeModel> data = [];
+    final List<IsletmeModel> data = [];
     for (var element in sube!) {
       if (data.any((element) => element.isletmeKodu == element.isletmeKodu)) {
         continue;
@@ -347,7 +347,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
 
   Future<List<IsletmeModel>?> getSube(String? sirket) async {
     if (sirket == null || sirket == "") return [];
-    List<IsletmeModel> list = [];
+    final List<IsletmeModel> list = [];
     final response = await networkManager.dioGet<IsletmeModel>(
       path: ApiUrls.isletmelerSubeler,
       bodyModel: IsletmeModel(),

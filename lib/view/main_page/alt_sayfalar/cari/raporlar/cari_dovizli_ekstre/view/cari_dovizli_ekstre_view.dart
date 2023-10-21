@@ -78,7 +78,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                 readOnly: true,
                 suffixMore: true,
                 onTap: () async {
-                  var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                  final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                   if (result != null) {
                     cariController.text = result.cariAdi ?? "";
                     viewModel.changeCariKodu(result.cariKodu ?? "");
@@ -97,7 +97,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                       onTap: () async {
                         List<DovizList>? dovizList = CacheManager.getAnaVeri()?.paramModel?.dovizList;
                         dovizList = dovizList?.where((element) => element.dovizTipi != 0).toList();
-                        DovizList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                        final DovizList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                             title: "Döviz Tipi", children: dovizList!.map((e) => BottomSheetModel(title: e.isim ?? "", onTap: () => Get.back(result: e))).toList());
                         if (result != null) {
                           dovizController.text = result.isim ?? "";

@@ -254,7 +254,7 @@ class CacheManager {
   static void removeFavoriWithIndex(int index) => favorilerBox.deleteAt(index);
   static void removeSiparisEdit(String key) => siparisEditBox.delete(key);
   static void removeSiparisEditList(int index) {
-    var list = siparisEditListBox.get(StaticVariables.getSiparisString)?.list;
+    final list = siparisEditListBox.get(StaticVariables.getSiparisString)?.list;
     if (list != null) {
       list.removeAt(index);
     }
@@ -263,7 +263,7 @@ class CacheManager {
   }
 
   static Future<bool> removeSiparisEditListWithUuid(String? uuid) async {
-    var list = siparisEditListBox.get(StaticVariables.getSiparisString)?.list;
+    final list = siparisEditListBox.get(StaticVariables.getSiparisString)?.list;
     if (list != null) {
       list.removeWhere((element) => element.uuid == uuid);
     }

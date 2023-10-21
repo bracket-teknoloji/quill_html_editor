@@ -70,7 +70,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                       IconButton(
                           icon: const Icon(Icons.qr_code_2_outlined),
                           onPressed: () async {
-                            var result = await Get.toNamed("/qr");
+                            final result = await Get.toNamed("/qr");
                             if (result != null) {
                               barkodKontroller.text = result ?? "";
                             }
@@ -79,7 +79,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                       IconButton(
                           icon: const Icon(Icons.more_horiz_outlined),
                           onPressed: () async {
-                            var result = await Get.toNamed(
+                            final result = await Get.toNamed(
                                 "/mainPage/stokListesi",
                                 arguments: true);
                             if (result is StokListesiModel) {
@@ -136,7 +136,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                           const TextSpan(text: "Satış  KDV"),
                                           TextSpan(
                                               text:
-                                                  "  %${(viewModel.modelList?.first?.kdvOrani ?? 0)}",
+                                                  "  %${viewModel.modelList?.first?.kdvOrani ?? 0}",
                                               style: TextStyle(
                                                   color: theme.textTheme
                                                       .titleLarge?.color
@@ -307,7 +307,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
   void getData() async {
     // viewModel.setStokListesiModel(null);
     viewModel.setModelList(null);
-    var result = await networkManager.dioPost<FiyatGorModel>(
+    final result = await networkManager.dioPost<FiyatGorModel>(
         path: ApiUrls.getFiyatGorFiyatlari,
         bodyModel: FiyatGorModel(),
         data: {"StokKodu": barkodKontroller.text});

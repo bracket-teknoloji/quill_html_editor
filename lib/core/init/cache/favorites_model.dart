@@ -29,7 +29,7 @@ class FavoritesModel {
     } else if (cacheManager?.adminMi == true) {
       return true;
     } else if (menuTipi == "I") {
-      var result = cacheManager?.profilYetki?.toJson()[name] ?? false;
+      final result = cacheManager?.profilYetki?.toJson()[name] ?? false;
       return result;
     } else {
       return true;

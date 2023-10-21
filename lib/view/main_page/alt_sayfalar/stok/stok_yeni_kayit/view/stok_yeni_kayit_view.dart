@@ -53,7 +53,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                   dialogManager.showAreYouSureDialog(() async {
                     dialogManager.showLoadingDialog("Kaydediliyor");
                     viewModel.setStokKodu(stokKoduController.text);
-                    GenericResponseModel result = await networkManager.dioPost<StokYeniKayitModel>(
+                    final GenericResponseModel result = await networkManager.dioPost<StokYeniKayitModel>(
                         path: ApiUrls.saveStokHareket, bodyModel: StokYeniKayitModel(), addCKey: true, addSirketBilgileri: true, data: viewModel.model.toJson());
                     dialogManager.hideAlertDialog;
                     if (result.success ?? false) {
@@ -79,7 +79,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                   return ToggleButtons(
                     constraints: BoxConstraints(minWidth: width / 2.1, minHeight: height / 20),
                     isSelected: viewModel.isSelected,
-                    children: viewModel.toggleButtonName.map((e) => Text(e)).toList(),
+                    children: viewModel.toggleButtonName.map(Text.new).toList(),
                     onPressed: (index) {
                       viewModel.model.gc = index == 0 ? "G" : "C";
                       viewModel.changeIsSelected(index);
@@ -129,7 +129,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                 controller: hareketTuruController,
                 suffixMore: true,
                 onTap: () async {
-                  MapEntry? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                  final MapEntry? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                       title: "Hareket Türü", children: viewModel.hareketTurMap.entries.map((e) => BottomSheetModel(title: e.key, description: e.value, onTap: () => Get.back(result: e))).toList());
                   if (result != null) {
                     hareketTuruController.text = result.key;
@@ -155,7 +155,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                 controller: depoController,
                 suffixMore: true,
                 onTap: () async {
-                  DepoList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                  final DepoList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                       title: "Depo",
                       children: viewModel.anaVeri?.paramModel?.depoList
                           ?.map((e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, onTap: () => Get.back(result: e)))
@@ -206,7 +206,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                 controller: plasiyerController,
                 suffixMore: true,
                 onTap: () async {
-                  var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                  final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                       title: "Plasiyer",
                       children: viewModel.anaVeri?.paramModel?.plasiyerList
                           ?.map((e) => BottomSheetModel(
@@ -236,10 +236,10 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                   controller: projeController,
                   suffixMore: true,
                   onTap: () async {
-                    var result = viewModel.projeListesi ?? await getProjeData();
+                    final result = viewModel.projeListesi ?? await getProjeData();
                     if (result != null) {
                       // ignore: use_build_context_synchronously
-                      BaseProjeModel? dialogResult = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                      final BaseProjeModel? dialogResult = await bottomSheetDialogManager.showBottomSheetDialog(context,
                           title: "Proje (${result.length})",
                           children: result
                               .map((e) => BottomSheetModel(
@@ -263,7 +263,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
 
   Future<List<BaseProjeModel>?> getProjeData() async {
     dialogManager.showLoadingDialog("Proje Listesi Getiriliyor...");
-    var result = await networkManager.dioGet<BaseProjeModel>(path: ApiUrls.getProjeler, bodyModel: BaseProjeModel());
+    final result = await networkManager.dioGet<BaseProjeModel>(path: ApiUrls.getProjeler, bodyModel: BaseProjeModel());
 
     dialogManager.hideAlertDialog;
     if (result.success ?? false) {

@@ -99,7 +99,7 @@ class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
   void deleteData() async {
     Get.back();
     dialogManager.showAreYouSureDialog(() async {
-      var result = await networkManager.dioPost<BankaIslemleriModel>(
+      final result = await networkManager.dioPost<BankaIslemleriModel>(
           path: ApiUrls.deleteBankaHareket,
           bodyModel: BankaIslemleriModel(),
           data: {"INCKEYNO": model?.inckeyno},

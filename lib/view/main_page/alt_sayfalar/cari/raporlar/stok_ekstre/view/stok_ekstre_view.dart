@@ -72,7 +72,7 @@ class _StokEkstreViewState extends BaseState<StokEkstreView> {
               readOnly: true,
               suffixMore: true,
               onTap: () async {
-                var result =
+                final result =
                     await Get.toNamed("/mainPage/cariListesi", arguments: true);
                 if (result != null) {
                   cariController!.text = result.cariAdi ?? "";

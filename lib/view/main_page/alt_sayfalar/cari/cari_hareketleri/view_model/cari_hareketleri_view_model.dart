@@ -52,7 +52,7 @@ abstract class _CariHareketleriViewModelBase with Store {
 
   @computed
   double get borclarToplami {
-    var data = cariHareketleriList?.where((element) => element.borc != null);
+    final data = cariHareketleriList?.where((element) => element.borc != null);
     if (data?.isNotEmpty ?? false) {
       if (cariListesiModel?.dovizKodu != null) {
         return data!
@@ -72,7 +72,7 @@ abstract class _CariHareketleriViewModelBase with Store {
 
   @computed
   double get alacaklarToplami {
-    var data = cariHareketleriList?.where((element) => element.alacak != null);
+    final data = cariHareketleriList?.where((element) => element.alacak != null);
     if (data?.isNotEmpty ?? false) {
       if (cariListesiModel?.dovizKodu != null) {
         return data!
@@ -92,7 +92,7 @@ abstract class _CariHareketleriViewModelBase with Store {
 
   @computed
   double get toplamBakiye {
-    CariHareketleriModel? model = cariHareketleriList
+    final CariHareketleriModel? model = cariHareketleriList
         ?.where((element) =>
             element.tarih ==
             cariHareketleriList?.map((e) => e.tarih).reduce(
@@ -107,7 +107,7 @@ abstract class _CariHareketleriViewModelBase with Store {
 
   @computed
   double get dovizBorclarToplami {
-    var data =
+    final data =
         cariHareketleriList?.where((element) => element.dovizBorc != null);
     if (data?.isNotEmpty ?? false) {
       return data!
@@ -120,7 +120,7 @@ abstract class _CariHareketleriViewModelBase with Store {
 
   @computed
   double get dovizAlacaklarToplami {
-    var data =
+    final data =
         cariHareketleriList?.where((element) => element.dovizAlacak != null);
     if (data?.isNotEmpty ?? false) {
       return data!

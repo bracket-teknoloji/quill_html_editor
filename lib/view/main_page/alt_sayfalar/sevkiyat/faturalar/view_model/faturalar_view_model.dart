@@ -81,15 +81,12 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
       case "EK":
         CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisEkAlan: value));
         ekstraAlanlarMap["EK"] = value;
-        break;
       case "MİK":
         CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisMiktar: value));
         ekstraAlanlarMap["MİK"] = value;
-        break;
       case "VADE":
         CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisVade: value));
         ekstraAlanlarMap["VADE"] = value;
-        break;
     }
     ekstraAlanlarMap[key] = value;
   }
@@ -255,7 +252,7 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getKod() async {
-    var responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
+    final responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
         path: ApiUrls.getGrupKodlari, bodyModel: BaseGrupKoduModel(), headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"}, queryParameters: {"Modul": "CARI", "GrupNo": "-1"});
     if (responseKod.data is List) {
       changeGrupKodList(responseKod.data.cast<BaseGrupKoduModel>());
@@ -264,9 +261,9 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    var result = await networkManager.dioGet<BaseSiparisEditModel>(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: faturaRequestModel.toJson());
+    final result = await networkManager.dioGet<BaseSiparisEditModel>(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: faturaRequestModel.toJson());
     if (result.data is List) {
-      List<BaseSiparisEditModel> list = result.data.cast<BaseSiparisEditModel>();
+      final List<BaseSiparisEditModel> list = result.data.cast<BaseSiparisEditModel>();
       if ((faturaRequestModel.sayfa ?? 0) < 2) {
         paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
         setFaturaList(list);

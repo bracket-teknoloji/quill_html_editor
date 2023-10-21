@@ -72,7 +72,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
                         child: Row(
                           children: [
                             OutlinedButton(
-                              onPressed: () => login(),
+                              onPressed: login,
                               child: const Text("Tekrar Dene"),
                             ).paddingAll(UIHelper.lowSize),
                             OutlinedButton(
@@ -156,8 +156,8 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
 
   Future<void> getSession() async {
     viewModel.setTitle("Lisans bilgileri alınıyor...");
-    GenericResponseModel lisansResponse = await networkManager.getUyeBilgileri(CacheManager.getVerifiedUser.account?.email ?? "");
-    if (CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "") == false) {
+    final GenericResponseModel lisansResponse = await networkManager.getUyeBilgileri(CacheManager.getVerifiedUser.account?.email ?? "");
+    if (!CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "")) {
       viewModel.setTitle("${lisansResponse.message}\n ${lisansResponse.ex?["Message"]}\nLisans bilgileri alınamadı. Lütfen internet bağlantınızı kontrol edin.");
       viewModel.setIsError(true);
       return;
@@ -179,7 +179,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       CacheManager.setAnaVeri(response.data.first);
       Get.offAllNamed("/mainPage");
       response.message.ext.isNotNullOrNoEmpty ? dialogManager.showAlertDialog(response.message.toString()) : null;
-      var result = await networkManager.dioPost<AccountModel>(path: ApiUrls.saveUyeBilgileri, showError: false, bodyModel: AccountModel(), data: CacheManager.getHesapBilgileri?.toJson());
+      final result = await networkManager.dioPost<AccountModel>(path: ApiUrls.saveUyeBilgileri, showError: false, bodyModel: AccountModel(), data: CacheManager.getHesapBilgileri?.toJson());
       if (result.success == true) {
         log("Başarılı");
       } else {

@@ -68,8 +68,8 @@ class _KasaEkstreRaporuViewState extends BaseState<KasaEkstreRaporuView> {
                 suffixMore: true,
                 labelText: "Kasa Kodu",
                 onTap: () async {
-                  List<KasaList>? kasaList = parametreModel.kasaList;
-                  var result = await bottomSheetDialogManager
+                  final List<KasaList>? kasaList = parametreModel.kasaList;
+                  final result = await bottomSheetDialogManager
                       .showBottomSheetDialog(context,
                           title: "Kasa Seçiniz",
                           children: List.generate(

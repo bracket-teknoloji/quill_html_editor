@@ -78,7 +78,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                       },
                       key: const Key("Favoriler"),
                       itemBuilder: (context, index) {
-                        var value = list[index];
+                        final value = list[index];
                         return ListTile(
                           key: ValueKey(index),
                           enabled: liste.contains(value),

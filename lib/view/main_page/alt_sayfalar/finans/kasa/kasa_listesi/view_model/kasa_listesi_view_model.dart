@@ -114,7 +114,7 @@ abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    var result = await networkManager.dioGet<KasaListesiModel>(
+    final result = await networkManager.dioGet<KasaListesiModel>(
         path: ApiUrls.getKasalar,
         bodyModel: KasaListesiModel(),
         queryParameters: {

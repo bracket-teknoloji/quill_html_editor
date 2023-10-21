@@ -223,8 +223,8 @@ class DialogManager {
   }
 
   AlertDialog listTileDialog({required String title}) {
-    Box box = Hive.box("accounts");
-    Box preferences = Hive.box("preferences");
+    final Box box = Hive.box("accounts");
+    final Box preferences = Hive.box("preferences");
     return AlertDialog(
       contentPadding: const EdgeInsets.all(0),
       actionsOverflowButtonSpacing: 0,
@@ -245,7 +245,7 @@ class DialogManager {
         ...List.generate(
           box.length,
           (index) {
-            var title = box.getAt(index).firma.toString();
+            final title = box.getAt(index).firma.toString();
             log(box.getAt(index).toString());
             return ListTile(
                 title: Text(title),
@@ -283,7 +283,7 @@ class DialogManager {
               Expanded(
                 child: TextButton(
                     onPressed: () {
-                      dynamic result = {};
+                      final dynamic result = {};
                       Get.back(result: result);
                     },
                     child: const Text(
@@ -319,7 +319,7 @@ class DialogManager {
   }
 
   Future selectCompanyDialog() {
-    Box preferences = CacheManager.preferencesBox;
+    final Box preferences = CacheManager.preferencesBox;
     return _baseDialog(
         btnOkText: "Firmaları Düzenle",
         btnCancelText: "Vazgeç",
@@ -346,7 +346,7 @@ class DialogManager {
           ...List.generate(
             CacheManager.accountsBox.length,
             (index) {
-              var title = (CacheManager.accountsBox.getAt(index)?.firma ?? "").toString();
+              final title = (CacheManager.accountsBox.getAt(index)?.firma ?? "").toString();
               log(CacheManager.accountsBox.getAt(index).toString());
               return ListTile(
                   title: Text(title),

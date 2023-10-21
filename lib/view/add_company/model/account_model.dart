@@ -154,7 +154,7 @@ class AccountModel with NetworkManagerMixin {
       platform = "Web";
     } else {
       platform = Platform.operatingSystem;
-      var list = await NetworkInterface.list(
+      final list = await NetworkInterface.list(
           includeLoopback: true, type: InternetAddressType.IPv4);
       for (var interface in list) {
         for (var i = 0; i < interface.addresses.length; i++) {

@@ -120,7 +120,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
             if (formKey.currentState!.validate()) {
               viewModel.setAciklama(_aciklamaController.text);
               await dialogManager.showAreYouSureDialog(() async {
-                var result = await viewModel.postData();
+                final result = await viewModel.postData();
                 if (result.success == true) {
                   Get.back(result: true);
                   dialogManager.showSuccessSnackBar(result.message ?? "Kayıt başarılı");
@@ -163,7 +163,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                     isDateTime: true,
                     readOnly: true,
                     onTap: () async {
-                      var result = await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime(2100));
+                      final result = await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime(2100));
                       if (result != null) {
                         _tarihController.text = result.toDateString;
                         viewModel.setTarih(result.dateTimeWithoutTime);
@@ -201,7 +201,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                       if (viewModel.kasa?.dovizli == "E") {
                         return;
                       }
-                      var result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context);
+                      final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context);
                       if (result is DovizList) {
                         _dovizTipiController.text = result.isim ?? "";
                         viewModel.setDovizTipi(result.dovizTipi);
@@ -287,14 +287,14 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                     suffixMore: true,
                     valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                     onTap: () async {
-                      var result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
+                      final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
                       if (result is PlasiyerList) {
                         _plasiyerController.text = result.plasiyerAciklama ?? "";
                         viewModel.setPlasiyerKodu(result);
                       }
                     },
                   ),
-                ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi == true),
+                ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                 Expanded(
                   child: CustomTextField(
                     labelText: "Proje",
@@ -304,7 +304,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                     suffixMore: true,
                     valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                     onTap: () async {
-                      var result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
+                      final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
                       if (result is BaseProjeModel) {
                         _projekoduController.text = result.projeAdi ?? result.projeAciklama ?? "";
                         // viewModel.setPlasiyerKodu(result);
@@ -343,7 +343,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                       if (viewModel.muhaRefList.ext.isNullOrEmpty) {
                         await viewModel.getMuhaRefList();
                       }
-                      var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
+                      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
                           title: "Referans Kodu", children: viewModel.muhaRefList!.map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e)).toList());
                       if (result is MuhasebeReferansModel) {
                         _referansKoduController.text = result.tanimi ?? "";
@@ -366,7 +366,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
   }
 
   Future<void> getMuhKodu() async {
-    var result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, belgeTipi: MuhasebeBelgeTipiEnum.muo, hesapTipi: viewModel.model.hesapTipi);
+    final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, belgeTipi: MuhasebeBelgeTipiEnum.muo, hesapTipi: viewModel.model.hesapTipi);
     if (result is StokMuhasebeKoduModel) {
       _hesapController.text = result.hesapAdi ?? result.hesapKodu ?? "";
       viewModel.setHesapTipi(result.agm);
@@ -376,7 +376,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
   }
 
   Future<void> getKasa() async {
-    KasaList? result = await bottomSheetDialogManager.showKasaBottomSheetDialog(context);
+    final KasaList? result = await bottomSheetDialogManager.showKasaBottomSheetDialog(context);
     if (result != null) {
       _kasaController.text = result.kasaTanimi ?? "";
       viewModel.setKasaKodu(result);
@@ -398,7 +398,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
     if (viewModel.dovizKurlariListesi.ext.isNotNullOrEmpty) {
       _dovizKuruController.text = "";
       _dovizTutariController.text = "";
-      var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Döviz Kuru", children: [
+      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Döviz Kuru", children: [
         BottomSheetModel(
             title: "Alış: ${viewModel.dovizKurlariListesi?.first.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.first.dovAlis,

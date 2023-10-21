@@ -81,7 +81,7 @@ class _QRScannerState extends BaseState<QRScannerView> {
         cameraFacing: CameraFacing.back,
       );
   void _onQRViewCreated(QRViewController controller) async {
-    PermissionStatus status = await Permission.camera.status;
+    final PermissionStatus status = await Permission.camera.status;
     qrViewController = controller;
 
     if (status.isDenied) {

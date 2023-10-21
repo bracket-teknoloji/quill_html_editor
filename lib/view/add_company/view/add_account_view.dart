@@ -84,7 +84,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
 
   Future<void> loginMethod() async {
     if (formKey.currentState?.validate() ?? false) {
-      String encodedPassword = passwordDecoder(passwordController.text);
+      final String encodedPassword = passwordDecoder(passwordController.text);
       dialogManager.showLoadingDialog("Yükleniyor...");
 
       AccountModel.instance
@@ -111,7 +111,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
   }
 
   Future<void> _getQR(BuildContext context) async {
-    var barcode = await Get.toNamed("/qr");
+    final barcode = await Get.toNamed("/qr");
     GenericResponseModel response;
 
     if (barcode != null) {
@@ -124,7 +124,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
       //   path: ApiUrls.getUyeBilgileri,
       // );
       if (response.success == true) {
-        String encodedPassword = passwordDecoder(utf8.decode(base64.decode(response.data.first.parola)));
+        final String encodedPassword = passwordDecoder(utf8.decode(base64.decode(response.data.first.parola)));
         AccountModel.instance.uyeEmail = response.data.first.email;
         AccountModel.instance.uyeSifre = encodedPassword;
         AccountModel.instance.qrData = null;

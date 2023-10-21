@@ -214,7 +214,7 @@ class _BaseSiparisToplamlarViewState
                     builder: (_) => Text(
                         viewModel.model.genisk1Tipi?.toStringIfNotNull ?? "")),
                 onTap: () async {
-                  var result = await bottomSheetDialogManager
+                  final result = await bottomSheetDialogManager
                       .showIskontoTipiBottomSheetDialog(context);
                   if (result != null) {
                     viewModel.setIskTipi1(result.iskontoTipi);
@@ -258,7 +258,7 @@ class _BaseSiparisToplamlarViewState
                         viewModel.model.genisk2Tipi?.toStringIfNotNull ?? "")),
                 controller: iskontoTipi2Controller,
                 onTap: () async {
-                  var result = await bottomSheetDialogManager
+                  final result = await bottomSheetDialogManager
                       .showIskontoTipiBottomSheetDialog(context);
                   if (result != null) {
                     viewModel.setIskTipi2(result.iskontoTipi);
@@ -302,7 +302,7 @@ class _BaseSiparisToplamlarViewState
                     builder: (_) => Text(
                         viewModel.model.genisk3Tipi?.toStringIfNotNull ?? "")),
                 onTap: () async {
-                  var result = await bottomSheetDialogManager
+                  final result = await bottomSheetDialogManager
                       .showIskontoTipiBottomSheetDialog(context);
                   if (result != null) {
                     viewModel.setIskTipi3(result.iskontoTipi);
@@ -338,7 +338,7 @@ class _BaseSiparisToplamlarViewState
                   ],
                   suffix: IconButton(
                       onPressed: () async {
-                        var result = await bottomSheetDialogManager
+                        final result = await bottomSheetDialogManager
                             .showBottomSheetDialog(context,
                                 title: "Tevkifat Oranı",
                                 children: List.generate(
@@ -393,7 +393,7 @@ class _BaseSiparisToplamlarViewState
                               DateTime.now().add(const Duration(days: 365)));
                       if (date != null) {
                         model.vadeGunu =
-                            ((model.tarih?.difference(date).inDays ?? 0) * -1);
+                            (model.tarih?.difference(date).inDays ?? 0) * -1;
                         viewModel.setVadeTarihi(date);
                         vadeGunuController.text = model.vadeGunu.toString();
                       }
@@ -431,7 +431,7 @@ class _BaseSiparisToplamlarViewState
     ekMal3Controller = TextEditingController(
         text: model.ekMaliyet3Tutari
             ?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
-    List<ListIskTip?>? iskList = parametreModel.listIskTip;
+    final List<ListIskTip?>? iskList = parametreModel.listIskTip;
     if (iskList != null) {
       iskontoTipi1Controller.text = iskList
               .firstWhereOrNull(
@@ -457,8 +457,8 @@ class _BaseSiparisToplamlarViewState
     }
     vadeGunuController = TextEditingController(
         text: model.vadeGunu.toStringIfNotNull ??
-            (model.vadeTarihi?.difference(DateTime.now()))
-                ?.inDays
+            model.vadeTarihi?.difference(DateTime.now())
+                .inDays
                 .toStringIfNotNull);
   }
 

@@ -119,7 +119,7 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                     if (index == (viewModel.kasaIslemleriListesi?.length ?? 0)) {
                       return const Center(child: CircularProgressIndicator.adaptive());
                     }
-                    var item = viewModel.kasaIslemleriListesi?[index];
+                    final item = viewModel.kasaIslemleriListesi?[index];
                     return Card(
                       child: ListTile(
                         onTap: () async {
@@ -130,7 +130,7 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                                 onTap: () {
                                   Get.back();
                                   dialogManager.showAreYouSureDialog(() async {
-                                    var result = await viewModel.deleteData(item?.inckeyno);
+                                    final result = await viewModel.deleteData(item?.inckeyno);
                                     if (result.success == true) {
                                       dialogManager.showSuccessSnackBar("${(result.message) ?? "Başarılı"} ${item?.inckeyno}");
                                       viewModel.kasaIslemleriListesi?.remove(item);
@@ -147,7 +147,7 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                               children: [
                                 Text("${item?.tarih.toDateString ?? ""} "),
                                 ColorfulBadge(
-                                  label: Text((item?.tipAciklama ?? "")),
+                                  label: Text(item?.tipAciklama ?? ""),
                                   badgeColorEnum: BadgeColorEnum.tipAciklama,
                                 ).yetkiVarMi(item?.tipAciklama != null),
                               ],

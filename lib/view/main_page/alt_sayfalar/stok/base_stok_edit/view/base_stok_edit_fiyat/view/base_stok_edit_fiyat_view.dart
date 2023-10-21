@@ -137,7 +137,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                         await getKdvOrani();
                       }
                       // ignore: use_build_context_synchronously
-                      double? result = await bottomSheetDialogManager
+                      final double? result = await bottomSheetDialogManager
                           .showBottomSheetDialog(context,
                               title: "KDV Oranları",
                               children: viewModel.kdvOraniList
@@ -212,7 +212,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                       controller: alisDovizTipiController,
                       readOnly: true,
                       onTap: () async {
-                        MapEntry? result = await getDovizList();
+                        final MapEntry? result = await getDovizList();
                         if (result != null) {
                           stokDetayModel.stokList?.first.alisDovTip =
                               result.key;
@@ -252,7 +252,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                         await getKdvOrani();
                       }
                       // ignore: use_build_context_synchronously
-                      double? result = await bottomSheetDialogManager
+                      final double? result = await bottomSheetDialogManager
                           .showBottomSheetDialog(context,
                               title: "KDV Oranları",
                               children: viewModel.kdvOraniList
@@ -328,7 +328,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                       controller: satisDovizTipiController,
                       readOnly: true,
                       onTap: () async {
-                        MapEntry? result = await getDovizList();
+                        final MapEntry? result = await getDovizList();
                         if (result != null) {
                           satisDovizTipiController.text = result.value;
                           stokDetayModel.stokList?.first.satDovTip = result.key;
@@ -360,7 +360,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
   }
 
   Future<void> getKdvOrani() async {
-    var result = await networkManager.dioGet<BaseEmptyModel>(
+    final result = await networkManager.dioGet<BaseEmptyModel>(
         path: ApiUrls.getStokDigerBilgi,
         bodyModel: BaseEmptyModel(),
         queryParameters: {"BilgiTipi": "KDVGRUP"});
@@ -374,7 +374,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
   }
 
   Future<MapEntry?> getDovizList() async {
-    MapEntry? result =
+    final MapEntry? result =
         await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
             title: "Döviz Tipi",
             children: viewModel.dovizList.entries

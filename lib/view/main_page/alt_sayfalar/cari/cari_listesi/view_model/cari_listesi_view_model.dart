@@ -203,7 +203,7 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getKod() async {
-    var responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
+    final responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
         path: ApiUrls.getGrupKodlari, bodyModel: BaseGrupKoduModel(), headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"}, queryParameters: {"Modul": "CARI", "GrupNo": "-1"});
     if (responseKod.data is List) {
       grupKodlari = responseKod.data.cast<BaseGrupKoduModel>();
@@ -212,7 +212,7 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getFilterData() async {
-    var result = await networkManager.dioGet<CariSehirlerModel>(
+    final result = await networkManager.dioGet<CariSehirlerModel>(
         path: ApiUrls.getCariKayitliSehirler, bodyModel: CariSehirlerModel(), addTokenKey: true, addSirketBilgileri: true, headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"});
     if (result.data is List) {
       sehirler = result.data.cast<CariSehirlerModel>();
@@ -222,7 +222,7 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getData() async {
     log(getCariRequestModel.toString());
-    Map<String, dynamic> body = getCariRequestModel;
+    final Map<String, dynamic> body = getCariRequestModel;
     if (cariRequestModel.kod == null || cariRequestModel.kod!.isEmpty) {
       body["Kod"] = "";
     }
@@ -239,7 +239,7 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
       if (cariRequestModel.sayfa == 1) {
         paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
       }
-      List<CariListesiModel> list = result.data.cast<CariListesiModel>();
+      final List<CariListesiModel> list = result.data.cast<CariListesiModel>();
       if ((cariRequestModel.sayfa ?? 0) < 2) {
         changeCariListesi(list);
       } else {

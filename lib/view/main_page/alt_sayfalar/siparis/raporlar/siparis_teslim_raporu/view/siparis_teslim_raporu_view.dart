@@ -102,7 +102,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
                   belgeNoController.clear();
                 },
                 onTap: () async {
-                  var result = await Get.toNamed(
+                  final result = await Get.toNamed(
                       "/mainPage/siparisMusteriSiparisi",
                       arguments: SiparislerWidgetModel(
                           siparisTipiEnum: SiparisTipiEnum.musteri,
@@ -139,7 +139,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
                   cariController.clear();
                 },
                 onTap: () async {
-                  var result = await Get.toNamed("/mainPage/cariListesi",
+                  final result = await Get.toNamed("/mainPage/cariListesi",
                       arguments: true);
                   if (result is CariListesiModel) {
                     cariController.text = result.cariAdi ?? "";
@@ -160,7 +160,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
                         vergiNoController.clear();
                       },
                       onTap: () async {
-                        var result = await Get.toNamed("/mainPage/cariListesi",
+                        final result = await Get.toNamed("/mainPage/cariListesi",
                             arguments: true);
                         if (result is CariListesiModel) {
                           vergiNoController.text = result.vergiNumarasi ?? "";
@@ -180,7 +180,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
                         stokController.clear();
                       },
                       onTap: () async {
-                        var result = await Get.toNamed("/mainPage/stokListesi",
+                        final result = await Get.toNamed("/mainPage/stokListesi",
                             arguments: true);
                         if (result is StokListesiModel) {
                           stokController.text = result.stokAdi ?? "";

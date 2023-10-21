@@ -102,7 +102,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
               if (_formKey.currentState!.validate()) {
                 viewModel.setAciklama(_kasaHareketiAciklamaController.text);
                 await dialogManager.showAreYouSureDialog(() async {
-                  var result = await viewModel.postData();
+                  final result = await viewModel.postData();
                   if (result.success == true) {
                     Get.back(result: true);
                     dialogManager.showSuccessSnackBar(result.message ?? "Kayıt başarılı");
@@ -143,7 +143,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                         isDateTime: true,
                         readOnly: true,
                         onTap: () async {
-                          var result = await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime(2100));
+                          final result = await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime(2100));
                           if (result != null) {
                             _tarihController.text = result.toDateString;
                             viewModel.setTarih(result.dateTimeWithoutTime);
@@ -203,7 +203,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                             if (viewModel.kasa?.dovizli == "E") {
                               return;
                             }
-                            var result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context);
+                            final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context);
                             if (result is DovizList) {
                               _dovizTipiController.text = result.isim ?? "";
                               viewModel.setDovizTipi(result.dovizTipi);
@@ -289,7 +289,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                         suffixMore: true,
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                         onTap: () async {
-                          var result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
+                          final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
                           if (result is PlasiyerList) {
                             _plasiyerController.text = result.plasiyerAciklama ?? "";
                             viewModel.setPlasiyerKodu(result);
@@ -306,7 +306,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                         suffixMore: true,
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                         onTap: () async {
-                          var result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
+                          final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
                           if (result is BaseProjeModel) {
                             _projekoduController.text = result.projeAciklama ?? "";
                             viewModel.setProjekodu(result.projeKodu);
@@ -327,7 +327,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                     if (viewModel.muhaRefList.ext.isNullOrEmpty) {
                       await viewModel.getMuhaRefList();
                     }
-                    var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
+                    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
                         title: "Referans Kodu", children: viewModel.muhaRefList!.map((e) => BottomSheetModel(title: e.tanimi ?? "", description: e.kodu, value: e)).toList());
                     if (result is MuhasebeReferansModel) {
                       _referansKoduController.text = result.tanimi ?? "";
@@ -352,7 +352,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
   }
 
   Future<void> getKasa() async {
-    KasaList? result = await bottomSheetDialogManager.showKasaBottomSheetDialog(context);
+    final KasaList? result = await bottomSheetDialogManager.showKasaBottomSheetDialog(context);
     if (result is KasaList) {
       viewModel.setKasa(result);
       _kasaController.text = result.kasaTanimi ?? "";
@@ -377,7 +377,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
   }
 
   Future<void> getCari() async {
-    var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+    final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
     if (result is CariListesiModel) {
       viewModel.setShowReferansKodu(yetkiController.referansKodu(result.muhHesapTipi));
       _cariHareketiAciklamaController.text = result.cariAdi ?? "";
@@ -408,7 +408,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
     if (viewModel.dovizKurlariListesi.ext.isNotNullOrEmpty) {
       _dovizKuruController.text = "";
       _dovizTutariController.text = "";
-      var result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Döviz Kuru", children: [
+      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Döviz Kuru", children: [
         BottomSheetModel(
             title: "Alış: ${viewModel.dovizKurlariListesi?.first.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.first.dovAlis,

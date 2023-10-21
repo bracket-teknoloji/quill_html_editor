@@ -117,7 +117,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                               }
                               return;
                             }
-                            var result = await networkManager.deleteFatura(const EditFaturaModel().fromJson(widget.model.toJson()));
+                            final result = await networkManager.deleteFatura(const EditFaturaModel().fromJson(widget.model.toJson()));
                             if (result.success == true) {
                               dialogManager.showSuccessSnackBar("Silindi");
                               widget.onDeleted?.call();
@@ -129,7 +129,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                         iconWidget: Icons.print_outlined,
                         onTap: () async {
                           Get.back();
-                          PrintModel printModel = PrintModel(
+                          final PrintModel printModel = PrintModel(
                               raporOzelKod: widget.siparisTipiEnum.getPrintValue,
                               etiketSayisi: 1,
                               dicParams: DicParams(belgeNo: widget.model.belgeNo, belgeTipi: widget.model.siparisTipi?.rawValue, cariKodu: widget.model.cariKodu));
@@ -250,7 +250,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
           const Divider(
             indent: 0,
             endIndent: 0,
-          ).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi((widget.showEkAciklama == true && aciklamaList().ext.isNotNullOrEmpty)),
+          ).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi(widget.showEkAciklama == true && aciklamaList().ext.isNotNullOrEmpty),
           ...aciklamaList(),
         ],
       ),

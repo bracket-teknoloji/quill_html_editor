@@ -37,20 +37,17 @@ abstract class _BaseStokEditSerilerViewModelBase with Store {
         StokDetayModel.instance.stokList?.first.seriGirislerdeAcik =
             switchValueList[index];
         StokListesiModel.instance.seriGirislerdeAcik = switchValueList[index];
-        break;
       case 1:
         switchValueList[index] = !switchValueList[index];
         StokDetayModel.instance.stokList?.first.seriGiristeOtomatikMi =
             switchValueList[index];
         StokListesiModel.instance.seriGiristeOtomatikMi =
             switchValueList[index];
-        break;
       case 2:
         switchValueList[index] = !switchValueList[index];
         StokDetayModel.instance.stokList?.first.seriCikislardaAcik =
             switchValueList[index];
         StokListesiModel.instance.seriCikislardaAcik = switchValueList[index];
-        break;
       case 3:
         switchValueList[index] = !switchValueList[index];
         switchValueList[index + 1] =
@@ -59,7 +56,6 @@ abstract class _BaseStokEditSerilerViewModelBase with Store {
             switchValueList[index];
         StokListesiModel.instance.seriCikistaOtomatikMi =
             switchValueList[index];
-        break;
       case 4:
         switchValueList[index] = !switchValueList[index];
         switchValueList[index - 1] =
@@ -67,13 +63,11 @@ abstract class _BaseStokEditSerilerViewModelBase with Store {
         StokDetayModel.instance.stokList?.first.seriBakiyeKontrolu =
             switchValueList[index];
         StokListesiModel.instance.seriBakiyeKontrolu = switchValueList[index];
-        break;
       case 5:
         switchValueList[index] = !switchValueList[index];
         StokDetayModel.instance.stokList?.first.seriMiktarKadarSor =
             switchValueList[index];
         StokListesiModel.instance.seriMiktarKadarSor = switchValueList[index];
-        break;
     }
   }
 }

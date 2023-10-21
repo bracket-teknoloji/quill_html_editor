@@ -257,10 +257,10 @@ abstract class _KasaHareketleriViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    var result = await networkManager
+    final result = await networkManager
         .dioGet<KasaIslemleriModel>(path: ApiUrls.getKasaHareketleri, bodyModel: KasaIslemleriModel(), queryParameters: {"FilterModel": jsonEncode(kasaIslemleriRequestModel.toJson())});
     if (result.data is List) {
-      List<KasaIslemleriModel> list = result.data.cast<KasaIslemleriModel>();
+      final List<KasaIslemleriModel> list = result.data.cast<KasaIslemleriModel>();
       if ((kasaIslemleriRequestModel.sayfa ?? 0) < 2) {
         paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
         setKasaIslemleriListesi(list);

@@ -101,7 +101,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
           child: IconButton(
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
-                  dialogManager.showAreYouSureDialog(() => postData());
+                  dialogManager.showAreYouSureDialog(postData);
                 }
               },
               icon: const Icon(Icons.save_outlined)),
@@ -121,7 +121,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
               builder: (_) => ToggleButtons(
                 isSelected: viewModel.isSelected,
                 constraints: BoxConstraints(minWidth: width / 2.1, minHeight: 50),
-                children: viewModel.toggleButtonLabelList.map((e) => Text(e)).toList(),
+                children: viewModel.toggleButtonLabelList.map(Text.new).toList(),
                 onPressed: (index) => widget.model?.baseEditEnum == BaseEditEnum.goruntule ? null : viewModel.setIsSelected(index),
               ),
             ).paddingSymmetric(vertical: UIHelper.lowSize),
@@ -157,7 +157,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                 controller: hareketTuruController,
                 suffixMore: true,
                 onTap: () async {
-                  Map? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Hareket Türü", children: [
+                  final Map? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Hareket Türü", children: [
                     BottomSheetModel(title: "Devir", description: "A", onTap: () => Get.back(result: {"title": "Devir", "value": "A"}))
                   ]);
                   if (result != null) {
@@ -222,7 +222,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                     suffixMore: true,
                     controller: plasiyerController,
                     onTap: () async {
-                      var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                      final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                           title: "Plasiyer",
                           children: mainPageModel?.paramModel?.plasiyerList
                               ?.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", description: e.plasiyerKodu, onTap: () => Get.back(result: e)))
@@ -247,7 +247,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                         viewModel.setProjeList(await getProjeData());
                       }
                       // ignore: use_build_context_synchronously
-                      var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                      final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                           title: "Projeler", children: viewModel.projeList.map((e) => BottomSheetModel(title: e.projeAciklama ?? "", description: e.projeKodu, value: e)).toList());
                       if (result is BaseProjeModel) {
                         projeController.text = result.projeAciklama ?? "";
@@ -265,7 +265,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
   }
 
   void postData() async {
-    var result = await networkManager.dioPost<CariHareketleriModel>(
+    final result = await networkManager.dioPost<CariHareketleriModel>(
         path: ApiUrls.saveCariHareket, bodyModel: CariHareketleriModel(), showLoading: true, data: viewModel.model.toJson(), addCKey: true, addSirketBilgileri: true);
     if (result.success ?? false) {
       dialogManager.showSuccessSnackBar(result.message ?? "Kayıt Başarılı");
@@ -277,7 +277,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
 
   Future<List<BaseProjeModel>?> getProjeData() async {
     dialogManager.showLoadingDialog("Proje Listesi Getiriliyor...");
-    var result = await networkManager.dioGet<BaseProjeModel>(path: ApiUrls.getProjeler, bodyModel: BaseProjeModel(), addCKey: true, addSirketBilgileri: true);
+    final result = await networkManager.dioGet<BaseProjeModel>(path: ApiUrls.getProjeler, bodyModel: BaseProjeModel(), addCKey: true, addSirketBilgileri: true);
 
     dialogManager.hideAlertDialog;
     if (result.success ?? false) {

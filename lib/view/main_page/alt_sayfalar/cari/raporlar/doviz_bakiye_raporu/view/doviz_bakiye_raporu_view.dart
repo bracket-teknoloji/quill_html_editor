@@ -103,7 +103,7 @@ class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
                   readOnly: true,
                   suffixMore: true,
                   onTap: () async {
-                    var result = await Get.toNamed("/mainPage/cariListesi",
+                    final result = await Get.toNamed("/mainPage/cariListesi",
                         arguments: true);
                     if (result != null) {
                       viewModel.pdfModel.dicParams?.cariKodu = result;
@@ -119,10 +119,10 @@ class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
                       controller: plasiyerController,
                       readOnly: true,
                       onTap: () async {
-                        List<PlasiyerList>? plasiyerList =
+                        final List<PlasiyerList>? plasiyerList =
                             CacheManager.getAnaVeri()?.paramModel?.plasiyerList;
                         if (plasiyerList != null) {
-                          PlasiyerList? result = await bottomSheetDialogManager
+                          final PlasiyerList? result = await bottomSheetDialogManager
                               .showBottomSheetDialog(context,
                                   title: "Plasiyer",
                                   children: plasiyerList
@@ -148,7 +148,7 @@ class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
                             readOnly: true,
                             suffixMore: true,
                             onTap: () async {
-                              String? result = await bottomSheetDialogManager
+                              final String? result = await bottomSheetDialogManager
                                   .showBottomSheetDialog(context,
                                       title: "Sırala",
                                       children:
@@ -235,7 +235,7 @@ class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: "CARI", grupNo: -1);
     }
-    List<BottomSheetModel>? bottomSheetList = grupKodList
+    final List<BottomSheetModel> bottomSheetList = grupKodList
         .where((e) => e.grupNo == grupNo)
         .toList()
         .cast<BaseGrupKoduModel>()
@@ -244,29 +244,23 @@ class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
         .toList()
         .cast<BottomSheetModel>();
     // ignore: use_build_context_synchronously
-    var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+    final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
         title: "Grup Kodu", children: bottomSheetList);
     if (result != null) {
       controller?.text = result.grupKodu ?? "";
       switch (grupNo) {
         case 0:
           viewModel.pdfModel.dicParams?.grupKodu = result.grupKodu ?? "";
-          break;
         case 1:
           viewModel.pdfModel.dicParams?.kod1 = result.grupKodu ?? "";
-          break;
         case 2:
           viewModel.pdfModel.dicParams?.kod2 = result.grupKodu ?? "";
-          break;
         case 3:
           viewModel.pdfModel.dicParams?.kod3 = result.grupKodu ?? "";
-          break;
         case 4:
           viewModel.pdfModel.dicParams?.kod4 = result.grupKodu ?? "";
-          break;
         case 5:
           viewModel.pdfModel.dicParams?.kod5 = result.grupKodu ?? "";
-          break;
       }
     }
     return null;

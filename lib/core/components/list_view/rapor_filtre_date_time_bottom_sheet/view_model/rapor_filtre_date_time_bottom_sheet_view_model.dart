@@ -25,7 +25,7 @@ abstract class _RaporFiltreDateTimeBottomSheetViewModelBase with Store {
   void changeSelectedValue(int index) {
     selectedValueList = ObservableList.of(
         [false, false, false, false, false, false, false, false, false, false]);
-    if (selectedValueList[index] == false) {
+    if (!selectedValueList[index]) {
       selectedValueList[index] = true;
     } else {
       selectedValueList[index] = true;

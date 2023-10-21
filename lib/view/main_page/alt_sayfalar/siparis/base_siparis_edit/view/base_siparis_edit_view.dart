@@ -52,8 +52,8 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
     tabController = TabController(length: yetkiController.siparisDigerSekmesiGoster ? 4 : 3, vsync: this);
     tabController.addListener(() {
       if (tabController.indexIsChanging && tabController.previousIndex == 0) {
-        var result = StaticVariables.instance.siparisGenelFormKey.currentState?.validate();
-        if (result == null || result == false) {
+        final result = StaticVariables.instance.siparisGenelFormKey.currentState?.validate();
+        if (result == null || !result) {
           dialogManager.showErrorSnackBar("Lütfen gerekli alanları doldurunuz.");
           tabController.animateTo(tabController.previousIndex);
         }
@@ -86,7 +86,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
     }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (BaseSiparisEditModel.instance.isEmpty && widget.model.baseEditEnum != BaseEditEnum.ekle) {
-        var result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
+        final result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
         if (result.success == true) {
           viewModel.changeFuture();
           BaseSiparisEditModel.setInstance(result.data!.first);
@@ -104,7 +104,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
         BaseSiparisEditModel.instance.isNew = true;
-        var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+        final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
         if (result is CariListesiModel) {
           viewModel.changeIsBaseSiparisEmpty(true);
           BaseSiparisEditModel.instance.tag = "FaturaModel";
@@ -146,7 +146,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
             actions: [
               IconButton(
                 onPressed: () async {
-                  var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                  final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                       title: "Seçenekler",
                       children: [
                         BottomSheetModel(
@@ -161,11 +161,11 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                             title: "PDF Görüntüle",
                             iconWidget: Icons.picture_as_pdf_outlined,
                             onTap: () async {
-                              List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList ?? [])
+                              final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList ?? [])
                                   .where((element) => element.ozelKod == (StaticVariables.instance.isMusteriSiparisleri ? "MusteriSiparisi" : "SaticiSiparisi"))
                                   .whereType<NetFectDizaynList>()
                                   .toList();
-                              var result = await bottomSheetDialogManager.showBottomSheetDialog(Get.context!,
+                              final result = await bottomSheetDialogManager.showBottomSheetDialog(Get.context!,
                                   title: "PDF Görüntüle", children: dizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList());
                               if (result is NetFectDizaynList) {
                                 Get.back();
@@ -250,7 +250,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                     physics: viewModel.isValid ? null : const NeverScrollableScrollPhysics(),
                     children: [
                       Observer(builder: (_) {
-                        if ((viewModel.isBaseSiparisEmpty)) {
+                        if (viewModel.isBaseSiparisEmpty) {
                           return const Center(child: CircularProgressIndicator.adaptive());
                         } else {
                           return BaseSiparislerGenelView(model: model);
@@ -286,8 +286,8 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
               }
             : () async {
                 Get.back();
-                List<KalemModel>? kalemList = BaseSiparisEditModel.instance.kalemList;
-                List<double?>? iskontoList = kalemList?.map((e) => e.iskonto1).toList();
+                final List<KalemModel>? kalemList = BaseSiparisEditModel.instance.kalemList;
+                final List<double?>? iskontoList = kalemList?.map((e) => e.iskonto1).toList();
                 await bottomSheetDialogManager.showBottomSheetDialog(context,
                     title: "Toplu İskonto Girişi",
                     body: SafeArea(
@@ -299,8 +299,8 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                               shrinkWrap: true,
                               itemCount: kalemList?.length ?? 0,
                               itemBuilder: (BuildContext context, int index) {
-                                KalemModel? model = kalemList?[index];
-                                TextEditingController controller = TextEditingController(text: (model?.iskonto1.toIntIfDouble ?? 0).toStringIfNotNull);
+                                final KalemModel? model = kalemList?[index];
+                                final TextEditingController controller = TextEditingController(text: (model?.iskonto1.toIntIfDouble ?? 0).toStringIfNotNull);
                                 return topluIskontoListTile(model, iskontoList, index, controller);
                               },
                             ),
@@ -309,9 +309,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                             children: [
                               Expanded(
                                 child: ElevatedButton(
-                                    onPressed: () {
-                                      Get.back();
-                                    },
+                                    onPressed: Get.back,
                                     style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
                                     child: const Text("İptal")),
                               ),
@@ -377,7 +375,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
   }
 
   Future<void> getData() async {
-    var result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: widget.model.model?.toJson(), showLoading: true);
+    final result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: widget.model.model?.toJson(), showLoading: true);
     if (result.success == true) {
       viewModel.changeFuture();
       BaseSiparisEditModel.setInstance(result.data!.first);
@@ -388,8 +386,8 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
     if (widget.model.baseEditEnum == BaseEditEnum.ekle || (BaseSiparisEditModel.instance.isNew ?? false)) {
       BaseSiparisEditModel.instance.yeniKayit = true;
     }
-    var uuid = const Uuid();
-    var result = await networkManager.dioPost<BaseSiparisEditModel>(
+    const uuid = Uuid();
+    final result = await networkManager.dioPost<BaseSiparisEditModel>(
         path: ApiUrls.saveFatura, bodyModel: BaseSiparisEditModel(), data: (BaseSiparisEditModel.instance..islemId = uuid.v4()).toJson(), showLoading: true);
     if (result.success == true) {
       dialogManager.showSuccessSnackBar("Kayıt Başarılı");

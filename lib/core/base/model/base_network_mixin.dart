@@ -10,7 +10,7 @@ mixin NetworkManagerMixin on Object {
   @override
   operator ==(Object other) {
     if (other is NetworkManagerMixin) {
-      bool result = other.toJson().toString() == toJson().toString();
+      final bool result = other.toJson().toString() == toJson().toString();
       return result;
     } else {
       return false;

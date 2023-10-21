@@ -154,40 +154,28 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
     switch (value.toInt()) {
       case 0:
         text = const Text("Ocak", style: style);
-        break;
       case 1:
         text = const Text("Şubat", style: style);
-        break;
       case 2:
         text = const Text("Mart", style: style);
-        break;
       case 3:
         text = const Text("Nisan", style: style);
-        break;
       case 4:
         text = const Text("Mayıs", style: style);
-        break;
       case 5:
         text = const Text("Haziran", style: style);
-        break;
       case 6:
         text = const Text("Temmuz", style: style);
-        break;
       case 7:
         text = const Text("Ağustos", style: style);
-        break;
       case 8:
         text = const Text("Eylül", style: style);
-        break;
       case 9:
         text = const Text("Ekim", style: style);
-        break;
       case 10:
         text = const Text("Kasım", style: style);
-        break;
       case 11:
         text = const Text("Aralık", style: style);
-        break;
       default:
         text = const Text("", style: style);
         break;
@@ -218,7 +206,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
     return RotationTransition(
         turns: const AlwaysStoppedAnimation(340 / 360),
         child: Text(
-            " ${(widget.lineChartValue![value.toInt()]).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            " ${widget.lineChartValue![value.toInt()].commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
             style: style,
             textAlign: TextAlign.left));
   }

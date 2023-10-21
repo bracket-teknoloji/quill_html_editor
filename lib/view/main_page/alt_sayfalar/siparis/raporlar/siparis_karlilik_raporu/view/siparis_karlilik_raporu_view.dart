@@ -110,7 +110,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                     belgeNoController.clear();
                   },
                   onTap: () async {
-                    var result = await Get.toNamed(
+                    final result = await Get.toNamed(
                         "/mainPage/siparisMusteriSiparisi",
                         arguments: SiparislerWidgetModel(
                             siparisTipiEnum: SiparisTipiEnum.musteri,
@@ -147,7 +147,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                     cariController.clear();
                   },
                   onTap: () async {
-                    var result = await Get.toNamed("/mainPage/cariListesi",
+                    final result = await Get.toNamed("/mainPage/cariListesi",
                         arguments: true);
                     if (result is CariListesiModel) {
                       cariController.text = result.cariAdi ?? "";
@@ -169,7 +169,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                         plasiyerController.clear();
                       },
                       onTap: () async {
-                        PlasiyerList? result = await bottomSheetDialogManager
+                        final PlasiyerList? result = await bottomSheetDialogManager
                             .showPlasiyerBottomSheetDialog(context);
                         if (result != null) {
                           plasiyerController.text =
@@ -186,7 +186,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                       isMust: true,
                       controller: maliyetTipiController,
                       onTap: () async {
-                        var result = await bottomSheetDialogManager
+                        final result = await bottomSheetDialogManager
                             .showBottomSheetDialog(context,
                                 title: "Maliyet Tipi",
                                 children: List.generate(

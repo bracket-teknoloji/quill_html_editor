@@ -135,7 +135,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                 AppBarButton(
                     icon: Icons.sort_by_alpha_outlined,
                     onPressed: () async {
-                      var siralama = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Sıralama seçiniz", children: [
+                      final siralama = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Sıralama seçiniz", children: [
                         BottomSheetModel(title: "Tarih (Eskiden-Yeniye)", onTap: () => Get.back(result: "TARIH_AZ")),
                         BottomSheetModel(title: "Tarih (Yeniden-Eskiye)", onTap: () => Get.back(result: "TARIH_ZA")),
                       ]);
@@ -206,7 +206,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                           dovizTipi: widget.cari?.dovizAdi,
                           cariHareketleriModel: viewModel.cariHareketleriList![index],
                           onTap: () {
-                            List<BottomSheetModel> children2 = [
+                            final List<BottomSheetModel> children2 = [
                               //TODO DÜZELT. ORJİNAL PİCKER'A BAK
 
                               // BottomSheetModel(
@@ -223,9 +223,9 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                   iconWidget: Icons.picture_as_pdf_outlined,
                                   title: "PDF Görüntüle",
                                   onTap: () async {
-                                    PdfModel pdfModel = PdfModel(raporOzelKod: "CariHareket", dicParams: DicParams());
-                                    var anaVeri = CacheManager.getAnaVeri();
-                                    var result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == "CariHareket").toList();
+                                    final PdfModel pdfModel = PdfModel(raporOzelKod: "CariHareket", dicParams: DicParams());
+                                    final anaVeri = CacheManager.getAnaVeri();
+                                    final result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == "CariHareket").toList();
                                     NetFectDizaynList? dizaynList;
                                     if (result.ext.isNotNullOrEmpty) {
                                       if (result!.length == 1) {
@@ -248,7 +248,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                     title: "Düzenle",
                                     onTap: () async {
                                       Get.back();
-                                      var result = await Get.toNamed("/mainPage/cariYeniKayit",
+                                      final result = await Get.toNamed("/mainPage/cariYeniKayit",
                                           arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.duzenle, model: viewModel.cariHareketleriList![index]));
                                       if (result != null) {
                                         viewModel.setCariHareketleri(null);
@@ -273,9 +273,9 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                   iconWidget: Icons.picture_as_pdf_outlined,
                                   title: "Tahsilat Makbuzu",
                                   onTap: () async {
-                                    PdfModel pdfModel = PdfModel(raporOzelKod: "TahsilatMakbuzu", dicParams: DicParams());
-                                    var anaVeri = CacheManager.getAnaVeri();
-                                    var result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == "TahsilatMakbuzu").toList();
+                                    final PdfModel pdfModel = PdfModel(raporOzelKod: "TahsilatMakbuzu", dicParams: DicParams());
+                                    final anaVeri = CacheManager.getAnaVeri();
+                                    final result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == "TahsilatMakbuzu").toList();
                                     NetFectDizaynList? dizaynList;
                                     if (result.ext.isNotNullOrEmpty) {
                                       if (result!.length == 1) {
@@ -358,7 +358,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
   }
 
   Future<List<CariHareketleriModel>> getData() async {
-    var response = await networkManager.dioGet<CariHareketleriModel>(
+    final response = await networkManager.dioGet<CariHareketleriModel>(
       path: ApiUrls.getCariHareketleri,
       bodyModel: CariHareketleriModel(),
       queryParameters: {"SIRALAMA": viewModel.siralama, "EkranTipi": "L", "CariKodu": widget.cari?.cariKodu ?? ""},

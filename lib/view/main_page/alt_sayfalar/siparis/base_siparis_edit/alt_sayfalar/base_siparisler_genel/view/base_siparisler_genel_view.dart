@@ -130,7 +130,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     // valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
 
                     onTap: () async {
-                      var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
+                      final result = await Get.toNamed("mainPage/cariListesi", arguments: true);
                       if (result != null && result is CariListesiModel) {
                         model.cariAdi = result.cariAdi ?? "";
                         model.cariKodu = result.cariKodu ?? "";
@@ -149,7 +149,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     controller: teslimCariController,
                     suffix: IconButton(
                         onPressed: () async {
-                          var result = await Get.toNamed("mainPage/cariRehberi", arguments: model.cariKodu ?? "");
+                          final result = await Get.toNamed("mainPage/cariRehberi", arguments: model.cariKodu ?? "");
                           if (result != null && result is CariListesiModel) {
                             model.teslimCari = result.cariKodu;
                             model.teslimCariAdi = result.cariAdi;
@@ -165,7 +165,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     onTap: !yetkiController.siparisFarkliTeslimCariAktif
                         ? null
                         : () async {
-                            var result = await Get.toNamed("mainPage/cariListesi", arguments: true);
+                            final result = await Get.toNamed("mainPage/cariListesi", arguments: true);
                             if (result != null && result is CariListesiModel) {
                               model.teslimCari = result.cariKodu;
                               model.teslimCariAdi = result.cariAdi;
@@ -187,7 +187,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                             suffixMore: true,
                             controller: belgeTipiController,
                             onTap: () async {
-                              var result = await bottomSheetDialogManager.showBelgeTipiBottomSheetDialog(context);
+                              final result = await bottomSheetDialogManager.showBelgeTipiBottomSheetDialog(context);
                               if (result != null) {
                                 model.belgeTipi = result.belgeTipiId;
                                 belgeTipiController.text = result.belgeTipi ?? "";
@@ -208,7 +208,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                         model.plasiyerAciklama = null;
                       },
                       onTap: () async {
-                        var result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
+                        final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
                         if (result != null) {
                           viewModel.setPlasiyer(result);
                           model.plasiyerKodu = result.plasiyerKodu;
@@ -230,7 +230,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                             readOnly: true,
                             isDateTime: true,
                             onTap: () async {
-                              var result = await dialogManager.showDateTimePicker();
+                              final result = await dialogManager.showDateTimePicker();
                               if (result != null) {
                                 model.tarih = result;
                                 tarihController.text = result.toDateString;
@@ -245,7 +245,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                             isDateTime: true,
                             readOnly: true,
                             onTap: () async {
-                              var result = await dialogManager.showDateTimePicker();
+                              final result = await dialogManager.showDateTimePicker();
                               if (result != null) {
                                 model.teslimTarihi = result;
                                 teslimTarihController.text = result.toDateString;
@@ -267,7 +267,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
                       onClear: () => viewModel.setTopluDepoKodu(null),
                       onTap: () async {
-                        var result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context);
+                        final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context);
                         if (result is DepoList) {
                           viewModel.setTopluDepoKodu(result.depoKodu);
                           topluDepoController.text = result.depoTanimi ?? result.depoKodu.toStringIfNotNull ?? "";
@@ -284,7 +284,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                       controller: projeController,
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                       onTap: () async {
-                        BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
+                        final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
                         if (result is BaseProjeModel) {
                           viewModel.setProjeKodu(result);
                           projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
@@ -305,7 +305,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                             controller: odemeKoduController,
                             valueWidget: Observer(builder: (_) => Text(viewModel.model.odemeKodu ?? "")),
                             onTap: () async {
-                              var result = await bottomSheetDialogManager.showOdemeKoduBottomSheetDialog(context);
+                              final result = await bottomSheetDialogManager.showOdemeKoduBottomSheetDialog(context);
                               if (result is ListCariOdemeKodu) {
                                 viewModel.setOdemeKodu(result.odemeKodu);
                                 odemeKoduController.text = result.aciklama ?? "";
@@ -320,7 +320,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                             controller: kosulController,
                             valueWidget: Observer(builder: (_) => Text(viewModel.model.kosulKodu ?? "")),
                             onTap: () async {
-                              var result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context);
+                              final result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context);
                               if (result != null) {
                                 viewModel.setKosulKodu(result.kosulKodu);
                                 kosulController.text = result.genelKosulAdi ?? result.kosulKodu ?? "";
@@ -342,7 +342,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                       onClear: () => model.ozelKod2 = null,
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod1 ?? "")),
                       onTap: () async {
-                        ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context);
+                        final ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context);
                         if (result != null) {
                           viewModel.setOzelKod1(result.kod);
                           ozelKod1Controller.text = result.aciklama ?? result.kod ?? "";
@@ -360,7 +360,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod2 ?? "")),
                       onClear: () => viewModel.setOzelKod2(null),
                       onTap: () async {
-                        ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context);
+                        final ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context);
                         if (result != null) {
                           viewModel.setOzelKod2(result.kod);
                           ozelKod2Controller.text = result.aciklama ?? result.kod ?? "";
@@ -441,7 +441,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
   }
 
   Future<void> getBelgeNo() async {
-    var result = await networkManager.dioGet<BaseSiparisEditModel>(
+    final result = await networkManager.dioGet<BaseSiparisEditModel>(
         path: ApiUrls.getSiradakiBelgeNo,
         bodyModel: BaseSiparisEditModel(),
         queryParameters: {"Seri": belgeNoController.text, "BelgeTipi": widget.model.siparisTipiEnum?.rawValue, "EIrsaliye": "H", "CariKodu": model.cariKodu ?? ""},
@@ -567,67 +567,51 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
       case 1:
         model.acik1 = value;
         model.ekAcik1 = value;
-        break;
       case 2:
         model.acik2 = value;
         model.ekAcik2 = value;
-        break;
       case 3:
         model.acik3 = value;
         model.ekAcik3 = value;
-        break;
       case 4:
         model.acik4 = value;
         model.ekAcik4 = value;
-        break;
       case 5:
         model.acik5 = value;
         model.ekAcik5 = value;
-        break;
       case 6:
         model.acik6 = value;
         model.ekAcik6 = value;
-        break;
       case 7:
         model.acik7 = value;
         model.ekAcik7 = value;
-        break;
       case 8:
         model.acik8 = value;
         model.ekAcik8 = value;
-        break;
       case 9:
         model.acik9 = value;
         model.ekAcik9 = value;
-        break;
       case 10:
         model.acik10 = value;
         model.ekAcik10 = value;
-        break;
       case 11:
         model.acik11 = value;
         model.ekAcik11 = value;
-        break;
       case 12:
         model.acik12 = value;
         model.ekAcik12 = value;
-        break;
       case 13:
         model.acik13 = value;
         model.ekAcik13 = value;
-        break;
       case 14:
         model.acik14 = value;
         model.ekAcik14 = value;
-        break;
       case 15:
         model.acik15 = value;
         model.ekAcik15 = value;
-        break;
       case 16:
         model.acik16 = value;
         model.ekAcik16 = value;
-        break;
       default:
     }
   }

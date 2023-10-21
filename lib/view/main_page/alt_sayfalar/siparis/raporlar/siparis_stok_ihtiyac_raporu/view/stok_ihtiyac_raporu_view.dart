@@ -97,7 +97,7 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
                         stokController.clear();
                       },
                       onTap: () async {
-                        var result = await Get.toNamed("/mainPage/stokListesi",
+                        final result = await Get.toNamed("/mainPage/stokListesi",
                             arguments: true);
                         if (result is StokListesiModel) {
                           stokController.text = result.stokAdi ?? "";
@@ -117,7 +117,7 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
                               viewModel.pdfModel.dicParams?.plasiyerKodu ??
                                   "")),
                       onTap: () async {
-                        PlasiyerList? result = await bottomSheetDialogManager
+                        final PlasiyerList? result = await bottomSheetDialogManager
                             .showPlasiyerBottomSheetDialog(context);
                         if (result != null) {
                           plasiyerController.text =
@@ -140,7 +140,7 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
                   viewModel.setSirala(null);
                 },
                 onTap: () async {
-                  var result = await bottomSheetDialogManager
+                  final result = await bottomSheetDialogManager
                       .showBottomSheetDialog(context,
                           title: "Sırala",
                           children: List.generate(
@@ -238,7 +238,7 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
 
   Future<String?> getGrupKodu(BuildContext context, int grupNo,
       TextEditingController? controller) async {
-    var result = await bottomSheetDialogManager.showGrupKoduBottomSheetDialog(
+    final result = await bottomSheetDialogManager.showGrupKoduBottomSheetDialog(
         context,
         grupKodu: grupNo,
         modul: GrupKoduEnum.STOK,
@@ -248,27 +248,21 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
         case 0:
           viewModel.pdfModel.dicParams?.grupKodu = result.grupKodu ?? "";
           controller?.text = result.grupAdi ?? "";
-          break;
         case 1:
           viewModel.pdfModel.dicParams?.kod1 = result.grupKodu ?? "";
           controller?.text = result.grupAdi ?? "";
-          break;
         case 2:
           viewModel.pdfModel.dicParams?.kod2 = result.grupKodu ?? "";
           controller?.text = result.grupAdi ?? "";
-          break;
         case 3:
           viewModel.pdfModel.dicParams?.kod3 = result.grupKodu ?? "";
           controller?.text = result.grupAdi ?? "";
-          break;
         case 4:
           viewModel.pdfModel.dicParams?.kod4 = result.grupKodu ?? "";
           controller?.text = result.grupAdi ?? "";
-          break;
         case 5:
           viewModel.pdfModel.dicParams?.kod5 = result.grupKodu ?? "";
           controller?.text = result.grupAdi ?? "";
-          break;
       }
     }
     return null;

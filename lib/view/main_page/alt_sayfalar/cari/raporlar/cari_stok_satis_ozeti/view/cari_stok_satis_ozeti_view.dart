@@ -55,9 +55,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
     stokKodu5Controller = TextEditingController();
     viewModel.setModel(widget.model);
     cariController.text = widget.model?.cariKodu ?? "";
-    Future.delayed(Duration.zero, () {
-      getData();
-    });
+    Future.delayed(Duration.zero, getData);
     super.initState();
   }
 
@@ -222,7 +220,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
     viewModel.model == null ? viewModel.setModel(await Get.toNamed("mainPage/cariListesi", arguments: true) as CariListesiModel?) : null;
     if (viewModel.model != null) {
       cariController.text = viewModel.model?.cariAdi ?? "";
-      var map = {
+      final map = {
         "CariKodu": viewModel.model?.cariKodu,
         "SIRALAMA": viewModel.sirala,
         "EkranTipi": "L",
@@ -241,7 +239,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
         "ArrStokKod5": jsonEncode(viewModel.arrStokKod5.toList()),
       };
       map.removeWhere((key, value) => value == null || value == "[]");
-      var result = await networkManager.dioGet<CariStokSatisOzetiModel>(path: ApiUrls.getFaturaKalemleri, bodyModel: CariStokSatisOzetiModel(), queryParameters: map);
+      final result = await networkManager.dioGet<CariStokSatisOzetiModel>(path: ApiUrls.getFaturaKalemleri, bodyModel: CariStokSatisOzetiModel(), queryParameters: map);
       if (result.data != null) {
         viewModel.setModelList(result.data.map((e) => e as CariStokSatisOzetiModel).toList().cast<CariStokSatisOzetiModel>());
       }
@@ -254,7 +252,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
       grupKodList = await networkManager.getGrupKod(name: "STOK", grupNo: -1);
       dialogManager.hideAlertDialog;
     }
-    List<BottomSheetModel>? bottomSheetList = grupKodList
+    final List<BottomSheetModel> bottomSheetList = grupKodList
         .where((e) => e.grupNo == grupNo)
         .toList()
         .cast<BaseGrupKoduModel>()
@@ -262,34 +260,28 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
         .toList()
         .cast<BottomSheetModel>();
     // ignore: use_build_context_synchronously
-    var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Grup Kodu", children: bottomSheetList);
+    final result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Grup Kodu", children: bottomSheetList);
     if (result != null) {
       controller?.text = result.grupKodu ?? "";
       switch (grupNo) {
         case 0:
           stokGrupKoduController.text = result.grupKodu ?? "";
           viewModel.setArrStokGrupKodu(result.grupKodu ?? "");
-          break;
         case 1:
           stokKodu1Controller.text = result.grupKodu ?? "";
           viewModel.setArrStokKod1(result.grupKodu ?? "");
-          break;
         case 2:
           stokKodu2Controller.text = result.grupKodu ?? "";
           viewModel.setArrStokKod2(result.grupKodu ?? "");
-          break;
         case 3:
           stokKodu3Controller.text = result.grupKodu ?? "";
           viewModel.setArrStokKod3(result.grupKodu ?? "");
-          break;
         case 4:
           stokKodu4Controller.text = result.grupKodu ?? "";
           viewModel.setArrStokKod4(result.grupKodu ?? "");
-          break;
         case 5:
           stokKodu5Controller.text = result.grupKodu ?? "";
           viewModel.setArrStokKod5(result.grupKodu ?? "");
-          break;
       }
     }
     return null;

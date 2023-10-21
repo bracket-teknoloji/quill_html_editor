@@ -187,7 +187,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                 icon: Icons.qr_code_2_outlined,
                 child: const Text("Barkod"),
                 onPressed: () async {
-                  var result = await Get.toNamed("/qr");
+                  final result = await Get.toNamed("/qr");
                   if (result != null) {
                     viewModel.setSearchBar();
                     viewModel.setStokListesi(null);
@@ -203,7 +203,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                   onPressed: () async {
                     if (viewModel.grupKodlari.isEmptyOrNull) {
                       dialogManager.showLoadingDialog("Kodlar alınıyor...");
-                      var grupKodlari = await CariNetworkManager.getKod(name: GrupKoduEnum.STOK);
+                      final grupKodlari = await CariNetworkManager.getKod(name: GrupKoduEnum.STOK);
                       // StaticVariables.grupKodlari = grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
                       if (grupKodlari.data != null) {
                         viewModel.setGrupKodlari(grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>());
@@ -251,7 +251,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                     readOnly: true,
                                     controller: grupKoduController,
                                     onTap: () async {
-                                      var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                      final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                         context,
                                         title: "Grup Kodu",
                                         children: viewModel.grupKodlari
@@ -276,8 +276,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                   suffixMore: true,
                                   controller: kod1Controller,
                                   onTap: () async {
-                                    List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 1).toList();
-                                    var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                    final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 1).toList();
+                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                       context,
                                       title: "Kod 1",
                                       children: grupKodlari.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e)).toList(),
@@ -299,8 +299,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                   suffixMore: true,
                                   controller: kod2Controller,
                                   onTap: () async {
-                                    List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 2).toList();
-                                    var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                    final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 2).toList();
+                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                       context,
                                       title: "Kod 2",
                                       children: grupKodlari.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e)).toList(),
@@ -318,8 +318,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                   suffixMore: true,
                                   controller: kod3Controller,
                                   onTap: () async {
-                                    List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 3).toList();
-                                    var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                    final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 3).toList();
+                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                       context,
                                       title: "Kod 3",
                                       children: grupKodlari.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e)).toList(),
@@ -341,8 +341,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                   suffixMore: true,
                                   controller: kod4Controller,
                                   onTap: () async {
-                                    List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 4).toList();
-                                    var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                    final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 4).toList();
+                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                       context,
                                       title: "Kod 4",
                                       children: grupKodlari
@@ -371,8 +371,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                   suffixMore: true,
                                   controller: kod5Controller,
                                   onTap: () async {
-                                    List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 5).toList();
-                                    var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                    final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 5).toList();
+                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                       context,
                                       title: "Kod 5",
                                       children: grupKodlari
@@ -439,7 +439,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                   child: const Text("Sırala"),
                   // child: const Icon(Icons.sort_by_alpha_outlined),
                   onPressed: () async {
-                    String? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Sırala", children: [
+                    final String? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Sırala", children: [
                       BottomSheetModel(title: "Stok Adı (A-Z)", value: "AZ", onTap: () => Get.back(result: "AZ")),
                       BottomSheetModel(title: "Stok Adı (Z-A)", value: "ZA", onTap: () => Get.back(result: "ZA")),
                       BottomSheetModel(title: "Stok Kodu (A-Z)", value: "KOD_AZ", onTap: () => Get.back(result: "KOD_AZ")),
@@ -487,7 +487,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
         child: CustomFloatingActionButton(
             isScrolledDown: viewModel.isScrolledDown,
             onPressed: () {
-              BaseEditModel result = BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.ekle, model: StokListesiModel());
+              final BaseEditModel result = BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.ekle, model: StokListesiModel());
               Get.toNamed("/mainPage/stokEdit", arguments: result);
             }).yetkiVarMi(yetkiController.stokKartiYeniKayit),
       );
@@ -507,7 +507,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
               itemCount: (viewModel.stokListesi?.length ?? 0) + 1,
               itemBuilder: (context, index) {
                 if (index < (viewModel.stokListesi?.length ?? 0)) {
-                  StokListesiModel stok = stokListesi![index];
+                  final StokListesiModel stok = stokListesi![index];
 
                   return Card(
                     child: Listener(
@@ -553,7 +553,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                         onTap: (widget.isGetData ?? false)
                             ? () => Get.back(result: stok)
                             : () async {
-                                var children2 = [
+                                final children2 = [
                                   BottomSheetModel(
                                       title: "Görüntüle",
                                       iconWidget: Icons.visibility,
@@ -601,8 +601,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                 ];
                                 children2.insert(
                                     2, BottomSheetModel(title: "Sil", iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? "")).yetkiKontrol(yetkiController.stokKartiSilme));
-                                List<BottomSheetModel>? newResult = children2.nullCheckWithGeneric;
-                                BaseEditModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: stok.stokKodu ?? "", children: newResult);
+                                final List<BottomSheetModel> newResult = children2.nullCheckWithGeneric;
+                                final BaseEditModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: stok.stokKodu ?? "", children: newResult);
                                 if (result != null) {
                                   await Get.toNamed("/mainPage/stokEdit", arguments: result);
                                   viewModel.setStokListesi(null);
@@ -627,9 +627,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   }
 
   Future<void> getData() async {
-    var data2 = {"MenuKodu": "STOK_STOK", "ResimGoster": viewModel.resimleriGoster, "Siralama": viewModel.siralama, "Sayfa": viewModel.sayfa, "BakiyeDurumu": viewModel.bakiye ?? ""};
+    final data2 = {"MenuKodu": "STOK_STOK", "ResimGoster": viewModel.resimleriGoster, "Siralama": viewModel.siralama, "Sayfa": viewModel.sayfa, "BakiyeDurumu": viewModel.bakiye ?? ""};
     if (!viewModel.bottomSheetModel.arrGrupKodu.isEmptyOrNull) {
-      List<String> liste = [];
+      final List<String> liste = [];
       viewModel.bottomSheetModel.arrGrupKodu?.forEach((element) {
         liste.add(element.grupKodu ?? "");
       });
@@ -639,44 +639,44 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
       data2["SearchText"] = viewModel.searchValue;
     }
     if (!viewModel.bottomSheetModel.arrKod1.isEmptyOrNull) {
-      List<String> liste = [];
+      final List<String> liste = [];
       viewModel.bottomSheetModel.arrKod1?.forEach((element) {
         liste.add(element.grupKodu ?? "");
       });
       data2["ArrKod1"] = liste;
     }
     if (!viewModel.bottomSheetModel.arrKod2.isEmptyOrNull) {
-      List<String> liste = [];
+      final List<String> liste = [];
       viewModel.bottomSheetModel.arrKod2?.forEach((element) {
         liste.add(element.grupKodu ?? "");
       });
       data2["ArrKod2"] = liste;
     }
     if (!viewModel.bottomSheetModel.arrKod3.isEmptyOrNull) {
-      List<String> liste = [];
+      final List<String> liste = [];
       viewModel.bottomSheetModel.arrKod3?.forEach((element) {
         liste.add(element.grupKodu ?? "");
       });
       data2["ArrKod3"] = liste;
     }
     if (!viewModel.bottomSheetModel.arrKod4.isEmptyOrNull) {
-      List<String> liste = [];
+      final List<String> liste = [];
       viewModel.bottomSheetModel.arrKod4?.forEach((element) {
         liste.add(element.grupKodu ?? "");
       });
       data2["ArrKod4"] = liste;
     }
     if (!viewModel.bottomSheetModel.arrKod5.isEmptyOrNull) {
-      List<String> liste = [];
+      final List<String> liste = [];
       viewModel.bottomSheetModel.arrKod5?.forEach((element) {
         liste.add(element.grupKodu ?? "");
       });
       data2["ArrKod5"] = liste;
     }
-    GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: data2, bodyModel: StokListesiModel());
+    final GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: data2, bodyModel: StokListesiModel());
     if (response.success ?? false) {
-      Map<String, MemoryImage> imageMap = {};
-      List<StokListesiModel>? liste = response.data.map((e) => e as StokListesiModel).toList().cast<StokListesiModel>();
+      final Map<String, MemoryImage> imageMap = {};
+      final List<StokListesiModel>? liste = response.data.map((e) => e as StokListesiModel).toList().cast<StokListesiModel>();
 
       if (viewModel.sayfa == 1) {
         for (var stokKaydi in liste ?? <StokListesiModel>[]) {
@@ -722,7 +722,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   void deleteStok(String stokKodu) {
     dialogManager.showAreYouSureDialog(() async {
       Get.back();
-      GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(bodyModel: StokListesiModel(), path: ApiUrls.deleteStok, queryParameters: {"Kod": stokKodu});
+      final GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(bodyModel: StokListesiModel(), path: ApiUrls.deleteStok, queryParameters: {"Kod": stokKodu});
       if (response.success ?? false) {
         dialogManager.showSuccessSnackBar("Başarıyla Silindi");
         viewModel.resetSayfa();

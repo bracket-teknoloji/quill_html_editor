@@ -86,7 +86,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
               },
               suffix: IconButton(
                   onPressed: () async {
-                    var result = await Get.toNamed("/qr");
+                    final result = await Get.toNamed("/qr");
                     if (result != null) {
                       _searchTextController.text = result;
                       await Get.toNamed("/mainPage/stokRehberi", arguments: result);
@@ -112,12 +112,12 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                               primary: true,
                               itemCount: viewModel.kalemList?.length ?? 0,
                               itemBuilder: (context, index) {
-                                KalemModel? kalemModel = viewModel.kalemList?[index];
+                                final KalemModel? kalemModel = viewModel.kalemList?[index];
                                 return Card(
                                     child: Column(children: [
                                   kalemListTile(context, index, kalemModel),
-                                  ...List.generate((kalemModel?.kalemList?.length ?? 0), (index2) {
-                                    KalemModel? model = kalemModel?.kalemList?[index2];
+                                  ...List.generate(kalemModel?.kalemList?.length ?? 0, (index2) {
+                                    final KalemModel? model = kalemModel?.kalemList?[index2];
                                     return Column(
                                       children: [
                                         const Divider(),
@@ -209,7 +209,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
       ),
       subtitle: Wrap(
           children: [
-        Text("Miktar: ${((kalemList?.kalan.toIntIfDouble ?? 0)).toIntIfDouble.toStringIfNotNull ?? ""}"),
+        Text("Miktar: ${(kalemList?.kalan.toIntIfDouble ?? 0).toIntIfDouble.toStringIfNotNull ?? ""}"),
         Text("Fiyat: ${kalemList?.brutFiyat.toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""}"),
         // Text("KDV %: ${(kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
         Text("KDV %: ${((StaticVariables.instance.isMusteriSiparisleri ? kalemList?.stokSatisKdv : kalemList?.stokAlisKdv) ?? kalemList?.kdvOrani).toIntIfDouble ?? ""}"),

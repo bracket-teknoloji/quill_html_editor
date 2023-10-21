@@ -47,13 +47,13 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView>
   @override
   Widget build(BuildContext context) {
     StokListesiModel.setInstance(widget.model?.model);
-    List<Tab> tabList = [
+    final List<Tab> tabList = [
       const Tab(child: Text("Genel")),
       ...?tabs,
       const Tab(child: Text("Fiyat")),
       const Tab(child: Text("Seriler"))
     ];
-    List<Widget> viewList = [
+    final List<Widget> viewList = [
       BaseStokEditGenelView(model: widget.model?.baseEditEnum),
       ...?views,
       BaseStokEditFiyatView(model: widget.model?.baseEditEnum),
@@ -80,9 +80,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView>
                   child: IconButton(
                       onPressed: () async {
                         if (validate.isEmpty) {
-                          dialogManager.showAreYouSureDialog(() {
-                            postData();
-                          });
+                          dialogManager.showAreYouSureDialog(postData);
                         } else {
                           dialogManager.showEmptyFieldDialog(
                             validate.keys,
@@ -105,8 +103,8 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView>
   }
 
   void postData() async {
-    StokListesiModel model = StokListesiModel.instance;
-    SaveStokModel saveStokModel = SaveStokModel().fromJson(model.toJson());
+    final StokListesiModel model = StokListesiModel.instance;
+    final SaveStokModel saveStokModel = SaveStokModel().fromJson(model.toJson());
     saveStokModel.adi = model.stokAdi;
     saveStokModel.kodu = model.stokKodu;
     saveStokModel.alisFiyati1 = model.alisFiat1;
@@ -145,7 +143,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView>
     saveStokModel.alisDovizTipi = model.alisDovTip;
     saveStokModel.satisDovizTipi = model.satDovTip;
     dialogManager.showLoadingDialog("Kaydediliyor..");
-    var result = await networkManager.dioPost<SaveStokModel>(
+    final result = await networkManager.dioPost<SaveStokModel>(
       path: ApiUrls.saveStok,
       bodyModel: SaveStokModel(),
       addCKey: true,
@@ -164,8 +162,8 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView>
   }
 
   Map<String, int> get validate {
-    StokListesiModel model = StokListesiModel.instance;
-    Map<String, int> validate = {};
+    final StokListesiModel model = StokListesiModel.instance;
+    final Map<String, int> validate = {};
     if (model.stokKodu.ext.isNullOrEmpty) {
       validate["Stok Kodu"] = 0;
     }

@@ -48,13 +48,13 @@ class _CariRehberiCardState extends BaseState<CariRehberiCard> {
             Row(
               children: [
                 model.efaturaMi == true
-                    ? const Badge(label: Text(("E-Fatura")))
+                    ? const Badge(label: Text("E-Fatura"))
                     : const SizedBox(),
                 model.boylam != null && model.enlem != null
-                    ? const Badge(label: Text(("Konum")))
+                    ? const Badge(label: Text("Konum"))
                     : const SizedBox(),
                 model.dovizli == true
-                    ? Badge(label: Text(("Dövizli ${model.dovizAdi}")))
+                    ? Badge(label: Text("Dövizli ${model.dovizAdi}"))
                     : const SizedBox(),
               ]
                   .map((e) => e.paddingOnly(

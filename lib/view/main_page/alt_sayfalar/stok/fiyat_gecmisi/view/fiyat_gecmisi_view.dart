@@ -87,7 +87,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                   : IconButton(
                       icon: const Icon(Icons.sort_by_alpha_outlined),
                       onPressed: () async {
-                        var result = await bottomSheetDialogManager
+                        final result = await bottomSheetDialogManager
                             .showBottomSheetDialog(context,
                                 title: "Sırala",
                                 children: List.generate(
@@ -156,7 +156,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                     controller: fiyatTipiController,
                                     suffixMore: true,
                                     onTap: () async {
-                                      var result = await bottomSheetDialogManager
+                                      final result = await bottomSheetDialogManager
                                           .showBottomSheetDialog(context,
                                               title: "Fiyat Tipi",
                                               children: List.generate(
@@ -245,18 +245,18 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                             suffixMore: true,
                             onClear: () => viewModel.setDizaynId(null),
                             onTap: () async {
-                              List<NetFectDizaynList>? dizaynList =
+                              final List<NetFectDizaynList>? dizaynList =
                                   parametreModel.netFectDizaynList
                                       ?.where((element) =>
                                           element.ozelKod == "StokEtiket" &&
                                           (profilYetkiModel
                                                   .yazdirmaDizaynStokEtiketi
-                                                  ?.any((element2) => (element
+                                                  ?.any((element2) => element
                                                           .id ==
-                                                      element2)) ??
+                                                      element2) ??
                                               true))
                                       .toList();
-                              var result = await bottomSheetDialogManager
+                              final result = await bottomSheetDialogManager
                                   .showBottomSheetDialog(context,
                                       title: "Dizayn",
                                       children: List.generate(
@@ -283,7 +283,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                             readOnly: true,
                             onClear: () => viewModel.setYaziciAdi(null),
                             onTap: () async {
-                              List<YaziciList>? yaziciList = parametreModel
+                              final List<YaziciList>? yaziciList = parametreModel
                                   .yaziciList
                                   ?.where((element) =>
                                       profilYetkiModel
@@ -292,7 +292,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                               element2 == element.yaziciAdi) ??
                                       true)
                                   .toList();
-                              var result = await bottomSheetDialogManager
+                              final result = await bottomSheetDialogManager
                                   .showBottomSheetDialog(context,
                                       title: "Yazıcı",
                                       children: List.generate(
@@ -317,10 +317,10 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                         child: Observer(builder: (_) {
                           return ListView.builder(
                             itemCount:
-                                (viewModel.filteredModelList?.length ?? 0),
+                                viewModel.filteredModelList?.length ?? 0,
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
-                              FiyatGecmisiResponseModel? model =
+                              final FiyatGecmisiResponseModel? model =
                                   viewModel.filteredModelList?[index];
                               return StokFiyatGecmisiCard(
                                 model: model,
@@ -335,13 +335,13 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                         "Lütfen Yazıcı Seçiniz");
                                     return;
                                   }
-                                  DicParams dicParams = DicParams(
+                                  final DicParams dicParams = DicParams(
                                       stokKodu: model?.stokKodu,
                                       fiyatTipi: model?.fiyatTipi,
                                       tblnfStokfiyatgecmisiId:
                                           model?.id.toStringIfNotNull);
                                   viewModel.setDicParams(dicParams);
-                                  var result = await bottomSheetDialogManager
+                                  final result = await bottomSheetDialogManager
                                       .showPrintBottomSheetDialog(context,
                                           viewModel.printModel, null, null);
                                   if (result == true) {
@@ -361,7 +361,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
 
   void getData() async {
     viewModel.setModelList(null);
-    var result = await networkManager.dioPost<FiyatGecmisiResponseModel>(
+    final result = await networkManager.dioPost<FiyatGecmisiResponseModel>(
         path: ApiUrls.getStokFiyatGecmisi,
         bodyModel: FiyatGecmisiResponseModel(),
         data: viewModel.model.toJson());
@@ -374,7 +374,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
   }
 
   void deleteData(int id, int islemKodu) async {
-    var result = await networkManager.dioPost<FiyatGecmisiResponseModel>(
+    final result = await networkManager.dioPost<FiyatGecmisiResponseModel>(
         path: ApiUrls.savestokFiyatGecmisi,
         bodyModel: FiyatGecmisiResponseModel(),
         data: {"ID": id, "ISLEM_KODU": islemKodu});

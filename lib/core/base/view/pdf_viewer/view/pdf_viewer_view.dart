@@ -51,7 +51,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
   Widget build(BuildContext context) {
     //* Açılıştaki dialog için
     Future.delayed(Duration.zero, () async {
-      bool result = await widget.filterBottomSheet?.call() ?? true;
+      final bool result = await widget.filterBottomSheet?.call() ?? true;
       if (result) {
         getData();
       }
@@ -67,7 +67,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
   }
 
   void awaiter() async {
-    File? pdf = await getFile;
+    final File? pdf = await getFile;
     if (pdf != null) {
       viewModel.changePdfFile(pdf);
     }
@@ -98,7 +98,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                 ? AppBarButton(
                     icon: Icons.filter_alt_outlined,
                     onPressed: () async {
-                      bool result = widget.filterBottomSheet != null
+                      final bool result = widget.filterBottomSheet != null
                           ? await widget.filterBottomSheet!()
                           : true;
 
@@ -112,7 +112,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                 icon: Icons.print_outlined,
                 child: const Text("Yazdır"),
                 onPressed: () async {
-                  PrintModel printModel = PrintModel(
+                  final PrintModel printModel = PrintModel(
                       raporOzelKod: widget.pdfData?.raporOzelKod ?? "",
                       standart: true,
                       etiketSayisi: 1,
@@ -151,7 +151,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                   controller: pdfViewerController,
                   interactionMode: PdfInteractionMode.selection,
                   onTextSelectionChanged: (details) {
-                    if ((Platform.isAndroid || Platform.isIOS)) {
+                    if (Platform.isAndroid || Platform.isIOS) {
                       if (details.selectedText == null &&
                           overlayEntry != null) {
                         overlayEntry?.remove();
@@ -200,7 +200,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
       ));
   Future getData() async {
     viewModel.resetFuture();
-    var result = await networkManager.getPDF(widget.pdfData ?? PdfModel());
+    final result = await networkManager.getPDF(widget.pdfData ?? PdfModel());
     if (result.data != null) {
       pdfFile = result.data.first;
       if (result.success == true) {

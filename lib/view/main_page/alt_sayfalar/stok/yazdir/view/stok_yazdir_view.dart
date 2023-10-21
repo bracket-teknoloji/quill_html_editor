@@ -98,7 +98,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
               readOnly: false,
               isMust: true,
               suffixMore: true,
-              onSubmitted: (value) => getStok(value),
+              onSubmitted: getStok,
               valueWidget: Observer(builder: (_) => Text(viewModel.printModel.dicParams?.stokKodu ?? "")),
               onTap: () async {
                 var result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
@@ -107,7 +107,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                   viewModel.setStokKodu(result);
                   stokController.text = result.stokKodu.toString();
                   if (parametreModel.esnekYapilandir == true && result.yapilandirmaAktif != null) {
-                    var stokYapilandirmaKodu = await Get.toNamed("/mainPage/yapilandirmaRehberi", arguments: result);
+                    final stokYapilandirmaKodu = await Get.toNamed("/mainPage/yapilandirmaRehberi", arguments: result);
                     if (stokYapilandirmaKodu is YapilandirmaRehberiModel) {
                       viewModel.setYapilandirmaKodu(stokYapilandirmaKodu.yapkod);
                       yapilandirmaKoduController.text = stokYapilandirmaKodu.yapacik ?? "";
@@ -123,7 +123,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
               suffix: IconButton(
                   icon: const Icon(Icons.qr_code_2_outlined),
                   onPressed: () async {
-                    var result = await Get.toNamed("/qr");
+                    final result = await Get.toNamed("/qr");
                     if (result != null) {
                       // barkodKontroller.text = result.toString();
                     }
@@ -139,7 +139,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                     suffixMore: true,
                     valueWidget: Observer(builder: (_) => Text(viewModel.printModel.dicParams?.yapkod ?? "")),
                     onTap: () async {
-                      var result = await Get.toNamed("/mainPage/yapilandirmaRehberi", arguments: viewModel.stokListesiModel);
+                      final result = await Get.toNamed("/mainPage/yapilandirmaRehberi", arguments: viewModel.stokListesiModel);
                       if (result is YapilandirmaRehberiModel) {
                         viewModel.setYapilandirmaKodu(result.yapkod);
                         yapilandirmaKoduController.text = result.yapacik ?? "";
@@ -233,7 +233,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                           value: viewModel.yaziciVeDizayniHatirla,
                           onChanged: (value) {
                             viewModel.changeYaziciVeDizayniHatirla(value);
-                            if (value == true) {
+                            if (value) {
                               CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(stokYazdirDizaynVeYaziciHatirla: true));
                             } else {
                               CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(stokYazdirDizaynVeYaziciHatirla: false, yaziciList: null, netFectDizaynList: null));
@@ -249,10 +249,10 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
   }
 
   Future<void> setDizayn() async {
-    List<NetFectDizaynList>? dizaynList = parametreModel.netFectDizaynList
-        ?.where((element) => element.ozelKod == "StokEtiket" && (profilYetkiModel.yazdirmaDizaynStokEtiketi?.any((element2) => (element.id == element2)) ?? true))
+    final List<NetFectDizaynList>? dizaynList = parametreModel.netFectDizaynList
+        ?.where((element) => element.ozelKod == "StokEtiket" && (profilYetkiModel.yazdirmaDizaynStokEtiketi?.any((element2) => element.id == element2) ?? true))
         .toList();
-    var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+    final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
         title: "Dizayn",
         children: List.generate(
             dizaynList?.length ?? 0, (index) => BottomSheetModel(title: dizaynList?[index].dizaynAdi ?? "", value: dizaynList?[index], description: dizaynList?[index].id.toStringIfNotNull ?? "")));
@@ -270,8 +270,8 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
   }
 
   Future<void> setYazici() async {
-    List<YaziciList>? yaziciList = parametreModel.yaziciList?.where((element) => profilYetkiModel.yazdirmaStokEtiketiYazicilari?.any((element2) => element2 == element.yaziciAdi) ?? true).toList();
-    var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+    final List<YaziciList>? yaziciList = parametreModel.yaziciList?.where((element) => profilYetkiModel.yazdirmaStokEtiketiYazicilari?.any((element2) => element2 == element.yaziciAdi) ?? true).toList();
+    final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
         title: "Yazıcı",
         children: List.generate(
           yaziciList?.length ?? 0,
@@ -295,13 +295,13 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
 
   Future<void> postPrint() async {
     if (formKey.currentState?.validate() ?? false) {
-      var result = await networkManager.postPrint(context, model: viewModel.printModel);
+      final result = await networkManager.postPrint(context, model: viewModel.printModel);
       if (result.success == true) {}
     }
   }
 
   Future<StokListesiModel?> getStok(String? stokKodu) async {
-    var result = await networkManager
+    final result = await networkManager
         .dioPost<StokListesiModel>(path: ApiUrls.getStoklar, bodyModel: StokListesiModel(), data: {"StokKodu": stokKodu, "EkranTipi": "D", "Okutuldu": true, "MenuKodu": "STOK_ETIK"});
     if (result.data != null) {
       return result.data.firstWhere((element) => element.stokKodu == stokKodu);

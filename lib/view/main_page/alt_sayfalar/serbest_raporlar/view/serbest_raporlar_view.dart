@@ -71,7 +71,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                                 isDateTime: true,
                                 // suffix: const Icon(Icons.calendar_today),
                                 onTap: () async {
-                                  DateTime? result =
+                                  final DateTime? result =
                                       await dialogManager.showDateTimePicker();
                                   if (result != null) {
                                     viewModel.changeDicParams(
@@ -109,7 +109,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                                 onTap: e.paramMap == null
                                     ? null
                                     : () async {
-                                        var result =
+                                        final result =
                                             await bottomSheetDialogManager
                                                 .showBottomSheetDialog(context,
                                                     title: "Seçiniz",
@@ -169,7 +169,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
 
   void getRehber(SerbestRaporResponseModel model) async {
     if (model.stokKoduMu || model.cariKoduMu) {
-      var result = await Get.toNamed(
+      final result = await Get.toNamed(
           "/mainPage/${model.rehberTipi?.toLowerCase()}Listesi",
           arguments: true);
       if (result != null) {
@@ -177,7 +177,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
             model.stokKoduMu ? result.stokKodu : result.cariKodu);
       }
     } else if (model.plasiyerKoduMu) {
-      var result =
+      final result =
           await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
       // List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? [];
       // var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
@@ -186,9 +186,9 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
         viewModel.changeDicParams(model.adi ?? "", result.plasiyerKodu ?? "");
       }
     } else if (model.grupKoduMu) {
-      var grupKodList = await networkManager.getGrupKod(
+      final grupKodList = await networkManager.getGrupKod(
           name: model.rehberTipi?.split("_").first ?? "", grupNo: 0);
-      var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+      final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
           title: "Grup Kodu Seçiniz",
           children: grupKodList
               .map((e) => BottomSheetModel(
@@ -199,10 +199,10 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
         viewModel.changeControllerText(model.adi ?? "", result.grupAdi ?? "");
       }
     } else if (model.numaraliGrupKoduMu) {
-      var grupKodList = await networkManager.getGrupKod(
+      final grupKodList = await networkManager.getGrupKod(
           name: model.rehberTipi?.split("_").first ?? "",
           grupNo: int.tryParse(model.rehberTipi!.split("").last) ?? 0);
-      var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+      final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
           title: "Grup Kodu Seçiniz",
           children: grupKodList
               .map((e) => BottomSheetModel(
@@ -215,15 +215,15 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
       // var dovizList = CacheManager.getAnaVeri()?.paramModel?.dovizList ?? [];
       //  = await bottomSheetDialogManager.showBottomSheetDialog(context,
       //     title: "Döviz Seçiniz", children: dovizList.map((e) => BottomSheetModel(title: e.dovizKodu.toStringIfNotNull ?? "", onTap: () => Get.back(result: e))).toList());
-      var result =
+      final result =
           await bottomSheetDialogManager.showDovizBottomSheetDialog(context);
       if (result != null) {
         viewModel.changeDicParams(model.adi ?? "", result.dovizKodu.toString());
       }
     } else if (model.muhasebeKoduMu) {
-      var muhasebeList = await networkManager.dioGet<StokMuhasebeKoduModel>(
+      final muhasebeList = await networkManager.dioGet<StokMuhasebeKoduModel>(
           path: ApiUrls.getStokMuhasebeKodlari, bodyModel: StokMuhasebeKoduModel());
-      var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+      final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
           title: "Muhasebe Kodu Seçiniz",
           children: muhasebeList.data
               .map((e) => BottomSheetModel(
@@ -235,7 +235,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
         viewModel.changeDicParams(model.adi ?? "", result.muhKodu.toString());
       }
     } else if (model.cariVKNMi) {
-      var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+      final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
       if (result != null) {
         viewModel.changeDicParams(model.adi ?? "", result.vergiNumarasi);
       }
@@ -244,7 +244,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
 
   Future<void> getData() async {
     // dialogManager.showLoadingDialog("Lütfen Bekleyiniz");
-    var result = await networkManager.dioGet<SerbestRaporResponseModel>(
+    final result = await networkManager.dioGet<SerbestRaporResponseModel>(
         path: ApiUrls.getDizaynParametreleri,
         bodyModel: SerbestRaporResponseModel(),
         queryParameters: {"ID": widget.dizaynList?.id});

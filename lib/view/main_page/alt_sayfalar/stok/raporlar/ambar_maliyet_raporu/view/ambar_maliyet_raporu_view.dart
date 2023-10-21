@@ -96,7 +96,7 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
                       readOnly: true,
                       suffixMore: true,
                       onTap: () async {
-                        var result = await Get.toNamed("/mainPage/stokListesi",
+                        final result = await Get.toNamed("/mainPage/stokListesi",
                             arguments: true);
                         if (result != null) {
                           stokController.text = result.stokKodu ?? "";
@@ -113,7 +113,7 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
                     isMust: true,
                     readOnly: true,
                     onTap: () async {
-                      var result = await bottomSheetDialogManager
+                      final result = await bottomSheetDialogManager
                           .showBottomSheetDialog(context,
                               title: "Maliyet Tipi",
                               children: viewModel.maliyetTipiList);
@@ -207,7 +207,7 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: "STOK", grupNo: -1);
     }
-    List<BottomSheetModel>? bottomSheetList = grupKodList
+    final List<BottomSheetModel> bottomSheetList = grupKodList
         .where((e) => e.grupNo == grupNo)
         .toList()
         .cast<BaseGrupKoduModel>()
@@ -216,29 +216,23 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
         .toList()
         .cast<BottomSheetModel>();
     // ignore: use_build_context_synchronously
-    var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+    final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
         title: "Grup Kodu", children: bottomSheetList);
     if (result != null) {
       controller?.text = result.grupKodu ?? "";
       switch (grupNo) {
         case 0:
           viewModel.pdfModel.dicParams?.grupKodu = result.grupKodu ?? "";
-          break;
         case 1:
           viewModel.pdfModel.dicParams?.kod1 = result.grupKodu ?? "";
-          break;
         case 2:
           viewModel.pdfModel.dicParams?.kod2 = result.grupKodu ?? "";
-          break;
         case 3:
           viewModel.pdfModel.dicParams?.kod3 = result.grupKodu ?? "";
-          break;
         case 4:
           viewModel.pdfModel.dicParams?.kod4 = result.grupKodu ?? "";
-          break;
         case 5:
           viewModel.pdfModel.dicParams?.kod5 = result.grupKodu ?? "";
-          break;
       }
     }
     return null;

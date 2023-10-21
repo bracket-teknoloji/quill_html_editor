@@ -44,7 +44,7 @@ class CariListesiRequestModel
       _$CariListesiRequestModelFromJson(json);
 
   Map<String, dynamic> toJsonWithList() {
-    var map = toJson();
+    final map = toJson();
     // replace list items with json
     if (map["ArrPlasiyer"] != null) {
       map["ArrPlasiyer"] = jsonEncode(map["ArrPlasiyer"]);

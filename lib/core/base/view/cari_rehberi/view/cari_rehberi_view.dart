@@ -137,7 +137,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
         return CustomFloatingActionButton(
             isScrolledDown: viewModel.isScrollDown,
             onPressed: () async {
-              String? siradakiKod = await CariNetworkManager.getSiradakiKod();
+              final String? siradakiKod = await CariNetworkManager.getSiradakiKod();
               Get.toNamed("/mainPage/cariEdit",
                   arguments: BaseEditModel(
                       baseEditEnum: BaseEditEnum.ekle,
@@ -173,7 +173,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                         child: const Center(
                             child: CircularProgressIndicator.adaptive()));
                   }
-                  CariListesiModel item = viewModel.cariListesi![index];
+                  final CariListesiModel item = viewModel.cariListesi![index];
                   return CariRehberiCard(model: item);
                 });
           }
@@ -184,7 +184,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
       icon: Icons.sort_by_alpha_outlined,
       child: const Text("Sırala"),
       onPressed: () async {
-        var result = await bottomSheetDialogManager.showBottomSheetDialog(
+        final result = await bottomSheetDialogManager.showBottomSheetDialog(
             context,
             title: "Sırala",
             children: List.generate(
@@ -225,7 +225,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                             if (viewModel.sehirler == null) {
                               await viewModel.getSehirBilgileri();
                             }
-                            var result = await bottomSheetDialogManager
+                            final result = await bottomSheetDialogManager
                                 .showBottomSheetDialog(context,
                                     title: "Şehir Seçiniz",
                                     children: List.generate(
@@ -268,7 +268,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                         tipiController.clear();
                       },
                       onTap: () async {
-                        var result = await bottomSheetDialogManager
+                        final result = await bottomSheetDialogManager
                             .showBottomSheetDialog(context,
                                 title: "Tipi Seçiniz",
                                 children: List.generate(
@@ -291,7 +291,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                       suffixMore: true,
                       controller: kod1Controller,
                       onTap: () async {
-                        var result = await bottomSheetDialogManager
+                        final result = await bottomSheetDialogManager
                             .showCheckBoxBottomSheetDialog(context,
                                 title: "Kod 1 Seçiniz",
                                 children: List.generate(
@@ -323,7 +323,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                       suffixMore: true,
                       controller: kod2Controller,
                       onTap: () async {
-                        var result = await bottomSheetDialogManager
+                        final result = await bottomSheetDialogManager
                             .showCheckBoxBottomSheetDialog(context,
                                 title: "Kod 2 Seçiniz",
                                 children: List.generate(
@@ -351,7 +351,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                       suffixMore: true,
                       controller: kod3Controller,
                       onTap: () async {
-                        var result = await bottomSheetDialogManager
+                        final result = await bottomSheetDialogManager
                             .showCheckBoxBottomSheetDialog(context,
                                 title: "Kod 3 Seçiniz",
                                 children: List.generate(
@@ -383,7 +383,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                       suffixMore: true,
                       controller: kod4Controller,
                       onTap: () async {
-                        var result = await bottomSheetDialogManager
+                        final result = await bottomSheetDialogManager
                             .showCheckBoxBottomSheetDialog(context,
                                 title: "Kod 4 Seçiniz",
                                 children: List.generate(
@@ -411,7 +411,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                       suffixMore: true,
                       controller: kod5Controller,
                       onTap: () async {
-                        var result = await bottomSheetDialogManager
+                        final result = await bottomSheetDialogManager
                             .showCheckBoxBottomSheetDialog(context,
                                 title: "Kod 5 Seçiniz",
                                 children: List.generate(

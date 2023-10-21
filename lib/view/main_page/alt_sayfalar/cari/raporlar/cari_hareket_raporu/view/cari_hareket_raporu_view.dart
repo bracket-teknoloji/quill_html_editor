@@ -99,7 +99,7 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
                 readOnly: true,
                 suffixMore: true,
                 onTap: () async {
-                  var result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                  final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                   if (result != null) {
                     cariController.text = result.cariAdi ?? "";
                     viewModel.pdfModel.dicParams?.cariKodu = result.cariKodu ?? "";
@@ -114,9 +114,9 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
                     controller: plasiyerController,
                     readOnly: true,
                     onTap: () async {
-                      List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList;
+                      final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList;
                       if (plasiyerList != null) {
-                        PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                        final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                             title: "Plasiyer",
                             children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e.plasiyerKodu ?? "", onTap: () => Get.back(result: e))).toList());
                         if (result != null) {
@@ -134,7 +134,7 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
                           readOnly: true,
                           suffixMore: true,
                           onTap: () async {
-                            String? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Sırala", children: viewModel.siralaBottomSheetList);
+                            final String? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Sırala", children: viewModel.siralaBottomSheetList);
                             if (result != null) {
                               siralaController.text = result;
                               viewModel.pdfModel.dicParams?.sirala = result;
@@ -173,7 +173,7 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: "CARI", grupNo: -1);
     }
-    List<BottomSheetModel>? bottomSheetList = grupKodList
+    final List<BottomSheetModel> bottomSheetList = grupKodList
         .where((e) => e.grupNo == grupNo)
         .toList()
         .cast<BaseGrupKoduModel>()
@@ -181,28 +181,22 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
         .toList()
         .cast<BottomSheetModel>();
     // ignore: use_build_context_synchronously
-    var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Grup Kodu", children: bottomSheetList);
+    final result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Grup Kodu", children: bottomSheetList);
     if (result != null) {
       controller?.text = result.grupKodu ?? "";
       switch (grupNo) {
         case 0:
           viewModel.pdfModel.dicParams?.grupKodu = result.grupKodu ?? "";
-          break;
         case 1:
           viewModel.pdfModel.dicParams?.kod1 = result.grupKodu ?? "";
-          break;
         case 2:
           viewModel.pdfModel.dicParams?.kod2 = result.grupKodu ?? "";
-          break;
         case 3:
           viewModel.pdfModel.dicParams?.kod3 = result.grupKodu ?? "";
-          break;
         case 4:
           viewModel.pdfModel.dicParams?.kod4 = result.grupKodu ?? "";
-          break;
         case 5:
           viewModel.pdfModel.dicParams?.kod5 = result.grupKodu ?? "";
-          break;
       }
     }
     return null;
