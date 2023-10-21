@@ -181,8 +181,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               _plasiyerController.text = result.projeAciklama ?? "";
                               viewModel.setProje(result);
                             }
-                          }).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && yetkiController.sevkiyatSatisFatGizlenecekAlanlar("proje")),
-                    ),
+                          }),
+                    ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && yetkiController.sevkiyatSatisFatGizlenecekAlanlar("proje")),
                     Expanded(
                       child: CustomTextField(
                           labelText: "Plasiyer",
@@ -198,8 +198,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               _plasiyerController.text = result.plasiyerAciklama ?? "";
                               viewModel.setPlasiyer(result);
                             }
-                          }).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi && yetkiController.sevkiyatSatisFatGizlenecekAlanlar("plasiyer")),
-                    ),
+                          }),
+                    ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi && yetkiController.sevkiyatSatisFatGizlenecekAlanlar("plasiyer")),
                   ],
                 ),
                 Row(
