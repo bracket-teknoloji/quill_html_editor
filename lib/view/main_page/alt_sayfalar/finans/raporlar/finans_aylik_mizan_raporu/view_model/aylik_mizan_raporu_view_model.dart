@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+
 import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 
 part "aylik_mizan_raporu_view_model.g.dart";

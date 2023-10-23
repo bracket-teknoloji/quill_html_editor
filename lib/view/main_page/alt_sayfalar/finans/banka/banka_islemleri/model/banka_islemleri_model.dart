@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+
 import "../../../../../../../core/base/model/base_network_mixin.dart";
 
 part "banka_islemleri_model.freezed.dart";

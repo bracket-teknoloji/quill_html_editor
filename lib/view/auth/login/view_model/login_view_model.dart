@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+
 import "../../../../core/init/network/network_manager.dart";
 import "../../../add_company/model/account_model.dart";
 

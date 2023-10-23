@@ -1,6 +1,6 @@
 import "package:mobx/mobx.dart";
-import "../../cari_listesi/model/cari_listesi_model.dart";
 
+import "../../cari_listesi/model/cari_listesi_model.dart";
 import "../model/cari_hareketleri_model.dart";
 
 part "cari_hareketleri_view_model.g.dart";

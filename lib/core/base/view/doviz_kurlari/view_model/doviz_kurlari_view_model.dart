@@ -1,6 +1,6 @@
 import "package:mobx/mobx.dart";
-import "../../../../init/cache/cache_manager.dart";
 
+import "../../../../init/cache/cache_manager.dart";
 import "../../../model/doviz_kurlari_model.dart";
 
 part "doviz_kurlari_view_model.g.dart";

@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+
 import "../../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "base_fatura_kalemler_view_model.g.dart";
