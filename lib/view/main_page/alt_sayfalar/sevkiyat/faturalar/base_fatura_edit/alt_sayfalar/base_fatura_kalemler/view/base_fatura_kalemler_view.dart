@@ -88,7 +88,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
                         viewModel.updateKalemList();
                       }
                     },
-                    icon: const Icon(Icons.qr_code_2_outlined)),
+                    icon: const Icon(Icons.qr_code_2_outlined),),
               ).paddingOnly(top: UIHelper.lowSize),
             ),
             Expanded(
@@ -101,7 +101,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
                               Icon(Icons.manage_search_outlined, size: 50, color: theme.colorScheme.primary),
                               const Text("Kalem bulunamadı.\nLütfen Kalem Ekleyin.", textAlign: TextAlign.center),
                             ],
-                          ))
+                          ),)
                         : Observer(
                             builder: (_) => ListView.builder(
                                 primary: true,
@@ -120,8 +120,8 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
                                         ],
                                       );
                                     }),
-                                  ]));
-                                }))))
+                                  ],),);
+                                },),),),),
           ],
         ),
       );
@@ -158,7 +158,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
                           )
                         else
                           null,
-                      ].whereType<TextSpan>().toList()))
+                      ].whereType<TextSpan>().toList(),),)
                           .yetkiVarMi(kalemModel?.kdvOrani != null),
                       Text("Fiyat: ${kalemModel?.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}").yetkiVarMi(kalemModel?.brutFiyat != null),
                       Text("Tutar: ${kalemModel?.koliTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}").yetkiVarMi(kalemModel?.brutFiyat != null),
@@ -166,7 +166,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
                       Text("Teslim Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),
                       Text("Kalan Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),
                       Text("Teslim Tarihi: ${kalemModel?.teslimTarihi.toDateStringIfNull() ?? ""}").yetkiVarMi(kalemModel?.teslimTarihi != null),
-                    ].map((Widget e) => e is! SizedBox ? SizedBox(width: constrains.maxWidth / 2, child: e) : null).toList().nullCheckWithGeneric)),
+                    ].map((Widget e) => e is! SizedBox ? SizedBox(width: constrains.maxWidth / 2, child: e) : null).toList().nullCheckWithGeneric,),),
           ].nullCheckWithGeneric,
         ),
       );
@@ -192,10 +192,10 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
                             onTap: () {
                               Get.back();
                               dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = kalemList?.stokKodu ?? "");
-                            }),
-                      ].nullCheckWithGeneric);
+                            },),
+                      ].nullCheckWithGeneric,);
                 },
-                icon: const Icon(Icons.more_vert_outlined))
+                icon: const Icon(Icons.more_vert_outlined),),
           ],
         ),
         subtitle: Wrap(
@@ -210,8 +210,8 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
                 .map((Text e) => SizedBox(
                       width: width * 0.4,
                       child: e,
-                    ))
-                .toList()),
+                    ),)
+                .toList(),),
         // title: Text("${stokList?.stokKodu ?? ""}-${stokList?.stokAdi ?? ""}"),
         // subtitle: Text("${viewModel.kalemList?[index].kalemList?[index].miktar ?? ""} ${viewModel.kalemList?[index].kalemList?[index].olcuBirimAdi ?? ""}"),
         // trailing: IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
@@ -228,7 +228,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
                 Get.back();
                 await Get.toNamed("/kalemEkle", arguments: viewModel.kalemList?[index]);
                 viewModel.updateKalemList();
-              }).yetkiKontrol(!widget.model.isGoruntule),
+              },).yetkiKontrol(!widget.model.isGoruntule),
           BottomSheetModel(
               title: "Sil",
               iconWidget: Icons.delete_outline_outlined,
@@ -237,14 +237,14 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
                 return dialogManager.showAreYouSureDialog(() {
                   viewModel.removeAtKalemList(index);
                 });
-              }).yetkiKontrol(!widget.model.isGoruntule),
+              },).yetkiKontrol(!widget.model.isGoruntule),
           BottomSheetModel(
               title: "Stok İşlemleri",
               iconWidget: Icons.list_alt_outlined,
               onTap: () {
                 Get.back();
                 return dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = viewModel.kalemList?[index].stokKodu ?? "");
-              }),
-        ].nullCheckWithGeneric);
+              },),
+        ].nullCheckWithGeneric,);
   }
 }

@@ -109,7 +109,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
             viewModel.resetSayfa();
             return await getData();
           },
-          child: body()),
+          child: body(),),
     );
   }
 
@@ -128,7 +128,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
               Get.back();
             }
           },
-          icon: const Icon(Icons.arrow_back_outlined)),
+          icon: const Icon(Icons.arrow_back_outlined),),
       title: Observer(
           builder: (_) => viewModel.searchBar
               ? CustomAppBarTextField(
@@ -140,7 +140,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                     getData();
                   },
                 )
-              : Text("Stok Listesi ${viewModel.stokListesi?.length ?? ""}")),
+              : Text("Stok Listesi ${viewModel.stokListesi?.length ?? ""}"),),
       actions: [
         hideSearchBar(),
         Observer(builder: (_) => viewModel.searchBar
@@ -165,9 +165,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                             Get.back();
                           }
                         },
-                      )));
+                      ),),);
                   },
-                  icon: const Icon(Icons.more_vert_outlined)))
+                  icon: const Icon(Icons.more_vert_outlined),),),
       ],
       bottom: PreferredSize(
         preferredSize: Size.fromHeight(height * 0.07),
@@ -219,7 +219,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                     childrenTitleList: viewModel.selectedList,
                                     filterOnChanged: (index) => viewModel.setSelectedWithIndex(index ?? 0),
                                     childrenValueList: viewModel.selectedList,
-                                    groupValue: viewModel.bakiyeGroupValue)),
+                                    groupValue: viewModel.bakiyeGroupValue,),),
                             ),
                             // Center(
                             //   child: Observer(builder: (_) {
@@ -250,7 +250,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                             .map((e) => BottomSheetModel(
                                                   title: e.grupAdi ?? "",
                                                   value: e,
-                                                ))
+                                                ),)
                                             .toList(),
                                       );
                                       if (result != null && result is List) {
@@ -259,7 +259,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       }
                                     },
                                     suffixMore: true,
-                                  ))),
+                                  ),),),
                                 Expanded(
                                     child: CustomTextField(
                                   labelText: "Kod 1",
@@ -278,7 +278,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       kod1Controller.text = viewModel.kod1?.map((e) => e.grupAdi).join(", ") ?? "";
                                     }
                                   },
-                                ))
+                                ),),
                               ],
                             ),
                             Row(
@@ -301,7 +301,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       kod2Controller.text = viewModel.kod2?.map((e) => e.grupAdi).join(", ") ?? "";
                                     }
                                   },
-                                )),
+                                ),),
                                 Expanded(
                                     child: CustomTextField(
                                   labelText: "Kod 3",
@@ -320,7 +320,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       kod3Controller.text = viewModel.kod3?.map((e) => e.grupAdi).join(", ") ?? "";
                                     }
                                   },
-                                ))
+                                ),),
                               ],
                             ),
                             Row(
@@ -346,7 +346,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                                     viewModel.bottomSheetModel.arrKod4?.add(e);
                                                   }
                                                 },
-                                              ))
+                                              ),)
                                           .toList(),
                                     );
                                     if (result != null && result is List) {
@@ -354,7 +354,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       kod4Controller.text = viewModel.kod4?.map((e) => e.grupAdi).join(", ") ?? "";
                                     }
                                   },
-                                )),
+                                ),),
                                 Expanded(
                                     child: CustomTextField(
                                   labelText: "Kod 5",
@@ -376,7 +376,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                                     viewModel.bottomSheetModel.arrKod5?.add(e);
                                                   }
                                                 },
-                                              ))
+                                              ),)
                                           .toList(),
                                     );
                                     if (result != null && result is List) {
@@ -384,7 +384,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       kod5Controller.text = viewModel.kod5?.map((e) => e.grupAdi).join(", ") ?? "";
                                     }
                                   },
-                                ))
+                                ),),
                               ],
                             ),
                             Row(
@@ -407,7 +407,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                           Get.back();
                                         },
                                         style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
-                                        child: const Text("Temizle"))),
+                                        child: const Text("Temizle"),),),
                                 SizedBox(width: width * 0.02),
                                 Expanded(
                                     child: ElevatedButton(
@@ -417,14 +417,14 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                           getData();
                                           Get.back();
                                         },
-                                        child: const Text("Uygula")))
+                                        child: const Text("Uygula"),),),
                               ],
                             ).paddingAll(UIHelper.lowSize),
                           ],
-                        )
-                      ]).paddingAll(UIHelper.lowSize),
+                        ),
+                      ],).paddingAll(UIHelper.lowSize),
                     );
-                  }),
+                  },),
               AppBarButton(
                   icon: Icons.sort_by_alpha_outlined,
                   child: const Text("Sırala"),
@@ -437,14 +437,14 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                       BottomSheetModel(title: "Stok Kodu (Z-A)", value: "KOD_ZA", onTap: () => Get.back(result: "KOD_ZA")),
                       BottomSheetModel(title: "Bakiye (Artan)", value: "BAKIYE_AZ", onTap: () => Get.back(result: "BAKIYE_AZ")),
                       BottomSheetModel(title: "Bakiye (Azalan)", value: "BAKIYE_ZA", onTap: () => Get.back(result: "BAKIYE_ZA")),
-                    ]);
+                    ],);
                     if (result != null) {
                       viewModel.setStokListesi(null);
                       viewModel.setSiralama(result);
                       viewModel.resetSayfa();
                       getData();
                     }
-                  }),
+                  },),
               //! AppBarButton(icon: Icons.format_align_left_sharp, onPressed: () {}),
               //! AppBarButton(icon: Icons.refresh_outlined, onPressed: () {})
             ].map((e) => e.paddingAll(5)).toList(),
@@ -464,7 +464,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
           }
         },
         icon: Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined),
-      ));
+      ),);
 
   Observer? fab() => Observer(builder: (_) => Visibility(
         visible: viewModel.stokListesi?.isNotEmpty ?? false,
@@ -473,8 +473,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
             onPressed: () {
               final BaseEditModel result = BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.ekle, model: StokListesiModel());
               Get.toNamed("/mainPage/stokEdit", arguments: result);
-            }).yetkiVarMi(yetkiController.stokKartiYeniKayit),
-      ));
+            },).yetkiVarMi(yetkiController.stokKartiYeniKayit),
+      ),);
 
   Observer body() => Observer(builder: (_) => viewModel.stokListesi.isEmptyOrNull
           ? (viewModel.stokListesi?.isEmpty ?? false)
@@ -507,7 +507,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                           child: Text((stok.stokAdi ?? "  ").substring(0, 1)),
                         ),
                         trailing: Text("${(stok.bakiye ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${stok.olcuBirimi ?? ""}",
-                            style: context.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(stok.bakiye ?? 0))),
+                            style: context.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(stok.bakiye ?? 0)),),
                         title: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -525,9 +525,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                               children: [
                                 const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(stok.seriCikislardaAcik == true),
                                 const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(stok.alisDovTip != null || stok.satDovTip != null),
-                                const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap).yetkiVarMi(stok.yapilandirmaAktif == true)
+                                const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap).yetkiVarMi(stok.yapilandirmaAktif == true),
                               ].whereType<ColorfulBadge>().toList(),
-                            )
+                            ),
                           ],
                         ),
                         onTap: (widget.isGetData ?? false)
@@ -537,24 +537,24 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                   BottomSheetModel(
                                       title: "Görüntüle",
                                       iconWidget: Icons.visibility,
-                                      onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.goruntule, model: stok))).yetkiKontrol(yetkiController.stokKarti),
+                                      onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.goruntule, model: stok)),).yetkiKontrol(yetkiController.stokKarti),
                                   BottomSheetModel(
                                       title: "Düzelt",
                                       iconWidget: Icons.edit,
-                                      onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.duzenle, model: stok))).yetkiKontrol(yetkiController.stokKartiDuzenleme),
+                                      onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.duzenle, model: stok)),).yetkiKontrol(yetkiController.stokKartiDuzenleme),
                                   BottomSheetModel(
                                       title: "Hareketler",
                                       iconWidget: Icons.sync_alt_outlined,
                                       onTap: () {
                                         Get.back();
                                         return Get.toNamed("/mainPage/stokHareketleri", arguments: stok);
-                                      }).yetkiKontrol(yetkiController.stokHareketleriStokHareketleri),
+                                      },).yetkiKontrol(yetkiController.stokHareketleriStokHareketleri),
                                   BottomSheetModel(
                                       title: "Raporlar",
                                       iconWidget: Icons.area_chart_outlined,
                                       onTap: () async {
                                         dialogManager.showStokGridViewDialog(stok, IslemTipiEnum.stokRapor);
-                                      }),
+                                      },),
                                   //TODO BottomSheetModel(title: "Depo Bakiye Durumu", iconWidget: Icons.list_alt),
                                   //TODO !!BottomSheetModel(
                                   // !!  title: "Yazdır",
@@ -577,10 +577,10 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       onTap: () {
                                         Get.back();
                                         dialogManager.showStokGridViewDialog(stok);
-                                      }),
+                                      },),
                                 ];
                                 children2.insert(
-                                    2, BottomSheetModel(title: "Sil", iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? "")).yetkiKontrol(yetkiController.stokKartiSilme));
+                                    2, BottomSheetModel(title: "Sil", iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? "")).yetkiKontrol(yetkiController.stokKartiSilme),);
                                 final List<BottomSheetModel> newResult = children2.nullCheckWithGeneric;
                                 final BaseEditModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: stok.stokKodu ?? "", children: newResult);
                                 if (result != null) {
@@ -597,10 +597,10 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                   return Observer(builder: (_) => Visibility(
                       visible: viewModel.dahaVarMi,
                       child: const Center(child: CircularProgressIndicator.adaptive()),
-                    ));
+                    ),);
                 }
               },
-            ));
+            ),);
 
   Future<void> getData() async {
     final data2 = {"MenuKodu": "STOK_STOK", "ResimGoster": viewModel.resimleriGoster, "Siralama": viewModel.siralama, "Sayfa": viewModel.sayfa, "BakiyeDurumu": viewModel.bakiye ?? ""};

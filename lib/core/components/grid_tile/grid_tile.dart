@@ -55,7 +55,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
           } else {
             icon = const Icon(Icons.star, size: 20);
             CacheManager.setFavoriler(
-                FavoritesModel(name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments, menuTipi: widget.menuTipi));
+                FavoritesModel(name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments, menuTipi: widget.menuTipi),);
             dialogManager.hideSnackBar;
             dialogManager.showInfoSnackBar("Favorilere eklendi");
           }
@@ -81,13 +81,13 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                         } else {
                           icon = const Icon(Icons.star, size: 20);
                           CacheManager.setFavoriler(FavoritesModel(
-                              name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments, menuTipi: widget.menuTipi));
+                              name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments, menuTipi: widget.menuTipi,),);
                           dialogManager.hideSnackBar;
                           dialogManager.showInfoSnackBar("Favorilere eklendi");
                         }
                         setState(() {});
                       },
-                    ))
+                    ),)
                 : null,
             footer: (widget.menuTipi == "S" && widget.altMenuler.ext.isNotNullOrEmpty) ? const Icon(Icons.expand_more, size: 15) : const SizedBox(),
             child: widget.menuTipi == "I"
@@ -99,7 +99,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                     overflow: TextOverflow.ellipsis,
                     softWrap: true,
                     style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
-                  ))
+                  ),)
                 : Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -117,7 +117,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                                         size: 30,
                                         grade: 0.1,
                                       ),
-                                    ))
+                                    ),)
                           .marginOnly(bottom: 5),
                       Text(
                         widget.menuTipi != "I" ? widget.title.toString() : "",
@@ -128,7 +128,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                         style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
                       ),
                     ],
-                  )),
+                  ),),
       ),
     );
   }

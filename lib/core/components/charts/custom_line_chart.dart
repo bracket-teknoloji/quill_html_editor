@@ -29,7 +29,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
     "Eylül",
     "Ekim",
     "Kasım",
-    "Aralık"
+    "Aralık",
   ];
 
   @override
@@ -50,7 +50,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                           final flSpot = barSpot;
                           return LineTooltipItem(
                             flSpot.y.commaSeparatedWithDecimalDigits(
-                                OndalikEnum.tutar),
+                                OndalikEnum.tutar,),
                             TextStyle(
                               color: flSpot.bar.color,
                               fontWeight: FontWeight.w900,
@@ -79,17 +79,17 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                         sideTitles: SideTitles(
                             showTitles: true,
                             getTitlesWidget: topTitleWidgets,
-                            interval: 1)),
+                            interval: 1,),),
                     bottomTitles: AxisTitles(
                         sideTitles: SideTitles(
                             showTitles: true,
                             getTitlesWidget: bottomTitleWidgets,
-                            interval: 1)),
+                            interval: 1,),),
                     rightTitles: const AxisTitles(axisNameWidget: Text("")),
                     leftTitles: AxisTitles(
                         sideTitles: SideTitles(
                             showTitles: true,
-                            getTitlesWidget: leftTitleWidgets)),
+                            getTitlesWidget: leftTitleWidgets,),),
                   ),
                   minX: 0,
                   maxX: (widget.lineChartValue?.length.toDouble() ?? 0) - 1,
@@ -100,7 +100,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                             ? List.generate(
                                 widget.lineChartValue?.length ?? 0,
                                 (index) => FlSpot(index.toDouble(),
-                                    widget.lineChartValue?[index] ?? 0))
+                                    widget.lineChartValue?[index] ?? 0,),)
                             : [],
                         show: true,
                         preventCurveOverShooting: true,
@@ -118,11 +118,11 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                         dotData: FlDotData(
                             show: true,
                             getDotPainter: (FlSpot spot, double xPercentage,
-                                LineChartBarData bar, int index) => FlDotCirclePainter(
+                                LineChartBarData bar, int index,) => FlDotCirclePainter(
                                   radius: 4,
                                   color: Colors.transparent,
                                   strokeWidth: 2,
-                                  strokeColor: Colors.primaries[index])),
+                                  strokeColor: Colors.primaries[index],),),
                         belowBarData: BarAreaData(
                           show: true,
                           gradient: LinearGradient(
@@ -133,10 +133,10 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                                 .map((e) => e.withOpacity(0.3))
                                 .toList(),
                           ),
-                        ))
-                  ]),
+                        ),),
+                  ],),
               curve: Curves.linear,
-              duration: DurationHelper.durationLow)
+              duration: DurationHelper.durationLow,)
           : const SizedBox(),
     );
 
@@ -189,7 +189,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
       fontSize: 8,
     );
     return Text("${(value ~/ 1000).toStringIfNotNull ?? ""}k ",
-        style: style, textAlign: TextAlign.left);
+        style: style, textAlign: TextAlign.left,);
   }
 
   Widget topTitleWidgets(double value, TitleMeta meta) {
@@ -202,6 +202,6 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
         child: Text(
             " ${widget.lineChartValue![value.toInt()].commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
             style: style,
-            textAlign: TextAlign.left));
+            textAlign: TextAlign.left,),);
   }
 }

@@ -30,42 +30,42 @@ class _BaseStokEditFiyatListesiViewState
                   children: [
                     Visibility(
                         visible: model.fiyatList?[index].gecerli == "E",
-                        child: const Badge(label: Text("Geçerli Fiyat"))),
+                        child: const Badge(label: Text("Geçerli Fiyat")),),
                     Text(
-                        "Yap. Kodu: ${model.fiyatList![index].stokKodu ?? ""}"),
+                        "Yap. Kodu: ${model.fiyatList![index].stokKodu ?? ""}",),
                     Row(
                       children: [
                         Expanded(
                             child: Text(
-                                "Alış-Satış: ${model.fiyatList![index].aS == "S" ? "Satış" : "Alış"}")),
+                                "Alış-Satış: ${model.fiyatList![index].aS == "S" ? "Satış" : "Alış"}",),),
                         Expanded(
                             child: Text(
-                                "Başlama: ${model.fiyatList![index].bastar!.toDateString}")),
+                                "Başlama: ${model.fiyatList![index].bastar!.toDateString}",),),
                       ],
                     ),
                     Row(
                       children: [
                         Expanded(
                             child: Text(
-                                "Bitiş: ${model.fiyatList![index].bittar ?? ""}")),
+                                "Bitiş: ${model.fiyatList![index].bittar ?? ""}",),),
                         Expanded(
                             child: Text(
-                                "Fiyat 1: ${model.fiyatList![index].fiyat1.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}")),
+                                "Fiyat 1: ${model.fiyatList![index].fiyat1.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",),),
                       ],
                     ),
                     Row(
                       children: [
                         Expanded(
                             child: Text(
-                                "Fiyat 2: ${model.fiyatList![index].fiyat2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}")),
+                                "Fiyat 2: ${model.fiyatList![index].fiyat2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",),),
                         Expanded(
                             child: Text(
-                                "Fiyat 3: ${model.fiyatList![index].fiyat3.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}")),
+                                "Fiyat 3: ${model.fiyatList![index].fiyat3.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",),),
                       ],
                     ),
                     Text(
-                        "Fiyat 4: ${model.fiyatList![index].fiyat4.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
-                  ]).paddingAll(UIHelper.lowSize),
+                        "Fiyat 4: ${model.fiyatList![index].fiyat4.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",),
+                  ],).paddingAll(UIHelper.lowSize),
             ),
           ).paddingAll(UIHelper.lowSize)
         : const Center(child: Text("Fiyat bilgisi bulunamadı"));

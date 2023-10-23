@@ -52,7 +52,7 @@ abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
   ObservableList<KasaIslemleriModel>? get getKasaIslemleriListesi => searchText != null
       ? kasaIslemleriListesi
           ?.where(
-              (element) => (element.belgeNo?.contains(searchText ?? "") ?? false) || (element.cariAdi?.contains(searchText ?? "") ?? false) || (element.cariKodu?.contains(searchText ?? "") ?? false))
+              (element) => (element.belgeNo?.contains(searchText ?? "") ?? false) || (element.cariAdi?.contains(searchText ?? "") ?? false) || (element.cariKodu?.contains(searchText ?? "") ?? false),)
           .toList()
           .asObservable()
       : kasaIslemleriListesi;

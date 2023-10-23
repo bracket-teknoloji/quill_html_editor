@@ -119,6 +119,6 @@ abstract class _StokHareketleriViewModelBase with Store {
   void filterStokHareketleri(String value) =>
       filteredStokHareketleri = stokHareketleri
           ?.where((element) =>
-              element.fisno!.toLowerCase().contains(value.toLowerCase()))
+              element.fisno!.toLowerCase().contains(value.toLowerCase()),)
           .toList();
 }

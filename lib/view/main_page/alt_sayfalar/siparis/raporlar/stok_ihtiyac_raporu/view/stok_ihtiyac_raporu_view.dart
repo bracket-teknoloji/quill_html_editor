@@ -66,7 +66,7 @@ class _StokIhtiyacRaporuViewState extends BaseState<StokIhtiyacRaporu> {
   Widget build(BuildContext context) => PDFViewerView(
         filterBottomSheet: filterBottomSheet,
         title: "Stok İhtiyaç Raporu",
-        pdfData: viewModel.pdfModel);
+        pdfData: viewModel.pdfModel,);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -81,32 +81,32 @@ class _StokIhtiyacRaporuViewState extends BaseState<StokIhtiyacRaporu> {
               children: [
                 const Row(children: [
                   Expanded(child: CustomTextField()),
-                  Expanded(child: CustomTextField())
-                ]),
+                  Expanded(child: CustomTextField()),
+                ],),
                 const Row(children: [
                   Expanded(child: CustomTextField()),
-                  Expanded(child: CustomTextField())
-                ]),
+                  Expanded(child: CustomTextField()),
+                ],),
                 const Row(children: [
                   Expanded(child: CustomTextField()),
-                  Expanded(child: CustomTextField())
-                ]),
+                  Expanded(child: CustomTextField()),
+                ],),
                 const Row(children: [
                   Expanded(child: CustomTextField()),
-                  Expanded(child: CustomTextField())
-                ]),
+                  Expanded(child: CustomTextField()),
+                ],),
                 Row(children: [
                   const Expanded(child: CustomTextField()),
                   Expanded(
                       child: Switch.adaptive(
                     value: false,
                     onChanged: (value) {},
-                  ))
-                ]),
+                  ),),
+                ],),
               ],
             ),
           ),
-        ));
+        ),);
     return Future.value(viewModel.futureController.value);
   }
 }

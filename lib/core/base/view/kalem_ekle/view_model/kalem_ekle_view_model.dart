@@ -41,7 +41,7 @@ abstract class _KalemEkleViewModelBase with Store {
   List<String> get olcuBirimiMap => [
         model?.olcuBirimi,
         model?.olcuBirimi2,
-        model?.olcuBirimi3
+        model?.olcuBirimi3,
       ].nullCheckWithGeneric;
 
   @observable
@@ -49,7 +49,7 @@ abstract class _KalemEkleViewModelBase with Store {
   @action
   void setKoliMi() {
     kalemModel = kalemModel.copyWith(
-        koliMi: model?.koliMi ?? false || kalemModel.kalemList != null);
+        koliMi: model?.koliMi ?? false || kalemModel.kalemList != null,);
   }
 
   @computed
@@ -124,11 +124,11 @@ abstract class _KalemEkleViewModelBase with Store {
       kalemModel = kalemModel.copyWith(kalemList: list);
   @action
   void setIskonto1OranMi(bool? value) => kalemModel = kalemModel.copyWith(
-      iskonto1OranMi: value);
+      iskonto1OranMi: value,);
 
       @action
       void changeIskonto1OranMi()=>  kalemModel = kalemModel.copyWith(
-      iskonto1OranMi: !(kalemModel.iskonto1OranMi ?? false));
+      iskonto1OranMi: !(kalemModel.iskonto1OranMi ?? false),);
   @action
   void increaseMiktar(TextEditingController controller) {
     kalemModel = kalemModel.copyWith(miktar: (kalemModel.miktar ?? 0) + 1);
@@ -147,14 +147,14 @@ abstract class _KalemEkleViewModelBase with Store {
   void increaseMiktar2(TextEditingController controller) {
     kalemModel = kalemModel.copyWith(
         miktar2: (kalemModel.miktar2 ?? 0) + 1,
-        miktar: (kalemModel.miktar2 ?? 0) + 1);
+        miktar: (kalemModel.miktar2 ?? 0) + 1,);
     controller.text = (kalemModel.miktar2 ?? 0).toIntIfDouble.toString();
   }
 
   @action
   void setMiktar2(int value) {
     kalemModel = kalemModel.copyWith(
-        miktar2: value.toDouble(), miktar: value.toDouble());
+        miktar2: value.toDouble(), miktar: value.toDouble(),);
   }
 
   @action
@@ -162,7 +162,7 @@ abstract class _KalemEkleViewModelBase with Store {
     if ((kalemModel.miktar2 ?? 0) > 0) {
       kalemModel = kalemModel.copyWith(
           miktar2: (kalemModel.miktar2 ?? 0) - 1,
-          miktar: (kalemModel.miktar2 ?? 0) - 1);
+          miktar: (kalemModel.miktar2 ?? 0) - 1,);
       controller.text = (kalemModel.miktar2 ?? 0).toIntIfDouble.toString();
     }
   }
@@ -171,7 +171,7 @@ abstract class _KalemEkleViewModelBase with Store {
   void increaseMFMiktar(TextEditingController controller) {
     kalemModel = kalemModel.copyWith(
         malFazlasiMiktar: (kalemModel.malFazlasiMiktar ?? 0) + 1,
-        malfazIskAdedi: (kalemModel.malFazlasiMiktar ?? 0) + 1);
+        malfazIskAdedi: (kalemModel.malFazlasiMiktar ?? 0) + 1,);
     controller.text =
         (kalemModel.malFazlasiMiktar ?? 0).toIntIfDouble.toString();
   }
@@ -185,7 +185,7 @@ abstract class _KalemEkleViewModelBase with Store {
     if ((kalemModel.malFazlasiMiktar ?? 0) > 0) {
       kalemModel = kalemModel.copyWith(
           malFazlasiMiktar: (kalemModel.malFazlasiMiktar ?? 0) - 1,
-          malfazIskAdedi: (kalemModel.malFazlasiMiktar ?? 0) - 1);
+          malfazIskAdedi: (kalemModel.malFazlasiMiktar ?? 0) - 1,);
       controller.text =
           (kalemModel.malFazlasiMiktar ?? 0).toIntIfDouble.toString();
     }

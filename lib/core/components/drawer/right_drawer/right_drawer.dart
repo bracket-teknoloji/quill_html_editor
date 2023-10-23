@@ -38,7 +38,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                   Text(CacheManager.getAnaVeri()!.userModel?.profilAdi ?? "Yetkili Kullanıcı",
                       style: CacheManager.getAnaVeri()!.userModel?.admin == "E"
                           ? theme.textTheme.bodyMedium?.copyWith(color: UIHelper.primaryColor, fontWeight: FontWeight.bold)
-                          : theme.textTheme.bodySmall),
+                          : theme.textTheme.bodySmall,),
                 ],
               ).marginOnly(bottom: 10),
             ],
@@ -63,7 +63,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                         : IconHelper.smallIcon(DrawerMenuItems().items[index].icon.toString(), color: theme.colorScheme.primary).marginZero,
                   ),
               separatorBuilder: (context, index) => const Divider(),
-              itemCount: DrawerMenuItems().items.length),
+              itemCount: DrawerMenuItems().items.length,),
         ),
         Expanded(
           child: Align(
@@ -124,7 +124,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                     ),
                   ),
                 ],
-              )),
-        )
-      ]));
+              ),),
+        ),
+      ],),);
 }

@@ -48,7 +48,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
               waveAmplitude: 2,
               wavePhase: 0,
               duration: 200,
-              backgroundColor: theme.scaffoldBackgroundColor),
+              backgroundColor: theme.scaffoldBackgroundColor,),
           Align(
             alignment: Alignment.bottomCenter,
             child: Wrap(
@@ -80,13 +80,13 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
                             ).paddingAll(UIHelper.lowSize),
                           ],
                         ),
-                      ))
+                      ),),
                   ],
                 ).paddingOnly(bottom: UIHelper.highSize * 7),
                 Text.rich(TextSpan(children: [
                   TextSpan(text: "Powered by ", style: TextStyle(color: theme.colorScheme.primary.withOpacity(0.8))),
                   const TextSpan(text: "Bracket Teknoloji\n", style: TextStyle(fontWeight: FontWeight.bold)),
-                ])),
+                ],),),
               ],
             ).paddingOnly(bottom: UIHelper.midSize),
           ),
@@ -101,16 +101,16 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
                   children: [
                     SvgPicture.asset("assets/splash/PickerLogoTuruncu.svg", height: height * 0.1),
                     const Text("Picker\nVeri Toplama Çözümleri", overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center).paddingAll(UIHelper.lowSize),
-                    Text(AppInfoModel.instance.version ?? "").paddingOnly(bottom: UIHelper.highSize)
+                    Text(AppInfoModel.instance.version ?? "").paddingOnly(bottom: UIHelper.highSize),
                   ],
                 ),
                 Observer(builder: (_) => Visibility(
                     visible: viewModel.isError,
                     child: SizedBox(width: width * 0.6, child: Text(viewModel.title, overflow: TextOverflow.ellipsis, maxLines: 10, textAlign: TextAlign.center)),
-                  )),
+                  ),),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
@@ -123,12 +123,12 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
     } else if (CacheManager.getLogout == true) {
       AccountModel.setFromAccountResponseModel(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.email ?? ""));
       final response = await networkManager.getToken(path: ApiUrls.token, queryParameters: {
-        "deviceInfos": jsonEncode((CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi)?.toJson())
+        "deviceInfos": jsonEncode((CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi)?.toJson()),
       }, data: {
         "grant_type": "password",
         "username": CacheManager.getVerifiedUser.username,
         "password": CacheManager.getVerifiedUser.password,
-      });
+      },);
       if (response != null && response.error == null) {
         if (response.accessToken != null) {
           CacheManager.setVerifiedUser(CacheManager.getVerifiedUser);
@@ -165,8 +165,8 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       "VERITABANI": CacheManager.getVeriTabani()["Şirket"].toString(),
       "ISLETME_KODU": CacheManager.getVeriTabani()["İşletme"].toString(),
       "SUBE_KODU": CacheManager.getVeriTabani()["Şube"].toString(),
-      "content-type": "application/json"
-    });
+      "content-type": "application/json",
+    },);
     if (response.data != null) {
       CacheManager.setAnaVeri(response.data.first);
       Get.offAllNamed("/mainPage");

@@ -855,7 +855,7 @@ class KalemModel with NetworkManagerMixin {
       this.stokAlisDovizAdi,
       this.stokSatDovizAdi,
       this.muhasebeKodu,
-      this.yapkod});
+      this.yapkod,});
   //koli mi
   bool get isKoli => koliMi ?? kalemList.ext.isNotNullOrEmpty;
 
@@ -951,7 +951,7 @@ class KalemModel with NetworkManagerMixin {
         koliBilesenMiktari: model.koliBilesenMiktari,
         koliBilesenOrani: model.koliBilesenOrani,
         koliBilesenFiyatorandan: model.koliBilesenFiyatorandan,
-        koliBilesenKolikdv: model.koliBilesenKolikdv);
+        koliBilesenKolikdv: model.koliBilesenKolikdv,);
   @override
   Map<String, dynamic> toJson() => _$KalemModelToJson(this);
 

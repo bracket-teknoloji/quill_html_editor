@@ -182,7 +182,7 @@ abstract class _BaseCariGenelEditViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getFilterData() async {
     final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<CariSehirlerModel>(
-        path: ApiUrls.getCariKayitliSehirler, bodyModel: CariSehirlerModel(), addTokenKey: true, addSirketBilgileri: true, headers: <String, String>{"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"});
+        path: ApiUrls.getCariKayitliSehirler, bodyModel: CariSehirlerModel(), addTokenKey: true, addSirketBilgileri: true, headers: <String, String>{"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"},);
     if (result.data is List) {
       sehirler = result.data.cast<CariSehirlerModel>();
     }

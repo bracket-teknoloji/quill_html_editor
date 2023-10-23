@@ -55,7 +55,7 @@ class CustomTextField extends StatefulWidget {
       this.inputFormatter,
       this.isFormattedString,
       this.onClear,
-      this.isDateTime});
+      this.isDateTime,});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -121,7 +121,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     width: 2,
                   ),
                   borderRadius: BorderRadius.circular(UIHelper.midSize),
-                  gapPadding: 0),
+                  gapPadding: 0,),
               suffixIcon: widget.suffix != null || widget.isDateTime == true || widget.suffixMore == true
                   ? Row(
                       mainAxisSize: MainAxisSize.min,
@@ -143,7 +143,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                               },
                               icon: const Icon(Icons.close),
                             ),
-                          )).yetkiVarMi(widget.onClear != null),
+                          ),).yetkiVarMi(widget.onClear != null),
                         if (widget.suffix != null) widget.suffix!,
                         if (widget.isDateTime == true)
                           IconButton(
@@ -154,7 +154,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                               style: ButtonStyle(
                                 padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
                                 splashFactory: NoSplash.splashFactory,
-                              )),
+                              ),),
                         if (widget.suffixMore == true)
                           IconButton(
                               padding: EdgeInsets.zero,
@@ -164,7 +164,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                               style: ButtonStyle(
                                 padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
                                 splashFactory: NoSplash.splashFactory,
-                              )),
+                              ),),
                       ].where((Widget element) => element is! SizedBox).toList().nullCheckWithGeneric,
                     )
                   : null,
@@ -176,13 +176,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         text: widget.labelText ?? "",
                         style: (widget.enabled != false ? (widget.isMust ?? false) : false)
                             ? TextStyle(color: UIHelper.primaryColor)
-                            : ((widget.controller?.text == "") ? TextStyle(color: Colors.grey.withOpacity(0.6)) : TextStyle(color: Colors.grey.withOpacity(0.8)))),
-                    TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: Colors.grey.withOpacity(0.3), fontSize: 12))
-                  ])),
+                            : ((widget.controller?.text == "") ? TextStyle(color: Colors.grey.withOpacity(0.6)) : TextStyle(color: Colors.grey.withOpacity(0.8))),),
+                    TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: Colors.grey.withOpacity(0.3), fontSize: 12)),
+                  ],),),
                   if (widget.valueWidget != null) SizedBox(width: UIHelper.lowSize),
                   if (widget.valueWidget != null) widget.valueWidget!,
                 ],
-              ).yetkiVarMi(widget.labelText != null)),
+              ).yetkiVarMi(widget.labelText != null),),
         ).paddingAll(UIHelper.lowSize),
       ),
     );

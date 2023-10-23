@@ -63,7 +63,7 @@ class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
                   postData();
                 }
               },
-              icon: const Icon(Icons.save_outlined))
+              icon: const Icon(Icons.save_outlined),),
         ],
       ),
       body: Form(
@@ -72,7 +72,7 @@ class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
           children: [
             CustomTextField(labelText: "Tarih", readOnly: true, controller: tarihController),
             CustomTextField(
-                labelText: "Döviz Tipi", readOnly: true, controller: dovizTipiController, valueWidget: Observer(builder: (_) => Text(viewModel.dovizKurlariModel?.dovizTipi.toStringIfNotNull ?? ""))),
+                labelText: "Döviz Tipi", readOnly: true, controller: dovizTipiController, valueWidget: Observer(builder: (_) => Text(viewModel.dovizKurlariModel?.dovizTipi.toStringIfNotNull ?? "")),),
             Row(
               children: [
                 Expanded(
@@ -82,7 +82,7 @@ class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
                         isFormattedString: true,
                         controller: alisController,
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        onChanged: (value) => viewModel.changeAlis(value.toDoubleWithFormattedString))),
+                        onChanged: (value) => viewModel.changeAlis(value.toDoubleWithFormattedString),),),
                 Expanded(
                     child: CustomTextField(
                         labelText: "Efektif Alış",
@@ -90,7 +90,7 @@ class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
                         isFormattedString: true,
                         controller: efektifAlisController,
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        onChanged: (value) => viewModel.changeEfektifAlis(value.toDoubleWithFormattedString))),
+                        onChanged: (value) => viewModel.changeEfektifAlis(value.toDoubleWithFormattedString),),),
               ],
             ),
             Row(
@@ -102,7 +102,7 @@ class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
                         isFormattedString: true,
                         controller: satisController,
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        onChanged: (value) => viewModel.changeSatis(value.toDoubleWithFormattedString))),
+                        onChanged: (value) => viewModel.changeSatis(value.toDoubleWithFormattedString),),),
                 Expanded(
                     child: CustomTextField(
                         labelText: "Efektif Satış",
@@ -110,12 +110,12 @@ class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
                         isFormattedString: true,
                         controller: efektifSatisController,
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        onChanged: (value) => viewModel.changeEfektifSatis(value.toDoubleWithFormattedString))),
+                        onChanged: (value) => viewModel.changeEfektifSatis(value.toDoubleWithFormattedString),),),
               ],
             ),
           ],
         ),
-      ));
+      ),);
 
   Future<void> postData() async {
     final result = await networkManager

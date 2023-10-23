@@ -77,7 +77,7 @@ abstract class _StokRehberiViewModelBase with Store {
       faturaTipi: 2,
       okutuldu: true,
       cariKodu: BaseSiparisEditModel.instance.cariKodu,
-      menuKodu: "STOK_SREH");
+      menuKodu: "STOK_SREH",);
 
   @action
   void increaseSayfa() => stokBottomSheetModel =
@@ -112,6 +112,6 @@ abstract class _StokRehberiViewModelBase with Store {
     "Stok Kodu (A-Z)": "KOD_AZ",
     "Stok Kodu (Z-A)": "KOD_ZA",
     "Bakiye (Artan)": "BAKIYE_AZ",
-    "Bakiye (Azalan)": "BAKIYE_ZA"
+    "Bakiye (Azalan)": "BAKIYE_ZA",
   };
 }

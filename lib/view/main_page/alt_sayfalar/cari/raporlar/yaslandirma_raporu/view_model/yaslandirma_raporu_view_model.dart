@@ -15,7 +15,7 @@ abstract class _YaslandirmaRaporuViewModelBase with Store {
     "Haftalık",
     "2 Hafta",
     "3 Hafta",
-    "Aylık"
+    "Aylık",
   ];
   final List<String> sureAraligivalue = ["G", "H", "2H", "3H", "A"];
   @observable
@@ -53,7 +53,7 @@ abstract class _YaslandirmaRaporuViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
       raporOzelKod: "Rapor_CariYaslandirma",
       standart: true,
-      dicParams: DicParams());
+      dicParams: DicParams(),);
 
   //* Future
   //*

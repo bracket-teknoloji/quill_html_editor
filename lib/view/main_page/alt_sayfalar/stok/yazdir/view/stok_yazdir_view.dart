@@ -126,7 +126,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                     if (result != null) {
                       // barkodKontroller.text = result.toString();
                     }
-                  }),
+                  },),
             ),
             Observer(builder: (_) => Visibility(
                 visible: viewModel.stokListesiModel != null && viewModel.showYapilandirma,
@@ -142,8 +142,8 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                         viewModel.setYapilandirmaKodu(result.yapkod);
                         yapilandirmaKoduController.text = result.yapacik ?? "";
                       }
-                    }),
-              )),
+                    },),
+              ),),
             Row(
               children: [
                 Expanded(
@@ -155,7 +155,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                   suffixMore: true,
                   valueWidget: Observer(builder: (_) => Text(viewModel.printModel.dizaynId.toStringIfNotNull ?? "")),
                   onTap: () async => setDizayn(),
-                )),
+                ),),
                 Expanded(
                     child: CustomTextField(
                   labelText: "Yazıcı",
@@ -164,7 +164,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                   isMust: true,
                   suffixMore: true,
                   onTap: () async => setYazici(),
-                )),
+                ),),
               ],
             ),
             Row(
@@ -180,16 +180,16 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                           onPressed: () {
                             viewModel.decreaseMiktar();
                             miktarBakiyeController.text = viewModel.printModel.dicParams?.miktar.toStringIfNotNull ?? "";
-                          }),
+                          },),
                       IconButton(
                           icon: const Icon(Icons.add),
                           onPressed: () {
                             viewModel.increaseMiktar();
                             miktarBakiyeController.text = viewModel.printModel.dicParams?.miktar.toStringIfNotNull ?? "";
-                          }),
+                          },),
                     ],
                   ),
-                )),
+                ),),
                 Expanded(
                     child: CustomTextField(
                         labelText: "Kopya Sayısı",
@@ -202,15 +202,15 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                                 onPressed: () {
                                   viewModel.decreaseKopyaSayisi();
                                   kopyaSayisiController.text = viewModel.printModel.etiketSayisi.toStringIfNotNull ?? "";
-                                }),
+                                },),
                             IconButton(
                                 icon: const Icon(Icons.add),
                                 onPressed: () {
                                   viewModel.increaseKopyaSayisi();
                                   kopyaSayisiController.text = viewModel.printModel.etiketSayisi.toStringIfNotNull ?? "";
-                                }),
+                                },),
                           ],
-                        ))),
+                        ),),),
               ],
             ),
             Row(
@@ -220,7 +220,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                   isVertical: true,
                   text: "Stok Seçildiğinde Yazdır",
                   child: Observer(builder: (_) => Switch(value: viewModel.stokSecildigindeYazdir, onChanged: (value) => viewModel.changeStokSecildigindeYazdir(value))),
-                ).paddingAll(UIHelper.lowSize)),
+                ).paddingAll(UIHelper.lowSize),),
                 Expanded(
                     child: CustomWidgetWithLabel(
                   isVertical: true,
@@ -235,8 +235,8 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                             } else {
                               CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(stokYazdirDizaynVeYaziciHatirla: false, yaziciList: null, netFectDizaynList: null));
                             }
-                          })),
-                ).paddingAll(UIHelper.lowSize)),
+                          },),),
+                ).paddingAll(UIHelper.lowSize),),
               ],
             ),
           ],
@@ -251,7 +251,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
     final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
         title: "Dizayn",
         children: List.generate(
-            dizaynList?.length ?? 0, (index) => BottomSheetModel(title: dizaynList?[index].dizaynAdi ?? "", value: dizaynList?[index], description: dizaynList?[index].id.toStringIfNotNull ?? "")));
+            dizaynList?.length ?? 0, (index) => BottomSheetModel(title: dizaynList?[index].dizaynAdi ?? "", value: dizaynList?[index], description: dizaynList?[index].id.toStringIfNotNull ?? ""),),);
     if (result is NetFectDizaynList) {
       dizaynController.text = result.dizaynAdi ?? "";
       viewModel.setDizaynId(result.id);
@@ -274,8 +274,8 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
           (index) => BottomSheetModel(
               title: yaziciList?[index].aciklama ?? yaziciList?[index].yaziciAdi ?? "",
               value: yaziciList?[index],
-              description: yaziciList?[index].aciklama != null ? (yaziciList?[index].yaziciAdi ?? "") : null),
-        ));
+              description: yaziciList?[index].aciklama != null ? (yaziciList?[index].yaziciAdi ?? "") : null,),
+        ),);
     if (result is YaziciList) {
       yaziciController.text = result.aciklama ?? result.yaziciAdi ?? "";
       viewModel.setYaziciAdi(result.yaziciAdi);

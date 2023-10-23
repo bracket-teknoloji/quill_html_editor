@@ -61,6 +61,6 @@ abstract class _BaseSiparisEditingViewModelBase with Store {
   void changeYeniKaydaHazirlaMi() {
     yeniKaydaHazirlaMi = !yeniKaydaHazirlaMi;
     CacheManager.setProfilParametre(CacheManager.getProfilParametre
-        .copyWith(siparisYeniKaydaHazirla: yeniKaydaHazirlaMi));
+        .copyWith(siparisYeniKaydaHazirla: yeniKaydaHazirlaMi),);
   }
 }

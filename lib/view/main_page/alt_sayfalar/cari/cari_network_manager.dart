@@ -18,7 +18,7 @@ class CariNetworkManager {
         path: ApiUrls.getGrupKodlari,
         bodyModel: BaseGrupKoduModel(),
         headers: <String, String>{"Modul": name?.name ?? "CARI", "GrupNo": "-1", "Kullanimda": "E"},
-        queryParameters: <String, dynamic>{"Modul": name?.name ?? "CARI", "GrupNo": "-1"});
+        queryParameters: <String, dynamic>{"Modul": name?.name ?? "CARI", "GrupNo": "-1"},);
     return responseKod;
   }
 
@@ -29,7 +29,7 @@ class CariNetworkManager {
         bodyModel: CariSehirlerModel(),
         addTokenKey: true,
         addSirketBilgileri: true,
-        headers: <String, String>{"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"});
+        headers: <String, String>{"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"},);
 
     return responseSehirler.data?.cast<CariSehirlerModel>();
   }

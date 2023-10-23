@@ -117,13 +117,13 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
                                               ),
                                             ),
                                           ),
-                                        )));
+                                        ),),);
                         },
                       ).paddingAll(UIHelper.highSize),
                     ),
-                  )),
+                  ),),
               ),
             ],
           );
-        }));
+        },),);
 }

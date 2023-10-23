@@ -23,7 +23,7 @@ abstract class _UrunGrubunaGoreSatisGrafigiViewModelBase with Store {
     "SON_3_AY",
     "BU_YIL",
     "GECEN_YIL",
-    "OZEL"
+    "OZEL",
   ];
 
   List<BottomSheetModel> grupNoBottomSheetList = [
@@ -32,10 +32,10 @@ abstract class _UrunGrubunaGoreSatisGrafigiViewModelBase with Store {
     "Stok Kod 2",
     "Stok Kod 3",
     "Stok Kod 4",
-    "Stok Kod 5"
+    "Stok Kod 5",
   ]
       .mapIndexed((index, element) => BottomSheetModel(
-          title: element, onTap: () => Get.back(result: element)))
+          title: element, onTap: () => Get.back(result: element),),)
       .toList();
   @observable
   UrunGrubunaGoreSatisGrafigiRequestModel model =

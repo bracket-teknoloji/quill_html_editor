@@ -56,7 +56,7 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
   Widget build(BuildContext context) => Observer(builder: (_) => PDFViewerView(
           filterBottomSheet: filterBottomSheet,
           title: "Cari Ekstre",
-          pdfData: viewModel.pdfModel));
+          pdfData: viewModel.pdfModel,),);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -102,20 +102,20 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
                         0,
                         DovizList()
                           ..isim = "Tümü"
-                          ..dovizKodu = -1);
+                          ..dovizKodu = -1,);
                 final DovizList? result = await bottomSheetDialogManager
                     .showBottomSheetDialog(context,
                         title: "Döviz Tipi",
                         children: dovizList!
                             .map((e) => BottomSheetModel(
                                 title: e.isim ?? "",
-                                onTap: () => Get.back(result: e)))
-                            .toList());
+                                onTap: () => Get.back(result: e),),)
+                            .toList(),);
                 if (result != null) {
                   dovizController!.text = result.isim ?? "";
                   viewModel.changeDovizTipi(result.isim != mainCurrency
                       ? (result.dovizTipi ?? (result.dovizKodu ?? 0))
-                      : 0);
+                      : 0,);
                   viewModel
                       .changeDovizValue((result.dovizKodu ?? -1).toString());
                 }
@@ -126,7 +126,7 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
                         if (viewModel.pdfModel.dicParams?.cariKodu == null ||
                             viewModel.pdfModel.dicParams?.dovizTipi == null) {
                           dialogManager.showAlertDialog(
-                              "Lütfen tüm alanları doldurunuz");
+                              "Lütfen tüm alanları doldurunuz",);
                         } else {
                           viewModel.pdfModel.dicParams?.bastar =
                               baslangicTarihiController.text != ""
@@ -140,10 +140,10 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
                           Get.back();
                         }
                       },
-                      child: const Text("Uygula"))
-                  .paddingAll(UIHelper.lowSize))
+                      child: const Text("Uygula"),)
+                  .paddingAll(UIHelper.lowSize),),
           ],
-        ).paddingAll(UIHelper.lowSize));
+        ).paddingAll(UIHelper.lowSize),);
     return Future.value(viewModel.futureController.value);
   }
 

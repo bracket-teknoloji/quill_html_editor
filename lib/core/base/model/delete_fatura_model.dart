@@ -25,7 +25,7 @@ class EditFaturaModel with NetworkManagerMixin, _$EditFaturaModel {
       String? mevcutCariKodu,
       String? paramMap,
       String? tag,
-      int? islemKodu}) = _EditFaturaModel;
+      int? islemKodu,}) = _EditFaturaModel;
 
   factory EditFaturaModel.fromJson(Map<String, Object?> json) =>
       _$EditFaturaModelFromJson(json);
@@ -40,7 +40,7 @@ class EditFaturaModel with NetworkManagerMixin, _$EditFaturaModel {
           tipi: model.tipi,
           tempBelgeId: model.tempBelgeId,
           islemKodu: model.islemKodu,
-          yeniBelgeNo: model.yeniBelgeNo);
+          yeniBelgeNo: model.yeniBelgeNo,);
 
   @override
   fromJson(Map<String, dynamic> json) => _$EditFaturaModelFromJson(json);

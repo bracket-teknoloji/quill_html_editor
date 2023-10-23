@@ -84,7 +84,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                   viewModel.setSirala(await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Sırala", children: viewModel.bottomSheetModelList));
                   getData();
                 },
-                icon: const Icon(Icons.sort_by_alpha_outlined)),
+                icon: const Icon(Icons.sort_by_alpha_outlined),),
             IconButton(
                 onPressed: () async {
                   await bottomSheetDialogManager.showBottomSheetDialog(context,
@@ -94,7 +94,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                             text: "İrsaliyeler Dahil",
                             onlyLabelpaddingLeft: UIHelper.lowSize,
                             isVertical: true,
-                            child: Observer(builder: (_) => Switch.adaptive(value: viewModel.irsDahil, onChanged: (value) => viewModel.setIrsDahil(value)))),
+                            child: Observer(builder: (_) => Switch.adaptive(value: viewModel.irsDahil, onChanged: (value) => viewModel.setIrsDahil(value))),),
                         Row(
                           children: [
                             Expanded(
@@ -103,30 +103,30 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                                     controller: stokGrupKoduController,
                                     readOnly: true,
                                     suffixMore: true,
-                                    onTap: () async => await getGrupKodu(0, stokGrupKoduController))),
+                                    onTap: () async => await getGrupKodu(0, stokGrupKoduController),),),
                             Expanded(
                                 child: CustomTextField(
-                                    labelText: "Stok Kod 1", controller: stokKodu1Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(1, stokKodu1Controller))),
+                                    labelText: "Stok Kod 1", controller: stokKodu1Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(1, stokKodu1Controller),),),
                           ],
                         ),
                         Row(
                           children: [
                             Expanded(
                                 child: CustomTextField(
-                                    labelText: "Stok Kod 2", controller: stokKodu2Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(2, stokKodu2Controller))),
+                                    labelText: "Stok Kod 2", controller: stokKodu2Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(2, stokKodu2Controller),),),
                             Expanded(
                                 child: CustomTextField(
-                                    labelText: "Stok Kod 3", controller: stokKodu3Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(3, stokKodu3Controller))),
+                                    labelText: "Stok Kod 3", controller: stokKodu3Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(3, stokKodu3Controller),),),
                           ],
                         ),
                         Row(
                           children: [
                             Expanded(
                                 child: CustomTextField(
-                                    labelText: "Stok Kod 4", controller: stokKodu4Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(4, stokKodu4Controller))),
+                                    labelText: "Stok Kod 4", controller: stokKodu4Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(4, stokKodu4Controller),),),
                             Expanded(
                                 child: CustomTextField(
-                                    labelText: "Stok Kod 5", controller: stokKodu5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, stokKodu5Controller))),
+                                    labelText: "Stok Kod 5", controller: stokKodu5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, stokKodu5Controller),),),
                           ],
                         ),
                         Row(
@@ -145,7 +145,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                                       getData();
                                       Get.back();
                                     },
-                                    child: const Text("Temizle"))),
+                                    child: const Text("Temizle"),),),
                             SizedBox(width: UIHelper.midSize),
                             Expanded(
                                 child: ElevatedButton(
@@ -153,12 +153,12 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                                       getData();
                                       Get.back();
                                     },
-                                    child: const Text("Tamam"))),
+                                    child: const Text("Tamam"),),),
                           ],
-                        ).paddingAll(UIHelper.lowSize)
-                      ]).paddingAll(UIHelper.lowSize));
+                        ).paddingAll(UIHelper.lowSize),
+                      ],).paddingAll(UIHelper.lowSize),);
                 },
-                icon: const Icon(Icons.filter_alt_outlined)),
+                icon: const Icon(Icons.filter_alt_outlined),),
           ],
         ),
         body: SingleChildScrollView(
@@ -171,7 +171,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                             getData();
                           },
                           baslangicTarihiController: baslangicTarihiController,
-                          bitisTarihiController: bitisTarihiController),
+                          bitisTarihiController: bitisTarihiController,),
                       CustomTextField(
                           labelText: "Cari",
                           valueText: widget.model?.cariKodu,
@@ -182,7 +182,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                           onTap: () async {
                             viewModel.model = null;
                             getData();
-                          }),
+                          },),
                       if (viewModel.modelList != null)
                         viewModel.modelList!.isNotEmpty
                             ? SizedBox(
@@ -202,9 +202,9 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                                             onTap: () {
                                               Get.back();
                                               return Get.toNamed("/mainPage/stokHareketleri", arguments: viewModel.modelList?[index].stokKodu);
-                                            }),
+                                            },),
                                         BottomSheetModel(title: "Stok İşlemleri", iconWidget: Icons.list_alt_outlined, onTap: () {}),
-                                      ]),
+                                      ],),
                                     ),
                                   ),
                                 ),
@@ -213,7 +213,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                       else
                         const Center(child: CircularProgressIndicator.adaptive()),
                     ],
-                  ).paddingAll(UIHelper.lowSize)),
+                  ).paddingAll(UIHelper.lowSize),),
         ),
       );
 

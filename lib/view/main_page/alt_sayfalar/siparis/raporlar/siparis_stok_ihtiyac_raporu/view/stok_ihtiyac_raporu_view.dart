@@ -128,7 +128,7 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
                   final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                       title: "Sırala",
                       children:
-                          List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.entries.toList()[index])));
+                          List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.entries.toList()[index])),);
                   if (result != null && result is MapEntry<String, String>) {
                     siralaController.text = result.key;
                     viewModel.pdfModel.dicParams?.sirala = result.value;
@@ -138,7 +138,7 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
               Row(
                 children: [
                   Expanded(
-                      child: CustomTextField(labelText: "Grup Kodu", readOnly: true, suffixMore: true, controller: grupKoduController, onTap: () async => getGrupKodu(context, 0, grupKoduController))),
+                      child: CustomTextField(labelText: "Grup Kodu", readOnly: true, suffixMore: true, controller: grupKoduController, onTap: () async => getGrupKodu(context, 0, grupKoduController)),),
                   Expanded(child: CustomTextField(labelText: "Kod 1", readOnly: true, suffixMore: true, controller: kod1Controller, onTap: () async => getGrupKodu(context, 1, kod1Controller))),
                 ],
               ),
@@ -157,16 +157,16 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
               CustomWidgetWithLabel(
                   isVertical: true,
                   text: "Sadece İhtiyaçlar",
-                  child: Observer(builder: (_) => Switch.adaptive(value: viewModel.sadeceIhtiyaclarMi, onChanged: (value) => viewModel.setSadeceIhtiyaclarMi(value)))),
+                  child: Observer(builder: (_) => Switch.adaptive(value: viewModel.sadeceIhtiyaclarMi, onChanged: (value) => viewModel.setSadeceIhtiyaclarMi(value))),),
               ElevatedButton(
                   onPressed: () {
                     viewModel.setFuture();
                     Get.back();
                   },
-                  child: const Text("Uygula"))
+                  child: const Text("Uygula"),),
             ],
           ),
-        ));
+        ),);
     return Future.value(viewModel.futureController.value);
   }
 

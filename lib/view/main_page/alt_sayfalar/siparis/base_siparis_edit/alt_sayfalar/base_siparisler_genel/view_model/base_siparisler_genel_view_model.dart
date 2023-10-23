@@ -25,7 +25,7 @@ abstract class _BaseSiparislerGenelViewModelBase with Store {
   @action
   void setProjeKodu(BaseProjeModel? value) {
     model = model.copyWith(
-        projeKodu: value?.projeKodu, projeAciklama: value?.projeAciklama);
+        projeKodu: value?.projeKodu, projeAciklama: value?.projeAciklama,);
     BaseSiparisEditModel.setInstance(model);
   }
 
@@ -57,7 +57,7 @@ abstract class _BaseSiparislerGenelViewModelBase with Store {
   void setPlasiyer(PlasiyerList? value) {
     model = model.copyWith(
         plasiyerKodu: value?.plasiyerKodu,
-        plasiyerAciklama: value?.plasiyerAciklama);
+        plasiyerAciklama: value?.plasiyerAciklama,);
     BaseSiparisEditModel.setInstance(model);
   }
 

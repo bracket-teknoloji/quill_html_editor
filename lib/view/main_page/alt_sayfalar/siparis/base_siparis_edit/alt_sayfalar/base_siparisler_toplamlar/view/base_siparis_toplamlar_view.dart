@@ -60,7 +60,7 @@ class _BaseSiparisToplamlarViewState
       child: Column(
         children: [toplamlarCard().paddingAll(UIHelper.lowSize), textFields()],
       ),
-    ));
+    ),);
 
   Card toplamlarCard() => Card(
       child: Column(
@@ -70,30 +70,30 @@ class _BaseSiparisToplamlarViewState
             children: [
               Text.rich(TextSpan(children: [
                 const TextSpan(
-                    text: "Miktar\n", style: TextStyle(color: Colors.grey)),
+                    text: "Miktar\n", style: TextStyle(color: Colors.grey),),
                 TextSpan(
                     text: BaseSiparisEditModel.instance
                             .toplamKalemMiktari()
                             .toIntIfDouble
                             .toStringIfNotNull ??
                         "0",
-                    style: const TextStyle(fontWeight: FontWeight.bold))
-              ])),
+                    style: const TextStyle(fontWeight: FontWeight.bold),),
+              ],),),
               const Text.rich(TextSpan(children: [
                 TextSpan(
                     text: "Mal Ağırlığı\n",
-                    style: TextStyle(color: Colors.grey)),
+                    style: TextStyle(color: Colors.grey),),
                 TextSpan(
-                    text: "0", style: TextStyle(fontWeight: FontWeight.bold))
-              ])),
+                    text: "0", style: TextStyle(fontWeight: FontWeight.bold),),
+              ],),),
               Text.rich(TextSpan(children: [
                 const TextSpan(
-                    text: "Brüt Tutar\n", style: TextStyle(color: Colors.grey)),
+                    text: "Brüt Tutar\n", style: TextStyle(color: Colors.grey),),
                 TextSpan(
                     text:
                         "${model.toplamBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                    style: const TextStyle(fontWeight: FontWeight.bold))
-              ])),
+                    style: const TextStyle(fontWeight: FontWeight.bold),),
+              ],),),
             ].map((e) => Expanded(child: e)).toList(),
           ),
           Row(
@@ -102,29 +102,29 @@ class _BaseSiparisToplamlarViewState
               Text.rich(TextSpan(children: [
                 const TextSpan(
                     text: "Mal. Faz. İsk.\n",
-                    style: TextStyle(color: Colors.grey)),
+                    style: TextStyle(color: Colors.grey),),
                 TextSpan(
                     text:
                         "${viewModel.model.malFazlasiTutar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency",
-                    style: const TextStyle(fontWeight: FontWeight.bold))
-              ])),
+                    style: const TextStyle(fontWeight: FontWeight.bold),),
+              ],),),
               Text.rich(TextSpan(children: [
                 const TextSpan(
-                    text: "Satır İsk.\n", style: TextStyle(color: Colors.grey)),
+                    text: "Satır İsk.\n", style: TextStyle(color: Colors.grey),),
                 TextSpan(
                     text:
                         "${viewModel.model.satirIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency",
-                    style: const TextStyle(fontWeight: FontWeight.bold))
-              ])),
+                    style: const TextStyle(fontWeight: FontWeight.bold),),
+              ],),),
               Observer(builder: (_) => Text.rich(TextSpan(children: [
                   const TextSpan(
                       text: "Toplam İskonto\n",
-                      style: TextStyle(color: Colors.grey)),
+                      style: TextStyle(color: Colors.grey),),
                   TextSpan(
                       text:
                           "${viewModel.model.getToplamIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency",
-                      style: const TextStyle(fontWeight: FontWeight.bold))
-                ]))),
+                      style: const TextStyle(fontWeight: FontWeight.bold),),
+                ],),),),
             ].map((e) => Expanded(child: e)).toList(),
           ),
           Row(
@@ -133,30 +133,30 @@ class _BaseSiparisToplamlarViewState
               Observer(builder: (_) => Text.rich(TextSpan(children: [
                   const TextSpan(
                       text: "Ara Toplam\n",
-                      style: TextStyle(color: Colors.grey)),
+                      style: TextStyle(color: Colors.grey),),
                   TextSpan(
                       text:
                           "${viewModel.model.getAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                      style: const TextStyle(fontWeight: FontWeight.bold))
-                ]))),
+                      style: const TextStyle(fontWeight: FontWeight.bold),),
+                ],),),),
               Observer(builder: (_) => Text.rich(TextSpan(children: [
                   const TextSpan(
                       text: "KDV Tutarı\n",
-                      style: TextStyle(color: Colors.grey)),
+                      style: TextStyle(color: Colors.grey),),
                   TextSpan(
                       text:
                           "${viewModel.model.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                      style: const TextStyle(fontWeight: FontWeight.bold))
-                ]))),
+                      style: const TextStyle(fontWeight: FontWeight.bold),),
+                ],),),),
               Observer(builder: (_) => Text.rich(TextSpan(children: [
                   const TextSpan(
                       text: "Genel Toplam\n",
-                      style: TextStyle(color: Colors.grey)),
+                      style: TextStyle(color: Colors.grey),),
                   TextSpan(
                       text:
                           "${viewModel.model.genelToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                      style: const TextStyle(fontWeight: FontWeight.bold))
-                ]))),
+                      style: const TextStyle(fontWeight: FontWeight.bold),),
+                ],),),),
             ].map((e) => Expanded(child: e)).toList(),
           ),
         ],
@@ -177,18 +177,18 @@ class _BaseSiparisToplamlarViewState
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: true),
                 onChanged: (p0) => viewModel.setGenIsk1(
-                    double.tryParse(p0.replaceAll(RegExp(r","), "."))),
+                    double.tryParse(p0.replaceAll(RegExp(r","), ".")),),
                 valueWidget: Observer(
                     builder: (_) => Text(viewModel.isGenIsk1T
                         ? "%${(viewModel.model.genIsk1o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"
-                        : "${(viewModel.model.genIsk1t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+                        : "${(viewModel.model.genIsk1t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",),),
                 suffix: IconButton(
                     onPressed: () =>
                         viewModel.changeGenIsk1O(genelIskonto1Controller),
                     icon: Observer(
                         builder: (_) => Icon(viewModel.isGenIsk1T
                             ? Icons.payments_outlined
-                            : Icons.percent_outlined))),
+                            : Icons.percent_outlined,),),),
               ),
               CustomTextField(
                 labelText: "İsk.Tipi 1",
@@ -199,7 +199,7 @@ class _BaseSiparisToplamlarViewState
                 controller: iskontoTipi1Controller,
                 valueWidget: Observer(
                     builder: (_) => Text(
-                        viewModel.model.genisk1Tipi?.toStringIfNotNull ?? "")),
+                        viewModel.model.genisk1Tipi?.toStringIfNotNull ?? "",),),
                 onTap: () async {
                   final result = await bottomSheetDialogManager
                       .showIskontoTipiBottomSheetDialog(context);
@@ -223,16 +223,16 @@ class _BaseSiparisToplamlarViewState
                 valueWidget: Observer(
                     builder: (_) => Text(viewModel.isGenIsk2T
                         ? "%${(viewModel.model.genIsk2o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"
-                        : "${(viewModel.model.genIsk2t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+                        : "${(viewModel.model.genIsk2t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",),),
                 onChanged: (p0) => viewModel.setGenIsk2(
-                    double.tryParse(p0.replaceAll(RegExp(r","), "."))),
+                    double.tryParse(p0.replaceAll(RegExp(r","), ".")),),
                 suffix: IconButton(
                     onPressed: () =>
                         viewModel.changeGenIsk2O(genelIskonto2Controller),
                     icon: Observer(
                         builder: (_) => Icon(viewModel.isGenIsk2T
                             ? Icons.payments_outlined
-                            : Icons.percent_outlined))),
+                            : Icons.percent_outlined,),),),
               ),
               CustomTextField(
                 labelText: "İsk.Tipi 2",
@@ -242,7 +242,7 @@ class _BaseSiparisToplamlarViewState
                 suffixMore: true,
                 valueWidget: Observer(
                     builder: (_) => Text(
-                        viewModel.model.genisk2Tipi?.toStringIfNotNull ?? "")),
+                        viewModel.model.genisk2Tipi?.toStringIfNotNull ?? "",),),
                 controller: iskontoTipi2Controller,
                 onTap: () async {
                   final result = await bottomSheetDialogManager
@@ -265,18 +265,18 @@ class _BaseSiparisToplamlarViewState
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: true),
                 onChanged: (p0) => viewModel.setGenIsk3(
-                    double.tryParse(p0.replaceAll(RegExp(r","), "."))),
+                    double.tryParse(p0.replaceAll(RegExp(r","), ".")),),
                 valueWidget: Observer(
                     builder: (_) => Text(viewModel.isGenIsk3T
                         ? "%${(viewModel.model.genIsk3o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"
-                        : "${(viewModel.model.genIsk3t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+                        : "${(viewModel.model.genIsk3t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",),),
                 suffix: IconButton(
                     onPressed: () =>
                         viewModel.changeGenIsk3O(genelIskonto3Controller),
                     icon: Observer(
                         builder: (_) => Icon(viewModel.isGenIsk3T
                             ? Icons.payments_outlined
-                            : Icons.percent_outlined))),
+                            : Icons.percent_outlined,),),),
               ),
               CustomTextField(
                 labelText: "İsk.Tipi 3",
@@ -287,7 +287,7 @@ class _BaseSiparisToplamlarViewState
                 controller: iskontoTipi3Controller,
                 valueWidget: Observer(
                     builder: (_) => Text(
-                        viewModel.model.genisk3Tipi?.toStringIfNotNull ?? "")),
+                        viewModel.model.genisk3Tipi?.toStringIfNotNull ?? "",),),
                 onTap: () async {
                   final result = await bottomSheetDialogManager
                       .showIskontoTipiBottomSheetDialog(context);
@@ -309,7 +309,7 @@ class _BaseSiparisToplamlarViewState
                   keyboardType:
                       const TextInputType.numberWithOptions(decimal: true),
                   onChanged: (value) => viewModel.setEkMal1(
-                      double.tryParse(value.replaceAll(RegExp(r","), "."))),
+                      double.tryParse(value.replaceAll(RegExp(r","), ".")),),
                 ),
               ).yetkiVarMi(!yetkiController.siparisMSEkMaliyet2AktifMi),
               Expanded(
@@ -318,10 +318,10 @@ class _BaseSiparisToplamlarViewState
                       yetkiController.siparisSatisEkMaliyet2Adi ?? "Tevkifat",
                   enabled: enable,
                   keyboardType: const TextInputType.numberWithOptions(
-                      decimal: true, signed: true),
+                      decimal: true, signed: true,),
                   controller: tevkifatController,
                   inputFormatter: [
-                    FilteringTextInputFormatter.allow(RegExp(r"[\d+\-\.]"))
+                    FilteringTextInputFormatter.allow(RegExp(r"[\d+\-\.]")),
                   ],
                   suffix: IconButton(
                       onPressed: () async {
@@ -334,14 +334,14 @@ class _BaseSiparisToplamlarViewState
                                         title: viewModel.tevkifatMap.keys
                                             .toList()[index],
                                         value: viewModel.tevkifatMap.values
-                                            .toList()[index])));
+                                            .toList()[index],),),);
                         if (result != null) {
                           viewModel.setTevkifat(result);
                           tevkifatController.text =
                               (-result * viewModel.model.kdvTutari).toString();
                         }
                       },
-                      icon: const Icon(Icons.more_horiz_outlined)),
+                      icon: const Icon(Icons.more_horiz_outlined),),
                   // onChanged: (value) => model.ekMaliyet2Tutari = double.tryParse(value),
                 ),
               ).yetkiVarMi(yetkiController.siparisEkMaliyet2GizlenecekMi),
@@ -357,7 +357,7 @@ class _BaseSiparisToplamlarViewState
                   keyboardType:
                       const TextInputType.numberWithOptions(decimal: true),
                   onChanged: (value) => viewModel.setEkMal1(
-                      double.tryParse(value.replaceAll(RegExp(r","), "."))),
+                      double.tryParse(value.replaceAll(RegExp(r","), ".")),),
                 ),
               ).yetkiVarMi(!yetkiController.siparisMSEkMaliyet2AktifMi),
               Expanded(
@@ -369,7 +369,7 @@ class _BaseSiparisToplamlarViewState
                   onChanged: (value) => model.vadeGunu = int.tryParse(value),
                   valueWidget: Observer(
                       builder: (_) =>
-                          Text(viewModel.model.vadeTarihi?.toDateString ?? "")),
+                          Text(viewModel.model.vadeTarihi?.toDateString ?? ""),),
                   suffix: IconButton(
                     onPressed: () async {
                       final date = await showDatePicker(
@@ -377,7 +377,7 @@ class _BaseSiparisToplamlarViewState
                           initialDate: model.vadeTarihi ?? DateTime.now(),
                           firstDate: model.tarih ?? DateTime.now(),
                           lastDate:
-                              DateTime.now().add(const Duration(days: 365)));
+                              DateTime.now().add(const Duration(days: 365)),);
                       if (date != null) {
                         model.vadeGunu =
                             (model.tarih?.difference(date).inDays ?? 0) * -1;
@@ -388,7 +388,7 @@ class _BaseSiparisToplamlarViewState
                     icon: const Icon(Icons.calendar_today),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ],
@@ -397,11 +397,11 @@ class _BaseSiparisToplamlarViewState
 
   void initControllers() {
     genelIskonto1Controller = TextEditingController(
-        text: model.genIsk1o?.toIntIfDouble.toStringIfNotNull);
+        text: model.genIsk1o?.toIntIfDouble.toStringIfNotNull,);
     genelIskonto2Controller = TextEditingController(
-        text: model.genIsk2o?.toIntIfDouble.toStringIfNotNull);
+        text: model.genIsk2o?.toIntIfDouble.toStringIfNotNull,);
     genelIskonto3Controller = TextEditingController(
-        text: model.genIsk3o?.toIntIfDouble.toStringIfNotNull);
+        text: model.genIsk3o?.toIntIfDouble.toStringIfNotNull,);
     iskontoTipi1Controller =
         TextEditingController(text: model.genisk1Tipi?.toStringIfNotNull);
     iskontoTipi2Controller =
@@ -410,28 +410,28 @@ class _BaseSiparisToplamlarViewState
         TextEditingController(text: model.genisk3Tipi?.toStringIfNotNull);
     ekMal1Controller = TextEditingController(
         text: model.ekMaliyet1Tutari
-            ?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
+            ?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),);
     tevkifatController = TextEditingController(
         text: model.ekMaliyet2Tutari
-            ?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
+            ?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),);
     ekMal3Controller = TextEditingController(
         text: model.ekMaliyet3Tutari
-            ?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
+            ?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),);
     final List<ListIskTip?>? iskList = parametreModel.listIskTip;
     if (iskList != null) {
       iskontoTipi1Controller.text = iskList
               .firstWhereOrNull(
-                  (element) => element?.iskontoTipi == model.genisk1Tipi)
+                  (element) => element?.iskontoTipi == model.genisk1Tipi,)
               ?.aciklama ??
           "";
       iskontoTipi2Controller.text = iskList
               .firstWhereOrNull(
-                  (element) => element?.iskontoTipi == model.genisk2Tipi)
+                  (element) => element?.iskontoTipi == model.genisk2Tipi,)
               ?.aciklama ??
           "";
       iskontoTipi3Controller.text = iskList
               .firstWhereOrNull(
-                  (element) => element?.iskontoTipi == model.genisk3Tipi)
+                  (element) => element?.iskontoTipi == model.genisk3Tipi,)
               ?.aciklama ??
           "";
     }
@@ -445,7 +445,7 @@ class _BaseSiparisToplamlarViewState
         text: model.vadeGunu.toStringIfNotNull ??
             model.vadeTarihi?.difference(DateTime.now())
                 .inDays
-                .toStringIfNotNull);
+                .toStringIfNotNull,);
   }
 
   void disposeControllers() {

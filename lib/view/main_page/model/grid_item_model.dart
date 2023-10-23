@@ -31,7 +31,7 @@ class GridItemModel {
       required this.color,
       required this.altMenuler,
       this.iconData,
-      this.yetkiListesi}) {
+      this.yetkiListesi,}) {
     menuTipi = "A";
   }
 
@@ -40,7 +40,7 @@ class GridItemModel {
       required this.title,
       this.icon,
       required this.altMenuler,
-      this.iconData}) {
+      this.iconData,}) {
     //😳 Sub menu yani alt menü o yüzden "S"
     menuTipi = "S";
   }
@@ -51,7 +51,7 @@ class GridItemModel {
       this.color,
       this.route,
       this.arguments,
-      this.siparisTipi}) {
+      this.siparisTipi,}) {
     menuTipi = "I";
     if (route == null) {
       onTap ??=
@@ -61,12 +61,12 @@ class GridItemModel {
     }
   }
   GridItemModel.islemler(
-      {required this.title, this.icon, this.color, this.onTap, this.iconData}) {
+      {required this.title, this.icon, this.color, this.onTap, this.iconData,}) {
     menuTipi = "IS";
     onTap ??= () async => DialogManager().showErrorSnackBar("Yapım Aşamasında");
   }
   GridItemModel.serbestRaporlar(
-      {required this.title, this.arguments, this.color, this.name}) {
+      {required this.title, this.arguments, this.color, this.name,}) {
     menuTipi = "SR";
     route = "/mainPage/serbestRaporlar";
     onTap = () async =>

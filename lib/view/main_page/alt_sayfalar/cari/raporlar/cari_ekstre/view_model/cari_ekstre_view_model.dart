@@ -18,7 +18,7 @@ abstract class _CariEkstreViewModelBase with Store {
 
   @observable
   PdfModel pdfModel = PdfModel(
-      raporOzelKod: "Rapor_CariEkstre", standart: true, dicParams: DicParams());
+      raporOzelKod: "Rapor_CariEkstre", standart: true, dicParams: DicParams(),);
 
   //* Cari Kodu
   //*

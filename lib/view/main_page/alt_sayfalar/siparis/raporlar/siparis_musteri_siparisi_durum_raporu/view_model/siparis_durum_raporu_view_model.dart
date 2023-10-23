@@ -52,7 +52,7 @@ abstract class _SiparisDurumRaporuViewModelBase with Store {
   void setKarsilanmaGroupValue(int value) {
     karsilanmaGroupValue = value + 1;
     siparislerRequestModel = siparislerRequestModel.copyWith(
-        siparisKarsilanmaDurumu: karsilamaValueList[value]);
+        siparisKarsilanmaDurumu: karsilamaValueList[value],);
   }
 
   @observable
@@ -72,7 +72,7 @@ abstract class _SiparisDurumRaporuViewModelBase with Store {
       ekranTipi: "R",
       baslamaTarihi: DateTime.now().toDateString,
       bitisTarihi: DateTime.now().toDateString,
-      siralama: "TARIH_ZA");
+      siralama: "TARIH_ZA",);
 
   @observable
   ObservableList<KalemModel?>? kalemList;
@@ -83,7 +83,7 @@ abstract class _SiparisDurumRaporuViewModelBase with Store {
           element?.stokAdi
               ?.toUpperCase()
               .contains(searchKey?.toUpperCase() ?? "") ??
-          false)
+          false,)
       .toList()
       .asObservable();
 

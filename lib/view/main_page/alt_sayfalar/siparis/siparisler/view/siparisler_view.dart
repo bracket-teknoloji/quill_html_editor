@@ -141,7 +141,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                     getData();
                   },
                 )
-              : AppBarTitle(title: "${StaticVariables.instance.isMusteriSiparisleri ? "Müşteri" : "Satıcı"} Siparişleri", subtitle: viewModel.musteriSiparisleriList?.length.toString())),
+              : AppBarTitle(title: "${StaticVariables.instance.isMusteriSiparisleri ? "Müşteri" : "Satıcı"} Siparişleri", subtitle: viewModel.musteriSiparisleriList?.length.toString()),),
       //*Actions
       actions: [
         IconButton(
@@ -149,7 +149,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
               viewModel.changeSearchBar();
               getData();
             },
-            icon: Observer(builder: (_) => viewModel.searchBar ? const Icon(Icons.search_off_outlined) : const Icon(Icons.search_outlined)))
+            icon: Observer(builder: (_) => viewModel.searchBar ? const Icon(Icons.search_off_outlined) : const Icon(Icons.search_outlined)),),
       ],
       //*Bottom
       bottom: AppBarPreferedSizedBottom(
@@ -188,7 +188,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                     cariController.text = result.cariAdi;
                                     viewModel.setCariKodu(result.cariKodu);
                                   }
-                                })),
+                                },),),
                         Expanded(
                             child: CustomTextField(
                                 labelText: "Cari Tipi",
@@ -206,7 +206,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                     //😳 Bunu düzenle
                                     viewModel.setCariTipi(result);
                                   }
-                                })),
+                                },),),
                       ],
                     ),
                     Row(
@@ -228,7 +228,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
 
                                     viewModel.setArrPlasiyerKodu(result.map((e) => e?.plasiyerKodu.toString()).toList().cast<String>());
                                   }
-                                })).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
+                                },),).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                         Expanded(
                             child: CustomTextField(
                                 labelText: "Proje",
@@ -245,7 +245,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                     projeController.text = result.projeAciklama ?? "";
                                     viewModel.setProjeKodu(result.projeKodu);
                                   }
-                                })).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
+                                },),).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
                       ],
                     ),
                     Row(
@@ -264,7 +264,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                     }
                                   },
                                   icon: const Icon(Icons.more_horiz_outlined),
-                                ))),
+                                ),),),
                         Expanded(
                             child: CustomTextField(
                                 labelText: "Özel Kod 2",
@@ -279,7 +279,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                     }
                                   },
                                   icon: const Icon(Icons.more_horiz_outlined),
-                                ))),
+                                ),),),
                       ],
                     ),
                     CustomWidgetWithLabel(
@@ -295,14 +295,14 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                             childrenTitleList: viewModel.teslimatDurumu,
                             filterOnChanged: (x) => viewModel.setTeslimatDurumuGroupValue(x),
                             childrenValueList: viewModel.teslimatDurumuValueList,
-                            groupValue: viewModel.teslimatDurumuGroupValue)),
+                            groupValue: viewModel.teslimatDurumuGroupValue,),),
                     InkWell(
                       onTap: () => viewModel.changeGrupKodlariGoster(),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Text("Cari Rapor Kodları"),
-                          Observer(builder: (_) => Icon(viewModel.grupKodlariGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down_outlined))
+                          Observer(builder: (_) => Icon(viewModel.grupKodlariGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down_outlined)),
                         ],
                       ).paddingAll(UIHelper.lowSize),
                     ),
@@ -322,7 +322,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                   readOnly: true,
                                   suffixMore: true,
                                   onTap: () => getGrupKodu(0, grupKoduController),
-                                )).yetkiVarMi(viewModel.grupKodList0),
+                                ),).yetkiVarMi(viewModel.grupKodList0),
                                 Expanded(
                                     child: CustomTextField(
                                   labelText: "Kod 1",
@@ -334,7 +334,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                     kod1Controller.clear();
                                   },
                                   onTap: () => getGrupKodu(1, kod1Controller),
-                                )).yetkiVarMi(viewModel.grupKodList1),
+                                ),).yetkiVarMi(viewModel.grupKodList1),
                               ],
                             ),
                             Row(
@@ -350,7 +350,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                     kod2Controller.clear();
                                   },
                                   onTap: () => getGrupKodu(2, kod2Controller),
-                                )).yetkiVarMi(viewModel.grupKodList2),
+                                ),).yetkiVarMi(viewModel.grupKodList2),
                                 Expanded(
                                     child: CustomTextField(
                                   labelText: "Kod 3",
@@ -362,7 +362,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                     kod3Controller.clear();
                                   },
                                   onTap: () => getGrupKodu(3, kod3Controller),
-                                )).yetkiVarMi(viewModel.grupKodList3),
+                                ),).yetkiVarMi(viewModel.grupKodList3),
                               ],
                             ),
                             Observer(builder: (_) => Row(
@@ -378,7 +378,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                       kod4Controller.clear();
                                     },
                                     onTap: () => getGrupKodu(4, kod4Controller),
-                                  )).yetkiVarMi(viewModel.grupKodList4),
+                                  ),).yetkiVarMi(viewModel.grupKodList4),
                                   Expanded(
                                       child: CustomTextField(
                                     labelText: "kod 5",
@@ -390,9 +390,9 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                       kod5Controller.clear();
                                     },
                                     onTap: () => getGrupKodu(5, kod5Controller),
-                                  )).yetkiVarMi(viewModel.grupKodList5),
+                                  ),).yetkiVarMi(viewModel.grupKodList5),
                                 ],
-                              )),
+                              ),),
                           ],
                         ),
                       ),
@@ -408,7 +408,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                   Get.back();
                                 },
                                 style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
-                                child: const Text("Temizle"))),
+                                child: const Text("Temizle"),),),
                         SizedBox(width: context.sized.dynamicWidth(0.02)),
                         Expanded(
                             child: ElevatedButton(
@@ -419,11 +419,11 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                   getData();
                                   Get.back();
                                 },
-                                child: const Text("Kaydet"))),
+                                child: const Text("Kaydet"),),),
                       ],
-                    ).paddingAll(UIHelper.lowSize)
+                    ).paddingAll(UIHelper.lowSize),
                   ],
-                ).paddingAll(UIHelper.lowSize)),
+                ).paddingAll(UIHelper.lowSize),),
             child: const Text("Filtrele"),
           ),
           AppBarButton(
@@ -431,7 +431,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
             onPressed: () async {
               final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                   title: "Sıralama",
-                  children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])));
+                  children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])),);
               if (result != null) {
                 viewModel.setSiralama(result);
                 viewModel.resetSayfa();
@@ -456,21 +456,21 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                             children: [
                               Observer(
                                   builder: (_) => SwitchListTile.adaptive(
-                                      title: const Text("Ek Açıklamalar"), value: viewModel.ekstraAlanlarMap["EK"] ?? false, onChanged: (value) => viewModel.changeEkstraAlanlarMap("EK", value))),
+                                      title: const Text("Ek Açıklamalar"), value: viewModel.ekstraAlanlarMap["EK"] ?? false, onChanged: (value) => viewModel.changeEkstraAlanlarMap("EK", value),),),
                               Observer(
                                   builder: (_) => SwitchListTile.adaptive(
                                       title: const Text("Miktar"),
                                       value: viewModel.ekstraAlanlarMap["MİK"] ?? false,
                                       onChanged: (value) {
                                         viewModel.changeEkstraAlanlarMap("MİK", value);
-                                      })),
+                                      },),),
                               Observer(
                                   builder: (_) => SwitchListTile.adaptive(
-                                      title: const Text("Vade"), value: viewModel.ekstraAlanlarMap["VADE"] ?? false, onChanged: (value) => viewModel.changeEkstraAlanlarMap("VADE", value))),
+                                      title: const Text("Vade"), value: viewModel.ekstraAlanlarMap["VADE"] ?? false, onChanged: (value) => viewModel.changeEkstraAlanlarMap("VADE", value),),),
                             ],
-                          ));
-                    }),
-              ]);
+                          ),);
+                    },),
+              ],);
             },
             child: const Icon(Icons.more_horiz_outlined),
           ),
@@ -502,13 +502,13 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                 isScrolledDown: viewModel.isScrolledDown,
                 onPressed: () async {
                   await Get.toNamed("mainPage/siparisEdit",
-                      arguments: BaseEditModel(model: SiparisEditRequestModel(), baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: widget.widgetModel.siparisTipiEnum));
+                      arguments: BaseEditModel(model: SiparisEditRequestModel(), baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: widget.widgetModel.siparisTipiEnum),);
                   viewModel.setSiparislerList(null);
                   viewModel.setDahaVarMi(true);
                   viewModel.resetSayfa();
                   getData();
-                }),
-          ));
+                },),
+          ),);
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
         onRefresh: () async {
@@ -551,25 +551,25 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                 getData();
                               }
                             },
-                          ));
+                          ),);
                       },
-                    ))));
+                    ),),),);
 
   Observer bottomNavigationBar() => Observer(
         builder: (_) => BottomBarWidget(isScrolledDown: viewModel.isScrolledDown, visible: viewModel.paramData?.isNotEmpty == true, children: [
               FooterButton(children: [
                 const Text("KDV Hariç"),
-                Observer(builder: (_) => Text("${(viewModel.paramData?["ARA_TOPLAM"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))
-              ]),
+                Observer(builder: (_) => Text("${(viewModel.paramData?["ARA_TOPLAM"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+              ],),
               FooterButton(children: [
                 const Text("KDV"),
-                Observer(builder: (_) => Text("${(viewModel.paramData?["KDV"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))
-              ]),
+                Observer(builder: (_) => Text("${(viewModel.paramData?["KDV"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+              ],),
               FooterButton(children: [
                 const Text("KDV Dahil"),
-                Observer(builder: (_) => Text("${(viewModel.paramData?["GENEL_TOPLAM"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))
-              ]),
-            ]));
+                Observer(builder: (_) => Text("${(viewModel.paramData?["GENEL_TOPLAM"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+              ],),
+            ],),);
 
   void getData() async {
     if (viewModel.grupKodList.ext.isNullOrEmpty) {

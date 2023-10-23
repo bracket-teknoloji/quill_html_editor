@@ -39,6 +39,6 @@ class AppBarButton extends StatelessWidget {
             else
               null,
             iconWidget ?? const SizedBox(),
-            child
-          ].nullCheckWithGeneric));
+            child,
+          ].nullCheckWithGeneric,),);
 }

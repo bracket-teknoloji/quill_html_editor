@@ -126,7 +126,7 @@ class PickerApp extends StatelessWidget {
           GetPage(name: "/dovizKurlari", page: () => const DovizKurlariView()),
           GetPage(
               name: "/kalemEkle",
-              page: () => KalemEkleView(stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null, kalemModel: Get.arguments is KalemModel ? Get.arguments : null)),
+              page: () => KalemEkleView(stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null, kalemModel: Get.arguments is KalemModel ? Get.arguments : null),),
           GetPage(
             name: "/mainPage",
             page: () => const MainPageView(),
@@ -188,7 +188,7 @@ class PickerApp extends StatelessWidget {
                   name: "/stokListesi",
                   page: () => StokListesiView(
                       isGetData: Get.arguments is bool ? Get.arguments : (Get.arguments is KalemEkleModel ? Get.arguments.getArguments : null),
-                      searchText: Get.arguments is KalemEkleModel ? Get.arguments.searchText : null)),
+                      searchText: Get.arguments is KalemEkleModel ? Get.arguments.searchText : null,),),
               GetPage(name: "/stokFiyatGor", page: () => const FiyatGorView()),
               GetPage(name: "/stokYazdir", page: () => StokYazdirView(model: Get.arguments)),
               GetPage(name: "/stokFiyatGecmisi", page: () => const FiyatGecmisiView()),
@@ -201,7 +201,7 @@ class PickerApp extends StatelessWidget {
                 page: () => StokHareketleriView(
                     model: Get.arguments is StokListesiModel ? Get.arguments : null,
                     stokKodu: Get.arguments is String ? Get.arguments : null,
-                    cariModel: Get.arguments is CariListesiModel ? Get.arguments : null),
+                    cariModel: Get.arguments is CariListesiModel ? Get.arguments : null,),
               ),
               GetPage(name: "/StokYeniKayitView", page: () => StokYeniKayitView(model: Get.arguments)),
 
@@ -229,7 +229,7 @@ class PickerApp extends StatelessWidget {
                   page: () => SerbestRaporlarView(
                       dizaynList: Get.arguments is NetFectDizaynList ? Get.arguments : null,
                       cariListesiModel: Get.arguments is CariListesiModel ? Get.arguments : null,
-                      stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null)),
+                      stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null,),),
             ],
           ),
         ],

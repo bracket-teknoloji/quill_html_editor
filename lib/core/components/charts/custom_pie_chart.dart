@@ -39,7 +39,7 @@ class _CustomPieChartState extends BaseState<CustomPieChart> {
                               touchedIndex = pieTouchResponse.touchedSection!.touchedSectionIndex;
                               if (touchedIndex >= 0) {
                                 dialogManager.showInfoSnackBar(
-                                    "${widget.pieChartTitle?[pieTouchResponse.touchedSection!.touchedSectionIndex] ?? widget.pieChartSelectedValue?[pieTouchResponse.touchedSection!.touchedSectionIndex].toString() ?? ''}\n${widget.pieChartValue?[pieTouchResponse.touchedSection!.touchedSectionIndex].commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency");
+                                    "${widget.pieChartTitle?[pieTouchResponse.touchedSection!.touchedSectionIndex] ?? widget.pieChartSelectedValue?[pieTouchResponse.touchedSection!.touchedSectionIndex].toString() ?? ''}\n${widget.pieChartValue?[pieTouchResponse.touchedSection!.touchedSectionIndex].commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",);
                               }
                             },
                           ),
@@ -56,9 +56,9 @@ class _CustomPieChartState extends BaseState<CustomPieChart> {
                               titleStyle: theme.textTheme.labelSmall?.copyWith(fontSize: fontSize),
                               radius: radius,
                             );
-                          })),
+                          }),),
                       swapAnimationCurve: Curves.linear,
-                      swapAnimationDuration: DurationHelper.durationLow),
+                      swapAnimationDuration: DurationHelper.durationLow,),
                 )
               : const Center(child: Card(child: Text("Veri bulunamadı.")))
           : const Center(child: CircularProgressIndicator.adaptive()),

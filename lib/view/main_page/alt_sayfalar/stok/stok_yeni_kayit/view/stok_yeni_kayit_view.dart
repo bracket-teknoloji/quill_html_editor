@@ -53,7 +53,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                     dialogManager.showLoadingDialog("Kaydediliyor");
                     viewModel.setStokKodu(stokKoduController.text);
                     final GenericResponseModel result = await networkManager.dioPost<StokYeniKayitModel>(
-                        path: ApiUrls.saveStokHareket, bodyModel: StokYeniKayitModel(), addCKey: true, addSirketBilgileri: true, data: viewModel.model.toJson());
+                        path: ApiUrls.saveStokHareket, bodyModel: StokYeniKayitModel(), addCKey: true, addSirketBilgileri: true, data: viewModel.model.toJson(),);
                     dialogManager.hideAlertDialog;
                     if (result.success ?? false) {
                       dialogManager.showSuccessSnackBar("Kayıt başarılı");
@@ -64,7 +64,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                   });
                 }
               },
-              icon: const Icon(Icons.save_outlined))
+              icon: const Icon(Icons.save_outlined),),
         ],
       ),
       body: SingleChildScrollView(
@@ -82,7 +82,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                       viewModel.model.gc = index == 0 ? "G" : "C";
                       viewModel.changeIsSelected(index);
                     },
-                  )),
+                  ),),
               ),
               CustomTextField(
                 labelText: "Stok",
@@ -109,7 +109,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                         tarihController.text = viewModel.model.tarih.toDateString;
                       }
                     });
-                  }),
+                  },),
               CustomTextField(
                 labelText: "Belge No",
                 controller: belgeNoController,
@@ -127,7 +127,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                 suffixMore: true,
                 onTap: () async {
                   final MapEntry? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                      title: "Hareket Türü", children: viewModel.hareketTurMap.entries.map((e) => BottomSheetModel(title: e.key, description: e.value, onTap: () => Get.back(result: e))).toList());
+                      title: "Hareket Türü", children: viewModel.hareketTurMap.entries.map((e) => BottomSheetModel(title: e.key, description: e.value, onTap: () => Get.back(result: e))).toList(),);
                   if (result != null) {
                     hareketTuruController.text = result.key;
                     viewModel.model.hareketTuru = result.value;
@@ -156,7 +156,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                       title: "Depo",
                       children: viewModel.anaVeri?.paramModel?.depoList
                           ?.map((e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, onTap: () => Get.back(result: e)))
-                          .toList());
+                          .toList(),);
                   if (result != null) {
                     depoController.text = result.depoTanimi ?? "";
                     viewModel.model.depoKodu = result.depoKodu;
@@ -190,7 +190,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                         icon: const Icon(Icons.remove),
                       ),
                     ],
-                  )),
+                  ),),
               CustomTextField(
                 labelText: "Açıklama",
                 controller: aciklamaController,
@@ -211,8 +211,8 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                                 onTap: () {
                                   Get.back(result: e);
                                 },
-                              ))
-                          .toList());
+                              ),)
+                          .toList(),);
                   if (result != null) {
                     plasiyerController.text = result.plasiyerAciklama ?? "";
                     viewModel.model.plasiyerKodu = result.plasiyerKodu;
@@ -243,14 +243,14 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                                     title: e.projeKodu ?? "",
                                     description: e.projeAciklama ?? "",
                                     onTap: () => Get.back(result: e),
-                                  ))
-                              .toList());
+                                  ),)
+                              .toList(),);
                       if (dialogResult != null) {
                         projeController.text = dialogResult.projeAciklama ?? "";
                         viewModel.model.projeKodu = dialogResult.projeKodu;
                       }
                     }
-                  }).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
+                  },).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
             ].map((e) => e.paddingOnly(bottom: UIHelper.lowSize)).toList(),
           ),
         ),

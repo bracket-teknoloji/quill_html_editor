@@ -37,6 +37,6 @@ abstract class _DovizKurlariViewModelBase with Store {
   void changeKurlariSilTekrarGuncelle() {
     kurlariSilTekrarGuncelle = !kurlariSilTekrarGuncelle;
     CacheManager.setProfilParametre(CacheManager.getProfilParametre
-        .copyWith(kurlariSilTekrarGuncelle: kurlariSilTekrarGuncelle));
+        .copyWith(kurlariSilTekrarGuncelle: kurlariSilTekrarGuncelle),);
   }
 }

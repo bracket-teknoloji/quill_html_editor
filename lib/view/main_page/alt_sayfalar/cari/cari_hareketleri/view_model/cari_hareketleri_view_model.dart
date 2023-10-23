@@ -58,7 +58,7 @@ abstract class _CariHareketleriViewModelBase with Store {
         return data!
             .map((e) => e.dovizTuru == cariListesiModel?.dovizKodu
                 ? e.dovizBorc ?? 0
-                : 0.0)
+                : 0.0,)
             .reduce((value, element) => value + element);
       } else {
         return data!
@@ -78,7 +78,7 @@ abstract class _CariHareketleriViewModelBase with Store {
         return data!
             .map((e) => e.dovizTuru == cariListesiModel?.dovizKodu
                 ? e.dovizAlacak ?? 0
-                : 0.0)
+                : 0.0,)
             .reduce((value, element) => value + element);
       } else {
         return data!
@@ -96,7 +96,7 @@ abstract class _CariHareketleriViewModelBase with Store {
         ?.where((element) =>
             element.tarih ==
             cariHareketleriList?.map((e) => e.tarih).reduce(
-                (value, element) => value!.isAfter(element!) ? value : element))
+                (value, element) => value!.isAfter(element!) ? value : element,),)
         .firstOrNull;
     if (cariListesiModel?.dovizKodu != null) {
       return model?.dovYuruyenBakiye ?? 0.0;

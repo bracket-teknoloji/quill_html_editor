@@ -87,7 +87,7 @@ class CacheManager {
     // await accountsBox.clear();
     if (profilParametreBox.isEmpty) {
       await profilParametreBox.put(
-          "value", BaseProfilParametreModel().toJson());
+          "value", BaseProfilParametreModel().toJson(),);
     }
     if (isLicenseVerifiedBox.isEmpty) {
       await isLicenseVerifiedBox.put("value", false);
@@ -97,9 +97,9 @@ class CacheManager {
           "data",
           LoginDialogModel(
               account: AccountResponseModel.demo(
-                  firma: "demo", email: "demo@netfect.com"),
+                  firma: "demo", email: "demo@netfect.com",),
               username: "demo",
-              password: "demo"));
+              password: "demo",),);
     }
     if (hesapBilgileriBox.isEmpty) {
       await hesapBilgileriBox.put("value", AccountModel.instance);
@@ -140,14 +140,14 @@ class CacheManager {
   static BaseSiparisEditModel? getSiparisEdit(String key) =>
       siparisEditBox.get(key);
   static List<BaseSiparisEditModel?> getSiparisEditList(
-          SiparisTipiEnum siparisTipi) =>
+          SiparisTipiEnum siparisTipi,) =>
       siparisEditBox.values
           .where((element) => element.siparisTipi == siparisTipi)
           .toList()
           .cast<BaseSiparisEditModel?>();
 
   static List<BaseSiparisEditModel>? getSiparisEditLists(
-          SiparisTipiEnum siparisTipi) =>
+          SiparisTipiEnum siparisTipi,) =>
       siparisEditListBox
           .get(StaticVariables.getSiparisString)
           ?.list
@@ -160,7 +160,7 @@ class CacheManager {
           .cast<String, dynamic>()
           .map((key, value) => value is Map
               ? MapEntry(key, value.cast<String, dynamic>())
-              : MapEntry(key, value)));
+              : MapEntry(key, value),),);
   // static String get getSirketAdi => _sirketAdiBox.get("value") ?? "";
 
   //* Setters
@@ -202,7 +202,7 @@ class CacheManager {
   static void addSiparisEditListItem(BaseSiparisEditModel value) {
     if (siparisEditListBox.get(StaticVariables.getSiparisString) == null) {
       siparisEditListBox.put(
-          StaticVariables.getSiparisString, ListSiparisEditModel());
+          StaticVariables.getSiparisString, ListSiparisEditModel(),);
     }
     if (siparisEditListBox
             .get(StaticVariables.getSiparisString)
@@ -216,14 +216,14 @@ class CacheManager {
                   .get(StaticVariables.getSiparisString)
                   ?.list
                   ?.map((e) => e.belgeNo == value.belgeNo ? value : e)
-                  .toList()));
+                  .toList(),),);
     } else {
       siparisEditListBox.put(
           StaticVariables.getSiparisString,
           ListSiparisEditModel(list: [
             ...?siparisEditListBox.get(StaticVariables.getSiparisString)?.list,
-            value
-          ]));
+            value,
+          ],),);
     }
   }
 
@@ -235,7 +235,7 @@ class CacheManager {
       account:
           AccountResponseModel.demo(firma: "demo", email: "demo@netfect.com"),
       username: "demo",
-      password: "demo"));
+      password: "demo",),);
   static void clearBox(String boxName) => Hive.box(boxName).clear();
   static void removeFavoriler(String key) {
     if (favorilerBox.values
@@ -244,7 +244,7 @@ class CacheManager {
         0) {
       favorilerBox.deleteAt(favorilerBox.values
           .toList()
-          .indexWhere((element) => element.title == key));
+          .indexWhere((element) => element.title == key),);
     } else {
       log("Favorilerde böyle bir key yok");
     }
@@ -259,7 +259,7 @@ class CacheManager {
       list.removeAt(index);
     }
     siparisEditListBox.put(
-        StaticVariables.getSiparisString, ListSiparisEditModel(list: list));
+        StaticVariables.getSiparisString, ListSiparisEditModel(list: list),);
   }
 
   static Future<bool> removeSiparisEditListWithUuid(String? uuid) async {
@@ -268,7 +268,7 @@ class CacheManager {
       list.removeWhere((element) => element.uuid == uuid);
     }
     await siparisEditListBox.put(
-        StaticVariables.getSiparisString, ListSiparisEditModel(list: list));
+        StaticVariables.getSiparisString, ListSiparisEditModel(list: list),);
     return true;
   }
 

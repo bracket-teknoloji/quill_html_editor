@@ -6,7 +6,7 @@ class ScrollableWidget extends StatefulWidget {
   final Widget child;
   final bool isScrolledDown;
   const ScrollableWidget(
-      {super.key, required this.child, required this.isScrolledDown});
+      {super.key, required this.child, required this.isScrolledDown,});
 
   @override
   State<ScrollableWidget> createState() => _ScrollableWidgetState();

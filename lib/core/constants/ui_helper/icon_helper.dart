@@ -11,7 +11,7 @@ class IconHelper {
           ? SvgPicture.asset(_getMenuIconPath(path),
               height: 40,
               colorFilter:
-                  ColorFilter.mode(color ?? Colors.white, BlendMode.srcIn))
+                  ColorFilter.mode(color ?? Colors.white, BlendMode.srcIn),)
           : Icon(
               iconData,
               size: 30,
@@ -21,42 +21,42 @@ class IconHelper {
       SvgPicture.asset(_getMenuIconPath(path),
           height: 24,
           colorFilter:
-              ColorFilter.mode(color ?? Colors.white, BlendMode.srcIn));
+              ColorFilter.mode(color ?? Colors.white, BlendMode.srcIn),);
   static SvgPicture smallMenuIcon(String path, {Color? color}) =>
       SvgPicture.asset(_getMenuIconPath(path),
           height: 20,
           colorFilter: ColorFilter.mode(
-              color ?? UIHelper.primaryColor, BlendMode.srcIn));
+              color ?? UIHelper.primaryColor, BlendMode.srcIn,),);
   //*Big Icon
   //*
 
   static SvgPicture bigIcon(String path, {Color? color}) => SvgPicture.asset(
       _getIconPath(path),
       height: 100,
-      colorFilter: ColorFilter.mode(color ?? Colors.white, BlendMode.srcIn));
+      colorFilter: ColorFilter.mode(color ?? Colors.white, BlendMode.srcIn),);
   //*AppBar Icon
   //*
   static SvgPicture appBarIcon(String path, {Color? color}) => SvgPicture.asset(
       _getIconPath(path),
       height: 20,
-      colorFilter: ColorFilter.mode(color ?? Colors.white, BlendMode.srcIn));
+      colorFilter: ColorFilter.mode(color ?? Colors.white, BlendMode.srcIn),);
   //* Medium Icon
   //*
   static SvgPicture mediumIcon(String path, {Color? color}) => SvgPicture.asset(
       _getIconPath(path),
       height: 24,
       colorFilter:
-          ColorFilter.mode(color ?? UIHelper.primaryColor, BlendMode.srcIn));
+          ColorFilter.mode(color ?? UIHelper.primaryColor, BlendMode.srcIn),);
   static SvgPicture mediumIconWhite(String path, {Color? color}) =>
       SvgPicture.asset(_getIconPath(path),
           height: 24,
           colorFilter:
-              ColorFilter.mode(color ?? Colors.white, BlendMode.srcIn));
+              ColorFilter.mode(color ?? Colors.white, BlendMode.srcIn),);
   static SvgPicture mediumIconBlack(String path, {Color? color}) =>
       SvgPicture.asset(_getIconPath(path),
           height: 24,
           colorFilter:
-              ColorFilter.mode(color ?? Colors.black, BlendMode.srcIn));
+              ColorFilter.mode(color ?? Colors.black, BlendMode.srcIn),);
 
   //* Small Icon
   //*
@@ -64,17 +64,17 @@ class IconHelper {
       SvgPicture.asset(_getIconPath(path),
           height: size ?? 20,
           colorFilter: ColorFilter.mode(
-              color ?? UIHelper.primaryColor, BlendMode.srcIn));
+              color ?? UIHelper.primaryColor, BlendMode.srcIn,),);
   static SvgPicture smallIconWhite(String path, {Color? color}) =>
       SvgPicture.asset(_getIconPath(path),
           height: 20,
           colorFilter:
-              ColorFilter.mode(color ?? Colors.white, BlendMode.srcIn));
+              ColorFilter.mode(color ?? Colors.white, BlendMode.srcIn),);
   static SvgPicture smallIconBlack(String path, {Color? color}) =>
       SvgPicture.asset(_getIconPath(path),
           height: 20,
           colorFilter:
-              ColorFilter.mode(color ?? Colors.black, BlendMode.srcIn));
+              ColorFilter.mode(color ?? Colors.black, BlendMode.srcIn),);
 
   static String _getMenuIconPath(String path) =>
       "assets/icons/PickerSvgIcon/AnaMenu/$path.svg";

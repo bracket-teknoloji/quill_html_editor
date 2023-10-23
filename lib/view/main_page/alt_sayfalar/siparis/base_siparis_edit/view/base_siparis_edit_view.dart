@@ -154,7 +154,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                           onTap: () {
                             Get.back();
                             dialogManager.showCariGridViewDialog(BaseSiparisEditModel.instance.cariModel);
-                          }),
+                          },),
                       topluIskontoBottomSheetModel(context),
                       BottomSheetModel(
                           title: "PDF Görüntüle",
@@ -165,7 +165,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                                 .whereType<NetFectDizaynList>()
                                 .toList();
                             final result = await bottomSheetDialogManager.showBottomSheetDialog(Get.context!,
-                                title: "PDF Görüntüle", children: dizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList());
+                                title: "PDF Görüntüle", children: dizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList(),);
                             if (result is NetFectDizaynList) {
                               Get.back();
                               Get.to(() => PDFViewerView(
@@ -177,16 +177,16 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                                       dicParams: DicParams(
                                           belgeNo: BaseSiparisEditModel.instance.belgeNo,
                                           cariKodu: BaseSiparisEditModel.instance.cariKodu,
-                                          belgeTipi: StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS"))));
+                                          belgeTipi: StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS",),),),);
                             }
-                          }),
+                          },),
                       BottomSheetModel(
                           title: "Döviz Kurları",
                           iconWidget: Icons.attach_money_outlined,
                           onTap: () {
                             Get.back();
                             Get.toNamed("/dovizKurlari");
-                          }),
+                          },),
                       BottomSheetModel(title: "Döviz Kurlarını Güncelle", iconWidget: Icons.attach_money_outlined).yetkiKontrol(BaseSiparisEditModel.instance.dovizAdi != null),
                       BottomSheetModel(
                           title: "Cari'ye Yapılan Son Satışlar",
@@ -194,7 +194,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                           onTap: () {
                             Get.back();
                             Get.toNamed("/mainPage/cariStokSatisOzeti", arguments: BaseSiparisEditModel.instance.cariModel);
-                          }).yetkiKontrol(yetkiController.cariRapStokSatisOzeti),
+                          },).yetkiKontrol(yetkiController.cariRapStokSatisOzeti),
                       // BottomSheetModel(title: "Barkod Tanımla", iconWidget: Icons.qr_code_outlined),
                       BottomSheetModel(
                           title: "Ekranı Yeni Kayda Hazırla",
@@ -203,8 +203,8 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                           onTap: () {
                             Get.back();
                             viewModel.changeYeniKaydaHazirlaMi();
-                          }).yetkiKontrol(widget.model.isEkle),
-                    ].nullCheckWithGeneric);
+                          },).yetkiKontrol(widget.model.isEkle),
+                    ].nullCheckWithGeneric,);
                 if (result != null) {
                   viewModel.changeUpdateKalemler();
                 }
@@ -230,7 +230,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                         },
                         icon: const Icon(Icons.save_outlined),
                       ),
-                    )),
+                    ),),
           ],
           bottom: TabBar(
             controller: tabController,
@@ -238,7 +238,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
               const Tab(child: Text("Genel")),
               if (yetkiController.siparisDigerSekmesiGoster) const Tab(child: Text("Diğer")) else null,
               const Tab(child: Text("Kalemler")),
-              const Tab(child: Text("Toplamlar"))
+              const Tab(child: Text("Toplamlar")),
             ].whereType<Widget>().toList(),
           ),
         ),
@@ -253,12 +253,12 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                       } else {
                         return BaseSiparislerGenelView(model: model);
                       }
-                    }),
+                    },),
                     if (yetkiController.siparisDigerSekmesiGoster) BaseSiparislerDigerView(model: model) else null,
                     BaseSiparisKalemlerView(model: model),
                     BaseSiparisToplamlarView(model: model),
                   ].whereType<Widget>().toList(),
-                )),
+                ),),
       ),
       onWillPop: () async {
         if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
@@ -270,7 +270,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           BaseSiparisEditModel.resetInstance();
         });
         return result;
-      });
+      },);
 
   BottomSheetModel topluIskontoBottomSheetModel(BuildContext context) => BottomSheetModel(
       title: "Toplu İskonto Girişi",
@@ -317,14 +317,14 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                                     setState(() {});
                                     Get.back();
                                   },
-                                  child: const Text("Kaydet")),
-                            )
+                                  child: const Text("Kaydet"),),
+                            ),
                           ],
                         ),
                       ],
                     ),
-                  ));
-            });
+                  ),);
+            },);
 
   ListTile topluIskontoListTile(KalemModel? model, List<double?>? iskonto1, int index, TextEditingController controller) => ListTile(
           title: Row(
@@ -342,18 +342,18 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                       iskonto1?[index] = (double.tryParse(controller.text) ?? 0) - 1;
                       controller.text = (iskonto1?[index].toIntIfDouble ?? 0).toStringIfNotNull ?? "";
                     },
-                    icon: const Icon(Icons.remove_outlined)),
+                    icon: const Icon(Icons.remove_outlined),),
                 IconButton(
                     onPressed: () {
                       iskonto1?[index] = (double.tryParse(controller.text) ?? 0) + 1;
                       controller.text = (iskonto1?[index].toIntIfDouble ?? 0).toStringIfNotNull ?? "";
                     },
-                    icon: const Icon(Icons.add_outlined))
+                    icon: const Icon(Icons.add_outlined),),
               ],
             ),
-          ))
+          ),),
         ],
-      ));
+      ),);
 
   NeverScrollableScrollPhysics? tabBarViewPhysics() {
     viewModel.changeIsValid();
@@ -378,7 +378,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
     }
     const uuid = Uuid();
     final result = await networkManager.dioPost<BaseSiparisEditModel>(
-        path: ApiUrls.saveFatura, bodyModel: BaseSiparisEditModel(), data: (BaseSiparisEditModel.instance..islemId = uuid.v4()).toJson(), showLoading: true);
+        path: ApiUrls.saveFatura, bodyModel: BaseSiparisEditModel(), data: (BaseSiparisEditModel.instance..islemId = uuid.v4()).toJson(), showLoading: true,);
     if (result.success == true) {
       dialogManager.showSuccessSnackBar("Kayıt Başarılı");
       return true;

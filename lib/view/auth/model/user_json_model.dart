@@ -39,7 +39,7 @@ class UserJson {
       return UserJson();
     }
     return _$UserJsonFromJson(
-        jsonDecode(utf8.decode(base64Decode(json), allowMalformed: true)));
+        jsonDecode(utf8.decode(base64Decode(json), allowMalformed: true)),);
   }
 
   Map<String, dynamic> toJson() => _$UserJsonToJson(this);

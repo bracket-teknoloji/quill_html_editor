@@ -14,7 +14,7 @@ abstract class _AmbarMaliyetRaporuViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
       raporOzelKod: "Rapor_StokAmbarMaliyet",
       standart: true,
-      dicParams: DicParams()..sifirHaric = "H");
+      dicParams: DicParams()..sifirHaric = "H",);
   @observable
   bool sifirHaricValue = false;
 
@@ -28,23 +28,23 @@ abstract class _AmbarMaliyetRaporuViewModelBase with Store {
 
   List<BottomSheetModel> maliyetTipiList = [
     BottomSheetModel(
-        title: "Son Giriş Net Fiyat", onTap: () => Get.back(result: "SGF")),
+        title: "Son Giriş Net Fiyat", onTap: () => Get.back(result: "SGF"),),
     BottomSheetModel(
-        title: "Alış Fiyatı 1", onTap: () => Get.back(result: "AF1")),
+        title: "Alış Fiyatı 1", onTap: () => Get.back(result: "AF1"),),
     BottomSheetModel(
-        title: "Alış Fiyatı 2", onTap: () => Get.back(result: "AF2")),
+        title: "Alış Fiyatı 2", onTap: () => Get.back(result: "AF2"),),
     BottomSheetModel(
-        title: "Alış Fiyatı 3", onTap: () => Get.back(result: "AF3")),
+        title: "Alış Fiyatı 3", onTap: () => Get.back(result: "AF3"),),
     BottomSheetModel(
-        title: "Alış Fiyatı 4", onTap: () => Get.back(result: "AF4")),
+        title: "Alış Fiyatı 4", onTap: () => Get.back(result: "AF4"),),
     BottomSheetModel(
-        title: "Satış Fiyatı 1", onTap: () => Get.back(result: "SF1")),
+        title: "Satış Fiyatı 1", onTap: () => Get.back(result: "SF1"),),
     BottomSheetModel(
-        title: "Satış Fiyatı 2", onTap: () => Get.back(result: "SF2")),
+        title: "Satış Fiyatı 2", onTap: () => Get.back(result: "SF2"),),
     BottomSheetModel(
-        title: "Satış Fiyatı 3", onTap: () => Get.back(result: "SF3")),
+        title: "Satış Fiyatı 3", onTap: () => Get.back(result: "SF3"),),
     BottomSheetModel(
-        title: "Satış Fiyatı 4", onTap: () => Get.back(result: "SF4")),
+        title: "Satış Fiyatı 4", onTap: () => Get.back(result: "SF4"),),
   ];
 
   //* Future

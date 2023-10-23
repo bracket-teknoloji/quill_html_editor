@@ -58,7 +58,7 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
       sayfa: 1,
       siralama: "AZ",
       belgeTuru: StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS",
-      teslimCari: "E");
+      teslimCari: "E",);
 
   @computed
   List<BaseGrupKoduModel>? get grupKodlari1 =>
@@ -160,7 +160,7 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
     final response = await networkManager.dioGet<CariListesiModel>(
         path: ApiUrls.getCariler,
         queryParameters: cariListesiRequestModel?.toJsonWithList(),
-        bodyModel: CariListesiModel());
+        bodyModel: CariListesiModel(),);
     if (response.data != null && response.data is List) {
       final List<CariListesiModel> list =
           response.data.whereType<CariListesiModel>().toList();
@@ -174,7 +174,7 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
       } else {
         setDahaVarMi(true);
         cariListesiRequestModel = cariListesiRequestModel?.copyWith(
-            sayfa: cariListesiRequestModel!.sayfa! + 1);
+            sayfa: cariListesiRequestModel!.sayfa! + 1,);
       }
     }
   }
@@ -184,7 +184,7 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
     final result = await networkManager.dioGet<CariSehirlerModel>(
         path: ApiUrls.getCariKayitliSehirler,
         bodyModel: CariSehirlerModel(),
-        showLoading: true);
+        showLoading: true,);
     if (result.data != null && result.data is List) {
       final List<CariSehirlerModel> list =
           result.data.whereType<CariSehirlerModel>().toList();

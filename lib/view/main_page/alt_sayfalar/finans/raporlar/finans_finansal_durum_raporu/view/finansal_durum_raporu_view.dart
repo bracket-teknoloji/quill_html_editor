@@ -54,7 +54,7 @@ class _FinansalDurumRaporuViewState extends BaseState<FinansalDurumRaporuView> {
                       children: List.generate(
                         viewModel.gorunecekAlanlarMap.length,
                         (index) => BottomSheetModel(title: viewModel.gorunecekAlanlarMap.keys.toList()[index], value: viewModel.gorunecekAlanlarMap.entries.toList()[index]),
-                      ));
+                      ),);
 
                   if (result is List) {
                     final List<MapEntry<String, String>> items = result.cast<MapEntry<String, String>>();
@@ -68,11 +68,11 @@ class _FinansalDurumRaporuViewState extends BaseState<FinansalDurumRaporuView> {
                           viewModel.setFuture();
                           Get.back();
                         },
-                        child: const Text("Uygula"))
-                    .paddingAll(UIHelper.lowSize))
+                        child: const Text("Uygula"),)
+                    .paddingAll(UIHelper.lowSize),),
             ],
           ),
-        ));
+        ),);
     return Future.value(viewModel.futureController.value);
   }
 }

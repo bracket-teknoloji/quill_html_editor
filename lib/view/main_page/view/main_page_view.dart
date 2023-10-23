@@ -110,7 +110,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
                                         } else {
                                           items[index].onTap?.call();
                                         }
-                                      })));
+                                      },),),);
                         },
                       ),
                     ),
@@ -148,10 +148,10 @@ class _MainPageViewState extends BaseState<MainPageView> {
                       ],
                     ),
                   ),
-                )
+                ),
               ],
             ),
-          )),
+          ),),
     );
 
     // return BaseView(
@@ -222,7 +222,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
             onPressed: () {
               scaffoldKey.currentState!.openEndDrawer();
             },
-            icon: const Icon(Icons.person_outline_outlined)),
+            icon: const Icon(Icons.person_outline_outlined),),
       ],
     );
 

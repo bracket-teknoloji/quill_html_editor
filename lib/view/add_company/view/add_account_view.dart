@@ -72,13 +72,13 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [Icon(Icons.question_mark_rounded), Text("Bilgileri girerken büyük-küçük uyumuna dikkat ediniz.", softWrap: true)],
                     ),
-                    ElevatedButton(onPressed: () => _getQR(context), child: const Text("BİLGİLERİ QR KOD'DAN AL")).paddingAll(UIHelper.lowSize)
+                    ElevatedButton(onPressed: () => _getQR(context), child: const Text("BİLGİLERİ QR KOD'DAN AL")).paddingAll(UIHelper.lowSize),
                   ],
                 ),
               ),
             ),
           ),
-        ));
+        ),);
 
   Future<void> loginMethod() async {
     if (formKey.currentState?.validate() ?? false) {

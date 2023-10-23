@@ -19,12 +19,12 @@ abstract class _RaporFiltreDateTimeBottomSheetViewModelBase with Store {
 
   @observable
   ObservableList<bool> selectedValueList = ObservableList.of(
-      [true, false, false, false, false, false, false, false, false, false]);
+      [true, false, false, false, false, false, false, false, false, false],);
 
   @action
   void changeSelectedValue(int index) {
     selectedValueList = ObservableList.of(
-        [false, false, false, false, false, false, false, false, false, false]);
+        [false, false, false, false, false, false, false, false, false, false],);
     if (!selectedValueList[index]) {
       selectedValueList[index] = true;
     } else {
@@ -41,7 +41,7 @@ abstract class _RaporFiltreDateTimeBottomSheetViewModelBase with Store {
     "Geçen Ay",
     "Son 3 Ay",
     "Bu Yıl",
-    "Geçen Yıl"
+    "Geçen Yıl",
   ];
 
   final Map<String, DateTime?> startDateMap = {

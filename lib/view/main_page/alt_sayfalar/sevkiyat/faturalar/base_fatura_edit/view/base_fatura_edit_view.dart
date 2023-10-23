@@ -153,7 +153,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                             onTap: () {
                               Get.back();
                               dialogManager.showCariGridViewDialog(BaseSiparisEditModel.instance.cariModel);
-                            }),
+                            },),
                         // topluIskontoBottomSheetModel(context),
                         BottomSheetModel(
                             title: "PDF Görüntüle",
@@ -164,7 +164,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                                   .whereType<NetFectDizaynList>()
                                   .toList();
                               final result = await bottomSheetDialogManager.showBottomSheetDialog(Get.context!,
-                                  title: "PDF Görüntüle", children: dizaynList.map((NetFectDizaynList e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList());
+                                  title: "PDF Görüntüle", children: dizaynList.map((NetFectDizaynList e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList(),);
                               if (result is NetFectDizaynList) {
                                 Get.back();
                                 await Get.to(() => PDFViewerView(
@@ -176,16 +176,16 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                                         dicParams: DicParams(
                                             belgeNo: BaseSiparisEditModel.instance.belgeNo,
                                             cariKodu: BaseSiparisEditModel.instance.cariKodu,
-                                            belgeTipi: widget.model.siparisTipiEnum?.rawValue))));
+                                            belgeTipi: widget.model.siparisTipiEnum?.rawValue,),),),);
                               }
-                            }),
+                            },),
                         BottomSheetModel(
                             title: "Döviz Kurları",
                             iconWidget: Icons.attach_money_outlined,
                             onTap: () {
                               Get.back();
                               Get.toNamed("/dovizKurlari");
-                            }),
+                            },),
                         BottomSheetModel(title: "Döviz Kurlarını Güncelle", iconWidget: Icons.attach_money_outlined).yetkiKontrol(BaseSiparisEditModel.instance.dovizAdi != null),
                         BottomSheetModel(
                             title: "Cari'ye Yapılan Son Satışlar",
@@ -193,7 +193,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                             onTap: () {
                               Get.back();
                               Get.toNamed("/mainPage/cariStokSatisOzeti", arguments: BaseSiparisEditModel.instance.cariModel);
-                            }).yetkiKontrol(yetkiController.cariRapStokSatisOzeti),
+                            },).yetkiKontrol(yetkiController.cariRapStokSatisOzeti),
                         // BottomSheetModel(title: "Barkod Tanımla", iconWidget: Icons.qr_code_outlined),
                         // BottomSheetModel(
                         //     title: "Ekranı Yeni Kayda Hazırla",
@@ -202,7 +202,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                         //     onTap: () {
                         //       Get.back();
                         //     }).yetkiKontrol(widget.model.isEkle),
-                      ].nullCheckWithGeneric);
+                      ].nullCheckWithGeneric,);
                   if (result != null) {
                     // viewModel.changeUpdateKalemler();
                   }
@@ -228,7 +228,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                           },
                           icon: const Icon(Icons.save_outlined),
                         ),
-                      )),
+                      ),),
             ],
             bottom: TabBar(
               controller: tabController,
@@ -236,7 +236,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                 const Tab(child: Text("Genel")),
                 const Tab(child: Text("Diğer")).yetkiVarMi(widget.model.siparisTipiEnum?.digerSekmesiGoster ?? false),
                 const Tab(child: Text("Kalemler")),
-                const Tab(child: Text("Toplamlar"))
+                const Tab(child: Text("Toplamlar")),
               ].whereType<Tab>().toList(),
             ),
           ),
@@ -249,7 +249,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                       ? BaseFaturaGenelView(model: model)
                       : const Center(
                           child: CircularProgressIndicator.adaptive(),
-                        )),
+                        ),),
               BaseFaturaDigerView(model: model).yetkiVarMi(widget.model.siparisTipiEnum?.digerSekmesiGoster ?? false),
               BaseFaturaKalemlerView(model: model),
               BaseFaturaToplamlarView(model: model),
@@ -267,7 +267,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           BaseSiparisEditModel.resetInstance();
         });
         return result;
-      });
+      },);
 
   // BottomSheetModel topluIskontoBottomSheetModel(BuildContext context) {
   //   return BottomSheetModel(
@@ -346,18 +346,18 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                       iskonto1?[index] = (double.tryParse(controller.text) ?? 0) - 1;
                       controller.text = (iskonto1?[index].toIntIfDouble ?? 0).toStringIfNotNull ?? "";
                     },
-                    icon: const Icon(Icons.remove_outlined)),
+                    icon: const Icon(Icons.remove_outlined),),
                 IconButton(
                     onPressed: () {
                       iskonto1?[index] = (double.tryParse(controller.text) ?? 0) + 1;
                       controller.text = (iskonto1?[index].toIntIfDouble ?? 0).toStringIfNotNull ?? "";
                     },
-                    icon: const Icon(Icons.add_outlined))
+                    icon: const Icon(Icons.add_outlined),),
               ],
             ),
-          ))
+          ),),
         ],
-      ));
+      ),);
 
   Future<void> getData() async {
     final GenericResponseModel<NetworkManagerMixin> result =
@@ -374,7 +374,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
     }
     const Uuid uuid = Uuid();
     final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioPost<BaseSiparisEditModel>(
-        path: ApiUrls.saveFatura, bodyModel: BaseSiparisEditModel(), data: (BaseSiparisEditModel.instance..islemId = uuid.v4()).toJson(), showLoading: true);
+        path: ApiUrls.saveFatura, bodyModel: BaseSiparisEditModel(), data: (BaseSiparisEditModel.instance..islemId = uuid.v4()).toJson(), showLoading: true,);
     if (result.success == true) {
       dialogManager.showSuccessSnackBar("Kayıt Başarılı");
       return true;

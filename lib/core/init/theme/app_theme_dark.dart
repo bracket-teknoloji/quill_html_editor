@@ -35,9 +35,9 @@ class AppThemeDark extends AppTheme {
         foregroundColor: MaterialStateProperty.all(UIHelper.primaryColor),
         overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.1)),
         shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius)),
-      )),
+      ),),
       toggleButtonsTheme: ToggleButtonsThemeData(
-          color: colorManager.onPrimaryContainer, splashColor: Colors.transparent, fillColor: UIHelper.primaryColor, borderRadius: UIHelper.lowBorderRadius, textStyle: const TextStyle(fontSize: 12)),
+          color: colorManager.onPrimaryContainer, splashColor: Colors.transparent, fillColor: UIHelper.primaryColor, borderRadius: UIHelper.lowBorderRadius, textStyle: const TextStyle(fontSize: 12),),
       brightness: Brightness.dark,
       textTheme: GoogleFonts.dmSansTextTheme()
           .apply(bodyColor: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark).onPrimaryContainer)
@@ -84,7 +84,7 @@ class AppThemeDark extends AppTheme {
         shape: RoundedRectangleBorder(
           borderRadius: UIHelper.lowBorderRadius,
         ),
-      )),
+      ),),
       iconTheme: const IconThemeData(color: Colors.white, size: 30),
       dialogTheme: DialogTheme(
         shape: RoundedRectangleBorder(
@@ -117,7 +117,7 @@ class AppThemeDark extends AppTheme {
           elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: UIHelper.zeroBorderRadius,
-          )),
+          ),),
       textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
         splashFactory: InkRipple.splashFactory,
@@ -125,8 +125,8 @@ class AppThemeDark extends AppTheme {
         textStyle: MaterialStateProperty.all(TextStyle(
           fontFamily: GoogleFonts.dmSans().fontFamily,
           fontSize: 15,
-        )),
-      )),
+        ),),
+      ),),
       snackBarTheme: SnackBarThemeData(
         showCloseIcon: true,
         closeIconColor: Colors.white,
@@ -168,7 +168,7 @@ class AppThemeDark extends AppTheme {
           iconTheme: IconThemeData(color: colorManager.primary),
           titleTextStyle: TextStyle(color: colorManager.primary, fontSize: 20),
           scrolledUnderElevation: 0,
-          elevation: 0));
+          elevation: 0,),);
 }
 // //!
 //   ThemeData get theme2 => ThemeData.dark(useMaterial3: true).copyWith(

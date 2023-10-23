@@ -73,11 +73,11 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                   },
                   icon: Icon(Icons.arrow_back_outlined, color: theme.colorScheme.primary),
                 ),
-              )),
+              ),),
             Expanded(
                 child: SizedBox(
                     child: Text(widget.title ?? widget.cariListesiModel?.cariKodu ?? widget.model?.stokKodu ?? "", style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis))
-                        .paddingOnly(left: UIHelper.midSize)))
+                        .paddingOnly(left: UIHelper.midSize),),),
           ],
         ),
         const Divider(
@@ -136,10 +136,10 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                                       }
                                     }
                                   }
-                                })),
-                      ));
+                                },),),
+                      ),);
                 },
-              )),
+              ),),
           ),
         ),
       ],

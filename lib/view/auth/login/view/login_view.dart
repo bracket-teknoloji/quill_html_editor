@@ -72,7 +72,7 @@ class _LoginViewState extends BaseState<LoginView> {
                 waveAmplitude: 2,
                 wavePhase: 0,
                 duration: 200,
-                backgroundColor: theme.scaffoldBackgroundColor),
+                backgroundColor: theme.scaffoldBackgroundColor,),
             Scaffold(
               // appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent, automaticallyImplyLeading: false),
 
@@ -104,9 +104,9 @@ class _LoginViewState extends BaseState<LoginView> {
                                       children: [
                                         Text("Picker", style: context.theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w500)),
                                         Text("Mobil Veri Toplama Çözümleri", style: context.theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w300)),
-                                        Text(viewModel.baseUrl).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi(viewModel.isDebug)
+                                        Text(viewModel.baseUrl).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi(viewModel.isDebug),
                                       ],
-                                    )),
+                                    ),),
                           ),
                           CustomWidgetWithLabel(
                             text: "Firma",
@@ -175,7 +175,7 @@ class _LoginViewState extends BaseState<LoginView> {
                                             icon: viewModel.obscurePassword ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
                                           ),
                                         ),
-                                      )),
+                                      ),),
                             ),
                           ),
                           Padding(
@@ -251,7 +251,7 @@ class _LoginViewState extends BaseState<LoginView> {
         if (context.mounted && response?.accessToken != null) {
           CacheManager.setVerifiedUser(selectedUser
             ..username = emailController.text
-            ..password = passwordController.text);
+            ..password = passwordController.text,);
           CacheManager.setToken(response!.accessToken.toString());
           // final uyeBilgiResponse =
           //     await networkManager.dioPost<AccountResponseModel>(bodyModel: AccountResponseModel(), data: AccountModel.instance, addTokenKey: false, path: ApiUrls.getUyeBilgileri);

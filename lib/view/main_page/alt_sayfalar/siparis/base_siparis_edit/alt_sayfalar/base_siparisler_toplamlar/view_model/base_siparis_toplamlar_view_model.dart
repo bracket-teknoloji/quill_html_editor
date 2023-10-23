@@ -36,7 +36,7 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
   void setTevkifat(double? value) {
     model = model.copyWith(
         ekMaliyet2Tutari:
-            model.kdvTutari != 0 ? (-model.kdvTutari) * (value ?? 0) : 0);
+            model.kdvTutari != 0 ? (-model.kdvTutari) * (value ?? 0) : 0,);
     BaseSiparisEditModel.setInstance(model);
   }
 
@@ -80,7 +80,7 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
       model = model.copyWith(
           genIsk1o: (value ?? 0) /
               (model.araToplam != 0 ? (model.araToplam ?? 0) : 1) *
-              100);
+              100,);
     } else {
       model = model.copyWith(genIsk1o: value);
     }
@@ -99,7 +99,7 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
               (model.getAraToplam != 0
                   ? (model.araToplam ?? 0) - (model.genIsk1t ?? 0)
                   : 1) *
-              100);
+              100,);
     } else {
       model = model.copyWith(genIsk2o: value);
     }
@@ -116,7 +116,7 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
       model = model.copyWith(
           genIsk3o: (value ?? 0) /
               (model.getAraToplam != 0 ? model.getAraToplam : 1) *
-              100);
+              100,);
     } else {
       model = model.copyWith(genIsk3o: value);
     }

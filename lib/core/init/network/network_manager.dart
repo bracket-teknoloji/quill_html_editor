@@ -40,7 +40,7 @@ class NetworkManager {
         receiveDataWhenStatusError: true,
         contentType: "application/json",
         responseType: ResponseType.json,
-      ))
+      ),)
         ..interceptors.add(
           InterceptorsWrapper(
             onRequest: (options, handler) => handler.next(options),
@@ -101,8 +101,8 @@ class NetworkManager {
             headers: {"Access-Control-Allow-Origin": "*", "Platform": AccountModel.instance.platform, "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"},
             contentType: "application/x-www-form-urlencoded",
             method: HttpTypes.GET,
-            responseType: ResponseType.json),
-        data: kIsWeb ? formData : data);
+            responseType: ResponseType.json,),
+        data: kIsWeb ? formData : data,);
     final a = response.data;
     return TokenModel().fromJson(a);
   }
@@ -118,7 +118,7 @@ class NetworkManager {
       bool addCKey = true,
       bool addTokenKey = true,
       bool showLoading = false,
-      bool showError = true}) async {
+      bool showError = true,}) async {
     dynamic response;
     if (showLoading) {
       DialogManager().showLoadingDialog("Yükleniyor...");
@@ -163,7 +163,7 @@ class NetworkManager {
       bool addCKey = true,
       bool addTokenKey = true,
       bool showLoading = false,
-      bool showError = true}) async {
+      bool showError = true,}) async {
     dynamic response;
     if (showLoading) {
       DialogManager().showLoadingDialog("Lütfen Bekleyiniz...");
@@ -225,7 +225,7 @@ class NetworkManager {
         headers: {"Modul": name, "GrupNo": grupNo.toStringIfNotNull ?? "", "Kullanimda": (kullanimda ?? true) ? "E" : "H"},
         addQuery: true,
         addSirketBilgileri: true,
-        queryParameters: {"Modul": name, "GrupNo": grupNo});
+        queryParameters: {"Modul": name, "GrupNo": grupNo},);
     return responseKod.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
   }
 
@@ -276,7 +276,7 @@ class NetworkManager {
     }
     final data2 = getFromCache ? (CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi)?.toJson() : AccountModel.instance.toJson();
     final result = await dioPost<AccountResponseModel>(
-        bodyModel: AccountResponseModel(), showError: false, data: data2, addTokenKey: false, addCKey: false, addSirketBilgileri: false, path: ApiUrls.getUyeBilgileri);
+        bodyModel: AccountResponseModel(), showError: false, data: data2, addTokenKey: false, addCKey: false, addSirketBilgileri: false, path: ApiUrls.getUyeBilgileri,);
     if (result.success == true) {
       CacheManager.setIsLicenseVerified(email ?? result.data.first.email, true);
       if (getFromCache) {
@@ -297,7 +297,7 @@ class NetworkManager {
 
   Future<List<StokMuhasebeKoduModel>> getMuhasebeKodlari({Map<String, dynamic>? queryParams, bool? stokMu = true}) async {
     final GenericResponseModel result = await dioGet<StokMuhasebeKoduModel>(
-        path: stokMu == true ? ApiUrls.getStokMuhasebeKodlari : ApiUrls.getMuhasebeMuhasebeKodlari, bodyModel: StokMuhasebeKoduModel(), showLoading: true, queryParameters: queryParams);
+        path: stokMu == true ? ApiUrls.getStokMuhasebeKodlari : ApiUrls.getMuhasebeMuhasebeKodlari, bodyModel: StokMuhasebeKoduModel(), showLoading: true, queryParameters: queryParams,);
     return result.data.map((e) => e as StokMuhasebeKoduModel).toList().cast<StokMuhasebeKoduModel>();
   }
 

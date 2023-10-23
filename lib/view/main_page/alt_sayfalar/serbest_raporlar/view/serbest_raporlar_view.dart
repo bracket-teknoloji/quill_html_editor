@@ -27,7 +27,7 @@ class SerbestRaporlarView extends StatefulWidget {
       {super.key,
       this.dizaynList,
       this.cariListesiModel,
-      this.stokListesiModel});
+      this.stokListesiModel,});
 
   @override
   State<SerbestRaporlarView> createState() => _SerbestRaporlarViewState();
@@ -40,7 +40,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
   Widget build(BuildContext context) => PDFViewerView(
         filterBottomSheet: filterBottomSheet,
         title: widget.dizaynList?.dizaynAdi ?? "Serbest Raporlar",
-        pdfData: viewModel.pdfModel);
+        pdfData: viewModel.pdfModel,);
 
   Future<bool> filterBottomSheet() async {
     await getData();
@@ -73,9 +73,9 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                                       await dialogManager.showDateTimePicker();
                                   if (result != null) {
                                     viewModel.changeDicParams(
-                                        e.adi ?? "", result.toDateString);
+                                        e.adi ?? "", result.toDateString,);
                                   }
-                                });
+                                },);
                           } else if (e.rehberTipi != null) {
                             return CustomTextField(
                                 fitContent: true,
@@ -90,7 +90,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                                 suffixMore: true,
                                 onTap: () {
                                   getRehber(e);
-                                });
+                                },);
                           } else {
                             return CustomTextField(
                                 fitContent: true,
@@ -119,32 +119,32 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                                                                 onTap: () =>
                                                                     Get.back(
                                                                         result:
-                                                                            e)))
-                                                        .toList());
+                                                                            e,),),)
+                                                        .toList(),);
                                         if (result != null) {
                                           viewModel.changeDicParams(
-                                              e.adi ?? "", result.adi);
+                                              e.adi ?? "", result.adi,);
                                         }
                                       },
                                 onChanged: (value) {
                                   viewModel.changeDicParams(
-                                      e.adi ?? "", value, false);
-                                });
+                                      e.adi ?? "", value, false,);
+                                },);
                           }
                         })
                         .toList()
                         .nullCheckWithGeneric ??
-                    []),
+                    [],),
           ),
           ElevatedButton(
                   onPressed: () {
                     //😳 Düzelt kanki
                     if (viewModel.serbestRaporResponseModelList
                             ?.where(
-                                (element) => element.bosGecilebilir == false)
+                                (element) => element.bosGecilebilir == false,)
                             .any((element) =>
                                 viewModel.dicParams[element.adi ?? ""] ==
-                                null) ??
+                                null,) ??
                         false) {
                       dialogManager
                           .showAlertDialog("Lütfen tüm alanları doldurunuz");
@@ -157,8 +157,8 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                       Get.back();
                     }
                   },
-                  child: const Text("Uygula"))
-              .paddingAll(UIHelper.midSize)
+                  child: const Text("Uygula"),)
+              .paddingAll(UIHelper.midSize),
         ],
       ).paddingAll(UIHelper.lowSize),
     );
@@ -169,10 +169,10 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
     if (model.stokKoduMu || model.cariKoduMu) {
       final result = await Get.toNamed(
           "/mainPage/${model.rehberTipi?.toLowerCase()}Listesi",
-          arguments: true);
+          arguments: true,);
       if (result != null) {
         viewModel.changeDicParams(model.adi ?? "",
-            model.stokKoduMu ? result.stokKodu : result.cariKodu);
+            model.stokKoduMu ? result.stokKodu : result.cariKodu,);
       }
     } else if (model.plasiyerKoduMu) {
       final result =
@@ -185,13 +185,13 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
       }
     } else if (model.grupKoduMu) {
       final grupKodList = await networkManager.getGrupKod(
-          name: model.rehberTipi?.split("_").first ?? "", grupNo: 0);
+          name: model.rehberTipi?.split("_").first ?? "", grupNo: 0,);
       final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
           title: "Grup Kodu Seçiniz",
           children: grupKodList
               .map((e) => BottomSheetModel(
-                  title: e.grupAdi ?? "", onTap: () => Get.back(result: e)))
-              .toList());
+                  title: e.grupAdi ?? "", onTap: () => Get.back(result: e),),)
+              .toList(),);
       if (result != null && result is BaseGrupKoduModel) {
         viewModel.changeDicParams(model.adi ?? "", result.grupKodu ?? "");
         viewModel.changeControllerText(model.adi ?? "", result.grupAdi ?? "");
@@ -199,13 +199,13 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
     } else if (model.numaraliGrupKoduMu) {
       final grupKodList = await networkManager.getGrupKod(
           name: model.rehberTipi?.split("_").first ?? "",
-          grupNo: int.tryParse(model.rehberTipi!.split("").last) ?? 0);
+          grupNo: int.tryParse(model.rehberTipi!.split("").last) ?? 0,);
       final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
           title: "Grup Kodu Seçiniz",
           children: grupKodList
               .map((e) => BottomSheetModel(
-                  title: e.grupKodu ?? "", onTap: () => Get.back(result: e)))
-              .toList());
+                  title: e.grupKodu ?? "", onTap: () => Get.back(result: e),),)
+              .toList(),);
       if (result != null) {
         viewModel.changeDicParams(model.adi ?? "", result.grupKodu ?? "");
       }
@@ -220,15 +220,15 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
       }
     } else if (model.muhasebeKoduMu) {
       final muhasebeList = await networkManager.dioGet<StokMuhasebeKoduModel>(
-          path: ApiUrls.getStokMuhasebeKodlari, bodyModel: StokMuhasebeKoduModel());
+          path: ApiUrls.getStokMuhasebeKodlari, bodyModel: StokMuhasebeKoduModel(),);
       final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
           title: "Muhasebe Kodu Seçiniz",
           children: muhasebeList.data
               .map((e) => BottomSheetModel(
                   title: e.muhKodu.toString(),
-                  onTap: () => Get.back(result: e)))
+                  onTap: () => Get.back(result: e),),)
               .toList()
-              .cast<BottomSheetModel>());
+              .cast<BottomSheetModel>(),);
       if (result != null) {
         viewModel.changeDicParams(model.adi ?? "", result.muhKodu.toString());
       }
@@ -245,12 +245,12 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
     final result = await networkManager.dioGet<SerbestRaporResponseModel>(
         path: ApiUrls.getDizaynParametreleri,
         bodyModel: SerbestRaporResponseModel(),
-        queryParameters: {"ID": widget.dizaynList?.id});
+        queryParameters: {"ID": widget.dizaynList?.id},);
     if (result.success == true) {
       viewModel.changeSerbestRaporResponseModelList(result.data
           .map((e) => e as SerbestRaporResponseModel)
           .toList()
-          .cast<SerbestRaporResponseModel>());
+          .cast<SerbestRaporResponseModel>(),);
     }
     // dialogManager.hideAlertDialog;
   }

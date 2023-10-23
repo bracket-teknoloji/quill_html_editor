@@ -66,7 +66,7 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
   Widget build(BuildContext context) => PDFViewerView(
         filterBottomSheet: filterBottomSheet,
         title: "Ambar Maliyet Raporu",
-        pdfData: viewModel.pdfModel);
+        pdfData: viewModel.pdfModel,);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -83,7 +83,7 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
                 child: Observer(
                     builder: (_) => Switch.adaptive(
                         value: viewModel.sifirHaricValue,
-                        onChanged: (value) => viewModel.setSifirHaric(value))),
+                        onChanged: (value) => viewModel.setSifirHaric(value),),),
               ),
               Row(
                 children: [
@@ -95,7 +95,7 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
                       suffixMore: true,
                       onTap: () async {
                         final result = await Get.toNamed("/mainPage/stokListesi",
-                            arguments: true);
+                            arguments: true,);
                         if (result != null) {
                           stokController.text = result.stokKodu ?? "";
                           viewModel.pdfModel.dicParams?.stokKodu =
@@ -114,7 +114,7 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
                       final result = await bottomSheetDialogManager
                           .showBottomSheetDialog(context,
                               title: "Maliyet Tipi",
-                              children: viewModel.maliyetTipiList);
+                              children: viewModel.maliyetTipiList,);
                       if (result != null) {
                         maliyetTipiController.text = result ?? "";
                         viewModel.pdfModel.dicParams?.maliyetTipi =
@@ -122,7 +122,7 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
                       }
                     },
                     suffixMore: true,
-                  )),
+                  ),),
                 ],
               ),
               Row(children: [
@@ -133,7 +133,7 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
                         readOnly: true,
                         suffixMore: true,
                         onTap: () async =>
-                            await getGrupKodu(0, grupKoduController))),
+                            await getGrupKodu(0, grupKoduController),),),
                 Expanded(
                     child: CustomTextField(
                         labelText: "Kod 1",
@@ -141,8 +141,8 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
                         readOnly: true,
                         suffixMore: true,
                         onTap: () async =>
-                            await getGrupKodu(1, kod1Controller)))
-              ]),
+                            await getGrupKodu(1, kod1Controller),),),
+              ],),
               Row(children: [
                 Expanded(
                     child: CustomTextField(
@@ -151,7 +151,7 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
                         readOnly: true,
                         suffixMore: true,
                         onTap: () async =>
-                            await getGrupKodu(2, kod2Controller))),
+                            await getGrupKodu(2, kod2Controller),),),
                 Expanded(
                     child: CustomTextField(
                         labelText: "Kod 3",
@@ -159,8 +159,8 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
                         readOnly: true,
                         suffixMore: true,
                         onTap: () async =>
-                            await getGrupKodu(3, kod3Controller)))
-              ]),
+                            await getGrupKodu(3, kod3Controller),),),
+              ],),
               Row(children: [
                 Expanded(
                     child: CustomTextField(
@@ -169,7 +169,7 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
                         readOnly: true,
                         suffixMore: true,
                         onTap: () async =>
-                            await getGrupKodu(4, kod4Controller))),
+                            await getGrupKodu(4, kod4Controller),),),
                 Expanded(
                     child: CustomTextField(
                         labelText: "Kod 5",
@@ -177,8 +177,8 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
                         readOnly: true,
                         suffixMore: true,
                         onTap: () async =>
-                            await getGrupKodu(5, kod5Controller)))
-              ]),
+                            await getGrupKodu(5, kod5Controller),),),
+              ],),
               Observer(builder: (_) => ElevatedButton(
                         onPressed: () {
                           if (viewModel.pdfModel.dicParams?.maliyetTipi !=
@@ -190,16 +190,16 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
                                 .showAlertDialog("Maliyet Tipi Seçiniz");
                           }
                         },
-                        child: const Text("Uygula"))
-                    .paddingAll(UIHelper.lowSize))
+                        child: const Text("Uygula"),)
+                    .paddingAll(UIHelper.lowSize),),
             ],
           ),
-        ));
+        ),);
     return Future.value(viewModel.futureController.value);
   }
 
   Future<String?> getGrupKodu(
-      int grupNo, TextEditingController? controller) async {
+      int grupNo, TextEditingController? controller,) async {
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: "STOK", grupNo: -1);
     }
@@ -208,12 +208,12 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
         .toList()
         .cast<BaseGrupKoduModel>()
         .map((e) => BottomSheetModel(
-            title: e.grupKodu ?? "", onTap: () => Get.back(result: e)))
+            title: e.grupKodu ?? "", onTap: () => Get.back(result: e),),)
         .toList()
         .cast<BottomSheetModel>();
     // ignore: use_build_context_synchronously
     final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-        title: "Grup Kodu", children: bottomSheetList);
+        title: "Grup Kodu", children: bottomSheetList,);
     if (result != null) {
       controller?.text = result.grupKodu ?? "";
       switch (grupNo) {

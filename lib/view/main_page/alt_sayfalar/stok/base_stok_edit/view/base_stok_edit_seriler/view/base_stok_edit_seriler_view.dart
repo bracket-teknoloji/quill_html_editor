@@ -27,6 +27,6 @@ class _BaseStokEditSerilerViewState extends State<BaseStokEditSerilerView> {
                         : (value) {
                             viewModel.changeSwitchValue(index);
                           },
-                    title: Text(viewModel.labelList[index])))),
+                    title: Text(viewModel.labelList[index]),),),),
     );
 }

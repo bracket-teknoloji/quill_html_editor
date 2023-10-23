@@ -35,70 +35,70 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
       text: stokDetayModel.stokList?.first.alisKdv
               .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
           stokListesiModel.alisKdv
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
   TextEditingController alisFiyat1Controller = TextEditingController(
       text: stokDetayModel.stokList?.first.alisFiat1
               .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
           stokListesiModel.alisFiat1
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
   TextEditingController alisFiyat2Controller = TextEditingController(
       text: stokDetayModel.stokList?.first.alisFiat2
               .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
           stokListesiModel.alisFiat2
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
   TextEditingController alisFiyat3Controller = TextEditingController(
       text: stokDetayModel.stokList?.first.alisFiat3
               .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
           stokListesiModel.alisFiat3
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
   TextEditingController alisFiyat4Controller = TextEditingController(
       text: stokDetayModel.stokList?.first.alisFiat4
               .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
           stokListesiModel.alisFiat4
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
   TextEditingController alisDovizTipiController = TextEditingController(
       text: stokDetayModel.stokList?.first.satisDovizAdi ??
           stokListesiModel.alisDovizAdi ??
-          "");
+          "",);
   TextEditingController alisDovizFiyatiController = TextEditingController(
       text: stokDetayModel.stokList?.first.dovAlisFiat
               .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
           stokListesiModel.dovAlisFiat
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
   TextEditingController satisKdvOraniController = TextEditingController(
       text: stokDetayModel.stokList?.first.satisKdv
               .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
           stokListesiModel.satisKdv
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
   TextEditingController satisFiyat1Controller = TextEditingController(
       text: stokDetayModel.stokList?.first.satisFiat1
               .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
           stokListesiModel.satisFiat1
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
   TextEditingController satisFiyat2Controller = TextEditingController(
       text: stokDetayModel.stokList?.first.satisFiat2
               .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
           stokListesiModel.satisFiat2
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
   TextEditingController satisFiyat3Controller = TextEditingController(
       text: stokDetayModel.stokList?.first.satisFiat3
               .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
           stokListesiModel.satisFiat3
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
   TextEditingController satisFiyat4Controller = TextEditingController(
       text: stokDetayModel.stokList?.first.satisFiat4
               .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
           stokListesiModel.satisFiat4
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
   TextEditingController satisDovizTipiController = TextEditingController(
       text: stokDetayModel.stokList?.first.satisDovizAdi ??
           stokListesiModel.satisDovizAdi ??
-          "");
+          "",);
   TextEditingController satisDovizFiyatiController = TextEditingController(
       text: stokDetayModel.stokList?.first.dovSatisFiat
               .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
           stokListesiModel.dovSatisFiat
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati));
+              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
   @override
   void dispose() {
     alisKdvOraniController.dispose();
@@ -142,14 +142,14 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                               children: viewModel.kdvOraniList
                                   ?.map((element) => BottomSheetModel(
                                       title: element.toStringIfNotNull ?? "",
-                                      onTap: () => Get.back(result: element)))
-                                  .toList());
+                                      onTap: () => Get.back(result: element),),)
+                                  .toList(),);
                       if (result != null) {
                         alisKdvOraniController.text = result.toString();
                         stokDetayModel.stokList?.first.alisKdv = result;
                         stokListesiModel.alisKdv = result;
                       }
-                    }),
+                    },),
                 Row(
                   children: [
                     Expanded(
@@ -162,7 +162,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                               stokDetayModel.stokList?.first.alisFiat1 =
                                   double.tryParse(p0);
                               stokListesiModel.alisFiat1 = double.tryParse(p0);
-                            })),
+                            },),),
                     Expanded(
                         child: CustomTextField(
                             enabled: isEnabled,
@@ -173,7 +173,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                               stokDetayModel.stokList?.first.alisFiat2 =
                                   double.tryParse(p0);
                               stokListesiModel.alisFiat2 = double.tryParse(p0);
-                            })),
+                            },),),
                   ],
                 ),
                 Row(
@@ -188,7 +188,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                               stokDetayModel.stokList?.first.alisFiat3 =
                                   double.tryParse(p0);
                               stokListesiModel.alisFiat3 = double.tryParse(p0);
-                            })),
+                            },),),
                     Expanded(
                         child: CustomTextField(
                             enabled: isEnabled,
@@ -199,7 +199,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                               stokDetayModel.stokList?.first.alisFiat4 =
                                   double.tryParse(p0);
                               stokListesiModel.alisFiat4 = double.tryParse(p0);
-                            })),
+                            },),),
                   ],
                 ),
                 Row(
@@ -221,7 +221,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                         }
                       },
                       suffixMore: true,
-                    )),
+                    ),),
                     Expanded(
                         child: CustomTextField(
                             enabled: isEnabled,
@@ -233,10 +233,10 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                                   double.tryParse(p0);
                               stokListesiModel.dovAlisFiat =
                                   double.tryParse(p0);
-                            })),
+                            },),),
                   ],
                 ),
-              ])),
+              ],),),
           CustomWidgetWithLabel(
             text: "Satış",
             child: Wrap(
@@ -257,15 +257,15 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                               children: viewModel.kdvOraniList
                                   ?.map((element) => BottomSheetModel(
                                       title: element.toStringIfNotNull ?? "",
-                                      onTap: () => Get.back(result: element)))
-                                  .toList());
+                                      onTap: () => Get.back(result: element),),)
+                                  .toList(),);
                       if (result != null) {
                         satisKdvOraniController.text = result.toString();
                         stokDetayModel.stokList?.first.satisKdv = result;
                         stokListesiModel.satisKdv = result;
                       }
                     },
-                    controller: satisKdvOraniController),
+                    controller: satisKdvOraniController,),
                 Row(
                   children: [
                     Expanded(
@@ -278,7 +278,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                               stokDetayModel.stokList?.first.satisFiat1 =
                                   double.tryParse(p0);
                               stokListesiModel.satisFiat1 = double.tryParse(p0);
-                            })),
+                            },),),
                     Expanded(
                         child: CustomTextField(
                             keyboardType: TextInputType.number,
@@ -289,7 +289,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                               stokDetayModel.stokList?.first.satisFiat2 =
                                   double.tryParse(p0);
                               stokListesiModel.satisFiat2 = double.tryParse(p0);
-                            })),
+                            },),),
                   ],
                 ),
                 Row(
@@ -304,7 +304,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                               stokDetayModel.stokList?.first.satisFiat3 =
                                   double.tryParse(p0);
                               stokListesiModel.satisFiat3 = double.tryParse(p0);
-                            })),
+                            },),),
                     Expanded(
                         child: CustomTextField(
                             keyboardType: TextInputType.number,
@@ -315,7 +315,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                               stokDetayModel.stokList?.first.satisFiat4 =
                                   double.tryParse(p0);
                               stokListesiModel.satisFiat4 = double.tryParse(p0);
-                            })),
+                            },),),
                   ],
                 ),
                 Row(
@@ -335,7 +335,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                         }
                       },
                       suffixMore: true,
-                    )),
+                    ),),
                     Expanded(
                         child: CustomTextField(
                             enabled: isEnabled,
@@ -347,12 +347,12 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                                   double.tryParse(p0);
                               stokListesiModel.dovSatisFiat =
                                   double.tryParse(p0);
-                            })),
+                            },),),
                   ],
                 ),
               ],
             ),
-          )
+          ),
         ],
       ).paddingAll(UIHelper.lowSize),
     );
@@ -361,10 +361,10 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
     final result = await networkManager.dioGet<BaseEmptyModel>(
         path: ApiUrls.getStokDigerBilgi,
         bodyModel: BaseEmptyModel(),
-        queryParameters: {"BilgiTipi": "KDVGRUP"});
+        queryParameters: {"BilgiTipi": "KDVGRUP"},);
     if (result.success == true) {
       viewModel.setKdvOraniList(
-          jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]).cast<double>());
+          jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]).cast<double>(),);
     } else {
       dialogManager
           .showAlertDialog("KDV listesine erişilemedi.${result.message ?? ""}");
@@ -381,8 +381,8 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                       onTap: () {
                         Get.back(result: e);
                       },
-                    ))
-                .toList());
+                    ),)
+                .toList(),);
     return result;
   }
 }

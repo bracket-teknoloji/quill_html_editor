@@ -16,7 +16,7 @@ abstract class _LokalDepoBakiyeRaporuViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
       raporOzelKod: "Rapor_StokLokalDepo",
       standart: true,
-      dicParams: DicParams()..sifirHaric = "H");
+      dicParams: DicParams()..sifirHaric = "H",);
 
   List<BottomSheetModel>? bottomSheetList = CacheManager.getAnaVeri()
       ?.paramModel
@@ -24,7 +24,7 @@ abstract class _LokalDepoBakiyeRaporuViewModelBase with Store {
       ?.map((e) => BottomSheetModel(
           title: e.depoTanimi ?? "",
           description: e.depoKodu.toStringIfNotNull ?? "",
-          onTap: () => Get.back(result: e.depoKodu.toStringIfNotNull)))
+          onTap: () => Get.back(result: e.depoKodu.toStringIfNotNull),),)
       .toList();
   @observable
   bool sifirHaricValue = false;

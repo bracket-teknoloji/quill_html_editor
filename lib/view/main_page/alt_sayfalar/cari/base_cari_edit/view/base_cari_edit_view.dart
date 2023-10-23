@@ -64,7 +64,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
               await dialogManager.showEmptyFieldDialog(validate.keys.toList(), onOk: () => tabController.animateTo(validate.values.first));
             }
           },
-          icon: const Icon(Icons.save_outlined))
+          icon: const Icon(Icons.save_outlined),)
       : null;
 
   @override
@@ -89,7 +89,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
     WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
       if (widget.model?.baseEditEnum != BaseEditEnum.ekle) {
         final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<CariDetayModel>(
-            path: ApiUrls.getCariDetay, bodyModel: CariDetayModel(), showError: false, showLoading: true, queryParameters: <String, dynamic>{"CariKodu": widget.model?.model.cariKodu});
+            path: ApiUrls.getCariDetay, bodyModel: CariDetayModel(), showError: false, showLoading: true, queryParameters: <String, dynamic>{"CariKodu": widget.model?.model.cariKodu},);
         if (result.data != null && result.data!.isNotEmpty && result.success == true) {
           CariDetayModel.setInstance(result.data[0]);
           CariSaveRequestModel.setInstance(CariSaveRequestModel.instance.fromCariListesiModel(CariDetayModel.instance.cariList?.first));
@@ -163,7 +163,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
                           await dialogManager.showEmptyFieldDialog(validate.keys.toList(), onOk: () => tabController.animateTo(validate.values.first));
                         }
                       },
-                      icon: const Icon(Icons.save_outlined))
+                      icon: const Icon(Icons.save_outlined),)
                   .yetkiVarMi(widget.model?.baseEditEnum != BaseEditEnum.goruntule),
             ],
             bottom: TabBar(

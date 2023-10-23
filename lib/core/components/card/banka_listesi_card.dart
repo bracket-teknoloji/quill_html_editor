@@ -32,7 +32,7 @@ class _KasaListesiCardState extends BaseState<KasaListesiCard> {
             ),
             title: Text("${widget.item?.kasaKodu != null ? '${widget.item?.kasaKodu} - ' : ''}${widget.item?.kasaTanimi ?? ""}"),
             subtitle: Text(
-                "Devir Tutarı: ${(widget.item?.dovizli == "E" ? widget.item?.dovizDevirTutari : widget.item?.devirTutari)?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.item?.dovizli == "E" ? (widget.item?.dovizAdi ?? "") : mainCurrency}"),
+                "Devir Tutarı: ${(widget.item?.dovizli == "E" ? widget.item?.dovizDevirTutari : widget.item?.devirTutari)?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.item?.dovizli == "E" ? (widget.item?.dovizAdi ?? "") : mainCurrency}",),
             trailing: Text.rich(
               TextSpan(
                   children: [
@@ -40,15 +40,15 @@ class _KasaListesiCardState extends BaseState<KasaListesiCard> {
                     style: TextStyle(
                         color: ((widget.item?.dovizli == "E" ? (widget.item?.devirliDovizBakiye ?? widget.item?.dovizDevirTutari ?? 0) : widget.item?.devirliBakiye ?? 0) < 0)
                             ? Colors.red
-                            : Colors.green),
+                            : Colors.green,),
                     text:
-                        "${(widget.item?.dovizli == "E" ? (widget.item?.devirliDovizBakiye ?? widget.item?.dovizDevirTutari) : widget.item?.devirliBakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.item?.dovizli == "E" ? (widget.item?.dovizAdi ?? "") : mainCurrency}\n"),
+                        "${(widget.item?.dovizli == "E" ? (widget.item?.devirliDovizBakiye ?? widget.item?.dovizDevirTutari) : widget.item?.devirliBakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.item?.dovizli == "E" ? (widget.item?.dovizAdi ?? "") : mainCurrency}\n",),
                 if (widget.item?.dovizli == "E")
                   TextSpan(text: "${(widget.item?.dovizli == "E" ? widget.item?.devirliBakiye : widget.item?.bakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")
                 else
-                  null
-              ].nullCheckWithGeneric),
+                  null,
+              ].nullCheckWithGeneric,),
               textAlign: TextAlign.end,
-            )),
+            ),),
       );
 }

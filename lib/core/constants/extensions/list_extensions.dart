@@ -7,7 +7,7 @@ extension ListExtension<T> on List<T> {
   List<Padding> get withPadding => map((e) => Padding(
           padding: EdgeInsets.all(UIHelper.lowSize),
           child: e as Widget,
-        )).toList();
+        ),).toList();
 }
 
 // an extension on a list of widget to add sized box between items
@@ -15,7 +15,7 @@ extension ListExtension2<T> on List<T> {
   List<Widget> get withSizedBox => map((e) => SizedBox(
           width: (Get.width - UIHelper.midSize) * 0.45,
           child: e as Widget,
-        )).toList();
+        ),).toList();
 }
 
 // an extension on a list or ObservableList to check is empty or null

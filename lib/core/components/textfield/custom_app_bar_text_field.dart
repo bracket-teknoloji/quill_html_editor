@@ -6,7 +6,7 @@ class CustomAppBarTextField extends StatefulWidget {
   final void Function(String)? onChanged;
   final TextEditingController? controller;
   const CustomAppBarTextField(
-      {super.key, this.onFieldSubmitted, this.controller, this.onChanged});
+      {super.key, this.onFieldSubmitted, this.controller, this.onChanged,});
 
   @override
   State<CustomAppBarTextField> createState() => _CustomAppBarTextFieldState();
@@ -36,7 +36,7 @@ class _CustomAppBarTextFieldState extends State<CustomAppBarTextField> {
                       : null,
                 ),
                 onChanged: widget.onChanged,
-                onFieldSubmitted: widget.onFieldSubmitted)
+                onFieldSubmitted: widget.onFieldSubmitted,)
             .marginAll(5),
       ),
     );

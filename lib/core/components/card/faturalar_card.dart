@@ -57,7 +57,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   onTap: () async {
                     Get.back();
                     await Get.toNamed("/mainPage/sevkiyatEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum));
-                  }),
+                  },),
             ],
           ),
           title: Row(
@@ -118,7 +118,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                           Text("Ara Toplam: ${model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                           Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency").yetkiVarMi(model.genelToplam != null),
                         ].map((Widget e) => e is SizedBox ? null : SizedBox(width: constraints.maxWidth / 2, child: e)).whereType<Widget>().toList(),
-                      )),
+                      ),),
               const Divider(
                 indent: 0,
                 endIndent: 0,
@@ -143,7 +143,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
   InkWell dialogInkWell(ColorfulBadge badge) => InkWell(
         onTap: () {
           dialogManager.showColorfulSnackBar(
-              "Durum Kodu: ${model.efaturaGibDurumKodu ?? 0}${model.efaturaDurumAciklama != null ? '\n${model.efaturaDurumAciklama ?? ""}' : ""}", badge.badgeColorEnum.getColor);
+              "Durum Kodu: ${model.efaturaGibDurumKodu ?? 0}${model.efaturaDurumAciklama != null ? '\n${model.efaturaDurumAciklama ?? ""}' : ""}", badge.badgeColorEnum.getColor,);
           // switch (model.efaturaDurumu) {
           //   case "HAT":
           //   case "BEK":

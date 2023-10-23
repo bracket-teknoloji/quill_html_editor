@@ -133,7 +133,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     child: ListTile(
                       leading: const Icon(Icons.info_outline),
                       title: Text("E-Fatura Taslağı (${model.resmiBelgeNo})"),
-                    )).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.efaturaMi == "E"),
+                    ),).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.efaturaMi == "E"),
                 CustomTextField(labelText: "Belge No", isMust: true, controller: _belgeNoController, enabled: enable, maxLength: 15, onTap: () {}),
                 CustomTextField(labelText: "Resmi Belge No", isMust: true, controller: _resmiBelgeNoController, enabled: enable, maxLength: 16, onTap: () {}),
                 CustomTextField(
@@ -149,7 +149,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       if (result != null) {
                         _cariController.text = result.cariAdi ?? "";
                       }
-                    }),
+                    },),
                 CustomTextField(
                     labelText: "Teslim Cari",
                     readOnly: true,
@@ -163,7 +163,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       if (result != null) {
                         _teslimCariController.text = result.cariAdi ?? "";
                       }
-                    }).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("teslim_cari")),
+                    },).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("teslim_cari")),
                 Row(
                   children: <Widget>[
                     Expanded(
@@ -181,7 +181,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               _plasiyerController.text = result.projeAciklama ?? "";
                               viewModel.setProje(result);
                             }
-                          }),
+                          },),
                     ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && yetkiController.sevkiyatSatisFatGizlenecekAlanlar("proje")),
                     Expanded(
                       child: CustomTextField(
@@ -198,7 +198,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               _plasiyerController.text = result.plasiyerAciklama ?? "";
                               viewModel.setPlasiyer(result);
                             }
-                          }),
+                          },),
                     ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi && yetkiController.sevkiyatSatisFatGizlenecekAlanlar("plasiyer")),
                   ],
                 ),
@@ -222,12 +222,12 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                                       (int index) => BottomSheetModel(
                                           title: viewModel.belgeTipi.keys.toList()[index],
                                           description: viewModel.belgeTipi.values.toList()[index].toStringIfNotNull,
-                                          value: viewModel.belgeTipi.entries.toList()[index])));
+                                          value: viewModel.belgeTipi.entries.toList()[index],),),);
                               if (result is MapEntry) {
                                 _belgeTipiController.text = result.key ?? "";
                                 viewModel.setBelgeTipi(result.value);
                               }
-                            })).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("belge_tipi")),
+                            },),).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("belge_tipi")),
                     Expanded(
                         child: CustomTextField(
                             labelText: "Tarih",
@@ -242,7 +242,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                                 _tarihController.text = result.toDateString;
                                 viewModel.setTarih(result);
                               }
-                            })),
+                            },),),
                   ],
                 ),
                 Row(
@@ -256,7 +256,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                                 controller: _topluDepoController,
                                 enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("toplu_depo"),
                                 valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
-                                onTap: () {}))
+                                onTap: () {},),)
                         .yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("toplu_depo")),
                     Expanded(
                         child: CustomTextField(
@@ -267,7 +267,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       enabled: enable,
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod2 ?? "")),
                       onTap: () {},
-                    )),
+                    ),),
                   ],
                 ),
                 CustomWidgetWithLabel(
@@ -277,7 +277,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         child: Observer(
                             builder: (_) => Switch.adaptive(
                                 value: viewModel.kdvDahil,
-                                onChanged: (enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("kdv_dahil_haric")) ? (bool value) => viewModel.changeKdvDahil(value) : null)))
+                                onChanged: (enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("kdv_dahil_haric")) ? (bool value) => viewModel.changeKdvDahil(value) : null,),),)
                     .yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("kdv_dahil_haric")),
                 CustomWidgetWithLabel(
                   text: "Ek Açıklamalar",
@@ -318,7 +318,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(16)),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),

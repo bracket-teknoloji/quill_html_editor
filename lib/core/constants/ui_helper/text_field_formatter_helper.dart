@@ -6,5 +6,5 @@ class TextFieldFormatterHelper {
       groupSeparator: ".",
       groupDigits: 3,
       allowNegative: true,
-      overrideDecimalPoint: true);
+      overrideDecimalPoint: true,);
 }

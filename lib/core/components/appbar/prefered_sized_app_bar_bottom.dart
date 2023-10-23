@@ -23,5 +23,5 @@ class _PreferedSizedAppBarBottomState
             scrollDirection: Axis.horizontal,
             children: widget.children.map((e) => e as Widget).toList(),
           ),
-        ));
+        ),);
 }

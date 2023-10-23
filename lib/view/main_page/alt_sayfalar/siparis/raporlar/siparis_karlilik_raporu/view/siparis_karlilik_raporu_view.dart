@@ -73,7 +73,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
   Widget build(BuildContext context) => PDFViewerView(
         filterBottomSheet: filterBottomSheet,
         title: "Sipariş Karlılık Raporu",
-        pdfData: viewModel.pdfModel);
+        pdfData: viewModel.pdfModel,);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -91,13 +91,13 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                       viewModel.setBaslangicTarihi(
                           baslangicTarihiController.text != ""
                               ? baslangicTarihiController.text
-                              : null);
+                              : null,);
                       viewModel.setBitisTarihi(bitisTarihiController.text != ""
                           ? bitisTarihiController.text
-                          : null);
+                          : null,);
                     },
                     baslangicTarihiController: baslangicTarihiController,
-                    bitisTarihiController: bitisTarihiController),
+                    bitisTarihiController: bitisTarihiController,),
                 CustomTextField(
                   labelText: "Belge No",
                   readOnly: true,
@@ -112,7 +112,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                         "/mainPage/siparisMusteriSiparisi",
                         arguments: SiparislerWidgetModel(
                             siparisTipiEnum: SiparisTipiEnum.musteri,
-                            isGetData: true));
+                            isGetData: true,),);
                     if (result is BaseSiparisEditModel) {
                       belgeNoController.text = result.belgeNo ?? "";
                       viewModel.setBelgeNo(result.belgeNo);
@@ -132,13 +132,13 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                     onPressed: () {
                       if (viewModel.pdfModel.dicParams?.cariKodu != null) {
                         dialogManager.showCariGridViewDialog(CariListesiModel()
-                          ..cariKodu = viewModel.pdfModel.dicParams?.cariKodu!);
+                          ..cariKodu = viewModel.pdfModel.dicParams?.cariKodu!,);
                       } else {
                         dialogManager.showAlertDialog("Cari Kodu Boş Olamaz");
                       }
                     },
                     icon: Icon(Icons.data_exploration_outlined,
-                        color: UIHelper.primaryColor),
+                        color: UIHelper.primaryColor,),
                   ),
                   onClear: () {
                     viewModel.setCariKodu(null);
@@ -146,7 +146,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                   },
                   onTap: () async {
                     final result = await Get.toNamed("/mainPage/cariListesi",
-                        arguments: true);
+                        arguments: true,);
                     if (result is CariListesiModel) {
                       cariController.text = result.cariAdi ?? "";
                       viewModel.setCariKodu(result.cariKodu);
@@ -175,7 +175,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                           viewModel.setPlasiyer(result.plasiyerKodu);
                         }
                       },
-                    )),
+                    ),),
                     Expanded(
                         child: CustomTextField(
                       labelText: "Maliyet Tipi",
@@ -193,22 +193,22 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                                         title: viewModel.maliyetTipiList.keys
                                             .toList()[index],
                                         value: viewModel.maliyetTipiList.values
-                                            .toList()[index])));
+                                            .toList()[index],),),);
                         if (result != null) {
                           maliyetTipiController.text = result ?? "";
                           viewModel.setMaliyetTipi(result ?? "");
                         }
                       },
-                    )),
+                    ),),
                   ],
                 ),
                 CustomTextField(
                   labelText: "Hariç Stok Grup Kodları",
                   suffix: IconButton(
                       onPressed: () => dialogManager.showInfoDialog(
-                          "Kodları noktalı virgül (;) ile ayırarak, aralaında boşluk bırakmadan yazınız.\n\nÖrnek: 01;02;02"),
+                          "Kodları noktalı virgül (;) ile ayırarak, aralaında boşluk bırakmadan yazınız.\n\nÖrnek: 01;02;02",),
                       icon: Icon(Icons.info_outline,
-                          color: UIHelper.primaryColor)),
+                          color: UIHelper.primaryColor,),),
                   controller: haricStokGrupKodlariController,
                 ),
                 CustomWidgetWithLabel(
@@ -218,7 +218,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                         builder: (_) => Switch.adaptive(
                             value: viewModel.uretimFiyatiDahilMi,
                             onChanged: (value) => viewModel
-                                .setUretimFiyatiDahilMi(value ? "E" : "H")))),
+                                .setUretimFiyatiDahilMi(value ? "E" : "H"),),),),
                 ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState?.validate() ?? false) {
@@ -226,12 +226,12 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                             Get.back();
                           }
                         },
-                        child: const Text("Uygula"))
-                    .paddingAll(UIHelper.lowSize)
+                        child: const Text("Uygula"),)
+                    .paddingAll(UIHelper.lowSize),
               ],
             ),
           ),
-        ));
+        ),);
     return Future.value(viewModel.futureController.value);
   }
 }

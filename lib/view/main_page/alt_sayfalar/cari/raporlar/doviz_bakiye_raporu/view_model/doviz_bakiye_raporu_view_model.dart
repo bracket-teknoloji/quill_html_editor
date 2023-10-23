@@ -15,18 +15,18 @@ abstract class _DovizBakiyeRaporuViewModelBase with Store {
     "Eksi",
     "Artı",
     "Sıfır",
-    "Bakiyeli"
+    "Bakiyeli",
   ];
   final List<String> bakiyeDurumuValueList = ["T", "E", "A", "S", "B"];
   final List<BottomSheetModel> siralaBottomSheetList = [
     BottomSheetModel(
-        title: "Cari Adı (A-Z)", onTap: () => Get.back(result: "ADI")),
+        title: "Cari Adı (A-Z)", onTap: () => Get.back(result: "ADI"),),
     BottomSheetModel(
-        title: "Cari Adı (Z-A)", onTap: () => Get.back(result: "ADI_DESC")),
+        title: "Cari Adı (Z-A)", onTap: () => Get.back(result: "ADI_DESC"),),
     BottomSheetModel(
-        title: "Cari Adı (A-Z)", onTap: () => Get.back(result: "KODU")),
+        title: "Cari Adı (A-Z)", onTap: () => Get.back(result: "KODU"),),
     BottomSheetModel(
-        title: "Cari Adı (Z-A)", onTap: () => Get.back(result: "KODU_DESC")),
+        title: "Cari Adı (Z-A)", onTap: () => Get.back(result: "KODU_DESC"),),
   ];
   @observable
   String _bakiyeDurumuGroupValue = "T";
@@ -46,7 +46,7 @@ abstract class _DovizBakiyeRaporuViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
       raporOzelKod: "Rapor_CariDovizBakiye",
       standart: true,
-      dicParams: DicParams()..sirala = "ADI");
+      dicParams: DicParams()..sirala = "ADI",);
 
   //* Future
   //*

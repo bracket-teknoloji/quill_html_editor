@@ -33,7 +33,7 @@ abstract class _StokIhtiyacRaporuViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
       raporOzelKod: "Rapor_StokIhtiyac",
       standart: true,
-      dicParams: DicParams(sirala: "IHTIYAC_DESC"));
+      dicParams: DicParams(sirala: "IHTIYAC_DESC"),);
 
   @action
   void setSirala(String? value) =>

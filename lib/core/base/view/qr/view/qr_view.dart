@@ -40,7 +40,7 @@ class _QRScannerState extends BaseState<QRScannerView> {
                   },
                   icon: Icon(Icons.flash_on,
                       color:
-                          viewModel.isFlashOpen ? Colors.amber : Colors.white))),
+                          viewModel.isFlashOpen ? Colors.amber : Colors.white,),),),
             Observer(builder: (_) => IconButton(
                   isSelected: false,
                   onPressed: () {
@@ -54,7 +54,7 @@ class _QRScannerState extends BaseState<QRScannerView> {
                   icon: Icon(Icons.flip_camera_ios,
                       color: viewModel.isCameraReverse
                           ? Colors.amber
-                          : Colors.white))),
+                          : Colors.white,),),),
           ],
         ),
         body: Stack(
@@ -69,7 +69,7 @@ class _QRScannerState extends BaseState<QRScannerView> {
             borderRadius: 10,
             borderWidth: 20,
             cutOutSize: width * 0.7,
-            overlayColor: Colors.black.withOpacity(0.7)),
+            overlayColor: Colors.black.withOpacity(0.7),),
         key: qrKey,
         onQRViewCreated: _onQRViewCreated,
         cameraFacing: CameraFacing.back,
@@ -98,7 +98,7 @@ class _QRScannerState extends BaseState<QRScannerView> {
         margin: UIHelper.highPaddingVertical,
         child: Text("QR Kodu Okutunuz",
             style: context.general.appTheme.textTheme.titleLarge!
-                .copyWith(color: Colors.white)),
+                .copyWith(color: Colors.white),),
       ),
     );
 }

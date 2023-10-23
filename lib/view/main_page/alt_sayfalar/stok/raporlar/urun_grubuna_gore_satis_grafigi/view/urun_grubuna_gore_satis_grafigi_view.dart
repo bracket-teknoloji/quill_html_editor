@@ -82,7 +82,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState
                   getData();
                 },
                 baslangicTarihiController: baslangicTarihiController,
-                bitisTarihiController: bitisTarihiController),
+                bitisTarihiController: bitisTarihiController,),
             Row(
               children: [
                 Expanded(
@@ -95,7 +95,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState
                     final result = await bottomSheetDialogManager
                         .showBottomSheetDialog(context,
                             title: "Grup No",
-                            children: viewModel.grupNoBottomSheetList);
+                            children: viewModel.grupNoBottomSheetList,);
                     if (result != null) {
                       grupNoController.text = result;
                       viewModel.model.grupNo =
@@ -103,7 +103,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState
                       getData();
                     }
                   },
-                )),
+                ),),
                 Expanded(
                     child: CustomTextField(
                         labelText: "Cari",
@@ -113,14 +113,14 @@ class _UrunGrubunaGoreSatisGrafigiViewState
                         onTap: () async {
                           final result = await Get.toNamed(
                               "/mainPage/cariListesi",
-                              arguments: true);
+                              arguments: true,);
                           if (result != null) {
                             cariController.text =
                                 (result as CariListesiModel).cariKodu ?? "";
                             viewModel.model.cariKodu = result.cariKodu ?? "";
                             getData();
                           }
-                        })),
+                        },),),
               ],
             ),
             Row(
@@ -142,18 +142,18 @@ class _UrunGrubunaGoreSatisGrafigiViewState
                                   .map((e) => BottomSheetModel(
                                       title: e.plasiyerAciklama ?? "",
                                       value: e.plasiyerKodu ?? "",
-                                      onTap: () => Get.back(result: e)))
-                                  .toList());
+                                      onTap: () => Get.back(result: e),),)
+                                  .toList(),);
                       if (result != null) {
                         plasiyerController.text = result.plasiyerAciklama ?? "";
                         viewModel.model.arrPlasiyerKodu = [
-                          result.plasiyerKodu ?? ""
+                          result.plasiyerKodu ?? "",
                         ];
                         getData();
                       }
                     }
                   },
-                )).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
+                ),).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                 Expanded(
                     child: CustomTextField(
                         labelText: "Proje",
@@ -167,12 +167,12 @@ class _UrunGrubunaGoreSatisGrafigiViewState
                                     path: ApiUrls.getProjeler,
                                     bodyModel: BaseProjeModel(),
                                     addCKey: true,
-                                    addSirketBilgileri: true);
+                                    addSirketBilgileri: true,);
                             if (result.success == true) {
                               viewModel.setProjeList(result.data
                                   .map((e) => e as BaseProjeModel)
                                   .toList()
-                                  .cast<BaseProjeModel>());
+                                  .cast<BaseProjeModel>(),);
                             }
                           }
                           if (viewModel.projeList != null) {
@@ -184,8 +184,8 @@ class _UrunGrubunaGoreSatisGrafigiViewState
                                         ?.map((e) => BottomSheetModel(
                                             title: e.projeAciklama ?? "",
                                             value: e.projeKodu ?? "",
-                                            onTap: () => Get.back(result: e)))
-                                        .toList());
+                                            onTap: () => Get.back(result: e),),)
+                                        .toList(),);
                             if (result != null) {
                               projeController.text = result.projeAciklama ?? "";
                               viewModel.model.projeKodu =
@@ -193,7 +193,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState
                               getData();
                             }
                           }
-                        })).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
+                        },),).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
               ],
             ),
             CustomWidgetWithLabel(
@@ -205,7 +205,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState
                           viewModel.setIrsDahilValue(value);
                           getData();
                         },
-                        title: const Text("İrsaliye Dahil")))),
+                        title: const Text("İrsaliye Dahil"),),),),
             Observer(
                 builder: (_) => CustomPieChart(
                     pieChartValue: viewModel.modelList
@@ -215,10 +215,10 @@ class _UrunGrubunaGoreSatisGrafigiViewState
                         [],
                     pieChartTitle: viewModel.modelList
                             ?.map((element) =>
-                                "${element.grupAdi ?? element.grupKodu} %${element.oran}")
+                                "${element.grupAdi ?? element.grupKodu} %${element.oran}",)
                             .toList()
                             .cast<String>() ??
-                        [])),
+                        [],),),
           ],
         ).paddingAll(UIHelper.lowSize),
       ),
@@ -229,12 +229,12 @@ class _UrunGrubunaGoreSatisGrafigiViewState
     final result = await networkManager.dioPost<UrunGrubunaGoreSatisGrafigiModel>(
         path: ApiUrls.getUrunGrubunaGoreSatisGrafigi,
         bodyModel: UrunGrubunaGoreSatisGrafigiModel(),
-        data: viewModel.model.toJson());
+        data: viewModel.model.toJson(),);
     if (result.success == true) {
       viewModel.setModelList(result.data
           .map((e) => e as UrunGrubunaGoreSatisGrafigiModel)
           .toList()
-          .cast<UrunGrubunaGoreSatisGrafigiModel>());
+          .cast<UrunGrubunaGoreSatisGrafigiModel>(),);
     }
   }
 }

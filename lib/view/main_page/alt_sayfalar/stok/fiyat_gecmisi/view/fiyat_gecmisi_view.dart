@@ -67,17 +67,17 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
           title: Observer(builder: (_) => viewModel.searchBar
                 ? CustomAppBarTextField(
                     controller: searchBarController,
-                    onChanged: (p0) => viewModel.filterModelList(p0))
+                    onChanged: (p0) => viewModel.filterModelList(p0),)
                 : AppBarTitle(
                     title: "Fiyat Geçmişi",
-                    subtitle: "${viewModel.modelList?.length ?? 0} kayıt")),
+                    subtitle: "${viewModel.modelList?.length ?? 0} kayıt",),),
           actions: [
             IconButton(
                 icon: Observer(
                     builder: (_) => Icon(viewModel.searchBar
                         ? Icons.search_off_outlined
-                        : Icons.search_outlined)),
-                onPressed: () => viewModel.setSearchBar()),
+                        : Icons.search_outlined,),),
+                onPressed: () => viewModel.setSearchBar(),),
             Observer(builder: (_) => viewModel.searchBar
                   ? const SizedBox()
                   : IconButton(
@@ -94,12 +94,12 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                         onTap: () => Get.back(
                                             result: viewModel
                                                 .siralaTitleList[index]
-                                                .value))));
+                                                .value,),),),);
                         if (result != null) {
                           viewModel.model.sirala = result;
                           getData();
                         }
-                      })),
+                      },),),
             Observer(
                 builder: (_) => viewModel.searchBar
                     ? const SizedBox()
@@ -116,7 +116,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                       baslangicTarihiController:
                                           baslangicTarihiController,
                                       bitisTarihiController:
-                                          bitisTarihiController),
+                                          bitisTarihiController,),
                                   Observer(builder: (_) => SlideControllerWidget(
                                       title: "Yazdırma Durumu",
                                       childrenTitleList: viewModel
@@ -128,7 +128,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                       filterOnChanged: (index) => viewModel
                                           .setYazdirmaGroupValue(index ?? 0),
                                       groupValue: viewModel.yazdirmaGroupValue,
-                                    )),
+                                    ),),
                                   Observer(builder: (_) => SlideControllerWidget(
                                       title: "Alış/Satış Fiyat Tipi",
                                       childrenTitleList: viewModel
@@ -140,7 +140,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                       filterOnChanged: (index) => viewModel
                                           .setAlisSatisGroupValue(index ?? 0),
                                       groupValue: viewModel.alisSatisGroupValue,
-                                    )),
+                                    ),),
                                   CustomTextField(
                                     labelText: "Fiyat Tipi",
                                     readOnly: true,
@@ -161,7 +161,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                                                   .fiyatTipiMap
                                                                   .values
                                                                   .toList()[
-                                                              index]))));
+                                                              index],),),),);
                                       if (result != null) {
                                         viewModel.model.fiyatTipi = result;
                                         fiyatTipiController.text = viewModel
@@ -180,7 +180,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                               backgroundColor:
                                                   MaterialStateProperty.all(
                                                       Colors.white
-                                                          .withOpacity(0.1))),
+                                                          .withOpacity(0.1),),),
                                           onPressed: () {
                                             viewModel.model =
                                                 FiyatGecmisiModel();
@@ -194,7 +194,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                             getData();
                                             Get.back();
                                           },
-                                          child: const Text("Temizle")),
+                                          child: const Text("Temizle"),),
                                     ),
                                     const SizedBox(width: 10),
                                     Expanded(
@@ -207,12 +207,12 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                             getData();
                                             Get.back();
                                           },
-                                          child: const Text("Uygula")),
-                                    )
-                                  ])
+                                          child: const Text("Uygula"),),
+                                    ),
+                                  ],),
                                 ],
-                              ));
-                        })),
+                              ),);
+                        },),),
           ],
         ),
         body: RefreshIndicator.adaptive(
@@ -243,8 +243,8 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                                   .yazdirmaDizaynStokEtiketi
                                                   ?.any((element2) => element
                                                           .id ==
-                                                      element2) ??
-                                              true))
+                                                      element2,) ??
+                                              true),)
                                       .toList();
                               final result = await bottomSheetDialogManager
                                   .showBottomSheetDialog(context,
@@ -255,7 +255,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                               title: dizaynList?[index]
                                                       .dizaynAdi ??
                                                   "",
-                                              value: dizaynList?[index])));
+                                              value: dizaynList?[index],),),);
                               if (result != null &&
                                   result is NetFectDizaynList) {
                                 dizaynController.text = result.dizaynAdi ?? "";
@@ -264,7 +264,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                 return;
                               }
                             },
-                          )),
+                          ),),
                           Expanded(
                               child: CustomTextField(
                             labelText: "Yazıcı",
@@ -279,8 +279,8 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                       profilYetkiModel
                                           .yazdirmaStokEtiketiYazicilari
                                           ?.any((element2) =>
-                                              element2 == element.yaziciAdi) ??
-                                      true)
+                                              element2 == element.yaziciAdi,) ??
+                                      true,)
                                   .toList();
                               final result = await bottomSheetDialogManager
                                   .showBottomSheetDialog(context,
@@ -291,8 +291,8 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                             title:
                                                 yaziciList?[index].yaziciAdi ??
                                                     "",
-                                            value: yaziciList?[index]),
-                                      ));
+                                            value: yaziciList?[index],),
+                                      ),);
                               if (result != null) {
                                 yaziciController.text = result.yaziciAdi ?? "";
                                 viewModel.setYaziciAdi(result);
@@ -300,7 +300,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                 return;
                               }
                             },
-                          ))
+                          ),),
                         ],
                       ),
                       Expanded(
@@ -316,46 +316,46 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                 onPrint: () async {
                                   if (dizaynController.text.ext.isNullOrEmpty) {
                                     dialogManager.showErrorSnackBar(
-                                        "Lütfen Dizayn Seçiniz");
+                                        "Lütfen Dizayn Seçiniz",);
                                     return;
                                   }
                                   if (yaziciController.text.ext.isNullOrEmpty) {
                                     dialogManager.showErrorSnackBar(
-                                        "Lütfen Yazıcı Seçiniz");
+                                        "Lütfen Yazıcı Seçiniz",);
                                     return;
                                   }
                                   final DicParams dicParams = DicParams(
                                       stokKodu: model?.stokKodu,
                                       fiyatTipi: model?.fiyatTipi,
                                       tblnfStokfiyatgecmisiId:
-                                          model?.id.toStringIfNotNull);
+                                          model?.id.toStringIfNotNull,);
                                   viewModel.setDicParams(dicParams);
                                   final result = await bottomSheetDialogManager
                                       .showPrintBottomSheetDialog(context,
-                                          viewModel.printModel, null, null);
+                                          viewModel.printModel, null, null,);
                                   if (result == true) {
                                     getData();
                                   }
                                 },
                               );
                             },
-                          )),
+                          ),),
                       ),
                     ],
-                  ).paddingAll(UIHelper.lowSize)),
-        ));
+                  ).paddingAll(UIHelper.lowSize),),
+        ),);
 
   void getData() async {
     viewModel.setModelList(null);
     final result = await networkManager.dioPost<FiyatGecmisiResponseModel>(
         path: ApiUrls.getStokFiyatGecmisi,
         bodyModel: FiyatGecmisiResponseModel(),
-        data: viewModel.model.toJson());
+        data: viewModel.model.toJson(),);
     if (result.success == true) {
       viewModel.setModelList(result.data
           .map((e) => e as FiyatGecmisiResponseModel)
           .toList()
-          .cast<FiyatGecmisiResponseModel>());
+          .cast<FiyatGecmisiResponseModel>(),);
     }
   }
 
@@ -363,7 +363,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
     final result = await networkManager.dioPost<FiyatGecmisiResponseModel>(
         path: ApiUrls.savestokFiyatGecmisi,
         bodyModel: FiyatGecmisiResponseModel(),
-        data: {"ID": id, "ISLEM_KODU": islemKodu});
+        data: {"ID": id, "ISLEM_KODU": islemKodu},);
     if (result.success == true) {
       dialogManager.showSuccessSnackBar("Silindi");
       getData();

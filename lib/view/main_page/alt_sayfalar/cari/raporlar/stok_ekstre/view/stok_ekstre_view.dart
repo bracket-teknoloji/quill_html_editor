@@ -49,7 +49,7 @@ class _StokEkstreViewState extends BaseState<StokEkstreView> {
   Widget build(BuildContext context) => PDFViewerView(
         filterBottomSheet: filterBottomSheet,
         title: "Stok Ekstre",
-        pdfData: viewModel.pdfModel);
+        pdfData: viewModel.pdfModel,);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -82,7 +82,7 @@ class _StokEkstreViewState extends BaseState<StokEkstreView> {
                       onPressed: () {
                         if (viewModel.pdfModel.dicParams?.cariKodu == null) {
                           dialogManager.showAlertDialog(
-                              "Lütfen tüm alanları doldurunuz");
+                              "Lütfen tüm alanları doldurunuz",);
                         } else {
                           viewModel.pdfModel.dicParams?.bastar =
                               baslangicTarihiController.text != ""
@@ -96,10 +96,10 @@ class _StokEkstreViewState extends BaseState<StokEkstreView> {
                           Get.back();
                         }
                       },
-                      child: const Text("Uygula"))
-                  .paddingAll(UIHelper.lowSize))
+                      child: const Text("Uygula"),)
+                  .paddingAll(UIHelper.lowSize),),
           ],
-        ).paddingAll(UIHelper.lowSize));
+        ).paddingAll(UIHelper.lowSize),);
     return Future.value(viewModel.futureController.value);
   }
 

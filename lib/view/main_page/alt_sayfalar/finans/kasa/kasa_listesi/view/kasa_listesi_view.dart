@@ -63,12 +63,12 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
           );
         }
         return Observer(builder: (_) => AppBarTitle(title: "Kasa Listesi", subtitle: viewModel.getKasaListesi?.length.toStringIfNotNull ?? ""));
-      }),
+      },),
       actions: [
         IconButton(
           onPressed: () => viewModel.setSearchBar(),
           icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)),
-        )
+        ),
       ],
       bottom: AppBarPreferedSizedBottom(children: [
         AppBarButton(
@@ -78,9 +78,9 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
                       size: 20,
                       fill: 1,
                       color: viewModel.filtreGroupValue != "T" ? UIHelper.primaryColor : null,
-                    )),
+                    ),),
             onPressed: filtrele,
-            child: const Text("Filtrele")),
+            child: const Text("Filtrele"),),
         AppBarButton(icon: Icons.sort_by_alpha_outlined, onPressed: sirala, child: const Text("Sırala")),
         AppBarButton(
             icon: Icons.refresh_outlined,
@@ -88,8 +88,8 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
               viewModel.setKasaListesi(null);
               await viewModel.getData();
             },
-            child: const Text("Yenile")),
-      ]),
+            child: const Text("Yenile"),),
+      ],),
     );
 
   Widget body() => RefreshIndicator.adaptive(
@@ -116,8 +116,8 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
                                       viewModel.setKasaListesi(null);
                                       await viewModel.getData();
                                     }
-                                  });
-                            }))),
+                                  },);
+                            },),),),
       );
 
   BottomBarWidget bottomAppBar() => BottomBarWidget(
@@ -129,7 +129,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
               Observer(builder: (_) => Text(
                   "${viewModel.getGelir.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                   style: const TextStyle(color: Colors.green),
-                )),
+                ),),
             ],
             onPressed: () {
               if (viewModel.filtreGroupValue != "A") {
@@ -139,7 +139,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
               }
               viewModel.setKasaListesi(null);
               viewModel.getData();
-            }),
+            },),
         FooterButton(
             children: [
               const Text("Gider"),
@@ -153,18 +153,18 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
               }
               viewModel.setKasaListesi(null);
               viewModel.getData();
-            }),
+            },),
         FooterButton(children: [
           const Text("Bakiye"),
           Observer(builder: (_) => Text("${viewModel.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.grey))),
-        ])
+        ],),
       ],
     );
 
   sirala() async {
     final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
         title: "Sırala",
-        children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])));
+        children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])),);
     if (result != null) {
       viewModel.setSirala(result);
       viewModel.setKasaListesi(null);
@@ -181,7 +181,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
                   childrenTitleList: viewModel.filtreleMap.keys.toList(),
                   childrenValueList: viewModel.filtreleMap.values.toList(),
                   filterOnChanged: (index) => viewModel.setFiltreGroupValue(index ?? 0),
-                  groupValue: viewModel.filtreGroupValue)),
+                  groupValue: viewModel.filtreGroupValue,),),
             Row(
               children: [
                 Expanded(
@@ -192,7 +192,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
                           viewModel.setFiltreGroupValue(0);
                           viewModel.getData();
                         },
-                        child: const Text("Sıfırla"))),
+                        child: const Text("Sıfırla"),),),
                 const SizedBox(width: 10),
                 Expanded(
                     child: ElevatedButton(
@@ -201,10 +201,10 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
                           viewModel.setKasaListesi(null);
                           viewModel.getData();
                         },
-                        child: const Text("Uygula")))
+                        child: const Text("Uygula"),),),
               ],
-            ).paddingAll(UIHelper.lowSize)
+            ).paddingAll(UIHelper.lowSize),
           ],
-        ).paddingAll(UIHelper.lowSize));
+        ).paddingAll(UIHelper.lowSize),);
   }
 }

@@ -140,7 +140,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
               ? CustomAppBarTextField(onFieldSubmitted: (value) async {
                   viewModel.changeFilterText(value);
                   await viewModel.resetPage();
-                })
+                },)
               : AppBarTitle(
                   title: "Cari Listesi",
                   subtitle: "${viewModel.cariListesi?.length ?? ""}",
@@ -156,7 +156,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                 Get.back();
               }
             },
-            icon: const Icon(Icons.arrow_back)),
+            icon: const Icon(Icons.arrow_back),),
         bottom: AppBarPreferedSizedBottom(
           children: [
             AppBarButton(
@@ -193,8 +193,8 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                       onTap: () {
                         Get.back();
                         dialogManager.showCariRaporlarGridViewDialog();
-                      })
-                ]);
+                      },),
+                ],);
               },
               child: const Icon(Icons.more_horiz_outlined),
             ),
@@ -217,7 +217,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   Future<void> siralaDialog(BuildContext context) async {
     final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
         title: "Sıralama Türünü Seçiniz",
-        children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])));
+        children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])),);
     if (result != viewModel.cariRequestModel.siralama) {
       viewModel.changeSiralama(result);
       viewModel.resetPage();
@@ -285,7 +285,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                   const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(object.efaturaMi == true),
                                   ColorfulBadge(label: Text("Dövizli ${object.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(object.dovizli == true),
                                   const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum).yetkiVarMi(object.boylam != null),
-                                  const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli).yetkiVarMi(object.kilit == "E")
+                                  const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli).yetkiVarMi(object.kilit == "E"),
                                   // object.boylam != null && object.enlem != null ? const Badge(label: Text(("Konum"))) : const SizedBox(),
                                   // object.dovizAdi != null ? Badge(label: Text(("Dövizli ${object.dovizAdi}"))) : const SizedBox(),
                                 ]
@@ -303,7 +303,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                     children: [
                                   TextSpan(
                                       text: object.bakiye == null ? "0,00 $mainCurrency\n" : "${object.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency\n",
-                                      style: TextStyle(color: UIHelper.getColorWithValue(object.bakiye ?? 0.0))),
+                                      style: TextStyle(color: UIHelper.getColorWithValue(object.bakiye ?? 0.0)),),
                                   if (object.bakiye != null)
                                     TextSpan(text: "${((object.bakiye ?? 0) > 0) ? "Tahsil Edilecek" : "Ödenecek"}\n", style: const TextStyle(fontStyle: FontStyle.italic))
                                   else
@@ -311,12 +311,12 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                   if (object.dovizli == true && object.dovBakiye != null)
                                     TextSpan(
                                         text: "${object.dovBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${object.dovizAdi ?? ""}",
-                                        style: TextStyle(color: UIHelper.getColorWithValue(object.dovBakiye ?? 0.0)))
+                                        style: TextStyle(color: UIHelper.getColorWithValue(object.dovBakiye ?? 0.0)),)
                                   else
                                     null,
-                                ].nullCheckWithGeneric),
-                                textAlign: TextAlign.right),
-                          ]),
+                                ].nullCheckWithGeneric,),
+                                textAlign: TextAlign.right,),
+                          ],),
                         ),
                       ),
                     );
@@ -325,11 +325,11 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                         builder: (_) => Visibility(
                               visible: viewModel.dahaVarMi,
                               child: const Center(child: CircularProgressIndicator.adaptive()),
-                            ));
+                            ),);
                   }
                 },
               )),
-      ).paddingAll(UIHelper.lowSize));
+      ).paddingAll(UIHelper.lowSize),);
 
   Widget? bottomButtonBar() => Observer(
       builder: (_) => BottomBarWidget(
@@ -342,7 +342,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                         builder: (_) => Text(
                               "${(viewModel.paramData?["TAHSIL_EDILECEK"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                               style: const TextStyle(color: Colors.green),
-                            )),
+                            ),),
                   ],
                   onPressed: () async {
                     if (viewModel.cariRequestModel.filterBakiye == "T") {
@@ -352,13 +352,13 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     }
                     viewModel.changeSiralama("BAKIYE_ZA");
                     await viewModel.resetPage();
-                  }),
+                  },),
               FooterButton(
                 children: [
                   const Text("Ödenecek"),
                   Observer(
                       builder: (_) =>
-                          Text("${(viewModel.paramData?["ODENECEK"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red))),
+                          Text("${(viewModel.paramData?["ODENECEK"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red)),),
                 ],
                 onPressed: () async {
                   if (viewModel.cariRequestModel.filterBakiye == "Ö") {
@@ -371,7 +371,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                 },
               ),
             ],
-          ));
+          ),);
 
   String getPaymentInfo(double bakiye) {
     if (bakiye > 0) {
@@ -420,15 +420,15 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
               onTap: () {
                 Get.back();
                 dialogManager.showCariGridViewDialog(object);
-              }),
+              },),
           BottomSheetModel(
               title: "Raporlar",
               iconWidget: Icons.area_chart_outlined,
               onTap: () {
                 Get.back();
                 dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipiEnum.cariRapor));
-              }),
-        ].nullCheckWithGeneric);
+              },),
+        ].nullCheckWithGeneric,);
     if (pageName != null) {
       BaseEditEnum? baseEditEnum;
       if (pageName is CariSeceneklerModel) {
@@ -457,7 +457,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     childrenTitleList: viewModel.bakiyeMap.keys.toList(),
                     filterOnChanged: (index) => viewModel.changeFilterBakiye(viewModel.bakiyeMap.values.toList()[index ?? 0]),
                     childrenValueList: viewModel.bakiyeMap.values.toList(),
-                    groupValue: viewModel.cariRequestModel.filterBakiye)),
+                    groupValue: viewModel.cariRequestModel.filterBakiye,),),
           ),
           Row(
             children: [
@@ -479,7 +479,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     viewModel.resetPage();
                   }
                 },
-              )).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
+              ),).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
               Expanded(
                   child: CustomTextField(
                 labelText: "Şehir",
@@ -497,7 +497,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                   // ignore: use_build_context_synchronously
                   final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context,
                       title: "Şehirler",
-                      children: List.generate(viewModel.sehirler?.length ?? 0, (index) => BottomSheetModel(title: viewModel.sehirler?[index].sehirAdi ?? "", value: viewModel.sehirler?[index])));
+                      children: List.generate(viewModel.sehirler?.length ?? 0, (index) => BottomSheetModel(title: viewModel.sehirler?[index].sehirAdi ?? "", value: viewModel.sehirler?[index])),);
                   if (result is List) {
                     final List<CariSehirlerModel?> list = result.cast<CariSehirlerModel?>().toList();
                     viewModel.changeArrSehir(list.map((e) => e?.sehirAdi).toList());
@@ -505,7 +505,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     viewModel.resetPage();
                   }
                 },
-              )),
+              ),),
             ],
           ),
           Row(
@@ -515,7 +515,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                 labelText: "İlçe",
                 controller: ilceController,
                 onChanged: (value) => viewModel.changeIlce(value),
-              )),
+              ),),
               Expanded(
                   child: CustomTextField(
                 labelText: "Tipi",
@@ -533,7 +533,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     viewModel.changeCariTipi(result != "Komisyoncu" ? result[0] : "I");
                   }
                 },
-              )),
+              ),),
             ],
           ),
           InkWell(
@@ -564,14 +564,14 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                             (index) => BottomSheetModel(
                                                   title: viewModel.getGrupKod0?[index].grupAdi ?? "",
                                                   value: viewModel.getGrupKod0?[index],
-                                                )));
+                                                ),),);
                                     if (result is List) {
                                       final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                       viewModel.changeArrKod0(list.map((e) => e?.grupKodu).toList());
                                       kod0Controller.text = list.map((e) => e?.grupAdi).join(", ");
                                       viewModel.resetPage();
                                     }
-                                  }),
+                                  },),
                             ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 0) ?? false),
                             Expanded(
                               child: CustomTextField(
@@ -583,14 +583,14 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                     final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context,
                                         title: "Kod Seçiniz",
                                         children: List.generate(
-                                            viewModel.getGrupKod1?.length ?? 0, (index) => BottomSheetModel(title: viewModel.getGrupKod1?[index].grupAdi ?? "", value: viewModel.getGrupKod1?[index])));
+                                            viewModel.getGrupKod1?.length ?? 0, (index) => BottomSheetModel(title: viewModel.getGrupKod1?[index].grupAdi ?? "", value: viewModel.getGrupKod1?[index]),),);
                                     if (result is List) {
                                       final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                       viewModel.changeArrKod1(list.map((e) => e?.grupKodu).toList());
                                       kod1Controller.text = list.map((e) => e?.grupAdi).join(", ");
                                       viewModel.resetPage();
                                     }
-                                  }),
+                                  },),
                             ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 1) ?? false),
                           ],
                         ),
@@ -610,14 +610,14 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                             (index) => BottomSheetModel(
                                                   title: viewModel.getGrupKod2?[index].grupAdi ?? "",
                                                   value: viewModel.getGrupKod2?[index],
-                                                )));
+                                                ),),);
                                     if (result is List) {
                                       final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                       viewModel.changeArrKod2(list.map((e) => e?.grupKodu).toList());
                                       kod2Controller.text = list.map((e) => e?.grupAdi).join(", ");
                                       viewModel.resetPage();
                                     }
-                                  }),
+                                  },),
                             ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 2) ?? false),
                             Expanded(
                               child: CustomTextField(
@@ -633,14 +633,14 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                             (index) => BottomSheetModel(
                                                   title: viewModel.getGrupKod3?[index].grupAdi ?? "",
                                                   value: viewModel.getGrupKod3?[index],
-                                                )));
+                                                ),),);
                                     if (result is List) {
                                       final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                       viewModel.changeArrKod3(list.map((e) => e?.grupKodu).toList());
                                       kod3Controller.text = list.map((e) => e?.grupAdi).join(", ");
                                       viewModel.resetPage();
                                     }
-                                  }),
+                                  },),
                             ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 3) ?? false),
                           ],
                         ),
@@ -660,14 +660,14 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                             (index) => BottomSheetModel(
                                                   title: viewModel.getGrupKod4?[index].grupAdi ?? "",
                                                   value: viewModel.getGrupKod4?[index],
-                                                )));
+                                                ),),);
                                     if (result is List) {
                                       final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                       viewModel.changeArrKod4(list.map((e) => e?.grupKodu).toList());
                                       kod4Controller.text = list.map((e) => e?.grupAdi).join(", ");
                                       viewModel.resetPage();
                                     }
-                                  }),
+                                  },),
                             ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 4) ?? false),
                             Expanded(
                               child: CustomTextField(
@@ -683,20 +683,20 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                             (index) => BottomSheetModel(
                                                   title: viewModel.getGrupKod5?[index].grupAdi ?? "",
                                                   value: viewModel.getGrupKod5?[index],
-                                                )));
+                                                ),),);
                                     if (result is List) {
                                       final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                       viewModel.changeArrKod5(list.map((e) => e?.grupKodu).toList());
                                       kod5Controller.text = list.map((e) => e?.grupAdi).join(", ");
                                       viewModel.resetPage();
                                     }
-                                  }),
+                                  },),
                             ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 5) ?? false),
                           ],
                         ),
                       ],
                     ),
-                  )),
+                  ),),
           Row(
             children: [
               Expanded(
@@ -716,7 +716,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                         kod5Controller.text = "";
                         viewModel.resetPage();
                       },
-                      child: const Text("Filtreyi Temizle"))),
+                      child: const Text("Filtreyi Temizle"),),),
               SizedBox(width: UIHelper.midSize),
               Expanded(
                   child: ElevatedButton(
@@ -724,9 +724,9 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                         Get.back();
                         await viewModel.resetPage();
                       },
-                      child: const Text("Uygula"))),
+                      child: const Text("Uygula"),),),
             ],
           ).paddingAll(UIHelper.lowSize),
         ],
-      ).paddingAll(UIHelper.lowSize));
+      ).paddingAll(UIHelper.lowSize),);
 }

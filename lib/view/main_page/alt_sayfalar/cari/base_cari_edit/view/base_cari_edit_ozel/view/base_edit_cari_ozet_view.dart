@@ -86,7 +86,7 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                                 Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeEuroController)),
                               ],
                             ),
-                          )).yetkiVarMi(cariDetayModel?.bakiyeList?.any((BakiyeList element) => element.dovizTipi == 2) ?? false),
+                          ),).yetkiVarMi(cariDetayModel?.bakiyeList?.any((BakiyeList element) => element.dovizTipi == 2) ?? false),
                       CustomWidgetWithLabel(
                           text: "\$",
                           onlyLabelpaddingLeft: UIHelper.lowSize,
@@ -99,7 +99,7 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                                 Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeDolarController)),
                               ],
                             ),
-                          )).yetkiVarMi(cariDetayModel?.bakiyeList?.any((BakiyeList element) => element.dovizTipi == 1) ?? false),
+                          ),).yetkiVarMi(cariDetayModel?.bakiyeList?.any((BakiyeList element) => element.dovizTipi == 1) ?? false),
                       CustomWidgetWithLabel(
                           text: mainCurrency,
                           onlyLabelpaddingLeft: UIHelper.lowSize,
@@ -112,9 +112,9 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                                 Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeTLController)),
                               ],
                             ),
-                          )).yetkiVarMi(cariDetayModel?.bakiyeList?.any((BakiyeList element) => element.dovizTipi == 0) ?? false),
+                          ),).yetkiVarMi(cariDetayModel?.bakiyeList?.any((BakiyeList element) => element.dovizTipi == 0) ?? false),
                     ],
-                  )),
+                  ),),
             CustomWidgetWithLabel(
               text: "Risk Bilgileri",
               onlyLabelpaddingLeft: UIHelper.lowSize,
@@ -139,13 +139,13 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                             readOnly: true,
                             labelText: "Senet Asıl Riski",
                             valueText: "% ${CariDetayModel.instance.senetAsilRiskO.toIntIfDouble.toStringIfNotNull ?? ""}",
-                            controller: senetAsilController)),
+                            controller: senetAsilController,),),
                     Expanded(
                         child: CustomTextField(
                             readOnly: true,
                             labelText: "Senet Ciro Riski",
                             valueText: "% ${CariDetayModel.instance.senetCiroRiskO.toIntIfDouble.toStringIfNotNull ?? ""}",
-                            controller: senetCiroController)),
+                            controller: senetCiroController,),),
                   ],
                 ),
                 Row(
@@ -155,13 +155,13 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                             readOnly: true,
                             labelText: "Çek Asıl Riski",
                             valueText: "% ${CariDetayModel.instance.senetAsilRiskO.toIntIfDouble.toStringIfNotNull ?? ""}",
-                            controller: cekAsilController)),
+                            controller: cekAsilController,),),
                     Expanded(
                         child: CustomTextField(
                             readOnly: true,
                             labelText: "Çek Ciro Riski",
                             valueText: "% ${CariDetayModel.instance.senetCiroRiskO.toIntIfDouble.toStringIfNotNull ?? ""}",
-                            controller: cekCiroController)),
+                            controller: cekCiroController,),),
                   ],
                 ),
                 Row(
@@ -182,9 +182,9 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                     Expanded(child: CustomTextField(readOnly: true, labelText: "Toplam Risk", controller: toplamRiskController)),
                   ],
                 ),
-              ]),
-            )
-          ])),
+              ],),
+            ),
+          ],),),
     );
   }
 

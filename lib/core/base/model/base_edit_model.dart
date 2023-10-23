@@ -17,7 +17,7 @@ class BaseEditModel<T> {
   bool get isKopyala => baseEditEnum == BaseEditEnum.kopyala;
 
   BaseEditModel(
-      {this.model, this.baseEditEnum, this.siradakiKod, this.siparisTipiEnum});
+      {this.model, this.baseEditEnum, this.siradakiKod, this.siparisTipiEnum,});
 
   @override
   // ignore: hash_and_equals

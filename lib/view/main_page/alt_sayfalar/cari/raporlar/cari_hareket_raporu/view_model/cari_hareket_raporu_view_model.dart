@@ -12,13 +12,13 @@ class CariHareketRaporuViewModel = _CariHareketRaporuViewModelBase
 abstract class _CariHareketRaporuViewModelBase with Store {
   final List<BottomSheetModel> siralaBottomSheetList = [
     BottomSheetModel(
-        title: "Kayıt No (Artan)", onTap: () => Get.back(result: "INC")),
+        title: "Kayıt No (Artan)", onTap: () => Get.back(result: "INC"),),
     BottomSheetModel(
-        title: "Kayıt No (Azalan)", onTap: () => Get.back(result: "INC_DESC")),
+        title: "Kayıt No (Azalan)", onTap: () => Get.back(result: "INC_DESC"),),
     BottomSheetModel(
-        title: "Tarih (Artan)", onTap: () => Get.back(result: "TARIH")),
+        title: "Tarih (Artan)", onTap: () => Get.back(result: "TARIH"),),
     BottomSheetModel(
-        title: "Tarih (Azalan)", onTap: () => Get.back(result: "TARIH_DESC")),
+        title: "Tarih (Azalan)", onTap: () => Get.back(result: "TARIH_DESC"),),
   ];
   //* Model
   //*
@@ -26,7 +26,7 @@ abstract class _CariHareketRaporuViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
       raporOzelKod: "Rapor_CariHareket",
       standart: true,
-      dicParams: DicParams()..sirala = "ADI");
+      dicParams: DicParams()..sirala = "ADI",);
 
   //* Future
   //*

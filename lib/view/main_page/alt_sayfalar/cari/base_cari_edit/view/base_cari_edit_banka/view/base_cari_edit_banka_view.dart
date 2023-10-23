@@ -47,7 +47,7 @@ class _BaseCariEditBankaViewState extends BaseState<BaseCariEditBankaView> {
                               dialogManager.showInfoSnackBar("IBAN numarası kopyalandı.");
                             },
                             icon: const Icon(Icons.share_outlined),
-                          )
+                          ),
                         ],
                       ),
                       Row(children: <Widget>[const Text("IBAN").paddingOnly(right: UIHelper.midSize), Text(cariDetayModel.bankaList?[index].subeAdi ?? "")]),
@@ -55,6 +55,6 @@ class _BaseCariEditBankaViewState extends BaseState<BaseCariEditBankaView> {
                     ],
                   ),
                 ],
-              ).paddingAll(UIHelper.lowSize)),
+              ).paddingAll(UIHelper.lowSize),),
           );
 }

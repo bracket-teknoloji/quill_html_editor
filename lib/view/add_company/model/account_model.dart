@@ -155,7 +155,7 @@ class AccountModel with NetworkManagerMixin {
     } else {
       platform = Platform.operatingSystem;
       final list = await NetworkInterface.list(
-          includeLoopback: true, type: InternetAddressType.IPv4);
+          includeLoopback: true, type: InternetAddressType.IPv4,);
       for (var interface in list) {
         for (var i = 0; i < interface.addresses.length; i++) {
           if (interface.addresses[i].address != "") {
@@ -192,7 +192,7 @@ class AccountModel with NetworkManagerMixin {
       cihazModeli = webInfo.userAgent;
       ozelCihazKimligi = webInfo.userAgent;
       cihazKimligi = base64Encode(
-          utf8.encode("$cihazMarkasi:$cihazModeli:$ozelCihazKimligi:"));
+          utf8.encode("$cihazMarkasi:$cihazModeli:$ozelCihazKimligi:"),);
     } //! ANDROID
     else if (Platform.isAndroid) {
       final androidInfo = await deviceInfo.androidInfo;
@@ -209,7 +209,7 @@ class AccountModel with NetworkManagerMixin {
         log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");
       } else {
         cihazKimligi = base64Encode(utf8
-            .encode("$cihazMarkasi:$cihazModeli:${androidInfo.serialNumber}:"));
+            .encode("$cihazMarkasi:$cihazModeli:${androidInfo.serialNumber}:"),);
       }
       // androidInfo.serialNumber;
     }
@@ -274,7 +274,7 @@ class AccountModel with NetworkManagerMixin {
 
   bool get isDebug =>
       CacheManager.accountsBox.values.any((element) =>
-          (element as AccountResponseModel?)?.email == "destek@netfect.com") ||
+          (element as AccountResponseModel?)?.email == "destek@netfect.com",) ||
       kDebugMode;
 
   @override

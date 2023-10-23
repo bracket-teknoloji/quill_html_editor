@@ -71,7 +71,7 @@ class _LokalDepoBakiyeRaporuViewState
   Widget build(BuildContext context) => PDFViewerView(
         filterBottomSheet: filterBottomSheet,
         title: "Lokal Depo Bakiye Raporu",
-        pdfData: viewModel.pdfModel);
+        pdfData: viewModel.pdfModel,);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -88,7 +88,7 @@ class _LokalDepoBakiyeRaporuViewState
                 child: Observer(
                     builder: (_) => Switch.adaptive(
                         value: viewModel.sifirHaricValue,
-                        onChanged: (value) => viewModel.setSifirHaric(value))),
+                        onChanged: (value) => viewModel.setSifirHaric(value),),),
               ),
               Row(
                 children: [
@@ -100,7 +100,7 @@ class _LokalDepoBakiyeRaporuViewState
                       suffixMore: true,
                       onTap: () async {
                         final result = await Get.toNamed("/mainPage/stokListesi",
-                            arguments: true);
+                            arguments: true,);
                         if (result != null) {
                           stokController.text = result.stokKodu ?? "";
                           viewModel.pdfModel.dicParams?.stokKodu =
@@ -118,7 +118,7 @@ class _LokalDepoBakiyeRaporuViewState
                       final result = await bottomSheetDialogManager
                           .showBottomSheetDialog(context,
                               title: "Depo",
-                              children: viewModel.bottomSheetList);
+                              children: viewModel.bottomSheetList,);
                       if (result != null) {
                         depoController.text = result ?? "";
                         viewModel.pdfModel.dicParams?.depoKodlari =
@@ -126,7 +126,7 @@ class _LokalDepoBakiyeRaporuViewState
                       }
                     },
                     suffixMore: true,
-                  )),
+                  ),),
                 ],
               ),
               CustomTextField(
@@ -157,7 +157,7 @@ class _LokalDepoBakiyeRaporuViewState
                         readOnly: true,
                         suffixMore: true,
                         onTap: () async =>
-                            await getGrupKodu(0, grupKodlariController))),
+                            await getGrupKodu(0, grupKodlariController),),),
                 Expanded(
                     child: CustomTextField(
                         labelText: "Kod 1",
@@ -165,8 +165,8 @@ class _LokalDepoBakiyeRaporuViewState
                         readOnly: true,
                         suffixMore: true,
                         onTap: () async =>
-                            await getGrupKodu(1, kod1Controller)))
-              ]),
+                            await getGrupKodu(1, kod1Controller),),),
+              ],),
               Row(children: [
                 Expanded(
                     child: CustomTextField(
@@ -175,7 +175,7 @@ class _LokalDepoBakiyeRaporuViewState
                         readOnly: true,
                         suffixMore: true,
                         onTap: () async =>
-                            await getGrupKodu(2, kod2Controller))),
+                            await getGrupKodu(2, kod2Controller),),),
                 Expanded(
                     child: CustomTextField(
                         labelText: "Kod 3",
@@ -183,8 +183,8 @@ class _LokalDepoBakiyeRaporuViewState
                         readOnly: true,
                         suffixMore: true,
                         onTap: () async =>
-                            await getGrupKodu(3, kod3Controller)))
-              ]),
+                            await getGrupKodu(3, kod3Controller),),),
+              ],),
               Row(children: [
                 Expanded(
                     child: CustomTextField(
@@ -193,7 +193,7 @@ class _LokalDepoBakiyeRaporuViewState
                         readOnly: true,
                         suffixMore: true,
                         onTap: () async =>
-                            await getGrupKodu(4, kod4Controller))),
+                            await getGrupKodu(4, kod4Controller),),),
                 Expanded(
                     child: CustomTextField(
                         labelText: "Kod 5",
@@ -201,26 +201,26 @@ class _LokalDepoBakiyeRaporuViewState
                         readOnly: true,
                         suffixMore: true,
                         onTap: () async =>
-                            await getGrupKodu(5, kod5Controller)))
-              ]),
+                            await getGrupKodu(5, kod5Controller),),),
+              ],),
               ElevatedButton(
                       onPressed: () {
                         viewModel.setFuture();
                         Get.back();
                       },
-                      child: const Text("Uygula"))
-                  .paddingAll(UIHelper.lowSize)
+                      child: const Text("Uygula"),)
+                  .paddingAll(UIHelper.lowSize),
             ],
           ),
-        ));
+        ),);
     return Future.value(viewModel.futureController.value);
   }
 
   void infoDialog() => dialogManager.showInfoDialog(
-      "Kodları noktalı Virgül (' ; ') ile ayırarak, aralarında boşluk bırakmadan yazınız.\nÖrnek: 01;02;03");
+      "Kodları noktalı Virgül (' ; ') ile ayırarak, aralarında boşluk bırakmadan yazınız.\nÖrnek: 01;02;03",);
 
   Future<String?> getGrupKodu(
-      int grupNo, TextEditingController? controller) async {
+      int grupNo, TextEditingController? controller,) async {
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: "STOK", grupNo: -1);
     }
@@ -229,12 +229,12 @@ class _LokalDepoBakiyeRaporuViewState
         .toList()
         .cast<BaseGrupKoduModel>()
         .map((e) => BottomSheetModel(
-            title: e.grupKodu ?? "", onTap: () => Get.back(result: e)))
+            title: e.grupKodu ?? "", onTap: () => Get.back(result: e),),)
         .toList()
         .cast<BottomSheetModel>();
     // ignore: use_build_context_synchronously
     final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-        title: "Grup Kodu", children: bottomSheetList);
+        title: "Grup Kodu", children: bottomSheetList,);
     if (result != null) {
       controller?.text = result.grupKodu ?? "";
       switch (grupNo) {

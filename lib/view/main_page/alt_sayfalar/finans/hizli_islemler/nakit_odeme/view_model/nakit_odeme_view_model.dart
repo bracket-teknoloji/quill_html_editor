@@ -116,7 +116,7 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getSiradakiKod() async {
     final result = await networkManager.dioGet<BaseSiparisEditModel>(
-        path: ApiUrls.getSiradakiBelgeNo, bodyModel: BaseSiparisEditModel(), showLoading: true, queryParameters: {"Seri": model.belgeNo ?? "", "BelgeTipi": "TH", "EIrsaliye": "H"});
+        path: ApiUrls.getSiradakiBelgeNo, bodyModel: BaseSiparisEditModel(), showLoading: true, queryParameters: {"Seri": model.belgeNo ?? "", "BelgeTipi": "TH", "EIrsaliye": "H"},);
     if (result.data is List) {
       setBelgeNo((result.data.first as BaseSiparisEditModel).belgeNo);
     }
@@ -142,7 +142,7 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getDovizler() async {
     final result = await networkManager.dioGet<DovizKurlariModel>(
-        path: ApiUrls.getDovizKurlari, bodyModel: DovizKurlariModel(), showLoading: true, queryParameters: {"EkranTipi": "D", "DovizKodu": model.dovizTipi, "tarih": model.tarih.toDateString});
+        path: ApiUrls.getDovizKurlari, bodyModel: DovizKurlariModel(), showLoading: true, queryParameters: {"EkranTipi": "D", "DovizKodu": model.dovizTipi, "tarih": model.tarih.toDateString},);
     if (result.data is List) {
       setDovizKurlariListesi(result.data.cast<DovizKurlariModel>());
     }

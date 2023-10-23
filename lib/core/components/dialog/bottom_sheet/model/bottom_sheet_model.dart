@@ -14,5 +14,5 @@ class BottomSheetModel {
       this.icon,
       this.value,
       this.onTap,
-      this.iconWidget});
+      this.iconWidget,});
 }

@@ -109,7 +109,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                     viewModel.setGrupKodu(result.whereType<BaseGrupKoduModel>().toList());
                                     grupKoduController.text = viewModel.stokBottomSheetModel.arrGrupKodu?.map((e) => e.grupAdi).join(",") ?? "";
                                   }
-                                })),
+                                },),),
                         Expanded(
                             child: CustomTextField(
                                 suffixMore: true,
@@ -122,8 +122,8 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                     viewModel.changeArrKod1(result.whereType<BaseGrupKoduModel>().toList());
                                     kod1Controller.text = viewModel.stokBottomSheetModel.arrKod1?.map((e) => e.grupAdi).join(",") ?? "";
                                   }
-                                }))
-                      ]),
+                                },),),
+                      ],),
                       Row(children: [
                         Expanded(
                             child: CustomTextField(
@@ -137,7 +137,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                     viewModel.changeArrKod2(result.whereType<BaseGrupKoduModel>().toList());
                                     kod2Controller.text = viewModel.stokBottomSheetModel.arrKod2?.map((e) => e.grupAdi).join(",") ?? "";
                                   }
-                                })),
+                                },),),
                         Expanded(
                             child: CustomTextField(
                                 suffixMore: true,
@@ -150,8 +150,8 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                     viewModel.changeArrKod3(result.whereType<BaseGrupKoduModel>().toList());
                                     kod3Controller.text = viewModel.stokBottomSheetModel.arrKod3?.map((e) => e.grupAdi).join(",") ?? "";
                                   }
-                                }))
-                      ]),
+                                },),),
+                      ],),
                       Row(children: [
                         Expanded(
                             child: CustomTextField(
@@ -165,7 +165,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                     viewModel.changeArrKod4(result.whereType<BaseGrupKoduModel>().toList());
                                     kod4Controller.text = viewModel.stokBottomSheetModel.arrKod4?.map((e) => e.grupAdi).join(",") ?? "";
                                   }
-                                })),
+                                },),),
                         Expanded(
                             child: CustomTextField(
                                 suffixMore: true,
@@ -178,31 +178,31 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                     viewModel.changeArrKod5(result.whereType<BaseGrupKoduModel>().toList());
                                     kod5Controller.text = viewModel.stokBottomSheetModel.arrKod5?.map((e) => e.grupAdi).join(",") ?? "";
                                   }
-                                }))
-                      ]),
+                                },),),
+                      ],),
                       ElevatedButton(
                               onPressed: () {
                                 Get.back();
                                 resetData();
                               },
-                              child: const Text("Filtrele"))
-                          .paddingAll(UIHelper.lowSize)
+                              child: const Text("Filtrele"),)
+                          .paddingAll(UIHelper.lowSize),
                     ],
-                  ).paddingAll(UIHelper.lowSize));
+                  ).paddingAll(UIHelper.lowSize),);
             },
-            icon: const Icon(Icons.filter_alt_outlined)),
+            icon: const Icon(Icons.filter_alt_outlined),),
         IconButton(
             onPressed: () async {
               final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                   title: "Sırala",
                   children:
-                      List.generate(viewModel.siralamaMap.length, (index) => BottomSheetModel(title: viewModel.siralamaMap.keys.toList()[index], value: viewModel.siralamaMap.values.toList()[index])));
+                      List.generate(viewModel.siralamaMap.length, (index) => BottomSheetModel(title: viewModel.siralamaMap.keys.toList()[index], value: viewModel.siralamaMap.values.toList()[index])),);
               if (result != null) {
                 viewModel.setSiralama(result);
                 resetData();
               }
             },
-            icon: const Icon(Icons.sort_by_alpha_outlined)),
+            icon: const Icon(Icons.sort_by_alpha_outlined),),
         IconButton(onPressed: () async {}, icon: const Icon(Icons.more_vert_outlined)),
         IconButton(onPressed: () => Get.back(result: true), icon: Icon(Icons.check_circle, color: UIHelper.primaryColor)),
       ],
@@ -216,7 +216,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
               if (result != null) {
                 resetData();
               }
-            }));
+            },),);
 
   Padding body() => Padding(
       padding: UIHelper.lowPadding,
@@ -237,7 +237,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                     onPressed: () {
                       viewModel.setSearchText(_searchTextController.text);
                       resetData();
-                    }),
+                    },),
                 IconButton(
                     icon: const Icon(Icons.qr_code_2_outlined),
                     onPressed: () async {
@@ -247,7 +247,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                         viewModel.setSearchText(result);
                         resetData();
                       }
-                    })
+                    },),
               ],
             ),
           ),
@@ -311,7 +311,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                               const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(stok?.seriCikislardaAcik == true),
                                               ColorfulBadge(
                                                       label: Text("Dövizli ${(StaticVariables.instance.isMusteriSiparisleri ? stok?.satisDovizAdi : stok?.alisDovizAdi) ?? ""}"),
-                                                      badgeColorEnum: BadgeColorEnum.dovizli)
+                                                      badgeColorEnum: BadgeColorEnum.dovizli,)
                                                   .yetkiVarMi(stok?.satDovTip != null || stok?.alisDovTip != null),
                                               const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap).yetkiVarMi(stok?.yapilandirmaAktif == true),
                                               const ColorfulBadge(label: Text("Kilitli (Genel)"), badgeColorEnum: BadgeColorEnum.kilitli).yetkiVarMi(stok?.kilitGenel == "E"),
@@ -324,7 +324,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                     ),
                                   );
                                 }
-                              }))),
+                              },),),),
             ),
           ),
         ],

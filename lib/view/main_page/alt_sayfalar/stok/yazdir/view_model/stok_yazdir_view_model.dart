@@ -30,7 +30,7 @@ abstract class _StokYazdirViewModelBase with Store {
   void changeStokSecildigindeYazdir(bool value) {
     stokSecildigindeYazdir = value;
     CacheManager.setProfilParametre(CacheManager.getProfilParametre
-        .copyWith(stokSecildigindeYazdir: value));
+        .copyWith(stokSecildigindeYazdir: value),);
   }
 
   @action
@@ -49,7 +49,7 @@ abstract class _StokYazdirViewModelBase with Store {
   @action
   void setYapilandirmaKodu(String? yapilandirmaKodu) {
     printModel = printModel.copyWith(
-        dicParams: printModel.dicParams?.copyWith(yapkod: yapilandirmaKodu));
+        dicParams: printModel.dicParams?.copyWith(yapkod: yapilandirmaKodu),);
     if (yapilandirmaKodu == null) {
       showYapilandirma = false;
     } else {
@@ -71,19 +71,19 @@ abstract class _StokYazdirViewModelBase with Store {
 
   @action
   void setMiktar(int? miktar) => printModel = printModel.copyWith(
-      dicParams: printModel.dicParams?.copyWith(miktar: miktar));
+      dicParams: printModel.dicParams?.copyWith(miktar: miktar),);
 
   @action
   void increaseMiktar() => printModel = printModel.copyWith(
       dicParams: printModel.dicParams
-          ?.copyWith(miktar: (printModel.dicParams?.miktar ?? 0) + 1));
+          ?.copyWith(miktar: (printModel.dicParams?.miktar ?? 0) + 1),);
 
   @action
   void decreaseMiktar() {
     if (printModel.dicParams?.miktar == 0) return;
     printModel = printModel.copyWith(
         dicParams: printModel.dicParams
-            ?.copyWith(miktar: (printModel.dicParams?.miktar ?? 0) - 1));
+            ?.copyWith(miktar: (printModel.dicParams?.miktar ?? 0) - 1),);
   }
 
   @action
@@ -104,7 +104,7 @@ abstract class _StokYazdirViewModelBase with Store {
   @action
   void setStokKodu(StokListesiModel? model) {
     printModel = printModel.copyWith(
-        dicParams: printModel.dicParams?.copyWith(stokKodu: model?.stokKodu));
+        dicParams: printModel.dicParams?.copyWith(stokKodu: model?.stokKodu),);
     stokListesiModel = model;
   }
 }

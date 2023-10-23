@@ -161,14 +161,14 @@ class DialogManager {
   void showGridViewDialog(Widget body) => _baseDialog(body: body, onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
   void showCariGridViewDialog(CariListesiModel? model, [IslemTipiEnum? tip]) => _baseDialog(
-          body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: tip ?? IslemTipiEnum.cari), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader)
+          body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: tip ?? IslemTipiEnum.cari), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader,)
       .show();
 
   Future<dynamic> showKasaGridViewDialog(KasaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async => await _baseDialog(
           body: CustomAnimatedGridView<KasaListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.kasa, title: "Kasa İşlemleri", onSelected: onSelected),
           onOk: () {},
           btnOkText: "İptal",
-          dialogType: DialogType.noHeader)
+          dialogType: DialogType.noHeader,)
       .show();
 
   void showCariRaporlarGridViewDialog() =>
@@ -181,7 +181,7 @@ class DialogManager {
           body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.siparis, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
           onOk: () {},
           btnOkText: "İptal",
-          dialogType: DialogType.noHeader)
+          dialogType: DialogType.noHeader,)
       .show();
 
   void showExitDialog() => _baseDialog(
@@ -213,7 +213,7 @@ class DialogManager {
           width: 50,
           child: LinearProgressIndicator(
             color: Colors.red,
-          )),
+          ),),
     );
 
   AlertDialog listTileDialog({required String title}) {
@@ -235,7 +235,7 @@ class DialogManager {
             leading: IconHelper.smallIcon("User-Account"),
             onTap: () {
               Get.back(result: {"company": "DEMO", "user": "demo", "password": "demo"});
-            }),
+            },),
         ...List.generate(
           box.length,
           (index) {
@@ -250,11 +250,11 @@ class DialogManager {
                     "company": title,
                     "user": preferences.get(title)?[1] ?? "",
                     "password": preferences.get(title)?[2] ?? "",
-                  }, closeOverlays: true);
-                });
+                  }, closeOverlays: true,);
+                },);
           },
         ),
-      ]),
+      ],),
       actions: [
         Divider(
           color: UIHelper.primaryColor.withOpacity(0.3),
@@ -272,7 +272,7 @@ class DialogManager {
                         "/addCompany",
                       );
                     },
-                    child: const Text("Firmaları Düzenle")),
+                    child: const Text("Firmaları Düzenle"),),
               ),
               Expanded(
                 child: TextButton(
@@ -283,11 +283,11 @@ class DialogManager {
                     child: const Text(
                       "İptal",
                       textAlign: TextAlign.justify,
-                    )),
+                    ),),
               ),
             ],
           ),
-        )
+        ),
       ],
     );
   }
@@ -333,8 +333,8 @@ class DialogManager {
                           ..firma = "demo"
                           ..email = "demo@netfect.com",
                         username: "demo",
-                        password: "demo"));
-              }),
+                        password: "demo",),);
+              },),
           ...List.generate(
             CacheManager.accountsBox.length,
             (index) {
@@ -346,11 +346,11 @@ class DialogManager {
                   onTap: () {
                     Get.back(
                         result: LoginDialogModel(account: CacheManager.accountsBox.getAt(index), username: preferences.get(title)?[1] ?? "", password: preferences.get(title)?[2] ?? ""),
-                        closeOverlays: true);
-                  });
+                        closeOverlays: true,);
+                  },);
             },
           ),
-        ])).show();
+        ],),).show();
   }
 
   ///* Eğer Body eklersen Title ve Desc Kullanılmaz
@@ -367,7 +367,7 @@ class DialogManager {
       Color? btnOkColor,
       Color? btnCancelColor,
       Widget? customHeader,
-      Widget? body}) => AwesomeDialog(
+      Widget? body,}) => AwesomeDialog(
         keyboardAware: true,
         //* Standardı 15 olduğu için ve null kabul etmediği için 15 verdim.
         bodyHeaderDistance: dialogType != DialogType.noHeader ? 15 : UIHelper.lowSize,
@@ -409,5 +409,5 @@ class DialogManager {
         btnCancelColor: btnCancelColor ?? Colors.grey,
         dismissOnBackKeyPress: false,
         dismissOnTouchOutside: false,
-        body: body);
+        body: body,);
 }

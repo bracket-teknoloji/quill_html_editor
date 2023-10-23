@@ -95,7 +95,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
           return CustomTextField(labelText: "Ara", controller: searchBarController, onChanged: (p0) => viewModel.setSearchKey(p0), focusNode: focusNode);
         }
         return Text("${widget.siparisTipiEnum.getName} (${viewModel.kalemListComputed?.length ?? 0})");
-      }),
+      },),
       actions: [
         IconButton(onPressed: () {
           viewModel.setSearchBar();
@@ -110,7 +110,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
             return const Icon(Icons.search_off_outlined);
           }
           return const Icon(Icons.search_outlined);
-        })),
+        },),),
       ],
       bottom: AppBarPreferedSizedBottom(
         children: [
@@ -123,7 +123,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
             onPressed: () async {
               final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                   title: "Sırala",
-                  children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])));
+                  children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])),);
               if (result != null) {
                 viewModel.setSiralama(result);
                 viewModel.resetSayfa();
@@ -160,8 +160,8 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                       return siparisDurumListTile(kalemModel, context);
                     }
                     return Observer(builder: (_) => Visibility(visible: viewModel.dahaVarMi, child: const Center(child: CircularProgressIndicator.adaptive())));
-                  }),
-      ));
+                  },),
+      ),);
 
   Card siparisDurumListTile(KalemModel? kalemModel, BuildContext context) => Card(
       child: ListTile(
@@ -186,7 +186,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                 Text("Döviz kuru: ${kalemModel?.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
                 Text("Döviz cinsi: ${(kalemModel?.miktar ?? 0) - (kalemModel?.kalan ?? 0)}"),
               ].map((e) => SizedBox(width: width / 2.4, child: e)).toList(),
-            )
+            ),
           ],
         ),
         onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: [
@@ -196,11 +196,11 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
               onTap: () {
                 Get.back();
                 return Get.toNamed("mainPage/siparisEdit",
-                    arguments: BaseEditModel(model: SiparisEditRequestModel.fromKalemModel(kalemModel!), baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum));
-              }),
+                    arguments: BaseEditModel(model: SiparisEditRequestModel.fromKalemModel(kalemModel!), baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum),);
+              },),
           BottomSheetModel(title: "Stok İşlemleri", iconWidget: Icons.list_alt_outlined, onTap: () => dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = kalemModel?.stokKodu ?? "")),
           BottomSheetModel(title: "Cari İşlemleri", iconWidget: Icons.person_2_outlined, onTap: () => dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = kalemModel?.cariKodu ?? "")),
-        ]),
+        ],),
         onLongPress: () => dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = kalemModel?.cariKodu ?? ""),
       ),
     );
@@ -303,7 +303,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                         final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context,
                             title: "Görünecek Alanlar",
                             children: List.generate(viewModel.gorunecekAlanlarMap.length,
-                                (index) => BottomSheetModel(title: viewModel.gorunecekAlanlarMap.keys.toList()[index], value: viewModel.gorunecekAlanlarMap.keys.toList()[index])));
+                                (index) => BottomSheetModel(title: viewModel.gorunecekAlanlarMap.keys.toList()[index], value: viewModel.gorunecekAlanlarMap.keys.toList()[index]),),);
                         if (result != null && result is List) {
                           gorunecekAlanlarController.text = result.map((e) => e.toString()).join(", ");
                           for (var item in result) {
@@ -329,25 +329,25 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                   childrenTitleList: const ["Tümü", "Kalanlar", "Tamamlananlar"],
                   childrenValueList: const [1, 2, 3],
                   filterOnChanged: (int? index) => viewModel.setKarsilanmaGroupValue(index ?? 0),
-                )),
+                ),),
               Observer(builder: (_) => SlideControllerWidget(
                   title: "Sipariş Durumu",
                   groupValue: viewModel.durumGroupValue,
                   childrenTitleList: const ["Tümü", "Açık", "Kapalı"],
                   childrenValueList: const [1, 2, 3],
                   filterOnChanged: (int? index) => viewModel.setDurumGroupValue(index ?? 0),
-                )),
+                ),),
               ElevatedButton(
                       onPressed: () {
                         viewModel.setKalemList(null);
                         getData();
                         Get.back();
                       },
-                      child: const Text("Uygula"))
-                  .paddingAll(UIHelper.lowSize)
+                      child: const Text("Uygula"),)
+                  .paddingAll(UIHelper.lowSize),
             ],
           ),
-        ));
+        ),);
   }
 
   Future<void> getData() async {

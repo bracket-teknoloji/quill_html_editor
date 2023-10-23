@@ -75,7 +75,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                 Get.back();
               }
             },
-            icon: const Icon(Icons.arrow_back_outlined)),
+            icon: const Icon(Icons.arrow_back_outlined),),
         title: const Text("Şirkete Giriş"),
       ),
       body: FutureBuilder(
@@ -123,7 +123,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                       decoration: const InputDecoration(
                                         suffixIcon: Icon(Icons.more_horiz_outlined),
                                       ),
-                                    )),
+                                    ),),
                                 CustomWidgetWithLabel(
                                     text: "Şube Kodu",
                                     child: TextFormField(
@@ -136,13 +136,13 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                       decoration: const InputDecoration(
                                         suffixIcon: Icon(Icons.more_horiz_outlined),
                                       ),
-                                    )),
+                                    ),),
                               ]
                                   .map((widget) => Padding(
                                         padding: context.padding.onlyBottomLow,
                                         child: widget,
-                                      ))
-                                  .toList()),
+                                      ),)
+                                  .toList(),),
                           context.sized.emptySizedHeightBoxLow,
                           ElevatedButton(
                             onPressed: () async {
@@ -157,8 +157,8 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   "VERITABANI": selected["Şirket"].toString(),
                                   "ISLETME_KODU": selected["İşletme"].toString(),
                                   "SUBE_KODU": selected["Şube"].toString(),
-                                  "content-type": "application/json"
-                                });
+                                  "content-type": "application/json",
+                                },);
                                 if (response.data != null) {
                                   final MainPageModel model = response.data[0];
                                   CacheManager.setAnaVeri(model);
@@ -167,7 +167,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   CacheManager.setLogout(true);
                                   Get.offAndToNamed("/mainPage");
                                   final result = await networkManager.dioPost<AccountModel>(
-                                      path: ApiUrls.saveUyeBilgileri, bodyModel: AccountModel(), showError: false, data: CacheManager.getHesapBilgileri?.toJson());
+                                      path: ApiUrls.saveUyeBilgileri, bodyModel: AccountModel(), showError: false, data: CacheManager.getHesapBilgileri?.toJson(),);
                                   if (result.success == true) {
                                     log("Session Başarılı");
                                   }
@@ -186,7 +186,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                         ],
                       ),
                     ),
-                  )),
+                  ),),
             );
           } else {
             return Center(
@@ -198,7 +198,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                 context.sized.emptySizedHeightBoxLow,
                 Text("Şirketler yükleniyor.", style: theme.textTheme.bodySmall),
               ],
-            ));
+            ),);
           }
         },
       ),
@@ -221,7 +221,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                 Get.back();
               },
             ),
-        ));
+        ),);
   }
 
   sirketDialog(BuildContext context) {
@@ -246,7 +246,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                 Get.back();
               },
             ),
-        ));
+        ),);
   }
 
   isletmeDialog(BuildContext context) {
@@ -269,7 +269,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                 Get.back();
               },
             ),
-        ));
+        ),);
   }
 
   dioGetData() async {

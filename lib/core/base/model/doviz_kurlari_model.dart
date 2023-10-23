@@ -9,7 +9,7 @@ part "doviz_kurlari_model.g.dart";
 abstract class DovizKurlariModel with _$DovizKurlariModel, NetworkManagerMixin {
   DovizKurlariModel._();
   @JsonSerializable(
-      createFactory: true, explicitToJson: true, createToJson: true)
+      createFactory: true, explicitToJson: true, createToJson: true,)
   factory DovizKurlariModel({
     DateTime? tarih,
     int? sira,
@@ -37,7 +37,7 @@ abstract class DovizKurlariRequestModel
       createFactory: true,
       explicitToJson: true,
       createToJson: true,
-      fieldRename: FieldRename.pascal)
+      fieldRename: FieldRename.pascal,)
   factory DovizKurlariRequestModel({
     DateTime? tarih,
     int? sira,
@@ -51,7 +51,7 @@ abstract class DovizKurlariRequestModel
   factory DovizKurlariRequestModel.fromJson(Map<String, dynamic> json) =>
       _$DovizKurlariRequestModelFromJson(json);
   factory DovizKurlariRequestModel.fromDovizKurlariModel(
-          DovizKurlariModel model) =>
+          DovizKurlariModel model,) =>
       DovizKurlariRequestModel(
         alis: model.dovAlis,
         satis: model.dovSatis,

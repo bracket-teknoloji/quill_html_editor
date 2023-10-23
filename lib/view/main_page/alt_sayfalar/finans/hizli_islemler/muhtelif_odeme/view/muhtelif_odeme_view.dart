@@ -145,7 +145,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                   _belgeNoController.text = viewModel.model.belgeNo ?? "";
                 },
                 icon: const Icon(Icons.add_outlined),
-              )),
+              ),),
           Observer(builder: (_) => Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -177,7 +177,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                   ),
                 ),
               ],
-            )),
+            ),),
           Observer(builder: (_) => Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -220,10 +220,10 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                       suffix: IconButton(
                         onPressed: () async => await getDovizDialog(),
                         icon: const Icon(Icons.more_horiz_outlined),
-                      )),
+                      ),),
                 ).yetkiVarMi(viewModel.model.dovizTipi != null && viewModel.model.dovizTipi != 0),
               ],
-            )),
+            ),),
           Observer(builder: (_) => Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -262,7 +262,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                   ),
                 ),
               ],
-            )),
+            ),),
           Observer(builder: (_) => Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -302,7 +302,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                   ),
                 ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
               ],
-            )),
+            ),),
           Observer(builder: (_) => Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -330,7 +330,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                         await viewModel.getMuhaRefList();
                       }
                       final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
-                          title: "Referans Kodu", children: viewModel.muhaRefList!.map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e)).toList());
+                          title: "Referans Kodu", children: viewModel.muhaRefList!.map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e)).toList(),);
                       if (result is MuhasebeReferansModel) {
                         _referansKoduController.text = result.tanimi ?? "";
                         viewModel.setReferansKodu(result.kodu);
@@ -339,13 +339,13 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                   ),
                 ).yetkiVarMi(yetkiController.referansKodu(viewModel.showReferansKodu)),
               ],
-            )),
+            ),),
           CustomTextField(
             labelText: "Kasa Har. Açıklama",
             controller: _aciklamaController,
             onChanged: (value) => viewModel.setAciklama(value),
           ),
-        ]).paddingAll(UIHelper.lowSize),
+        ],).paddingAll(UIHelper.lowSize),
       ),
     );
 
@@ -386,20 +386,20 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
         BottomSheetModel(
             title: "Alış: ${viewModel.dovizKurlariListesi?.first.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.first.dovAlis,
-            iconWidget: Icons.calculate_outlined),
+            iconWidget: Icons.calculate_outlined,),
         BottomSheetModel(
             title: "Satış: ${viewModel.dovizKurlariListesi?.first.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.first.dovSatis,
-            iconWidget: Icons.calculate_outlined),
+            iconWidget: Icons.calculate_outlined,),
         BottomSheetModel(
             title: "Efektif Alış: ${viewModel.dovizKurlariListesi?.first.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.first.effAlis,
-            iconWidget: Icons.calculate_outlined),
+            iconWidget: Icons.calculate_outlined,),
         BottomSheetModel(
             title: "Efektif Satış: ${viewModel.dovizKurlariListesi?.first.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.first.effSatis,
-            iconWidget: Icons.calculate_outlined),
-      ]);
+            iconWidget: Icons.calculate_outlined,),
+      ],);
       if (result is double) {
         _dovizKuruController.text = result.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
         if (_tutarController.text != "") {

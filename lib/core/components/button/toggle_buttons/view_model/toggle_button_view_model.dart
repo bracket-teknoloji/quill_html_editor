@@ -13,7 +13,7 @@ abstract class _ToggleButtonViewModelBase with Store {
     "Tahsil Edilecek",
     "Ödeme Yapılacak",
     "Sıfır Bakiye",
-    "Bakiyeli"
+    "Bakiyeli",
   ];
   @observable
   ObservableList<bool> isSelected =

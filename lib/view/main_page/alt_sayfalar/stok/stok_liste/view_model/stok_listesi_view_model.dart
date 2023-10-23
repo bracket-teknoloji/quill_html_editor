@@ -53,7 +53,7 @@ abstract class _StokListesiViewModelBase with Store {
         arrKod2: null,
         arrKod3: null,
         arrKod4: null,
-        arrKod5: null);
+        arrKod5: null,);
   }
 
   @computed
@@ -107,11 +107,11 @@ abstract class _StokListesiViewModelBase with Store {
     if (resimleriGoster == "H") {
       resimleriGoster = "E";
       CacheManager.setProfilParametre(
-          CacheManager.getProfilParametre.copyWith(stokResimleriGoster: true));
+          CacheManager.getProfilParametre.copyWith(stokResimleriGoster: true),);
     } else {
       resimleriGoster = "H";
       CacheManager.setProfilParametre(
-          CacheManager.getProfilParametre.copyWith(stokResimleriGoster: false));
+          CacheManager.getProfilParametre.copyWith(stokResimleriGoster: false),);
     }
   }
 

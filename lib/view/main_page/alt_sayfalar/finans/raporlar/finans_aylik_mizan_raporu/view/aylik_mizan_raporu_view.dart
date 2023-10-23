@@ -67,12 +67,12 @@ class _AylikMizanRaporuViewState extends BaseState<AylikMizanRaporuView> {
                             Get.back();
                           }
                         },
-                        child: const Text("Uygula"))
-                    .paddingAll(UIHelper.lowSize)
+                        child: const Text("Uygula"),)
+                    .paddingAll(UIHelper.lowSize),
               ],
             ),
           ),
-        ));
+        ),);
     return Future.value(viewModel.futureController.value);
   }
 }

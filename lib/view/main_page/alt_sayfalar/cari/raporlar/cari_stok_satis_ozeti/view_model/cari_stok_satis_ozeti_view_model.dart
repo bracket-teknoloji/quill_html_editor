@@ -13,19 +13,19 @@ class CariStokSatisOzetiViewModel = _CariStokSatisOzetiViewModelBase
 abstract class _CariStokSatisOzetiViewModelBase with Store {
   final List<BottomSheetModel> bottomSheetModelList = <BottomSheetModel>[
     BottomSheetModel(
-        title: "Tarih (Artan)", onTap: () => Get.back(result: "TARIH_AZ")),
+        title: "Tarih (Artan)", onTap: () => Get.back(result: "TARIH_AZ"),),
     BottomSheetModel(
-        title: "Tarih (Azalan)", onTap: () => Get.back(result: "TARIH_ZA")),
+        title: "Tarih (Azalan)", onTap: () => Get.back(result: "TARIH_ZA"),),
     BottomSheetModel(
         title: "Stok Kodu (A-Z)",
-        onTap: () => Get.back(result: "STOK_KODU_AZ")),
+        onTap: () => Get.back(result: "STOK_KODU_AZ"),),
     BottomSheetModel(
         title: "Stok Kodu (Z-A)",
-        onTap: () => Get.back(result: "STOK_KODU_ZA")),
+        onTap: () => Get.back(result: "STOK_KODU_ZA"),),
     BottomSheetModel(
-        title: "Stok Adı (A-Z)", onTap: () => Get.back(result: "STOK_ADI_AZ")),
+        title: "Stok Adı (A-Z)", onTap: () => Get.back(result: "STOK_ADI_AZ"),),
     BottomSheetModel(
-        title: "Stok Adı (Z-A)", onTap: () => Get.back(result: "STOK_ADI_ZA")),
+        title: "Stok Adı (Z-A)", onTap: () => Get.back(result: "STOK_ADI_ZA"),),
   ];
 
   final List<String> donemTipiList = [
@@ -38,7 +38,7 @@ abstract class _CariStokSatisOzetiViewModelBase with Store {
     "SON_3_AY",
     "BU_YIL",
     "GECEN_YIL",
-    "OZEL"
+    "OZEL",
   ];
 
   @action

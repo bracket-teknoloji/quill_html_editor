@@ -56,6 +56,6 @@ class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> 
                 ),
                 // Flexible(child: (widget.altMenuVarMi ?? false) ? const Icon(Icons.expand_more, size: 15) : const SizedBox())
               ],
-            )),
+            ),),
       );
 }

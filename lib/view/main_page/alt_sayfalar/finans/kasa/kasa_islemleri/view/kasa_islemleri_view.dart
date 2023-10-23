@@ -96,7 +96,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
           } else {
             return AppBarTitle(title: "Kasa İşlemleri", subtitle: "${viewModel.getKasaIslemleriListesi?.length ?? 0}");
           }
-        }),
+        },),
         actions: [
           IconButton(
             onPressed: () => viewModel.changeSearchBar(),
@@ -105,7 +105,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
           IconButton(
             onPressed: filter,
             icon: Observer(builder: (_) => Icon(Icons.filter_alt_outlined, color: viewModel.getAnyFilter ? UIHelper.primaryColor : null)),
-          )
+          ),
         ],
       );
 
@@ -115,7 +115,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
             await dialogManager.showKasaGridViewDialog(null, onSelected: (p0) => p0 ? viewModel.resetPage() : null);
             // viewModel.resetPage();
           },
-        ));
+        ),);
 
   Column body() => Column(
         children: [
@@ -127,7 +127,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                     await viewModel.resetPage();
                   },
                   baslangicTarihiController: baslangicTarihiController,
-                  bitisTarihiController: bitisTarihiController)
+                  bitisTarihiController: bitisTarihiController,)
               .paddingSymmetric(horizontal: UIHelper.lowSize),
           Expanded(
             child: RefreshIndicator.adaptive(
@@ -152,10 +152,10 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                                     kasaIslemleriModel: item,
                                     onDeleted: (deneme) {
                                       viewModel.resetPage();
-                                    });
+                                    },);
                               }
                             },
-                          )),
+                          ),),
             ),
           ),
         ],
@@ -167,7 +167,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
             const Text("Gelir"),
             Observer(
                 builder: (_) =>
-                    Text("${(viewModel.paramData?["TOPLAM_GELIR"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.green)))
+                    Text("${(viewModel.paramData?["TOPLAM_GELIR"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.green)),),
           ],
           onPressed: () {
             if (viewModel.hesapTipiGroupValue == "G") {
@@ -183,7 +183,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
             const Text("Gider"),
             Observer(
                 builder: (_) =>
-                    Text("${(viewModel.paramData?["TOPLAM_GIDER"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red)))
+                    Text("${(viewModel.paramData?["TOPLAM_GIDER"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red)),),
           ],
           onPressed: () {
             if (viewModel.hesapTipiGroupValue == "C") {
@@ -194,7 +194,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
             viewModel.resetPage();
           },
         ),
-      ]));
+      ],),);
 
   Future<void> filter() async {
     await bottomSheetDialogManager.showBottomSheetDialog(context,
@@ -207,7 +207,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                     viewModel.setHesapTipi(viewModel.hesapTipiMap.values.toList()[index ?? 0]);
                   },
                   childrenValueList: viewModel.hesapTipiMap.values.toList(),
-                  groupValue: viewModel.hesapTipiGroupValue)),
+                  groupValue: viewModel.hesapTipiGroupValue,),),
             CustomTextField(
               labelText: "Kasa",
               controller: kasaController,
@@ -217,7 +217,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
               onTap: () async {
                 final List<KasaList>? kasaList = parametreModel.kasaList;
                 final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                    title: "Kasa Seçiniz", children: List.generate(kasaList?.length ?? 0, (index) => BottomSheetModel(title: kasaList?[index].kasaTanimi ?? "", value: kasaList?[index])));
+                    title: "Kasa Seçiniz", children: List.generate(kasaList?.length ?? 0, (index) => BottomSheetModel(title: kasaList?[index].kasaTanimi ?? "", value: kasaList?[index])),);
                 if (result is KasaList) {
                   viewModel.setKasaKodu(result);
                   kasaController.text = result.kasaTanimi ?? "";
@@ -238,7 +238,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                       dialogManager.showInfoDialog("Cari kodu boş olduğu için bu işlem gerçekleştirilemiyor.");
                     }
                   },
-                  icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor)),
+                  icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),),
               onTap: () async {
                 final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                 if (result is CariListesiModel) {
@@ -257,7 +257,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                 final List<PlasiyerList>? plasiyerList = parametreModel.plasiyerList;
                 final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                     title: "Plasiyer Seçiniz",
-                    children: List.generate(plasiyerList?.length ?? 0, (index) => BottomSheetModel(title: plasiyerList?[index].plasiyerAciklama ?? "", value: plasiyerList?[index])));
+                    children: List.generate(plasiyerList?.length ?? 0, (index) => BottomSheetModel(title: plasiyerList?[index].plasiyerAciklama ?? "", value: plasiyerList?[index])),);
                 if (result is PlasiyerList) {
                   viewModel.setPlasiyerKodu(result);
                   plasiyerController.text = result.plasiyerAciklama ?? "";
@@ -277,7 +277,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                           Get.back();
                           viewModel.resetPage();
                         },
-                        child: const Text("Temizle"))),
+                        child: const Text("Temizle"),),),
                 const SizedBox(width: 10),
                 Expanded(
                     child: ElevatedButton(
@@ -285,10 +285,10 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                           Get.back();
                           viewModel.resetPage();
                         },
-                        child: const Text("Uygula")))
+                        child: const Text("Uygula"),),),
               ],
-            ).paddingAll(UIHelper.lowSize)
+            ).paddingAll(UIHelper.lowSize),
           ],
-        ).paddingAll(UIHelper.lowSize));
+        ).paddingAll(UIHelper.lowSize),);
   }
 }

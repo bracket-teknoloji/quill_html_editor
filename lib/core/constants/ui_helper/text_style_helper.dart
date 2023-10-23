@@ -6,7 +6,7 @@ class TextStyleHelper {
   //* Title
   //*
   static final TextStyle title = TextStyle(
-      fontSize: 18, fontWeight: FontWeight.bold, color: UIHelper.primaryColor);
+      fontSize: 18, fontWeight: FontWeight.bold, color: UIHelper.primaryColor,);
   static const TextStyle titleBlack =
       TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black);
   static const TextStyle titleWhite =
@@ -15,11 +15,11 @@ class TextStyleHelper {
   //* Subtitle
   //*
   static final TextStyle subtitle = TextStyle(
-      fontSize: 14, fontWeight: FontWeight.w400, color: UIHelper.primaryColor);
+      fontSize: 14, fontWeight: FontWeight.w400, color: UIHelper.primaryColor,);
   static final TextStyle subtitleBlack = TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.w400,
-      color: Colors.black.withOpacity(0.8));
+      color: Colors.black.withOpacity(0.8),);
   static const TextStyle subtitleWhite =
       TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.white);
 
@@ -28,9 +28,9 @@ class TextStyleHelper {
   static final TextStyle caption = TextStyle(
       fontSize: 12,
       fontWeight: FontWeight.normal,
-      color: UIHelper.primaryColor);
+      color: UIHelper.primaryColor,);
   static const TextStyle captionBlack = TextStyle(
-      fontSize: 12, fontWeight: FontWeight.normal, color: Colors.black);
+      fontSize: 12, fontWeight: FontWeight.normal, color: Colors.black,);
   static const TextStyle captionWhite = TextStyle(
-      fontSize: 12, fontWeight: FontWeight.normal, color: Colors.white);
+      fontSize: 12, fontWeight: FontWeight.normal, color: Colors.white,);
 }

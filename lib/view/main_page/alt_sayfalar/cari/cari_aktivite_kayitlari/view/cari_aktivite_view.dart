@@ -24,7 +24,7 @@ class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
             IconButton(
                 onPressed: () =>
                     CariAktiviteFiltreDialogManager.showAktiviteDialog(context),
-                icon: const Icon(Icons.filter_alt_outlined))
+                icon: const Icon(Icons.filter_alt_outlined),),
           ],
           bottom: PreferredSize(
               preferredSize: Size.fromHeight(height * 0.1),
@@ -32,8 +32,8 @@ class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
                   text: "Ara",
                   child: TextField(
                     decoration: InputDecoration(
-                        suffixIcon: Icon(Icons.search_outlined)),
-                  )).paddingAll(UIHelper.midSize)),
+                        suffixIcon: Icon(Icons.search_outlined),),
+                  ),).paddingAll(UIHelper.midSize),),
         ),
         body: SizedBox(
           height: height * 0.07,
@@ -47,6 +47,6 @@ class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
                     child: Text(
                       AppbarToggleButtonClass.liste[index].title,
                       softWrap: true,
-                    )).paddingAll(UIHelper.lowSize)),
-        ));
+                    ),).paddingAll(UIHelper.lowSize),),
+        ),);
 }

@@ -16,7 +16,7 @@ class RaporFiltreDateTimeBottomSheetView extends StatefulWidget {
   final bool? showBugunFirst;
 
   const RaporFiltreDateTimeBottomSheetView(
-      {super.key, required this.filterOnChanged, required this.baslangicTarihiController, required this.bitisTarihiController, this.baslangicOnTap, this.bitisOnTap, this.showBugunFirst});
+      {super.key, required this.filterOnChanged, required this.baslangicTarihiController, required this.bitisTarihiController, this.baslangicOnTap, this.bitisOnTap, this.showBugunFirst,});
 
   @override
   State<RaporFiltreDateTimeBottomSheetView> createState() => _RaporFiltreDateTimeBottomSheetViewState();
@@ -55,7 +55,7 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
           readOnly: true,
           controller: widget.baslangicTarihiController,
           isDateTime: true,
-          onTap: () async => widget.baslangicOnTap ?? getDate(true).then((value) => widget.filterOnChanged(9))),
+          onTap: () async => widget.baslangicOnTap ?? getDate(true).then((value) => widget.filterOnChanged(9)),),
       CustomTextField(
         labelText: "Bitiş Tarihi",
         readOnly: true,
@@ -97,12 +97,12 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
                         viewModel.changeGroupValue(index ?? 0);
                         setState(() {});
                       },
-                      child: Text(viewModel.childrenTitleList[listTileIndex]))
-                  .paddingOnly(right: UIHelper.highSize)),
+                      child: Text(viewModel.childrenTitleList[listTileIndex]),)
+                  .paddingOnly(right: UIHelper.highSize),),
         ).paddingOnly(left: UIHelper.lowSize),
         Row(
           children: children2.map((e) => Expanded(child: e)).toList(),
-        )
+        ),
       ],
     );
   }

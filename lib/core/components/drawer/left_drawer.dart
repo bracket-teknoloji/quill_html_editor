@@ -31,7 +31,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                   isEditing = !isEditing;
                 });
               },
-              icon: Icon(isEditing ? Icons.edit_off_outlined : Icons.edit_outlined)),
+              icon: Icon(isEditing ? Icons.edit_off_outlined : Icons.edit_outlined),),
           contentPadding: const EdgeInsets.only(left: 12, top: 10, bottom: 10),
         ),
         const Divider(),
@@ -83,11 +83,11 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                                   CacheManager.setFavorilerList(list.map((e) => e).toList());
                                 });
                               },
-                              icon: const Icon(Icons.delete_outline))
+                              icon: const Icon(Icons.delete_outline),)
                           : const Icon(Icons.drag_handle),
                       onTap: value.arguments != null ? () => Get.toNamed(value.onTap.toString(), arguments: value.arguments) : () => Get.toNamed(value.onTap.toString()),
                     );
                   },
-                  itemCount: list.length)),
-      ]));
+                  itemCount: list.length,),),
+      ],),);
 }

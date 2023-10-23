@@ -19,7 +19,7 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, MobxNetworkMixin {
     const Color.fromRGBO(849, 93, 21, 1),
     const Color.fromRGBO(203, 82, 17, 1),
     const Color.fromRGBO(150, 1, 106, 1),
-    const Color.fromRGBO(65, 61, 61, 1)
+    const Color.fromRGBO(65, 61, 61, 1),
   ];
 
   @observable

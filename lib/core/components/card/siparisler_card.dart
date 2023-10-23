@@ -27,7 +27,7 @@ import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 class SiparislerCard extends StatefulWidget {
   const SiparislerCard(
-      {super.key, required this.model, this.onDeleted, required this.siparisTipiEnum, this.index, this.isGetData, this.showEkAciklama, this.showMiktar, this.showVade, this.onUpdated});
+      {super.key, required this.model, this.onDeleted, required this.siparisTipiEnum, this.index, this.isGetData, this.showEkAciklama, this.showMiktar, this.showVade, this.onUpdated,});
 
   ///Eğer Bu widget Cache'den çağırılıyorsa index verilmelidir.
   final int? index;
@@ -65,7 +65,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                   model: widget.model,
                   onSelected: (value) {
                     widget.onUpdated?.call(value);
-                  });
+                  },);
             }
           : null,
       onTap: widget.isGetData == true
@@ -82,8 +82,8 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                           Get.back();
                           return Get.toNamed("mainPage/siparisEdit",
                               arguments:
-                                  BaseEditModel(model: SiparisEditRequestModel.fromSiparislerModel(widget.model), baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum));
-                        }),
+                                  BaseEditModel(model: SiparisEditRequestModel.fromSiparislerModel(widget.model), baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum),);
+                        },),
                     BottomSheetModel(
                         title: "Düzelt",
                         iconWidget: Icons.edit_outlined,
@@ -97,9 +97,9 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                                 model: SiparisEditRequestModel.fromSiparislerModel(widget.model),
                                 baseEditEnum: BaseEditEnum.duzenle,
                                 siparisTipiEnum: widget.siparisTipiEnum,
-                              ));
+                              ),);
                           widget.onUpdated?.call(true);
-                        }).yetkiKontrol(yetkiController.siparisDuzelt && widget.model.tipi != 1),
+                        },).yetkiKontrol(yetkiController.siparisDuzelt && widget.model.tipi != 1),
                     BottomSheetModel(
                         title: "Sil",
                         iconWidget: Icons.delete_outline,
@@ -122,7 +122,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                               widget.onDeleted?.call();
                             }
                           });
-                        }).yetkiKontrol((yetkiController.siparisSil || widget.model.isNew == true) && widget.model.tipi != 1),
+                        },).yetkiKontrol((yetkiController.siparisSil || widget.model.isNew == true) && widget.model.tipi != 1),
                     BottomSheetModel(
                         title: "Yazdır",
                         iconWidget: Icons.print_outlined,
@@ -131,9 +131,9 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                           final PrintModel printModel = PrintModel(
                               raporOzelKod: widget.siparisTipiEnum.getPrintValue,
                               etiketSayisi: 1,
-                              dicParams: DicParams(belgeNo: widget.model.belgeNo, belgeTipi: widget.model.siparisTipi?.rawValue, cariKodu: widget.model.cariKodu));
+                              dicParams: DicParams(belgeNo: widget.model.belgeNo, belgeTipi: widget.model.siparisTipi?.rawValue, cariKodu: widget.model.cariKodu),);
                           await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true);
-                        }).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
+                        },).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
                     BottomSheetModel(
                         title: "İşlemler",
                         iconWidget: Icons.list_alt_outlined,
@@ -143,8 +143,8 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                               model: widget.model,
                               onSelected: (value) {
                                 widget.onUpdated?.call(value);
-                              });
-                        }).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
+                              },);
+                        },).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
                     BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined)
                         .yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null && yetkiController.siparisKontrolAciklamasiAktifMi && false),
                     BottomSheetModel(
@@ -154,9 +154,9 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                           Get.back();
                           dialogManager.showCariGridViewDialog(CariListesiModel()
                             ..cariKodu = widget.model.cariKodu
-                            ..cariAdi = widget.model.cariAdi);
-                        }),
-                  ].nullCheckWithGeneric);
+                            ..cariAdi = widget.model.cariAdi,);
+                        },),
+                  ].nullCheckWithGeneric,);
             },
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -203,7 +203,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                 Text("Ara Toplam: ${widget.model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                 Text("Genel Toplam: ${widget.model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
               ].whereType<Widget>().map((e) => e is SizedBox ? null : SizedBox(width: constrains.maxWidth / 2, child: e)).whereType<Widget>().toList(),
-            )),
+            ),),
           // Row(
           //   crossAxisAlignment: CrossAxisAlignment.start,
           //   children: [
@@ -251,5 +251,5 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
           ...aciklamaList(),
         ],
       ),
-    ));
+    ),);
 }

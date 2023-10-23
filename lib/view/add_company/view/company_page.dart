@@ -68,20 +68,20 @@ class _AccountsViewState extends BaseState<AccountsView> {
                                     Get.back();
                                     dialogManager.showAreYouSureDialog(() {
                                       CacheManager.removeAccounts(
-                                          account.email ?? "");
+                                          account.email ?? "",);
                                       CacheManager.resetVerifiedUser();
                                       setState(() {});
                                     });
-                                  }),
+                                  },),
                               //TODO Sunucu Tercihi Sayfasına Yönlendir
                               // BottomSheetModel(iconWidget: Icons.storage_rounded, title: "Sunucu Tercihi", onTap: () {}),
-                            ]);
+                            ],);
                       },
                       title: Text(account.firma.toString()),
                       subtitle: Text(account.email.toString()),
                       trailing: const Icon(Icons.more_vert),
                     ),
                   );
-                }),
+                },),
           );
 }

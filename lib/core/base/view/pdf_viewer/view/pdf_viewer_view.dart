@@ -78,7 +78,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                 //! EKLENECEK
                 await fileChecker();
               },
-              icon: const Icon(Icons.share_outlined)),
+              icon: const Icon(Icons.share_outlined),),
           // IconButton(
           //     onPressed: () async {
           //😳 await bottomSheetDialogManager.showBottomSheetDialog(context,
@@ -100,7 +100,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                         getData();
                       }
                     },
-                    child: const Text("Filtrele"))
+                    child: const Text("Filtrele"),)
               else
                 null,
               AppBarButton(
@@ -109,7 +109,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                   onPressed: () async {
                     final PrintModel printModel = PrintModel(raporOzelKod: widget.pdfData?.raporOzelKod ?? "", standart: true, etiketSayisi: 1, dicParams: widget.pdfData?.dicParams);
                     await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, false, false);
-                  }),
+                  },),
               AppBarButton(
                   icon: Icons.picture_as_pdf_outlined,
                   child: const Text("PDF Görüntüle"),
@@ -117,7 +117,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                     if (await getFile != null) {
                       OpenFile.open((await getFile)!.path);
                     }
-                  }),
+                  },),
               // AppBarButton(
               //     icon: Icons.mail_outline_outlined,
               //     child: const Text("Mail Gönder"),
@@ -149,13 +149,13 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                     },
                     onDocumentLoaded: (details) => viewModel.changePageCounter(details.document.pages.count),
                     onPageChanged: (details) => viewModel.changeCurrentPage(details.newPageNumber - 1),
-                  ));
+                  ),);
         } else if (viewModel.futureController.value == null) {
           return const Center(child: CircularProgressIndicator.adaptive());
         } else {
           return const Center();
         }
-      });
+      },);
 
   BottomAppBar bottomAppBar() => BottomAppBar(
       height: 70,
@@ -169,7 +169,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
           IconButton(onPressed: () => pdfViewerController.nextPage(), icon: const Icon(Icons.arrow_forward_outlined)),
           Observer(builder: (_) => IconButton(onPressed: () => pdfViewerController.lastPage(), icon: const Icon(Icons.last_page_outlined))),
         ],
-      ));
+      ),);
   Future getData() async {
     viewModel.resetFuture();
     final result = await networkManager.getPDF(widget.pdfData ?? PdfModel());
@@ -196,7 +196,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
     //create a folder in documents/picker as name picker
     await Directory("${appStorage.path}/picker/pdf").create(recursive: true);
     final file = File(
-        '${appStorage.path}/picker/pdf/${widget.pdfData?.raporOzelKod}${widget.pdfData?.dicParams?.cariKodu ?? widget.pdfData?.dicParams?.stokKodu ?? ""}${DateTime.now().toDateTimeHypenString()}.${pdfFile?.uzanti ?? "pdf"}');
+        '${appStorage.path}/picker/pdf/${widget.pdfData?.raporOzelKod}${widget.pdfData?.dicParams?.cariKodu ?? widget.pdfData?.dicParams?.stokKodu ?? ""}${DateTime.now().toDateTimeHypenString()}.${pdfFile?.uzanti ?? "pdf"}',);
     final fileWriter = file.openSync(mode: FileMode.write);
     fileWriter.writeFromSync(base64Decode(pdfFile?.byteData ?? ""));
     await fileWriter.close();

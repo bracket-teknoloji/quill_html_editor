@@ -81,7 +81,7 @@ class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
                       ],
                     ),
                   ].map((e) => SizedBox(width: width * 0.4, child: e).paddingOnly(bottom: UIHelper.lowSize)).toList(),
-                )
+                ),
               ],
-            )));
+            ),),);
 }

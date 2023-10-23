@@ -33,7 +33,7 @@ class _AppBarPreferedSizedBottomState
         scrollDirection: Axis.horizontal,
         children: widget.children.nullCheck
             .map((e) => e?.paddingSymmetric(
-                horizontal: UIHelper.midSize, vertical: UIHelper.lowSize))
+                horizontal: UIHelper.midSize, vertical: UIHelper.lowSize,),)
             .toList()
             .nullCheckWithGeneric,
       ),

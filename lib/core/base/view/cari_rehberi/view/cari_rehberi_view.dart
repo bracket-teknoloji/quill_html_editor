@@ -96,7 +96,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: appBar(), floatingActionButton: fab(), body: body());
+        appBar: appBar(), floatingActionButton: fab(), body: body(),);
 
   AppBar appBar() => AppBar(
         title: Observer(
@@ -106,10 +106,10 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                     focusNode: searchFocusNode,
                     controller: searchController,
                     onSubmitted: (value) => viewModel.changeFilterText(value),
-                    onClear: () => viewModel.changeFilterText(""))
+                    onClear: () => viewModel.changeFilterText(""),)
                 : AppBarTitle(
                     title: "Cari Rehberi",
-                    subtitle: "${widget.cariKodu} Koduna Bağlı Cariler")),
+                    subtitle: "${widget.cariKodu} Koduna Bağlı Cariler",),),
         actions: [
           IconButton(
               onPressed: () {
@@ -123,12 +123,12 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
               icon: Observer(
                   builder: (_) => Icon(viewModel.searchBar
                       ? Icons.search_off_outlined
-                      : Icons.search_outlined))),
+                      : Icons.search_outlined,),),),
         ],
         bottom: AppBarPreferedSizedBottom(children: [
           filtreleButton(),
           siralaButton(),
-        ]),
+        ],),
       );
 
   Observer fab() => Observer(builder: (_) => CustomFloatingActionButton(
@@ -139,8 +139,8 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                   arguments: BaseEditModel(
                       baseEditEnum: BaseEditEnum.ekle,
                       model: CariListesiModel(),
-                      siradakiKod: siradakiKod));
-            }));
+                      siradakiKod: siradakiKod,),);
+            },),);
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
         onRefresh: () async {
@@ -167,13 +167,13 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                     return Visibility(
                         visible: viewModel.dahaVarMi,
                         child: const Center(
-                            child: CircularProgressIndicator.adaptive()));
+                            child: CircularProgressIndicator.adaptive(),),);
                   }
                   final CariListesiModel item = viewModel.cariListesi![index];
                   return CariRehberiCard(model: item);
-                });
+                },);
           }
-        }),
+        },),
       );
 
   AppBarButton siralaButton() => AppBarButton(
@@ -187,11 +187,11 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                 viewModel.siralaMap.length,
                 (index) => BottomSheetModel(
                     title: viewModel.siralaMap.keys.toList()[index],
-                    value: viewModel.siralaMap.values.toList()[index])));
+                    value: viewModel.siralaMap.values.toList()[index],),),);
         if (result != null) {
           viewModel.changeSiralama(result);
         }
-      });
+      },);
   AppBarButton filtreleButton() => AppBarButton(
       icon: Icons.filter_alt_outlined,
       child: const Text("Filtrele"),
@@ -230,14 +230,14 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                                                     .sehirAdi ??
                                                 "",
                                             value: viewModel
-                                                .sehirler?[index].sehirAdi)));
+                                                .sehirler?[index].sehirAdi,),),);
                             if (result != null) {
                               viewModel.changeSehir(result);
                               sehirController.text = result;
                             }
                           },
-                          icon: const Icon(Icons.more_horiz_outlined)),
-                    )),
+                          icon: const Icon(Icons.more_horiz_outlined),),
+                    ),),
                     Expanded(
                         child: CustomTextField(
                       labelText: "İlçe",
@@ -247,7 +247,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                         ilceController.clear();
                       },
                       onChanged: (value) => viewModel.changeIlce(value),
-                    )),
+                    ),),
                   ],
                 ),
                 Row(
@@ -272,13 +272,13 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                                         title: viewModel.tipiMap.keys
                                             .toList()[index],
                                         value: viewModel.tipiMap.values
-                                            .toList()[index])));
+                                            .toList()[index],),),);
                         if (result != null) {
                           viewModel.changeTipi(result);
                           tipiController.text = result;
                         }
                       },
-                    )),
+                    ),),
                     Expanded(
                         child: CustomTextField(
                       labelText: "Kod 1",
@@ -296,7 +296,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                                                 .grupKodlari1?[index].grupAdi ??
                                             "",
                                         value: viewModel
-                                            .grupKodlari1?[index].grupKodu)));
+                                            .grupKodlari1?[index].grupKodu,),),);
                         if (result is List && result.ext.isNotNullOrEmpty) {
                           viewModel
                               .changeKod1(result.whereType<String>().toList());
@@ -306,7 +306,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                           kod1Controller.clear();
                         }
                       },
-                    )).yetkiVarMi(viewModel.grupKodlari1.ext.isNotNullOrEmpty),
+                    ),).yetkiVarMi(viewModel.grupKodlari1.ext.isNotNullOrEmpty),
                   ],
                 ),
                 Row(
@@ -328,7 +328,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                                                 .grupKodlari2?[index].grupAdi ??
                                             "",
                                         value: viewModel
-                                            .grupKodlari2?[index].grupKodu)));
+                                            .grupKodlari2?[index].grupKodu,),),);
                         if (result is List && result.ext.isNotNullOrEmpty) {
                           viewModel
                               .changeKod2(result.whereType<String>().toList());
@@ -338,7 +338,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                           kod2Controller.clear();
                         }
                       },
-                    )).yetkiVarMi(viewModel.grupKodlari2.ext.isNotNullOrEmpty),
+                    ),).yetkiVarMi(viewModel.grupKodlari2.ext.isNotNullOrEmpty),
                     Expanded(
                         child: CustomTextField(
                       labelText: "Kod 3",
@@ -356,7 +356,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                                                 .grupKodlari3?[index].grupAdi ??
                                             "",
                                         value: viewModel
-                                            .grupKodlari3?[index].grupKodu)));
+                                            .grupKodlari3?[index].grupKodu,),),);
                         if (result is List && result.ext.isNotNullOrEmpty) {
                           viewModel
                               .changeKod3(result.whereType<String>().toList());
@@ -366,7 +366,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                           kod3Controller.clear();
                         }
                       },
-                    )).yetkiVarMi(viewModel.grupKodlari3.ext.isNotNullOrEmpty),
+                    ),).yetkiVarMi(viewModel.grupKodlari3.ext.isNotNullOrEmpty),
                   ],
                 ),
                 Row(
@@ -388,7 +388,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                                                 .grupKodlari4?[index].grupAdi ??
                                             "",
                                         value: viewModel
-                                            .grupKodlari4?[index].grupKodu)));
+                                            .grupKodlari4?[index].grupKodu,),),);
                         if (result is List && result.ext.isNotNullOrEmpty) {
                           viewModel
                               .changeKod4(result.whereType<String>().toList());
@@ -398,7 +398,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                           kod4Controller.clear();
                         }
                       },
-                    )).yetkiVarMi(viewModel.grupKodlari4.ext.isNotNullOrEmpty),
+                    ),).yetkiVarMi(viewModel.grupKodlari4.ext.isNotNullOrEmpty),
                     Expanded(
                         child: CustomTextField(
                       labelText: "Kod 5",
@@ -416,7 +416,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                                                 .grupKodlari5?[index].grupAdi ??
                                             "",
                                         value: viewModel
-                                            .grupKodlari5?[index].grupKodu)));
+                                            .grupKodlari5?[index].grupKodu,),),);
                         if (result is List && result.ext.isNotNullOrEmpty) {
                           viewModel
                               .changeKod5(result.whereType<String>().toList());
@@ -426,7 +426,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                           kod5Controller.clear();
                         }
                       },
-                    )).yetkiVarMi(viewModel.grupKodlari5.ext.isNotNullOrEmpty),
+                    ),).yetkiVarMi(viewModel.grupKodlari5.ext.isNotNullOrEmpty),
                   ],
                 ),
                 ElevatedButton(
@@ -434,9 +434,9 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                       viewModel.resetAll();
                       Get.back();
                     },
-                    child: const Text("Filtrele"))
+                    child: const Text("Filtrele"),),
               ],
             ),
-          )));
-      });
+          ),),);
+      },);
 }

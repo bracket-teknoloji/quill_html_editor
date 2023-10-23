@@ -90,7 +90,7 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel? get stokHareketleri =>
       GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Stok Hareketleri", onTap: () async => Get.toNamed("mainPage/stokHareketleri", arguments: model));
   GridItemModel? get kopyala => GridItemModel.islemler(
-      title: "Kopyala", iconData: Icons.copy_outlined, onTap: () async => Get.toNamed(islemtipi.route, arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.kopyala)));
+      title: "Kopyala", iconData: Icons.copy_outlined, onTap: () async => Get.toNamed(islemtipi.route, arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.kopyala)),);
   //* Siparis
   GridItemModel? get irsaliyeOlustur => GridItemModel.islemler(title: "İrsaliye Oluştur", iconData: Icons.conveyor_belt);
   GridItemModel? get faturaOlustur => GridItemModel.islemler(title: "Fatura Oluştur (Siparişten)", iconData: Icons.conveyor_belt);
@@ -105,11 +105,11 @@ class IslemlerMenuItemConstants<T> {
               bool? result;
               await _dialogManager.showAreYouSureDialog(() async {
                 result = true;
-              }, title: "Kiliti kapatmak istediğinize emin misiniz?");
+              }, title: "Kiliti kapatmak istediğinize emin misiniz?",);
               if (result == true) {
                 return await kilitRequest(siparisModel, 1);
               }
-            });
+            },);
       } else {
         return GridItemModel.islemler(
             title: "Belgeyi Aç",
@@ -118,11 +118,11 @@ class IslemlerMenuItemConstants<T> {
               bool? result;
               await _dialogManager.showAreYouSureDialog(() async {
                 result = true;
-              }, title: "Kiliti açmak istediğinize emin misiniz?");
+              }, title: "Kiliti açmak istediğinize emin misiniz?",);
               if (result == true) {
                 return  await kilitRequest(siparisModel, 2);
               }
-            });
+            },);
       }
     }
     return null;
@@ -130,7 +130,7 @@ class IslemlerMenuItemConstants<T> {
 
   Future<bool> kilitRequest(BaseSiparisEditModel siparisModel, int yeniTipi) async {
     final result = await _networkManager.dioPost<SiparisEditRequestModel>(
-        path: ApiUrls.belgeDurumunuDegistir, showLoading: true, bodyModel: SiparisEditRequestModel(), data: EditFaturaModel.fromSiparislerModel(siparisModel..tipi = yeniTipi).toJson());
+        path: ApiUrls.belgeDurumunuDegistir, showLoading: true, bodyModel: SiparisEditRequestModel(), data: EditFaturaModel.fromSiparislerModel(siparisModel..tipi = yeniTipi).toJson(),);
     if (result.success == true) {
       DialogManager().showSuccessSnackBar("Başarılı");
       return result.success!;
@@ -173,13 +173,13 @@ class IslemlerMenuItemConstants<T> {
                             "Seri": controller.text,
                             "BelgeTipi": StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS",
                             "EIrsaliye": "H",
-                            "CariKodu": siparisModel?.cariKodu ?? ""
-                          });
+                            "CariKodu": siparisModel?.cariKodu ?? "",
+                          },);
                           if (result.success == true) {
                             controller.text = result.data?.first.belgeNo ?? "";
                           }
                         },
-                        icon: const Icon(Icons.abc))),
+                        icon: const Icon(Icons.abc),),),
               ),
               Row(
                 children: [
@@ -197,8 +197,8 @@ class IslemlerMenuItemConstants<T> {
                                         ..yeniBelgeNo = controller.text
                                         ..islemKodu = 10
                                         ..tag = "FaturaModel"
-                                        ..belgeTipi = siparisModel.tipi)
-                                      .toJson());
+                                        ..belgeTipi = siparisModel.tipi,)
+                                      .toJson(),);
                               if (result.success == true) {
                                 updatePage = true;
                                 DialogManager().showSuccessSnackBar("Başarılı");
@@ -207,12 +207,12 @@ class IslemlerMenuItemConstants<T> {
                               }
                             }
                           },
-                          child: const Text("Kaydet"))),
+                          child: const Text("Kaydet"),),),
                 ],
-              ).paddingAll(UIHelper.lowSize)
-            ]));
+              ).paddingAll(UIHelper.lowSize),
+            ],),);
         return updatePage;
-      });
+      },);
 
   BuildContext get context => Get.context!;
   GridItemModel? get siparisPDFGoruntule => GridItemModel.islemler(
@@ -234,15 +234,15 @@ class IslemlerMenuItemConstants<T> {
                   dizaynId: result.id,
                   raporOzelKod: result.ozelKod,
                   etiketSayisi: result.kopyaSayisi,
-                  dicParams: DicParams(belgeNo: siparisModel?.belgeNo, cariKodu: siparisModel?.cariKodu, belgeTipi: StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS"))));
+                  dicParams: DicParams(belgeNo: siparisModel?.belgeNo, cariKodu: siparisModel?.cariKodu, belgeTipi: StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS"),),),);
         }
-      });
+      },);
   GridItemModel? get belgeyiKopyala => GridItemModel.islemler(title: "Belgeyi Kopyala", iconData: Icons.copy_outlined);
   //* Stok
   GridItemModel? get stokKarti => GridItemModel.islemler(
       title: "Stok Kartı",
       iconData: Icons.info_outline,
-      onTap: () async => Get.toNamed("/mainPage/stokEdit", arguments: BaseEditModel(model: model as StokListesiModel, baseEditEnum: BaseEditEnum.duzenle)));
+      onTap: () async => Get.toNamed("/mainPage/stokEdit", arguments: BaseEditModel(model: model as StokListesiModel, baseEditEnum: BaseEditEnum.duzenle)),);
   GridItemModel? get stokYazdir => GridItemModel.islemler(title: "Yazdır", iconData: Icons.print_outlined, onTap: () async => Get.toNamed("/mainPage/stokYazdir", arguments: model));
   GridItemModel? get fiyatGor => GridItemModel.islemler(title: "Fiyat Gör", iconData: Icons.monetization_on_outlined, onTap: () async => Get.toNamed("/mainPage/stokFiyatGecmisi", arguments: model));
   //* Cari
@@ -262,12 +262,12 @@ class IslemlerMenuItemConstants<T> {
               BottomSheetModel(title: "Telefon", value: (model as CariListesiModel).cariTel).yetkiKontrol((model as CariListesiModel).cariTel != null),
               BottomSheetModel(title: "Web Sitesi", value: (model as CariListesiModel).web).yetkiKontrol((model as CariListesiModel).web != null),
               BottomSheetModel(title: "Mail", value: (model as CariListesiModel).email).yetkiKontrol((model as CariListesiModel).email != null),
-            ].nullCheckWithGeneric);
+            ].nullCheckWithGeneric,);
         if ((result as List?).ext.isNotNullOrEmpty) {
           Clipboard.setData(ClipboardData(text: result!.join("\n")));
           Share.share(result.join("\n"));
         }
-      });
+      },);
 
   GridItemModel? get cariKoduDegistir => GridItemModel.islemler(
       title: "Cari Kodu Değiştir",
@@ -312,9 +312,9 @@ class IslemlerMenuItemConstants<T> {
                                 controller.text = result.cariKodu ?? "";
                               }
                             },
-                            icon: const Icon(Icons.more_horiz_outlined)),
+                            icon: const Icon(Icons.more_horiz_outlined),),
                       ],
-                    )),
+                    ),),
                 CustomWidgetWithLabel(
                   text: "Eski Cari Kodu Silinsin mi?",
                   isVertical: true,
@@ -324,7 +324,7 @@ class IslemlerMenuItemConstants<T> {
                           onChanged: (value) {
                             viewModel.changeCariKodDegistirSwitch(value);
                             kodDegistirModel.kaynakSil = (value ? "E" : "H");
-                          })),
+                          },),),
                 ),
                 Row(
                   children: [
@@ -345,12 +345,12 @@ class IslemlerMenuItemConstants<T> {
                                 DialogManager().showAlertDialog("Lütfen Cari Kodu Giriniz");
                               }
                             },
-                            child: const Text("Kaydet"))),
+                            child: const Text("Kaydet"),),),
                   ],
-                ).paddingAll(UIHelper.lowSize)
+                ).paddingAll(UIHelper.lowSize),
               ],
-            ).paddingAll(UIHelper.lowSize));
-      });
+            ).paddingAll(UIHelper.lowSize),);
+      },);
 
   //* Kasa
   GridItemModel? get kasaTransferi => GridItemModel.islemler(title: "Kasalar Arası Transferi", iconData: Icons.list_alt_rounded, onTap: () async => await Get.toNamed("/mainPage/kasaTransferi"));

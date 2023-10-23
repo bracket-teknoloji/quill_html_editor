@@ -61,7 +61,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
         child: Column(
           children: <Widget>[toplamlarCard().paddingAll(UIHelper.lowSize), textFields()],
         ),
-      ));
+      ),);
 
   Card toplamlarCard() => Card(
         child: Column(
@@ -71,14 +71,14 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
               children: <Text>[
                 Text.rich(TextSpan(children: <InlineSpan>[
                   const TextSpan(text: "Miktar\n", style: TextStyle(color: Colors.grey)),
-                  TextSpan(text: BaseSiparisEditModel.instance.toplamKalemMiktari().toIntIfDouble.toStringIfNotNull ?? "0", style: const TextStyle(fontWeight: FontWeight.bold))
-                ])),
+                  TextSpan(text: BaseSiparisEditModel.instance.toplamKalemMiktari().toIntIfDouble.toStringIfNotNull ?? "0", style: const TextStyle(fontWeight: FontWeight.bold)),
+                ],),),
                 const Text.rich(
-                    TextSpan(children: <InlineSpan>[TextSpan(text: "Mal Ağırlığı\n", style: TextStyle(color: Colors.grey)), TextSpan(text: "0", style: TextStyle(fontWeight: FontWeight.bold))])),
+                    TextSpan(children: <InlineSpan>[TextSpan(text: "Mal Ağırlığı\n", style: TextStyle(color: Colors.grey)), TextSpan(text: "0", style: TextStyle(fontWeight: FontWeight.bold))]),),
                 Text.rich(TextSpan(children: <InlineSpan>[
                   const TextSpan(text: "Brüt Tutar\n", style: TextStyle(color: Colors.grey)),
-                  TextSpan(text: "${model.toplamBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
-                ])),
+                  TextSpan(text: "${model.toplamBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
+                ],),),
               ].map((Text e) => Expanded(child: e)).toList(),
             ),
             Row(
@@ -86,17 +86,17 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
               children: <StatelessWidget>[
                 Text.rich(TextSpan(children: <InlineSpan>[
                   const TextSpan(text: "Mal. Faz. İsk.\n", style: TextStyle(color: Colors.grey)),
-                  TextSpan(text: "${viewModel.model.malFazlasiTutar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
-                ])),
+                  TextSpan(text: "${viewModel.model.malFazlasiTutar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
+                ],),),
                 Text.rich(TextSpan(children: <InlineSpan>[
                   const TextSpan(text: "Satır İsk.\n", style: TextStyle(color: Colors.grey)),
-                  TextSpan(text: "${viewModel.model.satirIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
-                ])),
+                  TextSpan(text: "${viewModel.model.satirIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
+                ],),),
                 Observer(
                     builder: (_) => Text.rich(TextSpan(children: <InlineSpan>[
                           const TextSpan(text: "Toplam İskonto\n", style: TextStyle(color: Colors.grey)),
-                          TextSpan(text: "${viewModel.model.getToplamIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
-                        ]))),
+                          TextSpan(text: "${viewModel.model.getToplamIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
+                        ],),),),
               ].map((StatelessWidget e) => Expanded(child: e)).toList(),
             ),
             Row(
@@ -105,18 +105,18 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                 Observer(
                     builder: (_) => Text.rich(TextSpan(children: <InlineSpan>[
                           const TextSpan(text: "Ara Toplam\n", style: TextStyle(color: Colors.grey)),
-                          TextSpan(text: "${viewModel.model.getAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
-                        ]))),
+                          TextSpan(text: "${viewModel.model.getAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
+                        ],),),),
                 Observer(
                     builder: (_) => Text.rich(TextSpan(children: <InlineSpan>[
                           const TextSpan(text: "KDV Tutarı\n", style: TextStyle(color: Colors.grey)),
-                          TextSpan(text: "${viewModel.model.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
-                        ]))),
+                          TextSpan(text: "${viewModel.model.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
+                        ],),),),
                 Observer(
                     builder: (_) => Text.rich(TextSpan(children: <InlineSpan>[
                           const TextSpan(text: "Genel Toplam\n", style: TextStyle(color: Colors.grey)),
-                          TextSpan(text: "${viewModel.model.genelToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))
-                        ]))),
+                          TextSpan(text: "${viewModel.model.genelToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
+                        ],),),),
               ].map((Observer e) => Expanded(child: e)).toList(),
             ),
           ],
@@ -139,10 +139,10 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   valueWidget: Observer(
                       builder: (_) => Text(viewModel.isGenIsk1T
                           ? "%${(viewModel.model.genIsk1o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"
-                          : "${(viewModel.model.genIsk1t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+                          : "${(viewModel.model.genIsk1t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",),),
                   suffix: IconButton(
                       onPressed: () => viewModel.changeGenIsk1O(genelIskonto1Controller),
-                      icon: Observer(builder: (_) => Icon(viewModel.isGenIsk1T ? Icons.payments_outlined : Icons.percent_outlined))),
+                      icon: Observer(builder: (_) => Icon(viewModel.isGenIsk1T ? Icons.payments_outlined : Icons.percent_outlined)),),
                 ),
                 CustomTextField(
                   labelText: "İsk.Tipi 1",
@@ -173,11 +173,11 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   valueWidget: Observer(
                       builder: (_) => Text(viewModel.isGenIsk2T
                           ? "%${(viewModel.model.genIsk2o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"
-                          : "${(viewModel.model.genIsk2t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+                          : "${(viewModel.model.genIsk2t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",),),
                   onChanged: (String p0) => viewModel.setGenIsk2(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
                   suffix: IconButton(
                       onPressed: () => viewModel.changeGenIsk2O(genelIskonto2Controller),
-                      icon: Observer(builder: (_) => Icon(viewModel.isGenIsk2T ? Icons.payments_outlined : Icons.percent_outlined))),
+                      icon: Observer(builder: (_) => Icon(viewModel.isGenIsk2T ? Icons.payments_outlined : Icons.percent_outlined)),),
                 ),
                 CustomTextField(
                   labelText: "İsk.Tipi 2",
@@ -209,10 +209,10 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   valueWidget: Observer(
                       builder: (_) => Text(viewModel.isGenIsk3T
                           ? "%${(viewModel.model.genIsk3o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"
-                          : "${(viewModel.model.genIsk3t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+                          : "${(viewModel.model.genIsk3t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",),),
                   suffix: IconButton(
                       onPressed: () => viewModel.changeGenIsk3O(genelIskonto3Controller),
-                      icon: Observer(builder: (_) => Icon(viewModel.isGenIsk3T ? Icons.payments_outlined : Icons.percent_outlined))),
+                      icon: Observer(builder: (_) => Icon(viewModel.isGenIsk3T ? Icons.payments_outlined : Icons.percent_outlined)),),
                 ),
                 CustomTextField(
                   labelText: "İsk.Tipi 3",
@@ -255,13 +255,13 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                           final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                               title: "Tevkifat Oranı",
                               children: List.generate(viewModel.tevkifatMap.length,
-                                  (int index) => BottomSheetModel(title: viewModel.tevkifatMap.keys.toList()[index], value: viewModel.tevkifatMap.values.toList()[index])));
+                                  (int index) => BottomSheetModel(title: viewModel.tevkifatMap.keys.toList()[index], value: viewModel.tevkifatMap.values.toList()[index]),),);
                           if (result != null) {
                             viewModel.setTevkifat(result);
                             tevkifatController.text = (-result * viewModel.model.kdvTutari).toString();
                           }
                         },
-                        icon: const Icon(Icons.more_horiz_outlined)),
+                        icon: const Icon(Icons.more_horiz_outlined),),
                     // onChanged: (value) => model.ekMaliyet2Tutari = double.tryParse(value),
                   ),
                 ).yetkiVarMi(yetkiController.siparisEkMaliyet2GizlenecekMi),
@@ -289,7 +289,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                     suffix: IconButton(
                       onPressed: () async {
                         final DateTime? date = await showDatePicker(
-                            context: context, initialDate: model.vadeTarihi ?? DateTime.now(), firstDate: model.tarih ?? DateTime.now(), lastDate: DateTime.now().add(const Duration(days: 365)));
+                            context: context, initialDate: model.vadeTarihi ?? DateTime.now(), firstDate: model.tarih ?? DateTime.now(), lastDate: DateTime.now().add(const Duration(days: 365)),);
                         if (date != null) {
                           model.vadeGunu = (model.tarih?.difference(date).inDays ?? 0) * -1;
                           viewModel.setVadeTarihi(date);
@@ -299,7 +299,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                       icon: const Icon(Icons.calendar_today),
                     ),
                   ),
-                )
+                ),
               ],
             ),
             Row(
@@ -325,13 +325,13 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                           final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                               title: "Tevkifat Oranı",
                               children: List.generate(viewModel.tevkifatMap.length,
-                                  (int index) => BottomSheetModel(title: viewModel.tevkifatMap.keys.toList()[index], value: viewModel.tevkifatMap.values.toList()[index])));
+                                  (int index) => BottomSheetModel(title: viewModel.tevkifatMap.keys.toList()[index], value: viewModel.tevkifatMap.values.toList()[index]),),);
                           if (result != null) {
                             viewModel.setTevkifat(result);
                             tevkifatController.text = (-result * viewModel.model.kdvTutari).toString();
                           }
                         },
-                        icon: const Icon(Icons.more_horiz_outlined)),
+                        icon: const Icon(Icons.more_horiz_outlined),),
                     // onChanged: (value) => model.ekMaliyet2Tutari = double.tryParse(value),
                   ),
                 ).yetkiVarMi(yetkiController.siparisEkMaliyet2GizlenecekMi),
@@ -359,7 +359,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                     suffix: IconButton(
                       onPressed: () async {
                         final DateTime? date = await showDatePicker(
-                            context: context, initialDate: model.vadeTarihi ?? DateTime.now(), firstDate: model.tarih ?? DateTime.now(), lastDate: DateTime.now().add(const Duration(days: 365)));
+                            context: context, initialDate: model.vadeTarihi ?? DateTime.now(), firstDate: model.tarih ?? DateTime.now(), lastDate: DateTime.now().add(const Duration(days: 365)),);
                         if (date != null) {
                           model.vadeGunu = (model.tarih?.difference(date).inDays ?? 0) * -1;
                           viewModel.setVadeTarihi(date);
@@ -369,7 +369,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                       icon: const Icon(Icons.calendar_today),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ],

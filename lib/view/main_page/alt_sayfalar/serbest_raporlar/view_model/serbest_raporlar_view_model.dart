@@ -15,12 +15,12 @@ abstract class _SerbestRaporlarViewModelBase with Store {
 
   @action
   void changeSerbestRaporResponseModelList(
-      List<SerbestRaporResponseModel> value) {
+      List<SerbestRaporResponseModel> value,) {
     serbestRaporResponseModelList = value;
     textEditingControllerList = List.generate(
         serbestRaporResponseModelList!.length,
         (index) => TextEditingController(
-            text: serbestRaporResponseModelList![index].deger));
+            text: serbestRaporResponseModelList![index].deger,),);
     value.where((element) => element.deger != null).forEach((element) {
       changeDicParams(element.adi!, element.deger!);
     });
@@ -53,7 +53,7 @@ abstract class _SerbestRaporlarViewModelBase with Store {
 
   @action
   void changeDicParams(String key, String value,
-      [bool changeController = true]) {
+      [bool changeController = true,]) {
     if (int.tryParse(key.split("").last) != null) {
       dicParams["KOD${key.split("").last}"] = value;
     } else {

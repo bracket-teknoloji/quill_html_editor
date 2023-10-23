@@ -60,7 +60,7 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
                       childrenTitleList: viewModel.bakiyeDurumuTitleList,
                       filterOnChanged: (index) => viewModel.changeBakiyeDurumu(index),
                       childrenValueList: viewModel.bakiyeDurumuListValue,
-                      groupValue: viewModel.bakiyeDurumuGroupValue)),
+                      groupValue: viewModel.bakiyeDurumuGroupValue,),),
               CustomTextField(
                 labelText: "Cari",
                 isMust: true,
@@ -99,11 +99,11 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
                           Get.back();
                         }
                       },
-                      child: const Text("Uygula"))
-                  .paddingAll(UIHelper.lowSize)
+                      child: const Text("Uygula"),)
+                  .paddingAll(UIHelper.lowSize),
             ],
           ),
-        ));
+        ),);
     return Future.value(viewModel.futureController.value);
   }
 }

@@ -74,7 +74,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                               barkodKontroller.text = result ?? "";
                             }
                             getData();
-                          }),
+                          },),
                       IconButton(
                           icon: const Icon(Icons.more_horiz_outlined),
                           onPressed: () async {
@@ -85,7 +85,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                               stokController.text = result.stokAdi ?? " ";
                               getData();
                             }
-                          })
+                          },),
                     ],
                   ),
                   onSubmitted: (p0) {
@@ -103,9 +103,9 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                           icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                           onPressed: () async {
                             dialogManager.showStokGridViewDialog(viewModel.stokListesiModel);
-                          }),
+                          },),
                     ),
-                  )),
+                  ),),
                 Observer(builder: (_) => viewModel.modelList != null
                       ? (viewModel.modelList?.isEmpty ?? true)
                           ? const Center(child: Text("Stok bulunamadı"))
@@ -122,7 +122,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                         Text.rich(TextSpan(children: [
                                           const TextSpan(text: "Satış  KDV"),
                                           TextSpan(text: "  %${viewModel.modelList?.first?.kdvOrani ?? 0}", style: TextStyle(color: theme.textTheme.titleLarge?.color?.withOpacity(0.7))),
-                                        ])).paddingOnly(top: UIHelper.lowSize, left: UIHelper.lowSize),
+                                        ],),).paddingOnly(top: UIHelper.lowSize, left: UIHelper.lowSize),
                                         GridView.builder(
                                           physics: const NeverScrollableScrollPhysics(),
                                           shrinkWrap: true,
@@ -149,14 +149,14 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                                   children: [
                                                     Text(viewModel.titleList[index]).paddingAll(UIHelper.lowSize),
                                                     Divider(endIndent: UIHelper.lowSize, indent: UIHelper.lowSize),
-                                                    Text("${viewModel.getBilgi(index)} $mainCurrency").paddingAll(UIHelper.lowSize)
+                                                    Text("${viewModel.getBilgi(index)} $mainCurrency").paddingAll(UIHelper.lowSize),
                                                   ],
                                                 ),
                                               ),
                                             ),
                                         ),
                                       ],
-                                    )),
+                                    ),),
                                 ),
                                 Card(
                                   child: Observer(builder: (_) => Column(
@@ -166,7 +166,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                         Text.rich(TextSpan(children: [
                                           const TextSpan(text: "Alış  KDV"),
                                           TextSpan(text: "  %${viewModel.modelList?.last?.kdvOrani ?? 0}", style: TextStyle(color: theme.textTheme.titleLarge?.color?.withOpacity(0.7))),
-                                        ])).paddingOnly(top: UIHelper.lowSize, left: UIHelper.lowSize),
+                                        ],),).paddingOnly(top: UIHelper.lowSize, left: UIHelper.lowSize),
                                         GridView.builder(
                                           physics: const NeverScrollableScrollPhysics(),
                                           shrinkWrap: true,
@@ -193,22 +193,22 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                                   children: [
                                                     Text(viewModel.titleList[index]).paddingAll(UIHelper.lowSize),
                                                     Divider(endIndent: UIHelper.lowSize, indent: UIHelper.lowSize),
-                                                    Text("${viewModel.getBilgi(index, isSatis: true)} $mainCurrency").paddingAll(UIHelper.lowSize)
+                                                    Text("${viewModel.getBilgi(index, isSatis: true)} $mainCurrency").paddingAll(UIHelper.lowSize),
                                                   ],
                                                 ),
                                               ),
                                             ),
                                         ),
                                       ],
-                                    )),
+                                    ),),
                                 ),
                               ].map((e) => Container(decoration: BoxDecoration(borderRadius: UIHelper.lowBorderRadius), child: e)).toList(),
                             )
-                      : const SizedBox())
+                      : const SizedBox(),),
               ],
             ),
           ),
-        ));
+        ),);
 
   void getData() async {
     // viewModel.setStokListesiModel(null);

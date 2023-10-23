@@ -11,7 +11,7 @@ abstract class _KasaEkstreRaporuViewModelBase with Store {
   //*
   @observable
   PdfModel pdfModel = PdfModel(
-      raporOzelKod: "Rapor_KasaEkstre", standart: true, dicParams: DicParams());
+      raporOzelKod: "Rapor_KasaEkstre", standart: true, dicParams: DicParams(),);
 
   @action
   void setBittar(String? value) =>

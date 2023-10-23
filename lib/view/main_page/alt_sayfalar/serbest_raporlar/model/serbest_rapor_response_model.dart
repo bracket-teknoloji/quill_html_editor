@@ -20,7 +20,7 @@ class SerbestRaporResponseModel with NetworkManagerMixin {
         "PLASIYERKOD",
         "PLASIYER_KOD",
         "PLASIYERKODU",
-        "PLASIYER_KODU"
+        "PLASIYER_KODU",
       ].contains(rehberTipi);
 
   bool get cariKoduMu => [
@@ -30,7 +30,7 @@ class SerbestRaporResponseModel with NetworkManagerMixin {
         "CARIKOD",
         "CARI_KOD",
         "CARIKODU",
-        "CARI_KODU"
+        "CARI_KODU",
       ].contains(rehberTipi);
 
   bool get stokKoduMu => [
@@ -40,7 +40,7 @@ class SerbestRaporResponseModel with NetworkManagerMixin {
         "STOKKOD",
         "STOK_KOD",
         "STOKKODU",
-        "STOK_KODU"
+        "STOK_KODU",
       ].contains(rehberTipi);
 
   bool get dovizTipiMi => rehberTipi == "DOVIZ_TIPI";

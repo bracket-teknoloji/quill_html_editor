@@ -15,7 +15,7 @@ class BankaIslemleriCard extends StatefulWidget {
   final BankaIslemleriModel? bankaIslemleriModel;
   final ValueChanged? onDeleted;
   const BankaIslemleriCard(
-      {super.key, this.bankaIslemleriModel, this.onDeleted});
+      {super.key, this.bankaIslemleriModel, this.onDeleted,});
 
   @override
   State<BankaIslemleriCard> createState() => _BankaIslemleriCardState();
@@ -32,8 +32,8 @@ class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
               BottomSheetModel(
                   title: "Sil",
                   onTap: deleteData,
-                  iconWidget: Icons.delete_outline_outlined),
-            ]);
+                  iconWidget: Icons.delete_outline_outlined,),
+            ],);
       },
       child: Card(
           child: ListTile(
@@ -49,9 +49,9 @@ class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
                     ],
                   ),
                   Text(model?.subeAdi ?? "",
-                      style: const TextStyle(color: Colors.grey)),
+                      style: const TextStyle(color: Colors.grey),),
                   Text(model?.bankaAdi ?? "",
-                      style: const TextStyle(color: Colors.grey)),
+                      style: const TextStyle(color: Colors.grey),),
                 ],
               ),
               subtitle: Column(
@@ -69,8 +69,8 @@ class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
                               style: TextStyle(
                                   color: model?.ba == "A"
                                       ? Colors.red
-                                      : Colors.green)),
-                        ])),
+                                      : Colors.green,),),
+                        ],),),
                       ),
                       Expanded(
                         child: Text.rich(TextSpan(children: [
@@ -81,17 +81,17 @@ class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
                               style: TextStyle(
                                   color: model?.ba == "A"
                                       ? Colors.red
-                                      : Colors.green)),
-                        ])),
+                                      : Colors.green,),),
+                        ],),),
                       ),
                     ],
                   ),
                   const Divider(indent: 0, endIndent: 0)
                       .paddingSymmetric(vertical: UIHelper.midSize),
                   Text("Açıklama: ${model?.aciklama}",
-                      overflow: TextOverflow.ellipsis, maxLines: 3),
+                      overflow: TextOverflow.ellipsis, maxLines: 3,),
                 ],
-              ))),
+              ),),),
     );
 
   void deleteData() async {
@@ -101,12 +101,12 @@ class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
           path: ApiUrls.deleteBankaHareket,
           bodyModel: BankaIslemleriModel(),
           data: {"INCKEYNO": model?.inckeyno},
-          showLoading: true);
+          showLoading: true,);
       if (result.success == true) {
         widget.onDeleted?.call(model?.inckeyno);
       }
     },
         title:
-            "Bu kaydı sildiğinizde cari, kasa, banka, dekont gibi bağlantılı işlemler silinebilir. Onaylıyor musunuz?");
+            "Bu kaydı sildiğinizde cari, kasa, banka, dekont gibi bağlantılı işlemler silinebilir. Onaylıyor musunuz?",);
   }
 }

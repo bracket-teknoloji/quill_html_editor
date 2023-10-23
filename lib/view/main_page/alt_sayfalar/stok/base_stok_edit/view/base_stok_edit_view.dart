@@ -40,7 +40,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
       BaseStokEditGenelView(model: widget.model?.baseEditEnum),
       ...?views,
       BaseStokEditFiyatView(model: widget.model?.baseEditEnum),
-      BaseStokEditSerilerView(model: widget.model?.baseEditEnum)
+      BaseStokEditSerilerView(model: widget.model?.baseEditEnum),
     ];
     tabController = TabController(length: tabList.length, vsync: this);
     return WillPopScope(
@@ -65,7 +65,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
                           );
                         }
                       },
-                      icon: const Icon(Icons.save_outlined)))
+                      icon: const Icon(Icons.save_outlined),),),
             ],
             bottom: TabBar(
               controller: tabController,

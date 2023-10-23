@@ -31,15 +31,15 @@ class CariAktiviteFiltreDialogManager {
                               flex: 1,
                               child: ElevatedButton(
                                   onPressed: () => () {},
-                                  child: const Text("İptal")))
+                                  child: const Text("İptal"),),)
                           .paddingOnly(right: UIHelper.lowSize),
                       Expanded(
                           flex: 1,
                           child: ElevatedButton(
                               onPressed: () => () {},
-                              child: const Text("Filtrele"))),
+                              child: const Text("Filtrele"),),),
                     ],
                   ),
-                )
-              ]).paddingAll(UIHelper.lowSize));
+                ),
+              ],).paddingAll(UIHelper.lowSize),);
 }

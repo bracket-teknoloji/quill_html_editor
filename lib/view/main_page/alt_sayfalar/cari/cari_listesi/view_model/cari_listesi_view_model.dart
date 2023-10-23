@@ -191,7 +191,7 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void resetFilter() => cariRequestModel = cariRequestModel.copyWith(
-      filterText: "", arrGrupKodu: null, arrKod1: null, arrKod2: null, arrKod3: null, arrKod4: null, arrKod5: null, arrSehir: null, arrPlasiyerKodu: null, ilce: null, filterBakiye: "");
+      filterText: "", arrGrupKodu: null, arrKod1: null, arrKod2: null, arrKod3: null, arrKod4: null, arrKod5: null, arrSehir: null, arrPlasiyerKodu: null, ilce: null, filterBakiye: "",);
 
   @action
   Future<void> resetPage() async {
@@ -204,7 +204,7 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getKod() async {
     final responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
-        path: ApiUrls.getGrupKodlari, bodyModel: BaseGrupKoduModel(), headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"}, queryParameters: {"Modul": "CARI", "GrupNo": "-1"});
+        path: ApiUrls.getGrupKodlari, bodyModel: BaseGrupKoduModel(), headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"}, queryParameters: {"Modul": "CARI", "GrupNo": "-1"},);
     if (responseKod.data is List) {
       grupKodlari = responseKod.data.cast<BaseGrupKoduModel>();
     }
@@ -213,7 +213,7 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getFilterData() async {
     final result = await networkManager.dioGet<CariSehirlerModel>(
-        path: ApiUrls.getCariKayitliSehirler, bodyModel: CariSehirlerModel(), addTokenKey: true, addSirketBilgileri: true, headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"});
+        path: ApiUrls.getCariKayitliSehirler, bodyModel: CariSehirlerModel(), addTokenKey: true, addSirketBilgileri: true, headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"},);
     if (result.data is List) {
       sehirler = result.data.cast<CariSehirlerModel>();
     }

@@ -9,7 +9,7 @@ part "pdf_viewer_model.g.dart";
 abstract class PdfModel with _$PdfModel, NetworkManagerMixin {
   PdfModel._();
   @JsonSerializable(
-      createFactory: true, explicitToJson: true, createToJson: true)
+      createFactory: true, explicitToJson: true, createToJson: true,)
   factory PdfModel({
     String? raporOzelKod,
     bool? standart,
@@ -107,7 +107,7 @@ abstract class PdfModel with _$PdfModel, NetworkManagerMixin {
 @unfreezed
 class DicParams with _$DicParams {
   @JsonSerializable(
-      createFactory: true, explicitToJson: true, createToJson: true)
+      createFactory: true, explicitToJson: true, createToJson: true,)
   factory DicParams({
     String? cariKodu,
     String? stokKodu,

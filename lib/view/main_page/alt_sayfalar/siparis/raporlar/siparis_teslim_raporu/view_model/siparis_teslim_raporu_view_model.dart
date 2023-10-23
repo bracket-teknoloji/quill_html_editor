@@ -23,7 +23,7 @@ abstract class _SiparisTeslimRaporuViewModelBase with Store {
           ? "Rapor_SiparisMSTeslim"
           : "Rapor_SiparisSSTeslim",
       standart: true,
-      dicParams: DicParams());
+      dicParams: DicParams(),);
   @observable
   bool kapaliMi = false;
   @observable

@@ -44,10 +44,10 @@ class SiparisEditRequestModel
       SiparisEditRequestModel(
           belgeNo: model.belgeNo,
           cariKodu: model.cariKodu,
-          belgeTuru: model.belgeTipi);
+          belgeTuru: model.belgeTipi,);
 
   factory SiparisEditRequestModel.fromSiparislerModel(
-          BaseSiparisEditModel model) =>
+          BaseSiparisEditModel model,) =>
       SiparisEditRequestModel(
           belgeNo: model.belgeNo,
           pickerBelgeTuru: model.belgeTuru,
@@ -55,7 +55,7 @@ class SiparisEditRequestModel
           belgeTipi: model.belgeTipi.toStringIfNotNull,
           cariKodu: model.cariKodu,
           tipi: model.tipi,
-          tempBelgeId: model.tempBelgeId);
+          tempBelgeId: model.tempBelgeId,);
 
   @override
   fromJson(Map<String, dynamic> json) => SiparisEditRequestModel.fromJson(json);

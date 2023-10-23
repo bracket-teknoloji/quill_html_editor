@@ -129,7 +129,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                             _belgeNoController.text = viewModel.model.belgeNo ?? "";
                           },
                           icon: const Icon(Icons.add_outlined),
-                        ))),
+                        ),),),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -159,7 +159,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.kasaKodu ?? "")),
                         onTap: () async => await getKasa(),
                       ),
-                    )
+                    ),
                   ],
                 ),
                 CustomTextField(
@@ -179,12 +179,12 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                         }
                       },
                       icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
-                    )),
+                    ),),
                 Observer(
                     builder: (_) => Text(
                           (viewModel.getCariBakiye ?? "") + ((viewModel.cariBakiye ?? 0) > 0 ? " (Tahsil Edilecek)" : " (Ödenecek)"),
                           style: TextStyle(color: (viewModel.cariBakiye ?? 0) > 0 ? Colors.green : Colors.red),
-                        ).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.getCariBakiye != null)),
+                        ).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.getCariBakiye != null),),
                 Observer(builder: (_) => Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -227,10 +227,10 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                             suffix: IconButton(
                               onPressed: () async => await getDovizDialog(),
                               icon: const Icon(Icons.more_horiz_outlined),
-                            )),
+                            ),),
                       ).yetkiVarMi(viewModel.model.dovizTipi != null && viewModel.model.dovizTipi != 0),
                     ],
-                  )),
+                  ),),
                 Observer(builder: (_) => Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -270,7 +270,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                         ),
                       ),
                     ],
-                  )),
+                  ),),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -322,7 +322,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                       await viewModel.getMuhaRefList();
                     }
                     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
-                        title: "Referans Kodu", children: viewModel.muhaRefList!.map((e) => BottomSheetModel(title: e.tanimi ?? "", description: e.kodu, value: e)).toList());
+                        title: "Referans Kodu", children: viewModel.muhaRefList!.map((e) => BottomSheetModel(title: e.tanimi ?? "", description: e.kodu, value: e)).toList(),);
                     if (result is MuhasebeReferansModel) {
                       _referansKoduController.text = result.tanimi ?? "";
                       viewModel.setReferansKodu(result.kodu);
@@ -339,8 +339,8 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                   controller: _cariHareketiAciklamaController,
                   onChanged: (value) => viewModel.setHedefAciklama(value),
                 ),
-              ]).paddingAll(UIHelper.lowSize)),
-          )),
+              ],).paddingAll(UIHelper.lowSize),),
+          ),),
     );
 
   Future<void> getKasa() async {
@@ -404,20 +404,20 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
         BottomSheetModel(
             title: "Alış: ${viewModel.dovizKurlariListesi?.first.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.first.dovAlis,
-            iconWidget: Icons.calculate_outlined),
+            iconWidget: Icons.calculate_outlined,),
         BottomSheetModel(
             title: "Satış: ${viewModel.dovizKurlariListesi?.first.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.first.dovSatis,
-            iconWidget: Icons.calculate_outlined),
+            iconWidget: Icons.calculate_outlined,),
         BottomSheetModel(
             title: "Efektif Alış: ${viewModel.dovizKurlariListesi?.first.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.first.effAlis,
-            iconWidget: Icons.calculate_outlined),
+            iconWidget: Icons.calculate_outlined,),
         BottomSheetModel(
             title: "Efektif Satış: ${viewModel.dovizKurlariListesi?.first.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.first.effSatis,
-            iconWidget: Icons.calculate_outlined),
-      ]);
+            iconWidget: Icons.calculate_outlined,),
+      ],);
       if (result is double) {
         _dovizKuruController.text = result.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
         if (_tutarController.text != "") {

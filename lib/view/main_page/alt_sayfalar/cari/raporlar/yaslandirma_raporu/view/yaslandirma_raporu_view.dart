@@ -89,13 +89,13 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                     childrenTitleList: viewModel.sureAraligiList,
                     filterOnChanged: (index) => viewModel.changeSureAraligi(index),
                     childrenValueList: viewModel.sureAraligivalue,
-                    groupValue: viewModel.sureAraligiGroupValue)),
+                    groupValue: viewModel.sureAraligiGroupValue,),),
               const Divider(),
               Observer(builder: (_) => SlideControllerWidget(
                     childrenTitleList: viewModel.odemeTipiList,
                     filterOnChanged: (index) => viewModel.changeOdemeTipi(index),
                     childrenValueList: viewModel.odemeTipiValue,
-                    groupValue: viewModel.odemeTipiGroupValue)),
+                    groupValue: viewModel.odemeTipiGroupValue,),),
               CustomTextField(
                 labelText: "Cari",
                 controller: cariController,
@@ -126,7 +126,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                         viewModel.pdfModel.dicParams?.refTarih = result.toDateString;
                       }
                     },
-                  )),
+                  ),),
                   Expanded(
                       child: CustomTextField(
                     labelText: "Plasiyer",
@@ -137,7 +137,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                       if (plasiyerList != null) {
                         final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                             title: "Plasiyer",
-                            children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e.plasiyerKodu ?? "", onTap: () => Get.back(result: e))).toList());
+                            children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e.plasiyerKodu ?? "", onTap: () => Get.back(result: e))).toList(),);
                         if (result != null) {
                           plasiyerController.text = result.plasiyerAciklama ?? "";
                           viewModel.pdfModel.dicParams?.plasiyerKodu = result.plasiyerKodu ?? "";
@@ -145,7 +145,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                       }
                     },
                     suffixMore: true,
-                  )).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
+                  ),).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
                 ],
               ),
               Row(
@@ -161,13 +161,13 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                       final result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Tarih Tipi", children: [
                         BottomSheetModel(title: "Vade Tarihi", onTap: () => Get.back(result: "Vade Tarihi")),
                         BottomSheetModel(title: "Kayıt Tarihi", onTap: () => Get.back(result: "Kayıt Tarihi")),
-                      ]);
+                      ],);
                       if (result != null) {
                         tarihTipiController.text = result;
                         viewModel.pdfModel.dicParams?.tarihTipi = result.split("")[0];
                       }
                     },
-                  )),
+                  ),),
                   // Expanded(
                   //     child: CustomTextField(
                   //   labelText: "Vade Bitiş",
@@ -182,16 +182,16 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
               ),
               Row(children: [
                 Expanded(child: CustomTextField(labelText: "Grup Kodu", controller: grupKoduController, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(0, grupKoduController))),
-                Expanded(child: CustomTextField(labelText: "Kod 1", controller: kod1Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(1, kod1Controller)))
-              ]),
+                Expanded(child: CustomTextField(labelText: "Kod 1", controller: kod1Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(1, kod1Controller))),
+              ],),
               Row(children: [
                 Expanded(child: CustomTextField(labelText: "Kod 2", controller: kod2Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(2, kod2Controller))),
-                Expanded(child: CustomTextField(labelText: "Kod 3", controller: kod3Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(3, kod3Controller)))
-              ]),
+                Expanded(child: CustomTextField(labelText: "Kod 3", controller: kod3Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(3, kod3Controller))),
+              ],),
               Row(children: [
                 Expanded(child: CustomTextField(labelText: "Kod 4", controller: kod4Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(4, kod4Controller))),
-                Expanded(child: CustomTextField(labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, kod5Controller)))
-              ]),
+                Expanded(child: CustomTextField(labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, kod5Controller))),
+              ],),
               ElevatedButton(
                       onPressed: () {
                         if (viewModel.pdfModel.dicParams?.refTarih == null || viewModel.pdfModel.dicParams?.tarihTipi == null) {
@@ -201,11 +201,11 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                           Get.back();
                         }
                       },
-                      child: const Text("Uygula"))
-                  .paddingAll(UIHelper.lowSize)
+                      child: const Text("Uygula"),)
+                  .paddingAll(UIHelper.lowSize),
             ],
           ),
-        ));
+        ),);
     return Future.value(viewModel.futureController.value);
   }
 

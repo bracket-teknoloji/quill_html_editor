@@ -88,7 +88,7 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Observer(builder: (_) => RaporFiltreDateTimeBottomSheetView(
-                    filterOnChanged: (index) => viewModel.pdfModel.dicParams?.aralikTipi, baslangicTarihiController: baslangicTarihiController, bitisTarihiController: bitisTarihiController)),
+                    filterOnChanged: (index) => viewModel.pdfModel.dicParams?.aralikTipi, baslangicTarihiController: baslangicTarihiController, bitisTarihiController: bitisTarihiController,),),
               CustomTextField(
                 labelText: "Cari",
                 controller: cariController,
@@ -114,7 +114,7 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
                       if (plasiyerList != null) {
                         final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                             title: "Plasiyer",
-                            children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e.plasiyerKodu ?? "", onTap: () => Get.back(result: e))).toList());
+                            children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e.plasiyerKodu ?? "", onTap: () => Get.back(result: e))).toList(),);
                         if (result != null) {
                           plasiyerController.text = result.plasiyerAciklama ?? "";
                           viewModel.pdfModel.dicParams?.plasiyerKodu = result.plasiyerKodu ?? "";
@@ -122,7 +122,7 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
                       }
                     },
                     suffixMore: true,
-                  )).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
+                  ),).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
                   Expanded(
                       child: CustomTextField(
                           labelText: "Sırala",
@@ -135,31 +135,31 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
                               siralaController.text = result;
                               viewModel.pdfModel.dicParams?.sirala = result;
                             }
-                          })),
+                          },),),
                 ],
               ),
               Row(children: [
                 Expanded(child: CustomTextField(labelText: "Grup Kodu", controller: grupKoduController, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(0, grupKoduController))),
-                Expanded(child: CustomTextField(labelText: "Kod 1", controller: kod1Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(1, kod1Controller)))
-              ]),
+                Expanded(child: CustomTextField(labelText: "Kod 1", controller: kod1Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(1, kod1Controller))),
+              ],),
               Row(children: [
                 Expanded(child: CustomTextField(labelText: "Kod 2", controller: kod2Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(2, kod2Controller))),
-                Expanded(child: CustomTextField(labelText: "Kod 3", controller: kod3Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(3, kod3Controller)))
-              ]),
+                Expanded(child: CustomTextField(labelText: "Kod 3", controller: kod3Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(3, kod3Controller))),
+              ],),
               Row(children: [
                 Expanded(child: CustomTextField(labelText: "Kod 4", controller: kod4Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(4, kod4Controller))),
-                Expanded(child: CustomTextField(labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, kod5Controller)))
-              ]),
+                Expanded(child: CustomTextField(labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, kod5Controller))),
+              ],),
               Observer(builder: (_) => ElevatedButton(
                         onPressed: () {
                           viewModel.setFuture();
                           Get.back();
                         },
-                        child: const Text("Uygula"))
-                    .paddingAll(UIHelper.lowSize))
+                        child: const Text("Uygula"),)
+                    .paddingAll(UIHelper.lowSize),),
             ],
           ),
-        ));
+        ),);
     return Future.value(viewModel.futureController.value);
   }
 

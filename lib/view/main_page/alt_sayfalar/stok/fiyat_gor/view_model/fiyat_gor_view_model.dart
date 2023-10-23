@@ -28,7 +28,7 @@ abstract class _FiyatGorViewModelBase with Store {
     "Fiyat 1",
     "Fiyat 2",
     "Fiyat 3",
-    "Fiyat 4"
+    "Fiyat 4",
   ];
 
   @action

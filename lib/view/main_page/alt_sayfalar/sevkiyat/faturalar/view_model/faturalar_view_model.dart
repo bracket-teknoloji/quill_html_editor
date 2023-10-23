@@ -240,7 +240,7 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
       arrKod4: null,
       arrKod5: null,
       baslamaTarihi: null,
-      bitisTarihi: null);
+      bitisTarihi: null,);
 
   @action
   Future<void> resetPage() async {
@@ -253,7 +253,7 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getKod() async {
     final responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
-        path: ApiUrls.getGrupKodlari, bodyModel: BaseGrupKoduModel(), headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"}, queryParameters: {"Modul": "CARI", "GrupNo": "-1"});
+        path: ApiUrls.getGrupKodlari, bodyModel: BaseGrupKoduModel(), headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"}, queryParameters: {"Modul": "CARI", "GrupNo": "-1"},);
     if (responseKod.data is List) {
       changeGrupKodList(responseKod.data.cast<BaseGrupKoduModel>());
     }

@@ -55,7 +55,7 @@ class _KasaEkstreRaporuViewState extends BaseState<KasaEkstreRaporuView> {
                   viewModel.setBittar(bitisController.text);
                 },
                 baslangicTarihiController: baslangicController,
-                bitisTarihiController: bitisController),
+                bitisTarihiController: bitisController,),
             CustomTextField(
                 controller: kasaKoduController,
                 readOnly: true,
@@ -65,12 +65,12 @@ class _KasaEkstreRaporuViewState extends BaseState<KasaEkstreRaporuView> {
                 onTap: () async {
                   final List<KasaList>? kasaList = parametreModel.kasaList;
                   final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                      title: "Kasa Seçiniz", children: List.generate(kasaList?.length ?? 0, (index) => BottomSheetModel(title: kasaList?[index].kasaTanimi ?? "", value: kasaList?[index])));
+                      title: "Kasa Seçiniz", children: List.generate(kasaList?.length ?? 0, (index) => BottomSheetModel(title: kasaList?[index].kasaTanimi ?? "", value: kasaList?[index])),);
                   if (result is KasaList) {
                     viewModel.setKasaKodu(result.kasaKodu);
                     kasaKoduController.text = result.kasaTanimi ?? "";
                   }
-                }),
+                },),
             ElevatedButton(
                     onPressed: () {
                       if (viewModel.pdfModel.dicParams?.kasaKodu == null) {
@@ -80,10 +80,10 @@ class _KasaEkstreRaporuViewState extends BaseState<KasaEkstreRaporuView> {
                         Get.back();
                       }
                     },
-                    child: const Text("Uygula"))
-                .paddingAll(UIHelper.lowSize)
+                    child: const Text("Uygula"),)
+                .paddingAll(UIHelper.lowSize),
           ],
-        ).paddingAll(UIHelper.lowSize));
+        ).paddingAll(UIHelper.lowSize),);
     return Future.value(viewModel.futureController.value);
   }
 }

@@ -25,7 +25,7 @@ abstract class _SiparisKarlilikRaporuViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
       raporOzelKod: "Rapor_SiparisKarlilik",
       standart: true,
-      dicParams: DicParams());
+      dicParams: DicParams(),);
   @observable
   bool uretimFiyatiDahilMi = false;
 

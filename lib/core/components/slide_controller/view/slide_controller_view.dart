@@ -63,6 +63,6 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
                     groupValue: widget.groupValue,
                     onChanged: (index) => widget.filterOnChanged(listTileIndex),
                     child: Text(widget.childrenTitleList[listTileIndex]),
-                  ).paddingOnly(right: UIHelper.highSize))),
+                  ).paddingOnly(right: UIHelper.highSize),),),
     ).paddingAll(UIHelper.lowSize);
 }

@@ -43,7 +43,7 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
               BottomSheetModel(title: "Tahsilat Makbuzu", onTap: () async => showMakbuz(true), iconWidget: Icons.delete_outline_outlined).yetkiKontrol(isTahsilat),
               BottomSheetModel(title: "Ödeme Makbuzu", onTap: () async => showMakbuz(false), iconWidget: Icons.delete_outline_outlined).yetkiKontrol(isOdeme),
               BottomSheetModel(title: "Sil", onTap: deleteData, iconWidget: Icons.delete_outline_outlined),
-            ].nullCheckWithGeneric);
+            ].nullCheckWithGeneric,);
       },
       child: Card(
           child: ListTile(
@@ -99,9 +99,9 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
                       const Text("Açıklama", style: TextStyle(fontWeight: FontWeight.bold)),
                       Text(model?.aciklama ?? ""),
                     ].where((element) => element is! SizedBox).toList(),
-                  )
+                  ),
                 ],
-              ))),
+              ),),),
     );
 
   void deleteData() async {

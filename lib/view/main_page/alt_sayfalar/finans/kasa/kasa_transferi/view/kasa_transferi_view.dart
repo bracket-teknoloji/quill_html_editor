@@ -95,7 +95,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                 });
               }
             },
-            icon: const Icon(Icons.save_outlined))
+            icon: const Icon(Icons.save_outlined),),
       ],
     );
 
@@ -113,7 +113,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                     await viewModel.getSiradakiKod();
                     belgeNoController.text = viewModel.model.belgeNo ?? "";
                   },
-                  icon: const Icon(Icons.add_outlined)),
+                  icon: const Icon(Icons.add_outlined),),
               onChanged: (value) => viewModel.setBelgeNo(value),
             ),
             Row(
@@ -132,7 +132,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                             viewModel.setTarih(result.dateTimeWithoutTime);
                             tarihController.text = result.toDateString;
                           }
-                        })),
+                        },),),
                 Expanded(
                     child: CustomTextField(
                   labelText: "Çıkış Kasa",
@@ -149,7 +149,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                       aciklamaController.text = viewModel.aciklamaString;
                     }
                   },
-                )),
+                ),),
               ],
             ),
             Row(
@@ -181,7 +181,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                       }
                     }
                   },
-                )),
+                ),),
               ],
             ),
             Observer(builder: (_) => Row(
@@ -197,7 +197,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                     isFormattedString: true,
                     valueWidget: Observer(builder: (_) => Text(viewModel.model.dovizTipi.toStringIfNotNull ?? "")),
                     onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
-                  )).yetkiVarMi(viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null),
+                  ),).yetkiVarMi(viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null),
                   Expanded(
                       child: CustomTextField(
                           labelText: "Döviz Kuru",
@@ -217,9 +217,9 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                           suffix: IconButton(
                             onPressed: () async => await getDovizDialog(),
                             icon: const Icon(Icons.more_horiz_outlined),
-                          ))).yetkiVarMi(viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null),
+                          ),),).yetkiVarMi(viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null),
                 ],
-              )),
+              ),),
             Observer(builder: (_) => Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -235,7 +235,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                       viewModel.setTutar((viewModel.model.dovizTutari ?? 0) * (dovizKuruController.text.toDoubleWithFormattedString));
                       tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                     },
-                  )).yetkiVarMi(viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null),
+                  ),).yetkiVarMi(viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null),
                   Expanded(
                       child: CustomTextField(
                     labelText: "Tutar",
@@ -253,9 +253,9 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                         dovizTutariController.text = "";
                       }
                     },
-                  )),
+                  ),),
                 ],
-              )),
+              ),),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -274,7 +274,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                       plasiyerController.text = result.plasiyerAciklama ?? "";
                     }
                   },
-                )).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
+                ),).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                 Expanded(
                   child: CustomTextField(
                     labelText: "Proje",
@@ -291,7 +291,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                       }
                     },
                   ),
-                ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi)
+                ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
               ],
             ),
             CustomTextField(
@@ -314,20 +314,20 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
         BottomSheetModel(
             title: "Alış: ${viewModel.dovizKurlariListesi?.first.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.first.dovAlis,
-            iconWidget: Icons.calculate_outlined),
+            iconWidget: Icons.calculate_outlined,),
         BottomSheetModel(
             title: "Satış: ${viewModel.dovizKurlariListesi?.first.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.first.dovSatis,
-            iconWidget: Icons.calculate_outlined),
+            iconWidget: Icons.calculate_outlined,),
         BottomSheetModel(
             title: "Efektif Alış: ${viewModel.dovizKurlariListesi?.first.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.first.effAlis,
-            iconWidget: Icons.calculate_outlined),
+            iconWidget: Icons.calculate_outlined,),
         BottomSheetModel(
             title: "Efektif Satış: ${viewModel.dovizKurlariListesi?.first.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.first.effSatis,
-            iconWidget: Icons.calculate_outlined),
-      ]);
+            iconWidget: Icons.calculate_outlined,),
+      ],);
       if (result is double) {
         dovizKuruController.text = result.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
         if (tutarController.text != "") {

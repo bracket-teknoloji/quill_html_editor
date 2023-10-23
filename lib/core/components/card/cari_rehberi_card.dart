@@ -49,8 +49,8 @@ class _CariRehberiCardState extends BaseState<CariRehberiCard> {
                         : "${model.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"
                             "\n")
                     .toString(),
-                style: TextStyle(color: UIHelper.getColorWithValue(model.bakiye ?? 0.0)))
-          ]),
+                style: TextStyle(color: UIHelper.getColorWithValue(model.bakiye ?? 0.0)),),
+          ],),
         ),
       );
 }

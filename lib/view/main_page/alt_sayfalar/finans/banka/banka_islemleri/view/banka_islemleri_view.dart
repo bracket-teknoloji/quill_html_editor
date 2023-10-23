@@ -88,28 +88,28 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
           } else {
             return AppBarTitle(
                 title: "Banka İşlemleri",
-                subtitle: "${viewModel.getBankaIslemleriListesi?.length ?? 0}");
+                subtitle: "${viewModel.getBankaIslemleriListesi?.length ?? 0}",);
           }
-        }),
+        },),
         actions: [
           IconButton(
             onPressed: () => viewModel.changeSearchBar(),
             icon: Observer(
                 builder: (_) => Icon(viewModel.searchBar
                     ? Icons.search_off_outlined
-                    : Icons.search_outlined)),
+                    : Icons.search_outlined,),),
           ),
           IconButton(
             onPressed: filter,
             icon: const Icon(Icons.filter_alt_outlined),
-          )
+          ),
         ],
       );
 
   Observer fab() => Observer(builder: (_) => CustomFloatingActionButton(
           isScrolledDown: viewModel.isScrollDown,
           onPressed: () {},
-        ));
+        ),);
 
   Column body() => Column(
         children: [
@@ -120,7 +120,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
                     await viewModel.resetPage();
                   },
                   baslangicTarihiController: baslangicTarihiController,
-                  bitisTarihiController: bitisTarihiController)
+                  bitisTarihiController: bitisTarihiController,)
               .paddingSymmetric(horizontal: UIHelper.lowSize),
           Expanded(
             child: RefreshIndicator.adaptive(
@@ -143,9 +143,9 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
                                   bankaIslemleriModel: item,
                                   onDeleted: (deneme) {
                                     viewModel.resetPage();
-                                  });
+                                  },);
                             },
-                          )),
+                          ),),
             ),
           ),
         ],
@@ -157,16 +157,16 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
           Observer(
               builder: (_) => Text(
                   "${viewModel.gelenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                  style: const TextStyle(color: Colors.green)))
-        ]),
+                  style: const TextStyle(color: Colors.green),),),
+        ],),
         FooterButton(children: [
           const Text("Gider"),
           Observer(
               builder: (_) => Text(
                   "${viewModel.gidenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                  style: const TextStyle(color: Colors.red)))
-        ]),
-      ]));
+                  style: const TextStyle(color: Colors.red),),),
+        ],),
+      ],),);
 
   Future<void> filter() async {
     await bottomSheetDialogManager.showBottomSheetDialog(context,
@@ -207,13 +207,13 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
                     child: ElevatedButton(
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
-                                Colors.white.withOpacity(0.1))),
+                                Colors.white.withOpacity(0.1),),),
                         onPressed: () {
                           viewModel.clearFilters();
                           Get.back();
                           viewModel.resetPage();
                         },
-                        child: const Text("Temizle"))),
+                        child: const Text("Temizle"),),),
                 const SizedBox(width: 10),
                 Expanded(
                     child: ElevatedButton(
@@ -221,10 +221,10 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
                           Get.back();
                           viewModel.resetPage();
                         },
-                        child: const Text("Uygula")))
+                        child: const Text("Uygula"),),),
               ],
-            ).paddingAll(UIHelper.lowSize)
+            ).paddingAll(UIHelper.lowSize),
           ],
-        ).paddingAll(UIHelper.lowSize));
+        ).paddingAll(UIHelper.lowSize),);
   }
 }

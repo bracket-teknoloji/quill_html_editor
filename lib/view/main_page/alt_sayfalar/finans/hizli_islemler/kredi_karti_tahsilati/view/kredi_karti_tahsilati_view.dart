@@ -148,7 +148,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                       _belgeNoController.text = viewModel.model.belgeNo ?? "";
                     },
                     icon: const Icon(Icons.add_outlined),
-                  )).yetkiVarMi(viewModel.model.kktYontemi != "D")),
+                  ),).yetkiVarMi(viewModel.model.kktYontemi != "D"),),
           CustomTextField(
             labelText: "Tarih",
             controller: _tarihController,
@@ -180,12 +180,12 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                   }
                 },
                 icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
-              )),
+              ),),
           Observer(
               builder: (_) => Text(
                     (viewModel.getCariBakiye ?? "") + ((viewModel.cariBakiye ?? 0) > 0 ? " (Tahsil Edilecek)" : " (Ödenecek)"),
                     style: TextStyle(color: (viewModel.cariBakiye ?? 0) > 0 ? Colors.green : Colors.red),
-                  ).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.getCariBakiye != null)),
+                  ).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.getCariBakiye != null),),
           Observer(builder: (_) => Row(
               children: [
                 Expanded(
@@ -209,9 +209,9 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                     valueWidget: Observer(builder: (_) => Text(viewModel.model.sozlesmeKodu ?? "")),
                     onTap: () async => await getBankaSozlesmesi(),
                   ),
-                ).yetkiVarMi(viewModel.model.kktYontemi == "H")
+                ).yetkiVarMi(viewModel.model.kktYontemi == "H"),
               ],
-            )),
+            ),),
           Observer(builder: (_) => Row(
               children: [
                 Expanded(
@@ -237,14 +237,14 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                   ),
                 ),
               ],
-            ).yetkiVarMi(viewModel.model.kktYontemi == "D")),
+            ).yetkiVarMi(viewModel.model.kktYontemi == "D"),),
           Observer(builder: (_) => CustomTextField(
               labelText: "Kredi Kartı No",
               controller: _krediKartiNoController,
               keyboardType: TextInputType.number,
               maxLength: 16,
               onChanged: (value) => viewModel.setKrediKartiNo(value),
-            ).yetkiVarMi(viewModel.model.kktYontemi == "H")),
+            ).yetkiVarMi(viewModel.model.kktYontemi == "H"),),
           Row(
             children: [
               Expanded(
@@ -308,7 +308,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                       await viewModel.getMuhaRefList();
                     }
                     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
-                        title: "Referans Kodu", children: viewModel.muhaRefList!.map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e)).toList());
+                        title: "Referans Kodu", children: viewModel.muhaRefList!.map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e)).toList(),);
                     if (result is MuhasebeReferansModel) {
                       _referansKoduController.text = result.tanimi ?? "";
                       viewModel.setReferansKodu(result.kodu);
@@ -324,7 +324,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
             controller: _aciklamaController,
             onChanged: (value) => viewModel.setAciklama(value),
           ),
-        ]).paddingAll(UIHelper.lowSize),
+        ],).paddingAll(UIHelper.lowSize),
       ),
     );
 
@@ -346,7 +346,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
       BottomSheetModel(title: "Hızlı Tahsilat Modülü", value: "Hızlı Tahsilat Modülü"),
       BottomSheetModel(title: "Dekont", value: "Dekont"),
       BottomSheetModel(title: "Kasa", value: "Kasa"),
-    ]);
+    ],);
     if (result != null) {
       viewModel.setAppBarSubTitle(result);
       viewModel.setKktYontemi((result as String).substring(0, 1));
@@ -367,7 +367,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
     }
     if (viewModel.bankaSozlesmesiList.ext.isNotNullOrEmpty) {
       final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
-          title: "Banka Sözleşmesi", children: viewModel.bankaSozlesmesiList!.map((e) => BottomSheetModel(title: e.sozlesmeAdi ?? "", description: e.bankaTanimi, value: e)).toList());
+          title: "Banka Sözleşmesi", children: viewModel.bankaSozlesmesiList!.map((e) => BottomSheetModel(title: e.sozlesmeAdi ?? "", description: e.bankaTanimi, value: e)).toList(),);
       if (result is BankaSozlesmesiModel) {
         _sozlesmeController.text = result.sozlesmeAdi ?? "";
         viewModel.setSozlesmeKodu(result.sozlesmeKodu);
@@ -381,7 +381,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
     }
     if (viewModel.bankaHesaplariList.ext.isNotNullOrEmpty) {
       final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
-          title: "Banka Hesapları", children: viewModel.bankaHesaplariList!.map((e) => BottomSheetModel(title: e.hesapAdi ?? "", description: e.hesapKodu, value: e)).toList());
+          title: "Banka Hesapları", children: viewModel.bankaHesaplariList!.map((e) => BottomSheetModel(title: e.hesapAdi ?? "", description: e.hesapKodu, value: e)).toList(),);
       if (result is BankaHesaplariModel) {
         _hesapController.text = result.hesapAdi ?? "";
         viewModel.setHesapKodu(result.hesapKodu);
@@ -397,7 +397,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
     }
     if (viewModel.seriList.ext.isNotNullOrEmpty) {
       final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
-          title: "Seri", children: viewModel.seriList!.map((e) => BottomSheetModel(title: e.aciklama ?? "", description: e.seriNo, value: e)).toList());
+          title: "Seri", children: viewModel.seriList!.map((e) => BottomSheetModel(title: e.aciklama ?? "", description: e.seriNo, value: e)).toList(),);
       if (result != null) {
         _seriController.text = (result as SeriModel).aciklama ?? "";
         viewModel.setSeri(result);
