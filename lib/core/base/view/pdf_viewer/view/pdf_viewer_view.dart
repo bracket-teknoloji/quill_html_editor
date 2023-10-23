@@ -22,8 +22,7 @@ class PDFViewerView extends StatefulWidget {
   final String title;
   final PdfModel? pdfData;
   final Future Function()? filterBottomSheet;
-  const PDFViewerView(
-      {super.key, this.pdfData, this.filterBottomSheet, required this.title});
+  const PDFViewerView({super.key, this.pdfData, this.filterBottomSheet, required this.title});
 
   @override
   State<PDFViewerView> createState() => _PDFViewerViewState();
@@ -59,9 +58,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
     //* Sayfa
     return Scaffold(
       appBar: appBar(context),
-      bottomNavigationBar: Observer(
-          builder: (_) => Visibility(
-              visible: viewModel.pageCounter > 1, child: bottomAppBar())),
+      bottomNavigationBar: Observer(builder: (_) => Visibility(visible: viewModel.pageCounter > 1, child: bottomAppBar())),
       body: body(),
     );
   }
@@ -74,102 +71,91 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
   }
 
   AppBar appBar(BuildContext context) => AppBar(
-      title: Text(widget.title),
-      actions: [
-        IconButton(
-            onPressed: () async {
-              //! EKLENECEK
-              await fileChecker();
-            },
-            icon: const Icon(Icons.share_outlined)),
-        // IconButton(
-        //     onPressed: () async {
-        //😳 await bottomSheetDialogManager.showBottomSheetDialog(context,
-        //😳     title: "Yazıcı", children: CacheManager.getAnaVeri()?.paramModel?.yaziciList?.map((e) => BottomSheetModel(title: e.yaziciAdi ?? "", onTap: () {})).toList());
-        //     },
-        //     icon: const Icon(Icons.more_vert_outlined)),
-      ],
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(60),
-        child: AppBarPreferedSizedBottom(
-          children: [
-            widget.filterBottomSheet != null
-                ? AppBarButton(
+        title: Text(widget.title),
+        actions: [
+          IconButton(
+              onPressed: () async {
+                //! EKLENECEK
+                await fileChecker();
+              },
+              icon: const Icon(Icons.share_outlined)),
+          // IconButton(
+          //     onPressed: () async {
+          //😳 await bottomSheetDialogManager.showBottomSheetDialog(context,
+          //😳     title: "Yazıcı", children: CacheManager.getAnaVeri()?.paramModel?.yaziciList?.map((e) => BottomSheetModel(title: e.yaziciAdi ?? "", onTap: () {})).toList());
+          //     },
+          //     icon: const Icon(Icons.more_vert_outlined)),
+        ],
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(60),
+          child: AppBarPreferedSizedBottom(
+            children: [
+              if (widget.filterBottomSheet != null)
+                AppBarButton(
                     icon: Icons.filter_alt_outlined,
                     onPressed: () async {
-                      final bool result = widget.filterBottomSheet != null
-                          ? await widget.filterBottomSheet!()
-                          : true;
+                      final bool result = widget.filterBottomSheet != null ? await widget.filterBottomSheet!() : true;
 
                       if (result) {
                         getData();
                       }
                     },
                     child: const Text("Filtrele"))
-                : null,
-            AppBarButton(
-                icon: Icons.print_outlined,
-                child: const Text("Yazdır"),
-                onPressed: () async {
-                  final PrintModel printModel = PrintModel(
-                      raporOzelKod: widget.pdfData?.raporOzelKod ?? "",
-                      standart: true,
-                      etiketSayisi: 1,
-                      dicParams: widget.pdfData?.dicParams);
-                  await bottomSheetDialogManager.showPrintBottomSheetDialog(
-                      context, printModel, false, false);
-                }),
-            AppBarButton(
-                icon: Icons.picture_as_pdf_outlined,
-                child: const Text("PDF Görüntüle"),
-                onPressed: () async {
-                  if (await getFile != null) {
-                    OpenFile.open((await getFile)!.path);
-                  }
-                }),
-            // AppBarButton(
-            //     icon: Icons.mail_outline_outlined,
-            //     child: const Text("Mail Gönder"),
-            //     onPressed: () async {
-            //       //! EKLENECEK
-            //       await fileChecker();
-            //     }),
-          ],
+              else
+                null,
+              AppBarButton(
+                  icon: Icons.print_outlined,
+                  child: const Text("Yazdır"),
+                  onPressed: () async {
+                    final PrintModel printModel = PrintModel(raporOzelKod: widget.pdfData?.raporOzelKod ?? "", standart: true, etiketSayisi: 1, dicParams: widget.pdfData?.dicParams);
+                    await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, false, false);
+                  }),
+              AppBarButton(
+                  icon: Icons.picture_as_pdf_outlined,
+                  child: const Text("PDF Görüntüle"),
+                  onPressed: () async {
+                    if (await getFile != null) {
+                      OpenFile.open((await getFile)!.path);
+                    }
+                  }),
+              // AppBarButton(
+              //     icon: Icons.mail_outline_outlined,
+              //     child: const Text("Mail Gönder"),
+              //     onPressed: () async {
+              //       //! EKLENECEK
+              //       await fileChecker();
+              //     }),
+            ],
+          ),
         ),
-      ),
-    );
+      );
 
   Observer body() => Observer(builder: (_) {
-      if (viewModel.futureController.value == true &&
-          viewModel.pdfFile != null) {
-        return Observer(
-            builder: (_) => SfPdfViewer.file(
-                  viewModel.pdfFile!,
-                  controller: pdfViewerController,
-                  interactionMode: PdfInteractionMode.selection,
-                  onTextSelectionChanged: (details) {
-                    if (Platform.isAndroid || Platform.isIOS) {
-                      if (details.selectedText == null &&
-                          overlayEntry != null) {
-                        overlayEntry?.remove();
-                        overlayEntry = null;
-                      } else if (details.selectedText != null &&
-                          overlayEntry == null) {
-                        showContextMenu(context, details);
+        if (viewModel.futureController.value == true && viewModel.pdfFile != null) {
+          return Observer(
+              builder: (_) => SfPdfViewer.file(
+                    viewModel.pdfFile!,
+                    controller: pdfViewerController,
+                    interactionMode: PdfInteractionMode.selection,
+                    onTextSelectionChanged: (details) {
+                      if (Platform.isAndroid || Platform.isIOS) {
+                        if (details.selectedText == null && overlayEntry != null) {
+                          overlayEntry?.remove();
+                          overlayEntry = null;
+                        } else if (details.selectedText != null && overlayEntry == null) {
+                          showContextMenu(context, details);
+                        }
                       }
-                    }
-                  },
-                  onDocumentLoaded: (details) =>
-                      viewModel.changePageCounter(details.document.pages.count),
-                  onPageChanged: (details) =>
-                      viewModel.changeCurrentPage(details.newPageNumber - 1),
-                ));
-      } else if (viewModel.futureController.value == null) {
-        return const Center(child: CircularProgressIndicator.adaptive());
-      } else {
-        return const Center();
-      }
-    });
+                    },
+                    onDocumentLoaded: (details) => viewModel.changePageCounter(details.document.pages.count),
+                    onPageChanged: (details) => viewModel.changeCurrentPage(details.newPageNumber - 1),
+                  ));
+        } else if (viewModel.futureController.value == null) {
+          return const Center(child: CircularProgressIndicator.adaptive());
+        } else {
+          return const Center();
+        }
+      });
 
   BottomAppBar bottomAppBar() => BottomAppBar(
       height: 70,
@@ -177,21 +163,11 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Expanded(
-              child: Observer(builder: (_) => Text(viewModel.getPageCounter))),
-          IconButton(
-              onPressed: () => pdfViewerController.firstPage(),
-              icon: const Icon(Icons.first_page_outlined)),
-          IconButton(
-              onPressed: () => pdfViewerController.previousPage(),
-              icon: const Icon(Icons.arrow_back_outlined)),
-          IconButton(
-              onPressed: () => pdfViewerController.nextPage(),
-              icon: const Icon(Icons.arrow_forward_outlined)),
-          Observer(
-              builder: (_) => IconButton(
-                  onPressed: () => pdfViewerController.lastPage(),
-                  icon: const Icon(Icons.last_page_outlined))),
+          Expanded(child: Observer(builder: (_) => Text(viewModel.getPageCounter))),
+          IconButton(onPressed: () => pdfViewerController.firstPage(), icon: const Icon(Icons.first_page_outlined)),
+          IconButton(onPressed: () => pdfViewerController.previousPage(), icon: const Icon(Icons.arrow_back_outlined)),
+          IconButton(onPressed: () => pdfViewerController.nextPage(), icon: const Icon(Icons.arrow_forward_outlined)),
+          Observer(builder: (_) => IconButton(onPressed: () => pdfViewerController.lastPage(), icon: const Icon(Icons.last_page_outlined))),
         ],
       ));
   Future getData() async {
@@ -209,11 +185,9 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
 
   Future<void> fileChecker() async {
     if (await getFile != null) {
-      Share.shareXFiles([XFile((await getFile)!.path)],
-          subject: "Pdf Paylaşımı");
+      Share.shareXFiles([XFile((await getFile)!.path)], subject: "Pdf Paylaşımı");
     } else {
-      dialogManager
-          .showErrorSnackBar("Dosya bulunamadı. Lütfen tekrar deneyiniz.");
+      dialogManager.showErrorSnackBar("Dosya bulunamadı. Lütfen tekrar deneyiniz.");
     }
   }
 
@@ -232,8 +206,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
     return file.lengthSync() > 0 ? file : null;
   }
 
-  void showContextMenu(
-      BuildContext context, PdfTextSelectionChangedDetails details) {
+  void showContextMenu(BuildContext context, PdfTextSelectionChangedDetails details) {
     final OverlayState overlayState = Overlay.of(context);
     overlayEntry = OverlayEntry(
       builder: (context) => Positioned(

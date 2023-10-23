@@ -14,30 +14,31 @@ class AppBarButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          alignment: Alignment.center,
-          padding: UIHelper.zeroPadding,
-          textStyle: const TextStyle(fontSize: 12),
-          backgroundColor: UIHelper.primaryColor.withOpacity(0.1),
-          shadowColor: Colors.transparent,
-          elevation: 0,
-        ),
-        onPressed: onPressed,
-        child: Wrap(
-            alignment: WrapAlignment.center,
-            runAlignment: WrapAlignment.start,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            direction: context.isPortrait ? Axis.vertical : Axis.horizontal,
-            children: [
-              icon != null
-                  ? Icon(
-                      icon,
-                      size: 20,
-                      fill: 1,
-                      color: (hasFilter ?? false) ? UIHelper.primaryColor : null,
-                    )
-                  : null,
-              iconWidget ?? const SizedBox(),
-              child
-            ].nullCheckWithGeneric));
+      style: ElevatedButton.styleFrom(
+        alignment: Alignment.center,
+        padding: UIHelper.zeroPadding,
+        textStyle: const TextStyle(fontSize: 12),
+        backgroundColor: UIHelper.primaryColor.withOpacity(0.1),
+        shadowColor: Colors.transparent,
+        elevation: 0,
+      ),
+      onPressed: onPressed,
+      child: Wrap(
+          alignment: WrapAlignment.center,
+          runAlignment: WrapAlignment.start,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          direction: context.isPortrait ? Axis.vertical : Axis.horizontal,
+          children: [
+            if (icon != null)
+              Icon(
+                icon,
+                size: 20,
+                fill: 1,
+                color: (hasFilter ?? false) ? UIHelper.primaryColor : null,
+              )
+            else
+              null,
+            iconWidget ?? const SizedBox(),
+            child
+          ].nullCheckWithGeneric));
 }

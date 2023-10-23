@@ -19,56 +19,39 @@ class _EndDrawerState extends BaseState<EndDrawer> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) => Drawer(
-        child: Column(
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        SizedBox(
+          height: height * 0.3,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-          SizedBox(
-            height: height * 0.3,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                    child: LottieBuilder.network(
-                        "https://assets9.lottiefiles.com/packages/lf20_yMpiqXia1k.json")),
-                Text(CacheManager.getAnaVeri()!.userModel?.adSoyad ?? "",
-                    style: theme.textTheme.bodyLarge),
-                Text(CacheManager.getVerifiedUser.account?.firma ?? "",
-                    style: theme.textTheme.bodyMedium),
-                Text("Profil", style: theme.textTheme.bodySmall)
-                    .marginOnly(top: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CacheManager.getAnaVeri()!.userModel!.admin == "E"
-                        ? Icon(Icons.local_police_outlined,
-                                color: UIHelper.primaryColor, size: 20)
-                            .marginOnly(right: 5)
-                        : const SizedBox(),
-                    Text(
-                        CacheManager.getAnaVeri()!.userModel?.profilAdi ??
-                            "Yetkili Kullanıcı",
-                        style:
-                            CacheManager.getAnaVeri()!.userModel?.admin == "E"
-                                ? theme.textTheme.bodyMedium?.copyWith(
-                                    color: UIHelper.primaryColor,
-                                    fontWeight: FontWeight.bold)
-                                : theme.textTheme.bodySmall),
-                  ],
-                ).marginOnly(bottom: 10),
-              ],
-            ),
+              Expanded(child: LottieBuilder.network("https://assets9.lottiefiles.com/packages/lf20_yMpiqXia1k.json")),
+              Text(CacheManager.getAnaVeri()!.userModel?.adSoyad ?? "", style: theme.textTheme.bodyLarge),
+              Text(CacheManager.getVerifiedUser.account?.firma ?? "", style: theme.textTheme.bodyMedium),
+              Text("Profil", style: theme.textTheme.bodySmall).marginOnly(top: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  if (CacheManager.getAnaVeri()!.userModel!.admin == "E") Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: 5) else const SizedBox(),
+                  Text(CacheManager.getAnaVeri()!.userModel?.profilAdi ?? "Yetkili Kullanıcı",
+                      style: CacheManager.getAnaVeri()!.userModel?.admin == "E"
+                          ? theme.textTheme.bodyMedium?.copyWith(color: UIHelper.primaryColor, fontWeight: FontWeight.bold)
+                          : theme.textTheme.bodySmall),
+                ],
+              ).marginOnly(bottom: 10),
+            ],
           ),
-          const Divider(
-            endIndent: 0,
-            indent: 0,
-          ),
-          Expanded(
-            child: ListView.separated(
-                padding: UIHelper.zeroPadding,
-                itemBuilder: (context, index) => ListTile(
+        ),
+        const Divider(
+          endIndent: 0,
+          indent: 0,
+        ),
+        Expanded(
+          child: ListView.separated(
+              padding: UIHelper.zeroPadding,
+              itemBuilder: (context, index) => ListTile(
                     dense: true,
                     title: Text(
                       "${DrawerMenuItems().items[index]}",
@@ -76,91 +59,72 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                     ),
                     horizontalTitleGap: 0,
                     leading: DrawerMenuItems().items[index].iconWidget != null
-                        ? Icon(DrawerMenuItems().items[index].iconWidget,
-                            size: 20, color: theme.colorScheme.primary)
-                        : IconHelper.smallIcon(
-                                DrawerMenuItems().items[index].icon.toString(),
-                                color: theme.colorScheme.primary)
-                            .marginZero,
+                        ? Icon(DrawerMenuItems().items[index].iconWidget, size: 20, color: theme.colorScheme.primary)
+                        : IconHelper.smallIcon(DrawerMenuItems().items[index].icon.toString(), color: theme.colorScheme.primary).marginZero,
                   ),
-                separatorBuilder: (context, index) => const Divider(),
-                itemCount: DrawerMenuItems().items.length),
-          ),
-          Expanded(
-            child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border(
-                              top: BorderSide(
-                                  color: theme.dividerColor, width: 0.1)),
+              separatorBuilder: (context, index) => const Divider(),
+              itemCount: DrawerMenuItems().items.length),
+        ),
+        Expanded(
+          child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border(top: BorderSide(color: theme.dividerColor, width: 0.1)),
+                      ),
+                      child: TextButton(
+                        style: ButtonStyle(
+                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(borderRadius: UIHelper.zeroBorderRadius),
+                          ),
                         ),
-                        child: TextButton(
-                          style: ButtonStyle(
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                  borderRadius: UIHelper.zeroBorderRadius),
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                            Get.toNamed("/entryCompany");
-                          },
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              IconHelper.smallIcon("sirket_degistir",
-                                      color: UIHelper.primaryColor, size: 24)
-                                  .marginOnly(right: 10),
-                              Text("Şirket Değiştir",
-                                  style: theme.textTheme.bodySmall),
-                            ],
-                          ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Get.toNamed("/entryCompany");
+                        },
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            IconHelper.smallIcon("sirket_degistir", color: UIHelper.primaryColor, size: 24).marginOnly(right: 10),
+                            Text("Şirket Değiştir", style: theme.textTheme.bodySmall),
+                          ],
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border(
-                              top: BorderSide(
-                                  color: theme.dividerColor, width: 0.1),
-                              left: BorderSide(
-                                  color: theme.dividerColor, width: 0.1)),
+                  ),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border(top: BorderSide(color: theme.dividerColor, width: 0.1), left: BorderSide(color: theme.dividerColor, width: 0.1)),
+                      ),
+                      child: TextButton(
+                        style: ButtonStyle(
+                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(borderRadius: UIHelper.zeroBorderRadius),
+                          ),
                         ),
-                        child: TextButton(
-                          style: ButtonStyle(
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                  borderRadius: UIHelper.zeroBorderRadius),
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                            dialogManager.showExitDialog();
-                          },
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.logout_outlined,
-                                      color: UIHelper.primaryColor, size: 24)
-                                  .marginOnly(right: 10),
-                              Text("Çıkış", style: theme.textTheme.bodySmall),
-                            ],
-                          ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          dialogManager.showExitDialog();
+                        },
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.logout_outlined, color: UIHelper.primaryColor, size: 24).marginOnly(right: 10),
+                            Text("Çıkış", style: theme.textTheme.bodySmall),
+                          ],
                         ),
                       ),
                     ),
-                  ],
-                )),
-          )
-        ]));
+                  ),
+                ],
+              )),
+        )
+      ]));
 }
