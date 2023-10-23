@@ -6,7 +6,9 @@ part of 'temsilci_profil_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-TemsilciProfilRequestModel _$TemsilciProfilRequestModelFromJson(Map<String, dynamic> json) => TemsilciProfilRequestModel(
+TemsilciProfilRequestModel _$TemsilciProfilRequestModelFromJson(
+        Map<String, dynamic> json) =>
+    TemsilciProfilRequestModel(
       cariKodu: json['CariKodu'] as String?,
       donemTipi: json['DonemTipi'] as String?,
       satisIrsDahil: json['SATIS_IRS_DAHIL'] as String?,
@@ -15,7 +17,8 @@ TemsilciProfilRequestModel _$TemsilciProfilRequestModelFromJson(Map<String, dyna
       iadeDurumu: json['IadeDurumu'] as String?,
     );
 
-Map<String, dynamic> _$TemsilciProfilRequestModelToJson(TemsilciProfilRequestModel instance) {
+Map<String, dynamic> _$TemsilciProfilRequestModelToJson(
+    TemsilciProfilRequestModel instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

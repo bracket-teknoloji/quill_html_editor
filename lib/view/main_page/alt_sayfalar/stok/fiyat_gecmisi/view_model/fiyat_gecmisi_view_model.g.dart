@@ -9,7 +9,8 @@ part of 'fiyat_gecmisi_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
-  late final _$modelAtom = Atom(name: '_FiyatGecmisiViewModelBase.model', context: context);
+  late final _$modelAtom =
+      Atom(name: '_FiyatGecmisiViewModelBase.model', context: context);
 
   @override
   FiyatGecmisiModel get model {
@@ -24,7 +25,8 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
     });
   }
 
-  late final _$modelListAtom = Atom(name: '_FiyatGecmisiViewModelBase.modelList', context: context);
+  late final _$modelListAtom =
+      Atom(name: '_FiyatGecmisiViewModelBase.modelList', context: context);
 
   @override
   ObservableList<FiyatGecmisiResponseModel?>? get modelList {
@@ -39,7 +41,8 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
     });
   }
 
-  late final _$filteredModelListAtom = Atom(name: '_FiyatGecmisiViewModelBase.filteredModelList', context: context);
+  late final _$filteredModelListAtom = Atom(
+      name: '_FiyatGecmisiViewModelBase.filteredModelList', context: context);
 
   @override
   ObservableList<FiyatGecmisiResponseModel?>? get filteredModelList {
@@ -54,7 +57,8 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
     });
   }
 
-  late final _$printModelAtom = Atom(name: '_FiyatGecmisiViewModelBase.printModel', context: context);
+  late final _$printModelAtom =
+      Atom(name: '_FiyatGecmisiViewModelBase.printModel', context: context);
 
   @override
   PrintModel get printModel {
@@ -69,7 +73,8 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
     });
   }
 
-  late final _$searchBarAtom = Atom(name: '_FiyatGecmisiViewModelBase.searchBar', context: context);
+  late final _$searchBarAtom =
+      Atom(name: '_FiyatGecmisiViewModelBase.searchBar', context: context);
 
   @override
   bool get searchBar {
@@ -84,7 +89,8 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
     });
   }
 
-  late final _$alisSatisGroupValueAtom = Atom(name: '_FiyatGecmisiViewModelBase.alisSatisGroupValue', context: context);
+  late final _$alisSatisGroupValueAtom = Atom(
+      name: '_FiyatGecmisiViewModelBase.alisSatisGroupValue', context: context);
 
   @override
   String get alisSatisGroupValue {
@@ -99,7 +105,8 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
     });
   }
 
-  late final _$yazdirmaGroupValueAtom = Atom(name: '_FiyatGecmisiViewModelBase.yazdirmaGroupValue', context: context);
+  late final _$yazdirmaGroupValueAtom = Atom(
+      name: '_FiyatGecmisiViewModelBase.yazdirmaGroupValue', context: context);
 
   @override
   String get yazdirmaGroupValue {
@@ -114,7 +121,8 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
     });
   }
 
-  late final _$fiyatTipiGroupValueAtom = Atom(name: '_FiyatGecmisiViewModelBase.fiyatTipiGroupValue', context: context);
+  late final _$fiyatTipiGroupValueAtom = Atom(
+      name: '_FiyatGecmisiViewModelBase.fiyatTipiGroupValue', context: context);
 
   @override
   String get fiyatTipiGroupValue {
@@ -129,11 +137,13 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
     });
   }
 
-  late final _$_FiyatGecmisiViewModelBaseActionController = ActionController(name: '_FiyatGecmisiViewModelBase', context: context);
+  late final _$_FiyatGecmisiViewModelBaseActionController =
+      ActionController(name: '_FiyatGecmisiViewModelBase', context: context);
 
   @override
   void setDizaynId(int? value) {
-    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController.startAction(name: '_FiyatGecmisiViewModelBase.setDizaynId');
+    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController
+        .startAction(name: '_FiyatGecmisiViewModelBase.setDizaynId');
     try {
       return super.setDizaynId(value);
     } finally {
@@ -143,7 +153,8 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
 
   @override
   void setYaziciAdi(YaziciList? value) {
-    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController.startAction(name: '_FiyatGecmisiViewModelBase.setYaziciAdi');
+    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController
+        .startAction(name: '_FiyatGecmisiViewModelBase.setYaziciAdi');
     try {
       return super.setYaziciAdi(value);
     } finally {
@@ -153,7 +164,8 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
 
   @override
   void setDicParams(DicParams? value) {
-    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController.startAction(name: '_FiyatGecmisiViewModelBase.setDicParams');
+    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController
+        .startAction(name: '_FiyatGecmisiViewModelBase.setDicParams');
     try {
       return super.setDicParams(value);
     } finally {
@@ -163,7 +175,8 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
 
   @override
   void filterModelList(String value) {
-    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController.startAction(name: '_FiyatGecmisiViewModelBase.filterModelList');
+    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController
+        .startAction(name: '_FiyatGecmisiViewModelBase.filterModelList');
     try {
       return super.filterModelList(value);
     } finally {
@@ -173,7 +186,8 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
 
   @override
   void replaceModelList(FiyatGecmisiResponseModel? value) {
-    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController.startAction(name: '_FiyatGecmisiViewModelBase.replaceModelList');
+    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController
+        .startAction(name: '_FiyatGecmisiViewModelBase.replaceModelList');
     try {
       return super.replaceModelList(value);
     } finally {
@@ -183,7 +197,8 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
 
   @override
   void setModelList(List<FiyatGecmisiResponseModel?>? modelList) {
-    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController.startAction(name: '_FiyatGecmisiViewModelBase.setModelList');
+    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController
+        .startAction(name: '_FiyatGecmisiViewModelBase.setModelList');
     try {
       return super.setModelList(modelList);
     } finally {
@@ -193,7 +208,8 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
 
   @override
   void setSearchBar() {
-    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController.startAction(name: '_FiyatGecmisiViewModelBase.setSearchBar');
+    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController
+        .startAction(name: '_FiyatGecmisiViewModelBase.setSearchBar');
     try {
       return super.setSearchBar();
     } finally {
@@ -203,7 +219,8 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
 
   @override
   void setAlisSatisGroupValue(int value) {
-    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController.startAction(name: '_FiyatGecmisiViewModelBase.setAlisSatisGroupValue');
+    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController
+        .startAction(name: '_FiyatGecmisiViewModelBase.setAlisSatisGroupValue');
     try {
       return super.setAlisSatisGroupValue(value);
     } finally {
@@ -213,7 +230,8 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
 
   @override
   void setYazdirmaGroupValue(int value) {
-    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController.startAction(name: '_FiyatGecmisiViewModelBase.setYazdirmaGroupValue');
+    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController
+        .startAction(name: '_FiyatGecmisiViewModelBase.setYazdirmaGroupValue');
     try {
       return super.setYazdirmaGroupValue(value);
     } finally {
@@ -223,7 +241,8 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
 
   @override
   void setfiyatTipiGroupValue(int value) {
-    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController.startAction(name: '_FiyatGecmisiViewModelBase.setfiyatTipiGroupValue');
+    final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController
+        .startAction(name: '_FiyatGecmisiViewModelBase.setfiyatTipiGroupValue');
     try {
       return super.setfiyatTipiGroupValue(value);
     } finally {

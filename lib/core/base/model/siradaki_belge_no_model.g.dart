@@ -6,7 +6,9 @@ part of 'siradaki_belge_no_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-SiradakiBelgeNoModel _$SiradakiBelgeNoModelFromJson(Map<String, dynamic> json) => SiradakiBelgeNoModel(
+SiradakiBelgeNoModel _$SiradakiBelgeNoModelFromJson(
+        Map<String, dynamic> json) =>
+    SiradakiBelgeNoModel(
       seri: json['Seri'] as String?,
       belgeTipi: json['BelgeTipi'] as String?,
       eIrsaliye: json['EIrsaliye'] as String?,
@@ -14,7 +16,8 @@ SiradakiBelgeNoModel _$SiradakiBelgeNoModelFromJson(Map<String, dynamic> json) =
       belgeNo: json['BelgeNo'] as String?,
     );
 
-Map<String, dynamic> _$SiradakiBelgeNoModelToJson(SiradakiBelgeNoModel instance) {
+Map<String, dynamic> _$SiradakiBelgeNoModelToJson(
+    SiradakiBelgeNoModel instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

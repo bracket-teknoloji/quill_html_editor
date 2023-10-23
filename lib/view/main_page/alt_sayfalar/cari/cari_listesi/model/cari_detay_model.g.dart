@@ -126,94 +126,120 @@ class _$CariDetayModelCWProxyImpl implements _$CariDetayModelCWProxy {
   CariDetayModel cariAdi(String? cariAdi) => this(cariAdi: cariAdi);
 
   @override
-  CariDetayModel riskBorcToplami(double? riskBorcToplami) => this(riskBorcToplami: riskBorcToplami);
+  CariDetayModel riskBorcToplami(double? riskBorcToplami) =>
+      this(riskBorcToplami: riskBorcToplami);
 
   @override
-  CariDetayModel riskAlacakToplami(double? riskAlacakToplami) => this(riskAlacakToplami: riskAlacakToplami);
+  CariDetayModel riskAlacakToplami(double? riskAlacakToplami) =>
+      this(riskAlacakToplami: riskAlacakToplami);
 
   @override
   CariDetayModel riskBakiye(double? riskBakiye) => this(riskBakiye: riskBakiye);
 
   @override
-  CariDetayModel teminatRiski(double? teminatRiski) => this(teminatRiski: teminatRiski);
+  CariDetayModel teminatRiski(double? teminatRiski) =>
+      this(teminatRiski: teminatRiski);
 
   @override
-  CariDetayModel cekAsilRiski(double? cekAsilRiski) => this(cekAsilRiski: cekAsilRiski);
+  CariDetayModel cekAsilRiski(double? cekAsilRiski) =>
+      this(cekAsilRiski: cekAsilRiski);
 
   @override
-  CariDetayModel cekCiroRiski(double? cekCiroRiski) => this(cekCiroRiski: cekCiroRiski);
+  CariDetayModel cekCiroRiski(double? cekCiroRiski) =>
+      this(cekCiroRiski: cekCiroRiski);
 
   @override
-  CariDetayModel senetAsilRiski(double? senetAsilRiski) => this(senetAsilRiski: senetAsilRiski);
+  CariDetayModel senetAsilRiski(double? senetAsilRiski) =>
+      this(senetAsilRiski: senetAsilRiski);
 
   @override
-  CariDetayModel senetCiroRiski(double? senetCiroRiski) => this(senetCiroRiski: senetCiroRiski);
+  CariDetayModel senetCiroRiski(double? senetCiroRiski) =>
+      this(senetCiroRiski: senetCiroRiski);
 
   @override
-  CariDetayModel irsaliyeRiski(double? irsaliyeRiski) => this(irsaliyeRiski: irsaliyeRiski);
+  CariDetayModel irsaliyeRiski(double? irsaliyeRiski) =>
+      this(irsaliyeRiski: irsaliyeRiski);
 
   @override
-  CariDetayModel siparisRiski(double? siparisRiski) => this(siparisRiski: siparisRiski);
+  CariDetayModel siparisRiski(double? siparisRiski) =>
+      this(siparisRiski: siparisRiski);
 
   @override
   CariDetayModel sevkRiski(double? sevkRiski) => this(sevkRiski: sevkRiski);
 
   @override
-  CariDetayModel yuklemeRiski(double? yuklemeRiski) => this(yuklemeRiski: yuklemeRiski);
+  CariDetayModel yuklemeRiski(double? yuklemeRiski) =>
+      this(yuklemeRiski: yuklemeRiski);
 
   @override
-  CariDetayModel bilinmeyenRiskField(double? bilinmeyenRiskField) => this(bilinmeyenRiskField: bilinmeyenRiskField);
+  CariDetayModel bilinmeyenRiskField(double? bilinmeyenRiskField) =>
+      this(bilinmeyenRiskField: bilinmeyenRiskField);
 
   @override
-  CariDetayModel brutRiskToplami(double? brutRiskToplami) => this(brutRiskToplami: brutRiskToplami);
+  CariDetayModel brutRiskToplami(double? brutRiskToplami) =>
+      this(brutRiskToplami: brutRiskToplami);
 
   @override
-  CariDetayModel hareketBakiyeRiskO(double? hareketBakiyeRiskO) => this(hareketBakiyeRiskO: hareketBakiyeRiskO);
+  CariDetayModel hareketBakiyeRiskO(double? hareketBakiyeRiskO) =>
+      this(hareketBakiyeRiskO: hareketBakiyeRiskO);
 
   @override
-  CariDetayModel teminatRiskO(double? teminatRiskO) => this(teminatRiskO: teminatRiskO);
+  CariDetayModel teminatRiskO(double? teminatRiskO) =>
+      this(teminatRiskO: teminatRiskO);
 
   @override
-  CariDetayModel senetAsilRiskO(double? senetAsilRiskO) => this(senetAsilRiskO: senetAsilRiskO);
+  CariDetayModel senetAsilRiskO(double? senetAsilRiskO) =>
+      this(senetAsilRiskO: senetAsilRiskO);
 
   @override
-  CariDetayModel senetCiroRiskO(double? senetCiroRiskO) => this(senetCiroRiskO: senetCiroRiskO);
+  CariDetayModel senetCiroRiskO(double? senetCiroRiskO) =>
+      this(senetCiroRiskO: senetCiroRiskO);
 
   @override
-  CariDetayModel cekAsilRiskO(double? cekAsilRiskO) => this(cekAsilRiskO: cekAsilRiskO);
+  CariDetayModel cekAsilRiskO(double? cekAsilRiskO) =>
+      this(cekAsilRiskO: cekAsilRiskO);
 
   @override
-  CariDetayModel cekCiroRiskO(double? cekCiroRiskO) => this(cekCiroRiskO: cekCiroRiskO);
+  CariDetayModel cekCiroRiskO(double? cekCiroRiskO) =>
+      this(cekCiroRiskO: cekCiroRiskO);
 
   @override
-  CariDetayModel siparisRiskO(double? siparisRiskO) => this(siparisRiskO: siparisRiskO);
+  CariDetayModel siparisRiskO(double? siparisRiskO) =>
+      this(siparisRiskO: siparisRiskO);
 
   @override
   CariDetayModel sevkRiskO(double? sevkRiskO) => this(sevkRiskO: sevkRiskO);
 
   @override
-  CariDetayModel yuklemeRiskO(double? yuklemeRiskO) => this(yuklemeRiskO: yuklemeRiskO);
+  CariDetayModel yuklemeRiskO(double? yuklemeRiskO) =>
+      this(yuklemeRiskO: yuklemeRiskO);
 
   @override
-  CariDetayModel irsaliyeRiskO(double? irsaliyeRiskO) => this(irsaliyeRiskO: irsaliyeRiskO);
+  CariDetayModel irsaliyeRiskO(double? irsaliyeRiskO) =>
+      this(irsaliyeRiskO: irsaliyeRiskO);
 
   @override
   CariDetayModel riskLimiti(double? riskLimiti) => this(riskLimiti: riskLimiti);
 
   @override
-  CariDetayModel teminatTutari(double? teminatTutari) => this(teminatTutari: teminatTutari);
+  CariDetayModel teminatTutari(double? teminatTutari) =>
+      this(teminatTutari: teminatTutari);
 
   @override
-  CariDetayModel irtibatList(List<IrtibatList>? irtibatList) => this(irtibatList: irtibatList);
+  CariDetayModel irtibatList(List<IrtibatList>? irtibatList) =>
+      this(irtibatList: irtibatList);
 
   @override
-  CariDetayModel bankaList(List<BankaList>? bankaList) => this(bankaList: bankaList);
+  CariDetayModel bankaList(List<BankaList>? bankaList) =>
+      this(bankaList: bankaList);
 
   @override
-  CariDetayModel cariList(List<CariListesiModel>? cariList) => this(cariList: cariList);
+  CariDetayModel cariList(List<CariListesiModel>? cariList) =>
+      this(cariList: cariList);
 
   @override
-  CariDetayModel bakiyeList(List<BakiyeList>? bakiyeList) => this(bakiyeList: bakiyeList);
+  CariDetayModel bakiyeList(List<BakiyeList>? bakiyeList) =>
+      this(bakiyeList: bakiyeList);
 
   @override
 
@@ -400,7 +426,8 @@ extension $CariDetayModelCopyWith on CariDetayModel {
 // JsonSerializableGenerator
 // **************************************************************************
 
-CariDetayModel _$CariDetayModelFromJson(Map<String, dynamic> json) => CariDetayModel(
+CariDetayModel _$CariDetayModelFromJson(Map<String, dynamic> json) =>
+    CariDetayModel(
       cariKodu: json['CARI_KODU'] as String?,
       cariAdi: json['CARI_ADI'] as String?,
       riskBorcToplami: (json['RISK_BORC_TOPLAMI'] as num?)?.toDouble(),
@@ -429,10 +456,18 @@ CariDetayModel _$CariDetayModelFromJson(Map<String, dynamic> json) => CariDetayM
       irsaliyeRiskO: (json['IRSALIYE_RISK_O'] as num?)?.toDouble(),
       riskLimiti: (json['RISK_LIMITI'] as num?)?.toDouble(),
       teminatTutari: (json['TEMINAT_TUTARI'] as num?)?.toDouble(),
-      irtibatList: (json['IrtibatList'] as List<dynamic>?)?.map((e) => IrtibatList.fromJson(e as Map<String, dynamic>)).toList(),
-      bankaList: (json['BankaList'] as List<dynamic>?)?.map((e) => BankaList.fromJson(e as Map<String, dynamic>)).toList(),
-      cariList: (json['CariList'] as List<dynamic>?)?.map((e) => CariListesiModel.fromJson(e as Map<String, dynamic>)).toList(),
-      bakiyeList: (json['BakiyeList'] as List<dynamic>?)?.map((e) => BakiyeList.fromJson(e as Map<String, dynamic>)).toList(),
+      irtibatList: (json['IrtibatList'] as List<dynamic>?)
+          ?.map((e) => IrtibatList.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      bankaList: (json['BankaList'] as List<dynamic>?)
+          ?.map((e) => BankaList.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      cariList: (json['CariList'] as List<dynamic>?)
+          ?.map((e) => CariListesiModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      bakiyeList: (json['BakiyeList'] as List<dynamic>?)
+          ?.map((e) => BakiyeList.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$CariDetayModelToJson(CariDetayModel instance) {
@@ -472,10 +507,13 @@ Map<String, dynamic> _$CariDetayModelToJson(CariDetayModel instance) {
   writeNotNull('IRSALIYE_RISK_O', instance.irsaliyeRiskO);
   writeNotNull('RISK_LIMITI', instance.riskLimiti);
   writeNotNull('TEMINAT_TUTARI', instance.teminatTutari);
-  writeNotNull('IrtibatList', instance.irtibatList?.map((e) => e.toJson()).toList());
-  writeNotNull('BankaList', instance.bankaList?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'IrtibatList', instance.irtibatList?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'BankaList', instance.bankaList?.map((e) => e.toJson()).toList());
   writeNotNull('CariList', instance.cariList?.map((e) => e.toJson()).toList());
-  writeNotNull('BakiyeList', instance.bakiyeList?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'BakiyeList', instance.bakiyeList?.map((e) => e.toJson()).toList());
   return val;
 }
 

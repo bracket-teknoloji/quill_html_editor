@@ -12,19 +12,32 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
   Computed<double>? _$gelenTutarComputed;
 
   @override
-  double get gelenTutar => (_$gelenTutarComputed ??= Computed<double>(() => super.gelenTutar, name: '_BankaIslemleriViewModelBase.gelenTutar')).value;
+  double get gelenTutar =>
+      (_$gelenTutarComputed ??= Computed<double>(() => super.gelenTutar,
+              name: '_BankaIslemleriViewModelBase.gelenTutar'))
+          .value;
   Computed<double>? _$gidenTutarComputed;
 
   @override
-  double get gidenTutar => (_$gidenTutarComputed ??= Computed<double>(() => super.gidenTutar, name: '_BankaIslemleriViewModelBase.gidenTutar')).value;
-  Computed<ObservableList<BankaIslemleriModel>?>? _$getBankaIslemleriListesiComputed;
+  double get gidenTutar =>
+      (_$gidenTutarComputed ??= Computed<double>(() => super.gidenTutar,
+              name: '_BankaIslemleriViewModelBase.gidenTutar'))
+          .value;
+  Computed<ObservableList<BankaIslemleriModel>?>?
+      _$getBankaIslemleriListesiComputed;
 
   @override
   ObservableList<BankaIslemleriModel>? get getBankaIslemleriListesi =>
-      (_$getBankaIslemleriListesiComputed ??= Computed<ObservableList<BankaIslemleriModel>?>(() => super.getBankaIslemleriListesi, name: '_BankaIslemleriViewModelBase.getBankaIslemleriListesi'))
+      (_$getBankaIslemleriListesiComputed ??=
+              Computed<ObservableList<BankaIslemleriModel>?>(
+                  () => super.getBankaIslemleriListesi,
+                  name:
+                      '_BankaIslemleriViewModelBase.getBankaIslemleriListesi'))
           .value;
 
-  late final _$bankaIslemleriRequestModelAtom = Atom(name: '_BankaIslemleriViewModelBase.bankaIslemleriRequestModel', context: context);
+  late final _$bankaIslemleriRequestModelAtom = Atom(
+      name: '_BankaIslemleriViewModelBase.bankaIslemleriRequestModel',
+      context: context);
 
   @override
   BankaIslemleriRequestModel get bankaIslemleriRequestModel {
@@ -34,12 +47,14 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
 
   @override
   set bankaIslemleriRequestModel(BankaIslemleriRequestModel value) {
-    _$bankaIslemleriRequestModelAtom.reportWrite(value, super.bankaIslemleriRequestModel, () {
+    _$bankaIslemleriRequestModelAtom
+        .reportWrite(value, super.bankaIslemleriRequestModel, () {
       super.bankaIslemleriRequestModel = value;
     });
   }
 
-  late final _$isScrollDownAtom = Atom(name: '_BankaIslemleriViewModelBase.isScrollDown', context: context);
+  late final _$isScrollDownAtom =
+      Atom(name: '_BankaIslemleriViewModelBase.isScrollDown', context: context);
 
   @override
   bool get isScrollDown {
@@ -54,7 +69,8 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
     });
   }
 
-  late final _$searchBarAtom = Atom(name: '_BankaIslemleriViewModelBase.searchBar', context: context);
+  late final _$searchBarAtom =
+      Atom(name: '_BankaIslemleriViewModelBase.searchBar', context: context);
 
   @override
   bool get searchBar {
@@ -69,7 +85,9 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
     });
   }
 
-  late final _$bankaIslemleriListesiAtom = Atom(name: '_BankaIslemleriViewModelBase.bankaIslemleriListesi', context: context);
+  late final _$bankaIslemleriListesiAtom = Atom(
+      name: '_BankaIslemleriViewModelBase.bankaIslemleriListesi',
+      context: context);
 
   @override
   ObservableList<BankaIslemleriModel>? get bankaIslemleriListesi {
@@ -79,12 +97,14 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
 
   @override
   set bankaIslemleriListesi(ObservableList<BankaIslemleriModel>? value) {
-    _$bankaIslemleriListesiAtom.reportWrite(value, super.bankaIslemleriListesi, () {
+    _$bankaIslemleriListesiAtom.reportWrite(value, super.bankaIslemleriListesi,
+        () {
       super.bankaIslemleriListesi = value;
     });
   }
 
-  late final _$searchTextAtom = Atom(name: '_BankaIslemleriViewModelBase.searchText', context: context);
+  late final _$searchTextAtom =
+      Atom(name: '_BankaIslemleriViewModelBase.searchText', context: context);
 
   @override
   String? get searchText {
@@ -99,25 +119,29 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
     });
   }
 
-  late final _$resetPageAsyncAction = AsyncAction('_BankaIslemleriViewModelBase.resetPage', context: context);
+  late final _$resetPageAsyncAction =
+      AsyncAction('_BankaIslemleriViewModelBase.resetPage', context: context);
 
   @override
   Future<void> resetPage() {
     return _$resetPageAsyncAction.run(() => super.resetPage());
   }
 
-  late final _$getDataAsyncAction = AsyncAction('_BankaIslemleriViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction =
+      AsyncAction('_BankaIslemleriViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_BankaIslemleriViewModelBaseActionController = ActionController(name: '_BankaIslemleriViewModelBase', context: context);
+  late final _$_BankaIslemleriViewModelBaseActionController =
+      ActionController(name: '_BankaIslemleriViewModelBase', context: context);
 
   @override
   void setIsScrollDown(bool value) {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController.startAction(name: '_BankaIslemleriViewModelBase.setIsScrollDown');
+    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
+        .startAction(name: '_BankaIslemleriViewModelBase.setIsScrollDown');
     try {
       return super.setIsScrollDown(value);
     } finally {
@@ -127,7 +151,8 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
 
   @override
   void changeSearchBar() {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController.startAction(name: '_BankaIslemleriViewModelBase.changeSearchBar');
+    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
+        .startAction(name: '_BankaIslemleriViewModelBase.changeSearchBar');
     try {
       return super.changeSearchBar();
     } finally {
@@ -137,7 +162,8 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController.startAction(name: '_BankaIslemleriViewModelBase.setSearchText');
+    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
+        .startAction(name: '_BankaIslemleriViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
     } finally {
@@ -147,7 +173,8 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
 
   @override
   void setBaslamaTarihi(String? value) {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController.startAction(name: '_BankaIslemleriViewModelBase.setBaslamaTarihi');
+    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
+        .startAction(name: '_BankaIslemleriViewModelBase.setBaslamaTarihi');
     try {
       return super.setBaslamaTarihi(value);
     } finally {
@@ -157,7 +184,8 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
 
   @override
   void setBitisTarihi(String? value) {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController.startAction(name: '_BankaIslemleriViewModelBase.setBitisTarihi');
+    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
+        .startAction(name: '_BankaIslemleriViewModelBase.setBitisTarihi');
     try {
       return super.setBitisTarihi(value);
     } finally {
@@ -167,7 +195,9 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
 
   @override
   void setBankaIslemleriListesi(List<BankaIslemleriModel>? value) {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController.startAction(name: '_BankaIslemleriViewModelBase.setBankaIslemleriListesi');
+    final _$actionInfo =
+        _$_BankaIslemleriViewModelBaseActionController.startAction(
+            name: '_BankaIslemleriViewModelBase.setBankaIslemleriListesi');
     try {
       return super.setBankaIslemleriListesi(value);
     } finally {
@@ -177,7 +207,9 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
 
   @override
   void addBankaIslemleriListesi(List<BankaIslemleriModel>? value) {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController.startAction(name: '_BankaIslemleriViewModelBase.addBankaIslemleriListesi');
+    final _$actionInfo =
+        _$_BankaIslemleriViewModelBaseActionController.startAction(
+            name: '_BankaIslemleriViewModelBase.addBankaIslemleriListesi');
     try {
       return super.addBankaIslemleriListesi(value);
     } finally {
@@ -187,7 +219,8 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
 
   @override
   void clearFilters() {
-    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController.startAction(name: '_BankaIslemleriViewModelBase.clearFilters');
+    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
+        .startAction(name: '_BankaIslemleriViewModelBase.clearFilters');
     try {
       return super.clearFilters();
     } finally {

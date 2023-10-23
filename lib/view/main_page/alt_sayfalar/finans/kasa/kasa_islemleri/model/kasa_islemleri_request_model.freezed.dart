@@ -14,7 +14,8 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-KasaIslemleriRequestModel _$KasaIslemleriRequestModelFromJson(Map<String, dynamic> json) {
+KasaIslemleriRequestModel _$KasaIslemleriRequestModelFromJson(
+    Map<String, dynamic> json) {
   return _KasaIslemleriRequestModel.fromJson(json);
 }
 
@@ -41,18 +42,32 @@ mixin _$KasaIslemleriRequestModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $KasaIslemleriRequestModelCopyWith<KasaIslemleriRequestModel> get copyWith => throw _privateConstructorUsedError;
+  $KasaIslemleriRequestModelCopyWith<KasaIslemleriRequestModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $KasaIslemleriRequestModelCopyWith<$Res> {
-  factory $KasaIslemleriRequestModelCopyWith(KasaIslemleriRequestModel value, $Res Function(KasaIslemleriRequestModel) then) = _$KasaIslemleriRequestModelCopyWithImpl<$Res, KasaIslemleriRequestModel>;
+  factory $KasaIslemleriRequestModelCopyWith(KasaIslemleriRequestModel value,
+          $Res Function(KasaIslemleriRequestModel) then) =
+      _$KasaIslemleriRequestModelCopyWithImpl<$Res, KasaIslemleriRequestModel>;
   @useResult
-  $Res call({String? baslamaTarihi, String? bitisTarihi, String? menuKodu, int? sayfa, String? plasiyerKodu, String? hesapTipi, String? hesapKodu, String? kasaKodu, String? gc});
+  $Res call(
+      {String? baslamaTarihi,
+      String? bitisTarihi,
+      String? menuKodu,
+      int? sayfa,
+      String? plasiyerKodu,
+      String? hesapTipi,
+      String? hesapKodu,
+      String? kasaKodu,
+      String? gc});
 }
 
 /// @nodoc
-class _$KasaIslemleriRequestModelCopyWithImpl<$Res, $Val extends KasaIslemleriRequestModel> implements $KasaIslemleriRequestModelCopyWith<$Res> {
+class _$KasaIslemleriRequestModelCopyWithImpl<$Res,
+        $Val extends KasaIslemleriRequestModel>
+    implements $KasaIslemleriRequestModelCopyWith<$Res> {
   _$KasaIslemleriRequestModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -115,17 +130,35 @@ class _$KasaIslemleriRequestModelCopyWithImpl<$Res, $Val extends KasaIslemleriRe
 }
 
 /// @nodoc
-abstract class _$$KasaIslemleriRequestModelImplCopyWith<$Res> implements $KasaIslemleriRequestModelCopyWith<$Res> {
-  factory _$$KasaIslemleriRequestModelImplCopyWith(_$KasaIslemleriRequestModelImpl value, $Res Function(_$KasaIslemleriRequestModelImpl) then) = __$$KasaIslemleriRequestModelImplCopyWithImpl<$Res>;
+abstract class _$$KasaIslemleriRequestModelImplCopyWith<$Res>
+    implements $KasaIslemleriRequestModelCopyWith<$Res> {
+  factory _$$KasaIslemleriRequestModelImplCopyWith(
+          _$KasaIslemleriRequestModelImpl value,
+          $Res Function(_$KasaIslemleriRequestModelImpl) then) =
+      __$$KasaIslemleriRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? baslamaTarihi, String? bitisTarihi, String? menuKodu, int? sayfa, String? plasiyerKodu, String? hesapTipi, String? hesapKodu, String? kasaKodu, String? gc});
+  $Res call(
+      {String? baslamaTarihi,
+      String? bitisTarihi,
+      String? menuKodu,
+      int? sayfa,
+      String? plasiyerKodu,
+      String? hesapTipi,
+      String? hesapKodu,
+      String? kasaKodu,
+      String? gc});
 }
 
 /// @nodoc
-class __$$KasaIslemleriRequestModelImplCopyWithImpl<$Res> extends _$KasaIslemleriRequestModelCopyWithImpl<$Res, _$KasaIslemleriRequestModelImpl>
+class __$$KasaIslemleriRequestModelImplCopyWithImpl<$Res>
+    extends _$KasaIslemleriRequestModelCopyWithImpl<$Res,
+        _$KasaIslemleriRequestModelImpl>
     implements _$$KasaIslemleriRequestModelImplCopyWith<$Res> {
-  __$$KasaIslemleriRequestModelImplCopyWithImpl(_$KasaIslemleriRequestModelImpl _value, $Res Function(_$KasaIslemleriRequestModelImpl) _then) : super(_value, _then);
+  __$$KasaIslemleriRequestModelImplCopyWithImpl(
+      _$KasaIslemleriRequestModelImpl _value,
+      $Res Function(_$KasaIslemleriRequestModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -185,9 +218,19 @@ class __$$KasaIslemleriRequestModelImplCopyWithImpl<$Res> extends _$KasaIslemler
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class _$KasaIslemleriRequestModelImpl implements _KasaIslemleriRequestModel {
-  _$KasaIslemleriRequestModelImpl({this.baslamaTarihi, this.bitisTarihi, this.menuKodu, this.sayfa, this.plasiyerKodu, this.hesapTipi, this.hesapKodu, this.kasaKodu, this.gc});
+  _$KasaIslemleriRequestModelImpl(
+      {this.baslamaTarihi,
+      this.bitisTarihi,
+      this.menuKodu,
+      this.sayfa,
+      this.plasiyerKodu,
+      this.hesapTipi,
+      this.hesapKodu,
+      this.kasaKodu,
+      this.gc});
 
-  factory _$KasaIslemleriRequestModelImpl.fromJson(Map<String, dynamic> json) => _$$KasaIslemleriRequestModelImplFromJson(json);
+  factory _$KasaIslemleriRequestModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$KasaIslemleriRequestModelImplFromJson(json);
 
   @override
   String? baslamaTarihi;
@@ -216,7 +259,9 @@ class _$KasaIslemleriRequestModelImpl implements _KasaIslemleriRequestModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$KasaIslemleriRequestModelImplCopyWith<_$KasaIslemleriRequestModelImpl> get copyWith => __$$KasaIslemleriRequestModelImplCopyWithImpl<_$KasaIslemleriRequestModelImpl>(this, _$identity);
+  _$$KasaIslemleriRequestModelImplCopyWith<_$KasaIslemleriRequestModelImpl>
+      get copyWith => __$$KasaIslemleriRequestModelImplCopyWithImpl<
+          _$KasaIslemleriRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -238,7 +283,8 @@ abstract class _KasaIslemleriRequestModel implements KasaIslemleriRequestModel {
       String? kasaKodu,
       String? gc}) = _$KasaIslemleriRequestModelImpl;
 
-  factory _KasaIslemleriRequestModel.fromJson(Map<String, dynamic> json) = _$KasaIslemleriRequestModelImpl.fromJson;
+  factory _KasaIslemleriRequestModel.fromJson(Map<String, dynamic> json) =
+      _$KasaIslemleriRequestModelImpl.fromJson;
 
   @override
   String? get baslamaTarihi;
@@ -269,5 +315,6 @@ abstract class _KasaIslemleriRequestModel implements KasaIslemleriRequestModel {
   set gc(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$KasaIslemleriRequestModelImplCopyWith<_$KasaIslemleriRequestModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$KasaIslemleriRequestModelImplCopyWith<_$KasaIslemleriRequestModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

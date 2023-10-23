@@ -774,6 +774,14 @@ class KalemModel with NetworkManagerMixin {
   String? muhasebeKodu;
   @HiveField(79)
   String? yapkod;
+  @HiveField(80)
+  String? siparisNo;
+  @HiveField(81)
+  int? siparisSira;
+  @HiveField(82)
+  String? irsaliyeNo;
+  @HiveField(83)
+  int? irsaliyeSira;
 
   KalemModel({
     this.iskonto1OranMi,
@@ -856,6 +864,10 @@ class KalemModel with NetworkManagerMixin {
     this.stokSatDovizAdi,
     this.muhasebeKodu,
     this.yapkod,
+    this.siparisNo,
+    this.siparisSira,
+    this.irsaliyeNo,
+    this.irsaliyeSira,
   });
   //koli mi
   bool get isKoli => koliMi ?? kalemList.ext.isNotNullOrEmpty;

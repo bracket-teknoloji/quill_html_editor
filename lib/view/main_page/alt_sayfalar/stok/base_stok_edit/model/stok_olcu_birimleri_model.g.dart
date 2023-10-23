@@ -6,11 +6,14 @@ part of 'stok_olcu_birimleri_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-StokOlcuBirimleriModel _$StokOlcuBirimleriModelFromJson(Map<String, dynamic> json) => StokOlcuBirimleriModel()
-  ..birimNo = json['BIRIM_NO'] as int?
-  ..olcuBirimi = json['OLCU_BIRIMI'] as String?;
+StokOlcuBirimleriModel _$StokOlcuBirimleriModelFromJson(
+        Map<String, dynamic> json) =>
+    StokOlcuBirimleriModel()
+      ..birimNo = json['BIRIM_NO'] as int?
+      ..olcuBirimi = json['OLCU_BIRIMI'] as String?;
 
-Map<String, dynamic> _$StokOlcuBirimleriModelToJson(StokOlcuBirimleriModel instance) {
+Map<String, dynamic> _$StokOlcuBirimleriModelToJson(
+    StokOlcuBirimleriModel instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

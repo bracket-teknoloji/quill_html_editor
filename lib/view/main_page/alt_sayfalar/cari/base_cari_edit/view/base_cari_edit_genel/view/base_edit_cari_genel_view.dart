@@ -230,22 +230,21 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                 onTap: () async {
                   ulkeler ??= await getUlkeData();
                   if (mounted) {
-                    final BaseBottomSheetResponseModel? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                    final UlkeModel? result = await bottomSheetDialogManager.showBottomSheetDialog(
                       context,
                       title: "Ülkeler",
                       children: List.generate(
                         ulkeler!.length,
                         (int index) => BottomSheetModel(
                           title: ulkeler?[index].ulkeAdi ?? "",
-                          value: ulkeler?[index].ulkeKodu,
+                          value: ulkeler?[index],
                           description: ulkeler?[index].ulkeKodu,
-                          onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: ulkeler?[index].ulkeAdi, value: ulkeler?[index].ulkeKodu)),
                         ),
                       ),
                     );
                     if (result != null) {
-                      ulkeController.text = result.title ?? "";
-                      viewModel.changeUlke(result.value);
+                      ulkeController.text = result.ulkeAdi ?? "";
+                      viewModel.changeUlke(result);
                     }
                   }
                 },

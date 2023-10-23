@@ -65,7 +65,11 @@ class NetFectDizaynListAdapter extends TypeAdapter<NetFectDizaynList> {
   int get hashCode => typeId.hashCode;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is NetFectDizaynListAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is NetFectDizaynListAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 class YaziciListAdapter extends TypeAdapter<YaziciList> {
@@ -100,7 +104,11 @@ class YaziciListAdapter extends TypeAdapter<YaziciList> {
   int get hashCode => typeId.hashCode;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is YaziciListAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is YaziciListAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 // **************************************************************************
@@ -112,35 +120,87 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..kullanici = json['KULLANICI'] as String?
   ..sirket = json['SIRKET'] as String?
   ..isletmeKodu = json['ISLETME_KODU'] as int?
-  ..mapCariKullSahalar = json['MapCariKullSahalar'] == null ? null : MapCariKullSahalar.fromJson(json['MapCariKullSahalar'] as Map<String, dynamic>)
-  ..mapCariEkAlanlar = (json['MapCariEkAlanlar'] as List<dynamic>?)?.map((e) => MapEkAlanlar.fromJson(e as Map<String, dynamic>)).toList()
+  ..mapCariKullSahalar = json['MapCariKullSahalar'] == null
+      ? null
+      : MapCariKullSahalar.fromJson(
+          json['MapCariKullSahalar'] as Map<String, dynamic>)
+  ..mapCariEkAlanlar = (json['MapCariEkAlanlar'] as List<dynamic>?)
+      ?.map((e) => MapEkAlanlar.fromJson(e as Map<String, dynamic>))
+      .toList()
   ..sabitSayfalamaOgeSayisi = json['sabitSayfalamaOgeSayisi'] as int? ?? 25
-  ..netsisOndalikResponseModel = (json['_NetsisOndalikResponseModel'] as List<dynamic>?)?.map((e) => NetsisOndalikResponseModel.fromJson(e as Map<String, dynamic>)).toList()
-  ..depoList = (json['DepoList'] as List<dynamic>?)?.map((e) => DepoList.fromJson(e as Map<String, dynamic>)).toList()
-  ..dovizList = (json['DovizList'] as List<dynamic>?)?.map((e) => DovizList.fromJson(e as Map<String, dynamic>)).toList()
-  ..satirAcikBaslikList = (json['SatirAcikBaslikList'] as List<dynamic>?)?.map((e) => SatirAcikBaslikList.fromJson(e as Map<String, dynamic>)).toList()
-  ..kasaList = (json['KasaList'] as List<dynamic>?)?.map((e) => KasaList.fromJson(e as Map<String, dynamic>)).toList()
-  ..plasiyerList = (json['PlasiyerList'] as List<dynamic>?)?.map((e) => PlasiyerList.fromJson(e as Map<String, dynamic>)).toList()
-  ..plasiyerListTumu = (json['PlasiyerListTumu'] as List<dynamic>?)?.map((e) => PlasiyerList.fromJson(e as Map<String, dynamic>)).toList()
-  ..subeList = (json['SubeList'] as List<dynamic>?)?.map((e) => SubeList.fromJson(e as Map<String, dynamic>)).toList()
-  ..talTekParam = (json['TalTekParam'] as List<dynamic>?)?.map((e) => TalTekParam.fromJson(e as Map<String, dynamic>)).toList()
-  ..cekSenParam = (json['CekSenParam'] as List<dynamic>?)?.map((e) => CekSenParam.fromJson(e as Map<String, dynamic>)).toList()
-  ..listOzelKodTum = (json['ListOzelKodTum'] as List<dynamic>?)?.map((e) => ListOzelKodTum.fromJson(e as Map<String, dynamic>)).toList()
-  ..listIskTip = (json['ListIskTip'] as List<dynamic>?)?.map((e) => ListIskTip.fromJson(e as Map<String, dynamic>)).toList()
-  ..listCariOdemeKodu = (json['ListCariOdemeKodu'] as List<dynamic>?)?.map((e) => ListCariOdemeKodu.fromJson(e as Map<String, dynamic>)).toList()
-  ..yaziciList = (json['YaziciList'] as List<dynamic>?)?.map((e) => YaziciList.fromJson(e as Map<String, dynamic>)).toList()
-  ..netFectDizaynList = (json['NetFectDizaynList'] as List<dynamic>?)?.map((e) => NetFectDizaynList.fromJson(e as Map<String, dynamic>)).toList()
-  ..mapStokGrupAdlari = json['MapStokGrupAdlari'] == null ? null : MapStokGrupAdlari.fromJson(json['MapStokGrupAdlari'] as Map<String, dynamic>)
-  ..mustahsilParam = json['MustahsilParam'] == null ? null : MustahsilParam.fromJson(json['MustahsilParam'] as Map<String, dynamic>)
-  ..listFatuEkMaliyet = (json['ListFatuEkMaliyet'] as List<dynamic>?)?.map((e) => ListFatuEkMaliyet.fromJson(e as Map<String, dynamic>)).toList()
-  ..mapKdvSifirBelgeTipiOzelKod2 = json['MapKdvSifirBelgeTipiOzelKod2'] == null ? null : MapKdvSifirBelgeTipiOzelKod2.fromJson(json['MapKdvSifirBelgeTipiOzelKod2'] as Map<String, dynamic>)
+  ..netsisOndalikResponseModel = (json['_NetsisOndalikResponseModel']
+          as List<dynamic>?)
+      ?.map(
+          (e) => NetsisOndalikResponseModel.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..depoList = (json['DepoList'] as List<dynamic>?)
+      ?.map((e) => DepoList.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..dovizList = (json['DovizList'] as List<dynamic>?)
+      ?.map((e) => DovizList.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..satirAcikBaslikList = (json['SatirAcikBaslikList'] as List<dynamic>?)
+      ?.map((e) => SatirAcikBaslikList.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..kasaList = (json['KasaList'] as List<dynamic>?)
+      ?.map((e) => KasaList.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..plasiyerList = (json['PlasiyerList'] as List<dynamic>?)
+      ?.map((e) => PlasiyerList.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..plasiyerListTumu = (json['PlasiyerListTumu'] as List<dynamic>?)
+      ?.map((e) => PlasiyerList.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..subeList = (json['SubeList'] as List<dynamic>?)
+      ?.map((e) => SubeList.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..talTekParam = (json['TalTekParam'] as List<dynamic>?)
+      ?.map((e) => TalTekParam.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..cekSenParam = (json['CekSenParam'] as List<dynamic>?)
+      ?.map((e) => CekSenParam.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..listOzelKodTum = (json['ListOzelKodTum'] as List<dynamic>?)
+      ?.map((e) => ListOzelKodTum.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..listIskTip = (json['ListIskTip'] as List<dynamic>?)
+      ?.map((e) => ListIskTip.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..listCariOdemeKodu = (json['ListCariOdemeKodu'] as List<dynamic>?)
+      ?.map((e) => ListCariOdemeKodu.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..yaziciList = (json['YaziciList'] as List<dynamic>?)
+      ?.map((e) => YaziciList.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..netFectDizaynList = (json['NetFectDizaynList'] as List<dynamic>?)
+      ?.map((e) => NetFectDizaynList.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..mapStokGrupAdlari = json['MapStokGrupAdlari'] == null
+      ? null
+      : MapStokGrupAdlari.fromJson(
+          json['MapStokGrupAdlari'] as Map<String, dynamic>)
+  ..mustahsilParam = json['MustahsilParam'] == null
+      ? null
+      : MustahsilParam.fromJson(json['MustahsilParam'] as Map<String, dynamic>)
+  ..listFatuEkMaliyet = (json['ListFatuEkMaliyet'] as List<dynamic>?)
+      ?.map((e) => ListFatuEkMaliyet.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..mapKdvSifirBelgeTipiOzelKod2 = json['MapKdvSifirBelgeTipiOzelKod2'] == null
+      ? null
+      : MapKdvSifirBelgeTipiOzelKod2.fromJson(
+          json['MapKdvSifirBelgeTipiOzelKod2'] as Map<String, dynamic>)
   ..lokalDepoUygulamasiAcik = json['LokalDepoUygulamasiAcik'] as bool?
   ..esnekYapilandir = json['EsnekYapilandir'] as bool?
   ..ozelFiyatSistemi = json['OzelFiyatSistemi'] as bool?
   ..sadeceOzelFiyatSistemi = json['SadeceOzelFiyatSistemi'] as String?
   ..otvliStoklarVar = json['OtvliStoklarVar'] as bool?
-  ..mapStokKullSahalar = json['MapStokKullSahalar'] == null ? null : MapStokKullSahalar.fromJson(json['MapStokKullSahalar'] as Map<String, dynamic>)
-  ..mapStokEkAlanlar = (json['MapStokEkAlanlar'] as List<dynamic>?)?.map((e) => MapEkAlanlar.fromJson(e as Map<String, dynamic>)).toList()
+  ..mapStokKullSahalar = json['MapStokKullSahalar'] == null
+      ? null
+      : MapStokKullSahalar.fromJson(
+          json['MapStokKullSahalar'] as Map<String, dynamic>)
+  ..mapStokEkAlanlar = (json['MapStokEkAlanlar'] as List<dynamic>?)
+      ?.map((e) => MapEkAlanlar.fromJson(e as Map<String, dynamic>))
+      .toList()
   ..karmaKoliUyg = json['KarmaKoliUyg'] as String?
   ..alisEkAciklamalarAktif = json['AlisEkAciklamalarAktif'] as bool?
   ..alisEkAciklamaTanimi1 = json['AlisEkAciklamaTanimi1'] as String?
@@ -164,14 +224,16 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..alisFarkliTeslimCariAktif = json['AlisFarkliTeslimCariAktif'] as bool?
   ..alisMalFazMiktarIskontoAcik = json['AlisMalFazMiktarIskontoAcik'] as bool?
   ..alisSatirKademeliIskontoAcik = json['AlisSatirKademeliIskontoAcik'] as bool?
-  ..alisSatirKademeliIskontoSayisi = json['AlisSatirKademeliIskontoSayisi'] as int?
+  ..alisSatirKademeliIskontoSayisi =
+      json['AlisSatirKademeliIskontoSayisi'] as int?
   ..alisGenIsk1Aktif = json['AlisGenIsk1Aktif'] as bool?
   ..alisGenIsk2Aktif = json['AlisGenIsk2Aktif'] as bool?
   ..alisGenIsk3Aktif = json['AlisGenIsk3Aktif'] as bool?
   ..alisTopluDepoAktif = json['AlisTopluDepoAktif'] as bool?
   ..alisStokDepoKarttanGelsin = json['AlisStokDepoKarttanGelsin'] as bool?
   ..alisGenellikleKdvHaric = json['AlisGenellikleKDVHaric'] as bool?
-  ..alisFarkliOlcuBirimleriKullan = json['AlisFarkliOlcuBirimleriKullan'] as bool?
+  ..alisFarkliOlcuBirimleriKullan =
+      json['AlisFarkliOlcuBirimleriKullan'] as bool?
   ..alisDovizAktif = json['AlisDovizAktif'] as bool?
   ..alisSatirdaKdvSor = json['AlisSatirdaKDVSor'] as bool?
   ..alisSatirdaAciklamalarAktif = json['AlisSatirdaAciklamalarAktif'] as bool?
@@ -192,7 +254,8 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..alisCariIskSatiraUygula = json['AlisCariIskSatiraUygula'] as bool?
   ..seriUygulamasiAcik = json['SeriUygulamasiAcik'] as bool?
   ..sirketDovizUygulamasiAcik = json['SirketDovizUygulamasiAcik'] as bool?
-  ..sirketDovizUygulamasiDovizKodu = json['SirketDovizUygulamasiDovizKodu'] as int?
+  ..sirketDovizUygulamasiDovizKodu =
+      json['SirketDovizUygulamasiDovizKodu'] as int?
   ..plasiyerUygulamasi = json['PlasiyerUygulamasi'] as bool?
   ..paraBirimi = json['ParaBirimi'] as String?
   ..bankaEntegre = json['BankaEntegre'] as bool?
@@ -222,8 +285,10 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..satisKosulSatirdaSor = json['SatisKosulSatirdaSor'] as bool?
   ..satisFarkliTeslimCariAktif = json['SatisFarkliTeslimCariAktif'] as bool?
   ..satisMalFazMiktarIskontoAcik = json['SatisMalFazMiktarIskontoAcik'] as bool?
-  ..satisSatirKademeliIskontoAcik = json['SatisSatirKademeliIskontoAcik'] as bool?
-  ..satisSatirKademeliIskontoSayisi = json['SatisSatirKademeliIskontoSayisi'] as int?
+  ..satisSatirKademeliIskontoAcik =
+      json['SatisSatirKademeliIskontoAcik'] as bool?
+  ..satisSatirKademeliIskontoSayisi =
+      json['SatisSatirKademeliIskontoSayisi'] as int?
   ..satisSatirdaKdvSor = json['SatisSatirdaKDVSor'] as bool?
   ..satisGenIsk1Aktif = json['SatisGenIsk1Aktif'] as bool?
   ..satisGenIsk2Aktif = json['SatisGenIsk2Aktif'] as bool?
@@ -231,7 +296,8 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..satisTopluDepoAktif = json['SatisTopluDepoAktif'] as bool?
   ..satisStokDepoKarttanGelsin = json['SatisStokDepoKarttanGelsin'] as bool?
   ..satisGenellikleKdvHaric = json['SatisGenellikleKDVHaric'] as bool?
-  ..satisFarkliOlcuBirimleriKullan = json['SatisFarkliOlcuBirimleriKullan'] as bool?
+  ..satisFarkliOlcuBirimleriKullan =
+      json['SatisFarkliOlcuBirimleriKullan'] as bool?
   ..satisCariRiskTakibi = json['SatisCariRiskTakibi'] as String?
   ..satisDovizAktif = json['SatisDovizAktif'] as bool?
   ..satisSatirdaAciklamalarAktif = json['SatisSatirdaAciklamalarAktif'] as bool?
@@ -240,7 +306,8 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..satisEkMaliyet2Adi = json['SatisEkMaliyet2Adi'] as String?
   ..satisTevkifatPay = json['SatisTevkifatPay'] as int?
   ..satisTevkifatPayda = json['SatisTevkifatPayda'] as int?
-  ..satisFaturaFiyatSifirGecilsin = json['SatisFaturaFiyatSifirGecilsin'] as bool?
+  ..satisFaturaFiyatSifirGecilsin =
+      json['SatisFaturaFiyatSifirGecilsin'] as bool?
   ..satisFazlaTeslimat = json['SatisFazlaTeslimat'] as bool?
   ..satisDovizTakipHangiDeger = json['SatisDovizTakipHangiDeger'] as int?
   ..satisHizmetAktif = json['SatisHizmetAktif'] as bool?
@@ -263,44 +330,66 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..serideAyOlsun = json['SerideAyOlsun'] as bool?
   ..serideGunOlsun = json['SerideGunOlsun'] as bool?
   ..seriUzunlugu = json['SeriUzunlugu'] as int?
-  ..seriEkAlanList = (json['SeriEkAlanList'] as List<dynamic>?)?.map((e) => e as String).toList()
+  ..seriEkAlanList = (json['SeriEkAlanList'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList()
   ..eFaturaAktif = json['EFaturaAktif'] as bool?
   ..seriEFatura = json['Seri_EFatura'] as String?
   ..eFaturaSenaryoDegistir = json['EFaturaSenaryoDegistir'] as bool?
   ..eIrsaliyeAktif = json['EIrsaliyeAktif'] as bool?
   ..seriEIrsaliye = json['SeriEIrsaliye'] as String?
-  ..arrEIrsSeri = (json['ArrEIrsSeri'] as List<dynamic>?)?.map((e) => e as String).toList()
-  ..arrEFatSeri = (json['ArrEFatSeri'] as List<dynamic>?)?.map((e) => e as String?).toList()
-  ..arrEArSeri = (json['ArrEArSeri'] as List<dynamic>?)?.map((e) => e as String?).toList()
+  ..arrEIrsSeri =
+      (json['ArrEIrsSeri'] as List<dynamic>?)?.map((e) => e as String).toList()
+  ..arrEFatSeri =
+      (json['ArrEFatSeri'] as List<dynamic>?)?.map((e) => e as String?).toList()
+  ..arrEArSeri =
+      (json['ArrEArSeri'] as List<dynamic>?)?.map((e) => e as String?).toList()
   ..seriEArsiv = json['Seri_EArsiv'] as String?
   ..uretimEkAlanKullan = json['UretimEkAlanKullan'] as bool?
-  ..ozelFaturaIadeMaliyetiZorunlu = json['OzelFaturaIadeMaliyetiZorunlu'] as bool?
+  ..ozelFaturaIadeMaliyetiZorunlu =
+      json['OzelFaturaIadeMaliyetiZorunlu'] as bool?
   ..bankaKKartiKasayaIsle = json['bankaKKartiKasayaIsle'] as bool?
-  ..kayitliBankaHesapTipleri = json['KayitliBankaHesapTipleri'] as List<dynamic>?
+  ..kayitliBankaHesapTipleri =
+      json['KayitliBankaHesapTipleri'] as List<dynamic>?
   ..kkNoZorunluDegil = json['KKNoZorunluDegil'] as bool?
   ..fifoLifoYontem = json['FifoLifoYontem'] as String?
   ..cariAktiviteUygulamasi = json['CariAktiviteUygulamasi'] as String?
-  ..cariAktiviteTipleri = (json['CariAktiviteTipleri'] as List<dynamic>?)?.map((e) => CariAktiviteTipleri.fromJson(e as Map<String, dynamic>)).toList()
-  ..cariAktiviteEkAlanlar = (json['CariAktiviteEkAlanlar'] as List<dynamic>?)?.map((e) => e as int).toList()
+  ..cariAktiviteTipleri = (json['CariAktiviteTipleri'] as List<dynamic>?)
+      ?.map((e) => CariAktiviteTipleri.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..cariAktiviteEkAlanlar = (json['CariAktiviteEkAlanlar'] as List<dynamic>?)
+      ?.map((e) => e as int)
+      .toList()
   ..satisCariDovizTipiniKullan = json['SatisCariDovizTipiniKullan'] as bool?
   ..alisCariDovizTipiniKullan = json['AlisCariDovizTipiniKullan'] as bool?
-  ..fatuKontrolAciklamasiAktif = (json['Fatu_KontrolAciklamasiAktif'] as List<dynamic>?)?.map((e) => e as String).toList()
-  ..satisFiyatGrubuSorulacakAlan = json['SatisFiyatGrubuSorulacakAlan'] as String?
+  ..fatuKontrolAciklamasiAktif =
+      (json['Fatu_KontrolAciklamasiAktif'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
+  ..satisFiyatGrubuSorulacakAlan =
+      json['SatisFiyatGrubuSorulacakAlan'] as String?
   ..siparisFarkliSubeUyg = json['Siparis_FarkliSubeUyg'] as String?
   ..satisIskEkSahadanGelsin = json['SatisIskEkSahadanGelsin'] as String?
   ..satisIsk1Saha = json['SatisIsk1Saha'] as String?
   ..satisIsk1Kullanim = json['SatisIsk1Kullanim'] as String?
   ..uretimMalTopHangiHucrede = json['Uretim_MalTop_HangiHucrede'] as bool?
-  ..uretimMalTopFazlaTeslimYapilabilir = json['Uretim_MalTop_FazlaTeslimYapilabilir'] as bool?
+  ..uretimMalTopFazlaTeslimYapilabilir =
+      json['Uretim_MalTop_FazlaTeslimYapilabilir'] as bool?
   ..uretimUskSeriGirilsin = json['Uretim_USK_SeriGirilsin'] as bool?
   ..finansBankaIslemModulu = json['Finans_BankaIslemModulu'] as String?
   ..finansBankaTcmbBankaKodu = json['Finans_BankaTcmbBankaKodu'] as String?
   ..finansBankaTcmbSubeKodu = json['Finans_BankaTcmbSubeKodu'] as String?
-  ..finansCekSenOzelOrtalamaVadeGunuHesapla = (json['Finans_CekSenOzelOrtalamaVadeGunuHesapla'] as List<dynamic>?)?.map((e) => e as String).toList()
+  ..finansCekSenOzelOrtalamaVadeGunuHesapla =
+      (json['Finans_CekSenOzelOrtalamaVadeGunuHesapla'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
   ..stokYapRehberTipi = json['Stok_Yap_RehberTipi'] as String?
   ..stokKanbanBarkodEslemeUyg = json['Stok_KanbanBarkodEslemeUyg'] as String?
   ..stokSeriParcalamaUyg = json['Stok_SeriParcalamaUyg'] as String?
-  ..stokDetayliAramaAlanlar = (json['Stok_DetayliAramaAlanlar'] as List<dynamic>?)?.map((e) => StokDetayliAramaAlanlar.fromJson(e as Map<String, dynamic>)).toList()
+  ..stokDetayliAramaAlanlar = (json['Stok_DetayliAramaAlanlar']
+          as List<dynamic>?)
+      ?.map((e) => StokDetayliAramaAlanlar.fromJson(e as Map<String, dynamic>))
+      .toList()
   ..genelKonumTakibiYapilsin = json['Genel_KonumTakibiYapilsin'] as String?
   ..genelKonumTakibiDakika = json['Genel_KonumTakibiDakika'] as int?
   ..genelKonumTakibiMetre = json['Genel_KonumTakibiMetre'] as int?
@@ -312,18 +401,27 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..sevkEmriTerminalIrsaliye = json['SevkEmriTerminalIrsaliye'] as bool?
   ..sevkEmriTerminalTransfer = json['SevkEmriTerminalTransfer'] as bool?
   ..sevkEmriHucreKontrol = json['SevkEmriHucreKontrol'] as bool?
-  ..sevkEmriMalTopGorunecekAlanlar = (json['SevkEmriMalTopGorunecekAlanlar'] as List<dynamic>?)?.map((e) => e as String).toList()
+  ..sevkEmriMalTopGorunecekAlanlar =
+      (json['SevkEmriMalTopGorunecekAlanlar'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList()
   ..seriSevkIrsaliye = json['Seri_SevkIrsaliye'] as String?
   ..kontrolluBelgeAktarimAktif = json['KontrolluBelgeAktarimAktif'] as bool?
-  ..kontrolluBelgeAktarimBelgeNoGoster = json['KontrolluBelgeAktarimBelgeNoGoster'] as List<dynamic>?
+  ..kontrolluBelgeAktarimBelgeNoGoster =
+      json['KontrolluBelgeAktarimBelgeNoGoster'] as List<dynamic>?
   ..eMustahsilAktif = json['EMustahsilAktif'] as bool?
   ..muhasebeEntegre = json['MuhasebeEntegre'] as bool?
   ..muhFislerdeRefKodSorulsun = json['MuhFislerdeRefKodSorulsun'] as bool?
-  ..muhFislerdeRefKodSorulsunAktif = json['MuhFislerdeRefKodSorulsun_Aktif'] as bool?
-  ..muhFislerdeRefKodSorulsunPasif = json['MuhFislerdeRefKodSorulsun_Pasif'] as bool?
-  ..muhFislerdeRefKodSorulsunGelir = json['MuhFislerdeRefKodSorulsun_Gelir'] as bool?
-  ..muhFislerdeRefKodSorulsunGider = json['MuhFislerdeRefKodSorulsun_Gider'] as bool?
-  ..muhFislerdeRefKodSorulsunNazim = json['MuhFislerdeRefKodSorulsun_Nazim'] as bool?
+  ..muhFislerdeRefKodSorulsunAktif =
+      json['MuhFislerdeRefKodSorulsun_Aktif'] as bool?
+  ..muhFislerdeRefKodSorulsunPasif =
+      json['MuhFislerdeRefKodSorulsun_Pasif'] as bool?
+  ..muhFislerdeRefKodSorulsunGelir =
+      json['MuhFislerdeRefKodSorulsun_Gelir'] as bool?
+  ..muhFislerdeRefKodSorulsunGider =
+      json['MuhFislerdeRefKodSorulsun_Gider'] as bool?
+  ..muhFislerdeRefKodSorulsunNazim =
+      json['MuhFislerdeRefKodSorulsun_Nazim'] as bool?
   ..alisOzelKod2Aktif = json['AlisOzelKod2Aktif'] as bool?
   ..alisOzelKod2Tablodan = json['AlisOzelKod2Tablodan'] as bool?
   ..alisMiktar1Gelsin = json['AlisMiktar1Gelsin'] as bool?
@@ -346,34 +444,50 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) {
   writeNotNull('SIRKET', instance.sirket);
   writeNotNull('ISLETME_KODU', instance.isletmeKodu);
   writeNotNull('MapCariKullSahalar', instance.mapCariKullSahalar?.toJson());
-  writeNotNull('MapCariEkAlanlar', instance.mapCariEkAlanlar?.map((e) => e.toJson()).toList());
+  writeNotNull('MapCariEkAlanlar',
+      instance.mapCariEkAlanlar?.map((e) => e.toJson()).toList());
   val['sabitSayfalamaOgeSayisi'] = instance.sabitSayfalamaOgeSayisi;
-  writeNotNull('_NetsisOndalikResponseModel', instance.netsisOndalikResponseModel?.map((e) => e.toJson()).toList());
+  writeNotNull('_NetsisOndalikResponseModel',
+      instance.netsisOndalikResponseModel?.map((e) => e.toJson()).toList());
   writeNotNull('DepoList', instance.depoList?.map((e) => e.toJson()).toList());
-  writeNotNull('DovizList', instance.dovizList?.map((e) => e.toJson()).toList());
-  writeNotNull('SatirAcikBaslikList', instance.satirAcikBaslikList?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'DovizList', instance.dovizList?.map((e) => e.toJson()).toList());
+  writeNotNull('SatirAcikBaslikList',
+      instance.satirAcikBaslikList?.map((e) => e.toJson()).toList());
   writeNotNull('KasaList', instance.kasaList?.map((e) => e.toJson()).toList());
-  writeNotNull('PlasiyerList', instance.plasiyerList?.map((e) => e.toJson()).toList());
-  writeNotNull('PlasiyerListTumu', instance.plasiyerListTumu?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'PlasiyerList', instance.plasiyerList?.map((e) => e.toJson()).toList());
+  writeNotNull('PlasiyerListTumu',
+      instance.plasiyerListTumu?.map((e) => e.toJson()).toList());
   writeNotNull('SubeList', instance.subeList?.map((e) => e.toJson()).toList());
-  writeNotNull('TalTekParam', instance.talTekParam?.map((e) => e.toJson()).toList());
-  writeNotNull('CekSenParam', instance.cekSenParam?.map((e) => e.toJson()).toList());
-  writeNotNull('ListOzelKodTum', instance.listOzelKodTum?.map((e) => e.toJson()).toList());
-  writeNotNull('ListIskTip', instance.listIskTip?.map((e) => e.toJson()).toList());
-  writeNotNull('ListCariOdemeKodu', instance.listCariOdemeKodu?.map((e) => e.toJson()).toList());
-  writeNotNull('YaziciList', instance.yaziciList?.map((e) => e.toJson()).toList());
-  writeNotNull('NetFectDizaynList', instance.netFectDizaynList?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'TalTekParam', instance.talTekParam?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'CekSenParam', instance.cekSenParam?.map((e) => e.toJson()).toList());
+  writeNotNull('ListOzelKodTum',
+      instance.listOzelKodTum?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'ListIskTip', instance.listIskTip?.map((e) => e.toJson()).toList());
+  writeNotNull('ListCariOdemeKodu',
+      instance.listCariOdemeKodu?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'YaziciList', instance.yaziciList?.map((e) => e.toJson()).toList());
+  writeNotNull('NetFectDizaynList',
+      instance.netFectDizaynList?.map((e) => e.toJson()).toList());
   writeNotNull('MapStokGrupAdlari', instance.mapStokGrupAdlari?.toJson());
   writeNotNull('MustahsilParam', instance.mustahsilParam?.toJson());
-  writeNotNull('ListFatuEkMaliyet', instance.listFatuEkMaliyet?.map((e) => e.toJson()).toList());
-  writeNotNull('MapKdvSifirBelgeTipiOzelKod2', instance.mapKdvSifirBelgeTipiOzelKod2?.toJson());
+  writeNotNull('ListFatuEkMaliyet',
+      instance.listFatuEkMaliyet?.map((e) => e.toJson()).toList());
+  writeNotNull('MapKdvSifirBelgeTipiOzelKod2',
+      instance.mapKdvSifirBelgeTipiOzelKod2?.toJson());
   writeNotNull('LokalDepoUygulamasiAcik', instance.lokalDepoUygulamasiAcik);
   writeNotNull('EsnekYapilandir', instance.esnekYapilandir);
   writeNotNull('OzelFiyatSistemi', instance.ozelFiyatSistemi);
   writeNotNull('SadeceOzelFiyatSistemi', instance.sadeceOzelFiyatSistemi);
   writeNotNull('OtvliStoklarVar', instance.otvliStoklarVar);
   writeNotNull('MapStokKullSahalar', instance.mapStokKullSahalar?.toJson());
-  writeNotNull('MapStokEkAlanlar', instance.mapStokEkAlanlar?.map((e) => e.toJson()).toList());
+  writeNotNull('MapStokEkAlanlar',
+      instance.mapStokEkAlanlar?.map((e) => e.toJson()).toList());
   writeNotNull('KarmaKoliUyg', instance.karmaKoliUyg);
   writeNotNull('AlisEkAciklamalarAktif', instance.alisEkAciklamalarAktif);
   writeNotNull('AlisEkAciklamaTanimi1', instance.alisEkAciklamaTanimi1);
@@ -395,37 +509,46 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) {
   writeNotNull('AlisOzelKod1Tablodan', instance.alisOzelKod1Tablodan);
   writeNotNull('AlisKosulAktif', instance.alisKosulAktif);
   writeNotNull('AlisFarkliTeslimCariAktif', instance.alisFarkliTeslimCariAktif);
-  writeNotNull('AlisMalFazMiktarIskontoAcik', instance.alisMalFazMiktarIskontoAcik);
-  writeNotNull('AlisSatirKademeliIskontoAcik', instance.alisSatirKademeliIskontoAcik);
-  writeNotNull('AlisSatirKademeliIskontoSayisi', instance.alisSatirKademeliIskontoSayisi);
+  writeNotNull(
+      'AlisMalFazMiktarIskontoAcik', instance.alisMalFazMiktarIskontoAcik);
+  writeNotNull(
+      'AlisSatirKademeliIskontoAcik', instance.alisSatirKademeliIskontoAcik);
+  writeNotNull('AlisSatirKademeliIskontoSayisi',
+      instance.alisSatirKademeliIskontoSayisi);
   writeNotNull('AlisGenIsk1Aktif', instance.alisGenIsk1Aktif);
   writeNotNull('AlisGenIsk2Aktif', instance.alisGenIsk2Aktif);
   writeNotNull('AlisGenIsk3Aktif', instance.alisGenIsk3Aktif);
   writeNotNull('AlisTopluDepoAktif', instance.alisTopluDepoAktif);
   writeNotNull('AlisStokDepoKarttanGelsin', instance.alisStokDepoKarttanGelsin);
   writeNotNull('AlisGenellikleKDVHaric', instance.alisGenellikleKdvHaric);
-  writeNotNull('AlisFarkliOlcuBirimleriKullan', instance.alisFarkliOlcuBirimleriKullan);
+  writeNotNull(
+      'AlisFarkliOlcuBirimleriKullan', instance.alisFarkliOlcuBirimleriKullan);
   writeNotNull('AlisDovizAktif', instance.alisDovizAktif);
   writeNotNull('AlisSatirdaKDVSor', instance.alisSatirdaKdvSor);
-  writeNotNull('AlisSatirdaAciklamalarAktif', instance.alisSatirdaAciklamalarAktif);
+  writeNotNull(
+      'AlisSatirdaAciklamalarAktif', instance.alisSatirdaAciklamalarAktif);
   writeNotNull('AlisSatirdaEkAlan2Aktif', instance.alisSatirdaEkAlan2Aktif);
   writeNotNull('AlisEkMaliyet2Aktif', instance.alisEkMaliyet2Aktif);
   writeNotNull('AlisEkMaliyet2Adi', instance.alisEkMaliyet2Adi);
   writeNotNull('AlisTevkifatPay', instance.alisTevkifatPay);
   writeNotNull('AlisTevkifatPayda', instance.alisTevkifatPayda);
-  writeNotNull('AlisFaturaFiyatSifirGecilsin', instance.alisFaturaFiyatSifirGecilsin);
+  writeNotNull(
+      'AlisFaturaFiyatSifirGecilsin', instance.alisFaturaFiyatSifirGecilsin);
   writeNotNull('AlisFazlaTeslimat', instance.alisFazlaTeslimat);
   writeNotNull('AlisDovizTakipHangiDeger', instance.alisDovizTakipHangiDeger);
   writeNotNull('AlisHizmetAktif', instance.alisHizmetAktif);
   writeNotNull('AlisHizmetDepoKodu', instance.alisHizmetDepoKodu);
   writeNotNull('AlisMiktar2Sor', instance.alisMiktar2Sor);
-  writeNotNull('AlisSatirdaTeslimTarihiSor', instance.alisSatirdaTeslimTarihiSor);
+  writeNotNull(
+      'AlisSatirdaTeslimTarihiSor', instance.alisSatirdaTeslimTarihiSor);
   writeNotNull('AlisFisSeriTakibiVar', instance.alisFisSeriTakibiVar);
-  writeNotNull('AlisTutardanFiyataGecilsin', instance.alisTutardanFiyataGecilsin);
+  writeNotNull(
+      'AlisTutardanFiyataGecilsin', instance.alisTutardanFiyataGecilsin);
   writeNotNull('AlisCariIskSatiraUygula', instance.alisCariIskSatiraUygula);
   writeNotNull('SeriUygulamasiAcik', instance.seriUygulamasiAcik);
   writeNotNull('SirketDovizUygulamasiAcik', instance.sirketDovizUygulamasiAcik);
-  writeNotNull('SirketDovizUygulamasiDovizKodu', instance.sirketDovizUygulamasiDovizKodu);
+  writeNotNull('SirketDovizUygulamasiDovizKodu',
+      instance.sirketDovizUygulamasiDovizKodu);
   writeNotNull('PlasiyerUygulamasi', instance.plasiyerUygulamasi);
   writeNotNull('ParaBirimi', instance.paraBirimi);
   writeNotNull('BankaEntegre', instance.bankaEntegre);
@@ -453,40 +576,51 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) {
   writeNotNull('SatisSatirIsk1YuzdeSor', instance.satisSatirIsk1YuzdeSor);
   writeNotNull('SatisKosulAktif', instance.satisKosulAktif);
   writeNotNull('SatisKosulSatirdaSor', instance.satisKosulSatirdaSor);
-  writeNotNull('SatisFarkliTeslimCariAktif', instance.satisFarkliTeslimCariAktif);
-  writeNotNull('SatisMalFazMiktarIskontoAcik', instance.satisMalFazMiktarIskontoAcik);
-  writeNotNull('SatisSatirKademeliIskontoAcik', instance.satisSatirKademeliIskontoAcik);
-  writeNotNull('SatisSatirKademeliIskontoSayisi', instance.satisSatirKademeliIskontoSayisi);
+  writeNotNull(
+      'SatisFarkliTeslimCariAktif', instance.satisFarkliTeslimCariAktif);
+  writeNotNull(
+      'SatisMalFazMiktarIskontoAcik', instance.satisMalFazMiktarIskontoAcik);
+  writeNotNull(
+      'SatisSatirKademeliIskontoAcik', instance.satisSatirKademeliIskontoAcik);
+  writeNotNull('SatisSatirKademeliIskontoSayisi',
+      instance.satisSatirKademeliIskontoSayisi);
   writeNotNull('SatisSatirdaKDVSor', instance.satisSatirdaKdvSor);
   writeNotNull('SatisGenIsk1Aktif', instance.satisGenIsk1Aktif);
   writeNotNull('SatisGenIsk2Aktif', instance.satisGenIsk2Aktif);
   writeNotNull('SatisGenIsk3Aktif', instance.satisGenIsk3Aktif);
   writeNotNull('SatisTopluDepoAktif', instance.satisTopluDepoAktif);
-  writeNotNull('SatisStokDepoKarttanGelsin', instance.satisStokDepoKarttanGelsin);
+  writeNotNull(
+      'SatisStokDepoKarttanGelsin', instance.satisStokDepoKarttanGelsin);
   writeNotNull('SatisGenellikleKDVHaric', instance.satisGenellikleKdvHaric);
-  writeNotNull('SatisFarkliOlcuBirimleriKullan', instance.satisFarkliOlcuBirimleriKullan);
+  writeNotNull('SatisFarkliOlcuBirimleriKullan',
+      instance.satisFarkliOlcuBirimleriKullan);
   writeNotNull('SatisCariRiskTakibi', instance.satisCariRiskTakibi);
   writeNotNull('SatisDovizAktif', instance.satisDovizAktif);
-  writeNotNull('SatisSatirdaAciklamalarAktif', instance.satisSatirdaAciklamalarAktif);
+  writeNotNull(
+      'SatisSatirdaAciklamalarAktif', instance.satisSatirdaAciklamalarAktif);
   writeNotNull('SatisSatirdaEkAlan2Aktif', instance.satisSatirdaEkAlan2Aktif);
   writeNotNull('SatisEkMaliyet2Aktif', instance.satisEkMaliyet2Aktif);
   writeNotNull('SatisEkMaliyet2Adi', instance.satisEkMaliyet2Adi);
   writeNotNull('SatisTevkifatPay', instance.satisTevkifatPay);
   writeNotNull('SatisTevkifatPayda', instance.satisTevkifatPayda);
-  writeNotNull('SatisFaturaFiyatSifirGecilsin', instance.satisFaturaFiyatSifirGecilsin);
+  writeNotNull(
+      'SatisFaturaFiyatSifirGecilsin', instance.satisFaturaFiyatSifirGecilsin);
   writeNotNull('SatisFazlaTeslimat', instance.satisFazlaTeslimat);
   writeNotNull('SatisDovizTakipHangiDeger', instance.satisDovizTakipHangiDeger);
   writeNotNull('SatisHizmetAktif', instance.satisHizmetAktif);
   writeNotNull('SatisHizmetDepoKodu', instance.satisHizmetDepoKodu);
   writeNotNull('SatisMiktar2Sor', instance.satisMiktar2Sor);
   writeNotNull('SatisSubeDATOnaylansin', instance.satisSubeDatOnaylansin);
-  writeNotNull('SatisSatirdaTeslimTarihiSor', instance.satisSatirdaTeslimTarihiSor);
-  writeNotNull('SatisSatirdaIsEmriSorulsun', instance.satisSatirdaIsEmriSorulsun);
+  writeNotNull(
+      'SatisSatirdaTeslimTarihiSor', instance.satisSatirdaTeslimTarihiSor);
+  writeNotNull(
+      'SatisSatirdaIsEmriSorulsun', instance.satisSatirdaIsEmriSorulsun);
   writeNotNull('SatisFisSeriTakibiVar', instance.satisFisSeriTakibiVar);
   writeNotNull('SatisIrsCariHesaba', instance.satisIrsCariHesaba);
   writeNotNull('SatisEkAlan1Aktif', instance.satisEkAlan1Aktif);
   writeNotNull('SatisDATSiparisTakibi', instance.satisDatSiparisTakibi);
-  writeNotNull('SatisIrsFatuSipVadeDegissin', instance.satisIrsFatuSipVadeDegissin);
+  writeNotNull(
+      'SatisIrsFatuSipVadeDegissin', instance.satisIrsFatuSipVadeDegissin);
   writeNotNull('KonsinyeUygulamasi', instance.konsinyeUygulamasi);
   writeNotNull('MSenetDovizAktif', instance.mSenetDovizAktif);
   writeNotNull('MCekDovizAktif', instance.mCekDovizAktif);
@@ -507,33 +641,42 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) {
   writeNotNull('ArrEArSeri', instance.arrEArSeri);
   writeNotNull('Seri_EArsiv', instance.seriEArsiv);
   writeNotNull('UretimEkAlanKullan', instance.uretimEkAlanKullan);
-  writeNotNull('OzelFaturaIadeMaliyetiZorunlu', instance.ozelFaturaIadeMaliyetiZorunlu);
+  writeNotNull(
+      'OzelFaturaIadeMaliyetiZorunlu', instance.ozelFaturaIadeMaliyetiZorunlu);
   writeNotNull('bankaKKartiKasayaIsle', instance.bankaKKartiKasayaIsle);
   writeNotNull('KayitliBankaHesapTipleri', instance.kayitliBankaHesapTipleri);
   writeNotNull('KKNoZorunluDegil', instance.kkNoZorunluDegil);
   writeNotNull('FifoLifoYontem', instance.fifoLifoYontem);
   writeNotNull('CariAktiviteUygulamasi', instance.cariAktiviteUygulamasi);
-  writeNotNull('CariAktiviteTipleri', instance.cariAktiviteTipleri?.map((e) => e.toJson()).toList());
+  writeNotNull('CariAktiviteTipleri',
+      instance.cariAktiviteTipleri?.map((e) => e.toJson()).toList());
   writeNotNull('CariAktiviteEkAlanlar', instance.cariAktiviteEkAlanlar);
-  writeNotNull('SatisCariDovizTipiniKullan', instance.satisCariDovizTipiniKullan);
+  writeNotNull(
+      'SatisCariDovizTipiniKullan', instance.satisCariDovizTipiniKullan);
   writeNotNull('AlisCariDovizTipiniKullan', instance.alisCariDovizTipiniKullan);
-  writeNotNull('Fatu_KontrolAciklamasiAktif', instance.fatuKontrolAciklamasiAktif);
-  writeNotNull('SatisFiyatGrubuSorulacakAlan', instance.satisFiyatGrubuSorulacakAlan);
+  writeNotNull(
+      'Fatu_KontrolAciklamasiAktif', instance.fatuKontrolAciklamasiAktif);
+  writeNotNull(
+      'SatisFiyatGrubuSorulacakAlan', instance.satisFiyatGrubuSorulacakAlan);
   writeNotNull('Siparis_FarkliSubeUyg', instance.siparisFarkliSubeUyg);
   writeNotNull('SatisIskEkSahadanGelsin', instance.satisIskEkSahadanGelsin);
   writeNotNull('SatisIsk1Saha', instance.satisIsk1Saha);
   writeNotNull('SatisIsk1Kullanim', instance.satisIsk1Kullanim);
   writeNotNull('Uretim_MalTop_HangiHucrede', instance.uretimMalTopHangiHucrede);
-  writeNotNull('Uretim_MalTop_FazlaTeslimYapilabilir', instance.uretimMalTopFazlaTeslimYapilabilir);
+  writeNotNull('Uretim_MalTop_FazlaTeslimYapilabilir',
+      instance.uretimMalTopFazlaTeslimYapilabilir);
   writeNotNull('Uretim_USK_SeriGirilsin', instance.uretimUskSeriGirilsin);
   writeNotNull('Finans_BankaIslemModulu', instance.finansBankaIslemModulu);
   writeNotNull('Finans_BankaTcmbBankaKodu', instance.finansBankaTcmbBankaKodu);
   writeNotNull('Finans_BankaTcmbSubeKodu', instance.finansBankaTcmbSubeKodu);
-  writeNotNull('Finans_CekSenOzelOrtalamaVadeGunuHesapla', instance.finansCekSenOzelOrtalamaVadeGunuHesapla);
+  writeNotNull('Finans_CekSenOzelOrtalamaVadeGunuHesapla',
+      instance.finansCekSenOzelOrtalamaVadeGunuHesapla);
   writeNotNull('Stok_Yap_RehberTipi', instance.stokYapRehberTipi);
-  writeNotNull('Stok_KanbanBarkodEslemeUyg', instance.stokKanbanBarkodEslemeUyg);
+  writeNotNull(
+      'Stok_KanbanBarkodEslemeUyg', instance.stokKanbanBarkodEslemeUyg);
   writeNotNull('Stok_SeriParcalamaUyg', instance.stokSeriParcalamaUyg);
-  writeNotNull('Stok_DetayliAramaAlanlar', instance.stokDetayliAramaAlanlar?.map((e) => e.toJson()).toList());
+  writeNotNull('Stok_DetayliAramaAlanlar',
+      instance.stokDetayliAramaAlanlar?.map((e) => e.toJson()).toList());
   writeNotNull('Genel_KonumTakibiYapilsin', instance.genelKonumTakibiYapilsin);
   writeNotNull('Genel_KonumTakibiDakika', instance.genelKonumTakibiDakika);
   writeNotNull('Genel_KonumTakibiMetre', instance.genelKonumTakibiMetre);
@@ -545,18 +688,26 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) {
   writeNotNull('SevkEmriTerminalIrsaliye', instance.sevkEmriTerminalIrsaliye);
   writeNotNull('SevkEmriTerminalTransfer', instance.sevkEmriTerminalTransfer);
   writeNotNull('SevkEmriHucreKontrol', instance.sevkEmriHucreKontrol);
-  writeNotNull('SevkEmriMalTopGorunecekAlanlar', instance.sevkEmriMalTopGorunecekAlanlar);
+  writeNotNull('SevkEmriMalTopGorunecekAlanlar',
+      instance.sevkEmriMalTopGorunecekAlanlar);
   writeNotNull('Seri_SevkIrsaliye', instance.seriSevkIrsaliye);
-  writeNotNull('KontrolluBelgeAktarimAktif', instance.kontrolluBelgeAktarimAktif);
-  writeNotNull('KontrolluBelgeAktarimBelgeNoGoster', instance.kontrolluBelgeAktarimBelgeNoGoster);
+  writeNotNull(
+      'KontrolluBelgeAktarimAktif', instance.kontrolluBelgeAktarimAktif);
+  writeNotNull('KontrolluBelgeAktarimBelgeNoGoster',
+      instance.kontrolluBelgeAktarimBelgeNoGoster);
   writeNotNull('EMustahsilAktif', instance.eMustahsilAktif);
   writeNotNull('MuhasebeEntegre', instance.muhasebeEntegre);
   writeNotNull('MuhFislerdeRefKodSorulsun', instance.muhFislerdeRefKodSorulsun);
-  writeNotNull('MuhFislerdeRefKodSorulsun_Aktif', instance.muhFislerdeRefKodSorulsunAktif);
-  writeNotNull('MuhFislerdeRefKodSorulsun_Pasif', instance.muhFislerdeRefKodSorulsunPasif);
-  writeNotNull('MuhFislerdeRefKodSorulsun_Gelir', instance.muhFislerdeRefKodSorulsunGelir);
-  writeNotNull('MuhFislerdeRefKodSorulsun_Gider', instance.muhFislerdeRefKodSorulsunGider);
-  writeNotNull('MuhFislerdeRefKodSorulsun_Nazim', instance.muhFislerdeRefKodSorulsunNazim);
+  writeNotNull('MuhFislerdeRefKodSorulsun_Aktif',
+      instance.muhFislerdeRefKodSorulsunAktif);
+  writeNotNull('MuhFislerdeRefKodSorulsun_Pasif',
+      instance.muhFislerdeRefKodSorulsunPasif);
+  writeNotNull('MuhFislerdeRefKodSorulsun_Gelir',
+      instance.muhFislerdeRefKodSorulsunGelir);
+  writeNotNull('MuhFislerdeRefKodSorulsun_Gider',
+      instance.muhFislerdeRefKodSorulsunGider);
+  writeNotNull('MuhFislerdeRefKodSorulsun_Nazim',
+      instance.muhFislerdeRefKodSorulsunNazim);
   writeNotNull('AlisOzelKod2Aktif', instance.alisOzelKod2Aktif);
   writeNotNull('AlisOzelKod2Tablodan', instance.alisOzelKod2Tablodan);
   writeNotNull('AlisMiktar1Gelsin', instance.alisMiktar1Gelsin);
@@ -567,9 +718,10 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) {
   return val;
 }
 
-CariAktiviteTipleri _$CariAktiviteTipleriFromJson(Map<String, dynamic> json) => CariAktiviteTipleri()
-  ..aktiviteTipi = json['AKTIVITE_TIPI'] as int?
-  ..aktiviteAdi = json['AKTIVITE_ADI'] as String?;
+CariAktiviteTipleri _$CariAktiviteTipleriFromJson(Map<String, dynamic> json) =>
+    CariAktiviteTipleri()
+      ..aktiviteTipi = json['AKTIVITE_TIPI'] as int?
+      ..aktiviteAdi = json['AKTIVITE_ADI'] as String?;
 
 Map<String, dynamic> _$CariAktiviteTipleriToJson(CariAktiviteTipleri instance) {
   final val = <String, dynamic>{};
@@ -709,9 +861,10 @@ Map<String, dynamic> _$KasaListToJson(KasaList instance) {
   return val;
 }
 
-ListCariOdemeKodu _$ListCariOdemeKoduFromJson(Map<String, dynamic> json) => ListCariOdemeKodu()
-  ..odemeKodu = json['ODEME_KODU'] as String?
-  ..aciklama = json['ACIKLAMA'] as String?;
+ListCariOdemeKodu _$ListCariOdemeKoduFromJson(Map<String, dynamic> json) =>
+    ListCariOdemeKodu()
+      ..odemeKodu = json['ODEME_KODU'] as String?
+      ..aciklama = json['ACIKLAMA'] as String?;
 
 Map<String, dynamic> _$ListCariOdemeKoduToJson(ListCariOdemeKodu instance) {
   final val = <String, dynamic>{};
@@ -727,10 +880,11 @@ Map<String, dynamic> _$ListCariOdemeKoduToJson(ListCariOdemeKodu instance) {
   return val;
 }
 
-ListFatuEkMaliyet _$ListFatuEkMaliyetFromJson(Map<String, dynamic> json) => ListFatuEkMaliyet()
-  ..no = json['NO'] as int?
-  ..belgeTipi = json['BELGE_TIPI'] as String?
-  ..adi = json['ADI'] as String?;
+ListFatuEkMaliyet _$ListFatuEkMaliyetFromJson(Map<String, dynamic> json) =>
+    ListFatuEkMaliyet()
+      ..no = json['NO'] as int?
+      ..belgeTipi = json['BELGE_TIPI'] as String?
+      ..adi = json['ADI'] as String?;
 
 Map<String, dynamic> _$ListFatuEkMaliyetToJson(ListFatuEkMaliyet instance) {
   final val = <String, dynamic>{};
@@ -765,12 +919,13 @@ Map<String, dynamic> _$ListIskTipToJson(ListIskTip instance) {
   return val;
 }
 
-ListOzelKodTum _$ListOzelKodTumFromJson(Map<String, dynamic> json) => ListOzelKodTum()
-  ..kodTipi = json['KOD_TIPI'] as int?
-  ..belgeTipi = json['BELGE_TIPI'] as String?
-  ..kod = json['KOD'] as String?
-  ..aciklama = json['ACIKLAMA'] as String?
-  ..fiyatSirasi = json['FIYAT_SIRASI'] as int?;
+ListOzelKodTum _$ListOzelKodTumFromJson(Map<String, dynamic> json) =>
+    ListOzelKodTum()
+      ..kodTipi = json['KOD_TIPI'] as int?
+      ..belgeTipi = json['BELGE_TIPI'] as String?
+      ..kod = json['KOD'] as String?
+      ..aciklama = json['ACIKLAMA'] as String?
+      ..fiyatSirasi = json['FIYAT_SIRASI'] as int?;
 
 Map<String, dynamic> _$ListOzelKodTumToJson(ListOzelKodTum instance) {
   final val = <String, dynamic>{};
@@ -809,23 +964,24 @@ Map<String, dynamic> _$MapEkAlanlarToJson(MapEkAlanlar instance) {
   return val;
 }
 
-MapCariKullSahalar _$MapCariKullSahalarFromJson(Map<String, dynamic> json) => MapCariKullSahalar()
-  ..the1S = json['1S'] as String?
-  ..the2S = json['2S'] as String?
-  ..the3S = json['3S'] as String?
-  ..the4S = json['4S'] as String?
-  ..the5S = json['5S'] as String?
-  ..the6S = json['6S'] as String?
-  ..the7S = json['7S'] as String?
-  ..the8S = json['8S'] as String?
-  ..the1N = json['1N'] as String?
-  ..the2N = json['2N'] as String?
-  ..the3N = json['3N'] as String?
-  ..the4N = json['4N'] as String?
-  ..the5N = json['5N'] as String?
-  ..the6N = json['6N'] as String?
-  ..the7N = json['7N'] as String?
-  ..the8N = json['8N'] as String?;
+MapCariKullSahalar _$MapCariKullSahalarFromJson(Map<String, dynamic> json) =>
+    MapCariKullSahalar()
+      ..the1S = json['1S'] as String?
+      ..the2S = json['2S'] as String?
+      ..the3S = json['3S'] as String?
+      ..the4S = json['4S'] as String?
+      ..the5S = json['5S'] as String?
+      ..the6S = json['6S'] as String?
+      ..the7S = json['7S'] as String?
+      ..the8S = json['8S'] as String?
+      ..the1N = json['1N'] as String?
+      ..the2N = json['2N'] as String?
+      ..the3N = json['3N'] as String?
+      ..the4N = json['4N'] as String?
+      ..the5N = json['5N'] as String?
+      ..the6N = json['6N'] as String?
+      ..the7N = json['7N'] as String?
+      ..the8N = json['8N'] as String?;
 
 Map<String, dynamic> _$MapCariKullSahalarToJson(MapCariKullSahalar instance) {
   final val = <String, dynamic>{};
@@ -855,15 +1011,18 @@ Map<String, dynamic> _$MapCariKullSahalarToJson(MapCariKullSahalar instance) {
   return val;
 }
 
-MapKdvSifirBelgeTipiOzelKod2 _$MapKdvSifirBelgeTipiOzelKod2FromJson(Map<String, dynamic> json) => MapKdvSifirBelgeTipiOzelKod2()
-  ..dc = json['DC'] as String?
-  ..ac = json['AC'] as String?
-  ..ms = json['MS'] as String?
-  ..si = json['SI'] as String?
-  ..sf = json['SF'] as String?
-  ..stek = json['STEK'] as String?;
+MapKdvSifirBelgeTipiOzelKod2 _$MapKdvSifirBelgeTipiOzelKod2FromJson(
+        Map<String, dynamic> json) =>
+    MapKdvSifirBelgeTipiOzelKod2()
+      ..dc = json['DC'] as String?
+      ..ac = json['AC'] as String?
+      ..ms = json['MS'] as String?
+      ..si = json['SI'] as String?
+      ..sf = json['SF'] as String?
+      ..stek = json['STEK'] as String?;
 
-Map<String, dynamic> _$MapKdvSifirBelgeTipiOzelKod2ToJson(MapKdvSifirBelgeTipiOzelKod2 instance) {
+Map<String, dynamic> _$MapKdvSifirBelgeTipiOzelKod2ToJson(
+    MapKdvSifirBelgeTipiOzelKod2 instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -881,13 +1040,14 @@ Map<String, dynamic> _$MapKdvSifirBelgeTipiOzelKod2ToJson(MapKdvSifirBelgeTipiOz
   return val;
 }
 
-MapStokGrupAdlari _$MapStokGrupAdlariFromJson(Map<String, dynamic> json) => MapStokGrupAdlari()
-  ..grupKodu = json['GrupKodu'] as String?
-  ..kod1 = json['Kod1']
-  ..kod2 = json['Kod2']
-  ..kod3 = json['Kod3']
-  ..kod4 = json['Kod4']
-  ..kod5 = json['Kod5'];
+MapStokGrupAdlari _$MapStokGrupAdlariFromJson(Map<String, dynamic> json) =>
+    MapStokGrupAdlari()
+      ..grupKodu = json['GrupKodu'] as String?
+      ..kod1 = json['Kod1']
+      ..kod2 = json['Kod2']
+      ..kod3 = json['Kod3']
+      ..kod4 = json['Kod4']
+      ..kod5 = json['Kod5'];
 
 Map<String, dynamic> _$MapStokGrupAdlariToJson(MapStokGrupAdlari instance) {
   final val = <String, dynamic>{};
@@ -907,23 +1067,24 @@ Map<String, dynamic> _$MapStokGrupAdlariToJson(MapStokGrupAdlari instance) {
   return val;
 }
 
-MapStokKullSahalar _$MapStokKullSahalarFromJson(Map<String, dynamic> json) => MapStokKullSahalar()
-  ..the1S = json['1S'] as String?
-  ..the2S = json['2S'] as String?
-  ..the3S = json['3S'] as String?
-  ..the4S = json['4S'] as String?
-  ..the5S = json['5S'] as String?
-  ..the6S = json['6S'] as String?
-  ..the7S = json['7S'] as String?
-  ..the8S = json['8S'] as String?
-  ..the1N = json['1N'] as String?
-  ..the2N = json['2N'] as String?
-  ..the3N = json['3N'] as String?
-  ..the4N = json['4N'] as String?
-  ..the5N = json['5N'] as String?
-  ..the6N = json['6N'] as String?
-  ..the7N = json['7N'] as String?
-  ..the8N = json['8N'] as String?;
+MapStokKullSahalar _$MapStokKullSahalarFromJson(Map<String, dynamic> json) =>
+    MapStokKullSahalar()
+      ..the1S = json['1S'] as String?
+      ..the2S = json['2S'] as String?
+      ..the3S = json['3S'] as String?
+      ..the4S = json['4S'] as String?
+      ..the5S = json['5S'] as String?
+      ..the6S = json['6S'] as String?
+      ..the7S = json['7S'] as String?
+      ..the8S = json['8S'] as String?
+      ..the1N = json['1N'] as String?
+      ..the2N = json['2N'] as String?
+      ..the3N = json['3N'] as String?
+      ..the4N = json['4N'] as String?
+      ..the5N = json['5N'] as String?
+      ..the6N = json['6N'] as String?
+      ..the7N = json['7N'] as String?
+      ..the8N = json['8N'] as String?;
 
 Map<String, dynamic> _$MapStokKullSahalarToJson(MapStokKullSahalar instance) {
   final val = <String, dynamic>{};
@@ -953,14 +1114,15 @@ Map<String, dynamic> _$MapStokKullSahalarToJson(MapStokKullSahalar instance) {
   return val;
 }
 
-MustahsilParam _$MustahsilParamFromJson(Map<String, dynamic> json) => MustahsilParam()
-  ..stopajOrani = (json['STOPAJ_ORANI'] as num?)?.toDouble()
-  ..fonOrani = (json['FON_ORANI'] as num?)?.toDouble()
-  ..borsaOrani = (json['BORSA_ORANI'] as num?)?.toDouble()
-  ..bagkurOrani = json['BAGKUR_ORANI'] as int?
-  ..bagkurYb = json['BAGKUR_YB'] as String?
-  ..meraOrani = (json['MERA_ORANI'] as num?)?.toDouble()
-  ..borsaUcretDuzenlemesi = json['BORSA_UCRET_DUZENLEMESI'] as String?;
+MustahsilParam _$MustahsilParamFromJson(Map<String, dynamic> json) =>
+    MustahsilParam()
+      ..stopajOrani = (json['STOPAJ_ORANI'] as num?)?.toDouble()
+      ..fonOrani = (json['FON_ORANI'] as num?)?.toDouble()
+      ..borsaOrani = (json['BORSA_ORANI'] as num?)?.toDouble()
+      ..bagkurOrani = json['BAGKUR_ORANI'] as int?
+      ..bagkurYb = json['BAGKUR_YB'] as String?
+      ..meraOrani = (json['MERA_ORANI'] as num?)?.toDouble()
+      ..borsaUcretDuzenlemesi = json['BORSA_UCRET_DUZENLEMESI'] as String?;
 
 Map<String, dynamic> _$MustahsilParamToJson(MustahsilParam instance) {
   final val = <String, dynamic>{};
@@ -981,19 +1143,20 @@ Map<String, dynamic> _$MustahsilParamToJson(MustahsilParam instance) {
   return val;
 }
 
-NetFectDizaynList _$NetFectDizaynListFromJson(Map<String, dynamic> json) => NetFectDizaynList()
-  ..id = json['ID'] as int?
-  ..dizaynYeri = json['DIZAYN_YERI'] as String?
-  ..dizaynYolu = json['DIZAYN_YOLU'] as String?
-  ..dizaynAdi = json['DIZAYN_ADI'] as String?
-  ..ozelKod = json['OZEL_KOD'] as String?
-  ..kopyaSayisi = json['KOPYA_SAYISI'] as int?
-  ..sablonVar = json['SABLON_VAR'] as String?
-  ..aktif = json['AKTIF'] as String?
-  ..dosyaAdi = json['DOSYA_ADI'] as String?
-  ..parametreler = json['PARAMETRELER'] as String?
-  ..varsayilanMi = json['VARSAYILAN_MI'] as bool?
-  ..detayKod = json['DETAY_KOD'] as String?;
+NetFectDizaynList _$NetFectDizaynListFromJson(Map<String, dynamic> json) =>
+    NetFectDizaynList()
+      ..id = json['ID'] as int?
+      ..dizaynYeri = json['DIZAYN_YERI'] as String?
+      ..dizaynYolu = json['DIZAYN_YOLU'] as String?
+      ..dizaynAdi = json['DIZAYN_ADI'] as String?
+      ..ozelKod = json['OZEL_KOD'] as String?
+      ..kopyaSayisi = json['KOPYA_SAYISI'] as int?
+      ..sablonVar = json['SABLON_VAR'] as String?
+      ..aktif = json['AKTIF'] as String?
+      ..dosyaAdi = json['DOSYA_ADI'] as String?
+      ..parametreler = json['PARAMETRELER'] as String?
+      ..varsayilanMi = json['VARSAYILAN_MI'] as bool?
+      ..detayKod = json['DETAY_KOD'] as String?;
 
 Map<String, dynamic> _$NetFectDizaynListToJson(NetFectDizaynList instance) {
   final val = <String, dynamic>{};
@@ -1019,17 +1182,20 @@ Map<String, dynamic> _$NetFectDizaynListToJson(NetFectDizaynList instance) {
   return val;
 }
 
-NetsisOndalikResponseModel _$NetsisOndalikResponseModelFromJson(Map<String, dynamic> json) => NetsisOndalikResponseModel()
-  ..modul = json['MODUL'] as String?
-  ..miktar = json['MIKTAR'] as int?
-  ..fiyat = json['FIYAT'] as int?
-  ..tutar = json['TUTAR'] as int?
-  ..kur = json['KUR'] as int?
-  ..doviz = json['DOVIZ'] as int?
-  ..dovizFiyati = json['DOVIZ_FIYATI'] as int?
-  ..oran = json['ORAN'] as int?;
+NetsisOndalikResponseModel _$NetsisOndalikResponseModelFromJson(
+        Map<String, dynamic> json) =>
+    NetsisOndalikResponseModel()
+      ..modul = json['MODUL'] as String?
+      ..miktar = json['MIKTAR'] as int?
+      ..fiyat = json['FIYAT'] as int?
+      ..tutar = json['TUTAR'] as int?
+      ..kur = json['KUR'] as int?
+      ..doviz = json['DOVIZ'] as int?
+      ..dovizFiyati = json['DOVIZ_FIYATI'] as int?
+      ..oran = json['ORAN'] as int?;
 
-Map<String, dynamic> _$NetsisOndalikResponseModelToJson(NetsisOndalikResponseModel instance) {
+Map<String, dynamic> _$NetsisOndalikResponseModelToJson(
+    NetsisOndalikResponseModel instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -1067,18 +1233,19 @@ Map<String, dynamic> _$PlasiyerListToJson(PlasiyerList instance) {
   return val;
 }
 
-SatirAcikBaslikList _$SatirAcikBaslikListFromJson(Map<String, dynamic> json) => SatirAcikBaslikList()
-  ..belgeKodu = json['BELGE_KODU'] as String?
-  ..aciklama1 = json['ACIKLAMA1'] as String?
-  ..aciklama2 = json['ACIKLAMA2'] as String?
-  ..aciklama3 = json['ACIKLAMA3'] as String?
-  ..aciklama4 = json['ACIKLAMA4'] as String?
-  ..aciklama5 = json['ACIKLAMA5'] as String?
-  ..aciklama6 = json['ACIKLAMA6'] as String?
-  ..aciklama7 = json['ACIKLAMA7'] as String?
-  ..aciklama8 = json['ACIKLAMA8'] as String?
-  ..aciklama9 = json['ACIKLAMA9'] as String?
-  ..aciklama10 = json['ACIKLAMA10'] as String?;
+SatirAcikBaslikList _$SatirAcikBaslikListFromJson(Map<String, dynamic> json) =>
+    SatirAcikBaslikList()
+      ..belgeKodu = json['BELGE_KODU'] as String?
+      ..aciklama1 = json['ACIKLAMA1'] as String?
+      ..aciklama2 = json['ACIKLAMA2'] as String?
+      ..aciklama3 = json['ACIKLAMA3'] as String?
+      ..aciklama4 = json['ACIKLAMA4'] as String?
+      ..aciklama5 = json['ACIKLAMA5'] as String?
+      ..aciklama6 = json['ACIKLAMA6'] as String?
+      ..aciklama7 = json['ACIKLAMA7'] as String?
+      ..aciklama8 = json['ACIKLAMA8'] as String?
+      ..aciklama9 = json['ACIKLAMA9'] as String?
+      ..aciklama10 = json['ACIKLAMA10'] as String?;
 
 Map<String, dynamic> _$SatirAcikBaslikListToJson(SatirAcikBaslikList instance) {
   final val = <String, dynamic>{};
@@ -1103,11 +1270,14 @@ Map<String, dynamic> _$SatirAcikBaslikListToJson(SatirAcikBaslikList instance) {
   return val;
 }
 
-StokDetayliAramaAlanlar _$StokDetayliAramaAlanlarFromJson(Map<String, dynamic> json) => StokDetayliAramaAlanlar()
-  ..searchField = json['SearchField'] as String?
-  ..name = json['Name'] as String?;
+StokDetayliAramaAlanlar _$StokDetayliAramaAlanlarFromJson(
+        Map<String, dynamic> json) =>
+    StokDetayliAramaAlanlar()
+      ..searchField = json['SearchField'] as String?
+      ..name = json['Name'] as String?;
 
-Map<String, dynamic> _$StokDetayliAramaAlanlarToJson(StokDetayliAramaAlanlar instance) {
+Map<String, dynamic> _$StokDetayliAramaAlanlarToJson(
+    StokDetayliAramaAlanlar instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

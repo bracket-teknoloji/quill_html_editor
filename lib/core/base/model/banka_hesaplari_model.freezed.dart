@@ -59,12 +59,15 @@ mixin _$BankaHesaplariModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $BankaHesaplariModelCopyWith<BankaHesaplariModel> get copyWith => throw _privateConstructorUsedError;
+  $BankaHesaplariModelCopyWith<BankaHesaplariModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BankaHesaplariModelCopyWith<$Res> {
-  factory $BankaHesaplariModelCopyWith(BankaHesaplariModel value, $Res Function(BankaHesaplariModel) then) = _$BankaHesaplariModelCopyWithImpl<$Res, BankaHesaplariModel>;
+  factory $BankaHesaplariModelCopyWith(
+          BankaHesaplariModel value, $Res Function(BankaHesaplariModel) then) =
+      _$BankaHesaplariModelCopyWithImpl<$Res, BankaHesaplariModel>;
   @useResult
   $Res call(
       {String? bankaKodu,
@@ -88,7 +91,8 @@ abstract class $BankaHesaplariModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$BankaHesaplariModelCopyWithImpl<$Res, $Val extends BankaHesaplariModel> implements $BankaHesaplariModelCopyWith<$Res> {
+class _$BankaHesaplariModelCopyWithImpl<$Res, $Val extends BankaHesaplariModel>
+    implements $BankaHesaplariModelCopyWith<$Res> {
   _$BankaHesaplariModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -196,8 +200,11 @@ class _$BankaHesaplariModelCopyWithImpl<$Res, $Val extends BankaHesaplariModel> 
 }
 
 /// @nodoc
-abstract class _$$BankaHesaplariModelImplCopyWith<$Res> implements $BankaHesaplariModelCopyWith<$Res> {
-  factory _$$BankaHesaplariModelImplCopyWith(_$BankaHesaplariModelImpl value, $Res Function(_$BankaHesaplariModelImpl) then) = __$$BankaHesaplariModelImplCopyWithImpl<$Res>;
+abstract class _$$BankaHesaplariModelImplCopyWith<$Res>
+    implements $BankaHesaplariModelCopyWith<$Res> {
+  factory _$$BankaHesaplariModelImplCopyWith(_$BankaHesaplariModelImpl value,
+          $Res Function(_$BankaHesaplariModelImpl) then) =
+      __$$BankaHesaplariModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -222,8 +229,12 @@ abstract class _$$BankaHesaplariModelImplCopyWith<$Res> implements $BankaHesapla
 }
 
 /// @nodoc
-class __$$BankaHesaplariModelImplCopyWithImpl<$Res> extends _$BankaHesaplariModelCopyWithImpl<$Res, _$BankaHesaplariModelImpl> implements _$$BankaHesaplariModelImplCopyWith<$Res> {
-  __$$BankaHesaplariModelImplCopyWithImpl(_$BankaHesaplariModelImpl _value, $Res Function(_$BankaHesaplariModelImpl) _then) : super(_value, _then);
+class __$$BankaHesaplariModelImplCopyWithImpl<$Res>
+    extends _$BankaHesaplariModelCopyWithImpl<$Res, _$BankaHesaplariModelImpl>
+    implements _$$BankaHesaplariModelImplCopyWith<$Res> {
+  __$$BankaHesaplariModelImplCopyWithImpl(_$BankaHesaplariModelImpl _value,
+      $Res Function(_$BankaHesaplariModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -348,7 +359,8 @@ class _$BankaHesaplariModelImpl extends _BankaHesaplariModel {
       this.hesapNo})
       : super._();
 
-  factory _$BankaHesaplariModelImpl.fromJson(Map<String, dynamic> json) => _$$BankaHesaplariModelImplFromJson(json);
+  factory _$BankaHesaplariModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BankaHesaplariModelImplFromJson(json);
 
   @override
   String? bankaKodu;
@@ -390,7 +402,9 @@ class _$BankaHesaplariModelImpl extends _BankaHesaplariModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BankaHesaplariModelImplCopyWith<_$BankaHesaplariModelImpl> get copyWith => __$$BankaHesaplariModelImplCopyWithImpl<_$BankaHesaplariModelImpl>(this, _$identity);
+  _$$BankaHesaplariModelImplCopyWith<_$BankaHesaplariModelImpl> get copyWith =>
+      __$$BankaHesaplariModelImplCopyWithImpl<_$BankaHesaplariModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -422,7 +436,8 @@ abstract class _BankaHesaplariModel extends BankaHesaplariModel {
       String? hesapNo}) = _$BankaHesaplariModelImpl;
   _BankaHesaplariModel._() : super._();
 
-  factory _BankaHesaplariModel.fromJson(Map<String, dynamic> json) = _$BankaHesaplariModelImpl.fromJson;
+  factory _BankaHesaplariModel.fromJson(Map<String, dynamic> json) =
+      _$BankaHesaplariModelImpl.fromJson;
 
   @override
   String? get bankaKodu;
@@ -480,5 +495,6 @@ abstract class _BankaHesaplariModel extends BankaHesaplariModel {
   set hesapNo(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$BankaHesaplariModelImplCopyWith<_$BankaHesaplariModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$BankaHesaplariModelImplCopyWith<_$BankaHesaplariModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

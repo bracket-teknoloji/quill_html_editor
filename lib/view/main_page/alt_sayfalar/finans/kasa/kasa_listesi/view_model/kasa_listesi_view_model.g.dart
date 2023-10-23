@@ -12,22 +12,35 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
   Computed<double>? _$getGelirComputed;
 
   @override
-  double get getGelir => (_$getGelirComputed ??= Computed<double>(() => super.getGelir, name: '_KasaListesiViewModelBase.getGelir')).value;
+  double get getGelir =>
+      (_$getGelirComputed ??= Computed<double>(() => super.getGelir,
+              name: '_KasaListesiViewModelBase.getGelir'))
+          .value;
   Computed<double>? _$getGiderComputed;
 
   @override
-  double get getGider => (_$getGiderComputed ??= Computed<double>(() => super.getGider, name: '_KasaListesiViewModelBase.getGider')).value;
+  double get getGider =>
+      (_$getGiderComputed ??= Computed<double>(() => super.getGider,
+              name: '_KasaListesiViewModelBase.getGider'))
+          .value;
   Computed<double>? _$bakiyeComputed;
 
   @override
-  double get bakiye => (_$bakiyeComputed ??= Computed<double>(() => super.bakiye, name: '_KasaListesiViewModelBase.bakiye')).value;
+  double get bakiye =>
+      (_$bakiyeComputed ??= Computed<double>(() => super.bakiye,
+              name: '_KasaListesiViewModelBase.bakiye'))
+          .value;
   Computed<ObservableList<KasaListesiModel>?>? _$getKasaListesiComputed;
 
   @override
   ObservableList<KasaListesiModel>? get getKasaListesi =>
-      (_$getKasaListesiComputed ??= Computed<ObservableList<KasaListesiModel>?>(() => super.getKasaListesi, name: '_KasaListesiViewModelBase.getKasaListesi')).value;
+      (_$getKasaListesiComputed ??= Computed<ObservableList<KasaListesiModel>?>(
+              () => super.getKasaListesi,
+              name: '_KasaListesiViewModelBase.getKasaListesi'))
+          .value;
 
-  late final _$searchBarAtom = Atom(name: '_KasaListesiViewModelBase.searchBar', context: context);
+  late final _$searchBarAtom =
+      Atom(name: '_KasaListesiViewModelBase.searchBar', context: context);
 
   @override
   bool get searchBar {
@@ -42,7 +55,8 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
     });
   }
 
-  late final _$isScrollDownAtom = Atom(name: '_KasaListesiViewModelBase.isScrollDown', context: context);
+  late final _$isScrollDownAtom =
+      Atom(name: '_KasaListesiViewModelBase.isScrollDown', context: context);
 
   @override
   bool get isScrollDown {
@@ -57,7 +71,8 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
     });
   }
 
-  late final _$filtreGroupValueAtom = Atom(name: '_KasaListesiViewModelBase.filtreGroupValue', context: context);
+  late final _$filtreGroupValueAtom = Atom(
+      name: '_KasaListesiViewModelBase.filtreGroupValue', context: context);
 
   @override
   String get filtreGroupValue {
@@ -72,7 +87,8 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
     });
   }
 
-  late final _$siralaAtom = Atom(name: '_KasaListesiViewModelBase.sirala', context: context);
+  late final _$siralaAtom =
+      Atom(name: '_KasaListesiViewModelBase.sirala', context: context);
 
   @override
   String get sirala {
@@ -87,7 +103,8 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom = Atom(name: '_KasaListesiViewModelBase.searchText', context: context);
+  late final _$searchTextAtom =
+      Atom(name: '_KasaListesiViewModelBase.searchText', context: context);
 
   @override
   String? get searchText {
@@ -102,7 +119,8 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
     });
   }
 
-  late final _$kasaListesiAtom = Atom(name: '_KasaListesiViewModelBase.kasaListesi', context: context);
+  late final _$kasaListesiAtom =
+      Atom(name: '_KasaListesiViewModelBase.kasaListesi', context: context);
 
   @override
   ObservableList<KasaListesiModel>? get kasaListesi {
@@ -117,18 +135,21 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
     });
   }
 
-  late final _$getDataAsyncAction = AsyncAction('_KasaListesiViewModelBase.getData', context: context);
+  late final _$getDataAsyncAction =
+      AsyncAction('_KasaListesiViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_KasaListesiViewModelBaseActionController = ActionController(name: '_KasaListesiViewModelBase', context: context);
+  late final _$_KasaListesiViewModelBaseActionController =
+      ActionController(name: '_KasaListesiViewModelBase', context: context);
 
   @override
   void setFiltreGroupValue(int? value) {
-    final _$actionInfo = _$_KasaListesiViewModelBaseActionController.startAction(name: '_KasaListesiViewModelBase.setFiltreGroupValue');
+    final _$actionInfo = _$_KasaListesiViewModelBaseActionController
+        .startAction(name: '_KasaListesiViewModelBase.setFiltreGroupValue');
     try {
       return super.setFiltreGroupValue(value);
     } finally {
@@ -138,7 +159,8 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
 
   @override
   void setSirala(String value) {
-    final _$actionInfo = _$_KasaListesiViewModelBaseActionController.startAction(name: '_KasaListesiViewModelBase.setSirala');
+    final _$actionInfo = _$_KasaListesiViewModelBaseActionController
+        .startAction(name: '_KasaListesiViewModelBase.setSirala');
     try {
       return super.setSirala(value);
     } finally {
@@ -148,7 +170,8 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_KasaListesiViewModelBaseActionController.startAction(name: '_KasaListesiViewModelBase.setSearchText');
+    final _$actionInfo = _$_KasaListesiViewModelBaseActionController
+        .startAction(name: '_KasaListesiViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
     } finally {
@@ -158,7 +181,8 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
 
   @override
   void setSearchBar() {
-    final _$actionInfo = _$_KasaListesiViewModelBaseActionController.startAction(name: '_KasaListesiViewModelBase.setSearchBar');
+    final _$actionInfo = _$_KasaListesiViewModelBaseActionController
+        .startAction(name: '_KasaListesiViewModelBase.setSearchBar');
     try {
       return super.setSearchBar();
     } finally {
@@ -168,7 +192,8 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
 
   @override
   void setIsScrollDown(bool value) {
-    final _$actionInfo = _$_KasaListesiViewModelBaseActionController.startAction(name: '_KasaListesiViewModelBase.setIsScrollDown');
+    final _$actionInfo = _$_KasaListesiViewModelBaseActionController
+        .startAction(name: '_KasaListesiViewModelBase.setIsScrollDown');
     try {
       return super.setIsScrollDown(value);
     } finally {
@@ -178,7 +203,8 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
 
   @override
   void setKasaListesi(List<KasaListesiModel>? value) {
-    final _$actionInfo = _$_KasaListesiViewModelBaseActionController.startAction(name: '_KasaListesiViewModelBase.setKasaListesi');
+    final _$actionInfo = _$_KasaListesiViewModelBaseActionController
+        .startAction(name: '_KasaListesiViewModelBase.setKasaListesi');
     try {
       return super.setKasaListesi(value);
     } finally {

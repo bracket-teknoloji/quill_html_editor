@@ -13,9 +13,13 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   ObservableList<String>? get getKodControllerText =>
-      (_$getKodControllerTextComputed ??= Computed<ObservableList<String>?>(() => super.getKodControllerText, name: '_BottomSheetStateManagerBase.getKodControllerText')).value;
+      (_$getKodControllerTextComputed ??= Computed<ObservableList<String>?>(
+              () => super.getKodControllerText,
+              name: '_BottomSheetStateManagerBase.getKodControllerText'))
+          .value;
 
-  late final _$grupKoduListAtom = Atom(name: '_BottomSheetStateManagerBase.grupKoduList', context: context);
+  late final _$grupKoduListAtom =
+      Atom(name: '_BottomSheetStateManagerBase.grupKoduList', context: context);
 
   @override
   ObservableList<BaseGrupKoduModel>? get grupKoduList {
@@ -30,7 +34,9 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
     });
   }
 
-  late final _$filteredGrupKoduListAtom = Atom(name: '_BottomSheetStateManagerBase.filteredGrupKoduList', context: context);
+  late final _$filteredGrupKoduListAtom = Atom(
+      name: '_BottomSheetStateManagerBase.filteredGrupKoduList',
+      context: context);
 
   @override
   ObservableList<BaseGrupKoduModel>? get filteredGrupKoduList {
@@ -40,12 +46,14 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   set filteredGrupKoduList(ObservableList<BaseGrupKoduModel>? value) {
-    _$filteredGrupKoduListAtom.reportWrite(value, super.filteredGrupKoduList, () {
+    _$filteredGrupKoduListAtom.reportWrite(value, super.filteredGrupKoduList,
+        () {
       super.filteredGrupKoduList = value;
     });
   }
 
-  late final _$muhasebeKoduListAtom = Atom(name: '_BottomSheetStateManagerBase.muhasebeKoduList', context: context);
+  late final _$muhasebeKoduListAtom = Atom(
+      name: '_BottomSheetStateManagerBase.muhasebeKoduList', context: context);
 
   @override
   ObservableList<StokMuhasebeKoduModel>? get muhasebeKoduList {
@@ -60,7 +68,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
     });
   }
 
-  late final _$radioGroupValueAtom = Atom(name: '_BottomSheetStateManagerBase.radioGroupValue', context: context);
+  late final _$radioGroupValueAtom = Atom(
+      name: '_BottomSheetStateManagerBase.radioGroupValue', context: context);
 
   @override
   String? get radioGroupValue {
@@ -75,7 +84,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
     });
   }
 
-  late final _$cariTipiAtom = Atom(name: '_BottomSheetStateManagerBase.cariTipi', context: context);
+  late final _$cariTipiAtom =
+      Atom(name: '_BottomSheetStateManagerBase.cariTipi', context: context);
 
   @override
   String? get cariTipi {
@@ -90,7 +100,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
     });
   }
 
-  late final _$sehirAtom = Atom(name: '_BottomSheetStateManagerBase.sehir', context: context);
+  late final _$sehirAtom =
+      Atom(name: '_BottomSheetStateManagerBase.sehir', context: context);
 
   @override
   String? get sehir {
@@ -105,7 +116,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
     });
   }
 
-  late final _$plasiyerAtom = Atom(name: '_BottomSheetStateManagerBase.plasiyer', context: context);
+  late final _$plasiyerAtom =
+      Atom(name: '_BottomSheetStateManagerBase.plasiyer', context: context);
 
   @override
   String? get plasiyer {
@@ -120,7 +132,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
     });
   }
 
-  late final _$ilceAtom = Atom(name: '_BottomSheetStateManagerBase.ilce', context: context);
+  late final _$ilceAtom =
+      Atom(name: '_BottomSheetStateManagerBase.ilce', context: context);
 
   @override
   String? get ilce {
@@ -135,7 +148,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
     });
   }
 
-  late final _$kod0Atom = Atom(name: '_BottomSheetStateManagerBase.kod0', context: context);
+  late final _$kod0Atom =
+      Atom(name: '_BottomSheetStateManagerBase.kod0', context: context);
 
   @override
   String? get kod0 {
@@ -150,7 +164,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
     });
   }
 
-  late final _$kod1Atom = Atom(name: '_BottomSheetStateManagerBase.kod1', context: context);
+  late final _$kod1Atom =
+      Atom(name: '_BottomSheetStateManagerBase.kod1', context: context);
 
   @override
   String? get kod1 {
@@ -165,7 +180,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
     });
   }
 
-  late final _$kod2Atom = Atom(name: '_BottomSheetStateManagerBase.kod2', context: context);
+  late final _$kod2Atom =
+      Atom(name: '_BottomSheetStateManagerBase.kod2', context: context);
 
   @override
   String? get kod2 {
@@ -180,7 +196,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
     });
   }
 
-  late final _$kod3Atom = Atom(name: '_BottomSheetStateManagerBase.kod3', context: context);
+  late final _$kod3Atom =
+      Atom(name: '_BottomSheetStateManagerBase.kod3', context: context);
 
   @override
   String? get kod3 {
@@ -195,7 +212,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
     });
   }
 
-  late final _$kod4Atom = Atom(name: '_BottomSheetStateManagerBase.kod4', context: context);
+  late final _$kod4Atom =
+      Atom(name: '_BottomSheetStateManagerBase.kod4', context: context);
 
   @override
   String? get kod4 {
@@ -210,7 +228,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
     });
   }
 
-  late final _$kod5Atom = Atom(name: '_BottomSheetStateManagerBase.kod5', context: context);
+  late final _$kod5Atom =
+      Atom(name: '_BottomSheetStateManagerBase.kod5', context: context);
 
   @override
   String? get kod5 {
@@ -225,7 +244,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
     });
   }
 
-  late final _$aramaListAtom = Atom(name: '_BottomSheetStateManagerBase.aramaList', context: context);
+  late final _$aramaListAtom =
+      Atom(name: '_BottomSheetStateManagerBase.aramaList', context: context);
 
   @override
   List<dynamic>? get aramaList {
@@ -240,7 +260,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
     });
   }
 
-  late final _$isSelectedListMapAtom = Atom(name: '_BottomSheetStateManagerBase.isSelectedListMap', context: context);
+  late final _$isSelectedListMapAtom = Atom(
+      name: '_BottomSheetStateManagerBase.isSelectedListMap', context: context);
 
   @override
   Map<String, List<bool>?>? get isSelectedListMap {
@@ -255,7 +276,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
     });
   }
 
-  late final _$kodControllerTextAtom = Atom(name: '_BottomSheetStateManagerBase.kodControllerText', context: context);
+  late final _$kodControllerTextAtom = Atom(
+      name: '_BottomSheetStateManagerBase.kodControllerText', context: context);
 
   @override
   ObservableList<String>? get kodControllerText {
@@ -270,11 +292,13 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
     });
   }
 
-  late final _$_BottomSheetStateManagerBaseActionController = ActionController(name: '_BottomSheetStateManagerBase', context: context);
+  late final _$_BottomSheetStateManagerBaseActionController =
+      ActionController(name: '_BottomSheetStateManagerBase', context: context);
 
   @override
   void changeGrupKoduList(List<BaseGrupKoduModel> value) {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.changeGrupKoduList');
+    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController
+        .startAction(name: '_BottomSheetStateManagerBase.changeGrupKoduList');
     try {
       return super.changeGrupKoduList(value);
     } finally {
@@ -284,7 +308,9 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   void filteredGrupKoduListFilter(int value) {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.filteredGrupKoduListFilter');
+    final _$actionInfo =
+        _$_BottomSheetStateManagerBaseActionController.startAction(
+            name: '_BottomSheetStateManagerBase.filteredGrupKoduListFilter');
     try {
       return super.filteredGrupKoduListFilter(value);
     } finally {
@@ -294,7 +320,9 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   void changeMuhasebeKoduList(List<StokMuhasebeKoduModel> value) {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.changeMuhasebeKoduList');
+    final _$actionInfo =
+        _$_BottomSheetStateManagerBaseActionController.startAction(
+            name: '_BottomSheetStateManagerBase.changeMuhasebeKoduList');
     try {
       return super.changeMuhasebeKoduList(value);
     } finally {
@@ -304,7 +332,9 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   void changeRadioGroupValue(String value) {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.changeRadioGroupValue');
+    final _$actionInfo =
+        _$_BottomSheetStateManagerBaseActionController.startAction(
+            name: '_BottomSheetStateManagerBase.changeRadioGroupValue');
     try {
       return super.changeRadioGroupValue(value);
     } finally {
@@ -314,7 +344,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   void changeCariTipi(String value) {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.changeCariTipi');
+    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController
+        .startAction(name: '_BottomSheetStateManagerBase.changeCariTipi');
     try {
       return super.changeCariTipi(value);
     } finally {
@@ -324,7 +355,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   void changeSehir(String value) {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.changeSehir');
+    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController
+        .startAction(name: '_BottomSheetStateManagerBase.changeSehir');
     try {
       return super.changeSehir(value);
     } finally {
@@ -334,7 +366,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   void changePlasiyer(String value) {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.changePlasiyer');
+    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController
+        .startAction(name: '_BottomSheetStateManagerBase.changePlasiyer');
     try {
       return super.changePlasiyer(value);
     } finally {
@@ -344,7 +377,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   void changeIlce(String value) {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.changeIlce');
+    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController
+        .startAction(name: '_BottomSheetStateManagerBase.changeIlce');
     try {
       return super.changeIlce(value);
     } finally {
@@ -354,7 +388,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   void changeKod0(String value) {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.changeKod0');
+    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController
+        .startAction(name: '_BottomSheetStateManagerBase.changeKod0');
     try {
       return super.changeKod0(value);
     } finally {
@@ -364,7 +399,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   void changeKod1(String value) {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.changeKod1');
+    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController
+        .startAction(name: '_BottomSheetStateManagerBase.changeKod1');
     try {
       return super.changeKod1(value);
     } finally {
@@ -374,7 +410,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   void changeKod2(String value) {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.changeKod2');
+    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController
+        .startAction(name: '_BottomSheetStateManagerBase.changeKod2');
     try {
       return super.changeKod2(value);
     } finally {
@@ -384,7 +421,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   void changeKod3(String value) {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.changeKod3');
+    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController
+        .startAction(name: '_BottomSheetStateManagerBase.changeKod3');
     try {
       return super.changeKod3(value);
     } finally {
@@ -394,7 +432,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   void changeKod4(String value) {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.changeKod4');
+    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController
+        .startAction(name: '_BottomSheetStateManagerBase.changeKod4');
     try {
       return super.changeKod4(value);
     } finally {
@@ -404,7 +443,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   void changeKod5(String value) {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.changeKod5');
+    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController
+        .startAction(name: '_BottomSheetStateManagerBase.changeKod5');
     try {
       return super.changeKod5(value);
     } finally {
@@ -414,7 +454,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   void changeAramaList(List<dynamic> value) {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.changeAramaList');
+    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController
+        .startAction(name: '_BottomSheetStateManagerBase.changeAramaList');
     try {
       return super.changeAramaList(value);
     } finally {
@@ -424,7 +465,9 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   void changeIsSelectedListMap(String key, List<bool>? value) {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.changeIsSelectedListMap');
+    final _$actionInfo =
+        _$_BottomSheetStateManagerBaseActionController.startAction(
+            name: '_BottomSheetStateManagerBase.changeIsSelectedListMap');
     try {
       return super.changeIsSelectedListMap(key, value);
     } finally {
@@ -434,7 +477,9 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   void changeIndexIsSelectedListMap(String key, int index, bool value) {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.changeIndexIsSelectedListMap');
+    final _$actionInfo =
+        _$_BottomSheetStateManagerBaseActionController.startAction(
+            name: '_BottomSheetStateManagerBase.changeIndexIsSelectedListMap');
     try {
       return super.changeIndexIsSelectedListMap(key, index, value);
     } finally {
@@ -444,7 +489,9 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   void deleteIsSelectedListMap() {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.deleteIsSelectedListMap');
+    final _$actionInfo =
+        _$_BottomSheetStateManagerBaseActionController.startAction(
+            name: '_BottomSheetStateManagerBase.deleteIsSelectedListMap');
     try {
       return super.deleteIsSelectedListMap();
     } finally {
@@ -454,7 +501,9 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   void changeKodControllerTextList(List<String> value) {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.changeKodControllerTextList');
+    final _$actionInfo =
+        _$_BottomSheetStateManagerBaseActionController.startAction(
+            name: '_BottomSheetStateManagerBase.changeKodControllerTextList');
     try {
       return super.changeKodControllerTextList(value);
     } finally {
@@ -464,7 +513,9 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   void changeKodControllerText(String value, int index) {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.changeKodControllerText');
+    final _$actionInfo =
+        _$_BottomSheetStateManagerBaseActionController.startAction(
+            name: '_BottomSheetStateManagerBase.changeKodControllerText');
     try {
       return super.changeKodControllerText(value, index);
     } finally {
@@ -474,7 +525,9 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 
   @override
   void deleteKodControllerText() {
-    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController.startAction(name: '_BottomSheetStateManagerBase.deleteKodControllerText');
+    final _$actionInfo =
+        _$_BottomSheetStateManagerBaseActionController.startAction(
+            name: '_BottomSheetStateManagerBase.deleteKodControllerText');
     try {
       return super.deleteKodControllerText();
     } finally {

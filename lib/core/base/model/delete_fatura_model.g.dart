@@ -6,7 +6,9 @@ part of 'delete_fatura_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$EditFaturaModelImpl _$$EditFaturaModelImplFromJson(Map<String, dynamic> json) => _$EditFaturaModelImpl(
+_$EditFaturaModelImpl _$$EditFaturaModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$EditFaturaModelImpl(
       belgeTipi: json['BelgeTipi'] as int?,
       pickerBelgeTuru: json['PickerBelgeTuru'] as String?,
       remoteTempBelge: json['REMOTE_TEMP_BELGE'] as bool?,
@@ -24,7 +26,8 @@ _$EditFaturaModelImpl _$$EditFaturaModelImplFromJson(Map<String, dynamic> json) 
       islemKodu: json['ISLEM_KODU'] as int?,
     );
 
-Map<String, dynamic> _$$EditFaturaModelImplToJson(_$EditFaturaModelImpl instance) {
+Map<String, dynamic> _$$EditFaturaModelImplToJson(
+    _$EditFaturaModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

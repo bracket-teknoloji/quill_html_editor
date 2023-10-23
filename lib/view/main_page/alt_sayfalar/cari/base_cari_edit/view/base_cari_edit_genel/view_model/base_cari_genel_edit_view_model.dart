@@ -150,8 +150,8 @@ abstract class _BaseCariGenelEditViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  void changeUlke(String? value) {
-    model = model?.copyWith(ulkeKodu: value);
+  void changeUlke(UlkeModel? value) {
+    model = model?.copyWith(ulkeKodu: value?.ulkeKodu, ulkeKoduAciklama: value?.ulkeAdi);
     CariSaveRequestModel.setInstance(model);
   }
 

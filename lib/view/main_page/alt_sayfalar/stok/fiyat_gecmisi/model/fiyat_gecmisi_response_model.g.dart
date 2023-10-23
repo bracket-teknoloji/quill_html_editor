@@ -6,26 +6,32 @@ part of 'fiyat_gecmisi_response_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-FiyatGecmisiResponseModel _$FiyatGecmisiResponseModelFromJson(Map<String, dynamic> json) => FiyatGecmisiResponseModel()
-  ..id = json['ID'] as int?
-  ..subeKodu = json['SUBE_KODU'] as int?
-  ..stokKodu = json['STOK_KODU'] as String?
-  ..stokAdi = json['STOK_ADI'] as String?
-  ..yer = json['YER'] as String?
-  ..aS = json['A_S'] as String?
-  ..fiyat = (json['FIYAT'] as num?)?.toDouble()
-  ..dovizFiyati = (json['DOVIZ_FIYATI'] as num?)?.toDouble()
-  ..dovizTipi = json['DOVIZ_TIPI'] as int?
-  ..fiyatSirasi = json['FIYAT_SIRASI'] as int?
-  ..tarih = json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
-  ..fiyatTipi = json['FIYAT_TIPI'] as String?
-  ..dovizAdi = json['DOVIZ_ADI'] as String?
-  ..yapkod = json['YAPKOD'] as String?
-  ..yazdirankul = json['YAZDIRANKUL'] as String?
-  ..yazdirmatarihi = json['YAZDIRMATARIHI'] == null ? null : DateTime.parse(json['YAZDIRMATARIHI'] as String)
-  ..yazdirildi = json['YAZDIRILDI'] as String?;
+FiyatGecmisiResponseModel _$FiyatGecmisiResponseModelFromJson(
+        Map<String, dynamic> json) =>
+    FiyatGecmisiResponseModel()
+      ..id = json['ID'] as int?
+      ..subeKodu = json['SUBE_KODU'] as int?
+      ..stokKodu = json['STOK_KODU'] as String?
+      ..stokAdi = json['STOK_ADI'] as String?
+      ..yer = json['YER'] as String?
+      ..aS = json['A_S'] as String?
+      ..fiyat = (json['FIYAT'] as num?)?.toDouble()
+      ..dovizFiyati = (json['DOVIZ_FIYATI'] as num?)?.toDouble()
+      ..dovizTipi = json['DOVIZ_TIPI'] as int?
+      ..fiyatSirasi = json['FIYAT_SIRASI'] as int?
+      ..tarih =
+          json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
+      ..fiyatTipi = json['FIYAT_TIPI'] as String?
+      ..dovizAdi = json['DOVIZ_ADI'] as String?
+      ..yapkod = json['YAPKOD'] as String?
+      ..yazdirankul = json['YAZDIRANKUL'] as String?
+      ..yazdirmatarihi = json['YAZDIRMATARIHI'] == null
+          ? null
+          : DateTime.parse(json['YAZDIRMATARIHI'] as String)
+      ..yazdirildi = json['YAZDIRILDI'] as String?;
 
-Map<String, dynamic> _$FiyatGecmisiResponseModelToJson(FiyatGecmisiResponseModel instance) {
+Map<String, dynamic> _$FiyatGecmisiResponseModelToJson(
+    FiyatGecmisiResponseModel instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

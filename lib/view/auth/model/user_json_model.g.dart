@@ -7,7 +7,9 @@ part of 'user_json_model.dart';
 // **************************************************************************
 
 UserJson _$UserJsonFromJson(Map<String, dynamic> json) => UserJson()
-  ..profilModel = json['profilModel'] == null ? null : ProfilModel.fromJson(json['profilModel'] as Map<String, dynamic>)
+  ..profilModel = json['profilModel'] == null
+      ? null
+      : ProfilModel.fromJson(json['profilModel'] as Map<String, dynamic>)
   ..yetkiModel = json['yetkiModel'] as Map<String, dynamic>?
   ..id = json['ID'] as int?
   ..kullaniciAdi = json['KULADI'] as String?
@@ -46,9 +48,12 @@ Map<String, dynamic> _$UserJsonToJson(UserJson instance) {
 
 ProfilModel _$ProfilModelFromJson(Map<String, dynamic> json) => ProfilModel()
   ..kullaniciYetkiModel = json['kullaniciYetkiModel'] as Map<String, dynamic>?
-  ..sirketKalemKayitKontrolBelgeTipleri = json['sirket_KalemKayitKontrol_BelgeTipleri'] as List<dynamic>?
-  ..sevkiyatSatisIrsEArsivMukellefineKesilmesin = json['sevkiyat_SatisIrs_EArsivMukellefineKesilmesin'] as String?
-  ..sevkiyatSatisFatEFaturaMukellefineKesilmesin = json['sevkiyat_SatisFat_EFaturaMukellefineKesilmesin'] as String?;
+  ..sirketKalemKayitKontrolBelgeTipleri =
+      json['sirket_KalemKayitKontrol_BelgeTipleri'] as List<dynamic>?
+  ..sevkiyatSatisIrsEArsivMukellefineKesilmesin =
+      json['sevkiyat_SatisIrs_EArsivMukellefineKesilmesin'] as String?
+  ..sevkiyatSatisFatEFaturaMukellefineKesilmesin =
+      json['sevkiyat_SatisFat_EFaturaMukellefineKesilmesin'] as String?;
 
 Map<String, dynamic> _$ProfilModelToJson(ProfilModel instance) {
   final val = <String, dynamic>{};
@@ -60,8 +65,11 @@ Map<String, dynamic> _$ProfilModelToJson(ProfilModel instance) {
   }
 
   writeNotNull('kullaniciYetkiModel', instance.kullaniciYetkiModel);
-  writeNotNull('sirket_KalemKayitKontrol_BelgeTipleri', instance.sirketKalemKayitKontrolBelgeTipleri);
-  writeNotNull('sevkiyat_SatisIrs_EArsivMukellefineKesilmesin', instance.sevkiyatSatisIrsEArsivMukellefineKesilmesin);
-  writeNotNull('sevkiyat_SatisFat_EFaturaMukellefineKesilmesin', instance.sevkiyatSatisFatEFaturaMukellefineKesilmesin);
+  writeNotNull('sirket_KalemKayitKontrol_BelgeTipleri',
+      instance.sirketKalemKayitKontrolBelgeTipleri);
+  writeNotNull('sevkiyat_SatisIrs_EArsivMukellefineKesilmesin',
+      instance.sevkiyatSatisIrsEArsivMukellefineKesilmesin);
+  writeNotNull('sevkiyat_SatisFat_EFaturaMukellefineKesilmesin',
+      instance.sevkiyatSatisFatEFaturaMukellefineKesilmesin);
   return val;
 }
