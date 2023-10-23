@@ -18,9 +18,7 @@ extension NumExtensionWithFixedDigits on num? {
     }
   }
 
-  String? get toStringIfNotNull {
-    return this == null ? null : toString();
-  }
+  String? get toStringIfNotNull => this == null ? null : toString();
 
   String get dotSeparatedWithFixedDigits {
     if (this != null) {

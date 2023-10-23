@@ -16,7 +16,5 @@ class SeriModel with _$SeriModel, NetworkManagerMixin {
       _$SeriModelFromJson(json);
 
   @override
-  fromJson(Map<String, dynamic> json) {
-    return _$SeriModelFromJson(json);
-  }
+  fromJson(Map<String, dynamic> json) => _$SeriModelFromJson(json);
 }

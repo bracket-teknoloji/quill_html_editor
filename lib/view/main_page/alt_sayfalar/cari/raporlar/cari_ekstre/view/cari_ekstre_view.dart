@@ -53,14 +53,10 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Observer(builder: (_) {
-      return PDFViewerView(
+  Widget build(BuildContext context) => Observer(builder: (_) => PDFViewerView(
           filterBottomSheet: filterBottomSheet,
           title: "Cari Ekstre",
-          pdfData: viewModel.pdfModel);
-    });
-  }
+          pdfData: viewModel.pdfModel));
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -125,8 +121,7 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
                 }
               },
             ),
-            Observer(builder: (_) {
-              return ElevatedButton(
+            Observer(builder: (_) => ElevatedButton(
                       onPressed: () {
                         if (viewModel.pdfModel.dicParams?.cariKodu == null ||
                             viewModel.pdfModel.dicParams?.dovizTipi == null) {
@@ -146,8 +141,7 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
                         }
                       },
                       child: const Text("Uygula"))
-                  .paddingAll(UIHelper.lowSize);
-            })
+                  .paddingAll(UIHelper.lowSize))
           ],
         ).paddingAll(UIHelper.lowSize));
     return Future.value(viewModel.futureController.value);

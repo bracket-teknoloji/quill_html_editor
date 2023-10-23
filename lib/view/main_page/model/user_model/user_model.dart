@@ -50,15 +50,9 @@ class UserModel {
   @HiveField(18)
   bool? adminMi;
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return _$UserModelFromJson(json);
-  }
-  Map<String, dynamic> toJson() {
-    return _$UserModelToJson(this);
-  }
+  factory UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
+  Map<String, dynamic> toJson() => _$UserModelToJson(this);
 
   @override
-  String toString() {
-    return toJson().toString();
-  }
+  String toString() => toJson().toString();
 }

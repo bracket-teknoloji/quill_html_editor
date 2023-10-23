@@ -73,19 +73,13 @@ class IsletmeModel with NetworkManagerMixin {
   });
 
   @override
-  fromJson(Map<String, dynamic> json) {
-    return _$IsletmeModelFromJson(json);
-  }
+  fromJson(Map<String, dynamic> json) => _$IsletmeModelFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$IsletmeModelToJson(this);
-  }
+  Map<String, dynamic> toJson() => _$IsletmeModelToJson(this);
 
   @override
-  String toString() {
-    return "sirket: $sirket,\n isletmeKodu: $isletmeKodu,\n subeAdi: $subeAdi,\n isletmeAdi: $isletmeAdi,\n lokalDepoAktif: $lokalDepoAktif,\n merkezmi: $merkezmi,\n adres: $adres,\n telefon: $telefon,\n faks: $faks,\n email: $email,\n ilAdi: $ilAdi,\n ilce: $ilce,\n vergiNumarasi: $vergiNumarasi,\n vergiDairesi: $vergiDairesi";
-  }
+  String toString() => "sirket: $sirket,\n isletmeKodu: $isletmeKodu,\n subeAdi: $subeAdi,\n isletmeAdi: $isletmeAdi,\n lokalDepoAktif: $lokalDepoAktif,\n merkezmi: $merkezmi,\n adres: $adres,\n telefon: $telefon,\n faks: $faks,\n email: $email,\n ilAdi: $ilAdi,\n ilce: $ilce,\n vergiNumarasi: $vergiNumarasi,\n vergiDairesi: $vergiDairesi";
 
   // create operator == and hashCode
   @override

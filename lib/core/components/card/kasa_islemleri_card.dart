@@ -35,8 +35,7 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
   bool get isTahsilat => isCari && model?.gc == "G";
   bool get isOdeme => isCari && model?.gc == "C";
   @override
-  Widget build(BuildContext context) {
-    return InkWell(
+  Widget build(BuildContext context) => InkWell(
       onTap: () async {
         await bottomSheetDialogManager.showBottomSheetDialog(context,
             title: model?.aciklama ?? model?.cariAdi ?? model?.kasaAdi ?? "",
@@ -104,7 +103,6 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
                 ],
               ))),
     );
-  }
 
   void deleteData() async {
     Get.back();

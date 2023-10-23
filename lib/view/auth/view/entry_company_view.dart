@@ -3,7 +3,6 @@ import "dart:developer";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../core/constants/ui_helper/ui_helper.dart";
 
 import "../../../core/base/model/base_network_mixin.dart";
 import "../../../core/base/model/generic_response_model.dart";
@@ -11,6 +10,7 @@ import "../../../core/base/state/base_state.dart";
 import "../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
 import "../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../core/init/cache/cache_manager.dart";
 import "../../../core/init/network/login/api_urls.dart";
 import "../../add_company/model/account_model.dart";
@@ -64,8 +64,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
         centerTitle: false,
         leading: IconButton(
@@ -204,15 +203,13 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
         },
       ),
     );
-  }
 
   subeDialog(BuildContext context) {
     BottomSheetDialogManager().showRadioBottomSheetDialog(context,
         title: "Şube Seçiniz",
         children: List.generate(
           sube?.length ?? 0,
-          (index) {
-            return BottomSheetModel(
+          (index) => BottomSheetModel(
               icon: "Saat",
               title: sube![index].subeAdi!,
               onTap: () {
@@ -223,8 +220,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                 });
                 Get.back();
               },
-            );
-          },
+            ),
         ));
   }
 
@@ -233,8 +229,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
         title: "Şirket Seçiniz",
         children: List.generate(
           sirket?.length ?? 0,
-          (index) {
-            return BottomSheetModel(
+          (index) => BottomSheetModel(
               icon: "Saat",
               iconWidget: Icons.storage_outlined,
               title: sirket![index].company!,
@@ -250,8 +245,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                 });
                 Get.back();
               },
-            );
-          },
+            ),
         ));
   }
 
@@ -260,8 +254,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
         title: "İşletme Seçiniz",
         children: List.generate(
           isletme?.length ?? 0,
-          (index) {
-            return BottomSheetModel(
+          (index) => BottomSheetModel(
               icon: "Saat",
               iconWidget: Icons.data_array_outlined,
               title: isletme![index].isletmeAdi!,
@@ -275,8 +268,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                 });
                 Get.back();
               },
-            );
-          },
+            ),
         ));
   }
 

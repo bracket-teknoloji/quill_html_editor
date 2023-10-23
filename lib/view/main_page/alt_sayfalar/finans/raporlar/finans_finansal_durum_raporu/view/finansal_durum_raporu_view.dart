@@ -1,13 +1,13 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "../view_model/finansal_durum_raporu_view_model.dart";
 
 import "../../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "../../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../view_model/finansal_durum_raporu_view_model.dart";
 
 class FinansalDurumRaporuView extends StatefulWidget {
   const FinansalDurumRaporuView({super.key});
@@ -32,9 +32,7 @@ class _FinansalDurumRaporuViewState extends BaseState<FinansalDurumRaporuView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Finansal Durum Raporu", pdfData: viewModel.pdfModel);
-  }
+  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Finansal Durum Raporu", pdfData: viewModel.pdfModel);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -65,15 +63,13 @@ class _FinansalDurumRaporuViewState extends BaseState<FinansalDurumRaporuView> {
                   }
                 },
               ),
-              Observer(builder: (_) {
-                return ElevatedButton(
+              Observer(builder: (_) => ElevatedButton(
                         onPressed: () {
                           viewModel.setFuture();
                           Get.back();
                         },
                         child: const Text("Uygula"))
-                    .paddingAll(UIHelper.lowSize);
-              })
+                    .paddingAll(UIHelper.lowSize))
             ],
           ),
         ));

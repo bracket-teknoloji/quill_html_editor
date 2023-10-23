@@ -31,8 +31,7 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: AppBarTitle(title: "Yapılandırma Rehberi", subtitle: "${widget.model.stokAdi} - ${widget.model.stokKodu}"),
         ),
@@ -49,8 +48,7 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
               Observer(builder: (_) => Text(viewModel.title)).paddingAll(UIHelper.highSize),
               const Divider(),
               Expanded(
-                child: Observer(builder: (_) {
-                  return Visibility(
+                child: Observer(builder: (_) => Visibility(
                     visible: viewModel.filteredList.ext.isNotNullOrEmpty,
                     child: AnimationLimiter(
                       child: GridView.builder(
@@ -123,11 +121,9 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
                         },
                       ).paddingAll(UIHelper.highSize),
                     ),
-                  );
-                }),
+                  )),
               ),
             ],
           );
         }));
-  }
 }

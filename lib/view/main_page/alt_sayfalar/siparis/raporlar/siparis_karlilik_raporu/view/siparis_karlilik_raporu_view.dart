@@ -70,12 +70,10 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return PDFViewerView(
+  Widget build(BuildContext context) => PDFViewerView(
         filterBottomSheet: filterBottomSheet,
         title: "Sipariş Karlılık Raporu",
         pdfData: viewModel.pdfModel);
-  }
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();

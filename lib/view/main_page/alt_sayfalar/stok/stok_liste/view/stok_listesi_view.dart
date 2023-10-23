@@ -4,7 +4,6 @@ import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -15,6 +14,7 @@ import "../../../../../../core/components/button/elevated_buttons/bottom_appbar_
 import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../core/components/floating_action_button/custom_floating_action_button.dart";
 import "../../../../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
 import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
 import "../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../core/constants/enum/badge_color_enum.dart";
@@ -113,8 +113,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     );
   }
 
-  AppBar appBar() {
-    return AppBar(
+  AppBar appBar() => AppBar(
       primary: true,
       // controller: scrollController,
       leading: IconButton(
@@ -144,13 +143,11 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
               : Text("Stok Listesi ${viewModel.stokListesi?.length ?? ""}")),
       actions: [
         hideSearchBar(),
-        Observer(builder: (_) {
-          return viewModel.searchBar
+        Observer(builder: (_) => viewModel.searchBar
               ? const SizedBox()
               : IconButton(
                   onPressed: () async {
-                    await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", body: Observer(builder: (_) {
-                      return SwitchListTile.adaptive(
+                    await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", body: Observer(builder: (_) => SwitchListTile.adaptive(
                         title: const Text("Resimleri Göster"),
                         value: viewModel.resimleriGoster == "E",
                         onChanged: (value) {
@@ -168,11 +165,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                             Get.back();
                           }
                         },
-                      );
-                    }));
+                      )));
                   },
-                  icon: const Icon(Icons.more_vert_outlined));
-        })
+                  icon: const Icon(Icons.more_vert_outlined)))
       ],
       bottom: PreferredSize(
         preferredSize: Size.fromHeight(height * 0.07),
@@ -203,7 +198,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                   onPressed: () async {
                     if (viewModel.grupKodlari.isEmptyOrNull) {
                       dialogManager.showLoadingDialog("Kodlar alınıyor...");
-                      final grupKodlari = await CariNetworkManager.getKod(name: GrupKoduEnum.STOK);
+                      final grupKodlari = await CariNetworkManager.getKod(name: GrupKoduEnum.stok);
                       // StaticVariables.grupKodlari = grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
                       if (grupKodlari.data != null) {
                         viewModel.setGrupKodlari(grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>());
@@ -220,13 +215,11 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                             CustomWidgetWithLabel(
                               text: "Bakiye Durumu",
                               onlyLabelpaddingLeft: UIHelper.lowSize,
-                              child: Observer(builder: (_) {
-                                return SlideControllerWidget(
+                              child: Observer(builder: (_) => SlideControllerWidget(
                                     childrenTitleList: viewModel.selectedList,
                                     filterOnChanged: (index) => viewModel.setSelectedWithIndex(index ?? 0),
                                     childrenValueList: viewModel.selectedList,
-                                    groupValue: viewModel.bakiyeGroupValue);
-                              }),
+                                    groupValue: viewModel.bakiyeGroupValue)),
                             ),
                             // Center(
                             //   child: Observer(builder: (_) {
@@ -245,8 +238,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                             // ),
                             Row(
                               children: [
-                                Expanded(child: Observer(builder: (_) {
-                                  return CustomTextField(
+                                Expanded(child: Observer(builder: (_) => CustomTextField(
                                     labelText: "Grup Kodu",
                                     readOnly: true,
                                     controller: grupKoduController,
@@ -267,8 +259,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       }
                                     },
                                     suffixMore: true,
-                                  );
-                                })),
+                                  ))),
                                 Expanded(
                                     child: CustomTextField(
                                   labelText: "Kod 1",
@@ -461,11 +452,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
         ).paddingZero,
       ),
     );
-  }
 
-  Widget hideSearchBar() {
-    return Observer(builder: (_) {
-      return IconButton(
+  Widget hideSearchBar() => Observer(builder: (_) => IconButton(
         onPressed: () {
           viewModel.setSearchBar();
           if (!viewModel.searchBar) {
@@ -476,13 +464,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
           }
         },
         icon: Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined),
-      );
-    });
-  }
+      ));
 
-  Observer? fab() {
-    return Observer(builder: (_) {
-      return Visibility(
+  Observer? fab() => Observer(builder: (_) => Visibility(
         visible: viewModel.stokListesi?.isNotEmpty ?? false,
         child: CustomFloatingActionButton(
             isScrolledDown: viewModel.isScrolledDown,
@@ -490,13 +474,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
               final BaseEditModel result = BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.ekle, model: StokListesiModel());
               Get.toNamed("/mainPage/stokEdit", arguments: result);
             }).yetkiVarMi(yetkiController.stokKartiYeniKayit),
-      );
-    });
-  }
+      ));
 
-  Observer body() {
-    return Observer(builder: (_) {
-      return viewModel.stokListesi.isEmptyOrNull
+  Observer body() => Observer(builder: (_) => viewModel.stokListesi.isEmptyOrNull
           ? (viewModel.stokListesi?.isEmpty ?? false)
               ? const Center(child: Text("Stok Bulunamadı"))
               : const Center(child: CircularProgressIndicator.adaptive())
@@ -614,17 +594,13 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                     ),
                   );
                 } else {
-                  return Observer(builder: (_) {
-                    return Visibility(
+                  return Observer(builder: (_) => Visibility(
                       visible: viewModel.dahaVarMi,
                       child: const Center(child: CircularProgressIndicator.adaptive()),
-                    );
-                  });
+                    ));
                 }
               },
-            );
-    });
-  }
+            ));
 
   Future<void> getData() async {
     final data2 = {"MenuKodu": "STOK_STOK", "ResimGoster": viewModel.resimleriGoster, "Siralama": viewModel.siralama, "Sayfa": viewModel.sayfa, "BakiyeDurumu": viewModel.bakiye ?? ""};
@@ -715,9 +691,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     }
   }
 
-  Future<MemoryImage> getImage(String path) async {
-    return await networkManager.getImage(path);
-  }
+  Future<MemoryImage> getImage(String path) async => await networkManager.getImage(path);
 
   void deleteStok(String stokKodu) {
     dialogManager.showAreYouSureDialog(() async {

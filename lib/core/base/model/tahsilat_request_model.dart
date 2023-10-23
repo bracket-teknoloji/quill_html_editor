@@ -43,7 +43,5 @@ class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
       _$TahsilatRequestModelFromJson(json);
 
   @override
-  fromJson(Map<String, dynamic> json) {
-    return _$TahsilatRequestModelFromJson(json);
-  }
+  fromJson(Map<String, dynamic> json) => _$TahsilatRequestModelFromJson(json);
 }

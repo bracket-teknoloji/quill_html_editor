@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";
@@ -10,6 +9,7 @@ import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sh
 import "../../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/constants/extensions/list_extensions.dart";
+import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../model/param_model.dart";
@@ -76,9 +76,7 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Cari Hareket Raporu", pdfData: viewModel.pdfModel);
-  }
+  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Cari Hareket Raporu", pdfData: viewModel.pdfModel);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -89,10 +87,8 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Observer(builder: (_) {
-                return RaporFiltreDateTimeBottomSheetView(
-                    filterOnChanged: (index) => viewModel.pdfModel.dicParams?.aralikTipi, baslangicTarihiController: baslangicTarihiController, bitisTarihiController: bitisTarihiController);
-              }),
+              Observer(builder: (_) => RaporFiltreDateTimeBottomSheetView(
+                    filterOnChanged: (index) => viewModel.pdfModel.dicParams?.aralikTipi, baslangicTarihiController: baslangicTarihiController, bitisTarihiController: bitisTarihiController)),
               CustomTextField(
                 labelText: "Cari",
                 controller: cariController,
@@ -154,15 +150,13 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
                 Expanded(child: CustomTextField(labelText: "Kod 4", controller: kod4Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(4, kod4Controller))),
                 Expanded(child: CustomTextField(labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, kod5Controller)))
               ]),
-              Observer(builder: (_) {
-                return ElevatedButton(
+              Observer(builder: (_) => ElevatedButton(
                         onPressed: () {
                           viewModel.setFuture();
                           Get.back();
                         },
                         child: const Text("Uygula"))
-                    .paddingAll(UIHelper.lowSize);
-              })
+                    .paddingAll(UIHelper.lowSize))
             ],
           ),
         ));

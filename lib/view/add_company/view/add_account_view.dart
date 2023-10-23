@@ -3,12 +3,12 @@ import "dart:convert";
 import "package:crypto/crypto.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "../../../core/constants/ui_helper/ui_helper.dart";
 
 import "../../../core/base/model/generic_response_model.dart";
 import "../../../core/base/state/base_state.dart";
 import "../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../core/components/textfield/custom_text_field.dart";
+import "../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../core/init/cache/cache_manager.dart";
 import "../model/account_model.dart";
 import "../model/account_response_model.dart";
@@ -39,8 +39,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: const Text("Firmalar"),
           centerTitle: false,
@@ -80,7 +79,6 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
             ),
           ),
         ));
-  }
 
   Future<void> loginMethod() async {
     if (formKey.currentState?.validate() ?? false) {

@@ -1,13 +1,13 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "../../../../../../../core/constants/enum/muhasebe_kodu_belge_tipi_enum.dart";
-import "../view_model/aylik_mizan_raporu_view_model.dart";
-import "../../../../stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
 
 import "../../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "../../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../../core/constants/enum/muhasebe_kodu_belge_tipi_enum.dart";
+import "../../../../stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
+import "../view_model/aylik_mizan_raporu_view_model.dart";
 
 class AylikMizanRaporuView extends StatefulWidget {
   const AylikMizanRaporuView({super.key});
@@ -33,9 +33,7 @@ class _AylikMizanRaporuViewState extends BaseState<AylikMizanRaporuView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Aylık Mizan Raporu", pdfData: viewModel.pdfModel);
-  }
+  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Aylık Mizan Raporu", pdfData: viewModel.pdfModel);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();

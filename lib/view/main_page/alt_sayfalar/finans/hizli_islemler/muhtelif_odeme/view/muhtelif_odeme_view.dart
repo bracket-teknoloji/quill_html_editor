@@ -104,15 +104,12 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: appBar(),
       body: body(context),
     );
-  }
 
-  AppBar appBar() {
-    return AppBar(
+  AppBar appBar() => AppBar(
       title: Observer(builder: (_) => AppBarTitle(title: "Muhtelif ${viewModel.model.tahsilatmi == true ? "Tahsilat" : "Ödeme"}")),
       actions: [
         IconButton(
@@ -132,10 +129,8 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
         ),
       ],
     );
-  }
 
-  SingleChildScrollView body(BuildContext context) {
-    return SingleChildScrollView(
+  SingleChildScrollView body(BuildContext context) => SingleChildScrollView(
       child: Form(
         key: formKey,
         child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -151,8 +146,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                 },
                 icon: const Icon(Icons.add_outlined),
               )),
-          Observer(builder: (_) {
-            return Row(
+          Observer(builder: (_) => Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
@@ -183,10 +177,8 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                   ),
                 ),
               ],
-            );
-          }),
-          Observer(builder: (_) {
-            return Row(
+            )),
+          Observer(builder: (_) => Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
@@ -231,10 +223,8 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                       )),
                 ).yetkiVarMi(viewModel.model.dovizTipi != null && viewModel.model.dovizTipi != 0),
               ],
-            );
-          }),
-          Observer(builder: (_) {
-            return Row(
+            )),
+          Observer(builder: (_) => Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
@@ -272,10 +262,8 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                   ),
                 ),
               ],
-            );
-          }),
-          Observer(builder: (_) {
-            return Row(
+            )),
+          Observer(builder: (_) => Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
@@ -314,10 +302,8 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                   ),
                 ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
               ],
-            );
-          }),
-          Observer(builder: (_) {
-            return Row(
+            )),
+          Observer(builder: (_) => Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
@@ -353,8 +339,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                   ),
                 ).yetkiVarMi(yetkiController.referansKodu(viewModel.showReferansKodu)),
               ],
-            );
-          }),
+            )),
           CustomTextField(
             labelText: "Kasa Har. Açıklama",
             controller: _aciklamaController,
@@ -363,7 +348,6 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
         ]).paddingAll(UIHelper.lowSize),
       ),
     );
-  }
 
   Future<void> getMuhKodu() async {
     final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, belgeTipi: MuhasebeBelgeTipiEnum.muo, hesapTipi: viewModel.model.hesapTipi);

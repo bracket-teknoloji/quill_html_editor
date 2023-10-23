@@ -8,10 +8,7 @@ import "app_theme.dart";
 
 class AppThemeDark extends AppTheme {
   static AppThemeDark? _instance;
-  static AppThemeDark? get instance {
-    _instance ??= AppThemeDark._init();
-    return _instance;
-  }
+  static AppThemeDark? get instance => _instance ??= AppThemeDark._init();
 
   AppThemeDark._init();
   var colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark);

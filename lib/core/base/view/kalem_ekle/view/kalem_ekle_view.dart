@@ -84,15 +84,10 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(appBar: appBar(), floatingActionButton: fab(), body: body(context));
-  }
+  Widget build(BuildContext context) => Scaffold(appBar: appBar(), floatingActionButton: fab(), body: body(context));
 
-  AppBar appBar() {
-    return AppBar(
-      title: Observer(builder: (_) {
-        return AppBarTitle(title: "Kalem Ekle", subtitle: viewModel.model?.stokAdi ?? "");
-      }),
+  AppBar appBar() => AppBar(
+      title: Observer(builder: (_) => AppBarTitle(title: "Kalem Ekle", subtitle: viewModel.model?.stokAdi ?? "")),
       actions: [
         IconButton(
             onPressed: () async {
@@ -129,19 +124,15 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
             icon: const Icon(Icons.save_outlined)),
       ],
     );
-  }
 
-  FloatingActionButton fab() {
-    return FloatingActionButton(
+  FloatingActionButton fab() => FloatingActionButton(
       onPressed: () async {
         dialogManager.showStokGridViewDialog(viewModel.model);
       },
       child: const Icon(Icons.open_in_new_outlined),
     );
-  }
 
-  Padding body(BuildContext context) {
-    return Padding(
+  Padding body(BuildContext context) => Padding(
       padding: UIHelper.lowPadding,
       child: Column(
         children: [
@@ -167,24 +158,20 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         ).paddingSymmetric(horizontal: UIHelper.lowSize).paddingOnly(top: UIHelper.lowSize),
                         Row(
                           children: [
-                            Expanded(child: Observer(builder: (_) {
-                              return Text.rich(TextSpan(children: [
+                            Expanded(child: Observer(builder: (_) => Text.rich(TextSpan(children: [
                                 const TextSpan(text: "Brüt Tutar: "),
                                 TextSpan(
                                     text:
                                         "${viewModel.kalemModel.brutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
                                     style: const TextStyle(fontWeight: FontWeight.bold))
-                              ]));
-                            })),
-                            Expanded(child: Observer(builder: (_) {
-                              return Text.rich(TextSpan(children: [
+                              ])))),
+                            Expanded(child: Observer(builder: (_) => Text.rich(TextSpan(children: [
                                 const TextSpan(text: "MF. Tutarı: "),
                                 TextSpan(
                                     text:
                                         "${viewModel.kalemModel.mfTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizMfTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
                                     style: const TextStyle(fontWeight: FontWeight.bold))
-                              ]));
-                            })),
+                              ])))),
                           ],
                         ).paddingSymmetric(horizontal: UIHelper.lowSize),
                         Row(
@@ -197,37 +184,31 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                       "${viewModel.kalemModel.iskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizIskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
                                   style: const TextStyle(fontWeight: FontWeight.bold))
                             ]))),
-                            Expanded(child: Observer(builder: (_) {
-                              return Text.rich(TextSpan(children: [
+                            Expanded(child: Observer(builder: (_) => Text.rich(TextSpan(children: [
                                 const TextSpan(text: "Ara Toplam: "),
                                 TextSpan(
                                     text:
                                         "${viewModel.kalemModel.araToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizAraToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
                                     style: const TextStyle(fontWeight: FontWeight.bold))
-                              ]));
-                            })),
+                              ])))),
                           ],
                         ).paddingSymmetric(horizontal: UIHelper.lowSize),
                         Row(
                           children: [
-                            Expanded(child: Observer(builder: (_) {
-                              return Text.rich(TextSpan(children: [
+                            Expanded(child: Observer(builder: (_) => Text.rich(TextSpan(children: [
                                 const TextSpan(text: "KDV Tutarı: "),
                                 TextSpan(
                                     text:
                                         "${viewModel.kalemModel.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${(viewModel.kalemModel.kdvTutari / (viewModel.kalemModel.dovizKuru ?? 1)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
                                     style: const TextStyle(fontWeight: FontWeight.bold))
-                              ]));
-                            })),
-                            Expanded(child: Observer(builder: (_) {
-                              return Text.rich(TextSpan(children: [
+                              ])))),
+                            Expanded(child: Observer(builder: (_) => Text.rich(TextSpan(children: [
                                 const TextSpan(text: "Genel Toplam: "),
                                 TextSpan(
                                     text:
                                         "${viewModel.kalemModel.genelToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${(viewModel.kalemModel.genelToplamTutari / (viewModel.kalemModel.dovizKuru ?? 1)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
                                     style: const TextStyle(fontWeight: FontWeight.bold))
-                              ]));
-                            })),
+                              ])))),
                           ],
                         ).paddingSymmetric(horizontal: UIHelper.lowSize),
                         Card(
@@ -245,8 +226,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 key: formKey,
                 child: Column(
                   children: [
-                    Observer(builder: (_) {
-                      return Row(
+                    Observer(builder: (_) => Row(
                         children: [
                           Expanded(child: CustomTextField(labelText: "Kalem Adı", controller: kalemAdiController, onChanged: (p0) => viewModel.kalemModel.stokAdi = p0)),
                           Expanded(
@@ -271,8 +251,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                     }
                                   })).yetkiVarMi((viewModel.kalemModel.stokKodu?.startsWith("HIZ") ?? false) && yetkiController.siparisHizmetAktifMi),
                         ],
-                      );
-                    }),
+                      )),
                     CustomTextField(labelText: "Ek Alan 1", onChanged: (p0) => viewModel.kalemModel.ekalan1 = p0).yetkiVarMi(yetkiController.siparisEkAlan1AktifMi),
                     CustomTextField(labelText: "Ek Alan 2", onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0).yetkiVarMi(yetkiController.siparisSatirdaEkAlan2AktifMi),
                     CustomTextField(
@@ -381,8 +360,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(child: Observer(builder: (_) {
-                          return CustomTextField(
+                        Expanded(child: Observer(builder: (_) => CustomTextField(
                             enabled: !viewModel.koliMi,
                             labelText: "Miktar",
                             isMust: true,
@@ -393,10 +371,8 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () => viewModel.decreaseMiktar(miktarController)),
                               IconButton(icon: const Icon(Icons.add_outlined), onPressed: () => viewModel.increaseMiktar(miktarController)),
                             ]),
-                          );
-                        })),
-                        Expanded(child: Observer(builder: (_) {
-                          return CustomTextField(
+                          ))),
+                        Expanded(child: Observer(builder: (_) => CustomTextField(
                             labelText: "Miktar 2",
                             controller: miktar2Controller,
                             keyboardType: TextInputType.number,
@@ -407,8 +383,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () => viewModel.decreaseMiktar2(miktar2Controller)),
                               IconButton(icon: const Icon(Icons.add_outlined), onPressed: () => viewModel.increaseMiktar2(miktar2Controller)),
                             ]),
-                          );
-                        })),
+                          ))),
                       ],
                     ),
                     Row(
@@ -445,8 +420,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                 })),
                       ],
                     ),
-                    Observer(builder: (_) {
-                      return Row(
+                    Observer(builder: (_) => Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
@@ -486,8 +460,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             },
                           )).yetkiVarMi((widget.stokListesiModel?.dovizliMi ?? false) && viewModel.showDovizBilgileri),
                         ],
-                      );
-                    }),
+                      )),
                     Observer(
                         builder: (_) => CustomTextField(
                             labelText: "Döviz Fiyatı",
@@ -540,8 +513,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                 })),
                       ],
                     ),
-                    ...List.generate(yetkiController.siparisSatirKademeliIskontoSayisi > 6 ? 6 : yetkiController.siparisSatirKademeliIskontoSayisi, (index) {
-                      return Row(
+                    ...List.generate(yetkiController.siparisSatirKademeliIskontoSayisi > 6 ? 6 : yetkiController.siparisSatirKademeliIskontoSayisi, (index) => Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
@@ -551,11 +523,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                   keyboardType: TextInputType.number,
                                   isFormattedString: true,
                                   suffix: yetkiController.siparisMSISk1YuzdeSor && index == 0
-                                      ? Observer(builder: (_) {
-                                          return IconButton(
+                                      ? Observer(builder: (_) => IconButton(
                                               onPressed: () => viewModel.changeIskonto1OranMi(),
-                                              icon: Icon((viewModel.kalemModel.iskonto1OranMi ?? false) ? Icons.percent_outlined : Icons.payments_outlined));
-                                        })
+                                              icon: Icon((viewModel.kalemModel.iskonto1OranMi ?? false) ? Icons.percent_outlined : Icons.payments_outlined)))
                                       : null,
                                   onChanged: (p0) => setIskonto(index + 1, p0))),
                           Expanded(
@@ -574,8 +544,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             },
                           )),
                         ],
-                      );
-                    }),
+                      )),
                     Text("Ek Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize)).paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(null)),
                     CustomTextField(labelText: getAciklamaLabel(1), onChanged: (value) => viewModel.kalemModel.aciklama1).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(1)),
                     CustomTextField(labelText: getAciklamaLabel(2), onChanged: (value) => viewModel.kalemModel.aciklama2).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(2)),
@@ -596,7 +565,6 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
         ],
       ),
     );
-  }
 
   String? miktar2Validator(p0) {
     if (viewModel.model?.koliMi == true) {

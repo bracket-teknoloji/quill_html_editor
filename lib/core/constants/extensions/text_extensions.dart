@@ -3,8 +3,7 @@
 import "package:flutter/material.dart";
 
 extension TextExtension on Text {
-  Text changeColor(Color color) {
-    return Text(
+  Text changeColor(Color color) => Text(
       data ?? "",
       style: style?.copyWith(color: color),
       textAlign: textAlign,
@@ -16,13 +15,11 @@ extension TextExtension on Text {
       semanticsLabel: semanticsLabel,
       textWidthBasis: textWidthBasis,
     );
-  }
 }
 
 //an extewnsion for change color of text widget to blue
 extension TextBlue on Text {
-  Text get changeColorBlue {
-    return Text(
+  Text get changeColorBlue => Text(
       data ?? "",
       style: style?.copyWith(color: Colors.blue),
       textAlign: textAlign,
@@ -34,5 +31,4 @@ extension TextBlue on Text {
       semanticsLabel: semanticsLabel,
       textWidthBasis: textWidthBasis,
     );
-  }
 }

@@ -46,7 +46,5 @@ class FavoritesModel {
       this.menuTipi});
 
   @override
-  String toString() {
-    return "FavoritesModel{name: $name, title: $title, icon: $icon, onTap: $onTap, color: $color, arguments: $arguments}";
-  }
+  String toString() => "FavoritesModel{name: $name, title: $title, icon: $icon, onTap: $onTap, color: $color, arguments: $arguments}";
 }

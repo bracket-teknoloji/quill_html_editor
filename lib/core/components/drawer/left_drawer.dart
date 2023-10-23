@@ -20,8 +20,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
   List<FavoritesModel> list = CacheManager.getFavoriler().values.toList();
   List get liste => list.where((element) => element.yetkiKontrol).toList();
   @override
-  Widget build(BuildContext context) {
-    return Drawer(
+  Widget build(BuildContext context) => Drawer(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -107,5 +106,4 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                       },
                       itemCount: list.length)),
         ]));
-  }
 }

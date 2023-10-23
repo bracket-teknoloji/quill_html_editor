@@ -56,8 +56,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
   ParamModel? get paramModel => CacheManager.getAnaVeri()?.paramModel;
 
   @override
-  Widget build(BuildContext context) {
-    return Card(
+  Widget build(BuildContext context) => Card(
         child: ListTile(
       // contentPadding: EdgeInsets.zero,
       onLongPress: widget.model.remoteTempBelgeEtiketi == null
@@ -189,8 +188,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
             ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
           ),
           Text(widget.model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
-          LayoutBuilder(builder: (context, constrains) {
-            return Wrap(
+          LayoutBuilder(builder: (context, constrains) => Wrap(
               // mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: WrapCrossAlignment.start,
               children: [
@@ -205,8 +203,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                 Text("Ara Toplam: ${widget.model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                 Text("Genel Toplam: ${widget.model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
               ].whereType<Widget>().map((e) => e is SizedBox ? null : SizedBox(width: constrains.maxWidth / 2, child: e)).whereType<Widget>().toList(),
-            );
-          }),
+            )),
           // Row(
           //   crossAxisAlignment: CrossAxisAlignment.start,
           //   children: [
@@ -255,5 +252,4 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
         ],
       ),
     ));
-  }
 }

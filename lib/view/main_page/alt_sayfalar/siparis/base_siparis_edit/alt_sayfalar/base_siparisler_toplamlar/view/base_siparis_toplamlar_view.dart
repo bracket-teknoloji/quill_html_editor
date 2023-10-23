@@ -54,18 +54,15 @@ class _BaseSiparisToplamlarViewState
   }
 
   @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
+  Widget build(BuildContext context) => SingleChildScrollView(
         child: Padding(
       padding: UIHelper.lowPaddingOnlyTop,
       child: Column(
         children: [toplamlarCard().paddingAll(UIHelper.lowSize), textFields()],
       ),
     ));
-  }
 
-  Card toplamlarCard() {
-    return Card(
+  Card toplamlarCard() => Card(
       child: Column(
         children: [
           Row(
@@ -119,8 +116,7 @@ class _BaseSiparisToplamlarViewState
                         "${viewModel.model.satirIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency",
                     style: const TextStyle(fontWeight: FontWeight.bold))
               ])),
-              Observer(builder: (_) {
-                return Text.rich(TextSpan(children: [
+              Observer(builder: (_) => Text.rich(TextSpan(children: [
                   const TextSpan(
                       text: "Toplam İskonto\n",
                       style: TextStyle(color: Colors.grey)),
@@ -128,15 +124,13 @@ class _BaseSiparisToplamlarViewState
                       text:
                           "${viewModel.model.getToplamIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency",
                       style: const TextStyle(fontWeight: FontWeight.bold))
-                ]));
-              }),
+                ]))),
             ].map((e) => Expanded(child: e)).toList(),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Observer(builder: (_) {
-                return Text.rich(TextSpan(children: [
+              Observer(builder: (_) => Text.rich(TextSpan(children: [
                   const TextSpan(
                       text: "Ara Toplam\n",
                       style: TextStyle(color: Colors.grey)),
@@ -144,10 +138,8 @@ class _BaseSiparisToplamlarViewState
                       text:
                           "${viewModel.model.getAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                       style: const TextStyle(fontWeight: FontWeight.bold))
-                ]));
-              }),
-              Observer(builder: (_) {
-                return Text.rich(TextSpan(children: [
+                ]))),
+              Observer(builder: (_) => Text.rich(TextSpan(children: [
                   const TextSpan(
                       text: "KDV Tutarı\n",
                       style: TextStyle(color: Colors.grey)),
@@ -155,10 +147,8 @@ class _BaseSiparisToplamlarViewState
                       text:
                           "${viewModel.model.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                       style: const TextStyle(fontWeight: FontWeight.bold))
-                ]));
-              }),
-              Observer(builder: (_) {
-                return Text.rich(TextSpan(children: [
+                ]))),
+              Observer(builder: (_) => Text.rich(TextSpan(children: [
                   const TextSpan(
                       text: "Genel Toplam\n",
                       style: TextStyle(color: Colors.grey)),
@@ -166,17 +156,14 @@ class _BaseSiparisToplamlarViewState
                       text:
                           "${viewModel.model.genelToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                       style: const TextStyle(fontWeight: FontWeight.bold))
-                ]));
-              }),
+                ]))),
             ].map((e) => Expanded(child: e)).toList(),
           ),
         ],
       ).paddingAll(UIHelper.lowSize),
     );
-  }
 
-  Padding textFields() {
-    return Padding(
+  Padding textFields() => Padding(
       padding: UIHelper.lowPaddingHorizontal,
       child: Column(
         children: [
@@ -407,7 +394,6 @@ class _BaseSiparisToplamlarViewState
         ],
       ),
     );
-  }
 
   void initControllers() {
     genelIskonto1Controller = TextEditingController(

@@ -3,9 +3,7 @@ mixin NetworkManagerMixin on Object {
   fromJson(Map<String, dynamic> json);
 
   @override
-  String toString() {
-    return toJson().toString();
-  }
+  String toString() => toJson().toString();
 
   @override
   operator ==(Object other) {

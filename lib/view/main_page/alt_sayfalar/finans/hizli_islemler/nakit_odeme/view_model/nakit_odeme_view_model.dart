@@ -1,6 +1,4 @@
 import "package:mobx/mobx.dart";
-import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/constants/ondalik_utils.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/model/base_network_mixin.dart";
@@ -10,6 +8,8 @@ import "../../../../../../../core/base/model/muhasebe_referans_model.dart";
 import "../../../../../../../core/base/model/tahsilat_request_model.dart";
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
 import "../../../../../model/param_model.dart";
 import "../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -19,10 +19,8 @@ part "nakit_odeme_view_model.g.dart";
 class NakitOdemeViewModel = _NakitOdemeViewModelBase with _$NakitOdemeViewModel;
 
 abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
-
-    @observable
+  @observable
   double? cariBakiye;
-
 
   @observable
   TahsilatRequestModel model = TahsilatRequestModel(tahsilatmi: true, yeniKayit: true, gc: "G", tag: "TahsilatModel", pickerBelgeTuru: "NAT", hesapTipi: "C");
@@ -48,12 +46,11 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
     return model.copyWith(guid: uuid.v4());
   }
 
-    @computed
+  @computed
   String? get getCariBakiye => cariBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
 
   @action
   void setCariBakiye(double? value) => cariBakiye = value;
-
 
   @action
   void setShowReferansKodu(bool? value) => showReferansKodu = value;
@@ -109,8 +106,6 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setHedefAciklama(String? value) => model = model.copyWith(hedefAciklama: value);
-
-
 
   @action
   void setMuhaRefList(List<MuhasebeReferansModel>? value) => muhaRefList = value?.asObservable();

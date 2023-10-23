@@ -133,8 +133,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
   }
 
   @override
-  Widget build(BuildContext context) {
-    return WillPopScope(
+  Widget build(BuildContext context) => WillPopScope(
         child: Scaffold(
           appBar: AppBar(
             title: AppBarTitle(
@@ -212,8 +211,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                 },
                 icon: const Icon(Icons.more_vert_outlined),
               ),
-              Observer(builder: (_) {
-                return Visibility(
+              Observer(builder: (_) => Visibility(
                   visible: viewModel.isLastPage,
                   child: IconButton(
                     onPressed: () async {
@@ -231,8 +229,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                     },
                     icon: const Icon(Icons.save_outlined),
                   ),
-                );
-              }),
+                )),
             ],
             bottom: TabBar(
               controller: tabController,
@@ -273,10 +270,8 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           });
           return result;
         });
-  }
 
-  BottomSheetModel topluIskontoBottomSheetModel(BuildContext context) {
-    return BottomSheetModel(
+  BottomSheetModel topluIskontoBottomSheetModel(BuildContext context) => BottomSheetModel(
         title: "Toplu İskonto Girişi",
         iconWidget: Icons.add_outlined,
         onTap: viewModel.baseSiparisEditModel.kalemList.ext.isNullOrEmpty
@@ -332,10 +327,8 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                       ),
                     ));
               });
-  }
 
-  ListTile topluIskontoListTile(KalemModel? model, List<double?>? iskonto1, int index, TextEditingController controller) {
-    return ListTile(
+  ListTile topluIskontoListTile(KalemModel? model, List<double?>? iskonto1, int index, TextEditingController controller) => ListTile(
         title: Row(
       children: [
         Expanded(child: Text(model?.stokAdi?.toString() ?? "", overflow: TextOverflow.fade)),
@@ -363,7 +356,6 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
         ))
       ],
     ));
-  }
 
   NeverScrollableScrollPhysics? tabBarViewPhysics() {
     viewModel.changeIsValid();

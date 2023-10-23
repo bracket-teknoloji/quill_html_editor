@@ -5,10 +5,8 @@ class ResponsiveBox extends StatelessWidget {
   const ResponsiveBox({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
+  Widget build(BuildContext context) => AnimatedContainer(
         duration: Duration.zero, height: heightController(context));
-  }
 
   double heightController(BuildContext context) =>
       context.general.isKeyBoardOpen ? context.sized.dynamicHeight(0.3) : 0;

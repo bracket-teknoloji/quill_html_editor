@@ -73,8 +73,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
     }
   }
 
-  AppBar appBar(BuildContext context) {
-    return AppBar(
+  AppBar appBar(BuildContext context) => AppBar(
       title: Text(widget.title),
       actions: [
         IconButton(
@@ -139,10 +138,8 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
         ),
       ),
     );
-  }
 
-  Observer body() {
-    return Observer(builder: (_) {
+  Observer body() => Observer(builder: (_) {
       if (viewModel.futureController.value == true &&
           viewModel.pdfFile != null) {
         return Observer(
@@ -173,7 +170,6 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
         return const Center();
       }
     });
-  }
 
   BottomAppBar bottomAppBar() => BottomAppBar(
       height: 70,

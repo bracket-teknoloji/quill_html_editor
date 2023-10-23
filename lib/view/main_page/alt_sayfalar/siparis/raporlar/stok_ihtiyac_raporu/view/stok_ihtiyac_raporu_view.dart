@@ -63,12 +63,10 @@ class _StokIhtiyacRaporuViewState extends BaseState<StokIhtiyacRaporu> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return PDFViewerView(
+  Widget build(BuildContext context) => PDFViewerView(
         filterBottomSheet: filterBottomSheet,
         title: "Stok İhtiyaç Raporu",
         pdfData: viewModel.pdfModel);
-  }
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();

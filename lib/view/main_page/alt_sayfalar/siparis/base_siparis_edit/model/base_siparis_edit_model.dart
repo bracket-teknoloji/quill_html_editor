@@ -548,9 +548,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     return araToplam ?? 0;
   }
 
-  double get getAraToplam2 {
-    return (genelToplam ?? 0) - (kdv ?? 0);
-  }
+  double get getAraToplam2 => (genelToplam ?? 0) - (kdv ?? 0);
 
   double iskontoChecker(double result) {
     araToplam = result;
@@ -865,9 +863,7 @@ class KalemModel with NetworkManagerMixin {
 
   double? get getSelectedMiktar => (isKoli ? miktar2 : miktar);
 
-  double get brutTutar {
-    return ((getSelectedMiktar ?? 0) + (malFazlasiMiktar ?? 0)) * (brutFiyat ?? 0);
-  }
+  double get brutTutar => ((getSelectedMiktar ?? 0) + (malFazlasiMiktar ?? 0)) * (brutFiyat ?? 0);
 
   double get koliTutar => kalemList?.map((e) => e.brutTutar + e.kdvTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
 
@@ -945,8 +941,7 @@ class KalemModel with NetworkManagerMixin {
 
   factory KalemModel.fromJson(Map<String, dynamic> json) => _$KalemModelFromJson(json);
 
-  factory KalemModel.fromStokList(StokList model) {
-    return KalemModel(
+  factory KalemModel.fromStokList(StokList model) => KalemModel(
         brutFiyat: model.bulunanFiyat,
         stokAlisKdv: model.alisKdv,
         stokSatisKdv: model.satisKdv,
@@ -957,7 +952,6 @@ class KalemModel with NetworkManagerMixin {
         koliBilesenOrani: model.koliBilesenOrani,
         koliBilesenFiyatorandan: model.koliBilesenFiyatorandan,
         koliBilesenKolikdv: model.koliBilesenKolikdv);
-  }
   @override
   Map<String, dynamic> toJson() => _$KalemModelToJson(this);
 

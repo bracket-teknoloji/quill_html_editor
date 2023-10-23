@@ -37,12 +37,10 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
   SerbestRaporlarViewModel viewModel = SerbestRaporlarViewModel();
 
   @override
-  Widget build(BuildContext context) {
-    return PDFViewerView(
+  Widget build(BuildContext context) => PDFViewerView(
         filterBottomSheet: filterBottomSheet,
         title: widget.dizaynList?.dizaynAdi ?? "Serbest Raporlar",
         pdfData: viewModel.pdfModel);
-  }
 
   Future<bool> filterBottomSheet() async {
     await getData();

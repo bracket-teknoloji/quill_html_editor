@@ -45,19 +45,14 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
         appBar: appBar(), floatingActionButton: fab(context), body: body());
-  }
 
-  AppBar appBar() {
-    return AppBar(
+  AppBar appBar() => AppBar(
       title: const Text("Döviz Kurları"),
     );
-  }
 
-  FloatingActionButton fab(BuildContext context) {
-    return FloatingActionButton(
+  FloatingActionButton fab(BuildContext context) => FloatingActionButton(
       onPressed: () async {
         await bottomSheetDialogManager
             .showBottomSheetDialog(context, title: "Seçenekler", children: [
@@ -97,10 +92,8 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
       },
       child: const Icon(Icons.add),
     );
-  }
 
-  Column body() {
-    return Column(
+  Column body() => Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Row(
@@ -144,8 +137,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
         Expanded(
             child: RefreshIndicator.adaptive(
           onRefresh: () async => await getData(),
-          child: Observer(builder: (_) {
-            return viewModel.dovizKurlariList.ext.isNullOrEmpty
+          child: Observer(builder: (_) => viewModel.dovizKurlariList.ext.isNullOrEmpty
                 ? viewModel.dovizKurlariList == null
                     ? const Center(child: CircularProgressIndicator.adaptive())
                     : const Center(child: Text("Veri Yok"))
@@ -234,12 +226,10 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                               ]);
                         },
                       ));
-                    });
-          }),
+                    })),
         ))
       ],
     );
-  }
 
   Future<void> getData() async {
     viewModel.changeDovizKurlariList(null);
@@ -276,13 +266,11 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
         children: [
           Text(
               "${viewModel.tarih.toDateString} tarihli döviz kurları güncellensin mi?"),
-          Observer(builder: (_) {
-            return CheckboxListTile.adaptive(
+          Observer(builder: (_) => CheckboxListTile.adaptive(
                 title: const Text("Mevcut kurları sil ve tekrar güncelle"),
                 value: viewModel.kurlariSilTekrarGuncelle,
                 onChanged: (value) =>
-                    viewModel.changeKurlariSilTekrarGuncelle());
-          }).paddingSymmetric(vertical: UIHelper.lowSize)
+                    viewModel.changeKurlariSilTekrarGuncelle())).paddingSymmetric(vertical: UIHelper.lowSize)
         ],
       ),
     );

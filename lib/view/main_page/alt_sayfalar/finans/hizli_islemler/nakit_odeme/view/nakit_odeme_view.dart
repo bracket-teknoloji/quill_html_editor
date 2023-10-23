@@ -92,8 +92,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
         title: Observer(builder: (_) => Text("Nakit ${viewModel.formTipi}")),
         actions: [
@@ -117,8 +116,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
       body: Form(
           key: _formKey,
           child: SingleChildScrollView(
-            child: Observer(builder: (_) {
-              return Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
+            child: Observer(builder: (_) => Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Observer(
                     builder: (_) => CustomTextField(
                         labelText: "Belge No",
@@ -187,8 +185,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                           (viewModel.getCariBakiye ?? "") + ((viewModel.cariBakiye ?? 0) > 0 ? " (Tahsil Edilecek)" : " (Ödenecek)"),
                           style: TextStyle(color: (viewModel.cariBakiye ?? 0) > 0 ? Colors.green : Colors.red),
                         ).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.getCariBakiye != null)),
-                Observer(builder: (_) {
-                  return Row(
+                Observer(builder: (_) => Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
@@ -233,10 +230,8 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                             )),
                       ).yetkiVarMi(viewModel.model.dovizTipi != null && viewModel.model.dovizTipi != 0),
                     ],
-                  );
-                }),
-                Observer(builder: (_) {
-                  return Row(
+                  )),
+                Observer(builder: (_) => Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
@@ -275,8 +270,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                         ),
                       ),
                     ],
-                  );
-                }),
+                  )),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -345,11 +339,9 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                   controller: _cariHareketiAciklamaController,
                   onChanged: (value) => viewModel.setHedefAciklama(value),
                 ),
-              ]).paddingAll(UIHelper.lowSize);
-            }),
+              ]).paddingAll(UIHelper.lowSize)),
           )),
     );
-  }
 
   Future<void> getKasa() async {
     final KasaList? result = await bottomSheetDialogManager.showKasaBottomSheetDialog(context);

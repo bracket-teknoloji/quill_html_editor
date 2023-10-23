@@ -20,15 +20,9 @@ class SirketModel {
   @HiveField(3)
   bool? isDevredilmis;
 
-  factory SirketModel.fromJson(Map<String, dynamic> json) {
-    return _$SirketModelFromJson(json);
-  }
-  Map<String, dynamic> toJson() {
-    return _$SirketModelToJson(this);
-  }
+  factory SirketModel.fromJson(Map<String, dynamic> json) => _$SirketModelFromJson(json);
+  Map<String, dynamic> toJson() => _$SirketModelToJson(this);
 
   @override
-  String toString() {
-    return toJson().toString();
-  }
+  String toString() => toJson().toString();
 }

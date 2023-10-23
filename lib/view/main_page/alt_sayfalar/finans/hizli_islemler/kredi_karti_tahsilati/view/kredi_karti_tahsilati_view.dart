@@ -106,15 +106,12 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: appBar(),
       body: body(context),
     );
-  }
 
-  AppBar appBar() {
-    return AppBar(
+  AppBar appBar() => AppBar(
       title: Observer(builder: (_) => AppBarTitle(title: "K.Kartı Tahsilatı", subtitle: viewModel.appBarSubTitle)),
       actions: [
         IconButton(
@@ -134,10 +131,8 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
         ),
       ],
     );
-  }
 
-  SingleChildScrollView body(BuildContext context) {
-    return SingleChildScrollView(
+  SingleChildScrollView body(BuildContext context) => SingleChildScrollView(
       child: Form(
         key: formKey,
         child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -191,8 +186,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                     (viewModel.getCariBakiye ?? "") + ((viewModel.cariBakiye ?? 0) > 0 ? " (Tahsil Edilecek)" : " (Ödenecek)"),
                     style: TextStyle(color: (viewModel.cariBakiye ?? 0) > 0 ? Colors.green : Colors.red),
                   ).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.getCariBakiye != null)),
-          Observer(builder: (_) {
-            return Row(
+          Observer(builder: (_) => Row(
               children: [
                 Expanded(
                   child: CustomTextField(
@@ -217,10 +211,8 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                   ),
                 ).yetkiVarMi(viewModel.model.kktYontemi == "H")
               ],
-            );
-          }),
-          Observer(builder: (_) {
-            return Row(
+            )),
+          Observer(builder: (_) => Row(
               children: [
                 Expanded(
                   child: CustomTextField(
@@ -245,17 +237,14 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                   ),
                 ),
               ],
-            ).yetkiVarMi(viewModel.model.kktYontemi == "D");
-          }),
-          Observer(builder: (_) {
-            return CustomTextField(
+            ).yetkiVarMi(viewModel.model.kktYontemi == "D")),
+          Observer(builder: (_) => CustomTextField(
               labelText: "Kredi Kartı No",
               controller: _krediKartiNoController,
               keyboardType: TextInputType.number,
               maxLength: 16,
               onChanged: (value) => viewModel.setKrediKartiNo(value),
-            ).yetkiVarMi(viewModel.model.kktYontemi == "H");
-          }),
+            ).yetkiVarMi(viewModel.model.kktYontemi == "H")),
           Row(
             children: [
               Expanded(
@@ -338,7 +327,6 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
         ]).paddingAll(UIHelper.lowSize),
       ),
     );
-  }
 
   Future<void> getCari() async {
     final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);

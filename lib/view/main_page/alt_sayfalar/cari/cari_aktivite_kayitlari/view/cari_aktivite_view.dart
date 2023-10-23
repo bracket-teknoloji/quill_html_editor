@@ -17,8 +17,7 @@ class CariAktiviteView extends StatefulWidget {
 
 class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: const Text("Cari Aktiviteleri ()"),
           actions: [
@@ -43,14 +42,11 @@ class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
               // itemExtent: width * 0.23,
               scrollDirection: Axis.horizontal,
               itemCount: AppbarToggleButtonClass.liste.length,
-              itemBuilder: (context, index) {
-                return AppBarButton(
+              itemBuilder: (context, index) => AppBarButton(
                     onPressed: AppbarToggleButtonClass.liste[index].onTap,
                     child: Text(
                       AppbarToggleButtonClass.liste[index].title,
                       softWrap: true,
-                    )).paddingAll(UIHelper.lowSize);
-              }),
+                    )).paddingAll(UIHelper.lowSize)),
         ));
-  }
 }

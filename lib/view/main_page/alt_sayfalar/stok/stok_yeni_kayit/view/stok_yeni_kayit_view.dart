@@ -2,7 +2,6 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:mobx/mobx.dart";
-import "../../../../../../core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../core/base/model/generic_response_model.dart";
@@ -11,6 +10,7 @@ import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet
 import "../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
@@ -41,8 +41,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
   late final TextEditingController projeController = TextEditingController(text: widget.model?.projeKodu ?? viewModel.model.projeKodu);
   final GlobalKey key = GlobalKey<FormState>();
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
         title: const Text("Stok Yeni Kayıt"),
         actions: [
@@ -75,8 +74,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
           child: Column(
             children: [
               Center(
-                child: Observer(builder: (_) {
-                  return ToggleButtons(
+                child: Observer(builder: (_) => ToggleButtons(
                     constraints: BoxConstraints(minWidth: width / 2.1, minHeight: height / 20),
                     isSelected: viewModel.isSelected,
                     children: viewModel.toggleButtonName.map(Text.new).toList(),
@@ -84,8 +82,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                       viewModel.model.gc = index == 0 ? "G" : "C";
                       viewModel.changeIsSelected(index);
                     },
-                  );
-                }),
+                  )),
               ),
               CustomTextField(
                 labelText: "Stok",
@@ -259,7 +256,6 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
         ),
       ),
     );
-  }
 
   Future<List<BaseProjeModel>?> getProjeData() async {
     dialogManager.showLoadingDialog("Proje Listesi Getiriliyor...");

@@ -1,9 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "../../../../../../core/constants/extensions/widget_extensions.dart";
-import "../../../../../../core/constants/ondalik_utils.dart";
-import "../../../../model/param_model.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_proje_model.dart";
@@ -14,10 +11,13 @@ import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
 import "../../../../model/main_page_model.dart";
+import "../../../../model/param_model.dart";
 import "../../cari_hareketleri/model/cari_hareketleri_model.dart";
 import "../model/cari_hareket_yeni_kayit_model.dart";
 import "../view_model/cari_hareket_yeni_kayit_view_model.dart";
@@ -85,15 +85,12 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: appBar(),
       body: body(context),
     );
-  }
 
-  AppBar appBar() {
-    return AppBar(
+  AppBar appBar() => AppBar(
       title: AppBarTitle(title: "Cari Hareket", subtitle: widget.model!.baseEditEnum!.name),
       actions: [
         Visibility(
@@ -108,10 +105,8 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
         )
       ],
     );
-  }
 
-  SingleChildScrollView body(BuildContext context) {
-    return SingleChildScrollView(
+  SingleChildScrollView body(BuildContext context) => SingleChildScrollView(
       child: Form(
         key: _formKey,
         autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -147,8 +142,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                     }
                   });
                 }),
-            Observer(builder: (_) {
-              return CustomTextField(
+            Observer(builder: (_) => CustomTextField(
                 enabled: enable,
                 labelText: "Hareket Türü",
                 valueText: model?.hareketKodu ?? viewModel.getHareketKodu,
@@ -165,8 +159,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                     viewModel.setModelHareketKodu(result["value"]);
                   }
                 },
-              );
-            }),
+              )),
             CustomTextField(enabled: enable, labelText: "Belge No", controller: belgeNoController, onChanged: (value) => viewModel.model.belgeNo = value),
             CustomTextField(enabled: enable, labelText: "Açıklama", controller: aciklamaController, onChanged: (value) => viewModel.model.aciklama = value),
             Row(
@@ -262,7 +255,6 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
         ).paddingAll(UIHelper.lowSize),
       ),
     );
-  }
 
   void postData() async {
     final result = await networkManager.dioPost<CariHareketleriModel>(

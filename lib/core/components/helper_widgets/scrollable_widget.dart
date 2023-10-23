@@ -14,8 +14,7 @@ class ScrollableWidget extends StatefulWidget {
 
 class _ScrollableWidgetState extends State<ScrollableWidget> {
   @override
-  Widget build(BuildContext context) {
-    return AnimatedSlide(
+  Widget build(BuildContext context) => AnimatedSlide(
       duration: DurationHelper.durationLow,
       offset: widget.isScrolledDown ? Offset.zero : const Offset(0, 2),
       child: AnimatedOpacity(
@@ -24,5 +23,4 @@ class _ScrollableWidgetState extends State<ScrollableWidget> {
         child: widget.child,
       ),
     );
-  }
 }

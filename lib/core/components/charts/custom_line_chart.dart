@@ -33,8 +33,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
   ];
 
   @override
-  Widget build(BuildContext context) {
-    return AspectRatio(
+  Widget build(BuildContext context) => AspectRatio(
       aspectRatio: 1.8,
       child: widget.lineChartValue.ext.isNotNullOrEmpty
           ? LineChart(
@@ -47,8 +46,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                       fitInsideHorizontally: true,
                       fitInsideVertically: true,
                       tooltipRoundedRadius: 8,
-                      getTooltipItems: (List<LineBarSpot> touchedBarSpots) {
-                        return touchedBarSpots.map((barSpot) {
+                      getTooltipItems: (List<LineBarSpot> touchedBarSpots) => touchedBarSpots.map((barSpot) {
                           final flSpot = barSpot;
                           return LineTooltipItem(
                             flSpot.y.commaSeparatedWithDecimalDigits(
@@ -66,8 +64,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                               ),
                             ],
                           );
-                        }).toList();
-                      },
+                        }).toList(),
                       rotateAngle: 0.5,
                       tooltipPadding: const EdgeInsets.all(5),
                     ),
@@ -121,13 +118,11 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                         dotData: FlDotData(
                             show: true,
                             getDotPainter: (FlSpot spot, double xPercentage,
-                                LineChartBarData bar, int index) {
-                              return FlDotCirclePainter(
+                                LineChartBarData bar, int index) => FlDotCirclePainter(
                                   radius: 4,
                                   color: Colors.transparent,
                                   strokeWidth: 2,
-                                  strokeColor: Colors.primaries[index]);
-                            }),
+                                  strokeColor: Colors.primaries[index])),
                         belowBarData: BarAreaData(
                           show: true,
                           gradient: LinearGradient(
@@ -144,7 +139,6 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
               duration: DurationHelper.durationLow)
           : const SizedBox(),
     );
-  }
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(

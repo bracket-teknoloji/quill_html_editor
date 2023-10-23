@@ -31,9 +31,7 @@ class CariHareketleriModel with NetworkManagerMixin {
   bool? bordroMu;
   double? dovizAlacak;
   int? subeKodu;
-  bool get borcHareketiMi {
-    return borc! > 0;
-  }
+  bool get borcHareketiMi => borc! > 0;
 
   bool get devirMi => hareketKodu == "A";
 

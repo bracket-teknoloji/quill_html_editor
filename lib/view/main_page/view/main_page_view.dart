@@ -193,8 +193,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
     // );
   }
 
-  AppBar appBar(GlobalKey<ScaffoldState> scaffoldKey, BuildContext context) {
-    return AppBar(
+  AppBar appBar(GlobalKey<ScaffoldState> scaffoldKey, BuildContext context) => AppBar(
       title: AppBarTitle(title: title2.last),
       centerTitle: true,
       leading: anaSayfaMi
@@ -226,11 +225,8 @@ class _MainPageViewState extends BaseState<MainPageView> {
             icon: const Icon(Icons.person_outline_outlined)),
       ],
     );
-  }
 
-  bool get anaSayfaMi => items.any((element) {
-        return element.menuTipi != "A";
-      });
+  bool get anaSayfaMi => items.any((element) => element.menuTipi != "A");
   // Icon yetkiKontrolIcon(String name) {
   //   if (CacheManager.getFavoriler().values.any((element) => element.title == name)) {
   //     return const Icon(Icons.star, size: 20);

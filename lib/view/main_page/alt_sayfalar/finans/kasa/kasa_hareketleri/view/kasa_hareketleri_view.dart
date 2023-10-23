@@ -62,8 +62,7 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       resizeToAvoidBottomInset: true,
       extendBody: true,
       extendBodyBehindAppBar: false,
@@ -71,28 +70,20 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
       bottomNavigationBar: bottomBar(),
       body: body(),
     );
-  }
 
-  AppBar appBar() {
-    return AppBar(
-      title: Observer(builder: (_) {
-        return AppBarTitle(title: "Kasa Hareketleri (${viewModel.kasaIslemleriListesi?.length ?? 0})", subtitle: widget.model?.kasaKodu);
-      }),
+  AppBar appBar() => AppBar(
+      title: Observer(builder: (_) => AppBarTitle(title: "Kasa Hareketleri (${viewModel.kasaIslemleriListesi?.length ?? 0})", subtitle: widget.model?.kasaKodu)),
     );
-  }
 
-  Column body() {
-    return Column(
+  Column body() => Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Card(
           color: UIHelper.primaryColor,
-          child: Observer(builder: (_) {
-            return Text(
+          child: Observer(builder: (_) => Text(
                     "Devir Tutarı: ${(widget.model?.dovizli == "E" ? widget.model?.dovizDevirTutari : widget.model?.devirTutari).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}")
                 .paddingAll(UIHelper.lowSize)
-                .paddingOnly(left: UIHelper.midSize);
-          }),
+                .paddingOnly(left: UIHelper.midSize)),
         ).paddingSymmetric(horizontal: UIHelper.lowSize),
         Expanded(
           child: RefreshIndicator.adaptive(
@@ -105,8 +96,7 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                   return const Center(child: CircularProgressIndicator.adaptive());
                 }
               }
-              return Observer(builder: (_) {
-                return ListView.builder(
+              return Observer(builder: (_) => ListView.builder(
                   padding: UIHelper.lowPadding,
                   primary: false,
                   controller: _scrollController,
@@ -172,17 +162,14 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                       ),
                     );
                   },
-                );
-              });
+                ));
             }),
           ),
         ),
       ],
     );
-  }
 
-  Observer bottomBar() {
-    return Observer(
+  Observer bottomBar() => Observer(
         builder: (_) => BottomBarWidget(isScrolledDown: viewModel.isScrollDown, children: [
               FooterButton(children: [
                 const Text("Gelir"),
@@ -216,5 +203,4 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                         style: TextStyle(color: UIHelper.getColorWithValue((widget.model?.dovizli == "E" ? widget.model?.devirliDovizBakiye : widget.model?.devirliBakiye) ?? 0))))
               ])
             ]));
-  }
 }

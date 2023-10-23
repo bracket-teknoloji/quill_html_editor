@@ -30,8 +30,7 @@ class _BottomBarWidgetState extends BaseState<BottomBarWidget> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return ScrollableWidget(
+  Widget build(BuildContext context) => ScrollableWidget(
       isScrolledDown: widget.isScrolledDown,
       child: Container(
         color: theme.primaryColor,
@@ -43,5 +42,4 @@ class _BottomBarWidgetState extends BaseState<BottomBarWidget> {
             : null,
       ),
     );
-  }
 }

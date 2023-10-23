@@ -53,9 +53,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Cari Dövizli Ekstre", pdfData: viewModel.pdfModel);
-  }
+  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Cari Dövizli Ekstre", pdfData: viewModel.pdfModel);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -112,16 +110,13 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
               CustomWidgetWithLabel(
                   text: "$mainCurrency Hareketi Dökülsün",
                   isVertical: true,
-                  child: Observer(builder: (_) {
-                    return Switch.adaptive(
+                  child: Observer(builder: (_) => Switch.adaptive(
                         value: viewModel.tlHareketleriDokulsun,
                         onChanged: (value) {
                           viewModel.changeTlHareketleriDokulsun();
                           viewModel.pdfModel.dicParams?.tlHarDokulsun = value ? "E" : null;
-                        });
-                  })).paddingAll(UIHelper.lowSize),
-              Observer(builder: (_) {
-                return ElevatedButton(
+                        }))).paddingAll(UIHelper.lowSize),
+              Observer(builder: (_) => ElevatedButton(
                         onPressed: () {
                           if (viewModel.pdfModel.dicParams?.cariKodu == null) {
                             dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
@@ -133,8 +128,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                           }
                         },
                         child: const Text("Uygula"))
-                    .paddingAll(UIHelper.lowSize);
-              })
+                    .paddingAll(UIHelper.lowSize))
             ],
           ),
         ));

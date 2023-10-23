@@ -62,18 +62,15 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Observer(builder: (_) {
-            return viewModel.searchBar
+          title: Observer(builder: (_) => viewModel.searchBar
                 ? CustomAppBarTextField(
                     controller: searchBarController,
                     onChanged: (p0) => viewModel.filterModelList(p0))
                 : AppBarTitle(
                     title: "Fiyat Geçmişi",
-                    subtitle: "${viewModel.modelList?.length ?? 0} kayıt");
-          }),
+                    subtitle: "${viewModel.modelList?.length ?? 0} kayıt")),
           actions: [
             IconButton(
                 icon: Observer(
@@ -81,8 +78,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                         ? Icons.search_off_outlined
                         : Icons.search_outlined)),
                 onPressed: () => viewModel.setSearchBar()),
-            Observer(builder: (_) {
-              return viewModel.searchBar
+            Observer(builder: (_) => viewModel.searchBar
                   ? const SizedBox()
                   : IconButton(
                       icon: const Icon(Icons.sort_by_alpha_outlined),
@@ -103,8 +99,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                           viewModel.model.sirala = result;
                           getData();
                         }
-                      });
-            }),
+                      })),
             Observer(
                 builder: (_) => viewModel.searchBar
                     ? const SizedBox()
@@ -122,8 +117,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                           baslangicTarihiController,
                                       bitisTarihiController:
                                           bitisTarihiController),
-                                  Observer(builder: (_) {
-                                    return SlideControllerWidget(
+                                  Observer(builder: (_) => SlideControllerWidget(
                                       title: "Yazdırma Durumu",
                                       childrenTitleList: viewModel
                                           .yazdirmaDurumuMap.keys
@@ -134,10 +128,8 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                       filterOnChanged: (index) => viewModel
                                           .setYazdirmaGroupValue(index ?? 0),
                                       groupValue: viewModel.yazdirmaGroupValue,
-                                    );
-                                  }),
-                                  Observer(builder: (_) {
-                                    return SlideControllerWidget(
+                                    )),
+                                  Observer(builder: (_) => SlideControllerWidget(
                                       title: "Alış/Satış Fiyat Tipi",
                                       childrenTitleList: viewModel
                                           .alisSatisDurumuMap.keys
@@ -148,8 +140,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                       filterOnChanged: (index) => viewModel
                                           .setAlisSatisGroupValue(index ?? 0),
                                       groupValue: viewModel.alisSatisGroupValue,
-                                    );
-                                  }),
+                                    )),
                                   CustomTextField(
                                     labelText: "Fiyat Tipi",
                                     readOnly: true,
@@ -226,8 +217,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
         ),
         body: RefreshIndicator.adaptive(
           onRefresh: () async => getData(),
-          child: Observer(builder: (_) {
-            return viewModel.modelList.ext.isNullOrEmpty
+          child: Observer(builder: (_) => viewModel.modelList.ext.isNullOrEmpty
                 ? (viewModel.modelList?.isEmpty ?? false)
                     ? const Center(child: Text("Kayıt Bulunamadı"))
                     : const Center(
@@ -314,8 +304,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                         ],
                       ),
                       Expanded(
-                        child: Observer(builder: (_) {
-                          return ListView.builder(
+                        child: Observer(builder: (_) => ListView.builder(
                             itemCount:
                                 viewModel.filteredModelList?.length ?? 0,
                             shrinkWrap: true,
@@ -350,14 +339,11 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                 },
                               );
                             },
-                          );
-                        }),
+                          )),
                       ),
                     ],
-                  ).paddingAll(UIHelper.lowSize);
-          }),
+                  ).paddingAll(UIHelper.lowSize)),
         ));
-  }
 
   void getData() async {
     viewModel.setModelList(null);

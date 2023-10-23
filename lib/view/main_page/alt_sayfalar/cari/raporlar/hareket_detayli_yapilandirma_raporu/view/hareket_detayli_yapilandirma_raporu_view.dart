@@ -44,9 +44,7 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
   }
 
   @override
-  Widget build(BuildContext context) {
-    return PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Hareket Detaylı Yaşlandırma Raporu", pdfData: viewModel.pdfModel);
-  }
+  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Hareket Detaylı Yaşlandırma Raporu", pdfData: viewModel.pdfModel);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();

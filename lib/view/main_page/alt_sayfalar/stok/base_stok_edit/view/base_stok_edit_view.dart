@@ -21,38 +21,21 @@ class BaseStokEditingView extends StatefulWidget {
   final bool? isSubTitleSmall;
   // final List<Widget>? actions;
   final BaseEditModel? model;
-  const BaseStokEditingView(
-      {super.key,
-      this.appBarTitle,
-      this.appBarSubtitle,
-      this.isSubTitleSmall,
-      this.model});
+  const BaseStokEditingView({super.key, this.appBarTitle, this.appBarSubtitle, this.isSubTitleSmall, this.model});
 
   @override
   State<BaseStokEditingView> createState() => _BaseStokEditingViewState();
 }
 
-class _BaseStokEditingViewState extends BaseState<BaseStokEditingView>
-    with TickerProviderStateMixin {
+class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with TickerProviderStateMixin {
   TabController? tabController;
-  List<Tab>? get tabs => (widget.model!.baseEditEnum != BaseEditEnum.ekle &&
-          widget.model!.baseEditEnum != BaseEditEnum.kopyala)
-      ? [const Tab(child: Text("Fiyat Listesi"))]
-      : [];
-  List<Widget>? get views => (widget.model!.baseEditEnum != BaseEditEnum.ekle &&
-          widget.model!.baseEditEnum != BaseEditEnum.kopyala)
-      ? [const BaseStokEditFiyatListesiView()]
-      : [];
+  List<Tab>? get tabs => (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala) ? [const Tab(child: Text("Fiyat Listesi"))] : [];
+  List<Widget>? get views => (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala) ? [const BaseStokEditFiyatListesiView()] : [];
 
   @override
   Widget build(BuildContext context) {
     StokListesiModel.setInstance(widget.model?.model);
-    final List<Tab> tabList = [
-      const Tab(child: Text("Genel")),
-      ...?tabs,
-      const Tab(child: Text("Fiyat")),
-      const Tab(child: Text("Seriler"))
-    ];
+    final List<Tab> tabList = [const Tab(child: Text("Genel")), ...?tabs, const Tab(child: Text("Fiyat")), const Tab(child: Text("Seriler"))];
     final List<Widget> viewList = [
       BaseStokEditGenelView(model: widget.model?.baseEditEnum),
       ...?views,
@@ -61,19 +44,13 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView>
     ];
     tabController = TabController(length: tabList.length, vsync: this);
     return WillPopScope(
-      onWillPop: () async {
-        return true;
-        //TODO! BURAYA BAK
-      },
+      //TODO! BURAYA BAK
+      onWillPop: () async => true,
       child: DefaultTabController(
         length: tabList.length,
         child: Scaffold(
           appBar: AppBar(
-            title: AppBarTitle(
-                title: widget.appBarTitle ?? "Stok Detayları",
-                subtitle: widget.appBarSubtitle ??
-                    widget.model?.model?.stokAdi ??
-                    ""),
+            title: AppBarTitle(title: widget.appBarTitle ?? "Stok Detayları", subtitle: widget.appBarSubtitle ?? widget.model?.model?.stokAdi ?? ""),
             actions: [
               Visibility(
                   visible: widget.model?.baseEditEnum != BaseEditEnum.goruntule,
@@ -84,8 +61,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView>
                         } else {
                           dialogManager.showEmptyFieldDialog(
                             validate.keys,
-                            onOk: () =>
-                                tabController?.animateTo(validate.values.first),
+                            onOk: () => tabController?.animateTo(validate.values.first),
                           );
                         }
                       },
@@ -125,8 +101,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView>
     saveStokModel.alisDovizFiyati = model.dovAlisFiat;
     saveStokModel.satisDovizFiyati = model.dovSatisFiat;
     saveStokModel.muhdetayKodu = model.muhdetayKodu;
-    saveStokModel.islemKodu =
-        widget.model?.baseEditEnum == BaseEditEnum.ekle ? 1 : 2;
+    saveStokModel.islemKodu = widget.model?.baseEditEnum == BaseEditEnum.ekle ? 1 : 2;
     saveStokModel.yeniKayit = saveStokModel.islemKodu == 1 ? true : false;
     saveStokModel.satisFiyati1 = model.satisFiat1;
     saveStokModel.satisFiyati2 = model.satisFiat2;

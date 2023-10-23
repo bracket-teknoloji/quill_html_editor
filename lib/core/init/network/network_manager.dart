@@ -43,9 +43,7 @@ class NetworkManager {
       ))
         ..interceptors.add(
           InterceptorsWrapper(
-            onRequest: (options, handler) {
-              return handler.next(options);
-            },
+            onRequest: (options, handler) => handler.next(options),
             onError: (e, handler) {
               print(e);
               if (e.type == DioExceptionType.connectionError) {
@@ -202,9 +200,8 @@ class NetworkManager {
     return responseModel;
   }
 
-  Future<GenericResponseModel> deleteFatura(EditFaturaModel model, {showError = true, showLoading = true}) {
-    return dioPost<EditFaturaModel>(path: ApiUrls.deleteFatura, bodyModel: const EditFaturaModel(), data: model.toJson(), showError: showError, showLoading: showLoading);
-  }
+  Future<GenericResponseModel> deleteFatura(EditFaturaModel model, {showError = true, showLoading = true}) =>
+      dioPost<EditFaturaModel>(path: ApiUrls.deleteFatura, bodyModel: const EditFaturaModel(), data: model.toJson(), showError: showError, showLoading: showLoading);
 
   Future<MemoryImage> getImage(String path) async {
     final Map<String, String> head = getStandardHeader(true, true, true);
@@ -293,18 +290,14 @@ class NetworkManager {
     return result;
   }
 
-  Future<GenericResponseModel> postPrint(BuildContext context, {required PrintModel model}) async {
-    //SırakadiBelgeNoModel koyma sebebim boş bir modele ihtiyacımın olması.
-    //Sadece succes döndürüyor.
-    return await dioPost<SiradakiBelgeNoModel>(path: ApiUrls.print, bodyModel: SiradakiBelgeNoModel(), data: model.toJson(), showLoading: true);
-  }
+  //SırakadiBelgeNoModel koyma sebebim boş bir modele ihtiyacımın olması.
+  //Sadece succes döndürüyor.
+  Future<GenericResponseModel> postPrint(BuildContext context, {required PrintModel model}) async =>
+      await dioPost<SiradakiBelgeNoModel>(path: ApiUrls.print, bodyModel: SiradakiBelgeNoModel(), data: model.toJson(), showLoading: true);
 
   Future<List<StokMuhasebeKoduModel>> getMuhasebeKodlari({Map<String, dynamic>? queryParams, bool? stokMu = true}) async {
     final GenericResponseModel result = await dioGet<StokMuhasebeKoduModel>(
-        path: stokMu == true ? ApiUrls.getStokMuhasebeKodlari : ApiUrls.getMuhasebeMuhasebeKodlari,
-        bodyModel: StokMuhasebeKoduModel(),
-        showLoading: true,
-        queryParameters: queryParams);
+        path: stokMu == true ? ApiUrls.getStokMuhasebeKodlari : ApiUrls.getMuhasebeMuhasebeKodlari, bodyModel: StokMuhasebeKoduModel(), showLoading: true, queryParameters: queryParams);
     return result.data.map((e) => e as StokMuhasebeKoduModel).toList().cast<StokMuhasebeKoduModel>();
   }
 

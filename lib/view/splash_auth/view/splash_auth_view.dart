@@ -39,8 +39,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       body: Stack(
         children: [
           WaveWidget(
@@ -62,12 +61,9 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
                   crossAxisAlignment: WrapCrossAlignment.center,
                   direction: Axis.vertical,
                   children: [
-                    Observer(builder: (_) {
-                      return Visibility(visible: !viewModel.isError, child: const CircularProgressIndicator.adaptive().paddingAll(UIHelper.lowSize));
-                    }),
+                    Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: const CircularProgressIndicator.adaptive().paddingAll(UIHelper.lowSize))),
                     SizedBox(width: width * 0.6, child: Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: Text(viewModel.title, maxLines: 10, textAlign: TextAlign.center)))),
-                    Observer(builder: (_) {
-                      return Visibility(
+                    Observer(builder: (_) => Visibility(
                         visible: viewModel.isError,
                         child: Row(
                           children: [
@@ -84,8 +80,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
                             ).paddingAll(UIHelper.lowSize),
                           ],
                         ),
-                      );
-                    })
+                      ))
                   ],
                 ).paddingOnly(bottom: UIHelper.highSize * 7),
                 Text.rich(TextSpan(children: [
@@ -109,19 +104,16 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
                     Text(AppInfoModel.instance.version ?? "").paddingOnly(bottom: UIHelper.highSize)
                   ],
                 ),
-                Observer(builder: (_) {
-                  return Visibility(
+                Observer(builder: (_) => Visibility(
                     visible: viewModel.isError,
                     child: SizedBox(width: width * 0.6, child: Text(viewModel.title, overflow: TextOverflow.ellipsis, maxLines: 10, textAlign: TextAlign.center)),
-                  );
-                }),
+                  )),
               ],
             ),
           )
         ],
       ),
     );
-  }
 
   void login() async {
     viewModel.setTitle("Giriş Yapılıyor...");

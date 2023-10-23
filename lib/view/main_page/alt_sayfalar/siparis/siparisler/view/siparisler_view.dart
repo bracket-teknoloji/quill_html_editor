@@ -118,8 +118,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       resizeToAvoidBottomInset: true,
       extendBody: true,
       extendBodyBehindAppBar: false,
@@ -128,10 +127,8 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
       body: body(),
       bottomNavigationBar: bottomNavigationBar(),
     );
-  }
 
-  AppBar appBar(BuildContext context) {
-    return AppBar(
+  AppBar appBar(BuildContext context) => AppBar(
       //*Title
       title: Observer(
           builder: (_) => viewModel.searchBar
@@ -305,9 +302,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Text("Cari Rapor Kodları"),
-                          Observer(builder: (_) {
-                            return Icon(viewModel.grupKodlariGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down_outlined);
-                          })
+                          Observer(builder: (_) => Icon(viewModel.grupKodlariGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down_outlined))
                         ],
                       ).paddingAll(UIHelper.lowSize),
                     ),
@@ -370,8 +365,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                 )).yetkiVarMi(viewModel.grupKodList3),
                               ],
                             ),
-                            Observer(builder: (_) {
-                              return Row(
+                            Observer(builder: (_) => Row(
                                 children: [
                                   Expanded(
                                       child: CustomTextField(
@@ -398,8 +392,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                     onTap: () => getGrupKodu(5, kod5Controller),
                                   )).yetkiVarMi(viewModel.grupKodList5),
                                 ],
-                              );
-                            }),
+                              )),
                           ],
                         ),
                       ),
@@ -484,7 +477,6 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
         ],
       ),
     );
-  }
 
   void clearTextEditingControllers() {
     baslangicTarihiController.clear();
@@ -518,8 +510,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                 }),
           ));
 
-  RefreshIndicator body() {
-    return RefreshIndicator.adaptive(
+  RefreshIndicator body() => RefreshIndicator.adaptive(
         onRefresh: () async {
           viewModel.setSiparislerList(null);
           viewModel.setDahaVarMi(true);
@@ -531,8 +522,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                 ? (viewModel.musteriSiparisleriList?.isEmpty ?? false)
                     ? const Center(child: Text("Stok Bulunamadı"))
                     : const Center(child: CircularProgressIndicator.adaptive())
-                : Observer(builder: (_) {
-                    return ListView.builder(
+                : Observer(builder: (_) => ListView.builder(
                       primary: false,
                       padding: UIHelper.lowPadding,
                       controller: scrollController,
@@ -544,8 +534,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                             child: const Center(child: CircularProgressIndicator.adaptive()),
                           );
                         }
-                        return Observer(builder: (_) {
-                          return SiparislerCard(
+                        return Observer(builder: (_) => SiparislerCard(
                             isGetData: widget.widgetModel.isGetData,
                             showEkAciklama: viewModel.ekstraAlanlarMap["EK"] ?? false,
                             showMiktar: viewModel.ekstraAlanlarMap["MİK"] ?? false,
@@ -562,36 +551,25 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                 getData();
                               }
                             },
-                          );
-                        });
+                          ));
                       },
-                    );
-                  })));
-  }
+                    ))));
 
-  Observer bottomNavigationBar() {
-    return Observer(
+  Observer bottomNavigationBar() => Observer(
         builder: (_) => BottomBarWidget(isScrolledDown: viewModel.isScrolledDown, visible: viewModel.paramData?.isNotEmpty == true, children: [
               FooterButton(children: [
                 const Text("KDV Hariç"),
-                Observer(builder: (_) {
-                  return Text("${(viewModel.paramData?["ARA_TOPLAM"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency");
-                })
+                Observer(builder: (_) => Text("${(viewModel.paramData?["ARA_TOPLAM"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))
               ]),
               FooterButton(children: [
                 const Text("KDV"),
-                Observer(builder: (_) {
-                  return Text("${(viewModel.paramData?["KDV"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency");
-                })
+                Observer(builder: (_) => Text("${(viewModel.paramData?["KDV"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))
               ]),
               FooterButton(children: [
                 const Text("KDV Dahil"),
-                Observer(builder: (_) {
-                  return Text("${(viewModel.paramData?["GENEL_TOPLAM"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency");
-                })
+                Observer(builder: (_) => Text("${(viewModel.paramData?["GENEL_TOPLAM"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))
               ]),
             ]));
-  }
 
   void getData() async {
     if (viewModel.grupKodList.ext.isNullOrEmpty) {

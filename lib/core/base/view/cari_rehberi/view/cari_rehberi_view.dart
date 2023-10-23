@@ -95,10 +95,8 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
         appBar: appBar(), floatingActionButton: fab(), body: body());
-  }
 
   AppBar appBar() => AppBar(
         title: Observer(
@@ -133,8 +131,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
         ]),
       );
 
-  Observer fab() => Observer(builder: (_) {
-        return CustomFloatingActionButton(
+  Observer fab() => Observer(builder: (_) => CustomFloatingActionButton(
             isScrolledDown: viewModel.isScrollDown,
             onPressed: () async {
               final String? siradakiKod = await CariNetworkManager.getSiradakiKod();
@@ -143,8 +140,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                       baseEditEnum: BaseEditEnum.ekle,
                       model: CariListesiModel(),
                       siradakiKod: siradakiKod));
-            });
-      });
+            }));
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
         onRefresh: () async {
@@ -202,8 +198,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
       onPressed: () async {
         await viewModel.getGrupKodlari();
         await bottomSheetDialogManager.showBottomSheetDialog(context,
-            title: "Filtrele", body: Observer(builder: (_) {
-          return Padding(
+            title: "Filtrele", body: Observer(builder: (_) => Padding(
             padding: UIHelper.lowPadding,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -442,7 +437,6 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                     child: const Text("Filtrele"))
               ],
             ),
-          );
-        }));
+          )));
       });
 }

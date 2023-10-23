@@ -18,8 +18,7 @@ class EndDrawer extends StatefulWidget {
 class _EndDrawerState extends BaseState<EndDrawer> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
-  Widget build(BuildContext context) {
-    return Drawer(
+  Widget build(BuildContext context) => Drawer(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -69,8 +68,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
           Expanded(
             child: ListView.separated(
                 padding: UIHelper.zeroPadding,
-                itemBuilder: (context, index) {
-                  return ListTile(
+                itemBuilder: (context, index) => ListTile(
                     dense: true,
                     title: Text(
                       "${DrawerMenuItems().items[index]}",
@@ -84,8 +82,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                                 DrawerMenuItems().items[index].icon.toString(),
                                 color: theme.colorScheme.primary)
                             .marginZero,
-                  );
-                },
+                  ),
                 separatorBuilder: (context, index) => const Divider(),
                 itemCount: DrawerMenuItems().items.length),
           ),
@@ -166,5 +163,4 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                 )),
           )
         ]));
-  }
 }

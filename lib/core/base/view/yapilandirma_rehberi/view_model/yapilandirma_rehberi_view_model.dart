@@ -2,17 +2,16 @@ import "dart:ui";
 
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
-import "../model/yapilandirma_rehberi_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "../../../../init/network/login/api_urls.dart";
 import "../../../view_model/mobx_network_mixin.dart";
 import "../model/yapilandirma_profil_model.dart";
+import "../model/yapilandirma_rehberi_model.dart";
 
 part "yapilandirma_rehberi_view_model.g.dart";
 
-class YapilandirmaRehberiViewModel = _YapilandirmaRehberiViewModelBase
-    with _$YapilandirmaRehberiViewModel;
+class YapilandirmaRehberiViewModel = _YapilandirmaRehberiViewModelBase with _$YapilandirmaRehberiViewModel;
 
 abstract class _YapilandirmaRehberiViewModelBase with Store, MobxNetworkMixin {
   final List<Color> colors = <Color>[
@@ -36,13 +35,10 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<YapilandirmaProfilModel?>? yapilandirmaProfilList;
 
   @computed
-  YapilandirmaProfilModel? get yapilandirmaProfilModel =>
-      yapilandirmaProfilList?[page - 1];
+  YapilandirmaProfilModel? get yapilandirmaProfilModel => yapilandirmaProfilList?[page - 1];
 
   @computed
-  Color get color => page > colors.length
-      ? colors[(page % colors.length) - 1]
-      : colors[page - 1];
+  Color get color => page > colors.length ? colors[(page % colors.length) - 1] : colors[page - 1];
 
   @computed
   int? get count => (filteredList?.length ?? 0) + (page != 1 ? 1 : 0);
@@ -57,12 +53,9 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, MobxNetworkMixin {
   void setMaxPage(int? value) => maxPage = value;
 
   @computed
-  YapilandirmaRehberiModel? get yapilandirmaRehberiModel {
-    return yapilandirmaList?[page - 1];
-  }
+  YapilandirmaRehberiModel? get yapilandirmaRehberiModel => yapilandirmaList?[page - 1];
 
-  List<List<YapilandirmaRehberiModel>> denemeList =
-      <List<YapilandirmaRehberiModel>>[];
+  List<List<YapilandirmaRehberiModel>> denemeList = <List<YapilandirmaRehberiModel>>[];
 
   @observable
   ObservableList<YapilandirmaRehberiModel>? filteredList;
@@ -77,13 +70,8 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, MobxNetworkMixin {
       if (item.kod != yapilandirmaProfilModel?.ozellikKodu) {
         continue;
       }
-      if (yapilandirmaProfilList?.every((element) =>
-              element?.deger
-                  ?.any((element) => element?.yapkod == item.yapkod) ??
-              true) ??
-          false) {
-        if (!list2
-            .any((element) => element.degerAciklama == item.degerAciklama)) {
+      if (yapilandirmaProfilList?.every((element) => element?.deger?.any((element) => element?.yapkod == item.yapkod) ?? true) ?? false) {
+        if (!list2.any((element) => element.degerAciklama == item.degerAciklama)) {
           list2.add(item);
         }
       }
@@ -109,10 +97,7 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, MobxNetworkMixin {
   @action
   void setYapilandirmaRehberiModel(YapilandirmaRehberiModel? value) {
     // altKodlariGetir();
-    yapilandirmaProfilList?[page - 1]?.deger = yapilandirmaList
-        ?.where((element) => element.ozellikSira == value?.ozellikSira &&
-            element.deger == value?.deger)
-        .toList();
+    yapilandirmaProfilList?[page - 1]?.deger = yapilandirmaList?.where((element) => element.ozellikSira == value?.ozellikSira && element.deger == value?.deger).toList();
   }
 
   // yapilandirmaProfilList?[page - 1]?.copyWith(deger: yapilandirmaList?.where((element) => element.degerAciklama == value?.degerAciklama && element.deger == value?.deger).toList());
@@ -144,39 +129,23 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    final yapilandirmaListesi = await networkManager
-        .dioGet<YapilandirmaProfilModel>(
-            path: ApiUrls.getYapilandirmaProfili,
-            bodyModel: YapilandirmaProfilModel(),
-            queryParameters: {"stokKodu": stokListesiModel?.stokKodu});
+    final yapilandirmaListesi =
+        await networkManager.dioGet<YapilandirmaProfilModel>(path: ApiUrls.getYapilandirmaProfili, bodyModel: YapilandirmaProfilModel(), queryParameters: {"stokKodu": stokListesiModel?.stokKodu});
     if (yapilandirmaListesi.data != null && yapilandirmaListesi.data is List) {
-      final ObservableList<YapilandirmaProfilModel> list =
-          <YapilandirmaProfilModel>[].asObservable();
-      list.addAll(yapilandirmaListesi.data
-          .whereType<YapilandirmaProfilModel>()
-          .toList());
+      final ObservableList<YapilandirmaProfilModel> list = <YapilandirmaProfilModel>[].asObservable();
+      list.addAll(yapilandirmaListesi.data.whereType<YapilandirmaProfilModel>().toList());
       yapilandirmaProfilList = list;
     }
-    final result = await networkManager.dioGet<YapilandirmaRehberiModel>(
-        path: ApiUrls.getYapilandirmaListesi,
-        bodyModel: YapilandirmaRehberiModel(),
-        queryParameters: {"stokKodu": stokListesiModel?.stokKodu});
+    final result =
+        await networkManager.dioGet<YapilandirmaRehberiModel>(path: ApiUrls.getYapilandirmaListesi, bodyModel: YapilandirmaRehberiModel(), queryParameters: {"stokKodu": stokListesiModel?.stokKodu});
     if (result.data != null && result.data is List) {
-      final ObservableList<YapilandirmaRehberiModel> list =
-          <YapilandirmaRehberiModel>[].asObservable();
+      final ObservableList<YapilandirmaRehberiModel> list = <YapilandirmaRehberiModel>[].asObservable();
       list.addAll(result.data.whereType<YapilandirmaRehberiModel>().toList());
       yapilandirmaList = list;
 
       for (var i = 0; i < (yapilandirmaProfilList?.length ?? 0); i++) {
-        if (yapilandirmaList
-                ?.where((element) =>
-                    element.kod == yapilandirmaProfilList?[i]?.ozellikKodu)
-                .toList() !=
-            null) {
-          denemeList.add(yapilandirmaList!
-              .where((element) =>
-                  element.kod == yapilandirmaProfilList?[i]?.ozellikKodu)
-              .toList());
+        if (yapilandirmaList?.where((element) => element.kod == yapilandirmaProfilList?[i]?.ozellikKodu).toList() != null) {
+          denemeList.add(yapilandirmaList!.where((element) => element.kod == yapilandirmaProfilList?[i]?.ozellikKodu).toList());
         }
       }
       if (denemeList.ext.isNotNullOrEmpty) {

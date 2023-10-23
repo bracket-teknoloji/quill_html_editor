@@ -63,13 +63,11 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return PDFViewerView(
+  Widget build(BuildContext context) => PDFViewerView(
         filterBottomSheet: filterBottomSheet,
         title:
             "${widget.siparisTipiEnum == SiparisTipiEnum.musteri ? "Müş. Sip." : "Sat. Sip."} Teslim Raporu",
         pdfData: viewModel.pdfModel);
-  }
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();

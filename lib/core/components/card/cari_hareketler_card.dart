@@ -32,8 +32,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
   bool get dovizliMi =>
       widget.cariHareketleriModel.dovizliMi || widget.dovizTipi != null;
   @override
-  Widget build(BuildContext context) {
-    return Slidable(
+  Widget build(BuildContext context) => Slidable(
       enabled: widget.cariHareketleriModel.hareketAciklama != "Dekont",
       endActionPane: ActionPane(
           motion: const ScrollMotion(),
@@ -204,7 +203,6 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
         ],
       ),
     );
-  }
 
   double get dovizCheck {
     if (dovizliMi) {

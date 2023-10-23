@@ -77,12 +77,9 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(appBar: appBar(), body: body(context));
-  }
+  Widget build(BuildContext context) => Scaffold(appBar: appBar(), body: body(context));
 
-  AppBar appBar() {
-    return AppBar(
+  AppBar appBar() => AppBar(
       title: const Text("Kasa Transferi"),
       actions: [
         IconButton(
@@ -101,10 +98,8 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
             icon: const Icon(Icons.save_outlined))
       ],
     );
-  }
 
-  SingleChildScrollView body(BuildContext context) {
-    return SingleChildScrollView(
+  SingleChildScrollView body(BuildContext context) => SingleChildScrollView(
       child: Form(
         key: formKey,
         child: Column(
@@ -189,8 +184,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                 )),
               ],
             ),
-            Observer(builder: (_) {
-              return Row(
+            Observer(builder: (_) => Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
@@ -225,10 +219,8 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                             icon: const Icon(Icons.more_horiz_outlined),
                           ))).yetkiVarMi(viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null),
                 ],
-              );
-            }),
-            Observer(builder: (_) {
-              return Row(
+              )),
+            Observer(builder: (_) => Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
@@ -263,8 +255,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                     },
                   )),
                 ],
-              );
-            }),
+              )),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -312,7 +303,6 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
         ).paddingAll(UIHelper.lowSize),
       ),
     );
-  }
 
   Future<void> getDovizDialog() async {
     await viewModel.getDovizler();

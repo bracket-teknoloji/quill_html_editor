@@ -119,8 +119,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
+  Widget build(BuildContext context) => SingleChildScrollView(
       child: Column(
         children: [
           CustomWidgetWithLabel(
@@ -357,7 +356,6 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
         ],
       ).paddingAll(UIHelper.lowSize),
     );
-  }
 
   Future<void> getKdvOrani() async {
     final result = await networkManager.dioGet<BaseEmptyModel>(

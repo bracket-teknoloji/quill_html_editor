@@ -13,8 +13,7 @@ class KasaDekontlarView extends StatefulWidget {
 class _KasaDekontlarViewState extends State<KasaDekontlarView> {
   KasaDekontlarViewModel viewModel = KasaDekontlarViewModel();
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
         title: const AppBarTitle(title: "Dekontlar", subtitle: "(25)"),
       ),
@@ -24,5 +23,4 @@ class _KasaDekontlarViewState extends State<KasaDekontlarView> {
       ),
       body: ListView(),
     );
-  }
 }

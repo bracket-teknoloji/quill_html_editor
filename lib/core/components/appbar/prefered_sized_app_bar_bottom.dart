@@ -14,8 +14,7 @@ class PreferedSizedAppBarBottom extends StatefulWidget {
 class _PreferedSizedAppBarBottomState
     extends BaseState<PreferedSizedAppBarBottom> {
   @override
-  Widget build(BuildContext context) {
-    return PreferredSize(
+  Widget build(BuildContext context) => PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: SizedBox(
           height: height * 0.07,
@@ -25,5 +24,4 @@ class _PreferedSizedAppBarBottomState
             children: widget.children.map((e) => e as Widget).toList(),
           ),
         ));
-  }
 }

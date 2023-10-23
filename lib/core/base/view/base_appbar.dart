@@ -14,8 +14,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
 
   @override
-  Widget build(BuildContext context) {
-    return SafeArea(
+  Widget build(BuildContext context) => SafeArea(
       child: AppBar(
         title: Text(title ?? ""),
         leading: leading,
@@ -24,7 +23,6 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
         ],
       ),
     );
-  }
 
   @override
   Size get preferredSize => const Size.fromHeight(kBottomNavigationBarHeight);

@@ -50,12 +50,9 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(floatingActionButton: fab(), body: body());
-  }
+  Widget build(BuildContext context) => Scaffold(floatingActionButton: fab(), body: body());
 
-  Visibility fab() {
-    return Visibility(
+  Visibility fab() => Visibility(
       visible: !widget.model.isGoruntule,
       child: FloatingActionButton(
         onPressed: () async {
@@ -66,10 +63,8 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
         child: const Icon(Icons.add),
       ),
     );
-  }
 
-  Padding body() {
-    return Padding(
+  Padding body() => Padding(
       padding: UIHelper.lowPadding,
       child: Column(
         children: [
@@ -130,10 +125,8 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
         ],
       ),
     );
-  }
 
-  ListTile kalemListTile(BuildContext context, int index, KalemModel? kalemModel) {
-    return ListTile(
+  ListTile kalemListTile(BuildContext context, int index, KalemModel? kalemModel) => ListTile(
       onTap: () async => await listTileBottomSheet(context, index),
       contentPadding: UIHelper.lowPadding,
       title: Row(
@@ -147,8 +140,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
           const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli).yetkiVarMi(kalemModel?.kalemList.ext.isNotNullOrEmpty ?? false),
           Text(kalemModel?.stokKodu ?? ""),
           Text("${kalemModel?.depoKodu ?? ""} - ${kalemModel?.depoTanimi ?? ""}").paddingOnly(bottom: UIHelper.lowSize),
-          LayoutBuilder(builder: (context, constrains) {
-            return Wrap(
+          LayoutBuilder(builder: (context, constrains) => Wrap(
                 children: [
               Text("Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(!(kalemModel?.miktar == null || kalemModel?.miktar == 0.0)),
               Text("Miktar2: ${kalemModel?.miktar2.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar2 != null),
@@ -172,15 +164,12 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
               Text("Teslim Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),
               Text("Kalan Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),
               Text("Teslim Tarihi: ${kalemModel?.teslimTarihi.toDateStringIfNull() ?? ""}").yetkiVarMi(kalemModel?.teslimTarihi != null),
-            ].map((e) => e is! SizedBox ? SizedBox(width: constrains.maxWidth / 2, child: e) : null).toList().nullCheckWithGeneric);
-          }),
+            ].map((e) => e is! SizedBox ? SizedBox(width: constrains.maxWidth / 2, child: e) : null).toList().nullCheckWithGeneric)),
         ].nullCheckWithGeneric,
       ),
     );
-  }
 
-  ListTile hucreListTile(KalemModel? kalemList, KalemModel? superKalemList) {
-    return ListTile(
+  ListTile hucreListTile(KalemModel? kalemList, KalemModel? superKalemList) => ListTile(
       contentPadding: UIHelper.lowPadding,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -225,7 +214,6 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
       // subtitle: Text("${viewModel.kalemList?[index].kalemList?[index].miktar ?? ""} ${viewModel.kalemList?[index].kalemList?[index].olcuBirimAdi ?? ""}"),
       // trailing: IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
     );
-  }
 
   listTileBottomSheet(BuildContext context, int index) {
     bottomSheetDialogManager.showBottomSheetDialog(context,

@@ -19,8 +19,7 @@ class StokIhtiyacRaporuView extends StatefulWidget {
   const StokIhtiyacRaporuView({super.key, this.model});
 
   @override
-  State<StokIhtiyacRaporuView> createState() =>
-      _StokIhtiyacRaporuViewViewState();
+  State<StokIhtiyacRaporuView> createState() => _StokIhtiyacRaporuViewViewState();
 }
 
 class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
@@ -65,12 +64,7 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return PDFViewerView(
-        filterBottomSheet: filterBottomSheet,
-        title: "Stok İhtiyaç Raporu",
-        pdfData: viewModel.pdfModel);
-  }
+  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Stok İhtiyaç Raporu", pdfData: viewModel.pdfModel);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -89,16 +83,13 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
                       readOnly: true,
                       suffixMore: true,
                       controller: stokController,
-                      valueWidget: Observer(
-                          builder: (_) => Text(
-                              viewModel.pdfModel.dicParams?.stokKodu ?? "")),
+                      valueWidget: Observer(builder: (_) => Text(viewModel.pdfModel.dicParams?.stokKodu ?? "")),
                       onClear: () {
                         viewModel.setStokKodu(null);
                         stokController.clear();
                       },
                       onTap: () async {
-                        final result = await Get.toNamed("/mainPage/stokListesi",
-                            arguments: true);
+                        final result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
                         if (result is StokListesiModel) {
                           stokController.text = result.stokAdi ?? "";
                           viewModel.setStokKodu(result.stokKodu);
@@ -112,18 +103,12 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
                       readOnly: true,
                       suffixMore: true,
                       controller: plasiyerController,
-                      valueWidget: Observer(
-                          builder: (_) => Text(
-                              viewModel.pdfModel.dicParams?.plasiyerKodu ??
-                                  "")),
+                      valueWidget: Observer(builder: (_) => Text(viewModel.pdfModel.dicParams?.plasiyerKodu ?? "")),
                       onTap: () async {
-                        final PlasiyerList? result = await bottomSheetDialogManager
-                            .showPlasiyerBottomSheetDialog(context);
+                        final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
                         if (result != null) {
-                          plasiyerController.text =
-                              result.plasiyerAciklama ?? "";
-                          viewModel.pdfModel.dicParams?.plasiyerKodu =
-                              result.plasiyerKodu ?? "";
+                          plasiyerController.text = result.plasiyerAciklama ?? "";
+                          viewModel.pdfModel.dicParams?.plasiyerKodu = result.plasiyerKodu ?? "";
                         }
                       },
                     ),
@@ -140,16 +125,10 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
                   viewModel.setSirala(null);
                 },
                 onTap: () async {
-                  final result = await bottomSheetDialogManager
-                      .showBottomSheetDialog(context,
-                          title: "Sırala",
-                          children: List.generate(
-                              viewModel.siralaMap.length,
-                              (index) => BottomSheetModel(
-                                  title:
-                                      viewModel.siralaMap.keys.toList()[index],
-                                  value: viewModel.siralaMap.entries
-                                      .toList()[index])));
+                  final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                      title: "Sırala",
+                      children:
+                          List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.entries.toList()[index])));
                   if (result != null && result is MapEntry<String, String>) {
                     siralaController.text = result.key;
                     viewModel.pdfModel.dicParams?.sirala = result.value;
@@ -159,71 +138,26 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
               Row(
                 children: [
                   Expanded(
-                      child: CustomTextField(
-                          labelText: "Grup Kodu",
-                          readOnly: true,
-                          suffixMore: true,
-                          controller: grupKoduController,
-                          onTap: () async =>
-                              getGrupKodu(context, 0, grupKoduController))),
-                  Expanded(
-                      child: CustomTextField(
-                          labelText: "Kod 1",
-                          readOnly: true,
-                          suffixMore: true,
-                          controller: kod1Controller,
-                          onTap: () async =>
-                              getGrupKodu(context, 1, kod1Controller))),
+                      child: CustomTextField(labelText: "Grup Kodu", readOnly: true, suffixMore: true, controller: grupKoduController, onTap: () async => getGrupKodu(context, 0, grupKoduController))),
+                  Expanded(child: CustomTextField(labelText: "Kod 1", readOnly: true, suffixMore: true, controller: kod1Controller, onTap: () async => getGrupKodu(context, 1, kod1Controller))),
                 ],
               ),
               Row(
                 children: [
-                  Expanded(
-                      child: CustomTextField(
-                          labelText: "Kod 2",
-                          readOnly: true,
-                          suffixMore: true,
-                          controller: kod2Controller,
-                          onTap: () async =>
-                              getGrupKodu(context, 2, kod2Controller))),
-                  Expanded(
-                      child: CustomTextField(
-                          labelText: "Kod 3",
-                          readOnly: true,
-                          suffixMore: true,
-                          controller: kod3Controller,
-                          onTap: () async =>
-                              getGrupKodu(context, 3, kod3Controller))),
+                  Expanded(child: CustomTextField(labelText: "Kod 2", readOnly: true, suffixMore: true, controller: kod2Controller, onTap: () async => getGrupKodu(context, 2, kod2Controller))),
+                  Expanded(child: CustomTextField(labelText: "Kod 3", readOnly: true, suffixMore: true, controller: kod3Controller, onTap: () async => getGrupKodu(context, 3, kod3Controller))),
                 ],
               ),
               Row(
                 children: [
-                  Expanded(
-                      child: CustomTextField(
-                          labelText: "Kod 4",
-                          readOnly: true,
-                          suffixMore: true,
-                          controller: kod4Controller,
-                          onTap: () async =>
-                              getGrupKodu(context, 4, kod4Controller))),
-                  Expanded(
-                      child: CustomTextField(
-                          labelText: "Kod 5",
-                          readOnly: true,
-                          suffixMore: true,
-                          controller: kod5Controller,
-                          onTap: () async =>
-                              getGrupKodu(context, 5, kod5Controller))),
+                  Expanded(child: CustomTextField(labelText: "Kod 4", readOnly: true, suffixMore: true, controller: kod4Controller, onTap: () async => getGrupKodu(context, 4, kod4Controller))),
+                  Expanded(child: CustomTextField(labelText: "Kod 5", readOnly: true, suffixMore: true, controller: kod5Controller, onTap: () async => getGrupKodu(context, 5, kod5Controller))),
                 ],
               ),
               CustomWidgetWithLabel(
                   isVertical: true,
                   text: "Sadece İhtiyaçlar",
-                  child: Observer(
-                      builder: (_) => Switch.adaptive(
-                          value: viewModel.sadeceIhtiyaclarMi,
-                          onChanged: (value) =>
-                              viewModel.setSadeceIhtiyaclarMi(value)))),
+                  child: Observer(builder: (_) => Switch.adaptive(value: viewModel.sadeceIhtiyaclarMi, onChanged: (value) => viewModel.setSadeceIhtiyaclarMi(value)))),
               ElevatedButton(
                   onPressed: () {
                     viewModel.setFuture();
@@ -236,13 +170,8 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
     return Future.value(viewModel.futureController.value);
   }
 
-  Future<String?> getGrupKodu(BuildContext context, int grupNo,
-      TextEditingController? controller) async {
-    final result = await bottomSheetDialogManager.showGrupKoduBottomSheetDialog(
-        context,
-        grupKodu: grupNo,
-        modul: GrupKoduEnum.STOK,
-        kullanimda: true);
+  Future<String?> getGrupKodu(BuildContext context, int grupNo, TextEditingController? controller) async {
+    final result = await bottomSheetDialogManager.showGrupKoduBottomSheetDialog(context, grupKodu: grupNo, modul: GrupKoduEnum.stok, kullanimda: true);
     if (result != null) {
       switch (grupNo) {
         case 0:

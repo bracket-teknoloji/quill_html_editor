@@ -278,14 +278,10 @@ class AccountModel with NetworkManagerMixin {
       kDebugMode;
 
   @override
-  fromJson(Map<String, dynamic> json) {
-    return _$AccountModelFromJson(json);
-  }
+  fromJson(Map<String, dynamic> json) => _$AccountModelFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$AccountModelToJson(this);
-  }
+  Map<String, dynamic> toJson() => _$AccountModelToJson(this);
 }
 
 @JsonSerializable()
@@ -293,12 +289,8 @@ class ParamMap with NetworkManagerMixin {
   ParamMap();
 
   @override
-  fromJson(Map<String, dynamic> json) {
-    return _$ParamMapFromJson(json);
-  }
+  fromJson(Map<String, dynamic> json) => _$ParamMapFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$ParamMapToJson(this);
-  }
+  Map<String, dynamic> toJson() => _$ParamMapToJson(this);
 }

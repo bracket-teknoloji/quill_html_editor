@@ -1,9 +1,9 @@
 import "package:copy_with_extension/copy_with_extension.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
-import "cari_detay_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
+import "cari_detay_model.dart";
 
 part "cari_listesi_model.g.dart";
 
@@ -352,7 +352,6 @@ class CariListesiModel with NetworkManagerMixin {
   List<int>? depoKodlari;
   @HiveField(107)
   int? idx;
-  
 
   factory CariListesiModel.fromJson(Map<String, dynamic> json) => _$CariListesiModelFromJson(json);
 
@@ -372,11 +371,7 @@ class BakiyeModel {
   double? bakiye;
   String? dovizAdi;
 
-  static fromJson(Map<String, dynamic> json) {
-    return _$BakiyeModelFromJson(json);
-  }
+  static fromJson(Map<String, dynamic> json) => _$BakiyeModelFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    return _$BakiyeModelToJson(this);
-  }
+  Map<String, dynamic> toJson() => _$BakiyeModelToJson(this);
 }

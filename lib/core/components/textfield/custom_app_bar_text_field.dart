@@ -14,8 +14,7 @@ class CustomAppBarTextField extends StatefulWidget {
 
 class _CustomAppBarTextFieldState extends State<CustomAppBarTextField> {
   @override
-  Widget build(BuildContext context) {
-    return SizedBox(
+  Widget build(BuildContext context) => SizedBox(
       height: kToolbarHeight * 0.9,
       child: TextFieldTapRegion(
         onTapOutside: (x) {
@@ -41,5 +40,4 @@ class _CustomAppBarTextFieldState extends State<CustomAppBarTextField> {
             .marginAll(5),
       ),
     );
-  }
 }

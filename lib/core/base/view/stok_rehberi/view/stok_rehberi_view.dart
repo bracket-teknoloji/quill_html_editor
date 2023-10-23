@@ -58,18 +58,13 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
       await getData();
     });
     _scrollController.addListener(() async {
-      if (_scrollController.position.pixels ==
-              _scrollController.position.maxScrollExtent &&
-          viewModel.dahaVarMi) {
-        await Future.delayed(
-            const Duration(milliseconds: 500), () async => await getData());
+      if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent && viewModel.dahaVarMi) {
+        await Future.delayed(const Duration(milliseconds: 500), () async => await getData());
         viewModel.changeIsScrolledDown(true);
       }
-      if (_scrollController.position.userScrollDirection ==
-          ScrollDirection.forward) {
+      if (_scrollController.position.userScrollDirection == ScrollDirection.forward) {
         viewModel.changeIsScrolledDown(true);
-      } else if (_scrollController.position.userScrollDirection ==
-          ScrollDirection.reverse) {
+      } else if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
         viewModel.changeIsScrolledDown(false);
       }
       //focus to search textfield
@@ -84,16 +79,13 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: appBar(context),
       floatingActionButton: fab(),
       body: body(),
     );
-  }
 
-  AppBar appBar(BuildContext context) {
-    return AppBar(
+  AppBar appBar(BuildContext context) => AppBar(
       leading: BackButton(onPressed: () => Get.back(result: true)),
       title: const Text("Stok Rehberi"),
       actions: [
@@ -112,20 +104,10 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: grupKoduController,
                                 readOnly: true,
                                 onTap: () async {
-                                  final result = await bottomSheetDialogManager
-                                      .showGrupKoduCheckBoxBottomSheetDialog(
-                                          context,
-                                          modul: GrupKoduEnum.STOK,
-                                          grupKodu: 0);
+                                  final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.stok, grupKodu: 0);
                                   if (result != null) {
-                                    viewModel.setGrupKodu(result
-                                        .whereType<BaseGrupKoduModel>()
-                                        .toList());
-                                    grupKoduController.text = viewModel
-                                            .stokBottomSheetModel.arrGrupKodu
-                                            ?.map((e) => e.grupAdi)
-                                            .join(",") ??
-                                        "";
+                                    viewModel.setGrupKodu(result.whereType<BaseGrupKoduModel>().toList());
+                                    grupKoduController.text = viewModel.stokBottomSheetModel.arrGrupKodu?.map((e) => e.grupAdi).join(",") ?? "";
                                   }
                                 })),
                         Expanded(
@@ -135,20 +117,10 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: kod1Controller,
                                 readOnly: true,
                                 onTap: () async {
-                                  final result = await bottomSheetDialogManager
-                                      .showGrupKoduCheckBoxBottomSheetDialog(
-                                          context,
-                                          modul: GrupKoduEnum.STOK,
-                                          grupKodu: 1);
+                                  final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.stok, grupKodu: 1);
                                   if (result != null) {
-                                    viewModel.changeArrKod1(result
-                                        .whereType<BaseGrupKoduModel>()
-                                        .toList());
-                                    kod1Controller.text = viewModel
-                                            .stokBottomSheetModel.arrKod1
-                                            ?.map((e) => e.grupAdi)
-                                            .join(",") ??
-                                        "";
+                                    viewModel.changeArrKod1(result.whereType<BaseGrupKoduModel>().toList());
+                                    kod1Controller.text = viewModel.stokBottomSheetModel.arrKod1?.map((e) => e.grupAdi).join(",") ?? "";
                                   }
                                 }))
                       ]),
@@ -160,20 +132,10 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: kod2Controller,
                                 readOnly: true,
                                 onTap: () async {
-                                  final result = await bottomSheetDialogManager
-                                      .showGrupKoduCheckBoxBottomSheetDialog(
-                                          context,
-                                          modul: GrupKoduEnum.STOK,
-                                          grupKodu: 2);
+                                  final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.stok, grupKodu: 2);
                                   if (result != null) {
-                                    viewModel.changeArrKod2(result
-                                        .whereType<BaseGrupKoduModel>()
-                                        .toList());
-                                    kod2Controller.text = viewModel
-                                            .stokBottomSheetModel.arrKod2
-                                            ?.map((e) => e.grupAdi)
-                                            .join(",") ??
-                                        "";
+                                    viewModel.changeArrKod2(result.whereType<BaseGrupKoduModel>().toList());
+                                    kod2Controller.text = viewModel.stokBottomSheetModel.arrKod2?.map((e) => e.grupAdi).join(",") ?? "";
                                   }
                                 })),
                         Expanded(
@@ -183,20 +145,10 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: kod3Controller,
                                 readOnly: true,
                                 onTap: () async {
-                                  final result = await bottomSheetDialogManager
-                                      .showGrupKoduCheckBoxBottomSheetDialog(
-                                          context,
-                                          modul: GrupKoduEnum.STOK,
-                                          grupKodu: 3);
+                                  final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.stok, grupKodu: 3);
                                   if (result != null) {
-                                    viewModel.changeArrKod3(result
-                                        .whereType<BaseGrupKoduModel>()
-                                        .toList());
-                                    kod3Controller.text = viewModel
-                                            .stokBottomSheetModel.arrKod3
-                                            ?.map((e) => e.grupAdi)
-                                            .join(",") ??
-                                        "";
+                                    viewModel.changeArrKod3(result.whereType<BaseGrupKoduModel>().toList());
+                                    kod3Controller.text = viewModel.stokBottomSheetModel.arrKod3?.map((e) => e.grupAdi).join(",") ?? "";
                                   }
                                 }))
                       ]),
@@ -208,20 +160,10 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: kod4Controller,
                                 readOnly: true,
                                 onTap: () async {
-                                  final result = await bottomSheetDialogManager
-                                      .showGrupKoduCheckBoxBottomSheetDialog(
-                                          context,
-                                          modul: GrupKoduEnum.STOK,
-                                          grupKodu: 4);
+                                  final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.stok, grupKodu: 4);
                                   if (result != null) {
-                                    viewModel.changeArrKod4(result
-                                        .whereType<BaseGrupKoduModel>()
-                                        .toList());
-                                    kod4Controller.text = viewModel
-                                            .stokBottomSheetModel.arrKod4
-                                            ?.map((e) => e.grupAdi)
-                                            .join(",") ??
-                                        "";
+                                    viewModel.changeArrKod4(result.whereType<BaseGrupKoduModel>().toList());
+                                    kod4Controller.text = viewModel.stokBottomSheetModel.arrKod4?.map((e) => e.grupAdi).join(",") ?? "";
                                   }
                                 })),
                         Expanded(
@@ -231,20 +173,10 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 controller: kod5Controller,
                                 readOnly: true,
                                 onTap: () async {
-                                  final result = await bottomSheetDialogManager
-                                      .showGrupKoduCheckBoxBottomSheetDialog(
-                                          context,
-                                          modul: GrupKoduEnum.STOK,
-                                          grupKodu: 5);
+                                  final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.stok, grupKodu: 5);
                                   if (result != null) {
-                                    viewModel.changeArrKod5(result
-                                        .whereType<BaseGrupKoduModel>()
-                                        .toList());
-                                    kod5Controller.text = viewModel
-                                            .stokBottomSheetModel.arrKod5
-                                            ?.map((e) => e.grupAdi)
-                                            .join(",") ??
-                                        "";
+                                    viewModel.changeArrKod5(result.whereType<BaseGrupKoduModel>().toList());
+                                    kod5Controller.text = viewModel.stokBottomSheetModel.arrKod5?.map((e) => e.grupAdi).join(",") ?? "";
                                   }
                                 }))
                       ]),
@@ -261,47 +193,32 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
             icon: const Icon(Icons.filter_alt_outlined)),
         IconButton(
             onPressed: () async {
-              final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                  context,
+              final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
                   title: "Sırala",
-                  children: List.generate(
-                      viewModel.siralamaMap.length,
-                      (index) => BottomSheetModel(
-                          title: viewModel.siralamaMap.keys.toList()[index],
-                          value:
-                              viewModel.siralamaMap.values.toList()[index])));
+                  children:
+                      List.generate(viewModel.siralamaMap.length, (index) => BottomSheetModel(title: viewModel.siralamaMap.keys.toList()[index], value: viewModel.siralamaMap.values.toList()[index])));
               if (result != null) {
                 viewModel.setSiralama(result);
                 resetData();
               }
             },
             icon: const Icon(Icons.sort_by_alpha_outlined)),
-        IconButton(
-            onPressed: () async {}, icon: const Icon(Icons.more_vert_outlined)),
-        IconButton(
-            onPressed: () => Get.back(result: true),
-            icon: Icon(Icons.check_circle, color: UIHelper.primaryColor)),
+        IconButton(onPressed: () async {}, icon: const Icon(Icons.more_vert_outlined)),
+        IconButton(onPressed: () => Get.back(result: true), icon: Icon(Icons.check_circle, color: UIHelper.primaryColor)),
       ],
     );
-  }
 
-  Observer fab() {
-    return Observer(
+  Observer fab() => Observer(
         builder: (_) => CustomFloatingActionButton(
             isScrolledDown: viewModel.isScrolledDown,
             onPressed: () async {
-              final result = await Get.toNamed("/mainPage/stokEdit",
-                  arguments: BaseEditModel(
-                      baseEditEnum: BaseEditEnum.ekle,
-                      model: StokListesiModel()));
+              final result = await Get.toNamed("/mainPage/stokEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, model: StokListesiModel()));
               if (result != null) {
                 resetData();
               }
             }));
-  }
 
-  Padding body() {
-    return Padding(
+  Padding body() => Padding(
       padding: UIHelper.lowPadding,
       child: Column(
         children: [
@@ -346,124 +263,73 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                   builder: (_) => viewModel.stokListesi.ext.isNullOrEmpty
                       ? (viewModel.stokListesi?.isEmpty ?? false)
                           ? const Center(child: Text("Stok Bulunamadı"))
-                          : const Center(
-                              child: CircularProgressIndicator.adaptive())
-                      : Observer(builder: (_) {
-                          return ListView.builder(
+                          : const Center(child: CircularProgressIndicator.adaptive())
+                      : Observer(builder: (_) => ListView.builder(
                               primary: false,
                               padding: UIHelper.zeroPadding,
                               controller: _scrollController,
-                              itemCount: viewModel.stokListesi?.length != null
-                                  ? viewModel.stokListesi!.length + 1
-                                  : 0,
+                              itemCount: viewModel.stokListesi?.length != null ? viewModel.stokListesi!.length + 1 : 0,
                               itemBuilder: (context, index) {
                                 if (index == viewModel.stokListesi?.length) {
                                   return Visibility(
                                     visible: viewModel.dahaVarMi,
-                                    child: const SafeArea(
-                                        child: Center(
-                                            child: CircularProgressIndicator
-                                                .adaptive())),
+                                    child: const SafeArea(child: Center(child: CircularProgressIndicator.adaptive())),
                                   );
                                 } else {
-                                  final StokListesiModel? stok =
-                                      viewModel.stokListesi?[index];
+                                  final StokListesiModel? stok = viewModel.stokListesi?[index];
                                   return Card(
                                     child: ListTile(
                                       onTap: () async {
                                         StokListesiModel? stokModel;
-                                        if (BaseSiparisEditModel.instance
-                                            .kalemEkliMi(stok)) {
-                                          final result = await dialogManager
-                                              .showStokKayitliDialog(viewModel
-                                                  .stokListesi![index]);
+                                        if (BaseSiparisEditModel.instance.kalemEkliMi(stok)) {
+                                          final result = await dialogManager.showStokKayitliDialog(viewModel.stokListesi![index]);
                                           if (result != true) {
                                             return;
                                           }
                                         }
 
                                         stokModel = await getSelectedData(stok);
-                                        if (stok?.yapilandirmaAktif == true &&
-                                            parametreModel.esnekYapilandir ==
-                                                true) {
-                                          final result = await Get.toNamed(
-                                              "/mainPage/yapilandirmaRehberi",
-                                              arguments: stok);
-                                          if (result
-                                              is YapilandirmaRehberiModel) {
+                                        if (stok?.yapilandirmaAktif == true && parametreModel.esnekYapilandir == true) {
+                                          final result = await Get.toNamed("/mainPage/yapilandirmaRehberi", arguments: stok);
+                                          if (result is YapilandirmaRehberiModel) {
                                             stokModel?.yapkod = result.yapkod;
                                           } else {
                                             return;
                                           }
-                                          stokModel?.yapkodAciklama =
-                                              result.yapacik;
+                                          stokModel?.yapkodAciklama = result.yapacik;
                                         }
-                                        await Get.toNamed("/kalemEkle",
-                                            arguments: stokModel ?? stok);
+                                        await Get.toNamed("/kalemEkle", arguments: stokModel ?? stok);
                                         viewModel.setSelectedStokModel(null);
                                       },
-                                      title: Text(stok?.stokKodu ?? "",
-                                          textAlign: TextAlign.start,
-                                          style: const TextStyle(
-                                              fontWeight: FontWeight.bold)),
+                                      title: Text(stok?.stokKodu ?? "", textAlign: TextAlign.start, style: const TextStyle(fontWeight: FontWeight.bold)),
                                       subtitle: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Wrap(
                                             spacing: UIHelper.lowSize,
                                             children: [
-                                              const ColorfulBadge(
-                                                      label: Text("Seri"),
-                                                      badgeColorEnum:
-                                                          BadgeColorEnum.seri)
-                                                  .yetkiVarMi(
-                                                      stok?.seriCikislardaAcik ==
-                                                          true),
+                                              const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(stok?.seriCikislardaAcik == true),
                                               ColorfulBadge(
-                                                      label: Text(
-                                                          "Dövizli ${(StaticVariables.instance.isMusteriSiparisleri ? stok?.satisDovizAdi : stok?.alisDovizAdi) ?? ""}"),
-                                                      badgeColorEnum:
-                                                          BadgeColorEnum
-                                                              .dovizli)
-                                                  .yetkiVarMi(stok?.satDovTip !=
-                                                          null ||
-                                                      stok?.alisDovTip != null),
-                                              const ColorfulBadge(
-                                                      label: Text("Es.Yap."),
-                                                      badgeColorEnum:
-                                                          BadgeColorEnum.esYap)
-                                                  .yetkiVarMi(
-                                                      stok?.yapilandirmaAktif ==
-                                                          true),
-                                              const ColorfulBadge(
-                                                      label: Text(
-                                                          "Kilitli (Genel)"),
-                                                      badgeColorEnum:
-                                                          BadgeColorEnum
-                                                              .kilitli)
-                                                  .yetkiVarMi(
-                                                      stok?.kilitGenel == "E"),
-                                            ]
-                                                .whereType<ColorfulBadge>()
-                                                .toList(),
+                                                      label: Text("Dövizli ${(StaticVariables.instance.isMusteriSiparisleri ? stok?.satisDovizAdi : stok?.alisDovizAdi) ?? ""}"),
+                                                      badgeColorEnum: BadgeColorEnum.dovizli)
+                                                  .yetkiVarMi(stok?.satDovTip != null || stok?.alisDovTip != null),
+                                              const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap).yetkiVarMi(stok?.yapilandirmaAktif == true),
+                                              const ColorfulBadge(label: Text("Kilitli (Genel)"), badgeColorEnum: BadgeColorEnum.kilitli).yetkiVarMi(stok?.kilitGenel == "E"),
+                                            ].whereType<ColorfulBadge>().toList(),
                                           ),
                                           Text(stok?.stokAdi ?? ""),
                                         ],
                                       ),
-                                      trailing: Text(
-                                          "${stok?.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? 0} ${stok?.olcuBirimi ?? ""}"),
+                                      trailing: Text("${stok?.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? 0} ${stok?.olcuBirimi ?? ""}"),
                                     ),
                                   );
                                 }
-                              });
-                        })),
+                              }))),
             ),
           ),
         ],
       ),
     );
-  }
 
   void resetData() {
     viewModel.resetSayfa();
@@ -475,10 +341,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
   Future<void> getData() async {
     viewModel.setDahaVarMi(false);
     final GenericResponseModel response =
-        await networkManager.dioPost<StokListesiModel>(
-            path: ApiUrls.getStoklar,
-            data: viewModel.stokBottomSheetModel.toJsonWithList(),
-            bodyModel: StokListesiModel());
+        await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: viewModel.stokBottomSheetModel.toJsonWithList(), bodyModel: StokListesiModel());
     if (response.success == true && response.data is List) {
       if (response.data?.length == parametreModel.sabitSayfalamaOgeSayisi) {
         viewModel.setDahaVarMi(true);
@@ -491,11 +354,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
   Future<StokListesiModel?> getSelectedData(StokListesiModel? model) async {
     viewModel.setSelectedStokModel(model?.stokKodu ?? "");
     final GenericResponseModel response =
-        await networkManager.dioPost<StokListesiModel>(
-            path: ApiUrls.getStoklar,
-            data: viewModel.stokBottomSheetModel.toJsonWithList(),
-            bodyModel: StokListesiModel(),
-            showLoading: true);
+        await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: viewModel.stokBottomSheetModel.toJsonWithList(), bodyModel: StokListesiModel(), showLoading: true);
     if (response.success == true) {
       return response.data.first;
     }

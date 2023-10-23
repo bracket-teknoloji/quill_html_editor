@@ -68,12 +68,10 @@ class _LokalDepoBakiyeRaporuViewState
   }
 
   @override
-  Widget build(BuildContext context) {
-    return PDFViewerView(
+  Widget build(BuildContext context) => PDFViewerView(
         filterBottomSheet: filterBottomSheet,
         title: "Lokal Depo Bakiye Raporu",
         pdfData: viewModel.pdfModel);
-  }
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();

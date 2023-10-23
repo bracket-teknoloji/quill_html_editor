@@ -28,24 +28,20 @@ class _QRScannerState extends BaseState<QRScannerView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return SafeArea(
+  Widget build(BuildContext context) => SafeArea(
       child: Scaffold(
         appBar: AppBar(
           title: const Text("QR Kod Okuyucu"),
           actions: [
-            Observer(builder: (_) {
-              return IconButton(
+            Observer(builder: (_) => IconButton(
                   onPressed: () {
                     viewModel.changeFlash();
                     qrViewController.toggleFlash();
                   },
                   icon: Icon(Icons.flash_on,
                       color:
-                          viewModel.isFlashOpen ? Colors.amber : Colors.white));
-            }),
-            Observer(builder: (_) {
-              return IconButton(
+                          viewModel.isFlashOpen ? Colors.amber : Colors.white))),
+            Observer(builder: (_) => IconButton(
                   isSelected: false,
                   onPressed: () {
                     if (viewModel.isFlashOpen) {
@@ -58,8 +54,7 @@ class _QRScannerState extends BaseState<QRScannerView> {
                   icon: Icon(Icons.flip_camera_ios,
                       color: viewModel.isCameraReverse
                           ? Colors.amber
-                          : Colors.white));
-            }),
+                          : Colors.white))),
           ],
         ),
         body: Stack(
@@ -67,7 +62,6 @@ class _QRScannerState extends BaseState<QRScannerView> {
         ),
       ),
     );
-  }
 
   Widget buildQrView(BuildContext context) => QRView(
         overlay: QrScannerOverlayShape(
@@ -97,8 +91,7 @@ class _QRScannerState extends BaseState<QRScannerView> {
     });
   }
 
-  Widget buildResult() {
-    return Center(
+  Widget buildResult() => Center(
       child: Container(
         alignment: Alignment.bottomCenter,
         padding: UIHelper.highPaddingHorizontal,
@@ -108,5 +101,4 @@ class _QRScannerState extends BaseState<QRScannerView> {
                 .copyWith(color: Colors.white)),
       ),
     );
-  }
 }

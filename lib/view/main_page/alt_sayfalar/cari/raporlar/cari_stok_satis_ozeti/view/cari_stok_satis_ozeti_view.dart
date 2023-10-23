@@ -74,12 +74,9 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
-        title: Observer(builder: (_) {
-          return viewModel.searchBar ? const CustomAppBarTextField() : const Text("Cari Stok Satış Özeti");
-        }),
+        title: Observer(builder: (_) => viewModel.searchBar ? const CustomAppBarTextField() : const Text("Cari Stok Satış Özeti")),
         actions: [
           IconButton(onPressed: () async => viewModel.setSearchBar(), icon: const Icon(Icons.search_outlined)),
           IconButton(
@@ -158,8 +155,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Observer(builder: (_) {
-          return Column(
+        child: Observer(builder: (_) => Column(
             children: [
               RaporFiltreDateTimeBottomSheetView(
                   filterOnChanged: (value) {
@@ -186,8 +182,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                           child: ListView.builder(
                             shrinkWrap: true,
                             itemCount: viewModel.modelList?.length,
-                            itemBuilder: (context, index) {
-                              return Card(
+                            itemBuilder: (context, index) => Card(
                                 child: ListTile(
                                   title: Text(viewModel.modelList?[index].stokAdi ?? ""),
                                   subtitle: Text("Stok Kodu: ${viewModel.modelList?[index].stokKodu ?? ""}"),
@@ -203,18 +198,15 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                                     BottomSheetModel(title: "Stok İşlemleri", iconWidget: Icons.list_alt_outlined, onTap: () {}),
                                   ]),
                                 ),
-                              );
-                            },
+                              ),
                           ),
                         )
                       : const Center(child: Text("Sonuç Bulunamadı")))
                   : const Center(child: CircularProgressIndicator.adaptive()),
             ],
-          ).paddingAll(UIHelper.lowSize);
-        }),
+          ).paddingAll(UIHelper.lowSize)),
       ),
     );
-  }
 
   void getData() async {
     viewModel.model == null ? viewModel.setModel(await Get.toNamed("mainPage/cariListesi", arguments: true) as CariListesiModel?) : null;

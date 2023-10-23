@@ -57,16 +57,14 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
+  Widget build(BuildContext context) => Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Row(
           children: [
-            Observer(builder: (_) {
-              return Visibility(
+            Observer(builder: (_) => Visibility(
                 visible: viewModel.returnGridItemModel.isNotEmpty,
                 child: IconButton(
                   onPressed: () {
@@ -75,8 +73,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                   },
                   icon: Icon(Icons.arrow_back_outlined, color: theme.colorScheme.primary),
                 ),
-              );
-            }),
+              )),
             Expanded(
                 child: SizedBox(
                     child: Text(widget.title ?? widget.cariListesiModel?.cariKodu ?? widget.model?.stokKodu ?? "", style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis))
@@ -94,8 +91,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
             minHeight: context.sized.dynamicHeight(0.2),
           ),
           child: AnimationLimiter(
-            child: Observer(builder: (_) {
-              return GridView.builder(
+            child: Observer(builder: (_) => GridView.builder(
                 padding: UIHelper.zeroPadding,
                 shrinkWrap: true,
                 // physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
@@ -143,13 +139,11 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                                 })),
                       ));
                 },
-              );
-            }),
+              )),
           ),
         ),
       ],
     ).paddingAll(UIHelper.lowSize);
-  }
 
   List<GridItemModel>? getRaporList(IslemTipiEnum menu) {
     //if result is not contains any menu.value return null

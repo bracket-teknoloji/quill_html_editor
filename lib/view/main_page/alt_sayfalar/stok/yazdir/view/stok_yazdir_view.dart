@@ -77,8 +77,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
         title: const Text("Yazdır"),
         actions: [
@@ -129,8 +128,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                     }
                   }),
             ),
-            Observer(builder: (_) {
-              return Visibility(
+            Observer(builder: (_) => Visibility(
                 visible: viewModel.stokListesiModel != null && viewModel.showYapilandirma,
                 child: CustomTextField(
                     labelText: "Yapılandırma Kodu",
@@ -145,8 +143,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                         yapilandirmaKoduController.text = result.yapacik ?? "";
                       }
                     }),
-              );
-            }),
+              )),
             Row(
               children: [
                 Expanded(
@@ -246,7 +243,6 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
         ).paddingAll(UIHelper.lowSize),
       ),
     );
-  }
 
   Future<void> setDizayn() async {
     final List<NetFectDizaynList>? dizaynList = parametreModel.netFectDizaynList

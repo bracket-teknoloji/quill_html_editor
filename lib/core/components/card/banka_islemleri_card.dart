@@ -24,8 +24,7 @@ class BankaIslemleriCard extends StatefulWidget {
 class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
   BankaIslemleriModel? get model => widget.bankaIslemleriModel;
   @override
-  Widget build(BuildContext context) {
-    return InkWell(
+  Widget build(BuildContext context) => InkWell(
       onTap: () async {
         await bottomSheetDialogManager.showBottomSheetDialog(context,
             title: model?.hesapAdi ?? "",
@@ -94,7 +93,6 @@ class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
                 ],
               ))),
     );
-  }
 
   void deleteData() async {
     Get.back();

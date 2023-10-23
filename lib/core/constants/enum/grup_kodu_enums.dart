@@ -1,1 +1,1 @@
-enum GrupKoduEnum { CARI, STOK }
+enum GrupKoduEnum { cari, stok }

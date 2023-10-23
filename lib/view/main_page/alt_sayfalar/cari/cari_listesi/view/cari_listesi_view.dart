@@ -5,18 +5,13 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../../../../core/base/model/base_grup_kodu_model.dart";
-import "../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
-import "../../../../../../core/components/bottom_bar/bottom_bar.dart";
-import "../../../../../../core/components/helper_widgets/custom_label_widget.dart";
-import "../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
-import "../../../../../../core/components/textfield/custom_text_field.dart";
-import "../../../../../../core/components/wrap/appbar_title.dart";
-import "../model/cari_sehirler_model.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
 import "../../../../../../core/components/badge/colorful_badge.dart";
+import "../../../../../../core/components/bottom_bar/bottom_bar.dart";
 import "../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart";
 import "../../../../../../core/components/button/elevated_buttons/footer_button.dart";
 import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -24,7 +19,11 @@ import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet
 import "../../../../../../core/components/dialog/bottom_sheet/view_model/bottom_sheet_state_manager.dart";
 import "../../../../../../core/components/floating_action_button/custom_floating_action_button.dart";
 import "../../../../../../core/components/grid_tile/custom_animated_grid/view/custom_animated_grid_view.dart";
+import "../../../../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
 import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
+import "../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/enum/badge_color_enum.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/enum/islem_tipi_enum.dart";
@@ -38,6 +37,7 @@ import "../../../../../../core/init/network/login/api_urls.dart";
 import "../../cari_network_manager.dart";
 import "../model/cari_listesi_model.dart";
 import "../model/cari_secenekler_model.dart";
+import "../model/cari_sehirler_model.dart";
 import "../view_model/cari_listesi_view_model.dart";
 
 class CariListesiView extends StatefulWidget {
@@ -124,8 +124,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       resizeToAvoidBottomInset: true,
       extendBody: true,
       extendBodyBehindAppBar: false,
@@ -134,13 +133,10 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       body: body(),
       bottomNavigationBar: bottomButtonBar(),
     );
-  }
 
-  AppBar appBar(BuildContext context) {
-    return AppBar(
+  AppBar appBar(BuildContext context) => AppBar(
       title: Observer(
-        builder: (_) {
-          return (viewModel.searchBar
+        builder: (_) => (viewModel.searchBar
               ? CustomAppBarTextField(onFieldSubmitted: (value) async {
                   viewModel.changeFilterText(value);
                   await viewModel.resetPage();
@@ -148,8 +144,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
               : AppBarTitle(
                   title: "Cari Listesi",
                   subtitle: "${viewModel.cariListesi?.length ?? ""}",
-                ));
-        },
+                )),
       ),
       leading: IconButton(
           onPressed: () {
@@ -165,9 +160,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       bottom: AppBarPreferedSizedBottom(
         children: [
           AppBarButton(
-            iconWidget: Observer(builder: (_) {
-              return Icon(Icons.filter_alt_outlined, size: 20, fill: 1, color: viewModel.hasAnyFilters ? UIHelper.primaryColor : null);
-            }),
+            iconWidget: Observer(builder: (_) => Icon(Icons.filter_alt_outlined, size: 20, fill: 1, color: viewModel.hasAnyFilters ? UIHelper.primaryColor : null)),
             onPressed: () async {
               await filtreleDialog(context);
               // if (filterData == null) {
@@ -216,13 +209,10 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
               await viewModel.resetPage();
             }
           },
-          icon: Observer(builder: (_) {
-            return Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined);
-          }),
+          icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)),
         ),
       ],
     );
-  }
 
   Future<void> siralaDialog(BuildContext context) async {
     final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
@@ -234,8 +224,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
     }
   }
 
-  Widget fab() {
-    return Observer(
+  Widget fab() => Observer(
       builder: (_) => Visibility(
         visible: viewModel.cariListesi != null,
         child: CustomFloatingActionButton(
@@ -247,17 +236,13 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
         ),
       ),
     );
-  }
 
-  RefreshIndicator body() {
-    return RefreshIndicator.adaptive(
+  RefreshIndicator body() => RefreshIndicator.adaptive(
         onRefresh: () async => await viewModel.resetPage(),
         child: Observer(
           builder: (_) => (viewModel.cariListesi.ext.isNullOrEmpty
               ? (viewModel.cariListesi?.isEmpty ?? false)
-                  ? Center(child: Observer(builder: (_) {
-                      return Text(viewModel.errorText != null ? (viewModel.errorText ?? "") : "Cari Bulunamadı");
-                    }))
+                  ? Center(child: Observer(builder: (_) => Text(viewModel.errorText != null ? (viewModel.errorText ?? "") : "Cari Bulunamadı")))
                   : const Center(child: CircularProgressIndicator.adaptive())
               : ListView.builder(
                   primary: false,
@@ -334,32 +319,25 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                         ),
                       );
                     } else {
-                      return Observer(builder: (_) {
-                        return Visibility(
+                      return Observer(builder: (_) => Visibility(
                           visible: viewModel.dahaVarMi,
                           child: const Center(child: CircularProgressIndicator.adaptive()),
-                        );
-                      });
+                        ));
                     }
                   },
                 )),
         ).paddingAll(UIHelper.lowSize));
-  }
 
-  Widget? bottomButtonBar() {
-    return Observer(builder: (_) {
-      return BottomBarWidget(
+  Widget? bottomButtonBar() => Observer(builder: (_) => BottomBarWidget(
         isScrolledDown: !viewModel.isScrolledDown,
         children: [
           FooterButton(
               children: [
                 const Text("Tahsil Edilecek"),
-                Observer(builder: (_) {
-                  return Text(
+                Observer(builder: (_) => Text(
                     "${(viewModel.paramData?["TAHSIL_EDILECEK"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                     style: const TextStyle(color: Colors.green),
-                  );
-                }),
+                  )),
               ],
               onPressed: () async {
                 if (viewModel.cariRequestModel.filterBakiye == "T") {
@@ -373,9 +351,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
           FooterButton(
             children: [
               const Text("Ödenecek"),
-              Observer(builder: (_) {
-                return Text("${(viewModel.paramData?["ODENECEK"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red));
-              }),
+              Observer(builder: (_) => Text("${(viewModel.paramData?["ODENECEK"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red))),
             ],
             onPressed: () async {
               if (viewModel.cariRequestModel.filterBakiye == "Ö") {
@@ -388,9 +364,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
             },
           ),
         ],
-      );
-    });
-  }
+      ));
 
   String getPaymentInfo(double bakiye) {
     if (bakiye > 0) {
@@ -464,21 +438,18 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
     }
   }
 
-  Future<dynamic> filtreleDialog(BuildContext context) async {
-    return await bottomSheetDialogManager.showBottomSheetDialog(context,
+  Future<dynamic> filtreleDialog(BuildContext context) async => await bottomSheetDialogManager.showBottomSheetDialog(context,
         title: "Filtrele",
         body: Column(
           children: [
             CustomWidgetWithLabel(
               text: "Bakiye Durumu",
               onlyLabelpaddingLeft: UIHelper.lowSize,
-              child: Observer(builder: (_) {
-                return SlideControllerWidget(
+              child: Observer(builder: (_) => SlideControllerWidget(
                     childrenTitleList: viewModel.bakiyeMap.keys.toList(),
                     filterOnChanged: (index) => viewModel.changeFilterBakiye(viewModel.bakiyeMap.values.toList()[index ?? 0]),
                     childrenValueList: viewModel.bakiyeMap.values.toList(),
-                    groupValue: viewModel.cariRequestModel.filterBakiye);
-              }),
+                    groupValue: viewModel.cariRequestModel.filterBakiye)),
             ),
             Row(
               children: [
@@ -564,8 +535,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                 children: [const Text("Cari Rapor Kodları"), Observer(builder: (_) => Icon(viewModel.kodlariGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down))],
               ),
             ).paddingAll(UIHelper.lowSize),
-            Observer(builder: (_) {
-              return Visibility(
+            Observer(builder: (_) => Visibility(
                 visible: viewModel.kodlariGoster,
                 child: Wrap(
                   children: [
@@ -717,8 +687,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     ),
                   ],
                 ),
-              );
-            }),
+              )),
             Row(
               children: [
                 Expanded(
@@ -751,5 +720,4 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
             ).paddingAll(UIHelper.lowSize),
           ],
         ).paddingAll(UIHelper.lowSize));
-  }
 }

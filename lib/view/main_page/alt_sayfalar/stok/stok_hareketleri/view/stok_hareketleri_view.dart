@@ -50,16 +50,13 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       floatingActionButton: fab().yetkiVarMi(yetkiController.stokHareketleriStokYeniKayit),
       appBar: appBar(),
       body: body(),
     );
-  }
 
-  AppBar appBar() {
-    return AppBar(
+  AppBar appBar() => AppBar(
       title: Observer(
           builder: (_) => viewModel.searchBar
               ? CustomAppBarTextField(
@@ -88,14 +85,12 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
         //😳       ]);
         //😳     },
         //😳     icon: const Icon(Icons.more_vert_outlined)),
-        Observer(builder: (_) {
-          return IconButton(
+        Observer(builder: (_) => IconButton(
               onPressed: () {
                 viewModel.searchBar ? getData() : null;
                 viewModel.changeSearchBar();
               },
-              icon: Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined));
-        })
+              icon: Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)))
       ],
       bottom: PreferredSize(
           preferredSize: const Size.fromHeight(60),
@@ -113,17 +108,14 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                             CustomWidgetWithLabel(
                                 text: "Hareket Yönü",
                                 child: Center(
-                                  child: Observer(builder: (_) {
-                                    return SlideControllerWidget(
+                                  child: Observer(builder: (_) => SlideControllerWidget(
                                         scroll: false,
                                         childrenTitleList: viewModel.hareketYonuList,
                                         filterOnChanged: (index) => viewModel.changeIsSelected(index ?? 0),
                                         childrenValueList: viewModel.isSelected,
-                                        groupValue: viewModel.isSelectedGroupValue);
-                                  }),
+                                        groupValue: viewModel.isSelectedGroupValue)),
                                 )),
-                            Observer(builder: (_) {
-                              return CustomTextField(
+                            Observer(builder: (_) => CustomTextField(
                                 labelText: "Hareket Türü",
                                 readOnly: true,
                                 controllerText: viewModel.arrHareketTuru?.join(", "),
@@ -138,10 +130,8 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                   }
                                 },
                                 suffixMore: true,
-                              );
-                            }),
-                            Observer(builder: (_) {
-                              return CustomTextField(
+                              )),
+                            Observer(builder: (_) => CustomTextField(
                                   labelText: "Cari",
                                   valueText: viewModel.cariListesiModel?.cariKodu ?? "",
                                   controllerText: viewModel.cariListesiModel?.cariAdi ?? "",
@@ -167,8 +157,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                           }
                                         },
                                         icon: const Icon(Icons.more_horiz_outlined))
-                                  ]));
-                            }),
+                                  ]))),
                             Row(
                               children: [
                                 Expanded(
@@ -221,25 +210,20 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                 }),
           ])),
     );
-  }
 
-  FloatingActionButton fab() {
-    return FloatingActionButton(
+  FloatingActionButton fab() => FloatingActionButton(
       onPressed: () async {
         await Get.toNamed("mainPage/stokYeniKayit", arguments: StokHareketleriModel()..stokKodu = widget.model?.stokKodu ?? widget.stokKodu);
         viewModel.setStokHareketleri(await getData()!);
       },
       child: const Icon(Icons.add),
     );
-  }
 
-  FutureBuilder<dynamic> body() {
-    return FutureBuilder(
+  FutureBuilder<dynamic> body() => FutureBuilder(
         future: viewModel.future,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return Observer(builder: (_) {
-              return viewModel.stokHareketleri.ext.isNullOrEmpty
+            return Observer(builder: (_) => viewModel.stokHareketleri.ext.isNullOrEmpty
                   ? const Center(child: Text("Stok Hareket Kaydı Bulunamadı."))
                   : RefreshIndicator.adaptive(
                       onRefresh: () async {
@@ -383,13 +367,11 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                           );
                         },
                       ),
-                    );
-            });
+                    ));
           } else {
             return const Center(child: CircularProgressIndicator.adaptive());
           }
         });
-  }
 
   Future<List<StokHareketleriModel>>? getData() async {
     viewModel.setFuture(null);

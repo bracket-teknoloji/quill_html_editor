@@ -13,8 +13,7 @@ class AppBarTitle extends StatelessWidget {
       this.isCentered});
 
   @override
-  Widget build(BuildContext context) {
-    return Wrap(
+  Widget build(BuildContext context) => Wrap(
       direction: Axis.vertical,
       alignment: isCentered != null && (isCentered ?? false)
           ? WrapAlignment.center
@@ -39,5 +38,4 @@ class AppBarTitle extends StatelessWidget {
             : const SizedBox(),
       ],
     );
-  }
 }

@@ -45,8 +45,7 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return CustomWidgetWithLabel(
+  Widget build(BuildContext context) => CustomWidgetWithLabel(
       text: widget.title,
       child: SizedBox(
           height: 50,
@@ -66,5 +65,4 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
                     child: Text(widget.childrenTitleList[listTileIndex]),
                   ).paddingOnly(right: UIHelper.highSize))),
     ).paddingAll(UIHelper.lowSize);
-  }
 }

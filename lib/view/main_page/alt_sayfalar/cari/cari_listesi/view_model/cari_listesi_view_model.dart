@@ -2,13 +2,13 @@ import "dart:convert";
 import "dart:developer";
 
 import "package:mobx/mobx.dart";
+
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
+import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
 import "../model/cari_listesi_model.dart";
 import "../model/cari_request_model.dart";
 import "../model/cari_sehirler_model.dart";
-
-import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
 
 part "cari_listesi_view_model.g.dart";
 

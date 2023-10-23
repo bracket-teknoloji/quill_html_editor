@@ -1762,16 +1762,12 @@ class ProfilYetkiModel {
   @JsonKey(name: "entegrasyon_UETDSESYA_Iptal")
   bool? entegrasyonUETDSESYAIptal;
 
-  factory ProfilYetkiModel.fromJson(String json) {
-    return _$ProfilYetkiModelFromJson(jsonDecode(json));
-  }
+  factory ProfilYetkiModel.fromJson(String json) => _$ProfilYetkiModelFromJson(jsonDecode(json));
 
   Map<String, dynamic> toJson() => _$ProfilYetkiModelToJson(this);
 
   @override
-  String toString() {
-    return toJson().toString();
-  }
+  String toString() => toJson().toString();
 }
 
 @JsonSerializable(fieldRename: FieldRename.pascal)

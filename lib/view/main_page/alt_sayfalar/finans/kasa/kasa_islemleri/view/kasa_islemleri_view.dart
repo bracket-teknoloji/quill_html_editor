@@ -3,9 +3,6 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../model/kasa_islemleri_model.dart";
-import "../view_model/kasa_islemleri_view_model.dart";
-import "../../../../../model/param_model.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";
@@ -21,7 +18,10 @@ import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../model/param_model.dart";
 import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
+import "../model/kasa_islemleri_model.dart";
+import "../view_model/kasa_islemleri_view_model.dart";
 
 class KasaIslemleriView extends StatefulWidget {
   const KasaIslemleriView({super.key});
@@ -77,8 +77,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       resizeToAvoidBottomInset: true,
       extendBody: true,
       extendBodyBehindAppBar: false,
@@ -87,7 +86,6 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
       body: body(),
       bottomNavigationBar: bottomAppBar(),
     );
-  }
 
   AppBar appBar() => AppBar(
         title: Observer(builder: (_) {
@@ -111,17 +109,13 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
         ],
       );
 
-  Observer fab() => Observer(builder: (_) {
-        return CustomFloatingActionButton(
+  Observer fab() => Observer(builder: (_) => CustomFloatingActionButton(
           isScrolledDown: viewModel.isScrollDown,
           onPressed: () async {
-            await dialogManager.showKasaGridViewDialog(null, onSelected: (p0) {
-              return p0 ? viewModel.resetPage() : null;
-            });
+            await dialogManager.showKasaGridViewDialog(null, onSelected: (p0) => p0 ? viewModel.resetPage() : null);
             // viewModel.resetPage();
           },
-        );
-      });
+        ));
 
   Column body() => Column(
         children: [
@@ -138,8 +132,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
           Expanded(
             child: RefreshIndicator.adaptive(
               onRefresh: () async => await viewModel.resetPage(),
-              child: Observer(builder: (_) {
-                return viewModel.getKasaIslemleriListesi == null
+              child: Observer(builder: (_) => viewModel.getKasaIslemleriListesi == null
                     ? const Center(child: CircularProgressIndicator.adaptive())
                     : viewModel.getKasaIslemleriListesi.ext.isNullOrEmpty
                         ? const Center(child: Text("Veri bulunamadı"))
@@ -162,16 +155,13 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                                     });
                               }
                             },
-                          );
-              }),
+                          )),
             ),
           ),
         ],
       );
 
-  Observer bottomAppBar() {
-    return Observer(builder: (_) {
-      return BottomBarWidget(isScrolledDown: viewModel.isScrollDown, children: [
+  Observer bottomAppBar() => Observer(builder: (_) => BottomBarWidget(isScrolledDown: viewModel.isScrollDown, children: [
         FooterButton(
           children: [
             const Text("Gelir"),
@@ -204,24 +194,20 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
             viewModel.resetPage();
           },
         ),
-      ]);
-    });
-  }
+      ]));
 
   Future<void> filter() async {
     await bottomSheetDialogManager.showBottomSheetDialog(context,
         title: "Filtrele",
         body: Column(
           children: [
-            Observer(builder: (_) {
-              return SlideControllerWidget(
+            Observer(builder: (_) => SlideControllerWidget(
                   childrenTitleList: viewModel.hesapTipiMap.keys.toList(),
                   filterOnChanged: (index) {
                     viewModel.setHesapTipi(viewModel.hesapTipiMap.values.toList()[index ?? 0]);
                   },
                   childrenValueList: viewModel.hesapTipiMap.values.toList(),
-                  groupValue: viewModel.hesapTipiGroupValue);
-            }),
+                  groupValue: viewModel.hesapTipiGroupValue)),
             CustomTextField(
               labelText: "Kasa",
               controller: kasaController,

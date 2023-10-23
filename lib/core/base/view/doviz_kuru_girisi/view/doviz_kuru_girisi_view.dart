@@ -67,8 +67,7 @@ class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: const Text("Döviz Kuru Girişi"),
           actions: [
@@ -148,7 +147,6 @@ class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
             ],
           ),
         ));
-  }
 
   Future<void> postData() async {
     final result = await networkManager.dioPost(

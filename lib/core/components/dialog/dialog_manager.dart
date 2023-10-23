@@ -58,18 +58,15 @@ class DialogManager {
     ScaffoldMessenger.of(context).showSnackBar(_snackBarSuccess(message));
   }
 
-  Future<DateTime?> showDateTimePicker() async {
-    return await showDatePicker(
+  Future<DateTime?> showDateTimePicker() async => await showDatePicker(
       context: context,
       locale: Get.locale,
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime(2100),
     );
-  }
 
-  Future<void> showAlertDialog(String message) async {
-    return _baseDialog(
+  Future<void> showAlertDialog(String message) async => _baseDialog(
       dialogType: DialogType.error,
       btnOkText: "Tamam",
       body: Column(
@@ -102,7 +99,6 @@ class DialogManager {
       // onOk is rootNavigator true without Get
       onOk: () {},
     ).show();
-  }
 
   String get getAppData => "\nVersion: ${AppInfoModel.instance.version}\nTarih: ${DateTime.now().toDateTimeString()}\nE-mail: ${CacheManager.getHesapBilgileri?.uyeEmail ?? ""}";
 
@@ -210,8 +206,7 @@ class DialogManager {
 
   void get hideAlertDialog => Get.back(closeOverlays: true);
 
-  AlertDialog loadingDialog() {
-    return AlertDialog(
+  AlertDialog loadingDialog() => AlertDialog(
       title: Text("Lütfen Bekleyiniz...", style: context.theme.textTheme.titleMedium),
       content: const SizedBox(
           height: 5,
@@ -220,7 +215,6 @@ class DialogManager {
             color: Colors.red,
           )),
     );
-  }
 
   AlertDialog listTileDialog({required String title}) {
     final Box box = Hive.box("accounts");
@@ -306,8 +300,7 @@ class DialogManager {
 
   SnackBar _snackBarInfo(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: Colors.blueAccent);
 
-  AwesomeDialog _areYouSureDialog(void Function() onYes, String? desc) {
-    return _baseDialog(
+  AwesomeDialog _areYouSureDialog(void Function() onYes, String? desc) => _baseDialog(
       title: "Uyarı",
       desc: desc ?? "Bu işlemi yapmak istediğinizden emin misiniz?",
       dialogType: DialogType.question,
@@ -316,7 +309,6 @@ class DialogManager {
       onCancel: () {},
       btnCancelText: "Hayır",
     );
-  }
 
   Future selectCompanyDialog() {
     final Box preferences = CacheManager.preferencesBox;
@@ -375,8 +367,7 @@ class DialogManager {
       Color? btnOkColor,
       Color? btnCancelColor,
       Widget? customHeader,
-      Widget? body}) {
-    return AwesomeDialog(
+      Widget? body}) => AwesomeDialog(
         keyboardAware: true,
         //* Standardı 15 olduğu için ve null kabul etmediği için 15 verdim.
         bodyHeaderDistance: dialogType != DialogType.noHeader ? 15 : UIHelper.lowSize,
@@ -419,5 +410,4 @@ class DialogManager {
         dismissOnBackKeyPress: false,
         dismissOnTouchOutside: false,
         body: body);
-  }
 }

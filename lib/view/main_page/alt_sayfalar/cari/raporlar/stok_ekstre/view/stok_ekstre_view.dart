@@ -46,12 +46,10 @@ class _StokEkstreViewState extends BaseState<StokEkstreView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return PDFViewerView(
+  Widget build(BuildContext context) => PDFViewerView(
         filterBottomSheet: filterBottomSheet,
         title: "Stok Ekstre",
         pdfData: viewModel.pdfModel);
-  }
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -80,8 +78,7 @@ class _StokEkstreViewState extends BaseState<StokEkstreView> {
                 }
               },
             ),
-            Observer(builder: (_) {
-              return ElevatedButton(
+            Observer(builder: (_) => ElevatedButton(
                       onPressed: () {
                         if (viewModel.pdfModel.dicParams?.cariKodu == null) {
                           dialogManager.showAlertDialog(
@@ -100,8 +97,7 @@ class _StokEkstreViewState extends BaseState<StokEkstreView> {
                         }
                       },
                       child: const Text("Uygula"))
-                  .paddingAll(UIHelper.lowSize);
-            })
+                  .paddingAll(UIHelper.lowSize))
           ],
         ).paddingAll(UIHelper.lowSize));
     return Future.value(viewModel.futureController.value);

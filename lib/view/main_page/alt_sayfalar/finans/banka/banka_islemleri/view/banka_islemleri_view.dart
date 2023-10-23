@@ -69,8 +69,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       resizeToAvoidBottomInset: true,
       extendBody: true,
       extendBodyBehindAppBar: false,
@@ -79,7 +78,6 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
       body: body(),
       bottomNavigationBar: bottomAppBar(),
     );
-  }
 
   AppBar appBar() => AppBar(
         title: Observer(builder: (_) {
@@ -108,12 +106,10 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
         ],
       );
 
-  Observer fab() => Observer(builder: (_) {
-        return CustomFloatingActionButton(
+  Observer fab() => Observer(builder: (_) => CustomFloatingActionButton(
           isScrolledDown: viewModel.isScrollDown,
           onPressed: () {},
-        );
-      });
+        ));
 
   Column body() => Column(
         children: [
@@ -129,8 +125,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
           Expanded(
             child: RefreshIndicator.adaptive(
               onRefresh: () async => await viewModel.resetPage(),
-              child: Observer(builder: (_) {
-                return viewModel.getBankaIslemleriListesi == null
+              child: Observer(builder: (_) => viewModel.getBankaIslemleriListesi == null
                     ? const Center(child: CircularProgressIndicator.adaptive())
                     : viewModel.getBankaIslemleriListesi.ext.isNullOrEmpty
                         ? const Center(child: Text("Veri bulunamadı"))
@@ -150,16 +145,13 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
                                     viewModel.resetPage();
                                   });
                             },
-                          );
-              }),
+                          )),
             ),
           ),
         ],
       );
 
-  Observer bottomAppBar() {
-    return Observer(builder: (_) {
-      return BottomBarWidget(isScrolledDown: viewModel.isScrollDown, children: [
+  Observer bottomAppBar() => Observer(builder: (_) => BottomBarWidget(isScrolledDown: viewModel.isScrollDown, children: [
         FooterButton(children: [
           const Text("Gelir"),
           Observer(
@@ -174,9 +166,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
                   "${viewModel.gidenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                   style: const TextStyle(color: Colors.red)))
         ]),
-      ]);
-    });
-  }
+      ]));
 
   Future<void> filter() async {
     await bottomSheetDialogManager.showBottomSheetDialog(context,

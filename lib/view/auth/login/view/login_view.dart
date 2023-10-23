@@ -62,151 +62,145 @@ class _LoginViewState extends BaseState<LoginView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: Stack(
-        children: [
-          WaveWidget(
-              config: CustomConfig(durations: [8000, 10000], heightPercentages: [0.78, 0.8], colors: [const Color.fromRGBO(70, 59, 57, 26), Colors.black.withOpacity(0.3)]),
-              size: const Size(double.infinity, double.infinity),
-              waveAmplitude: 2,
-              wavePhase: 0,
-              duration: 200,
-              backgroundColor: theme.scaffoldBackgroundColor),
-          Scaffold(
-            // appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent, automaticallyImplyLeading: false),
+  Widget build(BuildContext context) => WillPopScope(
+        onWillPop: () async => false,
+        child: Stack(
+          children: [
+            WaveWidget(
+                config: CustomConfig(durations: [8000, 10000], heightPercentages: [0.78, 0.8], colors: [const Color.fromRGBO(70, 59, 57, 26), Colors.black.withOpacity(0.3)]),
+                size: const Size(double.infinity, double.infinity),
+                waveAmplitude: 2,
+                wavePhase: 0,
+                duration: 200,
+                backgroundColor: theme.scaffoldBackgroundColor),
+            Scaffold(
+              // appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent, automaticallyImplyLeading: false),
 
-            //TODO BUNU FAB'DAN ÇIKART. SPLASH'E BAK.
-            floatingActionButton: !context.general.isKeyBoardOpen ? Text("V ${AppInfoModel.instance.version}") : null,
-            floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerDocked,
-            primary: true,
-            backgroundColor: Colors.transparent,
-            extendBodyBehindAppBar: true,
-            body: Center(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: context.padding.horizontalHigh,
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 500),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        AnimatedContainer(
-                          duration: const Duration(milliseconds: 200),
-                          height: context.general.isKeyBoardOpen ? context.sized.dynamicHeight(0.06) : context.sized.dynamicHeight(0.12),
-                          child: SvgPicture.asset("assets/splash/PickerLogoTuruncu.svg"),
-                        ).paddingOnly(bottom: context.sized.dynamicHeight(0.02), top: context.sized.dynamicHeight(0.04)),
-                        Padding(
-                          padding: UIHelper.midPaddingVertical,
-                          child: Observer(builder: (_) {
-                            return Column(
-                              children: [
-                                Text("Picker", style: context.theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w500)),
-                                Text("Mobil Veri Toplama Çözümleri", style: context.theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w300)),
-                                Text(viewModel.baseUrl).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi(viewModel.isDebug)
-                              ],
-                            );
-                          }),
-                        ),
-                        CustomWidgetWithLabel(
-                          text: "Firma",
-                          child: TextFormField(
-                            readOnly: true,
-                            onTap: () async {
-                              var selectedFirma = await dialogManager.selectCompanyDialog();
-                              if (selectedFirma != null) {
-                                selectedFirma = selectedFirma as LoginDialogModel;
-                                selectedUser = selectedFirma;
-                                //*LoginDialogModel
-                                if (selectedUser.account?.firma != null) {
-                                  companyController.text = selectedUser.account!.firma!;
-                                }
-                                emailController.text = selectedUser.username ?? "";
-                                passwordController.text = selectedUser.password ?? "";
-                                if (selectedUser.account?.firma == "demo") {
-                                  AccountModel.instance.uyeEmail = "demo@netfect.com";
-                                  AccountModel.instance.uyeSifre = null;
-                                  selectedUser.account?.email = "demo@netfect.com";
-                                  selectedUser.account?.parola = null;
-                                } else {
-                                  AccountModel.instance.uyeEmail = selectedUser.account?.email;
-                                  AccountModel.instance.uyeSifre = selectedUser.account?.parola;
-                                }
-
-                                viewModel.checkDebug();
-                              } else {
-                                selectedUser = CacheManager.getVerifiedUser;
-                                AccountModel.setFromAccountResponseModel(selectedUser.account);
-                                viewModel.checkDebug();
-                                if (selectedUser.account?.firma != null) {
-                                  companyController.text = selectedUser.account!.firma!;
-                                }
-                                emailController.text = selectedUser.username ?? "";
-                                passwordController.text = selectedUser.password ?? "";
-                              }
-                            },
-                            decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz)),
-                            controller: companyController,
-                            textInputAction: TextInputAction.next,
+              //TODO BUNU FAB'DAN ÇIKART. SPLASH'E BAK.
+              floatingActionButton: !context.general.isKeyBoardOpen ? Text("V ${AppInfoModel.instance.version}") : null,
+              floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerDocked,
+              primary: true,
+              backgroundColor: Colors.transparent,
+              extendBodyBehindAppBar: true,
+              body: Center(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: context.padding.horizontalHigh,
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 500),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          AnimatedContainer(
+                            duration: const Duration(milliseconds: 200),
+                            height: context.general.isKeyBoardOpen ? context.sized.dynamicHeight(0.06) : context.sized.dynamicHeight(0.12),
+                            child: SvgPicture.asset("assets/splash/PickerLogoTuruncu.svg"),
+                          ).paddingOnly(bottom: context.sized.dynamicHeight(0.02), top: context.sized.dynamicHeight(0.04)),
+                          Padding(
+                            padding: UIHelper.midPaddingVertical,
+                            child: Observer(
+                                builder: (_) => Column(
+                                      children: [
+                                        Text("Picker", style: context.theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w500)),
+                                        Text("Mobil Veri Toplama Çözümleri", style: context.theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w300)),
+                                        Text(viewModel.baseUrl).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi(viewModel.isDebug)
+                                      ],
+                                    )),
                           ),
-                        ),
-                        Padding(
-                          padding: UIHelper.midPaddingOnlyTop,
-                          child: CustomWidgetWithLabel(
-                            text: "Netfect Kullanıcı Adı",
+                          CustomWidgetWithLabel(
+                            text: "Firma",
                             child: TextFormField(
-                              controller: emailController,
+                              readOnly: true,
+                              onTap: () async {
+                                var selectedFirma = await dialogManager.selectCompanyDialog();
+                                if (selectedFirma != null) {
+                                  selectedFirma = selectedFirma as LoginDialogModel;
+                                  selectedUser = selectedFirma;
+                                  //*LoginDialogModel
+                                  if (selectedUser.account?.firma != null) {
+                                    companyController.text = selectedUser.account!.firma!;
+                                  }
+                                  emailController.text = selectedUser.username ?? "";
+                                  passwordController.text = selectedUser.password ?? "";
+                                  if (selectedUser.account?.firma == "demo") {
+                                    AccountModel.instance.uyeEmail = "demo@netfect.com";
+                                    AccountModel.instance.uyeSifre = null;
+                                    selectedUser.account?.email = "demo@netfect.com";
+                                    selectedUser.account?.parola = null;
+                                  } else {
+                                    AccountModel.instance.uyeEmail = selectedUser.account?.email;
+                                    AccountModel.instance.uyeSifre = selectedUser.account?.parola;
+                                  }
+
+                                  viewModel.checkDebug();
+                                } else {
+                                  selectedUser = CacheManager.getVerifiedUser;
+                                  AccountModel.setFromAccountResponseModel(selectedUser.account);
+                                  viewModel.checkDebug();
+                                  if (selectedUser.account?.firma != null) {
+                                    companyController.text = selectedUser.account!.firma!;
+                                  }
+                                  emailController.text = selectedUser.username ?? "";
+                                  passwordController.text = selectedUser.password ?? "";
+                                }
+                              },
+                              decoration: const InputDecoration(suffixIcon: Icon(Icons.more_horiz)),
+                              controller: companyController,
                               textInputAction: TextInputAction.next,
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: UIHelper.midPaddingVertical,
-                          child: CustomWidgetWithLabel(
-                            text: "Şifre",
-                            child: Observer(builder: (_) {
-                              return TextField(
-                                controller: passwordController,
-                                textInputAction: TextInputAction.done,
-                                obscureText: viewModel.obscurePassword,
-                                decoration: InputDecoration(
-                                  suffixIcon: IconButton(
-                                    onPressed: () => viewModel.changeShowPassword(),
-                                    icon: viewModel.obscurePassword ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
-                                  ),
-                                ),
-                              );
-                            }),
+                          Padding(
+                            padding: UIHelper.midPaddingOnlyTop,
+                            child: CustomWidgetWithLabel(
+                              text: "Netfect Kullanıcı Adı",
+                              child: TextFormField(
+                                controller: emailController,
+                                textInputAction: TextInputAction.next,
+                              ),
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8.0),
-                          child: elevatedButton,
-                        ),
-                      ],
+                          Padding(
+                            padding: UIHelper.midPaddingVertical,
+                            child: CustomWidgetWithLabel(
+                              text: "Şifre",
+                              child: Observer(
+                                  builder: (_) => TextField(
+                                        controller: passwordController,
+                                        textInputAction: TextInputAction.done,
+                                        obscureText: viewModel.obscurePassword,
+                                        decoration: InputDecoration(
+                                          suffixIcon: IconButton(
+                                            onPressed: () => viewModel.changeShowPassword(),
+                                            icon: viewModel.obscurePassword ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
+                                          ),
+                                        ),
+                                      )),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: elevatedButton,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
+          ],
+        ),
+      );
 
-  ElevatedButton get elevatedButton {
-    // await AppTrackingTransparency.requestTrackingAuthorization();
-    // if ((await AppTrackingTransparency.trackingAuthorizationStatus != TrackingStatus.authorized) && Platform.isIOS) {
-    //   await dialogManager.showAlertDialog(
-    //       "Cihaz bilgilerinizin toplanması için izin vermeniz gerekmektedir. Ayarlar'dan lütfen cihazın \n\"Takip Etmeye İzin Ver\"\nayarını açınız.\n\nAyarlar sayfasına yönlendiriliyorsunuz.");
-    //   await AppSettings.openAppSettings();
-    // } else {
-    // }
-    return ElevatedButton(onPressed: () async => login(), child: const Text("Giriş"));
-  }
+  // await AppTrackingTransparency.requestTrackingAuthorization();
+  // if ((await AppTrackingTransparency.trackingAuthorizationStatus != TrackingStatus.authorized) && Platform.isIOS) {
+  //   await dialogManager.showAlertDialog(
+  //       "Cihaz bilgilerinizin toplanması için izin vermeniz gerekmektedir. Ayarlar'dan lütfen cihazın \n\"Takip Etmeye İzin Ver\"\nayarını açınız.\n\nAyarlar sayfasına yönlendiriliyorsunuz.");
+  //   await AppSettings.openAppSettings();
+  // } else {
+  // }
+  ElevatedButton get elevatedButton => ElevatedButton(onPressed: () async => login(), child: const Text("Giriş"));
 
   void login() async {
     // dialogManager.showLoadingDialog("Yükleniyor...");

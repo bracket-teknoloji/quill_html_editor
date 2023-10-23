@@ -22,8 +22,7 @@ class AppBarPreferedSizedBottom extends StatefulWidget
 class _AppBarPreferedSizedBottomState
     extends BaseState<AppBarPreferedSizedBottom> {
   @override
-  Widget build(BuildContext context) {
-    return SizedBox(
+  Widget build(BuildContext context) => SizedBox(
       height: height * 0.07,
       child: ListView(
         shrinkWrap: true,
@@ -39,5 +38,4 @@ class _AppBarPreferedSizedBottomState
             .nullCheckWithGeneric,
       ),
     );
-  }
 }

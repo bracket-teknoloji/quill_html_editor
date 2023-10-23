@@ -63,12 +63,10 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return PDFViewerView(
+  Widget build(BuildContext context) => PDFViewerView(
         filterBottomSheet: filterBottomSheet,
         title: "Ambar Maliyet Raporu",
         pdfData: viewModel.pdfModel);
-  }
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -181,8 +179,7 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
                         onTap: () async =>
                             await getGrupKodu(5, kod5Controller)))
               ]),
-              Observer(builder: (_) {
-                return ElevatedButton(
+              Observer(builder: (_) => ElevatedButton(
                         onPressed: () {
                           if (viewModel.pdfModel.dicParams?.maliyetTipi !=
                               null) {
@@ -194,8 +191,7 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
                           }
                         },
                         child: const Text("Uygula"))
-                    .paddingAll(UIHelper.lowSize);
-              })
+                    .paddingAll(UIHelper.lowSize))
             ],
           ),
         ));

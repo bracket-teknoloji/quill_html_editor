@@ -37,8 +37,7 @@ class AnimatedIslemlerGridTile extends StatefulWidget {
 class AnimatedIslemlerGridTileState
     extends BaseState<AnimatedIslemlerGridTile> {
   @override
-  Widget build(BuildContext context) {
-    return InkWell(
+  Widget build(BuildContext context) => InkWell(
       borderRadius: UIHelper.lowBorderRadius,
       splashFactory: InkRipple.splashFactory,
       splashColor: theme.primaryColor,
@@ -77,5 +76,4 @@ class AnimatedIslemlerGridTileState
             ],
           )),
     );
-  }
 }

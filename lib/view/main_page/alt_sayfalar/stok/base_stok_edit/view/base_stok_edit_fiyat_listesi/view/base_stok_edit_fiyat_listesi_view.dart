@@ -20,8 +20,7 @@ class _BaseStokEditFiyatListesiViewState
     extends State<BaseStokEditFiyatListesiView> {
   StokDetayModel model = StokDetayModel.instance;
   @override
-  Widget build(BuildContext context) {
-    return model.fiyatList.ext.isNotNullOrEmpty
+  Widget build(BuildContext context) => model.fiyatList.ext.isNotNullOrEmpty
         ? ListView.builder(
             itemCount: model.fiyatList?.length,
             itemBuilder: (context, index) => Card(
@@ -70,5 +69,4 @@ class _BaseStokEditFiyatListesiViewState
             ),
           ).paddingAll(UIHelper.lowSize)
         : const Center(child: Text("Fiyat bilgisi bulunamadı"));
-  }
 }
