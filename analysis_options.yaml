@@ -59,7 +59,7 @@ linter:
     # unawaited_futures: true
     unnecessary_breaks: true
     unnecessary_lambdas: true
-    # unnecessary_null_aware_operator_on_extension_on_nullable: true
+    unnecessary_null_aware_operator_on_extension_on_nullable: true
     unnecessary_parenthesis: true
     unnecessary_to_list_in_spreads: true
     use_build_context_synchronously: true

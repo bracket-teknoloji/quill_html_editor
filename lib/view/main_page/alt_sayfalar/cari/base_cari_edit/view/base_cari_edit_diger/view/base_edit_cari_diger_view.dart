@@ -190,43 +190,47 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  CustomTextField(
-                    enabled: enabled,
-                    readOnly: true,
-                    suffixMore: true,
-                    labelText: "Grup Kodu",
-                    controller: grupKoduController,
-                    onClear: () => viewModel.changeGrupKodu(null),
-                    onTap: () async {
-                      final List<BaseGrupKoduModel>? liste = list?.where((BaseGrupKoduModel element) => element.grupNo == 0).toList();
-                      final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                          aramaVarMi: true, title: "GrupKodu", children: List.generate(liste!.length, (int index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])));
-                      if (result != null) {
-                        grupKoduController.text = result.grupAdi;
-                        viewModel.changeGrupKodu(result.grupKodu);
-                      }
-                    },
+                  Expanded(
+                    child: CustomTextField(
+                      enabled: enabled,
+                      readOnly: true,
+                      suffixMore: true,
+                      labelText: "Grup Kodu",
+                      controller: grupKoduController,
+                      onClear: () => viewModel.changeGrupKodu(null),
+                      onTap: () async {
+                        final List<BaseGrupKoduModel>? liste = list?.where((BaseGrupKoduModel element) => element.grupNo == 0).toList();
+                        final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                            aramaVarMi: true, title: "GrupKodu", children: List.generate(liste!.length, (int index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])));
+                        if (result != null) {
+                          grupKoduController.text = result.grupAdi;
+                          viewModel.changeGrupKodu(result.grupKodu);
+                        }
+                      },
+                    ),
                   ),
-                  CustomTextField(
-                    enabled: enabled,
-                    readOnly: true,
-                    suffixMore: true,
-                    labelText: "Kod 1",
-                    controller: kod1Controller,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model?.kod1 ?? "")),
-                    onClear: () => viewModel.changeKod1(null),
-                    onTap: () async {
-                      final List<BaseGrupKoduModel>? liste = list?.where((BaseGrupKoduModel element) => element.grupNo == 1).toList();
-                      final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                          aramaVarMi: true, title: "Kod 1", children: List.generate(liste!.length, (int index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])));
-                      if (result is BaseGrupKoduModel) {
-                        kod1Controller.text = result.grupAdi ?? "";
-                        viewModel.changeKod1(result.grupKodu);
-                      }
-                    },
+                  Expanded(
+                    child: CustomTextField(
+                      enabled: enabled,
+                      readOnly: true,
+                      suffixMore: true,
+                      labelText: "Kod 1",
+                      controller: kod1Controller,
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model?.kod1 ?? "")),
+                      onClear: () => viewModel.changeKod1(null),
+                      onTap: () async {
+                        final List<BaseGrupKoduModel>? liste = list?.where((BaseGrupKoduModel element) => element.grupNo == 1).toList();
+                        final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                            aramaVarMi: true, title: "Kod 1", children: List.generate(liste!.length, (int index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])));
+                        if (result is BaseGrupKoduModel) {
+                          kod1Controller.text = result.grupAdi ?? "";
+                          viewModel.changeKod1(result.grupKodu);
+                        }
+                      },
+                    ),
                   ),
                 ],
-              ).withExpanded,
+              ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -274,40 +278,44 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  CustomTextField(
-                      enabled: enabled,
-                      labelText: "Kod 4",
-                      readOnly: true,
-                      suffixMore: true,
-                      controller: kod4Controller,
-                      valueWidget: Observer(builder: (_) => Text(viewModel.model?.kod4 ?? "")),
-                      onClear: () => viewModel.changeKod4(null),
-                      onTap: () async {
-                        final List<BaseGrupKoduModel>? liste = list?.where((BaseGrupKoduModel element) => element.grupNo == 4).toList();
-                        final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                            aramaVarMi: true, title: "Kod 4", children: List.generate(liste!.length, (int index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])));
-                        if (result is BaseGrupKoduModel) {
-                          kod4Controller.text = result.grupAdi ?? "";
-                          viewModel.changeKod4(result.grupKodu);
-                        }
-                      }),
-                  CustomTextField(
-                      enabled: enabled,
-                      labelText: "Kod 5",
-                      readOnly: true,
-                      suffixMore: true,
-                      controller: kod5Controller,
-                      valueWidget: Observer(builder: (_) => Text(viewModel.model?.kod5 ?? "")),
-                      onClear: () => viewModel.changeKod5(null),
-                      onTap: () async {
-                        final List<BaseGrupKoduModel>? liste = list?.where((BaseGrupKoduModel element) => element.grupNo == 5).toList();
-                        final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                            aramaVarMi: true, title: "Kod 5", children: List.generate(liste!.length, (int index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])));
-                        if (result is BaseGrupKoduModel) {
-                          kod5Controller.text = result.grupAdi ?? "";
-                          viewModel.changeKod5(result.grupKodu);
-                        }
-                      }),
+                  Expanded(
+                    child: CustomTextField(
+                        enabled: enabled,
+                        labelText: "Kod 4",
+                        readOnly: true,
+                        suffixMore: true,
+                        controller: kod4Controller,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model?.kod4 ?? "")),
+                        onClear: () => viewModel.changeKod4(null),
+                        onTap: () async {
+                          final List<BaseGrupKoduModel>? liste = list?.where((BaseGrupKoduModel element) => element.grupNo == 4).toList();
+                          final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                              aramaVarMi: true, title: "Kod 4", children: List.generate(liste!.length, (int index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])));
+                          if (result is BaseGrupKoduModel) {
+                            kod4Controller.text = result.grupAdi ?? "";
+                            viewModel.changeKod4(result.grupKodu);
+                          }
+                        }),
+                  ),
+                  Expanded(
+                    child: CustomTextField(
+                        enabled: enabled,
+                        labelText: "Kod 5",
+                        readOnly: true,
+                        suffixMore: true,
+                        controller: kod5Controller,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model?.kod5 ?? "")),
+                        onClear: () => viewModel.changeKod5(null),
+                        onTap: () async {
+                          final List<BaseGrupKoduModel>? liste = list?.where((BaseGrupKoduModel element) => element.grupNo == 5).toList();
+                          final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                              aramaVarMi: true, title: "Kod 5", children: List.generate(liste!.length, (int index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])));
+                          if (result is BaseGrupKoduModel) {
+                            kod5Controller.text = result.grupAdi ?? "";
+                            viewModel.changeKod5(result.grupKodu);
+                          }
+                        }),
+                  ),
                 ],
               ).withExpanded,
               CustomTextField(

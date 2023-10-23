@@ -18,197 +18,131 @@ class CariHareketlerCard extends StatefulWidget {
   final CariHareketleriModel cariHareketleriModel;
   final dynamic Function()? onTap;
 
-  const CariHareketlerCard(
-      {super.key,
-      this.onTap,
-      required this.cariHareketleriModel,
-      this.dovizTipi});
+  const CariHareketlerCard({super.key, this.onTap, required this.cariHareketleriModel, this.dovizTipi});
 
   @override
   State<CariHareketlerCard> createState() => _CariHareketlerCardState();
 }
 
 class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
-  bool get dovizliMi =>
-      widget.cariHareketleriModel.dovizliMi || widget.dovizTipi != null;
+  bool get dovizliMi => widget.cariHareketleriModel.dovizliMi || widget.dovizTipi != null;
   @override
   Widget build(BuildContext context) => Slidable(
-      enabled: widget.cariHareketleriModel.hareketAciklama != "Dekont",
-      endActionPane: ActionPane(
-          motion: const ScrollMotion(),
+        enabled: widget.cariHareketleriModel.hareketAciklama != "Dekont",
+        endActionPane: ActionPane(
+            motion: const ScrollMotion(),
+            children: [
+              SlidableAction(
+                autoClose: true,
+                onPressed: (context) {},
+                icon: Icons.route_outlined,
+                backgroundColor: theme.cardColor,
+                foregroundColor: theme.colorScheme.primary,
+                label: "Belgeye Git",
+              ).yetkiVarMi(widget.cariHareketleriModel.hareketAciklama != "Dekont")
+            ].whereType<SlidableAction>().toList()),
+        child: Stack(
+          alignment: Alignment.centerRight,
+          fit: StackFit.passthrough,
           children: [
-            SlidableAction(
-              autoClose: true,
-              onPressed: (context) {},
-              icon: Icons.route_outlined,
-              backgroundColor: theme.cardColor,
-              foregroundColor: theme.colorScheme.primary,
-              label: "Belgeye Git",
-            ).yetkiVarMi(
-                widget.cariHareketleriModel.hareketAciklama != "Dekont")
-          ].whereType<SlidableAction>().toList()),
-      child: Stack(
-        alignment: Alignment.centerRight,
-        fit: StackFit.passthrough,
-        children: [
-          Card(
-            child: Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    children: [
-                      ListTile(
-                        horizontalTitleGap: 0,
-                        onTap: widget.onTap ?? () {},
-                        title: Row(
+            Card(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: [
+                        ListTile(
+                          horizontalTitleGap: 0,
+                          onTap: widget.onTap ?? () {},
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text("${widget.cariHareketleriModel.tarih?.toDateString ?? ""} (${widget.cariHareketleriModel.hareketKodu ?? ""}) "),
+                                      const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli)
+                                          .yetkiVarMi(widget.cariHareketleriModel.dovizAlacak != null || widget.cariHareketleriModel.dovizBorc != null)
+                                      // widget.cariHareketleriModel.dovizliMi ? const Badge(label: Text("Dövizli")) : Container(),
+                                    ],
+                                  ),
+                                  Text(widget.cariHareketleriModel.hareketAciklama ?? "", style: TextStyle(color: UIHelper.primaryColor)),
+                                ],
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                      "${widget.cariHareketleriModel.alacak?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? widget.cariHareketleriModel.borc?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                                      style: theme.textTheme.bodySmall?.copyWith(fontSize: 12)),
+                                  Visibility(
+                                      visible: widget.cariHareketleriModel.dovizliMi,
+                                      child: Text(
+                                          "${widget.cariHareketleriModel.dovizBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cariHareketleriModel.dovizAdi ?? mainCurrency}",
+                                          style: theme.textTheme.bodySmall?.copyWith(fontSize: 10)))
+                                ],
+                              ),
+                            ],
+                          ),
+                          subtitle: Wrap(
+                            runAlignment: WrapAlignment.spaceBetween,
+                            children: [
+                              CustomWidgetWithLabel(
+                                  isVertical: true, isTitleSmall: true, text: "Belge No", width: width * 0.33, child: Text(widget.cariHareketleriModel.belgeNo ?? "", overflow: TextOverflow.ellipsis)),
+                              CustomWidgetWithLabel(
+                                  isVertical: true,
+                                  isTitleSmall: true,
+                                  text: "Vade Tarihi",
+                                  width: width * 0.33,
+                                  child: Text(widget.cariHareketleriModel.vadeTarihi?.toDateString ?? "", overflow: TextOverflow.ellipsis)),
+                              CustomWidgetWithLabel(
+                                  isVertical: true,
+                                  isTitleSmall: true,
+                                  text: "Plasiyer",
+                                  width: width * 0.33,
+                                  child: Text(widget.cariHareketleriModel.plasiyerAciklama ?? "", overflow: TextOverflow.ellipsis)),
+                              CustomWidgetWithLabel(
+                                  isVertical: true, isTitleSmall: true, text: "Şube", width: width * 0.33, child: Text("${widget.cariHareketleriModel.subeKodu ?? 0}", overflow: TextOverflow.ellipsis))
+                            ].map((e) => SizedBox(width: width * 0.33, child: e).paddingOnly(bottom: UIHelper.lowSize)).toList(),
+                          ),
+                        ),
+                        const Divider(),
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                        "${widget.cariHareketleriModel.tarih?.toDateString ?? ""} (${widget.cariHareketleriModel.borc != null && widget.cariHareketleriModel.dovizBorc != null ? "B" : "A"}) "),
-                                    const ColorfulBadge(
-                                            label: Text("Dövizli"),
-                                            badgeColorEnum:
-                                                BadgeColorEnum.dovizli)
-                                        .yetkiVarMi(widget.cariHareketleriModel
-                                                    .dovizAlacak !=
-                                                null ||
-                                            widget.cariHareketleriModel
-                                                    .dovizBorc !=
-                                                null)
-                                    // widget.cariHareketleriModel.dovizliMi ? const Badge(label: Text("Dövizli")) : Container(),
-                                  ],
-                                ),
-                                Text(
-                                    widget.cariHareketleriModel
-                                            .hareketAciklama ??
-                                        "",
-                                    style: TextStyle(
-                                        color: UIHelper.primaryColor)),
-                              ],
+                            //Açıklama
+                            SizedBox(
+                              width: width * 0.4,
+                              child: Text(widget.cariHareketleriModel.aciklama ?? "",
+                                  overflow: TextOverflow.ellipsis, softWrap: true, maxLines: 3, style: theme.textTheme.bodySmall?.copyWith(color: Colors.grey, fontStyle: FontStyle.italic)),
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                    "${widget.cariHareketleriModel.alacak?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? widget.cariHareketleriModel.borc?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                                    style: theme.textTheme.bodySmall
-                                        ?.copyWith(fontSize: 12)),
-                                Visibility(
-                                    visible:
-                                        widget.cariHareketleriModel.dovizliMi,
-                                    child: Text(
-                                        "${widget.cariHareketleriModel.dovizBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cariHareketleriModel.dovizAdi ?? mainCurrency}",
-                                        style: theme.textTheme.bodySmall
-                                            ?.copyWith(fontSize: 10)))
-                              ],
+                            //YuruyenBakiye
+                            Container(
+                              alignment: Alignment.centerRight,
+                              child: Text("Bakiye : ${dovizCheck.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.dovizTipi ?? mainCurrency}",
+                                  style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(dovizCheck))),
                             ),
-                          ],
-                        ),
-                        subtitle: Wrap(
-                          runAlignment: WrapAlignment.spaceBetween,
-                          children: [
-                            CustomWidgetWithLabel(
-                                isVertical: true,
-                                isTitleSmall: true,
-                                text: "Belge No",
-                                width: width * 0.33,
-                                child: Text(
-                                    widget.cariHareketleriModel.belgeNo ?? "",
-                                    overflow: TextOverflow.ellipsis)),
-                            CustomWidgetWithLabel(
-                                isVertical: true,
-                                isTitleSmall: true,
-                                text: "Vade Tarihi",
-                                width: width * 0.33,
-                                child: Text(
-                                    widget.cariHareketleriModel.vadeTarihi
-                                            ?.toDateString ??
-                                        "",
-                                    overflow: TextOverflow.ellipsis)),
-                            CustomWidgetWithLabel(
-                                isVertical: true,
-                                isTitleSmall: true,
-                                text: "Plasiyer",
-                                width: width * 0.33,
-                                child: Text(
-                                    widget.cariHareketleriModel
-                                            .plasiyerAciklama ??
-                                        "",
-                                    overflow: TextOverflow.ellipsis)),
-                            CustomWidgetWithLabel(
-                                isVertical: true,
-                                isTitleSmall: true,
-                                text: "Şube",
-                                width: width * 0.33,
-                                child: Text(
-                                    "${widget.cariHareketleriModel.subeKodu ?? 0}",
-                                    overflow: TextOverflow.ellipsis))
-                          ]
-                              .map((e) =>
-                                  SizedBox(width: width * 0.33, child: e)
-                                      .paddingOnly(bottom: UIHelper.lowSize))
-                              .toList(),
-                        ),
-                      ),
-                      const Divider(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          //Açıklama
-                          SizedBox(
-                            width: width * 0.4,
-                            child: Text(
-                                widget.cariHareketleriModel.aciklama ?? "",
-                                overflow: TextOverflow.ellipsis,
-                                softWrap: true,
-                                maxLines: 3,
-                                style: theme.textTheme.bodySmall?.copyWith(
-                                    color: Colors.grey,
-                                    fontStyle: FontStyle.italic)),
-                          ),
-                          //YuruyenBakiye
-                          Container(
-                            alignment: Alignment.centerRight,
-                            child: Text(
-                                "Bakiye : ${dovizCheck.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.dovizTipi ?? mainCurrency}",
-                                style: theme.textTheme.bodySmall?.copyWith(
-                                    color: UIHelper.getColorWithValue(
-                                        dovizCheck))),
-                          ),
-                        ]
-                            .map((e) => e.paddingSymmetric(
-                                vertical: UIHelper.midSize,
-                                horizontal: UIHelper.highSize))
-                            .toList(),
-                      )
-                    ],
-                  ).paddingAll(UIHelper.lowSize),
-                )
-              ],
-            ),
-          ).paddingSymmetric(horizontal: UIHelper.lowSize),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Visibility(
-                visible:
-                    widget.cariHareketleriModel.hareketAciklama != "Dekont",
-                child: Icon(Icons.chevron_right_outlined,
-                    color: theme.colorScheme.primary)),
-          ).paddingOnly(right: UIHelper.lowSize)
-        ],
-      ),
-    );
+                          ].map((e) => e.paddingSymmetric(vertical: UIHelper.midSize, horizontal: UIHelper.highSize)).toList(),
+                        )
+                      ],
+                    ).paddingAll(UIHelper.lowSize),
+                  )
+                ],
+              ),
+            ).paddingSymmetric(horizontal: UIHelper.lowSize),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Visibility(visible: widget.cariHareketleriModel.hareketAciklama != "Dekont", child: Icon(Icons.chevron_right_outlined, color: theme.colorScheme.primary)),
+            ).paddingOnly(right: UIHelper.lowSize)
+          ],
+        ),
+      );
 
   double get dovizCheck {
     if (dovizliMi) {
-      return widget.cariHareketleriModel.dovYuruyenBakiye ??
-          widget.cariHareketleriModel.yuruyenBakiye ??
-          0;
+      return widget.cariHareketleriModel.dovYuruyenBakiye ?? widget.cariHareketleriModel.yuruyenBakiye ?? 0;
     } else {
       return widget.cariHareketleriModel.yuruyenBakiye ?? 0;
     }
