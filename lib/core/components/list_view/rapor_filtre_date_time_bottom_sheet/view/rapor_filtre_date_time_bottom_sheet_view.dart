@@ -15,8 +15,15 @@ class RaporFiltreDateTimeBottomSheetView extends StatefulWidget {
   final dynamic Function()? bitisOnTap;
   final bool? showBugunFirst;
 
-  const RaporFiltreDateTimeBottomSheetView(
-      {super.key, required this.filterOnChanged, required this.baslangicTarihiController, required this.bitisTarihiController, this.baslangicOnTap, this.bitisOnTap, this.showBugunFirst,});
+  const RaporFiltreDateTimeBottomSheetView({
+    super.key,
+    required this.filterOnChanged,
+    required this.baslangicTarihiController,
+    required this.bitisTarihiController,
+    this.baslangicOnTap,
+    this.bitisOnTap,
+    this.showBugunFirst,
+  });
 
   @override
   State<RaporFiltreDateTimeBottomSheetView> createState() => _RaporFiltreDateTimeBottomSheetViewState();
@@ -51,11 +58,12 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
   Widget build(BuildContext context) {
     final children2 = [
       CustomTextField(
-          labelText: "Başlangıç Tarihi",
-          readOnly: true,
-          controller: widget.baslangicTarihiController,
-          isDateTime: true,
-          onTap: () async => widget.baslangicOnTap ?? getDate(true).then((value) => widget.filterOnChanged(9)),),
+        labelText: "Başlangıç Tarihi",
+        readOnly: true,
+        controller: widget.baslangicTarihiController,
+        isDateTime: true,
+        onTap: () async => widget.baslangicOnTap ?? getDate(true).then((value) => widget.filterOnChanged(9)),
+      ),
       CustomTextField(
         labelText: "Bitiş Tarihi",
         readOnly: true,
@@ -83,22 +91,23 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
           height: 50,
           width: double.infinity,
           child: ListView.builder(
-              controller: scrollController,
-              scrollDirection: Axis.horizontal,
-              itemCount: viewModel.childrenTitleList.length,
-              itemBuilder: (context, listTileIndex) => RadioMenuButton(
-                      style: ButtonStyle(padding: MaterialStateProperty.all(EdgeInsets.zero)),
-                      value: listTileIndex,
-                      groupValue: viewModel.groupValue,
-                      onChanged: (index) {
-                        widget.baslangicTarihiController.text = viewModel.startDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull() ?? "";
-                        widget.bitisTarihiController.text = index != 0 ? viewModel.finishDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull() ?? "" : "";
-                        widget.filterOnChanged(index);
-                        viewModel.changeGroupValue(index ?? 0);
-                        setState(() {});
-                      },
-                      child: Text(viewModel.childrenTitleList[listTileIndex]),)
-                  .paddingOnly(right: UIHelper.highSize),),
+            controller: scrollController,
+            scrollDirection: Axis.horizontal,
+            itemCount: viewModel.childrenTitleList.length,
+            itemBuilder: (context, listTileIndex) => RadioMenuButton(
+              style: ButtonStyle(padding: MaterialStateProperty.all(EdgeInsets.zero)),
+              value: listTileIndex,
+              groupValue: viewModel.groupValue,
+              onChanged: (index) {
+                widget.baslangicTarihiController.text = viewModel.startDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull() ?? "";
+                widget.bitisTarihiController.text = index != 0 ? viewModel.finishDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull() ?? "" : "";
+                widget.filterOnChanged(index);
+                viewModel.changeGroupValue(index ?? 0);
+                setState(() {});
+              },
+              child: Text(viewModel.childrenTitleList[listTileIndex]),
+            ).paddingOnly(right: UIHelper.highSize),
+          ),
         ).paddingOnly(left: UIHelper.lowSize),
         Row(
           children: children2.map((e) => Expanded(child: e)).toList(),

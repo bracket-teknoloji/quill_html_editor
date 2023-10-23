@@ -16,25 +16,25 @@ class CustomWidgetWithLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SizedBox(
-      width: width,
-      child: Wrap(
-        direction: (isVertical ?? false) ? Axis.vertical : Axis.horizontal,
-        runSpacing: UIHelper.lowSize,
-        crossAxisAlignment: WrapCrossAlignment.start,
-        runAlignment: WrapAlignment.start,
-        alignment: WrapAlignment.start,
-        children: [
-          Text(text ?? "",
-                  style: (isTitleSmall ?? false)
-                      ? Theme.of(context).textTheme.bodySmall?.copyWith(
-                            fontSize: UIHelper.midSize,
-                            color: (isMust ?? false) ? UIHelper.primaryColor : null,
-                          )
-                      : null,)
-              .paddingOnly(left: onlyLabelpaddingLeft ?? 0)
-              .yetkiVarMi(text != null),
-          child,
-        ],
-      ),
-    );
+        width: width,
+        child: Wrap(
+          direction: (isVertical ?? false) ? Axis.vertical : Axis.horizontal,
+          runSpacing: UIHelper.lowSize,
+          crossAxisAlignment: WrapCrossAlignment.start,
+          runAlignment: WrapAlignment.start,
+          alignment: WrapAlignment.start,
+          children: [
+            Text(
+              text ?? "",
+              style: (isTitleSmall ?? false)
+                  ? Theme.of(context).textTheme.bodySmall?.copyWith(
+                        fontSize: UIHelper.midSize,
+                        color: (isMust ?? false) ? UIHelper.primaryColor : null,
+                      )
+                  : null,
+            ).paddingOnly(left: onlyLabelpaddingLeft ?? 0).yetkiVarMi(text != null),
+            child,
+          ],
+        ),
+      );
 }

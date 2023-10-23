@@ -64,160 +64,161 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Observer(builder: (_) => viewModel.searchBar
+          title: Observer(
+            builder: (_) => viewModel.searchBar
                 ? CustomAppBarTextField(
                     controller: searchBarController,
-                    onChanged: (p0) => viewModel.filterModelList(p0),)
+                    onChanged: (p0) => viewModel.filterModelList(p0),
+                  )
                 : AppBarTitle(
                     title: "Fiyat Geçmişi",
-                    subtitle: "${viewModel.modelList?.length ?? 0} kayıt",),),
+                    subtitle: "${viewModel.modelList?.length ?? 0} kayıt",
+                  ),
+          ),
           actions: [
             IconButton(
-                icon: Observer(
-                    builder: (_) => Icon(viewModel.searchBar
-                        ? Icons.search_off_outlined
-                        : Icons.search_outlined,),),
-                onPressed: () => viewModel.setSearchBar(),),
-            Observer(builder: (_) => viewModel.searchBar
+              icon: Observer(
+                builder: (_) => Icon(
+                  viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined,
+                ),
+              ),
+              onPressed: () => viewModel.setSearchBar(),
+            ),
+            Observer(
+              builder: (_) => viewModel.searchBar
                   ? const SizedBox()
                   : IconButton(
                       icon: const Icon(Icons.sort_by_alpha_outlined),
                       onPressed: () async {
-                        final result = await bottomSheetDialogManager
-                            .showBottomSheetDialog(context,
-                                title: "Sırala",
-                                children: List.generate(
-                                    viewModel.siralaTitleList.length,
-                                    (index) => BottomSheetModel(
-                                        title: viewModel
-                                            .siralaTitleList[index].title,
-                                        onTap: () => Get.back(
-                                            result: viewModel
-                                                .siralaTitleList[index]
-                                                .value,),),),);
+                        final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                          context,
+                          title: "Sırala",
+                          children: List.generate(
+                            viewModel.siralaTitleList.length,
+                            (index) => BottomSheetModel(
+                              title: viewModel.siralaTitleList[index].title,
+                              onTap: () => Get.back(
+                                result: viewModel.siralaTitleList[index].value,
+                              ),
+                            ),
+                          ),
+                        );
                         if (result != null) {
                           viewModel.model.sirala = result;
                           getData();
                         }
-                      },),),
+                      },
+                    ),
+            ),
             Observer(
-                builder: (_) => viewModel.searchBar
-                    ? const SizedBox()
-                    : IconButton(
-                        icon: const Icon(Icons.filter_alt_outlined),
-                        onPressed: () async {
-                          await bottomSheetDialogManager.showBottomSheetDialog(
-                              context,
-                              title: "Filtrele",
-                              body: Column(
+              builder: (_) => viewModel.searchBar
+                  ? const SizedBox()
+                  : IconButton(
+                      icon: const Icon(Icons.filter_alt_outlined),
+                      onPressed: () async {
+                        await bottomSheetDialogManager.showBottomSheetDialog(
+                          context,
+                          title: "Filtrele",
+                          body: Column(
+                            children: [
+                              RaporFiltreDateTimeBottomSheetView(
+                                filterOnChanged: (index) => log(""),
+                                baslangicTarihiController: baslangicTarihiController,
+                                bitisTarihiController: bitisTarihiController,
+                              ),
+                              Observer(
+                                builder: (_) => SlideControllerWidget(
+                                  title: "Yazdırma Durumu",
+                                  childrenTitleList: viewModel.yazdirmaDurumuMap.keys.toList(),
+                                  childrenValueList: viewModel.yazdirmaDurumuMap.values.toList(),
+                                  filterOnChanged: (index) => viewModel.setYazdirmaGroupValue(index ?? 0),
+                                  groupValue: viewModel.yazdirmaGroupValue,
+                                ),
+                              ),
+                              Observer(
+                                builder: (_) => SlideControllerWidget(
+                                  title: "Alış/Satış Fiyat Tipi",
+                                  childrenTitleList: viewModel.alisSatisDurumuMap.keys.toList(),
+                                  childrenValueList: viewModel.alisSatisDurumuMap.values.toList(),
+                                  filterOnChanged: (index) => viewModel.setAlisSatisGroupValue(index ?? 0),
+                                  groupValue: viewModel.alisSatisGroupValue,
+                                ),
+                              ),
+                              CustomTextField(
+                                labelText: "Fiyat Tipi",
+                                readOnly: true,
+                                controller: fiyatTipiController,
+                                suffixMore: true,
+                                onTap: () async {
+                                  final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                                    context,
+                                    title: "Fiyat Tipi",
+                                    children: List.generate(
+                                      viewModel.fiyatTipiMap.length,
+                                      (index) => BottomSheetModel(
+                                        title: viewModel.fiyatTipiMap.keys.toList()[index],
+                                        onTap: () => Get.back(
+                                          result: viewModel.fiyatTipiMap.values.toList()[index],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                  if (result != null) {
+                                    viewModel.model.fiyatTipi = result;
+                                    fiyatTipiController.text = viewModel.fiyatTipiMap.keys.toList()[viewModel.fiyatTipiMap.values.toList().indexOf(result)];
+                                  }
+                                },
+                              ),
+                              Row(
                                 children: [
-                                  RaporFiltreDateTimeBottomSheetView(
-                                      filterOnChanged: (index) => log(""),
-                                      baslangicTarihiController:
-                                          baslangicTarihiController,
-                                      bitisTarihiController:
-                                          bitisTarihiController,),
-                                  Observer(builder: (_) => SlideControllerWidget(
-                                      title: "Yazdırma Durumu",
-                                      childrenTitleList: viewModel
-                                          .yazdirmaDurumuMap.keys
-                                          .toList(),
-                                      childrenValueList: viewModel
-                                          .yazdirmaDurumuMap.values
-                                          .toList(),
-                                      filterOnChanged: (index) => viewModel
-                                          .setYazdirmaGroupValue(index ?? 0),
-                                      groupValue: viewModel.yazdirmaGroupValue,
-                                    ),),
-                                  Observer(builder: (_) => SlideControllerWidget(
-                                      title: "Alış/Satış Fiyat Tipi",
-                                      childrenTitleList: viewModel
-                                          .alisSatisDurumuMap.keys
-                                          .toList(),
-                                      childrenValueList: viewModel
-                                          .alisSatisDurumuMap.values
-                                          .toList(),
-                                      filterOnChanged: (index) => viewModel
-                                          .setAlisSatisGroupValue(index ?? 0),
-                                      groupValue: viewModel.alisSatisGroupValue,
-                                    ),),
-                                  CustomTextField(
-                                    labelText: "Fiyat Tipi",
-                                    readOnly: true,
-                                    controller: fiyatTipiController,
-                                    suffixMore: true,
-                                    onTap: () async {
-                                      final result = await bottomSheetDialogManager
-                                          .showBottomSheetDialog(context,
-                                              title: "Fiyat Tipi",
-                                              children: List.generate(
-                                                  viewModel.fiyatTipiMap.length,
-                                                  (index) => BottomSheetModel(
-                                                      title: viewModel
-                                                          .fiyatTipiMap.keys
-                                                          .toList()[index],
-                                                      onTap: () => Get.back(
-                                                          result: viewModel
-                                                                  .fiyatTipiMap
-                                                                  .values
-                                                                  .toList()[
-                                                              index],),),),);
-                                      if (result != null) {
-                                        viewModel.model.fiyatTipi = result;
-                                        fiyatTipiController.text = viewModel
-                                                .fiyatTipiMap.keys
-                                                .toList()[
-                                            viewModel.fiyatTipiMap.values
-                                                .toList()
-                                                .indexOf(result)];
-                                      }
-                                    },
+                                  Expanded(
+                                    child: ElevatedButton(
+                                      style: ButtonStyle(
+                                        backgroundColor: MaterialStateProperty.all(
+                                          Colors.white.withOpacity(0.1),
+                                        ),
+                                      ),
+                                      onPressed: () {
+                                        viewModel.model = FiyatGecmisiModel();
+                                        baslangicTarihiController.clear();
+                                        bitisTarihiController.clear();
+                                        fiyatTipiController.clear();
+                                        viewModel.yazdirmaGroupValue = "";
+                                        viewModel.alisSatisGroupValue = "";
+                                        viewModel.model.sirala = "";
+                                        viewModel.model.fiyatTipi = "";
+                                        getData();
+                                        Get.back();
+                                      },
+                                      child: const Text("Temizle"),
+                                    ),
                                   ),
-                                  Row(children: [
-                                    Expanded(
-                                      child: ElevatedButton(
-                                          style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStateProperty.all(
-                                                      Colors.white
-                                                          .withOpacity(0.1),),),
-                                          onPressed: () {
-                                            viewModel.model =
-                                                FiyatGecmisiModel();
-                                            baslangicTarihiController.clear();
-                                            bitisTarihiController.clear();
-                                            fiyatTipiController.clear();
-                                            viewModel.yazdirmaGroupValue = "";
-                                            viewModel.alisSatisGroupValue = "";
-                                            viewModel.model.sirala = "";
-                                            viewModel.model.fiyatTipi = "";
-                                            getData();
-                                            Get.back();
-                                          },
-                                          child: const Text("Temizle"),),
+                                  const SizedBox(width: 10),
+                                  Expanded(
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        viewModel.model.baslamaTarihi = baslangicTarihiController.text;
+                                        viewModel.model.bitisTarihi = bitisTarihiController.text;
+                                        getData();
+                                        Get.back();
+                                      },
+                                      child: const Text("Uygula"),
                                     ),
-                                    const SizedBox(width: 10),
-                                    Expanded(
-                                      child: ElevatedButton(
-                                          onPressed: () {
-                                            viewModel.model.baslamaTarihi =
-                                                baslangicTarihiController.text;
-                                            viewModel.model.bitisTarihi =
-                                                bitisTarihiController.text;
-                                            getData();
-                                            Get.back();
-                                          },
-                                          child: const Text("Uygula"),),
-                                    ),
-                                  ],),
+                                  ),
                                 ],
-                              ),);
-                        },),),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+            ),
           ],
         ),
         body: RefreshIndicator.adaptive(
           onRefresh: () async => getData(),
-          child: Observer(builder: (_) => viewModel.modelList.ext.isNullOrEmpty
+          child: Observer(
+            builder: (_) => viewModel.modelList.ext.isNullOrEmpty
                 ? (viewModel.modelList?.isEmpty ?? false)
                     ? const Center(child: Text("Kayıt Bulunamadı"))
                     : const Center(
@@ -228,142 +229,151 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                       Row(
                         children: [
                           Expanded(
-                              child: CustomTextField(
-                            labelText: "Dizayn",
-                            controller: dizaynController,
-                            readOnly: true,
-                            suffixMore: true,
-                            onClear: () => viewModel.setDizaynId(null),
-                            onTap: () async {
-                              final List<NetFectDizaynList>? dizaynList =
-                                  parametreModel.netFectDizaynList
-                                      ?.where((element) =>
+                            child: CustomTextField(
+                              labelText: "Dizayn",
+                              controller: dizaynController,
+                              readOnly: true,
+                              suffixMore: true,
+                              onClear: () => viewModel.setDizaynId(null),
+                              onTap: () async {
+                                final List<NetFectDizaynList>? dizaynList = parametreModel.netFectDizaynList
+                                    ?.where(
+                                      (element) =>
                                           element.ozelKod == "StokEtiket" &&
-                                          (profilYetkiModel
-                                                  .yazdirmaDizaynStokEtiketi
-                                                  ?.any((element2) => element
-                                                          .id ==
-                                                      element2,) ??
-                                              true),)
-                                      .toList();
-                              final result = await bottomSheetDialogManager
-                                  .showBottomSheetDialog(context,
-                                      title: "Dizayn",
-                                      children: List.generate(
-                                          dizaynList?.length ?? 0,
-                                          (index) => BottomSheetModel(
-                                              title: dizaynList?[index]
-                                                      .dizaynAdi ??
-                                                  "",
-                                              value: dizaynList?[index],),),);
-                              if (result != null &&
-                                  result is NetFectDizaynList) {
-                                dizaynController.text = result.dizaynAdi ?? "";
-                                viewModel.setDizaynId(result.id);
-                              } else {
-                                return;
-                              }
-                            },
-                          ),),
+                                          (profilYetkiModel.yazdirmaDizaynStokEtiketi?.any(
+                                                (element2) => element.id == element2,
+                                              ) ??
+                                              true),
+                                    )
+                                    .toList();
+                                final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                                  context,
+                                  title: "Dizayn",
+                                  children: List.generate(
+                                    dizaynList?.length ?? 0,
+                                    (index) => BottomSheetModel(
+                                      title: dizaynList?[index].dizaynAdi ?? "",
+                                      value: dizaynList?[index],
+                                    ),
+                                  ),
+                                );
+                                if (result != null && result is NetFectDizaynList) {
+                                  dizaynController.text = result.dizaynAdi ?? "";
+                                  viewModel.setDizaynId(result.id);
+                                } else {
+                                  return;
+                                }
+                              },
+                            ),
+                          ),
                           Expanded(
-                              child: CustomTextField(
-                            labelText: "Yazıcı",
-                            controller: yaziciController,
-                            suffixMore: true,
-                            readOnly: true,
-                            onClear: () => viewModel.setYaziciAdi(null),
-                            onTap: () async {
-                              final List<YaziciList>? yaziciList = parametreModel
-                                  .yaziciList
-                                  ?.where((element) =>
-                                      profilYetkiModel
-                                          .yazdirmaStokEtiketiYazicilari
-                                          ?.any((element2) =>
-                                              element2 == element.yaziciAdi,) ??
-                                      true,)
-                                  .toList();
-                              final result = await bottomSheetDialogManager
-                                  .showBottomSheetDialog(context,
-                                      title: "Yazıcı",
-                                      children: List.generate(
-                                        yaziciList?.length ?? 0,
-                                        (index) => BottomSheetModel(
-                                            title:
-                                                yaziciList?[index].yaziciAdi ??
-                                                    "",
-                                            value: yaziciList?[index],),
-                                      ),);
-                              if (result != null) {
-                                yaziciController.text = result.yaziciAdi ?? "";
-                                viewModel.setYaziciAdi(result);
-                              } else {
-                                return;
-                              }
-                            },
-                          ),),
+                            child: CustomTextField(
+                              labelText: "Yazıcı",
+                              controller: yaziciController,
+                              suffixMore: true,
+                              readOnly: true,
+                              onClear: () => viewModel.setYaziciAdi(null),
+                              onTap: () async {
+                                final List<YaziciList>? yaziciList = parametreModel.yaziciList
+                                    ?.where(
+                                      (element) =>
+                                          profilYetkiModel.yazdirmaStokEtiketiYazicilari?.any(
+                                            (element2) => element2 == element.yaziciAdi,
+                                          ) ??
+                                          true,
+                                    )
+                                    .toList();
+                                final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                                  context,
+                                  title: "Yazıcı",
+                                  children: List.generate(
+                                    yaziciList?.length ?? 0,
+                                    (index) => BottomSheetModel(
+                                      title: yaziciList?[index].yaziciAdi ?? "",
+                                      value: yaziciList?[index],
+                                    ),
+                                  ),
+                                );
+                                if (result != null) {
+                                  yaziciController.text = result.yaziciAdi ?? "";
+                                  viewModel.setYaziciAdi(result);
+                                } else {
+                                  return;
+                                }
+                              },
+                            ),
+                          ),
                         ],
                       ),
                       Expanded(
-                        child: Observer(builder: (_) => ListView.builder(
-                            itemCount:
-                                viewModel.filteredModelList?.length ?? 0,
+                        child: Observer(
+                          builder: (_) => ListView.builder(
+                            itemCount: viewModel.filteredModelList?.length ?? 0,
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
-                              final FiyatGecmisiResponseModel? model =
-                                  viewModel.filteredModelList?[index];
+                              final FiyatGecmisiResponseModel? model = viewModel.filteredModelList?[index];
                               return StokFiyatGecmisiCard(
                                 model: model,
                                 onPrint: () async {
                                   if (dizaynController.text.ext.isNullOrEmpty) {
                                     dialogManager.showErrorSnackBar(
-                                        "Lütfen Dizayn Seçiniz",);
+                                      "Lütfen Dizayn Seçiniz",
+                                    );
                                     return;
                                   }
                                   if (yaziciController.text.ext.isNullOrEmpty) {
                                     dialogManager.showErrorSnackBar(
-                                        "Lütfen Yazıcı Seçiniz",);
+                                      "Lütfen Yazıcı Seçiniz",
+                                    );
                                     return;
                                   }
                                   final DicParams dicParams = DicParams(
-                                      stokKodu: model?.stokKodu,
-                                      fiyatTipi: model?.fiyatTipi,
-                                      tblnfStokfiyatgecmisiId:
-                                          model?.id.toStringIfNotNull,);
+                                    stokKodu: model?.stokKodu,
+                                    fiyatTipi: model?.fiyatTipi,
+                                    tblnfStokfiyatgecmisiId: model?.id.toStringIfNotNull,
+                                  );
                                   viewModel.setDicParams(dicParams);
-                                  final result = await bottomSheetDialogManager
-                                      .showPrintBottomSheetDialog(context,
-                                          viewModel.printModel, null, null,);
+                                  final result = await bottomSheetDialogManager.showPrintBottomSheetDialog(
+                                    context,
+                                    viewModel.printModel,
+                                    null,
+                                    null,
+                                  );
                                   if (result == true) {
                                     getData();
                                   }
                                 },
                               );
                             },
-                          ),),
+                          ),
+                        ),
                       ),
                     ],
-                  ).paddingAll(UIHelper.lowSize),),
-        ),);
+                  ).paddingAll(UIHelper.lowSize),
+          ),
+        ),
+      );
 
   void getData() async {
     viewModel.setModelList(null);
     final result = await networkManager.dioPost<FiyatGecmisiResponseModel>(
-        path: ApiUrls.getStokFiyatGecmisi,
-        bodyModel: FiyatGecmisiResponseModel(),
-        data: viewModel.model.toJson(),);
+      path: ApiUrls.getStokFiyatGecmisi,
+      bodyModel: FiyatGecmisiResponseModel(),
+      data: viewModel.model.toJson(),
+    );
     if (result.success == true) {
-      viewModel.setModelList(result.data
-          .map((e) => e as FiyatGecmisiResponseModel)
-          .toList()
-          .cast<FiyatGecmisiResponseModel>(),);
+      viewModel.setModelList(
+        result.data.map((e) => e as FiyatGecmisiResponseModel).toList().cast<FiyatGecmisiResponseModel>(),
+      );
     }
   }
 
   void deleteData(int id, int islemKodu) async {
     final result = await networkManager.dioPost<FiyatGecmisiResponseModel>(
-        path: ApiUrls.savestokFiyatGecmisi,
-        bodyModel: FiyatGecmisiResponseModel(),
-        data: {"ID": id, "ISLEM_KODU": islemKodu},);
+      path: ApiUrls.savestokFiyatGecmisi,
+      bodyModel: FiyatGecmisiResponseModel(),
+      data: {"ID": id, "ISLEM_KODU": islemKodu},
+    );
     if (result.success == true) {
       dialogManager.showSuccessSnackBar("Silindi");
       getData();

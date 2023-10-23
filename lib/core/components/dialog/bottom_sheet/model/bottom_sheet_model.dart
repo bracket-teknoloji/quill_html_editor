@@ -8,11 +8,12 @@ class BottomSheetModel {
   Function()? onTap;
   final IconData? iconWidget;
 
-  BottomSheetModel(
-      {required this.title,
-      this.description,
-      this.icon,
-      this.value,
-      this.onTap,
-      this.iconWidget,});
+  BottomSheetModel({
+    required this.title,
+    this.description,
+    this.icon,
+    this.value,
+    this.onTap,
+    this.iconWidget,
+  });
 }

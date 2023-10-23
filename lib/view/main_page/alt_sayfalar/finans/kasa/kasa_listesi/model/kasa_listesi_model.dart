@@ -28,8 +28,7 @@ class KasaListesiModel with _$KasaListesiModel, NetworkManagerMixin {
     String? dovizAdi,
   }) = _KasaListesiModel;
 
-  factory KasaListesiModel.fromJson(Map<String, dynamic> json) =>
-      _$KasaListesiModelFromJson(json);
+  factory KasaListesiModel.fromJson(Map<String, dynamic> json) => _$KasaListesiModelFromJson(json);
 
   @override
   fromJson(Map<String, dynamic> json) => _$KasaListesiModelFromJson(json);

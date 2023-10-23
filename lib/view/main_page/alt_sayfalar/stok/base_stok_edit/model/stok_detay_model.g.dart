@@ -6,18 +6,13 @@ part of 'stok_detay_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-StokDetayModel _$StokDetayModelFromJson(Map<String, dynamic> json) =>
-    StokDetayModel()
-      ..stokKodu = json['STOK_KODU'] as String?
-      ..stokAdi = json['STOK_ADI'] as String?
-      ..seriList = json['SeriList'] as List<dynamic>?
-      ..yapList = json['YapList'] as List<dynamic>?
-      ..stokList = (json['StokList'] as List<dynamic>?)
-          ?.map((e) => StokList.fromJson(e as Map<String, dynamic>))
-          .toList()
-      ..fiyatList = (json['FiyatList'] as List<dynamic>?)
-          ?.map((e) => FiyatList.fromJson(e as Map<String, dynamic>))
-          .toList();
+StokDetayModel _$StokDetayModelFromJson(Map<String, dynamic> json) => StokDetayModel()
+  ..stokKodu = json['STOK_KODU'] as String?
+  ..stokAdi = json['STOK_ADI'] as String?
+  ..seriList = json['SeriList'] as List<dynamic>?
+  ..yapList = json['YapList'] as List<dynamic>?
+  ..stokList = (json['StokList'] as List<dynamic>?)?.map((e) => StokList.fromJson(e as Map<String, dynamic>)).toList()
+  ..fiyatList = (json['FiyatList'] as List<dynamic>?)?.map((e) => FiyatList.fromJson(e as Map<String, dynamic>)).toList();
 
 Map<String, dynamic> _$StokDetayModelToJson(StokDetayModel instance) {
   final val = <String, dynamic>{};
@@ -33,8 +28,7 @@ Map<String, dynamic> _$StokDetayModelToJson(StokDetayModel instance) {
   writeNotNull('SeriList', instance.seriList);
   writeNotNull('YapList', instance.yapList);
   writeNotNull('StokList', instance.stokList?.map((e) => e.toJson()).toList());
-  writeNotNull(
-      'FiyatList', instance.fiyatList?.map((e) => e.toJson()).toList());
+  writeNotNull('FiyatList', instance.fiyatList?.map((e) => e.toJson()).toList());
   return val;
 }
 
@@ -43,10 +37,8 @@ FiyatList _$FiyatListFromJson(Map<String, dynamic> json) => FiyatList()
   ..stokKodu = json['STOK_KODU'] as String?
   ..dovizTipi = json['DOVIZ_TIPI'] as int?
   ..dovizKodu = json['DOVIZ_KODU'] as String?
-  ..bastar =
-      json['BASTAR'] == null ? null : DateTime.parse(json['BASTAR'] as String)
-  ..bittar =
-      json['BITTAR'] == null ? null : DateTime.parse(json['BITTAR'] as String)
+  ..bastar = json['BASTAR'] == null ? null : DateTime.parse(json['BASTAR'] as String)
+  ..bittar = json['BITTAR'] == null ? null : DateTime.parse(json['BITTAR'] as String)
   ..gecerli = json['GECERLI'] as String?
   ..fiyat1 = (json['FIYAT1'] as num?)?.toDouble()
   ..fiyat2 = (json['FIYAT2'] as num?)?.toDouble()

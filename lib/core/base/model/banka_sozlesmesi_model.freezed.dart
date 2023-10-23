@@ -35,29 +35,18 @@ mixin _$BankaSozlesmesiModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $BankaSozlesmesiModelCopyWith<BankaSozlesmesiModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $BankaSozlesmesiModelCopyWith<BankaSozlesmesiModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BankaSozlesmesiModelCopyWith<$Res> {
-  factory $BankaSozlesmesiModelCopyWith(BankaSozlesmesiModel value,
-          $Res Function(BankaSozlesmesiModel) then) =
-      _$BankaSozlesmesiModelCopyWithImpl<$Res, BankaSozlesmesiModel>;
+  factory $BankaSozlesmesiModelCopyWith(BankaSozlesmesiModel value, $Res Function(BankaSozlesmesiModel) then) = _$BankaSozlesmesiModelCopyWithImpl<$Res, BankaSozlesmesiModel>;
   @useResult
-  $Res call(
-      {String? sozlesmeKodu,
-      String? sozlesmeAdi,
-      String? krediKartiTanimi,
-      String? bankaTanimi,
-      DateTime? baslamaTarihi,
-      DateTime? bitisTarihi});
+  $Res call({String? sozlesmeKodu, String? sozlesmeAdi, String? krediKartiTanimi, String? bankaTanimi, DateTime? baslamaTarihi, DateTime? bitisTarihi});
 }
 
 /// @nodoc
-class _$BankaSozlesmesiModelCopyWithImpl<$Res,
-        $Val extends BankaSozlesmesiModel>
-    implements $BankaSozlesmesiModelCopyWith<$Res> {
+class _$BankaSozlesmesiModelCopyWithImpl<$Res, $Val extends BankaSozlesmesiModel> implements $BankaSozlesmesiModelCopyWith<$Res> {
   _$BankaSozlesmesiModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -105,29 +94,16 @@ class _$BankaSozlesmesiModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$BankaSozlesmesiModelImplCopyWith<$Res>
-    implements $BankaSozlesmesiModelCopyWith<$Res> {
-  factory _$$BankaSozlesmesiModelImplCopyWith(_$BankaSozlesmesiModelImpl value,
-          $Res Function(_$BankaSozlesmesiModelImpl) then) =
-      __$$BankaSozlesmesiModelImplCopyWithImpl<$Res>;
+abstract class _$$BankaSozlesmesiModelImplCopyWith<$Res> implements $BankaSozlesmesiModelCopyWith<$Res> {
+  factory _$$BankaSozlesmesiModelImplCopyWith(_$BankaSozlesmesiModelImpl value, $Res Function(_$BankaSozlesmesiModelImpl) then) = __$$BankaSozlesmesiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? sozlesmeKodu,
-      String? sozlesmeAdi,
-      String? krediKartiTanimi,
-      String? bankaTanimi,
-      DateTime? baslamaTarihi,
-      DateTime? bitisTarihi});
+  $Res call({String? sozlesmeKodu, String? sozlesmeAdi, String? krediKartiTanimi, String? bankaTanimi, DateTime? baslamaTarihi, DateTime? bitisTarihi});
 }
 
 /// @nodoc
-class __$$BankaSozlesmesiModelImplCopyWithImpl<$Res>
-    extends _$BankaSozlesmesiModelCopyWithImpl<$Res, _$BankaSozlesmesiModelImpl>
-    implements _$$BankaSozlesmesiModelImplCopyWith<$Res> {
-  __$$BankaSozlesmesiModelImplCopyWithImpl(_$BankaSozlesmesiModelImpl _value,
-      $Res Function(_$BankaSozlesmesiModelImpl) _then)
-      : super(_value, _then);
+class __$$BankaSozlesmesiModelImplCopyWithImpl<$Res> extends _$BankaSozlesmesiModelCopyWithImpl<$Res, _$BankaSozlesmesiModelImpl> implements _$$BankaSozlesmesiModelImplCopyWith<$Res> {
+  __$$BankaSozlesmesiModelImplCopyWithImpl(_$BankaSozlesmesiModelImpl _value, $Res Function(_$BankaSozlesmesiModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -171,17 +147,9 @@ class __$$BankaSozlesmesiModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$BankaSozlesmesiModelImpl extends _BankaSozlesmesiModel {
-  _$BankaSozlesmesiModelImpl(
-      {this.sozlesmeKodu,
-      this.sozlesmeAdi,
-      this.krediKartiTanimi,
-      this.bankaTanimi,
-      this.baslamaTarihi,
-      this.bitisTarihi})
-      : super._();
+  _$BankaSozlesmesiModelImpl({this.sozlesmeKodu, this.sozlesmeAdi, this.krediKartiTanimi, this.bankaTanimi, this.baslamaTarihi, this.bitisTarihi}) : super._();
 
-  factory _$BankaSozlesmesiModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BankaSozlesmesiModelImplFromJson(json);
+  factory _$BankaSozlesmesiModelImpl.fromJson(Map<String, dynamic> json) => _$$BankaSozlesmesiModelImplFromJson(json);
 
   @override
   String? sozlesmeKodu;
@@ -199,10 +167,7 @@ class _$BankaSozlesmesiModelImpl extends _BankaSozlesmesiModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BankaSozlesmesiModelImplCopyWith<_$BankaSozlesmesiModelImpl>
-      get copyWith =>
-          __$$BankaSozlesmesiModelImplCopyWithImpl<_$BankaSozlesmesiModelImpl>(
-              this, _$identity);
+  _$$BankaSozlesmesiModelImplCopyWith<_$BankaSozlesmesiModelImpl> get copyWith => __$$BankaSozlesmesiModelImplCopyWithImpl<_$BankaSozlesmesiModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -213,17 +178,11 @@ class _$BankaSozlesmesiModelImpl extends _BankaSozlesmesiModel {
 }
 
 abstract class _BankaSozlesmesiModel extends BankaSozlesmesiModel {
-  factory _BankaSozlesmesiModel(
-      {String? sozlesmeKodu,
-      String? sozlesmeAdi,
-      String? krediKartiTanimi,
-      String? bankaTanimi,
-      DateTime? baslamaTarihi,
-      DateTime? bitisTarihi}) = _$BankaSozlesmesiModelImpl;
+  factory _BankaSozlesmesiModel({String? sozlesmeKodu, String? sozlesmeAdi, String? krediKartiTanimi, String? bankaTanimi, DateTime? baslamaTarihi, DateTime? bitisTarihi}) =
+      _$BankaSozlesmesiModelImpl;
   _BankaSozlesmesiModel._() : super._();
 
-  factory _BankaSozlesmesiModel.fromJson(Map<String, dynamic> json) =
-      _$BankaSozlesmesiModelImpl.fromJson;
+  factory _BankaSozlesmesiModel.fromJson(Map<String, dynamic> json) = _$BankaSozlesmesiModelImpl.fromJson;
 
   @override
   String? get sozlesmeKodu;
@@ -245,6 +204,5 @@ abstract class _BankaSozlesmesiModel extends BankaSozlesmesiModel {
   set bitisTarihi(DateTime? value);
   @override
   @JsonKey(ignore: true)
-  _$$BankaSozlesmesiModelImplCopyWith<_$BankaSozlesmesiModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$BankaSozlesmesiModelImplCopyWith<_$BankaSozlesmesiModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

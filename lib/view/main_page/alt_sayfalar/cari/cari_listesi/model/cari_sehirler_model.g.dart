@@ -31,19 +31,14 @@ class CariSehirlerModelAdapter extends TypeAdapter<CariSehirlerModel> {
   int get hashCode => typeId.hashCode;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CariSehirlerModelAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+  bool operator ==(Object other) => identical(this, other) || other is CariSehirlerModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-CariSehirlerModel _$CariSehirlerModelFromJson(Map<String, dynamic> json) =>
-    CariSehirlerModel()..sehirAdi = json['SEHIR_ADI'] as String?;
+CariSehirlerModel _$CariSehirlerModelFromJson(Map<String, dynamic> json) => CariSehirlerModel()..sehirAdi = json['SEHIR_ADI'] as String?;
 
 Map<String, dynamic> _$CariSehirlerModelToJson(CariSehirlerModel instance) {
   final val = <String, dynamic>{};

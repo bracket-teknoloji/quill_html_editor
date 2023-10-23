@@ -15,9 +15,9 @@ class ColorfulBadge extends StatefulWidget {
 class _ColorfulBadgeState extends State<ColorfulBadge> {
   @override
   Widget build(BuildContext context) => Badge(
-      textStyle: const TextStyle(fontSize: 10),
-      label: widget.label,
-      textColor: widget.badgeColorEnum?.getFontColor,
-      backgroundColor: widget.badgeColorEnum?.getColor,
-    ).yetkiVarMi(widget.label != null);
+        textStyle: const TextStyle(fontSize: 10),
+        label: widget.label,
+        textColor: widget.badgeColorEnum?.getFontColor,
+        backgroundColor: widget.badgeColorEnum?.getColor,
+      ).yetkiVarMi(widget.label != null);
 }

@@ -1777,8 +1777,7 @@ class SevkemriMalKontrolTipi {
 
   SevkemriMalKontrolTipi();
 
-  factory SevkemriMalKontrolTipi.fromJson(Map<String, dynamic> json) =>
-      _$SevkemriMalKontrolTipiFromJson(json);
+  factory SevkemriMalKontrolTipi.fromJson(Map<String, dynamic> json) => _$SevkemriMalKontrolTipiFromJson(json);
 
   Map<String, dynamic> toJson() => _$SevkemriMalKontrolTipiToJson(this);
 }

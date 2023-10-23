@@ -2,8 +2,7 @@ import "package:mobx/mobx.dart";
 
 part "rapor_filtre_date_time_bottom_sheet_view_model.g.dart";
 
-class RaporFiltreDateTimeBottomSheetViewModel = _RaporFiltreDateTimeBottomSheetViewModelBase
-    with _$RaporFiltreDateTimeBottomSheetViewModel;
+class RaporFiltreDateTimeBottomSheetViewModel = _RaporFiltreDateTimeBottomSheetViewModelBase with _$RaporFiltreDateTimeBottomSheetViewModel;
 
 abstract class _RaporFiltreDateTimeBottomSheetViewModelBase with Store {
   static int getGroupValue = 0;
@@ -19,12 +18,14 @@ abstract class _RaporFiltreDateTimeBottomSheetViewModelBase with Store {
 
   @observable
   ObservableList<bool> selectedValueList = ObservableList.of(
-      [true, false, false, false, false, false, false, false, false, false],);
+    [true, false, false, false, false, false, false, false, false, false],
+  );
 
   @action
   void changeSelectedValue(int index) {
     selectedValueList = ObservableList.of(
-        [false, false, false, false, false, false, false, false, false, false],);
+      [false, false, false, false, false, false, false, false, false, false],
+    );
     if (!selectedValueList[index]) {
       selectedValueList[index] = true;
     } else {
@@ -48,8 +49,7 @@ abstract class _RaporFiltreDateTimeBottomSheetViewModelBase with Store {
     "Tümü": null,
     "Bugün": DateTime.now(),
     "Dün": DateTime.now().subtract(const Duration(days: 1)),
-    "Bu Hafta":
-        DateTime.now().subtract(Duration(days: DateTime.now().weekday - 1)),
+    "Bu Hafta": DateTime.now().subtract(Duration(days: DateTime.now().weekday - 1)),
     "Bu Ay": DateTime(DateTime.now().year, DateTime.now().month, 1),
     "Geçen Ay": DateTime(DateTime.now().year, DateTime.now().month - 1, 1),
     "Son 3 Ay": DateTime(DateTime.now().year, DateTime.now().month - 2, 1),
@@ -65,7 +65,6 @@ abstract class _RaporFiltreDateTimeBottomSheetViewModelBase with Store {
     "Geçen Ay": DateTime(DateTime.now().year, DateTime.now().month, -1),
     "Son 3 Ay": DateTime.now(),
     "Bu Yıl": DateTime.now(),
-    "Geçen Yıl":
-        DateTime(DateTime.now().year).subtract(const Duration(days: 1)),
+    "Geçen Yıl": DateTime(DateTime.now().year).subtract(const Duration(days: 1)),
   };
 }

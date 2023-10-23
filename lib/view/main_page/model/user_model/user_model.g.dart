@@ -80,11 +80,7 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
   int get hashCode => typeId.hashCode;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is UserModelAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+  bool operator ==(Object other) => identical(this, other) || other is UserModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 // **************************************************************************
@@ -101,19 +97,13 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel()
   ..erpParola = json['ERP_PAROLA'] as String?
   ..profilKodu = json['PROFIL_KODU'] as int?
   ..profilAdi = json['PROFIL_ADI'] as String?
-  ..profilYetki = json['PROFIL_YETKI'] == null
-      ? null
-      : ProfilYetkiModel.fromJson(json['PROFIL_YETKI'] as String)
-  ..kullaniciYetki = json['KULLANICI_YETKI'] == null
-      ? null
-      : KullaniciYetkiModel.fromJson(json['KULLANICI_YETKI'] as String)
+  ..profilYetki = json['PROFIL_YETKI'] == null ? null : ProfilYetkiModel.fromJson(json['PROFIL_YETKI'] as String)
+  ..kullaniciYetki = json['KULLANICI_YETKI'] == null ? null : KullaniciYetkiModel.fromJson(json['KULLANICI_YETKI'] as String)
   ..pickerYetkili = json['PICKER_YETKILI'] as String?
   ..yetkiliSubelerJson = json['YETKILI_SUBELER_JSON'] as String?
   ..konumEnlem = (json['KONUM_ENLEM'] as num?)?.toDouble()
   ..konumBoylam = (json['KONUM_BOYLAM'] as num?)?.toDouble()
-  ..langModel = json['LANG_MODEL'] == null
-      ? null
-      : LangModel.fromJson(json['LANG_MODEL'] as Map<String, dynamic>)
+  ..langModel = json['LANG_MODEL'] == null ? null : LangModel.fromJson(json['LANG_MODEL'] as Map<String, dynamic>)
   ..adSoyad = json['AD_SOYAD'] as String?
   ..admin = json['ADMIN'] as String?
   ..adminMi = json['ADMIN_MI'] as bool?;

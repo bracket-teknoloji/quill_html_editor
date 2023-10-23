@@ -14,8 +14,7 @@ class CariStokSatisOzetiModel with NetworkManagerMixin {
   double? netTutar;
 
   @override
-  fromJson(Map<String, dynamic> json) =>
-      _$CariStokSatisOzetiModelFromJson(json);
+  fromJson(Map<String, dynamic> json) => _$CariStokSatisOzetiModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$CariStokSatisOzetiModelToJson(this);

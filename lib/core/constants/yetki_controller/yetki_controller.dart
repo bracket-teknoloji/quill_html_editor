@@ -233,7 +233,7 @@ class YetkiController {
   bool get satisIrsDigerSekmesiGelsin => isTrue(yetkiModel?.sevkiyatSatisIrsDigerSekmesiGoster);
 
   //! MAL KABUL
-  
+
   bool malKabulAlisIrsGizlenecekAlanlar(String? index) => isTrue(!isTrue(yetkiModel?.malKabulAlisIrsGizlenecekAlanlar?.contains(index) ?? false, skipAdmin: true));
 
   // bool malKabulAlisIrsDegistirilmeyecekAlanlar(String? index) => isTrue(!isTrue(yetkiModel?.degismey?.contains(index) ?? false, skipAdmin: true));

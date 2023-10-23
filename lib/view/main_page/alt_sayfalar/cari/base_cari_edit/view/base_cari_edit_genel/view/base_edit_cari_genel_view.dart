@@ -76,9 +76,11 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
     viewModel.changeIsSahisFirmasi(viewModel.model?.sahisFirmasi ?? false);
     viewModel.changeIsDovizli(viewModel.model?.dovizli == "E");
     (viewModel.model?.dovizli == "E" && viewModel.model?.dovizKoduAciklama == null)
-        ? viewModel.changeDovizTipi(DovizList()
-          ..isim = "TL"
-          ..dovizKodu = 0,)
+        ? viewModel.changeDovizTipi(
+            DovizList()
+              ..isim = "TL"
+              ..dovizKodu = 0,
+          )
         : null;
     viewModel.changeAdi(viewModel.model?.adi);
     viewModel.changeCariTipi(viewModel.model?.tipi);
@@ -100,13 +102,14 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
     plasiyerController = TextEditingController(text: parametreModel.plasiyerList?.firstWhereOrNull((PlasiyerList element) => element.plasiyerKodu == viewModel.model?.plasiyerKodu)?.plasiyerAciklama);
     vadeGunuController = TextEditingController(text: viewModel.model?.vadeGunu ?? "");
     odemeTipiController = TextEditingController(
-        text: viewModel.model?.odemeTipi == "0"
-            ? "Nakit"
-            : viewModel.model?.odemeTipi == "1"
-                ? "Havale"
-                : viewModel.model?.odemeTipi == "2"
-                    ? "Çek"
-                    : "",);
+      text: viewModel.model?.odemeTipi == "0"
+          ? "Nakit"
+          : viewModel.model?.odemeTipi == "1"
+              ? "Havale"
+              : viewModel.model?.odemeTipi == "2"
+                  ? "Çek"
+                  : "",
+    );
     // if (widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != BaseEditEnum.kopyala) {
     //   getCariDetay(model?.cariKodu ?? "");
     // }
@@ -145,15 +148,15 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(
-                      child: CustomTextField(
-                    enabled: enabled && (widget.model?.baseEditEnum == BaseEditEnum.ekle || widget.model?.baseEditEnum == BaseEditEnum.kopyala),
-                    readOnly: widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != BaseEditEnum.kopyala,
-                    isMust: true,
-                    labelText: "Kodu",
-                    controller: kodController,
-                    suffix: Wrap(
-                      children: <IconButton>[
-                        IconButton(
+                    child: CustomTextField(
+                      enabled: enabled && (widget.model?.baseEditEnum == BaseEditEnum.ekle || widget.model?.baseEditEnum == BaseEditEnum.kopyala),
+                      readOnly: widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != BaseEditEnum.kopyala,
+                      isMust: true,
+                      labelText: "Kodu",
+                      controller: kodController,
+                      suffix: Wrap(
+                        children: <IconButton>[
+                          IconButton(
                             onPressed: () async {
                               final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                               if (result != null && result is CariListesiModel) {
@@ -162,39 +165,49 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                               }
                               log(result.toString());
                             },
-                            icon: const Icon(Icons.more_horiz_outlined),),
-                        IconButton(
+                            icon: const Icon(Icons.more_horiz_outlined),
+                          ),
+                          IconButton(
                             onPressed: () async {
                               final String? kod = await CariNetworkManager.getSiradakiKod(kod: kodController.text);
                               kodController.text = kod ?? "";
                               viewModel.changeKodu(kod);
                             },
-                            icon: const Icon(Icons.format_list_numbered_rtl_outlined),),
-                      ].map((IconButton e) => SizedBox(width: 35, child: e)).toList(),
+                            icon: const Icon(Icons.format_list_numbered_rtl_outlined),
+                          ),
+                        ].map((IconButton e) => SizedBox(width: 35, child: e)).toList(),
+                      ),
                     ),
-                  ),),
+                  ),
                   Expanded(
-                      child: CustomTextField(
-                    enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("tipi"),
-                    isMust: true,
-                    labelText: "Cari Tipi",
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model?.tipi ?? "")),
-                    readOnly: true,
-                    controller: cariTipiController,
-                    suffixMore: true,
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+                    child: CustomTextField(
+                      enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("tipi"),
+                      isMust: true,
+                      labelText: "Cari Tipi",
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model?.tipi ?? "")),
+                      readOnly: true,
+                      controller: cariTipiController,
+                      suffixMore: true,
+                      onTap: () async {
+                        final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                          context,
                           title: "Cari Tipi",
                           children: List.generate(
-                              viewModel.cariTipiMap.length,
-                              (int index) => BottomSheetModel(
-                                  title: viewModel.cariTipiMap.keys.toList()[index], value: viewModel.cariTipiMap.entries.toList()[index], description: viewModel.cariTipiMap.values.toList()[index],),),);
-                      if (result is MapEntry) {
-                        cariTipiController.text = result.key;
-                        viewModel.changeCariTipi(result.value);
-                      }
-                    },
-                  ),),
+                            viewModel.cariTipiMap.length,
+                            (int index) => BottomSheetModel(
+                              title: viewModel.cariTipiMap.keys.toList()[index],
+                              value: viewModel.cariTipiMap.entries.toList()[index],
+                              description: viewModel.cariTipiMap.values.toList()[index],
+                            ),
+                          ),
+                        );
+                        if (result is MapEntry) {
+                          cariTipiController.text = result.key;
+                          viewModel.changeCariTipi(result.value);
+                        }
+                      },
+                    ),
+                  ),
                 ],
               ),
               CustomTextField(
@@ -217,15 +230,19 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                 onTap: () async {
                   ulkeler ??= await getUlkeData();
                   if (mounted) {
-                    final BaseBottomSheetResponseModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                        title: "Ülkeler",
-                        children: List.generate(
-                            ulkeler!.length,
-                            (int index) => BottomSheetModel(
-                                title: ulkeler?[index].ulkeAdi ?? "",
-                                value: ulkeler?[index].ulkeKodu,
-                                description: ulkeler?[index].ulkeKodu,
-                                onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: ulkeler?[index].ulkeAdi, value: ulkeler?[index].ulkeKodu)),),),);
+                    final BaseBottomSheetResponseModel? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                      context,
+                      title: "Ülkeler",
+                      children: List.generate(
+                        ulkeler!.length,
+                        (int index) => BottomSheetModel(
+                          title: ulkeler?[index].ulkeAdi ?? "",
+                          value: ulkeler?[index].ulkeKodu,
+                          description: ulkeler?[index].ulkeKodu,
+                          onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: ulkeler?[index].ulkeAdi, value: ulkeler?[index].ulkeKodu)),
+                        ),
+                      ),
+                    );
                     if (result != null) {
                       ulkeController.text = result.title ?? "";
                       viewModel.changeUlke(result.value);
@@ -233,37 +250,45 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                   }
                 },
               ),
-              Row(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
-                Expanded(
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(
                     child: CustomTextField(
-                  enabled: enabled,
-                  labelText: "Şehir",
-                  controller: ilController,
-                  readOnly: true,
-                  suffixMore: true,
-                  onClear: () => viewModel.changeIl(null),
-                  onTap: () async {
-                    if (viewModel.sehirler == null) {
-                      await viewModel.getFilterData();
-                    }
-                    // ignore: use_build_context_synchronously
-                    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
-                        title: "Şehirler",
-                        children: List.generate(viewModel.sehirler?.length ?? 0, (int index) => BottomSheetModel(title: viewModel.sehirler?[index].sehirAdi ?? "", value: viewModel.sehirler?[index])),);
-                    if (result is CariSehirlerModel) {
-                      ilController.text = result.sehirAdi ?? "";
-                      viewModel.changeIl(result.sehirAdi);
-                    }
-                  },
-                ),),
-                Expanded(
+                      enabled: enabled,
+                      labelText: "Şehir",
+                      controller: ilController,
+                      readOnly: true,
+                      suffixMore: true,
+                      onClear: () => viewModel.changeIl(null),
+                      onTap: () async {
+                        if (viewModel.sehirler == null) {
+                          await viewModel.getFilterData();
+                        }
+                        // ignore: use_build_context_synchronously
+                        final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                          context,
+                          title: "Şehirler",
+                          children:
+                              List.generate(viewModel.sehirler?.length ?? 0, (int index) => BottomSheetModel(title: viewModel.sehirler?[index].sehirAdi ?? "", value: viewModel.sehirler?[index])),
+                        );
+                        if (result is CariSehirlerModel) {
+                          ilController.text = result.sehirAdi ?? "";
+                          viewModel.changeIl(result.sehirAdi);
+                        }
+                      },
+                    ),
+                  ),
+                  Expanded(
                     child: CustomTextField(
-                  enabled: enabled,
-                  labelText: "İlçe",
-                  controller: ilceCOntroller,
-                  onChanged: (String p0) => viewModel.changeIlce(p0),
-                ),),
-              ],),
+                      enabled: enabled,
+                      labelText: "İlçe",
+                      controller: ilceCOntroller,
+                      onChanged: (String p0) => viewModel.changeIlce(p0),
+                    ),
+                  ),
+                ],
+              ),
               CustomTextField(
                 enabled: enabled,
                 labelText: "Posta Kodu",
@@ -297,118 +322,144 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                 controller: webController,
                 onChanged: (String p0) => viewModel.changeWeb(p0),
               ),
-              Row(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
-                Expanded(
-                    child: CustomTextField(
-                  enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("vergi"),
-                  labelText: "Vergi Dairesi",
-                  controller: vergiDairesiController,
-                  onChanged: (String p0) => viewModel.changeVergiDairesi(p0),
-                ),),
-                Expanded(
-                    child: Observer(
-                        builder: (_) => CustomTextField(
-                              enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("vergi"),
-                              labelText: viewModel.isSahisFirmasi ? "T.C. Kimlik No" : "Vergi No",
-                              controller: vergiNoController,
-                              keyboardType: TextInputType.number,
-                              maxLength: viewModel.isSahisFirmasi ? 11 : 10,
-                              onChanged: (String p0) => viewModel.changeVergiNo(p0),
-                            ),),),
-              ],),
-              Row(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
-                Expanded(
-                    child: CustomTextField(
-                  enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("plasiyer"),
-                  labelText: "Plasiyer",
-                  readOnly: true,
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model?.plasiyerKodu ?? "")),
-                  controller: plasiyerController,
-                  suffixMore: true,
-                  onClear: () {
-                    viewModel.changePlasiyer(null);
-                  },
-                  onTap: () async {
-                    final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                        title: "Plasiyer",
-                        children: List.generate(anaVeri?.paramModel?.plasiyerList?.length ?? 0,
-                            (int index) => BottomSheetModel(title: anaVeri?.paramModel?.plasiyerList?[index].plasiyerAciklama ?? "", value: anaVeri?.paramModel?.plasiyerList?[index]),),);
-                    if (result != null) {
-                      plasiyerController.text = result.plasiyerAciklama ?? "";
-                      viewModel.changePlasiyer(result.plasiyerKodu);
-                    }
-                  },
-                ),).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
-                Expanded(
-                    child: CustomWidgetWithLabel(
-                        isVertical: true,
-                        onlyLabelpaddingLeft: UIHelper.lowSize,
-                        text: "Dövizli",
-                        child: Observer(
-                            builder: (_) => Switch.adaptive(
-                                value: viewModel.isDovizli,
-                                onChanged: enabled
-                                    ? (bool value) {
-                                        if (!value) {
-                                          dovizController.text = "";
-                                          viewModel.changeDovizTipi(null);
-                                        }
-                                        viewModel.changeIsDovizli(value);
-                                      }
-                                    : null,),),),),
-              ],),
-              Observer(
-                  builder: (_) => Visibility(
-                      visible: viewModel.isDovizli,
-                      child: CustomTextField(
-                        enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("dov_tipi"),
-                        labelText: "Döviz Tipi",
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model?.dovizKodu.toStringIfNotNull ?? "")),
-                        controller: dovizController,
-                        readOnly: true,
-                        suffixMore: true,
-                        onTap: () async {
-                          final DovizList? result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context);
-                          if (result is DovizList) {
-                            dovizController.text = result.isim ?? "";
-                            viewModel.changeDovizTipi(result);
-                          }
-                        },
-                      ),),),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(
-                      child: CustomTextField(
-                    enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("vade_gunu"),
-                    labelText: "Vade Günü",
-                    controller: vadeGunuController,
-                    keyboardType: TextInputType.number,
-                    onChanged: (String p0) => viewModel.changeVadeGunu(int.tryParse(p0)),
-                  ),),
+                    child: CustomTextField(
+                      enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("vergi"),
+                      labelText: "Vergi Dairesi",
+                      controller: vergiDairesiController,
+                      onChanged: (String p0) => viewModel.changeVergiDairesi(p0),
+                    ),
+                  ),
                   Expanded(
-                      child: CustomTextField(
-                    enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("odeme_tipi"),
+                    child: Observer(
+                      builder: (_) => CustomTextField(
+                        enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("vergi"),
+                        labelText: viewModel.isSahisFirmasi ? "T.C. Kimlik No" : "Vergi No",
+                        controller: vergiNoController,
+                        keyboardType: TextInputType.number,
+                        maxLength: viewModel.isSahisFirmasi ? 11 : 10,
+                        onChanged: (String p0) => viewModel.changeVergiNo(p0),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(
+                    child: CustomTextField(
+                      enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("plasiyer"),
+                      labelText: "Plasiyer",
+                      readOnly: true,
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model?.plasiyerKodu ?? "")),
+                      controller: plasiyerController,
+                      suffixMore: true,
+                      onClear: () {
+                        viewModel.changePlasiyer(null);
+                      },
+                      onTap: () async {
+                        final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                          context,
+                          title: "Plasiyer",
+                          children: List.generate(
+                            anaVeri?.paramModel?.plasiyerList?.length ?? 0,
+                            (int index) => BottomSheetModel(title: anaVeri?.paramModel?.plasiyerList?[index].plasiyerAciklama ?? "", value: anaVeri?.paramModel?.plasiyerList?[index]),
+                          ),
+                        );
+                        if (result != null) {
+                          plasiyerController.text = result.plasiyerAciklama ?? "";
+                          viewModel.changePlasiyer(result.plasiyerKodu);
+                        }
+                      },
+                    ),
+                  ).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
+                  Expanded(
+                    child: CustomWidgetWithLabel(
+                      isVertical: true,
+                      onlyLabelpaddingLeft: UIHelper.lowSize,
+                      text: "Dövizli",
+                      child: Observer(
+                        builder: (_) => Switch.adaptive(
+                          value: viewModel.isDovizli,
+                          onChanged: enabled
+                              ? (bool value) {
+                                  if (!value) {
+                                    dovizController.text = "";
+                                    viewModel.changeDovizTipi(null);
+                                  }
+                                  viewModel.changeIsDovizli(value);
+                                }
+                              : null,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Observer(
+                builder: (_) => Visibility(
+                  visible: viewModel.isDovizli,
+                  child: CustomTextField(
+                    enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("dov_tipi"),
+                    labelText: "Döviz Tipi",
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model?.dovizKodu.toStringIfNotNull ?? "")),
+                    controller: dovizController,
                     readOnly: true,
-                    labelText: "Ödeme Tipi",
-                    controller: odemeTipiController,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model?.odemeTipi ?? "")),
                     suffixMore: true,
-                    onClear: () {
-                      viewModel.changeOdemeTipi(null);
-                    },
                     onTap: () async {
-                      final BaseBottomSheetResponseModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Ödeme Tipi", children: <BottomSheetModel?>[
-                        BottomSheetModel(title: "Nakit", value: "0", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Nakit", value: "0"))),
-                        BottomSheetModel(title: "Havale", value: "1", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Havale", value: "1"))),
-                        BottomSheetModel(title: "Çek", value: "2", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Çek", value: "2"))),
-                      ],);
-                      if (result != null) {
-                        odemeTipiController.text = result.title ?? "";
-                        viewModel.changeOdemeTipi(result.value);
+                      final DovizList? result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context);
+                      if (result is DovizList) {
+                        dovizController.text = result.isim ?? "";
+                        viewModel.changeDovizTipi(result);
                       }
                     },
-                  ),),
+                  ),
+                ),
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(
+                    child: CustomTextField(
+                      enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("vade_gunu"),
+                      labelText: "Vade Günü",
+                      controller: vadeGunuController,
+                      keyboardType: TextInputType.number,
+                      onChanged: (String p0) => viewModel.changeVadeGunu(int.tryParse(p0)),
+                    ),
+                  ),
+                  Expanded(
+                    child: CustomTextField(
+                      enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("odeme_tipi"),
+                      readOnly: true,
+                      labelText: "Ödeme Tipi",
+                      controller: odemeTipiController,
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model?.odemeTipi ?? "")),
+                      suffixMore: true,
+                      onClear: () {
+                        viewModel.changeOdemeTipi(null);
+                      },
+                      onTap: () async {
+                        final BaseBottomSheetResponseModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                          context,
+                          title: "Ödeme Tipi",
+                          children: <BottomSheetModel?>[
+                            BottomSheetModel(title: "Nakit", value: "0", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Nakit", value: "0"))),
+                            BottomSheetModel(title: "Havale", value: "1", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Havale", value: "1"))),
+                            BottomSheetModel(title: "Çek", value: "2", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Çek", value: "2"))),
+                          ],
+                        );
+                        if (result != null) {
+                          odemeTipiController.text = result.title ?? "";
+                          viewModel.changeOdemeTipi(result.value);
+                        }
+                      },
+                    ),
+                  ),
                 ],
               ),
             ],

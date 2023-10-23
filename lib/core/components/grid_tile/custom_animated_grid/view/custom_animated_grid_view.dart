@@ -58,92 +58,101 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
 
   @override
   Widget build(BuildContext context) => Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Row(
-          children: [
-            Observer(builder: (_) => Visibility(
-                visible: viewModel.returnGridItemModel.isNotEmpty,
-                child: IconButton(
-                  onPressed: () {
-                    viewModel.setGridItemModel(viewModel.returnGridItemModel.last.toList());
-                    viewModel.deleteLastReturnGridItemModel();
-                  },
-                  icon: Icon(Icons.arrow_back_outlined, color: theme.colorScheme.primary),
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            children: [
+              Observer(
+                builder: (_) => Visibility(
+                  visible: viewModel.returnGridItemModel.isNotEmpty,
+                  child: IconButton(
+                    onPressed: () {
+                      viewModel.setGridItemModel(viewModel.returnGridItemModel.last.toList());
+                      viewModel.deleteLastReturnGridItemModel();
+                    },
+                    icon: Icon(Icons.arrow_back_outlined, color: theme.colorScheme.primary),
+                  ),
                 ),
-              ),),
-            Expanded(
+              ),
+              Expanded(
                 child: SizedBox(
-                    child: Text(widget.title ?? widget.cariListesiModel?.cariKodu ?? widget.model?.stokKodu ?? "", style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis))
-                        .paddingOnly(left: UIHelper.midSize),),),
-          ],
-        ),
-        const Divider(
-          indent: 0,
-          endIndent: 0,
-        ).paddingSymmetric(vertical: UIHelper.lowSize),
-        AnimatedContainer(
-          duration: const Duration(milliseconds: 500),
-          padding: UIHelper.lowPadding,
-          constraints: BoxConstraints(
-            minHeight: context.sized.dynamicHeight(0.2),
-          ),
-          child: AnimationLimiter(
-            child: Observer(builder: (_) => GridView.builder(
-                padding: UIHelper.zeroPadding,
-                shrinkWrap: true,
-                // physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: MediaQuery.of(context).size.width ~/ 85 > 6 ? 6 : MediaQuery.of(context).size.width ~/ 85,
-                  childAspectRatio: context.isLandscape ? 1.2 : 0.9,
+                  child: Text(widget.title ?? widget.cariListesiModel?.cariKodu ?? widget.model?.stokKodu ?? "", style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis))
+                      .paddingOnly(left: UIHelper.midSize),
                 ),
-                itemCount: viewModel.gridItemModelList?.length ?? 0,
-                itemBuilder: (context, index) {
-                  final item = viewModel.gridItemModelList?[index];
-                  return AnimationConfiguration.staggeredList(
+              ),
+            ],
+          ),
+          const Divider(
+            indent: 0,
+            endIndent: 0,
+          ).paddingSymmetric(vertical: UIHelper.lowSize),
+          AnimatedContainer(
+            duration: const Duration(milliseconds: 500),
+            padding: UIHelper.lowPadding,
+            constraints: BoxConstraints(
+              minHeight: context.sized.dynamicHeight(0.2),
+            ),
+            child: AnimationLimiter(
+              child: Observer(
+                builder: (_) => GridView.builder(
+                  padding: UIHelper.zeroPadding,
+                  shrinkWrap: true,
+                  // physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: MediaQuery.of(context).size.width ~/ 85 > 6 ? 6 : MediaQuery.of(context).size.width ~/ 85,
+                    childAspectRatio: context.isLandscape ? 1.2 : 0.9,
+                  ),
+                  itemCount: viewModel.gridItemModelList?.length ?? 0,
+                  itemBuilder: (context, index) {
+                    final item = viewModel.gridItemModelList?[index];
+                    return AnimationConfiguration.staggeredList(
                       position: index,
                       duration: const Duration(milliseconds: 900),
                       delay: const Duration(milliseconds: 50),
                       child: SlideAnimation(
                         delay: const Duration(milliseconds: 30),
                         child: FadeInAnimation(
-                            child: AnimatedIslemlerGridTile(
-                                icon: item?.icon ?? "monitoring",
-                                iconWidget: item?.iconData,
-                                altMenuler: item?.altMenuler,
-                                menuTipi: item?.menuTipi,
-                                altMenuVarMi: item?.altMenuVarMi,
-                                color: item?.color,
-                                name: item?.name.toString(),
-                                title: item?.title.toString(),
-                                onTap: () async {
-                                  if (item?.altMenuVarMi == true) {
-                                    viewModel.addReturnGridItemModel(viewModel.gridItemModelList);
-                                    viewModel.setGridItemModel(null);
-                                    // await Future.delayed(const Duration(milliseconds: 500));
-                                    viewModel.setGridItemModel(item?.altMenuler);
-                                  } else {
-                                    if (item?.route != null && item?.menuTipi != "SR") {
-                                      Get.back();
-                                      Get.toNamed(item?.route ?? "", arguments: widget.cariListesiModel ?? widget.model);
-                                    } else {
-                                      Get.back();
-                                      final result = await item?.onTap?.call();
-                                      if (result is bool) {
-                                        widget.onSelected?.call(result);
-                                      }
-                                    }
+                          child: AnimatedIslemlerGridTile(
+                            icon: item?.icon ?? "monitoring",
+                            iconWidget: item?.iconData,
+                            altMenuler: item?.altMenuler,
+                            menuTipi: item?.menuTipi,
+                            altMenuVarMi: item?.altMenuVarMi,
+                            color: item?.color,
+                            name: item?.name.toString(),
+                            title: item?.title.toString(),
+                            onTap: () async {
+                              if (item?.altMenuVarMi == true) {
+                                viewModel.addReturnGridItemModel(viewModel.gridItemModelList);
+                                viewModel.setGridItemModel(null);
+                                // await Future.delayed(const Duration(milliseconds: 500));
+                                viewModel.setGridItemModel(item?.altMenuler);
+                              } else {
+                                if (item?.route != null && item?.menuTipi != "SR") {
+                                  Get.back();
+                                  Get.toNamed(item?.route ?? "", arguments: widget.cariListesiModel ?? widget.model);
+                                } else {
+                                  Get.back();
+                                  final result = await item?.onTap?.call();
+                                  if (result is bool) {
+                                    widget.onSelected?.call(result);
                                   }
-                                },),),
-                      ),);
-                },
-              ),),
+                                }
+                              }
+                            },
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
           ),
-        ),
-      ],
-    ).paddingAll(UIHelper.lowSize);
+        ],
+      ).paddingAll(UIHelper.lowSize);
 
   List<GridItemModel>? getRaporList(IslemTipiEnum menu) {
     //if result is not contains any menu.value return null

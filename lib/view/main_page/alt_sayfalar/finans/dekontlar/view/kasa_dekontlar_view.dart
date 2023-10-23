@@ -14,13 +14,13 @@ class _KasaDekontlarViewState extends State<KasaDekontlarView> {
   KasaDekontlarViewModel viewModel = KasaDekontlarViewModel();
   @override
   Widget build(BuildContext context) => Scaffold(
-      appBar: AppBar(
-        title: const AppBarTitle(title: "Dekontlar", subtitle: "(25)"),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add),
-      ),
-      body: ListView(),
-    );
+        appBar: AppBar(
+          title: const AppBarTitle(title: "Dekontlar", subtitle: "(25)"),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: const Icon(Icons.add),
+        ),
+        body: ListView(),
+      );
 }

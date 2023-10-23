@@ -40,15 +40,12 @@ mixin _$EditFaturaModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $EditFaturaModelCopyWith<EditFaturaModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $EditFaturaModelCopyWith<EditFaturaModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EditFaturaModelCopyWith<$Res> {
-  factory $EditFaturaModelCopyWith(
-          EditFaturaModel value, $Res Function(EditFaturaModel) then) =
-      _$EditFaturaModelCopyWithImpl<$Res, EditFaturaModel>;
+  factory $EditFaturaModelCopyWith(EditFaturaModel value, $Res Function(EditFaturaModel) then) = _$EditFaturaModelCopyWithImpl<$Res, EditFaturaModel>;
   @useResult
   $Res call(
       {@JsonKey(name: "BelgeTipi") int? belgeTipi,
@@ -69,8 +66,7 @@ abstract class $EditFaturaModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EditFaturaModelCopyWithImpl<$Res, $Val extends EditFaturaModel>
-    implements $EditFaturaModelCopyWith<$Res> {
+class _$EditFaturaModelCopyWithImpl<$Res, $Val extends EditFaturaModel> implements $EditFaturaModelCopyWith<$Res> {
   _$EditFaturaModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -163,11 +159,8 @@ class _$EditFaturaModelCopyWithImpl<$Res, $Val extends EditFaturaModel>
 }
 
 /// @nodoc
-abstract class _$$EditFaturaModelImplCopyWith<$Res>
-    implements $EditFaturaModelCopyWith<$Res> {
-  factory _$$EditFaturaModelImplCopyWith(_$EditFaturaModelImpl value,
-          $Res Function(_$EditFaturaModelImpl) then) =
-      __$$EditFaturaModelImplCopyWithImpl<$Res>;
+abstract class _$$EditFaturaModelImplCopyWith<$Res> implements $EditFaturaModelCopyWith<$Res> {
+  factory _$$EditFaturaModelImplCopyWith(_$EditFaturaModelImpl value, $Res Function(_$EditFaturaModelImpl) then) = __$$EditFaturaModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -189,12 +182,8 @@ abstract class _$$EditFaturaModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$EditFaturaModelImplCopyWithImpl<$Res>
-    extends _$EditFaturaModelCopyWithImpl<$Res, _$EditFaturaModelImpl>
-    implements _$$EditFaturaModelImplCopyWith<$Res> {
-  __$$EditFaturaModelImplCopyWithImpl(
-      _$EditFaturaModelImpl _value, $Res Function(_$EditFaturaModelImpl) _then)
-      : super(_value, _then);
+class __$$EditFaturaModelImplCopyWithImpl<$Res> extends _$EditFaturaModelCopyWithImpl<$Res, _$EditFaturaModelImpl> implements _$$EditFaturaModelImplCopyWith<$Res> {
+  __$$EditFaturaModelImplCopyWithImpl(_$EditFaturaModelImpl _value, $Res Function(_$EditFaturaModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -301,8 +290,7 @@ class _$EditFaturaModelImpl extends _EditFaturaModel {
       this.islemKodu})
       : super._();
 
-  factory _$EditFaturaModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EditFaturaModelImplFromJson(json);
+  factory _$EditFaturaModelImpl.fromJson(Map<String, dynamic> json) => _$$EditFaturaModelImplFromJson(json);
 
   @override
   @JsonKey(name: "BelgeTipi")
@@ -340,9 +328,7 @@ class _$EditFaturaModelImpl extends _EditFaturaModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EditFaturaModelImplCopyWith<_$EditFaturaModelImpl> get copyWith =>
-      __$$EditFaturaModelImplCopyWithImpl<_$EditFaturaModelImpl>(
-          this, _$identity);
+  _$$EditFaturaModelImplCopyWith<_$EditFaturaModelImpl> get copyWith => __$$EditFaturaModelImplCopyWithImpl<_$EditFaturaModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -371,8 +357,7 @@ abstract class _EditFaturaModel extends EditFaturaModel {
       final int? islemKodu}) = _$EditFaturaModelImpl;
   const _EditFaturaModel._() : super._();
 
-  factory _EditFaturaModel.fromJson(Map<String, dynamic> json) =
-      _$EditFaturaModelImpl.fromJson;
+  factory _EditFaturaModel.fromJson(Map<String, dynamic> json) = _$EditFaturaModelImpl.fromJson;
 
   @override
   @JsonKey(name: "BelgeTipi")
@@ -408,6 +393,5 @@ abstract class _EditFaturaModel extends EditFaturaModel {
   int? get islemKodu;
   @override
   @JsonKey(ignore: true)
-  _$$EditFaturaModelImplCopyWith<_$EditFaturaModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EditFaturaModelImplCopyWith<_$EditFaturaModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

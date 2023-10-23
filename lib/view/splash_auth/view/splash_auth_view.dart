@@ -40,80 +40,89 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      body: Stack(
-        children: [
-          WaveWidget(
+        body: Stack(
+          children: [
+            WaveWidget(
               config: CustomConfig(durations: [8000, 10000], heightPercentages: [0.78, 0.8], colors: [const Color.fromRGBO(70, 59, 57, 26), Colors.black.withOpacity(0.3)]),
               size: const Size(double.infinity, double.infinity),
               waveAmplitude: 2,
               wavePhase: 0,
               duration: 200,
-              backgroundColor: theme.scaffoldBackgroundColor,),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Wrap(
-              direction: Axis.vertical,
-              alignment: WrapAlignment.center,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
-                Wrap(
-                  alignment: WrapAlignment.center,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  direction: Axis.vertical,
-                  children: [
-                    Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: const CircularProgressIndicator.adaptive().paddingAll(UIHelper.lowSize))),
-                    SizedBox(width: width * 0.6, child: Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: Text(viewModel.title, maxLines: 10, textAlign: TextAlign.center)))),
-                    Observer(builder: (_) => Visibility(
-                        visible: viewModel.isError,
-                        child: Row(
-                          children: [
-                            OutlinedButton(
-                              onPressed: login,
-                              child: const Text("Tekrar Dene"),
-                            ).paddingAll(UIHelper.lowSize),
-                            OutlinedButton(
-                              onPressed: () {
-                                CacheManager.setLogout(false);
-                                Get.offAllNamed("/login");
-                              },
-                              child: const Text("Ana Ekrana Dön"),
-                            ).paddingAll(UIHelper.lowSize),
-                          ],
-                        ),
-                      ),),
-                  ],
-                ).paddingOnly(bottom: UIHelper.highSize * 7),
-                Text.rich(TextSpan(children: [
-                  TextSpan(text: "Powered by ", style: TextStyle(color: theme.colorScheme.primary.withOpacity(0.8))),
-                  const TextSpan(text: "Bracket Teknoloji\n", style: TextStyle(fontWeight: FontWeight.bold)),
-                ],),),
-              ],
-            ).paddingOnly(bottom: UIHelper.midSize),
-          ),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset("assets/splash/PickerLogoTuruncu.svg", height: height * 0.1),
-                    const Text("Picker\nVeri Toplama Çözümleri", overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center).paddingAll(UIHelper.lowSize),
-                    Text(AppInfoModel.instance.version ?? "").paddingOnly(bottom: UIHelper.highSize),
-                  ],
-                ),
-                Observer(builder: (_) => Visibility(
-                    visible: viewModel.isError,
-                    child: SizedBox(width: width * 0.6, child: Text(viewModel.title, overflow: TextOverflow.ellipsis, maxLines: 10, textAlign: TextAlign.center)),
-                  ),),
-              ],
+              backgroundColor: theme.scaffoldBackgroundColor,
             ),
-          ),
-        ],
-      ),
-    );
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Wrap(
+                direction: Axis.vertical,
+                alignment: WrapAlignment.center,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  Wrap(
+                    alignment: WrapAlignment.center,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    direction: Axis.vertical,
+                    children: [
+                      Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: const CircularProgressIndicator.adaptive().paddingAll(UIHelper.lowSize))),
+                      SizedBox(width: width * 0.6, child: Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: Text(viewModel.title, maxLines: 10, textAlign: TextAlign.center)))),
+                      Observer(
+                        builder: (_) => Visibility(
+                          visible: viewModel.isError,
+                          child: Row(
+                            children: [
+                              OutlinedButton(
+                                onPressed: login,
+                                child: const Text("Tekrar Dene"),
+                              ).paddingAll(UIHelper.lowSize),
+                              OutlinedButton(
+                                onPressed: () {
+                                  CacheManager.setLogout(false);
+                                  Get.offAllNamed("/login");
+                                },
+                                child: const Text("Ana Ekrana Dön"),
+                              ).paddingAll(UIHelper.lowSize),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ).paddingOnly(bottom: UIHelper.highSize * 7),
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(text: "Powered by ", style: TextStyle(color: theme.colorScheme.primary.withOpacity(0.8))),
+                        const TextSpan(text: "Bracket Teknoloji\n", style: TextStyle(fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                  ),
+                ],
+              ).paddingOnly(bottom: UIHelper.midSize),
+            ),
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset("assets/splash/PickerLogoTuruncu.svg", height: height * 0.1),
+                      const Text("Picker\nVeri Toplama Çözümleri", overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center).paddingAll(UIHelper.lowSize),
+                      Text(AppInfoModel.instance.version ?? "").paddingOnly(bottom: UIHelper.highSize),
+                    ],
+                  ),
+                  Observer(
+                    builder: (_) => Visibility(
+                      visible: viewModel.isError,
+                      child: SizedBox(width: width * 0.6, child: Text(viewModel.title, overflow: TextOverflow.ellipsis, maxLines: 10, textAlign: TextAlign.center)),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
 
   void login() async {
     viewModel.setTitle("Giriş Yapılıyor...");
@@ -122,13 +131,17 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       Get.offAllNamed("/login");
     } else if (CacheManager.getLogout == true) {
       AccountModel.setFromAccountResponseModel(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.email ?? ""));
-      final response = await networkManager.getToken(path: ApiUrls.token, queryParameters: {
-        "deviceInfos": jsonEncode((CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi)?.toJson()),
-      }, data: {
-        "grant_type": "password",
-        "username": CacheManager.getVerifiedUser.username,
-        "password": CacheManager.getVerifiedUser.password,
-      },);
+      final response = await networkManager.getToken(
+        path: ApiUrls.token,
+        queryParameters: {
+          "deviceInfos": jsonEncode((CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi)?.toJson()),
+        },
+        data: {
+          "grant_type": "password",
+          "username": CacheManager.getVerifiedUser.username,
+          "password": CacheManager.getVerifiedUser.password,
+        },
+      );
       if (response != null && response.error == null) {
         if (response.accessToken != null) {
           CacheManager.setVerifiedUser(CacheManager.getVerifiedUser);
@@ -161,12 +174,17 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       ..aktifVeritabani = CacheManager.getVeriTabani()["Şirket"]
       ..aktifIsletmeKodu = CacheManager.getVeriTabani()["İşletme"]
       ..aktifSubeKodu = CacheManager.getVeriTabani()["Şube"];
-    final response = await networkManager.dioPost<MainPageModel>(path: ApiUrls.createSession, bodyModel: MainPageModel(), data: AccountModel.instance, headers: {
-      "VERITABANI": CacheManager.getVeriTabani()["Şirket"].toString(),
-      "ISLETME_KODU": CacheManager.getVeriTabani()["İşletme"].toString(),
-      "SUBE_KODU": CacheManager.getVeriTabani()["Şube"].toString(),
-      "content-type": "application/json",
-    },);
+    final response = await networkManager.dioPost<MainPageModel>(
+      path: ApiUrls.createSession,
+      bodyModel: MainPageModel(),
+      data: AccountModel.instance,
+      headers: {
+        "VERITABANI": CacheManager.getVeriTabani()["Şirket"].toString(),
+        "ISLETME_KODU": CacheManager.getVeriTabani()["İşletme"].toString(),
+        "SUBE_KODU": CacheManager.getVeriTabani()["Şube"].toString(),
+        "content-type": "application/json",
+      },
+    );
     if (response.data != null) {
       CacheManager.setAnaVeri(response.data.first);
       Get.offAllNamed("/mainPage");

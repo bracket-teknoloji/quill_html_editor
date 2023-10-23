@@ -37,62 +37,62 @@ class _BaseFaturaDigerViewState extends BaseState<BaseFaturaDigerView> {
 
   @override
   Widget build(BuildContext context) => Column(
-      children: <Widget>[
-        Expanded(
-          child: Card(
-            elevation: UIHelper.highSize,
-            child: QuillHtmlEditor(
-              hintText: "Buraya notlarınızı yazabilirsiniz.",
-              controller: controller,
-              isEnabled: enable,
-              minHeight: height,
-              hintTextAlign: TextAlign.start,
-              padding: const EdgeInsets.only(left: 10, top: 5),
-              hintTextPadding: EdgeInsets.zero,
-              inputAction: InputAction.newline,
-              textStyle: const TextStyle(color: Colors.white),
-              backgroundColor: theme.colorScheme.background,
-              onTextChanged: (String text) => text != "" ? model.ekAciklama = text : null,
-              onEditorCreated: () async {
-                if (model.ekAciklama != null) {
-                  await controller.insertText(model.ekAciklama ?? "");
-                }
-              },
-              loadingBuilder: (BuildContext context) => const Center(child: CircularProgressIndicator.adaptive()),
-            ),
-          ).paddingSymmetric(vertical: UIHelper.midSize, horizontal: UIHelper.lowSize),
-        ),
-        SafeArea(
-          child: Visibility(
-            visible: enable,
+        children: <Widget>[
+          Expanded(
             child: Card(
-              child: ToolBar.scroll(
-                toolBarColor: Colors.transparent,
-                iconColor: Colors.white,
-                activeIconColor: UIHelper.primaryColor,
-                padding: UIHelper.midPadding,
-                iconSize: 20,
+              elevation: UIHelper.highSize,
+              child: QuillHtmlEditor(
+                hintText: "Buraya notlarınızı yazabilirsiniz.",
                 controller: controller,
-                toolBarConfig: const <ToolBarStyle>[
-                  ToolBarStyle.align,
-                  ToolBarStyle.bold,
-                  ToolBarStyle.italic,
-                  ToolBarStyle.underline,
-                  ToolBarStyle.color,
-                  ToolBarStyle.listBullet,
-                  ToolBarStyle.background,
-                  ToolBarStyle.headerOne,
-                  ToolBarStyle.headerTwo,
-                  ToolBarStyle.undo,
-                  ToolBarStyle.redo,
-                  ToolBarStyle.blockQuote,
-                  ToolBarStyle.link,
-                  ToolBarStyle.image,
-                ],
+                isEnabled: enable,
+                minHeight: height,
+                hintTextAlign: TextAlign.start,
+                padding: const EdgeInsets.only(left: 10, top: 5),
+                hintTextPadding: EdgeInsets.zero,
+                inputAction: InputAction.newline,
+                textStyle: const TextStyle(color: Colors.white),
+                backgroundColor: theme.colorScheme.background,
+                onTextChanged: (String text) => text != "" ? model.ekAciklama = text : null,
+                onEditorCreated: () async {
+                  if (model.ekAciklama != null) {
+                    await controller.insertText(model.ekAciklama ?? "");
+                  }
+                },
+                loadingBuilder: (BuildContext context) => const Center(child: CircularProgressIndicator.adaptive()),
               ),
             ).paddingSymmetric(vertical: UIHelper.midSize, horizontal: UIHelper.lowSize),
           ),
-        ),
-      ],
-    );
+          SafeArea(
+            child: Visibility(
+              visible: enable,
+              child: Card(
+                child: ToolBar.scroll(
+                  toolBarColor: Colors.transparent,
+                  iconColor: Colors.white,
+                  activeIconColor: UIHelper.primaryColor,
+                  padding: UIHelper.midPadding,
+                  iconSize: 20,
+                  controller: controller,
+                  toolBarConfig: const <ToolBarStyle>[
+                    ToolBarStyle.align,
+                    ToolBarStyle.bold,
+                    ToolBarStyle.italic,
+                    ToolBarStyle.underline,
+                    ToolBarStyle.color,
+                    ToolBarStyle.listBullet,
+                    ToolBarStyle.background,
+                    ToolBarStyle.headerOne,
+                    ToolBarStyle.headerTwo,
+                    ToolBarStyle.undo,
+                    ToolBarStyle.redo,
+                    ToolBarStyle.blockQuote,
+                    ToolBarStyle.link,
+                    ToolBarStyle.image,
+                  ],
+                ),
+              ).paddingSymmetric(vertical: UIHelper.midSize, horizontal: UIHelper.lowSize),
+            ),
+          ),
+        ],
+      );
 }

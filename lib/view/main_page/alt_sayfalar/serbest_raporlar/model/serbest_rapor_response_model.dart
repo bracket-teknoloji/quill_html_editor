@@ -49,14 +49,12 @@ class SerbestRaporResponseModel with NetworkManagerMixin {
 
   bool get grupKoduMu => rehberTipi?.contains("GRUP_KODU") ?? false;
 
-  bool get numaraliGrupKoduMu =>
-      int.tryParse(rehberTipi!.split("").last) != null;
+  bool get numaraliGrupKoduMu => int.tryParse(rehberTipi!.split("").last) != null;
 
   bool get cariVKNMi => rehberTipi == "CARI_VKN";
 
   @override
-  fromJson(Map<String, dynamic> json) =>
-      _$SerbestRaporResponseModelFromJson(json);
+  fromJson(Map<String, dynamic> json) => _$SerbestRaporResponseModelFromJson(json);
   @override
   Map<String, dynamic> toJson() => _$SerbestRaporResponseModelToJson(this);
 }

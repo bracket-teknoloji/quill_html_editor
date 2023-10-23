@@ -92,13 +92,13 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
       case SiparisTipiEnum.satici:
         return yetkiController.siparisDigerSekmesiGoster;
       case SiparisTipiEnum.satisFatura:
-      return yetkiController.satisFatDigerSekmesiGelsin;
+        return yetkiController.satisFatDigerSekmesiGelsin;
       case SiparisTipiEnum.satisIrsaliye:
-      return yetkiController.satisIrsDigerSekmesiGelsin;
+        return yetkiController.satisIrsDigerSekmesiGelsin;
       case SiparisTipiEnum.alisFatura:
-      return yetkiController.alisFatDigerSekmesiGelsin;
+        return yetkiController.alisFatDigerSekmesiGelsin;
       case SiparisTipiEnum.alisIrsaliye:
-      return yetkiController.alisIrsDigerSekmesiGelsin;
+        return yetkiController.alisIrsDigerSekmesiGelsin;
       default:
         return false;
     }

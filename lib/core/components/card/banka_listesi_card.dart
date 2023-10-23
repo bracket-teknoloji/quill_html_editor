@@ -24,31 +24,34 @@ class _KasaListesiCardState extends BaseState<KasaListesiCard> {
   @override
   Widget build(BuildContext context) => Card(
         child: ListTile(
-            onTap: () async {
-              await dialogManager.showKasaGridViewDialog(widget.item, onSelected: (p0) => widget.onSelected?.call(p0));
-            },
-            leading: CircleAvatar(
-              child: Text(widget.item?.kasaTanimi?[0] ?? ""),
-            ),
-            title: Text("${widget.item?.kasaKodu != null ? '${widget.item?.kasaKodu} - ' : ''}${widget.item?.kasaTanimi ?? ""}"),
-            subtitle: Text(
-                "Devir Tutarı: ${(widget.item?.dovizli == "E" ? widget.item?.dovizDevirTutari : widget.item?.devirTutari)?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.item?.dovizli == "E" ? (widget.item?.dovizAdi ?? "") : mainCurrency}",),
-            trailing: Text.rich(
-              TextSpan(
-                  children: [
+          onTap: () async {
+            await dialogManager.showKasaGridViewDialog(widget.item, onSelected: (p0) => widget.onSelected?.call(p0));
+          },
+          leading: CircleAvatar(
+            child: Text(widget.item?.kasaTanimi?[0] ?? ""),
+          ),
+          title: Text("${widget.item?.kasaKodu != null ? '${widget.item?.kasaKodu} - ' : ''}${widget.item?.kasaTanimi ?? ""}"),
+          subtitle: Text(
+            "Devir Tutarı: ${(widget.item?.dovizli == "E" ? widget.item?.dovizDevirTutari : widget.item?.devirTutari)?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.item?.dovizli == "E" ? (widget.item?.dovizAdi ?? "") : mainCurrency}",
+          ),
+          trailing: Text.rich(
+            TextSpan(
+              children: [
                 TextSpan(
-                    style: TextStyle(
-                        color: ((widget.item?.dovizli == "E" ? (widget.item?.devirliDovizBakiye ?? widget.item?.dovizDevirTutari ?? 0) : widget.item?.devirliBakiye ?? 0) < 0)
-                            ? Colors.red
-                            : Colors.green,),
-                    text:
-                        "${(widget.item?.dovizli == "E" ? (widget.item?.devirliDovizBakiye ?? widget.item?.dovizDevirTutari) : widget.item?.devirliBakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.item?.dovizli == "E" ? (widget.item?.dovizAdi ?? "") : mainCurrency}\n",),
+                  style: TextStyle(
+                    color: ((widget.item?.dovizli == "E" ? (widget.item?.devirliDovizBakiye ?? widget.item?.dovizDevirTutari ?? 0) : widget.item?.devirliBakiye ?? 0) < 0) ? Colors.red : Colors.green,
+                  ),
+                  text:
+                      "${(widget.item?.dovizli == "E" ? (widget.item?.devirliDovizBakiye ?? widget.item?.dovizDevirTutari) : widget.item?.devirliBakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.item?.dovizli == "E" ? (widget.item?.dovizAdi ?? "") : mainCurrency}\n",
+                ),
                 if (widget.item?.dovizli == "E")
                   TextSpan(text: "${(widget.item?.dovizli == "E" ? widget.item?.devirliBakiye : widget.item?.bakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")
                 else
                   null,
-              ].nullCheckWithGeneric,),
-              textAlign: TextAlign.end,
-            ),),
+              ].nullCheckWithGeneric,
+            ),
+            textAlign: TextAlign.end,
+          ),
+        ),
       );
 }

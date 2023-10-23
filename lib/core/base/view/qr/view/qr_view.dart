@@ -29,19 +29,24 @@ class _QRScannerState extends BaseState<QRScannerView> {
 
   @override
   Widget build(BuildContext context) => SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text("QR Kod Okuyucu"),
-          actions: [
-            Observer(builder: (_) => IconButton(
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text("QR Kod Okuyucu"),
+            actions: [
+              Observer(
+                builder: (_) => IconButton(
                   onPressed: () {
                     viewModel.changeFlash();
                     qrViewController.toggleFlash();
                   },
-                  icon: Icon(Icons.flash_on,
-                      color:
-                          viewModel.isFlashOpen ? Colors.amber : Colors.white,),),),
-            Observer(builder: (_) => IconButton(
+                  icon: Icon(
+                    Icons.flash_on,
+                    color: viewModel.isFlashOpen ? Colors.amber : Colors.white,
+                  ),
+                ),
+              ),
+              Observer(
+                builder: (_) => IconButton(
                   isSelected: false,
                   onPressed: () {
                     if (viewModel.isFlashOpen) {
@@ -51,25 +56,28 @@ class _QRScannerState extends BaseState<QRScannerView> {
                     viewModel.changeCameraReverse();
                     qrViewController.flipCamera();
                   },
-                  icon: Icon(Icons.flip_camera_ios,
-                      color: viewModel.isCameraReverse
-                          ? Colors.amber
-                          : Colors.white,),),),
-          ],
+                  icon: Icon(
+                    Icons.flip_camera_ios,
+                    color: viewModel.isCameraReverse ? Colors.amber : Colors.white,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          body: Stack(
+            children: [buildQrView(context), buildResult()],
+          ),
         ),
-        body: Stack(
-          children: [buildQrView(context), buildResult()],
-        ),
-      ),
-    );
+      );
 
   Widget buildQrView(BuildContext context) => QRView(
         overlay: QrScannerOverlayShape(
-            borderColor: UIHelper.primaryColor,
-            borderRadius: 10,
-            borderWidth: 20,
-            cutOutSize: width * 0.7,
-            overlayColor: Colors.black.withOpacity(0.7),),
+          borderColor: UIHelper.primaryColor,
+          borderRadius: 10,
+          borderWidth: 20,
+          cutOutSize: width * 0.7,
+          overlayColor: Colors.black.withOpacity(0.7),
+        ),
         key: qrKey,
         onQRViewCreated: _onQRViewCreated,
         cameraFacing: CameraFacing.back,
@@ -92,13 +100,14 @@ class _QRScannerState extends BaseState<QRScannerView> {
   }
 
   Widget buildResult() => Center(
-      child: Container(
-        alignment: Alignment.bottomCenter,
-        padding: UIHelper.highPaddingHorizontal,
-        margin: UIHelper.highPaddingVertical,
-        child: Text("QR Kodu Okutunuz",
-            style: context.general.appTheme.textTheme.titleLarge!
-                .copyWith(color: Colors.white),),
-      ),
-    );
+        child: Container(
+          alignment: Alignment.bottomCenter,
+          padding: UIHelper.highPaddingHorizontal,
+          margin: UIHelper.highPaddingVertical,
+          child: Text(
+            "QR Kodu Okutunuz",
+            style: context.general.appTheme.textTheme.titleLarge!.copyWith(color: Colors.white),
+          ),
+        ),
+      );
 }

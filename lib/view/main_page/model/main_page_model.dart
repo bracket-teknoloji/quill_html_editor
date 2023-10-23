@@ -38,5 +38,4 @@ class MainPageModel with NetworkManagerMixin {
 
   @override
   Map<String, dynamic> toJson() => _$MainPageModelToJson(this);
-
 }

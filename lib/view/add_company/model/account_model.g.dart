@@ -164,11 +164,7 @@ class AccountModelAdapter extends TypeAdapter<AccountModel> {
   int get hashCode => typeId.hashCode;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is AccountModelAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+  bool operator ==(Object other) => identical(this, other) || other is AccountModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 // **************************************************************************
@@ -182,9 +178,7 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) => AccountModel()
   ..aktifSubeKodu = json['AKTIF_SUBE_KODU'] as int?
   ..aktifVeritabani = json['AKTIF_VERITABANI'] as String?
   ..cihazSistemVersiyonu = json['CIHAZ_SISTEM_VERSIYONU'] as String?
-  ..apkDerlemeTarihi = json['APK_DERLEME_TARIHI'] == null
-      ? null
-      : DateTime.parse(json['APK_DERLEME_TARIHI'] as String)
+  ..apkDerlemeTarihi = json['APK_DERLEME_TARIHI'] == null ? null : DateTime.parse(json['APK_DERLEME_TARIHI'] as String)
   ..cihazDili = json['CIHAZ_DILI'] as String?
   ..gCid = json['G_CID'] as String?
   ..cihazMarkasi = json['CIHAZ_MARKASI'] as String?
@@ -192,16 +186,12 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) => AccountModel()
   ..cihazModeli = json['CIHAZ_MODELI'] as String?
   ..gDsn = json['G_DSN'] as String?
   ..cihazTarihi = json['CIHAZ_TARIHI'] as String?
-  ..cihazTarihiUtc = json['CIHAZ_TARIHI_UTC'] == null
-      ? null
-      : DateTime.parse(json['CIHAZ_TARIHI_UTC'] as String)
+  ..cihazTarihiUtc = json['CIHAZ_TARIHI_UTC'] == null ? null : DateTime.parse(json['CIHAZ_TARIHI_UTC'] as String)
   ..cihazTimeZoneDakika = json['CIHAZ_TIME_ZONE_DAKIKA'] as int?
   ..fcmToken = json['FCM_TOKEN'] as String?
   ..uyeEmail = json['UYE_EMAIL'] as String?
   ..uyeSifre = json['UYE_SIFRE'] as String?
-  ..konumDate = json['KONUM_DATE'] == null
-      ? null
-      : DateTime.parse(json['KONUM_DATE'] as String)
+  ..konumDate = json['KONUM_DATE'] == null ? null : DateTime.parse(json['KONUM_DATE'] as String)
   ..konumTarihi = json['KONUM_TARIHI'] as String?
   ..gKa = json['G_KA'] as String?
   ..gBo = json['G_BO'] as String?
@@ -243,8 +233,7 @@ Map<String, dynamic> _$AccountModelToJson(AccountModel instance) {
   writeNotNull('AKTIF_SUBE_KODU', instance.aktifSubeKodu);
   writeNotNull('AKTIF_VERITABANI', instance.aktifVeritabani);
   writeNotNull('CIHAZ_SISTEM_VERSIYONU', instance.cihazSistemVersiyonu);
-  writeNotNull(
-      'APK_DERLEME_TARIHI', instance.apkDerlemeTarihi?.toIso8601String());
+  writeNotNull('APK_DERLEME_TARIHI', instance.apkDerlemeTarihi?.toIso8601String());
   writeNotNull('CIHAZ_DILI', instance.cihazDili);
   writeNotNull('G_CID', instance.gCid);
   writeNotNull('CIHAZ_MARKASI', instance.cihazMarkasi);

@@ -5,8 +5,7 @@ import "../../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 
 part "siparis_teslim_raporu_view_model.g.dart";
 
-class SiparisTeslimRaporuViewModel = _SiparisTeslimRaporuViewModelBase
-    with _$SiparisTeslimRaporuViewModel;
+class SiparisTeslimRaporuViewModel = _SiparisTeslimRaporuViewModelBase with _$SiparisTeslimRaporuViewModel;
 
 abstract class _SiparisTeslimRaporuViewModelBase with Store {
   _SiparisTeslimRaporuViewModelBase(SiparisTipiEnum siparisTipi) {
@@ -19,28 +18,23 @@ abstract class _SiparisTeslimRaporuViewModelBase with Store {
   static SiparisTipiEnum? siparisTipiEnum = SiparisTipiEnum.musteri;
   @observable
   PdfModel pdfModel = PdfModel(
-      raporOzelKod: siparisTipiEnum == SiparisTipiEnum.musteri
-          ? "Rapor_SiparisMSTeslim"
-          : "Rapor_SiparisSSTeslim",
-      standart: true,
-      dicParams: DicParams(),);
+    raporOzelKod: siparisTipiEnum == SiparisTipiEnum.musteri ? "Rapor_SiparisMSTeslim" : "Rapor_SiparisSSTeslim",
+    standart: true,
+    dicParams: DicParams(),
+  );
   @observable
   bool kapaliMi = false;
   @observable
   bool durum = false;
 
   @action
-  void setStokKodu(String? value) =>
-      pdfModel.dicParams = pdfModel.dicParams?.copyWith(stokKodu: value);
+  void setStokKodu(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(stokKodu: value);
   @action
-  void setCariKodu(String? value) =>
-      pdfModel.dicParams = pdfModel.dicParams?.copyWith(cariKodu: value);
+  void setCariKodu(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(cariKodu: value);
   @action
-  void setBelgeNo(String? value) =>
-      pdfModel.dicParams = pdfModel.dicParams?.copyWith(belgeNo: value);
+  void setBelgeNo(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(belgeNo: value);
   @action
-  void setVergiNo(String? value) =>
-      pdfModel.dicParams = pdfModel.dicParams?.copyWith(vergiNo: value);
+  void setVergiNo(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(vergiNo: value);
   @action
   void setKapali(String? value) {
     kapaliMi = value == "E";
@@ -54,16 +48,13 @@ abstract class _SiparisTeslimRaporuViewModelBase with Store {
   }
 
   @action
-  void setBaslangicTarihi(String? value) =>
-      pdfModel.dicParams = pdfModel.dicParams?.copyWith(bastar: value);
+  void setBaslangicTarihi(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(bastar: value);
   @action
-  void setBitisTarihi(String? value) =>
-      pdfModel.dicParams = pdfModel.dicParams?.copyWith(bittar: value);
+  void setBitisTarihi(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(bittar: value);
   //* Future
   //*
   @observable
-  ObservableFuture<bool?> futureController =
-      ObservableFuture(Future.error(false));
+  ObservableFuture<bool?> futureController = ObservableFuture(Future.error(false));
 
   @action
   void setFuture() => futureController = ObservableFuture.value(true);

@@ -10,8 +10,9 @@ extension NumExtensionWithFixedDigits on num? {
   String commaSeparatedWithDecimalDigits(OndalikEnum decimalDigits) {
     if (this != null) {
       final f = NumberFormat.decimalPatternDigits(
-          locale: Get.locale!.languageCode,
-          decimalDigits: this! % 1 == 0 ? 0 : decimalDigits.ondalik,);
+        locale: Get.locale!.languageCode,
+        decimalDigits: this! % 1 == 0 ? 0 : decimalDigits.ondalik,
+      );
       return f.format(this!);
     } else {
       return "0";
@@ -23,7 +24,9 @@ extension NumExtensionWithFixedDigits on num? {
   String get dotSeparatedWithFixedDigits {
     if (this != null) {
       return this!.toStringAsFixed(2).replaceAllMapped(
-          RegExp(r"(\d{1,3})(?=(\d{3})+(?!\d))"), (Match m) => "${m[1]}.",);
+            RegExp(r"(\d{1,3})(?=(\d{3})+(?!\d))"),
+            (Match m) => "${m[1]}.",
+          );
     } else {
       return "0.00";
     }

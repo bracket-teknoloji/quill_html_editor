@@ -12,8 +12,7 @@ class SerbestRaporParametreModel with NetworkManagerMixin {
   bool? enterIslemYap;
 
   @override
-  fromJson(Map<String, dynamic> json) =>
-      _$SerbestRaporParametreModelFromJson(json);
+  fromJson(Map<String, dynamic> json) => _$SerbestRaporParametreModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$SerbestRaporParametreModelToJson(this);

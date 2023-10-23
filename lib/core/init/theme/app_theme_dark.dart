@@ -14,147 +14,158 @@ class AppThemeDark extends AppTheme {
   var colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark);
   @override
   ThemeData get theme => ThemeData(
-      platform: GetPlatform.isIOS ? TargetPlatform.iOS : TargetPlatform.android,
-      datePickerTheme: DatePickerThemeData(shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius)),
-      radioTheme: RadioThemeData(fillColor: MaterialStateProperty.all(UIHelper.primaryColor), overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.1))),
-      useMaterial3: true,
-      colorSchemeSeed: UIHelper.primaryColor,
-      actionIconTheme: ActionIconThemeData(backButtonIconBuilder: (context) => const Icon(Icons.arrow_back_outlined)),
-      tabBarTheme: TabBarTheme(
-        indicatorColor: UIHelper.primaryColor,
-        indicatorSize: TabBarIndicatorSize.tab,
-        labelColor: UIHelper.primaryColor,
-        labelPadding: UIHelper.lowPadding,
-        labelStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-        unselectedLabelStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-      ),
-      segmentedButtonTheme: SegmentedButtonThemeData(
+        platform: GetPlatform.isIOS ? TargetPlatform.iOS : TargetPlatform.android,
+        datePickerTheme: DatePickerThemeData(shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius)),
+        radioTheme: RadioThemeData(fillColor: MaterialStateProperty.all(UIHelper.primaryColor), overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.1))),
+        useMaterial3: true,
+        colorSchemeSeed: UIHelper.primaryColor,
+        actionIconTheme: ActionIconThemeData(backButtonIconBuilder: (context) => const Icon(Icons.arrow_back_outlined)),
+        tabBarTheme: TabBarTheme(
+          indicatorColor: UIHelper.primaryColor,
+          indicatorSize: TabBarIndicatorSize.tab,
+          labelColor: UIHelper.primaryColor,
+          labelPadding: UIHelper.lowPadding,
+          labelStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+          unselectedLabelStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+        ),
+        segmentedButtonTheme: SegmentedButtonThemeData(
           style: ButtonStyle(
-        textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
-        backgroundColor: MaterialStateProperty.all(Colors.transparent),
-        foregroundColor: MaterialStateProperty.all(UIHelper.primaryColor),
-        overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.1)),
-        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius)),
-      ),),
-      toggleButtonsTheme: ToggleButtonsThemeData(
-          color: colorManager.onPrimaryContainer, splashColor: Colors.transparent, fillColor: UIHelper.primaryColor, borderRadius: UIHelper.lowBorderRadius, textStyle: const TextStyle(fontSize: 12),),
-      brightness: Brightness.dark,
-      textTheme: GoogleFonts.dmSansTextTheme()
-          .apply(bodyColor: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark).onPrimaryContainer)
-          .copyWith(bodySmall: TextStyle(fontSize: 12, color: colorManager.onPrimaryContainer)),
-      splashFactory: InkRipple.splashFactory,
-      bottomAppBarTheme: const BottomAppBarTheme(elevation: 0, surfaceTintColor: Colors.black),
-      tooltipTheme:
-          const TooltipThemeData(decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.all(Radius.circular(50))), textStyle: TextStyle(color: Colors.white, fontSize: 12)),
-      dividerTheme: DividerThemeData(space: 0, thickness: 1, color: colorManager.onPrimaryContainer.withOpacity(0.2), endIndent: UIHelper.highSize, indent: UIHelper.highSize),
-      progressIndicatorTheme: ProgressIndicatorThemeData(color: UIHelper.primaryColor, linearTrackColor: Colors.transparent, circularTrackColor: Colors.transparent, linearMinHeight: 2),
-      dropdownMenuTheme: DropdownMenuThemeData(
-        menuStyle: const MenuStyle(),
-        inputDecorationTheme: InputDecorationTheme(
-          errorStyle: const TextStyle(
-            fontSize: 12,
-          ),
-          errorBorder: OutlineInputBorder(
-            borderRadius: UIHelper.lowBorderRadius,
-          ),
-          border: OutlineInputBorder(
-            borderRadius: UIHelper.lowBorderRadius,
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: UIHelper.lowBorderRadius,
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: UIHelper.lowBorderRadius,
+            textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
+            backgroundColor: MaterialStateProperty.all(Colors.transparent),
+            foregroundColor: MaterialStateProperty.all(UIHelper.primaryColor),
+            overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.1)),
+            shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius)),
           ),
         ),
-      ),
-      applyElevationOverlayColor: true,
-      bottomSheetTheme: const BottomSheetThemeData(
-        elevation: 1,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            top: Radius.circular(15),
-          ),
+        toggleButtonsTheme: ToggleButtonsThemeData(
+          color: colorManager.onPrimaryContainer,
+          splashColor: Colors.transparent,
+          fillColor: UIHelper.primaryColor,
+          borderRadius: UIHelper.lowBorderRadius,
+          textStyle: const TextStyle(fontSize: 12),
         ),
-      ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
+        brightness: Brightness.dark,
+        textTheme: GoogleFonts.dmSansTextTheme()
+            .apply(bodyColor: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark).onPrimaryContainer)
+            .copyWith(bodySmall: TextStyle(fontSize: 12, color: colorManager.onPrimaryContainer)),
         splashFactory: InkRipple.splashFactory,
-        backgroundColor: UIHelper.primaryColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: UIHelper.lowBorderRadius,
+        bottomAppBarTheme: const BottomAppBarTheme(elevation: 0, surfaceTintColor: Colors.black),
+        tooltipTheme:
+            const TooltipThemeData(decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.all(Radius.circular(50))), textStyle: TextStyle(color: Colors.white, fontSize: 12)),
+        dividerTheme: DividerThemeData(space: 0, thickness: 1, color: colorManager.onPrimaryContainer.withOpacity(0.2), endIndent: UIHelper.highSize, indent: UIHelper.highSize),
+        progressIndicatorTheme: ProgressIndicatorThemeData(color: UIHelper.primaryColor, linearTrackColor: Colors.transparent, circularTrackColor: Colors.transparent, linearMinHeight: 2),
+        dropdownMenuTheme: DropdownMenuThemeData(
+          menuStyle: const MenuStyle(),
+          inputDecorationTheme: InputDecorationTheme(
+            errorStyle: const TextStyle(
+              fontSize: 12,
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: UIHelper.lowBorderRadius,
+            ),
+            border: OutlineInputBorder(
+              borderRadius: UIHelper.lowBorderRadius,
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: UIHelper.lowBorderRadius,
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: UIHelper.lowBorderRadius,
+            ),
+          ),
         ),
-      ),),
-      iconTheme: const IconThemeData(color: Colors.white, size: 30),
-      dialogTheme: DialogTheme(
-        shape: RoundedRectangleBorder(
-          borderRadius: UIHelper.lowBorderRadius,
+        applyElevationOverlayColor: true,
+        bottomSheetTheme: const BottomSheetThemeData(
+          elevation: 1,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(15),
+            ),
+          ),
         ),
-        actionsPadding: EdgeInsets.zero,
-        alignment: Alignment.center,
-        contentTextStyle: const TextStyle(
-          fontSize: 16,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            splashFactory: InkRipple.splashFactory,
+            backgroundColor: UIHelper.primaryColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: UIHelper.lowBorderRadius,
+            ),
+          ),
         ),
-        elevation: 0,
-      ),
-      cardTheme: CardTheme(
-        shape: RoundedRectangleBorder(
-          borderRadius: UIHelper.lowBorderRadius,
+        iconTheme: const IconThemeData(color: Colors.white, size: 30),
+        dialogTheme: DialogTheme(
+          shape: RoundedRectangleBorder(
+            borderRadius: UIHelper.lowBorderRadius,
+          ),
+          actionsPadding: EdgeInsets.zero,
+          alignment: Alignment.center,
+          contentTextStyle: const TextStyle(
+            fontSize: 16,
+          ),
+          elevation: 0,
         ),
-      ),
-      listTileTheme: ListTileThemeData(
-        style: ListTileStyle.list,
-        visualDensity: const VisualDensity(vertical: -2),
-        shape: RoundedRectangleBorder(
-          borderRadius: UIHelper.lowBorderRadius,
+        cardTheme: CardTheme(
+          shape: RoundedRectangleBorder(
+            borderRadius: UIHelper.lowBorderRadius,
+          ),
         ),
-        dense: true,
-      ),
-      drawerTheme: DrawerThemeData(
+        listTileTheme: ListTileThemeData(
+          style: ListTileStyle.list,
+          visualDensity: const VisualDensity(vertical: -2),
+          shape: RoundedRectangleBorder(
+            borderRadius: UIHelper.lowBorderRadius,
+          ),
+          dense: true,
+        ),
+        drawerTheme: DrawerThemeData(
           endShape: RoundedRectangleBorder(
             borderRadius: UIHelper.zeroBorderRadius,
           ),
           elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: UIHelper.zeroBorderRadius,
-          ),),
-      textButtonTheme: TextButtonThemeData(
+          ),
+        ),
+        textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
-        splashFactory: InkRipple.splashFactory,
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        textStyle: MaterialStateProperty.all(TextStyle(
-          fontFamily: GoogleFonts.dmSans().fontFamily,
-          fontSize: 15,
-        ),),
-      ),),
-      snackBarTheme: SnackBarThemeData(
-        showCloseIcon: true,
-        closeIconColor: Colors.white,
-        backgroundColor: UIHelper.primaryColor,
-        contentTextStyle: const TextStyle(color: Colors.white),
-        insetPadding: UIHelper.lowPadding,
-        shape: RoundedRectangleBorder(
-          borderRadius: UIHelper.lowBorderRadius,
+            splashFactory: InkRipple.splashFactory,
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            textStyle: MaterialStateProperty.all(
+              TextStyle(
+                fontFamily: GoogleFonts.dmSans().fontFamily,
+                fontSize: 15,
+              ),
+            ),
+          ),
         ),
-        behavior: SnackBarBehavior.floating,
-      ),
-      inputDecorationTheme: InputDecorationTheme(
-        contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        isCollapsed: true,
-        enabledBorder: OutlineInputBorder(
-          borderRadius: UIHelper.lowBorderRadius,
-          borderSide: const BorderSide(color: Colors.white30),
+        snackBarTheme: SnackBarThemeData(
+          showCloseIcon: true,
+          closeIconColor: Colors.white,
+          backgroundColor: UIHelper.primaryColor,
+          contentTextStyle: const TextStyle(color: Colors.white),
+          insetPadding: UIHelper.lowPadding,
+          shape: RoundedRectangleBorder(
+            borderRadius: UIHelper.lowBorderRadius,
+          ),
+          behavior: SnackBarBehavior.floating,
         ),
-        border: OutlineInputBorder(
-          borderRadius: UIHelper.lowBorderRadius,
+        inputDecorationTheme: InputDecorationTheme(
+          contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          isCollapsed: true,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: UIHelper.lowBorderRadius,
+            borderSide: const BorderSide(color: Colors.white30),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: UIHelper.lowBorderRadius,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: UIHelper.lowBorderRadius,
+            borderSide: BorderSide(color: UIHelper.primaryColor),
+          ),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: UIHelper.lowBorderRadius,
-          borderSide: BorderSide(color: UIHelper.primaryColor),
-        ),
-      ),
-      buttonBarTheme: const ButtonBarThemeData(alignment: MainAxisAlignment.spaceBetween, mainAxisSize: MainAxisSize.max, buttonHeight: 10),
-      appBarTheme: AppBarTheme(
+        buttonBarTheme: const ButtonBarThemeData(alignment: MainAxisAlignment.spaceBetween, mainAxisSize: MainAxisSize.max, buttonHeight: 10),
+        appBarTheme: AppBarTheme(
           titleSpacing: 10,
           systemOverlayStyle: SystemUiOverlayStyle(
             statusBarIconBrightness: Brightness.light,
@@ -168,7 +179,9 @@ class AppThemeDark extends AppTheme {
           iconTheme: IconThemeData(color: colorManager.primary),
           titleTextStyle: TextStyle(color: colorManager.primary, fontSize: 20),
           scrolledUnderElevation: 0,
-          elevation: 0,),);
+          elevation: 0,
+        ),
+      );
 }
 // //!
 //   ThemeData get theme2 => ThemeData.dark(useMaterial3: true).copyWith(

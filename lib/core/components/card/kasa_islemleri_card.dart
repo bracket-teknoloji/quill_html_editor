@@ -36,73 +36,77 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
   bool get isOdeme => isCari && model?.gc == "C";
   @override
   Widget build(BuildContext context) => InkWell(
-      onTap: () async {
-        await bottomSheetDialogManager.showBottomSheetDialog(context,
+        onTap: () async {
+          await bottomSheetDialogManager.showBottomSheetDialog(
+            context,
             title: model?.aciklama ?? model?.cariAdi ?? model?.kasaAdi ?? "",
             children: [
               BottomSheetModel(title: "Tahsilat Makbuzu", onTap: () async => showMakbuz(true), iconWidget: Icons.delete_outline_outlined).yetkiKontrol(isTahsilat),
               BottomSheetModel(title: "Ödeme Makbuzu", onTap: () async => showMakbuz(false), iconWidget: Icons.delete_outline_outlined).yetkiKontrol(isOdeme),
               BottomSheetModel(title: "Sil", onTap: deleteData, iconWidget: Icons.delete_outline_outlined),
-            ].nullCheckWithGeneric,);
-      },
-      child: Card(
+            ].nullCheckWithGeneric,
+          );
+        },
+        child: Card(
           child: ListTile(
-              title: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [Text(model?.tarih.toDateString ?? ""), bakiyeText],
-                  ),
-                  Text(model?.cariAdi ?? "").yetkiVarMi(model?.cariAdi != null),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(model?.belgeNo ?? ""),
-                      ColorfulBadge(label: Text(model?.tipAciklama ?? ""), badgeColorEnum: BadgeColorEnum.tipAciklama),
-                    ],
-                  ),
-                ],
-              ),
-              subtitle: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text("Proje", style: TextStyle(fontWeight: FontWeight.bold)),
-                          Text(model?.projeAdi ?? "", overflow: TextOverflow.ellipsis),
-                        ],
-                      ).yetkiVarMi(model?.projeAdi != null && yetkiController.projeUygulamasiAcikMi),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text("Plasiyer", style: TextStyle(fontWeight: FontWeight.bold)),
-                          Text(model?.plasiyerAdi ?? "", overflow: TextOverflow.ellipsis),
-                        ],
-                      ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi && model?.plasiyerAdi != null),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text("Kasa", style: TextStyle(fontWeight: FontWeight.bold)),
-                          Text(model?.kasaAdi ?? "", overflow: TextOverflow.ellipsis),
-                        ],
-                      ).yetkiVarMi(model?.kasaAdi != null),
-                    ].map((e) => e is! SizedBox ? Expanded(child: e) : null).toList().nullCheckWithGeneric,
-                  ).paddingSymmetric(vertical: UIHelper.lowSize),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text("Açıklama", style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text(model?.aciklama ?? ""),
-                    ].where((element) => element is! SizedBox).toList(),
-                  ),
-                ],
-              ),),),
-    );
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [Text(model?.tarih.toDateString ?? ""), bakiyeText],
+                ),
+                Text(model?.cariAdi ?? "").yetkiVarMi(model?.cariAdi != null),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(model?.belgeNo ?? ""),
+                    ColorfulBadge(label: Text(model?.tipAciklama ?? ""), badgeColorEnum: BadgeColorEnum.tipAciklama),
+                  ],
+                ),
+              ],
+            ),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text("Proje", style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text(model?.projeAdi ?? "", overflow: TextOverflow.ellipsis),
+                      ],
+                    ).yetkiVarMi(model?.projeAdi != null && yetkiController.projeUygulamasiAcikMi),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text("Plasiyer", style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text(model?.plasiyerAdi ?? "", overflow: TextOverflow.ellipsis),
+                      ],
+                    ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi && model?.plasiyerAdi != null),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text("Kasa", style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text(model?.kasaAdi ?? "", overflow: TextOverflow.ellipsis),
+                      ],
+                    ).yetkiVarMi(model?.kasaAdi != null),
+                  ].map((e) => e is! SizedBox ? Expanded(child: e) : null).toList().nullCheckWithGeneric,
+                ).paddingSymmetric(vertical: UIHelper.lowSize),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text("Açıklama", style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text(model?.aciklama ?? ""),
+                  ].where((element) => element is! SizedBox).toList(),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
 
   void deleteData() async {
     Get.back();

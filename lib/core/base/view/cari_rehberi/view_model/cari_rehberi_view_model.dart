@@ -11,8 +11,7 @@ import "../model/cari_listesi_request_model.dart";
 
 part "cari_rehberi_view_model.g.dart";
 
-class CariRehberiViewModel = _CariRehberiViewModelBase
-    with _$CariRehberiViewModel;
+class CariRehberiViewModel = _CariRehberiViewModelBase with _$CariRehberiViewModel;
 
 abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
   final Map<String, dynamic> siralaMap = {
@@ -54,31 +53,27 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
 
   @observable
   CariListesiRequestModel? cariListesiRequestModel = CariListesiRequestModel(
-      eFaturaGoster: true,
-      sayfa: 1,
-      siralama: "AZ",
-      belgeTuru: StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS",
-      teslimCari: "E",);
+    eFaturaGoster: true,
+    sayfa: 1,
+    siralama: "AZ",
+    belgeTuru: StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS",
+    teslimCari: "E",
+  );
 
   @computed
-  List<BaseGrupKoduModel>? get grupKodlari1 =>
-      grupKodlari?.where((element) => element.grupNo == 1).toList();
+  List<BaseGrupKoduModel>? get grupKodlari1 => grupKodlari?.where((element) => element.grupNo == 1).toList();
 
   @computed
-  List<BaseGrupKoduModel>? get grupKodlari2 =>
-      grupKodlari?.where((element) => element.grupNo == 2).toList();
+  List<BaseGrupKoduModel>? get grupKodlari2 => grupKodlari?.where((element) => element.grupNo == 2).toList();
 
   @computed
-  List<BaseGrupKoduModel>? get grupKodlari3 =>
-      grupKodlari?.where((element) => element.grupNo == 3).toList();
+  List<BaseGrupKoduModel>? get grupKodlari3 => grupKodlari?.where((element) => element.grupNo == 3).toList();
 
   @computed
-  List<BaseGrupKoduModel>? get grupKodlari4 =>
-      grupKodlari?.where((element) => element.grupNo == 4).toList();
+  List<BaseGrupKoduModel>? get grupKodlari4 => grupKodlari?.where((element) => element.grupNo == 4).toList();
 
   @computed
-  List<BaseGrupKoduModel>? get grupKodlari5 =>
-      grupKodlari?.where((element) => element.grupNo == 5).toList();
+  List<BaseGrupKoduModel>? get grupKodlari5 => grupKodlari?.where((element) => element.grupNo == 5).toList();
 
   @action
   void setDahaVarMi(bool value) => dahaVarMi = value;
@@ -90,60 +85,47 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
   void changeIsScrollDown(bool value) => isScrollDown = value;
 
   @action
-  void changeCariListesi(List<CariListesiModel>? value) =>
-      cariListesi = value?.asObservable();
+  void changeCariListesi(List<CariListesiModel>? value) => cariListesi = value?.asObservable();
 
   @action
-  void addCariListesi(List<CariListesiModel> value) =>
-      cariListesi?.addAll(value);
+  void addCariListesi(List<CariListesiModel> value) => cariListesi?.addAll(value);
 
   @action
-  void changeBagliCariKodu(String? value) => cariListesiRequestModel =
-      cariListesiRequestModel?.copyWith(bagliCariKodu: value);
+  void changeBagliCariKodu(String? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(bagliCariKodu: value);
 
   @action
-  void changeSehir(String? value) =>
-      cariListesiRequestModel = cariListesiRequestModel?.copyWith(sehir: value);
+  void changeSehir(String? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(sehir: value);
 
   @action
-  void changeIlce(String? value) =>
-      cariListesiRequestModel = cariListesiRequestModel?.copyWith(ilce: value);
+  void changeIlce(String? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(ilce: value);
 
   @action
-  void changeTipi(String? value) => cariListesiRequestModel =
-      cariListesiRequestModel?.copyWith(cariTipi: value);
+  void changeTipi(String? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(cariTipi: value);
 
   @action
-  void changeKod1(List<String>? value) => cariListesiRequestModel =
-      cariListesiRequestModel?.copyWith(arrKod1: value);
+  void changeKod1(List<String>? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(arrKod1: value);
 
   @action
-  void changeKod2(List<String>? value) => cariListesiRequestModel =
-      cariListesiRequestModel?.copyWith(arrKod2: value);
+  void changeKod2(List<String>? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(arrKod2: value);
 
   @action
-  void changeKod3(List<String>? value) => cariListesiRequestModel =
-      cariListesiRequestModel?.copyWith(arrKod3: value);
+  void changeKod3(List<String>? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(arrKod3: value);
 
   @action
-  void changeKod4(List<String>? value) => cariListesiRequestModel =
-      cariListesiRequestModel?.copyWith(arrKod4: value);
+  void changeKod4(List<String>? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(arrKod4: value);
 
   @action
-  void changeKod5(List<String>? value) => cariListesiRequestModel =
-      cariListesiRequestModel?.copyWith(arrKod5: value);
+  void changeKod5(List<String>? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(arrKod5: value);
 
   @action
   void changeSiralama(String? value) {
-    cariListesiRequestModel =
-        cariListesiRequestModel?.copyWith(siralama: value);
+    cariListesiRequestModel = cariListesiRequestModel?.copyWith(siralama: value);
     resetAll();
   }
 
   @action
   void changeFilterText(String? value) {
-    cariListesiRequestModel =
-        cariListesiRequestModel?.copyWith(filterText: value);
+    cariListesiRequestModel = cariListesiRequestModel?.copyWith(filterText: value);
     resetAll();
   }
 
@@ -158,12 +140,12 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getCariListesi() async {
     final response = await networkManager.dioGet<CariListesiModel>(
-        path: ApiUrls.getCariler,
-        queryParameters: cariListesiRequestModel?.toJsonWithList(),
-        bodyModel: CariListesiModel(),);
+      path: ApiUrls.getCariler,
+      queryParameters: cariListesiRequestModel?.toJsonWithList(),
+      bodyModel: CariListesiModel(),
+    );
     if (response.data != null && response.data is List) {
-      final List<CariListesiModel> list =
-          response.data.whereType<CariListesiModel>().toList();
+      final List<CariListesiModel> list = response.data.whereType<CariListesiModel>().toList();
       if (cariListesi == null) {
         changeCariListesi(list);
       } else {
@@ -174,7 +156,8 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
       } else {
         setDahaVarMi(true);
         cariListesiRequestModel = cariListesiRequestModel?.copyWith(
-            sayfa: cariListesiRequestModel!.sayfa! + 1,);
+          sayfa: cariListesiRequestModel!.sayfa! + 1,
+        );
       }
     }
   }
@@ -182,12 +165,12 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getSehirBilgileri() async {
     final result = await networkManager.dioGet<CariSehirlerModel>(
-        path: ApiUrls.getCariKayitliSehirler,
-        bodyModel: CariSehirlerModel(),
-        showLoading: true,);
+      path: ApiUrls.getCariKayitliSehirler,
+      bodyModel: CariSehirlerModel(),
+      showLoading: true,
+    );
     if (result.data != null && result.data is List) {
-      final List<CariSehirlerModel> list =
-          result.data.whereType<CariSehirlerModel>().toList();
+      final List<CariSehirlerModel> list = result.data.whereType<CariSehirlerModel>().toList();
       sehirler = list.asObservable();
     }
   }
@@ -196,8 +179,7 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
   Future<void> getGrupKodlari() async {
     final result = await CariNetworkManager.getKod();
     if (result.data != null) {
-      final List<BaseGrupKoduModel> list =
-          result.data.whereType<BaseGrupKoduModel>().toList();
+      final List<BaseGrupKoduModel> list = result.data.whereType<BaseGrupKoduModel>().toList();
       grupKodlari = list.asObservable();
     }
   }

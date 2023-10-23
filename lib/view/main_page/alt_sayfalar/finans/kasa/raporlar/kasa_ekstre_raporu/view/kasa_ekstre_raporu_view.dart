@@ -44,46 +44,53 @@ class _KasaEkstreRaporuViewState extends BaseState<KasaEkstreRaporuView> {
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
-    await bottomSheetDialogManager.showBottomSheetDialog(context,
-        title: "Filtrele",
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            RaporFiltreDateTimeBottomSheetView(
-                filterOnChanged: (int? index) {
-                  viewModel.setBastar(baslangicController.text);
-                  viewModel.setBittar(bitisController.text);
-                },
-                baslangicTarihiController: baslangicController,
-                bitisTarihiController: bitisController,),
-            CustomTextField(
-                controller: kasaKoduController,
-                readOnly: true,
-                isMust: true,
-                suffixMore: true,
-                labelText: "Kasa Kodu",
-                onTap: () async {
-                  final List<KasaList>? kasaList = parametreModel.kasaList;
-                  final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                      title: "Kasa Seçiniz", children: List.generate(kasaList?.length ?? 0, (index) => BottomSheetModel(title: kasaList?[index].kasaTanimi ?? "", value: kasaList?[index])),);
-                  if (result is KasaList) {
-                    viewModel.setKasaKodu(result.kasaKodu);
-                    kasaKoduController.text = result.kasaTanimi ?? "";
-                  }
-                },),
-            ElevatedButton(
-                    onPressed: () {
-                      if (viewModel.pdfModel.dicParams?.kasaKodu == null) {
-                        dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
-                      } else {
-                        viewModel.setFuture();
-                        Get.back();
-                      }
-                    },
-                    child: const Text("Uygula"),)
-                .paddingAll(UIHelper.lowSize),
-          ],
-        ).paddingAll(UIHelper.lowSize),);
+    await bottomSheetDialogManager.showBottomSheetDialog(
+      context,
+      title: "Filtrele",
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          RaporFiltreDateTimeBottomSheetView(
+            filterOnChanged: (int? index) {
+              viewModel.setBastar(baslangicController.text);
+              viewModel.setBittar(bitisController.text);
+            },
+            baslangicTarihiController: baslangicController,
+            bitisTarihiController: bitisController,
+          ),
+          CustomTextField(
+            controller: kasaKoduController,
+            readOnly: true,
+            isMust: true,
+            suffixMore: true,
+            labelText: "Kasa Kodu",
+            onTap: () async {
+              final List<KasaList>? kasaList = parametreModel.kasaList;
+              final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                context,
+                title: "Kasa Seçiniz",
+                children: List.generate(kasaList?.length ?? 0, (index) => BottomSheetModel(title: kasaList?[index].kasaTanimi ?? "", value: kasaList?[index])),
+              );
+              if (result is KasaList) {
+                viewModel.setKasaKodu(result.kasaKodu);
+                kasaKoduController.text = result.kasaTanimi ?? "";
+              }
+            },
+          ),
+          ElevatedButton(
+            onPressed: () {
+              if (viewModel.pdfModel.dicParams?.kasaKodu == null) {
+                dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
+              } else {
+                viewModel.setFuture();
+                Get.back();
+              }
+            },
+            child: const Text("Uygula"),
+          ).paddingAll(UIHelper.lowSize),
+        ],
+      ).paddingAll(UIHelper.lowSize),
+    );
     return Future.value(viewModel.futureController.value);
   }
 }

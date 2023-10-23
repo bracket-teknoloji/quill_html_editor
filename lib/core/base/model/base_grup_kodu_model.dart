@@ -27,8 +27,7 @@ class BaseGrupKoduModel with _$BaseGrupKoduModel, NetworkManagerMixin {
   }) = _BaseGrupKoduModel;
 
   BaseGrupKoduModel._();
-  factory BaseGrupKoduModel.fromJson(Map<String, Object?> json) =>
-      _$BaseGrupKoduModelFromJson(json);
+  factory BaseGrupKoduModel.fromJson(Map<String, Object?> json) => _$BaseGrupKoduModelFromJson(json);
 
   @override
   fromJson(Map<String, dynamic> json) => _$BaseGrupKoduModelFromJson(json);

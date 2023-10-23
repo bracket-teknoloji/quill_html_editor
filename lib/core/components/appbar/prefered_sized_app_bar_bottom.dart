@@ -8,12 +8,10 @@ class PreferedSizedAppBarBottom extends StatefulWidget {
   const PreferedSizedAppBarBottom({super.key, required this.children});
 
   @override
-  State<PreferedSizedAppBarBottom> createState() =>
-      _PreferedSizedAppBarBottomState();
+  State<PreferedSizedAppBarBottom> createState() => _PreferedSizedAppBarBottomState();
 }
 
-class _PreferedSizedAppBarBottomState
-    extends BaseState<PreferedSizedAppBarBottom> {
+class _PreferedSizedAppBarBottomState extends BaseState<PreferedSizedAppBarBottom> {
   @override
   Widget build(BuildContext context) => PreferredSize(
         preferredSize: const Size.fromHeight(60),
@@ -24,5 +22,6 @@ class _PreferedSizedAppBarBottomState
             scrollDirection: Axis.horizontal,
             children: widget.children.map((e) => e as Widget).toList(),
           ),
-        ),);
+        ),
+      );
 }

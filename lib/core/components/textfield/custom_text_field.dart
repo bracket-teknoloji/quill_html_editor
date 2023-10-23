@@ -32,30 +32,31 @@ class CustomTextField extends StatefulWidget {
   final bool? suffixMore;
   final bool? isFormattedString;
   final bool? isDateTime;
-  const CustomTextField(
-      {super.key,
-      this.controller,
-      this.labelText,
-      this.valueText,
-      this.isMust,
-      this.readOnly,
-      this.suffix,
-      this.enabled,
-      this.focusNode,
-      this.onTap,
-      this.keyboardType,
-      this.onChanged,
-      this.controllerText,
-      this.maxLength,
-      this.onSubmitted,
-      this.validator,
-      this.valueWidget,
-      this.fitContent,
-      this.suffixMore,
-      this.inputFormatter,
-      this.isFormattedString,
-      this.onClear,
-      this.isDateTime,});
+  const CustomTextField({
+    super.key,
+    this.controller,
+    this.labelText,
+    this.valueText,
+    this.isMust,
+    this.readOnly,
+    this.suffix,
+    this.enabled,
+    this.focusNode,
+    this.onTap,
+    this.keyboardType,
+    this.onChanged,
+    this.controllerText,
+    this.maxLength,
+    this.onSubmitted,
+    this.validator,
+    this.valueWidget,
+    this.fitContent,
+    this.suffixMore,
+    this.inputFormatter,
+    this.isFormattedString,
+    this.onClear,
+    this.isDateTime,
+  });
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -92,42 +93,44 @@ class _CustomTextFieldState extends State<CustomTextField> {
   }
 
   Widget get textFormField => TextFieldTapRegion(
-      onTapOutside: (PointerDownEvent event) => FocusManager.instance.primaryFocus?.unfocus(),
-      onTapInside: (PointerDownEvent event) => SelectableText.rich(TextSpan(children: <InlineSpan>[TextSpan(text: controller.text)])),
-      child: MouseRegion(
-        onExit: (PointerExitEvent event) => FocusManager.instance.primaryFocus?.unfocus(),
-        child: TextFormField(
-          autofillHints: widget.keyboardType == TextInputType.emailAddress ? <String>[AutofillHints.email] : null,
-          textInputAction: TextInputAction.next,
-          keyboardType: widget.keyboardType,
-          focusNode: widget.focusNode,
-          onTap: widget.onTap,
-          onChanged: widget.onChanged,
-          onFieldSubmitted: widget.onSubmitted,
-          inputFormatters: widget.isFormattedString == true ? <TextInputFormatter>[TextFieldFormatterHelper.turkishFormatter] : widget.inputFormatter,
-          // onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
-          maxLength: widget.maxLength,
-          validator: widget.validator ?? ((widget.enabled != false ? (widget.isMust ?? false) : false) ? validator : null),
-          controller: controller,
-          obscureText: widget.keyboardType == TextInputType.visiblePassword,
-          readOnly: widget.readOnly ?? false,
-          enableSuggestions: true,
-          decoration: InputDecoration(
+        onTapOutside: (PointerDownEvent event) => FocusManager.instance.primaryFocus?.unfocus(),
+        onTapInside: (PointerDownEvent event) => SelectableText.rich(TextSpan(children: <InlineSpan>[TextSpan(text: controller.text)])),
+        child: MouseRegion(
+          onExit: (PointerExitEvent event) => FocusManager.instance.primaryFocus?.unfocus(),
+          child: TextFormField(
+            autofillHints: widget.keyboardType == TextInputType.emailAddress ? <String>[AutofillHints.email] : null,
+            textInputAction: TextInputAction.next,
+            keyboardType: widget.keyboardType,
+            focusNode: widget.focusNode,
+            onTap: widget.onTap,
+            onChanged: widget.onChanged,
+            onFieldSubmitted: widget.onSubmitted,
+            inputFormatters: widget.isFormattedString == true ? <TextInputFormatter>[TextFieldFormatterHelper.turkishFormatter] : widget.inputFormatter,
+            // onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
+            maxLength: widget.maxLength,
+            validator: widget.validator ?? ((widget.enabled != false ? (widget.isMust ?? false) : false) ? validator : null),
+            controller: controller,
+            obscureText: widget.keyboardType == TextInputType.visiblePassword,
+            readOnly: widget.readOnly ?? false,
+            enableSuggestions: true,
+            decoration: InputDecoration(
               enabled: widget.enabled ?? true,
               errorStyle: TextStyle(color: UIHelper.primaryColor, fontWeight: FontWeight.bold),
               errorBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: UIHelper.primaryColor.withOpacity(0.7),
-                    width: 2,
-                  ),
-                  borderRadius: BorderRadius.circular(UIHelper.midSize),
-                  gapPadding: 0,),
+                borderSide: BorderSide(
+                  color: UIHelper.primaryColor.withOpacity(0.7),
+                  width: 2,
+                ),
+                borderRadius: BorderRadius.circular(UIHelper.midSize),
+                gapPadding: 0,
+              ),
               suffixIcon: widget.suffix != null || widget.isDateTime == true || widget.suffixMore == true
                   ? Row(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
-                        Observer(builder: (_) => Visibility(
+                        Observer(
+                          builder: (_) => Visibility(
                             visible: (viewModel.showClearButton) && (widget.isMust != true),
                             child: IconButton(
                               style: ButtonStyle(
@@ -143,49 +146,58 @@ class _CustomTextFieldState extends State<CustomTextField> {
                               },
                               icon: const Icon(Icons.close),
                             ),
-                          ),).yetkiVarMi(widget.onClear != null),
+                          ),
+                        ).yetkiVarMi(widget.onClear != null),
                         if (widget.suffix != null) widget.suffix!,
                         if (widget.isDateTime == true)
                           IconButton(
-                              padding: EdgeInsets.zero,
-                              constraints: const BoxConstraints(),
-                              onPressed: widget.onTap,
-                              icon: const Icon(Icons.date_range_outlined),
-                              style: ButtonStyle(
-                                padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
-                                splashFactory: NoSplash.splashFactory,
-                              ),),
+                            padding: EdgeInsets.zero,
+                            constraints: const BoxConstraints(),
+                            onPressed: widget.onTap,
+                            icon: const Icon(Icons.date_range_outlined),
+                            style: ButtonStyle(
+                              padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                              splashFactory: NoSplash.splashFactory,
+                            ),
+                          ),
                         if (widget.suffixMore == true)
                           IconButton(
-                              padding: EdgeInsets.zero,
-                              constraints: const BoxConstraints(),
-                              onPressed: widget.onTap,
-                              icon: const Icon(Icons.more_horiz_outlined),
-                              style: ButtonStyle(
-                                padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
-                                splashFactory: NoSplash.splashFactory,
-                              ),),
+                            padding: EdgeInsets.zero,
+                            constraints: const BoxConstraints(),
+                            onPressed: widget.onTap,
+                            icon: const Icon(Icons.more_horiz_outlined),
+                            style: ButtonStyle(
+                              padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                              splashFactory: NoSplash.splashFactory,
+                            ),
+                          ),
                       ].where((Widget element) => element is! SizedBox).toList().nullCheckWithGeneric,
                     )
                   : null,
               label: Wrap(
                 direction: Axis.horizontal,
                 children: <Widget>[
-                  Text.rich(TextSpan(children: <InlineSpan>[
+                  Text.rich(
                     TextSpan(
-                        text: widget.labelText ?? "",
-                        style: (widget.enabled != false ? (widget.isMust ?? false) : false)
-                            ? TextStyle(color: UIHelper.primaryColor)
-                            : ((widget.controller?.text == "") ? TextStyle(color: Colors.grey.withOpacity(0.6)) : TextStyle(color: Colors.grey.withOpacity(0.8))),),
-                    TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: Colors.grey.withOpacity(0.3), fontSize: 12)),
-                  ],),),
+                      children: <InlineSpan>[
+                        TextSpan(
+                          text: widget.labelText ?? "",
+                          style: (widget.enabled != false ? (widget.isMust ?? false) : false)
+                              ? TextStyle(color: UIHelper.primaryColor)
+                              : ((widget.controller?.text == "") ? TextStyle(color: Colors.grey.withOpacity(0.6)) : TextStyle(color: Colors.grey.withOpacity(0.8))),
+                        ),
+                        TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: Colors.grey.withOpacity(0.3), fontSize: 12)),
+                      ],
+                    ),
+                  ),
                   if (widget.valueWidget != null) SizedBox(width: UIHelper.lowSize),
                   if (widget.valueWidget != null) widget.valueWidget!,
                 ],
-              ).yetkiVarMi(widget.labelText != null),),
-        ).paddingAll(UIHelper.lowSize),
-      ),
-    );
+              ).yetkiVarMi(widget.labelText != null),
+            ),
+          ).paddingAll(UIHelper.lowSize),
+        ),
+      );
 
   String? validator(p0) {
     if (p0 == null || p0.isEmpty) {

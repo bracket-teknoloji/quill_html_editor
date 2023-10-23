@@ -42,15 +42,18 @@ class _CariRehberiCardState extends BaseState<CariRehberiCard> {
               ),
             ],
           ),
-          trailing: Wrap(children: [
-            Text(
+          trailing: Wrap(
+            children: [
+              Text(
                 (model.bakiye == null
                         ? "0.00 $mainCurrency"
                         : "${model.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"
                             "\n")
                     .toString(),
-                style: TextStyle(color: UIHelper.getColorWithValue(model.bakiye ?? 0.0)),),
-          ],),
+                style: TextStyle(color: UIHelper.getColorWithValue(model.bakiye ?? 0.0)),
+              ),
+            ],
+          ),
         ),
       );
 }

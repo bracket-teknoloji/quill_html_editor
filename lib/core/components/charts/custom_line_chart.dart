@@ -34,10 +34,10 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
 
   @override
   Widget build(BuildContext context) => AspectRatio(
-      aspectRatio: 1.8,
-      child: widget.lineChartValue.ext.isNotNullOrEmpty
-          ? LineChart(
-              LineChartData(
+        aspectRatio: 1.8,
+        child: widget.lineChartValue.ext.isNotNullOrEmpty
+            ? LineChart(
+                LineChartData(
                   borderData: FlBorderData(show: false),
                   lineTouchData: LineTouchData(
                     enabled: true,
@@ -47,24 +47,25 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                       fitInsideVertically: true,
                       tooltipRoundedRadius: 8,
                       getTooltipItems: (List<LineBarSpot> touchedBarSpots) => touchedBarSpots.map((barSpot) {
-                          final flSpot = barSpot;
-                          return LineTooltipItem(
-                            flSpot.y.commaSeparatedWithDecimalDigits(
-                                OndalikEnum.tutar,),
-                            TextStyle(
-                              color: flSpot.bar.color,
-                              fontWeight: FontWeight.w900,
-                            ),
-                            children: [
-                              TextSpan(
-                                text: " $mainCurrency",
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.normal,
-                                ),
+                        final flSpot = barSpot;
+                        return LineTooltipItem(
+                          flSpot.y.commaSeparatedWithDecimalDigits(
+                            OndalikEnum.tutar,
+                          ),
+                          TextStyle(
+                            color: flSpot.bar.color,
+                            fontWeight: FontWeight.w900,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: " $mainCurrency",
+                              style: const TextStyle(
+                                fontWeight: FontWeight.normal,
                               ),
-                            ],
-                          );
-                        }).toList(),
+                            ),
+                          ],
+                        );
+                      }).toList(),
                       rotateAngle: 0.5,
                       tooltipPadding: const EdgeInsets.all(5),
                     ),
@@ -76,69 +77,84 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                   titlesData: FlTitlesData(
                     show: true,
                     topTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                            showTitles: true,
-                            getTitlesWidget: topTitleWidgets,
-                            interval: 1,),),
+                      sideTitles: SideTitles(
+                        showTitles: true,
+                        getTitlesWidget: topTitleWidgets,
+                        interval: 1,
+                      ),
+                    ),
                     bottomTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                            showTitles: true,
-                            getTitlesWidget: bottomTitleWidgets,
-                            interval: 1,),),
+                      sideTitles: SideTitles(
+                        showTitles: true,
+                        getTitlesWidget: bottomTitleWidgets,
+                        interval: 1,
+                      ),
+                    ),
                     rightTitles: const AxisTitles(axisNameWidget: Text("")),
                     leftTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                            showTitles: true,
-                            getTitlesWidget: leftTitleWidgets,),),
+                      sideTitles: SideTitles(
+                        showTitles: true,
+                        getTitlesWidget: leftTitleWidgets,
+                      ),
+                    ),
                   ),
                   minX: 0,
                   maxX: (widget.lineChartValue?.length.toDouble() ?? 0) - 1,
                   minY: 0,
                   lineBarsData: [
                     LineChartBarData(
-                        spots: widget.lineChartValue.ext.isNotNullOrEmpty
-                            ? List.generate(
-                                widget.lineChartValue?.length ?? 0,
-                                (index) => FlSpot(index.toDouble(),
-                                    widget.lineChartValue?[index] ?? 0,),)
-                            : [],
+                      spots: widget.lineChartValue.ext.isNotNullOrEmpty
+                          ? List.generate(
+                              widget.lineChartValue?.length ?? 0,
+                              (index) => FlSpot(
+                                index.toDouble(),
+                                widget.lineChartValue?[index] ?? 0,
+                              ),
+                            )
+                          : [],
+                      show: true,
+                      preventCurveOverShooting: true,
+                      isCurved: true,
+                      curveSmoothness: 0.5,
+                      isStrokeJoinRound: true,
+                      barWidth: 2,
+                      gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: Colors.primaries.sublist(0, widget.lineChartValue?.length ?? 0),
+                      ),
+                      isStrokeCapRound: true,
+                      dotData: FlDotData(
                         show: true,
-                        preventCurveOverShooting: true,
-                        isCurved: true,
-                        curveSmoothness: 0.5,
-                        isStrokeJoinRound: true,
-                        barWidth: 2,
+                        getDotPainter: (
+                          FlSpot spot,
+                          double xPercentage,
+                          LineChartBarData bar,
+                          int index,
+                        ) =>
+                            FlDotCirclePainter(
+                          radius: 4,
+                          color: Colors.transparent,
+                          strokeWidth: 2,
+                          strokeColor: Colors.primaries[index],
+                        ),
+                      ),
+                      belowBarData: BarAreaData(
+                        show: true,
                         gradient: LinearGradient(
                           begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                          colors: Colors.primaries
-                              .sublist(0, widget.lineChartValue?.length ?? 0),
+                          end: Alignment.topRight,
+                          colors: Colors.primaries.sublist(0, widget.lineChartValue?.length ?? 0).map((e) => e.withOpacity(0.3)).toList(),
                         ),
-                        isStrokeCapRound: true,
-                        dotData: FlDotData(
-                            show: true,
-                            getDotPainter: (FlSpot spot, double xPercentage,
-                                LineChartBarData bar, int index,) => FlDotCirclePainter(
-                                  radius: 4,
-                                  color: Colors.transparent,
-                                  strokeWidth: 2,
-                                  strokeColor: Colors.primaries[index],),),
-                        belowBarData: BarAreaData(
-                          show: true,
-                          gradient: LinearGradient(
-                            begin: Alignment.centerLeft,
-                            end: Alignment.topRight,
-                            colors: Colors.primaries
-                                .sublist(0, widget.lineChartValue?.length ?? 0)
-                                .map((e) => e.withOpacity(0.3))
-                                .toList(),
-                          ),
-                        ),),
-                  ],),
-              curve: Curves.linear,
-              duration: DurationHelper.durationLow,)
-          : const SizedBox(),
-    );
+                      ),
+                    ),
+                  ],
+                ),
+                curve: Curves.linear,
+                duration: DurationHelper.durationLow,
+              )
+            : const SizedBox(),
+      );
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(
@@ -188,8 +204,11 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
       fontWeight: FontWeight.bold,
       fontSize: 8,
     );
-    return Text("${(value ~/ 1000).toStringIfNotNull ?? ""}k ",
-        style: style, textAlign: TextAlign.left,);
+    return Text(
+      "${(value ~/ 1000).toStringIfNotNull ?? ""}k ",
+      style: style,
+      textAlign: TextAlign.left,
+    );
   }
 
   Widget topTitleWidgets(double value, TitleMeta meta) {
@@ -198,10 +217,12 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
       fontSize: 8,
     );
     return RotationTransition(
-        turns: const AlwaysStoppedAnimation(340 / 360),
-        child: Text(
-            " ${widget.lineChartValue![value.toInt()].commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-            style: style,
-            textAlign: TextAlign.left,),);
+      turns: const AlwaysStoppedAnimation(340 / 360),
+      child: Text(
+        " ${widget.lineChartValue![value.toInt()].commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+        style: style,
+        textAlign: TextAlign.left,
+      ),
+    );
   }
 }

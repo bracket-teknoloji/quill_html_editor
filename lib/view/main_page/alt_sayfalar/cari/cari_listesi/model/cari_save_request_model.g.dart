@@ -133,11 +133,9 @@ abstract class _$CariSaveRequestModelCWProxy {
 
   CariSaveRequestModel muhasebeKoduAciklama(String? muhasebeKoduAciklama);
 
-  CariSaveRequestModel kurFarkiBorcKoduAciklama(
-      String? kurFarkiBorcKoduAciklama);
+  CariSaveRequestModel kurFarkiBorcKoduAciklama(String? kurFarkiBorcKoduAciklama);
 
-  CariSaveRequestModel kurFarkiAlacakKoduAciklama(
-      String? kurFarkiAlacakKoduAciklama);
+  CariSaveRequestModel kurFarkiAlacakKoduAciklama(String? kurFarkiAlacakKoduAciklama);
 
   CariSaveRequestModel bagliCariAciklama(String? bagliCariAciklama);
 
@@ -227,15 +225,13 @@ abstract class _$CariSaveRequestModelCWProxy {
 }
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfCariSaveRequestModel.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfCariSaveRequestModel.copyWith.fieldName(...)`
-class _$CariSaveRequestModelCWProxyImpl
-    implements _$CariSaveRequestModelCWProxy {
+class _$CariSaveRequestModelCWProxyImpl implements _$CariSaveRequestModelCWProxy {
   const _$CariSaveRequestModelCWProxyImpl(this._value);
 
   final CariSaveRequestModel _value;
 
   @override
-  CariSaveRequestModel requestVersion(int? requestVersion) =>
-      this(requestVersion: requestVersion);
+  CariSaveRequestModel requestVersion(int? requestVersion) => this(requestVersion: requestVersion);
 
   @override
   CariSaveRequestModel islemKodu(int? islemKodu) => this(islemKodu: islemKodu);
@@ -244,8 +240,7 @@ class _$CariSaveRequestModelCWProxyImpl
   CariSaveRequestModel yeniKayit(bool? yeniKayit) => this(yeniKayit: yeniKayit);
 
   @override
-  CariSaveRequestModel sahisFirmasi(bool? sahisFirmasi) =>
-      this(sahisFirmasi: sahisFirmasi);
+  CariSaveRequestModel sahisFirmasi(bool? sahisFirmasi) => this(sahisFirmasi: sahisFirmasi);
 
   @override
   CariSaveRequestModel subeKodu(String? subeKodu) => this(subeKodu: subeKodu);
@@ -284,22 +279,19 @@ class _$CariSaveRequestModelCWProxyImpl
   CariSaveRequestModel boylam(double? boylam) => this(boylam: boylam);
 
   @override
-  CariSaveRequestModel postaKodu(String? postaKodu) =>
-      this(postaKodu: postaKodu);
+  CariSaveRequestModel postaKodu(String? postaKodu) => this(postaKodu: postaKodu);
 
   @override
   CariSaveRequestModel website(String? website) => this(website: website);
 
   @override
-  CariSaveRequestModel vergiDairesi(String? vergiDairesi) =>
-      this(vergiDairesi: vergiDairesi);
+  CariSaveRequestModel vergiDairesi(String? vergiDairesi) => this(vergiDairesi: vergiDairesi);
 
   @override
   CariSaveRequestModel vergiNo(String? vergiNo) => this(vergiNo: vergiNo);
 
   @override
-  CariSaveRequestModel plasiyerKodu(String? plasiyerKodu) =>
-      this(plasiyerKodu: plasiyerKodu);
+  CariSaveRequestModel plasiyerKodu(String? plasiyerKodu) => this(plasiyerKodu: plasiyerKodu);
 
   @override
   CariSaveRequestModel dovizli(String? dovizli) => this(dovizli: dovizli);
@@ -332,47 +324,37 @@ class _$CariSaveRequestModelCWProxyImpl
   CariSaveRequestModel kilit(String? kilit) => this(kilit: kilit);
 
   @override
-  CariSaveRequestModel bagliCari(String? bagliCari) =>
-      this(bagliCari: bagliCari);
+  CariSaveRequestModel bagliCari(String? bagliCari) => this(bagliCari: bagliCari);
 
   @override
-  CariSaveRequestModel kosulKodu(String? kosulKodu) =>
-      this(kosulKodu: kosulKodu);
+  CariSaveRequestModel kosulKodu(String? kosulKodu) => this(kosulKodu: kosulKodu);
 
   @override
-  CariSaveRequestModel muhasebeKodu(String? muhasebeKodu) =>
-      this(muhasebeKodu: muhasebeKodu);
+  CariSaveRequestModel muhasebeKodu(String? muhasebeKodu) => this(muhasebeKodu: muhasebeKodu);
 
   @override
-  CariSaveRequestModel kurfarkiborcKodu(String? kurfarkiborcKodu) =>
-      this(kurfarkiborcKodu: kurfarkiborcKodu);
+  CariSaveRequestModel kurfarkiborcKodu(String? kurfarkiborcKodu) => this(kurfarkiborcKodu: kurfarkiborcKodu);
 
   @override
-  CariSaveRequestModel kurfarkialacakKodu(String? kurfarkialacakKodu) =>
-      this(kurfarkialacakKodu: kurfarkialacakKodu);
+  CariSaveRequestModel kurfarkialacakKodu(String? kurfarkialacakKodu) => this(kurfarkialacakKodu: kurfarkialacakKodu);
 
   @override
   CariSaveRequestModel vadeGunu(String? vadeGunu) => this(vadeGunu: vadeGunu);
 
   @override
-  CariSaveRequestModel odemeTipi(String? odemeTipi) =>
-      this(odemeTipi: odemeTipi);
+  CariSaveRequestModel odemeTipi(String? odemeTipi) => this(odemeTipi: odemeTipi);
 
   @override
-  CariSaveRequestModel muhtelifCari(bool? muhtelifCari) =>
-      this(muhtelifCari: muhtelifCari);
+  CariSaveRequestModel muhtelifCari(bool? muhtelifCari) => this(muhtelifCari: muhtelifCari);
 
   @override
-  CariSaveRequestModel muhtelifBelgeTipi(String? muhtelifBelgeTipi) =>
-      this(muhtelifBelgeTipi: muhtelifBelgeTipi);
+  CariSaveRequestModel muhtelifBelgeTipi(String? muhtelifBelgeTipi) => this(muhtelifBelgeTipi: muhtelifBelgeTipi);
 
   @override
-  CariSaveRequestModel muhtelifBelgeNo(String? muhtelifBelgeNo) =>
-      this(muhtelifBelgeNo: muhtelifBelgeNo);
+  CariSaveRequestModel muhtelifBelgeNo(String? muhtelifBelgeNo) => this(muhtelifBelgeNo: muhtelifBelgeNo);
 
   @override
-  CariSaveRequestModel efaturaSenaryo(String? efaturaSenaryo) =>
-      this(efaturaSenaryo: efaturaSenaryo);
+  CariSaveRequestModel efaturaSenaryo(String? efaturaSenaryo) => this(efaturaSenaryo: efaturaSenaryo);
 
   @override
   CariSaveRequestModel kull1s(String? kull1s) => this(kull1s: kull1s);
@@ -423,50 +405,37 @@ class _$CariSaveRequestModelCWProxyImpl
   CariSaveRequestModel kull8n(double? kull8n) => this(kull8n: kull8n);
 
   @override
-  CariSaveRequestModel aciklama1(String? aciklama1) =>
-      this(aciklama1: aciklama1);
+  CariSaveRequestModel aciklama1(String? aciklama1) => this(aciklama1: aciklama1);
 
   @override
-  CariSaveRequestModel aciklama2(String? aciklama2) =>
-      this(aciklama2: aciklama2);
+  CariSaveRequestModel aciklama2(String? aciklama2) => this(aciklama2: aciklama2);
 
   @override
-  CariSaveRequestModel aciklama3(String? aciklama3) =>
-      this(aciklama3: aciklama3);
+  CariSaveRequestModel aciklama3(String? aciklama3) => this(aciklama3: aciklama3);
 
   @override
-  CariSaveRequestModel postakodu(String? postakodu) =>
-      this(postakodu: postakodu);
+  CariSaveRequestModel postakodu(String? postakodu) => this(postakodu: postakodu);
 
   @override
-  CariSaveRequestModel muhasebeKoduAciklama(String? muhasebeKoduAciklama) =>
-      this(muhasebeKoduAciklama: muhasebeKoduAciklama);
+  CariSaveRequestModel muhasebeKoduAciklama(String? muhasebeKoduAciklama) => this(muhasebeKoduAciklama: muhasebeKoduAciklama);
 
   @override
-  CariSaveRequestModel kurFarkiBorcKoduAciklama(
-          String? kurFarkiBorcKoduAciklama) =>
-      this(kurFarkiBorcKoduAciklama: kurFarkiBorcKoduAciklama);
+  CariSaveRequestModel kurFarkiBorcKoduAciklama(String? kurFarkiBorcKoduAciklama) => this(kurFarkiBorcKoduAciklama: kurFarkiBorcKoduAciklama);
 
   @override
-  CariSaveRequestModel kurFarkiAlacakKoduAciklama(
-          String? kurFarkiAlacakKoduAciklama) =>
-      this(kurFarkiAlacakKoduAciklama: kurFarkiAlacakKoduAciklama);
+  CariSaveRequestModel kurFarkiAlacakKoduAciklama(String? kurFarkiAlacakKoduAciklama) => this(kurFarkiAlacakKoduAciklama: kurFarkiAlacakKoduAciklama);
 
   @override
-  CariSaveRequestModel bagliCariAciklama(String? bagliCariAciklama) =>
-      this(bagliCariAciklama: bagliCariAciklama);
+  CariSaveRequestModel bagliCariAciklama(String? bagliCariAciklama) => this(bagliCariAciklama: bagliCariAciklama);
 
   @override
-  CariSaveRequestModel kosulKoduAciklama(String? kosulKoduAciklama) =>
-      this(kosulKoduAciklama: kosulKoduAciklama);
+  CariSaveRequestModel kosulKoduAciklama(String? kosulKoduAciklama) => this(kosulKoduAciklama: kosulKoduAciklama);
 
   @override
-  CariSaveRequestModel ulkeKoduAciklama(String? ulkeKoduAciklama) =>
-      this(ulkeKoduAciklama: ulkeKoduAciklama);
+  CariSaveRequestModel ulkeKoduAciklama(String? ulkeKoduAciklama) => this(ulkeKoduAciklama: ulkeKoduAciklama);
 
   @override
-  CariSaveRequestModel dovizKoduAciklama(String? dovizKoduAciklama) =>
-      this(dovizKoduAciklama: dovizKoduAciklama);
+  CariSaveRequestModel dovizKoduAciklama(String? dovizKoduAciklama) => this(dovizKoduAciklama: dovizKoduAciklama);
 
   @override
 
@@ -800,16 +769,14 @@ class _$CariSaveRequestModelCWProxyImpl
           ? _value.muhasebeKoduAciklama
           // ignore: cast_nullable_to_non_nullable
           : muhasebeKoduAciklama as String?,
-      kurFarkiBorcKoduAciklama:
-          kurFarkiBorcKoduAciklama == const $CopyWithPlaceholder()
-              ? _value.kurFarkiBorcKoduAciklama
-              // ignore: cast_nullable_to_non_nullable
-              : kurFarkiBorcKoduAciklama as String?,
-      kurFarkiAlacakKoduAciklama:
-          kurFarkiAlacakKoduAciklama == const $CopyWithPlaceholder()
-              ? _value.kurFarkiAlacakKoduAciklama
-              // ignore: cast_nullable_to_non_nullable
-              : kurFarkiAlacakKoduAciklama as String?,
+      kurFarkiBorcKoduAciklama: kurFarkiBorcKoduAciklama == const $CopyWithPlaceholder()
+          ? _value.kurFarkiBorcKoduAciklama
+          // ignore: cast_nullable_to_non_nullable
+          : kurFarkiBorcKoduAciklama as String?,
+      kurFarkiAlacakKoduAciklama: kurFarkiAlacakKoduAciklama == const $CopyWithPlaceholder()
+          ? _value.kurFarkiAlacakKoduAciklama
+          // ignore: cast_nullable_to_non_nullable
+          : kurFarkiAlacakKoduAciklama as String?,
       bagliCariAciklama: bagliCariAciklama == const $CopyWithPlaceholder()
           ? _value.bagliCariAciklama
           // ignore: cast_nullable_to_non_nullable
@@ -833,17 +800,14 @@ class _$CariSaveRequestModelCWProxyImpl
 extension $CariSaveRequestModelCopyWith on CariSaveRequestModel {
   /// Returns a callable class that can be used as follows: `instanceOfCariSaveRequestModel.copyWith(...)` or like so:`instanceOfCariSaveRequestModel.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$CariSaveRequestModelCWProxy get copyWith =>
-      _$CariSaveRequestModelCWProxyImpl(this);
+  _$CariSaveRequestModelCWProxy get copyWith => _$CariSaveRequestModelCWProxyImpl(this);
 }
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-CariSaveRequestModel _$CariSaveRequestModelFromJson(
-        Map<String, dynamic> json) =>
-    CariSaveRequestModel(
+CariSaveRequestModel _$CariSaveRequestModelFromJson(Map<String, dynamic> json) => CariSaveRequestModel(
       requestVersion: json['REQUEST_VERSION'] as int?,
       islemKodu: json['ISLEM_KODU'] as int?,
       yeniKayit: json['_YeniKayit'] as bool?,
@@ -908,8 +872,7 @@ CariSaveRequestModel _$CariSaveRequestModelFromJson(
       postakodu: json['POSTAKODU'] as String?,
     );
 
-Map<String, dynamic> _$CariSaveRequestModelToJson(
-    CariSaveRequestModel instance) {
+Map<String, dynamic> _$CariSaveRequestModelToJson(CariSaveRequestModel instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

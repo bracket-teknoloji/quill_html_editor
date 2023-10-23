@@ -9,8 +9,7 @@ part of 'stok_rehberi_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
-  late final _$dahaVarMiAtom =
-      Atom(name: '_StokRehberiViewModelBase.dahaVarMi', context: context);
+  late final _$dahaVarMiAtom = Atom(name: '_StokRehberiViewModelBase.dahaVarMi', context: context);
 
   @override
   bool get dahaVarMi {
@@ -25,8 +24,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
     });
   }
 
-  late final _$isScrolledDownAtom =
-      Atom(name: '_StokRehberiViewModelBase.isScrolledDown', context: context);
+  late final _$isScrolledDownAtom = Atom(name: '_StokRehberiViewModelBase.isScrolledDown', context: context);
 
   @override
   bool get isScrolledDown {
@@ -41,8 +39,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
     });
   }
 
-  late final _$stokListesiAtom =
-      Atom(name: '_StokRehberiViewModelBase.stokListesi', context: context);
+  late final _$stokListesiAtom = Atom(name: '_StokRehberiViewModelBase.stokListesi', context: context);
 
   @override
   List<StokListesiModel>? get stokListesi {
@@ -57,8 +54,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
     });
   }
 
-  late final _$stokBottomSheetModelAtom = Atom(
-      name: '_StokRehberiViewModelBase.stokBottomSheetModel', context: context);
+  late final _$stokBottomSheetModelAtom = Atom(name: '_StokRehberiViewModelBase.stokBottomSheetModel', context: context);
 
   @override
   StokBottomSheetModel get stokBottomSheetModel {
@@ -68,19 +64,16 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
 
   @override
   set stokBottomSheetModel(StokBottomSheetModel value) {
-    _$stokBottomSheetModelAtom.reportWrite(value, super.stokBottomSheetModel,
-        () {
+    _$stokBottomSheetModelAtom.reportWrite(value, super.stokBottomSheetModel, () {
       super.stokBottomSheetModel = value;
     });
   }
 
-  late final _$_StokRehberiViewModelBaseActionController =
-      ActionController(name: '_StokRehberiViewModelBase', context: context);
+  late final _$_StokRehberiViewModelBaseActionController = ActionController(name: '_StokRehberiViewModelBase', context: context);
 
   @override
   void setDahaVarMi(bool value) {
-    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
-        .startAction(name: '_StokRehberiViewModelBase.setDahaVarMi');
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController.startAction(name: '_StokRehberiViewModelBase.setDahaVarMi');
     try {
       return super.setDahaVarMi(value);
     } finally {
@@ -90,8 +83,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
 
   @override
   void changeIsScrolledDown(bool value) {
-    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
-        .startAction(name: '_StokRehberiViewModelBase.changeIsScrolledDown');
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController.startAction(name: '_StokRehberiViewModelBase.changeIsScrolledDown');
     try {
       return super.changeIsScrolledDown(value);
     } finally {
@@ -101,8 +93,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
 
   @override
   void changeArrKod1(List<BaseGrupKoduModel> value) {
-    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
-        .startAction(name: '_StokRehberiViewModelBase.changeArrKod1');
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController.startAction(name: '_StokRehberiViewModelBase.changeArrKod1');
     try {
       return super.changeArrKod1(value);
     } finally {
@@ -112,8 +103,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
 
   @override
   void changeArrKod2(List<BaseGrupKoduModel> value) {
-    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
-        .startAction(name: '_StokRehberiViewModelBase.changeArrKod2');
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController.startAction(name: '_StokRehberiViewModelBase.changeArrKod2');
     try {
       return super.changeArrKod2(value);
     } finally {
@@ -123,8 +113,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
 
   @override
   void changeArrKod3(List<BaseGrupKoduModel> value) {
-    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
-        .startAction(name: '_StokRehberiViewModelBase.changeArrKod3');
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController.startAction(name: '_StokRehberiViewModelBase.changeArrKod3');
     try {
       return super.changeArrKod3(value);
     } finally {
@@ -134,8 +123,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
 
   @override
   void changeArrKod4(List<BaseGrupKoduModel> value) {
-    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
-        .startAction(name: '_StokRehberiViewModelBase.changeArrKod4');
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController.startAction(name: '_StokRehberiViewModelBase.changeArrKod4');
     try {
       return super.changeArrKod4(value);
     } finally {
@@ -145,8 +133,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
 
   @override
   void changeArrKod5(List<BaseGrupKoduModel> value) {
-    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
-        .startAction(name: '_StokRehberiViewModelBase.changeArrKod5');
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController.startAction(name: '_StokRehberiViewModelBase.changeArrKod5');
     try {
       return super.changeArrKod5(value);
     } finally {
@@ -156,8 +143,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
 
   @override
   void setStokListesi(List<dynamic>? value) {
-    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
-        .startAction(name: '_StokRehberiViewModelBase.setStokListesi');
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController.startAction(name: '_StokRehberiViewModelBase.setStokListesi');
     try {
       return super.setStokListesi(value);
     } finally {
@@ -167,8 +153,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
 
   @override
   void increaseSayfa() {
-    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
-        .startAction(name: '_StokRehberiViewModelBase.increaseSayfa');
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController.startAction(name: '_StokRehberiViewModelBase.increaseSayfa');
     try {
       return super.increaseSayfa();
     } finally {
@@ -178,8 +163,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
 
   @override
   void resetSayfa() {
-    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
-        .startAction(name: '_StokRehberiViewModelBase.resetSayfa');
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController.startAction(name: '_StokRehberiViewModelBase.resetSayfa');
     try {
       return super.resetSayfa();
     } finally {
@@ -189,8 +173,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
 
   @override
   void setSiralama(String value) {
-    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
-        .startAction(name: '_StokRehberiViewModelBase.setSiralama');
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController.startAction(name: '_StokRehberiViewModelBase.setSiralama');
     try {
       return super.setSiralama(value);
     } finally {
@@ -200,8 +183,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
 
   @override
   void setSearchText(String value) {
-    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
-        .startAction(name: '_StokRehberiViewModelBase.setSearchText');
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController.startAction(name: '_StokRehberiViewModelBase.setSearchText');
     try {
       return super.setSearchText(value);
     } finally {
@@ -211,8 +193,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
 
   @override
   void setGrupKodu(List<BaseGrupKoduModel> value) {
-    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
-        .startAction(name: '_StokRehberiViewModelBase.setGrupKodu');
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController.startAction(name: '_StokRehberiViewModelBase.setGrupKodu');
     try {
       return super.setGrupKodu(value);
     } finally {
@@ -222,8 +203,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
 
   @override
   void setSelectedStokModel(String? value) {
-    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
-        .startAction(name: '_StokRehberiViewModelBase.setSelectedStokModel');
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController.startAction(name: '_StokRehberiViewModelBase.setSelectedStokModel');
     try {
       return super.setSelectedStokModel(value);
     } finally {
@@ -233,8 +213,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
 
   @override
   void resetPage() {
-    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
-        .startAction(name: '_StokRehberiViewModelBase.resetPage');
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController.startAction(name: '_StokRehberiViewModelBase.resetPage');
     try {
       return super.resetPage();
     } finally {

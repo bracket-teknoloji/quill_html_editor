@@ -66,47 +66,61 @@ class _StokIhtiyacRaporuViewState extends BaseState<StokIhtiyacRaporu> {
   Widget build(BuildContext context) => PDFViewerView(
         filterBottomSheet: filterBottomSheet,
         title: "Stok İhtiyaç Raporu",
-        pdfData: viewModel.pdfModel,);
+        pdfData: viewModel.pdfModel,
+      );
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
-    await bottomSheetDialogManager.showBottomSheetDialog(context,
-        title: "Filtrele",
-        body: Padding(
-          padding: EdgeInsets.all(UIHelper.lowSize),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const Row(children: [
+    await bottomSheetDialogManager.showBottomSheetDialog(
+      context,
+      title: "Filtrele",
+      body: Padding(
+        padding: EdgeInsets.all(UIHelper.lowSize),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const Row(
+                children: [
                   Expanded(child: CustomTextField()),
                   Expanded(child: CustomTextField()),
-                ],),
-                const Row(children: [
+                ],
+              ),
+              const Row(
+                children: [
                   Expanded(child: CustomTextField()),
                   Expanded(child: CustomTextField()),
-                ],),
-                const Row(children: [
+                ],
+              ),
+              const Row(
+                children: [
                   Expanded(child: CustomTextField()),
                   Expanded(child: CustomTextField()),
-                ],),
-                const Row(children: [
+                ],
+              ),
+              const Row(
+                children: [
                   Expanded(child: CustomTextField()),
                   Expanded(child: CustomTextField()),
-                ],),
-                Row(children: [
+                ],
+              ),
+              Row(
+                children: [
                   const Expanded(child: CustomTextField()),
                   Expanded(
-                      child: Switch.adaptive(
-                    value: false,
-                    onChanged: (value) {},
-                  ),),
-                ],),
-              ],
-            ),
+                    child: Switch.adaptive(
+                      value: false,
+                      onChanged: (value) {},
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
-        ),);
+        ),
+      ),
+    );
     return Future.value(viewModel.futureController.value);
   }
 }

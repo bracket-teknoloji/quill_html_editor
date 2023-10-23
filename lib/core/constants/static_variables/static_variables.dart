@@ -15,27 +15,20 @@ class StaticVariables {
 
   static List<BaseGrupKoduModel> grupKodlari = [];
 
-  static String get getSiparisString =>
-      "${CacheManager.getVerifiedUser.account?.email ?? ""}-${AccountModel.instance.aktifVeritabani ?? ""}-${AccountModel.instance.aktifSubeKodu ?? ""}";
+  static String get getSiparisString => "${CacheManager.getVerifiedUser.account?.email ?? ""}-${AccountModel.instance.aktifVeritabani ?? ""}-${AccountModel.instance.aktifSubeKodu ?? ""}";
 
   //* Cari Kartı
-  bool get isCariKartiValid =>
-      (cariKartiGenelFormKey.currentState?.validate() ?? false) ||
-      (cariKartiDigerFormKey.currentState?.validate() ?? false);
+  bool get isCariKartiValid => (cariKartiGenelFormKey.currentState?.validate() ?? false) || (cariKartiDigerFormKey.currentState?.validate() ?? false);
   GlobalKey<FormState> cariKartiGenelFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> cariKartiDigerFormKey = GlobalKey<FormState>();
 
   //* Stok Kartı
-  bool get isStokKartiValid =>
-      (stokKartiGenelFormKey.currentState?.validate() ?? false) ||
-      (stokKartiDigerFormKey.currentState?.validate() ?? false);
+  bool get isStokKartiValid => (stokKartiGenelFormKey.currentState?.validate() ?? false) || (stokKartiDigerFormKey.currentState?.validate() ?? false);
   GlobalKey<FormState> stokKartiGenelFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> stokKartiDigerFormKey = GlobalKey<FormState>();
 
   //* Sipariş
-  bool get isSiparisValid =>
-      (siparisGenelFormKey.currentState?.validate() ?? false) ||
-      (siparisDigerFormKey.currentState?.validate() ?? false);
+  bool get isSiparisValid => (siparisGenelFormKey.currentState?.validate() ?? false) || (siparisDigerFormKey.currentState?.validate() ?? false);
   GlobalKey<FormState> siparisGenelFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> siparisDigerFormKey = GlobalKey<FormState>();
   bool isMusteriSiparisleri = false;

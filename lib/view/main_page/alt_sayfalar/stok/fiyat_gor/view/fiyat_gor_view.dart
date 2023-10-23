@@ -67,32 +67,35 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
-                          icon: const Icon(Icons.qr_code_2_outlined),
-                          onPressed: () async {
-                            final result = await Get.toNamed("/qr");
-                            if (result != null) {
-                              barkodKontroller.text = result ?? "";
-                            }
-                            getData();
-                          },),
+                        icon: const Icon(Icons.qr_code_2_outlined),
+                        onPressed: () async {
+                          final result = await Get.toNamed("/qr");
+                          if (result != null) {
+                            barkodKontroller.text = result ?? "";
+                          }
+                          getData();
+                        },
+                      ),
                       IconButton(
-                          icon: const Icon(Icons.more_horiz_outlined),
-                          onPressed: () async {
-                            final result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
-                            if (result is StokListesiModel) {
-                              viewModel.setStokListesiModel(result);
-                              barkodKontroller.text = result.stokKodu ?? " ";
-                              stokController.text = result.stokAdi ?? " ";
-                              getData();
-                            }
-                          },),
+                        icon: const Icon(Icons.more_horiz_outlined),
+                        onPressed: () async {
+                          final result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
+                          if (result is StokListesiModel) {
+                            viewModel.setStokListesiModel(result);
+                            barkodKontroller.text = result.stokKodu ?? " ";
+                            stokController.text = result.stokAdi ?? " ";
+                            getData();
+                          }
+                        },
+                      ),
                     ],
                   ),
                   onSubmitted: (p0) {
                     getData();
                   },
                 ),
-                Observer(builder: (_) => Visibility(
+                Observer(
+                  builder: (_) => Visibility(
                     visible: viewModel.stokListesiModel != null,
                     child: CustomTextField(
                       labelText: "Stok",
@@ -100,13 +103,16 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                       valueWidget: Observer(builder: (_) => Text(viewModel.stokListesiModel?.stokKodu ?? "")),
                       controller: stokController,
                       suffix: IconButton(
-                          icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
-                          onPressed: () async {
-                            dialogManager.showStokGridViewDialog(viewModel.stokListesiModel);
-                          },),
+                        icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                        onPressed: () async {
+                          dialogManager.showStokGridViewDialog(viewModel.stokListesiModel);
+                        },
+                      ),
                     ),
-                  ),),
-                Observer(builder: (_) => viewModel.modelList != null
+                  ),
+                ),
+                Observer(
+                  builder: (_) => viewModel.modelList != null
                       ? (viewModel.modelList?.isEmpty ?? true)
                           ? const Center(child: Text("Stok bulunamadı"))
                           : Column(
@@ -114,15 +120,20 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
                                 Card(
-                                  child: Observer(builder: (_) => Column(
+                                  child: Observer(
+                                    builder: (_) => Column(
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.stretch,
                                       children: [
-                                        Text.rich(TextSpan(children: [
-                                          const TextSpan(text: "Satış  KDV"),
-                                          TextSpan(text: "  %${viewModel.modelList?.first?.kdvOrani ?? 0}", style: TextStyle(color: theme.textTheme.titleLarge?.color?.withOpacity(0.7))),
-                                        ],),).paddingOnly(top: UIHelper.lowSize, left: UIHelper.lowSize),
+                                        Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              const TextSpan(text: "Satış  KDV"),
+                                              TextSpan(text: "  %${viewModel.modelList?.first?.kdvOrani ?? 0}", style: TextStyle(color: theme.textTheme.titleLarge?.color?.withOpacity(0.7))),
+                                            ],
+                                          ),
+                                        ).paddingOnly(top: UIHelper.lowSize, left: UIHelper.lowSize),
                                         GridView.builder(
                                           physics: const NeverScrollableScrollPhysics(),
                                           shrinkWrap: true,
@@ -135,38 +146,44 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                           ),
                                           itemCount: 5,
                                           itemBuilder: (context, index) => InkWell(
-                                              onTap: () async {
-                                                if ((int.tryParse(viewModel.getBilgi(index)?.replaceAll(",", ".") ?? "") ?? 0) > 0) {
-                                                  await Get.toNamed("mainPage/stokYazdir", arguments: viewModel.stokListesiModel);
-                                                } else {
-                                                  dialogManager.showErrorSnackBar("Fiyat sıfır olduğu için yazdırılamaz");
-                                                }
-                                              },
-                                              child: Card(
-                                                color: theme.colorScheme.onSecondary,
-                                                child: Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(viewModel.titleList[index]).paddingAll(UIHelper.lowSize),
-                                                    Divider(endIndent: UIHelper.lowSize, indent: UIHelper.lowSize),
-                                                    Text("${viewModel.getBilgi(index)} $mainCurrency").paddingAll(UIHelper.lowSize),
-                                                  ],
-                                                ),
+                                            onTap: () async {
+                                              if ((int.tryParse(viewModel.getBilgi(index)?.replaceAll(",", ".") ?? "") ?? 0) > 0) {
+                                                await Get.toNamed("mainPage/stokYazdir", arguments: viewModel.stokListesiModel);
+                                              } else {
+                                                dialogManager.showErrorSnackBar("Fiyat sıfır olduğu için yazdırılamaz");
+                                              }
+                                            },
+                                            child: Card(
+                                              color: theme.colorScheme.onSecondary,
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(viewModel.titleList[index]).paddingAll(UIHelper.lowSize),
+                                                  Divider(endIndent: UIHelper.lowSize, indent: UIHelper.lowSize),
+                                                  Text("${viewModel.getBilgi(index)} $mainCurrency").paddingAll(UIHelper.lowSize),
+                                                ],
                                               ),
                                             ),
+                                          ),
                                         ),
                                       ],
-                                    ),),
+                                    ),
+                                  ),
                                 ),
                                 Card(
-                                  child: Observer(builder: (_) => Column(
+                                  child: Observer(
+                                    builder: (_) => Column(
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.stretch,
                                       children: [
-                                        Text.rich(TextSpan(children: [
-                                          const TextSpan(text: "Alış  KDV"),
-                                          TextSpan(text: "  %${viewModel.modelList?.last?.kdvOrani ?? 0}", style: TextStyle(color: theme.textTheme.titleLarge?.color?.withOpacity(0.7))),
-                                        ],),).paddingOnly(top: UIHelper.lowSize, left: UIHelper.lowSize),
+                                        Text.rich(
+                                          TextSpan(
+                                            children: [
+                                              const TextSpan(text: "Alış  KDV"),
+                                              TextSpan(text: "  %${viewModel.modelList?.last?.kdvOrani ?? 0}", style: TextStyle(color: theme.textTheme.titleLarge?.color?.withOpacity(0.7))),
+                                            ],
+                                          ),
+                                        ).paddingOnly(top: UIHelper.lowSize, left: UIHelper.lowSize),
                                         GridView.builder(
                                           physics: const NeverScrollableScrollPhysics(),
                                           shrinkWrap: true,
@@ -179,36 +196,39 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                           ),
                                           itemCount: 5,
                                           itemBuilder: (context, index) => InkWell(
-                                              onTap: () async {
-                                                if ((int.tryParse(viewModel.getBilgi(index, isSatis: true)?.replaceAll(",", ".") ?? "") ?? 0) > 0) {
-                                                  await Get.toNamed("mainPage/stokYazdir", arguments: viewModel.stokListesiModel);
-                                                } else {
-                                                  dialogManager.showErrorSnackBar("Fiyat sıfır olduğu için yazdırılamaz");
-                                                }
-                                              },
-                                              child: Card(
-                                                color: theme.colorScheme.onSecondary,
-                                                child: Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(viewModel.titleList[index]).paddingAll(UIHelper.lowSize),
-                                                    Divider(endIndent: UIHelper.lowSize, indent: UIHelper.lowSize),
-                                                    Text("${viewModel.getBilgi(index, isSatis: true)} $mainCurrency").paddingAll(UIHelper.lowSize),
-                                                  ],
-                                                ),
+                                            onTap: () async {
+                                              if ((int.tryParse(viewModel.getBilgi(index, isSatis: true)?.replaceAll(",", ".") ?? "") ?? 0) > 0) {
+                                                await Get.toNamed("mainPage/stokYazdir", arguments: viewModel.stokListesiModel);
+                                              } else {
+                                                dialogManager.showErrorSnackBar("Fiyat sıfır olduğu için yazdırılamaz");
+                                              }
+                                            },
+                                            child: Card(
+                                              color: theme.colorScheme.onSecondary,
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(viewModel.titleList[index]).paddingAll(UIHelper.lowSize),
+                                                  Divider(endIndent: UIHelper.lowSize, indent: UIHelper.lowSize),
+                                                  Text("${viewModel.getBilgi(index, isSatis: true)} $mainCurrency").paddingAll(UIHelper.lowSize),
+                                                ],
                                               ),
                                             ),
+                                          ),
                                         ),
                                       ],
-                                    ),),
+                                    ),
+                                  ),
                                 ),
                               ].map((e) => Container(decoration: BoxDecoration(borderRadius: UIHelper.lowBorderRadius), child: e)).toList(),
                             )
-                      : const SizedBox(),),
+                      : const SizedBox(),
+                ),
               ],
             ),
           ),
-        ),);
+        ),
+      );
 
   void getData() async {
     // viewModel.setStokListesiModel(null);

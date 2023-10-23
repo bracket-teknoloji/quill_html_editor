@@ -13,8 +13,7 @@ class MuhasebeReferansModel with _$MuhasebeReferansModel, NetworkManagerMixin {
     String? tanimi,
   }) = _MuhasebeReferansModel;
 
-  factory MuhasebeReferansModel.fromJson(Map<String, dynamic> json) =>
-      _$MuhasebeReferansModelFromJson(json);
+  factory MuhasebeReferansModel.fromJson(Map<String, dynamic> json) => _$MuhasebeReferansModelFromJson(json);
 
   @override
   fromJson(Map<String, dynamic> json) => _$MuhasebeReferansModelFromJson(json);

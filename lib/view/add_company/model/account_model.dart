@@ -144,8 +144,7 @@ class AccountModel with NetworkManagerMixin {
     uygulamaSurumKodu = 229;
     uygulamaSurumu = AppInfoModel.instance.version;
     requestVersion = 1;
-    await PackageInfo.fromPlatform()
-        .then((value) => paketAdi = value.packageName);
+    await PackageInfo.fromPlatform().then((value) => paketAdi = value.packageName);
 
     log(toJson().toString(), name: runtimeType.toString());
     //* Network Bilgileri (Connectivity Plus)
@@ -155,7 +154,9 @@ class AccountModel with NetworkManagerMixin {
     } else {
       platform = Platform.operatingSystem;
       final list = await NetworkInterface.list(
-          includeLoopback: true, type: InternetAddressType.IPv4,);
+        includeLoopback: true,
+        type: InternetAddressType.IPv4,
+      );
       for (var interface in list) {
         for (var i = 0; i < interface.addresses.length; i++) {
           if (interface.addresses[i].address != "") {
@@ -167,12 +168,10 @@ class AccountModel with NetworkManagerMixin {
     konumDate = DateTime.now();
     konumTarihi = getKonumTarihi;
 
-    uygulamaGuncellemeTarihi =
-        "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}";
+    uygulamaGuncellemeTarihi = "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}";
     if (kIsWeb) {
       wifidenBagli = "E";
-    } else if (await Connectivity().checkConnectivity() ==
-        ConnectivityResult.wifi) {
+    } else if (await Connectivity().checkConnectivity() == ConnectivityResult.wifi) {
       wifidenBagli = "E";
     } else {
       wifidenBagli = "H";
@@ -192,7 +191,8 @@ class AccountModel with NetworkManagerMixin {
       cihazModeli = webInfo.userAgent;
       ozelCihazKimligi = webInfo.userAgent;
       cihazKimligi = base64Encode(
-          utf8.encode("$cihazMarkasi:$cihazModeli:$ozelCihazKimligi:"),);
+        utf8.encode("$cihazMarkasi:$cihazModeli:$ozelCihazKimligi:"),
+      );
     } //! ANDROID
     else if (Platform.isAndroid) {
       final androidInfo = await deviceInfo.androidInfo;
@@ -208,8 +208,9 @@ class AccountModel with NetworkManagerMixin {
         cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
         log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");
       } else {
-        cihazKimligi = base64Encode(utf8
-            .encode("$cihazMarkasi:$cihazModeli:${androidInfo.serialNumber}:"),);
+        cihazKimligi = base64Encode(
+          utf8.encode("$cihazMarkasi:$cihazModeli:${androidInfo.serialNumber}:"),
+        );
       }
       // androidInfo.serialNumber;
     }
@@ -238,8 +239,7 @@ class AccountModel with NetworkManagerMixin {
         log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");
       } else {
         //* Bilgisayar adını gönderiyoruz. Bilgisayar adı aynı olduğunda ağda problem olacağı için böyle yapıyoruz.
-        ozelCihazKimligi =
-            base64Encode(utf8.encode("win_${desktopInfo.computerName}"));
+        ozelCihazKimligi = base64Encode(utf8.encode("win_${desktopInfo.computerName}"));
         cihazKimligi = ozelCihazKimligi;
       }
     } else if (Platform.isMacOS) {
@@ -262,19 +262,18 @@ class AccountModel with NetworkManagerMixin {
         cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
         log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");
       } else {
-        ozelCihazKimligi =
-            base64Encode(utf8.encode("linux_${desktopInfo.name}"));
+        ozelCihazKimligi = base64Encode(utf8.encode("linux_${desktopInfo.name}"));
         cihazKimligi = ozelCihazKimligi;
       }
     }
   }
 
-  String get getKonumTarihi =>
-      "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day} ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}";
+  String get getKonumTarihi => "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day} ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}";
 
   bool get isDebug =>
-      CacheManager.accountsBox.values.any((element) =>
-          (element as AccountResponseModel?)?.email == "destek@netfect.com",) ||
+      CacheManager.accountsBox.values.any(
+        (element) => (element as AccountResponseModel?)?.email == "destek@netfect.com",
+      ) ||
       kDebugMode;
 
   @override

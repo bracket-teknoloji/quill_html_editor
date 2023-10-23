@@ -32,73 +32,48 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
   static StokListesiModel get stokListesiModel => StokListesiModel.instance;
   BaseStokEditFiyatViewModel viewModel = BaseStokEditFiyatViewModel();
   TextEditingController alisKdvOraniController = TextEditingController(
-      text: stokDetayModel.stokList?.first.alisKdv
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
-          stokListesiModel.alisKdv
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
+    text: stokDetayModel.stokList?.first.alisKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.alisKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),
+  );
   TextEditingController alisFiyat1Controller = TextEditingController(
-      text: stokDetayModel.stokList?.first.alisFiat1
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
-          stokListesiModel.alisFiat1
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
+    text: stokDetayModel.stokList?.first.alisFiat1.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.alisFiat1.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),
+  );
   TextEditingController alisFiyat2Controller = TextEditingController(
-      text: stokDetayModel.stokList?.first.alisFiat2
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
-          stokListesiModel.alisFiat2
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
+    text: stokDetayModel.stokList?.first.alisFiat2.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.alisFiat2.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),
+  );
   TextEditingController alisFiyat3Controller = TextEditingController(
-      text: stokDetayModel.stokList?.first.alisFiat3
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
-          stokListesiModel.alisFiat3
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
+    text: stokDetayModel.stokList?.first.alisFiat3.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.alisFiat3.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),
+  );
   TextEditingController alisFiyat4Controller = TextEditingController(
-      text: stokDetayModel.stokList?.first.alisFiat4
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
-          stokListesiModel.alisFiat4
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
+    text: stokDetayModel.stokList?.first.alisFiat4.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.alisFiat4.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),
+  );
   TextEditingController alisDovizTipiController = TextEditingController(
-      text: stokDetayModel.stokList?.first.satisDovizAdi ??
-          stokListesiModel.alisDovizAdi ??
-          "",);
+    text: stokDetayModel.stokList?.first.satisDovizAdi ?? stokListesiModel.alisDovizAdi ?? "",
+  );
   TextEditingController alisDovizFiyatiController = TextEditingController(
-      text: stokDetayModel.stokList?.first.dovAlisFiat
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
-          stokListesiModel.dovAlisFiat
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
+    text: stokDetayModel.stokList?.first.dovAlisFiat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.dovAlisFiat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),
+  );
   TextEditingController satisKdvOraniController = TextEditingController(
-      text: stokDetayModel.stokList?.first.satisKdv
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
-          stokListesiModel.satisKdv
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
+    text: stokDetayModel.stokList?.first.satisKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.satisKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),
+  );
   TextEditingController satisFiyat1Controller = TextEditingController(
-      text: stokDetayModel.stokList?.first.satisFiat1
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
-          stokListesiModel.satisFiat1
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
+    text: stokDetayModel.stokList?.first.satisFiat1.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.satisFiat1.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),
+  );
   TextEditingController satisFiyat2Controller = TextEditingController(
-      text: stokDetayModel.stokList?.first.satisFiat2
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
-          stokListesiModel.satisFiat2
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
+    text: stokDetayModel.stokList?.first.satisFiat2.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.satisFiat2.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),
+  );
   TextEditingController satisFiyat3Controller = TextEditingController(
-      text: stokDetayModel.stokList?.first.satisFiat3
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
-          stokListesiModel.satisFiat3
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
+    text: stokDetayModel.stokList?.first.satisFiat3.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.satisFiat3.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),
+  );
   TextEditingController satisFiyat4Controller = TextEditingController(
-      text: stokDetayModel.stokList?.first.satisFiat4
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
-          stokListesiModel.satisFiat4
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
+    text: stokDetayModel.stokList?.first.satisFiat4.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.satisFiat4.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),
+  );
   TextEditingController satisDovizTipiController = TextEditingController(
-      text: stokDetayModel.stokList?.first.satisDovizAdi ??
-          stokListesiModel.satisDovizAdi ??
-          "",);
+    text: stokDetayModel.stokList?.first.satisDovizAdi ?? stokListesiModel.satisDovizAdi ?? "",
+  );
   TextEditingController satisDovizFiyatiController = TextEditingController(
-      text: stokDetayModel.stokList?.first.dovSatisFiat
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ??
-          stokListesiModel.dovSatisFiat
-              .commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),);
+    text:
+        stokDetayModel.stokList?.first.dovSatisFiat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? stokListesiModel.dovSatisFiat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati),
+  );
   @override
   void dispose() {
     alisKdvOraniController.dispose();
@@ -120,12 +95,13 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
 
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
-      child: Column(
-        children: [
-          CustomWidgetWithLabel(
+        child: Column(
+          children: [
+            CustomWidgetWithLabel(
               text: "Alış",
-              child: Wrap(children: [
-                CustomTextField(
+              child: Wrap(
+                children: [
+                  CustomTextField(
                     enabled: isEnabled,
                     labelText: "KDV Oranı",
                     controller: alisKdvOraniController,
@@ -136,112 +112,122 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                         await getKdvOrani();
                       }
                       // ignore: use_build_context_synchronously
-                      final double? result = await bottomSheetDialogManager
-                          .showBottomSheetDialog(context,
-                              title: "KDV Oranları",
-                              children: viewModel.kdvOraniList
-                                  ?.map((element) => BottomSheetModel(
-                                      title: element.toStringIfNotNull ?? "",
-                                      onTap: () => Get.back(result: element),),)
-                                  .toList(),);
+                      final double? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                        context,
+                        title: "KDV Oranları",
+                        children: viewModel.kdvOraniList
+                            ?.map(
+                              (element) => BottomSheetModel(
+                                title: element.toStringIfNotNull ?? "",
+                                onTap: () => Get.back(result: element),
+                              ),
+                            )
+                            .toList(),
+                      );
                       if (result != null) {
                         alisKdvOraniController.text = result.toString();
                         stokDetayModel.stokList?.first.alisKdv = result;
                         stokListesiModel.alisKdv = result;
                       }
-                    },),
-                Row(
-                  children: [
-                    Expanded(
+                    },
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
                         child: CustomTextField(
-                            enabled: isEnabled,
-                            labelText: "Fiyat 1",
-                            controller: alisFiyat1Controller,
-                            keyboardType: TextInputType.number,
-                            onChanged: (p0) {
-                              stokDetayModel.stokList?.first.alisFiat1 =
-                                  double.tryParse(p0);
-                              stokListesiModel.alisFiat1 = double.tryParse(p0);
-                            },),),
-                    Expanded(
+                          enabled: isEnabled,
+                          labelText: "Fiyat 1",
+                          controller: alisFiyat1Controller,
+                          keyboardType: TextInputType.number,
+                          onChanged: (p0) {
+                            stokDetayModel.stokList?.first.alisFiat1 = double.tryParse(p0);
+                            stokListesiModel.alisFiat1 = double.tryParse(p0);
+                          },
+                        ),
+                      ),
+                      Expanded(
                         child: CustomTextField(
-                            enabled: isEnabled,
-                            labelText: "Fiyat 2",
-                            controller: alisFiyat2Controller,
-                            keyboardType: TextInputType.number,
-                            onChanged: (p0) {
-                              stokDetayModel.stokList?.first.alisFiat2 =
-                                  double.tryParse(p0);
-                              stokListesiModel.alisFiat2 = double.tryParse(p0);
-                            },),),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Expanded(
+                          enabled: isEnabled,
+                          labelText: "Fiyat 2",
+                          controller: alisFiyat2Controller,
+                          keyboardType: TextInputType.number,
+                          onChanged: (p0) {
+                            stokDetayModel.stokList?.first.alisFiat2 = double.tryParse(p0);
+                            stokListesiModel.alisFiat2 = double.tryParse(p0);
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
                         child: CustomTextField(
-                            enabled: isEnabled,
-                            labelText: "Fiyat 3",
-                            controller: alisFiyat3Controller,
-                            keyboardType: TextInputType.number,
-                            onChanged: (p0) {
-                              stokDetayModel.stokList?.first.alisFiat3 =
-                                  double.tryParse(p0);
-                              stokListesiModel.alisFiat3 = double.tryParse(p0);
-                            },),),
-                    Expanded(
+                          enabled: isEnabled,
+                          labelText: "Fiyat 3",
+                          controller: alisFiyat3Controller,
+                          keyboardType: TextInputType.number,
+                          onChanged: (p0) {
+                            stokDetayModel.stokList?.first.alisFiat3 = double.tryParse(p0);
+                            stokListesiModel.alisFiat3 = double.tryParse(p0);
+                          },
+                        ),
+                      ),
+                      Expanded(
                         child: CustomTextField(
-                            enabled: isEnabled,
-                            labelText: "Fiyat 4",
-                            controller: alisFiyat4Controller,
-                            keyboardType: TextInputType.number,
-                            onChanged: (p0) {
-                              stokDetayModel.stokList?.first.alisFiat4 =
-                                  double.tryParse(p0);
-                              stokListesiModel.alisFiat4 = double.tryParse(p0);
-                            },),),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Expanded(
+                          enabled: isEnabled,
+                          labelText: "Fiyat 4",
+                          controller: alisFiyat4Controller,
+                          keyboardType: TextInputType.number,
+                          onChanged: (p0) {
+                            stokDetayModel.stokList?.first.alisFiat4 = double.tryParse(p0);
+                            stokListesiModel.alisFiat4 = double.tryParse(p0);
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
                         child: CustomTextField(
-                      enabled: isEnabled,
-                      labelText: "Döviz Tipi",
-                      controller: alisDovizTipiController,
-                      readOnly: true,
-                      onTap: () async {
-                        final MapEntry? result = await getDovizList();
-                        if (result != null) {
-                          stokDetayModel.stokList?.first.alisDovTip =
-                              result.key;
-                          stokDetayModel.stokList?.first.alisDovizAdi =
-                              result.value;
-                          alisDovizTipiController.text = result.value;
-                        }
-                      },
-                      suffixMore: true,
-                    ),),
-                    Expanded(
+                          enabled: isEnabled,
+                          labelText: "Döviz Tipi",
+                          controller: alisDovizTipiController,
+                          readOnly: true,
+                          onTap: () async {
+                            final MapEntry? result = await getDovizList();
+                            if (result != null) {
+                              stokDetayModel.stokList?.first.alisDovTip = result.key;
+                              stokDetayModel.stokList?.first.alisDovizAdi = result.value;
+                              alisDovizTipiController.text = result.value;
+                            }
+                          },
+                          suffixMore: true,
+                        ),
+                      ),
+                      Expanded(
                         child: CustomTextField(
-                            enabled: isEnabled,
-                            labelText: "Alış Fiyatı",
-                            controller: alisDovizFiyatiController,
-                            keyboardType: TextInputType.number,
-                            onChanged: (p0) {
-                              stokDetayModel.stokList?.first.dovAlisFiat =
-                                  double.tryParse(p0);
-                              stokListesiModel.dovAlisFiat =
-                                  double.tryParse(p0);
-                            },),),
-                  ],
-                ),
-              ],),),
-          CustomWidgetWithLabel(
-            text: "Satış",
-            child: Wrap(
-              children: [
-                CustomTextField(
+                          enabled: isEnabled,
+                          labelText: "Alış Fiyatı",
+                          controller: alisDovizFiyatiController,
+                          keyboardType: TextInputType.number,
+                          onChanged: (p0) {
+                            stokDetayModel.stokList?.first.dovAlisFiat = double.tryParse(p0);
+                            stokListesiModel.dovAlisFiat = double.tryParse(p0);
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            CustomWidgetWithLabel(
+              text: "Satış",
+              child: Wrap(
+                children: [
+                  CustomTextField(
                     enabled: isEnabled,
                     labelText: "KDV Oranı",
                     readOnly: true,
@@ -251,138 +237,152 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                         await getKdvOrani();
                       }
                       // ignore: use_build_context_synchronously
-                      final double? result = await bottomSheetDialogManager
-                          .showBottomSheetDialog(context,
-                              title: "KDV Oranları",
-                              children: viewModel.kdvOraniList
-                                  ?.map((element) => BottomSheetModel(
-                                      title: element.toStringIfNotNull ?? "",
-                                      onTap: () => Get.back(result: element),),)
-                                  .toList(),);
+                      final double? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                        context,
+                        title: "KDV Oranları",
+                        children: viewModel.kdvOraniList
+                            ?.map(
+                              (element) => BottomSheetModel(
+                                title: element.toStringIfNotNull ?? "",
+                                onTap: () => Get.back(result: element),
+                              ),
+                            )
+                            .toList(),
+                      );
                       if (result != null) {
                         satisKdvOraniController.text = result.toString();
                         stokDetayModel.stokList?.first.satisKdv = result;
                         stokListesiModel.satisKdv = result;
                       }
                     },
-                    controller: satisKdvOraniController,),
-                Row(
-                  children: [
-                    Expanded(
+                    controller: satisKdvOraniController,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
                         child: CustomTextField(
-                            keyboardType: TextInputType.number,
-                            enabled: isEnabled,
-                            labelText: "Fiyat 1",
-                            controller: satisFiyat1Controller,
-                            onChanged: (p0) {
-                              stokDetayModel.stokList?.first.satisFiat1 =
-                                  double.tryParse(p0);
-                              stokListesiModel.satisFiat1 = double.tryParse(p0);
-                            },),),
-                    Expanded(
+                          keyboardType: TextInputType.number,
+                          enabled: isEnabled,
+                          labelText: "Fiyat 1",
+                          controller: satisFiyat1Controller,
+                          onChanged: (p0) {
+                            stokDetayModel.stokList?.first.satisFiat1 = double.tryParse(p0);
+                            stokListesiModel.satisFiat1 = double.tryParse(p0);
+                          },
+                        ),
+                      ),
+                      Expanded(
                         child: CustomTextField(
-                            keyboardType: TextInputType.number,
-                            enabled: isEnabled,
-                            labelText: "Fiyat 2",
-                            controller: satisFiyat2Controller,
-                            onChanged: (p0) {
-                              stokDetayModel.stokList?.first.satisFiat2 =
-                                  double.tryParse(p0);
-                              stokListesiModel.satisFiat2 = double.tryParse(p0);
-                            },),),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Expanded(
+                          keyboardType: TextInputType.number,
+                          enabled: isEnabled,
+                          labelText: "Fiyat 2",
+                          controller: satisFiyat2Controller,
+                          onChanged: (p0) {
+                            stokDetayModel.stokList?.first.satisFiat2 = double.tryParse(p0);
+                            stokListesiModel.satisFiat2 = double.tryParse(p0);
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
                         child: CustomTextField(
-                            keyboardType: TextInputType.number,
-                            enabled: isEnabled,
-                            labelText: "Fiyat 3",
-                            controller: satisFiyat3Controller,
-                            onChanged: (p0) {
-                              stokDetayModel.stokList?.first.satisFiat3 =
-                                  double.tryParse(p0);
-                              stokListesiModel.satisFiat3 = double.tryParse(p0);
-                            },),),
-                    Expanded(
+                          keyboardType: TextInputType.number,
+                          enabled: isEnabled,
+                          labelText: "Fiyat 3",
+                          controller: satisFiyat3Controller,
+                          onChanged: (p0) {
+                            stokDetayModel.stokList?.first.satisFiat3 = double.tryParse(p0);
+                            stokListesiModel.satisFiat3 = double.tryParse(p0);
+                          },
+                        ),
+                      ),
+                      Expanded(
                         child: CustomTextField(
-                            keyboardType: TextInputType.number,
-                            enabled: isEnabled,
-                            labelText: "Fiyat 4",
-                            controller: satisFiyat4Controller,
-                            onChanged: (p0) {
-                              stokDetayModel.stokList?.first.satisFiat4 =
-                                  double.tryParse(p0);
-                              stokListesiModel.satisFiat4 = double.tryParse(p0);
-                            },),),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Expanded(
+                          keyboardType: TextInputType.number,
+                          enabled: isEnabled,
+                          labelText: "Fiyat 4",
+                          controller: satisFiyat4Controller,
+                          onChanged: (p0) {
+                            stokDetayModel.stokList?.first.satisFiat4 = double.tryParse(p0);
+                            stokListesiModel.satisFiat4 = double.tryParse(p0);
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
                         child: CustomTextField(
-                      enabled: isEnabled,
-                      labelText: "Döviz Tipi",
-                      controller: satisDovizTipiController,
-                      readOnly: true,
-                      onTap: () async {
-                        final MapEntry? result = await getDovizList();
-                        if (result != null) {
-                          satisDovizTipiController.text = result.value;
-                          stokDetayModel.stokList?.first.satDovTip = result.key;
-                          stokListesiModel.satDovTip = result.key;
-                        }
-                      },
-                      suffixMore: true,
-                    ),),
-                    Expanded(
+                          enabled: isEnabled,
+                          labelText: "Döviz Tipi",
+                          controller: satisDovizTipiController,
+                          readOnly: true,
+                          onTap: () async {
+                            final MapEntry? result = await getDovizList();
+                            if (result != null) {
+                              satisDovizTipiController.text = result.value;
+                              stokDetayModel.stokList?.first.satDovTip = result.key;
+                              stokListesiModel.satDovTip = result.key;
+                            }
+                          },
+                          suffixMore: true,
+                        ),
+                      ),
+                      Expanded(
                         child: CustomTextField(
-                            enabled: isEnabled,
-                            labelText: "Alış Fiyatı",
-                            controller: satisDovizFiyatiController,
-                            keyboardType: TextInputType.number,
-                            onChanged: (p0) {
-                              stokDetayModel.stokList?.first.dovSatisFiat =
-                                  double.tryParse(p0);
-                              stokListesiModel.dovSatisFiat =
-                                  double.tryParse(p0);
-                            },),),
-                  ],
-                ),
-              ],
+                          enabled: isEnabled,
+                          labelText: "Alış Fiyatı",
+                          controller: satisDovizFiyatiController,
+                          keyboardType: TextInputType.number,
+                          onChanged: (p0) {
+                            stokDetayModel.stokList?.first.dovSatisFiat = double.tryParse(p0);
+                            stokListesiModel.dovSatisFiat = double.tryParse(p0);
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
-      ).paddingAll(UIHelper.lowSize),
-    );
+          ],
+        ).paddingAll(UIHelper.lowSize),
+      );
 
   Future<void> getKdvOrani() async {
     final result = await networkManager.dioGet<BaseEmptyModel>(
-        path: ApiUrls.getStokDigerBilgi,
-        bodyModel: BaseEmptyModel(),
-        queryParameters: {"BilgiTipi": "KDVGRUP"},);
+      path: ApiUrls.getStokDigerBilgi,
+      bodyModel: BaseEmptyModel(),
+      queryParameters: {"BilgiTipi": "KDVGRUP"},
+    );
     if (result.success == true) {
       viewModel.setKdvOraniList(
-          jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]).cast<double>(),);
+        jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]).cast<double>(),
+      );
     } else {
-      dialogManager
-          .showAlertDialog("KDV listesine erişilemedi.${result.message ?? ""}");
+      dialogManager.showAlertDialog("KDV listesine erişilemedi.${result.message ?? ""}");
     }
   }
 
   Future<MapEntry?> getDovizList() async {
-    final MapEntry? result =
-        await bottomSheetDialogManager.showRadioBottomSheetDialog(context,
-            title: "Döviz Tipi",
-            children: viewModel.dovizList.entries
-                .map((e) => BottomSheetModel(
-                      title: e.value,
-                      onTap: () {
-                        Get.back(result: e);
-                      },
-                    ),)
-                .toList(),);
+    final MapEntry? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+      context,
+      title: "Döviz Tipi",
+      children: viewModel.dovizList.entries
+          .map(
+            (e) => BottomSheetModel(
+              title: e.value,
+              onTap: () {
+                Get.back(result: e);
+              },
+            ),
+          )
+          .toList(),
+    );
     return result;
   }
 }

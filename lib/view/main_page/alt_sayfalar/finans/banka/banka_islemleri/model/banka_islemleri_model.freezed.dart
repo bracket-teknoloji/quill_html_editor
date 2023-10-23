@@ -69,15 +69,12 @@ mixin _$BankaIslemleriModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $BankaIslemleriModelCopyWith<BankaIslemleriModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $BankaIslemleriModelCopyWith<BankaIslemleriModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BankaIslemleriModelCopyWith<$Res> {
-  factory $BankaIslemleriModelCopyWith(
-          BankaIslemleriModel value, $Res Function(BankaIslemleriModel) then) =
-      _$BankaIslemleriModelCopyWithImpl<$Res, BankaIslemleriModel>;
+  factory $BankaIslemleriModelCopyWith(BankaIslemleriModel value, $Res Function(BankaIslemleriModel) then) = _$BankaIslemleriModelCopyWithImpl<$Res, BankaIslemleriModel>;
   @useResult
   $Res call(
       {int? inckeyno,
@@ -101,8 +98,7 @@ abstract class $BankaIslemleriModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$BankaIslemleriModelCopyWithImpl<$Res, $Val extends BankaIslemleriModel>
-    implements $BankaIslemleriModelCopyWith<$Res> {
+class _$BankaIslemleriModelCopyWithImpl<$Res, $Val extends BankaIslemleriModel> implements $BankaIslemleriModelCopyWith<$Res> {
   _$BankaIslemleriModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -210,11 +206,8 @@ class _$BankaIslemleriModelCopyWithImpl<$Res, $Val extends BankaIslemleriModel>
 }
 
 /// @nodoc
-abstract class _$$BankaIslemleriModelImplCopyWith<$Res>
-    implements $BankaIslemleriModelCopyWith<$Res> {
-  factory _$$BankaIslemleriModelImplCopyWith(_$BankaIslemleriModelImpl value,
-          $Res Function(_$BankaIslemleriModelImpl) then) =
-      __$$BankaIslemleriModelImplCopyWithImpl<$Res>;
+abstract class _$$BankaIslemleriModelImplCopyWith<$Res> implements $BankaIslemleriModelCopyWith<$Res> {
+  factory _$$BankaIslemleriModelImplCopyWith(_$BankaIslemleriModelImpl value, $Res Function(_$BankaIslemleriModelImpl) then) = __$$BankaIslemleriModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -239,12 +232,8 @@ abstract class _$$BankaIslemleriModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$BankaIslemleriModelImplCopyWithImpl<$Res>
-    extends _$BankaIslemleriModelCopyWithImpl<$Res, _$BankaIslemleriModelImpl>
-    implements _$$BankaIslemleriModelImplCopyWith<$Res> {
-  __$$BankaIslemleriModelImplCopyWithImpl(_$BankaIslemleriModelImpl _value,
-      $Res Function(_$BankaIslemleriModelImpl) _then)
-      : super(_value, _then);
+class __$$BankaIslemleriModelImplCopyWithImpl<$Res> extends _$BankaIslemleriModelCopyWithImpl<$Res, _$BankaIslemleriModelImpl> implements _$$BankaIslemleriModelImplCopyWith<$Res> {
+  __$$BankaIslemleriModelImplCopyWithImpl(_$BankaIslemleriModelImpl _value, $Res Function(_$BankaIslemleriModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -369,8 +358,7 @@ class _$BankaIslemleriModelImpl extends _BankaIslemleriModel {
       this.subeAdi})
       : super._();
 
-  factory _$BankaIslemleriModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BankaIslemleriModelImplFromJson(json);
+  factory _$BankaIslemleriModelImpl.fromJson(Map<String, dynamic> json) => _$$BankaIslemleriModelImplFromJson(json);
 
 // int? inckeyno,
 // int? caharInckeyno,
@@ -440,9 +428,7 @@ class _$BankaIslemleriModelImpl extends _BankaIslemleriModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BankaIslemleriModelImplCopyWith<_$BankaIslemleriModelImpl> get copyWith =>
-      __$$BankaIslemleriModelImplCopyWithImpl<_$BankaIslemleriModelImpl>(
-          this, _$identity);
+  _$$BankaIslemleriModelImplCopyWith<_$BankaIslemleriModelImpl> get copyWith => __$$BankaIslemleriModelImplCopyWithImpl<_$BankaIslemleriModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -474,8 +460,7 @@ abstract class _BankaIslemleriModel extends BankaIslemleriModel {
       final String? subeAdi}) = _$BankaIslemleriModelImpl;
   _BankaIslemleriModel._() : super._();
 
-  factory _BankaIslemleriModel.fromJson(Map<String, dynamic> json) =
-      _$BankaIslemleriModelImpl.fromJson;
+  factory _BankaIslemleriModel.fromJson(Map<String, dynamic> json) = _$BankaIslemleriModelImpl.fromJson;
 
   @override // int? inckeyno,
 // int? caharInckeyno,
@@ -542,6 +527,5 @@ abstract class _BankaIslemleriModel extends BankaIslemleriModel {
   String? get subeAdi;
   @override
   @JsonKey(ignore: true)
-  _$$BankaIslemleriModelImplCopyWith<_$BankaIslemleriModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$BankaIslemleriModelImplCopyWith<_$BankaIslemleriModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

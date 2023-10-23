@@ -30,18 +30,19 @@ import "../../constants/enum/dio_enum.dart";
 import "login/api_urls.dart";
 
 class NetworkManager {
-  Dio get dio => Dio(BaseOptions(
-        baseUrl: getBaseUrl,
-        followRedirects: false,
-        validateStatus: (status) => status! < 500,
-        receiveTimeout: const Duration(minutes: 2),
-        connectTimeout: const Duration(seconds: 20),
-        sendTimeout: const Duration(minutes: 2),
-        receiveDataWhenStatusError: true,
-        contentType: "application/json",
-        responseType: ResponseType.json,
-      ),)
-        ..interceptors.add(
+  Dio get dio => Dio(
+        BaseOptions(
+          baseUrl: getBaseUrl,
+          followRedirects: false,
+          validateStatus: (status) => status! < 500,
+          receiveTimeout: const Duration(minutes: 2),
+          connectTimeout: const Duration(seconds: 20),
+          sendTimeout: const Duration(minutes: 2),
+          receiveDataWhenStatusError: true,
+          contentType: "application/json",
+          responseType: ResponseType.json,
+        ),
+      )..interceptors.add(
           InterceptorsWrapper(
             onRequest: (options, handler) => handler.next(options),
             onError: (e, handler) {
@@ -94,31 +95,35 @@ class NetworkManager {
     final FormData formData = FormData.fromMap(data);
     log(AccountModel.instance.toString());
     log(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.firma ?? "")?.wsWan ?? "");
-    final response = await dio.request(path,
-        queryParameters: queryParameters,
-        cancelToken: CancelToken(),
-        options: Options(
-            headers: {"Access-Control-Allow-Origin": "*", "Platform": AccountModel.instance.platform, "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"},
-            contentType: "application/x-www-form-urlencoded",
-            method: HttpTypes.GET,
-            responseType: ResponseType.json,),
-        data: kIsWeb ? formData : data,);
+    final response = await dio.request(
+      path,
+      queryParameters: queryParameters,
+      cancelToken: CancelToken(),
+      options: Options(
+        headers: {"Access-Control-Allow-Origin": "*", "Platform": AccountModel.instance.platform, "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"},
+        contentType: "application/x-www-form-urlencoded",
+        method: HttpTypes.GET,
+        responseType: ResponseType.json,
+      ),
+      data: kIsWeb ? formData : data,
+    );
     final a = response.data;
     return TokenModel().fromJson(a);
   }
 
-  Future<GenericResponseModel> dioGet<T extends NetworkManagerMixin>(
-      {required String path,
-      required T bodyModel,
-      Map<String, String>? headers,
-      dynamic data,
-      Map<String, dynamic>? queryParameters,
-      bool addQuery = true,
-      bool addSirketBilgileri = true,
-      bool addCKey = true,
-      bool addTokenKey = true,
-      bool showLoading = false,
-      bool showError = true,}) async {
+  Future<GenericResponseModel> dioGet<T extends NetworkManagerMixin>({
+    required String path,
+    required T bodyModel,
+    Map<String, String>? headers,
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    bool addQuery = true,
+    bool addSirketBilgileri = true,
+    bool addCKey = true,
+    bool addTokenKey = true,
+    bool showLoading = false,
+    bool showError = true,
+  }) async {
     dynamic response;
     if (showLoading) {
       DialogManager().showLoadingDialog("Yükleniyor...");
@@ -152,18 +157,19 @@ class NetworkManager {
     return responseModel;
   }
 
-  Future<GenericResponseModel> dioPost<T extends NetworkManagerMixin>(
-      {required String path,
-      required T bodyModel,
-      Map<String, String>? headers,
-      dynamic data,
-      Map<String, dynamic>? queryParameters,
-      bool addQuery = true,
-      bool addSirketBilgileri = true,
-      bool addCKey = true,
-      bool addTokenKey = true,
-      bool showLoading = false,
-      bool showError = true,}) async {
+  Future<GenericResponseModel> dioPost<T extends NetworkManagerMixin>({
+    required String path,
+    required T bodyModel,
+    Map<String, String>? headers,
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    bool addQuery = true,
+    bool addSirketBilgileri = true,
+    bool addCKey = true,
+    bool addTokenKey = true,
+    bool showLoading = false,
+    bool showError = true,
+  }) async {
     dynamic response;
     if (showLoading) {
       DialogManager().showLoadingDialog("Lütfen Bekleyiniz...");
@@ -219,13 +225,14 @@ class NetworkManager {
 
   Future<List<BaseGrupKoduModel>> getGrupKod({required String name, int? grupNo, bool? kullanimda}) async {
     final responseKod = await dioGet<BaseGrupKoduModel>(
-        path: ApiUrls.getGrupKodlari,
-        bodyModel: BaseGrupKoduModel(),
-        addCKey: true,
-        headers: {"Modul": name, "GrupNo": grupNo.toStringIfNotNull ?? "", "Kullanimda": (kullanimda ?? true) ? "E" : "H"},
-        addQuery: true,
-        addSirketBilgileri: true,
-        queryParameters: {"Modul": name, "GrupNo": grupNo},);
+      path: ApiUrls.getGrupKodlari,
+      bodyModel: BaseGrupKoduModel(),
+      addCKey: true,
+      headers: {"Modul": name, "GrupNo": grupNo.toStringIfNotNull ?? "", "Kullanimda": (kullanimda ?? true) ? "E" : "H"},
+      addQuery: true,
+      addSirketBilgileri: true,
+      queryParameters: {"Modul": name, "GrupNo": grupNo},
+    );
     return responseKod.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
   }
 
@@ -276,7 +283,14 @@ class NetworkManager {
     }
     final data2 = getFromCache ? (CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi)?.toJson() : AccountModel.instance.toJson();
     final result = await dioPost<AccountResponseModel>(
-        bodyModel: AccountResponseModel(), showError: false, data: data2, addTokenKey: false, addCKey: false, addSirketBilgileri: false, path: ApiUrls.getUyeBilgileri,);
+      bodyModel: AccountResponseModel(),
+      showError: false,
+      data: data2,
+      addTokenKey: false,
+      addCKey: false,
+      addSirketBilgileri: false,
+      path: ApiUrls.getUyeBilgileri,
+    );
     if (result.success == true) {
       CacheManager.setIsLicenseVerified(email ?? result.data.first.email, true);
       if (getFromCache) {
@@ -297,7 +311,11 @@ class NetworkManager {
 
   Future<List<StokMuhasebeKoduModel>> getMuhasebeKodlari({Map<String, dynamic>? queryParams, bool? stokMu = true}) async {
     final GenericResponseModel result = await dioGet<StokMuhasebeKoduModel>(
-        path: stokMu == true ? ApiUrls.getStokMuhasebeKodlari : ApiUrls.getMuhasebeMuhasebeKodlari, bodyModel: StokMuhasebeKoduModel(), showLoading: true, queryParameters: queryParams,);
+      path: stokMu == true ? ApiUrls.getStokMuhasebeKodlari : ApiUrls.getMuhasebeMuhasebeKodlari,
+      bodyModel: StokMuhasebeKoduModel(),
+      showLoading: true,
+      queryParameters: queryParams,
+    );
     return result.data.map((e) => e as StokMuhasebeKoduModel).toList().cast<StokMuhasebeKoduModel>();
   }
 

@@ -14,16 +14,16 @@ class AppBarButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        alignment: Alignment.center,
-        padding: UIHelper.zeroPadding,
-        textStyle: const TextStyle(fontSize: 12),
-        backgroundColor: UIHelper.primaryColor.withOpacity(0.1),
-        shadowColor: Colors.transparent,
-        elevation: 0,
-      ),
-      onPressed: onPressed,
-      child: Wrap(
+        style: ElevatedButton.styleFrom(
+          alignment: Alignment.center,
+          padding: UIHelper.zeroPadding,
+          textStyle: const TextStyle(fontSize: 12),
+          backgroundColor: UIHelper.primaryColor.withOpacity(0.1),
+          shadowColor: Colors.transparent,
+          elevation: 0,
+        ),
+        onPressed: onPressed,
+        child: Wrap(
           alignment: WrapAlignment.center,
           runAlignment: WrapAlignment.start,
           crossAxisAlignment: WrapCrossAlignment.center,
@@ -40,5 +40,7 @@ class AppBarButton extends StatelessWidget {
               null,
             iconWidget ?? const SizedBox(),
             child,
-          ].nullCheckWithGeneric,),);
+          ].nullCheckWithGeneric,
+        ),
+      );
 }

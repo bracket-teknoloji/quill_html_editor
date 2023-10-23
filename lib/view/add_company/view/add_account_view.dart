@@ -78,7 +78,8 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
               ),
             ),
           ),
-        ),);
+        ),
+      );
 
   Future<void> loginMethod() async {
     if (formKey.currentState?.validate() ?? false) {

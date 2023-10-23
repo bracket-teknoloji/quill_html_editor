@@ -55,7 +55,8 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
           } else {
             icon = const Icon(Icons.star, size: 20);
             CacheManager.setFavoriler(
-                FavoritesModel(name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments, menuTipi: widget.menuTipi),);
+              FavoritesModel(name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments, menuTipi: widget.menuTipi),
+            );
             dialogManager.hideSnackBar;
             dialogManager.showInfoSnackBar("Favorilere eklendi");
           }
@@ -67,68 +68,80 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
         color: widget.color,
         semanticContainer: true,
         child: GridTile(
-            header: (widget.menuTipi == "I" || widget.menuTipi == "SR")
-                ? Align(
-                    alignment: Alignment.centerRight,
-                    child: InkWell(
-                      child: yetkiKontrol(),
-                      onTap: () {
-                        if (icon.icon == Icons.star) {
-                          icon = const Icon(Icons.star_border, size: 20);
-                          CacheManager.removeFavoriler(widget.title.toString());
-                          dialogManager.hideSnackBar;
-                          dialogManager.showInfoSnackBar("Favorilerden çıkarıldı");
-                        } else {
-                          icon = const Icon(Icons.star, size: 20);
-                          CacheManager.setFavoriler(FavoritesModel(
-                              name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments, menuTipi: widget.menuTipi,),);
-                          dialogManager.hideSnackBar;
-                          dialogManager.showInfoSnackBar("Favorilere eklendi");
-                        }
-                        setState(() {});
-                      },
-                    ),)
-                : null,
-            footer: (widget.menuTipi == "S" && widget.altMenuler.ext.isNotNullOrEmpty) ? const Icon(Icons.expand_more, size: 15) : const SizedBox(),
-            child: widget.menuTipi == "I"
-                ? Center(
-                    child: Text(
+          header: (widget.menuTipi == "I" || widget.menuTipi == "SR")
+              ? Align(
+                  alignment: Alignment.centerRight,
+                  child: InkWell(
+                    child: yetkiKontrol(),
+                    onTap: () {
+                      if (icon.icon == Icons.star) {
+                        icon = const Icon(Icons.star_border, size: 20);
+                        CacheManager.removeFavoriler(widget.title.toString());
+                        dialogManager.hideSnackBar;
+                        dialogManager.showInfoSnackBar("Favorilerden çıkarıldı");
+                      } else {
+                        icon = const Icon(Icons.star, size: 20);
+                        CacheManager.setFavoriler(
+                          FavoritesModel(
+                            name: widget.name,
+                            title: widget.title,
+                            icon: widget.icon,
+                            onTap: widget.route,
+                            color: widget.color?.value,
+                            arguments: widget.arguments,
+                            menuTipi: widget.menuTipi,
+                          ),
+                        );
+                        dialogManager.hideSnackBar;
+                        dialogManager.showInfoSnackBar("Favorilere eklendi");
+                      }
+                      setState(() {});
+                    },
+                  ),
+                )
+              : null,
+          footer: (widget.menuTipi == "S" && widget.altMenuler.ext.isNotNullOrEmpty) ? const Icon(Icons.expand_more, size: 15) : const SizedBox(),
+          child: widget.menuTipi == "I"
+              ? Center(
+                  child: Text(
                     widget.title ?? "",
                     textAlign: TextAlign.center,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     softWrap: true,
                     style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
-                  ),)
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      AnimatedContainer(
-                              duration: const Duration(milliseconds: 500),
-                              child: widget.iconWidget == null
-                                  ? IconHelper.bigMenuIcon(
-                                      widget.icon ?? "",
-                                    )
-                                  : IconTheme(
-                                      data: const IconThemeData(weight: 0.1, size: 30, color: Colors.white),
-                                      child: Icon(
-                                        widget.iconWidget,
-                                        size: 30,
-                                        grade: 0.1,
-                                      ),
-                                    ),)
-                          .marginOnly(bottom: 5),
-                      Text(
-                        widget.menuTipi != "I" ? widget.title.toString() : "",
-                        textAlign: TextAlign.center,
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                        // softWrap: true,
-                        style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
-                      ),
-                    ],
-                  ),),
+                  ),
+                )
+              : Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    AnimatedContainer(
+                      duration: const Duration(milliseconds: 500),
+                      child: widget.iconWidget == null
+                          ? IconHelper.bigMenuIcon(
+                              widget.icon ?? "",
+                            )
+                          : IconTheme(
+                              data: const IconThemeData(weight: 0.1, size: 30, color: Colors.white),
+                              child: Icon(
+                                widget.iconWidget,
+                                size: 30,
+                                grade: 0.1,
+                              ),
+                            ),
+                    ).marginOnly(bottom: 5),
+                    Text(
+                      widget.menuTipi != "I" ? widget.title.toString() : "",
+                      textAlign: TextAlign.center,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      // softWrap: true,
+                      style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
+                    ),
+                  ],
+                ),
+        ),
       ),
     );
   }

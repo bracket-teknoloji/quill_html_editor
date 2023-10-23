@@ -348,15 +348,13 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel bagliCari(String? bagliCari) => this(bagliCari: bagliCari);
 
   @override
-  CariListesiModel bagliCariAdi(String? bagliCariAdi) =>
-      this(bagliCariAdi: bagliCariAdi);
+  CariListesiModel bagliCariAdi(String? bagliCariAdi) => this(bagliCariAdi: bagliCariAdi);
 
   @override
   CariListesiModel cariTip(String? cariTip) => this(cariTip: cariTip);
 
   @override
-  CariListesiModel cariTipAciklama(String? cariTipAciklama) =>
-      this(cariTipAciklama: cariTipAciklama);
+  CariListesiModel cariTipAciklama(String? cariTipAciklama) => this(cariTipAciklama: cariTipAciklama);
 
   @override
   CariListesiModel kilit(String? kilit) => this(kilit: kilit);
@@ -368,32 +366,25 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel odemeTipi(String? odemeTipi) => this(odemeTipi: odemeTipi);
 
   @override
-  CariListesiModel hesaptutmasekli(String? hesaptutmasekli) =>
-      this(hesaptutmasekli: hesaptutmasekli);
+  CariListesiModel hesaptutmasekli(String? hesaptutmasekli) => this(hesaptutmasekli: hesaptutmasekli);
 
   @override
-  CariListesiModel plasiyerKodu(String? plasiyerKodu) =>
-      this(plasiyerKodu: plasiyerKodu);
+  CariListesiModel plasiyerKodu(String? plasiyerKodu) => this(plasiyerKodu: plasiyerKodu);
 
   @override
-  CariListesiModel plasiyerAciklama(String? plasiyerAciklama) =>
-      this(plasiyerAciklama: plasiyerAciklama);
+  CariListesiModel plasiyerAciklama(String? plasiyerAciklama) => this(plasiyerAciklama: plasiyerAciklama);
 
   @override
-  CariListesiModel borcToplami(double? borcToplami) =>
-      this(borcToplami: borcToplami);
+  CariListesiModel borcToplami(double? borcToplami) => this(borcToplami: borcToplami);
 
   @override
-  CariListesiModel bakiyeList(List<dynamic>? bakiyeList) =>
-      this(bakiyeList: bakiyeList);
+  CariListesiModel bakiyeList(List<dynamic>? bakiyeList) => this(bakiyeList: bakiyeList);
 
   @override
-  CariListesiModel alacakToplami(double? alacakToplami) =>
-      this(alacakToplami: alacakToplami);
+  CariListesiModel alacakToplami(double? alacakToplami) => this(alacakToplami: alacakToplami);
 
   @override
-  CariListesiModel genisk1Orani(int? genisk1Orani) =>
-      this(genisk1Orani: genisk1Orani);
+  CariListesiModel genisk1Orani(int? genisk1Orani) => this(genisk1Orani: genisk1Orani);
 
   @override
   CariListesiModel ulkeKodu(String? ulkeKodu) => this(ulkeKodu: ulkeKodu);
@@ -423,19 +414,16 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel cariAdres(String? cariAdres) => this(cariAdres: cariAdres);
 
   @override
-  CariListesiModel vergiDairesi(String? vergiDairesi) =>
-      this(vergiDairesi: vergiDairesi);
+  CariListesiModel vergiDairesi(String? vergiDairesi) => this(vergiDairesi: vergiDairesi);
 
   @override
-  CariListesiModel vergiNumarasi(String? vergiNumarasi) =>
-      this(vergiNumarasi: vergiNumarasi);
+  CariListesiModel vergiNumarasi(String? vergiNumarasi) => this(vergiNumarasi: vergiNumarasi);
 
   @override
   CariListesiModel grupKodu(String? grupKodu) => this(grupKodu: grupKodu);
 
   @override
-  CariListesiModel grupTanimi(String? grupTanimi) =>
-      this(grupTanimi: grupTanimi);
+  CariListesiModel grupTanimi(String? grupTanimi) => this(grupTanimi: grupTanimi);
 
   @override
   CariListesiModel bilgi(String? bilgi) => this(bilgi: bilgi);
@@ -456,74 +444,61 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel kod1(String? kod1) => this(kod1: kod1);
 
   @override
-  CariListesiModel kod1Tanimi(String? kod1Tanimi) =>
-      this(kod1Tanimi: kod1Tanimi);
+  CariListesiModel kod1Tanimi(String? kod1Tanimi) => this(kod1Tanimi: kod1Tanimi);
 
   @override
   CariListesiModel kod2(String? kod2) => this(kod2: kod2);
 
   @override
-  CariListesiModel kod2Tanimi(String? kod2Tanimi) =>
-      this(kod2Tanimi: kod2Tanimi);
+  CariListesiModel kod2Tanimi(String? kod2Tanimi) => this(kod2Tanimi: kod2Tanimi);
 
   @override
   CariListesiModel kod3(String? kod3) => this(kod3: kod3);
 
   @override
-  CariListesiModel kod3Tanimi(String? kod3Tanimi) =>
-      this(kod3Tanimi: kod3Tanimi);
+  CariListesiModel kod3Tanimi(String? kod3Tanimi) => this(kod3Tanimi: kod3Tanimi);
 
   @override
   CariListesiModel kod4(String? kod4) => this(kod4: kod4);
 
   @override
-  CariListesiModel kod4Tanimi(String? kod4Tanimi) =>
-      this(kod4Tanimi: kod4Tanimi);
+  CariListesiModel kod4Tanimi(String? kod4Tanimi) => this(kod4Tanimi: kod4Tanimi);
 
   @override
   CariListesiModel kod5(String? kod5) => this(kod5: kod5);
 
   @override
-  CariListesiModel kod5Tanimi(String? kod5Tanimi) =>
-      this(kod5Tanimi: kod5Tanimi);
+  CariListesiModel kod5Tanimi(String? kod5Tanimi) => this(kod5Tanimi: kod5Tanimi);
 
   @override
-  CariListesiModel kayityapankul(String? kayityapankul) =>
-      this(kayityapankul: kayityapankul);
+  CariListesiModel kayityapankul(String? kayityapankul) => this(kayityapankul: kayityapankul);
 
   @override
-  CariListesiModel kayittarihi(String? kayittarihi) =>
-      this(kayittarihi: kayittarihi);
+  CariListesiModel kayittarihi(String? kayittarihi) => this(kayittarihi: kayittarihi);
 
   @override
-  CariListesiModel duzeltmeyapankul(String? duzeltmeyapankul) =>
-      this(duzeltmeyapankul: duzeltmeyapankul);
+  CariListesiModel duzeltmeyapankul(String? duzeltmeyapankul) => this(duzeltmeyapankul: duzeltmeyapankul);
 
   @override
-  CariListesiModel duzeltmetarihi(String? duzeltmetarihi) =>
-      this(duzeltmetarihi: duzeltmetarihi);
+  CariListesiModel duzeltmetarihi(String? duzeltmetarihi) => this(duzeltmetarihi: duzeltmetarihi);
 
   @override
   CariListesiModel efaturaMi(bool? efaturaMi) => this(efaturaMi: efaturaMi);
 
   @override
-  CariListesiModel efaturaTipi(String? efaturaTipi) =>
-      this(efaturaTipi: efaturaTipi);
+  CariListesiModel efaturaTipi(String? efaturaTipi) => this(efaturaTipi: efaturaTipi);
 
   @override
-  CariListesiModel efatGecisTarihi(String? efatGecisTarihi) =>
-      this(efatGecisTarihi: efatGecisTarihi);
+  CariListesiModel efatGecisTarihi(String? efatGecisTarihi) => this(efatGecisTarihi: efatGecisTarihi);
 
   @override
   CariListesiModel efatAktif(bool? efatAktif) => this(efatAktif: efatAktif);
 
   @override
-  CariListesiModel riskTakibi(String? riskTakibi) =>
-      this(riskTakibi: riskTakibi);
+  CariListesiModel riskTakibi(String? riskTakibi) => this(riskTakibi: riskTakibi);
 
   @override
-  CariListesiModel efaturaCarisi(String? efaturaCarisi) =>
-      this(efaturaCarisi: efaturaCarisi);
+  CariListesiModel efaturaCarisi(String? efaturaCarisi) => this(efaturaCarisi: efaturaCarisi);
 
   @override
   CariListesiModel bakiye(double? bakiye) => this(bakiye: bakiye);
@@ -586,8 +561,7 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel fax(String? fax) => this(fax: fax);
 
   @override
-  CariListesiModel sahisFirmasiMi(bool? sahisFirmasiMi) =>
-      this(sahisFirmasiMi: sahisFirmasiMi);
+  CariListesiModel sahisFirmasiMi(bool? sahisFirmasiMi) => this(sahisFirmasiMi: sahisFirmasiMi);
 
   @override
   CariListesiModel dovizli(bool? dovizli) => this(dovizli: dovizli);
@@ -605,8 +579,7 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel kosulKodu(String? kosulKodu) => this(kosulKodu: kosulKodu);
 
   @override
-  CariListesiModel fiyatGrubu(String? fiyatGrubu) =>
-      this(fiyatGrubu: fiyatGrubu);
+  CariListesiModel fiyatGrubu(String? fiyatGrubu) => this(fiyatGrubu: fiyatGrubu);
 
   @override
   CariListesiModel kull1S(String? kull1S) => this(kull1S: kull1S);
@@ -615,12 +588,10 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel kull2S(String? kull2S) => this(kull2S: kull2S);
 
   @override
-  CariListesiModel dovBorcToplami(double? dovBorcToplami) =>
-      this(dovBorcToplami: dovBorcToplami);
+  CariListesiModel dovBorcToplami(double? dovBorcToplami) => this(dovBorcToplami: dovBorcToplami);
 
   @override
-  CariListesiModel dovAlacakToplami(double? dovAlacakToplami) =>
-      this(dovAlacakToplami: dovAlacakToplami);
+  CariListesiModel dovAlacakToplami(double? dovAlacakToplami) => this(dovAlacakToplami: dovAlacakToplami);
 
   @override
   CariListesiModel dovBakiye(double? dovBakiye) => this(dovBakiye: dovBakiye);
@@ -629,16 +600,13 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel muhKodu(String? muhKodu) => this(muhKodu: muhKodu);
 
   @override
-  CariListesiModel muhHesapTipi(String? muhHesapTipi) =>
-      this(muhHesapTipi: muhHesapTipi);
+  CariListesiModel muhHesapTipi(String? muhHesapTipi) => this(muhHesapTipi: muhHesapTipi);
 
   @override
-  CariListesiModel iadeMiktarGirebilir(bool? iadeMiktarGirebilir) =>
-      this(iadeMiktarGirebilir: iadeMiktarGirebilir);
+  CariListesiModel iadeMiktarGirebilir(bool? iadeMiktarGirebilir) => this(iadeMiktarGirebilir: iadeMiktarGirebilir);
 
   @override
-  CariListesiModel sunucuTarihi(DateTime? sunucuTarihi) =>
-      this(sunucuTarihi: sunucuTarihi);
+  CariListesiModel sunucuTarihi(DateTime? sunucuTarihi) => this(sunucuTarihi: sunucuTarihi);
 
   @override
   CariListesiModel adi(String? adi) => this(adi: adi);
@@ -647,8 +615,7 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel adres(String? adres) => this(adres: adres);
 
   @override
-  CariListesiModel efaturaSenaryo(String? efaturaSenaryo) =>
-      this(efaturaSenaryo: efaturaSenaryo);
+  CariListesiModel efaturaSenaryo(String? efaturaSenaryo) => this(efaturaSenaryo: efaturaSenaryo);
 
   @override
   CariListesiModel eposta(String? eposta) => this(eposta: eposta);
@@ -660,20 +627,16 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel islemKodu(int? islemKodu) => this(islemKodu: islemKodu);
 
   @override
-  CariListesiModel kurfarkialacakKodu(String? kurfarkialacakKodu) =>
-      this(kurfarkialacakKodu: kurfarkialacakKodu);
+  CariListesiModel kurfarkialacakKodu(String? kurfarkialacakKodu) => this(kurfarkialacakKodu: kurfarkialacakKodu);
 
   @override
-  CariListesiModel kurfarkiborcKodu(String? kurfarkiborcKodu) =>
-      this(kurfarkiborcKodu: kurfarkiborcKodu);
+  CariListesiModel kurfarkiborcKodu(String? kurfarkiborcKodu) => this(kurfarkiborcKodu: kurfarkiborcKodu);
 
   @override
-  CariListesiModel muhasebeKodu(String? muhasebeKodu) =>
-      this(muhasebeKodu: muhasebeKodu);
+  CariListesiModel muhasebeKodu(String? muhasebeKodu) => this(muhasebeKodu: muhasebeKodu);
 
   @override
-  CariListesiModel requestVersion(int? requestVersion) =>
-      this(requestVersion: requestVersion);
+  CariListesiModel requestVersion(int? requestVersion) => this(requestVersion: requestVersion);
 
   @override
   CariListesiModel sehir(String? sehir) => this(sehir: sehir);
@@ -1585,19 +1548,14 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
   int get hashCode => typeId.hashCode;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CariListesiModelAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+  bool operator ==(Object other) => identical(this, other) || other is CariListesiModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
-    CariListesiModel(
+CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) => CariListesiModel(
       cariKodu: json['CARI_KODU'] as String?,
       cariAdi: json['CARI_ADI'] as String?,
       bagliCari: json['BAGLI_CARI'] as String?,
@@ -1686,9 +1644,7 @@ CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
       muhKodu: json['MUH_KODU'] as String?,
       muhHesapTipi: json['MUH_HESAP_TIPI'] as String?,
       iadeMiktarGirebilir: json['IADE_MIKTAR_GIREBILIR'] as bool?,
-      sunucuTarihi: json['SUNUCU_TARIHI'] == null
-          ? null
-          : DateTime.parse(json['SUNUCU_TARIHI'] as String),
+      sunucuTarihi: json['SUNUCU_TARIHI'] == null ? null : DateTime.parse(json['SUNUCU_TARIHI'] as String),
       adi: json['ADI'] as String?,
       adres: json['ADRES'] as String?,
       efaturaSenaryo: json['EFATURA_SENARYO'] as String?,
@@ -1705,9 +1661,7 @@ CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
       vergiNo: json['VERGI_NO'] as String?,
       website: json['WEBSITE'] as String?,
     )
-      ..depoKodlari = (json['DEPO_KODLARI'] as List<dynamic>?)
-          ?.map((e) => e as int)
-          .toList()
+      ..depoKodlari = (json['DEPO_KODLARI'] as List<dynamic>?)?.map((e) => e as int).toList()
       ..idx = json['IDX'] as int?;
 
 Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) {

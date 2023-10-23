@@ -36,43 +36,49 @@ class _FinansalDurumRaporuViewState extends BaseState<FinansalDurumRaporuView> {
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
-    await bottomSheetDialogManager.showBottomSheetDialog(context,
-        title: "Filtrele",
-        body: Padding(
-          padding: EdgeInsets.all(UIHelper.lowSize),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              CustomTextField(
-                labelText: "Görünecek Alanlar",
-                controller: gorunecekAlanlarController,
-                readOnly: true,
-                suffixMore: true,
-                onTap: () async {
-                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context,
-                      title: "Görünecek Alanlar",
-                      children: List.generate(
-                        viewModel.gorunecekAlanlarMap.length,
-                        (index) => BottomSheetModel(title: viewModel.gorunecekAlanlarMap.keys.toList()[index], value: viewModel.gorunecekAlanlarMap.entries.toList()[index]),
-                      ),);
+    await bottomSheetDialogManager.showBottomSheetDialog(
+      context,
+      title: "Filtrele",
+      body: Padding(
+        padding: EdgeInsets.all(UIHelper.lowSize),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            CustomTextField(
+              labelText: "Görünecek Alanlar",
+              controller: gorunecekAlanlarController,
+              readOnly: true,
+              suffixMore: true,
+              onTap: () async {
+                final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                  context,
+                  title: "Görünecek Alanlar",
+                  children: List.generate(
+                    viewModel.gorunecekAlanlarMap.length,
+                    (index) => BottomSheetModel(title: viewModel.gorunecekAlanlarMap.keys.toList()[index], value: viewModel.gorunecekAlanlarMap.entries.toList()[index]),
+                  ),
+                );
 
-                  if (result is List) {
-                    final List<MapEntry<String, String>> items = result.cast<MapEntry<String, String>>();
-                    viewModel.changeGorunecekAlanlar(items.map((e) => e.value).join(";"));
-                    gorunecekAlanlarController.text = items.map((e) => e.key).join(", ");
-                  }
+                if (result is List) {
+                  final List<MapEntry<String, String>> items = result.cast<MapEntry<String, String>>();
+                  viewModel.changeGorunecekAlanlar(items.map((e) => e.value).join(";"));
+                  gorunecekAlanlarController.text = items.map((e) => e.key).join(", ");
+                }
+              },
+            ),
+            Observer(
+              builder: (_) => ElevatedButton(
+                onPressed: () {
+                  viewModel.setFuture();
+                  Get.back();
                 },
-              ),
-              Observer(builder: (_) => ElevatedButton(
-                        onPressed: () {
-                          viewModel.setFuture();
-                          Get.back();
-                        },
-                        child: const Text("Uygula"),)
-                    .paddingAll(UIHelper.lowSize),),
-            ],
-          ),
-        ),);
+                child: const Text("Uygula"),
+              ).paddingAll(UIHelper.lowSize),
+            ),
+          ],
+        ),
+      ),
+    );
     return Future.value(viewModel.futureController.value);
   }
 }

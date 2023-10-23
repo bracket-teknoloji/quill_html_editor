@@ -78,59 +78,61 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      appBar: AppBar(
-        title: const Text("Yazdır"),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.print_outlined),
-            onPressed: () async => postPrint(),
-          ),
-        ],
-      ),
-      body: Form(
-        key: formKey,
-        child: Column(
-          children: [
-            CustomTextField(
-              labelText: "Stok",
-              controller: stokController,
-              readOnly: false,
-              isMust: true,
-              suffixMore: true,
-              onSubmitted: getStok,
-              valueWidget: Observer(builder: (_) => Text(viewModel.printModel.dicParams?.stokKodu ?? "")),
-              onTap: () async {
-                var result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
-                if (result is StokListesiModel) {
-                  result = await getStok(result.stokKodu);
-                  viewModel.setStokKodu(result);
-                  stokController.text = result.stokKodu.toString();
-                  if (parametreModel.esnekYapilandir == true && result.yapilandirmaAktif != null) {
-                    final stokYapilandirmaKodu = await Get.toNamed("/mainPage/yapilandirmaRehberi", arguments: result);
-                    if (stokYapilandirmaKodu is YapilandirmaRehberiModel) {
-                      viewModel.setYapilandirmaKodu(stokYapilandirmaKodu.yapkod);
-                      yapilandirmaKoduController.text = stokYapilandirmaKodu.yapacik ?? "";
+        appBar: AppBar(
+          title: const Text("Yazdır"),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.print_outlined),
+              onPressed: () async => postPrint(),
+            ),
+          ],
+        ),
+        body: Form(
+          key: formKey,
+          child: Column(
+            children: [
+              CustomTextField(
+                labelText: "Stok",
+                controller: stokController,
+                readOnly: false,
+                isMust: true,
+                suffixMore: true,
+                onSubmitted: getStok,
+                valueWidget: Observer(builder: (_) => Text(viewModel.printModel.dicParams?.stokKodu ?? "")),
+                onTap: () async {
+                  var result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
+                  if (result is StokListesiModel) {
+                    result = await getStok(result.stokKodu);
+                    viewModel.setStokKodu(result);
+                    stokController.text = result.stokKodu.toString();
+                    if (parametreModel.esnekYapilandir == true && result.yapilandirmaAktif != null) {
+                      final stokYapilandirmaKodu = await Get.toNamed("/mainPage/yapilandirmaRehberi", arguments: result);
+                      if (stokYapilandirmaKodu is YapilandirmaRehberiModel) {
+                        viewModel.setYapilandirmaKodu(stokYapilandirmaKodu.yapkod);
+                        yapilandirmaKoduController.text = stokYapilandirmaKodu.yapacik ?? "";
+                      }
+                    }
+                    stokController.text = result.stokAdi.toString();
+                    viewModel.setStokKodu(result);
+                    if (viewModel.stokSecildigindeYazdir) {
+                      postPrint();
                     }
                   }
-                  stokController.text = result.stokAdi.toString();
-                  viewModel.setStokKodu(result);
-                  if (viewModel.stokSecildigindeYazdir) {
-                    postPrint();
-                  }
-                }
-              },
-              suffix: IconButton(
+                },
+                suffix: IconButton(
                   icon: const Icon(Icons.qr_code_2_outlined),
                   onPressed: () async {
                     final result = await Get.toNamed("/qr");
                     if (result != null) {
                       // barkodKontroller.text = result.toString();
                     }
-                  },),
-            ),
-            Observer(builder: (_) => Visibility(
-                visible: viewModel.stokListesiModel != null && viewModel.showYapilandirma,
-                child: CustomTextField(
+                  },
+                ),
+              ),
+              Observer(
+                builder: (_) => Visibility(
+                  visible: viewModel.stokListesiModel != null && viewModel.showYapilandirma,
+                  child: CustomTextField(
                     labelText: "Yapılandırma Kodu",
                     controller: yapilandirmaKoduController,
                     readOnly: true,
@@ -142,91 +144,103 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                         viewModel.setYapilandirmaKodu(result.yapkod);
                         yapilandirmaKoduController.text = result.yapacik ?? "";
                       }
-                    },),
-              ),),
-            Row(
-              children: [
-                Expanded(
-                    child: CustomTextField(
-                  labelText: "Dizayn",
-                  controller: dizaynController,
-                  readOnly: true,
-                  isMust: true,
-                  suffixMore: true,
-                  valueWidget: Observer(builder: (_) => Text(viewModel.printModel.dizaynId.toStringIfNotNull ?? "")),
-                  onTap: () async => setDizayn(),
-                ),),
-                Expanded(
-                    child: CustomTextField(
-                  labelText: "Yazıcı",
-                  controller: yaziciController,
-                  readOnly: true,
-                  isMust: true,
-                  suffixMore: true,
-                  onTap: () async => setYazici(),
-                ),),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                    child: CustomTextField(
-                  labelText: "Miktar/Bakiye",
-                  controller: miktarBakiyeController,
-                  suffix: Wrap(
-                    children: [
-                      IconButton(
-                          icon: const Icon(Icons.remove),
-                          onPressed: () {
-                            viewModel.decreaseMiktar();
-                            miktarBakiyeController.text = viewModel.printModel.dicParams?.miktar.toStringIfNotNull ?? "";
-                          },),
-                      IconButton(
-                          icon: const Icon(Icons.add),
-                          onPressed: () {
-                            viewModel.increaseMiktar();
-                            miktarBakiyeController.text = viewModel.printModel.dicParams?.miktar.toStringIfNotNull ?? "";
-                          },),
-                    ],
+                    },
                   ),
-                ),),
-                Expanded(
+                ),
+              ),
+              Row(
+                children: [
+                  Expanded(
                     child: CustomTextField(
-                        labelText: "Kopya Sayısı",
-                        controller: kopyaSayisiController,
-                        isMust: true,
-                        suffix: Wrap(
-                          children: [
-                            IconButton(
-                                icon: const Icon(Icons.remove),
-                                onPressed: () {
-                                  viewModel.decreaseKopyaSayisi();
-                                  kopyaSayisiController.text = viewModel.printModel.etiketSayisi.toStringIfNotNull ?? "";
-                                },),
-                            IconButton(
-                                icon: const Icon(Icons.add),
-                                onPressed: () {
-                                  viewModel.increaseKopyaSayisi();
-                                  kopyaSayisiController.text = viewModel.printModel.etiketSayisi.toStringIfNotNull ?? "";
-                                },),
-                          ],
-                        ),),),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
+                      labelText: "Dizayn",
+                      controller: dizaynController,
+                      readOnly: true,
+                      isMust: true,
+                      suffixMore: true,
+                      valueWidget: Observer(builder: (_) => Text(viewModel.printModel.dizaynId.toStringIfNotNull ?? "")),
+                      onTap: () async => setDizayn(),
+                    ),
+                  ),
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Yazıcı",
+                      controller: yaziciController,
+                      readOnly: true,
+                      isMust: true,
+                      suffixMore: true,
+                      onTap: () async => setYazici(),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Miktar/Bakiye",
+                      controller: miktarBakiyeController,
+                      suffix: Wrap(
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.remove),
+                            onPressed: () {
+                              viewModel.decreaseMiktar();
+                              miktarBakiyeController.text = viewModel.printModel.dicParams?.miktar.toStringIfNotNull ?? "";
+                            },
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.add),
+                            onPressed: () {
+                              viewModel.increaseMiktar();
+                              miktarBakiyeController.text = viewModel.printModel.dicParams?.miktar.toStringIfNotNull ?? "";
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Kopya Sayısı",
+                      controller: kopyaSayisiController,
+                      isMust: true,
+                      suffix: Wrap(
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.remove),
+                            onPressed: () {
+                              viewModel.decreaseKopyaSayisi();
+                              kopyaSayisiController.text = viewModel.printModel.etiketSayisi.toStringIfNotNull ?? "";
+                            },
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.add),
+                            onPressed: () {
+                              viewModel.increaseKopyaSayisi();
+                              kopyaSayisiController.text = viewModel.printModel.etiketSayisi.toStringIfNotNull ?? "";
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(
                     child: CustomWidgetWithLabel(
-                  isVertical: true,
-                  text: "Stok Seçildiğinde Yazdır",
-                  child: Observer(builder: (_) => Switch(value: viewModel.stokSecildigindeYazdir, onChanged: (value) => viewModel.changeStokSecildigindeYazdir(value))),
-                ).paddingAll(UIHelper.lowSize),),
-                Expanded(
+                      isVertical: true,
+                      text: "Stok Seçildiğinde Yazdır",
+                      child: Observer(builder: (_) => Switch(value: viewModel.stokSecildigindeYazdir, onChanged: (value) => viewModel.changeStokSecildigindeYazdir(value))),
+                    ).paddingAll(UIHelper.lowSize),
+                  ),
+                  Expanded(
                     child: CustomWidgetWithLabel(
-                  isVertical: true,
-                  text: "Yazıcı ve Dizaynı Hatırla",
-                  child: Observer(
-                      builder: (_) => Switch(
+                      isVertical: true,
+                      text: "Yazıcı ve Dizaynı Hatırla",
+                      child: Observer(
+                        builder: (_) => Switch(
                           value: viewModel.yaziciVeDizayniHatirla,
                           onChanged: (value) {
                             viewModel.changeYaziciVeDizayniHatirla(value);
@@ -235,23 +249,30 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                             } else {
                               CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(stokYazdirDizaynVeYaziciHatirla: false, yaziciList: null, netFectDizaynList: null));
                             }
-                          },),),
-                ).paddingAll(UIHelper.lowSize),),
-              ],
-            ),
-          ],
-        ).paddingAll(UIHelper.lowSize),
-      ),
-    );
+                          },
+                        ),
+                      ),
+                    ).paddingAll(UIHelper.lowSize),
+                  ),
+                ],
+              ),
+            ],
+          ).paddingAll(UIHelper.lowSize),
+        ),
+      );
 
   Future<void> setDizayn() async {
     final List<NetFectDizaynList>? dizaynList = parametreModel.netFectDizaynList
         ?.where((element) => element.ozelKod == "StokEtiket" && (profilYetkiModel.yazdirmaDizaynStokEtiketi?.any((element2) => element.id == element2) ?? true))
         .toList();
-    final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-        title: "Dizayn",
-        children: List.generate(
-            dizaynList?.length ?? 0, (index) => BottomSheetModel(title: dizaynList?[index].dizaynAdi ?? "", value: dizaynList?[index], description: dizaynList?[index].id.toStringIfNotNull ?? ""),),);
+    final result = await bottomSheetDialogManager.showBottomSheetDialog(
+      context,
+      title: "Dizayn",
+      children: List.generate(
+        dizaynList?.length ?? 0,
+        (index) => BottomSheetModel(title: dizaynList?[index].dizaynAdi ?? "", value: dizaynList?[index], description: dizaynList?[index].id.toStringIfNotNull ?? ""),
+      ),
+    );
     if (result is NetFectDizaynList) {
       dizaynController.text = result.dizaynAdi ?? "";
       viewModel.setDizaynId(result.id);
@@ -266,16 +287,20 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
   }
 
   Future<void> setYazici() async {
-    final List<YaziciList>? yaziciList = parametreModel.yaziciList?.where((element) => profilYetkiModel.yazdirmaStokEtiketiYazicilari?.any((element2) => element2 == element.yaziciAdi) ?? true).toList();
-    final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-        title: "Yazıcı",
-        children: List.generate(
-          yaziciList?.length ?? 0,
-          (index) => BottomSheetModel(
-              title: yaziciList?[index].aciklama ?? yaziciList?[index].yaziciAdi ?? "",
-              value: yaziciList?[index],
-              description: yaziciList?[index].aciklama != null ? (yaziciList?[index].yaziciAdi ?? "") : null,),
-        ),);
+    final List<YaziciList>? yaziciList =
+        parametreModel.yaziciList?.where((element) => profilYetkiModel.yazdirmaStokEtiketiYazicilari?.any((element2) => element2 == element.yaziciAdi) ?? true).toList();
+    final result = await bottomSheetDialogManager.showBottomSheetDialog(
+      context,
+      title: "Yazıcı",
+      children: List.generate(
+        yaziciList?.length ?? 0,
+        (index) => BottomSheetModel(
+          title: yaziciList?[index].aciklama ?? yaziciList?[index].yaziciAdi ?? "",
+          value: yaziciList?[index],
+          description: yaziciList?[index].aciklama != null ? (yaziciList?[index].yaziciAdi ?? "") : null,
+        ),
+      ),
+    );
     if (result is YaziciList) {
       yaziciController.text = result.aciklama ?? result.yaziciAdi ?? "";
       viewModel.setYaziciAdi(result.yaziciAdi);

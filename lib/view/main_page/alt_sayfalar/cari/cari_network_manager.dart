@@ -15,21 +15,23 @@ class CariNetworkManager {
   static NetworkManager networkManager = NetworkManager();
   static Future<GenericResponseModel<NetworkManagerMixin>> getKod({GrupKoduEnum? name}) async {
     final GenericResponseModel<NetworkManagerMixin> responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
-        path: ApiUrls.getGrupKodlari,
-        bodyModel: BaseGrupKoduModel(),
-        headers: <String, String>{"Modul": name?.name ?? "CARI", "GrupNo": "-1", "Kullanimda": "E"},
-        queryParameters: <String, dynamic>{"Modul": name?.name ?? "CARI", "GrupNo": "-1"},);
+      path: ApiUrls.getGrupKodlari,
+      bodyModel: BaseGrupKoduModel(),
+      headers: <String, String>{"Modul": name?.name ?? "CARI", "GrupNo": "-1", "Kullanimda": "E"},
+      queryParameters: <String, dynamic>{"Modul": name?.name ?? "CARI", "GrupNo": "-1"},
+    );
     return responseKod;
   }
 
   static Future<List<CariSehirlerModel>?> getFilterData() async {
     GenericResponseModel<NetworkManagerMixin> responseSehirler;
     responseSehirler = await networkManager.dioGet<CariSehirlerModel>(
-        path: ApiUrls.getCariKayitliSehirler,
-        bodyModel: CariSehirlerModel(),
-        addTokenKey: true,
-        addSirketBilgileri: true,
-        headers: <String, String>{"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"},);
+      path: ApiUrls.getCariKayitliSehirler,
+      bodyModel: CariSehirlerModel(),
+      addTokenKey: true,
+      addSirketBilgileri: true,
+      headers: <String, String>{"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"},
+    );
 
     return responseSehirler.data?.cast<CariSehirlerModel>();
   }

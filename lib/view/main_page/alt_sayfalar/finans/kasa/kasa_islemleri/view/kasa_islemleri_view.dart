@@ -78,25 +78,27 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      resizeToAvoidBottomInset: true,
-      extendBody: true,
-      extendBodyBehindAppBar: false,
-      appBar: appBar(),
-      floatingActionButton: fab(),
-      body: body(),
-      bottomNavigationBar: bottomAppBar(),
-    );
+        resizeToAvoidBottomInset: true,
+        extendBody: true,
+        extendBodyBehindAppBar: false,
+        appBar: appBar(),
+        floatingActionButton: fab(),
+        body: body(),
+        bottomNavigationBar: bottomAppBar(),
+      );
 
   AppBar appBar() => AppBar(
-        title: Observer(builder: (_) {
-          if (viewModel.searchBar) {
-            return CustomAppBarTextField(
-              onChanged: (value) => viewModel.setSearchText(value),
-            );
-          } else {
-            return AppBarTitle(title: "Kasa İşlemleri", subtitle: "${viewModel.getKasaIslemleriListesi?.length ?? 0}");
-          }
-        },),
+        title: Observer(
+          builder: (_) {
+            if (viewModel.searchBar) {
+              return CustomAppBarTextField(
+                onChanged: (value) => viewModel.setSearchText(value),
+              );
+            } else {
+              return AppBarTitle(title: "Kasa İşlemleri", subtitle: "${viewModel.getKasaIslemleriListesi?.length ?? 0}");
+            }
+          },
+        ),
         actions: [
           IconButton(
             onPressed: () => viewModel.changeSearchBar(),
@@ -109,30 +111,33 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
         ],
       );
 
-  Observer fab() => Observer(builder: (_) => CustomFloatingActionButton(
+  Observer fab() => Observer(
+        builder: (_) => CustomFloatingActionButton(
           isScrolledDown: viewModel.isScrollDown,
           onPressed: () async {
             await dialogManager.showKasaGridViewDialog(null, onSelected: (p0) => p0 ? viewModel.resetPage() : null);
             // viewModel.resetPage();
           },
-        ),);
+        ),
+      );
 
   Column body() => Column(
         children: [
           RaporFiltreDateTimeBottomSheetView(
-                  showBugunFirst: true,
-                  filterOnChanged: (index) async {
-                    viewModel.setBaslamaTarihi(baslangicTarihiController.text);
-                    viewModel.setBitisTarihi(bitisTarihiController.text);
-                    await viewModel.resetPage();
-                  },
-                  baslangicTarihiController: baslangicTarihiController,
-                  bitisTarihiController: bitisTarihiController,)
-              .paddingSymmetric(horizontal: UIHelper.lowSize),
+            showBugunFirst: true,
+            filterOnChanged: (index) async {
+              viewModel.setBaslamaTarihi(baslangicTarihiController.text);
+              viewModel.setBitisTarihi(bitisTarihiController.text);
+              await viewModel.resetPage();
+            },
+            baslangicTarihiController: baslangicTarihiController,
+            bitisTarihiController: bitisTarihiController,
+          ).paddingSymmetric(horizontal: UIHelper.lowSize),
           Expanded(
             child: RefreshIndicator.adaptive(
               onRefresh: () async => await viewModel.resetPage(),
-              child: Observer(builder: (_) => viewModel.getKasaIslemleriListesi == null
+              child: Observer(
+                builder: (_) => viewModel.getKasaIslemleriListesi == null
                     ? const Center(child: CircularProgressIndicator.adaptive())
                     : viewModel.getKasaIslemleriListesi.ext.isNullOrEmpty
                         ? const Center(child: Text("Veri bulunamadı"))
@@ -149,146 +154,170 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                               } else {
                                 final KasaIslemleriModel? item = viewModel.getKasaIslemleriListesi?[index];
                                 return KasaIslemleriCard(
-                                    kasaIslemleriModel: item,
-                                    onDeleted: (deneme) {
-                                      viewModel.resetPage();
-                                    },);
+                                  kasaIslemleriModel: item,
+                                  onDeleted: (deneme) {
+                                    viewModel.resetPage();
+                                  },
+                                );
                               }
                             },
-                          ),),
+                          ),
+              ),
             ),
           ),
         ],
       );
 
-  Observer bottomAppBar() => Observer(builder: (_) => BottomBarWidget(isScrolledDown: viewModel.isScrollDown, children: [
-        FooterButton(
+  Observer bottomAppBar() => Observer(
+        builder: (_) => BottomBarWidget(
+          isScrolledDown: viewModel.isScrollDown,
           children: [
-            const Text("Gelir"),
-            Observer(
-                builder: (_) =>
-                    Text("${(viewModel.paramData?["TOPLAM_GELIR"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.green)),),
+            FooterButton(
+              children: [
+                const Text("Gelir"),
+                Observer(
+                  builder: (_) =>
+                      Text("${(viewModel.paramData?["TOPLAM_GELIR"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.green)),
+                ),
+              ],
+              onPressed: () {
+                if (viewModel.hesapTipiGroupValue == "G") {
+                  viewModel.setHesapTipi(null);
+                } else {
+                  viewModel.setHesapTipi("G");
+                }
+                viewModel.resetPage();
+              },
+            ),
+            FooterButton(
+              children: [
+                const Text("Gider"),
+                Observer(
+                  builder: (_) =>
+                      Text("${(viewModel.paramData?["TOPLAM_GIDER"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red)),
+                ),
+              ],
+              onPressed: () {
+                if (viewModel.hesapTipiGroupValue == "C") {
+                  viewModel.setHesapTipi(null);
+                } else {
+                  viewModel.setHesapTipi("C");
+                }
+                viewModel.resetPage();
+              },
+            ),
           ],
-          onPressed: () {
-            if (viewModel.hesapTipiGroupValue == "G") {
-              viewModel.setHesapTipi(null);
-            } else {
-              viewModel.setHesapTipi("G");
-            }
-            viewModel.resetPage();
-          },
         ),
-        FooterButton(
-          children: [
-            const Text("Gider"),
-            Observer(
-                builder: (_) =>
-                    Text("${(viewModel.paramData?["TOPLAM_GIDER"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red)),),
-          ],
-          onPressed: () {
-            if (viewModel.hesapTipiGroupValue == "C") {
-              viewModel.setHesapTipi(null);
-            } else {
-              viewModel.setHesapTipi("C");
-            }
-            viewModel.resetPage();
-          },
-        ),
-      ],),);
+      );
 
   Future<void> filter() async {
-    await bottomSheetDialogManager.showBottomSheetDialog(context,
-        title: "Filtrele",
-        body: Column(
-          children: [
-            Observer(builder: (_) => SlideControllerWidget(
-                  childrenTitleList: viewModel.hesapTipiMap.keys.toList(),
-                  filterOnChanged: (index) {
-                    viewModel.setHesapTipi(viewModel.hesapTipiMap.values.toList()[index ?? 0]);
-                  },
-                  childrenValueList: viewModel.hesapTipiMap.values.toList(),
-                  groupValue: viewModel.hesapTipiGroupValue,),),
-            CustomTextField(
-              labelText: "Kasa",
-              controller: kasaController,
-              readOnly: true,
-              suffixMore: true,
-              valueWidget: Observer(builder: (_) => Text(viewModel.kasaIslemleriRequestModel.kasaKodu ?? "")),
-              onTap: () async {
-                final List<KasaList>? kasaList = parametreModel.kasaList;
-                final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                    title: "Kasa Seçiniz", children: List.generate(kasaList?.length ?? 0, (index) => BottomSheetModel(title: kasaList?[index].kasaTanimi ?? "", value: kasaList?[index])),);
-                if (result is KasaList) {
-                  viewModel.setKasaKodu(result);
-                  kasaController.text = result.kasaTanimi ?? "";
+    await bottomSheetDialogManager.showBottomSheetDialog(
+      context,
+      title: "Filtrele",
+      body: Column(
+        children: [
+          Observer(
+            builder: (_) => SlideControllerWidget(
+              childrenTitleList: viewModel.hesapTipiMap.keys.toList(),
+              filterOnChanged: (index) {
+                viewModel.setHesapTipi(viewModel.hesapTipiMap.values.toList()[index ?? 0]);
+              },
+              childrenValueList: viewModel.hesapTipiMap.values.toList(),
+              groupValue: viewModel.hesapTipiGroupValue,
+            ),
+          ),
+          CustomTextField(
+            labelText: "Kasa",
+            controller: kasaController,
+            readOnly: true,
+            suffixMore: true,
+            valueWidget: Observer(builder: (_) => Text(viewModel.kasaIslemleriRequestModel.kasaKodu ?? "")),
+            onTap: () async {
+              final List<KasaList>? kasaList = parametreModel.kasaList;
+              final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                context,
+                title: "Kasa Seçiniz",
+                children: List.generate(kasaList?.length ?? 0, (index) => BottomSheetModel(title: kasaList?[index].kasaTanimi ?? "", value: kasaList?[index])),
+              );
+              if (result is KasaList) {
+                viewModel.setKasaKodu(result);
+                kasaController.text = result.kasaTanimi ?? "";
+              }
+            },
+          ),
+          CustomTextField(
+            labelText: "Cari",
+            controller: cariController,
+            readOnly: true,
+            suffixMore: true,
+            valueWidget: Observer(builder: (_) => Text(viewModel.kasaIslemleriRequestModel.hesapKodu ?? "")),
+            suffix: IconButton(
+              onPressed: () {
+                if (viewModel.kasaIslemleriRequestModel.hesapKodu != null) {
+                  dialogManager.showCariGridViewDialog(CariListesiModel(cariKodu: viewModel.kasaIslemleriRequestModel.hesapKodu));
+                } else {
+                  dialogManager.showInfoDialog("Cari kodu boş olduğu için bu işlem gerçekleştirilemiyor.");
                 }
               },
+              icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
             ),
-            CustomTextField(
-              labelText: "Cari",
-              controller: cariController,
-              readOnly: true,
-              suffixMore: true,
-              valueWidget: Observer(builder: (_) => Text(viewModel.kasaIslemleriRequestModel.hesapKodu ?? "")),
-              suffix: IconButton(
+            onTap: () async {
+              final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+              if (result is CariListesiModel) {
+                viewModel.setCariKodu(result);
+                cariController.text = result.cariAdi ?? "";
+              }
+            },
+          ),
+          CustomTextField(
+            labelText: "Plasiyer",
+            controller: plasiyerController,
+            readOnly: true,
+            suffixMore: true,
+            valueWidget: Observer(builder: (_) => Text(viewModel.kasaIslemleriRequestModel.plasiyerKodu ?? "")),
+            onTap: () async {
+              final List<PlasiyerList>? plasiyerList = parametreModel.plasiyerList;
+              final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                context,
+                title: "Plasiyer Seçiniz",
+                children: List.generate(plasiyerList?.length ?? 0, (index) => BottomSheetModel(title: plasiyerList?[index].plasiyerAciklama ?? "", value: plasiyerList?[index])),
+              );
+              if (result is PlasiyerList) {
+                viewModel.setPlasiyerKodu(result);
+                plasiyerController.text = result.plasiyerAciklama ?? "";
+              }
+            },
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: ElevatedButton(
+                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
                   onPressed: () {
-                    if (viewModel.kasaIslemleriRequestModel.hesapKodu != null) {
-                      dialogManager.showCariGridViewDialog(CariListesiModel(cariKodu: viewModel.kasaIslemleriRequestModel.hesapKodu));
-                    } else {
-                      dialogManager.showInfoDialog("Cari kodu boş olduğu için bu işlem gerçekleştirilemiyor.");
-                    }
+                    viewModel.clearFilters();
+                    plasiyerController.text = "";
+                    cariController.text = "";
+                    kasaController.text = "";
+                    Get.back();
+                    viewModel.resetPage();
                   },
-                  icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),),
-              onTap: () async {
-                final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                if (result is CariListesiModel) {
-                  viewModel.setCariKodu(result);
-                  cariController.text = result.cariAdi ?? "";
-                }
-              },
-            ),
-            CustomTextField(
-              labelText: "Plasiyer",
-              controller: plasiyerController,
-              readOnly: true,
-              suffixMore: true,
-              valueWidget: Observer(builder: (_) => Text(viewModel.kasaIslemleriRequestModel.plasiyerKodu ?? "")),
-              onTap: () async {
-                final List<PlasiyerList>? plasiyerList = parametreModel.plasiyerList;
-                final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-                    title: "Plasiyer Seçiniz",
-                    children: List.generate(plasiyerList?.length ?? 0, (index) => BottomSheetModel(title: plasiyerList?[index].plasiyerAciklama ?? "", value: plasiyerList?[index])),);
-                if (result is PlasiyerList) {
-                  viewModel.setPlasiyerKodu(result);
-                  plasiyerController.text = result.plasiyerAciklama ?? "";
-                }
-              },
-            ),
-            Row(
-              children: [
-                Expanded(
-                    child: ElevatedButton(
-                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
-                        onPressed: () {
-                          viewModel.clearFilters();
-                          plasiyerController.text = "";
-                          cariController.text = "";
-                          kasaController.text = "";
-                          Get.back();
-                          viewModel.resetPage();
-                        },
-                        child: const Text("Temizle"),),),
-                const SizedBox(width: 10),
-                Expanded(
-                    child: ElevatedButton(
-                        onPressed: () {
-                          Get.back();
-                          viewModel.resetPage();
-                        },
-                        child: const Text("Uygula"),),),
-              ],
-            ).paddingAll(UIHelper.lowSize),
-          ],
-        ).paddingAll(UIHelper.lowSize),);
+                  child: const Text("Temizle"),
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Get.back();
+                    viewModel.resetPage();
+                  },
+                  child: const Text("Uygula"),
+                ),
+              ),
+            ],
+          ).paddingAll(UIHelper.lowSize),
+        ],
+      ).paddingAll(UIHelper.lowSize),
+    );
   }
 }

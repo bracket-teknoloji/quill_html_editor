@@ -9,8 +9,7 @@ import "../model/urun_grubuna_gore_satis_grafigi_request_model.dart";
 
 part "urun_grubuna_gore_satis_grafigi_view_model.g.dart";
 
-class UrunGrubunaGoreSatisGrafigiViewModel = _UrunGrubunaGoreSatisGrafigiViewModelBase
-    with _$UrunGrubunaGoreSatisGrafigiViewModel;
+class UrunGrubunaGoreSatisGrafigiViewModel = _UrunGrubunaGoreSatisGrafigiViewModelBase with _$UrunGrubunaGoreSatisGrafigiViewModel;
 
 abstract class _UrunGrubunaGoreSatisGrafigiViewModelBase with Store {
   final List<String> donemTipiList = [
@@ -34,12 +33,15 @@ abstract class _UrunGrubunaGoreSatisGrafigiViewModelBase with Store {
     "Stok Kod 4",
     "Stok Kod 5",
   ]
-      .mapIndexed((index, element) => BottomSheetModel(
-          title: element, onTap: () => Get.back(result: element),),)
+      .mapIndexed(
+        (index, element) => BottomSheetModel(
+          title: element,
+          onTap: () => Get.back(result: element),
+        ),
+      )
       .toList();
   @observable
-  UrunGrubunaGoreSatisGrafigiRequestModel model =
-      UrunGrubunaGoreSatisGrafigiRequestModel();
+  UrunGrubunaGoreSatisGrafigiRequestModel model = UrunGrubunaGoreSatisGrafigiRequestModel();
 
   @observable
   List<BaseProjeModel>? projeList;
@@ -63,6 +65,5 @@ abstract class _UrunGrubunaGoreSatisGrafigiViewModelBase with Store {
   ObservableList<UrunGrubunaGoreSatisGrafigiModel>? modelList;
 
   @action
-  void setModelList(List<UrunGrubunaGoreSatisGrafigiModel>? value) =>
-      modelList = value?.asObservable();
+  void setModelList(List<UrunGrubunaGoreSatisGrafigiModel>? value) => modelList = value?.asObservable();
 }

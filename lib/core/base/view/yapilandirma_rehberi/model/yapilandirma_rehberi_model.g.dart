@@ -6,9 +6,7 @@ part of 'yapilandirma_rehberi_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$YapilandirmaRehberiModelImpl _$$YapilandirmaRehberiModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$YapilandirmaRehberiModelImpl(
+_$YapilandirmaRehberiModelImpl _$$YapilandirmaRehberiModelImplFromJson(Map<String, dynamic> json) => _$YapilandirmaRehberiModelImpl(
       yapkod: json['YAPKOD'] as String?,
       yapacik: json['YAPACIK'] as String?,
       kod: json['KOD'] as String?,
@@ -18,8 +16,7 @@ _$YapilandirmaRehberiModelImpl _$$YapilandirmaRehberiModelImplFromJson(
       ozellikSira: json['OZELLIK_SIRA'] as int?,
     );
 
-Map<String, dynamic> _$$YapilandirmaRehberiModelImplToJson(
-    _$YapilandirmaRehberiModelImpl instance) {
+Map<String, dynamic> _$$YapilandirmaRehberiModelImplToJson(_$YapilandirmaRehberiModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

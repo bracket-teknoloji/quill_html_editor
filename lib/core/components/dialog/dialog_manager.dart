@@ -59,46 +59,46 @@ class DialogManager {
   }
 
   Future<DateTime?> showDateTimePicker() async => await showDatePicker(
-      context: context,
-      locale: Get.locale,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2100),
-    );
+        context: context,
+        locale: Get.locale,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2100),
+      );
 
   Future<void> showAlertDialog(String message) async => _baseDialog(
-      dialogType: DialogType.error,
-      btnOkText: "Tamam",
-      body: Column(
-        children: [
-          Container(
-            constraints: BoxConstraints(maxHeight: Get.height * 0.5),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(bottom: 10),
-                    child: Text("Uyarı", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                  ),
-                  Padding(
-                    padding: UIHelper.midPaddingHorizontal,
-                    child: SelectableText(message, textAlign: TextAlign.center),
-                  ),
-                ],
+        dialogType: DialogType.error,
+        btnOkText: "Tamam",
+        body: Column(
+          children: [
+            Container(
+              constraints: BoxConstraints(maxHeight: Get.height * 0.5),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 10),
+                      child: Text("Uyarı", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                    ),
+                    Padding(
+                      padding: UIHelper.midPaddingHorizontal,
+                      child: SelectableText(message, textAlign: TextAlign.center),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: UIHelper.midPaddingHorizontal,
-            child: Text(getAppData, style: TextStyle(color: Colors.grey.withOpacity(0.8), fontSize: 12), textAlign: TextAlign.center),
-          ).paddingOnly(top: UIHelper.highSize),
-        ],
-      ),
-      // onOk is rootNavigator true without Get
-      onOk: () {},
-    ).show();
+            Padding(
+              padding: UIHelper.midPaddingHorizontal,
+              child: Text(getAppData, style: TextStyle(color: Colors.grey.withOpacity(0.8), fontSize: 12), textAlign: TextAlign.center),
+            ).paddingOnly(top: UIHelper.highSize),
+          ],
+        ),
+        // onOk is rootNavigator true without Get
+        onOk: () {},
+      ).show();
 
   String get getAppData => "\nVersion: ${AppInfoModel.instance.version}\nTarih: ${DateTime.now().toDateTimeString()}\nE-mail: ${CacheManager.getHesapBilgileri?.uyeEmail ?? ""}";
 
@@ -161,15 +161,18 @@ class DialogManager {
   void showGridViewDialog(Widget body) => _baseDialog(body: body, onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
   void showCariGridViewDialog(CariListesiModel? model, [IslemTipiEnum? tip]) => _baseDialog(
-          body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: tip ?? IslemTipiEnum.cari), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader,)
-      .show();
+        body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: tip ?? IslemTipiEnum.cari),
+        onOk: () {},
+        btnOkText: "İptal",
+        dialogType: DialogType.noHeader,
+      ).show();
 
   Future<dynamic> showKasaGridViewDialog(KasaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async => await _baseDialog(
-          body: CustomAnimatedGridView<KasaListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.kasa, title: "Kasa İşlemleri", onSelected: onSelected),
-          onOk: () {},
-          btnOkText: "İptal",
-          dialogType: DialogType.noHeader,)
-      .show();
+        body: CustomAnimatedGridView<KasaListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.kasa, title: "Kasa İşlemleri", onSelected: onSelected),
+        onOk: () {},
+        btnOkText: "İptal",
+        dialogType: DialogType.noHeader,
+      ).show();
 
   void showCariRaporlarGridViewDialog() =>
       _baseDialog(body: const CustomAnimatedGridView(title: "Raporlar", islemTipi: IslemTipiEnum.cariRapor), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
@@ -178,11 +181,11 @@ class DialogManager {
       _baseDialog(body: CustomAnimatedGridView<StokListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.stok), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
   Future<dynamic> showSiparisGridViewDialog({BaseSiparisEditModel? model, IslemTipiEnum? tip, SiparisTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
-          body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.siparis, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
-          onOk: () {},
-          btnOkText: "İptal",
-          dialogType: DialogType.noHeader,)
-      .show();
+        body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.siparis, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
+        onOk: () {},
+        btnOkText: "İptal",
+        dialogType: DialogType.noHeader,
+      ).show();
 
   void showExitDialog() => _baseDialog(
         title: "Uyarı",
@@ -207,14 +210,15 @@ class DialogManager {
   void get hideAlertDialog => Get.back(closeOverlays: true);
 
   AlertDialog loadingDialog() => AlertDialog(
-      title: Text("Lütfen Bekleyiniz...", style: context.theme.textTheme.titleMedium),
-      content: const SizedBox(
+        title: Text("Lütfen Bekleyiniz...", style: context.theme.textTheme.titleMedium),
+        content: const SizedBox(
           height: 5,
           width: 50,
           child: LinearProgressIndicator(
             color: Colors.red,
-          ),),
-    );
+          ),
+        ),
+      );
 
   AlertDialog listTileDialog({required String title}) {
     final Box box = Hive.box("accounts");
@@ -228,33 +232,41 @@ class DialogManager {
       ),
       iconColor: Colors.black,
       title: Text(title),
-      content: Column(mainAxisSize: MainAxisSize.min, children: [
-        ListTile(
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ListTile(
             title: const Text("DEMO"),
             subtitle: const Text("demo"),
             leading: IconHelper.smallIcon("User-Account"),
             onTap: () {
               Get.back(result: {"company": "DEMO", "user": "demo", "password": "demo"});
-            },),
-        ...List.generate(
-          box.length,
-          (index) {
-            final title = box.getAt(index).firma.toString();
-            log(box.getAt(index).toString());
-            return ListTile(
+            },
+          ),
+          ...List.generate(
+            box.length,
+            (index) {
+              final title = box.getAt(index).firma.toString();
+              log(box.getAt(index).toString());
+              return ListTile(
                 title: Text(title),
                 subtitle: Text(box.getAt(index).kullanici.toString()),
                 leading: IconHelper.smallIcon("User-Account"),
                 onTap: () {
-                  Get.back(result: {
-                    "company": title,
-                    "user": preferences.get(title)?[1] ?? "",
-                    "password": preferences.get(title)?[2] ?? "",
-                  }, closeOverlays: true,);
-                },);
-          },
-        ),
-      ],),
+                  Get.back(
+                    result: {
+                      "company": title,
+                      "user": preferences.get(title)?[1] ?? "",
+                      "password": preferences.get(title)?[2] ?? "",
+                    },
+                    closeOverlays: true,
+                  );
+                },
+              );
+            },
+          ),
+        ],
+      ),
       actions: [
         Divider(
           color: UIHelper.primaryColor.withOpacity(0.3),
@@ -267,23 +279,25 @@ class DialogManager {
             children: [
               Expanded(
                 child: TextButton(
-                    onPressed: () {
-                      Get.toNamed(
-                        "/addCompany",
-                      );
-                    },
-                    child: const Text("Firmaları Düzenle"),),
+                  onPressed: () {
+                    Get.toNamed(
+                      "/addCompany",
+                    );
+                  },
+                  child: const Text("Firmaları Düzenle"),
+                ),
               ),
               Expanded(
                 child: TextButton(
-                    onPressed: () {
-                      final dynamic result = {};
-                      Get.back(result: result);
-                    },
-                    child: const Text(
-                      "İptal",
-                      textAlign: TextAlign.justify,
-                    ),),
+                  onPressed: () {
+                    final dynamic result = {};
+                    Get.back(result: result);
+                  },
+                  child: const Text(
+                    "İptal",
+                    textAlign: TextAlign.justify,
+                  ),
+                ),
               ),
             ],
           ),
@@ -301,73 +315,84 @@ class DialogManager {
   SnackBar _snackBarInfo(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: Colors.blueAccent);
 
   AwesomeDialog _areYouSureDialog(void Function() onYes, String? desc) => _baseDialog(
-      title: "Uyarı",
-      desc: desc ?? "Bu işlemi yapmak istediğinizden emin misiniz?",
-      dialogType: DialogType.question,
-      onOk: onYes,
-      btnOkText: "Evet",
-      onCancel: () {},
-      btnCancelText: "Hayır",
-    );
+        title: "Uyarı",
+        desc: desc ?? "Bu işlemi yapmak istediğinizden emin misiniz?",
+        dialogType: DialogType.question,
+        onOk: onYes,
+        btnOkText: "Evet",
+        onCancel: () {},
+        btnCancelText: "Hayır",
+      );
 
   Future selectCompanyDialog() {
     final Box preferences = CacheManager.preferencesBox;
     return _baseDialog(
-        btnOkText: "Firmaları Düzenle",
-        btnCancelText: "Vazgeç",
-        onOk: () {
-          Get.toNamed(
-            "/addCompany",
-          );
-        },
-        onCancel: () {},
-        body: Column(mainAxisSize: MainAxisSize.min, children: [
+      btnOkText: "Firmaları Düzenle",
+      btnCancelText: "Vazgeç",
+      onOk: () {
+        Get.toNamed(
+          "/addCompany",
+        );
+      },
+      onCancel: () {},
+      body: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
           Text("Şirket Seçiniz", style: Theme.of(context).textTheme.titleLarge),
           ListTile(
-              title: const Text("demo"),
-              leading: IconHelper.smallIcon("User-Account"),
-              onTap: () {
-                Get.back(
-                    result: LoginDialogModel(
-                        account: AccountResponseModel()
-                          ..firma = "demo"
-                          ..email = "demo@netfect.com",
-                        username: "demo",
-                        password: "demo",),);
-              },),
+            title: const Text("demo"),
+            leading: IconHelper.smallIcon("User-Account"),
+            onTap: () {
+              Get.back(
+                result: LoginDialogModel(
+                  account: AccountResponseModel()
+                    ..firma = "demo"
+                    ..email = "demo@netfect.com",
+                  username: "demo",
+                  password: "demo",
+                ),
+              );
+            },
+          ),
           ...List.generate(
             CacheManager.accountsBox.length,
             (index) {
               final title = (CacheManager.accountsBox.getAt(index)?.firma ?? "").toString();
               log(CacheManager.accountsBox.getAt(index).toString());
               return ListTile(
-                  title: Text(title),
-                  leading: IconHelper.smallIcon("User-Account"),
-                  onTap: () {
-                    Get.back(
-                        result: LoginDialogModel(account: CacheManager.accountsBox.getAt(index), username: preferences.get(title)?[1] ?? "", password: preferences.get(title)?[2] ?? ""),
-                        closeOverlays: true,);
-                  },);
+                title: Text(title),
+                leading: IconHelper.smallIcon("User-Account"),
+                onTap: () {
+                  Get.back(
+                    result: LoginDialogModel(account: CacheManager.accountsBox.getAt(index), username: preferences.get(title)?[1] ?? "", password: preferences.get(title)?[2] ?? ""),
+                    closeOverlays: true,
+                  );
+                },
+              );
             },
           ),
-        ],),).show();
+        ],
+      ),
+    ).show();
   }
 
   ///* Eğer Body eklersen Title ve Desc Kullanılmaz
-  AwesomeDialog _baseDialog(
-      {String? title,
-      String? desc,
-      DialogType? dialogType,
-      IconData? btnOkIcon,
-      IconData? btnCancelIcon,
-      String? btnOkText,
-      String? btnCancelText,
-      void Function()? onOk,
-      void Function()? onCancel,
-      Color? btnOkColor,
-      Color? btnCancelColor,
-      Widget? customHeader,
-      Widget? body,}) => AwesomeDialog(
+  AwesomeDialog _baseDialog({
+    String? title,
+    String? desc,
+    DialogType? dialogType,
+    IconData? btnOkIcon,
+    IconData? btnCancelIcon,
+    String? btnOkText,
+    String? btnCancelText,
+    void Function()? onOk,
+    void Function()? onCancel,
+    Color? btnOkColor,
+    Color? btnCancelColor,
+    Widget? customHeader,
+    Widget? body,
+  }) =>
+      AwesomeDialog(
         keyboardAware: true,
         //* Standardı 15 olduğu için ve null kabul etmediği için 15 verdim.
         bodyHeaderDistance: dialogType != DialogType.noHeader ? 15 : UIHelper.lowSize,
@@ -409,5 +434,6 @@ class DialogManager {
         btnCancelColor: btnCancelColor ?? Colors.grey,
         dismissOnBackKeyPress: false,
         dismissOnTouchOutside: false,
-        body: body,);
+        body: body,
+      );
 }

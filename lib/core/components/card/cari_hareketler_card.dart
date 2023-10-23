@@ -30,17 +30,18 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
   Widget build(BuildContext context) => Slidable(
         enabled: widget.cariHareketleriModel.hareketAciklama != "Dekont",
         endActionPane: ActionPane(
-            motion: const ScrollMotion(),
-            children: [
-              SlidableAction(
-                autoClose: true,
-                onPressed: (context) {},
-                icon: Icons.route_outlined,
-                backgroundColor: theme.cardColor,
-                foregroundColor: theme.colorScheme.primary,
-                label: "Belgeye Git",
-              ).yetkiVarMi(widget.cariHareketleriModel.hareketAciklama != "Dekont"),
-            ].whereType<SlidableAction>().toList(),),
+          motion: const ScrollMotion(),
+          children: [
+            SlidableAction(
+              autoClose: true,
+              onPressed: (context) {},
+              icon: Icons.route_outlined,
+              backgroundColor: theme.cardColor,
+              foregroundColor: theme.colorScheme.primary,
+              label: "Belgeye Git",
+            ).yetkiVarMi(widget.cariHareketleriModel.hareketAciklama != "Dekont"),
+          ].whereType<SlidableAction>().toList(),
+        ),
         child: Stack(
           alignment: Alignment.centerRight,
           fit: StackFit.passthrough,
@@ -75,13 +76,16 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                      "${widget.cariHareketleriModel.alacak?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? widget.cariHareketleriModel.borc?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                                      style: theme.textTheme.bodySmall?.copyWith(fontSize: 12),),
+                                    "${widget.cariHareketleriModel.alacak?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? widget.cariHareketleriModel.borc?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                                    style: theme.textTheme.bodySmall?.copyWith(fontSize: 12),
+                                  ),
                                   Visibility(
-                                      visible: widget.cariHareketleriModel.dovizliMi,
-                                      child: Text(
-                                          "${widget.cariHareketleriModel.dovizBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cariHareketleriModel.dovizAdi ?? mainCurrency}",
-                                          style: theme.textTheme.bodySmall?.copyWith(fontSize: 10),),),
+                                    visible: widget.cariHareketleriModel.dovizliMi,
+                                    child: Text(
+                                      "${widget.cariHareketleriModel.dovizBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cariHareketleriModel.dovizAdi ?? mainCurrency}",
+                                      style: theme.textTheme.bodySmall?.copyWith(fontSize: 10),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ],
@@ -90,21 +94,33 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                             runAlignment: WrapAlignment.spaceBetween,
                             children: [
                               CustomWidgetWithLabel(
-                                  isVertical: true, isTitleSmall: true, text: "Belge No", width: width * 0.33, child: Text(widget.cariHareketleriModel.belgeNo ?? "", overflow: TextOverflow.ellipsis),),
+                                isVertical: true,
+                                isTitleSmall: true,
+                                text: "Belge No",
+                                width: width * 0.33,
+                                child: Text(widget.cariHareketleriModel.belgeNo ?? "", overflow: TextOverflow.ellipsis),
+                              ),
                               CustomWidgetWithLabel(
-                                  isVertical: true,
-                                  isTitleSmall: true,
-                                  text: "Vade Tarihi",
-                                  width: width * 0.33,
-                                  child: Text(widget.cariHareketleriModel.vadeTarihi?.toDateString ?? "", overflow: TextOverflow.ellipsis),),
+                                isVertical: true,
+                                isTitleSmall: true,
+                                text: "Vade Tarihi",
+                                width: width * 0.33,
+                                child: Text(widget.cariHareketleriModel.vadeTarihi?.toDateString ?? "", overflow: TextOverflow.ellipsis),
+                              ),
                               CustomWidgetWithLabel(
-                                  isVertical: true,
-                                  isTitleSmall: true,
-                                  text: "Plasiyer",
-                                  width: width * 0.33,
-                                  child: Text(widget.cariHareketleriModel.plasiyerAciklama ?? "", overflow: TextOverflow.ellipsis),),
+                                isVertical: true,
+                                isTitleSmall: true,
+                                text: "Plasiyer",
+                                width: width * 0.33,
+                                child: Text(widget.cariHareketleriModel.plasiyerAciklama ?? "", overflow: TextOverflow.ellipsis),
+                              ),
                               CustomWidgetWithLabel(
-                                  isVertical: true, isTitleSmall: true, text: "Şube", width: width * 0.33, child: Text("${widget.cariHareketleriModel.subeKodu ?? 0}", overflow: TextOverflow.ellipsis),),
+                                isVertical: true,
+                                isTitleSmall: true,
+                                text: "Şube",
+                                width: width * 0.33,
+                                child: Text("${widget.cariHareketleriModel.subeKodu ?? 0}", overflow: TextOverflow.ellipsis),
+                              ),
                             ].map((e) => SizedBox(width: width * 0.33, child: e).paddingOnly(bottom: UIHelper.lowSize)).toList(),
                           ),
                         ),
@@ -115,14 +131,21 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                             //Açıklama
                             SizedBox(
                               width: width * 0.4,
-                              child: Text(widget.cariHareketleriModel.aciklama ?? "",
-                                  overflow: TextOverflow.ellipsis, softWrap: true, maxLines: 3, style: theme.textTheme.bodySmall?.copyWith(color: Colors.grey, fontStyle: FontStyle.italic),),
+                              child: Text(
+                                widget.cariHareketleriModel.aciklama ?? "",
+                                overflow: TextOverflow.ellipsis,
+                                softWrap: true,
+                                maxLines: 3,
+                                style: theme.textTheme.bodySmall?.copyWith(color: Colors.grey, fontStyle: FontStyle.italic),
+                              ),
                             ),
                             //YuruyenBakiye
                             Container(
                               alignment: Alignment.centerRight,
-                              child: Text("Bakiye : ${dovizCheck.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.dovizTipi ?? mainCurrency}",
-                                  style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(dovizCheck)),),
+                              child: Text(
+                                "Bakiye : ${dovizCheck.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.dovizTipi ?? mainCurrency}",
+                                style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(dovizCheck)),
+                              ),
                             ),
                           ].map((e) => e.paddingSymmetric(vertical: UIHelper.midSize, horizontal: UIHelper.highSize)).toList(),
                         ),

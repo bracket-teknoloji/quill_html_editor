@@ -8,10 +8,8 @@ part of 'base_fatura_toplamlar_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$BaseFaturaToplamlarViewModel
-    on _BaseFaturaToplamlarViewModelBase, Store {
-  late final _$isGenIsk1TAtom = Atom(
-      name: '_BaseFaturaToplamlarViewModelBase.isGenIsk1T', context: context);
+mixin _$BaseFaturaToplamlarViewModel on _BaseFaturaToplamlarViewModelBase, Store {
+  late final _$isGenIsk1TAtom = Atom(name: '_BaseFaturaToplamlarViewModelBase.isGenIsk1T', context: context);
 
   @override
   bool get isGenIsk1T {
@@ -26,8 +24,7 @@ mixin _$BaseFaturaToplamlarViewModel
     });
   }
 
-  late final _$isGenIsk2TAtom = Atom(
-      name: '_BaseFaturaToplamlarViewModelBase.isGenIsk2T', context: context);
+  late final _$isGenIsk2TAtom = Atom(name: '_BaseFaturaToplamlarViewModelBase.isGenIsk2T', context: context);
 
   @override
   bool get isGenIsk2T {
@@ -42,8 +39,7 @@ mixin _$BaseFaturaToplamlarViewModel
     });
   }
 
-  late final _$isGenIsk3TAtom = Atom(
-      name: '_BaseFaturaToplamlarViewModelBase.isGenIsk3T', context: context);
+  late final _$isGenIsk3TAtom = Atom(name: '_BaseFaturaToplamlarViewModelBase.isGenIsk3T', context: context);
 
   @override
   bool get isGenIsk3T {
@@ -58,8 +54,7 @@ mixin _$BaseFaturaToplamlarViewModel
     });
   }
 
-  late final _$modelAtom =
-      Atom(name: '_BaseFaturaToplamlarViewModelBase.model', context: context);
+  late final _$modelAtom = Atom(name: '_BaseFaturaToplamlarViewModelBase.model', context: context);
 
   @override
   BaseSiparisEditModel get model {
@@ -74,163 +69,135 @@ mixin _$BaseFaturaToplamlarViewModel
     });
   }
 
-  late final _$_BaseFaturaToplamlarViewModelBaseActionController =
-      ActionController(
-          name: '_BaseFaturaToplamlarViewModelBase', context: context);
+  late final _$_BaseFaturaToplamlarViewModelBaseActionController = ActionController(name: '_BaseFaturaToplamlarViewModelBase', context: context);
 
   @override
   void setEkMal1(double? value) {
-    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController
-        .startAction(name: '_BaseFaturaToplamlarViewModelBase.setEkMal1');
+    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController.startAction(name: '_BaseFaturaToplamlarViewModelBase.setEkMal1');
     try {
       return super.setEkMal1(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setTevkifat(double? value) {
-    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController
-        .startAction(name: '_BaseFaturaToplamlarViewModelBase.setTevkifat');
+    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController.startAction(name: '_BaseFaturaToplamlarViewModelBase.setTevkifat');
     try {
       return super.setTevkifat(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setEkMal3(double? value) {
-    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController
-        .startAction(name: '_BaseFaturaToplamlarViewModelBase.setEkMal3');
+    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController.startAction(name: '_BaseFaturaToplamlarViewModelBase.setEkMal3');
     try {
       return super.setEkMal3(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setVadeTarihi(DateTime value) {
-    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController
-        .startAction(name: '_BaseFaturaToplamlarViewModelBase.setVadeTarihi');
+    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController.startAction(name: '_BaseFaturaToplamlarViewModelBase.setVadeTarihi');
     try {
       return super.setVadeTarihi(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setIskTipi1(int? value) {
-    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController
-        .startAction(name: '_BaseFaturaToplamlarViewModelBase.setIskTipi1');
+    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController.startAction(name: '_BaseFaturaToplamlarViewModelBase.setIskTipi1');
     try {
       return super.setIskTipi1(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setIskTipi2(int? value) {
-    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController
-        .startAction(name: '_BaseFaturaToplamlarViewModelBase.setIskTipi2');
+    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController.startAction(name: '_BaseFaturaToplamlarViewModelBase.setIskTipi2');
     try {
       return super.setIskTipi2(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setIskTipi3(int? value) {
-    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController
-        .startAction(name: '_BaseFaturaToplamlarViewModelBase.setIskTipi3');
+    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController.startAction(name: '_BaseFaturaToplamlarViewModelBase.setIskTipi3');
     try {
       return super.setIskTipi3(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setGenIsk1(double? value) {
-    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController
-        .startAction(name: '_BaseFaturaToplamlarViewModelBase.setGenIsk1');
+    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController.startAction(name: '_BaseFaturaToplamlarViewModelBase.setGenIsk1');
     try {
       return super.setGenIsk1(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setGenIsk2(double? value) {
-    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController
-        .startAction(name: '_BaseFaturaToplamlarViewModelBase.setGenIsk2');
+    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController.startAction(name: '_BaseFaturaToplamlarViewModelBase.setGenIsk2');
     try {
       return super.setGenIsk2(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setGenIsk3(double? value) {
-    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController
-        .startAction(name: '_BaseFaturaToplamlarViewModelBase.setGenIsk3');
+    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController.startAction(name: '_BaseFaturaToplamlarViewModelBase.setGenIsk3');
     try {
       return super.setGenIsk3(value);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void changeGenIsk1O(TextEditingController controller) {
-    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController
-        .startAction(name: '_BaseFaturaToplamlarViewModelBase.changeGenIsk1O');
+    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController.startAction(name: '_BaseFaturaToplamlarViewModelBase.changeGenIsk1O');
     try {
       return super.changeGenIsk1O(controller);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void changeGenIsk2O(TextEditingController controller) {
-    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController
-        .startAction(name: '_BaseFaturaToplamlarViewModelBase.changeGenIsk2O');
+    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController.startAction(name: '_BaseFaturaToplamlarViewModelBase.changeGenIsk2O');
     try {
       return super.changeGenIsk2O(controller);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void changeGenIsk3O(TextEditingController controller) {
-    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController
-        .startAction(name: '_BaseFaturaToplamlarViewModelBase.changeGenIsk3O');
+    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController.startAction(name: '_BaseFaturaToplamlarViewModelBase.changeGenIsk3O');
     try {
       return super.changeGenIsk3O(controller);
     } finally {
-      _$_BaseFaturaToplamlarViewModelBaseActionController
-          .endAction(_$actionInfo);
+      _$_BaseFaturaToplamlarViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 

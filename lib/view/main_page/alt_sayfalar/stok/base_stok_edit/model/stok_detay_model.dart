@@ -51,8 +51,7 @@ class FiyatList {
   double? fiyat3;
   double? fiyat4;
 
-  factory FiyatList.fromJson(Map<String, dynamic> json) =>
-      _$FiyatListFromJson(json);
+  factory FiyatList.fromJson(Map<String, dynamic> json) => _$FiyatListFromJson(json);
 
   toJson() => _$FiyatListToJson(this);
 }

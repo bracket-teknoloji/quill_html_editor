@@ -39,13 +39,15 @@ class UserJson {
       return UserJson();
     }
     return _$UserJsonFromJson(
-        jsonDecode(utf8.decode(base64Decode(json), allowMalformed: true)),);
+      jsonDecode(utf8.decode(base64Decode(json), allowMalformed: true)),
+    );
   }
 
   Map<String, dynamic> toJson() => _$UserJsonToJson(this);
 
   @override
-  toString() => "UserJson {\n id: $id,\n kullaniciAdi: $kullaniciAdi,\n parola: $parola,\n ad: $ad,\n soyad: $soyad,\n erpKullanici: $erpKullanici,\n erpParola: $erpParola,\n admin: $admin, \n admin mi: $adminMi,\n pickerYetkili: $pickerYetkili,\n adSoyad: $adSoyad \n}";
+  toString() =>
+      "UserJson {\n id: $id,\n kullaniciAdi: $kullaniciAdi,\n parola: $parola,\n ad: $ad,\n soyad: $soyad,\n erpKullanici: $erpKullanici,\n erpParola: $erpParola,\n admin: $admin, \n admin mi: $adminMi,\n pickerYetkili: $pickerYetkili,\n adSoyad: $adSoyad \n}";
 }
 
 @JsonSerializable()

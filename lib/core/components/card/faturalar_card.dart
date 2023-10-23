@@ -52,12 +52,13 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
             title: model.cariAdi ?? "",
             children: <BottomSheetModel>[
               BottomSheetModel(
-                  title: "Görüntüle",
-                  iconWidget: Icons.search_outlined,
-                  onTap: () async {
-                    Get.back();
-                    await Get.toNamed("/mainPage/sevkiyatEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum));
-                  },),
+                title: "Görüntüle",
+                iconWidget: Icons.search_outlined,
+                onTap: () async {
+                  Get.back();
+                  await Get.toNamed("/mainPage/sevkiyatEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum));
+                },
+              ),
             ],
           ),
           title: Row(
@@ -102,23 +103,24 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
               ),
               Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
               LayoutBuilder(
-                  builder: (BuildContext context, BoxConstraints constraints) => Wrap(
-                        crossAxisAlignment: WrapCrossAlignment.start,
-                        // mainAxisAlignment: MainAxisAlignment.start,
+                builder: (BuildContext context, BoxConstraints constraints) => Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.start,
+                  // mainAxisAlignment: MainAxisAlignment.start,
 
-                        children: <Widget>[
-                          Text("Tipi: ${model.yurticiMi ? "Yurtiçi" : "Yurtdışı"}"),
-                          Text("Kalem Adedi: ${model.kalemAdedi ?? ""}"),
-                          Text("Cari Kodu: ${model.cariKodu ?? ""}"),
-                          Text("Koşul: ${model.kosulKodu ?? ""}").yetkiVarMi(model.kosulKodu != null),
-                          Text("Plasiyer: ${model.plasiyerAciklama ?? ""}", overflow: TextOverflow.ellipsis, maxLines: 1),
-                          Text("Vade Günü: ${widget.model.vadeGunu ?? "0"}").yetkiVarMi(widget.showVade == true),
-                          Text("Döviz Toplamı: ${model.dovizTutari ?? ""} ${model.dovizAdi ?? ""}").yetkiVarMi(model.dovizTutari != null && model.dovizAdi != null),
-                          Text("KDV: ${model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                          Text("Ara Toplam: ${model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                          Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency").yetkiVarMi(model.genelToplam != null),
-                        ].map((Widget e) => e is SizedBox ? null : SizedBox(width: constraints.maxWidth / 2, child: e)).whereType<Widget>().toList(),
-                      ),),
+                  children: <Widget>[
+                    Text("Tipi: ${model.yurticiMi ? "Yurtiçi" : "Yurtdışı"}"),
+                    Text("Kalem Adedi: ${model.kalemAdedi ?? ""}"),
+                    Text("Cari Kodu: ${model.cariKodu ?? ""}"),
+                    Text("Koşul: ${model.kosulKodu ?? ""}").yetkiVarMi(model.kosulKodu != null),
+                    Text("Plasiyer: ${model.plasiyerAciklama ?? ""}", overflow: TextOverflow.ellipsis, maxLines: 1),
+                    Text("Vade Günü: ${widget.model.vadeGunu ?? "0"}").yetkiVarMi(widget.showVade == true),
+                    Text("Döviz Toplamı: ${model.dovizTutari ?? ""} ${model.dovizAdi ?? ""}").yetkiVarMi(model.dovizTutari != null && model.dovizAdi != null),
+                    Text("KDV: ${model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                    Text("Ara Toplam: ${model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                    Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency").yetkiVarMi(model.genelToplam != null),
+                  ].map((Widget e) => e is SizedBox ? null : SizedBox(width: constraints.maxWidth / 2, child: e)).whereType<Widget>().toList(),
+                ),
+              ),
               const Divider(
                 indent: 0,
                 endIndent: 0,
@@ -143,7 +145,9 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
   InkWell dialogInkWell(ColorfulBadge badge) => InkWell(
         onTap: () {
           dialogManager.showColorfulSnackBar(
-              "Durum Kodu: ${model.efaturaGibDurumKodu ?? 0}${model.efaturaDurumAciklama != null ? '\n${model.efaturaDurumAciklama ?? ""}' : ""}", badge.badgeColorEnum.getColor,);
+            "Durum Kodu: ${model.efaturaGibDurumKodu ?? 0}${model.efaturaDurumAciklama != null ? '\n${model.efaturaDurumAciklama ?? ""}' : ""}",
+            badge.badgeColorEnum.getColor,
+          );
           // switch (model.efaturaDurumu) {
           //   case "HAT":
           //   case "BEK":

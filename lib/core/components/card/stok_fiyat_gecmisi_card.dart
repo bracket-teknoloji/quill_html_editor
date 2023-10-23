@@ -29,59 +29,61 @@ class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
   Widget build(BuildContext context) => Card(
         color: widget.model?.yazdirildi == "E" ? Colors.green.withOpacity(0.4) : null,
         child: ListTile(
-            onTap: () {
-              widget.onTap?.call();
-              dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = widget.model?.stokKodu ?? "");
-            },
-            onLongPress: () {},
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(width: width * 0.6, child: Text(widget.model?.stokAdi ?? "", overflow: TextOverflow.ellipsis)),
-                IconButton(
-                  icon: Icon(Icons.print_outlined, color: UIHelper.primaryColor),
-                  onPressed: () async {
-                    widget.onPrint?.call();
-                    // var result = await Get.toNamed("/qr");
-                    // if (result != null) {
-                    //   controller.text = result.toString();
-                    // }
-                    // getData();
-                  },
-                ),
-              ],
-            ),
-            subtitle: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ColorfulBadge(label: Text("Dövizli ${widget.model?.dovizAdi}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(widget.model?.dovizAdi != null),
-                Wrap(
-                  direction: Axis.horizontal,
-                  children: [
-                    Wrap(
-                      direction: Axis.vertical,
-                      children: [
-                        const Text("Stok Kodu", style: TextStyleHelper.captionWhite),
-                        Text(widget.model?.stokKodu ?? ""),
-                      ],
-                    ),
-                    Wrap(
-                      direction: Axis.vertical,
-                      children: [
-                        Text("Satış Fiyatı (${widget.model?.fiyatSirasi})", style: TextStyleHelper.captionWhite),
-                        Text("${widget.model?.fiyat?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${widget.model?.dovizAdi ?? mainCurrency}"),
-                      ],
-                    ),
-                    Wrap(
-                      direction: Axis.vertical,
-                      children: [
-                        const Text("Fiyat Tarihi", style: TextStyleHelper.captionWhite),
-                        Text(widget.model?.tarih?.toDateString ?? ""),
-                      ],
-                    ),
-                  ].map((e) => SizedBox(width: width * 0.4, child: e).paddingOnly(bottom: UIHelper.lowSize)).toList(),
-                ),
-              ],
-            ),),);
+          onTap: () {
+            widget.onTap?.call();
+            dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = widget.model?.stokKodu ?? "");
+          },
+          onLongPress: () {},
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(width: width * 0.6, child: Text(widget.model?.stokAdi ?? "", overflow: TextOverflow.ellipsis)),
+              IconButton(
+                icon: Icon(Icons.print_outlined, color: UIHelper.primaryColor),
+                onPressed: () async {
+                  widget.onPrint?.call();
+                  // var result = await Get.toNamed("/qr");
+                  // if (result != null) {
+                  //   controller.text = result.toString();
+                  // }
+                  // getData();
+                },
+              ),
+            ],
+          ),
+          subtitle: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ColorfulBadge(label: Text("Dövizli ${widget.model?.dovizAdi}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(widget.model?.dovizAdi != null),
+              Wrap(
+                direction: Axis.horizontal,
+                children: [
+                  Wrap(
+                    direction: Axis.vertical,
+                    children: [
+                      const Text("Stok Kodu", style: TextStyleHelper.captionWhite),
+                      Text(widget.model?.stokKodu ?? ""),
+                    ],
+                  ),
+                  Wrap(
+                    direction: Axis.vertical,
+                    children: [
+                      Text("Satış Fiyatı (${widget.model?.fiyatSirasi})", style: TextStyleHelper.captionWhite),
+                      Text("${widget.model?.fiyat?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${widget.model?.dovizAdi ?? mainCurrency}"),
+                    ],
+                  ),
+                  Wrap(
+                    direction: Axis.vertical,
+                    children: [
+                      const Text("Fiyat Tarihi", style: TextStyleHelper.captionWhite),
+                      Text(widget.model?.tarih?.toDateString ?? ""),
+                    ],
+                  ),
+                ].map((e) => SizedBox(width: width * 0.4, child: e).paddingOnly(bottom: UIHelper.lowSize)).toList(),
+              ),
+            ],
+          ),
+        ),
+      );
 }

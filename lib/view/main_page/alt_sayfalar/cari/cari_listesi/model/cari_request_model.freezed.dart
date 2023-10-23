@@ -59,20 +59,16 @@ mixin _$CariRequestModel {
   @JsonKey(name: "ArrPlasiyerKodu")
   List<String?>? get arrPlasiyerKodu => throw _privateConstructorUsedError;
   @JsonKey(name: "ArrPlasiyerKodu")
-  set arrPlasiyerKodu(List<String?>? value) =>
-      throw _privateConstructorUsedError;
+  set arrPlasiyerKodu(List<String?>? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CariRequestModelCopyWith<CariRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $CariRequestModelCopyWith<CariRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CariRequestModelCopyWith<$Res> {
-  factory $CariRequestModelCopyWith(
-          CariRequestModel value, $Res Function(CariRequestModel) then) =
-      _$CariRequestModelCopyWithImpl<$Res, CariRequestModel>;
+  factory $CariRequestModelCopyWith(CariRequestModel value, $Res Function(CariRequestModel) then) = _$CariRequestModelCopyWithImpl<$Res, CariRequestModel>;
   @useResult
   $Res call(
       {String? filterText,
@@ -95,8 +91,7 @@ abstract class $CariRequestModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CariRequestModelCopyWithImpl<$Res, $Val extends CariRequestModel>
-    implements $CariRequestModelCopyWith<$Res> {
+class _$CariRequestModelCopyWithImpl<$Res, $Val extends CariRequestModel> implements $CariRequestModelCopyWith<$Res> {
   _$CariRequestModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -199,11 +194,8 @@ class _$CariRequestModelCopyWithImpl<$Res, $Val extends CariRequestModel>
 }
 
 /// @nodoc
-abstract class _$$CariRequestModelImplCopyWith<$Res>
-    implements $CariRequestModelCopyWith<$Res> {
-  factory _$$CariRequestModelImplCopyWith(_$CariRequestModelImpl value,
-          $Res Function(_$CariRequestModelImpl) then) =
-      __$$CariRequestModelImplCopyWithImpl<$Res>;
+abstract class _$$CariRequestModelImplCopyWith<$Res> implements $CariRequestModelCopyWith<$Res> {
+  factory _$$CariRequestModelImplCopyWith(_$CariRequestModelImpl value, $Res Function(_$CariRequestModelImpl) then) = __$$CariRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -227,12 +219,8 @@ abstract class _$$CariRequestModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CariRequestModelImplCopyWithImpl<$Res>
-    extends _$CariRequestModelCopyWithImpl<$Res, _$CariRequestModelImpl>
-    implements _$$CariRequestModelImplCopyWith<$Res> {
-  __$$CariRequestModelImplCopyWithImpl(_$CariRequestModelImpl _value,
-      $Res Function(_$CariRequestModelImpl) _then)
-      : super(_value, _then);
+class __$$CariRequestModelImplCopyWithImpl<$Res> extends _$CariRequestModelCopyWithImpl<$Res, _$CariRequestModelImpl> implements _$$CariRequestModelImplCopyWith<$Res> {
+  __$$CariRequestModelImplCopyWithImpl(_$CariRequestModelImpl _value, $Res Function(_$CariRequestModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -352,8 +340,7 @@ class _$CariRequestModelImpl extends _CariRequestModel {
       @JsonKey(name: "ArrPlasiyerKodu") this.arrPlasiyerKodu})
       : super._();
 
-  factory _$CariRequestModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CariRequestModelImplFromJson(json);
+  factory _$CariRequestModelImpl.fromJson(Map<String, dynamic> json) => _$$CariRequestModelImplFromJson(json);
 
   @override
   String? filterText;
@@ -396,9 +383,7 @@ class _$CariRequestModelImpl extends _CariRequestModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CariRequestModelImplCopyWith<_$CariRequestModelImpl> get copyWith =>
-      __$$CariRequestModelImplCopyWithImpl<_$CariRequestModelImpl>(
-          this, _$identity);
+  _$$CariRequestModelImplCopyWith<_$CariRequestModelImpl> get copyWith => __$$CariRequestModelImplCopyWithImpl<_$CariRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -410,28 +395,26 @@ class _$CariRequestModelImpl extends _CariRequestModel {
 
 abstract class _CariRequestModel extends CariRequestModel {
   factory _CariRequestModel(
-          {String? filterText,
-          List<String>? kod,
-          int? sayfa,
-          String? ilce,
-          String? cariTipi,
-          @JsonKey(name: "SIRALAMA") String? siralama,
-          String? menuKodu,
-          bool? eFaturaGoster,
-          @JsonKey(name: "FILTER_BAKIYE") String? filterBakiye,
-          List<String?>? arrGrupKodu,
-          List<String?>? arrKod1,
-          List<String?>? arrKod2,
-          List<String?>? arrKod3,
-          List<String?>? arrKod4,
-          List<String?>? arrKod5,
-          List<String?>? arrSehir,
-          @JsonKey(name: "ArrPlasiyerKodu") List<String?>? arrPlasiyerKodu}) =
-      _$CariRequestModelImpl;
+      {String? filterText,
+      List<String>? kod,
+      int? sayfa,
+      String? ilce,
+      String? cariTipi,
+      @JsonKey(name: "SIRALAMA") String? siralama,
+      String? menuKodu,
+      bool? eFaturaGoster,
+      @JsonKey(name: "FILTER_BAKIYE") String? filterBakiye,
+      List<String?>? arrGrupKodu,
+      List<String?>? arrKod1,
+      List<String?>? arrKod2,
+      List<String?>? arrKod3,
+      List<String?>? arrKod4,
+      List<String?>? arrKod5,
+      List<String?>? arrSehir,
+      @JsonKey(name: "ArrPlasiyerKodu") List<String?>? arrPlasiyerKodu}) = _$CariRequestModelImpl;
   _CariRequestModel._() : super._();
 
-  factory _CariRequestModel.fromJson(Map<String, dynamic> json) =
-      _$CariRequestModelImpl.fromJson;
+  factory _CariRequestModel.fromJson(Map<String, dynamic> json) = _$CariRequestModelImpl.fromJson;
 
   @override
   String? get filterText;
@@ -492,6 +475,5 @@ abstract class _CariRequestModel extends CariRequestModel {
   set arrPlasiyerKodu(List<String?>? value);
   @override
   @JsonKey(ignore: true)
-  _$$CariRequestModelImplCopyWith<_$CariRequestModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$CariRequestModelImplCopyWith<_$CariRequestModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

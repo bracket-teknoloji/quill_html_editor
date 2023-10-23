@@ -51,13 +51,13 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      floatingActionButton: fab().yetkiVarMi(yetkiController.stokHareketleriStokYeniKayit),
-      appBar: appBar(),
-      body: body(),
-    );
+        floatingActionButton: fab().yetkiVarMi(yetkiController.stokHareketleriStokYeniKayit),
+        appBar: appBar(),
+        body: body(),
+      );
 
   AppBar appBar() => AppBar(
-      title: Observer(
+        title: Observer(
           builder: (_) => viewModel.searchBar
               ? CustomAppBarTextField(
                   onFieldSubmitted: (value) async {
@@ -69,161 +69,195 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                     }
                   },
                 )
-              : AppBarTitle(title: "Stok Hareketleri", subtitle: widget.model?.stokAdi ?? widget.stokKodu ?? ""),),
-      actions: [
-        //😳 IconButton(
-        //😳     onPressed: () async {
-        //😳       await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: [
-        //😳         BottomSheetModel(
-        //😳             iconWidget: viewModel.dovizliFiyat ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
-        //😳             title: "Dövizli Fiyat Göster",
-        //😳             onTap: () {
-        //😳               viewModel.changeDovizliFiyat();
-        //😳               Get.back();
-        //😳             }),
-        //😳         BottomSheetModel(iconWidget: Icons.visibility_off_outlined, title: "Gizlenecek Alanlar", onTap: () async {}),
-        //😳       ]);
-        //😳     },
-        //😳     icon: const Icon(Icons.more_vert_outlined)),
-        Observer(builder: (_) => IconButton(
+              : AppBarTitle(title: "Stok Hareketleri", subtitle: widget.model?.stokAdi ?? widget.stokKodu ?? ""),
+        ),
+        actions: [
+          //😳 IconButton(
+          //😳     onPressed: () async {
+          //😳       await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: [
+          //😳         BottomSheetModel(
+          //😳             iconWidget: viewModel.dovizliFiyat ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
+          //😳             title: "Dövizli Fiyat Göster",
+          //😳             onTap: () {
+          //😳               viewModel.changeDovizliFiyat();
+          //😳               Get.back();
+          //😳             }),
+          //😳         BottomSheetModel(iconWidget: Icons.visibility_off_outlined, title: "Gizlenecek Alanlar", onTap: () async {}),
+          //😳       ]);
+          //😳     },
+          //😳     icon: const Icon(Icons.more_vert_outlined)),
+          Observer(
+            builder: (_) => IconButton(
               onPressed: () {
                 viewModel.searchBar ? getData() : null;
                 viewModel.changeSearchBar();
               },
-              icon: Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined),),),
-      ],
-      bottom: PreferredSize(
+              icon: Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined),
+            ),
+          ),
+        ],
+        bottom: PreferredSize(
           preferredSize: const Size.fromHeight(60),
-          child: AppBarPreferedSizedBottom(children: [
-            AppBarButton(
+          child: AppBarPreferedSizedBottom(
+            children: [
+              AppBarButton(
                 icon: Icons.filter_alt_outlined,
                 child: const Text("Filtrele"),
                 onPressed: () async {
-                  await bottomSheetDialogManager.showBottomSheetDialog(context,
-                      title: "Filtrele",
-                      body: Center(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            CustomWidgetWithLabel(
-                                text: "Hareket Yönü",
-                                child: Center(
-                                  child: Observer(builder: (_) => SlideControllerWidget(
-                                        scroll: false,
-                                        childrenTitleList: viewModel.hareketYonuList,
-                                        filterOnChanged: (index) => viewModel.changeIsSelected(index ?? 0),
-                                        childrenValueList: viewModel.isSelected,
-                                        groupValue: viewModel.isSelectedGroupValue,),),
-                                ),),
-                            Observer(builder: (_) => CustomTextField(
-                                labelText: "Hareket Türü",
-                                readOnly: true,
-                                controllerText: viewModel.arrHareketTuru?.join(", "),
-                                onTap: () async {
-                                  bottomSheetDialogManager.clearSelectedData();
-                                  viewModel.clearArrHareketTuru();
-                                  final List? result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context,
-                                      title: "Hareket Türü", children: viewModel.hareketTuruMap.entries.map((e) => BottomSheetModel(title: e.key)).toList(),);
-                                  if (result != null) {
-                                    viewModel.changeArrHareketTuru(result.map((e) => e as String).toList().cast<String>());
-                                    // setState(() {});
-                                  }
-                                },
-                                suffixMore: true,
-                              ),),
-                            Observer(builder: (_) => CustomTextField(
-                                  labelText: "Cari",
-                                  valueText: viewModel.cariListesiModel?.cariKodu ?? "",
-                                  controllerText: viewModel.cariListesiModel?.cariAdi ?? "",
-                                  readOnly: true,
-                                  suffix: Wrap(children: [
-                                    IconButton(
-                                        onPressed: () {
-                                          if (viewModel.cariListesiModel != null) {
-                                            dialogManager.showCariGridViewDialog(viewModel.cariListesiModel);
-                                          } else {
-                                            dialogManager.showAlertDialog("Lütfen önce cari seçiniz.");
-                                          }
-                                        },
-                                        icon: Icon(
-                                          Icons.data_exploration_outlined,
-                                          color: UIHelper.primaryColor,
-                                        ),),
-                                    IconButton(
-                                        onPressed: () async {
-                                          final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                                          if (result != null) {
-                                            viewModel.setCariListesiModel(result);
-                                          }
-                                        },
-                                        icon: const Icon(Icons.more_horiz_outlined),),
-                                  ],),),),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: ElevatedButton(
+                  await bottomSheetDialogManager.showBottomSheetDialog(
+                    context,
+                    title: "Filtrele",
+                    body: Center(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          CustomWidgetWithLabel(
+                            text: "Hareket Yönü",
+                            child: Center(
+                              child: Observer(
+                                builder: (_) => SlideControllerWidget(
+                                  scroll: false,
+                                  childrenTitleList: viewModel.hareketYonuList,
+                                  filterOnChanged: (index) => viewModel.changeIsSelected(index ?? 0),
+                                  childrenValueList: viewModel.isSelected,
+                                  groupValue: viewModel.isSelectedGroupValue,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Observer(
+                            builder: (_) => CustomTextField(
+                              labelText: "Hareket Türü",
+                              readOnly: true,
+                              controllerText: viewModel.arrHareketTuru?.join(", "),
+                              onTap: () async {
+                                bottomSheetDialogManager.clearSelectedData();
+                                viewModel.clearArrHareketTuru();
+                                final List? result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                  context,
+                                  title: "Hareket Türü",
+                                  children: viewModel.hareketTuruMap.entries.map((e) => BottomSheetModel(title: e.key)).toList(),
+                                );
+                                if (result != null) {
+                                  viewModel.changeArrHareketTuru(result.map((e) => e as String).toList().cast<String>());
+                                  // setState(() {});
+                                }
+                              },
+                              suffixMore: true,
+                            ),
+                          ),
+                          Observer(
+                            builder: (_) => CustomTextField(
+                              labelText: "Cari",
+                              valueText: viewModel.cariListesiModel?.cariKodu ?? "",
+                              controllerText: viewModel.cariListesiModel?.cariAdi ?? "",
+                              readOnly: true,
+                              suffix: Wrap(
+                                children: [
+                                  IconButton(
                                     onPressed: () {
-                                      Get.back();
-                                      viewModel.clearArrHareketTuru();
-                                      viewModel.setCariListesiModel(null);
-                                      viewModel.setFuture(getData());
+                                      if (viewModel.cariListesiModel != null) {
+                                        dialogManager.showCariGridViewDialog(viewModel.cariListesiModel);
+                                      } else {
+                                        dialogManager.showAlertDialog("Lütfen önce cari seçiniz.");
+                                      }
                                     },
-                                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
-                                    child: const Text("Temizle"),
+                                    icon: Icon(
+                                      Icons.data_exploration_outlined,
+                                      color: UIHelper.primaryColor,
+                                    ),
                                   ),
+                                  IconButton(
+                                    onPressed: () async {
+                                      final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                                      if (result != null) {
+                                        viewModel.setCariListesiModel(result);
+                                      }
+                                    },
+                                    icon: const Icon(Icons.more_horiz_outlined),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Get.back();
+                                    viewModel.clearArrHareketTuru();
+                                    viewModel.setCariListesiModel(null);
+                                    viewModel.setFuture(getData());
+                                  },
+                                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
+                                  child: const Text("Temizle"),
                                 ),
-                                SizedBox(width: width * 0.02),
-                                Expanded(
-                                  child: ElevatedButton(
-                                      onPressed: () {
-                                        Get.back();
-                                        viewModel.setFuture(getData());
-                                      },
-                                      child: const Text("Uygula"),),
+                              ),
+                              SizedBox(width: width * 0.02),
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Get.back();
+                                    viewModel.setFuture(getData());
+                                  },
+                                  child: const Text("Uygula"),
                                 ),
-                              ],
-                            ).paddingAll(UIHelper.lowSize),
-                          ],
-                        ).paddingAll(UIHelper.lowSize),
-                      ),);
-                },),
-            AppBarButton(
+                              ),
+                            ],
+                          ).paddingAll(UIHelper.lowSize),
+                        ],
+                      ).paddingAll(UIHelper.lowSize),
+                    ),
+                  );
+                },
+              ),
+              AppBarButton(
                 icon: Icons.sort_by_alpha_outlined,
                 child: const Text("Sırala"),
                 onPressed: () async {
-                  final String? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Sırala", children: [
-                    BottomSheetModel(title: "Tarih (Artan)", onTap: () => Get.back(result: "TARIH_AZ")),
-                    BottomSheetModel(title: "Tarih (Azalan)", onTap: () => Get.back(result: "TARIH_ZA")),
-                    BottomSheetModel(title: "Stok Kodu (A-Z)", onTap: () => Get.back(result: "KOD_AZ")),
-                    BottomSheetModel(title: "Stok Kodu (Z-A)", onTap: () => Get.back(result: "KOZ_ZA")),
-                  ],);
+                  final String? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                    context,
+                    title: "Sırala",
+                    children: [
+                      BottomSheetModel(title: "Tarih (Artan)", onTap: () => Get.back(result: "TARIH_AZ")),
+                      BottomSheetModel(title: "Tarih (Azalan)", onTap: () => Get.back(result: "TARIH_ZA")),
+                      BottomSheetModel(title: "Stok Kodu (A-Z)", onTap: () => Get.back(result: "KOD_AZ")),
+                      BottomSheetModel(title: "Stok Kodu (Z-A)", onTap: () => Get.back(result: "KOZ_ZA")),
+                    ],
+                  );
                   if (result != null) {
                     viewModel.setSiralama(result);
                     viewModel.setStokHareketleri(await getData()!);
                   }
-                },),
-            AppBarButton(
+                },
+              ),
+              AppBarButton(
                 icon: Icons.refresh_outlined,
                 child: const Text("Yenile"),
                 onPressed: () {
                   getData();
-                },),
-          ],),),
-    );
+                },
+              ),
+            ],
+          ),
+        ),
+      );
 
   FloatingActionButton fab() => FloatingActionButton(
-      onPressed: () async {
-        await Get.toNamed("mainPage/stokYeniKayit", arguments: StokHareketleriModel()..stokKodu = widget.model?.stokKodu ?? widget.stokKodu);
-        viewModel.setStokHareketleri(await getData()!);
-      },
-      child: const Icon(Icons.add),
-    );
+        onPressed: () async {
+          await Get.toNamed("mainPage/stokYeniKayit", arguments: StokHareketleriModel()..stokKodu = widget.model?.stokKodu ?? widget.stokKodu);
+          viewModel.setStokHareketleri(await getData()!);
+        },
+        child: const Icon(Icons.add),
+      );
 
   FutureBuilder<dynamic> body() => FutureBuilder(
         future: viewModel.future,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return Observer(builder: (_) => viewModel.stokHareketleri.ext.isNullOrEmpty
+            return Observer(
+              builder: (_) => viewModel.stokHareketleri.ext.isNullOrEmpty
                   ? const Center(child: Text("Stok Hareket Kaydı Bulunamadı."))
                   : RefreshIndicator.adaptive(
                       onRefresh: () async {
@@ -240,11 +274,12 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                               onPressed: (context) async {
                                 dialogManager.showAreYouSureDialog(() async {
                                   final result = await networkManager.dioPost<StokHareketleriModel>(
-                                      path: ApiUrls.deleteStokHareket,
-                                      bodyModel: StokHareketleriModel(),
-                                      addCKey: true,
-                                      addSirketBilgileri: true,
-                                      queryParameters: {"INCKEYNO": model.inckeyno.toString()},);
+                                    path: ApiUrls.deleteStokHareket,
+                                    bodyModel: StokHareketleriModel(),
+                                    addCKey: true,
+                                    addSirketBilgileri: true,
+                                    queryParameters: {"INCKEYNO": model.inckeyno.toString()},
+                                  );
                                   if (result.success == true) {
                                     dialogManager.showSuccessSnackBar("Stok Hareket Kaydı Silindi.");
                                     viewModel.setStokHareketleri(await getData()!);
@@ -265,16 +300,18 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                           //😳 Aslında devir değil. Muhtelif yapmak lazım ama sadece devirin sayfası olduğu için böyle yaptım.
                           //😳 "Muhtelif"
                           if (model.hareketTuruAciklama == "Devir") {
-                            children2.add(SlidableAction(
-                              onPressed: (context) async {
-                                await Get.toNamed("mainPage/stokYeniKayit", arguments: model);
-                                viewModel.setStokHareketleri(await getData()!);
-                              },
-                              icon: Icons.directions_walk_outlined,
-                              backgroundColor: theme.cardColor,
-                              foregroundColor: theme.colorScheme.primary,
-                              label: "Hareket\nDetayı",
-                            ),);
+                            children2.add(
+                              SlidableAction(
+                                onPressed: (context) async {
+                                  await Get.toNamed("mainPage/stokYeniKayit", arguments: model);
+                                  viewModel.setStokHareketleri(await getData()!);
+                                },
+                                icon: Icons.directions_walk_outlined,
+                                backgroundColor: theme.cardColor,
+                                foregroundColor: theme.colorScheme.primary,
+                                label: "Hareket\nDetayı",
+                              ),
+                            );
                           }
                           return Slidable(
                             enabled: children2.ext.isNotNullOrEmpty,
@@ -285,17 +322,22 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                             child: GestureDetector(
                               onTap: () async {
                                 if (widget.model != null) {
-                                  await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: [
-                                    //TODO Bunları unutma 😳
-                                    // BottomSheetModel(title: "Belgeyi Göster"),
-                                    BottomSheetModel(
+                                  await bottomSheetDialogManager.showBottomSheetDialog(
+                                    context,
+                                    title: "Seçenekler",
+                                    children: [
+                                      //TODO Bunları unutma 😳
+                                      // BottomSheetModel(title: "Belgeyi Göster"),
+                                      BottomSheetModel(
                                         title: "Stok İşlemleri",
                                         iconWidget: Icons.list_alt_outlined,
                                         onTap: () {
                                           Get.back();
                                           dialogManager.showStokGridViewDialog(widget.model);
-                                        },),
-                                  ],);
+                                        },
+                                      ),
+                                    ],
+                                  );
                                 }
                               },
                               child: Card(
@@ -325,8 +367,9 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                             TextSpan(
                                               children: [
                                                 TextSpan(
-                                                    text: "${model.belgeTipiAciklama ?? model.hareketTuruAciklama}  ",
-                                                    style: TextStyle(color: (model.cikisIslemi ?? false) ? Colors.red : Colors.green),),
+                                                  text: "${model.belgeTipiAciklama ?? model.hareketTuruAciklama}  ",
+                                                  style: TextStyle(color: (model.cikisIslemi ?? false) ? Colors.red : Colors.green),
+                                                ),
                                                 TextSpan(text: "(${model.hareketTuruAciklama})", style: const TextStyle(color: Colors.white30)),
                                               ],
                                             ),
@@ -367,11 +410,13 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                           );
                         },
                       ),
-                    ),);
+                    ),
+            );
           } else {
             return const Center(child: CircularProgressIndicator.adaptive());
           }
-        },);
+        },
+      );
 
   Future<List<StokHareketleriModel>>? getData() async {
     viewModel.setFuture(null);
@@ -384,7 +429,12 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
     //   queryParameters["FilterModel"] = "\"ArrHareketTuru\":${jsonEncode(viewModel.arrHareketTuru)}, ${queryParameters["FilterModel"]!}";
     // }
     final result = await networkManager.dioGet<StokHareketleriModel>(
-        path: ApiUrls.getStokHareketleri, bodyModel: StokHareketleriModel(), addCKey: true, addSirketBilgileri: true, queryParameters: queryParameters,);
+      path: ApiUrls.getStokHareketleri,
+      bodyModel: StokHareketleriModel(),
+      addCKey: true,
+      addSirketBilgileri: true,
+      queryParameters: queryParameters,
+    );
     viewModel.setFuture(Future.value(result.data));
     final List<StokHareketleriModel> list = result.data.map((e) => e as StokHareketleriModel).toList().cast<StokHareketleriModel>();
     viewModel.setStokHareketleri(list);

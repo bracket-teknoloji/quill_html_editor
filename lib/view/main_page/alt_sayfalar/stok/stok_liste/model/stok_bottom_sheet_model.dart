@@ -126,8 +126,7 @@ class StokBottomSheetModel with _$StokBottomSheetModel, NetworkManagerMixin {
     @Default([]) List<BaseGrupKoduModel>? arrKod5,
   }) = _StokBottomSheetModel;
 
-  factory StokBottomSheetModel.fromJson(Map<String, dynamic> json) =>
-      _$StokBottomSheetModelFromJson(json);
+  factory StokBottomSheetModel.fromJson(Map<String, dynamic> json) => _$StokBottomSheetModelFromJson(json);
 
   @override
   fromJson(Map<String, dynamic> json) => _$StokBottomSheetModelFromJson(json);
@@ -135,8 +134,7 @@ class StokBottomSheetModel with _$StokBottomSheetModel, NetworkManagerMixin {
   Map<String, dynamic> toJsonWithList() {
     final data = toJson();
     if (data["ArrGrupKodu"] != null) {
-      data["ArrGrupKodu"] =
-          data["ArrGrupKodu"].map((e) => e["GRUP_KODU"]).toList();
+      data["ArrGrupKodu"] = data["ArrGrupKodu"].map((e) => e["GRUP_KODU"]).toList();
     }
     if (data["ArrKod1"] != null) {
       data["ArrKod1"] = data["ArrKod1"].map((e) => e["GRUP_KODU"]).toList();

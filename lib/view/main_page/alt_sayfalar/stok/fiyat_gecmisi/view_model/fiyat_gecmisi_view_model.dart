@@ -10,8 +10,7 @@ import "../model/fiyat_gecmisi_response_model.dart";
 
 part "fiyat_gecmisi_view_model.g.dart";
 
-class FiyatGecmisiViewModel = _FiyatGecmisiViewModelBase
-    with _$FiyatGecmisiViewModel;
+class FiyatGecmisiViewModel = _FiyatGecmisiViewModelBase with _$FiyatGecmisiViewModel;
 
 abstract class _FiyatGecmisiViewModelBase with Store {
   @observable
@@ -27,16 +26,16 @@ abstract class _FiyatGecmisiViewModelBase with Store {
   PrintModel printModel = PrintModel(raporOzelKod: "StokEtiket", yazdir: true);
 
   @action
-  void setDizaynId(int? value) =>
-      printModel = printModel.copyWith(dizaynId: value);
+  void setDizaynId(int? value) => printModel = printModel.copyWith(dizaynId: value);
 
   @action
   void setYaziciAdi(YaziciList? value) => printModel = printModel.copyWith(
-      yaziciAdi: value?.yaziciAdi, yaziciTipi: value?.yaziciTipi,);
+        yaziciAdi: value?.yaziciAdi,
+        yaziciTipi: value?.yaziciTipi,
+      );
 
   @action
-  void setDicParams(DicParams? value) =>
-      printModel = printModel.copyWith(dicParams: value);
+  void setDicParams(DicParams? value) => printModel = printModel.copyWith(dicParams: value);
 
   @action
   void filterModelList(String value) {
@@ -44,11 +43,9 @@ abstract class _FiyatGecmisiViewModelBase with Store {
       filteredModelList = modelList;
     } else {
       filteredModelList = modelList
-          ?.where((element) =>
-              (element?.stokAdi?.toLowerCase().contains(value.toLowerCase()) ??
-                  false) ||
-              (element?.stokKodu?.toLowerCase().contains(value.toLowerCase()) ??
-                  false),)
+          ?.where(
+            (element) => (element?.stokAdi?.toLowerCase().contains(value.toLowerCase()) ?? false) || (element?.stokKodu?.toLowerCase().contains(value.toLowerCase()) ?? false),
+          )
           .toList()
           .asObservable();
     }
@@ -84,9 +81,13 @@ abstract class _FiyatGecmisiViewModelBase with Store {
     BottomSheetModel(title: "Kayıt Tarihi (A-Z)", value: "TARIH_AZ"),
     BottomSheetModel(title: "Kayıt Tarihi (Z-A)", value: "TARIH_ZA"),
     BottomSheetModel(
-        title: "Yazdırma Tarihi (A-Z)", value: "YAZDIRMA_TARIHI_AZ",),
+      title: "Yazdırma Tarihi (A-Z)",
+      value: "YAZDIRMA_TARIHI_AZ",
+    ),
     BottomSheetModel(
-        title: "Yazdırma Tarihi (Z-A)", value: "YAZDIRMA_TARIHI_ZA",),
+      title: "Yazdırma Tarihi (Z-A)",
+      value: "YAZDIRMA_TARIHI_ZA",
+    ),
     BottomSheetModel(title: "Stok Kodu (A-Z)", value: "STOK_KODU_AZ"),
     BottomSheetModel(title: "Stok Kodu (Z-A)", value: "STOK_KODU_ZA"),
     BottomSheetModel(title: "Stok Adı (A-Z)", value: "STOK_ADI_AZ"),

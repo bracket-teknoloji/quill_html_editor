@@ -18,12 +18,10 @@ class LokalDepoBakiyeRaporuView extends StatefulWidget {
   const LokalDepoBakiyeRaporuView({super.key, this.model});
 
   @override
-  State<LokalDepoBakiyeRaporuView> createState() =>
-      _LokalDepoBakiyeRaporuViewState();
+  State<LokalDepoBakiyeRaporuView> createState() => _LokalDepoBakiyeRaporuViewState();
 }
 
-class _LokalDepoBakiyeRaporuViewState
-    extends BaseState<LokalDepoBakiyeRaporuView> {
+class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRaporuView> {
   LokalDepoBakiyeRaporuViewModel viewModel = LokalDepoBakiyeRaporuViewModel();
   List<BaseGrupKoduModel> grupKodList = [];
   late final TextEditingController stokController;
@@ -71,156 +69,176 @@ class _LokalDepoBakiyeRaporuViewState
   Widget build(BuildContext context) => PDFViewerView(
         filterBottomSheet: filterBottomSheet,
         title: "Lokal Depo Bakiye Raporu",
-        pdfData: viewModel.pdfModel,);
+        pdfData: viewModel.pdfModel,
+      );
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
-    await bottomSheetDialogManager.showBottomSheetDialog(context,
-        title: "Filtrele",
-        body: Padding(
-          padding: EdgeInsets.all(UIHelper.lowSize),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              CustomWidgetWithLabel(
-                text: "Sıfır Tutar Hariç",
-                isVertical: true,
-                child: Observer(
-                    builder: (_) => Switch.adaptive(
-                        value: viewModel.sifirHaricValue,
-                        onChanged: (value) => viewModel.setSifirHaric(value),),),
+    await bottomSheetDialogManager.showBottomSheetDialog(
+      context,
+      title: "Filtrele",
+      body: Padding(
+        padding: EdgeInsets.all(UIHelper.lowSize),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            CustomWidgetWithLabel(
+              text: "Sıfır Tutar Hariç",
+              isVertical: true,
+              child: Observer(
+                builder: (_) => Switch.adaptive(
+                  value: viewModel.sifirHaricValue,
+                  onChanged: (value) => viewModel.setSifirHaric(value),
+                ),
               ),
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Stok",
-                      controller: stokController,
-                      readOnly: true,
-                      suffixMore: true,
-                      onTap: () async {
-                        final result = await Get.toNamed("/mainPage/stokListesi",
-                            arguments: true,);
-                        if (result != null) {
-                          stokController.text = result.stokKodu ?? "";
-                          viewModel.pdfModel.dicParams?.stokKodu =
-                              result.stokKodu ?? "";
-                        }
-                      },
-                    ),
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Stok",
+                    controller: stokController,
+                    readOnly: true,
+                    suffixMore: true,
+                    onTap: () async {
+                      final result = await Get.toNamed(
+                        "/mainPage/stokListesi",
+                        arguments: true,
+                      );
+                      if (result != null) {
+                        stokController.text = result.stokKodu ?? "";
+                        viewModel.pdfModel.dicParams?.stokKodu = result.stokKodu ?? "";
+                      }
+                    },
                   ),
-                  Expanded(
-                      child: CustomTextField(
+                ),
+                Expanded(
+                  child: CustomTextField(
                     labelText: "Depo",
                     controller: depoController,
                     readOnly: true,
                     onTap: () async {
-                      final result = await bottomSheetDialogManager
-                          .showBottomSheetDialog(context,
-                              title: "Depo",
-                              children: viewModel.bottomSheetList,);
+                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                        context,
+                        title: "Depo",
+                        children: viewModel.bottomSheetList,
+                      );
                       if (result != null) {
                         depoController.text = result ?? "";
-                        viewModel.pdfModel.dicParams?.depoKodlari =
-                            result ?? "";
+                        viewModel.pdfModel.dicParams?.depoKodlari = result ?? "";
                       }
                     },
                     suffixMore: true,
-                  ),),
-                ],
-              ),
-              CustomTextField(
-                labelText: "Hariç Stok Grup Kodları",
-                controller: haricStokGrupKodlariController,
-                suffix: IconButton(
-                  icon: const Icon(Icons.info_outline),
-                  onPressed: infoDialog,
+                  ),
                 ),
-                onChanged: (p0) =>
-                    viewModel.pdfModel.dicParams?.haricStokGrupKodlari = p0,
+              ],
+            ),
+            CustomTextField(
+              labelText: "Hariç Stok Grup Kodları",
+              controller: haricStokGrupKodlariController,
+              suffix: IconButton(
+                icon: const Icon(Icons.info_outline),
+                onPressed: infoDialog,
               ),
-              CustomTextField(
-                labelText: "Hariç Stok Kodları",
-                controller: haricStokKodlariController,
-                suffix: IconButton(
-                  icon: const Icon(Icons.info_outline),
-                  onPressed: infoDialog,
+              onChanged: (p0) => viewModel.pdfModel.dicParams?.haricStokGrupKodlari = p0,
+            ),
+            CustomTextField(
+              labelText: "Hariç Stok Kodları",
+              controller: haricStokKodlariController,
+              suffix: IconButton(
+                icon: const Icon(Icons.info_outline),
+                onPressed: infoDialog,
+              ),
+              onChanged: (p0) => viewModel.pdfModel.dicParams?.haricStokKodlari = p0,
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Grup Kodu",
+                    controller: grupKodlariController,
+                    readOnly: true,
+                    suffixMore: true,
+                    onTap: () async => await getGrupKodu(0, grupKodlariController),
+                  ),
                 ),
-                onChanged: (p0) =>
-                    viewModel.pdfModel.dicParams?.haricStokKodlari = p0,
-              ),
-              Row(children: [
                 Expanded(
-                    child: CustomTextField(
-                        labelText: "Grup Kodu",
-                        controller: grupKodlariController,
-                        readOnly: true,
-                        suffixMore: true,
-                        onTap: () async =>
-                            await getGrupKodu(0, grupKodlariController),),),
+                  child: CustomTextField(
+                    labelText: "Kod 1",
+                    controller: kod1Controller,
+                    readOnly: true,
+                    suffixMore: true,
+                    onTap: () async => await getGrupKodu(1, kod1Controller),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
                 Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 1",
-                        controller: kod1Controller,
-                        readOnly: true,
-                        suffixMore: true,
-                        onTap: () async =>
-                            await getGrupKodu(1, kod1Controller),),),
-              ],),
-              Row(children: [
+                  child: CustomTextField(
+                    labelText: "Kod 2",
+                    controller: kod2Controller,
+                    readOnly: true,
+                    suffixMore: true,
+                    onTap: () async => await getGrupKodu(2, kod2Controller),
+                  ),
+                ),
                 Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 2",
-                        controller: kod2Controller,
-                        readOnly: true,
-                        suffixMore: true,
-                        onTap: () async =>
-                            await getGrupKodu(2, kod2Controller),),),
+                  child: CustomTextField(
+                    labelText: "Kod 3",
+                    controller: kod3Controller,
+                    readOnly: true,
+                    suffixMore: true,
+                    onTap: () async => await getGrupKodu(3, kod3Controller),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
                 Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 3",
-                        controller: kod3Controller,
-                        readOnly: true,
-                        suffixMore: true,
-                        onTap: () async =>
-                            await getGrupKodu(3, kod3Controller),),),
-              ],),
-              Row(children: [
+                  child: CustomTextField(
+                    labelText: "Kod 4",
+                    controller: kod4Controller,
+                    readOnly: true,
+                    suffixMore: true,
+                    onTap: () async => await getGrupKodu(4, kod4Controller),
+                  ),
+                ),
                 Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 4",
-                        controller: kod4Controller,
-                        readOnly: true,
-                        suffixMore: true,
-                        onTap: () async =>
-                            await getGrupKodu(4, kod4Controller),),),
-                Expanded(
-                    child: CustomTextField(
-                        labelText: "Kod 5",
-                        controller: kod5Controller,
-                        readOnly: true,
-                        suffixMore: true,
-                        onTap: () async =>
-                            await getGrupKodu(5, kod5Controller),),),
-              ],),
-              ElevatedButton(
-                      onPressed: () {
-                        viewModel.setFuture();
-                        Get.back();
-                      },
-                      child: const Text("Uygula"),)
-                  .paddingAll(UIHelper.lowSize),
-            ],
-          ),
-        ),);
+                  child: CustomTextField(
+                    labelText: "Kod 5",
+                    controller: kod5Controller,
+                    readOnly: true,
+                    suffixMore: true,
+                    onTap: () async => await getGrupKodu(5, kod5Controller),
+                  ),
+                ),
+              ],
+            ),
+            ElevatedButton(
+              onPressed: () {
+                viewModel.setFuture();
+                Get.back();
+              },
+              child: const Text("Uygula"),
+            ).paddingAll(UIHelper.lowSize),
+          ],
+        ),
+      ),
+    );
     return Future.value(viewModel.futureController.value);
   }
 
   void infoDialog() => dialogManager.showInfoDialog(
-      "Kodları noktalı Virgül (' ; ') ile ayırarak, aralarında boşluk bırakmadan yazınız.\nÖrnek: 01;02;03",);
+        "Kodları noktalı Virgül (' ; ') ile ayırarak, aralarında boşluk bırakmadan yazınız.\nÖrnek: 01;02;03",
+      );
 
   Future<String?> getGrupKodu(
-      int grupNo, TextEditingController? controller,) async {
+    int grupNo,
+    TextEditingController? controller,
+  ) async {
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: "STOK", grupNo: -1);
     }
@@ -228,13 +246,20 @@ class _LokalDepoBakiyeRaporuViewState
         .where((e) => e.grupNo == grupNo)
         .toList()
         .cast<BaseGrupKoduModel>()
-        .map((e) => BottomSheetModel(
-            title: e.grupKodu ?? "", onTap: () => Get.back(result: e),),)
+        .map(
+          (e) => BottomSheetModel(
+            title: e.grupKodu ?? "",
+            onTap: () => Get.back(result: e),
+          ),
+        )
         .toList()
         .cast<BottomSheetModel>();
     // ignore: use_build_context_synchronously
-    final result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-        title: "Grup Kodu", children: bottomSheetList,);
+    final result = await bottomSheetDialogManager.showBottomSheetDialog(
+      context,
+      title: "Grup Kodu",
+      children: bottomSheetList,
+    );
     if (result != null) {
       controller?.text = result.grupKodu ?? "";
       switch (grupNo) {

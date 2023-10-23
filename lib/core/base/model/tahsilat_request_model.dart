@@ -40,8 +40,7 @@ class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
     String? hedefAciklama,
   }) = _TahsilatRequestModel;
 
-  factory TahsilatRequestModel.fromJson(Map<String, dynamic> json) =>
-      _$TahsilatRequestModelFromJson(json);
+  factory TahsilatRequestModel.fromJson(Map<String, dynamic> json) => _$TahsilatRequestModelFromJson(json);
 
   @override
   fromJson(Map<String, dynamic> json) => _$TahsilatRequestModelFromJson(json);

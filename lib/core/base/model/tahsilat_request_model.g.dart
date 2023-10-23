@@ -6,9 +6,7 @@ part of 'tahsilat_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$TahsilatRequestModelImpl _$$TahsilatRequestModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$TahsilatRequestModelImpl(
+_$TahsilatRequestModelImpl _$$TahsilatRequestModelImplFromJson(Map<String, dynamic> json) => _$TahsilatRequestModelImpl(
       aciklama: json['ACIKLAMA'] as String?,
       belgeNo: json['BELGE_NO'] as String?,
       gc: json['GC'] as String?,
@@ -20,9 +18,7 @@ _$TahsilatRequestModelImpl _$$TahsilatRequestModelImplFromJson(
       projeKodu: json['PROJE_KODU'] as String?,
       tag: json['TAG'] as String?,
       tahsilatmi: json['TAHSILATMI'] as bool?,
-      tarih: json['TARIH'] == null
-          ? null
-          : DateTime.parse(json['TARIH'] as String),
+      tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
       tutar: (json['TUTAR'] as num?)?.toDouble(),
       dovizTutari: (json['DOVIZ_TUTARI'] as num?)?.toDouble(),
       dovizTipi: json['DOVIZ_TIPI'] as int?,
@@ -42,8 +38,7 @@ _$TahsilatRequestModelImpl _$$TahsilatRequestModelImplFromJson(
       hedefAciklama: json['HEDEF_ACIKLAMA'] as String?,
     );
 
-Map<String, dynamic> _$$TahsilatRequestModelImplToJson(
-    _$TahsilatRequestModelImpl instance) {
+Map<String, dynamic> _$$TahsilatRequestModelImplToJson(_$TahsilatRequestModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

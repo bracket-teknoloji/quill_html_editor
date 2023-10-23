@@ -182,7 +182,12 @@ abstract class _BaseCariGenelEditViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getFilterData() async {
     final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<CariSehirlerModel>(
-        path: ApiUrls.getCariKayitliSehirler, bodyModel: CariSehirlerModel(), addTokenKey: true, addSirketBilgileri: true, headers: <String, String>{"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"},);
+      path: ApiUrls.getCariKayitliSehirler,
+      bodyModel: CariSehirlerModel(),
+      addTokenKey: true,
+      addSirketBilgileri: true,
+      headers: <String, String>{"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"},
+    );
     if (result.data is List) {
       sehirler = result.data.cast<CariSehirlerModel>();
     }
@@ -190,7 +195,8 @@ abstract class _BaseCariGenelEditViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getUlkeData() async {
-    final GenericResponseModel<NetworkManagerMixin> response = await networkManager.dioGet<UlkeModel>(path: ApiUrls.getUlkeler, bodyModel: UlkeModel(), addCKey: true, addSirketBilgileri: true, addTokenKey: true);
+    final GenericResponseModel<NetworkManagerMixin> response =
+        await networkManager.dioGet<UlkeModel>(path: ApiUrls.getUlkeler, bodyModel: UlkeModel(), addCKey: true, addSirketBilgileri: true, addTokenKey: true);
     ulkeler = response.data?.map((e) => e as UlkeModel).toList().cast<UlkeModel>();
   }
 }

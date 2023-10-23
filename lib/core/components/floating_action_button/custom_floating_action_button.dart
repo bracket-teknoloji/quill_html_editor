@@ -13,15 +13,15 @@ class CustomFloatingActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => AnimatedSlide(
-      duration: DurationHelper.durationLow,
-      offset: isScrolledDown ? Offset.zero : const Offset(0, 2),
-      child: AnimatedOpacity(
         duration: DurationHelper.durationLow,
-        opacity: isScrolledDown ? 1 : 0,
-        child: FloatingActionButton(
-          onPressed: onPressed,
-          child: const Icon(Icons.add),
+        offset: isScrolledDown ? Offset.zero : const Offset(0, 2),
+        child: AnimatedOpacity(
+          duration: DurationHelper.durationLow,
+          opacity: isScrolledDown ? 1 : 0,
+          child: FloatingActionButton(
+            onPressed: onPressed,
+            child: const Icon(Icons.add),
+          ),
         ),
-      ),
-    );
+      );
 }

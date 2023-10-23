@@ -6,40 +6,34 @@ part of 'cari_hareketleri_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CariHareketleriModel _$CariHareketleriModelFromJson(
-        Map<String, dynamic> json) =>
-    CariHareketleriModel()
-      ..inckeyno = json['INCKEYNO'] as int?
-      ..cariKodu = json['CARI_KODU'] as String?
-      ..cariAdi = json['CARI_ADI'] as String?
-      ..tarih =
-          json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
-      ..aciklama = json['ACIKLAMA'] as String?
-      ..borc = (json['BORC'] as num?)?.toDouble()
-      ..hareketAciklama = json['HAREKET_ACIKLAMA'] as String?
-      ..hareketKodu = json['HAREKET_KODU'] as String?
-      ..belgeNo = json['BELGE_NO'] as String?
-      ..plasiyerKodu = json['PLASIYER_KODU'] as String?
-      ..plasiyerAciklama = json['PLASIYER_ACIKLAMA'] as String?
-      ..yuruyenBakiye = (json['YURUYEN_BAKIYE'] as num?)?.toDouble()
-      ..dovYuruyenBakiye = (json['DOV_YURUYEN_BAKIYE'] as num?)?.toDouble()
-      ..projeKodu = json['PROJE_KODU'] as String?
-      ..projeAciklama = json['PROJE_ACIKLAMA'] as String?
-      ..dovizBorc = (json['DOVIZ_BORC'] as num?)?.toDouble()
-      ..dovizTuru = json['DOVIZ_TURU'] as int?
-      ..dovizAdi = json['DOVIZ_ADI'] as String?
-      ..refkey = json['REFKEY'] as String?
-      ..vadeTarihi = json['VADE_TARIHI'] == null
-          ? null
-          : DateTime.parse(json['VADE_TARIHI'] as String)
-      ..belgeTipi = json['BELGE_TIPI'] as String?
-      ..alacak = (json['ALACAK'] as num?)?.toDouble()
-      ..bordroMu = json['BORDRO_MU'] as bool?
-      ..dovizAlacak = (json['DOVIZ_ALACAK'] as num?)?.toDouble()
-      ..subeKodu = json['SUBE_KODU'] as int?;
+CariHareketleriModel _$CariHareketleriModelFromJson(Map<String, dynamic> json) => CariHareketleriModel()
+  ..inckeyno = json['INCKEYNO'] as int?
+  ..cariKodu = json['CARI_KODU'] as String?
+  ..cariAdi = json['CARI_ADI'] as String?
+  ..tarih = json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
+  ..aciklama = json['ACIKLAMA'] as String?
+  ..borc = (json['BORC'] as num?)?.toDouble()
+  ..hareketAciklama = json['HAREKET_ACIKLAMA'] as String?
+  ..hareketKodu = json['HAREKET_KODU'] as String?
+  ..belgeNo = json['BELGE_NO'] as String?
+  ..plasiyerKodu = json['PLASIYER_KODU'] as String?
+  ..plasiyerAciklama = json['PLASIYER_ACIKLAMA'] as String?
+  ..yuruyenBakiye = (json['YURUYEN_BAKIYE'] as num?)?.toDouble()
+  ..dovYuruyenBakiye = (json['DOV_YURUYEN_BAKIYE'] as num?)?.toDouble()
+  ..projeKodu = json['PROJE_KODU'] as String?
+  ..projeAciklama = json['PROJE_ACIKLAMA'] as String?
+  ..dovizBorc = (json['DOVIZ_BORC'] as num?)?.toDouble()
+  ..dovizTuru = json['DOVIZ_TURU'] as int?
+  ..dovizAdi = json['DOVIZ_ADI'] as String?
+  ..refkey = json['REFKEY'] as String?
+  ..vadeTarihi = json['VADE_TARIHI'] == null ? null : DateTime.parse(json['VADE_TARIHI'] as String)
+  ..belgeTipi = json['BELGE_TIPI'] as String?
+  ..alacak = (json['ALACAK'] as num?)?.toDouble()
+  ..bordroMu = json['BORDRO_MU'] as bool?
+  ..dovizAlacak = (json['DOVIZ_ALACAK'] as num?)?.toDouble()
+  ..subeKodu = json['SUBE_KODU'] as int?;
 
-Map<String, dynamic> _$CariHareketleriModelToJson(
-    CariHareketleriModel instance) {
+Map<String, dynamic> _$CariHareketleriModelToJson(CariHareketleriModel instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

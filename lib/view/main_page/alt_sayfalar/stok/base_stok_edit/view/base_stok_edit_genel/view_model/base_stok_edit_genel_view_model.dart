@@ -6,8 +6,7 @@ import "../../../model/stok_detay_model.dart";
 
 part "base_stok_edit_genel_view_model.g.dart";
 
-class BaseStokEditGenelViewModel = _BaseStokEditGenelViewModelBase
-    with _$BaseStokEditGenelViewModel;
+class BaseStokEditGenelViewModel = _BaseStokEditGenelViewModelBase with _$BaseStokEditGenelViewModel;
 
 abstract class _BaseStokEditGenelViewModelBase with Store {
   @observable
@@ -17,8 +16,7 @@ abstract class _BaseStokEditGenelViewModelBase with Store {
   StokDetayModel stokDetayModel = StokDetayModel.instance;
 
   @observable
-  ObservableMap<int, List<BaseGrupKoduModel>?>? grupKodlariMap =
-      <int, List<BaseGrupKoduModel>?>{}.asObservable();
+  ObservableMap<int, List<BaseGrupKoduModel>?>? grupKodlariMap = <int, List<BaseGrupKoduModel>?>{}.asObservable();
 
   @action
   void changeGrupKoduListesi(int grupkodu, List<BaseGrupKoduModel>? value) {

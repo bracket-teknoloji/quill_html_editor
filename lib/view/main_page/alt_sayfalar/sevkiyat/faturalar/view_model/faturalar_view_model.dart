@@ -226,21 +226,22 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void resetFilter() => faturaRequestModel = faturaRequestModel.copyWith(
-      searchText: null,
-      ozelKod1: null,
-      ozelKod2: null,
-      arrGrupKodu: null,
-      cariKodu: "",
-      cariTipi: null,
-      arrPlasiyerKodu: null,
-      projeKodu: null,
-      arrKod1: null,
-      arrKod2: null,
-      arrKod3: null,
-      arrKod4: null,
-      arrKod5: null,
-      baslamaTarihi: null,
-      bitisTarihi: null,);
+        searchText: null,
+        ozelKod1: null,
+        ozelKod2: null,
+        arrGrupKodu: null,
+        cariKodu: "",
+        cariTipi: null,
+        arrPlasiyerKodu: null,
+        projeKodu: null,
+        arrKod1: null,
+        arrKod2: null,
+        arrKod3: null,
+        arrKod4: null,
+        arrKod5: null,
+        baslamaTarihi: null,
+        bitisTarihi: null,
+      );
 
   @action
   Future<void> resetPage() async {
@@ -253,7 +254,11 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getKod() async {
     final responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
-        path: ApiUrls.getGrupKodlari, bodyModel: BaseGrupKoduModel(), headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"}, queryParameters: {"Modul": "CARI", "GrupNo": "-1"},);
+      path: ApiUrls.getGrupKodlari,
+      bodyModel: BaseGrupKoduModel(),
+      headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"},
+      queryParameters: {"Modul": "CARI", "GrupNo": "-1"},
+    );
     if (responseKod.data is List) {
       changeGrupKodList(responseKod.data.cast<BaseGrupKoduModel>());
     }

@@ -6,8 +6,7 @@ import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sh
 
 part "doviz_bakiye_raporu_view_model.g.dart";
 
-class DovizBakiyeRaporuViewModel = _DovizBakiyeRaporuViewModelBase
-    with _$DovizBakiyeRaporuViewModel;
+class DovizBakiyeRaporuViewModel = _DovizBakiyeRaporuViewModelBase with _$DovizBakiyeRaporuViewModel;
 
 abstract class _DovizBakiyeRaporuViewModelBase with Store {
   final List<String> bakiyeDurumuTitleList = [
@@ -20,13 +19,21 @@ abstract class _DovizBakiyeRaporuViewModelBase with Store {
   final List<String> bakiyeDurumuValueList = ["T", "E", "A", "S", "B"];
   final List<BottomSheetModel> siralaBottomSheetList = [
     BottomSheetModel(
-        title: "Cari Adı (A-Z)", onTap: () => Get.back(result: "ADI"),),
+      title: "Cari Adı (A-Z)",
+      onTap: () => Get.back(result: "ADI"),
+    ),
     BottomSheetModel(
-        title: "Cari Adı (Z-A)", onTap: () => Get.back(result: "ADI_DESC"),),
+      title: "Cari Adı (Z-A)",
+      onTap: () => Get.back(result: "ADI_DESC"),
+    ),
     BottomSheetModel(
-        title: "Cari Adı (A-Z)", onTap: () => Get.back(result: "KODU"),),
+      title: "Cari Adı (A-Z)",
+      onTap: () => Get.back(result: "KODU"),
+    ),
     BottomSheetModel(
-        title: "Cari Adı (Z-A)", onTap: () => Get.back(result: "KODU_DESC"),),
+      title: "Cari Adı (Z-A)",
+      onTap: () => Get.back(result: "KODU_DESC"),
+    ),
   ];
   @observable
   String _bakiyeDurumuGroupValue = "T";
@@ -44,15 +51,15 @@ abstract class _DovizBakiyeRaporuViewModelBase with Store {
   //*
   @observable
   PdfModel pdfModel = PdfModel(
-      raporOzelKod: "Rapor_CariDovizBakiye",
-      standart: true,
-      dicParams: DicParams()..sirala = "ADI",);
+    raporOzelKod: "Rapor_CariDovizBakiye",
+    standart: true,
+    dicParams: DicParams()..sirala = "ADI",
+  );
 
   //* Future
   //*
   @observable
-  ObservableFuture<bool?> futureController =
-      ObservableFuture(Future.error(false));
+  ObservableFuture<bool?> futureController = ObservableFuture(Future.error(false));
 
   @action
   void setFuture() => futureController = ObservableFuture.value(true);

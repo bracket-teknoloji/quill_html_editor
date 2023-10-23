@@ -11,7 +11,7 @@ extension MobxWidgetExtension on Widget {
   //   return reaction((_) => this, (_) => this);
   // }
   Widget get reactionBuilder => ReactionBuilder(
-      builder: (context) => reaction((_) => this, (_) => this),
-      child: this,
-    );
+        builder: (context) => reaction((_) => this, (_) => this),
+        child: this,
+      );
 }

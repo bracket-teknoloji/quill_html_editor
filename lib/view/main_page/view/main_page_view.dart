@@ -54,104 +54,108 @@ class _MainPageViewState extends BaseState<MainPageView> {
         }
       },
       child: Scaffold(
-          appBar: appBar(scaffoldKey, context),
-          key: scaffoldKey,
-          drawerEnableOpenDragGesture: lastItems.isEmpty,
-          drawer: const SafeArea(child: LeftDrawer()),
-          endDrawer: const SafeArea(child: EndDrawer()),
-          body: SafeArea(
-            child: Column(
-              children: [
-                Expanded(
-                  flex: 9,
-                  child: Padding(
-                    padding: UIHelper.lowPadding,
-                    child: AnimationLimiter(
-                      child: GridView.builder(
-                        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: MediaQuery.of(context).size.width ~/ 90 > 10 ? 10 : MediaQuery.of(context).size.width ~/ 90,
-                          childAspectRatio: 0.9,
-                        ),
-                        itemCount: items.length,
-                        itemBuilder: (context, index) {
-                          //* indexteki itemi burada alıyoruz
-                          final item = items[index];
-                          return AnimationConfiguration.staggeredList(
-                              position: index,
-                              duration: const Duration(milliseconds: 500),
-                              delay: const Duration(milliseconds: 50),
-                              child: FadeInAnimation(
-                                  child: CustomGridTile(
-                                      iconWidget: item.iconData,
-                                      menuTipi: item.menuTipi,
-                                      route: item.route,
-                                      arguments: item.arguments,
-                                      altMenuler: item.altMenuler,
-                                      color: item.color,
-                                      icon: item.icon,
-                                      name: item.name.toString(),
-                                      title: item.title.toString(),
-                                      onTap: () {
-                                        if (item.altMenuVarMi) {
-                                          item.altMenuler?.length == 1
-                                              ? item.altMenuler?.first.onTap?.call()
-                                              : setState(() {
-                                                  lastItems.add(items);
-                                                  title2.add(item.title.toString());
-                                                  items = item.altMenuler!.where((element) {
-                                                    element.color ??= item.color;
-                                                    if (element.icon.ext.isNullOrEmpty) {
-                                                      element.icon = item.icon;
-                                                    }
-                                                    return element.yetkiKontrol;
-                                                  }).toList();
-                                                });
-                                        } else {
-                                          items[index].onTap?.call();
-                                        }
-                                      },),),);
-                        },
+        appBar: appBar(scaffoldKey, context),
+        key: scaffoldKey,
+        drawerEnableOpenDragGesture: lastItems.isEmpty,
+        drawer: const SafeArea(child: LeftDrawer()),
+        endDrawer: const SafeArea(child: EndDrawer()),
+        body: SafeArea(
+          child: Column(
+            children: [
+              Expanded(
+                flex: 9,
+                child: Padding(
+                  padding: UIHelper.lowPadding,
+                  child: AnimationLimiter(
+                    child: GridView.builder(
+                      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: MediaQuery.of(context).size.width ~/ 90 > 10 ? 10 : MediaQuery.of(context).size.width ~/ 90,
+                        childAspectRatio: 0.9,
                       ),
+                      itemCount: items.length,
+                      itemBuilder: (context, index) {
+                        //* indexteki itemi burada alıyoruz
+                        final item = items[index];
+                        return AnimationConfiguration.staggeredList(
+                          position: index,
+                          duration: const Duration(milliseconds: 500),
+                          delay: const Duration(milliseconds: 50),
+                          child: FadeInAnimation(
+                            child: CustomGridTile(
+                              iconWidget: item.iconData,
+                              menuTipi: item.menuTipi,
+                              route: item.route,
+                              arguments: item.arguments,
+                              altMenuler: item.altMenuler,
+                              color: item.color,
+                              icon: item.icon,
+                              name: item.name.toString(),
+                              title: item.title.toString(),
+                              onTap: () {
+                                if (item.altMenuVarMi) {
+                                  item.altMenuler?.length == 1
+                                      ? item.altMenuler?.first.onTap?.call()
+                                      : setState(() {
+                                          lastItems.add(items);
+                                          title2.add(item.title.toString());
+                                          items = item.altMenuler!.where((element) {
+                                            element.color ??= item.color;
+                                            if (element.icon.ext.isNullOrEmpty) {
+                                              element.icon = item.icon;
+                                            }
+                                            return element.yetkiKontrol;
+                                          }).toList();
+                                        });
+                                } else {
+                                  items[index].onTap?.call();
+                                }
+                              },
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: ButtonBar(
-                      alignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            scaffoldKey.currentState!.openEndDrawer();
-                          },
-                          child: Row(
-                            children: [
-                              (CacheManager.getAnaVeri()!.userModel!.admin == "E" ? Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20) : IconHelper.smallIcon("User-Account"))
-                                  .marginOnly(right: 5),
-                              Text(CacheManager.getAnaVeri()!.userModel!.kuladi.toString(), style: theme.textTheme.bodyMedium),
-                            ],
-                          ),
+              ),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: ButtonBar(
+                    alignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          scaffoldKey.currentState!.openEndDrawer();
+                        },
+                        child: Row(
+                          children: [
+                            (CacheManager.getAnaVeri()!.userModel!.admin == "E" ? Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20) : IconHelper.smallIcon("User-Account"))
+                                .marginOnly(right: 5),
+                            Text(CacheManager.getAnaVeri()!.userModel!.kuladi.toString(), style: theme.textTheme.bodyMedium),
+                          ],
                         ),
-                        TextButton(
-                          onPressed: () {
-                            Get.toNamed("/entryCompany");
-                          },
-                          child: Row(
-                            children: [
-                              Icon(Icons.storage_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: 5),
-                              Text("${CacheManager.getVeriTabani()["Şirket"]} (${CacheManager.getVeriTabani()["Şube"]})", style: theme.textTheme.bodyMedium),
-                            ],
-                          ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Get.toNamed("/entryCompany");
+                        },
+                        child: Row(
+                          children: [
+                            Icon(Icons.storage_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: 5),
+                            Text("${CacheManager.getVeriTabani()["Şirket"]} (${CacheManager.getVeriTabani()["Şube"]})", style: theme.textTheme.bodyMedium),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          ),),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
 
     // return BaseView(
@@ -194,37 +198,38 @@ class _MainPageViewState extends BaseState<MainPageView> {
   }
 
   AppBar appBar(GlobalKey<ScaffoldState> scaffoldKey, BuildContext context) => AppBar(
-      title: AppBarTitle(title: title2.last),
-      centerTitle: true,
-      leading: anaSayfaMi
-          ? IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () {
-                setState(() {
-                  items = lastItems.last;
-                  title2.removeLast();
-                  lastItems.removeLast();
-                });
-              },
-            )
-          : IconButton(
-              icon: const Icon(Icons.star_border_outlined),
-              onPressed: () async {
-                if (scaffoldKey.currentState!.isDrawerOpen) {
-                  Navigator.pop(context);
-                } else {
-                  scaffoldKey.currentState!.openDrawer();
-                }
-              },
-            ),
-      actions: [
-        IconButton(
+        title: AppBarTitle(title: title2.last),
+        centerTitle: true,
+        leading: anaSayfaMi
+            ? IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () {
+                  setState(() {
+                    items = lastItems.last;
+                    title2.removeLast();
+                    lastItems.removeLast();
+                  });
+                },
+              )
+            : IconButton(
+                icon: const Icon(Icons.star_border_outlined),
+                onPressed: () async {
+                  if (scaffoldKey.currentState!.isDrawerOpen) {
+                    Navigator.pop(context);
+                  } else {
+                    scaffoldKey.currentState!.openDrawer();
+                  }
+                },
+              ),
+        actions: [
+          IconButton(
             onPressed: () {
               scaffoldKey.currentState!.openEndDrawer();
             },
-            icon: const Icon(Icons.person_outline_outlined),),
-      ],
-    );
+            icon: const Icon(Icons.person_outline_outlined),
+          ),
+        ],
+      );
 
   bool get anaSayfaMi => items.any((element) => element.menuTipi != "A");
   // Icon yetkiKontrolIcon(String name) {

@@ -19,7 +19,7 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
     @JsonKey(name: "SIRALAMA") String? siralama,
     String? menuKodu,
     bool? eFaturaGoster,
-    @JsonKey(name:"FILTER_BAKIYE") String? filterBakiye,
+    @JsonKey(name: "FILTER_BAKIYE") String? filterBakiye,
     List<String?>? arrGrupKodu,
     List<String?>? arrKod1,
     List<String?>? arrKod2,
@@ -27,12 +27,11 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
     List<String?>? arrKod4,
     List<String?>? arrKod5,
     List<String?>? arrSehir,
-    @JsonKey(name:"ArrPlasiyerKodu") List<String?>? arrPlasiyerKodu,
+    @JsonKey(name: "ArrPlasiyerKodu") List<String?>? arrPlasiyerKodu,
   }) = _CariRequestModel;
 
   factory CariRequestModel.fromJson(Map<String, dynamic> json) => _$CariRequestModelFromJson(json);
 
   @override
   fromJson(Map<String, dynamic> json) => _$CariRequestModelFromJson(json);
-
 }

@@ -85,15 +85,12 @@ mixin _$KasaIslemleriModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $KasaIslemleriModelCopyWith<KasaIslemleriModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $KasaIslemleriModelCopyWith<KasaIslemleriModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $KasaIslemleriModelCopyWith<$Res> {
-  factory $KasaIslemleriModelCopyWith(
-          KasaIslemleriModel value, $Res Function(KasaIslemleriModel) then) =
-      _$KasaIslemleriModelCopyWithImpl<$Res, KasaIslemleriModel>;
+  factory $KasaIslemleriModelCopyWith(KasaIslemleriModel value, $Res Function(KasaIslemleriModel) then) = _$KasaIslemleriModelCopyWithImpl<$Res, KasaIslemleriModel>;
   @useResult
   $Res call(
       {int? inckeyno,
@@ -130,8 +127,7 @@ abstract class $KasaIslemleriModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$KasaIslemleriModelCopyWithImpl<$Res, $Val extends KasaIslemleriModel>
-    implements $KasaIslemleriModelCopyWith<$Res> {
+class _$KasaIslemleriModelCopyWithImpl<$Res, $Val extends KasaIslemleriModel> implements $KasaIslemleriModelCopyWith<$Res> {
   _$KasaIslemleriModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -304,11 +300,8 @@ class _$KasaIslemleriModelCopyWithImpl<$Res, $Val extends KasaIslemleriModel>
 }
 
 /// @nodoc
-abstract class _$$KasaIslemleriModelImplCopyWith<$Res>
-    implements $KasaIslemleriModelCopyWith<$Res> {
-  factory _$$KasaIslemleriModelImplCopyWith(_$KasaIslemleriModelImpl value,
-          $Res Function(_$KasaIslemleriModelImpl) then) =
-      __$$KasaIslemleriModelImplCopyWithImpl<$Res>;
+abstract class _$$KasaIslemleriModelImplCopyWith<$Res> implements $KasaIslemleriModelCopyWith<$Res> {
+  factory _$$KasaIslemleriModelImplCopyWith(_$KasaIslemleriModelImpl value, $Res Function(_$KasaIslemleriModelImpl) then) = __$$KasaIslemleriModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -346,12 +339,8 @@ abstract class _$$KasaIslemleriModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$KasaIslemleriModelImplCopyWithImpl<$Res>
-    extends _$KasaIslemleriModelCopyWithImpl<$Res, _$KasaIslemleriModelImpl>
-    implements _$$KasaIslemleriModelImplCopyWith<$Res> {
-  __$$KasaIslemleriModelImplCopyWithImpl(_$KasaIslemleriModelImpl _value,
-      $Res Function(_$KasaIslemleriModelImpl) _then)
-      : super(_value, _then);
+class __$$KasaIslemleriModelImplCopyWithImpl<$Res> extends _$KasaIslemleriModelCopyWithImpl<$Res, _$KasaIslemleriModelImpl> implements _$$KasaIslemleriModelImplCopyWith<$Res> {
+  __$$KasaIslemleriModelImplCopyWithImpl(_$KasaIslemleriModelImpl _value, $Res Function(_$KasaIslemleriModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -554,8 +543,7 @@ class _$KasaIslemleriModelImpl extends _KasaIslemleriModel {
       this.dovizAdi})
       : super._();
 
-  factory _$KasaIslemleriModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$KasaIslemleriModelImplFromJson(json);
+  factory _$KasaIslemleriModelImpl.fromJson(Map<String, dynamic> json) => _$$KasaIslemleriModelImplFromJson(json);
 
   @override
   int? inckeyno;
@@ -623,9 +611,7 @@ class _$KasaIslemleriModelImpl extends _KasaIslemleriModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$KasaIslemleriModelImplCopyWith<_$KasaIslemleriModelImpl> get copyWith =>
-      __$$KasaIslemleriModelImplCopyWithImpl<_$KasaIslemleriModelImpl>(
-          this, _$identity);
+  _$$KasaIslemleriModelImplCopyWith<_$KasaIslemleriModelImpl> get copyWith => __$$KasaIslemleriModelImplCopyWithImpl<_$KasaIslemleriModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -670,8 +656,7 @@ abstract class _KasaIslemleriModel extends KasaIslemleriModel {
       String? dovizAdi}) = _$KasaIslemleriModelImpl;
   _KasaIslemleriModel._() : super._();
 
-  factory _KasaIslemleriModel.fromJson(Map<String, dynamic> json) =
-      _$KasaIslemleriModelImpl.fromJson;
+  factory _KasaIslemleriModel.fromJson(Map<String, dynamic> json) = _$KasaIslemleriModelImpl.fromJson;
 
   @override
   int? get inckeyno;
@@ -768,6 +753,5 @@ abstract class _KasaIslemleriModel extends KasaIslemleriModel {
   set dovizAdi(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$KasaIslemleriModelImplCopyWith<_$KasaIslemleriModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$KasaIslemleriModelImplCopyWith<_$KasaIslemleriModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

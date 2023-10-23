@@ -441,20 +441,20 @@ class ParamModel {
 
   @JsonKey(name: "MuhFislerdeRefKodSorulsun_Nazim")
   bool? muhFislerdeRefKodSorulsunNazim;
-    @JsonKey(name: "AlisOzelKod2Aktif")
-    bool? alisOzelKod2Aktif;
-    @JsonKey(name: "AlisOzelKod2Tablodan")
-    bool? alisOzelKod2Tablodan;
-    @JsonKey(name: "AlisMiktar1Gelsin")
-    bool? alisMiktar1Gelsin;
-    @JsonKey(name: "SatisOzelKod2Tablodan")
-    bool? satisOzelKod2Tablodan;
-    @JsonKey(name: "SeriCikislardaOtomatik")
-    bool? seriCikislardaOtomatik;
-    @JsonKey(name: "SerideSaatOlsun")
-    bool? serideSaatOlsun;
-    @JsonKey(name: "SeriEIrsaliyeYanit")
-    String? seriEIrsaliyeYanit;
+  @JsonKey(name: "AlisOzelKod2Aktif")
+  bool? alisOzelKod2Aktif;
+  @JsonKey(name: "AlisOzelKod2Tablodan")
+  bool? alisOzelKod2Tablodan;
+  @JsonKey(name: "AlisMiktar1Gelsin")
+  bool? alisMiktar1Gelsin;
+  @JsonKey(name: "SatisOzelKod2Tablodan")
+  bool? satisOzelKod2Tablodan;
+  @JsonKey(name: "SeriCikislardaOtomatik")
+  bool? seriCikislardaOtomatik;
+  @JsonKey(name: "SerideSaatOlsun")
+  bool? serideSaatOlsun;
+  @JsonKey(name: "SeriEIrsaliyeYanit")
+  String? seriEIrsaliyeYanit;
   factory ParamModel.fromJson(Map<String, dynamic> json) => _$ParamModelFromJson(json);
   Map<String, dynamic> toJson() => _$ParamModelToJson(this);
 

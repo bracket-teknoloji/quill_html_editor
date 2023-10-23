@@ -67,12 +67,13 @@ class _LoginViewState extends BaseState<LoginView> {
         child: Stack(
           children: [
             WaveWidget(
-                config: CustomConfig(durations: [8000, 10000], heightPercentages: [0.78, 0.8], colors: [const Color.fromRGBO(70, 59, 57, 26), Colors.black.withOpacity(0.3)]),
-                size: const Size(double.infinity, double.infinity),
-                waveAmplitude: 2,
-                wavePhase: 0,
-                duration: 200,
-                backgroundColor: theme.scaffoldBackgroundColor,),
+              config: CustomConfig(durations: [8000, 10000], heightPercentages: [0.78, 0.8], colors: [const Color.fromRGBO(70, 59, 57, 26), Colors.black.withOpacity(0.3)]),
+              size: const Size(double.infinity, double.infinity),
+              waveAmplitude: 2,
+              wavePhase: 0,
+              duration: 200,
+              backgroundColor: theme.scaffoldBackgroundColor,
+            ),
             Scaffold(
               // appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent, automaticallyImplyLeading: false),
 
@@ -100,13 +101,14 @@ class _LoginViewState extends BaseState<LoginView> {
                           Padding(
                             padding: UIHelper.midPaddingVertical,
                             child: Observer(
-                                builder: (_) => Column(
-                                      children: [
-                                        Text("Picker", style: context.theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w500)),
-                                        Text("Mobil Veri Toplama Çözümleri", style: context.theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w300)),
-                                        Text(viewModel.baseUrl).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi(viewModel.isDebug),
-                                      ],
-                                    ),),
+                              builder: (_) => Column(
+                                children: [
+                                  Text("Picker", style: context.theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w500)),
+                                  Text("Mobil Veri Toplama Çözümleri", style: context.theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w300)),
+                                  Text(viewModel.baseUrl).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi(viewModel.isDebug),
+                                ],
+                              ),
+                            ),
                           ),
                           CustomWidgetWithLabel(
                             text: "Firma",
@@ -165,17 +167,18 @@ class _LoginViewState extends BaseState<LoginView> {
                             child: CustomWidgetWithLabel(
                               text: "Şifre",
                               child: Observer(
-                                  builder: (_) => TextField(
-                                        controller: passwordController,
-                                        textInputAction: TextInputAction.done,
-                                        obscureText: viewModel.obscurePassword,
-                                        decoration: InputDecoration(
-                                          suffixIcon: IconButton(
-                                            onPressed: () => viewModel.changeShowPassword(),
-                                            icon: viewModel.obscurePassword ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
-                                          ),
-                                        ),
-                                      ),),
+                                builder: (_) => TextField(
+                                  controller: passwordController,
+                                  textInputAction: TextInputAction.done,
+                                  obscureText: viewModel.obscurePassword,
+                                  decoration: InputDecoration(
+                                    suffixIcon: IconButton(
+                                      onPressed: () => viewModel.changeShowPassword(),
+                                      icon: viewModel.obscurePassword ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                           Padding(
@@ -249,9 +252,11 @@ class _LoginViewState extends BaseState<LoginView> {
         ]);
 
         if (context.mounted && response?.accessToken != null) {
-          CacheManager.setVerifiedUser(selectedUser
-            ..username = emailController.text
-            ..password = passwordController.text,);
+          CacheManager.setVerifiedUser(
+            selectedUser
+              ..username = emailController.text
+              ..password = passwordController.text,
+          );
           CacheManager.setToken(response!.accessToken.toString());
           // final uyeBilgiResponse =
           //     await networkManager.dioPost<AccountResponseModel>(bodyModel: AccountResponseModel(), data: AccountModel.instance, addTokenKey: false, path: ApiUrls.getUyeBilgileri);

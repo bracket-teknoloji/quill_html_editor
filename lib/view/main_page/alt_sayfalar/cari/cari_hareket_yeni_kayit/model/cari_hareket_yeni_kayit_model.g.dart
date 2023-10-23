@@ -6,27 +6,21 @@ part of 'cari_hareket_yeni_kayit_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CariHareketYeniKayitModel _$CariHareketYeniKayitModelFromJson(
-        Map<String, dynamic> json) =>
-    CariHareketYeniKayitModel()
-      ..aciklama = json['ACIKLAMA'] as String?
-      ..alacak = (json['ALACAK'] as num?)?.toDouble()
-      ..borc = (json['BORC'] as num?)?.toDouble()
-      ..belgeNo = json['BELGE_NO'] as String?
-      ..cariKodu = json['CARI_KODU'] as String?
-      ..hareketKodu = json['HAREKET_KODU'] as String?
-      ..plasiyerKodu = json['PLASIYER_KODU'] as String?
-      ..projeKodu = json['PROJE_KODU'] as String?
-      ..inckeyno = json['INCKEYNO'] as int?
-      ..tarih =
-          json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
-      ..vadeTarihi = json['VADE_TARIHI'] == null
-          ? null
-          : DateTime.parse(json['VADE_TARIHI'] as String)
-      ..yeniKayit = json['_YeniKayit'] as bool?;
+CariHareketYeniKayitModel _$CariHareketYeniKayitModelFromJson(Map<String, dynamic> json) => CariHareketYeniKayitModel()
+  ..aciklama = json['ACIKLAMA'] as String?
+  ..alacak = (json['ALACAK'] as num?)?.toDouble()
+  ..borc = (json['BORC'] as num?)?.toDouble()
+  ..belgeNo = json['BELGE_NO'] as String?
+  ..cariKodu = json['CARI_KODU'] as String?
+  ..hareketKodu = json['HAREKET_KODU'] as String?
+  ..plasiyerKodu = json['PLASIYER_KODU'] as String?
+  ..projeKodu = json['PROJE_KODU'] as String?
+  ..inckeyno = json['INCKEYNO'] as int?
+  ..tarih = json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
+  ..vadeTarihi = json['VADE_TARIHI'] == null ? null : DateTime.parse(json['VADE_TARIHI'] as String)
+  ..yeniKayit = json['_YeniKayit'] as bool?;
 
-Map<String, dynamic> _$CariHareketYeniKayitModelToJson(
-    CariHareketYeniKayitModel instance) {
+Map<String, dynamic> _$CariHareketYeniKayitModelToJson(CariHareketYeniKayitModel instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

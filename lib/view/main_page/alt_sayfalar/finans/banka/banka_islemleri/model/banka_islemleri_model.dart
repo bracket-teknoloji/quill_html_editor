@@ -58,8 +58,7 @@ class BankaIslemleriModel with _$BankaIslemleriModel, NetworkManagerMixin {
     String? subeAdi,
   }) = _BankaIslemleriModel;
 
-  factory BankaIslemleriModel.fromJson(Map<String, dynamic> json) =>
-      _$BankaIslemleriModelFromJson(json);
+  factory BankaIslemleriModel.fromJson(Map<String, dynamic> json) => _$BankaIslemleriModelFromJson(json);
 
   @override
   fromJson(Map<String, dynamic> json) => _$BankaIslemleriModelFromJson(json);

@@ -53,19 +53,21 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
             title: AppBarTitle(title: widget.appBarTitle ?? "Stok Detayları", subtitle: widget.appBarSubtitle ?? widget.model?.model?.stokAdi ?? ""),
             actions: [
               Visibility(
-                  visible: widget.model?.baseEditEnum != BaseEditEnum.goruntule,
-                  child: IconButton(
-                      onPressed: () async {
-                        if (validate.isEmpty) {
-                          dialogManager.showAreYouSureDialog(postData);
-                        } else {
-                          dialogManager.showEmptyFieldDialog(
-                            validate.keys,
-                            onOk: () => tabController?.animateTo(validate.values.first),
-                          );
-                        }
-                      },
-                      icon: const Icon(Icons.save_outlined),),),
+                visible: widget.model?.baseEditEnum != BaseEditEnum.goruntule,
+                child: IconButton(
+                  onPressed: () async {
+                    if (validate.isEmpty) {
+                      dialogManager.showAreYouSureDialog(postData);
+                    } else {
+                      dialogManager.showEmptyFieldDialog(
+                        validate.keys,
+                        onOk: () => tabController?.animateTo(validate.values.first),
+                      );
+                    }
+                  },
+                  icon: const Icon(Icons.save_outlined),
+                ),
+              ),
             ],
             bottom: TabBar(
               controller: tabController,
