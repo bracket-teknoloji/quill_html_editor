@@ -103,4 +103,68 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
         return false;
     }
   }
+
+  bool get eklensinMi {
+    switch (this) {
+      case SiparisTipiEnum.musteri:
+        return yetkiController.siparisMSKaydet;
+      case SiparisTipiEnum.satici:
+        return yetkiController.siparisSSKaydet;
+      case SiparisTipiEnum.satisFatura:
+        return yetkiController.satisFatEkle;
+      case SiparisTipiEnum.satisIrsaliye:
+        return yetkiController.satisIrsEkle;
+      case SiparisTipiEnum.alisFatura:
+        return yetkiController.alisFatEkle;
+      case SiparisTipiEnum.alisIrsaliye:
+        return yetkiController.alisIrsEkle;
+    }
+  }
+  
+  bool get duzenlensinMi {
+    switch (this) {
+      case SiparisTipiEnum.musteri:
+        return yetkiController.siparisMSDuzelt;
+      case SiparisTipiEnum.satici:
+        return yetkiController.siparisSSDuzelt;
+      case SiparisTipiEnum.satisFatura:
+        return yetkiController.satisFatDuzenle;
+      case SiparisTipiEnum.satisIrsaliye:
+        return yetkiController.satisIrsDuzenle;
+      case SiparisTipiEnum.alisFatura:
+        return yetkiController.alisFatDuzenle;
+      case SiparisTipiEnum.alisIrsaliye:
+        return yetkiController.alisIrsDuzenle;
+    }
+  }
+
+  bool get silinsinMi {
+    switch (this) {
+      case SiparisTipiEnum.musteri:
+        return yetkiController.siparisMSSil;
+      case SiparisTipiEnum.satici:
+        return yetkiController.siparisSSSil;
+      case SiparisTipiEnum.satisFatura:
+        return yetkiController.satisFatSil;
+      case SiparisTipiEnum.satisIrsaliye:
+        return yetkiController.satisIrsSil;
+      case SiparisTipiEnum.alisFatura:
+        return yetkiController.alisFatSil;
+      case SiparisTipiEnum.alisIrsaliye:
+        return yetkiController.alisIrsSil;
+    }
+  }
+
+  bool get irsaliyeMi {
+    switch (this) {
+      case SiparisTipiEnum.musteri:
+      case SiparisTipiEnum.satici:
+      case SiparisTipiEnum.satisFatura:
+      case SiparisTipiEnum.alisFatura:
+        return false;
+      case SiparisTipiEnum.satisIrsaliye:
+      case SiparisTipiEnum.alisIrsaliye:
+        return true;
+    }
+  }
 }

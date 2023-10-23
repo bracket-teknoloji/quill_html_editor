@@ -51,8 +51,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
     sehirController = TextEditingController();
     ilceController = TextEditingController();
     tipiController = TextEditingController();
-    kod1Controller = TextEditingController();
-    kod2Controller = TextEditingController();
+    kod1Controller = TextEditingController();    kod2Controller = TextEditingController();
     kod3Controller = TextEditingController();
     kod4Controller = TextEditingController();
     kod5Controller = TextEditingController();

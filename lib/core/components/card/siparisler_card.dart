@@ -41,7 +41,6 @@ class SiparislerCard extends StatefulWidget {
 
   ///Eğer Bu widget Cache'den çağırılıyorsa index verilmelidir.
   final int? index;
-
   final bool? isGetData;
   final BaseSiparisEditModel model;
   final Function? onDeleted;

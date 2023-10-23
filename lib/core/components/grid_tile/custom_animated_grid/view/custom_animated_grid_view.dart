@@ -78,7 +78,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
               ),
               Expanded(
                 child: SizedBox(
-                  child: Text(widget.title ?? widget.cariListesiModel?.cariKodu ?? widget.model?.stokKodu ?? "", style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis))
+                  child: Text(widget.title ?? widget.cariListesiModel?.cariAdi ?? widget.cariListesiModel?.cariKodu ?? widget.model?.stokKodu ?? "", style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis))
                       .paddingOnly(left: UIHelper.midSize),
                 ),
               ),

@@ -226,8 +226,15 @@ class YetkiController {
 
   bool sevkiyatIrsAciklamaAlanlari(String? index) => isTrue(!isTrue(yetkiModel?.sevkiyatSatisFatGizlenecekAlanlar?.contains(index) ?? false, skipAdmin: true));
   bool sevkiyatSatisFatGizlenecekAlanlar(String? index) => isTrue(!isTrue(yetkiModel?.sevkiyatSatisFatGizlenecekAlanlar?.contains(index) ?? false, skipAdmin: true));
-
   bool sevkiyatIrsDegistirilmeyecekAlanlar(String? index) => isTrue(!isTrue(yetkiModel?.sevkiyatSatisFatDegismeyecekAlanlar?.contains(index) ?? false, skipAdmin: true));
+
+  bool get satisFatEkle => isTrue(yetkiModel?.sevkiyatSatisFatKaydet, skipAdmin: true);
+  bool get satisFatDuzenle => isTrue(yetkiModel?.sevkiyatSatisFatDuzelt, skipAdmin: true);
+  bool get satisFatSil => isTrue(yetkiModel?.sevkiyatSatisFatSil, skipAdmin: true);
+
+  bool get satisIrsEkle => isTrue(yetkiModel?.sevkiyatSatisIrsaliyesiKayit, skipAdmin: true);
+  bool get satisIrsDuzenle => isTrue(yetkiModel?.sevkiyatSatisIrsaliyesiDuzeltme, skipAdmin: true);
+  bool get satisIrsSil => isTrue(yetkiModel?.sevkiyatSatisIrsaliyesiSilme, skipAdmin: true);
 
   bool get satisFatDigerSekmesiGelsin => isTrue(yetkiModel?.sevkiyatSatisFatDigerSekmesiGoster);
   bool get satisIrsDigerSekmesiGelsin => isTrue(yetkiModel?.sevkiyatSatisIrsDigerSekmesiGoster);
@@ -237,6 +244,14 @@ class YetkiController {
   bool malKabulAlisIrsGizlenecekAlanlar(String? index) => isTrue(!isTrue(yetkiModel?.malKabulAlisIrsGizlenecekAlanlar?.contains(index) ?? false, skipAdmin: true));
 
   // bool malKabulAlisIrsDegistirilmeyecekAlanlar(String? index) => isTrue(!isTrue(yetkiModel?.degismey?.contains(index) ?? false, skipAdmin: true));
+
+  bool get alisFatEkle => isTrue(yetkiModel?.malKabulAlisFaturasiKaydet, skipAdmin: true);
+  bool get alisFatDuzenle => isTrue(yetkiModel?.malKabulAlisFaturasiDuzelt, skipAdmin: true);
+  bool get alisFatSil => isTrue(yetkiModel?.malKabulAlisFaturasiSil, skipAdmin: true);
+
+  bool get alisIrsEkle => isTrue(yetkiModel?.malKabulSatinAlmaKaydet, skipAdmin: true);
+  bool get alisIrsDuzenle => isTrue(yetkiModel?.malKabulSatinAlmaDuzelt, skipAdmin: true);
+  bool get alisIrsSil => isTrue(yetkiModel?.malKabulSatinAlmaSil, skipAdmin: true);
 
   bool get alisFatDigerSekmesiGelsin => isTrue(yetkiModel?.malKabulAlisFatDigerSekmesiGoster);
   bool get alisIrsDigerSekmesiGelsin => isTrue(yetkiModel?.malKabulAlisFatDigerSekmesiGoster);

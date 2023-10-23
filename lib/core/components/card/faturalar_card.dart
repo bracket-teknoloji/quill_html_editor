@@ -2,15 +2,18 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 
+import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../view/main_page/model/param_model.dart";
 import "../../base/model/base_edit_model.dart";
+import "../../base/model/delete_fatura_model.dart";
 import "../../base/state/base_state.dart";
 import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/enum/base_edit_enum.dart";
 import "../../constants/enum/siparis_tipi_enum.dart";
 import "../../constants/extensions/date_time_extensions.dart";
 import "../../constants/extensions/list_extensions.dart";
+import "../../constants/extensions/model_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
 import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ondalik_utils.dart";
@@ -26,8 +29,10 @@ class FaturalarCard extends StatefulWidget {
   final SiparisTipiEnum? siparisTipiEnum;
   final bool? showVade;
   final bool? showEkAciklama;
+  final Function? onDeleted;
+  final int? index;
 
-  const FaturalarCard({super.key, required this.model, this.onUpdated, this.showMiktar, this.showEkAciklama, this.showVade, this.siparisTipiEnum});
+  const FaturalarCard({super.key, required this.model, this.onUpdated, this.showMiktar, this.showEkAciklama, this.showVade, this.siparisTipiEnum, this.onDeleted, this.index});
 
   @override
   State<FaturalarCard> createState() => _FaturalarCardState();
@@ -50,7 +55,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
           onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
             context,
             title: model.cariAdi ?? "",
-            children: <BottomSheetModel>[
+            children: <BottomSheetModel?>[
               BottomSheetModel(
                 title: "Görüntüle",
                 iconWidget: Icons.search_outlined,
@@ -59,7 +64,51 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   await Get.toNamed("/mainPage/sevkiyatEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum));
                 },
               ),
-            ],
+              // BottomSheetModel(
+              //   title: "Düzenle",
+              //   iconWidget: Icons.edit_outlined,
+              //   onTap: () async {
+              //     Get.back();
+              //     await Get.toNamed("/mainPage/sevkiyatEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, siparisTipiEnum: widget.siparisTipiEnum));
+              //   },
+              // ).yetkiKontrol(widget.siparisTipiEnum?.duzenlensinMi == true),
+              BottomSheetModel(
+                title: "Sil",
+                iconWidget: Icons.delete_outline_outlined,
+                onTap: () async {
+                  Get.back();
+                  return dialogManager.showAreYouSureDialog(() async {
+                    if (widget.model.isNew == true) {
+                      try {
+                        CacheManager.removeSiparisEditList(widget.index!);
+                        dialogManager.showSuccessSnackBar("Silindi");
+                        widget.onDeleted?.call();
+                      } catch (e) {
+                        dialogManager.showAlertDialog("Hata Oluştu.\n$e");
+                      }
+                      return;
+                    }
+                    final result = await networkManager.deleteFatura(const EditFaturaModel().fromJson(widget.model.toJson()));
+                    if (result.success == true) {
+                      dialogManager.showSuccessSnackBar("Silindi");
+                      widget.onDeleted?.call();
+                    }
+                  });
+                },
+              ).yetkiKontrol(widget.siparisTipiEnum?.silinsinMi == true),
+              BottomSheetModel(
+                title: "Cari İşlemleri",
+                iconWidget: Icons.person_outline_outlined,
+                onTap: () {
+                  Get.back();
+                  dialogManager.showCariGridViewDialog(
+                    CariListesiModel()
+                      ..cariKodu = widget.model.cariKodu
+                      ..cariAdi = widget.model.cariAdi,
+                  );
+                },
+              ),
+            ].nullCheckWithGeneric,
           ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

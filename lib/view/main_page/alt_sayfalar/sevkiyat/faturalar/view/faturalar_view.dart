@@ -4,6 +4,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 
+import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
@@ -18,6 +19,7 @@ import "../../../../../../core/components/list_view/rapor_filtre_date_time_botto
 import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
 import "../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../core/constants/extensions/widget_extensions.dart";
@@ -119,7 +121,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
         extendBody: true,
         extendBodyBehindAppBar: false,
         appBar: appBar(),
-        floatingActionButton: fab(),
+        // floatingActionButton: fab(),
         body: body(),
         bottomNavigationBar: bottomBar(),
       );
@@ -221,9 +223,12 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
         builder: (_) => Visibility(
           child: CustomFloatingActionButton(
             isScrolledDown: viewModel.isScrolledDown,
-            onPressed: () {},
+            onPressed: () async {
+              await Get.toNamed("/mainPage/sevkiyatEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: widget.siparisTipiEnum));
+              await viewModel.resetPage();
+            },
           ),
-        ).yetkiVarMi(viewModel.faturaList.ext.isNotNullOrEmpty),
+        ).yetkiVarMi(viewModel.faturaList != null && widget.siparisTipiEnum.eklensinMi),
       );
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
@@ -252,6 +257,9 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                               showMiktar: viewModel.ekstraAlanlarMap["MİK"],
                               showVade: viewModel.ekstraAlanlarMap["VADE"],
                               siparisTipiEnum: widget.siparisTipiEnum,
+                              onDeleted: () async {
+                                await viewModel.resetPage();
+                              },
                             ),
                           );
                         }

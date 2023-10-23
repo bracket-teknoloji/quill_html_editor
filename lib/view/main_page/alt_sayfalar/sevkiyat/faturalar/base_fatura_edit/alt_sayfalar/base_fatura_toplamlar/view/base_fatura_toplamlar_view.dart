@@ -7,6 +7,7 @@ import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
@@ -439,7 +440,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   ),
                 ),
               ],
-            ),
+            ).yetkiVarMi(widget.model.siparisTipiEnum?.irsaliyeMi != true),
           ],
         ),
       );
@@ -461,11 +462,11 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
       iskontoTipi2Controller.text = iskList.firstWhereOrNull((ListIskTip? element) => element?.iskontoTipi == model.genisk2Tipi)?.aciklama ?? "";
       iskontoTipi3Controller.text = iskList.firstWhereOrNull((ListIskTip? element) => element?.iskontoTipi == model.genisk3Tipi)?.aciklama ?? "";
     }
-    if (model.vadeGunu == null && model.vadeTarihi == null) {
+    if (model.vadeGunu == null && model.vadeTarihi == null && widget.model.siparisTipiEnum?.irsaliyeMi != true) {
       viewModel.setVadeTarihi(DateTime.now());
-    }
-    if ((model.vadeTarihi?.difference(DateTime.now()).inDays ?? 0) < 0) {
-      viewModel.setVadeTarihi(DateTime.now());
+      if ((model.vadeTarihi?.difference(DateTime.now()).inDays ?? 0) < 0) {
+        viewModel.setVadeTarihi(DateTime.now());
+      }
     }
     vadeGunuController = TextEditingController(text: model.vadeGunu.toStringIfNotNull ?? model.vadeTarihi?.difference(DateTime.now()).inDays.toStringIfNotNull);
     eFaturaSenaryoController = TextEditingController(text: model.efaturaTipi);

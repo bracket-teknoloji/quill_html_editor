@@ -36,6 +36,8 @@ class CacheManager {
   static late Box<bool> isLicenseVerifiedBox;
   static late Box<BaseSiparisEditModel> siparisEditBox;
   static late Box<ListSiparisEditModel> siparisEditListBox;
+  static late Box<BaseSiparisEditModel> faturaEditBox;
+  static late Box<ListSiparisEditModel> faturaEditListBox;
   static late Box<Map> profilParametreBox;
 
   static final CacheManager _instance = CacheManager._init();
@@ -79,6 +81,8 @@ class CacheManager {
     siparisEditBox = await Hive.openBox<BaseSiparisEditModel>("siparisEdit");
     siparisEditListBox = await Hive.openBox<ListSiparisEditModel>("siparisEditList");
     profilParametreBox = await Hive.openBox<Map>("profilParametre");
+    faturaEditBox = await Hive.openBox<BaseSiparisEditModel>("faturaEdit");
+    faturaEditListBox = await Hive.openBox<ListSiparisEditModel>("faturaEditList");
     // profilParametreBox.clear();
     // await verifiedUsersBox.clear();
     // await hesapBilgileriBox.clear();
@@ -135,15 +139,16 @@ class CacheManager {
   /// ```
   /// {@end-tool}
   static BaseSiparisEditModel? getSiparisEdit(String key) => siparisEditBox.get(key);
-  static List<BaseSiparisEditModel?> getSiparisEditList(
-    SiparisTipiEnum siparisTipi,
-  ) =>
+  static List<BaseSiparisEditModel?> getSiparisEditList(SiparisTipiEnum siparisTipi) =>
       siparisEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel?>();
-
-  static List<BaseSiparisEditModel>? getSiparisEditLists(
-    SiparisTipiEnum siparisTipi,
-  ) =>
+  static List<BaseSiparisEditModel>? getSiparisEditLists(SiparisTipiEnum siparisTipi) =>
       siparisEditListBox.get(StaticVariables.getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel>();
+
+  static BaseSiparisEditModel? getFaturaEdit(String key) => faturaEditBox.get(key);
+  static List<BaseSiparisEditModel?> getFaturaEditList(SiparisTipiEnum siparisTipi) =>
+      faturaEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel?>();
+  static List<BaseSiparisEditModel>? getFaturaEditLists(SiparisTipiEnum siparisTipi) =>
+      faturaEditListBox.get(StaticVariables.getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel>();
 
   static BaseProfilParametreModel get getProfilParametre => BaseProfilParametreModel.fromJson(
         (profilParametreBox.get("value") ?? {}).cast<String, dynamic>().map(
@@ -177,6 +182,7 @@ class CacheManager {
   static void setIsLicenseVerified(String key, bool value) => isLicenseVerifiedBox.put(key, value);
 
   static void setSiparisEdit(BaseSiparisEditModel value) => siparisEditBox.put(value.belgeNo, value);
+  static void setFaturaEdit(BaseSiparisEditModel value) => faturaEditBox.put(value.belgeNo, value);
   static void addSiparisEditListItem(BaseSiparisEditModel value) {
     if (siparisEditListBox.get(StaticVariables.getSiparisString) == null) {
       siparisEditListBox.put(
@@ -187,9 +193,7 @@ class CacheManager {
     if (siparisEditListBox.get(StaticVariables.getSiparisString)?.list?.any((element) => element.belgeNo == value.belgeNo) ?? false) {
       siparisEditListBox.put(
         StaticVariables.getSiparisString,
-        ListSiparisEditModel(
-          list: siparisEditListBox.get(StaticVariables.getSiparisString)?.list?.map((e) => e.belgeNo == value.belgeNo ? value : e).toList(),
-        ),
+        ListSiparisEditModel(list: siparisEditListBox.get(StaticVariables.getSiparisString)?.list?.map((e) => e.belgeNo == value.belgeNo ? value : e).toList()),
       );
     } else {
       siparisEditListBox.put(
@@ -197,6 +201,31 @@ class CacheManager {
         ListSiparisEditModel(
           list: [
             ...?siparisEditListBox.get(StaticVariables.getSiparisString)?.list,
+            value,
+          ],
+        ),
+      );
+    }
+  }
+
+  static void addFaturaEditListItem(BaseSiparisEditModel value) {
+    if (faturaEditListBox.get(StaticVariables.getSiparisString) == null) {
+      faturaEditListBox.put(
+        StaticVariables.getSiparisString,
+        ListSiparisEditModel(),
+      );
+    }
+    if (faturaEditListBox.get(StaticVariables.getSiparisString)?.list?.any((element) => element.belgeNo == value.belgeNo) ?? false) {
+      faturaEditListBox.put(
+        StaticVariables.getSiparisString,
+        ListSiparisEditModel(list: faturaEditListBox.get(StaticVariables.getSiparisString)?.list?.map((e) => e.belgeNo == value.belgeNo ? value : e).toList()),
+      );
+    } else {
+      faturaEditListBox.put(
+        StaticVariables.getSiparisString,
+        ListSiparisEditModel(
+          list: [
+            ...?faturaEditListBox.get(StaticVariables.getSiparisString)?.list,
             value,
           ],
         ),
@@ -245,6 +274,30 @@ class CacheManager {
       list.removeWhere((element) => element.uuid == uuid);
     }
     await siparisEditListBox.put(
+      StaticVariables.getSiparisString,
+      ListSiparisEditModel(list: list),
+    );
+    return true;
+  }
+
+  static void removeFaturaEdit(String key) => faturaEditBox.delete(key);
+  static void removeFaturaEditList(int index) {
+    final list = faturaEditListBox.get(StaticVariables.getSiparisString)?.list;
+    if (list != null) {
+      list.removeAt(index);
+    }
+    faturaEditListBox.put(
+      StaticVariables.getSiparisString,
+      ListSiparisEditModel(list: list),
+    );
+  }
+
+  static Future<bool> removeFaturaEditListWithUuid(String? uuid) async {
+    final list = faturaEditListBox.get(StaticVariables.getSiparisString)?.list;
+    if (list != null) {
+      list.removeWhere((element) => element.uuid == uuid);
+    }
+    await faturaEditListBox.put(
       StaticVariables.getSiparisString,
       ListSiparisEditModel(list: list),
     );

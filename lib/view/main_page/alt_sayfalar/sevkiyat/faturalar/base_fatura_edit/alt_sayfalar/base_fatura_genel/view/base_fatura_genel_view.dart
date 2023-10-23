@@ -9,6 +9,7 @@ import "../../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
@@ -166,7 +167,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       _teslimCariController.text = result.cariAdi ?? "";
                     }
                   },
-                ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("teslim_cari")),
+                ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("teslim_cari") && widget.model.siparisTipiEnum?.irsaliyeMi != true),
                 Row(
                   children: <Widget>[
                     Expanded(
@@ -335,7 +336,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(16)),
                     ],
                   ),
-                ),
+                ).yetkiVarMi(widget.model.siparisTipiEnum?.irsaliyeMi != true),
               ],
             ),
           ),

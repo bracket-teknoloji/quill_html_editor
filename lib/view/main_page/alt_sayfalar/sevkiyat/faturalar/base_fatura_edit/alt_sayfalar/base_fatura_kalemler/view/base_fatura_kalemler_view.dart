@@ -150,6 +150,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
             Text(kalemModel?.stokKodu ?? ""),
             Text("${kalemModel?.depoKodu ?? ""} - ${kalemModel?.depoTanimi ?? ""}"),
             Text("Sipariş ${kalemModel?.siparisNo ?? ""} (${kalemModel?.siparisSira ?? ""})", style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor))
+                .yetkiVarMi(kalemModel?.siparisNo != null)
                 .paddingOnly(bottom: UIHelper.lowSize),
             LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constrains) => Wrap(
