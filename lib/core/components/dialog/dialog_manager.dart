@@ -78,9 +78,9 @@ class DialogManager {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 10),
-                      child: Text("Uyarı", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: UIHelper.midSize),
+                      child: const Text("Uyarı", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                     ),
                     Padding(
                       padding: UIHelper.midPaddingHorizontal,
@@ -110,9 +110,9 @@ class DialogManager {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Padding(
-              padding: EdgeInsets.only(bottom: 10),
-              child: Text("Uyarı"),
+            Padding(
+              padding: EdgeInsets.only(bottom: UIHelper.midSize),
+              child: const Text("Uyarı"),
             ),
             Padding(
               padding: UIHelper.midPaddingHorizontal,
@@ -208,18 +208,7 @@ class DialogManager {
   void get hideSnackBar => ScaffoldMessenger.of(context).clearSnackBars();
 
   void get hideAlertDialog => Get.back(closeOverlays: true);
-
-  AlertDialog loadingDialog() => AlertDialog(
-        title: Text("Lütfen Bekleyiniz...", style: context.theme.textTheme.titleMedium),
-        content: const SizedBox(
-          height: 5,
-          width: 50,
-          child: LinearProgressIndicator(
-            color: Colors.red,
-          ),
-        ),
-      );
-
+ 
   AlertDialog listTileDialog({required String title}) {
     final Box box = Hive.box("accounts");
     final Box preferences = Hive.box("preferences");

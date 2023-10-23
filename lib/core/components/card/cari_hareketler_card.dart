@@ -83,7 +83,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                                     visible: widget.cariHareketleriModel.dovizliMi,
                                     child: Text(
                                       "${widget.cariHareketleriModel.dovizBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cariHareketleriModel.dovizAdi ?? mainCurrency}",
-                                      style: theme.textTheme.bodySmall?.copyWith(fontSize: 10),
+                                      style: theme.textTheme.bodySmall?.copyWith(fontSize: UIHelper.midSize),
                                     ),
                                   ),
                                 ],

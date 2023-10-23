@@ -130,7 +130,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                                 grade: 0.1,
                               ),
                             ),
-                    ).marginOnly(bottom: 5),
+                    ).marginOnly(bottom: UIHelper.lowSize),
                     Text(
                       widget.menuTipi != "I" ? widget.title.toString() : "",
                       textAlign: TextAlign.center,

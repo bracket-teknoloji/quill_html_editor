@@ -192,7 +192,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                 TextSpan(
                   children: [
                     TextSpan(text: widget.model.kayittarihi.toDateString),
-                    TextSpan(text: "   ${widget.model.kayittarihi.toTimeString}", style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6), fontSize: 10)),
+                    TextSpan(text: "   ${widget.model.kayittarihi.toTimeString}", style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6), fontSize: UIHelper.midSize)),
                   ],
                 ),
               ),

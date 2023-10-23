@@ -99,7 +99,7 @@ void main() async {
 }
 
 class PickerApp extends StatelessWidget {
-  const PickerApp({Key? key}) : super(key: key);
+  const PickerApp({super.key});
 
   @override
   Widget build(BuildContext context) => GetMaterialApp(

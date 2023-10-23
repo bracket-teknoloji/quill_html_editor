@@ -46,7 +46,7 @@ class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> 
                     size: 20,
                     grade: 0.1,
                   ),
-                ).marginOnly(bottom: 5),
+                ).marginOnly(bottom: UIHelper.lowSize),
               Text(
                 widget.title.toString(),
                 textAlign: TextAlign.center,

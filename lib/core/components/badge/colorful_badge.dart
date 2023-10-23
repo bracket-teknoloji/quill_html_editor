@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 
 import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/extensions/widget_extensions.dart";
+import "../../constants/ui_helper/ui_helper.dart";
 
 class ColorfulBadge extends StatefulWidget {
   final Widget? label;
@@ -15,7 +16,7 @@ class ColorfulBadge extends StatefulWidget {
 class _ColorfulBadgeState extends State<ColorfulBadge> {
   @override
   Widget build(BuildContext context) => Badge(
-        textStyle: const TextStyle(fontSize: 10),
+        textStyle: TextStyle(fontSize: UIHelper.midSize),
         label: widget.label,
         textColor: widget.badgeColorEnum?.getFontColor,
         backgroundColor: widget.badgeColorEnum?.getColor,

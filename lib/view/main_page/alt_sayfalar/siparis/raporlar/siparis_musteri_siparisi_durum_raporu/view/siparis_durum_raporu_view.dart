@@ -397,7 +397,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
       } else {
         viewModel.addKalemList(kalemList);
       }
-      if (kalemList.length < 25) {
+      if (kalemList.length < parametreModel.sabitSayfalamaOgeSayisi) {
         viewModel.setDahaVarMi(false);
       } else {
         viewModel.increaseSayfa();

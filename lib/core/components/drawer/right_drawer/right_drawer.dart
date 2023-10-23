@@ -32,12 +32,12 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                   Expanded(child: LottieBuilder.network("https://assets9.lottiefiles.com/packages/lf20_yMpiqXia1k.json")),
                   Text(CacheManager.getAnaVeri()!.userModel?.adSoyad ?? "", style: theme.textTheme.bodyLarge),
                   Text(CacheManager.getVerifiedUser.account?.firma ?? "", style: theme.textTheme.bodyMedium),
-                  Text("Profil", style: theme.textTheme.bodySmall).marginOnly(top: 10),
+                  Text("Profil", style: theme.textTheme.bodySmall).marginOnly(top: UIHelper.midSize),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      if (CacheManager.getAnaVeri()!.userModel!.admin == "E") Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: 5) else const SizedBox(),
+                      if (CacheManager.getAnaVeri()!.userModel!.admin == "E") Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: UIHelper.lowSize) else const SizedBox(),
                       Text(
                         CacheManager.getAnaVeri()!.userModel?.profilAdi ?? "Yetkili Kullanıcı",
                         style: CacheManager.getAnaVeri()!.userModel?.admin == "E"
@@ -45,7 +45,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                             : theme.textTheme.bodySmall,
                       ),
                     ],
-                  ).marginOnly(bottom: 10),
+                  ).marginOnly(bottom: UIHelper.midSize),
                 ],
               ),
             ),
@@ -96,7 +96,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              IconHelper.smallIcon("sirket_degistir", color: UIHelper.primaryColor, size: 24).marginOnly(right: 10),
+                              IconHelper.smallIcon("sirket_degistir", color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
                               Text("Şirket Değiştir", style: theme.textTheme.bodySmall),
                             ],
                           ),
@@ -122,7 +122,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.logout_outlined, color: UIHelper.primaryColor, size: 24).marginOnly(right: 10),
+                              Icon(Icons.logout_outlined, color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
                               Text("Çıkış", style: theme.textTheme.bodySmall),
                             ],
                           ),

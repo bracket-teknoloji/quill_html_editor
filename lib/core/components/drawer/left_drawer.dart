@@ -36,7 +36,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                 },
                 icon: Icon(isEditing ? Icons.edit_off_outlined : Icons.edit_outlined),
               ),
-              contentPadding: const EdgeInsets.only(left: 12, top: 10, bottom: 10),
+              contentPadding:  EdgeInsets.only(left: 12, top:UIHelper.midSize, bottom:UIHelper.midSize),
             ),
             const Divider(),
             if (list.ext.isNullOrEmpty)

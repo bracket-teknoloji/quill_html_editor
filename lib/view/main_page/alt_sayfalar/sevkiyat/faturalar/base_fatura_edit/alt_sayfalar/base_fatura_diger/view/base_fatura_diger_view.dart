@@ -47,7 +47,7 @@ class _BaseFaturaDigerViewState extends BaseState<BaseFaturaDigerView> {
                 isEnabled: enable,
                 minHeight: height,
                 hintTextAlign: TextAlign.start,
-                padding: const EdgeInsets.only(left: 10, top: 5),
+                padding: EdgeInsets.only(left: UIHelper.midSize, top: UIHelper.lowSize),
                 hintTextPadding: EdgeInsets.zero,
                 inputAction: InputAction.newline,
                 textStyle: const TextStyle(color: Colors.white),

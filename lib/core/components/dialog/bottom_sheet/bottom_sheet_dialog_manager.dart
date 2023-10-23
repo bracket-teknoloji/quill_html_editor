@@ -53,7 +53,7 @@ class BottomSheetDialogManager {
                 title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
                 trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
                 splashColor: Colors.transparent,
-              ).paddingSymmetric(vertical: 10),
+              ).paddingSymmetric(vertical: UIHelper.midSize),
               const Divider(
                 thickness: 2,
                 endIndent: 0,
@@ -107,7 +107,7 @@ class BottomSheetDialogManager {
                                 Container(),
                             ],
                           ),
-                        ).paddingOnly(bottom: 10),
+                        ).paddingOnly(bottom: UIHelper.midSize),
                       )
                     : Center(child: Text("Veri bulunamadı.", style: context.theme.textTheme.titleMedium)).paddingAll(UIHelper.highSize)
               else
@@ -140,7 +140,7 @@ class BottomSheetDialogManager {
               title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
               trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
               splashColor: Colors.transparent,
-            ).paddingSymmetric(vertical: 10),
+            ).paddingSymmetric(vertical: UIHelper.midSize),
             const Divider(
               thickness: 2,
               endIndent: 0,
@@ -189,7 +189,7 @@ class BottomSheetDialogManager {
                                 ),
                               ),
                             ],
-                          ).paddingOnly(bottom: 10),
+                          ).paddingOnly(bottom: UIHelper.midSize),
                         ),
                       ),
                     ),
@@ -236,7 +236,7 @@ class BottomSheetDialogManager {
               title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
               trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
               splashColor: Colors.transparent,
-            ).paddingSymmetric(vertical: 10),
+            ).paddingSymmetric(vertical: UIHelper.midSize),
             const Divider(
               thickness: 2,
               endIndent: 0,
@@ -282,7 +282,7 @@ class BottomSheetDialogManager {
                                 else
                                   Container(),
                               ],
-                            ).paddingOnly(bottom: 10),
+                            ).paddingOnly(bottom: UIHelper.midSize),
                           ),
                         ),
                       ),

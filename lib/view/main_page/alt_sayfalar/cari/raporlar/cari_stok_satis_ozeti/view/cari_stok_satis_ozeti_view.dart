@@ -301,7 +301,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
 
   Future<String?> getGrupKodu(int grupNo, TextEditingController? controller) async {
     if (grupKodList.isEmptyOrNull) {
-      dialogManager.loadingDialog();
+      dialogManager.showLoadingDialog("Yükleniyor...");
       grupKodList = await networkManager.getGrupKod(name: "STOK", grupNo: -1);
       dialogManager.hideAlertDialog;
     }

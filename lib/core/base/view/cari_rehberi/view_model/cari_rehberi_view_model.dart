@@ -151,7 +151,7 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
       } else {
         addCariListesi(list);
       }
-      if (list.length < 25) {
+      if (list.length < parametreModel.sabitSayfalamaOgeSayisi) {
         setDahaVarMi(false);
       } else {
         setDahaVarMi(true);
