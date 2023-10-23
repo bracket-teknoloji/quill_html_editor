@@ -41,7 +41,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
   }
 
   @override
-  dispose() {
+  void dispose() {
     pdfViewerController.dispose();
     super.dispose();
   }

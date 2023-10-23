@@ -33,5 +33,5 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
   factory CariRequestModel.fromJson(Map<String, dynamic> json) => _$CariRequestModelFromJson(json);
 
   @override
-  fromJson(Map<String, dynamic> json) => _$CariRequestModelFromJson(json);
+  CariRequestModel fromJson(Map<String, dynamic> json) => _$CariRequestModelFromJson(json);
 }

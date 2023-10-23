@@ -28,10 +28,7 @@ abstract class PdfModel with _$PdfModel, NetworkManagerMixin {
   // DicParams? dicParams;
   factory PdfModel.fromJson(Map<String, dynamic> json) => _$PdfModelFromJson(json);
   @override
-  fromJson(Map<String, dynamic> json) => _$PdfModelFromJson(json);
-
-  @override
-  toString() => toJson().toString();
+  PdfModel fromJson(Map<String, dynamic> json) => _$PdfModelFromJson(json);
 }
 
 // @JsonSerializable()

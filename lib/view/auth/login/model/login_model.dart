@@ -37,7 +37,7 @@ class TokenModel with NetworkManagerMixin {
   TokenModel();
 
   @override
-  fromJson(Map<String, dynamic> json) => _$TokenModelFromJson(json);
+  TokenModel fromJson(Map<String, dynamic> json) => _$TokenModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$TokenModelToJson(this);

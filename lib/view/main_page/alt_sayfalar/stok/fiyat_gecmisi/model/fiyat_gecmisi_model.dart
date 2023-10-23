@@ -15,7 +15,7 @@ class FiyatGecmisiModel with NetworkManagerMixin {
   String? fiyatTipi;
 
   @override
-  fromJson(Map<String, dynamic> json) => _$FiyatGecmisiModelFromJson(json);
+  FiyatGecmisiModel fromJson(Map<String, dynamic> json) => _$FiyatGecmisiModelFromJson(json);
   @override
   Map<String, dynamic> toJson() => _$FiyatGecmisiModelToJson(this);
 }

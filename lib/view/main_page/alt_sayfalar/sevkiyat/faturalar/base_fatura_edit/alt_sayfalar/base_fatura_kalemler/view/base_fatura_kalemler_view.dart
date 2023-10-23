@@ -44,7 +44,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
   }
 
   @override
-  dispose() {
+  void dispose() {
     _searchTextController.dispose();
     super.dispose();
   }
@@ -237,8 +237,8 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
         // trailing: IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
       );
 
-  listTileBottomSheet(BuildContext context, int index) {
-    bottomSheetDialogManager.showBottomSheetDialog(
+  Future<void> listTileBottomSheet(BuildContext context, int index) async {
+    await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: viewModel.kalemList?[index].stokAdi ?? "",
       children: <BottomSheetModel?>[

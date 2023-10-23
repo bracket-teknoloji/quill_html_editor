@@ -24,5 +24,5 @@ abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, Network
   //Empty constructor
   BaseProfilParametreModel._();
   @override
-  fromJson(Map<String, dynamic> json) => _$BaseProfilParametreModelFromJson(json);
+  BaseProfilParametreModel fromJson(Map<String, dynamic> json) => _$BaseProfilParametreModelFromJson(json);
 }

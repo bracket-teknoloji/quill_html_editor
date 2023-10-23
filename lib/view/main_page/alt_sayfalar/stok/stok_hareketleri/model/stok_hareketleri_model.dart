@@ -33,7 +33,7 @@ class StokHareketleriModel with NetworkManagerMixin {
   String? plasiyerKodu;
   String? plasiyerAciklama;
   @override
-  fromJson(Map<String, dynamic> json) => _$StokHareketleriModelFromJson(json);
+  StokHareketleriModel fromJson(Map<String, dynamic> json) => _$StokHareketleriModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$StokHareketleriModelToJson(this);

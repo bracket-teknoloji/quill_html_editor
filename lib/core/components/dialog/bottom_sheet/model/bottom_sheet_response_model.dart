@@ -34,7 +34,7 @@ class BottomSheetResponseModel {
     cariTipi = null;
   }
 
-  toJson() {
+  Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data["filterBakiye"] = filterBakiye;
     data["arrSehir"] = arrSehir;

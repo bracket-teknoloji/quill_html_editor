@@ -146,7 +146,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
     return Future.value(viewModel.futureController.value);
   }
 
-  void filterOnChanged(index) {
+  void filterOnChanged(int? index) {
     viewModel.pdfModel.dicParams?.bastar = baslangicTarihiController.text;
     viewModel.pdfModel.dicParams?.bittar = bitisTarihiController.text;
   }

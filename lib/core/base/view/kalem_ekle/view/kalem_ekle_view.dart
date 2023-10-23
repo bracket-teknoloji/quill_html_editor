@@ -691,7 +691,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
         ),
       );
 
-  String? miktar2Validator(p0) {
+  String? miktar2Validator(String? p0) {
     if (viewModel.model?.koliMi == true) {
       if (p0 == "" || p0 == null) {
         return "Lütfen miktar giriniz";

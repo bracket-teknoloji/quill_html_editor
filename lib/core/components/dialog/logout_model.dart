@@ -13,7 +13,7 @@ class LogoutModel with NetworkManagerMixin {
   LogoutModel();
 
   @override
-  fromJson(Map<String, dynamic> json) => _$LogoutModelFromJson(json);
+  LogoutModel fromJson(Map<String, dynamic> json) => _$LogoutModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$LogoutModelToJson(this);

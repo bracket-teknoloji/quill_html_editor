@@ -12,7 +12,7 @@ class BasePdfModel with NetworkManagerMixin {
   double? reportHeight;
 
   @override
-  fromJson(Map<String, dynamic> json) => _$BasePdfModelFromJson(json);
+  BasePdfModel fromJson(Map<String, dynamic> json) => _$BasePdfModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$BasePdfModelToJson(this);

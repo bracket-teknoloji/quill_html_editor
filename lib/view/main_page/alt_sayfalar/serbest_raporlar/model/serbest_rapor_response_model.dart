@@ -54,7 +54,7 @@ class SerbestRaporResponseModel with NetworkManagerMixin {
   bool get cariVKNMi => rehberTipi == "CARI_VKN";
 
   @override
-  fromJson(Map<String, dynamic> json) => _$SerbestRaporResponseModelFromJson(json);
+  SerbestRaporResponseModel fromJson(Map<String, dynamic> json) => _$SerbestRaporResponseModelFromJson(json);
   @override
   Map<String, dynamic> toJson() => _$SerbestRaporResponseModelToJson(this);
 }

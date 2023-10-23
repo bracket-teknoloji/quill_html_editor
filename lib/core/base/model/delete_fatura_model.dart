@@ -43,5 +43,5 @@ class EditFaturaModel with NetworkManagerMixin, _$EditFaturaModel {
       );
 
   @override
-  fromJson(Map<String, dynamic> json) => _$EditFaturaModelFromJson(json);
+  EditFaturaModel fromJson(Map<String, dynamic> json) => _$EditFaturaModelFromJson(json);
 }

@@ -30,13 +30,13 @@ class AccountModel with NetworkManagerMixin {
   }
   static AccountModel instance = AccountModel.getValue();
 
-  static setFromAccountResponseModel(AccountResponseModel? model) {
+  static void setFromAccountResponseModel(AccountResponseModel? model) {
     instance.uyeEmail = model?.email;
     instance.uyeSifre = model?.parola;
   }
 
   //setter for instance
-  static setInstance(AccountModel value) => instance = value;
+  static void setInstance(AccountModel value) => instance = value;
 
   AccountModel();
   @HiveField(0)
@@ -277,7 +277,7 @@ class AccountModel with NetworkManagerMixin {
       kDebugMode;
 
   @override
-  fromJson(Map<String, dynamic> json) => _$AccountModelFromJson(json);
+  AccountModel fromJson(Map<String, dynamic> json) => _$AccountModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$AccountModelToJson(this);
@@ -288,7 +288,7 @@ class ParamMap with NetworkManagerMixin {
   ParamMap();
 
   @override
-  fromJson(Map<String, dynamic> json) => _$ParamMapFromJson(json);
+  ParamMap fromJson(Map<String, dynamic> json) => _$ParamMapFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$ParamMapToJson(this);

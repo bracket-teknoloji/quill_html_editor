@@ -65,7 +65,7 @@ class SaveStokModel with NetworkManagerMixin {
   @JsonKey(name: "_YeniKayit")
   bool? yeniKayit;
   @override
-  fromJson(Map<String, dynamic> json) => _$SaveStokModelFromJson(json);
+  SaveStokModel fromJson(Map<String, dynamic> json) => _$SaveStokModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$SaveStokModelToJson(this);

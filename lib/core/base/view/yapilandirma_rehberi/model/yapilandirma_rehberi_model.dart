@@ -21,5 +21,5 @@ class YapilandirmaRehberiModel with _$YapilandirmaRehberiModel, NetworkManagerMi
   factory YapilandirmaRehberiModel.fromJson(Map<String, dynamic> json) => _$YapilandirmaRehberiModelFromJson(json);
 
   @override
-  fromJson(Map<String, dynamic> json) => _$YapilandirmaRehberiModelFromJson(json);
+  YapilandirmaRehberiModel fromJson(Map<String, dynamic> json) => _$YapilandirmaRehberiModelFromJson(json);
 }

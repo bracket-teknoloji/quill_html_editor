@@ -44,7 +44,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
   }
 
   @override
-  dispose() {
+  void dispose() {
     _searchTextController.dispose();
     super.dispose();
   }
@@ -237,8 +237,8 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
         // trailing: IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
       );
 
-  listTileBottomSheet(BuildContext context, int index) {
-    bottomSheetDialogManager.showBottomSheetDialog(
+  Future<void> listTileBottomSheet(BuildContext context, int index) async{
+    await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: viewModel.kalemList?[index].stokAdi ?? "",
       children: [

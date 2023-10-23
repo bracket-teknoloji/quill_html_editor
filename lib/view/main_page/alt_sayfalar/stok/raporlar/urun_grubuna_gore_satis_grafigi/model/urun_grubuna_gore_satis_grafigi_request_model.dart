@@ -30,7 +30,7 @@ class UrunGrubunaGoreSatisGrafigiRequestModel with NetworkManagerMixin {
   });
 
   @override
-  fromJson(Map<String, dynamic> json) => _$UrunGrubunaGoreSatisGrafigiRequestModelFromJson(json);
+  UrunGrubunaGoreSatisGrafigiRequestModel fromJson(Map<String, dynamic> json) => _$UrunGrubunaGoreSatisGrafigiRequestModelFromJson(json);
   @override
   Map<String, dynamic> toJson() => _$UrunGrubunaGoreSatisGrafigiRequestModelToJson(this);
 }

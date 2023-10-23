@@ -10,7 +10,7 @@ class BaseEditSiradakiKodModel with NetworkManagerMixin {
   String? siradakiKod;
 
   @override
-  fromJson(Map<String, dynamic> json) => _$BaseEditSiradakiKodModelFromJson(json);
+  BaseEditSiradakiKodModel fromJson(Map<String, dynamic> json) => _$BaseEditSiradakiKodModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$BaseEditSiradakiKodModelToJson(this);

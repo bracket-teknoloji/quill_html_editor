@@ -25,10 +25,10 @@ abstract class DovizKurlariModel with _$DovizKurlariModel, NetworkManagerMixin {
   }) = _DovizKurlariModel;
   factory DovizKurlariModel.fromJson(Map<String, dynamic> json) => _$DovizKurlariModelFromJson(json);
   @override
-  fromJson(Map<String, dynamic> json) => _$DovizKurlariModelFromJson(json);
+  DovizKurlariModel fromJson(Map<String, dynamic> json) => _$DovizKurlariModelFromJson(json);
 
   @override
-  toString() => toJson().toString();
+  String toString() => toJson().toString();
 }
 
 @unfreezed
@@ -65,8 +65,8 @@ abstract class DovizKurlariRequestModel with _$DovizKurlariRequestModel, Network
         tarih: model.tarih,
       );
   @override
-  fromJson(Map<String, dynamic> json) => _$DovizKurlariRequestModelFromJson(json);
+  DovizKurlariRequestModel fromJson(Map<String, dynamic> json) => _$DovizKurlariRequestModelFromJson(json);
 
   @override
-  toString() => toJson().toString();
+  String toString() => toJson().toString();
 }

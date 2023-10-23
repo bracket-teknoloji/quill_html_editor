@@ -67,5 +67,5 @@ class StokYeniKayitModel with _$StokYeniKayitModel, NetworkManagerMixin {
   factory StokYeniKayitModel.fromJson(Map<String, dynamic> json) => _$StokYeniKayitModelFromJson(json);
 
   @override
-  fromJson(Map<String, dynamic> json) => _$StokYeniKayitModelFromJson(json);
+  StokYeniKayitModel fromJson(Map<String, dynamic> json) => _$StokYeniKayitModelFromJson(json);
 }

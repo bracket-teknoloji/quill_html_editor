@@ -11,7 +11,7 @@ class AppThemeDark extends AppTheme {
   static AppThemeDark? get instance => _instance ??= AppThemeDark._init();
 
   AppThemeDark._init();
-  var colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark);
+  ColorScheme colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark);
   @override
   ThemeData get theme => ThemeData(
         platform: GetPlatform.isIOS ? TargetPlatform.iOS : TargetPlatform.android,

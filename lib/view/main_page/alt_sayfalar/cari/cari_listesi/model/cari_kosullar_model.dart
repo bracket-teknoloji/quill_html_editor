@@ -34,7 +34,7 @@ class CariKosullarModel with NetworkManagerMixin {
   double? iskAraIsk3;
 
   @override
-  fromJson(Map<String, dynamic> json) => _$CariKosullarModelFromJson(json);
+  CariKosullarModel fromJson(Map<String, dynamic> json) => _$CariKosullarModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$CariKosullarModelToJson(this);

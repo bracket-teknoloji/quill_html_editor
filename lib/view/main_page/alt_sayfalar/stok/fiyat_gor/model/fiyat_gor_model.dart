@@ -15,7 +15,7 @@ class FiyatGorModel with NetworkManagerMixin {
   double? fiyat4;
   double? kdvOrani;
   @override
-  fromJson(Map<String, dynamic> json) => _$FiyatGorModelFromJson(json);
+  FiyatGorModel fromJson(Map<String, dynamic> json) => _$FiyatGorModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$FiyatGorModelToJson(this);

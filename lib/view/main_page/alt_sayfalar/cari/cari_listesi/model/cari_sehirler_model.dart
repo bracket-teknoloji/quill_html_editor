@@ -11,7 +11,7 @@ class CariSehirlerModel with NetworkManagerMixin {
   @HiveField(0)
   String? sehirAdi;
   @override
-  fromJson(Map<String, dynamic> json) => _$CariSehirlerModelFromJson(json);
+  CariSehirlerModel fromJson(Map<String, dynamic> json) => _$CariSehirlerModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$CariSehirlerModelToJson(this);

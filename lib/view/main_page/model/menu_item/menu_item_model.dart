@@ -9,21 +9,21 @@ class MenuItemModel {
   String? route;
   CustomGridTile? gridTile;
 
-  get getTitle => title;
+  String? get getTitle => title;
 
-  set setTitle(title) => this.title = title;
+  set setTitle(String? title) => this.title = title;
 
-  get getIcon => icon;
+  String? get getIcon => icon;
 
-  set setIcon(icon) => this.icon = icon;
+  set setIcon(String? titleicon) => icon = icon;
 
-  get getColor => color;
+  Color? get getColor => color;
 
-  set setColor(color) => this.color = color;
+  set setColor(Color? color) => this.color = color;
 
-  get getRoute => route;
+  String? get getRoute => route;
 
-  set setRoute(route) => this.route = route;
+  set setRoute(String? route) => this.route = route;
 
   MenuItemModel({this.title, this.icon, this.route});
 }

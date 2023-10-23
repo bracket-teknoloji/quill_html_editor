@@ -102,7 +102,7 @@ class _StokEkstreViewState extends BaseState<StokEkstreView> {
     return Future.value(viewModel.futureController.value);
   }
 
-  void filterOnChanged(index) {
+  void filterOnChanged(int? index) {
     viewModel.pdfModel.dicParams?.bastar = baslangicTarihiController.text;
     viewModel.pdfModel.dicParams?.bittar = bitisTarihiController.text;
   }

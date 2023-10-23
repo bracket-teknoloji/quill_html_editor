@@ -10,7 +10,7 @@ class StokOlcuBirimleriModel with NetworkManagerMixin {
   String? olcuBirimi;
 
   @override
-  fromJson(Map<String, dynamic> json) => _$StokOlcuBirimleriModelFromJson(json);
+  StokOlcuBirimleriModel fromJson(Map<String, dynamic> json) => _$StokOlcuBirimleriModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$StokOlcuBirimleriModelToJson(this);

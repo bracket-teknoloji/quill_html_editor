@@ -14,7 +14,7 @@ class TemsilciProfilModel with NetworkManagerMixin {
   double? tutar;
 
   @override
-  fromJson(Map<String, dynamic> json) => _$TemsilciProfilModelFromJson(json);
+  TemsilciProfilModel fromJson(Map<String, dynamic> json) => _$TemsilciProfilModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$TemsilciProfilModelToJson(this);

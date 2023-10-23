@@ -286,7 +286,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
         ),
       );
 
-  filtrele() async => await bottomSheetDialogManager.showBottomSheetDialog(
+  Future<void> filtrele() async => await bottomSheetDialogManager.showBottomSheetDialog(
         context,
         title: "Filtrele",
         body: Column(

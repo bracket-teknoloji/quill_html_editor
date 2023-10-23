@@ -23,5 +23,5 @@ class PrintModel with _$PrintModel, NetworkManagerMixin {
   factory PrintModel.fromJson(Map<String, dynamic> json) => _$PrintModelFromJson(json);
 
   @override
-  fromJson(Map<String, dynamic> json) => _$PrintModelFromJson(json);
+  PrintModel fromJson(Map<String, dynamic> json) => _$PrintModelFromJson(json);
 }

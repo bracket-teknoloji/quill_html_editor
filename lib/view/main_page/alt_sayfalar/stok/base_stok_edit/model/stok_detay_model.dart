@@ -15,7 +15,7 @@ class StokDetayModel with NetworkManagerMixin {
   }
 
   //setter for singleton
-  static setInstance(StokDetayModel value) => _instance = value;
+  static void setInstance(StokDetayModel value) => _instance = value;
   String? stokKodu;
   String? stokAdi;
   @JsonKey(name: "SeriList")
@@ -30,7 +30,7 @@ class StokDetayModel with NetworkManagerMixin {
   StokDetayModel();
 
   @override
-  fromJson(Map<String, dynamic> json) => _$StokDetayModelFromJson(json);
+  StokDetayModel fromJson(Map<String, dynamic> json) => _$StokDetayModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$StokDetayModelToJson(this);
@@ -53,5 +53,5 @@ class FiyatList {
 
   factory FiyatList.fromJson(Map<String, dynamic> json) => _$FiyatListFromJson(json);
 
-  toJson() => _$FiyatListToJson(this);
+  Map<String,dynamic> toJson() => _$FiyatListToJson(this);
 }

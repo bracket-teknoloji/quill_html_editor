@@ -199,7 +199,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ),
       );
 
-  String? validator(p0) {
+  String? validator(String? p0) {
     if (p0 == null || p0.isEmpty) {
       return "${widget.labelText ?? ""} boş bırakılamaz";
     } else if (widget.maxLength != null && p0.length > widget.maxLength!) {

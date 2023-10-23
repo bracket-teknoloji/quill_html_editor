@@ -595,7 +595,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   void get setCache => CacheManager.setSiparisEdit(_instance!);
   @override
-  fromJson(Map<String, dynamic> json) => _$BaseSiparisEditModelFromJson(json);
+  BaseSiparisEditModel fromJson(Map<String, dynamic> json) => _$BaseSiparisEditModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$BaseSiparisEditModelToJson(this);
@@ -958,5 +958,5 @@ class KalemModel with NetworkManagerMixin {
   Map<String, dynamic> toJson() => _$KalemModelToJson(this);
 
   @override
-  fromJson(Map<String, dynamic> json) => _$KalemModelFromJson(json);
+  KalemModel fromJson(Map<String, dynamic> json) => _$KalemModelFromJson(json);
 }

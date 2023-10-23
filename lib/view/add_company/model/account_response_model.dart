@@ -52,7 +52,7 @@ class AccountResponseModel with NetworkManagerMixin {
   AccountResponseModel.demo({this.firma, this.email});
 
   @override
-  fromJson(Map<String, dynamic> json) => _$AccountResponseModelFromJson(json);
+  AccountResponseModel fromJson(Map<String, dynamic> json) => _$AccountResponseModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$AccountResponseModelToJson(this);

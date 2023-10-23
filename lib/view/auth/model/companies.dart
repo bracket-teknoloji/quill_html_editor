@@ -13,13 +13,13 @@ class CompanyModel with NetworkManagerMixin {
 
   CompanyModel();
   @override
-  fromJson(dynamic json) => _$CompanyModelFromJson(json);
+  CompanyModel fromJson(dynamic json) => _$CompanyModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$CompanyModelToJson(this);
 
   @override
-  toString() => "company: $company,\n year: $year";
+  String toString() => "company: $company,\n year: $year";
 
   //operator == and hashCode
   @override

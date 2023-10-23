@@ -31,7 +31,7 @@ import "view_model/bottom_sheet_state_manager.dart";
 
 class BottomSheetDialogManager {
   BottomSheetStateManager viewModel = BottomSheetStateManager();
-  showBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel>? children, bool aramaVarMi = false}) async {
+  Future<dynamic> showBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel>? children, bool aramaVarMi = false}) async {
     final List<BottomSheetModel>? children2 = children;
     //if keyboard is open, close it
     //FocusScope.of(context).unfocus();
@@ -122,7 +122,7 @@ class BottomSheetDialogManager {
     );
   }
 
-  showRadioBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel?>? children}) async {
+  Future<dynamic> showRadioBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel?>? children}) async {
     children = children?.nullCheckWithGeneric;
     //FocusScope.of(context).unfocus();
     return showModalBottomSheet(
@@ -211,7 +211,7 @@ class BottomSheetDialogManager {
     );
   }
 
-  showCheckBoxBottomSheetDialog(BuildContext context, {List<BottomSheetModel>? children, required String title, bool onlyValue = false}) async {
+  Future<dynamic> showCheckBoxBottomSheetDialog(BuildContext context, {List<BottomSheetModel>? children, required String title, bool onlyValue = false}) async {
     List<dynamic>? list;
     if (viewModel.isSelectedListMap?[title] == null) {
       viewModel.changeIsSelectedListMap(title, List.generate(children!.length, (int index) => false));
@@ -330,7 +330,7 @@ class BottomSheetDialogManager {
         title: "Ödeme Kodu seç",
         children: CacheManager.getAnaVeri()?.paramModel?.listCariOdemeKodu?.map((ListCariOdemeKodu e) => BottomSheetModel(title: e.aciklama ?? "", value: e)).toList(),
       );
-  showCariTipiBottomSheetDialog(BuildContext context) async => await showRadioBottomSheetDialog(
+  Future<String?>showCariTipiBottomSheetDialog(BuildContext context) async => await showRadioBottomSheetDialog(
         context,
         title: "Tipi seç",
         children: <BottomSheetModel?>[

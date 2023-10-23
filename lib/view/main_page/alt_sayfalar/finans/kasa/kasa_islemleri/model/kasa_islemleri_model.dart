@@ -45,5 +45,5 @@ class KasaIslemleriModel with _$KasaIslemleriModel, NetworkManagerMixin {
   factory KasaIslemleriModel.fromJson(Map<String, dynamic> json) => _$KasaIslemleriModelFromJson(json);
 
   @override
-  fromJson(Map<String, dynamic> json) => _$KasaIslemleriModelFromJson(json);
+  KasaIslemleriModel fromJson(Map<String, dynamic> json) => _$KasaIslemleriModelFromJson(json);
 }

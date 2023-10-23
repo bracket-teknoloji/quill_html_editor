@@ -72,67 +72,67 @@ abstract class _BaseCariGenelEditViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  changeIl(String? value) {
+  void changeIl(String? value) {
     model = model?.copyWith(sehir: value);
     CariSaveRequestModel.setInstance(model);
   }
 
   @action
-  changeWeb(String? value) {
+  void changeWeb(String? value) {
     model = model?.copyWith(website: value);
     CariSaveRequestModel.setInstance(model);
   }
 
   @action
-  changeEposta(String? value) {
+  void changeEposta(String? value) {
     model = model?.copyWith(eposta: value);
     CariSaveRequestModel.setInstance(model);
   }
 
   @action
-  changeVergiDairesi(String? value) {
+  void changeVergiDairesi(String? value) {
     model = model?.copyWith(vergiDairesi: value);
     CariSaveRequestModel.setInstance(model);
   }
 
   @action
-  changeVergiNo(String? value) {
+  void changeVergiNo(String? value) {
     model = model?.copyWith(vergiNo: value);
     CariSaveRequestModel.setInstance(model);
   }
 
   @action
-  changeIlce(String? value) {
+  void changeIlce(String? value) {
     model = model?.copyWith(ilce: value);
     CariSaveRequestModel.setInstance(model);
   }
 
   @action
-  changePostaKodu(String? value) {
+  void changePostaKodu(String? value) {
     model = model?.copyWith(postakodu: value);
     CariSaveRequestModel.setInstance(model);
   }
 
   @action
-  changeAdres(String? value) {
+  void changeAdres(String? value) {
     model = model?.copyWith(adres: value);
     CariSaveRequestModel.setInstance(model);
   }
 
   @action
-  changeTelefon(String? value) {
+  void changeTelefon(String? value) {
     model = model?.copyWith(telefon: value);
     CariSaveRequestModel.setInstance(model);
   }
 
   @action
-  changeVadeGunu(int? value) {
+  void changeVadeGunu(int? value) {
     model = model?.copyWith(vadeGunu: value.toStringIfNotNull);
     CariSaveRequestModel.setInstance(model);
   }
 
   @action
-  changeDovizTipi(DovizList? value) {
+  void changeDovizTipi(DovizList? value) {
     model = model?.copyWith(dovizKodu: value?.dovizKodu, dovizKoduAciklama: value?.isim);
     CariSaveRequestModel.setInstance(model);
   }

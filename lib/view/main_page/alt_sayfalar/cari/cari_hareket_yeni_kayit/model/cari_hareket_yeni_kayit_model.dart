@@ -21,7 +21,7 @@ class CariHareketYeniKayitModel with NetworkManagerMixin {
   bool? yeniKayit;
 
   @override
-  fromJson(Map<String, dynamic> json) => _$CariHareketYeniKayitModelFromJson(json);
+  CariHareketYeniKayitModel fromJson(Map<String, dynamic> json) => _$CariHareketYeniKayitModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$CariHareketYeniKayitModelToJson(this);

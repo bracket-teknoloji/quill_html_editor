@@ -59,14 +59,16 @@ linter:
     # unawaited_futures: true
     unnecessary_breaks: true
     unnecessary_lambdas: true
-    # unnecessary_null_aware_operator_on_extension_on_nullable: true
     unnecessary_parenthesis: true
     unnecessary_to_list_in_spreads: true
+    # unnecessary_null_aware_operator_on_extension_on_nullable: true
     use_build_context_synchronously: true
     avoid_type_to_string: true
     avoid_init_to_null: true
     prefer_if_elements_to_conditional_expressions: true
     require_trailing_commas: true
+    type_annotate_public_apis: true
+    use_enums : true
 
 
 # Additional information about this file can be found at

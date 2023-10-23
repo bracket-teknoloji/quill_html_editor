@@ -21,7 +21,7 @@ class SiradakiBelgeNoModel with NetworkManagerMixin {
   });
 
   @override
-  fromJson(Map<String, dynamic> json) => _$SiradakiBelgeNoModelFromJson(json);
+  SiradakiBelgeNoModel fromJson(Map<String, dynamic> json) => _$SiradakiBelgeNoModelFromJson(json);
   @override
   Map<String, dynamic> toJson() => _$SiradakiBelgeNoModelToJson(this);
 }

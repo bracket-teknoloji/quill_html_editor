@@ -265,5 +265,5 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
     return null;
   }
 
-  void filterOnChanged(index) {}
+  void filterOnChanged(int? index) {}
 }

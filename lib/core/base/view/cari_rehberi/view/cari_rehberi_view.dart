@@ -45,7 +45,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
   late final FocusNode searchFocusNode;
 
   @override
-  initState() {
+  void initState() {
     viewModel = CariRehberiViewModel();
     searchController = TextEditingController();
     sehirController = TextEditingController();
@@ -77,7 +77,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
   }
 
   @override
-  dispose() {
+  void dispose() {
     searchController.dispose();
     sehirController.dispose();
     ilceController.dispose();

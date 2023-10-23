@@ -10,7 +10,7 @@ class UlkeModel with NetworkManagerMixin {
   String? ulkeAdi;
 
   @override
-  fromJson(Map<String, dynamic> json) => _$UlkeModelFromJson(json);
+  UlkeModel fromJson(Map<String, dynamic> json) => _$UlkeModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$UlkeModelToJson(this);

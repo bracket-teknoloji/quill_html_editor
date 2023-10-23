@@ -34,7 +34,7 @@ class MainPageModel with NetworkManagerMixin {
   MainPageModel();
 
   @override
-  fromJson(Map<String, dynamic> json) => _$MainPageModelFromJson(json);
+  MainPageModel fromJson(Map<String, dynamic> json) => _$MainPageModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$MainPageModelToJson(this);

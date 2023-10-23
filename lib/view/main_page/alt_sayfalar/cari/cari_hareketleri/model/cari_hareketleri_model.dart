@@ -52,15 +52,15 @@ class CariHareketleriModel with NetworkManagerMixin {
   double get dovizBakiye => ((dovizAlacak ?? 0) - (dovizBorc ?? 0)).abs();
 
   @override
-  fromJson(Map<String, dynamic> json) => _$CariHareketleriModelFromJson(json);
+  CariHareketleriModel fromJson(Map<String, dynamic> json) => _$CariHareketleriModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$CariHareketleriModelToJson(this);
 
   @override
-  toString() => toJson().toString();
+  String toString() => toJson().toString();
 
   @override
   // ignore: hash_and_equals
-  operator ==(other) => other is CariHareketleriModel && other.inckeyno == inckeyno;
+  bool operator ==(Object other) => other is CariHareketleriModel && other.inckeyno == inckeyno;
 }

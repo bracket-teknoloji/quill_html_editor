@@ -46,8 +46,7 @@ class UserJson {
   Map<String, dynamic> toJson() => _$UserJsonToJson(this);
 
   @override
-  toString() =>
-      "UserJson {\n id: $id,\n kullaniciAdi: $kullaniciAdi,\n parola: $parola,\n ad: $ad,\n soyad: $soyad,\n erpKullanici: $erpKullanici,\n erpParola: $erpParola,\n admin: $admin, \n admin mi: $adminMi,\n pickerYetkili: $pickerYetkili,\n adSoyad: $adSoyad \n}";
+  String toString() => toJson().toString();
 }
 
 @JsonSerializable()

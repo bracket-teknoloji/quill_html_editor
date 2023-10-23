@@ -26,7 +26,7 @@ abstract class _CariEkstreViewModelBase with Store {
   //* Cari Kodu
   //*
   @action
-  void changeCariKodu(value) => pdfModel.dicParams!.cariKodu = value;
+  void changeCariKodu(String? value) => pdfModel.dicParams!.cariKodu = value;
 
   @action
   void changeDovizTipi(int value) => pdfModel.dicParams!.dovizTipi = value.toStringIfNotNull;

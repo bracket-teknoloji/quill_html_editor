@@ -22,6 +22,6 @@ class BaseEditModel<T> {
 
   @override
   // ignore: hash_and_equals
-  operator ==(Object other) =>
+  bool operator ==(Object other) =>
       identical(this, other) || other is BaseEditModel && runtimeType == other.runtimeType && model == other.model && baseEditEnum == other.baseEditEnum && siradakiKod == other.siradakiKod;
 }

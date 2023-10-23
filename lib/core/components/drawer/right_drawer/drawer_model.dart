@@ -7,5 +7,5 @@ class DrawerModel {
   IconData? iconWidget;
   DrawerModel({this.title, this.icon, this.onTap, this.iconWidget});
   @override
-  toString() => "$title";
+  String toString() => "$title";
 }

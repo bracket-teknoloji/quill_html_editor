@@ -171,12 +171,12 @@ class CariSaveRequestModel with NetworkManagerMixin {
   String? dovizKoduAciklama;
 
   @override
-  fromJson(Map<String, dynamic> json) => _$CariSaveRequestModelFromJson(json);
+  CariSaveRequestModel fromJson(Map<String, dynamic> json) => _$CariSaveRequestModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$CariSaveRequestModelToJson(this);
 
-  fromCariListesiModel(CariListesiModel? model) => CariSaveRequestModel(
+  CariSaveRequestModel fromCariListesiModel(CariListesiModel? model) => CariSaveRequestModel(
         requestVersion: 6,
         sahisFirmasi: model?.sahisFirmasiMi,
         subeKodu: model?.subeKodu.toStringIfNotNull,

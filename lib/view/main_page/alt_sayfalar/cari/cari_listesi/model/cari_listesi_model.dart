@@ -356,7 +356,7 @@ class CariListesiModel with NetworkManagerMixin {
   factory CariListesiModel.fromJson(Map<String, dynamic> json) => _$CariListesiModelFromJson(json);
 
   @override
-  fromJson(Map<String, dynamic> json) => _$CariListesiModelFromJson(json);
+  CariListesiModel fromJson(Map<String, dynamic> json) => _$CariListesiModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$CariListesiModelToJson(this);
@@ -371,7 +371,7 @@ class BakiyeModel {
   double? bakiye;
   String? dovizAdi;
 
-  static fromJson(Map<String, dynamic> json) => _$BakiyeModelFromJson(json);
+  BakiyeModel fromJson(Map<String, dynamic> json) => _$BakiyeModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$BakiyeModelToJson(this);
 }

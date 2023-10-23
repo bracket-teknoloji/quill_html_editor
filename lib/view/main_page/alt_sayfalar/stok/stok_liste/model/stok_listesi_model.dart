@@ -89,7 +89,7 @@ class StokListesiModel with NetworkManagerMixin {
   static StokListesiModel? _instance;
 
   @override
-  fromJson(Map<String, dynamic> json) => _$StokListesiModelFromJson(json);
+  StokListesiModel fromJson(Map<String, dynamic> json) => _$StokListesiModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$StokListesiModelToJson(this);

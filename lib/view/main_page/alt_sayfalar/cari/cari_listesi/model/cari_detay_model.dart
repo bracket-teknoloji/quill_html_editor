@@ -96,7 +96,7 @@ class CariDetayModel with NetworkManagerMixin {
   Map<String, dynamic> toJson() => _$CariDetayModelToJson(this);
 
   @override
-  fromJson(Map<String, dynamic> json) => CariDetayModel.fromJson(json);
+  CariDetayModel fromJson(Map<String, dynamic> json) => CariDetayModel.fromJson(json);
 }
 
 @JsonSerializable(createFactory: true)

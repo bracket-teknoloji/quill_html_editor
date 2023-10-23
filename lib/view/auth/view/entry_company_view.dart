@@ -55,7 +55,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   }
 
   @override
-  dispose() {
+  void dispose() {
     focusNode.dispose();
     controller1.dispose();
     controller2.dispose();
@@ -222,7 +222,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
         ),
       );
 
-  subeDialog(BuildContext context) {
+  dynamic subeDialog(BuildContext context) {
     BottomSheetDialogManager().showRadioBottomSheetDialog(
       context,
       title: "Şube Seçiniz",
@@ -244,7 +244,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     );
   }
 
-  sirketDialog(BuildContext context) {
+  dynamic sirketDialog(BuildContext context) {
     BottomSheetDialogManager().showRadioBottomSheetDialog(
       context,
       title: "Şirket Seçiniz",
@@ -271,7 +271,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     );
   }
 
-  isletmeDialog(BuildContext context) {
+  dynamic isletmeDialog(BuildContext context) {
     BottomSheetDialogManager().showRadioBottomSheetDialog(
       context,
       title: "İşletme Seçiniz",
@@ -296,7 +296,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     );
   }
 
-  dioGetData() async {
+  Future<void> dioGetData() async {
     sirket = await getSirket();
 
     if (sirket?.length == 1 && mounted) {

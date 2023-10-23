@@ -58,5 +58,5 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
       );
 
   @override
-  fromJson(Map<String, dynamic> json) => SiparisEditRequestModel.fromJson(json);
+  SiparisEditRequestModel fromJson(Map<String, dynamic> json) => SiparisEditRequestModel.fromJson(json);
 }

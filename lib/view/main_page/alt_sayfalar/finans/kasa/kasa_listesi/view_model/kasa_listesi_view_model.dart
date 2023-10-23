@@ -76,7 +76,7 @@ abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin {
     return kasaListesi;
   }
 
-  get index => null;
+  int? get index => null;
 
   //* Actions
   @action

@@ -10,7 +10,7 @@ class KodDegistirModel with NetworkManagerMixin {
   String? kaynakCari;
   String? hedefCari;
   @override
-  fromJson(Map<String, dynamic> json) => _$KodDegistirModelFromJson(json);
+  KodDegistirModel fromJson(Map<String, dynamic> json) => _$KodDegistirModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$KodDegistirModelToJson(this);

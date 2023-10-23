@@ -160,7 +160,7 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
   void changeArrPlasiyerKodu(List<String?>? value) => cariRequestModel = cariRequestModel.copyWith(arrPlasiyerKodu: value);
 
   @action
-  changeArrGrupKodu(List<String?>? value) => cariRequestModel = cariRequestModel.copyWith(arrGrupKodu: value);
+  void changeArrGrupKodu(List<String?>? value) => cariRequestModel = cariRequestModel.copyWith(arrGrupKodu: value);
 
   @action
   void changeArrSehir(List<String?>? value) => cariRequestModel = cariRequestModel.copyWith(arrSehir: value);

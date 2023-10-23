@@ -19,5 +19,5 @@ class YapilandirmaProfilModel with _$YapilandirmaProfilModel, NetworkManagerMixi
   factory YapilandirmaProfilModel.fromJson(Map<String, dynamic> json) => _$YapilandirmaProfilModelFromJson(json);
 
   @override
-  fromJson(Map<String, dynamic> json) => _$YapilandirmaProfilModelFromJson(json);
+  YapilandirmaProfilModel fromJson(Map<String, dynamic> json) => _$YapilandirmaProfilModelFromJson(json);
 }

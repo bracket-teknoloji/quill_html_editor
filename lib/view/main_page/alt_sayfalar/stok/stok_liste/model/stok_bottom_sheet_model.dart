@@ -129,7 +129,7 @@ class StokBottomSheetModel with _$StokBottomSheetModel, NetworkManagerMixin {
   factory StokBottomSheetModel.fromJson(Map<String, dynamic> json) => _$StokBottomSheetModelFromJson(json);
 
   @override
-  fromJson(Map<String, dynamic> json) => _$StokBottomSheetModelFromJson(json);
+  StokBottomSheetModel fromJson(Map<String, dynamic> json) => _$StokBottomSheetModelFromJson(json);
 
   Map<String, dynamic> toJsonWithList() {
     final data = toJson();

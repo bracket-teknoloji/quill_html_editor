@@ -73,7 +73,7 @@ class IsletmeModel with NetworkManagerMixin {
   });
 
   @override
-  fromJson(Map<String, dynamic> json) => _$IsletmeModelFromJson(json);
+  IsletmeModel fromJson(Map<String, dynamic> json) => _$IsletmeModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$IsletmeModelToJson(this);

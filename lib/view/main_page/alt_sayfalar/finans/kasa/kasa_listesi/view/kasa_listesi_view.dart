@@ -179,7 +179,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
         ],
       );
 
-  sirala() async {
+  Future<void> sirala() async {
     final result = await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: "Sırala",
@@ -192,7 +192,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
     }
   }
 
-  filtrele() async {
+  Future<void> filtrele() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: "Filtrele",
