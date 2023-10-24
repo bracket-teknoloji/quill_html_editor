@@ -10,7 +10,9 @@ StokDetayModel _$StokDetayModelFromJson(Map<String, dynamic> json) =>
     StokDetayModel()
       ..stokKodu = json['STOK_KODU'] as String?
       ..stokAdi = json['STOK_ADI'] as String?
-      ..seriList = json['SeriList'] as List<dynamic>?
+      ..seriList = (json['SeriList'] as List<dynamic>?)
+          ?.map((e) => SeriList.fromJson(e as Map<String, dynamic>))
+          .toList()
       ..yapList = json['YapList'] as List<dynamic>?
       ..stokList = (json['StokList'] as List<dynamic>?)
           ?.map((e) => StokList.fromJson(e as Map<String, dynamic>))
@@ -30,7 +32,7 @@ Map<String, dynamic> _$StokDetayModelToJson(StokDetayModel instance) {
 
   writeNotNull('STOK_KODU', instance.stokKodu);
   writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('SeriList', instance.seriList);
+  writeNotNull('SeriList', instance.seriList?.map((e) => e.toJson()).toList());
   writeNotNull('YapList', instance.yapList);
   writeNotNull('StokList', instance.stokList?.map((e) => e.toJson()).toList());
   writeNotNull(
@@ -73,5 +75,27 @@ Map<String, dynamic> _$FiyatListToJson(FiyatList instance) {
   writeNotNull('FIYAT2', instance.fiyat2);
   writeNotNull('FIYAT3', instance.fiyat3);
   writeNotNull('FIYAT4', instance.fiyat4);
+  return val;
+}
+
+SeriList _$SeriListFromJson(Map<String, dynamic> json) => SeriList()
+  ..stokKodu = json['STOK_KODU'] as String?
+  ..depoKodu = json['DEPO_KODU'] as int?
+  ..miktar = (json['MIKTAR'] as num?)?.toDouble()
+  ..seriNo = json['SERI_NO'] as String?;
+
+Map<String, dynamic> _$SeriListToJson(SeriList instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('STOK_KODU', instance.stokKodu);
+  writeNotNull('DEPO_KODU', instance.depoKodu);
+  writeNotNull('MIKTAR', instance.miktar);
+  writeNotNull('SERI_NO', instance.seriNo);
   return val;
 }

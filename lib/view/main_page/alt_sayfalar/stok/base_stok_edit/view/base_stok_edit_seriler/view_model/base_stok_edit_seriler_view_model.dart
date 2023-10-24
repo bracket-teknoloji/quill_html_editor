@@ -28,6 +28,9 @@ abstract class _BaseStokEditSerilerViewModelBase with Store {
     StokDetayModel.instance.stokList?.first.seriMiktarKadarSor ?? false,
   ].asObservable();
 
+  @observable
+  ObservableList<SeriList>? seriList = StokDetayModel.instance.seriList?.asObservable();
+
   @action
   void changeSwitchValue(int index) {
     switch (index) {

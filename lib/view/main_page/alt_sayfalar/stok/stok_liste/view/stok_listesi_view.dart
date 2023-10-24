@@ -209,13 +209,13 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                   child: const Text("Filtrele"),
                   onPressed: () async {
                     if (viewModel.grupKodlari.isEmptyOrNull) {
-                      dialogManager.showLoadingDialog("Kodlar alınıyor...");
                       final grupKodlari = await CariNetworkManager.getKod(name: GrupKoduEnum.stok);
                       // StaticVariables.grupKodlari = grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
                       if (grupKodlari.data != null) {
                         viewModel.setGrupKodlari(grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>());
+                      } else {
+                        return;
                       }
-                      dialogManager.hideAlertDialog;
                     }
                     // ignore: use_build_context_synchronously
                     await bottomSheetDialogManager.showBottomSheetDialog(

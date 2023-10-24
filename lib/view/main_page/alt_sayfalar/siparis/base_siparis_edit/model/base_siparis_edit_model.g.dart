@@ -277,6 +277,12 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel efaturaDurumAciklama(String? efaturaDurumAciklama);
 
+  BaseSiparisEditModel earsivMi(String? earsivMi);
+
+  BaseSiparisEditModel earsivDurumAciklama(String? earsivDurumAciklama);
+
+  BaseSiparisEditModel earsivGibDurumKodu(int? earsivGibDurumKodu);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -419,6 +425,9 @@ abstract class _$BaseSiparisEditModelCWProxy {
     String? efatOnayAciklama,
     int? efaturaGibDurumKodu,
     String? efaturaDurumAciklama,
+    String? earsivMi,
+    String? earsivDurumAciklama,
+    int? earsivGibDurumKodu,
   });
 }
 
@@ -906,6 +915,17 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(efaturaDurumAciklama: efaturaDurumAciklama);
 
   @override
+  BaseSiparisEditModel earsivMi(String? earsivMi) => this(earsivMi: earsivMi);
+
+  @override
+  BaseSiparisEditModel earsivDurumAciklama(String? earsivDurumAciklama) =>
+      this(earsivDurumAciklama: earsivDurumAciklama);
+
+  @override
+  BaseSiparisEditModel earsivGibDurumKodu(int? earsivGibDurumKodu) =>
+      this(earsivGibDurumKodu: earsivGibDurumKodu);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1049,6 +1069,9 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? efatOnayAciklama = const $CopyWithPlaceholder(),
     Object? efaturaGibDurumKodu = const $CopyWithPlaceholder(),
     Object? efaturaDurumAciklama = const $CopyWithPlaceholder(),
+    Object? earsivMi = const $CopyWithPlaceholder(),
+    Object? earsivDurumAciklama = const $CopyWithPlaceholder(),
+    Object? earsivGibDurumKodu = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -1593,6 +1616,18 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.efaturaDurumAciklama
           // ignore: cast_nullable_to_non_nullable
           : efaturaDurumAciklama as String?,
+      earsivMi: earsivMi == const $CopyWithPlaceholder()
+          ? _value.earsivMi
+          // ignore: cast_nullable_to_non_nullable
+          : earsivMi as String?,
+      earsivDurumAciklama: earsivDurumAciklama == const $CopyWithPlaceholder()
+          ? _value.earsivDurumAciklama
+          // ignore: cast_nullable_to_non_nullable
+          : earsivDurumAciklama as String?,
+      earsivGibDurumKodu: earsivGibDurumKodu == const $CopyWithPlaceholder()
+          ? _value.earsivGibDurumKodu
+          // ignore: cast_nullable_to_non_nullable
+          : earsivGibDurumKodu as int?,
     );
   }
 }
@@ -2776,6 +2811,9 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       efatOnayAciklama: fields[135] as String?,
       efaturaGibDurumKodu: fields[136] as int?,
       efaturaDurumAciklama: fields[137] as String?,
+      earsivMi: fields[138] as String?,
+      earsivDurumAciklama: fields[139] as String?,
+      earsivGibDurumKodu: fields[140] as int?,
     )
       ..yeniKayit = fields[115] as bool?
       ..uuid = fields[116] as String?
@@ -2785,7 +2823,7 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(138)
+      ..writeByte(141)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -3061,7 +3099,13 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(136)
       ..write(obj.efaturaGibDurumKodu)
       ..writeByte(137)
-      ..write(obj.efaturaDurumAciklama);
+      ..write(obj.efaturaDurumAciklama)
+      ..writeByte(138)
+      ..write(obj.earsivMi)
+      ..writeByte(139)
+      ..write(obj.earsivDurumAciklama)
+      ..writeByte(140)
+      ..write(obj.earsivGibDurumKodu);
   }
 
   @override
@@ -3527,12 +3571,12 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       efatOnayAciklama: json['EFAT_ONAY_ACIKLAMA'] as String?,
       efaturaGibDurumKodu: json['EFATURA_GIB_DURUM_KODU'] as int?,
       efaturaDurumAciklama: json['EFATURA_DURUM_ACIKLAMA'] as String?,
+      earsivMi: json['EARSIV_MI'] as String?,
+      earsivDurumAciklama: json['EARSIV_DURUM_ACIKLAMA'] as String?,
+      earsivGibDurumKodu: json['EARSIV_GIB_DURUM_KODU'] as int?,
     )
       ..yeniKayit = json['_YeniKayit'] as bool?
-      ..faturalasanSayi = json['FATURALASAN_SAYI'] as int?
-      ..earsivMi = json['EARSIV_MI'] as String?
-      ..earsivDurumAciklama = json['EARSIV_DURUM_ACIKLAMA'] as String?
-      ..earsivGibDurumKodu = json['EARSIV_GIB_DURUM_KODU'] as int?;
+      ..faturalasanSayi = json['FATURALASAN_SAYI'] as int?;
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
     BaseSiparisEditModel instance) {

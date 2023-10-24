@@ -1,4 +1,4 @@
-import "package:json_annotation/json_annotation.dart";
+import "package:freezed_annotation/freezed_annotation.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../stok_liste/model/stok_listesi_model.dart";
@@ -9,17 +9,14 @@ part "stok_detay_model.g.dart";
 class StokDetayModel with NetworkManagerMixin {
   //singleton
   static StokDetayModel? _instance;
-  static StokDetayModel get instance {
-    _instance ??= StokDetayModel();
-    return _instance!;
-  }
+  static StokDetayModel get instance => _instance ??= StokDetayModel();
 
   //setter for singleton
   static void setInstance(StokDetayModel value) => _instance = value;
   String? stokKodu;
   String? stokAdi;
   @JsonKey(name: "SeriList")
-  List<dynamic>? seriList;
+  List<SeriList>? seriList;
   @JsonKey(name: "YapList")
   List<dynamic>? yapList;
   @JsonKey(name: "StokList")
@@ -28,7 +25,6 @@ class StokDetayModel with NetworkManagerMixin {
   List<FiyatList>? fiyatList;
 
   StokDetayModel();
-
   @override
   StokDetayModel fromJson(Map<String, dynamic> json) => _$StokDetayModelFromJson(json);
 
@@ -36,7 +32,7 @@ class StokDetayModel with NetworkManagerMixin {
   Map<String, dynamic> toJson() => _$StokDetayModelToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true, createFactory: true)
+@JsonSerializable(explicitToJson: true)
 class FiyatList {
   FiyatList();
   String? aS;
@@ -53,5 +49,18 @@ class FiyatList {
 
   factory FiyatList.fromJson(Map<String, dynamic> json) => _$FiyatListFromJson(json);
 
-  Map<String,dynamic> toJson() => _$FiyatListToJson(this);
+  Map<String, dynamic> toJson() => _$FiyatListToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class SeriList {
+  SeriList();
+  String? stokKodu;
+  int? depoKodu;
+  double? miktar;
+  String? seriNo;
+
+  factory SeriList.fromJson(Map<String, dynamic> json) => _$SeriListFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SeriListToJson(this);
 }

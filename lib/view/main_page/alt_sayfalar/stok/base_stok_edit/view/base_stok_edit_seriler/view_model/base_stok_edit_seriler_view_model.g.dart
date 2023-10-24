@@ -27,6 +27,22 @@ mixin _$BaseStokEditSerilerViewModel
     });
   }
 
+  late final _$seriListAtom = Atom(
+      name: '_BaseStokEditSerilerViewModelBase.seriList', context: context);
+
+  @override
+  ObservableList<SeriList>? get seriList {
+    _$seriListAtom.reportRead();
+    return super.seriList;
+  }
+
+  @override
+  set seriList(ObservableList<SeriList>? value) {
+    _$seriListAtom.reportWrite(value, super.seriList, () {
+      super.seriList = value;
+    });
+  }
+
   late final _$_BaseStokEditSerilerViewModelBaseActionController =
       ActionController(
           name: '_BaseStokEditSerilerViewModelBase', context: context);
@@ -47,7 +63,8 @@ mixin _$BaseStokEditSerilerViewModel
   @override
   String toString() {
     return '''
-switchValueList: ${switchValueList}
+switchValueList: ${switchValueList},
+seriList: ${seriList}
     ''';
   }
 }

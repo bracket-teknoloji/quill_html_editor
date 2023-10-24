@@ -16,6 +16,7 @@ class CariNetworkManager {
   static Future<GenericResponseModel<NetworkManagerMixin>> getKod({GrupKoduEnum? name}) async {
     final GenericResponseModel<NetworkManagerMixin> responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
       path: ApiUrls.getGrupKodlari,
+      showError: true,
       bodyModel: BaseGrupKoduModel(),
       headers: <String, String>{"Modul": name?.name ?? "CARI", "GrupNo": "-1", "Kullanimda": "E"},
       queryParameters: <String, dynamic>{"Modul": name?.name ?? "CARI", "GrupNo": "-1"},
