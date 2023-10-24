@@ -141,7 +141,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                     readOnly: true,
                     controller: plasiyerController,
                     onTap: () async {
-                      final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList;
+                      final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
                       if (plasiyerList != null) {
                         final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(
                           context,

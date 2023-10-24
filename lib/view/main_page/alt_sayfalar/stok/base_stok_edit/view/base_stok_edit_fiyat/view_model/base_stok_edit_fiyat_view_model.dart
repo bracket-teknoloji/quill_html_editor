@@ -9,7 +9,7 @@ part "base_stok_edit_fiyat_view_model.g.dart";
 class BaseStokEditFiyatViewModel = _BaseStokEditFiyatViewModelBase with _$BaseStokEditFiyatViewModel;
 
 abstract class _BaseStokEditFiyatViewModelBase with Store {
-  MainPageModel? get mainPageModel => CacheManager.getAnaVeri();
+  MainPageModel? get mainPageModel => CacheManager.getAnaVeri;
   @computed
   Map<int, String> get dovizList {
     final Map<int, String> map = {};

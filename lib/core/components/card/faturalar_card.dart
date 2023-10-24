@@ -39,7 +39,7 @@ class FaturalarCard extends StatefulWidget {
 }
 
 class _FaturalarCardState extends BaseState<FaturalarCard> {
-  ParamModel? get paramModel => CacheManager.getAnaVeri()?.paramModel;
+  ParamModel? get paramModel => CacheManager.getAnaVeri?.paramModel;
 
   TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6));
 

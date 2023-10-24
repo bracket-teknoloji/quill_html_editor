@@ -270,11 +270,12 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         controller: _topluDepoController,
                         enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("toplu_depo"),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
+                        onClear: () => viewModel.setTopluDepoKodu(null),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context);
+                          final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(context);
                           if (result != null) {
-                            // _topluDepoController.text = result.depoAdi ?? "";
-                            // viewModel.setTopluDepo(result);
+                            _topluDepoController.text = result.depoTanimi ?? "";
+                            viewModel.setTopluDepoKodu(result.depoKodu);
                           }
                         },
                       ),

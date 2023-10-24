@@ -18,9 +18,7 @@ abstract class _LokalDepoBakiyeRaporuViewModelBase with Store {
     dicParams: DicParams()..sifirHaric = "H",
   );
 
-  List<BottomSheetModel>? bottomSheetList = CacheManager.getAnaVeri()
-      ?.paramModel
-      ?.depoList
+  List<BottomSheetModel>? bottomSheetList = CacheManager.getAnaVeri?.paramModel?.depoList
       ?.map(
         (e) => BottomSheetModel(
           title: e.depoTanimi ?? "",

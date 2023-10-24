@@ -96,7 +96,7 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
             readOnly: true,
             suffixMore: true,
             onTap: () async {
-              final List<DovizList>? dovizList = CacheManager.getAnaVeri()?.paramModel?.dovizList;
+              final List<DovizList>? dovizList = CacheManager.getAnaVeri?.paramModel?.dovizList;
               (dovizList?.any((element) => element.dovizKodu == -1) ?? false)
                   ? null
                   : dovizList?.insert(

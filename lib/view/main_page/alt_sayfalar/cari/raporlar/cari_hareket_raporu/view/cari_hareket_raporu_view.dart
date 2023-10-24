@@ -116,7 +116,7 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
                     controller: plasiyerController,
                     readOnly: true,
                     onTap: () async {
-                      final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList;
+                      final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
                       if (plasiyerList != null) {
                         final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(
                           context,

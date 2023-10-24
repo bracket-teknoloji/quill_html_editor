@@ -32,6 +32,7 @@ class UserModel {
   // @HiveField(9)
   ProfilYetkiModel? profilYetki;
   // @HiveField(10)
+  @JsonKey(name: "KULLANICI_YETKI", fromJson: KullaniciYetkiModel.fromJson)
   KullaniciYetkiModel? kullaniciYetki;
   @HiveField(11)
   String? pickerYetkili;
@@ -41,7 +42,8 @@ class UserModel {
   double? konumEnlem;
   @HiveField(14)
   double? konumBoylam;
-  @HiveField(15)
+  // @HiveField(15)
+  @JsonKey(name: "LangModel", fromJson: LangModel.fromJson)
   LangModel? langModel;
   @HiveField(16)
   String? adSoyad;

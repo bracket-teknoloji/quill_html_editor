@@ -232,7 +232,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                 title: "PDF Görüntüle",
                                 onTap: () async {
                                   final PdfModel pdfModel = PdfModel(raporOzelKod: "CariHareket", dicParams: DicParams());
-                                  final anaVeri = CacheManager.getAnaVeri();
+                                  final anaVeri = CacheManager.getAnaVeri;
                                   final result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == "CariHareket").toList();
                                   NetFectDizaynList? dizaynList;
                                   if (result.ext.isNotNullOrEmpty) {
@@ -295,7 +295,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                   title: "Tahsilat Makbuzu",
                                   onTap: () async {
                                     final PdfModel pdfModel = PdfModel(raporOzelKod: "TahsilatMakbuzu", dicParams: DicParams());
-                                    final anaVeri = CacheManager.getAnaVeri();
+                                    final anaVeri = CacheManager.getAnaVeri;
                                     final result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == "TahsilatMakbuzu").toList();
                                     NetFectDizaynList? dizaynList;
                                     if (result.ext.isNotNullOrEmpty) {

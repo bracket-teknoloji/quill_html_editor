@@ -94,7 +94,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                     readOnly: true,
                     suffixMore: true,
                     onTap: () async {
-                      List<DovizList>? dovizList = CacheManager.getAnaVeri()?.paramModel?.dovizList;
+                      List<DovizList>? dovizList = CacheManager.getAnaVeri?.paramModel?.dovizList;
                       dovizList = dovizList?.where((element) => element.dovizTipi != 0).toList();
                       final DovizList? result = await bottomSheetDialogManager.showBottomSheetDialog(
                         context,

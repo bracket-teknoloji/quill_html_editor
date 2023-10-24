@@ -26,7 +26,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
   List<GridItemModel> items = MenuItemConstants().getList();
   List<List<GridItemModel>> lastItems = [];
   bool? yetkiVarMi;
-  MainPageModel? model = CacheManager.getAnaVeri();
+  MainPageModel? model = CacheManager.getAnaVeri;
   List<String> title2 = ["Picker"];
 
   @override
@@ -131,9 +131,9 @@ class _MainPageViewState extends BaseState<MainPageView> {
                         },
                         child: Row(
                           children: [
-                            (CacheManager.getAnaVeri()!.userModel!.admin == "E" ? Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20) : IconHelper.smallIcon("User-Account"))
+                            (CacheManager.getAnaVeri!.userModel!.admin == "E" ? Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20) : IconHelper.smallIcon("User-Account"))
                                 .marginOnly(right: 5),
-                            Text(CacheManager.getAnaVeri()!.userModel!.kuladi.toString(), style: theme.textTheme.bodyMedium),
+                            Text(CacheManager.getAnaVeri!.userModel!.kuladi.toString(), style: theme.textTheme.bodyMedium),
                           ],
                         ),
                       ),

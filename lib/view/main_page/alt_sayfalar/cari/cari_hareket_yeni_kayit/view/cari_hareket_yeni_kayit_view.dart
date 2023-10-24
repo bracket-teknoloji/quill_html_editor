@@ -44,7 +44,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
   late final TextEditingController tutarController;
   late final TextEditingController plasiyerController;
   late final TextEditingController projeController;
-  MainPageModel? mainPageModel = CacheManager.getAnaVeri();
+  MainPageModel? mainPageModel = CacheManager.getAnaVeri;
 
   @override
   void initState() {

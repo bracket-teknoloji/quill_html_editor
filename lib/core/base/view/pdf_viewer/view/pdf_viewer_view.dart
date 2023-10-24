@@ -83,7 +83,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
           // IconButton(
           //     onPressed: () async {
           //😳 await bottomSheetDialogManager.showBottomSheetDialog(context,
-          //😳     title: "Yazıcı", children: CacheManager.getAnaVeri()?.paramModel?.yaziciList?.map((e) => BottomSheetModel(title: e.yaziciAdi ?? "", onTap: () {})).toList());
+          //😳     title: "Yazıcı", children: CacheManager.getAnaVeri?.paramModel?.yaziciList?.map((e) => BottomSheetModel(title: e.yaziciAdi ?? "", onTap: () {})).toList());
           //     },
           //     icon: const Icon(Icons.more_vert_outlined)),
         ],

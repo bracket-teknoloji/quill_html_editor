@@ -39,7 +39,7 @@ class BaseEditCariGenelView extends StatefulWidget {
 
 class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
   BaseCariGenelEditViewModel viewModel = BaseCariGenelEditViewModel();
-  MainPageModel? anaVeri = CacheManager.getAnaVeri();
+  MainPageModel? anaVeri = CacheManager.getAnaVeri;
   List<UlkeModel>? ulkeler;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   FocusNode focusNode = FocusNode();

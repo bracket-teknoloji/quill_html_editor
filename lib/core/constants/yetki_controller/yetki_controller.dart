@@ -10,12 +10,12 @@ import "yetki_model.dart";
 
 class YetkiController {
   YetkiController();
-  static MainPageModel? get anaVeri => CacheManager.getAnaVeri();
+  MainPageModel? get anaVeri => CacheManager.getAnaVeri;
 
   UserModel? get userModel => anaVeri?.userModel;
   ParamModel? get paramModel => anaVeri?.paramModel;
 
-  ProfilYetkiModel? yetkiModel = anaVeri?.userModel?.profilYetki;
+  ProfilYetkiModel? get yetkiModel => anaVeri?.userModel?.profilYetki;
 
   /// Verilen değer `null` ise `false` döndürür
   ///
@@ -241,7 +241,6 @@ class YetkiController {
 
   //! MAL KABUL
 
-  
   bool malKabulAlisIrsGizlenecekAlanlar(String? index) => isTrue(!isTrue(yetkiModel?.malKabulAlisIrsGizlenecekAlanlar?.contains(index) ?? false, skipAdmin: true));
 
   // bool malKabulAlisIrsDegistirilmeyecekAlanlar(String? index) => isTrue(!isTrue(yetkiModel?.degismey?.contains(index) ?? false, skipAdmin: true));

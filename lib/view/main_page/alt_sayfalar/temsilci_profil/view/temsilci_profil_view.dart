@@ -117,7 +117,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                             readOnly: true,
                             suffixMore: true,
                             onTap: () async {
-                              final List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? <PlasiyerList>[];
+                              final List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList ?? <PlasiyerList>[];
                               final result = await bottomSheetDialogManager.showBottomSheetDialog(
                                 context,
                                 title: "Plasiyer Seçiniz",

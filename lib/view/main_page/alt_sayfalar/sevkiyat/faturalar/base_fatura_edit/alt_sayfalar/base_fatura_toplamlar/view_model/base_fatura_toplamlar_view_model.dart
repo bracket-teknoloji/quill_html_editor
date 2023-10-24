@@ -12,7 +12,7 @@ part "base_fatura_toplamlar_view_model.g.dart";
 class BaseFaturaToplamlarViewModel = _BaseFaturaToplamlarViewModelBase with _$BaseFaturaToplamlarViewModel;
 
 abstract class _BaseFaturaToplamlarViewModelBase with Store {
-  static ParamModel? get paramModel => CacheManager.getAnaVeri()?.paramModel;
+  static ParamModel? get paramModel => CacheManager.getAnaVeri?.paramModel;
   @observable
   bool isGenIsk1T = false;
 

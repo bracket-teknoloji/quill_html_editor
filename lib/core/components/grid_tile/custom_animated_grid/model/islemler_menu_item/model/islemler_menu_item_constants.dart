@@ -250,7 +250,7 @@ class IslemlerMenuItemConstants<T> {
         iconData: Icons.picture_as_pdf_outlined,
         onTap: () async {
           final BaseSiparisEditModel? siparisModel = model as BaseSiparisEditModel?;
-          final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList ?? [])
+          final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList ?? [])
               .where((element) => element.ozelKod == (StaticVariables.instance.isMusteriSiparisleri ? "MusteriSiparisi" : "SaticiSiparisi"))
               .whereType<NetFectDizaynList>()
               .toList();

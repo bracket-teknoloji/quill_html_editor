@@ -30,7 +30,6 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       ..yetkiliSubelerJson = fields[12] as String?
       ..konumEnlem = fields[13] as double?
       ..konumBoylam = fields[14] as double?
-      ..langModel = fields[15] as LangModel?
       ..adSoyad = fields[16] as String?
       ..admin = fields[17] as String?
       ..adminMi = fields[18] as bool?;
@@ -39,7 +38,7 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
   @override
   void write(BinaryWriter writer, UserModel obj) {
     writer
-      ..writeByte(17)
+      ..writeByte(16)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -66,8 +65,6 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       ..write(obj.konumEnlem)
       ..writeByte(14)
       ..write(obj.konumBoylam)
-      ..writeByte(15)
-      ..write(obj.langModel)
       ..writeByte(16)
       ..write(obj.adSoyad)
       ..writeByte(17)
@@ -104,16 +101,13 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel()
   ..profilYetki = json['PROFIL_YETKI'] == null
       ? null
       : ProfilYetkiModel.fromJson(json['PROFIL_YETKI'] as String)
-  ..kullaniciYetki = json['KULLANICI_YETKI'] == null
-      ? null
-      : KullaniciYetkiModel.fromJson(json['KULLANICI_YETKI'] as String)
+  ..kullaniciYetki =
+      KullaniciYetkiModel.fromJson(json['KULLANICI_YETKI'] as String?)
   ..pickerYetkili = json['PICKER_YETKILI'] as String?
   ..yetkiliSubelerJson = json['YETKILI_SUBELER_JSON'] as String?
   ..konumEnlem = (json['KONUM_ENLEM'] as num?)?.toDouble()
   ..konumBoylam = (json['KONUM_BOYLAM'] as num?)?.toDouble()
-  ..langModel = json['LANG_MODEL'] == null
-      ? null
-      : LangModel.fromJson(json['LANG_MODEL'] as Map<String, dynamic>)
+  ..langModel = LangModel.fromJson(json['LangModel'] as Map<String, dynamic>)
   ..adSoyad = json['AD_SOYAD'] as String?
   ..admin = json['ADMIN'] as String?
   ..adminMi = json['ADMIN_MI'] as bool?;
@@ -142,7 +136,7 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) {
   writeNotNull('YETKILI_SUBELER_JSON', instance.yetkiliSubelerJson);
   writeNotNull('KONUM_ENLEM', instance.konumEnlem);
   writeNotNull('KONUM_BOYLAM', instance.konumBoylam);
-  writeNotNull('LANG_MODEL', instance.langModel?.toJson());
+  writeNotNull('LangModel', instance.langModel?.toJson());
   writeNotNull('AD_SOYAD', instance.adSoyad);
   writeNotNull('ADMIN', instance.admin);
   writeNotNull('ADMIN_MI', instance.adminMi);

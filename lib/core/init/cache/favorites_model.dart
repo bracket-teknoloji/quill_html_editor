@@ -22,7 +22,7 @@ class FavoritesModel {
   @HiveField(6)
   String? menuTipi;
 
-  UserModel? get cacheManager => CacheManager.getAnaVeri()?.userModel;
+  UserModel? get cacheManager => CacheManager.getAnaVeri?.userModel;
   bool get yetkiKontrol {
     if (menuTipi == "SR") {
       return true;

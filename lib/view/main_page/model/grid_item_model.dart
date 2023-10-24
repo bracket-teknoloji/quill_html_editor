@@ -8,8 +8,8 @@ import "../../../core/init/cache/cache_manager.dart";
 import "user_model/user_model.dart";
 
 class GridItemModel {
-  UserModel? get _cacheManager => CacheManager.getAnaVeri()?.userModel;
-  List<String>? get _menuList => CacheManager.getAnaVeri()?.menuList;
+  UserModel? get _cacheManager => CacheManager.getAnaVeri?.userModel;
+  List<String>? get _menuList => CacheManager.getAnaVeri?.menuList;
 
   String? name;
   String title;

@@ -128,7 +128,7 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
   void showMakbuz(bool tahsilatMi) async {
     Get.back();
     final PdfModel pdfModel = PdfModel(raporOzelKod: tahsilatMi ? "TahsilatMakbuzu" : "OdemeMakbuzu", dicParams: DicParams());
-    final anaVeri = CacheManager.getAnaVeri();
+    final anaVeri = CacheManager.getAnaVeri;
     final result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == (tahsilatMi ? "TahsilatMakbuzu" : "OdemeMakbuzu")).toList();
     NetFectDizaynList? dizaynList;
     if (result.ext.isNotNullOrEmpty) {

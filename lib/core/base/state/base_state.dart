@@ -24,8 +24,8 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
     dialogManager = DialogManager();
     appInfoModel = AppInfoModel.instance;
     yetkiController = YetkiController();
-    parametreModel = CacheManager.getAnaVeri()?.paramModel ?? ParamModel();
-    profilYetkiModel = CacheManager.getAnaVeri()?.userModel?.profilYetki ?? ProfilYetkiModel();
+    parametreModel = CacheManager.getAnaVeri?.paramModel ?? ParamModel();
+    profilYetkiModel = CacheManager.getAnaVeri?.userModel?.profilYetki ?? ProfilYetkiModel();
   }
   double get width => MediaQuery.sizeOf(context).width;
   double get height => MediaQuery.sizeOf(context).height;

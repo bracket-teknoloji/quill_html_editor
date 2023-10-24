@@ -102,7 +102,7 @@ class StokListesiModel with NetworkManagerMixin {
   static void setInstance(StokListesiModel? instance) => _instance = instance;
 
   bool get dovizliMi => fiatBirimi != 0 && (satDovTip != null || alisDovTip != null);
-  bool get koliMi => paketMi == "K" && CacheManager.getAnaVeri()?.paramModel?.karmaKoliUyg == "E";
+  bool get koliMi => paketMi == "K" && CacheManager.getAnaVeri?.paramModel?.karmaKoliUyg == "E";
 }
 
 @HiveType(typeId: 2)

@@ -177,7 +177,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
       }
     } else if (model.plasiyerKoduMu) {
       final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
-      // List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? [];
+      // List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList ?? [];
       // var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
       //     title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", onTap: () => Get.back(result: e))).toList());
       if (result != null) {
@@ -225,7 +225,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
         viewModel.changeDicParams(model.adi ?? "", result.grupKodu ?? "");
       }
     } else if (model.dovizTipiMi) {
-      // var dovizList = CacheManager.getAnaVeri()?.paramModel?.dovizList ?? [];
+      // var dovizList = CacheManager.getAnaVeri?.paramModel?.dovizList ?? [];
       //  = await bottomSheetDialogManager.showBottomSheetDialog(context,
       //     title: "Döviz Seçiniz", children: dovizList.map((e) => BottomSheetModel(title: e.dovizKodu.toStringIfNotNull ?? "", onTap: () => Get.back(result: e))).toList());
       final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context);

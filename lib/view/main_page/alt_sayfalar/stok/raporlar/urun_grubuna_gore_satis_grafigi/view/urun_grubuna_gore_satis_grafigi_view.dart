@@ -131,7 +131,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
                     readOnly: true,
                     suffixMore: true,
                     onTap: () async {
-                      final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList;
+                      final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
                       if (plasiyerList != null) {
                         final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(
                           context,

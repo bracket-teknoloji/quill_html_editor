@@ -11,7 +11,7 @@ import "../main_page_model.dart";
 import "../param_model.dart";
 
 class MenuItemConstants {
-  static final MainPageModel? _anaVeri = CacheManager.getAnaVeri();
+  static final MainPageModel? _anaVeri = CacheManager.getAnaVeri;
   static final List<NetFectDizaynList>? _serbestRapor = _anaVeri?.paramModel?.netFectDizaynList!.where((NetFectDizaynList element) => element.ozelKod == "Serbest").toList();
 
   static List<GridItemModel> get getGridItemModel =>
@@ -339,7 +339,7 @@ class MenuItemConstants {
         GridItemModel.item(name: "temsilci_Profil", title: "Profilim", icon: "profile", route: "/mainPage/temsilciProfil"),
       ],
       yetkiListesi: <bool?>[
-        CacheManager.getAnaVeri()?.paramModel?.plasiyerUygulamasi == true,
+        CacheManager.getAnaVeri?.paramModel?.plasiyerUygulamasi == true,
       ],
     ),
 

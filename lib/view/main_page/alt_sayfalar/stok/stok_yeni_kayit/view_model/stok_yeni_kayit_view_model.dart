@@ -15,7 +15,7 @@ abstract class _StokYeniKayitViewModelBase with Store {
   @action
   void setProjeListesi(List<BaseProjeModel>? model) => projeListesi = model;
   @observable
-  MainPageModel? anaVeri = CacheManager.getAnaVeri();
+  MainPageModel? anaVeri = CacheManager.getAnaVeri;
   @observable
   StokYeniKayitModel model = StokYeniKayitModel(miktar: 0, tarih: DateTime.now());
 

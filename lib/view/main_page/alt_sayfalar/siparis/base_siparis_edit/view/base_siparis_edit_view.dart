@@ -162,7 +162,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                         title: "PDF Görüntüle",
                         iconWidget: Icons.picture_as_pdf_outlined,
                         onTap: () async {
-                          final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList ?? [])
+                          final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList ?? [])
                               .where((element) => element.ozelKod == (StaticVariables.instance.isMusteriSiparisleri ? "MusteriSiparisi" : "SaticiSiparisi"))
                               .whereType<NetFectDizaynList>()
                               .toList();

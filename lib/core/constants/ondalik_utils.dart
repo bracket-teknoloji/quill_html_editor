@@ -4,7 +4,7 @@ import "../../view/main_page/model/param_model.dart";
 import "../init/cache/cache_manager.dart";
 
 class OndalikUtils {
-  static List<NetsisOndalikResponseModel>? get _ondalikResponseList => CacheManager.getAnaVeri()?.paramModel?.netsisOndalikResponseModel;
+  static List<NetsisOndalikResponseModel>? get _ondalikResponseList => CacheManager.getAnaVeri?.paramModel?.netsisOndalikResponseModel;
   static NetsisOndalikResponseModel? get baseModel => _ondalikResponseList?.firstWhereOrNull((element) => element.modul == "T");
 
   static int get baseMiktar => baseModel?.miktar ?? 2;

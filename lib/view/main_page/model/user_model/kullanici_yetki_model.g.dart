@@ -31,6 +31,16 @@ _$KullaniciYetkiModelImpl _$$KullaniciYetkiModelImplFromJson(
           json['transfer_DAT_VarsayilanCikisDepo'] as int?,
       transferDATVarsayilanGirisDepo:
           json['transfer_DAT_VarsayilanGirisDepo'] as int?,
+      cariRehPlaEslesmesinBelgeTipleri:
+          json['cariRehPlaEslesmesinBelgeTipleri'] as List<dynamic>?,
+      profilKodu: json['profilKodu'] as String?,
+      sirketAktifDepolar: (json['sirket_aktifDepolar'] as List<dynamic>?)
+          ?.map((e) => e as int)
+          .toList(),
+      sirketDatYetkiliDepolar:
+          (json['sirket_DAT_YetkiliDepolar'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList(),
     );
 
 Map<String, dynamic> _$$KullaniciYetkiModelImplToJson(
@@ -65,5 +75,10 @@ Map<String, dynamic> _$$KullaniciYetkiModelImplToJson(
       instance.transferDATVarsayilanCikisDepo);
   writeNotNull('transfer_DAT_VarsayilanGirisDepo',
       instance.transferDATVarsayilanGirisDepo);
+  writeNotNull('cariRehPlaEslesmesinBelgeTipleri',
+      instance.cariRehPlaEslesmesinBelgeTipleri);
+  writeNotNull('profilKodu', instance.profilKodu);
+  writeNotNull('sirket_aktifDepolar', instance.sirketAktifDepolar);
+  writeNotNull('sirket_DAT_YetkiliDepolar', instance.sirketDatYetkiliDepolar);
   return val;
 }

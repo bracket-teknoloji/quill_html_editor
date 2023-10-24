@@ -113,7 +113,7 @@ class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
                       controller: plasiyerController,
                       readOnly: true,
                       onTap: () async {
-                        final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList;
+                        final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
                         if (plasiyerList != null) {
                           final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(
                             context,

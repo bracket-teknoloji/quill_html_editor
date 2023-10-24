@@ -30,17 +30,20 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(child: LottieBuilder.network("https://assets9.lottiefiles.com/packages/lf20_yMpiqXia1k.json")),
-                  Text(CacheManager.getAnaVeri()!.userModel?.adSoyad ?? "", style: theme.textTheme.bodyLarge),
+                  Text(CacheManager.getAnaVeri!.userModel?.adSoyad ?? "", style: theme.textTheme.bodyLarge),
                   Text(CacheManager.getVerifiedUser.account?.firma ?? "", style: theme.textTheme.bodyMedium),
                   Text("Profil", style: theme.textTheme.bodySmall).marginOnly(top: UIHelper.midSize),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      if (CacheManager.getAnaVeri()!.userModel!.admin == "E") Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: UIHelper.lowSize) else const SizedBox(),
+                      if (CacheManager.getAnaVeri!.userModel!.admin == "E")
+                        Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: UIHelper.lowSize)
+                      else
+                        const SizedBox(),
                       Text(
-                        CacheManager.getAnaVeri()!.userModel?.profilAdi ?? "Yetkili Kullanıcı",
-                        style: CacheManager.getAnaVeri()!.userModel?.admin == "E"
+                        CacheManager.getAnaVeri!.userModel?.profilAdi ?? "Yetkili Kullanıcı",
+                        style: CacheManager.getAnaVeri!.userModel?.admin == "E"
                             ? theme.textTheme.bodyMedium?.copyWith(color: UIHelper.primaryColor, fontWeight: FontWeight.bold)
                             : theme.textTheme.bodySmall,
                       ),

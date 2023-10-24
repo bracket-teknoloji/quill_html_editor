@@ -122,7 +122,7 @@ class CacheManager {
   static String getCompanies(String query) => companiesBox.get(query);
   static AccountResponseModel? getAccounts(String query) => accountsBox.get(query);
 
-  static MainPageModel? getAnaVeri() => anaVeriBox.get("data");
+  static MainPageModel? get getAnaVeri => anaVeriBox.get("data");
   static LoginDialogModel get getVerifiedUser => verifiedUsersBox.get("data");
   static Map getVeriTabani() => veriTabaniBox.get(getVerifiedUser.username) ?? {};
   static Map get getIsletmeSube => isletmeSubeBox.get(getVerifiedUser.username) ?? {};

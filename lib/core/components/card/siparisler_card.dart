@@ -62,7 +62,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
   Widget aciklamaText(int? index) => Text("${paramModel?.toJson()["SatisEkAciklamaTanimi$index"] ?? "Açıklama $index"}: ${widget.model.toJson()["ACIK$index"]}", style: greyTextStyle)
       .yetkiVarMi(widget.model.toJson()["ACIK$index"] != null && widget.showEkAciklama == true);
 
-  ParamModel? get paramModel => CacheManager.getAnaVeri()?.paramModel;
+  ParamModel? get paramModel => CacheManager.getAnaVeri?.paramModel;
 
   @override
   Widget build(BuildContext context) => Card(

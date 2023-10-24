@@ -5,10 +5,10 @@ import "package:freezed_annotation/freezed_annotation.dart";
 part "kullanici_yetki_model.freezed.dart";
 part "kullanici_yetki_model.g.dart";
 
-@freezed
+@unfreezed
 class KullaniciYetkiModel with _$KullaniciYetkiModel {
   @JsonSerializable(createFactory: true)
-  const factory KullaniciYetkiModel({
+   factory KullaniciYetkiModel({
     @JsonKey(name: "bagliPlasiyerler") List? bagliPlasiyerler,
     @JsonKey(name: "eIrsOnEki") String? eIrsOnEki,
     @JsonKey(name: "eIrsAmbarOnEki") String? eIrsAmbarOnEki,
@@ -26,7 +26,11 @@ class KullaniciYetkiModel with _$KullaniciYetkiModel {
     @JsonKey(name: "sirket_satisDepo") int? sirketSatisDepo,
     @JsonKey(name: "transfer_DAT_VarsayilanCikisDepo") int? transferDATVarsayilanCikisDepo,
     @JsonKey(name: "transfer_DAT_VarsayilanGirisDepo") int? transferDATVarsayilanGirisDepo,
+    @JsonKey(name: "cariRehPlaEslesmesinBelgeTipleri") List<dynamic>? cariRehPlaEslesmesinBelgeTipleri,
+    @JsonKey(name: "profilKodu") String? profilKodu,
+    @JsonKey(name: "sirket_aktifDepolar") List<int>? sirketAktifDepolar,
+    @JsonKey(name: "sirket_DAT_YetkiliDepolar") List<int>? sirketDatYetkiliDepolar,
   }) = _KullaniciYetkiModel;
 
-  factory KullaniciYetkiModel.fromJson(String json) => _$KullaniciYetkiModelFromJson(jsonDecode(json));
+  factory KullaniciYetkiModel.fromJson(String? json) => _$KullaniciYetkiModelFromJson(jsonDecode(json ?? "{}"));
 }

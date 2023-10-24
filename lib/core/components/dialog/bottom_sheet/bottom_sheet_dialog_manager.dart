@@ -147,55 +147,58 @@ class BottomSheetDialogManager {
               indent: 0,
             ),
             if (body == null)
-              SizedBox(
-                // if children are not fit to screen, it will be scrollable
-                height: children!.length * 50 < Get.height * 0.8 ? children.length * 50 : Get.height * 0.8,
-                child: Column(
-                  children: <Widget>[
-                    Expanded(
-                      child: SingleChildScrollView(
-                        child: SafeArea(
-                          child: Wrap(
-                            children: <Widget>[
-                              ...List.generate(
-                                children.length,
-                                (int index) => Wrap(
-                                  children: [
-                                    RadioListTile(
-                                      activeColor: UIHelper.primaryColor,
-                                      onChanged: (String? value) {
-                                        viewModel.changeRadioGroupValue(title);
-                                        if (children?[index]?.onTap != null) {
-                                          children?[index]?.onTap!();
-                                        } else {
-                                          Get.back(result: children![index]?.value);
-                                        }
-                                      },
-                                      value: children?[index]?.title ?? "",
-                                      groupValue: viewModel.radioGroupValue,
-                                      title: Text(children![index]!.title),
-                                      subtitle: children[index]?.description != null
-                                          ? Text(children[index]!.description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withOpacity(0.6)))
-                                          : null,
-                                    ),
-                                    if (index != children.length - 1)
-                                      Padding(
-                                        padding: UIHelper.lowPaddingVertical,
-                                        child: const Divider(),
-                                      )
-                                    else
-                                      Container(),
-                                  ],
+              if (children.ext.isNotNullOrEmpty)
+                SizedBox(
+                  // if children are not fit to screen, it will be scrollable
+                  height: children!.length * 50 < Get.height * 0.8 ? children.length * 50 : Get.height * 0.8,
+                  child: Column(
+                    children: <Widget>[
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: SafeArea(
+                            child: Wrap(
+                              children: <Widget>[
+                                ...List.generate(
+                                  children.length,
+                                  (int index) => Wrap(
+                                    children: [
+                                      RadioListTile(
+                                        activeColor: UIHelper.primaryColor,
+                                        onChanged: (String? value) {
+                                          viewModel.changeRadioGroupValue(title);
+                                          if (children?[index]?.onTap != null) {
+                                            children?[index]?.onTap!();
+                                          } else {
+                                            Get.back(result: children![index]?.value);
+                                          }
+                                        },
+                                        value: children?[index]?.title ?? "",
+                                        groupValue: viewModel.radioGroupValue,
+                                        title: Text(children![index]!.title),
+                                        subtitle: children[index]?.description != null
+                                            ? Text(children[index]!.description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withOpacity(0.6)))
+                                            : null,
+                                      ),
+                                      if (index != children.length - 1)
+                                        Padding(
+                                          padding: UIHelper.lowPaddingVertical,
+                                          child: const Divider(),
+                                        )
+                                      else
+                                        Container(),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ).paddingOnly(bottom: UIHelper.midSize),
+                              ],
+                            ).paddingOnly(bottom: UIHelper.midSize),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              )
+                    ],
+                  ),
+                )
+              else
+                Center(child: const Text("Veri Yok").paddingAll(UIHelper.highSize))
             else
               WillPopScope(
                 child: SingleChildScrollView(child: body),
@@ -322,23 +325,26 @@ class BottomSheetDialogManager {
   Future<DepoList?> showDepoBottomSheetDialog(BuildContext context) async => await showRadioBottomSheetDialog(
         context,
         title: "Depo seç",
-        children: CacheManager.getAnaVeri()?.paramModel?.depoList?.map((DepoList e) => BottomSheetModel(title: e.depoTanimi ?? "", value: e)).toList(),
+        children: CacheManager.getAnaVeri?.paramModel?.depoList?.map((DepoList e) => BottomSheetModel(title: e.depoTanimi ?? "", value: e)).toList(),
       );
 
-        Future<DepoList?> showTopluDepoBottomSheetDialog(BuildContext context) async {
-          return await showRadioBottomSheetDialog(
-        context,
-        title: "Depo seç",
-        // children: CacheManager.getAnaVeri()?.userModel?.profilYetki?.sirketAktifDepolar,
-              );
-        }
-
+  Future<DepoList?> showTopluDepoBottomSheetDialog(BuildContext context) async {
+    final List<int>? onayList = CacheManager.getAnaVeri?.userModel?.kullaniciYetki?.sirketAktifDepolar;
+    final List<DepoList> depoList = CacheManager.getAnaVeri?.paramModel?.depoList ?? <DepoList>[];
+    final List<DepoList> filteredDepoList = depoList.where((DepoList element) => onayList?.contains(element.depoKodu) ?? true).toList();
+    return await showRadioBottomSheetDialog(
+      context,
+      title: "Depo seç",
+      children: filteredDepoList.map((DepoList e) => BottomSheetModel(title: e.depoTanimi ?? "", value: e)).toList(),
+      // children: CacheManager.getAnaVeri?.userModel?.profilYetki?.sirketAktifDepolar,
+    );
+  }
   Future<ListCariOdemeKodu?> showOdemeKoduBottomSheetDialog(BuildContext context) async => await showRadioBottomSheetDialog(
         context,
         title: "Ödeme Kodu seç",
-        children: CacheManager.getAnaVeri()?.paramModel?.listCariOdemeKodu?.map((ListCariOdemeKodu e) => BottomSheetModel(title: e.aciklama ?? "", value: e)).toList(),
+        children: CacheManager.getAnaVeri?.paramModel?.listCariOdemeKodu?.map((ListCariOdemeKodu e) => BottomSheetModel(title: e.aciklama ?? "", value: e)).toList(),
       );
-  Future<String?>showCariTipiBottomSheetDialog(BuildContext context) async => await showRadioBottomSheetDialog(
+  Future<String?> showCariTipiBottomSheetDialog(BuildContext context) async => await showRadioBottomSheetDialog(
         context,
         title: "Tipi seç",
         children: <BottomSheetModel?>[
@@ -352,7 +358,7 @@ class BottomSheetDialogManager {
         ],
       );
   Future<List<PlasiyerList?>?> showPlasiyerListesiBottomSheetDialog(BuildContext context) async {
-    final List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? <PlasiyerList>[];
+    final List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList ?? <PlasiyerList>[];
     final result = await showCheckBoxBottomSheetDialog(
       context,
       title: "Plasiyer Seçiniz",
@@ -421,7 +427,7 @@ class BottomSheetDialogManager {
   }
 
   Future<PlasiyerList?> showPlasiyerBottomSheetDialog(BuildContext context) async {
-    final List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri()?.paramModel?.plasiyerList ?? <PlasiyerList>[];
+    final List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList ?? <PlasiyerList>[];
     return await showRadioBottomSheetDialog(
       context,
       title: "Plasiyer Seçiniz",
@@ -440,7 +446,7 @@ class BottomSheetDialogManager {
   }
 
   Future<DovizList?> showDovizBottomSheetDialog(BuildContext context) async {
-    final List<DovizList> dovizList = CacheManager.getAnaVeri()?.paramModel?.dovizList ?? <DovizList>[];
+    final List<DovizList> dovizList = CacheManager.getAnaVeri?.paramModel?.dovizList ?? <DovizList>[];
     final DovizList? doviz = await showRadioBottomSheetDialog(
       context,
       title: "Döviz Seçiniz",
@@ -450,7 +456,7 @@ class BottomSheetDialogManager {
   }
 
   Future<YaziciList?> showYaziciBottomSheetDialog(BuildContext context) async {
-    final List<YaziciList>? yaziciList = CacheManager.getAnaVeri()?.paramModel?.yaziciList;
+    final List<YaziciList>? yaziciList = CacheManager.getAnaVeri?.paramModel?.yaziciList;
     final result = await showRadioBottomSheetDialog(
       context,
       title: "Yazıcı Seçiniz",
@@ -473,7 +479,7 @@ class BottomSheetDialogManager {
   }
 
   Future<NetFectDizaynList?> showDizaynBottomSheetDialog(BuildContext context) async {
-    final List<NetFectDizaynList> netFectDizaynList = CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList ?? <NetFectDizaynList>[];
+    final List<NetFectDizaynList> netFectDizaynList = CacheManager.getAnaVeri?.paramModel?.netFectDizaynList ?? <NetFectDizaynList>[];
     final NetFectDizaynList? dizayn = await showRadioBottomSheetDialog(
       context,
       title: "Dizayn Seçiniz",
@@ -492,13 +498,13 @@ class BottomSheetDialogManager {
   }
 
   Future showOlcuBirimiBottomSheetDialog(BuildContext context) async {
-    // List olcuBirimleriList = CacheManager.getAnaVeri().paramModel.olc;
+    // List olcuBirimleriList = CacheManager.getAnaVeri.paramModel.olc;
     // var olcuBirimi =
     //     await showRadioBottomSheetDialog(context, title: "Ölçü Birimi Seçiniz", children: olcuBirimleriList.map((e) => BottomSheetModel(title: e.olcuBirimi ?? "", value: e)).toList());
     // return olcuBirimi;
   }
   Future<ListIskTip?> showIskontoTipiBottomSheetDialog(BuildContext context) async {
-    final List<ListIskTip> iskontoTipiList = CacheManager.getAnaVeri()?.paramModel?.listIskTip ?? <ListIskTip>[];
+    final List<ListIskTip> iskontoTipiList = CacheManager.getAnaVeri?.paramModel?.listIskTip ?? <ListIskTip>[];
     final ListIskTip? iskontoTipi = await showRadioBottomSheetDialog(
       context,
       title: "İskonto Tipi Seçiniz",
@@ -523,24 +529,24 @@ class BottomSheetDialogManager {
 
   Future<ListOzelKodTum?> showOzelKod1BottomSheetDialog(BuildContext context) async {
     final List<ListOzelKodTum> list =
-        CacheManager.getAnaVeri()?.paramModel?.listOzelKodTum?.where((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi != 0).toList() ?? <ListOzelKodTum>[];
+        CacheManager.getAnaVeri?.paramModel?.listOzelKodTum?.where((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi != 0).toList() ?? <ListOzelKodTum>[];
     return await showRadioBottomSheetDialog(context, title: "Özel Kod Seçiniz", children: list.map((ListOzelKodTum e) => BottomSheetModel(title: e.aciklama ?? e.kod ?? "", value: e)).toList());
   }
 
   Future<ListOzelKodTum?> showOzelKod2BottomSheetDialog(BuildContext context) async {
     final List<ListOzelKodTum> list =
-        CacheManager.getAnaVeri()?.paramModel?.listOzelKodTum?.where((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi == 0).toList() ?? <ListOzelKodTum>[];
+        CacheManager.getAnaVeri?.paramModel?.listOzelKodTum?.where((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi == 0).toList() ?? <ListOzelKodTum>[];
     return await showRadioBottomSheetDialog(context, title: "Özel Kod Seçiniz", children: list.map((ListOzelKodTum e) => BottomSheetModel(title: e.aciklama ?? e.kod ?? "", value: e)).toList());
   }
 
   Future<KasaList?> showKasaBottomSheetDialog(BuildContext context) async {
-    final List<KasaList> list = CacheManager.getAnaVeri()?.paramModel?.kasaList ?? <KasaList>[];
+    final List<KasaList> list = CacheManager.getAnaVeri?.paramModel?.kasaList ?? <KasaList>[];
     return await showRadioBottomSheetDialog(context, title: "Kasa Seçiniz", children: list.map((KasaList e) => BottomSheetModel(title: e.kasaTanimi ?? e.kasaKodu ?? "", value: e)).toList());
   }
 
   Future<bool?> showPrintBottomSheetDialog(BuildContext context, PrintModel printModel, bool? askDizayn, bool? askMiktar) async {
     if (printModel.yaziciAdi == null) {
-      final List<YaziciList?> yaziciListe = CacheManager.getAnaVeri()?.paramModel?.yaziciList ?? <YaziciList?>[];
+      final List<YaziciList?> yaziciListe = CacheManager.getAnaVeri?.paramModel?.yaziciList ?? <YaziciList?>[];
       if (yaziciListe.length == 1) {
         printModel = printModel.copyWith(yaziciAdi: yaziciListe.first?.yaziciAdi, yaziciTipi: yaziciListe.first?.yaziciTipi);
       } else if (yaziciListe.length > 1) {
@@ -561,7 +567,7 @@ class BottomSheetDialogManager {
     }
     if (askDizayn == true) {
       final List<NetFectDizaynList?> dizaynListe =
-          CacheManager.getAnaVeri()?.paramModel?.netFectDizaynList?.where((NetFectDizaynList element) => element.ozelKod == printModel.raporOzelKod).toList() ?? <NetFectDizaynList?>[];
+          CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.where((NetFectDizaynList element) => element.ozelKod == printModel.raporOzelKod).toList() ?? <NetFectDizaynList?>[];
       if (dizaynListe.length == 1) {
         printModel = printModel.copyWith(dizaynId: dizaynListe.first?.id);
       } else if (dizaynListe.length > 1) {

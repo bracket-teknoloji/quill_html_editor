@@ -4,5 +4,5 @@ import "../../init/network/network_manager.dart";
 
 mixin MobxNetworkMixin {
   NetworkManager networkManager = NetworkManager();
-  ParamModel parametreModel = CacheManager.getAnaVeri()?.paramModel ?? ParamModel();
+  ParamModel parametreModel = CacheManager.getAnaVeri?.paramModel ?? ParamModel();
 }

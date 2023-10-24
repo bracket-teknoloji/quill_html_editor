@@ -236,7 +236,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                     enabled: enable,
                     readOnly: true,
                     onTap: () async {
-                      final MainPageModel? mainPageModel = CacheManager.getAnaVeri();
+                      final MainPageModel? mainPageModel = CacheManager.getAnaVeri;
                       final List<DepoList>? list = mainPageModel?.paramModel?.depoList;
                       final DepoList? result = await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
