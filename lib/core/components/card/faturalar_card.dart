@@ -64,14 +64,14 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   await Get.toNamed("/mainPage/sevkiyatEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum));
                 },
               ),
-              // BottomSheetModel(
-              //   title: "Düzenle",
-              //   iconWidget: Icons.edit_outlined,
-              //   onTap: () async {
-              //     Get.back();
-              //     await Get.toNamed("/mainPage/sevkiyatEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, siparisTipiEnum: widget.siparisTipiEnum));
-              //   },
-              // ).yetkiKontrol(widget.siparisTipiEnum?.duzenlensinMi == true),
+              BottomSheetModel(
+                title: "Düzenle",
+                iconWidget: Icons.edit_outlined,
+                onTap: () async {
+                  Get.back();
+                  await Get.toNamed("/mainPage/sevkiyatEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, siparisTipiEnum: widget.siparisTipiEnum));
+                },
+              ).yetkiKontrol(widget.siparisTipiEnum?.duzenlensinMi == true),
               BottomSheetModel(
                 title: "Sil",
                 iconWidget: Icons.delete_outline_outlined,

@@ -187,7 +187,7 @@ class MenuItemConstants {
       altMenuler: <GridItemModel>[
         GridItemModel.item(name: "malKabul_AlisFaturasi", title: "Alış Faturası", route: "/mainPage/malKabulAlisFaturasi"),
         GridItemModel.item(name: "malKabul_SatinAlma", title: "Alış İrsaliyesi", route: "/mainPage/malKabulAlisIrsaliyesi"),
-        GridItemModel.item(name: "mkbl_MalKabul", title: "Alış İrsaliyesi"),
+        // GridItemModel.item(name: "mkbl_MalKabul", title: "Alış İrsaliyesi"),
         GridItemModel.item(name: "malKabul_Mustahsil", title: "Müstahsil Makbuzu"),
         GridItemModel.altmenu(
           name: "malKabul_AlisIrs_Raporlar",

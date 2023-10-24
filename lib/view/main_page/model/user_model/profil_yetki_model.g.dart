@@ -117,7 +117,9 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           json['sirket_TLFiyatGelsin_BelgeTipleri'] as List<dynamic>?
       ..sirketKalemKayitKontrolBelgeTipleri =
           json['sirket_KalemKayitKontrol_BelgeTipleri'] as List<dynamic>?
-      ..sirketAktifDepolar = json['sirket_aktifDepolar'] as List<dynamic>?
+      ..sirketAktifDepolar = (json['sirket_aktifDepolar'] as List<dynamic>?)
+          ?.map((e) => e as int)
+          .toList()
       ..sirketSatisDepo = json['sirket_satisDepo'] as int?
       ..sirketSatisDepoOzellestir = json['sirket_satisDepo_Ozellestir'] as bool?
       ..sirketSatisDepoMusSip = json['sirket_satisDepo_MusSip'] as int?

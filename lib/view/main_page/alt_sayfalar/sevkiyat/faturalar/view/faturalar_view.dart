@@ -121,7 +121,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
         extendBody: true,
         extendBodyBehindAppBar: false,
         appBar: appBar(),
-        // floatingActionButton: fab(),
+        floatingActionButton: fab(),
         body: body(),
         bottomNavigationBar: bottomBar(),
       );

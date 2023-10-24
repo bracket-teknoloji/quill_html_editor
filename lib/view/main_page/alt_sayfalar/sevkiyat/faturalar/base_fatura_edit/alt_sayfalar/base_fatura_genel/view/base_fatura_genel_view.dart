@@ -270,7 +270,13 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         controller: _topluDepoController,
                         enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("toplu_depo"),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
-                        onTap: () {},
+                        onTap: () async {
+                          final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context);
+                          if (result != null) {
+                            // _topluDepoController.text = result.depoAdi ?? "";
+                            // viewModel.setTopluDepo(result);
+                          }
+                        },
                       ),
                     ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("toplu_depo")),
                     Expanded(
@@ -281,7 +287,14 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         controller: _ozelKod2Controller,
                         enabled: enable,
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod2 ?? "")),
-                        onTap: () {},
+                        onClear: () => viewModel.setOzelKod2(null),
+                        onTap: () async {
+                          final result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context);
+                          if (result != null) {
+                            _ozelKod2Controller.text = result.aciklama ?? "";
+                            viewModel.setOzelKod2(result.kod);
+                          }
+                        },
                       ),
                     ),
                   ],

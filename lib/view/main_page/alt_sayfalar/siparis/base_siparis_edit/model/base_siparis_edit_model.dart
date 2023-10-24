@@ -358,7 +358,15 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   String? earsivDurumAciklama;
   @HiveField(140)
   int? earsivGibDurumKodu;
-  
+  @HiveField(141)
+  String? eirsaliyeDurumu;
+  @HiveField(142)
+  String? ebelgeCheckbox;
+  @HiveField(143)
+  EirsBilgiModel? eirsBilgiModel;
+  @HiveField(144)
+  String? uetdsBildirildi;
+
   BaseSiparisEditModel({
     this.duzeltmetarihi,
     this.kalemAdedi,
@@ -498,6 +506,11 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.earsivMi,
     this.earsivDurumAciklama,
     this.earsivGibDurumKodu,
+    this.eirsaliyeDurumu,
+    this.ebelgeCheckbox,
+    this.eirsBilgiModel,
+    this.uetdsBildirildi,
+
   });
 
   BaseSiparisEditModel._init();
@@ -978,4 +991,48 @@ class KalemModel with NetworkManagerMixin {
 
   @override
   KalemModel fromJson(Map<String, dynamic> json) => _$KalemModelFromJson(json);
+}
+
+@JsonSerializable(createFactory: true)
+class EirsBilgiModel {
+  @JsonKey(name: "SEVKTAR")
+  DateTime? sevktar;
+  @JsonKey(name: "PLAKA")
+  String? plaka;
+  @JsonKey(name: "TASIYICI_VKN")
+  String? tasiyiciVkn;
+  @JsonKey(name: "TASIYICI_UNVAN")
+  String? tasiyiciUnvan;
+  @JsonKey(name: "TASIYICI_IL")
+  String? tasiyiciIl;
+  @JsonKey(name: "TASIYICI_ILCE")
+  String? tasiyiciIlce;
+  @JsonKey(name: "TASIYICI_ULKE")
+  String? tasiyiciUlke;
+  @JsonKey(name: "TASIYICI_POSTAKODU")
+  String? tasiyiciPostakodu;
+  @JsonKey(name: "SOFOR_1_ADI")
+  String? sofor1Adi;
+  @JsonKey(name: "SOFOR_1_SOYADI")
+  String? sofor1Soyadi;
+  @JsonKey(name: "SOFOR_1_KIMLIK_NO")
+  String? sofor1KimlikNo;
+
+  EirsBilgiModel({
+    this.sevktar,
+    this.plaka,
+    this.tasiyiciVkn,
+    this.tasiyiciUnvan,
+    this.tasiyiciIl,
+    this.tasiyiciIlce,
+    this.tasiyiciUlke,
+    this.tasiyiciPostakodu,
+    this.sofor1Adi,
+    this.sofor1Soyadi,
+    this.sofor1KimlikNo,
+  });
+
+  factory EirsBilgiModel.fromJson(Map<String, dynamic> json) => _$EirsBilgiModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$EirsBilgiModelToJson(this);
 }

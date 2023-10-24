@@ -325,6 +325,14 @@ class BottomSheetDialogManager {
         children: CacheManager.getAnaVeri()?.paramModel?.depoList?.map((DepoList e) => BottomSheetModel(title: e.depoTanimi ?? "", value: e)).toList(),
       );
 
+        Future<DepoList?> showTopluDepoBottomSheetDialog(BuildContext context) async {
+          return await showRadioBottomSheetDialog(
+        context,
+        title: "Depo seç",
+        // children: CacheManager.getAnaVeri()?.userModel?.profilYetki?.sirketAktifDepolar,
+              );
+        }
+
   Future<ListCariOdemeKodu?> showOdemeKoduBottomSheetDialog(BuildContext context) async => await showRadioBottomSheetDialog(
         context,
         title: "Ödeme Kodu seç",

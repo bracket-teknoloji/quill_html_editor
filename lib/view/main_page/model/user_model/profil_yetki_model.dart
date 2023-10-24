@@ -94,7 +94,7 @@ class ProfilYetkiModel {
   @JsonKey(name: "sirket_KalemKayitKontrol_BelgeTipleri")
   List<dynamic>? sirketKalemKayitKontrolBelgeTipleri;
   @JsonKey(name: "sirket_aktifDepolar")
-  List<dynamic>? sirketAktifDepolar;
+  List<int>? sirketAktifDepolar;
   @JsonKey(name: "sirket_satisDepo")
   int? sirketSatisDepo;
   @JsonKey(name: "sirket_satisDepo_Ozellestir")
