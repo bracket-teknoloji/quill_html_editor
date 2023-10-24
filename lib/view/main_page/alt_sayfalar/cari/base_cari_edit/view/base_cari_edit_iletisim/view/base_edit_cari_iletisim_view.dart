@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../cari_listesi/model/cari_detay_model.dart";
@@ -33,7 +34,7 @@ class _BaseCariEditIletisimViewState extends State<BaseCariEditIletisimView> {
               Text(_cariDetayModel.irtibatList?[index].gorev ?? ""),
               Row(
                 children: <Widget>[
-                  Expanded(flex: 1, child: Text("Tel 1:", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey.withOpacity(0.5)))),
+                  Expanded(flex: 1, child: Text("Tel 1:", style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.slateGray.withOpacity(0.5)))),
                   Expanded(flex: 3, child: Text(_cariDetayModel.irtibatList?[index].sabitTel1 ?? "")),
                 ],
               ),
@@ -41,7 +42,7 @@ class _BaseCariEditIletisimViewState extends State<BaseCariEditIletisimView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Expanded(flex: 1, child: Text("E-Posta:", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey.withOpacity(0.5)))),
+                  Expanded(flex: 1, child: Text("E-Posta:", style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.slateGray.withOpacity(0.5)))),
                   Expanded(flex: 3, child: Text(_cariDetayModel.irtibatList?[index].emailSplit?.replaceAll(";", "\n") ?? "")),
                 ],
               ),

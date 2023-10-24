@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../init/theme/app_theme_dark.dart";
 
@@ -9,33 +10,31 @@ extension BadgeColorExtensions on BadgeColorEnum? {
   Color get getColor {
     switch (this) {
       case BadgeColorEnum.eFatura:
-        return const Color.fromARGB(255, 170, 56, 236);
+      case BadgeColorEnum.merkezeGonderildi:
+        return ColorPalette.mountbattenPink;
       case BadgeColorEnum.dovizli:
-        return Colors.blue;
+        return ColorPalette.skyBlue;
       case BadgeColorEnum.kapali:
-        return Colors.grey;
+        return ColorPalette.slateGray;
       case BadgeColorEnum.fatura:
       case BadgeColorEnum.irsaliye:
       case BadgeColorEnum.basarili:
-        return Colors.green;
+        return ColorPalette.mantis;
       case BadgeColorEnum.tamamlanmamis:
       case BadgeColorEnum.kilitli:
       case BadgeColorEnum.hata:
-        return Colors.red;
-      case BadgeColorEnum.merkezeGonderildi:
-        return Colors.purple;
+        return ColorPalette.persianRed;
       case BadgeColorEnum.seri:
       case BadgeColorEnum.konum:
       case BadgeColorEnum.cari:
       case BadgeColorEnum.tipAciklama:
       case BadgeColorEnum.taslak:
       case BadgeColorEnum.uyari:
-        return Colors.orange;
+        return ColorPalette.gamboge;
       case BadgeColorEnum.esYap:
-        return Colors.lightGreen;
+        return ColorPalette.asparagus;
       case BadgeColorEnum.karmaKoli:
-        //fuschia
-        return const Color.fromARGB(255, 220, 30, 233);
+        return ColorPalette.mulberry;
       default:
         return Colors.orange;
     }

@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 class UIHelper {
   //* Radius
@@ -36,11 +37,11 @@ class UIHelper {
   static Color get primaryColor => const Color.fromRGBO(189, 61, 23, 1);
   static Color getColorWithValue(double bakiye) {
     if (bakiye > 0) {
-      return Colors.green;
+      return ColorPalette.mantis;
     } else if (bakiye < 0) {
-      return Colors.red;
+      return ColorPalette.persianRed;
     } else {
-      return Colors.grey;
+      return ColorPalette.slateGray;
     }
   }
 }

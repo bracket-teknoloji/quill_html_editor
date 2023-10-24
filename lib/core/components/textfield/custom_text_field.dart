@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../constants/extensions/list_extensions.dart";
 import "../../constants/extensions/widget_extensions.dart";
@@ -184,9 +185,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           text: widget.labelText ?? "",
                           style: (widget.enabled != false ? (widget.isMust ?? false) : false)
                               ? TextStyle(color: UIHelper.primaryColor)
-                              : ((widget.controller?.text == "") ? TextStyle(color: Colors.grey.withOpacity(0.6)) : TextStyle(color: Colors.grey.withOpacity(0.8))),
+                              : ((widget.controller?.text == "") ? TextStyle(color: ColorPalette.slateGray.withOpacity(0.6)) : TextStyle(color: ColorPalette.slateGray.withOpacity(0.8))),
                         ),
-                        TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: Colors.grey.withOpacity(0.3), fontSize: 12)),
+                        TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: ColorPalette.slateGray.withOpacity(0.3), fontSize: 12)),
                       ],
                     ),
                   ),

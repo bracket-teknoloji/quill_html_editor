@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../../view/main_page/alt_sayfalar/finans/banka/banka_islemleri/model/banka_islemleri_model.dart";
 import "../../base/state/base_state.dart";
@@ -55,11 +56,11 @@ class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
                 ),
                 Text(
                   model?.subeAdi ?? "",
-                  style: const TextStyle(color: Colors.grey),
+                  style: const TextStyle(color: ColorPalette.slateGray),
                 ),
                 Text(
                   model?.bankaAdi ?? "",
-                  style: const TextStyle(color: Colors.grey),
+                  style: const TextStyle(color: ColorPalette.slateGray),
                 ),
               ],
             ),
@@ -78,7 +79,7 @@ class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
                             TextSpan(
                               text: model?.hareketAciklama ?? "",
                               style: TextStyle(
-                                color: model?.ba == "A" ? Colors.red : Colors.green,
+                                color: model?.ba == "A" ? ColorPalette.persianRed : ColorPalette.mantis,
                               ),
                             ),
                           ],
@@ -93,7 +94,7 @@ class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
                             TextSpan(
                               text: "${model?.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                               style: TextStyle(
-                                color: model?.ba == "A" ? Colors.red : Colors.green,
+                                color: model?.ba == "A" ? ColorPalette.persianRed : ColorPalette.mantis,
                               ),
                             ),
                           ],

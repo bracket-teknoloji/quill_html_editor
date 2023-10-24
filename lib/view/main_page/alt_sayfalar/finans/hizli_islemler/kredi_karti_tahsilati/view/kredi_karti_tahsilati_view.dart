@@ -13,6 +13,7 @@ import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
@@ -190,7 +191,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
               Observer(
                 builder: (_) => Text(
                   (viewModel.getCariBakiye ?? "") + ((viewModel.cariBakiye ?? 0) > 0 ? " (Tahsil Edilecek)" : " (Ödenecek)"),
-                  style: TextStyle(color: (viewModel.cariBakiye ?? 0) > 0 ? Colors.green : Colors.red),
+                  style: TextStyle(color: (viewModel.cariBakiye ?? 0) > 0 ? ColorPalette.mantis : ColorPalette.persianRed),
                 ).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.getCariBakiye != null),
               ),
               Observer(

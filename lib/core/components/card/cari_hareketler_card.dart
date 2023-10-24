@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_slidable/flutter_slidable.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 import "../../base/state/base_state.dart";
@@ -136,7 +137,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                                 overflow: TextOverflow.ellipsis,
                                 softWrap: true,
                                 maxLines: 3,
-                                style: theme.textTheme.bodySmall?.copyWith(color: Colors.grey, fontStyle: FontStyle.italic),
+                                style: theme.textTheme.bodySmall?.copyWith(color: ColorPalette.slateGray, fontStyle: FontStyle.italic),
                               ),
                             ),
                             //YuruyenBakiye

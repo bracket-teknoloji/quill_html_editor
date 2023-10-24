@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../../view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/model/kasa_islemleri_model.dart";
 import "../../../view/main_page/model/param_model.dart";
@@ -162,13 +163,13 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
             text: dovizliMi
                 ? (model?.tutar != 0 ? " ${model?.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} $mainCurrency" : "")
                 : (model?.dovizTutari != 0 ? " ${model?.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${model?.dovizAdi ?? ""}" : ""),
-            style: TextStyle(color: Colors.grey, fontSize: UIHelper.midSize),
+            style: TextStyle(color: ColorPalette.slateGray, fontSize: UIHelper.midSize),
           ),
           TextSpan(
             text: dovizliMi
                 ? (model?.dovizTutari != 0 ? " ${model?.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${model?.dovizAdi ?? ""}" : "")
                 : (model?.tutar != 0 ? " ${model?.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} $mainCurrency" : ""),
-            style: TextStyle(color: model?.gc == "G" ? Colors.green : Colors.red),
+            style: TextStyle(color: model?.gc == "G" ? ColorPalette.mantis : ColorPalette.persianRed),
           ),
         ],
       ),

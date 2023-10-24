@@ -1,4 +1,6 @@
 import "package:hive_flutter/hive_flutter.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 import "../yetki_controller/yetki_controller.dart";
 
@@ -120,7 +122,7 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
         return yetkiController.alisIrsEkle;
     }
   }
-  
+
   bool get duzenlensinMi {
     switch (this) {
       case SiparisTipiEnum.musteri:
@@ -165,6 +167,45 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
       case SiparisTipiEnum.satisIrsaliye:
       case SiparisTipiEnum.alisIrsaliye:
         return true;
+    }
+  }
+
+  BaseSiparisEditModel? get getEditModel {
+    switch (this) {
+      case SiparisTipiEnum.musteri:
+      case SiparisTipiEnum.satici:
+        return CacheManager.getSiparisEdit(BaseSiparisEditModel.instance.belgeNo ?? "");
+      case SiparisTipiEnum.satisFatura:
+      case SiparisTipiEnum.satisIrsaliye:
+      case SiparisTipiEnum.alisFatura:
+      case SiparisTipiEnum.alisIrsaliye:
+        return CacheManager.getFaturaEdit(BaseSiparisEditModel.instance.belgeNo ?? "");
+    }
+  }
+
+  void setEditModel() {
+    switch (this) {
+      case SiparisTipiEnum.musteri:
+      case SiparisTipiEnum.satici:
+        CacheManager.setSiparisEdit(BaseSiparisEditModel.instance);
+      case SiparisTipiEnum.satisFatura:
+      case SiparisTipiEnum.satisIrsaliye:
+      case SiparisTipiEnum.alisFatura:
+      case SiparisTipiEnum.alisIrsaliye:
+        CacheManager.setFaturaEdit(BaseSiparisEditModel.instance);
+    }
+  }
+
+  void get addEditListItem {
+    switch (this) {
+      case SiparisTipiEnum.musteri:
+      case SiparisTipiEnum.satici:
+        CacheManager.addSiparisEditListItem(BaseSiparisEditModel.instance);
+      case SiparisTipiEnum.satisFatura:
+      case SiparisTipiEnum.satisIrsaliye:
+      case SiparisTipiEnum.alisFatura:
+      case SiparisTipiEnum.alisIrsaliye:
+        CacheManager.addFaturaEditListItem(BaseSiparisEditModel.instance);
     }
   }
 }

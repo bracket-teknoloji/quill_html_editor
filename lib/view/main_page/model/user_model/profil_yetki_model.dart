@@ -58,9 +58,9 @@ class ProfilYetkiModel {
   @JsonKey(name: "yazdirma_Dizayn_TahsilatMakbuzu")
   List<int>? yazdirmaDizaynTahsilatMakbuzu;
   @JsonKey(name: "yazdirma_USK")
-  bool? yazdirmaUSK;
+  bool? yazdirmaUsk;
   @JsonKey(name: "yazdirma_USK_Yazicilari")
-  List<String>? yazdirmaUSKYazicilari;
+  List<String>? yazdirmaUskYazicilari;
   @JsonKey(name: "yazdirma_Dizayn_USK")
   List<int>? yazdirmaDizaynUSK;
   @JsonKey(name: "yazdirma_UretMalTop")
@@ -286,217 +286,215 @@ class ProfilYetkiModel {
   @JsonKey(name: "malKabul_Mustahsil_Sil")
   bool? malKabulMustahsilSil;
   @JsonKey(name: "transfer_DAT")
-  bool? transferDAT;
+  bool? transferDat;
   @JsonKey(name: "transfer_DAT_Kaydet")
-  bool? transferDATKaydet;
+  bool? transferDatKaydet;
   @JsonKey(name: "transfer_DAT_Duzelt")
-  bool? transferDATDuzelt;
+  bool? transferDatDuzelt;
   @JsonKey(name: "transfer_DAT_Sil")
-  bool? transferDATSil;
+  bool? transferDatSil;
   @JsonKey(name: "transfer_DAT_FiyatGor")
-  bool? transferDATFiyatGor;
+  bool? transferDatFiyatGor;
   @JsonKey(name: "transfer_DAT_OtoEtiketBas")
-  bool? transferDATOtoEtiketBas;
+  bool? transferDatOtoEtiketBas;
   @JsonKey(name: "transfer_DAT_VarsayilanCikisDepo")
-  int? transferDATVarsayilanCikisDepo;
+  int? transferDatVarsayilanCikisDepo;
   @JsonKey(name: "transfer_DAT_VarsayilanGirisDepo")
-  int? transferDATVarsayilanGirisDepo;
+  int? transferDatVarsayilanGirisDepo;
   @JsonKey(name: "transfer_DAT_eIrsIsaretleyemesin")
-  bool? transferDATEIrsIsaretleyemesin;
+  bool? transferDatEIrsIsaretleyemesin;
   @JsonKey(name: "transfer_DAT_DigerSekmesiGoster")
-  bool? transferDATDigerSekmesiGoster;
+  bool? transferDatDigerSekmesiGoster;
   @JsonKey(name: "transfer_DAT_BarkodluGiris")
-  bool? transferDATBarkodluGiris;
+  bool? transferDatBarkodluGiris;
   @JsonKey(name: "transfer_DAT_MiktarOtomatikGelsin")
-  bool? transferDATMiktarOtomatikGelsin;
+  bool? transferDatMiktarOtomatikGelsin;
   @JsonKey(name: "transfer_DAT_KalemDetaySorulmasin")
-  bool? transferDATKalemDetaySorulmasin;
+  bool? transferDatKalemDetaySorulmasin;
   @JsonKey(name: "transfer_DAT_StokRehberiAcilmasin")
-  bool? transferDATStokRehberiAcilmasin;
+  bool? transferDatStokRehberiAcilmasin;
   @JsonKey(name: "transfer_DAT_KalemDuzeltilemesin")
-  bool? transferDATKalemDuzeltilemesin;
+  bool? transferDatKalemDuzeltilemesin;
   @JsonKey(name: "transfer_DAT_KlavyeEngelle")
-  bool? transferDATKlavyeEngelle;
+  bool? transferDatKlavyeEngelle;
   @JsonKey(name: "transfer_DAT_Miktar1Gelsin")
-  bool? transferDATMiktar1Gelsin;
+  bool? transferDatMiktar1Gelsin;
   @JsonKey(name: "transfer_DAT_KalemlerBirlestirilsin")
-  bool? transferDATKalemlerBirlestirilsin;
+  bool? transferDatKalemlerBirlestirilsin;
   @JsonKey(name: "transfer_DAT_KacGunlukKayitlarListelensin")
-  int? transferDATKacGunlukKayitlarListelensin;
+  int? transferDatKacGunlukKayitlarListelensin;
   @JsonKey(name: "transfer_DAT_OnayIslemleri")
-  bool? transferDATOnayIslemleri;
+  bool? transferDatOnayIslemleri;
   @JsonKey(name: "transfer_DAT_OnayIslemleri_Depolar")
-  List<dynamic>? transferDATOnayIslemleriDepolar;
+  List<dynamic>? transferDatOnayIslemleriDepolar;
   @JsonKey(name: "transfer_DAT_EkAlan2Hatirla")
-  bool? transferDATEkAlan2Hatirla;
+  bool? transferDatEkAlan2Hatirla;
   @JsonKey(name: "transfer_DAT_EkAlan2Tablodan")
-  bool? transferDATEkAlan2Tablodan;
-  @JsonKey(name: "transfer_DAT_LokalDATSeciliGelmesin")
-  bool? transferDATLokalDATSeciliGelmesin;
+  bool? transferDatEkAlan2Tablodan;
   @JsonKey(name: "transfer_DAT_SeriGirisHarYapabilsin")
-  bool? transferDATSeriGirisHarYapabilsin;
+  bool? transferDatSeriGirisHarYapabilsin;
   @JsonKey(name: "transfer_DAT_Birim1denKaydet")
-  bool? transferDATBirim1denKaydet;
+  bool? transferDatBirim1denKaydet;
   @JsonKey(name: "transfer_DAT_Barkod2Sor")
-  bool? transferDATBarkod2Sor;
+  bool? transferDatBarkod2Sor;
   @JsonKey(name: "transfer_DAT_BosGecilmeyecekAlanlar")
-  List<dynamic>? transferDATBosGecilmeyecekAlanlar;
+  List<dynamic>? transferDatBosGecilmeyecekAlanlar;
   @JsonKey(name: "transfer_DAT_GizlenecekAlanlar")
-  List<dynamic>? transferDATGizlenecekAlanlar;
+  List<dynamic>? transferDatGizlenecekAlanlar;
   @JsonKey(name: "transfer_DAT_DegismeyecekAlanlar")
-  List<dynamic>? transferDATDegismeyecekAlanlar;
+  List<dynamic>? transferDatDegismeyecekAlanlar;
   @JsonKey(name: "transfer_DAT_AciklamaAlanlari")
-  List<dynamic>? transferDATAciklamaAlanlari;
+  List<dynamic>? transferDatAciklamaAlanlari;
   @JsonKey(name: "transfer_DAT_SipBagSecenegi")
-  String? transferDATSipBagSecenegi;
+  String? transferDatSipBagSecenegi;
   @JsonKey(name: "transfer_DAT_ReferansStokUygulamasi")
-  bool? transferDATReferansStokUygulamasi;
+  bool? transferDatReferansStokUygulamasi;
   @JsonKey(name: "transfer_DAT_SipBag_SipHariciKalemEklenebilir")
-  bool? transferDATSipBagSipHariciKalemEklenebilir;
+  bool? transferDatSipBagSipHariciKalemEklenebilir;
   @JsonKey(name: "transfer_DAT_SipBag_FazlaTeslimatYapilabilir")
-  bool? transferDATSipBagFazlaTeslimatYapilabilir;
+  bool? transferDatSipBagFazlaTeslimatYapilabilir;
   @JsonKey(name: "transfer_DAT_SipBag_SipOkutulsun")
-  bool? transferDATSipBagSipOkutulsun;
+  bool? transferDatSipBagSipOkutulsun;
   @JsonKey(name: "transfer_DAT_SipBag_SipOkutulsun_Miktar2BazAl")
-  bool? transferDATSipBagSipOkutulsunMiktar2BazAl;
+  bool? transferDatSipBagSipOkutulsunMiktar2BazAl;
   @JsonKey(name: "transfer_DAT_SipBag_SipOkutulsun_KalanMiktarGelsin")
-  String? transferDATSipBagSipOkutulsunKalanMiktarGelsin;
+  String? transferDatSipBagSipOkutulsunKalanMiktarGelsin;
   @JsonKey(name: "transfer_DAT_SipBag_CokluSecim")
-  bool? transferDATSipBagCokluSecim;
+  bool? transferDatSipBagCokluSecim;
   @JsonKey(name: "transfer_DAT_SipBag_TumKalemlerSecilsin")
-  bool? transferDATSipBagTumKalemlerSecilsin;
+  bool? transferDatSipBagTumKalemlerSecilsin;
   @JsonKey(name: "transfer_DAT_SipBag_EslesmeDurumu")
-  int? transferDATSipBagEslesmeDurumu;
+  int? transferDatSipBagEslesmeDurumu;
   @JsonKey(name: "transfer_DAT_SipBag_MalToplananlarGelsin")
-  bool? transferDATSipBagMalToplananlarGelsin;
+  bool? transferDatSipBagMalToplananlarGelsin;
   @JsonKey(name: "transfer_DAT_SipBag_SevkOnayliSiparislerGelsin")
-  bool? transferDATSipBagSevkOnayliSiparislerGelsin;
+  bool? transferDatSipBagSevkOnayliSiparislerGelsin;
   @JsonKey(name: "transfer_AG")
-  bool? transferAG;
+  bool? transferAg;
   @JsonKey(name: "transfer_AG_Kaydet")
-  bool? transferAGKaydet;
+  bool? transferAgKaydet;
   @JsonKey(name: "transfer_AG_Duzelt")
-  bool? transferAGDuzelt;
+  bool? transferAgDuzelt;
   @JsonKey(name: "transfer_AG_Sil")
-  bool? transferAGSil;
+  bool? transferAgSil;
   @JsonKey(name: "transfer_AG_FiyatGor")
-  bool? transferAGFiyatGor;
+  bool? transferAgFiyatGor;
   @JsonKey(name: "transfer_AG_KacGunlukKayitlarListelensin")
-  int? transferAGKacGunlukKayitlarListelensin;
+  int? transferAgKacGunlukKayitlarListelensin;
   @JsonKey(name: "transfer_AG_VarsayilanDepo")
-  int? transferAGVarsayilanDepo;
+  int? transferAgVarsayilanDepo;
   @JsonKey(name: "transfer_AG_DigerSekmesiGoster")
-  bool? transferAGDigerSekmesiGoster;
+  bool? transferAgDigerSekmesiGoster;
   @JsonKey(name: "transfer_AG_BelgeKopyala")
-  bool? transferAGBelgeKopyala;
+  bool? transferAgBelgeKopyala;
   @JsonKey(name: "transfer_AG_Birim1denKaydet")
-  bool? transferAGBirim1denKaydet;
+  bool? transferAgBirim1denKaydet;
   @JsonKey(name: "transfer_AG_OtoBasimYap")
-  bool? transferAGOtoBasimYap;
+  bool? transferAgOtoBasimYap;
   @JsonKey(name: "transfer_AG_SeriGirisHarYapabilsin")
-  bool? transferAGSeriGirisHarYapabilsin;
+  bool? transferAgSeriGirisHarYapabilsin;
   @JsonKey(name: "transfer_AG_BarkodluGiris")
-  bool? transferAGBarkodluGiris;
+  bool? transferAgBarkodluGiris;
   @JsonKey(name: "transfer_AG_MiktarOtomatikGelsin")
-  bool? transferAGMiktarOtomatikGelsin;
+  bool? transferAgMiktarOtomatikGelsin;
   @JsonKey(name: "transfer_AG_KalemDetaySorulmasin")
-  bool? transferAGKalemDetaySorulmasin;
+  bool? transferAgKalemDetaySorulmasin;
   @JsonKey(name: "transfer_AG_StokRehberiAcilmasin")
-  bool? transferAGStokRehberiAcilmasin;
+  bool? transferAgStokRehberiAcilmasin;
   @JsonKey(name: "transfer_AG_KalemDuzeltilemesin")
-  bool? transferAGKalemDuzeltilemesin;
+  bool? transferAgKalemDuzeltilemesin;
   @JsonKey(name: "transfer_AG_KlavyeEngelle")
-  bool? transferAGKlavyeEngelle;
+  bool? transferAgKlavyeEngelle;
   @JsonKey(name: "transfer_AG_Miktar1Gelsin")
-  bool? transferAGMiktar1Gelsin;
+  bool? transferAgMiktar1Gelsin;
   @JsonKey(name: "transfer_AG_ReferansStokUygulamasi")
-  bool? transferAGReferansStokUygulamasi;
+  bool? transferAgReferansStokUygulamasi;
   @JsonKey(name: "transfer_AG_SipBag_SipHariciKalemEklenebilir")
-  bool? transferAGSipBagSipHariciKalemEklenebilir;
+  bool? transferAgSipBagSipHariciKalemEklenebilir;
   @JsonKey(name: "transfer_AG_SipBag_FazlaTeslimatYapilabilir")
-  bool? transferAGSipBagFazlaTeslimatYapilabilir;
+  bool? transferAgSipBagFazlaTeslimatYapilabilir;
   @JsonKey(name: "transfer_AG_SipBag_SipOkutulsun")
-  bool? transferAGSipBagSipOkutulsun;
+  bool? transferAgSipBagSipOkutulsun;
   @JsonKey(name: "transfer_AG_SipBag_SipOkutulsun_Miktar2BazAl")
-  bool? transferAGSipBagSipOkutulsunMiktar2BazAl;
+  bool? transferAgSipBagSipOkutulsunMiktar2BazAl;
   @JsonKey(name: "transfer_AG_SipBag_CokluSecim")
-  bool? transferAGSipBagCokluSecim;
+  bool? transferAgSipBagCokluSecim;
   @JsonKey(name: "transfer_AG_SipBag_TumKalemlerSecilsin")
-  bool? transferAGSipBagTumKalemlerSecilsin;
+  bool? transferAgSipBagTumKalemlerSecilsin;
   @JsonKey(name: "transfer_AG_SipBag_EslesmeDurumu")
-  int? transferAGSipBagEslesmeDurumu;
+  int? transferAgSipBagEslesmeDurumu;
   @JsonKey(name: "transfer_AG_SipBag_MalToplananlarGelsin")
-  bool? transferAGSipBagMalToplananlarGelsin;
+  bool? transferAgSipBagMalToplananlarGelsin;
   @JsonKey(name: "transfer_AG_SipBag_SevkOnayliSiparislerGelsin")
-  bool? transferAGSipBagSevkOnayliSiparislerGelsin;
+  bool? transferAgSipBagSevkOnayliSiparislerGelsin;
   @JsonKey(name: "transfer_AC")
-  bool? transferAC;
+  bool? transferAc;
   @JsonKey(name: "transfer_AC_Kaydet")
-  bool? transferACKaydet;
+  bool? transferAcKaydet;
   @JsonKey(name: "transfer_AC_Duzelt")
-  bool? transferACDuzelt;
+  bool? transferAcDuzelt;
   @JsonKey(name: "transfer_AC_Sil")
-  bool? transferACSil;
+  bool? transferAcSil;
   @JsonKey(name: "transfer_AC_FiyatGor")
-  bool? transferACFiyatGor;
+  bool? transferAcFiyatGor;
   @JsonKey(name: "transfer_AC_KacGunlukKayitlarListelensin")
-  int? transferACKacGunlukKayitlarListelensin;
+  int? transferAcKacGunlukKayitlarListelensin;
   @JsonKey(name: "transfer_AC_VarsayilanDepo")
-  int? transferACVarsayilanDepo;
+  int? transferAcVarsayilanDepo;
   @JsonKey(name: "transfer_AC_eIrsIsaretleyemesin")
-  bool? transferACEIrsIsaretleyemesin;
+  bool? transferAcEIrsIsaretleyemesin;
   @JsonKey(name: "transfer_AC_DigerSekmesiGoster")
-  bool? transferACDigerSekmesiGoster;
+  bool? transferAcDigerSekmesiGoster;
   @JsonKey(name: "transfer_AC_BelgeKopyala")
-  bool? transferACBelgeKopyala;
+  bool? transferAcBelgeKopyala;
   @JsonKey(name: "transfer_AC_Birim1denKaydet")
-  bool? transferACBirim1denKaydet;
+  bool? transferAcBirim1denKaydet;
   @JsonKey(name: "transfer_AC_OtoBasimYap")
-  bool? transferACOtoBasimYap;
+  bool? transferAcOtoBasimYap;
   @JsonKey(name: "transfer_AC_SeriGirisHarYapabilsin")
-  bool? transferACSeriGirisHarYapabilsin;
+  bool? transferAcSeriGirisHarYapabilsin;
   @JsonKey(name: "transfer_AC_EkAlan2Tablodan")
-  bool? transferACEkAlan2Tablodan;
+  bool? transferAcEkAlan2Tablodan;
   @JsonKey(name: "transfer_AC_EkAlan2Hatirla")
-  bool? transferACEkAlan2Hatirla;
+  bool? transferAcEkAlan2Hatirla;
   @JsonKey(name: "transfer_AC_MinStokMikGoster")
-  String? transferACMinStokMikGoster;
+  String? transferAcMinStokMikGoster;
   @JsonKey(name: "transfer_AC_BosGecilmeyecekAlanlar")
-  List<dynamic>? transferACBosGecilmeyecekAlanlar;
+  List<dynamic>? transferAcBosGecilmeyecekAlanlar;
   @JsonKey(name: "transfer_AC_BarkodluGiris")
-  bool? transferACBarkodluGiris;
+  bool? transferAcBarkodluGiris;
   @JsonKey(name: "transfer_AC_MiktarOtomatikGelsin")
-  bool? transferACMiktarOtomatikGelsin;
+  bool? transferAcMiktarOtomatikGelsin;
   @JsonKey(name: "transfer_AC_KalemDetaySorulmasin")
-  bool? transferACKalemDetaySorulmasin;
+  bool? transferAcKalemDetaySorulmasin;
   @JsonKey(name: "transfer_AC_StokRehberiAcilmasin")
-  bool? transferACStokRehberiAcilmasin;
+  bool? transferAcStokRehberiAcilmasin;
   @JsonKey(name: "transfer_AC_KalemDuzeltilemesin")
-  bool? transferACKalemDuzeltilemesin;
+  bool? transferAcKalemDuzeltilemesin;
   @JsonKey(name: "transfer_AC_KlavyeEngelle")
-  bool? transferACKlavyeEngelle;
+  bool? transferAcKlavyeEngelle;
   @JsonKey(name: "transfer_AC_Miktar1Gelsin")
-  bool? transferACMiktar1Gelsin;
+  bool? transferAcMiktar1Gelsin;
   @JsonKey(name: "transfer_AC_ReferansStokUygulamasi")
-  bool? transferACReferansStokUygulamasi;
+  bool? transferAcReferansStokUygulamasi;
   @JsonKey(name: "transfer_AC_SipBag_SipHariciKalemEklenebilir")
-  bool? transferACSipBagSipHariciKalemEklenebilir;
+  bool? transferAcSipBagSipHariciKalemEklenebilir;
   @JsonKey(name: "transfer_AC_SipBag_FazlaTeslimatYapilabilir")
-  bool? transferACSipBagFazlaTeslimatYapilabilir;
+  bool? transferAcSipBagFazlaTeslimatYapilabilir;
   @JsonKey(name: "transfer_AC_SipBag_SipOkutulsun")
-  bool? transferACSipBagSipOkutulsun;
+  bool? transferAcSipBagSipOkutulsun;
   @JsonKey(name: "transfer_AC_SipBag_SipOkutulsun_Miktar2BazAl")
-  bool? transferACSipBagSipOkutulsunMiktar2BazAl;
+  bool? transferAcSipBagSipOkutulsunMiktar2BazAl;
   @JsonKey(name: "transfer_AC_SipBag_CokluSecim")
-  bool? transferACSipBagCokluSecim;
+  bool? transferAcSipBagCokluSecim;
   @JsonKey(name: "transfer_AC_SipBag_TumKalemlerSecilsin")
-  bool? transferACSipBagTumKalemlerSecilsin;
+  bool? transferAcSipBagTumKalemlerSecilsin;
   @JsonKey(name: "transfer_AC_SipBag_EslesmeDurumu")
-  int? transferACSipBagEslesmeDurumu;
+  int? transferAcSipBagEslesmeDurumu;
   @JsonKey(name: "transfer_AC_SipBag_MalToplananlarGelsin")
-  bool? transferACSipBagMalToplananlarGelsin;
+  bool? transferAcSipBagMalToplananlarGelsin;
   @JsonKey(name: "transfer_AC_SipBag_SevkOnayliSiparislerGelsin")
-  bool? transferACSipBagSevkOnayliSiparislerGelsin;
+  bool? transferAcSipBagSevkOnayliSiparislerGelsin;
   @JsonKey(name: "transfer_DepoTalebi")
   bool? transferDepoTalebi;
   @JsonKey(name: "transfer_DepoTalebi_Sil")
@@ -896,7 +894,7 @@ class ProfilYetkiModel {
   @JsonKey(name: "sayim_sayim")
   bool? sayimSayim;
   @JsonKey(name: "sayim_Kontrol_Miktari")
-  int? sayimKontrolMiktari;
+  double? sayimKontrolMiktari;
   @JsonKey(name: "sayim_MiktarBarkoddanGelsin")
   bool? sayimMiktarBarkoddanGelsin;
   @JsonKey(name: "sayim_AyniStokDurumu")
@@ -1101,8 +1099,6 @@ class ProfilYetkiModel {
   bool? stokStokHarSil;
   @JsonKey(name: "stok_StokHar_PlasiyerKendiniGorsun")
   bool? stokStokHarPlasiyerKendiniGorsun;
-  @JsonKey(name: "stok_FiltreSQLTipi")
-  String? stokFiltreSQLTipi;
   @JsonKey(name: "stok_ResimGoster")
   bool? stokResimGoster;
   @JsonKey(name: "stok_ResimGoster_Ekle")
@@ -1143,8 +1139,6 @@ class ProfilYetkiModel {
   bool? stokKanbanBarkodEsleFarkliStokOkutulmasin;
   @JsonKey(name: "stok_FiyatGorEkrani")
   bool? stokFiyatGorEkrani;
-  @JsonKey(name: "stok_FiyatGorEkrani_GunlukKurdanTLGoster")
-  bool? stokFiyatGorEkraniGunlukKurdanTLGoster;
   @JsonKey(name: "stok_FiyatGorEkraniGorunecekAlanlar")
   List<String>? stokFiyatGorEkraniGorunecekAlanlar;
   @JsonKey(name: "stok_FiyatGecmisi")
@@ -1254,9 +1248,7 @@ class ProfilYetkiModel {
   @JsonKey(name: "cari_Filtre")
   String? cariFiltre;
   @JsonKey(name: "cari_FiltreSQL")
-  String? cariFiltreSQL;
-  @JsonKey(name: "cari_FiltreSQLTipi")
-  String? cariFiltreSQLTipi;
+  String? cariFiltreSql;
   @JsonKey(name: "cari_Virman")
   bool? cariVirman;
   @JsonKey(name: "cari_Virman_Kaydet")
@@ -1326,11 +1318,11 @@ class ProfilYetkiModel {
   @JsonKey(name: "yonetici_Banka_Islemleri_Sil")
   bool? yoneticiBankaIslemleriSil;
   @JsonKey(name: "yonetici_Banka_Islem_HesapEFT")
-  bool? yoneticiBankaIslemHesapEFT;
+  bool? yoneticiBankaIslemHesapEft;
   @JsonKey(name: "yonetici_Banka_Islem_HesapVirman")
   bool? yoneticiBankaIslemHesapVirman;
   @JsonKey(name: "yonetici_Banka_Islem_CariEFT")
-  bool? yoneticiBankaIslemCariEFT;
+  bool? yoneticiBankaIslemCariEft;
   @JsonKey(name: "finans_Banka_Kasa_Transferi")
   bool? finansBankaKasaTransferi;
   @JsonKey(name: "finans_Kasa_Listesi")
@@ -1370,21 +1362,21 @@ class ProfilYetkiModel {
   @JsonKey(name: "finans_Cek_Musteri")
   bool? finansCekMusteri;
   @JsonKey(name: "finans_MCEK_Ekle")
-  bool? finansMCEKEkle;
+  bool? finansMcekEkle;
   @JsonKey(name: "finans_MCEK_Sil")
-  bool? finansMCEKSil;
+  bool? finansMcekSil;
   @JsonKey(name: "finans_MCEK_BelgeDetayi")
-  bool? finansMCEKBelgeDetayi;
+  bool? finansMcekBelgeDetayi;
   @JsonKey(name: "finans_MCEK_Hareketler")
-  bool? finansMCEKHareketler;
+  bool? finansMcekHareketler;
   @JsonKey(name: "finans_MCEK_Evraklar")
-  bool? finansMCEKEvraklar;
+  bool? finansMcekEvraklar;
   @JsonKey(name: "finans_MCEK_CariyeCiro")
-  bool? finansMCEKCariyeCiro;
+  bool? finansMcekCariyeCiro;
   @JsonKey(name: "finans_MCEK_TahsileCiro")
-  bool? finansMCEKTahsileCiro;
+  bool? finansMcekTahsileCiro;
   @JsonKey(name: "finans_MCEK_TahsilDekontu")
-  bool? finansMCEKTahsilDekontu;
+  bool? finansMcekTahsilDekontu;
   @JsonKey(name: "finans_Cek_Borc")
   bool? finansCekBorc;
   @JsonKey(name: "finans_BorcCeki_Ekle")
@@ -1392,45 +1384,45 @@ class ProfilYetkiModel {
   @JsonKey(name: "finans_BorcCeki_Sil")
   bool? finansBorcCekiSil;
   @JsonKey(name: "finans_BCEK_BelgeDetayi")
-  bool? finansBCEKBelgeDetayi;
+  bool? finansBcekBelgeDetayi;
   @JsonKey(name: "finans_BCEK_Hareketler")
-  bool? finansBCEKHareketler;
+  bool? finansBcekHareketler;
   @JsonKey(name: "finans_BCEK_Evraklar")
-  bool? finansBCEKEvraklar;
+  bool? finansBcekEvraklar;
   @JsonKey(name: "finans_BCEK_OdemeDekontu")
-  bool? finansBCEKOdemeDekontu;
+  bool? finansBcekOdemeDekontu;
   @JsonKey(name: "finans_Senet_Musteri")
   bool? finansSenetMusteri;
   @JsonKey(name: "finans_MSEN_Ekle")
-  bool? finansMSENEkle;
+  bool? finansMsenEkle;
   @JsonKey(name: "finans_MSEN_Sil")
-  bool? finansMSENSil;
+  bool? finansMsenSil;
   @JsonKey(name: "finans_MSEN_BelgeDetayi")
-  bool? finansMSENBelgeDetayi;
+  bool? finansMsenBelgeDetayi;
   @JsonKey(name: "finans_MSEN_Hareketler")
-  bool? finansMSENHareketler;
+  bool? finansMsenHareketler;
   @JsonKey(name: "finans_MSEN_Evraklar")
-  bool? finansMSENEvraklar;
+  bool? finansMsenEvraklar;
   @JsonKey(name: "finans_MSEN_CariyeCiro")
-  bool? finansMSENCariyeCiro;
+  bool? finansMsenCariyeCiro;
   @JsonKey(name: "finans_MSEN_TahsileCiro")
-  bool? finansMSENTahsileCiro;
+  bool? finansMsenTahsileCiro;
   @JsonKey(name: "finans_MSEN_TahsilDekontu")
-  bool? finansMSENTahsilDekontu;
+  bool? finansMsenTahsilDekontu;
   @JsonKey(name: "finans_Senet_Borc")
   bool? finansSenetBorc;
   @JsonKey(name: "finans_BSEN_Ekle")
-  bool? finansBSENEkle;
+  bool? finansBsenEkle;
   @JsonKey(name: "finans_BSEN_Sil")
-  bool? finansBSENSil;
+  bool? finansBsenSil;
   @JsonKey(name: "finans_BSEN_BelgeDetayi")
-  bool? finansBSENBelgeDetayi;
+  bool? finansBsenBelgeDetayi;
   @JsonKey(name: "finans_BSEN_Hareketler")
-  bool? finansBSENHareketler;
+  bool? finansBsenHareketler;
   @JsonKey(name: "finans_BSEN_Evraklar")
-  bool? finansBSENEvraklar;
+  bool? finansBsenEvraklar;
   @JsonKey(name: "finans_BSEN_OdemeDekontu")
-  bool? finansBSENOdemeDekontu;
+  bool? finansBsenOdemeDekontu;
   @JsonKey(name: "finans_KKartiTahsilati")
   bool? finansKKartiTahsilati;
   @JsonKey(name: "finans_MuhtelifTahsilat")
@@ -1482,9 +1474,9 @@ class ProfilYetkiModel {
   @JsonKey(name: "yazdirma_Dizayn_MalKontrol")
   List<dynamic>? yazdirmaDizaynMalKontrol;
   @JsonKey(name: "yazdirma_DAT")
-  bool? yazdirmaDAT;
+  bool? yazdirmaDat;
   @JsonKey(name: "yazdirma_DAT_Yazicilari")
-  List<String>? yazdirmaDATYazicilari;
+  List<String>? yazdirmaDatYazicilari;
   @JsonKey(name: "yazdirma_Dizayn_DAT")
   List<int>? yazdirmaDizaynDAT;
   @JsonKey(name: "yazdirma_Paketleme_Etiketi")
@@ -1520,9 +1512,9 @@ class ProfilYetkiModel {
   @JsonKey(name: "yazdirma_Dizayn_SaticiSip")
   List<int>? yazdirmaDizaynSaticiSip;
   @JsonKey(name: "yazdirma_ATAL")
-  bool? yazdirmaATAL;
+  bool? yazdirmaAtal;
   @JsonKey(name: "yazdirma_ATAL_Yazicilari")
-  List<String>? yazdirmaATALYazicilari;
+  List<String>? yazdirmaAtalYazicilari;
   @JsonKey(name: "yazdirma_Dizayn_ATAL")
   List<int>? yazdirmaDizaynATAL;
   @JsonKey(name: "yazdirma_OdemeMakbuzu")
@@ -1547,58 +1539,56 @@ class ProfilYetkiModel {
   bool? yazdirmaCariHareket;
   @JsonKey(name: "uretim_FiyatGorebilir")
   bool? uretimFiyatGorebilir;
-  @JsonKey(name: "uretim_USK")
-  bool? uretimUSK;
   @JsonKey(name: "uretim_USK_Kaydet")
-  bool? uretimUSKKaydet;
+  bool? uretimUskKaydet;
   @JsonKey(name: "uretim_USK_Duzelt")
-  bool? uretimUSKDuzelt;
+  bool? uretimUskDuzelt;
   @JsonKey(name: "uretim_USK_Sil")
-  bool? uretimUSKSil;
+  bool? uretimUskSil;
   @JsonKey(name: "uretim_USK_KacGunlukKayitlarListelensin")
-  int? uretimUSKKacGunlukKayitlarListelensin;
+  int? uretimUskKacGunlukKayitlarListelensin;
   @JsonKey(name: "uretim_USK_MiktarBarkoddan")
-  bool? uretimUSKMiktarBarkoddan;
+  bool? uretimUskMiktarBarkoddan;
   @JsonKey(name: "uretim_USK_Miktar1Gelsin")
-  bool? uretimUSKMiktar1Gelsin;
+  bool? uretimUskMiktar1Gelsin;
   @JsonKey(name: "sirket_Depo_Uretim_Giris")
   int? sirketDepoUretimGiris;
   @JsonKey(name: "sirket_Depo_Uretim_Cikis")
   int? sirketDepoUretimCikis;
   @JsonKey(name: "uretim_USK_IsEmriOtoGelsin")
-  bool? uretimUSKIsEmriOtoGelsin;
+  bool? uretimUskIsEmriOtoGelsin;
   @JsonKey(name: "uretim_USK_SoruSorulmasin")
-  bool? uretimUSKSoruSorulmasin;
+  bool? uretimUskSoruSorulmasin;
   @JsonKey(name: "uretim_USK_StokRehberiAcilmasin")
-  bool? uretimUSKStokRehberiAcilmasin;
+  bool? uretimUskStokRehberiAcilmasin;
   @JsonKey(name: "uretim_USK_KlavyeEngelle")
-  bool? uretimUSKKlavyeEngelle;
+  bool? uretimUskKlavyeEngelle;
   @JsonKey(name: "uretim_USK_DepoOnceligi")
-  String? uretimUSKDepoOnceligi;
+  String? uretimUskDepoOnceligi;
   @JsonKey(name: "uretim_USK_FisiErpUretsin")
-  bool? uretimUSKFisiErpUretsin;
+  bool? uretimUskFisiErpUretsin;
   @JsonKey(name: "uretim_USK_GizlenecekAlanlar")
-  List<dynamic>? uretimUSKGizlenecekAlanlar;
+  List<dynamic>? uretimUskGizlenecekAlanlar;
   @JsonKey(name: "uretim_USK_BosGecilmeyecekAlanlar")
-  List<dynamic>? uretimUSKBosGecilmeyecekAlanlar;
+  List<dynamic>? uretimUskBosGecilmeyecekAlanlar;
   @JsonKey(name: "uretim_USK_DegismeyecekAlanlar")
-  List<dynamic>? uretimUSKDegismeyecekAlanlar;
+  List<dynamic>? uretimUskDegismeyecekAlanlar;
   @JsonKey(name: "uretim_USK_OlcuBirimi")
-  int? uretimUSKOlcuBirimi;
+  int? uretimUskOlcuBirimi;
   @JsonKey(name: "uretim_USK_OtoYazdir")
-  String? uretimUSKOtoYazdir;
+  String? uretimUskOtoYazdir;
   @JsonKey(name: "uretim_USK_KalemliYapi")
-  bool? uretimUSKKalemliYapi;
+  bool? uretimUskKalemliYapi;
   @JsonKey(name: "uretim_USK_KalemliYapi_StokMevcutaEklensin")
-  bool? uretimUSKKalemliYapiStokMevcutaEklensin;
+  bool? uretimUskKalemliYapiStokMevcutaEklensin;
   @JsonKey(name: "uretim_USK_KalemliYapi_OtoEtiketYazdir")
-  bool? uretimUSKKalemliYapiOtoEtiketYazdir;
+  bool? uretimUskKalemliYapiOtoEtiketYazdir;
   @JsonKey(name: "uretim_USK_KalemliYapi_AyniBarkodOkutulamaz")
-  bool? uretimUSKKalemliYapiAyniBarkodOkutulamaz;
+  bool? uretimUskKalemliYapiAyniBarkodOkutulamaz;
   @JsonKey(name: "uretim_USK_KalemliYapi_OkutulanEnUsteEklensin")
-  bool? uretimUSKKalemliYapiOkutulanEnUsteEklensin;
+  bool? uretimUskKalemliYapiOkutulanEnUsteEklensin;
   @JsonKey(name: "uretim_USK_KalemliYapi_KalemDuzeltilemesin")
-  bool? uretimUSKKalemliYapiKalemDuzeltilemesin;
+  bool? uretimUskKalemliYapiKalemDuzeltilemesin;
   @JsonKey(name: "uretim_ReceteIzleme")
   bool? uretimReceteIzleme;
   @JsonKey(name: "uretim_MalToplama")
@@ -1626,81 +1616,81 @@ class ProfilYetkiModel {
   @JsonKey(name: "uretim_IsEmri_Sil")
   bool? uretimIsEmriSil;
   @JsonKey(name: "taltek_STEK")
-  bool? taltekSTEK;
+  bool? taltekStek;
   @JsonKey(name: "taltek_STEK_Kaydet")
-  bool? taltekSTEKKaydet;
+  bool? taltekStekKaydet;
   @JsonKey(name: "taltek_STEK_Duzelt")
-  bool? taltekSTEKDuzelt;
+  bool? taltekStekDuzelt;
   @JsonKey(name: "taltek_STEK_Sil")
-  bool? taltekSTEKSil;
+  bool? taltekStekSil;
   @JsonKey(name: "taltek_STEK_KapalilarListenlenmesin")
-  bool? taltekSTEKKapalilarListenlenmesin;
+  bool? taltekStekKapalilarListenlenmesin;
   @JsonKey(name: "taltek_STEK_OnayIslemleri")
-  bool? taltekSTEKOnayIslemleri;
+  bool? taltekStekOnayIslemleri;
   @JsonKey(name: "taltek_STEK_CariKoduDegistir")
-  bool? taltekSTEKCariKoduDegistir;
+  bool? taltekStekCariKoduDegistir;
   @JsonKey(name: "taltek_STEK_FiyatDegistirilmesin")
-  bool? taltekSTEKFiyatDegistirilmesin;
+  bool? taltekStekFiyatDegistirilmesin;
   @JsonKey(name: "taltek_STEK_Aciklamalar_YetkiTuru")
-  String? taltekSTEKAciklamalarYetkiTuru;
+  String? taltekStekAciklamalarYetkiTuru;
   @JsonKey(name: "taltek_STEK_GizlenecekAlanlar")
-  List<dynamic>? taltekSTEKGizlenecekAlanlar;
+  List<dynamic>? taltekStekGizlenecekAlanlar;
   @JsonKey(name: "taltek_STEK_DegismeyecekAlanlar")
-  List<dynamic>? taltekSTEKDegismeyecekAlanlar;
+  List<dynamic>? taltekStekDegismeyecekAlanlar;
   @JsonKey(name: "taltek_STEK_BosGecilmeyecekAlanlar")
-  List<dynamic>? taltekSTEKBosGecilmeyecekAlanlar;
+  List<dynamic>? taltekStekBosGecilmeyecekAlanlar;
   @JsonKey(name: "taltek_STEK_AciklamaAlanlari")
-  List<int>? taltekSTEKAciklamaAlanlari;
-  @JsonKey(name: "taltek_STEK_OzelKod1Degeri")
-  String? taltekSTEKOzelKod1Degeri;
+  List<int>? taltekStekAciklamaAlanlari;
+  @JsonKey(name: "taltek_STEK_OzelKod1degeri")
+  String? taltekStekOzelKod1degeri;
   @JsonKey(name: "taltek_STEK_DipFiyatUygulamasi")
-  bool? taltekSTEKDipFiyatUygulamasi;
+  bool? taltekStekDipFiyatUygulamasi;
   @JsonKey(name: "taltek_STEK_DipFiyatSaha")
-  String? taltekSTEKDipFiyatSaha;
+  String? taltekStekDipFiyatSaha;
   @JsonKey(name: "taltek_STEK_DipFiyatEylem")
-  String? taltekSTEKDipFiyatEylem;
+  String? taltekStekDipFiyatEylem;
   @JsonKey(name: "taltek_ATAL")
-  bool? taltekATAL;
+  bool? taltekAtal;
   @JsonKey(name: "taltek_ATAL_Kaydet")
-  bool? taltekATALKaydet;
+  bool? taltekAtalKaydet;
   @JsonKey(name: "taltek_ATAL_Duzelt")
-  bool? taltekATALDuzelt;
+  bool? taltekAtalDuzelt;
   @JsonKey(name: "taltek_ATAL_Sil")
-  bool? taltekATALSil;
+  bool? taltekAtalSil;
   @JsonKey(name: "taltek_ATAL_CariEMailAlani")
-  String? taltekATALCariEMailAlani;
+  String? taltekAtalCariEMailAlani;
   @JsonKey(name: "taltek_ATAL_OnayIslemleri")
-  bool? taltekATALOnayIslemleri;
+  bool? taltekAtalOnayIslemleri;
   @JsonKey(name: "taltek_ATAL_CariKoduDegistir")
-  bool? taltekATALCariKoduDegistir;
+  bool? taltekAtalCariKoduDegistir;
   @JsonKey(name: "taltek_ATAL_Aciklamalar_YetkiTuru")
-  String? taltekATALAciklamalarYetkiTuru;
+  String? taltekAtalAciklamalarYetkiTuru;
   @JsonKey(name: "taltek_ATAL_GizlenecekAlanlar")
-  List<String>? taltekATALGizlenecekAlanlar;
+  List<String>? taltekAtalGizlenecekAlanlar;
   @JsonKey(name: "taltek_ATAL_AciklamaAlanlari")
-  List<int>? taltekATALAciklamaAlanlari;
+  List<int>? taltekAtalAciklamaAlanlari;
   @JsonKey(name: "taltek_ATAL_BelgeKopyala")
-  bool? taltekATALBelgeKopyala;
+  bool? taltekAtalBelgeKopyala;
   @JsonKey(name: "taltek_STAL")
-  bool? taltekSTAL;
+  bool? taltekStal;
   @JsonKey(name: "taltek_STAL_Kaydet")
-  bool? taltekSTALKaydet;
+  bool? taltekStalKaydet;
   @JsonKey(name: "taltek_STAL_Duzelt")
-  bool? taltekSTALDuzelt;
+  bool? taltekStalDuzelt;
   @JsonKey(name: "taltek_STAL_Sil")
-  bool? taltekSTALSil;
+  bool? taltekStalSil;
   @JsonKey(name: "taltek_STAL_KapalilarListenlenmesin")
-  bool? taltekSTALKapalilarListenlenmesin;
+  bool? taltekStalKapalilarListenlenmesin;
   @JsonKey(name: "taltek_STAL_OnayIslemleri")
-  bool? taltekSTALOnayIslemleri;
+  bool? taltekStalOnayIslemleri;
   @JsonKey(name: "taltek_STAL_CariKoduDegistir")
-  bool? taltekSTALCariKoduDegistir;
+  bool? taltekStalCariKoduDegistir;
   @JsonKey(name: "taltek_STAL_FiyatDegistirilmesin")
-  bool? taltekSTALFiyatDegistirilmesin;
+  bool? taltekStalFiyatDegistirilmesin;
   @JsonKey(name: "taltek_STAL_GizlenecekAlanlar")
-  List<String>? taltekSTALGizlenecekAlanlar;
+  List<String>? taltekStalGizlenecekAlanlar;
   @JsonKey(name: "taltek_STAL_DipFiyatUygulamasi")
-  bool? taltekSTALDipFiyatUygulamasi;
+  bool? taltekStalDipFiyatUygulamasi;
   @JsonKey(name: "ebelge_EFat")
   bool? ebelgeEFat;
   @JsonKey(name: "ebelge_EFatCariGuncelle")
@@ -1758,9 +1748,121 @@ class ProfilYetkiModel {
   @JsonKey(name: "ebelge_EIrsaliye_Dizayn")
   int? ebelgeEIrsaliyeDizayn;
   @JsonKey(name: "entegrasyon_UETDSESYA")
-  bool? entegrasyonUETDSESYA;
+  bool? entegrasyonUetdsesya;
   @JsonKey(name: "entegrasyon_UETDSESYA_Iptal")
-  bool? entegrasyonUETDSESYAIptal;
+  bool? entegrasyonUetdsesyaIptal;
+  @JsonKey(name: "transfer_DAT_TekrarEdenBarkod")
+  String? transferDatTekrarEdenBarkod;
+  @JsonKey(name: "transfer_DAT_AciklamaDuzenle")
+  bool? transferDatAciklamaDuzenle;
+  @JsonKey(name: "transfer_DAT_LokalDATSeciliGelmesin")
+  bool? transferDatLokalDatSeciliGelmesin;
+  @JsonKey(name: "transfer_DAT_VarsayilanHarTuruDegistiremesin")
+  bool? transferDatVarsayilanHarTuruDegistiremesin;
+  @JsonKey(name: "transfer_DAT_DepoCaridenGelsin")
+  bool? transferDatDepoCaridenGelsin;
+  @JsonKey(name: "transfer_AG_SipBagSecenegi")
+  String? transferAgSipBagSecenegi;
+  @JsonKey(name: "transfer_AG_TekrarEdenBarkod")
+  String? transferAgTekrarEdenBarkod;
+  @JsonKey(name: "transfer_AG_AciklamaDuzenle")
+  bool? transferAgAciklamaDuzenle;
+  @JsonKey(name: "transfer_AC_SipBagSecenegi")
+  String? transferAcSipBagSecenegi;
+  @JsonKey(name: "transfer_AC_TekrarEdenBarkod")
+  String? transferAcTekrarEdenBarkod;
+  @JsonKey(name: "transfer_AC_AciklamaDuzenle")
+  bool? transferAcAciklamaDuzenle;
+  @JsonKey(name: "transfer_DepoTalebi_Bildirim")
+  bool? transferDepoTalebiBildirim;
+  @JsonKey(name: "uretim_USK")
+  bool? uretimUsk;
+  @JsonKey(name: "malKabul_AlisIrs_DegismeyecekAlanlar")
+  List<dynamic>? malKabulAlisIrsDegismeyecekAlanlar;
+  @JsonKey(name: "malKabul_AlisIrs_AciklamaDuzenle")
+  bool? malKabulAlisIrsAciklamaDuzenle;
+  @JsonKey(name: "malKabul_AlisFat_AciklamaDuzenle")
+  bool? malKabulAlisFatAciklamaDuzenle;
+  @JsonKey(name: "malKabul_AlisFat_TekrarEdenBarkod")
+  String? malKabulAlisFatTekrarEdenBarkod;
+  @JsonKey(name: "malKabul_AlisFaturasi_SipBagSecenegi")
+  String? malKabulAlisFaturasiSipBagSecenegi;
+  @JsonKey(name: "sevkiyat_SatisIrs_VarsayilanBelgeTipi")
+  int? sevkiyatSatisIrsVarsayilanBelgeTipi;
+  @JsonKey(name: "sevkiyat_SatisIrsaliyesi_AciklamaAlanlari")
+  List<int>? sevkiyatSatisIrsaliyesiAciklamaAlanlari;
+  @JsonKey(name: "sevkiyat_SatisIrsaliyesi_AciklamaDuzenle")
+  bool? sevkiyatSatisIrsaliyesiAciklamaDuzenle;
+  @JsonKey(name: "sevkiyat_SatisIrs_KayittanSonraTaslakOlustur")
+  bool? sevkiyatSatisIrsKayittanSonraTaslakOlustur;
+  @JsonKey(name: "sevkiyat_SatisIrs_IadeMiktariGirebilir")
+  bool? sevkiyatSatisIrsIadeMiktariGirebilir;
+  @JsonKey(name: "sevkiyat_SatisIrs_IadeMiktariGirebilirFarkliDepo")
+  bool? sevkiyatSatisIrsIadeMiktariGirebilirFarkliDepo;
+  @JsonKey(name: "sevkiyat_SatisIrs_TekrarEdenBarkod")
+  String? sevkiyatSatisIrsTekrarEdenBarkod;
+  @JsonKey(name: "sevkiyat_SatisFat_AciklamaDuzenle")
+  bool? sevkiyatSatisFatAciklamaDuzenle;
+  @JsonKey(name: "sevkiyat_SatisFat_IadeMiktariGirebilir")
+  bool? sevkiyatSatisFatIadeMiktariGirebilir;
+  @JsonKey(name: "sevkiyat_SatisFat_IadeMiktariGirebilirFarkliDepo")
+  bool? sevkiyatSatisFatIadeMiktariGirebilirFarkliDepo;
+  @JsonKey(name: "sevkiyat_SatisFaturasi_TekrarEdenBarkod")
+  String? sevkiyatSatisFaturasiTekrarEdenBarkod;
+  @JsonKey(name: "sevkemri_MalToplama_Yontemi")
+  String? sevkemriMalToplamaYontemi;
+  @JsonKey(name: "sayim_SerbestSayimFiltreIslem")
+  String? sayimSerbestSayimFiltreIslem;
+  @JsonKey(name: "siparis_MusSip_BelgeKopyala")
+  bool? siparisMusSipBelgeKopyala;
+  @JsonKey(name: "siparis_MusSip_TekrarEdenBarkod")
+  String? siparisMusSipTekrarEdenBarkod;
+  @JsonKey(name: "siparis_MusSip_KacGunlukKayitlarListelensin")
+  int? siparisMusSipKacGunlukKayitlarListelensin;
+  @JsonKey(name: "siparis_MusteriSiparisi_AciklamaDuzenle")
+  bool? siparisMusteriSiparisiAciklamaDuzenle;
+  @JsonKey(name: "stok_FiltreSQLTipi")
+  String? stokFiltreSqlTipi;
+  @JsonKey(name: "stok_FiyatGorEkrani_GunlukKurdanTLGoster")
+  bool? stokFiyatGorEkraniGunlukKurdanTlGoster;
+  @JsonKey(name: "stok_Paketleme_Coklu")
+  bool? stokPaketlemeCoklu;
+  @JsonKey(name: "stok_RehberBakiyesindeDigerOlcuBirimleriGorunsun")
+  bool? stokRehberBakiyesindeDigerOlcuBirimleriGorunsun;
+  @JsonKey(name: "stok_YazdirPdfGoruntule")
+  bool? stokYazdirPdfGoruntule;
+  @JsonKey(name: "cari_ToplamGorunmesin")
+  bool? cariToplamGorunmesin;
+  @JsonKey(name: "cari_BakiyeGosterim")
+  String? cariBakiyeGosterim;
+  @JsonKey(name: "cari_FiltreSQLTipi")
+  String? cariFiltreSqlTipi;
+  @JsonKey(name: "tahsilat_DovizKuru_Degeri")
+  String? tahsilatDovizKuruDegeri;
+  @JsonKey(name: "tahsilat_DovizKuru_Yetki")
+  String? tahsilatDovizKuruYetki;
+  @JsonKey(name: "tahsilat_DovizKuru_Tolerans")
+  double? tahsilatDovizKuruTolerans;
+  @JsonKey(name: "finans_Raporlar_KasaEkstre")
+  bool? finansRaporlarKasaEkstre;
+  @JsonKey(name: "finans_Kasa_GizlenecekAlanlar")
+  List<dynamic>? finansKasaGizlenecekAlanlar;
+  @JsonKey(name: "finans_Kasa_DegistirilemeyecekAlanlar")
+  List<dynamic>? finansKasaDegistirilemeyecekAlanlar;
+  @JsonKey(name: "finans_Kasa_BosGecilemeyecekAlanlar")
+  List<dynamic>? finansKasaBosGecilemeyecekAlanlar;
+  @JsonKey(name: "taltek_STEK_AciklamaDuzenle")
+  bool? taltekStekAciklamaDuzenle;
+  @JsonKey(name: "taltek_STEK_DipFiyatKDVDurumu")
+  String? taltekStekDipFiyatKdvDurumu;
+  @JsonKey(name: "taltek_STAL_AciklamaDuzenle")
+  bool? taltekStalAciklamaDuzenle;
+  @JsonKey(name: "taltek_STAL_DipFiyatSaha")
+  String? taltekStalDipFiyatSaha;
+  @JsonKey(name: "taltek_STAL_DipFiyatEylem")
+  String? taltekStalDipFiyatEylem;
+  @JsonKey(name: "taltek_STAL_DipFiyatKDVDurumu")
+  String? taltekStalDipFiyatKdvDurumu;
 
   factory ProfilYetkiModel.fromJson(String json) => _$ProfilYetkiModelFromJson(jsonDecode(json));
 

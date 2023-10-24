@@ -43,7 +43,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   static BaseSiparisEditModel get instance {
     _instance ??= BaseSiparisEditModel._init();
     if (_instance?.isNew == true && _instance?.belgeNo != null && _instance?.kalemList.ext.isNotNullOrEmpty == true) {
-      final BaseSiparisEditModel? otherInstance = CacheManager.getSiparisEdit(_instance?.belgeNo ?? "");
+
+      final BaseSiparisEditModel? otherInstance = _instance?.siparisTipi?.getEditModel;
       if (_instance != otherInstance) {
         const uuid = Uuid();
         _instance?.uuid = uuid.v4();
@@ -366,6 +367,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   EirsBilgiModel? eirsBilgiModel;
   @HiveField(144)
   String? uetdsBildirildi;
+  
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -612,8 +614,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   double get getBrutTutar => kalemList?.map((e) => e.brutFiyat).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
 
   factory BaseSiparisEditModel.fromJson(String json) => _$BaseSiparisEditModelFromJson(jsonDecode(json));
-
-  void get setCache => CacheManager.setSiparisEdit(_instance!);
+  
   @override
   BaseSiparisEditModel fromJson(Map<String, dynamic> json) => _$BaseSiparisEditModelFromJson(json);
 

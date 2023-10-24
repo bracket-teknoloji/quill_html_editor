@@ -3,6 +3,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/badge/colorful_badge.dart";
@@ -154,8 +155,8 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                             ),
                             subtitle: Wrap(
                               children: [
-                                Text("Kasa: ${item?.kasaKodu ?? ""}", style: const TextStyle(color: Colors.grey)).yetkiVarMi(item?.kasaKodu != null),
-                                Text("Belge No: ${item?.belgeNo ?? ""}", style: const TextStyle(color: Colors.grey)).yetkiVarMi(item?.belgeNo != null),
+                                Text("Kasa: ${item?.kasaKodu ?? ""}", style: const TextStyle(color: ColorPalette.slateGray)).yetkiVarMi(item?.kasaKodu != null),
+                                Text("Belge No: ${item?.belgeNo ?? ""}", style: const TextStyle(color: ColorPalette.slateGray)).yetkiVarMi(item?.belgeNo != null),
                                 Text("Hesap Kodu: ${item?.cariKodu ?? ""}").yetkiVarMi(item?.cariKodu != null),
                                 Text("Hesap Adı: ${item?.cariAdi ?? ""}").yetkiVarMi(item?.cariAdi != null),
                                 Text("Proje: ${item?.projeKodu ?? ""}").yetkiVarMi(item?.projeKodu != null),
@@ -165,7 +166,7 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                             ),
                             trailing: Text(
                               "${item?.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${viewModel.dovizAdi}",
-                              style: TextStyle(color: item?.gc == "G" ? Colors.green : Colors.red),
+                              style: TextStyle(color: item?.gc == "G" ? ColorPalette.mantis : ColorPalette.persianRed),
                             ),
                           ),
                         );
@@ -191,12 +192,12 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                     if (widget.model?.dovizli == "E") {
                       return Text(
                         "${((viewModel.paramData?["TOPLAM_GELIR_DOVIZ"] as double? ?? 0) + (widget.model?.dovizDevirTutari ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}",
-                        style: const TextStyle(color: Colors.green),
+                        style: const TextStyle(color: ColorPalette.mantis),
                       );
                     } else {
                       return Text(
                         "${((viewModel.paramData?["TOPLAM_GELIR"] as double? ?? 0) + (widget.model?.devirTutari ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                        style: const TextStyle(color: Colors.green),
+                        style: const TextStyle(color: ColorPalette.mantis),
                       );
                     }
                   },
@@ -211,10 +212,13 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                     if (widget.model?.dovizli == "E") {
                       return Text(
                         "${(viewModel.paramData?["TOPLAM_GIDER_DOVIZ"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}",
-                        style: const TextStyle(color: Colors.red),
+                        style: const TextStyle(color: ColorPalette.persianRed),
                       );
                     } else {
-                      return Text("${(viewModel.paramData?["TOPLAM_GIDER"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red));
+                      return Text(
+                        "${(viewModel.paramData?["TOPLAM_GIDER"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                        style: const TextStyle(color: ColorPalette.persianRed),
+                      );
                     }
                   },
                 ),

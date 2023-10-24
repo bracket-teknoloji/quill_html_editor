@@ -3,6 +3,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
@@ -346,7 +347,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                       Observer(
                         builder: (_) => Text(
                           "${(viewModel.borclarToplami).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}",
-                          style: const TextStyle(color: Colors.red),
+                          style: const TextStyle(color: ColorPalette.persianRed),
                         ),
                       ),
                     ],
@@ -360,7 +361,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                       Observer(
                         builder: (_) => Text(
                           "${(viewModel.alacaklarToplami).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}",
-                          style: const TextStyle(color: Colors.green),
+                          style: const TextStyle(color: ColorPalette.mantis),
                         ),
                       ),
                     ],
@@ -374,7 +375,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                       Observer(
                         builder: (_) => Text(
                           "${(viewModel.toplamBakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}",
-                          style: TextStyle(color: (viewModel.borclarToplami - viewModel.alacaklarToplami) < 0 ? Colors.red : Colors.green),
+                          style: TextStyle(color: (viewModel.borclarToplami - viewModel.alacaklarToplami) < 0 ? ColorPalette.persianRed : ColorPalette.mantis),
                         ),
                       ),
                     ],

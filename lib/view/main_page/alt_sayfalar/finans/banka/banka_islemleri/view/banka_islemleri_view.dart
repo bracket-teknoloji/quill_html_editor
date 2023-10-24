@@ -3,6 +3,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";
@@ -166,7 +167,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
                 Observer(
                   builder: (_) => Text(
                     "${viewModel.gelenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                    style: const TextStyle(color: Colors.green),
+                    style: const TextStyle(color: ColorPalette.mantis),
                   ),
                 ),
               ],
@@ -177,7 +178,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
                 Observer(
                   builder: (_) => Text(
                     "${viewModel.gidenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                    style: const TextStyle(color: Colors.red),
+                    style: const TextStyle(color: ColorPalette.persianRed),
                   ),
                 ),
               ],

@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
@@ -74,18 +75,20 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                 Text.rich(
                   TextSpan(
                     children: <InlineSpan>[
-                      const TextSpan(text: "Miktar\n", style: TextStyle(color: Colors.grey)),
+                      const TextSpan(text: "Miktar\n", style: TextStyle(color: ColorPalette.slateGray)),
                       TextSpan(text: BaseSiparisEditModel.instance.toplamKalemMiktari().toIntIfDouble.toStringIfNotNull ?? "0", style: const TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
                 ),
                 const Text.rich(
-                  TextSpan(children: <InlineSpan>[TextSpan(text: "Mal Ağırlığı\n", style: TextStyle(color: Colors.grey)), TextSpan(text: "0", style: TextStyle(fontWeight: FontWeight.bold))]),
+                  TextSpan(
+                    children: <InlineSpan>[TextSpan(text: "Mal Ağırlığı\n", style: TextStyle(color: ColorPalette.slateGray)), TextSpan(text: "0", style: TextStyle(fontWeight: FontWeight.bold))],
+                  ),
                 ),
                 Text.rich(
                   TextSpan(
                     children: <InlineSpan>[
-                      const TextSpan(text: "Brüt Tutar\n", style: TextStyle(color: Colors.grey)),
+                      const TextSpan(text: "Brüt Tutar\n", style: TextStyle(color: ColorPalette.slateGray)),
                       TextSpan(text: "${model.toplamBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -98,7 +101,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                 Text.rich(
                   TextSpan(
                     children: <InlineSpan>[
-                      const TextSpan(text: "Mal. Faz. İsk.\n", style: TextStyle(color: Colors.grey)),
+                      const TextSpan(text: "Mal. Faz. İsk.\n", style: TextStyle(color: ColorPalette.slateGray)),
                       TextSpan(text: "${viewModel.model.malFazlasiTutar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -106,7 +109,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                 Text.rich(
                   TextSpan(
                     children: <InlineSpan>[
-                      const TextSpan(text: "Satır İsk.\n", style: TextStyle(color: Colors.grey)),
+                      const TextSpan(text: "Satır İsk.\n", style: TextStyle(color: ColorPalette.slateGray)),
                       TextSpan(text: "${viewModel.model.satirIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -115,7 +118,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   builder: (_) => Text.rich(
                     TextSpan(
                       children: <InlineSpan>[
-                        const TextSpan(text: "Toplam İskonto\n", style: TextStyle(color: Colors.grey)),
+                        const TextSpan(text: "Toplam İskonto\n", style: TextStyle(color: ColorPalette.slateGray)),
                         TextSpan(text: "${viewModel.model.getToplamIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
@@ -130,7 +133,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   builder: (_) => Text.rich(
                     TextSpan(
                       children: <InlineSpan>[
-                        const TextSpan(text: "Ara Toplam\n", style: TextStyle(color: Colors.grey)),
+                        const TextSpan(text: "Ara Toplam\n", style: TextStyle(color: ColorPalette.slateGray)),
                         TextSpan(text: "${viewModel.model.getAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
@@ -140,7 +143,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   builder: (_) => Text.rich(
                     TextSpan(
                       children: <InlineSpan>[
-                        const TextSpan(text: "KDV Tutarı\n", style: TextStyle(color: Colors.grey)),
+                        const TextSpan(text: "KDV Tutarı\n", style: TextStyle(color: ColorPalette.slateGray)),
                         TextSpan(text: "${viewModel.model.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),
@@ -150,7 +153,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   builder: (_) => Text.rich(
                     TextSpan(
                       children: <InlineSpan>[
-                        const TextSpan(text: "Genel Toplam\n", style: TextStyle(color: Colors.grey)),
+                        const TextSpan(text: "Genel Toplam\n", style: TextStyle(color: ColorPalette.slateGray)),
                         TextSpan(text: "${viewModel.model.genelToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
                       ],
                     ),

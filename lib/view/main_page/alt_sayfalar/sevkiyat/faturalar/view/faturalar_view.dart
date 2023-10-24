@@ -39,7 +39,7 @@ class FaturalarView extends StatefulWidget {
 }
 
 class _FaturalarViewState extends BaseState<FaturalarView> {
-  late FaturalarViewModel viewModel;
+  late final FaturalarViewModel viewModel;
   late final ScrollController _scrollController;
   late final TextEditingController _searchController;
   late final TextEditingController _baslangicTarihiController;
@@ -59,7 +59,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
 
   @override
   void initState() {
-    viewModel = FaturalarViewModel(pickerBelgeTuru: widget.siparisTipiEnum.rawValue);
+    viewModel = FaturalarViewModel(pickerBelgeTuru: widget.siparisTipiEnum.rawValue, siparisTipiEnum: widget.siparisTipiEnum);
     _scrollController = ScrollController();
     _searchController = TextEditingController();
     _baslangicTarihiController = TextEditingController();
@@ -121,7 +121,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
         extendBody: true,
         extendBodyBehindAppBar: false,
         appBar: appBar(),
-        floatingActionButton: fab(),
+        // floatingActionButton: fab(),
         body: body(),
         bottomNavigationBar: bottomBar(),
       );
@@ -650,7 +650,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                   child: ElevatedButton(
                     onPressed: () {
                       Get.back();
-                      viewModel.setSiparislerList(null);
+                      viewModel.setFaturaList(null);
                       viewModel.setDahaVarMi(true);
                       viewModel.resetPage();
                     },

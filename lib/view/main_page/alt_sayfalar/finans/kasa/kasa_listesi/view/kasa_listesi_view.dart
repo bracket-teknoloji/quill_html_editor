@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
@@ -141,7 +142,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
               Observer(
                 builder: (_) => Text(
                   "${viewModel.getGelir.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                  style: const TextStyle(color: Colors.green),
+                  style: const TextStyle(color: ColorPalette.mantis),
                 ),
               ),
             ],
@@ -158,7 +159,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
           FooterButton(
             children: [
               const Text("Gider"),
-              Observer(builder: (_) => Text("${viewModel.getGider.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red))),
+              Observer(builder: (_) => Text("${viewModel.getGider.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: ColorPalette.persianRed))),
             ],
             onPressed: () {
               if (viewModel.filtreGroupValue != "E") {
@@ -173,7 +174,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
           FooterButton(
             children: [
               const Text("Bakiye"),
-              Observer(builder: (_) => Text("${viewModel.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.grey))),
+              Observer(builder: (_) => Text("${viewModel.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: ColorPalette.slateGray))),
             ],
           ),
         ],

@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../../view/main_page/alt_sayfalar/stok/fiyat_gecmisi/model/fiyat_gecmisi_response_model.dart";
 import "../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -27,7 +28,7 @@ class StokFiyatGecmisiCard extends StatefulWidget {
 class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
   @override
   Widget build(BuildContext context) => Card(
-        color: widget.model?.yazdirildi == "E" ? Colors.green.withOpacity(0.4) : null,
+        color: widget.model?.yazdirildi == "E" ? ColorPalette.mantis.withOpacity(0.4) : null,
         child: ListTile(
           onTap: () {
             widget.onTap?.call();

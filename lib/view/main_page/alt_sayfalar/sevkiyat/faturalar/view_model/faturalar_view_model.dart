@@ -2,6 +2,7 @@ import "dart:convert";
 
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
@@ -15,7 +16,7 @@ part "faturalar_view_model.g.dart";
 class FaturalarViewModel = _FaturalarViewModelBase with _$FaturalarViewModel;
 
 abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
-  _FaturalarViewModelBase({required String pickerBelgeTuru}) {
+  _FaturalarViewModelBase({required String pickerBelgeTuru, required this.siparisTipiEnum}) {
     faturaRequestModel = faturaRequestModel.copyWith(pickerBelgeTuru: pickerBelgeTuru);
   }
 
@@ -45,6 +46,9 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
 
   @observable
   bool kodlariGoster = false;
+
+  @observable
+  late SiparisTipiEnum siparisTipiEnum;
 
   @observable
   ObservableMap<String, bool> ekstraAlanlarMap = {
@@ -213,16 +217,6 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
     }
   }
 
-  @action
-  void setSiparislerList(List<BaseSiparisEditModel?>? value) => faturaList = value?.asObservable();
-
-  @action
-  void addSiparislerList(List<BaseSiparisEditModel?>? value) => faturaList = faturaList?..addAll(value!);
-
-  @action
-  void removeSiparislerList(int index) {
-    faturaList = faturaList?..removeAt(index);
-  }
 
   @action
   void resetFilter() => faturaRequestModel = faturaRequestModel.copyWith(
@@ -245,7 +239,7 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> resetPage() async {
-    setSiparislerList(null);
+    setFaturaList(null);
     setDahaVarMi(true);
     resetSayfa();
     await getData();
@@ -270,8 +264,13 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
     if (result.data is List) {
       final List<BaseSiparisEditModel> list = result.data.cast<BaseSiparisEditModel>();
       if ((faturaRequestModel.sayfa ?? 0) < 2) {
+        setFaturaList(CacheManager.getFaturaEditLists(siparisTipiEnum));
         paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
-        setFaturaList(list);
+        if (faturaList.ext.isNullOrEmpty) {
+          setFaturaList(list);
+        } else {
+          addFaturaList(list);
+        }
       } else {
         addFaturaList(list);
       }

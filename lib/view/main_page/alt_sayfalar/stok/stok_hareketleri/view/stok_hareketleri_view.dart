@@ -5,6 +5,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_slidable/flutter_slidable.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
@@ -360,7 +361,10 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                                 ),
                                               ),
                                               Text(model.fisno ?? ""),
-                                              Icon(model.cikisIslemi ?? false ? Icons.chevron_right_outlined : Icons.chevron_left_sharp, color: model.cikisIslemi ?? false ? Colors.red : Colors.green),
+                                              Icon(
+                                                model.cikisIslemi ?? false ? Icons.chevron_right_outlined : Icons.chevron_left_sharp,
+                                                color: model.cikisIslemi ?? false ? ColorPalette.persianRed : ColorPalette.mantis,
+                                              ),
                                             ],
                                           ),
                                           Text.rich(
@@ -368,7 +372,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                               children: [
                                                 TextSpan(
                                                   text: "${model.belgeTipiAciklama ?? model.hareketTuruAciklama}  ",
-                                                  style: TextStyle(color: (model.cikisIslemi ?? false) ? Colors.red : Colors.green),
+                                                  style: TextStyle(color: (model.cikisIslemi ?? false) ? ColorPalette.persianRed : ColorPalette.mantis),
                                                 ),
                                                 TextSpan(text: "(${model.hareketTuruAciklama})", style: const TextStyle(color: Colors.white30)),
                                               ],

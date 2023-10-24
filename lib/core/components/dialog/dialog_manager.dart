@@ -7,6 +7,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../../view/add_company/model/account_model.dart";
 import "../../../view/add_company/model/account_response_model.dart";
@@ -92,7 +93,7 @@ class DialogManager {
             ),
             Padding(
               padding: UIHelper.midPaddingHorizontal,
-              child: Text(getAppData, style: TextStyle(color: Colors.grey.withOpacity(0.8), fontSize: 12), textAlign: TextAlign.center),
+              child: Text(getAppData, style: TextStyle(color: ColorPalette.slateGray.withOpacity(0.8), fontSize: 12), textAlign: TextAlign.center),
             ).paddingOnly(top: UIHelper.highSize),
           ],
         ),
@@ -120,7 +121,7 @@ class DialogManager {
             ),
             Padding(
               padding: UIHelper.midPaddingHorizontal,
-              child: Text(getAppData, style: TextStyle(color: Colors.grey.withOpacity(0.8)), textAlign: TextAlign.center),
+              child: Text(getAppData, style: TextStyle(color: ColorPalette.slateGray.withOpacity(0.8)), textAlign: TextAlign.center),
             ).paddingOnly(top: UIHelper.highSize),
           ],
         ),
@@ -208,7 +209,7 @@ class DialogManager {
   void get hideSnackBar => ScaffoldMessenger.of(context).clearSnackBars();
 
   void get hideAlertDialog => Get.back(closeOverlays: true);
- 
+
   AlertDialog listTileDialog({required String title}) {
     final Box box = Hive.box("accounts");
     final Box preferences = Hive.box("preferences");
@@ -297,11 +298,11 @@ class DialogManager {
 
   SnackBar _snackBarColorful(String message, Color color) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: color);
 
-  SnackBar _snackBarError(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: Colors.red);
+  SnackBar _snackBarError(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: ColorPalette.persianRed);
 
-  SnackBar _snackBarSuccess(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: Colors.green);
+  SnackBar _snackBarSuccess(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: ColorPalette.mantis);
 
-  SnackBar _snackBarInfo(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: Colors.blueAccent);
+  SnackBar _snackBarInfo(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: ColorPalette.marineBlue);
 
   AwesomeDialog _areYouSureDialog(void Function() onYes, String? desc) => _baseDialog(
         title: "Uyarı",
@@ -420,7 +421,7 @@ class DialogManager {
         dialogType: dialogType ?? DialogType.noHeader,
         btnCancelText: btnCancelText,
         btnOkColor: btnOkColor ?? UIHelper.primaryColor,
-        btnCancelColor: btnCancelColor ?? Colors.grey,
+        btnCancelColor: btnCancelColor ?? ColorPalette.slateGray,
         dismissOnBackKeyPress: false,
         dismissOnTouchOutside: false,
         body: body,

@@ -3,6 +3,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";
@@ -177,7 +178,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                 const Text("Gelir"),
                 Observer(
                   builder: (_) =>
-                      Text("${(viewModel.paramData?["TOPLAM_GELIR"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.green)),
+                      Text("${(viewModel.paramData?["TOPLAM_GELIR"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: ColorPalette.mantis)),
                 ),
               ],
               onPressed: () {
@@ -193,8 +194,10 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
               children: [
                 const Text("Gider"),
                 Observer(
-                  builder: (_) =>
-                      Text("${(viewModel.paramData?["TOPLAM_GIDER"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red)),
+                  builder: (_) => Text(
+                    "${(viewModel.paramData?["TOPLAM_GIDER"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                    style: const TextStyle(color: ColorPalette.persianRed),
+                  ),
                 ),
               ],
               onPressed: () {

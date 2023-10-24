@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../../view/main_page/alt_sayfalar/finans/kasa/kasa_listesi/model/kasa_listesi_model.dart";
 import "../../base/state/base_state.dart";
@@ -39,7 +40,9 @@ class _KasaListesiCardState extends BaseState<KasaListesiCard> {
               children: [
                 TextSpan(
                   style: TextStyle(
-                    color: ((widget.item?.dovizli == "E" ? (widget.item?.devirliDovizBakiye ?? widget.item?.dovizDevirTutari ?? 0) : widget.item?.devirliBakiye ?? 0) < 0) ? Colors.red : Colors.green,
+                    color: ((widget.item?.dovizli == "E" ? (widget.item?.devirliDovizBakiye ?? widget.item?.dovizDevirTutari ?? 0) : widget.item?.devirliBakiye ?? 0) < 0)
+                        ? ColorPalette.persianRed
+                        : ColorPalette.mantis,
                   ),
                   text:
                       "${(widget.item?.dovizli == "E" ? (widget.item?.devirliDovizBakiye ?? widget.item?.dovizDevirTutari) : widget.item?.devirliBakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.item?.dovizli == "E" ? (widget.item?.dovizAdi ?? "") : mainCurrency}\n",

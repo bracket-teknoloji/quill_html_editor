@@ -74,6 +74,22 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
     });
   }
 
+  late final _$siparisTipiEnumAtom =
+      Atom(name: '_FaturalarViewModelBase.siparisTipiEnum', context: context);
+
+  @override
+  SiparisTipiEnum get siparisTipiEnum {
+    _$siparisTipiEnumAtom.reportRead();
+    return super.siparisTipiEnum;
+  }
+
+  @override
+  set siparisTipiEnum(SiparisTipiEnum value) {
+    _$siparisTipiEnumAtom.reportWrite(value, super.siparisTipiEnum, () {
+      super.siparisTipiEnum = value;
+    });
+  }
+
   late final _$ekstraAlanlarMapAtom =
       Atom(name: '_FaturalarViewModelBase.ekstraAlanlarMap', context: context);
 
@@ -580,39 +596,6 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   }
 
   @override
-  void setSiparislerList(List<BaseSiparisEditModel?>? value) {
-    final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-        name: '_FaturalarViewModelBase.setSiparislerList');
-    try {
-      return super.setSiparislerList(value);
-    } finally {
-      _$_FaturalarViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void addSiparislerList(List<BaseSiparisEditModel?>? value) {
-    final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-        name: '_FaturalarViewModelBase.addSiparislerList');
-    try {
-      return super.addSiparislerList(value);
-    } finally {
-      _$_FaturalarViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void removeSiparislerList(int index) {
-    final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-        name: '_FaturalarViewModelBase.removeSiparislerList');
-    try {
-      return super.removeSiparislerList(index);
-    } finally {
-      _$_FaturalarViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void resetFilter() {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
         name: '_FaturalarViewModelBase.resetFilter');
@@ -627,6 +610,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   String toString() {
     return '''
 kodlariGoster: ${kodlariGoster},
+siparisTipiEnum: ${siparisTipiEnum},
 ekstraAlanlarMap: ${ekstraAlanlarMap},
 faturaRequestModel: ${faturaRequestModel},
 paramData: ${paramData},

@@ -224,7 +224,8 @@ class YetkiController {
 
   //! SEVKİYAT
 
-  bool sevkiyatIrsAciklamaAlanlari(String? index) => isTrue(!isTrue(yetkiModel?.sevkiyatSatisFatGizlenecekAlanlar?.contains(index) ?? false, skipAdmin: true));
+  bool sevkiyatSatisFatAciklamaAlanlari(int? index) => isTrue(!isTrue(yetkiModel?.sevkiyatSatisFatAciklamaAlanlari?.contains(index) ?? false, skipAdmin: true));
+  bool sevkiyatIrsAciklamaAlanlari(int? index) => isTrue(!isTrue(yetkiModel?.sevkiyatSatisIrsaliyesiAciklamaAlanlari?.contains(index) ?? false, skipAdmin: true));
   bool sevkiyatSatisFatGizlenecekAlanlar(String? index) => isTrue(!isTrue(yetkiModel?.sevkiyatSatisFatGizlenecekAlanlar?.contains(index) ?? false, skipAdmin: true));
   bool sevkiyatIrsDegistirilmeyecekAlanlar(String? index) => isTrue(!isTrue(yetkiModel?.sevkiyatSatisFatDegismeyecekAlanlar?.contains(index) ?? false, skipAdmin: true));
 
@@ -241,8 +242,11 @@ class YetkiController {
 
   //! MAL KABUL
 
+  bool malKabulAlisFatAciklamaAlanlari(int? index) => isTrue(!isTrue(yetkiModel?.malKabulAlisFatAciklamaAlanlari?.contains(index) ?? false, skipAdmin: true));
+  bool malKabulAlisIrsAciklamaAlanlari(int? index) => isTrue(!isTrue(yetkiModel?.malKabulAlisIrsAciklamaAlanlari?.contains(index) ?? false, skipAdmin: true));
+  // bool malKabulAlisFatGizlenecekAlanlar(String? index) => isTrue(!isTrue(yetkiModel?.malKabulAlisFatGizlenecekAlanlar?.contains(index) ?? false, skipAdmin: true));
+  // bool malKabulAlisFatDegistirilmeyecekAlanlar(String? index) => isTrue(!isTrue(yetkiModel?.malKabulAlisFatDegismeyecekAlanlar?.contains(index) ?? false, skipAdmin: true));
   bool malKabulAlisIrsGizlenecekAlanlar(String? index) => isTrue(!isTrue(yetkiModel?.malKabulAlisIrsGizlenecekAlanlar?.contains(index) ?? false, skipAdmin: true));
-
   // bool malKabulAlisIrsDegistirilmeyecekAlanlar(String? index) => isTrue(!isTrue(yetkiModel?.degismey?.contains(index) ?? false, skipAdmin: true));
 
   bool get alisFatEkle => isTrue(yetkiModel?.malKabulAlisFaturasiKaydet);

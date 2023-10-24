@@ -5,6 +5,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -362,7 +363,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                 Observer(
                   builder: (_) => Text(
                     "${(viewModel.paramData?["TAHSIL_EDILECEK"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                    style: const TextStyle(color: Colors.green),
+                    style: const TextStyle(color: ColorPalette.mantis),
                   ),
                 ),
               ],
@@ -380,7 +381,8 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
               children: [
                 const Text("Ödenecek"),
                 Observer(
-                  builder: (_) => Text("${(viewModel.paramData?["ODENECEK"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: Colors.red)),
+                  builder: (_) =>
+                      Text("${(viewModel.paramData?["ODENECEK"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: ColorPalette.persianRed)),
                 ),
               ],
               onPressed: () async {

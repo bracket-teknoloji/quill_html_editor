@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../../../../view/main_page/model/param_model.dart";
 import "../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -171,7 +172,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                                   Text(model.dovizAdi ?? ""),
                                   Text(
                                     model.tarih.toDateString,
-                                    style: const TextStyle(color: Colors.grey),
+                                    style: const TextStyle(color: ColorPalette.slateGray),
                                   ),
                                 ],
                               ).paddingOnly(bottom: UIHelper.highSize),

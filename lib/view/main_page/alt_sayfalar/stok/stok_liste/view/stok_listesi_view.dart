@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -566,7 +567,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                 TextSpan(
                                   text: stok.stokAdi,
                                   children: [
-                                    TextSpan(text: "\n${stok.stokKodu}", style: context.textTheme.bodySmall?.copyWith(color: Colors.grey)),
+                                    TextSpan(text: "\n${stok.stokKodu}", style: context.textTheme.bodySmall?.copyWith(color: ColorPalette.slateGray)),
                                   ],
                                 ),
                               ),

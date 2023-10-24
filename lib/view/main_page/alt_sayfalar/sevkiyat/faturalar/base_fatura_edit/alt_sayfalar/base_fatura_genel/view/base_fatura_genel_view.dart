@@ -350,7 +350,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(16)),
                     ],
                   ),
-                ).yetkiVarMi(widget.model.siparisTipiEnum?.irsaliyeMi != true),
+                ),
               ],
             ),
           ),

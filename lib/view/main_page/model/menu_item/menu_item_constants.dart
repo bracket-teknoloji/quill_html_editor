@@ -1,10 +1,10 @@
 import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 
+import "../../../../core/constants/color_palette.dart";
 import "../../../../core/constants/enum/serbest_rapor_detay_kod_enum.dart";
 import "../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../core/constants/extensions/widget_extensions.dart";
-import "../../../../core/constants/grid_constants.dart";
 import "../../../../core/init/cache/cache_manager.dart";
 import "../grid_item_model.dart";
 import "../main_page_model.dart";
@@ -15,13 +15,13 @@ class MenuItemConstants {
   static final List<NetFectDizaynList>? _serbestRapor = _anaVeri?.paramModel?.netFectDizaynList!.where((NetFectDizaynList element) => element.ozelKod == "Serbest").toList();
 
   static List<GridItemModel> get getGridItemModel =>
-      _serbestRapor!.map((NetFectDizaynList e) => GridItemModel.serbestRaporlar(name: e.detayKod, title: e.dizaynAdi ?? "", color: GridThemeManager.serbestRaporlar, arguments: e)).toList();
+      _serbestRapor!.map((NetFectDizaynList e) => GridItemModel.serbestRaporlar(name: e.detayKod, title: e.dizaynAdi ?? "", color: ColorPalette.asparagus, arguments: e)).toList();
 
   static List<GridItemModel> _getSerbestRapor(SerbestRaporDetayKodEnum detayKod) {
     final List<NetFectDizaynList>? serbestRaporList = _serbestRapor?.where((NetFectDizaynList element) => element.detayKod == detayKod.value).toList();
     return List.generate(
       _serbestRapor?.where((NetFectDizaynList element) => element.detayKod == detayKod.value).length ?? 0,
-      (int index) => GridItemModel.serbestRaporlar(title: serbestRaporList![index].dizaynAdi ?? "", arguments: serbestRaporList[index], color: GridThemeManager.serbestRaporlar),
+      (int index) => GridItemModel.serbestRaporlar(title: serbestRaporList![index].dizaynAdi ?? "", arguments: serbestRaporList[index], color: ColorPalette.asparagus),
     );
   }
 
@@ -32,7 +32,7 @@ class MenuItemConstants {
       name: "CARI",
       title: "Cari",
       icon: "supervisor",
-      color: GridThemeManager.cari,
+      color: ColorPalette.ecru,
       altMenuler: <GridItemModel>[
         GridItemModel.item(name: "cari_CariListesi", title: "Cari Listesi", route: "/mainPage/cariListesi", arguments: false),
         //😳 GridItemModel.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları"),
@@ -61,7 +61,7 @@ class MenuItemConstants {
       name: "EBEL",
       title: "E-Belge",
       icon: "e_belge",
-      color: GridThemeManager.eBelge,
+      color: ColorPalette.marineBlue,
       altMenuler: <GridItemModel>[
         //! UNUTMA BUNU AÇMAYI
         //😳GridItemModel.item(name: "ebelge_EIrsaliyeGelenKutusu", title: "Gelen Kutusu"), // onTap: () => Get.to(PDFViewerView())),
@@ -75,7 +75,7 @@ class MenuItemConstants {
       name: "YONE",
       title: "Finans",
       icon: "wallet",
-      color: GridThemeManager.finans,
+      color: ColorPalette.persianRed,
       altMenuler: <GridItemModel>[
         GridItemModel.altmenu(
           name: null,
@@ -167,7 +167,7 @@ class MenuItemConstants {
       name: "GNEL",
       title: "Genel",
       icon: "settings",
-      color: GridThemeManager.genel,
+      color: ColorPalette.tomato,
       altMenuler: <GridItemModel>[
         // GridItemModel.item(name: "", title: "Firmalar", route: "/addCompany"),
       ],
@@ -175,7 +175,7 @@ class MenuItemConstants {
 
     //* Hücre Takibi
     //*
-    GridItemModel.anamenu(name: "HTAK", title: "Hücre Takibi", icon: "shelves", color: GridThemeManager.hucreTakibi, altMenuler: <GridItemModel>[]),
+    GridItemModel.anamenu(name: "HTAK", title: "Hücre Takibi", icon: "shelves", color: ColorPalette.skyBlue, altMenuler: <GridItemModel>[]),
 
     //* Mal Kabul
     //*
@@ -183,7 +183,7 @@ class MenuItemConstants {
       name: "MKBL",
       title: "Mal Kabul",
       icon: "pallet",
-      color: GridThemeManager.malKabul,
+      color: ColorPalette.coyote,
       altMenuler: <GridItemModel>[
         GridItemModel.item(name: "malKabul_AlisFaturasi", title: "Alış Faturası", route: "/mainPage/malKabulAlisFaturasi"),
         GridItemModel.item(name: "malKabul_SatinAlma", title: "Alış İrsaliyesi", route: "/mainPage/malKabulAlisIrsaliyesi"),
@@ -203,7 +203,7 @@ class MenuItemConstants {
 
     //* Sayım
     //*
-    GridItemModel.anamenu(name: "SYIM", title: "Sayım", icon: "counter", color: GridThemeManager.sayim, altMenuler: <GridItemModel>[]),
+    GridItemModel.anamenu(name: "SYIM", title: "Sayım", icon: "counter", color: ColorPalette.dodgerBlue, altMenuler: <GridItemModel>[]),
 
     //* Sevkiyat
     //*
@@ -211,7 +211,7 @@ class MenuItemConstants {
       name: "SEVK",
       title: "Sevkiyat",
       icon: "forklift",
-      color: GridThemeManager.sevkiyat,
+      color: ColorPalette.mountbattenPink,
       altMenuler: <GridItemModel>[
         GridItemModel.item(name: "sevkiyat_SatisFat", title: "Satış Faturaları", route: "/mainPage/sevkiyatSatisFaturasi"),
         GridItemModel.item(name: "sevkiyat_SatisIrsaliyesi", title: "Satış İrsaliyesi", route: "/mainPage/sevkiyatSatisIrsaliyesi"),
@@ -225,7 +225,7 @@ class MenuItemConstants {
       name: "SIPA",
       title: "Sipariş",
       icon: "order",
-      color: GridThemeManager.siparis,
+      color: ColorPalette.blueGray,
       altMenuler: <GridItemModel>[
         GridItemModel.item(name: "siparis_MusteriSiparisi", title: "Müşteri Siparişleri", route: "/mainPage/siparisMusteriSiparisi"),
         GridItemModel.item(name: "siparis_SaticiSiparisi", title: "Satıcı Siparişleri", route: "/mainPage/siparisSaticiSiparisi"),
@@ -275,7 +275,7 @@ class MenuItemConstants {
       name: "STOK",
       title: "Stok",
       icon: "inventory",
-      color: GridThemeManager.stok,
+      color: ColorPalette.mantis,
       altMenuler: <GridItemModel>[
         GridItemModel.item(name: "stok_StokListesi", title: "Stok Listesi", route: "/mainPage/stokListesi"),
         //😳GridItemModel.item(name: "stok_BarkodTanimlama", title: "Barkod Tanımla"),
@@ -307,7 +307,7 @@ class MenuItemConstants {
       name: "TAHS",
       title: "Tahsilat & Ödeme",
       icon: "atm_dollar",
-      color: GridThemeManager.tahsilatOdeme,
+      color: ColorPalette.pineGreen,
       altMenuler: <GridItemModel>[
         //😳 GridItemModel.item(name: "TAHS_STEK", title: "Satış Teklifi", icon: "atm_dollar"),
       ],
@@ -319,7 +319,7 @@ class MenuItemConstants {
       name: "TEKL",
       title: "Talep & Teklif",
       icon: "offer",
-      color: GridThemeManager.talepTeklif,
+      color: ColorPalette.mulberry,
       altMenuler: <GridItemModel>[
         //😳GridItemModel.item(name: "taltek_STEK", title: "Satış Teklifi", icon: "offer"),
         //😳GridItemModel.item(name: "taltek_STAL", title: "Satın Alma Talebi", icon: "offer")
@@ -333,7 +333,7 @@ class MenuItemConstants {
       name: "TEMS",
       title: "Profilim",
       icon: "profile",
-      color: GridThemeManager.temsilci,
+      color: ColorPalette.gamboge,
       altMenuler: <GridItemModel>[
         //? anamenünün onTap'i olmadığı için tek item verdim. Tek item verince direkt onu açıyor. O yüzden parametrelerin bir anlamı yok.
         GridItemModel.item(name: "temsilci_Profil", title: "Profilim", icon: "profile", route: "/mainPage/temsilciProfil"),
@@ -349,7 +349,7 @@ class MenuItemConstants {
       name: "TRNS",
       title: "Transfer",
       icon: "trolley",
-      color: GridThemeManager.transfer,
+      color: ColorPalette.slateGray,
       altMenuler: <GridItemModel>[
         // GridItemModel.item(name: "", title: "Depo Transferi", icon: ""),
         // GridItemModel.item(name: "", title: "Stok Transfer Raporu", icon: ""),
@@ -358,12 +358,12 @@ class MenuItemConstants {
 
     //* Üretim
     //*
-    GridItemModel.anamenu(name: "URET", title: "Üretim", icon: "factory", color: GridThemeManager.uretim, altMenuler: <GridItemModel>[]),
+    GridItemModel.anamenu(name: "URET", title: "Üretim", icon: "factory", color: ColorPalette.outerSpace, altMenuler: <GridItemModel>[]),
     GridItemModel.anamenu(
       name: "GNEL_SRAP",
       title: "Serbest Raporlar",
       icon: "monitoring",
-      color: GridThemeManager.serbestRaporlar,
+      color: ColorPalette.asparagus,
       altMenuler: <GridItemModel>[
         ...groupBySerbestRaporList(),
         // ...List.generate(_serbestRapor?.length ?? 0, (index) => GridItemModel.serbestRaporlar(title: _serbestRapor?[index].dizaynAdi ?? "", arguments: _serbestRapor?[index])),

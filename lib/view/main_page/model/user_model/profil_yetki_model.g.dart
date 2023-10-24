@@ -79,8 +79,8 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           (json['yazdirma_Dizayn_TahsilatMakbuzu'] as List<dynamic>?)
               ?.map((e) => e as int)
               .toList()
-      ..yazdirmaUSK = json['yazdirma_USK'] as bool?
-      ..yazdirmaUSKYazicilari =
+      ..yazdirmaUsk = json['yazdirma_USK'] as bool?
+      ..yazdirmaUskYazicilari =
           (json['yazdirma_USK_Yazicilari'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList()
@@ -288,179 +288,177 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..malKabulMustahsilEkle = json['malKabul_Mustahsil_Ekle'] as bool?
       ..malKabulMustahsilDuzelt = json['malKabul_Mustahsil_Duzelt'] as bool?
       ..malKabulMustahsilSil = json['malKabul_Mustahsil_Sil'] as bool?
-      ..transferDAT = json['transfer_DAT'] as bool?
-      ..transferDATKaydet = json['transfer_DAT_Kaydet'] as bool?
-      ..transferDATDuzelt = json['transfer_DAT_Duzelt'] as bool?
-      ..transferDATSil = json['transfer_DAT_Sil'] as bool?
-      ..transferDATFiyatGor = json['transfer_DAT_FiyatGor'] as bool?
-      ..transferDATOtoEtiketBas = json['transfer_DAT_OtoEtiketBas'] as bool?
-      ..transferDATVarsayilanCikisDepo =
+      ..transferDat = json['transfer_DAT'] as bool?
+      ..transferDatKaydet = json['transfer_DAT_Kaydet'] as bool?
+      ..transferDatDuzelt = json['transfer_DAT_Duzelt'] as bool?
+      ..transferDatSil = json['transfer_DAT_Sil'] as bool?
+      ..transferDatFiyatGor = json['transfer_DAT_FiyatGor'] as bool?
+      ..transferDatOtoEtiketBas = json['transfer_DAT_OtoEtiketBas'] as bool?
+      ..transferDatVarsayilanCikisDepo =
           json['transfer_DAT_VarsayilanCikisDepo'] as int?
-      ..transferDATVarsayilanGirisDepo =
+      ..transferDatVarsayilanGirisDepo =
           json['transfer_DAT_VarsayilanGirisDepo'] as int?
-      ..transferDATEIrsIsaretleyemesin =
+      ..transferDatEIrsIsaretleyemesin =
           json['transfer_DAT_eIrsIsaretleyemesin'] as bool?
-      ..transferDATDigerSekmesiGoster =
+      ..transferDatDigerSekmesiGoster =
           json['transfer_DAT_DigerSekmesiGoster'] as bool?
-      ..transferDATBarkodluGiris = json['transfer_DAT_BarkodluGiris'] as bool?
-      ..transferDATMiktarOtomatikGelsin =
+      ..transferDatBarkodluGiris = json['transfer_DAT_BarkodluGiris'] as bool?
+      ..transferDatMiktarOtomatikGelsin =
           json['transfer_DAT_MiktarOtomatikGelsin'] as bool?
-      ..transferDATKalemDetaySorulmasin =
+      ..transferDatKalemDetaySorulmasin =
           json['transfer_DAT_KalemDetaySorulmasin'] as bool?
-      ..transferDATStokRehberiAcilmasin =
+      ..transferDatStokRehberiAcilmasin =
           json['transfer_DAT_StokRehberiAcilmasin'] as bool?
-      ..transferDATKalemDuzeltilemesin =
+      ..transferDatKalemDuzeltilemesin =
           json['transfer_DAT_KalemDuzeltilemesin'] as bool?
-      ..transferDATKlavyeEngelle = json['transfer_DAT_KlavyeEngelle'] as bool?
-      ..transferDATMiktar1Gelsin = json['transfer_DAT_Miktar1Gelsin'] as bool?
-      ..transferDATKalemlerBirlestirilsin =
+      ..transferDatKlavyeEngelle = json['transfer_DAT_KlavyeEngelle'] as bool?
+      ..transferDatMiktar1Gelsin = json['transfer_DAT_Miktar1Gelsin'] as bool?
+      ..transferDatKalemlerBirlestirilsin =
           json['transfer_DAT_KalemlerBirlestirilsin'] as bool?
-      ..transferDATKacGunlukKayitlarListelensin =
+      ..transferDatKacGunlukKayitlarListelensin =
           json['transfer_DAT_KacGunlukKayitlarListelensin'] as int?
-      ..transferDATOnayIslemleri = json['transfer_DAT_OnayIslemleri'] as bool?
-      ..transferDATOnayIslemleriDepolar =
+      ..transferDatOnayIslemleri = json['transfer_DAT_OnayIslemleri'] as bool?
+      ..transferDatOnayIslemleriDepolar =
           json['transfer_DAT_OnayIslemleri_Depolar'] as List<dynamic>?
-      ..transferDATEkAlan2Hatirla = json['transfer_DAT_EkAlan2Hatirla'] as bool?
-      ..transferDATEkAlan2Tablodan =
+      ..transferDatEkAlan2Hatirla = json['transfer_DAT_EkAlan2Hatirla'] as bool?
+      ..transferDatEkAlan2Tablodan =
           json['transfer_DAT_EkAlan2Tablodan'] as bool?
-      ..transferDATLokalDATSeciliGelmesin =
-          json['transfer_DAT_LokalDATSeciliGelmesin'] as bool?
-      ..transferDATSeriGirisHarYapabilsin =
+      ..transferDatSeriGirisHarYapabilsin =
           json['transfer_DAT_SeriGirisHarYapabilsin'] as bool?
-      ..transferDATBirim1denKaydet =
+      ..transferDatBirim1denKaydet =
           json['transfer_DAT_Birim1denKaydet'] as bool?
-      ..transferDATBarkod2Sor = json['transfer_DAT_Barkod2Sor'] as bool?
-      ..transferDATBosGecilmeyecekAlanlar =
+      ..transferDatBarkod2Sor = json['transfer_DAT_Barkod2Sor'] as bool?
+      ..transferDatBosGecilmeyecekAlanlar =
           json['transfer_DAT_BosGecilmeyecekAlanlar'] as List<dynamic>?
-      ..transferDATGizlenecekAlanlar =
+      ..transferDatGizlenecekAlanlar =
           json['transfer_DAT_GizlenecekAlanlar'] as List<dynamic>?
-      ..transferDATDegismeyecekAlanlar =
+      ..transferDatDegismeyecekAlanlar =
           json['transfer_DAT_DegismeyecekAlanlar'] as List<dynamic>?
-      ..transferDATAciklamaAlanlari =
+      ..transferDatAciklamaAlanlari =
           json['transfer_DAT_AciklamaAlanlari'] as List<dynamic>?
-      ..transferDATSipBagSecenegi =
+      ..transferDatSipBagSecenegi =
           json['transfer_DAT_SipBagSecenegi'] as String?
-      ..transferDATReferansStokUygulamasi =
+      ..transferDatReferansStokUygulamasi =
           json['transfer_DAT_ReferansStokUygulamasi'] as bool?
-      ..transferDATSipBagSipHariciKalemEklenebilir =
+      ..transferDatSipBagSipHariciKalemEklenebilir =
           json['transfer_DAT_SipBag_SipHariciKalemEklenebilir'] as bool?
-      ..transferDATSipBagFazlaTeslimatYapilabilir =
+      ..transferDatSipBagFazlaTeslimatYapilabilir =
           json['transfer_DAT_SipBag_FazlaTeslimatYapilabilir'] as bool?
-      ..transferDATSipBagSipOkutulsun =
+      ..transferDatSipBagSipOkutulsun =
           json['transfer_DAT_SipBag_SipOkutulsun'] as bool?
-      ..transferDATSipBagSipOkutulsunMiktar2BazAl =
+      ..transferDatSipBagSipOkutulsunMiktar2BazAl =
           json['transfer_DAT_SipBag_SipOkutulsun_Miktar2BazAl'] as bool?
-      ..transferDATSipBagSipOkutulsunKalanMiktarGelsin =
+      ..transferDatSipBagSipOkutulsunKalanMiktarGelsin =
           json['transfer_DAT_SipBag_SipOkutulsun_KalanMiktarGelsin'] as String?
-      ..transferDATSipBagCokluSecim =
+      ..transferDatSipBagCokluSecim =
           json['transfer_DAT_SipBag_CokluSecim'] as bool?
-      ..transferDATSipBagTumKalemlerSecilsin =
+      ..transferDatSipBagTumKalemlerSecilsin =
           json['transfer_DAT_SipBag_TumKalemlerSecilsin'] as bool?
-      ..transferDATSipBagEslesmeDurumu =
+      ..transferDatSipBagEslesmeDurumu =
           json['transfer_DAT_SipBag_EslesmeDurumu'] as int?
-      ..transferDATSipBagMalToplananlarGelsin =
+      ..transferDatSipBagMalToplananlarGelsin =
           json['transfer_DAT_SipBag_MalToplananlarGelsin'] as bool?
-      ..transferDATSipBagSevkOnayliSiparislerGelsin =
+      ..transferDatSipBagSevkOnayliSiparislerGelsin =
           json['transfer_DAT_SipBag_SevkOnayliSiparislerGelsin'] as bool?
-      ..transferAG = json['transfer_AG'] as bool?
-      ..transferAGKaydet = json['transfer_AG_Kaydet'] as bool?
-      ..transferAGDuzelt = json['transfer_AG_Duzelt'] as bool?
-      ..transferAGSil = json['transfer_AG_Sil'] as bool?
-      ..transferAGFiyatGor = json['transfer_AG_FiyatGor'] as bool?
-      ..transferAGKacGunlukKayitlarListelensin =
+      ..transferAg = json['transfer_AG'] as bool?
+      ..transferAgKaydet = json['transfer_AG_Kaydet'] as bool?
+      ..transferAgDuzelt = json['transfer_AG_Duzelt'] as bool?
+      ..transferAgSil = json['transfer_AG_Sil'] as bool?
+      ..transferAgFiyatGor = json['transfer_AG_FiyatGor'] as bool?
+      ..transferAgKacGunlukKayitlarListelensin =
           json['transfer_AG_KacGunlukKayitlarListelensin'] as int?
-      ..transferAGVarsayilanDepo = json['transfer_AG_VarsayilanDepo'] as int?
-      ..transferAGDigerSekmesiGoster =
+      ..transferAgVarsayilanDepo = json['transfer_AG_VarsayilanDepo'] as int?
+      ..transferAgDigerSekmesiGoster =
           json['transfer_AG_DigerSekmesiGoster'] as bool?
-      ..transferAGBelgeKopyala = json['transfer_AG_BelgeKopyala'] as bool?
-      ..transferAGBirim1denKaydet = json['transfer_AG_Birim1denKaydet'] as bool?
-      ..transferAGOtoBasimYap = json['transfer_AG_OtoBasimYap'] as bool?
-      ..transferAGSeriGirisHarYapabilsin =
+      ..transferAgBelgeKopyala = json['transfer_AG_BelgeKopyala'] as bool?
+      ..transferAgBirim1denKaydet = json['transfer_AG_Birim1denKaydet'] as bool?
+      ..transferAgOtoBasimYap = json['transfer_AG_OtoBasimYap'] as bool?
+      ..transferAgSeriGirisHarYapabilsin =
           json['transfer_AG_SeriGirisHarYapabilsin'] as bool?
-      ..transferAGBarkodluGiris = json['transfer_AG_BarkodluGiris'] as bool?
-      ..transferAGMiktarOtomatikGelsin =
+      ..transferAgBarkodluGiris = json['transfer_AG_BarkodluGiris'] as bool?
+      ..transferAgMiktarOtomatikGelsin =
           json['transfer_AG_MiktarOtomatikGelsin'] as bool?
-      ..transferAGKalemDetaySorulmasin =
+      ..transferAgKalemDetaySorulmasin =
           json['transfer_AG_KalemDetaySorulmasin'] as bool?
-      ..transferAGStokRehberiAcilmasin =
+      ..transferAgStokRehberiAcilmasin =
           json['transfer_AG_StokRehberiAcilmasin'] as bool?
-      ..transferAGKalemDuzeltilemesin =
+      ..transferAgKalemDuzeltilemesin =
           json['transfer_AG_KalemDuzeltilemesin'] as bool?
-      ..transferAGKlavyeEngelle = json['transfer_AG_KlavyeEngelle'] as bool?
-      ..transferAGMiktar1Gelsin = json['transfer_AG_Miktar1Gelsin'] as bool?
-      ..transferAGReferansStokUygulamasi =
+      ..transferAgKlavyeEngelle = json['transfer_AG_KlavyeEngelle'] as bool?
+      ..transferAgMiktar1Gelsin = json['transfer_AG_Miktar1Gelsin'] as bool?
+      ..transferAgReferansStokUygulamasi =
           json['transfer_AG_ReferansStokUygulamasi'] as bool?
-      ..transferAGSipBagSipHariciKalemEklenebilir =
+      ..transferAgSipBagSipHariciKalemEklenebilir =
           json['transfer_AG_SipBag_SipHariciKalemEklenebilir'] as bool?
-      ..transferAGSipBagFazlaTeslimatYapilabilir =
+      ..transferAgSipBagFazlaTeslimatYapilabilir =
           json['transfer_AG_SipBag_FazlaTeslimatYapilabilir'] as bool?
-      ..transferAGSipBagSipOkutulsun =
+      ..transferAgSipBagSipOkutulsun =
           json['transfer_AG_SipBag_SipOkutulsun'] as bool?
-      ..transferAGSipBagSipOkutulsunMiktar2BazAl =
+      ..transferAgSipBagSipOkutulsunMiktar2BazAl =
           json['transfer_AG_SipBag_SipOkutulsun_Miktar2BazAl'] as bool?
-      ..transferAGSipBagCokluSecim =
+      ..transferAgSipBagCokluSecim =
           json['transfer_AG_SipBag_CokluSecim'] as bool?
-      ..transferAGSipBagTumKalemlerSecilsin =
+      ..transferAgSipBagTumKalemlerSecilsin =
           json['transfer_AG_SipBag_TumKalemlerSecilsin'] as bool?
-      ..transferAGSipBagEslesmeDurumu =
+      ..transferAgSipBagEslesmeDurumu =
           json['transfer_AG_SipBag_EslesmeDurumu'] as int?
-      ..transferAGSipBagMalToplananlarGelsin =
+      ..transferAgSipBagMalToplananlarGelsin =
           json['transfer_AG_SipBag_MalToplananlarGelsin'] as bool?
-      ..transferAGSipBagSevkOnayliSiparislerGelsin =
+      ..transferAgSipBagSevkOnayliSiparislerGelsin =
           json['transfer_AG_SipBag_SevkOnayliSiparislerGelsin'] as bool?
-      ..transferAC = json['transfer_AC'] as bool?
-      ..transferACKaydet = json['transfer_AC_Kaydet'] as bool?
-      ..transferACDuzelt = json['transfer_AC_Duzelt'] as bool?
-      ..transferACSil = json['transfer_AC_Sil'] as bool?
-      ..transferACFiyatGor = json['transfer_AC_FiyatGor'] as bool?
-      ..transferACKacGunlukKayitlarListelensin =
+      ..transferAc = json['transfer_AC'] as bool?
+      ..transferAcKaydet = json['transfer_AC_Kaydet'] as bool?
+      ..transferAcDuzelt = json['transfer_AC_Duzelt'] as bool?
+      ..transferAcSil = json['transfer_AC_Sil'] as bool?
+      ..transferAcFiyatGor = json['transfer_AC_FiyatGor'] as bool?
+      ..transferAcKacGunlukKayitlarListelensin =
           json['transfer_AC_KacGunlukKayitlarListelensin'] as int?
-      ..transferACVarsayilanDepo = json['transfer_AC_VarsayilanDepo'] as int?
-      ..transferACEIrsIsaretleyemesin =
+      ..transferAcVarsayilanDepo = json['transfer_AC_VarsayilanDepo'] as int?
+      ..transferAcEIrsIsaretleyemesin =
           json['transfer_AC_eIrsIsaretleyemesin'] as bool?
-      ..transferACDigerSekmesiGoster =
+      ..transferAcDigerSekmesiGoster =
           json['transfer_AC_DigerSekmesiGoster'] as bool?
-      ..transferACBelgeKopyala = json['transfer_AC_BelgeKopyala'] as bool?
-      ..transferACBirim1denKaydet = json['transfer_AC_Birim1denKaydet'] as bool?
-      ..transferACOtoBasimYap = json['transfer_AC_OtoBasimYap'] as bool?
-      ..transferACSeriGirisHarYapabilsin =
+      ..transferAcBelgeKopyala = json['transfer_AC_BelgeKopyala'] as bool?
+      ..transferAcBirim1denKaydet = json['transfer_AC_Birim1denKaydet'] as bool?
+      ..transferAcOtoBasimYap = json['transfer_AC_OtoBasimYap'] as bool?
+      ..transferAcSeriGirisHarYapabilsin =
           json['transfer_AC_SeriGirisHarYapabilsin'] as bool?
-      ..transferACEkAlan2Tablodan = json['transfer_AC_EkAlan2Tablodan'] as bool?
-      ..transferACEkAlan2Hatirla = json['transfer_AC_EkAlan2Hatirla'] as bool?
-      ..transferACMinStokMikGoster =
+      ..transferAcEkAlan2Tablodan = json['transfer_AC_EkAlan2Tablodan'] as bool?
+      ..transferAcEkAlan2Hatirla = json['transfer_AC_EkAlan2Hatirla'] as bool?
+      ..transferAcMinStokMikGoster =
           json['transfer_AC_MinStokMikGoster'] as String?
-      ..transferACBosGecilmeyecekAlanlar =
+      ..transferAcBosGecilmeyecekAlanlar =
           json['transfer_AC_BosGecilmeyecekAlanlar'] as List<dynamic>?
-      ..transferACBarkodluGiris = json['transfer_AC_BarkodluGiris'] as bool?
-      ..transferACMiktarOtomatikGelsin =
+      ..transferAcBarkodluGiris = json['transfer_AC_BarkodluGiris'] as bool?
+      ..transferAcMiktarOtomatikGelsin =
           json['transfer_AC_MiktarOtomatikGelsin'] as bool?
-      ..transferACKalemDetaySorulmasin =
+      ..transferAcKalemDetaySorulmasin =
           json['transfer_AC_KalemDetaySorulmasin'] as bool?
-      ..transferACStokRehberiAcilmasin =
+      ..transferAcStokRehberiAcilmasin =
           json['transfer_AC_StokRehberiAcilmasin'] as bool?
-      ..transferACKalemDuzeltilemesin =
+      ..transferAcKalemDuzeltilemesin =
           json['transfer_AC_KalemDuzeltilemesin'] as bool?
-      ..transferACKlavyeEngelle = json['transfer_AC_KlavyeEngelle'] as bool?
-      ..transferACMiktar1Gelsin = json['transfer_AC_Miktar1Gelsin'] as bool?
-      ..transferACReferansStokUygulamasi =
+      ..transferAcKlavyeEngelle = json['transfer_AC_KlavyeEngelle'] as bool?
+      ..transferAcMiktar1Gelsin = json['transfer_AC_Miktar1Gelsin'] as bool?
+      ..transferAcReferansStokUygulamasi =
           json['transfer_AC_ReferansStokUygulamasi'] as bool?
-      ..transferACSipBagSipHariciKalemEklenebilir =
+      ..transferAcSipBagSipHariciKalemEklenebilir =
           json['transfer_AC_SipBag_SipHariciKalemEklenebilir'] as bool?
-      ..transferACSipBagFazlaTeslimatYapilabilir =
+      ..transferAcSipBagFazlaTeslimatYapilabilir =
           json['transfer_AC_SipBag_FazlaTeslimatYapilabilir'] as bool?
-      ..transferACSipBagSipOkutulsun =
+      ..transferAcSipBagSipOkutulsun =
           json['transfer_AC_SipBag_SipOkutulsun'] as bool?
-      ..transferACSipBagSipOkutulsunMiktar2BazAl =
+      ..transferAcSipBagSipOkutulsunMiktar2BazAl =
           json['transfer_AC_SipBag_SipOkutulsun_Miktar2BazAl'] as bool?
-      ..transferACSipBagCokluSecim =
+      ..transferAcSipBagCokluSecim =
           json['transfer_AC_SipBag_CokluSecim'] as bool?
-      ..transferACSipBagTumKalemlerSecilsin =
+      ..transferAcSipBagTumKalemlerSecilsin =
           json['transfer_AC_SipBag_TumKalemlerSecilsin'] as bool?
-      ..transferACSipBagEslesmeDurumu =
+      ..transferAcSipBagEslesmeDurumu =
           json['transfer_AC_SipBag_EslesmeDurumu'] as int?
-      ..transferACSipBagMalToplananlarGelsin =
+      ..transferAcSipBagMalToplananlarGelsin =
           json['transfer_AC_SipBag_MalToplananlarGelsin'] as bool?
-      ..transferACSipBagSevkOnayliSiparislerGelsin =
+      ..transferAcSipBagSevkOnayliSiparislerGelsin =
           json['transfer_AC_SipBag_SevkOnayliSiparislerGelsin'] as bool?
       ..transferDepoTalebi = json['transfer_DepoTalebi'] as bool?
       ..transferDepoTalebiSil = json['transfer_DepoTalebi_Sil'] as bool?
@@ -840,7 +838,8 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..sevkemriDepodanTeslimatKlavyeEngelle =
           json['sevkemri_DepodanTeslimat_KlavyeEngelle'] as bool?
       ..sayimSayim = json['sayim_sayim'] as bool?
-      ..sayimKontrolMiktari = json['sayim_Kontrol_Miktari'] as int?
+      ..sayimKontrolMiktari =
+          (json['sayim_Kontrol_Miktari'] as num?)?.toDouble()
       ..sayimMiktarBarkoddanGelsin =
           json['sayim_MiktarBarkoddanGelsin'] as bool?
       ..sayimAyniStokDurumu = json['sayim_AyniStokDurumu'] as String?
@@ -1024,7 +1023,6 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..stokStokHarSil = json['stok_StokHar_Sil'] as bool?
       ..stokStokHarPlasiyerKendiniGorsun =
           json['stok_StokHar_PlasiyerKendiniGorsun'] as bool?
-      ..stokFiltreSQLTipi = json['stok_FiltreSQLTipi'] as String?
       ..stokResimGoster = json['stok_ResimGoster'] as bool?
       ..stokResimGosterEkle = json['stok_ResimGoster_Ekle'] as bool?
       ..stokResimGosterSil = json['stok_ResimGoster_Sil'] as bool?
@@ -1051,8 +1049,6 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..stokKanbanBarkodEsleFarkliStokOkutulmasin =
           json['stok_KanbanBarkodEsleFarkliStokOkutulmasin'] as bool?
       ..stokFiyatGorEkrani = json['stok_FiyatGorEkrani'] as bool?
-      ..stokFiyatGorEkraniGunlukKurdanTLGoster =
-          json['stok_FiyatGorEkrani_GunlukKurdanTLGoster'] as bool?
       ..stokFiyatGorEkraniGorunecekAlanlar =
           (json['stok_FiyatGorEkraniGorunecekAlanlar'] as List<dynamic>?)
               ?.map((e) => e as String)
@@ -1130,8 +1126,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String)
               .toList()
       ..cariFiltre = json['cari_Filtre'] as String?
-      ..cariFiltreSQL = json['cari_FiltreSQL'] as String?
-      ..cariFiltreSQLTipi = json['cari_FiltreSQLTipi'] as String?
+      ..cariFiltreSql = json['cari_FiltreSQL'] as String?
       ..cariVirman = json['cari_Virman'] as bool?
       ..cariVirmanKaydet = json['cari_Virman_Kaydet'] as bool?
       ..cariHarita = json['cari_Harita'] as bool?
@@ -1177,11 +1172,11 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..yoneticiBankaIslemleri = json['yonetici_Banka_Islemleri'] as bool?
       ..yoneticiBankaIslemleriSil =
           json['yonetici_Banka_Islemleri_Sil'] as bool?
-      ..yoneticiBankaIslemHesapEFT =
+      ..yoneticiBankaIslemHesapEft =
           json['yonetici_Banka_Islem_HesapEFT'] as bool?
       ..yoneticiBankaIslemHesapVirman =
           json['yonetici_Banka_Islem_HesapVirman'] as bool?
-      ..yoneticiBankaIslemCariEFT =
+      ..yoneticiBankaIslemCariEft =
           json['yonetici_Banka_Islem_CariEFT'] as bool?
       ..finansBankaKasaTransferi = json['finans_Banka_Kasa_Transferi'] as bool?
       ..finansKasaListesi = json['finans_Kasa_Listesi'] as bool?
@@ -1205,37 +1200,37 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..finansCekGizlenecekAlanlar =
           json['finans_Cek_GizlenecekAlanlar'] as List<dynamic>?
       ..finansCekMusteri = json['finans_Cek_Musteri'] as bool?
-      ..finansMCEKEkle = json['finans_MCEK_Ekle'] as bool?
-      ..finansMCEKSil = json['finans_MCEK_Sil'] as bool?
-      ..finansMCEKBelgeDetayi = json['finans_MCEK_BelgeDetayi'] as bool?
-      ..finansMCEKHareketler = json['finans_MCEK_Hareketler'] as bool?
-      ..finansMCEKEvraklar = json['finans_MCEK_Evraklar'] as bool?
-      ..finansMCEKCariyeCiro = json['finans_MCEK_CariyeCiro'] as bool?
-      ..finansMCEKTahsileCiro = json['finans_MCEK_TahsileCiro'] as bool?
-      ..finansMCEKTahsilDekontu = json['finans_MCEK_TahsilDekontu'] as bool?
+      ..finansMcekEkle = json['finans_MCEK_Ekle'] as bool?
+      ..finansMcekSil = json['finans_MCEK_Sil'] as bool?
+      ..finansMcekBelgeDetayi = json['finans_MCEK_BelgeDetayi'] as bool?
+      ..finansMcekHareketler = json['finans_MCEK_Hareketler'] as bool?
+      ..finansMcekEvraklar = json['finans_MCEK_Evraklar'] as bool?
+      ..finansMcekCariyeCiro = json['finans_MCEK_CariyeCiro'] as bool?
+      ..finansMcekTahsileCiro = json['finans_MCEK_TahsileCiro'] as bool?
+      ..finansMcekTahsilDekontu = json['finans_MCEK_TahsilDekontu'] as bool?
       ..finansCekBorc = json['finans_Cek_Borc'] as bool?
       ..finansBorcCekiEkle = json['finans_BorcCeki_Ekle'] as bool?
       ..finansBorcCekiSil = json['finans_BorcCeki_Sil'] as bool?
-      ..finansBCEKBelgeDetayi = json['finans_BCEK_BelgeDetayi'] as bool?
-      ..finansBCEKHareketler = json['finans_BCEK_Hareketler'] as bool?
-      ..finansBCEKEvraklar = json['finans_BCEK_Evraklar'] as bool?
-      ..finansBCEKOdemeDekontu = json['finans_BCEK_OdemeDekontu'] as bool?
+      ..finansBcekBelgeDetayi = json['finans_BCEK_BelgeDetayi'] as bool?
+      ..finansBcekHareketler = json['finans_BCEK_Hareketler'] as bool?
+      ..finansBcekEvraklar = json['finans_BCEK_Evraklar'] as bool?
+      ..finansBcekOdemeDekontu = json['finans_BCEK_OdemeDekontu'] as bool?
       ..finansSenetMusteri = json['finans_Senet_Musteri'] as bool?
-      ..finansMSENEkle = json['finans_MSEN_Ekle'] as bool?
-      ..finansMSENSil = json['finans_MSEN_Sil'] as bool?
-      ..finansMSENBelgeDetayi = json['finans_MSEN_BelgeDetayi'] as bool?
-      ..finansMSENHareketler = json['finans_MSEN_Hareketler'] as bool?
-      ..finansMSENEvraklar = json['finans_MSEN_Evraklar'] as bool?
-      ..finansMSENCariyeCiro = json['finans_MSEN_CariyeCiro'] as bool?
-      ..finansMSENTahsileCiro = json['finans_MSEN_TahsileCiro'] as bool?
-      ..finansMSENTahsilDekontu = json['finans_MSEN_TahsilDekontu'] as bool?
+      ..finansMsenEkle = json['finans_MSEN_Ekle'] as bool?
+      ..finansMsenSil = json['finans_MSEN_Sil'] as bool?
+      ..finansMsenBelgeDetayi = json['finans_MSEN_BelgeDetayi'] as bool?
+      ..finansMsenHareketler = json['finans_MSEN_Hareketler'] as bool?
+      ..finansMsenEvraklar = json['finans_MSEN_Evraklar'] as bool?
+      ..finansMsenCariyeCiro = json['finans_MSEN_CariyeCiro'] as bool?
+      ..finansMsenTahsileCiro = json['finans_MSEN_TahsileCiro'] as bool?
+      ..finansMsenTahsilDekontu = json['finans_MSEN_TahsilDekontu'] as bool?
       ..finansSenetBorc = json['finans_Senet_Borc'] as bool?
-      ..finansBSENEkle = json['finans_BSEN_Ekle'] as bool?
-      ..finansBSENSil = json['finans_BSEN_Sil'] as bool?
-      ..finansBSENBelgeDetayi = json['finans_BSEN_BelgeDetayi'] as bool?
-      ..finansBSENHareketler = json['finans_BSEN_Hareketler'] as bool?
-      ..finansBSENEvraklar = json['finans_BSEN_Evraklar'] as bool?
-      ..finansBSENOdemeDekontu = json['finans_BSEN_OdemeDekontu'] as bool?
+      ..finansBsenEkle = json['finans_BSEN_Ekle'] as bool?
+      ..finansBsenSil = json['finans_BSEN_Sil'] as bool?
+      ..finansBsenBelgeDetayi = json['finans_BSEN_BelgeDetayi'] as bool?
+      ..finansBsenHareketler = json['finans_BSEN_Hareketler'] as bool?
+      ..finansBsenEvraklar = json['finans_BSEN_Evraklar'] as bool?
+      ..finansBsenOdemeDekontu = json['finans_BSEN_OdemeDekontu'] as bool?
       ..finansKKartiTahsilati = json['finans_KKartiTahsilati'] as bool?
       ..finansMuhtelifTahsilat = json['finans_MuhtelifTahsilat'] as bool?
       ..finansMuhtelifOdeme = json['finans_MuhtelifOdeme'] as bool?
@@ -1281,8 +1276,8 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               .toList()
       ..yazdirmaDizaynMalKontrol =
           json['yazdirma_Dizayn_MalKontrol'] as List<dynamic>?
-      ..yazdirmaDAT = json['yazdirma_DAT'] as bool?
-      ..yazdirmaDATYazicilari =
+      ..yazdirmaDat = json['yazdirma_DAT'] as bool?
+      ..yazdirmaDatYazicilari =
           (json['yazdirma_DAT_Yazicilari'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList()
@@ -1326,8 +1321,8 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           (json['yazdirma_Dizayn_SaticiSip'] as List<dynamic>?)
               ?.map((e) => e as int)
               .toList()
-      ..yazdirmaATAL = json['yazdirma_ATAL'] as bool?
-      ..yazdirmaATALYazicilari =
+      ..yazdirmaAtal = json['yazdirma_ATAL'] as bool?
+      ..yazdirmaAtalYazicilari =
           (json['yazdirma_ATAL_Yazicilari'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList()
@@ -1355,41 +1350,40 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..yazdirmaAmbarGiris = json['yazdirma_AmbarGiris'] as bool?
       ..yazdirmaCariHareket = json['yazdirma_CariHareket'] as bool?
       ..uretimFiyatGorebilir = json['uretim_FiyatGorebilir'] as bool?
-      ..uretimUSK = json['uretim_USK'] as bool?
-      ..uretimUSKKaydet = json['uretim_USK_Kaydet'] as bool?
-      ..uretimUSKDuzelt = json['uretim_USK_Duzelt'] as bool?
-      ..uretimUSKSil = json['uretim_USK_Sil'] as bool?
-      ..uretimUSKKacGunlukKayitlarListelensin =
+      ..uretimUskKaydet = json['uretim_USK_Kaydet'] as bool?
+      ..uretimUskDuzelt = json['uretim_USK_Duzelt'] as bool?
+      ..uretimUskSil = json['uretim_USK_Sil'] as bool?
+      ..uretimUskKacGunlukKayitlarListelensin =
           json['uretim_USK_KacGunlukKayitlarListelensin'] as int?
-      ..uretimUSKMiktarBarkoddan = json['uretim_USK_MiktarBarkoddan'] as bool?
-      ..uretimUSKMiktar1Gelsin = json['uretim_USK_Miktar1Gelsin'] as bool?
+      ..uretimUskMiktarBarkoddan = json['uretim_USK_MiktarBarkoddan'] as bool?
+      ..uretimUskMiktar1Gelsin = json['uretim_USK_Miktar1Gelsin'] as bool?
       ..sirketDepoUretimGiris = json['sirket_Depo_Uretim_Giris'] as int?
       ..sirketDepoUretimCikis = json['sirket_Depo_Uretim_Cikis'] as int?
-      ..uretimUSKIsEmriOtoGelsin = json['uretim_USK_IsEmriOtoGelsin'] as bool?
-      ..uretimUSKSoruSorulmasin = json['uretim_USK_SoruSorulmasin'] as bool?
-      ..uretimUSKStokRehberiAcilmasin =
+      ..uretimUskIsEmriOtoGelsin = json['uretim_USK_IsEmriOtoGelsin'] as bool?
+      ..uretimUskSoruSorulmasin = json['uretim_USK_SoruSorulmasin'] as bool?
+      ..uretimUskStokRehberiAcilmasin =
           json['uretim_USK_StokRehberiAcilmasin'] as bool?
-      ..uretimUSKKlavyeEngelle = json['uretim_USK_KlavyeEngelle'] as bool?
-      ..uretimUSKDepoOnceligi = json['uretim_USK_DepoOnceligi'] as String?
-      ..uretimUSKFisiErpUretsin = json['uretim_USK_FisiErpUretsin'] as bool?
-      ..uretimUSKGizlenecekAlanlar =
+      ..uretimUskKlavyeEngelle = json['uretim_USK_KlavyeEngelle'] as bool?
+      ..uretimUskDepoOnceligi = json['uretim_USK_DepoOnceligi'] as String?
+      ..uretimUskFisiErpUretsin = json['uretim_USK_FisiErpUretsin'] as bool?
+      ..uretimUskGizlenecekAlanlar =
           json['uretim_USK_GizlenecekAlanlar'] as List<dynamic>?
-      ..uretimUSKBosGecilmeyecekAlanlar =
+      ..uretimUskBosGecilmeyecekAlanlar =
           json['uretim_USK_BosGecilmeyecekAlanlar'] as List<dynamic>?
-      ..uretimUSKDegismeyecekAlanlar =
+      ..uretimUskDegismeyecekAlanlar =
           json['uretim_USK_DegismeyecekAlanlar'] as List<dynamic>?
-      ..uretimUSKOlcuBirimi = json['uretim_USK_OlcuBirimi'] as int?
-      ..uretimUSKOtoYazdir = json['uretim_USK_OtoYazdir'] as String?
-      ..uretimUSKKalemliYapi = json['uretim_USK_KalemliYapi'] as bool?
-      ..uretimUSKKalemliYapiStokMevcutaEklensin =
+      ..uretimUskOlcuBirimi = json['uretim_USK_OlcuBirimi'] as int?
+      ..uretimUskOtoYazdir = json['uretim_USK_OtoYazdir'] as String?
+      ..uretimUskKalemliYapi = json['uretim_USK_KalemliYapi'] as bool?
+      ..uretimUskKalemliYapiStokMevcutaEklensin =
           json['uretim_USK_KalemliYapi_StokMevcutaEklensin'] as bool?
-      ..uretimUSKKalemliYapiOtoEtiketYazdir =
+      ..uretimUskKalemliYapiOtoEtiketYazdir =
           json['uretim_USK_KalemliYapi_OtoEtiketYazdir'] as bool?
-      ..uretimUSKKalemliYapiAyniBarkodOkutulamaz =
+      ..uretimUskKalemliYapiAyniBarkodOkutulamaz =
           json['uretim_USK_KalemliYapi_AyniBarkodOkutulamaz'] as bool?
-      ..uretimUSKKalemliYapiOkutulanEnUsteEklensin =
+      ..uretimUskKalemliYapiOkutulanEnUsteEklensin =
           json['uretim_USK_KalemliYapi_OkutulanEnUsteEklensin'] as bool?
-      ..uretimUSKKalemliYapiKalemDuzeltilemesin =
+      ..uretimUskKalemliYapiKalemDuzeltilemesin =
           json['uretim_USK_KalemliYapi_KalemDuzeltilemesin'] as bool?
       ..uretimReceteIzleme = json['uretim_ReceteIzleme'] as bool?
       ..uretimMalToplama = json['uretim_MalToplama'] as bool?
@@ -1411,69 +1405,69 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..uretimIsEmriEkle = json['uretim_IsEmri_Ekle'] as bool?
       ..uretimIsEmriDuzelt = json['uretim_IsEmri_Duzelt'] as bool?
       ..uretimIsEmriSil = json['uretim_IsEmri_Sil'] as bool?
-      ..taltekSTEK = json['taltek_STEK'] as bool?
-      ..taltekSTEKKaydet = json['taltek_STEK_Kaydet'] as bool?
-      ..taltekSTEKDuzelt = json['taltek_STEK_Duzelt'] as bool?
-      ..taltekSTEKSil = json['taltek_STEK_Sil'] as bool?
-      ..taltekSTEKKapalilarListenlenmesin =
+      ..taltekStek = json['taltek_STEK'] as bool?
+      ..taltekStekKaydet = json['taltek_STEK_Kaydet'] as bool?
+      ..taltekStekDuzelt = json['taltek_STEK_Duzelt'] as bool?
+      ..taltekStekSil = json['taltek_STEK_Sil'] as bool?
+      ..taltekStekKapalilarListenlenmesin =
           json['taltek_STEK_KapalilarListenlenmesin'] as bool?
-      ..taltekSTEKOnayIslemleri = json['taltek_STEK_OnayIslemleri'] as bool?
-      ..taltekSTEKCariKoduDegistir =
+      ..taltekStekOnayIslemleri = json['taltek_STEK_OnayIslemleri'] as bool?
+      ..taltekStekCariKoduDegistir =
           json['taltek_STEK_CariKoduDegistir'] as bool?
-      ..taltekSTEKFiyatDegistirilmesin =
+      ..taltekStekFiyatDegistirilmesin =
           json['taltek_STEK_FiyatDegistirilmesin'] as bool?
-      ..taltekSTEKAciklamalarYetkiTuru =
+      ..taltekStekAciklamalarYetkiTuru =
           json['taltek_STEK_Aciklamalar_YetkiTuru'] as String?
-      ..taltekSTEKGizlenecekAlanlar =
+      ..taltekStekGizlenecekAlanlar =
           json['taltek_STEK_GizlenecekAlanlar'] as List<dynamic>?
-      ..taltekSTEKDegismeyecekAlanlar =
+      ..taltekStekDegismeyecekAlanlar =
           json['taltek_STEK_DegismeyecekAlanlar'] as List<dynamic>?
-      ..taltekSTEKBosGecilmeyecekAlanlar =
+      ..taltekStekBosGecilmeyecekAlanlar =
           json['taltek_STEK_BosGecilmeyecekAlanlar'] as List<dynamic>?
-      ..taltekSTEKAciklamaAlanlari =
+      ..taltekStekAciklamaAlanlari =
           (json['taltek_STEK_AciklamaAlanlari'] as List<dynamic>?)
               ?.map((e) => e as int)
               .toList()
-      ..taltekSTEKOzelKod1Degeri = json['taltek_STEK_OzelKod1Degeri'] as String?
-      ..taltekSTEKDipFiyatUygulamasi =
+      ..taltekStekOzelKod1degeri = json['taltek_STEK_OzelKod1degeri'] as String?
+      ..taltekStekDipFiyatUygulamasi =
           json['taltek_STEK_DipFiyatUygulamasi'] as bool?
-      ..taltekSTEKDipFiyatSaha = json['taltek_STEK_DipFiyatSaha'] as String?
-      ..taltekSTEKDipFiyatEylem = json['taltek_STEK_DipFiyatEylem'] as String?
-      ..taltekATAL = json['taltek_ATAL'] as bool?
-      ..taltekATALKaydet = json['taltek_ATAL_Kaydet'] as bool?
-      ..taltekATALDuzelt = json['taltek_ATAL_Duzelt'] as bool?
-      ..taltekATALSil = json['taltek_ATAL_Sil'] as bool?
-      ..taltekATALCariEMailAlani = json['taltek_ATAL_CariEMailAlani'] as String?
-      ..taltekATALOnayIslemleri = json['taltek_ATAL_OnayIslemleri'] as bool?
-      ..taltekATALCariKoduDegistir =
+      ..taltekStekDipFiyatSaha = json['taltek_STEK_DipFiyatSaha'] as String?
+      ..taltekStekDipFiyatEylem = json['taltek_STEK_DipFiyatEylem'] as String?
+      ..taltekAtal = json['taltek_ATAL'] as bool?
+      ..taltekAtalKaydet = json['taltek_ATAL_Kaydet'] as bool?
+      ..taltekAtalDuzelt = json['taltek_ATAL_Duzelt'] as bool?
+      ..taltekAtalSil = json['taltek_ATAL_Sil'] as bool?
+      ..taltekAtalCariEMailAlani = json['taltek_ATAL_CariEMailAlani'] as String?
+      ..taltekAtalOnayIslemleri = json['taltek_ATAL_OnayIslemleri'] as bool?
+      ..taltekAtalCariKoduDegistir =
           json['taltek_ATAL_CariKoduDegistir'] as bool?
-      ..taltekATALAciklamalarYetkiTuru =
+      ..taltekAtalAciklamalarYetkiTuru =
           json['taltek_ATAL_Aciklamalar_YetkiTuru'] as String?
-      ..taltekATALGizlenecekAlanlar =
+      ..taltekAtalGizlenecekAlanlar =
           (json['taltek_ATAL_GizlenecekAlanlar'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList()
-      ..taltekATALAciklamaAlanlari =
+      ..taltekAtalAciklamaAlanlari =
           (json['taltek_ATAL_AciklamaAlanlari'] as List<dynamic>?)
               ?.map((e) => e as int)
               .toList()
-      ..taltekATALBelgeKopyala = json['taltek_ATAL_BelgeKopyala'] as bool?
-      ..taltekSTAL = json['taltek_STAL'] as bool?
-      ..taltekSTALKaydet = json['taltek_STAL_Kaydet'] as bool?
-      ..taltekSTALDuzelt = json['taltek_STAL_Duzelt'] as bool?
-      ..taltekSTALSil = json['taltek_STAL_Sil'] as bool?
-      ..taltekSTALKapalilarListenlenmesin =
+      ..taltekAtalBelgeKopyala = json['taltek_ATAL_BelgeKopyala'] as bool?
+      ..taltekStal = json['taltek_STAL'] as bool?
+      ..taltekStalKaydet = json['taltek_STAL_Kaydet'] as bool?
+      ..taltekStalDuzelt = json['taltek_STAL_Duzelt'] as bool?
+      ..taltekStalSil = json['taltek_STAL_Sil'] as bool?
+      ..taltekStalKapalilarListenlenmesin =
           json['taltek_STAL_KapalilarListenlenmesin'] as bool?
-      ..taltekSTALOnayIslemleri = json['taltek_STAL_OnayIslemleri'] as bool?
-      ..taltekSTALCariKoduDegistir =
+      ..taltekStalOnayIslemleri = json['taltek_STAL_OnayIslemleri'] as bool?
+      ..taltekStalCariKoduDegistir =
           json['taltek_STAL_CariKoduDegistir'] as bool?
-      ..taltekSTALFiyatDegistirilmesin =
+      ..taltekStalFiyatDegistirilmesin =
           json['taltek_STAL_FiyatDegistirilmesin'] as bool?
-      ..taltekSTALGizlenecekAlanlar =
+      ..taltekStalGizlenecekAlanlar =
           (json['taltek_STAL_GizlenecekAlanlar'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList()
-      ..taltekSTALDipFiyatUygulamasi =
+      ..taltekStalDipFiyatUygulamasi =
           json['taltek_STAL_DipFiyatUygulamasi'] as bool?
       ..ebelgeEFat = json['ebelge_EFat'] as bool?
       ..ebelgeEFatCariGuncelle = json['ebelge_EFatCariGuncelle'] as bool?
@@ -1507,9 +1501,103 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..ebelgeEIrsaliyeGonder = json['ebelge_EIrsaliyeGonder'] as bool?
       ..ebelgeEIrsaliyeGoruntule = json['ebelge_EIrsaliyeGoruntule'] as bool?
       ..ebelgeEIrsaliyeDizayn = json['ebelge_EIrsaliye_Dizayn'] as int?
-      ..entegrasyonUETDSESYA = json['entegrasyon_UETDSESYA'] as bool?
-      ..entegrasyonUETDSESYAIptal =
-          json['entegrasyon_UETDSESYA_Iptal'] as bool?;
+      ..entegrasyonUetdsesya = json['entegrasyon_UETDSESYA'] as bool?
+      ..entegrasyonUetdsesyaIptal = json['entegrasyon_UETDSESYA_Iptal'] as bool?
+      ..transferDatTekrarEdenBarkod =
+          json['transfer_DAT_TekrarEdenBarkod'] as String?
+      ..transferDatAciklamaDuzenle =
+          json['transfer_DAT_AciklamaDuzenle'] as bool?
+      ..transferDatLokalDatSeciliGelmesin =
+          json['transfer_DAT_LokalDATSeciliGelmesin'] as bool?
+      ..transferDatVarsayilanHarTuruDegistiremesin =
+          json['transfer_DAT_VarsayilanHarTuruDegistiremesin'] as bool?
+      ..transferDatDepoCaridenGelsin =
+          json['transfer_DAT_DepoCaridenGelsin'] as bool?
+      ..transferAgSipBagSecenegi = json['transfer_AG_SipBagSecenegi'] as String?
+      ..transferAgTekrarEdenBarkod =
+          json['transfer_AG_TekrarEdenBarkod'] as String?
+      ..transferAgAciklamaDuzenle = json['transfer_AG_AciklamaDuzenle'] as bool?
+      ..transferAcSipBagSecenegi = json['transfer_AC_SipBagSecenegi'] as String?
+      ..transferAcTekrarEdenBarkod =
+          json['transfer_AC_TekrarEdenBarkod'] as String?
+      ..transferAcAciklamaDuzenle = json['transfer_AC_AciklamaDuzenle'] as bool?
+      ..transferDepoTalebiBildirim =
+          json['transfer_DepoTalebi_Bildirim'] as bool?
+      ..uretimUsk = json['uretim_USK'] as bool?
+      ..malKabulAlisIrsDegismeyecekAlanlar =
+          json['malKabul_AlisIrs_DegismeyecekAlanlar'] as List<dynamic>?
+      ..malKabulAlisIrsAciklamaDuzenle =
+          json['malKabul_AlisIrs_AciklamaDuzenle'] as bool?
+      ..malKabulAlisFatAciklamaDuzenle =
+          json['malKabul_AlisFat_AciklamaDuzenle'] as bool?
+      ..malKabulAlisFatTekrarEdenBarkod =
+          json['malKabul_AlisFat_TekrarEdenBarkod'] as String?
+      ..malKabulAlisFaturasiSipBagSecenegi =
+          json['malKabul_AlisFaturasi_SipBagSecenegi'] as String?
+      ..sevkiyatSatisIrsVarsayilanBelgeTipi =
+          json['sevkiyat_SatisIrs_VarsayilanBelgeTipi'] as int?
+      ..sevkiyatSatisIrsaliyesiAciklamaAlanlari =
+          (json['sevkiyat_SatisIrsaliyesi_AciklamaAlanlari'] as List<dynamic>?)
+              ?.map((e) => e as int)
+              .toList()
+      ..sevkiyatSatisIrsaliyesiAciklamaDuzenle =
+          json['sevkiyat_SatisIrsaliyesi_AciklamaDuzenle'] as bool?
+      ..sevkiyatSatisIrsKayittanSonraTaslakOlustur =
+          json['sevkiyat_SatisIrs_KayittanSonraTaslakOlustur'] as bool?
+      ..sevkiyatSatisIrsIadeMiktariGirebilir =
+          json['sevkiyat_SatisIrs_IadeMiktariGirebilir'] as bool?
+      ..sevkiyatSatisIrsIadeMiktariGirebilirFarkliDepo =
+          json['sevkiyat_SatisIrs_IadeMiktariGirebilirFarkliDepo'] as bool?
+      ..sevkiyatSatisIrsTekrarEdenBarkod =
+          json['sevkiyat_SatisIrs_TekrarEdenBarkod'] as String?
+      ..sevkiyatSatisFatAciklamaDuzenle =
+          json['sevkiyat_SatisFat_AciklamaDuzenle'] as bool?
+      ..sevkiyatSatisFatIadeMiktariGirebilir =
+          json['sevkiyat_SatisFat_IadeMiktariGirebilir'] as bool?
+      ..sevkiyatSatisFatIadeMiktariGirebilirFarkliDepo =
+          json['sevkiyat_SatisFat_IadeMiktariGirebilirFarkliDepo'] as bool?
+      ..sevkiyatSatisFaturasiTekrarEdenBarkod =
+          json['sevkiyat_SatisFaturasi_TekrarEdenBarkod'] as String?
+      ..sevkemriMalToplamaYontemi =
+          json['sevkemri_MalToplama_Yontemi'] as String?
+      ..sayimSerbestSayimFiltreIslem =
+          json['sayim_SerbestSayimFiltreIslem'] as String?
+      ..siparisMusSipBelgeKopyala = json['siparis_MusSip_BelgeKopyala'] as bool?
+      ..siparisMusSipTekrarEdenBarkod =
+          json['siparis_MusSip_TekrarEdenBarkod'] as String?
+      ..siparisMusSipKacGunlukKayitlarListelensin =
+          json['siparis_MusSip_KacGunlukKayitlarListelensin'] as int?
+      ..siparisMusteriSiparisiAciklamaDuzenle =
+          json['siparis_MusteriSiparisi_AciklamaDuzenle'] as bool?
+      ..stokFiltreSqlTipi = json['stok_FiltreSQLTipi'] as String?
+      ..stokFiyatGorEkraniGunlukKurdanTlGoster =
+          json['stok_FiyatGorEkrani_GunlukKurdanTLGoster'] as bool?
+      ..stokPaketlemeCoklu = json['stok_Paketleme_Coklu'] as bool?
+      ..stokRehberBakiyesindeDigerOlcuBirimleriGorunsun =
+          json['stok_RehberBakiyesindeDigerOlcuBirimleriGorunsun'] as bool?
+      ..stokYazdirPdfGoruntule = json['stok_YazdirPdfGoruntule'] as bool?
+      ..cariToplamGorunmesin = json['cari_ToplamGorunmesin'] as bool?
+      ..cariBakiyeGosterim = json['cari_BakiyeGosterim'] as String?
+      ..cariFiltreSqlTipi = json['cari_FiltreSQLTipi'] as String?
+      ..tahsilatDovizKuruDegeri = json['tahsilat_DovizKuru_Degeri'] as String?
+      ..tahsilatDovizKuruYetki = json['tahsilat_DovizKuru_Yetki'] as String?
+      ..tahsilatDovizKuruTolerans =
+          (json['tahsilat_DovizKuru_Tolerans'] as num?)?.toDouble()
+      ..finansRaporlarKasaEkstre = json['finans_Raporlar_KasaEkstre'] as bool?
+      ..finansKasaGizlenecekAlanlar =
+          json['finans_Kasa_GizlenecekAlanlar'] as List<dynamic>?
+      ..finansKasaDegistirilemeyecekAlanlar =
+          json['finans_Kasa_DegistirilemeyecekAlanlar'] as List<dynamic>?
+      ..finansKasaBosGecilemeyecekAlanlar =
+          json['finans_Kasa_BosGecilemeyecekAlanlar'] as List<dynamic>?
+      ..taltekStekAciklamaDuzenle = json['taltek_STEK_AciklamaDuzenle'] as bool?
+      ..taltekStekDipFiyatKdvDurumu =
+          json['taltek_STEK_DipFiyatKDVDurumu'] as String?
+      ..taltekStalAciklamaDuzenle = json['taltek_STAL_AciklamaDuzenle'] as bool?
+      ..taltekStalDipFiyatSaha = json['taltek_STAL_DipFiyatSaha'] as String?
+      ..taltekStalDipFiyatEylem = json['taltek_STAL_DipFiyatEylem'] as String?
+      ..taltekStalDipFiyatKdvDurumu =
+          json['taltek_STAL_DipFiyatKDVDurumu'] as String?;
 
 Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   final val = <String, dynamic>{};
@@ -1558,8 +1646,8 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull('yazdirma_TahsilatMakbuzu', instance.yazdirmaTahsilatMakbuzu);
   writeNotNull('yazdirma_Dizayn_TahsilatMakbuzu',
       instance.yazdirmaDizaynTahsilatMakbuzu);
-  writeNotNull('yazdirma_USK', instance.yazdirmaUSK);
-  writeNotNull('yazdirma_USK_Yazicilari', instance.yazdirmaUSKYazicilari);
+  writeNotNull('yazdirma_USK', instance.yazdirmaUsk);
+  writeNotNull('yazdirma_USK_Yazicilari', instance.yazdirmaUskYazicilari);
   writeNotNull('yazdirma_Dizayn_USK', instance.yazdirmaDizaynUSK);
   writeNotNull('yazdirma_UretMalTop', instance.yazdirmaUretMalTop);
   writeNotNull(
@@ -1744,184 +1832,182 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull('malKabul_Mustahsil_Ekle', instance.malKabulMustahsilEkle);
   writeNotNull('malKabul_Mustahsil_Duzelt', instance.malKabulMustahsilDuzelt);
   writeNotNull('malKabul_Mustahsil_Sil', instance.malKabulMustahsilSil);
-  writeNotNull('transfer_DAT', instance.transferDAT);
-  writeNotNull('transfer_DAT_Kaydet', instance.transferDATKaydet);
-  writeNotNull('transfer_DAT_Duzelt', instance.transferDATDuzelt);
-  writeNotNull('transfer_DAT_Sil', instance.transferDATSil);
-  writeNotNull('transfer_DAT_FiyatGor', instance.transferDATFiyatGor);
-  writeNotNull('transfer_DAT_OtoEtiketBas', instance.transferDATOtoEtiketBas);
+  writeNotNull('transfer_DAT', instance.transferDat);
+  writeNotNull('transfer_DAT_Kaydet', instance.transferDatKaydet);
+  writeNotNull('transfer_DAT_Duzelt', instance.transferDatDuzelt);
+  writeNotNull('transfer_DAT_Sil', instance.transferDatSil);
+  writeNotNull('transfer_DAT_FiyatGor', instance.transferDatFiyatGor);
+  writeNotNull('transfer_DAT_OtoEtiketBas', instance.transferDatOtoEtiketBas);
   writeNotNull('transfer_DAT_VarsayilanCikisDepo',
-      instance.transferDATVarsayilanCikisDepo);
+      instance.transferDatVarsayilanCikisDepo);
   writeNotNull('transfer_DAT_VarsayilanGirisDepo',
-      instance.transferDATVarsayilanGirisDepo);
+      instance.transferDatVarsayilanGirisDepo);
   writeNotNull('transfer_DAT_eIrsIsaretleyemesin',
-      instance.transferDATEIrsIsaretleyemesin);
+      instance.transferDatEIrsIsaretleyemesin);
   writeNotNull('transfer_DAT_DigerSekmesiGoster',
-      instance.transferDATDigerSekmesiGoster);
-  writeNotNull('transfer_DAT_BarkodluGiris', instance.transferDATBarkodluGiris);
+      instance.transferDatDigerSekmesiGoster);
+  writeNotNull('transfer_DAT_BarkodluGiris', instance.transferDatBarkodluGiris);
   writeNotNull('transfer_DAT_MiktarOtomatikGelsin',
-      instance.transferDATMiktarOtomatikGelsin);
+      instance.transferDatMiktarOtomatikGelsin);
   writeNotNull('transfer_DAT_KalemDetaySorulmasin',
-      instance.transferDATKalemDetaySorulmasin);
+      instance.transferDatKalemDetaySorulmasin);
   writeNotNull('transfer_DAT_StokRehberiAcilmasin',
-      instance.transferDATStokRehberiAcilmasin);
+      instance.transferDatStokRehberiAcilmasin);
   writeNotNull('transfer_DAT_KalemDuzeltilemesin',
-      instance.transferDATKalemDuzeltilemesin);
-  writeNotNull('transfer_DAT_KlavyeEngelle', instance.transferDATKlavyeEngelle);
-  writeNotNull('transfer_DAT_Miktar1Gelsin', instance.transferDATMiktar1Gelsin);
+      instance.transferDatKalemDuzeltilemesin);
+  writeNotNull('transfer_DAT_KlavyeEngelle', instance.transferDatKlavyeEngelle);
+  writeNotNull('transfer_DAT_Miktar1Gelsin', instance.transferDatMiktar1Gelsin);
   writeNotNull('transfer_DAT_KalemlerBirlestirilsin',
-      instance.transferDATKalemlerBirlestirilsin);
+      instance.transferDatKalemlerBirlestirilsin);
   writeNotNull('transfer_DAT_KacGunlukKayitlarListelensin',
-      instance.transferDATKacGunlukKayitlarListelensin);
-  writeNotNull('transfer_DAT_OnayIslemleri', instance.transferDATOnayIslemleri);
+      instance.transferDatKacGunlukKayitlarListelensin);
+  writeNotNull('transfer_DAT_OnayIslemleri', instance.transferDatOnayIslemleri);
   writeNotNull('transfer_DAT_OnayIslemleri_Depolar',
-      instance.transferDATOnayIslemleriDepolar);
+      instance.transferDatOnayIslemleriDepolar);
   writeNotNull(
-      'transfer_DAT_EkAlan2Hatirla', instance.transferDATEkAlan2Hatirla);
+      'transfer_DAT_EkAlan2Hatirla', instance.transferDatEkAlan2Hatirla);
   writeNotNull(
-      'transfer_DAT_EkAlan2Tablodan', instance.transferDATEkAlan2Tablodan);
-  writeNotNull('transfer_DAT_LokalDATSeciliGelmesin',
-      instance.transferDATLokalDATSeciliGelmesin);
+      'transfer_DAT_EkAlan2Tablodan', instance.transferDatEkAlan2Tablodan);
   writeNotNull('transfer_DAT_SeriGirisHarYapabilsin',
-      instance.transferDATSeriGirisHarYapabilsin);
+      instance.transferDatSeriGirisHarYapabilsin);
   writeNotNull(
-      'transfer_DAT_Birim1denKaydet', instance.transferDATBirim1denKaydet);
-  writeNotNull('transfer_DAT_Barkod2Sor', instance.transferDATBarkod2Sor);
+      'transfer_DAT_Birim1denKaydet', instance.transferDatBirim1denKaydet);
+  writeNotNull('transfer_DAT_Barkod2Sor', instance.transferDatBarkod2Sor);
   writeNotNull('transfer_DAT_BosGecilmeyecekAlanlar',
-      instance.transferDATBosGecilmeyecekAlanlar);
+      instance.transferDatBosGecilmeyecekAlanlar);
   writeNotNull(
-      'transfer_DAT_GizlenecekAlanlar', instance.transferDATGizlenecekAlanlar);
+      'transfer_DAT_GizlenecekAlanlar', instance.transferDatGizlenecekAlanlar);
   writeNotNull('transfer_DAT_DegismeyecekAlanlar',
-      instance.transferDATDegismeyecekAlanlar);
+      instance.transferDatDegismeyecekAlanlar);
   writeNotNull(
-      'transfer_DAT_AciklamaAlanlari', instance.transferDATAciklamaAlanlari);
+      'transfer_DAT_AciklamaAlanlari', instance.transferDatAciklamaAlanlari);
   writeNotNull(
-      'transfer_DAT_SipBagSecenegi', instance.transferDATSipBagSecenegi);
+      'transfer_DAT_SipBagSecenegi', instance.transferDatSipBagSecenegi);
   writeNotNull('transfer_DAT_ReferansStokUygulamasi',
-      instance.transferDATReferansStokUygulamasi);
+      instance.transferDatReferansStokUygulamasi);
   writeNotNull('transfer_DAT_SipBag_SipHariciKalemEklenebilir',
-      instance.transferDATSipBagSipHariciKalemEklenebilir);
+      instance.transferDatSipBagSipHariciKalemEklenebilir);
   writeNotNull('transfer_DAT_SipBag_FazlaTeslimatYapilabilir',
-      instance.transferDATSipBagFazlaTeslimatYapilabilir);
+      instance.transferDatSipBagFazlaTeslimatYapilabilir);
   writeNotNull('transfer_DAT_SipBag_SipOkutulsun',
-      instance.transferDATSipBagSipOkutulsun);
+      instance.transferDatSipBagSipOkutulsun);
   writeNotNull('transfer_DAT_SipBag_SipOkutulsun_Miktar2BazAl',
-      instance.transferDATSipBagSipOkutulsunMiktar2BazAl);
+      instance.transferDatSipBagSipOkutulsunMiktar2BazAl);
   writeNotNull('transfer_DAT_SipBag_SipOkutulsun_KalanMiktarGelsin',
-      instance.transferDATSipBagSipOkutulsunKalanMiktarGelsin);
+      instance.transferDatSipBagSipOkutulsunKalanMiktarGelsin);
   writeNotNull(
-      'transfer_DAT_SipBag_CokluSecim', instance.transferDATSipBagCokluSecim);
+      'transfer_DAT_SipBag_CokluSecim', instance.transferDatSipBagCokluSecim);
   writeNotNull('transfer_DAT_SipBag_TumKalemlerSecilsin',
-      instance.transferDATSipBagTumKalemlerSecilsin);
+      instance.transferDatSipBagTumKalemlerSecilsin);
   writeNotNull('transfer_DAT_SipBag_EslesmeDurumu',
-      instance.transferDATSipBagEslesmeDurumu);
+      instance.transferDatSipBagEslesmeDurumu);
   writeNotNull('transfer_DAT_SipBag_MalToplananlarGelsin',
-      instance.transferDATSipBagMalToplananlarGelsin);
+      instance.transferDatSipBagMalToplananlarGelsin);
   writeNotNull('transfer_DAT_SipBag_SevkOnayliSiparislerGelsin',
-      instance.transferDATSipBagSevkOnayliSiparislerGelsin);
-  writeNotNull('transfer_AG', instance.transferAG);
-  writeNotNull('transfer_AG_Kaydet', instance.transferAGKaydet);
-  writeNotNull('transfer_AG_Duzelt', instance.transferAGDuzelt);
-  writeNotNull('transfer_AG_Sil', instance.transferAGSil);
-  writeNotNull('transfer_AG_FiyatGor', instance.transferAGFiyatGor);
+      instance.transferDatSipBagSevkOnayliSiparislerGelsin);
+  writeNotNull('transfer_AG', instance.transferAg);
+  writeNotNull('transfer_AG_Kaydet', instance.transferAgKaydet);
+  writeNotNull('transfer_AG_Duzelt', instance.transferAgDuzelt);
+  writeNotNull('transfer_AG_Sil', instance.transferAgSil);
+  writeNotNull('transfer_AG_FiyatGor', instance.transferAgFiyatGor);
   writeNotNull('transfer_AG_KacGunlukKayitlarListelensin',
-      instance.transferAGKacGunlukKayitlarListelensin);
-  writeNotNull('transfer_AG_VarsayilanDepo', instance.transferAGVarsayilanDepo);
+      instance.transferAgKacGunlukKayitlarListelensin);
+  writeNotNull('transfer_AG_VarsayilanDepo', instance.transferAgVarsayilanDepo);
   writeNotNull(
-      'transfer_AG_DigerSekmesiGoster', instance.transferAGDigerSekmesiGoster);
-  writeNotNull('transfer_AG_BelgeKopyala', instance.transferAGBelgeKopyala);
+      'transfer_AG_DigerSekmesiGoster', instance.transferAgDigerSekmesiGoster);
+  writeNotNull('transfer_AG_BelgeKopyala', instance.transferAgBelgeKopyala);
   writeNotNull(
-      'transfer_AG_Birim1denKaydet', instance.transferAGBirim1denKaydet);
-  writeNotNull('transfer_AG_OtoBasimYap', instance.transferAGOtoBasimYap);
+      'transfer_AG_Birim1denKaydet', instance.transferAgBirim1denKaydet);
+  writeNotNull('transfer_AG_OtoBasimYap', instance.transferAgOtoBasimYap);
   writeNotNull('transfer_AG_SeriGirisHarYapabilsin',
-      instance.transferAGSeriGirisHarYapabilsin);
-  writeNotNull('transfer_AG_BarkodluGiris', instance.transferAGBarkodluGiris);
+      instance.transferAgSeriGirisHarYapabilsin);
+  writeNotNull('transfer_AG_BarkodluGiris', instance.transferAgBarkodluGiris);
   writeNotNull('transfer_AG_MiktarOtomatikGelsin',
-      instance.transferAGMiktarOtomatikGelsin);
+      instance.transferAgMiktarOtomatikGelsin);
   writeNotNull('transfer_AG_KalemDetaySorulmasin',
-      instance.transferAGKalemDetaySorulmasin);
+      instance.transferAgKalemDetaySorulmasin);
   writeNotNull('transfer_AG_StokRehberiAcilmasin',
-      instance.transferAGStokRehberiAcilmasin);
+      instance.transferAgStokRehberiAcilmasin);
   writeNotNull('transfer_AG_KalemDuzeltilemesin',
-      instance.transferAGKalemDuzeltilemesin);
-  writeNotNull('transfer_AG_KlavyeEngelle', instance.transferAGKlavyeEngelle);
-  writeNotNull('transfer_AG_Miktar1Gelsin', instance.transferAGMiktar1Gelsin);
+      instance.transferAgKalemDuzeltilemesin);
+  writeNotNull('transfer_AG_KlavyeEngelle', instance.transferAgKlavyeEngelle);
+  writeNotNull('transfer_AG_Miktar1Gelsin', instance.transferAgMiktar1Gelsin);
   writeNotNull('transfer_AG_ReferansStokUygulamasi',
-      instance.transferAGReferansStokUygulamasi);
+      instance.transferAgReferansStokUygulamasi);
   writeNotNull('transfer_AG_SipBag_SipHariciKalemEklenebilir',
-      instance.transferAGSipBagSipHariciKalemEklenebilir);
+      instance.transferAgSipBagSipHariciKalemEklenebilir);
   writeNotNull('transfer_AG_SipBag_FazlaTeslimatYapilabilir',
-      instance.transferAGSipBagFazlaTeslimatYapilabilir);
+      instance.transferAgSipBagFazlaTeslimatYapilabilir);
   writeNotNull(
-      'transfer_AG_SipBag_SipOkutulsun', instance.transferAGSipBagSipOkutulsun);
+      'transfer_AG_SipBag_SipOkutulsun', instance.transferAgSipBagSipOkutulsun);
   writeNotNull('transfer_AG_SipBag_SipOkutulsun_Miktar2BazAl',
-      instance.transferAGSipBagSipOkutulsunMiktar2BazAl);
+      instance.transferAgSipBagSipOkutulsunMiktar2BazAl);
   writeNotNull(
-      'transfer_AG_SipBag_CokluSecim', instance.transferAGSipBagCokluSecim);
+      'transfer_AG_SipBag_CokluSecim', instance.transferAgSipBagCokluSecim);
   writeNotNull('transfer_AG_SipBag_TumKalemlerSecilsin',
-      instance.transferAGSipBagTumKalemlerSecilsin);
+      instance.transferAgSipBagTumKalemlerSecilsin);
   writeNotNull('transfer_AG_SipBag_EslesmeDurumu',
-      instance.transferAGSipBagEslesmeDurumu);
+      instance.transferAgSipBagEslesmeDurumu);
   writeNotNull('transfer_AG_SipBag_MalToplananlarGelsin',
-      instance.transferAGSipBagMalToplananlarGelsin);
+      instance.transferAgSipBagMalToplananlarGelsin);
   writeNotNull('transfer_AG_SipBag_SevkOnayliSiparislerGelsin',
-      instance.transferAGSipBagSevkOnayliSiparislerGelsin);
-  writeNotNull('transfer_AC', instance.transferAC);
-  writeNotNull('transfer_AC_Kaydet', instance.transferACKaydet);
-  writeNotNull('transfer_AC_Duzelt', instance.transferACDuzelt);
-  writeNotNull('transfer_AC_Sil', instance.transferACSil);
-  writeNotNull('transfer_AC_FiyatGor', instance.transferACFiyatGor);
+      instance.transferAgSipBagSevkOnayliSiparislerGelsin);
+  writeNotNull('transfer_AC', instance.transferAc);
+  writeNotNull('transfer_AC_Kaydet', instance.transferAcKaydet);
+  writeNotNull('transfer_AC_Duzelt', instance.transferAcDuzelt);
+  writeNotNull('transfer_AC_Sil', instance.transferAcSil);
+  writeNotNull('transfer_AC_FiyatGor', instance.transferAcFiyatGor);
   writeNotNull('transfer_AC_KacGunlukKayitlarListelensin',
-      instance.transferACKacGunlukKayitlarListelensin);
-  writeNotNull('transfer_AC_VarsayilanDepo', instance.transferACVarsayilanDepo);
+      instance.transferAcKacGunlukKayitlarListelensin);
+  writeNotNull('transfer_AC_VarsayilanDepo', instance.transferAcVarsayilanDepo);
   writeNotNull('transfer_AC_eIrsIsaretleyemesin',
-      instance.transferACEIrsIsaretleyemesin);
+      instance.transferAcEIrsIsaretleyemesin);
   writeNotNull(
-      'transfer_AC_DigerSekmesiGoster', instance.transferACDigerSekmesiGoster);
-  writeNotNull('transfer_AC_BelgeKopyala', instance.transferACBelgeKopyala);
+      'transfer_AC_DigerSekmesiGoster', instance.transferAcDigerSekmesiGoster);
+  writeNotNull('transfer_AC_BelgeKopyala', instance.transferAcBelgeKopyala);
   writeNotNull(
-      'transfer_AC_Birim1denKaydet', instance.transferACBirim1denKaydet);
-  writeNotNull('transfer_AC_OtoBasimYap', instance.transferACOtoBasimYap);
+      'transfer_AC_Birim1denKaydet', instance.transferAcBirim1denKaydet);
+  writeNotNull('transfer_AC_OtoBasimYap', instance.transferAcOtoBasimYap);
   writeNotNull('transfer_AC_SeriGirisHarYapabilsin',
-      instance.transferACSeriGirisHarYapabilsin);
+      instance.transferAcSeriGirisHarYapabilsin);
   writeNotNull(
-      'transfer_AC_EkAlan2Tablodan', instance.transferACEkAlan2Tablodan);
-  writeNotNull('transfer_AC_EkAlan2Hatirla', instance.transferACEkAlan2Hatirla);
+      'transfer_AC_EkAlan2Tablodan', instance.transferAcEkAlan2Tablodan);
+  writeNotNull('transfer_AC_EkAlan2Hatirla', instance.transferAcEkAlan2Hatirla);
   writeNotNull(
-      'transfer_AC_MinStokMikGoster', instance.transferACMinStokMikGoster);
+      'transfer_AC_MinStokMikGoster', instance.transferAcMinStokMikGoster);
   writeNotNull('transfer_AC_BosGecilmeyecekAlanlar',
-      instance.transferACBosGecilmeyecekAlanlar);
-  writeNotNull('transfer_AC_BarkodluGiris', instance.transferACBarkodluGiris);
+      instance.transferAcBosGecilmeyecekAlanlar);
+  writeNotNull('transfer_AC_BarkodluGiris', instance.transferAcBarkodluGiris);
   writeNotNull('transfer_AC_MiktarOtomatikGelsin',
-      instance.transferACMiktarOtomatikGelsin);
+      instance.transferAcMiktarOtomatikGelsin);
   writeNotNull('transfer_AC_KalemDetaySorulmasin',
-      instance.transferACKalemDetaySorulmasin);
+      instance.transferAcKalemDetaySorulmasin);
   writeNotNull('transfer_AC_StokRehberiAcilmasin',
-      instance.transferACStokRehberiAcilmasin);
+      instance.transferAcStokRehberiAcilmasin);
   writeNotNull('transfer_AC_KalemDuzeltilemesin',
-      instance.transferACKalemDuzeltilemesin);
-  writeNotNull('transfer_AC_KlavyeEngelle', instance.transferACKlavyeEngelle);
-  writeNotNull('transfer_AC_Miktar1Gelsin', instance.transferACMiktar1Gelsin);
+      instance.transferAcKalemDuzeltilemesin);
+  writeNotNull('transfer_AC_KlavyeEngelle', instance.transferAcKlavyeEngelle);
+  writeNotNull('transfer_AC_Miktar1Gelsin', instance.transferAcMiktar1Gelsin);
   writeNotNull('transfer_AC_ReferansStokUygulamasi',
-      instance.transferACReferansStokUygulamasi);
+      instance.transferAcReferansStokUygulamasi);
   writeNotNull('transfer_AC_SipBag_SipHariciKalemEklenebilir',
-      instance.transferACSipBagSipHariciKalemEklenebilir);
+      instance.transferAcSipBagSipHariciKalemEklenebilir);
   writeNotNull('transfer_AC_SipBag_FazlaTeslimatYapilabilir',
-      instance.transferACSipBagFazlaTeslimatYapilabilir);
+      instance.transferAcSipBagFazlaTeslimatYapilabilir);
   writeNotNull(
-      'transfer_AC_SipBag_SipOkutulsun', instance.transferACSipBagSipOkutulsun);
+      'transfer_AC_SipBag_SipOkutulsun', instance.transferAcSipBagSipOkutulsun);
   writeNotNull('transfer_AC_SipBag_SipOkutulsun_Miktar2BazAl',
-      instance.transferACSipBagSipOkutulsunMiktar2BazAl);
+      instance.transferAcSipBagSipOkutulsunMiktar2BazAl);
   writeNotNull(
-      'transfer_AC_SipBag_CokluSecim', instance.transferACSipBagCokluSecim);
+      'transfer_AC_SipBag_CokluSecim', instance.transferAcSipBagCokluSecim);
   writeNotNull('transfer_AC_SipBag_TumKalemlerSecilsin',
-      instance.transferACSipBagTumKalemlerSecilsin);
+      instance.transferAcSipBagTumKalemlerSecilsin);
   writeNotNull('transfer_AC_SipBag_EslesmeDurumu',
-      instance.transferACSipBagEslesmeDurumu);
+      instance.transferAcSipBagEslesmeDurumu);
   writeNotNull('transfer_AC_SipBag_MalToplananlarGelsin',
-      instance.transferACSipBagMalToplananlarGelsin);
+      instance.transferAcSipBagMalToplananlarGelsin);
   writeNotNull('transfer_AC_SipBag_SevkOnayliSiparislerGelsin',
-      instance.transferACSipBagSevkOnayliSiparislerGelsin);
+      instance.transferAcSipBagSevkOnayliSiparislerGelsin);
   writeNotNull('transfer_DepoTalebi', instance.transferDepoTalebi);
   writeNotNull('transfer_DepoTalebi_Sil', instance.transferDepoTalebiSil);
   writeNotNull('transfer_DepoTalebi_MalTop', instance.transferDepoTalebiMalTop);
@@ -2445,7 +2531,6 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull('stok_StokHar_Sil', instance.stokStokHarSil);
   writeNotNull('stok_StokHar_PlasiyerKendiniGorsun',
       instance.stokStokHarPlasiyerKendiniGorsun);
-  writeNotNull('stok_FiltreSQLTipi', instance.stokFiltreSQLTipi);
   writeNotNull('stok_ResimGoster', instance.stokResimGoster);
   writeNotNull('stok_ResimGoster_Ekle', instance.stokResimGosterEkle);
   writeNotNull('stok_ResimGoster_Sil', instance.stokResimGosterSil);
@@ -2471,8 +2556,6 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull('stok_KanbanBarkodEsleFarkliStokOkutulmasin',
       instance.stokKanbanBarkodEsleFarkliStokOkutulmasin);
   writeNotNull('stok_FiyatGorEkrani', instance.stokFiyatGorEkrani);
-  writeNotNull('stok_FiyatGorEkrani_GunlukKurdanTLGoster',
-      instance.stokFiyatGorEkraniGunlukKurdanTLGoster);
   writeNotNull('stok_FiyatGorEkraniGorunecekAlanlar',
       instance.stokFiyatGorEkraniGorunecekAlanlar);
   writeNotNull('stok_FiyatGecmisi', instance.stokFiyatGecmisi);
@@ -2540,8 +2623,7 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull(
       'cari_VadeKontrolu_BelgeTipleri', instance.cariVadeKontroluBelgeTipleri);
   writeNotNull('cari_Filtre', instance.cariFiltre);
-  writeNotNull('cari_FiltreSQL', instance.cariFiltreSQL);
-  writeNotNull('cari_FiltreSQLTipi', instance.cariFiltreSQLTipi);
+  writeNotNull('cari_FiltreSQL', instance.cariFiltreSql);
   writeNotNull('cari_Virman', instance.cariVirman);
   writeNotNull('cari_Virman_Kaydet', instance.cariVirmanKaydet);
   writeNotNull('cari_Harita', instance.cariHarita);
@@ -2590,11 +2672,11 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull(
       'yonetici_Banka_Islemleri_Sil', instance.yoneticiBankaIslemleriSil);
   writeNotNull(
-      'yonetici_Banka_Islem_HesapEFT', instance.yoneticiBankaIslemHesapEFT);
+      'yonetici_Banka_Islem_HesapEFT', instance.yoneticiBankaIslemHesapEft);
   writeNotNull('yonetici_Banka_Islem_HesapVirman',
       instance.yoneticiBankaIslemHesapVirman);
   writeNotNull(
-      'yonetici_Banka_Islem_CariEFT', instance.yoneticiBankaIslemCariEFT);
+      'yonetici_Banka_Islem_CariEFT', instance.yoneticiBankaIslemCariEft);
   writeNotNull(
       'finans_Banka_Kasa_Transferi', instance.finansBankaKasaTransferi);
   writeNotNull('finans_Kasa_Listesi', instance.finansKasaListesi);
@@ -2618,37 +2700,37 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull(
       'finans_Cek_GizlenecekAlanlar', instance.finansCekGizlenecekAlanlar);
   writeNotNull('finans_Cek_Musteri', instance.finansCekMusteri);
-  writeNotNull('finans_MCEK_Ekle', instance.finansMCEKEkle);
-  writeNotNull('finans_MCEK_Sil', instance.finansMCEKSil);
-  writeNotNull('finans_MCEK_BelgeDetayi', instance.finansMCEKBelgeDetayi);
-  writeNotNull('finans_MCEK_Hareketler', instance.finansMCEKHareketler);
-  writeNotNull('finans_MCEK_Evraklar', instance.finansMCEKEvraklar);
-  writeNotNull('finans_MCEK_CariyeCiro', instance.finansMCEKCariyeCiro);
-  writeNotNull('finans_MCEK_TahsileCiro', instance.finansMCEKTahsileCiro);
-  writeNotNull('finans_MCEK_TahsilDekontu', instance.finansMCEKTahsilDekontu);
+  writeNotNull('finans_MCEK_Ekle', instance.finansMcekEkle);
+  writeNotNull('finans_MCEK_Sil', instance.finansMcekSil);
+  writeNotNull('finans_MCEK_BelgeDetayi', instance.finansMcekBelgeDetayi);
+  writeNotNull('finans_MCEK_Hareketler', instance.finansMcekHareketler);
+  writeNotNull('finans_MCEK_Evraklar', instance.finansMcekEvraklar);
+  writeNotNull('finans_MCEK_CariyeCiro', instance.finansMcekCariyeCiro);
+  writeNotNull('finans_MCEK_TahsileCiro', instance.finansMcekTahsileCiro);
+  writeNotNull('finans_MCEK_TahsilDekontu', instance.finansMcekTahsilDekontu);
   writeNotNull('finans_Cek_Borc', instance.finansCekBorc);
   writeNotNull('finans_BorcCeki_Ekle', instance.finansBorcCekiEkle);
   writeNotNull('finans_BorcCeki_Sil', instance.finansBorcCekiSil);
-  writeNotNull('finans_BCEK_BelgeDetayi', instance.finansBCEKBelgeDetayi);
-  writeNotNull('finans_BCEK_Hareketler', instance.finansBCEKHareketler);
-  writeNotNull('finans_BCEK_Evraklar', instance.finansBCEKEvraklar);
-  writeNotNull('finans_BCEK_OdemeDekontu', instance.finansBCEKOdemeDekontu);
+  writeNotNull('finans_BCEK_BelgeDetayi', instance.finansBcekBelgeDetayi);
+  writeNotNull('finans_BCEK_Hareketler', instance.finansBcekHareketler);
+  writeNotNull('finans_BCEK_Evraklar', instance.finansBcekEvraklar);
+  writeNotNull('finans_BCEK_OdemeDekontu', instance.finansBcekOdemeDekontu);
   writeNotNull('finans_Senet_Musteri', instance.finansSenetMusteri);
-  writeNotNull('finans_MSEN_Ekle', instance.finansMSENEkle);
-  writeNotNull('finans_MSEN_Sil', instance.finansMSENSil);
-  writeNotNull('finans_MSEN_BelgeDetayi', instance.finansMSENBelgeDetayi);
-  writeNotNull('finans_MSEN_Hareketler', instance.finansMSENHareketler);
-  writeNotNull('finans_MSEN_Evraklar', instance.finansMSENEvraklar);
-  writeNotNull('finans_MSEN_CariyeCiro', instance.finansMSENCariyeCiro);
-  writeNotNull('finans_MSEN_TahsileCiro', instance.finansMSENTahsileCiro);
-  writeNotNull('finans_MSEN_TahsilDekontu', instance.finansMSENTahsilDekontu);
+  writeNotNull('finans_MSEN_Ekle', instance.finansMsenEkle);
+  writeNotNull('finans_MSEN_Sil', instance.finansMsenSil);
+  writeNotNull('finans_MSEN_BelgeDetayi', instance.finansMsenBelgeDetayi);
+  writeNotNull('finans_MSEN_Hareketler', instance.finansMsenHareketler);
+  writeNotNull('finans_MSEN_Evraklar', instance.finansMsenEvraklar);
+  writeNotNull('finans_MSEN_CariyeCiro', instance.finansMsenCariyeCiro);
+  writeNotNull('finans_MSEN_TahsileCiro', instance.finansMsenTahsileCiro);
+  writeNotNull('finans_MSEN_TahsilDekontu', instance.finansMsenTahsilDekontu);
   writeNotNull('finans_Senet_Borc', instance.finansSenetBorc);
-  writeNotNull('finans_BSEN_Ekle', instance.finansBSENEkle);
-  writeNotNull('finans_BSEN_Sil', instance.finansBSENSil);
-  writeNotNull('finans_BSEN_BelgeDetayi', instance.finansBSENBelgeDetayi);
-  writeNotNull('finans_BSEN_Hareketler', instance.finansBSENHareketler);
-  writeNotNull('finans_BSEN_Evraklar', instance.finansBSENEvraklar);
-  writeNotNull('finans_BSEN_OdemeDekontu', instance.finansBSENOdemeDekontu);
+  writeNotNull('finans_BSEN_Ekle', instance.finansBsenEkle);
+  writeNotNull('finans_BSEN_Sil', instance.finansBsenSil);
+  writeNotNull('finans_BSEN_BelgeDetayi', instance.finansBsenBelgeDetayi);
+  writeNotNull('finans_BSEN_Hareketler', instance.finansBsenHareketler);
+  writeNotNull('finans_BSEN_Evraklar', instance.finansBsenEvraklar);
+  writeNotNull('finans_BSEN_OdemeDekontu', instance.finansBsenOdemeDekontu);
   writeNotNull('finans_KKartiTahsilati', instance.finansKKartiTahsilati);
   writeNotNull('finans_MuhtelifTahsilat', instance.finansMuhtelifTahsilat);
   writeNotNull('finans_MuhtelifOdeme', instance.finansMuhtelifOdeme);
@@ -2688,8 +2770,8 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull(
       'yazdirma_Mal_Kontrol_Yazicilari', instance.yazdirmaMalKontrolYazicilari);
   writeNotNull('yazdirma_Dizayn_MalKontrol', instance.yazdirmaDizaynMalKontrol);
-  writeNotNull('yazdirma_DAT', instance.yazdirmaDAT);
-  writeNotNull('yazdirma_DAT_Yazicilari', instance.yazdirmaDATYazicilari);
+  writeNotNull('yazdirma_DAT', instance.yazdirmaDat);
+  writeNotNull('yazdirma_DAT_Yazicilari', instance.yazdirmaDatYazicilari);
   writeNotNull('yazdirma_Dizayn_DAT', instance.yazdirmaDizaynDAT);
   writeNotNull('yazdirma_Paketleme_Etiketi', instance.yazdirmaPaketlemeEtiketi);
   writeNotNull('yazdirma_Paketleme_KopyaSayisiGizle',
@@ -2710,8 +2792,8 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull('yazdirma_Dizayn_MusSip', instance.yazdirmaDizaynMusSip);
   writeNotNull('yazdirma_SaticiSip', instance.yazdirmaSaticiSip);
   writeNotNull('yazdirma_Dizayn_SaticiSip', instance.yazdirmaDizaynSaticiSip);
-  writeNotNull('yazdirma_ATAL', instance.yazdirmaATAL);
-  writeNotNull('yazdirma_ATAL_Yazicilari', instance.yazdirmaATALYazicilari);
+  writeNotNull('yazdirma_ATAL', instance.yazdirmaAtal);
+  writeNotNull('yazdirma_ATAL_Yazicilari', instance.yazdirmaAtalYazicilari);
   writeNotNull('yazdirma_Dizayn_ATAL', instance.yazdirmaDizaynATAL);
   writeNotNull('yazdirma_OdemeMakbuzu', instance.yazdirmaOdemeMakbuzu);
   writeNotNull('yazdirma_OdemeMakbuzu_Yazicilari',
@@ -2727,42 +2809,41 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull('yazdirma_AmbarGiris', instance.yazdirmaAmbarGiris);
   writeNotNull('yazdirma_CariHareket', instance.yazdirmaCariHareket);
   writeNotNull('uretim_FiyatGorebilir', instance.uretimFiyatGorebilir);
-  writeNotNull('uretim_USK', instance.uretimUSK);
-  writeNotNull('uretim_USK_Kaydet', instance.uretimUSKKaydet);
-  writeNotNull('uretim_USK_Duzelt', instance.uretimUSKDuzelt);
-  writeNotNull('uretim_USK_Sil', instance.uretimUSKSil);
+  writeNotNull('uretim_USK_Kaydet', instance.uretimUskKaydet);
+  writeNotNull('uretim_USK_Duzelt', instance.uretimUskDuzelt);
+  writeNotNull('uretim_USK_Sil', instance.uretimUskSil);
   writeNotNull('uretim_USK_KacGunlukKayitlarListelensin',
-      instance.uretimUSKKacGunlukKayitlarListelensin);
-  writeNotNull('uretim_USK_MiktarBarkoddan', instance.uretimUSKMiktarBarkoddan);
-  writeNotNull('uretim_USK_Miktar1Gelsin', instance.uretimUSKMiktar1Gelsin);
+      instance.uretimUskKacGunlukKayitlarListelensin);
+  writeNotNull('uretim_USK_MiktarBarkoddan', instance.uretimUskMiktarBarkoddan);
+  writeNotNull('uretim_USK_Miktar1Gelsin', instance.uretimUskMiktar1Gelsin);
   writeNotNull('sirket_Depo_Uretim_Giris', instance.sirketDepoUretimGiris);
   writeNotNull('sirket_Depo_Uretim_Cikis', instance.sirketDepoUretimCikis);
-  writeNotNull('uretim_USK_IsEmriOtoGelsin', instance.uretimUSKIsEmriOtoGelsin);
-  writeNotNull('uretim_USK_SoruSorulmasin', instance.uretimUSKSoruSorulmasin);
+  writeNotNull('uretim_USK_IsEmriOtoGelsin', instance.uretimUskIsEmriOtoGelsin);
+  writeNotNull('uretim_USK_SoruSorulmasin', instance.uretimUskSoruSorulmasin);
   writeNotNull('uretim_USK_StokRehberiAcilmasin',
-      instance.uretimUSKStokRehberiAcilmasin);
-  writeNotNull('uretim_USK_KlavyeEngelle', instance.uretimUSKKlavyeEngelle);
-  writeNotNull('uretim_USK_DepoOnceligi', instance.uretimUSKDepoOnceligi);
-  writeNotNull('uretim_USK_FisiErpUretsin', instance.uretimUSKFisiErpUretsin);
+      instance.uretimUskStokRehberiAcilmasin);
+  writeNotNull('uretim_USK_KlavyeEngelle', instance.uretimUskKlavyeEngelle);
+  writeNotNull('uretim_USK_DepoOnceligi', instance.uretimUskDepoOnceligi);
+  writeNotNull('uretim_USK_FisiErpUretsin', instance.uretimUskFisiErpUretsin);
   writeNotNull(
-      'uretim_USK_GizlenecekAlanlar', instance.uretimUSKGizlenecekAlanlar);
+      'uretim_USK_GizlenecekAlanlar', instance.uretimUskGizlenecekAlanlar);
   writeNotNull('uretim_USK_BosGecilmeyecekAlanlar',
-      instance.uretimUSKBosGecilmeyecekAlanlar);
+      instance.uretimUskBosGecilmeyecekAlanlar);
   writeNotNull(
-      'uretim_USK_DegismeyecekAlanlar', instance.uretimUSKDegismeyecekAlanlar);
-  writeNotNull('uretim_USK_OlcuBirimi', instance.uretimUSKOlcuBirimi);
-  writeNotNull('uretim_USK_OtoYazdir', instance.uretimUSKOtoYazdir);
-  writeNotNull('uretim_USK_KalemliYapi', instance.uretimUSKKalemliYapi);
+      'uretim_USK_DegismeyecekAlanlar', instance.uretimUskDegismeyecekAlanlar);
+  writeNotNull('uretim_USK_OlcuBirimi', instance.uretimUskOlcuBirimi);
+  writeNotNull('uretim_USK_OtoYazdir', instance.uretimUskOtoYazdir);
+  writeNotNull('uretim_USK_KalemliYapi', instance.uretimUskKalemliYapi);
   writeNotNull('uretim_USK_KalemliYapi_StokMevcutaEklensin',
-      instance.uretimUSKKalemliYapiStokMevcutaEklensin);
+      instance.uretimUskKalemliYapiStokMevcutaEklensin);
   writeNotNull('uretim_USK_KalemliYapi_OtoEtiketYazdir',
-      instance.uretimUSKKalemliYapiOtoEtiketYazdir);
+      instance.uretimUskKalemliYapiOtoEtiketYazdir);
   writeNotNull('uretim_USK_KalemliYapi_AyniBarkodOkutulamaz',
-      instance.uretimUSKKalemliYapiAyniBarkodOkutulamaz);
+      instance.uretimUskKalemliYapiAyniBarkodOkutulamaz);
   writeNotNull('uretim_USK_KalemliYapi_OkutulanEnUsteEklensin',
-      instance.uretimUSKKalemliYapiOkutulanEnUsteEklensin);
+      instance.uretimUskKalemliYapiOkutulanEnUsteEklensin);
   writeNotNull('uretim_USK_KalemliYapi_KalemDuzeltilemesin',
-      instance.uretimUSKKalemliYapiKalemDuzeltilemesin);
+      instance.uretimUskKalemliYapiKalemDuzeltilemesin);
   writeNotNull('uretim_ReceteIzleme', instance.uretimReceteIzleme);
   writeNotNull('uretim_MalToplama', instance.uretimMalToplama);
   writeNotNull('uretim_MalToplama_Ekle', instance.uretimMalToplamaEkle);
@@ -2781,62 +2862,62 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull('uretim_IsEmri_Ekle', instance.uretimIsEmriEkle);
   writeNotNull('uretim_IsEmri_Duzelt', instance.uretimIsEmriDuzelt);
   writeNotNull('uretim_IsEmri_Sil', instance.uretimIsEmriSil);
-  writeNotNull('taltek_STEK', instance.taltekSTEK);
-  writeNotNull('taltek_STEK_Kaydet', instance.taltekSTEKKaydet);
-  writeNotNull('taltek_STEK_Duzelt', instance.taltekSTEKDuzelt);
-  writeNotNull('taltek_STEK_Sil', instance.taltekSTEKSil);
+  writeNotNull('taltek_STEK', instance.taltekStek);
+  writeNotNull('taltek_STEK_Kaydet', instance.taltekStekKaydet);
+  writeNotNull('taltek_STEK_Duzelt', instance.taltekStekDuzelt);
+  writeNotNull('taltek_STEK_Sil', instance.taltekStekSil);
   writeNotNull('taltek_STEK_KapalilarListenlenmesin',
-      instance.taltekSTEKKapalilarListenlenmesin);
-  writeNotNull('taltek_STEK_OnayIslemleri', instance.taltekSTEKOnayIslemleri);
+      instance.taltekStekKapalilarListenlenmesin);
+  writeNotNull('taltek_STEK_OnayIslemleri', instance.taltekStekOnayIslemleri);
   writeNotNull(
-      'taltek_STEK_CariKoduDegistir', instance.taltekSTEKCariKoduDegistir);
+      'taltek_STEK_CariKoduDegistir', instance.taltekStekCariKoduDegistir);
   writeNotNull('taltek_STEK_FiyatDegistirilmesin',
-      instance.taltekSTEKFiyatDegistirilmesin);
+      instance.taltekStekFiyatDegistirilmesin);
   writeNotNull('taltek_STEK_Aciklamalar_YetkiTuru',
-      instance.taltekSTEKAciklamalarYetkiTuru);
+      instance.taltekStekAciklamalarYetkiTuru);
   writeNotNull(
-      'taltek_STEK_GizlenecekAlanlar', instance.taltekSTEKGizlenecekAlanlar);
+      'taltek_STEK_GizlenecekAlanlar', instance.taltekStekGizlenecekAlanlar);
   writeNotNull('taltek_STEK_DegismeyecekAlanlar',
-      instance.taltekSTEKDegismeyecekAlanlar);
+      instance.taltekStekDegismeyecekAlanlar);
   writeNotNull('taltek_STEK_BosGecilmeyecekAlanlar',
-      instance.taltekSTEKBosGecilmeyecekAlanlar);
+      instance.taltekStekBosGecilmeyecekAlanlar);
   writeNotNull(
-      'taltek_STEK_AciklamaAlanlari', instance.taltekSTEKAciklamaAlanlari);
-  writeNotNull('taltek_STEK_OzelKod1Degeri', instance.taltekSTEKOzelKod1Degeri);
+      'taltek_STEK_AciklamaAlanlari', instance.taltekStekAciklamaAlanlari);
+  writeNotNull('taltek_STEK_OzelKod1degeri', instance.taltekStekOzelKod1degeri);
   writeNotNull(
-      'taltek_STEK_DipFiyatUygulamasi', instance.taltekSTEKDipFiyatUygulamasi);
-  writeNotNull('taltek_STEK_DipFiyatSaha', instance.taltekSTEKDipFiyatSaha);
-  writeNotNull('taltek_STEK_DipFiyatEylem', instance.taltekSTEKDipFiyatEylem);
-  writeNotNull('taltek_ATAL', instance.taltekATAL);
-  writeNotNull('taltek_ATAL_Kaydet', instance.taltekATALKaydet);
-  writeNotNull('taltek_ATAL_Duzelt', instance.taltekATALDuzelt);
-  writeNotNull('taltek_ATAL_Sil', instance.taltekATALSil);
-  writeNotNull('taltek_ATAL_CariEMailAlani', instance.taltekATALCariEMailAlani);
-  writeNotNull('taltek_ATAL_OnayIslemleri', instance.taltekATALOnayIslemleri);
+      'taltek_STEK_DipFiyatUygulamasi', instance.taltekStekDipFiyatUygulamasi);
+  writeNotNull('taltek_STEK_DipFiyatSaha', instance.taltekStekDipFiyatSaha);
+  writeNotNull('taltek_STEK_DipFiyatEylem', instance.taltekStekDipFiyatEylem);
+  writeNotNull('taltek_ATAL', instance.taltekAtal);
+  writeNotNull('taltek_ATAL_Kaydet', instance.taltekAtalKaydet);
+  writeNotNull('taltek_ATAL_Duzelt', instance.taltekAtalDuzelt);
+  writeNotNull('taltek_ATAL_Sil', instance.taltekAtalSil);
+  writeNotNull('taltek_ATAL_CariEMailAlani', instance.taltekAtalCariEMailAlani);
+  writeNotNull('taltek_ATAL_OnayIslemleri', instance.taltekAtalOnayIslemleri);
   writeNotNull(
-      'taltek_ATAL_CariKoduDegistir', instance.taltekATALCariKoduDegistir);
+      'taltek_ATAL_CariKoduDegistir', instance.taltekAtalCariKoduDegistir);
   writeNotNull('taltek_ATAL_Aciklamalar_YetkiTuru',
-      instance.taltekATALAciklamalarYetkiTuru);
+      instance.taltekAtalAciklamalarYetkiTuru);
   writeNotNull(
-      'taltek_ATAL_GizlenecekAlanlar', instance.taltekATALGizlenecekAlanlar);
+      'taltek_ATAL_GizlenecekAlanlar', instance.taltekAtalGizlenecekAlanlar);
   writeNotNull(
-      'taltek_ATAL_AciklamaAlanlari', instance.taltekATALAciklamaAlanlari);
-  writeNotNull('taltek_ATAL_BelgeKopyala', instance.taltekATALBelgeKopyala);
-  writeNotNull('taltek_STAL', instance.taltekSTAL);
-  writeNotNull('taltek_STAL_Kaydet', instance.taltekSTALKaydet);
-  writeNotNull('taltek_STAL_Duzelt', instance.taltekSTALDuzelt);
-  writeNotNull('taltek_STAL_Sil', instance.taltekSTALSil);
+      'taltek_ATAL_AciklamaAlanlari', instance.taltekAtalAciklamaAlanlari);
+  writeNotNull('taltek_ATAL_BelgeKopyala', instance.taltekAtalBelgeKopyala);
+  writeNotNull('taltek_STAL', instance.taltekStal);
+  writeNotNull('taltek_STAL_Kaydet', instance.taltekStalKaydet);
+  writeNotNull('taltek_STAL_Duzelt', instance.taltekStalDuzelt);
+  writeNotNull('taltek_STAL_Sil', instance.taltekStalSil);
   writeNotNull('taltek_STAL_KapalilarListenlenmesin',
-      instance.taltekSTALKapalilarListenlenmesin);
-  writeNotNull('taltek_STAL_OnayIslemleri', instance.taltekSTALOnayIslemleri);
+      instance.taltekStalKapalilarListenlenmesin);
+  writeNotNull('taltek_STAL_OnayIslemleri', instance.taltekStalOnayIslemleri);
   writeNotNull(
-      'taltek_STAL_CariKoduDegistir', instance.taltekSTALCariKoduDegistir);
+      'taltek_STAL_CariKoduDegistir', instance.taltekStalCariKoduDegistir);
   writeNotNull('taltek_STAL_FiyatDegistirilmesin',
-      instance.taltekSTALFiyatDegistirilmesin);
+      instance.taltekStalFiyatDegistirilmesin);
   writeNotNull(
-      'taltek_STAL_GizlenecekAlanlar', instance.taltekSTALGizlenecekAlanlar);
+      'taltek_STAL_GizlenecekAlanlar', instance.taltekStalGizlenecekAlanlar);
   writeNotNull(
-      'taltek_STAL_DipFiyatUygulamasi', instance.taltekSTALDipFiyatUygulamasi);
+      'taltek_STAL_DipFiyatUygulamasi', instance.taltekStalDipFiyatUygulamasi);
   writeNotNull('ebelge_EFat', instance.ebelgeEFat);
   writeNotNull('ebelge_EFatCariGuncelle', instance.ebelgeEFatCariGuncelle);
   writeNotNull('ebelge_EFatSorgula', instance.ebelgeEFatSorgula);
@@ -2870,9 +2951,107 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull('ebelge_EIrsaliyeGonder', instance.ebelgeEIrsaliyeGonder);
   writeNotNull('ebelge_EIrsaliyeGoruntule', instance.ebelgeEIrsaliyeGoruntule);
   writeNotNull('ebelge_EIrsaliye_Dizayn', instance.ebelgeEIrsaliyeDizayn);
-  writeNotNull('entegrasyon_UETDSESYA', instance.entegrasyonUETDSESYA);
+  writeNotNull('entegrasyon_UETDSESYA', instance.entegrasyonUetdsesya);
   writeNotNull(
-      'entegrasyon_UETDSESYA_Iptal', instance.entegrasyonUETDSESYAIptal);
+      'entegrasyon_UETDSESYA_Iptal', instance.entegrasyonUetdsesyaIptal);
+  writeNotNull(
+      'transfer_DAT_TekrarEdenBarkod', instance.transferDatTekrarEdenBarkod);
+  writeNotNull(
+      'transfer_DAT_AciklamaDuzenle', instance.transferDatAciklamaDuzenle);
+  writeNotNull('transfer_DAT_LokalDATSeciliGelmesin',
+      instance.transferDatLokalDatSeciliGelmesin);
+  writeNotNull('transfer_DAT_VarsayilanHarTuruDegistiremesin',
+      instance.transferDatVarsayilanHarTuruDegistiremesin);
+  writeNotNull(
+      'transfer_DAT_DepoCaridenGelsin', instance.transferDatDepoCaridenGelsin);
+  writeNotNull('transfer_AG_SipBagSecenegi', instance.transferAgSipBagSecenegi);
+  writeNotNull(
+      'transfer_AG_TekrarEdenBarkod', instance.transferAgTekrarEdenBarkod);
+  writeNotNull(
+      'transfer_AG_AciklamaDuzenle', instance.transferAgAciklamaDuzenle);
+  writeNotNull('transfer_AC_SipBagSecenegi', instance.transferAcSipBagSecenegi);
+  writeNotNull(
+      'transfer_AC_TekrarEdenBarkod', instance.transferAcTekrarEdenBarkod);
+  writeNotNull(
+      'transfer_AC_AciklamaDuzenle', instance.transferAcAciklamaDuzenle);
+  writeNotNull(
+      'transfer_DepoTalebi_Bildirim', instance.transferDepoTalebiBildirim);
+  writeNotNull('uretim_USK', instance.uretimUsk);
+  writeNotNull('malKabul_AlisIrs_DegismeyecekAlanlar',
+      instance.malKabulAlisIrsDegismeyecekAlanlar);
+  writeNotNull('malKabul_AlisIrs_AciklamaDuzenle',
+      instance.malKabulAlisIrsAciklamaDuzenle);
+  writeNotNull('malKabul_AlisFat_AciklamaDuzenle',
+      instance.malKabulAlisFatAciklamaDuzenle);
+  writeNotNull('malKabul_AlisFat_TekrarEdenBarkod',
+      instance.malKabulAlisFatTekrarEdenBarkod);
+  writeNotNull('malKabul_AlisFaturasi_SipBagSecenegi',
+      instance.malKabulAlisFaturasiSipBagSecenegi);
+  writeNotNull('sevkiyat_SatisIrs_VarsayilanBelgeTipi',
+      instance.sevkiyatSatisIrsVarsayilanBelgeTipi);
+  writeNotNull('sevkiyat_SatisIrsaliyesi_AciklamaAlanlari',
+      instance.sevkiyatSatisIrsaliyesiAciklamaAlanlari);
+  writeNotNull('sevkiyat_SatisIrsaliyesi_AciklamaDuzenle',
+      instance.sevkiyatSatisIrsaliyesiAciklamaDuzenle);
+  writeNotNull('sevkiyat_SatisIrs_KayittanSonraTaslakOlustur',
+      instance.sevkiyatSatisIrsKayittanSonraTaslakOlustur);
+  writeNotNull('sevkiyat_SatisIrs_IadeMiktariGirebilir',
+      instance.sevkiyatSatisIrsIadeMiktariGirebilir);
+  writeNotNull('sevkiyat_SatisIrs_IadeMiktariGirebilirFarkliDepo',
+      instance.sevkiyatSatisIrsIadeMiktariGirebilirFarkliDepo);
+  writeNotNull('sevkiyat_SatisIrs_TekrarEdenBarkod',
+      instance.sevkiyatSatisIrsTekrarEdenBarkod);
+  writeNotNull('sevkiyat_SatisFat_AciklamaDuzenle',
+      instance.sevkiyatSatisFatAciklamaDuzenle);
+  writeNotNull('sevkiyat_SatisFat_IadeMiktariGirebilir',
+      instance.sevkiyatSatisFatIadeMiktariGirebilir);
+  writeNotNull('sevkiyat_SatisFat_IadeMiktariGirebilirFarkliDepo',
+      instance.sevkiyatSatisFatIadeMiktariGirebilirFarkliDepo);
+  writeNotNull('sevkiyat_SatisFaturasi_TekrarEdenBarkod',
+      instance.sevkiyatSatisFaturasiTekrarEdenBarkod);
+  writeNotNull(
+      'sevkemri_MalToplama_Yontemi', instance.sevkemriMalToplamaYontemi);
+  writeNotNull(
+      'sayim_SerbestSayimFiltreIslem', instance.sayimSerbestSayimFiltreIslem);
+  writeNotNull(
+      'siparis_MusSip_BelgeKopyala', instance.siparisMusSipBelgeKopyala);
+  writeNotNull('siparis_MusSip_TekrarEdenBarkod',
+      instance.siparisMusSipTekrarEdenBarkod);
+  writeNotNull('siparis_MusSip_KacGunlukKayitlarListelensin',
+      instance.siparisMusSipKacGunlukKayitlarListelensin);
+  writeNotNull('siparis_MusteriSiparisi_AciklamaDuzenle',
+      instance.siparisMusteriSiparisiAciklamaDuzenle);
+  writeNotNull('stok_FiltreSQLTipi', instance.stokFiltreSqlTipi);
+  writeNotNull('stok_FiyatGorEkrani_GunlukKurdanTLGoster',
+      instance.stokFiyatGorEkraniGunlukKurdanTlGoster);
+  writeNotNull('stok_Paketleme_Coklu', instance.stokPaketlemeCoklu);
+  writeNotNull('stok_RehberBakiyesindeDigerOlcuBirimleriGorunsun',
+      instance.stokRehberBakiyesindeDigerOlcuBirimleriGorunsun);
+  writeNotNull('stok_YazdirPdfGoruntule', instance.stokYazdirPdfGoruntule);
+  writeNotNull('cari_ToplamGorunmesin', instance.cariToplamGorunmesin);
+  writeNotNull('cari_BakiyeGosterim', instance.cariBakiyeGosterim);
+  writeNotNull('cari_FiltreSQLTipi', instance.cariFiltreSqlTipi);
+  writeNotNull('tahsilat_DovizKuru_Degeri', instance.tahsilatDovizKuruDegeri);
+  writeNotNull('tahsilat_DovizKuru_Yetki', instance.tahsilatDovizKuruYetki);
+  writeNotNull(
+      'tahsilat_DovizKuru_Tolerans', instance.tahsilatDovizKuruTolerans);
+  writeNotNull('finans_Raporlar_KasaEkstre', instance.finansRaporlarKasaEkstre);
+  writeNotNull(
+      'finans_Kasa_GizlenecekAlanlar', instance.finansKasaGizlenecekAlanlar);
+  writeNotNull('finans_Kasa_DegistirilemeyecekAlanlar',
+      instance.finansKasaDegistirilemeyecekAlanlar);
+  writeNotNull('finans_Kasa_BosGecilemeyecekAlanlar',
+      instance.finansKasaBosGecilemeyecekAlanlar);
+  writeNotNull(
+      'taltek_STEK_AciklamaDuzenle', instance.taltekStekAciklamaDuzenle);
+  writeNotNull(
+      'taltek_STEK_DipFiyatKDVDurumu', instance.taltekStekDipFiyatKdvDurumu);
+  writeNotNull(
+      'taltek_STAL_AciklamaDuzenle', instance.taltekStalAciklamaDuzenle);
+  writeNotNull('taltek_STAL_DipFiyatSaha', instance.taltekStalDipFiyatSaha);
+  writeNotNull('taltek_STAL_DipFiyatEylem', instance.taltekStalDipFiyatEylem);
+  writeNotNull(
+      'taltek_STAL_DipFiyatKDVDurumu', instance.taltekStalDipFiyatKdvDurumu);
   return val;
 }
 

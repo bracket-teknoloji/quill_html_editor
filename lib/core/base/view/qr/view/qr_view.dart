@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:kartal/kartal.dart";
 import "package:permission_handler/permission_handler.dart";
+import "package:picker/core/constants/color_palette.dart";
 import "package:qr_code_scanner/qr_code_scanner.dart";
 
 import "../../../../constants/ui_helper/ui_helper.dart";
@@ -41,7 +42,7 @@ class _QRScannerState extends BaseState<QRScannerView> {
                   },
                   icon: Icon(
                     Icons.flash_on,
-                    color: viewModel.isFlashOpen ? Colors.amber : Colors.white,
+                    color: viewModel.isFlashOpen ? ColorPalette.gamboge : Colors.white,
                   ),
                 ),
               ),
@@ -58,7 +59,7 @@ class _QRScannerState extends BaseState<QRScannerView> {
                   },
                   icon: Icon(
                     Icons.flip_camera_ios,
-                    color: viewModel.isCameraReverse ? Colors.amber : Colors.white,
+                    color: viewModel.isCameraReverse ? ColorPalette.gamboge : Colors.white,
                   ),
                 ),
               ),
