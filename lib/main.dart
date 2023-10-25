@@ -10,6 +10,8 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/enum/e_belge_enum.dart";
+import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/view/e_belge_gelen_giden_kutusu_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
@@ -149,6 +151,10 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/cariHareketDetayliYaslandirmaRaporu", page: () => HareketDetayliYaslandirmaRaporuView(model: Get.arguments)),
               GetPage(name: "/cariStokSatisOzeti", page: () => CariStokSatisOzetiView(model: Get.arguments)),
 
+              //* E-Belge
+              GetPage(name: "/eBelgeGelenKutusu", page: () => const EBelgeGelenGidenKutusuView(eBelgeEnum: EBelgeEnum.gelen)),
+              GetPage(name: "/eBelgeGidenKutusu", page: () => const EBelgeGelenGidenKutusuView(eBelgeEnum: EBelgeEnum.giden)),
+
               //* Finans
 
               // * * Banka
@@ -213,7 +219,6 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/stokAmbarMaliyetRaporu", page: () => AmbarMaliyetRaporuView(model: Get.arguments)),
               GetPage(name: "/stokLokalDepoBakiyeRaporu", page: () => LokalDepoBakiyeRaporuView(model: Get.arguments)),
               GetPage(name: "/urunGrubunaGoreSatisGrafigi", page: () => UrunGrubunaGoreSatisGrafigiView(model: Get.arguments is CariListesiModel ? Get.arguments : null)),
-
 
               //! Faturalar
               GetPage(name: "/faturaEdit", page: () => BaseFaturaEditView(model: Get.arguments)),

@@ -32,6 +32,9 @@ class ApiUrls {
   static const String getCariDetay = "Cari/GetCariDetay";
   static const String deleteCari = "Cari/DeleteCari";
   static const String kodDegistir = "Cari/KodDegistir";
+  //* E-Belge
+  static const String getEFaturalar = "EBelge/GetEFaturalar";
+
   //*Stoklar
   static const String getStoklar = "Stok/GetStoklar";
   static const String getStokDetay = "Stok/GetStokDetay";

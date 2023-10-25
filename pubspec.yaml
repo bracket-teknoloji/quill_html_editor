@@ -29,36 +29,36 @@ dependencies:
     sdk: flutter
 
 
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.6
 
   #Info Dependencies
-  device_info_plus: ^9.0.2
-  package_info_plus: ^4.0.2
-  connectivity_plus: ^5.0.0
-  android_id: ^0.3.5
+  device_info_plus: ^9.1.0
+  package_info_plus: ^4.2.0
+  connectivity_plus: ^5.0.1
+  android_id: ^0.3.6
 
   #Network Dependencies
   dio: ^5.1.1
 
   #Utils Dependencies
-  crypto: ^3.0.2
+  crypto: ^3.0.3
   copy_with_extension: ^5.0.3
   flutter_animate: ^4.1.1+1
-  flutter_svg: ^2.0.5
+  flutter_svg: ^2.0.8
   google_fonts: ^6.1.0
   path: ^1.8.3
   kartal: ^3.2.0
-  path_provider: ^2.0.15
+  path_provider: ^2.1.1
   open_file_plus: ^3.4.1
-  permission_handler: ^11.0.0
-  share_plus: ^7.0.2
+  permission_handler: ^11.0.1
+  share_plus: ^7.2.1
 
   # Component  Dependencies
-  awesome_dialog: ^3.0.2
+  awesome_dialog: ^3.1.0
   fl_chart: ^0.64.0
   flutter_staggered_animations: ^1.1.1
   flutter_slidable: ^3.0.0
-  lottie: ^2.3.1
+  lottie: ^2.7.0
   wave: ^0.2.2
 
   #State Management Dependencies
@@ -75,7 +75,7 @@ dependencies:
 
   #Json Serialization Dependencies
   json_annotation: ^4.8.1
-  json_serializable: ^6.6.1
+  json_serializable: ^6.7.1
 
   #QR
   qr_code_scanner: ^1.0.1
@@ -83,14 +83,14 @@ dependencies:
   flutter_image_compress: ^2.0.3
   timezone: ^0.9.1
   syncfusion_flutter_pdfviewer: ^23.1.38
-  collection: ^1.17.1
+  collection: ^1.17.2
   app_tracking_transparency: ^2.0.4
-  app_settings: ^5.0.0
+  app_settings: ^5.1.1
 
   #Firebase
-  firebase_core: ^2.15.0
-  firebase_crashlytics: ^3.3.4
-  firebase_messaging: ^14.6.6
+  firebase_core: ^2.20.0
+  firebase_crashlytics: ^3.4.2
+  firebase_messaging: ^14.7.2
 
   #HTML Editor
   # html_editor_enhanced: ^2.5.1
@@ -98,7 +98,7 @@ dependencies:
   freezed_annotation: ^2.4.1
   injectable: ^2.2.0
   get_it: ^7.6.0
-  uuid: ^3.0.7
+  uuid: ^4.1.0
   number_text_input_formatter: ^1.0.0+7
 
 flutter_launcher_icons:

@@ -16,6 +16,7 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/auth/login/model/login_model.dart";
+import "package:uuid/uuid.dart";
 
 import "../../../view/add_company/model/account_response_model.dart";
 import "../../../view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
@@ -206,7 +207,7 @@ class NetworkManager {
     return responseModel;
   }
 
-  Future<GenericResponseModel> deleteFatura(EditFaturaModel model, {bool showError = true,bool showLoading = true}) =>
+  Future<GenericResponseModel> deleteFatura(EditFaturaModel model, {bool showError = true, bool showLoading = true}) =>
       dioPost<EditFaturaModel>(path: ApiUrls.deleteFatura, bodyModel: const EditFaturaModel(), data: model.toJson(), showError: showError, showLoading: showLoading);
 
   Future<MemoryImage> getImage(String path) async {
@@ -252,8 +253,9 @@ class NetworkManager {
       header.addEntries(sirketBilgileri.entries);
     }
     if (headerCKey) {
+      const uuid = Uuid();
       final timeZoneMinutes = DateTime.now().timeZoneOffset.inMinutes;
-      final String baseEncoded = base64Encode(utf8.encode('{"TZ_MINUTES" :$timeZoneMinutes,"ZAMAN": "${DateTime.now().toDateTimeString()}"}'));
+      final String baseEncoded = base64Encode(utf8.encode('{\n  "GUID": "${uuid.v4()}",\n  "TZ_MINUTES": $timeZoneMinutes,\n  "ZAMAN": "${DateTime.now().toDateTimeString()}"\n}'));
       header.addAll({"CKey": baseEncoded});
     }
     return header;

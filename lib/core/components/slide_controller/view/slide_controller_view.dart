@@ -47,7 +47,7 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
   Widget build(BuildContext context) => CustomWidgetWithLabel(
         text: widget.title,
         child: SizedBox(
-          height: 50,
+          height: 30,
           width: double.infinity,
           child: ListView.builder(
             controller: scrollController,

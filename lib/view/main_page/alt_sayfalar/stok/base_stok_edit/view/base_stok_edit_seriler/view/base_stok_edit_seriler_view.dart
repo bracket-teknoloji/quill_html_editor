@@ -67,7 +67,7 @@ class _BaseStokEditSerilerViewState extends State<BaseStokEditSerilerView> {
                   ...List.generate(
                     viewModel.seriList?.length ?? 0,
                     (index) => Card(
-                      color: UIHelper.getColorWithValue(StokDetayModel.instance.stokList?.first.bakiye ?? 0),
+                      color: UIHelper.getColorWithValue(StokDetayModel.instance.stokList?.first.bakiye ?? 0).withOpacity(0.5),
                       child: ListTile(
                         title: Text(viewModel.seriList?[index].seriNo ?? ""),
                         subtitle: Text("Depo: ${viewModel.seriList?[index].depoKodu.toStringIfNotNull}"),
