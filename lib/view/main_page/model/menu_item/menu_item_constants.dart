@@ -64,9 +64,9 @@ class MenuItemConstants {
       color: ColorPalette.marineBlue,
       altMenuler: <GridItemModel>[
         //! UNUTMA BUNU AÇMAYI
-        //😳GridItemModel.item(name: "ebelge_EIrsaliyeGelenKutusu", title: "Gelen Kutusu"), // onTap: () => Get.to(PDFViewerView())),
-        //😳GridItemModel.item(name: "ebelge_EIrsaliyeGidenKutusu", title: "Giden Kutusu"),
-        //😳GridItemModel.item(name: "ebelge_EFatCariGuncelle", title: "E-Fatura Carilerini Güncelle ")
+        GridItemModel.item(name: "ebelge_EIrsaliyeGelenKutusu", title: "Gelen Kutusu"), // onTap: () => Get.to(PDFViewerView())),
+        GridItemModel.item(name: "ebelge_EIrsaliyeGidenKutusu", title: "Giden Kutusu"),
+        GridItemModel.item(name: "ebelge_EFatCariGuncelle", title: "E-Fatura Carilerini Güncelle "),
       ],
     ),
     //*Finans
