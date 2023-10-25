@@ -1,7 +1,11 @@
 import "package:flutter/material.dart";
 import "package:flutter_slidable/flutter_slidable.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/constants/color_palette.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
+import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 import "../../base/state/base_state.dart";
@@ -35,7 +39,20 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
           children: [
             SlidableAction(
               autoClose: true,
-              onPressed: (context) {},
+              onPressed: (context) async {
+                if (widget.cariHareketleriModel.hareketKodu == "A") {
+                  await Get.toNamed("/mainPage/cariYeniKayit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.goruntule, model: widget.cariHareketleriModel));
+                } else if (widget.cariHareketleriModel.hareketKodu == "B") {
+                  await Get.toNamed(
+                    "/mainPage/faturaEdit",
+                    arguments: BaseEditModel(
+                      baseEditEnum: BaseEditEnum.goruntule,
+                      model: SiparisEditRequestModel.fromCariHareketleriModel(widget.cariHareketleriModel),
+                      siparisTipiEnum: (SiparisTipiEnum.alisFatura).getSiparisTipiEnumWithRawValue(widget.cariHareketleriModel.belgeTipi),
+                    ),
+                  );
+                }
+              },
               icon: Icons.route_outlined,
               backgroundColor: theme.cardColor,
               foregroundColor: theme.colorScheme.primary,

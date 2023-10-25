@@ -1,3 +1,4 @@
+import "package:collection/collection.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -208,4 +209,6 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
         CacheManager.addFaturaEditListItem(BaseSiparisEditModel.instance);
     }
   }
+
+  SiparisTipiEnum? getSiparisTipiEnumWithRawValue(String? rawValue) => SiparisTipiEnum.values.firstWhereOrNull((element) => element.rawValue == rawValue);
 }

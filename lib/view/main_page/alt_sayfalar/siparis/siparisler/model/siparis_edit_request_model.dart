@@ -45,16 +45,14 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
         belgeTuru: model.belgeTipi,
       );
 
-      factory SiparisEditRequestModel.fromCariHareketleriModel(CariHareketleriModel model) => SiparisEditRequestModel(
+  factory SiparisEditRequestModel.fromCariHareketleriModel(CariHareketleriModel model) => SiparisEditRequestModel(
         cariKodu: model.cariKodu,
         belgeNo: model.belgeNo,
+        kisitYok: true,
         belgeTuru: model.belgeTipi,
-        
+        pickerBelgeTuru: model.belgeTipi,
       );
-  factory SiparisEditRequestModel.fromSiparislerModel(
-    BaseSiparisEditModel model,
-  ) =>
-      SiparisEditRequestModel(
+  factory SiparisEditRequestModel.fromSiparislerModel(BaseSiparisEditModel model) => SiparisEditRequestModel(
         belgeNo: model.belgeNo,
         pickerBelgeTuru: model.belgeTuru,
         belgeTuru: model.belgeTuru,

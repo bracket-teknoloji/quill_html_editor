@@ -59,7 +59,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 iconWidget: Icons.search_outlined,
                 onTap: () async {
                   Get.back();
-                  await Get.toNamed("/mainPage/sevkiyatEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum));
+                  await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum));
                 },
               ),
               // BottomSheetModel(
@@ -67,7 +67,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
               //   iconWidget: Icons.edit_outlined,
               //   onTap: () async {
               //     Get.back();
-              //     await Get.toNamed("/mainPage/sevkiyatEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, siparisTipiEnum: widget.siparisTipiEnum));
+              //     await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, siparisTipiEnum: widget.siparisTipiEnum));
               //   },
               // ).yetkiKontrol(widget.siparisTipiEnum?.duzenlensinMi == true),
               // BottomSheetModel(

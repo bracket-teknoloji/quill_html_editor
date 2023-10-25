@@ -224,7 +224,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
           child: CustomFloatingActionButton(
             isScrolledDown: viewModel.isScrolledDown,
             onPressed: () async {
-              await Get.toNamed("/mainPage/sevkiyatEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: widget.siparisTipiEnum));
+              await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: widget.siparisTipiEnum));
               await viewModel.resetPage();
             },
           ),

@@ -111,8 +111,8 @@ class PickerApp extends StatelessWidget {
         fallbackLocale: const Locale("en"),
         supportedLocales: const <Locale>[Locale("tr"), Locale("en")],
         localizationsDelegates: const <LocalizationsDelegate>[GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate, GlobalMaterialLocalizations.delegate],
-        scrollBehavior:
-            const MaterialScrollBehavior().copyWith(dragDevices: <PointerDeviceKind>{PointerDeviceKind.touch, PointerDeviceKind.mouse, PointerDeviceKind.stylus, PointerDeviceKind.unknown}),
+        scrollBehavior: const MaterialScrollBehavior()
+            .copyWith(dragDevices: <PointerDeviceKind>{PointerDeviceKind.touch, PointerDeviceKind.mouse, PointerDeviceKind.stylus, PointerDeviceKind.unknown, PointerDeviceKind.trackpad}),
         opaqueRoute: false,
         darkTheme: AppThemeDark.instance?.theme,
         themeMode: ThemeMode.dark,
@@ -214,6 +214,9 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/stokLokalDepoBakiyeRaporu", page: () => LokalDepoBakiyeRaporuView(model: Get.arguments)),
               GetPage(name: "/urunGrubunaGoreSatisGrafigi", page: () => UrunGrubunaGoreSatisGrafigiView(model: Get.arguments is CariListesiModel ? Get.arguments : null)),
 
+
+              //! Faturalar
+              GetPage(name: "/faturaEdit", page: () => BaseFaturaEditView(model: Get.arguments)),
               //* Mal Kabul
               GetPage(name: "/malKabulAlisFaturasi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.alisFatura)),
               GetPage(name: "/malKabulAlisIrsaliyesi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.alisIrsaliye)),
@@ -221,7 +224,6 @@ class PickerApp extends StatelessWidget {
               //* Sevkiyat
               GetPage(name: "/sevkiyatSatisFaturasi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.satisFatura)),
               GetPage(name: "/sevkiyatSatisIrsaliyesi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.satisIrsaliye)),
-              GetPage(name: "/sevkiyatEdit", page: () => BaseFaturaEditView(model: Get.arguments)),
 
               //* Profil
               GetPage(name: "/temsilciProfil", page: () => const TemsilciProfilView()),

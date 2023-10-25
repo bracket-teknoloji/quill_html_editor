@@ -226,7 +226,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                 ),
                 Observer(
                   builder: (_) => Visibility(
-                    visible: viewModel.isLastPage,
+                    visible: viewModel.isLastPage && widget.model.baseEditEnum != BaseEditEnum.goruntule,
                     child: IconButton(
                       onPressed: () async {
                         await dialogManager.showAreYouSureDialog(() async {
