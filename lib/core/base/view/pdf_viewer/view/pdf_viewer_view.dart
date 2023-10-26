@@ -63,13 +63,6 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
     );
   }
 
-  void awaiter() async {
-    final File? pdf = await getFile;
-    if (pdf != null) {
-      viewModel.changePdfFile(pdf);
-    }
-  }
-
   AppBar appBar(BuildContext context) => AppBar(
         title: Text(widget.title),
         actions: [
@@ -185,7 +178,10 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
       pdfFile = result.data.first;
       if (result.success == true) {
         viewModel.setFuture(result.success);
-        awaiter();
+          viewModel.changePdfFile( await getFile);
+        // final File? pdf = await getFile;
+        // if (pdf != null) {
+        // }
       }
     }
     return true;
@@ -204,7 +200,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
     //create a folder in documents/picker as name picker
     await Directory("${appStorage.path}/picker/pdf").create(recursive: true);
     final file = File(
-      '${appStorage.path}/picker/pdf/${widget.pdfData?.raporOzelKod}${widget.pdfData?.dicParams?.cariKodu ?? widget.pdfData?.dicParams?.stokKodu ?? ""}${DateTime.now().toDateTimeHypenString()}.${pdfFile?.uzanti ?? "pdf"}',
+      '${appStorage.path}/picker/pdf/${widget.pdfData?.raporOzelKod}${widget.pdfData?.dicParams?.cariKodu ?? widget.pdfData?.dicParams?.stokKodu ?? ""}${DateTime.now().toDateTimeHypenString}.${pdfFile?.uzanti ?? "pdf"}',
     );
     final fileWriter = file.openSync(mode: FileMode.write);
     fileWriter.writeFromSync(base64Decode(pdfFile?.byteData ?? ""));

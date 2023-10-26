@@ -299,7 +299,6 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                     ),
                     CustomWidgetWithLabel(
                       isVertical: true,
-                      onlyLabelpaddingLeft: UIHelper.lowSize,
                       text: "Kapalı Belgeler Listelenmesin",
                       child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kapaliBelgelerListelenmesin, onChanged: (value) => viewModel.setKapaliBelgelerListelenmesin(value))),
                     ),

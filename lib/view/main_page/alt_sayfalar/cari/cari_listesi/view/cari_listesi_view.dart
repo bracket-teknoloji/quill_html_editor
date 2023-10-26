@@ -482,7 +482,6 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
           children: [
             CustomWidgetWithLabel(
               text: "Bakiye Durumu",
-              onlyLabelpaddingLeft: UIHelper.lowSize,
               child: Observer(
                 builder: (_) => SlideControllerWidget(
                   childrenTitleList: viewModel.bakiyeMap.keys.toList(),

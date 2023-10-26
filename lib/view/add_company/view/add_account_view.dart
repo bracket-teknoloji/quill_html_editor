@@ -56,14 +56,12 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
                   children: [
                     CustomWidgetWithLabel(
                       text: "Firma E-Posta Adresi",
-                      onlyLabelpaddingLeft: UIHelper.lowSize,
                       child: CustomTextField(controller: emailController, keyboardType: TextInputType.emailAddress, isMust: true),
                     ),
                     Padding(
                       padding: UIHelper.lowPaddingVertical,
                       child: CustomWidgetWithLabel(
                         text: "Şifre",
-                        onlyLabelpaddingLeft: UIHelper.lowSize,
                         child: CustomTextField(keyboardType: TextInputType.visiblePassword, controller: passwordController, isMust: true, onSubmitted: (value) => loginMethod),
                       ),
                     ),

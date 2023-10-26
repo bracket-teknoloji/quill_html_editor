@@ -20,4 +20,5 @@ extension EBelgeEnumExtension on EBelgeEnum {
         return "GIK";
     }
   }
+
 }

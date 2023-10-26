@@ -4,6 +4,7 @@ import "package:mobx/mobx.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/constants/enum/e_belge_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/yetki_controller/yetki_controller.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_request_model.dart";
@@ -27,7 +28,7 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
     "Cari Adı (Z-A)": "CARI_ADI_ZA",
   };
 
-  final Map<String, String> eBelgeTuru = {
+   Map<String, String> eBelgeTuru = {
     "E-Fatura": "EFT",
     //TODO bunu aç tarih widgetı da yap
     // "E-Arşiv": "AFT",
@@ -71,6 +72,23 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
     "Bekliyor": "H",
   };
 
+  @computed
+  Map<String, String> get getBelgeTuruMap {
+    final YetkiController yetkiController = YetkiController();
+    final Map<String, String> map = {};
+    if (yetkiController.ebelgeEFatura) {
+      map.addAll({"E-Fatura": "EFT"});
+    }
+    if (yetkiController.ebelgeEArsiv) {
+      map.addAll({"E-Arşiv": "AFT"});
+    }
+    if (yetkiController.ebelgeEIrsaliye) {
+      map.addAll({"E-İrsaliye": "EIR"});
+    }
+    eBelgeTuru = map;
+    return map;
+  }
+
   @observable
   late EBelgeEnum eBelgeEnum;
 
@@ -90,6 +108,9 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
   bool isScrolledDown = false;
 
   @observable
+  String? error;
+
+  @observable
   EBelgeRequestModel eBelgeRequestModel = EBelgeRequestModel(
     sayfa: 1,
     eBelgeTuru: "EFT",
@@ -100,7 +121,7 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
   );
 
   @observable
-  ObservableList<EBelgeListesiModel>? eBelgeListesi;
+  ObservableList<EBelgeListesiModel>? eBelgeListesi = ObservableList<EBelgeListesiModel>();
 
   @action
   void changeIsScrolledDown(bool isScrolledDown) => this.isScrolledDown = isScrolledDown;
@@ -186,6 +207,7 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
     //   final List<EBelgeListesiModel> eBelgeListesi = result.data as List<EBelgeListesiModel>;
     // }
     if (result.success != true) {
+      error = result.message;
       setEBelgeListesi([]);
       return;
     }

@@ -11,8 +11,7 @@ class CustomWidgetWithLabel extends StatelessWidget {
   final bool? isTitleSmall;
   final bool? isMust;
   final double? width;
-  final double? onlyLabelpaddingLeft;
-  const CustomWidgetWithLabel({super.key, this.text, required this.child, this.isVertical, this.isTitleSmall, this.isMust, this.width, this.onlyLabelpaddingLeft});
+  const CustomWidgetWithLabel({super.key, this.text, required this.child, this.isVertical, this.isTitleSmall, this.isMust, this.width});
 
   @override
   Widget build(BuildContext context) => SizedBox(

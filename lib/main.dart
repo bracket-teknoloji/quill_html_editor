@@ -13,6 +13,7 @@ import "package:get/get.dart";
 import "package:picker/core/constants/enum/e_belge_enum.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/borc_alacak_dokumu_raporu/view/cari_borc_alacak_dokumu_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/view/e_belge_gelen_giden_kutusu_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_pdf/view/e_belge_pdf_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
@@ -156,6 +157,7 @@ class PickerApp extends StatelessWidget {
               //* E-Belge
               GetPage(name: "/eBelgeGelenKutusu", page: () => const EBelgeGelenGidenKutusuView(eBelgeEnum: EBelgeEnum.gelen)),
               GetPage(name: "/eBelgeGidenKutusu", page: () => const EBelgeGelenGidenKutusuView(eBelgeEnum: EBelgeEnum.giden)),
+              GetPage(name: "/eBelgePdf", page: () => EBelgePdfView(model: Get.arguments)),
 
               //* Finans
 

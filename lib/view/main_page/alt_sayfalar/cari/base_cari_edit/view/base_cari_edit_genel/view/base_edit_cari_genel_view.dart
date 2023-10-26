@@ -17,7 +17,6 @@ import "../../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../core/constants/static_variables/static_variables.dart";
-import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../../../../core/init/network/login/api_urls.dart";
 import "../../../../../../model/main_page_model.dart";
@@ -138,9 +137,8 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: CustomWidgetWithLabel(
-                  isVertical: true,
+                  
                   text: "Şahıs Firması",
-                  onlyLabelpaddingLeft: UIHelper.lowSize,
                   child: Observer(builder: (_) => Switch.adaptive(value: viewModel.isSahisFirmasi, onChanged: enabled ? (bool value) => viewModel.changeIsSahisFirmasi(value) : null)),
                 ),
               ),
@@ -378,8 +376,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                   ).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
                   Expanded(
                     child: CustomWidgetWithLabel(
-                      isVertical: true,
-                      onlyLabelpaddingLeft: UIHelper.lowSize,
+                      
                       text: "Dövizli",
                       child: Observer(
                         builder: (_) => Switch.adaptive(

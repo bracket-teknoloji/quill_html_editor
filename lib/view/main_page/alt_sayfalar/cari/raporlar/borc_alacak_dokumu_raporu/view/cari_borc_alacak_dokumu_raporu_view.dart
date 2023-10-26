@@ -77,7 +77,6 @@ class _CariBorcAlacakDokumuRaporuViewState extends BaseState<CariBorcAlacakDokum
                 if (result is MapEntry) {
                   _siralaController.text = result.key;
                   viewModel.setSirala(result.value);
-                  print(viewModel.pdfModel.dicParams?.sirala);
                 }
               },
             ),

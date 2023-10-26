@@ -88,7 +88,7 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
               onTap: () async {
                 final result = await dialogManager.showDateTimePicker();
                 if (result != null) {
-                  viewModel.pdfModel.dicParams?.refTarih = result.toDateStringIfNull();
+                  viewModel.pdfModel.dicParams?.refTarih = result.toDateStringIfNull;
                   referansTarihController.text = result.toDateString;
                 }
               },

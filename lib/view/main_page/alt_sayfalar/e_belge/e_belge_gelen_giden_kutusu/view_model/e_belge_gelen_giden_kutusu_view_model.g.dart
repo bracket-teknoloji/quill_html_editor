@@ -10,6 +10,14 @@ part of 'e_belge_gelen_giden_kutusu_view_model.dart';
 
 mixin _$EBelgeGelenGidenKutusuViewModel
     on _EBelgeGelenGidenKutusuViewModelBase, Store {
+  Computed<Map<String, String>>? _$getBelgeTuruMapComputed;
+
+  @override
+  Map<String, String> get getBelgeTuruMap => (_$getBelgeTuruMapComputed ??=
+          Computed<Map<String, String>>(() => super.getBelgeTuruMap,
+              name: '_EBelgeGelenGidenKutusuViewModelBase.getBelgeTuruMap'))
+      .value;
+
   late final _$eBelgeEnumAtom = Atom(
       name: '_EBelgeGelenGidenKutusuViewModelBase.eBelgeEnum',
       context: context);
@@ -106,6 +114,22 @@ mixin _$EBelgeGelenGidenKutusuViewModel
   set isScrolledDown(bool value) {
     _$isScrolledDownAtom.reportWrite(value, super.isScrolledDown, () {
       super.isScrolledDown = value;
+    });
+  }
+
+  late final _$errorAtom = Atom(
+      name: '_EBelgeGelenGidenKutusuViewModelBase.error', context: context);
+
+  @override
+  String? get error {
+    _$errorAtom.reportRead();
+    return super.error;
+  }
+
+  @override
+  set error(String? value) {
+    _$errorAtom.reportWrite(value, super.error, () {
+      super.error = value;
     });
   }
 
@@ -432,8 +456,10 @@ searchBar: ${searchBar},
 digerGoster: ${digerGoster},
 dahaVarMi: ${dahaVarMi},
 isScrolledDown: ${isScrolledDown},
+error: ${error},
 eBelgeRequestModel: ${eBelgeRequestModel},
-eBelgeListesi: ${eBelgeListesi}
+eBelgeListesi: ${eBelgeListesi},
+getBelgeTuruMap: ${getBelgeTuruMap}
     ''';
   }
 }

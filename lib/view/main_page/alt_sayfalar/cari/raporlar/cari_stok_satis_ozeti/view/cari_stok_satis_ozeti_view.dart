@@ -96,7 +96,6 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                     children: [
                       CustomWidgetWithLabel(
                         text: "İrsaliyeler Dahil",
-                        onlyLabelpaddingLeft: UIHelper.lowSize,
                         isVertical: true,
                         child: Observer(builder: (_) => Switch.adaptive(value: viewModel.irsDahil, onChanged: (value) => viewModel.setIrsDahil(value))),
                       ),

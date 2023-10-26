@@ -395,7 +395,6 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                   ).paddingAll(UIHelper.lowSize),
                   CustomWidgetWithLabel(
                     text: "Ek Açıklamalar",
-                    onlyLabelpaddingLeft: UIHelper.lowSize,
                     child: Column(
                       children: [
                         CustomTextField(

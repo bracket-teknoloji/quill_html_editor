@@ -43,25 +43,26 @@ class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenKutusuV
     _baslangicTarihiController = TextEditingController();
     _bitisTarihiController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await viewModel.getData();
-    });
-    _scrollController.addListener(() async {
-      if (_scrollController.hasClients) {
-        if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
-          if (viewModel.dahaVarMi) {
-            await viewModel.getData();
+      await filtrele();
+
+      _scrollController.addListener(() async {
+        if (_scrollController.hasClients) {
+          if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+            if (viewModel.dahaVarMi) {
+              await viewModel.getData();
+              viewModel.changeIsScrolledDown(true);
+            }
+          }
+          if (_scrollController.position.userScrollDirection == ScrollDirection.forward) {
+            viewModel.changeIsScrolledDown(false);
+          } else if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
             viewModel.changeIsScrolledDown(true);
           }
+          if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+            viewModel.changeIsScrolledDown(false);
+          }
         }
-        if (_scrollController.position.userScrollDirection == ScrollDirection.forward) {
-          viewModel.changeIsScrolledDown(false);
-        } else if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
-          viewModel.changeIsScrolledDown(true);
-        }
-        if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
-          viewModel.changeIsScrolledDown(false);
-        }
-      }
+      });
     });
     super.initState();
   }
@@ -84,11 +85,10 @@ class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenKutusuV
             isScrolledDown: true,
             children: [
               FooterButton(
-                onPressed: () {},
                 children: [
                   ListTile(
                     subtitle: const Text("Toplam Kayıt:"),
-                    trailing: Text(((viewModel.paramData?["TOPLAM_KAYIT_SAYISI"] as double?) ?? 0.0).toIntIfDouble.toStringIfNotNull ?? ""),
+                    trailing: Observer(builder: (_) => Text(((viewModel.paramData?["TOPLAM_KAYIT_SAYISI"] as double?) ?? 0.0).toIntIfDouble.toStringIfNotNull ?? "")),
                   ),
                 ],
               ),
@@ -139,7 +139,7 @@ class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenKutusuV
         child: Observer(
           builder: (_) => viewModel.eBelgeListesi.ext.isNullOrEmpty
               ? (viewModel.eBelgeListesi?.isEmpty ?? false)
-                  ? const Center(child: Text("Kayıtlı Belge Bulunamadı"))
+                  ? Center(child: Text(viewModel.error ?? "", textAlign: TextAlign.center))
                   : const Center(child: CircularProgressIndicator.adaptive())
               : ListView.builder(
                   primary: false,
@@ -149,7 +149,7 @@ class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenKutusuV
                   itemCount: (viewModel.eBelgeListesi?.length ?? 0) + 1,
                   itemBuilder: (context, index) {
                     if (index < (viewModel.eBelgeListesi?.length ?? 0)) {
-                      return EFaturaListesiCard(eBelgeListesiModel: viewModel.eBelgeListesi![index]);
+                      return EFaturaListesiCard(eBelgeListesiModel: viewModel.eBelgeListesi![index], eBelgeEnum: widget.eBelgeEnum);
                     } else if (index == viewModel.eBelgeListesi?.length) {
                       return Observer(
                         builder: (_) => Visibility(
@@ -182,19 +182,17 @@ class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenKutusuV
               ),
               CustomWidgetWithLabel(
                 text: "E-Belge Türü",
-                onlyLabelpaddingLeft: UIHelper.lowSize,
                 child: Observer(
                   builder: (_) => SlideControllerWidget(
-                    childrenTitleList: viewModel.eBelgeTuru.keys.toList(),
-                    childrenValueList: viewModel.eBelgeTuru.values.toList(),
-                    filterOnChanged: (index) => viewModel.changeEBelgeTuru(viewModel.eBelgeTuru.values.toList()[index ?? 0]),
+                    childrenTitleList: viewModel.getBelgeTuruMap.keys.toList(),
+                    childrenValueList: viewModel.getBelgeTuruMap.values.toList(),
+                    filterOnChanged: (index) => viewModel.changeEBelgeTuru(viewModel.getBelgeTuruMap.values.toList()[index ?? 0]),
                     groupValue: viewModel.eBelgeRequestModel.eBelgeTuru,
                   ),
                 ),
               ),
               CustomWidgetWithLabel(
                 text: "Tarih Türü",
-                onlyLabelpaddingLeft: UIHelper.lowSize,
                 child: Observer(
                   builder: (_) => SlideControllerWidget(
                     childrenTitleList: viewModel.tarihTuru.keys.toList(),
@@ -225,7 +223,6 @@ class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenKutusuV
                 children: [
                   CustomWidgetWithLabel(
                     text: "Onay Durumu",
-                    onlyLabelpaddingLeft: UIHelper.lowSize,
                     child: Observer(
                       builder: (_) => SlideControllerWidget(
                         childrenTitleList: viewModel.onayMap.keys.toList(),
@@ -237,7 +234,6 @@ class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenKutusuV
                   ).yetkiVarMi(viewModel.eBelgeRequestModel.eBelgeTuru != "AFT"),
                   CustomWidgetWithLabel(
                     text: "Senaryo",
-                    onlyLabelpaddingLeft: UIHelper.lowSize,
                     child: Observer(
                       builder: (_) => SlideControllerWidget(
                         childrenTitleList: viewModel.senaryoMap.keys.toList(),
@@ -249,7 +245,6 @@ class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenKutusuV
                   ).yetkiVarMi(viewModel.eBelgeRequestModel.eBelgeTuru == "EFT"),
                   CustomWidgetWithLabel(
                     text: "Basım",
-                    onlyLabelpaddingLeft: UIHelper.lowSize,
                     child: Observer(
                       builder: (_) => SlideControllerWidget(
                         childrenTitleList: viewModel.basimMap.keys.toList(),
@@ -261,7 +256,6 @@ class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenKutusuV
                   ),
                   CustomWidgetWithLabel(
                     text: "Netsis'e İşlenme Durumu",
-                    onlyLabelpaddingLeft: UIHelper.lowSize,
                     child: Observer(
                       builder: (_) => SlideControllerWidget(
                         childrenTitleList: viewModel.netsisIslenmeMap.keys.toList(),
@@ -273,7 +267,6 @@ class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenKutusuV
                   ),
                   CustomWidgetWithLabel(
                     text: "Kontrol Edildi",
-                    onlyLabelpaddingLeft: UIHelper.lowSize,
                     child: Observer(
                       builder: (_) => SlideControllerWidget(
                         childrenTitleList: viewModel.kontrolMap.keys.toList(),
@@ -288,7 +281,7 @@ class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenKutusuV
 
               // CustomWidgetWithLabel(
               //   text: "Tarih Türü",
-              //   onlyLabelpaddingLeft: UIHelper.lowSize,
+              //
               //   child: Observer(
               //     builder: (_) => SlideControllerWidget(
               //         // childrenTitleList: viewModel.bakiyeMap.keys.toList(),

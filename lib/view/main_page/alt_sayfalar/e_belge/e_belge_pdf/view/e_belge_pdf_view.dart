@@ -1,0 +1,168 @@
+import "dart:io";
+
+import "package:flutter/material.dart";
+import "package:flutter/services.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
+import "package:open_file_plus/open_file_plus.dart";
+import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/components/bottom_bar/bottom_bar.dart";
+import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_pdf/model/e_belge_pdf_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_pdf/view_model/e_belge_pdf_view_model.dart";
+import "package:share_plus/share_plus.dart";
+import "package:syncfusion_flutter_pdfviewer/pdfviewer.dart";
+
+class EBelgePdfView extends StatefulWidget {
+  final EBelgeListesiModel model;
+  const EBelgePdfView({super.key, required this.model});
+
+  @override
+  State<EBelgePdfView> createState() => _EBelgePdfViewState();
+}
+
+class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
+  late final EBelgePdfViewModel viewModel;
+  late PdfViewerController pdfViewerController;
+  OverlayEntry? overlayEntry;
+
+  @override
+  void initState() {
+    viewModel = EBelgePdfViewModel(model: EBelgePdfRequestModel.fromEBelgeListesiModel(widget.model));
+    pdfViewerController = PdfViewerController();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      viewModel.getData();
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    pdfViewerController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        appBar: appBar,
+        bottomNavigationBar: bottomAppBar,
+        body: body(context),
+      );
+
+  AppBar get appBar => AppBar(
+        title: Observer(
+          builder: (_) => AppBarTitle(title: "E-Fatura", subtitle: viewModel.model.resmiBelgeNo),
+        ),
+        actions: [
+          IconButton(onPressed: fileChecker, icon: const Icon(Icons.share_outlined)),
+          IconButton(onPressed: secenekler, icon: const Icon(Icons.more_vert_outlined)),
+        ],
+      );
+
+  Observer body(BuildContext context) => Observer(
+        builder: (_) => viewModel.pdfFile != null
+            ? Observer(
+                builder: (_) => SfPdfViewer.file(
+                  viewModel.pdfFile!,
+                  controller: pdfViewerController,
+                  interactionMode: PdfInteractionMode.selection,
+                  onTextSelectionChanged: (details) {
+                    if (Platform.isAndroid || Platform.isIOS) {
+                      if (details.selectedText == null && overlayEntry != null) {
+                        overlayEntry?.remove();
+                        overlayEntry = null;
+                      } else if (details.selectedText != null && overlayEntry == null) {
+                        showContextMenu(context, details);
+                      }
+                    }
+                  },
+                  onDocumentLoaded: (details) => viewModel.changePageCounter(details.document.pages.count),
+                  onPageChanged: (details) => viewModel.changeCurrentPage(details.newPageNumber - 1),
+                ),
+              )
+            : const Center(child: CircularProgressIndicator.adaptive()),
+      );
+
+  Observer get bottomAppBar => Observer(
+        builder: (_) => BottomBarWidget(
+          isScrolledDown: viewModel.pageCounter > 1,
+          children: [
+            FooterButton(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Expanded(child: Observer(builder: (_) => Text(viewModel.getPageCounter))),
+                    IconButton(onPressed: () => pdfViewerController.firstPage(), icon: const Icon(Icons.first_page_outlined)),
+                    IconButton(onPressed: () => pdfViewerController.previousPage(), icon: const Icon(Icons.arrow_back_outlined)),
+                    IconButton(onPressed: () => pdfViewerController.nextPage(), icon: const Icon(Icons.arrow_forward_outlined)),
+                    IconButton(onPressed: () => pdfViewerController.lastPage(), icon: const Icon(Icons.last_page_outlined)),
+                  ],
+                ).marginAll(UIHelper.lowSize),
+              ],
+            ),
+          ],
+        ),
+      );
+
+  void showContextMenu(BuildContext context, PdfTextSelectionChangedDetails details) {
+    final OverlayState overlayState = Overlay.of(context);
+    overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        top: details.globalSelectedRegion!.center.dy - 55,
+        left: details.globalSelectedRegion!.bottomLeft.dx,
+        child: ElevatedButton(
+          onPressed: () {
+            Clipboard.setData(ClipboardData(text: details.selectedText ?? ""));
+            dialogManager.showSuccessSnackBar("Kopyalandı");
+            pdfViewerController.clearSelection();
+            overlayEntry?.remove();
+          },
+          child: const Text("Kopyala"),
+        ),
+      ),
+    );
+    if (overlayEntry != null) {
+      overlayState.insert(overlayEntry!);
+    }
+  }
+
+  void fileChecker() {
+    if (viewModel.pdfFile != null) {
+      Share.shareXFiles([XFile(viewModel.pdfFile!.path, lastModified: viewModel.eBelgePdfModel?.fileModel?.dosyaTarihi)], subject: "Pdf Paylaşımı");
+    } else {
+      dialogManager.showErrorSnackBar("Dosya bulunamadı. Lütfen tekrar deneyiniz.");
+    }
+  }
+
+  Future<void> secenekler() async {
+    await bottomSheetDialogManager.showBottomSheetDialog(
+      context,
+      title: "Seçenekler",
+      children: [
+        BottomSheetModel(
+          title: "PDF Görüntüle",
+          iconWidget: Icons.picture_as_pdf_outlined,
+          onTap: () async {
+            if (viewModel.pdfFile != null) {
+              Get.back();
+              OpenFile.open((viewModel.pdfFile)!.path);
+            }
+          },
+        ),
+        // BottomSheetModel(
+        //   title: "PDF Görüntüle",
+        //   iconWidget: Icons.picture_as_pdf_outlined,
+        //   onTap: () async {
+        //     await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, askDizayn, askMiktar);
+        //   },
+        // ),
+      ],
+    );
+  }
+}

@@ -99,8 +99,8 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
               value: listTileIndex,
               groupValue: viewModel.groupValue,
               onChanged: (index) {
-                widget.baslangicTarihiController.text = viewModel.startDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull() ?? "";
-                widget.bitisTarihiController.text = index != 0 ? viewModel.finishDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull() ?? "" : "";
+                widget.baslangicTarihiController.text = viewModel.startDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull ?? "";
+                widget.bitisTarihiController.text = index != 0 ? viewModel.finishDateMap[viewModel.childrenTitleList[index ?? 0]].toDateStringIfNull ?? "" : "";
                 widget.filterOnChanged(index);
                 viewModel.changeGroupValue(index ?? 0);
                 setState(() {});

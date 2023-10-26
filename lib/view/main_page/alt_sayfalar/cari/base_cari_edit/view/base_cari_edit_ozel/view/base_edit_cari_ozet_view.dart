@@ -64,7 +64,6 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
             else
               CustomWidgetWithLabel(
                 text: "Döviz Bakiyeleri",
-                onlyLabelpaddingLeft: UIHelper.lowSize,
                 child: Wrap(
                   children: <Widget>[
                     const Divider(),
@@ -77,7 +76,6 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                     ).paddingAll(UIHelper.lowSize),
                     CustomWidgetWithLabel(
                       text: "€",
-                      onlyLabelpaddingLeft: UIHelper.lowSize,
                       isVertical: false,
                       child: SizedBox(
                         child: Row(
@@ -91,7 +89,6 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                     ).yetkiVarMi(cariDetayModel?.bakiyeList?.any((BakiyeList element) => element.dovizTipi == 2) ?? false),
                     CustomWidgetWithLabel(
                       text: "\$",
-                      onlyLabelpaddingLeft: UIHelper.lowSize,
                       isVertical: false,
                       child: SizedBox(
                         child: Row(
@@ -105,7 +102,6 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                     ).yetkiVarMi(cariDetayModel?.bakiyeList?.any((BakiyeList element) => element.dovizTipi == 1) ?? false),
                     CustomWidgetWithLabel(
                       text: mainCurrency,
-                      onlyLabelpaddingLeft: UIHelper.lowSize,
                       isVertical: false,
                       child: SizedBox(
                         child: Row(
@@ -122,7 +118,6 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
               ),
             CustomWidgetWithLabel(
               text: "Risk Bilgileri",
-              onlyLabelpaddingLeft: UIHelper.lowSize,
               child: Wrap(
                 children: <Widget>[
                   Row(

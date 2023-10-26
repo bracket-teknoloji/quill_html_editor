@@ -481,7 +481,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
             CustomTextField(enabled: enabled, labelText: "Açıklama 3", controller: aciklama3Controller, onChanged: (String p0) => viewModel.changeAciklama(3, p0)),
             CustomWidgetWithLabel(
               text: "Kullanıcı Tanımlı Sahalar",
-              onlyLabelpaddingLeft: UIHelper.lowSize,
+              
               child: Wrap(
                 children: <Widget>[
                   Row(

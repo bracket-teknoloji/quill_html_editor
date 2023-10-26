@@ -303,7 +303,6 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                 CustomWidgetWithLabel(
                   text: "KDV Dahil",
                   isVertical: true,
-                  onlyLabelpaddingLeft: UIHelper.lowSize,
                   child: Observer(
                     builder: (_) => Switch.adaptive(
                       value: viewModel.kdvDahil,
@@ -313,7 +312,6 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                 ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("kdv_dahil_haric")),
                 CustomWidgetWithLabel(
                   text: "Ek Açıklamalar",
-                  onlyLabelpaddingLeft: UIHelper.lowSize,
                   child: Column(
                     children: <Widget>[
                       CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi1 ?? "Açıklama 1", controller: _aciklama1Controller)

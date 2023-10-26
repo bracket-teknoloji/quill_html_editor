@@ -228,7 +228,6 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                             children: [
                               CustomWidgetWithLabel(
                                 text: "Bakiye Durumu",
-                                onlyLabelpaddingLeft: UIHelper.lowSize,
                                 child: Observer(
                                   builder: (_) => SlideControllerWidget(
                                     childrenTitleList: viewModel.selectedList,
