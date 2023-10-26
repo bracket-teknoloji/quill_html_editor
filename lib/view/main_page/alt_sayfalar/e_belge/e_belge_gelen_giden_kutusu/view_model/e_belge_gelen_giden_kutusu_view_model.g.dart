@@ -10,14 +10,6 @@ part of 'e_belge_gelen_giden_kutusu_view_model.dart';
 
 mixin _$EBelgeGelenGidenKutusuViewModel
     on _EBelgeGelenGidenKutusuViewModelBase, Store {
-  Computed<Map<String, String>>? _$getBelgeTuruMapComputed;
-
-  @override
-  Map<String, String> get getBelgeTuruMap => (_$getBelgeTuruMapComputed ??=
-          Computed<Map<String, String>>(() => super.getBelgeTuruMap,
-              name: '_EBelgeGelenGidenKutusuViewModelBase.getBelgeTuruMap'))
-      .value;
-
   late final _$eBelgeEnumAtom = Atom(
       name: '_EBelgeGelenGidenKutusuViewModelBase.eBelgeEnum',
       context: context);
@@ -458,8 +450,7 @@ dahaVarMi: ${dahaVarMi},
 isScrolledDown: ${isScrolledDown},
 error: ${error},
 eBelgeRequestModel: ${eBelgeRequestModel},
-eBelgeListesi: ${eBelgeListesi},
-getBelgeTuruMap: ${getBelgeTuruMap}
+eBelgeListesi: ${eBelgeListesi}
     ''';
   }
 }

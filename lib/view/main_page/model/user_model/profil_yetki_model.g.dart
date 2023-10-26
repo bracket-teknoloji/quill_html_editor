@@ -1489,6 +1489,8 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..ebelgeEArsivGonder = json['ebelge_EArsivGonder'] as bool?
       ..ebelgeEArsivDizayn = json['ebelge_EArsiv_Dizayn'] as int?
       ..ebelgeEIrsaliye = json['ebelge_EIrsaliye'] as bool?
+      ..ebelgeEArsivGidenKutusu = json['ebelge_EArsivGidenKutusu'] as bool?
+      ..ebelgeEFaturaGidenKutusu = json['ebelge_EFaturaGidenKutusu'] as bool?
       ..ebelgeEIrsaliyeGidenKutusu =
           json['ebelge_EIrsaliyeGidenKutusu'] as bool?
       ..ebelgeEIrsaliyeGelenKutusu =
@@ -2939,6 +2941,8 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull('ebelge_EArsivGonder', instance.ebelgeEArsivGonder);
   writeNotNull('ebelge_EArsiv_Dizayn', instance.ebelgeEArsivDizayn);
   writeNotNull('ebelge_EIrsaliye', instance.ebelgeEIrsaliye);
+  writeNotNull('ebelge_EArsivGidenKutusu', instance.ebelgeEArsivGidenKutusu);
+  writeNotNull('ebelge_EFaturaGidenKutusu', instance.ebelgeEFaturaGidenKutusu);
   writeNotNull(
       'ebelge_EIrsaliyeGidenKutusu', instance.ebelgeEIrsaliyeGidenKutusu);
   writeNotNull(

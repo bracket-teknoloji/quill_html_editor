@@ -16,6 +16,7 @@ import "package:picker/core/components/slide_controller/view/slide_controller_vi
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/e_belge_enum.dart";
+import "package:picker/core/constants/enum/e_belge_turu_enum.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
@@ -184,9 +185,9 @@ class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenKutusuV
                 text: "E-Belge Türü",
                 child: Observer(
                   builder: (_) => SlideControllerWidget(
-                    childrenTitleList: viewModel.getBelgeTuruMap.keys.toList(),
-                    childrenValueList: viewModel.getBelgeTuruMap.values.toList(),
-                    filterOnChanged: (index) => viewModel.changeEBelgeTuru(viewModel.getBelgeTuruMap.values.toList()[index ?? 0]),
+                    childrenTitleList: viewModel.eBelgeTuru.map((e) => e.name).toList(),
+                    childrenValueList: viewModel.eBelgeTuru.map((e) => e.value).toList(),
+                    filterOnChanged: (index) => viewModel.changeEBelgeTuru(viewModel.eBelgeTuru.map((e) => e.value).toList()[index ?? 0]),
                     groupValue: viewModel.eBelgeRequestModel.eBelgeTuru,
                   ),
                 ),

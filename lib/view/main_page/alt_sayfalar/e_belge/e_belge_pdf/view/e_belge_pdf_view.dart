@@ -69,7 +69,6 @@ class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
                 builder: (_) => SfPdfViewer.file(
                   viewModel.pdfFile!,
                   controller: pdfViewerController,
-                  interactionMode: PdfInteractionMode.selection,
                   onTextSelectionChanged: (details) {
                     if (Platform.isAndroid || Platform.isIOS) {
                       if (details.selectedText == null && overlayEntry != null) {

@@ -266,18 +266,21 @@ class YetkiController {
 
   bool get ebelgeEFatura => isTrue(yetkiModel?.ebelgeEFat);
   bool get ebelgeEFaturaGelenKutusu => isTrue(yetkiModel?.ebelgeEFatGelenKutusu);
+  bool get ebelgeEFaturaGidenKutusu => isTrue(yetkiModel?.ebelgeEFaturaGidenKutusu);
   bool get ebelgeEFaturaGonder => isTrue(yetkiModel?.ebelgeEFatGonder);
   bool get ebelgeEFaturaSorgula => isTrue(yetkiModel?.ebelgeEFatSorgula);
   bool get ebelgeEFaturaGoruntule => isTrue(yetkiModel?.ebelgeEFatGoruntule);
 
   bool get ebelgeEIrsaliye => isTrue(yetkiModel?.ebelgeEIrsaliye);
   bool get ebelgeEIrsaliyeGelenKutusu => isTrue(yetkiModel?.ebelgeEIrsaliyeGelenKutusu);
+  bool get ebelgeEIrsaliyeGidenKutusu => isTrue(yetkiModel?.ebelgeEIrsaliyeGidenKutusu);
   bool get ebelgeEIrsaliyeGonder => isTrue(yetkiModel?.ebelgeEIrsaliyeGonder);
   // bool get ebelgeEIrsaliyeSorgula => isTrue(yetkiModel?.ebelgeEIrsaliyeSorgula);
   bool get ebelgeEIrsaliyeGoruntule => isTrue(yetkiModel?.ebelgeEIrsaliyeGoruntule);
 
   bool get ebelgeEArsiv => isTrue(yetkiModel?.ebelgeEArsiv);
   // bool get ebelgeEArsivGelenKutusu => isTrue(yetkiModel?.ebelgeEArsivGelenKutusu);
+  bool get ebelgeEArsivGidenKutusu => isTrue(yetkiModel?.ebelgeEArsivGidenKutusu);
   bool get ebelgeEArsivGonder => isTrue(yetkiModel?.ebelgeEArsivGonder);
   bool get ebelgeEArsivSorgula => isTrue(yetkiModel?.ebelgeEArsivSorgula);
   bool get ebelgeEArsivGoruntule => isTrue(yetkiModel?.ebelgeEArsivGoruntule);

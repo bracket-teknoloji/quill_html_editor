@@ -80,7 +80,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                     Text("Vergi No: ${model.vergiNo ?? ""}"),
                     Text("Kayıt Tarihi: ${model.kayittarihi.toDateString}"),
                     Text("Onay: ${model.onayAciklama ?? ""}"),
-                    InkWell(onTap: () => dialogManager.showInfoDialog(model.cevapKodu.toStringIfNotNull), child: Text("Senaryo: ${model.senaryo ?? ""}")),
+                    InkWell(onTap: () => dialogManager.showInfoSnackBar(model.cevapKodu.toStringIfNotNull ?? ""), child: Text("Senaryo: ${model.senaryo ?? ""}")),
                     Text("Tipi: ${model.faturaTipi}"),
                     Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
                   ].map((e) => SizedBox(width: constraints.maxWidth / 2, child: e)).toList(),

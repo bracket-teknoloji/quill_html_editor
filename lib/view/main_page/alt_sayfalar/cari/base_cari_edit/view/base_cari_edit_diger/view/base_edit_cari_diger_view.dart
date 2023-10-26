@@ -5,7 +5,6 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/enum/muhasebe_kodu_belge_tipi_enum.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/base_cari_edit/view/base_cari_edit_diger/view_model/base_edit_cari_diger_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_save_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
@@ -481,7 +480,6 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
             CustomTextField(enabled: enabled, labelText: "Açıklama 3", controller: aciklama3Controller, onChanged: (String p0) => viewModel.changeAciklama(3, p0)),
             CustomWidgetWithLabel(
               text: "Kullanıcı Tanımlı Sahalar",
-              
               child: Wrap(
                 children: <Widget>[
                   Row(

@@ -1731,6 +1731,10 @@ class ProfilYetkiModel {
   int? ebelgeEArsivDizayn;
   @JsonKey(name: "ebelge_EIrsaliye")
   bool? ebelgeEIrsaliye;
+  @JsonKey(name: "ebelge_EArsivGidenKutusu")
+  bool? ebelgeEArsivGidenKutusu;
+  @JsonKey(name: "ebelge_EFaturaGidenKutusu")
+  bool? ebelgeEFaturaGidenKutusu;
   @JsonKey(name: "ebelge_EIrsaliyeGidenKutusu")
   bool? ebelgeEIrsaliyeGidenKutusu;
   @JsonKey(name: "ebelge_EIrsaliyeGelenKutusu")

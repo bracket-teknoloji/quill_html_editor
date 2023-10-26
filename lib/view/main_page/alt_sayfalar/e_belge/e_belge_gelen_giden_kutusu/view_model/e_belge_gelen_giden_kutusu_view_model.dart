@@ -3,8 +3,8 @@ import "dart:convert";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/constants/enum/e_belge_enum.dart";
+import "package:picker/core/constants/enum/e_belge_turu_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/yetki_controller/yetki_controller.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_request_model.dart";
@@ -28,12 +28,7 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
     "Cari Adı (Z-A)": "CARI_ADI_ZA",
   };
 
-   Map<String, String> eBelgeTuru = {
-    "E-Fatura": "EFT",
-    //TODO bunu aç tarih widgetı da yap
-    // "E-Arşiv": "AFT",
-    "E-İrsaliye": "EIR",
-  };
+  List<EBelgeTuruEnum> get eBelgeTuru => EBelgeTuruEnum.values.where((element) => element.yetkiVarMi(eBelgeEnum)).toList();
 
   final Map<String, bool> tarihTuru = {
     "Kayıt Tarihi": true,
@@ -71,23 +66,6 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
     "İşlendi": "E",
     "Bekliyor": "H",
   };
-
-  @computed
-  Map<String, String> get getBelgeTuruMap {
-    final YetkiController yetkiController = YetkiController();
-    final Map<String, String> map = {};
-    if (yetkiController.ebelgeEFatura) {
-      map.addAll({"E-Fatura": "EFT"});
-    }
-    if (yetkiController.ebelgeEArsiv) {
-      map.addAll({"E-Arşiv": "AFT"});
-    }
-    if (yetkiController.ebelgeEIrsaliye) {
-      map.addAll({"E-İrsaliye": "EIR"});
-    }
-    eBelgeTuru = map;
-    return map;
-  }
 
   @observable
   late EBelgeEnum eBelgeEnum;
@@ -201,6 +179,7 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
 
   @action
   Future<void> getData() async {
+    error = null;
     final result =
         await networkManager.dioGet<EBelgeListesiModel>(path: ApiUrls.getEFaturalar, bodyModel: EBelgeListesiModel(), queryParameters: {"FilterModel": jsonEncode(eBelgeRequestModel.toJson())});
     // if (result.data is List) {
