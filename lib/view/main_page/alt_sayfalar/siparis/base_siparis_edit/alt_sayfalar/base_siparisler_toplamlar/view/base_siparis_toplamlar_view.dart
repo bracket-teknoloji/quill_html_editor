@@ -509,12 +509,14 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
               ?.aciklama ??
           "";
     }
-    if (model.vadeGunu == null && model.vadeTarihi == null) {
+    if (model.vadeGunu == null) {
+      viewModel.model.vadeGunu = 0;
+    }
+    if (model.vadeTarihi == null) {
+      viewModel.model.vadeGunu = 0;
       viewModel.setVadeTarihi(DateTime.now());
     }
-    if ((model.vadeTarihi?.difference(DateTime.now()).inDays ?? 0) < 0) {
-      viewModel.setVadeTarihi(DateTime.now());
-    }
+
     vadeGunuController = TextEditingController(
       text: model.vadeGunu.toStringIfNotNull ?? model.vadeTarihi?.difference(DateTime.now()).inDays.toStringIfNotNull,
     );

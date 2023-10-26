@@ -11,6 +11,7 @@ import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
 import "package:picker/core/constants/enum/e_belge_enum.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/borc_alacak_dokumu_raporu/view/cari_borc_alacak_dokumu_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/view/e_belge_gelen_giden_kutusu_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
@@ -145,6 +146,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/cariEkstre", page: () => CariEkstreView(model: Get.arguments)),
               GetPage(name: "/cariDovizliEkstre", page: () => CariDovizliEkstreView(model: Get.arguments)),
               GetPage(name: "/cariStokEkstre", page: () => StokEkstreView(model: Get.arguments)),
+              GetPage(name: "/cariBorcAlacakDokumu", page: () => CariBorcAlacakDokumuRaporuView(model: Get.arguments)),
               GetPage(name: "/cariYaslandirmaRaporu", page: () => YaslandirmaRaporuView(model: Get.arguments)),
               GetPage(name: "/cariDovizBakiyeRaporu", page: () => DovizBakiyeRaporuView(model: Get.arguments)),
               GetPage(name: "/cariHareketRaporu", page: () => CariHareketRaporuView(model: Get.arguments)),

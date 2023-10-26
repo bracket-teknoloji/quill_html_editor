@@ -43,6 +43,7 @@ class MenuItemConstants {
           altMenuler: <GridItemModel>[
             GridItemModel.item(name: "cari_Rap_Ekstre", title: "Cari Ekstre", route: "/mainPage/cariEkstre"),
             GridItemModel.item(name: "cari_Rap_DovizliEkstre", title: "Cari Dövizli Ekstre", route: "/mainPage/cariDovizliEkstre"),
+            GridItemModel.item(name: "cari_Rap_BorcAlacakDokumu", title: "Borç / Alacak Dökümü", route: "/mainPage/cariBorcAlacakDokumu"),
             GridItemModel.item(name: "cari_Rap_StokEkstre", title: "Stok Ekstresi", route: "/mainPage/cariStokEkstre"),
             GridItemModel.item(name: "cari_Rap_Yaslandirma", title: "Yaşlandırma Raporu", route: "/mainPage/cariYaslandirmaRaporu"),
             GridItemModel.item(name: "cari_Rap_DovizBakiye", title: "Döviz Bakiye Raporu", route: "/mainPage/cariDovizBakiyeRaporu"),
