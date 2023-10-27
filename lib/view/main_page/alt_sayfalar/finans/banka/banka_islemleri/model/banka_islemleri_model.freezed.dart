@@ -20,34 +20,6 @@ BankaIslemleriModel _$BankaIslemleriModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BankaIslemleriModel {
-// int? inckeyno,
-// int? caharInckeyno,
-// String? kasaKodu,
-// String? kasaAdi,
-// String? belgeNo,
-// DateTime? tarih,
-// String? tip,
-// String? tipAciklama,
-// String? hedefAciklama,
-// double? tutar,
-// String? cariMuh,
-// String? gc,
-// String? kod,
-// String? cariKodu,
-// String? cariAdi,
-// String? hesapAdi,
-// double? dovizTutari,
-// double? dovizKuru,
-// String? plasiyerKodu,
-// String? plasiyerAdi,
-// String? projeKodu,
-// String? projeAdi,
-// String? aciklama,
-// String? refkey,
-// DateTime? kasaDevirTarihi,
-// double? kasaDevirTutari,
-// double? kasaDovizDevirTutari,
-// int? kasaDovizTipi,
   int? get inckeyno => throw _privateConstructorUsedError;
   String? get netheskodu => throw _privateConstructorUsedError;
   DateTime? get tarih => throw _privateConstructorUsedError;
@@ -372,34 +344,6 @@ class _$BankaIslemleriModelImpl extends _BankaIslemleriModel {
   factory _$BankaIslemleriModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$BankaIslemleriModelImplFromJson(json);
 
-// int? inckeyno,
-// int? caharInckeyno,
-// String? kasaKodu,
-// String? kasaAdi,
-// String? belgeNo,
-// DateTime? tarih,
-// String? tip,
-// String? tipAciklama,
-// String? hedefAciklama,
-// double? tutar,
-// String? cariMuh,
-// String? gc,
-// String? kod,
-// String? cariKodu,
-// String? cariAdi,
-// String? hesapAdi,
-// double? dovizTutari,
-// double? dovizKuru,
-// String? plasiyerKodu,
-// String? plasiyerAdi,
-// String? projeKodu,
-// String? projeAdi,
-// String? aciklama,
-// String? refkey,
-// DateTime? kasaDevirTarihi,
-// double? kasaDevirTutari,
-// double? kasaDovizDevirTutari,
-// int? kasaDovizTipi,
   @override
   final int? inckeyno;
   @override
@@ -477,34 +421,7 @@ abstract class _BankaIslemleriModel extends BankaIslemleriModel {
   factory _BankaIslemleriModel.fromJson(Map<String, dynamic> json) =
       _$BankaIslemleriModelImpl.fromJson;
 
-  @override // int? inckeyno,
-// int? caharInckeyno,
-// String? kasaKodu,
-// String? kasaAdi,
-// String? belgeNo,
-// DateTime? tarih,
-// String? tip,
-// String? tipAciklama,
-// String? hedefAciklama,
-// double? tutar,
-// String? cariMuh,
-// String? gc,
-// String? kod,
-// String? cariKodu,
-// String? cariAdi,
-// String? hesapAdi,
-// double? dovizTutari,
-// double? dovizKuru,
-// String? plasiyerKodu,
-// String? plasiyerAdi,
-// String? projeKodu,
-// String? projeAdi,
-// String? aciklama,
-// String? refkey,
-// DateTime? kasaDevirTarihi,
-// double? kasaDevirTutari,
-// double? kasaDovizDevirTutari,
-// int? kasaDovizTipi,
+  @override
   int? get inckeyno;
   @override
   String? get netheskodu;

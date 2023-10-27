@@ -51,9 +51,9 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
 
   @override
   void initState() {
-    tabController = TabController(length: yetkiController.siparisDigerSekmesiGoster ? 4 : 3, vsync: this);
+    tabController = TabController(length: widget.model.siparisTipiEnum?.digerSekmesiGoster ?? false ? 4 : 3, vsync: this);
     tabController.addListener(() {
-      if (tabController.index == (yetkiController.siparisDigerSekmesiGoster ? 3 : 2) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
+      if (tabController.index == (widget.model.siparisTipiEnum?.digerSekmesiGoster ?? false ? 3 : 2) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
         viewModel.changeIsLastPage(true);
       } else {
         viewModel.changeIsLastPage(false);
@@ -97,6 +97,8 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
             BaseSiparisEditModel.instance.belgeTuru = widget.model.siparisTipiEnum?.rawValue;
             BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.siparisTipiEnum?.rawValue;
           }
+        } else {
+          Get.back();
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
@@ -133,7 +135,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
   @override
   Widget build(BuildContext context) => WillPopScope(
         child: DefaultTabController(
-          length: yetkiController.siparisDigerSekmesiGoster ? 4 : 3,
+          length: widget.model.siparisTipiEnum?.digerSekmesiGoster ?? false ? 4 : 3,
           child: Scaffold(
             appBar: AppBar(
               title: AppBarTitle(

@@ -100,6 +100,18 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Card(
+                  //   child: ListTile(
+                  //     onTap: () async => Get.toNamed(
+                  //       "/mainPage/eBelgePdf",
+                  //       arguments: EBelgeListesiModel(belgeTuru: widget.model.siparisTipiEnum?.rawValue, ebelgeTuru: "EFT", resmiBelgeNo: model.resmiBelgeNo ?? model.belgeNo ?? ""),
+                  //     ),
+                  //     contentPadding: UIHelper.lowPaddingHorizontal,
+                  //     leading: const Icon(Icons.info_outline),
+                  //     title: Text("E-Fatura Taslağı (${model.resmiBelgeNo})"),
+                  //     trailing: const Icon(Icons.open_in_new_outlined),
+                  //   ),
+                  // ).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.cariEfaturami == "E"),
                   Visibility(
                     visible: model.isRemoteTempBelgeNull,
                     child: CustomTextField(

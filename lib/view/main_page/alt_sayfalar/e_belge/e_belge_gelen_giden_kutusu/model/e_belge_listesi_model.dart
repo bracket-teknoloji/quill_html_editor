@@ -6,9 +6,8 @@ part "e_belge_listesi_model.g.dart";
 
 @unfreezed
 class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
-
   EBelgeListesiModel._();
-   factory EBelgeListesiModel({
+  factory EBelgeListesiModel({
     String? ebelgeTuru,
     int? inckeyno,
     int? efatmasInckeyno,
@@ -51,10 +50,19 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
     double? iskontoTutari,
     String? dekontJson,
     String? kontrolAciklama,
+    String? dizaynYolu,
+    String? gondermeDurumu,
+    String? zarfSilinebilir,
   }) = _EBelgeListesiModel;
 
   factory EBelgeListesiModel.fromJson(Map<String, dynamic> json) => _$EBelgeListesiModelFromJson(json);
 
   @override
   EBelgeListesiModel fromJson(Map<String, dynamic> json) => _$EBelgeListesiModelFromJson(json);
+}
+
+extension EBelgeListesiModelExtensions on EBelgeListesiModel {
+  bool get showBadge => gelen != "E" || taslak != "E";
+
+  bool get uyariMi => showBadge && gondermeDurumu == "BEK";
 }

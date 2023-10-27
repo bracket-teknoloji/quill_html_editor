@@ -43,7 +43,6 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   static BaseSiparisEditModel get instance {
     _instance ??= BaseSiparisEditModel._init();
     if (_instance?.isNew == true && _instance?.belgeNo != null && _instance?.kalemList.ext.isNotNullOrEmpty == true) {
-
       final BaseSiparisEditModel? otherInstance = _instance?.siparisTipi?.getEditModel;
       if (_instance != otherInstance) {
         const uuid = Uuid();
@@ -367,7 +366,6 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   EirsBilgiModel? eirsBilgiModel;
   @HiveField(144)
   String? uetdsBildirildi;
-  
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -512,7 +510,6 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.ebelgeCheckbox,
     this.eirsBilgiModel,
     this.uetdsBildirildi,
-
   });
 
   BaseSiparisEditModel._init();
@@ -614,7 +611,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   double get getBrutTutar => kalemList?.map((e) => e.brutFiyat).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
 
   factory BaseSiparisEditModel.fromJson(String json) => _$BaseSiparisEditModelFromJson(jsonDecode(json));
-  
+
   @override
   BaseSiparisEditModel fromJson(Map<String, dynamic> json) => _$BaseSiparisEditModelFromJson(json);
 
@@ -803,6 +800,18 @@ class KalemModel with NetworkManagerMixin {
   String? irsaliyeNo;
   @HiveField(83)
   int? irsaliyeSira;
+  @HiveField(84)
+  double? tamamlanan;
+  @HiveField(85)
+  bool? seriCikislardaAcik;
+  @HiveField(86)
+  bool? seriGirislerdeAcik;
+  @HiveField(87)
+  bool? seriMiktarKadarSor;
+  @HiveField(88)
+  String? dovizAdi;
+  @HiveField(89)
+  List<dynamic>? kalemListHucreList;
 
   KalemModel({
     this.iskonto1OranMi,
@@ -889,6 +898,12 @@ class KalemModel with NetworkManagerMixin {
     this.siparisSira,
     this.irsaliyeNo,
     this.irsaliyeSira,
+    this.tamamlanan,
+    this.seriCikislardaAcik,
+    this.seriGirislerdeAcik,
+    this.seriMiktarKadarSor,
+    this.dovizAdi,
+    this.kalemListHucreList,
   });
   //koli mi
   bool get isKoli => koliMi ?? kalemList.ext.isNotNullOrEmpty;

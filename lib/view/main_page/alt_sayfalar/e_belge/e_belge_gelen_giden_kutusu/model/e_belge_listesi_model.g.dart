@@ -55,6 +55,9 @@ _$EBelgeListesiModelImpl _$$EBelgeListesiModelImplFromJson(
       iskontoTutari: (json['ISKONTO_TUTARI'] as num?)?.toDouble(),
       dekontJson: json['DEKONT_JSON'] as String?,
       kontrolAciklama: json['KONTROL_ACIKLAMA'] as String?,
+      dizaynYolu: json['DIZAYN_YOLU'] as String?,
+      gondermeDurumu: json['GONDERME_DURUMU'] as String?,
+      zarfSilinebilir: json['ZARF_SILINEBILIR'] as String?,
     );
 
 Map<String, dynamic> _$$EBelgeListesiModelImplToJson(
@@ -109,5 +112,8 @@ Map<String, dynamic> _$$EBelgeListesiModelImplToJson(
   writeNotNull('ISKONTO_TUTARI', instance.iskontoTutari);
   writeNotNull('DEKONT_JSON', instance.dekontJson);
   writeNotNull('KONTROL_ACIKLAMA', instance.kontrolAciklama);
+  writeNotNull('DIZAYN_YOLU', instance.dizaynYolu);
+  writeNotNull('GONDERME_DURUMU', instance.gondermeDurumu);
+  writeNotNull('ZARF_SILINEBILIR', instance.zarfSilinebilir);
   return val;
 }

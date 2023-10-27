@@ -37,7 +37,6 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
   late final TextEditingController _searchTextController;
   @override
   void initState() {
-    debugPrint(widget.updater.toString());
     _searchTextController = TextEditingController();
     viewModel.updateKalemList();
     super.initState();
@@ -174,9 +173,9 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                   Text("Fiyat: ${kalemModel?.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}").yetkiVarMi(kalemModel?.brutFiyat != null),
                   Text("Tutar: ${kalemModel?.koliTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}").yetkiVarMi(kalemModel?.brutFiyat != null),
                   Text("Proje: ${kalemModel?.projeKodu}").yetkiVarMi(kalemModel?.projeKodu != null && yetkiController.projeUygulamasiAcikMi),
-                  Text("Teslim Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),
-                  Text("Kalan Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),
-                  Text("Teslim Tarihi: ${kalemModel?.teslimTarihi.toDateStringIfNull ?? ""}").yetkiVarMi(kalemModel?.teslimTarihi != null),
+                  Text("Teslim Miktar: ${kalemModel?.tamamlanan.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.tamamlanan != null),
+                  Text("Kalan Miktar: ${kalemModel?.kalan.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.kalan != null),
+                  Text("Teslim Tarihi: ${kalemModel?.teslimTarihi.toDateStringIfNull ?? ""}").yetkiVarMi(kalemModel?.teslimTarihi != null && kalemModel?.tamamlanan != null),
                 ].map((e) => e is! SizedBox ? SizedBox(width: constrains.maxWidth / 2, child: e) : null).toList().nullCheckWithGeneric,
               ),
             ),
@@ -237,7 +236,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
         // trailing: IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
       );
 
-  Future<void> listTileBottomSheet(BuildContext context, int index) async{
+  Future<void> listTileBottomSheet(BuildContext context, int index) async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: viewModel.kalemList?[index].stokAdi ?? "",

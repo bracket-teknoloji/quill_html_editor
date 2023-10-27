@@ -1856,6 +1856,18 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel irsaliyeSira(int? irsaliyeSira);
 
+  KalemModel tamamlanan(double? tamamlanan);
+
+  KalemModel seriCikislardaAcik(bool? seriCikislardaAcik);
+
+  KalemModel seriGirislerdeAcik(bool? seriGirislerdeAcik);
+
+  KalemModel seriMiktarKadarSor(bool? seriMiktarKadarSor);
+
+  KalemModel dovizAdi(String? dovizAdi);
+
+  KalemModel kalemListHucreList(List<dynamic>? kalemListHucreList);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -1947,6 +1959,12 @@ abstract class _$KalemModelCWProxy {
     int? siparisSira,
     String? irsaliyeNo,
     int? irsaliyeSira,
+    double? tamamlanan,
+    bool? seriCikislardaAcik,
+    bool? seriGirislerdeAcik,
+    bool? seriMiktarKadarSor,
+    String? dovizAdi,
+    List<dynamic>? kalemListHucreList,
   });
 }
 
@@ -2234,6 +2252,28 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
       this(irsaliyeSira: irsaliyeSira);
 
   @override
+  KalemModel tamamlanan(double? tamamlanan) => this(tamamlanan: tamamlanan);
+
+  @override
+  KalemModel seriCikislardaAcik(bool? seriCikislardaAcik) =>
+      this(seriCikislardaAcik: seriCikislardaAcik);
+
+  @override
+  KalemModel seriGirislerdeAcik(bool? seriGirislerdeAcik) =>
+      this(seriGirislerdeAcik: seriGirislerdeAcik);
+
+  @override
+  KalemModel seriMiktarKadarSor(bool? seriMiktarKadarSor) =>
+      this(seriMiktarKadarSor: seriMiktarKadarSor);
+
+  @override
+  KalemModel dovizAdi(String? dovizAdi) => this(dovizAdi: dovizAdi);
+
+  @override
+  KalemModel kalemListHucreList(List<dynamic>? kalemListHucreList) =>
+      this(kalemListHucreList: kalemListHucreList);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -2326,6 +2366,12 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? siparisSira = const $CopyWithPlaceholder(),
     Object? irsaliyeNo = const $CopyWithPlaceholder(),
     Object? irsaliyeSira = const $CopyWithPlaceholder(),
+    Object? tamamlanan = const $CopyWithPlaceholder(),
+    Object? seriCikislardaAcik = const $CopyWithPlaceholder(),
+    Object? seriGirislerdeAcik = const $CopyWithPlaceholder(),
+    Object? seriMiktarKadarSor = const $CopyWithPlaceholder(),
+    Object? dovizAdi = const $CopyWithPlaceholder(),
+    Object? kalemListHucreList = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -2665,6 +2711,30 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.irsaliyeSira
           // ignore: cast_nullable_to_non_nullable
           : irsaliyeSira as int?,
+      tamamlanan: tamamlanan == const $CopyWithPlaceholder()
+          ? _value.tamamlanan
+          // ignore: cast_nullable_to_non_nullable
+          : tamamlanan as double?,
+      seriCikislardaAcik: seriCikislardaAcik == const $CopyWithPlaceholder()
+          ? _value.seriCikislardaAcik
+          // ignore: cast_nullable_to_non_nullable
+          : seriCikislardaAcik as bool?,
+      seriGirislerdeAcik: seriGirislerdeAcik == const $CopyWithPlaceholder()
+          ? _value.seriGirislerdeAcik
+          // ignore: cast_nullable_to_non_nullable
+          : seriGirislerdeAcik as bool?,
+      seriMiktarKadarSor: seriMiktarKadarSor == const $CopyWithPlaceholder()
+          ? _value.seriMiktarKadarSor
+          // ignore: cast_nullable_to_non_nullable
+          : seriMiktarKadarSor as bool?,
+      dovizAdi: dovizAdi == const $CopyWithPlaceholder()
+          ? _value.dovizAdi
+          // ignore: cast_nullable_to_non_nullable
+          : dovizAdi as String?,
+      kalemListHucreList: kalemListHucreList == const $CopyWithPlaceholder()
+          ? _value.kalemListHucreList
+          // ignore: cast_nullable_to_non_nullable
+          : kalemListHucreList as List<dynamic>?,
     );
   }
 }
@@ -3274,13 +3344,19 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       siparisSira: fields[81] as int?,
       irsaliyeNo: fields[82] as String?,
       irsaliyeSira: fields[83] as int?,
+      tamamlanan: fields[84] as double?,
+      seriCikislardaAcik: fields[85] as bool?,
+      seriGirislerdeAcik: fields[86] as bool?,
+      seriMiktarKadarSor: fields[87] as bool?,
+      dovizAdi: fields[88] as String?,
+      kalemListHucreList: (fields[89] as List?)?.cast<dynamic>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(84)
+      ..writeByte(90)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -3448,7 +3524,19 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(82)
       ..write(obj.irsaliyeNo)
       ..writeByte(83)
-      ..write(obj.irsaliyeSira);
+      ..write(obj.irsaliyeSira)
+      ..writeByte(84)
+      ..write(obj.tamamlanan)
+      ..writeByte(85)
+      ..write(obj.seriCikislardaAcik)
+      ..writeByte(86)
+      ..write(obj.seriGirislerdeAcik)
+      ..writeByte(87)
+      ..write(obj.seriMiktarKadarSor)
+      ..writeByte(88)
+      ..write(obj.dovizAdi)
+      ..writeByte(89)
+      ..write(obj.kalemListHucreList);
   }
 
   @override
@@ -3898,6 +3986,12 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       siparisSira: json['SIPARIS_SIRA'] as int?,
       irsaliyeNo: json['IRSALIYE_NO'] as String?,
       irsaliyeSira: json['IRSALIYE_SIRA'] as int?,
+      tamamlanan: (json['TAMAMLANAN'] as num?)?.toDouble(),
+      seriCikislardaAcik: json['SERI_CIKISLARDA_ACIK'] as bool?,
+      seriGirislerdeAcik: json['SERI_GIRISLERDE_ACIK'] as bool?,
+      seriMiktarKadarSor: json['SERI_MIKTAR_KADAR_SOR'] as bool?,
+      dovizAdi: json['DOVIZ_ADI'] as String?,
+      kalemListHucreList: json['KALEM_LIST_HUCRE_LIST'] as List<dynamic>?,
     );
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
@@ -3994,6 +4088,12 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('SIPARIS_SIRA', instance.siparisSira);
   writeNotNull('IRSALIYE_NO', instance.irsaliyeNo);
   writeNotNull('IRSALIYE_SIRA', instance.irsaliyeSira);
+  writeNotNull('TAMAMLANAN', instance.tamamlanan);
+  writeNotNull('SERI_CIKISLARDA_ACIK', instance.seriCikislardaAcik);
+  writeNotNull('SERI_GIRISLERDE_ACIK', instance.seriGirislerdeAcik);
+  writeNotNull('SERI_MIKTAR_KADAR_SOR', instance.seriMiktarKadarSor);
+  writeNotNull('DOVIZ_ADI', instance.dovizAdi);
+  writeNotNull('KALEM_LIST_HUCRE_LIST', instance.kalemListHucreList);
   return val;
 }
 

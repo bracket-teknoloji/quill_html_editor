@@ -47,7 +47,7 @@ class NetworkManager {
           InterceptorsWrapper(
             onRequest: (options, handler) => handler.next(options),
             onError: (e, handler) {
-              print(e);
+              // print(e);
               if (e.type == DioExceptionType.connectionError) {
                 return handler.next(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error}"));
               } else if (e.type == DioExceptionType.unknown) {
@@ -198,7 +198,7 @@ class NetworkManager {
 
     if (responseModel.success != true) {
       if (showError) {
-        DialogManager().showAlertDialog(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
+        await DialogManager().showAlertDialog(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
       }
       if (responseModel.errorCode == 1) {
         Get.toNamed("/");

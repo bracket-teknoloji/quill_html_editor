@@ -1,19 +1,24 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/e_belge_enum.dart";
+import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 
 class EFaturaListesiCard extends StatefulWidget {
   final EBelgeListesiModel eBelgeListesiModel;
@@ -44,6 +49,21 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                   },
                 ),
                 BottomSheetModel(
+                  title: "${SiparisTipiEnum.values.firstWhere((element) => element.rawValue == model.belgeTuru).getName} Görüntüle",
+                  iconWidget: Icons.search_outlined,
+                  onTap: () async {
+                    Get.back();
+                    await Get.toNamed(
+                      "/mainPage/faturaEdit",
+                      arguments: BaseEditModel<SiparisEditRequestModel>(
+                        model: SiparisEditRequestModel.fromEBelgeListesiModel(widget.eBelgeListesiModel),
+                        baseEditEnum: BaseEditEnum.goruntule,
+                        siparisTipiEnum: SiparisTipiEnum.values.firstWhere((element) => element.rawValue == widget.eBelgeListesiModel.belgeTuru),
+                      ),
+                    );
+                  },
+                ).yetkiKontrol(model.faturaIslendi == "E" || model.gelen != "E"),
+                BottomSheetModel(
                   title: "Cari İşlemleri",
                   iconWidget: Icons.person_outline_outlined,
                   onTap: () async {
@@ -69,9 +89,11 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                 children: [
                   const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizAdi != null),
                   const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.taslak == "E"),
+                  const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi(model.uyariMi),
+                  // const ColorfulBadge(label: Text("Hata"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.basariylaGonderildi != "E"),
                   const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.onayDurumKodu == "1"),
-                  const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili).yetkiVarMi(model.basariylaGonderildi == "E"),
-                ],
+                  InkWell(onTap: showCevapAciklamaSnackBar, child: const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili).yetkiVarMi(model.basariylaGonderildi == "E")),
+                ].map((e) => e is! SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               ).paddingSymmetric(vertical: UIHelper.lowSize),
               Text(model.onayAciklama ?? model.cevapAciklama ?? ""),
               LayoutBuilder(
@@ -80,8 +102,16 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                     Text("Vergi No: ${model.vergiNo ?? ""}"),
                     Text("Kayıt Tarihi: ${model.kayittarihi.toDateString}"),
                     Text("Onay: ${model.onayAciklama ?? ""}"),
-                    InkWell(onTap: () => dialogManager.showInfoSnackBar(model.cevapKodu.toStringIfNotNull ?? ""), child: Text("Senaryo: ${model.senaryo ?? ""}")),
-                    Text("Tipi: ${model.faturaTipi}"),
+                    InkWell(
+                      onTap: showCevapAciklamaSnackBar,
+                      child: Row(
+                        children: [
+                          Icon(Icons.open_in_new_outlined, size: theme.textTheme.titleSmall?.fontSize, color: UIHelper.primaryColor),
+                          Text(" Senaryo: ${model.senaryo ?? ""}"),
+                        ],
+                      ),
+                    ),
+                    Text("Tipi: ${model.faturaTipi ?? ""}"),
                     Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
                   ].map((e) => SizedBox(width: constraints.maxWidth / 2, child: e)).toList(),
                 ),
@@ -91,4 +121,6 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
           ),
         ),
       );
+
+  void showCevapAciklamaSnackBar() => dialogManager.showInfoSnackBar("Cevap Kodu : ${model.cevapKodu.toStringIfNotNull ?? "0"}\n${model.cevapAciklama ?? ""}");
 }

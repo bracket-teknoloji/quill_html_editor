@@ -42,6 +42,7 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
     }
   }
 
+ 
   String get getName {
     switch (this) {
       case SiparisTipiEnum.musteri:

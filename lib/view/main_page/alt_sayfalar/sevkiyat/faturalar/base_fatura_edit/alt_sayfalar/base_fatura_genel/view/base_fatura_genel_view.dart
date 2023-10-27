@@ -2,6 +2,7 @@ import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
@@ -130,12 +131,17 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Card(
-                  color: theme.colorScheme.background,
                   child: ListTile(
+                    onTap: () async => Get.toNamed(
+                      "/mainPage/eBelgePdf",
+                      arguments: EBelgeListesiModel(belgeTuru: widget.model.siparisTipiEnum?.rawValue, ebelgeTuru: "EFT", resmiBelgeNo: BaseSiparisEditModel.instance.resmiBelgeNo ?? ""),
+                    ),
+                    contentPadding: UIHelper.lowPaddingHorizontal,
                     leading: const Icon(Icons.info_outline),
                     title: Text("E-Fatura Taslağı (${model.resmiBelgeNo})"),
+                    trailing: const Icon(Icons.open_in_new_outlined),
                   ),
-                ).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.efaturaMi == "E"),
+                ).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.cariEfaturami == "E"),
                 CustomTextField(labelText: "Belge No", isMust: true, controller: _belgeNoController, enabled: enable, maxLength: 15, onTap: () {}),
                 CustomTextField(labelText: "Resmi Belge No", isMust: true, controller: _resmiBelgeNoController, enabled: enable, maxLength: 16, onTap: () {}),
                 CustomTextField(
