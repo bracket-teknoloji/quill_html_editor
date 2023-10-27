@@ -19,6 +19,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) => Drawer(
+    
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -61,6 +62,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                 padding: UIHelper.zeroPadding,
                 itemBuilder: (context, index) => ListTile(
                   dense: true,
+                  onTap: DrawerMenuItems().items[index].onTap,
                   title: Text(
                     "${DrawerMenuItems().items[index]}",
                     style: theme.textTheme.bodyMedium,

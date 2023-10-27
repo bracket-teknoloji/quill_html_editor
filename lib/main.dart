@@ -10,6 +10,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/view/surum_yenilikleri/view/surum_yenilikleri_view.dart";
 import "package:picker/core/constants/enum/e_belge_enum.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/borc_alacak_dokumu_raporu/view/cari_borc_alacak_dokumu_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/view/e_belge_gelen_giden_kutusu_view.dart";
@@ -136,6 +137,7 @@ class PickerApp extends StatelessWidget {
             name: "/mainPage",
             page: () => const MainPageView(),
             children: <GetPage>[
+              GetPage(name: "/surumYenilikleri", page: () => const SurumYenilikleriView()),
               //* Cari
               GetPage(name: "/cariListesi", page: () => CariListesiView(isGetData: Get.arguments)),
               GetPage(name: "/cariRehberi", page: () => CariRehberiView(cariKodu: Get.arguments)),
