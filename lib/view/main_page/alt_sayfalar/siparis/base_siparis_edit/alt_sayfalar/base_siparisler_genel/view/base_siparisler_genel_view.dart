@@ -377,7 +377,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                             // var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Özel Kod 1");
                           },
                         ),
-                      ).yetkiVarMi(yetkiController.satisOzelKod1AktifMi),
+                      ).yetkiVarMi(yetkiController.satisOzelKod1AktifMi == false),
                       Expanded(
                         child: CustomTextField(
                           enabled: enable,
@@ -544,12 +544,6 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
     satisAcik14Controller.text = model.acik14 ?? "";
     satisAcik15Controller.text = model.acik15 ?? "";
     satisAcik16Controller.text = model.acik16 ?? "";
-    if (yetkiController.satisOzelKod1AktifMi && model.ozelKod1 == null) {
-      ozelKod1Controller.text = "T";
-      viewModel.setOzelKod1("T");
-    } else {
-      ozelKod1Controller.text = model.ozelKod1 ?? "";
-    }
     if (model.topluDepo != null) {
       topluDepoController.text = parametreModel.depoList?.firstWhere((element) => element.depoKodu == model.topluDepo).depoTanimi ?? "";
     }
