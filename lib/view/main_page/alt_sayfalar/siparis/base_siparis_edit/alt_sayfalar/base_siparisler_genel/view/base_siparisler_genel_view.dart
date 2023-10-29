@@ -377,7 +377,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                             // var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Özel Kod 1");
                           },
                         ),
-                      ).yetkiVarMi(yetkiController.satisOzelKod1AktifMi == false),
+                      ).yetkiVarMi(yetkiController.satisOzelKod1AktifMi),
                       Expanded(
                         child: CustomTextField(
                           enabled: enable,
