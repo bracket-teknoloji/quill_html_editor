@@ -256,12 +256,14 @@ class PickerApp extends StatelessWidget {
 }
 
 Future<void> firebaseInitialized() async {
-  if (kIsWeb || Platform.isWindows || kDebugMode) return;
+  if (kIsWeb || Platform.isWindows) return;
   if (!Platform.isWindows && (await AppTrackingTransparency.requestTrackingAuthorization() == TrackingStatus.authorized || !Platform.isIOS || !Platform.isMacOS)) {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
     final FirebaseMessaging messaging = FirebaseMessaging.instance;
     await messaging.requestPermission();
+    FirebaseMessaging.instance.getToken().then(print);
     await messaging.setForegroundNotificationPresentationOptions(sound: true, alert: true, badge: true);
+    // print token
     // FirebaseMessaging.onMessageOpenedApp.listen((event) => print(event.toMap().toString()));
     // messaging.getNotificationSettings().then((value) => print(value.authorizationStatus));
     // FirebaseMessaging.onBackgroundMessage((message) async => print(message));

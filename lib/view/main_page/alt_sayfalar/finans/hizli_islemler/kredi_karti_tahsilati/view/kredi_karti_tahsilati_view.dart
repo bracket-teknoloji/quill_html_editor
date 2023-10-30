@@ -333,7 +333,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                       },
                     ),
                     //TODO : Yetki eklenecek
-                  ).yetkiVarMi(yetkiController.referansKoduSorulsun(true)),
+                  ).yetkiVarMi(yetkiController.referansKodu(viewModel.model.refKod)),
                 ],
               ),
               CustomTextField(
@@ -352,10 +352,16 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
       viewModel.setShowReferansKodu(yetkiController.referansKodu(result.muhHesapTipi));
       _aciklamaController.text = result.cariAdi ?? "";
       _cariController.text = result.cariAdi ?? "";
+      _plasiyerController.text = result.plasiyerAciklama ?? "";
       viewModel.setAciklama(result.cariAdi);
       viewModel.setCariKodu(result.cariKodu);
       viewModel.setHesapKodu(result.cariKodu);
       viewModel.setCariBakiye(result.bakiye);
+      viewModel.setPlasiyerKodu(
+        PlasiyerList()
+          ..plasiyerAciklama = result.plasiyerAciklama
+          ..plasiyerKodu = result.plasiyerKodu,
+      );
     }
   }
 
