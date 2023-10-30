@@ -252,6 +252,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
               Observer(
                 builder: (_) => CustomTextField(
                   labelText: "Kredi Kartı No",
+                  isMust: true,
                   controller: _krediKartiNoController,
                   keyboardType: TextInputType.number,
                   maxLength: 16,
