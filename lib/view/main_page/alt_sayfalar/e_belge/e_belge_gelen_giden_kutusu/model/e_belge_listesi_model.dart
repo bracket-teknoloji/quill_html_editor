@@ -53,6 +53,7 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
     String? dizaynYolu,
     String? gondermeDurumu,
     String? zarfSilinebilir,
+        DateTime? iptalTarihi,
   }) = _EBelgeListesiModel;
 
   factory EBelgeListesiModel.fromJson(Map<String, dynamic> json) => _$EBelgeListesiModelFromJson(json);

@@ -366,7 +366,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   EirsBilgiModel? eirsBilgiModel;
   @HiveField(144)
   String? uetdsBildirildi;
-
+  
   BaseSiparisEditModel({
     this.duzeltmetarihi,
     this.kalemAdedi,

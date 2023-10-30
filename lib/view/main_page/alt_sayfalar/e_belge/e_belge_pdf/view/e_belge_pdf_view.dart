@@ -34,8 +34,11 @@ class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
   void initState() {
     viewModel = EBelgePdfViewModel(model: EBelgePdfRequestModel.fromEBelgeListesiModel(widget.model));
     pdfViewerController = PdfViewerController();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      viewModel.getData();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await viewModel.getData();
+      if (viewModel.eBelgePdfModel == null) {
+        Get.back();
+      }
     });
     super.initState();
   }

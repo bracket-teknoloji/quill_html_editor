@@ -55,6 +55,8 @@ extension EBelgeTuruEnumExtensions on EBelgeTuruEnum {
       switch (this) {
         case EBelgeTuruEnum.fatura:
           return _yetkiController.ebelgeEFaturaGelenKutusu;
+        case EBelgeTuruEnum.arsiv:
+          return _yetkiController.ebelgeEArsiv;
         case EBelgeTuruEnum.irsaliye:
           return _yetkiController.ebelgeEIrsaliyeGelenKutusu;
         default:

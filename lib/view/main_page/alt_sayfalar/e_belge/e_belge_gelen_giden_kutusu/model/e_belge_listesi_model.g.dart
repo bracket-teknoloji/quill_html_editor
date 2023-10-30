@@ -58,6 +58,9 @@ _$EBelgeListesiModelImpl _$$EBelgeListesiModelImplFromJson(
       dizaynYolu: json['DIZAYN_YOLU'] as String?,
       gondermeDurumu: json['GONDERME_DURUMU'] as String?,
       zarfSilinebilir: json['ZARF_SILINEBILIR'] as String?,
+      iptalTarihi: json['IPTAL_TARIHI'] == null
+          ? null
+          : DateTime.parse(json['IPTAL_TARIHI'] as String),
     );
 
 Map<String, dynamic> _$$EBelgeListesiModelImplToJson(
@@ -115,5 +118,6 @@ Map<String, dynamic> _$$EBelgeListesiModelImplToJson(
   writeNotNull('DIZAYN_YOLU', instance.dizaynYolu);
   writeNotNull('GONDERME_DURUMU', instance.gondermeDurumu);
   writeNotNull('ZARF_SILINEBILIR', instance.zarfSilinebilir);
+  writeNotNull('IPTAL_TARIHI', instance.iptalTarihi?.toIso8601String());
   return val;
 }

@@ -138,7 +138,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     ),
                     contentPadding: UIHelper.lowPaddingHorizontal,
                     leading: const Icon(Icons.info_outline),
-                    title: Text("E-Fatura Taslağı (${model.resmiBelgeNo})"),
+                    title: Text(eBelgeButtonText),
                     trailing: const Icon(Icons.open_in_new_outlined),
                   ),
                 ).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.cariEfaturami == "E"),
@@ -360,4 +360,24 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
           ),
         ),
       );
+
+  String get eBelgeButtonText {
+    if (model.efaturaMi == "E") {
+      if (model.efaturaDurumu == "TAS") {
+        return "E-Fatura Taslağı (${model.resmiBelgeNo})";
+      }
+      return "E-Fatura (${model.resmiBelgeNo})";
+    } else if (model.earsivMi == "E") {
+      if (model.earsivDurumu == "TAS") {
+        return "E-Arşiv Taslağı (${model.resmiBelgeNo})";
+      }
+      return "E-Arşiv (${model.resmiBelgeNo})";
+    } else {
+      if (model.eirsaliyeDurumu == "TAS") {
+        return "E-İrsaliye Taslağı (${model.resmiBelgeNo})";
+      } else {
+        return "E-İrsaliye (${model.resmiBelgeNo})";
+      }
+    }
+  }
 }

@@ -10,6 +10,14 @@ part of 'e_belge_gelen_giden_kutusu_view_model.dart';
 
 mixin _$EBelgeGelenGidenKutusuViewModel
     on _EBelgeGelenGidenKutusuViewModelBase, Store {
+  Computed<String>? _$eArsivDateStringComputed;
+
+  @override
+  String get eArsivDateString => (_$eArsivDateStringComputed ??=
+          Computed<String>(() => super.eArsivDateString,
+              name: '_EBelgeGelenGidenKutusuViewModelBase.eArsivDateString'))
+      .value;
+
   late final _$eBelgeEnumAtom = Atom(
       name: '_EBelgeGelenGidenKutusuViewModelBase.eBelgeEnum',
       context: context);
@@ -125,20 +133,19 @@ mixin _$EBelgeGelenGidenKutusuViewModel
     });
   }
 
-  late final _$eArsivDateStringAtom = Atom(
-      name: '_EBelgeGelenGidenKutusuViewModelBase.eArsivDateString',
-      context: context);
+  late final _$getWeekAtom = Atom(
+      name: '_EBelgeGelenGidenKutusuViewModelBase.getWeek', context: context);
 
   @override
-  String get eArsivDateString {
-    _$eArsivDateStringAtom.reportRead();
-    return super.eArsivDateString;
+  int get getWeek {
+    _$getWeekAtom.reportRead();
+    return super.getWeek;
   }
 
   @override
-  set eArsivDateString(String value) {
-    _$eArsivDateStringAtom.reportWrite(value, super.eArsivDateString, () {
-      super.eArsivDateString = value;
+  set getWeek(int value) {
+    _$getWeekAtom.reportWrite(value, super.getWeek, () {
+      super.getWeek = value;
     });
   }
 
@@ -197,6 +204,32 @@ mixin _$EBelgeGelenGidenKutusuViewModel
   late final _$_EBelgeGelenGidenKutusuViewModelBaseActionController =
       ActionController(
           name: '_EBelgeGelenGidenKutusuViewModelBase', context: context);
+
+  @override
+  void increaseGetWeek() {
+    final _$actionInfo =
+        _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
+            name: '_EBelgeGelenGidenKutusuViewModelBase.increaseGetWeek');
+    try {
+      return super.increaseGetWeek();
+    } finally {
+      _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void decreaseGetWeek() {
+    final _$actionInfo =
+        _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
+            name: '_EBelgeGelenGidenKutusuViewModelBase.decreaseGetWeek');
+    try {
+      return super.decreaseGetWeek();
+    } finally {
+      _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
 
   @override
   void changeIsScrolledDown(bool isScrolledDown) {
@@ -419,6 +452,18 @@ mixin _$EBelgeGelenGidenKutusuViewModel
   }
 
   @override
+  void changeTaslak(String? value) {
+    final _$actionInfo = _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+        .startAction(name: '_EBelgeGelenGidenKutusuViewModelBase.changeTaslak');
+    try {
+      return super.changeTaslak(value);
+    } finally {
+      _$_EBelgeGelenGidenKutusuViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void changeKontrol(String? value) {
     final _$actionInfo =
         _$_EBelgeGelenGidenKutusuViewModelBaseActionController.startAction(
@@ -466,9 +511,10 @@ digerGoster: ${digerGoster},
 dahaVarMi: ${dahaVarMi},
 isScrolledDown: ${isScrolledDown},
 error: ${error},
-eArsivDateString: ${eArsivDateString},
+getWeek: ${getWeek},
 eBelgeRequestModel: ${eBelgeRequestModel},
-eBelgeListesi: ${eBelgeListesi}
+eBelgeListesi: ${eBelgeListesi},
+eArsivDateString: ${eArsivDateString}
     ''';
   }
 }

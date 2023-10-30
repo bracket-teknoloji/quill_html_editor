@@ -87,12 +87,13 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
               Text(model.cariAdi ?? ""),
               Row(
                 children: [
+                  InkWell(onTap: showCevapAciklamaSnackBar, child: const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili).yetkiVarMi(model.basariylaGonderildi == "E")),
                   const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizAdi != null),
                   const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.taslak == "E"),
                   const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi(model.uyariMi),
-                  // const ColorfulBadge(label: Text("Hata"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.basariylaGonderildi != "E"),
                   const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.onayDurumKodu == "1"),
-                  InkWell(onTap: showCevapAciklamaSnackBar, child: const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili).yetkiVarMi(model.basariylaGonderildi == "E")),
+                  ColorfulBadge(label: Text("İptal (${model.iptalTarihi.toDateString})"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.iptalEdildi == "E"),
+                  // const ColorfulBadge(label: Text("Hata"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.basariylaGonderildi != "E"),
                 ].map((e) => e is! SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               ).paddingSymmetric(vertical: UIHelper.lowSize),
               Text(model.onayAciklama ?? model.cevapAciklama ?? ""),

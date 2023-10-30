@@ -48,6 +48,8 @@ mixin _$EBelgeRequestModel {
   set sorgulanmasin(bool? value) => throw _privateConstructorUsedError;
   String? get searchText => throw _privateConstructorUsedError;
   set searchText(String? value) => throw _privateConstructorUsedError;
+  String? get taslak => throw _privateConstructorUsedError;
+  set taslak(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -75,7 +77,8 @@ abstract class $EBelgeRequestModelCopyWith<$Res> {
       String? senaryo,
       String? sirala,
       bool? sorgulanmasin,
-      String? searchText});
+      String? searchText,
+      String? taslak});
 }
 
 /// @nodoc
@@ -105,6 +108,7 @@ class _$EBelgeRequestModelCopyWithImpl<$Res, $Val extends EBelgeRequestModel>
     Object? sirala = freezed,
     Object? sorgulanmasin = freezed,
     Object? searchText = freezed,
+    Object? taslak = freezed,
   }) {
     return _then(_value.copyWith(
       basimDurumu: freezed == basimDurumu
@@ -163,6 +167,10 @@ class _$EBelgeRequestModelCopyWithImpl<$Res, $Val extends EBelgeRequestModel>
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String?,
+      taslak: freezed == taslak
+          ? _value.taslak
+          : taslak // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -189,7 +197,8 @@ abstract class _$$EBelgeRequestModelImplCopyWith<$Res>
       String? senaryo,
       String? sirala,
       bool? sorgulanmasin,
-      String? searchText});
+      String? searchText,
+      String? taslak});
 }
 
 /// @nodoc
@@ -217,6 +226,7 @@ class __$$EBelgeRequestModelImplCopyWithImpl<$Res>
     Object? sirala = freezed,
     Object? sorgulanmasin = freezed,
     Object? searchText = freezed,
+    Object? taslak = freezed,
   }) {
     return _then(_$EBelgeRequestModelImpl(
       basimDurumu: freezed == basimDurumu
@@ -275,6 +285,10 @@ class __$$EBelgeRequestModelImplCopyWithImpl<$Res>
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String?,
+      taslak: freezed == taslak
+          ? _value.taslak
+          : taslak // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -297,7 +311,8 @@ class _$EBelgeRequestModelImpl extends _EBelgeRequestModel {
       this.senaryo,
       this.sirala,
       this.sorgulanmasin,
-      this.searchText})
+      this.searchText,
+      this.taslak})
       : super._();
 
   factory _$EBelgeRequestModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -331,10 +346,12 @@ class _$EBelgeRequestModelImpl extends _EBelgeRequestModel {
   bool? sorgulanmasin;
   @override
   String? searchText;
+  @override
+  String? taslak;
 
   @override
   String toString() {
-    return 'EBelgeRequestModel(basimDurumu: $basimDurumu, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, eBelgeTuru: $eBelgeTuru, islendi: $islendi, kayitTarihineGore: $kayitTarihineGore, kontrolEdildi: $kontrolEdildi, faturaYonu: $faturaYonu, onayDurumu: $onayDurumu, sayfa: $sayfa, senaryo: $senaryo, sirala: $sirala, sorgulanmasin: $sorgulanmasin, searchText: $searchText)';
+    return 'EBelgeRequestModel(basimDurumu: $basimDurumu, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, eBelgeTuru: $eBelgeTuru, islendi: $islendi, kayitTarihineGore: $kayitTarihineGore, kontrolEdildi: $kontrolEdildi, faturaYonu: $faturaYonu, onayDurumu: $onayDurumu, sayfa: $sayfa, senaryo: $senaryo, sirala: $sirala, sorgulanmasin: $sorgulanmasin, searchText: $searchText, taslak: $taslak)';
   }
 
   @JsonKey(ignore: true)
@@ -367,7 +384,8 @@ abstract class _EBelgeRequestModel extends EBelgeRequestModel {
       String? senaryo,
       String? sirala,
       bool? sorgulanmasin,
-      String? searchText}) = _$EBelgeRequestModelImpl;
+      String? searchText,
+      String? taslak}) = _$EBelgeRequestModelImpl;
   _EBelgeRequestModel._() : super._();
 
   factory _EBelgeRequestModel.fromJson(Map<String, dynamic> json) =
@@ -415,6 +433,9 @@ abstract class _EBelgeRequestModel extends EBelgeRequestModel {
   @override
   String? get searchText;
   set searchText(String? value);
+  @override
+  String? get taslak;
+  set taslak(String? value);
   @override
   @JsonKey(ignore: true)
   _$$EBelgeRequestModelImplCopyWith<_$EBelgeRequestModelImpl> get copyWith =>

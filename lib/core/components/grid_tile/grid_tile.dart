@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../../view/main_page/model/grid_item_model.dart";
 import "../../base/state/base_state.dart";
@@ -58,7 +59,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
               FavoritesModel(name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments, menuTipi: widget.menuTipi),
             );
             dialogManager.hideSnackBar;
-            dialogManager.showInfoSnackBar("Favorilere eklendi");
+            dialogManager.showColorfulSnackBar("Favorilere eklendi", widget.color ?? ColorPalette.blueGray);
           }
           setState(() {});
         }

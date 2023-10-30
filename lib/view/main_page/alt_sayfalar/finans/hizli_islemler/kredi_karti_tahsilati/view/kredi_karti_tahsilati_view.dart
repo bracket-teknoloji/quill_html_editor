@@ -333,7 +333,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                       },
                     ),
                     //TODO : Yetki eklenecek
-                  ).yetkiVarMi(yetkiController.cariAktivite),
+                  ).yetkiVarMi(yetkiController.referansKoduSorulsun(true)),
                 ],
               ),
               CustomTextField(

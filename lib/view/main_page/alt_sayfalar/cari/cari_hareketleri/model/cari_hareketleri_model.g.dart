@@ -36,7 +36,9 @@ CariHareketleriModel _$CariHareketleriModelFromJson(
       ..alacak = (json['ALACAK'] as num?)?.toDouble()
       ..bordroMu = json['BORDRO_MU'] as bool?
       ..dovizAlacak = (json['DOVIZ_ALACAK'] as num?)?.toDouble()
-      ..subeKodu = json['SUBE_KODU'] as int?;
+      ..subeKodu = json['SUBE_KODU'] as int?
+      ..ebelgeTuru = json['EBELGE_TURU'] as String?
+      ..resmiBelgeNo = json['RESMI_BELGE_NO'] as String?;
 
 Map<String, dynamic> _$CariHareketleriModelToJson(
     CariHareketleriModel instance) {
@@ -73,5 +75,7 @@ Map<String, dynamic> _$CariHareketleriModelToJson(
   writeNotNull('BORDRO_MU', instance.bordroMu);
   writeNotNull('DOVIZ_ALACAK', instance.dovizAlacak);
   writeNotNull('SUBE_KODU', instance.subeKodu);
+  writeNotNull('EBELGE_TURU', instance.ebelgeTuru);
+  writeNotNull('RESMI_BELGE_NO', instance.resmiBelgeNo);
   return val;
 }

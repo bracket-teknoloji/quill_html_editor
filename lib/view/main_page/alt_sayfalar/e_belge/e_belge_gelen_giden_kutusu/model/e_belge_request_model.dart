@@ -22,6 +22,7 @@ class EBelgeRequestModel with _$EBelgeRequestModel {
     String? sirala,
     bool? sorgulanmasin,
     String? searchText,
+    String? taslak,
     
   }) = _EBelgeRequestModel;
 

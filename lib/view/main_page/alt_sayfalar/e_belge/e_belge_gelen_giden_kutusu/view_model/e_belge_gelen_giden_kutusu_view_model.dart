@@ -30,6 +30,12 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
 
   List<EBelgeTuruEnum> get eBelgeTuru => EBelgeTuruEnum.values.where((element) => element.yetkiVarMi(eBelgeEnum)).toList();
 
+  final Map<String, String?> taslakMap = {
+    "Tümü": null,
+    "Gönderilenler": "H",
+    "Taslak": "E",
+  };
+
   final Map<String, bool> tarihTuru = {
     "Kayıt Tarihi": true,
     "Belge Tarihi": false,
@@ -89,7 +95,10 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
   String? error;
 
   @observable
-  String eArsivDateString = "Bu hafta ${DateTime.now().getWeekOfYear}";
+  int getWeek = 0;
+
+  @computed
+  String get eArsivDateString => DateTime.now().getWeekOfYear(getWeek).join(" - ");
 
   @observable
   EBelgeRequestModel eBelgeRequestModel = EBelgeRequestModel(
@@ -103,6 +112,24 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
 
   @observable
   ObservableList<EBelgeListesiModel>? eBelgeListesi = ObservableList<EBelgeListesiModel>();
+
+  @action
+  void increaseGetWeek() {
+    final List<String> list = DateTime.now().getWeekOfYear(getWeek);
+    changeBaslangicTarihi(list.first);
+    changeBitisTarihi(list.last);
+    if (getWeek < 0) {
+      getWeek++;
+    }
+  }
+
+  @action
+  void decreaseGetWeek() {
+    final List<String> list = DateTime.now().getWeekOfYear(getWeek);
+    changeBaslangicTarihi(list.first);
+    changeBitisTarihi(list.last);
+    getWeek--;
+  }
 
   @action
   void changeIsScrolledDown(bool isScrolledDown) => this.isScrolledDown = isScrolledDown;
@@ -134,12 +161,25 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
   @action
   void changeEBelgeTuru(String? eBelgeTuru) {
     eBelgeRequestModel = eBelgeRequestModel.copyWith(eBelgeTuru: eBelgeTuru);
-    if (eBelgeTuru == "AFT") {
-      eBelgeRequestModel.sorgulanmasin = null;
-      changeSenaryo(null);
-      changeOnayDurumu(null);
-    } else if (eBelgeTuru == "EIR") {
-      changeSenaryo(null);
+    if (eBelgeEnum == EBelgeEnum.gelen) {
+      if (eBelgeTuru == "AFT") {
+        eBelgeRequestModel.sorgulanmasin = null;
+        increaseGetWeek();
+        changeSenaryo(null);
+        changeOnayDurumu(null);
+      } else if (eBelgeTuru == "EIR") {
+        changeSenaryo(null);
+      } else {}
+    } else {
+      if (eBelgeTuru == "AFT") {
+        increaseGetWeek();
+        changeTaslak(null);
+        changeSenaryo(null);
+      } else if (eBelgeTuru == "EIR") {
+        changeSenaryo(null);
+      } else {
+        changeBasim(null);
+      }
     }
   }
 
@@ -163,6 +203,9 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
 
   @action
   void changeSenaryo(String? value) => eBelgeRequestModel = eBelgeRequestModel.copyWith(senaryo: value);
+
+  @action
+  void changeTaslak(String? value) => eBelgeRequestModel = eBelgeRequestModel.copyWith(taslak: value);
 
   @action
   void changeKontrol(String? value) => eBelgeRequestModel = eBelgeRequestModel.copyWith(kontrolEdildi: value);

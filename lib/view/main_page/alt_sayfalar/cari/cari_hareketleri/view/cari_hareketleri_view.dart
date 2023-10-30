@@ -6,6 +6,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
+import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
@@ -248,7 +249,22 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                       return getData().then((value) => viewModel.setCariHareketleri(value));
                                     }
                                   },
-                                ),
+                                ).yetkiKontrol(viewModel.cariHareketleriList![index].devirMi),
+                                BottomSheetModel(
+                                  iconWidget: Icons.view_comfy_outlined,
+                                  title: "E-Belge Görüntüle",
+                                  onTap: () async {
+                                    Get.back();
+                                    await Get.toNamed(
+                                      "/mainPage/eBelgePdf",
+                                      arguments: EBelgeListesiModel(
+                                        resmiBelgeNo: viewModel.cariHareketleriList![index].resmiBelgeNo,
+                                        belgeTuru: viewModel.cariHareketleriList![index].belgeTipi,
+                                        ebelgeTuru: viewModel.cariHareketleriList![index].ebelgeTuru,
+                                      ),
+                                    );
+                                  },
+                                ).yetkiKontrol(viewModel.cariHareketleriList![index].resmiBelgeNo != null),
                                 BottomSheetModel(
                                   iconWidget: Icons.picture_as_pdf_outlined,
                                   title: "PDF Görüntüle",
