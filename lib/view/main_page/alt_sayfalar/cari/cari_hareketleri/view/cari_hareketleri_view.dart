@@ -4,6 +4,8 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/color_palette.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/core/constants/extensions/model_extensions.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
@@ -48,7 +50,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
     viewModel.setCariListesiModel(widget.cari);
     scrollController = ScrollController();
     searchController = TextEditingController();
-    init();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async => await init());
   }
 
   @override
@@ -58,7 +60,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
     searchController.dispose();
   }
 
-  void init() async {
+  Future<void> init() async {
     viewModel.setCariHareketleri(await getData());
     scrollController.addListener(() {
       if (scrollController.position.userScrollDirection == ScrollDirection.forward) {
@@ -215,47 +217,23 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                           dovizTipi: widget.cari?.dovizAdi,
                           cariHareketleriModel: viewModel.cariHareketleriList![index],
                           onTap: () {
-                            final List<BottomSheetModel> children2 = [
+                            bottomSheetDialogManager.showBottomSheetDialog(
+                              context,
+                              title: "Seçenekler",
                               //TODO DÜZELT. ORJİNAL PİCKER'A BAK
-
-                              // BottomSheetModel(
-                              //     iconWidget: Icons.view_comfy_outlined,
-                              //     title: "Görüntüle",
-                              //     onTap: () async {
-                              //       Get.back();
-                              //       await Get.toNamed("/mainPage/cariYeniKayit",
-                              //           arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.goruntule, model: viewModel.cariHareketleriList![index]));
-                              //     }),
-
-                              //! BottomSheetModel(iconWidget: Icons.display_settings_outlined, title: "İşlemler", onTap: () {}),
-                              BottomSheetModel(
-                                iconWidget: Icons.picture_as_pdf_outlined,
-                                title: "PDF Görüntüle",
-                                onTap: () async {
-                                  final PdfModel pdfModel = PdfModel(raporOzelKod: "CariHareket", dicParams: DicParams());
-                                  final anaVeri = CacheManager.getAnaVeri;
-                                  final result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == "CariHareket").toList();
-                                  NetFectDizaynList? dizaynList;
-                                  if (result.ext.isNotNullOrEmpty) {
-                                    if (result!.length == 1) {
-                                      pdfModel.dizaynId = result.first.id;
-                                      pdfModel.etiketSayisi = result.first.kopyaSayisi;
-                                      pdfModel.dicParams?.caharInckey = viewModel.cariHareketleriList![index].inckeyno.toStringIfNotNull;
-                                      dizaynList = result.first;
-                                    } else {
-                                      dizaynList = await bottomSheetDialogManager.showBottomSheetDialog(
-                                        context,
-                                        title: "Dizayn Seçiniz",
-                                        children: result.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", onTap: () => Get.back(result: e))).toList(),
-                                      );
-                                    }
-                                    Get.to(() => PDFViewerView(title: dizaynList?.dizaynAdi ?? "", pdfData: pdfModel));
-                                  }
-                                },
-                              ),
-                            ];
-                            if (viewModel.cariHareketleriList![index].devirMi) {
-                              children2.add(
+                              children: [
+                                //! BottomSheetModel(iconWidget: Icons.display_settings_outlined, title: "İşlemler", onTap: () {}),
+                                BottomSheetModel(
+                                  iconWidget: Icons.view_comfy_outlined,
+                                  title: "Görüntüle",
+                                  onTap: () async {
+                                    Get.back();
+                                    await Get.toNamed(
+                                      "/mainPage/cariYeniKayit",
+                                      arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.goruntule, model: viewModel.cariHareketleriList![index]),
+                                    );
+                                  },
+                                ).yetkiKontrol(viewModel.cariHareketleriList![index].devirMi),
                                 BottomSheetModel(
                                   iconWidget: Icons.display_settings_outlined,
                                   title: "Düzenle",
@@ -271,41 +249,19 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                     }
                                   },
                                 ),
-                              );
-                              children2.add(
-                                BottomSheetModel(
-                                  iconWidget: Icons.view_comfy_outlined,
-                                  title: "Görüntüle",
-                                  onTap: () async {
-                                    Get.back();
-                                    await Get.toNamed(
-                                      "/mainPage/cariYeniKayit",
-                                      arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.goruntule, model: viewModel.cariHareketleriList![index]),
-                                    );
-                                  },
-                                ),
-                              );
-                            }
-                            // B = Kasa hareketi
-                            // G = Ta
-                            if ((viewModel.cariHareketleriList![index].kasaMi || viewModel.cariHareketleriList![index].musteriCekMi || viewModel.cariHareketleriList![index].musteriSenediMi) &&
-                                viewModel.cariHareketleriList![index].alacak != null) {
-                              children2.add(
                                 BottomSheetModel(
                                   iconWidget: Icons.picture_as_pdf_outlined,
-                                  title: "Tahsilat Makbuzu",
+                                  title: "PDF Görüntüle",
                                   onTap: () async {
-                                    final PdfModel pdfModel = PdfModel(raporOzelKod: "TahsilatMakbuzu", dicParams: DicParams());
+                                    final PdfModel pdfModel = PdfModel(raporOzelKod: "CariHareket", dicParams: DicParams());
                                     final anaVeri = CacheManager.getAnaVeri;
-                                    final result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == "TahsilatMakbuzu").toList();
+                                    final result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == "CariHareket").toList();
                                     NetFectDizaynList? dizaynList;
                                     if (result.ext.isNotNullOrEmpty) {
                                       if (result!.length == 1) {
-                                        pdfModel.dicParams?.caharInckey = viewModel.cariHareketleriList![index].inckeyno.toStringIfNotNull;
                                         pdfModel.dizaynId = result.first.id;
-                                        //😳 Bunu sor kanka 👇🏼👇🏼
-                                        pdfModel.dicParams?.kasaharInckey = viewModel.cariHareketleriList![index].kasaMi ? "1" : "0";
-
+                                        pdfModel.etiketSayisi = result.first.kopyaSayisi;
+                                        pdfModel.dicParams?.caharInckey = viewModel.cariHareketleriList![index].inckeyno.toStringIfNotNull;
                                         dizaynList = result.first;
                                       } else {
                                         dizaynList = await bottomSheetDialogManager.showBottomSheetDialog(
@@ -313,17 +269,13 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                           title: "Dizayn Seçiniz",
                                           children: result.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", onTap: () => Get.back(result: e))).toList(),
                                         );
-                                        pdfModel.dizaynId = dizaynList?.id;
-                                        pdfModel.dicParams?.caharInckey = viewModel.cariHareketleriList![index].inckeyno.toStringIfNotNull;
-                                        pdfModel.dicParams?.kasaharInckey = viewModel.cariHareketleriList![index].kasaMi ? "1" : "0";
                                       }
                                       Get.to(() => PDFViewerView(title: dizaynList?.dizaynAdi ?? "", pdfData: pdfModel));
                                     }
                                   },
                                 ),
-                              );
-                            }
-                            bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: children2);
+                              ].nullCheckWithGeneric,
+                            );
                           },
                         ),
                       ),

@@ -125,6 +125,23 @@ mixin _$EBelgeGelenGidenKutusuViewModel
     });
   }
 
+  late final _$eArsivDateStringAtom = Atom(
+      name: '_EBelgeGelenGidenKutusuViewModelBase.eArsivDateString',
+      context: context);
+
+  @override
+  String get eArsivDateString {
+    _$eArsivDateStringAtom.reportRead();
+    return super.eArsivDateString;
+  }
+
+  @override
+  set eArsivDateString(String value) {
+    _$eArsivDateStringAtom.reportWrite(value, super.eArsivDateString, () {
+      super.eArsivDateString = value;
+    });
+  }
+
   late final _$eBelgeRequestModelAtom = Atom(
       name: '_EBelgeGelenGidenKutusuViewModelBase.eBelgeRequestModel',
       context: context);
@@ -449,6 +466,7 @@ digerGoster: ${digerGoster},
 dahaVarMi: ${dahaVarMi},
 isScrolledDown: ${isScrolledDown},
 error: ${error},
+eArsivDateString: ${eArsivDateString},
 eBelgeRequestModel: ${eBelgeRequestModel},
 eBelgeListesi: ${eBelgeListesi}
     ''';

@@ -234,7 +234,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
     );
   }
 
-  void getData() async {
+  Future<void> getData() async {
     final result = await networkManager.dioPost<UrunGrubunaGoreSatisGrafigiModel>(
       path: ApiUrls.getUrunGrubunaGoreSatisGrafigi,
       bodyModel: UrunGrubunaGoreSatisGrafigiModel(),

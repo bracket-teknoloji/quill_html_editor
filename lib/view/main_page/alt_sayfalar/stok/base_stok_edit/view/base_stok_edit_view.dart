@@ -80,7 +80,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
     );
   }
 
-  void postData() async {
+  Future<void> postData() async {
     final StokListesiModel model = StokListesiModel.instance;
     final SaveStokModel saveStokModel = SaveStokModel().fromJson(model.toJson());
     saveStokModel.adi = model.stokAdi;

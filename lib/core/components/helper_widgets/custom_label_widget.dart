@@ -11,7 +11,8 @@ class CustomWidgetWithLabel extends StatelessWidget {
   final bool? isTitleSmall;
   final bool? isMust;
   final double? width;
-  const CustomWidgetWithLabel({super.key, this.text, required this.child, this.isVertical, this.isTitleSmall, this.isMust, this.width});
+  final bool addPadding;
+  const CustomWidgetWithLabel({super.key, this.text, required this.child, this.isVertical, this.isTitleSmall, this.isMust, this.width, this.addPadding = true});
 
   @override
   Widget build(BuildContext context) => SizedBox(
@@ -31,7 +32,7 @@ class CustomWidgetWithLabel extends StatelessWidget {
                         color: (isMust ?? false) ? UIHelper.primaryColor : null,
                       )
                   : null,
-            ).paddingOnly(left: UIHelper.lowSize).yetkiVarMi(text != null),
+            ).paddingOnly(left:addPadding? UIHelper.lowSize : 0).yetkiVarMi(text != null),
             child,
           ],
         ),

@@ -409,7 +409,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
     }
   }
 
-  void cariBottomSheet(BuildContext context, CariListesiModel object) async {
+  Future<void> cariBottomSheet(BuildContext context, CariListesiModel object) async {
     var pageName = await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: "${object.cariKodu}\n${object.cariAdi}",

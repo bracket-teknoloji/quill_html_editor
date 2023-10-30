@@ -108,38 +108,36 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                               ),
                             ],
                           ),
-                          subtitle: Wrap(
-                            runAlignment: WrapAlignment.spaceBetween,
-                            children: [
-                              CustomWidgetWithLabel(
-                                isVertical: true,
-                                isTitleSmall: true,
-                                text: "Belge No",
-                                width: width * 0.33,
-                                child: Text(widget.cariHareketleriModel.belgeNo ?? "", overflow: TextOverflow.ellipsis).paddingOnly(left: UIHelper.lowSize),
-                              ),
-                              CustomWidgetWithLabel(
-                                isVertical: true,
-                                isTitleSmall: true,
-                                text: "Vade Tarihi",
-                                width: width * 0.33,
-                                child: Text(widget.cariHareketleriModel.vadeTarihi?.toDateString ?? "", overflow: TextOverflow.ellipsis).paddingOnly(left: UIHelper.lowSize),
-                              ),
-                              CustomWidgetWithLabel(
-                                isVertical: true,
-                                isTitleSmall: true,
-                                text: "Plasiyer",
-                                width: width * 0.33,
-                                child: Text(widget.cariHareketleriModel.plasiyerAciklama ?? "", overflow: TextOverflow.ellipsis).paddingOnly(left: UIHelper.lowSize),
-                              ),
-                              CustomWidgetWithLabel(
-                                isVertical: true,
-                                isTitleSmall: true,
-                                text: "Şube",
-                                width: width * 0.33,
-                                child: Text("${widget.cariHareketleriModel.subeKodu ?? 0}", overflow: TextOverflow.ellipsis).paddingOnly(left: UIHelper.lowSize),
-                              ),
-                            ].map((e) => SizedBox(width: width * 0.33, child: e).paddingOnly(bottom: UIHelper.lowSize)).toList(),
+                          subtitle: LayoutBuilder(
+                            builder: (context, constraints) => Wrap(
+                              runAlignment: WrapAlignment.spaceBetween,
+                              children: [
+                                CustomWidgetWithLabel(
+                                  addPadding: false,
+                                  isVertical: true,
+                                  text: "Belge No",
+                                  child: Text(widget.cariHareketleriModel.belgeNo ?? "", overflow: TextOverflow.ellipsis),
+                                ),
+                                CustomWidgetWithLabel(
+                                  addPadding: false,
+                                  isVertical: true,
+                                  text: "Vade Tarihi",
+                                  child: Text(widget.cariHareketleriModel.vadeTarihi?.toDateString ?? "", overflow: TextOverflow.ellipsis),
+                                ),
+                                CustomWidgetWithLabel(
+                                  addPadding: false,
+                                  isVertical: true,
+                                  text: "Plasiyer",
+                                  child: Text(widget.cariHareketleriModel.plasiyerAciklama ?? "", overflow: TextOverflow.ellipsis),
+                                ),
+                                CustomWidgetWithLabel(
+                                  addPadding: false,
+                                  isVertical: true,
+                                  text: "Şube",
+                                  child: Text("${widget.cariHareketleriModel.subeKodu ?? 0}", overflow: TextOverflow.ellipsis),
+                                ),
+                              ].map((e) => SizedBox(width: constraints.maxWidth / 2, child: e).paddingOnly(bottom: UIHelper.lowSize)).toList(),
+                            ),
                           ),
                         ),
                         const Divider(),

@@ -640,7 +640,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
         ),
       );
 
-  void getData() async {
+  Future<void> getData() async {
     if (viewModel.grupKodList.ext.isNullOrEmpty) {
       viewModel.changeGrupKodList(await networkManager.getGrupKod(name: "CARI", grupNo: -1));
     }

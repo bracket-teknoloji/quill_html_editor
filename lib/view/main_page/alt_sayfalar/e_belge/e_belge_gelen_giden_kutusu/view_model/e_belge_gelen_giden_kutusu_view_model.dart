@@ -89,6 +89,9 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
   String? error;
 
   @observable
+  String eArsivDateString = "Bu hafta ${DateTime.now().getWeekOfYear}";
+
+  @observable
   EBelgeRequestModel eBelgeRequestModel = EBelgeRequestModel(
     sayfa: 1,
     eBelgeTuru: "EFT",

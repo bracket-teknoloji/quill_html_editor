@@ -124,7 +124,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
         ),
       );
 
-  void login() async {
+  Future<void> login() async {
     viewModel.setTitle("Giriş Yapılıyor...");
     viewModel.setIsError(false);
     if (CacheManager.getVerifiedUser.username == null) {

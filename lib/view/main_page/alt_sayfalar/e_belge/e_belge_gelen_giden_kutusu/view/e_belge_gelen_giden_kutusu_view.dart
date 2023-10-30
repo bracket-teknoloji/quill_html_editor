@@ -45,7 +45,7 @@ class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenKutusuV
     _searchTextController = TextEditingController();
     _baslangicTarihiController = TextEditingController();
     _bitisTarihiController = TextEditingController();
-    _eArsivTarihiController = TextEditingController();
+    _eArsivTarihiController = TextEditingController(text: viewModel.eArsivDateString);
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await filtrele();
 
@@ -85,20 +85,18 @@ class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenKutusuV
   Widget build(BuildContext context) => Scaffold(
         appBar: appBar,
         body: body,
-        bottomNavigationBar: Observer(
-          builder: (_) => BottomBarWidget(
-            isScrolledDown: true,
-            children: [
-              FooterButton(
-                children: [
-                  ListTile(
-                    subtitle: const Text("Toplam Kayıt:"),
-                    trailing: Observer(builder: (_) => Text(((viewModel.paramData?["TOPLAM_KAYIT_SAYISI"] as double?) ?? 0.0).toIntIfDouble.toStringIfNotNull ?? "")),
-                  ),
-                ],
-              ),
-            ],
-          ),
+        bottomNavigationBar: BottomBarWidget(
+          isScrolledDown: true,
+          children: [
+            FooterButton(
+              children: [
+                ListTile(
+                  subtitle: const Text("Toplam Kayıt:"),
+                  trailing: Observer(builder: (_) => Text(((viewModel.paramData?["TOPLAM_KAYIT_SAYISI"] as double?) ?? 0.0).toIntIfDouble.toStringIfNotNull ?? "")),
+                ),
+              ],
+            ),
+          ],
         ),
       );
 
@@ -186,16 +184,15 @@ class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenKutusuV
                 },
               ),
               // .yetkiVarMi(widget.eBelgeEnum == EBelgeEnum.gelen || (widget.eBelgeEnum == EBelgeEnum.giden && viewModel.eBelgeRequestModel.eBelgeTuru != "AFT")),
-              Flexible(
-                child: Row(
-                  children: [
-                    Flexible(child: IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back_ios_outlined))),
-                    Expanded(child: CustomTextField(labelText: "Dönem", controller: _eArsivTarihiController, readOnly: true)),
-                    Flexible(child: IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_forward_ios_outlined))),
-                  ],
-                ),
-              ).yetkiVarMi(false),
-                // viewModel.eBelgeRequestModel.eBelgeTuru == "AFT" && widget.eBelgeEnum == EBelgeEnum.gelen),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back_ios_outlined)),
+                  Expanded(child: CustomTextField(labelText: "Dönem", controller: _eArsivTarihiController, readOnly: true)),
+                  IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_forward_ios_outlined)),
+                ],
+              ).yetkiVarMi(true),
+              // viewModel.eBelgeRequestModel.eBelgeTuru == "AFT" && widget.eBelgeEnum == EBelgeEnum.gelen),
               CustomWidgetWithLabel(
                 text: "E-Belge Türü",
                 child: Observer(

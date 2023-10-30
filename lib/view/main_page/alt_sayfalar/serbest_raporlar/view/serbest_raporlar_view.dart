@@ -163,7 +163,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
     return Future.value(viewModel.futureController.value);
   }
 
-  void getRehber(SerbestRaporResponseModel model) async {
+  Future<void> getRehber(SerbestRaporResponseModel model) async {
     if (model.stokKoduMu || model.cariKoduMu) {
       final result = await Get.toNamed(
         "/mainPage/${model.rehberTipi?.toLowerCase()}Listesi",

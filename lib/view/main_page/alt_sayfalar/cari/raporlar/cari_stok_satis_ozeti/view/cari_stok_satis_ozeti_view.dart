@@ -268,7 +268,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
         ),
       );
 
-  void getData() async {
+  Future<void> getData() async {
     if (viewModel.model == null) {
       viewModel.setModel(await Get.toNamed("mainPage/cariListesi", arguments: true) as CariListesiModel?);
     }

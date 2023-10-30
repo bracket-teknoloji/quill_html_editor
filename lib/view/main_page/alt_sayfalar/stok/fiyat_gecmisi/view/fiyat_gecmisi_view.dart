@@ -354,7 +354,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
         ),
       );
 
-  void getData() async {
+  Future<void> getData() async {
     viewModel.setModelList(null);
     final result = await networkManager.dioPost<FiyatGecmisiResponseModel>(
       path: ApiUrls.getStokFiyatGecmisi,
@@ -368,7 +368,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
     }
   }
 
-  void deleteData(int id, int islemKodu) async {
+  Future<void> deleteData(int id, int islemKodu) async {
     final result = await networkManager.dioPost<FiyatGecmisiResponseModel>(
       path: ApiUrls.savestokFiyatGecmisi,
       bodyModel: FiyatGecmisiResponseModel(),

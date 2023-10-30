@@ -126,7 +126,7 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
     );
   }
 
-  void showMakbuz(bool tahsilatMi) async {
+  Future<void> showMakbuz(bool tahsilatMi) async {
     Get.back();
     final PdfModel pdfModel = PdfModel(raporOzelKod: tahsilatMi ? "TahsilatMakbuzu" : "OdemeMakbuzu", dicParams: DicParams());
     final anaVeri = CacheManager.getAnaVeri;

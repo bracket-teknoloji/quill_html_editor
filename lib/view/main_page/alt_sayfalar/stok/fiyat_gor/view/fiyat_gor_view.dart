@@ -230,7 +230,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
         ),
       );
 
-  void getData() async {
+  Future<void> getData() async {
     // viewModel.setStokListesiModel(null);
     viewModel.setModelList(null);
     final result = await networkManager.dioPost<FiyatGorModel>(path: ApiUrls.getFiyatGorFiyatlari, bodyModel: FiyatGorModel(), data: {"StokKodu": barkodKontroller.text});

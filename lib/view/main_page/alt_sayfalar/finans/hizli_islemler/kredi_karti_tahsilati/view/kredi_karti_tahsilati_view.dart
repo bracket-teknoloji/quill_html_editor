@@ -49,7 +49,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
   @override
   void initState() {
     _belgeNoController = TextEditingController();
-    _tarihController = TextEditingController(text: DateTime.now().dateTimeWithoutTime.toDateString);
+    _tarihController = TextEditingController();
     _cariController = TextEditingController();
     _kasaController = TextEditingController();
     _sozlesmeController = TextEditingController();
@@ -62,7 +62,6 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
     _projekoduController = TextEditingController();
     _aciklamaController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      viewModel.setTarih(DateTime.now().dateTimeWithoutTime);
       while (viewModel.model.kktYontemi == null) {
         await tahsilatYontemiDialog();
       }
@@ -81,7 +80,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
         await getBankaSozlesmesi();
       }
       _belgeNoController.text = viewModel.model.belgeNo ?? "";
-      viewModel.setTarih(DateTime.now());
+      viewModel.setTarih(DateTime.now().dateTimeWithoutTime);
       _tarihController.text = viewModel.model.tarih?.toDateString ?? "";
     });
     super.initState();

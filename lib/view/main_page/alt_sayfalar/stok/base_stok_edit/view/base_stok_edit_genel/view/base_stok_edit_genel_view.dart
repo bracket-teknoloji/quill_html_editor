@@ -604,7 +604,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
     }
   }
 
-  void baseBarkodUretController({int? controller}) async {
+  Future<void> baseBarkodUretController({int? controller}) async {
     dialogManager.showLoadingDialog("Barkod Üretiliyor...");
     final result = await getBarkod(controller);
     dialogManager.hideAlertDialog;
