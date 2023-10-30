@@ -90,7 +90,9 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
           Observer(
             builder: (_) => IconButton(
               onPressed: () {
-                viewModel.searchBar ? getData() : null;
+                if (viewModel.searchBar) {
+                  getData();
+                }
                 viewModel.changeSearchBar();
               },
               icon: Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined),

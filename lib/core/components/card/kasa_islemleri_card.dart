@@ -109,7 +109,7 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
         ),
       );
 
-  void deleteData() async {
+  Future<void> deleteData() async {
     Get.back();
     await dialogManager.showAreYouSureDialog(
       () async {

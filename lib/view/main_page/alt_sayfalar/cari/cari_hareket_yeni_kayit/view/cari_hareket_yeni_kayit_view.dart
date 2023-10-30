@@ -270,7 +270,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
         ),
       );
 
-  void postData() async {
+  Future<void> postData() async {
     final result = await networkManager.dioPost<CariHareketleriModel>(
       path: ApiUrls.saveCariHareket,
       bodyModel: CariHareketleriModel(),

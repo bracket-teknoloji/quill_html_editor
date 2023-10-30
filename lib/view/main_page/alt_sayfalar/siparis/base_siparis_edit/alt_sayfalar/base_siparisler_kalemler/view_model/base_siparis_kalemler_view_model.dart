@@ -14,7 +14,6 @@ abstract class _BaseSiparisKalemlerViewModelBase with Store {
   void removeAtKalemList(int index) {
     kalemList?.removeAt(index);
     BaseSiparisEditModel.instance.kalemList = kalemList;
-    BaseSiparisEditModel.instance.kalemler;
     updateKalemList();
   }
 

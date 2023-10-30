@@ -205,7 +205,7 @@ class _LoginViewState extends BaseState<LoginView> {
   // }
   ElevatedButton get elevatedButton => ElevatedButton(onPressed: () async => login(), child: const Text("Giriş"));
 
-  void login() async {
+  Future<void> login() async {
     // dialogManager.showLoadingDialog("Yükleniyor...");
 
     var instance = AccountModel.instance

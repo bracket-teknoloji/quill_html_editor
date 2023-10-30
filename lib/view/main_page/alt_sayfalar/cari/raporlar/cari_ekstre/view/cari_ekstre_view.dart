@@ -97,14 +97,14 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
             suffixMore: true,
             onTap: () async {
               final List<DovizList>? dovizList = CacheManager.getAnaVeri?.paramModel?.dovizList;
-              (dovizList?.any((element) => element.dovizKodu == -1) ?? false)
-                  ? null
-                  : dovizList?.insert(
-                      0,
-                      DovizList()
-                        ..isim = "Tümü"
-                        ..dovizKodu = -1,
-                    );
+              if (dovizList?.any((element) => element.dovizKodu != -1) ?? false) {
+                dovizList?.insert(
+                  0,
+                  DovizList()
+                    ..isim = "Tümü"
+                    ..dovizKodu = -1,
+                );
+              }
               final DovizList? result = await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
                 title: "Döviz Tipi",

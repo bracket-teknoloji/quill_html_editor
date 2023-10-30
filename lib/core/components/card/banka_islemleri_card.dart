@@ -115,7 +115,7 @@ class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
         ),
       );
 
-  void deleteData() async {
+  Future<void> deleteData() async {
     Get.back();
     dialogManager.showAreYouSureDialog(
       () async {

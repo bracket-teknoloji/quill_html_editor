@@ -74,13 +74,13 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
     }
     viewModel.changeIsSahisFirmasi(viewModel.model?.sahisFirmasi ?? false);
     viewModel.changeIsDovizli(viewModel.model?.dovizli == "E");
-    (viewModel.model?.dovizli == "E" && viewModel.model?.dovizKoduAciklama == null)
-        ? viewModel.changeDovizTipi(
-            DovizList()
-              ..isim = "TL"
-              ..dovizKodu = 0,
-          )
-        : null;
+    if (viewModel.model?.dovizli == "E" && viewModel.model?.dovizKoduAciklama == null) {
+      viewModel.changeDovizTipi(
+        DovizList()
+          ..isim = "TL"
+          ..dovizKodu = 0,
+      );
+    }
     viewModel.changeAdi(viewModel.model?.adi);
     viewModel.changeCariTipi(viewModel.model?.tipi);
     viewModel.changeKodu(viewModel.model?.kodu);
@@ -137,7 +137,6 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: CustomWidgetWithLabel(
-                  
                   text: "Şahıs Firması",
                   child: Observer(builder: (_) => Switch.adaptive(value: viewModel.isSahisFirmasi, onChanged: enabled ? (bool value) => viewModel.changeIsSahisFirmasi(value) : null)),
                 ),
@@ -376,7 +375,6 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                   ).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
                   Expanded(
                     child: CustomWidgetWithLabel(
-                      
                       text: "Dövizli",
                       child: Observer(
                         builder: (_) => Switch.adaptive(

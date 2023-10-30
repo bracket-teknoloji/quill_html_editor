@@ -188,7 +188,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                     log("Session Başarılı");
                                   }
                                   // Get.toNamed("/mainPage");
-                                  (response.message?.ext.isNotNullOrNoEmpty ?? false) ? dialogManager.showAlertDialog(response.message.toString()) : null;
+                                  if (response.message?.ext.isNotNullOrNoEmpty ?? false) dialogManager.showAlertDialog(response.message.toString());
                                 } else {
                                   dialogManager.hideAlertDialog;
                                   dialogManager.showAlertDialog(response.message.toString());

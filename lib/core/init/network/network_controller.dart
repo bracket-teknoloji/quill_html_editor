@@ -14,7 +14,7 @@ class NetworkController extends GetxController {
     _connectivity.onConnectivityChanged.listen(initConnectivity);
   }
 
-  void initConnectivity(ConnectivityResult result) async {
+  Future<void> initConnectivity(ConnectivityResult result) async {
     if (connectivityResult != result && result == ConnectivityResult.none) {
       connectivityResult = result;
       DialogManager().internetConnectionDialog();
