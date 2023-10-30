@@ -111,6 +111,7 @@ class _LoginViewState extends BaseState<LoginView> {
                             ),
                           ),
                           CustomWidgetWithLabel(
+                            addPadding: false,
                             text: "Firma",
                             child: TextFormField(
                               readOnly: true,
@@ -155,6 +156,7 @@ class _LoginViewState extends BaseState<LoginView> {
                           Padding(
                             padding: UIHelper.midPaddingOnlyTop,
                             child: CustomWidgetWithLabel(
+                              addPadding: false,
                               text: "Netfect Kullanıcı Adı",
                               child: TextFormField(
                                 controller: emailController,
@@ -165,6 +167,7 @@ class _LoginViewState extends BaseState<LoginView> {
                           Padding(
                             padding: UIHelper.midPaddingVertical,
                             child: CustomWidgetWithLabel(
+                              addPadding: false,
                               text: "Şifre",
                               child: Observer(
                                 builder: (_) => TextField(
