@@ -11,7 +11,7 @@ class AppThemeDark extends AppTheme {
   static AppThemeDark? get instance => _instance ??= AppThemeDark._init();
 
   AppThemeDark._init();
-  ColorScheme colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark);
+  ColorScheme colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.light);
   @override
   ThemeData get theme => ThemeData(
         platform: GetPlatform.isIOS ? TargetPlatform.iOS : TargetPlatform.android,
@@ -22,7 +22,6 @@ class AppThemeDark extends AppTheme {
         actionIconTheme: ActionIconThemeData(backButtonIconBuilder: (context) => const Icon(Icons.arrow_back_outlined)),
         tabBarTheme: TabBarTheme(
           indicatorColor: UIHelper.primaryColor,
-          indicatorSize: TabBarIndicatorSize.tab,
           labelColor: UIHelper.primaryColor,
           labelPadding: UIHelper.lowPadding,
           labelStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
@@ -44,14 +43,16 @@ class AppThemeDark extends AppTheme {
           borderRadius: UIHelper.lowBorderRadius,
           textStyle: const TextStyle(fontSize: 12),
         ),
-        brightness: Brightness.dark,
+        brightness: Brightness.light,
         textTheme: GoogleFonts.dmSansTextTheme()
-            .apply(bodyColor: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark).onPrimaryContainer)
+            .apply(bodyColor: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.light).onPrimaryContainer)
             .copyWith(bodySmall: TextStyle(fontSize: 12, color: colorManager.onPrimaryContainer)),
         splashFactory: InkRipple.splashFactory,
-        bottomAppBarTheme: const BottomAppBarTheme(elevation: 0, surfaceTintColor: Colors.black),
-        tooltipTheme:
-            const TooltipThemeData(decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.all(Radius.circular(50))), textStyle: TextStyle(color: Colors.white, fontSize: 12)),
+        bottomAppBarTheme: BottomAppBarTheme(elevation: 0, surfaceTintColor: colorManager.shadow),
+        tooltipTheme: TooltipThemeData(
+          decoration: const BoxDecoration(color: Colors.black, borderRadius: BorderRadius.all(Radius.circular(50))),
+          textStyle: TextStyle(color: colorManager.onBackground, fontSize: 12),
+        ),
         dividerTheme: DividerThemeData(space: 0, thickness: 1, color: colorManager.onPrimaryContainer.withOpacity(0.2), endIndent: UIHelper.highSize, indent: UIHelper.highSize),
         progressIndicatorTheme: ProgressIndicatorThemeData(color: UIHelper.primaryColor, linearTrackColor: Colors.transparent, circularTrackColor: Colors.transparent, linearMinHeight: 2),
         dropdownMenuTheme: DropdownMenuThemeData(
@@ -75,11 +76,11 @@ class AppThemeDark extends AppTheme {
           ),
         ),
         applyElevationOverlayColor: true,
-        bottomSheetTheme: const BottomSheetThemeData(
+        bottomSheetTheme: BottomSheetThemeData(
           elevation: 1,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
-              top: Radius.circular(15),
+              top: Radius.circular(UIHelper.highSize),
             ),
           ),
         ),
@@ -87,6 +88,7 @@ class AppThemeDark extends AppTheme {
           style: ElevatedButton.styleFrom(
             splashFactory: InkRipple.splashFactory,
             backgroundColor: UIHelper.primaryColor,
+            foregroundColor: colorManager.onPrimaryContainer,
             shape: RoundedRectangleBorder(
               borderRadius: UIHelper.lowBorderRadius,
             ),
@@ -140,9 +142,9 @@ class AppThemeDark extends AppTheme {
         ),
         snackBarTheme: SnackBarThemeData(
           showCloseIcon: true,
-          closeIconColor: Colors.white,
+          closeIconColor: colorManager.onBackground,
           backgroundColor: UIHelper.primaryColor,
-          contentTextStyle: const TextStyle(color: Colors.white),
+          contentTextStyle: TextStyle(color: colorManager.onBackground),
           insetPadding: UIHelper.lowPadding,
           shape: RoundedRectangleBorder(
             borderRadius: UIHelper.lowBorderRadius,
@@ -154,7 +156,7 @@ class AppThemeDark extends AppTheme {
           isCollapsed: true,
           enabledBorder: OutlineInputBorder(
             borderRadius: UIHelper.lowBorderRadius,
-            borderSide: const BorderSide(color: Colors.white30),
+            borderSide: BorderSide(color: colorManager.onBackground.withOpacity(0.3)),
           ),
           border: OutlineInputBorder(
             borderRadius: UIHelper.lowBorderRadius,
@@ -170,9 +172,9 @@ class AppThemeDark extends AppTheme {
           systemOverlayStyle: SystemUiOverlayStyle(
             statusBarIconBrightness: Brightness.light,
             systemNavigationBarIconBrightness: Brightness.light,
-            statusBarBrightness: Brightness.dark,
+            statusBarBrightness: Brightness.light,
             statusBarColor: colorManager.background,
-            systemNavigationBarColor: Colors.black,
+            systemNavigationBarColor: colorManager.onBackground,
             systemStatusBarContrastEnforced: true,
           ),
           centerTitle: false,

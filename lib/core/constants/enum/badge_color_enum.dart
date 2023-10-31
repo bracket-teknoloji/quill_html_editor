@@ -1,8 +1,5 @@
 import "package:flutter/material.dart";
-import "package:get/get.dart";
 import "package:picker/core/constants/color_palette.dart";
-
-import "../../init/theme/app_theme_dark.dart";
 
 enum BadgeColorEnum { dovizli, kapali, cari, fatura, tamamlanmamis, merkezeGonderildi, seri, esYap, konum, kilitli, irsaliye, tipAciklama, karmaKoli, eFatura, basarili, taslak, uyari, hata }
 
@@ -37,15 +34,6 @@ extension BadgeColorExtensions on BadgeColorEnum? {
         return ColorPalette.mulberry;
       default:
         return Colors.orange;
-    }
-  }
-
-  Color get getFontColor {
-    final bool isDarkMode = Get.isDarkMode;
-    if (isDarkMode) {
-      return AppThemeDark.instance?.theme.colorScheme.background ?? Colors.white;
-    } else {
-      return Colors.white;
     }
   }
 }

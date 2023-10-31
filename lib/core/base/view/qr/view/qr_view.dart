@@ -107,7 +107,7 @@ class _QRScannerState extends BaseState<QRScannerView> {
           margin: UIHelper.highPaddingVertical,
           child: Text(
             "QR Kodu Okutunuz",
-            style: context.general.appTheme.textTheme.titleLarge!.copyWith(color: Colors.white),
+            style: context.general.appTheme.textTheme.titleLarge!.copyWith(color: theme.colorScheme.onSurface),
           ),
         ),
       );

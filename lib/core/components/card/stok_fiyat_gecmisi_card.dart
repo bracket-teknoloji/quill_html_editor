@@ -63,7 +63,7 @@ class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
                   Wrap(
                     direction: Axis.vertical,
                     children: [
-                      const Text("Stok Kodu", style: TextStyleHelper.captionWhite),
+                       Text("Stok Kodu", style: TextStyleHelper.captionWhite),
                       Text(widget.model?.stokKodu ?? ""),
                     ],
                   ),
@@ -77,7 +77,7 @@ class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
                   Wrap(
                     direction: Axis.vertical,
                     children: [
-                      const Text("Fiyat Tarihi", style: TextStyleHelper.captionWhite),
+                       Text("Fiyat Tarihi", style: TextStyleHelper.captionWhite),
                       Text(widget.model?.tarih?.toDateString ?? ""),
                     ],
                   ),

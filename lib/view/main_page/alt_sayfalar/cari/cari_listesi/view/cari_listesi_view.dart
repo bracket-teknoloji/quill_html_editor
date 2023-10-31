@@ -283,7 +283,11 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                             },
                             isThreeLine: true,
                             // contentPadding: UIHelper.midPadding,
-                            leading: CircleAvatar(backgroundColor: UIHelper.getColorWithValue(object.bakiye ?? 0.0), child: Text(object.cariAdi?.substring(0, 1) ?? "")),
+                            leading: CircleAvatar(
+                              backgroundColor: UIHelper.getColorWithValue(object.bakiye ?? 0.0),
+                              foregroundColor: Colors.white,
+                              child: Text(object.cariAdi?.substring(0, 1) ?? "", style: const TextStyle(color: Colors.white)),
+                            ),
                             title: Text(object.cariAdi ?? ""),
                             subtitle: Wrap(
                               direction: Axis.vertical,
@@ -765,7 +769,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
               children: [
                 Expanded(
                   child: ElevatedButton(
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
                     onPressed: () {
                       Get.back();
                       viewModel.resetFilter();

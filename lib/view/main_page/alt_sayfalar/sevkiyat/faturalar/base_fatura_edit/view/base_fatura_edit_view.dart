@@ -326,7 +326,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
   //                                   onPressed: () {
   //                                     Get.back();
   //                                   },
-  //                                   style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
+  //                                   style: ButtonStyle(backgroundColor: MaterialStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
   //                                   child: const Text("İptal")),
   //                             ),
   //                             SizedBox(width: width * 0.02),

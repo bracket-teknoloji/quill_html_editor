@@ -39,7 +39,7 @@ class BottomSheetDialogManager {
       context: context,
       isDismissible: true,
       // constraints: BoxConstraints(maxHeight: Get.height * 0.9),
-      barrierColor: Colors.black.withOpacity(0.9),
+      barrierColor: Colors.black.withOpacity(0.6),
       enableDrag: false,
       useSafeArea: true,
       isScrollControlled: true,
@@ -128,7 +128,7 @@ class BottomSheetDialogManager {
     return showModalBottomSheet(
       context: context,
       isDismissible: true,
-      barrierColor: Colors.black.withOpacity(0.9),
+      barrierColor: Colors.black.withOpacity(0.6),
       enableDrag: false,
       useSafeArea: true,
       isScrollControlled: true,
@@ -227,7 +227,7 @@ class BottomSheetDialogManager {
     return showModalBottomSheet(
       context: context,
       isDismissible: true,
-      barrierColor: Colors.black.withOpacity(0.9),
+      barrierColor: Colors.black.withOpacity(0.6),
       enableDrag: false,
       useSafeArea: true,
       isScrollControlled: true,
@@ -339,6 +339,7 @@ class BottomSheetDialogManager {
       // children: CacheManager.getAnaVeri?.userModel?.profilYetki?.sirketAktifDepolar,
     );
   }
+
   Future<ListCariOdemeKodu?> showOdemeKoduBottomSheetDialog(BuildContext context) async => await showRadioBottomSheetDialog(
         context,
         title: "Ödeme Kodu seç",

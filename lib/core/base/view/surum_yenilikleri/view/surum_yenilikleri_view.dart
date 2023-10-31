@@ -90,6 +90,7 @@ class _SurumYenilikleriViewState extends BaseState<SurumYenilikleriView> {
                             final ValueList? newItem = item?.liste?[index];
                             return Card(
                               color: theme.colorScheme.onSecondary,
+                              elevation: 0,
                               child: ListTile(
                                 title: Text(newItem?.aciklama ?? ""),
                               ),

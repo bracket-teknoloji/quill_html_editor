@@ -12,7 +12,7 @@ class FooterButton extends StatelessWidget {
           elevation: MaterialStateProperty.all(0),
           padding: MaterialStateProperty.all(EdgeInsets.zero),
           backgroundColor: MaterialStateProperty.all(color ?? Theme.of(context).appBarTheme.systemOverlayStyle?.statusBarColor),
-          foregroundColor: MaterialStateProperty.all(Colors.white),
+          foregroundColor: MaterialStateProperty.all(Theme.of(context).colorScheme.onSurface),
         ),
         onPressed: onPressed,
         child: Column(

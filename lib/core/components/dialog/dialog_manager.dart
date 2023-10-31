@@ -8,6 +8,7 @@ import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/color_palette.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 
 import "../../../view/add_company/model/account_model.dart";
 import "../../../view/add_company/model/account_response_model.dart";
@@ -168,12 +169,12 @@ class DialogManager {
         dialogType: DialogType.noHeader,
       ).show();
 
-  // void showCariHareketleriGridViewDialog(CariHareketleriModel? model, [IslemTipiEnum? tip]) => _baseDialog(
-  //   body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: tip ?? IslemTipiEnum.cari),
-  //   onOk: () {},
-  //   btnOkText: "İptal",
-  //   dialogType: DialogType.noHeader,
-  // ).show();
+  Future<void> showCariHareketleriGridViewDialog(CariHareketleriModel? model, [IslemTipiEnum? tip]) async => _baseDialog(
+        body: CustomAnimatedGridView<CariHareketleriModel>(model: model, islemTipi: tip ?? IslemTipiEnum.cariHareketleri),
+        onOk: () {},
+        btnOkText: "İptal",
+        dialogType: DialogType.noHeader,
+      ).show();
 
   Future<dynamic> showKasaGridViewDialog(KasaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async => await _baseDialog(
         body: CustomAnimatedGridView<KasaListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.kasa, title: "Kasa İşlemleri", onSelected: onSelected),
@@ -407,7 +408,7 @@ class DialogManager {
         alignment: Alignment.center,
         onDismissCallback: (type) {},
         reverseBtnOrder: false,
-        barrierColor: Colors.black.withOpacity(0.9),
+        barrierColor: Colors.black.withOpacity(0.6),
         dialogBorderRadius: UIHelper.lowBorderRadius,
         useRootNavigator: false,
         headerAnimationLoop: false,

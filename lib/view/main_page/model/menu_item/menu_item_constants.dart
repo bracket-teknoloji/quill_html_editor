@@ -39,7 +39,8 @@ class MenuItemConstants {
         GridItemModel.altmenu(
           name: "cari_Raporlar",
           title: "Raporlar",
-          icon: "monitoring",
+          // icon: "monitoring",
+          iconData: Icons.area_chart_outlined,
           altMenuler: <GridItemModel>[
             GridItemModel.item(name: "cari_Rap_Ekstre", title: "Cari Ekstre", route: "/mainPage/cariEkstre"),
             GridItemModel.item(name: "cari_Rap_DovizliEkstre", title: "Cari Dövizli Ekstre", route: "/mainPage/cariDovizliEkstre"),
@@ -98,7 +99,8 @@ class MenuItemConstants {
             GridItemModel.altmenu(
               name: "finans_Raporlar_KasaEkstre",
               title: "Raporlar",
-              icon: "monitoring",
+          // icon: "monitoring",
+          iconData: Icons.area_chart_outlined,
               altMenuler: <GridItemModel>[
                 GridItemModel.item(name: "finans_Raporlar_KasaEkstre", title: "Kasa Ekstre", route: "/mainPage/kasaKasaEkstreRaporu"),
                 ..._getSerbestRapor(SerbestRaporDetayKodEnum.kasa),
@@ -116,7 +118,8 @@ class MenuItemConstants {
             GridItemModel.altmenu(
               name: null,
               title: "Raporlar",
-              icon: "monitoring",
+          // icon: "monitoring",
+          iconData: Icons.area_chart_outlined,
               altMenuler: <GridItemModel>[
                 ..._getSerbestRapor(SerbestRaporDetayKodEnum.cek),
               ],
@@ -151,7 +154,8 @@ class MenuItemConstants {
         GridItemModel.altmenu(
           name: null,
           title: "Raporlar",
-          icon: "monitoring",
+          // icon: "monitoring",
+          iconData: Icons.area_chart_outlined,
           altMenuler: <GridItemModel>[
             // GridItemModel.item(name: "finans_OzetRapor", title: "Özet Rapor"),
             GridItemModel.item(name: "finans_Raporlar_FinansalDurum", title: "Finansal Durum Raporu", route: "/mainPage/finansFinansalDurumRaporu"),
@@ -193,7 +197,8 @@ class MenuItemConstants {
         GridItemModel.altmenu(
           name: "malKabul_AlisIrs_Raporlar",
           title: "Raporlar",
-          icon: "monitoring",
+          // icon: "monitoring",
+          iconData: Icons.area_chart_outlined,
           altMenuler: [
             GridItemModel.item(name: "malKabul_AlisIrs_KalemRaporu", title: "Alış İrs. Kalem Raporu"),
             GridItemModel.item(name: "malKabul_AlisFat_KalemRaporu", title: "Alış Fat. Kalem Raporu"),
@@ -233,6 +238,8 @@ class MenuItemConstants {
         GridItemModel.altmenu(
           name: null,
           title: "Raporlar",
+          // icon: "monitoring",
+          iconData: Icons.area_chart_outlined,
           altMenuler: <GridItemModel>[
             // GridItemModel.item(name: "siparis_MusteriSiparisi_DurumRaporu", title: "Müşteri Siparişi Durum Raporu"),
             GridItemModel.item(
@@ -291,7 +298,8 @@ class MenuItemConstants {
         GridItemModel.altmenu(
           name: "stok_Raporlar",
           title: "Raporlar",
-          icon: "monitoring",
+          // icon: "monitoring",
+          iconData: Icons.area_chart_outlined,
           altMenuler: <GridItemModel>[
             GridItemModel.item(name: "stok_Rap_AmbarMaliyet", title: "Ambar Maliyet Raporu", route: "/mainPage/stokAmbarMaliyetRaporu"),
             GridItemModel.item(name: "stok_Rap_LokalDepoBakiye", title: "Lokal Depo Bakiye Raporu", route: "/mainPage/stokLokalDepoBakiyeRaporu"),
@@ -363,7 +371,8 @@ class MenuItemConstants {
     GridItemModel.anamenu(
       name: "GNEL_SRAP",
       title: "Serbest Raporlar",
-      icon: "monitoring",
+          // icon: "monitoring",
+          iconData: Icons.area_chart_outlined,
       color: ColorPalette.asparagus,
       altMenuler: <GridItemModel>[
         ...groupBySerbestRaporList(),

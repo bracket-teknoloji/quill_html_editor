@@ -52,7 +52,7 @@ class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> 
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: theme.textTheme.bodySmall?.copyWith(color: Colors.white, fontSize: 10),
+                style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurface, fontSize: 10),
               ),
               // Flexible(child: (widget.altMenuVarMi ?? false) ? const Icon(Icons.expand_more, size: 15) : const SizedBox())
             ],

@@ -3,6 +3,7 @@ import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/init/theme/app_theme_dark.dart";
 import "package:share_plus/share_plus.dart";
 
 import "../../../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
@@ -38,6 +39,7 @@ class IslemlerMenuItemConstants<T> {
   IslemlerMenuItemConstantsViewModel viewModel = IslemlerMenuItemConstantsViewModel();
   BottomSheetDialogManager bottomSheetDialogManager = BottomSheetDialogManager();
   IslemTipiEnum islemtipi;
+  ThemeData get theme => AppThemeDark.instance?.theme ?? ThemeData();
   SiparisTipiEnum? siparisTipi;
   List<GridItemModel?> islemlerList = [];
   T? model;
@@ -80,6 +82,12 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(muhtelifTahsilat);
       islemlerList.add(muhtelifOdeme);
       islemlerList.addAll(raporlar ?? []);
+    } else if (islemtipi == IslemTipiEnum.cariHareketleri) {
+      islemlerList.add(nakitTahsilat);
+      islemlerList.add(nakitOdeme);
+      islemlerList.add(krediKartiTahsilati);
+      islemlerList.add(muhtelifTahsilat);
+      islemlerList.add(muhtelifOdeme);
     }
   }
 
@@ -206,7 +214,13 @@ class IslemlerMenuItemConstants<T> {
                 ),
                 Row(
                   children: [
-                    Expanded(child: ElevatedButton(onPressed: Get.back, style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))), child: const Text("İptal"))),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: Get.back,
+                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
+                        child: const Text("İptal"),
+                      ),
+                    ),
                     SizedBox(width: Get.width * 0.02),
                     Expanded(
                       child: ElevatedButton(
@@ -372,7 +386,13 @@ class IslemlerMenuItemConstants<T> {
                 ),
                 Row(
                   children: [
-                    Expanded(child: ElevatedButton(onPressed: Get.back, style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))), child: const Text("İptal"))),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: Get.back,
+                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
+                        child: const Text("İptal"),
+                      ),
+                    ),
                     SizedBox(width: Get.width * 0.02),
                     Expanded(
                       child: ElevatedButton(

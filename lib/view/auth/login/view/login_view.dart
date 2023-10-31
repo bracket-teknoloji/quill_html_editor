@@ -67,7 +67,7 @@ class _LoginViewState extends BaseState<LoginView> {
         child: Stack(
           children: [
             WaveWidget(
-              config: CustomConfig(durations: [8000, 10000], heightPercentages: [0.78, 0.8], colors: [const Color.fromRGBO(70, 59, 57, 26), Colors.black.withOpacity(0.3)]),
+              config: CustomConfig(durations: [8000, 10000], heightPercentages: [0.78, 0.8], colors: [theme.colorScheme.surfaceVariant, theme.colorScheme.surface.withOpacity(0.5)]),
               size: const Size(double.infinity, double.infinity),
               waveAmplitude: 2,
               wavePhase: 0,

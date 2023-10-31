@@ -33,7 +33,7 @@ class _BottomBarWidgetState extends BaseState<BottomBarWidget> {
   Widget build(BuildContext context) => ScrollableWidget(
         isScrolledDown: widget.isScrolledDown,
         child: Container(
-          color: theme.primaryColor,
+          color: theme.appBarTheme.systemOverlayStyle?.statusBarColor,
           height: context.isPortrait ? (height * 0.07) : (height * 0.1 < 60 ? 60 : height * 0.1),
           child: widget.visible && widget.children.isNotEmpty
               ? Row(

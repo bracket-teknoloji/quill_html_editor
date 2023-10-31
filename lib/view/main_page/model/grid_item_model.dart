@@ -27,9 +27,9 @@ class GridItemModel {
   GridItemModel.anamenu({
     required this.name,
     required this.title,
-    required this.icon,
     required this.color,
     required this.altMenuler,
+     this.icon,
     this.iconData,
     this.yetkiListesi,
   }) {

@@ -261,13 +261,13 @@ Future<void> firebaseInitialized() async {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
     final FirebaseMessaging messaging = FirebaseMessaging.instance;
     await messaging.requestPermission();
-    // ignore: avoid_print
-    FirebaseMessaging.instance.getToken().then(print);
+    await FirebaseMessaging.instance.setAutoInitEnabled(true);
+    FirebaseMessaging.instance.getToken().then(debugPrint);
     await messaging.setForegroundNotificationPresentationOptions(sound: true, alert: true, badge: true);
     // print token
     // FirebaseMessaging.onMessageOpenedApp.listen((event) => print(event.toMap().toString()));
     // messaging.getNotificationSettings().then((value) => print(value.authorizationStatus));
-    // FirebaseMessaging.onBackgroundMessage((message) async => print(message));
+    // FirebaseMessaging.onSurfaceMessage((message) async => print(message));
     await FirebaseCrashlytics.instance.setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");
     FlutterError.onError = (FlutterErrorDetails errorDetails) => FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
     PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {

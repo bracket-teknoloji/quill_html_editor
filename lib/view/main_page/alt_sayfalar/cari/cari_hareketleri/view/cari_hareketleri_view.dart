@@ -251,6 +251,11 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                   },
                                 ).yetkiKontrol(viewModel.cariHareketleriList![index].devirMi),
                                 BottomSheetModel(
+                                  iconWidget: Icons.display_settings_outlined,
+                                  title: "İşlemler",
+                                  onTap: () async => await dialogManager.showCariHareketleriGridViewDialog(viewModel.cariHareketleriList![index]),
+                                ),
+                                BottomSheetModel(
                                   iconWidget: Icons.preview_outlined,
                                   title: "E-Belge Görüntüle",
                                   onTap: () async {

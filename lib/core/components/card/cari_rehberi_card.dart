@@ -25,7 +25,11 @@ class _CariRehberiCardState extends BaseState<CariRehberiCard> {
           contentPadding: UIHelper.midPadding,
           onTap: () => widget.onPressed != null ? widget.onPressed!(model) : Get.back(result: widget.model),
           onLongPress: () => dialogManager.showCariGridViewDialog(model),
-          leading: CircleAvatar(backgroundColor: UIHelper.getColorWithValue(model.bakiye ?? 0.0), child: Text(model.cariAdi?.substring(0, 1) ?? "")),
+          leading: CircleAvatar(
+            backgroundColor: UIHelper.getColorWithValue(model.bakiye ?? 0.0),
+            foregroundColor: Colors.white,
+            child: Text(model.cariAdi?.substring(0, 1) ?? "", style: const TextStyle(color: Colors.white)),
+          ),
           title: Text(model.cariAdi ?? ""),
           subtitle: Wrap(
             direction: Axis.vertical,
@@ -42,15 +46,18 @@ class _CariRehberiCardState extends BaseState<CariRehberiCard> {
               ),
             ],
           ),
-          trailing: Wrap(children: [
-            Text(
+          trailing: Wrap(
+            children: [
+              Text(
                 (model.bakiye == null
                         ? "0.00 $mainCurrency"
                         : "${model.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"
                             "\n")
                     .toString(),
-                style: TextStyle(color: UIHelper.getColorWithValue(model.bakiye ?? 0.0)),),
-          ],),
+                style: TextStyle(color: UIHelper.getColorWithValue(model.bakiye ?? 0.0)),
+              ),
+            ],
+          ),
         ),
       );
 }

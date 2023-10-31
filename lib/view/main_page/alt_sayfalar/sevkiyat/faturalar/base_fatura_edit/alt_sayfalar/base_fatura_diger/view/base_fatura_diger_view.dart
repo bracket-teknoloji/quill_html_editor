@@ -50,7 +50,7 @@ class _BaseFaturaDigerViewState extends BaseState<BaseFaturaDigerView> {
                 padding: EdgeInsets.only(left: UIHelper.midSize, top: UIHelper.lowSize),
                 hintTextPadding: EdgeInsets.zero,
                 inputAction: InputAction.newline,
-                textStyle: const TextStyle(color: Colors.white),
+                textStyle: TextStyle(color: theme.colorScheme.onSurface),
                 backgroundColor: theme.colorScheme.background,
                 onTextChanged: (String text) => text != "" ? model.ekAciklama = text : null,
                 onEditorCreated: () async {
@@ -68,7 +68,7 @@ class _BaseFaturaDigerViewState extends BaseState<BaseFaturaDigerView> {
               child: Card(
                 child: ToolBar.scroll(
                   toolBarColor: Colors.transparent,
-                  iconColor: Colors.white,
+                  iconColor: theme.colorScheme.onSurface,
                   activeIconColor: UIHelper.primaryColor,
                   padding: UIHelper.midPadding,
                   iconSize: 20,

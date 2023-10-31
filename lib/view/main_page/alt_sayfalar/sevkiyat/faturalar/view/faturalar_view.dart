@@ -641,7 +641,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                       viewModel.resetFilter();
                       viewModel.resetPage();
                     },
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white.withOpacity(0.1))),
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
                     child: const Text("Temizle"),
                   ),
                 ),
