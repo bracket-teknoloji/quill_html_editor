@@ -203,7 +203,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
   }
 
   Future<bool> vergiNoChecker() async {
-    if (CariSaveRequestModel.instance.vergiNo != null) {
+    if (CariSaveRequestModel.instance.vergiNo != null && !goruntulenecekMi) {
       // if model is SahisFirmasi vergino should be 11 digit
       if (CariSaveRequestModel.instance.sahisFirmasi == true && CariSaveRequestModel.instance.vergiNo!.length != 11) {
         await dialogManager.showAlertDialog("TC Kimlik 11 haneli olmalıdır");

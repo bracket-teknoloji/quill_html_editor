@@ -92,7 +92,7 @@ class AppThemeDark extends AppTheme {
             ),
           ),
         ),
-        iconTheme: const IconThemeData(color: Colors.white, size: 30),
+        iconTheme: IconThemeData(color: colorManager.primary, size: 30),
         dialogTheme: DialogTheme(
           shape: RoundedRectangleBorder(
             borderRadius: UIHelper.lowBorderRadius,
