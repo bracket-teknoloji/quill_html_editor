@@ -47,11 +47,12 @@ linter:
     prefer_interpolation_to_compose_strings: true
     prefer_mixin: true
     prefer_single_quotes: false
-    # unawaited_futures: true
     unnecessary_breaks: true
+    unnecessary_late: true
     unnecessary_lambdas: true
     unnecessary_parenthesis: true
     unnecessary_to_list_in_spreads: true
+    # unawaited_futures: true
     # unnecessary_null_aware_operator_on_extension_on_nullable: true
     use_build_context_synchronously: true
     avoid_type_to_string: true
@@ -61,6 +62,8 @@ linter:
     use_enums : true
     unnecessary_statements: true
     avoid_void_async: true
+    avoid_empty_else: true
+    avoid_double_and_int_checks : true
 
 
 # Additional information about this file can be found at

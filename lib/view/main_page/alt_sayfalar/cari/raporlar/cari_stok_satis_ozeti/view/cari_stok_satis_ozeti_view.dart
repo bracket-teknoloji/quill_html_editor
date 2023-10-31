@@ -246,7 +246,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                                   children: [
                                     BottomSheetModel(
                                       title: "Cari Stok Satış Hareketleri",
-                                      iconWidget: Icons.inventory_2_outlined,
+                                      iconWidget: Icons.sync_alt_outlined,
                                       onTap: () {
                                         Get.back();
                                         return Get.toNamed("/mainPage/stokHareketleri", arguments: viewModel.modelList?[index].stokKodu);
