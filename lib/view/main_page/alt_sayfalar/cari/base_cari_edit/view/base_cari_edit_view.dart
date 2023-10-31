@@ -73,18 +73,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
     tabController = TabController(length: tabs.length, vsync: this);
     tabController.addListener(() async {
       if (tabController.index != 0 && !tabController.indexIsChanging) {
-        if (CariSaveRequestModel.instance.vergiNo != null) {
-          // if model is SahisFirmasi vergino should be 11 digit
-          if (CariSaveRequestModel.instance.sahisFirmasi == true && CariSaveRequestModel.instance.vergiNo!.length != 11) {
-            await dialogManager.showAlertDialog("TC Kimlik 11 haneli olmalıdır");
-            tabController.animateTo(0);
-          } else {
-            if (CariSaveRequestModel.instance.vergiNo!.length != 10) {
-              await dialogManager.showAlertDialog("Vergi No 10 haneli olmalıdır");
-              tabController.animateTo(0);
-            }
-          }
-        }
+        await vergiNoChecker();
       }
     });
     WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
@@ -154,17 +143,10 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
               IconButton(
                 onPressed: () async {
                   if (validate.isEmpty) {
-                    if (CariSaveRequestModel.instance.sahisFirmasi == true && CariSaveRequestModel.instance.vergiNo?.length != 11) {
-                      await dialogManager.showAlertDialog("TC Kimlik 11 haneli olmalıdır");
-                      tabController.animateTo(0);
-                      return;
+                    final result = await vergiNoChecker();
+                    if (result) {
+                      await dialogManager.showAreYouSureDialog(() async => await postData());
                     }
-                    if (CariSaveRequestModel.instance.sahisFirmasi != true && CariSaveRequestModel.instance.vergiNo?.length != 10) {
-                      await dialogManager.showAlertDialog("Vergi No 10 haneli olmalıdır");
-                      tabController.animateTo(0);
-                      return;
-                    }
-                    await dialogManager.showAreYouSureDialog(() async => await postData());
                   } else {
                     await dialogManager.showEmptyFieldDialog(validate.keys.toList(), onOk: () => tabController.animateTo(validate.values.first));
                   }
@@ -218,5 +200,23 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
       map["Kilit"] = 1;
     }
     return map;
+  }
+
+  Future<bool> vergiNoChecker() async {
+    if (CariSaveRequestModel.instance.vergiNo != null) {
+      // if model is SahisFirmasi vergino should be 11 digit
+      if (CariSaveRequestModel.instance.sahisFirmasi == true && CariSaveRequestModel.instance.vergiNo!.length != 11) {
+        await dialogManager.showAlertDialog("TC Kimlik 11 haneli olmalıdır");
+        tabController.animateTo(0);
+        return false;
+      } else if (CariSaveRequestModel.instance.sahisFirmasi != true && CariSaveRequestModel.instance.vergiNo!.length != 10) {
+        await dialogManager.showAlertDialog("Vergi No 10 haneli olmalıdır");
+        tabController.animateTo(0);
+        return false;
+      } else {
+        return true;
+      }
+    }
+    return true;
   }
 }
