@@ -86,8 +86,6 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(nakitTahsilat(model));
       islemlerList.add(nakitOdeme(model));
       islemlerList.add(krediKartiTahsilati(model));
-      islemlerList.add(muhtelifTahsilat);
-      islemlerList.add(muhtelifOdeme);
     }
   }
 

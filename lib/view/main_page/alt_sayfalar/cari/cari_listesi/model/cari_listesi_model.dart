@@ -135,6 +135,10 @@ class CariListesiModel with NetworkManagerMixin {
     this.tipi,
     this.vergiNo,
     this.website,
+    this.depoKodlari,
+    this.idx,
+    this.kurfarkiborcAdi,
+    this.kurfarkialacakAdi,
   });
 
   @HiveField(0)
@@ -353,6 +357,12 @@ class CariListesiModel with NetworkManagerMixin {
   List<int>? depoKodlari;
   @HiveField(107)
   int? idx;
+  @HiveField(108)
+  String? kurfarkiborcAdi;
+  @HiveField(109)
+  String? kurfarkialacakAdi;
+  @HiveField(110)
+  String? muhAdi;
 
   factory CariListesiModel.fromJson(Map<String, dynamic> json) => _$CariListesiModelFromJson(json);
 

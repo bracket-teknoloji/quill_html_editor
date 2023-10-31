@@ -1215,9 +1215,10 @@ Map<String, dynamic> _$NetsisOndalikResponseModelToJson(
   return val;
 }
 
-PlasiyerList _$PlasiyerListFromJson(Map<String, dynamic> json) => PlasiyerList()
-  ..plasiyerKodu = json['PLASIYER_KODU'] as String?
-  ..plasiyerAciklama = json['PLASIYER_ACIKLAMA'] as String?;
+PlasiyerList _$PlasiyerListFromJson(Map<String, dynamic> json) => PlasiyerList(
+      plasiyerKodu: json['PLASIYER_KODU'] as String?,
+      plasiyerAciklama: json['PLASIYER_ACIKLAMA'] as String?,
+    );
 
 Map<String, dynamic> _$PlasiyerListToJson(PlasiyerList instance) {
   final val = <String, dynamic>{};

@@ -40,19 +40,19 @@ abstract class _BaseEditCariDigerViewModelBase with Store {
 
   @action
   void changeMuhaseKodu(StokMuhasebeKoduModel? value) {
-    model = model?.copyWith(muhasebeKodu: value?.hesapKodu, muhasebeKoduAciklama: value?.adi);
+    model = model?.copyWith(muhasebeKodu: value?.hesapKodu, muhAdi: value?.adi);
     CariSaveRequestModel.setInstance(model);
   }
 
   @action
   void changeKurFarkiBorc(StokMuhasebeKoduModel? value) {
-    model = model?.copyWith(kurfarkiborcKodu: value?.hesapKodu, kurFarkiBorcKoduAciklama: value?.adi);
+    model = model?.copyWith(kurfarkiborcKodu: value?.hesapKodu, kurfarkiborcAdi: value?.adi);
     CariSaveRequestModel.setInstance(model);
   }
 
   @action
   void changeKurFarkiAlacak(StokMuhasebeKoduModel? value) {
-    model = model?.copyWith(kurfarkialacakKodu: value?.hesapKodu, kurFarkiAlacakKoduAciklama: value?.adi);
+    model = model?.copyWith(kurfarkialacakKodu: value?.hesapKodu, kurfarkialacakAdi: value?.adi);
     CariSaveRequestModel.setInstance(model);
   }
 

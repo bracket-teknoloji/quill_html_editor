@@ -110,9 +110,9 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
     n6Controller = TextEditingController(text: viewModel.model?.kull6n.toIntIfDouble.toStringIfNotNull);
     n7Controller = TextEditingController(text: viewModel.model?.kull7n.toIntIfDouble.toStringIfNotNull);
     n8Controller = TextEditingController(text: viewModel.model?.kull8n.toIntIfDouble.toStringIfNotNull);
-    muhasebeKoduController = TextEditingController(text: viewModel.model?.muhasebeKoduAciklama);
-    kurFarkiBorcMuhasebeKoduController = TextEditingController(text: viewModel.model?.kurFarkiBorcKoduAciklama);
-    kurFarkiAlacakMuhasebeKoduController = TextEditingController(text: viewModel.model?.kurFarkiAlacakKoduAciklama);
+    muhasebeKoduController = TextEditingController(text: viewModel.model?.muhAdi);
+    kurFarkiBorcMuhasebeKoduController = TextEditingController(text: viewModel.model?.kurfarkiborcAdi);
+    kurFarkiAlacakMuhasebeKoduController = TextEditingController(text: viewModel.model?.kurfarkialacakAdi);
 
     viewModel.changeSubeKodu(int.tryParse(viewModel.model?.subeKodu ?? ""));
     viewModel.changeKilit(viewModel.model?.kilit);
@@ -344,7 +344,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                   ),
                 ),
               ],
-            ).withExpanded,
+            ),
             CustomTextField(
               enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("bilgi"),
               labelText: "Bilgi",

@@ -12,7 +12,7 @@ class AppThemeDark extends AppTheme {
   static AppThemeDark? get instance => _instance ??= AppThemeDark._init();
 
   AppThemeDark._init();
-  ColorScheme colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.light);
+  ColorScheme colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark);
   @override
   ThemeData get theme => ThemeData(
         cupertinoOverrideTheme: CupertinoThemeData(
@@ -48,9 +48,9 @@ class AppThemeDark extends AppTheme {
           borderRadius: UIHelper.lowBorderRadius,
           textStyle: const TextStyle(fontSize: 12),
         ),
-        brightness: Brightness.light,
+        brightness: Brightness.dark,
         textTheme: GoogleFonts.dmSansTextTheme()
-            .apply(bodyColor: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.light).onPrimaryContainer)
+            .apply(bodyColor: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark).onPrimaryContainer)
             .copyWith(bodySmall: TextStyle(fontSize: 12, color: colorManager.onPrimaryContainer)),
         splashFactory: InkRipple.splashFactory,
         bottomAppBarTheme: BottomAppBarTheme(elevation: 0, surfaceTintColor: colorManager.shadow),
@@ -175,9 +175,9 @@ class AppThemeDark extends AppTheme {
         appBarTheme: AppBarTheme(
           titleSpacing: UIHelper.midSize,
           systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarIconBrightness: Brightness.light,
-            systemNavigationBarIconBrightness: Brightness.light,
-            statusBarBrightness: Brightness.light,
+            statusBarIconBrightness: Brightness.dark,
+            systemNavigationBarIconBrightness: Brightness.dark,
+            statusBarBrightness: Brightness.dark,
             statusBarColor: colorManager.background,
             systemNavigationBarColor: colorManager.onBackground,
             systemStatusBarContrastEnforced: true,

@@ -5,6 +5,7 @@ import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
@@ -67,6 +68,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
             Card(
               child: InkWell(
                 onTap: widget.onTap ?? () {},
+                onLongPress: () async => await dialogManager.showCariHareketleriGridViewDialog(CariListesiModel.fromCariHareketleriModel(widget.cariHareketleriModel)),
                 child: Row(
                   children: [
                     Expanded(

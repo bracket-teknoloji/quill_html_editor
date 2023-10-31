@@ -217,6 +217,14 @@ abstract class _$CariListesiModelCWProxy {
 
   CariListesiModel website(String? website);
 
+  CariListesiModel depoKodlari(List<int>? depoKodlari);
+
+  CariListesiModel idx(int? idx);
+
+  CariListesiModel kurfarkiborcAdi(String? kurfarkiborcAdi);
+
+  CariListesiModel kurfarkialacakAdi(String? kurfarkialacakAdi);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CariListesiModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -329,6 +337,10 @@ abstract class _$CariListesiModelCWProxy {
     String? tipi,
     String? vergiNo,
     String? website,
+    List<int>? depoKodlari,
+    int? idx,
+    String? kurfarkiborcAdi,
+    String? kurfarkialacakAdi,
   });
 }
 
@@ -691,6 +703,21 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel website(String? website) => this(website: website);
 
   @override
+  CariListesiModel depoKodlari(List<int>? depoKodlari) =>
+      this(depoKodlari: depoKodlari);
+
+  @override
+  CariListesiModel idx(int? idx) => this(idx: idx);
+
+  @override
+  CariListesiModel kurfarkiborcAdi(String? kurfarkiborcAdi) =>
+      this(kurfarkiborcAdi: kurfarkiborcAdi);
+
+  @override
+  CariListesiModel kurfarkialacakAdi(String? kurfarkialacakAdi) =>
+      this(kurfarkialacakAdi: kurfarkialacakAdi);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CariListesiModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -804,6 +831,10 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
     Object? tipi = const $CopyWithPlaceholder(),
     Object? vergiNo = const $CopyWithPlaceholder(),
     Object? website = const $CopyWithPlaceholder(),
+    Object? depoKodlari = const $CopyWithPlaceholder(),
+    Object? idx = const $CopyWithPlaceholder(),
+    Object? kurfarkiborcAdi = const $CopyWithPlaceholder(),
+    Object? kurfarkialacakAdi = const $CopyWithPlaceholder(),
   }) {
     return CariListesiModel(
       cariKodu: cariKodu == const $CopyWithPlaceholder()
@@ -1226,6 +1257,22 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
           ? _value.website
           // ignore: cast_nullable_to_non_nullable
           : website as String?,
+      depoKodlari: depoKodlari == const $CopyWithPlaceholder()
+          ? _value.depoKodlari
+          // ignore: cast_nullable_to_non_nullable
+          : depoKodlari as List<int>?,
+      idx: idx == const $CopyWithPlaceholder()
+          ? _value.idx
+          // ignore: cast_nullable_to_non_nullable
+          : idx as int?,
+      kurfarkiborcAdi: kurfarkiborcAdi == const $CopyWithPlaceholder()
+          ? _value.kurfarkiborcAdi
+          // ignore: cast_nullable_to_non_nullable
+          : kurfarkiborcAdi as String?,
+      kurfarkialacakAdi: kurfarkialacakAdi == const $CopyWithPlaceholder()
+          ? _value.kurfarkialacakAdi
+          // ignore: cast_nullable_to_non_nullable
+          : kurfarkialacakAdi as String?,
     );
   }
 }
@@ -1356,15 +1403,17 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
       tipi: fields[103] as String?,
       vergiNo: fields[104] as String?,
       website: fields[105] as String?,
-    )
-      ..depoKodlari = (fields[106] as List?)?.cast<int>()
-      ..idx = fields[107] as int?;
+      depoKodlari: (fields[106] as List?)?.cast<int>(),
+      idx: fields[107] as int?,
+      kurfarkiborcAdi: fields[108] as String?,
+      kurfarkialacakAdi: fields[109] as String?,
+    )..muhAdi = fields[110] as String?;
   }
 
   @override
   void write(BinaryWriter writer, CariListesiModel obj) {
     writer
-      ..writeByte(107)
+      ..writeByte(110)
       ..writeByte(0)
       ..write(obj.cariKodu)
       ..writeByte(1)
@@ -1578,7 +1627,13 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
       ..writeByte(106)
       ..write(obj.depoKodlari)
       ..writeByte(107)
-      ..write(obj.idx);
+      ..write(obj.idx)
+      ..writeByte(108)
+      ..write(obj.kurfarkiborcAdi)
+      ..writeByte(109)
+      ..write(obj.kurfarkialacakAdi)
+      ..writeByte(110)
+      ..write(obj.muhAdi);
   }
 
   @override
@@ -1704,11 +1759,13 @@ CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
       tipi: json['TIPI'] as String?,
       vergiNo: json['VERGI_NO'] as String?,
       website: json['WEBSITE'] as String?,
-    )
-      ..depoKodlari = (json['DEPO_KODLARI'] as List<dynamic>?)
+      depoKodlari: (json['DEPO_KODLARI'] as List<dynamic>?)
           ?.map((e) => e as int)
-          .toList()
-      ..idx = json['IDX'] as int?;
+          .toList(),
+      idx: json['IDX'] as int?,
+      kurfarkiborcAdi: json['KURFARKIBORC_ADI'] as String?,
+      kurfarkialacakAdi: json['KURFARKIALACAK_ADI'] as String?,
+    )..muhAdi = json['MUH_ADI'] as String?;
 
 Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) {
   final val = <String, dynamic>{};
@@ -1825,6 +1882,9 @@ Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) {
   writeNotNull('WEBSITE', instance.website);
   writeNotNull('DEPO_KODLARI', instance.depoKodlari);
   writeNotNull('IDX', instance.idx);
+  writeNotNull('KURFARKIBORC_ADI', instance.kurfarkiborcAdi);
+  writeNotNull('KURFARKIALACAK_ADI', instance.kurfarkialacakAdi);
+  writeNotNull('MUH_ADI', instance.muhAdi);
   return val;
 }
 

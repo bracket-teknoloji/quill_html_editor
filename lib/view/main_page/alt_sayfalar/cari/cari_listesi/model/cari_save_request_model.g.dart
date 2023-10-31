@@ -131,13 +131,11 @@ abstract class _$CariSaveRequestModelCWProxy {
 
   CariSaveRequestModel postakodu(String? postakodu);
 
-  CariSaveRequestModel muhasebeKoduAciklama(String? muhasebeKoduAciklama);
+  CariSaveRequestModel muhAdi(String? muhAdi);
 
-  CariSaveRequestModel kurFarkiBorcKoduAciklama(
-      String? kurFarkiBorcKoduAciklama);
+  CariSaveRequestModel kurfarkialacakAdi(String? kurfarkialacakAdi);
 
-  CariSaveRequestModel kurFarkiAlacakKoduAciklama(
-      String? kurFarkiAlacakKoduAciklama);
+  CariSaveRequestModel kurfarkiborcAdi(String? kurfarkiborcAdi);
 
   CariSaveRequestModel bagliCariAciklama(String? bagliCariAciklama);
 
@@ -216,9 +214,9 @@ abstract class _$CariSaveRequestModelCWProxy {
     String? aciklama2,
     String? aciklama3,
     String? postakodu,
-    String? muhasebeKoduAciklama,
-    String? kurFarkiBorcKoduAciklama,
-    String? kurFarkiAlacakKoduAciklama,
+    String? muhAdi,
+    String? kurfarkialacakAdi,
+    String? kurfarkiborcAdi,
     String? bagliCariAciklama,
     String? kosulKoduAciklama,
     String? ulkeKoduAciklama,
@@ -439,18 +437,15 @@ class _$CariSaveRequestModelCWProxyImpl
       this(postakodu: postakodu);
 
   @override
-  CariSaveRequestModel muhasebeKoduAciklama(String? muhasebeKoduAciklama) =>
-      this(muhasebeKoduAciklama: muhasebeKoduAciklama);
+  CariSaveRequestModel muhAdi(String? muhAdi) => this(muhAdi: muhAdi);
 
   @override
-  CariSaveRequestModel kurFarkiBorcKoduAciklama(
-          String? kurFarkiBorcKoduAciklama) =>
-      this(kurFarkiBorcKoduAciklama: kurFarkiBorcKoduAciklama);
+  CariSaveRequestModel kurfarkialacakAdi(String? kurfarkialacakAdi) =>
+      this(kurfarkialacakAdi: kurfarkialacakAdi);
 
   @override
-  CariSaveRequestModel kurFarkiAlacakKoduAciklama(
-          String? kurFarkiAlacakKoduAciklama) =>
-      this(kurFarkiAlacakKoduAciklama: kurFarkiAlacakKoduAciklama);
+  CariSaveRequestModel kurfarkiborcAdi(String? kurfarkiborcAdi) =>
+      this(kurfarkiborcAdi: kurfarkiborcAdi);
 
   @override
   CariSaveRequestModel bagliCariAciklama(String? bagliCariAciklama) =>
@@ -539,9 +534,9 @@ class _$CariSaveRequestModelCWProxyImpl
     Object? aciklama2 = const $CopyWithPlaceholder(),
     Object? aciklama3 = const $CopyWithPlaceholder(),
     Object? postakodu = const $CopyWithPlaceholder(),
-    Object? muhasebeKoduAciklama = const $CopyWithPlaceholder(),
-    Object? kurFarkiBorcKoduAciklama = const $CopyWithPlaceholder(),
-    Object? kurFarkiAlacakKoduAciklama = const $CopyWithPlaceholder(),
+    Object? muhAdi = const $CopyWithPlaceholder(),
+    Object? kurfarkialacakAdi = const $CopyWithPlaceholder(),
+    Object? kurfarkiborcAdi = const $CopyWithPlaceholder(),
     Object? bagliCariAciklama = const $CopyWithPlaceholder(),
     Object? kosulKoduAciklama = const $CopyWithPlaceholder(),
     Object? ulkeKoduAciklama = const $CopyWithPlaceholder(),
@@ -796,20 +791,18 @@ class _$CariSaveRequestModelCWProxyImpl
           ? _value.postakodu
           // ignore: cast_nullable_to_non_nullable
           : postakodu as String?,
-      muhasebeKoduAciklama: muhasebeKoduAciklama == const $CopyWithPlaceholder()
-          ? _value.muhasebeKoduAciklama
+      muhAdi: muhAdi == const $CopyWithPlaceholder()
+          ? _value.muhAdi
           // ignore: cast_nullable_to_non_nullable
-          : muhasebeKoduAciklama as String?,
-      kurFarkiBorcKoduAciklama:
-          kurFarkiBorcKoduAciklama == const $CopyWithPlaceholder()
-              ? _value.kurFarkiBorcKoduAciklama
-              // ignore: cast_nullable_to_non_nullable
-              : kurFarkiBorcKoduAciklama as String?,
-      kurFarkiAlacakKoduAciklama:
-          kurFarkiAlacakKoduAciklama == const $CopyWithPlaceholder()
-              ? _value.kurFarkiAlacakKoduAciklama
-              // ignore: cast_nullable_to_non_nullable
-              : kurFarkiAlacakKoduAciklama as String?,
+          : muhAdi as String?,
+      kurfarkialacakAdi: kurfarkialacakAdi == const $CopyWithPlaceholder()
+          ? _value.kurfarkialacakAdi
+          // ignore: cast_nullable_to_non_nullable
+          : kurfarkialacakAdi as String?,
+      kurfarkiborcAdi: kurfarkiborcAdi == const $CopyWithPlaceholder()
+          ? _value.kurfarkiborcAdi
+          // ignore: cast_nullable_to_non_nullable
+          : kurfarkiborcAdi as String?,
       bagliCariAciklama: bagliCariAciklama == const $CopyWithPlaceholder()
           ? _value.bagliCariAciklama
           // ignore: cast_nullable_to_non_nullable
@@ -906,6 +899,9 @@ CariSaveRequestModel _$CariSaveRequestModelFromJson(
       aciklama2: json['ACIKLAMA2'] as String?,
       aciklama3: json['ACIKLAMA3'] as String?,
       postakodu: json['POSTAKODU'] as String?,
+      muhAdi: json['MUH_ADI'] as String?,
+      kurfarkialacakAdi: json['KURFARKIALACAK_ADI'] as String?,
+      kurfarkiborcAdi: json['KURFARKIBORC_ADI'] as String?,
     );
 
 Map<String, dynamic> _$CariSaveRequestModelToJson(
@@ -980,5 +976,8 @@ Map<String, dynamic> _$CariSaveRequestModelToJson(
   writeNotNull('ACIKLAMA2', instance.aciklama2);
   writeNotNull('ACIKLAMA3', instance.aciklama3);
   writeNotNull('POSTAKODU', instance.postakodu);
+  writeNotNull('KURFARKIBORC_ADI', instance.kurfarkiborcAdi);
+  writeNotNull('KURFARKIALACAK_ADI', instance.kurfarkialacakAdi);
+  writeNotNull('MUH_ADI', instance.muhAdi);
   return val;
 }

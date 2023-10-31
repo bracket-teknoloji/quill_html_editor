@@ -84,9 +84,9 @@ class CariSaveRequestModel with NetworkManagerMixin {
     this.aciklama2,
     this.aciklama3,
     this.postakodu,
-    this.muhasebeKoduAciklama,
-    this.kurFarkiBorcKoduAciklama,
-    this.kurFarkiAlacakKoduAciklama,
+    this.muhAdi,
+    this.kurfarkialacakAdi,
+    this.kurfarkiborcAdi,
     this.bagliCariAciklama,
     this.kosulKoduAciklama,
     this.ulkeKoduAciklama,
@@ -156,12 +156,6 @@ class CariSaveRequestModel with NetworkManagerMixin {
   String? aciklama3;
   String? postakodu;
   @JsonKey(includeToJson: false, includeFromJson: false)
-  String? muhasebeKoduAciklama;
-  @JsonKey(includeToJson: false, includeFromJson: false)
-  String? kurFarkiBorcKoduAciklama;
-  @JsonKey(includeToJson: false, includeFromJson: false)
-  String? kurFarkiAlacakKoduAciklama;
-  @JsonKey(includeToJson: false, includeFromJson: false)
   String? bagliCariAciklama;
   @JsonKey(includeToJson: false, includeFromJson: false)
   String? kosulKoduAciklama;
@@ -169,6 +163,11 @@ class CariSaveRequestModel with NetworkManagerMixin {
   String? ulkeKoduAciklama;
   @JsonKey(includeToJson: false, includeFromJson: false)
   String? dovizKoduAciklama;
+  String? kurfarkiborcAdi;
+  String? kurfarkialacakAdi;
+  String? muhAdi;
+  
+
 
   @override
   CariSaveRequestModel fromJson(Map<String, dynamic> json) => _$CariSaveRequestModelFromJson(json);
@@ -234,12 +233,13 @@ class CariSaveRequestModel with NetworkManagerMixin {
         dovizli: model?.dovizli == true ? "E" : "H",
         dovizKodu: model?.dovizKodu,
         plasiyerKodu: model?.plasiyerKodu,
-        muhasebeKoduAciklama: model?.muhKodu,
-        kurFarkiBorcKoduAciklama: model?.kurfarkiborcKodu,
-        kurFarkiAlacakKoduAciklama: model?.kurfarkialacakKodu,
+        muhAdi: model?.muhKodu,
+        kurfarkiborcAdi: model?.kurfarkiborcKodu,
+        kurfarkialacakAdi: model?.kurfarkialacakKodu,
         bagliCariAciklama: model?.bagliCariAdi,
         kosulKoduAciklama: model?.kosulKodu,
         ulkeKoduAciklama: model?.ulkeAdi,
         dovizKoduAciklama: model?.dovizAdi,
+        
       );
 }
