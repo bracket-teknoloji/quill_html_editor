@@ -21,7 +21,8 @@ import "package:picker/view/main_page/model/param_model.dart";
 
 class NakitOdemeView extends StatefulWidget {
   final bool? tahsilatMi;
-  const NakitOdemeView({super.key, this.tahsilatMi});
+  final CariListesiModel? cariListesiModel;
+  const NakitOdemeView({super.key, this.tahsilatMi, this.cariListesiModel});
 
   @override
   State<NakitOdemeView> createState() => _NakitOdemeViewState();
@@ -50,12 +51,12 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
     _belgeNoController = TextEditingController();
     _tarihController = TextEditingController();
     _kasaController = TextEditingController();
-    _cariController = TextEditingController();
+    _cariController = TextEditingController(text: widget.cariListesiModel?.cariAdi ?? "");
     _dovizTipiController = TextEditingController();
     _dovizKuruController = TextEditingController();
     _dovizTutariController = TextEditingController();
     _tutarController = TextEditingController();
-    _plasiyerController = TextEditingController();
+    _plasiyerController = TextEditingController(text: widget.cariListesiModel?.plasiyerAciklama ?? "");
     _projekoduController = TextEditingController();
     _referansKoduController = TextEditingController();
     _kasaHareketiAciklamaController = TextEditingController();
@@ -63,7 +64,12 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       viewModel.setTahsilatmi(widget.tahsilatMi == true);
-      await getCari();
+      if (widget.cariListesiModel != null) {
+        viewModel.setHesapKodu(widget.cariListesiModel!.cariKodu);
+        viewModel.setPlasiyerKodu(PlasiyerList(plasiyerAciklama: widget.cariListesiModel!.plasiyerAciklama, plasiyerKodu: widget.cariListesiModel!.plasiyerKodu));
+      } else {
+        await getCari();
+      }
       await getKasa();
       await viewModel.getSiradakiKod();
       _belgeNoController.text = viewModel.model.belgeNo ?? "";

@@ -123,6 +123,9 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
   @override
   Widget build(BuildContext context) => WillPopScope(
         onWillPop: () async {
+          if (goruntulenecekMi) {
+            return true;
+          }
           bool result = false;
           await dialogManager.showAreYouSureDialog(() async => result = true);
           return result;

@@ -132,7 +132,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
               children: [
                 AppBarButton(
                   onPressed: () {
-                    dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: widget.cari, islemTipi: IslemTipiEnum.cari));
+                    dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: widget.cari, islemTipi: IslemTipiEnum.cari, title: widget.cari?.cariAdi));
                   },
                   icon: Icons.tune_outlined,
                   child: const Text("Cari İşlemleri"),
@@ -236,7 +236,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                   },
                                 ).yetkiKontrol(viewModel.cariHareketleriList![index].devirMi),
                                 BottomSheetModel(
-                                  iconWidget: Icons.display_settings_outlined,
+                                  iconWidget: Icons.edit_outlined,
                                   title: "Düzenle",
                                   onTap: () async {
                                     Get.back();
@@ -253,7 +253,10 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                 BottomSheetModel(
                                   iconWidget: Icons.display_settings_outlined,
                                   title: "İşlemler",
-                                  onTap: () async => await dialogManager.showCariHareketleriGridViewDialog(viewModel.cariHareketleriList![index]),
+                                  onTap: () async {
+                                    Get.back();
+                                    await dialogManager.showCariHareketleriGridViewDialog(CariListesiModel.fromCariHareketleriModel(viewModel.cariHareketleriList?[index]));
+                                  },
                                 ),
                                 BottomSheetModel(
                                   iconWidget: Icons.preview_outlined,
@@ -284,6 +287,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                         pdfModel.etiketSayisi = result.first.kopyaSayisi;
                                         pdfModel.dicParams?.caharInckey = viewModel.cariHareketleriList![index].inckeyno.toStringIfNotNull;
                                         dizaynList = result.first;
+                                    Get.back();
                                       } else {
                                         dizaynList = await bottomSheetDialogManager.showBottomSheetDialog(
                                           context,

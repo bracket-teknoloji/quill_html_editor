@@ -26,7 +26,11 @@ class DrawerMenuItems {
     DrawerModel(
       title: "Sürüm Yenilikleri",
       iconWidget: Icons.new_releases_outlined,
-      onTap: () => Get.toNamed("/mainPage/surumYenilikleri"),
+      onTap: () {
+        //close Drawer
+        Get.back();
+        return Get.toNamed("/mainPage/surumYenilikleri");
+      },
     ),
   ];
 }

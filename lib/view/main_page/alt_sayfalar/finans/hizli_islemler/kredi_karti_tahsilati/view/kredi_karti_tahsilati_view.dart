@@ -23,7 +23,8 @@ import "package:picker/view/main_page/alt_sayfalar/finans/hizli_islemler/kredi_k
 import "package:picker/view/main_page/model/param_model.dart";
 
 class KrediKartiTahsilatiView extends StatefulWidget {
-  const KrediKartiTahsilatiView({super.key});
+  final CariListesiModel? cariListesiModel;
+  const KrediKartiTahsilatiView({super.key, this.cariListesiModel});
 
   @override
   State<KrediKartiTahsilatiView> createState() => _KrediKartiTahsilatiViewState();
@@ -50,7 +51,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
   void initState() {
     _belgeNoController = TextEditingController();
     _tarihController = TextEditingController();
-    _cariController = TextEditingController();
+    _cariController = TextEditingController(text: widget.cariListesiModel?.cariAdi ?? "");
     _kasaController = TextEditingController();
     _sozlesmeController = TextEditingController();
     _seriController = TextEditingController();
@@ -65,7 +66,13 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
       while (viewModel.model.kktYontemi == null) {
         await tahsilatYontemiDialog();
       }
+      if (widget.cariListesiModel != null){
+        viewModel.setHesapKodu(widget.cariListesiModel!.cariKodu);
+        viewModel.setCariKodu(widget.cariListesiModel!.cariKodu);
+        viewModel.setPlasiyerKodu(PlasiyerList(plasiyerAciklama: widget.cariListesiModel!.plasiyerAciklama, plasiyerKodu: widget.cariListesiModel!.plasiyerKodu));
+      }else {
       await getCari();
+      }
       if (viewModel.model.kktYontemi == "D") {
         await getSeri();
         // viewModel.setPickerBelgeTuru("KKT");

@@ -176,9 +176,9 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/kasaKasaEkstreRaporu", page: () => const KasaEkstreRaporuView()),
 
               //* * Hızlı İşlemler
-              GetPage(name: "/krediKartiTahsilati", page: () => const KrediKartiTahsilatiView()),
-              GetPage(name: "/nakitTahsilat", page: () => const NakitOdemeView(tahsilatMi: true)),
-              GetPage(name: "/nakitOdeme", page: () => const NakitOdemeView()),
+              GetPage(name: "/krediKartiTahsilati", page: () =>  KrediKartiTahsilatiView(cariListesiModel: Get.arguments)),
+              GetPage(name: "/nakitTahsilat", page: () => NakitOdemeView(tahsilatMi: true, cariListesiModel: Get.arguments)),
+              GetPage(name: "/nakitOdeme", page: () => NakitOdemeView(cariListesiModel: Get.arguments)),
               GetPage(name: "/muhtelifTahsilat", page: () => const MuhtelifOdemeView(tahsilatMi: true)),
               GetPage(name: "/muhtelifOdeme", page: () => const MuhtelifOdemeView()),
 

@@ -458,7 +458,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
           iconWidget: Icons.area_chart_outlined,
           onTap: () {
             Get.back();
-            dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipiEnum.cariRapor));
+            dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipiEnum.cariRapor, title: object.cariAdi ?? object.cariKodu));
           },
         ),
       ].nullCheckWithGeneric,

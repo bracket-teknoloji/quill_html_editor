@@ -40,10 +40,19 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+        floatingActionButton: Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(text: "Powered by ", style: TextStyle(color: theme.colorScheme.primary.withOpacity(0.8))),
+              const TextSpan(text: "Bracket Teknoloji\n", style: TextStyle(fontWeight: FontWeight.bold)),
+            ],
+          ),
+        ),
+        floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerFloat,
         body: Stack(
           children: [
             WaveWidget(
-              config: CustomConfig(durations: [8000, 10000], heightPercentages: [0.78, 0.8], colors:[theme.colorScheme.surfaceVariant, theme.colorScheme.surface.withOpacity(0.5)]),
+              config: CustomConfig(durations: [8000, 10000], heightPercentages: [0.78, 0.8], colors: [theme.colorScheme.surfaceVariant, theme.colorScheme.surface.withOpacity(0.5)]),
               size: const Size(double.infinity, double.infinity),
               waveAmplitude: 2,
               wavePhase: 0,
@@ -63,7 +72,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
                     direction: Axis.vertical,
                     children: [
                       Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: const CircularProgressIndicator.adaptive().paddingAll(UIHelper.lowSize))),
-                      SizedBox(width: width * 0.6, child: Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: Text(viewModel.title, maxLines: 10, textAlign: TextAlign.center)))),
+                      Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: Text(viewModel.title, maxLines: 10, textAlign: TextAlign.center))),
                       Observer(
                         builder: (_) => Visibility(
                           visible: viewModel.isError,
@@ -86,14 +95,6 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
                       ),
                     ],
                   ).paddingOnly(bottom: UIHelper.highSize * 7),
-                  Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(text: "Powered by ", style: TextStyle(color: theme.colorScheme.primary.withOpacity(0.8))),
-                        const TextSpan(text: "Bracket Teknoloji\n", style: TextStyle(fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                  ),
                 ],
               ).paddingOnly(bottom: UIHelper.midSize),
             ),

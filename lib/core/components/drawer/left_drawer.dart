@@ -97,7 +97,14 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                                 icon: const Icon(Icons.delete_outline),
                               )
                             : const Icon(Icons.drag_handle),
-                        onTap: value.arguments != null ? () => Get.toNamed(value.onTap.toString(), arguments: value.arguments) : () => Get.toNamed(value.onTap.toString()),
+                        onTap: () {
+                          Get.back();
+                          if (value.arguments != null) {
+                            Get.toNamed(value.onTap.toString(), arguments: value.arguments);
+                          } else {
+                            Get.toNamed(value.onTap.toString());
+                          }
+                        },
                       );
                     },
                     itemCount: list.length,

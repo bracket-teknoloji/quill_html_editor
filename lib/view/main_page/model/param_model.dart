@@ -873,7 +873,10 @@ class NetsisOndalikResponseModel {
 
 @JsonSerializable(createFactory: true)
 class PlasiyerList {
-  PlasiyerList();
+  PlasiyerList({
+    this.plasiyerKodu,
+    this.plasiyerAciklama,
+  });
 
   String? plasiyerKodu;
   String? plasiyerAciklama;

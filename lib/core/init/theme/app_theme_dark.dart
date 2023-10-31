@@ -1,3 +1,4 @@
+import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get_utils/src/platform/platform.dart";
@@ -14,6 +15,10 @@ class AppThemeDark extends AppTheme {
   ColorScheme colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.light);
   @override
   ThemeData get theme => ThemeData(
+        cupertinoOverrideTheme: CupertinoThemeData(
+          primaryColor: UIHelper.primaryColor,
+          applyThemeToAll: true,
+        ),
         platform: GetPlatform.isIOS ? TargetPlatform.iOS : TargetPlatform.android,
         datePickerTheme: DatePickerThemeData(shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius)),
         radioTheme: RadioThemeData(fillColor: MaterialStateProperty.all(UIHelper.primaryColor), overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.1))),

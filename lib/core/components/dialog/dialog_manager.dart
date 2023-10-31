@@ -8,7 +8,6 @@ import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/color_palette.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 
 import "../../../view/add_company/model/account_model.dart";
 import "../../../view/add_company/model/account_response_model.dart";
@@ -163,14 +162,14 @@ class DialogManager {
   void showGridViewDialog(Widget body) => _baseDialog(body: body, onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
   void showCariGridViewDialog(CariListesiModel? model, [IslemTipiEnum? tip]) => _baseDialog(
-        body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: tip ?? IslemTipiEnum.cari),
+        body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: tip ?? IslemTipiEnum.cari, title: model?.cariAdi),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
 
-  Future<void> showCariHareketleriGridViewDialog(CariHareketleriModel? model, [IslemTipiEnum? tip]) async => _baseDialog(
-        body: CustomAnimatedGridView<CariHareketleriModel>(model: model, islemTipi: tip ?? IslemTipiEnum.cariHareketleri),
+  Future<void> showCariHareketleriGridViewDialog(CariListesiModel? model, [IslemTipiEnum? tip]) async => _baseDialog(
+        body: CustomAnimatedGridView<CariListesiModel>(model: model, title: model?.cariAdi, islemTipi: tip ?? IslemTipiEnum.cariHareketleri),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
@@ -186,8 +185,12 @@ class DialogManager {
   void showCariRaporlarGridViewDialog() =>
       _baseDialog(body: const CustomAnimatedGridView(title: "Raporlar", islemTipi: IslemTipiEnum.cariRapor), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
-  void showStokGridViewDialog(StokListesiModel? model, [IslemTipiEnum? tip]) =>
-      _baseDialog(body: CustomAnimatedGridView<StokListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.stok), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
+  void showStokGridViewDialog(StokListesiModel? model, [IslemTipiEnum? tip]) => _baseDialog(
+        body: CustomAnimatedGridView<StokListesiModel>(model: model, title: model?.stokAdi, islemTipi: tip ?? IslemTipiEnum.stok),
+        onOk: () {},
+        btnOkText: "İptal",
+        dialogType: DialogType.noHeader,
+      ).show();
 
   Future<dynamic> showSiparisGridViewDialog({BaseSiparisEditModel? model, IslemTipiEnum? tip, SiparisTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
         body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.siparis, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
@@ -304,13 +307,13 @@ class DialogManager {
     );
   }
 
-  SnackBar _snackBarColorful(String message, Color color) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: color);
+  SnackBar _snackBarColorful(String message, Color color) => SnackBar(content: Text(message, style: const TextStyle(color: Colors.white)), behavior: SnackBarBehavior.fixed, backgroundColor: color);
 
-  SnackBar _snackBarError(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: ColorPalette.persianRed);
+  SnackBar _snackBarError(String message) => SnackBar(content: Text(message, style: const TextStyle(color: Colors.white)), behavior: SnackBarBehavior.fixed, backgroundColor: ColorPalette.persianRed);
 
-  SnackBar _snackBarSuccess(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: ColorPalette.mantis);
+  SnackBar _snackBarSuccess(String message) => SnackBar(content: Text(message, style: const TextStyle(color: Colors.white)), behavior: SnackBarBehavior.fixed, backgroundColor: ColorPalette.mantis);
 
-  SnackBar _snackBarInfo(String message) => SnackBar(content: Text(message), behavior: SnackBarBehavior.fixed, backgroundColor: ColorPalette.marineBlue);
+  SnackBar _snackBarInfo(String message) => SnackBar(content: Text(message, style: const TextStyle(color: Colors.white)), behavior: SnackBarBehavior.fixed, backgroundColor: ColorPalette.marineBlue);
 
   AwesomeDialog _areYouSureDialog(void Function() onYes, String? desc) => _baseDialog(
         title: "Uyarı",
@@ -420,7 +423,7 @@ class DialogManager {
         dialogBackgroundColor: Theme.of(context).colorScheme.onInverseSurface,
         descTextStyle: Theme.of(context).textTheme.bodySmall,
         titleTextStyle: Theme.of(context).textTheme.bodyLarge,
-        buttonsTextStyle: Theme.of(context).textTheme.bodySmall,
+        buttonsTextStyle: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.white),
         title: title,
         desc: desc,
         btnOkOnPress: onOk,

@@ -23,7 +23,7 @@ class CustomAnimatedGridView<T> extends StatefulWidget {
   final T? model;
   final String? title;
   final ValueChanged<bool>? onSelected;
-  const CustomAnimatedGridView({super.key, this.cariListesiModel, required this.islemTipi, this.model, this.title, this.siparisTipi, this.onSelected});
+  const CustomAnimatedGridView({super.key, this.cariListesiModel, required this.islemTipi, this.model, required this.title, this.siparisTipi, this.onSelected});
   @override
   State<CustomAnimatedGridView> createState() => _CustomAnimatedGridViewState();
 }
@@ -78,8 +78,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
               ),
               Expanded(
                 child: SizedBox(
-                  child: Text(widget.title ?? widget.cariListesiModel?.cariAdi ?? widget.cariListesiModel?.cariKodu ?? widget.model?.stokKodu ?? "", style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis))
-                      .paddingOnly(left: UIHelper.midSize),
+                  child: Text(widget.title ?? "İşlemler", style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis)).paddingOnly(left: UIHelper.midSize),
                 ),
               ),
             ],
