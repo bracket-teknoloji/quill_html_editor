@@ -586,7 +586,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                   final children2 = [
                                     BottomSheetModel(
                                       title: "Görüntüle",
-                                      iconWidget: Icons.visibility,
+                                      iconWidget: Icons.preview_outlined,
                                       onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.goruntule, model: stok)),
                                     ).yetkiKontrol(yetkiController.stokKarti),
                                     BottomSheetModel(

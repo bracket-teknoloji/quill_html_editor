@@ -56,7 +56,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
             children: <BottomSheetModel?>[
               BottomSheetModel(
                 title: "Görüntüle",
-                iconWidget: Icons.search_outlined,
+                iconWidget: Icons.preview_outlined,
                 onTap: () async {
                   Get.back();
                   await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum));

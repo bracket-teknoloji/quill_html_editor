@@ -43,7 +43,10 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
         appBar: AppBar(
           title: const Text("Firmalar"),
           centerTitle: false,
-          actions: [IconButton(onPressed: loginMethod, icon: const Icon(Icons.save))],
+          actions: [
+            IconButton(onPressed: () async => await _getQR(context), icon: const Icon(Icons.qr_code_outlined)),
+            IconButton(onPressed: loginMethod, icon: const Icon(Icons.save_outlined)),
+          ],
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -65,12 +68,13 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
                         child: CustomTextField(keyboardType: TextInputType.visiblePassword, controller: passwordController, isMust: true, onSubmitted: (value) => loginMethod),
                       ),
                     ),
-                    const Wrap(
-                      direction: Axis.horizontal,
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: [Icon(Icons.question_mark_rounded), Text("Bilgileri girerken büyük-küçük uyumuna dikkat ediniz.", softWrap: true)],
-                    ),
-                    ElevatedButton(onPressed: () => _getQR(context), child: const Text("BİLGİLERİ QR KOD'DAN AL")).paddingAll(UIHelper.lowSize),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Icon(Icons.info_outline_rounded, color: theme.colorScheme.primary),
+                        const Text(" Bilgileri girerken büyük-küçük uyumuna dikkat ediniz.", softWrap: true),
+                      ],
+                    ).paddingAll(UIHelper.lowSize),
                   ],
                 ),
               ),

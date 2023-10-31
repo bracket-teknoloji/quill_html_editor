@@ -42,7 +42,7 @@ class _QRScannerState extends BaseState<QRScannerView> {
                   },
                   icon: Icon(
                     Icons.flash_on,
-                    color: viewModel.isFlashOpen ? ColorPalette.gamboge : Colors.white,
+                    color: viewModel.isFlashOpen ? ColorPalette.gamboge : null,
                   ),
                 ),
               ),
@@ -59,7 +59,7 @@ class _QRScannerState extends BaseState<QRScannerView> {
                   },
                   icon: Icon(
                     Icons.flip_camera_ios,
-                    color: viewModel.isCameraReverse ? ColorPalette.gamboge : Colors.white,
+                    color: viewModel.isCameraReverse ? ColorPalette.gamboge : null,
                   ),
                 ),
               ),

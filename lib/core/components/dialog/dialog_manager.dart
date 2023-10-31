@@ -168,6 +168,13 @@ class DialogManager {
         dialogType: DialogType.noHeader,
       ).show();
 
+  // void showCariHareketleriGridViewDialog(CariHareketleriModel? model, [IslemTipiEnum? tip]) => _baseDialog(
+  //   body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: tip ?? IslemTipiEnum.cari),
+  //   onOk: () {},
+  //   btnOkText: "İptal",
+  //   dialogType: DialogType.noHeader,
+  // ).show();
+
   Future<dynamic> showKasaGridViewDialog(KasaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async => await _baseDialog(
         body: CustomAnimatedGridView<KasaListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.kasa, title: "Kasa İşlemleri", onSelected: onSelected),
         onOk: () {},

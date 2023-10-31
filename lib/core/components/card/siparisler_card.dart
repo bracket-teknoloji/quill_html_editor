@@ -88,7 +88,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                     children: [
                       BottomSheetModel(
                         title: "Görüntüle",
-                        iconWidget: Icons.search_outlined,
+                        iconWidget: Icons.preview_outlined,
                         onTap: () {
                           Get.back();
                           return Get.toNamed(

@@ -225,7 +225,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                               children: [
                                 //! BottomSheetModel(iconWidget: Icons.display_settings_outlined, title: "İşlemler", onTap: () {}),
                                 BottomSheetModel(
-                                  iconWidget: Icons.view_comfy_outlined,
+                                  iconWidget: Icons.preview_outlined,
                                   title: "Görüntüle",
                                   onTap: () async {
                                     Get.back();
@@ -251,7 +251,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                   },
                                 ).yetkiKontrol(viewModel.cariHareketleriList![index].devirMi),
                                 BottomSheetModel(
-                                  iconWidget: Icons.view_comfy_outlined,
+                                  iconWidget: Icons.preview_outlined,
                                   title: "E-Belge Görüntüle",
                                   onTap: () async {
                                     Get.back();

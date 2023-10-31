@@ -56,6 +56,7 @@ class _AccountsViewState extends BaseState<AccountsView> {
               final AccountResponseModel account = Hive.box("accounts").getAt(index);
               return Card(
                 child: ListTile(
+                  contentPadding: UIHelper.lowPadding,
                   onTap: () {
                     bottomSheetDialogManager.showBottomSheetDialog(
                       context,
@@ -82,7 +83,7 @@ class _AccountsViewState extends BaseState<AccountsView> {
                   },
                   title: Text(account.firma.toString()),
                   subtitle: Text(account.email.toString()),
-                  trailing: const Icon(Icons.more_vert),
+                  trailing: const Icon(Icons.more_vert_outlined),
                 ),
               );
             },

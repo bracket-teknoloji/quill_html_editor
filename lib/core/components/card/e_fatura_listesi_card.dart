@@ -42,7 +42,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
               children: [
                 BottomSheetModel(
                   title: "E-Belge Görüntüle",
-                  iconWidget: Icons.picture_as_pdf_outlined,
+                  iconWidget: Icons.preview_outlined,
                   onTap: () {
                     Get.back();
                     Get.toNamed("/mainPage/eBelgePdf", arguments: model);

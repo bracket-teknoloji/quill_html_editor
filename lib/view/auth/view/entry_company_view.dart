@@ -20,7 +20,8 @@ import "../model/isletme_model.dart";
 
 class EntryCompanyView extends StatefulWidget {
   final bool? isSplash;
-  const EntryCompanyView({super.key, this.isSplash});
+  final bool? onMenu;
+  const EntryCompanyView({super.key, this.isSplash, this.onMenu});
 
   @override
   State<EntryCompanyView> createState() => _EntryCompanyViewState();
