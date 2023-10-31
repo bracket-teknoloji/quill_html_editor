@@ -229,7 +229,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       title: "Sıralama Türünü Seçiniz",
       children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])),
     );
-    if (result != viewModel.cariRequestModel.siralama) {
+    if (result != viewModel.cariRequestModel.siralama && result != null) {
       viewModel.changeSiralama(result);
       viewModel.resetPage();
     }

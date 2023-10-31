@@ -3,6 +3,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/bottom_bar/bottom_bar.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
@@ -18,7 +19,6 @@ import "../../../../../../core/components/card/cari_hareketler_card.dart";
 import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../core/components/floating_action_button/custom_floating_action_button.dart";
 import "../../../../../../core/components/grid_tile/custom_animated_grid/view/custom_animated_grid_view.dart";
-import "../../../../../../core/components/helper_widgets/scrollable_widget.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/enum/islem_tipi_enum.dart";
@@ -287,7 +287,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                         pdfModel.etiketSayisi = result.first.kopyaSayisi;
                                         pdfModel.dicParams?.caharInckey = viewModel.cariHareketleriList![index].inckeyno.toStringIfNotNull;
                                         dizaynList = result.first;
-                                    Get.back();
+                                        Get.back();
                                       } else {
                                         dizaynList = await bottomSheetDialogManager.showBottomSheetDialog(
                                           context,
@@ -311,56 +311,43 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
       );
 
   Widget bottomButtonBar() => Observer(
-        builder: (_) => ScrollableWidget(
+        builder: (_) => BottomBarWidget(
           isScrolledDown: viewModel.isScrollDown,
-          child: SizedBox(
-            height: context.isPortrait ? (height * 0.07) : (height * 0.1 < 60 ? 60 : height * 0.1),
-            child: Row(
+          children: [
+            FooterButton(
               children: [
-                Expanded(
-                  child: FooterButton(
-                    children: [
-                      const Text("Borç"),
-                      Observer(
-                        builder: (_) => Text(
-                          "${(viewModel.borclarToplami).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}",
-                          style: const TextStyle(color: ColorPalette.persianRed),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const VerticalDivider(thickness: 1, width: 1),
-                Expanded(
-                  child: FooterButton(
-                    children: [
-                      const Text("Alacak"),
-                      Observer(
-                        builder: (_) => Text(
-                          "${(viewModel.alacaklarToplami).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}",
-                          style: const TextStyle(color: ColorPalette.mantis),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const VerticalDivider(thickness: 1, width: 1),
-                Expanded(
-                  child: FooterButton(
-                    children: [
-                      Text((viewModel.toplamBakiye) < 0 ? "Ödenecek" : "Tahsil Edilecek"),
-                      Observer(
-                        builder: (_) => Text(
-                          "${(viewModel.toplamBakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}",
-                          style: TextStyle(color: (viewModel.borclarToplami - viewModel.alacaklarToplami) < 0 ? ColorPalette.persianRed : ColorPalette.mantis),
-                        ),
-                      ),
-                    ],
+                const Text("Borç"),
+                Observer(
+                  builder: (_) => Text(
+                    "${(viewModel.borclarToplami).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}",
+                    style: const TextStyle(color: ColorPalette.persianRed),
                   ),
                 ),
               ],
             ),
-          ),
+            FooterButton(
+              children: [
+                const Text("Alacak"),
+                Observer(
+                  builder: (_) => Text(
+                    "${(viewModel.alacaklarToplami).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}",
+                    style: const TextStyle(color: ColorPalette.mantis),
+                  ),
+                ),
+              ],
+            ),
+            FooterButton(
+              children: [
+                Text((viewModel.toplamBakiye) < 0 ? "Ödenecek" : "Tahsil Edilecek"),
+                Observer(
+                  builder: (_) => Text(
+                    "${(viewModel.toplamBakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}",
+                    style: TextStyle(color: (viewModel.borclarToplami - viewModel.alacaklarToplami) < 0 ? ColorPalette.persianRed : ColorPalette.mantis),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       );
 

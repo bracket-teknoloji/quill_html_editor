@@ -133,6 +133,7 @@ dev_dependencies:
   injectable_generator: ^2.3.0
 
 flutter_native_splash:
+  color: "#fffbff"
   color_dark: "#201A19"
   image: "assets/splash/pickerLogoTuruncu_1024.png"
   image_dark: "assets/splash/pickerLogoTuruncu_1024.png"
