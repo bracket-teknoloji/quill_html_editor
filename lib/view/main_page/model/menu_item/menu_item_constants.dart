@@ -218,7 +218,7 @@ class MenuItemConstants {
         GridItemModel.item(name: "sevkiyat_SatisIrsaliyesi", title: "Satış İrsaliyesi", route: "/mainPage/sevkiyatSatisIrsaliyesi"),
         GridItemModel.item(name: "sevkemri_MalToplama", title: "Mal Toplama"),
       ],
-    )),
+    ),
 
     //* Sipariş
     //*

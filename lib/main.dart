@@ -261,6 +261,7 @@ Future<void> firebaseInitialized() async {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
     final FirebaseMessaging messaging = FirebaseMessaging.instance;
     await messaging.requestPermission();
+    // ignore: avoid_print
     FirebaseMessaging.instance.getToken().then(print);
     await messaging.setForegroundNotificationPresentationOptions(sound: true, alert: true, badge: true);
     // print token

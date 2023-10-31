@@ -1,0 +1,14 @@
+Hello! You can follow the steps below to access our Picker application with full authorization:
+
+1. Open the App Store Connect application and locate the "Firma" text field. Tap on it to activate the input field.
+2. Afterward, you will see the "Firmaları Düzenle" button. Tap on it to proceed.
+3. On the next screen, look for the "+" button positioned at the bottom right corner. Tap on it to create a new account.
+4. A new page will appear, and you'll find the "Firma E-Posta Adresi" text field. Enter "info@bracket.com.tr" as the email address for your company.
+5. Next, locate the "Şifre" text field and enter "123654br*" as the password for your account. This will grant you access to the platform.
+6. Once you've successfully logged in, you will be redirected to the main dashboard. To access your newly added account, tap on the "Firma" text field again.
+7. Look for the entry representing your recently created account and tap on it to proceed.
+8. Now, you'll find the "Netfect Kullanıcı Adı" section below. Enter "picker" in the respective text field.
+9. In the "Şifre" field, enter "PickerAbc*?!" to securely log in to your account.
+10. Congratulations! You've successfully accessed Picker with full authorization.
+
+We hope this guide helps you in accessing Picker effortlessly. Should you have any further questions or encounter any difficulties, please feel free to reach out for assistance.
