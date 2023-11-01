@@ -61,6 +61,8 @@ _$EBelgeListesiModelImpl _$$EBelgeListesiModelImplFromJson(
       iptalTarihi: json['IPTAL_TARIHI'] == null
           ? null
           : DateTime.parse(json['IPTAL_TARIHI'] as String),
+      gonderimSekliEposta: json['GONDERIM_SEKLI_EPOSTA'] as String?,
+      eposta: json['EPOSTA'] as String?,
     );
 
 Map<String, dynamic> _$$EBelgeListesiModelImplToJson(
@@ -119,5 +121,7 @@ Map<String, dynamic> _$$EBelgeListesiModelImplToJson(
   writeNotNull('GONDERME_DURUMU', instance.gondermeDurumu);
   writeNotNull('ZARF_SILINEBILIR', instance.zarfSilinebilir);
   writeNotNull('IPTAL_TARIHI', instance.iptalTarihi?.toIso8601String());
+  writeNotNull('GONDERIM_SEKLI_EPOSTA', instance.gonderimSekliEposta);
+  writeNotNull('EPOSTA', instance.eposta);
   return val;
 }

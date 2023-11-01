@@ -23,6 +23,8 @@ _$EBelgeIslemModelImpl _$$EBelgeIslemModelImplFromJson(
       iptalTarihi: json['IPTAL_TARIHI'] == null
           ? null
           : DateTime.parse(json['IPTAL_TARIHI'] as String),
+      kopyaSayisi: json['KOPYA_SAYISI'] as int?,
+      yaziciAdi: json['YAZICI_ADI'] as String?,
     );
 
 Map<String, dynamic> _$$EBelgeIslemModelImplToJson(
@@ -47,5 +49,7 @@ Map<String, dynamic> _$$EBelgeIslemModelImplToJson(
   writeNotNull('BELGE_NO', instance.belgeNo);
   writeNotNull('CARI_KODU', instance.cariKodu);
   writeNotNull('IPTAL_TARIHI', instance.iptalTarihi?.toIso8601String());
+  writeNotNull('KOPYA_SAYISI', instance.kopyaSayisi);
+  writeNotNull('YAZICI_ADI', instance.yaziciAdi);
   return val;
 }

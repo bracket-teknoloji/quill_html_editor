@@ -112,6 +112,10 @@ mixin _$EBelgeListesiModel {
   set zarfSilinebilir(String? value) => throw _privateConstructorUsedError;
   DateTime? get iptalTarihi => throw _privateConstructorUsedError;
   set iptalTarihi(DateTime? value) => throw _privateConstructorUsedError;
+  String? get gonderimSekliEposta => throw _privateConstructorUsedError;
+  set gonderimSekliEposta(String? value) => throw _privateConstructorUsedError;
+  String? get eposta => throw _privateConstructorUsedError;
+  set eposta(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -171,7 +175,9 @@ abstract class $EBelgeListesiModelCopyWith<$Res> {
       String? dizaynYolu,
       String? gondermeDurumu,
       String? zarfSilinebilir,
-      DateTime? iptalTarihi});
+      DateTime? iptalTarihi,
+      String? gonderimSekliEposta,
+      String? eposta});
 }
 
 /// @nodoc
@@ -233,6 +239,8 @@ class _$EBelgeListesiModelCopyWithImpl<$Res, $Val extends EBelgeListesiModel>
     Object? gondermeDurumu = freezed,
     Object? zarfSilinebilir = freezed,
     Object? iptalTarihi = freezed,
+    Object? gonderimSekliEposta = freezed,
+    Object? eposta = freezed,
   }) {
     return _then(_value.copyWith(
       ebelgeTuru: freezed == ebelgeTuru
@@ -419,6 +427,14 @@ class _$EBelgeListesiModelCopyWithImpl<$Res, $Val extends EBelgeListesiModel>
           ? _value.iptalTarihi
           : iptalTarihi // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      gonderimSekliEposta: freezed == gonderimSekliEposta
+          ? _value.gonderimSekliEposta
+          : gonderimSekliEposta // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eposta: freezed == eposta
+          ? _value.eposta
+          : eposta // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -477,7 +493,9 @@ abstract class _$$EBelgeListesiModelImplCopyWith<$Res>
       String? dizaynYolu,
       String? gondermeDurumu,
       String? zarfSilinebilir,
-      DateTime? iptalTarihi});
+      DateTime? iptalTarihi,
+      String? gonderimSekliEposta,
+      String? eposta});
 }
 
 /// @nodoc
@@ -537,6 +555,8 @@ class __$$EBelgeListesiModelImplCopyWithImpl<$Res>
     Object? gondermeDurumu = freezed,
     Object? zarfSilinebilir = freezed,
     Object? iptalTarihi = freezed,
+    Object? gonderimSekliEposta = freezed,
+    Object? eposta = freezed,
   }) {
     return _then(_$EBelgeListesiModelImpl(
       ebelgeTuru: freezed == ebelgeTuru
@@ -723,6 +743,14 @@ class __$$EBelgeListesiModelImplCopyWithImpl<$Res>
           ? _value.iptalTarihi
           : iptalTarihi // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      gonderimSekliEposta: freezed == gonderimSekliEposta
+          ? _value.gonderimSekliEposta
+          : gonderimSekliEposta // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eposta: freezed == eposta
+          ? _value.eposta
+          : eposta // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -776,7 +804,9 @@ class _$EBelgeListesiModelImpl extends _EBelgeListesiModel {
       this.dizaynYolu,
       this.gondermeDurumu,
       this.zarfSilinebilir,
-      this.iptalTarihi})
+      this.iptalTarihi,
+      this.gonderimSekliEposta,
+      this.eposta})
       : super._();
 
   factory _$EBelgeListesiModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -874,6 +904,10 @@ class _$EBelgeListesiModelImpl extends _EBelgeListesiModel {
   String? zarfSilinebilir;
   @override
   DateTime? iptalTarihi;
+  @override
+  String? gonderimSekliEposta;
+  @override
+  String? eposta;
 
   @JsonKey(ignore: true)
   @override
@@ -937,7 +971,9 @@ abstract class _EBelgeListesiModel extends EBelgeListesiModel {
       String? dizaynYolu,
       String? gondermeDurumu,
       String? zarfSilinebilir,
-      DateTime? iptalTarihi}) = _$EBelgeListesiModelImpl;
+      DateTime? iptalTarihi,
+      String? gonderimSekliEposta,
+      String? eposta}) = _$EBelgeListesiModelImpl;
   _EBelgeListesiModel._() : super._();
 
   factory _EBelgeListesiModel.fromJson(Map<String, dynamic> json) =
@@ -1081,6 +1117,12 @@ abstract class _EBelgeListesiModel extends EBelgeListesiModel {
   @override
   DateTime? get iptalTarihi;
   set iptalTarihi(DateTime? value);
+  @override
+  String? get gonderimSekliEposta;
+  set gonderimSekliEposta(String? value);
+  @override
+  String? get eposta;
+  set eposta(String? value);
   @override
   @JsonKey(ignore: true)
   _$$EBelgeListesiModelImplCopyWith<_$EBelgeListesiModelImpl> get copyWith =>

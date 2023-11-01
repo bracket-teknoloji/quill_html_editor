@@ -20,6 +20,8 @@ class EBelgeIslemModel with _$EBelgeIslemModel {
     String? belgeNo,
     String? cariKodu,
     DateTime? iptalTarihi,
+    int? kopyaSayisi,
+    String? yaziciAdi,
   }) = _EBelgeIslemModel;
 
   factory EBelgeIslemModel.fromJson(Map<String, dynamic> json) => _$EBelgeIslemModelFromJson(json);

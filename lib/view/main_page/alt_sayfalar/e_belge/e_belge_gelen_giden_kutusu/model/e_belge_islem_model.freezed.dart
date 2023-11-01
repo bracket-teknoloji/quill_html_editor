@@ -44,6 +44,10 @@ mixin _$EBelgeIslemModel {
   set cariKodu(String? value) => throw _privateConstructorUsedError;
   DateTime? get iptalTarihi => throw _privateConstructorUsedError;
   set iptalTarihi(DateTime? value) => throw _privateConstructorUsedError;
+  int? get kopyaSayisi => throw _privateConstructorUsedError;
+  set kopyaSayisi(int? value) => throw _privateConstructorUsedError;
+  String? get yaziciAdi => throw _privateConstructorUsedError;
+  set yaziciAdi(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -69,7 +73,9 @@ abstract class $EBelgeIslemModelCopyWith<$Res> {
       String? zarfid,
       String? belgeNo,
       String? cariKodu,
-      DateTime? iptalTarihi});
+      DateTime? iptalTarihi,
+      int? kopyaSayisi,
+      String? yaziciAdi});
 }
 
 /// @nodoc
@@ -97,6 +103,8 @@ class _$EBelgeIslemModelCopyWithImpl<$Res, $Val extends EBelgeIslemModel>
     Object? belgeNo = freezed,
     Object? cariKodu = freezed,
     Object? iptalTarihi = freezed,
+    Object? kopyaSayisi = freezed,
+    Object? yaziciAdi = freezed,
   }) {
     return _then(_value.copyWith(
       aciklama: freezed == aciklama
@@ -147,6 +155,14 @@ class _$EBelgeIslemModelCopyWithImpl<$Res, $Val extends EBelgeIslemModel>
           ? _value.iptalTarihi
           : iptalTarihi // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      kopyaSayisi: freezed == kopyaSayisi
+          ? _value.kopyaSayisi
+          : kopyaSayisi // ignore: cast_nullable_to_non_nullable
+              as int?,
+      yaziciAdi: freezed == yaziciAdi
+          ? _value.yaziciAdi
+          : yaziciAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -171,7 +187,9 @@ abstract class _$$EBelgeIslemModelImplCopyWith<$Res>
       String? zarfid,
       String? belgeNo,
       String? cariKodu,
-      DateTime? iptalTarihi});
+      DateTime? iptalTarihi,
+      int? kopyaSayisi,
+      String? yaziciAdi});
 }
 
 /// @nodoc
@@ -197,6 +215,8 @@ class __$$EBelgeIslemModelImplCopyWithImpl<$Res>
     Object? belgeNo = freezed,
     Object? cariKodu = freezed,
     Object? iptalTarihi = freezed,
+    Object? kopyaSayisi = freezed,
+    Object? yaziciAdi = freezed,
   }) {
     return _then(_$EBelgeIslemModelImpl(
       aciklama: freezed == aciklama
@@ -247,6 +267,14 @@ class __$$EBelgeIslemModelImplCopyWithImpl<$Res>
           ? _value.iptalTarihi
           : iptalTarihi // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      kopyaSayisi: freezed == kopyaSayisi
+          ? _value.kopyaSayisi
+          : kopyaSayisi // ignore: cast_nullable_to_non_nullable
+              as int?,
+      yaziciAdi: freezed == yaziciAdi
+          ? _value.yaziciAdi
+          : yaziciAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -266,7 +294,9 @@ class _$EBelgeIslemModelImpl extends _EBelgeIslemModel {
       this.zarfid,
       this.belgeNo,
       this.cariKodu,
-      this.iptalTarihi})
+      this.iptalTarihi,
+      this.kopyaSayisi,
+      this.yaziciAdi})
       : super._();
 
   factory _$EBelgeIslemModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -296,10 +326,14 @@ class _$EBelgeIslemModelImpl extends _EBelgeIslemModel {
   String? cariKodu;
   @override
   DateTime? iptalTarihi;
+  @override
+  int? kopyaSayisi;
+  @override
+  String? yaziciAdi;
 
   @override
   String toString() {
-    return 'EBelgeIslemModel(aciklama: $aciklama, belgeTuru: $belgeTuru, ebelgeTuru: $ebelgeTuru, kutuTuru: $kutuTuru, inckeyno: $inckeyno, islemKodu: $islemKodu, resmiBelgeNo: $resmiBelgeNo, senaryoTipi: $senaryoTipi, zarfid: $zarfid, belgeNo: $belgeNo, cariKodu: $cariKodu, iptalTarihi: $iptalTarihi)';
+    return 'EBelgeIslemModel(aciklama: $aciklama, belgeTuru: $belgeTuru, ebelgeTuru: $ebelgeTuru, kutuTuru: $kutuTuru, inckeyno: $inckeyno, islemKodu: $islemKodu, resmiBelgeNo: $resmiBelgeNo, senaryoTipi: $senaryoTipi, zarfid: $zarfid, belgeNo: $belgeNo, cariKodu: $cariKodu, iptalTarihi: $iptalTarihi, kopyaSayisi: $kopyaSayisi, yaziciAdi: $yaziciAdi)';
   }
 
   @JsonKey(ignore: true)
@@ -330,7 +364,9 @@ abstract class _EBelgeIslemModel extends EBelgeIslemModel {
       String? zarfid,
       String? belgeNo,
       String? cariKodu,
-      DateTime? iptalTarihi}) = _$EBelgeIslemModelImpl;
+      DateTime? iptalTarihi,
+      int? kopyaSayisi,
+      String? yaziciAdi}) = _$EBelgeIslemModelImpl;
   _EBelgeIslemModel._() : super._();
 
   factory _EBelgeIslemModel.fromJson(Map<String, dynamic> json) =
@@ -372,6 +408,12 @@ abstract class _EBelgeIslemModel extends EBelgeIslemModel {
   @override
   DateTime? get iptalTarihi;
   set iptalTarihi(DateTime? value);
+  @override
+  int? get kopyaSayisi;
+  set kopyaSayisi(int? value);
+  @override
+  String? get yaziciAdi;
+  set yaziciAdi(String? value);
   @override
   @JsonKey(ignore: true)
   _$$EBelgeIslemModelImplCopyWith<_$EBelgeIslemModelImpl> get copyWith =>

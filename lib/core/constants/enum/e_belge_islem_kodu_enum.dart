@@ -1,6 +1,6 @@
 
 
-enum EBelgeIslemKoduEnum {eBelgeBirlestir, eBelgeSil, eBelgeZarfSil, eBelgeHariciYollaFaturaIptali}
+enum EBelgeIslemKoduEnum {eBelgeBirlestir, eBelgeSil, eBelgeZarfSil,eBelgeYazdir, eBelgeHariciYollaFaturaIptali}
 
 extension EBelgeIslemKoduExtensions on EBelgeIslemKoduEnum {
   
@@ -12,6 +12,8 @@ extension EBelgeIslemKoduExtensions on EBelgeIslemKoduEnum {
         return 20;
       case EBelgeIslemKoduEnum.eBelgeSil:
         return 21;
+      case EBelgeIslemKoduEnum.eBelgeYazdir:
+        return 22;
       case EBelgeIslemKoduEnum.eBelgeZarfSil:
         return 23;
     }
