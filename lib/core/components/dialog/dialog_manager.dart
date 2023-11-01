@@ -59,7 +59,7 @@ class DialogManager {
     ScaffoldMessenger.of(context).showSnackBar(_snackBarSuccess(message));
   }
 
-  Future<DateTime?> showDateTimePicker() async => await showDatePicker(
+  Future<DateTime?> showDateTimePicker() async => await  showDatePicker(
         context: context,
         locale: Get.locale,
         initialDate: DateTime.now(),

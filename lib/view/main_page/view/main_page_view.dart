@@ -59,128 +59,10 @@ class _MainPageViewState extends BaseState<MainPageView> {
         drawerEnableOpenDragGesture: lastItems.isEmpty,
         drawer: const SafeArea(child: LeftDrawer()),
         endDrawer: const SafeArea(child: EndDrawer()),
-        bottomNavigationBar: SafeArea(
-          child: ButtonBar(
-            alignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TextButton(
-                onPressed: () {
-                  scaffoldKey.currentState!.openEndDrawer();
-                },
-                child: Row(
-                  children: [
-                    (CacheManager.getAnaVeri!.userModel!.admin == "E" ? Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20) : IconHelper.smallIcon("User-Account"))
-                        .marginOnly(right: 5),
-                    Text(CacheManager.getAnaVeri!.userModel!.kuladi.toString(), style: theme.textTheme.bodyMedium),
-                  ],
-                ),
-              ),
-              TextButton(
-                onPressed: () {
-                  Get.toNamed("/entryCompany");
-                },
-                child: Row(
-                  children: [
-                    Icon(Icons.storage_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: 5),
-                    Text("${CacheManager.getVeriTabani()["Şirket"]} (${CacheManager.getVeriTabani()["Şube"]})", style: theme.textTheme.bodyMedium),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        body: SafeArea(
-          child: GridView.builder(
-            padding: UIHelper.lowPadding,
-            physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: MediaQuery.of(context).size.width ~/ 90 > 10 ? 10 : MediaQuery.of(context).size.width ~/ 90,
-              childAspectRatio: 0.9,
-            ),
-            itemCount: items.length,
-            itemBuilder: (context, index) {
-              //* indexteki itemi burada alıyoruz
-              final item = items[index];
-              return AnimationConfiguration.staggeredList(
-                position: index,
-                duration: const Duration(milliseconds: 500),
-                delay: const Duration(milliseconds: 50),
-                child: FadeInAnimation(
-                  child: CustomGridTile(
-                    iconWidget: item.iconData,
-                    menuTipi: item.menuTipi,
-                    route: item.route,
-                    arguments: item.arguments,
-                    altMenuler: item.altMenuler,
-                    color: item.color,
-                    icon: item.icon,
-                    name: item.name.toString(),
-                    title: item.title.toString(),
-                    onTap: () {
-                      if (item.altMenuVarMi) {
-                        item.altMenuler?.length == 1
-                            ? item.altMenuler?.first.onTap?.call()
-                            : setState(() {
-                                lastItems.add(items);
-                                title2.add(item.title.toString());
-                                items = item.altMenuler!.where((element) {
-                                  element.color ??= item.color;
-                                  if (element.icon.ext.isNullOrEmpty) {
-                                    element.icon = item.icon;
-                                  }
-                                  return element.yetkiKontrol;
-                                }).toList();
-                              });
-                      } else {
-                        items[index].onTap?.call();
-                      }
-                    },
-                  ),
-                ),
-              );
-            },
-          ),
-        ),
+        body: body(context),
+        bottomNavigationBar: bottomBar(scaffoldKey),
       ),
     );
-
-    // return BaseView(
-    //   builder: (context, value) => (Key key, BuildContext context) {}(scaffoldKey, context),
-    //   title: title2.last,
-    //   leading: anaSayfaMi
-    //       ? IconButton(
-    //           icon: const Icon(Icons.arrow_back),
-    //           onPressed: () {
-    //             setState(() {
-    //               items = lastItems.last;
-    //               title2.removeLast();
-    //               lastItems.removeLast();
-    //             });
-    //           },
-    //         )
-    //       : IconButton(
-    //           icon: IconHelper.appBarIcon("Yildiz"),
-    //           onPressed: () async {
-    //             if (scaffoldKey.currentState!.isDrawerOpen) {
-    //               Navigator.pop(context);
-    //             } else {
-    //               scaffoldKey.currentState!.openDrawer();
-    //             }
-    //           },
-    //         ),
-    //   actions: [
-    //     IconButton(
-    //       icon: IconHelper.appBarIcon("User-Account"),
-    //       onPressed: () {
-    //         if (scaffoldKey.currentState!.isEndDrawerOpen) {
-    //           Navigator.pop(context);
-    //         } else {
-    //           scaffoldKey.currentState!.openEndDrawer();
-    //         }
-    //       },
-    //     ),
-    //   ],
-    // );
   }
 
   AppBar appBar(GlobalKey<ScaffoldState> scaffoldKey, BuildContext context) => AppBar(
@@ -215,6 +97,90 @@ class _MainPageViewState extends BaseState<MainPageView> {
             icon: const Icon(Icons.person_outline_outlined),
           ),
         ],
+      );
+
+  SafeArea body(BuildContext context) => SafeArea(
+        child: GridView.builder(
+          padding: UIHelper.lowPadding,
+          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: MediaQuery.of(context).size.width ~/ 90 > 10 ? 10 : MediaQuery.of(context).size.width ~/ 90,
+            childAspectRatio: 0.9,
+          ),
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            //* indexteki itemi burada alıyoruz
+            final item = items[index];
+            return AnimationConfiguration.staggeredList(
+              position: index,
+              duration: const Duration(milliseconds: 500),
+              delay: const Duration(milliseconds: 50),
+              child: FadeInAnimation(
+                child: CustomGridTile(
+                  iconWidget: item.iconData,
+                  menuTipi: item.menuTipi,
+                  route: item.route,
+                  arguments: item.arguments,
+                  altMenuler: item.altMenuler,
+                  color: item.color,
+                  icon: item.icon,
+                  name: item.name.toString(),
+                  title: item.title.toString(),
+                  onTap: () {
+                    if (item.altMenuVarMi) {
+                      item.altMenuler?.length == 1
+                          ? item.altMenuler?.first.onTap?.call()
+                          : setState(() {
+                              lastItems.add(items);
+                              title2.add(item.title.toString());
+                              items = item.altMenuler!.where((element) {
+                                element.color ??= item.color;
+                                if (element.icon.ext.isNullOrEmpty) {
+                                  element.icon = item.icon;
+                                }
+                                return element.yetkiKontrol;
+                              }).toList();
+                            });
+                    } else {
+                      items[index].onTap?.call();
+                    }
+                  },
+                ),
+              ),
+            );
+          },
+        ),
+      );
+
+  SafeArea bottomBar(GlobalKey<ScaffoldState> scaffoldKey) => SafeArea(
+        child: ButtonBar(
+          alignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TextButton(
+              onPressed: () {
+                scaffoldKey.currentState!.openEndDrawer();
+              },
+              child: Row(
+                children: [
+                  (CacheManager.getAnaVeri!.userModel!.admin == "E" ? Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20) : IconHelper.smallIcon("User-Account"))
+                      .marginOnly(right: 5),
+                  Text(CacheManager.getAnaVeri!.userModel!.kuladi.toString(), style: theme.textTheme.bodyMedium),
+                ],
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Get.toNamed("/entryCompany", arguments: false);
+              },
+              child: Row(
+                children: [
+                  Icon(Icons.storage_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: 5),
+                  Text("${CacheManager.getVeriTabani()["Şirket"]} (${CacheManager.getVeriTabani()["Şube"]})", style: theme.textTheme.bodyMedium),
+                ],
+              ),
+            ),
+          ],
+        ),
       );
 
   bool get anaSayfaMi => items.any((element) => element.menuTipi != "A");

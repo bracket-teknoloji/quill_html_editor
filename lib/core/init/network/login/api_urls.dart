@@ -30,6 +30,7 @@ class ApiUrls {
   static const String saveCari = "Cari/SaveCari";
   static const String getCariDetay = "Cari/GetCariDetay";
   static const String deleteCari = "Cari/DeleteCari";
+  static const String deleteCariHareket = "Cari/DeleteCariHareket";
   static const String kodDegistir = "Cari/KodDegistir";
   //* E-Belge
   static const String getEFaturalar = "EBelge/GetEFaturalar";

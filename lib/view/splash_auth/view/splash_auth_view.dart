@@ -40,15 +40,18 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+        primary: true,
+        backgroundColor: Colors.transparent,
+        extendBodyBehindAppBar: true,
         floatingActionButton: Text.rich(
           TextSpan(
             children: [
               TextSpan(text: "Powered by ", style: TextStyle(color: theme.colorScheme.primary.withOpacity(0.8))),
-              const TextSpan(text: "Bracket Teknoloji\n", style: TextStyle(fontWeight: FontWeight.bold)),
+              const TextSpan(text: "Bracket Teknoloji", style: TextStyle(fontWeight: FontWeight.bold)),
             ],
           ),
         ),
-        floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerFloat,
+        floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerDocked,
         body: Stack(
           children: [
             WaveWidget(
@@ -62,41 +65,34 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
             Align(
               alignment: Alignment.bottomCenter,
               child: Wrap(
-                direction: Axis.vertical,
                 alignment: WrapAlignment.center,
                 crossAxisAlignment: WrapCrossAlignment.center,
+                direction: Axis.vertical,
                 children: [
-                  Wrap(
-                    alignment: WrapAlignment.center,
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    direction: Axis.vertical,
-                    children: [
-                      Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: const CircularProgressIndicator.adaptive().paddingAll(UIHelper.lowSize))),
-                      Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: Text(viewModel.title, maxLines: 10, textAlign: TextAlign.center))),
-                      Observer(
-                        builder: (_) => Visibility(
-                          visible: viewModel.isError,
-                          child: Row(
-                            children: [
-                              OutlinedButton(
-                                onPressed: login,
-                                child: const Text("Tekrar Dene"),
-                              ).paddingAll(UIHelper.lowSize),
-                              OutlinedButton(
-                                onPressed: () {
-                                  CacheManager.setLogout(false);
-                                  Get.offAllNamed("/login");
-                                },
-                                child: const Text("Ana Ekrana Dön"),
-                              ).paddingAll(UIHelper.lowSize),
-                            ],
-                          ),
-                        ),
+                  Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: const CircularProgressIndicator.adaptive().paddingAll(UIHelper.lowSize))),
+                  Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: Text(viewModel.title, maxLines: 10, textAlign: TextAlign.center))),
+                  Observer(
+                    builder: (_) => Visibility(
+                      visible: viewModel.isError,
+                      child: Row(
+                        children: [
+                          OutlinedButton(
+                            onPressed: login,
+                            child: const Text("Tekrar Dene"),
+                          ).paddingAll(UIHelper.lowSize),
+                          OutlinedButton(
+                            onPressed: () {
+                              CacheManager.setLogout(false);
+                              Get.offAllNamed("/login");
+                            },
+                            child: const Text("Ana Ekrana Dön"),
+                          ).paddingAll(UIHelper.lowSize),
+                        ],
                       ),
-                    ],
-                  ).paddingOnly(bottom: UIHelper.highSize * 7),
+                    ),
+                  ),
                 ],
-              ).paddingOnly(bottom: UIHelper.midSize),
+              ).paddingOnly(bottom: UIHelper.highSize * 7).paddingOnly(bottom: UIHelper.midSize),
             ),
             Center(
               child: Column(

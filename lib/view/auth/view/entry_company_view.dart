@@ -7,7 +7,6 @@ import "package:kartal/kartal.dart";
 import "../../../core/base/model/base_network_mixin.dart";
 import "../../../core/base/model/generic_response_model.dart";
 import "../../../core/base/state/base_state.dart";
-import "../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
 import "../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../core/constants/ui_helper/ui_helper.dart";
@@ -67,7 +66,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          centerTitle: false,
           leading: IconButton(
             onPressed: () {
               if (widget.isSplash ?? false) {
@@ -108,9 +106,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   autofocus: true,
                                   focusNode: focusNode,
                                   textInputAction: TextInputAction.next,
-                                  onTap: () {
-                                    sirketDialog(context);
-                                  },
+                                  onTap: () async => await sirketDialog(context),
                                 ),
                               ),
                               CustomWidgetWithLabel(
@@ -119,9 +115,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   controller: controller2,
                                   enabled: isletme?.ext.isNotNullOrEmpty,
                                   readOnly: true,
-                                  onTap: () {
-                                    isletmeDialog(context);
-                                  },
+                                  onTap: () async => await isletmeDialog(context),
                                   decoration: const InputDecoration(
                                     suffixIcon: Icon(Icons.more_horiz_outlined),
                                   ),
@@ -133,9 +127,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   controller: controller3,
                                   enabled: sube?.ext.isNotNullOrEmpty,
                                   readOnly: true,
-                                  onTap: () {
-                                    subeDialog(context);
-                                  },
+                                  onTap: () async => await subeDialog(context),
                                   decoration: const InputDecoration(
                                     suffixIcon: Icon(Icons.more_horiz_outlined),
                                   ),
@@ -223,8 +215,8 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
         ),
       );
 
-  dynamic subeDialog(BuildContext context) {
-    BottomSheetDialogManager().showRadioBottomSheetDialog(
+  Future subeDialog(BuildContext context) async {
+    await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
       title: "Şube Seçiniz",
       children: List.generate(
@@ -245,8 +237,8 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     );
   }
 
-  dynamic sirketDialog(BuildContext context) {
-    BottomSheetDialogManager().showRadioBottomSheetDialog(
+  Future sirketDialog(BuildContext context) async {
+    await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
       title: "Şirket Seçiniz",
       children: List.generate(
@@ -272,8 +264,8 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     );
   }
 
-  dynamic isletmeDialog(BuildContext context) {
-    BottomSheetDialogManager().showRadioBottomSheetDialog(
+  Future isletmeDialog(BuildContext context) async {
+    await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
       title: "İşletme Seçiniz",
       children: List.generate(

@@ -153,7 +153,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                       children: <BottomSheetModel?>[
                         BottomSheetModel(
                           title: "Cari İşlemleri",
-                          iconWidget: Icons.person_2_outlined,
+                          iconWidget: Icons.person_outline_outlined,
                           onTap: () {
                             Get.back();
                             dialogManager.showCariGridViewDialog(BaseSiparisEditModel.instance.cariModel);

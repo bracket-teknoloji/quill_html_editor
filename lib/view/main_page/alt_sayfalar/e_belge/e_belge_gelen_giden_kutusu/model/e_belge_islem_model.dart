@@ -1,0 +1,34 @@
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
+
+part "e_belge_islem_model.freezed.dart";
+part "e_belge_islem_model.g.dart";
+
+@unfreezed
+class EBelgeIslemModel with _$EBelgeIslemModel {
+  EBelgeIslemModel._();
+  factory EBelgeIslemModel({
+    String? aciklama,
+    String? belgeTuru,
+    String? ebelgeTuru,
+    String? kutuTuru,
+    int? inckeyno,
+    int? islemKodu,
+    String? resmiBelgeNo,
+    String? senaryoTipi,
+    String? zarfid,
+  }) = _EBelgeIslemModel;
+
+  factory EBelgeIslemModel.fromJson(Map<String, dynamic> json) => _$EBelgeIslemModelFromJson(json);
+
+  factory EBelgeIslemModel.fromEBelgeListesiModel(EBelgeListesiModel model) => EBelgeIslemModel(
+        aciklama: model.kontrolAciklama,
+        belgeTuru: model.belgeTuru,
+        ebelgeTuru: model.ebelgeTuru,
+        inckeyno: model.inckeyno,
+        islemKodu: model.cevapKodu,
+        resmiBelgeNo: model.resmiBelgeNo,
+        senaryoTipi: model.senaryo,
+        zarfid: model.zarfid,
+      );
+}

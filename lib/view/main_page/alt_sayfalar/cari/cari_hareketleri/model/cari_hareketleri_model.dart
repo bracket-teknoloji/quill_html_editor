@@ -39,6 +39,12 @@ class CariHareketleriModel with NetworkManagerMixin {
 
   bool get kasaMi => hareketKodu == "D";
 
+  bool get faturaMi => alisFaturaMi || satisFaturaMi;
+
+  bool get alisFaturaMi => belgeTipi == "AF";
+
+  bool get satisFaturaMi => belgeTipi == "SF";
+
   bool get musteriCekMi => hareketKodu == "G";
 
   bool get musteriSenediMi => hareketKodu == "E";

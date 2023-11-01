@@ -138,7 +138,7 @@ class CacheManager {
   /// BaseSiparisEditModel.instance.cariKodu
   /// ```
   /// {@end-tool}
-  static BaseSiparisEditModel? getSiparisEdit(String key) => siparisEditBox.get(key);
+  static BaseSiparisEditModel? getSiparisEdit(String cariKodu) => siparisEditBox.get(cariKodu);
   static List<BaseSiparisEditModel?> getSiparisEditList(SiparisTipiEnum siparisTipi) =>
       siparisEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel?>();
   static List<BaseSiparisEditModel>? getSiparisEditLists(SiparisTipiEnum siparisTipi) =>

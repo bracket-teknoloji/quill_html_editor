@@ -291,7 +291,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                         groupValue: viewModel.eBelgeRequestModel.basimDurumu,
                       ),
                     ),
-                  ).yetkiVarMi(viewModel.eBelgeRequestModel.eBelgeTuru != "EFT" || widget.eBelgeEnum == EBelgeEnum.gelen),
+                  ),
                   CustomWidgetWithLabel(
                     text: "Onay Durumu",
                     child: Observer(
@@ -302,7 +302,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                         groupValue: viewModel.eBelgeRequestModel.onayDurumu,
                       ),
                     ),
-                  ).yetkiVarMi(viewModel.eBelgeRequestModel.eBelgeTuru != "AFT" && widget.eBelgeEnum == EBelgeEnum.gelen),
+                  ).yetkiVarMi(viewModel.eBelgeRequestModel.eBelgeTuru != "AFT"),
                   CustomWidgetWithLabel(
                     text: "Netsis'e İşlenme Durumu",
                     child: Observer(
@@ -313,7 +313,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                         groupValue: viewModel.eBelgeRequestModel.islendi,
                       ),
                     ),
-                  ).yetkiVarMi(viewModel.eBelgeRequestModel.eBelgeTuru != "EFT" && widget.eBelgeEnum == EBelgeEnum.gelen),
+                  ).yetkiVarMi(widget.eBelgeEnum == EBelgeEnum.gelen),
                   CustomWidgetWithLabel(
                     text: "Kontrol Edildi",
                     child: Observer(
@@ -324,7 +324,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                         groupValue: viewModel.eBelgeRequestModel.kontrolEdildi,
                       ),
                     ),
-                  ).yetkiVarMi(viewModel.eBelgeRequestModel.eBelgeTuru == "AFT" && widget.eBelgeEnum == EBelgeEnum.gelen),
+                  ).yetkiVarMi(widget.eBelgeEnum == EBelgeEnum.gelen),
                 ],
               ).yetkiVarMi(viewModel.digerGoster),
 

@@ -12,6 +12,7 @@ import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/view/surum_yenilikleri/view/surum_yenilikleri_view.dart";
 import "package:picker/core/constants/enum/e_belge_enum.dart";
+import "package:picker/view/auth/entry_company/view/entry_company_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/borc_alacak_dokumu_raporu/view/cari_borc_alacak_dokumu_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/view/e_belge_gelen_giden_kutusu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_pdf/view/e_belge_pdf_view.dart";
@@ -33,7 +34,6 @@ import "view/add_company/model/account_model.dart";
 import "view/add_company/view/add_account_view.dart";
 import "view/add_company/view/company_page.dart";
 import "view/auth/login/view/login_view.dart";
-import "view/auth/view/entry_company_view.dart";
 import "view/main_page/alt_sayfalar/cari/base_cari_edit/view/base_cari_edit_view.dart";
 import "view/main_page/alt_sayfalar/cari/cari_hareket_yeni_kayit/view/cari_hareket_yeni_kayit_view.dart";
 import "view/main_page/alt_sayfalar/cari/cari_hareketleri/view/cari_hareketleri_view.dart";
@@ -176,7 +176,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/kasaKasaEkstreRaporu", page: () => const KasaEkstreRaporuView()),
 
               //* * Hızlı İşlemler
-              GetPage(name: "/krediKartiTahsilati", page: () =>  KrediKartiTahsilatiView(cariListesiModel: Get.arguments)),
+              GetPage(name: "/krediKartiTahsilati", page: () => KrediKartiTahsilatiView(cariListesiModel: Get.arguments)),
               GetPage(name: "/nakitTahsilat", page: () => NakitOdemeView(tahsilatMi: true, cariListesiModel: Get.arguments)),
               GetPage(name: "/nakitOdeme", page: () => NakitOdemeView(cariListesiModel: Get.arguments)),
               GetPage(name: "/muhtelifTahsilat", page: () => const MuhtelifOdemeView(tahsilatMi: true)),
