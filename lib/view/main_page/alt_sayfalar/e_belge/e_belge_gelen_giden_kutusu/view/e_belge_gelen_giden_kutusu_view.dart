@@ -152,7 +152,15 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                   itemCount: (viewModel.eBelgeListesi?.length ?? 0) + 1,
                   itemBuilder: (context, index) {
                     if (index < (viewModel.eBelgeListesi?.length ?? 0)) {
-                      return EFaturaListesiCard(eBelgeListesiModel: viewModel.eBelgeListesi![index], eBelgeEnum: widget.eBelgeEnum);
+                      return EFaturaListesiCard(
+                        eBelgeListesiModel: viewModel.eBelgeListesi![index],
+                        eBelgeEnum: widget.eBelgeEnum,
+                        onRefresh: (value)async{
+                          if (value){
+                          await viewModel.resetPage();
+                          }
+                        },
+                      );
                     } else if (index == viewModel.eBelgeListesi?.length) {
                       return Observer(
                         builder: (_) => Visibility(

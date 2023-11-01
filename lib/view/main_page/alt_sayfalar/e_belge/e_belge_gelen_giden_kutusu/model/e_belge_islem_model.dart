@@ -17,6 +17,9 @@ class EBelgeIslemModel with _$EBelgeIslemModel {
     String? resmiBelgeNo,
     String? senaryoTipi,
     String? zarfid,
+    String? belgeNo,
+    String? cariKodu,
+    DateTime? iptalTarihi,
   }) = _EBelgeIslemModel;
 
   factory EBelgeIslemModel.fromJson(Map<String, dynamic> json) => _$EBelgeIslemModelFromJson(json);
@@ -30,5 +33,8 @@ class EBelgeIslemModel with _$EBelgeIslemModel {
         resmiBelgeNo: model.resmiBelgeNo,
         senaryoTipi: model.senaryo,
         zarfid: model.zarfid,
+        belgeNo: model.belgeNo,
+        cariKodu: model.cariKodu,
+        iptalTarihi: model.iptalTarihi,
       );
 }

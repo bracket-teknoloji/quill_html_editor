@@ -18,6 +18,11 @@ _$EBelgeIslemModelImpl _$$EBelgeIslemModelImplFromJson(
       resmiBelgeNo: json['RESMI_BELGE_NO'] as String?,
       senaryoTipi: json['SENARYO_TIPI'] as String?,
       zarfid: json['ZARFID'] as String?,
+      belgeNo: json['BELGE_NO'] as String?,
+      cariKodu: json['CARI_KODU'] as String?,
+      iptalTarihi: json['IPTAL_TARIHI'] == null
+          ? null
+          : DateTime.parse(json['IPTAL_TARIHI'] as String),
     );
 
 Map<String, dynamic> _$$EBelgeIslemModelImplToJson(
@@ -39,5 +44,8 @@ Map<String, dynamic> _$$EBelgeIslemModelImplToJson(
   writeNotNull('RESMI_BELGE_NO', instance.resmiBelgeNo);
   writeNotNull('SENARYO_TIPI', instance.senaryoTipi);
   writeNotNull('ZARFID', instance.zarfid);
+  writeNotNull('BELGE_NO', instance.belgeNo);
+  writeNotNull('CARI_KODU', instance.cariKodu);
+  writeNotNull('IPTAL_TARIHI', instance.iptalTarihi?.toIso8601String());
   return val;
 }

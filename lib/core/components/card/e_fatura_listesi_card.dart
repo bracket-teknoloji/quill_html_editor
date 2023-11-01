@@ -26,8 +26,9 @@ import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/sipa
 
 class EFaturaListesiCard extends StatefulWidget {
   final EBelgeListesiModel eBelgeListesiModel;
+  final ValueChanged<bool> onRefresh;
   final EBelgeEnum eBelgeEnum;
-  const EFaturaListesiCard({super.key, required this.eBelgeListesiModel, required this.eBelgeEnum});
+  const EFaturaListesiCard({super.key, required this.eBelgeListesiModel, required this.eBelgeEnum, required this.onRefresh});
 
   @override
   State<EFaturaListesiCard> createState() => _EFaturaListesiCardState();
@@ -54,7 +55,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                 ),
                 BottomSheetModel(
                   title: "E-Belge Eşleştir",
-                  iconWidget: Icons.preview_outlined,
+                  iconWidget: Icons.link_outlined,
                   onTap: () async {
                     Get.back();
                     await dialogManager.showAreYouSureDialog(() async {
@@ -67,16 +68,16 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                               ..kutuTuru = "GET")
                             .toJson(),
                       );
+                      widget.onRefresh.call(result.success == true);
                       if (result.success == true) {
-                        Get.back();
                         dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
                       }
                     });
                   },
-                ),
+                ).yetkiKontrol(model.gelen == "E"),
                 BottomSheetModel(
                   title: "Kontrol Durumunu Değiştir",
-                  iconWidget: Icons.preview_outlined,
+                  iconWidget: Icons.rule_outlined,
                   onTap: () async {
                     Get.back();
                     final TextEditingController controller = TextEditingController(text: model.kontrolAciklama ?? "KONTROL EDİLDİ");
@@ -106,6 +107,8 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                                       ..kutuTuru = "GET")
                                     .toJson(),
                               );
+
+                              widget.onRefresh.call(result.success == true);
                               if (result.success == true) {
                                 Get.back();
                                 dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
@@ -117,7 +120,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                       ).paddingAll(UIHelper.lowSize),
                     );
                   },
-                ),
+                ).yetkiKontrol(model.gelen == "E"),
                 BottomSheetModel(
                   title: "${SiparisTipiEnum.values.firstWhere((element) => element.rawValue == model.belgeTuru).getName} Görüntüle",
                   iconWidget: Icons.search_outlined,
@@ -132,7 +135,60 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                       ),
                     );
                   },
-                ).yetkiKontrol(model.faturaIslendi == "E" || model.gelen != "E"),
+                ).yetkiKontrol(model.faturaIslendi == "E" || model.gelen != "E" && model.iptalEdildi != "E"),
+                BottomSheetModel(
+                  title: "Harici Yolla Fatura İptali",
+                  iconWidget: Icons.delete_outline_outlined,
+                  onTap: () async {
+                    Get.back();
+                    final DateTime? result = await dialogManager.showDateTimePicker();
+                    if (result == null) {
+                      return;
+                    } else {
+                      model.iptalTarihi = result;
+                    }
+                    await dialogManager.showAreYouSureDialog(
+                      () async {
+                        final result = await networkManager.dioPost(
+                          path: ApiUrls.eBelgeIslemi,
+                          bodyModel: EBelgeListesiModel(),
+                          showLoading: true,
+                          data: (EBelgeIslemModel.fromEBelgeListesiModel(model)
+                                ..islemKodu = EBelgeIslemKoduEnum.eBelgeHariciYollaFaturaIptali.value
+                                ..kutuTuru = "GIK")
+                              .toJson(),
+                        );
+                        widget.onRefresh.call(result.success == true);
+                        if (result.success == true) {
+                          dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+                        }
+                      },
+                      title: "İptal Tarihi: ${result.toDateString}\nFatura harici yolla iptal edilsin mi?",
+                    );
+                  },
+                ).yetkiKontrol(model.gelen != "E" && model.iptalEdildi != "E"),
+                BottomSheetModel(
+                  title: "Zarfı Sil",
+                  iconWidget: Icons.delete_outline_outlined,
+                  onTap: () async {
+                    Get.back();
+                    await dialogManager.showAreYouSureDialog(() async {
+                      final result = await networkManager.dioPost(
+                        path: ApiUrls.eBelgeIslemi,
+                        bodyModel: EBelgeListesiModel(),
+                        showLoading: true,
+                        data: (EBelgeIslemModel.fromEBelgeListesiModel(model)
+                              ..islemKodu = EBelgeIslemKoduEnum.eBelgeZarfSil.value
+                              ..kutuTuru = "GIK")
+                            .toJson(),
+                      );
+                      widget.onRefresh.call(result.success == true);
+                      if (result.success == true) {
+                        dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+                      }
+                    });
+                  },
+                ).yetkiKontrol(model.gelen != "E" && model.uyariMi),
                 BottomSheetModel(
                   title: "Cari İşlemleri",
                   iconWidget: Icons.person_outline_outlined,
@@ -140,7 +196,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                     Get.back();
                     dialogManager.showCariGridViewDialog(CariListesiModel(cariKodu: model.cariKodu));
                   },
-                ),
+                ).yetkiKontrol(model.gelen != "E"),
               ].nullCheckWithGeneric,
             );
           },
