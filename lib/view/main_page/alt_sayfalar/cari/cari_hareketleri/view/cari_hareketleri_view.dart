@@ -242,25 +242,12 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                           ),
                                         );
                                       } else if (model.kasaMi) {
-                                        final result = await networkManager.dioGet(
-                                          path: ApiUrls.getCariler,
-                                          bodyModel: CariListesiModel(),
-                                          showLoading: true,
-                                          queryParameters: {"filterText": "", "Kod": model.cariKodu, "EFaturaGoster": true, "KisitYok": true, "Secildi": "E", "PlasiyerKisitiYok": true},
-                                        );
-
-                                        await Get.toNamed(
-                                          "/mainPage/kasaHareketDetayi",
-                                          arguments: (result.data as List).firstOrNull,
-                                        );
+                                        await Get.toNamed("/mainPage/kasaHareketDetayi", arguments: model);
                                       } else {
-                                        await Get.toNamed(
-                                          "/mainPage/cariYeniKayit",
-                                          arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.goruntule, model: model),
-                                        );
+                                        await Get.toNamed("/mainPage/cariYeniKayit", arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.goruntule, model: model));
                                       }
                                     },
-                                  ).yetkiKontrol((model.devirMi || model.faturaMi) && yetkiController.cariHareketleriHarDetayGorsun),
+                                  ).yetkiKontrol(!model.dekontMu && yetkiController.cariHareketleriHarDetayGorsun),
                                   BottomSheetModel(
                                     iconWidget: Icons.preview_outlined,
                                     title: "E-Belge Görüntüle",

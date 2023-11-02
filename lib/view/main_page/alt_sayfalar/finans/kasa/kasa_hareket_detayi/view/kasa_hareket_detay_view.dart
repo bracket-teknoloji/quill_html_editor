@@ -1,11 +1,19 @@
 import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_hareket_detayi/view_model/kasa_hareket_detay_view_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/model/kasa_islemleri_request_model.dart";
 
 class KasaHareketDetayiView extends StatefulWidget {
-  final CariListesiModel cariListesiModel;
+  final CariHareketleriModel cariListesiModel;
   const KasaHareketDetayiView({super.key, required this.cariListesiModel});
 
   @override
@@ -13,7 +21,51 @@ class KasaHareketDetayiView extends StatefulWidget {
 }
 
 class _KasaHareketDetayiViewState extends BaseState<KasaHareketDetayiView> {
-  CariListesiModel get model => widget.cariListesiModel;
+  late final KasaHareketDetayViewModel viewModel;
+  CariHareketleriModel get model => widget.cariListesiModel;
+  late final TextEditingController _tarihController;
+  late final TextEditingController _kasaController;
+  late final TextEditingController _belgeNoController;
+  late final TextEditingController _gelirGiderController;
+  late final TextEditingController _tutarController;
+  late final TextEditingController _aciklamaController;
+  @override
+  void initState() {
+    viewModel = KasaHareketDetayViewModel(kasaIslemleriRequestModel: KasaIslemleriRequestModel.fromCariHareketleriModel(model));
+    _tarihController = TextEditingController();
+    _kasaController = TextEditingController();
+    _belgeNoController = TextEditingController();
+    _gelirGiderController = TextEditingController();
+    _tutarController = TextEditingController();
+    _aciklamaController = TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await viewModel.getData();
+      if (viewModel.kasaIslemleriModel != null) {
+        _tarihController.text = viewModel.kasaIslemleriModel?.tarih.toDateString ?? "";
+        _kasaController.text = viewModel.kasaIslemleriModel?.kasaAdi ?? "";
+        _belgeNoController.text = viewModel.kasaIslemleriModel?.belgeNo ?? "";
+        _gelirGiderController.text = viewModel.kasaIslemleriModel?.gc == "G" ? "Gelir" : "Gider";
+        _tutarController.text = "${viewModel.kasaIslemleriModel?.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${viewModel.kasaIslemleriModel?.dovizAdi ?? mainCurrency}";
+        _aciklamaController.text = viewModel.kasaIslemleriModel?.aciklama ?? "";
+      } else {
+        await dialogManager.showAlertDialog(viewModel.message ?? "Kasa hareketi bulunamadı.");
+        Get.back();
+      }
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _tarihController.dispose();
+    _kasaController.dispose();
+    _belgeNoController.dispose();
+    _gelirGiderController.dispose();
+    _tutarController.dispose();
+    _aciklamaController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -22,42 +74,39 @@ class _KasaHareketDetayiViewState extends BaseState<KasaHareketDetayiView> {
             subtitle: model.cariAdi,
           ),
         ),
-        body: const SingleChildScrollView(
+        body: SingleChildScrollView(
           child: Column(
             children: [
               Row(
                 children: [
                   Expanded(
-                    child: CustomTextField(),
+                    child: CustomTextField(labelText: "Tarih", controller: _tarihController, readOnly: true),
                   ),
                   Expanded(
-                    child: CustomTextField(),
+                    child: CustomTextField(labelText: "Kasa", controller: _kasaController, readOnly: true, valueWidget: Observer(builder: (_) => Text(viewModel.kasaIslemleriModel?.kasaKodu ?? ""))),
                   ),
                 ],
               ),
               Row(
                 children: [
                   Expanded(
-                    child: CustomTextField(),
+                    child: CustomTextField(labelText: "Belge No", controller: _belgeNoController, readOnly: true),
                   ),
                   Expanded(
-                    child: CustomTextField(),
+                    child: CustomTextField(labelText: "Gelir/Gider", controller: _gelirGiderController, readOnly: true),
                   ),
                 ],
               ),
               Row(
                 children: [
                   Expanded(
-                    child: CustomTextField(),
-                  ),
-                  Expanded(
-                    child: CustomTextField(),
+                    child: CustomTextField(labelText: "Tutar", controller: _tutarController, readOnly: true),
                   ),
                 ],
               ),
-              CustomTextField(),
+              CustomTextField(labelText: "Açıklama", controller: _aciklamaController, readOnly: true),
             ],
-          ),
+          ).paddingAll(UIHelper.lowSize),
         ),
       );
 }

@@ -123,7 +123,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
   @override
   Widget build(BuildContext context) => WillPopScope(
         onWillPop: () async {
-          if (widget.model?.baseEditEnum != BaseEditEnum.goruntule) {
+          if (widget.model?.baseEditEnum == BaseEditEnum.goruntule) {
             return true;
           }
           bool result = false;
