@@ -32,6 +32,7 @@ class CariHareketlerCard extends StatefulWidget {
 
 class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
   bool get dovizliMi => widget.cariHareketleriModel.dovizliMi || widget.dovizTipi != null;
+  CariHareketleriModel get model => widget.cariHareketleriModel;
   @override
   Widget build(BuildContext context) => Slidable(
         enabled: widget.cariHareketleriModel.hareketAciklama != "Dekont",
@@ -41,17 +42,19 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
             SlidableAction(
               autoClose: true,
               onPressed: (context) async {
-                if (widget.cariHareketleriModel.hareketKodu == "A") {
-                  await Get.toNamed("/mainPage/cariYeniKayit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.goruntule, model: widget.cariHareketleriModel));
-                } else if (widget.cariHareketleriModel.hareketKodu == "B") {
+                if (model.faturaMi) {
                   await Get.toNamed(
                     "/mainPage/faturaEdit",
                     arguments: BaseEditModel(
                       baseEditEnum: BaseEditEnum.goruntule,
-                      model: SiparisEditRequestModel.fromCariHareketleriModel(widget.cariHareketleriModel),
-                      siparisTipiEnum: (SiparisTipiEnum.alisFatura).getSiparisTipiEnumWithRawValue(widget.cariHareketleriModel.belgeTipi),
+                      siparisTipiEnum: SiparisTipiEnum.alisFatura.getSiparisTipiEnumWithRawValue(model.belgeTipi),
+                      model: SiparisEditRequestModel.fromCariHareketleriModel(model),
                     ),
                   );
+                } else if (model.kasaMi) {
+                  await Get.toNamed("/mainPage/kasaHareketDetayi", arguments: model);
+                } else {
+                  await Get.toNamed("/mainPage/cariYeniKayit", arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.goruntule, model: model));
                 }
               },
               icon: Icons.route_outlined,

@@ -15,13 +15,13 @@ abstract class _StokListesiViewModelBase with Store {
   String? bakiyeGroupValue = "Tümü";
 
   @observable
-  ObservableMap<String, MemoryImage> imageMap = <String, MemoryImage>{}.asObservable();
+  ObservableMap<String, MemoryImage?> imageMap = <String, MemoryImage?>{}.asObservable();
 
   @action
-  void setImageMap(Map<String, MemoryImage> value) => imageMap = value.asObservable();
+  void setImageMap(Map<String, MemoryImage?> value) => imageMap = value.asObservable();
 
   @action
-  void addImageMap(Map<String, MemoryImage> value) => imageMap.addAll(value);
+  void addImageMap(Map<String, MemoryImage?> value) => imageMap.addAll(value);
 
   @action
   void removeImageMap(String key) => imageMap.remove(key);

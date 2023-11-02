@@ -711,7 +711,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     }
     final GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: data2, bodyModel: StokListesiModel());
     if (response.success ?? false) {
-      final Map<String, MemoryImage> imageMap = {};
+      final Map<String, MemoryImage?> imageMap = {};
       final List<StokListesiModel>? liste = response.data.map((e) => e as StokListesiModel).toList().cast<StokListesiModel>();
 
       if (viewModel.sayfa == 1) {
@@ -751,7 +751,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     }
   }
 
-  Future<MemoryImage> getImage(String path) async => await networkManager.getImage(path);
+  Future<MemoryImage?> getImage(String path) async => await networkManager.getImage(path);
 
   void deleteStok(String stokKodu) {
     dialogManager.showAreYouSureDialog(() async {

@@ -210,12 +210,32 @@ class NetworkManager {
   Future<GenericResponseModel> deleteFatura(EditFaturaModel model, {bool showError = true, bool showLoading = true}) =>
       dioPost<EditFaturaModel>(path: ApiUrls.deleteFatura, bodyModel: const EditFaturaModel(), data: model.toJson(), showError: showError, showLoading: showLoading);
 
-  Future<MemoryImage> getImage(String path) async {
+  Future<MemoryImage?> getImage(String path) async {
     final Map<String, String> head = getStandardHeader(true, true, true);
     final response = await dio.get(path, options: Options(headers: head, responseType: ResponseType.bytes));
     log(response.data.toString());
     // response is a png file
-    return MemoryImage(response.data);
+    try {
+      if (response.data is Uint8List) {
+        return MemoryImage(response.data);
+      }else {
+        return null;
+      }
+    } catch (e) {
+      log(e.toString());
+      return null;
+    }
+  }
+
+  Future<Uint8List?> getImageUint8List(String path) async {
+    final Map<String, String> head = getStandardHeader(true, true, true);
+    final response = await dio.get(path, options: Options(headers: head, responseType: ResponseType.bytes));
+    log(response.data.toString());
+    // response is a png file
+    if (response.data is Uint8List) {
+      return response.data;
+    }
+    return null;
   }
 
   Future<GenericResponseModel> getPDF(PdfModel model) async {
@@ -234,7 +254,11 @@ class NetworkManager {
       addSirketBilgileri: true,
       queryParameters: {"Modul": name, "GrupNo": grupNo},
     );
-    return responseKod.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
+    if (responseKod.success != true) {
+      return [];
+    } else {
+      return responseKod.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
+    }
   }
 
   Map<String, String> getStandardHeader(bool addTokenKey, [bool headerSirketBilgileri = false, bool headerCKey = false]) {

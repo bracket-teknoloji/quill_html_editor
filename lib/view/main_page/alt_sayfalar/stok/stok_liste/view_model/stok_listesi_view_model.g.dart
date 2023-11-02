@@ -79,13 +79,13 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
       Atom(name: '_StokListesiViewModelBase.imageMap', context: context);
 
   @override
-  ObservableMap<String, MemoryImage> get imageMap {
+  ObservableMap<String, MemoryImage?> get imageMap {
     _$imageMapAtom.reportRead();
     return super.imageMap;
   }
 
   @override
-  set imageMap(ObservableMap<String, MemoryImage> value) {
+  set imageMap(ObservableMap<String, MemoryImage?> value) {
     _$imageMapAtom.reportWrite(value, super.imageMap, () {
       super.imageMap = value;
     });
@@ -271,7 +271,7 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
       ActionController(name: '_StokListesiViewModelBase', context: context);
 
   @override
-  void setImageMap(Map<String, MemoryImage> value) {
+  void setImageMap(Map<String, MemoryImage?> value) {
     final _$actionInfo = _$_StokListesiViewModelBaseActionController
         .startAction(name: '_StokListesiViewModelBase.setImageMap');
     try {
@@ -282,7 +282,7 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
   }
 
   @override
-  void addImageMap(Map<String, MemoryImage> value) {
+  void addImageMap(Map<String, MemoryImage?> value) {
     final _$actionInfo = _$_StokListesiViewModelBaseActionController
         .startAction(name: '_StokListesiViewModelBase.addImageMap');
     try {
