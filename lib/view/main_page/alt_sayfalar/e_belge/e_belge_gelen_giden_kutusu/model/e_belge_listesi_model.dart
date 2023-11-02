@@ -105,4 +105,6 @@ extension EBelgeListesiModelExtensions on EBelgeListesiModel {
   bool get basariylaGonderildiMi => basariylaGonderildi == "E";
 
   bool get zarfSilinebilirMi => zarfSilinebilir == "E";
+
+  bool get kabulEdildiMi => true;
 }

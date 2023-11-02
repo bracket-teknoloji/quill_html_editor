@@ -44,8 +44,14 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
     ];
     tabController = TabController(length: tabList.length, vsync: this);
     return WillPopScope(
-      //TODO! BURAYA BAK
-      onWillPop: () async => true,
+      onWillPop: () async {
+        if (widget.model?.baseEditEnum == BaseEditEnum.goruntule) {
+          return true;
+        }
+        bool result = false;
+        await dialogManager.showAreYouSureDialog(() async => result = true);
+        return result;
+      },
       child: DefaultTabController(
         length: tabList.length,
         child: Scaffold(
