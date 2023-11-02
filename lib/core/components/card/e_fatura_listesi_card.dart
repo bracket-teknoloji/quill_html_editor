@@ -41,21 +41,22 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
 
   @override
   Widget build(BuildContext context) => Card(
-        color: model.cariKodu != null ? ColorPalette.mantis.withOpacity(0.5) : null,
+        color: model.faturaIslendiMi ? ColorPalette.mantis.withOpacity(0.5) : null,
         child: ListTile(
           onTap: () async {
             await bottomSheetDialogManager.showBottomSheetDialog(
               context,
               title: model.cariAdi ?? "",
               children: [
-                eBelgeGoruntule(),
-                eBelgeEslestir().yetkiKontrol(model.gelen == "E"),
-                kontrolDegistir(context).yetkiKontrol(model.gelen == "E" && model.ebelgeTuru == "EFT"),
-                faturaGoruntule().yetkiKontrol(model.faturaIslendi == "E" || model.gelen != "E" && model.iptalEdildi != "E"),
-                faturaIptali().yetkiKontrol(model.gelen != "E" && model.iptalEdildi != "E" && model.ebelgeTuru == "EFT"),
-                zarfiSil().yetkiKontrol(model.zarfSilinebilir == "E"),
-                cariIslemleri().yetkiKontrol(model.gelen != "E" && model.cariKodu != null),
-                yazdir().yetkiKontrol(!(model.gelen == "E" && model.ebelgeTuru == "AFT")),
+                eBelgeGoruntule,
+                faturaGoruntule.yetkiKontrol((model.faturaIslendiMi || !model.gelenMi) && !model.iptalEdildiMi),
+                eBelgeEslestir.yetkiKontrol(model.gelenMi && !model.faturaIslendiMi && model.eFaturaMi),
+                eBelgeEslestirmeIptali.yetkiKontrol(model.gelenMi && model.faturaIslendiMi && model.eFaturaMi),
+                kontrolDegistir.yetkiKontrol(model.gelenMi && model.eFaturaMi),
+                faturaIptali.yetkiKontrol(!model.gelenMi && !model.iptalEdildiMi && model.eFaturaMi && !model.taslakMi),
+                zarfiSil.yetkiKontrol(model.zarfSilinebilirMi),
+                cariIslemleri.yetkiKontrol((!model.gelenMi && model.eArsivMi) || (model.kayitliCariKodu != null && model.eFaturaMi) || (!model.gelenMi && model.eFaturaMi)),
+                yazdir.yetkiKontrol(!(model.gelenMi && model.eArsivMi)),
               ].nullCheckWithGeneric,
             );
           },
@@ -72,13 +73,13 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
               Text(model.cariAdi ?? ""),
               Row(
                 children: [
-                  InkWell(onTap: showCevapAciklamaSnackBar, child: const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili).yetkiVarMi(model.basariylaGonderildi == "E")),
-                  const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizAdi != null),
-                  const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.taslak == "E"),
+                  InkWell(onTap: showCevapAciklamaSnackBar, child: const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili).yetkiVarMi(model.basariylaGonderildiMi)),
+                  const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizliMi),
+                  const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.taslakMi),
                   const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi(model.uyariMi),
-                  const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.onayDurumKodu == "1"),
-                  ColorfulBadge(label: Text("İptal (${model.iptalTarihi.toDateString})"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.iptalEdildi == "E"),
-                  Icon(Icons.print_outlined, size: UIHelper.highSize).yetkiVarMi(model.basimYapildi == "E"),
+                  const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.reddedildiMi),
+                  ColorfulBadge(label: Text("İptal (${model.iptalTarihi.toDateString})"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.iptalEdildiMi),
+                  Icon(Icons.print_outlined, size: UIHelper.highSize).yetkiVarMi(model.basimYapildiMi),
                 ].map((e) => e is! SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
                 // const ColorfulBadge(label: Text("Hata"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.basariylaGonderildi != "E"),
               ).paddingSymmetric(vertical: UIHelper.lowSize),
@@ -97,8 +98,8 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                           Text(" Senaryo: ${model.senaryo ?? ""}"),
                         ],
                       ),
-                    ).yetkiVarMi(widget.eBelgeEnum == EBelgeEnum.giden),
-                    Text("Senaryo: ${model.senaryo ?? ""}").yetkiVarMi(widget.eBelgeEnum == EBelgeEnum.gelen),
+                    ).yetkiVarMi(!model.gelenMi),
+                    Text("Senaryo: ${model.senaryo ?? ""}").yetkiVarMi(model.gelenMi),
                     Text("Tipi: ${model.faturaTipi ?? ""}"),
                     Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${model.dovizAdi ?? mainCurrency}"),
                   ];
@@ -113,7 +114,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                           Text(" Cevap Kodu: ${model.cevapKodu ?? ""}"),
                         ],
                       ),
-                    ).yetkiVarMi(widget.eBelgeEnum == EBelgeEnum.giden),
+                    ).yetkiVarMi(!model.gelenMi),
                     Text("Tipi: ${model.faturaTipi ?? ""}"),
                     Text("Gönderme Şekli: ${model.gondermeDurumu ?? ""}"),
                     Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
@@ -130,12 +131,12 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                           Text(" Cevap Kodu: ${model.cevapKodu ?? ""}"),
                         ],
                       ),
-                    ).yetkiVarMi(widget.eBelgeEnum == EBelgeEnum.giden),
+                    ).yetkiVarMi(!model.gelenMi),
                   ];
 
-                  final List<Widget> selectedList = model.ebelgeTuru == "EFT"
+                  final List<Widget> selectedList = model.eFaturaMi
                       ? efaturaList
-                      : model.ebelgeTuru == "AFT"
+                      : model.eArsivMi
                           ? eArsivList
                           : eIrsaliyeList;
                   return Wrap(
@@ -152,7 +153,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
         ),
       );
 
-  BottomSheetModel eBelgeGoruntule() => BottomSheetModel(
+  BottomSheetModel get eBelgeGoruntule => BottomSheetModel(
         title: "E-Belge Görüntüle",
         iconWidget: Icons.preview_outlined,
         onTap: () {
@@ -161,7 +162,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
         },
       );
 
-  BottomSheetModel kontrolDegistir(BuildContext context) => BottomSheetModel(
+  BottomSheetModel get kontrolDegistir => BottomSheetModel(
         title: "Kontrol Durumunu Değiştir",
         iconWidget: Icons.rule_outlined,
         onTap: () async {
@@ -174,7 +175,14 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text("* Kontrolü kaldırmak için açıklamayı boş bırakın.", style: theme.textTheme.bodyLarge?.copyWith(color: UIHelper.primaryColor)).yetkiVarMi(model.kontrolAciklama != null),
-                CustomTextField(labelText: "Kontrol Açıklaması", controller: controller),
+                CustomTextField(
+                  labelText: "Kontrol Açıklaması",
+                  controller: controller,
+                  suffix: IconButton(
+                    onPressed: controller.clear,
+                    icon: const Icon(Icons.close_outlined),
+                  ),
+                ),
                 ElevatedButton(
                   onPressed: () async {
                     if (controller.text == "") {
@@ -208,30 +216,58 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
         },
       );
 
-  BottomSheetModel eBelgeEslestir() => BottomSheetModel(
+  BottomSheetModel get eBelgeEslestir => BottomSheetModel(
         title: "E-Belge Eşleştir",
         iconWidget: Icons.link_outlined,
         onTap: () async {
           Get.back();
-          await dialogManager.showAreYouSureDialog(() async {
-            final result = await networkManager.dioPost(
-              path: ApiUrls.eBelgeIslemi,
-              bodyModel: EBelgeListesiModel(),
-              showLoading: true,
-              data: (EBelgeIslemModel.fromEBelgeListesiModel(model)
-                    ..islemKodu = EBelgeIslemKoduEnum.eBelgeBirlestir.value
-                    ..kutuTuru = "GET")
-                  .toJson(),
-            );
-            widget.onRefresh.call(result.success == true);
-            if (result.success == true) {
-              dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
-            }
-          });
+          await dialogManager.showAreYouSureDialog(
+            () async {
+              final result = await networkManager.dioPost(
+                path: ApiUrls.eBelgeIslemi,
+                bodyModel: EBelgeListesiModel(),
+                showLoading: true,
+                data: (EBelgeIslemModel.fromEBelgeListesiModel(model)
+                      ..islemKodu = EBelgeIslemKoduEnum.eBelgeBirlestir.value
+                      ..kutuTuru = "GET")
+                    .toJson(),
+              );
+              widget.onRefresh.call(result.success == true);
+              if (result.success == true) {
+                dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+              }
+            },
+            title: "E-Belge Eşleştirilsin mi?",
+          );
+        },
+      );
+  BottomSheetModel get eBelgeEslestirmeIptali => BottomSheetModel(
+        title: "E-Belge Eşleştirme İptali",
+        iconWidget: Icons.close_outlined,
+        onTap: () async {
+          Get.back();
+          await dialogManager.showAreYouSureDialog(
+            () async {
+              final result = await networkManager.dioPost(
+                path: ApiUrls.eBelgeIslemi,
+                bodyModel: EBelgeListesiModel(),
+                showLoading: true,
+                data: (EBelgeIslemModel.fromEBelgeListesiModel(model)
+                      ..islemKodu = EBelgeIslemKoduEnum.eBelgeEslestirmeIptali.value
+                      ..kutuTuru = "GET")
+                    .toJson(),
+              );
+              widget.onRefresh.call(result.success == true);
+              if (result.success == true) {
+                dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+              }
+            },
+            title: "E-Belge Eşleştirme İptal Edilsin mi?",
+          );
         },
       );
 
-  BottomSheetModel yazdir() => BottomSheetModel(
+  BottomSheetModel get yazdir => BottomSheetModel(
         title: "Yazdır",
         iconWidget: Icons.print_outlined,
         onTap: () async {
@@ -312,16 +348,23 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
         },
       );
 
-  BottomSheetModel cariIslemleri() => BottomSheetModel(
+  BottomSheetModel get cariIslemleri => BottomSheetModel(
         title: "Cari İşlemleri",
         iconWidget: Icons.person_outline_outlined,
         onTap: () async {
           Get.back();
-          dialogManager.showCariGridViewDialog(CariListesiModel(cariKodu: model.cariKodu, cariAdi: model.cariAdi, cariIl: model.cariIl, cariIlce: model.cariIlce));
+          final result = await networkManager.dioGet(
+            path: ApiUrls.getCariler,
+            bodyModel: CariListesiModel(),
+            showLoading: true,
+            queryParameters: {"filterText": "", "Kod": model.kayitliCariKodu, "EFaturaGoster": true, "KisitYok": true, "BelgeTuru": model.belgeTuru, "PlasiyerKisitiYok": true},
+          );
+
+          dialogManager.showCariGridViewDialog((result.data as List).firstOrNull);
         },
       );
 
-  BottomSheetModel zarfiSil() => BottomSheetModel(
+  BottomSheetModel get zarfiSil => BottomSheetModel(
         title: "Zarfı Sil",
         iconWidget: Icons.delete_outline_outlined,
         onTap: () async {
@@ -344,7 +387,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
         },
       );
 
-  BottomSheetModel faturaIptali() => BottomSheetModel(
+  BottomSheetModel get faturaIptali => BottomSheetModel(
         title: "Harici Yolla Fatura İptali",
         iconWidget: Icons.delete_outline_outlined,
         onTap: () async {
@@ -376,9 +419,9 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
         },
       );
 
-  BottomSheetModel faturaGoruntule() => BottomSheetModel(
+  BottomSheetModel get faturaGoruntule => BottomSheetModel(
         title: "${SiparisTipiEnum.values.firstWhere((element) => element.rawValue == model.belgeTuru).getName} Görüntüle",
-        iconWidget: Icons.search_outlined,
+        iconWidget: Icons.preview_outlined,
         onTap: () async {
           Get.back();
           await Get.toNamed(

@@ -140,7 +140,7 @@ final class YetkiController {
   bool get siparisMSCariKoduDegistir => _isTrue(_yetkiModel?.siparisMusSipCariKoduDegistir);
   bool get siparisMSOtoPdfGor => _isTrue(_yetkiModel?.siparisMusSipOtoPdfGor);
   bool get siparisMSKapalilarListelenmesin => _isTrue(_yetkiModel?.siparisMusteriSiparisiKapalilarListelenmesin);
-  bool get siparisMSBirim1denKaydet => _isTrue(_yetkiModel?.siparisMusSipBirim1denKaydet);
+  bool get siparisMSBirim1denKaydet => _isTrue(_yetkiModel?.siparisMusSipBirim1DenKaydet);
   bool get siparisMSKapatmaIslemi => _isTrue(_yetkiModel?.siparisMusteriSiparisiKapatmaIslemi);
   bool get siparisMSOnayIslemleri => _isTrue(_yetkiModel?.siparisMusSipOnayIslemleri);
   bool get siparisMSSonFiyatGoster => _isTrue(_yetkiModel?.siparisMusteriSiparisiSonFiyatGoster);
@@ -189,7 +189,7 @@ final class YetkiController {
   bool get siparisSSKaydet => _isTrue(_yetkiModel?.siparisSaticiSiparisiKaydet);
   bool get siparisSSSil => _isTrue(_yetkiModel?.siparisSaticiSiparisiSil);
   bool get siparisSSKapalilarListelenmesin => _isTrue(_yetkiModel?.siparisSaticiSiparisiKapalilarListelenmesin);
-  bool get siparisSSBirim1denKaydet => _isTrue(_yetkiModel?.siparisSaticiSipBirim1denKaydet);
+  bool get siparisSSBirim1denKaydet => _isTrue(_yetkiModel?.siparisSaticiSipBirim1DenKaydet);
   bool get siparisSSDigerSekmesiGoster => _isTrue(_yetkiModel?.siparisSaticiSipDigerSekmesiGoster);
   bool get siparisSSKosulAktifMi => _isTrue(_paramModel?.alisKosulAktif, skipAdmin: true);
   bool get siparisSSFarkliTeslimCariAktif => _isTrue(_paramModel?.alisFarkliTeslimCariAktif, skipAdmin: true);
@@ -267,13 +267,13 @@ final class YetkiController {
   // bool get satisFatEkle => _isTrue(_yetkiModel?.ekle);
 
   //! E-FATURA
-
   bool get ebelgeEFatura => _isTrue((_yetkiModel?.ebelgeEFat ?? false) && (_paramModel?.eFaturaAktif ?? false));
   bool get ebelgeEFaturaGelenKutusu => _isTrue(_yetkiModel?.ebelgeEFatGelenKutusu);
   bool get ebelgeEFaturaGidenKutusu => _isTrue(_yetkiModel?.ebelgeEFatSorgula);
   bool get ebelgeEFaturaGonder => _isTrue(_yetkiModel?.ebelgeEFatGonder);
   bool get ebelgeEFaturaSorgula => _isTrue(_yetkiModel?.ebelgeEFatSorgula);
   bool get ebelgeEFaturaGoruntule => _isTrue(_yetkiModel?.ebelgeEFatGoruntule);
+  bool get ebelgeEFaturaTaslakSil => _isTrue(_yetkiModel?.ebelgeEFatTaslakSil);
 
   bool get ebelgeEIrsaliye => _isTrue((_yetkiModel?.ebelgeEIrsaliye ?? false) && (_paramModel?.eIrsaliyeAktif ?? false));
   bool get ebelgeEIrsaliyeGelenKutusu => _isTrue(_yetkiModel?.ebelgeEIrsaliyeGelenKutusu);
@@ -281,6 +281,7 @@ final class YetkiController {
   bool get ebelgeEIrsaliyeGonder => _isTrue(_yetkiModel?.ebelgeEIrsaliyeGonder);
   // bool get ebelgeEIrsaliyeSorgula => _isTrue(_yetkiModel?.ebelgeEIrsaliyeSorgula);
   bool get ebelgeEIrsaliyeGoruntule => _isTrue(_yetkiModel?.ebelgeEIrsaliyeGoruntule);
+  bool get ebelgeEIrsaliyeTaslakSil => _isTrue(_yetkiModel?.ebelgeEIrsaliyeTaslakSil);
 
   bool get ebelgeEArsiv => _isTrue((_yetkiModel?.ebelgeEArsiv ?? false) && (_paramModel?.eIrsaliyeAktif ?? false));
   // bool get ebelgeEArsivGelenKutusu => _isTrue(_yetkiModel?.ebelgeEArsivGelenKutusu);
@@ -288,4 +289,5 @@ final class YetkiController {
   bool get ebelgeEArsivGonder => _isTrue(_yetkiModel?.ebelgeEArsivGonder);
   bool get ebelgeEArsivSorgula => _isTrue(_yetkiModel?.ebelgeEArsivSorgula);
   bool get ebelgeEArsivGoruntule => _isTrue(_yetkiModel?.ebelgeEArsivGoruntule);
+  bool get ebelgeEArsivTaslakSil => _isTrue(_yetkiModel?.ebelgeEArsivTaslakSil);
 }

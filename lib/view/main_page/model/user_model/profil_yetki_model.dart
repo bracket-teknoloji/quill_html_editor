@@ -207,8 +207,6 @@ class ProfilYetkiModel {
   int? malKabulAlisIrsKacGunlukKayitlarListelensin;
   @JsonKey(name: "malKabul_AlisIrs_FiyatSirasi")
   int? malKabulAlisIrsFiyatSirasi;
-  @JsonKey(name: "malKabul_AlisIrs_Birim1denKaydet")
-  bool? malKabulAlisIrsBirim1denKaydet;
   @JsonKey(name: "malKabul_AlisIrs_CariKoduDegistir")
   bool? malKabulAlisIrsCariKoduDegistir;
   @JsonKey(name: "malKabul_AlisIrs_CariRehPlaEslesmesin")
@@ -237,8 +235,6 @@ class ProfilYetkiModel {
   int? malKabulAlisFatKacGunlukKayitlarListelensin;
   @JsonKey(name: "malKabul_AlisFat_FiyatSirasi")
   int? malKabulAlisFatFiyatSirasi;
-  @JsonKey(name: "malKabul_AlisFat_Birim1denKaydet")
-  bool? malKabulAlisFatBirim1denKaydet;
   @JsonKey(name: "malKabul_AlisFat_Aciklamalar_YetkiTuru")
   String? malKabulAlisFatAciklamalarYetkiTuru;
   @JsonKey(name: "malKabul_AlisFat_AciklamaAlanlari")
@@ -334,7 +330,7 @@ class ProfilYetkiModel {
   @JsonKey(name: "transfer_DAT_SeriGirisHarYapabilsin")
   bool? transferDatSeriGirisHarYapabilsin;
   @JsonKey(name: "transfer_DAT_Birim1denKaydet")
-  bool? transferDatBirim1denKaydet;
+  bool? transferDatBirim1DenKaydet;
   @JsonKey(name: "transfer_DAT_Barkod2Sor")
   bool? transferDatBarkod2Sor;
   @JsonKey(name: "transfer_DAT_BosGecilmeyecekAlanlar")
@@ -387,8 +383,6 @@ class ProfilYetkiModel {
   bool? transferAgDigerSekmesiGoster;
   @JsonKey(name: "transfer_AG_BelgeKopyala")
   bool? transferAgBelgeKopyala;
-  @JsonKey(name: "transfer_AG_Birim1denKaydet")
-  bool? transferAgBirim1denKaydet;
   @JsonKey(name: "transfer_AG_OtoBasimYap")
   bool? transferAgOtoBasimYap;
   @JsonKey(name: "transfer_AG_SeriGirisHarYapabilsin")
@@ -447,8 +441,6 @@ class ProfilYetkiModel {
   bool? transferAcDigerSekmesiGoster;
   @JsonKey(name: "transfer_AC_BelgeKopyala")
   bool? transferAcBelgeKopyala;
-  @JsonKey(name: "transfer_AC_Birim1denKaydet")
-  bool? transferAcBirim1denKaydet;
   @JsonKey(name: "transfer_AC_OtoBasimYap")
   bool? transferAcOtoBasimYap;
   @JsonKey(name: "transfer_AC_SeriGirisHarYapabilsin")
@@ -609,12 +601,8 @@ class ProfilYetkiModel {
   int? sevkiyatSatisIrsKacGunlukKayitlarListelensin;
   @JsonKey(name: "sevkiyat_SatisIrs_FiyatSirasi")
   int? sevkiyatSatisIrsFiyatSirasi;
-  @JsonKey(name: "sevkiyat_SatisIrs_KDVSifirGelsin")
-  bool? sevkiyatSatisIrsKDVSifirGelsin;
   @JsonKey(name: "sevkiyat_SatisIrs_SeriGirisHarYapabilsin")
   bool? sevkiyatSatisIrsSeriGirisHarYapabilsin;
-  @JsonKey(name: "sevkiyat_SatisIrs_Birim1denKaydet")
-  bool? sevkiyatSatisIrsBirim1denKaydet;
   @JsonKey(name: "sevkiyat_SatisIrs_EkAlan2Tablodan")
   bool? sevkiyatSatisIrsEkAlan2Tablodan;
   @JsonKey(name: "sevkiyat_SatisIrs_EkAlan2Hatirla")
@@ -649,8 +637,6 @@ class ProfilYetkiModel {
   String? sevkiyatSatisIrsDipFiyatSaha;
   @JsonKey(name: "sevkiyat_SatisIrs_DipFiyatEylem")
   String? sevkiyatSatisIrsDipFiyatEylem;
-  @JsonKey(name: "sevkiyat_SatisIrs_DipFiyatKDVDurumu")
-  String? sevkiyatSatisIrsDipFiyatKDVDurumu;
   @JsonKey(name: "sevkiyat_SatisIrs_BarkodluGiris")
   bool? sevkiyatSatisIrsBarkodluGiris;
   @JsonKey(name: "sevkiyat_SatisIrs_MiktarOtomatikGelsin")
@@ -699,8 +685,6 @@ class ProfilYetkiModel {
   int? sevkiyatSatisFatFiyatSirasi;
   @JsonKey(name: "sevkiyat_SatisFat_KalemlerBirlestirilsin")
   bool? sevkiyatSatisFatKalemlerBirlestirilsin;
-  @JsonKey(name: "sevkiyat_SatisFat_Birim1denKaydet")
-  bool? sevkiyatSatisFatBirim1denKaydet;
   @JsonKey(name: "sevkiyat_SatisFat_EkAlan2Tablodan")
   bool? sevkiyatSatisFatEkAlan2Tablodan;
   @JsonKey(name: "sevkiyat_SatisFat_EkAlan2Hatirla")
@@ -962,7 +946,7 @@ class ProfilYetkiModel {
   @JsonKey(name: "siparis_MusteriSiparisi_FiyatSirasi")
   int? siparisMusteriSiparisiFiyatSirasi;
   @JsonKey(name: "siparis_MusSip_Birim1denKaydet")
-  bool? siparisMusSipBirim1denKaydet;
+  bool? siparisMusSipBirim1DenKaydet;
   @JsonKey(name: "siparis_MusteriSiparisi_KapatmaIslemi")
   bool? siparisMusteriSiparisiKapatmaIslemi;
   @JsonKey(name: "siparis_MusSip_OnayIslemleri")
@@ -1007,8 +991,6 @@ class ProfilYetkiModel {
   String? siparisMusteriSiparisiDipFiyatSaha;
   @JsonKey(name: "siparis_MusteriSiparisi_DipFiyatEylem")
   String? siparisMusteriSiparisiDipFiyatEylem;
-  @JsonKey(name: "siparis_MusteriSiparisi_DipFiyatKDVDurumu")
-  String? siparisMusteriSiparisiDipFiyatKDVDurumu;
   @JsonKey(name: "siparis_MusSip_MaxIskUygulamasi")
   bool? siparisMusSipMaxIskUygulamasi;
   @JsonKey(name: "siparis_MusSip_MaxSatIsk1")
@@ -1054,7 +1036,7 @@ class ProfilYetkiModel {
   @JsonKey(name: "siparis_SaticiSiparisi_FiyatSirasi")
   int? siparisSaticiSiparisiFiyatSirasi;
   @JsonKey(name: "siparis_SaticiSip_Birim1denKaydet")
-  bool? siparisSaticiSipBirim1denKaydet;
+  bool? siparisSaticiSipBirim1DenKaydet;
   @JsonKey(name: "siparis_SaticiSiparisi_KapatmaIslemi")
   bool? siparisSaticiSiparisiKapatmaIslemi;
   @JsonKey(name: "siparis_SaticiSip_OnayIslemleri")
@@ -1865,6 +1847,30 @@ class ProfilYetkiModel {
   String? taltekStalDipFiyatEylem;
   @JsonKey(name: "taltek_STAL_DipFiyatKDVDurumu")
   String? taltekStalDipFiyatKdvDurumu;
+    @JsonKey(name: "malKabul_AlisIrs_Birim1denKaydet")
+    bool? malKabulAlisIrsBirim1DenKaydet;
+    @JsonKey(name: "malKabul_AlisFat_Birim1denKaydet")
+    bool? malKabulAlisFatBirim1DenKaydet;
+    @JsonKey(name: "transfer_AG_Birim1denKaydet")
+    bool? transferAgBirim1DenKaydet;
+    @JsonKey(name: "transfer_AC_Birim1denKaydet")
+    bool? transferAcBirim1DenKaydet;
+    @JsonKey(name: "sevkiyat_SatisIrs_KDVSifirGelsin")
+    bool? sevkiyatSatisIrsKdvSifirGelsin;
+    @JsonKey(name: "sevkiyat_SatisIrs_Birim1denKaydet")
+    bool? sevkiyatSatisIrsBirim1DenKaydet;
+    @JsonKey(name: "sevkiyat_SatisIrs_DipFiyatKDVDurumu")
+    String? sevkiyatSatisIrsDipFiyatKdvDurumu;
+    @JsonKey(name: "sevkiyat_SatisFat_Birim1denKaydet")
+    bool? sevkiyatSatisFatBirim1DenKaydet;
+    @JsonKey(name: "siparis_MusteriSiparisi_DipFiyatKDVDurumu")
+    String? siparisMusteriSiparisiDipFiyatKdvDurumu;
+    @JsonKey(name: "siparis_SatSip_TekrarEdenBarkod")
+    String? siparisSatSipTekrarEdenBarkod;
+    @JsonKey(name: "siparis_SatSip_KacGunlukKayitlarListelensin")
+    int? siparisSatSipKacGunlukKayitlarListelensin;
+    @JsonKey(name: "cari_Rap_BorcAlacakDokumu")
+    bool? cariRapBorcAlacakDokumu;
 
   factory ProfilYetkiModel.fromJson(String json) => _$ProfilYetkiModelFromJson(jsonDecode(json));
 

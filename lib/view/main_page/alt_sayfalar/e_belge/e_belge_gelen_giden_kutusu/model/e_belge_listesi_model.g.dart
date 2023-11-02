@@ -63,6 +63,23 @@ _$EBelgeListesiModelImpl _$$EBelgeListesiModelImplFromJson(
           : DateTime.parse(json['IPTAL_TARIHI'] as String),
       gonderimSekliEposta: json['GONDERIM_SEKLI_EPOSTA'] as String?,
       eposta: json['EPOSTA'] as String?,
+      eBelgeTuru: json['E_BELGE_TURU'] as String?,
+      id: json['ID'] as int?,
+      eFatMasId: json['E_FAT_MAS_ID'] as int?,
+      eIrsMasId: json['E_IRS_MAS_ID'] as int?,
+      kayitTarihi: json['KAYIT_TARIHI'] == null
+          ? null
+          : DateTime.parse(json['KAYIT_TARIHI'] as String),
+      eFaturaIptalTarihi: json['E_FATURA_IPTAL_TARIHI'] == null
+          ? null
+          : DateTime.parse(json['E_FATURA_IPTAL_TARIHI'] as String),
+      ilce: json['ILCE'] as String?,
+      sehir: json['SEHIR'] as String?,
+      kayitYapanKul: json['KAYIT_YAPAN_KUL'] as String?,
+      gelenEFatKontrolEdildi: json['GELEN_E_FAT_KONTROL_EDILDI'] as String?,
+      gelenEFatKontrolAciklama: json['GELEN_E_FAT_KONTROL_ACIKLAMA'] as String?,
+      gonderimSekliEPosta: json['GONDERIM_SEKLI_E_POSTA'] as String?,
+      ePosta: json['E_POSTA'] as String?,
     );
 
 Map<String, dynamic> _$$EBelgeListesiModelImplToJson(
@@ -123,5 +140,20 @@ Map<String, dynamic> _$$EBelgeListesiModelImplToJson(
   writeNotNull('IPTAL_TARIHI', instance.iptalTarihi?.toIso8601String());
   writeNotNull('GONDERIM_SEKLI_EPOSTA', instance.gonderimSekliEposta);
   writeNotNull('EPOSTA', instance.eposta);
+  writeNotNull('E_BELGE_TURU', instance.eBelgeTuru);
+  writeNotNull('ID', instance.id);
+  writeNotNull('E_FAT_MAS_ID', instance.eFatMasId);
+  writeNotNull('E_IRS_MAS_ID', instance.eIrsMasId);
+  writeNotNull('KAYIT_TARIHI', instance.kayitTarihi?.toIso8601String());
+  writeNotNull(
+      'E_FATURA_IPTAL_TARIHI', instance.eFaturaIptalTarihi?.toIso8601String());
+  writeNotNull('ILCE', instance.ilce);
+  writeNotNull('SEHIR', instance.sehir);
+  writeNotNull('KAYIT_YAPAN_KUL', instance.kayitYapanKul);
+  writeNotNull('GELEN_E_FAT_KONTROL_EDILDI', instance.gelenEFatKontrolEdildi);
+  writeNotNull(
+      'GELEN_E_FAT_KONTROL_ACIKLAMA', instance.gelenEFatKontrolAciklama);
+  writeNotNull('GONDERIM_SEKLI_E_POSTA', instance.gonderimSekliEPosta);
+  writeNotNull('E_POSTA', instance.ePosta);
   return val;
 }

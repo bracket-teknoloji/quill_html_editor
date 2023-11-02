@@ -217,8 +217,6 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           json['malKabul_AlisIrs_KacGunlukKayitlarListelensin'] as int?
       ..malKabulAlisIrsFiyatSirasi =
           json['malKabul_AlisIrs_FiyatSirasi'] as int?
-      ..malKabulAlisIrsBirim1denKaydet =
-          json['malKabul_AlisIrs_Birim1denKaydet'] as bool?
       ..malKabulAlisIrsCariKoduDegistir =
           json['malKabul_AlisIrs_CariKoduDegistir'] as bool?
       ..malKabulAlisIrsCariRehPlaEslesmesin =
@@ -243,8 +241,6 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           json['malKabul_AlisFat_KacGunlukKayitlarListelensin'] as int?
       ..malKabulAlisFatFiyatSirasi =
           json['malKabul_AlisFat_FiyatSirasi'] as int?
-      ..malKabulAlisFatBirim1denKaydet =
-          json['malKabul_AlisFat_Birim1denKaydet'] as bool?
       ..malKabulAlisFatAciklamalarYetkiTuru =
           json['malKabul_AlisFat_Aciklamalar_YetkiTuru'] as String?
       ..malKabulAlisFatAciklamaAlanlari =
@@ -325,7 +321,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           json['transfer_DAT_EkAlan2Tablodan'] as bool?
       ..transferDatSeriGirisHarYapabilsin =
           json['transfer_DAT_SeriGirisHarYapabilsin'] as bool?
-      ..transferDatBirim1denKaydet =
+      ..transferDatBirim1DenKaydet =
           json['transfer_DAT_Birim1denKaydet'] as bool?
       ..transferDatBarkod2Sor = json['transfer_DAT_Barkod2Sor'] as bool?
       ..transferDatBosGecilmeyecekAlanlar =
@@ -371,7 +367,6 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..transferAgDigerSekmesiGoster =
           json['transfer_AG_DigerSekmesiGoster'] as bool?
       ..transferAgBelgeKopyala = json['transfer_AG_BelgeKopyala'] as bool?
-      ..transferAgBirim1denKaydet = json['transfer_AG_Birim1denKaydet'] as bool?
       ..transferAgOtoBasimYap = json['transfer_AG_OtoBasimYap'] as bool?
       ..transferAgSeriGirisHarYapabilsin =
           json['transfer_AG_SeriGirisHarYapabilsin'] as bool?
@@ -419,7 +414,6 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..transferAcDigerSekmesiGoster =
           json['transfer_AC_DigerSekmesiGoster'] as bool?
       ..transferAcBelgeKopyala = json['transfer_AC_BelgeKopyala'] as bool?
-      ..transferAcBirim1denKaydet = json['transfer_AC_Birim1denKaydet'] as bool?
       ..transferAcOtoBasimYap = json['transfer_AC_OtoBasimYap'] as bool?
       ..transferAcSeriGirisHarYapabilsin =
           json['transfer_AC_SeriGirisHarYapabilsin'] as bool?
@@ -563,12 +557,8 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           json['sevkiyat_SatisIrs_KacGunlukKayitlarListelensin'] as int?
       ..sevkiyatSatisIrsFiyatSirasi =
           json['sevkiyat_SatisIrs_FiyatSirasi'] as int?
-      ..sevkiyatSatisIrsKDVSifirGelsin =
-          json['sevkiyat_SatisIrs_KDVSifirGelsin'] as bool?
       ..sevkiyatSatisIrsSeriGirisHarYapabilsin =
           json['sevkiyat_SatisIrs_SeriGirisHarYapabilsin'] as bool?
-      ..sevkiyatSatisIrsBirim1denKaydet =
-          json['sevkiyat_SatisIrs_Birim1denKaydet'] as bool?
       ..sevkiyatSatisIrsEkAlan2Tablodan =
           json['sevkiyat_SatisIrs_EkAlan2Tablodan'] as bool?
       ..sevkiyatSatisIrsEkAlan2Hatirla =
@@ -603,8 +593,6 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           json['sevkiyat_SatisIrs_DipFiyatSaha'] as String?
       ..sevkiyatSatisIrsDipFiyatEylem =
           json['sevkiyat_SatisIrs_DipFiyatEylem'] as String?
-      ..sevkiyatSatisIrsDipFiyatKDVDurumu =
-          json['sevkiyat_SatisIrs_DipFiyatKDVDurumu'] as String?
       ..sevkiyatSatisIrsBarkodluGiris =
           json['sevkiyat_SatisIrs_BarkodluGiris'] as bool?
       ..sevkiyatSatisIrsMiktarOtomatikGelsin =
@@ -648,8 +636,6 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           json['sevkiyat_SatisFat_FiyatSirasi'] as int?
       ..sevkiyatSatisFatKalemlerBirlestirilsin =
           json['sevkiyat_SatisFat_KalemlerBirlestirilsin'] as bool?
-      ..sevkiyatSatisFatBirim1denKaydet =
-          json['sevkiyat_SatisFat_Birim1denKaydet'] as bool?
       ..sevkiyatSatisFatEkAlan2Tablodan =
           json['sevkiyat_SatisFat_EkAlan2Tablodan'] as bool?
       ..sevkiyatSatisFatEkAlan2Hatirla =
@@ -888,7 +874,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           json['siparis_MusteriSiparisi_FiyatDegistirilmesin'] as bool?
       ..siparisMusteriSiparisiFiyatSirasi =
           json['siparis_MusteriSiparisi_FiyatSirasi'] as int?
-      ..siparisMusSipBirim1denKaydet =
+      ..siparisMusSipBirim1DenKaydet =
           json['siparis_MusSip_Birim1denKaydet'] as bool?
       ..siparisMusteriSiparisiKapatmaIslemi =
           json['siparis_MusteriSiparisi_KapatmaIslemi'] as bool?
@@ -941,8 +927,6 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           json['siparis_MusteriSiparisi_DipFiyatSaha'] as String?
       ..siparisMusteriSiparisiDipFiyatEylem =
           json['siparis_MusteriSiparisi_DipFiyatEylem'] as String?
-      ..siparisMusteriSiparisiDipFiyatKDVDurumu =
-          json['siparis_MusteriSiparisi_DipFiyatKDVDurumu'] as String?
       ..siparisMusSipMaxIskUygulamasi =
           json['siparis_MusSip_MaxIskUygulamasi'] as bool?
       ..siparisMusSipMaxSatIsk1 =
@@ -984,7 +968,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           json['siparis_SaticiSiparisi_FiyatDegistirilmesin'] as bool?
       ..siparisSaticiSiparisiFiyatSirasi =
           json['siparis_SaticiSiparisi_FiyatSirasi'] as int?
-      ..siparisSaticiSipBirim1denKaydet =
+      ..siparisSaticiSipBirim1DenKaydet =
           json['siparis_SaticiSip_Birim1denKaydet'] as bool?
       ..siparisSaticiSiparisiKapatmaIslemi =
           json['siparis_SaticiSiparisi_KapatmaIslemi'] as bool?
@@ -1598,7 +1582,28 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..taltekStalDipFiyatSaha = json['taltek_STAL_DipFiyatSaha'] as String?
       ..taltekStalDipFiyatEylem = json['taltek_STAL_DipFiyatEylem'] as String?
       ..taltekStalDipFiyatKdvDurumu =
-          json['taltek_STAL_DipFiyatKDVDurumu'] as String?;
+          json['taltek_STAL_DipFiyatKDVDurumu'] as String?
+      ..malKabulAlisIrsBirim1DenKaydet =
+          json['malKabul_AlisIrs_Birim1denKaydet'] as bool?
+      ..malKabulAlisFatBirim1DenKaydet =
+          json['malKabul_AlisFat_Birim1denKaydet'] as bool?
+      ..transferAgBirim1DenKaydet = json['transfer_AG_Birim1denKaydet'] as bool?
+      ..transferAcBirim1DenKaydet = json['transfer_AC_Birim1denKaydet'] as bool?
+      ..sevkiyatSatisIrsKdvSifirGelsin =
+          json['sevkiyat_SatisIrs_KDVSifirGelsin'] as bool?
+      ..sevkiyatSatisIrsBirim1DenKaydet =
+          json['sevkiyat_SatisIrs_Birim1denKaydet'] as bool?
+      ..sevkiyatSatisIrsDipFiyatKdvDurumu =
+          json['sevkiyat_SatisIrs_DipFiyatKDVDurumu'] as String?
+      ..sevkiyatSatisFatBirim1DenKaydet =
+          json['sevkiyat_SatisFat_Birim1denKaydet'] as bool?
+      ..siparisMusteriSiparisiDipFiyatKdvDurumu =
+          json['siparis_MusteriSiparisi_DipFiyatKDVDurumu'] as String?
+      ..siparisSatSipTekrarEdenBarkod =
+          json['siparis_SatSip_TekrarEdenBarkod'] as String?
+      ..siparisSatSipKacGunlukKayitlarListelensin =
+          json['siparis_SatSip_KacGunlukKayitlarListelensin'] as int?
+      ..cariRapBorcAlacakDokumu = json['cari_Rap_BorcAlacakDokumu'] as bool?;
 
 Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   final val = <String, dynamic>{};
@@ -1766,8 +1771,6 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
       instance.malKabulAlisIrsKacGunlukKayitlarListelensin);
   writeNotNull(
       'malKabul_AlisIrs_FiyatSirasi', instance.malKabulAlisIrsFiyatSirasi);
-  writeNotNull('malKabul_AlisIrs_Birim1denKaydet',
-      instance.malKabulAlisIrsBirim1denKaydet);
   writeNotNull('malKabul_AlisIrs_CariKoduDegistir',
       instance.malKabulAlisIrsCariKoduDegistir);
   writeNotNull('malKabul_AlisIrs_CariRehPlaEslesmesin',
@@ -1790,8 +1793,6 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
       instance.malKabulAlisFatKacGunlukKayitlarListelensin);
   writeNotNull(
       'malKabul_AlisFat_FiyatSirasi', instance.malKabulAlisFatFiyatSirasi);
-  writeNotNull('malKabul_AlisFat_Birim1denKaydet',
-      instance.malKabulAlisFatBirim1denKaydet);
   writeNotNull('malKabul_AlisFat_Aciklamalar_YetkiTuru',
       instance.malKabulAlisFatAciklamalarYetkiTuru);
   writeNotNull('malKabul_AlisFat_AciklamaAlanlari',
@@ -1872,7 +1873,7 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull('transfer_DAT_SeriGirisHarYapabilsin',
       instance.transferDatSeriGirisHarYapabilsin);
   writeNotNull(
-      'transfer_DAT_Birim1denKaydet', instance.transferDatBirim1denKaydet);
+      'transfer_DAT_Birim1denKaydet', instance.transferDatBirim1DenKaydet);
   writeNotNull('transfer_DAT_Barkod2Sor', instance.transferDatBarkod2Sor);
   writeNotNull('transfer_DAT_BosGecilmeyecekAlanlar',
       instance.transferDatBosGecilmeyecekAlanlar);
@@ -1917,8 +1918,6 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull(
       'transfer_AG_DigerSekmesiGoster', instance.transferAgDigerSekmesiGoster);
   writeNotNull('transfer_AG_BelgeKopyala', instance.transferAgBelgeKopyala);
-  writeNotNull(
-      'transfer_AG_Birim1denKaydet', instance.transferAgBirim1denKaydet);
   writeNotNull('transfer_AG_OtoBasimYap', instance.transferAgOtoBasimYap);
   writeNotNull('transfer_AG_SeriGirisHarYapabilsin',
       instance.transferAgSeriGirisHarYapabilsin);
@@ -1966,8 +1965,6 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull(
       'transfer_AC_DigerSekmesiGoster', instance.transferAcDigerSekmesiGoster);
   writeNotNull('transfer_AC_BelgeKopyala', instance.transferAcBelgeKopyala);
-  writeNotNull(
-      'transfer_AC_Birim1denKaydet', instance.transferAcBirim1denKaydet);
   writeNotNull('transfer_AC_OtoBasimYap', instance.transferAcOtoBasimYap);
   writeNotNull('transfer_AC_SeriGirisHarYapabilsin',
       instance.transferAcSeriGirisHarYapabilsin);
@@ -2104,12 +2101,8 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
       instance.sevkiyatSatisIrsKacGunlukKayitlarListelensin);
   writeNotNull(
       'sevkiyat_SatisIrs_FiyatSirasi', instance.sevkiyatSatisIrsFiyatSirasi);
-  writeNotNull('sevkiyat_SatisIrs_KDVSifirGelsin',
-      instance.sevkiyatSatisIrsKDVSifirGelsin);
   writeNotNull('sevkiyat_SatisIrs_SeriGirisHarYapabilsin',
       instance.sevkiyatSatisIrsSeriGirisHarYapabilsin);
-  writeNotNull('sevkiyat_SatisIrs_Birim1denKaydet',
-      instance.sevkiyatSatisIrsBirim1denKaydet);
   writeNotNull('sevkiyat_SatisIrs_EkAlan2Tablodan',
       instance.sevkiyatSatisIrsEkAlan2Tablodan);
   writeNotNull('sevkiyat_SatisIrs_EkAlan2Hatirla',
@@ -2144,8 +2137,6 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
       'sevkiyat_SatisIrs_DipFiyatSaha', instance.sevkiyatSatisIrsDipFiyatSaha);
   writeNotNull('sevkiyat_SatisIrs_DipFiyatEylem',
       instance.sevkiyatSatisIrsDipFiyatEylem);
-  writeNotNull('sevkiyat_SatisIrs_DipFiyatKDVDurumu',
-      instance.sevkiyatSatisIrsDipFiyatKDVDurumu);
   writeNotNull('sevkiyat_SatisIrs_BarkodluGiris',
       instance.sevkiyatSatisIrsBarkodluGiris);
   writeNotNull('sevkiyat_SatisIrs_MiktarOtomatikGelsin',
@@ -2189,8 +2180,6 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
       'sevkiyat_SatisFat_FiyatSirasi', instance.sevkiyatSatisFatFiyatSirasi);
   writeNotNull('sevkiyat_SatisFat_KalemlerBirlestirilsin',
       instance.sevkiyatSatisFatKalemlerBirlestirilsin);
-  writeNotNull('sevkiyat_SatisFat_Birim1denKaydet',
-      instance.sevkiyatSatisFatBirim1denKaydet);
   writeNotNull('sevkiyat_SatisFat_EkAlan2Tablodan',
       instance.sevkiyatSatisFatEkAlan2Tablodan);
   writeNotNull('sevkiyat_SatisFat_EkAlan2Hatirla',
@@ -2417,7 +2406,7 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull('siparis_MusteriSiparisi_FiyatSirasi',
       instance.siparisMusteriSiparisiFiyatSirasi);
   writeNotNull(
-      'siparis_MusSip_Birim1denKaydet', instance.siparisMusSipBirim1denKaydet);
+      'siparis_MusSip_Birim1denKaydet', instance.siparisMusSipBirim1DenKaydet);
   writeNotNull('siparis_MusteriSiparisi_KapatmaIslemi',
       instance.siparisMusteriSiparisiKapatmaIslemi);
   writeNotNull(
@@ -2460,8 +2449,6 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
       instance.siparisMusteriSiparisiDipFiyatSaha);
   writeNotNull('siparis_MusteriSiparisi_DipFiyatEylem',
       instance.siparisMusteriSiparisiDipFiyatEylem);
-  writeNotNull('siparis_MusteriSiparisi_DipFiyatKDVDurumu',
-      instance.siparisMusteriSiparisiDipFiyatKDVDurumu);
   writeNotNull('siparis_MusSip_MaxIskUygulamasi',
       instance.siparisMusSipMaxIskUygulamasi);
   writeNotNull('siparis_MusSip_MaxSatIsk1', instance.siparisMusSipMaxSatIsk1);
@@ -2496,7 +2483,7 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull('siparis_SaticiSiparisi_FiyatSirasi',
       instance.siparisSaticiSiparisiFiyatSirasi);
   writeNotNull('siparis_SaticiSip_Birim1denKaydet',
-      instance.siparisSaticiSipBirim1denKaydet);
+      instance.siparisSaticiSipBirim1DenKaydet);
   writeNotNull('siparis_SaticiSiparisi_KapatmaIslemi',
       instance.siparisSaticiSiparisiKapatmaIslemi);
   writeNotNull('siparis_SaticiSip_OnayIslemleri',
@@ -3054,6 +3041,29 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull('taltek_STAL_DipFiyatEylem', instance.taltekStalDipFiyatEylem);
   writeNotNull(
       'taltek_STAL_DipFiyatKDVDurumu', instance.taltekStalDipFiyatKdvDurumu);
+  writeNotNull('malKabul_AlisIrs_Birim1denKaydet',
+      instance.malKabulAlisIrsBirim1DenKaydet);
+  writeNotNull('malKabul_AlisFat_Birim1denKaydet',
+      instance.malKabulAlisFatBirim1DenKaydet);
+  writeNotNull(
+      'transfer_AG_Birim1denKaydet', instance.transferAgBirim1DenKaydet);
+  writeNotNull(
+      'transfer_AC_Birim1denKaydet', instance.transferAcBirim1DenKaydet);
+  writeNotNull('sevkiyat_SatisIrs_KDVSifirGelsin',
+      instance.sevkiyatSatisIrsKdvSifirGelsin);
+  writeNotNull('sevkiyat_SatisIrs_Birim1denKaydet',
+      instance.sevkiyatSatisIrsBirim1DenKaydet);
+  writeNotNull('sevkiyat_SatisIrs_DipFiyatKDVDurumu',
+      instance.sevkiyatSatisIrsDipFiyatKdvDurumu);
+  writeNotNull('sevkiyat_SatisFat_Birim1denKaydet',
+      instance.sevkiyatSatisFatBirim1DenKaydet);
+  writeNotNull('siparis_MusteriSiparisi_DipFiyatKDVDurumu',
+      instance.siparisMusteriSiparisiDipFiyatKdvDurumu);
+  writeNotNull('siparis_SatSip_TekrarEdenBarkod',
+      instance.siparisSatSipTekrarEdenBarkod);
+  writeNotNull('siparis_SatSip_KacGunlukKayitlarListelensin',
+      instance.siparisSatSipKacGunlukKayitlarListelensin);
+  writeNotNull('cari_Rap_BorcAlacakDokumu', instance.cariRapBorcAlacakDokumu);
   return val;
 }
 

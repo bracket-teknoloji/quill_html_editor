@@ -18,6 +18,8 @@ _$KasaIslemleriRequestModelImpl _$$KasaIslemleriRequestModelImplFromJson(
       hesapKodu: json['HesapKodu'] as String?,
       kasaKodu: json['KasaKodu'] as String?,
       gc: json['Gc'] as String?,
+      kisitYok: json['KisitYok'] as bool?,
+      refKey: json['RefKey'] as String?,
     );
 
 Map<String, dynamic> _$$KasaIslemleriRequestModelImplToJson(
@@ -39,5 +41,7 @@ Map<String, dynamic> _$$KasaIslemleriRequestModelImplToJson(
   writeNotNull('HesapKodu', instance.hesapKodu);
   writeNotNull('KasaKodu', instance.kasaKodu);
   writeNotNull('Gc', instance.gc);
+  writeNotNull('KisitYok', instance.kisitYok);
+  writeNotNull('RefKey', instance.refKey);
   return val;
 }

@@ -116,6 +116,34 @@ mixin _$EBelgeListesiModel {
   set gonderimSekliEposta(String? value) => throw _privateConstructorUsedError;
   String? get eposta => throw _privateConstructorUsedError;
   set eposta(String? value) => throw _privateConstructorUsedError;
+  String? get eBelgeTuru => throw _privateConstructorUsedError;
+  set eBelgeTuru(String? value) => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  set id(int? value) => throw _privateConstructorUsedError;
+  int? get eFatMasId => throw _privateConstructorUsedError;
+  set eFatMasId(int? value) => throw _privateConstructorUsedError;
+  int? get eIrsMasId => throw _privateConstructorUsedError;
+  set eIrsMasId(int? value) => throw _privateConstructorUsedError;
+  DateTime? get kayitTarihi => throw _privateConstructorUsedError;
+  set kayitTarihi(DateTime? value) => throw _privateConstructorUsedError;
+  DateTime? get eFaturaIptalTarihi => throw _privateConstructorUsedError;
+  set eFaturaIptalTarihi(DateTime? value) => throw _privateConstructorUsedError;
+  String? get ilce => throw _privateConstructorUsedError;
+  set ilce(String? value) => throw _privateConstructorUsedError;
+  String? get sehir => throw _privateConstructorUsedError;
+  set sehir(String? value) => throw _privateConstructorUsedError;
+  String? get kayitYapanKul => throw _privateConstructorUsedError;
+  set kayitYapanKul(String? value) => throw _privateConstructorUsedError;
+  String? get gelenEFatKontrolEdildi => throw _privateConstructorUsedError;
+  set gelenEFatKontrolEdildi(String? value) =>
+      throw _privateConstructorUsedError;
+  String? get gelenEFatKontrolAciklama => throw _privateConstructorUsedError;
+  set gelenEFatKontrolAciklama(String? value) =>
+      throw _privateConstructorUsedError;
+  String? get gonderimSekliEPosta => throw _privateConstructorUsedError;
+  set gonderimSekliEPosta(String? value) => throw _privateConstructorUsedError;
+  String? get ePosta => throw _privateConstructorUsedError;
+  set ePosta(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -177,7 +205,20 @@ abstract class $EBelgeListesiModelCopyWith<$Res> {
       String? zarfSilinebilir,
       DateTime? iptalTarihi,
       String? gonderimSekliEposta,
-      String? eposta});
+      String? eposta,
+      String? eBelgeTuru,
+      int? id,
+      int? eFatMasId,
+      int? eIrsMasId,
+      DateTime? kayitTarihi,
+      DateTime? eFaturaIptalTarihi,
+      String? ilce,
+      String? sehir,
+      String? kayitYapanKul,
+      String? gelenEFatKontrolEdildi,
+      String? gelenEFatKontrolAciklama,
+      String? gonderimSekliEPosta,
+      String? ePosta});
 }
 
 /// @nodoc
@@ -241,6 +282,19 @@ class _$EBelgeListesiModelCopyWithImpl<$Res, $Val extends EBelgeListesiModel>
     Object? iptalTarihi = freezed,
     Object? gonderimSekliEposta = freezed,
     Object? eposta = freezed,
+    Object? eBelgeTuru = freezed,
+    Object? id = freezed,
+    Object? eFatMasId = freezed,
+    Object? eIrsMasId = freezed,
+    Object? kayitTarihi = freezed,
+    Object? eFaturaIptalTarihi = freezed,
+    Object? ilce = freezed,
+    Object? sehir = freezed,
+    Object? kayitYapanKul = freezed,
+    Object? gelenEFatKontrolEdildi = freezed,
+    Object? gelenEFatKontrolAciklama = freezed,
+    Object? gonderimSekliEPosta = freezed,
+    Object? ePosta = freezed,
   }) {
     return _then(_value.copyWith(
       ebelgeTuru: freezed == ebelgeTuru
@@ -435,6 +489,58 @@ class _$EBelgeListesiModelCopyWithImpl<$Res, $Val extends EBelgeListesiModel>
           ? _value.eposta
           : eposta // ignore: cast_nullable_to_non_nullable
               as String?,
+      eBelgeTuru: freezed == eBelgeTuru
+          ? _value.eBelgeTuru
+          : eBelgeTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      eFatMasId: freezed == eFatMasId
+          ? _value.eFatMasId
+          : eFatMasId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      eIrsMasId: freezed == eIrsMasId
+          ? _value.eIrsMasId
+          : eIrsMasId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      kayitTarihi: freezed == kayitTarihi
+          ? _value.kayitTarihi
+          : kayitTarihi // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      eFaturaIptalTarihi: freezed == eFaturaIptalTarihi
+          ? _value.eFaturaIptalTarihi
+          : eFaturaIptalTarihi // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      ilce: freezed == ilce
+          ? _value.ilce
+          : ilce // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sehir: freezed == sehir
+          ? _value.sehir
+          : sehir // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kayitYapanKul: freezed == kayitYapanKul
+          ? _value.kayitYapanKul
+          : kayitYapanKul // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gelenEFatKontrolEdildi: freezed == gelenEFatKontrolEdildi
+          ? _value.gelenEFatKontrolEdildi
+          : gelenEFatKontrolEdildi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gelenEFatKontrolAciklama: freezed == gelenEFatKontrolAciklama
+          ? _value.gelenEFatKontrolAciklama
+          : gelenEFatKontrolAciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gonderimSekliEPosta: freezed == gonderimSekliEPosta
+          ? _value.gonderimSekliEPosta
+          : gonderimSekliEPosta // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ePosta: freezed == ePosta
+          ? _value.ePosta
+          : ePosta // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -495,7 +601,20 @@ abstract class _$$EBelgeListesiModelImplCopyWith<$Res>
       String? zarfSilinebilir,
       DateTime? iptalTarihi,
       String? gonderimSekliEposta,
-      String? eposta});
+      String? eposta,
+      String? eBelgeTuru,
+      int? id,
+      int? eFatMasId,
+      int? eIrsMasId,
+      DateTime? kayitTarihi,
+      DateTime? eFaturaIptalTarihi,
+      String? ilce,
+      String? sehir,
+      String? kayitYapanKul,
+      String? gelenEFatKontrolEdildi,
+      String? gelenEFatKontrolAciklama,
+      String? gonderimSekliEPosta,
+      String? ePosta});
 }
 
 /// @nodoc
@@ -557,6 +676,19 @@ class __$$EBelgeListesiModelImplCopyWithImpl<$Res>
     Object? iptalTarihi = freezed,
     Object? gonderimSekliEposta = freezed,
     Object? eposta = freezed,
+    Object? eBelgeTuru = freezed,
+    Object? id = freezed,
+    Object? eFatMasId = freezed,
+    Object? eIrsMasId = freezed,
+    Object? kayitTarihi = freezed,
+    Object? eFaturaIptalTarihi = freezed,
+    Object? ilce = freezed,
+    Object? sehir = freezed,
+    Object? kayitYapanKul = freezed,
+    Object? gelenEFatKontrolEdildi = freezed,
+    Object? gelenEFatKontrolAciklama = freezed,
+    Object? gonderimSekliEPosta = freezed,
+    Object? ePosta = freezed,
   }) {
     return _then(_$EBelgeListesiModelImpl(
       ebelgeTuru: freezed == ebelgeTuru
@@ -751,6 +883,58 @@ class __$$EBelgeListesiModelImplCopyWithImpl<$Res>
           ? _value.eposta
           : eposta // ignore: cast_nullable_to_non_nullable
               as String?,
+      eBelgeTuru: freezed == eBelgeTuru
+          ? _value.eBelgeTuru
+          : eBelgeTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      eFatMasId: freezed == eFatMasId
+          ? _value.eFatMasId
+          : eFatMasId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      eIrsMasId: freezed == eIrsMasId
+          ? _value.eIrsMasId
+          : eIrsMasId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      kayitTarihi: freezed == kayitTarihi
+          ? _value.kayitTarihi
+          : kayitTarihi // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      eFaturaIptalTarihi: freezed == eFaturaIptalTarihi
+          ? _value.eFaturaIptalTarihi
+          : eFaturaIptalTarihi // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      ilce: freezed == ilce
+          ? _value.ilce
+          : ilce // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sehir: freezed == sehir
+          ? _value.sehir
+          : sehir // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kayitYapanKul: freezed == kayitYapanKul
+          ? _value.kayitYapanKul
+          : kayitYapanKul // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gelenEFatKontrolEdildi: freezed == gelenEFatKontrolEdildi
+          ? _value.gelenEFatKontrolEdildi
+          : gelenEFatKontrolEdildi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gelenEFatKontrolAciklama: freezed == gelenEFatKontrolAciklama
+          ? _value.gelenEFatKontrolAciklama
+          : gelenEFatKontrolAciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gonderimSekliEPosta: freezed == gonderimSekliEPosta
+          ? _value.gonderimSekliEPosta
+          : gonderimSekliEPosta // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ePosta: freezed == ePosta
+          ? _value.ePosta
+          : ePosta // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -806,7 +990,20 @@ class _$EBelgeListesiModelImpl extends _EBelgeListesiModel {
       this.zarfSilinebilir,
       this.iptalTarihi,
       this.gonderimSekliEposta,
-      this.eposta})
+      this.eposta,
+      this.eBelgeTuru,
+      this.id,
+      this.eFatMasId,
+      this.eIrsMasId,
+      this.kayitTarihi,
+      this.eFaturaIptalTarihi,
+      this.ilce,
+      this.sehir,
+      this.kayitYapanKul,
+      this.gelenEFatKontrolEdildi,
+      this.gelenEFatKontrolAciklama,
+      this.gonderimSekliEPosta,
+      this.ePosta})
       : super._();
 
   factory _$EBelgeListesiModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -908,6 +1105,32 @@ class _$EBelgeListesiModelImpl extends _EBelgeListesiModel {
   String? gonderimSekliEposta;
   @override
   String? eposta;
+  @override
+  String? eBelgeTuru;
+  @override
+  int? id;
+  @override
+  int? eFatMasId;
+  @override
+  int? eIrsMasId;
+  @override
+  DateTime? kayitTarihi;
+  @override
+  DateTime? eFaturaIptalTarihi;
+  @override
+  String? ilce;
+  @override
+  String? sehir;
+  @override
+  String? kayitYapanKul;
+  @override
+  String? gelenEFatKontrolEdildi;
+  @override
+  String? gelenEFatKontrolAciklama;
+  @override
+  String? gonderimSekliEPosta;
+  @override
+  String? ePosta;
 
   @JsonKey(ignore: true)
   @override
@@ -973,7 +1196,20 @@ abstract class _EBelgeListesiModel extends EBelgeListesiModel {
       String? zarfSilinebilir,
       DateTime? iptalTarihi,
       String? gonderimSekliEposta,
-      String? eposta}) = _$EBelgeListesiModelImpl;
+      String? eposta,
+      String? eBelgeTuru,
+      int? id,
+      int? eFatMasId,
+      int? eIrsMasId,
+      DateTime? kayitTarihi,
+      DateTime? eFaturaIptalTarihi,
+      String? ilce,
+      String? sehir,
+      String? kayitYapanKul,
+      String? gelenEFatKontrolEdildi,
+      String? gelenEFatKontrolAciklama,
+      String? gonderimSekliEPosta,
+      String? ePosta}) = _$EBelgeListesiModelImpl;
   _EBelgeListesiModel._() : super._();
 
   factory _EBelgeListesiModel.fromJson(Map<String, dynamic> json) =
@@ -1123,6 +1359,45 @@ abstract class _EBelgeListesiModel extends EBelgeListesiModel {
   @override
   String? get eposta;
   set eposta(String? value);
+  @override
+  String? get eBelgeTuru;
+  set eBelgeTuru(String? value);
+  @override
+  int? get id;
+  set id(int? value);
+  @override
+  int? get eFatMasId;
+  set eFatMasId(int? value);
+  @override
+  int? get eIrsMasId;
+  set eIrsMasId(int? value);
+  @override
+  DateTime? get kayitTarihi;
+  set kayitTarihi(DateTime? value);
+  @override
+  DateTime? get eFaturaIptalTarihi;
+  set eFaturaIptalTarihi(DateTime? value);
+  @override
+  String? get ilce;
+  set ilce(String? value);
+  @override
+  String? get sehir;
+  set sehir(String? value);
+  @override
+  String? get kayitYapanKul;
+  set kayitYapanKul(String? value);
+  @override
+  String? get gelenEFatKontrolEdildi;
+  set gelenEFatKontrolEdildi(String? value);
+  @override
+  String? get gelenEFatKontrolAciklama;
+  set gelenEFatKontrolAciklama(String? value);
+  @override
+  String? get gonderimSekliEPosta;
+  set gonderimSekliEPosta(String? value);
+  @override
+  String? get ePosta;
+  set ePosta(String? value);
   @override
   @JsonKey(ignore: true)
   _$$EBelgeListesiModelImplCopyWith<_$EBelgeListesiModelImpl> get copyWith =>

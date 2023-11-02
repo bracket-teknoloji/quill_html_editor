@@ -39,6 +39,10 @@ mixin _$KasaIslemleriRequestModel {
   set kasaKodu(String? value) => throw _privateConstructorUsedError;
   String? get gc => throw _privateConstructorUsedError;
   set gc(String? value) => throw _privateConstructorUsedError;
+  bool? get kisitYok => throw _privateConstructorUsedError;
+  set kisitYok(bool? value) => throw _privateConstructorUsedError;
+  String? get refKey => throw _privateConstructorUsedError;
+  set refKey(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -61,7 +65,9 @@ abstract class $KasaIslemleriRequestModelCopyWith<$Res> {
       String? hesapTipi,
       String? hesapKodu,
       String? kasaKodu,
-      String? gc});
+      String? gc,
+      bool? kisitYok,
+      String? refKey});
 }
 
 /// @nodoc
@@ -87,6 +93,8 @@ class _$KasaIslemleriRequestModelCopyWithImpl<$Res,
     Object? hesapKodu = freezed,
     Object? kasaKodu = freezed,
     Object? gc = freezed,
+    Object? kisitYok = freezed,
+    Object? refKey = freezed,
   }) {
     return _then(_value.copyWith(
       baslamaTarihi: freezed == baslamaTarihi
@@ -125,6 +133,14 @@ class _$KasaIslemleriRequestModelCopyWithImpl<$Res,
           ? _value.gc
           : gc // ignore: cast_nullable_to_non_nullable
               as String?,
+      kisitYok: freezed == kisitYok
+          ? _value.kisitYok
+          : kisitYok // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      refKey: freezed == refKey
+          ? _value.refKey
+          : refKey // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -147,7 +163,9 @@ abstract class _$$KasaIslemleriRequestModelImplCopyWith<$Res>
       String? hesapTipi,
       String? hesapKodu,
       String? kasaKodu,
-      String? gc});
+      String? gc,
+      bool? kisitYok,
+      String? refKey});
 }
 
 /// @nodoc
@@ -172,6 +190,8 @@ class __$$KasaIslemleriRequestModelImplCopyWithImpl<$Res>
     Object? hesapKodu = freezed,
     Object? kasaKodu = freezed,
     Object? gc = freezed,
+    Object? kisitYok = freezed,
+    Object? refKey = freezed,
   }) {
     return _then(_$KasaIslemleriRequestModelImpl(
       baslamaTarihi: freezed == baslamaTarihi
@@ -210,6 +230,14 @@ class __$$KasaIslemleriRequestModelImplCopyWithImpl<$Res>
           ? _value.gc
           : gc // ignore: cast_nullable_to_non_nullable
               as String?,
+      kisitYok: freezed == kisitYok
+          ? _value.kisitYok
+          : kisitYok // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      refKey: freezed == refKey
+          ? _value.refKey
+          : refKey // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -227,7 +255,9 @@ class _$KasaIslemleriRequestModelImpl implements _KasaIslemleriRequestModel {
       this.hesapTipi,
       this.hesapKodu,
       this.kasaKodu,
-      this.gc});
+      this.gc,
+      this.kisitYok,
+      this.refKey});
 
   factory _$KasaIslemleriRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$KasaIslemleriRequestModelImplFromJson(json);
@@ -250,10 +280,14 @@ class _$KasaIslemleriRequestModelImpl implements _KasaIslemleriRequestModel {
   String? kasaKodu;
   @override
   String? gc;
+  @override
+  bool? kisitYok;
+  @override
+  String? refKey;
 
   @override
   String toString() {
-    return 'KasaIslemleriRequestModel(baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, menuKodu: $menuKodu, sayfa: $sayfa, plasiyerKodu: $plasiyerKodu, hesapTipi: $hesapTipi, hesapKodu: $hesapKodu, kasaKodu: $kasaKodu, gc: $gc)';
+    return 'KasaIslemleriRequestModel(baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, menuKodu: $menuKodu, sayfa: $sayfa, plasiyerKodu: $plasiyerKodu, hesapTipi: $hesapTipi, hesapKodu: $hesapKodu, kasaKodu: $kasaKodu, gc: $gc, kisitYok: $kisitYok, refKey: $refKey)';
   }
 
   @JsonKey(ignore: true)
@@ -281,7 +315,9 @@ abstract class _KasaIslemleriRequestModel implements KasaIslemleriRequestModel {
       String? hesapTipi,
       String? hesapKodu,
       String? kasaKodu,
-      String? gc}) = _$KasaIslemleriRequestModelImpl;
+      String? gc,
+      bool? kisitYok,
+      String? refKey}) = _$KasaIslemleriRequestModelImpl;
 
   factory _KasaIslemleriRequestModel.fromJson(Map<String, dynamic> json) =
       _$KasaIslemleriRequestModelImpl.fromJson;
@@ -313,6 +349,12 @@ abstract class _KasaIslemleriRequestModel implements KasaIslemleriRequestModel {
   @override
   String? get gc;
   set gc(String? value);
+  @override
+  bool? get kisitYok;
+  set kisitYok(bool? value);
+  @override
+  String? get refKey;
+  set refKey(String? value);
   @override
   @JsonKey(ignore: true)
   _$$KasaIslemleriRequestModelImplCopyWith<_$KasaIslemleriRequestModelImpl>

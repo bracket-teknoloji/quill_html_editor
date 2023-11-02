@@ -195,7 +195,7 @@ class KasaHareketleriViewModel = _KasaHareketleriViewModelBase with _$KasaHareke
 abstract class _KasaHareketleriViewModelBase with Store, MobxNetworkMixin {
   //* Observables
   @observable
-  KasaIslemleriRequestModel kasaIslemleriRequestModel = KasaIslemleriRequestModel(sayfa: 1, menuKodu: "KASA_KHAR");
+  KasaIslemleriRequestModel kasaIslemleriRequestModel = KasaIslemleriRequestModel(sayfa: 1, menuKodu: "KASA_KHAR", );
 
   @observable
   ObservableMap<String, dynamic>? paramData;
