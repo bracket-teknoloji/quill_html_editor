@@ -4,6 +4,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/color_palette.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";
@@ -40,9 +41,11 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
     _scrollController = ScrollController();
     hesapController = TextEditingController();
     hesapTipiController = TextEditingController();
-    baslangicTarihiController = TextEditingController();
-    bitisTarihiController = TextEditingController();
+    baslangicTarihiController = TextEditingController(text: DateTime.now().toDateString);
+    bitisTarihiController = TextEditingController(text: DateTime.now().toDateString);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      viewModel.setBaslamaTarihi(baslangicTarihiController.text);
+      viewModel.setBitisTarihi(bitisTarihiController.text);
       await viewModel.getData();
       _scrollController.addListener(() async {
         if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
@@ -119,6 +122,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
   Column body() => Column(
         children: [
           RaporFiltreDateTimeBottomSheetView(
+            showBugunFirst: true,
             filterOnChanged: (index) async {
               viewModel.setBaslamaTarihi(baslangicTarihiController.text);
               viewModel.setBitisTarihi(bitisTarihiController.text);
