@@ -4,7 +4,6 @@ import "package:flutter/material.dart";
 import "../../../../core/constants/color_palette.dart";
 import "../../../../core/constants/enum/serbest_rapor_detay_kod_enum.dart";
 import "../../../../core/constants/enum/siparis_tipi_enum.dart";
-import "../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../core/init/cache/cache_manager.dart";
 import "../grid_item_model.dart";
 import "../main_page_model.dart";
@@ -83,8 +82,8 @@ class MenuItemConstants {
           title: "Banka",
           iconData: Icons.account_balance_outlined,
           altMenuler: <Object?>[
-            GridItemModel.item(name: "yonetici_Banka_Banka_Litesi", title: "Banka Listesi", route: "/mainPage/bankaListesi").isDebug(),
-            GridItemModel.item(name: "yonetici_Banka_Islemleri", title: "İşlemler", route: "/mainPage/bankaIslemleri").isDebug(),
+            GridItemModel.item(name: "yonetici_Banka_Banka_Litesi", title: "Banka Listesi", route: "/mainPage/bankaListesi"),
+            GridItemModel.item(name: "yonetici_Banka_Islemleri", title: "İşlemler", route: "/mainPage/bankaIslemleri"),
           ].whereType<GridItemModel>().toList(),
         ),
         GridItemModel.altmenu(
