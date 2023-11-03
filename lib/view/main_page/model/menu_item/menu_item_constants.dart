@@ -83,7 +83,7 @@ class MenuItemConstants {
           title: "Banka",
           iconData: Icons.account_balance_outlined,
           altMenuler: <Object?>[
-            GridItemModel.item(name: "yonetici_Banka_Banka_Litesi", title: "Banka Listesi"),
+            GridItemModel.item(name: "yonetici_Banka_Banka_Litesi", title: "Banka Listesi", route: "/mainPage/bankaListesi").isDebug(),
             GridItemModel.item(name: "yonetici_Banka_Islemleri", title: "İşlemler", route: "/mainPage/bankaIslemleri").isDebug(),
           ].whereType<GridItemModel>().toList(),
         ),

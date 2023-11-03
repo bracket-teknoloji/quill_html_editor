@@ -16,6 +16,7 @@ import "package:picker/view/auth/entry_company/view/entry_company_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/borc_alacak_dokumu_raporu/view/cari_borc_alacak_dokumu_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/view/e_belge_gelen_giden_kutusu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_pdf/view/e_belge_pdf_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/view/banka_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_hareket_detayi/view/kasa_hareket_detay_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
@@ -165,7 +166,7 @@ class PickerApp extends StatelessWidget {
               //* Finans
 
               // * * Banka
-              // GetPage(name: "/bankaListesi", page: () => const BankaListesiView()),
+              GetPage(name: "/bankaListesi", page: () => const BankaListesiView()),
               GetPage(name: "/bankaIslemleri", page: () => const BankaIslemleriView()),
 
               //* * Kasa
