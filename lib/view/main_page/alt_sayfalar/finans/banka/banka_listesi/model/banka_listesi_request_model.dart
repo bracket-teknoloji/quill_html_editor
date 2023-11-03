@@ -1,0 +1,19 @@
+import "package:freezed_annotation/freezed_annotation.dart";
+
+part "banka_listesi_request_model.freezed.dart";
+part "banka_listesi_request_model.g.dart";
+
+@unfreezed
+class BankaListesiRequestModel with _$BankaListesiRequestModel {
+
+  @JsonSerializable(fieldRename: FieldRename.pascal)
+  factory BankaListesiRequestModel({
+    String? bakiye,
+    String? arrHesapTipi,
+    String? sirala,
+    String? ekranTipi,
+    String? menuKodu,
+  }) = _BankaListesiRequestModel;
+
+  factory BankaListesiRequestModel.fromJson(Map<String, dynamic> json) => _$BankaListesiRequestModelFromJson(json);
+}

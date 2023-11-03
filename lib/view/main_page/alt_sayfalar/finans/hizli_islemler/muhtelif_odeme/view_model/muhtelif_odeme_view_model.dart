@@ -1,7 +1,8 @@
 import "package:mobx/mobx.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 import "package:uuid/uuid.dart";
 
-import "../../../../../../../core/base/model/banka_hesaplari_model.dart";
+
 import "../../../../../../../core/base/model/banka_sozlesmesi_model.dart";
 import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/base_proje_model.dart";
@@ -42,7 +43,7 @@ abstract class _MuhtelifOdemeViewModelBase with Store, MobxNetworkMixin {
   ObservableList<DovizKurlariModel>? dovizKurlariListesi;
 
   @observable
-  ObservableList<BankaHesaplariModel>? bankaHesaplariList;
+  ObservableList<BankaListesiModel>? bankaHesaplariList;
 
   @observable
   ObservableList<MuhasebeReferansModel>? muhaRefList;

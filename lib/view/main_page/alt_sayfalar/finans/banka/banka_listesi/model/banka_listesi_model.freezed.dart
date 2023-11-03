@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'banka_hesaplari_model.dart';
+part of 'banka_listesi_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-BankaHesaplariModel _$BankaHesaplariModelFromJson(Map<String, dynamic> json) {
-  return _BankaHesaplariModel.fromJson(json);
+BankaListesiModel _$BankaListesiModelFromJson(Map<String, dynamic> json) {
+  return _BankaListesiModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$BankaHesaplariModel {
+mixin _$BankaListesiModel {
   String? get bankaKodu => throw _privateConstructorUsedError;
   set bankaKodu(String? value) => throw _privateConstructorUsedError;
   String? get bankasubeKodu => throw _privateConstructorUsedError;
@@ -28,6 +28,12 @@ mixin _$BankaHesaplariModel {
   set hesapKodu(String? value) => throw _privateConstructorUsedError;
   String? get hesapAdi => throw _privateConstructorUsedError;
   set hesapAdi(String? value) => throw _privateConstructorUsedError;
+  String? get muhasebeHesapTipi => throw _privateConstructorUsedError;
+  set muhasebeHesapTipi(String? value) => throw _privateConstructorUsedError;
+  String? get hesapNo => throw _privateConstructorUsedError;
+  set hesapNo(String? value) => throw _privateConstructorUsedError;
+  String? get ibanNo => throw _privateConstructorUsedError;
+  set ibanNo(String? value) => throw _privateConstructorUsedError;
   String? get kilit => throw _privateConstructorUsedError;
   set kilit(String? value) => throw _privateConstructorUsedError;
   int? get hesapTipi => throw _privateConstructorUsedError;
@@ -44,36 +50,35 @@ mixin _$BankaHesaplariModel {
   set dovizborcToplami(double? value) => throw _privateConstructorUsedError;
   double? get dovizalacakToplami => throw _privateConstructorUsedError;
   set dovizalacakToplami(double? value) => throw _privateConstructorUsedError;
+  String? get dovizAdi => throw _privateConstructorUsedError;
+  set dovizAdi(String? value) => throw _privateConstructorUsedError;
   String? get bankaAdi => throw _privateConstructorUsedError;
   set bankaAdi(String? value) => throw _privateConstructorUsedError;
   String? get subeAdi => throw _privateConstructorUsedError;
   set subeAdi(String? value) => throw _privateConstructorUsedError;
   String? get baglihesapKodu => throw _privateConstructorUsedError;
   set baglihesapKodu(String? value) => throw _privateConstructorUsedError;
-  String? get muhasebeHesapTipi => throw _privateConstructorUsedError;
-  set muhasebeHesapTipi(String? value) => throw _privateConstructorUsedError;
-  String? get dovizAdi => throw _privateConstructorUsedError;
-  set dovizAdi(String? value) => throw _privateConstructorUsedError;
-  String? get hesapNo => throw _privateConstructorUsedError;
-  set hesapNo(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $BankaHesaplariModelCopyWith<BankaHesaplariModel> get copyWith =>
+  $BankaListesiModelCopyWith<BankaListesiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BankaHesaplariModelCopyWith<$Res> {
-  factory $BankaHesaplariModelCopyWith(
-          BankaHesaplariModel value, $Res Function(BankaHesaplariModel) then) =
-      _$BankaHesaplariModelCopyWithImpl<$Res, BankaHesaplariModel>;
+abstract class $BankaListesiModelCopyWith<$Res> {
+  factory $BankaListesiModelCopyWith(
+          BankaListesiModel value, $Res Function(BankaListesiModel) then) =
+      _$BankaListesiModelCopyWithImpl<$Res, BankaListesiModel>;
   @useResult
   $Res call(
       {String? bankaKodu,
       String? bankasubeKodu,
       String? hesapKodu,
       String? hesapAdi,
+      String? muhasebeHesapTipi,
+      String? hesapNo,
+      String? ibanNo,
       String? kilit,
       int? hesapTipi,
       String? hesapTipiAdi,
@@ -82,18 +87,16 @@ abstract class $BankaHesaplariModelCopyWith<$Res> {
       double? alacakToplami,
       double? dovizborcToplami,
       double? dovizalacakToplami,
+      String? dovizAdi,
       String? bankaAdi,
       String? subeAdi,
-      String? baglihesapKodu,
-      String? muhasebeHesapTipi,
-      String? dovizAdi,
-      String? hesapNo});
+      String? baglihesapKodu});
 }
 
 /// @nodoc
-class _$BankaHesaplariModelCopyWithImpl<$Res, $Val extends BankaHesaplariModel>
-    implements $BankaHesaplariModelCopyWith<$Res> {
-  _$BankaHesaplariModelCopyWithImpl(this._value, this._then);
+class _$BankaListesiModelCopyWithImpl<$Res, $Val extends BankaListesiModel>
+    implements $BankaListesiModelCopyWith<$Res> {
+  _$BankaListesiModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -107,6 +110,9 @@ class _$BankaHesaplariModelCopyWithImpl<$Res, $Val extends BankaHesaplariModel>
     Object? bankasubeKodu = freezed,
     Object? hesapKodu = freezed,
     Object? hesapAdi = freezed,
+    Object? muhasebeHesapTipi = freezed,
+    Object? hesapNo = freezed,
+    Object? ibanNo = freezed,
     Object? kilit = freezed,
     Object? hesapTipi = freezed,
     Object? hesapTipiAdi = freezed,
@@ -115,12 +121,10 @@ class _$BankaHesaplariModelCopyWithImpl<$Res, $Val extends BankaHesaplariModel>
     Object? alacakToplami = freezed,
     Object? dovizborcToplami = freezed,
     Object? dovizalacakToplami = freezed,
+    Object? dovizAdi = freezed,
     Object? bankaAdi = freezed,
     Object? subeAdi = freezed,
     Object? baglihesapKodu = freezed,
-    Object? muhasebeHesapTipi = freezed,
-    Object? dovizAdi = freezed,
-    Object? hesapNo = freezed,
   }) {
     return _then(_value.copyWith(
       bankaKodu: freezed == bankaKodu
@@ -139,6 +143,18 @@ class _$BankaHesaplariModelCopyWithImpl<$Res, $Val extends BankaHesaplariModel>
           ? _value.hesapAdi
           : hesapAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      muhasebeHesapTipi: freezed == muhasebeHesapTipi
+          ? _value.muhasebeHesapTipi
+          : muhasebeHesapTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hesapNo: freezed == hesapNo
+          ? _value.hesapNo
+          : hesapNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ibanNo: freezed == ibanNo
+          ? _value.ibanNo
+          : ibanNo // ignore: cast_nullable_to_non_nullable
+              as String?,
       kilit: freezed == kilit
           ? _value.kilit
           : kilit // ignore: cast_nullable_to_non_nullable
@@ -171,6 +187,10 @@ class _$BankaHesaplariModelCopyWithImpl<$Res, $Val extends BankaHesaplariModel>
           ? _value.dovizalacakToplami
           : dovizalacakToplami // ignore: cast_nullable_to_non_nullable
               as double?,
+      dovizAdi: freezed == dovizAdi
+          ? _value.dovizAdi
+          : dovizAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
       bankaAdi: freezed == bankaAdi
           ? _value.bankaAdi
           : bankaAdi // ignore: cast_nullable_to_non_nullable
@@ -183,28 +203,16 @@ class _$BankaHesaplariModelCopyWithImpl<$Res, $Val extends BankaHesaplariModel>
           ? _value.baglihesapKodu
           : baglihesapKodu // ignore: cast_nullable_to_non_nullable
               as String?,
-      muhasebeHesapTipi: freezed == muhasebeHesapTipi
-          ? _value.muhasebeHesapTipi
-          : muhasebeHesapTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dovizAdi: freezed == dovizAdi
-          ? _value.dovizAdi
-          : dovizAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hesapNo: freezed == hesapNo
-          ? _value.hesapNo
-          : hesapNo // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$BankaHesaplariModelImplCopyWith<$Res>
-    implements $BankaHesaplariModelCopyWith<$Res> {
-  factory _$$BankaHesaplariModelImplCopyWith(_$BankaHesaplariModelImpl value,
-          $Res Function(_$BankaHesaplariModelImpl) then) =
-      __$$BankaHesaplariModelImplCopyWithImpl<$Res>;
+abstract class _$$BankaListesiModelImplCopyWith<$Res>
+    implements $BankaListesiModelCopyWith<$Res> {
+  factory _$$BankaListesiModelImplCopyWith(_$BankaListesiModelImpl value,
+          $Res Function(_$BankaListesiModelImpl) then) =
+      __$$BankaListesiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -212,6 +220,9 @@ abstract class _$$BankaHesaplariModelImplCopyWith<$Res>
       String? bankasubeKodu,
       String? hesapKodu,
       String? hesapAdi,
+      String? muhasebeHesapTipi,
+      String? hesapNo,
+      String? ibanNo,
       String? kilit,
       int? hesapTipi,
       String? hesapTipiAdi,
@@ -220,20 +231,18 @@ abstract class _$$BankaHesaplariModelImplCopyWith<$Res>
       double? alacakToplami,
       double? dovizborcToplami,
       double? dovizalacakToplami,
+      String? dovizAdi,
       String? bankaAdi,
       String? subeAdi,
-      String? baglihesapKodu,
-      String? muhasebeHesapTipi,
-      String? dovizAdi,
-      String? hesapNo});
+      String? baglihesapKodu});
 }
 
 /// @nodoc
-class __$$BankaHesaplariModelImplCopyWithImpl<$Res>
-    extends _$BankaHesaplariModelCopyWithImpl<$Res, _$BankaHesaplariModelImpl>
-    implements _$$BankaHesaplariModelImplCopyWith<$Res> {
-  __$$BankaHesaplariModelImplCopyWithImpl(_$BankaHesaplariModelImpl _value,
-      $Res Function(_$BankaHesaplariModelImpl) _then)
+class __$$BankaListesiModelImplCopyWithImpl<$Res>
+    extends _$BankaListesiModelCopyWithImpl<$Res, _$BankaListesiModelImpl>
+    implements _$$BankaListesiModelImplCopyWith<$Res> {
+  __$$BankaListesiModelImplCopyWithImpl(_$BankaListesiModelImpl _value,
+      $Res Function(_$BankaListesiModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -243,6 +252,9 @@ class __$$BankaHesaplariModelImplCopyWithImpl<$Res>
     Object? bankasubeKodu = freezed,
     Object? hesapKodu = freezed,
     Object? hesapAdi = freezed,
+    Object? muhasebeHesapTipi = freezed,
+    Object? hesapNo = freezed,
+    Object? ibanNo = freezed,
     Object? kilit = freezed,
     Object? hesapTipi = freezed,
     Object? hesapTipiAdi = freezed,
@@ -251,14 +263,12 @@ class __$$BankaHesaplariModelImplCopyWithImpl<$Res>
     Object? alacakToplami = freezed,
     Object? dovizborcToplami = freezed,
     Object? dovizalacakToplami = freezed,
+    Object? dovizAdi = freezed,
     Object? bankaAdi = freezed,
     Object? subeAdi = freezed,
     Object? baglihesapKodu = freezed,
-    Object? muhasebeHesapTipi = freezed,
-    Object? dovizAdi = freezed,
-    Object? hesapNo = freezed,
   }) {
-    return _then(_$BankaHesaplariModelImpl(
+    return _then(_$BankaListesiModelImpl(
       bankaKodu: freezed == bankaKodu
           ? _value.bankaKodu
           : bankaKodu // ignore: cast_nullable_to_non_nullable
@@ -275,6 +285,18 @@ class __$$BankaHesaplariModelImplCopyWithImpl<$Res>
           ? _value.hesapAdi
           : hesapAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      muhasebeHesapTipi: freezed == muhasebeHesapTipi
+          ? _value.muhasebeHesapTipi
+          : muhasebeHesapTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hesapNo: freezed == hesapNo
+          ? _value.hesapNo
+          : hesapNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ibanNo: freezed == ibanNo
+          ? _value.ibanNo
+          : ibanNo // ignore: cast_nullable_to_non_nullable
+              as String?,
       kilit: freezed == kilit
           ? _value.kilit
           : kilit // ignore: cast_nullable_to_non_nullable
@@ -307,6 +329,10 @@ class __$$BankaHesaplariModelImplCopyWithImpl<$Res>
           ? _value.dovizalacakToplami
           : dovizalacakToplami // ignore: cast_nullable_to_non_nullable
               as double?,
+      dovizAdi: freezed == dovizAdi
+          ? _value.dovizAdi
+          : dovizAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
       bankaAdi: freezed == bankaAdi
           ? _value.bankaAdi
           : bankaAdi // ignore: cast_nullable_to_non_nullable
@@ -319,30 +345,21 @@ class __$$BankaHesaplariModelImplCopyWithImpl<$Res>
           ? _value.baglihesapKodu
           : baglihesapKodu // ignore: cast_nullable_to_non_nullable
               as String?,
-      muhasebeHesapTipi: freezed == muhasebeHesapTipi
-          ? _value.muhasebeHesapTipi
-          : muhasebeHesapTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dovizAdi: freezed == dovizAdi
-          ? _value.dovizAdi
-          : dovizAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hesapNo: freezed == hesapNo
-          ? _value.hesapNo
-          : hesapNo // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$BankaHesaplariModelImpl extends _BankaHesaplariModel {
-  _$BankaHesaplariModelImpl(
+class _$BankaListesiModelImpl extends _BankaListesiModel {
+  _$BankaListesiModelImpl(
       {this.bankaKodu,
       this.bankasubeKodu,
       this.hesapKodu,
       this.hesapAdi,
+      this.muhasebeHesapTipi,
+      this.hesapNo,
+      this.ibanNo,
       this.kilit,
       this.hesapTipi,
       this.hesapTipiAdi,
@@ -351,16 +368,14 @@ class _$BankaHesaplariModelImpl extends _BankaHesaplariModel {
       this.alacakToplami,
       this.dovizborcToplami,
       this.dovizalacakToplami,
+      this.dovizAdi,
       this.bankaAdi,
       this.subeAdi,
-      this.baglihesapKodu,
-      this.muhasebeHesapTipi,
-      this.dovizAdi,
-      this.hesapNo})
+      this.baglihesapKodu})
       : super._();
 
-  factory _$BankaHesaplariModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BankaHesaplariModelImplFromJson(json);
+  factory _$BankaListesiModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BankaListesiModelImplFromJson(json);
 
   @override
   String? bankaKodu;
@@ -370,6 +385,12 @@ class _$BankaHesaplariModelImpl extends _BankaHesaplariModel {
   String? hesapKodu;
   @override
   String? hesapAdi;
+  @override
+  String? muhasebeHesapTipi;
+  @override
+  String? hesapNo;
+  @override
+  String? ibanNo;
   @override
   String? kilit;
   @override
@@ -387,39 +408,38 @@ class _$BankaHesaplariModelImpl extends _BankaHesaplariModel {
   @override
   double? dovizalacakToplami;
   @override
+  String? dovizAdi;
+  @override
   String? bankaAdi;
   @override
   String? subeAdi;
   @override
   String? baglihesapKodu;
-  @override
-  String? muhasebeHesapTipi;
-  @override
-  String? dovizAdi;
-  @override
-  String? hesapNo;
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BankaHesaplariModelImplCopyWith<_$BankaHesaplariModelImpl> get copyWith =>
-      __$$BankaHesaplariModelImplCopyWithImpl<_$BankaHesaplariModelImpl>(
+  _$$BankaListesiModelImplCopyWith<_$BankaListesiModelImpl> get copyWith =>
+      __$$BankaListesiModelImplCopyWithImpl<_$BankaListesiModelImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BankaHesaplariModelImplToJson(
+    return _$$BankaListesiModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _BankaHesaplariModel extends BankaHesaplariModel {
-  factory _BankaHesaplariModel(
+abstract class _BankaListesiModel extends BankaListesiModel {
+  factory _BankaListesiModel(
       {String? bankaKodu,
       String? bankasubeKodu,
       String? hesapKodu,
       String? hesapAdi,
+      String? muhasebeHesapTipi,
+      String? hesapNo,
+      String? ibanNo,
       String? kilit,
       int? hesapTipi,
       String? hesapTipiAdi,
@@ -428,16 +448,14 @@ abstract class _BankaHesaplariModel extends BankaHesaplariModel {
       double? alacakToplami,
       double? dovizborcToplami,
       double? dovizalacakToplami,
+      String? dovizAdi,
       String? bankaAdi,
       String? subeAdi,
-      String? baglihesapKodu,
-      String? muhasebeHesapTipi,
-      String? dovizAdi,
-      String? hesapNo}) = _$BankaHesaplariModelImpl;
-  _BankaHesaplariModel._() : super._();
+      String? baglihesapKodu}) = _$BankaListesiModelImpl;
+  _BankaListesiModel._() : super._();
 
-  factory _BankaHesaplariModel.fromJson(Map<String, dynamic> json) =
-      _$BankaHesaplariModelImpl.fromJson;
+  factory _BankaListesiModel.fromJson(Map<String, dynamic> json) =
+      _$BankaListesiModelImpl.fromJson;
 
   @override
   String? get bankaKodu;
@@ -451,6 +469,15 @@ abstract class _BankaHesaplariModel extends BankaHesaplariModel {
   @override
   String? get hesapAdi;
   set hesapAdi(String? value);
+  @override
+  String? get muhasebeHesapTipi;
+  set muhasebeHesapTipi(String? value);
+  @override
+  String? get hesapNo;
+  set hesapNo(String? value);
+  @override
+  String? get ibanNo;
+  set ibanNo(String? value);
   @override
   String? get kilit;
   set kilit(String? value);
@@ -476,6 +503,9 @@ abstract class _BankaHesaplariModel extends BankaHesaplariModel {
   double? get dovizalacakToplami;
   set dovizalacakToplami(double? value);
   @override
+  String? get dovizAdi;
+  set dovizAdi(String? value);
+  @override
   String? get bankaAdi;
   set bankaAdi(String? value);
   @override
@@ -485,16 +515,7 @@ abstract class _BankaHesaplariModel extends BankaHesaplariModel {
   String? get baglihesapKodu;
   set baglihesapKodu(String? value);
   @override
-  String? get muhasebeHesapTipi;
-  set muhasebeHesapTipi(String? value);
-  @override
-  String? get dovizAdi;
-  set dovizAdi(String? value);
-  @override
-  String? get hesapNo;
-  set hesapNo(String? value);
-  @override
   @JsonKey(ignore: true)
-  _$$BankaHesaplariModelImplCopyWith<_$BankaHesaplariModelImpl> get copyWith =>
+  _$$BankaListesiModelImplCopyWith<_$BankaListesiModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

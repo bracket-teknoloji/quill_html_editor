@@ -1,7 +1,7 @@
 import "package:mobx/mobx.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 import "package:uuid/uuid.dart";
 
-import "../../../../../../../core/base/model/banka_hesaplari_model.dart";
 import "../../../../../../../core/base/model/banka_sozlesmesi_model.dart";
 import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/doviz_kurlari_model.dart";
@@ -35,7 +35,7 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<BankaSozlesmesiModel>? bankaSozlesmesiList;
 
   @observable
-  ObservableList<BankaHesaplariModel>? bankaHesaplariList;
+  ObservableList<BankaListesiModel>? bankaHesaplariList;
 
   @observable
   ObservableList<MuhasebeReferansModel>? muhaRefList;
@@ -111,7 +111,7 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
   void setMuhaRefList(List<MuhasebeReferansModel>? value) => muhaRefList = value?.asObservable();
 
   @action
-  void setBankaHesaplariList(List<BankaHesaplariModel>? value) => bankaHesaplariList = value?.asObservable();
+  void setBankaHesaplariList(List<BankaListesiModel>? value) => bankaHesaplariList = value?.asObservable();
 
   @action
   void setPlasiyerKodu(PlasiyerList? value) => model = model.copyWith(plasiyerKodu: value?.plasiyerKodu);
@@ -171,9 +171,9 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getBankaHesaplari() async {
-    final result = await networkManager.dioGet<BankaHesaplariModel>(path: ApiUrls.getBankaHesaplari, bodyModel: BankaHesaplariModel());
+    final result = await networkManager.dioGet<BankaListesiModel>(path: ApiUrls.getBankaHesaplari, bodyModel: BankaListesiModel());
     if (result.data is List) {
-      setBankaHesaplariList(result.data.cast<BankaHesaplariModel>());
+      setBankaHesaplariList(result.data.cast<BankaListesiModel>());
     }
   }
 

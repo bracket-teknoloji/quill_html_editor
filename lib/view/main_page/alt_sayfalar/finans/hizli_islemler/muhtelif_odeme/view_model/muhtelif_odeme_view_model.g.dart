@@ -119,13 +119,13 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
       name: '_MuhtelifOdemeViewModelBase.bankaHesaplariList', context: context);
 
   @override
-  ObservableList<BankaHesaplariModel>? get bankaHesaplariList {
+  ObservableList<BankaListesiModel>? get bankaHesaplariList {
     _$bankaHesaplariListAtom.reportRead();
     return super.bankaHesaplariList;
   }
 
   @override
-  set bankaHesaplariList(ObservableList<BankaHesaplariModel>? value) {
+  set bankaHesaplariList(ObservableList<BankaListesiModel>? value) {
     _$bankaHesaplariListAtom.reportWrite(value, super.bankaHesaplariList, () {
       super.bankaHesaplariList = value;
     });

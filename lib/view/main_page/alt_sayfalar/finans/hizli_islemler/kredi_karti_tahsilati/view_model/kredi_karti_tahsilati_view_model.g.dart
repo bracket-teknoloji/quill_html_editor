@@ -89,13 +89,13 @@ mixin _$KrediKartiTahsilatiViewModel
       context: context);
 
   @override
-  ObservableList<BankaHesaplariModel>? get bankaHesaplariList {
+  ObservableList<BankaListesiModel>? get bankaHesaplariList {
     _$bankaHesaplariListAtom.reportRead();
     return super.bankaHesaplariList;
   }
 
   @override
-  set bankaHesaplariList(ObservableList<BankaHesaplariModel>? value) {
+  set bankaHesaplariList(ObservableList<BankaListesiModel>? value) {
     _$bankaHesaplariListAtom.reportWrite(value, super.bankaHesaplariList, () {
       super.bankaHesaplariList = value;
     });
@@ -452,7 +452,7 @@ mixin _$KrediKartiTahsilatiViewModel
   }
 
   @override
-  void setBankaHesaplariList(List<BankaHesaplariModel>? value) {
+  void setBankaHesaplariList(List<BankaListesiModel>? value) {
     final _$actionInfo =
         _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
             name: '_KrediKartiTahsilatiViewModelBase.setBankaHesaplariList');

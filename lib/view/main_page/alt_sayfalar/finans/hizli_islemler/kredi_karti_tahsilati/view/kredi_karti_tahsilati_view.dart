@@ -4,7 +4,6 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/base/model/banka_hesaplari_model.dart";
 import "package:picker/core/base/model/banka_sozlesmesi_model.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/muhasebe_referans_model.dart";
@@ -19,6 +18,7 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/hizli_islemler/kredi_karti_tahsilati/view_model/kredi_karti_tahsilati_view_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
@@ -66,12 +66,12 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
       while (viewModel.model.kktYontemi == null) {
         await tahsilatYontemiDialog();
       }
-      if (widget.cariListesiModel != null){
+      if (widget.cariListesiModel != null) {
         viewModel.setHesapKodu(widget.cariListesiModel!.cariKodu);
         viewModel.setCariKodu(widget.cariListesiModel!.cariKodu);
         viewModel.setPlasiyerKodu(PlasiyerList(plasiyerAciklama: widget.cariListesiModel!.plasiyerAciklama, plasiyerKodu: widget.cariListesiModel!.plasiyerKodu));
-      }else {
-      await getCari();
+      } else {
+        await getCari();
       }
       if (viewModel.model.kktYontemi == "D") {
         await getSeri();
@@ -423,7 +423,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
         title: "Banka Hesapları",
         children: viewModel.bankaHesaplariList!.map((e) => BottomSheetModel(title: e.hesapAdi ?? "", description: e.hesapKodu, value: e)).toList(),
       );
-      if (result is BankaHesaplariModel) {
+      if (result is BankaListesiModel) {
         _hesapController.text = result.hesapAdi ?? "";
         viewModel.setHesapKodu(result.hesapKodu);
         viewModel.setHedefAciklama(result.hesapAdi);
