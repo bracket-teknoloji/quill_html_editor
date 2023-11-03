@@ -23,13 +23,13 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
       (_$gidenTutarComputed ??= Computed<double>(() => super.gidenTutar,
               name: '_BankaIslemleriViewModelBase.gidenTutar'))
           .value;
-  Computed<ObservableList<BankaIslemleriModel>?>?
+  Computed<ObservableList<BankaHareketleriModel>?>?
       _$getBankaIslemleriListesiComputed;
 
   @override
-  ObservableList<BankaIslemleriModel>? get getBankaIslemleriListesi =>
+  ObservableList<BankaHareketleriModel>? get getBankaIslemleriListesi =>
       (_$getBankaIslemleriListesiComputed ??=
-              Computed<ObservableList<BankaIslemleriModel>?>(
+              Computed<ObservableList<BankaHareketleriModel>?>(
                   () => super.getBankaIslemleriListesi,
                   name:
                       '_BankaIslemleriViewModelBase.getBankaIslemleriListesi'))
@@ -90,13 +90,13 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
       context: context);
 
   @override
-  ObservableList<BankaIslemleriModel>? get bankaIslemleriListesi {
+  ObservableList<BankaHareketleriModel>? get bankaIslemleriListesi {
     _$bankaIslemleriListesiAtom.reportRead();
     return super.bankaIslemleriListesi;
   }
 
   @override
-  set bankaIslemleriListesi(ObservableList<BankaIslemleriModel>? value) {
+  set bankaIslemleriListesi(ObservableList<BankaHareketleriModel>? value) {
     _$bankaIslemleriListesiAtom.reportWrite(value, super.bankaIslemleriListesi,
         () {
       super.bankaIslemleriListesi = value;
@@ -194,7 +194,7 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
   }
 
   @override
-  void setBankaIslemleriListesi(List<BankaIslemleriModel>? value) {
+  void setBankaIslemleriListesi(List<BankaHareketleriModel>? value) {
     final _$actionInfo =
         _$_BankaIslemleriViewModelBaseActionController.startAction(
             name: '_BankaIslemleriViewModelBase.setBankaIslemleriListesi');
@@ -206,7 +206,7 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
   }
 
   @override
-  void addBankaIslemleriListesi(List<BankaIslemleriModel>? value) {
+  void addBankaIslemleriListesi(List<BankaHareketleriModel>? value) {
     final _$actionInfo =
         _$_BankaIslemleriViewModelBaseActionController.startAction(
             name: '_BankaIslemleriViewModelBase.addBankaIslemleriListesi');

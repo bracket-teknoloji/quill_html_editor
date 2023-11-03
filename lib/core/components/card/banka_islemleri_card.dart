@@ -1,11 +1,11 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:picker/core/constants/color_palette.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_hareketleri/model/banka_hareketleri_model.dart";
 
-import "../../../view/main_page/alt_sayfalar/finans/banka/banka_islemleri/model/banka_islemleri_model.dart";
 import "../../base/state/base_state.dart";
-import "../../constants/extensions/date_time_extensions.dart";
-import "../../constants/extensions/number_extensions.dart";
 import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/ui_helper.dart";
@@ -13,11 +13,11 @@ import "../../init/network/login/api_urls.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 class BankaIslemleriCard extends StatefulWidget {
-  final BankaIslemleriModel? bankaIslemleriModel;
+  final BankaHareketleriModel? bankaHareketleriModel;
   final ValueChanged? onDeleted;
   const BankaIslemleriCard({
     super.key,
-    this.bankaIslemleriModel,
+    this.bankaHareketleriModel,
     this.onDeleted,
   });
 
@@ -26,7 +26,7 @@ class BankaIslemleriCard extends StatefulWidget {
 }
 
 class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
-  BankaIslemleriModel? get model => widget.bankaIslemleriModel;
+  BankaHareketleriModel? get model => widget.bankaHareketleriModel;
   @override
   Widget build(BuildContext context) => InkWell(
         onTap: () async {
@@ -119,9 +119,9 @@ class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
     Get.back();
     dialogManager.showAreYouSureDialog(
       () async {
-        final result = await networkManager.dioPost<BankaIslemleriModel>(
+        final result = await networkManager.dioPost<BankaHareketleriModel>(
           path: ApiUrls.deleteBankaHareket,
-          bodyModel: BankaIslemleriModel(),
+          bodyModel: BankaHareketleriModel(),
           data: {"INCKEYNO": model?.inckeyno},
           showLoading: true,
         );

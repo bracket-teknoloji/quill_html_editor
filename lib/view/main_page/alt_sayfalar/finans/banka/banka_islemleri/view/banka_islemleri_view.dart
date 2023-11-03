@@ -5,6 +5,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_hareketleri/model/banka_hareketleri_model.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";
@@ -18,7 +19,6 @@ import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
-import "../model/banka_islemleri_model.dart";
 import "../view_model/banka_islemleri_view_model.dart";
 
 class BankaIslemleriView extends StatefulWidget {
@@ -146,9 +146,9 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
                             shrinkWrap: true,
                             itemCount: viewModel.getBankaIslemleriListesi?.length ?? 0,
                             itemBuilder: (context, index) {
-                              final BankaIslemleriModel? item = viewModel.getBankaIslemleriListesi?[index];
+                              final BankaHareketleriModel? item = viewModel.getBankaIslemleriListesi?[index];
                               return BankaIslemleriCard(
-                                bankaIslemleriModel: item,
+                                bankaHareketleriModel: item,
                                 onDeleted: (deneme) {
                                   viewModel.resetPage();
                                 },

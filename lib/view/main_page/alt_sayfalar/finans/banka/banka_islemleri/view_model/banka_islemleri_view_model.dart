@@ -1,9 +1,9 @@
 import "package:mobx/mobx.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_hareketleri/model/banka_hareketleri_model.dart";
 
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
-import "../model/banka_islemleri_model.dart";
 import "../model/banka_islemleri_request_model.dart";
 
 part "banka_islemleri_view_model.g.dart";
@@ -21,7 +21,7 @@ abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
   bool searchBar = false;
 
   @observable
-  ObservableList<BankaIslemleriModel>? bankaIslemleriListesi;
+  ObservableList<BankaHareketleriModel>? bankaIslemleriListesi;
 
   @observable
   String? searchText;
@@ -35,7 +35,7 @@ abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
   double get gidenTutar => bankaIslemleriListesi?.where((element) => element.ba == "A").map((e) => e.tutar ?? 0).fold(0, (previousValue, element) => (previousValue ?? 0) + element) ?? 0;
 
   @computed
-  ObservableList<BankaIslemleriModel>? get getBankaIslemleriListesi => (searchText != null && searchText != "")
+  ObservableList<BankaHareketleriModel>? get getBankaIslemleriListesi => (searchText != null && searchText != "")
       ? bankaIslemleriListesi?.where((element) => element.belgeno != null && element.belgeno!.toLowerCase().contains(searchText!.toLowerCase())).toList().asObservable()
       : bankaIslemleriListesi;
 
@@ -58,10 +58,10 @@ abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
   void setBitisTarihi(String? value) => bankaIslemleriRequestModel = bankaIslemleriRequestModel.copyWith(bitisTarihi: value);
 
   @action
-  void setBankaIslemleriListesi(List<BankaIslemleriModel>? value) => bankaIslemleriListesi = value?.asObservable();
+  void setBankaIslemleriListesi(List<BankaHareketleriModel>? value) => bankaIslemleriListesi = value?.asObservable();
 
   @action
-  void addBankaIslemleriListesi(List<BankaIslemleriModel>? value) => bankaIslemleriListesi?.addAll(value ?? []);
+  void addBankaIslemleriListesi(List<BankaHareketleriModel>? value) => bankaIslemleriListesi?.addAll(value ?? []);
 
   @action
   void clearFilters() {
@@ -76,9 +76,9 @@ abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioGet<BankaIslemleriModel>(path: ApiUrls.getBankaHareketleri, bodyModel: BankaIslemleriModel(), queryParameters: bankaIslemleriRequestModel.toJson());
+    final result = await networkManager.dioGet<BankaHareketleriModel>(path: ApiUrls.getBankaHareketleri, bodyModel: BankaHareketleriModel(), queryParameters: bankaIslemleriRequestModel.toJson());
     if (result.data is List) {
-      final List<BankaIslemleriModel> list = result.data.cast<BankaIslemleriModel>();
+      final List<BankaHareketleriModel> list = result.data.cast<BankaHareketleriModel>();
       setBankaIslemleriListesi(list);
     }
   }
