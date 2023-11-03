@@ -15,11 +15,7 @@ import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 class BankaIslemleriCard extends StatefulWidget {
   final BankaHareketleriModel? bankaHareketleriModel;
   final ValueChanged? onDeleted;
-  const BankaIslemleriCard({
-    super.key,
-    this.bankaHareketleriModel,
-    this.onDeleted,
-  });
+  const BankaIslemleriCard({super.key, this.bankaHareketleriModel, this.onDeleted});
 
   @override
   State<BankaIslemleriCard> createState() => _BankaIslemleriCardState();

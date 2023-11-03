@@ -6,7 +6,6 @@ part "banka_hareketleri_model.g.dart";
 
 @unfreezed
 class BankaHareketleriModel with _$BankaHareketleriModel, NetworkManagerMixin {
-
   BankaHareketleriModel._();
   factory BankaHareketleriModel({
     int? inckeyno,
@@ -18,7 +17,7 @@ class BankaHareketleriModel with _$BankaHareketleriModel, NetworkManagerMixin {
     String? aciklama,
     String? entegrefkey,
     int? dovizTipi,
-    int? dovizTutari,
+    double? dovizTutari,
     int? hareketTipi,
     String? hesapAdi,
     String? hareketAciklama,
@@ -27,6 +26,7 @@ class BankaHareketleriModel with _$BankaHareketleriModel, NetworkManagerMixin {
     String? bankasubeKodu,
     String? subeAdi,
     String? belgeno,
+    String? dovizAdi,
   }) = _BankaHareketleriModel;
 
   factory BankaHareketleriModel.fromJson(Map<String, dynamic> json) => _$BankaHareketleriModelFromJson(json);

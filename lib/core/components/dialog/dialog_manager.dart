@@ -8,6 +8,7 @@ import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/color_palette.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 
 import "../../../view/add_company/model/account_model.dart";
 import "../../../view/add_company/model/account_response_model.dart";
@@ -177,6 +178,13 @@ class DialogManager {
 
   Future<dynamic> showKasaGridViewDialog(KasaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async => await _baseDialog(
         body: CustomAnimatedGridView<KasaListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.kasa, title: "Kasa İşlemleri", onSelected: onSelected),
+        onOk: () {},
+        btnOkText: "İptal",
+        dialogType: DialogType.noHeader,
+      ).show();
+
+      Future<dynamic> showBankaGridViewDialog(BankaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async => await _baseDialog(
+        body: CustomAnimatedGridView<BankaListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.banka, title: "Banka İşlemleri", onSelected: onSelected),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,

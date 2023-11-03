@@ -149,7 +149,7 @@ class NetworkManager {
 
     if (responseModel.success != true) {
       if (showError) {
-        DialogManager().showAlertDialog(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
+        await DialogManager().showAlertDialog(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
       }
       if (responseModel.errorCode == 1) {
         Get.toNamed("/");
@@ -218,7 +218,7 @@ class NetworkManager {
     try {
       if (response.data is Uint8List) {
         return MemoryImage(response.data);
-      }else {
+      } else {
         return null;
       }
     } catch (e) {

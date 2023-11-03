@@ -4,6 +4,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/appbar/appbar_prefered_sized_bottom.dart";
+import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/components/button/elevated_buttons/bottom_appbar_button.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
@@ -11,7 +12,10 @@ import "package:picker/core/components/slide_controller/view/slide_controller_vi
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/color_palette.dart";
+import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
@@ -94,6 +98,10 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
                       readOnly: true,
                       suffixMore: true,
                       controller: _hesapTipiController,
+                      onClear: () {
+                        _hesapTipiController.clear();
+                        viewModel.setHesapTipi(null);
+                      },
                       onTap: () async {
                         final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                           context,
@@ -167,57 +175,79 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
                 itemBuilder: (context, index) {
                   final List<BankaListesiModel> itemList = viewModel.groupedWithHesapTipiAdiList[index];
                   final double total = itemList.fold<double>(0, (previousValue, element) => previousValue + (element.bakiye));
-                  return Card(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(itemList.first.hesapTipiAdi ?? ""),
-                            Text("${total.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: TextStyle(color: UIHelper.getColorWithValue(total))),
-                          ],
-                        ).paddingAll(UIHelper.lowSize),
-                        ListView.builder(
-                          itemCount: itemList.length,
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            final BankaListesiModel item = itemList[index];
-                            return Card(
-                              color: theme.colorScheme.onSecondary,
-                              elevation: 0,
-                              child: ListTile(
-                                onTap: () {},
-                                leading: CircleAvatar(
-                                  foregroundColor: Colors.white,
-                                  backgroundColor: UIHelper.getColorWithValue(item.bakiye),
-                                  child: Text(item.hesapAdi?[0] ?? ""),
-                                ),
-                                title: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(item.hesapAdi ?? ""),
-                                    Text(
-                                      "${item.bakiyeDovizli.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${item.dovizAdi ?? mainCurrency}",
-                                      style: TextStyle(color: UIHelper.getColorWithValue(item.bakiye)),
-                                    ),
-                                  ],
-                                ),
-                                subtitle: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(item.hesapKodu ?? ""),
-                                    Text(item.subeAdi ?? ""),
-                                    Text(item.bankaAdi ?? ""),
-                                  ],
-                                ),
+                  // final double totalDovizsiz = itemList.where((element) => element.dovizAdi == null).fold<double>(0, (previousValue, element) => previousValue + (element.bakiyeDovizli));
+                  // final double totalDovizLi = itemList.where((element) => element.dovizAdi != null).fold<double>(0, (previousValue, element) => previousValue + (element.bakiyeDovizli));
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(itemList.first.hesapTipiAdi ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
+                              Text(
+                                "${total.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                                style: const TextStyle(color: ColorPalette.slateGray),
                               ),
-                            );
-                          },
-                        ),
-                      ],
-                    ),
+                            ],
+                          ),
+                          Row(
+                            children: List.generate(
+                              itemList.bakiyeMap(mainCurrency).length,
+                              (index) => Text(
+                                "${itemList.bakiyeMap(mainCurrency).values.toList()[index].commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} (${itemList.bakiyeMap(mainCurrency).keys.toList()[index]})  ",
+                                style: const TextStyle(color: ColorPalette.slateGray),
+                              ),
+                            ),
+                          ).yetkiVarMi(itemList.any((element) => element.dovizAdi != null)),
+                        ],
+                      ).paddingAll(UIHelper.lowSize),
+                      ListView.builder(
+                        itemCount: itemList.length,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          final BankaListesiModel item = itemList[index];
+                          return Card(
+                            color: theme.colorScheme.surfaceVariant.withOpacity(0.3),
+                            elevation: 0,
+                            borderOnForeground: true,
+                            child: ListTile(
+                              onTap: () async => await dialogManager.showBankaGridViewDialog(item),
+                              leading: CircleAvatar(
+                                foregroundColor: Colors.white,
+                                backgroundColor: UIHelper.getColorWithValue(item.bakiye),
+                                child: Text(item.hesapAdi?[0] ?? ""),
+                              ),
+                              title: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(item.hesapAdi ?? ""),
+                                  Text(
+                                    "${item.bakiyeDovizli.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${item.dovizAdi ?? mainCurrency}",
+                                    style: TextStyle(color: UIHelper.getColorWithValue(item.bakiye)),
+                                  ),
+                                ],
+                              ),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      ColorfulBadge(badgeColorEnum: BadgeColorEnum.dovizli, label: Text("Dövizli ${item.dovizAdi ?? ""}")).yetkiVarMi((item.dovizTipi ?? 0) > 1),
+                                    ],
+                                  ),
+                                  Text(item.hesapKodu ?? ""),
+                                  Text(item.subeAdi ?? ""),
+                                  Text(item.bankaAdi ?? ""),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
                   );
                 },
               );

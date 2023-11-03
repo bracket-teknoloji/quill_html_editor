@@ -86,6 +86,8 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(nakitTahsilat(model));
       islemlerList.add(nakitOdeme(model));
       islemlerList.add(krediKartiTahsilati(model));
+    } else if (islemtipi == IslemTipiEnum.banka){
+      islemlerList.add(bankaHareketleri);
     }
   }
 
@@ -417,6 +419,11 @@ class IslemlerMenuItemConstants<T> {
           );
         },
       );
+
+
+  //* Banka
+  GridItemModel? get bankaHareketleri =>
+      GridItemModel.islemler(title: "Banka Hareketleri", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/bankaHareketleri", arguments: model));
 
   //* Kasa
   GridItemModel? get kasaTransferi => GridItemModel.islemler(title: "Kasalar Arası Transferi", iconData: Icons.list_alt_rounded, onTap: () async => await Get.toNamed("/mainPage/kasaTransferi"));

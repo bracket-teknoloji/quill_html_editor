@@ -9,7 +9,7 @@ import "../../../../../../../core/components/appbar/appbar_prefered_sized_bottom
 import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";
 import "../../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart";
 import "../../../../../../../core/components/button/elevated_buttons/footer_button.dart";
-import "../../../../../../../core/components/card/banka_listesi_card.dart";
+import "../../../../../../../core/components/card/kasa_listesi_card.dart";
 import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
 import "../../../../../../../core/components/textfield/custom_app_bar_text_field.dart";

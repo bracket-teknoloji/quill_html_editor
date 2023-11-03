@@ -38,5 +38,29 @@ class BankaListesiModel with _$BankaListesiModel, NetworkManagerMixin {
 extension BankaListesiModelExtension on BankaListesiModel {
   double get bakiye => (borcToplami ?? 0) - (alacakToplami ?? 0);
   double get dovizBakiye => (dovizborcToplami ?? 0) - (dovizalacakToplami ?? 0);
-  double get bakiyeDovizli => dovizTipi == 0 ? bakiye : dovizBakiye;
+  double get bakiyeDovizli => dovizAdi == null ? bakiye : dovizBakiye;
+}
+
+extension BankaListesiModelListExtension on List<BankaListesiModel> {
+  double get bakiye => fold(0, (previousValue, element) => previousValue + element.bakiye);
+  double get dovizBakiye => fold(0, (previousValue, element) => previousValue + element.dovizBakiye);
+  double get bakiyeDovizli => fold(0, (previousValue, element) => previousValue + element.bakiyeDovizli);
+
+  Map<String, double> bakiyeMap(String mainCurrency) {
+    final Map<String, double> map = {};
+    forEach((element) {
+      if (map[element.dovizAdi] == null) {
+        if (element.bakiyeDovizli == 0) {
+          return;
+        }
+        map[element.dovizAdi ?? mainCurrency] = element.bakiyeDovizli;
+      } else {
+        if (element.bakiyeDovizli == 0) {
+          return;
+        }
+        map[element.dovizAdi ?? mainCurrency] = map[element.dovizAdi ?? mainCurrency]! + element.bakiyeDovizli;
+      }
+    });
+    return map;
+  }
 }

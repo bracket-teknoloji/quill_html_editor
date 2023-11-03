@@ -70,36 +70,34 @@ class _SurumYenilikleriViewState extends BaseState<SurumYenilikleriView> {
                 itemCount: viewModel.getSurumYenilikleriModelList?.length ?? 0,
                 itemBuilder: (context, index) {
                   final SurumYenilikleriModel? item = viewModel.getSurumYenilikleriModelList?[index];
-                  return Card(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(item?.versiyon ?? ""),
-                            Text(item?.tarih.toDateString ?? ""),
-                          ],
-                        ).paddingSymmetric(horizontal: UIHelper.lowSize),
-                        ListView.builder(
-                          shrinkWrap: true,
-                          padding: UIHelper.zeroPadding,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: item?.liste?.length ?? 0,
-                          itemBuilder: (context, index) {
-                            final ValueList? newItem = item?.liste?[index];
-                            return Card(
-                              color: theme.colorScheme.onSecondary,
-                              elevation: 0,
-                              child: ListTile(
-                                title: Text(newItem?.aciklama ?? ""),
-                              ),
-                            );
-                          },
-                        ),
-                      ],
-                    ).paddingAll(UIHelper.lowSize),
-                  );
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(item?.versiyon ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
+                          Text(item?.tarih.toDateString ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
+                        ],
+                      ).paddingSymmetric(horizontal: UIHelper.lowSize),
+                      ListView.builder(
+                        shrinkWrap: true,
+                        padding: UIHelper.zeroPadding,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: item?.liste?.length ?? 0,
+                        itemBuilder: (context, index) {
+                          final ValueList? newItem = item?.liste?[index];
+                          return Card(
+                            color: theme.colorScheme.surfaceVariant.withOpacity(0.3),
+                            elevation: 0,
+                            child: ListTile(
+                              title: Text("• ${newItem?.aciklama ?? ""}"),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ).paddingAll(UIHelper.lowSize);
                 },
               );
             }

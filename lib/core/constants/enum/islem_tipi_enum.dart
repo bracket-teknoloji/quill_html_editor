@@ -1,4 +1,4 @@
-enum IslemTipiEnum { stok, cari, stokRapor, cariRapor, stokSerbest, cariSerbest, siparis, kasa, cariHareketleri}
+enum IslemTipiEnum { stok, cari, stokRapor, cariRapor, stokSerbest, cariSerbest, siparis, kasa, cariHareketleri, banka}
 
 extension IslemTipiEnumExtension on IslemTipiEnum {
   String get value {

@@ -20,7 +20,7 @@ _$BankaHareketleriModelImpl _$$BankaHareketleriModelImplFromJson(
       aciklama: json['ACIKLAMA'] as String?,
       entegrefkey: json['ENTEGREFKEY'] as String?,
       dovizTipi: json['DOVIZ_TIPI'] as int?,
-      dovizTutari: json['DOVIZ_TUTARI'] as int?,
+      dovizTutari: (json['DOVIZ_TUTARI'] as num?)?.toDouble(),
       hareketTipi: json['HAREKET_TIPI'] as int?,
       hesapAdi: json['HESAP_ADI'] as String?,
       hareketAciklama: json['HAREKET_ACIKLAMA'] as String?,
@@ -29,6 +29,7 @@ _$BankaHareketleriModelImpl _$$BankaHareketleriModelImplFromJson(
       bankasubeKodu: json['BANKASUBE_KODU'] as String?,
       subeAdi: json['SUBE_ADI'] as String?,
       belgeno: json['BELGENO'] as String?,
+      dovizAdi: json['DOVIZ_ADI'] as String?,
     );
 
 Map<String, dynamic> _$$BankaHareketleriModelImplToJson(
@@ -59,5 +60,6 @@ Map<String, dynamic> _$$BankaHareketleriModelImplToJson(
   writeNotNull('BANKASUBE_KODU', instance.bankasubeKodu);
   writeNotNull('SUBE_ADI', instance.subeAdi);
   writeNotNull('BELGENO', instance.belgeno);
+  writeNotNull('DOVIZ_ADI', instance.dovizAdi);
   return val;
 }
