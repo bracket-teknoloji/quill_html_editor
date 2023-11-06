@@ -350,7 +350,9 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
       json['OzelFaturaIadeMaliyetiZorunlu'] as bool?
   ..bankaKKartiKasayaIsle = json['bankaKKartiKasayaIsle'] as bool?
   ..kayitliBankaHesapTipleri =
-      json['KayitliBankaHesapTipleri'] as List<dynamic>?
+      (json['KayitliBankaHesapTipleri'] as List<dynamic>?)
+          ?.map((e) => e as int)
+          .toList()
   ..kkNoZorunluDegil = json['KKNoZorunluDegil'] as bool?
   ..fifoLifoYontem = json['FifoLifoYontem'] as String?
   ..cariAktiviteUygulamasi = json['CariAktiviteUygulamasi'] as String?

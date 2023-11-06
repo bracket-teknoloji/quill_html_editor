@@ -32,6 +32,19 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
     "Tümü": null,
   };
 
+  final Map<String, String?> donemTipiMap = {
+    "Tümü": null,
+    "Bugüne Kadar": "B",
+    "Bugün": "G",
+    "Bu Haftaya Kadar": "H",
+    "Bu Hafta": "W",
+    "Bu Aya Kadar": "A",
+    "Bu Ay": "M",
+    "Gelecek Hafta": "F",
+    "Gelecek Ay": "C",
+    "Gelecek 3 Ay": "Y",
+  };
+
   @observable
   bool searchBar = false;
 
@@ -39,7 +52,7 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<CekSenetListesiModel>? cekSenetListesiListesi;
 
   @observable
-  CekSenetListesiRequestModel cekSenetListesiRequestModel = CekSenetListesiRequestModel(ekranTipi: "L", sirala: "VADE_TARIHI_AZ");
+  CekSenetListesiRequestModel cekSenetListesiRequestModel = CekSenetListesiRequestModel(ekranTipi: "L", sirala: "VADE_TARIHI_AZ", durum: "B", yer: "P");
 
   @computed
   double get toplamTutar => cekSenetListesiListesi?.fold(0, (previousValue, element) => (previousValue ?? 0) + (element.tutar ?? 0)) ?? 0;
@@ -51,7 +64,24 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
   void setSearchText(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(searchText: value);
 
   @action
-  void setYeri(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(yer: value);
+  void setYeri(String? value) {
+    cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(yer: value);
+    if (value != "C" && value != "T" || value != "E") {
+      setVerilenCari(null);
+    }
+  }
+
+  @action
+  void setVerenCari(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(verenKodu: value);
+
+  @action
+  void setVerilenCari(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(verilenKodu: value);
+
+  @action
+  void setBanka(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(verilenKodu: value);
+
+  @action
+  void setVadeTarihi(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(donemTipi: value);
 
   @action
   void setDurumu(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(durum: value);

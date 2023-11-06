@@ -114,6 +114,50 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
   }
 
   @override
+  void setVerenCari(String? value) {
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(name: '_CekSenetListesiViewModelBase.setVerenCari');
+    try {
+      return super.setVerenCari(value);
+    } finally {
+      _$_CekSenetListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setVerilenCari(String? value) {
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(name: '_CekSenetListesiViewModelBase.setVerilenCari');
+    try {
+      return super.setVerilenCari(value);
+    } finally {
+      _$_CekSenetListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setBanka(String? value) {
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(name: '_CekSenetListesiViewModelBase.setBanka');
+    try {
+      return super.setBanka(value);
+    } finally {
+      _$_CekSenetListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setVadeTarihi(String? value) {
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(name: '_CekSenetListesiViewModelBase.setVadeTarihi');
+    try {
+      return super.setVadeTarihi(value);
+    } finally {
+      _$_CekSenetListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setDurumu(String? value) {
     final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
         .startAction(name: '_CekSenetListesiViewModelBase.setDurumu');

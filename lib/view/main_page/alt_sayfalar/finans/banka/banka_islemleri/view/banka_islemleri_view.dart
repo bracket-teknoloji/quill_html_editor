@@ -181,7 +181,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
                 const Text("Gider"),
                 Observer(
                   builder: (_) => Text(
-                    "${viewModel.gidenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                    "${viewModel.gidenTutar.  commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                     style: const TextStyle(color: ColorPalette.persianRed),
                   ),
                 ),

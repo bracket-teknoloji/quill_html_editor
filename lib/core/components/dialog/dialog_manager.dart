@@ -163,7 +163,7 @@ class DialogManager {
   void showGridViewDialog(Widget body) => _baseDialog(body: body, onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
   void showCariGridViewDialog(CariListesiModel? model, [IslemTipiEnum? tip]) => _baseDialog(
-        body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: tip ?? IslemTipiEnum.cari, title: model?.cariAdi),
+        body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: tip ?? IslemTipiEnum.cari, title: model?.cariAdi ?? model?.cariKodu),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
@@ -183,7 +183,7 @@ class DialogManager {
         dialogType: DialogType.noHeader,
       ).show();
 
-      Future<dynamic> showBankaGridViewDialog(BankaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async => await _baseDialog(
+  Future<dynamic> showBankaGridViewDialog(BankaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async => await _baseDialog(
         body: CustomAnimatedGridView<BankaListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.banka, title: "Banka İşlemleri", onSelected: onSelected),
         onOk: () {},
         btnOkText: "İptal",

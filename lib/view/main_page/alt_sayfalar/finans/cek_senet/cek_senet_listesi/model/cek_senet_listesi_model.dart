@@ -68,6 +68,8 @@ extension CekSenetExtensions on CekSenetListesiModel {
         return "Bekliyor";
       case "O":
         return "Ödendi";
+        case "K":
+        return "Karşılıksız";
       default:
         return "Onaylandı";
     }

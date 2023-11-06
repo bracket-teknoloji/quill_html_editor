@@ -19,6 +19,8 @@ _$CekSenetListesiRequestModelImpl _$$CekSenetListesiRequestModelImplFromJson(
       verilenKodu: json['VerilenKodu'] as String?,
       durum: json['Durum'] as String?,
       searchText: json['SearchText'] as String?,
+      baslangicTarihi: json['BaslangicTarihi'] as String?,
+      bitisTarihi: json['BitisTarihi'] as String?,
     );
 
 Map<String, dynamic> _$$CekSenetListesiRequestModelImplToJson(
@@ -41,5 +43,7 @@ Map<String, dynamic> _$$CekSenetListesiRequestModelImplToJson(
   writeNotNull('VerilenKodu', instance.verilenKodu);
   writeNotNull('Durum', instance.durum);
   writeNotNull('SearchText', instance.searchText);
+  writeNotNull('BaslangicTarihi', instance.baslangicTarihi);
+  writeNotNull('BitisTarihi', instance.bitisTarihi);
   return val;
 }

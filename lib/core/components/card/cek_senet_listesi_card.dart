@@ -1,6 +1,11 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
+import "package:picker/core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
@@ -8,7 +13,9 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
+import "package:picker/view/main_page/model/param_model.dart";
 
 class CekSenetListesiCard extends StatefulWidget {
   final CekSenetListesiModel model;
@@ -23,6 +30,48 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
   @override
   Widget build(BuildContext context) => Card(
         child: ListTile(
+          onTap: () async {
+            await bottomSheetDialogManager.showBottomSheetDialog(
+              context,
+              title: model.belgeNo ?? "",
+              children: [
+                BottomSheetModel(title: "Görüntüle", iconWidget: Icons.preview_outlined),
+                BottomSheetModel(
+                  title: "Tahsilat Makbuzu",
+                  onTap: () async {
+                    final PdfModel pdfModel = PdfModel(raporOzelKod: "TahsilatMakbuzu", dicParams: DicParams());
+                    final anaVeri = CacheManager.getAnaVeri;
+                    final result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == "TahsilatMakbuzu").toList();
+                    NetFectDizaynList? dizaynList;
+                    if (result.ext.isNotNullOrEmpty) {
+                      pdfModel.dicParams?.caharInckey = "0";
+                      pdfModel.dicParams?.kasaharInckey = "0";
+                      pdfModel.dicParams?.belgeNo = model.belgeNo;
+                      pdfModel.dicParams?.belgeTipi = model.belgeTipi;
+                      if (result!.length == 1) {
+                        pdfModel.dizaynId = result.first.id;
+                        dizaynList = result.first;
+                      } else {
+                        dizaynList = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                          context,
+                          title: "Dizayn Seçiniz",
+                          children: result.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList(),
+                        );
+                        pdfModel.dizaynId = dizaynList?.id;
+                      }
+                      if (dizaynList != null) {
+                        Get.back();
+                        Get.to(() => PDFViewerView(title: dizaynList?.dizaynAdi ?? "", pdfData: pdfModel));
+                      }
+                    } else {
+                      Get.back();
+                      dialogManager.showErrorSnackBar("Dizayn bulunamadı");
+                    }
+                  },
+                ),
+              ],
+            );
+          },
           title: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,

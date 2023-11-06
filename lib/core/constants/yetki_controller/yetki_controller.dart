@@ -245,6 +245,9 @@ final class YetkiController {
   bool get satisFatDigerSekmesiGelsin => _isTrue(_yetkiModel?.sevkiyatSatisFatDigerSekmesiGoster);
   bool get satisIrsDigerSekmesiGelsin => _isTrue(_yetkiModel?.sevkiyatSatisIrsDigerSekmesiGoster);
 
+  //* Banka
+  bool kayitliHesapTipiMi(int value) => _paramModel?.kayitliBankaHesapTipleri?.contains(value) ?? false; 
+
   //! MAL KABUL
 
   bool malKabulAlisFatAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.malKabulAlisFatAciklamaAlanlari?.contains(index) ?? false));

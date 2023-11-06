@@ -17,7 +17,16 @@ class CekSenetListesiRequestModel with _$CekSenetListesiRequestModel {
     String? verilenKodu,
     String? durum,
     String? searchText,
+    String? baslangicTarihi,
+    String? bitisTarihi,
   }) = _CekSenetListesiRequestModel;
 
   factory CekSenetListesiRequestModel.fromJson(Map<String, dynamic> json) => _$CekSenetListesiRequestModelFromJson(json);
+}
+
+extension CekSenetListesiRequestModelExtension on CekSenetListesiRequestModel {
+  List<int>? get arrHesapTipi {
+    List<int>? arrHesapTipi = [];
+    
+  }
 }

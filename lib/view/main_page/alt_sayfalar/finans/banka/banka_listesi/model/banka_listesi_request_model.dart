@@ -5,7 +5,6 @@ part "banka_listesi_request_model.g.dart";
 
 @unfreezed
 class BankaListesiRequestModel with _$BankaListesiRequestModel {
-
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory BankaListesiRequestModel({
     String? bakiye,
@@ -13,6 +12,7 @@ class BankaListesiRequestModel with _$BankaListesiRequestModel {
     String? sirala,
     String? ekranTipi,
     String? menuKodu,
+    String? belgeTipi,
   }) = _BankaListesiRequestModel;
 
   factory BankaListesiRequestModel.fromJson(Map<String, dynamic> json) => _$BankaListesiRequestModelFromJson(json);

@@ -265,6 +265,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
     // dialogManager.showLoadingDialog("Lütfen Bekleyiniz");
     final result = await networkManager.dioGet<SerbestRaporResponseModel>(
       path: ApiUrls.getDizaynParametreleri,
+      showLoading: true,
       bodyModel: SerbestRaporResponseModel(),
       queryParameters: {"ID": widget.dizaynList?.id},
     );

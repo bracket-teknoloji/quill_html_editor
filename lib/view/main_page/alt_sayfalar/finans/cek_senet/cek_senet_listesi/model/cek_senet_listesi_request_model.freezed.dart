@@ -41,6 +41,10 @@ mixin _$CekSenetListesiRequestModel {
   set durum(String? value) => throw _privateConstructorUsedError;
   String? get searchText => throw _privateConstructorUsedError;
   set searchText(String? value) => throw _privateConstructorUsedError;
+  String? get baslangicTarihi => throw _privateConstructorUsedError;
+  set baslangicTarihi(String? value) => throw _privateConstructorUsedError;
+  String? get bitisTarihi => throw _privateConstructorUsedError;
+  set bitisTarihi(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -66,7 +70,9 @@ abstract class $CekSenetListesiRequestModelCopyWith<$Res> {
       String? tipi,
       String? verilenKodu,
       String? durum,
-      String? searchText});
+      String? searchText,
+      String? baslangicTarihi,
+      String? bitisTarihi});
 }
 
 /// @nodoc
@@ -93,6 +99,8 @@ class _$CekSenetListesiRequestModelCopyWithImpl<$Res,
     Object? verilenKodu = freezed,
     Object? durum = freezed,
     Object? searchText = freezed,
+    Object? baslangicTarihi = freezed,
+    Object? bitisTarihi = freezed,
   }) {
     return _then(_value.copyWith(
       verenKodu: freezed == verenKodu
@@ -135,6 +143,14 @@ class _$CekSenetListesiRequestModelCopyWithImpl<$Res,
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String?,
+      baslangicTarihi: freezed == baslangicTarihi
+          ? _value.baslangicTarihi
+          : baslangicTarihi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bitisTarihi: freezed == bitisTarihi
+          ? _value.bitisTarihi
+          : bitisTarihi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -158,7 +174,9 @@ abstract class _$$CekSenetListesiRequestModelImplCopyWith<$Res>
       String? tipi,
       String? verilenKodu,
       String? durum,
-      String? searchText});
+      String? searchText,
+      String? baslangicTarihi,
+      String? bitisTarihi});
 }
 
 /// @nodoc
@@ -184,6 +202,8 @@ class __$$CekSenetListesiRequestModelImplCopyWithImpl<$Res>
     Object? verilenKodu = freezed,
     Object? durum = freezed,
     Object? searchText = freezed,
+    Object? baslangicTarihi = freezed,
+    Object? bitisTarihi = freezed,
   }) {
     return _then(_$CekSenetListesiRequestModelImpl(
       verenKodu: freezed == verenKodu
@@ -226,6 +246,14 @@ class __$$CekSenetListesiRequestModelImplCopyWithImpl<$Res>
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String?,
+      baslangicTarihi: freezed == baslangicTarihi
+          ? _value.baslangicTarihi
+          : baslangicTarihi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bitisTarihi: freezed == bitisTarihi
+          ? _value.bitisTarihi
+          : bitisTarihi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -245,7 +273,9 @@ class _$CekSenetListesiRequestModelImpl
       this.tipi,
       this.verilenKodu,
       this.durum,
-      this.searchText});
+      this.searchText,
+      this.baslangicTarihi,
+      this.bitisTarihi});
 
   factory _$CekSenetListesiRequestModelImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -271,10 +301,14 @@ class _$CekSenetListesiRequestModelImpl
   String? durum;
   @override
   String? searchText;
+  @override
+  String? baslangicTarihi;
+  @override
+  String? bitisTarihi;
 
   @override
   String toString() {
-    return 'CekSenetListesiRequestModel(verenKodu: $verenKodu, sirala: $sirala, ekranTipi: $ekranTipi, yer: $yer, donemTipi: $donemTipi, tarihTipi: $tarihTipi, tipi: $tipi, verilenKodu: $verilenKodu, durum: $durum, searchText: $searchText)';
+    return 'CekSenetListesiRequestModel(verenKodu: $verenKodu, sirala: $sirala, ekranTipi: $ekranTipi, yer: $yer, donemTipi: $donemTipi, tarihTipi: $tarihTipi, tipi: $tipi, verilenKodu: $verilenKodu, durum: $durum, searchText: $searchText, baslangicTarihi: $baslangicTarihi, bitisTarihi: $bitisTarihi)';
   }
 
   @JsonKey(ignore: true)
@@ -304,7 +338,9 @@ abstract class _CekSenetListesiRequestModel
       String? tipi,
       String? verilenKodu,
       String? durum,
-      String? searchText}) = _$CekSenetListesiRequestModelImpl;
+      String? searchText,
+      String? baslangicTarihi,
+      String? bitisTarihi}) = _$CekSenetListesiRequestModelImpl;
 
   factory _CekSenetListesiRequestModel.fromJson(Map<String, dynamic> json) =
       _$CekSenetListesiRequestModelImpl.fromJson;
@@ -339,6 +375,12 @@ abstract class _CekSenetListesiRequestModel
   @override
   String? get searchText;
   set searchText(String? value);
+  @override
+  String? get baslangicTarihi;
+  set baslangicTarihi(String? value);
+  @override
+  String? get bitisTarihi;
+  set bitisTarihi(String? value);
   @override
   @JsonKey(ignore: true)
   _$$CekSenetListesiRequestModelImplCopyWith<_$CekSenetListesiRequestModelImpl>

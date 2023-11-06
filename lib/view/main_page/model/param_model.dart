@@ -345,7 +345,7 @@ class ParamModel {
   @JsonKey(name: "bankaKKartiKasayaIsle")
   bool? bankaKKartiKasayaIsle;
   @JsonKey(name: "KayitliBankaHesapTipleri")
-  List? kayitliBankaHesapTipleri;
+  List<int>? kayitliBankaHesapTipleri;
   @JsonKey(name: "KKNoZorunluDegil")
   bool? kkNoZorunluDegil;
   @JsonKey(name: "FifoLifoYontem")

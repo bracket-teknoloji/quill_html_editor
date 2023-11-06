@@ -31,6 +31,8 @@ mixin _$BankaListesiRequestModel {
   set ekranTipi(String? value) => throw _privateConstructorUsedError;
   String? get menuKodu => throw _privateConstructorUsedError;
   set menuKodu(String? value) => throw _privateConstructorUsedError;
+  String? get belgeTipi => throw _privateConstructorUsedError;
+  set belgeTipi(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +51,8 @@ abstract class $BankaListesiRequestModelCopyWith<$Res> {
       String? arrHesapTipi,
       String? sirala,
       String? ekranTipi,
-      String? menuKodu});
+      String? menuKodu,
+      String? belgeTipi});
 }
 
 /// @nodoc
@@ -71,6 +74,7 @@ class _$BankaListesiRequestModelCopyWithImpl<$Res,
     Object? sirala = freezed,
     Object? ekranTipi = freezed,
     Object? menuKodu = freezed,
+    Object? belgeTipi = freezed,
   }) {
     return _then(_value.copyWith(
       bakiye: freezed == bakiye
@@ -93,6 +97,10 @@ class _$BankaListesiRequestModelCopyWithImpl<$Res,
           ? _value.menuKodu
           : menuKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      belgeTipi: freezed == belgeTipi
+          ? _value.belgeTipi
+          : belgeTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -111,7 +119,8 @@ abstract class _$$BankaListesiRequestModelImplCopyWith<$Res>
       String? arrHesapTipi,
       String? sirala,
       String? ekranTipi,
-      String? menuKodu});
+      String? menuKodu,
+      String? belgeTipi});
 }
 
 /// @nodoc
@@ -132,6 +141,7 @@ class __$$BankaListesiRequestModelImplCopyWithImpl<$Res>
     Object? sirala = freezed,
     Object? ekranTipi = freezed,
     Object? menuKodu = freezed,
+    Object? belgeTipi = freezed,
   }) {
     return _then(_$BankaListesiRequestModelImpl(
       bakiye: freezed == bakiye
@@ -154,6 +164,10 @@ class __$$BankaListesiRequestModelImplCopyWithImpl<$Res>
           ? _value.menuKodu
           : menuKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      belgeTipi: freezed == belgeTipi
+          ? _value.belgeTipi
+          : belgeTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -167,7 +181,8 @@ class _$BankaListesiRequestModelImpl implements _BankaListesiRequestModel {
       this.arrHesapTipi,
       this.sirala,
       this.ekranTipi,
-      this.menuKodu});
+      this.menuKodu,
+      this.belgeTipi});
 
   factory _$BankaListesiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$BankaListesiRequestModelImplFromJson(json);
@@ -182,10 +197,12 @@ class _$BankaListesiRequestModelImpl implements _BankaListesiRequestModel {
   String? ekranTipi;
   @override
   String? menuKodu;
+  @override
+  String? belgeTipi;
 
   @override
   String toString() {
-    return 'BankaListesiRequestModel(bakiye: $bakiye, arrHesapTipi: $arrHesapTipi, sirala: $sirala, ekranTipi: $ekranTipi, menuKodu: $menuKodu)';
+    return 'BankaListesiRequestModel(bakiye: $bakiye, arrHesapTipi: $arrHesapTipi, sirala: $sirala, ekranTipi: $ekranTipi, menuKodu: $menuKodu, belgeTipi: $belgeTipi)';
   }
 
   @JsonKey(ignore: true)
@@ -209,7 +226,8 @@ abstract class _BankaListesiRequestModel implements BankaListesiRequestModel {
       String? arrHesapTipi,
       String? sirala,
       String? ekranTipi,
-      String? menuKodu}) = _$BankaListesiRequestModelImpl;
+      String? menuKodu,
+      String? belgeTipi}) = _$BankaListesiRequestModelImpl;
 
   factory _BankaListesiRequestModel.fromJson(Map<String, dynamic> json) =
       _$BankaListesiRequestModelImpl.fromJson;
@@ -229,6 +247,9 @@ abstract class _BankaListesiRequestModel implements BankaListesiRequestModel {
   @override
   String? get menuKodu;
   set menuKodu(String? value);
+  @override
+  String? get belgeTipi;
+  set belgeTipi(String? value);
   @override
   @JsonKey(ignore: true)
   _$$BankaListesiRequestModelImplCopyWith<_$BankaListesiRequestModelImpl>

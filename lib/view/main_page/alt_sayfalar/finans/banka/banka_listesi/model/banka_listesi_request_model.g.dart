@@ -14,6 +14,7 @@ _$BankaListesiRequestModelImpl _$$BankaListesiRequestModelImplFromJson(
       sirala: json['Sirala'] as String?,
       ekranTipi: json['EkranTipi'] as String?,
       menuKodu: json['MenuKodu'] as String?,
+      belgeTipi: json['BelgeTipi'] as String?,
     );
 
 Map<String, dynamic> _$$BankaListesiRequestModelImplToJson(
@@ -31,5 +32,6 @@ Map<String, dynamic> _$$BankaListesiRequestModelImplToJson(
   writeNotNull('Sirala', instance.sirala);
   writeNotNull('EkranTipi', instance.ekranTipi);
   writeNotNull('MenuKodu', instance.menuKodu);
+  writeNotNull('BelgeTipi', instance.belgeTipi);
   return val;
 }

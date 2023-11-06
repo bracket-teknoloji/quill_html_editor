@@ -11,7 +11,10 @@ import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 import "package:picker/core/constants/enum/muhasebe_kodu_belge_tipi_enum.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/core/init/network/network_manager.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_request_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
 import "../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_kosullar_model.dart";
@@ -487,6 +490,20 @@ class BottomSheetDialogManager {
       children: netFectDizaynList.map((NetFectDizaynList e) => BottomSheetModel(title: e.dizaynAdi ?? e.detayKod ?? "", value: e)).toList(),
     );
     return dizayn;
+  }
+  Future<BankaListesiModel?> showBankaHesaplariBottomSheetDialog(BuildContext context, BankaListesiRequestModel model) async {
+    List<BankaListesiModel> bankaHesaplariList = <BankaListesiModel>[];
+     final result = await NetworkManager().dioGet<BankaListesiModel>(path: ApiUrls.getBankaHesaplari, bodyModel: BankaListesiModel(), queryParameters: model.toJson());
+    if (result.data is List) {
+      bankaHesaplariList = result.data.map((e)=> e as BankaListesiModel).toList().cast<BankaListesiModel>();
+    }
+    if (bankaHesaplariList.ext.isNotNullOrEmpty) {
+      return await showBottomSheetDialog(
+        context,
+        title: "Banka Hesapları",
+        children: bankaHesaplariList.map((e) => BottomSheetModel(title: e.hesapAdi ?? "", description: e.hesapKodu, value: e)).toList(),
+      );
+    }
   }
 
   Future<BelgeTipiModel?> showBelgeTipiBottomSheetDialog(BuildContext context) async {
