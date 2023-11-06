@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:lottie/lottie.dart";
 import "package:picker/gen/assets.gen.dart";
 
 import "../../../base/state/base_state.dart";
@@ -36,7 +35,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(child: LottieBuilder.asset(Assets.lotties.chartLottie.keyName)),
+                    Expanded(child: Assets.lotties.chartLottie.lottie()),
                     Text(CacheManager.getAnaVeri!.userModel?.adSoyad ?? "", style: theme.textTheme.bodyLarge),
                     Text(CacheManager.getVerifiedUser.account?.firma ?? "", style: theme.textTheme.bodyMedium),
                     Text("Profil", style: theme.textTheme.bodySmall).marginOnly(top: UIHelper.midSize),
