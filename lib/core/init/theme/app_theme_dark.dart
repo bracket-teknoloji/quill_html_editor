@@ -112,6 +112,7 @@ class AppThemeDark extends AppTheme {
           elevation: 0,
         ),
         cardTheme: CardTheme(
+          color: colorManager.surfaceVariant.withOpacity(0.3),
           shape: RoundedRectangleBorder(
             borderRadius: UIHelper.lowBorderRadius,
           ),

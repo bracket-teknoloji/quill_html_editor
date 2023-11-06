@@ -210,7 +210,6 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
                         itemBuilder: (context, index) {
                           final BankaListesiModel item = itemList[index];
                           return Card(
-                            color: theme.colorScheme.surfaceVariant.withOpacity(0.3),
                             elevation: 0,
                             borderOnForeground: true,
                             child: ListTile(

@@ -33,7 +33,6 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               ListTile(
-                titleAlignment: ListTileTitleAlignment.bottom,
                 title: Text("Favoriler", style: theme.textTheme.titleMedium),
                 trailing: IconButton(
                   onPressed: () {

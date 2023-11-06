@@ -36,47 +36,12 @@ class _BankaHareketleriViewState extends BaseState<BankaHareketleriView> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: appBar(),
-        body: body(),
-        bottomNavigationBar: BottomBarWidget(
-          isScrolledDown: true,
-          children: [
-            FooterButton(
-              children: [
-                const Text("Gelir"),
-                Observer(
-                  builder: (_) => Text(
-                    "${(widget.model.dovizAdi != null ? viewModel.dovizGelenTutar : viewModel.gelenTutar).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.model.dovizAdi ?? mainCurrency}",
-                  ),
-                ),
-              ],
-            ),
-            FooterButton(
-              children: [
-                const Text("Gider"),
-                Observer(
-                  builder: (_) => Text(
-                    "${(widget.model.dovizAdi != null ? viewModel.dovizGidenTutar : viewModel.gidenTutar).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.model.dovizAdi ?? mainCurrency}",
-                  ),
-                ),
-              ],
-            ),
-            FooterButton(
-              children: [
-                const Text("Gelir"),
-                Observer(
-                  builder: (_) => Text(
-                    "${(widget.model.dovizAdi != null ? viewModel.dovizBakiye : viewModel.bakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.model.dovizAdi ?? mainCurrency}",
-                    style: TextStyle(color: UIHelper.getColorWithValue(viewModel.bakiye)),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+        appBar: appBar,
+        body: body,
+        bottomNavigationBar: bottomBar,
       );
 
-  AppBar appBar() => AppBar(
+  AppBar get appBar => AppBar(
         title: Observer(
           builder: (_) => AppBarTitle(
             title: "Banka Hareketleri (${viewModel.bankaHareketleriListesi?.length ?? 0})",
@@ -85,7 +50,7 @@ class _BankaHareketleriViewState extends BaseState<BankaHareketleriView> {
         ),
       );
 
-  RefreshIndicator body() => RefreshIndicator.adaptive(
+  RefreshIndicator get body => RefreshIndicator.adaptive(
         onRefresh: viewModel.getData,
         child: Observer(
           builder: (_) {
@@ -130,5 +95,42 @@ class _BankaHareketleriViewState extends BaseState<BankaHareketleriView> {
             ).paddingAll(UIHelper.lowSize);
           },
         ),
+      );
+
+  BottomBarWidget get bottomBar => BottomBarWidget(
+        isScrolledDown: true,
+        children: [
+          FooterButton(
+            children: [
+              const Text("Gelir"),
+              Observer(
+                builder: (_) => Text(
+                  "${(widget.model.dovizAdi != null ? viewModel.dovizGelenTutar : viewModel.gelenTutar).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.model.dovizAdi ?? mainCurrency}",
+                ),
+              ),
+            ],
+          ),
+          FooterButton(
+            children: [
+              const Text("Gider"),
+              Observer(
+                builder: (_) => Text(
+                  "${(widget.model.dovizAdi != null ? viewModel.dovizGidenTutar : viewModel.gidenTutar).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.model.dovizAdi ?? mainCurrency}",
+                ),
+              ),
+            ],
+          ),
+          FooterButton(
+            children: [
+              const Text("Bakiye"),
+              Observer(
+                builder: (_) => Text(
+                  "${(widget.model.dovizAdi != null ? viewModel.dovizBakiye : viewModel.bakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.model.dovizAdi ?? mainCurrency}",
+                  style: TextStyle(color: UIHelper.getColorWithValue(viewModel.bakiye)),
+                ),
+              ),
+            ],
+          ),
+        ],
       );
 }
