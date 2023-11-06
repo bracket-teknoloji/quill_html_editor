@@ -110,8 +110,8 @@ class MenuItemConstants {
           name: null,
           title: "Çek",
           altMenuler: <GridItemModel>[
-            GridItemModel.item(name: "finans_Cek_Musteri", title: "Müşteri Çekleri"),
-            GridItemModel.item(name: "finans_Cek_Borc", title: "Borç Çekleri"),
+            GridItemModel.item(name: "finans_Cek_Musteri", title: "Müşteri Çekleri", route: "/mainPage/musteriCekleri"),
+            GridItemModel.item(name: "finans_Cek_Borc", title: "Borç Çekleri", route: "/mainPage/borcCekleri"),
             GridItemModel.altmenu(
               name: null,
               title: "Raporlar",
@@ -126,8 +126,8 @@ class MenuItemConstants {
           name: null,
           title: "Senet",
           altMenuler: <GridItemModel>[
-            GridItemModel.item(name: "finans_Senet_Musteri", title: "Müşteri Senetleri"),
-            GridItemModel.item(name: "finans_Senet_Borc", title: "Borç Senetleri"),
+            GridItemModel.item(name: "finans_Senet_Musteri", title: "Müşteri Senetleri", route: "/mainPage/musteriSenetleri"),
+            GridItemModel.item(name: "finans_Senet_Borc", title: "Borç Senetleri", route: "/mainPage/borcSenetleri"),
           ],
         ),
         GridItemModel.item(name: "Banka", title: "Tahsilat & Ödeme Kayıtları"),

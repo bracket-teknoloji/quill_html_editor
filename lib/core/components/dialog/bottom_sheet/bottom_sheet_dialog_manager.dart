@@ -112,7 +112,7 @@ class BottomSheetDialogManager {
                     : Center(child: Text("Veri bulunamadı.", style: context.theme.textTheme.titleMedium)).paddingAll(UIHelper.highSize)
               else
                 SafeArea(
-                  child: Container(constraints: BoxConstraints(maxHeight: Get.height * 0.9), child: SingleChildScrollView(child: body)),
+                  child: Container(constraints: BoxConstraints(maxHeight: Get.height * 0.9), child: SingleChildScrollView(child: body.paddingAll(UIHelper.lowSize))),
                 ),
               if (context.general.isKeyBoardOpen && body == null) const ResponsiveBox() else Container(),
             ],

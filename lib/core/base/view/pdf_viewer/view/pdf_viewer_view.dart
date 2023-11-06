@@ -162,7 +162,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
       );
 
   BottomAppBar bottomAppBar() => BottomAppBar(
-        height: 70,
+    
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.min,

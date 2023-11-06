@@ -158,7 +158,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
             child: const Text("Uygula"),
           ).paddingAll(UIHelper.midSize),
         ],
-      ).paddingAll(UIHelper.lowSize),
+      ),
     );
     return Future.value(viewModel.futureController.value);
   }

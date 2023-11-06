@@ -67,6 +67,7 @@ class ApiUrls {
   static const String getDekontSeriler = "Finans/GetDekontSeriler";
   static const String getBankaSozlesmeleri = "Finans/GetBankaSozlesmeleri";
   static const String getMuhasebeMuhasebeKodlari = "Muhasebe/GetMuhasebeKodlari";
+  static const String getCekSenetler = "Finans/GetCekSenetler";
 
   //*Fatura
   static const String belgeDurumunuDegistir = "Fatura/BelgeDurumunuDegistir";

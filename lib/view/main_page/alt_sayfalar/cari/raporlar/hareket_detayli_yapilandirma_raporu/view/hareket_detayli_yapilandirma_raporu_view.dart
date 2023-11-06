@@ -51,61 +51,58 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: "Filtrele",
-      body: Padding(
-        padding: EdgeInsets.all(UIHelper.lowSize),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Observer(
-              builder: (_) => SlideControllerWidget(
-                childrenTitleList: viewModel.bakiyeDurumuTitleList,
-                filterOnChanged: (index) => viewModel.changeBakiyeDurumu(index),
-                childrenValueList: viewModel.bakiyeDurumuListValue,
-                groupValue: viewModel.bakiyeDurumuGroupValue,
-              ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Observer(
+            builder: (_) => SlideControllerWidget(
+              childrenTitleList: viewModel.bakiyeDurumuTitleList,
+              filterOnChanged: (index) => viewModel.changeBakiyeDurumu(index),
+              childrenValueList: viewModel.bakiyeDurumuListValue,
+              groupValue: viewModel.bakiyeDurumuGroupValue,
             ),
-            CustomTextField(
-              labelText: "Cari",
-              isMust: true,
-              controller: cariController,
-              readOnly: true,
-              suffixMore: true,
-              onTap: () async {
-                final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                if (result != null) {
-                  cariController.text = result.cariAdi ?? "";
-                  viewModel.pdfModel.dicParams?.cariKodu = result.cariKodu ?? "";
-                }
-              },
-            ),
-            CustomTextField(
-              labelText: "Referans Tarih",
-              isMust: true,
-              controller: referansTarihController,
-              readOnly: true,
-              isDateTime: true,
-              // suffix: const Icon(Icons.calendar_today_outlined),
-              onTap: () async {
-                final result = await dialogManager.showDateTimePicker();
-                if (result != null) {
-                  viewModel.pdfModel.dicParams?.refTarih = result.toDateStringIfNull;
-                  referansTarihController.text = result.toDateString;
-                }
-              },
-            ),
-            ElevatedButton(
-              onPressed: () {
-                if (viewModel.pdfModel.dicParams?.refTarih == null || viewModel.pdfModel.dicParams?.cariKodu == null) {
-                  dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
-                } else {
-                  viewModel.setFuture();
-                  Get.back();
-                }
-              },
-              child: const Text("Uygula"),
-            ).paddingAll(UIHelper.lowSize),
-          ],
-        ),
+          ),
+          CustomTextField(
+            labelText: "Cari",
+            isMust: true,
+            controller: cariController,
+            readOnly: true,
+            suffixMore: true,
+            onTap: () async {
+              final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+              if (result != null) {
+                cariController.text = result.cariAdi ?? "";
+                viewModel.pdfModel.dicParams?.cariKodu = result.cariKodu ?? "";
+              }
+            },
+          ),
+          CustomTextField(
+            labelText: "Referans Tarih",
+            isMust: true,
+            controller: referansTarihController,
+            readOnly: true,
+            isDateTime: true,
+            // suffix: const Icon(Icons.calendar_today_outlined),
+            onTap: () async {
+              final result = await dialogManager.showDateTimePicker();
+              if (result != null) {
+                viewModel.pdfModel.dicParams?.refTarih = result.toDateStringIfNull;
+                referansTarihController.text = result.toDateString;
+              }
+            },
+          ),
+          ElevatedButton(
+            onPressed: () {
+              if (viewModel.pdfModel.dicParams?.refTarih == null || viewModel.pdfModel.dicParams?.cariKodu == null) {
+                dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
+              } else {
+                viewModel.setFuture();
+                Get.back();
+              }
+            },
+            child: const Text("Uygula"),
+          ).paddingAll(UIHelper.lowSize),
+        ],
       ),
     );
     return Future.value(viewModel.futureController.value);

@@ -253,7 +253,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
             ],
           ).paddingAll(UIHelper.lowSize),
         ],
-      ).paddingAll(UIHelper.lowSize),
+      ),
     );
   }
 }

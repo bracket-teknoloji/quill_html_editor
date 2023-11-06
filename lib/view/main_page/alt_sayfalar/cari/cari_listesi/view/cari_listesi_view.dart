@@ -800,6 +800,6 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
               ],
             ).paddingAll(UIHelper.lowSize),
           ],
-        ).paddingAll(UIHelper.lowSize),
+        ),
       );
 }

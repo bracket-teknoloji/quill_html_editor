@@ -97,7 +97,7 @@ class _StokEkstreViewState extends BaseState<StokEkstreView> {
             ).paddingAll(UIHelper.lowSize),
           ),
         ],
-      ).paddingAll(UIHelper.lowSize),
+      ),
     );
     return Future.value(viewModel.futureController.value);
   }

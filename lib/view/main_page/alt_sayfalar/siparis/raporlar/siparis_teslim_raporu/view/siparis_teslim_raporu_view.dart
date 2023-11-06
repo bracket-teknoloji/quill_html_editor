@@ -75,170 +75,167 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: "Filtrele",
-      body: Padding(
-        padding: EdgeInsets.all(UIHelper.lowSize),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            RaporFiltreDateTimeBottomSheetView(
-              filterOnChanged: (value) {
-                viewModel.setBaslangicTarihi(
-                  baslangicTarihiController.text != "" ? baslangicTarihiController.text : null,
-                );
-                viewModel.setBitisTarihi(
-                  bitisTarihiController.text != "" ? bitisTarihiController.text : null,
-                );
-              },
-              baslangicTarihiController: baslangicTarihiController,
-              bitisTarihiController: bitisTarihiController,
-            ),
-            CustomTextField(
-              labelText: "Belge No",
-              readOnly: true,
-              suffixMore: true,
-              controller: belgeNoController,
-              onClear: () {
-                viewModel.setBelgeNo(null);
-                belgeNoController.clear();
-              },
-              onTap: () async {
-                final result = await Get.toNamed(
-                  "/mainPage/siparisMusteriSiparisi",
-                  arguments: SiparislerWidgetModel(
-                    siparisTipiEnum: SiparisTipiEnum.musteri,
-                    isGetData: true,
-                  ),
-                );
-                if (result is BaseSiparisEditModel) {
-                  belgeNoController.text = result.belgeNo ?? "";
-                  viewModel.setBelgeNo(result.belgeNo);
-                  if (result.cariKodu != null) {
-                    viewModel.setCariKodu(result.cariKodu);
-                    cariController.text = result.cariAdi ?? "";
-                  }
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          RaporFiltreDateTimeBottomSheetView(
+            filterOnChanged: (value) {
+              viewModel.setBaslangicTarihi(
+                baslangicTarihiController.text != "" ? baslangicTarihiController.text : null,
+              );
+              viewModel.setBitisTarihi(
+                bitisTarihiController.text != "" ? bitisTarihiController.text : null,
+              );
+            },
+            baslangicTarihiController: baslangicTarihiController,
+            bitisTarihiController: bitisTarihiController,
+          ),
+          CustomTextField(
+            labelText: "Belge No",
+            readOnly: true,
+            suffixMore: true,
+            controller: belgeNoController,
+            onClear: () {
+              viewModel.setBelgeNo(null);
+              belgeNoController.clear();
+            },
+            onTap: () async {
+              final result = await Get.toNamed(
+                "/mainPage/siparisMusteriSiparisi",
+                arguments: SiparislerWidgetModel(
+                  siparisTipiEnum: SiparisTipiEnum.musteri,
+                  isGetData: true,
+                ),
+              );
+              if (result is BaseSiparisEditModel) {
+                belgeNoController.text = result.belgeNo ?? "";
+                viewModel.setBelgeNo(result.belgeNo);
+                if (result.cariKodu != null) {
+                  viewModel.setCariKodu(result.cariKodu);
+                  cariController.text = result.cariAdi ?? "";
+                }
+              }
+            },
+          ),
+          CustomTextField(
+            labelText: "Cari",
+            readOnly: true,
+            suffixMore: true,
+            controller: cariController,
+            suffix: IconButton(
+              onPressed: () {
+                if (viewModel.pdfModel.dicParams?.cariKodu != null) {
+                  dialogManager.showCariGridViewDialog(
+                    CariListesiModel()..cariKodu = viewModel.pdfModel.dicParams?.cariKodu!,
+                  );
+                } else {
+                  dialogManager.showAlertDialog("Cari Kodu Boş Olamaz");
                 }
               },
+              icon: Icon(
+                Icons.data_exploration_outlined,
+                color: UIHelper.primaryColor,
+              ),
             ),
-            CustomTextField(
-              labelText: "Cari",
-              readOnly: true,
-              suffixMore: true,
-              controller: cariController,
-              suffix: IconButton(
-                onPressed: () {
-                  if (viewModel.pdfModel.dicParams?.cariKodu != null) {
-                    dialogManager.showCariGridViewDialog(
-                      CariListesiModel()..cariKodu = viewModel.pdfModel.dicParams?.cariKodu!,
+            onClear: () {
+              viewModel.setCariKodu(null);
+              cariController.clear();
+            },
+            onTap: () async {
+              final result = await Get.toNamed(
+                "/mainPage/cariListesi",
+                arguments: true,
+              );
+              if (result is CariListesiModel) {
+                cariController.text = result.cariAdi ?? "";
+                viewModel.setCariKodu(result.cariKodu);
+              }
+            },
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Vergi No",
+                  readOnly: true,
+                  suffixMore: true,
+                  controller: vergiNoController,
+                  onClear: () {
+                    viewModel.setVergiNo(null);
+                    vergiNoController.clear();
+                  },
+                  onTap: () async {
+                    final result = await Get.toNamed(
+                      "/mainPage/cariListesi",
+                      arguments: true,
                     );
-                  } else {
-                    dialogManager.showAlertDialog("Cari Kodu Boş Olamaz");
-                  }
-                },
-                icon: Icon(
-                  Icons.data_exploration_outlined,
-                  color: UIHelper.primaryColor,
+                    if (result is CariListesiModel) {
+                      vergiNoController.text = result.vergiNumarasi ?? "";
+                      viewModel.setVergiNo(result.vergiNumarasi);
+                    }
+                  },
                 ),
               ),
-              onClear: () {
-                viewModel.setCariKodu(null);
-                cariController.clear();
-              },
-              onTap: () async {
-                final result = await Get.toNamed(
-                  "/mainPage/cariListesi",
-                  arguments: true,
-                );
-                if (result is CariListesiModel) {
-                  cariController.text = result.cariAdi ?? "";
-                  viewModel.setCariKodu(result.cariKodu);
-                }
-              },
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Vergi No",
-                    readOnly: true,
-                    suffixMore: true,
-                    controller: vergiNoController,
-                    onClear: () {
-                      viewModel.setVergiNo(null);
-                      vergiNoController.clear();
-                    },
-                    onTap: () async {
-                      final result = await Get.toNamed(
-                        "/mainPage/cariListesi",
-                        arguments: true,
-                      );
-                      if (result is CariListesiModel) {
-                        vergiNoController.text = result.vergiNumarasi ?? "";
-                        viewModel.setVergiNo(result.vergiNumarasi);
-                      }
-                    },
-                  ),
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Stok",
+                  readOnly: true,
+                  suffixMore: true,
+                  controller: stokController,
+                  onClear: () {
+                    viewModel.setStokKodu(null);
+                    stokController.clear();
+                  },
+                  onTap: () async {
+                    final result = await Get.toNamed(
+                      "/mainPage/stokListesi",
+                      arguments: true,
+                    );
+                    if (result is StokListesiModel) {
+                      stokController.text = result.stokAdi ?? "";
+                      viewModel.setStokKodu(result.stokKodu);
+                    }
+                  },
                 ),
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Stok",
-                    readOnly: true,
-                    suffixMore: true,
-                    controller: stokController,
-                    onClear: () {
-                      viewModel.setStokKodu(null);
-                      stokController.clear();
-                    },
-                    onTap: () async {
-                      final result = await Get.toNamed(
-                        "/mainPage/stokListesi",
-                        arguments: true,
-                      );
-                      if (result is StokListesiModel) {
-                        stokController.text = result.stokAdi ?? "";
-                        viewModel.setStokKodu(result.stokKodu);
-                      }
-                    },
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: CustomWidgetWithLabel(
-                    text: "Kapalılar Hariç",
-                    isVertical: true,
-                    child: Observer(
-                      builder: (_) => Switch.adaptive(
-                        value: viewModel.kapaliMi,
-                        onChanged: (value) => viewModel.setKapali(value ? "E" : "H"),
-                      ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: CustomWidgetWithLabel(
+                  text: "Kapalılar Hariç",
+                  isVertical: true,
+                  child: Observer(
+                    builder: (_) => Switch.adaptive(
+                      value: viewModel.kapaliMi,
+                      onChanged: (value) => viewModel.setKapali(value ? "E" : "H"),
                     ),
                   ),
                 ),
-                Expanded(
-                  child: CustomWidgetWithLabel(
-                    text: "Sadece Kalanlar",
-                    isVertical: true,
-                    child: Observer(
-                      builder: (_) => Switch.adaptive(
-                        value: viewModel.durum,
-                        onChanged: (value) => viewModel.setDurum(value ? "K" : null),
-                      ),
+              ),
+              Expanded(
+                child: CustomWidgetWithLabel(
+                  text: "Sadece Kalanlar",
+                  isVertical: true,
+                  child: Observer(
+                    builder: (_) => Switch.adaptive(
+                      value: viewModel.durum,
+                      onChanged: (value) => viewModel.setDurum(value ? "K" : null),
                     ),
                   ),
                 ),
-              ],
-            ),
-            ElevatedButton(
-              onPressed: () {
-                viewModel.setFuture();
-                Get.back();
-              },
-              child: const Text("Uygula"),
-            ).paddingAll(UIHelper.lowSize),
-          ],
-        ),
+              ),
+            ],
+          ),
+          ElevatedButton(
+            onPressed: () {
+              viewModel.setFuture();
+              Get.back();
+            },
+            child: const Text("Uygula"),
+          ).paddingAll(UIHelper.lowSize),
+        ],
       ),
     );
     return Future.value(viewModel.futureController.value);

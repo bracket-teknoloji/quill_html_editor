@@ -159,7 +159,7 @@ flutter:
 
 
 flutter_gen:
-  output: lib/gen/ # Optional (default: lib/gen/)
+  output: lib/core/gen/ # Optional (default: lib/gen/)
 
   # Optional
   integrations:

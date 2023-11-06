@@ -89,7 +89,7 @@ class _KasaEkstreRaporuViewState extends BaseState<KasaEkstreRaporuView> {
             child: const Text("Uygula"),
           ).paddingAll(UIHelper.lowSize),
         ],
-      ).paddingAll(UIHelper.lowSize),
+      ),
     );
     return Future.value(viewModel.futureController.value);
   }

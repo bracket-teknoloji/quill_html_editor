@@ -40,38 +40,35 @@ class _AylikMizanRaporuViewState extends BaseState<AylikMizanRaporuView> {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: "Filtrele",
-      body: Padding(
-        padding: EdgeInsets.all(UIHelper.lowSize),
-        child: Form(
-          key: formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              CustomTextField(
-                labelText: "Muhasebe Kodu",
-                isMust: true,
-                controller: muhasebeKoduController,
-                readOnly: true,
-                suffixMore: true,
-                onTap: () async {
-                  final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, belgeTipi: MuhasebeBelgeTipiEnum.aylikMizan);
-                  if (result is StokMuhasebeKoduModel) {
-                    viewModel.changeMuhasebeKodu(result.hesapKodu);
-                    muhasebeKoduController.text = result.hesapAdi ?? result.hesapKodu ?? "";
-                  }
-                },
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    viewModel.setFuture();
-                    Get.back();
-                  }
-                },
-                child: const Text("Uygula"),
-              ).paddingAll(UIHelper.lowSize),
-            ],
-          ),
+      body: Form(
+        key: formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            CustomTextField(
+              labelText: "Muhasebe Kodu",
+              isMust: true,
+              controller: muhasebeKoduController,
+              readOnly: true,
+              suffixMore: true,
+              onTap: () async {
+                final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, belgeTipi: MuhasebeBelgeTipiEnum.aylikMizan);
+                if (result is StokMuhasebeKoduModel) {
+                  viewModel.changeMuhasebeKodu(result.hesapKodu);
+                  muhasebeKoduController.text = result.hesapAdi ?? result.hesapKodu ?? "";
+                }
+              },
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (formKey.currentState!.validate()) {
+                  viewModel.setFuture();
+                  Get.back();
+                }
+              },
+              child: const Text("Uygula"),
+            ).paddingAll(UIHelper.lowSize),
+          ],
         ),
       ),
     );

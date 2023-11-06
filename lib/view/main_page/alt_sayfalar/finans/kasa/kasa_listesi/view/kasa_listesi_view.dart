@@ -234,7 +234,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
             ],
           ).paddingAll(UIHelper.lowSize),
         ],
-      ).paddingAll(UIHelper.lowSize),
+      ),
     );
   }
 }

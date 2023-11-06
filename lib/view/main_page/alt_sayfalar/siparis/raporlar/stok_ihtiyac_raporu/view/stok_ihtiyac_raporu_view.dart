@@ -74,50 +74,47 @@ class _StokIhtiyacRaporuViewState extends BaseState<StokIhtiyacRaporu> {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: "Filtrele",
-      body: Padding(
-        padding: EdgeInsets.all(UIHelper.lowSize),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const Row(
-                children: [
-                  Expanded(child: CustomTextField()),
-                  Expanded(child: CustomTextField()),
-                ],
-              ),
-              const Row(
-                children: [
-                  Expanded(child: CustomTextField()),
-                  Expanded(child: CustomTextField()),
-                ],
-              ),
-              const Row(
-                children: [
-                  Expanded(child: CustomTextField()),
-                  Expanded(child: CustomTextField()),
-                ],
-              ),
-              const Row(
-                children: [
-                  Expanded(child: CustomTextField()),
-                  Expanded(child: CustomTextField()),
-                ],
-              ),
-              Row(
-                children: [
-                  const Expanded(child: CustomTextField()),
-                  Expanded(
-                    child: Switch.adaptive(
-                      value: false,
-                      onChanged: (value) {},
-                    ),
+      body: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const Row(
+              children: [
+                Expanded(child: CustomTextField()),
+                Expanded(child: CustomTextField()),
+              ],
+            ),
+            const Row(
+              children: [
+                Expanded(child: CustomTextField()),
+                Expanded(child: CustomTextField()),
+              ],
+            ),
+            const Row(
+              children: [
+                Expanded(child: CustomTextField()),
+                Expanded(child: CustomTextField()),
+              ],
+            ),
+            const Row(
+              children: [
+                Expanded(child: CustomTextField()),
+                Expanded(child: CustomTextField()),
+              ],
+            ),
+            Row(
+              children: [
+                const Expanded(child: CustomTextField()),
+                Expanded(
+                  child: Switch.adaptive(
+                    value: false,
+                    onChanged: (value) {},
                   ),
-                ],
-              ),
-            ],
-          ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

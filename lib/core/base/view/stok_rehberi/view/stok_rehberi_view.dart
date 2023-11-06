@@ -207,7 +207,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                       child: const Text("Filtrele"),
                     ).paddingAll(UIHelper.lowSize),
                   ],
-                ).paddingAll(UIHelper.lowSize),
+                ),
               );
             },
             icon: const Icon(Icons.filter_alt_outlined),

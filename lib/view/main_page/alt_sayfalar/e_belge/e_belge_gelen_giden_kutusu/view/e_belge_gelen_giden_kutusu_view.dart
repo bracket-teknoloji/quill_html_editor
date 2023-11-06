@@ -357,7 +357,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                 child: const Text("Uygula"),
               ).paddingAll(UIHelper.lowSize),
             ],
-          ).paddingAll(UIHelper.lowSize),
+          ),
         ),
       );
 

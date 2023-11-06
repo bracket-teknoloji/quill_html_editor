@@ -172,7 +172,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                       child: const Text("Uygula"),
                     ).paddingAll(UIHelper.lowSize),
                   ],
-                ).paddingAll(UIHelper.lowSize),
+                ),
               );
             },
             icon: const Icon(Icons.filter_alt_outlined),

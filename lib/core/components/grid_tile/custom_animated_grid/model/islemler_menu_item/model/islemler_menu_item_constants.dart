@@ -415,7 +415,7 @@ class IslemlerMenuItemConstants<T> {
                   ],
                 ).paddingAll(UIHelper.lowSize),
               ],
-            ).paddingAll(UIHelper.lowSize),
+            ),
           );
         },
       );

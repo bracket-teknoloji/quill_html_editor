@@ -127,7 +127,7 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
                       child: const Text("Uygula"),
                     ).paddingAll(UIHelper.lowSize),
                   ],
-                ).paddingAll(UIHelper.lowSize),
+                ),
               ),
             ),
             AppBarButton(

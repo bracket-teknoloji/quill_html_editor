@@ -660,7 +660,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
               ],
             ).paddingAll(UIHelper.lowSize),
           ],
-        ).paddingAll(UIHelper.lowSize),
+        ),
       );
 
   void resetFilters() {

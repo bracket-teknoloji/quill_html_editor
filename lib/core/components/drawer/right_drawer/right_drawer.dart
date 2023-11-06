@@ -100,7 +100,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                             ),
                             onPressed: () {
                               Navigator.pop(context);
-                              Get.toNamed("/entryCompany");
+                              Get.toNamed("/entryCompany", arguments: false);
                             },
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,

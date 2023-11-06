@@ -323,7 +323,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
             ],
           ).paddingAll(UIHelper.lowSize),
         ],
-      ).paddingAll(UIHelper.lowSize),
+      ),
     );
   }
 }

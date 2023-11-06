@@ -197,7 +197,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                         ],
                       ).paddingAll(UIHelper.lowSize),
                     ],
-                  ).paddingAll(UIHelper.lowSize),
+                  ),
                 );
               },
               icon: const Icon(Icons.filter_alt_outlined),

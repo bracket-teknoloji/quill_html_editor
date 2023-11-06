@@ -144,7 +144,7 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
             ).paddingAll(UIHelper.lowSize),
           ),
         ],
-      ).paddingAll(UIHelper.lowSize),
+      ),
     );
     return Future.value(viewModel.futureController.value);
   }

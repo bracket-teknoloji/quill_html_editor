@@ -458,7 +458,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                             ],
                           ),
                         ],
-                      ).paddingAll(UIHelper.lowSize),
+                      ),
                     );
                   },
                 ),

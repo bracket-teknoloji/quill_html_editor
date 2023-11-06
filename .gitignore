@@ -3,6 +3,7 @@
 # Miscellaneous
 *.class
 *.lock
+*.vb
 *.log
 *.pyc
 *.swp

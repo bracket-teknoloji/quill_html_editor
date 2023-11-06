@@ -49,46 +49,43 @@ class _CariBorcAlacakDokumuRaporuViewState extends BaseState<CariBorcAlacakDokum
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: "Filtrele",
-      body: Padding(
-        padding: EdgeInsets.all(UIHelper.lowSize),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            RaporFiltreDateTimeBottomSheetView(
-              filterOnChanged: (index) {
-                viewModel.setBastar(_baslangicTarihiController.text);
-                viewModel.setBittar(_bitisTarihiController.text);
-              },
-              baslangicTarihiController: _baslangicTarihiController,
-              bitisTarihiController: _bitisTarihiController,
-            ),
-            CustomTextField(
-              controller: _siralaController,
-              labelText: "Sırala",
-              readOnly: true,
-              suffixMore: true,
-              valueWidget: Observer(builder: (_) => Text(viewModel.pdfModel.dicParams?.sirala ?? "x")),
-              onTap: () async {
-                final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                  context,
-                  title: "Sırala",
-                  children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.entries.toList()[index])),
-                );
-                if (result is MapEntry) {
-                  _siralaController.text = result.key;
-                  viewModel.setSirala(result.value);
-                }
-              },
-            ),
-            ElevatedButton(
-              onPressed: () {
-                viewModel.setFuture();
-                Get.back();
-              },
-              child: const Text("Uygula"),
-            ).paddingAll(UIHelper.lowSize),
-          ],
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          RaporFiltreDateTimeBottomSheetView(
+            filterOnChanged: (index) {
+              viewModel.setBastar(_baslangicTarihiController.text);
+              viewModel.setBittar(_bitisTarihiController.text);
+            },
+            baslangicTarihiController: _baslangicTarihiController,
+            bitisTarihiController: _bitisTarihiController,
+          ),
+          CustomTextField(
+            controller: _siralaController,
+            labelText: "Sırala",
+            readOnly: true,
+            suffixMore: true,
+            valueWidget: Observer(builder: (_) => Text(viewModel.pdfModel.dicParams?.sirala ?? "x")),
+            onTap: () async {
+              final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                context,
+                title: "Sırala",
+                children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.entries.toList()[index])),
+              );
+              if (result is MapEntry) {
+                _siralaController.text = result.key;
+                viewModel.setSirala(result.value);
+              }
+            },
+          ),
+          ElevatedButton(
+            onPressed: () {
+              viewModel.setFuture();
+              Get.back();
+            },
+            child: const Text("Uygula"),
+          ).paddingAll(UIHelper.lowSize),
+        ],
       ),
     );
     return Future.value(viewModel.futureController.value);

@@ -211,7 +211,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                   child: const Text("Kaydet"),
                 ).paddingAll(UIHelper.lowSize),
               ],
-            ).paddingAll(UIHelper.lowSize),
+            ),
           );
         },
       );

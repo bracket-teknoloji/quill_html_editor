@@ -83,101 +83,98 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: "Filtrele",
-      body: Padding(
-        padding: EdgeInsets.all(UIHelper.lowSize),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Observer(
-              builder: (_) => RaporFiltreDateTimeBottomSheetView(
-                filterOnChanged: (index) => viewModel.pdfModel.dicParams?.aralikTipi,
-                baslangicTarihiController: baslangicTarihiController,
-                bitisTarihiController: bitisTarihiController,
-              ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Observer(
+            builder: (_) => RaporFiltreDateTimeBottomSheetView(
+              filterOnChanged: (index) => viewModel.pdfModel.dicParams?.aralikTipi,
+              baslangicTarihiController: baslangicTarihiController,
+              bitisTarihiController: bitisTarihiController,
             ),
-            CustomTextField(
-              labelText: "Cari",
-              controller: cariController,
-              readOnly: true,
-              suffixMore: true,
-              onTap: () async {
-                final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                if (result != null) {
-                  cariController.text = result.cariAdi ?? "";
-                  viewModel.pdfModel.dicParams?.cariKodu = result.cariKodu ?? "";
-                }
-              },
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Plasiyer",
-                    controller: plasiyerController,
-                    readOnly: true,
-                    onTap: () async {
-                      final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
-                      if (plasiyerList != null) {
-                        final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(
-                          context,
-                          title: "Plasiyer",
-                          children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e.plasiyerKodu ?? "", onTap: () => Get.back(result: e))).toList(),
-                        );
-                        if (result != null) {
-                          plasiyerController.text = result.plasiyerAciklama ?? "";
-                          viewModel.pdfModel.dicParams?.plasiyerKodu = result.plasiyerKodu ?? "";
-                        }
-                      }
-                    },
-                    suffixMore: true,
-                  ),
-                ).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Sırala",
-                    controller: siralaController,
-                    readOnly: true,
-                    suffixMore: true,
-                    onTap: () async {
-                      final String? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Sırala", children: viewModel.siralaBottomSheetList);
+          ),
+          CustomTextField(
+            labelText: "Cari",
+            controller: cariController,
+            readOnly: true,
+            suffixMore: true,
+            onTap: () async {
+              final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+              if (result != null) {
+                cariController.text = result.cariAdi ?? "";
+                viewModel.pdfModel.dicParams?.cariKodu = result.cariKodu ?? "";
+              }
+            },
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Plasiyer",
+                  controller: plasiyerController,
+                  readOnly: true,
+                  onTap: () async {
+                    final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
+                    if (plasiyerList != null) {
+                      final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                        context,
+                        title: "Plasiyer",
+                        children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e.plasiyerKodu ?? "", onTap: () => Get.back(result: e))).toList(),
+                      );
                       if (result != null) {
-                        siralaController.text = result;
-                        viewModel.pdfModel.dicParams?.sirala = result;
+                        plasiyerController.text = result.plasiyerAciklama ?? "";
+                        viewModel.pdfModel.dicParams?.plasiyerKodu = result.plasiyerKodu ?? "";
                       }
-                    },
-                  ),
+                    }
+                  },
+                  suffixMore: true,
                 ),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(child: CustomTextField(labelText: "Grup Kodu", controller: grupKoduController, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(0, grupKoduController))),
-                Expanded(child: CustomTextField(labelText: "Kod 1", controller: kod1Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(1, kod1Controller))),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(child: CustomTextField(labelText: "Kod 2", controller: kod2Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(2, kod2Controller))),
-                Expanded(child: CustomTextField(labelText: "Kod 3", controller: kod3Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(3, kod3Controller))),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(child: CustomTextField(labelText: "Kod 4", controller: kod4Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(4, kod4Controller))),
-                Expanded(child: CustomTextField(labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, kod5Controller))),
-              ],
-            ),
-            Observer(
-              builder: (_) => ElevatedButton(
-                onPressed: () {
-                  viewModel.setFuture();
-                  Get.back();
-                },
-                child: const Text("Uygula"),
-              ).paddingAll(UIHelper.lowSize),
-            ),
-          ],
-        ),
+              ).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Sırala",
+                  controller: siralaController,
+                  readOnly: true,
+                  suffixMore: true,
+                  onTap: () async {
+                    final String? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Sırala", children: viewModel.siralaBottomSheetList);
+                    if (result != null) {
+                      siralaController.text = result;
+                      viewModel.pdfModel.dicParams?.sirala = result;
+                    }
+                  },
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(child: CustomTextField(labelText: "Grup Kodu", controller: grupKoduController, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(0, grupKoduController))),
+              Expanded(child: CustomTextField(labelText: "Kod 1", controller: kod1Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(1, kod1Controller))),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(child: CustomTextField(labelText: "Kod 2", controller: kod2Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(2, kod2Controller))),
+              Expanded(child: CustomTextField(labelText: "Kod 3", controller: kod3Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(3, kod3Controller))),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(child: CustomTextField(labelText: "Kod 4", controller: kod4Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(4, kod4Controller))),
+              Expanded(child: CustomTextField(labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, kod5Controller))),
+            ],
+          ),
+          Observer(
+            builder: (_) => ElevatedButton(
+              onPressed: () {
+                viewModel.setFuture();
+                Get.back();
+              },
+              child: const Text("Uygula"),
+            ).paddingAll(UIHelper.lowSize),
+          ),
+        ],
       ),
     );
     return Future.value(viewModel.futureController.value);

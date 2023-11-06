@@ -110,107 +110,105 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                   await bottomSheetDialogManager.showBottomSheetDialog(
                     context,
                     title: "Filtrele",
-                    body: Center(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          CustomWidgetWithLabel(
-                            text: "Hareket Yönü",
-                            child: Center(
-                              child: Observer(
-                                builder: (_) => SlideControllerWidget(
-                                  scroll: false,
-                                  childrenTitleList: viewModel.hareketYonuList,
-                                  filterOnChanged: (index) => viewModel.changeIsSelected(index ?? 0),
-                                  childrenValueList: viewModel.isSelected,
-                                  groupValue: viewModel.isSelectedGroupValue,
-                                ),
+                    body: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        CustomWidgetWithLabel(
+                          text: "Hareket Yönü",
+                          child: Center(
+                            child: Observer(
+                              builder: (_) => SlideControllerWidget(
+                                scroll: false,
+                                childrenTitleList: viewModel.hareketYonuList,
+                                filterOnChanged: (index) => viewModel.changeIsSelected(index ?? 0),
+                                childrenValueList: viewModel.isSelected,
+                                groupValue: viewModel.isSelectedGroupValue,
                               ),
                             ),
                           ),
-                          Observer(
-                            builder: (_) => CustomTextField(
-                              labelText: "Hareket Türü",
-                              readOnly: true,
-                              controllerText: viewModel.arrHareketTuru?.join(", "),
-                              onTap: () async {
-                                bottomSheetDialogManager.clearSelectedData();
-                                viewModel.clearArrHareketTuru();
-                                final List? result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
-                                  context,
-                                  title: "Hareket Türü",
-                                  children: viewModel.hareketTuruMap.entries.map((e) => BottomSheetModel(title: e.key)).toList(),
-                                );
-                                if (result != null) {
-                                  viewModel.changeArrHareketTuru(result.map((e) => e as String).toList().cast<String>());
-                                  // setState(() {});
-                                }
-                              },
-                              suffixMore: true,
-                            ),
+                        ),
+                        Observer(
+                          builder: (_) => CustomTextField(
+                            labelText: "Hareket Türü",
+                            readOnly: true,
+                            controllerText: viewModel.arrHareketTuru?.join(", "),
+                            onTap: () async {
+                              bottomSheetDialogManager.clearSelectedData();
+                              viewModel.clearArrHareketTuru();
+                              final List? result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                context,
+                                title: "Hareket Türü",
+                                children: viewModel.hareketTuruMap.entries.map((e) => BottomSheetModel(title: e.key)).toList(),
+                              );
+                              if (result != null) {
+                                viewModel.changeArrHareketTuru(result.map((e) => e as String).toList().cast<String>());
+                                // setState(() {});
+                              }
+                            },
+                            suffixMore: true,
                           ),
-                          Observer(
-                            builder: (_) => CustomTextField(
-                              labelText: "Cari",
-                              valueText: viewModel.cariListesiModel?.cariKodu ?? "",
-                              controllerText: viewModel.cariListesiModel?.cariAdi ?? "",
-                              readOnly: true,
-                              suffix: Wrap(
-                                children: [
-                                  IconButton(
-                                    onPressed: () {
-                                      if (viewModel.cariListesiModel != null) {
-                                        dialogManager.showCariGridViewDialog(viewModel.cariListesiModel);
-                                      } else {
-                                        dialogManager.showAlertDialog("Lütfen önce cari seçiniz.");
-                                      }
-                                    },
-                                    icon: Icon(
-                                      Icons.data_exploration_outlined,
-                                      color: UIHelper.primaryColor,
-                                    ),
-                                  ),
-                                  IconButton(
-                                    onPressed: () async {
-                                      final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                                      if (result != null) {
-                                        viewModel.setCariListesiModel(result);
-                                      }
-                                    },
-                                    icon: const Icon(Icons.more_horiz_outlined),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: ElevatedButton(
+                        ),
+                        Observer(
+                          builder: (_) => CustomTextField(
+                            labelText: "Cari",
+                            valueText: viewModel.cariListesiModel?.cariKodu ?? "",
+                            controllerText: viewModel.cariListesiModel?.cariAdi ?? "",
+                            readOnly: true,
+                            suffix: Wrap(
+                              children: [
+                                IconButton(
                                   onPressed: () {
-                                    Get.back();
-                                    viewModel.clearArrHareketTuru();
-                                    viewModel.setCariListesiModel(null);
-                                    viewModel.setFuture(getData());
+                                    if (viewModel.cariListesiModel != null) {
+                                      dialogManager.showCariGridViewDialog(viewModel.cariListesiModel);
+                                    } else {
+                                      dialogManager.showAlertDialog("Lütfen önce cari seçiniz.");
+                                    }
                                   },
-                                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
-                                  child: const Text("Temizle"),
+                                  icon: Icon(
+                                    Icons.data_exploration_outlined,
+                                    color: UIHelper.primaryColor,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(width: width * 0.02),
-                              Expanded(
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    Get.back();
-                                    viewModel.setFuture(getData());
+                                IconButton(
+                                  onPressed: () async {
+                                    final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                                    if (result != null) {
+                                      viewModel.setCariListesiModel(result);
+                                    }
                                   },
-                                  child: const Text("Uygula"),
+                                  icon: const Icon(Icons.more_horiz_outlined),
                                 ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Get.back();
+                                  viewModel.clearArrHareketTuru();
+                                  viewModel.setCariListesiModel(null);
+                                  viewModel.setFuture(getData());
+                                },
+                                style: ButtonStyle(backgroundColor: MaterialStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
+                                child: const Text("Temizle"),
                               ),
-                            ],
-                          ).paddingAll(UIHelper.lowSize),
-                        ],
-                      ).paddingAll(UIHelper.lowSize),
+                            ),
+                            SizedBox(width: width * 0.02),
+                            Expanded(
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Get.back();
+                                  viewModel.setFuture(getData());
+                                },
+                                child: const Text("Uygula"),
+                              ),
+                            ),
+                          ],
+                        ).paddingAll(UIHelper.lowSize),
+                      ],
                     ),
                   );
                 },

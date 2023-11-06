@@ -44,6 +44,6 @@ class CariAktiviteFiltreDialogManager {
               ),
             ),
           ],
-        ).paddingAll(UIHelper.lowSize),
+        ),
       );
 }

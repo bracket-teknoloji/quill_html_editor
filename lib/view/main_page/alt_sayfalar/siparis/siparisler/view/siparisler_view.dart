@@ -451,7 +451,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                       ],
                     ).paddingAll(UIHelper.lowSize),
                   ],
-                ).paddingAll(UIHelper.lowSize),
+                ),
               ),
               child: const Text("Filtrele"),
             ),
