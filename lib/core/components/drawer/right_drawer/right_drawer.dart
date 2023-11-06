@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/gen/assets.gen.dart";
+import "package:lottie/lottie.dart";
 
 import "../../../base/state/base_state.dart";
 import "../../../constants/ui_helper/icon_helper.dart";
@@ -100,7 +100,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                             ),
                             onPressed: () {
                               Navigator.pop(context);
-                              Get.toNamed("/entryCompany", arguments: false);
+                              Get.toNamed("/entryCompany");
                             },
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
