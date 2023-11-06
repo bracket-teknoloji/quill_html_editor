@@ -150,6 +150,7 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                         suffixMore: true,
                         readOnly: true,
                         valueWidget: Observer(builder: (_) => Text(viewModel.cekSenetListesiRequestModel.verenKodu ?? "")),
+                        onClear: () => viewModel.setVerenCari(null),
                         onTap: () async {
                           final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                           if (result is CariListesiModel) {
@@ -168,6 +169,7 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                         suffixMore: true,
                         readOnly: true,
                         valueWidget: Observer(builder: (_) => Text(viewModel.cekSenetListesiRequestModel.verilenKodu ?? "")),
+                        onClear: () => viewModel.setVerilenCari(null),
                         onTap: () async {
                           final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                           if (result is CariListesiModel) {
@@ -185,6 +187,8 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                         controller: _bankaController,
                         suffixMore: true,
                         readOnly: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.cekSenetListesiRequestModel.verilenKodu ?? "")),
+                        onClear: () => viewModel.setBanka(null),
                         onTap: () async {
                           final List<int> arrHesapTipi = [];
                           if (widget.cekSenetListesiEnum == CekSenetListesiEnum.cekMusteri &&
@@ -220,6 +224,21 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                         controller: _vadeTarihiController,
                         suffixMore: true,
                         readOnly: true,
+                        onClear: () => viewModel.setVadeTarihi(null),
+                        onTap: () async {
+                          final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                            context,
+                            title: "Vade Tarihi",
+                            children: List.generate(
+                              viewModel.donemTipiMap.length,
+                              (index) => BottomSheetModel(title: viewModel.donemTipiMap.keys.toList()[index], value: viewModel.donemTipiMap.entries.toList()[index]),
+                            ),
+                          );
+                          if (result is MapEntry) {
+                            viewModel.setVadeTarihi(result.value);
+                            _vadeTarihiController.text = result.key;
+                          }
+                        },
                       ),
                       ElevatedButton(
                         onPressed: () async {

@@ -34,15 +34,15 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
 
   final Map<String, String?> donemTipiMap = {
     "Tümü": null,
-    "Bugüne Kadar": "B",
-    "Bugün": "G",
-    "Bu Haftaya Kadar": "H",
-    "Bu Hafta": "W",
-    "Bu Aya Kadar": "A",
-    "Bu Ay": "M",
-    "Gelecek Hafta": "F",
-    "Gelecek Ay": "C",
-    "Gelecek 3 Ay": "Y",
+    "Bugüne Kadar": "BUK",
+    "Bugün": "BUGUN",
+    "Bu Haftaya Kadar": "BHK",
+    "Bu Hafta": "BU_HAFTA",
+    "Bu Aya Kadar": "BAK",
+    "Bu Ay": "BU_AY",
+    "Gelecek Hafta": "GELECEK_HAFTA",
+    "Gelecek Ay": "GELECEK_AY",      
+    "Gelecek 3 Ay": "GELECEK_3_AY",
   };
 
   @observable

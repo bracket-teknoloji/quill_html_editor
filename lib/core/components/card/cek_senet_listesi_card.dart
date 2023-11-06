@@ -9,6 +9,7 @@ import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_mo
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
@@ -36,40 +37,12 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
               title: model.belgeNo ?? "",
               children: [
                 BottomSheetModel(title: "Görüntüle", iconWidget: Icons.preview_outlined),
-                BottomSheetModel(
-                  title: "Tahsilat Makbuzu",
-                  onTap: () async {
-                    final PdfModel pdfModel = PdfModel(raporOzelKod: "TahsilatMakbuzu", dicParams: DicParams());
-                    final anaVeri = CacheManager.getAnaVeri;
-                    final result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == "TahsilatMakbuzu").toList();
-                    NetFectDizaynList? dizaynList;
-                    if (result.ext.isNotNullOrEmpty) {
-                      pdfModel.dicParams?.caharInckey = "0";
-                      pdfModel.dicParams?.kasaharInckey = "0";
-                      pdfModel.dicParams?.belgeNo = model.belgeNo;
-                      pdfModel.dicParams?.belgeTipi = model.belgeTipi;
-                      if (result!.length == 1) {
-                        pdfModel.dizaynId = result.first.id;
-                        dizaynList = result.first;
-                      } else {
-                        dizaynList = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                          context,
-                          title: "Dizayn Seçiniz",
-                          children: result.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList(),
-                        );
-                        pdfModel.dizaynId = dizaynList?.id;
-                      }
-                      if (dizaynList != null) {
-                        Get.back();
-                        Get.to(() => PDFViewerView(title: dizaynList?.dizaynAdi ?? "", pdfData: pdfModel));
-                      }
-                    } else {
-                      Get.back();
-                      dialogManager.showErrorSnackBar("Dizayn bulunamadı");
-                    }
-                  },
-                ),
-              ],
+                BottomSheetModel(title: "Sil", iconWidget: Icons.delete_outline_outlined),
+                BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
+                BottomSheetModel(title: "Evraklar", iconWidget: Icons.description_outlined),
+                BottomSheetModel(title: "Tahsilat Makbuzu", iconWidget: Icons.receipt_long_outlined, onTap: showTahsilatMakbuzu),
+                BottomSheetModel(title: "Cari İşlemleri", iconWidget: Icons.person_outline_outlined),
+              ].nullCheckWithGeneric,
             );
           },
           title: Column(
@@ -112,4 +85,36 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
           ),
         ),
       );
+
+  Future<void> showTahsilatMakbuzu() async {
+    Get.back();
+    final PdfModel pdfModel = PdfModel(raporOzelKod: "TahsilatMakbuzu", dicParams: DicParams());
+    final anaVeri = CacheManager.getAnaVeri;
+    final result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == "TahsilatMakbuzu").toList();
+    NetFectDizaynList? dizaynList;
+    if (result.ext.isNotNullOrEmpty) {
+      pdfModel.dicParams?.caharInckey = "0";
+      pdfModel.dicParams?.kasaharInckey = "0";
+      pdfModel.dicParams?.belgeNo = model.belgeNo;
+      pdfModel.dicParams?.belgeTipi = model.belgeTipi;
+      if (result!.length == 1) {
+        pdfModel.dizaynId = result.first.id;
+        dizaynList = result.first;
+      } else {
+        dizaynList = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+          context,
+          title: "Dizayn Seçiniz",
+          children: result.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList(),
+        );
+        pdfModel.dizaynId = dizaynList?.id;
+      }
+      if (dizaynList != null) {
+        Get.back();
+        Get.to(() => PDFViewerView(title: dizaynList?.dizaynAdi ?? "", pdfData: pdfModel));
+      }
+    } else {
+      Get.back();
+      dialogManager.showErrorSnackBar("Dizayn bulunamadı");
+    }
+  }
 }

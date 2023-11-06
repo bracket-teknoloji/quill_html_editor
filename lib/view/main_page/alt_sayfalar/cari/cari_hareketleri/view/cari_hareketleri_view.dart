@@ -309,7 +309,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                   ).yetkiKontrol(model.devirMi && yetkiController.cariHareketleriSilme),
 
                                   BottomSheetModel(
-                                    iconWidget: Icons.picture_as_pdf_outlined,
+                                    iconWidget: Icons.receipt_long_outlined,
                                     title: "Tahsilat Makbuzu",
                                     onTap: () async => await showPdf("TahsilatMakbuzu", model.inckeyno.toStringIfNotNull ?? ""),
                                   ).yetkiKontrol(model.kasaMi),
