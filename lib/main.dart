@@ -20,6 +20,7 @@ import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_pdf/view/e_be
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_hareketleri/view/banka_hareketleri_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/view/banka_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/view/cek_senet_listesi_view.dart";
+import 'package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_hareketleri/view/cek_senet_hareketleri_view.dart';
 import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_hareket_detayi/view/kasa_hareket_detay_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
@@ -187,6 +188,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/musteriSenetleri", page: () => const CekSenetListesiView(cekSenetListesiEnum: CekSenetListesiEnum.senetMusteri)),
               GetPage(name: "/borcCekleri", page: () => const CekSenetListesiView(cekSenetListesiEnum: CekSenetListesiEnum.cekBorc)),
               GetPage(name: "/borcSenetleri", page: () => const CekSenetListesiView(cekSenetListesiEnum: CekSenetListesiEnum.senetBorc)),
+              GetPage(name: "/cekSenetHareketleri", page: () => CekSenetHareketleriView(model: Get.arguments)),
 
               //* * Hızlı İşlemler
               GetPage(name: "/krediKartiTahsilati", page: () => KrediKartiTahsilatiView(cariListesiModel: Get.arguments)),

@@ -3,7 +3,6 @@ import "package:flutter/material.dart";
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "../../../../../../../core/components/textfield/custom_text_field.dart";
-import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../siparis_stok_ihtiyac_raporu/view_model/stok_ihtiyac_raporu_view_model.dart";
 

@@ -41,12 +41,15 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
     "Bu Aya Kadar": "BAK",
     "Bu Ay": "BU_AY",
     "Gelecek Hafta": "GELECEK_HAFTA",
-    "Gelecek Ay": "GELECEK_AY",      
+    "Gelecek Ay": "GELECEK_AY",
     "Gelecek 3 Ay": "GELECEK_3_AY",
   };
 
   @observable
   bool searchBar = false;
+
+  @observable
+  bool isScrollDown = true;
 
   @observable
   ObservableList<CekSenetListesiModel>? cekSenetListesiListesi;
@@ -59,6 +62,9 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setSearchBar() => searchBar = !searchBar;
+
+  @action
+  void setIsScrolledDown(bool value) => isScrollDown = value;
 
   @action
   void setSearchText(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(searchText: value);
@@ -102,5 +108,6 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
     if (result.success ?? false) {
       setCekSenetListesiListesi(result.data.map((e) => e as CekSenetListesiModel).toList().cast<CekSenetListesiModel>());
     }
+    setIsScrolledDown(false);
   }
 }

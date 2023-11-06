@@ -1,6 +1,7 @@
 import "dart:convert";
 
 import "package:flutter/material.dart";
+import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
@@ -11,6 +12,7 @@ import "package:picker/core/components/button/elevated_buttons/bottom_appbar_but
 import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
 import "package:picker/core/components/card/cek_senet_listesi_card.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
 import "package:picker/core/components/slide_controller/view/slide_controller_view.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
@@ -22,6 +24,7 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/view_model/cek_senet_listesi_view_model.dart";
@@ -41,6 +44,7 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
   late final TextEditingController _verilenCariController;
   late final TextEditingController _bankaController;
   late final TextEditingController _vadeTarihiController;
+  late final ScrollController _scrollController;
 
   @override
   void initState() {
@@ -49,9 +53,26 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
     _verilenCariController = TextEditingController();
     _bankaController = TextEditingController();
     _vadeTarihiController = TextEditingController();
+    _scrollController = ScrollController();
     viewModel.setBelgeTipi(widget.cekSenetListesiEnum.belgeTipi);
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await viewModel.getData();
+      _scrollController.addListener(() async {
+        if (_scrollController.hasClients) {
+          if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+            await viewModel.getData();
+            viewModel.setIsScrolledDown(true);
+          }
+          if (_scrollController.position.userScrollDirection == ScrollDirection.forward) {
+            viewModel.setIsScrolledDown(false);
+          } else if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
+            viewModel.setIsScrolledDown(true);
+          }
+          if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+            viewModel.setIsScrolledDown(false);
+          }
+        }
+      });
     });
     super.initState();
   }
@@ -63,14 +84,19 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
     _verilenCariController.dispose();
     _bankaController.dispose();
     _vadeTarihiController.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) => Scaffold(
+        resizeToAvoidBottomInset: true,
+        extendBody: true,
+        extendBodyBehindAppBar: false,
         appBar: appBar,
+        floatingActionButton: fab(),
         body: body,
-        bottomNavigationBar: bottomAppBar,
+        bottomNavigationBar: bottomAppBar(),
       );
 
   AppBar get appBar => AppBar(
@@ -159,7 +185,13 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                           }
                         },
                         suffix: IconButton(
-                          onPressed: () async => dialogManager.showCariGridViewDialog(CariListesiModel(cariKodu: viewModel.cekSenetListesiRequestModel.verenKodu)),
+                          onPressed: () async {
+                            if (viewModel.cekSenetListesiRequestModel.verenKodu != null) {
+                              return showCariIslemler(true);
+                            } else {
+                              dialogManager.showInfoDialog("Veren cari seçiniz");
+                            }
+                          },
                           icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                         ),
                       ),
@@ -178,7 +210,13 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                           }
                         },
                         suffix: IconButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            if (viewModel.cekSenetListesiRequestModel.verilenKodu != null) {
+                              return showCariIslemler(false);
+                            } else {
+                              dialogManager.showInfoDialog("Verilen cari seçiniz");
+                            }
+                          },
                           icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                         ),
                       ).yetkiVarMi(viewModel.cekSenetListesiRequestModel.yer == "C"),
@@ -272,6 +310,10 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
         ),
       );
 
+  Observer fab() => Observer(
+        builder: (_) => CustomFloatingActionButton(isScrolledDown: !viewModel.isScrollDown).yetkiVarMi(widget.cekSenetListesiEnum.eklenebilirMi),
+      );
+
   RefreshIndicator get body => RefreshIndicator.adaptive(
         onRefresh: viewModel.getData,
         child: Observer(
@@ -282,27 +324,48 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
               return const Center(child: Text("Veri bulunamadı", textAlign: TextAlign.center));
             }
             return ListView.builder(
+              controller: _scrollController,
               padding: UIHelper.lowPadding,
               itemCount: viewModel.cekSenetListesiListesi?.length ?? 0,
               itemBuilder: (context, index) {
                 final model = viewModel.cekSenetListesiListesi![index];
-                return CekSenetListesiCard(model: model);
+                return CekSenetListesiCard(model: model, cekSenetListesiEnum: widget.cekSenetListesiEnum);
               },
             );
           },
         ),
       );
 
-  BottomBarWidget get bottomAppBar => BottomBarWidget(
-        isScrolledDown: true,
-        children: [
-          FooterButton(
-            children: [
-              Observer(
-                builder: (_) => Text("Toplam Tutar: ${viewModel.toplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-              ),
-            ],
-          ),
-        ],
+  Observer bottomAppBar() => Observer(
+        builder: (_) => BottomBarWidget(
+          isScrolledDown: !viewModel.isScrollDown,
+          children: [
+            FooterButton(
+              children: [
+                Observer(
+                  builder: (_) => Text("Toplam Tutar: ${viewModel.toplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                ),
+              ],
+            ),
+          ],
+        ),
       );
+
+  Future<void> showCariIslemler(bool verenMi) async {
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getCariler,
+      bodyModel: CariListesiModel(),
+      showLoading: true,
+      queryParameters: {
+        "filterText": "",
+        "Kod": verenMi ? viewModel.cekSenetListesiRequestModel.verenKodu : viewModel.cekSenetListesiRequestModel.verilenKodu,
+        "EFaturaGoster": true,
+        "KisitYok": true,
+        "BelgeTuru": widget.cekSenetListesiEnum.belgeTipi,
+        "PlasiyerKisitiYok": true,
+      },
+    );
+
+    dialogManager.showCariGridViewDialog(result.data.first);
+  }
 }

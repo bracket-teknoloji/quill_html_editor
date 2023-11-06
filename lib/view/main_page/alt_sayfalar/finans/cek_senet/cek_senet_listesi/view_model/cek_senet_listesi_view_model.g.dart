@@ -33,6 +33,22 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
     });
   }
 
+  late final _$isScrollDownAtom = Atom(
+      name: '_CekSenetListesiViewModelBase.isScrollDown', context: context);
+
+  @override
+  bool get isScrollDown {
+    _$isScrollDownAtom.reportRead();
+    return super.isScrollDown;
+  }
+
+  @override
+  set isScrollDown(bool value) {
+    _$isScrollDownAtom.reportWrite(value, super.isScrollDown, () {
+      super.isScrollDown = value;
+    });
+  }
+
   late final _$cekSenetListesiListesiAtom = Atom(
       name: '_CekSenetListesiViewModelBase.cekSenetListesiListesi',
       context: context);
@@ -86,6 +102,17 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
         .startAction(name: '_CekSenetListesiViewModelBase.setSearchBar');
     try {
       return super.setSearchBar();
+    } finally {
+      _$_CekSenetListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setIsScrolledDown(bool value) {
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(name: '_CekSenetListesiViewModelBase.setIsScrolledDown');
+    try {
+      return super.setIsScrolledDown(value);
     } finally {
       _$_CekSenetListesiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -206,6 +233,7 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
   String toString() {
     return '''
 searchBar: ${searchBar},
+isScrollDown: ${isScrollDown},
 cekSenetListesiListesi: ${cekSenetListesiListesi},
 cekSenetListesiRequestModel: ${cekSenetListesiRequestModel},
 toplamTutar: ${toplamTutar}

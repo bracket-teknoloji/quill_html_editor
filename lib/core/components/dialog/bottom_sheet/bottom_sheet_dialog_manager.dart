@@ -491,11 +491,12 @@ class BottomSheetDialogManager {
     );
     return dizayn;
   }
+
   Future<BankaListesiModel?> showBankaHesaplariBottomSheetDialog(BuildContext context, BankaListesiRequestModel model) async {
     List<BankaListesiModel> bankaHesaplariList = <BankaListesiModel>[];
-     final result = await NetworkManager().dioGet<BankaListesiModel>(path: ApiUrls.getBankaHesaplari, bodyModel: BankaListesiModel(), queryParameters: model.toJson());
+    final result = await NetworkManager().dioGet<BankaListesiModel>(path: ApiUrls.getBankaHesaplari, bodyModel: BankaListesiModel(), queryParameters: model.toJson());
     if (result.data is List) {
-      bankaHesaplariList = result.data.map((e)=> e as BankaListesiModel).toList().cast<BankaListesiModel>();
+      bankaHesaplariList = result.data.map((e) => e as BankaListesiModel).toList().cast<BankaListesiModel>();
     }
     if (bankaHesaplariList.ext.isNotNullOrEmpty) {
       return await showBottomSheetDialog(
@@ -504,6 +505,7 @@ class BottomSheetDialogManager {
         children: bankaHesaplariList.map((e) => BottomSheetModel(title: e.hesapAdi ?? "", description: e.hesapKodu, value: e)).toList(),
       );
     }
+    return null;
   }
 
   Future<BelgeTipiModel?> showBelgeTipiBottomSheetDialog(BuildContext context) async {

@@ -227,6 +227,27 @@ final class YetkiController {
   bool get tahsilatReferansKoduSorulsun => _isTrue(_paramModel?.muhFislerdeRefKodSorulsunGelir, skipAdmin: true);
   bool get odemeReferansKoduSorulsun => _isTrue(_paramModel?.muhFislerdeRefKodSorulsunGider, skipAdmin: true);
 
+  //* Banka
+  bool kayitliHesapTipiMi(int value) => _paramModel?.kayitliBankaHesapTipleri?.contains(value) ?? false;
+
+  bool get musteriCekSil => _isTrue(_yetkiModel?.finansMcekSil);
+  bool get musteriSenetSil => _isTrue(_yetkiModel?.finansMsenSil);
+  bool get borcCekSil => _isTrue(_yetkiModel?.finansBcekSil);
+  bool get borcSenetSil => _isTrue(_yetkiModel?.finansBsenSil);
+
+  bool get musteriCekEkle => _isTrue(_yetkiModel?.finansMcekEkle);
+  bool get musteriSenetEkle => _isTrue(_yetkiModel?.finansMsenEkle);
+  bool get borcCekEkle => _isTrue(_yetkiModel?.finansBcekEkle);
+  bool get borcSenetEkle => _isTrue(_yetkiModel?.finansBsenEkle);
+
+  bool get musteriCekHareketler => _isTrue(_yetkiModel?.finansMcekHareketler);
+  bool get musteriSenetHareketler => _isTrue(_yetkiModel?.finansMsenHareketler);
+  bool get borcCekHareketler => _isTrue(_yetkiModel?.finansBcekHareketler);
+  bool get borcSenetHareketler => _isTrue(_yetkiModel?.finansBsenHareketler);
+
+
+
+
   //! SEVKİYAT
 
   bool sevkiyatSatisFatAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.sevkiyatSatisFatAciklamaAlanlari?.contains(index) ?? false));
@@ -244,9 +265,6 @@ final class YetkiController {
 
   bool get satisFatDigerSekmesiGelsin => _isTrue(_yetkiModel?.sevkiyatSatisFatDigerSekmesiGoster);
   bool get satisIrsDigerSekmesiGelsin => _isTrue(_yetkiModel?.sevkiyatSatisIrsDigerSekmesiGoster);
-
-  //* Banka
-  bool kayitliHesapTipiMi(int value) => _paramModel?.kayitliBankaHesapTipleri?.contains(value) ?? false; 
 
   //! MAL KABUL
 

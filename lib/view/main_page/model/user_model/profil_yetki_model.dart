@@ -1365,6 +1365,10 @@ class ProfilYetkiModel {
   bool? finansBorcCekiEkle;
   @JsonKey(name: "finans_BorcCeki_Sil")
   bool? finansBorcCekiSil;
+  @JsonKey(name: "finans_BCEK_Ekle")
+  bool? finansBcekEkle;
+  @JsonKey(name: "finans_BCEK_Sil")
+  bool? finansBcekSil;
   @JsonKey(name: "finans_BCEK_BelgeDetayi")
   bool? finansBcekBelgeDetayi;
   @JsonKey(name: "finans_BCEK_Hareketler")

@@ -1195,6 +1195,8 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..finansCekBorc = json['finans_Cek_Borc'] as bool?
       ..finansBorcCekiEkle = json['finans_BorcCeki_Ekle'] as bool?
       ..finansBorcCekiSil = json['finans_BorcCeki_Sil'] as bool?
+      ..finansBcekEkle = json['finans_BCEK_Ekle'] as bool?
+      ..finansBcekSil = json['finans_BCEK_Sil'] as bool?
       ..finansBcekBelgeDetayi = json['finans_BCEK_BelgeDetayi'] as bool?
       ..finansBcekHareketler = json['finans_BCEK_Hareketler'] as bool?
       ..finansBcekEvraklar = json['finans_BCEK_Evraklar'] as bool?
@@ -2699,6 +2701,8 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull('finans_Cek_Borc', instance.finansCekBorc);
   writeNotNull('finans_BorcCeki_Ekle', instance.finansBorcCekiEkle);
   writeNotNull('finans_BorcCeki_Sil', instance.finansBorcCekiSil);
+  writeNotNull('finans_BCEK_Ekle', instance.finansBcekEkle);
+  writeNotNull('finans_BCEK_Sil', instance.finansBcekSil);
   writeNotNull('finans_BCEK_BelgeDetayi', instance.finansBcekBelgeDetayi);
   writeNotNull('finans_BCEK_Hareketler', instance.finansBcekHareketler);
   writeNotNull('finans_BCEK_Evraklar', instance.finansBcekEvraklar);

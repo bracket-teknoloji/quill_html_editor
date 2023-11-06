@@ -8,19 +8,24 @@ import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
+import "package:picker/core/constants/enum/cek_senet_listesi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
 class CekSenetListesiCard extends StatefulWidget {
   final CekSenetListesiModel model;
-  const CekSenetListesiCard({super.key, required this.model});
+  final CekSenetListesiEnum cekSenetListesiEnum;
+  const CekSenetListesiCard({super.key, required this.model, required this.cekSenetListesiEnum});
 
   @override
   State<CekSenetListesiCard> createState() => _CekSenetListesiCardState();
@@ -37,11 +42,27 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
               title: model.belgeNo ?? "",
               children: [
                 BottomSheetModel(title: "Görüntüle", iconWidget: Icons.preview_outlined),
-                BottomSheetModel(title: "Sil", iconWidget: Icons.delete_outline_outlined),
+                BottomSheetModel(title: "Sil", iconWidget: Icons.delete_outline_outlined).yetkiKontrol(widget.cekSenetListesiEnum.silebilirMi),
                 BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
+                BottomSheetModel(title: "Hareketler", iconWidget: Icons.sync_alt_outlined, onTap: () => Get.toNamed("/mainPage/cekSenetHareketleri", arguments: model))
+                    .yetkiKontrol(widget.cekSenetListesiEnum.hareketlerGorulebilirMi),
                 BottomSheetModel(title: "Evraklar", iconWidget: Icons.description_outlined),
                 BottomSheetModel(title: "Tahsilat Makbuzu", iconWidget: Icons.receipt_long_outlined, onTap: showTahsilatMakbuzu),
-                BottomSheetModel(title: "Cari İşlemleri", iconWidget: Icons.person_outline_outlined),
+                BottomSheetModel(
+                  title: "Cari İşlemleri",
+                  iconWidget: Icons.person_outline_outlined,
+                  onTap: () async {
+                    Get.back();
+                    final result = await networkManager.dioGet(
+                      path: ApiUrls.getCariler,
+                      bodyModel: CariListesiModel(),
+                      showLoading: true,
+                      queryParameters: {"filterText": "", "Kod": model.verenKodu, "EFaturaGoster": true, "KisitYok": true, "BelgeTuru": model.belgeTipi, "PlasiyerKisitiYok": true},
+                    );
+
+                    dialogManager.showCariGridViewDialog(result.data.first);
+                  },
+                ),
               ].nullCheckWithGeneric,
             );
           },
