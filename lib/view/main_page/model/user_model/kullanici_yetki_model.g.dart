@@ -12,7 +12,9 @@ _$KullaniciYetkiModelImpl _$$KullaniciYetkiModelImplFromJson(
       bagliPlasiyerler: json['bagliPlasiyerler'] as List<dynamic>?,
       eIrsOnEki: json['eIrsOnEki'] as String?,
       eIrsAmbarOnEki: json['eIrsAmbarOnEki'] as String?,
-      yetkiliKasalar: json['yetkiliKasalar'] as List<dynamic>?,
+      yetkiliKasalar: (json['yetkiliKasalar'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
       kkartiHesaplar: json['kkartiHesaplar'] as List<dynamic>?,
       kkartiKasalar: json['kkartiKasalar'] as List<dynamic>?,
       acikHesapLimiti: (json['acikHesapLimiti'] as num?)?.toDouble(),

@@ -1,0 +1,1 @@
+enum HesaplarArasiEnum { virman, eftHavale }

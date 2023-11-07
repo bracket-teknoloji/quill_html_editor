@@ -40,6 +40,7 @@ _$TahsilatRequestModelImpl _$$TahsilatRequestModelImplFromJson(
       sozlesmeKodu: json['SOZLESME_KODU'] as String?,
       krediKartNo: json['KREDI_KART_NO'] as String?,
       hedefAciklama: json['HEDEF_ACIKLAMA'] as String?,
+      vadeGunu: json['VADE_GUNU'] as int?,
     );
 
 Map<String, dynamic> _$$TahsilatRequestModelImplToJson(
@@ -81,5 +82,6 @@ Map<String, dynamic> _$$TahsilatRequestModelImplToJson(
   writeNotNull('SOZLESME_KODU', instance.sozlesmeKodu);
   writeNotNull('KREDI_KART_NO', instance.krediKartNo);
   writeNotNull('HEDEF_ACIKLAMA', instance.hedefAciklama);
+  writeNotNull('VADE_GUNU', instance.vadeGunu);
   return val;
 }

@@ -101,7 +101,7 @@ class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
                 ),
                 const Divider(indent: 0, endIndent: 0).paddingSymmetric(vertical: UIHelper.midSize),
                 Text(
-                  "Açıklama: ${model?.aciklama}",
+                  "Açıklama: ${model?.aciklama ?? ""}",
                   overflow: TextOverflow.ellipsis,
                   maxLines: 3,
                 ),

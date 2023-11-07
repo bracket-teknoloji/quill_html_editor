@@ -183,6 +183,13 @@ class DialogManager {
         dialogType: DialogType.noHeader,
       ).show();
 
+      Future<dynamic> showBankaIslemleriGridViewDialog(BankaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async => await _baseDialog(
+        body: CustomAnimatedGridView<BankaListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.bankaIslemleri, title: "Banka İşlemleri", onSelected: onSelected),
+        onOk: () {},
+        btnOkText: "İptal",
+        dialogType: DialogType.noHeader,
+      ).show();
+
   Future<dynamic> showBankaGridViewDialog(BankaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async => await _baseDialog(
         body: CustomAnimatedGridView<BankaListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.banka, title: "Banka İşlemleri", onSelected: onSelected),
         onOk: () {},

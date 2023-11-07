@@ -82,6 +82,8 @@ mixin _$TahsilatRequestModel {
   set krediKartNo(String? value) => throw _privateConstructorUsedError;
   String? get hedefAciklama => throw _privateConstructorUsedError;
   set hedefAciklama(String? value) => throw _privateConstructorUsedError;
+  int? get vadeGunu => throw _privateConstructorUsedError;
+  set vadeGunu(int? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -124,7 +126,8 @@ abstract class $TahsilatRequestModelCopyWith<$Res> {
       String? cariKodu,
       String? sozlesmeKodu,
       String? krediKartNo,
-      String? hedefAciklama});
+      String? hedefAciklama,
+      int? vadeGunu});
 }
 
 /// @nodoc
@@ -170,6 +173,7 @@ class _$TahsilatRequestModelCopyWithImpl<$Res,
     Object? sozlesmeKodu = freezed,
     Object? krediKartNo = freezed,
     Object? hedefAciklama = freezed,
+    Object? vadeGunu = freezed,
   }) {
     return _then(_value.copyWith(
       aciklama: freezed == aciklama
@@ -288,6 +292,10 @@ class _$TahsilatRequestModelCopyWithImpl<$Res,
           ? _value.hedefAciklama
           : hedefAciklama // ignore: cast_nullable_to_non_nullable
               as String?,
+      vadeGunu: freezed == vadeGunu
+          ? _value.vadeGunu
+          : vadeGunu // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -329,7 +337,8 @@ abstract class _$$TahsilatRequestModelImplCopyWith<$Res>
       String? cariKodu,
       String? sozlesmeKodu,
       String? krediKartNo,
-      String? hedefAciklama});
+      String? hedefAciklama,
+      int? vadeGunu});
 }
 
 /// @nodoc
@@ -372,6 +381,7 @@ class __$$TahsilatRequestModelImplCopyWithImpl<$Res>
     Object? sozlesmeKodu = freezed,
     Object? krediKartNo = freezed,
     Object? hedefAciklama = freezed,
+    Object? vadeGunu = freezed,
   }) {
     return _then(_$TahsilatRequestModelImpl(
       aciklama: freezed == aciklama
@@ -490,6 +500,10 @@ class __$$TahsilatRequestModelImplCopyWithImpl<$Res>
           ? _value.hedefAciklama
           : hedefAciklama // ignore: cast_nullable_to_non_nullable
               as String?,
+      vadeGunu: freezed == vadeGunu
+          ? _value.vadeGunu
+          : vadeGunu // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -526,7 +540,8 @@ class _$TahsilatRequestModelImpl extends _TahsilatRequestModel {
       this.cariKodu,
       this.sozlesmeKodu,
       this.krediKartNo,
-      this.hedefAciklama})
+      this.hedefAciklama,
+      this.vadeGunu})
       : super._();
 
   factory _$TahsilatRequestModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -592,6 +607,8 @@ class _$TahsilatRequestModelImpl extends _TahsilatRequestModel {
   String? krediKartNo;
   @override
   String? hedefAciklama;
+  @override
+  int? vadeGunu;
 
   @JsonKey(ignore: true)
   @override
@@ -639,7 +656,8 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
       String? cariKodu,
       String? sozlesmeKodu,
       String? krediKartNo,
-      String? hedefAciklama}) = _$TahsilatRequestModelImpl;
+      String? hedefAciklama,
+      int? vadeGunu}) = _$TahsilatRequestModelImpl;
   _TahsilatRequestModel._() : super._();
 
   factory _TahsilatRequestModel.fromJson(Map<String, dynamic> json) =
@@ -736,6 +754,9 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
   @override
   String? get hedefAciklama;
   set hedefAciklama(String? value);
+  @override
+  int? get vadeGunu;
+  set vadeGunu(int? value);
   @override
   @JsonKey(ignore: true)
   _$$TahsilatRequestModelImplCopyWith<_$TahsilatRequestModelImpl>

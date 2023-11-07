@@ -34,10 +34,9 @@ mixin _$KullaniciYetkiModel {
   @JsonKey(name: "eIrsAmbarOnEki")
   set eIrsAmbarOnEki(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "yetkiliKasalar")
-  List<dynamic>? get yetkiliKasalar => throw _privateConstructorUsedError;
+  List<String>? get yetkiliKasalar => throw _privateConstructorUsedError;
   @JsonKey(name: "yetkiliKasalar")
-  set yetkiliKasalar(List<dynamic>? value) =>
-      throw _privateConstructorUsedError;
+  set yetkiliKasalar(List<String>? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "kkartiHesaplar")
   List<dynamic>? get kkartiHesaplar => throw _privateConstructorUsedError;
   @JsonKey(name: "kkartiHesaplar")
@@ -136,7 +135,7 @@ abstract class $KullaniciYetkiModelCopyWith<$Res> {
       {@JsonKey(name: "bagliPlasiyerler") List<dynamic>? bagliPlasiyerler,
       @JsonKey(name: "eIrsOnEki") String? eIrsOnEki,
       @JsonKey(name: "eIrsAmbarOnEki") String? eIrsAmbarOnEki,
-      @JsonKey(name: "yetkiliKasalar") List<dynamic>? yetkiliKasalar,
+      @JsonKey(name: "yetkiliKasalar") List<String>? yetkiliKasalar,
       @JsonKey(name: "kkartiHesaplar") List<dynamic>? kkartiHesaplar,
       @JsonKey(name: "kkartiKasalar") List<dynamic>? kkartiKasalar,
       @JsonKey(name: "acikHesapLimiti") double? acikHesapLimiti,
@@ -214,7 +213,7 @@ class _$KullaniciYetkiModelCopyWithImpl<$Res, $Val extends KullaniciYetkiModel>
       yetkiliKasalar: freezed == yetkiliKasalar
           ? _value.yetkiliKasalar
           : yetkiliKasalar // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<String>?,
       kkartiHesaplar: freezed == kkartiHesaplar
           ? _value.kkartiHesaplar
           : kkartiHesaplar // ignore: cast_nullable_to_non_nullable
@@ -300,7 +299,7 @@ abstract class _$$KullaniciYetkiModelImplCopyWith<$Res>
       {@JsonKey(name: "bagliPlasiyerler") List<dynamic>? bagliPlasiyerler,
       @JsonKey(name: "eIrsOnEki") String? eIrsOnEki,
       @JsonKey(name: "eIrsAmbarOnEki") String? eIrsAmbarOnEki,
-      @JsonKey(name: "yetkiliKasalar") List<dynamic>? yetkiliKasalar,
+      @JsonKey(name: "yetkiliKasalar") List<String>? yetkiliKasalar,
       @JsonKey(name: "kkartiHesaplar") List<dynamic>? kkartiHesaplar,
       @JsonKey(name: "kkartiKasalar") List<dynamic>? kkartiKasalar,
       @JsonKey(name: "acikHesapLimiti") double? acikHesapLimiti,
@@ -376,7 +375,7 @@ class __$$KullaniciYetkiModelImplCopyWithImpl<$Res>
       yetkiliKasalar: freezed == yetkiliKasalar
           ? _value.yetkiliKasalar
           : yetkiliKasalar // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<String>?,
       kkartiHesaplar: freezed == kkartiHesaplar
           ? _value.kkartiHesaplar
           : kkartiHesaplar // ignore: cast_nullable_to_non_nullable
@@ -498,7 +497,7 @@ class _$KullaniciYetkiModelImpl implements _KullaniciYetkiModel {
   String? eIrsAmbarOnEki;
   @override
   @JsonKey(name: "yetkiliKasalar")
-  List<dynamic>? yetkiliKasalar;
+  List<String>? yetkiliKasalar;
   @override
   @JsonKey(name: "kkartiHesaplar")
   List<dynamic>? kkartiHesaplar;
@@ -576,7 +575,7 @@ abstract class _KullaniciYetkiModel implements KullaniciYetkiModel {
       {@JsonKey(name: "bagliPlasiyerler") List<dynamic>? bagliPlasiyerler,
       @JsonKey(name: "eIrsOnEki") String? eIrsOnEki,
       @JsonKey(name: "eIrsAmbarOnEki") String? eIrsAmbarOnEki,
-      @JsonKey(name: "yetkiliKasalar") List<dynamic>? yetkiliKasalar,
+      @JsonKey(name: "yetkiliKasalar") List<String>? yetkiliKasalar,
       @JsonKey(name: "kkartiHesaplar") List<dynamic>? kkartiHesaplar,
       @JsonKey(name: "kkartiKasalar") List<dynamic>? kkartiKasalar,
       @JsonKey(name: "acikHesapLimiti") double? acikHesapLimiti,
@@ -622,9 +621,9 @@ abstract class _KullaniciYetkiModel implements KullaniciYetkiModel {
   set eIrsAmbarOnEki(String? value);
   @override
   @JsonKey(name: "yetkiliKasalar")
-  List<dynamic>? get yetkiliKasalar;
+  List<String>? get yetkiliKasalar;
   @JsonKey(name: "yetkiliKasalar")
-  set yetkiliKasalar(List<dynamic>? value);
+  set yetkiliKasalar(List<String>? value);
   @override
   @JsonKey(name: "kkartiHesaplar")
   List<dynamic>? get kkartiHesaplar;

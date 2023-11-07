@@ -77,7 +77,6 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(kasaTransferi);
       islemlerList.add(nakitTahsilat(null));
       islemlerList.add(nakitOdeme(null));
-      // islemlerList.add(bankaKasaTransferi);
       islemlerList.add(krediKartiTahsilati(null));
       islemlerList.add(muhtelifTahsilat);
       islemlerList.add(muhtelifOdeme);
@@ -86,8 +85,11 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(nakitTahsilat(model));
       islemlerList.add(nakitOdeme(model));
       islemlerList.add(krediKartiTahsilati(model));
-    } else if (islemtipi == IslemTipiEnum.banka){
-      islemlerList.add(bankaHareketleri);
+    } else if (islemtipi == IslemTipiEnum.banka) {
+      if (model != null) {
+        islemlerList.add(bankaHareketleri);
+      }
+      islemlerList.add(bankaKasaTransferi);
     }
   }
 
@@ -420,10 +422,12 @@ class IslemlerMenuItemConstants<T> {
         },
       );
 
-
   //* Banka
   GridItemModel? get bankaHareketleri =>
       GridItemModel.islemler(title: "Banka Hareketleri", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/bankaHareketleri", arguments: model));
+
+  GridItemModel? get bankaKasaTransferi =>
+      GridItemModel.islemler(title: "Banka Kasa Transferi", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/bankaKasaTransferi", arguments: model));
 
   //* Kasa
   GridItemModel? get kasaTransferi => GridItemModel.islemler(title: "Kasalar Arası Transferi", iconData: Icons.list_alt_rounded, onTap: () async => await Get.toNamed("/mainPage/kasaTransferi"));
@@ -431,7 +435,6 @@ class IslemlerMenuItemConstants<T> {
       GridItemModel.islemler(title: "Kredi Kartı Tahsilatı", iconData: Icons.list_alt_rounded, onTap: () async => await Get.toNamed("/mainPage/krediKartiTahsilati", arguments: value));
   GridItemModel? nakitTahsilat(dynamic value) =>
       GridItemModel.islemler(title: "Nakit Tahsilat", iconData: Icons.list_alt_rounded, onTap: () async => await Get.toNamed("/mainPage/nakitTahsilat", arguments: value));
-  GridItemModel? get bankaKasaTransferi => GridItemModel.islemler(title: "Banka-Kasa Transferi", iconData: Icons.list_alt_rounded, onTap: () {});
   GridItemModel? nakitOdeme(dynamic value) =>
       GridItemModel.islemler(title: "Nakit Ödeme", iconData: Icons.list_alt_rounded, onTap: () async => await Get.toNamed("/mainPage/nakitOdeme", arguments: value));
   GridItemModel? get muhtelifTahsilat => GridItemModel.islemler(title: "Muhtelif\nTahsilat", iconData: Icons.list_alt_rounded, onTap: () async => await Get.toNamed("/mainPage/muhtelifTahsilat"));

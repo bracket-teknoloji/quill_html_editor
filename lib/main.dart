@@ -18,9 +18,10 @@ import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/borc_alacak_dok
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/view/e_belge_gelen_giden_kutusu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_pdf/view/e_belge_pdf_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_hareketleri/view/banka_hareketleri_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_kasa_transferi/view/banka_kasa_transferi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/view/banka_listesi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_hareketleri/view/cek_senet_hareketleri_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/view/cek_senet_listesi_view.dart";
-import 'package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_hareketleri/view/cek_senet_hareketleri_view.dart';
 import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_hareket_detayi/view/kasa_hareket_detay_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
@@ -143,7 +144,7 @@ class PickerApp extends StatelessWidget {
             name: "/mainPage",
             page: () => const MainPageView(),
             children: <GetPage>[
-              GetPage(name: "/surumYenilikleri", page: () => const SurumYenilikleriView()),
+              GetPage(name: "/surumYenilikleri", page: SurumYenilikleriView.new),
               //* Cari
               GetPage(name: "/cariListesi", page: () => CariListesiView(isGetData: Get.arguments)),
               GetPage(name: "/cariRehberi", page: () => CariRehberiView(cariKodu: Get.arguments)),
@@ -170,18 +171,19 @@ class PickerApp extends StatelessWidget {
               //* Finans
 
               // * * Banka
-              GetPage(name: "/bankaListesi", page: () => const BankaListesiView()),
-              GetPage(name: "/bankaIslemleri", page: () => const BankaIslemleriView()),
-              GetPage(name: "/bankaHareketleri", page: () =>  BankaHareketleriView(model: Get.arguments)),
+              GetPage(name: "/bankaListesi", page: BankaListesiView.new),
+              GetPage(name: "/bankaIslemleri", page: BankaIslemleriView.new),
+              GetPage(name: "/bankaHareketleri", page: () => BankaHareketleriView(model: Get.arguments)),
+              GetPage(name: "/bankaKasaTransferi", page: BankaKasaTransferiView.new),
 
               //* * Kasa
               GetPage(name: "/kasaHareketleri", page: () => KasaHareketleriView(model: Get.arguments)),
               GetPage(name: "/kasaHareketDetayi", page: () => KasaHareketDetayiView(cariListesiModel: Get.arguments)),
-              GetPage(name: "/kasaListesi", page: () => const KasaListesiView()),
-              GetPage(name: "/kasaDekontlari", page: () => const KasaDekontlarView()),
-              GetPage(name: "/kasaIslemleri", page: () => const KasaIslemleriView()),
-              GetPage(name: "/kasaTransferi", page: () => const KasaTransferiView()),
-              GetPage(name: "/kasaKasaEkstreRaporu", page: () => const KasaEkstreRaporuView()),
+              GetPage(name: "/kasaListesi", page: KasaListesiView.new),
+              GetPage(name: "/kasaDekontlari", page: KasaDekontlarView.new),
+              GetPage(name: "/kasaIslemleri", page: KasaIslemleriView.new),
+              GetPage(name: "/kasaTransferi", page: KasaTransferiView.new),
+              GetPage(name: "/kasaKasaEkstreRaporu", page: KasaEkstreRaporuView.new),
 
               //* * Çek-Senet
               GetPage(name: "/musteriCekleri", page: () => const CekSenetListesiView(cekSenetListesiEnum: CekSenetListesiEnum.cekMusteri)),
@@ -195,11 +197,11 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/nakitTahsilat", page: () => NakitOdemeView(tahsilatMi: true, cariListesiModel: Get.arguments)),
               GetPage(name: "/nakitOdeme", page: () => NakitOdemeView(cariListesiModel: Get.arguments)),
               GetPage(name: "/muhtelifTahsilat", page: () => const MuhtelifOdemeView(tahsilatMi: true)),
-              GetPage(name: "/muhtelifOdeme", page: () => const MuhtelifOdemeView()),
+              GetPage(name: "/muhtelifOdeme", page: MuhtelifOdemeView.new),
 
               //* * Finans Raporları
-              GetPage(name: "/finansFinansalDurumRaporu", page: () => const FinansalDurumRaporuView()),
-              GetPage(name: "/finansAylikMizanRaporu", page: () => const AylikMizanRaporuView()),
+              GetPage(name: "/finansFinansalDurumRaporu", page: FinansalDurumRaporuView.new),
+              GetPage(name: "/finansAylikMizanRaporu", page: AylikMizanRaporuView.new),
               //* Sipariş
               GetPage(name: "/siparisMusteriSiparisi", page: () => SiparislerView(widgetModel: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.musteri, isGetData: Get.arguments))),
               GetPage(name: "/siparisSaticiSiparisi", page: () => SiparislerView(widgetModel: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.satici, isGetData: Get.arguments))),
@@ -219,9 +221,9 @@ class PickerApp extends StatelessWidget {
                   searchText: Get.arguments is KalemEkleModel ? Get.arguments.searchText : null,
                 ),
               ),
-              GetPage(name: "/stokFiyatGor", page: () => const FiyatGorView()),
+              GetPage(name: "/stokFiyatGor", page: FiyatGorView.new),
               GetPage(name: "/stokYazdir", page: () => StokYazdirView(model: Get.arguments)),
-              GetPage(name: "/stokFiyatGecmisi", page: () => const FiyatGecmisiView()),
+              GetPage(name: "/stokFiyatGecmisi", page: FiyatGecmisiView.new),
 
               GetPage(name: "/stokEdit", page: () => BaseStokEditingView(model: Get.arguments)),
               GetPage(name: "/stokRehberi", page: () => StokRehberiView(searchText: Get.arguments)),
@@ -252,7 +254,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/sevkiyatSatisIrsaliyesi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.satisIrsaliye)),
 
               //* Profil
-              GetPage(name: "/temsilciProfil", page: () => const TemsilciProfilView()),
+              GetPage(name: "/temsilciProfil", page: TemsilciProfilView.new),
 
               //* Serbest Raporlar
               //*

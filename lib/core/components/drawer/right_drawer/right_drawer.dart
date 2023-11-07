@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:lottie/lottie.dart";
+import "package:picker/gen/assets.gen.dart";
 
 import "../../../base/state/base_state.dart";
 import "../../../constants/ui_helper/icon_helper.dart";
@@ -35,7 +35,8 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(child: LottieBuilder.network("https://assets9.lottiefiles.com/packages/lf20_yMpiqXia1k.json")),
+                    // Expanded(child: LottieBuilder.network("https://assets9.lottiefiles.com/packages/lf20_yMpiqXia1k.json")),
+                    Expanded(child: Assets.lotties.chartLottie.lottie()),
                     Text(CacheManager.getAnaVeri!.userModel?.adSoyad ?? "", style: theme.textTheme.bodyLarge),
                     Text(CacheManager.getVerifiedUser.account?.firma ?? "", style: theme.textTheme.bodyMedium),
                     Text("Profil", style: theme.textTheme.bodySmall).marginOnly(top: UIHelper.midSize),

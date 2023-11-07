@@ -8,11 +8,11 @@ part "kullanici_yetki_model.g.dart";
 @unfreezed
 class KullaniciYetkiModel with _$KullaniciYetkiModel {
   @JsonSerializable(createFactory: true)
-   factory KullaniciYetkiModel({
+  factory KullaniciYetkiModel({
     @JsonKey(name: "bagliPlasiyerler") List? bagliPlasiyerler,
     @JsonKey(name: "eIrsOnEki") String? eIrsOnEki,
     @JsonKey(name: "eIrsAmbarOnEki") String? eIrsAmbarOnEki,
-    @JsonKey(name: "yetkiliKasalar") List? yetkiliKasalar,
+    @JsonKey(name: "yetkiliKasalar") List<String>? yetkiliKasalar,
     @JsonKey(name: "kkartiHesaplar") List? kkartiHesaplar,
     @JsonKey(name: "kkartiKasalar") List? kkartiKasalar,
     @JsonKey(name: "acikHesapLimiti") double? acikHesapLimiti,

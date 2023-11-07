@@ -115,7 +115,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
   Observer fab() => Observer(
         builder: (_) => CustomFloatingActionButton(
           isScrolledDown: viewModel.isScrollDown,
-          onPressed: () {},
+          onPressed: () async => await dialogManager.showBankaGridViewDialog(null),
         ),
       );
 
@@ -181,7 +181,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
                 const Text("Gider"),
                 Observer(
                   builder: (_) => Text(
-                    "${viewModel.gidenTutar.  commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                    "${viewModel.gidenTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                     style: const TextStyle(color: ColorPalette.persianRed),
                   ),
                 ),
